@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972346"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814566"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
 
@@ -30,10 +30,10 @@ A Private Cloud VMware stack a következő szoftverrel van üzembe helyezve.
 
 | Összetevő | Version | Licencelt verzió |
 |-----------|---------|------------------|
-| ESXi | 6,7 U1 | Enterprise Plus |
-| vCenter | 6,7 U1 | vCenter Standard |
+| ESXi | 6.7 U2 | Enterprise Plus |
+| vCenter | 6.7 U2 | vCenter Standard |
 | vSAN | 6.7 | Vállalati |
-| NSX Data Center | 2.3 | Speciális |
+| NSX Data Center | 2.4.1 | Speciális |
 
 ## <a name="esxi"></a>ESXi
 

@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946388"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812286"
 ---
-# <a name="log-metrics-during-training-runs"></a>Naplózási mérőszámok a betanítási futtatások során
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>A gépi tanulási képzés mérőszámait nyomon követheti Azure Machine Learning
 
-A kísérletek és a monitorozási mérőszámok nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan veheti fel a naplózást a betanítási parancsfájlba, hogyan küldhet el egy kísérletet, hogyan figyelheti a futtatást, és hogyan tekintheti meg a futtatások eredményeit Azure Machine Learning szolgáltatásban.
+A kísérletek és a monitorozási mérőszámok nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a betanítási parancsfájlhoz, elküldheti a kísérlet futtatását, figyelheti a futtatást, és ellenőrizheti az eredményeket Azure Machine Learning szolgáltatásban.
 
 > [!NOTE]
-> A Azure Machine Learning szolgáltatás a betanítás során más forrásokból is naplózhat adatokat, például AutoML vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
+> A Azure Machine Learning szolgáltatás a betanítás során más forrásokból is naplózhat adatokat, például az automatizált gépi tanulási futtatásokat vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
 
-## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
+## <a name="available-metrics-to-track"></a>A nyomon követett elérhető metrikák
 
 A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során. Mi a Futtatás követhető részletes listáját, tekintse meg a [osztály dokumentációja futtatása](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során
 > [!NOTE]
 > Metrikák fejlécekké, a listákat, a sorok és a táblák rendelkezhet típusa: lebegőpontos, egész szám vagy karakterlánc.
 
-## <a name="start-logging-metrics"></a>Indítsa el a naplózás metrikák
+## <a name="choose-a-logging-option"></a>Naplózási lehetőség kiválasztása
 
 Ha szeretné nyomon követni vagy figyelése is futtathatja a kísérletet, hozzá kell adnia a naplózása, amikor a Futtatás küld kódot. A futtatási küldésének aktiválásához módjai a következők:
 * __Run.start_logging__ – a naplózási szolgáltatások hozzáadása a tanítási szkriptet, és a egy interaktív naplózási munkamenet elindításához a megadott kísérletben. **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.

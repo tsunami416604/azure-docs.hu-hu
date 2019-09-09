@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736419"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814233"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A PySpark interaktív környezet beállítása a Visual Studio Code-hoz
 
@@ -24,13 +24,13 @@ A **Python/pip** parancs használatával virtuális környezetet építhet ki a 
 1. Telepítse a [Pythont](https://www.python.org/downloads/) és a [pip](https://pip.pypa.io/en/stable/installing/)-et.
    
    + Telepítse a Pythont a alkalmazásból [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   + A pip telepítése [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/)a rendszerből. (Ha nincs telepítve a Python-telepítésből)
-   + A Python és a pip érvényesítése az alábbi parancsokkal sikeresen megtörtént. Választható
+   + A pip [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) telepítése (ha nem a Python-telepítésből van telepítve).
+   + Ellenőrizze, hogy a Python és a pip telepítése sikeresen megtörtént-e az alábbi parancsokkal. Választható
  
         ![Python pip verziója](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Javasoljuk, hogy a MacOS alapértelmezett verziójának használata helyett manuálisan telepítse a Pythont.
+     > Javasoljuk, hogy a macOS alapértelmezett verziójának használata helyett manuálisan telepítse a Pythont.
 
 
 2. Telepítse a **virtualenv** az alábbi parancs futtatásával.
@@ -39,19 +39,21 @@ A **Python/pip** parancs használatával virtuális környezetet építhet ki a 
    pip install virtualenv
    ```
 
-3. Csak Linux esetén telepítse a szükséges csomagokat a következő parancs futtatásával, ha a hibaüzenet jelenik meg.
-   
-    ![Python pip verziója](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>Egyéb csomagok
 
-   ```
-   sudo apt-get install python-dev
-   ```
+Ha hibaüzenetet kap, telepítse a szükséges csomagokat a következő parancsok futtatásával:
 
-4. Indítsa újra a vs Code-ot, majd térjen vissza a HDInsight-t **futtató parancsfájl-szerkesztőhöz: PySpark interaktív**.
+   ![Python pip verziója](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+Indítsa újra a vs Code-ot, majd térjen vissza a HDInsight-t **futtató parancsfájl-szerkesztőhöz: PySpark interaktív**.
 
 ## <a name="next-steps"></a>További lépések
 

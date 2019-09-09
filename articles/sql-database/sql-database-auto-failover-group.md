@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208343"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806606"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -191,6 +191,9 @@ Ha az alkalmazás felügyelt példányt használ adatcsomagként, kövesse az al
 
   Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne szakítsa meg a kapcsolatot az elsődleges példánnyal, ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos példányt egy másik régióban, és győződjön meg róla, hogy az elsődleges példánnyal osztja meg a DNS-zónát. Ezt megteheti egy `DNS Zone Partner` opcionális paraméter megadásával a Azure Portal, a PowerShell vagy a REST API használatával. 
 
+> [!IMPORTANT]
+> Az alhálózatban létrehozott első példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példánynál. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.   
+
   Az elsődleges példánnyal azonos DNS-zónában található másodlagos példány létrehozásával kapcsolatos további információkért lásd: [másodlagos felügyelt példány létrehozása](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **Replikációs forgalom engedélyezése két példány között**
@@ -238,6 +241,10 @@ Ha az alkalmazás felügyelt példányt használ adatcsomagként, kövesse az al
   > [!IMPORTANT]
   > A manuális csoport feladatátvételével visszahelyezheti az elsődleges helyre az elsődleges helyet. Ha a feladatátvételt okozó leállás le lett csökkentve, az elsődleges adatbázisokat az eredeti helyre helyezheti át. Ehhez el kell indítania a csoport manuális feladatátvételét.
 
+- **A feladatátvételi csoportok ismert korlátainak nyugtázása**
+
+  A feladatátvételi csoportban lévő példányok nem támogatják az adatbázis átnevezését és a példány átméretezését. Ideiglenesen törölnie kell a feladatátvételi csoportot, hogy el tudja végezni ezeket a műveleteket.
+
 ## <a name="failover-groups-and-network-security"></a>Feladatátvételi csoportok és hálózati biztonság
 
 Egyes alkalmazásokhoz a biztonsági szabályok megkövetelik, hogy az adatcsomaghoz való hálózati hozzáférés egy adott összetevőhöz vagy összetevőkhöz, például egy virtuális géphez, egy webszolgáltatáshoz, stb. van korlátozva. Ez a követelmény az üzletmenet folytonosságának kialakítására és a feladatátvételi csoportok használatára vonatkozó kihívásokat mutatja be. Az ilyen korlátozott hozzáférés megvalósításakor vegye figyelembe az alábbi beállításokat.
@@ -252,7 +259,7 @@ Ha [Virtual Network szolgáltatási végpontokat és szabályokat](sql-database-
 4. A manuális feladatátvétel elindítása a leállás észlelésekor. Ez a beállítás olyan alkalmazásokra van optimalizálva, amelyek konzisztens késést igényelnek az előtér és az adatréteg között, és támogatja a helyreállítást, ha az előtér, az adatréteg vagy mindkettő hatással van a kimaradásra.
 
 > [!NOTE]
-> Ha az írásvédett figyelőt a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
+> Ha az írásvédett **figyelőt** a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
 
 ### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és SQL Database-tűzfalszabályok használata
 
@@ -312,7 +319,7 @@ A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron 
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Feladatátvételi csoportok és időponthoz történő visszaállítás
 
-További információ a feladatátvételi csoportokkal való időpontra történő visszaállításról: időponthoz való [helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+További információ a feladatátvételi csoportokkal való időpontra történő visszaállításról: [időponthoz való helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 

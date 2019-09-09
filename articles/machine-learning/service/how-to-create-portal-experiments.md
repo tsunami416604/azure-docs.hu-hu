@@ -1,5 +1,5 @@
 ---
-title: Gépi tanulási modellek készítése és üzembe helyezése automatizált ML használatával
+title: Az Azure automatizált ML-felületének használata & üzembe helyezési modelljeinek betanításához
 titleSuffix: Azure Machine Learning service
 description: Automatizált gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése a Azure Portal
 services: machine-learning
@@ -11,18 +11,18 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990581"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813657"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Automatikus gépi tanulási kísérletek létrehozása, feltárása és üzembe helyezése a Azure Portalban (előzetes verzió)
 
  Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási kísérleteket a Azure Portal a kód egyetlen sora nélkül. Az automatizált gépi tanulás automatizálja az adott adataihoz használandó legjobb algoritmus kiválasztásának folyamatát, így gyorsan létrehozhat egy gépi tanulási modellt. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
 
- Ha több kód alapú felhasználói élményt szeretne, a Pythonban az [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val is konfigurálhatja az [automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) .
+ Ha több kód alapú felhasználói élményt szeretne, a Pythonban az [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val is [konfigurálhatja az automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +77,7 @@ Válassza a **kísérlet létrehozása** lehetőséget, és töltse fel az **új
 
     1. Az **előnézet** lapon adja meg, hogy az adatai fejléceket tartalmaznak-e, majd válassza ki a szolgáltatásokhoz tartozó funkciókat (oszlopokat) az egyes funkciók oszlopban **szereplő** kapcsoló gombok használatával.
 
-    1. A **profil** lapon megtekintheti az adatprofil [](#profile) funkciót, valamint a terjesztési, a típus és az összefoglalás statisztikáit (középérték, medián, max/min stb.).
+    1. A **profil** lapon megtekintheti az [adatprofil](#profile) funkciót, valamint a terjesztési, a típus és az összefoglalás statisztikáit (középérték, medián, max/min stb.).
 
         >[!NOTE]
         > A következő hibaüzenet jelenik meg, ha a számítási környezet **nem** profilkészítés engedélyezve: Az *adatok profilkészítése csak olyan számítási célok esetében érhető el, amelyek már futnak*.
@@ -97,7 +97,7 @@ Válassza a **kísérlet létrehozása** lehetőséget, és töltse fel az **új
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
     Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok a teljes befejezés előtt véget ér. <br> *Tanítási feladatok időpontja (perc)* : Mennyi ideig kell futtatni a betanítási feladatot.  <br> *Ismétlések maximális száma*: A betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Metrika pontszámának küszöbértéke*:  Az összes folyamat minimális metrikájának pontszáma. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
-    Előfeldolgozás| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az](#preprocess)előfeldolgozásról.
+    Előfeldolgozás| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az előfeldolgozásról](#preprocess).
     Érvényesítés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
     Egyidejűség| Válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
     Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
@@ -196,7 +196,7 @@ Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelz
 
 ## <a name="next-steps"></a>További lépések
 
-* Próbálja ki a végpontok közötti oktatóanyagot, [amellyel létrehozhatja az első AUTOMATIZÁLT ml-kísérletet Azure Machine learning](tutorial-first-experiment-automated-ml.md)használatával. 
+* Próbálja ki a végpontok közötti [oktatóanyagot, amellyel létrehozhatja az első AUTOMATIZÁLT ml-kísérletet Azure Machine learning](tutorial-first-experiment-automated-ml.md)használatával. 
 * [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.
 * Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
-* [Ismerje meg, hogyan](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)használhat webszolgáltatásokat.
+* [Ismerje meg, hogyan használhat webszolgáltatásokat](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

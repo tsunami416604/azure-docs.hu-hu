@@ -1,6 +1,6 @@
 ---
 title: Harmadik féltől származó alkalmazások telepítése Azure HDInsight
-description: Megismerheti, hogyan telepíthet külső gyártótól származó Hadoop-alkalmazásokat az Azure HDInsighton.
+description: Ismerje meg, hogyan telepíthet külső féltől származó Apache Hadoop alkalmazásokat az Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8ed854a5775dfc20e258c14de51fe2066fa6caad
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873370"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810272"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
@@ -52,7 +52,7 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 **Egy HDInsight-alkalmazás telepítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight**-fürthöz.
+2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight-fürthöz**.
 3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 4. A **Beállítások** kategóriában válassza az **alkalmazások**lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
@@ -73,7 +73,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
 **HDInsight-alkalmazások listázása és az alkalmazástulajdonságok megjelenítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight**-fürthöz.
+2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight-fürthöz**.
 3. Válasszon ki egy HDInsight-fürtöt a listából.
 4. A **Beállítások** kategóriában válassza az **alkalmazások**lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    

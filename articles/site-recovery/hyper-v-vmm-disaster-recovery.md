@@ -1,20 +1,19 @@
 ---
-title: Helyszíni helyek közötti vészhelyreállítás beállítása Hyper-V virtuális gépekhez az Azure Site Recovery használatával | Microsoft Docs
+title: A Hyper-V virtuális gépek vész-helyreállításának beállítása a helyszíni helyek között Azure Site Recovery
 description: Ismerje meg, hogyan állíthat be helyszíni helyek közötti vészhelyreállítást Hyper-V virtuális gépekhez az Azure Site Recoveryvel.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398404"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813758"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Másodlagos helyszíni helyre irányuló vészhelyreállítás beállítása Hyper-V virtuális gépekhez
 
@@ -65,7 +64,7 @@ A VMM előkészítését a következőképpen végezze el:
 
 Válassza ki, hogy mit szeretne replikálni, és hova.
 
-1. Kattintson a **Site Recovery** > **1. lépés: Az infrastruktúra előkészítése** > **védelmi cél**.
+1. Kattintson **site Recovery** > 1.lépés: **Az infrastruktúra** > előkészítése**védelmi cél**.
 2. Válassza a **Helyreállítási helyre**, valamint az **Igen, a következővel: Hyper-V** lehetőséget.
 3. Az **Igen** lehetőség kiválasztásával erősítse meg, hogy VMM-mel felügyeli a Hyper-V gazdagépeket.
 4. Válassza az **Igen** lehetőséget, ha rendelkezik másodlagos VMM-kiszolgálóval. Ha felhők közötti replikációt helyez üzembe egyetlen VMM-kiszolgálón, kattintson a **Nem** lehetőségre. Ezután kattintson az **OK** gombra.
@@ -96,7 +95,7 @@ Telepítse az Azure Site Recovery Providert a VMM-kiszolgálókra, és keresse m
 5. A telepítést követően a kiszolgálónak a tárolóban való regisztrálásához kattintson a **Regisztrálás** elemre.
 
     ![Telepítés helye](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. A **Tároló neve** résznél ellenőrizze a tároló nevét, amelyben a kiszolgálót regisztrálni fogja. Kattintson a **tovább**.
+6. A **Tároló neve** résznél ellenőrizze a tároló nevét, amelyben a kiszolgálót regisztrálni fogja. Kattintson a **Tovább** gombra.
 7. A **Proxykapcsolat** lapon adja meg, hogy a VMM-kiszolgálón futó Provider hogyan csatlakozzon az Azure-hoz.
    - Megadhatja, hogy a Provider közvetlenül vagy proxyn keresztül csatlakozzon az internethez. Szükség szerint adja meg a proxybeállításokat.
    - Ha proxyt használ, a rendszer automatikusan létrehoz egy, a megadott hitelesítő adatokat alkalmazó VMM RunAs-fiókot (DRAProxyAccount). Állítsa be úgy a proxykiszolgálót, hogy ez a fiók elvégezhesse a hitelesítést. A RunAs-fiók beállításait a VMM-konzolban módosíthatja: **Beállítások** > **Biztonság** > **Futtató fiókok**.
@@ -133,18 +132,18 @@ Mielőtt hozzálátna, győződjön meg róla, hogy a szabályzatot használó �
 1. A **Másolás gyakorisága** elemmel meghatározhatja, hogy milyen gyakran szeretné replikálni a módosult adatokat a kezdeti replikációt követően (ez lehet 30 másodperc, 5 perc vagy 15 perc).
 2. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált gépeket az időtartamon belüli bármelyik pontra visszaállíthatja.
 3. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállítás azt határozza meg, hogy milyen gyakran hozzon létre a rendszer alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat (a beállítás értéke 1 és 12 óra között változhat). A Hyper-V kétféle pillanatképet használ:
-    - **A standard pillanatkép**: A teljes virtuális gépet egy növekményes pillanatképet tartalmaz.
-    - **Alkalmazáskonzisztens pillanatkép**: Az a virtuális Gépen található alkalmazásadatok időponthoz pillanatképet. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy az alkalmazások konzisztens állapotban legyenek a pillanatkép készítésekor. Az alkalmazáskonzisztens pillanatképek engedélyezése hatással van az alkalmazások teljesítményére a forrásoldali virtuális gépeken. Ügyeljen rá, hogy a beállított érték kisebb legyen a további beállított helyreállítási pontok számánál.
+    - **Szabványos pillanatkép**: A teljes virtuális gép növekményes pillanatképét biztosítja.
+    - **Alkalmazás-konzisztens pillanatkép**: A virtuális gépen lévő alkalmazásadatok időponthoz való pillanatképét veszi igénybe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy az alkalmazások konzisztens állapotban legyenek a pillanatkép készítésekor. Az alkalmazáskonzisztens pillanatképek engedélyezése hatással van az alkalmazások teljesítményére a forrásoldali virtuális gépeken. Ügyeljen rá, hogy a beállított érték kisebb legyen a további beállított helyreállítási pontok számánál.
 4. A **Tömörített adatátvitel** beállításnál adja meg, hogy tömöríteni kívánja-e az átvitt replikációs adatokat.
 5. A **Virtuális replikagép törlése** beállítással megadhatja, hogy a virtuális replikagép törölhető-e a forrásoldali virtuális gép védelmének letiltása esetén. Ha engedélyezi ezt a beállítást, a forrásoldali virtuális gép védelmének letiltásakor a rendszer eltávolítja azt a Site Recovery konzoljáról, a Site Recovery VMM-beállításai törlődnek a VMM konzoljáról, és a replika is törlődik.
 6. Ha a replikáció a hálózaton keresztül történik, a **Kezdeti replikációs módszer** beállításnál adhatja meg, hogy a replikáció azonnal vagy egy ütemezett időpontban kezdődjön. A sávszélesség megtakarítása érdekében érdemes a műveletet olyankorra ütemezni, amikor kevesen használják az internetet. Ezután kattintson az **OK** gombra.
 
-     ![Replikációs szabályzat](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Replikációs házirend](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Az új szabályzat automatikusan társítva lesz a VMM-felhővel. A **Replikációs szabályzat** elemnél kattintson az **OK** gombra. 
 
 
-## <a name="enable-replication"></a>A replikáció engedélyezése
+## <a name="enable-replication"></a>Replikáció engedélyezése
 
 1. Kattintson az **Alkalmazás replikálása** > **Forrás** elemre. 
 2. A **Forrás** területen válassza ki a VMM-kiszolgálót és a felhőt, amelyben a replikálni kívánt Hyper-V gazdagépek futnak. Ezután kattintson az **OK** gombra.

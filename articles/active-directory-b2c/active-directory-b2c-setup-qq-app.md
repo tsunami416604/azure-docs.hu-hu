@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11fc41374089c0ab7258dd191a255387713836eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 55e4b04814daaaff5bc217a561e9045d313d9675
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622304"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811426"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Egy QQ-fiókkal történő bejelentkezés és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Ha QQ-fiókot szeretne használni Azure Active Directory (Azure AD) B2C-beli ide
 ### <a name="register-for-the-qq-developer-program"></a>Regisztráljon a QQ fejlesztői programra
 
 1. Jelentkezzen be a [QQ fejlesztői portálra](http://open.qq.com) a QQ-fiókja hitelesítő adataival.
-1. Bejelentkezés után lépjen a [http://open.qq.com/reg](http://open.qq.com/reg) következőre: regisztráció fejlesztőként.
+1. Bejelentkezés után lépjen a [https://open.qq.com/reg](https://open.qq.com/reg) következőre: regisztráció fejlesztőként.
 1. Válassza a**个人**(egyéni fejlesztő) lehetőséget.
 1. Adja meg a szükséges adatokat, és válassza a**下一步**(következő lépés) lehetőséget.
 1. Fejezze be az e-mail ellenőrzési folyamatát. A fejlesztőként való regisztrációt követően néhány napot várnia kell a jóváhagyásra.

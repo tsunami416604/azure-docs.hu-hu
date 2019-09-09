@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876366"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814177"
 ---
-# <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése helyileg vagy távolról egy HDInsight-fürtön az SSH-val Azure Toolkit for IntelliJ használatával
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
 Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) HDInsight eszközei az alkalmazások távoli HDInsight-fürtökön való hibakereséséhez. A projekt hibakereséséhez a [HDInsight Spark-alkalmazásokat Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) videóval is megtekintheti.
 
 **Előfeltételek**
-* **Azure Toolkit for IntelliJ HDInsight eszközei**. Ez az eszköz a Azure Toolkit for IntelliJ részét képezi. További információ: [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation). És **Azure Toolkit for IntelliJ**. Ezzel az eszközkészlettel Apache Spark-alkalmazásokat hozhat létre egy HDInsight-fürthöz. További információért kövesse az [Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)-fürthöz való létrehozásához című témakör utasításait.
+* **Azure Toolkit for IntelliJ HDInsight eszközei**. Ez az eszköz a Azure Toolkit for IntelliJ részét képezi. További információ: [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation). És **Azure Toolkit for IntelliJ**. Ezzel az eszközkészlettel Apache Spark-alkalmazásokat hozhat létre egy HDInsight-fürthöz. További információért kövesse az [Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)című témakör utasításait.
 
 * **HDINSIGHT SSH-szolgáltatást felhasználónévvel és jelszó-kezeléssel**. További információ: [Kapcsolódás a HDInsight (Apache Hadoop) az SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és az [SSH-alagút használata a Ambari webes felhasználói felület, a JobHistory, a NameNode, az Apache Oozie és más webes felület eléréséhez](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
  
@@ -118,7 +118,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 
 1. Kattintson a **Leválasztás** gombra, hogy a beküldési naplók ne jelenjenek meg a bal oldali panelen. Azonban továbbra is fut a háttérön.
 
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
+   ![Távoli Futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
 
 
@@ -140,7 +140,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 
    ![Dobási hiba](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png) 
 
-1. Válassza újra a **program folytatása** ikont. A **HDInsight Spark** beküldési ablakában a "sikertelen feladatok futtatása" hibaüzenet jelenik meg.
+1. Válassza újra a **program folytatása** ikont. A **HDInsight Spark beküldési** ablakában a "sikertelen feladatok futtatása" hibaüzenet jelenik meg.
 
    ![Hiba küldése](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png) 
 
@@ -157,7 +157,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 ## <a name="seealso"></a>Következő lépések
 * [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
 
-### <a name="demo"></a>Bemutató
+### <a name="demo"></a>Demó
 * Scala-projekt létrehozása (videó): [Apache Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
 * Távoli hibakeresés (videó): [Apache Spark alkalmazások távoli hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ használatával](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 

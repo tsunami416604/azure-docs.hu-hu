@@ -1,6 +1,6 @@
 ---
 title: Apache Storm Python-összetevőkkel – Azure HDInsight
-description: Megtudhatja, hogyan hozhat létre egy Python-összetevőket használó Apache Storm-topológiát.
+description: Ismerje meg, hogyan hozhat létre olyan Apache Storm topológiát, amely a Python-összetevőket használja az Azure HDInsight-ben
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache Storm Python
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b9faf33734ba17e9912246fe9c5c2ac45c55ba44
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a15506632e90edae235c3d1889603ca4997a3398
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598469"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813897"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm-topológiák fejlesztése a Python használatával a HDInsight-on
 
@@ -37,7 +37,7 @@ A projekt kódja a következő címen érhető el [https://github.com/Azure-Samp
 
 ## <a name="storm-multi-language-support"></a>Multi-Language Storm-támogatás
 
-Apache Storm a programozási nyelv használatával írt összetevőkkel való együttműködésre lett tervezve. Az összetevőknek meg kell érteniük a [Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)-definícióval való munkát. A Python esetében a Apache Storm projekt részeként egy modult biztosítunk, amely lehetővé teszi a Storm használatával történő egyszerű kapcsolódást. A modult itt találja: [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm a programozási nyelv használatával írt összetevőkkel való együttműködésre lett tervezve. Az összetevőknek meg kell érteniük a [Storm-definícióval](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)való munkát. A Python esetében a Apache Storm projekt részeként egy modult biztosítunk, amely lehetővé teszi a Storm használatával történő egyszerű kapcsolódást. A modult itt találja: [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 A Storm egy Java-folyamat, amely a Java virtuális gépon (JVM) fut. A más nyelveken írt összetevők alfolyamatként lesznek végrehajtva. A Storm ezeket az alfolyamatokat a stdin/StdOut-on küldött JSON-üzenetek használatával kommunikál. Az összetevők közötti kommunikációról további részleteket a [multi-lang Protocol](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentációjában talál.
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489840"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814261"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -31,8 +31,8 @@ Az [Eclipse](https://www.eclipse.org/) -hez készült Azure Toolkit HDInsight es
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Spark fürt a HDInsight-on. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Az Oracle Java Development Kit 8-as verziója, amely az Eclipse IDE futtatókörnyezethez használatos. Letöltheti az [Oracle](https://aka.ms/azure-jdks)webhelyéről.
-* Eclipse IDE. Ez a cikk az Eclipse neont használja. Telepítheti az [Eclipse](https://www.eclipse.org/downloads/)webhelyéről.
+* Az Oracle Java Development Kit 8-as verziója, amely az Eclipse IDE futtatókörnyezethez használatos. Letöltheti az [Oracle webhelyéről](https://aka.ms/azure-jdks).
+* Eclipse IDE. Ez a cikk az Eclipse neont használja. Telepítheti az [Eclipse webhelyéről](https://www.eclipse.org/downloads/).
 
 
 
@@ -46,9 +46,9 @@ Az Eclipse megnyitásakor a HDInsight eszköz automatikusan észleli, hogy telep
 
 ![A Scala beépülő modul automatikus telepítése](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
-A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-előfizetésbe, vagy összekapcsolhat [egy HDInsight](#link-a-cluster) -fürtöt a Ambari Felhasználónév/jelszó vagy a tartományhoz csatlakoztatott hitelesítő adatok használatával a kezdéshez. 
+A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-subscription), vagy [összekapcsolhat egy HDInsight-fürtöt](#link-a-cluster) a Ambari Felhasználónév/jelszó vagy a tartományhoz csatlakoztatott hitelesítő adatok használatával a kezdéshez. 
 
-## <a name="sign-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
+## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 1. Indítsa el az Eclipse IDE-t, és nyissa meg az Azure Explorert. Az **ablak** menüben válassza a **nézet megjelenítése**lehetőséget, majd válassza az **egyéb**lehetőséget. A megnyíló párbeszédpanelen bontsa ki az **Azure**elemet, válassza az **Azure Explorer**lehetőséget, majd kattintson **az OK gombra**.
 
    ![Nézet megjelenítése párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/view-explorer-1.png)
@@ -56,12 +56,12 @@ A felhasználó [bejelentkezhet az Azure](#sign-in-to-your-azure-subscription)-e
 1. Az **Azure bejelentkezési** párbeszédpanelen válassza ki a hitelesítési módszert, válassza a **Bejelentkezés**lehetőséget, és adja meg az Azure-beli hitelesítő adatait.
    
    ![Azure-bejelentkezés párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/view-explorer-2.png)
-1. Miután bejelentkezett, az előfizetések **kiválasztása** párbeszédpanel felsorolja a hitelesítő adatokhoz társított összes Azure-előfizetést. A párbeszédpanel bezárásához kattintson a **kiválasztás** gombra.
+1. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja a hitelesítő adatokhoz társított összes Azure-előfizetést. A párbeszédpanel bezárásához kattintson a **kiválasztás** gombra.
 
    ![Előfizetések kiválasztása párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. Az **Azure Explorer** lapon bontsa ki a **HDInsight** elemet, és tekintse meg az előfizetéshez tartozó HDInsight Spark-fürtöket.
    
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![HDInsight Spark-fürtök az Azure Explorer3](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. A fürthöz társított erőforrások (például Storage-fiókok) megtekintéséhez tovább bővítheti a fürt neve csomópontot.
    
    ![A fürt nevének kibontása az erőforrások megjelenítéséhez](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -146,7 +146,7 @@ A Ambari által felügyelt Felhasználónév használatával összekapcsolhatja 
    * Mivel ebben a példában az alkalmazás kódjának nincs szüksége parancssori argumentumokra vagy hivatkozási Tégelyekre vagy fájlokra, a fennmaradó szövegmezőket üresen hagyhatja.
         
      ![Spark beküldése párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
-1. A **Spark** beküldési lapján meg kell kezdeni a folyamat megjelenítését. Az alkalmazás leállításához kattintson a **Spark** beküldési ablakban a vörös gombra. Megtekintheti az adott alkalmazáshoz tartozó naplókat is, ha kiválasztja a földgömb ikont (a képen a kék mező jelzi).
+1. A **Spark beküldési** lapján meg kell kezdeni a folyamat megjelenítését. Az alkalmazás leállításához kattintson a **Spark beküldési** ablakban a vörös gombra. Megtekintheti az adott alkalmazáshoz tartozó naplókat is, ha kiválasztja a földgömb ikont (a képen a kék mező jelzi).
       
    ![Spark-beküldési ablak](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)
 
@@ -197,8 +197,8 @@ A HDInsight-eszközök használatával különböző műveleteket hajthat végre
 ### <a name="manage-azure-subscriptions"></a>Azure-előfizetések kezelése
 Alapértelmezés szerint a HDInsight eszköz a Azure Toolkit for Eclipse felsorolja a Spark-fürtöket az összes Azure-előfizetésből. Ha szükséges, megadhatja azokat az előfizetéseket, amelyekhez el szeretné érni a fürtöt. 
 
-1. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -legfelső szintű csomópontra, majd válassza az előfizetések **kezelése**lehetőséget. 
-1. A párbeszédpanelen törölje a nem kívánt előfizetéshez tartozó jelölőnégyzeteket, majd kattintson a **Bezárás**gombra. A kijelentkezés lehetőséget **is** választhatja, ha ki szeretné jelentkezni az Azure-előfizetésből.
+1. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -legfelső szintű csomópontra, majd válassza az **Előfizetések kezelése**lehetőséget. 
+1. A párbeszédpanelen törölje a nem kívánt előfizetéshez tartozó jelölőnégyzeteket, majd kattintson a **Bezárás**gombra. A kijelentkezés lehetőséget is választhatja, **Ha ki szeretné** jelentkezni az Azure-előfizetésből.
 
 ## <a name="run-a-spark-scala-application-locally"></a>Spark Scala-alkalmazás helyi futtatása
 A Azure Toolkit for Eclipse HDInsight eszközeivel helyileg is futtathat Spark Scala-alkalmazásokat a munkaállomáson. Ezeknek az alkalmazásoknak általában nincs szükségük a fürt erőforrásaihoz, például a tárolóhoz való hozzáféréshez, és a helyileg futtathatja és tesztelheti is azokat.
@@ -235,26 +235,26 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
        
 2. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet az előfizetésében található HDInsight-fürtök megtekintéséhez. A **"szerepkör: olvasó"** jelölésű fürtökön csak a csak olvasási jogosultsággal rendelkező szerepkör jogosult.
 
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![HDInsight Spark-fürtök az Azure Explorer szerepkör-olvasóban](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. Kattintson a jobb gombbal a fürtre, és csak olvasó szerepkörre vonatkozó engedéllyel. Válassza a **fürt csatolása** a helyi menüből lehetőséget a fürt összekapcsolásához. Adja meg a Ambari felhasználónevét és jelszavát.
 
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![HDInsight Spark-fürtök az Azure Explorer-ben – hivatkozás](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. Ha a fürt sikeresen csatolva van, a rendszer frissíti a HDInsight.
    A fürt szakasza csatolva lesz.
   
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![HDInsight Spark-fürtök az Azure Explorerben kapcsolódva](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Fürt csatolása a feladatok csomópont kibontásával
 
-1. Kattintson a **feladatok** csomópontra, majd a **fürthöz való hozzáférés** megtagadva ablakra.
+1. Kattintson a **feladatok** csomópontra, majd a **fürthöz való hozzáférés megtagadva** ablakra.
    
-2. Kattintson **a fürt** összekapcsolása elemre a fürt csatolásához.
+2. Kattintson **a fürt összekapcsolása** elemre a fürt csatolásához.
    
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![HDInsight Spark-fürtök az Azure Explorer9](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>Fürt csatolása a Spark beküldési ablakból
 
@@ -262,7 +262,7 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 2. Kattintson a jobb gombbal a csomagra. Ezután válassza **a Spark-alkalmazás küldése a HDInsight**lehetőséget.
    
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![HDInsight Spark-fürtök az Azure Explorer-ben – küldés](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. Válasszon ki egy olyan fürtöt, amely csak olvasási szerepkörrel rendelkezik a **fürt nevéhez**. Figyelmeztető üzenet jelenik meg. A fürt csatolásához kattintson **a fürt csatolása** lehetőségre.
    
@@ -270,15 +270,15 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
    
 ### <a name="view-storage-accounts"></a>Storage-fiókok megtekintése
 
-* A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés** megtagadva ablakra. 
+* A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés megtagadva** ablakra. 
      
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![HDInsight Spark-fürtök az Azure Explorer Storage-ban](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![HDInsight Spark-fürtök az Azure Explorerben megtagadva](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
-* A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület-hozzáférés megtagadva ablak jelenik meg. 
+* A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület- **hozzáférés megtagadva** ablak jelenik meg. 
      
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![HDInsight Spark-fürtök az Azure Explorer denied2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>Ismert problémák
 Fürt csatolásakor azt javasoljuk, hogy adja meg a tárterület hitelesítő adatait.
@@ -287,9 +287,9 @@ Fürt csatolásakor azt javasoljuk, hogy adja meg a tárterület hitelesítő ad
 
 Két mód van a feladatok elküldésére. Ha megadja a tárolási hitelesítő adatokat, a rendszer a kötegelt módot használja a feladatok elküldéséhez. Ellenkező esetben az interaktív mód lesz használatban. Ha a fürt foglalt, előfordulhat, hogy az alábbi hibaüzenet jelenik meg.
 
-![Eclipse Get hiba, ha a fürt foglalt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+![Eclipse Get hiba, ha a fürt foglalt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "Eclipse Get hiba, ha a fürt foglalt")
 
-![Eclipse Get hiba, ha a fürt foglalt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+![Eclipse Get hiba, ha a fürt foglalt fonala](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Eclipse Get hiba, ha a fürt foglalt fonala")
 
 ## <a name="seealso"></a>Lásd még:
 * [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)

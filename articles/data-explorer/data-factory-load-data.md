@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Data Factory az Azure Data Explorer
-description: Ebben a témakörben elsajátíthatja (betöltés) adatok betöltését az adatkezelőt az Azure-bA az Azure Data Factory másolás eszköz használatával
+title: Adatok másolása Azure Data Factoryból az Azure-ba Adatkezelő
+description: Ebben a témakörben bemutatjuk, hogyan tölthetők be (betöltési) adatai az Azure Adatkezelőba Azure Data Factory másolási eszköz használatával
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,182 +8,186 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657531"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803980"
 ---
-# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása az Azure az adatkezelőt az Azure Data Factory használatával 
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatmásolás az Azure Adatkezelőba Azure Data Factory használatával 
 
-Az Azure Data Explorer egy gyors, teljes körűen felügyelt elemzési szolgáltatás adatstreamelési számos más forrásból, például alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű valós idejű elemzés céljából. Iteratív elemezheti adatait, és azonosítja a mintákat és rendellenességeket termékek javítása, növelje a vásárlói élményt, eszközök figyelését, és növeli a műveleteket. Új kérdéseket tehet fel, amelyekre percek alatt választ kaphat. Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás az. A szolgáltatás segítségével az Azure Data Explorer adatbázis adatok feltöltéséhez a meglévő rendszerről és időt takaríthat meg az elemzési megoldások készítése során.
+Az Azure Adatkezelő egy gyors, teljes körűen felügyelt adatelemzési szolgáltatás, amellyel a nagy mennyiségű adatfolyamot, többek között az alkalmazásokat, webhelyeket és IoT-eszközöket is valós időben elemezheti. Iteratív az adatok feltárására és a minták és rendellenességek azonosítására a termékek fejlesztése, a felhasználói élmény fokozása, az eszközök monitorozása és a műveletek fokozása érdekében. Új kérdéseket tehet fel, amelyekre percek alatt választ kaphat. A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás. A szolgáltatással feltöltheti Azure Adatkezelő adatbázisát a meglévő rendszerből származó adatokkal, és időt takaríthat meg az elemzési megoldások kiépítésekor.
 
-Az Azure Data Factory az adatok betöltését az Azure az adatkezelőt az alábbi előnyöket biztosítja:
+Azure Data Factory a következő előnyöket nyújtja az Azure Adatkezelőba való betöltéshez:
 
-* **Könnyű beállítás**: Egy intuitív öt lépés varázsló nem parancsfájl-szükséges.
-* **Számos adattároló támogatási**: A helyszíni és felhőalapú adattárak számos beépített támogatása. Részletes listáját, tekintse meg a fenti táblázat [támogatott adattárak](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats).
-* **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute adatokat továbbítja. A szolgáltatás globális jelenlét biztosítja, hogy az adatok a földrajzi határ sosem hagyja el.
-* **Nagy teljesítményű**: Legfeljebb 1 GB/s adatok betöltési sebesség az adatkezelőt az Azure-bA. További információkért lásd: [másolási tevékenység](/azure/data-factory/copy-activity-performance).
+* **Egyszerűen beállítható**: Egy olyan intuitív, öt lépésből álló varázsló, amely nem igényel parancsfájlt.
+* **Rich adattár-támogatás**: Beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez. Részletes listát a [támogatott adattárakkal](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)foglalkozó táblázatban talál.
+* **Biztonságos és megfelelő**: Az adatátvitel HTTPS-vagy ExpressRoute keresztül történik. A globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt.
+* **Nagy teljesítmény**: Akár 1 GB/s betöltési sebesség az Azure Adatkezelőba. Részletekért lásd: [másolási tevékenység teljesítménye](/azure/data-factory/copy-activity-performance).
 
-Ez a cikk bemutatja, hogyan adatok betöltése az Amazon S3 az Adatkezelőben az Azure Data Factory az adatok másolása eszköz használatával. Például adatok másolása más adattárakban hasonló lépéseket követnie [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage), [Azure SQL Database](/azure/data-factory/connector-azure-sql-database), [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse), [Google BigQuery](/azure/data-factory/connector-google-bigquery),[Oracle](/azure/data-factory/connector-oracle), és [fájlrendszer](/azure/data-factory/connector-file-system).
+Ez a cikk bemutatja, hogyan tölthetők be az Amazon S3-ből származó adatok az Data Factory Adatok másolása eszközzel az Azure Adatkezelőba. Az adatok más adattárakból (például [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage), [Azure SQL Database](/azure/data-factory/connector-azure-sql-database), [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse), [Google BigQuery](/azure/data-factory/connector-google-bigquery),[Oracle](/azure/data-factory/connector-oracle)és [fájlrendszerből](/azure/data-factory/connector-file-system)) történő másolásához hasonló lépéseket is követheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Az Azure Data Explorer fürt és adatbázis](create-cluster-database-portal.md)
-* Adatok forrását.
+* [Azure Adatkezelő-fürt és-adatbázis](create-cluster-database-portal.md)
+* Adatforrás.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
-1. Válassza ki a **erőforrás létrehozása** (+) gombot a portál bal felső sarkában > **Analytics** > **adat-előállító**.
+1. Válassza az **erőforrás létrehozása** gombot (+) a portál bal felső sarkában > **Analytics** > **Data Factory**.
 
    ![Új adat-előállító létrehozása](media/data-factory-load-data/create-adf.png)
 
-1. Az a **új adat-előállító** lap, adja meg az alábbi mezők értékeit, majd **létrehozás**.
+1. Az **új adat-előállító** lapon adja meg a következő mezők értékeit, majd válassza a **Létrehozás**lehetőséget.
 
     ![Új adat-előállító lap](media/data-factory-load-data/my-new-data-factory.png)
 
     **Beállítás**  | **Mező leírása**
     |---|---|
-    | **Name** | Adja meg a data Factory egy globálisan egyedi nevet. Ha a hibaüzenet *"adat-előállító nevét \"LoadADXDemo\" nem érhető el"* , adja meg a data Factory egy másik nevet. A Data Factory-összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályait](/azure/data-factory/naming-rules).|
-    | **Előfizetés** | Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. |
-    | **Erőforráscsoport** | Válassza ki **új létrehozása** , és adja meg egy új erőforráscsoport nevét. Válassza ki **meglévő**, ha rendelkezik egy meglévő erőforráscsoportot. |
-    | **Verzió** | Válassza ki **V2** |
-    | **Location** | Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak lehetnek más helyével vagy régiójával. |
+    | **Name** | Adja meg az adatelőállító globálisan egyedi nevét. Ha *" \"a LoadADXDemo\" nem érhető el"* hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Data Factory összetevők elnevezési szabályait lásd: [Data Factory elnevezési szabályok](/azure/data-factory/naming-rules).|
+    | **Előfizetés** | Válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. |
+    | **Erőforráscsoport** | Válassza az **új létrehozása** lehetőséget, és adja meg egy új erőforráscsoport nevét. Ha rendelkezik meglévő erőforráscsoporthoz, válassza a **meglévő használata**lehetőséget. |
+    | **Verzió** | **V2** kiválasztása |
+    | **Location** | Válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adatfeldolgozó által használt adattárak más helyszíneken vagy régiókban is lehetnek. |
     | | |
 
-1. Válassza ki az értesítéseket az eszköztáron a létrehozási folyamat megfigyeléséhez. Létrehozás befejezése után nyissa meg a létrehozott adat-előállítót. A **adat-előállító** kezdőlapjának megnyitása.
+1. A létrehozási folyamat figyeléséhez válassza az értesítések lehetőséget az eszköztáron. A létrehozás befejezése után nyissa meg a létrehozott adatelőállítót. Megnyílik a **Data Factory** kezdőlapja.
 
    ![Data factory kezdőlap](media/data-factory-load-data/data-factory-home-page.png)
 
-1. Válassza ki a **létrehozás és Monitorozás** csempére kattintva indítsa el az alkalmazás külön lapon.
+1. Válassza a **szerző & figyelés** csempét az alkalmazás külön lapon történő elindításához.
 
-## <a name="load-data-into-azure-data-explorer"></a>Adatok betöltése az Azure Data Explorer
+## <a name="load-data-into-azure-data-explorer"></a>Betöltés az Azure Adatkezelőba
 
-Lehet adatokat betölteni a számos különböző típusú [adattárak](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) az adatkezelőt az Azure-bA. Ez a témakör ismerteti az adatok betöltésekor az Amazon S3-ból.
+Az adatok számos különböző típusú [adattárból](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) tölthetők be az Azure Adatkezelőba. Ez a témakör az Amazon S3-ból származó adatok betöltését ismerteti.
 
-Az adatok betöltése az Azure Data Factory használatával az Azure Data Explorer két módja van:
+Az Azure-Adatkezelő kétféleképpen tölthetők be a Azure Data Factory használatával:
 
-* Az Azure Data Factory felhasználói felületének - [ **Szerző** lap](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-* [Az Azure Data Factory **adatok másolása** eszköz](/azure/data-factory/quickstart-create-data-factory-copy-data-tool) a cikk ezt használja.
+* Azure Data Factory felhasználói felület – [ **Szerző** lap](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
+* A cikkben használt [Azure Data Factory **adatok másolása** eszköz](/azure/data-factory/quickstart-create-data-factory-copy-data-tool) .
 
-### <a name="copy-data-from-amazon-s3-source"></a>Adatok másolása az Amazon S3 (forrás)
+### <a name="copy-data-from-amazon-s3-source"></a>Adatok másolása az Amazon S3-ból (forrás)
 
-1. Az a **első lépések** lapon válassza ki a **adatok másolása** csempére, hogy az adatok másolása eszköz elindításához.
+1. Az **első lépések** oldalon válassza a **adatok másolása** csempét a adatok másolása eszköz elindításához.
 
-   ![Adatok másolása eszköz csempéje](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![Adatmásolási eszköz csempe](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. Az a **tulajdonságok** adja meg azokat **feladat neve** válassza **tovább**.
+1. A **Tulajdonságok** lapon adja meg a **feladat nevét** , majd kattintson a **Tovább gombra**.
 
-    ![Másolja ki a forrás tulajdonságai](media/data-factory-load-data/copy-from-source.png)
+    ![Másolás forrás tulajdonságaiból](media/data-factory-load-data/copy-from-source.png)
 
-1. Az a **forrásadattár** kattintson **+ új kapcsolat létrehozása**.
+1. A **forrás adattár** lapon kattintson az **+ új kapcsolatok létrehozása**lehetőségre.
 
-    ![Forrásadatok kapcsolat létrehozása](media/data-factory-load-data/source-create-connection.png)
+    ![Adatforrás-létrehozási kapcsolatok](media/data-factory-load-data/source-create-connection.png)
 
-1. Válassza ki **Amazon S3**, majd válassza ki **Folytatás**
+1. Válassza ki az **Amazon S3**elemet, majd válassza a **Folytatás** lehetőséget.
 
     ![Új társított szolgáltatás](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. Az a **új társított szolgáltatás (Amazon S3)** lapon, tegye a következőket:
+1. Az **új társított szolgáltatás (Amazon S3)** oldalon hajtsa végre a következő lépéseket:
 
-    ![Adja meg az Amazon S3-beli társított szolgáltatás](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
+    ![Az Amazon S3 társított szolgáltatásának meghatározása](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    * Adja meg **neve** az új társított szolgáltatás.
-    * Válassza ki **csatlakozás integrációs modulon keresztül** értéket a legördülő listából.
-    * Adja meg a **elérési kulcs Azonosítóját** értéket.
-    * Adja meg a **titkos elérési kulcsát** értéket.
-    * Válassza ki **kapcsolat tesztelése** létrehozta a társított szolgáltatás kapcsolatának teszteléséhez.
+    * Adja meg az új társított szolgáltatás **nevét** .
+    * A legördülő listából válassza a **Csatlakozás az Integration Runtime** értékével lehetőséget.
+    * Itt adhatja meg a **hozzáférési kulcs azonosítójának** értékét.
+    * A **titkos hozzáférési kulcs** értékének megadása.
+    * Válassza a **kapcsolat tesztelése** lehetőséget a létrehozott társított szolgáltatás kapcsolatának teszteléséhez.
     * Válassza a **Finish** (Befejezés) elemet.
 
-1. Az a **forrásadattár** lapon látni fogja az új AmazonS31 kapcsolat. Kattintson a **Tovább** gombra.
+1. A **forrás adattár** lapon láthatja az új AmazonS31-kapcsolatokat. Kattintson a **Tovább** gombra.
 
-   ![Forrásadatok tárolja a kapcsolat létrehozása](media/data-factory-load-data/source-data-store-created-connection.png)
+   ![Forrás adattár létrehozott kapcsolatai](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. Az a **a bemeneti fájl vagy mappa kiválasztása** oldalon:
+1. A **bemeneti fájl vagy mappa kiválasztása** oldalon:
 
-    1. Keresse meg a másolni kívánt mappát vagy fájlt. Válassza ki a mappát vagy fájlt.
-    1. Válassza ki a másolási viselkedés szükség szerint. Tartsa **bináris másolat** nincs bejelölve.
+    1. Keresse meg a másolni kívánt mappát vagy fájlt. Válassza ki a mappát vagy a fájlt.
+    1. Szükség szerint válassza ki a másolási viselkedést. A **bináris másolat** megtartása nincs bejelölve.
     1. Kattintson a **Tovább** gombra.
 
     ![Bemeneti fájl vagy mappa kiválasztása](media/data-factory-load-data/source-choose-input-file.png)
 
-1. Az a **fájlformátum beállításai** oldalon válassza ki a fájlt, majd kattintson a megfelelő beállításainak **tovább**.
+1. A **fájlformátumok beállításai** lapon válassza ki a fájlhoz tartozó beállításokat, és kattintson a **tovább**gombra.
 
    ![Bemeneti fájl vagy mappa kiválasztása](media/data-factory-load-data/source-file-format-settings.png)
 
-### <a name="copy-data-into-azure-data-explorer-destination"></a>Adatok másolása az Azure Data Explorer (cél)
+### <a name="copy-data-into-azure-data-explorer-destination"></a>Adatmásolás az Azure Adatkezelőba (cél)
 
-Az Azure Data Explorer új társított szolgáltatás másolja az adatokat az Azure Data Explorer céltáblázatba történő (tárolóba fogadó), az alább megadott kell létrehozni.
+Az Azure Adatkezelő új társított szolgáltatás jön létre, hogy átmásolja az adatfájlokat az alább megadott Azure Adatkezelő céltáblaba (fogadóba).
 
-1. Az a **célként megadott adattárba** , válassza egy meglévő data kapcsolat tárolására, vagy adjon meg egy új adattároló kattintva **+ új kapcsolat létrehozása**.
+#### <a name="create-the-azure-data-explorer-linked-service"></a>Az Azure Adatkezelő társított szolgáltatás létrehozása
+
+1. A **cél adattár** lapon meglévő adattár-kapcsolatokat használhat, vagy megadhat egy új adattárat az **+ új kapcsolatok létrehozása**lehetőségre kattintva.
 
     ![Céladattár lap](media/data-factory-load-data/destination-create-connection.png)
 
-1. Az a **új társított szolgáltatás** lapon jelölje be **Azure adatkezelő**, majd válassza ki **Folytatás**
+1. Az **új társított szolgáltatás** lapon válassza az **Azure adatkezelő**lehetőséget, majd kattintson a **Folytatás** gombra.
 
-    ![Válassza ki az Azure Data Explorer – új társított szolgáltatás](media/data-factory-load-data/adx-select-new-linked-service.png)
+    ![Válassza az Azure Adatkezelő – új társított szolgáltatás elemet](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. Az a **új társított szolgáltatás (Azure Data Explorer)** lapon, tegye a következőket:
+1. Az **új társított szolgáltatás (Azure adatkezelő)** lapon hajtsa végre a következő lépéseket:
 
-    ![Új társított szolgáltatás ADX](media/data-factory-load-data/adx-new-linked-service.png)
+    ![ADX új társított szolgáltatás](media/data-factory-load-data/adx-new-linked-service.png)
 
-   * Válassza ki **neve** az Adatkezelőben az Azure-beli társított szolgáltatást.
-   * A **kijelöléséről fiók**: 
-        * Válassza ki a **az Azure-előfizetés** választógombot, és válassza ki a **Azure-előfizetés** fiókot. Ezután válassza ki a **fürt**. Megjegyzés: a listában csak fürtök listázása a felhasználóhoz tartozó lesz.
-        * Jelölje ki **adja meg manuálisan** választógombot, és adja meg a **végpont**.
-    * Adja meg a **bérlői**.
-    * Adja meg **résztvevő-azonosító szolgáltatás**.
-    * Válassza ki **szolgáltatásnév kulcsát** gombra, és adja meg **szolgáltatásnév kulcsát**.
-    * Válassza ki a **adatbázis** a legördülő menüből. Jelölje ki **szerkesztése** jelölőnégyzetet, és adja meg az adatbázis nevét.
-    * Válassza ki **kapcsolat tesztelése** létrehozta a társított szolgáltatás kapcsolatának teszteléséhez. Ha a telepítés, egy zöld pipa csatlakozhat **sikeres csatlakozás** jelenik meg.
-    * Válassza ki **Befejezés** társított szolgáltatás létrehozásához.
+   * Válassza ki az Azure Adatkezelő társított szolgáltatás **nevét** .
+   * A **fiók kiválasztási módszere**: 
+        * Válassza az **Azure-előfizetések** választógombot, és válassza ki az **Azure-előfizetési** fiókját. Ezután válassza ki a **fürtöt**. Vegye figyelembe, hogy a legördülő lista csak a felhasználóhoz tartozó fürtöket sorolja fel.
+        * Választhatja azt is, hogy a **manuálisan** választógombot adja meg, és adja meg a **végpontot**.
+    * A **bérlő**meghatározása.
+    * Adja meg az **egyszerű szolgáltatásnév azonosítóját**.
+    * Válassza ki az **egyszerű szolgáltatásnév** gombot, és adja meg az **egyszerű szolgáltatásnév kulcsát**.
+    * Válassza ki az **adatbázist** a legördülő menüből. Másik lehetőségként válassza a **Szerkesztés** jelölőnégyzetet, és adja meg az adatbázis nevét.
+    * Válassza a **kapcsolat tesztelése** lehetőséget a létrehozott társított szolgáltatás kapcsolatának teszteléséhez. Ha csatlakozni tud a telepítőhöz, akkor a zöld pipa- **kapcsolat sikeresen** megjelenik.
+    * Válassza a **Befejezés** lehetőséget a társított szolgáltatás létrehozásának befejezéséhez.
 
     > [!NOTE]
-    > Egyszerű szolgáltatás Azure Data Factory használják az Azure Data Explorer szolgáltatás eléréséhez. Az egyszerű szolgáltatásnév [egyszerű szolgáltatás létrehozása az Azure Active Directory (Azure AD)](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Ne használja a **Azure Key Vault** metódust.
+    > Az egyszerű szolgáltatásnevet a Azure Data Factory használja az Azure Adatkezelő szolgáltatás eléréséhez. Az egyszerű szolgáltatásnév esetében [hozzon létre egy Azure Active Directory (Azure ad) egyszerű szolgáltatást](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Ne használja a **Azure Key Vault** metódust.
 
-1. A **célként megadott adattárba** nyílik meg. Az Azure Data Explorer létrehozott kapcsolat érhető el használatra. Válassza ki **tovább** a kapcsolat konfigurálásához.
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>Az Azure Adatkezelő adatkapcsolatok konfigurálása
 
-    ![ADX célként megadott adattárba](media/data-factory-load-data/destination-data-store.png)
+1. Megnyílik a **célhely adattára** . A létrehozott Azure Adatkezelő-adatcsatlakozás elérhető. A kapcsolódás konfigurálásához kattintson a **tovább** gombra.
 
-1. A **tábla hozzárendelése**, állítsa be a cél tábla nevét, és válassza ki **tovább**.
+    ![ADX célhelyének adattára](media/data-factory-load-data/destination-data-store.png)
 
-    ![Cél adatkészlet tábla hozzárendelése](media/data-factory-load-data/destination-dataset-table-mapping.png)
+1. A **táblázat-hozzárendelés**területen állítsa be a céltábla nevét, és kattintson a **Tovább gombra**.
 
-1. Az a **oszlopleképezés** oldalon:
-    * Az első leképezés ADF a következők szerint végzi [ADF séma hozzárendelése](/azure/data-factory/copy-activity-schema-and-type-mapping)
-        * Állítsa be a **oszlop-hozzárendelések** az Azure Data Factory céloldali tábla. Az alapértelmezett leképezést forrásból jelenik meg az ADF céltáblában.
-        * Törölje az oszlopokat, amelyeket nem kell az oszlop-hozzárendelés meghatározása.
-    * A második leképezés következik be, amikor a táblázatos adatok Azure Data Explorer be lett töltve. Leképezés a következők szerint történik [CSV-leképezési szabályok](/azure/kusto/management/mappings#csv-mapping). Vegye figyelembe, hogy akkor is, ha a forrásadatok nem CSV formátumban, ADF rendelkezik konvertálni az adatokat egy táblázatos formátumra, leképezés CSV ezért ezen a ponton csak megfelelő leképezés.
-        * A **Azure Data Explorer (Kusto) fogadó tulajdonságok** adja hozzá a megfelelő **Adatbetöltési megfeleltetés neve** (nem kötelező) úgy, hogy az oszlop-hozzárendelés is használható.
-        * Ha **Adatbetöltési megfeleltetés neve** nincs megadva, meghatározott "by-name" leképezési rendelés **oszlop-hozzárendelések** szakaszban történik. Ha "by-name" leképezés nem sikerül, Azure adatkezelő megpróbálja betöltheti az adatokat (maps által-pozíciója az alapértelmezett) "oszlop alapján pozíciója" sorrendben.
+    ![Cél adatkészlet tábla leképezése](media/data-factory-load-data/destination-dataset-table-mapping.png)
+
+1. Az **oszlop-hozzárendelés** oldalon:
+    * Az első leképezést az ADF az [ADF-séma leképezése](/azure/data-factory/copy-activity-schema-and-type-mapping) alapján végzi el
+        * Adja meg az Azure Data Factory céltábla **oszlop-hozzárendeléseit** . Az alapértelmezett leképezés a forrástól az ADF-cél tábláig jelenik meg.
+        * Törölje azokat az oszlopokat, amelyek nem szükségesek az oszlopok leképezésének definiálásához.
+    * A második leképezés akkor fordul elő, ha a táblázatos adatokat betöltik az Azure Adatkezelőba. A leképezés a [CSV-megfeleltetési szabályoknak](/azure/kusto/management/mappings#csv-mapping)megfelelően lett elvégezve. Vegye figyelembe, hogy még akkor is, ha a forrásadatok nem CSV formátumúak, az ADF táblázatos formátumba alakította át az adatokat, ezért a CSV-megfeleltetés az egyetlen releváns leképezés ebben a fázisban.
+        * Az **Azure adatkezelő (Kusto)** alatt a fogadó tulajdonságainál adja meg a megfelelő betöltési **leképezés nevét** (nem kötelező), hogy az oszlopok leképezése használható legyen.
+        * Ha nincs megadva a betöltési **leképezés neve** , az **oszlop-hozzárendelések** szakaszban megadott "Name" leképezési sorrend fog történni. Ha a "név szerinti" leképezés nem sikerül, az Azure Adatkezelő megpróbálja bevenni az adatot az "oszlop szerinti pozíció" sorrendben (az alapértelmezett leképezések szerint).
     * Kattintson a **Tovább** gombra.
 
-    ![Cél adatkészlet oszlop-hozzárendelés](media/data-factory-load-data/destination-dataset-column-mapping.png)
+    ![Cél adatkészlet oszlopának leképezése](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
 1. A **Beállítások** lapon:
-    * Állítsa be a megfelelő **tűrését tartalék**.
-    * **Teljesítménybeállítások**: Előkészítés engedélyezése nem alkalmazható. **Speciális beállítások** költség szempontok közé tartozik. Hagyja üresen, ha nem adott meg kell.
+    * Adja meg a megfelelő **hibatűrési beállításokat**.
+    * **Teljesítmény beállításai**: Az előkészítés engedélyezése nem alkalmazható. A **Speciális beállítások** közé tartoznak a díjszabási szempontok. Ha nem rendelkezik konkrét igényekkel, hagyja ki.
     * Kattintson a **Tovább** gombra.
 
-    ![Adatok beállítások másolása](media/data-factory-load-data/copy-data-settings.png)
+    ![Adatbeállítások másolása](media/data-factory-load-data/copy-data-settings.png)
 
-1. A **összefoglalás**, tekintse át a beállításokat, és válassza ki **tovább**.
+1. Az **Összefoglalás**lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
 
-    ![Összefoglaló adatok másolása](media/data-factory-load-data/copy-data-summary.png)
+    ![Adatmásolás összefoglalása](media/data-factory-load-data/copy-data-summary.png)
 
-1. Az a **üzembe helyezés lap**:
-    * Válassza ki **figyelő** váltson át a **figyelő** lapra, és megnézheti az állapotukat, a folyamat (folyamatban, a hibák és az adatok folyamat).
-    * Válassza ki **folyamat szerkesztése** társított szolgáltatások, adatkészletek és folyamatok szerkesztéséhez.
-    * Válassza ki **Befejezés** teljes másolatának adatait tevékenységhez
+1. A **központi telepítés lapon**:
+    * Válassza a **figyelő** lehetőséget a **figyelő** lapra váltáshoz, és tekintse meg a folyamat állapotát (folyamat, hibák és adatfolyamok).
+    * Válassza a **folyamat szerkesztése** lehetőséget a társított szolgáltatások, adatkészletek és folyamatok szerkesztéséhez.
+    * Válassza a **Befejezés** lehetőséget az adatok másolása feladat befejezéséhez
 
     ![Üzembe helyezés lap](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Azure adatkezelő összekötő](/azure/data-factory/connector-azure-data-explorer) az Azure Data Factoryban.
+* Ismerkedjen meg a Azure Data Factory [Azure adatkezelő-összekötővel](/azure/data-factory/connector-azure-data-explorer) .
 
-* További tudnivalók a társított szolgáltatások, adatkészletek és folyamatok a szerkesztését a [Data Factory felhasználói felülete](/azure/data-factory/quickstart-create-data-factory-portal).
+* További információ a társított szolgáltatások, adatkészletek és folyamatok szerkesztéséről a [Data Factory felhasználói felületen](/azure/data-factory/quickstart-create-data-factory-portal).
 
-* Ismerje meg [Azure adatkezelő lekérdezések](/azure/data-explorer/web-query-data) adatok lekérdezéséhez.
+* Ismerje meg az Azure Adatkezelő Adatlekérdezési [lekérdezéseit](/azure/data-explorer/web-query-data) .

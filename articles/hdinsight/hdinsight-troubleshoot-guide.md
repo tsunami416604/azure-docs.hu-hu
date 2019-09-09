@@ -6,12 +6,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 096a8f221313b9dfa3e0fe804a10fc12246177ff
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6c0dc61cac96037406b165d7ebee693bfe709c5d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575725"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811749"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Hibák az Azure HDInsight használatával
 
@@ -32,3 +32,13 @@ ms.locfileid: "69575725"
 | Naplók és memóriaképek | - [Hozzáférési Apache Hadoop a FONALat futtató alkalmazások naplóihoz Linux rendszeren](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Halom-memóriaképek engedélyezése a Linuxon futó Apache Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)|
 | Hibák | - [Webhcaten-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory-hiba elhárításának Apache Hive beállításai](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Eszközök | - [Apache Hive lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ eszköz](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse eszköz](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode eszköz](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio-eszköz](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+
+## <a name="next-steps"></a>További lépések
+
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -1,9 +1,9 @@
 ---
-title: Az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat létrehozása az Azure Active Directory - a PIM |} A Microsoft Docs
-description: Ismerje meg az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat létrehozása az Azure AD Privileged Identity Management (PIM).
+title: Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-Azure Active Directoryban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre hozzáférési felülvizsgálatot az Azure Resource roles szolgáltatásban Azure AD Privileged Identity Management (PIM) alkalmazásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,66 +12,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 04/29/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476271"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804156"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat létrehozása
+# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-ben
 
-Az alkalmazottak a kiemelt Azure-erőforrásszerepkörök hozzáférést változik az idő múlásával. Elavult szerepkör-hozzárendeléseit a kockázatának csökkentése érdekében rendszeresen ellenőrizzék a hozzáférést. Használhatja az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) hozhat létre a hozzáférési felülvizsgálatok az Azure-erőforrásszerepkörök emelt szintű. Ismétlődő a hozzáférési felülvizsgálatok automatikusan is konfigurálhatja.
+A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférés az alkalmazottak számára időbeli változásokkal. Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az emelt szintű Azure-erőforrás-szerepkörökhöz. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek.
 
-Ez a cikk ismerteti, hogyan hozhat létre kiemelt Azure-erőforrások szerepköreihez tartozó egy vagy több hozzáférési felülvizsgálatok.
+Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot a Kiemelt Azure-beli erőforrás-szerepkörökhöz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [A kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+- [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-## <a name="open-access-reviews"></a>Nyissa meg a hozzáférési felülvizsgálatok
+## <a name="open-access-reviews"></a>Hozzáférési felülvizsgálatok megnyitása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely a kiemelt szerepkörű rendszergazda szerepkör tagja.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a Kiemelt szerepkörű rendszergazda szerepkörnek.
 
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. A bal oldali menüben kattintson a **Azure-erőforrások**.
+1. A bal oldali menüben kattintson az **Azure-erőforrások**elemre.
 
-1. Kattintson az erőforrás szeretne felügyelni, mint például egy előfizetést vagy felügyeleti csoportot.
+1. Kattintson a kezelni kívánt erőforrásra, például egy előfizetésre vagy egy felügyeleti csoportra.
 
-1. Kattintson a kezelés, **hozzáférési felülvizsgálatokkal**.
+1. A kezelés alatt kattintson a **hozzáférési felülvizsgálatok**elemre.
 
-    ![Azure-erőforrás - hozzáférési felülvizsgálatok listáját megjelenítő az összes értékelést állapotát](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Azure-erőforrások – hozzáférési felülvizsgálatok listája az összes felülvizsgálat állapotának megjelenítéséhez](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
 
-## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat indítása
+## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat elindítása
 
-Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
+Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**gombra. A hozzáférési felülvizsgálat megjelenik a listában az állapotának jelzésével.
 
-![A hozzáférési felülvizsgálatok listáját megjelenítő lépésekhez tekintse át az állapotát](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![Az elindított felülvizsgálati állapotot megjelenítő hozzáférési felülvizsgálatok listája](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
-Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [tekintse át az Azure-erőforrásszerepkörök hozzáférést](pim-resource-roles-perform-access-review.md).
+Alapértelmezés szerint az Azure AD egy e-mailt küld a felülvizsgálók számára röviddel a felülvizsgálat elindítása után. Ha úgy dönt, hogy nem szeretné elküldeni az Azure AD-t az e-mail-címre, tájékoztassa a véleményezőket arról, hogy a hozzáférési felülvizsgálat a befejezésre vár. Megtekintheti azokat az utasításokat, amelyekkel [áttekintheti az Azure-erőforrás szerepköreinek elérését](pim-resource-roles-perform-access-review.md).
 
 ## <a name="manage-the-access-review"></a>A hozzáférési felülvizsgálat kezelése
 
-Követheti a folyamat állapotát, a felülvizsgálók a legteljesebb körű áttekintette a **áttekintése** a hozzáférési felülvizsgálat lapján. Nincs hozzáférési jogosultsága a könyvtárban, amíg nem módosítják a [felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md).
+Nyomon követheti a folyamat előrehaladását, mivel a felülvizsgálók a hozzáférési felülvizsgálat **Áttekintés** lapján tölthetik le az értékeléseket. A címtárban nem módosulnak hozzáférési jogosultságok, amíg a felülvizsgálat be nem [fejeződik](pim-resource-roles-complete-access-review.md).
 
-![Hozzáférési felülvizsgálat részleteit megjelenítő áttekintés lap](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![A felülvizsgálat részleteit megjelenítő hozzáférési felülvizsgálatok áttekintése lap](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
-Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [fejezze be a hozzáférési felülvizsgálatok az Azure-erőforrásszerepkörök](pim-resource-roles-complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
+Ha ez egy egyszeri felülvizsgálat, akkor a hozzáférési felülvizsgálati időszak lejárta után, vagy a rendszergazda leállítja a hozzáférési felülvizsgálatot, kövesse az [Azure-erőforrás-szerepkörök hozzáférési felülvizsgálatának befejezése](pim-resource-roles-complete-access-review.md) az eredmények megtekintéséhez és alkalmazásához című témakör lépéseit.  
 
-Kezelheti a hozzáférést egy sorozatát értékelések, keresse meg a hozzáférési felülvizsgálatot, és hoz közelgő események keresése az ütemezett ellenőrzések, és módosítsa a záró dátumot vagy hozzáadása/eltávolítása felülvizsgálóknak annak megfelelően.
+A hozzáférési felülvizsgálatok sorozatának kezeléséhez navigáljon a hozzáférési felülvizsgálathoz, és keresse meg az ütemezett felülvizsgálatok közelgő eseményeit, és szerkessze a befejezési dátumot, vagy adja hozzá/távolítsa el a felülvizsgálók ennek megfelelően.
 
-A beállításokat az alapján **befejezést követő művelet beállításai**, automatikus alkalmazása lesz a felülvizsgálat záró dátuma, vagy ha manuálisan leállítja a felülvizsgálatot követően hajtható végre. A felülvizsgálat állapota változik **befejezve** például köztes állapotok keresztül **alkalmazása** végül állapotba **alkalmazott**. Tekintse meg a letiltott felhasználók, ha van ilyen távolít el szerepköröket néhány perc alatt kell látnia.
+A **befejezési beállításokban megadott beállítások**alapján az automatikus alkalmazás a felülvizsgálat befejezési dátuma vagy a felülvizsgálat manuális leállítása után lesz végrehajtva. A felülvizsgálat állapota a **befejezéstől** kezdve a közbenső állapotok, például az **alkalmazás** és végül az állapot **alkalmazásával változik.** A megtagadott felhasználókat, ha vannak ilyenek, néhány percen belül el kell távolítani a szerepkörökből.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure-erőforrásszerepkörök hozzáférés felülvizsgálata](pim-resource-roles-perform-access-review.md)
-- [Az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md)
-- [Az Azure AD-szerepkörök hozzáférési felülvizsgálat létrehozása](pim-how-to-start-security-review.md)
+- [Az Azure-erőforrás szerepköreihez való hozzáférés áttekintése](pim-resource-roles-perform-access-review.md)
+- [Azure-erőforrás-szerepkörök hozzáférési felülvizsgálatának befejezése](pim-resource-roles-complete-access-review.md)
+- [Azure AD-szerepkörök hozzáférési felülvizsgálatának létrehozása](pim-how-to-start-security-review.md)

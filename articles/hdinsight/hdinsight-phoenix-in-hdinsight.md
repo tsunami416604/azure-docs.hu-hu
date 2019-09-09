@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: f07c7b7a6b1eea05ba41a875e9e78f31404c5f32
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733204"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811900"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix a HDInsightban
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
 
 A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](hbase/apache-hbase-overview.md)-ra épülő, nyílt forráskódú, nagymértékben párhuzamos, összehasonlítható adatbázis-réteg. A Phoenix használatával SQL-szerű lekérdezéseket használhat a HBase-on keresztül. A Phoenix JDBC-illesztőprogramokat használ, hogy lehetővé tegye a felhasználók számára az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését, megváltoztatását, valamint a upsert-sorok egyenkénti és tömeges használatát. A Phoenix noSQL natív fordítást használ ahelyett, hogy a MapReduce használatával lefordítsa a lekérdezéseket, és lehetővé teszi a kis késleltetésű alkalmazások létrehozását a HBase-on. A Phoenix felhasználja az ügyfél által megadott kód futtatásának támogatását a kiszolgáló címterület részeként, és a kód végrehajtásával az adott helyen található. Ez a megközelítés lekicsinyíti az ügyfél/kiszolgáló adatátvitelt.
 

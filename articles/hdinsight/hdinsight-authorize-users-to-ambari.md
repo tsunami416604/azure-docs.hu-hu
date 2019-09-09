@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442171"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810692"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 
@@ -97,13 +97,13 @@ A szerepkörök kezeléséhez nyissa meg a **Ambari-kezelés lapot**, majd vála
 
 Az egyes szerepkörökhöz tartozó engedélyek listájának megjelenítéséhez kattintson a szerepkörök lap **szerepkörök** táblázat fejléce melletti kék kérdőjelre.
 
-![Szerepkörök menü hivatkozása](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Szerepkörök menü hivatkozásának engedélyei](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "Szerepkörök menü hivatkozásának engedélyei")
 
 Ezen az oldalon két különböző nézetet használhat a felhasználók és csoportok szerepköreinek kezeléséhez: Letiltás és Listázás.
 
 ### <a name="block-view"></a>Nézet tiltása
 
-A blokk nézet a saját sorában jeleníti meg az egyes szerepköröket, és megadja a **szerepkörök hozzárendelését ezekhez** a felhasználókhoz, és hozzárendeli a **szerepköröket** az előzőekben leírtak szerint.
+A blokk nézet a saját sorában jeleníti meg az egyes szerepköröket, és megadja a **szerepkörök hozzárendelését ezekhez a felhasználókhoz** , és **hozzárendeli a szerepköröket** az előzőekben leírtak szerint.
 
 ![Szerepkörök blokkolási nézete](./media/hdinsight-authorize-users-to-ambari/roles-block-view.png)
 

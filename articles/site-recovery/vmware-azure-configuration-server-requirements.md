@@ -1,35 +1,35 @@
 ---
-title: Konfigurációs kiszolgáló követelményei a VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk ismerteti támogatása és a követelmények az Azure-bA az Azure Site Recovery VMware-vészhelyreállításhoz használt konfigurációs kiszolgáló telepítése során
+title: A konfigurációs kiszolgáló követelményei az Azure-ba történő VMware vész-helyreállításhoz Azure Site Recovery használatával | Microsoft Docs
+description: Ez a cikk az Azure-ba történő VMware vész-helyreállítási konfigurációs kiszolgáló üzembe helyezésének támogatását és követelményeit ismerteti Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 94f410b7bd3b7c2eb3d7d6a9316323092010338e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86fa817128dc89eb97bee18f4f8a6de1f650c265
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418332"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814301"
 ---
-# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Konfigurációs kiszolgáló követelményei a VMware-vészhelyreállításhoz az Azure-bA
+# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Az Azure-ba történő VMware vész-helyreállítási konfigurációs kiszolgálói követelmények
 
-Egy helyszíni konfigurációs kiszolgálót telepít, használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA.
+Ha [Azure site Recoveryt](site-recovery-overview.md) használ a VMWare virtuális gépek és a fizikai kiszolgálók Azure-ba történő helyreállításához, a helyszíni konfigurációs kiszolgálót is üzembe kell helyeznie.
 
-- A konfigurációs kiszolgáló koordináták kommunikációhoz között a helyszíni VMware és az Azure. Azt is felügyeli az adatreplikációt.
-- [További](vmware-azure-architecture.md) a konfigurációs kiszolgáló összetevőit és folyamatokról.
+- A konfigurációs kiszolgáló koordinálja a helyszíni VMware és az Azure közötti kommunikációt. Emellett az adatreplikálást is kezeli.
+- [További](vmware-azure-architecture.md) információ a konfigurációs kiszolgáló összetevőiről és folyamatairól.
 
 ## <a name="configuration-server-deployment"></a>Konfigurációs kiszolgáló telepítése
 
-A VMware virtuális gépek vészhelyreállítása az Azure-bA a konfigurációs kiszolgáló VMware virtuális gépként üzembe.
+A VMware virtuális gépek Azure-ba való vész-helyreállításához a konfigurációs kiszolgálót VMware VM-ként kell telepíteni.
 
-- A Site recoveryben egy OVA-sablon letöltése az Azure Portalról, és importálja a vCenter-kiszolgálóhoz a konfigurációs kiszolgáló virtuális gép beállításához.
-- A konfigurációs kiszolgáló, az OVA-sablon használatával helyez üzembe, a virtuális gép automatikusan megfelel az ebben a cikkben felsorolt követelmények listáját.
-- Javasoljuk, hogy beállította a konfigurációs kiszolgáló, az OVA-sablon használatával. Azonban ha VMware virtuális gépek katasztrófa utáni helyreállítás beállítása és az OVA sablon nem használható, a konfigurációs kiszolgáló használatával telepíthet [ezeket az utasításokat a megadott](physical-azure-set-up-source.md).
-- Ha a használt konfigurációs kiszolgáló, valamint a helyszíni fizikai gépeket az Azure-bA telepíti, kövesse a [Ez a cikk](physical-azure-set-up-source.md). 
+- A Site Recovery egy olyan PETESEJT-sablont biztosít, amelyet a Azure Portalból tölt le, és az vCenter Serverba importálhatja a konfigurációs kiszolgáló virtuális gépe beállításához.
+- Ha a konfigurációs kiszolgálót a petesejtek sablonnal telepíti, a virtuális gép automatikusan megfelel a jelen cikkben felsorolt követelményeknek.
+- Javasoljuk, hogy a konfigurációs kiszolgálót a petesejtek sablonnal állítsa be. Ha azonban a VMware virtuális gépek esetében vész-helyreállítást állít be, és nem tudja használni a petesejtek sablont, a konfigurációs kiszolgálót a [megadott utasítások](physical-azure-set-up-source.md)alapján is telepítheti.
+- Ha a konfigurációs kiszolgálót a helyszíni fizikai gépek Azure-ba való vész-helyreállítására telepíti, kövesse a [jelen cikkben](physical-azure-set-up-source.md)található utasításokat. 
 
 
 ## <a name="hardware-requirements"></a>Hardverkövetelmények
@@ -38,9 +38,9 @@ A VMware virtuális gépek vészhelyreállítása az Azure-bA a konfigurációs 
 --- | ---
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
-Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
-Szabad területe (adatmegőrzési lemez) | 600 GB
+Lemezek száma | 3, beleértve az operációsrendszer-lemezt, a feldolgozási kiszolgáló gyorsítótárának lemezét és a feladat-visszavételi meghajtót 
+Szabad lemezterület (folyamat kiszolgálójának gyorsítótára) | 600 GB
+Szabad lemezterület (adatmegőrzési lemez) | 600 GB
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
 
@@ -48,40 +48,40 @@ Szabad területe (adatmegőrzési lemez) | 600 GB
 --- | ---
 Operációs rendszer | Windows Server 2012 R2 <br> Windows Server 2016
 Operációs rendszer területi beállítása | Angol (en-us)
-Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V 
-Csoportházirendek | Ezek a szabályzatok csoport nem engedélyezi: <br> -Hozzáférés megakadályozása a parancssorba. <br> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br> -Megbízhatósági logika fájlmellékletekhez. <br> – Kapcsolja be a parancsfájl végrehajtása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | – Nincs már létező alapértelmezett webhelye <br> – Nincs már létező webhely vagy alkalmazás 443-as porton <br>-Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás 
+Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V 
+Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Nincs előre meglévő alapértelmezett webhely <br> – Nincs előre létező webhely/alkalmazás a 443-as porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése 
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
 **Összetevő** | **Követelmény** 
 --- | --- 
-IP-cím típusa | Statikus 
-Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége (közvetlenül vagy proxyn keresztül): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> – https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF is el kell érnie a következő URL-címek: <br> – https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> – https:\//login.live.com  <br> – https:\//auth.gfx.ms <br> – https:\//graph.windows.net <br> – https:\//login.windows.net <br> – https:\//www.live.com <br> – https:\//www.microsoft.com <br> – https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
+IP-cím típusa | Statikus tartalom 
+Internetelérés | A kiszolgálónak hozzá kell férnie ezekhez az URL-címekhez (közvetlenül vagy proxyn keresztül): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> -https:\//Management.Azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> A OVF emellett a következő URL-címekhez is hozzá kell férnie: <br> -https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> -https:\//login.Live.com  <br> -https:\//auth.gfx.MS <br> -https:\//Graph.Windows.net <br> -https:\//login.Windows.net <br> -https:\//www.Live.com <br> -https:\//www.microsoft.com <br> -https:\//dev.mysql.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi 
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
-Hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
+Hálózati adapter típusa | VMXNET3 (ha a konfigurációs kiszolgáló egy VMware virtuális gép)
 
 ## <a name="required-software"></a>Szükséges szoftverek
 
 **Összetevő** | **Követelmény** 
 --- | ---
-A VMware vSphere PowerCLI | [A PowerCLI 6.0-s verzió](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) kell telepíteni, ha fut a konfigurációs kiszolgáló VMware virtuális gép.
-MYSQL | MySQL kell telepíteni. Manuálisan is telepítheti, vagy a Site Recovery telepíthetik azt.
+VMware vSphere PowerCLI | A [PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) -es verzióját kell telepíteni, ha a konfigurációs kiszolgáló VMWare virtuális gépen fut.
+MYSQL | Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti.
 
-## <a name="sizing-and-capacity-requirements"></a>Méretezés és a kapacitásbeli követelmények
+## <a name="sizing-and-capacity-requirements"></a>Méretezési és kapacitási követelmények
 
-A következő táblázat összefoglalja a konfigurációs kiszolgáló követelményeiről. Ha több VMware virtuális gépeket replikál, tájékozódjon a [kapacitástervezésének szempontjai](site-recovery-plan-capacity-vmware.md), és futtassa a [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md) eszköz a VMWare replication.read 
+A következő táblázat összefoglalja a konfigurációs kiszolgáló kapacitásának követelményeit. Több VMware virtuális gép replikálásakor tekintse át a [kapacitás tervezésével kapcsolatos szempontokat](site-recovery-plan-capacity-vmware.md), és futtassa az [Azure site Recovery Deployment Planner](site-recovery-deployment-planner.md) eszközt a VMware-replikációhoz. olvasás 
 
 **Összetevő** | **Követelmény** 
 --- | ---
 
-| **CPU** | **Memória** | **Gyorsítótárlemez** | **A módosult adatok aránya** | **Replikált gépek** |
+| **CPU** | **Memória** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek** |
 | --- | --- | --- | --- | --- |
-| 8 Vcpu<br/><br/> 2 sockets * 4 mag \@ 2,5 GHz-es | 16 GB | 300 GB | 500 GB vagy kevesebb | Les, mint 100 gépek |
-| 12 vcpu-k<br/><br/> 2 socks * 6 magok \@ 2,5 GHz-es | 18 GB | 600 GB | 500 GB-1 TB | 100-150 gépek |
-| 16 vcpu-k<br/><br/> 2 socks * 8 magos \@ 2,5 GHz-es | 32 GB | 1 TB | 1-2 TB | 150 – 200 – gépek | 
+| 8 vCPU<br/><br/> 2 szoftvercsatorna * 4 mag \@ 2,5 GHz | 16 GB | 300 GB | 500 GB vagy kevesebb | 100-nál több gépen |
+| 12 vCPU<br/><br/> 2 SOCKS * 6 \@ mag 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép |
+| 16 vCPU<br/><br/> 2 zokni * 8 mag \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 gép | 
 
 
 
 ## <a name="next-steps"></a>További lépések
-A vészhelyreállítás beállítása [VMware virtuális gépek](vmware-azure-tutorial.md) az Azure-bA.
+Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

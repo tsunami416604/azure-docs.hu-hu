@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663501"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814449"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -30,6 +30,10 @@ Az oktatóanyag bemutatja, hogyan migrálhatja az Amazon Web Services-beli (AWS)
 > * Azure-ba irányuló egyszeri feladatátvételi teszt futtatása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+
+
+> [!NOTE]
+    > Mostantól használhatja a Azure Migrate szolgáltatást az AWS-példányok Azure-ba való átköltöztetéséhez. [További információk](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e. Támogatott verziók többek között: 
@@ -113,7 +117,7 @@ A **Védelmi cél** oldalon válassza a következő értékeket:
 |---------|-----------|
 | Hol találhatók a gépek? |Válassza a **Helyszíni** lehetőséget.|
 | Hová szeretné replikálni a gépeket? |Válassza **Az Azure-ba** lehetőséget.|
-| Virtualizáltak a gépek? |Válassza a **Nincsenek virtualizálva / Egyéb** lehetőséget.|
+| Virtualizálva vannak a gépek? |Válassza a **Nincsenek virtualizálva / Egyéb** lehetőséget.|
 
 Ha végzett, válassza az **OK** gombot a következő szakaszra való továbblépéshez.
 
@@ -176,7 +180,7 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
 
      |  |  |
      |-----|-----|
-     | Adatforrás: | Válassza a **Helyszíni** lehetőséget.|
+     | Forrás: | Válassza a **Helyszíni** lehetőséget.|
      | Forrás helye:| Adja meg a konfigurációs kiszolgáló EC2-példányának nevét.|
      |Gép típusa: | Válassza a **Fizikai gépek** lehetőséget.|
      | Folyamatkiszolgáló: | Válassza ki a konfigurációs kiszolgálót a legördülő listában.|

@@ -9,12 +9,12 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abbd436e5d1c88c53af95fd8ba9add20fa67c8e4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640895"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813369"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-információ elérésének Azure Portal használata
 
@@ -22,7 +22,7 @@ Ha a [Azure Portal](https://portal.azure.com)használatával fér hozzá a blobh
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-adateléréshez szükséges engedélyek
 
-Attól függően, hogy hogyan kívánja engedélyezni a hozzáférést a blobhoz vagy a várólista-információhoz a Azure Portalban, külön engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+Attól függően, hogy hogyan kívánja engedélyezni a blob-vagy üzenetsor-információhoz való hozzáférést a Azure Portalban, egyedi engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="account-access-key"></a>Fiók-hozzáférési kulcs
 
@@ -35,7 +35,7 @@ A blob-és üzenetsor-információk eléréséhez a fiók elérési kulcsához h
 Amikor megpróbál hozzáférni a blob-vagy üzenetsor-információhoz a Azure Portalban, a portál először ellenőrzi, hogy van-e hozzárendelve szerepkör a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelethez**. Ha ezzel a művelettel társított egy szerepkört, akkor a portál a fiók kulcsát használja a blob-és üzenetsor-adatok eléréséhez. Ha nem rendelt hozzá szerepkört ezzel a művelettel, akkor a portál az Azure AD-fiókjával próbál hozzáférni az adataihoz.
 
 > [!NOTE]
-> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és a társ-rendszergazda a Azure Resource Manager tulajdonosi [](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt adja meg. A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a blob-és üzenetsor-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és a társ-rendszergazda a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt adja meg. A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a blob-és üzenetsor-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="azure-ad-account"></a>Azure AD-fiók
 
@@ -48,13 +48,13 @@ Az **olvasó** szerepkör-hozzárendelés vagy egy másik Azure Resource Manager
 
 A blob vagy üzenetsor adataihoz való hozzáférést támogató beépített szerepkörök a következők:
 
-- [Storage blob](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)-adattulajdonos: A Azure Data Lake Storage Gen2 POSIX-hozzáférés-vezérléséhez.
+- [Storage blob-adattulajdonos](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): A Azure Data Lake Storage Gen2 POSIX-hozzáférés-vezérléséhez.
 - [Storage-blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Blobok olvasási/írási/törlési engedélyei.
-- [Storage blob](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)-Adatolvasó: Írásvédett engedélyek a blobokhoz.
+- [Storage blob-Adatolvasó](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Írásvédett engedélyek a blobokhoz.
 - [Tárolási várólista adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): A várólistákhoz tartozó olvasási/írási/törlési engedélyek.
-- [Tárolási várólista](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)adatolvasója: Írásvédett engedélyek a várólistákhoz.
+- [Tárolási várólista Adatolvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Írásvédett engedélyek a várólistákhoz.
     
-Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos engedélyek különböző kombinációit támogatják. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure](../../role-based-access-control/custom-roles.md) -erőforrásokhoz és [Az Azure-erőforrások szerepkör](../../role-based-access-control/role-definitions.md)-definícióinak megismerése.
+Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos engedélyek különböző kombinációit támogatják. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md) és [Az Azure-erőforrások szerepkör-definícióinak megismerése](../../role-based-access-control/role-definitions.md).
 
 > [!NOTE]
 > A klasszikus előfizetés-rendszergazdai szerepkörrel rendelkező várólisták listázása nem támogatott. A várólisták listázásához a felhasználónak hozzá kell rendelnie a Azure Resource Manager **olvasó** szerepkört, a **tárolási üzenetsor Adatolvasó** szerepkörét vagy a **tárolási várólista adatközreműködői** szerepkörét.

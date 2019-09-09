@@ -1,6 +1,6 @@
 ---
 title: HDInsight-fürtök kezelése nagyvállalati biztonsági nagyvállalattal – Azure
-description: Ismerje meg, hogyan kezelheti a HDInsight-fürtöket a Enterprise Security Packageokkal.
+description: Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket Enterprise Security Packageokkal.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488730"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811026"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és szerepköreit, valamint az ESP-fürtök kezelését.
@@ -34,7 +34,7 @@ Az Apache Ambari Managed username használatával összekapcsolhat egy normál f
    
 3. Egy csatolt fürtöt a parancssori **fürt**használatával tekinthet meg. Most elküldhet egy parancsfájlt ehhez a csatolt fürthöz.
 
-   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster.png "csatolt fürt")
 
 4. A fürtöket a HDInsight bevitelével **is leválaszthatja: Fürt** leválasztása a parancssorból.
 
@@ -43,11 +43,11 @@ Az Apache Ambari Managed username használatával összekapcsolhat egy normál f
 A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt. 
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
-   ![fürt helyi menüjének csatolása](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![fürt helyi menüjének csatolása IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Adja meg a **fürt nevét**, a **felhasználónevet** és a **jelszót**. Ha hitelesítési hiba van, ellenőrizze a felhasználónevet és a jelszót. Igény szerint vegye fel a Storage-fiókot, a tárolási kulcsot, majd válasszon ki egy tárolót a tárolóból. A tároló adatai a bal oldali fában található Storage Explorerben
    
-   ![fürt csatolása párbeszédpanel](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![fürt csatolása párbeszédpanel IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > A csatolt Storage-kulcsot, a felhasználónevet és a jelszót használjuk, ha a fürt az Azure-előfizetésben is be van jelentkezve, és egy fürthöz kapcsolódik.
@@ -56,22 +56,22 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
    
 3. Ha a bemeneti adatok helyesek, a **HDInsight** csomópontban láthat egy csatolt fürtöt. Most elküldheti az alkalmazást ehhez a csatolt fürthöz.
 
-   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![csatolt fürt IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "csatolt fürt IntelliJ]")
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
    
-   ![nem összekapcsolt fürt](./media/apache-domain-joined-manage/unlink.png)
+   ![nem összekapcsolt fürt IntelliJ](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
 A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
-   ![fürt helyi menüjének csatolása](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![fürt helyi menüjének összekapcsolása](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Adja meg a **fürt nevét**, a **felhasználónevet** és a **jelszót**, majd kattintson az OK gombra a fürt csatolásához. Szükség esetén megadhatja a Storage-fiókot, a Storage-kulcsot, majd kiválaszthatja a Storage Explorer tárolási tárolóját a bal oldali fanézetben való működéshez.
    
-   ![fürt csatolása párbeszédpanel](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![fürt csatolása párbeszédpanel Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
    > [!NOTE]  
    > A csatolt Storage-kulcsot, a felhasználónevet és a jelszót használjuk, ha a fürt az Azure-előfizetésben is be van jelentkezve, és egy fürthöz kapcsolódik.
@@ -79,11 +79,11 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 3. Ha a bemeneti adatok helyesek, az OK gombra kattintás után megtekintheti a csatolt fürtöt a **HDInsight** -csomópontban. Most elküldheti az alkalmazást ehhez a csatolt fürthöz.
 
-   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![csatolt fürt Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
    
-   ![nem összekapcsolt fürt](./media/apache-domain-joined-manage/unlink.png)
+   ![leválasztási fürt Eclipse](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>A fürtök elérése Enterprise Security Packagesal.
 
@@ -142,7 +142,7 @@ A átjárócsomóponthoz teljes tartománynevének megkereséséhez használja a
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>ESP-vel rendelkező HDInsight-fürtök felhasználói
 A nem ESP-alapú HDInsight-fürtök két, a fürt létrehozása során létrehozott felhasználói fiókkal rendelkeznek:
 
-* **Ambari-rendszergazda**: Ezt a fiókot *Hadoop* -felhasználóként vagy *http*-felhasználóként is nevezzük. Ez a fiók használható a Ambari-be való bejelentkezéshez a&lt;következő helyen: https://clustername >. azurehdinsight. net. Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
+* **Ambari-rendszergazda**: Ezt a fiókot *Hadoop-felhasználóként* vagy *http-felhasználóként*is nevezzük. Ez a fiók használható a Ambari-be való bejelentkezéshez a&lt;következő helyen: https://clustername >. azurehdinsight. net. Emellett a Ambari-nézeteken végzett lekérdezések futtatására, a feladatok külső eszközökön (például a PowerShell, a Templeton, a Visual Studio) keresztül történő végrehajtására, valamint a kaptár ODBC-illesztővel és BI-eszközökkel való hitelesítésére is használható (például Excel, Power BI vagy tabló).
 
 Az ESP-vel rendelkező HDInsight-fürtök három új felhasználóval rendelkeznek a Ambari-rendszergazda mellett.
 

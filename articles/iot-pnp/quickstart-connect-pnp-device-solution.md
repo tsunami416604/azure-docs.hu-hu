@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 246d3eac8f9d8aff6d603ea8686e430ce0f772ea
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a082e4b7896b317bf2b28971d3693bada95a3445
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878249"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806556"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution"></a>Gyors útmutató: A megoldáshoz csatlakoztatott IoT Plug and Play előnézeti eszköz használata
 
@@ -28,6 +28,9 @@ Töltse le és telepítse a Node. js-t a [NodeJS.org](https://nodejs.org)webhely
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE]
+> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
 
 Adja hozzá a Microsoft Azure IoT bővítményt az Azure CLI-hez:
 
@@ -47,7 +50,7 @@ Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _esz
 az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
 ```
 
-Futtassa az alábbi parancsokat a hub _IoT hub_ -kapcsolódási karakterláncának lekéréséhez:
+Futtassa az alábbi parancsokat a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table

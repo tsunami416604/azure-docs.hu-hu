@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279902"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812188"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -54,7 +54,7 @@ A dinamikus méretezhetőség különbözik az automatikus skálázástól. Auto
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Modellek, szolgáltatási szintek, számítási méretek és tárolási összegek vásárlása
 
 SQL Database két vásárlási modellt kínál:
-- A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) segítségével kiválaszthatja a virtuális mag számát, a mennyiségét vagy a memóriát, valamint a tárterület mennyiségét és sebességét. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja. További információ a Azure Hybrid Benefitről: [Gyakori kérdések](#sql-database-frequently-asked-questions-faq).
+- A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) segítségével kiválaszthatja a virtuális mag számát, a memória mennyiségét, valamint a tárterület mennyiségét és sebességét. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja. További információ a Azure Hybrid Benefitről: [Gyakori kérdések](#sql-database-frequently-asked-questions-faq).
 - A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) a számítási, a memória-és az i/o-erőforrások keverékét kínálja három szolgáltatási szinten a könnyű és a nehéz adatbázis-számítási feladatok támogatásához. Az egyes szintjein belüli számítási méretek különböző mennyiségű erőforrást biztosítanak, amelyhez további tárolási erőforrásokat adhat hozzá.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához

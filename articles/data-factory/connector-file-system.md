@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 677f3cbb6416086843ceb530abd07d412c8b38f0
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 470152e12f3a7a0c643a147f0989a5cc72d2ed22
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275424"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813569"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása, illetve a Windows operációs rendszer az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -99,12 +99,12 @@ Társított fájlrendszer-szolgáltatását a következő tulajdonságok támoga
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **Parquet, a tagolt szöveget, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
-- Más formátumok, például az **ork/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
+- Más formátumok, például az **ork formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú adatkészlet
 
-Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészleten és a támogatott beállításokon. A fájlrendszer `location` a következő tulajdonságokat támogatja a Format-alapú adatkészlet beállítások területén:
+Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások alapján. . A fájlrendszer `location` a következő tulajdonságokat támogatja a Format-alapú adatkészlet beállítások területén:
 
 | Tulajdonság   | Leírás                                                  | Szükséges |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -143,7 +143,7 @@ Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**között sz
 
 ### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
 
-Az adatoknak az **ork/JSON formátumú**fájlrendszerbe való másolásához a következő tulajdonságok támogatottak:
+Az adatoknak az **ork formátumba**és a fájlrendszerbe való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -197,12 +197,12 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="file-system-as-source"></a>Fájlrendszer forrásként
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
 
-Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a formátum-alapú másolási tevékenység forrására . A fájlrendszer `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállítások területén:
+Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú másolási tevékenység forrásáról beállítások. A fájlrendszer `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállítások területén:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -260,7 +260,7 @@ Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**adatait sze
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az adatok fájlrendszerből **ork/JSON formátumban**való másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
+Ha az adatok a fájlrendszerből az **ork formátumban**másolhatók, a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -302,12 +302,12 @@ Az adatok fájlrendszerből **ork/JSON formátumban**való másolásához a köv
 
 ### <a name="file-system-as-sink"></a>Fájlrendszer pedig a fogadó
 
-- A parketta, a **tagolt szöveg, a Avro vagy a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum](#format-based-sink) fogadó szakaszát.
-- Más formátumokba, például az **ork/JSON formátumba**való másoláshoz tekintse meg a [más Format mosogató](#other-format-sink) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumú mosogató](#format-based-sink) szakaszt.
+- Más formátumokba, például az **ork formátumba**való másoláshoz tekintse meg a [más Format mosogató](#other-format-sink) szakaszt.
 
-#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, Avro és bináris formátumú fogadó
+#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú fogadó
 
-Az adatmásoláshoz a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadója és a támogatott beállítások alapján. A fájlrendszer a következő tulajdonságokat támogatja a Format- `storeSettings` alapú másolási fogadó beállításai alatt:
+Az adatgyűjtés a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**között, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadóján és a támogatott beállítások. A fájlrendszer a következő tulajdonságokat támogatja a Format- `storeSettings` alapú másolási fogadó beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -355,7 +355,7 @@ Az adatmásoláshoz a **parketta, a tagolt szöveg, a Avro vagy a bináris form�
 
 #### <a name="other-format-sink"></a>Egyéb formátumú fogadó
 
-Az adatfájlnak az **ork/JSON formátumban**történő másolásához a **fogadó szakaszban a** következő tulajdonságok támogatottak:
+Az adatfájlnak az **ork formátumba**való másolásához a **fogadó szakaszban a** következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

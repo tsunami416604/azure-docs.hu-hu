@@ -1,9 +1,9 @@
 ---
-title: A szerepkörök nem kezelheti a PIM - Azure Active Directory |} A Microsoft Docs
-description: Ismerteti az Azure AD Privileged Identity Management (PIM) nem kezelheti a szerepköröket.
+title: A PIM-Azure Active Directoryban nem kezelhető szerepkörök | Microsoft Docs
+description: Ismerteti azokat a szerepköröket, amelyeket nem kezelhet Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/18/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d66d433d9de537358777e54e3c7d5489c25c849b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437273"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804088"
 ---
-# <a name="roles-you-cannot-manage-in-pim"></a>Nem kezelheti a PIM szerepkörök
+# <a name="roles-you-cannot-manage-in-pim"></a>A PIM-ben nem felügyelhető szerepkörök
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) lehetővé teszi az összes kezelését [Azure AD-szerepkörök](../users-groups-roles/directory-assign-admin-roles.md) és az összes [Azure-erőforrások szerepköreihez](../../role-based-access-control/built-in-roles.md). Ezek a szerepkörök az egyéni szerepkörök csatlakozik a felügyeleti csoportokhoz, előfizetések, erőforráscsoportok és erőforrásokat is tartalmaznak. Vannak azonban néhány olyan szerepköröket, nem tudja kezelni. Ez a cikk ismerteti a szerepköröket a PIM nem kezelheti.
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) segítségével kezelheti az összes [Azure ad-szerepkört](../users-groups-roles/directory-assign-admin-roles.md) és az összes [Azure-erőforrás-szerepkört](../../role-based-access-control/built-in-roles.md). Ezek a szerepkörök a felügyeleti csoportokhoz, előfizetésekhez, erőforrás-csoportokhoz és erőforrásokhoz csatolt egyéni szerepköröket is tartalmazzák. Vannak azonban olyan szerepkörök, amelyeket nem kezelhet. Ez a cikk azokat a szerepköröket ismerteti, amelyeket nem kezelhet a PIM-ben.
 
-## <a name="classic-subscription-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök
+## <a name="classic-subscription-administrator-roles"></a>Klasszikus előfizetés-adminisztrátori szerepkörök
 
-A következő hagyományos előfizetés rendszergazdai szerepköröket a PIM nem kezelheti:
+A következő klasszikus előfizetés-rendszergazdai szerepkörök nem kezelhetők a PIM-ben:
 
 - Fiókadminisztrátor
 - Szolgáltatás-rendszergazda
 - Társadminisztrátor
 
-A hagyományos előfizetés-rendszergazda szerepkörök kapcsolatos további információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+A klasszikus előfizetés-rendszergazdai szerepkörökkel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure RBAC-szerepköröket és az Azure ad rendszergazdai szerepköreit](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Mi a helyzet az Office 365 rendszergazdai szerepköreinek?
+## <a name="what-about-office-365-admin-roles"></a>Mi a helyzet az Office 365 rendszergazdai szerepköreivel?
 
-Az Exchange Online vagy SharePoint online-hoz, kivéve az Exchange-rendszergazda és a SharePoint-rendszergazda szerepkörök nem szerepelnek az Azure AD-ben, és ezért nem lehet kezelni a PIM. A Office 365-szolgáltatásokkal kapcsolatos további információkért lásd: [Office 365 rendszergazdai szerepköreinek](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Az Exchange Online-ban vagy a SharePoint Online-ban lévő szerepkörök az Exchange-rendszergazda és a SharePoint-rendszergazda kivételével nem jelennek meg az Azure AD-ben, ezért nem kezelhetők a PIM-ben. További információ ezekről az Office 365-szolgáltatásokról: [office 365 rendszergazdai szerepkörök](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> SharePoint-rendszergazda a SharePoint online rendszergazdai hozzáféréssel rendelkezik a SharePoint Online felügyeleti központban, és szinte bármilyen feladatot végrehajthat a SharePoint online-ban. Jogosult felhasználók tapasztalhat az késleltetések a PIM aktiválása után a sharepointból szerepkör használatával.
+> A SharePoint-rendszergazda rendszergazdai hozzáféréssel rendelkezik a SharePoint Online-hoz a SharePoint Online felügyeleti központban, és szinte bármilyen feladatot képes végrehajtani a SharePoint Online-ban. A jogosult felhasználók a PIM-ben történő aktiválás után késések jelentkezhetnek a SharePointon belül.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure AD PIM-szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
-- [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)
+- [Azure AD-szerepkörök kiosztása a PIM-ben](pim-how-to-add-role-to-user.md)
+- [Azure-beli erőforrás-szerepkörök kiosztása a PIM-ben](pim-resource-roles-assign-roles.md)

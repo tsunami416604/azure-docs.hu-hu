@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050135"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806503"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Gyors útmutató: Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához
 
@@ -23,7 +23,7 @@ Az _eszköz képességi modellje_ (DCM) ismerteti a IoT Plug and Play eszköz k�
 
 A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi gépre:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali C++ fejlesztést** a Visual Studio telepítésekor számítási feladatokkal végezze el.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
 * [Git](https://git-scm.com/download/).
 * [CMAK](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
@@ -32,7 +32,7 @@ A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket
 
 Az alábbi lépésekkel telepítheti az Azure IoT Device Workbench bővítményt a VS Code-ban:
 
-1. A VS Code-ban válassza a kiterjesztések lapot.
+1. A VS Code-ban válassza a **kiterjesztések** lapot.
 1. Keressen rá az **Azure IoT Device Workbench**kifejezésre.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
@@ -49,6 +49,9 @@ A _vállalati modell adattárának kapcsolati karakterláncát_ az [Azure Certif
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE]
+> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
 
 Adja hozzá a Microsoft Azure IoT bővítményt az Azure CLI-hez:
 
@@ -68,7 +71,7 @@ Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _esz
 az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
 ```
 
-Futtassa az alábbi parancsokat a hub _IoT hub_ -kapcsolódási karakterláncának lekéréséhez:
+Futtassa az alábbi parancsokat a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
@@ -99,7 +102,7 @@ Ebben a rövid útmutatóban egy fejlesztési környezetet készít elő, amelly
 
 Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és társított csatolókat használ.
 
-1. Töltse le az [eszköz képességeinek modelljét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és a felületi `pnp_app` [mintát](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a mappába.
+1. Töltse le az [eszköz képességeinek modelljét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és a [felületi mintát](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és `pnp_app` mentse a fájlokat a mappába.
 
     > [!TIP]
     > Egy fájl GitHubról való letöltéséhez navigáljon a fájlhoz, kattintson a jobb gombbal a **RAW**elemre, majd válassza a **hivatkozás mentése másként**lehetőséget.
@@ -114,7 +117,7 @@ Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és 
 
 Most már rendelkezik egy DCM-rel és a hozzá tartozó csatolókkal, létrehozhatja a modellt megvalósító eszköz kódját. A C-kód a (z) VS Code-ban való létrehozásához:
 
-1. Ha a DCM-fájlok mappája meg van nyitva, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának**előállítása lehetőséget.
+1. Ha a DCM-fájlok mappája meg van nyitva, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
     > [!NOTE]
     > Amikor első alkalommal használja a IoT Plug and Play Code Generator segédprogramot, a letöltés eltarthat néhány másodpercig.
@@ -214,7 +217,7 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 1. Válassza a **Tulajdonságok (írható)** lapot a frissíteni kívánt írható tulajdonságok megtekintéséhez.
 
-1. Bontsaki a tulajdonságnév, a frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
+1. Bontsa **ki a tulajdonságnév, a**frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
 2. Ha látni szeretné, hogy az új név megjelenik a **jelentett tulajdonság** oszlopban, kattintson a lap tetején található **frissítés** gombra.
 
 1. Kattintson a **parancs** lapra az eszköz által támogatott összes parancs megtekintéséhez.

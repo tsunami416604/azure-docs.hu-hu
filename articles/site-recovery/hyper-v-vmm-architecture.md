@@ -1,27 +1,27 @@
 ---
-title: Architektúra vész-helyreállítási Hyper-V egy másodlagos helyszíni hely az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk az architektúra áttekintést nyújt a System Center VMM másodlagos helyre az Azure Site Recovery a helyszíni Hyper-V virtuális gépek vész-helyreállítási.
+title: A Hyper-V vész-helyreállítás architektúrája egy másodlagos helyszíni helyre Azure Site Recovery
+description: Ez a cikk áttekintést nyújt a helyszíni Hyper-V virtuális gépek vész-helyreállításának architektúráról egy másodlagos System Center VMM-helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 22f21f11b0c374724bc6924f30ea20a21de6ab90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398161"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813731"
 ---
-# <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra - a Hyper-V replikálás másodlagos helyre
+# <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra – Hyper-V replikáció másodlagos helyre
 
 Ez a cikk azokat az összetevőket és folyamatokat ismerteti, amelyek részt vesznek a System Center Virtual Machine Manager- (VMM-) felhőkben lévő helyszíni Hyper-V virtuális gépeknek (VM-eknek) az Azure Portalon elérhető [Azure Site Recovery](site-recovery-overview.md) szolgáltatással egy másodlagos VMM-helyre történő replikációjában.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-A következő táblázat és grafikus adja meg a másodlagos helyre Hyper-V-replikációhoz használt összetevők magas szintű nézetét.
+A következő táblázat és ábra a Hyper-V-replikáció másodlagos helyre történő replikálásához használt összetevők magas szintű nézetét ismerteti.
 
 **Összetevő** | **Követelmény** | **Részletek**
 --- | --- | ---
@@ -30,28 +30,28 @@ A következő táblázat és grafikus adja meg a másodlagos helyre Hyper-V-repl
 **Hyper-V kiszolgáló** |  Legalább egy Hyper-V gazdakiszolgáló az elsődleges és a másodlagos VMM-felhőkben. | A rendszer LAN vagy VPN hálózaton keresztül replikálja az adatokat az elsődleges és másodlagos Hyper-V gazdakiszolgálók között Kerberos vagy tanúsítványalapú hitelesítés használatával.  
 **Hyper-V virtuális gépek** | A Hyper-V gazdakiszolgálón. | A forrás gazdakiszolgálókon legalább egy replikálni kívánt virtuális gépnek kell futnia.
 
-**A helyi helyszíni architektúra**
+**Helyszíni – helyszíni architektúra**
 
 ![Két helyszíni hely közötti replikálás](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Kezdeti replikáció akkor aktiválódik, amikor egy [a Hyper-V virtuális gép pillanatképét](https://technet.microsoft.com/library/dd560637.aspx) pillanatkép készítésének időpontjában.
-2. A rendszer a virtuális gép virtuális merevlemezeket, a replikált egy másodlagos helyre.
-3. Ha lemezt, miközben a kezdeti replikáció folyamatban van, a Hyper-V Replica Replication Tracker eszköz Hyper-V replikálási naplók (.hrl) formájában nyomon követi a módosításokat. Ezek a naplófájlok a lemezek ugyanabban a mappában találhatók. Minden lemezhez tartozik egy .hrl fájl, amelyet elküld a másodlagos helyen. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
-4. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét, és a változásreplikációhoz kezdődik.
+1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](https://technet.microsoft.com/library/dd560637.aspx) pillanatképét is elvégzi.
+2. A virtuális GÉPEN lévő virtuális merevlemezeket egy-egy, a másodlagos helyre replikálja a rendszer.
+3. Ha a lemez megváltozik, miközben a kezdeti replikálás folyamatban van, a Hyper-V replika replikációs nyomon követése a változásokat Hyper-V replikációs naplókként (. HRL) követi nyomon. Ezek a naplófájlok ugyanabban a mappában találhatók, mint a lemezek. Minden lemezhez tartozik egy. HRL fájl, amelyet a rendszer a másodlagos helyre továbbít. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
+4. A kezdeti replikálás befejezésekor a rendszer törli a virtuális gép pillanatképét, és megkezdi a különbözeti replikációt.
 5. A rendszer a naplózott lemezmódosításokat szinkronizálja, és egyesíti a szülőlemezzel.
 
 
 ## <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
-- Egyetlen gép feladatátvételét, vagy több gép összehangolt feladatátadását helyreállítási terveket hozhat létre.
-- Tervezett vagy nem tervezett feladatátvétel a helyszíni helyek között futtatható. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
-    - Ha egy nem tervezett feladatátvételt a másodlagos helyen, hajtsa végre a feladatátvételt a másodlagos hely gépei után nem védett.
+- A feladatátvételt több gép feladatátvételének megszervezéséhez hajthatja végre, vagy létrehozhat egy helyreállítási terveket.
+- Futtathat tervezett vagy nem tervezett feladatátvételt a helyszíni helyek között. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
+    - Ha nem tervezett feladatátvételt hajt végre egy másodlagos helyre, a másodlagos helyen található feladatátvételi gépek nem védettek.
     - Ha tervezett feladatátvételt futtatott, a feladatátvétel után a másodlagos hely gépei védettek lesznek.
-- A kezdeti feladatátvétel futtatása után véglegesítheti, a munkaterhelés elérése a replika virtuális gép elindításához.
-- Ha az elsődleges hely megint elérhetővé válik, visszaadhatja a.
-    - Visszirányú replikálás indítása replikálása a másodlagos helyről az elsődleges kezdeményezheti. A fordított replikáció során a virtuális gépek védett állapotba kerülnek, de a másodlagos adatközpont marad továbbra is az aktív hely.
+- A kezdeti feladatátvétel futtatását követően véglegesíti azt, hogy megkezdje a munkaterhelések elérését a replika virtuális gépről.
+- Ha az elsődleges hely ismét elérhetővé válik, visszatérhet.
+    - A visszirányú replikálás kezdeményezésével megkezdheti a replikálást a másodlagos helyről az elsődlegesre. A fordított replikáció során a virtuális gépek védett állapotba kerülnek, de a másodlagos adatközpont marad továbbra is az aktív hely.
     - Ha azt szeretné, hogy újra az elsődleges hely legyen az aktív hely, kezdeményezzen egy tervezett feladatátvételt a másodlagos helyről az elsődleges helyre, majd hajtson végre ismét fordított replikálást.
 
 
@@ -59,4 +59,4 @@ A következő táblázat és grafikus adja meg a másodlagos helyre Hyper-V-repl
 ## <a name="next-steps"></a>További lépések
 
 
-Hajtsa végre a [ebben az oktatóanyagban](hyper-v-vmm-disaster-recovery.md) között a VMM-felhőkben futó Hyper-V-replikáció engedélyezéséhez.
+[Ezt az oktatóanyagot](hyper-v-vmm-disaster-recovery.md) követve engedélyezheti a Hyper-V replikálását a VMM-felhők között.

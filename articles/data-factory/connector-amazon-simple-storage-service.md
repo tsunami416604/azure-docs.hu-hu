@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: aebcefadf4dfdb9301a01b0b4117e8aa2e429898
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e11c6d23e93701e1608e1c444deb47c80543789e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276524"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813294"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -25,7 +25,8 @@ ms.locfileid: "70276524"
 
 Ez a cikk az Amazon Simple Storage Service (Amazon S3) adatainak másolását ismerteti. Azure Data Factory szolgáltatásról, olvassa el a [bevezető cikk](introduction.md).
 
-Az Amazon S3-ból az Azure Storage-ba irányuló adatáttelepítési forgatókönyv esetén további információ a [használat Azure Data Factory az Amazon S3-ból az Azure Storage-ba való Migrálás](data-migration-guidance-s3-azure-storage.md)során.
+>[!TIP]
+>Az Amazon S3-ból az Azure Storage-ba irányuló adatáttelepítési forgatókönyv esetén további információ a [használat Azure Data Factory az Amazon S3-ból az Azure Storage-ba való Migrálás](data-migration-guidance-s3-azure-storage.md)során.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -100,12 +101,12 @@ Például:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**esetében lásd a [parketta, tagolt szöveg és bináris formátum adatkészlet](#format-based-dataset) szakaszt.
-- Más formátumok, például az **ork/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
+- Más formátumok, például az **ork formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú adatkészlet
 
-Az Amazon S3-ból származó adatok a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**alapján történő másolásához a következő témakörben talál: [parketta formátum](format-parquet.md), [tagolt szöveg formátuma](format-delimited-text.md), [Avro formátum](format-avro.md) és [bináris formátum](format-binary.md) cikk a Format-alapú adatkészletek és a támogatott beállítások alapján A következő tulajdonságokat támogatja az Amazon S3 a Format `location` -alapú adatkészlet beállításai alatt:
+Az Amazon S3-ból származó adatoknak a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**alapján történő másolásához lásd a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészletekben beállítások. A következő tulajdonságokat támogatja az Amazon S3 a Format `location` -alapú adatkészlet beállításai alatt:
 
 | Tulajdonság   | Leírás                                                  | Szükséges |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +148,7 @@ Az Amazon S3-ból származó adatok a **parketta, a tagolt szöveg, a Avro vagy 
 
 ### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
 
-Az Amazon S3-ból az **ork/JSON formátumú**adatok másolásához a következő tulajdonságok támogatottak:
+Az Amazon S3-ból származó adatok az **ork formátumból**való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -229,12 +230,12 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="amazon-s3-as-source"></a>Az Amazon S3 forrásként
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
 
-Az Amazon S3-ból származó adatoknak a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**alapján történő másolásához tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a formátum-alapú másolási tevékenység támogatott beállítások. Az Amazon S3 `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállításainál:
+Az Amazon S3-ból származó adatok a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**alapján történő másolásához lásd a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú másolási tevékenység forrásán támogatott beállítások. Az Amazon S3 `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási forrás beállításainál:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -293,7 +294,7 @@ Az Amazon S3-ból származó adatoknak a **parketta, a tagolt szöveg, a Avro va
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az Amazon S3-ból az **ork/JSON formátumú**adatok másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+Az Amazon S3-ból származó adatok az **ork formátumból**való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

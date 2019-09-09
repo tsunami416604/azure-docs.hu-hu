@@ -1,6 +1,6 @@
 ---
-title: Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
-description: YARN felhasználói felületén, a Spark felhasználói felület és a Spark-előzménykiszolgáló használatával nyomon követése és hibakeresése az Azure HDInsight Spark-fürtön futó feladatok
+title: Az Azure HDInsight futó Apache Spark-feladatok hibakeresése
+description: Az Azure HDInsight-beli Spark-fürtön futó feladatok nyomon követése és hibakeresése a fonal felhasználói felület, a Spark felhasználói felület és a Spark-előzmények kiszolgáló használatával
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,113 +8,113 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707831"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814117"
 ---
-# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
+# <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Az Azure HDInsight futó Apache Spark-feladatok hibakeresése
 
-Ebből a cikkből elsajátíthatja, hogyan nyomon követése és hibakeresése [Apache Spark](https://spark.apache.org/) futó feladatok HDInsight-fürtök használatával a [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felület, a Spark felhasználói felület és a Spark-Előzménykiszolgáló. A Spark-fürt rendelkezésre álló Jegyzetfüzet használata Spark-feladat indítása **gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési**. A következő lépések segítségével nyomon követheti az elküldött megközelítéssel bármilyen más, például egy alkalmazás **spark-submit szkripttel**.
+Ebből a cikkből megtudhatja, hogyan követheti nyomon és hibakeresést [Apache Spark](https://spark.apache.org/) a HDInsight-fürtökön futó feladatokat a [Apache Hadoop a fonal](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) felhasználói felületén, a Spark felhasználói felületen és a Spark-előzmények kiszolgálóján keresztül. Egy Spark-feladatot a Spark-fürttel elérhető jegyzetfüzettel indíthat el **, gépi tanulás: Az élelmiszer-ellenőrzési adataival kapcsolatos prediktív elemzés**a MLLib használatával. A következő lépésekkel követheti nyomon a bármely más megközelítéssel elküldött alkalmazást, például a **Spark-submitt**is.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az alábbiakkal kell rendelkeznie:
+A következőkkel kell rendelkeznie:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Meg kell kezdeni a notebook futó  **[gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)** . Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
+* A jegyzetfüzet  **[futtatásának megkezdése előtt a Machine learning: Az élelmiszer-ellenőrzési adataival kapcsolatos prediktív elemzés](apache-spark-machine-learning-mllib-ipython.md)a MLLib**használatával. A jegyzetfüzet futtatásával kapcsolatos utasításokért kövesse a hivatkozást.  
 
-## <a name="track-an-application-in-the-yarn-ui"></a>Nyomon követheti az alkalmazás a YARN felhasználói felületén
-1. Nyissa meg a YARN felhasználói felületén. Kattintson a **Yarn** alatt **fürt irányítópultjai**.
+## <a name="track-an-application-in-the-yarn-ui"></a>Alkalmazás nyomon követése a fonal felhasználói felületén
+1. Indítsa el a fonal felhasználói felületét. Kattintson a **szál** elemre a **fürt irányítópultok**területen.
    
-    ![Indítsa el a YARN felhasználói felületén](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![A fonal felhasználói felületének indítása](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]  
-   > Másik lehetőségként az Ambari felhasználói felületén, a YARN felhasználói felületén is megnyithatja. Az Ambari felhasználói felületén indításához kattintson **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**. 
+   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületének elindításához kattintson a **Ambari** elemre a **fürt irányítópultok**területén. A Ambari felhasználói felületén kattintson a **fonal**elemre, kattintson a **Gyorshivatkozások**lehetőségre, majd az Active Resource Manager elemre, végül pedig a **Resource Manager felhasználói felület**elemre. 
 
-2. A Jupyter notebookok használata Spark-feladat indítása, mert az alkalmazás rendelkezik ezzel a névvel **remotesparkmagics** (Ez a minden alkalmazás, amely a notebookok való indítása a nevét). Kattintson az Alkalmazásazonosítót, szemben az alkalmazás nevét a feladattal kapcsolatos további információért. Ezzel elindítja az alkalmazás megtekintése.
+2. Mivel a Spark-feladatot a Jupyter-jegyzetfüzetek használatával indította el, az alkalmazás neve **remotesparkmagics** (a jegyzetfüzetekről indított összes alkalmazás neve). Az alkalmazás nevére kattintva további információkat kaphat a feladatról. Ez elindítja az alkalmazás nézetét.
    
-    ![Keresse meg a Spark-alkalmazás azonosítója](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Spark-alkalmazás AZONOSÍTÓjának megkeresése](./media/apache-spark-job-debugging/find-application-id.png)
    
-    Az ilyen alkalmazások, melyeket a Jupyter notebookokból származó, az állapot mindig van **FUTÓ** a notebook bezárásáig.
-3. Az alkalmazás a nézetben végezhet részletes elemzést tovább ismerje meg az alkalmazás és a naplók (stdout/stderr) társított tárolókat. A Spark felhasználói felületen indítsa el a hivatkozási megfelelő kattintva a **követési URL-cím**lent látható módon. 
+    A Jupyter-jegyzetfüzetekről indított alkalmazások esetében az állapot mindig **fut** , amíg ki nem lép a jegyzetfüzetből.
+3. Az alkalmazás nézetből részletesebben is megtudhatja, hogy az alkalmazáshoz és a naplókhoz társított tárolók (StdOut/stderr) találhatók-e. A Spark felhasználói felületet úgy is elindíthatja, hogy a **nyomkövetési URL-címhez**tartozó hivatkozásra kattint az alább látható módon. 
    
-    ![Töltse le a tároló naplóit](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Tárolónaplók letöltése](./media/apache-spark-job-debugging/download-container-logs.png)
 
-## <a name="track-an-application-in-the-spark-ui"></a>Nyomon követheti az alkalmazások a Spark felhasználói felület
-A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek a rendszer létrehozta az alkalmazás korábban megkezdése.
+## <a name="track-an-application-in-the-spark-ui"></a>Alkalmazás követése a Spark felhasználói felületén
+A Spark felhasználói felületén megtekintheti azokat a Spark-feladatokat, amelyeket a korábban elindított alkalmazás szül.
 
-1. Indítsa el a Spark felhasználói felületén az alkalmazás a nézetben kattintson a hivatkozásra, szemben a **követési URL-cím**a fenti képernyőfelvételen látható módon. Láthatja, hogy az alkalmazás futtatása a Jupyter notebook indult minden Spark-feladatok.
+1. A Spark felhasználói felület indításához az alkalmazás nézetből kattintson a **nyomkövetési URL-címre**mutató hivatkozásra, ahogy az a fenti képernyőfelvételen látható. A Jupyter notebookon futó alkalmazás által indított összes Spark-feladat megtekinthető.
    
     ![Spark-feladatok megtekintése](./media/apache-spark-job-debugging/view-spark-jobs.png)
-2. Kattintson a **végrehajtóval** lapján megtekintheti az egyes végrehajtó kapcsolatos feldolgozási és tárolási. A hívási veremben kattintva is lekérhet a **hozzászóláslánc Dump** hivatkozásra.
+2. Kattintson a **végrehajtók** lapra az egyes végrehajtók feldolgozási és tárolási adatainak megtekintéséhez. A hívási verem lekéréséhez kattintson a **szál kiírására** szolgáló hivatkozásra.
    
-    ![A Spark végrehajtóval megtekintése](./media/apache-spark-job-debugging/view-spark-executors.png)
-3. Kattintson a **szakaszok** lapján megtekintheti a szakaszában az alkalmazáshoz kapcsolódó.
+    ![Spark-végrehajtók megtekintése](./media/apache-spark-job-debugging/view-spark-executors.png)
+3. A **szakaszok** lapra kattintva megtekintheti az alkalmazáshoz társított szakaszokat.
    
-    ![Spark-állapotok megjelenítése](./media/apache-spark-job-debugging/view-spark-stages.png)
+    ![Spark-szakaszok megtekintése](./media/apache-spark-job-debugging/view-spark-stages.png "Spark-szakaszok megtekintése")
    
-    Minden egyes szakaszhoz különböző számítási feladatokhoz, amelyek találhatja meg a végrehajtási statisztika, például rendelkezhet alább látható módon.
+    Az egyes szakaszok több feladattal is rendelkezhetnek, amelyekhez a végrehajtás statisztikáit tekintheti meg, például alább látható.
    
-    ![Spark-állapotok megjelenítése](./media/apache-spark-job-debugging/view-spark-stages-details.png) 
-4. A fázis részleteit megjelenítő oldalon DAG Vizualizáció indíthatja el. Bontsa ki a **DAG Vizualizáció** hivatkozásra az oldal tetején lévő alább látható módon.
+    ![Spark-szakaszok részleteinek megtekintése](./media/apache-spark-job-debugging/view-spark-stages-details.png "Spark-szakaszok részleteinek megtekintése") 
+4. A fázis részletei lapon a DAG vizualizációt indíthatja el. Bontsa ki a **Dag vizualizáció** hivatkozását az oldal tetején, az alábbi ábrán látható módon.
    
-    ![Spark szakaszok DAG Vizualizáció megtekintése](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    ![Spark-szakaszok megtekintése – DAG vizualizáció](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
    
-    DAG- vagy közvetlen Aclyic Graph jelöli meg a különböző szakaszaiban az alkalmazásban. A gráf összes kék mezőben egy Spark-művelet meghívása az alkalmazásból jelöli.
-5. A fázis részleteit megjelenítő oldalon is elindíthat, az alkalmazás idővonalnézetét. Bontsa ki a **esemény ütemterv** hivatkozásra az oldal tetején lévő alább látható módon.
+    A DAG vagy a Direct Aclyic gráf az alkalmazás különböző szakaszait jelöli. A gráf minden kék mezője az alkalmazásból meghívott Spark-műveletet jelöli.
+5. A szakasz részletei lapon elindíthatja az alkalmazás ütemtervének nézetét is. Bontsa ki az **esemény idővonalának** hivatkozását az oldal tetején, az alábbi ábrán látható módon.
    
-    ![Spark szakaszok esemény idősor megtekintése](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    ![Spark-szakaszok esemény idővonalának megtekintése](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    Ez a Spark eseményeket egy idővonalon formájában jeleníti meg. Az Ütemterv nézetben érhető el három szinten, a feladatokon belül, és a egy szakaszon belül a feladatok között. A fenti képen az idősor nézetének adott szakaszában rögzíti.
+    Ez megjeleníti a Spark-eseményeket idősor formájában. Az Idősor nézet három szinten, a feladatok között, a feladatokon belül és egy fázison belül érhető el. A fenti kép rögzíti egy adott fázis idővonal-nézetét.
    
    > [!TIP]  
-   > Ha a **nagyítás engedélyezése** jelölőnégyzet bejelölésével, görgethet bal és jobb idősor nézetének között.
+   > Ha bejelöli a **Nagyítás engedélyezése** jelölőnégyzetet, a bal oldali és a jobb oldali görgetést is görgetheti az idősor nézetben.
 
-6. A Spark felhasználói felület többi lapján adja meg a Spark-példányt, valamint hasznos információkat.
+6. A Spark felhasználói felületének többi lapja is hasznos információkat nyújt a Spark-példányról.
    
-   * Tároló lap – az alkalmazás létrehoz egy rdd-kként megkeresni tárolás fülön lévőket kapcsolatos információkat.
-   * Környezet lap – ezen a lapon számos hasznos információkat a Spark-példányt például a 
-     * Scala-verzió
-     * A fürthöz társított Eseménynapló könyvtár
-     * Az alkalmazás végrehajtó magok száma
+   * Storage lap – ha az alkalmazás létrehoz egy RDD, a tárolás lapon talál információt ezekről.
+   * Környezet lap – ezen a lapon számos hasznos információ olvasható a Spark-példányról, például a 
+     * Scala verziója
+     * A fürthöz társított Eseménynapló-könyvtár
+     * Az alkalmazás végrehajtó magjainak száma
      * Etc.
 
-## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Információ a befejezett feladatok használata a Spark-Előzménykiszolgáló
-Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolgáló a rendszer megőrzi.
+## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>A befejezett feladatokkal kapcsolatos információk megkeresése a Spark History Server használatával
+A feladatok elvégzése után a rendszer megőrzi a feladattal kapcsolatos információkat a Spark History-kiszolgálón.
 
-1. Indítsa el a Spark-Előzménykiszolgáló, az Áttekintés panelen kattintson a **Spark-előzménykiszolgáló** alatt **fürt irányítópultjai**.
+1. A Spark-előzmények kiszolgálójának elindításához az Áttekintés panelen kattintson a **Spark History-kiszolgáló** elemre a **fürt irányítópultok**területen.
    
-    ![Indítsa el a Spark-Előzménykiszolgáló](./media/apache-spark-job-debugging/launch-spark-history-server.png)
+    A ![Spark History Kiszolgáló1 elindítása] A (./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark History Kiszolgáló1 elindítása")
    
    > [!TIP]  
-   > Másik lehetőségként a Spark előzmények kiszolgáló felhasználói felülete a az Ambari felhasználói felületén is megnyithatja. Indítsa el a Ambari felhasználói felületén, az Áttekintés panelen kattintson a **otthoni Ambari** alatt **fürt irányítópultjai**. Az Ambari felhasználói felületén kattintson **Spark**, kattintson a **Gyorshivatkozások**, és kattintson a **Spark előzmények kiszolgáló felhasználói felülete**.
+   > Azt is megteheti, hogy a Spark History Server felhasználói felületét is elindítja a Ambari felhasználói felületén. A Ambari felhasználói felületének elindításához az Áttekintés panelen kattintson a **Ambari** elemre a **fürt irányítópultok**területen. A Ambari felhasználói felületén kattintson a **Spark**elemre, majd a **Gyorshivatkozások**elemre, végül pedig a **Spark History Server felhasználói felület**elemre.
 
-2. A befejezett alkalmazásokkal felsorolt láthatja. Kattintson egy Alkalmazásazonosítót az alkalmazás további információk feltárásához.
+2. Megjelenik a felsorolt összes befejezett alkalmazás. További információért kattintson egy alkalmazás-AZONOSÍTÓra az alkalmazásban való részletezéshez.
    
-    ![Indítsa el a Spark-Előzménykiszolgáló](./media/apache-spark-job-debugging/view-completed-applications.png)
+    A ![Spark History Kiszolgáló2 elindítása] A (./media/apache-spark-job-debugging/view-completed-applications.png "Spark History Kiszolgáló2 elindítása")
 
 ## <a name="see-also"></a>Lásd még
 *  [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
-*  [Kiterjesztett Spark-Előzménykiszolgáló használata Apache Spark-feladatok hibakeresése](apache-azure-spark-history-server.md)
+*  [Apache Spark feladatok hibakeresése kiterjesztett Spark History Server használatával](apache-azure-spark-history-server.md)
 
-### <a name="for-data-analysts"></a>Az adatelemzők számára
+### <a name="for-data-analysts"></a>Adatelemzők számára
 
-* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
-* [Application Insights telemetriai adatainak elemzése Apache Spark on HDInsight használatával](apache-spark-analyze-application-insight-logs.md)
-* [Caffe elosztott deep learning az Azure HDInsight Spark használata](apache-spark-deep-learning-caffe.md)
+* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
+* [Az Application Insight telemetria-adatelemzési szolgáltatásának használata a HDInsight-ben Apache Spark](apache-spark-analyze-application-insight-logs.md)
+* [A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz](apache-spark-deep-learning-caffe.md)
 
 ### <a name="for-spark-developers"></a>Spark-fejlesztőknek
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az Apache Spark-alkalmazások távoli hibakeresése az IntelliJ IDEA HDInsight-eszközei beépülő használata](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
-* [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
+* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
+* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)

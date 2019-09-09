@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736051"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814037"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure Machine Learning munkaterhelések futtatása automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
 Azure Machine Learning leegyszerűsíti és felgyorsítja a gépi tanulási modellek kialakítását, betanítását és üzembe helyezését. Az automatikus gépi tanulás (AutoML) szolgáltatásban olyan betanítási adatmennyiségeket indít el, amelyek egy meghatározott cél funkcióval rendelkeznek, majd megismétlik az algoritmusok és a szolgáltatások kiválasztásával, hogy automatikusan kiválassza a legjobb modellt az adataihoz a képzési pontszámok alapján. A HDInsight lehetővé teszi, hogy az ügyfelek több száz csomóponttal építsenek be fürtöket. A HDInsight-fürtön futó AutoML lehetővé teszi a felhasználók számára, hogy számítási kapacitást használjanak ezen csomópontok között, hogy kibővíthető módon futtassák a betanítási feladatokat, és párhuzamosan futtassanak több betanítási feladatot. Ez lehetővé teszi a felhasználók számára, hogy AutoML kísérleteket futtassanak a számítási feladatok más big data munkaterhelésekkel való megosztása során.
  

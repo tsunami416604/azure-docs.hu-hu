@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 4bb57190a310e1ea4b8e5c511f1acd90f53b8f09
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276050"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813462"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Adatok másolása Azure Data Lake Storage Gen1 a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Azure Data Factory verzióját:"]
@@ -163,12 +163,12 @@ Azure Data Factory a társított szolgáltatás általános Data Lake Store info
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **Parquet, a tagolt szöveget, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
-- Más formátumok, például az **ork/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
+- Más formátumok, például az **ork formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú adatkészlet
 
-Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**között szeretne adatokat másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészleten és a támogatott beállításokon.
+Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné másolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú adatkészlet és a támogatott beállítások alapján. .
 A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 `location` a Format-alapú adatkészlet beállítások területén:
 
 | Tulajdonság   | Leírás                                                  | Szükséges |
@@ -209,7 +209,7 @@ A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 `location`
 
 ### <a name="other-format-dataset"></a>Egyéb formátumú adatkészlet
 
-Az adatok Azure Data Lake Store Gen1 az **ork/JSON formátumban**történő másolásához a következő tulajdonságok támogatottak:
+Az adatok Azure Data Lake Store Gen1 az **ork formátumba**való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -261,12 +261,12 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="azure-data-lake-store-as-source"></a>Az Azure Data Lake Store mint forrás
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
 
-Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a formátum-alapú másolási tevékenység forrására .  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási forrás beállításai alatt:
+Ha a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**adatait szeretné átmásolni, tekintse meg a [parketta formátumát](format-parquet.md), a [tagolt szöveg formátumát](format-delimited-text.md), a [Avro formátumát](format-avro.md) és a [bináris formátumú](format-binary.md) cikket a Format-alapú másolási tevékenység forrásáról beállítások.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási forrás beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -324,7 +324,7 @@ Ha a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**adatait sze
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az adatok Azure Data Lake Store Gen1 az **ork vagy JSON formátumban**való másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
+Az adatok Azure Data Lake Store Gen1 az **ork formátumban**való másolásához a következő tulajdonságok támogatottak a másolási tevékenység **forrása** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -366,12 +366,12 @@ Az adatok Azure Data Lake Store Gen1 az **ork vagy JSON formátumban**való más
 
 ### <a name="azure-data-lake-store-as-sink"></a>Az Azure Data Lake Store mint fogadó
 
-- A parketta, a **tagolt szöveg, a Avro vagy a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a Avro és a bináris formátum](#format-based-sink) fogadó szakaszát.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumú mosogató](#format-based-sink) szakaszt.
 - Más formátumokba, például az **ork/JSON formátumba**való másoláshoz tekintse meg a [más Format mosogató](#other-format-sink) szakaszt.
 
-#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, Avro és bináris formátumú fogadó
+#### <a name="format-based-sink"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú fogadó
 
-Az adatmásoláshoz a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadója és a támogatott beállítások alapján.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási fogadó beállításai alatt:
+Az adatgyűjtés a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**között, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység fogadóján és a támogatott beállítások.  A következő tulajdonságok támogatottak Azure Data Lake Store Gen1 a Format `storeSettings` -alapú másolási fogadó beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -419,7 +419,7 @@ Az adatmásoláshoz a **parketta, a tagolt szöveg, a Avro vagy a bináris form�
 
 #### <a name="other-format-sink"></a>Egyéb formátumú fogadó
 
-Ha az Azure Data Lake Store Gen1 az **ork vagy JSON formátumban**szeretné másolni, a **fogadó szakasz a** következő tulajdonságokat támogatja:
+Ha az Adatmásolást az **ork formátumba**Azure Data Lake Store Gen1 szeretné másolni, a **fogadó szakasz a** következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

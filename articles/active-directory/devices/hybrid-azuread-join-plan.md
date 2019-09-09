@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375909"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812445"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
@@ -149,7 +149,7 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |
-| Irányítható | Kezelt | Nem támogatott | |
+| Irányítható | Kezelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
 | Nem irányítható | Kezelt | Nem támogatott | |
 
 ## <a name="next-steps"></a>További lépések

@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight Phoenix-teljesítmény
-description: Ajánlott eljárások a Phoenix teljesítmény optimalizálása érdekében.
+title: Phoenix-teljesítmény az Azure HDInsight
+description: Ajánlott eljárások az Azure HDInsight-fürtök Apache Phoenix teljesítményének optimalizálásához
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,225 +8,225 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690031"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810433"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
-A leginkább fontos szempont a [Apache Phoenix](https://phoenix.apache.org/) teljesítmény optimalizálása az alapul szolgáló [Apache HBase](https://hbase.apache.org/). A Phoenix a HBase, HBase-műveletek, például a vizsgálatok SQL-lekérdezések alakítja interaktív irányítópultunkat relációs adatmodellekkel hoz létre. A következő tábla sémáját, a kijelölés és az elsődleges kulcsot, és az összes indexek használata a mezők sorrendjét a kialakítás befolyásolja a Phoenix teljesítményét.
+[Apache Phoenix](https://phoenix.apache.org/) teljesítményének legfontosabb aspektusa az alapul szolgáló [Apache-HBase](https://hbase.apache.org/)optimalizálása. A Phoenix létrehoz egy, a HBase tetején lévő, az SQL-lekérdezéseket HBase-műveletekre, például vizsgálatokra konvertáló viszonyítási adatmodellt. A tábla sémájának kialakítása, a mezők kiválasztása és sorrendje az elsődleges kulcsban, valamint az indexek használata mind a Phoenix teljesítményét befolyásolja.
 
-## <a name="table-schema-design"></a>Séma Táblatervezés
+## <a name="table-schema-design"></a>Táblázatos séma kialakítása
 
-A Phoenix egy táblát hoz létre, amikor, hogy a táblázat egy HBase-tábla van tárolva. A HBase-táblára (oszlopcsaláddal) oszlopokat, amelyek együtt érhetők el csoportjait tartalmazza. A Phoenix adatbázistábla egy sort a HBase táblában, ahol minden egyes sorban áll, verzióval ellátott cellák társított egy vagy több oszlop. Logikailag a HBase egyetlen sor rowkey ugyanazzal az értékkel rendelkező kulcs-érték párok, gyűjteménye. Azt jelenti minden kulcs-érték pár rowkey attribútummal rendelkezik, és a rowkey tulajdonságok esetén attribútum értékét a adott sorának esetében megegyezik.
+Amikor létrehoz egy táblát a Phoenixben, a tábla egy HBase-táblában tárolódik. A HBase tábla olyan oszlopokat (családokat) tartalmazó csoportokat tartalmaz, amelyek együtt érhetők el. A Phoenix tábla egyik sora a HBase tábla egy sora, ahol minden egyes sor egy vagy több oszlophoz társított, verziószámmal rendelkező cellából áll. Logikailag egyetlen HBase-sor a kulcs-érték párok gyűjteménye, amelyek mindegyike azonos rowkey értékkel rendelkezik. Vagyis minden kulcs-érték pár rowkey attribútummal rendelkezik, és a rowkey attribútum értéke megegyezik egy adott sorra.
 
-A Phoenix tábla séma tervezésekor az elsődleges kulcs a Tervező, oszlop családi tervezési, egyéni oszlop tervezési és az adatok particionálásáról.
+A Phoenix-tábla sémájának kialakítása magában foglalja az elsődleges kulcs kialakítását, az oszlop családjának kialakítását, az egyes oszlopok kialakítását, valamint az adatparticionálás módját.
 
 ### <a name="primary-key-design"></a>Elsődleges kulcs kialakítása
 
-A Phoenix egy tábla definiálva elsődleges kulcs határozza meg, hogyan a rowkey tulajdonságok esetén a mögöttes HBase-tábla adatok vannak tárolva. A HBase a csak egy adott sorának eléréséhez módja a rowkey tulajdonságok esetén. Emellett egy HBase-táblában tárolt adatok a rowkey tulajdonságok esetén van rendezve. A Phoenix a rowkey tulajdonságok esetén érték elkülönített változó összefűzésével előállítjuk értékeit minden a sorban a sorrendben vannak definiálva elsődleges kulcs oszlopa épít fel.
+A Phoenix egyik táblájában definiált elsődleges kulcs határozza meg, hogy a rendszer hogyan tárolja az adatokat a mögöttes HBase tábla rowkey belül. A HBase-ben az adott sorok elérésének egyetlen módja a rowkey. Emellett a HBase-táblában tárolt adatok a rowkey szerint vannak rendezve. A Phoenix létrehozza a rowkey értéket úgy, hogy összefűzi a sorban lévő egyes oszlopok értékeit az elsődleges kulcsban definiált sorrendben.
 
-Például egy tábla a névjegyek, a Utónév, utolsó nevét, telefonszámát és címét, mind az azonos oszlopcsalád. Megadhat egy elsődleges kulcs egy növekvő sorozatszám alapján:
+A névjegyalbumhoz tartozó tábla például az utónév, a vezetéknév, a telefonszám és a címe, amelyek mindegyike ugyanabban az oszlopban található. A növekvő sorszám alapján meghatározhatja az elsődleges kulcsot:
 
-|rowkey tulajdonságok esetén|       Cím|   Telefonszám| Keresztnév| Vezetéknév|
+|rowkey|       cím|   telefon| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
-Azonban ha gyakori lekérdezési pedig Vezetéknév szerint az elsődleges kulcs nem végezhet, mert egyes lekérdezések teljes tábla beolvasásával minden lastName értékének olvasásához szükséges. Ehelyett a lastName, firstName és társadalombiztosítási szám oszlop elsődleges kulcs adhatja meg. Ebben az utolsó oszlopban az elem egyértelműségének biztosításához két lakosai ugyanazzal a névvel, például a father és lányomtól ugyanaz címen.
+Ha azonban gyakran az utónév alapján kérdezi le, hogy az elsődleges kulcs nem jól teljesít, mert minden lekérdezés teljes táblázatos vizsgálatot igényel az összes lastName értékének beolvasásához. Ehelyett megadhat egy elsődleges kulcsot a lastName, a firstName és a társadalombiztosítási szám oszlopokban. Ez az utolsó oszlop egy azonos nevű, például egy apa és egy fia, ugyanazon a címen lévő két lakos egyértelműsítse.
 
-|rowkey tulajdonságok esetén|       Cím|   Telefonszám| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey|       cím|   telefon| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
-Ez az új elsődleges kulcs a sor a Phoenix által létrehozott kulcsok a következő lesz:
+Ezzel az új elsődleges kulccsal a Phoenix által generált sorok kulcsai a következőek lesznek:
 
-|rowkey tulajdonságok esetén|       Cím|   Telefonszám| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey|       cím|   telefon| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
-A fenti első sorában az adatokat a rowkey tulajdonságok esetén jelölt látható módon:
+A fenti első sorban a rowkey az alábbi módon jelenik meg:
 
-|rowkey tulajdonságok esetén|       key|   value| 
+|rowkey|       key|   value| 
 |------|--------------------|---|
-|  Dole – John-111|Cím |1111 San Gabriel Dr.|  
-|  Dole – John-111|Telefonszám |1-425-000-0002|  
-|  Dole – John-111|Keresztnév |János|  
-|  Dole – John-111|Vezetéknév |Dole|  
-|  Dole – John-111|socialSecurityNum |111| 
+|  Dole-John-111|cím |1111 San Gabriel Dr.|  
+|  Dole-John-111|telefon |1-425-000-0002|  
+|  Dole-John-111|firstName |John|  
+|  Dole-John-111|lastName |Dole|  
+|  Dole-John-111|socialSecurityNum |111| 
 
-A rowkey tulajdonságok esetén most már az adatok másolatát tárolja. Fontolja meg a méretét és az Ön elsődleges kulcsa, a is tartalmazó oszlopok számát, mert ez az érték megtalálható a mögöttes HBase táblában lévő minden celláját.
+Ez a rowkey most az adatmásolatot tárolja. Vegye figyelembe az elsődleges kulcsban foglalt oszlopok méretét és számát, mivel ez az érték szerepel az alapul szolgáló HBase tábla minden cellájában.
 
-Is, ha az elsődleges kulcs értékeket, amelyeket a rendszer monoton növekvő rendelkezik, létre kell hoznia a táblát, amelynek *gyűjtők sója* elkerüléséhez írási elérési pontokhoz történő létrehozásához – lásd: [adatokat](#partition-data).
+Továbbá, ha az elsődleges kulcs monoton módon növekvő értékkel rendelkezik, akkor a táblát a *Salt buckets* használatával kell létrehoznia, hogy elkerülje az írási pontok létrehozását – lásd: [partíciós adatok](#partition-data).
 
-### <a name="column-family-design"></a>Családi tervezési oszlop
+### <a name="column-family-design"></a>Oszlop családjának kialakítása
 
-Ha egyes oszlopokat, mint a többi gyakrabban elért, létre kell hoznia a gyakran használt oszlopok elkülönítése a ritkán használt oszlopok több oszlopcsaláddal.
+Ha egyes oszlopokat gyakrabban használ, mint másokat, hozzon létre több oszlopos családot, hogy elkülönítse a gyakran használt oszlopokat a ritkán használt oszlopokból.
 
-Is ha egyes oszlopokat általában a férnek hozzá együtt, helyezze el oszlopokat az azonos oszlopcsalád.
+Továbbá, ha bizonyos oszlopok általában együtt férnek hozzá, az oszlopokat ugyanabba az oszlopba helyezi.
 
-### <a name="column-design"></a>Oszlop-Tervező
+### <a name="column-design"></a>Oszlop kialakítása
 
-* Tartsa meg a VARCHAR oszlop alatt nagy oszlopok az i/o-költségek miatt körülbelül 1 MB. Lekérdezések feldolgozásakor a HBase teljes cellák megvalósul keresztül elküldi azokat az ügyfél előtt, és az ügyfél megkapja őket teljes egészében az alkalmazáskód őket leadása előtt.
-* Oszlopbeli értékek kompakt formátumban, például a protopuf, Avro, msgpack vagy BSON Store. JSON nem ajánlott, mivel nagyobb.
-* Vegye figyelembe, hogy tömöríti az adatokat, mielőtt tárolási történő kivágási, a késés és i/o-költségek.
+* A nagyméretű oszlopok I/O-költségei miatt a VARCHAR-oszlopok körülbelül 1 MB-ban maradnak. A lekérdezések feldolgozásakor a HBase teljes egészében megkezdi a cellák megadását, mielőtt elküldené őket az ügyfélnek, és az ügyfél teljes egészében fogadja őket, mielőtt kiadná őket az alkalmazás kódjába.
+* Az oszlopok értékeinek tárolása kompakt formátummal, például protopuf, Avro, msgpack vagy BSON. A JSON használata nem ajánlott, mert nagyobb.
+* A késés és az I/O-költségek csökkentése érdekében érdemes lehet az adatok tömörítését a tárterület előtt.
 
 ### <a name="partition-data"></a>Partícióadatok
 
-A Phoenix segítségével szabályozható a számot, ahol az adatok terjesztése, régiók, ami jelentősen megnövelheti olvasási/írási teljesítmény. A Phoenix tábla létrehozásakor sója, vagy előre fel az adatokat.
+A Phoenix lehetővé teszi, hogy szabályozza a régiók számát, ahol az adatait forgalmazzák, ami jelentősen növelheti az írási/olvasási teljesítményt. Phoenix-tábla létrehozásakor megadhatja az adatait, vagy megoszthatja azokat előre.
 
-Só tábla létrehozása során, adja meg a védőérték gyűjtők száma:
+Egy tábla a létrehozás során történő megadásához határozza meg a sós gyűjtők számát:
 
     CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
 
-Ez sózás felosztja a tábla elsődleges kulcs, az értékek kiválasztása automatikusan értékeit mentén. 
+Ez a sós feldarabolja a táblázatot az elsődleges kulcsok értékei mellett, automatikusan kiválasztja az értékeket. 
 
-Szabályozhatja, ahol a táblázat elágazást fordulhat elő, akkor is előre feloszthatja az a tábla azáltal, hogy a tartományértékeknek, amely mentén a felosztás történik. Például hozzon létre egy táblát a felosztás mentén három régióban:
+A tábla felosztásának szabályozásához megadhatja a tábla előzetes felosztását úgy, hogy megadja a tartomány értékeit, amelyeken a felosztás történik. Például egy három régióra bontott tábla létrehozásához:
 
     CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
 
 ## <a name="index-design"></a>Index kialakítása
 
-A Phoenix indexe egy HBase-tábla, amelyek vagy azok egy részét az indexelt táblából az adatok másolatát tárolja. Az index javítja a teljesítményt az adott típusú lekérdezések.
+A Phoenix index egy HBase tábla, amely az indexelt táblából származó adatok egy vagy több példányát tárolja. Az index javítja a különböző típusú lekérdezések teljesítményét.
 
-Ha több indexet és majd lekérdezni egy táblát, Phoenix automatikusan kiválasztja az ajánlott index a lekérdezéshez. Az elsődleges index, válassza ki az elsődleges kulcsok alapján automatikusan jön létre.
+Ha több index van meghatározva, majd lekérdez egy táblát, a Phoenix automatikusan kiválasztja a lekérdezés legjobb indexét. Az elsődleges index automatikusan létrejön a kiválasztott elsődleges kulcsok alapján.
 
-Várható lekérdezések esetén is az oszlopok megadásával hozhat létre másodlagos indexeket.
+A várt lekérdezések esetében másodlagos indexeket is létrehozhat az oszlopok megadásával.
 
 Az indexek tervezésekor:
 
-* Csak hozzon létre a szükséges indexeket.
-* Gyakran frissített táblák indexei számának korlátozásához. Egy táblához frissítések jelenti azt, hogy a főtábla mind az indextáblákat írási műveletek.
+* Csak a szükséges indexeket hozza létre.
+* Az indexek számának korlátozása a gyakran frissített táblákon. A táblák frissítései a főtáblára és az index táblákra is lefordítják az írásokat.
 
-## <a name="create-secondary-indexes"></a>A másodlagos indexek létrehozása
+## <a name="create-secondary-indexes"></a>Másodlagos indexek létrehozása
 
-A másodlagos indexek mi lenne lehet be egy pont keresési cserébe tárterület teljes tábla beolvasásával és írási sebesség olvasási teljesítménye növelhető. A másodlagos indexek adhatók hozzá vagy eltávolítja a tábla létrehozása után, és nem igényel változtatásokat a meglévő lekérdezéseket – lekérdezések csak gyorsabban futnak. Igényeitől függően célszerű lehet kezelt indexek, működési indexeket, vagy mindkettőt.
+A másodlagos indexek javíthatják az olvasási teljesítményt, ha megfordítják, hogy mi lenne a teljes táblázatos vizsgálat egy pontra történő kereséskor a tárterület és az írási sebesség alapján. A másodlagos indexek a tábla létrehozása után hozzáadhatók vagy eltávolíthatók, és nem szükséges módosítani a meglévő lekérdezéseket – a lekérdezések csak gyorsabban futnak. Az igényektől függően érdemes lehet a kezelt indexeket, a funkcionális indexeket vagy mindkettőt létrehozni.
 
-### <a name="use-covered-indexes"></a>Az érintett indexek használata
+### <a name="use-covered-indexes"></a>Kezelt indexek használata
 
-Az érintett indexek közé tartoznak a sor mellett az indexelt értékek adatai indexeket. Miután megtalálta a kívánt indexbejegyzése, van, nem szükséges elsődleges tábla eléréséhez.
+A kezelt indexek olyan indexek, amelyek az indexelt értékeken kívül a sorból származó adatokkal is rendelkeznek. Miután megtalálta a kívánt tárgymutató-bejegyzést, nincs szükség az elsődleges táblához való hozzáférésre.
 
-A példában például létrehozhat egy másodlagos indexet csak socialSecurityNum oszlopában táblázatban forduljon. A másodlagos index lenne felgyorsítása socialSecurityNum értékek szerint szűrő lekérdezéseket, de más mezőértékek beolvasása lesz szükség, egy másik olvassa el a fő táblázaton.
+A példában szereplő Contact táblában például létrehozhat egy másodlagos indexet a socialSecurityNum oszlopon. Ez a másodlagos index felgyorsítja a socialSecurityNum értékek alapján szűrt lekérdezéseket, de a többi mező értékének beolvasásához egy másikat kell beolvasni a főtáblán.
 
-|rowkey tulajdonságok esetén|       Cím|   Telefonszám| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey|       cím|   telefon| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
-Ha szeretné általában, a Vezetéknév és az socialSecurityNum megadott lastName kereséséhez, létrehozhat egy kezelt index, amely tartalmazza a Keresztnév és Vezetéknév szerint a tényleges adatok az indextáblában:
+Ha azonban általában a firstName és a lastName alapján szeretné megkeresni a socialSecurityNum, létrehozhat egy kezelt indexet, amely tartalmazza a firstName és a lastName adatokat az index táblában lévő tényleges adatokként:
 
     CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
 
-A kezelt index lehetővé teszi, hogy a következő lekérdezés az összes adat beszerezni úgy, ha a másodlagos indexet tartalmazó tábla olvasásakor:
+Ez a kezelt index lehetővé teszi, hogy a következő lekérdezés csak a másodlagos indexet tartalmazó táblából olvassa be az összes adatforrást:
 
     SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
 
 ### <a name="use-functional-indexes"></a>Funkcionális indexek használata
 
-Funkcionális indexek indexet létrehozni egy tetszőleges kifejezést várt lehet használni a lekérdezésekben teszi lehetővé. Egy funkcionális index már működik a, és a egy lekérdezést a kifejezést használ, az index használható a data-tábla helyett az eredmények lekéréséhez.
+A funkcionális indexek lehetővé teszik, hogy indexet hozzon létre egy tetszőleges kifejezésen, amelyet a lekérdezésekben használni kíván. Ha egy funkcionális index van érvényben, és a lekérdezés ezt a kifejezést használja, az index az adattábla helyett az eredmények lekérésére használható.
 
-Ha például sikerült létrehozni az indexet, amelyekkel a kombinált Utónév és a egy személy vezetékneve kis-és keresések:
+Létrehozhat például egy indexet, amely lehetővé teszi a kis-és nagybetűket megkülönböztető keresések használatát egy személy összevont vezetékneve és vezetékneve alapján:
 
      CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
 
-## <a name="query-design"></a>Lekérdezésterv
+## <a name="query-design"></a>Lekérdezési terv
 
-A lekérdezés a fő szempontok a következők:
+A lekérdezési terv főbb szempontjai a következők:
 
-* A lekérdezési terv ismertetése, és ellenőrizze a várt viselkedés.
-* Csatlakozzon a hatékony.
+* Ismerje meg a lekérdezési tervet, és ellenőrizze a várt viselkedését.
+* Hatékony csatlakozás.
 
 ### <a name="understand-the-query-plan"></a>A lekérdezési terv ismertetése
 
-A [az SQLLine](http://sqlline.sourceforge.net/), műveletek, amelyek végrehajtják a Phoenix a terv megtekintéséhez használja az SQL-lekérdezés követ magyarázat. Ellenőrizze, hogy a terv:
+A [az sqlline használata](http://sqlline.sourceforge.net/)-ben használja a magyarázatot, majd az SQL-lekérdezést a Phoenix által végrehajtandó műveletek tervének megtekintéséhez. Győződjön meg arról, hogy a terv:
 
-* Adott esetben az elsődleges kulcsot használja.
-* Használja a másodlagos indexeket ahelyett, hogy a tábla megfelelő.
-* TARTOMÁNY-ellenőrzési vagy KIHAGYÁSA vizsgálat, amikor csak lehetséges, helyett használja tábla beolvasása.
+* Szükség esetén az elsődleges kulcsot használja.
+* Az adattábla helyett megfelelő másodlagos indexeket használ.
+* A tartomány vizsgálata vagy a vizsgálat kihagyása, ha lehetséges, a táblázat vizsgálata helyett.
 
-#### <a name="plan-examples"></a>Példák megtervezése
+#### <a name="plan-examples"></a>Példák tervezése
 
-Például tegyük fel, hogy már rendelkezünk egy táblával, légi járatok nevű tároló repülőjáratokkal késleltetés kapcsolatos információkat tartalmaz.
+Tegyük fel például, hogy rendelkezik egy REPÜLŐJÁRATok nevű táblázattal, amely a repülési késleltetési adatokat tárolja.
 
-Válassza ki a egy airlineid, légi járatok `19805`, ahol a airlineid egy mezőt, amely nem szerepel az elsődleges kulcs, vagy bármely indexben:
+Az összes olyan járat kiválasztásához `19805`, amely egy airlineid rendelkezik, ahol a airlineid olyan mező, amely nem szerepel az elsődleges kulcsban vagy bármely indexben:
 
     select * from "FLIGHTS" where airlineid = '19805';
 
-Futtassa a következő a magyarázat parancsot:
+Futtassa a magyarázat parancsot az alábbiak szerint:
 
     explain select * from "FLIGHTS" where airlineid = '19805';
 
-A lekérdezésterv így néz ki:
+A lekérdezési terv így néz ki:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
         SERVER FILTER BY AIRLINEID = '19805'
 
-Ebben a csomagban vegye figyelembe a teljes vizsgálat keresztül REPÜLŐJÁRATOK kifejezés helyett szerepel. Ezt a kifejezést jelzi, hogy a végrehajtási does egy tábla beolvasása a táblából, nem pedig a hatékonyabb tartomány-ellenőrzési vagy KIHAGYÁSA vizsgálat lehetőséggel összes sorának.
+Ebben a csomagban jegyezze fel a teljes VIZSGÁLATra vonatkozó mondatot a JÁRATokon. Ez a kifejezés azt jelzi, hogy a végrehajtás a tábla összes sorának átvizsgálása helyett a hatékonyabb tartomány-ellenőrzés vagy a vizsgálat kihagyása lehetőség használatával történik.
 
-Most tegyük fel, hogy le szeretné kérdezni a járatok 2014. január 2. a szolgáltató a `AA` ahol annak flightnum értéke meghaladja az 1. Tegyük fel, hogy az oszlopok év, hónap, dayofmonth, szolgáltatója és flightnum példa táblának, és az összetett elsődleges kulcs minden részét képezik. A lekérdezés a következőképpen jelenne meg:
+Most tegyük fel, hogy a 2014 január 2-án szeretné lekérdezni a `AA` járatokat, ahol a flightnum nagyobb volt, mint 1. Tegyük fel, hogy az év, hónap, dayofmonth, Carrier és flightnum oszlopok szerepelnek a példában szereplő táblázatban, és az összetett elsődleges kulcsnak mind részét képezik. A lekérdezés a következőképpen néz ki:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
-Most vizsgálja meg ezt a lekérdezést a csomagot:
+Vizsgáljuk meg a lekérdezés tervét a következővel:
 
     explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
-Az eredményül kapott csomag a következő:
+A létrejövő terv a következő:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
 
-Az szögletes zárójelek között szereplő értékek értékek az elsődleges kulcs. Ebben az esetben a tartományértékeknek a 2014-es évre, havi 1 és dayofmonth 2 rögzítettek, de lehetővé teszi értékek flightnum indul el, 2 és a (`*`). A lekérdezésterv megerősíti, hogy az elsődleges kulcs használatban van a várt módon.
+A szögletes zárójelben lévő értékek az elsődleges kulcsok értékeinek tartománya. Ebben az esetben a tartomány értékeit a 2014, az 1. és a 2. hónap, a dayofmonth pedig a 2. és a (`*`z) flightnum értékekkel kell megállapítani. A lekérdezési terv megerősíti, hogy az elsődleges kulcs a várt módon van használatban.
 
-Ezután hozzon létre egy index nevű REPÜLŐJÁRATOK táblára `carrier2_idx` Ez csak a szolgáltató mezőre. Ez az index is flightdate, tailnum, eredet és flightnum kezelt oszlopként, amelynek az adatait tárolja az index.
+Ezután hozzon létre egy indexet az nevű `carrier2_idx` Flights táblán, amely csak a hordozófrekvencia mezőben szerepel. Ez az index a flightdate, a tailnum, a Origin és a flightnum is tartalmazza olyan kezelt oszlopként, amely az indexben is tárolva van.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
-Tegyük fel, hogy szeretne kapni a szolgáltatói flightdate és tailnum, ahogy a következő lekérdezést:
+Tegyük fel, hogy a szállítót a flightdate és a tailnum együtt szeretné beszerezni, ahogy az a következő lekérdezésben is szerepel:
 
     explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
 
-Ez az index használt kell megjelennie:
+Ezt az indexet kell használnia:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
 
-Teljes listáját a cikkek, amelyek szerepelhetnek terv eredmények ismertetik, a csomagok ismertetik című a [Apache Phoenix teljesítményhangolási útmutatóból](https://phoenix.apache.org/tuning_guide.html).
+A kiértékelési terv eredményei között megjelenő elemek teljes listájáért tekintse meg a [Apache Phoenix hangolási útmutató](https://phoenix.apache.org/tuning_guide.html)a csomagok ismertetése című szakaszát.
 
-### <a name="join-efficiently"></a>Csatlakozás hatékonyan
+### <a name="join-efficiently"></a>Hatékony csatlakozás
 
-Általában érdemes illesztések elkerülése érdekében, kivéve, ha az egyik oldal kicsi, különösen a gyakori lekérdezések.
+Általában érdemes elkerülni az illesztéseket, ha az egyik oldal kicsi, különösen a gyakori lekérdezéseknél.
 
-Ha szükséges, azt megteheti a nagyobb egyesítéseknél a `/*+ USE_SORT_MERGE_JOIN */` mutatót, de a nagy csatlakozzon – drága művelet hatalmas mennyiségű sort felett. Ha az összes oldali jobb táblák teljes mérete meghaladná a rendelkezésre álló memória, a `/*+ NO_STAR_JOIN */` mutatót.
+Ha szükséges, nagy illesztéseket végezhet a `/*+ USE_SORT_MERGE_JOIN */` mutatóval, de a nagyméretű illesztés egy költséges művelet, amely nagy mennyiségű sort használ. Ha a jobb oldali táblák teljes mérete túllépi a rendelkezésre álló memóriát, használja a `/*+ NO_STAR_JOIN */` mutatót.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Az alábbi irányelveket a gyakori minták ismertetik.
+Az alábbi irányelvek néhány gyakori mintát ismertetnek.
 
-### <a name="read-heavy-workloads"></a>Olvasási számítási feladatokhoz
+### <a name="read-heavy-workloads"></a>Nehezen olvasható számítási feladatok
 
-Olvasási a használati esetek, győződjön meg arról, hogy indexeket használ. Továbbá időmegtakarítás olvasási-többletterhelést okoz, vegye figyelembe, az érintett indexek létrehozása.
+Az olvasási idejű használatra vonatkozó esetekben győződjön meg róla, hogy indexeket használ. Emellett az olvasási idő terhelésének megtakarításához vegye fontolóra a kezelt indexek létrehozását.
 
-### <a name="write-heavy-workloads"></a>Írási számítási feladatok
+### <a name="write-heavy-workloads"></a>Írási – nagy számítási feladatok
 
-Írási műveltekből számítási feladatokhoz, ahol monoton növekvő a az elsődleges kulcsot hozzon létre védőérték gyűjtők írási elérési pontokhoz miatt a további vizsgálat szükséges általános olvasási teljesítmény rovására elkerülése érdekében. Ezenkívül UPSERT írhat rekordokat nagy számú használatakor kapcsolja ki Végrehajtású és a batch a rekordokat.
+A nagy mennyiségű írható munkaterhelések esetében, ahol az elsődleges kulcs monoton módon növekszik, hozzon létre Salt vödöreket az írási pontok elkerüléséhez, a további vizsgálatok miatt a teljes olvasási teljesítmény rovására. Emellett, ha a UPSERT nagy mennyiségű rekordot ír, kapcsolja ki az autocommit, és állítsa be a rekordok kötegelt feldolgozását.
 
 ### <a name="bulk-deletes"></a>Tömeges törlés
 
-Nagyméretű törlésekor kapcsolja be a Végrehajtású a TÖRLŐ lekérdezések kiadása előtt, hogy az ügyfélnek nincs szüksége az összes törölt sor sorkulcsok jegyezni. Végrehajtású megakadályozza, hogy az ügyfél pufferelés a sorokat, a törlés hatással, úgy, hogy a Phoenix is törölheti azokat közvetlenül a kiszolgálókon régió adnak vissza őket az ügyfél járó költségek nélkül.
+Nagyméretű adatkészletek törlésekor a DELETE lekérdezés kiadása előtt kapcsolja be az autocommit, hogy az ügyfél ne jegyezze fel a Törölt sorok sorait. Az autocommit utasítás megakadályozza, hogy az ügyfél pufferelést hajtson végre a törlés által érintett sorokon, hogy a Phoenix közvetlenül a régió-kiszolgálókon törölje azokat anélkül, hogy az ügyfélnek kellene visszaadnia azokat.
 
-### <a name="immutable-and-append-only"></a>Nem módosítható, és csak hozzáfűzése
+### <a name="immutable-and-append-only"></a>Nem módosítható és csak Hozzáfűzés
 
-Ha a forgatókönyv írási sebesség adatintegritásának előnyben részesítése szemben, vegye figyelembe, írási előre napló letiltása, ha a táblázatok létrehozásával:
+Ha a forgatókönyv az adatok integritásának írási sebességét részesíti előnyben, érdemes lehet letiltani a Write-Ahead naplót a táblák létrehozásakor:
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-További információ erről és más beállítások: [Apache Phoenix nyelvtani](https://phoenix.apache.org/language/index.html#options).
+Ezen és egyéb beállításokkal kapcsolatos további információkért lásd: [Apache Phoenix nyelvtan](https://phoenix.apache.org/language/index.html#options).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Apache Phoenix-finomhangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
-* [A másodlagos indexek](https://phoenix.apache.org/secondary_indexing.html)
+* [Apache Phoenix hangolási útmutató](https://phoenix.apache.org/tuning_guide.html)
+* [Másodlagos indexek](https://phoenix.apache.org/secondary_indexing.html)

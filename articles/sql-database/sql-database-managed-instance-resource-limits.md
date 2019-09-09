@@ -11,19 +11,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c0bfbbd8b85f0b3eadf468cdd1261f52bff26abe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060635"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813380"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
 Ez a cikk áttekintést nyújt a felügyelt példányok Azure SQL Database erőforrás-korlátairól, és információt nyújt arról, hogyan kérheti a határértékek növelését.
 
 > [!NOTE]
-> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-](sql-database-managed-instance-transact-sql-information.md)utasítások támogatását.
+> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-utasítások támogatását](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>Példány szintű erőforrás-korlátok
 
@@ -54,18 +54,20 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: Általános cél�
 | Virtuális mag száma\* | Gen4 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
 | Maximális memória | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
 | Példányok maximálisan fenntartott tárolási mérete | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4 1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
-| Adatbázisok maximális mérete | A példányok maximális tárolási mérete határozza meg. | A példányok maximális tárolási mérete határozza meg. |
+| Adatbázisok maximális mérete | 8 TB | 4 TB |
 | Adatbázisok maximális száma egy példányon | 100 | 100 |
 | Adatbázisfájlok maximális száma egy példányban | Akár 280 | 32 767 fájl/adatbázis |
 | Maximális fájlméret | 8 TB | 4 TB |
-| Adat/napló IOPS (hozzávetőleges) | 500 – 7 500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
+| Adat/napló IOPS (hozzávetőleges) | 500 – 7 500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
 | Napló írási átviteli korlátja | 3 MB/s/virtuális mag<br/>Legfeljebb 22 MB/s/példány | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s/példány|
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
 | Maximális tempDB-méret | 192 – 1 920 GB (24 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | A példányok maximális tárolási mérete korlátozza. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
 | Memóriabeli OLTP beállítása | Nem támogatott | Elérhető |
 | Munkamenetek maximális száma | 30000 | 30000 |
-| Olvasható replikák | 0 | 1 |
+| Olvasható replikák | 0 | 1 (az ár tartalmazza) |
+| Díjszabás/számlázás | Virtuális mag, fenntartott tár  <br/> A IOPS nem számítja fel, a biztonsági mentési tár még nincs felszámítva. | Virtuális mag, fenntartott tár  <br/> A IOPS nem számítja fel, a biztonsági mentési tár még nincs felszámítva. | 
+| Kedvezményes modellek | [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nem érhető el a fejlesztési és tesztelési előfizetéseken) | [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nem érhető el a fejlesztési és tesztelési előfizetéseken)|
 
 > [!NOTE]
 > - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
@@ -97,7 +99,7 @@ A támogatott előfizetési típusok régiónként korlátozott számú erőforr
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.
 
-A következő táblázat a támogatott előfizetések alapértelmezett regionális korlátait tartalmazza:
+A következő táblázat a támogatott előfizetési típusok **alapértelmezett regionális korlátait** mutatja be (az alapértelmezett határértékek az alább ismertetett támogatási kérelem használatával bővíthetők):
 
 |Előfizetés típusa| Felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
@@ -133,7 +135,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 4. Az új támogatási kérelem **probléma lapján** :
    - A **Súlyosság**beállításnál válassza ki a probléma súlyossági szintjét.
    - **Részletekért**adja meg a hibával kapcsolatos további információkat, beleértve a hibaüzeneteket is.
-   - Fájlfeltöltésesetén csatoljon egy fájlt további információkkal (legfeljebb 4 MB).
+   - Fájlfeltöltés **esetén**csatoljon egy fájlt további információkkal (legfeljebb 4 MB).
 
      ![Probléma részletei](media/sql-database-managed-instance-resource-limits/problem-details.png)
 

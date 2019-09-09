@@ -1,6 +1,6 @@
 ---
 title: 'Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió) '
-description: Részletes útmutató a HDInsight-eszközök használatáról a Azure Toolkit for IntelliJban az alkalmazások távoli HDInsight-fürtökön keresztül SSH-n keresztül történő hibakereséséhez
+description: Útmutatás az alkalmazások hibakereséséhez a Azure Toolkit for IntelliJ HDInsight eszközeinek használatával
 keywords: távoli IntelliJ hibakeresése, távoli hibakeresés IntelliJ, SSH, IntelliJ, hdinsight, hibakeresési IntelliJ, hibakeresés
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: aff9f0f70377ebc6e741618b22ff82bc06251521
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a07dcd58263674aa6fd360e138c0b9c999ea644e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295911"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814144"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)
 
@@ -39,7 +39,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
    a. Válassza ki az **Azure Spark/HDInsight** elemet a bal oldali panelen. 
 
-   b. A főablakból válassza a hiba feladatának hibakeresése (előzetes verzió) lehetőséget a **Spark Project szolgáltatásban** .
+   b. A főablakból válassza a **hiba feladatának hibakeresése (előzetes verzió) lehetőséget a Spark Project szolgáltatásban** .
 
      ![Hibakeresési projekt létrehozása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
@@ -83,7 +83,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
 6. Az alkalmazás AZONOSÍTÓját a kimenet ablakban tekintheti meg.
    
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
+   ![Távoli Futtatás eredménye](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
 
 ## <a name="download-failed-job-profile"></a>Sikertelen munkahelyi profil letöltése
 
@@ -91,23 +91,23 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 
 1. Nyissa meg **Microsoft Azure Storage Explorer**, keresse meg a sikertelen feladatokhoz tartozó fürt HDInsight-fiókját, töltse le a sikertelen feladatok erőforrásait a megfelelő helyről: **\hdp\spark2-Events\\.\\ Spark-hibákaz\<alkalmazás-azonosító >** egy helyi mappába. A **tevékenységek** ablakban megjelennek a letöltési folyamat.
 
-   ![letöltési hiba fájlja](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![letöltési hiba file1](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![letöltési hiba fájlja](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
+   ![letöltési hiba fájl2](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Helyi hibakeresési környezet konfigurálása és sikertelen hibakeresés
 
 1. Nyissa meg az eredeti projektet, vagy hozzon létre egy új projektet, és társítsa az eredeti forráskódhoz. Jelenleg csak a Spark 2.3.2 verziója támogatott a hibák hibakereséséhez.
 
-2. A IntelliJ IDEA-ben hozzon létre egy **Spark-hiba hibakeresési** konfigurációs fájlját, válassza ki az FTD-fájlt a korábban letöltött sikertelen feladatok erőforrásai közül a Spark-feladatokhoz tartozó **környezeti hely** mezőnél.
+2. A IntelliJ IDEA-ben hozzon létre egy **Spark-hiba hibakeresési** konfigurációs fájlját, válassza ki az FTD-fájlt a korábban letöltött sikertelen feladatok erőforrásai közül a **Spark-feladatokhoz tartozó környezeti hely** mezőnél.
    
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![Crete-hibák konfigurálása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 4. Kattintson a helyi Futtatás gombra az eszköztáron, a hiba a Futtatás ablakban jelenik meg.
    
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![Futtatás – hiba – configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![Futtatás – hiba – configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 5. Állítsa be a töréspontot a naplóban, majd kattintson a helyi hibakeresés gombra a helyi hibakereséshez ugyanúgy, mint a IntelliJ szokásos Scala/Java-projektjei.
 
@@ -116,7 +116,7 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 ## <a name="seealso"></a>Következő lépések
 * [Áttekintés Alkalmazások hibakeresése Apache Spark](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
-### <a name="demo"></a>Bemutató
+### <a name="demo"></a>Demó
 * Scala-projekt létrehozása (videó): [Apache Spark Scala-alkalmazások létrehozása](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
 * Távoli hibakeresés (videó): [Apache Spark alkalmazások távoli hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ használatával](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b233fcecfe80d1ce4464d2d02fdddb188f9265a7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878242"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806533"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Gyors útmutató: Egy minta IoT csatlakoztatása Plug and Play Preview-eszköz alkalmazásának IoT Hub
 
@@ -23,7 +23,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Pl
 
 A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi gépre:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali C++ fejlesztést** a Visual Studio telepítésekor számítási feladatokkal végezze el.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
 * [Git](https://git-scm.com/download/).
 * [CMAK](https://cmake.org/download/).
 
@@ -36,6 +36,9 @@ Töltse le és telepítse az Azure IoT Explorer eszközt a [legújabb kiadási](
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE]
+> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
 
 Adja hozzá a Microsoft Azure IoT bővítményt az Azure CLI-hez:
 
@@ -55,7 +58,7 @@ Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _esz
 az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
 ```
 
-Futtassa az alábbi parancsokat a hub _IoT hub_ -kapcsolódási karakterláncának lekéréséhez:
+Futtassa az alábbi parancsokat a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
@@ -129,7 +132,7 @@ Az eszköz megkezdi az adatok küldését a IoT Hubba.
 
 1. Válassza a **Tulajdonságok (írható)** lapot a frissíteni kívánt írható tulajdonságok megtekintéséhez.
 
-1. Bontsaki a tulajdonságnév, a frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
+1. Bontsa **ki a tulajdonságnév, a**frissítés új névvel elemet, majd válassza az **írható tulajdonság frissítése**lehetőséget. 
 
 1. Ha látni szeretné, hogy az új név megjelenik a **jelentett tulajdonság** oszlopban, kattintson a lap tetején található **frissítés** gombra.
 

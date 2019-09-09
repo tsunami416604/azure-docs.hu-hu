@@ -1,6 +1,6 @@
 ---
 title: Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
-description: Ismerje meg, hogyan lehet elhárítani az Azure HDInsight-fürtök létrehozásával kapcsolatos problémákat.
+description: Ismerje meg, hogyan oldhatja meg az Apache cluster-létrehozási problémákat az Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 84dc0115edcab07036b43d5fa19310918f7a2408
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035969"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810678"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
@@ -29,7 +29,7 @@ A fürtök létrehozásával kapcsolatos hibák leggyakoribb kiváltó okai a k�
 
 ## <a name="permissions-issues"></a>Engedélyekkel kapcsolatos problémák
 
-Ha Azure Data Lake Storage Gen2 használ, és a hibaüzenetet ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```kapja, nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **tárolási blob adatközreműködői** vagy a Storage- **blob Az adat** -tulajdonosi szerepkör hozzá van rendelve a **felhasználóhoz rendelt felügyelt identitáshoz** az előfizetéshez. Részletes utasításokért lásd: a felügyelt identitáshoz tartozó [engedélyek beállítása a Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) -fiókban.
+Ha Azure Data Lake Storage Gen2 használ, és a hibaüzenetet ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```kapja, nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **tárolási blob adatközreműködői** vagy a Storage- **blob Az adat-tulajdonosi** szerepkör hozzá van rendelve a **felhasználóhoz rendelt felügyelt identitáshoz** az előfizetéshez. További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
 
 Ha Azure Data Lake Storage Gen1 használ, tekintse meg a telepítési és konfigurációs utasításokat [itt](../hdinsight-hadoop-use-data-lake-store.md). A Data Lake Storage Gen1 HBase-fürtök esetén nem támogatott, és a HDInsight 4,0-es verziójában nem támogatott.
 
@@ -64,7 +64,7 @@ Ha expressz útvonalat vagy saját egyéni DNS-kiszolgálót használ, tekintse 
 
 ## <a name="resources-locks"></a>Erőforrások zárolása  
 
-Győződjön meg arról, hogy a [virtuális hálózat és az erőforráscsoport](../../azure-resource-manager/resource-group-lock-resources.md)nem zárolható.  
+Győződjön meg arról, hogy a [virtuális hálózat és az erőforráscsoport nem zárolható](../../azure-resource-manager/resource-group-lock-resources.md).  
 
 ## <a name="unsupported-component-versions"></a>Nem támogatott összetevő-verziók
 

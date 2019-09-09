@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623904"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811676"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához Linux-alapú Azure-HDInsight
 
@@ -37,7 +37,7 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 * **Egy Azure SQL Database**.  Lásd: [Azure SQL Database létrehozása a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy nevű `oozietest`adatbázist használ.
 
-* A fürtök elsődleges tárolójának [URI](./hdinsight-hadoop-linux-information.md#URI-and-scheme) -sémája. Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../storage/common/storage-require-secure-transfer.md)is el kell látnia.
+* A fürtök elsődleges tárolójának [URI-sémája](./hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../storage/common/storage-require-secure-transfer.md)is el kell látnia.
 
 
 ## <a name="example-workflow"></a>Példa munkafolyamat
@@ -520,9 +520,9 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
     ![Munkakör adatai](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
-6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti a feladatdefiníció, a **feladatok konfigurációja**, a **Projektnapló**hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését.
+6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti **a feladatdefiníció, a** **feladatok konfigurációja**, a **Projektnapló**hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését **.**
 
-   * **Projektnapló**: Kattintson a **naplók** beolvasása gombra a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
+   * **Projektnapló**: Kattintson a **naplók beolvasása** gombra a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
 
        ![Projektnapló](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
@@ -564,7 +564,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
     > * `${coordFrequency}`: A feladatokhoz tartozó futó példányok közötti idő.
     > * `${coordStart}`: A feladatok kezdési ideje.
     > * `${coordEnd}`: A feladatok befejezési időpontja.
-    > * `${coordTimezone}`: A koordinátori feladatok olyan rögzített időzónában vannak, amely nem rendelkezik a nyári időszámítás idejével, jellemzően UTC használatával. Ezt az időzónát a *Oozie feldolgozási* időzónájának nevezzük.
+    > * `${coordTimezone}`: A koordinátori feladatok olyan rögzített időzónában vannak, amely nem rendelkezik a nyári időszámítás idejével, jellemzően UTC használatával. Ezt az időzónát a *Oozie feldolgozási időzónájának nevezzük.*
     > * `${wfPath}`: A munkafolyamat. XML fájljának elérési útja.
 
 2. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.
@@ -643,7 +643,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
     > [!NOTE]  
     > Ez a rendszerkép csak a feladatok sikeres futtatását mutatja, nem az ütemezett munkafolyamaton belüli egyes műveleteket. Az egyes műveletek megtekintéséhez válassza ki az egyik **műveleti** bejegyzést.
 
-    ![Művelet adatai](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Koordinátori művelet adatai](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -659,7 +659,7 @@ A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nem lehet inicializálni a fürtöt
 
-**Tünetek**: A feladatok állapota felfüggesztveértékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
+**Tünetek**: A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -669,7 +669,7 @@ A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: A Oozie nem engedélyezett a &lt;felhasználó megszemélyesítése&gt;
 
-**Tünetek**: A feladatok állapota felfüggesztveértékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
+**Tünetek**: A feladatok állapota **felfüggesztve**értékre változik. A feladathoz tartozó részletek `RunHiveScript` a **START_MANUAL**állapotot jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
@@ -684,7 +684,7 @@ A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
 ### <a name="launcher-error-sqoop"></a>Indító hiba (Sqoop)
 
-**Tünetek**: A feladatok állapotának leölése megtörtént. A feladathoz tartozó részletek `RunSqoopExport` az állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
+**Tünetek**: A feladatok állapotának **leölése**megtörtént. A feladathoz tartozó részletek `RunSqoopExport` az állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d1beae9ebd86035e075f75b088618ec55595e876
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b69000e251bb71bc08ea97b24a7422daf2cd89e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035687"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813826"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -34,7 +34,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studio 2019**használatával, és hogyan telepítheti azt egy **Windows**-eszközre. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon [a C IoT Edge modul fejlesztése Linux](tutorial-c-module.md) -eszközökhöz című lépésre. 
+Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studio 2019**használatával, és hogyan telepítheti azt egy **Windows-eszközre**. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon [a C IoT Edge modul fejlesztése Linux-eszközökhöz](tutorial-c-module.md) című lépésre. 
 
 A következő táblázat segítségével megismerheti a C modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeit: 
 
@@ -44,7 +44,7 @@ A következő táblázat segítségével megismerheti a C modulok Windows-eszkö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a Windows-tárolók fejlesztéséhez szükséges fejlesztési környezet beállításához: [IoT Edge-modulok fejlesztése Windows](tutorial-develop-for-windows.md)-eszközökhöz. Az oktatóanyag befejezése után a következő előfeltételek szükségesek: 
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a Windows-tárolók fejlesztéséhez szükséges fejlesztési környezet beállításához: [IoT Edge-modulok fejlesztése Windows-eszközökhöz](tutorial-develop-for-windows.md). Az oktatóanyag befejezése után a következő előfeltételek szükségesek: 
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Windows-eszköz](quickstart.md).
@@ -123,7 +123,7 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
 
 1. Ebben a forgatókönyvben az érzékelőről származó adatok JSON formátumban szerepelnek. A JSON formátumú üzenetek szűréséhez importáljon egy C-hez készült JSON-kódtárat. Ez az oktatóanyag Parson-kódtárat használ.
 
-   1. Töltse le a [plébános GitHub](https://github.com/kgabis/parson)-tárházát. Másolja a **plébános. c** és a **plébános. h** fájlokat a **CModule** projektbe.
+   1. Töltse le a [plébános GitHub-tárházát](https://github.com/kgabis/parson). Másolja a **plébános. c** és a **plébános. h** fájlokat a **CModule** projektbe.
 
    2. A Visual Studióban nyissa meg a **CMakeLists. txt** fájlt a CModule Project mappából. A fájl tetején importálja a Parson-fájlokat **my_parson** nevű kódtárként.
 
@@ -265,12 +265,12 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
        if (IoTHubModuleClient_LL_SetInputMessageCallback(iotHubModuleClientHandle, "input1", InputQueue1Callback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetInputMessageCallback(\"input1\")..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else if (IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, moduleTwinCallback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetModuleTwinCallback(default)..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else
        {
@@ -309,13 +309,13 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a Docker [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1** , és a Windows-modul létrehozása óta a bővítménynek **Windows. Amd64**-nek kell lennie. 
 
 3. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget. 
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a konfigurációban, amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a központi telepítési sablonban található információkat, és egyéb megoldásokat is tartalmaz. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a központi telepítési sablonban található információkat, és egyéb megoldásokat is tartalmaz. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
@@ -344,7 +344,7 @@ A IoT Edge Tools bővítmény használatával megtekintheti az üzeneteket, ahog
 
 2. A **műveletek** listában válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. 
 
-3. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mivel a IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a CModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú riasztást is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
+3. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mivel a IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a CModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú **riasztást** is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
 
    ![IoT Hubra érkező üzenetek megtekintése](./media/tutorial-c-module-windows/view-d2c-message.png)
 

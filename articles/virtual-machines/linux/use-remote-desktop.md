@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081402"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813448"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
 Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](https://www.xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
@@ -42,7 +42,7 @@ Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.clouda
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Ha Windows rendszert használ, és további információkra van szüksége az SSH használatával kapcsolatban, tekintse meg az [ssh-kulcsok használata](ssh-from-windows.md)a Windowsban című témakört.
+Ha Windows rendszert használ, és további információkra van szüksége az SSH használatával kapcsolatban, tekintse meg az [ssh-kulcsok használata a Windowsban](ssh-from-windows.md)című témakört.
 
 Ezután telepítse az Xfce `apt` -t a következő módon:
 
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 Most, hogy telepítette az asztali környezetet, konfigurálja a távoli asztali szolgáltatást a bejövő kapcsolatok figyelésére. a [xrdp](http://xrdp.org) egy nyílt forráskódú RDP protokoll (RDP) kiszolgáló, amely a legtöbb Linux-disztribúción elérhető, és az Xfce-sel is jól működik. Telepítse a xrdp-t az Ubuntu-alapú virtuális gépre a következőképpen:
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 
@@ -73,7 +73,7 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>Helyi felhasználói fiók jelszavának beállítása
-Ha a virtuális gép létrehozásakor létrehozott egy jelszót a felhasználói fiókhoz, hagyja ki ezt a lépést. Ha csak az SSH-kulcsos hitelesítést használja, és nem rendelkezik helyi fiók jelszavával, adja meg a jelszót, mielőtt a xrdp használatával bejelentkezik a virtuális gépre. a xrdp nem fogadhatnak SSH-kulcsokat a hitelesítéshez. A következő példa a felhasználói fiókhoz tartozó jelszó megadását adja meg:
+Ha a virtuális gép létrehozásakor létrehozott egy jelszót a felhasználói fiókhoz, hagyja ki ezt a lépést. Ha csak az SSH-kulcsos hitelesítést használja, és nem rendelkezik helyi fiók jelszavával, adja meg a jelszót, mielőtt a xrdp használatával bejelentkezik a virtuális gépre. a xrdp nem fogadhatnak SSH-kulcsokat a hitelesítéshez. A következő példa a *felhasználói fiókhoz*tartozó jelszó megadását adja meg:
 
 ```bash
 sudo passwd azureuser

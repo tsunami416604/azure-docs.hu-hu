@@ -1,9 +1,9 @@
 ---
-title: E-mail-értesítések a PIM - Azure Active Directory |} A Microsoft Docs
-description: Az Azure AD Privileged Identity Management (PIM) e-mail-értesítések ismerteti.
+title: E-mail-értesítések a PIM-Azure Active Directoryban | Microsoft Docs
+description: A Azure AD Privileged Identity Management (PIM) e-mail értesítéseinek ismertetése.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,94 +12,94 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/05/2019
-ms.author: rolyon
+ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0db4828ef7a6d3392ce53b2f2f95b0f7f014d65
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289193"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804544"
 ---
-# <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
+# <a name="email-notifications-in-pim"></a>E-mail-értesítések a PIM-ben
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) lehetővé teszi, hogy amikor fontos események történnek, például amikor egy szerepkör hozzárendelése vagy aktiválása. A PIM követi Önt folyamatosan értesíteni, és egyéb résztvevői e-mail-értesítések küldésével. E-mailek tartalmazhat kapcsolódó feladatok, az ilyen aktiválása vagy szerepkör megújítása mutató hivatkozásokat is. Ez a cikk bemutatja, hogyan meg e-mailek, mikor kapják, és ki kapja.
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) segítségével megtudhatja, hogy mikor fordulnak elő fontos események, például ha egy szerepkör hozzárendelése vagy aktiválása történik. A PIM értesíti Önt és a többi résztvevő e-mailes értesítéseit. Ezek az e-mailek a kapcsolódó feladatokra mutató hivatkozásokat is tartalmazhatnak, például aktiválják vagy megújítják a szerepkört. Ez a cikk leírja, hogy ezek az e-mailek hogyan jelennek meg, amikor elküldik őket, és kik kapják meg őket.
 
-## <a name="sender-email-address-and-subject-line"></a>Feladó e-mail címét és a tulajdonos sor
+## <a name="sender-email-address-and-subject-line"></a>Feladó e-mail-címe és tárgya
 
-Mind az Azure ad PIM által küldött e-mailek és az Azure erőforrás-szerepkörökkel rendelkezik a következő feladó e-mail címe:
+A PIM által küldött e-mailek az Azure AD-hez és az Azure-erőforrás szerepköreihez a következő feladói e-mail-cím tartozik:
 
-- E-mail-cím: **azure-noreply\@microsoft.com**
-- Megjelenített név: Microsoft Azure
+- E-mail cím: **Azure – nem\@válaszoló Microsoft.com**
+- Megjelenítendő név: Microsoft Azure
 
-E-mailek tartalmaznak egy **PIM** a tárgysorban előtag. Például:
+Ezek az e-mailek tartalmazzák a **PIM** -előtagot a Tárgy sorban. Például:
 
-- PIM: Alain Charon tartósan hozzá volt rendelve a biztonsági olvasói szerepköre
+- PIM: Alain Charon véglegesen hozzárendelte a biztonsági mentési olvasó szerepkört
 
-## <a name="pim-emails-for-azure-ad-roles"></a>A PIM e-mailek, az Azure AD-szerepkörök
+## <a name="pim-emails-for-azure-ad-roles"></a>PIM-e-mailek az Azure AD-szerepkörökhöz
 
-A PIM e-maileket küld, ha az alábbi események történnek az Azure AD-szerepkörök:
+A PIM e-maileket küld, ha az alábbi események történnek az Azure AD-szerepköröknél:
 
-- Ha egy rendszerjogosultságú szerepkör aktiválása a jóváhagyásra van
-- Ha egy rendszerjogosultságú szerepkör-aktiválási kérelem befejeződött
-- Ha engedélyezve van-e az Azure AD PIM-ben
+- Ha a Kiemelt szerepkör aktiválása jóváhagyásra vár
+- Rendszerjogosultságú szerepkör-aktiválási kérelem befejezésekor
+- Ha az Azure AD PIM engedélyezve van
 
-Ki kapja, e-mailek, az Azure AD-szerepkörökhöz tartozó függ a szerepkört, az esemény és az értesítések beállítása:
+Kik kapják meg ezeket az e-maileket az Azure AD-szerepkörökhöz a szerepkörtől, az eseménytől és az értesítések beállításától függően:
 
-| Felhasználó | Szerepkör-aktiválás jóváhagyása függőben van | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
+| Felhasználó | A szerepkör aktiválása jóváhagyásra vár | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
 | --- | --- | --- | --- |
-| A kiemelt szerepkörű rendszergazda</br>(Activated/Eligible) | Igen</br>(csak akkor, ha nincs explicit jóváhagyók vannak megadva) | Igen* | Igen |
-| Biztonsági rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
-| Globális rendszergazda</br>(Activated/Eligible) | Nem | Igen* | Igen |
+| Kiemelt szerepkörű rendszergazda</br>(Aktivált/jogosult) | Igen</br>(csak akkor, ha nincs megadva explicit jóváhagyó) | Igen* | Igen |
+| Biztonsági rendszergazda</br>(Aktivált/jogosult) | Nem | Igen* | Igen |
+| Globális rendszergazda</br>(Aktivált/jogosult) | Nem | Igen* | Igen |
 
-\* Ha a [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) értékre van állítva **engedélyezése**.
+\*Ha az [ **értesítések** beállítás](pim-how-to-change-default-settings.md#notifications) **engedélyezve**értékre van állítva.
 
-Az alábbiakban látható egy például szolgáló e-mail érkezik, amikor egy felhasználó aktiválja a fiktív Contoso szervezet Azure AD-szerepkörhöz.
+Az alábbi példa egy olyan e-mailt mutat be, amelyet a rendszer akkor küld, amikor egy felhasználó aktivál egy Azure AD-szerepkört a kitalált contoso-szervezet számára.
 
-![A PIM-új e-mail cím az Azure AD-szerepkörök](./media/pim-email-notifications/email-directory-new.png)
+![Új PIM e-mail az Azure AD-szerepkörökhöz](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Az Azure AD-szerepkörök heti PIM összefoglaló e-mail
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Heti PIM kivonatoló e-mail az Azure AD-szerepkörökhöz
 
-Az Azure AD-szerepkörökhöz tartozó heti PIM összefoglaló e-mail küldése a kiemelt szerepkörű rendszergazdák, biztonsági rendszergazdák és a globális rendszergazdák, amelyeken engedélyezve a PIM. A heti e-mailt biztosít a PIM-tevékenységet pillanatképét a hét, valamint a kiemelt szerepkörök hozzárendeléseit. A nyilvános felhő bérlők csak érhető el. Íme egy példa e-mailt:
+Az Azure AD szerepköreinek heti PIM összefoglaló e-mail-címe a Kiemelt szerepkörű rendszergazdák, a biztonsági rendszergazdák és a PIM-t engedélyező globális rendszergazdák számára lesz elküldve. Ez a heti e-mail a PIM-tevékenységek pillanatképét tartalmazza a héten, valamint a Kiemelt szerepkör-hozzárendeléseket. Csak a nyilvános felhőben lévő bérlők számára érhető el. Íme egy példa e-mailben:
 
-![Az Azure AD-szerepkörök heti PIM összefoglaló e-mail](./media/pim-email-notifications/email-directory-weekly.png)
+![Heti PIM kivonatoló e-mail az Azure AD-szerepkörökhöz](./media/pim-email-notifications/email-directory-weekly.png)
 
-Az e-mail tartalmazza a négy csempére:
+Az e-mail négy csempét tartalmaz:
 
-| csempe | Leírás |
+| Csempe | Leírás |
 | --- | --- |
-| **Aktív felhasználók** | Ennyi alkalommal felhasználók aktiválása a jogosult szerepkör a bérlőn belül. |
-| **Véglegessé felhasználók** | Jogosult hozzárendelés rendelkező felhasználók véglegessé hányszor. |
-| **A PIM szerepkör-hozzárendelések** | Felhasználók vannak hozzárendelve a PIM belül egy jogosult szerepkör hányszor. |
-| **PIM-en kívül a szerepkör-hozzárendelések** | Felhasználók vannak hozzárendelve egy állandó szerepkör (Azure AD) a belül PIM-en kívül hányszor. |
+| **Aktivált felhasználók** | Az a szám, ahányszor a felhasználók aktiválták a jogosult szerepkört a bérlőn belül. |
+| **Felhasználó által állandó** | A jogosult hozzárendeléssel rendelkező felhasználók száma állandó. |
+| **Szerepkör-hozzárendelések a PIM-ben** | Azon alkalmak száma, amikor a felhasználók egy jogosult szerepkörhöz vannak rendelve a PIM-on belül. |
+| **A PIM-n kívüli szerepkör-hozzárendelések** | Azon alkalmak száma, amikor a felhasználók állandó szerepkört kapnak a PIM-n kívül (az Azure AD-n belül). |
 
-A **a felső szerepkörök áttekintése** szakasz sorolja fel az első öt szerepkörök a bérlő minden egyes szerepkörhöz tartozó állandó és jogosult rendszergazdák teljes száma alapján. A **semmit** hivatkozás megnyílik az [PIM varázsló](pim-security-wizard.md) ahol átválthat kötegekben jogosult rendszergazdák állandó rendszergazdák.
+A **legfelső szintű szerepkörök áttekintése** szakasz a bérlő első öt szerepkörét listázza az egyes szerepkörökhöz tartozó állandó és jogosult rendszergazdák teljes száma alapján. A **művelet elvégzése** hivatkozás megnyitja a [PIM varázslót](pim-security-wizard.md) , ahol az állandó rendszergazdák a batchs szolgáltatásban jogosult rendszergazdákra konvertálhatók.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>A PIM e-mailek, az Azure-erőforrásszerepkörök
+## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mailek az Azure-erőforrás szerepköreihez
 
-A PIM küld e-mailek tulajdonosai és rendszergazdái a felhasználói hozzáférést, ha az alábbi események történnek az Azure-erőforrások szerepköreihez tartozó:
+A PIM e-maileket küld a tulajdonosoknak és a felhasználói hozzáférés rendszergazdáinak, ha az alábbi események történnek az Azure-erőforrás szerepköreiben:
 
-- Jóváhagyásra váró szerepkör-hozzárendelés esetén
-- Ha a szerepkör hozzá van rendelve
-- Ha a szerepkör az hamarosan lejár
-- Ha a szerepkör jogosult bővítése az
-- Ha egy szerepkör megújítása a felhasználó által
-- Ha egy szerepkör-aktiválási kérelem befejeződött
+- Függőben lévő szerepkör-hozzárendelés jóváhagyása
+- Szerepkör hozzárendelésekor
+- Ha egy szerepkör hamarosan lejár
+- Ha egy szerepkör kiterjeszthető
+- Amikor egy végfelhasználó megújította a szerepkört
+- Szerepkör-aktiválási kérelem befejezésekor
 
-A PIM végfelhasználók számára küldhet e-maileket, amikor az alábbi események történnek az Azure-erőforrások szerepköreihez tartozó:
+A PIM e-maileket küld a végfelhasználóknak, ha az alábbi események történnek az Azure-erőforrás szerepköreiben:
 
-- Ha egy szerepkört a felhasználóhoz hozzárendelt
-- Amikor egy felhasználó szerepkörét lejárt
-- Amikor egy felhasználó szerepkörét ki van bővítve
-- Amikor a felhasználó szerepkör-aktiválási kérelem befejeződött
+- Szerepkör hozzárendelése a felhasználóhoz
+- Ha a felhasználó szerepköre lejárt
+- Ha a felhasználó szerepköre ki van bővítve
+- A felhasználó szerepkör-aktiválási kérelmének befejezésekor
 
-Az alábbiakban látható egy például szolgáló e-mail érkezik, amikor egy felhasználó hozzá van rendelve egy Azure-erőforrás szerepkör a fiktív Contoso szervezet számára.
+Az alábbi példa egy olyan e-mailt mutat be, amelyet a rendszer akkor küld, amikor egy felhasználó hozzárendel egy Azure-erőforrás-szerepkört a kitalált contoso-szervezethez.
 
-![A PIM-új e-mail cím az Azure-erőforrásszerepkörök](./media/pim-email-notifications/email-resources-new.png)
+![Új PIM e-mail az Azure-erőforrás szerepköreihez](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
-- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)
+- [Az Azure AD szerepkör beállításainak konfigurálása a PIM-ben](pim-how-to-change-default-settings.md)
+- [Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben](azure-ad-pim-approval-workflow.md)

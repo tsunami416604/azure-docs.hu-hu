@@ -1,20 +1,19 @@
 ---
 title: Visszaadja az Azure-beli virtuális gépeket egy másodlagos Azure-régióba a Azure Site Recovery szolgáltatással való vész-helyreállítás érdekében.
 description: Ismerje meg, hogyan végezhet vissza Azure-beli virtuális gépeket a Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3910336efe50131fbd5df72039af345eb7346385
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383222"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814512"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 

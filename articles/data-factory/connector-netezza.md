@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 7664c2f4fd08e06b51734b5508871b67d1a1b7c9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231402"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813527"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával
 
 Ez a cikk az Azure Data Factory másolási tevékenység használatával adatokat másol a Netezza módját ismerteti. A cikk számos tekintetben [másolási tevékenységgel az Azure Data Factoryban](copy-activity-overview.md), amely megadja, hogy a másolási tevékenység általános áttekintést.
+
+>[!TIP]
+>A Netezza-ből az Azure-ba irányuló adatáttelepítési forgatókönyvek esetében további információ a [Azure Data Factory használatával a helyszíni Netezza-kiszolgálóról az Azure-ba való Migrálás](data-migration-guidance-netezza-azure-sqldw.md)során.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -206,7 +209,7 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
 
 | Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Teljes terhelés a nagyméretű táblából.                                   | **Partíciós beállítás**: Adatszelet <br><br/>A végrehajtás során a Data Factory automatikusan particionálja az [Netezza-](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)t a beépített adatszeletek alapján, és az Adatmásolást partíciók szerint másolja. |
+| Teljes terhelés a nagyméretű táblából.                                   | **Partíciós beállítás**: Adatszelet <br><br/>A végrehajtás során a Data Factory automatikusan particionálja az [Netezza-t a beépített adatszeletek](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)alapján, és az Adatmásolást partíciók szerint másolja. |
 | Nagy mennyiségű adattal tölthetők be egyéni lekérdezések használatával.                 | **Partíciós beállítás**: Adatszelet<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`.<br>A végrehajtás során Data Factory lecseréli `?AdfPartitionCount` (párhuzamos másolási számmal a másolási tevékenységnél) és `?AdfDataSliceCondition` az adatszelet partíciós logikáját, és elküldi a Netezza. |
 | Nagy mennyiségű adattal tölthetők be egy egyéni lekérdezéssel, amely egy egész számú oszlopból álló, egyenletesen elosztott értékkel rendelkezik a tartomány particionálásához. | **Partíciós beállítások**: Dinamikus tartomány partíciója.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partíciós oszlop**: Az adatparticionáláshoz használt oszlop meghatározása. Az oszlop egész adattípussal is particionálható.<br>**Partíció felső határa** és a **partíció alsó határa**: Adja meg, hogy a partíció oszlop alapján szeretne-e szűrést végezni, hogy csak az alsó és a felső tartomány között legyenek az adatlekérdezések.<br><br>A végrehajtás során a Data Factory `?AdfRangePartitionColumnName`lecseréli `?AdfRangePartitionLowbound` `?AdfRangePartitionUpbound`, és az egyes partíciók tényleges oszlop-és értéktartomány-tartományát, és elküldi a Netezza. <br>Ha például az "ID" partíciós oszlop az 1 értékre van állítva, a felső határ pedig 80, a párhuzamos másolási beállítás értéke 4, Data Factory 4 partíció alapján kérdezi le az adatmennyiséget. Az azonosítóik [1, 20], [21, 40], [41, 60] és [61, 80] között vannak. |
 

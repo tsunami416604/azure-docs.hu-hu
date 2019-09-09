@@ -1,6 +1,6 @@
 ---
-title: Egyéni MapReduce programok – Azure HDInsight futtatása
-description: Mikor és hogyan lehet egyéni MapReduce programok futtatása a HDInsight.
+title: Egyéni MapReduce-programok futtatása – Azure HDInsight
+description: Mikor és hogyan futtathat egyéni Apache MapReduce-programokat az Azure HDInsight-fürtökön.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,71 +8,71 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713091"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810742"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Egyéni MapReduce programok futtatása
 
-Apache Hadoop-alapú big data rendszerek, például a HDInsight segítségével számos különféle eszközöket és technológiákat adatfeldolgozási engedélyezése. Az alábbi táblázat a fő és szempontjai, mindegyiknél ismerteti.
+A Apache Hadoop-alapú big data rendszerek, például a HDInsight lehetővé teszik az adatfeldolgozást az eszközök és technológiák széles skálájának használatával. Az alábbi táblázat ismerteti a főbb előnyeit és szempontjait.
 
-| Lekérdezés mechanizmus | Előnyök | Megfontolandó szempontok |
+| Lekérdezési mechanizmus | Előnyök | Megfontolandó szempontok |
 | --- | --- | --- |
-| **Az Apache Hive HiveQL használatával** | <ul><li>Kötegelt feldolgozásra és elemzésre, nagy mennyiségű adat nem módosítható, az adatok összegzési és a egy kiváló megoldás az igény szerinti lekérdezése. Egy jól ismert SQL-szerű szintaxist használ.</li><li>Könnyedén particionált és indexelt adatok állandó táblák létrehozására használható.</li><li>Az ugyanazon adatokra hozható létre több külső táblák és nézetek.</li><li>Egy egyszerű adatraktár megvalósítása, amely jelentős horizontális felskálázást és hibatűrési képességeket biztosít az adattárolási és feldolgozási támogatja.</li></ul> | <ul><li>Legalább egy azonosításra alkalmas struktúrával rendelkeznek forrásadatokat van szükség.</li><li>Nem alkalmas a valós idejű lekérdezések és a sor szintű frissítéseket. Legjobb szolgál a batch-feladatok nagy adatkészleteken, keresztül.</li><li>Nem lehet képes bizonyos típusú összetett feldolgozási feladatok elvégzésére.</li></ul> |
-| **Az Apache Pig Latin a Pig használatával** | <ul><li>Kiváló megoldás kezelésére szolgáló adatokat, mivel beállítja, egyesítése és szűrésének történő rekordon vagy bejegyzések,-adatkészletek és az adatok átalakítását, oszlopok definiálásával, csoportosítási értékek vagy oszlopokat sorokra átalakításával.</li><li>A munkafolyamat-alapú megközelítést használhat adatok műveletek sorozataként.</li></ul> | <ul><li>SQL-felhasználók is található, a Pig Latin kevésbé ismert és bonyolultabb, mint a HiveQL használatára.</li><li>Az alapértelmezett kimenet általában egy szövegfájlt, és így nehezebb a vizualizációs eszközök, például az Excel használata is lehet. Általában egy Hive-tábla lesz réteg át a kimenetet.</li></ul> |
-| **Egyéni map/csökkentése** | <ul><li>A térkép teljes körűen biztosít, és csökkentheti a fázisok és végrehajtás.</li><li>Lehetővé teszi a lekérdezések optimalizálását a fürtből a maximális teljesítmény elérése érdekében, vagy a kiszolgálók és a hálózat terhelése minimalizálható legyen.</li><li>Az összetevők is írható a jól ismert nyelvek széles.</li></ul> | <ul><li>Nehezebb, mint a Pig- vagy Hive használata, mivel létre kell hoznia a saját térkép és csökkentse az összetevők.</li><li>Csatlakozás adatkészletek igénylő folyamatokat több nehezen megvalósításához.</li><li>Annak ellenére, hogy nincsenek elérhető tesztelési keretrendszereket, bonyolultabb, mint egy normál alkalmazást, mert a kód lefut egy kötegelt felügyelete alatt, a Hadoop Feladatütemező kód hibakeresése.</li></ul> |
-| **Apache HCatalog** | <ul><li>Ez kivonatolja a tárolót, a felügyelet megkönnyítése és a felhasználók számára az adatok tárolására szükségtelenné részletes elérési utat.</li><li>Lehetővé teszi az értesítési esemény, például az adatok rendelkezésre állását, lehetővé téve a más eszközökkel, például az Oozie operations történt észleléséhez.</li><li>Ez az adatokat, beleértve a kulcsot, a particionálás relációs nézetben mutatja, és megkönnyíti az adatok eléréséhez.</li></ul> | <ul><li>Támogatja a RCFile, CSV-szöveg, JSON-szöveget, SequenceFile és ORC fájlformátumok alapértelmezés szerint, de előfordulhat, hogy kell írnia egy egyéni SerDe más formátumokat.</li><li>HCatalog nem szálbiztos.</li><li>Az oszlopok adattípusai bizonyos korlátozások vonatkoznak a HCatalog-betöltőben az Pig-parancsfájlok használata során. További információkért lásd: [HCatLoader adattípusok](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) az Apache HCatalog dokumentációjában.</li></ul> |
+| **Apache Hive a HiveQL használatával** | <ul><li>Kiváló megoldás a kötegelt feldolgozásra és a nagy mennyiségű megváltoztathatatlan adatelemzésre, adatösszesítésre és igény szerinti lekérdezésre. Ismerős SQL-szerű szintaxist használ.</li><li>Használható olyan állandó adattábla létrehozására, amely könnyen particionálható és indexelhető.</li><li>Ugyanazon az adaton több külső tábla és nézet is létrehozható.</li><li>Egy egyszerű adattárház-implementációt támogat, amely nagy kibővíthető és hibatűrési képességeket biztosít az adattárolás és a feldolgozás számára.</li></ul> | <ul><li>Megköveteli, hogy a forrásadatok legalább néhány azonosítható struktúrával rendelkezzenek.</li><li>A valós idejű lekérdezések és a sorok szintjének frissítése nem megfelelő. Az adatok nagy mennyiségű adathalmazon használhatók a Batch-feladatok esetében.</li><li>Előfordulhat, hogy nem tudja elvégezni az összetett feldolgozási feladatok bizonyos típusait.</li></ul> |
+| **Apache Pig a Pig Latin használatával** | <ul><li>Kiváló megoldás az adathalmazok, az adatkészletek egyesítése és szűrése, a függvények rekordokra vagy rekordhalmazokra való alkalmazására, valamint az adatok átalakítására oszlopok definiálásával, értékek csoportosításával, vagy az oszlopok sorokra konvertálásával.</li><li>Munkafolyamat-alapú megközelítést használhat az adatokon végzett műveletek sorozata során.</li></ul> | <ul><li>Előfordulhat, hogy az SQL-felhasználók kevésbé ismerik és nehezebben használják a Pig latint, mint a HiveQL.</li><li>Az alapértelmezett kimenet általában szövegfájl, ezért a vizualizációs eszközökkel, például az Excelben nehezebben használható. A struktúra általában a kimenetre lesz felkészítve.</li></ul> |
+| **Egyéni Térkép/csökkentés** | <ul><li>Teljes körű irányítást biztosít a Térkép felett, és csökkenti a fázisokat és a végrehajtást.</li><li>Lehetővé teszi a lekérdezések optimalizálását a fürt maximális teljesítményének elérésére, illetve a kiszolgálók és a hálózat terhelésének minimalizálására.</li><li>Az összetevők számos jól ismert nyelven is megírhatók.</li></ul> | <ul><li>Nehezebb, mint a Pig vagy a kaptár használata, mert létre kell hoznia egy saját térképet, és csökkentenie kell az összetevőket.</li><li>A csatlakozási adatkészleteket igénylő folyamatok nehezebben valósíthatók meg.</li><li>Annak ellenére, hogy elérhetők tesztelési keretrendszerek, a hibakeresési kód összetettebb, mint a normál alkalmazás, mert a kód batch-feladatként fut a Hadoop Feladatütemező felügyelete alatt.</li></ul> |
+| **Apache HCatalog** | <ul><li>Elvonta a tároló elérési útját, és megkönnyíti a felügyeletet, és megszünteti a felhasználók számára az adatok tárolásának szükségességét.</li><li>Lehetővé teszi az olyan események bejelentését, mint az adatok rendelkezésre állása, ami lehetővé teszi más eszközök, például a Oozie észlelését a műveletek bekövetkezésekor.</li><li>Lehetővé teszi az adatkapcsolatok megtekintését, beleértve a kulcsok particionálását, és megkönnyíti az adatelérést.</li></ul> | <ul><li>Alapértelmezés szerint támogatja a RCFile, a CSV-szövegeket, a JSON-szövegeket, a SequenceFile és az ork-fájlformátumokat, de előfordulhat, hogy más formátumokhoz egyéni SerDe kell írnia.</li><li>A HCatalog nem a szál biztonságos.</li><li>Bizonyos korlátozások vonatkoznak az oszlopok adattípusaira, amikor a HCatalog betöltőt használja a Pig-szkriptekben. További információ: HCatLoader- [adattípusok](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) az Apache HCatalog dokumentációjában.</li></ul> |
 
-Általában használhatja a legegyszerűbb módszer, amely képes biztosítani a szükséges eredmények. Például előfordulhat, hogy a érhet el az ilyen eredmények csak a Hive használatával, de összetett forgatókönyvek esetén szükség lehet, a Pig használata vagy még a saját térkép írása, és csökkentse az összetevők. Is előfordulhat, hogy döntse el, a Hive és Pig, hogy egyéni ábrázolásiterület kísérletezés után, és csökkentse összetevők finomhangolást és optimalizálhatja a feldolgozást, így jobb teljesítményt tud nyújtani.
+Ezeket a megközelítéseket általában a legegyszerűbben a szükséges eredmények megadására használhatja. Előfordulhat például, hogy csak a kaptár használatával tudja elérni az eredményeket, de összetettebb forgatókönyvek esetén a Pig használatát kell használnia, vagy akár saját térképet is írnia kell, és csökkentenie kell az összetevőket. Dönthet úgy is, hogy a kaptárral vagy a Malactal való kísérletezés után az egyéni Térkép és az összetevők csökkentése jobb teljesítményt biztosít, mivel lehetővé teszi a feldolgozás finomhangolását és optimalizálását.
 
-## <a name="custom-mapreduce-components"></a>Összetevők egyéni map/csökkentése
+## <a name="custom-mapreduce-components"></a>Egyéni Térkép/összetevők csökkentése
 
-Mapreduce/kód áll két különálló funkciók megvalósítása **térkép** és **csökkentheti** összetevőket. A **térkép** összetevő fut párhuzamosan több fürtcsomóponton a leképezés alkalmazása az adatok csomópont saját részét az egyes csomópontok. A **csökkentheti** összetevő sorrendbe állítja, és a térkép összes funkciójában az eredményről. Ez a két összetevő további információkért lásd: [MapReduce használata a Hadooppal a HDInsight](hdinsight-use-mapreduce.md).
+A Térkép/csökkentés kód két különálló függvényből áll, amelyek a **Térkép** és az összetevők **csökkentése érdekében** vannak megvalósítva. A **map** összetevő párhuzamosan fut több fürtcsomóponton, és mindegyik csomópont a csomópont saját részhalmazára való leképezést alkalmazza. A **redukáló** összetevő leképezi és összegzi az összes Térkép függvény eredményét. A két összetevővel kapcsolatos további információkért lásd: [MapReduce használata a Hadoop-ben a HDInsight-ben](hdinsight-use-mapreduce.md).
 
-A legtöbb feldolgozása a HDInsight-környezetben egyszerűbben és hatékonyabban egy magasabb szintű absztrakció, mint a Pig- vagy Hive használata. Hozhat létre egyéni ábrázolásiterület, és csökkentse az összetevők Hive-parancsprogramok hajtsa végre az egyre kifinomultabb feldolgozási belüli használatra.
+A legtöbb HDInsight-feldolgozási forgatókönyvben egyszerűbb és hatékonyabb a magasabb szintű absztrakció, például a Pig vagy a kaptár használata. Létrehozhat egyéni leképezést is, és csökkentheti az összetevőket a kaptár-parancsfájlokon belüli használatra, hogy kifinomultabb feldolgozást végezzen.
 
-Egyéni map/csökkentése összetevők általában Java nyelven írt. Hadoop-streamelési felületet kínál, amely lehetővé teszi összetevők használandó más nyelveken például fejlesztett C#, F#, Visual Basic, a Python és a JavaScript.
+Az egyéni Térkép/összetevők csökkentése általában Java nyelven íródott. A Hadoop egy folyamatos átviteli felületet biztosít, amely lehetővé teszi az összetevők használatát más nyelveken (például C#, F#, Visual Basic, Python és JavaScript) is.
 
-* Egyéni Java MapReduce programok fejlesztése a bemutatóért lásd: [fejlesztés Java MapReduce programok hadoop on HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
+* Az egyéni Java MapReduce programok fejlesztésével kapcsolatos bemutatóért lásd: [Java MapReduce-programok fejlesztése a Hadoop-hez a HDInsight-on](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-Érdemes lehet létrehozni a saját térkép, és csökkentse az összetevők a következő feltételeknek:
+Érdemes lehet saját térképet létrehoznia, és a következő feltételekkel csökkenteni az összetevőket:
 
-* Az adatok elemzése és strukturált információt lekérni egyéni logikát használó teljesen strukturált adatok feldolgozására van szüksége.
-* Összetett feladatokat, amelyek a nehezen (vagy) szeretne a Pig Express vagy Hive-UDF létrehozása nélkül. Például előfordulhat, hogy szüksége külső geokódolási szolgáltatásokat szélességi és hosszúsági koordináták vagy IP-címek a forrásadatok átalakítása földrajzi hely nevét.
-* Újból felhasználhatja a meglévő .NET, Python vagy JavaScript kód, a mapreduce és összetevők a Hadoop-tartalomközvetítő felület használatával szeretne.
+* Az adatok elemzésével és egyéni logikával olyan adatokat kell feldolgoznia, amelyek teljesen strukturálatlan módon vannak rendszerezve.
+* Olyan összetett feladatokat kíván végrehajtani, amelyek nehéz (vagy lehetetlen) jellegűek a Pig vagy a kaptár kifejezésre, és nem kell UDF-t létrehozni. Előfordulhat például, hogy egy külső helymeghatározáshoz szolgáltatást kell használnia a földrajzi hely neveként a szélességi és hosszúsági koordinátákat, illetve a forrásadatok IP-címeit.
+* A Hadoop streaming Interface használatával szeretné felhasználni a meglévő .NET-, Python-vagy JavaScript-kódokat a Map/csökkentse összetevőkben.
 
-## <a name="upload-and-run-your-custom-mapreduce-program"></a>Töltse fel, és futtassa a egyéni MapReduce-programot
+## <a name="upload-and-run-your-custom-mapreduce-program"></a>Egyéni MapReduce program feltöltése és futtatása
 
-A leggyakoribb MapReduce-programok Java nyelven íródtak, és zkompilováno do egy jar-fájlt.
+A leggyakoribb MapReduce-programok Java nyelven íródtak, és egy jar-fájlba vannak lefordítva.
 
-1. Miután fejlesztett, összeállítani, és tesztelni a MapReduce-programot, használja a `scp` a jar-fájl feltöltése az átjárócsomóponthoz parancsot.
+1. A MapReduce program fejlesztése, lefordítása és tesztelése után a `scp` parancs használatával töltse fel a jar-fájlt a átjárócsomóponthoz.
 
     ```bash
     scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Cserélje le **felhasználónév** a fürt SSH-felhasználói fiókkal. Cserélje le **CLUSTERNAME** a fürt nevére. Ha az SSH-fiókhoz jelszót használt, a jelszó megadására kéri. Ha tanúsítványt használt, előfordulhat, hogy szeretné használni a `-i` paraméterrel adja meg a titkos kulcs fájlját.
+    Cserélje le a **felhasználónevet** a fürt SSH-felhasználói fiókjával. Cserélje le az **CLUSTERNAME** -t a fürt nevére. Ha az SSH-fiók védelméhez jelszót használt, a rendszer felszólítja, hogy adja meg a jelszót. Ha tanúsítványt használt, lehetséges, hogy a `-i` paraméterrel kell megadnia a titkos kulcs fájlját.
 
-2. A fürthöz történő csatlakozás [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+2. Kapcsolódjon a fürthöz [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)használatával.
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Az SSH-munkamenetből hajtsa végre a MapReduce-programot YARNON keresztül.
+3. Az SSH-munkamenetből hajtsa végre a MapReduce programot a FONALon keresztül.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Ez a parancs YARN a MapReduce feladatot küld el. A bemeneti fájl `/example/data/sample.log`, és a kimeneti könyvtár `/example/data/logoutput`. A bemeneti fájl és a kimeneti fájlokat, a a fürt alapértelmezett tárolója tárolja.
+    Ez a parancs a MapReduce-feladatot a FONALba küldi. A bemeneti fájl `/example/data/sample.log`a és a kimeneti `/example/data/logoutput`könyvtár. A bemeneti fájl és a kimeneti fájlok a fürt alapértelmezett tárolójában tárolódnak.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Használat C# streamelési HDInsight az Apache hadoop MapReduce-](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Java MapReduce programok fejlesztése a HDInsight Apache hadoop](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Eclipse-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig](python-udf-hdinsight.md)
+* [Használat C# a MapReduce streaming Apache Hadoop a HDInsight-ben](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben](python-udf-hdinsight.md)

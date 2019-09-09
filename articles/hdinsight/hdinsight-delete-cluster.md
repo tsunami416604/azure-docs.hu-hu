@@ -1,6 +1,6 @@
 ---
-title: Egy HDInsight-fürt – Azure törlése
-description: Információk a különböző módszereket, hogy egy HDInsight-fürtöt is törli.
+title: HDInsight-fürt törlése – Azure
+description: Információk az Azure HDInsight-fürtök törlésének különféle módjairól
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: eca7b4f8bd7e91bc8dcb9bcc49ed3b981010aaee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c9214f3084d7b1e2012ec69e3b8e3fe6d08c09e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721016"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810260"
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>A böngészőben, PowerShell vagy az Azure CLI használatával egy HDInsight-fürt törlése
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával
 
-A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ebből a dokumentumból megismerheti, hogyan törölni egy fürt használatával a [az Azure portal](https://portal.azure.com), [Az Azure PowerShell modul](https://docs.microsoft.com/powershell/azure/overview), és a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ebből a dokumentumból megtudhatja, hogyan törölhet egy fürtöt a [Azure Portal](https://portal.azure.com), [Azure PowerShell az modul](https://docs.microsoft.com/powershell/azure/overview)és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával.
 
 > [!IMPORTANT]  
-> Egy HDInsight-fürt törlése nem törli az Azure Storage-fiókokat, vagy a fürthöz tartozó Data Lake Storage. Újból felhasználhatja ezeket a szolgáltatásokat a jövőben tárolt adatokat.
+> Egy HDInsight-fürt törlése nem törli a fürthöz társított Azure Storage-fiókokat vagy Data Lake Storage. A jövőben az ezekben a szolgáltatásokban tárolt adatkészleteket is felhasználhatja.
 
 ## <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Lépjen a bal oldali menüből **minden szolgáltatás** > **Analytics** > **HDInsight-fürtök** , és válassza ki a fürtöt.
+2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight** -fürthöz, és válassza ki a fürtöt.
 
-3. Az alapértelmezett nézetet, válassza ki a **törlése** ikonra. Törölje a fürtöt a felszólítást követve.
+3. Az alapértelmezett nézetben válassza a **Törlés** ikont. A fürt törléséhez kövesse a parancssort.
    
     ![Törlés ikon](./media/hdinsight-delete-cluster/deletecluster.png)
 
-## <a name="azure-powershell-az-module"></a>Azure PowerShell-Az-modul
+## <a name="azure-powershell-az-module"></a>Azure PowerShell az Module
 
-Cserélje le `CLUSTERNAME` az alábbi kódot a HDInsight-fürt nevére. Egy PowerShell-parancssort adja meg a következő parancsot a fürt törléséhez:
+Az `CLUSTERNAME` alábbi kódban cserélje le a nevet a HDInsight-fürt nevére. A PowerShell-parancssorból írja be a következő parancsot a fürt törléséhez:
 
 ```powershell
 Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
@@ -42,7 +42,7 @@ Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Cserélje le `CLUSTERNAME` a HDInsight-fürt nevére, és `RESOURCEGROUP` az alábbi kód az erőforráscsoport nevét.  Egy parancssorból írja be a következő, a fürt törléséhez:
+Cserélje `CLUSTERNAME` le a nevet a HDInsight-fürt nevére `RESOURCEGROUP` , az alábbi kódban pedig az erőforráscsoport nevére.  A parancssorból írja be a következőt a fürt törléséhez:
 
 ```azurecli
 az hdinsight delete --name CLUSTERNAME --resource-group RESOURCEGROUP

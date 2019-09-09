@@ -1,84 +1,83 @@
 ---
-title: Állítsa be az IP-címek az Azure Site Recovery a feladatátvételt követően csatlakozni egy másodlagos helyszíni helyre |} A Microsoft Docs
-description: Ismerteti, hogyan állíthatja be az IP-címkezelés vész-helyreállítási és az Azure Site Recovery a feladatátvétel utáni virtuális gépek egy másodlagos helyszíni helyre való csatlakozáshoz.
-services: site-recovery
+title: IP-címzés beállítása egy másodlagos helyszíni helyhez való kapcsolódásra a feladatátvételt követően Azure Site Recovery
+description: Ismerteti, hogyan lehet IP-címzést beállítani a virtuális gépekhez való csatlakozáshoz egy másodlagos helyszíni helyen a vész-helyreállítás és a Azure Site Recovery használatával történő feladatátvétel után.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 8e4dca61016adce209bdce356ea4280fee525c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397968"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813679"
 ---
-# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Az IP-címkezelést a feladatátvételt követően csatlakozni egy másodlagos helyszíni helyre
+# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-címzés beállítása másodlagos helyszíni helyhez való kapcsolódáshoz a feladatátvétel után
 
-Követően átadja a feladatokat a Hyper-V virtuális gépeket a System Center Virtual Machine Manager (VMM) felhőkben egy másodlagos helyre, akkor képeseknek kell lenniük a replika virtuális gépek csatlakozni. Ez a cikk segít teszi ezt. 
+Ha System Center Virtual Machine Manager-(VMM-) felhőkben lévő Hyper-V virtuális gépek feladatátvételét egy másodlagos helyre hajtja végre, akkor a replika virtuális gépekhez csatlakoznia kell. Ez a cikk segítséget nyújt ennek elvégzésében. 
 
-## <a name="connection-options"></a>Csatlakozási lehetőségek
+## <a name="connection-options"></a>Kapcsolatok beállításai
 
-A feladatátvételt követően a rendszer több módon kezelni a replika virtuális gépek IP-címzés: 
+A feladatátvételt követően több módon is kezelheti a replika virtuális gépek IP-címzését: 
 
-- **Az azonos IP-cím megőrzése feladatátvétel után**: Ebben a forgatókönyvben a replikált virtuális gép rendelkezik az elsődleges virtuális gép megegyező IP-címre. Ez leegyszerűsíti a kapcsolódó hálózati problémák feladatátvétel után, de néhány infrastruktúra munkát igényel.
-- **Egy másik IP-címet használja a feladatátvételt követően**: Ebben a forgatókönyvben a virtuális gép új IP-cím lekérése a feladatátvételt követően. 
+- **A feladatátvételt követően ugyanazt az IP-címet kell megtartani**: Ebben az esetben a replikált virtuális gép ugyanazzal az IP-címmel rendelkezik, mint az elsődleges virtuális gép. Ez leegyszerűsíti a hálózattal kapcsolatos problémákat a feladatátvétel után, de némi infrastrukturális munkát igényel.
+- **A feladatátvételt követően eltérő IP-címet használjon**: Ebben az esetben a virtuális gép új IP-címet kap a feladatátvétel után. 
  
 
 ## <a name="retain-the-ip-address"></a>Az IP-cím megőrzése
 
-Ha szeretné megőrizni az IP-címek az elsődleges helyről másodlagos helyre a feladatátvételt követően, végezheti el:
+Ha meg szeretné őrizni az elsődleges hely IP-címeit, a másodlagos helyre történő feladatátvétel után a következőket teheti:
 
-- Helyezze üzembe egy többhelyes alhálózatot az elsődleges és a másodlagos helyek között.
-- Végezzen el egy teljes alhálózat feladatátvételt az elsődleges kiszolgálóról másodlagos helyre. Az új helyet, az IP-címek jelzi az útvonalak frissítése kell.
-
-
-### <a name="deploy-a-stretched-subnet"></a>A többhelyes alhálózat üzembe helyezése
-
-A többhelyes konfiguráció esetén az alhálózat érhető el egyszerre az elsődleges és másodlagos helyeken. A felhőbe archivált alhálózatán lép a gép és annak (3. rétegbeli) IP-címének konfigurációja, a másodlagos helyen, a hálózat automatikusan irányítja a forgalmat az új helyre. 
-
-- A 2. rétegbeli (adatrétege hivatkozás) szempontjából szüksége lesz, amely egy kiterjesztett VLAN-t kezelheti a hálózati berendezések.
-- Nyújtsák VLAN, a potenciális tartalék tartomány mindkét helyre kiterjeszti. Ez lesz a hibaérzékeny pont. Amíg nem valószínű, ilyen esetben, nem feltétlenül egy incidenst, például egy szórási storm különítenie. 
+- Helyezzen üzembe egy kifeszített alhálózatot az elsődleges és a másodlagos helyek között.
+- Végezzen el egy teljes alhálózat-feladatátvételt az elsődlegesről a másodlagos helyre. Az IP-címek új helyének jelzéséhez frissítenie kell az útvonalakat.
 
 
-### <a name="fail-over-a-subnet"></a>Átadja a feladatokat egy alhálózatot
+### <a name="deploy-a-stretched-subnet"></a>Kiterjesztett alhálózat üzembe helyezése
 
-Is átadja a feladatokat a felhőbe archivált alhálózat előnyeinek beszerzése nélkül ténylegesen kiterjesztését, a teljes alhálózathoz. Ez a megoldás egy alhálózat érhető el a forrás- vagy webhely, de nem mind egyszerre.
+A kiterjesztett konfigurációban az alhálózat egyszerre érhető el az elsődleges és a másodlagos helyeken is. Egy kihelyezett alhálózat esetében, amikor a gépet és annak IP-címét (3. réteg) a másodlagos helyre helyezi, a hálózat automatikusan átirányítja a forgalmat az új helyre. 
 
-- A feladatátvétel esetén az IP-címtér fenntartása programozott módon rendezheti az útválasztó infrastruktúra alhálózatok áthelyezheti egyik helyről egy másikra.
-- Feladatátvétel esetén a alhálózatok helyezze át a társított virtuális gépeiken.
-- A fő hátrány, ez a megközelítés, hogy hiba esetén, hogy helyezze át a teljes alhálózathoz.
+- A 2. rétegbeli (adatkapcsolati réteg) perspektívából olyan hálózati berendezések szükségesek, amelyek kezelhetik a kihelyezett VLAN-t.
+- A VLAN nyújtásával a lehetséges tartalék tartomány mindkét helyre kiterjed. Ez egyetlen meghibásodási pont lesz. Nem valószínű, hogy ilyen esetben előfordulhat, hogy nem tudja elkülöníteni az incidenseket, például a szórási vihart. 
+
+
+### <a name="fail-over-a-subnet"></a>Alhálózat feladatátvétele
+
+A teljes alhálózat feladatátvételével megszerezheti a kiterjesztett alhálózat előnyeit anélkül, hogy ténylegesen el kellene terjeszteni. Ebben a megoldásban egy alhálózat elérhető a forrás-vagy célhelyen, de egyszerre nem.
+
+- Az IP-címtartomány feladatátvétel esetén történő fenntartásához programozott módon megszervezheti, hogy az útválasztó infrastruktúra az alhálózatokat egyik helyről a másikra helyezze át.
+- Feladatátvétel esetén az alhálózatok a társított virtuális gépekkel együtt mozognak.
+- Ennek a megközelítésnek a fő hátránya, hogy meghibásodás esetén át kell helyeznie a teljes alhálózatot.
 
 #### <a name="example"></a>Példa
 
-Íme egy példa a teljes alhálózat feladatátvétel. 
+Íme egy példa a teljes alhálózat feladatátvételre. 
 
-- A feladatátvétel előtt az elsődleges hely van az alhálózat 192.168.1.0/24 futó alkalmazások.
-- Feladatátvétel során a virtuális gépeket az alhálózaton belüli összes feladatátvétel a másodlagos helyre, és megőrizheti az IP-címek. 
-- Helyek közötti útvonalak megfelelően a tény, hogy az alhálózat 192.168.1.0/24 összes virtuális gép most már helyezte át a másodlagos hely módosítani kell.
+- A feladatátvétel előtt az elsődleges hely a 192.168.1.0/24 alhálózaton futó alkalmazásokkal rendelkezik.
+- A feladatátvétel során az ebben az alhálózatban lévő összes virtuális gép átveszi a feladatokat a másodlagos helyre, és megtartja az IP-címüket. 
+- Az összes hely közötti útvonalakat úgy kell módosítani, hogy az tükrözze azt a tényt, hogy a 192.168.1.0/24 alhálózaton lévő összes virtuális gép most már át lett helyezve a másodlagos helyre.
 
-Az alábbi ábrán az alhálózatok előtt, és a feladatátvételt követően.
+Az alábbi ábrák a feladatátvétel előtt és után ábrázolják az alhálózatokat.
 
 
-**A feladatátvétel előtt**
+**Feladatátvétel előtt**
 
-![A feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design2.png)
+![Feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Feladatátvétel után**
 
 ![Feladatátvétel után](./media/hyper-v-vmm-networking/network-design3.png)
 
-A feladatátvételt követően a Site Recovery a virtuális gép minden hálózati adapter IP-címet foglal le. A címet a statikus IP-címkészletből a megfelelő hálózatban, az egyes Virtuálisgép-példányhoz van lefoglalva.
+A feladatátvételt követően a Site Recovery IP-címet foglal le a virtuális gép minden hálózati adapteréhez. A cím a megfelelő hálózat statikus IP-címkészlet alapján van lefoglalva minden virtuálisgép-példányhoz.
 
-- Ha az IP-címkészlet a másodlagos hely ugyanaz, mint amellyel a forráshelyen, a Site Recovery azonos IP-címét (a forrás virtuális gép), a replika virtuális gép foglal le. Az IP-cím foglalt a VMM-ben, de a Hyper-V gazdagépen történő beállítása nem feladatátvételi IP-címet. Egy Hyper-v gazdagép feladatátvételi IP-cím van beállítva, a feladatátvétel előtt.
-- Az azonos IP-cím nem érhető el, ha a Site Recovery lefoglalja egy másik elérhető IP-cím a készletből.
-- Ha a virtuális gépek DHCP használatára, a Site Recovery nem felügyeli az IP-címek. Ellenőrizze, hogy a DHCP-kiszolgáló a másodlagos helyen is lefoglalhat címeket a forráshely egyező tartományba kell.
+- Ha a másodlagos helyen lévő IP-címkészlet megegyezik a forrás helyével, a Site Recovery a replika virtuális géphez ugyanazt az IP-címet (a forrás virtuális gép) foglalja le. Az IP-cím le van foglalva a VMM-ben, de nincs beállítva feladatátvételi IP-címként a Hyper-V-gazdagépen. A Hyper-v-gazdagép feladatátvételi IP-címe közvetlenül a feladatátvétel előtt van beállítva.
+- Ha ugyanaz az IP-cím nem érhető el, Site Recovery lefoglal egy másik elérhető IP-címet a készletből.
+- Ha a virtuális gépek DHCP-t használnak, Site Recovery nem kezeli az IP-címeket. Ellenőriznie kell, hogy a másodlagos helyen lévő DHCP-kiszolgáló a forrás helyével megegyező tartományból tud-e címeket kiosztani.
 
 ### <a name="validate-the-ip-address"></a>Az IP-cím ellenőrzése
 
-Miután engedélyezte egy virtuális gép védelmét, használhatja az alábbi minta parancsfájl ellenőrizze a címet a virtuális géphez rendelt. Az IP-címet állítja be a feladatátvételi IP-címet, és a feladatátvétel idején a virtuális géphez hozzárendelt:
+A virtuális gép védelmének engedélyezése után a következő minta parancsfájl segítségével ellenőrizheti a virtuális géphez rendelt címeket. Ez az IP-cím a feladatátvételi IP-címként van beállítva, és a virtuális géphez a feladatátvételkor van hozzárendelve:
 
     ```
     $vm = Get-SCVirtualMachine -Name <VM_NAME>
@@ -87,12 +86,12 @@ Miután engedélyezte egy virtuális gép védelmét, használhatja az alábbi m
     $ip.address 
     ```
 
-## <a name="use-a-different-ip-address"></a>Egy másik IP-cím használata
+## <a name="use-a-different-ip-address"></a>Másik IP-cím használata
 
-Ebben a forgatókönyvben feladatátvételt végrehajtó virtuális gépek IP-címei megváltoztak. Ez a megoldás hátránya a szükséges karbantartás.  DNS- és a gyorsítótár-bejegyzéseket kell frissíteni. Ennek eredményeként leállást mérsékelhető a következőképpen:
+Ebben az esetben a feladatátvétel alatt álló virtuális gépek IP-címei módosulnak. A megoldás hátránya a szükséges karbantartás.  Előfordulhat, hogy frissíteni kell a DNS-és a gyorsítótár-bejegyzéseket. Ez állásidőt eredményezhet, amely a következőképpen enyhíthető:
 
-- Intranet-alkalmazásokat használni alacsony élettartam-értékek.
-- Használja a következő szkriptet a Site Recovery helyreállítási terv egy időben a DNS-kiszolgáló frissítése. A parancsfájl nem szükséges, ha a dinamikus DNS-regisztráció.
+- Használjon kis TTL-értékeket az intranetes alkalmazásokhoz.
+- A DNS-kiszolgáló időben történő frissítéséhez használja a következő parancsfájlt egy Site Recovery helyreállítási tervben. Dinamikus DNS-regisztráció használata esetén nincs szükség a parancsfájlra.
 
     ```
     param(
@@ -108,22 +107,22 @@ Ebben a forgatókönyvben feladatátvételt végrehajtó virtuális gépek IP-c�
     
 ### <a name="example"></a>Példa 
 
-Ebben a példában az elsődleges és másodlagos helyek között rendelkezünk különböző IP-címeket, és a egy harmadik hely az elsődleges vagy tartalék üzemeltetett alkalmazások a hely érhető el.
+Ebben a példában különböző IP-címek találhatók az elsődleges és másodlagos helyeken, és létezik egy harmadik hely, ahonnan az elsődleges vagy a helyreállítási helyen futó alkalmazások elérhetők.
 
-- A feladatátvétel előtt az alkalmazások olyan elsődleges helyen üzemeltetett alhálózati 192.168.1.0/24.
-- A feladatátvételt követően az alkalmazások az alhálózat 172.16.1.0/24 a másodlagos helyen vannak konfigurálva.
-- Összes három helyen képesek elérni egymást.
-- A feladatátvételt követően az alkalmazások helyreállítási alhálózatban lehet visszaállítani.
-- Ebben a forgatókönyvben nem átadja a feladatokat a teljes alhálózat nem szükséges, és nincs szükség változtatásokra segítségével konfigurálja újra a VPN- vagy hálózati útvonalak. A feladatátvétel és az egyes DNS-frissítésekkel, győződjön meg arról, hogy az alkalmazások is elérhető.
-- Ha a DNS dinamikus frissítések engedélyezésére van konfigurálva, a virtuális gépek fog regisztrálhatják magukat az új IP-címet használja, amikor elindítja a feladatátvételt követően.
+- A feladatátvétel előtt az alkalmazások az elsődleges helyen 192.168.1.0/24 alhálózatot üzemeltetnek.
+- A feladatátvételt követően az alkalmazások a másodlagos helyen lévő 172.16.1.0/24 alhálózaton vannak konfigurálva.
+- Mindhárom hely elérheti egymást.
+- A feladatátvételt követően a rendszer visszaállítja az alkalmazásokat a helyreállítási alhálózatban.
+- Ebben a forgatókönyvben nem szükséges a teljes alhálózat feladatátvétele, és nincs szükség módosításra a VPN-vagy hálózati útvonalak újrakonfigurálásához. A feladatátvételt és néhány DNS-frissítést, győződjön meg arról, hogy az alkalmazások továbbra is elérhetők maradnak.
+- Ha a DNS a dinamikus frissítések engedélyezésére van konfigurálva, akkor a virtuális gépek az új IP-cím használatával regisztrálják magukat, amikor a feladatátvétel után indulnak.
 
-**A feladatátvétel előtt**
+**Feladatátvétel előtt**
 
-![Különböző IP-cím – a feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design10.png)
+![Eltérő IP-cím – feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Feladatátvétel után**
 
-![Másik IP-cím - feladatátvétel után](./media/hyper-v-vmm-networking/network-design11.png)
+![Eltérő IP-cím – feladatátvétel után](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>További lépések

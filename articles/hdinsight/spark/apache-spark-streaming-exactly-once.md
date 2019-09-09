@@ -1,18 +1,18 @@
 ---
 title: Spark streaming-feladatok a pontosan egyszeri események feldolgozásával – Azure HDInsight
-description: A Spark streaming beállítása egy esemény egyszeri és egyszeri feldolgozásához.
+description: Apache Spark streaming beállítása egy esemény egyszeri és egyszeri feldolgozásához.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ce2cff6a1a6bf769f52940ecc0d1dc5a4678cbd5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735993"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814031"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással
 

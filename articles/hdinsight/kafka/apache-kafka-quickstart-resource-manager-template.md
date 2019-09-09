@@ -1,18 +1,18 @@
 ---
 title: A HDInsight Apache Kafka beállítása a Azure Resource Manager-gyors útmutató használatával
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsight Azure Resource Manager sablon használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 399d1146dc71f4670ee0c9bfa497f34911ade638
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780783"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811462"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával
 
@@ -38,7 +38,7 @@ Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop
 
 2. A Kafka-fürt létrehozásához használja a következő értékeket:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value |
     | --- | --- |
     | Subscription | Az Azure-előfizetése. |
     | Resource group | Az az erőforráscsoport, amelyben a fürt létrejön. |

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405969"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811957"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfallal (előzetes verzió)
 
@@ -48,11 +48,11 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
 Válassza ki az új **FW01** tűzfalat a Azure Portal. Kattintson a **szabályok** elemre, majd a **Beállítások** > **alkalmazás-szabály gyűjtemény** > alkalmazás-szabálygyűjtemény**hozzáadása**lehetőségre.
 
-![Cím: Alkalmazásszabály-gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Cím Alkalmazásszabály-gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Az **alkalmazás-szabály felvétele** képernyőn hajtsa végre a következő lépéseket:
 
-1. Adjon meg **egy nevet**, egy **prioritást**, majd kattintson az **Engedélyezés** elemre a **művelet** legördülő menüből, és írja be a következő szabályokat a **teljes tartománynév címkék szakaszba** :
+1. Adjon meg egy **nevet**, egy **prioritást**, majd kattintson az **Engedélyezés** elemre a **művelet** legördülő menüből, és írja be a következő szabályokat a **teljes tartománynév címkék szakaszba** :
 
    | **Name** | **Forrás címe** | **FQDN címke** | **Megjegyzések** |
    | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ Az **alkalmazás-szabály felvétele** képernyőn hajtsa végre a következő l
 
 1. Kattintson a **Hozzáadás**lehetőségre.
 
-   ![Cím: Adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Cím Adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>A tűzfal konfigurálása hálózati szabályokkal
 
@@ -93,7 +93,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
 1. A hálózati szabálygyűjtemény létrehozásának befejezéséhez kattintson a **Hozzáadás** gombra.
 
-   ![Cím: Adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Cím Adja meg az alkalmazási szabálygyűjtemény gyűjteményét](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Útválasztási táblázat létrehozása és konfigurálása
 
@@ -107,7 +107,7 @@ Hozzon létre egy útválasztási táblázatot a következő bejegyzésekkel:
 Ha például az útválasztási táblázatot az USA középső régiójában létrehozott fürthöz szeretné konfigurálni, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure portálra.
-1. Válassza ki az Azure Firewall **test-FW01**. Másolja ki az **Áttekintés** lapon felsorolt **magánhálózati IP-címet** . Ebben a példában a **10.1.1.4** egy mintáját fogjuk használni
+1. Válassza ki az Azure Firewall **test-FW01**. Másolja ki az **Áttekintés** lapon felsorolt **magánhálózati IP-címet** . Ebben a példában a **10.1.1.4 egy mintáját** fogjuk használni
 1. Hozzon létre egy új útválasztási táblázatot.
 1. Kattintson a **Beállítások**alatt lévő **útvonalak** elemre.
 1. A **Hozzáadás** gombra kattintva hozzon létre útvonalakat az alábbi táblázatban szereplő IP-címekhez.
@@ -124,8 +124,8 @@ Ha például az útválasztási táblázatot az USA középső régiójában lé
 
 Fejezze be az útválasztási táblázat konfigurációját:
 
-1. Rendelje hozzá a HDInsight-alhálózathoz a létrehozott útválasztási  táblázatot úgy, hogy az alhálózatok elemre kattint, majd a **társítás** **lehetőséget** választja.
-1. Az **alhálózat hozzárendelése** képernyőn válassza ki azt a virtuális hálózatot, amelyben a fürt létrejött, valamint a HDInsight-fürthöz használt **HDInsight** -alhálózatot.
+1. Rendelje hozzá a HDInsight-alhálózathoz a létrehozott útválasztási táblázatot úgy, hogy az **alhálózatok** elemre kattint, majd a **társítás** **lehetőséget** választja.
+1. Az **alhálózat hozzárendelése** képernyőn válassza ki azt a virtuális hálózatot, amelyben a fürt létrejött, valamint a HDInsight-fürthöz használt **HDInsight-alhálózatot** .
 1. Kattintson az **OK** gombra.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-Node vagy egyéni alkalmazás forgalma

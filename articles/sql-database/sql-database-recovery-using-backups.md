@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103116"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813347"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel
 
@@ -127,10 +127,7 @@ A földrajzi másodlagos időponthoz való visszaállítás jelenleg nem támoga
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geo-visszaállítás a Azure Portal használatával
 
-Egy adatbázis geo-visszaállításához a Azure Portal segítségével nyissa meg az SQL-adatbázisok lapot, majd kattintson a **Hozzáadás**gombra. A **forrás kiválasztása** szövegmezőben válassza a **biztonsági mentés**lehetőséget. Adja meg azt a biztonsági másolatot, amelyből a helyreállítást el szeretné végezni a régióban és a választott kiszolgálón.
-
-> [!Note]
-> A Azure Portal használatával történő geo-visszaállítás felügyelt példányban nem érhető el. Ehelyett használja a PowerShellt.
+Egy adatbázis geo-visszaállításához a Azure Portal segítségével nyissa meg az SQL-adatbázisok lapot, majd kattintson a **Hozzáadás**gombra. A **forrás kiválasztása** szövegmezőben válassza a **biztonsági mentés**lehetőséget. Adja meg azt a biztonsági másolatot, amelyből a helyreállítást el szeretné végezni a régióban és a választott kiszolgálón. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Automatizált biztonsági mentésekkel programozott módon hajthatja végre a helyreállítást
 
@@ -184,5 +181,5 @@ Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók �
 
 - Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
 - Az automatikus biztonsági mentések Azure SQL Databaseáról a [SQL Database automatizált biztonsági mentések](sql-database-automated-backups.md)című témakörben olvashat bővebben.
-- A hosszú távú adatmegőrzésről a [hosszú távú](sql-database-long-term-retention.md)adatmegőrzéssel foglalkozó témakörben olvashat bővebben.
+- A hosszú távú adatmegőrzésről a [hosszú távú adatmegőrzéssel](sql-database-long-term-retention.md)foglalkozó témakörben olvashat bővebben.
 - A gyorsabb helyreállítási lehetőségek megismeréséhez lásd: [aktív földrajzi replikálás](sql-database-active-geo-replication.md) vagy [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: bbec8c79b7d1b1a3f8864e12a6dc5b6c07bbb05d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147818"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813839"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Első lépések IoT Hub modul identitása és modulja – twin (C)
 
@@ -186,7 +186,7 @@ Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFir
 
 Ebben a szakaszban egy C alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
 
-1. **A modul kapcsolódási karakterláncának** beolvasása – most, [](https://portal.azure.com)ha bejelentkezik a Azure Portalba. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **A modul kapcsolódási karakterláncának beolvasása** – most, ha bejelentkezik a [Azure Portalba](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
@@ -299,7 +299,7 @@ static void deviceTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsi
     (void)userContextCallback;
 
     printf("Device Twin update received (state=%s, size=%zu): %s\r\n", 
-        ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
+        MU_ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
 }
 
 static void reportedStateCallback(int status_code, void* userContextCallback)

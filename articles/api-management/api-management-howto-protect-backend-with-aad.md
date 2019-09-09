@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 344613c50f46337ffbd7e786f6753e8030c2af22
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072245"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806323"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Az API-k védelemmel való ellátása a OAuth 2,0-mel a Azure Active Directory és API Management használatával
 
 Ez az útmutató bemutatja, hogyan konfigurálhatja Azure API Management-példányát az API-k biztosításához a OAuth 2,0 protokoll és a Azure Active Directory (Azure AD) használatával. 
+
+> [!NOTE]
+> Ez a funkció a API Management **fejlesztői**, **standard** és **prémium** szintjein érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
@@ -121,25 +124,25 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
 
 1. Az **ügyfél-regisztrációs lap URL-címéhez**adja meg a helyőrző értékét `http://localhost`, például:. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amelyet a felhasználók a saját fiókjaik létrehozására és konfigurálására használhatnak az ezt támogató OAuth 2,0-szolgáltatók számára. Ebben a példában a felhasználók nem hoznak létre és nem konfigurálja a saját fiókjaikat, ezért Ehelyett helyőrzőt használ.
 
-1. Az **engedélyezési**engedélyek típusainál válassza az **engedélyezési kód**lehetőséget.
+1. Az **engedélyezési engedélyek típusainál**válassza az **engedélyezési kód**lehetőséget.
 
-1. Az **engedélyezési végpont URL** -címének és a **jogkivonat-végpont URL-címének**megadása. Olvassa be ezeket az értékeket az Azure ad-bérlő végpontok lapján. Nyissa meg ismét a **Alkalmazásregisztrációk** lapot, ésválassza a végpontok lehetőséget.
+1. Az **engedélyezési végpont URL-címének** és a **jogkivonat-végpont URL-címének**megadása. Olvassa be ezeket az értékeket az Azure AD-bérlő **végpontok** lapján. Nyissa meg ismét a **Alkalmazásregisztrációk** lapot, és válassza a **végpontok**lehetőséget.
 
 
 1. Másolja az **OAuth 2,0 engedélyezési végpontot**, és illessze be az **engedélyezési végpont URL-címébe** . Válassza a **post** lehetőséget az engedélyezési kérelem metódusa alatt.
 
-1. Másolja a **OAuth 2,0 token**-végpontot, és illessze be a **jogkivonat-végpont URL-** szövegmezőbe. 
+1. Másolja a **OAuth 2,0 token-végpontot**, és illessze be a **jogkivonat-végpont URL-** szövegmezőbe. 
 
     >[!IMPORTANT]
     > A **v1** vagy **v2** végpontokat is használhatja. Azonban attól függően, hogy melyik verziót választja, az alábbi lépés eltérő lesz. A v2-végpontok használatát javasoljuk. 
 
-1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás**nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás** -azonosítóját. 
+1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás**nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás-azonosítóját** . 
 
 1. Ha **v2** -végpontokat használ, használja az **Alapértelmezett hatókör** mezőben a háttér-alkalmazáshoz létrehozott hatókört.
 
 1. Ezután határozza meg az ügyfél hitelesítő adatait. Az ügyfél-alkalmazás hitelesítő adatai.
 
-1. Az **ügyfél**-azonosítóhoz használja az ügyfél-alkalmazás **alkalmazás** -azonosítóját.
+1. Az **ügyfél-azonosítóhoz**használja az ügyfél-alkalmazás **alkalmazás-azonosítóját** .
 
 1. Az **ügyfél titkos**kulcsaként használja az ügyfélhez korábban létrehozott kulcsot. 
 
@@ -193,7 +196,7 @@ Ezen a ponton, amikor egy felhasználó megpróbál hívást készíteni a fejle
 
 Mi a teendő, ha valaki jogkivonat vagy érvénytelen token nélkül hívja meg az API-t? Ha például az API-t a `Authorization` fejléc nélkül szeretné hívni, a hívás továbbra is elérhető lesz. Ennek az az oka, hogy API Management ezen a ponton nem érvényesíti a hozzáférési jogkivonatot. Egyszerűen átadja a `Authorization` fejlécet a háttér-API-nak.
 
-A [JWT](api-management-access-restriction-policies.md#ValidateJWT) szabályzat érvényesítésével engedélyezheti a kérelmeket a API Managementban, az egyes bejövő kérelmek hozzáférési jogkivonatának ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonattal, API Management blokkolja. Adja hozzá például a következő szabályzatot `<inbound>` a szabályzat szakaszához. `Echo API` Ellenőrzi a célközönség jogcímet egy hozzáférési jogkivonatban, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásával kapcsolatos információkért lásd: [házirendek beállítása vagy szerkesztése](set-edit-policies.md).
+A [JWT szabályzat érvényesítésével](api-management-access-restriction-policies.md#ValidateJWT) engedélyezheti a kérelmeket a API Managementban, az egyes bejövő kérelmek hozzáférési jogkivonatának ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonattal, API Management blokkolja. Adja hozzá például a következő szabályzatot `<inbound>` a szabályzat szakaszához. `Echo API` Ellenőrzi a célközönség jogcímet egy hozzáférési jogkivonatban, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásával kapcsolatos információkért lásd: [házirendek beállítása vagy szerkesztése](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

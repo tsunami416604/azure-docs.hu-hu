@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183183"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809205"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK)
 
@@ -45,7 +45,7 @@ Az alkalmazásokhoz tartozó felhasználói fiókokat mindig létre kell hozni e
 
 Jelenleg számos közösségi identitást támogatunk, többek között az Amazon, a Facebook, a GitHub (előzetes verzió), a Google, a LinkedIn, a Microsoft account (MSA), a QQ (előzetes verzió), a Twitter, a WeChat (előzetes verzió) és a WeiBo (előzetes verzió Az ügyfelek igénye alapján kiértékeljük, hogy további népszerű közösségi identitás-szolgáltatók támogatását vesszük fel.
 
-A Azure AD B2C az [egyéni házirendeket](active-directory-b2c-overview-custom.md)is támogatja. Az egyéni házirendek lehetővé teszik saját szabályzat létrehozását bármely olyan identitás-szolgáltató számára, amely támogatja az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy az SAML használatát. Ismerkedjen meg az egyéni házirendekkel, és tekintse meg az [Egyéni](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)szabályzatok alapszintű csomagját.
+A Azure AD B2C az [egyéni házirendeket](active-directory-b2c-overview-custom.md)is támogatja. Az egyéni házirendek lehetővé teszik saját szabályzat létrehozását bármely olyan identitás-szolgáltató számára, amely támogatja az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) vagy az SAML használatát. Ismerkedjen meg az egyéni házirendekkel, és tekintse meg az egyéni szabályzatok [alapszintű csomagját](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Beállíthat hatóköröket, hogy további információkat gyűjtsön a különböző közösségi identitású szolgáltatók fogyasztóiról?
 
@@ -90,7 +90,7 @@ Az Azure AD Graph API segítségével megírhatja az áttelepítési eszközt. A
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszó-felhasználói folyamatot használ a Azure AD B2C helyi fiókjaihoz?
 
-A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért olvassa el az [Azure ad](/previous-versions/azure/jj943764(v=azure.100)) -beli jelszavas szabályzatot. A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és](active-directory-b2c-reference-threat-management.md)az adatokra Azure Active Directory B2Cban.
+A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért olvassa el az [Azure ad-beli jelszavas szabályzatot](/previous-versions/azure/jj943764(v=azure.100)) . A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Használhatom Azure AD Connect a helyszíni Active Directory tárolt fogyasztói identitások áttelepíthetők a Azure AD B2Cre?
 
@@ -124,9 +124,9 @@ Nem, Azure AD B2C nem támogatja ugyanazokat a jelentéseket, mint a prémium sz
 
 Igen!  Tekintse meg a nyilvános előzetes verzióban elérhető [nyelvi testreszabási](active-directory-b2c-reference-language-customization.md)tudnivalókat. 36 nyelvű fordítást biztosítunk, és bármilyen karakterláncot felülbírálhat az igényeinek megfelelően.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Használhatom a saját URL-címeket az Azure AD B2C által kiszolgált regisztrációs és bejelentkezési lapokon? Megváltoztathatom például a login.microsoftonline.com és a login.contoso.com URL-címét?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Használhatom a saját URL-címeket az Azure AD B2C által kiszolgált regisztrációs és bejelentkezési lapokon? Megváltoztathatom például a contoso.b2clogin.com és a login.contoso.com URL-címét?
 
-Jelenleg nem. Ez a funkció az ütemterven található. A tartomány ellenőrzése a **tartományok** lapon, a Azure Portal nem hajtja végre ezt a célt.
+Jelenleg nem. Ez a funkció az ütemterven található. A tartomány ellenőrzése a **tartományok** lapon, a Azure Portal nem hajtja végre ezt a célt. A b2clogin.com azonban [semleges legfelső szintű tartományt](b2clogin.md)kínálunk, így a külső megjelenés a Microsoft megemlítése nélkül is megvalósítható.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölni a Azure AD B2C bérlőt?
 

@@ -1,9 +1,9 @@
 ---
-title: Mi a Privileged Identity Management? – Az azure Active Directory |} A Microsoft Docs
-description: Az Azure AD Privileged Identity Management (PIM) áttekintést nyújt.
+title: Mi az Privileged Identity Management? – Az azure Active Directory |} A Microsoft Docs
+description: Áttekintést nyújt Azure AD Privileged Identity Management (PIM) szolgáltatásról.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,72 +11,72 @@ ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 5009310dd4ea4e99e1da2871085ee2d2d99a6eab
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473686"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804506"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egy szolgáltatása, amely lehetővé teszi, hogy a kezelése, szabályozása és figyelése a szervezet fontos erőforrásokhoz való hozzáférés. Ebbe beletartozik az Azure AD, az Azure-erőforrások és más online Microsoft-szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz való hozzáférés.
+A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szolgáltatás lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ebbe beletartozik az Azure AD, az Azure-erőforrások és más online Microsoft-szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz való hozzáférés.
 
-## <a name="why-should-i-use-pim"></a>Miért érdemes használni a PIM?
+## <a name="why-should-i-use-pim"></a>Miért érdemes a PIM-t használni?
 
-Szervezetek számára szeretne információkat vagy erőforrások, biztonságos, mert, amely csökkenti az esélyét, hogy egy adott hozzáférhetne rosszindulatú aktor, vagy egy jogosult felhasználó véletlenül érintő bizalmas erőforrás hozzáféréssel rendelkező személyek számának csökkentése érdekében. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. Szervezetek számára adhat a felhasználóknak az emelt szintű hozzáférés az Azure-erőforrások és az Azure AD-igény (szerinti JIT). A felügyeletet, mivel foglalkoznak az ezek a felhasználók saját rendszergazdai jogosultságokkal az szükség van. A PIM segít mérsékelni a túlzott mértékben használta, a szükségtelen kockázatának, vagy helytelen a hozzáférési jogosultságokat.
+A szervezetek szeretnék csökkenteni azon személyek számát, akiknek hozzáférésük van az információkhoz vagy az erőforrásokhoz, mivel ez csökkenti annak az esélyét, hogy egy rosszindulatú szereplő hozzáfér az adott hozzáféréshez, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. A szervezetek az Azure-erőforrásokhoz és az Azure AD-hez igénybe vehetik az igény szerinti (JIT) jogosultságú hozzáférést. Szükség van arra, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat. A PIM segít csökkenteni a túlzott, szükségtelen vagy nem használt hozzáférési jogosultságok kockázatát.
 
-## <a name="what-can-i-do-with-pim"></a>Mire használhatom a PIM Használatát?
+## <a name="what-can-i-do-with-pim"></a>Mire használhatom a PIM-t?
 
-A PIM lényegében segítségével kezelheti a ki, mit, mikor, hol és miért érdemes az erőforrásra, amely az Ön számára. Íme néhány a PIM főbb jellemzői:
+A PIM lényegében segítséget nyújt a WHO, mi, hol, hol és miért az Ön számára fontos erőforrások kezelésében. Íme a PIM legfontosabb funkciói:
 
-- Adja meg **just-in-time** emelt szintű hozzáférés az Azure AD és az Azure-erőforrások
-- Rendelje hozzá **időhöz kötött** kezdő és záró dátuma erőforrások elérése
-- Szükséges **jóváhagyási** emelt szintű szerepkörök aktiválása
-- Kényszerítése **a multi-factor authentication** bármely szerepkör aktiválása
-- Használat **indoklás** tudni, miért felhasználók aktiválása
-- Első **értesítések** kiemelt szerepkörök aktiválásakor
-- Magatartási **hozzáférési felülvizsgálatokkal** annak biztosítása érdekében a felhasználók továbbra is szükséges szerepkörök
-- Töltse le **naplózási előzmények** a belső vagy külső naplózás
+- Az Azure AD-hez és **Az Azure-** erőforrásokhoz való, igény szerinti, Kiemelt jogosultságokkal rendelkező hozzáférés biztosítása
+- Az erőforrásokhoz való **időhöz kötött** hozzáférés kiosztása a kezdő és a záró dátumok használatával
+- **Jóváhagyás** megkövetelése a Kiemelt szerepkörök aktiválásához
+- A **többtényezős hitelesítés** betartatása bármely szerepkör aktiválásához
+- **Indoklás** használata a felhasználók aktiválásának megértéséhez
+- **Értesítések** beszerzése a Kiemelt szerepkörök aktiválása esetén
+- **Hozzáférési felülvizsgálatok** végrehajtása annak biztosításához, hogy a felhasználóknak továbbra is szükségük van
+- **Naplózási előzmények** letöltése belső vagy külső naplózáshoz
 
 ## <a name="terminology"></a>Terminológia
 
-A PIM és a hozzá tartozó dokumentáció jobb megértéséhez, tekintse át az alábbi feltételek.
+A PIM és a hozzá tartozó dokumentáció jobb megismeréséhez tekintse át az alábbi feltételeket.
 
-| Kifejezés vagy fogalom | Szerepkör-hozzárendelés kategória | Leírás |
+| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Leírás |
 | --- | --- | --- |
-| Jogosult | Típus | Szerepkör-hozzárendelés, amelyhez a felhasználót a szerepkör használatához egy vagy több művelet végrehajtásához szükséges. Ha egy felhasználó jogosult szerepkör lett végrehajtva, ez azt jelenti, ha kiemelt feladatait van szükségük a szerepkör aktiválásához. Nincs megadott valaki egy állandó jogosult szerepkör-hozzárendelés és hozzáférési nincs különbség. Az egyetlen különbség, hogy néhány felhasználó nem kell olyan folyamatosan. |
-| aktív | Típus | Szerepkör-hozzárendelés, amelyek nem igényelnek a felhasználót, hogy a szerepkör használatához bármely művelet elvégzésére. A felhasználók hozzárendelve aktívként a szerepkörhöz rendelt jogosultság. |
-| aktiválás |  | Folyamat használatához egy szerepkör, amely a felhasználó nem jogosult egy vagy több műveletet hajt végre. Műveletek tartalmazhat, egy üzleti indoklásának megadása, vagy jóváhagyási kérése a kijelölt jóváhagyókat többtényezős hitelesítés (MFA)-ellenőrzés elvégzése. |
-| Hozzárendelve | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználóként. |
-| Aktiválva | Állapot | Egy jogosult szerepkör-hozzárendelés rendelkező felhasználóként végrehajtani a műveleteket a szerepkör aktiválását, és most már aktív.  Aktiválta, miután a felhasználó használhatja az előre konfigurált időszak-az-ideje előtt újra aktiválni kell azokat a szerepkör. |
-| állandó jogosult | Időtartam | Ahol a felhasználó mindig a szerepkör aktiválását jogosult szerepkör-hozzárendelés. |
-| állandó aktív | Időtartam | Szerepkör-hozzárendelés ahol a felhasználó bármikor használhatja a szerepkör bármilyen művelet végrehajtása nélkül. |
-| jogosult lejár | Időtartam | Ahol a felhasználó abban az esetben a szerepkör aktiválását a megadott kezdő és záró dátum belül jogosult szerepkör-hozzárendelés. |
-| aktív lejár | Időtartam | Szerepkör-hozzárendelés ahol a felhasználó használhatja a szerepkör belül megadott kezdő és záró dátum bármilyen művelet végrehajtása nélkül. |
-| – igény (szerinti JIT) hozzáférési |  | A modell, amelyben a felhasználók megkapják a rendszerjogosultságú feladatait ideiglenes engedélyek, amely megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek a engedélyekkel rendelkezik lejárta után. Hozzáférés csak akkor, ha a felhasználók szüksége van rá. |
-| legkisebb jogosultság hozzáférés elve |  | A feladatok elvégzéséhez jogosultak, amelyben minden felhasználó csak a minimális jogosultságokkal rendelkező megadott ajánlott biztonsági eljárás szükséges. Ez az eljárás minimálisra csökkentik a globális rendszergazdák, és helyette használja az adott rendszergazdai szerepköröket bizonyos forgatókönyvek esetén. |
+| támogatható | Type | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
+| aktív | Type | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |
+| aktiválás |  | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
+| rendelt | State | Aktív szerepkör-hozzárendeléssel rendelkező felhasználó. |
+| aktivált | State | A jogosult szerepkör-hozzárendeléssel rendelkező felhasználók elvégezték a szerepkör aktiválásához szükséges műveleteket, és most aktívak.  Az aktiválás után a felhasználó használhatja a szerepkört egy előre konfigurált időszakra, mielőtt újra aktiválni kellene. |
+| állandó jogosultság | Duration | Szerepkör-hozzárendelés, amelyben a felhasználó mindig jogosult a szerepkör aktiválásához. |
+| állandó aktív | Duration | Szerepkör-hozzárendelés, amelyben a felhasználók minden művelet végrehajtása nélkül bármikor használhatják a szerepkört. |
+| jogosultság lejárata | Duration | Szerepkör-hozzárendelés, amelyben a felhasználó jogosult a szerepkör aktiválására a megadott kezdési és befejezési dátumon belül. |
+| aktív lejárat | Duration | Szerepkör-hozzárendelés, amelyben a felhasználó a megadott kezdési és befejezési dátumon belüli műveletek végrehajtása nélkül használhatja a szerepkört. |
+| igény szerinti (JIT) hozzáférés |  | Olyan modell, amelyben a felhasználók ideiglenes engedélyeket kapnak a Kiemelt feladatok végrehajtásához, ami megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók hozzáférjenek az engedélyek lejárta után. A hozzáférés csak akkor adható meg, ha a felhasználóknak szüksége van rá. |
+| a minimális jogosultsági szintű hozzáférés elve |  | Ajánlott biztonsági eljárás, amelyben minden felhasználó csak a végrehajtásra jogosult feladatok végrehajtásához szükséges minimális jogosultságokkal rendelkezik. Ez a gyakorlat lekicsinyíti a globális rendszergazdák számát, és bizonyos helyzetekben adott rendszergazdai szerepköröket használ. |
 
-## <a name="what-does-pim-look-like"></a>Milyen kinéznie PIM?
+## <a name="what-does-pim-look-like"></a>Mire hasonlít a PIM?
 
-Miután beállította a PIM, látni fogja **feladatok**, **kezelés**, és **tevékenység** a bal oldali navigációs menü Beállítások. A rendszergazdák kezelése közötti fogja választani **Azure AD-szerepkörök** és **Azure-erőforrás** szerepköröket. Ha úgy dönt, a szerepkörök kezeléséhez típusát, tekintse meg hasonló beállítási lehetőségek tartoznak az adott szerepkör típusa.
+A PIM beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés**és a **tevékenységek** beállításai. Rendszergazdaként választhatja az **Azure ad-szerepkörök** és az Azure- **erőforrások** szerepköreinek kezelését. Ha kiválasztja a felügyelni kívánt szerepkörök típusát, az adott szerepkör típusához hasonló beállítások jelennek meg.
 
-![Képernyőkép a PIM az Azure Portalon](./media/pim-configure/pim-overview.png)
+![Képernyőfelvétel a PIM-ról a Azure Portal](./media/pim-configure/pim-overview.png)
 
-## <a name="who-can-do-what-in-pim"></a>Ki teheti Mi a PIM?
+## <a name="who-can-do-what-in-pim"></a>Ki teheti a PIM-t?
 
-Ha Ön az első, aki a PIM használatát tervezi, akkor automatikusan megkapja a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörökhöz a címtárban.
+Ha Ön az első, aki a PIM-t használja, automatikusan hozzárendeli a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkört a címtárhoz.
 
-Az Azure AD-szerepkörök csak egy felhasználót, aki a kiemelt szerepkörű rendszergazda szerepkör kezelheti más rendszergazdák a PIM-hozzárendeléseit. Is [hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése](pim-how-to-give-access-to-pim.md). Globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók PIM az Azure AD szerepkör-hozzárendelések is megtekintheti.
+Az Azure AD-szerepkörök esetében csak a Kiemelt szerepkörű rendszergazda szerepkörrel rendelkező felhasználók kezelhetik a PIM más rendszergazdáinak hozzárendeléseit. [Hozzáférést biztosíthat más rendszergazdáknak a PIM kezeléséhez](pim-how-to-give-access-to-pim.md). A globális rendszergazdák, a biztonsági rendszergazdák és a biztonsági olvasók megtekinthetik a PIM Azure AD szerepköreinek hozzárendeléseit.
 
-Azure-erőforrások szerepköreihez, csak egy előfizetés-rendszergazda, az erőforrás tulajdonosa vagy a felhasználói hozzáférés rendszergazdája erőforrás kezelhetik a más rendszergazdák a PIM-hozzárendeléseit. Felhasználók, akik a kiemelt szerepkörű rendszergazdák, biztonsági rendszergazdák és a biztonsági olvasók alapértelmezés szerint nem rendelkeznek hozzáféréssel a PIM az Azure-erőforrás szerepkör-hozzárendelések megtekintéséhez.
+Az Azure erőforrás-szerepkörök esetében csak az előfizetés rendszergazdája, az erőforrás tulajdonosa vagy az erőforrás felhasználói hozzáférés-kezelő rendszergazdája kezelheti a PIM más rendszergazdáinak hozzárendeléseit. Azok a felhasználók, akik Kiemelt szerepkörű rendszergazdák, biztonsági rendszergazdák vagy biztonsági olvasók, alapértelmezés szerint nem férnek hozzá a PIM-beli Azure-erőforrás-szerepkörök hozzárendeléseinek megtekintéséhez.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A PIM használatát támogatja a következő esetekben:
+A PIM a következő forgatókönyveket támogatja:
 
 **Kiemelt szerepkörű rendszergazdaként a következőkre jogosult:**
 
@@ -90,7 +90,7 @@ A PIM használatát támogatja a következő esetekben:
 - Szerepkör-kiterjesztésre irányuló kérelmek jóváhagyása vagy visszautasítása (egyszerre egy és/vagy több)
 - Indoklás fűzése a jóváhagyáshoz/elutasításhoz 
 
-**Jogosult szerepkör felhasználóként a következő műveletek végezhetők el:**
+**Jogosult szerepkör-felhasználóként a következőket teheti:**
 
 - Jóváhagyást igénylő szerepkör aktiválásának kérelme
 - Az aktiválási kérelem állapotának megtekintése
@@ -100,10 +100,10 @@ A PIM használatát támogatja a következő esetekben:
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Felhasználók licenceinek kapcsolatos információkért lásd: [Licenckövetelményekért a PIM használatát tervezi](subscription-requirements.md).
+További információ a felhasználói licencekről: a [PIM használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Licenckövetelmények vonatkoznak, miközben a PIM használata](subscription-requirements.md)
+- [A PIM használatára vonatkozó licencfeltételek](subscription-requirements.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-- [A PIM telepítése](pim-deployment-plan.md)
+- [PIM üzembe helyezése](pim-deployment-plan.md)

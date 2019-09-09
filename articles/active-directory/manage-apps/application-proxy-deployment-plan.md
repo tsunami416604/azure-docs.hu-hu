@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879918"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812838"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -36,7 +36,7 @@ A következő szakasz áttekintést nyújt a legfontosabb tervezési elemekről,
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltételeknek. Ebben az oktatóanyagban további információkat talál a környezet beállításával kapcsolatban, beleértve az előfeltételeket [](application-proxy-add-on-premises-application.md)is.
+A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltételeknek. Ebben az [oktatóanyagban](application-proxy-add-on-premises-application.md)további információkat talál a környezet beállításával kapcsolatban, beleértve az előfeltételeket is.
 
 * **Összekötők**: Az összekötők olyan könnyű ügynökök, amelyeket üzembe helyezhet:
    * Helyszíni fizikai hardver
@@ -47,7 +47,7 @@ A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltét
 
      * Az összekötők telepítése előtt engedélyeznie kell az összekötő gépeket [a TLS 1,2-hez](application-proxy-add-on-premises-application.md) .
 
-     * Ha lehetséges, telepítsen összekötőket [ugyanabban](application-proxy-network-topology.md) a hálózatban és szegmensben, mint a háttérbeli webalkalmazás-kiszolgálókat. Az alkalmazások felderítésének befejezése után érdemes az összekötőket üzembe helyezni.
+     * Ha lehetséges, telepítsen összekötőket [ugyanabban a hálózatban](application-proxy-network-topology.md) és szegmensben, mint a háttérbeli webalkalmazás-kiszolgálókat. Az alkalmazások felderítésének befejezése után érdemes az összekötőket üzembe helyezni.
      * Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni. Tekintse át az [összekötő kapacitása táblában](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) , hogy eldöntse, milyen típusú gépet telepítsen az összekötők. Minél nagyobb a gép, annál több puffert és teljesítményű összekötőt használ a rendszer.
 
 * **Hálózati hozzáférési beállítások**: Az Azure AD Application Proxy [-összekötők a https-kapcsolaton keresztül csatlakoznak az Azure-hoz (443-as TCP-port) és a http-t (80](application-proxy-add-on-premises-application.md) 
@@ -64,7 +64,7 @@ Az Azure AD Application Proxy konfigurálásához és megvalósításához a kö
 
 *  Az **Azure**bevezetése: Az alkalmazásproxy üzembe helyezése előtt a felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-* **Feltételes hozzáférési követelmények**: Nem ajánlott az alkalmazásproxy használata az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy diretly a hitelesítést a HRE használatával. További információkért tekintse meg az [alkalmazások HRE](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) való áttelepítésének erőforrásait. 
+* **Feltételes hozzáférési követelmények**: Nem ajánlott az alkalmazásproxy használata az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy diretly a hitelesítést a HRE használatával. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
 
 * **Szolgáltatási korlátok**: Az egyes bérlők erőforrásainak túlfogyasztása elleni védelem érdekében az alkalmazások és a bérlők szabályozási korlátokkal rendelkeznek. A korlátozások megtekintéséhez tekintse meg az [Azure ad szolgáltatás korlátozásait és korlátozásait](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a sávszélesség-szabályozási korlátok a tipikus használati köteten felüli teljesítményteszten alapulnak, és bőséges puffert biztosítanak az üzemelő példányok többsége számára.
 
@@ -85,7 +85,7 @@ A témakörrel kapcsolatos részletes információkért lásd: [KCD az egyszeri 
 
    * Az **alkalmazások közzétételéhez és felügyeletéhez** az *alkalmazás-rendszergazdai* szerepkör szükséges. Az alkalmazás-rendszergazdák kezelhetik a címtárban lévő összes alkalmazást, beleértve a regisztrációkat, az SSO-beállításokat, a felhasználók és csoportok hozzárendelését, a licencelést, az alkalmazásproxy beállításait és a jóváhagyást. Nem biztosít lehetőséget a feltételes hozzáférés kezelésére. A *Cloud Application Administrator* szerepkör rendelkezik az alkalmazás-rendszergazda összes képességével, azzal a kivétellel, hogy az alkalmazásproxy-beállítások kezelése nem engedélyezett.
 
-* **Licencelés**: Az alkalmazásproxy a alapszintű Azure AD-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .  
+* **Licencelés**: Az alkalmazásproxy egy prémium szintű Azure AD-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .  
 
 ### <a name="application-discovery"></a>Alkalmazás felderítése
 
@@ -170,7 +170,7 @@ A következő kialakítási elemeknek a próbaüzem megvalósításának sikeres
 
 ### <a name="deploy-application-proxy"></a>Alkalmazásproxy üzembe helyezése
 
-Ebben az oktatóanyagban az alkalmazásproxy központi telepítésének lépéseit tárgyaljuk a táveléréshez helyszíni [alkalmazás hozzáadásához](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikerül, válassza az **alkalmazásproxy hibaelhárítása** lehetőséget a portálon, vagy használja a hibaelhárítási útmutatót az [alkalmazásproxy-ügynök összekötő telepítésével kapcsolatos problémák megoldásához](application-proxy-connector-installation-problem.md).
+Ebben az oktatóanyagban az alkalmazásproxy központi telepítésének lépéseit tárgyaljuk a [táveléréshez helyszíni alkalmazás hozzáadásához](application-proxy-add-on-premises-application.md). Ha a telepítés nem sikerül, válassza az **alkalmazásproxy hibaelhárítása** lehetőséget a portálon, vagy használja a hibaelhárítási útmutatót az [alkalmazásproxy-ügynök összekötő telepítésével kapcsolatos problémák megoldásához](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Alkalmazások közzététele alkalmazásproxy használatával
 
@@ -218,7 +218,7 @@ Azt is lehetővé teheti, hogy a felhasználók önkiszolgáló hozzáférést b
 
 Ha engedélyezve van, a felhasználók ezután bejelentkezhetnek az MyApps-portálra, és megkérhetik a hozzáférést, és vagy automatikusan jóváhagyják, és felveszik a már engedélyezett önkiszolgáló csoportba, vagy jóváhagyásra van szükségük a kijelölt jóváhagyótól.
 
-A vendég felhasználók meghívhatják [az Application proxyn keresztül közzétett belső alkalmazások elérését is az Azure ad B2B használatával](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker).
+A vendég felhasználók [meghívhatják az Application proxyn keresztül közzétett belső alkalmazások elérését is az Azure ad B2B használatával](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker).
 
 A általában névtelenül elérhető helyszíni alkalmazásokhoz, amelyek nem igényelnek hitelesítést, érdemes lehet letiltani az alkalmazás **tulajdonságai**között található beállítást.
 
@@ -267,7 +267,7 @@ Az Azure AD Application Proxy támogatásához a következő lehetőségek haszn
 
 * Eszköz alapú feltételes hozzáférés: Győződjön meg arról, hogy csak a regisztrált, jóváhagyott és megfelelő eszközök férhetnek hozzá a vállalati adatbázisokhoz az [eszközökön alapuló feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)használatával.
 
-* Alkalmazás-alapú feltételes hozzáférés: A munkának nem kell leállítania, ha a felhasználó nem a vállalati hálózaton van. [Biztonságos hozzáférés a vállalati felhőhöz és a](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) helyszíni alkalmazásokhoz, valamint a vezérlés fenntartása feltételes hozzáféréssel.
+* Alkalmazás-alapú feltételes hozzáférés: A munkának nem kell leállítania, ha a felhasználó nem a vállalati hálózaton van. [Biztonságos hozzáférés a vállalati felhőhöz és a helyszíni alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) , valamint a vezérlés fenntartása feltételes hozzáféréssel.
 
 * Kockázatalapú feltételes hozzáférés: A rosszindulatú hackerek adatai védelme olyan [kockázatalapú feltételes hozzáférési szabályzattal](https://www.microsoft.com/cloud-platform/conditional-access) , amely minden alkalmazásra és felhasználóra alkalmazható, akár a helyszínen, akár a felhőben.
 
@@ -277,7 +277,7 @@ Az Azure AD Application Proxy támogatásához a következő lehetőségek haszn
 
 ### <a name="required-roles"></a>Szükséges szerepkörök
 
-A Microsoft javasolja a lehető legkevesebb jogosultság megadását az Azure AD-vel kapcsolatos szükséges feladatok elvégzéséhez. [Tekintse át a különböző elérhető Azure](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) -szerepköröket, és válassza ki a megfelelőt az egyes personák igényeihez. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+A Microsoft javasolja a lehető legkevesebb jogosultság megadását az Azure AD-vel kapcsolatos szükséges feladatok elvégzéséhez. [Tekintse át a különböző elérhető Azure-szerepköröket](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) , és válassza ki a megfelelőt az egyes personák igényeihez. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
 
 | Üzleti szerepkör| Üzleti feladatok| Azure AD-szerepkörök |
 |---|---|---|

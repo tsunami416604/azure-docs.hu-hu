@@ -1,9 +1,9 @@
 ---
-title: Azure szerepkör-beállítások konfigurálása a PIM - Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg az Azure-erőforrás szerepkör-beállítások konfigurálása az Azure AD Privileged Identity Management (PIM).
+title: Azure-erőforrás szerepkör beállításainak konfigurálása a PIM-Azure Active Directoryban | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure erőforrás-szerepkör beállításait a Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,112 +12,112 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 88645d07ff213b0b7a56f2b081f0aaed01fd2929
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476319"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804203"
 ---
-# <a name="configure-azure-resource-role-settings-in-pim"></a>A PIM Azure szerepkör-beállítások konfigurálása
+# <a name="configure-azure-resource-role-settings-in-pim"></a>Az Azure erőforrás-szerepkör beállításainak konfigurálása a PIM-ben
 
-Azure-erőforrás beállítások konfigurálásakor adja meg az Azure-erőforrást az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkör-hozzárendelések alkalmazott alapértelmezett beállításokat. A következő eljárások használatával konfigurálhatja a jóváhagyási munkafolyamatot, és adja meg, akik jóváhagyhatják vagy megtagadhatják a kérelmeket.
+Az Azure erőforrás-szerepkör beállításainak konfigurálásakor meg kell határoznia az Azure-erőforrás szerepkör-hozzárendeléseire alkalmazott alapértelmezett beállításokat Azure Active Directory (Azure AD) Privileged Identity Management (PIM). A következő eljárásokkal konfigurálhatja a jóváhagyási munkafolyamatot, és meghatározhatja, hogy kik hagyhatják jóvá vagy tagadhatják meg a kérelmeket.
 
-## <a name="open-role-settings"></a>Nyissa meg a szerepkör-beállítások
+## <a name="open-role-settings"></a>Szerepkör-beállítások megnyitása
 
-Kövesse az alábbi lépéseket egy Azure-erőforrás szerepkör beállításainak megnyitásához.
+Az alábbi lépéseket követve megnyithatja egy Azure-erőforrás szerepkör beállításait.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely tagja a [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkör.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 
-1. Nyissa meg **az Azure AD Privileged Identity Management**.
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson a **Azure-erőforrások**.
+1. Kattintson az **Azure-erőforrások**elemre.
 
-1. Kattintson az erőforrás szeretne felügyelni, mint például egy előfizetést vagy felügyeleti csoportot.
+1. Kattintson a kezelni kívánt erőforrásra, például egy előfizetésre vagy egy felügyeleti csoportra.
 
-    ![Azure-erőforrások lapon kezelhetők erőforrások listázása](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Az Azure Resources lap a felügyelhető erőforrások listázása](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Kattintson a **szerepkör-beállítások**.
+1. Kattintson a **szerepkör-beállítások**elemre.
 
-    ![Szerepkör-beállítások lapon listázása az Azure-erőforrásszerepkörök](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Szerepkör-beállítások lap, amely Azure-erőforrás-szerepköröket listáz](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. Kattintson a szerepkör, amelynek beállításait konfigurálni szeretné.
+1. Kattintson arra a szerepkörre, amelynek beállításait konfigurálni kívánja.
 
-    ![Szerepkör beállítások részletei oldalon több hozzárendelés és aktiválás beállítások listázása](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Szerepkör-beállítás részletei lap, amely több hozzárendelési és aktiválási beállítást listáz](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Kattintson a **szerkesztése** a szerepkör-beállítások panel megnyitásához.
+1. Kattintson a **Szerkesztés** elemre a szerepkör-beállítások panel megnyitásához.
 
-    ![Szerepkör beállításai lapon-hozzárendelés és aktiválás beállításainak frissítése beállításokkal szerkesztése](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Szerepkör-beállítások szerkesztése lap a hozzárendelési és aktiválási beállítások frissítésére szolgáló beállításokkal](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
-    A szerepkör beállítás panelen az egyes szerepkörökhöz vannak több beállítást is beállíthat.
+    Az egyes szerepkörökhöz tartozó szerepkör-beállítás ablaktáblán több beállítás is konfigurálható.
 
 ## <a name="assignment-duration"></a>Hozzárendelés időtartama
 
-Szerepkör beállításainak konfigurálásakor minden hozzárendelés-típus (elérhető és aktív) két hozzárendelés időtartama lehetőség közül választhat. Ezek a beállítások a alapértelmezett maximális időtartamot, amikor egy tag szerepkör van rendelve, a PIM a válnak.
+A szerepkörök beállításainak konfigurálásakor két hozzárendelési időtartam közül választhat az egyes hozzárendelési típusoknál (jogosult és aktív). Ezek a beállítások az alapértelmezett maximális időtartam lesz, amikor egy tag hozzá van rendelve a PIM szerepkörhöz.
 
-Ezek közül kiválaszthatja **jogosult** hozzárendelés időtartam beállításai:
-
-| | |
-| --- | --- |
-| **Állandó jogosult hozzárendelés engedélyezése** | Állandó jogosult tagsági erőforrás rendszergazdák rendelhet hozzá. |
-| **Jogosult hozzárendelés után lejár.** | Erőforrás rendszergazdák megkövetelhetik, hogy az összes jogosult hozzárendelés rendelkezik-e a megadott kezdő és záró dátumát. |
-
-És a egy ezek közül kiválaszthatja **aktív** hozzárendelés időtartam beállításai:
+A következő **jogosult** hozzárendelések időtartamára vonatkozó lehetőségek közül választhat:
 
 | | |
 | --- | --- |
-| **Állandó aktív hozzárendelés engedélyezése** | Erőforrás-rendszergazdák állandó használatához aktív tagság rendelhet hozzá. |
-| **Aktív hozzárendelés után lejár.** | Erőforrás rendszergazdák megkövetelhetik, hogy az összes aktív hozzárendelések rendelkezik-e a megadott kezdő és záró dátumát. |
+| **Állandó jogosult hozzárendelés engedélyezése** | Az erőforrás-rendszergazdák állandó jogosult tagságot oszthatnak ki. |
+| **Jogosult hozzárendelés lejárta a következő után** | Az erőforrás-rendszergazdák megkövetelhetik, hogy minden jogosult hozzárendelés megadott kezdési és befejezési dátummal rendelkezzen. |
+
+Emellett az alábbi **aktív** hozzárendelések időtartamára vonatkozó lehetőségek közül választhat:
+
+| | |
+| --- | --- |
+| **Állandó aktív hozzárendelés engedélyezése** | Az erőforrás-rendszergazdák állandó aktív tagságot oszthatnak ki. |
+| **Aktív hozzárendelés lejárta a következő után** | Az erőforrás-rendszergazdák megkövetelhetik, hogy minden aktív hozzárendeléshez meg legyen adva a kezdő és a záró dátum. |
 
 > [!NOTE] 
-> Erőforrás-rendszergazdák által meg lehet újítani a megadott befejezési dátummal rendelkező összes hozzárendelést. Emellett tagokat is kezdeményezhető a kérések az önkiszolgáló [meghosszabbítása vagy megújítása a szerepkör-hozzárendelések](pim-resource-roles-renew-extend.md).
+> Az erőforrás-rendszergazdák megújítják a megadott befejezési dátummal rendelkező hozzárendeléseket. Emellett a tagok önkiszolgáló kérelmeket is indíthatnak a [szerepkör-hozzárendelések meghosszabbításához vagy megújításához](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Többtényezős hitelesítés megkövetelése
 
-A PIM biztosít két különböző forgatókönyvekhez kényszerítési az Azure multi-factor Authentication (MFA) nem kötelező.
+A PIM két különböző forgatókönyv esetén az Azure Multi-Factor Authentication (MFA) opcionális kényszerítését teszi lehetővé.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Többtényezős hitelesítés megkövetelése aktív hozzárendeléskor
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication megkövetelése aktív hozzárendeléskor
 
-Bizonyos esetekben érdemes tag hozzárendelése szerepkörhöz (egy nap, a példában) rövid időre. Ebben az esetben nem szükséges a hozzárendelt tagokkal aktiválás kéréséhez. Ebben a forgatókönyvben a PIM nem MFA kényszerítése, ha a tag használja a saját szerepkör-hozzárendelés, mivel azok még aktívak attól a pillanattól kezdve hozzá vannak rendelve a szerepkörben.
+Bizonyos esetekben előfordulhat, hogy egy tagot egy adott szerepkörhöz szeretne hozzárendelni egy rövid ideig (például egy nap). Ebben az esetben nincs szükségük a hozzárendelt tagokra az aktiválás kérelmezéséhez. Ebben az esetben a PIM nem tudja kikényszeríteni az MFA-t, ha a tag szerepkör-hozzárendelést használ, mivel azok már aktívak a szerepkörben a hozzárendelésük pillanatától kezdve.
 
-Annak érdekében, hogy az erőforrás-kezelője a hozzárendelés foglaltak akik mondják, kényszerítheti a többtényezős Hitelesítést aktív hozzárendeléskor ellenőrzésével a **többtényezős hitelesítés megkövetelése aktív hozzárendeléskor** mezőbe.
+Annak ellenőrzéséhez, hogy az erőforrás-rendszergazda teljesíti-e a hozzárendelést, kikényszerítheti az MFA használatát az aktív hozzárendeléshez, ha ellenőrzi a **szükséges multi-Factor Authentication az aktív hozzárendelési** mezőben.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Többtényezős hitelesítés megkövetelése aktiváláskor
+### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication megkövetelése aktiváláskor
 
-Megkövetelheti az MFA futtatása, mielőtt aktiválna a szerepkör jogosult tagjai. Ez a folyamat biztosítja, hogy a felhasználó az aktiválás, akinek mondják ésszerű bizonyossággal kér. Kiemelt fontosságú erőforrások helyzetekben kényszerítése ezt a beállítást védi, ha a felhasználói fiók esetleg sérült a biztonsága.
+Megkövetelheti egy szerepkör jogosult tagjai számára az MFA futtatását, mielőtt aktiválni tudnak. Ez a folyamat biztosítja, hogy az aktiválást kérő felhasználó számára ésszerű bizonyosságot biztosítson. A beállítás érvényesítése megvédi a kritikus erőforrásokat olyan helyzetekben, amikor a felhasználói fiók biztonsága sérült.
 
-Az MFA futtatása előtt aktiválási jogosult tag van szüksége, ellenőrizze a **multi-factor Authentication megkövetelése aktiváláskor** mezőbe.
+Ha meg szeretné követelni, hogy egy jogosult tag az aktiválás előtt futtasson MFA-t, jelölje be a **multi-Factor Authentication aktiválása az aktiváláskor** jelölőnégyzetet.
 
-További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).
+További információ: [többtényezős hitelesítés (MFA) és a PIM](pim-how-to-require-mfa.md).
 
-## <a name="activation-maximum-duration"></a>Aktiválás maximális időtartama
+## <a name="activation-maximum-duration"></a>Az aktiválás maximális időtartama
 
-Használja a **aktiválás maximális időtartama** csúszka, hogy a szerepkör aktív marad-e után járjon le (óra), a maximális idő beállítása. Ez az érték 1 és 24 óra közötti lehet.
+Az **aktiválás maximális időtartama** csúszkával állíthatja be azt a maximális időtartamot (óra), ameddig a szerepkör aktív marad a lejárat előtt. Ez az érték 1 és 24 óra között lehet.
 
 ## <a name="require-justification"></a>Indoklás megkövetelése
 
-Megkövetelheti, hogy a tagok adja meg az aktív hozzárendeléskor, vagy ha aktiválja. Indoklás megkövetelése, hogy ellenőrizze a **megkövetelése aktív hozzárendeléskor indoklás** mezőben vagy a **indoklás megkövetelése aktiváláskor** mezőbe.
+Megkövetelheti, hogy a tagok indoklást adjanak az aktív hozzárendeléshez vagy aktiváláskor. Az indoklás megköveteléséhez jelölje be az **aktív hozzárendeléshez szükséges indoklás** vagy az **aktiválás kötelező indoklása** jelölőnégyzetet.
 
-## <a name="require-approval-to-activate"></a>Aktiválásához jóváhagyás szükséges
+## <a name="require-approval-to-activate"></a>Az aktiváláshoz jóváhagyásra van szükség
 
-Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse az alábbi lépéseket.
+Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az alábbi lépéseket.
 
-1. Ellenőrizze a **aktiválásához jóváhagyás szükséges** jelölőnégyzetet.
+1. Jelölje be a **jóváhagyás kötelező aktiválása** jelölőnégyzetet.
 
-1. Kattintson a **jóváhagyók kiválasztása** válassza a-tag vagy a csoport panel megnyitásához.
+1. Kattintson a **jóváhagyók kiválasztása** elemre a tag vagy csoport kiválasztása ablaktábla megnyitásához.
 
-    ![Egy tag vagy a csoport panelen válassza ki a jóváhagyók kiválasztása](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Válassza ki a tag vagy csoport ablaktáblát a jóváhagyók kiválasztásához.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Válasszon ki legalább egy tagot vagy csoportot, és kattintson a **kiválasztása**. A tagok és csoportok tetszőleges kombinációját is hozzáadhat. Ki kell választania legalább egy jóváhagyó. Nincsenek nem alapértelmezett jóváhagyónak.
+1. Válasszon ki legalább egy tagot vagy csoportot, majd kattintson a **kiválasztás**elemre. A tagok és csoportok tetszőleges kombinációját felveheti. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók.
 
-    A beállításokat a kijelölt jóváhagyók listájában jelenik meg.
+    A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
 
-1. Miután megadta az összes szerepkör beállítást, kattintson a **frissítés** a módosítások mentéséhez.
+1. Miután megadta az összes szerepkör-beállítást, kattintson a **frissítés** gombra a módosítások mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)
-- [Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-resource-roles-configure-alerts.md)
+- [Azure-beli erőforrás-szerepkörök kiosztása a PIM-ben](pim-resource-roles-assign-roles.md)
+- [Biztonsági riasztások konfigurálása Azure-beli erőforrás-szerepkörökhöz a PIM-ben](pim-resource-roles-configure-alerts.md)

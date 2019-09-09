@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/9/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883961"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813330"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok határai
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -24,11 +24,12 @@ A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-
 
 ## <a name="model-boundaries"></a>Modell határok
 
-Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes lehet [Luis küldő](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazást vagy [Luis](luis-container-howto.md)-tárolót használni. 
+Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes lehet [Luis küldő](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazást vagy [Luis-tárolót](luis-container-howto.md)használni. 
 
 |Terület|Korlát|
 |--|:--|
 | [Alkalmazás neve][luis-get-started-create-app] | \* Maximális alapértelmezett karakter |
+| Alkalmazások| 500 alkalmazás Azure-erőforráson |
 | [Kötegelt tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
 | Külső entitások | Nincs korlát |
@@ -44,7 +45,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes l
 | [Szerepkörök](luis-concept-roles.md)|300 szerepkörök alkalmazásonként. 10 szerepkörök / entitás|
 | [Utterance][utterances] | 500 karakternél|
 | [Hosszúságú kimondott szöveg][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján|
-| [Verziók](luis-concept-version.md)| korlátlan |
+| [Verziók](luis-concept-version.md)| 100 verzió/alkalmazás |
 | [Verzió neve][luis-how-to-manage-versions] | 10 karakter hosszúságú alfanumerikus karaktereket, illetve időszak korlátozódik (.) |
 
 \* Alapértelmezett karakter legfeljebb 50 karakter hosszú lehet. 
@@ -68,13 +69,15 @@ A nyelv értelmezése külön kulcsokkal rendelkezik, egy típust a szerzői mű
 
 Az Authoring Tool kulcs létrehozási és -végpont eltérő korlátokkal rendelkeznek. A LUIS végponti kulcs je platná pouze Pro végpont lekérdezéseket.
 
+* 500 alkalmazás Azure-erőforráson 
+* 100 verzió/alkalmazás
 
 |Kulcs|Szerzői műveletek|Végpont|Cél|
 |--|--|--|--|
 |Language Understanding authoring/Starter|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
 |Language Understanding [előfizetés][pricing] – ingyenes F0-réteg |érvénytelen|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
 |Language Understanding [előfizetés][pricing] – S0 – alapszintű|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
-|Kognitív szolgáltatás [][pricing] előfizetése – standard szintű S0|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
+|Kognitív szolgáltatás [előfizetése][pricing] – standard szintű S0|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
 |[Vélemények elemzése integráció](luis-how-to-publish-app.md#enable-sentiment-analysis)|érvénytelen|díjmentes|Vélemények információk, beleértve a kulcsszókeresés adatok hozzáadása |
 |[Beszédfelismerési integráció](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|érvénytelen|Ezer 5.50 USD/1 végpont kérelmek|Használja a beszélt utterance (kifejezés) konvertálása szöveges utterance (kifejezés) és a LUIS eredményeket adja vissza|
 

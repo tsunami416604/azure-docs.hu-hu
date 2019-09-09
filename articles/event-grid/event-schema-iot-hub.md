@@ -173,7 +173,7 @@ A **csatlakoztatott eszköz** és **eszköz leválasztott** IoT Hub-események, 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | moduleId | string | A modul egyedi azonosítója. Ez a mező egy modul eszközök csak a kimenet. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| deviceConnectionStateEventInfo | objektum | Kapcsolat Eszközállapot-esemény adatokat
+| deviceConnectionStateEventInfo | object | Kapcsolat Eszközállapot-esemény adatokat
 | sequenceNumber | string | Egy szám, amely segít jelezheti, hogy az eszköz csatlakoztatva van, vagy az eszköz sorrendben események leválasztása. Legutóbbi esemény egy megfelelő sorszám lesz ez nagyobb, mint az előző esemény. Ez a szám több mint 1 változhat, de szigorúan növekszik. Lásd: [sorszáma használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 A **Eszköztelemetria** IoT Hub event, az objektum tartalmazza az eszköz a felhőbe irányuló üzenetet [IoT hub üzenet formátuma](../iot-hub/iot-hub-devguide-messages-construct.md) és tulajdonságai a következők:
@@ -188,7 +188,7 @@ A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektu
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| twin | objektum | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
+| twin | object | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
 | deviceID | string | Az ikereszközök egyedi azonosítója. | 
 | etag | string | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
 | deviceEtag| string | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |
@@ -202,8 +202,8 @@ A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektu
 | primaryThumbprint | string | Elsődleges ujjlenyomat a x509 a tanúsítványt. |
 | secondaryThumbprint | string | Másodlagos ujjlenyomat a x509 a tanúsítványt. | 
 | version | egész szám | Egész szám, amely értéke eggyel mindegyik az eszköz ideje ikereszköz frissül. |
-| desired | objektum | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
-| reported | objektum | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
+| desired | object | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
+| reported | object | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
 | lastUpdated | string | Az utolsó ikereszköz eszköztulajdonság ISO8601 időbélyegzője frissítése. | 
 
 ## <a name="next-steps"></a>További lépések

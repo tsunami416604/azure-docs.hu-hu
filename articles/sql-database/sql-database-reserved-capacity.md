@@ -1,5 +1,5 @@
 ---
-title: Fizetés Azure SQL Database virtuális mag a pénz megtakarítása érdekében | Microsoft Docs
+title: Azure SQL Database virtuális mag költségeinek megtakarítása | Microsoft Docs
 description: Megtudhatja, hogyan vásárolhat Azure SQL Database fenntartott kapacitást a számítási költségek mentéséhez.
 services: sql-database
 ms.service: sql-database
@@ -10,28 +10,28 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972550"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806588"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Előre fizetés SQL Database számítási erőforrásokhoz Azure SQL Database fenntartott kapacitással
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>SQL Database számítási erőforrások költségeinek megtakarítása Azure SQL Database fenntartott kapacitással
 
-Az utólagos elszámolású díjszabáshoz képest a számítási erőforrások előfizetésével megtakaríthatja a Azure SQL Database. A Azure SQL Database fenntartott kapacitással egy vagy három éves időszakra kiterjedően vállalt kötelezettséget SQL Database, hogy a számítási költségek jelentős kedvezményt kapjanak. SQL Database fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a központi telepítési típust, a teljesítménnyel kapcsolatos szintet és a kifejezést.
+Az utólagos elszámolású díjszabáshoz képest a számítási erőforrások foglalásával megtakaríthatja Azure SQL Databaseeit. A Azure SQL Database fenntartott kapacitással egy vagy három éves időszakra kiterjedően vállaljuk a SQL Database használatát, hogy a számítási költségek jelentős kedvezményt kapjanak. SQL Database fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a központi telepítési típust, a teljesítménnyel kapcsolatos szintet és a kifejezést.
 
 
-A foglalást nem kell hozzárendelni meghatározott SQL Database példányokhoz (különálló adatbázisok, rugalmas készletek vagy felügyelt példányok). Az olyan SQL Database példányok, amelyek már futnak vagy újonnan telepítettek, automatikusan megkapják a kedvezményt. A foglalás megvásárlásával előre fizet a számítási költségekre egy vagy három év alatt. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő SQL Database számítási díjakra már nem számítunk fel díjat. A foglalások nem fedik le a SQL Database-példányhoz társított szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, és az SQL-adatbázisok díját az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [SQL Database fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+A foglalást nem kell hozzárendelni meghatározott SQL Database példányokhoz (különálló adatbázisok, rugalmas készletek vagy felügyelt példányok). Az olyan SQL Database példányok, amelyek már futnak vagy újonnan telepítettek, automatikusan megkapják a kedvezményt. A foglalás megvásárlásával véglegesíti a számítási költségek felhasználását egy vagy három év alatt. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő SQL Database számítási díjakra már nem számítunk fel díjat. A foglalások nem fedik le a SQL Database-példányhoz társított szoftver-, hálózatkezelési és tárolási díjakat. A foglalási időszak végén a számlázási juttatás lejár, és az SQL-adatbázisok díját az utólagos elszámolású díjszabás szerint számoljuk el. A foglalások nem automatikus megújítást végeznek. A díjszabással kapcsolatos információkért tekintse meg a [SQL Database fenntartott kapacitás ajánlatát](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-A [Azure Portal](https://portal.azure.com)Azure SQL Database fenntartott kapacitást is vásárolhat. SQL Database fenntartott kapacitás megvásárlásához:
+A [Azure Portal](https://portal.azure.com)Azure SQL Database fenntartott kapacitást is vásárolhat. A foglalást [elöl vagy havi fizetéssel](../billing/billing-monthly-payments-reservations.md)kell fizetni. SQL Database fenntartott kapacitás megvásárlásához:
 
 - Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 - Vállalati előfizetések esetén az [EA portálon](https://ea.azure.com)engedélyezni kell a **fenntartott példányok hozzáadását** . Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
 - A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg SQL Database fenntartott kapacitást.
 
-Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzésével kapcsolatban: az [Azure foglalási szolgáltatás használatának megismerése](../billing/billing-understand-reserved-instance-usage-ea.md) a nagyvállalati beléptetéssel kapcsolatban, valamint az [Azure foglalás használatának ismertetése előfizetés](../billing/billing-understand-reserved-instance-usage.md).
+Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglalások beszerzésével kapcsolatban: az [Azure foglalási szolgáltatás használatának megismerése a nagyvállalati beléptetéssel](../billing/billing-understand-reserved-instance-usage-ea.md) kapcsolatban, valamint az [Azure foglalás használatának ismertetése előfizetés](../billing/billing-understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>A megfelelő SQL-méret meghatározása a vásárlás előtt
 
@@ -65,7 +65,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
 
-Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: önkiszolgáló [cserék és visszatérítések Azure Reservations számára](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
@@ -90,6 +90,6 @@ Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következ�
 - [Mi a Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)
 - [Az Azure Reservations kezelése](../billing/billing-manage-reserved-vm-instance.md)
 - [Azure Reservations kedvezmény ismertetése](../billing/billing-understand-reservation-charges.md)
-- [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](../billing/billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés foglalási használatának ismertetése](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../billing/billing-understand-reserved-instance-usage.md)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Azure Reservations a partner Center Cloud Solution Provider (CSP) programban](https://docs.microsoft.com/partner-center/azure-reservations)

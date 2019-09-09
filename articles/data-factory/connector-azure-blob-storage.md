@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276339"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814155"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -315,10 +315,10 @@ Ezek a Tulajdonságok támogatottak az Azure Blob storage társított szolgálta
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**esetében lásd a [parketta, tagolt szöveg és bináris formátum adatkészlet](#format-based-dataset) szakaszt.
+- A **Parquet, a tagolt szöveget, a JSON-t, a Avro és a bináris formátumot**a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum adatkészlet](#format-based-dataset) szakaszban találja.
 - Más formátumok, például az **ork/JSON formátum**esetében tekintse meg a [más formátumú adatkészlet](#other-format-dataset) szakaszt.
 
-### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, Avro és bináris formátum adatkészlet
+### <a name="format-based-dataset"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátumú adatkészlet
 
 Adatok másolása a blob Storage-ba és a-ból a parketta, a tagolt szöveg, a Avro vagy a bináris formátum alapján, a következő témakörben található: [parketta formátum](format-parquet.md), [tagolt szöveg formátum](format-delimited-text.md), [Avro formátum](format-avro.md) és [bináris formátum](format-binary.md) cikk a Format-alapú adatkészletek és a támogatott beállítások alapján Az Azure Blob a következő tulajdonságokat támogatja a Format `location` -alapú adatkészlet beállításai alatt:
 
@@ -413,12 +413,12 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="blob-storage-as-a-source-type"></a>BLOB storage-ot egy adatforrás típusa
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
 
-Adatok másolása a blob Storage-ba és a-ból a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**között, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú adatkészletek és a támogatott beállítások. Az Azure Blob a következő tulajdonságokat támogatja a Format `storeSettings` -alapú másolási forrás beállításai alatt:
+Adatok másolása a blob Storage-ba és a vágólapról a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**között, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikke a Format-alapú adatkészletek esetében támogatott beállítások. Az Azure Blob a következő tulajdonságokat támogatja a Format `storeSettings` -alapú másolási forrás beállításai alatt:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Adatok másolása a blob Storage-ba és a-ból a **parketta, a tagolt szöveg, a
 
 #### <a name="other-format-source"></a>Egyéb formátum forrása
 
-Az adatoknak a blob Storage-ból az **ork vagy JSON formátumban**való másolásához állítsa a forrás típusát a másolás tevékenység **BlobSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
+Az adatoknak a blob Storage-ból az **ork formátumba**való másolásához állítsa a forrás típusát a másolás tevékenység **BlobSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Az adatoknak a blob Storage-ból az **ork vagy JSON formátumban**való másolá
 
 ### <a name="blob-storage-as-a-sink-type"></a>BLOB storage-ot a fogadó típusa
 
-- A **parketta, a tagolt szöveg, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg és a bináris formátum forrás](#format-based-source) szakaszát.
-- Más formátumokból, például az **ork/JSON formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
+- A parketta, a **tagolt szöveg, a JSON, a Avro és a bináris formátum**másolásához tekintse meg a [parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum forrás](#format-based-source) szakaszát.
+- Más formátumokból, például az **ork formátumból**való másoláshoz tekintse meg a [más formátumú forrás](#other-format-source) szakaszt.
 
-#### <a name="format-based-source"></a>Parketta, tagolt szöveg, Avro és bináris formátum forrása
+#### <a name="format-based-source"></a>Parketta, tagolt szöveg, JSON, Avro és bináris formátum forrása
 
-Adatok másolása a blob Storage-ból a **parketta, a tagolt szöveg, a Avro vagy a bináris formátum**alapján, a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység forrására és támogatott beállítások. Az Azure Blob `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási fogadó beállításainál:
+Adatok másolása a blob Storage-ból a **parketta, a tagolt szöveg, a JSON, a Avro és a bináris formátum**között: a [parketta formátuma](format-parquet.md), a [tagolt szöveg formátuma](format-delimited-text.md), a [Avro formátum](format-avro.md) és a [bináris formátum](format-binary.md) cikk a Format-alapú másolási tevékenység forrásán és támogatott beállítások. Az Azure Blob `storeSettings` a következő tulajdonságokat támogatja a Format-alapú másolási fogadó beállításainál:
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Adatok másolása a blob Storage-ból a **parketta, a tagolt szöveg, a Avro vag
 
 #### <a name="other-format-sink"></a>Egyéb formátumú fogadó
 
-Az adatgyűjtés az **ork/JSON formátumban**a blob Storage-ba történő másolásához a másolási tevékenységben állítsa be a fogadó típusát a **BlobSink**értékre. A következő tulajdonságok támogatottak a **fogadó** szakaszban.
+Az Adatmásolás a blob Storage-ba **ork-formátumban**való másolásához a másolási tevékenységben állítsa be a fogadó típusát a **BlobSink**értékre. A következő tulajdonságok támogatottak a **fogadó** szakaszban.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

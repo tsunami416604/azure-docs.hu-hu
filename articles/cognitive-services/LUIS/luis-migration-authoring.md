@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801451"
+ms.locfileid: "70803896"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -91,7 +91,7 @@ Dönthet úgy, hogy olyan alkalmazást exportál, amelyhez Ön is közreműköd�
 
 ### <a name="after-the-app-is-migrated"></a>Az alkalmazás migrálása után
 
-Az áttelepítési folyamat után az alkalmazás tulajdonosának hozzá kell adnia az Azure authoring erőforráshoz.  
+Ha az áttelepítési folyamat az eredeti alkalmazáshoz való hozzáférésre van szüksége, az alkalmazás tulajdonosaként hozzá kell adnia az Azure authoring erőforráshoz.  
 
 ## <a name="next-steps"></a>További lépések
 

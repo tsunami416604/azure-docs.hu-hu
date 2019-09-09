@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9f757d5fb2c8d3a807e325068d386e16a7d6caa7
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047599"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806568"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése Azure Security Center
 
@@ -41,7 +41,7 @@ A Security Centerben egy biztonsági incidens az adott erőforráshoz tartozó �
 
     ![Válaszadás a Azure Security Center biztonsági incidensekre](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. Ha további információt szeretne kapni az egyes riasztásokról, kattintson a riasztásra. A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek. 
+1. Ha további információt szeretne kapni az egyes riasztásokról, kattintson a riasztásra. A Security Center által javasolt elhárítási műveletek a biztonsági riasztástól függően eltérők lehetnek.
 
    > [!NOTE]
    > Ugyanez a riasztás egy incidens részeként is létezhet, valamint önálló riasztásként is látható.
