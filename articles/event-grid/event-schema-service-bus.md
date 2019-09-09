@@ -87,7 +87,7 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| data | objektum | A BLOB storage-eseményadatok. |
+| data | object | A BLOB storage-eseményadatok. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
