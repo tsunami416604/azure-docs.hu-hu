@@ -12,7 +12,7 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Ügyfél
+    - name: Ügyfélkódtár
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: Szövegelemzési API hívása
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: Nyelv felismerése
+    - name: Nyelvfelismerés
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Vélemények elemzése
+    - name: Hangulatelemzés
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Kulcsszavak kinyerése
+    - name: Kulcskifejezések kinyerése
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Megnevezett entitások felismerésének meghívása
+    - name: Nevesített entitások felismerése
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Tárolók használata
       items:

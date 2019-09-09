@@ -455,6 +455,10 @@
           items:
             - name: 1 – Adatok lekérdezése
               href: tutorial-query-graph.md
+        - name: Referencia
+          items:
+            - name: Válaszfejlécek
+              href: gremlin-headers.md
         - name: Útmutatók
           items:
             - name: Gráfadatok modellezése

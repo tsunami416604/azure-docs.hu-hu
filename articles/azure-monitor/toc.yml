@@ -97,20 +97,12 @@
       items:
         - name: Áttekintés
           href: platform/alerts-overview.md
-        - name: Klasszikus riasztások
-          href: platform/alerts-classic.overview.md
         - name: Metrikákhoz kapcsolódó riasztások
           href: platform/alerts-metric-overview.md
         - name: Naplóriasztások
           href: platform/alerts-unified-log.md
         - name: Tevékenységnapló-riasztások
           href: platform/activity-log-alerts.md
-        - name: Gyakori riasztási séma
-          href: platform/alerts-common-schema.md
-        - name: Műveletszabályok
-          href: platform/alerts-action-rules.md
-        - name: Intelligens csoportok
-          href: platform/alerts-smartgroups-overview.md
         - name: Elemzés módosítása
           href: app/change-analysis.md
     - name: Adatok vizualizációja
@@ -516,11 +508,7 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Docker- és Windows-tárolók monitorozása
               href: insights/containers.md
-        - name: Storage
-          items:
-            - name: Azure Monitor a Storage-hoz
-              href: insights/storage-insights-overview.md
-        - name: Virtual machines (Virtuális gépek)
+        - name: Operációs rendszer (virtuális gépek és egyebek)
           items:
             - name: Ügynökök
               items:
@@ -530,26 +518,38 @@
                   items:
                     - name: Áttekintés
                       href: platform/diagnostics-extension-overview.md
-                    - name: Küldés az Azure Storage-be
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Küldés az Application Insightsba
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Küldés az Event Hubsba
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Hibaelhárítás
-                      href: platform/diagnostics-extension-troubleshooting.md
-                    - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: Virtuálisgép-vendég a metrikák közé
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: GuestOS küldése a metrikák közé – Linux rendszerű virtuális gép (Telegraf)
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-                    - name: Virtuálisgép-méretezési csoport vendégének küldése a metrikák közé
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                    - name: Klasszikus virtuálisgép-vendég küldése a metrikák közé
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
-                    - name: Felhőszolgáltatás-vendég küldése a metrikák közé
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Windows
+                      items:
+                        - name: Verzióelőzmények
+                          href: platform/diagnostics-extension-schema.md
+                        - name: Séma
+                          href: platform/diagnostics-extension-schema-1dot3.md
+                        - name: Küldés az Azure Storage-be
+                          href: platform/diagnostics-extension-to-storage.md
+                        - name: Küldés az Application Insightsba
+                          href: platform/diagnostics-extension-to-application-insights.md
+                        - name: Küldés az Event Hubsba
+                          href: platform/diagnostics-extension-stream-event-hubs.md
+                        - name: Küldés az Azure Monitorba egyéni metrikaként
+                          items:
+                            - name: Virtuális gép
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                            - name: Virtuálisgép-méretezési csoport
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                            - name: Klasszikus virtuális gép
+                              href: platform/collect-custom-metrics-guestos-vm-classic.md
+                            - name: Felhőszolgáltatás
+                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                        - name: A JSON-sorok diagnosztikainapló-formátuma
+                          href: platform/diagnostic-logs-append-blobs.md
+                        - name: Hibaelhárítás
+                          href: platform/diagnostics-extension-troubleshooting.md
+                    - name: Linux
+                      items:
+                        - name: Használat virtuális gépekkel
+                          href: ../virtual-machines/extensions/diagnostics-linux.md
+                        - name: Egyéni metrikák a Telegraf használatával
+                          href: platform/collect-custom-metrics-linux-telegraf.md
                 - name: Log Analytics-ügynökök
                   items:
                     - name: Áttekintés
@@ -645,13 +645,21 @@
               href: platform/computer-groups.md
             - name: Configuration Manager
               href: platform/collect-sccm.md
-        - name: Adatbázisok
-          items:
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
         - name: Azure-erőforrások
+          items:
+            - name: Diagnosztikai naplók
+              items:
+                - name: Áttekintés
+                  href: platform/diagnostic-logs-overview.md
+                - name: Gyűjtés naplókban
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Gyűjtés az Azure Storage-ból
+                  href: platform/azure-storage-iis-table.md
+                - name: Archiválás a tárolóba
+                  href: platform/archive-diagnostic-logs.md
+                - name: Engedélyezés Resource Manager-sablonokkal
+                  href: platform/diagnostic-logs-stream-template.md
+        - name: Azure-előfizetés
           items:
             - name: Tevékenységnapló
               items:
@@ -667,20 +675,6 @@
                   href: platform/activity-log-export.md
                 - name: Séma
                   href: platform/activity-log-schema.md
-            - name: Diagnosztikai naplók
-              items:
-                - name: Áttekintés
-                  href: platform/diagnostic-logs-overview.md
-                - name: Gyűjtés naplókban
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Gyűjtés az Azure Storage-ból
-                  href: platform/azure-storage-iis-table.md
-                - name: Archiválás a tárolóba
-                  href: platform/archive-diagnostic-logs.md
-                - name: Adatok streamelése az Event Hubsra
-                  href: platform/diagnostic-logs-stream-event-hubs.md
-                - name: Engedélyezés Resource Manager-sablonokkal
-                  href: platform/diagnostic-logs-stream-template.md
             - name: Adatok streamelése az Event Hubsra
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-elemzés
@@ -689,6 +683,16 @@
               href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
             - name: Erőforráscsoportok monitorozása
               href: insights/resource-group-insights.md
+        - name: Storage
+          items:
+            - name: Azure Monitor a Storage-hoz
+              href: insights/storage-insights-overview.md
+        - name: Adatbázisok
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: SQL Server
+              href: insights/sql-assessment.md
         - name: Hálózatok
           items:
             - name: Hálózatelemzés
@@ -729,18 +733,20 @@
           items:
             - name: Egyéni metrikák
               href: platform/metrics-custom-overview.md
+            - name: Metrikák REST API-ja
+              href: platform/metrics-store-custom-rest-api.md
             - name: Log Analytics Data Collector API
               href: platform/data-collector-api.md
             - name: Példa Log Analytics Data Collector API-folyamatra
               href: platform/create-pipeline-datacollector-api.md
-            - name: Metrikák REST API-ja
-              href: platform/metrics-store-custom-rest-api.md
         - name: A System Center használata
           items:
             - name: Az Operations Manager csatlakoztatása
               href: platform/om-agents.md
             - name: Az Operations Manager felmérése
               href: insights/scom-assessment.md
+        - name: Adatok streamelése az Event Hubsra
+          href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Adatok elemzése
       items:
         - name: Mérőszámok
@@ -873,7 +879,7 @@
               href: app/monitor-web-app-availability.md
             - name: Metrikákhoz kapcsolódó riasztások
               href: app/alerts.md
-        - name: Platformmetrika riasztási szabályai
+        - name: Metrika riasztási szabályai
           items:
             - name: Metrikariasztások kezelése
               href: platform/alerts-metric.md
@@ -899,28 +905,40 @@
               href: platform/alerts-activity-log.md
             - name: Migráláskezelési események tevékenységnapló-riasztásokra
               href: platform/migrate-management-alerts.md
-        - name: Műveletcsoportok
+        - name: Szolgáltatás állapotával kapcsolatos riasztások a tevékenységnaplóban
           items:
+            - name: Értesítések megtekintése
+              href: platform/service-notifications.md
+            - name: Riasztások beállítása értesítési eseményekhez
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Értesítések és műveletek
+          items:
+            - name: Műveleti szabályok (előzetes verzió)
+              href: platform/alerts-action-rules.md
             - name: Műveletcsoport létrehozása
               href: platform/action-groups.md
-            - name: Webhookséma
-              href: platform/activity-log-alerts-webhook.md
+            - name: Gyakori riasztási séma
+              href: platform/alerts-common-schema.md
             - name: Gyakori riasztásiséma-definíció
               href: platform/alerts-common-schema-definitions.md
+            - name: A gyakori riasztási séma és a Logic Apps integrálása
+              href: platform/alerts-common-schema-integrations.md
+            - name: Webhookséma
+              href: platform/activity-log-alerts-webhook.md
             - name: Az SMS-riasztás viselkedése
               href: platform/alerts-sms-behavior.md
-            - name: A riasztási arány korlátozása
+            - name: Az értesítési arány korlátozása
               href: platform/alerts-rate-limiting.md
             - name: Műveletcsoportok létrehozása a Resource Managerrel
               href: platform/action-groups-create-resource-manager-template.md
             - name: Logikai alkalmazási művelet megvalósítása
               href: platform/action-groups-logic-app.md
-            - name: A gyakori riasztási séma és a Logic Apps integrálása
-              href: platform/alerts-common-schema-integrations.md
         - name: Riasztáskezelési megoldás
           href: platform/alert-management-solution.md
         - name: Riasztás felhasználói felülete
           items:
+            - name: Az intelligens csoportok bemutatása
+              href: platform/alerts-smartgroups-overview.md
             - name: Riasztáspéldányok kezelése
               href: platform/alerts-managing-alert-instances.md
             - name: Intelligens csoportok kezelése
@@ -931,6 +949,8 @@
               href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Klasszikus riasztási szabályok migrálása
           items:
+            - name: A klasszikus riasztások bemutatása
+              href: platform/alerts-classic.overview.md
             - name: Előkészületek a migráláshoz
               href: platform/alerts-prepare-migration.md
             - name: A migrálási eszköz ismertetése
@@ -945,12 +965,6 @@
               href: platform/alerts-enable-template.md
             - name: Webhook meghívatása klasszikus metrikariasztással
               href: platform/alerts-webhooks.md
-        - name: Szolgáltatás állapotával kapcsolatos értesítések a tevékenységnaplóban
-          items:
-            - name: Értesítések megtekintése
-              href: platform/service-notifications.md
-            - name: Riasztások beállítása értesítési eseményekhez
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Alert API
           href: platform/api-alerts.md
         - name: Informatikai szolgáltatásfelügyelet
@@ -1057,6 +1071,18 @@
               href: app/data-model-metric-telemetry.md
             - name: Környezet
               href: app/data-model-context.md
+            - name: Integrálás az Azure Functionszel
+              href: app/azure-functions-supported-features.md
+    - name: Mérőszámok
+      items:
+        - name: Támogatott metrikák
+          href: platform/metrics-supported.md
+        - name: Újabb riasztások támogatott metrikái
+          href: platform/alerts-metric-near-real-time.md
+    - name: Diagnosztikai naplók
+      items:
+        - name: 'Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
+          href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (előzetes verzió)
@@ -1081,25 +1107,6 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Naplók
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Mérőszámok
-      items:
-        - name: Támogatott metrikák
-          href: platform/metrics-supported.md
-        - name: Újabb riasztások támogatott metrikái
-          href: platform/alerts-metric-near-real-time.md
-    - name: Diagnosztikai naplók
-      items:
-        - name: 'Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák'
-          href: platform/diagnostic-logs-schema.md
-        - name: Azure Diagnostics-bővítményséma
-          href: platform/diagnostics-extension-schema.md
-          items:
-            - name: 1.3-as és újabb verziók
-              href: platform/diagnostics-extension-schema-1dot3.md
-            - name: 1.2
-              href: platform/diagnostics-extension-schema-1dot2.md
-            - name: 1
-              href: platform/diagnostics-extension-schema-1dot0.md
     - name: Szolgáltatás és API kivezetése
       items:
         - name: Klasszikus automatikus skálázási és metrikai API

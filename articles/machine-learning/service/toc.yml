@@ -113,10 +113,12 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: Útmutatók
   items:
-    - name: Munkaterületek kezelése
+    - name: Munkaterületek létrehozása és kezelése
       items:
-        - name: Portál használata a munkaterületekhez
+        - name: Az Azure Portal használata
           href: how-to-manage-workspace.md
+        - name: Az Azure parancssori felület használatával
+          href: how-to-manage-workspace-cli.md
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md

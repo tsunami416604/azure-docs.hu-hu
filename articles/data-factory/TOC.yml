@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: Adatfolyam-átalakítások
       items:
-        - name: Rögzített szélességű mező
-          href: how-to-fixed-width.md
         - name: Összesítés
           href: data-flow-aggregate.md
         - name: Sor módosítása
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Átalakítás adatfolyam leképezésével
+      items:
+        - name: Rögzített szélességű szövegfájlok feldolgozása
+          href: how-to-fixed-width.md
 - name: Referencia
   items:
     - name: .NET

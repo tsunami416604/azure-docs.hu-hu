@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP-függvény végpontjának testreszabása
           href: functions-create-serverless-api.md
+        - name: Helyszíni erőforrások kezelése
+          href: functions-hybrid-powershell.md
     - name: Hibaelhárítás
       items:
         - name: A tárolás hibaelhárítása

@@ -1,61 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Automation felhasználói dokumentációja
+### YamlMime:Landing
+title: Az Azure Automation dokumentációja
 metadata:
-  document_id: null
-  title: Az Azure Automation dokumentációja – oktatóanyagok és API-referencia
-  description: Útmutató az Azure Automation használatához
+  document_id: 
+  title: Az Azure Automation dokumentációja
+  description: Megismerkedhet vele, hogyan konfigurálhat és automatizálhat üzemeltetési feladatokat egy hibrid környezetben.
   services: automation
-  author: georgewallace
+  author: bobbytreed
   manager: carmonm
   ms.service: automation
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 12/13/2017
-  ms.author: gwallace
-abstract:
-  description: 'Megismerkedhet vele, hogyan konfigurálhat és automatizálhat üzemeltetési feladatokat egy hibrid környezetben. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan automatizálhatja a folyamatokat, kezelheti a frissítéseket, konfigurálhatja a célállapotot, követheti nyomon a változásokat, és hogyan gyűjtheti be a leltáradatokat.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megismerkedhet vele, hogyan automatizálhatja és konfigurálhatja az Azure- és a hibrid környezeteket az Automation segítségével:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/automation/media/index/automation.svg
-            text: Automation-fiók létrehozása
-            href: /azure/automation/automation-quickstart-create-account
-          - image:
-              src: /azure/automation/media/index/runbook.svg
-            text: Runbook létrehozása
-            href: /azure/automation/automation-quickstart-create-runbook
-          - image:
-              src: /azure/automation/media/index/dscconfig.svg
-            text: DSC-konfiguráció létrehozása
-            href: /azure/automation/automation-quickstart-dsc-configuration
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megismerkedhet az Azure- és a hibrid környezetek integrálásának, üzembe helyezésének és kezelésének módjával.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/automation/automation-watchers-tutorial">Figyelőfeladatok konfigurálása</a>
-          - html: <a href="/azure/automation/automation-tutorial-update-management">Frissítések kezelése a virtuális gépeken</a>
-          - html: <a href="/azure/automation/automation-onboard-solutions">Megfelelő mértékű előkészítés</a>
-          - html: <a href="/azure/automation/automation-tutorial-installed-software">Virtuális gépeken telepített szoftverek azonosítása</a>
-          - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">Virtuális gép módosításainak hibaelhárítása</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/automation">Az Automation REST API-ja</a></p>
+  ms.date: 09/06/2019
+  ms.author: robreed
+  ms.openlocfilehash: 3242e2c699e0f99164d6c5ecd2cf61441648b8e8
+  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70743736"
+landingContent:
+- title: Ismerkedés az Azure Automationnel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Automation?
+      url: automation-intro.md
+  - linkListType: get-started
+    links:
+    - text: Automation-fiók létrehozása
+      url: automation-quickstart-create-account.md
+  - linkListType: quickstart
+    links:
+    - text: Runbook létrehozása
+      url: automation-quickstart-create-runbook.md
+- title: Virtuális gépek frissítéseinek kezelése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A frissítéskezelés áttekintése
+      url: automation-update-management.md
+  - linkListType: get-started
+    links:
+    - text: Frissítések kezelése több virtuális gép esetén
+      url: manage-update-multi.md
+  - linkListType: deploy
+    links:
+    - text: Frissítések, leltár és a változások követése az Azure-beli virtuális gépeken
+      url: automation-onboard-solutions.md
+- title: Virtuális gépek konfigurálása a Desired State Configuration használatával
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Állapotkonfiguráció áttekintése
+      url: automation-dsc-overview.md
+  - linkListType: concept
+    links:
+    - text: PowerShell DSC
+      url: /powershell/dsc/overview/overview
+  - linkListType: quickstart
+    links:
+    - text: DSC-konfiguráció létrehozása csoportházirend alapján
+      url: /powershell/dsc/quickstarts/gpo-quickstart
+  - linkListType: tutorial
+    links:
+    - text: Kiszolgálók konfigurálása és eltéréskezelés a State Configuration használatával
+      url: tutorial-configure-servers-desired-state.md
+- title: Hibrid környezetek használata
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hibrid runbook-feldolgozó áttekintése
+      url: automation-hybrid-runbook-worker.md
+  - linkListType: deploy
+    links:
+    - text: A Windows rendszerű hibrid runbook-feldolgozó üzembe helyezése
+      url: automation-windows-hrw-install.md
+    - text: A Linux rendszerű hibrid runbook-feldolgozó üzembe helyezése
+      url: automation-linux-hrw-install.md
+    - text: Runbookok indítása a hibrid runbook-feldolgozón
+      url: automation-hrw-run-runbooks.md
+- title: Szolgáltatásközi automatizálás
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: E-mail küldése runbookból a SendGrid használatával
+      url: automation-send-email.md
+  - linkListType: get-started
+    links:
+    - text: Runbook indítása Azure-riasztásokból
+      url: automation-create-alert-triggered-runbook.md
+  - linkListType: deploy
+    links:
+    - text: Resource Manager-sablon üzembe helyezése egy Automation PowerShell-runbookban
+      url: automation-deploy-template-runbook.md

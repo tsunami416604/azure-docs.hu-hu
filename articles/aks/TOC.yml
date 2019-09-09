@@ -159,7 +159,7 @@
               href: configure-azure-cni.md
         - name: Hozzon létre egy belső terheléselosztót
           href: internal-lb.md
-        - name: Standard terheléselosztó használata (előzetes verzió)
+        - name: Standard terheléselosztó használata
           href: load-balancer-standard.md
         - name: Statikus IP-cím használata
           href: static-ip.md

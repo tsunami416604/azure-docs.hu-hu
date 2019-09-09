@@ -1,86 +1,216 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: "Azure HDInsight\_– dokumentáció"
+### YamlMime:Landing
+title: Azure HDInsight – dokumentáció
+summary: Az Azure HDInsight egy felügyelt Apache Hadoop-szolgáltatás, amellyel az Apache Spark, az Apache Hive, az Apache Kafka, az Apache HBase és még sok más futtatható a felhőben.
 metadata:
-  title: Az Azure HDInsight dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Tudnivalók a HDInsight-alapú Apache Hadoopról. A dokumentációból megismerheti az Apache Hadoop, az Apache Spark, az Apache Kafka, az Apache HBase és más megoldások használatát Big Data típusú feldolgozáshoz és elemzéshez és megállapítások kinyeréséhez.'
-  services: hdinsight
-  author: hrasheed-msft
-  ms.author: hrasheed
+  title: Azure HDInsight
+  description: Az Azure HDInsight egy felügyelt Apache Hadoop-felhőszolgáltatás, amellyel az Apache Spark, az Apache Hive, az Apache Kafka, az Apache HBase és még sok más futtatható.
+  services: service
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 06/13/2019
-abstract:
-  description: 'Ismerje meg, hogyan használhatja az Azure HDInsightot streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentációk mutatják be fürtök létrehozását, a Big Data típusú feldolgozást és elemzést, illetve megoldások fejlesztését a legnépszerűbb nyílt forráskódú keretrendszerekkel, mint az Apache Hadoop, az Apache Spark, az Apache Hive, az Apache LLAP, az Apache Kafka, az Apache Storm és a Microsoft Machine Learning Server.<p>Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. A HDInsight egy olyan felhőszolgáltatás, amelynek segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. A HDInsight emellett forgatókönyvek széles körét támogatja, köztük a kinyerési, átalakítási és betöltési (ETL) feladatokat; az adatraktározást, a gépi tanulást és az IoT-t.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'A HDInsight-alapú Apache Kafka (17:19)'
-    href: 'https://azure.microsoft.com/resources/videos/azure-friday-apache-kafka-on-hdinsight-ga/'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató HDInsight-fürtök létrehozásához és feladatok futtatásához:'
-      - type: list
-        style: icon64
-        items:
-          - image:
-              src: media/index/hadoop_r.svg
-            text: Apache Hadoop
-            href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
-          - image:
-              src: media/index/spark_r.svg
-            text: Apache Spark
-            href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
-          - image:
-              src: media/index/kafka_r.svg
-            text: Apache Kafka
-            href: /azure/hdinsight/kafka/apache-kafka-get-started
-          - image:
-              src: media/index/hbase_r.svg
-            text: Apache HBase
-            href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
-          - image:
-              src: media/index/hive_r.svg
-            text: Interaktív lekérdezés
-            href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
-          - image:
-              src: media/index/storm_r.svg
-            text: Apache Storm
-            href: /azure/hdinsight/storm/apache-storm-quickstart
-          - image:
-              src: media/index/ml-server_r.svg
-            text: ML-szolgáltatások
-            href: /azure/hdinsight/r-server/machine-learning-services-quickstart-job-rstudio
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutatók az Azure HDInsight használatához különböző helyzetekben:'
-      - type: list
-        style: unordered
-        items:
-          - html: 'Apache Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Interaktív lekérdezések futtatása</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Adatok vizualizációja</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Machine Learning</a>'
-          - html: 'Apache Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturált streamelés a Kafkával</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Használat a HDInsight-alapú Stormmal</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">A Kafka Producer és Consumer API-k használata</a>'
-          - html: 'Apache HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">HBase-fürtök létrehozása virtuális hálózaton</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Az Apache Phoenix használata</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Csatlakozás a Sparkhoz</a>'
-          - html: 'Interaktív lekérdezés: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Kapcsolódás Power BI-jal közvetlen lekérdezés használatával</a>'
-          - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Storm-topológia létrehozása Java-környezetben</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Storm-topológiák üzembe helyezése HDInsighton</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Írás Stormból Data Lake Storage-ba</a>'
-          - html: 'ML-szolgáltatások: <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Az R Tools for Visual Studio használata</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Eszközök
-            html: '<p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ-eszköz</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse-eszköz</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode-eszköz</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio-eszköz</a></p>'
-          - title: Parancssor
-            html: <p><a href="/powershell/module/az.hdinsight">Azure PowerShell</a></p>
-          - title: Nyelvek
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/hdinsight/">REST API</a></p><p><a href="https://docs.microsoft.com/rest/api/hdinsightspark/">REST API (Spark)</a></p>'
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 08/30/2019
+  ms.openlocfilehash: 7de62064fab800f1735371873a821499b06a8276
+  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70743222"
+landingContent:
+- title: A HDInsight bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure HDInsight?
+      url: ./hdinsight-overview.md
+  - linkListType: concept
+    links:
+    - text: A HDInsight összetevői és verziói
+      url: ./hdinsight-component-versioning.md
+    - text: A HDInsight támogatott csomópont-konfigurációi
+      url: ./hdinsight-supported-node-configuration.md
+    - text: Tárolási lehetőségek összehasonlítása
+      url: ./hdinsight-hadoop-compare-storage-options.md
+  - linkListType: tutorial
+    links:
+    - text: HDInsight-fürtök beállítása
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: Fürtök létrehozása a Data Lake Store Gen2 használatával
+      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Apache Spark?
+      url: ./spark/apache-spark-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Spark-fürtök létrehozása az Azure Portalon
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+  - linkListType: concept
+    links:
+    - text: Spark-feladatok optimalizálása
+      url: ./spark/apache-spark-perf.md
+  - linkListType: tutorial
+    links:
+    - text: Scala Maven-alkalmazás létrehozása a Sparkhoz
+      url: ./spark/apache-spark-create-standalone-application.md
+    - text: Adatok betöltése és Apache Spark-lekérdezések futtatása
+      url: ./spark/apache-spark-load-data-run-query.md
+    - text: Az Apache HBase lekérdezése az Apache Sparkkal
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: Spark-adatok elemzése a Power BI használatával
+      url: ./spark/apache-spark-use-bi-tools.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Apache Hadoop?
+      url: ./hadoop/apache-hadoop-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Hadoop-fürtök létrehozása az Azure Portalon
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+  - linkListType: concept
+    links:
+    - text: Nagy léptékű Hadoop ETL
+      url: ./hadoop/apache-hadoop-etl-at-scale.md
+    - text: Hadoop migrálása a felhőbe
+      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
+    - text: Hadoop-fürtök kapacitástervezése
+      url: ./hdinsight-capacity-planning.md
+  - linkListType: tutorial
+    links:
+    - text: Az Excel csatlakoztatása az Apache Hadoophoz
+      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+    - text: Hadoop monitorozása az Azure Monitor naplóival
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Hadoop-fürtök monitorozása és kezelése az Ambari UI használatával
+      url: ./hdinsight-hadoop-manage-ambari.md
+- title: Apache Kafka
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Apache Kafka?
+      url: ./kafka/apache-kafka-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Kafka-fürtök létrehozása az Azure Portalon
+      url: ./kafka/apache-kafka-get-started.md
+  - linkListType: concept
+    links:
+    - text: Kafka-teljesítmény optimalizálása
+      url: ./kafka/apache-kafka-performance-tuning.md
+    - text: A Kafka méretezhetősége
+      url: ./kafka/apache-kafka-scalability.md
+    - text: A Kafka magas rendelkezésre állása
+      url: ./kafka/apache-kafka-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: A Kafka Producer és Consumer API használata
+      url: ./kafka/apache-kafka-producer-consumer-api.md
+    - text: Apache Spark strukturált streamelés az Apache Kafkával
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: A Kafka tükrözése vészhelyreállítás esetére
+      url: ./kafka/apache-kafka-mirroring.md
+    - text: A Kafka SSL-beállítása hitelesítéshez
+      url: ./kafka/apache-kafka-ssl-encryption-authentication.md
+- title: Apache HBase
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Apache HBase?
+      url: ./hbase/apache-hbase-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Az HBase lekérdezése az Apache Phoenix használatával
+      url: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+  - linkListType: concept
+    links:
+    - text: Gyorsított írási műveletek Apache HBase-hez
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Az Apache Phoenix ajánlott eljárásai
+      url: ./hbase/apache-hbase-phoenix-performance.md
+  - linkListType: tutorial
+    links:
+    - text: Az Apache HBase használata az Azure HDInsightban
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: HBase migrálása egy új verzióba
+      url: ./hbase/apache-hbase-migrate-new-version.md
+- title: Interaktív lekérdezés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az interaktív lekérdezés?
+      url: ./interactive-query/apache-interactive-query-get-started.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Hive-lekérdezések végrehajtása Apache Zeppelin használatával
+      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
+  - linkListType: concept
+    links:
+    - text: Hive-lekérdezések optimalizálása
+      url: ./hdinsight-hadoop-optimize-hive-query.md
+    - text: A Hive használata ETL-eszközként
+      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+  - linkListType: tutorial
+    links:
+    - text: Repülőjárat-adatok elemzése az Apache Hive-val
+      url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - text: A Spark és a Hive csatlakoztatása a Hive Warehouse összekötővel
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: A Hive csatlakoztatása a Power BI-hoz a DirectQuery használatával
+      url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+- title: Alkalmasság vállalati használatra
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A HDInsight biztonsági áttekintése
+      url: ./domain-joined/hdinsight-security-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Spark-fürtök létrehozása az Azure Portalon
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+  - linkListType: concept
+    links:
+    - text: Virtuális hálózat megtervezése
+      url: ./hdinsight-plan-virtual-network-deployment.md
+    - text: 'Hadoop az Active Directoryn: Enterprise Security Package'
+      url: ./domain-joined/apache-domain-joined-architecture.md
+    - text: Hadoop-fürtök automatikus méretezése
+      url: ./hdinsight-autoscale-clusters.md
+    - text: Helyszíni fürtök migrálása a felhőbe
+      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
+  - linkListType: tutorial
+    links:
+    - text: Vállalati biztonság beállítása az Azure ADDS-sel
+      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+- title: ML-szolgáltatások
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok az ML-szolgáltatások a HDInsighton?
+      url: ./r-server/r-server-overview.md
+  - linkListType: quickstart
+    links:
+    - text: R-szkript végrehajtása ML-szolgáltatási fürtön
+      url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
+  - linkListType: tutorial
+    links:
+    - text: Az R használata Spark-számítási környezetben
+      url: ./r-server/ml-services-tutorial-spark-compute.md
+- title: Apache Storm
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Apache Storm?
+      url: ./storm/apache-storm-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Apache Storm-topológia létrehozása
+      url: ./storm/apache-storm-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Írás HDFS-be az Apache Stormmal
+      url: ./storm/apache-storm-write-data-lake-store.md
