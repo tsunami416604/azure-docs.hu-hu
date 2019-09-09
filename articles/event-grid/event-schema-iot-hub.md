@@ -155,7 +155,7 @@ Az összes esemény legfelső szintű ugyanazokat az adatokat tartalmazza:
 | subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| data | objektum | Az IoT Hub eseményadatokat.  |
+| data | object | Az IoT Hub eseményadatokat.  |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
