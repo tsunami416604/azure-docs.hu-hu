@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855020"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743543"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ismert problémák/migrációs korlátozások online áttelepítéssel az Azure DB for PostgreSQL-hez
 
@@ -89,6 +89,8 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
     **Áthidaló megoldás**: A folytatáshoz átmenetileg állítsa be a tábla elsődleges kulcsát az áttelepítéshez. Az elsődleges kulcsot az adatáttelepítés befejeződése után is eltávolíthatja.
 
+- **Korlátozás**: A JSONB adattípusa nem támogatott Migrálás esetén.
+
 ## <a name="lob-limitations"></a>LOB-korlátozások
 
 A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiségű növekedést okozhatnak. A PostgreSQL esetében például a LOB-adattípusok például az XML, a JSON, a képek, a szöveg stb.
@@ -103,7 +105,7 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiség
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Áthidaló megoldás**: Ha 32 KB-nál nagyobb LOB-objektummal rendelkezik, forduljon a mérnöki csapathoz az [Azure-adatbázis](mailto:AskAzureDatabaseMigrations@service.microsoft.com)áttelepítésekor.
+    **Áthidaló megoldás**: Ha 32 KB-nál nagyobb LOB-objektummal rendelkezik, forduljon a mérnöki csapathoz az [Azure-adatbázis áttelepítésekor](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 - **Korlátozás**: Ha a tábla tartalmaz LOB-oszlopokat, és nincs elsődleges kulcs beállítva a táblához, előfordulhat, hogy a rendszer nem telepíti át az adatátviteli kulcsot ehhez a táblához.
 
@@ -158,12 +160,12 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 - **Hiba**: A(z) „{database}” adatbázisban található „{table}” tábla „{column}” oszlopának alapértelmezett értéke eltérő a forrás- és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha egy oszlop sémájának alapértelmezett értéke eltér a forrás-és a cél-adatbázisok között.
-  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)áttelepítési dokumentációját.
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 - **Hiba**: A(z) „{database}” céladatbázis „{number of tables}” táblával rendelkezik, a(z) „{database}” forrásadatbázisban azonban „{number of tables}” tábla található. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás-és a cél-adatbázis között.
-  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)áttelepítési dokumentációját.
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 - **Hiba:** A forrás-adatbázis ({Database}) üres.
 
@@ -173,7 +175,7 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 - **Hiba:** A célként megadott adatbázis ({Database}) üres. Migrálja a sémát.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a céladatbázis nem rendelkezik sémával. Győződjön meg arról, hogy a cél sémája egyezik a forrásban található sémával.
-  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL online](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)áttelepítési dokumentációját.
+  **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 ## <a name="other-limitations"></a>Egyéb korlátozások
 

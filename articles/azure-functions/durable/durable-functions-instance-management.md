@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087252"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735171"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
 
@@ -43,7 +43,9 @@ A [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/
 * **Bemenet**: Minden olyan JSON-szerializálható adat, amelyet át kell adni a Orchestrator függvény bemenetének.
 * **InstanceId**: Választható A példány egyedi azonosítója. Ha nem megadja ezt a paramétert, a metódus véletlenszerű azonosítót használ.
 
-Íme egy egyszerű C# példa:
+Néhány példa:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -79,7 +81,7 @@ module.exports = async function(context, input) {
 ```
 
 > [!TIP]
-> Használjon véletlenszerű azonosítót a példány-AZONOSÍTÓhoz. Ezzel biztosítható, hogy a Orchestrator függvények több virtuális gépen való skálázásakor a terheléselosztás egyenlő legyen. A nem véletlenszerű példány-azonosítók használatának megfelelő ideje az, ha az AZONOSÍTÓnak külső forrásból kell származnia, vagy ha az egyszeres [Orchestrator](durable-functions-singletons.md) mintát alkalmazza.
+> Használjon véletlenszerű azonosítót a példány-AZONOSÍTÓhoz. Ezzel biztosítható, hogy a Orchestrator függvények több virtuális gépen való skálázásakor a terheléselosztás egyenlő legyen. A nem véletlenszerű példány-azonosítók használatának megfelelő ideje az, ha az AZONOSÍTÓnak külső forrásból kell származnia, vagy ha az [egyszeres Orchestrator](durable-functions-singletons.md) mintát alkalmazza.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -127,7 +129,7 @@ A metódus egy JSON-objektumot ad vissza, amely a következő tulajdonságokkal 
   * **Befejezve**: A példány szokásos módon befejeződött.
   * **ContinuedAsNew**: A példány újraindult egy új előzménysel. Ez egy átmeneti állapot.
   * **Sikertelen**: A példány hibával meghiúsult.
-  * Megszakítva: A példány váratlanul leállt.
+  * **Megszakítva**: A példány váratlanul leállt.
 * **Előzmények**: A folyamat végrehajtási előzményei. Ez a mező csak akkor van feltöltve, `showHistory` ha `true`a értéke.
 
 Ez a metódus `null` akkor tér vissza, ha a példány nem létezik, vagy még nem indult el.
@@ -532,10 +534,10 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>Példányok visszatekerése (előzetes verzió)
 
-Ha nem várt okból végez előkészítési hibát, a példányt visszahelyezheti egy korábban Kifogástalan állapotba egy erre a célra létrehozott API használatával.
+Ha nem várt okból végez előkészítési hibát *, a példányt* visszahelyezheti egy korábban Kifogástalan állapotba egy erre a célra létrehozott API használatával.
 
 > [!NOTE]
-> Ez az API nem helyettesíti a megfelelő hibakezelés és újrapróbálkozási házirendeket. Ehelyett csak olyan esetekben javasolt használni, ahol a hangszerelési példányok váratlan okok miatt sikertelenek. A hibakezelés és az újrapróbálkozási szabályzatokkal kapcsolatos további információkért [](durable-functions-error-handling.md) tekintse meg a hibakezelés témakört.
+> Ez az API nem helyettesíti a megfelelő hibakezelés és újrapróbálkozási házirendeket. Ehelyett csak olyan esetekben javasolt használni, ahol a hangszerelési példányok váratlan okok miatt sikertelenek. A hibakezelés és az újrapróbálkozási szabályzatokkal kapcsolatos további információkért tekintse [meg a hibakezelés](durable-functions-error-handling.md) témakört.
 
 A [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.net) vagy `rewindAsync` a (JavaScript) API használatával állítsa vissza a hangelőkészítést a *futó* állapotba. Futtassa újra a felépítési hibát okozó tevékenységek vagy alfolyamatok végrehajtási hibáit.
 
@@ -592,6 +594,8 @@ Ha el szeretné távolítani a folyamathoz társított összes adatmennyiséget,
 
  A metódus két túlterheléssel rendelkezik. Az első kiüríti az előzményeket a rendszerindítási példány azonosítója szerint:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 A második példa egy időzítő által aktivált függvényt mutat be, amely a megadott időintervallum után befejezett összes előkészítési példány előzményeit törli. Ebben az esetben az összes példányhoz tartozó, 30 vagy több nappal ezelőtt befejezett összes példányra vonatkozó adatvesztést távolítja el. Napi egyszeri futtatásra van ütemezve, 12 ÓRAKOR:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]

@@ -1,5 +1,5 @@
 ---
-title: Minták – LUIS
+title: 'Oktatóanyag: Minták – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Minták használata a szándék- és entitás-előrejelzések pontosságának javításához kevesebb kimondottszöveg-példa megadásával. A minta egy sablonként szolgáló kimondottszöveg-példán alapul, amelynek a szintaxisával azonosíthatók az entitások és a figyelmen kívül hagyható szövegek.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563309"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390337"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Oktatóanyag: Általános minta sablon-megadási formátumok hozzáadása
 

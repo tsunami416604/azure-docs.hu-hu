@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972176"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383202"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
@@ -57,10 +57,12 @@ A Process Server számos, az alábbi táblázatban összefoglalt állapot-riaszt
 ![Figyelmeztetés][yellow] | CPU-kihasználtság > 80% az elmúlt 15 percben
 ![Figyelmeztetés][yellow] | Memóriahasználat > 80% az elmúlt 15 percben
 ![Figyelmeztetés][yellow] | Gyorsítótár-mappa szabad területe < 30% az elmúlt 15 percben
+![Figyelmeztetés][yellow] | A Site Recovery öt percenként figyeli a függőben lévő/kimenő adattípusokat, és becslést készít arról, hogy a folyamat-kiszolgáló gyorsítótárában lévő adatfrissítést nem lehet 30 percen belül feltölteni az Azure
 ![Figyelmeztetés][yellow] | A Process Server Services nem fut az elmúlt 15 percben
 ![Kritikus][red] | CPU-kihasználtság > 95% az elmúlt 15 percben
 ![Kritikus][red] | Memóriahasználat > 95% az elmúlt 15 percben
 ![Kritikus][red] | Gyorsítótár-mappa szabad területe < 25% az elmúlt 15 percben
+![Kritikus][red] | A Site Recovery öt percenként figyeli a függőben lévő/kimenő adatlemezeket, és becslést készít arról, hogy a folyamat-kiszolgáló gyorsítótárában lévő adatfeltöltés 45 percen belül nem tölthető fel az Azure
 ![Kritikus][red] | 15 percig nem érhető el szívverés a folyamat-kiszolgálótól.
 
 ![Tábla kulcsa](./media/vmware-physical-azure-monitor-process-server/table-key.png)

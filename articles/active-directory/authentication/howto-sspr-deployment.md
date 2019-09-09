@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879224"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743245"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Az Azure AD önkiszolgáló jelszó-visszaállítás üzembe helyezése
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének üzembe helyezése az Azure AD-ben
 
 Az önkiszolgáló jelszó-visszaállítás (SSPR) egy Azure Active Directory funkció, amely lehetővé teszi az alkalmazottak számára, hogy az IT-részleggel való kapcsolatfelvétel nélkül visszaállítsák a jelszavukat. Az alkalmazottaknak regisztrálniuk kell az önkiszolgáló jelszó-visszaállításra, vagy regisztrálniuk kell a szolgáltatás használata előtt. A regisztráció során az alkalmazott egy vagy több, a szervezet által engedélyezett hitelesítési módszert választ.
 
@@ -37,7 +37,7 @@ A SSPR üzembe helyezése előtt a szervezetek dönthetnek arról, hogy hány je
 
 ## <a name="licensing-considerations"></a>Licencelési megfontolások
 
-Azure Active Directory a felhasználónkénti licencek, azaz minden felhasználónak rendelkeznie kell egy megfelelő licenccel az általuk használt funkciókhoz.
+A Azure Active Directory felhasználónkénti licenccel rendelkezik, és minden felhasználónak rendelkeznie kell megfelelő licenccel az általuk használt funkciókhoz.
 
 A licenceléssel kapcsolatos további információkért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .
 
@@ -47,19 +47,19 @@ A Microsoft azt javasolja, hogy a szervezetek lehetővé tegyék a SSPR és a t�
 
 ![Kombinált biztonsági információk regisztrálása](./media/howto-sspr-deployment/combined-security-info.png)
 
-A kombinált regisztrációs élmény nem igényli, hogy a szervezetek a SSPR és az Azure multi-Factor Authentication használatát is engedélyezzék. A közös regisztrációs élmény lehetővé teszi a szervezetek számára, hogy a hagyományos egyedi összetevőkhöz képest jobb felhasználói élményt biztosítanak. A kombinált regisztrációval és az engedélyezéssel kapcsolatos további információkért tekintse meg a következő cikket: [kombinált biztonsági információk regisztrálása (előzetes verzió)](concept-registration-mfa-sspr-combined.md)
+A kombinált regisztrációs élmény nem igényli, hogy a szervezetek mind a SSPR, mind az Azure Multi-Factor Authentication használatát engedélyezzék. A közös regisztrációs élmény lehetővé teszi a szervezetek számára, hogy a hagyományos egyedi összetevőkhöz képest jobb felhasználói élményt biztosítanak. A kombinált regisztrációval és az engedélyezéssel kapcsolatos további információkért tekintse meg a következő cikket: [kombinált biztonsági információk regisztrálása (előzetes verzió)](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-configuration"></a>A konfiguráció megtervezése
 
 A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlott értékekkel együtt.
 
-| Terület | Beállítás | Érték |
+| Terület | Beállítás | Value |
 | --- | --- | --- |
 | **SSPR tulajdonságai** | Önkiszolgáló jelszó-visszaállítás engedélyezve | **Kijelölt** csoport a próbaüzem/ **mind** az éles környezethez |
 | **Hitelesítési módszerek** | A regisztráláshoz szükséges hitelesítési módszerek | Az alaphelyzetbe állításhoz mindig 1 nagyobb érték szükséges |
 |   | Az alaphelyzetbe állításhoz szükséges hitelesítési módszerek | Egy vagy kettő |
 | **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Igen |
-|   | A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését | 90 – 180 nap |
+|   | Azon napok száma, amely után a felhasználóknak újra meg kell erősíteniük hitelesítési adataikat | 90 – 180 nap |
 | **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Igen |
 |   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Igen |
 | **Testreszabási** | Ügyfélszolgálati hivatkozás testreszabása | Igen |
@@ -85,11 +85,11 @@ Tekintse meg, mi az a [hitelesítési módszer](concept-authentication-methods.m
 
 Állítsa be a **felhasználókat, hogy regisztráljanak** az **Igen**értékre való bejelentkezéskor. Ez a beállítás azt jelenti, hogy a felhasználók a bejelentkezéskor kénytelenek regisztrálni, hogy minden felhasználó védve legyen.
 
-Adja meg a napok számát, mielőtt a rendszer megkéri a felhasználóktól, hogy hitelesítő adataikat a **90** és **180** nap között **újra erősítse meg** , kivéve, ha a szervezetnek rövidebb időre van szüksége üzleti igényekre.
+Adja meg a **napok számát, mielőtt a rendszer megkéri a felhasználóktól, hogy hitelesítő adataikat** a **90** és **180** nap között újra erősítse meg, kivéve, ha a szervezetnek rövidebb időre van szüksége üzleti igényekre.
 
 ### <a name="notifications-settings"></a>Értesítésbeállítások
 
-Konfigurálja mind a **felhasználók értesítése jelszó** alaphelyzetbe állítását, mind a **rendszergazdák értesítése, ha más rendszergazdák Igen értékre állítják vissza a jelszavukat** . Ha az **Igen** lehetőséget választja, mindkettő növeli a biztonságot azáltal, hogy a felhasználók tisztában vannak a jelszavuk alaphelyzetbe állítását követően, és az összes rendszergazda tisztában van azzal, hogy a rendszergazda módosítja a jelszót. Ha a felhasználók vagy rendszergazdák ilyen értesítést kapnak, és nem kezdeményezték a változást, azonnal jelenthetik a potenciális biztonsági problémákat.
+Konfigurálja mind a **felhasználók értesítése jelszó** **alaphelyzetbe állítását, mind a rendszergazdák értesítése, ha más rendszergazdák Igen értékre állítják vissza a jelszavukat** . Ha az **Igen** lehetőséget választja, mindkettő növeli a biztonságot azáltal, hogy a felhasználók tisztában vannak a jelszavuk alaphelyzetbe állítását követően, és az összes rendszergazda tisztában van azzal, hogy a rendszergazda módosítja a jelszót. Ha a felhasználók vagy rendszergazdák ilyen értesítést kapnak, és nem kezdeményezték a változást, azonnal jelenthetik a potenciális biztonsági problémákat.
 
 ### <a name="customization"></a>Testreszabás
 
@@ -118,7 +118,7 @@ A technológiai projektek meghibásodása esetén általában a hatás, az eredm
 
 ### <a name="communications-plan"></a>Kommunikációs terv
 
-A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal, hogyan használhatja a szolgáltatást, és mit tehet a segítségért, ha valami nem a várt módon működik. Tekintse át az önkiszolgáló jelszó-visszaállítás bevezetésével kapcsolatos [anyagokat a Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=56768) , és ötleteket a végfelhasználói kommunikációs stratégia megtervezéséhez.
+A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal, hogyan használhatja a szolgáltatást, és mit tehet a segítségért, ha valami nem a várt módon működik. Tekintse át az [önkiszolgáló jelszó-visszaállítás](https://www.microsoft.com/download/details.aspx?id=56768) bevezetésével kapcsolatos anyagokat a Microsoft letöltőközpontból, és ötleteket a végfelhasználói kommunikációs stratégia megtervezéséhez.
 
 ### <a name="testing-plan"></a>Tesztelési terv
 

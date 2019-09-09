@@ -1,18 +1,18 @@
 ---
 title: Azure Storage-kód minták | Microsoft Docs
-description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET, a Java, a Node. js és C++ a Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépések mintáit.
+description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET, a Java, a Python, a Node. js és C++ a Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépések mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/03/2017
+ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: ad2881221d1c748016ff4f026ac8ffb3ed683f43
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721773"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743888"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -20,13 +20,6 @@ Az alábbi hivatkozásokra kattintva megtekintheti és letöltheti az Azure Stor
 
 ## <a name="azure-code-samples-library"></a>Azure Code Samples-könyvtár
 Az [Azure Code Samples](https://azure.microsoft.com/documentation/samples/?service=storage) Library olyan mintákat tartalmaz az Azure Storage-hoz, amelyeket helyileg tölthet le és futtathat. A kód minta függvénytár. zip formátumban biztosít mintakód-kódot. Azt is megteheti, hogy megkeresi és megnyithatja a GitHub-tárházat az egyes mintákhoz.
-
-<!--## Getting started samples-->
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
-<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
-* [Visual Studio Quick Starts for Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
--->
 
 ## <a name="net-samples"></a>.NET-minták
 A .NET-minták megismeréséhez töltse le a [.net Storage ügyféloldali kódtárat](https://www.nuget.org/packages/WindowsAzure.Storage/) a NuGet webhelyről. A .NET Storage ügyféloldali kódtára a .NET-hez készült [Azure SDK](https://azure.microsoft.com/downloads/)-ban is elérhető.
@@ -37,6 +30,12 @@ A .NET-minták megismeréséhez töltse le a [.net Storage ügyféloldali kódt�
 A Java-minták megismeréséhez töltse le a [Java Storage ügyféloldali kódtárat](https://github.com/azure/azure-storage-java).
 
 * [Javát használó Azure Storage-minták](storage-samples-java.md)
+
+## <a name="python-samples"></a>Python-példák
+A Python-minták megismeréséhez töltse le a [Python Storage ügyféloldali kódtárat](https://github.com/azure/azure-storage-python).
+
+* [Azure Storage-minták a Python használatával](storage-samples-python.md)
+
 
 ## <a name="nodejs-samples"></a>Node.js-példák
 A Node. js-minták megismeréséhez töltse le a [Node. js Storage ügyféloldali függvénytárát](https://github.com/Azure/azure-storage-node).
@@ -60,8 +59,9 @@ A C++ minták feltárásához töltse le a [ C++ Storage ügyféloldali kódtár
 
 | Nyelv | API-referencia | Forráskód |
 |----------|---------------|-------------|
-| .NET | [.NET ügyféloldali kódtár – dokumentáció](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
+| .NET | [.NET ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
 | Java | [Java ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
+| Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-p[ython]) |
 | Node.js | [Node. js ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-node) | [Forráskód a Node. js tárolási ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++Ügyféloldali függvénytár-referenciák](https://azure.github.io/azure-storage-cpp/) | [A C++ Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-cpp)|
 
@@ -71,3 +71,4 @@ A következő cikkek indexelik az egyes mintákat (blob, fájl, üzenetsor, táb
 
 * [.NET-keretrendszert használó Azure Storage-minták](storage-samples-dotnet.md)
 * [Javát használó Azure Storage-minták](storage-samples-java.md)
+* [Azure Storage-minták a Python használatával](storage-samples-python.md)
