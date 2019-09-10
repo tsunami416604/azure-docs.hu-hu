@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814449"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873310"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -95,11 +95,11 @@ Amikor a migrálás (feladatátvétel) után Azure-beli virtuális gépek jönne
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása**>**Hálózatkezelés**>
    **Virtuális hálózat** lehetőséget.
 3. A **Név** mezőbe írja be a **myMigrationNetwork** nevet.
-4. Ne módosítsa a **Címtér** alapértelmezett értékét.
+4. A **címterület** alapértelmezett értékének megadása (értéket kell megadnia).
 5. Az **Előfizetés** mezőben válassza ki a használni kívánt előfizetést.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **migrationRG** lehetőséget.
 7. A **Hely** mezőnél válassza a **Nyugat-Európa** lehetőséget.
-8. Az **Alhálózat** területen hagyja meg az alapértelmezett beállításokat a **Név** és az **IP-címtartomány** alatt.
+8. Az **alhálózat**területen hagyja meg a **név** és az **IP-címtartomány alapértelmezett értékeit (értéket kell megadnia)** .
 9. Adja meg a DDoS Protection-beállításokra vonatkozó utasításokat.
 10. A **Szolgáltatásvégpontok** beállítást hagyja letiltva.
 11. Adja meg a tűzfalbeállítások utasításait.

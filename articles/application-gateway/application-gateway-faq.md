@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194475"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858531"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -142,7 +142,7 @@ Igen. A Application Gateway mindig egy virtuális hálózati alhálózaton van �
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Képes Application Gateway kommunikálni a virtuális hálózatán kívüli példányokkal vagy az előfizetésén kívül?
 
-Ha IP-kapcsolattal rendelkezik, Application Gateway tud kommunikálni a virtuális hálózatán kívüli példányokkal. A Application Gateway az előfizetésen kívüli példányokkal is tud kommunikálni. Ha belső IP-címeket kíván használni a háttérbeli készlet tagjaiként, használja a [Virtual Network](../virtual-network/virtual-network-peering-overview.md) -peering vagy az [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Ha IP-kapcsolattal rendelkezik, Application Gateway tud kommunikálni a virtuális hálózatán kívüli példányokkal. A Application Gateway az előfizetésen kívüli példányokkal is tud kommunikálni. Ha belső IP-címeket kíván használni a háttérbeli készlet tagjaiként, használja a [Virtual Network-peering](../virtual-network/virtual-network-peering-overview.md) vagy az [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Telepíthetek az Application Gateway alhálózatban bármilyen más szolgáltatást?
 
@@ -150,7 +150,7 @@ Nem. Az alhálózaton azonban más Application Gateway-átjárókat is telepíth
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatottak-e a hálózati biztonsági csoportok az Application Gateway alhálózaton?
 
-Lásd: [hálózati biztonsági csoportok a Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)alhálózatban.
+Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet).
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Támogatja az Application Gateway alhálózata a felhasználó által megadott útvonalakat?
 
@@ -353,7 +353,7 @@ A portálon, az Application Gateway menü paneljén válassza a **műveletnapló
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Megadhatok riasztásokat a Application Gateway?
 
-Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) és riasztási [értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) és [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hogyan elemezni Application Gateway forgalmi statisztikáit?
 

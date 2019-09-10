@@ -1,31 +1,25 @@
 ---
 title: Azure Security Center – Hibaelhárítási útmutató | Microsoft Docs
-description: Ebből a dokumentumból megismerheti az Azure Security Center használatával kapcsolatos problémák elhárításához szükséges lépéseket.
+description: Ez a dokumentum segít a Azure Security Centerban felmerülő problémák megoldásában.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609904"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873387"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, információbiztonsági elemzők és felhőrendszergazdák számára készült, akik szervezetei az Azure Security Centert használják, és el kell hárítaniuk a használathoz kapcsolódó problémákat.
 
 >[!NOTE]
->2017. júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+>Security Center a Microsoft monitoring Agent használatával gyűjti és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md).
 >
 
 ## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
@@ -56,9 +50,9 @@ Az ügynök verziójának ellenőrzéséhez nyissa meg a **Feladatkezelőt**, a 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>A Microsoft Monitoring Agent telepítési forgatókönyvei
 Két telepítési forgatókönyv létezik, amelyek különböző eredményeket hozhatnak, amikor telepíti a Microsoft Monitoring Agentet a számítógépére. A támogatott forgatókönyvek:
 
-* **A Security Center automatikusan telepítette az ügynököt**: ebben a forgatókönyvben a Security Centerben és a naplóbeli kereséssel egyaránt megtekintheti a riasztásokat. Az e-mailes értesítéseket arra az e-mail-címre kapja, amelyet az erőforrást tartalmazó előfizetés biztonsági szabályzatában adott meg.
+* **A Security Center automatikusan telepítette az ügynököt**: ebben a forgatókönyvben a Security Centerben és a naplóbeli kereséssel egyaránt megtekintheti a riasztásokat. E-mail-értesítést fog kapni az előfizetés biztonsági szabályzatában konfigurált e-mail-címre, amelyhez az erőforrás tartozik.
 .
-* **Az ügynök manuálisan lett telepítve az Azure-beli virtuális gépre**: ebben a forgatókönyvben egy 2017 februárja előtt manuálisan letöltött és telepített ügynököt használ. Ebben az esetben csak akkor tekintheti meg a riasztásokat a Security Centerben, ha rászűr az előfizetésre, amelyhez a munkaterület tartozik. Ha arra az előfizetésre szűr, amelyhez az erőforrás tartozik, nem látja a riasztásokat. Az e-mailes értesítéseket arra az e-mail-címre kapja, amelyet a munkaterületet tartalmazó előfizetés biztonsági szabályzatában adott meg.
+* Az **ügynök manuális telepítése az Azure-ban található virtuális gépen**: ebben a forgatókönyvben, ha az ügynököket az 2017 februárja előtt manuálisan letöltötte és telepítette, akkor a riasztásokat csak akkor tekintheti meg a Security Center portálon, ha az előfizetésre szűri a munkaterületet a következőhöz tartozik:. Ha az erőforráshoz tartozó előfizetésre szűr, nem jelenik meg riasztás. E-mail-értesítést fog kapni az előfizetés biztonsági szabályzatában konfigurált e-mail-címre, amelyhez a munkaterület tartozik.
 
 >[!NOTE]
 > A második forgatókönyvben ismertetett viselkedés elkerülése érdekében figyeljen arra, hogy az ügynök legújabb verzióját töltse le.

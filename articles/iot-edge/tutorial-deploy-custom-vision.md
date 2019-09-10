@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 145b643999ff6e4af99ec50c9b0120fc9f11a212
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840136"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858939"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -39,7 +39,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok fejlesztése Linux](tutorial-develop-for-linux.md)-eszközökhöz. Az oktatóanyag elvégzésével a következő előfeltételek szükségesek: 
+>[!TIP]
+>Ez az oktatóanyag a Custom Vision egyszerűsített változata, amely [egy málna PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) minta projektben Azure IoT Edge. Ez az oktatóanyag úgy lett kialakítva, hogy egy felhőalapú virtuális gépen fusson, és statikus képeket használ a képosztályozó betanítására és tesztelésére, ami akkor hasznos, ha valaki kiértékeli a Custom Vision IoT Edge. A minta projekt fizikai hardvert használ, és beállítja az élő kamera-hírcsatornát a képosztályozó betanítására és tesztelésére, ami olyan személy számára hasznos, aki részletesebb, valós helyzetet szeretne kipróbálni.
+
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok fejlesztése Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek: 
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
@@ -51,7 +54,7 @@ IoT Edge modulnak a Custom Vision szolgáltatással történő fejlesztéséhez 
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)-bővítmény a Visual Studio Code-hoz
+* [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Képosztályozó létrehozása a Custom Vision használatával
 
@@ -167,7 +170,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 
 ### <a name="select-your-target-architecture"></a>Válassza ki a cél architektúrát
 
-A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközökhöz is fejlesztheti a modulokat. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64. 
+A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközökhöz is fejlesztheti a modulokat. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64, amelyet az oktatóanyaghoz fogunk használni. 
 
 1. Nyissa meg a parancssort, **és keressen rá Azure IoT Edge: Állítsa be az Edge-megoldás**alapértelmezett célként megadott platformját, vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban. 
 
@@ -191,7 +194,7 @@ A Visual Studio Code Python-modulsablonja tartalmaz néhány mintakódot, amelye
 
 6. Nyissa meg a **module.json** fájlt az osztályozó mappájában. 
 
-7. Frissítse a **platforms** paramétert úgy, hogy az az új, hozzáadott Dockerfile-ra mutasson, majd távolítsa el az ARM32 architektúrát és az AMD64.debug lehetőségeket, amelyek a Custom Vision-modul esetében jelenleg nem támogatottak. 
+7. Frissítse a **platformok** paramétert úgy, hogy a hozzáadott új Docker mutasson, és távolítsa el az összes beállítást az AMD64-ben, amely az oktatóanyaghoz használt egyetlen architektúra. 
 
    ```json
    "platforms": {
@@ -351,7 +354,7 @@ Ebben a forgatókönyvben ahelyett, hogy valódi kamerát használnánk egy kép
 
 3. Tallózással keresse meg az IoT Edge-megoldáskönyvtárat, és illessze be a tesztképet a **modules** / **cameraCapture** mappába. A képnek ugyanabban a mappában kell lennie, mint ahol az előző szakaszban szerkesztett main.py fájl található. 
 
-3. A Visual Studio Code-ban nyissa meg a cameraCapture modul **Dockerfile.amd64** fájlját. (A Custom Vision modul jelenleg nem támogatja az ARM32-t.) 
+3. A Visual Studio Code-ban nyissa meg a cameraCapture modul **Dockerfile.amd64** fájlját. 
 
 4. A `WORKDIR /app` munkakönyvtárat létrehozó sor után adja hozzá az alábbi kódsort: 
 

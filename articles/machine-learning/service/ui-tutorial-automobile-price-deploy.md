@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891620"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858637"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen
 
@@ -29,11 +29,11 @@ Annak érdekében, hogy az [oktatóanyag első részében](ui-tutorial-automobil
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az [oktatóanyag](ui-tutorial-automobile-price-train-score.md) első részében megismerheti, hogyan végezheti el a gépi tanulási modellek betanítását és kiértékelését a vizuális felületen.
+Az [oktatóanyag első részében](ui-tutorial-automobile-price-train-score.md) megismerheti, hogyan végezheti el a gépi tanulási modellek betanítását és kiértékelését a vizuális felületen.
 
 ## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 
-A kísérlet webszolgáltatásként való üzembe helyezése előtt először alakítsa át a betanítási *kísérletet* egy *prediktív kísérletbe*.
+A kísérlet webszolgáltatásként való üzembe helyezése előtt először alakítsa át a *betanítási kísérletet* egy *prediktív kísérletbe*.
 
 1. Válassza a **prediktív kísérlet létrehozása*** elemet a kísérlet vászon alján.
 
@@ -41,7 +41,7 @@ A kísérlet webszolgáltatásként való üzembe helyezése előtt először al
 
     Ha a **prediktív kísérlet létrehozása**lehetőséget választja, több dolog történik:
     
-    * A betanított modellt a modul palettáján a betanított **modell** modulként tárolja a rendszer. Megtalálhatja a betanított **modellekben**.
+    * A betanított modellt a modul palettáján a **betanított modell** modulként tárolja a rendszer. Megtalálhatja a **betanított modellekben**.
     * A betanításhoz használt modulok törlődnek; pontosabban:
       * Modell betanítása
       * Adatok felosztása
@@ -75,9 +75,9 @@ A kísérletnek most így kell kinéznie:
 
 ## <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
 
-A webszolgáltatások lapon navigálva tesztelheti és kezelheti a Visual Interface Web Services szolgáltatást.
+A **webszolgáltatások** lapon navigálva tesztelheti és kezelheti a Visual Interface Web Services szolgáltatást.
 
-1. Nyissa meg a webszolgáltatás szakaszt. Ekkor megjelenik a webszolgáltatást, amelyet a Name (név) oktatóanyaggal telepített **– a személygépkocsi árának előrejelzése [prediktív exp]** .
+1. Nyissa meg a webszolgáltatás szakaszt. Ekkor megjelenik a webszolgáltatást, amelyet a Name (név) **oktatóanyaggal telepített – a személygépkocsi árának előrejelzése [prediktív exp]** .
 
      ![Képernyőfelvétel: a webszolgáltatás lap, amely a közelmúltban létrehozott webszolgáltatás Kiemelt](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -97,7 +97,7 @@ A felhasználók mostantól API-kérelmeket küldhetnek az Azure-webszolgáltat�
 
 **Kérelem/válasz** – a felhasználó egy vagy több sornyi mobil-adatokat küld a szolgáltatásnak HTTP protokoll használatával. A szolgáltatás egy vagy több eredménnyel válaszol.
 
-A REST-hívásokat a webszolgáltatás részletei lap felhasználás lapján találhatja meg.
+A REST-hívásokat a webszolgáltatás részletei lap **felhasználás lapján** találhatja meg.
 
    ![Képernyőkép: a felhasználók által a felhasználás lapon megtalálható minta REST-hívás](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
@@ -118,6 +118,8 @@ A vizuális felületen létrehozott modellek és webszolgáltatás-telepítések
 1. Válassza a **központi telepítések**lehetőséget, majd listázza a modellt használó webszolgáltatásokat. Válassza ki a webszolgáltatás nevét, majd nyissa meg a webszolgáltatások részletei lapot. Ezen az oldalon részletesebb információkhoz juthat a webszolgáltatásról.
 
     [![Képernyőkép – részletes futtatási jelentés](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+Ezeket a modelleket és központi telepítéseket a munkaterület kezdőlapjának **modellek** és **végpontok** szakaszában [(előzetes verzió)](https://ml.azure.com)is megtalálhatja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

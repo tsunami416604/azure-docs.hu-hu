@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278690"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858733"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
@@ -30,7 +30,7 @@ Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azur
 
 Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterülethez csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
 
-* Hozza létre az AK-fürtöt a Azure Machine Learning Service SDK, a Machine Learning parancssori felület vagy a Azure Portal használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
+* Hozza létre az AK-fürtöt a Azure Machine Learning Service SDK, a Machine Learning parancssori felület, a [Azure Portal](https://portal.azure.com) vagy a [munkaterület kezdőlapja (előzetes verzió)](https://ml.azure.com)használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
 * Csatoljon egy meglévő AK-fürtöt a Azure Machine Learning szolgáltatás munkaterületéhez. A fürtök csatlakoztathatók a Azure Machine Learning Service SDK-val, Machine Learning parancssori felülettel vagy a Azure Portalsal.
 
 > [!IMPORTANT]

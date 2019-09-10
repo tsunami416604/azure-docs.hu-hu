@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/9/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813330"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844796"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok határai
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -29,7 +29,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes l
 |Terület|Korlát|
 |--|:--|
 | [Alkalmazás neve][luis-get-started-create-app] | \* Maximális alapértelmezett karakter |
-| Alkalmazások| 500 alkalmazás Azure-erőforráson |
+| Alkalmazások| 500 alkalmazás/Azure authoring Resource |
 | [Kötegelt tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
 | Külső entitások | Nincs korlát |
@@ -65,21 +65,24 @@ Ne használja az alábbi karaktereket a következő nevekben.
 
 A nyelv értelmezése külön kulcsokkal rendelkezik, egy típust a szerzői műveletekhez, és egy típust az előrejelzési végpont lekérdezéséhez. Ha többet szeretne megtudni a főbb típusok közötti különbségekről, olvassa el az [előrejelzési végpont kulcsainak készítése a Luis-ben](luis-concept-keys.md)című témakört.
 
-## <a name="key-limits"></a>Kulcs korlátok
+<a name="key-limits"></a>
 
-Az Authoring Tool kulcs létrehozási és -végpont eltérő korlátokkal rendelkeznek. A LUIS végponti kulcs je platná pouze Pro végpont lekérdezéseket.
+## <a name="resource-key-limits"></a>Erőforrás-kulcsok korlátai
 
-* 500 alkalmazás Azure-erőforráson 
-* 100 verzió/alkalmazás
+Az erőforrás-kulcsok különböző korlátozásokkal rendelkeznek a szerzői és a végponthoz. A LUIS-előrejelzési lekérdezés végpontjának kulcsa csak végponti lekérdezések esetén érvényes. 
+
+* 500 alkalmazás/Azure authoring Resource 
 
 |Kulcs|Szerzői műveletek|Végpont|Cél|
 |--|--|--|--|
-|Language Understanding authoring/Starter|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
-|Language Understanding [előfizetés][pricing] – ingyenes F0-réteg |érvénytelen|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
-|Language Understanding [előfizetés][pricing] – S0 – alapszintű|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
-|Kognitív szolgáltatás [előfizetése][pricing] – standard szintű S0|érvénytelen|50/mp|A LUIS-végpontra lekérdezése|
-|[Vélemények elemzése integráció](luis-how-to-publish-app.md#enable-sentiment-analysis)|érvénytelen|díjmentes|Vélemények információk, beleértve a kulcsszókeresés adatok hozzáadása |
-|[Beszédfelismerési integráció](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|érvénytelen|Ezer 5.50 USD/1 végpont kérelmek|Használja a beszélt utterance (kifejezés) konvertálása szöveges utterance (kifejezés) és a LUIS eredményeket adja vissza|
+|Kezdő|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
+|F0 – ingyenes réteg |1 millió/hó, 5/s|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
+|S0 – alapszintű csomag|-|50/mp|A LUIS-végpontra lekérdezése|
+|S0 – standard szint|-|50/mp|A LUIS-végpontra lekérdezése|
+|[Vélemények elemzése integráció](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Ha további Azure-erőforrásra van szükség, az adatelemzési adatok, például a kulcs kifejezésének kibontása is elérhető. |
+|[Beszédfelismerési integráció](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 végponti kérelmek egységenkénti áron|Használja a beszélt utterance (kifejezés) konvertálása szöveges utterance (kifejezés) és a LUIS eredményeket adja vissza|
+
+[További információ a díjszabásról.][pricing]
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlők
 

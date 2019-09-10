@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: HT
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803896"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844771"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -43,7 +43,7 @@ A tulajdonos nem választhat az áttelepítendő alkalmazások egy részhalmazá
 Az áttelepítés nem: 
 
 * Egy folyamat, amely összegyűjti a közreműködőket, és automatikusan áthelyezi vagy hozzáadja az Azure authoring-erőforráshoz. Az alkalmazás tulajdonosaként el kell végeznie ezt a lépést. Ehhez a lépéshez szükséges a megfelelő erőforráshoz való hozzáférés.
-* Az előrejelzési futtatókörnyezet erőforrásának létrehozásának és hozzárendelésének folyamata. Ha előrejelzési futtatókörnyezeti erőforrásra van szüksége, akkor ez [egy külön folyamat](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) , és változatlan marad. 
+* Az előrejelzési futtatókörnyezet erőforrásának létrehozásának és hozzárendelésének folyamata. Ha előrejelzési futtatókörnyezeti erőforrásra van szüksége, akkor ez [egy külön folyamat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) , és változatlan marad. 
 
 ## <a name="how-are-the-apps-migrating"></a>Hogyan történik az alkalmazások áttelepítése?
 
@@ -62,7 +62,9 @@ Az áttelepítési folyamat késleltethető az ablak megszakításával. A rends
 
 * A Luis portál alkalmazások listájáról is készíthet biztonsági másolatot az alkalmazásokról az egyes alkalmazások exportálásával vagy az exportálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)használatával.
 * **Szükség**esetén mentse az egyes alkalmazások collaborator's listáját. Az e-mail-lista az áttelepítési folyamat részeként van megadva.
-* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. Ha azonban a LUIS-t használja, használhatja az ingyenes (F0) díjszabási szintet is. Előfordulhat, hogy végül egy fizetős szintet kell használnia, mivel a használat növekszik. 
+* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A Luis használata esetén azonban használhatja az ingyenes`F0`() díjszabási szintet. 
+
+A **Luis-alkalmazás készítése ingyenes**, a `F0` szintet is jelzi. [További információ a díjszabási szintekről](luis-boundaries.md#key-limits).
 
 Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/). 
 

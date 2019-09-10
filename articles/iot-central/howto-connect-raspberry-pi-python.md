@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 5c6e99c62d199c36081113011845a3bf2607bcb3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019744"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842552"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Málna PI összekötése az Azure IoT Central-alkalmazással (Python)
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan lehet az eszköz fejlesztője a málna PI-t a Mi
 
 A cikkben szereplő lépések végrehajtásához a következő összetevőkre van szükség:
 
-* A mintául szolgáló **Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * A Raspbian operációs rendszert futtató málna PI-eszköz. A málna PI-nek képesnek kell lennie az internethez való kapcsolódásra. További információ: [a málna PI beállítása](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 > [!TIP]
@@ -35,7 +35,7 @@ A cikkben szereplő lépések végrehajtásához a következő összetevőkre va
 
 ## <a name="sample-devkits-application"></a>**Példa Devkits** alkalmazásra
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
 - Telemetria, amely a következő méréseket tartalmazza, amelyeket az eszköz gyűjt:
   - Nedvességtartalom
@@ -70,13 +70,13 @@ A következő lépések azt ismertetik, hogyan töltheti le és konfigurálhatja
 
 1. Futtassa a következő parancsot a IoT Central Python-ügyfél telepítéséhez:
 
-    ```sh
+    ```bash
     pip install iotc
     ```
 
 1. Töltse le a Python-kód mintáját:
 
-    ```sh
+    ```bash
     curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
     ```
 
@@ -87,7 +87,7 @@ A következő lépések azt ismertetik, hogyan töltheti le és konfigurálhatja
 
 1. A minta futtatásához használja a következő parancsot:
 
-    ```sh
+    ```bash
     python app.py
     ```
 
@@ -101,7 +101,7 @@ A következő lépések azt ismertetik, hogyan töltheti le és konfigurálhatja
 
 ## <a name="raspberry-pi-device-template-details"></a>Málna PI-eszköz sablonjának részletei
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
@@ -140,7 +140,7 @@ Váltási beállítások
 
 | Type            | Display name | Mezőnév | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
-| Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
+| Eszköz tulajdonsága | Die száma   | dieNumber  | number    |
 | Text            | Location     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: SQL-kapcsolati hibák elhárításához |} A Microsoft Docs'
-description: Ismerteti az Azure AD Connect SQL-kapcsolati hibák elhárításához.
+title: 'Azure AD Connect: SQL-kapcsolódási problémák elhárítása | Microsoft Docs'
+description: Ismerteti, hogyan lehet elhárítani a Azure AD Connect-vel kapcsolatos SQL-kapcsolódási problémákat.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,41 +14,41 @@ ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381349"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842696"
 ---
-# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect SQL kapcsolati problémáinak hibaelhárítása
-Ez a cikk ismerteti az Azure AD Connect és az SQL Server közötti kapcsolati problémák elhárításához. 
+# <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect SQL-kapcsolati problémáinak elhárítása
+Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure AD Connect és SQL Server közötti kapcsolódási problémákat. 
 
-Az alábbi képernyőfelvételen egy tipikus hiba, ha az SQL Server nem található.
+A következő képernyőfelvétel egy tipikus hibát mutat be, ha a SQL Server nem található.
 
 ![SQL-hiba](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
-Nyisson meg egy powershell-ablakot, és a ADSyncTools Powershell-modul importálása
+Nyisson meg egy PowerShell-ablakot, és importálja a ADSyncTools PowerShell-modult
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
 ```
 
 >[!NOTE]
->Install-Module frissíteni kell az [PowerShell 5.0 (a WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) vagy újabb, illetve  
-Vagy telepítse [PackageManagement PowerShell-modulok előzetes verzió – a PowerShell 3.0 vagy 4.0 2016. március](https://www.microsoft.com/download/details.aspx?id=51451) 
+>A install-Module frissítést igényel a [PowerShell 5,0 (WMF 5,0)](https://www.microsoft.com/download/details.aspx?id=50395) vagy újabb verzióra;  
+Vagy telepítse [a PackageManagement PowerShell-modulok előzetes verzióját – március 2016 for PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
-- **Összes parancs megjelenítése**: `Get-Command -Module AdSyncTools` 
-- **A powershell-függvény**: `Connect-ADSyncDatabase` a következő paraméterekkel
-    - A kiszolgáló. Az SQL Server nevét.
-    - A példány. (Nem kötelező) Az SQL Server-példány nevét és igény szerint, amely a használni kívánt portszámot. Az alapértelmezett példányt használja, ez a paraméter nem ad meg.
-    - A felhasználónév. (Nem kötelező) A felhasználói fiók kapcsolódni. Ha üresen hagyja a jelenleg bejelentkezett felhasználóhoz történik. Ha csatlakozik egy távoli SQL Server, az Azure SQL-kapcsolat ADConnect létrehozott egyéni szolgáltatásfiókot kell lennie. Az Azure AD Connect az Azure AD Connect szinkronizálási szolgáltatásfiók feltárhatja, hogy egy távoli SQL Serveren hitelesítést használ.
-    - A jelszó. (Nem kötelező) A megadott felhasználónévhez tartozó jelszót.
+- **Az összes parancs megjelenítése**:`Get-Command -Module AdSyncTools` 
+- **Futtassa a PowerShell-függvényt**: `Connect-ADSyncDatabase` a következő paraméterekkel
+    - Server. A SQL Server neve.
+    - Például. Választható A használni kívánt SQL Server-példány neve és opcionális portszáma. Ne határozza meg ezt a paramétert az alapértelmezett példány használatához.
+    - UserName. Választható Az a felhasználói fiók, amelyhez kapcsolódni szeretne. Ha üresen hagyja, a rendszer a jelenleg bejelentkezett felhasználót fogja használni. Ha távoli SQL Server csatlakozik, akkor az Azure ADConnect SQL-kapcsolathoz létrehozott egyéni szolgáltatásfiókot kell létrehoznia. Azure AD Connect a Azure AD Connect Sync Service-fiókot használja a távoli SQL Server-hitelesítéshez.
+    - Jelszó. Választható A megadott Felhasználónév jelszava.
 
-Ez a powershell-függvény próbál meg kötést létrehozni a megadott SQL Server és a példány az átadott hitelesítő adatokkal, vagy a az aktuális felhasználó hitelesítő adatait használja. Ha az SQL Server a parancsfájl megpróbál csatlakozni az SQL Browser szolgáltatás határozza meg az engedélyezett protokollok és portok nem található.
+Ez a PowerShell-függvény megkísérli a megadott SQL Server és példány kötését az átadott hitelesítő adatokkal vagy az aktuális felhasználó hitelesítő adatainak használatával. Ha a SQL Server nem található, akkor a parancsfájl megpróbál csatlakozni a SQL Browser szolgáltatáshoz az engedélyezett protokollok és portok meghatározásához.
 
-Példa csak a kiszolgáló nevét:
+Példa a csak a kiszolgáló nevének használatával:
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> import-module .\AdSyncTools.psm1
 
@@ -85,7 +85,7 @@ Container                        :
 PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> 
 ```
 
-A példa használatával egy példány és a Port számát, amelyek még nem léteznek:
+Példa a nem létező példányok és portszámok használatára:
 
 ```
 PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1"

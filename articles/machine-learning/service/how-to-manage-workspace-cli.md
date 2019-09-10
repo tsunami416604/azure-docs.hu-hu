@@ -1,5 +1,5 @@
 ---
-title: Munkaterület létrehozása az Azure CLI használatával
+title: Munkaterületek létrehozása az Azure CLI-vel
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning szolgáltatás-munkaterületet az Azure CLI használatával.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392674"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873494"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Munkaterületek létrehozása Azure Machine Learning szolgáltatáshoz Azure Resource Manager sablon használatával
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learning szolgáltatáshoz az Azure CLI-vel
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning szolgáltatás-munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning szolgáltatás erőforrásainak használatához.
 

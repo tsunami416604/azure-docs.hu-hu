@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165245"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873563"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>A Azure Machine Learning szolgáltatás vállalati biztonsága
 
@@ -111,7 +111,7 @@ A következő táblázat felsorolja a főbb Azure Machine Learning szolgáltatá
 | Modellek/lemezképek megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
-Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök csak a munkaterületen lévő műveleteknél és Machine Learning Compute támogatottak. Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterületen és a munkaterületen lévő számítási erőforráson. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning](how-to-assign-roles.md)munkaterületen.
+Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök csak a munkaterületen lévő műveleteknél és Machine Learning Compute támogatottak. Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterületen és a munkaterületen lévő számítási erőforráson. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning munkaterületen](how-to-assign-roles.md).
 
 ### <a name="securing-compute-targets-and-data"></a>Számítási célok és adatok biztonságossá tétele
 
@@ -119,7 +119,7 @@ A tulajdonosok és a közreműködők használhatják a munkaterülethez csatolt
 
 Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt identitás is, amelynek a neve megegyezik a munkaterülettel. A felügyelt identitás a következő engedélyekkel rendelkezik a munkaterületen használt csatolt erőforrásokhoz.
 
-A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)-erőforrásokhoz.
+A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 | Resource | Engedélyek |
 | ----- | ----- |
@@ -132,7 +132,7 @@ A felügyelt identitásokkal kapcsolatos további információkért lásd: [fel�
 
 Nem javasoljuk, hogy a rendszergazdák visszavonják a felügyelt identitás hozzáférését az előző táblázatban említett erőforrásokhoz. A hozzáférést a kulcsok újraszinkronizálása művelettel állíthatja vissza.
 
-A Azure Machine learning szolgáltatás létrehoz egy további alkalmazást (a név kezdődik `aml-`), és közreműködői szintű hozzáféréssel rendelkezik az előfizetésben az egyes munkaterület-régiókban. Ha például egy, az USA keleti régiójában és egy másik, észak-európai munkaterületen lévő munkaterülettel rendelkezik ugyanabban az előfizetésben, két ilyen alkalmazást fog látni. Ezek az alkalmazások lehetővé teszik, hogy a Azure Machine Learning szolgáltatás segítséget nyújtson a számítási erőforrások kezelésében.
+A Azure Machine learning szolgáltatás egy további alkalmazást hoz létre (a név a `aml-` következővel kezdődik: vagy `Microsoft-AzureML-Support-App-`), és közreműködői szintű hozzáféréssel rendelkezik az előfizetésben az egyes munkaterület-régiókban. Ha például egy, az USA keleti régiójában és egy másik, észak-európai munkaterületen lévő munkaterülettel rendelkezik ugyanabban az előfizetésben, két ilyen alkalmazást fog látni. Ezek az alkalmazások lehetővé teszik, hogy a Azure Machine Learning szolgáltatás segítséget nyújtson a számítási erőforrások kezelésében.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
@@ -152,7 +152,7 @@ Az Azure Blob Storage-ban tárolt adatok saját kulcsaival kapcsolatos informác
 
 A betanítási adatok általában az Azure Blob Storage-ban is tárolódnak, hogy elérhetők legyenek a számítási célok betanításához. Ezt a tárolót nem Azure Machine Learning felügyeli, de távoli fájlrendszerként van csatlakoztatva a számítási célokhoz.
 
-A munkaterülethez használt Azure Storage-fiókok hozzáférési kulcsainak újragenerálásával kapcsolatos információkért lásd: [tároló-hozzáférési kulcsok](how-to-change-storage-access-key.md)újragenerálása.
+A munkaterülethez használt Azure Storage-fiókok hozzáférési kulcsainak újragenerálásával kapcsolatos információkért lásd: [tároló-hozzáférési kulcsok újragenerálása](how-to-change-storage-access-key.md).
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -167,7 +167,7 @@ A beállításjegyzékben található összes tároló lemezkép (Azure Containe
 Az Azure Storage-ban tárolt összes számítási csomópont operációsrendszer-lemeze titkosítva van a Microsoft által felügyelt kulcsokkal Azure Machine Learning Service Storage-fiókokban. Ez a számítási cél elmúló, és a fürtöket jellemzően akkor kell lekicsinyíteni, ha nincsenek várólistán lévő futtatások. A mögöttes virtuális gép kiépítve, az operációsrendszer-lemez pedig törlődik. Az operációsrendszer-lemez nem támogatja a Azure Disk Encryption.
 
 Minden virtuális gép helyi ideiglenes lemezzel is rendelkezik az operációs rendszer műveleteihez. Ha szeretné, használhatja a lemezt a betanítási adatgyűjtéshez. A lemez nincs titkosítva.
-További információ arról, hogyan működik a titkosítás az Azure-ban: inaktív [Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)-adattitkosítás.
+További információ arról, hogyan működik a titkosítás az Azure-ban: inaktív [Azure-adattitkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 
@@ -191,7 +191,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 ### <a name="metrics"></a>Mérőszámok
 
-Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning szolgáltatás munkaterületének mérőszámait. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majdválassza a metrikák elemet:
+Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning szolgáltatás munkaterületének mérőszámait. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
 
 [![A munkaterület mérőszámait ábrázoló képernyőkép](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 

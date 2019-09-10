@@ -1,65 +1,65 @@
 ---
-title: Azure Blockchain Workbench használatával a Blockchain alkalmazás verziószámozása
-description: Hogyan használható az alkalmazás verziószáma az Azure Blockchain Workbench alkalmazásban.
+title: Blockchain az Azure Blockchain Workbench előzetes verziójában
+description: Az alkalmazások verzióinak használata az Azure Blockchain Workbench előzetes verziójában.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60896862"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843877"
 ---
-# <a name="azure-blockchain-workbench-application-versioning"></a>Az Azure Blockchain Workbench alkalmazás verziószámozása
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Az Azure Blockchain Workbench előzetes verziójának alkalmazása
 
-Hozzon létre, és az Azure Blockchain Workbench alkalmazás több verzióját használja. Ugyanannak az alkalmazásnak több verziója feltöltésekor a rendszer, ha egy korábbi verziók érhető el, és a felhasználók eldönthetik, melyik verzióját szeretnék használni.
+Létrehozhat és használhat egy Azure Blockchain Workbench előzetes verziójú alkalmazás több verzióját is. Ha ugyanannak az alkalmazásnak több verziója van feltöltve, a korábbi verziók is elérhetők, és a felhasználók kiválaszthatják, hogy melyik verziót szeretnék használni.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Blockchain Workbench üzembe helyezés. További információkért lásd: [Azure Blockchain Workbench üzembe helyezési](deploy.md) részleteket az üzembe helyezés
-* Egy telepített blockchain alkalmazás a Blockchain Workbenchet. Lásd: [a blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával](create-app.md)
+* Egy Blockchain Workbench üzembe helyezése. További információ: az [Azure Blockchain Workbench üzembe](deploy.md) helyezése az üzembe helyezés részleteiről
+* Egy üzembe helyezett blockchain-alkalmazás a Blockchain Workbenchben. Lásd: [blockchain-alkalmazás létrehozása az Azure Blockchain workbenchben](create-app.md)
 
-## <a name="add-an-app-version"></a>Egy alkalmazás verzió hozzáadása
+## <a name="add-an-app-version"></a>Alkalmazás verziójának hozzáadása
 
-Az új verzió hozzáadása, töltse fel az új konfigurációt és intelligens szerződés fájlok Blockchain Workbenchet.
+Új verzió hozzáadásához töltse fel az új konfigurációs és intelligens szerződési fájlokat a Blockchain Workbenchbe.
 
-1. Keresse meg a Blockchain Workbenchet webhely címét egy webböngészőben. Ha például `https://{workbench URL}.azurewebsites.net/` információk megkereséséhez a Blockchain Workbenchet webcím: [Blockchain Workbench webes URL-címe](deploy.md#blockchain-workbench-web-url)
-2. Jelentkezzen be egy [Blockchain Workbenchet rendszergazda](manage-users.md#manage-blockchain-workbench-administrators).
-3. Válassza ki a blockchain-alkalmazást, egy másik verziójával frissíti.
-4. Válassza ki **Hozzáadás verzió**. A **Hozzáadás verzió** ablaktáblán jelenik meg.
-5. Válassza ki az új verzió szerződés konfigurációt, és a szerződés kódfájlok feltölteni. A konfigurációs fájl automatikusan érvényesítve lesz. Javítsa az esetleges érvényesítési hibákat, az alkalmazás telepítése előtt.
-6. Válassza ki **Hozzáadás verzió** hozzáadni az új blockchain-application verziót.
+1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. Ha például `https://{workbench URL}.azurewebsites.net/` meg szeretné tudni, hogyan keresheti meg a Blockchain Workbench webcímet, tekintse meg a [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címét.
+2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
+3. Válassza ki a frissíteni kívánt blockchain alkalmazást egy másik verzióval.
+4. Válassza a **verzió hozzáadása**lehetőséget. Megjelenik a **verzió hozzáadása** panel.
+5. Válassza ki az új verzióra vonatkozó szerződés konfigurációját és a feltöltendő szerződési kód fájljait. A konfigurációs fájl automatikusan érvényesítve lesz. Az alkalmazás központi telepítése előtt javítsa ki az érvényesítési hibákat.
+6. Válassza a **verzió hozzáadása** lehetőséget az új blockchain-alkalmazás verziójának hozzáadásához.
 
     ![Új verzió hozzáadása](media/version-app/add-version.png)
 
-A blockchain-alkalmazás központi telepítésének pár percet is igénybe vehet. Amikor a telepítés befejeződött, frissítse az alkalmazás lapot. Az alkalmazás kiválasztása, és kiválasztja a **korábbi verziók** gombra kattint, az alkalmazás korábbi verzióinak jeleníti meg.
+A blockchain alkalmazás üzembe helyezése néhány percet is igénybe vehet. Az üzembe helyezés befejezésekor frissítse az alkalmazás oldalát. Az alkalmazás kiválasztása és a **korábbi verziók** gomb kiválasztásával az alkalmazás korábbi verzióit jelenítheti meg.
 
 > [!IMPORTANT]
-> Az alkalmazás korábbi verzióinak le vannak tiltva. Külön-külön engedélyezheti újra korábbi verziók.
+> Az alkalmazás korábbi verziói le vannak tiltva. Egyénileg újra engedélyezheti a korábbi verziókat.
 >
-> Szükség lehet, ha újra hozzá tagokat az alkalmazás-szerepkörök módosításai az alkalmazás-szerepkörök, az új verzióban.
+> Előfordulhat, hogy a tagokat újra hozzá kell adnia az alkalmazás szerepköreihez, ha az új verzióban módosult az alkalmazás szerepkörei.
 
 ## <a name="using-app-versions"></a>Alkalmazás-verziók használata
 
-Alapértelmezés szerint az alkalmazás legújabb engedélyezett verziójának Blockchain Workbenchet használatos. Ha szeretne egy alkalmazás korábbi verzióját használja, először az alkalmazás oldalán válassza ki a verziót szeretné.
+Alapértelmezés szerint az alkalmazás legújabb engedélyezett verziója a Blockchain Workbenchben van használatban. Ha egy alkalmazás egy korábbi verzióját szeretné használni, először ki kell választania az alkalmazás oldalának verzióját.
 
-1. A Blockchain Workbench alkalmazás szakaszban jelölje be a alkalmazást, amely tartalmazza a használni kívánt szerződést. Ha a korábbi verziók engedélyezve vannak, a verzió előzmények gomb érhető el.
-2. Válassza ki a **korábbi verziók** gombra.
-3. A verzió-előzmények ablaktábláján válassza az alkalmazás verziója található hivatkozásra kattintva a *módosítás dátuma* oszlop.
+1. A Blockchain Workbench alkalmazás szakaszban jelölje be a használni kívánt szerződést tartalmazó alkalmazás jelölőnégyzetét. Ha a korábbi verziók engedélyezve vannak, a verziótörténete gomb elérhető.
+2. Válassza ki a **verziótörténete** gombot.
+3. A korábbi verziók ablaktáblán válassza ki az alkalmazás verzióját a *Módosítás dátuma* oszlopban található hivatkozásra kattintva.
 
-    ![Válassza ki az előző verzió](media/version-app/use-version.png)
+    ![Korábbi verzió kiválasztása](media/version-app/use-version.png)
 
-    Hozzon létre új szerződéseket, vagy korábbi verzió szerződések műveleteket. Az alkalmazás verziója jelenik meg az alkalmazás nevét a következő, és a régebbi verzióval kapcsolatos figyelmeztetés jelenik meg.
+    Létrehozhat új szerződéseket, vagy műveleteket hajthat végre a korábbi verziójú szerződések esetében. Az alkalmazás verziója megjelenik az alkalmazás neve után, és egy figyelmeztetés jelenik meg a régebbi verzióról.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hibaelhárítás az Azure Blockchain Workbench használatával](troubleshooting.md)
+* [Azure Blockchain Workbench – hibaelhárítás](troubleshooting.md)

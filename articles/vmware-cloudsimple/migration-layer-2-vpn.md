@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972619"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845485"
 ---
-# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli hálózatokkal
+# <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
 Ebből az útmutatóból megtudhatja, hogyan használható a 2. rétegbeli VPN (L2VPN) a 2. rétegbeli hálózat kiépítéséhez a helyszíni környezetből a CloudSimple saját felhőbe. Ez a megoldás lehetővé teszi a helyszíni VMware-környezetben futó számítási feladatok áttelepítését az Azure-beli privát felhőbe ugyanazon az alhálózaton belül, anélkül, hogy újra kellene telepíteni a munkaterheléseket.
 
@@ -108,7 +108,7 @@ További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMw
 
 A következő lépések bemutatják, hogyan lehet beolvasni a Tier0 DR logikai útválasztó példányának logikai útválasztó-AZONOSÍTÓját az IPsec és a L2VPN szolgáltatáshoz. A logikai útválasztó AZONOSÍTÓját később kell végrehajtani a L2VPN megvalósításakor.
 
-1. Jelentkezzen be a NSX-T kezelőjébe https://nsx-t-manager-ip-address) (és válassza a **hálózati** > **útválasztó** >  **-szolgáltató – LR** >  **– Áttekintés**lehetőséget. **Magas rendelkezésre állású mód**esetén válassza az **aktív-készenlét**lehetőséget. Ezzel a művelettel megnyílik egy előugró ablak, amely megjeleníti azt a peremhálózati virtuális gépet, amelyen a Tier0-útválasztó éppen aktív.
+1. Jelentkezzen be a NSX-t Manager https://*NSX-t-Manager-IP-cím* elemre, és válassza a **hálózati** > **útválasztók** > **szolgáltatója – LR** > **Áttekintés**elemet. **Magas rendelkezésre állású mód**esetén válassza az **aktív-készenlét**lehetőséget. Ezzel a művelettel megnyílik egy előugró ablak, amely megjeleníti azt a peremhálózati virtuális gépet, amelyen a Tier0-útválasztó éppen aktív.
 
     ![Aktív – készenléti állapot kiválasztása](media/l2vpn-fetch01.png)
 
@@ -167,7 +167,7 @@ Az NSX-T Tier0-útválasztó és az önálló NSX Edge-ügyfél közötti IPsec-
 
     ![IP-előtagi lista](media/l2vpn-routing-security03.png) csatolása 1 ![. IP-előtag csatolása 2. lista](media/l2vpn-routing-security04.png)
 
-5. Terjessze újra a null értékű statikus útvonalat a BGP-be. Ha a visszacsatolási felületet szeretné reklámozni az alátéthez, újra kell terjesztenie a null statikus útvonalat a BGP-be. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztó** > **szolgáltató – LR** > **útválasztási** > **útvonal** újraelosztása elemet.  >  **Szomszédok**. Válassza a **Provider-LR-Route_Redistribution** elemet, majd kattintson a **Szerkesztés**gombra. Jelölje be a **statikus** jelölőnégyzetet, majd kattintson a **Mentés**gombra.
+5. Terjessze újra a null értékű statikus útvonalat a BGP-be. Ha a visszacsatolási felületet szeretné reklámozni az alátéthez, újra kell terjesztenie a null statikus útvonalat a BGP-be. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés** > **útválasztási** > **útválasztó** > **szolgáltató – LR** > **útválasztási** > **útvonal újraelosztása** elemet.  >  **Szomszédok**. Válassza a **Provider-LR-Route_Redistribution** elemet, majd kattintson a **Szerkesztés**gombra. Jelölje be a **statikus** jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 
     ![NULL Statikus útvonal újraterjesztése a BGP-be](media/l2vpn-routing-security05.png)
 

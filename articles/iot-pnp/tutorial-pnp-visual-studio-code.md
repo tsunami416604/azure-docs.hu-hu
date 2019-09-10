@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186472"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858877"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Oktatóanyag: Eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával
 
@@ -35,15 +35,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A jelen oktatóanyagban az eszköz képességeinek modelljével való együttműködéshez a következőkre lesz szüksége:
 
 * [Visual Studio Code](https://code.visualstudio.com/download): A VS Code több platformon is elérhető
-* Az Azure IoT Device Workbench bővítmény a VS Code-ban. Az alábbi lépésekkel telepítheti az Azure IoT Device Workbench bővítményt a VS Code-ban:
+* [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bővítményi csomaghoz. A következő lépésekkel telepítheti a kiterjesztési csomagot a VS Code-ban:
 
-    1. A VS Code-ban válassza a kiterjesztések lapot.
-    1. Keressen rá az **Azure IoT Device Workbench**kifejezésre.
+    1. A VS Code-ban válassza a **kiterjesztések** lapot.
+    1. Keresse meg az **Azure IoT-eszközöket**.
     1. Válassza az **Install** (Telepítés) lehetőséget.
 
 A generált C kód a Windowsban való létrehozásához ebben az oktatóanyagban a következőkre lesz szüksége:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali C++ fejlesztést** a Visual Studio telepítésekor számítási feladatokkal végezze el.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
 * Az Azure IoT C SDK helyi példánya:
@@ -61,7 +61,7 @@ A jelen oktatóanyagban az eszköz kódjának teszteléséhez a következőkre l
 
 ## <a name="model-your-device"></a>Az eszköz modellezése
 
-Az eszköz-képesség modell létrehozásához használja a _digitális kettős definíciós nyelvet_ . A modellek általában több _illesztőfelület_ -definíciós fájlból és egyetlen modellből állnak. A **vs Code-hoz készült Azure IoT Device Workbench bővítmény** olyan eszközöket tartalmaz, amelyek segítséget nyújtanak a JSON-fájlok létrehozásához és szerkesztéséhez.
+Az eszköz-képesség modell létrehozásához használja a _digitális kettős definíciós nyelvet_ . A modellek általában több _illesztőfelület_ -definíciós fájlból és egyetlen modellből állnak. A **vs Code-hoz készült Azure IoT Tools** olyan eszközöket tartalmaz, amelyek segítséget nyújtanak a JSON-fájlok létrehozásához és szerkesztéséhez.
 
 ### <a name="create-the-interface-file"></a>A csatoló fájljának létrehozása
 
@@ -180,7 +180,7 @@ A VS Code-ban a IoT-eszköz képességeit meghatározó illesztőfelület-fájl 
     }
     ```
 
-    Ez az interfész definiálja az eszköz tulajdonságait, például az **ügyfél nevét**,a telemetria típusát, például a hőmérsékletet és a **turnon**parancsokat.
+    Ez az interfész definiálja az eszköz tulajdonságait, például az **ügyfél nevét**, a telemetria típusát, például a **hőmérsékletet**és a **turnon**parancsokat.
 
 1. Adjon hozzá egy **Blink** nevű parancssori képességet a csatoló fájljának végén. Ügyeljen arra, hogy a parancs hozzáadása előtt adjon hozzá egy vesszőt. A definíció begépelésével megtekintheti, hogy az IntelliSense, az automatikus kiegészítés és az érvényesítés hogyan segíthet az illesztőfelület-definíciók szerkesztésében:
 
@@ -254,7 +254,7 @@ A **DeviceInformation** felület letöltése a nyilvános modell adattárból a 
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adjameg a Plug and Playt, válassza ki a **modell megnyitása** parancsot, majd válassza a **nyilvános modell-adattár megnyitása**lehetőséget.
+1. Adja meg a **Plug and Playt**, válassza ki a **modell megnyitása** parancsot, majd válassza a **nyilvános modell-adattár megnyitása**lehetőséget.
 
 1. Válassza a **felületek**lehetőséget, majd válassza ki az eszköz adatai `urn:azureiot:DeviceManagement:DeviceInformation:1`felületet az azonosítóval, majd válassza a **Letöltés**lehetőséget.
 
@@ -298,7 +298,7 @@ A fájlok mostantól a céges tárházban tárolódnak.
 
 ## <a name="generate-code"></a>Kód létrehozása
 
-A VS Code-hoz készült **Azure IoT Device Workbench bővítmény** használatával a modellből létrehozhat csontváz C-kódot. A csontváz kód előállítása a VS Code-ban:
+A VS Code-hoz készült **Azure IoT Tools** használatával létrehozhat csontváz C-kódot a modellből. A csontváz kód előállítása a VS Code-ban:
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 

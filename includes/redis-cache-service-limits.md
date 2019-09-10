@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67179523"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
 | Gyorsítótár mérete |530 GB |
 | Adatbázisok |64 |
-| Maximális csatlakozott ügyfelek |40,000 |
-| Az Azure Cache a Redis replikákhoz, a magas rendelkezésre állás érdekében |1 |
+| Csatlakoztatott ügyfelek maximális száma |40,000 |
+| Azure cache a Redis-replikák számára a magas rendelkezésre állás érdekében |1 |
 | A prémium szintű gyorsítótár fürtözési szegmensek |10 |
 
-Az Azure Cache redis korlátozza, és minden tarifacsomag különböző méretek a következők. A tarifacsomagok és azok kapcsolódó méretek megtekintéséhez lásd: [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/).
+Az Azure Cache redis korlátozza, és minden tarifacsomag különböző méretek a következők. A díjszabási szintek és a hozzájuk tartozó méretek megtekintéséhez tekintse meg az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/).
 
 A Redis konfigurálása korlátok az Azure Cache-további információ: [kiszolgálókonfiguráció Redis alapértelmezett](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
 

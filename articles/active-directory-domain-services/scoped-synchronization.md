@@ -1,105 +1,96 @@
 ---
-title: 'Azure Active Directory Domain Services: Hatókörön belüli szinkronizálás | Microsoft Docs'
-description: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből a felügyelt tartományokra
+title: Hatókörön belüli szinkronizálás a Azure AD Domain Serviceshoz | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat hatókörön belüli szinkronizálást az Azure AD-ből egy Azure Active Directory Domain Services felügyelt tartományra
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 09/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 7d3bd8c6c62c0b8a1be6203e426337fcee7d2126
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617112"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842681"
 ---
-# <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből a felügyelt tartományba
-Ebből a cikkből megtudhatja, hogyan konfigurálhat csak meghatározott felhasználói fiókokat az Azure AD-címtárból a Azure AD Domain Services felügyelt tartományba.
+# <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből Azure Active Directory Domain Services
 
+A hitelesítési szolgáltatások biztosításához Azure Active Directory Domain Services (Azure AD DS) szinkronizálja a felhasználókat és a csoportokat az Azure AD-ből. Hibrid környezetben a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezet felhasználóit és csoportjait először szinkronizálhatja az Azure AD-vel az Azure AD Connect használatával, majd szinkronizálhatja az Azure AD DSával. Alapértelmezés szerint az Azure AD-címtárból származó összes felhasználó és csoport szinkronizálva van egy Azure AD DS felügyelt tartományba. Ha konkrét igényei vannak, ehelyett csak a megadott felhasználók szinkronizálását lehet választani.
 
-## <a name="group-based-scoped-synchronization"></a>Csoport alapú hatókörű szinkronizálás
-Alapértelmezés szerint az Azure AD-címtárban lévő összes felhasználó és csoport szinkronizálva van a felügyelt tartományával. Ha csak néhány felhasználó használja a felügyelt tartományt, akkor csak ezeket a felhasználói fiókokat szinkronizálhatja. A csoport alapú hatókörű szinkronizálás lehetővé teszi a művelet elvégzését. Ha be van állítva, a rendszer csak a megadott csoportokhoz tartozó felhasználói fiókokat szinkronizálja a felügyelt tartományba.
+Ez a cikk bemutatja, hogyan hozhat létre egy hatókörön belüli szinkronizálást használó Azure AD DS felügyelt tartományt, majd módosíthatja vagy letilthatja a hatókörrel rendelkező felhasználók készletét.
 
-A következő táblázat segít meghatározni a hatókörön belüli szinkronizálás használatát:
+## <a name="scoped-synchronization-overview"></a>Hatókörön belüli szinkronizálás – áttekintés
 
-| **Aktuális állapot** | **Kívánt állapot** | **Szükséges konfiguráció** |
+Alapértelmezés szerint az Azure AD-címtárból származó összes felhasználó és csoport szinkronizálva van egy Azure AD DS felügyelt tartományba. Ha csak néhány felhasználónak kell hozzáférnie a felügyelt tartományhoz, csak ezeket a felhasználói fiókokat lehet szinkronizálni. Ez a hatókörön belüli szinkronizálás csoport alapú. A csoport alapú hatókörű szinkronizálás konfigurálásakor a rendszer csak a megadott csoportokhoz tartozó felhasználói fiókokat szinkronizálja az Azure AD DS felügyelt tartományba.
+
+A következő táblázat a hatókörrel rendelkező szinkronizálás használatát ismerteti:
+
+| Aktuális állapot | Kívánt állapot | Szükséges konfiguráció |
 | --- | --- | --- |
-| A meglévő felügyelt tartomány úgy van konfigurálva, hogy szinkronizálja az összes felhasználói fiókot és csoportot. | Csak a megadott csoportokba tartozó felhasználói fiókokat szeretné szinkronizálni a felügyelt tartományba. | [Törölje a meglévő felügyelt tartományt](delete-aadds.md). Ezután kövesse az ebben a cikkben található utasításokat, hogy újra létrehozza azt hatókörön belüli szinkronizálással. |
-| Nem rendelkezik meglévő felügyelt tartománnyal. | Új felügyelt tartományt kíván létrehozni, és csak adott csoportokhoz tartozó felhasználói fiókokat szinkronizálni. | A cikk utasításait követve hozzon létre egy új felügyelt tartományt, amelynek hatókörön belüli szinkronizálása konfigurálva van. |
-| A meglévő felügyelt tartomány úgy van konfigurálva, hogy csak az adott csoportokhoz tartozó fiókokat szinkronizálja. | Szeretné módosítani azoknak a csoportoknak a listáját, amelyek felhasználóit szinkronizálni kell a tartomány kezelése lehetőséggel. | A hatókörön belüli szinkronizálás módosításához kövesse a cikk utasításait. |
+| Egy meglévő felügyelt tartomány úgy van konfigurálva, hogy szinkronizálja az összes felhasználói fiókot és csoportot. | Csak adott csoportokhoz tartozó felhasználói fiókokat szeretne szinkronizálni. | Nem módosítható az összes felhasználó szinkronizálása a hatókörön belüli szinkronizálás használatával. [Törölje a meglévő felügyelt tartományt](delete-aadds.md), majd kövesse az ebben a cikkben ismertetett lépéseket egy Azure AD DS felügyelt tartomány újbóli létrehozásához a hatókörön belüli szinkronizálás beállításával. |
+| Nincs meglévő felügyelt tartomány. | Új felügyelt tartományt kíván létrehozni, és csak adott csoportokhoz tartozó felhasználói fiókokat szinkronizálni. | A cikk lépéseit követve hozzon létre egy Azure AD DS felügyelt tartományt a hatókörön belüli szinkronizálással konfigurálva. |
+| Egy meglévő felügyelt tartomány úgy van konfigurálva, hogy csak az adott csoportokhoz tartozó fiókokat szinkronizálja. | Szeretné módosítani azoknak a csoportoknak a listáját, amelyek felhasználóit szinkronizálni szeretné az Azure AD DS felügyelt tartományával. | A hatókörön belüli szinkronizálás módosításához kövesse a cikkben ismertetett lépéseket. |
+
+A hatókörrel rendelkező szinkronizálási beállítások konfigurálásához használja a Azure Portal vagy a PowerShellt:
+
+| Action | | |
+|--|--|--|
+| Azure AD DS felügyelt tartomány létrehozása és hatókörön belüli szinkronizálás konfigurálása | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Hatókörön belüli szinkronizálás módosítása | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Hatókörön belüli szinkronizálás letiltása | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> **A szinkronizálás hatókörének módosítása hatására a felügyelt tartomány újraszinkronizálást hajt végre.**
+> A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja.
 > 
->  * Egy felügyelt tartomány szinkronizálási hatókörének módosításakor teljes Újraszinkronizálás történik.
->  * A felügyelt tartományban már nem szükséges objektumok törlődnek. Az új objektumok a felügyelt tartományban jönnek létre.
->  * Az Újraszinkronizálás hosszú időt is igénybe vehet, attól függően, hogy a felügyelt tartományban és az Azure AD-címtárban lévő objektumok (felhasználók, csoportok és csoporttagságok) száma milyen. Több százezer objektumot tartalmazó nagyméretű könyvtárak esetében az újraszinkronizálás néhány napig is eltarthat.
+>  * Ha módosítja egy Azure AD DS felügyelt tartomány szinkronizálási hatókörét, a rendszer teljes újraszinkronizálást hajt végre.
+>  * Az Azure AD DS felügyelt tartományban már nem szükséges objektumok törlődnek. Az új objektumok a felügyelt tartományban jönnek létre.
+>  * Az Újraszinkronizálás hosszú időt is igénybe vehet. A szinkronizálási idő az Azure AD DS felügyelt tartományban és az Azure AD-címtárban lévő objektumok, például felhasználók, csoportok és csoporttagságok számától függ. Több százezer objektumot tartalmazó nagyméretű könyvtárak esetében az újraszinkronizálás néhány napig is eltarthat.
 
+## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Hatókörön belüli szinkronizálás engedélyezése a Azure Portal használatával
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Új felügyelt tartomány létrehozása és a csoport alapú hatókörű szinkronizálás engedélyezése Azure Portal használatával
+1. Kövesse az [oktatóanyagot az Azure AD DS-példányok létrehozásához és konfigurálásához](tutorial-create-instance.md). Fejezze be az összes előfeltételt és központi telepítési lépést, kivéve a szinkronizálás hatókörét.
+1. Válassza a szinkronizálási lépés **hatóköre** lehetőséget, majd válassza ki az Azure AD DS-példánnyal szinkronizálni kívánt Azure ad-csoportokat.
 
-1. Felügyelt tartomány létrehozásához kövesse az [első lépések útmutatót](tutorial-create-instance.md) .
-2. Válassza ki a hatókört a szinkronizálási stílus kiválasztása során a Azure ad Domain Services létrehozási varázslóban.
+Az Azure AD DS felügyelt tartomány akár egy órát is igénybe vehet a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Új felügyelt tartomány létrehozása és csoport alapú hatókörű szinkronizálás engedélyezése a PowerShell használatával
-A lépések végrehajtásához használja a PowerShellt. Tekintse át a [Azure Active Directory Domain Services a PowerShell használatával](powershell-create-instance.md)történő engedélyezésének utasításait. A cikkben néhány lépést némileg módosítanak a hatókörön belüli szinkronizálás konfigurálásához.
+Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
 
-A következő lépések végrehajtásával konfigurálhatja a csoport alapú hatókörű szinkronizálást a felügyelt tartományra:
+* A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
+    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+* [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
 
-1. Hajtsa végre a következő feladatokat:
-   * [1. feladat: Telepítse a szükséges PowerShell-](powershell-create-instance.md#task-1-install-the-required-powershell-modules)modulokat.
-   * [2. feladat: Hozza létre a szükséges szolgáltatásnevet az Azure AD-címtárban](powershell-create-instance.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-   * [3. feladat: Hozza létre és konfigurálja az "HRE DC Administrators" csoportot] PowerShell-Create-instance. MD # feladat-3-Create-and-configure-The-HRE-DC-Administrators-Group).
-   * [4. feladat: Regisztrálja a Azure AD Domain Services erőforrás](powershell-create-instance.md#task-4-register-the-azure-ad-domain-services-resource-provider)-szolgáltatót.
-   * [5. feladat: Hozzon létre egy](powershell-create-instance.md#task-5-create-a-resource-group)erőforráscsoportot.
-   * [6. feladat: Hozza létre és konfigurálja a virtuális](powershell-create-instance.md#task-6-create-and-configure-the-virtual-network)hálózatot.
+## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Hatókörön belüli szinkronizálás módosítása a Azure Portal használatával
 
-2. Válassza ki a szinkronizálni kívánt csoportokat, és adja meg azoknak a csoportoknak a megjelenítendő nevét, amelyeket szinkronizálni szeretne a felügyelt tartományával.
+Azon csoportok listájának módosításához, amelyeknek a felhasználóit szinkronizálni szeretné az Azure AD DS felügyelt tartományával, hajtsa végre a következő lépéseket:
 
-3. Mentse a [parancsfájlt a következő szakaszban](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) egy nevű ```Select-GroupsToSync.ps1```fájlba. Hajtsa végre az alábbihoz hasonló parancsfájlt:
+1. A Azure Portal válassza ki az Azure AD DS-példányát, például *contoso.com*.
+1. Válassza a **szinkronizálás** lehetőséget a bal oldali menüben.
+1. Csoport hozzáadásához válassza a felül a **+ csoportok kiválasztása** lehetőséget, majd válassza ki a hozzáadni kívánt csoportokat.
+1. Ha el szeretne távolítani egy csoportot a szinkronizálási hatókörből, válassza ki a jelenleg szinkronizált csoportok listájából, majd válassza a **csoportok eltávolítása**lehetőséget.
+1. Ha minden módosítás történik, válassza a **szinkronizálási hatókör mentése**lehetőséget.
 
-   ```powershell
-   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-   ```
+A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja. Az Azure AD DS felügyelt tartományában már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszú időt is igénybe vehet.
 
-   > [!WARNING]
-   > **Ne felejtse el belefoglalni a "HRE DC Administrators" csoportot.**
-   >
-   > A hatókörön belüli szinkronizáláshoz konfigurált csoportok listájában szerepelnie kell a "HRE DC rendszergazdák" csoportnak. Ha nem adja meg ezt a csoportot, a felügyelt tartomány használhatatlan lesz.
-   >
+## <a name="disable-scoped-synchronization-using-the-azure-portal"></a>Hatókörön belüli szinkronizálás letiltása a Azure Portal használatával
 
-4. Most hozza létre a felügyelt tartományt, és engedélyezze a csoport alapú hatókörű szinkronizálást a felügyelt tartományhoz. Adja meg a ```"filteredSync" = "Enabled"``` tulajdonságot ```Properties``` a paraméterben. Például tekintse meg a következő, a 7. [feladatból másolt parancsfájl-kódrészletet: A Azure AD Domain Services felügyelt tartomány](powershell-create-instance.md#task-7-provision-the-azure-ad-domain-services-managed-domain)kiépítése.
+Ha le szeretné tiltani a csoport alapú hatókörű szinkronizálást egy Azure AD DS felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-   ```powershell
-   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso.com"
-   $ResourceGroupName = "ContosoAaddsRg"
-   $VnetName = "DomainServicesVNet_WUS"
-   $AzureLocation = "westus"
+1. A Azure Portal válassza ki az Azure AD DS-példányát, például *contoso.com*.
+1. Válassza a **szinkronizálás** lehetőséget a bal oldali menüben.
+1. Állítsa be a szinkronizálási hatókört a **hatókörből** az **összesre**, majd válassza a **szinkronizálási hatókör mentése**lehetőséget.
 
-   # Enable Azure AD Domain Services for the directory.
-   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-   -Location $AzureLocation `
-   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-   -ApiVersion 2017-06-01 -Force -Verbose
-   ```
+A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja. Az Azure AD DS felügyelt tartományában már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszú időt is igénybe vehet.
 
-   > [!TIP]
-   > Ne felejtse el felvenni ```"filteredSync" = "Enabled"``` a ```-Properties``` paraméterbe, ezért a hatókörön belüli szinkronizálás engedélyezve van a felügyelt tartományon.
+## <a name="powershell-script-for-scoped-synchronization"></a>PowerShell-parancsfájl hatókörön belüli szinkronizáláshoz
 
+A hatókörrel rendelkező szinkronizálás PowerShell használatával történő konfigurálásához először mentse a következő parancsfájlt egy `Select-GroupsToSync.ps1`nevű fájlba. Ez a parancsfájl az Azure AD DSt konfigurálja a kiválasztott csoportok Azure AD-vel való szinkronizálásához. A megadott csoportok részét képező összes felhasználói fiók szinkronizálva van az Azure AD DS felügyelt tartományával.
 
-## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>A felügyelt tartományhoz (Select-GroupsToSync. ps1) szinkronizálandó csoportok kiválasztására szolgáló parancsfájl
-Mentse a következő parancsfájlt egy fájlba (```Select-GroupsToSync.ps1```). Ez a szkript úgy konfigurálja a Azure AD Domain Services, hogy szinkronizálja a kijelölt csoportokat a felügyelt tartományon. A rendszer a megadott csoportokba tartozó összes felhasználói fiókot szinkronizálja a felügyelt tartományba.
+Ez a szkript a cikk további lépéseiben található.
 
 ```powershell
 param (
@@ -178,33 +169,87 @@ foreach ($id in $newGroupIds)
 Write-Output "****************************************************************************`n"
 ```
 
+## <a name="enable-scoped-synchronization-using-powershell"></a>Hatókörön belüli szinkronizálás engedélyezése a PowerShell használatával
 
-## <a name="modify-group-based-scoped-synchronization"></a>Csoport alapú hatókörű szinkronizálás módosítása
-Azon csoportok listájának módosításához, amelyeknek a felhasználóit szinkronizálni kell a felügyelt tartományba, futtassa újra a [PowerShell](scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) -parancsfájlt, és adja meg a csoportok új listáját. Ne feledje, hogy mindig megadja a "HRE DC rendszergazdák" csoportot a listában.
+A lépések végrehajtásához használja a PowerShellt. Tekintse át a [Azure Active Directory Domain Services a PowerShell használatával történő engedélyezésének](powershell-create-instance.md)utasításait. A cikkben néhány lépést némileg módosítanak a hatókörön belüli szinkronizálás konfigurálásához.
+
+1. Az Azure AD DS PowerShell használatával történő engedélyezéséhez hajtsa végre a következő feladatokat a cikkből. Állítsa le a lépést a felügyelt tartomány tényleges létrehozásához. A hatókörön belüli szinkronizálást úgy konfigurálhatja, hogy létrehozza az Azure AD DS felügyelt tartományt.
+
+   * [Telepítse a szükséges PowerShell-modulokat](powershell-create-instance.md#prerequisites).
+   * [Hozza létre a szükséges egyszerű szolgáltatásnevet és az Azure ad-csoportot a rendszergazdai hozzáféréshez](powershell-create-instance.md#create-required-azure-ad-resources).
+   * [Hozzon létre támogató Azure-erőforrásokat, például egy virtuális hálózatot és alhálózatokat](powershell-create-instance.md#create-supporting-azure-resources).
+
+1. Határozza meg azokat a csoportokat és felhasználókat, akiket az Azure AD-ből szeretne szinkronizálni. Sorolja fel az Azure-AD DS szinkronizálandó csoportok megjelenítendő neveit.
+
+1. Futtassa a [szkriptet az előző szakaszban](#powershell-script-for-scoped-synchronization) , és használja a *-groupsToAdd* paramétert a szinkronizálandó csoportok listájának átadásához.
+
+   > [!WARNING]
+   > A hatókörön belüli szinkronizáláshoz a csoportok listájában szerepelnie kell a *HRE DC-rendszergazdák* csoportnak. Ha nem adja meg ezt a csoportot, az Azure AD DS felügyelt tartomány használhatatlan.
+
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
+
+1. Most hozza létre az Azure AD DS felügyelt tartományt, és engedélyezze a csoport-alapú hatókörű szinkronizálást. Adja meg a *"filteredSync" = "enabled* " *tulajdonságot a-Properties* paraméterben.
+
+    Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *contoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le. Állítsa be az erőforráscsoport nevét, a virtuális hálózat nevét és a régiót az előző lépésekben használt értékekre a támogató Azure-erőforrások létrehozásához:
+
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso.com"
+   $ResourceGroupName = "myResourceGroup"
+   $VnetName = "myVnet"
+   $AzureLocation = "westus"
+
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
+   -Force -Verbose
+   ```
+
+Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+
+Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+
+* A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
+    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+* [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
+
+## <a name="modify-scoped-synchronization-using-powershell"></a>Hatókörön belüli szinkronizálás módosítása a PowerShell használatával
+
+Azon csoportok listájának módosításához, amelyek felhasználóit szinkronizálni kell az Azure AD DS felügyelt tartományba, futtassa újra a [PowerShell-parancsfájlt](#powershell-script-for-scoped-synchronization) , és adja meg a csoportok új listáját. A következő példában a szinkronizálandó csoportok már nem tartalmazzák a *GroupName2*, és most már tartalmazza a *GroupName3*.
 
 > [!WARNING]
-> **Ne felejtse el belefoglalni a "HRE DC Administrators" csoportot.**
->
-> A hatókörön belüli szinkronizáláshoz konfigurált csoportok listájában szerepelnie kell a "HRE DC rendszergazdák" csoportnak. Ha nem adja meg ezt a csoportot, a felügyelt tartomány használhatatlan lesz.
->
-
-
-## <a name="disable-group-based-scoped-synchronization"></a>Csoport alapú hatókörű szinkronizálás letiltása
-A következő PowerShell-parancsfájllal tilthatja le a kezelt tartomány csoport alapú hatókörű szinkronizálását:
+> A hatókörön belüli szinkronizáláshoz a csoportok listájában szerepelnie kell a *HRE DC-rendszergazdák* csoportnak. Ha nem adja meg ezt a csoportot, az Azure AD DS felügyelt tartomány használhatatlan.
 
 ```powershell
-// Login to your Azure AD tenant
-Login-AzAccount
+.\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName3")
+```
 
-// Retrieve the Azure AD Domain Services resource.
+A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja. Az Azure AD DS felügyelt tartományában már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszú időt is igénybe vehet.
+
+## <a name="disable-scoped-synchronization-using-powershell"></a>Hatókörön belüli szinkronizálás letiltása a PowerShell használatával
+
+Ha le szeretné tiltani a csoport alapú hatókörű szinkronizálást egy Azure AD DS felügyelt tartományhoz, állítsa a *"filteredSync" = "Letiltva"* lehetőséget az Azure AD DS-erőforrásra, majd frissítse a felügyelt tartományt. Ha elkészült, az összes felhasználó és csoport szinkronizálásra van beállítva az Azure AD-ből.
+
+```powershell
+// Retrieve the Azure AD DS resource.
 $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
 // Disable group-based scoped synchronization.
 $disableScopedSync = @{"filteredSync" = "Disabled"}
 
+// Update the Azure AD DS resource
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
+A szinkronizálás hatókörének módosítása miatt az Azure AD DS felügyelt tartomány az összes adatot újraszinkronizálja. Az Azure AD DS felügyelt tartományában már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszú időt is igénybe vehet.
+
 ## <a name="next-steps"></a>További lépések
-* [A Azure AD Domain Services szinkronizálásának megismerése](synchronization.md)
-* [Azure Active Directory Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md)
+
+További információ a szinkronizálási folyamatról: a [Azure ad Domain Services szinkronizálásának megismerése](synchronization.md).
+
+<!-- EXTERNAL LINKS -->
+[Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription

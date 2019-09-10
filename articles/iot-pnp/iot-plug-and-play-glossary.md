@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806511"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858847"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -46,9 +46,9 @@ Az Azure IoT Central egy teljes körűen felügyelt, szoftveres megoldás, amely
 
 Az Azure IoT minősítési szolgáltatás minősítési teszteket futtat, amikor [IoT Plug and Play eszközt](#iot-plug-and-play-device) küld a minősítéshez az [Azure Certified for IoT portálon](#azure-certified-for-iot-portal)keresztül. Ahhoz, hogy hozzá lehessen adni egy eszközt a [Certified for IoT-Device cataloghoz](#certified-for-iot-device-catalog), az eszköznek hitelesítettnek kell lennie.
 
-## <a name="azure-iot-device-workbench-extension"></a>Azure IoT Device Workbench bővítmény
+## <a name="azure-iot-tools-extension"></a>Azure IoT-eszközök bővítmény
 
-Az Azure IoT Device Workbench egy [Visual Studio Code](#visual-studio-code) -bővítmény, amely integrált környezetet biztosít a következőhöz:
+Az Azure IoT Tools egy olyan bővítmények gyűjteménye a [Visual Studio Code](#visual-studio-code) -ban, amely segítséget nyújt a IoT hub és a IoT-eszközök fejlesztésében. A IoT Plug and Play-eszközök fejlesztéséhez a következőket nyújtja:
 
 - [Eszköz-képesség modellek](#device-capability-model) és [felületek](#interface)készítése.
 - Közzététel a [modell adattárakban](#model-repository).
@@ -200,4 +200,4 @@ Az [illesztőfelületben](#interface) definiált telemetria mezők a méréseket
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-A Visual Studio Code egy modern Kódszerkesztő, amely több platformon is elérhető. A bővítmények, például az [Azure IoT Device Workbench bővítmény](#azure-iot-device-workbench-extension) lehetővé teszik, hogy testre szabja a fejlesztési forgatókönyvek széles körének támogatásához.
+A Visual Studio Code egy modern Kódszerkesztő, amely több platformon is elérhető. A bővítmények, például az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Pack, lehetővé teszik a szerkesztő testreszabását, hogy a számos fejlesztési forgatókönyvet támogassanak.

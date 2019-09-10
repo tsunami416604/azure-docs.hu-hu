@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305229"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861156"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure Virtual Networks (virtuális hálózatok) lehetővé teszi, hogy az Azure-erőforrások bármelyikét olyan, nem internetes útválasztású hálózatba helyezze, amelynek hozzáférését szabályozhatja. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: Az [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -75,11 +75,11 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 > [!NOTE]
 > A API Management példány virtuális IP-címe minden alkalommal megváltozik, amikor a VNET engedélyezve vagy le van tiltva.
-> A virtuális IP-cím akkor is megváltozik, ha a API Management **külsőről** **belsőre** vagy fordítva van áthelyezve
+> A virtuális IP-cím akkor is megváltozik, ha a API Management külsőről **belsőre** vagy fordítva van áthelyezve
 >
 
 > [!IMPORTANT]
-> Ha eltávolítja a API Management egy VNET, vagy megváltoztatja azt, akkor a korábban használt VNET legfeljebb két óráig maradhat. Ebben az időszakban nem lehet törölni a VNET, vagy új erőforrást telepíteni.
+> Ha eltávolítja a API Management egy VNET, vagy megváltoztatja azt, akkor a korábban használt VNET akár hat óráig is zárolható maradhat. Ebben az időszakban nem lehet törölni a VNET, vagy új erőforrást telepíteni. Ez a viselkedés a 2018-01-01-es és korábbi API-verziót használó ügyfelek esetében igaz. A 2019-01-01-es és újabb verziójú API-t használó ügyfelek a társított API Management szolgáltatás törlése után azonnal felszabadul a VNET.
 
 ## <a name="enable-vnet-powershell"> </a>VNET-kapcsolatok engedélyezése a PowerShell-parancsmagok használatával
 A VNET-kapcsolatot a PowerShell-parancsmagok használatával is engedélyezheti

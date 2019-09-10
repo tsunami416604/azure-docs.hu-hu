@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014138"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory a Watch by Colors használatával
 
@@ -57,7 +57,6 @@ Ha a Watch by Colors az Azure AD-be való integrálását szeretné beállítani
 1. A **Hozzáadás a** katalógusból szakaszban a keresőmezőbe írja be a **Megtekintés szín szerint** kifejezést.
 1. Válassza a **Megtekintés szín** alapján az eredmények panelen, majd az alkalmazás hozzáadása lehetőséget. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Watch by Colors használatával
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Watch by Colors használatával, a " **B. Simon**" nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Watch by Colors használatával.
@@ -68,7 +67,7 @@ Ha az Azure AD SSO-t a Watch by Colors használatával szeretné konfigurálni �
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[Watch by Colors SSO konfigurálása](#configure-watch-by-colors-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. Tekintse meg a **[Watch by Colors test User](#create-watch-by-colors-test-user)** -to have a "B. Simon in Watch" című részt, amely a felhasználó Azure ad-képviseletéhez kapcsolódó színeket tartalmaz.
+    1. **[Tekintse meg a Watch by Colors test User](#create-watch-by-colors-test-user)** -to have a "B. Simon in Watch" című részt, amely a felhasználó Azure ad-képviseletéhez kapcsolódó színeket tartalmaz.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -77,11 +76,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **Watch by Colors** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -123,17 +122,25 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-watch-by-colors-sso"></a>A Watch by Colors SSO konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a Watch by Colors vállalati webhely rendszergazdaként, és hajtsa végre a következő lépéseket:
+1. Ha a színek alapján szeretné automatizálni a konfigurációt, akkor a **bővítmény telepítése**lehetőségre kattintva telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
-1. A lap jobb felső sarkában kattintson a **profil** > **Fiókbeállítások** > **egyszeri bejelentkezés (egyszeri bejelentkezés)** elemre.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, a **Coloring Watch by Colors** (megtekintés a Colors alkalmazásban) lehetőségre kattintva megnyithatja az órát. Itt adja meg a rendszergazdai hitelesítő adatokat, hogy bejelentkezzen a Watch by Colors értékre. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani az órát, nyisson meg egy új böngészőablakot, és jelentkezzen be a Watch by Colors vállalati webhely rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+4. A lap jobb felső sarkában kattintson a **profil** > **Fiókbeállítások** > **egyszeri bejelentkezés (egyszeri bejelentkezés)** elemre.
 
     ![Megtekintés színek szerint – konfiguráció](./media/watch-by-colors-tutorial/config01.png)
 
-1. Az **egyszeri bejelentkezés (SSO)** oldalon hajtsa végre a következő lépéseket:
+5. Az **egyszeri bejelentkezés (SSO)** oldalon hajtsa végre a következő lépéseket:
 
     ![Megtekintés színek szerint – konfiguráció](./media/watch-by-colors-tutorial/config02.png)
 
-    a. Az **SAML engedélyezése** bekapcsolva értékre.
+    a. Az **SAML engedélyezése** bekapcsolva **értékre**.
 
     b. Az **URL-cím** szövegmezőbe illessze be az **összevonási metaadatok URL-címét**, amelyet a Azure Portalból másolt.
 
@@ -183,5 +190,5 @@ Ha a hozzáférési panelen a megtekintés a színek csempére kattint, a rendsz
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A Slack kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a színeket az Azure AD-vel](https://aad.portal.azure.com/)
 

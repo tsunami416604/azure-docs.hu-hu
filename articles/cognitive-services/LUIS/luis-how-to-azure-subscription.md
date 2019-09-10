@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256990"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844865"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futtatókörnyezeti erőforrás-kulcsok használata
 
@@ -72,6 +72,38 @@ Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és 
     |Futtatókörnyezet árképzési szintje|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
 
     Ha mindkét erőforrás létrejött, rendelje hozzá az erőforrásokat a LUIS-portálhoz.
+
+## <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
+
+Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat. 
+
+Erőforrás `kind`:
+
+* Authoring`LUIS.Authoring`
+* Jóslás`LUIS` 
+
+1. Jelentkezzen be az Azure CLI-be:
+
+    ```console
+    az login
+    ```
+
+    Ekkor megnyílik egy böngésző, amely lehetővé teszi a megfelelő fiók kiválasztását és a hitelesítés megadását.
+
+1. Hozzon létre egy nevű **Luis authoring-erőforrást** `LUIS.Authoring`, amely a `my-resource-group` (z) `westus` régióhoz tartozó meglévő erőforráscsoporthoz van elnevezve. `my-luis-authoring-resource` 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Hozzon létre `LUIS`egy, a `westus` régióhoz `my-resource-group` tartozó _meglévő_ erőforráscsoport `my-luis-prediction-resource` nevű **Luis előrejelzési végpont-erőforrást**. Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne használni, váltson `F0` `S0`a következőre:. További információ a [díjszabási szintekről és az átviteli sebességről](luis-boundaries.md#key-limits).
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > A LUIS portál **nem** használja ezeket a kulcsokat, amíg hozzá nem rendelik a Luis portálon a **> Azure-erőforrások kezeléséhez**.
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Szerzői erőforrás kiosztása a LUIS-portálon az összes alkalmazáshoz
 
@@ -186,6 +218,6 @@ Metrikariasztás hozzáadása a **összes hívás** metrika egy bizonyos ideig. 
 ## <a name="next-steps"></a>További lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
-* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](/luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
+* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
 * Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md) 

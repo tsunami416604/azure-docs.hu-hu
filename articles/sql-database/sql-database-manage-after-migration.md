@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567817"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845603"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -29,7 +29,7 @@ A hagyományos, önfelügyelt, önálló vezérlésű környezetből a Pásti-k�
 Ez a cikk a Azure SQL Database alapvető jellemzőit tárgyalja olyan platformként, amely az önálló adatbázisok és a rugalmas készletekben található készletezett adatbázisok használata esetén könnyen kihasználható. Ezek a következők:
 
 - Adatbázis figyelése a Azure Portal használatával
-- Üzletmenet-folytonosság és vész-helyreállítási (BCDR)
+- Üzletmenet-folytonosság és vészhelyreállítás (BCDR)
 - Biztonság és megfelelőség
 - Intelligens adatbázis figyelése és karbantartása
 - Adatáthelyezés
@@ -39,7 +39,7 @@ Ez a cikk a Azure SQL Database alapvető jellemzőit tárgyalja olyan platformk�
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Adatbázisok figyelése Azure Portal használatával
 
-A [Azure Portal](https://portal.azure.com/)az adatbázis kiválasztásával, majd a figyelési diagramra kattintva figyelheti az egyes adatbázisok kihasználtságát. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
+A [Azure Portal](https://portal.azure.com/)az adatbázis kiválasztásával, majd a **figyelési** diagramra kattintva figyelheti az egyes adatbázisok kihasználtságát. Ekkor megjelenik a **Metrika** ablak, amelyet a **Diagram szerkesztése** gombra kattintva módosíthat. Adja hozzá a következő metrikákat:
 
 - Processzorhasználat (%)
 - DTU-kihasználtság (%)
@@ -56,13 +56,13 @@ Például ha az adatbázisban munkaterhelés-növekedésére számít, beállít
 
 A teljesítménnyel kapcsolatos mérőszámok segítségével eldöntheti, hogy alacsonyabb számítási méretre tudja-e váltani. Tegyük fel, hogy Standard S2 adatbázist használ, és a metrikák azt mutatják, hogy az adatbázis átlagos kihasználtsága egy adott időpontban nem több, mint 10 százalék. Ebben az esetben valószínű, hogy az adatbázis Standard S1 teljesítményszinten is megfelelően fog működni. Azonban ügyeljen arra, hogy a döntés meghozatala előtt a nyárs vagy ingadozó munkaterhelések alacsonyabb számítási méretre lépjenek.
 
-## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR)
+## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR)
 
 Az üzletmenet folytonossága és a vész-helyreállítási képességek lehetővé teszik, hogy a szokásos módon folytassa üzleti tevékenységét, ha vészhelyzet esetén. A katasztrófa lehet egy adatbázis-szintű esemény (például valaki véletlenül elveszít egy kritikus táblázatot), vagy egy adatközpont szintű esemény (regionális katasztrófa, például egy szökőár).
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hogyan biztonsági másolatok létrehozása és kezelése SQL Database
 
-Nem kell biztonsági mentéseket létrehoznia az Azure SQL DB-ben, ezért nem szükséges. SQL Database automatikusan biztonsági mentést készít az adatbázisokról, így többé nem kell aggódnia a biztonsági mentések ütemezésével, bevezetésével és kezelésével kapcsolatban. A platform teljes biztonsági mentést készít minden héten, a különbözeti biztonsági mentést óránként, a napló biztonsági mentését pedig 5 percenként, így biztosítva a vész-helyreállítás hatékonyságát és az adatvesztést. Az első teljes biztonsági mentés az adatbázis létrehozása után azonnal megtörténik. Ezek a biztonsági másolatok a "megőrzési időszak" nevű meghatározott időszakra érhetők el, és a kiválasztott szolgáltatási rétegtől függően változnak. A SQL Database lehetővé teszi a megőrzési időszakon belüli bármely időpontra való visszaállítást az időponthoz tartozó [helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)használatával.
+Nem kell biztonsági mentéseket létrehoznia az Azure SQL DB-ben, ezért nem szükséges. SQL Database automatikusan biztonsági mentést készít az adatbázisokról, így többé nem kell aggódnia a biztonsági mentések ütemezésével, bevezetésével és kezelésével kapcsolatban. A platform teljes biztonsági mentést készít minden héten, a különbözeti biztonsági mentést óránként, a napló biztonsági mentését pedig 5 percenként, így biztosítva a vész-helyreállítás hatékonyságát és az adatvesztést. Az első teljes biztonsági mentés az adatbázis létrehozása után azonnal megtörténik. Ezek a biztonsági másolatok a "megőrzési időszak" nevű meghatározott időszakra érhetők el, és a kiválasztott szolgáltatási rétegtől függően változnak. A SQL Database lehetővé teszi a megőrzési időszakon belüli bármely időpontra való visszaállítást az [időponthoz tartozó helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)használatával.
 
 |Szolgáltatási szint|Megőrzési időszak (nap)|
 |---|:---:|
@@ -111,7 +111,7 @@ A hagyományos Windows-hitelesítés nem támogatott. A Azure Active Directory (
 |---|---|
 |Nem ajánlott Azure Active Directory (AD) használata az Azure-ban|[SQL-hitelesítés](sql-database-security-overview.md) használata|
 |Az AD-t a helyszínen SQL Server használni|[ÖSSZEVONÁSA ad az Azure ad-vel](../active-directory/hybrid/whatis-hybrid-identity.md), és használja az Azure ad-hitelesítést. Ezzel az egyszeri bejelentkezést is használhatja.|
-|A többtényezős hitelesítés (MFA) betartatására van szükség|A többtényezős hitelesítés megkövetelése a [Microsoft feltételes hozzáférése](sql-database-conditional-access.md)keretében, valamint az [Azure ad univerzális hitelesítés használata MFA](sql-database-ssms-mfa-authentication.md)-támogatással.|
+|A többtényezős hitelesítés (MFA) betartatására van szükség|A többtényezős hitelesítés megkövetelése a [Microsoft feltételes hozzáférése](sql-database-conditional-access.md)keretében, valamint az [Azure ad univerzális hitelesítés használata MFA-támogatással](sql-database-ssms-mfa-authentication.md).|
 |Legyenek a Microsoft-fiókok (live.com, outlook.com) vagy más tartományok (gmail.com) vendég fiókjai|Az [Azure ad univerzális hitelesítés](sql-database-ssms-mfa-authentication.md) használata SQL Database/adattárházban, amely az [Azure ad B2B-együttműködés](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)használatát teszi lehetővé.|
 |Bejelentkezve a Windowsba egy összevont tartomány Azure AD-beli hitelesítő adataival|Az [Azure ad integrált hitelesítésének](sql-database-aad-authentication-configure.md)használata.|
 |Az Azure-ba nem összevont tartomány hitelesítő adataival vannak bejelentkezve a Windowsba|Az [Azure ad integrált hitelesítésének](sql-database-aad-authentication-configure.md)használata.|
@@ -134,7 +134,7 @@ A tűzfalszabályok a kiszolgáló szintjén vagy az adatbázis szintjén hozhat
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-Alapértelmezés szerint az SQL-adatbázis úgy van konfigurálva, hogy "engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését" – ami azt jelenti, hogy az Azure-beli virtuális gépek megpróbálnak csatlakozni az adatbázishoz. Ezeknek a kísérleteknek még mindig meg kell kapniuk a hitelesítést. Ha azonban nem szeretné, hogy az adatbázis bármely Azure-beli IP-címen elérhető legyen, akkor letilthatja az "Azure-szolgáltatások elérésének engedélyezése a kiszolgálón" lehetőséget. Emellett a [VNet szolgáltatás](sql-database-vnet-service-endpoint-rule-overview.md)-végpontokat is konfigurálhatja.
+Alapértelmezés szerint az SQL-adatbázis úgy van konfigurálva, hogy "engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését" – ami azt jelenti, hogy az Azure-beli virtuális gépek megpróbálnak csatlakozni az adatbázishoz. Ezeknek a kísérleteknek még mindig meg kell kapniuk a hitelesítést. Ha azonban nem szeretné, hogy az adatbázis bármely Azure-beli IP-címen elérhető legyen, akkor letilthatja az "Azure-szolgáltatások elérésének engedélyezése a kiszolgálón" lehetőséget. Emellett a [VNet szolgáltatás-végpontokat](sql-database-vnet-service-endpoint-rule-overview.md)is konfigurálhatja.
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
@@ -142,7 +142,7 @@ A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőf
 
 #### <a name="reserved-ips"></a>Fenntartott IP-címek
 
-Egy másik lehetőség, hogy kiépítse a virtuális gépek számára [fenntartott IP](../virtual-network/virtual-networks-reserved-public-ip.md) -címeket, és az adott virtuális gép IP-címeit a kiszolgáló tűzfalának beállításai között. A fenntartott IP-címek hozzárendelésével megtakaríthatja a problémát, hogy a tűzfalszabályok módosításával módosítsák az IP-címeket.
+Egy másik lehetőség, hogy kiépítse a virtuális gépek számára [fenntartott IP](../virtual-network/virtual-networks-reserved-public-ip.md) -címeket, és hozzáadja az adott virtuális gép IP-címeit a kiszolgáló tűzfalának beállításaiban. A fenntartott IP-címek hozzárendelésével megtakaríthatja a problémát, hogy a tűzfalszabályok módosításával módosítsák az IP-címeket.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Milyen porton csatlakozik SQL Database
 
@@ -196,11 +196,11 @@ Létezik egy kétkulcsos hierarchia a TDE-ben – az egyes felhasználói adatb�
 - A platform által automatikusan SQL Database.
 - Vagy ha a [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) használja a Key Store-ban.
 
-Alapértelmezés szerint a transzparens adattitkosítás főkulcsát a SQL Database szolgáltatás kezeli a kényelem érdekében. Ha a szervezet a főkulcs feletti irányítást szeretné vezérelni, akkor használhatja a Azure Key Vault] (SQL-Database-Always-encrypted-Azure-Key-vault.md) kulcsot tárolóként. A Azure Key Vault használatával a szervezete a kulcs kiépítésének, a rotációs és az engedélyek vezérlésének szabályozását feltételezi. A [TDE főkulcs típusának elforgatása vagy](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) átváltása gyors, mivel csak a adattitkosítási kulcsot újra titkosítja. A biztonsági és adatkezelési szerepkörök elkülönítését biztosító szervezetek számára a biztonsági rendszergazda kiépítheti a TDE főkulcsának kulcsát a Azure Key Vaultban, és megadhatja az adatbázis-rendszergazdának Azure Key Vault kulcs azonosítóját a következőhöz: a kiszolgálón található Rest-titkosítás. A Key Vault úgy van kialakítva, hogy a Microsoft ne tekintse meg vagy ne bontsa ki a titkosítási kulcsokat. A szervezethez tartozó kulcsok központi felügyeletét is elérheti.
+Alapértelmezés szerint a transzparens adattitkosítás főkulcsát a SQL Database szolgáltatás kezeli a kényelem érdekében. Ha a szervezet a főkulcs feletti irányítást szeretné vezérelni, akkor használhatja a Azure Key Vault] (SQL-Database-Always-encrypted-Azure-Key-vault.md) kulcsot tárolóként. A Azure Key Vault használatával a szervezete a kulcs kiépítésének, a rotációs és az engedélyek vezérlésének szabályozását feltételezi. A [TDE főkulcs típusának elforgatása vagy átváltása](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) gyors, mivel csak a adattitkosítási kulcsot újra titkosítja. A biztonsági és adatkezelési szerepkörök elkülönítését biztosító szervezetek számára a biztonsági rendszergazda kiépítheti a TDE főkulcsának kulcsát a Azure Key Vaultban, és megadhatja az adatbázis-rendszergazdának Azure Key Vault kulcs azonosítóját a következőhöz: a kiszolgálón található Rest-titkosítás. A Key Vault úgy van kialakítva, hogy a Microsoft ne tekintse meg vagy ne bontsa ki a titkosítási kulcsokat. A szervezethez tartozó kulcsok központi felügyeletét is elérheti.
 
 #### <a name="always-encrypted"></a>Always Encrypted
 
-A Always Encrypted egy kétkulcsos [hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) is van – a bizalmas adatok egy oszlopa titkosítva van egy AES 256-oszlopos titkosítási kulccsal (CEK), amelyet egy oszlop főkulcsa (CMK) titkosít. A Always Encryptedhoz megadott ügyfél-illesztőprogramok nem korlátozzák a CMKs hosszát. A CEK titkosított értékét a rendszer az adatbázisban tárolja, és a CMK megbízható kulcs-tárolóban, például a Windows tanúsítványtárolóban, Azure Key Vault vagy hardveres biztonsági modulban tárolja.
+A Always Encrypted egy [kétkulcsos hierarchia](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) is van – a bizalmas adatok egy oszlopa titkosítva van egy AES 256-oszlopos titkosítási kulccsal (CEK), amelyet egy oszlop főkulcsa (CMK) titkosít. A Always Encryptedhoz megadott ügyfél-illesztőprogramok nem korlátozzák a CMKs hosszát. A CEK titkosított értékét a rendszer az adatbázisban tárolja, és a CMK megbízható kulcs-tárolóban, például a Windows tanúsítványtárolóban, Azure Key Vault vagy hardveres biztonsági modulban tárolja.
 
 - A [CEK és a CMK](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) is elforgatható.
 - A CEK forgása az adatműveletek mérete, és a titkosított oszlopokat tartalmazó táblák méretétől függően időigényes lehet. Ezért körültekintően kell megtervezni a CEK elforgatását.
@@ -226,7 +226,7 @@ Az Express Route azt is lehetővé teszi, hogy a megvásárolt sávszélesség l
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>A SQL Database megfelel a szabályozás követelményeinek, és hogyan segíti a saját szervezete megfelelőségét
 
-SQL Database megfelel a szabályozási megfelelőségi követelményeknek. A SQL Database által teljesített megfelelőségi szabályok megtekintéséhez látogasson el a [Microsoft adatvédelmi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) központba, és részletesen tájékozódjon a szervezete számára fontos megfelelőségekről, és ellenőrizze, hogy a megfelelő Azure-szolgáltatások részét képezik-e a SQL Database. Fontos megjegyezni, hogy bár a SQL Database megfelelőségi szolgáltatásként is megtekinthetők, az informatikai részleg a szervezet szolgáltatásának megfelelőségét segíti elő, de nem garantálja automatikusan.
+SQL Database megfelel a szabályozási megfelelőségi követelményeknek. A SQL Database által teljesített megfelelőségi szabályok megtekintéséhez látogasson el a [Microsoft adatvédelmi központba](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , és részletesen tájékozódjon a szervezete számára fontos megfelelőségekről, és ellenőrizze, hogy a megfelelő Azure-szolgáltatások részét képezik-e a SQL Database. Fontos megjegyezni, hogy bár a SQL Database megfelelőségi szolgáltatásként is megtekinthetők, az informatikai részleg a szervezet szolgáltatásának megfelelőségét segíti elő, de nem garantálja automatikusan.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligens adatbázis figyelése és karbantartása az áttelepítés után
 
@@ -268,7 +268,7 @@ A Azure Portal egy adatbázis kihasználtságát jeleníti meg az adatbázis kiv
 
 ![Chart2 figyelése](./media/sql-database-manage-after-migration/chart.png)
 
-Ebből a diagramból erőforrás alapján is konfigurálhatja a riasztásokat. Ezek a riasztások lehetővé teszik, hogy válaszoljon az erőforrásokra vonatkozó feltételekre e-mailben, írjon egy HTTPS/HTTP-végpontra, vagy hajtson végre egy műveletet. További információt a riasztások [létrehozása](sql-database-insights-alerts-portal.md)című témakörben talál.
+Ebből a diagramból erőforrás alapján is konfigurálhatja a riasztásokat. Ezek a riasztások lehetővé teszik, hogy válaszoljon az erőforrásokra vonatkozó feltételekre e-mailben, írjon egy HTTPS/HTTP-végpontra, vagy hajtson végre egy műveletet. További információt a [riasztások létrehozása](sql-database-insights-alerts-portal.md)című témakörben talál.
 
 #### <a name="dynamic-management-views"></a>Dinamikus felügyeleti nézetek
 
@@ -313,7 +313,7 @@ Ha SaaS-alkalmazási mintát vagy adatbázis-konszolidációs forgatókönyvet h
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Milyen gyakran van szükség az adatbázis-integritási ellenőrzések futtatására az adatbázison
 
-A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszik bizonyos adatsérülések automatikus kezelését, adatvesztés nélkül. Ezek a technikák beépítettek a szolgáltatásba, és a szolgáltatás igénybe veszik a szolgáltatást. Az adatbázis biztonsági másolatait rendszeresen teszteli a szolgáltatáson keresztül, és a DBCC CHECKDB UTASÍTÁST futtatja. Ha problémák merülnek fel, SQL Database proaktív módon kezeli őket. Az [automatikus oldal javítása](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) kihasználható a sérült vagy adatintegritási problémákkal rendelkező lapok kijavításához. Az adatbázis-lapokat mindig az alapértelmezett ELLENŐRZŐÖSSZEG-beállítással ellenőrzik, amely ellenőrzi az oldal integritását. SQL Database proaktív módon figyeli és áttekinti az adatbázis adatintegritását, és ha problémák merülnek fel, a legmagasabb prioritással kezeli őket. Ezen kívül dönthet úgy is, hogy opcionálisan futtatja saját integritási ellenőrzéseit is.  További információ: az [adatintegritás SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
+A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszik bizonyos adatsérülések automatikus kezelését, adatvesztés nélkül. Ezek a technikák beépítettek a szolgáltatásba, és a szolgáltatás igénybe veszik a szolgáltatást. Az adatbázis biztonsági másolatait rendszeresen teszteli a szolgáltatáson keresztül, és a DBCC CHECKDB UTASÍTÁST futtatja. Ha problémák merülnek fel, SQL Database proaktív módon kezeli őket. Az automatikus oldal javítása kihasználható a sérült vagy adatintegritási problémákkal rendelkező lapok [kijavításához](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) . Az adatbázis-lapokat mindig az alapértelmezett ELLENŐRZŐÖSSZEG-beállítással ellenőrzik, amely ellenőrzi az oldal integritását. SQL Database proaktív módon figyeli és áttekinti az adatbázis adatintegritását, és ha problémák merülnek fel, a legmagasabb prioritással kezeli őket. Ezen kívül dönthet úgy is, hogy opcionálisan futtatja saját integritási ellenőrzéseit is.  További információ: az [adatintegritás SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
 
 ## <a name="data-movement-after-migration"></a>Adatáthelyezés az áttelepítés után
 

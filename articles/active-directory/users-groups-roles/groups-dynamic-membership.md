@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194610"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872183"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -193,7 +193,7 @@ Ha egy kifejezésen belül értéket ad meg, fontos, hogy a hibák elkerülése 
 Ha NULL értéket szeretne megadni egy szabályban, használhatja a *Null* értéket. 
 
 * A kifejezésben szereplő *Null* érték összehasonlításakor használja a-EQ vagy a-ne értéket.
-* Csak akkor használjon nullát idézőjelek közé, ha azt szeretné, hogy literális karakterlánc-értékként legyen értelmezve.
+* Csak akkor használjon *nullát* idézőjelek közé, ha azt szeretné, hogy literális karakterlánc-értékként legyen értelmezve.
 * A-not operátor nem használható a null értékhez tartozó összehasonlító operátorként. Ha ezt használja, hibaüzenet jelenik meg, hogy null vagy $null használ-e.
 
 A NULL értékre való hivatkozás helyes módja a következő:
@@ -310,7 +310,7 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 A következő tippek segíthetnek a szabály megfelelő használatához.
 
 - A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában**található.
-- A szabály működéséhez győződjön meg arról, hogy a **kezelő** tulajdonság helyesen van beállítva a bérlő felhasználói számára. A felhasználó profiljában megtekintheti az aktuális értéket.
+- A szabály működéséhez győződjön meg arról, hogy a **kezelő** tulajdonság helyesen van beállítva a bérlő felhasználói számára. A felhasználó **profiljában**megtekintheti az aktuális értéket.
 - Ez a szabály csak a felettes közvetlen jelentéseit támogatja. Más szóval nem hozhat létre csoportot a felettes közvetlen jelentéseivel *és* jelentéseivel.
 - Ez a szabály nem kombinálható más tagsági szabályokkal.
 
@@ -353,11 +353,16 @@ Egy egyéni kiterjesztési tulajdonságot használó szabály például a követ
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak** beolvasása hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
+Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 
 Létrehozhat egy olyan szabályt is, amely kijelöli a csoport tagjainak eszköz-objektumait. A felhasználók és az eszközök nem rendelkezhetnek csoport tagjaiként. A **organizationalUnit** attribútum már nem jelenik meg, és nem használható. Ezt a karakterláncot az Intune meghatározott esetekben állítja be, de az Azure AD nem ismeri fel, így az attribútum alapján egyetlen eszköz sincs hozzá a csoportokhoz.
+
+> [!NOTE]
+> a systemlabels egy írásvédett attribútum, amely nem állítható be az Intune-nal.
+>
+> A Windows 10 esetében a deviceOSVersion attribútum megfelelő formátuma a következő: (Device. deviceOSVersion-EQ "10,0 (17763)"). A formázás ellenőrizhető a Get-MsolDevice PowerShell-parancsmaggal.
 
 A következő eszköz-attribútumok használhatók.
 

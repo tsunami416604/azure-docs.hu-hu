@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383121"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873466"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP-ként hozzon létre és kezeljen egy Azure IoT Central alkalmazást az ügyfél nevében
 
@@ -71,14 +71,14 @@ További információt az Azure- [előfizetések](https://docs.microsoft.com/azu
 
 ## <a name="region"></a>Régió
 
-Válassza ki azt a régiót, amelyben létre szeretné hozni az Azure IoT Central alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania azt a régiót, amely fizikailag az eszközeinek a legközelebb van.
+Válassza ki azt a régiót vagy [földrajzot](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol létre szeretné hozni az Azure IoT Central alkalmazást. Az optimális teljesítmény érdekében általában az eszközökhöz legközelebb eső régiót kell kiválasztania.
 
 > [!NOTE]
 > Az **előzetes verziójú alkalmazás** sablonja jelenleg csak az **észak-európai** és az **USA középső** régiójában érhető el.
 
-További információ: Azure- [régiók](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
+További információ: Azure- [régiók](https://azure.microsoft.com/global-infrastructure/regions/) és [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
 
-Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a régiók oldalon [elérhető termékek területen](https://azure.microsoft.com/regions/services/) .
+Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a régiók oldalon [elérhető termékek területen](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
 
 > [!Note]
 > Ha kiválasztott egy régiót, később nem helyezheti át az alkalmazást egy másik régióba.

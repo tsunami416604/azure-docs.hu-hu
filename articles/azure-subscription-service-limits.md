@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698277"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
@@ -25,13 +25,13 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 > [!NOTE]
 > Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). A határértékek nem állíthatók fel az alábbi táblázatokban látható maximális határérték fölé. Ha nincs maximális korlát oszlop, az erőforrás nem rendelkezik állítható korlátokkal.
 >
-> Az [ingyenes próbaverziós](https://azure.microsoft.com/offers/ms-azr-0044p) előfizetések nem jogosultak a korlát vagy a kvóta növelésére. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+> Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információ: az [Azure ingyenes próbaverziós előfizetésének frissítése](billing/billing-upgrade-azure-subscription.md) utólagos elszámolású előfizetésre, valamint az [ingyenes próbaverziós előfizetés – gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Korlátok és Azure Resource Manager
 Most már lehetséges több Azure-erőforrást egyetlen Azure-erőforráscsoporthoz egyesíteni. Az erőforráscsoportok használatakor a korlátozásokat a rendszer a globálisan a Azure Resource Managertel rendelkező regionális szinten felügyeli. További információ az Azure-erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](azure-resource-manager/resource-group-overview.md)).
 
-A következő korlátok listájában az új táblázat a Azure Resource Manager használatakor felmerülő eltéréseket mutatja. Például van egy **előfizetési korlát** tábla és egy előfizetési **korlát – Azure Resource Manager** tábla. Ha a korlát mindkét forgatókönyvre vonatkozik, csak az első táblázatban látható. Hacsak másként nincs jelezve, a korlátok globálisak az összes régióban.
+A következő korlátok listájában az új táblázat a Azure Resource Manager használatakor felmerülő eltéréseket mutatja. Például van egy **előfizetési korlát** tábla és egy **előfizetési korlát – Azure Resource Manager** tábla. Ha a korlát mindkét forgatókönyvre vonatkozik, csak az első táblázatban látható. Hacsak másként nincs jelezve, a korlátok globálisak az összes régióban.
 
 > [!NOTE]
 > Az Azure-erőforráscsoportok erőforrásainak kvótái régiónként elérhetők az előfizetés, nem pedig előfizetések esetén, a Service Management kvótái. Vegyük példaként a vCPU-kvótákat. A vCPU támogatásával a kvóta növeléséhez el kell döntenie, hogy hány vCPU kíván használni a régiókban. Ezután egy konkrét kérést fog kérni az Azure-erőforráscsoport kvótáinak vCPU a kívánt mennyiségekhez és régiókhoz. Ha a Nyugat-Európában 30 vCPU kell használnia az alkalmazás futtatásához, akkor külön 30 vCPU-t kér Nyugat-Európában. A vCPU-kvóta nem növekszik más régiókban – csak Nyugat-Európában a 30 vCPU kvóta.
@@ -85,7 +85,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Hálózat](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Azure bejárati ajtó szolgáltatás](#azure-front-door-service-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
@@ -262,7 +262,7 @@ Azure Database for PostgreSQL korlátokat a [Azure Database for PostgreSQL korl�
 A díjszabási szintek határozzák meg a keresési szolgáltatás kapacitását és korlátait. A rétegek a következők:
 
 * Az **ingyenes** több-bérlős szolgáltatás, amelyet más Azure-előfizetők is megosztanak, kiértékelésre és kisméretű fejlesztési projektekre tervezték.
-* Az alapszintű eszközök dedikált számítástechnikai erőforrásokat biztosítanak az éles számítási feladatokhoz kisebb méretekben, és legfeljebb három replikával rendelkeznek a nagy rendelkezésre állású lekérdezési feladatokhoz.
+* Az **alapszintű** eszközök dedikált számítástechnikai erőforrásokat biztosítanak az éles számítási feladatokhoz kisebb méretekben, és legfeljebb három replikával rendelkeznek a nagy rendelkezésre állású lekérdezési feladatokhoz.
 * A **standard**, amely az S1, az S2, az S3 és az S3 nagy sűrűségű, nagyobb üzemi számítási feladatokhoz is tartozik. A standard szinten több szint is létezik, így kiválaszthatja a munkaterhelés-profilhoz legjobban illő erőforrás-konfigurációt.
 
 **Korlát/előfizetés**
@@ -372,7 +372,7 @@ Ha többet szeretne megtudni a további részletességgel kapcsolatos korlátoz�
 ### <a name="key-vault-limits"></a>Key Vault korlátok
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication-limits"></a>Multi-Factor Authentication-korlátok
+### <a name="multi-factor-authentication-limits"></a>Multi-Factor Authentication korlátok
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automatizálási korlátok
@@ -385,7 +385,7 @@ Ha többet szeretne megtudni a további részletességgel kapcsolatos korlátoz�
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL Database korlátok
-SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás](sql-database/sql-database-vcore-resource-limits-single-databases.md)-korlátozásokat, [SQL Database a rugalmas készletek és a készletezett adatbázisok](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátait, valamint [SQL Database erőforrás-korlátozásokat a felügyelt példányok számára](sql-database/sql-database-managed-instance-resource-limits.md).
+SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás-korlátozásokat](sql-database/sql-database-vcore-resource-limits-single-databases.md), [SQL Database a rugalmas készletek és a készletezett adatbázisok](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátait, valamint [SQL Database erőforrás-korlátozásokat a felügyelt példányok számára](sql-database/sql-database-managed-instance-resource-limits.md).
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
 SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

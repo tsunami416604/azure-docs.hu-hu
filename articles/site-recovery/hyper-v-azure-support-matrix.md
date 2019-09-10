@@ -1,19 +1,18 @@
 ---
-title: A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa | Microsoft Docs
+title: A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 description: Összefoglalja a Hyper-V virtuális gépeknek az Azure-ba történő helyreállításának támogatott összetevőit és követelményeit Azure Site Recovery
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230966"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873337"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -25,7 +24,7 @@ Ez a cikk a helyszíni Hyper-V virtuális gépek Azure-ba történő helyreáll�
 
 **Forgatókönyv** | **Részletek**
 --- | ---
-Hyper-V Virtual Machine Manager | A System Center Virtual Machine Manager-hálóban felügyelt Hyper-V-gazdagépeken futó virtuális gépek esetén vész-helyreállítást hajthat végre az Azure-ban.<br/><br/> Ezt a forgatókönyvet a Azure Portal vagy a PowerShell használatával is telepítheti.<br/><br/> Ha a Hyper-V-gazdagépeket a Virtual Machine Manager felügyeli, a másodlagos helyszíni helyre is elvégezheti a vész-helyreállítást. Ha többet szeretne megtudni erről a forgatókönyvről, olvassa el [ezt](hyper-v-vmm-disaster-recovery.md)az oktatóanyagot.
+Hyper-V Virtual Machine Manager | A System Center Virtual Machine Manager-hálóban felügyelt Hyper-V-gazdagépeken futó virtuális gépek esetén vész-helyreállítást hajthat végre az Azure-ban.<br/><br/> Ezt a forgatókönyvet a Azure Portal vagy a PowerShell használatával is telepítheti.<br/><br/> Ha a Hyper-V-gazdagépeket a Virtual Machine Manager felügyeli, a másodlagos helyszíni helyre is elvégezheti a vész-helyreállítást. Ha többet szeretne megtudni erről a forgatókönyvről, olvassa el [ezt az oktatóanyagot](hyper-v-vmm-disaster-recovery.md).
 Hyper-V Virtual Machine Manager nélkül | A nem a Virtual Machine Manager által felügyelt Hyper-V-gazdagépeken futó virtuális gépek esetén vész-helyreállítást végezhet az Azure-ban.<br/><br/> Ezt a forgatókönyvet a Azure Portal vagy a PowerShell használatával is telepítheti.
 
 
@@ -134,6 +133,7 @@ Titkosítás nyugalmi állapotban (SSE)| Igen | Igen
 Prémium szintű Storage | Igen | Igen
 Importálási/exportálási szolgáltatás | Nem | Nem
 Azure Storage-tűzfalak a cél Storage/cache Storage-fiókban konfigurált virtuális hálózatokhoz (a replikációs adattároláshoz használatos) | Nem | Nem
+Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához, letiltásához és újraengedélyezéséhez. | Nem
 
 
 ## <a name="azure-compute-features"></a>Az Azure számítási funkciói

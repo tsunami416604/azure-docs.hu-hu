@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722085"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861414"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage életciklusának kezelése
 
@@ -54,7 +54,7 @@ A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerk
 Ez a cikk bemutatja, hogyan kezelheti a szabályzatokat a portál és a PowerShell-metódusok használatával.  
 
 > [!NOTE]
-> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. A kérelmek feloldásához kivételeket adhat meg. A szükséges megkerülés: `Logging,  Metrics,  AzureServices`. További információt a [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)című témakör kivételek című szakaszában talál.
+> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. A kérelmek feloldásához kivételeket adhat meg. A szükséges megkerülés: `AzureServices`. További információt a [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)című témakör kivételek című szakaszában talál.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -435,4 +435,4 @@ Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó 
 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 
-- [Az Azure Storage-Blobok Soft delete](../blobs/storage-blob-soft-delete.md)
+- [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)

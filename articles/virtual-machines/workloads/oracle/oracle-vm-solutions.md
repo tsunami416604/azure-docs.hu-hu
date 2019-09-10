@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 3d3805fe5a574d3e6ecd9a6fa8f95dd28f308d25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101393"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858574"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -58,11 +58,8 @@ Ezeket a lemezképeket "saját licenc használatára" számítjuk, ezért csak a
 
 A felhasználók dönthetnek úgy is, hogy a megoldásaikat az Azure-ban létrehozott egyéni rendszerképre alapozzák, vagy egyéni rendszerképet töltenek fel a helyszíni környezetből.
 
-## <a name="support-for-jd-edwards"></a>A JD Edwards támogatása
-Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), a JD Edwards EnterpriseOne 9,2-es és újabb verziói **minden olyan nyilvános Felhőbeli ajánlat** esetében támogatottak, amely megfelel az adott `Minimum Technical Requirements` (MTR) szolgáltatásnak.  Olyan egyéni rendszerképeket kell létrehoznia, amelyek megfelelnek az operációs rendszer és a szoftver alkalmazás kompatibilitásának MTR-specifikációinak. 
-
 ## <a name="oracle-database-vm-images"></a>Oracle Database VM-rendszerképek
-Az Oracle támogatja a Oracle DB 12,1 standard és Enterprise kiadásait az Azure-ban Oracle Linux-alapú virtuálisgép-rendszerképeken.  Az Azure-beli Oracle DB éles számítási feladataihoz a legjobb teljesítmény érdekében ügyeljen arra, hogy a virtuális gép rendszerképét megfelelően méretezze, és a Premium Storage által támogatott Managed Disks használjon. Az Azure-beli közzétett virtuálisgép-rendszerkép használatával gyorsan lekérhet egy Oracle DBt az Azure-ban, és megtekintheti [Oracle db a](oracle-database-quick-create.md)gyors üzembe helyezési útmutatót.
+Az Oracle támogatja a Oracle DB 12,1-es és újabb standard és Enterprise kiadásait az Azure-ban Oracle Linux-alapú virtuálisgép-rendszerképeken.  Az Azure-beli Oracle DB éles számítási feladataihoz a legjobb teljesítmény érdekében ügyeljen arra, hogy a virtuális gép rendszerképét megfelelően méretezze, és használja prémium SSD vagy ultra SSD Managed Disks. Az Azure-beli közzétett virtuálisgép-rendszerkép használatával gyorsan lekérhet egy Oracle DBt az Azure-ban, és megtekintheti [Oracle db a](oracle-database-quick-create.md)gyors üzembe helyezési útmutatót.
 
 ### <a name="attached-disk-configuration-options"></a>Csatolt lemez konfigurációs beállításai
 
@@ -80,21 +77,33 @@ Azure NetApp Files úgy lett kialakítva, hogy megfeleljenek a nagy teljesítmé
 Ezek a képességek azért lehetségesek, mert a Azure NetApp Files a NetApp® ONTAP® az Azure-adatközpont-környezetben futó összes Flash-rendszerre épül, Azure-beli natív szolgáltatásként. Az eredmény egy ideális adatbázis-tárolási technológia, amely ugyanúgy kiépíthető és felhasználható, mint a többi Azure Storage-lehetőség. Az Azure NetApp Files NFS-kötetek üzembe helyezésével és elérésével kapcsolatos további információkért tekintse meg [Azure NetApp Files dokumentációját](https://docs.microsoft.com/azure/azure-netapp-files/) . Tekintse meg az [Oracle az Azure-beli üzembe helyezéssel kapcsolatos ajánlott eljárásokat ismertető útmutatót](https://www.netapp.com/us/media/tr-4780.pdf) , amely az Oracle-adatbázisok Azure NetApp Files-on való üzemeltetésére vonatkozó ajánlott eljárások Azure NetApp Files
 
 
+## <a name="licensing-oracle-database--software-on-azure"></a>Licencelés Oracle Database & szoftver az Azure-ban
+Microsoft Azure a Oracle Database futtatására szolgáló, jóváhagyott felhőalapú környezet. Az Oracle Core Factor tábla nem alkalmazható, ha Oracle-adatbázisokat engedélyez a felhőben. Ehelyett ha olyan virtuális gépeket használ, amelyeken engedélyezve van a Hyper-Threading technológia a nagyvállalati kiadású adatbázisokhoz, a két vCPU egy Oracle Processor-licenccel egyenértékűnek számít, ha engedélyezve van a feleznie (a szabályzat dokumentuma szerint). [Itt](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)megtalálja a szabályzat részleteit.
+Az Oracle-adatbázisok általában nagyobb memóriát és IO-t igényelnek. Emiatt a memória- [optimalizált virtuális gépek](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) ajánlottak ezekhez a számítási feladatokhoz. A számítási feladatok további optimalizálása érdekében [korlátozott alapszintű vCPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) ajánlott olyan Oracle db munkaterhelések esetén, amelyek nagy memóriát, tárterületet és I/O-sávszélességet igényelnek, de nem magas alapszám.
+
+Az Oracle-szoftverek és-munkaterhelések helyi rendszerről Microsoft Azureba történő áttelepítésekor az Oracle a licencek mobilitását az Azure-beli [Oracle – gyakori kérdések](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) című szakaszban leírtak szerint
+
+
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application-fürt (Oracle RAC)
 Az Oracle RAC úgy lett kialakítva, hogy csökkentse az egyetlen csomópont meghibásodását egy helyszíni, többcsomópontos fürt konfigurációjában. A szolgáltatás két helyszíni technológiára támaszkodik, amelyek nem natívak a Hyper-Scale Cloud Environment-környezetek számára: a hálózat több-Cast és a megosztott lemez. Ha az adatbázis-megoldáshoz Oracle RAC szükséges az Azure-ban, akkor ezeket a technológiákat harmadik = fél szoftverrel kell engedélyeznie. Az Oracle RAC-ról további információt a [FlashGrid SkyCluster oldalon](https://www.flashgrid.io/oracle-rac-in-azure/)talál.
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vész-helyreállítási megfontolások
 Ha Oracle-adatbázisokat használ az Azure-ban, az állásidő elkerülése érdekében a magas rendelkezésre állású és vész-helyreállítási megoldás végrehajtásáért felelős. 
 
-A magas rendelkezésre állás és a vész-helyreállítás a Oracle Database Enterprise Edition számára (az Oracle RAC-ra való támaszkodás nélkül) az Azure-ban az [Adatvédelem, az aktív adatvédelem](https://www.oracle.com/database/technologies/high-availability/dataguard.html)vagy az Oracle- [GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)használatával érhető el, két adatbázissal két külön virtuális gépen gépek. Mindkét virtuális gépnek ugyanabban a [virtuális hálózatban](https://azure.microsoft.com/documentation/services/virtual-network/) kell lennie annak biztosításához, hogy a privát állandó IP-címen keresztül hozzáférhessenek egymáshoz.  Javasoljuk továbbá, hogy a virtuális gépeket ugyanazon rendelkezésre állási csoportba helyezze, hogy az Azure külön tartalék tartományba és frissítési tartományba helyezze őket. Ha szeretné, hogy a Geo-redundancia legyen, állítsa be a két adatbázist két különböző régió között, és kapcsolódjon a két példányhoz egy VPN Gateway.
+A magas rendelkezésre állás és a vész-helyreállítás a Oracle Database Enterprise Edition számára (az Oracle RAC-ra való támaszkodás nélkül) az Azure-ban az [Adatvédelem, az aktív adatvédelem](https://www.oracle.com/database/technologies/high-availability/dataguard.html)vagy az [Oracle-GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)használatával érhető el, két adatbázissal két külön virtuális gépen gépek. Mindkét virtuális gépnek ugyanabban a [virtuális hálózatban](https://azure.microsoft.com/documentation/services/virtual-network/) kell lennie annak biztosításához, hogy a privát állandó IP-címen keresztül hozzáférhessenek egymáshoz.  Javasoljuk továbbá, hogy a virtuális gépeket ugyanazon rendelkezésre állási csoportba helyezze, hogy az Azure külön tartalék tartományba és frissítési tartományba helyezze őket. Ha szeretné, hogy a Geo-redundancia legyen, állítsa be a két adatbázist két különböző régió között, és kapcsolódjon a két példányhoz egy VPN Gateway.
 
-Az Azure-beli [Oracle](configure-oracle-dataguard.md) -adatvédelmet bemutató oktatóanyag végigvezeti az Azure-beli alapszintű telepítési eljáráson.  
+Az Azure-beli [Oracle-adatvédelmet](configure-oracle-dataguard.md) bemutató oktatóanyag végigvezeti az Azure-beli alapszintű telepítési eljáráson.  
 
-Az Oracle-adatvédelemmel a magas rendelkezésre állást egyetlen virtuális gép elsődleges adatbázisa, egy másodlagos (készenléti) adatbázis egy másik virtuális gépen, valamint a közöttük zajló egyirányú replikáció is lehetővé teheti. Az eredmény olvasási hozzáférés az adatbázis másolatához. Az Oracle GoldenGate használatával kétirányú replikációt konfigurálhat a két adatbázis között. Ha meg szeretné tudni, hogyan állíthat be magas rendelkezésre állású megoldást az adatbázisaihoz ezekkel az eszközökkel, tekintse meg az Oracle webhelyén az [aktív](https://www.oracle.com/database/technologies/high-availability/dataguard.html) adatvédelmet és a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) dokumentációját. Ha írási-olvasási hozzáféréssel kell rendelkeznie az adatbázis másolatához, használhatja az [Oracle aktív](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)adatvédelmet.
+Az Oracle-adatvédelemmel a magas rendelkezésre állást egyetlen virtuális gép elsődleges adatbázisa, egy másodlagos (készenléti) adatbázis egy másik virtuális gépen, valamint a közöttük zajló egyirányú replikáció is lehetővé teheti. Az eredmény olvasási hozzáférés az adatbázis másolatához. Az Oracle GoldenGate használatával kétirányú replikációt konfigurálhat a két adatbázis között. Ha meg szeretné tudni, hogyan állíthat be magas rendelkezésre állású megoldást az adatbázisaihoz ezekkel az eszközökkel, tekintse meg az Oracle webhelyén az [aktív adatvédelmet](https://www.oracle.com/database/technologies/high-availability/dataguard.html) és a [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) dokumentációját. Ha írási-olvasási hozzáféréssel kell rendelkeznie az adatbázis másolatához, használhatja az [Oracle aktív adatvédelmet](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html).
 
 Az Azure-beli [Oracle GoldenGate üzembe](configure-oracle-golden-gate.md) helyezése az Azure-beli alapszintű telepítési eljárás végigvezeti.
 
 Az Azure-ban létrehozott HA-és DR-megoldás mellett egy biztonsági mentési stratégiával kell rendelkeznie az adatbázis visszaállításához. Az oktatóanyag [biztonsági mentése és helyreállítása egy Oracle Database](oracle-backup-recovery.md) végigvezeti a konzisztens biztonsági mentés létrehozásához szükséges alapvető eljáráson.
+
+
+## <a name="support-for-jd-edwards"></a>A JD Edwards támogatása
+Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), a JD Edwards EnterpriseOne 9,2-es és újabb verziói **minden olyan nyilvános Felhőbeli ajánlat** esetében támogatottak, amely megfelel az adott `Minimum Technical Requirements` (MTR) szolgáltatásnak.  Olyan egyéni rendszerképeket kell létrehoznia, amelyek megfelelnek az operációs rendszer és a szoftver alkalmazás kompatibilitásának MTR-specifikációinak. 
+
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server virtuálisgép-lemezképek
 

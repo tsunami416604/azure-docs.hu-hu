@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972604"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845360"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>VPN-átjárók beállítása a CloudSimple hálózaton
 
@@ -38,7 +38,7 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
 ## <a name="set-up-a-site-to-site-vpn-gateway"></a>Helyek közötti VPN-átjáró beállítása
 
-1. [Nyissa meg a CloudSimple](access-cloudsimple-portal.md) -portált, és válassza a **hálózat**lehetőséget.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. Kattintson az **új VPN Gateway**elemre.
 
@@ -56,7 +56,7 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
     > [!WARNING]
     > A magas rendelkezésre állás engedélyezéséhez a helyszíni VPN-eszköznek két IP-címhez való csatlakozást kell támogatnia. Ez a beállítás nem tiltható le, ha a VPN-átjáró telepítve van.
 
-5. Hozza létre az első csatlakozni a helyszíni hálózatból, és kattintson a **tovább** gombra.
+5. Hozza létre az első csatlakozni a helyszíni hálózatból, és kattintson a **tovább**gombra.
 
     * Adjon meg egy nevet a kapcsolódás azonosításához.
     * A társ IP esetében adja meg a helyszíni VPN-átjáró nyilvános IP-címét.
@@ -68,9 +68,9 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
 6. Engedélyezze a saját felhőalapú hálózatán a helyszíni hálózatról elérhető VLAN/alhálózatokat, majd kattintson a **tovább**gombra.
 
-    * Felügyeleti VLAN/alhálózat hozzáadásához engedélyezze a **privát felhők felügyeleti VLAN-ok/** alhálózatok hozzáadását.  A vMotion és vSAN alhálózatok esetében felügyeleti alhálózatra van szükség.
+    * Felügyeleti VLAN/alhálózat hozzáadásához engedélyezze a **privát felhők felügyeleti VLAN-ok/alhálózatok hozzáadását**.  A vMotion és vSAN alhálózatok esetében felügyeleti alhálózatra van szükség.
     * VMotion alhálózatok hozzáadásához engedélyezze a **vMotion-hálózat hozzáadása lehetőséget a privát felhőknél**.
-    * VSAN-alhálózatok hozzáadásához engedélyezze **a privát felhők hozzáadására vonatkozó vSAN**-alhálózatot.
+    * VSAN-alhálózatok hozzáadásához engedélyezze **a privát felhők hozzáadására vonatkozó vSAN-alhálózatot**.
     * Válassza ki vagy törölje a megadott VLAN-okat.
 
     ![Kapcsolat létrehozása](media/create-vpn-gateway-s2s-connection-vlans.png)
@@ -81,7 +81,7 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
 ## <a name="create-point-to-site-vpn-gateway"></a>Pont – hely típusú VPN-átjáró létrehozása
 
-1. [Nyissa meg a CloudSimple](access-cloudsimple-portal.md) -portált, és válassza a **hálózat**lehetőséget.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. Kattintson az **új VPN Gateway**elemre.
 
@@ -103,7 +103,7 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
     * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget. 
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN**-ok/alhálózatok hozzáadása lehetőségre.
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
     * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.

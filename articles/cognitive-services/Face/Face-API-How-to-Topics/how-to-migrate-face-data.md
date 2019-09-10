@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516867"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859164"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az Arcfelismerés átmigrálása egy másik Face-előfizetésbe
 
-Ez az útmutató bemutatja, hogyan helyezheti át az Arcfelismerés (például egy mentett PersonGroup-objektum arcokkal) egy másik Azure Cognitive Services Face API-előfizetésbe. Az adatok áthelyezéséhez használja a pillanatkép funkciót. Így elkerülhető, hogy a műveletek áthelyezésekor vagy kibontásakor ne kelljen ismétlődően létrehozni és betanítani egy PersonGroup vagy FaceList objektumot. Tegyük fel például, hogy létrehozott egy PersonGroup objektumot egy ingyenes próbaverziós előfizetéssel, és most át szeretné telepíteni a fizetős előfizetésre. Vagy előfordulhat, hogy egy nagyméretű vállalati művelethez szükség van a különböző régiókba tartozó arc-adatszinkronizálásra.
+Ez az útmutató bemutatja, hogyan helyezheti át az Arcfelismerés (például egy mentett PersonGroup-objektum arcokkal) egy másik Azure Cognitive Services Face API-előfizetésbe. Az adatok áthelyezéséhez használja a pillanatkép funkciót. Így elkerülhető, hogy a műveletek áthelyezésekor vagy kibontásakor ne kelljen ismétlődően létrehozni és betanítani egy PersonGroup vagy FaceList objektumot. Tegyük fel például, hogy létrehozott egy PersonGroup objektumot egy ingyenes próbaverziós előfizetéssel, és most át szeretné telepíteni a fizetős előfizetésre. Vagy előfordulhat, hogy a nagyméretű vállalati műveletekhez különböző régiókban lévő előfizetések között kell szinkronizálnia a Face-adatait.
 
 Ugyanez az áttelepítési stratégia a LargePersonGroup és a LargeFaceList objektumra is érvényes. Ha nem ismeri az útmutatóban szereplő fogalmakat, tekintse meg a definíciókat a [Face Recognition fogalmakat](../concepts/face-recognition.md) ismertető útmutatóban. Ez az útmutató a Face API .NET ügyféloldali kódtárat C#használja a következővel:.
 
@@ -36,12 +36,14 @@ A következő elemek szükségesek:
 Ez az útmutató egy egyszerű konzolos alkalmazást használ a Face-adatáttelepítés futtatásához. A teljes körű megvalósításhoz tekintse meg a [Face API pillanatkép-mintát](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) a githubon.
 
 1. A Visual Studióban hozzon létre egy új Console app .NET-keretrendszer-projektet. Nevezze el **FaceApiSnapshotSample**.
-1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Válassza a **Tallózás** lapot, és válassza az **előzetes verzió**belefoglalása lehetőséget. Keresse meg és telepítse a következő csomagot:
+1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Válassza a **Tallózás** lapot, és válassza az **előzetes verzió belefoglalása**lehetőséget. Keresse meg és telepítse a következő csomagot:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="create-face-clients"></a>Arc-ügyfelek létrehozása
 
-A Program.cs **fő** metódusában hozzon létre két [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -példányt a forrás és a cél előfizetések számára. Ez a példa egy arc-előfizetést használ a Kelet-Ázsia régióban, mint a forrásként és az USA nyugati régiójának előfizetését célként. Ez a példa azt szemlélteti, hogyan lehet áttelepíteni egy Azure-régióból egy másikba az adatok áttelepítését. Ha az előfizetések különböző régiókban vannak, `Endpoint` módosítsa a karakterláncokat.
+A Program.cs **fő** metódusábanhozzon létre két [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -példányt a forrás és a cél előfizetések számára. Ez a példa egy arc-előfizetést használ a Kelet-Ázsia régióban, mint a forrásként és az USA nyugati régiójának előfizetését célként. Ez a példa azt szemlélteti, hogyan lehet áttelepíteni egy Azure-régióból egy másikba az adatok áttelepítését. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: absha
 ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68370426"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
@@ -76,7 +76,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Szabály létrehozása a figyelő, a háttér-készlet és a HTTP-beállítás összekötéséhez
 
-1. A **szabályok**területen kattintson  az alapszintű elemre egy új alapszabály létrehozásához.
+1. A **szabályok**területen kattintson az **alapszintű** elemre egy új alapszabály létrehozásához.
 
 2. Adjon meg egy megfelelő nevet, és válassza ki azt a figyelőt, amely elfogadja az App Service-be érkező kéréseket.
 

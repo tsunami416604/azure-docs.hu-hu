@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972778"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845322"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Magas rendelkezésre állású kapcsolat konfigurálása a helyszínről a VPN Gateway CloudSimple
 
@@ -50,7 +50,7 @@ Alapértelmezés szerint a CloudSimple VPN-átjárók IKEv1 módban vannak konfi
 
 A helyszíni tűzfal konfigurálása előtt végezze el a következő feladatokat.
 
-1. Ellenőrizze, hogy a szervezet [](create-nodes.md) megvásárolta-e a szükséges csomópontokat, és létrehozott-e legalább egy CloudSimple privát felhőt.
+1. Ellenőrizze, hogy a szervezet [kiosztotta-e a szükséges](create-nodes.md) csomópontokat, és létrehozott-e legalább egy CloudSimple privát felhőt.
 2. [Konfiguráljon egy helyek közötti VPN-átjárót](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni hálózat és a CloudSimple privát felhője között.
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Helyszíni Cisco ASA-tűzfal konfigurálása
@@ -185,7 +185,7 @@ Mivel ez a konfiguráció magas rendelkezésre állású VPN-hez készült, két
 
 Útvonalak szükségesek ahhoz, hogy a helyszíni alhálózatok CloudSimple a saját felhőalapú alhálózatok eléréséhez.
 
-Válassza a **hálózati** > **virtuális útválasztók** > *alapértelmezett* > **statikus útvonalak**hozzáadása lehetőséget, konfigurálja a következő mezőket, majd kattintson az OK gombra. > 
+Válassza a **hálózati** > **virtuális útválasztók** > *alapértelmezett* > **statikus útvonalak**hozzáadása lehetőséget, konfigurálja a következő mezőket, majd kattintson az > OK gombra.
 
 * név. Adja meg az útvonal céljának egyszerű azonosítására szolgáló nevet.
 * Cél. Adja meg az CloudSimple saját Felhőbeli alhálózatait, hogy elérhetők legyenek a helyszíni S2S-alagutakon.
@@ -203,7 +203,7 @@ Az előző lépések megismétlésével hozzon létre egy másik útvonalat a pr
 
 Definiáljon egy titkosítási profilt, amely meghatározza a VPN-alagutak beállításához használt azonosítási, hitelesítési és titkosítási protokollokat és algoritmusokat az 1. IKEv1 fázisban.
 
-Válassza a **hálózat** > kibontása**hálózati profilok** > **IKE titkosítási** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózat** > **kibontása hálózati profilok** > **IKE titkosítási** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg az IKE titkosítási profil nevét.
 * DH-csoport. Kattintson a **Hozzáadás** gombra, és válassza ki a megfelelő DH-csoportot.
@@ -216,7 +216,7 @@ Válassza a **hálózat** > kibontása**hálózati profilok** > **IKE titkosít�
 
 Adja meg az IKE-átjárókat a partnereknek a VPN-alagút egyes végpontján belüli kommunikációjának létrehozásához.
 
-Válassza **a hálózat** >  > kibontása**hálózati profilok** **IKE**-átjárókHozzáadáslehetőséget,konfiguráljaakövetkezőmezőket,majdkattintsonazOK > gombra.
+Válassza a **hálózat** > **kibontása** > hálózatiprofilokIKE-átjárókHozzáadáslehetőséget,konfiguráljaakövetkezőmezőket,majdkattintsonazOK > gombra.
 
 Általános lap:
 
@@ -247,7 +247,7 @@ Az előző lépések megismétlésével hozza létre a másodlagos IKE-átjáró
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. IPSEC titkosítási profilok definiálása
 
-Válassza a **hálózat** > kibontása**hálózati profilok** > **IPSec-titkosítási** > **Hozzáadás**elemet, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózat** > **kibontása hálózati profilok** > **IPSec-titkosítási** > **Hozzáadás**elemet, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg az IPsec titkosítási profil nevét.
 * IPsec protokoll. Válassza az **ESP**lehetőséget.
@@ -261,7 +261,7 @@ Az előző lépések megismétlésével hozzon létre egy másik IPsec titkosít
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Figyelő profilok definiálása az alagút figyeléséhez
 
-Válassza a **hálózat** > kibontása**hálózati profilok** > **figyelő** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózat** > **kibontása hálózati profilok** > **figyelő** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg annak a figyelő profilnak a nevét, amelyet a rendszer a hiba esetén a bújtatás figyeléséhez használ.
 * Művelet. Válassza a **feladatátvétel**lehetőséget.

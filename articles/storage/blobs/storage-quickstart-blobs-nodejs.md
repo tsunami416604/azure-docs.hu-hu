@@ -1,5 +1,5 @@
 ---
-title: BLOB létrehozása az Azure Storage-ban a Node. js v2-hez készült ügyféloldali kódtár használatával
+title: BLOB létrehozása az Azure Storage-ban a Node. js-hez
 description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Node. js v2-hez, és töltsön fel egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,12 +7,13 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 89dbd6cc9a03398427b157fa207adb898d3bfc56
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 8fada27f82fea557d7d078f06b5c05e7d1db906d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721971"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861232"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Blobok feltöltése, letöltése és listázása a Node. js v2-hez készült ügyféloldali kódtár használatával
 
@@ -76,7 +77,7 @@ Container "demo" is deleted
 Done
 ```
 
-Ha ehhez a példához új Storage-fiókot használ, akkor előfordulhat, hogy nem jelenik meg a "tárolók" címke alattfelsorolt tárolók neve.
+Ha ehhez a példához új Storage-fiókot használ, akkor előfordulhat, hogy nem jelenik meg a "*tárolók*" címke alatt felsorolt tárolók neve.
 
 ## <a name="understanding-the-code"></a>A kód értelmezése
 Az első kifejezés értékek betöltésére szolgál a környezeti változókba.

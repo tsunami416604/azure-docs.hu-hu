@@ -1,6 +1,6 @@
 ---
-title: Engedélyezze az SR-IOV - Azure-beli virtuális gépek InifinBand |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezze az SR-IOV InfiniBand.
+title: InifinBand engedélyezése SR-IOV-Azure Virtual Machines | Microsoft Docs
+description: Ismerje meg, hogyan engedélyezheti a InfiniBand az SR-IOV használatával.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,25 +12,25 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797525"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858483"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>Engedélyezze az SR-IOV InfiniBand
+# <a name="enable-infiniband-with-sr-iov"></a>InfiniBand engedélyezése SR-IOV
 
-A legegyszerűbb és az ajánlott módszer az egyéni Virtuálisgép-rendszerképet konfigurálhatja az InfiniBand (IB) a InfiniBandDriverLinux vagy InfiniBandDriverWindows VM-bővítmény hozzáadása az üzemelő példány.
-Ezek a Virtuálisgép-bővítmények használata [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) és [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+A HPC-hez készült IaaS virtuális gépek használatának legegyszerűbb és ajánlott módja a CentOS-HPC 7,6 VM OS-rendszerkép használata. Ha az egyéni virtuálisgép-rendszerképet használja, a legegyszerűbben úgy konfigurálhatja a InfiniBand (IB), hogy hozzáadja a InfiniBandDriverLinux vagy a InfiniBandDriverWindows virtuálisgép-bővítményt a központi telepítéshez.
+Ismerje meg, hogyan használhatja ezeket a virtuálisgép-bővítményeket [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) és [Windows rendszereken](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
 
-Manuálisan konfigurálnia a InfiniBand az SR-IOV engedélyezve van a virtuális gépek (jelenleg HB és a hibrid kapcsolat sorozat), kövesse az alábbi lépéseket. Ezeket a lépéseket csak az RHEL/CentOS vannak. Az Ubuntu (16.04 és 18.04), és a SLES (12 SP4 és 15) a beépített illesztőprogramokat megfelelően működjön.
+Ha manuálisan szeretné konfigurálni az InfiniBand-t az SR-IOV-kompatibilis virtuális gépeken (jelenleg HB és HC sorozat), kövesse az alábbi lépéseket. Ezek a lépések csak a RHEL/CentOS esetében használhatók. Ubuntu (16,04 és 18,04) és SLES (12 SP4 és 15) esetében a beérkezett fájlok illesztőprogramjai jól működnek.
 
-## <a name="manually-install-ofed"></a>Telepítse manuálisan a OFED
+## <a name="manually-install-ofed"></a>A OFED manuális telepítése
 
-Telepítse a legújabb MLNX_OFED illesztőprogramokat ConnectX-5. a [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+Telepítse a ConnectX-5 legújabb MLNX_OFED-illesztőprogramjait a [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26)-ről.
 
-Az RHEL/CentOS (az alábbi példában a 7.6):
+RHEL/CentOS esetén (például 7,6):
 
 ```bash
 sudo yum install -y kernel-devel python-devel
@@ -41,7 +41,7 @@ tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
 sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
 ```
 
-A Windows, töltse le és telepítse a WinOF-2 illesztőprogramokat ConnectX-5. a [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+Windows rendszeren töltse le és telepítse a ConnectX-5 WinOF-2 illesztőprogramjait a [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
 
 ## <a name="enable-ipoib"></a>IPoIB engedélyezése
 
@@ -55,11 +55,11 @@ then
 fi
 ```
 
-## <a name="assign-an-ip-address"></a>IP-cím hozzárendelése
+## <a name="assign-an-ip-address"></a>IP-cím kiosztása
 
-IP-cím hozzárendelése a ib0 kapcsolat használatával:
+Rendeljen hozzá egy IP-címet az ib0 felülethez a következők használatával:
 
-- Manuálisan IP-cím hozzárendelése a ib0 felületen (rendszergazdaként).
+- Rendeljen hozzá manuálisan IP-címet a ib0 felületéhez (root-ként).
 
     ```bash
     ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
@@ -67,7 +67,7 @@ IP-cím hozzárendelése a ib0 kapcsolat használatával:
 
 VAGY
 
-- WALinuxAgent használatával rendelje hozzá az IP-címet, és adja meg maradnak.
+- A WALinuxAgent használatával rendeljen hozzá IP-címet, és gondoskodjon arról, hogy megmaradjon.
 
     ```bash
     yum install -y epel-release
@@ -84,4 +84,4 @@ VAGY
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) az Azure-ban.
+További információ az Azure-beli [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) -ről.

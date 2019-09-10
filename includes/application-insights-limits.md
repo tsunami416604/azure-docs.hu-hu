@@ -9,10 +9,10 @@ ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69982616"
 ---
 A mérőszámok és események másodpercenkénti száma korlátozott a rendszerállapot-kulcs alapján. A korlátozások a választott [díjszabási csomagtól](https://azure.microsoft.com/pricing/details/application-insights/) függően változnak.
@@ -25,9 +25,9 @@ A mérőszámok és események másodpercenkénti száma korlátozott a rendszer
 | [Többlépéses rendelkezésre állási teszt](../articles/azure-monitor/app/availability-multistep.md) a részletes eredmények megőrzésével | 90 nap | Ez az erőforrás minden lépésről részletes eredményeket biztosít.
 | Telemetria maximális mérete | 64 kB |
 | Telemetria elemek maximális száma kötegben | 64 K |
-| Tulajdonság- és metrikanév hossza | 150 | Lásd [](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond): sémák beírása.
-| Tulajdonságérték-sztring hossza | 8,192  | Lásd [](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond): sémák beírása.
-| Nyomkövetési és kivételüzenet hossza | 32 768  | Lásd [](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond): sémák beírása.
+| Tulajdonság- és metrikanév hossza | 150 | Lásd: [sémák beírása](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
+| Tulajdonságérték-sztring hossza | 8,192  | Lásd: [sémák beírása](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
+| Nyomkövetési és kivételüzenet hossza | 32 768  | Lásd: [sémák beírása](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
 | [Rendelkezésre állási tesztek](../articles/azure-monitor/app/monitor-web-app-availability.md) száma alkalmazásonként | 100 |
 | [Profiler](../articles/azure-monitor/app/profiler.md) adatmegőrzés | 5 nap |
 | [Profiler](../articles/azure-monitor/app/profiler.md) -adat elküldve naponta | 10 GB |

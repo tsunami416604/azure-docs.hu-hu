@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532351"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872848"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS-specifikus megfontolások a MSAL.NET
 A Xamarin iOS-ben számos szempontot figyelembe kell venni a MSAL.NET használatakor
@@ -104,13 +104,23 @@ A gyorsítótár megosztásának engedélyezéséhez be kell állítania a "With
 
 Korábban már említettük, hogy a MSAL hozzáadta a $ (AppIdentifierPrefix) értéket, `WithIosKeychainSecurityGroup()` amikor az API-t használja. Ennek az az oka, hogy a AppIdentifierPrefix vagy a "csapat azonosítója" annak biztosítására szolgál, hogy csak az azonos közzétevő által készített alkalmazások tudják megosztani a kulcstartók elérését.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Megjegyzés: A KeychainSecurityGroup tulajdonság elavult
+> [!NOTE]
+> **A `KeychainSecurityGroup` tulajdonság elavult.**
+> 
+> Korábban a MSAL 2. x verziójában a fejlesztők a `KeychainSecurityGroup` tulajdonság használatakor kénytelenek voltak belefoglalni a TeamId előtagot.
+>
+>  A MSAL 2.7. x verziójában az új `iOSKeychainSecurityGroup` tulajdonság használatakor a MSAL feloldja a TeamId előtagot a futtatókörnyezet során. Ha ezt a tulajdonságot használja, az érték nem tartalmazhatja a TeamId előtagot.
+>  Használja az új `iOSKeychainSecurityGroup` tulajdonságot, amely nem igényli a TeamId megadását, mivel az előző `KeychainSecurityGroup` tulajdonság elavult.
 
-Korábban a MSAL 2. x verziójában a fejlesztők a `KeychainSecurityGroup` tulajdonság használatakor kénytelenek voltak belefoglalni a TeamId előtagot
+### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator használata
 
-A MSAL 2.7. x verziójában az új `iOSKeychainSecurityGroup` tulajdonság használatakor a MSAL feloldja a TeamId előtagot a futtatókörnyezet során. Ha ezt a tulajdonságot használja, az érték nem tartalmazhatja a TeamId előtagot.
+Az alkalmazás a következő engedélyezéséhez használhatja a Microsoft Authenticatort (a közvetítőt):
 
-Használja az új `iOSKeychainSecurityGroup` tulajdonságot, amelyhez nincs szükség a fejlesztők számára a TeamId biztosítására, mivel `KeychainSecurityGroup` az előző tulajdonság elavult.
+- Egyszeri bejelentkezés (SSO). A felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
+- Eszköz azonosítása. Az eszközhöz való hozzáféréshez, amely az eszközön lett létrehozva munkahelyhez csatlakoztatva. Az alkalmazás készen áll, ha a bérlői rendszergazdák engedélyezik az eszközökhöz kapcsolódó feltételes hozzáférést.
+- Alkalmazás-azonosító ellenőrzése. Amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címet, és ellenőrzi a közvetítőt.
+
+A közvetítő engedélyezésével kapcsolatos további információkért lásd: [Microsoft Authenticator vagy Microsoft Intune vállalati portál használata a Xamarin iOS-és Android-alkalmazásokban](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Példa a Xamarin iOS-specifikus tulajdonságainak szemléltetésére
 

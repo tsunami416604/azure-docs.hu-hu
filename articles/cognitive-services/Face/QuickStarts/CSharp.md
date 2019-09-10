@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: Azure REST API-val a kép arcok észlelése ésC#'
+title: 'Gyors útmutató: Az Azure REST API és a rendszerképekben lévő arcok észleléseC#'
 titleSuffix: Azure Cognitive Services
-description: Az ebben a rövid útmutatóban az Azure Face REST API-t fogja használni C# arcokat észleli a képet.
+description: Ebben a rövid útmutatóban az Azure Face REST APIt C# fogja használni a rendszerképekben lévő arcok észlelésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603394"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859004"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Gyors útmutató: Arcfelismerés a képet, a Face REST API-val és aC#
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Gyors útmutató: Az arcok észlelése a képen a Face REST API használatával ésC#
 
-Az ebben a rövid útmutatóban az Azure Face REST API-t fogja használni C# emberi arcok észlelése a képet.
+Ebben a rövid útmutatóban az Azure Face REST APIt C# fogja használni a képen látható emberi arcok észlelésére.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -30,12 +30,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceDetection**. 
+1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **FaceDetection**. 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
 
-## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
+## <a name="add-face-detection-code"></a>Arcfelismerés kód hozzáadása
 
-Nyissa meg az új projekt *Program.cs* fájlt. Itt fogja hozzáadni a képeket tölthet be és arcfelismerés szükséges kódot.
+Nyissa meg az új projekt *program.cs* -fájlját. Itt hozzá kell adnia a lemezképek betöltéséhez és az arcok észleléséhez szükséges kódot.
 
 ### <a name="include-namespaces"></a>Névterek belefoglalása
 
@@ -51,8 +51,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Adja hozzá a **Program** osztály, amely tartalmazza a következő mezőket. Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok).
+Adja hozzá a **program** osztályt, amely tartalmazza a következő mezőket. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és előfordulhat, hogy módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza az erőforrás-végponti karakterláncot.
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -62,22 +63,15 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
-### <a name="receive-image-input"></a>A megadott fogadása
+### <a name="receive-image-input"></a>Képbevitel fogadása
 
-Adja hozzá a következő kódot a **fő** módszere a **Program** osztály. Ezt a kódot ír egy parancssort a konzolt, amely rákérdez, a felhasználónak meg kell adnia egy kép URL-címe. Ezután meghívja a másik módszer **MakeAnalysisRequest**, az adott helyen található kép feldolgozásához.
+Adja hozzá a következő kódot a **program** osztály **Main** metódusához. Ez a kód egy üzenetet ír a konzolra, amely arra kéri a felhasználót, hogy adjon meg egy képet URL-címet. Ezután meghívja a másik módszert, **MakeAnalysisRequest**, hogy feldolgozza a rendszerképet az adott helyen.
 
 ```csharp
         static void Main(string[] args)
@@ -109,11 +103,11 @@ Adja hozzá a következő kódot a **fő** módszere a **Program** osztály. Ezt
         }
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Az arcfelismerés is használható REST API meghívása
+### <a name="call-the-face-detection-rest-api"></a>Arcfelismerés REST API hívása
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Akkor hoz létre REST-hívást a Face API, arcfelismerési kapcsolatos információk észleléséhez a távoli kép (a `requestParameters` karakterláncot adja meg, melyik face attribútumok beolvasni). Ezután egy JSON-karakterláncot ír a kimeneti adatokat.
+Adja hozzá a **Program** osztályhoz a következő metódust. Egy Rest-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez ( `requestParameters` ez a karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
 
-A következő lépésekben a segédmetódusokat fogja meghatározni.
+A segítő metódusokat a következő lépésekben fogja meghatározni.
 
 ```csharp
         // Gets the analysis of the specified image by using the Face REST API.
@@ -160,9 +154,9 @@ A következő lépésekben a segédmetódusokat fogja meghatározni.
         }
 ```
 
-### <a name="process-the-input-image-data"></a>A bemeneti kép adatok feldolgozása
+### <a name="process-the-input-image-data"></a>A bemeneti képadatok feldolgozása
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer egy bájttömböt alakítja át a képet a megadott URL-címen.
+Adja hozzá a **Program** osztályhoz a következő metódust. Ez a metódus a megadott URL-címen lévő rendszerképet egy byte-tömbre konvertálja.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer egy
 
 ### <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Ezzel a módszerrel formázza a JSON-bemenetben könnyebben olvasható is. Az alkalmazás a karakterláncadatokat írni a konzolon. Ezután bezárhatja az osztály és a névtér.
+Adja hozzá a **Program** osztályhoz a következő metódust. Ezzel a módszerrel a JSON-bemenet könnyebben olvasható. Az alkalmazás ezt a sztringet fogja írni a konzolba. Ezután lezárhatja az osztályt és a névteret.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -250,7 +244,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust. Ezzel a módszerr
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A sikeres válasz Arcfelismerési adatokat könnyen olvasható JSON formátumban jeleníti meg. Példa:
+A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arcfelismerés. Példa:
 
 ```json
 [
@@ -348,7 +342,7 @@ A sikeres válasz Arcfelismerési adatokat könnyen olvasható JSON formátumban
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy egyszerű .NET Konzolalkalmazás, amely az Azure Face API REST-hívások használ a kép arcok észlelése és attribútumaik. Ezután megkezdheti a Face API referenciadokumentációt tartalmaz további információt a támogatott forgatókönyveket.
+Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-konzolos alkalmazást, amely REST-hívásokat használ az Azure Face API a rendszerképben lévő arcok észleléséhez és az attribútumok visszaküldéséhez. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

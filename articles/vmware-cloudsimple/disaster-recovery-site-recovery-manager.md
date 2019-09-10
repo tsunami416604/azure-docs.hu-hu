@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972798"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846138"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Saját felhő beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
 
@@ -33,6 +33,8 @@ A CloudSimple-megoldáshoz a következőket kell tennie:
 * Saját licencek megadása az SRM számára, ha a titkos felhő a védett hely. Ha helyreállítási helyként használja, nincs szükség további SRM-licencekre a CloudSimple helyhez.
 
 Ezzel a megoldással teljes mértékben szabályozhatja a vSphere-replikációt és az SRM-t. Az ismerős felhasználói felület, API és CLI felületek lehetővé teszik a meglévő parancsfájlok és eszközök használatát.
+
+![Site Recovery Manager üzembe helyezése](media/srm-deployment.png)
 
 Használhatja a vRA és az SRM bármely olyan verzióját, amely kompatibilis a saját felhőalapú és helyszíni környezetekkel. Az útmutatóban szereplő példák a vRA 6,5 és az SRM 6,5 használatát használják. Ezek a verziók kompatibilisek a CloudSimple által támogatott vSphere 6,5-mel.
 
@@ -70,7 +72,7 @@ A vCenter és a PSC saját Felhőbeli verzióinak megkereséséhez nyissa meg a 
 ### <a name="estimate-the-size-of-your-dr-environment"></a>A DR környezet méretének becslése
 
 1. Ellenőrizze, hogy az azonosított helyszíni konfiguráció a támogatott határértékeken belül van-e. A 6,5-es SRM esetében a határértékeket a VMware Tudásbázis a [site Recovery Manager 6,5 működési korlátairól](https://kb.vmware.com/s/article/2147110)szóló cikkében ismertetjük.
-2. Győződjön meg arról, hogy megfelelő hálózati sávszélességgel rendelkezik a számítási feladatok méretének és a RPO követelményeinek megfelelően. A [vSphere replikálásához szükséges sávszélesség-követelmények](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html) kiszámítására vonatkozó, a VMware Tudásbázisról szóló cikk útmutatást nyújt a sávszélesség korlátozásához.
+2. Győződjön meg arról, hogy megfelelő hálózati sávszélességgel rendelkezik a számítási feladatok méretének és a RPO követelményeinek megfelelően. A [vSphere replikálásához szükséges sávszélesség-követelmények kiszámítására vonatkozó,](https://docs.vmware.com/en/vSphere-Replication/6.5/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html) a VMware Tudásbázisról szóló cikk útmutatást nyújt a sávszélesség korlátozásához.
 3. A CloudSimple-méretezési eszköz segítségével megbecsülheti a DR-helyen szükséges erőforrásokat a helyszíni környezete elleni védelem érdekében.
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>Hozzon létre egy privát felhőt a környezetéhez
@@ -162,9 +164,9 @@ Mielőtt elkezdené, ellenőrizze a következőket:
 
 * a vSphere replikációs berendezés a helyszíni és a saját felhőalapú környezetekben van telepítve.
 * A vSphere replikációs berendezések mindkét helyen csatlakoznak egymáshoz.
-* Áttekintette a VMware-információkat az előfeltételekkel és az ajánlott eljárásokkal kapcsolatban. Az 6,5-es SRM esetében a VMware-dokumentumok előfeltételei és ajánlott eljárásai a következő témakörben találhatók [: srm 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html).
+* Áttekintette a VMware-információkat az előfeltételekkel és az ajánlott eljárásokkal kapcsolatban. Az 6,5-es SRM esetében a VMware-dokumentumok [előfeltételei és ajánlott eljárásai](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)a következő témakörben találhatók: SRM 6,5.
 
-Kövesse a VMware-dokumentációt az SRM-kiszolgálók telepítésének elvégzéséhez a "Kéthelyes topológia egy vCenter-példánnyal egy platform Services-vezérlőn [](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)" című témakörben leírtak szerint. Az SRM 6,5-es verziójának telepítési utasításai a [site Recovery Manager telepítését](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)végző VMware-dokumentumban találhatók.
+Kövesse [a VMware-](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)dokumentációt az SRM-kiszolgálók telepítésének elvégzéséhez a "Kéthelyes topológia egy vCenter-példánnyal egy platform Services-vezérlőn" című témakörben leírtak szerint. Az SRM 6,5-es verziójának telepítési utasításai a [site Recovery Manager telepítését](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)végző VMware-dokumentumban találhatók.
 
 ### <a name="install-srm-server-in-your-private-cloud"></a>Az SRM-kiszolgáló telepítése a saját felhőbe
 
@@ -172,7 +174,7 @@ Mielőtt elkezdené, ellenőrizze a következőket:
 
 * a vSphere replikációs berendezés a helyszíni és a saját felhőalapú környezetekben van telepítve.
 * A vSphere replikációs berendezések mindkét helyen csatlakoznak egymáshoz.
-* Áttekintette a VMware-információkat az előfeltételekkel és az ajánlott eljárásokkal kapcsolatban. Az SRM 6,5-es verziójában a [site Recovery Manager 6,5 Server telepítésének előfeltételeit és ajánlott eljárásait](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)tekintheti át.
+* Áttekintette a VMware-információkat az előfeltételekkel és az ajánlott eljárásokkal kapcsolatban. Az SRM 6,5- [es verziójában a site Recovery Manager 6,5 Server telepítésének előfeltételeit és ajánlott eljárásait](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)tekintheti át.
 
 A következő lépések a Private Cloud SRM telepítését ismertetik.
 
@@ -204,7 +206,7 @@ Miután telepítette az SRM-t a privát felhőbe, hajtsa végre a következő fe
 
 #### <a name="cloudsimple-portal-de-escalate-privileges"></a>CloudSimple-portál: Jogosultságok kiterjesztésének megszüntetése
 
-A jogosultságok megszüntetéséhez tekintse meg [](escalate-private-cloud-privileges.md#de-escalate-privileges)a jogosultságok dekiterjesztését ismertető témakört.
+A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
 ## <a name="ongoing-management-of-your-srm-solution"></a>Az SRM-megoldás folyamatos felügyelete
 
@@ -215,7 +217,7 @@ Teljes körűen szabályozhatja a vSphere-replikációt és az SRM-szoftvereket 
 
 ## <a name="multiple-replication-configuration"></a>Több replikációs konfiguráció
 
- A [Array-alapú replikáció és a vSphere replikációs technológiák](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) egyszerre is használhatók az SRM szolgáltatással együtt. Ezeket azonban a virtuális gépek elkülönített készletére kell alkalmazni (az adott virtuális gép a tömb alapú replikálás vagy a vSphere replikálás, de nem mindkettő) számára is védhető. Emellett a CloudSimple-hely több védett helyhez is konfigurálható helyreállítási helyként. További információ a többhelyes konfigurációkról: [SRM többhelyes beállításai](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
+ A [Array-alapú replikáció és a vSphere replikációs technológiák egyszerre is használhatók az SRM](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) szolgáltatással együtt. Ezeket azonban a virtuális gépek elkülönített készletére kell alkalmazni (az adott virtuális gép a tömb alapú replikálás vagy a vSphere replikálás, de nem mindkettő) számára is védhető. Emellett a CloudSimple-hely több védett helyhez is konfigurálható helyreállítási helyként. További információ a többhelyes konfigurációkról: [SRM többhelyes beállításai](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
 
 ## <a name="references"></a>Referencia
 

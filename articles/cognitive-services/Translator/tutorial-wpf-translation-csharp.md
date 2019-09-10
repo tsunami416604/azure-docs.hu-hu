@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f8488195ed9e115843c2dc551af52d5da010ffe7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036715"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858908"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: Fordítási alkalmazás létrehozása WPF-mel
 
@@ -48,7 +48,7 @@ Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes
 
 A folytatás előtt a következőkre lesz szüksége:
 
-* Azure Cognitive Services-előfizetés. [Cognitive Services kulcs](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-resource)beolvasása.
+* Azure Cognitive Services-előfizetés. [Cognitive Services kulcs beolvasása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
 * Windows rendszerű gép
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) – Közösség vagy vállalat
 
@@ -418,7 +418,7 @@ Ez a módszer emellett kiértékeli a válasz megbízhatósági pontszámát. Ha
 
 ## <a name="spell-check-the-source-text"></a>Helyesírás-ellenőrzés a forrás szövegében
 
-Most létrehozunk egy módszert a forrás szövegének helyesírás-ellenőrzéséhez a Bing Spell Check API használatával. A helyesírás-ellenőrzés biztosítja, hogy a Translator Text APIról pontos fordításokat kapjon. A rendszer a fordítási kérés során a forrás szövegének minden helyesbítését átadja a fordítási kérelemben.
+Most létrehozunk egy módszert a forrás szövegének helyesírás-ellenőrzéséhez a Bing Spell Check API használatával. A helyesírás-ellenőrzés biztosítja, hogy a Translator Text APIról pontos fordításokat kapjon. A rendszer a fordítási kérés során a forrás szövegének minden helyesbítését átadja **a** fordítási kérelemben.
 
 1. A Visual Studióban nyissa meg a `MainWindow.xaml.cs`fület.
 2. Adja hozzá ezt a kódot a projekthez `DetectLanguage()` a metódus alatt:
@@ -559,7 +559,7 @@ Az utolsó lépés az, hogy létre kell hozni egy metódust, amely akkor lép fe
    }
    ```
 
-Az első lépés a "from" és a "to" nyelv, valamint a felhasználó által az űrlapba beírt szöveg beolvasása. Ha a forrás nyelve észlelésrevan beállítva `DetectLanguage()` , a rendszer meghívja a forrás szöveg nyelvét. Előfordulhat, hogy a szöveg olyan nyelven van, amelyet a Translator API nem támogat. Ebben az esetben egy üzenet jelenik meg, amely tájékoztatja a felhasználót, és a szöveg fordítása nélkül visszakerül.
+Az első lépés a "from" és a "to" nyelv, valamint a felhasználó által az űrlapba beírt szöveg beolvasása. Ha a forrás nyelve **észlelésre**van beállítva `DetectLanguage()` , a rendszer meghívja a forrás szöveg nyelvét. Előfordulhat, hogy a szöveg olyan nyelven van, amelyet a Translator API nem támogat. Ebben az esetben egy üzenet jelenik meg, amely tájékoztatja a felhasználót, és a szöveg fordítása nélkül visszakerül.
 
 Amennyiben a forrásnyelv az angol (akár megadja ezt, akár a rendszer maga ismeri fel), a `CorrectSpelling()` használatával ellenőrizheti, valamint szükség esetén javíthatja a helyesírást. A javított szöveg visszakerül a szövegmezőbe, így a felhasználó úgy látja, hogy helyesbítés történt.
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 902887c2a765fa50c7075cbdcb835f53e84f583f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208274"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842543"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storageban Azure Search
 Ez a cikk bemutatja, hogyan használhatók a Azure Search az Azure Blob Storage-ban tárolt dokumentumok (például PDF-fájlok, Microsoft Office dokumentumok és számos más gyakori formátum) indexeléséhez. Első lépésként ismerteti a blob-indexelő beállításának és konfigurálásának alapjait. Ezt követően mélyebben megismerheti a viselkedéseket és a valószínűleg felmerülő forgatókönyveket.
@@ -123,7 +123,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexelő csak a tárolási metaadatokat tudja indexelni (ez akkor hasznos, ha csak a metaadatokat érdekli, és nem szükséges a Blobok tartalmának indexelése), a tárolási és tartalmi metaadatokat, illetve a metaadatokat és a szöveges tartalmakat is. Alapértelmezés szerint az indexelő kibontja a metaadatokat és a tartalmakat is.
 
 > [!NOTE]
-> Alapértelmezés szerint a strukturált tartalmat, például a JSON-t vagy a CSV-t tartalmazó Blobok egyetlen darab szövegként vannak indexelve. Ha a JSON-és CSV-blobokat strukturált módon szeretné indexelni, további információért lásd: [JSON](search-howto-index-json-blobs.md) -Blobok indexelése és [CSV-Blobok indexelése](search-howto-index-csv-blobs.md) .
+> Alapértelmezés szerint a strukturált tartalmat, például a JSON-t vagy a CSV-t tartalmazó Blobok egyetlen darab szövegként vannak indexelve. Ha a JSON-és CSV-blobokat strukturált módon szeretné indexelni, további információért lásd: [JSON-Blobok indexelése](search-howto-index-json-blobs.md) és [CSV-Blobok indexelése](search-howto-index-csv-blobs.md) .
 >
 > Az összetett vagy beágyazott dokumentumok (például a ZIP-archívumok vagy a mellékleteket tartalmazó beágyazott Outlook-e-mailes Word-dokumentumok) is egyetlen dokumentumként vannak indexelve.
 
@@ -141,7 +141,7 @@ Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexe
   * **metaadat\_-tároló\_utolsó\_módosítása** (EDM. DateTimeOffset) – a blob utolsó módosításának időbélyege. Azure Search ezt az időbélyeget használja a módosított Blobok azonosításához, hogy ne legyenek újraindexelve a kezdeti indexelés után.
   * **metaadatok\_tárolási\_mérete** (EDM. Int64) – blob mérete bájtban.
   * **metaadat\_-tároló\_tartalma\_MD5** (EDM. String) – a blob tartalmának MD5 kivonata, ha van ilyen.
-  * **metaadat\_-tároló\_sas\_** -tokenje (EDM. String) – ideiglenes sas-token, amelyet az [egyéni képességek](cognitive-search-custom-skill-interface.md) használhatnak a blobhoz való hozzáféréshez. Ezt a jogkivonatot nem szabad a későbbi használat céljából tárolni, mivel az lejáró lehet.
+  * **metaadat\_-tároló\_sas\_-tokenje** (EDM. String) – ideiglenes sas-token, amelyet az [egyéni képességek](cognitive-search-custom-skill-interface.md) használhatnak a blobhoz való hozzáféréshez. Ezt a jogkivonatot nem szabad a későbbi használat céljából tárolni, mivel az lejáró lehet.
 
 * Az egyes dokumentum-formátumokra jellemző metaadat-tulajdonságokat a rendszer kinyeri az [itt](#ContentSpecificMetadata)felsorolt mezőkbe.
 
@@ -159,7 +159,7 @@ Azure Search a dokumentum kulcsa egyedileg azonosít egy dokumentumot. Minden ke
 Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Key mezőjére. A jelöltek a következők:
 
 * **metaadat\_-tároló\_neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy a Blobok ugyanazzal a névvel vannak ellátva különböző mappákban, és 2) a név érvénytelen karaktereket tartalmazhat. a dokumentum kulcsaiban, például kötőjelekben. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) használhatja erre a célra).
-* **metaadat\_-tárolási\_útvonal** – a teljes elérési út használata biztosítja az egyediséget, de `/` az elérési út határozottan olyan karaktereket tartalmaz, amelyek érvénytelenek a [dokumentum kulcsában](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával `base64Encode` .
+* **metaadat\_-tárolási\_útvonal** – a teljes elérési út használata biztosítja az egyediséget, de `/` az elérési út határozottan olyan karaktereket tartalmaz, amelyek [érvénytelenek a dokumentum kulcsában](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával `base64Encode` .
 * Ha a fenti lehetőségek egyike sem működik, hozzáadhat egy egyéni metaadat-tulajdonságot a blobokhoz. Ez a beállítás azonban megköveteli a blob feltöltési folyamatát, hogy hozzáadja a metaadat-tulajdonságot az összes blobhoz. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
 
 > [!IMPORTANT]
@@ -337,7 +337,7 @@ Az indexelési Blobok időigényes folyamat lehet. Abban az esetben, ha több mi
 
 Előfordulhat, hogy az indexben több forrásból is össze kívánja állítani a dokumentumokat. Előfordulhat például, hogy a Blobok szövegét szeretné egyesíteni a Cosmos DBban tárolt egyéb metaadatokkal. A leküldéses indexelés API-t és a különböző indexelő elemeket is használhatja a keresési dokumentumok több részből való kiépítéséhez. 
 
-Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyeznie a dokumentum kulcsával. Részletes útmutatóért tekintse meg ezt a külső cikket: [Dokumentumok egyesítése Azure Searchban található egyéb](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)adatértékekkel.
+Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyeznie a dokumentum kulcsával. A témakörről további részleteket a [több Azure-adatforrások indexelését](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)ismertető cikkben találhat. Részletes útmutatóért tekintse meg ezt a külső cikket: [Dokumentumok egyesítése Azure Searchban található egyéb adatértékekkel](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Egyszerű szöveg indexelése 
@@ -388,7 +388,7 @@ A következő táblázat összefoglalja az egyes dokumentumok formátumának fel
 | GZ (alkalmazás/gzip) |`metadata_content_type` |Szöveg kinyerése az archívumban található összes dokumentumból |
 | EPUB (alkalmazás/EPUB + zip) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |Szöveg kinyerése az archívumban található összes dokumentumból |
 | XML (alkalmazás/XML) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |Szalag XML-kódjának és kinyerésének szövege |
-| JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |Szöveg kinyerése<br/>MEGJEGYZÉS: Ha több dokumentum mezőt is ki kell bontani egy JSON-blobból, tekintse meg a következőt: [JSON](search-howto-index-json-blobs.md) -Blobok indexelése a részletekért |
+| JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |Szöveg kinyerése<br/>MEGJEGYZÉS: Ha több dokumentum mezőt is ki kell bontani egy JSON-blobból, tekintse meg a következőt: JSON-Blobok [indexelése](search-howto-index-json-blobs.md) a részletekért |
 | EML (üzenet/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékleteket |
 | RTF (alkalmazás/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Szöveg kinyerése|
 | Egyszerű szöveg (szöveg/egyszerű) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Szöveg kinyerése|

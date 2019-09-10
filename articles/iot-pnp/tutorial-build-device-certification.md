@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047907"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858860"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -33,7 +33,7 @@ A minősítési tesztek a következőket ellenőrzi:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [Azure IoT Workbench-bővítmény a VS Code-hoz](https://github.com/Azure/Azure-IoT-PnP-Preview/blob/master/VSCode/README.md#installation)
+- [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Packhez
 
 A rövid útmutatóban létrehozott [IoT Plug and Play eszközre is szüksége lesz: Eszköz-képesség modell használatával hozhat létre eszközöket](quickstart-create-pnp-device.md).
 
@@ -89,9 +89,9 @@ Az **eszköz információs** felületének megtekintése a vs Code-ban:
 
 ### <a name="enable-device-provisioning-through-the-azure-iot-device-provisioning-service-dps"></a>Eszköz kiépítés engedélyezése az Azure IoT Device kiépítési szolgáltatással (DPS)
 
-Az eszköz hitelesítéséhez engedélyeznie kell az üzembe helyezést az [Azure IoT Device kiépítési szolgáltatás (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps)használatával. Ha hozzá szeretné adni a DPS használatát, a C Code-t is létrehozhatja a VS Code-ban. Kövesse az alábbi lépéseket:
+Az eszköz hitelesítéséhez engedélyeznie kell az üzembe [helyezést az Azure IoT Device kiépítési szolgáltatás (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps)használatával. Ha hozzá szeretné adni a DPS használatát, a C Code-t is létrehozhatja a VS Code-ban. Kövesse az alábbi lépéseket:
 
-1. Nyissa meg a fájlt a VS Code-ban a DCM-fájllal, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának**előállítása lehetőséget.
+1. Nyissa meg a fájlt a VS Code-ban a DCM-fájllal, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
 1. Válassza ki azt a DCM-fájlt, amelyet az eszköz kódjának létrehozásához használni kíván.
 

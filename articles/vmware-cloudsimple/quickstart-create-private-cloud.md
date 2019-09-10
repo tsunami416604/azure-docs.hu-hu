@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575488"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845494"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre CloudSimple saját felhővel
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-private-cloud"></a>Privát felhő létrehozása
+## <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 
 A privát felhő egy elkülönített VMware-verem, amely támogatja az ESXi-gazdagépeket, a vCenter, a vSAN és a NSX.
 
@@ -46,7 +46,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 9. Kattintson **a Tovább gombra: Speciális beállítások**.
 10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
-    **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. Az a/24 CIDR-tartomány legfeljebb kilenc csomópontot támogat, a/23 CIDR-tartomány akár 41 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig legfeljebb 64 csomópontot támogat (a csomópontok maximális száma a privát felhőben).
+    **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. A/24 CIDR-tartomány legfeljebb 26 csomópontot támogat, a/23 CIDR-tartomány akár 58 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig 64-csomópontokat (a privát felhőben található csomópontok maximális számát) támogatja.  További információ és VLAN-ok és alhálózatok: a [VLAN-ok és az alhálózatok áttekintése](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
@@ -96,7 +96,7 @@ A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felh�
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
     * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget.
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN**-ok/alhálózatok hozzáadása lehetőségre.
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
     * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.
@@ -104,7 +104,7 @@ A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felh�
 
 ### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Csatlakozás a CloudSimple pont – hely típusú VPN használatával
 
-A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szükséges.  Töltse le a Windowshoz készült [OpenVPN](https://openvpn.net/community-downloads/) -ügyfelet, illetve a MacOS és az OS X [viszkozitását](https://www.sparklabs.com/viscosity/download/) .
+A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szükséges.  Töltse le a Windowshoz készült [OpenVPN-ügyfelet](https://openvpn.net/community-downloads/) , illetve a MacOS és az OS X [viszkozitását](https://www.sparklabs.com/viscosity/download/) .
 
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
@@ -116,7 +116,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 
 6. Importálja a konfigurációt a VPN-ügyfélen.
 
-    * Útmutató a [konfiguráció importálásához a Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) -ügyfélen
+    * Útmutató a [konfiguráció importálásához a Windows-ügyfélen](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
     * Útmutató a [konfiguráció importálásához MacOS vagy OS X rendszeren](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
 7. Kapcsolódjon a CloudSimple.
@@ -126,7 +126,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 A privát felhő létrehozása után hozzon létre egy VLAN-t, amelyen üzembe helyezheti a számítási feladatokat/alkalmazás virtuális gépeket.
 
 1. A CloudSimple-portálon válassza a **hálózat**lehetőséget.
-2. Kattintson a **VLAN/** alhálózatok elemre.
+2. Kattintson a **VLAN/alhálózatok**elemre.
 3. Kattintson a **VLAN/alhálózat létrehozása**lehetőségre.
 
     ![VLAN/alhálózat létrehozása](media/create-new-vlan-subnet.png)

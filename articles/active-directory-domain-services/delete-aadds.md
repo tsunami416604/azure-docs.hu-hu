@@ -1,53 +1,51 @@
 ---
-title: Azure Active Directory Domain Services letiltása | Microsoft Docs
-description: Azure Active Directory Domain Services letiltása a Azure Portal használatával
+title: Azure Active Directory Domain Services letiltása | Microsoft Docs "
+description: Megtudhatja, hogyan tilthatja le a Azure Active Directory Domain Servicest a Azure Portal használatával
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 09/04/2019
 ms.author: iainfou
-ms.openlocfilehash: d5917ad94212c8b18d4362528bdfbafb02aec808
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171972"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842606"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Active Directory Domain Services letiltása a Azure Portal használatával
-Ez a cikk bemutatja, hogyan tilthatja le Azure Active Directory (AD) tartományi szolgáltatásokat az Azure AD-címtárhoz a Azure Portal használatával.
+
+Ha már nincs szüksége felügyelt tartományra, törölheti Azure Active Directory Domain Services (Azure AD DS) példányát. Nincs lehetőség az Azure AD DS felügyelt tartomány kikapcsolására vagy ideiglenes letiltására. Az Azure AD DS felügyelt tartomány törlése nem törli vagy más módon nem befolyásolja az Azure AD-bérlőt. Ez a cikk bemutatja, hogyan törölhet egy Azure AD DS felügyelt tartományt a Azure Portal használatával.
 
 > [!WARNING]
-> **A törlés végleges, és nem vonható vissza.**
-> Körültekintően járjon el! A felügyelt tartomány törlése után:
+> **A törlés végleges, ezért nem vonható vissza.**
+> Ha töröl egy Azure AD DS felügyelt tartományt, a következő lépések történnek:
 >   * A felügyelt tartományhoz tartozó tartományvezérlők kiépítve és el lettek távolítva a virtuális hálózatról.
->   * A felügyelt tartományon tárolt adatértékek véglegesen törlődnek. Ide tartoznak a felügyelt tartományon létrehozott egyéni szervezeti egységek, csoportházirend-objektumok, egyéni DNS-rekordok, egyszerű szolgáltatások, csoportosan felügyelt szolgáltatásfiókokat stb.
+>   * A felügyelt tartományon tárolt adatértékek véglegesen törlődnek. Ezek az adatok a létrehozott egyéni szervezeti egységeket, csoportházirend-objektumokat, egyéni DNS-rekordokat, egyszerű szolgáltatásokat, csoportosan felügyelt szolgáltatásfiókokat stb. tartalmazzák.
 >   * A felügyelt tartományhoz csatlakozó gépek elveszítik megbízhatósági kapcsolataikat a tartománnyal, és nem kell a tartományhoz csatlakozniuk.
->   * Ezeket a gépeket nem lehet bejelentkezni a vállalati AD hitelesítő adataival. Használja helyette a számítógép helyi rendszergazdai hitelesítő adatait.
-> A felügyelt tartomány törlése nem törli az Azure AD-címtárat, vagy más módon hátrányosan befolyásolja a könyvtárat.
+>       * Ezeket a gépeket nem lehet bejelentkezni a vállalati AD hitelesítő adataival. Ehelyett a számítógép helyi rendszergazdai hitelesítő adatait kell használnia.
 
-A Azure AD Domain Services felügyelt tartomány törléséhez hajtsa végre a következő lépéseket:
-1. Navigáljon a Azure Portal [Azure ad Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) -bővítményéhez.
-2. Kattintson a felügyelt tartomány nevére.
+## <a name="delete-the-managed-domain"></a>A felügyelt tartomány törlése
 
-    ![Törlendő tartomány kiválasztása](./media/getting-started/domain-services-delete-select-domain.png)
+Azure AD DS felügyelt tartomány törléséhez hajtsa végre a következő lépéseket:
 
-3. Az **Áttekintés** lapon kattintson a **Törlés** gombra.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
+1. Válassza ki az Azure AD DS felügyelt tartományának nevét, például *contoso.com*.
+1. Az **Áttekintés** oldalon válassza a **Törlés** elemet. A törlés megerősítéséhez írja be újra a felügyelt tartomány tartománynevét, majd válassza a **Törlés**lehetőséget.
 
-    ![Tartomány törlése](./media/getting-started/domain-services-delete-domain.png)
+Az Azure AD DS felügyelt tartományának törléséhez akár 15-20 percet is igénybe vehet.
 
-4. A törlés megerősítéséhez írja be a felügyelt tartomány DNS-tartománynevét. Ha elkészült, kattintson a **Törlés** gombra.
+## <a name="next-steps"></a>További lépések
 
-    ![Tartomány jóváhagyásának törlése](./media/getting-started/domain-services-delete-domain-confirm.png)
+Érdemes [megoszthatja][feedback] az Azure ad DSban megtekinteni kívánt funkciók visszajelzéseit.
 
-A felügyelt tartomány törlése 15-20 percet is igénybe vehet.
+Ha újra szeretné kezdeni az Azure AD DSét, tekintse meg a [Azure Active Directory Domain Services példány létrehozása és konfigurálása][create-instance]című témakört.
 
-Érdemes [](contact-us.md) megfontolni a visszajelzések megosztását, hogy megértsük, milyen funkciók segíthetnek a Azure ad Domain Services jövőbeli kiszámításában. Ez a visszajelzés segít nekünk a szolgáltatás fejlesztésében, hogy jobban megfeleljen az üzembe helyezési igényeknek és a használati eseteknek.
+<!-- INTERNAL LINKS -->
+[feedback]: contact-us.md
+[create-instance]: tutorial-create-instance.md

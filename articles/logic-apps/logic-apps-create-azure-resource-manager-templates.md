@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706526"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845454"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása a Azure Logic Apps üzembe helyezésének automatizálásához
 
@@ -35,7 +35,7 @@ A Azure Resource Manager-sablonokkal kapcsolatos további információkért teki
 
 ## <a name="create-templates-with-visual-studio"></a>Sablonok létrehozása a Visual Studióval
 
-A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools segítségével hozhatja létre az érvényes paraméteres logikai alkalmazások sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy megkeresheti [és letöltheti a Azure Portal meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
+A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools segítségével hozhatja létre az érvényes paraméteres logikai alkalmazások sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy [megkeresheti és letöltheti a Azure Portal meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
 A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi*vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információkért tekintse meg a következő témaköröket:
 
@@ -61,7 +61,7 @@ Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logi
 
 1. Ha még nem tette meg, telepítse a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-1. A LogicAppTemplate modul PowerShell-galériaból történő telepítésének legegyszerűbb módja a [](https://www.powershellgallery.com/packages/LogicAppTemplate)következő parancs futtatása:
+1. A LogicAppTemplate modul [PowerShell-galériaból](https://www.powershellgallery.com/packages/LogicAppTemplate)történő telepítésének legegyszerűbb módja a következő parancs futtatása:
 
    ```text
    PS> Install-Module -Name LogicAppTemplate
@@ -83,10 +83,10 @@ Ha ezzel az eszközzel `Get-LogicAppTemplate` futtatja a parancsot, a parancs el
 
 ### <a name="generate-template-with-powershell"></a>Sablon készítése a PowerShell-lel
 
-A sablon létrehozásához a LogicAppTemplate modul telepítése után futtassa ezt a PowerShell-parancsot:
+Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)telepítése után:
 
 ```text
-PS> Get-LogicAppTemplate
+PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
 Ha követni szeretné a [Azure Resource Manager-ügyfél eszközén](https://github.com/projectkudu/ARMClient)található adatcsövekre vonatkozó javaslatot, futtassa ezt a parancsot `$SubscriptionId` ahelyett, hogy az Azure-előfizetés azonosítója:

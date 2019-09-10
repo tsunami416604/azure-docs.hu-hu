@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997915"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858888"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
 Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val. Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja.
 
-Az automatizált gépi tanulási kísérletek példáinak megtekintéséhez tekintse [meg az oktatóanyagot: Besorolási modellt is betaníthat automatizált](tutorial-auto-train-models.md) gépi tanulási vagy tanítási modellekkel [a felhőben](how-to-auto-train-remote.md).
+Az automatizált gépi tanulási kísérletek példáinak megtekintéséhez tekintse [meg az oktatóanyagot: Besorolási modellt is betaníthat automatizált](tutorial-auto-train-models.md) gépi tanulási vagy [tanítási modellekkel a felhőben](how-to-auto-train-remote.md).
 
 Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 
@@ -34,7 +34,7 @@ Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 * Modell metrikák böngészése
 * Regisztráljon és a modell üzembe helyezése
 
-Ha nem szeretne programkódot felvenni, akkor [a Azure Portal is létrehozhatja az automatizált gépi tanulási kísérleteket](how-to-create-portal-experiments.md).
+Ha nem szeretne programkódot felvenni, akkor [az Azure Portal-ban is létrehozhatja a gépi tanulási kísérleteit](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
@@ -445,7 +445,7 @@ Egy folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékei
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
 ```
 
-További részletekért használja az ebben a [példában](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb)szereplő jegyzetfüzetben látható segítő funkciót.
+További részletekért használja az ebben a [példában szereplő jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb)látható segítő funkciót.
 
 ```python
 from pprint import pprint
@@ -553,13 +553,13 @@ Kétféleképpen funkció fontos létrehozni.
     print(per_class_summary)
     ```
 
-A funkció fontos diagram a munkaterületen, az Azure Portalon jelenítheti meg. Az URL-cím megjelenítése a Run objektum használatával:
+Az URL-cím megjelenítése a funkció fontosságának megtekintéséhez a Run objektum használatával:
 
 ```
 automl_run.get_portal_url()
 ```
 
-A funkció fontos diagram a munkaterületen, az Azure Portalon jelenítheti meg. A diagram akkor is megjelenik, ha a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) használja egy jegyzetfüzetben. Ha többet szeretne megtudni a diagramokról, tekintse át az [automatizált gépi tanulás eredményeit](how-to-understand-automated-ml.md)ismertető témakört.
+A funkció fontossági diagramját a Azure Portal vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)jelenítheti meg a munkaterületen. A diagram akkor is megjelenik, ha a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) használja egy jegyzetfüzetben. Ha többet szeretne megtudni a diagramokról, tekintse át az [automatizált gépi tanulás eredményeit](how-to-understand-automated-ml.md)ismertető témakört.
 
 ```Python
 from azureml.widgets import RunDetails
@@ -568,10 +568,10 @@ RunDetails(automl_run).show()
 
 ![a szolgáltatás fontosság graph](./media/how-to-configure-auto-train/feature-importance.png)
 
-További információk arról, hogy a modell magyarázatait és funkcióit hogyan lehet engedélyezni az SDK más területein az automatikus gépi tanuláson kívül, lásd [](machine-learning-interpretability-explainability.md) az értelmezési cikk fogalmát.
+További információk arról, hogy a modell magyarázatait és funkcióit hogyan lehet engedélyezni az SDK más területein az automatikus gépi tanuláson kívül, lásd az értelmezési cikk [fogalmát](machine-learning-interpretability-explainability.md) .
 
 ## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet [hogyan és hol érdemes a modell üzembe helyezése](how-to-deploy-and-where.md).
 
-További információ a [regressziós modell automatikus gépi tanulással](tutorial-auto-train-models.md) való betanításáról, illetve a [távoli erőforrásokon való automatikus gépi tanulás használatával történő](how-to-auto-train-remote.md)betanításról.
+További információ a [regressziós modell automatikus gépi tanulással való betanításáról](tutorial-auto-train-models.md) , illetve a [távoli erőforrásokon való automatikus gépi tanulás használatával történő](how-to-auto-train-remote.md)betanításról.

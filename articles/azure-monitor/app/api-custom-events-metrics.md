@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
 ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68717449"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és mérőszámokhoz
@@ -54,7 +54,7 @@ Ha még nincs hivatkozása Application Insights SDK-ra:
   * [Java project](../../azure-monitor/app/java-get-started.md)
   * [Node. js-projekt](../../azure-monitor/app/nodejs.md)
   * [JavaScript az egyes weblapokon](../../azure-monitor/app/javascript.md) 
-* Az eszköz vagy a webkiszolgáló kódjába illessze be a következőt:
+* Az eszköz vagy a webkiszolgáló kódjában adja meg a következőt:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 

@@ -1,29 +1,26 @@
 ---
-title: Azure Disk Encryption-kompatibilis virtuális gépek replikálásának konfigurálása Azure Site Recoveryban | Microsoft Docs
+title: Azure Disk Encryption-kompatibilis virtuális gépek replikálásának konfigurálása Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Disk Encryption-kompatibilis virtuális gépek replikálása egyik Azure-régióból a másikba Site Recovery használatával.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf0ee89bb091a13560a7a7d8d9e77c74827d94a2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884132"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861317"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
 
-Ez a cikk azt ismerteti, hogyan replikálhat Azure Disk Encryption-kompatibilis virtuális gépeket egyik Azure-régióból a másikba.
+Ez a cikk azt ismerteti, hogyan replikálhatja az Azure-beli virtuális gépeket a Azure Disk Encryption (ADE) használatával az egyik Azure-régióból a másikba.
 
 >[!NOTE]
->A Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató Azure Disk Encryption-kompatibilis virtuális gépeket támogatja. Az Azure AD-alkalmazás nélküli Azure Disk Encryption-kompatibilis virtuális gépek csak akkor támogatottak, ha felügyelt lemezeket használnak. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak.
+> A Site Recovery jelenleg a Windows rendszerű virtuális gépekhez Azure Active Directory (HRE) és anélkül is támogatja az ADE-t.  Az ADE 1,1-et (HRE nélkül) futtató gépeken a Windows rendszerű virtuális gépeknek felügyelt lemezeket kell használnia. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha az ADE 0,1 (HRE) értékről 1,1-re vált, le kell tiltania a replikálást, és engedélyeznie kell egy virtuális gép replikálását a 1,1 engedélyezése után.
 
->[!NOTE]
->Ha az ADE v1-ről (az Azure AD-alkalmazással) az ade v2-re (Azure AD-alkalmazás nélkül) vált, le kell tiltania a replikálást, és engedélyeznie kell a replikálást az ADE v2 engedélyezése után.
 
 ## <a id="required-user-permissions"></a>Szükséges felhasználói engedélyek
 Site Recovery megköveteli a felhasználónak, hogy rendelkezzen a kulcstartó létrehozásához szükséges engedélyekkel, és a forrástartomány kulcstartóból másolja a kulcsokat a cél régió kulcstartóba.
@@ -67,10 +64,10 @@ Az engedélyek hibaelhárításához tekintse meg a cikk későbbi részében ta
 3. Nyissa meg a Windows PowerShell alkalmazást, és keresse meg azt a mappát, ahová a fájlt mentette.
 4. Futtassa a copy-Keys. ps1 programot.
 5. Adja meg az Azure-beli hitelesítő adatokat a bejelentkezéshez.
-6. Válassza ki a virtuális gépek **Azure** -előfizetését.
+6. Válassza ki a virtuális gépek **Azure-előfizetését** .
 7. Várjon, amíg betölti az erőforráscsoportok betöltését, majd válassza ki a virtuális gépekhez tartozó **erőforráscsoportot** .
 8. Válassza ki a virtuális gépeket a megjelenő listából. Csak a lemezes titkosításhoz engedélyezett virtuális gépek szerepelnek a listán.
-9. Válassza kia célhelyet.
+9. Válassza ki a **célhelyet**.
 
     - **Lemezes titkosítási kulcstartók**
     - **Key encryption Key vaultok**
@@ -100,7 +97,7 @@ Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos rég
     - **Cél Storage-fiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)** : Alapértelmezés szerint a Site Recovery egy új célként megadott Storage-fiókot hoz létre a forrásként szolgáló virtuális gép tárolási konfigurációjának használatával. Ha már létezik egy Storage-fiók, az újra felhasználható.
     - **Replika által felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)** : Site Recovery új replika felügyelt lemezeket hoz létre a célhelyen a forrásként szolgáló virtuális gép felügyelt lemezei azonos tárolási típussal (standard vagy prémium) a forrás virtuális gép felügyelt lemezei alapján.
     - **Gyorsítótár-tárolási fiókok**: Site Recovery a forrás régióban a *cache Storage* nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépek összes módosítását nyomon követi és továbbítja a gyorsítótárbeli Storage-fiókba. Ezután a rendszer replikálja őket a célhelyre.
-    - **Rendelkezésre állási csoport**: Alapértelmezés szerint a Site Recovery új rendelkezésre állási készletet hoz létre a célként megadott régióban. A név "ASR" utótaggal rendelkezik. Ha Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
+    - **Rendelkezésreállási csoport**: Alapértelmezés szerint a Site Recovery új rendelkezésre állási készletet hoz létre a célként megadott régióban. A név "ASR" utótaggal rendelkezik. Ha Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
     - **Lemezes titkosítási kulcstartók**: Alapértelmezés szerint a Site Recovery egy új kulcstartót hoz létre a célhelyen. Egy "ASR" utótaggal rendelkezik, amely a forrás virtuális gép lemezének titkosítási kulcsain alapul. Ha Azure Site Recovery által létrehozott kulcstároló már létezik, az újra felhasználható.
     - **Key encryption Key vaultok**: Alapértelmezés szerint a Site Recovery egy új kulcstartót hoz létre a célhelyen. A név "ASR" utótaggal rendelkezik, amely a forrás virtuális gép kulcsának titkosítási kulcsain alapul. Ha Azure Site Recovery által létrehozott kulcstartó már létezik, akkor újra felhasználja.
     - **Replikációs házirend**: Meghatározza a helyreállítási pontok megőrzési előzményeinek és az alkalmazás-konzisztens Pillanatképek gyakoriságának beállításait. Alapértelmezés szerint a Site Recovery egy új replikációs házirendet hoz létre, amely a helyreállítási pontok megőrzésének *24 óráját* és *60 percet* vesz igénybe az alkalmazás-konzisztens pillanatkép gyakorisága esetében.
@@ -132,7 +129,7 @@ A következő esetekben frissítenie kell a cél virtuális gép titkosítási b
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később engedélyezte a lemez titkosítását a forrásoldali virtuális gépen.
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később megváltoztatta a lemez titkosítási kulcsát vagy a kulcs titkosítási kulcsát a forrás virtuális gépen.
 
-A titkosítási kulcsokat a célhelyre másolhatja, majd frissítheti a cél titkosítási beállításokat a **helyreállítási** > tár*replikált elemek* > **tulajdonságaiban**  >  . [](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) **Számítás és hálózat**.
+[A titkosítási](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) kulcsokat a célhelyre másolhatja, majd frissítheti a cél titkosítási beállításokat a **helyreállítási** > tár*replikált elemek* > **tulajdonságaiban**  >  . **Számítás és hálózat**.
 
 ![Az ADE-beállítások frissítése párbeszédpanel](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -156,7 +153,7 @@ A forrástartomány Key Vault összes engedélyével rendelkezik. A védelem sor
 
 A [célként megadott Key vaulthoz](#required-user-permissions) szükséges engedély
 
-**A javítás módja:** Lépjena **Home** >  > kulcstartókContosotargetKeyvaulthozzáférési > szabályzatok**lehetőségre** , és adja hozzá a megfelelő engedélyeket.
+**A javítás módja:** Lépjena **Home** >  > kulcstartókContosotargetKeyvaulthozzáférési > **szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278859"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858771"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -113,7 +113,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>Állítsa be a számítási célnak
 
-Azure Machine Learning a computes__ (vagy a __számítási cél__) kifejezés arra a gépekre vagy fürtökre vonatkozik, amelyek elvégzik a gépi tanulási folyamat számítási lépéseit.   A számítási célok teljes listájáért, valamint a munkaterülethez való létrehozásához és csatolásához lásd: [számítási célok a modell betanításához](how-to-set-up-training-targets.md) .  A számítási cél létrehozásához és csatolásához szükséges folyamat ugyanaz, függetlenül attól, hogy a modell betanítása vagy a folyamat lépései futnak-e. A számítási cél létrehozása és csatolása után használja az `ComputeTarget` objektumot a [folyamat lépéseiben](#steps).
+Azure Machine Learning a computes__ (vagy a __számítási cél__) kifejezés arra a gépekre vagy fürtökre vonatkozik, amelyek elvégzik a gépi tanulási folyamat számítási lépéseit.   A számítási célok teljes listájáért, valamint a munkaterülethez való létrehozásához és csatolásához lásd: [számítási célok a modell](how-to-set-up-training-targets.md) betanításához.  A számítási cél létrehozásához és csatolásához szükséges folyamat ugyanaz, függetlenül attól, hogy a modell betanítása vagy a folyamat lépései futnak-e. A számítási cél létrehozása és csatolása után használja az `ComputeTarget` objektumot a [folyamat lépéseiben](#steps).
 
 > [!IMPORTANT]
 > A számítási célokat szolgáló felügyeleti műveletek végrehajtása távoli feladatokon belül nem támogatott. Mivel a gépi tanulási folyamatokat távoli feladatokként küldi el a rendszer, ne használja a számítási célok felügyeleti műveleteit a folyamaton belül.
@@ -206,7 +206,7 @@ except ComputeTargetException:
     databricks_compute.wait_for_completion(True)
 ```
 
-Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-databricks) .
+Részletesebb példaként tekintse meg a GitHubon egy [példát](https://aka.ms/pl-databricks) a notebookra.
 
 ### <a id="adla"></a>Az Azure Data Lake Analytics
 
@@ -256,7 +256,7 @@ except ComputeTargetException:
     adla_compute.wait_for_completion(True)
 ```
 
-Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-adla) .
+Részletesebb példaként tekintse meg a GitHubon egy [példát](https://aka.ms/pl-adla) a notebookra.
 
 > [!TIP]
 > Az Azure Machine Learning-folyamatokat a Data Lake Analytics-fiók az alapértelmezett data store-ban tárolt adatokkal folytatott csak működik. Ha adatokat kell a munkahelyi egy nem alapértelmezett tároló, használhat egy [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) képzési előtt az adatok másolásához.
@@ -327,7 +327,7 @@ A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az eg
 > [!IMPORTANT]
 > Ha meg szeretné akadályozni, hogy a fájlok szerepeljenek a pillanatképben, `.amlignore` hozzon létre egy [. gitignore](https://git-scm.com/docs/gitignore) vagy fájlt a címtárban, és adja hozzá a fájlokat. A `.amlignore` fájl ugyanazt a szintaxist és mintázatot használja, mint a [. gitignore](https://git-scm.com/docs/gitignore) fájl. Ha mindkét fájl létezik, a `.amlignore` fájl elsőbbséget élvez.
 >
-> További információ: [Pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
+> További információ: Pillanatképek [](concept-azure-machine-learning-architecture.md#snapshots).
 
 ```python
 from azureml.core import Experiment
@@ -410,19 +410,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Közzétett folyamat eredményeinek megtekintése
 
 Tekintse meg az összes közzétett folyamat listáját és a futtatásuk részleteit:
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. [A munkaterület megjelenítése](how-to-manage-workspace.md#view) folyamatok listája található.
  ![gépi tanulási folyamatok listája](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Válassza ki az adott folyamatot a futtatási eredmények megtekintéséhez.
 
+Ezek az eredmények a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)is elérhetők.
+
 ### <a name="disable-a-published-pipeline"></a>Közzétett folyamat letiltása
 
 Ha el szeretné rejteni a folyamatokat a közzétett folyamatok listájáról, tiltsa le:
 
 ```
-# Get the pipeline by using its ID in the Azure portal
+# Get the pipeline by using its ID from the Azure portal
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
@@ -433,7 +435,7 @@ A `p.enable()`használatával újra engedélyezheti. További információ: Publ
 ## <a name="caching--reuse"></a>Gyorsítótárazási & újrafelhasználása  
 
 A folyamatok működésének optimalizálásához és testreszabásához hajtson végre néhány dolgot a gyorsítótárazás és az újbóli használat érdekében. Például a következőket teheti:
-+ **Állítsa le a kimenet futtatásának alapértelmezett újrafelhasználását** a `allow_reuse=False` [lépés definíciója](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)szerint. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
++ **Állítsa le a kimenet futtatásának alapértelmezett** újrafelhasználását a `allow_reuse=False` [lépés definíciója](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)szerint. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
 + **Kiterjesztheti a kivonatot a szkripten túl**, hogy a forráskönyvtár abszolút elérési utat vagy relatív elérési utakat is tartalmazzon más fájlokhoz és címtárakhoz a következő használatával:`hash_paths=['<file or directory']` 
 + **A kimenet újragenerálásának kényszerítése a futtatási folyamat összes lépése esetében**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 

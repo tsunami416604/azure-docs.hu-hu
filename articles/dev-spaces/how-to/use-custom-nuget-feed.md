@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Egyéni NuGet-hírcsatorna használata NuGet-csomagok eléréséhez és használatához az Azure fejlesztői tárhelyén.
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305401"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873254"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni NuGet-hírcsatorna használata az Azure fejlesztői tárhelyén
 
@@ -33,7 +33,7 @@ Adjon hozzá egy [csomag](https://docs.microsoft.com/nuget/consume-packages/pack
 </ItemGroup>
 ```
 
-Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és `packageSources` állítsa `packageSourceCredentials` be a és a NuGet-hírcsatornához tartozó szakaszt. A `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek nyilvánosan elérhetőnek kell lennie. `packageSourceCredentials` A a hírcsatorna eléréséhez szükséges hitelesítő adatok. Példa:
+Hozzon létre egy [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) fájlt a Project mappában, és `packageSources` állítsa `packageSourceCredentials` be a és a NuGet-hírcsatornához tartozó szakaszt. A `packageSources` szakasz tartalmazza a hírcsatorna URL-címét, amelynek elérhetőnek kell lennie az AK-fürtből. `packageSourceCredentials` A a hírcsatorna eléréséhez szükséges hitelesítő adatok. Példa:
 
 ```xml
 <packageSources>

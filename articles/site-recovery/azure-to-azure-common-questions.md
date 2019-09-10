@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875663"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861389"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
 
@@ -38,10 +38,18 @@ Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintet�
 ### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>Hogyan garantált a kapacitás a megcélzott régióban?
 A Site Recovery csapat együttműködik az Azure Capacity Management csapatával az infrastruktúra megfelelő kapacitásának megtervezése és annak biztosítása érdekében, hogy a Site Recovery által védett virtuális gépeket a rendszer sikeresen üzembe helyezi a feladatátvétel kezdeményezése esetén.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Replikálhatók az Azure Disk Encryption szolgáltatáson keresztül engedélyezett virtuális gépek?
-Igen, replikálhatja őket. Tekintse meg a következő cikket: [Azure Disk Encryption engedélyezéses virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication-ade-vms.md). A Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató Azure-beli virtuális gépeket és az Azure Active Directory (Azure AD) alkalmazásokat támogató titkosítást támogatja.
+
+Igen, Site Recovery támogatja a virtuális gépek vész-helyreállítását az Azure Disk Encryption (ADE) engedélyezésével. Ha engedélyezi a replikációt, a rendszer az összes szükséges lemez-titkosítási kulcsot és titkot átmásolja a forrás régiójából a felhasználói környezetben lévő célként megadott régióba. Ha nem rendelkezik megfelelő engedélyekkel, a rendszer használatra kész parancsfájlt adhat a biztonsági rendszergazdának a kulcsok és a titkos kódok másolásához.
+
+- Site Recovery támogatja az ADE használatát a Windows rendszerű Azure-beli virtuális gépekhez.
+- A site Recovery támogatja az ADE 0,1-es verzióját, amelynek sémája Azure Active Directory (HRE) és 1,1-es verzióval rendelkezik, HRE nélkül. [További információk](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Az ADE 1,1-es verziója a Windows rendszerű virtuális gépeken felügyelt lemezeket kell használni.
+- [További](azure-to-azure-how-to-enable-replication-ade-vms.md) információ a titkosított virtuális gépek replikálásának engedélyezéséről.
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Replikálhatók a virtuális gépek egy másik előfizetésre?
 Igen, az Azure-beli virtuális gépeket egy másik előfizetésre is replikálhatja ugyanazon az Azure AD-bérlőn belül.
@@ -81,7 +89,7 @@ Nem, Site Recovery internetkapcsolatra nincs szükség. Azonban Site Recovery UR
 Igen, replikálhatja az alkalmazást, és a vész-helyreállítási konfigurációt külön erőforráscsoporthoz is megtarthatja.
 Ha például az egyes rétegek alkalmazásokhoz, az adatbázishoz és a web-hoz külön erőforráscsoport van, akkor az összes szinten történő védelem érdekében kattintson háromszor a [replikálás varázslóra](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) . A Site Recovery három különböző erőforráscsoport esetében fogja replikálni a három szintet.
 
-## <a name="replication-policy"></a>Replikációs szabályzat
+## <a name="replication-policy"></a>Replikációs házirend
 
 ### <a name="what-is-a-replication-policy"></a>Mi a replikációs házirend?
 Meghatározza a helyreállítási pontok megőrzési előzményeinek és az alkalmazás-konzisztens Pillanatképek gyakoriságának beállításait. Alapértelmezés szerint a Azure Site Recovery új replikációs házirendet hoz létre az alapértelmezett beállításokkal:

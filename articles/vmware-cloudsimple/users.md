@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c775f5352461dce6c63f5cc4a1c910c7f8df80ec
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9d261acf80f51a09cc4daa9182a87b0354cf8a3d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564094"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845400"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>A CloudSimple-portál felhasználói listájának megtekintése
 
-A felhasználók bekerülnek a felhasználói listára, amikor először hozzáférnek a CloudSimple-portálhoz. Az Azure-on keresztül a CloudSimple portálhoz hozzáféréssel rendelkező felhasználók listájának megtekintéséhez nyissa meg [a CloudSimple portált](monitor-activity.md), válassza a **fiók** lehetőséget az oldalsó menüben, majd válassza a **felhasználók** lehetőséget a CloudSimple-portálon.
+A felhasználók bekerülnek a felhasználói listára, amikor először hozzáférnek a CloudSimple-portálhoz. Az Azure-on keresztül a CloudSimple portálhoz hozzáféréssel rendelkező felhasználók listájának megtekintéséhez [nyissa meg a CloudSimple portált](access-cloudsimple-portal.md), válassza a **fiók** lehetőséget az oldalsó menüben, majd válassza a **felhasználók** lehetőséget a CloudSimple-portálon.
 
 * A felhasználói adatok megjelenítéséhez, beleértve az Azure-előfizetést, a bérlőt és a felhasználói azonosítókat, kattintson egy bejegyzésre a **felhasználók** lapon.
 
-* Egy adott felhasználó tevékenységének naplózási naplójának megtekintéséhez válassza a napló lapot.
-* Felhasználói fiók zárolásához vagy zárolásának feloldásához kattintson a zárolt váltásra a felhasználó adatainak megjelenítésekor. A fiók zárolása után a felhasználó elérheti a CloudSimple-portált. Ha a fiók zárolva van, a portálhoz való hozzáférés le van tiltva.
+* Egy adott felhasználó tevékenységének naplózási naplójának megtekintéséhez válassza a napló **lapot.**
+* Felhasználói fiók zárolásához vagy zárolásának feloldásához kattintson a **zárolt** váltásra a felhasználó adatainak megjelenítésekor. A fiók zárolása után a felhasználó elérheti a CloudSimple-portált. Ha a fiók zárolva van, a portálhoz való hozzáférés le van tiltva.

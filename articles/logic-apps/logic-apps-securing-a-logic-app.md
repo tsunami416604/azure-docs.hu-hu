@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736902"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845432"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -260,7 +260,7 @@ Ha [Azure Resource Manager sablonnal](../logic-apps/logic-apps-create-deploy-tem
 
 ### <a name="hide-data-from-run-history-by-using-obfuscation"></a>Adatok elrejtése a futtatási előzményekből a elhomályosítás használatával
 
-Számos eseményindító és művelet rendelkezik olyan beállításokkal, amelyekkel elrejtheti a bemeneteket, kimeneteket vagy mindkettőt egy logikai alkalmazás futtatási előzményeiből. Az alábbi szempontokat érdemes áttekinteni [,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
+Számos eseményindító és művelet rendelkezik olyan beállításokkal, amelyekkel elrejtheti a bemeneteket, kimeneteket vagy mindkettőt egy logikai alkalmazás futtatási előzményeiből. Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Biztonságos bemenetek és kimenetek a tervezőben
 
@@ -303,7 +303,7 @@ Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy fr
 * `"inputs"`: A bemenetek védelme a futtatási előzményekben.
 * `"outputs"`: A kimenetek védelme a futtatási előzményekben.
 
-Az alábbi szempontokat érdemes áttekinteni [,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
+Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
 
 ```json
 "<trigger-or-action-name>": {
@@ -440,7 +440,7 @@ Ez a példa több, a `securestring` típust használó biztonságos paraméter-d
 | Paraméternév | Leírás |
 |----------------|-------------|
 | `TemplatePasswordParam` | A munkafolyamat-definíció `basicAuthPasswordParam` paraméterének átadott jelszót fogadó sablon-paraméter |
-| `TemplatePasswordParam` | A munkafolyamat-definíció `basicAuthUserNameParam` paraméterének átadandó felhasználónevet megadó sablon-paraméter |
+| `TemplateUsernameParam` | A munkafolyamat-definíció `basicAuthUserNameParam` paraméterének átadandó felhasználónevet megadó sablon-paraméter |
 | `basicAuthPasswordParam` | Egy munkafolyamat-definíciós paraméter, amely egy HTTP-műveletben fogadja el az alapszintű hitelesítéshez szükséges jelszót |
 | `basicAuthUserNameParam` | Munkafolyamat-definíciós paraméter, amely elfogadja a felhasználónevet az egyszerű hitelesítéshez egy HTTP-műveletben |
 |||
@@ -584,7 +584,7 @@ Ez a példa több, a `securestring` típust használó biztonságos paraméter-d
 
   Azure Logic Apps a biztonságos és megbízható helyszíni kommunikációhoz biztosít integrációt ezekkel a szolgáltatásokkal.
 
-  * Helyszíni adatátjáró
+  * Helyi adatátjáró
 
     Azure Logic Apps számos felügyelt összekötő biztosít biztonságos kapcsolatot a helyszíni rendszerekkel, például a fájlrendszerrel, az SQL-, a SharePoint-és a DB2-szolgáltatással. Az átjáró a helyszíni forrásokból érkező adatokat a Azure Service Bus keresztül küldi el titkosított csatornákon. Minden forgalom biztonságos kimenő adatforgalomból származik az átjáró ügynökének. Ismerje meg, [Hogyan működik a](logic-apps-gateway-install.md#gateway-cloud-service)helyszíni adatátjáró.
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 363002712bdd06e74360de9af186f5a458a4999d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68385356"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Áttekintés: Azure-kiszolgáló nélküli Azure Logic Apps és Azure Functions
@@ -36,11 +36,11 @@ Az Logic Apps első lépéseinek megkezdéséhez [először hozzon létre egy lo
 
 Azure Functions egy szolgáltatás a felhőben található kódok vagy függvények egyszerű futtatásához. Csak az aktuális problémához szükséges kódot írhat, és nem kell aggódnia a teljes alkalmazásról vagy a szükséges infrastruktúráról. A függvények még hatékonyabbá tehetik a fejlesztést, és használhatja a választott fejlesztési nyelvet, például: C#, F#Node. js, Python vagy php. Csak a kód futásának idejére kell fizetnie, és szükség szerint az Azure-ra is szüksége van.
 
-A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre egy Azure](../azure-functions/functions-create-first-azure-function.md)-függvényt. A functions szolgáltatással kapcsolatos további technikai információkért tekintse meg a [fejlesztői referenciát](../azure-functions/functions-reference.md).
+A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre egy Azure-függvényt](../azure-functions/functions-create-first-azure-function.md). A functions szolgáltatással kapcsolatos további technikai információkért tekintse meg a [fejlesztői referenciát](../azure-functions/functions-reference.md).
 
 ## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Hogyan lehet kiszolgáló nélküli alkalmazásokat felépíteni és üzembe helyezni az Azure-ban?
 
-Az Azure sokoldalú eszközöket biztosít a kiszolgáló nélküli alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. Az alkalmazásokat közvetlenül a Azure Portal, a [Visual Studióban](logic-apps-serverless-get-started-vs.md)vagy a [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)-ban található eszközökkel hozhatja létre. Az alkalmazás létrehozása után az [alkalmazást gyorsan üzembe](logic-apps-deploy-azure-resource-manager-templates.md)helyezheti Azure Resource Manager-sablonokkal. Az Azure emellett figyelést is biztosít, amely a Azure Portalon, az API-n vagy SDK-n keresztül, vagy a Azure Monitor naplók és Application Insights integrált eszközeivel érhető el.
+Az Azure sokoldalú eszközöket biztosít a kiszolgáló nélküli alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. Az alkalmazásokat közvetlenül a Azure Portal, a [Visual Studióban](logic-apps-serverless-get-started-vs.md)vagy a [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)-ban található eszközökkel hozhatja létre. Az alkalmazás létrehozása után az [alkalmazást gyorsan üzembe helyezheti Azure Resource Manager-sablonokkal](logic-apps-deploy-azure-resource-manager-templates.md). Az Azure emellett figyelést is biztosít, amely a Azure Portalon, az API-n vagy SDK-n keresztül, vagy a Azure Monitor naplók és Application Insights integrált eszközeivel érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

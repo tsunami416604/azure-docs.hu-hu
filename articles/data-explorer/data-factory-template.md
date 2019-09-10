@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: acfcee6e8308bc508bd709c40bd1794beab3130f
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5a6aebd276ef8658da9ca763be7da5c38a9c772a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804729"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873430"
 ---
 # <a name="use-azure-data-factory-template-for-bulk-copy-from-database-to-azure-data-explorer"></a>Azure Data Factory sablon használata az adatbázisból az Azure-ba való tömeges másoláshoz Adatkezelő
 
@@ -38,19 +38,19 @@ A **ControlTableDataset** azt jelzi, hogy milyen adatok lesznek átmásolva a fo
 
 Példa SQL Server forrástábla formátumára:
     
-    ```sql   
-    CREATE TABLE control_table (
-        PartitionId int,
-        SourceQuery varchar(255),
-        ADXTableName varchar(255)
-    );
-    ```
+```sql   
+CREATE TABLE control_table (
+PartitionId int,
+SourceQuery varchar(255),
+ADXTableName varchar(255)
+);
+```
     
-        |Tulajdonság  |Leírás  | Példa
-        |---------|---------| ---------|
-        |PartitionId   |   másolási sorrend | 1  |  
-        |SourceQuery   |   az a lekérdezés, amely azt jelzi, hogy mely adatcsatornák lesznek átmásolva a folyamat futási ideje alatt | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-        |ADXTableName  |  cél tábla neve | MyAdxTable       |  
+|Tulajdonság  |Leírás  | Példa
+|---------|---------| ---------|
+|PartitionId   |   másolási sorrend | 1  |  
+|SourceQuery   |   az a lekérdezés, amely azt jelzi, hogy mely adatcsatornák lesznek átmásolva a folyamat futási ideje alatt | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  cél tábla neve | MyAdxTable       |  
 
 Ha a **ControlTableDataset** formátuma eltérő, hozzon létre egy hasonló **ControlTableDataset** a formátumhoz.
 

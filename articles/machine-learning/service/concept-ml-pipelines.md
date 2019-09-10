@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d7333a9316e4d39fd550872c3df04024a75d21d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128335"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858825"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Mik a Azure Machine Learning-szolgáltatásban található ML-folyamatok?
 
@@ -47,14 +47,14 @@ Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más c�
 
 A gépi tanulási folyamatok gyorsabbá, hordozhatóságot és újrahasznosítást tesznek jobbá a munkafolyamatban, így az infrastruktúra és az automatizálás helyett a szaktudásra, a gépi tanulásra koncentrálhat.
 
-A folyamatok több lépésből állnak, amelyek a folyamat különböző számítási egységei. Az egyes lépések egymástól függetlenül futtathatók, és elkülönített számítási erőforrásokat is használhatnak.
+A folyamatok több **lépésből**állnak, amelyek a folyamat különböző számítási egységei. Az egyes lépések egymástól függetlenül futtathatók, és elkülönített számítási erőforrásokat is használhatnak.
 A független lépések lehetővé teszik, hogy egyszerre több adatszakértő is működjön ugyanazon a folyamaton, és ne legyenek túlterhelt számítási erőforrások, és az egyes lépésekhez egyszerűen különböző számítási típusokat/méreteket használhat.
 
 A folyamat megtervezése után a folyamat betanítási ciklusa gyakran nagyobb finomhangolást mutat. Amikor újrafuttat egy folyamatot, a Futtatás az újrafuttatni kívánt különböző lépésekre ugrik, például egy frissített tanítási parancsfájlt, és kihagyja a nem módosult lépéseket. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. Ez a funkció segít elkerülni a költséges és időigényes lépéseket, például az adatfeldolgozást és-átalakítást, ha a mögöttes adat nem módosult.
 
 A Azure Machine Learning számos eszközkészletet és keretrendszert használhat, például PyTorch vagy TensorFlow a folyamat egyes lépéseihez. Az Azure koordinátákat a különböző [számítási célok](concept-azure-machine-learning-architecture.md) között, így a köztes adatok könnyedén megoszthatók az alsóbb rétegbeli számítási célok használatával.
 
-Is [követheti a metrikákat, a folyamat kísérletek](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) közvetlenül az Azure Portalon. A folyamat közzététele után beállíthat egy REST-végpontot, amely lehetővé teszi a folyamat újrafuttatását bármely platformról vagy veremből.
+A [folyamat-kísérletek metrikáit](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) közvetlenül Azure Portal vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)követheti nyomon. A folyamat közzététele után beállíthat egy REST-végpontot, amely lehetővé teszi a folyamat újrafuttatását bármely platformról vagy veremből.
 
 ## <a name="key-advantages"></a>Főbb előnyök
 
@@ -88,6 +88,6 @@ Két Python-csomag található a Azure Machine Learning: [azureml-pipeline-Core]
 
 + Megtudhatja, hogyan [futtathat batch-előrejelzéseket nagy mennyiségű adattal](how-to-run-batch-predictions.md).
 
-+ Tekintse [meg a folyamatok SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)-dokumentációját.
++ Tekintse [meg a folyamatok SDK-dokumentációját](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py).
 
-+ Próbálja ki például a [Azure Machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)-folyamatokat bemutató Jupyter notebookokat. Útmutató jegyzetfüzetek [futtatásához a szolgáltatás megismeréséhez](samples-notebooks.md).
++ Próbálja ki például a [Azure Machine learning-folyamatokat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)bemutató Jupyter notebookokat. Útmutató [jegyzetfüzetek futtatásához a szolgáltatás megismeréséhez](samples-notebooks.md).

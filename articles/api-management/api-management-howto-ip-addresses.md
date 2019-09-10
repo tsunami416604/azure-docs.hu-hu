@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242477"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861251"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Az Azure API Management IP-címei
 
@@ -102,5 +102,6 @@ A API Management fejlesztői, alapszintű, standard és prémium szintjein a nyi
 * A szolgáltatás törlődik, majd újra létrejön.
 * A szolgáltatás előfizetése fel van [függesztve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) vagy [figyelmeztetve](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) van (például nem fizetés esetén), majd visszaállították.
 * Az Azure Virtual Network hozzáadva vagy eltávolítva a szolgáltatásból.
+* API Management szolgáltatás külső és belső vnet-telepítési mód között van átváltva.
 
 A többrégiós környezetekben a regionális IP-cím akkor [változik, ha](api-management-howto-deploy-multi-region.md)egy régiót kiürítettek, majd visszaállították.

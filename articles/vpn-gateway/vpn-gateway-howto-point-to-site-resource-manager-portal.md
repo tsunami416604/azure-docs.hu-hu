@@ -1,5 +1,5 @@
 ---
-title: 'Számítógép összekapcsolása Azure-beli virtuális hálózattal pont – hely kapcsolat és natív Azure-tanúsítvány hitelesítése használatával: Azure Portal | Microsoft Docs'
+title: 'Csatlakozás Azure-beli virtuális hálózathoz pont – hely VPN és natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal | Microsoft Docs'
 description: A Windows, Mac OS X és a Linux rendszerű ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz P2S és önaláírt vagy HITELESÍTÉSSZOLGÁLTATÓ által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706780"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843663"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely kapcsolat konfigurálása egy VNet natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely VPN-kapcsolat konfigurálása egy VNet natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal
 
 Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű ügyfelek biztonságos csatlakoztatásához egy Azure-VNet. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
@@ -39,7 +39,7 @@ Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy se
 * **Alhálózati címtartomány:** 192.168.1.0/24
 * **Előfizetés** Ha egynél több előfizetéssel rendelkezik, ellenőrizze, hogy a megfelelőt használja-e.
 * **Erőforráscsoport:** TestRG
-* **Helyen** East US
+* **Location** (Hely): East US
 * **GatewaySubnet** 192.168.200.0/24<br>
 * **DNS-kiszolgáló:** (nem kötelező) Annak a DNS-kiszolgálónak az IP-címe, amelyet névfeloldásra kíván használni.
 * **Virtuális hálózati átjáró neve:** VNet1GW

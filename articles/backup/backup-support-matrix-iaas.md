@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617351"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872904"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági mentést készíthet a helyszíni gépekről és munkaterhelésekről, valamint az Azure-beli virtuális gépekről. Ez a cikk az Azure-beli virtuális gépek Azure Backup-vel történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat foglalja össze.
@@ -103,7 +103,7 @@ Helyreállítási pontok a DPM-vagy MABS-lemezen | 64 fájlkiszolgálók és 448
 
 **Visszaállítási módszer** | **Részletek**
 --- | ---
-Új virtuális gép létrehozása | A visszaállítási folyamat során létrehozhat egy virtuális gépet. <br/><br/> Ezzel a beállítással egy alapszintű virtuális gép működik. Megadhatja a virtuális gép nevét, az erőforráscsoportot, a virtuális hálózatot, az alhálózatot és a tárolót.  
+Hozzon létre egy új virtuális gépet | A visszaállítási folyamat során létrehozhat egy virtuális gépet. <br/><br/> Ezzel a beállítással egy alapszintű virtuális gép működik. Megadhatja a virtuális gép nevét, az erőforráscsoportot, a virtuális hálózatot, az alhálózatot és a tárolót.  
 Lemez visszaállítása | Visszaállíthat egy lemezt, és felhasználhatja egy virtuális gép létrehozásához.<br/><br/> Ha ezt a beállítást választja, Azure Backup az adatok a tárolóból egy kiválasztott Storage-fiókba másolhatók. A visszaállítási feladatok létrehoznak egy sablont. Ezt a sablont letöltheti, ezzel egyéni virtuálisgép-beállításokat adhat meg, és létrehozhat egy virtuális gépet.<br/><br/> Ez a beállítás lehetővé teszi további beállítások megadását, amelyekkel az előző lehetőséggel létrehozhat egy virtuális gépet.<br/><br/>
 Meglévő lemez cseréje | Visszaállíthat egy lemezt, majd a visszaállított lemez használatával lecserélheti a virtuális gépen futó lemezt.
 Fájlok visszaállítása | A kijelölt helyreállítási pontokból is helyreállíthatók a fájlok. Le kell töltenie egy parancsfájlt, amely a virtuális gép lemezét csatlakoztatja a helyreállítási pontról. Ezután tallózzon a lemez kötetei között, és keresse meg a visszaállítani kívánt fájlokat és mappákat, majd válassza le a lemezt, ha elkészült.
@@ -149,8 +149,9 @@ Az [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/
 Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek biztonsági mentése |   Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani.
 Az Azure-ba migrált virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.
 Több virtuális gépre kiterjedő konzisztencia biztonsági mentése | A Azure Backup nem biztosít több virtuális gép között az adatés az alkalmazások konzisztenciáját.
-Biztonsági mentés [diagnosztikai beállításokkal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
+Biztonsági mentés [diagnosztikai beállításokkal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
 A zóna által rögzített virtuális gépek visszaállítása | Támogatott (olyan virtuális gépek esetén, amelyekről január 2019 után biztonsági mentés készül, és ahol rendelkezésre áll a [rendelkezésre állási zóna](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna nem érhető el, a visszaállítás sikertelen lesz.
+Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtuális gépek](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)biztonsági mentését és helyreállítását. Ha ezeket a virtuális gépeket helyreállítási pontról állítják vissza, a rendszer [Gen2 virtuális gépekként](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)állítja vissza őket.
 
 
 ## <a name="vm-storage-support"></a>VM-tároló támogatása

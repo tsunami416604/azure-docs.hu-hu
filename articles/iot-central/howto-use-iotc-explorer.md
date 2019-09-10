@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Central Explorer használatával eszközkapcsolatok figyelése
-description: Figyelheti az eszközre, és tekintse meg az eszközön ikereszköz megváltoztatja az IoT Central Explorer CLI-n keresztül.
+title: Az eszközök kapcsolatának figyelése az Azure IoT Central Explorer használatával
+description: Az eszközök üzeneteinek figyelése és az eszköz két módosításának megfigyelése az IoT Central Explorer parancssori felületén keresztül.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/17/2019
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4d17f0e5273c7397bd9c6a71d14b7992d8652768
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165860"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845684"
 ---
-# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Az Azure IoT Central Explorer használatával eszközkapcsolatok figyelése
+# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Az eszközök kapcsolatának figyelése az Azure IoT Central Explorer használatával
 
-*Ez a témakör létrehozói és a rendszergazdák vonatkozik.*
+*Ez a témakör az építők és a rendszergazdákra vonatkozik.*
 
-Az IoT Central Explorer CLI segítségével megtekintheti az eszközök IoT-központ küldi, és vizsgálja meg az IoT Hub ikereszköz változásai üzeneteket. A nyílt forráskódú eszköz segítségével mélyebb betekintést az eszköz kapcsolati állapotát, és diagnosztizálhatja a problémákat, az eszköz üzenetek nem éri el a felhőben vagy az eszköz nem válaszol az ikereszköz módosításokat.
+Az IoT Central Explorer CLI használatával megtekintheti, hogy az eszközök elküldik-e a IoT Central és megfigyelheti a IoT Hub Twin-ben történt módosításokat. Ezzel a nyílt forráskódú eszközzel mélyebb betekintést nyerhet az eszközök kapcsolatának állapotával, és diagnosztizálhatja azokat az üzeneteket, amelyek nem érik el a felhőt, vagy amelyek nem válaszolnak a kettős módosításokra.
 
-[Látogasson el a iotc-explorer tárházban a Githubon.](https://aka.ms/iotciotcexplorercligithub)
+[Látogasson el az IOTC-Explorer adattárba a GitHubon.](https://aka.ms/iotciotcexplorercligithub)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ NODE.js-verzió 8.x vagy újabb - https://nodejs.org
-+ Az alkalmazás az rendszergazdájának kell, hogy a iotc-explorer hozzáférési jogkivonat létrehozásához.
++ Node. js 8. x vagy újabb verzió – https://nodejs.org
++ Az alkalmazás rendszergazdájának elő kell állítania egy hozzáférési jogkivonatot az IOTC-Explorerben való használatra.
 
-## <a name="install-iotc-explorer"></a>Iotc-kezelő telepítése
+## <a name="install-iotc-explorer"></a>Az IOTC telepítése – Explorer
 
-Futtassa a következő parancsot a parancssorból történő telepítéséhez:
+Futtassa a következő parancsot a parancssorból a telepítéshez:
 
 ```cmd/sh
 npm install -g iotc-explorer
 ```
 
 > [!NOTE]
-> Jellemzően futtatnia kell a telepítési parancs `sudo` Unix-hoz hasonló környezetekben.
+> Az install parancsot `sudo` általában UNIX-szerű környezetekben kell futtatnia.
 
-## <a name="run-iotc-explorer"></a>Iotc-kezelő futtatása
+## <a name="run-iotc-explorer"></a>Az IOTC – Explorer futtatása
 
-A következő szakaszok ismertetik a gyakori parancsok és beállítások futtatásakor használható `iotc-explorer`. A teljes körű parancsok és beállítások megtekintéséhez adjon át `--help` való `iotc-explorer` vagy az alparancsok.
+A következő szakaszok a futtatáskor `iotc-explorer`használható általános parancsokat és beállításokat ismertetik. A parancsok és beállítások teljes készletének megtekintéséhez továbbítsa `--help` `iotc-explorer` a parancsot vagy annak bármelyik alparancsát.
 
 ### <a name="login"></a>Bejelentkezés
 
-Mielőtt kezdheti, szüksége lesz az IoT-központ alkalmazás használatra hozzáférési jogkivonatot kapjon a rendszergazda. A rendszergazda hajtja végre az alábbi lépéseket:
+Mielőtt elkezdené, rendelkeznie kell a IoT Central-alkalmazás rendszergazdájával, hogy hozzáférési jogkivonatot kapjon a használathoz. A rendszergazda a következő lépéseket hajtja végre:
 
-1. Navigáljon a **felügyeleti** majd **hozzáférési jogkivonatokat**.
-1. Válassza ki **jogkivonatot**.
+1. Navigáljon az **Adminisztráció** elemre, majd a **hozzáférési tokenek**elemre.
+1. Válassza a **jogkivonat előállítása**lehetőséget.
     ![Hozzáférési jogkivonat lap képernyőképe](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. Adja meg a jogkivonat nevét, válassza ki **tovább**, majd **másolási**.
+1. Adja meg a jogkivonat nevét, válassza a **tovább**, majd a **Másolás**elemet.
     > [!NOTE]
-    > A jogkivonat értéke csak akkor jelenik meg egyszer, a párbeszédpanel bezárása előtt lehet másolni. A párbeszédpanel bezárása, után ez soha nem jelenik meg újból.
+    > A jogkivonat értéke csak egyszer jelenik meg, ezért a párbeszédpanel bezárása előtt át kell másolni. A párbeszédpanel bezárása után soha nem jelenik meg többé.
 
-    ![Másolja a hozzáférési jogkivonat párbeszédpanel képernyőképe](media/howto-use-iotc-explorer/copyaccesstoken.png)
+    ![Hozzáférési token másolása párbeszédpanel képernyőképe](media/howto-use-iotc-explorer/copyaccesstoken.png)
 
-A jogkivonat segítségével jelentkezzen be a parancssori felület a következőképpen:
+A token használatával a következő módon jelentkezhet be a CLI-be:
 
 ```cmd/sh
 iotc-explorer login "<Token value>"
 ```
 
-Ha inkább nem rendelkezik a token rendszerhéj előzményekben megőrzött, hagyhatja, hogy a jogkivonat útvonalakat, és Ehelyett adja meg, amikor a rendszer kéri:
+Ha azt szeretné, hogy a jogkivonat ne legyen megőrzött a rendszerhéj előzményeiben, hagyja ki a tokent, és adja meg azt, ha a rendszer kéri:
 
 ```cmd/sh
 iotc-explorer login
 ```
 
-### <a name="monitor-device-messages"></a>A figyelő eszközüzenetek
+### <a name="monitor-device-messages"></a>Eszköz üzeneteinek figyelése
 
-Megtekintheti az egy adott eszköz vagy az alkalmazást a lévő összes eszközre érkező üzeneteket a `monitor-messages` parancsot. Ez a parancs elindítja egy figyelő, amely folyamatosan új üzenetek érkezésekor:
+A `monitor-messages` parancs használatával megtekintheti az adott eszközről vagy az alkalmazás összes eszközéről érkező üzeneteket. Ez a parancs egy figyelőt indít el, amely folyamatosan megjeleníti az új üzeneteket, amint megérkeznek:
 
-Tekintse meg az alkalmazás összes eszközt, futtassa a következő parancsot:
+Az alkalmazás összes eszközének megtekintéséhez futtassa a következő parancsot:
 
 ```cmd/sh
 iotc-explorer monitor-messages
@@ -81,23 +81,23 @@ iotc-explorer monitor-messages
 
 Kimenet:
 
-![a figyelő-üzenetek parancs kimenete](media/howto-use-iotc-explorer/monitormessages.png)
+![figyelő – üzenetek parancs kimenete](media/howto-use-iotc-explorer/monitormessages.png)
 
-Tekintse meg egy adott eszközre, csak adja hozzá az eszköz azonosítója, a parancs végén:
+Egy adott eszköz megtekintéséhez csak adja hozzá az eszköz azonosítóját a parancs végéhez:
 
 ```cmd/sh
 iotc-explorer monitor-messages <your-device-id>
 ```
 
-Több gép mobilbarát formátum hozzáadásával is készíthető a `--raw` lehetőség a következő paranccsal:
+A következő parancs hozzáadásával `--raw` is megadhatja a számítógép-barát formátumot:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 
-### <a name="get-device-twin"></a>Ikereszköz beolvasása
+### <a name="get-device-twin"></a>Eszköz dupla beolvasása
 
-Használhatja a `get-twin` parancsot az IoT-központ eszköz az ikereszköz tartalmának lekérése. Ehhez futtassa a következő parancsot:
+A `get-twin` parancs segítségével lekérheti a Twin IoT Central eszköz tartalmát. Ehhez futtassa a következő parancsot:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id>
@@ -105,9 +105,9 @@ iotc-explorer get-twin <your-device-id>
 
 Kimenet:
 
-![Get-twin parancs kimenete](media/howto-use-iotc-explorer/getdevicetwin.png)
+![a Get-Twin parancs kimenete](media/howto-use-iotc-explorer/getdevicetwin.png)
 
-A `monitor-messages`, egy további gép mobilbarát átadásával kimeneti beszerezheti a `--raw` lehetőséget:
+Csakúgy, `monitor-messages`mint a-ben, a `--raw` beállítás elküldésével még több, géppel is megjegyezhető kimenetet kaphat:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id> --raw
@@ -115,4 +115,4 @@ iotc-explorer get-twin <your-device-id> --raw
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az IoT Central kezelő, a javasolt következő lépésre megismeréséhez [IoT Central-eszközök kezelésének](howto-manage-devices.md).
+Most, hogy megismerte a IoT Central Explorer használatát, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md)megismerése IoT Central.
