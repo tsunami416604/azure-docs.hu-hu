@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Webszolgáltatás üzembe helyezése az AK-ban az Azure dev Spaces szolgáltatással
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 6ce5338bd2b3d6153255fcdb67cb8afe10e8101c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772583"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842519"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Alkalmazás fejlesztése Kubernetes az Azure dev Spaces használatával
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -109,6 +109,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ```
 
 A szolgáltatás futtatásához nyissa meg a `azds up` parancs kimenetében megjelenő nyilvános URL-címet. Ebben a példában a nyilvános URL-cím *http://webfrontend.1234567890abcdef1234.eus.azds.io/* a következő:.
+
+> [!NOTE]
+> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor. `azds up`
 
 Ha a `azds up` *CTRL + c billentyűkombinációval*állítja le a parancsot, a szolgáltatás továbbra is az AK-ban fog futni, és a nyilvános URL-cím továbbra is elérhető marad.
 

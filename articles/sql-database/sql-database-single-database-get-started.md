@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640040"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845292"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Gyors útmutató: Önálló adatbázis létrehozása Azure SQL Database a Azure Portal, a PowerShell és az Azure CLI használatával
 
@@ -30,8 +30,8 @@ Az ebben a rövid útmutatóban szereplő összes lépésnél jelentkezzen be a 
 
 Egyetlen adatbázis hozható létre a kiépített vagy kiszolgáló nélküli (előzetes) számítási rétegben.
 
-- A kiépített számítási réteg egyetlen adatbázisa meghatározott mennyiségű előre lefoglalt számítási erőforrással, valamint memóriával és tárolási erőforrásokkal rendelkezik a két [beszerzési modell](sql-database-purchase-models.md)egyikének használatával.
-- A kiszolgáló nélküli számítási réteg egyetlen adatbázisa számos számítási erőforrást tartalmaz, amelyek automatikusan skálázhatók, valamint a megadott mennyiségű memória/mag, valamint egy meghatározott mennyiségű tárolási erőforrás, és csak a [virtuális mag-alapú vásárlási modellekben](sql-database-service-tiers-vcore.md)érhetők el.
+- A kiépített számítási réteg egyetlen adatbázisa előre lefoglalt számítási erőforrások (például CPU és memória) rögzített mennyiségét használja a két [beszerzési modell](sql-database-purchase-models.md)egyikével.
+- A kiszolgáló nélküli számítási réteg egyetlen adatbázisa számos számítási erőforrást tartalmaz, beleértve a CPU-t és a memóriát, amely automatikusan skálázható, és csak a [virtuális mag-alapú vásárlási modellekben](sql-database-service-tiers-vcore.md)érhető el.
 
 Egyetlen adatbázis létrehozásakor egy [SQL Database-kiszolgálót](sql-database-servers.md) is meg kell adnia a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../azure-resource-manager/resource-group-overview.md) helyezheti azt.
 
@@ -79,7 +79,7 @@ Ha elkészült ezeknek az erőforrásoknak a használatával, a következőképp
 ## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy kiszolgálói szintű tűzfalszabály, amely a helyszíni vagy távoli eszközökről csatlakozik az önálló adatbázishoz. További információ: [kiszolgálói szintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
-- A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és](sql-database-connect-query.md) lekérdezheti azt.
+- A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és lekérdezheti](sql-database-connect-query.md) azt.
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Ha egyetlen adatbázist szeretne létrehozni a kiépített számítási rétegben az Azure CLI használatával, tekintse meg az [Azure CLI-minták](sql-database-cli-samples.md)című részt.

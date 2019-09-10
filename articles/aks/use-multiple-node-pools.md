@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8edb361000110da16ce2a230d8768b204076ad21
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389941"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844271"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
-Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) definiálása akkor történik meg, amikor létrehoz egy *alapértelmezett csomópont-készletet*, amely létrehoz egy AK-fürtöt. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további csomópont-készleteket is létrehozhat. Ezekkel a további csomópont-készletekkel például GPU-ket biztosíthat a számítási igényű alkalmazások számára, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont*-készletekbe vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) definiálása akkor történik meg, amikor létrehoz egy *alapértelmezett csomópont*-készletet, amely létrehoz egy AK-fürtöt. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további csomópont-készleteket is létrehozhat. Ezekkel a további csomópont-készletekkel például GPU-ket biztosíthat a számítási igényű alkalmazások számára, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
 
 > [!NOTE]
 > Ez a funkció lehetővé teszi a több csomópontos készlet létrehozását és kezelését. Ennek eredményeképpen külön parancsok szükségesek a létrehozás/frissítés/törlés számára. Korábban a managedCluster API `az aks create` - `az aks update` val vagy annak használatával végzett fürtműveleteket, és az egyetlen lehetőség, hogy megváltoztassa a vezérlő síkot és egyetlen csomópontos készletet. Ez a funkció az agentPool API-n keresztül egy külön műveleti készletet tesz elérhetővé az ügynökök számára `az aks nodepool` , és a parancs használatát igényli a műveletek végrehajtásához egy adott csomópont-készleten.
@@ -169,14 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
  
 > [!NOTE]
-> Egy fürtön vagy csomóponton található műveletek frissítése és méretezése kölcsönösen kizárható. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
+> Fürtön vagy csomóponton található műveletek frissítése és méretezése nem végezhető el egyszerre, ha a rendszer hibaüzenetet küld. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
 
-Ha az AK-fürt az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ezzel beállítja a Kubernetes verzióját a vezérlő síkja és a kezdeti csomópont-készlet esetében is. A vezérlő síkja és a csomópont-készlet Kubernetes-verziójának frissítéséhez különböző parancsok tartoznak, amelyeket az [alábbiakban](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismertetünk.
+Ha az AK-fürt eredetileg az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ez a Kubernetes-verziót adja meg a vezérlési síkon és az alapértelmezett csomópont-készlet esetében is. Az ebben a szakaszban szereplő parancsok azt ismertetik, hogyan lehet frissíteni egy adott csomópont-készletet. A vezérlési sík és a Kubernetes verziójának frissítése közötti kapcsolatot az [alábbi szakasz](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismerteti.
 
 > [!NOTE]
 > A Node Pool operációsrendszer-rendszerkép verziója a fürt Kubernetes-verziójához van kötve. A fürt frissítését követően csak az operációs rendszer rendszerképének frissítését fogja kérni.
 
-Frissítse a *mynodepool* az Kubernetes *1.13.10*. Az az [AK Node Pool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
+Mivel ebben a példában két csomópont-készlet található, a csomópont-készlet frissítéséhez [az az AK nodepool upgrade][az-aks-nodepool-upgrade] -t kell használnia. Frissítse a *mynodepool* az Kubernetes *1.13.10*. Az az [AK nodepool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -239,16 +239,14 @@ Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a
 Egy AK-fürt két fürterőforrás-objektummal rendelkezik. Az első egy vezérlő síkja Kubernetes verziója. A második egy Kubernetes-verziót tartalmazó ügynök készlet. A vezérlő síkja egy vagy több csomópontot képez le, és mindegyiknek saját Kubernetes-verziója van. A frissítési művelet viselkedése attól függ, hogy melyik erőforrást célozza meg, és hogy az alapul szolgáló API melyik verzióját hívja meg.
 
 1. A vezérlési sík frissítéséhez a-t kell használnia`az aks upgrade`
-   * Ha a fürt egyetlen ügynök készlettel rendelkezik, a vezérlési sík és az önálló ügynök készlete is együtt lesz frissítve.
-   * Ha a fürt több ügynök készlettel rendelkezik, csak a vezérlő síkja lesz frissítve.
+   * Ezzel a beállítással a fürt összes csomópont-készlete is frissülni fog.
 1. Verziófrissítés`az aks nodepool upgrade`
    * Ez csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval.
 
 A csomópont-készletekben tárolt Kubernetes-verziók közötti kapcsolatnak a szabályokat is követnie kell.
 
-1. A vezérlési sík vagy a Node Pool Kubernetes verziója nem minősíthető vissza.
-1. Ha nincs megadva a vezérlő síkja Kubernetes verziója, az alapértelmezett érték lesz a jelenlegi vezérlési sík aktuális verziója.
-1. Ha a csomópont-készlet Kubernetes verziója nincs megadva, az alapértelmezett érték a vezérlési sík verziója lesz.
+1. A vezérlési sík és a Node Pool Kubernetes-verzió nem állítható vissza.
+1. Ha nincs megadva a csomópont-készlet Kubernetes verziója, a rendszer az alapértelmezett használatot a vezérlő síkja verzióra vált.
 1. Egy adott időpontban frissítheti vagy méretezheti a vezérlési síkot vagy a csomópont-készletet, de egyszerre nem küldheti el mindkét műveletet.
 1. A csomópont-készlet Kubernetes verziószámának meg kell egyeznie a vezérlő síkja főverziójával.
 1. A csomópont-készlet Kubernetes verziója legfeljebb két (2) alverzió lehet a vezérlő síkjanál kisebb, soha nem nagyobb.
@@ -358,7 +356,7 @@ A csomópontok és a csomópont-készlet törlése néhány percet vesz igénybe
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Virtuális gép méretének megadása egy csomópont-készlethez
 
-Az előző példákban egy csomópont-készlet létrehozásához a fürtben létrehozott csomópontok alapértelmezett virtuálisgép-méretét használták. A leggyakoribb forgatókönyv az, hogy a különböző virtuálisgép-méretekkel és képességekkel rendelkező csomópont-készleteket hozzon létre. Létrehozhat például egy olyan csomópont-készletet, amely nagy mennyiségű PROCESSZORral vagy memóriával rendelkező csomópontokat tartalmaz, vagy egy olyan csomópont-készletet, amely GPU-támogatást biztosít. A következő lépésben a [szennyező és a tolerancia használatával](#schedule-pods-using-taints-and-tolerations) közli, hogy a Kubernetes ütemező hogyan korlátozza az ezeken a csomópontokon futtatható hüvelyek elérését.
+Az előző példákban egy csomópont-készlet létrehozásához a fürtben létrehozott csomópontok alapértelmezett virtuálisgép-méretét használták. A leggyakoribb forgatókönyv az, hogy a különböző virtuálisgép-méretekkel és képességekkel rendelkező csomópont-készleteket hozzon létre. Létrehozhat például egy olyan csomópont-készletet, amely nagy mennyiségű PROCESSZORral vagy memóriával rendelkező csomópontokat tartalmaz, vagy egy olyan csomópont-készletet, amely GPU-támogatást biztosít. A következő lépésben a szennyező [és a tolerancia használatával](#schedule-pods-using-taints-and-tolerations) közli, hogy a Kubernetes ütemező hogyan korlátozza az ezeken a csomópontokon futtatható hüvelyek elérését.
 
 Az alábbi példában hozzon létre egy GPU-alapú *standard nc6* , amely a VM-méretet használja. Ezeket a virtuális gépeket az NVIDIA Tesla K80 kártya működteti. A rendelkezésre álló virtuálisgép-méretekkel kapcsolatos információkért lásd: [a Linux rendszerű virtuális gépek méretei az Azure-ban][vm-sizes].
 
@@ -423,8 +421,8 @@ aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
 
 A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási feladatok futhatnak a csomópontokon.
 
-* A rendszer egy olyan csomópontra alkalmazza a **megromlást** , amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
-* A **rendszer egy olyan** Pod-ra alkalmazza a betartást, amely lehetővé *teszi a* csomópontok megromlását.
+* A rendszer egy olyan csomópontra alkalmazza a megromlást, amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
+* A rendszer egy olyan Pod-ra alkalmazza a betartást, amely lehetővé teszi a csomópontok megromlását.
 
 További információ a speciális Kubernetes ütemezett funkcióinak használatáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][taints-tolerations]
 

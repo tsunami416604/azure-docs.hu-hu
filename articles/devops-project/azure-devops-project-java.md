@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 381af2989a7622501462e574d05b54eea8416518
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a3b57fd7acba4d45b0bd519a21ae74f91291fd77
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543440"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873239"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Gyors útmutató: CI/CD-folyamat beállítása Java-alkalmazáshoz Azure DevOps Projects
 
-A Azure DevOps Projects egy egyszerűsített élményt nyújt, amely Azure-erőforrásokat hoz létre, és a Java-alkalmazás folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatát állítja be az Azure-folyamatokban.  
+Ebben a rövid útmutatóban Azure DevOps Projects "egyszerűsített tapasztalatot használ egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamat létrehozásához a Java-alkalmazásokhoz az Azure-folyamatokban. A Azure DevOps Projects használatával más Azure-erőforrásokat is létrehozhat.  
 
 Ha még nem rendelkezik Azure-előfizetéssel, a [Visual Studio dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)használatával ingyenesen beszerezhet egyet.
 

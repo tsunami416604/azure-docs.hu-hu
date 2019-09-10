@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Csapat Kubernetes-fejlesztés az Azure-beli tárolókkal és szolgáltatásokkal
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f4a0a4858c890c94e3983c3dc9b10d739dc1352d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772561"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842584"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: A Kubernetes fejlesztése az Azure dev Spaces használatával
 
@@ -146,12 +146,12 @@ A `azds space list` parancs használatával jelölje ki az összes fejlesztői t
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 A ( `azds list-uris` a) használatával jelenítse meg a minta alkalmazás URL-címeit a jelenleg kijelölt, *dev/azureuser2*helyen.
@@ -201,6 +201,9 @@ Ez a parancs létrehozza és futtatja a *bikesharingweb* szolgáltatást a *dev/
 Nyissa meg a *fejlesztői/azureuser2* fejlesztői terület `azds up` *bikesharingweb* szolgáltatását a parancs kimenetében megjelenő nyilvános URL-cím megnyitásával. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget a felhasználóként. Ellenőrizze, hogy a jobb felső sarokban látható-e a frissített szöveg. Előfordulhat, hogy frissítenie kell a lapot, vagy törölnie kell a böngésző gyorsítótárát, ha nem látja azonnal ezt a változást.
 
 ![Azure dev Spaces Bike-megosztási minta alkalmazás frissítve](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor. `azds up`
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Más fejlesztői területek ellenőrzése nem változik
 

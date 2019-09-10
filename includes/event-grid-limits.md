@@ -9,28 +9,28 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "66376919"
 ---
-Az alábbi korlátok vonatkoznak az Azure Event Grid rendszer témaköröket és egyéni témakörök *nem* esemény tartományok.
+A következő korlátozások vonatkoznak Azure Event Grid rendszertémakörökre és az egyéni témakörökre, és *nem* az Event-tartományokra.
 
 | Resource | Korlát |
 | --- | --- |
-| Egyéni témakörök Azure-előfizetésenként | 100 |
-| A témakör eseményfeliratkozások | 500 |
-| Közzététele egy egyéni témakör (bejövő) arány | a témakör másodpercenként 5 000 események |
-| Kérelem közzététele | 250 másodpercenként |
-| Esemény mérete | Támogatja a 64 KB-os általános rendelkezésre állás (GA). 1 MB-támogatása jelenleg előzetes verzióban érhető el. |
+| Egyéni témakörök az Azure-előfizetések esetében | 100 |
+| Esemény-előfizetések/témakör | 500 |
+| Egyéni témakör közzétételi arányának (bejövő) | 5 000 esemény/másodperc/téma |
+| Közzétételi kérelmek | 250 másodpercenként |
+| Esemény mérete | A 64 KB-os verziójának támogatása általánosan elérhető (GA). Az 1 MB-os támogatás jelenleg előzetes verzióban érhető el. |
 
-Az alábbi korlátok vonatkoznak, az csak az esemény-tartományok.
+A következő korlátozások érvényesek az esemény-tartományokra.
 
 | Resource | Korlát |
 | --- | --- |
-| Esemény tartományonként kapcsolatos témakörök | nyilvános előzetes verzió ideje alatt 1000 |
-| A témakör egy tartományon belüli eseményfeliratkozások | a nyilvános előzetes verzióban 50 |
-| Tartományi hatókör esemény-előfizetések | a nyilvános előzetes verzióban 50 |
-| Egy esemény-tartomány (bejövő) tartozó közzététele | 5000 események száma másodpercenként a nyilvános előzetes verzióban |
-| Kérelem közzététele | 250 másodpercenként |
+| Témakörök/esemény tartománya | 1 000 a nyilvános előzetes verzióban |
+| Esemény-előfizetések témakörben egy tartományon belül | 50 a nyilvános előzetes verzióban |
+| Tartományi hatókörű esemény-előfizetések | 50 a nyilvános előzetes verzióban |
+| Esemény-tartomány közzétételi sebessége (bejövő) | 5 000 esemény másodpercenként a nyilvános előzetes verzióban |
+| Közzétételi kérelmek | 250 másodpercenként |

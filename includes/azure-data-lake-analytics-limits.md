@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67179511"
 ---
-Az Azure Data Lake Analytics leegyszerűsíti az elosztott infrastruktúra és az összetett programkód könnyen feladatát. Ez dinamikusan kiosztja az erőforrásokat, és használhatja a több exabájt adat elemzését. Ha a feladat befejeződik, lecsökkenti automatikusan. Csak a használt kapacitásért fizet. Ha növeli vagy csökkenti a tárolt adatok méretét, vagy a felhasznált számítási teljesítményt, nem kell újraírnia a programot. Az alapértelmezés szerinti korlátozásoknak az előfizetéshez tartozó növeléséhez forduljon az ügyfélszolgálathoz.
+A Azure Data Lake Analytics egyszerűvé teszi az elosztott infrastruktúra és az összetett kód kezelésének bonyolult feladatát. A szolgáltatás dinamikusan kiépíti az erőforrásokat, és használhatja az több exabájt elemzéséhez. Ha a művelet befejeződik, a rendszer automatikusan lekéri az erőforrásokat. Csak a felhasznált feldolgozási teljesítményért kell fizetnie. Ha növeli vagy csökkenti a tárolt adatok méretét, vagy a felhasznált számítási teljesítményt, nem kell újraírnia a programot. Az előfizetés alapértelmezett korlátainak előléptetéséhez forduljon az ügyfélszolgálathoz.
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
 | Egyidejű feladatok maximális száma |20 | |
-| Elemzési egység (AU-k)-fiókonként |250 | Legfeljebb 250 együtt is használhatók az AU-k 20-feladat között. Ez a korlát növeléséhez forduljon a Microsoft Support. |
-| A feladatok elküldéséhez parancsfájl maximális mérete | 3 MB | |
-| A Data Lake Analytics-fiókok régiónként és előfizetésenként maximális száma | 5 | Ez a korlát növeléséhez forduljon a Microsoft Support. |
+| Az elemzési egységek (AUs) maximális száma felhasználónként |250 | Legfeljebb 250 au-kombinációt használhat 20 feladaton belül. A korlát növeléséhez forduljon Microsoft ügyfélszolgálatahoz. |
+| A feladatok küldésének maximális mérete | 3 MB | |
+| Data Lake Analytics-fiókok maximális száma régiónként/előfizetésben | 5 | A korlát növeléséhez forduljon Microsoft ügyfélszolgálatahoz. |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67179484"
 ---
 | Resource | Alapértelmezett korlát |
@@ -17,15 +17,15 @@ ms.locfileid: "67179484"
 | Tárolók száma tárolócsoportonként | 60 |
 | Kötetek száma tárolócsoportonként | 20 |
 | Portok száma IP-címenként | 5 |
-| Tároló példány naplóméret - példányt futtató | 4 MB |
-| Tároló példány naplóméret - leállított példány | 16 KB-os vagy 1000 sort |
+| Tároló-példány naplójának mérete – futó példány | 4 MB |
+| Tároló-példány naplójának mérete – leállított példány | 16 KB vagy 1 000 sor |
 | Óránként létrehozott tárolók száma |300<sup>1</sup> |
 | 5 percenként létrehozott tárolók száma | 100<sup>1</sup> |
 | Óránként törölt tárolók száma | 300<sup>1</sup> |
 | 5 percenként törölt tárolók száma | 100<sup>1</sup> |
 
 
-<sup>1</sup>korlátozás megnövelésére, hozzon létre egy [Azure-támogatási kérelem][azure-support].<br />
+<sup>1</sup> A határérték-növekedés igényléséhez hozzon létre egy [Azure-support Request][azure-support].<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

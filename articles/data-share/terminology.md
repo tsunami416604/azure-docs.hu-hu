@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424217"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844705"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Az Azure-beli adatmegosztás előzetes verziójának alapfogalmai 
 
@@ -31,7 +31,7 @@ Az adatmegosztások olyan adatkészletek csoportja, amelyek egyetlen entitáské
 
 ## <a name="share-subscription"></a>Előfizetés megosztása 
 
-A megosztási előfizetések akkor jönnek létre, amikor az adatfogyasztó elfogad egy adatmegosztási meghívást egy adatszolgáltatótól. Az adatszolgáltatók megtekinthetik az aktív megosztás-előfizetéseket, ha az Azure-beli adatmegosztási fiókjában navigálnak az elküldett **megosztásokhoz**
+A megosztási előfizetések akkor jönnek létre, amikor az adatfogyasztó elfogad egy adatmegosztási meghívást egy adatszolgáltatótól. Az adatszolgáltatók megtekinthetik az aktív megosztás-előfizetéseket **, ha az**Azure-beli adatmegosztási fiókjában navigálnak az **Elküldett megosztásokhoz**
 
 Egy adatfogyasztó megtekintheti, hogy rendelkezik-e aktív megosztási előfizetéssel, ha a **kapott megosztásokra** navigál, és megtekinti a kapott megosztások állapotát. 
 
@@ -53,7 +53,9 @@ Egy adatfogyasztónak lehetősége van arra, hogy a pillanatkép-ütemterven bel
 
 Egy adatszolgáltató több címzettet is meghívhat az adatmegosztásra. Ezt úgy teheti meg, hogy a címzetteket hozzáadja az adatmegosztáshoz. A meghívókat egy adatmegosztás létrehozása után is fel lehet venni. 
 
-Egy adatszolgáltató törölhet egy meghívót az elküldése után. Vegye figyelembe, hogy ha egy adatszolgáltató töröl egy meghívót az elfogadása után, akkor az adatfogyasztó továbbra is rendelkezhet aktív megosztási előfizetéssel. Ha az adatszolgáltató töröl egy meghívót, és még nem fogadta el, az adatfogyasztó nem fogja tudni elfogadni. 
+Egy adatszolgáltató törölhet egy meghívót, miután elküldték, ha még nem fogadták el. Ha az adatszolgáltató töröl egy meghívót, és még nem fogadta el, az adatfogyasztó nem fogja tudni elfogadni. 
+
+A meghívókat naponta legfeljebb 5 alkalommal lehet elküldeni. 
 
 ## <a name="recipient"></a>Címzett
 

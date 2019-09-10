@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207207"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844682"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -28,7 +28,7 @@ A Pythonban futó önálló függvények esetében tekintse meg a [Python függv
 
 ## <a name="programming-model"></a>A programozási modell
 
-A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott `main()` `__init__.py` globális metódusként legyen implementálva. [Alternatív belépési pontot](#alternate-entry-point)is megadhat.
+A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott `main()` `__init__.py` globális metódusként legyen implementálva. [Alternatív belépési pontot is megadhat](#alternate-entry-point).
 
 Az eseményindítók és kötések adatai a Function `name` *. JSON* fájlban megadott tulajdonság használatával a metódus attribútumain keresztül vannak kötve. Az alábbi _function. JSON_ például a következő nevű `req`HTTP-kérelem által aktivált egyszerű függvényt írja le:
 
@@ -94,6 +94,7 @@ A Python functions projekthez tartozó mappastruktúrát a következő példáho
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ A megosztott kódokat külön mappában kell tárolni. A következő szintaxissa
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+A függvények helyi hivatkozásához a relatív importálási szintaxist a következőképpen használhatja:
+
+```
+from . import example
 ```
 
 Ha egy Function-projektet telepít az Azure-beli Function alkalmazásba, a *FunctionApp* mappa teljes tartalmát bele kell foglalni a csomagba, de a mappát nem.
@@ -247,7 +254,7 @@ A HTTP-trigger a function. Jon fájlban van definiálva. `name` A kötésnek meg
 
 A [HttpRequest] objektumból lekérheti a kérések fejléceit, a lekérdezési paramétereket, az útvonal paramétereit és az üzenet törzsét. 
 
-A következő példa a Pythonhoz készült [http trigger sablonból](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)származik. 
+A következő példa a [Pythonhoz készült http trigger sablonból](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)származik. 
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -377,7 +384,7 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Közzététel az Azure-ban
 
-Ha készen áll a közzétételre, győződjön meg arról, hogy az összes függőség szerepel a Project könyvtárának gyökérkönyvtárában található *követelmények. txt* fájlban. A Azure Functions képes [távolról](functions-deployment-technologies.md#remote-build) felépíteni ezeket a függőségeket.
+Ha készen áll a közzétételre, győződjön meg arról, hogy az összes függőség szerepel a Project könyvtárának gyökérkönyvtárában található *követelmények. txt* fájlban. A Azure Functions képes [távolról felépíteni](functions-deployment-technologies.md#remote-build) ezeket a függőségeket.
 
 A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva.  
 
@@ -394,7 +401,7 @@ There was an error restoring dependencies.ERROR: cannot install <package name - 
 The terminal process terminated with exit code: 1
 ```
 
-Ha helyileg szeretné kiépíteni és konfigurálni a szükséges bináris fájlokat, [telepítse](https://docs.docker.com/install/) a Docker-t a helyi gépre, és futtassa a következő parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (a) használatával történő közzétételhez. Ne felejtse `<app name>` el lecserélni a Function alkalmazás nevét az Azure-ban. 
+Ha helyileg szeretné kiépíteni és konfigurálni a szükséges bináris fájlokat, [telepítse a Docker](https://docs.docker.com/install/) -t a helyi gépre, és futtassa a következő parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (a) használatával történő közzétételhez. Ne felejtse `<app name>` el lecserélni a Function alkalmazás nevét az Azure-ban. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -402,7 +409,7 @@ func azure functionapp publish <app name> --build-native-deps
 
 A borítók alatt a központi eszközök a Docker használatával futtatják a [MCR.microsoft.com/Azure-functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) -rendszerképet a helyi gépen lévő tárolóként. Ezzel a környezettel az Azure-ba történő végső üzembe helyezés előtt felépíti és telepíti a szükséges modulokat a forrás-elosztásból.
 
-A függőségek létrehozásához és a folyamatos kézbesítés (CD) rendszer használatával történő közzétételhez [használja az Azure](functions-how-to-azure-devops.md)-folyamatokat. 
+A függőségek létrehozásához és a folyamatos kézbesítés (CD) rendszer használatával történő közzétételhez [használja az Azure-folyamatokat](functions-how-to-azure-devops.md). 
 
 ## <a name="unit-testing"></a>Egység tesztelése
 
@@ -528,7 +535,7 @@ Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák]
 
 ### <a name="cross-origin-resource-sharing"></a>Eltérő eredetű erőforrások megosztása
 
-A Azure Functions támogatja a több eredetű erőforrás-megosztást (CORS). A CORS a Portálon és az [Azure CLI](/cli/azure/functionapp/cors) [-](functions-how-to-use-azure-function-app-settings.md#cors) n keresztül van konfigurálva. A CORS engedélyezett Origins listája a függvény alkalmazás szintjén érvényes. Ha a CORS engedélyezve van, a `Access-Control-Allow-Origin` válaszok tartalmazzák a fejlécet. További információ: [Eltérő eredetű erőforrás-megosztás](functions-how-to-use-azure-function-app-settings.md#cors)
+A Azure Functions támogatja a több eredetű erőforrás-megosztást (CORS). A CORS a [portálon](functions-how-to-use-azure-function-app-settings.md#cors) és az [Azure CLI](/cli/azure/functionapp/cors)-n keresztül van konfigurálva. A CORS engedélyezett Origins listája a függvény alkalmazás szintjén érvényes. Ha a CORS engedélyezve van, a `Access-Control-Allow-Origin` válaszok tartalmazzák a fejlécet. További információ: [Eltérő eredetű erőforrás-megosztás](functions-how-to-use-azure-function-app-settings.md#cors)
 
 Az engedélyezett Origins lista [jelenleg nem támogatott](https://github.com/Azure/azure-functions-python-worker/issues/444) a Python-függvények alkalmazásaiban. Ennek a korlátozásnak a miatt a http-függvények `Access-Control-Allow-Origin` fejlécét kifejezetten be kell állítania az alábbi példában látható módon:
 
