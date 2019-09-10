@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562210"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812395"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Felhasználók bejelentkezési webalkalmazása – bejelentkezés
 
@@ -28,18 +28,19 @@ Megtudhatja, hogyan adhat hozzá bejelentkezési kódot a webalkalmazáshoz, ame
 
 ## <a name="sign-in"></a>Bejelentkezés
 
-Az előző cikkben az [alkalmazás kódjának konfigurálásához](scenario-web-app-sign-user-app-configuration.md) szükséges kód csak a kijelentkezést kell végrehajtania. Miután a felhasználó bejelentkezett az alkalmazásba, valószínűleg engedélyezni szeretné a kijelentkezést. A ASP.NET Core kezeli a kijelentkezést.
+Az előző cikk [programkód-konfigurációjában](scenario-web-app-sign-user-app-configuration.md) áttekintett kód csak a bejelentkezés megvalósításához szükséges.
+Miután a felhasználó bejelentkezett az alkalmazásba, valószínűleg engedélyezni szeretné a kijelentkezést. A ASP.NET Core kezeli a kijelentkezést.
 
 ## <a name="what-sign-out-involves"></a>A kijelentkezési folyamat
 
 A webalkalmazásból való kijelentkezés több, mint a webalkalmazás állapotában lévő bejelentkezett fiók adatainak eltávolítása.
 A webalkalmazásnak is át kell irányítani a felhasználót a Microsoft `logout` Identity platform-végpontra a kijelentkezéshez. Ha a webalkalmazás átirányítja a felhasználót a `logout` végpontra, ez a végpont törli a felhasználó munkamenetét a böngészőből. Ha az alkalmazás nem a `logout` végpontra került, a felhasználó újra hitelesíteni fogja magát az alkalmazásba anélkül, hogy újra be kellene írnia a hitelesítő adatokat, mert érvényes egyszeri bejelentkezéssel kell rendelkezniük a Microsoft Identity platform végpontjának használatával.
 
-További információért lásd a kijelentkezési [kérelem küldése](v2-protocols-oidc.md#send-a-sign-out-request) szakaszt a [Microsoft Identity platform és az OpenID Connect protokoll](v2-protocols-oidc.md) fogalmi dokumentációjában.
+További információért lásd a [kijelentkezési kérelem küldése](v2-protocols-oidc.md#send-a-sign-out-request) szakaszt a [Microsoft Identity platform és az OpenID Connect protokoll](v2-protocols-oidc.md) fogalmi dokumentációjában.
 
 ## <a name="application-registration"></a>Alkalmazás regisztrálása
 
-Az alkalmazás regisztrálása során regisztrálva lesz egy **utólagos kijelentkezési URI**. Az oktatóanyagban a **hitelesítés** lap `https://localhost:44321/signout-oidc` **Speciális beállítások** szakaszának kijelentkezési **URL-címe** mezőjében regisztrálta a regisztrációt. Részletekért lásd: [a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
+Az alkalmazás regisztrálása során regisztrálva lesz egy **utólagos kijelentkezési URI**. Az oktatóanyagban a **hitelesítés** lap `https://localhost:44321/signout-oidc` **Speciális beállítások** szakaszának **kijelentkezési URL-címe** mezőjében regisztrálta a regisztrációt. Részletekért lásd: [a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
 
 ## <a name="aspnet-core-code"></a>ASP.NET Core kód
 
@@ -66,7 +67,7 @@ else
 
 ### <a name="signout-action-of-the-accountcontroller"></a>`Signout()`a művelet`AccountController`
 
-Ha megnyomja a kijelentkezés gombot a webalkalmazásban **,** elindítja `Account` `SignOut` a műveletet a vezérlőn. A ASP.net Core-sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be, de ez már nem jelent meg, mert már része a ASP.net Core-keretrendszernek. 
+Ha megnyomja a **kijelentkezés** gombot a webalkalmazásban, `SignOut` elindítja `Account` a műveletet a vezérlőn. A ASP.net Core-sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be, de ez már nem jelent meg, mert már része a ASP.net Core-keretrendszernek. 
 
 A kód `AccountController` a ASP.net Core adattárból érhető el a [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs)-ból. A fiókok felügyelete:
 
@@ -74,7 +75,7 @@ A kód `AccountController` a ASP.net Core adattárból érhető el a [AccountCon
 - Meghívások `Signout()`, amelyek lehetővé teszi, hogy a OpenIdConnect köztes kapcsolat a Microsoft Identity platform `logout` végpontján keresztül lépjen kapcsolatba:
 
   - Törli a munkamenet-cookie-t a böngészőből, és
-  - A hívások végül a kijelentkezési **URL-t**kérik vissza, amely alapértelmezés szerint megjeleníti a kijelentkezett nézet [SignedOut. html fájlt](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) , amely a ASP.net Core részeként is elérhető.
+  - A hívások végül a **kijelentkezési URL-t**kérik vissza, amely alapértelmezés szerint megjeleníti a kijelentkezett nézet [SignedOut. html fájlt](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) , amely a ASP.net Core részeként is elérhető.
 
 ### <a name="intercepting-the-call-to-the-logout-endpoint"></a>A `logout` végpontra irányuló hívás elfogása
 

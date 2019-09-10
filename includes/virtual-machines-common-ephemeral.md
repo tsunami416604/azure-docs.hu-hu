@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: HT
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669676"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775857"
 ---
 Az ideiglenes operációsrendszer-lemezek a helyi virtuális gép (VM) tárolóján jönnek létre, és nem lesznek mentve a távoli Azure-tárolóba. Az időszakos operációsrendszer-lemezek jól működnek az állapot nélküli munkaterhelések esetében, ahol az alkalmazások az egyes virtuálisgép-hibáktól függenek, de a virtuális gép üzembe helyezési ideje vagy az egyes virtuálisgép-példányok újrarendszerképe is befolyásolja. Az elmúló operációsrendszer-lemezzel alacsonyabb olvasási/írási késést kap az operációsrendszer-lemez és a virtuális gép lemezképének gyors alaphelyzetbe állítása. 
  
@@ -32,7 +32,7 @@ Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbs
 
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár**-méretének megtekintéséhez lásd: [DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)és [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének**megtekintéséhez lásd [: DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)és [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
 | Támogatott VM-méretek          | Összes                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | Lemez típusának támogatása           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
 | Régió támogatása              | Minden régió                                                                                  | Minden régió                              |
@@ -175,7 +175,7 @@ Sablon használatával üzembe helyezhet egy ideiglenes operációsrendszer-leme
 
 
 ## <a name="reimage-a-vm-using-rest"></a>Virtuális gép rendszerképének alaphelyzetbe állítása a REST használatával
-Jelenleg az egyetlen módszer, amely az ideiglenes operációsrendszer-lemezzel rendelkező virtuálisgép-példányok rendszerképének alaphelyzetbe állítására szolgál REST API használatával. A méretezési csoportok esetében az Alaphelyzetbe állítás már elérhető a PowerShell, a CLI és a portál használatával.
+A virtuálisgép-példányokat az alábbi módon, az Azure Portalon, a virtuális gép áttekintés paneljén található REST API segítségével alaphelyzetbe helyezheti egy ideiglenes operációsrendszer-lemezzel. A méretezési csoportok esetében az Alaphelyzetbe állítás már elérhető a PowerShell, a CLI és a portál használatával.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-
