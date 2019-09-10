@@ -770,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: Naplólekérdezések – oktatóanyag
                   href: log-query/get-started-queries.md
+                - name: Simple Logs-élmény
+                  href: log-query/simple-logs.md
             - name: Naplóadatok
               items:
                 - name: Naplóadat-szerkezet

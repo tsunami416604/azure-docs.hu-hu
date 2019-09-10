@@ -132,6 +132,8 @@
           href: using-metrics.md
     - name: Integráció más eszközökkel
       items:
+        - name: Adatok tömeges másolása Azure Data Factory-sablonnal
+          href: data-factory-template.md
         - name: Apache Spark-összekötő
           href: spark-connector.md
         - name: Csatlakozás Databricksből Python használatával

@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Gremlin-lekérdezések optimalizálása
               href: graph-execution-profile.md
+            - name: Erőforrás-jogkivonatok használata
+              href: how-to-use-resource-tokens-gremlin.md
             - name: Gráfadatok vizualizációja
               href: graph-visualization.md
             - name: A Spring Data tárolása és kezelése

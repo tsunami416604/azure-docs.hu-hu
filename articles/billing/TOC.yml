@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Azure-szoftvercsomagok
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: Foglalás vásárlása havi fizetéssel
+              href: billing-monthly-payments-reservations.md
             - name: Foglalások megújítása
               href: billing-reservation-renew.md
         - name: A kedvezmény alkalmazásának módja

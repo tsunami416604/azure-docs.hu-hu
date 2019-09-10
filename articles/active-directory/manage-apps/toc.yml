@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: Hatókörszűrők
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Hatókörön kívüli felhasználók törlésének mellőzése
+              href: skip-out-of-scope-deletions.md
             - name: Az átadási állapot ellenőrzése
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Jelentés a felhasználók automatikus átadásáról
               href: check-status-user-account-provisioning.md
+            - name: Konfiguráció exportálása és importálása
+              href: export-import-provisioning-configuration.md
         - name: A felhasználók átadásának hibaelhárítása
           items:
             - name: A felhasználók átadásának hibaelhárítása
