@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 85f7395cbfa4ef2ba6ab448c9541b3f107eb0e96
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68249815"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844960"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez
 
@@ -32,6 +32,8 @@ Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok k
 - Az előfizetést regisztrálni kell a [Microsoft.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)ininsights szolgáltatásban.
 
 - [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
+
+- A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor beállítása adatfogadóként

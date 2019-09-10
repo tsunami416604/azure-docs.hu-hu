@@ -1,5 +1,5 @@
 ---
-title: Webes végpont – Event Grid, Azure CLI-vel egyéni eseményeket küldeni |} A Microsoft Docs
+title: Egyéni események küldése a Event Grid és az Azure CLI használatával
 description: Azure Event Grid és az Azure CLI használatával közzététele egy egyéni témakör és feliratkozás témakör eseményeire. Az események a webalkalmazás kezeli.
 services: event-grid
 keywords: ''
@@ -8,13 +8,13 @@ ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fe821fbcea78719095e5353b0d4165f85916b67d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seodec18, seo-javascript-september2019
+ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958653"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861107"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Gyors útmutató: Egyéni események átirányítása webes végpontra az Azure CLI-vel és Event Grid
 

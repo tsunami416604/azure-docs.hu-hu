@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 63f9112696156f2192669913bb15a82b9a7eede7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657462"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860304"
 ---
 # <a name="publishing-integrated-solutions"></a>Közzététel – integrált megoldások
 
-Egy integrált megoldás kombinálja a több ISV-pont megoldási technológiáját, valamint a rendszerintegrátor (SI) üzembe helyezését és szolgáltatásait egyetlen, a piactéren az SI tanácsadói szolgáltatásként elérhetővé tett [](https://docs.microsoft.com/azure/marketplace/consulting-services)ajánlatban.
+Egy integrált megoldás kombinálja a több ISV-pont megoldási technológiáját, valamint a rendszerintegrátor (SI) üzembe helyezését és szolgáltatásait egyetlen, a piactéren az SI [tanácsadói szolgáltatásként](https://docs.microsoft.com/azure/marketplace/consulting-services)elérhetővé tett ajánlatban.
 
 Ezek a megoldások egy adott ügyfél-szükséglet vagy-forgatókönyv megoldására készültek, amely az iparági kihívások vagy a fájdalom pontok megismerésével kezdődik. Ezt követően két vagy több, a legjobbat alkalmazó technológia integrálható egy egységes és megismételhető üzembe helyezési környezettel az ügyfelek számára, így gyorsan felhasználhatja őket. A rendszerintegrátor emellett egyetlen kapcsolódási pontot biztosít az ügyfél számára, biztosítva a megfelelő testreszabást és tanácsadást, és támogatja a megoldás körét. Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
@@ -88,6 +88,6 @@ Bár a Consulting Services-ajánlatok öt szolgáltatási típussal érhetők el
 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Piacra jutás az integrált megoldással 
 
-Ha a megoldás az Azure Marketplace-en vagy a AppSource-ben él, érdemes lehet a marketinggel kapcsolatos ismereteket és igényeket generálni. Tekintse át a [projekt tervében és](https://aka.ms/AA5qiuc)idővonalában felsorolt tevékenységeket, beleértve azokat a tevékenységeket is, amelyeket a partnerek a saját csapatában vagy egymással tudnak vezetni. Ezt követően a piactéren közzétett partnereink számára elérhetők a piacra jutási [előnyök](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#how-to-access-microsoft-resources) . Az összes integrált megoldási ajánlat jogosult a próbaidőszakos előnyökre.
+Ha a megoldás az Azure Marketplace-en vagy a AppSource-ben él, érdemes lehet a marketinggel kapcsolatos ismereteket és igényeket generálni. Tekintse át a [projekt tervében és Idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket, beleértve azokat a tevékenységeket is, amelyeket a partnerek a saját csapatában vagy egymással tudnak vezetni. Ezt követően a piactéren közzétett partnereink számára elérhetők a piacra jutási [előnyök](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) . Az összes integrált megoldási ajánlat jogosult a próbaidőszakos előnyökre.
 
 ---

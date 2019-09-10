@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278113"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858653"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -32,7 +32,7 @@ A Azure Machine Learning szolgáltatás olyan felhőalapú környezetet biztosí
 
 Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modelleket, és számos olyan eszközt alkalmazhat, mint például a:
 + Olyan [vizualizációs felület](ui-tutorial-automobile-price-train-score.md) , amelyben az n-drop modulok használatával felépítheti a kísérleteket, majd üzembe helyezheti a modelleket
-+ [Jupyter jegyzetfüzetek](https://jupyter.org) , amelyekben az [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) -k segítségével saját kódokat írhat, például a [minta jegyzetfüzeteket](https://aka.ms/aml-notebooks)
++ [Jupyter jegyzetfüzetek](https://jupyter.org) , amelyekben az [SDK](https://docs.microsoft.com/azure/machine-learning) -k segítségével saját kódokat írhat, például a [minta jegyzetfüzeteket](https://aka.ms/aml-notebooks)
 + [Visual Studio Code-bővítmény](how-to-vscode-tools.md)
 
 
@@ -66,7 +66,7 @@ A kód nélküli képzéshez próbálkozzon az alábbiakkal:
 
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
 
-Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy a [Azure Portal](https://portal.azure.com/)használatával.
+Ezután felügyelheti a telepített modelleket a [Pythonhoz készült Azure Machine learning SDK](https://aka.ms/aml-sdk), a [Azure Portal](https://portal.azure.com/) vagy a munkaterület kezdőlapja [(előzetes verzió)](https://ml.azure.com)használatával.
 
 Ezeket a modelleket felhasználhatja, és [valós időben](how-to-consume-web-service.md) vagy [aszinkron módon](how-to-run-batch-predictions.md) , nagy mennyiségű adattal lehet visszaadni az előrejelzéseket.
 
@@ -93,7 +93,7 @@ A Azure Machine Learning szolgáltatás az SDK **-k és a-** a vizualizációs f
 |Illesztőfelületi modulok| Számos | Népszerű modulok kezdeti készlete|
 |Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| A Azure Machine Learning számítást, GPU-t vagy CPU-t támogatja.<br/>(Egyéb, az SDK-ban támogatott számítások)|
 |Üzembe helyezési számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Vállalati biztonsági beállítások & Azure Kubernetes szolgáltatás. <br/>(Egyéb, az SDK-ban támogatott[számítások](how-to-deploy-and-where.md) ) |
-|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK-ban és a Azure Portal.) |
+|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a Visual Interface-ben. <br/> (Támogatott az SDK és a Azure Portal/Workspace kezdőlapján.) |
 
 Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyaggal: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
 

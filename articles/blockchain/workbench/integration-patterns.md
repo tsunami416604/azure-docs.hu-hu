@@ -1,244 +1,244 @@
 ---
-title: Az intelligens szerződés integrációs minták az Azure Blockchain Workbench használatával
-description: Az intelligens szerződés integrációs minták az Azure Blockchain Workbench alkalmazásban áttekintése.
+title: Intelligens szerződések integrációs mintái az Azure Blockchain Workbench előzetes verziójában
+description: Az intelligens szerződések integrációs mintáinak áttekintése az Azure Blockchain Workbench előzetes verziójában.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957027"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845169"
 ---
-# <a name="smart-contract-integration-patterns"></a>Az intelligens szerződés integrációs minták
+# <a name="smart-contract-integration-patterns"></a>Intelligens szerződések integrációs mintái
 
-Az intelligens szerződések gyakran képviseli egy üzleti munkafolyamatot, amely a külső rendszerek és eszközök való integrálásához szükséges.
+Az intelligens szerződések gyakran olyan üzleti munkafolyamatot jelentenek, amelynek integrálnia kell a külső rendszerekkel és eszközökkel.
 
-Ezek a munkafolyamatok követelményeinek közé tartozik egy külső rendszer, a szolgáltatás vagy az eszköz adatait tartalmazó tranzakciókat az elosztott Főkönyv kezdeményezéséhez szükséges. Az elosztott Főkönyv intelligens szerződések származó eseményekre reagálni külső rendszerekkel is kell.
+Ezeknek a munkafolyamatoknak a követelményei közé tartozik egy olyan elosztott Főkönyv tranzakcióinak kezdeményezése, amely külső rendszerből, szolgáltatásból vagy eszközből származó adatokkal is rendelkezik. Emellett a külső rendszereknek is szükségük van arra, hogy az elosztott főkönyvben lévő intelligens szerződésekből származó eseményekre reagáljanak.
 
-A REST API-t és az üzenetkezelési integrációs küld tranzakciók külső rendszerekből. az intelligens szerződések tartalmazza az Azure Blockchain Workbench alkalmazásban. Eseményértesítések alapján módosításokat végzett az alkalmazáson belül, a külső rendszerekhez is küld.
+Az REST API és üzenetküldési integráció külső rendszerekből származó tranzakciókat küld az Azure Blockchain Workbench alkalmazásban található intelligens szerződéseknek. Emellett az eseményekre vonatkozó értesítéseket is küld a külső rendszereknek az alkalmazáson belüli módosítások alapján.
 
-Az adatintegrációs forgatókönyveket Azure Blockchain Workbench használatával, amely a blockchain és az alkalmazások és az intelligens szerződések metaadatai tranzakciós adatait kombinációját egyesítése adatbázisnézeteivel készletét tartalmazza.
+Az adatintegrációs forgatókönyvek esetében az Azure Blockchain Workbench olyan adatbázis-nézeteket tartalmaz, amelyek tranzakciós adatok kombinációját egyesítik a Blockchain, valamint az alkalmazásokkal és az intelligens szerződésekkel kapcsolatos metaadatokat.
 
-Emellett bizonyos helyzetekben, kapcsolódnak, adja meg a tanúsítványlánc vagy adathordozóra, például megkövetelheti a dokumentumok az integráció. Azure Blockchain Workbench használatával nem ad meg API-hívások kezeléséhez közvetlenül a dokumentumokat, míg dokumentumok beépíthető a blockchain-alkalmazások. Ez a szakasz a mintát is tartalmaz.
+Emellett bizonyos forgatókönyvek, például az ellátási lánchoz vagy az adathordozóhoz kapcsolódó esetekben a dokumentumok integrálására is szükség lehet. Habár az Azure Blockchain Workbench nem biztosít API-hívásokat a dokumentumok közvetlen kezelésére, a dokumentumokat beépítheti egy Blockchain-alkalmazásba. Ez a szakasz szintén tartalmazza ezt a mintát.
 
-Ez a szakasz tartalmazza a minták a végpontok közötti megoldások megvalósításának egyes Integrációk azonosított.
+Ez a szakasz tartalmazza az egyes típusú integrációk megvalósításához szükséges mintákat a végpontok közötti megoldásokban.
 
-## <a name="rest-api-based-integration"></a>REST API-alapú integrációs
+## <a name="rest-api-based-integration"></a>REST API-alapú integráció
 
-Képességek az Azure Blockchain Workbench használatával létrehozott webes alkalmazásban a REST API-n keresztül érhetők el. Többek között az Azure Blockchain Workbench feltöltése, konfigurációs és felügyeleti alkalmazások, a tranzakciók küldő alkalmazás metaadatok és a könyvelési adatok lekérdezését, és elosztott Főkönyv.
+Az Azure Blockchain Workbench által generált webalkalmazáson belüli képességek a REST APIon keresztül érhetők el. A képességek közé tartozik az Azure Blockchain Workbench az alkalmazások feltöltése, konfigurálása és felügyelete, tranzakciók küldése egy elosztott főkönyvbe, valamint az alkalmazás metaadatainak és a főkönyvi adatok lekérdezése.
 
-Interaktív ügyfélprogramok, mint például a webes, mobil-és bot alkalmazások elsősorban a REST API-t.
+A REST API elsődlegesen olyan interaktív ügyfelekhez használják, mint a webes, mobil és bot-alkalmazások.
 
-Ez a szakasz megvizsgálja a REST API által küldött tranzakció egy elosztott Főkönyv és minták a tranzakciókkal kapcsolatos adatokat lekérdezni az Azure Blockchain Workbench szempontjai minták *lánc kikapcsolva* SQL-adatbázis.
+Ez a szakasz a REST API azon szempontjaira összpontosít, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az Azure Blockchain Workbench *off Chain* SQL Database-ből származó tranzakciók adatait kérdezik le.
 
-### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Egy külső rendszer tranzakciók küld egy elosztott Főkönyv
+### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Tranzakciók küldése egy elosztott főkönyvnek egy külső rendszerből
 
-Az Azure Blockchain Workbench REST API tranzakciókat hajthat végre egy elosztott Főkönyv hitelesített kérelmeket küld.
+Az Azure Blockchain Workbench REST API hitelesített kérelmeket küld a tranzakciók végrehajtásához egy elosztott főkönyvben.
 
-![Tranzakciók küld egy elosztott Főkönyv](./media/integration-patterns/send-transactions-ledger.png)
+![Tranzakciók küldése elosztott főkönyvbe](./media/integration-patterns/send-transactions-ledger.png)
 
-Korábban, ahol a folyamat használata kitaláltak tranzakciók végrehajtása történik:
+A tranzakciók végrehajtása a korábban bemutatott folyamat használatával történik, ahol:
 
--   A külső alkalmazás az Azure Active Directory, az Azure Blockchain Workbench üzembe helyezés részeként üzembe helyezett hitelesíti magát.
--   Jogosult felhasználók kapnak, amely az API-hoz küldhető kérések tulajdonosi jogkivonattal.
--   Külső alkalmazások győződjön meg arról, a REST API-hívások tulajdonosi jogkivonat segítségével.
--   A REST API-csomagot a kérelem egy üzenetnek számít, és elküldi azokat a Service Bus. Itt beolvasott, jelentkezett, és a megfelelő elosztott Főkönyv küldött.
--   A REST API egy kérést az Azure Blockchain Workbench SQL DB jegyezze fel a kérelmet, és létrehozza a jelenlegi üzembe helyezési állapotát.
--   Az SQL DB adja vissza a kiépítési állapotot, és az API-hívás az azonosítója, amelynek a neve, a külső alkalmazásnak adja vissza.
+-   A külső alkalmazás hitelesíti magát az Azure Blockchain Workbench-telepítés részeként kiépített Azure Active Directoryon.
+-   A jogosult felhasználók olyan tulajdonosi jogkivonatot kapnak, amely az API-hoz intézett kérelmekkel küldhető el.
+-   A külső alkalmazások hívásokat kezdeményeznek a REST API a tulajdonosi jogkivonat használatával.
+-   A REST API a kérést üzenetként csomagolja, és elküldi a Service Busnak. Innen lekéri, aláírja és elküldi a megfelelő elosztott főkönyvbe.
+-   A REST API egy kérést küld az Azure Blockchain Workbench SQL DB-nek a kérelem rögzítéséhez és az aktuális kiépítési állapot létrehozásához.
+-   Az SQL-adatbázis visszaadja a kiépítési állapotot, és az API-hívás visszaadja az azonosítót az őt meghívó külső alkalmazásnak.
 
-### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>A Blockchain Workbenchet metaadatokat, és elosztott Főkönyv tranzakciók
+### <a name="querying-blockchain-workbench-metadata-and-distributed-ledger-transactions"></a>Blockchain Workbench-metaadatok és elosztott főkönyvi tranzakciók lekérdezése
 
-Az Azure Blockchain Workbench REST API hitelesített kérelmeket küld az elosztott Főkönyv intelligens szerződés végrehajtásával kapcsolatos lekérdezés részletei.
+Az Azure Blockchain Workbench REST API hitelesített kéréseket küld az intelligens Szerződés végrehajtásával kapcsolatos adatok lekérdezéséhez egy elosztott főkönyvben.
 
-![Querying metadata](./media/integration-patterns/querying-metadata.png)
+![Metaadatok lekérdezése](./media/integration-patterns/querying-metadata.png)
 
-Korábban, ahol a folyamat használata kitaláltak lekérdezése történik:
+A lekérdezés a korábban bemutatott folyamat használatával történik, ahol:
 
-1. A külső alkalmazás az Azure Active Directory, az Azure Blockchain Workbench üzembe helyezés részeként üzembe helyezett hitelesíti magát.
-2. Jogosult felhasználók kapnak, amely az API-hoz küldhető kérések tulajdonosi jogkivonattal.
-3. Külső alkalmazások győződjön meg arról, a REST API-hívások tulajdonosi jogkivonat segítségével.
-4. A REST API lekérdezi az SQL DB-ből a kérelem adatai, és visszaadja az ügyfélnek.
+1. A külső alkalmazás hitelesíti magát az Azure Blockchain Workbench-telepítés részeként kiépített Azure Active Directoryon.
+2. A jogosult felhasználók olyan tulajdonosi jogkivonatot kapnak, amely az API-hoz intézett kérelmekkel küldhető el.
+3. A külső alkalmazások hívásokat kezdeményeznek a REST API a tulajdonosi jogkivonat használatával.
+4. A REST API lekérdezi a kérelem adatait az SQL-ADATBÁZISból, és visszaküldi az ügyfélnek.
 
 ## <a name="messaging-integration"></a>Üzenetkezelési integráció
 
-Integrációs üzenetkezelés lehetővé teszi a rendszerek, szolgáltatások és eszközök, ahol egy interaktív bejelentkezési nem lehetséges vagy nem kívánatos-szal. Üzenetkezelési integrációs kétféle típusú üzenetek összpontosít: kérő üzenetek tranzakciók hajtható végre az elosztott Főkönyv és eseményeket a Főkönyv által elérhetővé tett, ha a tranzakció került sor.
+Az üzenetkezelési integráció elősegíti a rendszerekkel, szolgáltatásokkal és eszközökkel való interakciót, ha az interaktív bejelentkezés nem lehetséges vagy nem kívánatos. Az üzenetkezelési integráció két típusú üzenetre összpontosít: a tranzakciókat kérő üzenetek egy elosztott főkönyvön futnak, és az adott Főkönyv által a tranzakciók végrehajtásakor kitett események.
 
-Üzenetkezelési integrációs összpontosít a végrehajtási és felhasználó létrehozása, a szerződés-létrehozási és szerződések a tranzakciók végrehajtási kapcsolatos tranzakciók figyelésére, és elsősorban a *távfelügyelt* háttérrendszerekhez.
+Az üzenetkezelési integráció a felhasználói létrehozással, a szerződések létrehozásával és a szerződések tranzakcióinak végrehajtásával kapcsolatos tranzakciók végrehajtásán és figyelésén alapul, és elsősorban a *fej* nélküli háttérrendszer-rendszerek használják.
 
-Ez a szakasz az üzenet-alapú API, amely a tranzakciók küldeni egy elosztott Főkönyv és a mintákat, amelyek az alapul szolgáló elosztott Főkönyv által elérhetővé tett eseményüzenetek szempontjai minták megvizsgál.
+Ez a szakasz az üzenetsor-alapú API azon szempontjaira koncentrál, amelyek tranzakciókat küldenek egy elosztott főkönyvbe, valamint olyan mintákat, amelyek az alapul szolgáló elosztott Főkönyv által közzétett üzeneteket jelölik.
 
-### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Egyirányú eseménykézbesítés intelligens szerződések egy eseményközpontból, eseményfelhasználó 
+### <a name="one-way-event-delivery-from-a-smart-contract-to-an-event-consumer"></a>Egyirányú esemény kézbesítése intelligens szerződésből egy esemény-felhasználó felé 
 
-Ebben a forgatókönyvben egy esemény fordul elő egy intelligens szerződést, például az állapotváltozás vagy egy adott típusú tranzakciók végrehajtása. Ez az esemény van egy Event Grid alsóbb rétegbeli fogyasztók számára, és ezek a felhasználók szórási, majd a megfelelő műveleteket.
+Ebben az esetben egy esemény egy intelligens szerződésen belül történik, például egy állapot változása vagy egy adott típusú tranzakció végrehajtása. Ez az esemény egy Event Gridon keresztül történik a továbbfelhasználó számára, és ezek a fogyasztók a megfelelő műveleteket végzik.
 
-Ebben a forgatókönyvben egy példát az, hogy egy tranzakció esetén a fogyasztó szeretne kapni, és a művelet, például az információk rögzítésére egy SQL-adatbázis vagy a Common Data Service is igénybe vehet. Ebben a forgatókönyvben a Workbench a következő adatokkal való feltöltéséhez ugyanazt a mintát a *lánc kikapcsolva* SQL-Adatbázissal.
+Ilyen eset például, ha egy tranzakció bekövetkezik, a fogyasztó riasztást kap, és műveleteket végezhet, például az adatok rögzítését egy SQL-ADATBÁZISba vagy a Common Data Service. Ez a forgatókönyv ugyanaz a minta, amelyet a Workbench az SQL-adatbázis *ki* -és betöltéséhez is követ.
 
-Egy másik lenne, ha egy intelligens szerződés egy adott állapotban, például amikor egy szerződés hiányzóra átkerül egy *OutOfCompliance*. Ezt akkor fordul elő, amikor azt válthatja ki egy riasztást küldeni a mobiltelefonjára rendszergazdai szerepkörrel.
+Egy másik lenne, ha egy intelligens szerződés egy adott állapotra vált, például ha egy szerződés egy *OutOfCompliance*kerül. Ha ez az állapot változik, riasztást indíthat a rendszergazda mobiltelefonjára.
 
-![Egyirányú eseménykézbesítés](./media/integration-patterns/one-way-event-delivery.png)
+![Egyirányú esemény kézbesítése](./media/integration-patterns/one-way-event-delivery.png)
 
-Ebben a forgatókönyvben a korábban, ahol a folyamat használata kitaláltak történik:
+Ez a forgatókönyv a korábban bemutatott folyamat használatával fordul elő, ahol:
 
--   Az intelligens szerződés átkerül az új állapot, és eseményt küld az a Főkönyv.
--   A Főkönyv fogadja, és az esemény továbbítja az Azure Blockchain Workbench használatával.
--   Az Azure Blockchain Workbench a könyvelési események által előfizetett, és az eseményt kap.
--   Az Azure Blockchain Workbench az Event Grid-előfizetők tesz közzé az eseményt.
--   Az Event Grid előfizetett külső rendszerekkel, az üzenet használják, és végezze el a megfelelő műveleteket.
+-   Az intelligens szerződés új állapotba vált, és egy eseményt küld a főkönyvnek.
+-   A Főkönyv fogadja és kézbesíti az eseményt az Azure Blockchain Workbench számára.
+-   Az Azure Blockchain Workbench feliratkozott a főkönyvből származó eseményekre, és fogadja az eseményt.
+-   Az Azure Blockchain Workbench közzéteszi az eseményt az Event Grid előfizetőknek.
+-   A rendszer Előfizeti a külső rendszereket a Event Gridra, felhasználja az üzenetet, és végrehajtja a megfelelő műveleteket.
 
-## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Egyirányú eseménykézbesítés az üzenet egy külső rendszer egy intelligens szerződés
+## <a name="one-way-event-delivery-of-a-message-from-an-external-system-to-a-smart-contract"></a>Külső rendszerről intelligens szerződésre küldött üzenet egyirányú kézbesítése
 
-Ez a forgatókönyv jut el az ellenkező irányba is van. Ebben az esetben egy érzékelő által létrejön egy esemény, vagy egy külső rendszer és az adatok eredő küldjön el egy intelligens szerződés.
+Van olyan forgatókönyv is, amely az ellenkező irányba áramlik. Ebben az esetben egy érzékelő vagy egy külső rendszer generál egy eseményt, és az adott eseményből származó adatoknak egy intelligens szerződésbe kell elküldeni.
 
-Ilyenek például a szállítást az adatok a pénzügyi piacok számára, például az áruk, készlet vagy kötvényekről, az árak egy intelligens szerződés.
+Gyakori példa a pénzügyi piacokról származó adatok továbbítása, például az árucikkek, a készletek vagy a kötvények árai egy intelligens szerződéshez.
 
-### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Az Azure Blockchain Workbench használatával a várt formátumban közvetlen szállítása
+### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench közvetlen kézbesítése a várt formátumban
 
-Egyes alkalmazások integrálása az Azure Blockchain Workbench használatával készültek, és közvetlenül állít elő, és üzeneteket küldhet a várt formátumú.
+Egyes alkalmazások az Azure Blockchain Workbench-sel való integrációhoz készültek, és közvetlenül a várt formátumokban hozzanak létre és küldenek üzeneteket.
 
 ![Közvetlen kézbesítés](./media/integration-patterns/direct-delivery.png)
 
-A kézbesítési következik be, a folyamat segítségével kitaláltak korábban a where:
+A kézbesítés a korábban bemutatott folyamat használatával történik, ahol:
 
--   Egy esemény egy külső rendszer, amely egy üzenetet létrehozása az Azure Blockchain Workbench használatával történik.
--   A külső rendszer ezt az üzenetet létrehozni egy ismert formátumban írt kódot tartalmaz, és közvetlenül a Service Bus küldi.
--   Az Azure Blockchain Workbench a a Service Bus-eseményekre által előfizetett, és lekéri az üzenet.
--   Az Azure Blockchain Workbench indítja el a Főkönyv hívást a külső rendszer adatokat küldeni egy adott szerződést.
--   Az üzenet megérkezésekor a szerződés egy új állapot értékre vált.
+-   Egy esemény egy külső rendszeren történik, amely elindítja az Azure Blockchain Workbench üzenet létrehozását.
+-   A külső rendszernek van olyan kódja, amely az üzenet ismert formátumban való létrehozására van írva, és közvetlenül a Service Bus küldi el.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+-   Az üzenet kézhezvétele után a Szerződés új állapotba vált.
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítési az Azure Blockchain Workbench használatával
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítése az Azure Blockchain Workbenchben
 
-Egyes rendszerek nem lehet módosítani a kézbesíti az üzeneteket az Azure Blockchain Workbench által használt szabványos formátumban. Ezen esetekben meglévő mechanizmusok és üzenet ezen rendszerekből formátumban is használható. Pontosabban ezek a rendszerek natív üzenet típusú átalakíthatók leképezése a standard szintű üzenetkezelés várt formátumok egyikét a Logic Apps, az Azure Functions vagy más egyéni kód használatával.
+Néhány rendszer nem módosítható úgy, hogy az Azure Blockchain Workbench által használt szabványos formátumban kézbesítse az üzeneteket. Ezekben az esetekben gyakran használhatók a rendszerek meglévő mechanizmusai és az üzenetek formátuma is. A rendszerek natív üzeneteinek típusait Logic Apps, Azure Functions vagy más egyéni kód használatával lehet átalakítani, hogy a várt standard üzenetküldési formátumok egyikét képezze.
 
 ![Ismeretlen üzenet formátuma](./media/integration-patterns/unknown-message-format.png)
 
-Ez akkor fordul elő, a folyamat segítségével kitaláltak korábban a where:
+Ez a korábban bemutatott folyamat használatával történik, ahol:
 
--   Egy külső rendszer üzenet létrehozását kiváltó esemény történik.
--   Egy logikai alkalmazásban vagy egyéni kódot üzenetet fogadó és a egy standard Azure Blockchain Workbench használatával formázott üzenet alakítása szolgál.
--   A logikai alkalmazás közvetlenül a Service Bus, az átalakított üzenetet küld.
--   Az Azure Blockchain Workbench a a Service Bus-eseményekre által előfizetett, és lekéri az üzenet.
--   Az Azure Blockchain Workbench a külső rendszer adatokat küldeni egy adott funkciót, a szerződés a Főkönyv hívást kezdeményez.
--   A függvény hajt végre, és az állapot általában módosítja. Az állapotváltozás helyezi előre az üzleti munkafolyamatot a intelligens szerződést, más függvények, most már megfelelő futtatandó engedélyezése megjelennek.
+-   Egy esemény egy külső rendszeren történik, amely egy üzenet létrehozását indítja el.
+-   A logikai alkalmazások vagy egyéni kódok használatával fogadhatják ezt az üzenetet, és átalakíthatja azt egy szabványos Azure Blockchain Workbench formátumú üzenetbe.
+-   A logikai alkalmazás közvetlenül a Service Bus küldi az átalakított üzenetet.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől a szerződés egy adott függvényének.
+-   A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
-### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Külső vezérlőelem transitioning dolgozza fel, és await befejezése
+### <a name="transitioning-control-to-an-external-process-and-await-completion"></a>Vezérlés átirányítása külső folyamatra, és várakozás a befejezésre
 
-Ha egy intelligens szerződés le kell állítania belső végrehajtását és a egy külső folyamatba való átadása forgatókönyv közül választhat. Majd hajtsa végre külső folyamat, az intelligens szerződést, és a végrehajtási üzenet küldése majd folytatni az intelligens szerződés belül.
+Vannak olyan forgatókönyvek, amelyekben egy intelligens szerződésnek le kell állítania a belső végrehajtást, és ki kell kapcsolnia egy külső folyamatot. Ezt követően a külső folyamat elkészül, küldjön egy üzenetet az intelligens szerződésnek, a végrehajtás pedig azután folytatja az intelligens szerződést.
 
-#### <a name="transition-to-the-external-process"></a>Áttérés a külső folyamat
+#### <a name="transition-to-the-external-process"></a>Áttérés a külső folyamatra
 
-Ez a minta jellemzően a következő módon használatával lett megvalósítva:
+Ez a minta jellemzően a következő módszer használatával valósítható meg:
 
--   Az intelligens szerződés átmeneteket egy adott állapotba. Ebben az állapotban vagy nem vagy a functions korlátozott számú hajtható végre, amíg egy külső rendszer végrehajt egy kívánt műveletet.
--   Az állapotváltozás eseményként van illesztett egy alsóbb rétegbeli fogyasztó számára.
--   Az alsóbb rétegbeli fogyasztói az eseményt kap, és a külső kód indítja.
+-   Az intelligens szerződés adott állapotra vált. Ebben az állapotban a nem vagy a korlátozott számú függvény hajtható végre, amíg egy külső rendszer el nem végzi a kívánt műveletet.
+-   Az állapot változása eseményként felszínre kerül egy alsóbb rétegbeli fogyasztó számára.
+-   Az alárendelt fogyasztó megkapja az eseményt, és elindítja a külső kód végrehajtását.
 
-![Átmenet vezérlőelem külső folyamat](./media/integration-patterns/transition-external-process.png)
+![Átváltási vezérlés külső folyamatra](./media/integration-patterns/transition-external-process.png)
 
-#### <a name="return-of-control-from-the-smart-contract"></a>Az intelligens szerződések vezérlő vissza
+#### <a name="return-of-control-from-the-smart-contract"></a>Az intelligens szerződés vezérlésének visszaadása
 
-A külső rendszer testre szabhatók, attól függően lehet, hogy vagy nem lehet elküldeni az üzeneteket az Azure Blockchain Workbench vár standard-formátumok egyikében. Alapján hozzon létre egyet külső rendszerek lehetővé teszi üzenetek határozza meg, amely a következő két adja vissza az elérési út használatban van.
+A külső rendszer testreszabásának lehetősége attól függően előfordulhat, hogy nem tudja kézbesíteni az üzeneteket az Azure Blockchain Workbench által várt szabványos formátumok egyikében. Az ilyen üzenetek egyikének létrehozásához szükséges külső rendszerek alapján megállapítható, hogy a következő két visszatérési útvonal közül melyiket kell megtenni.
 
-##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Az Azure Blockchain Workbench használatával a várt formátumban közvetlen szállítása
+##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench közvetlen kézbesítése a várt formátumban
 
 ![](./media/integration-patterns/direct-delivery.png)
 
-Ebben a modellben a kommunikációt a szerződés és a későbbi állapotváltozás akkor fordul elő, az előző folyamat során a következő ahol -
+Ebben a modellben a szerződéssel és az azt követő állapottal való kommunikáció az előző folyamat után történik, ahol:
 
--   Elérésekor, a befejezési vagy külső kód végrehajtását az adott mérföldkő, a Service Bus, az Azure Blockchain Workbench használatával csatlakozik egy eseményt küld.
+-   A külső programkód végrehajtásának befejezését vagy egy adott mérföldkövet követően a rendszer egy eseményt továbbít az Azure Blockchain Workbenchhez kapcsolódó Service Bus.
 
--   A rendszereken, nem közvetlenül megfelelően adaptálhassa írjon egy üzenetet, amely megfelel az API-t az elvárásainak átalakítva.
+-   Azokhoz a rendszerekhez, amelyek nem módosíthatók közvetlenül az API elvárásainak megfelelő üzenet írásához, átalakítja őket.
 
--   Az üzenet tartalma csomagolt, és a egy adott funkciót a intelligens szerződés küldött. A kézbesítési történik, a külső rendszer társított felhasználó nevében.
+-   Az üzenet tartalma fel van csomagolva, és egy adott függvénynek küldi el az intelligens szerződést. Ez a kézbesítés a külső rendszerhez társított felhasználó nevében történik.
 
--   A függvény hajt végre, és az állapot általában módosítja. Az állapotváltozás helyezi előre az üzleti munkafolyamatot a intelligens szerződést, más függvények, most már megfelelő futtatandó engedélyezése megjelennek.
+-   A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
 ### 
 
-### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítési az Azure Blockchain Workbench használatával
+### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Ismeretlen formátumú üzenet kézbesítése az Azure Blockchain Workbenchben
 
 ![Ismeretlen üzenet formátuma](./media/integration-patterns/unknown-message-format.png)
 
-Ebben a modellben, ahol egy szabványos formátumra nem küldhető közvetlenül, a szerződés a kommunikációs és későbbi állapot módosításai a következő az előző where feldolgozásához:
+Ebben a modellben, amikor egy szabványos formátumban lévő üzenet nem küldhető el közvetlenül, a szerződéssel folytatott kommunikáció és az azt követő állapotváltozás az előző folyamat után következik be, ahol:
 
-1.  Elérésekor, a befejezési vagy külső kód végrehajtását az adott mérföldkő, a Service Bus, az Azure Blockchain Workbench használatával csatlakozik egy eseményt küld.
-2.  Egy logikai alkalmazásban vagy egyéni kódot üzenetet fogadó és a egy standard Azure Blockchain Workbench használatával formázott üzenet alakítása szolgál.
-3.  A logikai alkalmazás közvetlenül a Service Bus, az átalakított üzenetet küld.
-4.  Az Azure Blockchain Workbench a a Service Bus-eseményekre által előfizetett, és lekéri az üzenet.
-5.  Az Azure Blockchain Workbench indítja el a Főkönyv hívást a külső rendszer adatokat küldeni egy adott szerződést.
-6. Az üzenet tartalma csomagolt, és a egy adott funkciót a intelligens szerződés küldött. A kézbesítési történik, a külső rendszer társított felhasználó nevében.
-7.  A függvény hajt végre, és az állapot általában módosítja. Az állapotváltozás helyezi előre az üzleti munkafolyamatot a intelligens szerződést, más függvények, most már megfelelő futtatandó engedélyezése megjelennek.
+1.  A külső programkód végrehajtásának befejezését vagy egy adott mérföldkövet követően a rendszer egy eseményt továbbít az Azure Blockchain Workbenchhez kapcsolódó Service Bus.
+2.  A logikai alkalmazások vagy egyéni kódok használatával fogadhatják ezt az üzenetet, és átalakíthatja azt egy szabványos Azure Blockchain Workbench formátumú üzenetbe.
+3.  A logikai alkalmazás közvetlenül a Service Bus küldi az átalakított üzenetet.
+4.  Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+5.  Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+6. Az üzenet tartalma fel van csomagolva, és egy adott függvénynek küldi el az intelligens szerződést. Ez a kézbesítés a külső rendszerhez társított felhasználó nevében történik.
+7.  A függvény végrehajtja és általában módosítja az állapotot. Az állapot módosítása továbbítja az intelligens szerződésben tükröződő üzleti munkafolyamatot, amely lehetővé teszi más függvények megfelelő végrehajtását.
 
 ## <a name="iot-integration"></a>IoT-integráció
 
-Integrációs forgatókönyve a telemetriai adatok, érzékelők intelligens szerződés keretében történő felvételére. Érzékelők által továbbított adatok alapján, az intelligens szerződések sikerült megalapozott műveleteket és módosítsa a szerződés állapotát.
+A közös integrációs forgatókönyvek az érzékelőkből beolvasott telemetria-adatok bevonása egy intelligens szerződésbe. Az érzékelők által szállított adatmennyiség alapján az intelligens szerződések tájékozott műveleteket végezhetnek, és megváltoztathatják a szerződés állapotát.
 
-Például ha egy orvoslás továbbítása teherautó 110 fokban megugrik a hőmérséklet, azt hatással lehet a orvoslás hatékonyságát és nyilvános biztonsági problémát okozhat, ha nem észlelt, és a az ellátási lánc. Egy illesztőprogram óránként 100 mérföldre, hogy gyorsított, ha az eredményül kapott érzékelőitől válthatja ki a biztosítási szolgáltató biztosítási lemondás. Ha az autó bérleti autót volt, a GPS-adatok esetleg azt jelzik, ha az illesztőprogram a hatálya alá bérleti szerződés keretein belül egy térségen kívül történt, és egy napján belül pótdíj díja szerint számítjuk fel.
+Ha például egy olyan teherautót szállítanak, amely a gyógyszert a 110 fok fölé helyezi, akkor ez hatással lehet a gyógyszer hatékonyságára, és a nyilvános biztonsági problémát okozhat, ha a szolgáltatás nem észleli és nem távolítja el az ellátási láncot. Ha az illesztőprogram óránként 100 mérföldre felgyorsítja autóját, az eredményül kapott érzékelő információi kiválthatják a biztosításuk szolgáltató általi törlését. Ha az autó bérelt autó volt, a GPS-adatjelzés azt jelezheti, hogy az illesztőprogram a bérleti szerződés által érintett földrajzi helyen kívülre került, és díjat számít fel.
 
-A kihívás abban áll, hogy érzékelőktől is lehet továbbítása adatok állandó történik, és nem célszerű minden adatot küld egy intelligens szerződést. Egy jellemző példán, hogy korlátozza az összes üzenet adatbáziscsoportok másodlagos áruházban a blockchain küldött üzenetek számát. Például a időszakonként csak állandó, például óránként egyszer, és ha tartalmazott értéket egy egyeztetett kívül esik a Beérkezett üzenetek továbbítására tartomány egy intelligens szerződés alapján. Tolerancia kívül eső értékeket ellenőrzése, biztosítja, hogy a szerződések üzleti logikát, vonatkozó adatokat fogadott, és végre. Az érték ellenőrzése a időközönként megerősíti, hogy az érzékelő még küld jelentést. Minden adatot megkap egy másodlagos kimutatási áruházban szélesebb körű jelentéskészítési, elemzési és gépi tanulási engedélyezéséhez. Például bár a érzékelőinek adatai a GPS-adatok lekérdezése nem szükséges egy intelligens szerződés percenként, nyújtani érdekesebb adatokat megjelölheti használható jelentések vagy hozzárendelési útvonalak.
+A kihívás az, hogy ezek az érzékelők állandó módon tudják szolgáltatni az adatmennyiséget, és nem alkalmasak arra, hogy az összes adat egy intelligens szerződésbe legyen küldve. Egy tipikus módszer a blockchain küldött üzenetek számának korlátozása, miközben az összes üzenetet egy másodlagos tárolóba kézbesíti. Például csak a rögzített időközönként fogadott üzeneteket, például óránként egyszer, és ha egy foglalt érték az intelligens szerződés tartományán kívül esik. A tűréshatárokon kívül eső értékek ellenőrzése biztosítja, hogy a szerződések üzleti logikájának megfelelő adatok fogadása és végrehajtása megtörténjen. Az intervallumban lévő érték ellenőrzése megerősíti, hogy az érzékelő továbbra is jelentéskészítésre kerül. A rendszer a szélesebb körű jelentéskészítés, elemzés és gépi tanulás érdekében minden adattal elküld egy másodlagos jelentési tárolóba. Előfordulhat például, hogy egy intelligens szerződés esetében nem szükséges percenként beolvasni az érzékelőt a GPS-hez, ezért fontos, hogy a jelentésekben vagy a leképezési útvonalakban használt információkkal szolgálnak.
 
-Az Azure platformon integráció az eszközök általában történik az IoT hubbal. Az IoT Hub biztosít a tartalom alapján üzenetek útválasztását, és lehetővé teszi, hogy a korábban leírt ábrázolási.
+Az Azure platformon az eszközökkel való integráció általában IoT Hubtel történik. IoT Hub az üzenetek továbbítását biztosítja a tartalom alapján, és lehetővé teszi a korábban leírt funkciók típusát.
 
-![IoT-üzenetekhez](./media/integration-patterns/iot.png)
+![IoT üzenetek](./media/integration-patterns/iot.png)
 
-A folyamat egy minta ábrázolja:
+A folyamat egy mintázatot ábrázol:
 
--   Egy eszköz közvetlenül vagy egy helyszíni átjáró az IoT hub-n keresztül kommunikál.
--   Az IoT Hub fogadja az üzeneteket, és kiértékeli az üzenetek elleni létre útvonalakat például ellenőrizze, hogy az üzenet tartalmát. *Az érzékelő jelentést készít egy nagyobb, mint 50 fok hőmérséklet?*
--   Az IoT Hub küldi az üzeneteket, amelyek megfelelnek a feltételeknek, egy meghatározott Service Bus, az útvonal.
--   Egy logikai alkalmazásban vagy más kódot figyeli a Service Bus, amely az IoT Hub hozott létre az útvonal.
--   A logikai alkalmazásban vagy más kód kérdezi le, és a egy ismert formátumba az üzenet átalakítása.
--   Az átalakított üzenetet most egy szabványos formátumra van küldeni a Service Bus az Azure Blockchain Workbench használatával.
--   Az Azure Blockchain Workbench a a Service Bus-eseményekre által előfizetett, és lekéri az üzenet.
--   Az Azure Blockchain Workbench indítja el a Főkönyv hívást a külső rendszer adatokat küldeni egy adott szerződést.
--   Az üzenet megérkezésekor a szerződés kiértékeli az adatokat, és előfordulhat, hogy az állapotváltozáshoz. például ezen értékelés eredménye alapján a legmagasabb hőmérséklet, állapotának *kívüli megfelelőségi*.
+-   Az eszközök közvetlenül vagy egy helyszíni átjárón keresztül kommunikálnak a IoT Hub.
+-   IoT Hub fogadja az üzeneteket, és kiértékeli az üzeneteket a létrehozott útvonalakon, például az üzenet tartalmának ellenőrzéséhez. *Az érzékelő a 50 fokosnál nagyobb hőmérsékletet jelent?*
+-   A IoT Hub a feltételeknek megfelelő üzeneteket küld egy meghatározott Service Bus az útvonalhoz.
+-   Egy logikai alkalmazás vagy más kód figyeli a Service Bus, amelyet az útvonalhoz IoT Hub létesített.
+-   A logikai alkalmazás vagy más kód egy ismert formátumba kérdezi le és alakítja át az üzenetet.
+-   Az átalakított üzenetet – a standard formátumban – az Azure Blockchain Workbench Service Bus küldi el a rendszer.
+-   Az Azure Blockchain Workbench feliratkozott a Service Bus eseményeire, és lekéri az üzenetet.
+-   Az Azure Blockchain Workbench hívást kezdeményez a főkönyvnek, és adatokat küld a külső rendszertől egy adott szerződésnek.
+-   Az üzenet kézhezvétele után a szerződés kiértékeli az adatmennyiséget, és a kiértékelés eredménye alapján megváltoztathatja az állapotot, például ha magas hőmérsékletre módosítja az állapotot, a rendszer nem felel meg a *megfelelőségnek*.
 
 ## <a name="data-integration"></a>Adatintegráció
 
-REST és üzenetalapú API-val az Azure Blockchain Workbench is nyújt hozzáférést egy SQL-adatbázisba beírja az alkalmazás és a szerződés metaadatok, valamint az elosztott főkönyvek tranzakciós adatait.
+A REST és az üzenetsor-alapú API-k mellett az Azure Blockchain Workbench hozzáférést biztosít az alkalmazás-és a szerződéses meta-adatokkal feltöltött SQL-ADATBÁZISokhoz, valamint az elosztott főkönyvből származó tranzakciós adatokhoz is.
 
 ![Adatintegráció](./media/integration-patterns/data-integration.png)
 
-Az adatok integrációját a jól ismert:
+Az Adatintegráció jól ismert:
 
--   Az Azure Blockchain Workbench a rendes működési viselkedés részét képező alkalmazások, munkafolyamatok, szerződések és tranzakciók metaadatokat tárol.
--   Külső rendszerekhez vagy eszközök adjon meg egy vagy több párbeszédpanelek megkönnyítése érdekében a gyűjteményhez tartozó információt tárol az adatbázisban, például az adatbázis-kiszolgáló nevét, az adatbázis neve, a típusú hitelesítés, bejelentkezési hitelesítő adatait, és melyik adatbázist megtekinti vehető igénybe.
--   Lekérdezések külső rendszerekkel, az szolgáltatások, a jelentéskészítés, a fejlesztői eszközök és a vállalati hatékonyságnövelő eszközök által írt szemben az SQL database nézetek alsóbb rétegbeli használat megkönnyítése érdekében.
+-   Az Azure Blockchain Workbench az alkalmazásokkal, munkafolyamatokkal, szerződésekkel és tranzakciókkal kapcsolatos metaadatokat tárolja a szokásos működési működésük részeként.
+-   A külső rendszerek vagy eszközök egy vagy több párbeszédpanelt biztosítanak, amelyek megkönnyítik az adatbázissal kapcsolatos információk gyűjtését, például az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, a bejelentkezési hitelesítő adatokat, valamint a használni kívánt adatbázis-nézeteket.
+-   A lekérdezések az SQL Database nézeteivel vannak írva, hogy a külső rendszerek, a szolgáltatások, a jelentéskészítés, a fejlesztői eszközök és a vállalati hatékonyságnövelő eszközök segítségével elősegítsék az alsóbb szintű felhasználást.
 
-## <a name="storage-integration"></a>Storage-integráció
+## <a name="storage-integration"></a>Tárterület-integráció
 
-Számos forgatókönyv attestable fájlok átfogó szükség lehet szükség. Több okból nem helyénvaló helyezi a blockchain a fájlokat. Ehelyett egy általánosan használt megközelítés, hogy hajtsa végre a fájl (például SHA-256) titkosítási kivonatot, és megoszthatja a kivonatot az elosztott Főkönyv. A kivonatoló végrehajtása egy későbbi időpontban újra ugyanazt az eredményt adja vissza. Ha a fájlt módosítanak, akkor is, ha csak egy képpontos módosul a képet, a kivonatot egy másik értéket adja vissza.
+Számos esetben szükség lehet a tanúsítható fájlok beépítésére. Több okból kifolyólag nem helyénvaló, hogy fájlokat helyezzen el egy blockchain. Ehelyett egy közös módszer egy titkosítási kivonat (például SHA-256) végrehajtása egy fájlon, és a kivonat megosztása egy elosztott főkönyvben. A kivonat ismételt elküldése minden jövőbeli időpontban ugyanezt az eredményt kell visszaadnia. Ha a fájl módosítva lett, még akkor is, ha csak egy képpontot módosítanak egy képen, a kivonat egy másik értéket ad vissza.
 
-![Storage-integráció](./media/integration-patterns/storage-integration.png)
+![Tárterület-integráció](./media/integration-patterns/storage-integration.png)
 
-A minta implementálhatók ahol:
+A minta a következő esetekben valósítható meg:
 
--   Egy külső rendszer továbbra is fennáll, egy olyan tárolási mechanizmus, például az Azure Storage-fájlra.
--   Kivonatot a vagy a fájl hozza létre, és a kapcsolódó metaadat-azonosítója a tulajdonosa, az URL-címet, ahol a fájl megtalálható, például stb.
--   A kivonatot, és az összes metaadat a érkezik egy intelligens szerződés, a függvény például *FileAdded*
--   A jövőben a fájl- és metaadatok lehetnek újra kivonatolt és összehasonlítja az értékeket a Főkönyv tárolja.
+-   Egy külső rendszer megőrzi a fájlt egy tárolási mechanizmusban, például az Azure Storage-ban.
+-   A rendszer kivonatot hoz létre a fájllal vagy a fájllal, valamint a hozzá tartozó metaadatokkal, például a tulajdonos azonosítóját, az URL-címet, ahol a fájl található stb.
+-   A kivonatot és a metaadatokat egy intelligens szerződés függvénye, például *FileAdded*
+-   A jövőben a fájl és a meta-adatok kivonatolása újra elvégezhető, és összehasonlítható a főkönyvben tárolt értékekkel.
 
-## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Integrációs minták a REST és üzenet API-k végrehajtására vonatkozó Előfeltételek
+## <a name="prerequisites-for-implementing-integration-patterns-using-the-rest-and-message-apis"></a>Az integrációs minták REST és Message API-k használatával történő megvalósításának előfeltételei
 
-Megkönnyítése érdekében arra, hogy az egy külső rendszer vagy eszköz a REST vagy az üzenet API használatával intelligens szerződés kommunikál, a következőknek kell teljesülniük-
+Annak érdekében, hogy egy külső rendszer vagy eszköz a REST vagy az Message API használatával kommunikáljon az intelligens szerződéssel, az alábbiaknak kell történnie:
 
-1. Az Azure Active Directoryban a consortium, a fiók jön létre, amely a külső rendszer vagy az eszköz jelöli.
-2. Egy vagy több, az Azure Blockchain Workbench alkalmazás megfelelő intelligens szerződések rendelkezik a külső rendszer vagy eszköz az események fogadására meghatározott függvényeket.
-3. Az alkalmazás konfigurációs fájljának az intelligens szerződés tartalmazza a szerepkört, amely a rendszer vagy az eszköz van hozzárendelve.
-4. Az alkalmazás konfigurációs fájljának az intelligens szerződéshez azonosítja a amely megállapítja, hogy a meghatározott szerepkör hívja meg ezt a funkciót.
-5. Az alkalmazás konfigurációs fájljának és a hozzá tartozó smart contracts töltenek fel az Azure Blockchain Workbench használatával.
+1. A konzorcium Azure Active Directory egy olyan fiókot hoz létre, amely a külső rendszerre vagy eszközre vonatkozik.
+2. Az Azure Blockchain Workbench-alkalmazáshoz egy vagy több megfelelő intelligens szerződés van definiálva, hogy elfogadja az eseményeket a külső rendszertől vagy eszköztől.
+3. Az intelligens szerződéshez tartozó alkalmazás-konfigurációs fájl tartalmazza azt a szerepkört, amelyet a rendszer vagy az eszköz hozzá van rendelve.
+4. Az intelligens szerződéshez tartozó alkalmazás-konfigurációs fájl azonosítja, hogy mely állapotokban hívja meg ezt a függvényt a megadott szerepkör.
+5. Az alkalmazás konfigurációs fájlja és az intelligens szerződések feltöltése az Azure Blockchain Workbenchbe történik.
 
-Miután feltöltötte az alkalmazást, az Azure Active Directory-fiókot a külső rendszer hozzá van rendelve a szerződés és a kapcsolódó szerepkör.
+Az alkalmazás feltöltése után a külső rendszer Azure Active Directory fiókja hozzá van rendelve a szerződéshez és a társított szerepkörhöz.
 
-## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>Integrációs kód írása előtt a külső rendszer az integrációs folyamatok tesztelése 
+## <a name="testing-external-system-integration-flows-prior-to-writing-integration-code"></a>A külső rendszerintegrációs folyamatok tesztelése az integrációs kód írása előtt 
 
-Külső rendszerek integrálása akkor számos forgatókönyv-kulcs szükséges. Kívánatos képesnek lennie ellenőriznie az intelligens szerződés Tervező korábbi vagy a kód fejlesztéséhez párhuzamosan külső rendszerekkel való integrációt segítik.
+A külső rendszerekkel való integráció számos forgatókönyv kulcsfontosságú követelménye. A külső rendszerekkel való integrációhoz szükséges kód fejlesztéséhez érdemes lehet ellenőrizni az intelligens szerződés kialakítását.
 
-Az Azure Active Directory (Azure AD) használatát is jelentősen gyorsabban fejlesztői hatékonyság és az idő értékre. Pontosabban a kódot és egy külső rendszer közötti integráció is igénybe vehet egy nem triviális mennyi ideig. Azure AD-vel és az automatikus létrehozása az Azure Blockchain Workbench UX, engedélyezheti a fejlesztők számára, hogy jelentkezzen be a külső rendszer Blockchain Workbenchet, és töltse fel az értékeket a külső rendszer a UX-n keresztül Gyors fejlesztése és érvényesítése ötleteit egy megvalósíthatósági tesztkörnyezetben, a külső rendszerekhez készült integrációs kód írása előtt.
+A Azure Active Directory (Azure AD) használata nagy mértékben felgyorsíthatja a fejlesztői hatékonyságot, és időt is igénybe vehet. A kód egy külső rendszerrel való integrációja nem triviális időt vehet igénybe. Az Azure AD és az Azure Blockchain Workbench automatikus generálásával lehetővé teheti a fejlesztők számára, hogy külső rendszerként bejelentkezzenek a Blockchain Workbenchbe, és a külső rendszerből származó értékeket a UX használatával feltöltsék. Gyorsan fejlesztheti és érvényesítheti az ötleteket a koncepciós környezet igazolása előtt, mielőtt az integrációs kód bekerül a külső rendszerekre.

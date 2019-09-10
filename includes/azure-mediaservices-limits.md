@@ -5,56 +5,56 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67179500"
 ---
 >[!NOTE]
->Nem rögzített erőforrások nyissa meg egy támogatási jegyet, lépjen kapcsolatba a kvóták növelését. Ne hozzon létre további Azure Media Services-fiókokat az, hogy megpróbálja tágítani a magasabb korlátok.
+>A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
 
 | Resource | Alapértelmezett korlát | 
 | --- | --- | 
-| Egyetlen előfizetéshez az Azure Media Services-fiókok | 25 (rögzített) |
-| Media szolgáltatás számára fenntartott egységek száma a Media Services-fiók |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
-| Feladatok száma a Media Services-fiók | 50,000<sup>2</sup> |
+| Egyetlen előfizetésben lévő fiókok Azure Media Services | 25 (rögzített) |
+| Media szolgáltatás számára fenntartott egységek száma Media Services fiókban |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Feladatok/Media Services fiók | 50,000<sup>2</sup> |
 | Kapcsolt műveletek feladatonként | 30 (rögzített) |
-| Eszközök a Media Services-fiókonként | 1,000,000|
+| Eszközök/Media Services fiók | 1,000,000|
 | Objektumok műveletenként | 50 |
 | Objektumok feladatonként | 100 |
 | Egy objektumhoz egyszerre társított egyedi keresők | 5<sup>4</sup> |
-| Az élő csatornák a Media Services-fiókonként |5|
+| Élő csatornák száma Media Services fiókkal |5|
 | Leállított állapotú programok csatornánként |50|
 | Futó állapotú programok csatornánként |3|
-| Streamvégpontok, leállított vagy a Media Services-fiókonként|2|
+| Leállított vagy futó adatfolyam-végpontok Media Services fiókban|2|
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
 | Házirendek | 1,000,000<sup>6</sup> |
-| Fájlméret| Bizonyos esetekben nincs korlátozva a Media Services támogatja a maximális fájlméretet. <sup>7</sup> |
+| Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret megengedett. <sup>7</sup> |
 
-<sup>1</sup>Ha módosítja a típusát, például az S1, S2-ről a szolgáltatás számára fenntartott egység maximális korlátok alapértékre állnak vissza.
+<sup>1</sup> Ha megváltoztatja például az S2 és S1 közötti értéket, a rendszer alaphelyzetbe állítja a fenntartott egységek maximális korlátját.
 
-<sup>2</sup>ezt az értéket tartalmazza a sorba állított, befejezett, aktív és a visszavont feladatokat. A törölt feladatokat nem tartalmazza. Törölheti a régi feladatokat **IJob.Delete** vagy a **törlése** HTTP-kérés.
+<sup>2</sup> Ez a szám üzenetsor-, befejezett, aktív és megszakított feladatokat tartalmaz. Nem tartalmazza a törölt feladatokat. A régi feladatokat a **IJob. Delete** vagy a **delete** HTTP-kérelem használatával törölheti.
 
-2017. április 1. a fiókban 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Az automatikus törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok és tevékenységek információkat archiválni, használja a kódot ismertetett [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+2017. április 1-től a fiókhoz tartozó, 90 napnál régebbi feladatokat automatikusan törli a rendszer, valamint a hozzá tartozó feladattal. Az automatikus törlés akkor is megtörténik, ha a rekordok teljes száma nem éri el a maximális kvótát. A feladat és a feladat adatainak archiválásához használja az [eszközök kezelése a Media Services .net SDK-val](../articles/media-services/previous/media-services-dotnet-manage-entities.md)című témakörben leírt kódot.
 
-<sup>3</sup>egy kérést lista feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Az összes elküldött feladatot nyomon, használja a top vagy lekérdezések folytassa leírtak szerint [OData rendszerlekérdezési beállításait](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
+<sup>3</sup> Ha a feladat entitások listázására vonatkozó kérést küld, a kérések száma legfeljebb 1 000 feladatot ad vissza. Az összes elküldött feladat nyomon követéséhez használja a Top vagy a skip lekérdezéseket a [OData rendszerlekérdezési beállítások](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))című témakörben leírtak szerint.
 
-<sup>4</sup>lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Az egyes felhasználóknak különböző hozzáférési jogosultságokat biztosíthat, használja a digitális jogkezelési (DRM) megoldásokat. További információkért lásd: [a tartalmat az Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> A lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére lettek tervezve. Ha különböző hozzáférési jogokat szeretne biztosítani az egyes felhasználók számára, használja a digitális jogkezelési (DRM) megoldásokat. További információ: [a tartalom Azure Media Servicessal való védelemmel való](../articles/media-services/previous/media-services-content-protection-overview.md)ellátása.
 
-<sup>5</sup>a tárfiókok az Azure-előfizetéshez kell lennie.
+<sup>5</sup> A Storage-fiókoknak ugyanahhoz az Azure-előfizetéshez kell tartoznia.
 
-<sup>6</sup>a korlát 1 000 000 szabályzat különböző Media Services-szabályzatok esetében. Például a Locator vagy a ContentKeyAuthorizationPolicy szól. 
+<sup>6</sup> A különböző Media Services-házirendekre vonatkozó 1 000 000-szabályzatok száma korlátozott. Ilyen például a lokátor házirend vagy a ContentKeyAuthorizationPolicy. 
 
 >[!NOTE]
-> Ha mindig ugyanazokat a napokat használ, és hozzáférési engedélyek, a szabályzatazonosítónak is ugyanannak használata Információk és a egy példa: [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
+> Ha mindig ugyanazokat a napokat és hozzáférési engedélyeket használja, használja ugyanazt a házirend-azonosítót. További információ és példa: [eszközök kezelése a Media Services .net SDK-val](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. A méretkorlát a feltöltött fájlokat, és a fájlokat, a Media Services – feldolgozás (kódolás és elemzése) eredményeként létrehozott első vonatkozik. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. 
+<sup>7</sup> Az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
 
-Az alábbi táblázatban látható a korlátok a media szolgáltatás számára fenntartott egységek S1, S2 és S3. Ha a forrásfájl mérete nagyobb, mint a tábla meghatározott keretek, a kódolási feladat sikertelen lesz. Ha hosszú időtartam 4K felbontása forrásai kódol, meg kell S3 szintű media szolgáltatás számára fenntartott egységek használata szükséges a teljesítmény elérése érdekében. Ha 4K tartalom, amely nagyobb, mint az S3 szintű media szolgáltatás számára fenntartott egységek 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
+Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4k-tartalommal rendelkezik, amely nagyobb, mint az S3-as Media szolgáltatás számára fenntartott egységek 260 GB amshelp@microsoft.com -os korlátja, lépjen kapcsolatba velünk a forgatókönyvben rejlő lehetséges megoldásokkal.
 
-|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti mérete (GB)|
+|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti méret (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|

@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: d3d7a4ed5ae3bf2c9015625f41ea9cdb10fa1bba
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308853"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860438"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -42,7 +42,7 @@ Azure Machine Learning szolgáltatás legújabb kiadása a következő funkciók
 
 Az [architektúra](concept-azure-machine-learning-architecture.md) újratervezése egyszerű használat érdekében. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-workspace.md) szükséges. Az [Azure Portalon](how-to-manage-workspace.md) gyorsan létrehozhat munkaterületeket. Munkaterületek használatával több felhasználó is tárolhatja a képzési és üzembe helyezési számítási célokat, a modellek kísérleteit, a Docker-rendszerképeket, a telepített modelleket stb.
 
-Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiadásban, maga a Desktop Workbench alkalmazás is ki lett vonva. A kísérletek a [Azure Portal munkaterület irányítópultján](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)kezelhetők. Használja az irányítópultot a kísérlet előzményeinek beolvasására, a munkaterülethez rendelt számítási célok, a modellek és a Docker-rendszerképek kezelésére, vagy akár webszolgáltatások üzembe helyezésére.
+Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiadásban, maga a Desktop Workbench alkalmazás is ki lett vonva. A kísérletek a [Azure Portal munkaterület irányítópultján](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)kezelhetők. Használja az irányítópultot a kísérlet előzményeinek beolvasására, a munkaterülethez rendelt számítási célok, a modellek és a Docker-rendszerképek kezelésére, vagy akár webszolgáltatások üzembe helyezésére.
 
 <a name="timeline"></a>
 

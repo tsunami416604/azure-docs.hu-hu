@@ -1,93 +1,93 @@
 ---
-title: Alkalmazások használata az Azure Blockchain Workbench használatával
-description: Alkalmazás használatát ismertető szerződések, az Azure Blockchain Workbench alkalmazásban.
+title: Alkalmazások használata az Azure Blockchain Workbench előzetes verziójában
+description: Oktatóanyag az alkalmazás-szerződések használatáról az Azure Blockchain Workbench előzetes verziójában.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61128337"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845143"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: Alkalmazások használata az Azure Blockchain Workbench használatával
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: Alkalmazások használata az Azure Blockchain Workbenchben
 
-Blockchain Workbench használatával hozzon létre, és a műveletek végrehajtása a szerződések. Megtekintheti például állapota és a tranzakciós előzmények szerződést kötöttek.
+A Blockchain Workbench használatával létrehozhat és alkalmazhat műveleteket a szerződéseken. Megtekintheti a szerződés részleteit, például az állapot és a tranzakciók előzményeit is.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy új szerződést
-> * Egy művelet végrehajtása a szerződés
+> * Új szerződés létrehozása
+> * Művelet elvégzése egy szerződésen
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Blockchain Workbench üzembe helyezés. További információkért lásd: [Azure Blockchain Workbench üzembe helyezési](deploy.md) részleteket az üzembe helyezés
-* Egy telepített blockchain alkalmazás a Blockchain Workbenchet. Lásd: [a blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával](create-app.md)
+* Egy Blockchain Workbench üzembe helyezése. További információ: az [Azure Blockchain Workbench üzembe](deploy.md) helyezése az üzembe helyezés részleteiről
+* Egy üzembe helyezett blockchain-alkalmazás a Blockchain Workbenchben. Lásd: [blockchain-alkalmazás létrehozása az Azure Blockchain workbenchben](create-app.md)
 
-[Nyissa meg a Blockchain Workbenchet](deploy.md#blockchain-workbench-web-url) a böngészőben.
+[Nyissa meg a Blockchain Workbench](deploy.md#blockchain-workbench-web-url) alkalmazást a böngészőben.
 
 ![Blockchain Workbench](./media/use/workbench.png)
 
-Jelentkezzen be a Blockchain Workbenchet tagjaként kell. Ha nincsenek a felsorolt alkalmazások, Ön tagja Blockchain Workbenchet, de nem tagja olyan alkalmazást. A Blockchain Workbenchet rendszergazda rendelhet a tagok alkalmazások.
+A Blockchain Workbench tagjaként kell bejelentkeznie. Ha nincsenek felsorolt alkalmazások, akkor Ön a Blockchain Workbench tagja, de nem tagja egyetlen alkalmazásnak sem. A Blockchain Workbench rendszergazdája tagokat rendelhet az alkalmazásokhoz.
 
-## <a name="create-new-contract"></a>Hozzon létre új szerződést
+## <a name="create-new-contract"></a>Új szerződés létrehozása
 
-Hozzon létre egy új szerződést, hogy a szerződés, a megadott tag szüksége **kezdeményező**. Alkalmazás-szerepkörök és a szerződés kezdeményezők információkért lásd: [munkafolyamatok a konfigurálása – áttekintés](configuration.md#workflows). A tagok hozzárendelése alkalmazás-szerepkörök további információkért lásd: [alkalmazást adhat hozzá olyan tagot](manage-users.md#add-member-to-application).
+Új szerződés létrehozásához a szerződés **kezdeményezője**megadott tagnak kell lennie. A szerződéshez tartozó alkalmazás-szerepköröket és kezdeményezőket meghatározó információk: [munkafolyamatok a konfiguráció áttekintésében](configuration.md#workflows). További információ a tagok alkalmazási szerepkörökhöz való hozzárendeléséről: [tag hozzáadása az alkalmazáshoz](manage-users.md#add-member-to-application).
 
-1. A Blockchain Workbench alkalmazás szakaszban válassza ki az alkalmazás csempe, amely tartalmazza a létrehozandó szerződést. Aktív szerződések listája jelenik meg.
+1. A Blockchain Workbench alkalmazás szakaszban válassza ki a létrehozni kívánt szerződést tartalmazó alkalmazás csempéjét. Megjelenik az aktív szerződések listája.
 
-2. Hozzon létre egy új szerződést, jelölje be **új szerződést**.
+2. Új szerződés létrehozásához válassza az **új szerződés**lehetőséget.
 
     ![Új szerződés gomb](./media/use/contract-list.png)
 
-3. A **új szerződés** ablaktáblán jelenik meg. Adja meg a kezdeti paraméterek értékeit. Kattintson a **Létrehozás** gombra.
+3. Megjelenik az **új szerződés** panel. Megadhatja a kezdeti paraméterek értékeit. Kattintson a **Létrehozás** gombra.
 
-    ![Új szerződés ablaktábla](./media/use/new-contract.png)
+    ![Új szerződés panel](./media/use/new-contract.png)
 
-    Az újonnan létrehozott szerződés a más aktív szerződések a listán jelenik meg.
+    Az újonnan létrehozott szerződés a többi aktív szerződéssel együtt jelenik meg a listában.
 
     ![Aktív szerződések listája](./media/use/active-contracts.png)
 
-## <a name="take-action-on-contract"></a>Művelet végrehajtása a szerződés
+## <a name="take-action-on-contract"></a>Szerződésen alapuló művelet elvégzése
 
-Állapotától függően a szerződés, a tagok váltania műveleteket hajthatja végre a következő állapotra a szerződés. Műveletek vannak meghatározva [átmenetek](configuration.md#transitions) belül egy [állapot](configuration.md#states). Átmenet engedélyezett alkalmazás vagy a példány szerepkörhöz tartozó tagok is hajtsa végre a műveletet. 
+Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhetik a szerződés következő állapotára való áttérést. A műveletek egy adott [állapotban](configuration.md#states)lévő [átmenetként](configuration.md#transitions) vannak meghatározva. Az átálláshoz engedélyezett alkalmazás-vagy példány-szerepkörhöz tartozó tagok is elvégezhetik a műveletet. 
 
-1. Blockchain Workbench alkalmazás szakaszban jelölje be az alkalmazás csempe, amely tartalmazza a szerződést, hajtsa végre a műveletet.
-2. A listában válassza ki a szerződést. A szerződés adatait különböző szakaszaiban jelennek meg. 
+1. A Blockchain Workbench alkalmazás szakaszban válassza ki azt az alkalmazás-csempét, amely tartalmazza a szerződést a művelet végrehajtásához.
+2. Válassza ki a szerződést a listában. A szerződés részletei különböző fejezetekben jelennek meg. 
 
     ![Szerződés részletei](./media/use/contract-details.png)
 
-    | Section  | Leírás  |
+    | `Section`  | Leírás  |
     |---------|---------|
-    | status | A jelenlegi folyamatban felsorolja a szerződés szakaszokra belül |
-    | Részletek | A szerződés az aktuális értékek |
-    | Műveletek | Az utolsó művelet részleteit |
-    | Tevékenység | A szerződés tranzakciós előzményekben |
+    | State | A szerződés szakaszain belüli aktuális folyamat felsorolása |
+    | Részletek | A szerződés aktuális értékei |
+    | Action | Az utolsó művelet részletei |
+    | Tevékenység | A szerződés tranzakciós előzményei |
     
-3. Az a **művelet** szakaszban jelölje be **művelet végrehajtása**.
+3. A **művelet** szakaszban válassza a **művelet elvégzése**lehetőséget.
 
-4. Egy panelen jelennek meg a szerződés aktuális állapotának részleteit. Válassza ki a szeretné állítani a legördülő művelet. 
+4. A szerződés aktuális állapotával kapcsolatos részletek a panelen jelennek meg. Válassza ki a legördülő listából azt a műveletet, amelyet el szeretne végezni. 
 
     ![Művelet kiválasztása](./media/use/choose-action.png)
 
-5. Válassza ki **művelet végrehajtása** kezdeményezése a műveletet.
-6. Ha a művelethez szükséges paramétereket, adja meg a műveletet értékeit.
+5. A művelet elindításához válassza a **művelet elvégzése** lehetőséget.
+6. Ha paraméterekre van szükség a művelethez, határozza meg a művelet értékeit.
 
     ![Művelet végrehajtása](./media/use/take-action.png)
 
-7. Válassza ki **művelet végrehajtása** a művelet végrehajtásához.
+7. A művelet végrehajtásához válassza a **művelet elvégzése** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md)
+> [Azure Blockchain Workbench-alkalmazás verziószámozása](version-app.md)

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter, seo-java-august2019
-ms.openlocfilehash: 9314acfa56aac50265ee45b356ae00f89f70446f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 2aa5879ee3960bd5d26855ac7e7c3e12994ee54e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173200"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861344"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure Service Fabric
 
-Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
+Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Java Spring boot-alkalmazást az Azure Service Fabricban. Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
-Ez a rövid útmutató a Spring Boot-alkalmazás Service Fabricre történő telepítését mutatja be. A rövid útmutató a Spring webhelyének [első lépéseket ismertető](https://spring.io/guides/gs/spring-boot/) útmutatójában található mintát használja. Ez az ismerős parancssori eszközöket alkalmazó rövid útmutató végigvezet a Spring Boot-minta Service Fabric-alkalmazásként történő telepítésének lépésein. A folyamat végén a Spring Boot mintája működőképes állapotban lesz a Service Fabricen.
+A rövid útmutató a Spring webhelyének [első lépéseket ismertető](https://spring.io/guides/gs/spring-boot/) útmutatójában található mintát használja. Ez az ismerős parancssori eszközöket alkalmazó rövid útmutató végigvezet a Spring Boot-minta Service Fabric-alkalmazásként történő telepítésének lépésein. A folyamat végén a Spring Boot mintája működőképes állapotban lesz a Service Fabricen.
 
 ![Képernyőkép az alkalmazásról](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

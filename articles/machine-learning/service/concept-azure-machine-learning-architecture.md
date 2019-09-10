@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011644"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845004"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -116,7 +116,7 @@ A futtatási konfigurációkat például a [modell kitanítására szolgáló sz
 
 ### <a name="estimators"></a>Becslések
 
-A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezésének megkönnyítésére a kalkulátor osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános becslést olyan [](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
+A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezésének megkönnyítésére a kalkulátor osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak.
 
 A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 
@@ -125,11 +125,11 @@ További információkért tekintse át a következő cikkeket:
 * [Ml modellek betanítása a becslések](how-to-train-ml-models.md).
 * [A Pytorch mély tanulási modelljeinek Kiképzése Azure Machine learning](how-to-train-pytorch.md).
 * [TensorFlow-modellek betanítása és regisztrálása Azure Machine learning szolgáltatással](how-to-train-tensorflow.md).
-* [A Azure Machine learning szolgáltatással](how-to-train-chainer.md)nagy léptékben betaníthatja és regisztrálhatja a láncolt modelleket.
+* [A Azure Machine learning szolgáltatással nagy léptékben betaníthatja és regisztrálhatja a láncolt modelleket](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Adatkészletek és adattárolók
 
-**Adathalmazok Azure Machine learning** (előzetes verzió) megkönnyíti az adataihoz való hozzáférést és azokkal való munkát. Az adathalmazok különböző forgatókönyvekben, például a modell betanítása és a folyamat létrehozása során kezelik az adatokat. Az Azure Machine Learning SDK-val elérheti a mögöttes tárolót, megtekintheti és előkészítheti az adatokat, kezelheti a különböző adatkészlet-definíciók életciklusát, és összehasonlíthatja a képzésben és az üzemi környezetben használt adatkészleteket.
+**Adathalmazok Azure Machine learning** (előzetes verzió) megkönnyíti az adataihoz való hozzáférést és azokkal való munkát. Az adathalmazok különböző forgatókönyvekben, például a modell betanítása és a folyamat létrehozása során kezelik az adatokat. Az Azure Machine Learning SDK használatával elérheti a mögöttes tárolót, feltárhatja az adatokat, és kezelheti a különböző adatkészlet-definíciók életciklusát.
 
 Az adatkészletek olyan módszereket biztosítanak, amelyekkel az adatokat népszerű formátumokban `to_pandas_dataframe()`, például a vagy a használatával `from_delimited_files()` dolgozhatják fel.
 

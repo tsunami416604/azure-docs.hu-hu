@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 11a5955d516d3a4144d9b63eec78d9c5741aaab9
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 90ccd6c827371d9bf72391e2b24c7dcef31f36c9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "67615268"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844628"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -21,7 +21,7 @@ Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely
 
 ![Az Azure Vote mintaalkalmazás keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes][kubernetes-concepts]alapfogalmai.
+A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -46,6 +46,8 @@ AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
      Válassza **a Next (tovább) lehetőséget: Skálázás** , ha elkészült.
 
 2. A **skála** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés**elemre.
+> [!CAUTION]
+> Az új HRE-szolgáltatások létrehozása több percet is igénybe vehet, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat Azure Portalban. Ha ezt tapasztalja, látogasson el [ide](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) a mérsékléshez.
 3. A **hitelesítés** lapon adja meg a következő beállításokat:
    - Hozzon létre egy új szolgáltatásnevet úgy, hogy az **(új) alapértelmezett egyszerű szolgáltatásnév**kihagyja az **egyszerű szolgáltatásnév** mezőt. Vagy választhatja az *egyszerű szolgáltatásnév beállítása* lehetőséget is, ha egy meglévőt szeretne használni. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ez részletesebben szabályozhatja az AK-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.

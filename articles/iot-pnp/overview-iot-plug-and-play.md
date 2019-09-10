@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048005"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858986"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Mi a IoT Plug and Play előzetes verzió?
 
@@ -63,7 +63,7 @@ Eszköz-fejlesztőként kifejlesztheti a IoT Plug and Play támogató IoT hardve
 
 1. Az eszköz-képesség modellben és a felületeken deklarált képességeket megvalósító eszköz szoftverének vagy belső vezérlőprogram létrehozása. Az Azure IoT SDK API-kat tartalmaz az eszköz képességi modelljeinek megvalósításához.
 
-A [vs Code bővítményhez készült IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) számos funkciót kínál a segítségére. Például az eszköz fejlesztője használhatja a bővítményt egy csontváz C projekt létrehozásához egy képesség-modellből. Azonban bármilyen IDE-t használhat az eszköz képességi modelljeinek létrehozásához és megvalósításához.
+A VS Code Extension Packhez készült [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) számos funkciót kínál a segítségére. Például az eszköz fejlesztője használhat egy bővítményt a csontváz C projekt létrehozásához egy képesség-modellből. Azonban bármilyen IDE-t használhat az eszköz képességi modelljeinek létrehozásához és megvalósításához.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>IoT Plug and Play eszköz tanúsítása
 
@@ -76,10 +76,11 @@ Eszköz-fejlesztőként IoT-termékeket küldhet a minősítéshez. Az IoT-eszk�
 - Tegye közzé a minősítést a IoT-eszköz katalógusában.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+
 A nyilvános előzetes verzióban a IoT Plug and Play az Észak-Európában, az USA középső régiójában és a Kelet-japán régióban érhető el. Győződjön meg arról, hogy az egyik régióban hozza létre a hubot.
 
 ## <a name="message-quotas-in-iot-hub"></a>Üzenetek kvótái IoT Hub
-A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzeneteket küldenek egy felületen, ami növelheti az üzenetek számának az [üzenet](../iot-hub/iot-hub-devguide-quotas-throttling.md)-kvótába való számlálását.
+A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzeneteket küldenek egy felületen, ami növelheti az üzenetek számának az [üzenet-kvótába](../iot-hub/iot-hub-devguide-quotas-throttling.md)való számlálását.
 
 ## <a name="next-steps"></a>További lépések
 

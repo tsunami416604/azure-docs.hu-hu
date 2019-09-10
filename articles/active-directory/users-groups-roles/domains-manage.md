@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá és ellenőrizze az egyéni tartománynevek – Azure Active Directory |} A Microsoft Docs
-description: Felügyeleti fogalmakat és a egy tartománynevet az Azure Active Directory felügyeletéhez útmutatók
+title: Egyéni tartománynevek hozzáadása és ellenőrzése – Azure Active Directory | Microsoft Docs
+description: Felügyeleti fogalmak és útmutatók a tartománynevek Azure Active Directoryban való kezeléséhez
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,103 +14,103 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472331"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844517"
 ---
-# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
+# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
-Tartománynév fontos része annak a directory-erőforrások esetében az azonosító: egy felhasználói név vagy e-mail cím egy felhasználó, csoport, a cím szerepel, és egyes esetekben az alkalmazás Alkalmazásazonosító URI-t az alkalmazás részét képezi. Egy erőforrást az Azure Active Directory (Azure AD), amely a címtár, amely tartalmazza az erőforrás tulajdonosa tartománynevet is tartalmaznak. Csak globális rendszergazda is tartományok kezelése az Azure ad-ben.
+A tartománynév fontos részét képezi az azonosítónak számos címtár-erőforráshoz: ez egy felhasználó felhasználónevének vagy e-mail-címének része, egy csoport címének egy része, és esetenként egy alkalmazáshoz tartozó alkalmazás-azonosító URI része. Azure Active Directory (Azure AD) egyik erőforrása tartalmazhat olyan tartománynevet, amely az erőforrást tartalmazó könyvtár tulajdonában van. Csak globális rendszergazda kezelhet tartományokat az Azure AD-ben.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Állítsa be az elsődleges tartomány nevét az Azure AD-címtár
+## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Az Azure AD-címtár elsődleges tartománynevének beállítása
 
-Ha a címtár létrejött, a kezdeti tartománynevet, például "contoso.onmicrosoft.com", is tartománynév elsődleges. Az elsődleges tartomány a egy új felhasználó alapértelmezett tartománynév, ha új felhasználót hoz létre. Elsődleges tartománynév beállítása leegyszerűsíti a folyamatot a rendszergazdák az új felhasználók létrehozása a portálon. Az elsődleges tartomány nevének módosítása:
+A címtár létrehozásakor a kezdeti tartománynév (például "contoso.onmicrosoft.com") egyben az elsődleges tartománynév is. Új felhasználó létrehozásakor az elsődleges tartomány az új felhasználó alapértelmezett tartományneve. Az elsődleges tartománynév beállítása egyszerűbbé teszi a rendszergazda számára, hogy új felhasználókat hozzon létre a portálon. Az elsődleges tartomány nevének módosítása:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája lesz.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 2. Válassza az **Azure Active Directory** elemet.
 3. Válassza az **Egyéni tartománynevek** elemet.
   
-   ![Nyissa meg a felhasználókezelési oldalra.](./media/domains-manage/add-custom-domain.png)
-4. Válassza ki a tartományt, érdemes az elsődleges tartomány nevét.
-5. Válassza ki a **elsődlegessé** parancsot. Erősítse meg választását, amikor a rendszer kéri.
+   ![A felhasználó-felügyeleti lap megnyitása](./media/domains-manage/add-custom-domain.png)
+4. Válassza ki annak a tartománynak a nevét, amelyet elsődleges tartományként szeretne használni.
+5. Válassza az **elsődlegesvé tétele** parancsot. Ha a rendszer kéri, erősítse meg a választását.
   
-   ![Győződjön meg arról, nevezze el az elsődleges tartomány](./media/domains-manage/make-primary-domain.png)
+   ![Tartománynév megadása az elsődlegesnek](./media/domains-manage/make-primary-domain.png)
 
-Módosíthatja a át minden olyan ellenőrzött egyéni tartománynak, amely nincs összevonva az elsődleges tartomány nevét. Az elsődleges tartomány a címtár módosítása minden olyan meglévő felhasználók számára a felhasználónév nem változnak.
+A címtár elsődleges tartománynevét úgy módosíthatja, hogy bármely ellenőrzött egyéni tartomány legyen, amely nem összevont. A címtár elsődleges tartományának módosítása nem módosítja a meglévő felhasználók felhasználónevét.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Egyéni tartománynevek hozzáadása az Azure AD-bérlővel
+## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Egyéni tartománynevek hozzáadása az Azure AD-bérlőhöz
 
-Legfeljebb 900 felügyelt tartományneveket adhat hozzá. Az összevonáshoz a tartományok konfigurálása esetén a helyszíni Active Directoryval, minden könyvtár akár 450 tartományneveket adhat hozzá.
+Legfeljebb 900 felügyelt tartománynevet adhat hozzá. Ha az összes tartományt a helyszíni Active Directory segítségével konfigurálja az összevonáshoz, az egyes címtárakban akár 450 tartománynevet is hozzáadhat.
 
-## <a name="add-subdomains-of-a-custom-domain"></a>Egyéni tartomány altartományait hozzáadása
+## <a name="add-subdomains-of-a-custom-domain"></a>Egyéni tartomány altartományának hozzáadása
 
-Ha például a "europe.contoso.com" harmadik szintű tartománynév hozzáadása a címtárhoz, kell először adja hozzá és ellenőrizze a második szintű tartomány, például a contoso.com. Az altartomány automatikusan az Azure AD által ellenőrizve. A hozzáadott altartomány ellenőrzése, hogy megtekintéséhez frissítse a tartományok listáját a böngészőben.
+Ha egy harmadik szintű tartománynevet (például "europe.contoso.com") szeretne hozzáadni a címtárhoz, először fel kell vennie és ellenőriznie kell a második szintű tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha módosítja a DNS-regisztráló az egyéni tartománynevet?
+## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha megváltoztatja a DNS-regisztrálót az egyéni tartománynévhez
 
-Ha módosítja a DNS-regisztráló szervezetek, nincsenek további konfigurációs feladatok az Azure ad-ben. Továbbra is tartománynév használata az Azure ad-vel megszakítás nélkül. Ha az egyéni tartománynevet az Office 365-öt használ, Intune-ban vagy más szolgáltatások által használt egyéni tartománynevek, az Azure ad-ben, ezeket a szolgáltatásokat a dokumentációjában talál.
+Ha megváltoztatja a DNS-regisztrálókat, az Azure AD-ben nincsenek további konfigurációs feladatok. A tartománynevet továbbra is használhatja megszakítás nélkül az Azure AD-vel. Ha az egyéni tartománynevet az Office 365, az Intune vagy más, egyéni tartományneveket használó szolgáltatásokkal használja az Azure AD-ben, tekintse meg a szolgáltatások dokumentációját.
 
 ## <a name="delete-a-custom-domain-name"></a>Egyéni tartománynév törlése
 
-Egyéni tartománynév törölheti az Azure AD-ből, ha a szervezet már nem használja ezt a nevet, vagy ha szeretné használni ezt a nevet egy másik Azure AD-val.
+Törölheti az egyéni tartománynevet az Azure AD-ből, ha a szervezet már nem használja ezt a tartománynevet, vagy ha ezt a tartománynevet egy másik Azure AD-vel kell használnia.
 
-Egyéni tartománynév törlése, akkor előbb ellenőrizze, hogy nincsenek erőforrások a címtár támaszkodik a tartomány nevét. A címtárban lévő tartománynév nem törölhető, ha:
+Egyéni tartománynév törléséhez először gondoskodnia kell arról, hogy a címtárban lévő erőforrások ne legyenek a tartománynévre támaszkodva. A tartománynevet nem lehet törölni a címtárból, ha:
 
-* Minden felhasználó rendelkezik egy felhasználónevet, a e-mail cím vagy a proxykiszolgáló címét, amely tartalmazza a tartománynevet.
-* Minden csoport rendelkezik egy e-mail-címet vagy a proxykiszolgáló címét, amely tartalmazza a tartománynevet.
-* Bármilyen alkalmazást az Azure ad-alkalmazás Alkalmazásazonosító URI-ja, amely tartalmazza a tartománynevet rendelkezik.
+* Minden felhasználó rendelkezik egy olyan felhasználónévvel, e-mail-címmel vagy proxy címmel, amely tartalmazza a tartománynevet.
+* Bármely csoport rendelkezik egy e-mail-címmel vagy proxy címmel, amely tartalmazza a tartománynevet.
+* Az Azure AD-ban található bármely alkalmazáshoz tartozik egy, a tartománynevet tartalmazó alkalmazás-azonosító URI.
 
-Módosítani kell, vagy bármely ilyen erőforrás törlése az Azure AD-címtárban, az egyéni tartománynév törlése előtt.
+Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az összes ilyen erőforrást az Azure AD-címtárban.
 
-### <a name="forcedelete-option"></a>ForceDelete option
+### <a name="forcedelete-option"></a>ForceDelete beállítás
 
-Is **ForceDelete** egy tartománynevet a [Azure AD felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Ezek a beállítások egy aszinkron művelet, és frissítse az összes hivatkozást az egyéni tartománynév például a "user@contoso.com", a kezdeti alapértelmezett tartománynévnek például"user@contoso.onmicrosoft.com." 
+A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciátuser@contoso.com(például "") a kezdeti alapértelmezett tartománynévreuser@contoso.onmicrosoft.com(például "") frissítik. 
 
-A hívás **ForceDelete** az Azure Portalon, gondoskodnia kell arról, hogy is tartománynév 1000-nél kevesebb hivatkozik, és esetleges hivatkozásokat, ahol az Exchange-e a kiépítési szolgáltatás kell lehet frissíteni vagy abból eltávolított a [ Az Exchange felügyeleti központban](https://outlook.office365.com/ecp/). Ez magában foglalja a Exchange Mail-Enabled biztonsági csoportok és elosztott listák; További információkért lásd: [eltávolítás, levelezési címmel rendelkező biztonsági csoportok](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem sikeres, ha teljesül a következők egyikét:
+A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ez magában foglalja az Exchange-levelezésre képes biztonsági csoportokat és az elosztott listát; További információ: [levelezésre képes biztonsági csoportok eltávolítása](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
-* Egy tartomány O365-szolgátasokat, tartományi előfizetés keresztül vásárolt
-* Partnerként nevében egy másik ügyfél bérlői felügyelete
+* Az Office 365 tartományi előfizetési szolgáltatásokon keresztül vásárolt egy tartományt
+* Ön egy másik ügyfél bérlője nevében felügyelt partner
 
-Részeként kell végezni a következő műveleteket a **ForceDelete** műveletet:
+A **ForceDelete** művelet részeként a következő műveletek végezhetők el:
 
-* A kezdeti alapértelmezett tartománynévnek átnevezi az egyszerű felhasználónév, EmailAddress és a felhasználók az egyéni tartománynév hivatkozó ProxyAddress.
-* A csoportok az egyéni tartománynév hivatkozó EmailAddress átnevezi a kezdeti alapértelmezett tartománynévnek.
-* Az egyéni tartománynév hivatkozó alkalmazások az identifierUris átnevezi a kezdeti alapértelmezett tartománynévnek.
+* Átnevezi a felhasználók UPN-, EmailAddress-és ProxyAddress, amelyek az egyéni tartománynévre mutató hivatkozásokat tartalmaznak a kezdeti alapértelmezett tartomány nevére.
+* Átnevezi a csoportok EmailAddress értékeit az egyéni tartománynévre mutató hivatkozásokkal a kezdeti alapértelmezett tartománynévre.
+* Átnevezi az egyéni tartománynévre mutató hivatkozásokat tartalmazó identifierUris a kezdeti alapértelmezett tartománynévre.
 
-Hibát ad vissza mikor:
+A rendszer a következő hibaüzenetet adja vissza:
 
-* Át kell nevezni objektumok száma nagyobb, mint 1000
-* Az alkalmazások, át kell nevezni egyik egy több-bérlős alkalmazást
+* Az átnevezni kívánt objektumok száma nagyobb, mint 1000
+* A átnevezni kívánt alkalmazások közül egy több-bérlős alkalmazás
 
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K: Miért sikertelen egy hiba, amely arról tájékoztatja, hogy a tartománynév van kezelt Exchange-csoportok a tartomány törlés?** <br>
-**V:** Még ma, bizonyos csoportok, például a postafiókhoz biztonsági csoportok és elosztott listák az Exchange által kiépített, és a manuálisan törölni kell [az Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Nem lehet, hogy lehet fennmaradó ProxyAddresses, amely az egyéni tartománynév támaszkodjon, és a egy másik tartománynevet manuálisan frissíteni kell. 
+**K: Miért nem sikerül a tartomány törlése olyan hibával, amely azt jelzi, hogy ezen a tartománynévn van Exchange-főkiszolgáló?** <br>
+**V:** Napjainkban bizonyos csoportok, például a levelezésre képes biztonsági csoportok és az elosztott listák az Exchange-ben vannak kiépítve, és manuálisan kell tisztítani az [Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Előfordulhat, hogy a ProxyAddresses az egyéni tartománynévre támaszkodik, és manuálisan kell frissítenie egy másik tartománynévre. 
 
-**K: E vagyok jelentkezve rendszergazdai\@contoso.com de nem lehet törölni a tartomány neve "contoso.com"?**<br>
-**V:** Az egyéni tartománynevet szeretne törölni a felhasználói fiók nevében nem lehet hivatkozni. Győződjön meg arról, hogy a globális rendszergazdai fiókot használ a kezdeti alapértelmezett tartománynévnek (. onmicrosoft.com) például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiók, amely például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynevet, például a "fabrikam.com" az fióknak admin@fabrikam.com.
+**K: Rendszergazdai\@contoso.com vagyok bejelentkezve, de nem tudom törölni a "contoso.com" nevű tartománynevet?**<br>
+**V:** A törölni kívánt egyéni tartománynév nem hivatkozhat a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiók a kezdeti alapértelmezett tartománynevet (. onmicrosoft.com) használja admin@contoso.onmicrosoft.com, például:. Jelentkezzen be egy másik globális rendszergazdai fiókkal, például admin@contoso.onmicrosoft.com a "fabrikam.com" névvel, ahol a fiók található. admin@fabrikam.com
 
-**K: A Delete tartomány gombra, és tekintse meg gombra kattintás után `In Progress` a törlési művelet állapotát. Mennyi időt vesz igénybe? Mi történik, ha a sikertelen?**<br>
-**V:** A törlés tartomány művelet egy aszinkron háttérfeladat átnevezi is tartománynév mutató összes hivatkozást. Egy percen belül teljesítéséhez. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nem rendelkezik:
+**K: Rákattintok a tartomány törlése gombra, `In Progress` és megtekintjük a törlési művelet állapotát. Mennyi ideig tart? Mi történik, ha nem sikerül?**<br>
+**V:** A tartomány törlése művelet egy aszinkron háttérbeli feladat, amely átnevezi az összes hivatkozást a tartománynévre. Egy-két percen belül elvégezhető. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nincs:
 
-* A tartománynevet a appIdentifierURI konfigurált alkalmazások
-* Az egyéni tartománynév hivatkozó levelezési csoport
-* A tartománynév több mint 1000 hivatkozik
+* A tartománynévre konfigurált alkalmazások a appIdentifierURI
+* Minden olyan levelezési csoport, amely az egyéni tartomány nevére hivatkozik
+* Több mint 1000 hivatkozás a tartománynévre
 
-Ha azt tapasztalja, hogy a feltételek nem teljesülnek, manuálisan törölni a hivatkozásokat, és próbálja meg újra törölni a tartományhoz.
+Ha úgy látja, hogy a feltételek bármelyike nem teljesült, manuálisan törölje a hivatkozásokat, és próbálja meg újból törölni a tartományt.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Tartománynevek kezelése a PowerShell vagy Graph API használata
+## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Tartománynevek kezelése a PowerShell vagy a Graph API használatával
 
-A tartománynevek az Azure Active Directoryban a legtöbb kezelési feladatot a Microsoft PowerShell-lel, vagy programozott módon az Azure AD Graph API használatával is elvégezhető.
+Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon az Azure AD-Graph API használatával is elvégezhető.
 
-* [Tartománynevek kezelése az Azure ad-ben a PowerShell segítségével](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-* [Tartománynevek kezelése az Azure AD Graph API-val](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [Tartománynevek kezelése Graph API használatával az Azure AD-ben](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>További lépések
 
 * [Egyéni tartománynevek hozzáadása](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [Távolítsa el az Exchange levelezési címmel rendelkező biztonsági csoportok az Exchange felügyeleti központban az egyéni tartománynév az Azure ad-ben](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Egyéni tartománynév ForceDelete Microsoft Graph API-val](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Exchange-levelezésre képes biztonsági csoportok eltávolítása az Exchange felügyeleti központban az Azure AD-beli egyéni tartománynévben](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
+* [ForceDelete egy egyéni tartománynevet Microsoft Graph API-val](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

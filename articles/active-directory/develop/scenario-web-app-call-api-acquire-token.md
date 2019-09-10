@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás, amely meghívja a webes API-kat (az alkalmazás szükséges jogkivonat beszerzése) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, amely meghívja a webes API-k (tokenbeolvasás az alkalmazás)
+title: Webes API-kat meghívó webalkalmazás (token beszerzése az alkalmazáshoz) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webalkalmazást (token beszerzése az alkalmazáshoz)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653db995000308bb3ef78a9183696cd9d8ed1056
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074800"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860622"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes alkalmazás, amely meghívja a webes API-k – az alkalmazás szükséges jogkivonat beszerzése
+# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás – jogkivonat beszerzése az alkalmazáshoz
 
-Most létrehozott, ügyfél alkalmazásobjektum, majd egy webes API-k hívása a használni kívánt jogkivonat-beszerzési fogja használni. Az ASP.NET- vagy ASP.NET Core webes API-vezérlőben levő majd történik meghívásakor. Szól:
+Most, hogy létrehozta az ügyfélalkalmazás-objektumot, felhasználhatja egy, a webes API-t meghívó token beszerzéséhez. A ASP.NET vagy ASP.NET Coreban a webes API-k meghívása a vezérlőn történik. Az alábbiakról szól:
 
-- A webes API-t a tokengyorsítótárral jogkivonatának beolvasása. Ennek a hívás `AcquireTokenSilent`
-- A hozzáférési jogkivonat védett API meghívása
+- Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja `AcquireTokenSilent`a következőt:.
+- A védett API meghívása a hozzáférési jogkivonattal.
 
 ## <a name="aspnet-core"></a>ASP.NET-mag
 
-A vezérlő módszerek által védett egy `[Authorize]` attribútum, amely arra kényszeríti a felhasználók a webalkalmazás használatához hitelesítésre. A Microsoft Graph meghívásához kódja
+A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. Itt látható a Microsoft Graph meghívására szolgáló kód.
 
 ```CSharp
 [Authorize]
@@ -41,7 +41,7 @@ public class HomeController : Controller
 }
 ```
 
-Íme egy egyszerűsített kódot a HomeController, amely kér le egy tokent a Microsoft Graph meghívásához művelet.
+Itt látható a HomeController műveletének egyszerűsített kódja, amely lekéri a tokent a Microsoft Graph meghívásához.
 
 ```CSharp
 public async Task<IActionResult> Profile()
@@ -69,23 +69,23 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Ha szeretné az ehhez a forgatókönyvhöz szükséges kódot az összes részletes ismertetése, tekintse meg a 2. fázis [2-1-Web App hívások a Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph) lépésében a [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) oktatóanyag
+A forgatókönyvhöz szükséges kód alaposabb megismeréséhez tekintse meg a 2. fázis ([2-1-Web App calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) lépést az [MS-Identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) oktatóanyagban.
 
-Van például számos további hagyhatják:
+Számos további bonyolultság van, például:
 
-- a Web App (az oktatóanyag jelen számos implementáció) token gyorsítótár megvalósítása
-- A fiók eltávolítása a gyorsítótárból, ha a felhasználó jelentkezik, kimenő
-- Több API-t, beleértve a növekményes hozzájárulási kellene hívása
+- Jogkivonat-gyorsítótár implementálása a webalkalmazáshoz (az oktatóanyag számos implementációt mutat be)
+- A fiók eltávolítása a gyorsítótárból, ha a felhasználó kijelentkezik
+- Több API meghívása, beleértve a növekményes hozzájárulást is
 
 ## <a name="aspnet"></a>ASP.NET
 
-Az ASP.NET hasonló a következők:
+A ASP.NET hasonló dolgok:
 
-- Egy tartományvezérlő művelet [engedélyezés] attribútum által védett fogja kinyerni a bérlő Azonosítóját és felhasználói azonosítója, a `ClaimsPrincipal` a tartományvezérlő tagja (az ASP.NET `HttpContext.User`)
-- innen az MSAL.NET buildek `IConfidentialClientApplication`
-- IT-hívás a `AcquireTokenSilent` metódus az bizalmas ügyfélalkalmazás 
+- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői azonosítóját és felhasználói azonosítóját. (A ASP.NET `HttpContext.User`használja.)
+- Ettől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
+- Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
 
-a kód hasonlít az ASP.NET Core látható kód
+A kód hasonló a ASP.NET Corehoz megjelenített kódhoz.
 
 ## <a name="next-steps"></a>További lépések
 

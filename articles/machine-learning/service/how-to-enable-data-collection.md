@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 16fac492fe4c193ecd7ffa7eeff1e884acb742ae
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227951"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860519"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
@@ -109,7 +109,7 @@ Az engedélyezéshez kell tennie:
 
 Ha már van egy szolgáltatás telepíti a függőségeket a **környezet fájl** és **pontozófájl**, által az adatgyűjtés engedélyezése:
 
-1. Lépjen a [az Azure Portal](https://portal.azure.com).
+1. Lépjen [Azure Portal](https://portal.azure.com).
 
 1. Nyissa meg a munkaterületet.
 
@@ -144,6 +144,8 @@ Adatgyűjtés bármikor leállíthatja. Python-kód vagy az Azure portal haszná
 
   1. Válassza ki **frissítés** a módosítás alkalmazására.
 
+  Ezeket a beállításokat a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)is elérheti.
+
 + 2 – a Python használatával tiltsa le az adatgyűjtést. lehetőség:
 
   ```python 
@@ -172,7 +174,7 @@ Gyors eléréséhez az adatok a blobból:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Modell adatelemzés a Power bi-ban
 
-1. Töltse le és nyissa meg a [Power bi Desktopban](https://www.powerbi.com)
+1. [Power bi Desktop](https://www.powerbi.com) letöltése és megnyitása
 
 1. Válassza ki **adatok lekérése** , majd kattintson a [ **Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 

@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129625"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844967"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
 
@@ -31,6 +31,7 @@ Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok k
 
 - [Azure PowerShell](/powershell/azure) telepítve kell lennie, vagy használhatja a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
+- A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor beállítása adatfogadóként 
 A Azure Diagnostics bővítmény egy adattároló nevű funkciót használ a metrikák és naplók különböző helyszínekre való továbbításához. A következő lépések bemutatják, hogyan használható a Resource Manager-sablon és a PowerShell egy virtuális gép üzembe helyezéséhez az új Azure Monitor adatfogadó használatával. 
@@ -51,7 +52,7 @@ Nyissa meg a **azuredeploy. Parameters. JSON** fájlt:
 - Adja meg a virtuálisgép-méretezési csoporthoz használni kívánt **windowsOSVersion** . A 2016-Datacenter használatát javasoljuk. 
 - Nevezze el a virtuálisgép-méretezési csoport erőforrását, amelyet a **vmssName** tulajdonsággal kíván üzembe helyezni. Példa: **VMSS-wad-test**.    
 - Adja meg a virtuálisgép-méretezési csoporton futtatni kívánt virtuális gépek számát a **instanceCount** tulajdonság használatával.
-- Adja meg a virtuálisgép-méretezési csoport **adminUsername** és **adminPassword** értékeit. Ezek a paraméterek a méretezési csoportba tartozó virtuális gépek távoli elérésére szolgálnak. Ha el szeretné kerülni, hogy a virtuális gép eltérítve legyen, **ne használja a** sablonban szereplőket. A robotok a nyilvános GitHub-adattárakban keresik meg az internetet felhasználónevek és jelszavak számára. Valószínűleg ezekkel az alapértékekkel tesztelik a virtuális gépeket. 
+- Adja meg a virtuálisgép-méretezési csoport **adminUsername** és **adminPassword** értékeit. Ezek a paraméterek a méretezési csoportba tartozó virtuális gépek távoli elérésére szolgálnak. Ha el szeretné kerülni, hogy a virtuális gép eltérítve legyen, ne használja a sablonban szereplőket. A robotok a nyilvános GitHub-adattárakban keresik meg az internetet felhasználónevek és jelszavak számára. Valószínűleg ezekkel az alapértékekkel tesztelik a virtuális gépeket. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Azuredeploy. JSON módosítása
@@ -252,12 +253,12 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
    ```
 
    > [!NOTE]  
-   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions)-régiót.
+   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure-régiót](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions).
  
 1. Futtassa a következő parancsokat a virtuális gép üzembe helyezéséhez:  
 
    > [!NOTE]  
-   > Ha egy meglévő méretezési csoport frissítését szeretné frissíteni, a **rendszer** a parancs végére növekményt ad hozzá. 
+   > Ha egy meglévő méretezési csoport frissítését szeretné frissíteni, a rendszer a parancs végére **növekményt** ad hozzá. 
  
    ```powershell
    New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  

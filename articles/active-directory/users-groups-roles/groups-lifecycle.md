@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837939"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844313"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -35,7 +35,7 @@ Miután beállított egy csoportot a lejárat után:
 Jelenleg csak egy lejárati szabályzat konfigurálható egy bérlő Office 365-csoportjaihoz.
 
 > [!NOTE]
-> Az Office 365-csoportok elévülési szabályzatának konfigurálásához és használatához rendelkeznie kell prémium szintű Azure AD licenccel azon csoportok tagjaihoz, amelyeken a lejárati házirend érvényes.
+> Az Office 365-csoportok elévülési szabályzatának konfigurálása és használata megköveteli, hogy az összes olyan csoport tagjaihoz, amelyekhez a lejárati szabályzat érvényes, de ne rendeljen hozzá prémium szintű Azure AD licenceket.
 
 További információ az Azure AD PowerShell-parancsmagok letöltéséről és telepítéséről: [Azure Active Directory PowerShell a Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
@@ -52,7 +52,7 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
 
 ## <a name="set-group-expiration"></a>Csoportok elévülésének beállítása
 
-1. Nyissa meg az [Azure ad felügyeleti](https://aad.portal.azure.com) központot egy olyan fiókkal, amely globális rendszergazda az Azure ad-szervezetben.
+1. Nyissa meg az [Azure ad felügyeleti központot](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda az Azure ad-szervezetben.
 
 2. Válassza a **csoportok**lehetőséget, majd válassza a **lejárat** lehetőséget a lejárat beállításainak megnyitásához.
   
@@ -69,8 +69,11 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
   - Ha elkészült, mentse a beállításokat a **Mentés gombra**kattintva.
 
 > [!NOTE]
-> Amikor először állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok a lejárat után 30 napig vannak beállítva. Az első megújítási értesítő e-mailt egy napon belül küldi el a rendszer. Az A csoport például 400 nappal ezelőtt jött létre, a lejárati idő pedig 180 nap. Elévülési szabályzat alkalmazása esetén az A csoport 30 nappal a törlés előtt, kivéve, ha a tulajdonos megújítja.
+> Amikor először állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok a lejárat után 30 napig vannak beállítva, kivéve, ha a tulajdonos megújítja. Az első megújítási értesítő e-mailt egy napon belül küldi el a rendszer.
+>
 > Dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként tekinti meg, és a szabálynak megfelelően újra feltölti őket. Ez a folyamat akár 24 órát is igénybe vehet.
+>
+> A csapatokban használt csoportok lejárati megjegyzései megjelennek a csapatok tulajdonosai hírcsatornában.
 
 ## <a name="email-notifications"></a>E-mail értesítés
 
@@ -78,7 +81,7 @@ Az e-mailes értesítéseket, például az Office 365 csoport tulajdonosainak 30
 
 ![Lejárati e-mail értesítések](./media/groups-lifecycle/expiration-notification.png)
 
-A csoport tulajdonosai értesítési e-mailben a csoport tulajdonosainak közvetlenül érhetik el a csoport részletei lapot a hozzáférési panelen. Ebben az esetben a felhasználók további információkat kaphatnak a csoportról, például a leírásáról, a legutóbbi megújítás időpontját, a lejárat idejét, valamint a csoport megújításának lehetőségét is. A csoport részletei lap az Office 365-csoport erőforrásaira mutató hivatkozásokat is tartalmaz, így a csoport tulajdonosa kényelmesen megtekintheti a csoport tartalmát és tevékenységeit.
+A csoport **tulajdonosai értesítési** e-mailben a csoport tulajdonosainak közvetlenül érhetik el a csoport részletei lapot a hozzáférési panelen. Ebben az esetben a felhasználók további információkat kaphatnak a csoportról, például a leírásáról, a legutóbbi megújítás időpontját, a lejárat idejét, valamint a csoport megújításának lehetőségét is. A csoport részletei lap az Office 365-csoport erőforrásaira mutató hivatkozásokat is tartalmaz, így a csoport tulajdonosa kényelmesen megtekintheti a csoport tartalmát és tevékenységeit.
 
 Ha egy csoport lejár, a csoport egy nappal a lejárati dátum után törlődik. Egy e-mailes értesítést küld az Office 365 csoport tulajdonosainak, amely tájékoztatja őket az Office 365-csoport lejáratáról és későbbi törléséről.
 

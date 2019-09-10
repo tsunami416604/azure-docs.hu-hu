@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: bfdad0d81599035e7d8c270ec4e8ee8d6a45125e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383016"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858922"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Mi az Azure IoT Central (előzetes verziójú funkciók)?
 
@@ -63,6 +63,7 @@ Ez a cikk az Azure IoT Central esetében ismerteti:
 - Az alkalmazás sablonjának exportálása és az alkalmazás másolása nem támogatott.
 - A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
 - Ez csak az észak-európai és az USA középső régiójában érhető el.
+- Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
 
 ## <a name="personas"></a>Szerepek
 

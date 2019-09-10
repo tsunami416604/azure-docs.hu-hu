@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677992"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860402"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Mi a Azure Machine Learning szolgáltatás vizuális felülete? 
 
 A Azure Machine Learning szolgáltatás vizuális felülete (előzetes verzió) lehetővé teszi a gépi tanulási modellek előkészítését, használatát, tesztelését, üzembe helyezését, kezelését és nyomon követését programkód írása nélkül.
 
-Nincs szükség programozásra, vizuálisan összekapcsolhatók az adatkészletek és [modulok](#module) a modell létrehozásához. [](#dataset)
+Nincs szükség programozásra, vizuálisan összekapcsolhatók az [adatkészletek](#dataset) és [modulok](#module) a modell létrehozásához.
 
-A vizuális felület a Azure Machine Learning szolgáltatás munkaterületét használja a következőhöz: [](concept-workspace.md)
+A vizuális felület a Azure Machine Learning szolgáltatás [munkaterületét](concept-workspace.md) használja a következőhöz:
 
 + Az írási összetevők a munkaterületen [futnak.](#experiment)
-+ Hozzáférési [](#dataset)adatkészletek.
++ Hozzáférési [adatkészletek](#dataset).
 + A kísérlet futtatásához használja a munkaterület [számítási erőforrásait](#compute) . 
 + [Modellek](concept-azure-machine-learning-architecture.md#models)regisztrálása.
 + A modelleket webszolgáltatásként [helyezheti üzembe](#deployment) a munkaterületen lévő számítási erőforrásokon.
@@ -36,11 +36,11 @@ A vizuális felület a Azure Machine Learning szolgáltatás munkaterületét ha
 
 A vizuális felület interaktív, vizualizációs vászon használatával gyorsan kiépítheti, tesztelheti és megismételheti a modelleket. 
 
-+ A vászonra húz és húzhatja [](#module) a modulokat.
++ A vászonra húz és húzhatja a [modulokat](#module) .
 + A modulok összekapcsolása [kísérlet](#experiment)létrehozásához.
 + Futtassa a kísérletet a Machine Learning szolgáltatás munkaterület számítási erőforrásának használatával.
 + A kísérlet szerkesztésével és újbóli futtatásával ismételje meg a modell kialakítását.
-+ Ha elkészült, alakítsa át a betanítási **kísérletet** egy **prediktív kísérletbe**.
++ Ha elkészült, alakítsa át a **betanítási kísérletet** egy **prediktív kísérletbe**.
 + A prediktív kísérletet webszolgáltatásként [helyezheti üzembe](#deployment) , hogy a modell mások számára is elérhető legyen.
 
 ## <a name="experiment"></a>Kísérlet
@@ -81,7 +81,7 @@ A munkaterületen lévő számítási erőforrások használatával futtathatja 
 | Az Azure Machine Learning compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-A számítási célok a Machine Learning munkaterülethez [](concept-workspace.md)vannak csatolva. A számítási célokat a [Azure Portal](https://portal.azure.com)munkaterületén kezelheti.
+A számítási célok a Machine Learning [munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a munkaterületen a [Azure Portal](https://portal.azure.com) vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)kezelheti.
 
 ## <a name="deployment"></a>Környezet
 

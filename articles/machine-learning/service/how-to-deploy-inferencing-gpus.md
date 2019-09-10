@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011525"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844985"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan használható a Azure Machine Learning szolgáltatá
 A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe helyezett modellt használják az előrejelzések készítéséhez. A GPU-k használata a CPU-k helyett teljesítménybeli előnyökkel jár a nagyon párhuzamosítható számításokhoz.
 
 > [!IMPORTANT]
-> A GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak.
+> A webszolgáltatások üzembe helyezése esetén a GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak. Ha __gépi tanulási folyamattal__kíván következtetni, a GPU-k csak Azure Machine learning számítások esetén támogatottak. A ML-folyamatok használatával kapcsolatos további információkért lásd: [Batch-előrejelzések futtatása](how-to-run-batch-predictions.md). 
 
 > [!TIP]
 > Bár ebben a cikkben a kódrészletek usee egy TensorFlow modellt, a GPU-t támogató Machine learning-keretrendszerre is alkalmazhatja az adatokat.
@@ -42,7 +42,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
     * A modellek regisztrálásával kapcsolatos további információkért lásd: [modellek üzembe helyezése](../service/how-to-deploy-and-where.md#registermodel).
 
-    * A dokumentum létrehozásához használt Tensorflow-modell létrehozásához és regisztrálásához tekintse [meg a Tensorflow-modell](how-to-train-tensorflow.md)betanítása című témakört.
+    * A dokumentum létrehozásához használt Tensorflow-modell létrehozásához és regisztrálásához tekintse [meg a Tensorflow-modell betanítása](how-to-train-tensorflow.md)című témakört.
 
 * Általános ismeretek a [modellek üzembe helyezésének módjáról és helyéről](how-to-deploy-and-where.md).
 

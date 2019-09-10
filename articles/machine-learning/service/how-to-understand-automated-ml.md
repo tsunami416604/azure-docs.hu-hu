@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192062"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860555"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 
@@ -30,10 +30,10 @@ További információk az alábbiakról:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Hozzon létre egy automatizált gépi tanulási kísérletet az SDK-val vagy a Azure Portal.
+* Hozzon létre egy automatizált gépi tanulási kísérletet az SDK-val, a Azure Portal vagy a munkaterület kezdőlapján (előzetes verzió).
 
     * Az SDK használata [besorolási modell](how-to-auto-train-remote.md) vagy regressziós [modell](tutorial-auto-train-models.md) létrehozásához
-    * A megfelelő adatfeltöltéssel hozzon létre egy besorolási vagy regressziós modellt a [Azure Portal](how-to-create-portal-experiments.md) használatával.
+    * A megfelelő adatfeltöltés használatával hozzon létre egy besorolási vagy regressziós modellt a [Azure Portal vagy a munkaterület kezdőlapján (előzetes verzió)](how-to-create-portal-experiments.md) .
 
 ## <a name="view-the-run"></a>A Futtatás megtekintése
 

@@ -1,113 +1,113 @@
 ---
-title: Egyéni metrikák az Azure monitorban
-description: Ismerje meg az Azure Monitor és modellezése hogyan egyéni metrikákat.
+title: Egyéni metrikák a Azure Monitorban
+description: Ismerkedjen meg az egyéni metrikákkal a Azure Monitorban és azok modellezésében.
 author: ancav
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254065"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844660"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
+# <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák a Azure Monitorban
 
-Erőforrások és alkalmazások az Azure-beli üzembe helyezése során érdemes követésével fontos információkhoz juthat a teljesítményt és állapotot telemetriai adatok gyűjtésének megkezdéséhez. Az Azure elérhetővé teszi bizonyos metrikák, beépített. Ezek a metrikák standard vagy a platform nevezzük. Azonban azok szab jellegűek. Előfordulhat, hogy szeretné gyűjteni néhány egyéni teljesítménymutatók vagy business-specifikus metrikák részletesebb elemzéseket biztosít.
-Ezek **egyéni** metrikák gyűjthetők a telemetriai, olyan ügynök, amely az Azure-erőforrások, vagy akár összetevős figyelési rendszert futtatja, és közvetlenül az Azure Monitor elküldött keresztül. Után azok van közzétéve, az Azure Monitor, keresse meg a lekérdezést, és riasztást az Azure-erőforrások és alkalmazások párhuzamosan lesz a standard mérőszámok az Azure által kibocsátott egyéni metrikákra vonatkozóan.
+Amikor erőforrásokat és alkalmazásokat helyez üzembe az Azure-ban, érdemes elkezdeni a telemetria gyűjtését, hogy betekintést nyerjen a teljesítménybe és az állapotba. Az Azure néhány mérőszámot elérhetővé tesz a dobozból. Ezeket a metrikákat standard vagy platformnak nevezzük. Azonban a természetük korlátozott. Érdemes lehet összegyűjteni néhány egyéni teljesítménymutatót vagy üzleti specifikus mérőszámot a mélyebb elemzések biztosításához.
+Ezek az **Egyéni** metrikák az alkalmazás telemetria, az Azure-erőforrásokon futtatott ügynökkel, vagy akár egy külső figyelési rendszerrel is összegyűjthetők, és közvetlenül a Azure monitorhoz lesznek elküldve. A Azure Monitor közzétételét követően az Azure-erőforrások és-alkalmazások egyéni metrikáit tallózással, lekérdezéssel és riasztással láthatja el egymás mellett az Azure által kibocsátott szabványos metrikákkal.
 
-## <a name="send-custom-metrics"></a>Egyéni mérőszámok küldése
-Egyéni metrikák az Azure Monitor használatával több módszert is lehet küldeni:
-- Az Azure Application Insights SDK használatával az alkalmazás tagolása és egyéni telemetriát küldjön az Azure Monitor. 
-- Telepítse a Windows Azure Diagnostics (WAD) bővítmény a [Azure virtuális gép](collect-custom-metrics-guestos-resource-manager-vm.md), [virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasszikus virtuális gép](collect-custom-metrics-guestos-vm-classic.md), vagy [klasszikus Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) és teljesítményszámlálók küldése az Azure monitornak. 
-- Telepítse a [InfluxData Telegraf ügynök](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gép és a küldési mérőszámok az Azure Monitor használatával kimeneti beépülő modult.
-- Egyéni mérőszámok küldése [közvetlenül az Azure Monitor REST API a](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+## <a name="send-custom-metrics"></a>Egyéni metrikák küldése
+Az egyéni metrikák több módszer használatával is elküldhetők Azure Monitorba:
+- Az alkalmazást az Azure Application Insights SDK használatával, az egyéni telemetria pedig a Azure Monitorba küldheti. 
+- Telepítse a Windows Azure Diagnostics (WAD) bővítményt az [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)-beli virtuális gépre, a [virtuálisgép-méretezési csoportra](collect-custom-metrics-guestos-resource-manager-vmss.md), a [klasszikus virtuális gépre](collect-custom-metrics-guestos-vm-classic.md)vagy a [klasszikus Cloud Servicesre](collect-custom-metrics-guestos-vm-cloud-service-classic.md) , és küldje el a teljesítményszámlálók Azure monitor. 
+- Telepítse a [InfluxData-előgrafi ügynököt](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gépre, és küldje el a metrikákat a Azure monitor kimeneti beépülő modullal.
+- Egyéni metrikák küldése [közvetlenül a Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-Ha egyéni mérőszámok küldése az Azure Monitor, minden egyes adatponthoz vagy jelentett értéket tartalmaznia kell a következő információkat.
+Ha egyéni metrikákat küld Azure Monitorre, akkor a jelentett adatpontoknak vagy értékeknek a következő információkat kell tartalmazniuk.
 
-### <a name="authentication"></a>Hitelesítés
-Egyéni metrikák az Azure monitornak elküldeni az entitást, amely elküldi a metrika egy érvényes Azure Active Directory (Azure AD-) token kell a **tulajdonosi** a kérelem fejlécében. Érvényes tulajdonosi jogkivonat-beszerzési néhány támogatott módja van:
-1. [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Hozzáférést biztosít az identitás egy Azure-erőforrás, például egy virtuális Gépet. Felügyelt Felügyeltszolgáltatás-identitás (MSI) célja az erőforrásoknak engedélyek bizonyos műveletek elvégzésére. Példa engedélyezi-e saját magáról metrikák kibocsátható egy erőforrást. Az erőforrás vagy az MSI-vel is megadható **figyelési metrikákat közzétevő** engedélyeit egy másik erőforrás. Ezzel az engedéllyel az MSI kibocsátható, valamint egyéb erőforrások mérőszámait.
-2. [Az Azure AD-szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Ebben a forgatókönyvben, egy Azure AD-alkalmazást vagy szolgáltatást rendelhetők engedélyek kibocsátható egy Azure-erőforrás metrikáit.
-Hitelesíteni a kérelmet, az Azure Monitor ellenőrzi az alkalmazás jogkivonatát nyilvános kulcsok az Azure AD használatával. A meglévő **figyelési metrikákat közzétevő** szerepkör már rendelkezik ezzel az engedéllyel. Érhető el az Azure Portalon. A szolgáltatásnév, attól függően, milyen erőforrásokat, bocsát ki, egyéni metrikákat is megadható a **figyelési metrikákat közzétevő** szerepkör szükséges a hatókörben. A példák egy előfizetés, erőforráscsoport vagy adott erőforráshoz.
+### <a name="authentication"></a>Authentication
+Ha egyéni metrikákat szeretne beküldeni a Azure Monitorba, a metrikát elküldő entitásnak érvényes Azure Active Directory (Azure AD) tokenre van szüksége a kérelem tulajdonosi fejlécében. Az érvényes tulajdonosi jogkivonatok beszerzésének néhány támogatott módja:
+1. [Felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Identitást ad az Azure-erőforrásokhoz, például egy virtuális géphez. Managed Service Identity (MSI) úgy van kialakítva, hogy erőforrás-engedélyeket biztosítson bizonyos műveletek végrehajtásához. Ilyen például, ha egy erőforrás saját magáról bocsát ki mérőszámokat. Egy erőforrás vagy annak MSI-je egy másik erőforráson is megadhat **figyelési metrikák közzétevői** engedélyeit. Ezzel az engedéllyel az MSI más erőforrásokhoz is kibocsáthat metrikákat.
+2. [Azure ad-szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Ebben a forgatókönyvben egy Azure AD-alkalmazás vagy-szolgáltatás engedélyeket rendelhet az Azure-erőforrásokra vonatkozó mérőszámok kibocsátásához.
+A kérelem hitelesítéséhez Azure Monitor érvényesíti az alkalmazás tokenjét az Azure AD nyilvános kulcsaival. A meglévő **figyelési metrikák közzétevői** szerepköre már rendelkezik ezzel az engedéllyel. Ez elérhető a Azure Portalban. Az egyszerű szolgáltatásnév attól függően, hogy milyen erőforrásokra bocsát ki egyéni metrikákat, megadhatja a **figyelési metrikák közzétevői** szerepkörét a szükséges hatókörben. Ilyenek például az előfizetés, az erőforráscsoport vagy az adott erőforrás.
 
 > [!NOTE]  
-> Ha egy Azure ad-ben jogkivonat kibocsátható egyéni metrikákat kér, gondoskodjon arról, hogy a közönség, vagy a jogkivonatot a rendszer lekéri az erőforrás https://monitoring.azure.com/. Így feltétlenül foglalja bele a záró "/"karaktert.
+> Ha Azure AD-jogkivonatot kér egyéni metrikák kibocsátására, győződjön meg arról, hogy a tokenhez tartozó célközönség vagy https://monitoring.azure.com/ erőforrás a (z). Ügyeljen arra, hogy tartalmazza a "/" zárót.
 
 ### <a name="subject"></a>Subject
-Ez a tulajdonság melyik Azure-erőforrás azonosítója, az egyéni metrika jelentett rögzíti. Ez az információ kódolva legyen kerül sor az API-hívás URL-címét. Minden API csak küldhet metrikaértékek egy egyetlen Azure-beli erőforráshoz.
+Ez a tulajdonság rögzíti, hogy az egyéni metrika melyik Azure-erőforrás-AZONOSÍTÓval van jelezve. Ezek az adatok az API-hívás URL-címében lesznek kódolva. Az egyes API-k csak egyetlen Azure-erőforráshoz küldhetnek metrikai értékeket.
 
 > [!NOTE]  
-> Egyéni metrikákat az erőforrás-azonosítója egy erőforráscsoportba vagy előfizetésbe nelze generovat.
+> Egy erőforráscsoport vagy előfizetés erőforrás-azonosítójával nem lehet egyéni metrikákat kibocsátani.
 >
 >
 
 ### <a name="region"></a>Régió
-Ez a tulajdonság az erőforrás metrikáit, már úgy van üzembe helyezve az Azure régióját rögzíti. Metrikák kell bocsátja ki, az ugyanazon az Azure Monitor regionális végpont, mint a terület az erőforrás üzembe van helyezve. Például az USA nyugati RÉGIÓJA üzembe helyezett virtuális gépek egyéni metrikákat kell küldeni a WestUS regionális Azure Monitor-végpontra. A terület adatait is kódolva, az API-hívás URL-címét.
+Ez a tulajdonság azt az Azure-régiót rögzíti, amelybe a metrikákat kibocsátó erőforrást telepíti. A metrikákat ugyanarra a Azure Monitor regionális végpontra kell kiadni, mint az erőforrás üzembe helyezésének régióját. Az USA nyugati régiójában üzembe helyezett virtuális gépek egyéni metrikáit például a WestUS regionális Azure Monitor végpontjának kell elküldeni. A régió információi az API-hívás URL-címében is kódolva vannak.
 
 > [!NOTE]  
-> A nyilvános előzetes során egyéni metrikákat csak válnak elérhetővé az Azure-régiók részhalmazát. Támogatott régiók listáját egy későbbi szakaszban olvashat a jelen cikk ismertetését.
+> A nyilvános előzetes verzióban az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listáját a cikk egy későbbi szakaszában dokumentáljuk.
 >
 >
 
-### <a name="timestamp"></a>Időbélyeg
-Az Azure Monitor küldött egyes adatpontok egy időbélyeggel kell megjelölni. Az időbélyegző rögzíti, amikor a metrikaérték mért vagy gyűjtött dátuma és időpontja. Az Azure Monitor fogad el metrikaadatok időbélyegzőnél szerint 20 perc a múltban és a jövőben 5 perc. Az időbélyeg ISO 8601 formátumban kell lennie.
+### <a name="timestamp"></a>Timestamp
+A Azure Monitor elküldett minden adatpontot időbélyeg-ként kell megjelölni. Ez az időbélyeg rögzíti azt a dátumot, amikor a metrika értékét méri vagy gyűjti. A Azure Monitor a metrikákkal rendelkező metrikus adatokat az elmúlt 20 percen belül, a későbbiekben pedig 5 percet fogad el. Az időbélyegnek ISO 8601 formátumúnak kell lennie.
 
 ### <a name="namespace"></a>Névtér
-Névterek kategorizálása vagy csoportba foglalhatók a hasonló mérőszámok módon. Névterek használatával érheti el, amelyek különböző információkat és teljesítménymutatók gyűjt metrikákat csoportjait elkülönítését. Például előfordulhat, hogy rendelkezik egy nevű névtér **ContosoMemoryMetrics** , amely nyomon követi a használható memória metrikák, amely az alkalmazás profilját. Egy másik névtér nevű **ContosoAppTransaction** előfordulhat, hogy nyomon követheti az alkalmazás felhasználói tranzakció összes metrikákat.
+A névterek segítségével kategorizálhatja vagy csoportosíthatja a hasonló metrikákat. A névterek segítségével elkülönítheti a metrikák csoportjai között, amelyek különböző adatokat gyűjthetnek vagy teljesítménymutatókat. Előfordulhat például, hogy rendelkezik egy **ContosoMemoryMetrics** nevű névtérrel, amely nyomon követi az alkalmazás profilját használó memóriahasználat mérőszámait. Egy másik, **ContosoAppTransaction** nevű névtér nyomon követheti az alkalmazás felhasználói tranzakcióinak összes mérőszámát.
 
 ### <a name="name"></a>Name (Név)
-**Név** jelentve metrika neve. A név általában elég leíró meghatározásához, mit kell mérni. Ilyen például, egy metrikát, amely egy adott virtuális gép a használt memória (bájt) számát méri. Előfordulhat, hogy a metrika neve például **Memória\lefoglalt memória**.
+A **név** a jelentett metrika neve. Általában a név elég leíró a mért értékek azonosításához. Egy példa egy metrika, amely az adott virtuális gépen használt memória bájtjainak számát méri. Lehet, hogy a metrika neve például a **használatban lévő memória bájtjai**.
 
 ### <a name="dimension-keys"></a>Dimenzió kulcsai
-Egy dimenzió egy kulcs vagy érték pár, amely segít a további jellemzőit adja meg az összegyűjtött metrikát. A további jellemzőit használatával is összegyűjtheti a további információ a mérőszám, amely lehetővé teszi, hogy részletesebb elemzéseket. Például a **Memória\lefoglalt memória** metrika előfordulhat, hogy a dimenzió nevű kulcsot **folyamat** , amely rögzíti, hány bájt memóriát a virtuális gép minden egyes folyamat használ fel. Ez a kulcs használatával szűrheti a metrika mennyi memóriát meghatározott folyamatok használnak vagy a felső öt folyamatok azonosíthatja a memóriahasználat.
-Dimenziók nem kötelező, előfordulhat, hogy nem minden metrikák dimenziókat. Egy egyéni metrika dimenziók legfeljebb 10 lehet.
+A dimenzió egy kulcs vagy érték pár, amely segít a begyűjtött metrika további jellemzőinek leírásában. A további jellemzők használatával további információkat gyűjthet a metrikáról, ami mélyebb elemzéseket tesz lehetővé. Előfordulhat például, hogy a **használatban lévő memória bájtjainak** egy **folyamat** nevű dimenzió kulcsa van, amely rögzíti, hogy a virtuális gép minden egyes folyamata hány bájt memóriát használ fel. Ennek a kulcsnak a használatával szűrheti a metrikát, hogy megtudja, milyen mennyiségű memória-specifikus folyamat használja, vagy az első öt folyamatot a memóriahasználat alapján azonosítsa.
+A méretek nem kötelezőek, nem minden metrika rendelkezhet dimenziókkal. Egy egyéni metrika legfeljebb 10 dimenzióval rendelkezhet.
 
 ### <a name="dimension-values"></a>Dimenzió értékei
-Ha egy metrika adatpont minden dimenzió kulcs jelentett, a metrika a reporting nincs a megfelelő dimenzióértékhez. Például akkor előfordulhat, hogy szeretne jelentést készíteni a ContosoApp a virtuális gép által felhasznált memória:
+A metrikai adatpontok jelentésekor a jelentésben szereplő összes dimenzió kulcshoz tartozik egy megfelelő dimenzióérték. Előfordulhat például, hogy a virtuális gépen a ContosoApp által használt memóriát szeretné jelenteni:
 
-* A metrika neve lenne **használatban lévő memória (bájt)** .
-* A dimenzió kulcs lenne **folyamat**.
-* A dimenzió érték lesz **ContosoApp.exe**.
+* A metrika neve a **használatban lévő memória bájtjai**.
+* A dimenzió kulcsa feldolgozható.
+* A dimenzió értéke **ContosoApp. exe**lenne.
 
-Ha egy metrikaérték közzététel, dimenzió kulcsonként dimenziót érték csak adható meg. Ha a virtuális gépen több folyamatok ugyanazt a memóriahasználat, az időbélyeg több metrikaértékek jelentést. Minden egyes metrikaérték lehet megadni másik dimenzió értékét a **folyamat** dimenzió kulcsot.
-Dimenziók nem kötelező, előfordulhat, hogy nem minden metrikák dimenziókat. Ha egy metrika post dimenziókulcsok, megfelelő dimenzió értékei kötelező.
+Metrikus érték közzétételekor csak egy dimenzió érték adható meg dimenzió-kulcsként. Ha a virtuális gépen több folyamat esetében is ugyanazt a memóriát keresi, több metrikai értéket is jelenthet az adott időbélyeghez. Minden metrika értéke eltérő dimenzióértéket határozhat meg a **folyamat** dimenzió kulcsához.
+A méretek nem kötelezőek, nem minden metrika rendelkezhet dimenziókkal. Ha egy metrikai bejegyzés definiálja a dimenzió kulcsait, a megfelelő dimenzióértékeket kötelező megadni.
 
-### <a name="metric-values"></a>Metrikaértékek
-Az Azure Monitor minden metrika egy perces pontossággal időközönként tárolja. Tisztában vagyunk vele, hogy egy adott percben metrika előfordulhat, hogy kell többször kell mintát venni. Ilyen például a CPU-kihasználtság. Vagy előfordulhat, hogy számos különálló események mért van szükség. Ilyen például, jelentkezzen be a tranzakció késéseket. Küldik, és az Azure monitorban fizetnie kell kerekített értékek számának korlátozásához, helyileg is előzetes összesítésre, és a gridre bocsáthatja ki az értékeket:
+### <a name="metric-values"></a>Metrika értékei
+Azure Monitor az összes mérőszámot egyperces részletességi intervallumokban tárolja. Tisztában vagyunk azzal, hogy egy adott percben egy mérőszámot többször is fel kell venni. Ilyen például a CPU kihasználtsága. Vagy előfordulhat, hogy sok különálló esemény esetében is mérhetőnek kell lennie. Ilyen például a bejelentkezési tranzakció késése. Ha korlátozni szeretné a Azure Monitor által kibocsátani és kifizetni kívánt nyers értékek számát, helyileg előre összesítheti és kibocsáthatja az értékeket:
 
-* **Min**: A minimális érték a mintákat és mérést a percben figyelhető meg.
-* **Maximális**: A maximális érték a mintákat és mérést a percben figyelhető meg.
-* **Sum**: Az összegzés a mintákat és mérést megfigyelt értékek az percben.
-* **Száma**: Minták és a percben mérések száma.
+* **Minimális**érték: A minimális megfigyelt érték az összes mintából és mérésből a percben.
+* **Max**.: Az összes mintából és mérésből a percben megfigyelt maximális érték.
+* **Összeg**: Az összes mintából és mérésből származó összes megfigyelt érték összegzése a percben.
+* **Darabszám**: A percekben végrehajtott minták és mérések száma.
 
-Például, ha 4 bejelentkezési tranzakciók során az alkalmazáshoz egy adott percenként, a létrejövő mért késéseket az egyes a következő lehet:
+Ha például egy percen belül 4 bejelentkezési tranzakció lett az alkalmazásba, akkor az eredményül kapott mért késések a következők:
 
-|1 tranzakció|2 tranzakció|Tranzakció 3|Tranzakció 4|
+|1\. tranzakció|2\. tranzakció|3\. tranzakció|4\. tranzakció|
 |---|---|---|---|
-|7 ms|4 ms|13 ms|16 ms|
+|7 MS|4 MS|13 MS|16 MS|
 |
 
-Ezután az Azure Monitor az eredményül kapott metrika kiadvány a következők lennének:
-* Min: 4
+Ezután az eredményül kapott metrikai kiadvány Azure Monitor a következő lesz:
+* Min 4
 * Max: 16
-* Összeg: 40
-* Száma: 4
+* Sum 40
+* Száma 4
 
-Ha az alkalmazás nem tudja, előzetes összesítésre helyileg, és minden diszkrét minta vagy a gyűjtemény követően azonnal event gridre bocsáthatja ki kell, a nyers mértékértékek el tudná küldeni. Például minden alkalommal, amikor egy bejelentkezési tranzakciónak az alkalmazáshoz, a metrika csak egyetlen mérték az Azure Monitor tesz közzé. Így bejelentkezési tranzakció igénybe vett 12 ms, a metrika kiadvány a következő lesz:
-* Min: 12
+Ha az alkalmazás nem tud helyileg előre összesíteni, és minden különálló mintát vagy eseményt azonnal ki kell bocsátani a gyűjteményből, a nyers mérték értékeit is kibocsáthatja. Például minden alkalommal, amikor bejelentkezik egy bejelentkezési tranzakció az alkalmazáson, egy mérőszámot tesz közzé, amely csak egyetlen méréssel Azure Monitor. Tehát egy 12 ms-os bejelentkezési tranzakció esetében a metrikus kiadvány a következő lesz:
+* Min 12
 * Max: 12
-* Összeg: 12
-* Száma: 1
+* Sum 12
+* Száma 1
 
-Ez a folyamat a gridre bocsáthatja ki az azonos metrika, valamint a dimenzió kombináció egy adott perc alatt több érték. Az Azure Monitor majd bocsátja ki egy adott perc kerekített értékek vesz igénybe, és azokat összesítve együtt.
+Ezzel a folyamattal több értéket is kibocsáthat ugyanahhoz a metrikai és dimenzió kombinációhoz egy adott percben. Azure Monitor ezután végrehajtja az adott percenként kiállított összes nyers értéket, és összesíti azokat.
 
-### <a name="sample-custom-metric-publication"></a>Egyéni metrika kiadvány minta
-A következő példában hoz létre egy egyéni metrika nevű **használatban lévő memória (bájt)** a metrika névtérben **memória profil** egy virtuális géphez. A metrika rendelkezik egy dimenziót nevű **folyamat**. A megadott időbélyeg küldik azt két különböző folyamatok metrikaértékek:
+### <a name="sample-custom-metric-publication"></a>Példa egyéni metrika közzétételére
+A következő példában létrehozunk egy, a virtuális gép metrikai névtérének memóriájában **használatos memória-bájtok** nevű egyéni metrikát. A metrika egyetlen, **folyamat**nevű dimenzióval rendelkezik. Az adott időbélyeg esetében két különböző folyamat metrikáit bocsátjuk ki:
 
 ```json
 {
@@ -145,56 +145,72 @@ A következő példában hoz létre egy egyéni metrika nevű **használatban l�
   }
 ```
 > [!NOTE]  
-> Az Application Insights, a diagnosztikai bővítmény és a InfluxData Telegraf ügynök már konfigurálva vannak a megfelelő regionális végponthoz metrikaértékek küldik, és továbbítani az összes, az előző tulajdonságai az egyes kibocsátási.
+> A Application Insights, a diagnosztikai bővítmény és a InfluxData-Graf ügynök már úgy van konfigurálva, hogy metrikai értékeket állítson ki a megfelelő regionális végponton, és az összes korábbi tulajdonságot az összes kibocsátásban elvégezze.
 >
 >
 
-## <a name="custom-metric-definitions"></a>Egyéni metrikadefinícióinak beolvasása
-Hiba esetén nem kell hardverszállítók egy egyéni metrika az Azure monitorban, mielőtt azt bocsásson ki. Egyes közzétett metrika adatpontok névtér, a neve, és a dimenzió adatokat tartalmaz. Először egy egyéni metrika bocsásson ki az Azure monitornak, így a rendszer automatikusan létrehoz egy metrika definíciója. Ez a metrika definíciója majd felderíthető található erőforrásokat a mérőszám percentként ellen a metrikadefiníciók keresztül.
+## <a name="custom-metric-definitions"></a>Egyéni metrika-definíciók
+A kibocsátása előtt nem kell előre definiálni egy egyéni metrikát Azure Monitor. Minden közzétett metrikai adatpont névteret, nevet és dimenzió információt tartalmaz. Tehát amikor a rendszer először egy egyéni metrikát bocsát ki Azure Monitorre, a rendszer automatikusan létrehoz egy metrika-definíciót. Ez a metrikai definíció ezt követően minden olyan erőforráson felderíthető, amelyet a metrika a metrika-definíciók használatával bocsát ki.
 
 > [!NOTE]  
-> Az Azure Monitor még nem támogatja a definiálása **egységek** egy egyéni metrika.
+> A Azure Monitor még nem támogatja az egyéni metrika egységének definiálását.
 
-## <a name="using-custom-metrics"></a>Egyéni metrikák használatával
-Egyéni metrikák az Azure Monitor az elküldésüket követően keresse meg azokat az Azure Portalon, és lekérdezheti, ha az Azure Monitor REST API-kon keresztül. Létrehozhat riasztásokat is arra az esetre, ha bizonyos feltételek teljesülnek-e rajtuk.
-### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Keresse meg az egyéni metrikákat az Azure Portalon
+## <a name="using-custom-metrics"></a>Egyéni metrikák használata
+Miután elküldte az egyéni metrikákat Azure Monitorre, böngészheti őket a Azure Portal, és a Azure Monitor REST API-kon keresztül kérdezheti le őket. Riasztásokat is létrehozhat rajtuk, hogy értesítést kapjon, ha bizonyos feltételek teljesülnek.
+### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Egyéni metrikák böngészése az Azure Portal használatával
 1.  Nyissa meg az [Azure Portal](https://portal.azure.com).
-2.  Válassza ki a **figyelő** ablaktáblán.
+2.  Válassza a **figyelés** ablaktáblát.
 3.  Válassza a **Metrika** lehetőséget.
-4.  Válassza ki, hogy kibocsátott egyéni metrikákat az erőforrás.
-5.  Válassza ki a metrikák névteret, az egyéni metrika.
-6.  Válassza ki az egyéni metrika.
+4.  Válassza ki azt az erőforrást, amelyről egyéni metrikákat adott ki.
+5.  Válassza ki az egyéni metrika metrikai névterét.
+6.  Válassza ki az egyéni metrikát.
 
 ## <a name="supported-regions"></a>Támogatott régiók
-A nyilvános előzetes során tegyenek közzé egyéni metrikákat csak egy Azure-régiók részhalmazát érhető el. Ez a korlátozás, az azt jelenti, hogy csak az erőforrások a támogatott régiók egyikében metrikák tehetők közzé. Az alábbi táblázat a támogatott Azure-régióban a egyéni metrikákat készletét. Felsorolja a megfelelő végpontok, amelyek ezekben a régiókban erőforrások mérőszámait közzé kell tenni:
+A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehetősége csak az Azure-régiók egy részhalmazában érhető el. Ez a korlátozás azt jelenti, hogy a metrikák csak az egyik támogatott régió erőforrásai számára tehetők közzé. A következő táblázat felsorolja az egyéni metrikák támogatott Azure-régióinak készletét. Emellett felsorolja azokat a végpontokat is, amelyek az adott régiókban lévő erőforrások metrikáit teszik közzé:
 
-|Azure-régió|Regionális végpont előtagja|
+|Azure-régió |Regionális végpont előtagja|
 |---|---|
-|USA keleti régiója| https:\//eastus.monitoring.azure.com/ |
-|USA déli középső régiója| https:\//southcentralus.monitoring.azure.com/ |
-|USA nyugati középső régiója| https:\//westcentralus.monitoring.azure.com/ |
-|USA nyugati régiója, 2.| https:\//westus2.monitoring.azure.com/ |
-|Délkelet-Ázsia| https:\//southeastasia.monitoring.azure.com/ |
-|Észak-Európa| https:\//northeurope.monitoring.azure.com/ |
-|Nyugat-Európa| https:\//westeurope.monitoring.azure.com/ |
+| **Egyesült Államok és Kanada** | |
+|USA nyugati középső régiója | https:\//westcentralus.monitoring.Azure.com/ |
+|USA nyugati régiója, 2.       | https:\//westus2.monitoring.Azure.com/ |
+|USA északi középső régiója | https:\//northcentralus.monitoring.Azure.com
+|USA déli középső régiója| https:\//southcentralus.monitoring.Azure.com/ |
+|USA középső régiója      | https:\//CentralUS.monitoring.Azure.com |
+|Közép-Kanada | https:\//canadacentral.monitoring.Azure.comc
+|East US| https:\//eastus.monitoring.Azure.com/ |
+| **Európa** | |
+|Észak-Európa    | https:\//northeurope.monitoring.Azure.com/ |
+|Nyugat-Európa     | https:\//westeurope.monitoring.Azure.com/ |
+|Az Egyesült Királyság déli régiója | https:\//uksouth.monitoring.Azure.com
+|Közép-Franciaország | https:\//francecentral.monitoring.Azure.com |
+| **Afrika** | |
+|Dél-Afrika északi régiója | https:\//southafricanorth.monitoring.Azure.com
+| **Ázsia** | |
+|Közép-India | https:\//centralindia.monitoring.Azure.com
+|Kelet-Ausztrália | https:\//australiaeast.monitoring.Azure.com
+|Kelet-Japán | https:\//japaneast.monitoring.Azure.com
+|Délkelet-Ázsia  | https:\//southeastasia.monitoring.Azure.com |
+|Kelet-Ázsia | https:\//eastasia.monitoring.Azure.com
+|Korea középső régiója   | https:\//koreacentral.monitoring.Azure.com
+
 
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok
-Az Azure Monitor ír elő a következő használati korlátokkal, egyéni metrikákra vonatkozóan:
+A Azure Monitor a következő használati korlátokat szabja meg az egyéni metrikák esetében:
 
 |Category|Korlát|
 |---|---|
-|Adatsorozat/előfizetés/régió aktív idő|50,000|
-|Dimenzió kulcsai metrikánként|10|
-|Karakterlánc hosszának metrika névterek, a metrikák nevei, a dimenzió kulcsai és a dimenzió értékei|maximális hossz 256 karakter|
+|Aktív idősorozat/előfizetések/régió|50,000|
+|Dimenzió kulcsok/metrika|10|
+|A metrikai névterek, a metrikák nevei, a dimenzió kulcsai és a dimenzió értékeinek karakterlánc-hossza|256 karakter|
 
-Egy aktív idősorozat számít, ha bármelyik metrika, a dimenzió kulcsot vagy a dimenzió értékét, amely még az elmúlt 12 órában közzétett metrikaértékek egyedi kombinációja.
+Az aktív idősorozatok a metrika, a dimenzióérték vagy a dimenzió érték bármely egyedi kombinációja, amely az elmúlt 12 órában közzétett metrikai értékeket tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
-Egyéni metrikák a különböző szolgáltatásokat használja: 
+Egyéni metrikák használata különböző szolgáltatásokból: 
  - [Virtuális gépek](collect-custom-metrics-guestos-resource-manager-vm.md)
- - [Virtuálisgép-méretezési csoportot](collect-custom-metrics-guestos-resource-manager-vmss.md)
- - [Azure-beli virtuális gépek (klasszikus)](collect-custom-metrics-guestos-vm-classic.md)
- - [Linux rendszerű virtuális gép Telegraf ügynök használatával](collect-custom-metrics-linux-telegraf.md)
+ - [Virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md)
+ - [Azure Virtual Machines (klasszikus)](collect-custom-metrics-guestos-vm-classic.md)
+ - [Linux rendszerű virtuális gép a saját Graf ügynök használatával](collect-custom-metrics-linux-telegraf.md)
  - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klasszikus Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

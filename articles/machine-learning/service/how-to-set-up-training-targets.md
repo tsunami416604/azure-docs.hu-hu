@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389898"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860540"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 
 A Azure Machine Learning szolgáltatással különféle erőforrásokon és környezeteken is elvégezheti a modell betanítását, amelyet együttesen [__számítási céloknak__](concept-azure-machine-learning-architecture.md#compute-targets)is nevezünk. A számítási cél lehet egy helyi gép vagy egy felhőalapú erőforrás, például egy Azure Machine Learning számítási, Azure-HDInsight vagy egy távoli virtuális gép.  Emellett számítási célokat is létrehozhat a modell telepítéséhez a ["hol és hogyan kell üzembe helyezni a modelleket"](how-to-deploy-and-where.md)című cikkben leírtak szerint.
 
-A számítási célt a Azure Machine Learning SDK, az Azure Portal, az Azure CLI vagy a Azure Machine Learning VS Code bővítmény használatával hozhatja létre és kezelheti. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
+A számítási célt a Azure Machine Learning SDK, a Azure Portal, a munkaterület kezdőlapja (előzetes verzió), az Azure CLI vagy a Azure Machine Learning VS Code bővítmény használatával hozhatja létre és kezelheti. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
  
 Ebből a cikkből megtudhatja, hogyan használhatja a különböző számítási célokat a modellek betanításához.  Az összes számítási cél lépései ugyanazt a munkafolyamatot követik:
 1. __Hozzon létre__ egy számítási célt, ha még nem rendelkezik ilyennel.
@@ -45,9 +45,9 @@ Azure Machine Learning szolgáltatás különböző számítási célokban elté
 
 ## <a name="whats-a-run-configuration"></a>Mi az a futtatási konfiguráció?
 
-A betanítás során gyakori, hogy a helyi számítógépen indul el, és később a betanítási szkriptet más számítási célra futtatja. A Azure Machine Learning szolgáltatással különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a parancsfájlt. 
+A betanítás során gyakori, hogy a helyi számítógépen indul el, és később a betanítási szkriptet más számítási célra futtatja. A Azure Machine Learning szolgáltatással különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a parancsfájlt.
 
-Mindössze annyit kell tennie, hogy a **futtatási konfiguráción**belül minden számítási cél esetében meghatározza a környezetet.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját. A környezet megadásának és a konfiguráció futtatásához való kötésének részleteiért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)
+Mindössze annyit kell tennie, hogy a **futtatási konfiguráción**belül minden számítási cél esetében meghatározza a környezetet.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját. A környezet megadásának és a konfiguráció futtatásához való kötésének részleteiért lásd: [környezetek létrehozása és kezelése a betanításhoz és üzembe helyezéshez](how-to-use-environments.md).
 
 További információ a [kísérletek elküldéséről](#submit) a cikk végén.
 
@@ -278,6 +278,7 @@ A munkaterülethez társított számítási célokat a Azure Portal érheti el. 
 * [Számítási cél létrehozása](#portal-create) a munkaterületen
 * A munkaterületen kívül létrehozott [számítási cél csatolása](#portal-reuse)
 
+
 Miután létrejött a cél, és csatolva van a munkaterülethez, a futtatási konfigurációban egy `ComputeTarget` objektummal fogja használni: 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 A munkaterülethez tartozó számítási célok megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com) , és nyissa meg a munkaterületet. 
+1. Navigáljon a [Azure Portal](https://portal.azure.com) , és nyissa meg a munkaterületet. Ugyanezeket a lépéseket a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)is elérheti, bár az alábbi rendszerképek mutatják a Azure Portal.
+ 
 1. Az __alkalmazások__területen válassza a __számítás__lehetőséget.
 
     [![Számítás lap megtekintése](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
@@ -379,7 +381,7 @@ Miután létrehozta a futtatási konfigurációt, a használatával futtathatja 
 >
 > Ha meg szeretné akadályozni, hogy a fájlok szerepeljenek a pillanatképben, `.amlignore` hozzon létre egy [. gitignore](https://git-scm.com/docs/gitignore) vagy fájlt a címtárban, és adja hozzá a fájlokat. A `.amlignore` fájl ugyanazt a szintaxist és mintázatot használja, mint a [. gitignore](https://git-scm.com/docs/gitignore) fájl. Ha mindkét fájl létezik, a `.amlignore` fájl elsőbbséget élvez.
 > 
-> További információ: [Pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
+> További információ: Pillanatképek [](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 

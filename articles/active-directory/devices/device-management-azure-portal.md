@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942948"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860904"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -24,7 +24,7 @@ Az Azure Active Directory (Azure AD) eszköz-identitások kezelésével biztosí
 
 A cikk tartalma:
 
-- Feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének](overview.md) bevezetését
+- Feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének bevezetését](overview.md)
 - Információt nyújt az eszköz identitásának az Azure AD-portál használatával történő kezeléséről
 
 ## <a name="manage-device-identities"></a>Eszközidentitások kezelése
@@ -49,7 +49,7 @@ Az **eszközök** lap a következőket teszi lehetővé:
   
 ## <a name="configure-device-settings"></a>Eszközbeállítások megadása
 
-Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközöknek regisztrálva kell lenniük, vagy hozzá kell csatlakozniuk az Azure AD- [hez](overview.md) . Rendszergazdaként az eszközbeállítások konfigurálásával részletesen beállíthatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
+Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközöknek [regisztrálva](overview.md) kell lenniük, vagy hozzá kell csatlakozniuk az Azure ad-hez. Rendszergazdaként az eszközbeállítások konfigurálásával részletesen beállíthatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
 
 ![Eszközbeállítások megadása](./media/device-management-azure-portal/22.png)
 
@@ -57,24 +57,24 @@ Az eszközbeállítások oldalon a következőket konfigurálhatja:
 
 ![Intune-eszköz kezelése](./media/device-management-azure-portal/21.png)
 
-- A felhasználók csatlakozhatnak az eszközökhöz az **Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
+- A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
 
 > [!NOTE]
-> Előfordulhat, hogy a **felhasználók az Azure ad-** be való csatlakoztatáshoz csak az Azure ad-csatlakozásra vonatkoznak a Windows 10 rendszeren.
+> Előfordulhat, hogy a **felhasználók az Azure ad-be való csatlakoztatáshoz** csak az Azure ad-csatlakozásra vonatkoznak a Windows 10 rendszeren.
 
 - **További helyi rendszergazdák az Azure ad-hez csatlakoztatott eszközökön** : kiválaszthatja azokat a felhasználókat, akik helyi rendszergazdai jogosultságokat kapnak az eszközön. Az itt hozzáadott felhasználók az Azure AD-ben az *eszköz-rendszergazdák* szerepkörbe kerülnek. A globális rendszergazdák az Azure AD-ben és az eszközök tulajdonosai alapértelmezés szerint helyi rendszergazdai jogosultságokat kapnak. Ez a lehetőség egy prémium kiadású funkció, amely olyan termékeken keresztül érhető el, mint a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS).
 - A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és macOs-eszközök regisztrálását az Azure ad-ben. Ha a **nincs**lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. Az Office 365-hez készült Microsoft Intune vagy mobileszköz-felügyelettel (MDM) való regisztrációhoz regisztráció szükséges. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
 - **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. A különböző Azure multi-Factor Authentication-szolgáltatásokkal kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication első lépései](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
-> A többtényezős **hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás nem vonatkozik a hibrid Azure ad-hez csatlakoztatott eszközökre.
+> A **többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.
 
-- **Eszközök maximális száma** – ezzel a beállítással kiválaszthatja, hogy a felhasználók legfeljebb hány eszközt használhatnak az Azure ad-ben. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az eszköz kvótája minden olyan eszközre érvényes, amely az Azure AD-hez csatlakozott vagy az Azure AD-t ma regisztrálta. Az alapértelmezett érték **20**.
+- **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték **20**.
 
 > [!NOTE]
-> **Az eszközök maximális száma** beállítás nem vonatkozik a hibrid Azure ad-hez csatlakoztatott eszközökre.
+> **Az eszközök maximális száma** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.
 
-- A **felhasználók a beállításokat és az alkalmazásadatok közötti szinkronizálást is** megadhatják – alapértelmezés szerint ez a beállítás a **none**értékre van állítva. Adott felhasználók vagy csoportok kiválasztása esetén a felhasználó beállításai és az alkalmazásadatok szinkronizálása a Windows 10-es eszközökön keresztül végezhető el. További információ a szinkronizálás működéséről a Windows 10 rendszerben.
+- A **felhasználók a beállításokat és az alkalmazásadatok közötti szinkronizálást is megadhatják** – alapértelmezés szerint ez a beállítás a **none**értékre van állítva. Adott felhasználók vagy csoportok kiválasztása esetén a felhasználó beállításai és az alkalmazásadatok szinkronizálása a Windows 10-es eszközökön keresztül végezhető el. További információ a szinkronizálás működéséről a Windows 10 rendszerben.
 Ez a lehetőség olyan prémium szintű funkció, amely a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS) segítségével érhető el.
 
 ## <a name="locate-devices"></a>Eszközök megkeresése
@@ -99,7 +99,7 @@ Mindkét lehetőséggel megtekintheti a következőket:
 
 >[!TIP]
 >
->* Ha megjelenik egy "hibrid Azure AD-hez csatlakoztatott" állapotú eszköz, amely a regisztrált oszlopban a "függőben" állapotban van, az azt jelzi, hogy az eszköz szinkronizálva lett az Azure AD-kapcsolattal, és az ügyféltől való regisztráció befejezésére vár. További információ a [hibrid Azure ad-csatlakozás megvalósításának](hybrid-azuread-join-plan.md)megtervezéséről. További információt a cikkben, az [eszközök gyakori kérdéseiben](faq.md)találhat.
+>* Ha megjelenik egy "hibrid Azure AD-hez csatlakoztatott" állapotú eszköz, amely a regisztrált oszlopban a "függőben" állapotban van, az azt jelzi, hogy az eszköz szinkronizálva lett az Azure AD-kapcsolattal, és az ügyféltől való regisztráció befejezésére vár. További információ a [hibrid Azure ad-csatlakozás megvalósításának megtervezéséről](hybrid-azuread-join-plan.md). További információt a cikkben, az [eszközök gyakori kérdéseiben](faq.md)találhat.
 >
 >   ![Függőben lévő eszközök](./media/device-management-azure-portal/75.png)
 >
@@ -157,7 +157,7 @@ Egy eszköz törléséhez két lehetőség közül választhat:
    - Eltávolítja az eszközhöz csatolt összes adatot, például a BitLocker-kulcsokat a Windows-eszközökhöz.  
    - Nem helyreállítható tevékenységet jelöl, és nem ajánlott, ha szükséges.
 
-Ha egy eszközt egy másik felügyeleti hatóság felügyel (például Microsoft Intune), győződjön meg róla, hogy az eszköz törölve lett vagy ki lett vonva, mielőtt törölné az eszközt az Azure AD-ben. Tekintse át, hogyan kezelheti az [elavult eszközöket](device-management-azure-portal.md) az eszközök törlése előtt.
+Ha egy eszközt egy másik felügyeleti hatóság felügyel (például Microsoft Intune), győződjön meg róla, hogy az eszköz törölve lett vagy ki lett vonva, mielőtt törölné az eszközt az Azure AD-ben. Tekintse át, hogyan [kezelheti az elavult eszközöket](device-management-azure-portal.md) az eszközök törlése előtt.
 
 ### <a name="view-or-copy-device-id"></a>Eszköz AZONOSÍTÓjának megtekintése vagy másolása
 
@@ -215,7 +215,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység
 - Dátumtartomány
 - Target
-- Kezdeményező (Szereplő)
+- Kezdeményező (színész)
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 

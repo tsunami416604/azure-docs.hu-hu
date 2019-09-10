@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278200"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860475"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 
@@ -319,7 +319,7 @@ for i in Image.list(workspace=ws):
 
 ### <a name="deploy-to-the-cloud"></a>Üzembe helyezés a felhőben
 
-Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Létrehozhat egy újat a Azure Machine Learning SDK, a CLI vagy a Azure Portal használatával.
+Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Létrehozhat egy újat a Azure Machine Learning SDK, a CLI, a [Azure Portal](https://portal.azure.com) vagy a [munkaterület kezdőlapja (előzetes verzió)](https://ml.azure.com)használatával.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

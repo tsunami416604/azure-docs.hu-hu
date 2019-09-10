@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050908"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859254"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
 
@@ -31,7 +31,7 @@ Ezután a műveletek kimeneteit más szolgáltatásokkal kapcsolatos műveletekk
 Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> Az [Excel Online for Business](/connectors/excelonlinebusiness/) és az [Excel Online for OneDrive](/connectors/excelonline/) -összekötők Azure Logic apps és eltérnek a [PowerApps készült Excel](/connectors/excel/)-összekötőtől.
+> Az [Excel Online for Business](/connectors/excelonlinebusiness/) és az [Excel Online for OneDrive](/connectors/excelonline/) -összekötők Azure Logic apps és eltérnek a [PowerApps készült Excel-összekötőtől](/connectors/excel/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,6 +53,9 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 1. Az trigger alatt válassza az **új lépés**lehetőséget.
 
 1. A keresőmezőbe írja be a "Excel" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
+
+   > [!NOTE]
+   > A Logic app Designer nem tud betölteni 100 vagy több oszlopot tartalmazó táblákat. Ha lehetséges, csökkentse a kiválasztott tábla oszlopainak számát, hogy a tervező betöltse a táblát.
 
 1. Ha a rendszer kéri, jelentkezzen be az Office 365-fiókjába.
 

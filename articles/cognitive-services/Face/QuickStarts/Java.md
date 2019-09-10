@@ -1,49 +1,49 @@
 ---
-title: 'Gyors útmutató: Arcfelismerés a az Azure REST API és a Java-kép'
+title: 'Gyors útmutató: Rendszerképek észlelése az Azure REST API és a Java szolgáltatással'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid, használatával az Azure Face REST API javával arcok észlelése a képet.
+description: Ebben a rövid útmutatóban az Azure Face REST API Javával fogja felderíteni az arcokat a képen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: d014785a0e866301e228458fe3742b899bd1f192
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 30e4852668fc12c38cd7d1794c461041acd654db
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606960"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859194"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a Java használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Gyors útmutató: Rendszerképek észlelése a REST API és a Java használatával
 
-Ebben a rövid, használatával az Azure Face REST API a Javával emberi arcok észlelése a képet.
+Ebben a rövid útmutatóban az Azure Face REST API és a Java használatával ismeri fel az emberi arcokat a képen.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
-- Bármilyen tetszőleges a Java IDE.
+- Bármely tetszőleges Java IDE.
 
 ## <a name="create-the-java-project"></a>A Java-projekt létrehozása
 
-1. Hozzon létre egy új parancssori Java-alkalmazást az IDE-ben, és adjon hozzá egy **fő** osztály használatával egy **fő** metódust.
+1. Hozzon létre egy új parancssori Java-alkalmazást az IDE-ben, és adjon hozzá egy **Main osztályt** a **Main** metódussal.
 1. Importálja az alábbi kódtárakat a Java-projektbe. Ha Mavent használ, a Maven-koordináták mindegyik kódtár esetében meg vannak adva.
-   - [Az Apache HTTP-alapú](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
-   - [Az Apache HTTP core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
+   - [Apache HTTP-ügyfél](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpclient: 4.5.6)
+   - [Apache http Core](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpcore: 4.4.10)
    - [JSON-kódtár](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Az Apache Commons naplózási](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-naplózás: commons-naplózás: 1.1.2)
+   - [Apache Commons-naplózás](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons-naplózás: Commons-naplózás: 1.1.2)
 
-## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
+## <a name="add-face-detection-code"></a>Arcfelismerés kód hozzáadása
 
-Nyissa meg a projekt fő osztály. Itt fogja hozzáadni a képeket tölthet be és arcfelismerés szükséges kódot.
+Nyissa meg a projekt fő osztályát. Itt hozzá kell adnia a lemezképek betöltéséhez és az arcok észleléséhez szükséges kódot.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
-Adja hozzá a következő `import` utasítások a fájl elejéhez.
+Adja hozzá a `import` következő utasításokat a fájl elejéhez.
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -65,24 +65,19 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Cserélje le a **fő** osztályban az alábbi kódra. Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok). Is célszerű beállítani a `imageWithFaces` érték, egy másik képfájl mutató elérési utat.
+Cserélje le a **Main** osztályt a következő kódra. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és `uriBase` módosítania kell a karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. Azt is megteheti, hogy `imageWithFaces` az értéket olyan elérési útra szeretné beállítani, amely egy másik képfájlra mutat.
 
-A `faceAttributes` mező értéke csak bizonyos típusú attribútumok listáját. Azt határozza meg az észlelt arcok kapcsolatos lekérni kívánt adatokat.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+A `faceAttributes` mező csak bizonyos típusú attribútumok listáját tartalmazza. Meghatározza, hogy mely információk kérhetők le az észlelt arcokról.
 
 ```Java
 public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // NOTE: You must use the same region in your REST call as you used to
-    // obtain your subscription keys. For example, if you obtained your
-    // subscription keys from westus, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        "https://<My Endpoint String>.com/face/v1.0/detect";
 
     private static final String imageWithFaces =
         "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
@@ -91,9 +86,9 @@ public class Main {
         "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Az arcfelismerés is használható REST API meghívása
+### <a name="call-the-face-detection-rest-api"></a>Arcfelismerés REST API hívása
 
-Adja hozzá a **fő** módszer a következő kóddal. Akkor hoz létre REST-hívást a Face API, arcfelismerési kapcsolatos információk észleléséhez a távoli kép (a `faceAttributes` karakterláncot adja meg, melyik face attribútumok beolvasni). Ezután egy JSON-karakterláncot ír a kimeneti adatokat.
+Adja hozzá a **Main** metódust a következő kóddal. Egy Rest-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez ( `faceAttributes` ez a karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
 
 ```Java
     public static void main(String[] args) {
@@ -127,7 +122,7 @@ Adja hozzá a **fő** módszer a következő kóddal. Akkor hoz létre REST-hív
 
 ### <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-Közvetlenül az előző kód alatt adja hozzá a következő kódblokk, amely a visszaadott JSON-adatokat egy könnyebben olvasható formátumba konvertálja a nyomtatás, a konzol előtt. Végül, zárja be a try-catch blokk ki a **fő** metódust, és a **fő** osztály.
+Közvetlenül az előző kód alatt adja hozzá a következő blokkot, amely átalakítja a visszaadott JSON-értékeket egy könnyebben olvasható formátumba, mielőtt kinyomtatja a konzolra. Végül zárjuk le a try-catch blokkot, a **Main** metódust és a **Main** osztályt.
 
 ```Java
             if (entity != null)
@@ -159,7 +154,7 @@ Közvetlenül az előző kód alatt adja hozzá a következő kódblokk, amely a
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A kód fordításához és futtathatja. A sikeres válasz Arcfelismerési adatokat a konzolablakban könnyen olvasható JSON-formátumban jeleníti meg. Példa:
+Fordítsa le a kódot, és futtassa. A sikeres válasz a konzol ablakában könnyen olvasható JSON formátumban jeleníti meg az Arcfelismerés. Példa:
 
 ```json
 [{
@@ -253,7 +248,7 @@ A kód fordításához és futtathatja. A sikeres válasz Arcfelismerési adatok
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy egyszerű Java konzolalkalmazást, amely az Azure Face API REST-hívások használ a kép arcok észlelése és attribútumaik. Ezután megtudhatja, hogyan tehet még többet az ezt a funkciót az Android-alkalmazás.
+Ebben a rövid útmutatóban létrehozott egy egyszerű Java-konzol alkalmazást, amely REST-hívásokat használ az Azure Face API a képekben lévő arcok észleléséhez és az attribútumok visszaküldéséhez. Következő lépésként megtudhatja, hogyan teheti ezt a funkciót egy Android-alkalmazásban.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Keret arcok, és Android-alkalmazás létrehozása](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Oktatóanyag: Android-alkalmazás létrehozása az arcok észleléséhez és keretének megjelenítéséhez](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

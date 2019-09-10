@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0ec97683fe8597ced234fe4b7251a4daeed49f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00cbb5ff4b9354d0d1702161460b2646669f34c2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173496"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az MS Azure SSO-hozzáféréssel a Ethidex-megfelelőségi iroda számára™
 
@@ -76,12 +76,18 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)az **MS Azure SSO-hozzáférés a Ethidex megfelelőségi iroda™** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`com.ethidex.prod.<CLIENTID>`
+
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://www.ethidex.com/saml2/sp/acs/<CLIENTID>`
+
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot [az MS Azure SSO-hozzáféréssel a Ethidex megfelelőségi iroda™ támogatási csapatának](mailto:support@ethidex.com) az értékek beszerzéséhez. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. MS Azure SSO-hozzáférés a Ethidex-megfelelőségi iroda™ Application Application az SAML-kijelentéseket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A Ethidex megfelelőségi iroda MS Azure SSO-hozzáférése™ alkalmazás a **User. mail**használatával rendeli hozzá a **NameIdentifier** , ezért az attribútum-hozzárendelést úgy kell szerkesztenie, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútum-hozzárendelést.
 

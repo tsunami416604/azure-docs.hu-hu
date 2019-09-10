@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898342"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844909"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>A IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -36,15 +36,15 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 Megmutassa a megoldást arra a helyzetre, amikor egy autókölcsönző cég megtervezi, hogy figyeli és naplózza az eseményeket a kibérelt autók számára. A bérelt vállalatok gyakran egy adott földrajzi régióhoz tartozó autókat bérelnek, és a bérletük után nyomon kell követniük a tartózkodási helyüket. Minden olyan példányt, amely magában foglalja a kijelölt földrajzi régiót elhagyó autót, naplózni kell, hogy a szabályzatok, díjak és egyéb üzleti szempontok megfelelően kezelhetők legyenek.
 
-A használati esetünkben a bérleti autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-és Azure-IoT Hub. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a térinformatikai IoT [Plug and Play sémájának](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
+A használati esetünkben a bérleti autók olyan IoT-eszközökkel vannak ellátva, amelyek rendszeresen küldenek telemetria-és Azure-IoT Hub. A telemetria tartalmazza az aktuális helyet, és jelzi, hogy az autó motorja fut-e. Az eszköz helyének sémája megfelel a [térinformatikai IoT Plug and Play sémájának](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). A bérleti autó eszközének telemetria sémája a következőképpen néz ki:
 
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ A használati esetünkben a bérleti autók olyan IoT-eszközökkel vannak ellá
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -171,7 +171,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
    
     ![Kulcs-érték paraméterek Poster](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
-4. Kattintson a **törzs** elemre, majd válassza a **nyers** bemeneti formátum lehetőséget, majd a legördülő listából válassza a **JSON (alkalmazás/szöveg)** lehetőséget. Nyissa meg a JSON [](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)-adatfájlt, és másolja a JSON-t a Poster-ben lévő törzs szakaszba, és kattintson a **Send (Küldés**) gombra.
+4. Kattintson a **törzs** elemre, majd válassza a **nyers** bemeneti formátum lehetőséget, majd a legördülő listából válassza a **JSON (alkalmazás/szöveg)** lehetőséget. Nyissa meg a JSON- [adatfájlt](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4), és másolja a JSON-t a Poster-ben lévő törzs szakaszba, és kattintson a **Send (Küldés**) gombra.
     
     ![közzététel](./media/tutorial-iot-hub-maps/post-json-data.png)
     
@@ -211,7 +211,7 @@ A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely 
     
     ![létrehozás – alkalmazás](./media/tutorial-iot-hub-maps/rental-app.png)
 
-3. Az alkalmazás létrehozása után hozzá kell adnia egy függvényt. Nyissa meg a Function alkalmazást, és kattintson az **új függvény** lehetőségre egy függvény hozzáadásához, válassza a portálon a fejlesztői környezet lehetőséget, majd válassza a **Folytatás**lehetőséget.
+3. Az alkalmazás létrehozása után hozzá kell adnia egy függvényt. Nyissa meg a Function alkalmazást, és kattintson az **új függvény** lehetőségre egy függvény hozzáadásához, válassza a **portálon** a fejlesztői környezet lehetőséget, majd válassza a **Folytatás**lehetőséget.
 
     ![Create-Function](./media/tutorial-iot-hub-maps/function.png)
 

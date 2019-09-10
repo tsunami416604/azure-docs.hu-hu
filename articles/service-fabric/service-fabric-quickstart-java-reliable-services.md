@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter, seo-java-august2019
-ms.openlocfilehash: 39bb5191ff0c757fc672d18b4e8e406f91df0509
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: ca6a1063f6ddd5c42d0d08f43b87a3387cc46a14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173233"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859273"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató:  Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
 
-Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
+Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első Java-alkalmazását az Azure Service Fabric-ban az Eclipse IDE használatával egy linuxos fejlesztői gépen. Az útmutató elvégzése után rendelkezni fog egy Java webes kezelőfelületes szavazóalkalmazással, amely egy a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.
 
-Ez a gyors útmutató azt ismerteti, hogy hogyan helyezheti üzembe első Java-alkalmazását a Service Fabricben az Eclipse IDE használatával, Linux fejlesztői gépen. Az útmutató elvégzése után rendelkezni fog egy Java webes kezelőfelületes szavazóalkalmazással, amely egy a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.
+Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
 ![Képernyőkép az alkalmazásról](./media/service-fabric-quickstart-java/votingapp.png)
 

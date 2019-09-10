@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533519"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844257"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -25,7 +25,7 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>"A kvóta túllépve" hibaüzenetet kapok a létrehozás vagy a frissítés során. Mit tegyek? 
 
-[Magot](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)kell kérnie.
+[Magot kell kérnie](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
@@ -38,7 +38,7 @@ Ha az Azure CNI (speciális Hálózatkezelés) van használatban, a (z) "Max-hü
 
 Az alhálózati méret > a fürt csomópontjainak száma (a jövőbeli skálázási követelmények figyelembevételével) * a maximális hüvely/csomópont.
 
-További információt [a fürt IP-címzésének](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)megtervezése című témakörben talál.
+További információt [a fürt IP-címzésének megtervezése](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)című témakörben talál.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A My Pod CrashLoopBackOff módban ragadt. Mit tegyek?
 
@@ -55,7 +55,7 @@ Sajnos a szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökö
 
 ## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehozott egy RBAC engedélyező fürtöt az alapértelmezett vagy a Azure Portal Azure CLI használatával, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
-A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedélyezve van a RBAC, és a hozzáférése alapértelmezés szerint le van tiltva. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)a blogbejegyzésben leírt lépéseket.
+A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedélyezve van a RBAC, és a hozzáférése alapértelmezés szerint le van tiltva. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem tudok csatlakozni az irányítópulthoz. Mit tegyek?
 
@@ -95,7 +95,7 @@ A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnoszti
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhetem a fürtöt egy másik előfizetésbe vagy az előfizetésem a fürttel egy új bérlőre?
 
-Ha már áthelyezte az AK-fürtöt egy másik előfizetésbe vagy a fürt tulajdonosának előfizetését egy új bérlőre, akkor a fürt a szerepkör-hozzárendelések és az egyszerű szolgáltatásokra vonatkozó jogosultságok elvesztése miatt elveszíti a funkcionalitást. Az **AK nem támogatja a fürtök áthelyezését** az előfizetések vagy a bérlők között a jelen megkötés miatt.
+Ha már áthelyezte az AK-fürtöt egy másik előfizetésbe vagy a fürt tulajdonosának előfizetését egy új bérlőre, akkor a fürt a szerepkör-hozzárendelések és az egyszerű szolgáltatásokra vonatkozó jogosultságok elvesztése miatt elveszíti a funkcionalitást. Az **AK nem támogatja a fürtök áthelyezését az előfizetések vagy a bérlők között** a jelen megkötés miatt.
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési csoportokat igénylő szolgáltatások használatára vonatkozó hibák jelentkeznek
 
@@ -107,7 +107,7 @@ Olyan hibák jelenhetnek meg, amelyek jelzik, hogy az AK-fürt nem egy virtuáli
 
 Ha olyan szolgáltatásokat szeretne használni, mint például a fürt autoskálázása vagy több csomópontos készlet, a virtuálisgép-méretezési csoportokat használó AK-fürtöket kell létrehoznia. A rendszer hibaüzeneteket küld, ha olyan szolgáltatásokat próbál használni, amelyek a virtuálisgép-méretezési csoportokon alapulnak, és egy normál, nem virtuálisgép-méretezési csoportba tartozó AK-fürtöt céloz meg. A virtuálisgép-méretezési csoport támogatása jelenleg előzetes verzióban érhető el az AK-ban.
 
-A szükséges dokumentációban szereplő lépések elkezdése *előtt* végezze el a megfelelő regisztrációt a virtuálisgép-méretezési csoport funkciójának előzetes verziójában, és hozzon létre egy AK-fürtöt:
+A szükséges dokumentációban szereplő lépések *elkezdése előtt* végezze el a megfelelő regisztrációt a virtuálisgép-méretezési csoport funkciójának előzetes verziójában, és hozzon létre egy AK-fürtöt:
 
 * [A fürt automéretező használata](cluster-autoscaler.md)
 * [Több Node-készlet létrehozása és használata](use-multiple-node-pools.md)
@@ -132,3 +132,12 @@ A fürt állapotának kimenete alapján:
 * Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) leáll. Ha az előző művelet befejeződött, próbálja meg újra a fürt legújabb műveletét.
 
 * Ha a fürtön sikertelen volt a frissítés, kövesse az itt leírt lépéseket, [amelyek a fürt hibás állapotba kerülnek, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Hibaüzenetet kapok, hogy a szolgáltatásnév nem található, amikor új fürtöt próbálok létrehozni anélkül, hogy egy meglévőt kellene átadni.
+
+AK-fürt létrehozásakor a szolgáltatáshoz egy egyszerű szolgáltatásnév szükséges, amely az Ön nevében hoz létre erőforrásokat. Az AK lehetővé teszi, hogy egy újat hozzon létre a fürt létrehozási időpontjában, de ehhez Azure Active Directory szükséges, hogy az új egyszerű szolgáltatást ésszerű időn belül teljes mértékben propagálja ahhoz, hogy a fürt sikeres legyen a létrehozásban. Ha ez a propagálás túl hosszú időt vesz igénybe, a fürt nem fogja tudni létrehozni az érvényesítést, mert nem talál elérhető egyszerű szolgáltatásnevet. 
+
+Ehhez használja a következő megkerülő megoldásokat:
+1. Olyan meglévő szolgáltatásnevet használjon, amely már propagálva van a régiók között, és létezik, hogy a fürt létrehozási ideje alatt adja át az ak-nak.
+2. Ha Automation-parancsfájlokat használ, adja hozzá az egyszerű szolgáltatás létrehozása és az AK-fürt létrehozása közötti késleltetést.
+3. Ha Azure Portal használ, térjen vissza a fürt beállításaihoz a létrehozás során, és néhány perc múlva próbálja megismételni az érvényesítési oldalt.

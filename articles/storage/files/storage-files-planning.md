@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806619"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844891"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -42,7 +42,7 @@ ms.locfileid: "70806619"
 
 A Azure Files két, beépített, kényelmes adatelérési módszert kínál, amelyeket külön vagy egymással kombinálva használhat az adatai eléréséhez:
 
-1. **Közvetlen Felhőbeli hozzáférés**: Az Azure-fájlmegosztás Windows, [MacOS](storage-how-to-use-files-mac.md)és/vagy [Linux](storage-how-to-use-files-linux.md) [rendszereken](storage-how-to-use-files-windows.md)is csatlakoztatható az iparági szabványnak megfelelő SMB protokollal vagy a REST API fájlon keresztül. Az SMB-vel a megosztásban található fájlok olvasása és írása közvetlenül az Azure-beli fájlmegosztás esetében történik. Az Azure-beli virtuális gépek csatlakoztatásához az operációs rendszer SMB-ügyfelének legalább SMB 2,1-et kell támogatnia. A helyszíni csatlakoztatáshoz (például egy felhasználó munkaállomásán) a munkaállomás által támogatott SMB-ügyfélnek támogatnia kell legalább az SMB 3,0-et (titkosítással). Az SMB-n kívül az új alkalmazások és szolgáltatások közvetlenül is hozzáférhetnek a fájlmegosztáshoz a file REST használatával, amely egyszerű és méretezhető alkalmazásprogramozási felületet biztosít a szoftverfejlesztés számára.
+1. **Közvetlen Felhőbeli hozzáférés**: Az Azure-fájlmegosztás [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)és/vagy [Linux](storage-how-to-use-files-linux.md) rendszereken is csatlakoztatható az iparági szabványnak megfelelő SMB protokollal vagy a REST API fájlon keresztül. Az SMB-vel a megosztásban található fájlok olvasása és írása közvetlenül az Azure-beli fájlmegosztás esetében történik. Az Azure-beli virtuális gépek csatlakoztatásához az operációs rendszer SMB-ügyfelének legalább SMB 2,1-et kell támogatnia. A helyszíni csatlakoztatáshoz (például egy felhasználó munkaállomásán) a munkaállomás által támogatott SMB-ügyfélnek támogatnia kell legalább az SMB 3,0-et (titkosítással). Az SMB-n kívül az új alkalmazások és szolgáltatások közvetlenül is hozzáférhetnek a fájlmegosztáshoz a file REST használatával, amely egyszerű és méretezhető alkalmazásprogramozási felületet biztosít a szoftverfejlesztés számára.
 2. **Azure file Sync**: A Azure File Sync használatával a megosztások a helyi vagy az Azure-beli Windows-kiszolgálókra replikálhatók. A felhasználók a Windows Serveren keresztül érhetik el a fájlmegosztást, például egy SMB-vagy NFS-megosztáson keresztül. Ez olyan esetekben hasznos, amikor az adatok az Azure-adatközponttól távol lesznek elérhetők és módosítva lesznek, például egy fiókirodai forgatókönyvben. Előfordulhat, hogy az adatreplikáció több Windows Server-végpont között történik, például több fiókirodában. Végezetül az adat a Azure Filesba is helyezhető, így az összes adat továbbra is elérhető a kiszolgálón keresztül, de a kiszolgáló nem rendelkezik teljes másolattal az adatról. Ehelyett a felhasználó általi megnyitáskor a rendszer zökkenőmentesen visszahívja az adatait.
 
 Az alábbi táblázat bemutatja, hogyan érhetik el a felhasználók és az alkalmazások az Azure-fájlmegosztást:
@@ -132,7 +132,7 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 |102 400     | 100,000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
-> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
+> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori [](storage-troubleshooting-files-performance.md) teljesítménnyel kapcsolatos problémák és a megkerülő megoldások hibaelhárítási útmutatójában olvashat.
 
 #### <a name="bursting"></a>Tele
 
@@ -211,7 +211,8 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |Kelet-Ausztrália |LRS     |Nem    |Igen|
 |Délkelet-Ausztrália|LRS     |Nem    |még nem|
 |Közép-India  |LRS     |Nem    |még nem|
-|Közép-Franciaország  |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
+|Közép-Franciaország |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
+|Dél-Franciaország   |LRS     |Nem    |Igen|
 |Dél-India    |LRS     |Nem    |még nem|
 |Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
 |USA nyugati középső régiója|LRS     |Nem    |még nem|
@@ -247,7 +248,7 @@ A regisztráció állapotának ellenőrzéséhez futtassa a következő parancso
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután **regisztrálta**az állapotát, használhatja a funkciót.
+Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután regisztrálta azállapotát, használhatja a funkciót.
 
 ### <a name="use-larger-file-shares"></a>Nagyobb fájlmegosztás használata
 

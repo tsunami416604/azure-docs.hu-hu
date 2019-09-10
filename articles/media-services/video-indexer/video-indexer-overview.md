@@ -1,31 +1,31 @@
 ---
-title: Mi az a Video Indexer?
-titlesuffix: Azure Media Services
-description: Ez a témakör áttekintést nyújt a Video Indexer szolgáltatásról.
+title: Mi az az Azure Media Services Video Indexer?
+titleSuffix: Azure Media Services
+description: Ez a témakör áttekintést nyújt a Azure Media Services Video Indexer szolgáltatásról.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e3f60b5fb0693e40c9db040f7b14f487fce8f68e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422984"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860254"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
-Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy a videókból kinyerje az elemzéseket Video Indexer videó-és hangmodellek használatával, az alábbiakban ismertetett módon:
+Az Azure Media Services Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy a videókból kinyerje az elemzéseket Video Indexer videó-és hangmodellek használatával, az alábbiakban ismertetett módon:
   
 ## <a name="video-insights"></a>Videó-felismerések
 
 - **Arcfelismerés**: Észleli és csoportosítja a videóban szereplő arcokat.
 - **Híresség azonosítása**: Video Indexer automatikusan azonosítja a több mint 1 000 000 hírességet – többek között a világ vezetőit, színészeit, színésznőit, sportolóit, kutatóit, üzleti és műszaki vezetőit világszerte. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
-- **Fiók alapú Arcfelismerés**: Video Indexer egy adott fiókhoz tartozó modellt. Ezután a betanított modell alapján felismeri a videóban található arcokat. További információ: személyre szabott [modell testreszabása a video Indexer](customize-person-model-with-website.md) webhelyről és [személyre szabott modell testreszabása a video Indexer API-val](customize-person-model-with-api.md).
+- **Fiók alapú Arcfelismerés**: Video Indexer egy adott fiókhoz tartozó modellt. Ezután a betanított modell alapján felismeri a videóban található arcokat. További információ: [személyre szabott modell testreszabása a video Indexer webhelyről](customize-person-model-with-website.md) és [személyre szabott modell testreszabása a video Indexer API-val](customize-person-model-with-api.md).
 - **Bélyegképek kinyerése arcok számára** ("legjobb arc"): A automatikusan azonosítja a legjobban rögzített arcot az arcok egyes csoportjaiban (a minőség, a méret és az elülső pozíció alapján), és képobjektumként kinyeri.
 - **Vizuális szöveg felismerése** (OCR): A videóban vizuálisan megjelenő szöveg kibontása.
 - **Vizuális tartalom moderálása**: Észleli a felnőtt és/vagy a zamatos vizualizációkat.
@@ -33,17 +33,20 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 - **Jelenet szegmentálása**: meghatározza, hogy a jelenet Mikor változik a videóban a vizuális célzások alapján. Egy jelenet egyetlen eseményt ábrázol, és egy sor egymást követő felvételből áll, amelyek szemantikai kapcsolatban állnak egymással. 
 - **Shot észlelés**: meghatározza, hogy mikor változik a videó a vizualizációs útmutatók alapján. A shot olyan keretek sorozata, amelyek ugyanabba a mozgóképes kamerából származnak. További információ: [jelenetek, felvételek és kulcsképek](scenes-shots-keyframes.md).
 - **Fekete keret észlelése**: A videóban bemutatott fekete képkockákat azonosítja.
-- **Kulcsképek**kibontása: Egy videóban található stabil kulcsképek észlelése.
+- **Kulcsképek kibontása**: Egy videóban található stabil kulcsképek észlelése.
 - **Működés közbeni kreditek**: a TV-műsorok és-filmek végén található működés közbeni kreditek kezdetét és végét határozza meg.
+- **Animált karakterek észlelése** (előzetes verzió): az animált tartalomban lévő karakterek észlelése, csoportosítása és felismerése [Cognitive Services egyéni jövőképtel](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)való integráció révén. További információ: [animált karakterek észlelése](animated-characters-recognition.md).
+- **Szerkesztői shot típusú észlelés**: a felvételek a típusuk alapján vannak megjelölve (pl.: Wide shot, Medium shot, közelkép, Extreme közelkép, két lövés, több személy, kültéri és beltéri stb.). További információ: [szerkesztési shot típusú észlelés](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ## <a name="audio-insights"></a>Audio-elemzések
 
 - **Automatikus nyelvfelismerés**: Automatikusan azonosítja a domináns beszéd nyelvét. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, orosz és brazíliai portugál. Ha a nyelv nem azonosítható bizalommal, Video Indexer feltételezi, hogy a beszélt nyelv angol. További információ: [Language Identification Model](language-identification-model.md).
-- **Hang**átírása: 12 nyelven alakítja át a beszédet szöveggé, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, Arab, Orosz, brazíliai portugál, hindi és koreai.
+- **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): A automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból, elküldve a médiafájl minden szegmensét, és összekapcsolja az átírást egy egységes átírással. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
+- **Hang átírása**: 12 nyelven alakítja át a beszédet szöveggé, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, Arab, Orosz, brazíliai portugál, hindi és koreai.
 - **Kódolt feliratok**: Három formátumban hozza létre a kódolt feliratozást: VTT, TTML, SRT.
 - **Két csatorna feldolgozása**: Automatikus észlelés, külön átirat és egyesítés egyetlen idővonalra.
 - **Zaj csökkentése**: Törli a telefonos hang-vagy zajos felvételeket (a Skype-szűrők alapján).
-- **Átirat testreszabása** (CRIS): Az egyéni beszédeket a szöveges modellekhez az iparági specifikus átiratok létrehozásához. További információkért lásd: [nyelvi modell testreszabása a video Indexer](customize-language-model-with-website.md) webhelyről és a [nyelvi modell testreszabása a video Indexer API](customize-language-model-with-api.md)-kkal.
+- **Átirat testreszabása** (CRIS): Az egyéni beszédeket a szöveges modellekhez az iparági specifikus átiratok létrehozásához. További információkért lásd: [nyelvi modell testreszabása a video Indexer webhelyről](customize-language-model-with-website.md) és a [nyelvi modell testreszabása a video Indexer API](customize-language-model-with-api.md)-kkal.
 - **Beszélő enumerálása**: Leképezi és megérti, hogy a beszélő mely szavakat és mikor szólalt meg.
 - A **beszélő statisztikái**: Statisztikákat biztosít a beszélők beszédének arányáról.
 - **Szöveges tartalom moderálása**: A hangátiratban szereplő explicit szöveget észleli.
@@ -55,8 +58,8 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 
 Ha az egyik csatorna részleges eredménye alapján indexeli az adott modelleket, elérhető lesz
 
-- **Kulcsszavak**kinyerése: Kulcsszavak kinyerése a beszéd és a vizualizáció szövege alapján.
-- **Márkák**kinyerése: Kinyeri a márkákat a beszéd és a vizualizáció szövege alapján.
+- **Kulcsszavak kinyerése**: Kulcsszavak kinyerése a beszéd és a vizualizáció szövege alapján.
+- **Elnevezett entitások kibontása**: Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.
 - **Témakör következtetése**: A fő témakörök következtetéseit az átiratokból hozza. A rendszer az első szintű IPTC-besorolást is tartalmazza.
 - Összetevők: Az egyes modellekhez tartozó "következő részletességű" összetevők részletes készletének kibontása.
 - **Hangulat elemzése**: Pozitív, negatív és semleges érzelmeket azonosít a beszéd és a vizualizáció szövege alapján.

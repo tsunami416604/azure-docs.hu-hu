@@ -1,35 +1,30 @@
 ---
 title: Azure Application Gateway URL-alapú tartalom-útválasztás áttekintése
-description: Ez a cikk áttekintés nyújt az Application Gateway URL-alapú tartalom-útválasztási lehetőségeiről, az UrlPathMap-konfigurációról és a PathBasedRouting szabályról.
-documentationcenter: na
+description: Ez a cikk áttekintést nyújt az Azure Application Gateway URL-alapú tartalom-útválasztási, UrlPathMap-konfigurációs és PathBasedRouting-szabályról.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 4/23/2018
+ms.date: 09/10/2019
 ms.author: victorh
-ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 0dfeb6a80cbf227f20b24def7641882ad0444489
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61361952"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844598"
 ---
-# <a name="azure-application-gateway-url-path-based-routing-overview"></a>Az Azure Application Gateway URL-címalapú útválasztás áttekintése
+# <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
 Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-cím alapján irányítsa a forgalmat a háttér-kiszolgálókészlethez. 
 
 Az egyik lehetőség az, hogy a különböző típusú tartalmakra vonatkozó kéréseket a megfelelő háttér-kiszolgálókészlethez irányítja.
 
-A következő példában az Application Gateway szolgálja ki a három háttér kiszolgálókészlettel contoso.com forgalom például: Kérések a VideoServerPool, az ImageServerPool és a DefaultServerPool.
+A következő példában a Application Gateway a három háttér-contoso.com származó forgalmat szolgálja ki, például: VideoServerPool, ImageServerPool és DefaultServerPool.
 
-![imageURLroute](./media/url-route-overview/figure1.png)
+![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A kérelmek <http://contoso.com/video/*> kérések a videoserverpool, és <http://contoso.com/images/*> kapcsolódóak pedig az imageserverpool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http\://contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool\:, a http//contoso.com/images/* pedig a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
@@ -67,8 +62,37 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 }]
 ```
 
-> [!NOTE]
-> PathPattern: Ez a beállítás az elérésiút-minták listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első ? vagy # után, és ezek a karakterek itt nem megengedettek.
+### <a name="pathpattern"></a>PathPattern
+
+A PathPattern az elérési utak mintáinak listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérési úthoz Matcher betáplált karakterlánc nem tartalmaz szöveget az első után? vagy #, és ezek a karakterek nem engedélyezettek itt. Ellenkező esetben az URL-címekben engedélyezett karakterek engedélyezettek a PathPattern.
+
+A támogatott minták attól függnek, hogy Application Gateway v1-es vagy v2-es verzióját telepíti:
+
+#### <a name="v1"></a>v1
+
+Az elérésiút-szabályok a kis-és nagybetűk megkülönböztetése.
+
+|v1 elérésiút-minta  |Támogatott?  |
+|---------|---------|
+|`/images/*`     |igen|
+|`/images*`     |nem|
+|`/images/*.jpg`     |nem|
+|`/*.jpg`     |nem|
+|`/Repos/*/Comments/*`     |nem|
+|`/CurrentUser/Comments/*`     |igen|
+
+#### <a name="v2"></a>v2
+
+Az elérésiút-szabályok kis-és nagybetűk.
+
+|v2 elérésiút-minta  |Támogatott?  |
+|---------|---------|
+|`/images/*`     |igen|
+|`/images*`     |igen|
+|`/images/*.jpg`     |nem|
+|`/*.jpg`     |nem|
+|`/Repos/*/Comments/*`     |nem|
+|`/CurrentUser/Comments/*`     |igen|
 
 További információért tekintse át az [URL-alapú átirányításhoz készült Resource Manager-sablonokat](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
@@ -99,4 +123,4 @@ A PathBasedRouting szabály kódrészlete:
 
 ## <a name="next-steps"></a>További lépések
 
-Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](tutorial-url-route-powershell.md).
+Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](create-url-route-portal.md).

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: gwallace
-ms.openlocfilehash: 4beed4dd874c23c36e125b5855e2e8380859ef83
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: f2b7e51971cc2e540ee7745b3b44571c58359613
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359164"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860209"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával
 A Azure Diagnostics-bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit, a teljesítményszámlálókat stb. a felhőalapú szolgáltatásokból. Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Diagnostics bővítmény a Cloud Service-hez a PowerShell használatával.  Tekintse meg, [hogyan telepítheti és konfigurálhatja a Azure PowerShell](/powershell/azure/overview) a cikkhez szükséges előfeltételekhez.
@@ -131,5 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>További lépések
 * Az Azure Diagnostics és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: [a diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* A [diagnosztika konfigurációs sémája](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
+* A [diagnosztika konfigurációs sémája](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
 * Ha meg szeretné tudni, hogyan engedélyezhető a Virtual Machines diagnosztikai bővítménye, tekintse meg a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai Azure Resource Manager sablon használatával](../virtual-machines/windows/extensions-diagnostics-template.md) című témakört.

@@ -1,47 +1,47 @@
 ---
-title: Az Azure Blockchain Workbench üzenetek integráció áttekintése
-description: Üzenetek használata az Azure Blockchain Workbench áttekintése.
+title: Az Azure Blockchain Workbench üzeneteinek integrációja – áttekintés
+description: Az üzenetek Azure Blockchain Workbench előzetes verzióban való használatának áttekintése.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 49b2bdd1780caa4ae04efbc979e2ea33e2c13c4c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f0a9e90f1208d690c2423196be7f59dce71eb78b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147237"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844065"
 ---
-# <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench üzenetkezelési integrációja
 
-Amellett, hogy a REST API-val, az Azure Blockchain Workbench is messaging-alapú integrációt biztosít. Workbench Főkönyv-központú események Azure Event Griddel, alsóbb rétegbeli fogyasztói gyűjthet adatokat, vagy be ezen események alapján keresztül teszi közzé. Ezek az ügyfelek megbízható üzenetküldést igénylő, az Azure Blockchain Workbench használatával továbbítja az üzeneteket, valamint egy Azure Service Bus-végponttal.
+REST API biztosítása mellett az Azure Blockchain Workbench üzenetkezelésen alapuló integrációt is biztosít. A Workbench a Azure Event Gridon keresztül teszi közzé a Főkönyv-központú eseményeket, lehetővé téve az alsóbb rétegbeli felhasználók számára az adatbevitelt, vagy az események alapján hajthat végre Azoknál az ügyfeleknél, amelyek megbízható üzenetkezelést igényelnek, az Azure Blockchain Workbench egy Azure Service Bus-végponthoz is kézbesít üzeneteket.
 
-## <a name="input-apis"></a>A bemeneti API-k
+## <a name="input-apis"></a>Bemeneti API-k
 
-Ha el szeretné indítani a külső rendszerekből a felhasználók létrehozása, szerződések létrehozása és frissítése szerződések tranzakciók, használhatja a bemeneti API-k üzenetkezelési Főkönyv tranzakció végrehajtásához. Lásd: [integrációs minták üzenetkezelési](https://aka.ms/blockchain-workbench-integration-sample) minta azt mutatja be, a bemeneti API-k.
+Ha a külső rendszerekből származó tranzakciókat kíván létrehozni a felhasználók létrehozásához, a szerződések létrehozásához és a szerződések frissítéséhez, akkor az üzenetkezelési bemeneti API-kkal tranzakciókat végezhet a főkönyvben. Lásd: [üzenetküldési integrációs minták](https://aka.ms/blockchain-workbench-integration-sample) a bemeneti API-kat bemutató minta számára.
 
-Az alábbi táblázat a jelenleg elérhető bemeneti API-k.
+A jelenleg elérhető bemeneti API-k a következők.
 
 ### <a name="create-user"></a>Felhasználó létrehozása
 
 Létrehoz egy új felhasználót.
 
-A kérelemhez szükséges a következő mezőket:
+A kérelemhez a következő mezők szükségesek:
 
-| **Name (Név)**             | **Leírás**                                      |
+| **Name**             | **Leírás**                                      |
 |----------------------|------------------------------------------------------|
-| requestId            | Az ügyfél által megadott GUID azonosítója                                |
-| firstName            | A felhasználó utóneve                              |
+| Kérelemazonosító            | Ügyfél által megadott GUID                                |
+| firstName            | A felhasználó vezetékneve                              |
 | lastName             | A felhasználó vezetékneve                               |
-| emailAddress         | A felhasználó e-mail címe                           |
-| externalId           | A felhasználó Azure AD objektum azonosítója                      |
-| connectionId         | A blockchain-kapcsolat egyedi azonosítója |
-| messageSchemaVersion | Üzenetkezelési sémaverzió                            |
+| EmailAddress         | A felhasználó e-mail-címe                           |
+| externalId           | A felhasználó Azure AD-objektumának azonosítója                      |
+| connectionId         | A blockchain-kapcsolatok egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési séma verziója                            |
 | messageName          | **CreateUserRequest**                               |
 
 Példa:
@@ -59,20 +59,20 @@ Példa:
 }
 ```
 
-Blockchain Workbenchet választ küld a következő mezőket:
+Az Blockchain Workbench egy választ ad vissza a következő mezőkkel:
 
-| **Name (Név)**              | **Leírás**                                                                                                             |
+| **Name**              | **Leírás**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| requestId             | Az ügyfél által megadott GUID azonosítója |
+| Kérelemazonosító             | Ügyfél által megadott GUID |
 | userId                | A létrehozott felhasználó azonosítója |
-| userChainIdentifier   | A blockchain-hálózat létrehozó felhasználó címe. A cím Ethereum, a felhasználó **a láncban lévő** címet. |
-| connectionId          | A blockchain-kapcsolat egyedi azonosítója|
-| messageSchemaVersion  | Üzenetkezelési sémaverzió |
+| userChainIdentifier   | A blockchain-hálózaton létrehozott felhasználó címe. A Ethereum-ben a címe a felhasználó **láncának** címe. |
+| connectionId          | A blockchain-kapcsolatok egyedi azonosítója|
+| messageSchemaVersion  | Üzenetkezelési séma verziója |
 | messageName           | **CreateUserUpdate** |
-| status                | A felhasználó-létrehozási kérés állapotát.  Ha sikeres, értéke **sikeres**. Hiba esetén, a értéke **hiba**.     |
-| additionalInformation | További információ a megadott állapota alapján |
+| status                | A felhasználói létrehozási kérelem állapota.  Ha sikerült, az érték **sikeres.** Hiba esetén az érték **sikertelen**.     |
+| additionalInformation | Az állapot alapján megadott további információk |
 
-Példa a sikeres **felhasználó létrehozása** Blockchain Workbenchet a választ:
+Példa sikeres **felhasználói válasz létrehozására** a Blockchain Workbenchből:
 
 ``` json
 { 
@@ -87,7 +87,7 @@ Példa a sikeres **felhasználó létrehozása** Blockchain Workbenchet a válas
 } 
 ```
 
-Ha a kérelem sikertelen volt, a hiba részleteit további információk is megtalálhatók.
+Ha a kérelem sikertelen volt, a rendszer további információkat tartalmaz a hiba részleteiről.
 
 ``` json
 {
@@ -107,20 +107,20 @@ Ha a kérelem sikertelen volt, a hiba részleteit további információk is megt
 
 ### <a name="create-contract"></a>Szerződés létrehozása
 
-Létrehoz egy új szerződést.
+Új szerződést hoz létre.
 
-A kérelemhez szükséges a következő mezőket:
+A kérelemhez a következő mezők szükségesek:
 
-| **Name (Név)**             | **Leírás**                                                                                                           |
+| **Name**             | **Leírás**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
-| requestId            | Az ügyfél által megadott GUID azonosítója |
-| userChainIdentifier  | A blockchain-hálózat létrehozó felhasználó címe. Ez a cím Ethereum, a felhasználó **lánc** címet. |
-| applicationName      | Az alkalmazás neve |
-| version              | Az alkalmazás verziója. Van szükség, ha engedélyezve van az alkalmazás több verzióját. Ellenkező esetben a verzió nem kötelező. Alkalmazások verziószámozása további információkért lásd: [Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md). |
+| Kérelemazonosító            | Ügyfél által megadott GUID |
+| userChainIdentifier  | A blockchain-hálózaton létrehozott felhasználó címe. A Ethereum ez a címe a felhasználó **láncának** címe. |
+| ApplicationName      | Az alkalmazás neve |
+| version              | Az alkalmazás verziója. Kötelező, ha az alkalmazásnak több verziója is engedélyezve van. Ellenkező esetben a verzió megadása nem kötelező. Az alkalmazás verziószámozásával kapcsolatos további információkért lásd: az [Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md). |
 | workflowName         | A munkafolyamat neve |
-| parameters           | Bemeneti paraméterek szerződés létrehozása |
-| connectionId         | A blockchain-kapcsolat egyedi azonosítója |
-| messageSchemaVersion | Üzenetkezelési sémaverzió |
+| parameters           | Paraméterek bemenete a szerződések létrehozásához |
+| connectionId         | A blockchain-kapcsolatok egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési séma verziója |
 | messageName          | **CreateContractRequest** |
 
 Példa:
@@ -148,20 +148,20 @@ Példa:
 }
 ```
 
-Blockchain Workbenchet választ küld a következő mezőket:
+Az Blockchain Workbench egy választ ad vissza a következő mezőkkel:
 
-| **Name (Név)**                 | **Leírás**                                                                   |
+| **Name**                 | **Leírás**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
-| requestId                | Az ügyfél által megadott GUID azonosítója                                                             |
-| contractId               | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
-| contractLedgerIdentifier | A szerződést a Főkönyv címe                                            |
-| connectionId             | A blockchain-kapcsolat egyedi azonosítója                               |
-| messageSchemaVersion     | Üzenetkezelési sémaverzió                                                         |
+| Kérelemazonosító                | Ügyfél által megadott GUID                                                             |
+| ContractId               | A szerződés egyedi azonosítója az Azure Blockchain Workbenchben |
+| contractLedgerIdentifier | A Szerződés címe a főkönyvben                                            |
+| connectionId             | A blockchain-kapcsolatok egyedi azonosítója                               |
+| messageSchemaVersion     | Üzenetkezelési séma verziója                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| status                   | A szerződés létrehozási kérés állapotát.  Lehetséges értékek: **Elküldött**, **véglegesített**, **hiba**.  |
-| additionalInformation    | További információ a megadott állapota alapján                              |
+| status                   | A szerződés-létrehozási kérelem állapota.  Lehetséges értékek: **Elküldve**, **véglegesítve**, **hiba**.  |
+| additionalInformation    | Az állapot alapján megadott további információk                              |
 
-Példa egy beküldött **szerződés létrehozása** Blockchain Workbenchet a választ:
+Példa a Blockchain Workbench által benyújtott **Szerződés-létrehozási** válaszra:
 
 ``` json
 {
@@ -176,7 +176,7 @@ Példa egy beküldött **szerződés létrehozása** Blockchain Workbenchet a v�
 }
 ```
 
-Példa egy véglegesített **szerződés létrehozása** Blockchain Workbenchet a választ:
+Példa egy véglegesített **létrehozási szerződésre** válasz a Blockchain Workbenchből:
 
 ``` json
 {
@@ -191,7 +191,7 @@ Példa egy véglegesített **szerződés létrehozása** Blockchain Workbenchet 
 }
 ```
 
-Ha a kérelem sikertelen volt, a hiba részleteit további információk is megtalálhatók.
+Ha a kérelem sikertelen volt, a rendszer további információkat tartalmaz a hiba részleteiről.
 
 ``` json
 {
@@ -209,22 +209,22 @@ Ha a kérelem sikertelen volt, a hiba részleteit további információk is megt
 }
 ```
 
-### <a name="create-contract-action"></a>Szerződés művelet létrehozása
+### <a name="create-contract-action"></a>Szerződés létrehozása művelet
 
-Létrehoz egy új szerződés műveletet.
+Létrehoz egy új szerződési műveletet.
 
-A kérelemhez szükséges a következő mezőket:
+A kérelemhez a következő mezők szükségesek:
 
-| **Name (Név)**                 | **Leírás**                                                                                                           |
+| **Name**                 | **Leírás**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| requestId                | Az ügyfél által megadott GUID azonosítója |
-| userChainIdentifier      | A blockchain-hálózat létrehozó felhasználó címe. Ez a cím Ethereum, a felhasználó **lánc** címet. |
-| contractLedgerIdentifier | A szerződést a Főkönyv címe |
-| version                  | Az alkalmazás verziója. Van szükség, ha engedélyezve van az alkalmazás több verzióját. Ellenkező esetben a verzió nem kötelező. Alkalmazások verziószámozása további információkért lásd: [Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md). |
-| workflowFunctionName     | A munkafolyamat függvény neve |
-| parameters               | Bemeneti paraméterek szerződés létrehozása |
-| connectionId             | A blockchain-kapcsolat egyedi azonosítója |
-| messageSchemaVersion     | Üzenetkezelési sémaverzió |
+| Kérelemazonosító                | Ügyfél által megadott GUID |
+| userChainIdentifier      | A blockchain-hálózaton létrehozott felhasználó címe. A Ethereum ez a címe a felhasználó **láncának** címe. |
+| contractLedgerIdentifier | A Szerződés címe a főkönyvben |
+| version                  | Az alkalmazás verziója. Kötelező, ha az alkalmazásnak több verziója is engedélyezve van. Ellenkező esetben a verzió megadása nem kötelező. Az alkalmazás verziószámozásával kapcsolatos további információkért lásd: az [Azure Blockchain Workbench alkalmazás verziószámozása](version-app.md). |
+| WorkflowFunctionName     | A munkafolyamat-függvény neve |
+| parameters               | Paraméterek bemenete a szerződések létrehozásához |
+| connectionId             | A blockchain-kapcsolatok egyedi azonosítója |
+| messageSchemaVersion     | Üzenetkezelési séma verziója |
 | messageName              | **CreateContractActionRequest** |
 
 Példa:
@@ -252,19 +252,19 @@ Példa:
 }
 ```
 
-Blockchain Workbenchet választ küld a következő mezőket:
+Az Blockchain Workbench egy választ ad vissza a következő mezőkkel:
 
-| **Name (Név)**              | **Leírás**                                                                   |
+| **Name**              | **Leírás**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
-| requestId             | Az ügyfél által megadott GUID azonosítója|
-| contractId            | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
-| connectionId          | A blockchain-kapcsolat egyedi azonosítója |
-| messageSchemaVersion  | Üzenetkezelési sémaverzió |
+| Kérelemazonosító             | Ügyfél által megadott GUID|
+| ContractId            | A szerződés egyedi azonosítója az Azure Blockchain Workbenchben |
+| connectionId          | A blockchain-kapcsolatok egyedi azonosítója |
+| messageSchemaVersion  | Üzenetkezelési séma verziója |
 | messageName           | **CreateContractActionUpdate** |
-| status                | A szerződés művelet kérés állapotát. Lehetséges értékek: **Elküldött**, **véglegesített**, **hiba**.                         |
-| additionalInformation | További információ a megadott állapota alapján |
+| status                | A szerződés műveleti kérelmének állapota. Lehetséges értékek: **Elküldve**, **véglegesítve**, **hiba**.                         |
+| additionalInformation | Az állapot alapján megadott további információk |
 
-Példa egy beküldött **szerződés művelet létrehozása** Blockchain Workbenchet a választ:
+Példa a beküldött **create szerződésre műveletre** válasz a Blockchain Workbenchből:
 
 ``` json
 {
@@ -278,7 +278,7 @@ Példa egy beküldött **szerződés művelet létrehozása** Blockchain Workben
 }
 ```
 
-Példa egy véglegesített **szerződés művelet létrehozása** Blockchain Workbenchet a választ:
+Példa egy véglegesített **létrehozási műveletre** válasz a Blockchain Workbenchből:
 
 ``` json
 {
@@ -292,7 +292,7 @@ Példa egy véglegesített **szerződés művelet létrehozása** Blockchain Wor
 }
 ```
 
-Ha a kérelem sikertelen volt, a hiba részleteit további információk is megtalálhatók.
+Ha a kérelem sikertelen volt, a rendszer további információkat tartalmaz a hiba részleteiről.
 
 ``` json
 {
@@ -309,108 +309,108 @@ Ha a kérelem sikertelen volt, a hiba részleteit további információk is megt
 }
 ```
 
-### <a name="input-api-error-codes-and-messages"></a>A bemeneti API-hibakódok és üzenetek
+### <a name="input-api-error-codes-and-messages"></a>Bemeneti API-hibakódok és üzenetek
 
-**4000. Hibakód: Hibás kérelem hiba**
+**4000-es hibakód: Hibás kérelem hiba**
 - Érvénytelen connectionId
-- CreateUserRequest deszerializálás sikertelen volt
-- CreateContractRequest deszerializálás sikertelen volt
-- CreateContractActionRequest deserialization failed
-- {Alkalmazásnév szerint meghatározott} alkalmazást nem létezik.
-- {Alkalmazásnév által azonosított} alkalmazás nem rendelkezik a munkafolyamat
-- UserChainIdentifier nem létezik.
-- A szerződés {Főkönyv azonosító által azonosított} nem létezik.
-- Nincs kontraktu {Főkönyv azonosító által azonosított} függvény {munkafolyamat függvény neve}
-- UserChainIdentifier nem létezik.
+- A CreateUserRequest deszerializálása nem sikerült
+- A CreateContractRequest deszerializálása nem sikerült
+- A CreateContractActionRequest deszerializálása nem sikerült
+- A (z) {Application Name} által azonosított alkalmazás nem létezik
+- A (z) {Application Name} által azonosított alkalmazás nem rendelkezik munkafolyamattal
+- A UserChainIdentifier nem létezik
+- A (főkönyvi azonosító szerint {azonosított) egyezmény nem létezik
+- A (z) {Ledger azonosítóval azonosított { azonosítójú szerződés nem rendelkezik a (z) {workflow Function Name} függvénnyel
+- A UserChainIdentifier nem létezik
 
-**4090. Hibakód: Ütközés hiba**
+**4090-es hibakód: Ütközési hiba**
 - A felhasználó már létezik
-- Szerződés már létezik.
-- Szerződés művelet már létezik
+- A szerződés már létezik
+- A szerződési művelet már létezik
 
 **5000-es hibakód: Belső kiszolgálóhiba**
-- Kivétel üzenetek
+- Kivételek üzenetei
 
 ## <a name="event-notifications"></a>Eseményértesítések
 
-Eseményértesítések értesítse a felhasználókat és a Blockchain Workbenchet, és a blockchain-hálózat csatlakozik az eseményeket generáló rendszerek üzenetkézbesítési igényeit is használható. Eseményértesítések használhatja közvetlenül a kódban vagy használt eszközök, például a Logic Apps és a Flow-folyamat az adatok rendszerek üzenetkézbesítési igényeit.
+Az eseményekre vonatkozó értesítések segítségével értesítheti a felhasználókat és az alsóbb rétegbeli eseményeket, amelyek a Blockchain Workbenchben történnek, illetve az Blockchain-hálózatban, amelyhez csatlakozik. Az eseményekre vonatkozó értesítések közvetlenül a kódban is felhasználhatók, vagy olyan eszközökkel használhatók, mint például a Logic Apps és a flow az adatforgalom alsóbb rétegbeli rendszerekre történő aktiválásához.
 
-Lásd: [értesítési üzenet referencia](#notification-message-reference) különböző fogadott üzenetek részleteit.
+A beérkező különféle üzenetek részleteiért lásd az [értesítési üzenetek referenciáját](#notification-message-reference) .
 
-### <a name="consuming-event-grid-events-with-azure-functions"></a>Fogyasztó Event Grid-események az Azure Functions használatával
+### <a name="consuming-event-grid-events-with-azure-functions"></a>Event Grid események felhasználása a Azure Functions
 
-Ha a felhasználó használni szeretne értesítést kapni a Blockchain Workbenchet eseményeket az Event Grid használatával, az Azure Functions szolgáltatással felhasználhatja Event Grid-eseményfolyam megtekintéséhez.
+Ha a felhasználó a Blockchain Workbenchben megjelenő eseményekről szeretne értesítést kapni Event Gridról, a Azure Functions használatával Event Grid eseményeket használhat.
 
-1. Hozzon létre egy **Azure-Függvényalkalmazás** az Azure Portalon.
+1. Hozzon létre egy **Azure-függvényalkalmazás** a Azure Portalban.
 2. Hozzon létre egy új függvényt.
-3. Keresse meg a sablont az Event Gridhez. Alapszintű sablon kódot olvasni az üzenetet jelenik meg. Szükség szerint módosítsa a kódot.
+3. Keresse meg Event Grid sablonját. Megjelenik az üzenet olvasásához szükséges alapszintű sablon kódja. Szükség szerint módosítsa a kódot.
 4. Mentse a függvényt. 
-5. Válassza ki az Event Grid Blockchain Workbenchet erőforráscsoportból.
+5. Válassza ki az Blockchain Workbench erőforráscsoporthoz tartozó Event Grid.
 
-### <a name="consuming-event-grid-events-with-logic-apps"></a>A Logic Apps szolgáltatással a fogyasztó Event Grid-események
+### <a name="consuming-event-grid-events-with-logic-apps"></a>Event Grid események felhasználása a Logic Apps
 
-1. Hozzon létre egy új **Azure Logic Apps** az Azure Portalon.
-2. Az Azure Logic Apps a portál megnyitásakor, a rendszer kéri, válassza ki az eseményindítóként. Válassza ki **Azure Event Grid – erőforrás-esemény bekövetkezésekor**.
-3. A munkafolyamat-tervezővel jelenik meg, amikor a rendszer felszólítja, hogy jelentkezzen be.
-4. Válassza ki az előfizetést. Erőforrás szerint **Microsoft.EventGrid.Topics**. Válassza ki a **erőforrásnév** a neve, az Azure Blockchain Workbench erőforráscsoport az erőforrásban.
-5. Válassza ki az Event Grid Blockchain Workbenchet erőforráscsoportból.
+1. Hozzon létre egy új **Azure logikai alkalmazást** a Azure Portal.
+2. Amikor megnyitja az Azure Logic app alkalmazást a portálon, a rendszer kérni fogja, hogy válasszon ki egy triggert. Válassza **a Azure Event Grid – erőforrás-esemény bekövetkezésekor**lehetőséget.
+3. Amikor megjelenik a Munkafolyamat-tervező, a rendszer kérni fogja, hogy jelentkezzen be.
+4. Válassza ki az előfizetést. Az erőforrást **Microsoft. EventGrid. témakörökként**. Válassza ki **az erőforrás nevét az** Azure Blockchain Workbench erőforráscsoporthoz tartozó erőforrás nevéből.
+5. Válassza ki az Blockchain Workbench erőforráscsoporthoz tartozó Event Grid.
 
-## <a name="using-service-bus-topics-for-notifications"></a>Az értesítések használatával a Service Bus-témakörök
+## <a name="using-service-bus-topics-for-notifications"></a>Service Bus témakörök használata az értesítésekhez
 
-Service Bus-témakörök Blockchain Workbenchet bekövetkező eseményeket a felhasználók értesítése használható. 
+Service Bus témakörökkel értesítheti a felhasználókat a Blockchain Workbenchben előforduló eseményekről. 
 
-1. Keresse meg a Service Bus, a Workbench-erőforráscsoporton belül.
-2. Válassza ki **témakörök**.
-3. Válassza ki **kimenő-témakör**.
-4. Hozzon létre egy új előfizetést ehhez a témakörhöz. Amíg egy kulcs beszerzése.
-5. Hozzon létre egy programot, amelyre feliratkozik az eseményekre ebből az előfizetésből.
+1. Keresse meg a Workbench erőforráscsoporthoz tartozó Service Bus.
+2. Válassza a **témakörök**lehetőséget.
+3. Kimenő forgalom kiválasztása **– témakör**.
+4. Hozzon létre egy új előfizetést ehhez a témakörhöz. Szerezze be a kulcsot.
+5. Hozzon létre egy programot, amely előfizet az előfizetésből származó eseményekre.
 
-### <a name="consuming-service-bus-messages-with-logic-apps"></a>Service Bus-üzenetek a Logic Apps felhasználása
+### <a name="consuming-service-bus-messages-with-logic-apps"></a>Service Bus üzenetek fogyasztása Logic Apps
 
-1. Hozzon létre egy új **Azure Logic Apps** az Azure Portalon.
-2. Az Azure Logic Apps a portál megnyitásakor, a rendszer kéri, válassza ki az eseményindítóként. Típus **a Service Bus** a keresőmezőbe, és válassza ki a megfelelő kapcsolati típusú trigger kíván használni a Service Bus szolgáltatással. Ha például **a Service Bus – amikor egy üzenet érkezik egy témakör-előfizetés (automatikus lezárás)** .
-3. Ha a munkafolyamat-tervezővel jelenik meg, adja meg a Service Bus kapcsolati adatait.
-4. Válassza ki az előfizetését, és adja meg a témakör a **workbench-külső**.
-5. A logika, amely a trigger által az üzenet már használja az alkalmazás fejlesztése.
+1. Hozzon létre egy új **Azure logikai alkalmazást** a Azure Portal.
+2. Amikor megnyitja az Azure Logic app alkalmazást a portálon, a rendszer kérni fogja, hogy válasszon ki egy triggert. Írja be a **Service Bus** kifejezést a keresőmezőbe, és válassza ki a kívánt interakció típusát a Service Bus. Például **Service Bus – ha üzenet érkezik egy témakör-előfizetésbe (automatikusan befejeződött)** .
+3. Amikor megjelenik a Munkafolyamat-tervező, a Service Bus kapcsolódási adatait kell megadnia.
+4. Válassza ki az előfizetését, és adja meg a **Workbench-External**témakört.
+5. Fejlessze az alkalmazáshoz tartozó logikát, amely a triggerből származó üzenetet használja.
 
-## <a name="notification-message-reference"></a>Értesítési üzenet leírása
+## <a name="notification-message-reference"></a>Értesítési üzenet referenciája
 
-Attól függően, a **messageName**, az értesítési üzenetek, a következő üzenet típusok egyikével rendelkeznek.
+A **messageName**függően az értesítési üzenetek a következő típusú üzenetek egyikével rendelkeznek.
 
-### <a name="block-message"></a>Blokkolási üzenet
+### <a name="block-message"></a>Üzenet letiltása
 
-Az egyes blokkok kapcsolatos információt tartalmazza. A *BlockMessage* tartalmaz egy blokkblob szintű információkat és a tranzakció adatainak egy szakaszban.
+Az egyes blokkokról tartalmaz információkat. A *BlockMessage* tartalmaz egy szakaszt a blokk szintű információkkal, valamint egy szakaszt a tranzakciós adatokkal.
 
 | Name (Név) | Leírás |
 |------|-------------|
-| Blokkblob | Tartalmaz [információk letiltása](#block-information) |
-| tranzakciónként | A gyűjtemény tartalmaz [tranzakcióinformációi](#transaction-information) az adatblokk számára |
-| connectionId | A kapcsolat egyedi azonosítója |
-| messageSchemaVersion | Üzenetkezelési sémaverzió |
+| blokkolás | [Blokkoló adatokat](#block-information) tartalmaz |
+| tranzakciónként | A blokk gyűjtési [tranzakciójának információit](#transaction-information) tartalmazza. |
+| connectionId | A kapcsolatok egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési séma verziója |
 | messageName | **BlockMessage** |
 | additionalInformation | További információk |
 
-#### <a name="block-information"></a>Blokk-információk
+#### <a name="block-information"></a>Adatok blokkolása
 
 | Name (Név)              | Leírás |
 |-------------------|-------------|
-| BlockId           | Az Azure Blockchain Workbench blokk egyedi azonosítója |
-| BlockNumber       | A blokkolás a a Főkönyv egyedi azonosítója |
-| BlockHash         | A blokk kivonata |
+| blockId           | A blokk egyedi azonosítója az Azure Blockchain Workbenchben |
+| blockNumber       | Egy blokk egyedi azonosítója a főkönyvben |
+| blockHash         | A blokk kivonata |
 | previousBlockHash | Az előző blokk kivonata |
-| BlockTimestamp    | A blokk történő küldés időbélyegzője |
+| blockTimestamp    | A blokk időbélyege |
 
-#### <a name="transaction-information"></a>Tranzakció információi
+#### <a name="transaction-information"></a>Tranzakciós adatok
 
 | Name (Név)               | Leírás |
 |--------------------|-------------|
-| transactionId      | Az Azure Blockchain Workbench tranzakció egyedi azonosítója |
-| TransactionHash    | A tranzakció a Főkönyv a kivonata |
-| from               | A tranzakció forrás a Főkönyv az egyedi azonosítója |
-| erre:                 | A tranzakció célgépre a Főkönyv egyedi azonosítója |
-| provisioningStatus | Azonosítja a tranzakció a kiépítési folyamat az aktuális állapotát. Lehetséges értékek: </br>0 – a tranzakció az adatbázis az API által létrehozva</br>1 – a tranzakció el lett küldve a Főkönyv</br>2 – a tranzakció főkönyvi sikeresen véglegesítve lett</br>3-as vagy 4 – a tranzakció nem sikerült megerősíteni a Főkönyv</br>5 – a tranzakció sikeresen véglegesítve, főkönyvi |
+| transactionId      | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
+| transactionHash    | A tranzakció kivonata a főkönyvben |
+| from               | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
+| to                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
+| provisioningStatus | A tranzakció kiépítési folyamatának aktuális állapotát azonosítja. Lehetséges értékek a következők: </br>0 – a tranzakciót az API hozta létre az adatbázisban.</br>1 – a tranzakció elküldése a főkönyvbe</br>2 – a tranzakció sikeresen véglegesítve lett a főkönyvben</br>3 vagy 4 – a tranzakciót nem sikerült véglegesíteni a főkönyvben</br>5 – a tranzakció sikeresen véglegesítve lett a főkönyvben |
 
-Példa egy *BlockMessage* a Blockchain Workbenchet:
+Példa a Blockchain Workbench egyik *BlockMessage* :
 
 ``` json
 {
@@ -444,42 +444,42 @@ Példa egy *BlockMessage* a Blockchain Workbenchet:
 }
 ```
 
-### <a name="contract-message"></a>Szerződés üzenet
+### <a name="contract-message"></a>Szerződési üzenet
 
-A szerződés kapcsolatos információt tartalmazza. Az üzenet tartalmaz egy szerződés tulajdonságokkal és a tranzakció adatainak egy szakaszban. A szerződés az adott blokk módosított összes tranzakció a tranzakció szakaszban szerepelnek.
+A szerződésre vonatkozó információkat tartalmaz. Az üzenet tartalmaz egy szakaszt a szerződés tulajdonságaival, valamint egy szakaszt a tranzakciós adatokkal. A tranzakció szakasz tartalmazza az adott blokkra vonatkozó szerződést módosító összes tranzakciót.
 
 | Name (Név) | Leírás |
 |------|-------------|
-| BlockId | Az Azure Blockchain Workbench blokk egyedi azonosítója |
-| BlockHash | A blokk-kivonat |
-| modifyingTransactions | [Módosított tranzakciók](#modifying-transaction-information) a szerződés |
-| contractId | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
-| contractLedgerIdentifier | A szerződést a Főkönyv egyedi azonosítója |
+| blockId | A blokk egyedi azonosítója az Azure Blockchain Workbenchben |
+| blockHash | A blokk kivonata |
+| modifyingTransactions | A szerződést [módosító tranzakciók](#modifying-transaction-information) |
+| ContractId | A szerződés egyedi azonosítója az Azure Blockchain Workbenchben |
+| contractLedgerIdentifier | A szerződés egyedi azonosítója a főkönyvben |
 | contractProperties | [A szerződés tulajdonságai](#contract-properties) |
-| isNewContract | Azt jelzi-e a jelen szerződés újonnan lett létrehozva. Lehetséges értékek a következők: igaz: a jelen szerződés volt létrehozott új szerződést. FALSE (hamis): a jelen szerződés a szerződés frissítés. |
-| connectionId | A kapcsolat egyedi azonosítója |
-| messageSchemaVersion | Üzenetkezelési sémaverzió |
+| isNewContract | Azt jelzi, hogy a szerződés újonnan létrejött-e. A lehetséges értékek a következők: true (igaz): Ez a szerződés egy új szerződést hozott létre. hamis: Ez a szerződés egy szerződési frissítés. |
+| connectionId | A kapcsolatok egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési séma verziója |
 | messageName | **ContractMessage** |
 | additionalInformation | További információk |
 
-#### <a name="modifying-transaction-information"></a>Tranzakció adatainak módosítása
+#### <a name="modifying-transaction-information"></a>Tranzakciós adatok módosítása
 
 | Name (Név)               | Leírás |
 |--------------------|-------------|
-| transactionId | Az Azure Blockchain Workbench tranzakció egyedi azonosítója |
-| TransactionHash | A tranzakció a Főkönyv a kivonata |
-| from | A tranzakció forrás a Főkönyv az egyedi azonosítója |
-| erre: | A tranzakció célgépre a Főkönyv egyedi azonosítója |
+| transactionId | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
+| transactionHash | A tranzakció kivonata a főkönyvben |
+| from | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
+| to | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
 
 #### <a name="contract-properties"></a>Szerződés tulajdonságai
 
 | Name (Név)               | Leírás |
 |--------------------|-------------|
-| workflowPropertyId | A munkafolyamat-tulajdonság az Azure Blockchain Workbench egyedi azonosítója |
+| workflowPropertyId | A munkafolyamat-tulajdonság egyedi azonosítója az Azure Blockchain Workbenchben |
 | name | A munkafolyamat-tulajdonság neve |
-| value | A munkafolyamat tulajdonság értéke |
+| value | A munkafolyamat-tulajdonság értéke |
 
-Példa egy *ContractMessage* a Blockchain Workbenchet:
+Példa a Blockchain Workbench egyik *ContractMessage* :
 
 ``` json
 {
@@ -556,50 +556,50 @@ Példa egy *ContractMessage* a Blockchain Workbenchet:
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>Esemény jelenik meg: Szerződés függvény meghívási
+### <a name="event-message-contract-function-invocation"></a>Esemény üzenete: Szerződési függvény hívása
 
-Ha például a függvény nevét, a bemeneti paramétereket és a hívónak a függvény egy szerződés függvény meghívása információkat tartalmaz.
+Információt tartalmaz egy szerződési függvény meghívásakor, például a függvény nevét, a paraméterek bemenetét és a függvény hívóját.
 
 | Name (Név) | Leírás |
 |------|-------------|
-| EventName                   | **ContractFunctionInvocation** |
-| Hívó                      | [Hívó adatait](#caller-information) |
-| contractId                  | Az Azure Blockchain Workbench a szerződés egyedi azonosítója |
-| contractLedgerIdentifier    | A szerződést a Főkönyv egyedi azonosítója |
+| eventName                   | **ContractFunctionInvocation** |
+| hívó                      | [Hívó adatai](#caller-information) |
+| ContractId                  | A szerződés egyedi azonosítója az Azure Blockchain Workbenchben |
+| contractLedgerIdentifier    | A szerződés egyedi azonosítója a főkönyvben |
 | Függvénynév                | A függvény neve |
-| parameters                  | [Informace](#parameter-information) |
-| Tranzakció                 | Tranzakció információi |
-| inTransactionSequenceNumber | A sorszám a tranzakció a blokk |
-| connectionId                | A kapcsolat egyedi azonosítója |
-| messageSchemaVersion        | Üzenetkezelési sémaverzió |
+| parameters                  | [Paraméter adatai](#parameter-information) |
+| Tranzakció                 | Tranzakciós adatok |
+| inTransactionSequenceNumber | A blokkban lévő tranzakció sorozatszáma |
+| connectionId                | A kapcsolatok egyedi azonosítója |
+| messageSchemaVersion        | Üzenetkezelési séma verziója |
 | messageName                 | **EventMessage** |
 | additionalInformation       | További információk |
 
-#### <a name="caller-information"></a>Hívó adatait
+#### <a name="caller-information"></a>Hívó adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
-| type | A hívónak, például egy felhasználó vagy a szerződés típusa |
-| id | Az Azure Blockchain Workbench a hívó egyedi azonosítója |
-| ledgerIdentifier | A hívónak a a Főkönyv egyedi azonosítója |
+| type | A hívó típusa, például egy felhasználó vagy egy szerződés |
+| id | A hívó egyedi azonosítója az Azure Blockchain Workbenchben |
+| ledgerIdentifier | A hívó egyedi azonosítója a főkönyvben |
 
-#### <a name="parameter-information"></a>Informace
+#### <a name="parameter-information"></a>Paraméter adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
-| name | Paraméter neve |
-| value | Hodnota parametru |
+| name | Paraméternév |
+| value | Paraméter értéke |
 
-#### <a name="event-message-transaction-information"></a>Esemény üzenet tranzakcióinformációi:
+#### <a name="event-message-transaction-information"></a>Esemény-üzenet tranzakciós adatai
 
 | Name (Név)               | Leírás |
 |--------------------|-------------|
-| transactionId      | Az Azure Blockchain Workbench tranzakció egyedi azonosítója |
-| TransactionHash    | A tranzakció a Főkönyv a kivonata |
-| from               | A tranzakció forrás a Főkönyv az egyedi azonosítója |
-| erre:                 | A tranzakció célgépre a Főkönyv egyedi azonosítója |
+| transactionId      | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
+| transactionHash    | A tranzakció kivonata a főkönyvben |
+| from               | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
+| to                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
 
-Példa egy *EventMessage ContractFunctionInvocation* a Blockchain Workbenchet:
+Példa EventMessage- *ContractFunctionInvocation* a Blockchain Workbenchből:
 
 ``` json
 {
@@ -636,77 +636,77 @@ Példa egy *EventMessage ContractFunctionInvocation* a Blockchain Workbenchet:
 }
 ```
 
-### <a name="event-message-application-ingestion"></a>Esemény jelenik meg: Alkalmazás adatfeldolgozást
+### <a name="event-message-application-ingestion"></a>Esemény üzenete: Alkalmazás betöltése
 
-Információkat tartalmaz a Workbench alkalmazásban egy alkalmazás feltöltésekor, mint például a nevét és verzióját, az alkalmazás feltöltése.
+Információt tartalmaz, ha egy alkalmazás a Workbenchbe van feltöltve, például a feltöltött alkalmazás neve és verziója.
 
 | Name (Név) | Leírás |
 |------|-------------|
-| EventName | **ApplicationIngestion** |
-| applicationId | Az Azure Blockchain Workbench alkalmazás egyedi azonosítója |
-| applicationName | Alkalmazásnév |
+| eventName | **ApplicationIngestion** |
+| applicationId | Az alkalmazás egyedi azonosítója az Azure Blockchain Workbenchben |
+| ApplicationName | Alkalmazás neve |
 | applicationDisplayName | Alkalmazás megjelenített neve |
-| applicationVersion | Alkalmazás verziója |
-| applicationDefinitionLocation | Hol helyezkedik el az alkalmazás konfigurációs fájljának URL-címe |
-| contractCodes | A gyűjtemény [szerződést kötöttek a kódok](#contract-code-information) az alkalmazás |
-| applicationRoles | A gyűjtemény [alkalmazás-szerepkörök](#application-role-information) az alkalmazáshoz |
-| applicationWorkflows | A gyűjtemény [alkalmazás munkafolyamatok](#application-workflow-information) az alkalmazáshoz |
-| connectionId | A kapcsolat egyedi azonosítója |
-| messageSchemaVersion | Üzenetkezelési sémaverzió |
+| ApplicationVersion | Alkalmazás verziószáma |
+| applicationDefinitionLocation | Az alkalmazás konfigurációs fájljának URL-címe |
+| contractCodes | Az alkalmazáshoz tartozó [szerződések kódjának](#contract-code-information) gyűjteménye |
+| applicationRoles | Alkalmazás- [szerepkörök](#application-role-information) gyűjteménye az alkalmazáshoz |
+| applicationWorkflows | Az alkalmazáshoz tartozó [alkalmazás-munkafolyamatok](#application-workflow-information) gyűjteménye |
+| connectionId | A kapcsolatok egyedi azonosítója |
+| messageSchemaVersion | Üzenetkezelési séma verziója |
 | messageName | **EventMessage** |
-| additionalInformation | Itt további információkat az alkalmazás munkafolyamat-állapotok és átmenet információkat tartalmaz. |
+| additionalInformation | Az itt elérhető további információk az alkalmazás-munkafolyamatok állapotait és az átmeneti információkat tartalmazzák. |
 
-#### <a name="contract-code-information"></a>Kód adatai
-
-| Name (Név) | Leírás |
-|------|-------------|
-| id | A szerződés kódfájl Azure Blockchain Workbench egyedi azonosítója |
-| LedgerId | Az Azure Blockchain Workbench Főkönyv egyedi azonosítója |
-| location | URL-címet, ahol a szerződés kódfájl megtalálható |
-
-#### <a name="application-role-information"></a>Alkalmazás szerepkör-információ
+#### <a name="contract-code-information"></a>Szerződési kód adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az Azure Blockchain Workbench alkalmazás-szerepkör egyedi azonosítója |
-| name | Az alkalmazás-szerepkör neve |
+| id | A szerződéssablon egyedi azonosítója az Azure Blockchain Workbenchben |
+| LedgerId | A Főkönyv egyedi azonosítója az Azure Blockchain Workbenchben |
+| location | Az URL-cím, amelyben a szerződési kód fájl található |
 
-#### <a name="application-workflow-information"></a>Alkalmazás munkafolyamat-információk
-
-| Name (Név) | Leírás |
-|------|-------------|
-| id | Az Azure Blockchain Workbench alkalmazás a munkafolyamat egyedi azonosítója |
-| name | Alkalmazás a munkafolyamat neve |
-| displayName | Alkalmazás a munkafolyamat megjelenített neve |
-| functions | A gyűjtemény [függvények a kérelem munkafolyamat](#workflow-function-information)|
-| állapotok | A gyűjtemény [az alkalmazás a munkafolyamat állapotai](#workflow-state-information) |
-| properties | Alkalmazás [tulajdonságok munkafolyamat-információk](#workflow-property-information) |
-
-##### <a name="workflow-function-information"></a>Munkafolyamat-funkció információk
+#### <a name="application-role-information"></a>Alkalmazás-szerepkör adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az alkalmazás munkafolyamat-funkció az Azure Blockchain Workbench egyedi azonosítója |
+| id | Az alkalmazás szerepkör egyedi azonosítója az Azure Blockchain Workbenchben |
+| name | Az alkalmazás szerepkörének neve |
+
+#### <a name="application-workflow-information"></a>Alkalmazás-munkafolyamat adatai
+
+| Name (Név) | Leírás |
+|------|-------------|
+| id | Az alkalmazás-munkafolyamat egyedi azonosítója az Azure Blockchain Workbenchben |
+| name | Alkalmazás-munkafolyamat neve |
+| displayName | Alkalmazás-munkafolyamat megjelenítendő neve |
+| függvény | [Az alkalmazás-munkafolyamathoz tartozó függvények](#workflow-function-information) gyűjteménye|
+| tagállamok | [Az alkalmazás-munkafolyamathoz tartozó állapotok](#workflow-state-information) gyűjteménye |
+| properties | Alkalmazás- [munkafolyamat tulajdonságai – információk](#workflow-property-information) |
+
+##### <a name="workflow-function-information"></a>Munkafolyamat-függvény adatai
+
+| Name (Név) | Leírás |
+|------|-------------|
+| id | Az alkalmazás-munkafolyamat funkció egyedi azonosítója az Azure Blockchain Workbenchben |
 | name | Függvény neve |
-| parameters | A függvény paramétereit |
+| parameters | A függvény paraméterei |
 
-##### <a name="workflow-state-information"></a>Munkafolyamat-állapot adatainak
+##### <a name="workflow-state-information"></a>Munkafolyamat-állapot adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
 | name | Állam neve |
-| displayName | Állapot megjelenített neve |
-| style | Állapot style (sikeres vagy sikertelen) |
+| displayName | Állapot megjelenítendő neve |
+| style | Állapot stílusa (sikeres vagy sikertelen) |
 
-##### <a name="workflow-property-information"></a>A munkafolyamat adatai
+##### <a name="workflow-property-information"></a>Munkafolyamat-tulajdonságok adatai
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az Azure Blockchain Workbench alkalmazás a munkafolyamat tulajdonság egyedi azonosítója |
+| id | Az alkalmazás-munkafolyamat tulajdonság egyedi azonosítója az Azure Blockchain Workbenchben |
 | name | Tulajdonság neve |
-| type | Typ vlastnosti |
+| type | Tulajdonság típusa |
 
-Példa egy *EventMessage ApplicationIngestion* a Blockchain Workbenchet:
+Példa EventMessage- *ApplicationIngestion* a Blockchain Workbenchből:
 
 ``` json
 {
@@ -830,22 +830,22 @@ Példa egy *EventMessage ApplicationIngestion* a Blockchain Workbenchet:
 }
 ```
 
-### <a name="event-message-role-assignment"></a>Esemény jelenik meg: Szerepkör-kijelölés
+### <a name="event-message-role-assignment"></a>Esemény üzenete: Szerepkör-hozzárendelés
 
-Információkat tartalmaz, amikor egy felhasználó hozzá van rendelve egy szerepkörhöz, a Workbench alkalmazásban például, hogy ki hajtotta végre a szerepkör-hozzárendelés és a szerepkör és a megfelelő alkalmazás nevét.
+Olyan információt tartalmaz, amikor egy felhasználó hozzá van rendelve egy szerepkör a Workbenchben, például a szerepkör-hozzárendelést, valamint a szerepkör és a megfelelő alkalmazás nevét.
 
 | Name (Név) | Leírás |
 |------|-------------|
-| EventName | **RoleAssignment** |
-| applicationId | Az Azure Blockchain Workbench alkalmazás egyedi azonosítója |
-| applicationName | Alkalmazásnév |
+| eventName | **RoleAssignment** |
+| applicationId | Az alkalmazás egyedi azonosítója az Azure Blockchain Workbenchben |
+| ApplicationName | Alkalmazás neve |
 | applicationDisplayName | Alkalmazás megjelenített neve |
-| applicationVersion | Alkalmazás verziója |
-| applicationRole        | Információ a [alkalmazás-szerepkör](#roleassignment-application-role) |
-| hozzárendelő               | Információ a [hozzárendelő](#roleassignment-assigner) |
-| megbízott               | Információ a [megbízott](#roleassignment-assignee) |
-| connectionId           | A kapcsolat egyedi azonosítója |
-| messageSchemaVersion   | Üzenetkezelési sémaverzió |
+| ApplicationVersion | Alkalmazás verziószáma |
+| applicationRole        | Az [alkalmazás szerepkörre](#roleassignment-application-role) vonatkozó információk |
+| hozzárendelő               | A [kiosztással](#roleassignment-assigner) kapcsolatos információk |
+| megbízott               | A [megbízott](#roleassignment-assignee) információi |
+| connectionId           | A kapcsolatok egyedi azonosítója |
+| messageSchemaVersion   | Üzenetkezelési séma verziója |
 | messageName            | **EventMessage** |
 | additionalInformation  | További információk |
 
@@ -853,26 +853,26 @@ Információkat tartalmaz, amikor egy felhasználó hozzá van rendelve egy szer
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az Azure Blockchain Workbench alkalmazás-szerepkör egyedi azonosítója |
-| name | Az alkalmazás-szerepkör neve |
+| id | Az alkalmazás szerepkör egyedi azonosítója az Azure Blockchain Workbenchben |
+| name | Az alkalmazás szerepkörének neve |
 
-#### <a name="roleassignment-assigner"></a>RoleAssignment hozzárendelő
+#### <a name="roleassignment-assigner"></a>RoleAssignment-hozzárendelés
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az Azure Blockchain Workbench felhasználó egyedi azonosítója |
+| id | A felhasználó egyedi azonosítója az Azure Blockchain Workbenchben |
 | type | A hozzárendelő típusa |
-| chainIdentifier | A felhasználó a Főkönyv egyedi azonosítója |
+| chainIdentifier | A felhasználó egyedi azonosítója a főkönyvben |
 
-#### <a name="roleassignment-assignee"></a>RoleAssignment megbízott
+#### <a name="roleassignment-assignee"></a>RoleAssignment-megbízott
 
 | Name (Név) | Leírás |
 |------|-------------|
-| id | Az Azure Blockchain Workbench felhasználó egyedi azonosítója |
+| id | A felhasználó egyedi azonosítója az Azure Blockchain Workbenchben |
 | type | A megbízott típusa |
-| chainIdentifier | A felhasználó a Főkönyv egyedi azonosítója |
+| chainIdentifier | A felhasználó egyedi azonosítója a főkönyvben |
 
-Példa egy *EventMessage RoleAssignment* a Blockchain Workbenchet:
+Példa EventMessage- *RoleAssignment* a Blockchain Workbenchből:
 
 ``` json
 {
@@ -904,4 +904,4 @@ Példa egy *EventMessage RoleAssignment* a Blockchain Workbenchet:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az intelligens szerződés integrációs minták](integration-patterns.md)
+- [Intelligens szerződések integrációs mintái](integration-patterns.md)

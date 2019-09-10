@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129513"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844931"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 
@@ -35,6 +35,8 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 - [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
 
+- A felhőalapú szolgáltatásnak olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
+
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Cloud Service-és Storage-fiók kiépítése 
 
 1. Klasszikus felhőalapú szolgáltatás létrehozása és üzembe helyezése. Az [Azure Cloud Services és a ASP.net első lépéseiben](../../cloud-services/cloud-services-dotnet-get-started.md)megtalálható a klasszikus Cloud Services alkalmazás és üzembe helyezés. 
@@ -45,7 +47,7 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
 
-Hozzon létre egy szolgáltatási elvet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)az erőforrásokhoz. Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
+Hozzon létre egy szolgáltatási elvet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
 
 - A bejelentkezési URL-címhez bármilyen URL-címet behelyezhet.  
 - Hozzon létre új ügyfél-titkos kulcsot ehhez az alkalmazáshoz.  
@@ -176,7 +178,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 2. A bal oldali menüben válassza a **figyelő lehetőséget.**
 
-3. A **figyelő** panelen válassza a metrikák **előnézet** fület.
+3. A **figyelő** panelen válassza a **metrikák előnézet** fület.
 
 4. Az erőforrások legördülő menüben válassza ki a klasszikus felhőalapú szolgáltatást.
 

@@ -1,20 +1,20 @@
 ---
 title: Az Azure Blob Storage modul üzembe helyezése az eszközökön – Azure IoT Edge | Microsoft Docs
 description: Egy Azure Blob Storage-modul üzembe helyezése az IoT Edge-eszköz a peremhálózaton adatok tárolására.
-author: kgremban
-ms.author: kgremban
+author: arduppal
+ms.author: arduppal
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.reviewer: kgremban
+ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 089c90abb999751db77bbe1d89d1d118ae712b52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e5420bbe7f65dcef4997d909b3bc4ede00dd9902
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947082"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844225"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage üzembe helyezése IoT Edge modulon az eszközön
 
@@ -93,7 +93,7 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
      > [!IMPORTANT]
      > Ne módosítsa a tárolási csatlakoztatási érték második felét, amely a modul egy adott helyére mutat. A tárolási csatlakoztatásnak mindig a következővel kell végződnie **:/blobroot** for Linux containers and **: C:/blobroot** for Windows containers.
 
-1. Állítsa be a modul [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) tulajdonságait úgy, hogy a következő JSON-t másolja, és beilleszti a **set Module Twin 's kívánt tulajdonságok** mezőbe. Konfigurálja az egyes tulajdonságokat megfelelő értékkel, mentse, majd folytassa a telepítést.
+1. Állítsa be a modul [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) tulajdonságait úgy, hogy a következő JSON-t másolja, és beilleszti a **set Module Twin 's kívánt tulajdonságok** mezőbe. Konfigurálja az egyes tulajdonságokat megfelelő értékkel, mentse, majd folytassa a telepítést. Ha a IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókra ezekhez a tulajdonságokhoz, amelyek a [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)magyarázata című szakaszban találhatók.
 
    ```json
    {
@@ -142,7 +142,7 @@ Tekintse át a telepítési adatokat, majd válassza a **küldés**.
 Miután elküldte az üzembe helyezést, térjen vissza az IoT hub **IoT Edge** lapjára.
 
 1. Válassza ki azt a IoT Edge eszközt, amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
-1. Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a telepítésben és az **eszköz által jelentett**módon van **-** e felsorolva.
+1. Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben** és az **eszköz által jelentett**módon van-e felsorolva.
 
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 
@@ -207,7 +207,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
      > [!IMPORTANT]
      > Ne módosítsa a tárolási csatlakoztatási érték második felét, amely a modul egy adott helyére mutat. A tárolási csatlakoztatásnak mindig a következővel kell végződnie **:/blobroot** for Linux containers and **: C:/blobroot** for Windows containers.
 
-1. Konfigurálja a [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) a modulhoz úgy, hogy hozzáadja a következő JSON-t a *Deployment. template. JSON* fájlhoz. Konfigurálja az egyes tulajdonságokat megfelelő értékkel, és mentse a fájlt.
+1. Konfigurálja a [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) a modulhoz úgy, hogy hozzáadja a következő JSON-t a *Deployment. template. JSON* fájlhoz. Konfigurálja az egyes tulajdonságokat megfelelő értékkel, és mentse a fájlt. Ha a IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókra ezekhez a tulajdonságokhoz, amelyek a [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) magyarázata című szakaszban találhatók.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
@@ -246,7 +246,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
 
 Ha az Azure Blob Storage több példányát is telepíteni szeretné IoT Edge modulon, meg kell adnia egy másik tárolási útvonalat, és módosítania kell `HostPort` a modulhoz kötődő értéket. A blob storage-modulok mindig tegye elérhetővé a port 11002 a tárolóban, de deklarálhatja, hogy melyik portot a gazdagépen van kötve.
 
-Módosítsa a`HostPort` **tároló létrehozási beállításait** (a Azure Portal) vagy a createOptions mezőt (a Visual Studio Code-ban található *Deployment. template. JSON* fájlban) a következő érték megváltoztatásához:
+Módosítsa a tárolólétrehozásibeállításait(aAzurePortal)vagyacreateOptionsmezőt(aVisualStudioCode-bantalálhatóDeployment.template.JSONfájlban)akövetkezőértékmegváltoztatásához`HostPort` :
 
 ```json
 "PortBindings":{

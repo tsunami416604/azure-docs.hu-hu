@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1a48088d0d7ef1e14614629340ee477833535861
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7d504bae16b5b9b10debd916ef8888e90e79364e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390396"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844169"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Az Azure Blob Storage IoT Edge
 
@@ -77,20 +77,20 @@ A **deviceToCloudUploadProperties** és a **deviceAutoDeleteProperties**beállí
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-A beállítás neve`deviceToCloudUploadProperties`
+A beállítás `deviceToCloudUploadProperties`neve:. Ha a IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókra ezekhez a tulajdonságokhoz, amelyek a magyarázat szakaszban találhatók meg.
 
 | Tulajdonság | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
 | uploadOn | true, false | `false` Alapértelmezett értékre van állítva. Ha be szeretné kapcsolni a szolgáltatást, állítsa ezt a mezőt a `true`következőre:. <br><br> Környezeti változó:`deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Lehetővé teszi az Azure-ba történő adatmásolási sorrend kiválasztását. `OldestFirst` Alapértelmezett értékre van állítva. A sorrendet a blob utolsó módosítási ideje határozza meg. <br><br> Környezeti változó:`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`a egy olyan kapcsolódási karakterlánc, amely lehetővé teszi, hogy megadja azt a Storage-fiókot, amelyhez az adatait fel szeretné tölteni. Itt adhatja meg `Azure Storage Account Name`:,. `End point suffix` `Azure Storage Account Key` Adja hozzá a megfelelő EndpointSuffix az Azure-ban, ahol az adatfeltöltés megtörténik, és ez a globális Azure, a Government Azure és a Microsoft Azure Stack számára is változhat. <br><br> Itt adhatja meg az Azure Storage SAS-kapcsolódási karakterláncát. Ezt a tulajdonságot azonban akkor kell frissítenie, amikor lejár. <br><br> Környezeti változó:`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Lehetővé teszi az Azure-ba feltölteni kívánt tárolók nevének megadását. Ez a modul lehetővé teszi a forrás és a cél tároló nevének megadását. Ha nem adja meg a cél tároló nevét, a rendszer automatikusan hozzárendeli a tároló nevét `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Létrehozhat sablon sztringeket a cél tároló neveként, tekintse meg a lehetséges értékek oszlopot. <br>*% h – > IoT Hub neve (3-50 karakter). <br>*% d – > IoT Edge eszköz azonosítója (1 – 129 karakter). <br>*% m – > modul neve (1 – 64 karakter). <br>*% c – > a forrás tárolójának neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete 63 karakter, a tároló nevének automatikus kiosztása, ha a tároló mérete meghaladja az 63 karaktert, az egyes szakaszokat (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) a 15 értékre vágja. karaktereket. <br><br> Környezeti változó:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Lehetővé teszi az Azure-ba feltölteni kívánt tárolók nevének megadását. Ez a modul lehetővé teszi a forrás és a cél tároló nevének megadását. Ha nem adja meg a cél tároló nevét, a rendszer automatikusan hozzárendeli a tároló nevét `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Létrehozhat sablon sztringeket a cél tároló neveként, tekintse meg a lehetséges értékek oszlopot. <br>*% h – > IoT Hub neve (3-50 karakter). <br>*% d – > IoT Edge eszköz azonosítója (1 – 129 karakter). <br>*% m – > modul neve (1 – 64 karakter). <br>*% c – > a forrás tárolójának neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete 63 karakter, a tároló nevének automatikus kiosztása, ha a tároló mérete meghaladja az 63 karaktert, az egyes szakaszokat (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) a 15 értékre vágja. karaktereket. <br><br> Környezeti változó:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | true, false | `false` Alapértelmezett értékre van állítva. Ha a értékre van `true`állítva, akkor a rendszer automatikusan törli az adatok törlését a felhőalapú tárhelyre való feltöltés befejezésekor. <br><br> Környezeti változó:`deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
-A beállítás neve`deviceAutoDeleteProperties`
+A beállítás `deviceAutoDeleteProperties`neve:. Ha a IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókra ezekhez a tulajdonságokhoz, amelyek a magyarázat szakaszban találhatók meg.
 
 | Tulajdonság | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
@@ -183,7 +183,7 @@ A következő rövid útmutatók a IoT Edge által is támogatott nyelveket hasz
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Kapcsolódjon a helyi tárhelyhez Azure Storage Explorer
 
-A helyi Storage-fiókhoz való kapcsolódáshoz [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) használhat.
+A helyi Storage [](https://azure.microsoft.com/features/storage-explorer/) -fiókhoz való kapcsolódáshoz Azure Storage Explorert használhat.
 
 1. Azure Storage Explorer letöltése és telepítése
 

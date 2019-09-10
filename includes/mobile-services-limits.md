@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 5e58429b6a3e2f7c7c39c13dc65af48b064f9771
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67179508"
 ---
-| Szint | Ingyenes | Alapszintű | Standard |
+| Szint | Free | Alapszintű | Standard |
 | --- | --- | --- | --- |
-| API-hívások |500,000 |egységenként 1,5 millió |egységenként 15 millió |
+| API-hívások |500,000 |1 500 000 egységenként |15 000 000 egységenként |
 | Aktív eszközök |500 |Korlátlan |Korlátlan |
-| Méretezés |– |Legfeljebb 6 egység |Korlátlan számú egység |
-| Leküldéses értesítések |Az Azure Notification Hubs ingyenes csomaggal, akár 1 millió leküldés |Notification Hubs alapszintű csomaggal, akár 10 millió leküldés |Notification Hubs Standard csomag tartalmazza, akár 10 millió leküldés |
-| Valós idejű üzenetküldést /<br/>Web Sockets |Korlátozott |mobilszolgáltatásonként 350 |Korlátlan |
+| Méretezés |– |Legfeljebb 6 egység |Nincs egységkorlát |
+| Leküldéses értesítések |Azure Notification Hubs ingyenes csomag, akár 1 000 000 leküldés |Notification Hubs alapszintű csomag, akár 10 000 000 leküldés |Notification Hubs standard szintű csomag, akár 10 000 000 leküldés |
+| Valós idejű üzenetkezelés/<br/>Webes szoftvercsatornák |Korlátozott |350/mobil szolgáltatás |Korlátlan |
 | Offline szinkronizálások |Korlátozott |Tartalmazza |Tartalmazza |
 | Ütemezett feladatok |Korlátozott |Tartalmazza |Tartalmazza |
-| Az Azure SQL Database (kötelező) <br/>Standard szintű árszabás érvényes további kapacitás |20 MB csomagban foglalt |20 MB csomagban foglalt |20 MB csomagban foglalt |
-| CPU teljesítménye |60 perc / nap |Korlátlan |Korlátlan |
-| Kimenő adatforgalom |165 MB / nap (napi átvitel) |Tartalmazza |Tartalmazza |
+| Azure SQL Database (kötelező) <br/>A standard díjszabás a további kapacitásra vonatkozik |20 MB foglalt |20 MB foglalt |20 MB foglalt |
+| CPU teljesítménye |60 perc/nap |Korlátlan |Korlátlan |
+| Kimenő adatforgalom |165 MB/nap (napi rollover) |Tartalmazza |Tartalmazza |
 
-Korlátozások és díjszabás további információkért lásd: [Azure Mobile Services-díjszabás](https://azure.microsoft.com/pricing/details/mobile-services/). 
+A korlátozásokkal és a díjszabással kapcsolatos további információkért lásd: az [Azure Mobile Services díjszabása](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

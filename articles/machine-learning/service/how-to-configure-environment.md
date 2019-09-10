@@ -1,7 +1,7 @@
 ---
 title: Python fejlesztői környezet beállítása
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan konfigurálhat fejlesztési környezetet, ha együttműködik a Azure Machine Learning szolgáltatással. Ebből a cikkből megtudhatja, hogyan használhatja a Conda-környezeteket, hogyan hozhat létre konfigurációs fájlokat, és hogyan konfigurálhat saját felhőalapú notebook-kiszolgálót, Jupyter notebookokat, Azure Databricks, Azure Notebookseket, ide-kódokat és a Data Science Virtual Machine.
+description: Megtudhatja, hogyan konfigurálhat fejlesztési környezetet, ha együttműködik a Azure Machine Learning szolgáltatással. Ebből a cikkből megtudhatja, hogyan használhatja a Conda-környezeteket, hogyan hozhat létre konfigurációs fájlokat, és hogyan konfigurálhatja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, a Azure Databricksokat, az ide-ket, a Code Editort és a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278810"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860581"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -30,7 +30,7 @@ A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környez
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
 | [Azure Databricks](#aml-databricks) | Ideális megoldás a méretezhető Apache Spark platformon nagy léptékű, intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
 | [A Data Science Virtual Machine (DSVM)](#dsvm) | Hasonlóan a felhőalapú notebook virtuális géphez (a Python és az SDK előre telepítve van), de további népszerű adatelemzési és gépi tanulási eszközökkel előre telepítve van. Egyszerűen méretezhető és kombinálható más egyéni eszközökkel és munkafolyamatokkal. | A felhőalapú notebook virtuális géphez képest lassabban megkezdhető a kezdeti lépések. |
-| [Azure Notebooks](#aznotebooks) | A Python és az SDK előzetes telepítése ingyenes és könnyű használatot nyújt. | A felhőalapú notebook virtuális géphez képest kevésbé nagy teljesítményű virtuális gépek érhetők el. Elkülönített a munkaterületről és egyéb erőforrásokról. |
+
 
 Ez a cikk további használati tippeket is tartalmaz a következő eszközökhöz:
 
@@ -40,7 +40,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak akkor érhető el, ha a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)vagy [Azure Notebooksval](#aznotebooks)szeretne kezdeni.
+Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), a [DSVM](#dsvm)vagy a [Azure Databrickstel](#aml-databricks)kezdheti meg.
 
 A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter notebook Server](#jupyter) vagy a [Visual Studio Code](#vscode) is szükséges:
 
@@ -147,13 +147,13 @@ A DSVM fejlesztési környezetként való használatához tegye a következőket
 
 1. Ha a DSVM a Azure Machine Learning szolgáltatás munkaterületének használatára szeretné konfigurálni, tekintse meg a [munkaterület-konfigurációs fájl létrehozása](#workspace) című szakaszt.
 
-További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+További információ: adatelemzési [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a id="local"></a>Helyi számítógép
 
 Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t a következő módon:
 
-1. Ha még nincs telepítve, töltse le és telepítse az [anacondat](https://www.anaconda.com/distribution/#download-section) (Python 3,7 verzió).
+1. Ha még nincs [](https://www.anaconda.com/distribution/#download-section) telepítve, töltse le és telepítse az anacondat (Python 3,7 verzió).
 
 1. Nyisson meg egy Anaconda-parancssort, és hozzon létre egy környezetet a következő parancsokkal:
 
@@ -294,7 +294,7 @@ Hogyan működik a Azure Databricks Azure Machine Learning szolgáltatással:
 
 ### <a name="set-up-your-databricks-cluster"></a>A Databricks-fürt beállítása
 
-Hozzon létre egy [Databricks-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Egyes beállítások csak akkor érvényesek, ha az SDK-t a Databricks-on lévő automatizált gépi tanuláshoz telepíti.
+Hozzon létre egy [Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)-fürtöt. Egyes beállítások csak akkor érvényesek, ha az SDK-t a Databricks-on lévő automatizált gépi tanuláshoz telepíti.
 **A fürt létrehozása néhány percig is eltarthat.**
 
 Használja ezeket a beállításokat:
@@ -348,21 +348,10 @@ SDK az Databricks-hez **készült** automatizált ![Machine learning SDK-val a D
 ### <a name="start-exploring"></a>Ismerkedés a felfedezéssel
 
 Próbálja ki:
-+ Töltse le a Azure Databricks/Azure Machine Learning SDK [notebook Archive-fájlját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) , és [importálja az archív fájlt](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) a Databricks-fürtbe.
-  Habár több jegyzetfüzet is elérhető, **csak ezek a [minta-jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) működnek együtt Azure Databricksokkal.**
++ Töltse le a Azure Databricks/Azure Machine Learning SDK [notebook Archive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) -fájlját, és [importálja az archív fájlt](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) a Databricks-fürtbe.
+  Habár több jegyzetfüzet is elérhető, **csak ezek a [minta](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) -jegyzetfüzetek működnek együtt Azure Databricksokkal.**
 
-+ Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
-
-## <a id="aznotebooks"></a>Az Azure notebookok
-
-[Az Azure notebookok](https://notebooks.azure.com) (előzetes verzió) egy interaktív fejlesztési környezetben az Azure-felhőben. Ez egy egyszerű módszer a Azure Machine Learning fejlesztésének megkezdésére.
-
-* A Azure Machine Learning SDK már telepítve van.
-* Miután létrehozta Azure Machine Learning szolgáltatás munkaterületét a Azure Portalban, a gombra kattintva automatikusan konfigurálhatja az Azure notebook-környezetet a munkaterülettel való együttműködésre.
-
-A Azure Notebooks használatának megkezdéséhez használja a [Azure Portal](https://portal.azure.com) .  Nyissa meg a munkaterületet, és az **Áttekintés** szakaszban válassza az első **lépések lehetőséget Azure Notebooks**.
-
-Alapértelmezés szerint a Azure Notebooks egy ingyenes szolgáltatási szintet használ, amely legfeljebb 4 GB memóriával és 1 GB adattal rendelkezik. A korlátokat azonban eltávolíthatja egy Data Science Virtual Machine-példánynak a Azure Notebooks projekthez való csatolásával. További információ: [Azure Notebooks projektek kezelése és konfigurálása – számítási réteg](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
++ Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a](how-to-create-your-first-pipeline.md)betanítási számításokat.
 
 ## <a id="workspace"></a>Munkaterület-konfigurációs fájl létrehozása
 
@@ -410,5 +399,5 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
-- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése
+- [Modell](tutorial-train-models-with-aml.md) betanítása Azure Machine learningre a MNIST adatkészlettel
+- A Pythonhoz készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806503"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861210"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Gyors útmutató: Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához
 
@@ -28,12 +28,12 @@ A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket
 * [CMAK](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-device-workbench"></a>Az Azure IoT Device Workbench telepítése
+### <a name="install-azure-iot-tools"></a>Az Azure IoT-eszközök telepítése
 
-Az alábbi lépésekkel telepítheti az Azure IoT Device Workbench bővítményt a VS Code-ban:
+Az alábbi lépéseket követve telepítheti a VS Code bővítmény-csomaghoz készült [Azure IoT-eszközöket](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) :
 
 1. A VS Code-ban válassza a **kiterjesztések** lapot.
-1. Keressen rá az **Azure IoT Device Workbench**kifejezésre.
+1. Keresse meg az **Azure IoT-eszközöket**.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
 ### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
