@@ -1,0 +1,153 @@
+### YamlMime:Landing
+title: Az Azure Blob Storage dokumentációja
+summary: Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+metadata:
+  title: Az Azure Blob Storage dokumentációja
+  description: Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+  services: storage
+  ms.service: storage
+  ms.subservice: blobs
+  ms.topic: landing-page
+  ms.collection: collection
+  author: normesta
+  ms.author: normesta
+  ms.date: 08/20/2019
+  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
+  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70875571"
+landingContent:
+- title: Az Azure Blob Storage névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Blob Storage?
+      url: storage-blobs-overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Portal használata
+      url: storage-quickstart-blobs-portal.md
+    - text: A Storage Explorer használata
+      url: storage-quickstart-blobs-storage-explorer.md
+  - linkListType: concept
+    links:
+    - text: Tárfiókok áttekintése
+      url: ../common/storage-account-overview.md
+    - text: Adatredundancia
+      url: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Tárfiók létrehozása
+      url: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Blokkblob-tárfiók létrehozása
+      url: storage-blob-create-account-block-blob.md
+    - text: Egyéni tartomány konfigurálása
+      url: storage-custom-domain-name.md
+- title: Elemzések és megállapítások
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 2. generációs Azure Data Lake Storage
+      url: data-lake-storage-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: Adatelemzés a Databricksszel
+      url: data-lake-storage-quickstart-create-databricks-account.md
+  - linkListType: concept
+    links:
+    - text: Big Data feldolgozása
+      url: data-lake-storage-data-scenarios.md
+    - text: Többprotokollos hozzáférés
+      url: data-lake-storage-multi-protocol-access.md
+    - text: Ajánlott eljárások
+      url: data-lake-storage-best-practices.md
+  - linkListType: tutorial
+    links:
+    - text: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
+      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával
+      url: data-lake-storage-tutorial-extract-transform-load-hive.md
+    - text: Adatok beszúrása Databricks-táblázatokba az Event Grid használatával
+      url: data-lake-storage-events.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Használat Azure HDInsight-fürtökkel
+      url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Használat a Power BI-jal
+      url: data-lake-storage-use-power-bi.md
+- title: Alkalmazások fejlesztése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A .NET használata
+      url: storage-quickstart-blobs-dotnet.md
+    - text: A Python használata
+      url: storage-quickstart-blobs-python.md
+    - text: Események irányítása egy webes végpontra
+      url: ../../event-grid/blob-event-quickstart-portal.md
+    - text: Statikus webhely üzemeltetése
+      url: storage-blob-static-website-how-to.md
+  - linkListType: concept
+    links:
+    - text: Események kezelése
+      url: storage-blob-event-overview.md
+    - text: Statikus webhelyek
+      url: storage-blob-static-website.md
+  - linkListType: tutorial
+    links:
+    - text: Webalkalmazás létrehozása képi adatok feltöltéséhez
+      url: storage-upload-process-images.md
+- title: Biztonság és identitás kezelése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Azure Storage-hoz való hozzáférés engedélyezése
+      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Data Lake hozzáférés-vezérlés
+      url: data-lake-storage-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Blobadatok elérésre Azure AD-fiókkal
+      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Hozzáférési jogosultságok felügyelete RBAC használatával
+      url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Felügyelt identitás használata a Blob Storage elérésének engedélyezéséhez
+      url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Adatátvitel
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Adatátviteli megoldások összehasonlítása
+      url: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Azure Data Box használata offline adatátvitelhez
+      url: ../../databox/data-box-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Áthelyezés az AzCopyval
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Áthelyezés az Azure Data Factoryvel
+      url: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Teljesítmény és méretezhetőség
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Méretezhetőség és teljesítmény
+      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Teljesítmény és kapacitás – ellenőrzőlista
+      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: Optimalizálás a teljesítmény és a méretezhetőség szempontjából
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Adatok biztonsági mentése és archiválása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gyakori, ritka elérésű és archív tárolás
+      url: storage-blob-storage-tiers.md
+    - text: A Blob Storage-életciklus felügyelete
+      url: storage-lifecycle-management-concepts.md

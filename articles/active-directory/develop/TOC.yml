@@ -205,6 +205,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Közvetítők használata Xamarin iOS- és Android-alkalmazásokkal
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Univerzális Windows-platform
                       href: msal-net-uwp-considerations.md
                 - name: Alkalmazás-jogkivonat beszerzése
@@ -225,6 +227,8 @@
                   href: msal-net-migration.md
                 - name: Migrálás MSAL.js-re
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Xamarin-alkalmazások migrálása az ADAL.NET és az MSAL.NET közötti közvetítők használatával
+                  href: msal-net-migration-ios-broker.md
             - name: Támogatott hitelesítési folyamatok
               href: msal-authentication-flows.md
             - name: Jogkivonatok beszerzése és gyorsítótárazása

@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: Példák
   items:
-    - name: Azure AD DS-példány létrehozása az Azure PowerShell használatával
+    - name: Felügyelt tartomány létrehozása az Azure PowerShell használatával
       href: powershell-create-instance.md
 - name: Alapelvek
   items:

@@ -346,6 +346,10 @@
       items:
         - name: Kifejezések írása attribútumleképezésekhez
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect-kiépítési ügynök
+      items:
+        - name: Kiépítési ügynök verzióelőzményei
+          href: provisioning-agent-release-version-history.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy verzióelőzményei

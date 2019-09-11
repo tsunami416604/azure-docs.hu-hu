@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: Melyik SQL-beállítást válasszam?
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: Szolgáltatások összehasonlítása
+      href: sql-database-features.md
     - name: Kibocsátási megjegyzések
       href: sql-database-release-notes.md
     - name: Átjáró IP-címeinek migrálási frissítései
@@ -390,10 +392,8 @@
               href: sql-database-advisor.md
     - name: Adatbázisfunkciók
       items:
-        - name: Az SQL Database funkció dokumentációja
+        - name: Áttekintés
           href: sql-database-features-index.yml
-        - name: SQL-funkciók összehasonlítása
-          href: sql-database-features.md
         - name: Többmodelles képességek
           href: sql-database-multi-model-features.md
         - name: Memóriabeli
@@ -534,6 +534,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Adatok betöltése és áthelyezése
       items:
+        - name: Időbeli pont visszaállítása
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Erőforrás áthelyezése új régióba
           href: sql-database-move-resources-across-regions.md
         - name: Adatbázis másolása az Azure-on belül

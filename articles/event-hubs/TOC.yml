@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Indítás
+          href: event-hubs-go-get-started-send.md
+        - name: C (csak küldés)
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (csak fogadás)
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET-keretrendszer
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események rögzítése
       items:
         - name: Az Event Hubs Capture engedélyezése az Azure Portalon
@@ -104,46 +116,20 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programozási útmutató
           href: event-hubs-programming-guide.md
+        - name: 'Események küldése, fogadása és rögzítése a Python használatával'
+          href: event-hubs-python.md
     - name: Adatok feldolgozása
       items:
         - name: Adatok feldolgozása az Azure Stream Analytics használatával
           href: process-data-azure-stream-analytics.md
-    - name: Ügyfélkódtárak használata
+    - name: Integráció a Spring-keretrendszerrel
       items:
-        - name: .NET-keretrendszer
-          items:
-            - name: Események küldése és fogadása a .NET-keretrendszer használatával
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: Spring Cloud Stream Binder-alkalmazás létrehozása
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: Az Apache Kafkához készült Spring Boot Starter használata
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: Események küldése és fogadása a Python használatával
-              href: event-hubs-python-get-started-send.md
-            - name: 'Események küldése, fogadása és rögzítése a Python használatával'
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: Események küldése és fogadása a Node.js használatával
-              href: event-hubs-node-get-started-send.md
-        - name: Indítás
-          items:
-            - name: Események küldése és fogadása a Go használatával
-              href: event-hubs-go-get-started-send.md
-        - name: C (csak küldés)
-          items:
-            - name: Események küldése a C használatával
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (csak fogadás)
-          items:
-            - name: Események fogadása az Apache Storm használatával
-              href: event-hubs-storm-getstarted-receive.md
+        - name: Spring Cloud Stream Binder-alkalmazás létrehozása
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: Az Apache Kafkához készült Spring Boot Starter használata
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: Integrálás az Apache Kafkával
       items:
         - name: Kafka-kompatibilis eseményközpontok létrehozása

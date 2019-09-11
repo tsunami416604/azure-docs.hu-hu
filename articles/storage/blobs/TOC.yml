@@ -1,5 +1,5 @@
-- name: Azure Storage-dokumentáció
-  href: /azure/storage/
+- name: Az Azure Blob Storage dokumentációja
+  href: /azure/storage/blobs/
 - name: Áttekintés
   expanded: true
   items:

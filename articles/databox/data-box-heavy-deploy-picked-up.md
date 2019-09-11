@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a Azure Data Box Heavy visszaszállításához | Microsoft Docs
-description: Ismerje meg, hogyan szállíthatja a Azure Data Box Heavyt a Microsoftnak
+title: Az Azure Data Box Heavy visszaküldését ismertető oktatóanyag | Microsoft Docs
+description: Megtudhatja, hogyan küldheti vissza az Azure Data Box Heavyt a Microsoftnak
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,46 +10,46 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70240349"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Oktatóanyag: Az Azure-ba való adatfeltöltés Azure Data Box Heavyának visszaküldése és ellenőrzése
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Oktatóanyag: Az Azure Data Box Heavy visszaküldése, majd az Azure-ba történő adatfeltöltés ellenőrzése
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Az Azure-ba való adatfeltöltés Azure Data Box Heavyának visszaküldése és ellenőrzése
+# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Az Azure Data Box Heavy visszaküldése, majd az Azure-ba történő adatfeltöltés ellenőrzése
 
 ::: zone-end
 
 ::: zone target = "docs"
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet visszaadni Azure Data Box Heavy és ellenőrizni az Azure-ba feltöltött információkat.
+Az oktatóanyagból megtudhatja, hogyan küldheti vissza az Azure Data Box Heavyt, és ellenőrizheti az adatok Azure-ba való feltöltését.
 
 Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * Szállításra való előkészítés
-> * Data Box Heavy szállítása a Microsoftnak
+> * A szállítás előkészítése
+> * A Data Box Heavy elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
-> * Adatok törlése Data Box Heavy
+> * Adatok törlése a Data Box Heavyről
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg róla, hogy:
+Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- Elvégezte az [oktatóanyagot: Másolja az adatAzure Data Box és ellenőrizze](data-box-heavy-deploy-copy-data.md)a következőt:.
-- A másolási feladatok készek. A szállításra való előkészítés nem futtatható, ha a másolási feladatok folyamatban vannak.
+- Az [ Adatok másolása az Azure Data Boxra, majd ellenőrzése](data-box-heavy-deploy-copy-data.md) lépéseit.
+- A másolási feladatok befejeződtek. A szállítás előkészítése nem futtatható, ha másolási feladatok vannak folyamatban.
 
 
-## <a name="prepare-to-ship"></a>Szállításra való előkészítés
+## <a name="prepare-to-ship"></a>A szállítás előkészítése
 
 [!INCLUDE [data-box-heavy-prepare-to-ship](../../includes/data-box-heavy-prepare-to-ship.md)]
 
@@ -57,27 +57,27 @@ Mielőtt elkezdené, győződjön meg róla, hogy:
 
 ::: zone target = "chromeless"
 
-## <a name="prepare-to-ship"></a>Szállításra való előkészítés
+## <a name="prepare-to-ship"></a>A szállítás előkészítése
 
-A szállítás előkészítése előtt győződjön meg arról, hogy a másolási feladatok készek.
+A szállítás előkészítése előtt győződjön meg arról, hogy a másolási feladatok befejeződtek.
 
-1. Nyissa meg szállításra való előkészítés lapot a helyi webes felületen, és indítsa el a hajó előkészítését.
+1. Nyissa meg a helyi webes kezelőfelület Prepare to ship (Szállítás előkészítése) lapját, és kezdje meg az előkészületeket a szállításra.
 2. Kapcsolja ki az eszközt a helyi webes kezelőfelületen. Válassza le a kábeleket az eszközről.
 
-Most már készen áll az eszköz újbóli szállítására.
+Most már készen áll az eszköz visszaküldésére.
 
 ::: zone-end
 
-## <a name="ship-data-box-heavy-back"></a>Szállítás Data Box Heavy vissza
+## <a name="ship-data-box-heavy-back"></a>A Data Box Heavy visszaküldése
 
-1. Győződjön meg arról, hogy az eszköz ki van kapcsolva, és a kábelek el lesznek távolítva. Az eszköz hátoldalán található 4 tápkábelt helyezze el biztonságosan a tálcába.
-2. Az eszköz az USA-beli és a DHL-ben az EU-ban
+1. Ellenőrizze, hogy az eszköz ki van-e kapcsolva, és a kábelek el lettek-e távolítva. Tekerje fel és biztonságosan helyezze el a 4 tápkábelt az eszköz hátuljáról elérhető tálcán.
+2. Az eszköz a FedExszel küldhető el az USA-ban és DHL-lel az EU-ban
 
-    1. Lépjen kapcsolatba [Data Box műveletekkel](mailto:DataBoxOps@microsoft.com) , hogy tájékoztassa a pickupot és a visszaszállítási címkét.
-    2. Hívja meg a szállítási szolgáltató helyi számát a pickup időzítéséhez.
-    3. Győződjön meg arról, hogy a szállítási címke kiemelten jelenik meg a szállítás külsején.
-    4. Győződjön meg arról, hogy az előző szállítmányból származó régi szállítási címkék el lesznek távolítva az eszközről.
-3. Miután megtörtént a Data Box Heavy beolvasása és ellenőrzése a szolgáltatónál, a portálon a megrendelési állapotot a rendszer **felveszi**. A nyomkövetési azonosító is megjelenik.
+    1. Lépjen kapcsolatba a [Data Box üzemeltetési csapatával](mailto:DataBoxOps@microsoft.com) a csomagfelvétellel kapcsolatos információk megadása és a visszaküldési fuvarlevélcímke beszerzése érdekében.
+    2. Hívja a futárcég helyi telefonszámát a csomagfelvétel ütemezéséhez.
+    3. Ügyeljen arra, hogy a fuvarlevélcímke jól látható legyen a csomag külsején.
+    4. Győződjön meg arról, hogy az előző szállításból megmaradt régi fuvarlevélcímkéket eltávolította az eszközről.
+3. Miután a futár felvette és beolvasta a Data Box Heavyt, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
 
 ::: zone target = "docs"
 
@@ -85,30 +85,30 @@ Most már készen áll az eszköz újbóli szállítására.
 
 Amikor a Microsoft megkapja és beolvassa az eszközt, a rendelés **Megérkezett** állapotra vált. Az eszközt ezután fizikai ellenőrzésnek vetjük alá, sérüléseket vagy illetéktelen hozzáférés jeleit kutatva.
 
-Az ellenőrzés befejezése után a Data Box Heavy csatlakozik a hálózathoz az Azure-adatközpontban. Az adatok másolása automatikusan megkezdődik. Az adatok méretétől függően a másolási művelet több órát vagy napot is igénybe vehet. A másolási feladat folyamatát a portálon követheti nyomon.
+Az ellenőrzés végeztével a Data Box Heavyt csatlakoztatjuk a hálózatra az Azure-adatközpontban. Az adatok másolása automatikusan megkezdődik. Az adatok méretétől függően a másolási művelet több órát vagy napot is igénybe vehet. A másolási feladat folyamatát a portálon követheti nyomon.
 
 A másolás végeztével a rendelés állapota **Befejezve** értéke vált.
 
-Győződjön meg arról, hogy az adatok fel vannak töltve az Azure-ba, mielőtt törölné a forrásból. Az adatai a következőket vehetik fel:
+Az adatok forrásból történő törlése előtt ellenőrizze, hogy fel lettek-e töltve az Azure-ba. Az adatok a következőkben lehetnek:
 
-- Azure Storage-fiókja (ke) t. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
+- Az Ön Azure Storage-fiókja(i). A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 
   - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
-- A felügyelt lemez erőforrás-csoportja (i). A felügyelt lemezek létrehozásakor a virtuális merevlemezeket blobként kell feltölteni, majd felügyelt lemezekre konvertáljuk. A felügyelt lemezek a rendelés létrehozásakor megadott erőforráscsoporthoz vannak csatolva. 
+- Az Ön felügyelt lemezéhez csatolt erőforráscsoport(ok). Felügyelt lemezek létrehozásakor a VHD-k lapblobokként töltődnek fel, és ezután alakítja át őket a rendszer felügyelt lemezekké. A felügyelt lemezek a rendelés létrehozásakor megadott erőforráscsoportokhoz vannak csatolva. 
 
-    - Ha az Azure-beli felügyelt lemezekre történő másolás sikeres volt, lépjen a Azure Portal **rendelés részleteibe** , és jegyezze fel a felügyelt lemezekhez megadott erőforráscsoportokat.
+    - Ha az Azure-ban a felügyelt lemezekre történő másolás sikeres volt, akkor az Azure Portalon a **Rendelés részletei** területre léphet, és feljegyezheti a felügyelt lemezekhez megadott erőforráscsoportokat.
 
-        ![Felügyelt lemezes erőforráscsoportok azonosítása](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Felügyelt lemezekhez csatolt erőforráscsoportok azonosítása](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        Nyissa meg a feljegyzett erőforráscsoportot, és keresse meg a felügyelt lemezeket.
+        Lépjen a feljegyzett erőforráscsoportra, és keresse meg a felügyelt lemezeket.
 
-        ![Erőforráscsoporthoz csatolt felügyelt lemez](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
+        ![Erőforráscsoportokhoz csatolt felügyelt lemez](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Ha egy VHDX vagy egy dinamikus/különbséglemezek VHD-t másolt, akkor a VHDX/VHD-t oldal blobként kell feltölteni az átmeneti tárolóba, de a VHD-t felügyelt lemezre való átalakítás meghiúsul. Nyissa meg az átmeneti **tárolási fiókot > blobokat** , majd válassza ki a megfelelő tároló-standard SSD, standard HDD vagy prémium SSD. A virtuális merevlemezeket a rendszer az átmeneti tárolási fiókban lévő blobként töltse fel.
+    - Ha egy VHDX-fájlt, illetve egy dinamikus VHD-t vagy különbséglemezt másolt, akkor a VHDX-/VHD-fájlok lapblobként lesznek töltődnek fel az előkészítési tárfiókba, azonban a VHD-fájlok felügyelt lemezekké történő átalakítása meghiúsul. Lépjen az előkészítési **Tárfiók > Blobok** területre, majd válassza ki a megfelelő tárolót: – Standard SSD, Standard HDD vagy Prémium SSD. A VHD-fájlok lapblobként töltődnek fel az előkészítési tárfiókba.
     
 ::: zone-end
 
@@ -116,16 +116,16 @@ Győződjön meg arról, hogy az adatok fel vannak töltve az Azure-ba, mielőtt
 
 ## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
 
-Ha a Data Box Heavy eszköz csatlakozik az Azure Datacenter Network szolgáltatáshoz, az Azure-ba történő adatfeltöltés automatikusan elindul. Data Box szolgáltatás értesíti arról, hogy az Adatmásolás befejeződött az Azure Portalon keresztül.
+Amikor csatlakoztatja a Data Box Heavy eszközt az Azure-adatközpont hálózatához, az adatok Azure-ba való feltöltése automatikusan megkezdődik. A Data Box szolgáltatás az Azure Portalon értesíti, ha az adatok másolása befejeződött.
 
 - Ellenőrizze a hibákat a hibanaplókban, és tegye meg a szükséges intézkedéseket.
 - Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról.
 
 ::: zone-end
 
-## <a name="erasure-of-data-from-data-box-heavy"></a>Adatok törlése Data Box Heavy
+## <a name="erasure-of-data-from-data-box-heavy"></a>Adatok törlése a Data Box Heavyről
  
-Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően. A törlés befejezése után [letöltheti a megrendelési előzményeket](data-box-portal-admin.md#download-order-history).
+Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően. A törlés befejezése után [letöltheti a rendelési előzményeket](data-box-portal-admin.md#download-order-history).
 
 ::: zone target = "docs"
 
@@ -135,12 +135,12 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * Szállításra való előkészítés
-> * Data Box Heavy szállítása a Microsoftnak
+> * A szállítás előkészítése
+> * A Data Box Heavy elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
-> * Adatok törlése Data Box Heavy
+> * Adatok törlése a Data Box Heavyről
 
-A következő cikkből megtudhatja, hogyan kezelheti Data Box Heavy a helyi webes felületen keresztül.
+A következő cikk a Data Box Heavy helyi webes felületen keresztül történő felügyeletét mutatja be.
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Box felügyelete a helyi webes felhasználói felülettel](./data-box-local-web-ui-admin.md)

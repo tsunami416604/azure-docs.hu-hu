@@ -27,6 +27,8 @@
       items:
         - name: Áttekintés
           href: customize-content-models-overview.md
+        - name: Animált karakterek
+          href: animated-characters-recognition.md
         - name: Márkák
           href: customize-brands-model-overview.md
         - name: Nyelv
@@ -45,8 +47,10 @@
       href: video-indexer-output-json-v2.md
     - name: Pontos időpontok keresése videókban
       href: video-indexer-search.md
-    - name: 'Jelenetek, felvételek és kulcsképkockák'
+    - name: 'Jelenetek, felvételek, kulcsképek észlelése'
       href: scenes-shots-keyframes.md
+    - name: Többnyelvű tartalom azonosítása és átalakítása
+      href: multi-language-identification-transcription.md
     - name: Video Indexer-elemzések megtekintése és szerkesztése
       href: video-indexer-view-edit.md
     - name: Szerkesztő használata projektek létrehozásához
@@ -57,6 +61,8 @@
       href: video-indexer-disaster-recovery.md
     - name: Tartalommodellek testreszabása
       items:
+        - name: Animált karakterek
+          href: animated-characters-recognition.md
         - name: Személy
           items:
             - name: a Video Indexer webhely használatával

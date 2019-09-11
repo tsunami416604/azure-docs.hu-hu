@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a Azure Data Box Heavy beállításához | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztatható a Azure Data Box Heavy
+title: Az Azure Data Box Heavy beállítása – oktatóanyag | Microsoft Docs
+description: Bemutatja az Azure Data Box Heavy bekábelezését és csatlakoztatását
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,39 +10,39 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241415"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Oktatóanyag: Kábel és kapcsolódás a Azure Data Box Heavyhoz
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Oktatóanyag: Az Azure Data Box Heavy bekábelezése és csatlakoztatása
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-## <a name="get-started-with-azure-data-box-heavy"></a>Ismerkedés a Azure Data Box Heavy
+## <a name="get-started-with-azure-data-box-heavy"></a>Ismerkedés az Azure Data Box Heavyvel
 
 ::: zone-end
 
 ::: zone target = "docs"
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet kábeleket, csatlakoztatást és bekapcsolni a Azure Data Box Heavy.
+Az oktatóanyag az Azure Data Box Heavy bekábelezését, csatlakoztatását és bekapcsolását mutatja be.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Csatlakoztassa a Data Box Heavy
-> * Kapcsolódás a Data Box Heavyhoz
+> * A Data Box Heavy bekábelezése
+> * A Data Box Heavy csatlakoztatása
 
 ::: zone-end
 
 ::: zone target = "chromeless"
 
-Ez az útmutató útmutatást nyújt az előfeltételek, a kábelek és az eszköz csatlakoztatása, az adatok másolása, az Azure-ba való feltöltés és a feltöltött adatok ellenőrzéséhez.
+Ebből az útmutatóból megtudhatja, hogyan történik az előfeltételek áttekintése, az eszköz bekábelezése és csatlakoztatása, az adatok másolása és Azure-ba való feltöltése, illetve a feltöltött adatok jóváhagyása.
 
 ::: zone-end
 
@@ -50,113 +50,113 @@ Ez az útmutató útmutatást nyújt az előfeltételek, a kábelek és az eszk�
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Megrendelés Azure Data Box Heavy](data-box-heavy-deploy-ordered.md).
-2. Megkapta a Data Box Heavyt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
-3. Áttekintette a [Data Box Heavy biztonsági irányelveit](data-box-safety.md).
-4. Hozzá kell férnie egy olyan, az adatközpontban található lapos webhelyhez, amely egy olyan elérhető hálózati kapcsolat közelében van, amely képes az adott helyigényű eszköz befogadására. Az eszköz nem csatlakoztatható állványhoz.
-5. Négy megalapozott tápkábelt kapott a tárolóeszköz használatára.
-6. Rendelkezik egy, az adatközponti hálózatra csatlakoztatott gazdagéppel. A Data Box Heavy a számítógépről másolja az adatait. A gazdagépnek [támogatott operációs rendszert](data-box-heavy-system-requirements.md)kell futtatnia.
+1. Az [ Azure Data Box Heavy megrendelését ismertető oktatóanyag](data-box-heavy-deploy-ordered.md) végére ért.
+2. Megkapta a Data Box Heavyt, és a portálon a megrendelés **Kézbesítve** állapotú.
+3. Áttekintette [a Data Box Heavy biztonsági útmutatásait](data-box-safety.md).
+4. Szüksége lesz az adatközpontban egy olyan vízszintes felületű helyre, amelynek közelében van elérhető hálózati csatlakozási lehetőség, és ahol elfér egy ilyen helyigényű eszköz. Az eszköz nem rögzíthető állványra.
+5. Kapott négy földelt tápkábelt a tárolóeszközhöz.
+6. Rendelkezik egy, az adatközponti hálózatra csatlakoztatott gazdagéppel. A Data Box Heavy erről a számítógépről másolja majd az adatokat. A gazdagépen [támogatott operációs rendszernek](data-box-heavy-system-requirements.md) kell futnia.
 7. Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 
-8. A helyi felhasználói felülethez való kapcsolódáshoz és az eszköz konfigurálásához egy RJ-45 kábelt tartalmazó laptop szükséges. A laptop használatával konfigurálja egyszer az eszköz egyes csomópontjait.
-9. Az eszköz csomópontjain 1 40-Gbps vagy 10 GB/s-os kábelre van szükség.
-    - Válassza ki azokat a kábeleket, amelyek kompatibilisek a [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) hálózati adapterrel.
-    - Az 40-Gbps kábel esetében a kábel QSFP +-nak kell lennie.
-    - A 10 GB/s-os kábel esetében olyan SFP + kábelre van szükség, amely egy 10 GB/s-os kapcsolóra csatlakozik egy végponton, és egy QSFP + – SFP + adapterrel (vagy a QSA-adapterrel) az eszközhöz csatlakozó végponthoz.
+8. RJ-45 kábellel ellátott laptop szükséges a helyi felhasználó felülethez való csatlakozáshoz és az eszköz konfigurálásához. A laptop használatával konfigurálhatja az eszköz csomópontjait.
+9. Eszközcsomópontonként egy-egy 40 Gb/s-os vagy 10 Gb/s-os kábelre van szükség.
+    - A [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) hálózati adapterrel kompatibilis kábeleket válasszon.
+    - A 40 Gb/s-os kábel esetében a kábel eszközoldali végének QSFP+ rendszerűnek kell lennie.
+    - A 10 Gb/s-os kábel esetén szükség van egy olyan SFP+ kábelre, amely az egyik végén egy 10 Gb/s-os kapcsolóhoz, az eszközoldali végén pedig egy QSFP+–SFP+ adapterhez (vagy a QSA-adapterhez) csatlakozik.
 
 ::: zone target = "docs"
 
-## <a name="cable-your-device-for-power"></a>Az eszköz csatlakoztatása a powerhez
+## <a name="cable-your-device-for-power"></a>Az eszköz tápkábeleinek bekötése
 
-Az eszköz csatlakoztatásához hajtsa végre az alábbi lépéseket.
+Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
-1. Vizsgálja meg, hogy az eszközön nincsenek-e illetéktelen felnyitás nyomai vagy látható sérülések. Amennyiben az eszközön jelentős sérülés vagy illetéktelen felnyitás nyomai észlelhetők, ne folytassa. [Lépjen kapcsolatba Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md) azonnal, hogy segítsen felmérni, hogy az eszköz megfelelően működik-e, és hogy szükség van-e a cserére.
-2. Helyezze át az eszközt a telepítési helyre.
+1. Vizsgálja meg, hogy az eszközön nincsenek-e illetéktelen felnyitás nyomai vagy látható sérülések. Amennyiben az eszközön jelentős sérülés vagy illetéktelen felnyitás nyomai észlelhetők, ne folytassa. Azonnal [vegye fel a kapcsolatot a Microsoft támogatási szolgálatával](data-box-disk-contact-microsoft-support.md), ahol szakembereink segíthetnek felmérni, hogy az eszköz működőképes állapotban van-e, vagy esetleg küldenünk kell egy csereeszközt.
+2. Vigye az eszközt az üzembehelyezési helyre.
 
-    ![Data Box Heavy eszköz telepítési helye](media/data-box-heavy-deploy-set-up/data-box-heavy-install-site.png)
+    ![A Data Box Heavy üzembehelyezési helye](media/data-box-heavy-deploy-set-up/data-box-heavy-install-site.png)
 
-3. Zárolja a hátsó görgőket az eszközön az alább látható módon.
+3. Rögzítse az eszköz hátsó görgőit az alább látható módon.
 
-    ![Eszközök Data Box Heavy zárolva](media/data-box-heavy-deploy-set-up/data-box-heavy-casters-locked.png)
+    ![A Data Box Heavy görgői rögzített állapotban](media/data-box-heavy-deploy-set-up/data-box-heavy-casters-locked.png)
 
-4. Keresse meg az eszköz elülső és hátsó ajtajait feloldó gombokat. Oldja fel és helyezze át a bejárati ajtót, amíg az az eszköz oldalára nem lesz ürítve. Ismételje meg a műveletet a hátsó ajtóval is.
-    Mindkét ajtónak nyitva kell maradnia, amikor az eszköz működőképes, hogy lehetővé tegye az eszközön az optimális, elölről visszaáramló levegő áramlását.
+4. Keresse meg az eszköz elülső és hátsó ajtaját nyitó gombokat. Nyissa ki az elülső ajtót az eszköz oldalával párhuzamos állásba. Ezt ismételje meg a hátsó ajtóval is.
+    Mindkét ajtónak nyitva kell lennie az eszköz működése közben, hogy lehetővé váljon az elölről hátrafelé irányú optimális légmozgás az eszközön keresztül.
 
-    ![Nyitott ajtók Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-doors-open.png)
+    ![A Data Box Heavy nyitott ajtókkal](media/data-box-heavy-deploy-set-up/data-box-heavy-doors-open.png)
 
-5. Az eszköz hátoldalán lévő tálcának négy tápkábelrel kell rendelkeznie. Távolítsa el az összes kábelt a tálcáról, és helyezze azokat félre.
+5. Az eszköz hátoldali tálcáján négy tápkábelnek kell lennie. Távolítsa el a kábeleket a tálcáról, és tegye félre őket.
 
-    ![Data Box Heavy tápkábelek a tálcában](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
+    ![A Data Box Heavy tápkábelei a tálcán](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
 
-6. A következő lépés az eszköz hátoldalán található különböző portok azonosítása. Kétféle csomópont, **csomópont1** és **Csomópont2**található. Mindegyik csomóponthoz négy hálózati adapter, **mgmt**, **DATA1**, **DATA2**és **DATA3**tartozik. A **mgmt** a felügyelet konfigurálására szolgál az eszköz kezdeti konfigurálása során. **A DATA1**-**DATA3** adatportok. A **mgmt** és a **DATA3** portok 1 GB/s, míg a **DATA1**, a **DATA2** 40 – Gbps vagy 10 GB/s portokkal működhet. A két eszköz csomópontjainak alján négy energiaellátási egység (PSUs) van, amelyek a két eszköz csomópontjain vannak megosztva. Az eszközön való szembenézés után a **PSUs** a **PSU1**, a **PSU2**, a **PSU3**és a **PSU4** , balról jobbra.
+6. A következő lépés az eszköz hátulján található különböző portok azonosítása. Itt két eszközcsomópont található, a **NODE1** és a **NODE2**. Mindegyik csomópont a következő négy hálózati adapterrel rendelkezik: **MGMT**, **DATA1**, **DATA2**, **DATA3**. Az **MGMT** a felügyelet konfigurálására használható az eszköz kezdeti beállítása során. **DATA1**-**DATA3**: adatportok. Az **MGMT** és a **DATA3** 1 Gb/s sebességű, míg a **DATA1** és a **DATA2** 40 Gb/s vagy 10 Gb/s sebességű portként is üzemeltethető. A két eszközcsomópont alján négy tápegység (PSU) található, amelyek a két eszközcsomópont között vannak megosztva. Ha szemben áll az eszközzel, a **PSU-k** nevei balról jobbra haladva a következők: **PSU1**, **PSU2**, **PSU3** és **PSU4**.
 
-    ![Data Box Heavy portok](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
+    ![A Data Box Heavy portjai](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
 
-7. Csatlakoztasson mind a négy tápkábelt az eszköz energiaellátási eszközeihez. A zöld LED-ek bekapcsolják és villognak.
-8. Az eszköz csomópontjainak bekapcsolásához használja az első síkon lévő főkapcsoló gombokat. Tartsa lenyomva a főkapcsoló gombját néhány másodpercig, amíg a kék fény be nem következik. Az eszköz hátulján lévő tápegységek zöld LED-je most már nem lehet stabil. Az eszköz elülső operációs paneljén a hibák LED-ek is szerepelnek. Ha a hiba LED-je világít, a hibás TÁPEGYSÉGet vagy ventilátort vagy a lemezmeghajtókkal kapcsolatos problémát jelez.  
+7. Csatlakoztassa mind a négy tápkábelt az eszköz tápegységeihez. A zöld LED-ek bekapcsolnak és villogni kezdenek.
+8. Az eszközcsomópontok bekapcsolásához nyomja meg a bekapcsológombokat az eszköz előlapján. Tartsa nyomva a bekapcsológombot néhány másodpercig, amíg világítani nem kezdenek a kék fények. Az eszköz hátoldalán a tápegységek zöld LED-jeinek ekkor folyamatosan világítaniuk kell. Az eszköz elülső kezelőpaneljén is találhatók hibajelző LED-ek. Ha a hibajelző LED világít, az a tápegység vagy a ventilátor meghibásodására, illetve a lemezmeghajtóval kapcsolatos problémára utal.  
 
-    ![Data Box Heavy elülső Ops panel](media/data-box-heavy-deploy-set-up/data-box-heavy-front-ops-panel.png)
+    ![A Data Box Heavy elülső kezelőpanelje](media/data-box-heavy-deploy-set-up/data-box-heavy-front-ops-panel.png)
 
-## <a name="cable-first-node-for-network"></a>Hálózati kábel első csomópontja
+## <a name="cable-first-node-for-network"></a>Az első csomópont bekötése a hálózatba
 
-Az eszköz egyik csomópontján hajtsa végre a következő lépéseket a hálózati kábel csatlakoztatásához.
+Végezze el az alábbi lépéseket az eszköz egyik csomópontján a hálózatba történő bekötéshez.
 
-1. A gazdagép számítógépének 1 GB/s-os felügyeleti portjához való csatlakoztatásához használjon CAT 6 RJ-45 hálózati kábelt (a képen kék kábelt).
-2. QSFP + kábel (Fiber vagy réz) használatával csatlakoztassa legalább 1 40 GB/s (előnyben részesített 1 GB/s) hálózati adaptert az adatkezeléshez. Ha 10 GB/s-os kapcsolót használ, használjon egy SFP + kábelt egy QSFP + és SFP + adapter (a QSA adapter) használatával az 40 GB/s hálózati adapter csatlakoztatásához az adatkapcsolathoz.
+1. CAT 6 RJ-45 hálózati kábellel (a képen a kék színű kábel) csatlakoztassa a gazdagépet az 1 Gb/s-os felügyeleti porthoz.
+2. QSFP+ (üvegszálas vagy réz-) kábellel csatlakoztassa legalább az egyik 40 Gb/s-os (előnyben részesítve az 1 Gb/s-ossal szemben) hálózati adaptert az adatforgalom számára. Ha 10 Gb/s-os kapcsolót használ, használjon SFP+ kábelt QSFP+–SFP+ adapterrel (QSA-adapterrel) a 40 Gb/s-os hálózati adapter csatlakoztatásához az adatforgalom számára.
 
-    ![Data Box Heavy-portok összekábele](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
+    ![A Data Box Heavy portjai bekábelezve](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 
     > [!IMPORTANT]
-    > Az 1. és a DATA2 nem egyeznek a helyi webes felhasználói felületen megjelenített ÉRTÉKekkel.
-    > Az 40 GB/s-os kábelhossz a lent látható módon csatlakozik.
+    > A DATA 1 és a DATA2 fel vannak cserélve, és nem egyeznek meg a helyi webes felhasználói felületen található képen látható portokkal.
+    > A 40 Gb/s-os kábeladapter csatlakoztatása az alább látható módon történik.
 
-    ![Data Box Heavy 40 – Gbps kábel adapter](media/data-box-heavy-deploy-set-up/data-box-heavy-cable-adaptor.png)
+    ![A Data Box Heavy 40 Gb/s-os kábeladaptere](media/data-box-heavy-deploy-set-up/data-box-heavy-cable-adaptor.png)
 
 ## <a name="configure-first-node"></a>Az első csomópont konfigurálása
 
-A következő lépésekkel állíthatja be az eszközt a helyi konfiguráció és a Azure Portal használatával.
+Kövesse az alábbi lépéseket az eszköz beállításához a helyi konfiguráció és az Azure Portal használatával.
 
-1. Töltse le az eszköz hitelesítő adatait a portálról. Lépjen az **Általános > Eszköz adatai** menüpontra. Másolja ki **az eszköz jelszavát**. Ezek a jelszavak egy adott sorrendhez vannak kötve a portálon. A Data Box Heavy két csomópontjának megfelelően megjelenik a két eszköz sorozatszáma. Az eszköz rendszergazdai jelszava mindkét csomópont esetében azonos.
+1. Töltse le az eszköz hitelesítő adatait a portálról. Lépjen az **Általános > Eszköz adatai** menüpontra. Másolja ki **az eszköz jelszavát**. Ezek a jelszavak megadott sorrendhez kötöttek a portálon. A Data Box Heavy két csomópontjának megfelelően láthatja a két eszköz sorozatszámát. A két csomópont szolgáltatásadminisztrátori jelszava megegyezik.
 
-    ![Data Box Heavy eszköz hitelesítő adatai](media/data-box-heavy-deploy-set-up/data-box-heavy-device-credentials.png)
+    ![A Data Box Heavy eszközhitelesítő adatai](media/data-box-heavy-deploy-set-up/data-box-heavy-device-credentials.png)
 
-2. Csatlakoztassa az ügyfél-munkaállomást az eszközhöz egy CAT6 RJ-45 hálózati kábelen keresztül.
-3. Konfigurálja az Ethernet-adaptert azon a számítógépen, amelyről a statikus IP-címmel `192.168.100.5` és alhálózattal `255.255.255.0`csatlakozik az eszközhöz.
+2. Csatlakoztassa az ügyfél-munkaállomást az eszközhöz egy CAT6 RJ-45 hálózati kábellel.
+3. Azon a számítógépen, amellyel az eszközhöz csatlakozik, állítsa be az Ethernet-adaptert a `192.168.100.5` statikus IP-cím és a `255.255.255.0` alhálózat használatára.
 
-    ![Data Box Heavy a helyi webes felhasználói felülethez csatlakozik](media/data-box-heavy-deploy-set-up/data-box-heavy-connect-local-web-ui.png)
+    ![A Data Box Heavy csatlakozik a helyi webes felhasználói felülethez](media/data-box-heavy-deploy-set-up/data-box-heavy-connect-local-web-ui.png)
 
-4. Kapcsolódjon az eszköz helyi webes FELÜLETéhez a következő URL-címen: `http://192.168.100.10`. Kattintson a **speciális** elemre, majd **a folytatás a 192.168.100.10 (nem biztonságos)** elemre.
+4. Csatlakozzon az eszköz helyi webes felhasználói felületéhez a következő URL-címen: `http://192.168.100.10`. Kattintson a **Speciális**, majd a **Továbblépés a 192.168.100.10 címre (nem biztonságos)** elemre.
 5. Megjelenik a helyi webes felhasználói felület **bejelentkezési** oldala.
     
-    - Ezen az oldalon az egyik csomópont-sorozatszám a portál felhasználói felületén és a helyi webes felületen is megfelel. Jegyezze fel a csomópont számát a sorozatszám leképezéséhez. A portálon két csomópont és két eszköz sorozatszáma található. Ez a leképezés segít megismerni, hogy melyik csomópont felel meg a sorozatszámnak.
+    - Az oldalon látható egyik csomópont-sorozatszám megegyezik a helyi webes felhasználói felületen és a portál felhasználói felületén. Jegyezze fel a csomópont számát a sorozatszám társításához. A portálon két csomópont és két eszközsorozatszám látható. Ezzel a megoldással megtudhatja, hogy melyik csomópont melyik sorozatszámnak felel meg.
     - Ekkor az eszköz még le van zárva.
-    - Adja meg az eszközre való bejelentkezéshez az előző lépésben beszerzett rendszergazdai jelszót. Kattintson a **Bejelentkezés** elemre.
+    - Használja az előző lépésben beszerzett szolgáltatásadminisztrátori jelszót az eszközre való bejelentkezéshez. Kattintson a **Bejelentkezés** elemre.
 
-    ![Bejelentkezés Data Box Heavy helyi webes felhasználói felületre](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
+    ![Bejelentkezés a Data Box Heavy helyi webes felhasználói felületére](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
 
-5. Az irányítópulton ellenőrizze, hogy a hálózati adapterek konfigurálva vannak-e. Az eszköz csomópontján négy hálózati adapter található, két 1 GB/s és 2 40 GB/s. Az 1 GB/s-os interfészek egyike egy felügyeleti felület, ezért nem lehet a felhasználó által konfigurálható. A fennmaradó három hálózati adapter az adathoz van hozzárendelve, és a felhasználó konfigurálható.
+5. Az Irányítópulton győződjön meg róla, hogy a hálózati adapterek be vannak állítva. Az eszközcsomóponton négy hálózati adapter található: két 1 Gb/s-os és két 40 Gb/s-os. Az egyik 1 Gb/s-os adapter felügyeleti adapter, ezért felhasználó által nem konfigurálható. A többi három hálózati adapter az adatforgalom számára van dedikálva, és felhasználó által konfigurálható.
 
 - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik.
-- Ha a DHCP nincs engedélyezve, lépjen a hálózati adapterek beállítása elemre, és szükség esetén rendeljen hozzá statikus IP-címeket.
+- Ha a DHCP nincs engedélyezve, lépjen a Hálózati adapterek beállítása lapra, és szükség esetén rendeljen hozzájuk statikus IP-címeket.
 
-    ![Data Box Heavy irányítópult-csomópont 1](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-1.png)
+    ![Data Box Heavy-irányítópult – 1. csomópont](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-1.png)
 
 ## <a name="configure-second-node"></a>Második csomópont konfigurálása
 
-Hajtsa végre az eszköz második csomópontjának [első csomópontjának konfigurálása](#configure-first-node) című témakör lépéseit.
+Végezze el [Az első csomópont konfigurálása](#configure-first-node) részben ismertetett lépéseket az eszköz második csomópontja esetében is.
 
-![Data Box Heavy irányítópult-csomópont 2](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-2.png)
+![Data Box Heavy-irányítópult – 2. csomópont](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-2.png)
 
 Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztásokhoz, és a számítógépről az eszközre másolhatja az adatokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megAzure Data Box Heavy ismerte a következő témaköröket:
+Ebben az oktatóanyagban az Azure Data Box Heavyvel kapcsolatos témakörökkel ismerkedett meg, például a következőkkel:
 
 > [!div class="checklist"]
-> * Csatlakoztassa a Data Box Heavy
-> * Kapcsolódás a Data Box Heavyhoz
+> * A Data Box Heavy bekábelezése
+> * A Data Box Heavy csatlakoztatása
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan másolhat Adatmásolást a Data Box Heavy.
+A következő oktatóanyag azt mutatja be, hogyan másolhat adatokat a Data Box Heavyre.
 
 > [!div class="nextstepaction"]
 > [Adatok másolása az Azure Data Boxra](./data-box-heavy-deploy-copy-data.md)

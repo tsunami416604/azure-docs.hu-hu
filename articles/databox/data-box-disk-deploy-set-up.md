@@ -1,25 +1,25 @@
 ---
-title: Oktatóanyag a kicsomagoláshoz, kapcsolódáshoz, zárolás feloldásához Azure Data Box Disk | Microsoft Docs
+title: Oktatóanyag az Azure Data Box Disk kicsomagolásához, csatlakoztatásához és zárolásának feloldásához | Microsoft Docs
 description: Az oktatóanyag az Azure Data Box Disk üzembe helyezését mutatja be
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: d04bc444b6824f5ed041160f9901d8ef2cb8c384
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
-ms.translationtype: MT
+ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233012"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375881"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk kicsomagolása, összekötése és feloldása
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Az Azure Data Box Disk kicsomagolása, csatlakoztatása és zárolásának feloldása
 
 Az oktatóanyag az Azure Data Box Disk kicsomagolását, csatlakoztatását és a zárolás feloldását mutatja be.
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ::: zone target="chromeless"
 
-## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk kicsomagolása, összekötése és feloldása
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Az Azure Data Box Disk kicsomagolása, csatlakoztatása és zárolásának feloldása
 
 ::: zone-end
 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Megrendelés Azure Data Box Disk](data-box-disk-deploy-ordered.md).
+1. Elvégezte [ Az Azure Data Box Disk megrendelése](data-box-disk-deploy-ordered.md) című rész lépéseit.
 2. Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.
 3. Rendelkezik egy ügyfélszámítógéppel, amelyen telepítheti a Data Box Disk lemezzárolás-feloldó eszköz. Az ügyfélszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) kell futnia;
@@ -83,7 +83,7 @@ Attól függően, hogy Windows- vagy Linux-ügyfélhez csatlakozik, a lemezek z�
 A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az alábbi lépéseket.
      
 1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra. 
-2. Töltse le a Data Box Disk Windows-ügyfélhez tartozó eszközkészletét. Ez az eszközkészlet 3 eszközt tartalmaz: Data Box Disk-feloldási eszköz, Data Box Disk ellenőrző eszköz és Data Box Disk felosztott másolási eszköz. 
+2. Töltse le a Data Box Disk Windows-ügyfélhez tartozó eszközkészletét. Ez az eszközkészlet 3 eszközt tartalmaz: a Data Box Disk lemezzárolás-feloldó, ellenőrzési és másolásfelosztó eszközét. 
 
     Ezúttal csak a Data Box Disk lemezzárolás-feloldó eszközét fogja használni. A két további eszköz később kap szerepet.
 
@@ -138,7 +138,7 @@ A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az al�
 
     ![A Data Box Disk tartalma](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldási [problémák elhárítása](data-box-disk-troubleshoot-unlock.md)című témakört. 
+Ha problémákba ütközik a lemezek zárolásának feloldása során, tekintse meg [a feloldási problémák elhárítását](data-box-disk-troubleshoot-unlock.md) ismertető részt. 
 
 ## <a name="unlock-disks-on-linux-client"></a>Lemezek zárolásának feloldása Linux-ügyfélen
 
@@ -186,7 +186,7 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
  
 5. A telepítés folytatásához írja be a következőt: `y`. A szkript az alábbi csomagokat telepíti: 
    - **epel-release** – Adattár, amely a következő három csomagot tartalmazza. 
-   - a **zárolás és a biztosíték-kioldó** – ezek a segédprogramok segítenek a BitLocker által titkosított lemezek visszafejtésében. 
+   - **dislocker és fuse-dislocker** – Ezek a segédprogramok segítenek visszafejteni a BitLocker által titkosított lemezeket. 
    - **ntfs-3g** – Ez a csomag segít csatlakoztatni az NTFS-köteket. 
  
      A csomagok sikeres telepítéséről a terminálon megjelenő értesítés tájékoztatja.     
@@ -270,14 +270,14 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
     ![A Data Box Disk tartalma](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
-Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldási [problémák elhárítása](data-box-disk-troubleshoot-unlock.md)című témakört. 
+Ha problémákba ütközik a lemezek zárolásának feloldása során, tekintse meg [a feloldási problémák elhárítását](data-box-disk-troubleshoot-unlock.md) ismertető részt. 
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-1. Csomagolja ki a lemezeket, és a mellékelt kábel használatával csatlakoztassa a lemezt az ügyfélszámítógéphez.
-2. Töltse le és csomagolja ki a Data Box Disk eszközkészletet ugyanarra a számítógépre, amelyet az adatok másolásához használni fog.
+1. Csomagolja ki a lemezeket, és a csomaghoz mellékelt kábellel csatlakoztassa a lemezt egy ügyfélszámítógéphez.
+2. Töltse le és csomagolja ki a Data Box Disk eszközkészletet ugyanarra a számítógépre, amelyet az adatok másolásához fog használni.
 
     > [!div class="nextstepaction"]
     > [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin)
@@ -286,37 +286,35 @@ Ha a lemezek feloldása során problémákba ütközik, tekintse meg a feloldás
     > [!div class="nextstepaction"]
     > [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux) 
 
-3. A Windows-ügyfélen lévő lemezek zárolásának feloldásához nyisson meg egy parancssorablakot, vagy futtassa a Windows PowerShellt rendszergazdaként ugyanazon a számítógépen:
+3. A lemezek zárolásának Windows-ügyfélen történő feloldásához nyisson meg egy parancssori ablakot, vagy futtassa a Windows PowerShellt rendszergazdai jogosultsággal ugyanazon a számítógépen:
 
-    - Írja be a következő parancsot ugyanabban a mappában, ahol a Data Box Disk-feloldási eszköz telepítve van.
+    - Írja be a következő parancsot abba a mappába, ahol a Data Box Disk lemezzárolás-feloldó eszköze telepítve van.
 
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Szerezze be a hitelesítő **adatokat az > eszköz részletes adatai** között a Azure Portalban, és adja meg itt. Megjelenik a meghajtóhoz rendelt betűjel. 
-4. A Linux-ügyfélen lévő lemezek zárolásának feloldásához nyisson meg egy terminált. Lépjen arra a mappára, ahová letöltötte a szoftvert. Írja be a következő parancsokat a fájlok engedélyeinek módosításához, hogy végre tudja hajtani ezeket a fájlokat: 
+    -  Az Azure Portalon kérje le a hozzáférési kulcsot az **Általános > Eszköz adatai** területről, és adja meg itt. Megjelenik a meghajtóhoz rendelt betűjel. 
+4. A lemezek zárolásának Linux-ügyfélen történő feloldásához nyisson meg egy terminált. Lépjen abba a mappába, amelybe letöltötte a szoftvert. Írja be a következő parancsot a fájlengedélyek módosításához, hogy futtathassa a fájlokat: 
 
     ```
     chmod +x DataBoxDiskUnlock_x86_64
     chmod +x DataBoxDiskUnlock_Prep.sh
     ``` 
-    Futtassa a parancsfájlt az összes szükséges bináris fájl telepítéséhez.
+    Futtassa a szkriptet a szükséges bináris fájlok telepítéséhez.
 
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Szerezze be a hitelesítő **adatokat az > eszköz részletes adatai** között a Azure Portalban, és adja meg itt. Nem kötelezően megadhatja a BitLocker által titkosított kötetek listáját egy idézőjelek között a zárolás feloldásához.
+    Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Az Azure Portalon kérje le a hozzáférési kulcsot az **Általános > Eszköz adatai** területről, és adja meg itt. Ha szeretné, szimpla idézőjelek között megadhatja azon BitLocker által titkosított kötetek listáját, amelyek zárolását fel szeretné oldani.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
     ```      
 5. Ismételje meg a zárolás feloldásának lépéseit minden alkalommal, amikor új lemezt kell behelyezni. Amennyiben segítségre van szüksége a Data Box Disk zárolásának feloldására szolgáló eszköz használatához, használja a súgó parancsot.
 
-A lemez zárolásának feloldása után megtekintheti a lemez tartalmát.
+A zárolás feloldása után megtekintheti a lemez tartalmát.
 
-A lemezek beállításával kapcsolatos további információkért nyissa meg [a Data Box Disk](data-box-disk-deploy-set-up.md#unpack-your-disks)kicsomagolását.
-
-A lemezek feloldásával kapcsolatos további információkért nyissa meg a [Windows-ügyfél zárolásának feloldása Data Box Disk](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client).
+További információ a lemezek beállításáról és zárolásáról: [A Data Box Disk beállítása](data-box-disk-deploy-set-up.md).
 
 ::: zone-end
 

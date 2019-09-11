@@ -10,21 +10,21 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "70241367"
 ---
 ::: zone target="docs"
 
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Azure Data Box üzembe helyezése a Azure Portal használatával
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyorsútmutató: Az Azure Data Box üzembe helyezése az Azure Portal használatával
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box"></a>Ismerkedés a Azure Data Box 
+# <a name="get-started-with-azure-data-box"></a>Ismerkedés az Azure Data Boxszal 
 
 ::: zone-end
 
@@ -32,13 +32,13 @@ ms.locfileid: "70241367"
 
 A rövid útmutató az Azure Data Box az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
 
-A részletes üzembe helyezési és követési utasításokért keresse fel az [oktatóanyagot: Megrendelés Azure Data Box](data-box-deploy-ordered.md)
+Részletes üzembehelyezési és nyomkövetési utasítások: [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-ordered.md)
 
 ::: zone-end 
 
 ::: zone target="chromeless"
 
-Ez az útmutató ismerteti, hogyan helyezheti üzembe a Azure Data Box a Azure Portal használatával. A lépések közé tartozik az előfeltételek áttekintése, a kábel és az eszköz csatlakoztatása, valamint az adatok másolása az eszközre, hogy feltöltve legyen az Azure-ba.
+Ez az útmutató az Azure Data Box Azure Portal használatával való üzembe helyezését ismerteti. A lépések bemutatják az előfeltételeket, valamint azt, hogyan kábelezheti és csatlakoztathatja az eszközt, és hogyan másolhatja az eszközre az adatokat az Azure-ba történő feltöltés céljából.
 
 ::: zone-end
 
@@ -70,18 +70,18 @@ Előkészületek:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg róla, hogy:
+Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Az [oktatóanyag befejezése: Megrendelés Azure Data Box](data-box-deploy-ordered.md).
-2. A rendszer megkapta a Data Box, és a portálon megjelenő megrendelés állapota **kézbesítve**. 
-3. Tekintse át a [Data Box biztonsági irányelveit](data-box-safety.md).
-4. A rendszer a 100 TB-os tárolóeszközhöz való használatra egy megalapozott tápkábelt kapott.
-5. Hozzáférés egy olyan gazdagéphez, amely a Data Boxba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
+1. Elvégezte az [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-ordered.md) című oktatóanyagot.
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
+3. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
+4. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
+5. Hozzáféréssel rendelkezik egy olyan gazdagéphez, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
-6. Egy sík felülethez való hozzáférés a Data Box elhelyezéséhez. Ahhoz, hogy az eszköz sima vagy egyenesen egy standard rack-polcon legyen elhelyezve, szüksége van egy 7U-tárolóhelyre a rackben.
-7. A következő kábelek beszerzésével csatlakoztathatja a Data Boxt a gazdagéphez.
-    - Egy vagy több 10 GbE SFP + Twinax réz vagy SFP + száloptikai kábel (az 1. és 2. adatkapcsolatú hálózati adapterekkel használható). További információkért tekintse meg a [támogatott kábelek és kapcsolók listáját a Mellanox-ből](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) , amelyek kompatibilisek a Mellanox ConnectX®-3 Pro en Dual-port 10GBASE-T adapterek w/PCI Express 3,0 hálózati adapterrel.
+6. A Data Boxot vízszintes felületre tudja helyezni. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné fektetni vagy állítani, egy legalább 7U méretű helyre lesz szükség a szekrényben.
+7. Rendelkezik a következő kábelekkel a Data Box gazdagéphez való csatlakoztatásához.
+    - Egy vagy több 10 GbE SFP+ Twinax rézkábel vagy SFP+ száloptikai kábel (a DATA 1 és DATA 2 hálózati adapterekhez). További információért tekintse meg a [Mellanox támogatott kábeleinek és kapcsolóinak listáját ](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf), amelyek kompatibilisek a Mellanox ConnectX®-3 Pro EN Dual-port 10GBASE-T adapterekkel és a PCI Express 3.0-s hálózati adapterrel.
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 
