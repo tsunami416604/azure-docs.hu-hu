@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1531ed86c36182daad61f139ced3a814634e8b6e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326166"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845261"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítheti a streamelt adatokat az Event hubs- [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) hozzáadott rugalmasságával a kiválasztott fiók Adjon meg egy idő- vagy méretbeli intervallumokat. Rögzítés beállítása a gyors, nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
@@ -73,7 +73,7 @@ Az Event Hubs Capture által előállított fájlok a következő Avro-sémában
 
 ![Avro séma][3]
 
-A Avro-fájlok felfedezésének egyszerű módja a Avro- [eszközök][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] használata egy egyszerűsített SQL-alapú élményhez vagy [Apache Spark][Apache Spark] a betöltött adatok összetett elosztott feldolgozásának elvégzéséhez. 
+A Avro-fájlok felfedezésének egyszerű módja a [Avro Tools][Avro Tools] jar használata az Apache-ból. Az [Apache-részletezéssel][Apache Drill] egyszerűsített SQL-alapú élményt és [Apache Spark][Apache Spark] is használhat a betöltött adatok összetett elosztott feldolgozásának elvégzéséhez. 
 
 ### <a name="use-apache-drill"></a>Apache-részletezés használata
 
@@ -129,7 +129,7 @@ Az Avro-eszközök segítségével a fájl átalakítása JSON-formátumban, és
 
 Speciális feldolgozást végez, töltse le és telepítse a avro-hoz tartozó platform a választott. A cikk írásának időpontjában érhetők el megvalósításokhoz C, C++, C\#, Java, NodeJS, Perl, a PHP, Python és Ruby.
 
-Az Apache Avro teljes körű Első lépések útmutatók [][Java] and [Python][Python]a Javához. Is olvashatja a [Ismerkedés az Event Hubs Capture](event-hubs-capture-python.md) cikk.
+Az Apache Avro teljes körű Első lépések útmutatók a [Javához][Java] és a [Pythonhoz][Python]. Is olvashatja a [Ismerkedés az Event Hubs Capture](event-hubs-capture-python.md) cikk.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Hogyan Event Hubs rögzítés díját
 
@@ -156,7 +156,7 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www-us.apache.org/dist/avro/avro-1.9.0/java/avro-tools-1.9.0.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-1.9.1-javadoc.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
