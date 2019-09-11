@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9ef1dad0e90ec3e48a4bf22325cba0beb197d290
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599526"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650679"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -54,7 +54,7 @@ A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatár
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 > [!NOTE]
-> A tárolók üzembe helyezése a Windows 10 rendszerű Service Fabric-fürtökön támogatott.  [Ebből](service-fabric-how-to-debug-windows-containers.md) a cikkből megtudhatja, hogyan konfigurálhatja a Windows 10 rendszert Windows-tárolók futtatására.
+> A tárolók üzembe helyezése a Windows 10 rendszerű Service Fabric-fürtökön támogatott.  [Ebből a cikkből](service-fabric-how-to-debug-windows-containers.md) megtudhatja, hogyan konfigurálhatja a Windows 10 rendszert Windows-tárolók futtatására.
 >   
 
 > [!NOTE]
@@ -265,136 +265,9 @@ Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A port
 > [!NOTE]
 > A szolgáltatások további PortBindings hozzáadásához deklaráljon további PortBinding elemeket a megfelelő tulajdonságértékek használatával.
 
-## <a name="configure-container-registry-authentication"></a>Tárolóregisztrációs adatbázis hitelesítésének konfigurálása
+## <a name="configure-container-repository-authentication"></a>Tároló-adattár hitelesítésének konfigurálása
 
-A tárolóregisztrációs adatbázis hitelesítésének konfigurálásához adja a hozzá a `RepositoryCredentials` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez. Adja meg a myregistry.azurecr.io tárolóregisztrációs adatbázis fiókját és jelszavát, hogy a szolgáltatás le tudja tölteni a tároló rendszerképét az adattárból.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-Javasoljuk, hogy az adattár jelszavát egy olyan titkosítási tanúsítvánnyal titkosítsa, amely a fürt minden csomópontján üzembe van helyezve. Amikor a Service Fabric üzembe helyezi a szervizcsomagot a fürtön, a titkosítási tanúsítvánnyal fejti vissza a titkosított szöveget. Az Invoke-ServiceFabricEncryptText parancsmaggal hozhat létre titkosított szöveget a jelszóhoz, amelyet a rendszer hozzáad az ApplicationManifest.xml fájlhoz.
-
-A következő szkript létrehoz egy új önaláírt tanúsítványt, és exportálja egy PFX-fájlba. A rendszer egy meglévő kulcstárolóba importálja a tanúsítványt, majd üzembe helyezi a Service Fabric-fürtön.
-
-```powershell
-# Variables.
-$certpwd = ConvertTo-SecureString -String "Pa$$word321!" -Force -AsPlainText
-$filepath = "C:\MyCertificates\dataenciphermentcert.pfx"
-$subjectname = "dataencipherment"
-$vaultname = "mykeyvault"
-$certificateName = "dataenciphermentcert"
-$groupname="myclustergroup"
-$clustername = "mycluster"
-
-$subscriptionId = "subscription ID"
-
-Login-AzAccount
-
-Select-AzSubscription -SubscriptionId $subscriptionId
-
-# Create a self signed cert, export to PFX file.
-New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
-| Export-PfxCertificate -FilePath $filepath -Password $certpwd
-
-# Import the certificate to an existing key vault. The key vault must be enabled for deployment.
-$cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
-
-Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
-```
-Titkosítsa a jelszót az [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) parancsmaggal.
-
-```powershell
-$text = "=P==/==/=8=/=+u4lyOB=+=nWzEeRfF="
-Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint $cer.Thumbprint -Text $text -StoreLocation Local -StoreName My
-```
-
-Cserélje le a jelszót az [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) parancsmag által visszaadott titkosított szövegre, és állítsa a `PasswordEncrypted` tulajdonságot „true” (igaz) értékre.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-            <RepositoryCredentials AccountName="myregistry" Password="MIIB6QYJKoZIhvcNAQcDoIIB2jCCAdYCAQAxggFRMIIBTQIBADA1MCExHzAdBgNVBAMMFnJ5YW53aWRhdGFlbmNpcGhlcm1lbnQCEFfyjOX/17S6RIoSjA6UZ1QwDQYJKoZIhvcNAQEHMAAEg
-gEAS7oqxvoz8i6+8zULhDzFpBpOTLU+c2mhBdqXpkLwVfcmWUNA82rEWG57Vl1jZXe7J9BkW9ly4xhU8BbARkZHLEuKqg0saTrTHsMBQ6KMQDotSdU8m8Y2BR5Y100wRjvVx3y5+iNYuy/JmM
-gSrNyyMQ/45HfMuVb5B4rwnuP8PAkXNT9VLbPeqAfxsMkYg+vGCDEtd8m+bX/7Xgp/kfwxymOuUCrq/YmSwe9QTG3pBri7Hq1K3zEpX4FH/7W2Zb4o3fBAQ+FuxH4nFjFNoYG29inL0bKEcTX
-yNZNKrvhdM3n1Uk/8W2Hr62FQ33HgeFR1yxQjLsUu800PrYcR5tLfyTB8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBybgM5NUV8BeetUbMR8mJhgFBrVSUsnp9B8RyebmtgU36dZiSObDsI
-NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==" PasswordEncrypted="true"/>
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-### <a name="configure-cluster-wide-credentials"></a>A fürtre kiterjedő hitelesítő adatok konfigurálása
-
-Az 6,3-es verziótól kezdve a Service Fabric lehetővé teszi a fürtre érvényes hitelesítő adatok konfigurálását, amelyek az alkalmazások alapértelmezett tárházbeli hitelesítő adataiként használhatók.
-
-Engedélyezheti vagy letilthatja a szolgáltatást úgy, `UseDefaultRepositoryCredentials` hogy `ContainerHostPolicies` hozzáadja az attribútumot a ApplicationManifest. `true` XML `false` fájlhoz a vagy a értékkel.
-
-```xml
-<ServiceManifestImport>
-    ...
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
-            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-    ...
-</ServiceManifestImport>
-```
-
-Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyet a `Hosting` szakasz ClusterManifest adhat meg.  Ha `UseDefaultRepositoryCredentials` a `true`értéke, Service Fabric beolvassa a következő értékeket a ClusterManifest:
-
-* DefaultContainerRepositoryAccountName (string)
-* DefaultContainerRepositoryPassword (karakterlánc)
-* IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* A DefaultContainerRepositoryPasswordType (string)---a 6,4 futtatókörnyezettől kezdődően támogatott
-
-Íme egy példa arra, hogy mit adhat hozzá a `Hosting` ClusterManifestTemplate. JSON fájl szakaszához. A `Hosting` szakasz a fürt létrehozásakor vagy később is hozzáadható a konfiguráció frissítéséhez. További információ: az [azure Service Fabric-fürt beállításainak módosítása](service-fabric-cluster-fabric-settings.md) és az [Azure Service Fabric alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)
-
-```json
-"fabricSettings": [
-    ...,
-    {
-        "name": "Hosting",
-        "parameters": [
-          {
-            "name": "EndpointProviderEnabled",
-            "value": "true"
-          },
-          {
-            "name": "DefaultContainerRepositoryAccountName",
-            "value": "someusername"
-          },
-          {
-            "name": "DefaultContainerRepositoryPassword",
-            "value": "somepassword"
-          },
-          {
-            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
-            "value": "false"
-          },
-          {
-            "name": "DefaultContainerRepositoryPasswordType",
-            "value": "PlainText"
-          }
-        ]
-      },
-]
-```
+Lásd: [tároló-adattár hitelesítése](configure-container-repository-credentials.md), amelyből megtudhatja, hogyan konfigurálhat különböző hitelesítési típusokat a tárolók rendszerképének letöltéséhez.
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
 A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték a Windows Server rendszerű gazdagépeken futó elkülönítési mód. Windows 10 rendszerű gazdagépeken csak a Hyper-V elkülönítési mód támogatott, így a tároló a Hyper-V elkülönítési módban fut, függetlenül az elkülönítési mód beállításától. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
@@ -447,7 +320,7 @@ A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha mega
     </Policies>
 </ServiceManifestImport>
 ```
-Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), és a *TreatContainerUnhealthyStatusAsError* értéke false (hamis).. 
+Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), és a *TreatContainerUnhealthyStatusAsError* értéke **false (hamis)** . 
 
 Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
 
@@ -498,7 +371,7 @@ Vegye figyelembe a gazdagép operációs rendszerének és a tároló operáció
 A következő eljárásokkal gondoskodhat arról, hogy a tárolók megfelelően legyenek telepítve a Service Fabric-fürtön:
 
 - Használjon explicit képcímkézést a Docker-rendszerképekkel annak a Windows Server operációs rendszernek a verziójának megadásához, amelyből egy tároló készült. 
-- Használja az [operációsrendszer](#specify-os-build-specific-container-images) -címkézést az alkalmazás jegyzékfájljában annak biztosításához, hogy az alkalmazás kompatibilis legyen a különböző Windows Server-verziók és-frissítések között.
+- Használja az [operációsrendszer-címkézést](#specify-os-build-specific-container-images) az alkalmazás jegyzékfájljában annak biztosításához, hogy az alkalmazás kompatibilis legyen a különböző Windows Server-verziók és-frissítések között.
 
 > [!NOTE]
 > A Service Fabric 6,2-es és újabb verzióiban a Windows Server 2016-alapú tárolókat helyileg telepítheti Windows 10 rendszerű gazdagépen. Windows 10 rendszeren a tárolók Hyper-V elkülönítési módban futnak, az alkalmazás jegyzékfájljában beállított elkülönítési módtól függetlenül. További információ: az [elkülönítési mód konfigurálása](#configure-isolation-mode).   

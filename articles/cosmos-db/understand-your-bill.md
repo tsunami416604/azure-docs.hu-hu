@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717526"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614164"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>A Azure Cosmos DB-számla ismertetése
 
 Teljes körűen felügyelt natív adatbázis-szolgáltatásként Azure Cosmos DB leegyszerűsíti a számlázást, mivel csak a kiosztott átviteli sebességért és a felhasznált tárterületért kell megszámolni. A helyszíni vagy a IaaS által üzemeltetett alternatívákhoz képest nincsenek további licencek, hardverek, használati költségek vagy létesítmények költségei. Ha figyelembe veszi a Azure Cosmos DB több régióra kiterjedő képességeit, az adatbázis-szolgáltatás jelentős mértékben csökkenti a költségeket a meglévő helyszíni vagy IaaS-megoldásokkal szemben.
 
-A Azure Cosmos DB a kiosztott átviteli sebesség és a felhasznált tárterület alapján óradíjat számítunk fel. A kiépített átviteli sebesség esetében a számlázási egység 100 RU/s/óra, $0,008/óra díj ellenében, a szokásos nyilvános díjszabást feltételezve, a díjszabást ismertető [oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál. A felhasználható tárterület esetében havonta 1 GB-nyi tárterületet számolunk fel, a díjszabási [oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)pedig a $0,25. 
+A Azure Cosmos DB a kiosztott átviteli sebesség és a felhasznált tárterület alapján óradíjat számítunk fel. A kiépített átviteli sebesség esetében a számlázási egység 100 RU/s/óra, $0,008/óra díj ellenében, a szokásos nyilvános díjszabást feltételezve, a [díjszabást ismertető oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál. A felhasználható tárterület esetében havonta 1 GB-nyi tárterületet számolunk fel, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)pedig a $0,25. 
 
 Ez a cikk néhány példát tartalmaz, amelyek segítenek megérteni a havi számlán látható részleteket. A példákban megjelenő számok eltérőek lehetnek, ha az Azure Cosmos-tárolók eltérő mennyiségű adatátviteli kapacitással rendelkeznek, ha több régióra kiterjednek, vagy egy adott hónapban eltérő időszakra futnak.
 
@@ -90,7 +90,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Számlázási példák a Geo-replikációval és a több főkiszolgálóval  
 
-Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pontján a Azure Cosmos DB adatbázis-fiókjához. A különböző Azure Cosmos DB adatbázisok és tárolók számára konfigurált átviteli sebesség az Azure Cosmos Database-fiókhoz társított összes Azure-régióban le lesz foglalva. Ha a kiépített átviteli sebesség (RU/s) összege az Azure Cosmos Database-fiókban (óránként kiépítve) található összes adatbázisban és tárolóban konfigurálva van, az adatbázis-fiókjához társított Azure-régiók száma N, akkor a teljes egy adott órára kiépített átviteli sebesség az Azure Cosmos Database-fiókhoz (a), amely egyetlen írási régióval van konfigurálva, egyenlő a T x N RU/s értékkel, és (b) minden olyan régióban konfigurálva van, amely képes a feldolgozásra. illetve. Kiépített átviteli sebesség (egyszeri írási régió): $0.008/óra/100 RU/s és kiépített átviteli sebesség több írható régióval (több főkiszolgálós konfigurációval) $0.016/óra/óránként 100 RU/s (lásd a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)). Akár egyetlen írási régiója, akár több írási régiója is van, Azure Cosmos DB lehetővé teszi az adatok bármely régióból való beolvasását.
+Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pontján az Azure Cosmos-adatbázis fiókjához. A különböző Azure Cosmos-adatbázisok és-tárolók számára konfigurált átviteli sebesség az Azure Cosmos Database-fiókhoz társított összes Azure-régióban le lesz foglalva. Ha a kiépített átviteli sebesség (RU/s) összege az Azure Cosmos Database-fiókban (óránként kiépítve) található összes adatbázisban és tárolóban konfigurálva van, az adatbázis-fiókjához társított Azure-régiók száma N, akkor a teljes egy adott órára kiépített átviteli sebesség az Azure Cosmos Database-fiókhoz (a), amely egyetlen írási régióval van konfigurálva, egyenlő a T x N RU/s értékkel, és (b) minden olyan régióban konfigurálva van, amely képes a feldolgozásra. illetve. Kiépített átviteli sebesség (egyszeri írási régió): $0.008/óra/100 RU/s és kiépített átviteli sebesség több írható régióval (több főkiszolgálós konfigurációval) $0.016/óra/óránként 100 RU/s (lásd a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/)). Akár egyetlen írási régiója, akár több írási régiója is van, Azure Cosmos DB lehetővé teszi az adatok bármely régióból való beolvasását.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Számlázási példa: több régióból álló Azure Cosmos-fiók, egyrégiós írások
 
@@ -228,7 +228,7 @@ Teljes havi költség = havi költség a tároláshoz és az átviteli sebesség
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Számlázás Azure Cosmos DB fenntartott kapacitással
 
-Azure Cosmos DB fenntartott kapacitás lehetővé teszi, hogy előzetesen (fenntartott kapacitás vagy foglalás) vásárolja meg a kiépített átviteli sebességet, amely az összes Azure-régióban alkalmazható összes Azure Cosmos DB-adatbázisra és-tárolóra vonatkozik (bármilyen API-hoz vagy adatmodellhez). Mivel a kiépített átviteli sebesség régiónként változik, segít a fenntartott kapacitásnak a kedvezményben megvásárolt pénzügyi kreditként való megszerzésében, amely az egyes régiókban az adott díjszabás alapján kiépített átviteli sebességig vehető igénybe. Tegyük fel például, hogy rendelkezik egy Azure Cosmos-fiókkal, amely egyetlen, 50-es RU/s-vel kiépített tárolóval rendelkezik, és globálisan replikálta két régiót – az USA keleti régiója és Kelet-Japán. Ha az utólagos elszámolású lehetőséget választja, akkor a következő díjat kell fizetnie:  
+Azure Cosmos DB fenntartott kapacitás lehetővé teszi a kiépített átviteli sebesség előzetes (fenntartott kapacitás vagy foglalás) megvásárlását, amely alkalmazható az összes Azure Cosmos-adatbázisra és-tárolóra (bármely API-vagy adatmodell esetében) az összes Azure-régióban. Mivel a kiépített átviteli sebesség régiónként változik, segít a fenntartott kapacitásnak a kedvezményben megvásárolt pénzügyi kreditként való megszerzésében, amely az egyes régiókban az adott díjszabás alapján kiépített átviteli sebességig vehető igénybe. Tegyük fel például, hogy rendelkezik egy Azure Cosmos-fiókkal, amely egyetlen, 50-es RU/s-vel kiépített tárolóval rendelkezik, és globálisan replikálta két régiót – az USA keleti régiója és Kelet-Japán. Ha az utólagos elszámolású lehetőséget választja, akkor a következő díjat kell fizetnie:  
 
 * az USA keleti régiójában: a 50-s RU/s értéknél, a régióban $0,008/100 
 

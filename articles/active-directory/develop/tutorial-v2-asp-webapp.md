@@ -1,6 +1,6 @@
 ---
 title: Azure AD v 2.0 ASP.NET webkiszolgáló – első lépések | Microsoft Docs
-description: A Microsoft bejelentkezésének megvalósítása egy ASP.NET-megoldásban hagyományos webböngésző-alapú alkalmazással az OpenID Connect standard használatával
+description: Microsoft-bejelentkezés megvalósítása ASP.NET-megoldásban hagyományos webböngésző-alapú alkalmazás és OpenID Connect standard használatával
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce6ab2c5068d1628860356a9df0dd33c73948b3
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511904"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113649"
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba
+# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
-Ez az útmutató bemutatja, hogyan valósítható meg a bejelentkezés a Microsofttal egy olyan ASP.NET MVC megoldással, amely egy hagyományos webböngésző-alapú alkalmazást használ az OpenID Connect használatával.
+Ez az útmutató bemutatja, hogyan valósítható meg a bejelentkezés a Microsoftnak egy ASP.NET MVC-megoldással egy hagyományos webböngésző-alapú alkalmazás és az OpenID Connect használatával.
 
-Az útmutató végén az alkalmazás képes lesz fogadni a személyes fiókok (például outlook.com, live.com és mások) bejelentkezési adatait. Ezek a fiókok minden olyan vállalattól vagy szervezettől származó munkahelyi és iskolai fiókot is tartalmaznak, amely integrálva van a Azure Active Directory.
+Az útmutató elvégzése után az alkalmazás el tudja fogadni a személyes fiókok bejelentkezési adatait a outlook.com és a live.com. Továbbá a Azure Active Directory (Azure AD) szolgáltatással integrált vállalat vagy szervezet munkahelyi és iskolai fiókjai is bejelentkezhetnek az alkalmazásba.
 
-> Ehhez az útmutatóhoz a Visual Studio 2019 szükséges.  Nincs telepítve?  [A Visual Studio 2019 ingyenes letöltése](https://www.visualstudio.com/downloads/)
+> Ehhez az útmutatóhoz a Microsoft Visual Studio 2019 szükséges.  Nincs telepítve?  [Töltse le ingyen a Visual Studio 2019](https://www.visualstudio.com/downloads/)-es verzióját.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
 
-A létrehozott minta alkalmazás azon forgatókönyv alapján érhető el, ahol a böngészővel hozzáfér egy olyan ASP.NET-webhelyhez, amely a felhasználó hitelesítését kéri egy bejelentkezési gomb használatával. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
+A létrehozott minta alkalmazás egy olyan forgatókönyvön alapul, ahol a böngészővel hozzáférhet egy ASP.NET-webhelyhez, amely felszólítja a felhasználót, hogy jelentkezzen be a bejelentkezési gomb használatával. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
 
 ## <a name="libraries"></a>Kódtárak
 
@@ -44,25 +44,25 @@ Ez az útmutató a következő könyvtárakat használja:
 |Erőforrástár|Leírás|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
-|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenet fenntartását cookie-k segítségével|
-|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Lehetővé teszi az OWIN-alapú alkalmazások számára, hogy az IIS-en fussanak az ASP.NET kérési folyamat használatával|
+|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenetek cookie-k használatával történő fenntartását|
+|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Middleware, amely lehetővé teszi, hogy a OWIN-alapú alkalmazások Internet Information Services (IIS) fussanak a ASP.NET-kérési folyamat használatával|
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz azokat a lépéseket mutatja be, amelyekkel telepítheti és konfigurálhatja a hitelesítési folyamatot a OWIN middleware használatával egy ASP.NET-projektben az OpenID Connect segítségével.
+Ez a szakasz azt ismerteti, hogyan telepítheti és konfigurálhatja a hitelesítési folyamatot a OWIN middleware-n keresztül egy ASP.NET-projektben az OpenID Connect használatával.
 
-> Inkább a minta Visual Studio-projektjét szeretné letölteni? [Töltsön le egy projektet](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , és ugorjon a [konfigurációs lépésre](#register-your-application) , hogy a végrehajtás előtt konfigurálja a kód mintát.
+> Inkább a minta Visual Studio-projektjét szeretné letölteni? [Töltsön le egy projektet](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , és ugorjon az [alkalmazás regisztrálása](#register-your-application) a kód konfigurálásához a végrehajtás előtt.
 
 ### <a name="create-your-aspnet-project"></a>ASP.NET-projekt létrehozása
 
-1. A Visual Studióban:`File` > `New` > `Project`
-2. A *vizuális C#\* területen válassza `ASP.NET Web Application (.NET Framework)`a elemet.
-3. Nevezze el az alkalmazást, és kattintson *az OK* gombra.
-4. A `Empty` hivatkozások hozzáadásához `MVC` jelölje be a jelölőnégyzetet, és jelölje be
+1. A Visual Studióban: Nyissa meg a **fájl** > **új** > **projektjét**.
+2. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
+3. Nevezze el az alkalmazást, és kattintson az **OK** gombra.
+4. Válassza az **üres**lehetőséget, majd jelölje be a jelölőnégyzetet **MVC** -hivatkozások hozzáadásához.
 
 ## <a name="add-authentication-components"></a>Hitelesítési összetevők hozzáadása
 
-1. A Visual Studióban:`Tools` > `Nuget Package Manager` > `Package Manager Console`
+1. A Visual Studióban: Nyissa meg a **Tools** > **Nuget Package** > Manager**csomagkezelő konzolját**.
 2. Az *OWIN közbenső szoftver NuGet-csomagjai* hozzáadásához írja az alábbiakat a Package Manager Console (Csomagkezelő konzol) ablakba:
 
     ```powershell
@@ -73,21 +73,21 @@ Ez a szakasz azokat a lépéseket mutatja be, amelyekkel telepítheti és konfig
 
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Tudnivalók ezekről a tárakról
-> A fenti kódtárak engedélyezik az egyszeri bejelentkezést (SSO) az OpenID Connecttel, cookie-alapú hitelesítés használatával. Ha befejeződött a hitelesítés, és a rendszer elküldte a felhasználóhoz tartozó jogkivonatot az alkalmazásnak, az OWIN közbenső szoftver létrehoz egy munkameneti cookie-t. A böngésző ezután ezt a cookie-t használja a további kérésekhez, így a felhasználónak nem kell újraírnia a jelszót, és nincs szükség további ellenőrzésre.
+> Ezek a kódtárak lehetővé teszik az egyszeri bejelentkezést (SSO) az OpenID Connect használatával, cookie-alapú hitelesítéssel. Ha befejeződött a hitelesítés, és a rendszer elküldte a felhasználóhoz tartozó jogkivonatot az alkalmazásnak, az OWIN közbenső szoftver létrehoz egy munkameneti cookie-t. A böngésző ezután ezt a cookie-t használja a későbbi kérelmekhez, így a felhasználónak nem kell újraírnia a jelszót, és nincs szükség további ellenőrzésre.
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>A hitelesítési folyamat konfigurálása
 
-Az alábbi lépések egy OWIN middleware indítási osztály létrehozásához használhatók az OpenID Connect-hitelesítés konfigurálásához. Ezt az osztályt az IIS-folyamat indításakor automatikusan végrehajtja a rendszer.
+A következő lépésekkel hozhat létre egy OWIN middleware indítási osztályt az OpenID Connect-hitelesítés konfigurálásához. Ezt az osztályt az IIS-folyamat indításakor automatikusan végrehajtja a rendszer.
 
 > [!TIP]
 > Ha a projekt gyökérmappája nem tartalmazza a `Startup.cs` fájlt:
-> 1. Kattintson a jobb gombbal a projekt legfelső mappájára: >`Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Adja neki a `Startup.cs` nevet.
+> 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza az**új elem** >  **hozzáadása** > **OWIN indítási osztály**elemet.<br/>
+> 2. Nevezze el **Startup.cs**.
 >
->> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, és nem egy szabványos C#-osztály. Ehhez ellenőrizze, hogy látja-e a következőt a névtér fölött: `[assembly: OwinStartup(typeof({NameSpace}.Startup))]`.
+>> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)] a névtér fölött.
 
-1. Adja hozzá a *OWIN* és a *Microsoft. IdentityModel* hivatkozásait a `Startup.cs`következőhöz:
+1. Adja hozzá a *OWIN* és a *Microsoft. IdentityModel* hivatkozásokat a Startup.cs-hez:
 
     ```csharp
     using Microsoft.Owin;
@@ -100,7 +100,7 @@ Az alábbi lépések egy OWIN middleware indítási osztály létrehozásához h
     using Microsoft.Owin.Security.Notifications;
     ```
 
-2. Cserélje le az indítási osztályt az alábbi kódra:
+2. Cserélje le az indítási osztályt a következő kódra:
 
     ```csharp
     public class Startup
@@ -169,31 +169,32 @@ Az alábbi lépések egy OWIN middleware indítási osztály létrehozásához h
     ```
 
 > [!NOTE]
-> A `ValidateIssuer = false` beállítás a rövid útmutató egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót, hogy megtudja, hogyan teheti meg a mintákat.
+> A `ValidateIssuer = false` beállítás a rövid útmutató egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
+> Ennek megismeréséhez tekintse meg a mintákat.
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Mivel az OpenID Connect middleware a háttérben cookie-kat használ, a fenti programkódhoz is be kell állítania a cookie-hitelesítést. A *ValidateIssuer* értéke arra utasítja az OpenIdConnectet, hogy ne korlátozza a hozzáférést egy adott szervezetre.
+> Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Mivel az OpenID Connect middleware cookie-kat használ a háttérben, be kell állítania a cookie-hitelesítést is, mivel az előző kód jelenik meg. A *ValidateIssuer* érték azt jelzi, hogy a OpenIdConnect nem korlátozza a hozzáférést egy adott szervezethez.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Vezérlő hozzáadása a bejelentkezési és kijelentkezési kérelmek kezeléséhez
 
-Ez a lépés bemutatja, hogyan hozhat létre új vezérlőt a bejelentkezéshez és a kijelentkezési módszerekhez.
+Ha új vezérlőt szeretne létrehozni a bejelentkezéshez és a kijelentkezési módszerekhez, kövesse az alábbi lépéseket:
 
-1.  Kattintson a jobb `Controllers` gombbal a mappára, és válassza a`Add` > `Controller`
-2.  Válassza a(z) `MVC (.NET version) Controller – Empty` lehetőséget.
-3.  Kattintson a *Hozzáadás* gombra
-4.  Nevezze el `HomeController` , majd kattintson a *Hozzáadás* gombra.
-5.  *OWIN* -hivatkozások hozzáadása a osztályhoz:
+1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a**vezérlő** **hozzáadása** > elemet.
+2.  Válassza az **MVC (.NET version) Controller – Empty** (MVC (.NET verzió) vezérlő – Üres) elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
+4.  Nevezze el **HomeController** , majd válassza a **Hozzáadás**lehetőséget.
+5.  OWIN-hivatkozások hozzáadása a osztályhoz:
 
     ```csharp
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OpenIdConnect;
     ```
-    
-6. Adja hozzá az alábbi két módszert a bejelentkezéshez és a vezérlőhöz való kijelentkezéshez a következő programkódon keresztül:
-    
+
+6. Adja hozzá a következő két módszert a bejelentkezéshez és a vezérlőhöz való kijelentkezéshez a hitelesítési kérdés elindításával:
+
     ```csharp
     /// <summary>
     /// Send an OpenID Connect sign-in request.
@@ -220,12 +221,12 @@ Ez a lépés bemutatja, hogyan hozhat létre új vezérlőt a bejelentkezéshez 
     }
     ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Az alkalmazás kezdőlapjának létrehozása a felhasználók bejelentkezési gombon keresztüli bejelentkezéséhez
+## <a name="create-the-apps-home-page-for-user-sign-in"></a>Az alkalmazás kezdőlapjának létrehozása felhasználói bejelentkezéshez
 
-A Visual Studióban hozzon létre egy új nézetet a bejelentkezés gomb hozzáadásához és a felhasználói adatok hitelesítés utáni megjelenítéséhez:
+A Visual Studióban hozzon létre egy új nézetet a bejelentkezési gomb hozzáadásához és a felhasználói adatok megjelenítéséhez a hitelesítés után:
 
-1.  Kattintson a jobb `Views\Home` gombbal a mappára, és válassza a`Add View`
-2.  Nevezze el a következőképpen: `Index`.
+1.  Kattintson a jobb gombbal a **Views\Home** mappára, és válassza az **Add View** (Nézet hozzáadása) lehetőséget.
+2.  Nevezze el az újnézet indexét.
 3.  Adja hozzá a fájlhoz a következő, bejelentkezés gombot tartalmazó HTML-kódot:
 
     ```html
@@ -268,17 +269,17 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezés gomb hozzáa
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Ezen az oldalon egy fekete háttérrel rendelkező bejelentkezési gomb található az SVG formátumban:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [jelen oldal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "arculati iránymutatásaira").
+> Ezen az oldalon egy fekete háttérrel rendelkező bejelentkezési gomb található az SVG formátumban:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokat a [branding irányelvek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "arculati")útmutatójában talál.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Vezérlő hozzáadása a felhasználói jogcímek megjelenítéséhez
-Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum oly módon korlátozza a hozzáférést, hogy csak a hitelesített felhasználókat engedi hozzáférni a vezérlőhöz. Az alábbi kód az attribútum használatával jeleníti meg a bejelentkezés részeként beolvasott felhasználói jogcímeket.
+Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a hozzáférést a vezérlőhöz. A következő kód az attribútum használatával jeleníti meg a bejelentkezés részeként beolvasott felhasználói jogcímeket:
 
-1.  Kattintson a jobb `Controllers` gombbal a mappára:`Add` > `Controller`
-2.  Válassza a(z) `MVC {version} Controller – Empty` lehetőséget.
-3.  Kattintson a *Hozzáadás* gombra
-4.  Adja neki a `ClaimsController` nevet.
-5.  Cserélje le a vezérlő osztály kódját az alábbi kódra – ezzel hozzáadja az `[Authorize]` attribútumot az osztályhoz:
+1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a**vezérlő** **hozzáadása** > elemet.
+2.  Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
+4.  Adja neki a **ClaimsController** nevet.
+5.  Cserélje le a vezérlő osztály kódját a következő kódra. Ezzel hozzáadja az `[Authorize]` attribútumot a osztályhoz:
 
     ```csharp
     [Authorize]
@@ -311,15 +312,15 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Az `[Authorize]` attribútum használata miatt a vezérlő metódusait csak akkor lehet végrehajtani, ha a felhasználó hitelesítve van. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, a OWIN hitelesítési kihívást kezdeményez, és kényszeríti a felhasználót a hitelesítésre. A fenti kód a felhasználó azonosító jogkivonatában szereplő adott felhasználói attribútumok jogcímeinek listáját vizsgálja. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli. 
+> Az `[Authorize]` attribútum használata miatt a vezérlő összes metódusát csak akkor lehet végrehajtani, ha a felhasználó hitelesítése megtörtént. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, a OWIN hitelesítési kihívást kezdeményez, és kényszeríti a felhasználót a hitelesítésre. Az előző kód a felhasználó azonosító jogkivonatában szereplő adott felhasználói attribútumok jogcímeinek listáját vizsgálja. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli. 
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Nézet létrehozása a felhasználó jogcímeinek megjelenítéséhez
 
 A Visual Studióban hozzon létre egy új nézetet a felhasználói jogcímek weboldalon való megjelenítéséhez:
 
-1.  Kattintson a jobb `Views\Claims` gombbal a mappára, és:`Add View`
-2.  Nevezze el a következőképpen: `Index`.
+1.  Kattintson a jobb gombbal a **Views\Claims** mappára, majd válassza a **Nézet hozzáadása**elemet.
+2.  Nevezze el az újnézet indexét.
 3.  Adja hozzá a következő HTML-kódot a fájlhoz:
 
     ```html
@@ -358,30 +359,30 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak 
 
 ### <a name="option-1-express-mode"></a>1\. lehetőség: Expressz mód
 
-Az alkalmazást gyorsan regisztrálhatja a következő módon:
+Az alkalmazás gyors regisztrálásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblát.
-1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
-1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
+1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
+1. Az új alkalmazás egyetlen kattintással való letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 
 ### <a name="option-2-advanced-mode"></a>2\. lehetőség: Speciális mód
 
 Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Visual studiót, és:
+1. Nyissa meg a Visual studiót, majd:
    1. Megoldáskezelő válassza ki a projektet, és tekintse meg a Tulajdonságok ablak (ha nem lát Tulajdonságok ablak, nyomja le az F4 billentyűt).
    1. Az SSL módosításának `True`engedélyezése a következőre:.
-   1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza a **Tulajdonságok menüpontot**, majd a **web** (megjelenítés) lapot. A *kiszolgálók* szakaszban módosítsa a *projekt URL* -címét az SSL URL-címére.
-   1. Másolja az SSL-URL-címet. A következő lépésben hozzáadja ezt az URL-címet a regisztrációs portál átirányítási URL-címeinek listájához:<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
+   1. Kattintson a jobb gombbal a projektre a Visual Studióban, válassza a **Tulajdonságok**lehetőséget, majd válassza a **Web (weblap** ) lapot. A **kiszolgálók** szakaszban módosítsa a **projekt URL** -címét az **SSL URL-címére**.
+   1. Másolja az SSL-URL-címet. A következő lépésben hozzáadja ezt az URL-címet a regisztrációs portál átirányítási URL-címeinek listájához.<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiók használatával.
+1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
+1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
 1. Válassza az **új regisztráció**lehetőséget.
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-   1. A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Tutorial`).
-   1. Adja hozzá a Visual studióból másolt SSL URL-címet az 1 `https://localhost:44368/`. lépésben (például) a **Válasz URL-címében**, majd kattintson a **regisztráció**elemre.
-1. Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok** értékét az **Implicit engedélyezés** területen, majd válassza a **Mentés** elemet.
-1. Adja hozzá a következőt `web.config` a gyökérmappa alatt `configuration\appSettings`található gyökérkönyvtárban:
+   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például az **ASPNET-tutorial**.
+   1. Adja hozzá a Visual studióból másolt SSL URL-címet az 1 `https://localhost:44368/`. lépésben (például) a **Válasz URL-címében**, és válassza a **regisztráció**lehetőséget.
+1. Válassza a **hitelesítés** menüt, válassza az **azonosító tokenek** lehetőséget az **implicit engedélyezés**területen, majd válassza a **Mentés**lehetőséget.
+1. Adja hozzá a következőt a web. config fájlhoz, amely a (z) `configuration\appSettings` szakasz gyökérkönyvtárában található:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -395,21 +396,30 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs informáci
 
 ## <a name="test-your-code"></a>A kód tesztelése
 
-Az alkalmazás Visual Studióban való teszteléséhez nyomja le az **F5** billentyűt a projekt futtatásához. A böngésző megnyitja a http://<span></span>localhost: {Port} helyet, és megjelenik a **Bejelentkezés Microsoft-fiókkal** gomb. A bejelentkezési folyamat elindításához kattintson a gombra.
+Az alkalmazás Visual Studióban való teszteléséhez nyomja le az F5 billentyűt a projekt futtatásához. A böngésző megnyitja a http://<span></span>localhost: {Port} helyet, és megjelenik a **Bejelentkezés Microsoft-fiókkal** gomb. A bejelentkezési folyamat elindításához kattintson a gombra.
 
-Ha készen áll a teszt futtatására, használjon egy Microsoft Azure Active Directory (Azure AD) fiókot (munkahelyi vagy iskolai fiók) vagy egy személyes Microsoft-fiók (<span>élő.</span> com vagy <span>Outlook.</span> com) a bejelentkezéshez.
+Ha készen áll a teszt futtatására, használjon Azure AD-fiókot (munkahelyi vagy iskolai fiókot) vagy egy személyes Microsoft-fiók (<span>élő.</span> com vagy <span>Outlook.</span> com) a bejelentkezéshez.
 
 ![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Jelentkezzen be a Microsoft-fiókba](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
+<!--start-collapse-->
+> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
+>  A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Miután egy felhasználó az Azure AD-val az alkalmazáshoz fér hozzá, a rendszer kérni fogja, hogy az alkalmazás által kért engedélyekkel ("az alapszintű Profil megtekintése" és a "hozzáférés fenntartása az Ön által megadott adatokhoz") való hozzáférést kérje. Az engedélyek elfogadása után a felhasználó folytatja az alkalmazás eredményét. Előfordulhat azonban, hogy a felhasználót a **szükséges rendszergazdai engedélyekkel** rendelkező oldalon kell megadnia, ha a következők valamelyike történik:
+>  > - Az alkalmazás fejlesztője olyan további engedélyeket ad hozzá, amelyekhez **rendszergazdai**jogosultság szükséges.
+>  > - Vagy a bérlő konfigurálva van (a **vállalati alkalmazások – > felhasználói beállítások**), ahol a felhasználók nem engedélyezhetik az alkalmazások számára a vállalati adatok elérését a nevükben.
+>
+> További információkért tekintse meg [a Microsoft Identity platform végpontjának engedélyeit és](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)a hozzá tartozó hozzájárulásukat.
+<!--end-collapse-->
+
 #### <a name="view-application-results"></a>Alkalmazás eredményeinek megtekintése
 
-A bejelentkezést követően a rendszer átirányítja a felhasználót a webhely kezdőlapján. A Kezdőlap a Microsoft Application Registration Portalon az alkalmazás regisztrációs adataiban megadott HTTPS URL-cím. A kezdőlapon egy üdvözlő üzenet jelenik meg: *"Hello \<User >,"* a kijelentkezésre mutató hivatkozás, valamint egy hivatkozás, amelyen megtekintheti a felhasználó jogcímeit. A felhasználó jogcímeinek hivatkozása a korábban létrehozott *jogcím* -vezérlőre keres.
+A bejelentkezést követően a rendszer átirányítja a felhasználót a webhely kezdőlapján. A Kezdőlap a Microsoft Application Registration Portalon az alkalmazás regisztrációs adataiban megadott HTTPS URL-cím. A kezdőlapon szerepel egy *"Hello \<User >"* üdvözlő üzenet, egy kijelentkezésre szolgáló hivatkozás, valamint egy hivatkozás a felhasználó jogcímeinek megtekintéséhez. A felhasználó jogcímeinek hivatkozása a korábban létrehozott jogcím-vezérlőhöz csatlakozik.
 
-### <a name="browse-to-see-the-users-claims"></a>Tallózással megtekintheti a felhasználó jogcímeit
+### <a name="view-the-users-claims"></a>A felhasználó jogcímeinek megtekintése
 
-Ha szeretné megtekinteni a felhasználó jogcímeit, válassza ki azt a vezérlő nézetet, amely csak a hitelesített felhasználók számára érhető el.
+A felhasználó jogcímeinek megtekintéséhez kattintson a hivatkozásra, és keresse meg a vezérlő nézetet, amely csak a hitelesített felhasználók számára érhető el.
 
 #### <a name="view-the-claims-results"></a>A jogcímek eredményeinek megtekintése
 
@@ -417,19 +427,19 @@ A vezérlő nézet megkeresése után a felhasználó alapszintű tulajdonságai
 
 |Tulajdonság |Érték |Leírás |
 |---|---|---|
-|**Name** |Felhasználó teljes neve | A felhasználó vezetékneve és vezetékneve.
-|**Felhasználónév** |felhasználói<span>@domain.com</span> | A felhasználó azonosítására szolgáló Felhasználónév.
-|**Subject** |Subject |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül.|
-|**Bérlő azonosítója** |Guid | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID** .|
+|**Name** |Felhasználó teljes neve | A felhasználó vezeték- és utóneve
+|**Felhasználónév** |felhasználói<span>@domain.com</span> | A felhasználó azonosítására használt Felhasználónév|
+|**Subject** |Subject |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
+|**Bérlő azonosítója** |Guid | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|
 
 Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információkért tekintse meg az [Azure ad ID-tokenben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)található jogcímek listáját.
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Hozzáférés tesztelése egy engedélyező attribútummal rendelkező metódushoz (nem kötelező)
 
-Ha a hozzáférést névtelen felhasználóként szeretné tesztelni az `Authorize` attribútummal védett vezérlőn, kövesse az alábbi lépéseket:
+Ha a hozzáférést névtelen felhasználóként szeretné tesztelni az `Authorize` attribútum által védett vezérlőhöz, kövesse az alábbi lépéseket:
 
 1. Válassza ki a felhasználó kijelentkezésére szolgáló hivatkozást, és fejezze be a kijelentkezési folyamatot.
-2. A böngészőben írja be a http://<span></span>localhost: {Port}/jogcím kifejezést az `Authorize` attribútummal védett vezérlő eléréséhez.
+2. A böngészőben írja be a http://<span></span>localhost: {Port}/jogcím kifejezést az `Authorize` attribútum által védett vezérlő eléréséhez.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Várt eredmények egy védett vezérlőhöz való hozzáférés után
 
@@ -448,39 +458,46 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Annak korlátozása, hogy ki jelentkezhet be az alkalmazásba
 
-Alapértelmezés szerint az útmutató alapján létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van a következővel: Azure Active Directory. Ez egy ajánlott megoldás az SaaS-alkalmazásokhoz.
+Alapértelmezés szerint az útmutató alapján létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van Azure AD. Ez egy ajánlott megoldás az SaaS-alkalmazásokhoz.
 
-Az alkalmazás felhasználói bejelentkezési hozzáférésének korlátozásához több lehetőség is rendelkezésre áll:
+Az alkalmazás felhasználói bejelentkezési hozzáférésének korlátozásához több lehetőség is rendelkezésre áll.
 
 #### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1\. lehetőség: Csak egy adott szervezet Active Directory-példányának felhasználói jelentkezhetnek be az alkalmazásba (egybérlős)
 
-Ez a beállítás a *LOB-alkalmazások*gyakori forgatókönyve: Ha azt szeretné, hogy az alkalmazás csak olyan fiókokból fogadja el a bejelentkezéseket, amelyek egy adott Azure Active Directory-példányhoz tartoznak (beleértve az adott példányhoz tartozó *vendég fiókokat* is), tegye a következőket:
+Ezt a beállítást gyakran használják *LOB*-alkalmazásokhoz: Ha azt szeretné, hogy az alkalmazás csak egy adott Azure AD-példányhoz tartozó fiókokról fogadja el a bejelentkezéseket (a példány *vendégfiókjait* is beleértve), kövesse az alábbi lépéseket:
 
-1. A **web. config** fájlban módosítsa a `Tenant` paraméter `Common` értékét a szervezet bérlői `contoso.onmicrosoft.com`nevére, például:.
+1. A web. config fájlban módosítsa a `Tenant` `Common` paraméter értékét a szervezet bérlői nevére, például `contoso.onmicrosoft.com`:.
 2. A [OWIN indítási osztályában](#configure-the-authentication-pipeline)állítsa be az `ValidateIssuer` argumentumot `true`a következőre:.
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>2\. lehetőség: Az alkalmazáshoz való hozzáférés korlátozása a szervezetek adott listáján lévő felhasználók számára
+#### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>2\. lehetőség: A felhasználók hozzáférésének korlátozása a szervezetek egy adott listájában
 
-A bejelentkezési hozzáférést csak olyan felhasználói fiókokra korlátozhatja, amelyek egy olyan Azure AD-szervezetben találhatók, amely az engedélyezett szervezetek listáján található:
+A bejelentkezési hozzáférést csak azokra a felhasználói fiókokra korlátozhatja, amelyek egy olyan Azure AD-szervezetben találhatók, amely az engedélyezett szervezetek listáján található:
 1. A [OWIN indítási osztályában](#configure-the-authentication-pipeline)állítsa be az `ValidateIssuer` argumentumot `true`a következőre:.
 2. Állítsa be a `ValidIssuers` paraméter értékét az engedélyezett szervezetek listájára.
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3\. lehetőség: Egyéni módszer használata a kibocsátók érvényesítéséhez
 
-A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a kiállítók érvényesítésére. A paraméter használatáról további információt a [TokenValidationParameters osztályról](/previous-versions/visualstudio/dn464192(v=vs.114))szóló cikkben olvashat.
+A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a kiállítók érvényesítésére. További információ a paraméter használatáról: [TokenValidationParameters Class](/previous-versions/visualstudio/dn464192(v=vs.114)).
 
 ## <a name="next-steps"></a>További lépések
 
-Tudnivalók a webes API-kat hívó webalkalmazásokról:.
+Ismerje meg, hogy a Web Apps hogyan hívhatja meg a webes API-kat.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Ismerje meg, hogyan hozhatja létre az ebben a rövid útmutatóban használt alkalmazást
+
+További információ a webes API-kat hívó Microsoft Identity platformmal rendelkező webalkalmazásokról:
 
 > [!div class="nextstepaction"]
-> [Webes API-kat hívó webalkalmazások]( https://aka.ms/msal-net-authorization-code)
+> [Webes API-kat hívó webalkalmazások](scenario-web-app-sign-user-overview.md)
+
+Megtudhatja, hogyan hozhat létre Microsoft Graph hívó webalkalmazásokat:
+
+> [!div class="nextstepaction"]
+> [Microsoft Graph ASP.NET-oktatóanyag](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol a két kérdéses felmérés elvégzésével:
 
 > [!div class="nextstepaction"]
 > [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
