@@ -333,7 +333,7 @@
             - name: TDE saját kulcs használatával
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Biztonsági attribútumok
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: Szolgáltatásokra vonatkozó korlátozások
           href: sql-database-feature-restrictions.md
     - name: Méretezhetőség
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: TDE-tanúsítvány migrálása felügyelt példányra
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: Időbeli pont visszaállítása
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Felügyelt példány alhálózatméretének meghatározása
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: Felügyelt példány új virtuális hálózatának és alhálózatának létrehozása
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Adatok betöltése és áthelyezése
       items:
-        - name: Időbeli pont visszaállítása
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Erőforrás áthelyezése új régióba
           href: sql-database-move-resources-across-regions.md
         - name: Adatbázis másolása az Azure-on belül

@@ -8,13 +8,13 @@
     - name: 'Blobok, fájlok vagy lemezek választása'
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blobok
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml
 - name: 2. generációs Data Lake Storage
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml
 - name: Fájlok
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml
 - name: Üzenetsorok
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml
 - name: Táblák
   href: ./tables/table-storage-overview.md
 - name: Lemezek

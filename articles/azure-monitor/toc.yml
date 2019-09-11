@@ -770,8 +770,6 @@
                   href: log-query/get-started-portal.md
                 - name: Naplólekérdezések – oktatóanyag
                   href: log-query/get-started-queries.md
-                - name: Simple Logs-élmény
-                  href: log-query/simple-logs.md
             - name: Naplóadatok
               items:
                 - name: Naplóadat-szerkezet
@@ -1037,8 +1035,6 @@
               href: insights/solutions-resources-views.md
             - name: Ajánlott eljárások
               href: insights/solutions-best-practices.md
-            - name: Monitorozási adatok gyűjtése runbookból
-              href: platform/runbook-datacollect.md
 - name: Referencia
   items:
     - name: Szolgáltatási korlátozások

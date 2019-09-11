@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: 'Megtudhatja, hogyan hozhat létre egyéni keresést a Bing Custom Search portál és API használatával'
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 'A Bing Custom Search API-val kereséspéldányokat hozhat létre olyan témakörökhöz, amelyek érdeklik Önt. Adja meg a tartományokat és webhelyeket, ahol keresni szeretne, majd rangsorolja a kereséseket a keresési élmény teljes testreszabásához.'
 sections:
