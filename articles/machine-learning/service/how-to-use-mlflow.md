@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900172"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860461"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Metrikák nyomon követése és modellek üzembe helyezése a MLflow és a Azure Machine Learning szolgáltatással (előzetes verzió)
 
@@ -39,7 +39,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével bármilye
  A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-n keresztül érhetők el.
 
 
-| | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Portal|
+| | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Portal vagy munkaterület kezdőlapja (előzetes verzió)|
 |---|---|---|---|---|
 | Munkaterület kezelése |   | ✓ | ✓ | ✓ |
 | Adattárak használata  |   | ✓ | ✓ | |
@@ -203,7 +203,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrikák és összetevők megtekintése a munkaterületen
 
-A MLflow-naplózás metrikái és összetevői a munkaterületen maradnak. Ha bármikor meg szeretné tekinteni őket, navigáljon a munkaterületre, és keresse meg [](https://portal.azure.com) a kísérletet név alapján a Azure Portalon, vagy futtassa az alábbi kódot. 
+A MLflow-naplózás metrikái és összetevői a munkaterületen maradnak. Ha bármikor meg szeretné tekinteni őket, keresse meg a munkaterületet, és keresse meg a kísérletet név szerint a [Azure Portal](https://portal.azure.com) vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com).  Vagy futtassa az alábbi kódot. 
 
 ```python
 run.get_metrics()

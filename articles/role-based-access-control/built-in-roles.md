@@ -15,28 +15,28 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114674"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801371"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos beépített szerepkörrel rendelkezik az Azure-erőforrásokhoz, amelyeket hozzárendelhet a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket az Azure](custom-roles.md)-erőforrásokhoz.
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos beépített szerepkörrel rendelkezik az Azure-erőforrásokhoz, amelyeket hozzárendelhet a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket az Azure-erőforrásokhoz](custom-roles.md).
 
 Ez a cikk az Azure-erőforrások beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha a Azure Active Directory rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="built-in-role-descriptions"></a>Beépített szerepkör-leírások
 
-A következő táblázat az egyes beépített szerepkörök rövid leírását tartalmazza. Az egyes szerepkörök listájának `Actions` `NotActions` `DataActions` megtekintéséhezkattintsonaszerepkörnevére`NotDataActions` . További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör](role-definitions.md)-definícióinak megismerése.
+A következő táblázat az egyes beépített szerepkörök rövid leírását tartalmazza. Az egyes szerepkörök listájának `Actions` `NotActions` `DataActions` megtekintéséhezkattintsonaszerepkörnevére`NotDataActions` . További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md).
 
 
 | Beépített szerepkör | Leírás |
 | --- | --- |
 | [Tulajdonos](#owner) | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. |
-| [Közreműködő](#contributor) | Lehetővé teszi, hogy mindent kezelje, kivéve az erőforrásokhoz való hozzáférést. |
+| [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. |
 | [Olvasó](#reader) | Lehetővé teszi, hogy mindent megtekintse, de ne végezzen módosításokat. |
 | [AcrDelete](#acrdelete) | ACR törlése |
 | [AcrImageSigner](#acrimagesigner) | ACR-lemezképaláíró |
