@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: da871a1fed0663c5654ebcfd61f4189bf2267026
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814065"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900694"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Parancsfájl-művelet külső Python-csomagok telepítéséhez a Jupyter notebookokhoz a HDInsight-on Apache Spark
 
@@ -97,7 +97,7 @@ A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhet�
 
     Az eredmény így néz ki:
     
-    ![TensorFlow-kód végrehajtása](./media/apache-spark-python-package-installation/execution.png "TensorFlow-kód végrehajtása")
+    ![TensorFlow-kód végrehajtása](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow-kód végrehajtása")
 
 > [!NOTE]  
 > Két Python-telepítés van a fürtben. A Spark a (z) helyen `/usr/bin/anaconda/bin` található anaconda Python-telepítést fogja használni, és alapértelmezés szerint a Python 2,7 környezetbe kerül. A Python 3. x és a PySpark3 kernelben lévő csomagok telepítéséhez használja az adott környezethez tartozó `conda` végrehajtható fájl elérési útját, `-n` és használja a paramétert a környezet megadásához. Például a parancs `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`a `ggplot` csomagot a Python 3,5 környezetbe telepíti a `conda-forge` csatornán keresztül.

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383389"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883666"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -66,9 +66,9 @@ A személyre szabott szolgáltatás két API-val rendelkezik:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Rövid útmutató: Visszajelzési hurok létrehozása aC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Rövid útmutató: Visszajelzési hurok létrehozása a Node. js-ben](quickstart-command-line-feedback-loop-nodejs-sdk.md)
-* [Rövid útmutató: Visszajelzési hurok létrehozása a Pythonban](python-quickstart-commandline-feedback-loop.md)
+* [A személyre szabás újdonságai](whats-new.md)
+* [Hogyan működik a megszemélyesítő?](how-personalizer-works.md)
+* [Mi a megerősítő tanulás?](concepts-reinforcement-learning.md)
 * [További információ a Rank kérelem szolgáltatásairól és műveleteiről](concepts-features.md)
 * [Tudnivalók a jutalmazási kérelem pontszámának meghatározásáról](concept-rewards.md)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

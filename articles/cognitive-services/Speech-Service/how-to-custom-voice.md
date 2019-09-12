@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562799"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881492"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
-Az egyéni hang olyan online eszközök összessége, amelyek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez mindössze néhány hangfájlt és a hozzá tartozó átírásokat kell használnia. Az alábbi hivatkozásokat követve megkezdheti az egyéni szöveg-beszéd élmény létrehozását.
+Az [egyéni hang](https://aka.ms/customvoice) olyan online eszközök összessége, amelyek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez mindössze néhány hangfájlt és a hozzá tartozó átírásokat kell használnia. Az alábbi hivatkozásokat követve megkezdheti az egyéni szöveg-beszéd élmény létrehozását.
 
 ## <a name="whats-in-custom-voice"></a>Mi az egyéni hang?
 
 Az egyéni hang megkezdése előtt szüksége lesz egy Azure-fiókra és egy Speech Services-előfizetésre. Miután létrehozott egy fiókot, előkészítheti az adatait, betaníthatja és tesztelheti a modelleket, kiértékelheti a hangminőséget, és végül üzembe helyezheti az egyéni hangmodellt.
 
-Az alábbi ábra az egyéni hangmodellek egyéni hangportál használatával történő létrehozásának lépéseit mutatja be. További információért tekintse meg a hivatkozásokat.
+Az alábbi ábra az egyéni hangmodellek [Egyéni hangportál](https://aka.ms/customvoice)használatával történő létrehozásának lépéseit mutatja be. További információért tekintse meg a hivatkozásokat.
 
 ![Egyéni hangarchitektúra diagram](media/custom-voice/custom-voice-diagram.png)
 
@@ -33,7 +33,7 @@ Az alábbi ábra az egyéni hangmodellek egyéni hangportál használatával tö
 
 2.  [Adatok feltöltése](how-to-custom-voice-create-voice.md#upload-your-datasets) – adatok feltöltése (hang és szöveg) az egyéni hangportál vagy az egyéni hangalapú API használatával. A portálon megvizsgálhatja és kiértékelheti a kiejtési pontszámokat és a jel-zaj arányt. További információ: az [adatok előkészítése egyéni hangra](how-to-custom-voice-prepare-data.md).
 
-3.  [A modell](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) betanítása – egyéni szöveg-beszéd hangmodell létrehozásához használhatja adatait. A modelleket különböző nyelveken is betaníthatja. A képzés után tesztelje a modellt, és ha elégedett az eredménnyel, telepítheti a modellt.
+3.  [A modell betanítása](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) – egyéni szöveg-beszéd hangmodell létrehozásához használhatja adatait. A modelleket különböző nyelveken is betaníthatja. A képzés után tesztelje a modellt, és ha elégedett az eredménnyel, telepítheti a modellt.
 
 4.  [A modell üzembe helyezése](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) – hozzon létre egy egyéni végpontot a szöveg-beszéd hangmodellhez, és használja a beszédfelismeréshez a termékeiben, eszközein és alkalmazásaiban.
 

@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Használati esetek
           href: time-series-insights-update-use-cases.md
-        - name: Adatmodellezés
+        - name: Time Series-modell
           href: time-series-insights-update-tsm.md
         - name: Adatok lekérdezése
           href: time-series-insights-update-tsq.md

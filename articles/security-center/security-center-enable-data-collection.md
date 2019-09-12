@@ -2,40 +2,34 @@
 title: Az adatgyűjtést az Azure Security Centerben |} A Microsoft Docs
 description: " Ismerje meg, hogyan lehet engedélyezni az adatgyűjtést az Azure Security Centerben. "
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/10/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 0cbb6f022dbeded2bbfb19769595be69ec62c311
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231347"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910630"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is másolja a munkaterületre.
 
 Az adatgyűjtés nem kell megadnia a hiányzó frissítések, hibásan konfigurált operációs rendszer biztonsági beállításai, endpoint protection engedélyezése és állapot- és fenyegetés-észlelési láthatósága. 
 
-Ez a cikk útmutatást nyújt a Log Analytics-ügynök telepítéséről és az összegyűjtött adatok tárolására szolgáló Log Analytics-munkaterület beállításáról. Mindkét műveletet az adatgyűjtés engedélyezéséhez szükségesek. 
+Ez a cikk azt ismerteti, hogyan telepíthet egy Log Analytics-ügynököt, és hogyan állíthat be egy Log Analytics-munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Mindkét műveletet az adatgyűjtés engedélyezéséhez szükségesek. 
 
 > [!NOTE]
 > - Az adatgyűjtés csak számítási erőforrások (virtuális gépek, virtuálisgép-méretezési csoportok, IaaS-tárolók és nem Azure-beli számítógépek) esetében szükséges. Élvezheti az Azure Security Center akkor is, ha nem üzembe helyezi az ügynökök; azonban Ön csak korlátozott biztonsági, és a fent felsorolt funkciók nem támogatottak.  
 > - A támogatott platformok listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md).
-> - Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, az adattárolásra további díjak merülhetnek fel. További részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+> - Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, az adattárolásra további díjak merülhetnek fel. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
 
 ## Az log Analytics-ügynök automatikus kiépítés engedélyezése<a name="auto-provision-mma"></a>
 
-Az adatok a gépekről való összegyűjtéséhez telepítenie kell a Log Analytics-ügynököt.  Az ügynök telepítése automatikusan végezhető el (ajánlott), vagy manuálisan is telepítheti az ügynököt.  
+Az adatok a gépekről való összegyűjtéséhez telepítenie kell a Log Analytics-ügynököt. Az ügynök telepítése automatikusan végezhető el (ajánlott), vagy manuálisan is telepítheti az ügynököt.  
 
 >[!NOTE]
 > Alapértelmezés szerint az Automatikus kiépítés le van. A Security Center telepítése alapértelmezés szerint az Automatikus kiépítés beállítása, állítsa **a**.
@@ -65,7 +59,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 >
 
 ## <a name="workspace-configuration"></a>Munkaterület-konfiguráció
-A Security Center által gyűjtött adatokat Log Analytics-munkaterületen tárolja.  Kiválaszthatja, hogy az adatok tárolása a Security Center által létrehozott munkaterületeken vagy egy meglévő munkaterületet hozott létre az Azure virtuális gépekről gyűjtött. 
+A Security Center által gyűjtött adatokat Log Analytics-munkaterületen tárolja. Kiválaszthatja, hogy az adatok tárolása a Security Center által létrehozott munkaterületeken vagy egy meglévő munkaterületet hozott létre az Azure virtuális gépekről gyűjtött. 
 
 Munkaterület-konfiguráció beállítása előfizetésenként, de sok előfizetést használhatja ugyanazon a munkaterületen.
 
@@ -87,19 +81,19 @@ A Security Center által létrehozott munkaterület kiválasztása:
 
 > [!NOTE]
 > A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard csomag esetében a Security Center lehetővé teszi a *biztonsági* megoldás az alapértelmezett munkaterületre.
-> Az adatok Log Analyticsban való tárolása további díjakat eredményezhet az adattároláshoz. További részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+> Az adatok Log Analyticsban való tárolása további díjakat eredményezhet az adattároláshoz. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
 
 A meglévő log Analytics-fiókokkal kapcsolatos további információkért lásd: [meglévő log Analytics-ügyfelek](security-center-faq.md#existingloganalyticscust).
 
 ### <a name="using-an-existing-workspace"></a>Egy meglévő munkaterület használata
 
-Ha már rendelkezik egy meglévő Log Analytics-munkaterületet, érdemes ugyanazt a munkaterületet használja.
+Ha már rendelkezik meglévő Log Analytics munkaterülettel, érdemes lehet ugyanazt a munkaterületet használni.
 
 A meglévő Log Analytics-munkaterület használatához rendelkeznie kell olvasási és írási engedélyekkel a munkaterületen.
 
 > [!NOTE]
 > Azure virtuális gépekre, amelyek csatlakoznak a meglévő munkaterületen engedélyezett megoldások lépnek érvénybe. Fizetett megoldások esetén ez további díjakat eredményezhet. Az adatok adatvédelmi megfontolások ellenőrizze, hogy a kijelölt munkaterület a megfelelő földrajzi régióban.
-> Az adatok log Analyticsben való tárolása további díjakat eredményezhet az adattároláshoz. További részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+> Az adatok log Analyticsben való tárolása további díjakat eredményezhet az adattároláshoz. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
 
 Egy meglévő Log Analytics-munkaterület kiválasztása:
 
@@ -147,7 +141,7 @@ Amikor kiválaszt egy munkaterületet, amely tárolja az adatokat, az összes el
 ## <a name="data-collection-tier"></a>Gyűjtemény adatszint
 Egy adatrétegbeli gyűjtemény kiválasztása az Azure Security Centerben a biztonsági események Log Analytics-munkaterület az a tároló csak hatással lesz. A Log Analytics ügynök továbbra is összegyűjti és elemzi a Azure Security Center fenyegetések észleléséhez szükséges biztonsági eseményeket, függetlenül attól, hogy az Log Analytics-munkaterületen milyen biztonsági események közül melyiket kell tárolnia (ha van ilyen). A munkaterületen tárolja a biztonsági események kiválasztása lehetővé teszi vizsgálat, a Keresés és a munkaterület események naplózását. 
 > [!NOTE]
-> Az adatok log Analyticsben való tárolása további díjakat eredményezhet az adattároláshoz. További részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+> Az adatok log Analyticsben való tárolása további díjakat eredményezhet az adattároláshoz. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
 > 
 > A jobb házirend az előfizetések és munkaterületek négyféle események szűrése a munkaterület-ben való tárolásának közül választhat: 
 
@@ -196,7 +190,7 @@ A szűrési házirend kiválasztásához:
 
    ![Válassza ki a házirend szűrése][5]
 
-### Automatikus üzembe helyezés abban az esetben egy már létező ügynök telepítése <a name="preexisting"></a> 
+### Automatikus kiépítés egy korábban létező ügynök telepítése esetén<a name="preexisting"></a> 
 
 A következő használati esetek adja meg, hogy működik az esetre, ha már van egy ügynök vagy a bővítmény telepítése automatikus kiépítése. 
 
@@ -217,7 +211,7 @@ Megjegyzés: Ha a Operations Manager ügynök 2012-es verziója telepítve van, 
 - Jelen egy már meglévő Virtuálisgép-bővítmény<br>
     - Ha a figyelési ügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy a jelentéskészítés csak egyetlen munkaterületre legyen elérhető. A Security Center nem bírálja felül a meglévő kapcsolatok felhasználó munkaterületeket. Security Center a virtuális gépről a már csatlakoztatott munkaterületen tárolja a biztonsági adatait, ha a "biztonság" vagy a "securityFree" megoldás telepítve van rajta. Security Center a folyamat legújabb verziójára frissítheti a bővítmény verzióját.  
     - Megtekintheti, hogy melyik munkaterület a meglévő bővítmény küld adatokat, hogy a teszt futtatása [ellenőrizze a csatlakozását az Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Másik lehetőségként megnyithatja Log Analytics munkaterületeket, kiválaszthat egy munkaterületet, kiválaszthatja a virtuális gépet, és megtekintheti a Log Analytics-ügynök közötti kapcsolatokat. 
-    - Ha olyan környezettel rendelkezik, amelyben a Log Analytics-ügynök telepítve van az ügyfél-munkaállomásokon, és jelentéskészítés egy meglévő Log Analytics munkaterületre, tekintse át az [Azure Security Center által támogatott operációs rendszerek](security-center-os-coverage.md) listáját, és győződjön meg arról, hogy az operációs rendszer támogatott, és további információért tekintse meg a [meglévő log Analytics](security-center-faq.md#existingloganalyticscust) -ügyfeleket.
+    - Ha olyan környezettel rendelkezik, amelyben a Log Analytics-ügynök telepítve van az ügyfél-munkaállomásokon, és jelentéskészítés egy meglévő Log Analytics munkaterületre, tekintse át az [Azure Security Center által támogatott operációs rendszerek](security-center-os-coverage.md) listáját, és győződjön meg arról, hogy az operációs rendszer támogatott. További információ: [meglévő log Analytics-ügyfelek](security-center-faq.md#existingloganalyticscust).
  
 ### Kapcsolja ki az Automatikus kiépítés <a name="offprovisioning"></a>
 Kikapcsolhatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. 

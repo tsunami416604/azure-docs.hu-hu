@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Azure PowerShell használatával HDInsight Spark-fürt létrehozása'
+title: 'Gyors útmutató: Spark-fürt létrehozása a HDInsight-ben a Azure PowerShell használatával'
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure PowerShell egy Azure Spark-fürt létrehozásához az Azure HDInsightban, illetve egy egyszerű Spark SQL-lekérdezés futtatásához.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 4a075a2c5a5da677ae8d56c918ecab3384209431
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 185d87bfaf909fdffaa56c2dd6ad29838ce635f7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066083"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885147"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Gyors útmutató: Az Apache Spark-fürt létrehozása az Azure HDInsight PowerShell használatával
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Gyors útmutató: Apache Spark-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
-Ismerje meg, hogyan hozhat létre [Apache Spark](https://spark.apache.org/) , és hogyan futtathat Spark SQL-lekérdezéseket az Azure HDInsight-fürt [Apache Hive](https://hive.apache.org/) táblákat. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A Spark on HDInsight további információkért lásd: [áttekintése: Az Apache Spark on Azure HDInsight](apache-spark-overview.md).
+Ismerje meg, hogyan hozhat létre [Apache Spark](https://spark.apache.org/) -fürtöt az Azure HDInsight, és hogyan FUTTATHAT Spark SQL-lekérdezéseket [Apache Hive](https://hive.apache.org/) táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A HDInsight-ről szóló Spark- [ról további információt az Áttekintés: Apache Spark az Azure HDInsight](apache-spark-overview.md).
 
-Ebben a rövid útmutatóban egy HDInsight Spark-fürtöt hoz létre az Azure PowerShell használatával. A fürt Azure Storage-blobokat használ fürttárolóként. A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Ebben a rövid útmutatóban egy HDInsight Spark-fürtöt hoz létre az Azure PowerShell használatával. A fürt Azure Storage-blobokat használ fürttárolóként. További információ a Data Lake Storage Gen2 használatáról: gyors [útmutató: Fürtök beállítása a HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)-ben.
 
 > [!IMPORTANT]  
 > A HDInsight-fürtök számlázása percenként történik, akár használja őket, akár nem. Mindig törölje a fürtöt, ha már nem használja. További információkért lásd a cikk [Az erőforrások eltávolítása](#clean-up-resources) című szakaszát.
@@ -28,14 +28,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-A PowerShell [Az modul](https://docs.microsoft.com/powershell/azure/overview) telepítve.
+A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark-fürt létrehozása
 
 A HDInsight-fürtök létrehozása a következő Azure-objektumok és erőforrások létrehozását tartalmazza:
 
 - Azure-erőforráscsoport. Az Azure-erőforráscsoport az Azure-erőforrások tárolója. 
-- Egy Azure storage-fiók vagy az Azure Data Lake Storage.  Minden egyes HDInsight-fürt egy függő adattárat igényel. Ebben a rövid útmutatóban egy tárfiókot hoz létre.
+- Egy Azure Storage-fiók vagy Azure Data Lake Storage.  Minden egyes HDInsight-fürt egy függő adattárat igényel. Ebben a rövid útmutatóban egy tárfiókot hoz létre.
 - HDInsight-fürt, különböző fürttípusokkal.  Ebben a rövid útmutatóban egy Spark 2.3-fürtöt hoz létre.
 
 Egy PowerShell-szkript használatával hozhatja létre az erőforrásokat.  A szkript futtatásakor a rendszer a következő értékek megadására kéri:
@@ -49,7 +49,7 @@ Egy PowerShell-szkript használatával hozhatja létre az erőforrásokat.  A sz
 |Fürt hitelesítő adatai | Ezt a fiókot a fürt irányítópultjához való csatlakozásra fogja használni a rövid útmutató későbbi részében.|
 |SSH-felhasználó hitelesítő adatai | Az SSH-ügyfeleket arra használhatja, hogy távoli parancssori munkamenetet hozzon létre a HDInsight-fürtökkel.|
 
-1. Válassza ki **Kipróbálom** , nyissa meg a következő kódblokk jobb felső sarkában [Azure Cloud Shell](../../cloud-shell/overview.md), és kövesse az utasításokat a csatlakozás az Azure.
+1. Válassza a jobb felső sarokban lévő **kipróbálás** lehetőséget a következő kódrészlet megnyitásához [Azure Cloud Shell](../../cloud-shell/overview.md)megnyitásához, majd kövesse az utasításokat az Azure-hoz való kapcsolódáshoz.
 
 2. Másolja és illessze be a következő PowerShell-szkriptet a Cloud Shellbe.
 
@@ -132,7 +132,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, előfordulh
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
 
-[Jupyter Notebook](https://jupyter.org/) van egy interaktív notebook-környezet, amely számos programozási nyelvet. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
+A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, amely különböző programozási nyelveket támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Válassza a **HDInsight-fürtök** lehetőséget, majd a létrehozott fürtöt.
@@ -156,7 +156,7 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
 1. Ellenőrizze, hogy a kernel készen áll-e. A kernel akkor áll készen, ha a neve mellett a notebookban egy üres kör látható. A teli kör azt jelenti, hogy a kernel foglalt.
 
-    ![Hive-lekérdezés a HDInsight Sparkban](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Hive-lekérdezés a HDInsight Sparkban")
+    ![kernel állapota](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "kernel állapota")
 
     A notebook első indításakor a kernel a háttérben elvégez néhány feladatot. Várja meg, hogy a kernel elkészüljön. 
 2. Illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt annak futtatásához. A parancs felsorolja a fürtön található Hive-táblákat:
@@ -193,7 +193,7 @@ Lépjen vissza az Azure Portalra és válassza a **Törlés** lehetőséget.
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésekor a rendszer a HDInsight Spark-fürtöt és az alapértelmezett tárfiókot is törli.
 
-### <a name="piecemeal-clean-up-with-powershell-az-module"></a>PowerShell Az-modullal részenkénti tisztítása
+### <a name="piecemeal-clean-up-with-powershell-az-module"></a>A PowerShell az modul
 
 ```powershell
 # Removes the specified HDInsight cluster from the current subscription.
@@ -221,4 +221,4 @@ Remove-AzResourceGroup `
 Ebből a rövid útmutatóból megtudhatta, hogyan hozható létre egy HDInsight Spark-fürt, illetve hogyan futtatható egy alapszintű Spark SQL-lekérdezés. Folytassa a következő oktatóanyaggal, amelyben megtudhatja, hogyan használhatja a HDInsight Spark-fürtöt interaktív lekérdezések mintaadatokon való futtatására.
 
 > [!div class="nextstepaction"]
->[Az Apache Spark interaktív lekérdezések futtatása](./apache-spark-load-data-run-query.md)
+>[Interaktív lekérdezések futtatása Apache Sparkon](./apache-spark-load-data-run-query.md)

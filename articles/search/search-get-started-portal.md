@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Index létrehozása, betöltése és lekérdezése Azure Portal-Azure Search használatával'
+title: 'Gyors útmutató: Keresési index létrehozása a Azure Portal-Azure Search használatával'
 description: A Azure Portal az adatimportálás varázsló segítségével hozhatja létre, betöltheti és kérdezheti le az első indexét Azure Searchban.
 author: lobrien
 manager: nitinme
@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: c2950b35f207f772f1190a2f8f104098eeb43375
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656349"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884568"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Azure Search index létrehozása a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Azure Search fogalmak gyors felgyorsításához próbálja ki a Azure Portal be�
 > * Meglévő index és beállítások megtekintése a módosításhoz
 > * Teljes szöveges keresés, szűrők, aspektusok, fuzzy keresés és geosearch funkciót a **keresési Explorerrel**
 
-Ha az eszközök túl korlátozzák a korlátozást, érdemes lehet a [.net-ben a programozási Azure Search](search-howto-dotnet-sdk.md) , vagy a Poster használatával [REST API hívásokat](search-get-started-postman.md). Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
+Ha az eszközök túl korlátozzák a korlátozást, érdemes lehet a [.net-ben a programozási Azure Search](search-howto-dotnet-sdk.md) , vagy a [poster használatával REST API hívásokat](search-get-started-postman.md). Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -61,7 +61,7 @@ Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely kö
 
    ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd.png)
 
-2. A varázslóban kattintson a **Kapcsolódás** > az adatmintákhoz > **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+2. A varázslóban kattintson a **Kapcsolódás** > az**adatmintákhoz** > **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
    ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample.png)
 
@@ -78,7 +78,7 @@ Most kihagyjuk ezt a lépést, és közvetlenül a cél- **index testreszabásá
    ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Egy rövid útmutatóban vagy [oktatóanyagban](cognitive-search-tutorial-blob.md)egy AI-indexelési példát is megadhat. [](cognitive-search-quickstart-blob.md)
+> Egy rövid [útmutatóban vagy oktatóanyagban](cognitive-search-tutorial-blob.md) [egy AI](cognitive-search-quickstart-blob.md) -indexelési példát is megadhat.
 
 ### <a name="step-3---configure-index"></a>3\. lépés – index konfigurálása
 
@@ -143,7 +143,7 @@ Annak érdekében, hogy jól átlássa az indextervezés során szerkeszthető �
 
 Továbblépve most már rendelkezünk egy keresési indexszel, amely készen áll a lekérdezésre a beépített [**Keresési ablak**](search-explorer.md) lekérdezési lappal. Ez egy keresőmezőt biztosít, amellyel tesztelheti a tetszőleges lekérdezési sztringeket.
 
-A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents)kezelésére alkalmas, de az [egyszerű lekérdezési szintaxishoz](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)-lekérdezési elemzőhöz is elfogadja a szintaxist, valamint a [keresési dokumentumban](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) elérhető összes keresési paramétert is REST API Operations.
+A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/api/searchservice/search-documents)kezelésére alkalmas, de az [egyszerű lekérdezési szintaxishoz](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene-lekérdezési elemzőhöz](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)is elfogadja a szintaxist, valamint a [keresési dokumentumban](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) elérhető összes keresési paramétert is REST API Operations.
 
 > [!TIP]
 > Az [Azure Search szolgáltatás áttekintő videója](https://channel9.msdn.com/Events/Connect/2016/138) a következő lépéseket mutatja be 6 perc 8 másodperctől kezdve.
@@ -200,7 +200,7 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
 * A **search=** * egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
-* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy kategóriának megfelelő mezőn alapulnak. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
 * A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
