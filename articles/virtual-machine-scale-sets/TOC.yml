@@ -163,8 +163,8 @@
           maintainContext: true
     - name: Méretezési csoport – gyakran ismételt kérdések
       href: virtual-machine-scale-sets-faq.md
-    - name: Biztonsági attribútumok
-      href: virtual-machine-scale-sets-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: virtual-machine-scale-sets-security-controls.md
 - name: Útmutató
   items:
     - name: Tervezés és kialakítás

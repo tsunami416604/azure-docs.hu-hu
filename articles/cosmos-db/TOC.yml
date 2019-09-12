@@ -274,8 +274,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Speciális fenyegetésvédelem
-        - name: Biztonsági attribútumok
-          href: cosmos-db-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: cosmos-db-security-controls.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Online biztonsági mentés és igény szerinti helyreállítás
@@ -459,6 +459,10 @@
           items:
             - name: Válaszfejlécek
               href: gremlin-headers.md
+            - name: Korlátok
+              href: gremlin-limits.md
+            - name: Kompatibilitás
+              href: gremlin-compatibility.md
         - name: Útmutatók
           items:
             - name: Gráfadatok modellezése
@@ -471,6 +475,10 @@
               href: graph-execution-profile.md
             - name: Erőforrás-jogkivonatok használata
               href: how-to-use-resource-tokens-gremlin.md
+            - name: Régiónkénti végpontok használata
+              href: how-to-use-regional-gremlin.md
+            - name: Hozzáférés a rendszerdokumentum tulajdonságaihoz
+              href: how-to-access-system-properties-gremlin.md
             - name: Gráfadatok vizualizációja
               href: graph-visualization.md
             - name: A Spring Data tárolása és kezelése
@@ -700,7 +708,7 @@
       items:
         - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
           href: use-metrics.md
-        - name: Mérőszámok megtekintése az Azure Monitorban
+        - name: Azure Monitor-metrikák megtekintése
           href: cosmos-db-azure-monitor-metrics.md
         - name: SLA-k figyelése
           href: monitor-accounts.md

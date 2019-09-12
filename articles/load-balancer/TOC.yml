@@ -61,8 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: A Standard Load Balancer metrikái és diagnosztikai eszközei
       href: load-balancer-standard-diagnostics.md
-    - name: Biztonsági attribútumok
-      href: load-balancer-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: load-balancer-security-controls.md
 - name: Útmutató
   items:
     - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása

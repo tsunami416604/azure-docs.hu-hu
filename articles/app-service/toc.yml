@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: Az operációs rendszer és a futtatókörnyezet javítása
           href: overview-patch-os-runtime.md
-        - name: Biztonsági attribútumok
-          href: app-service-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: app-service-security-controls.md
         - name: Biztonsági áttekintés
           href: overview-security.md
     - name: Hálózatkezelési funkciók

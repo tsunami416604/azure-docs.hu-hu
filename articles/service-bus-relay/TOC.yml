@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Hibrid kapcsolatok protokollja
       href: relay-hybrid-connections-protocol.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: service-bus-relay-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: service-bus-relay-security-controls.md
 - name: Útmutató
   items:
     - name: Tervezés és kialakítás

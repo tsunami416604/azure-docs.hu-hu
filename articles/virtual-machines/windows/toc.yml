@@ -142,8 +142,8 @@
       href: backup-recovery.md
     - name: Példa infrastruktúrára
       href: infrastructure-example.md
-    - name: Biztonsági attribútumok
-      href: virtual-machines-windows-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: virtual-machines-windows-security-controls.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása

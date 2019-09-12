@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: Infrastruktúrával kapcsolatos irányelvek
       href: infrastructure-example.md
-    - name: Biztonsági attribútumok
-      href: virtual-machines-linux-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: virtual-machines-linux-security-controls.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása

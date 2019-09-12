@@ -58,8 +58,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Hálózatok közötti kapcsolatok
       href: cross-network-connectivity.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: expressroute-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: expressroute-security-controls.md
     - name: Magas rendelkezésre állás tervezése
       href: designing-for-high-availability-with-expressroute.md
     - name: Tervezés a vészhelyreállítást szem előtt tartva

@@ -62,8 +62,8 @@
       items:
         - name: Biztonsági áttekintés
           href: overview-security.md
-        - name: Gyakori biztonsági attribútumok
-          href: key-vault-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: key-vault-security-controls.md
         - name: Biztonsági világok
           href: key-vault-ovw-security-worlds.md
         - name: Kulcstartó védelme
@@ -90,8 +90,6 @@
           href: create-certificate.md
         - name: Tanúsítvány-létrehozás monitorozása és kezelése
           href: create-certificate-scenarios.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: key-vault-security-attributes.md
 - name: Útmutatók
   items:
     - name: Az Azure Key Vault naplózása

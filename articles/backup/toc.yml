@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: A szalagtár lecserélése
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: backup-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: backup-security-controls.md
 - name: Útmutató
   items:
     - name: Azure Backup Server

@@ -57,8 +57,8 @@
       href: api-management-error-handling-policies.md
     - name: API-importálási korlátozások
       href: api-management-api-import-restrictions.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: api-management-security-attributes.md
+    - name: Beépített biztonsági vezérlők
+      href: api-management-security-controls.md
 - name: Útmutatók
   items:
     - name: API-k meghatározása

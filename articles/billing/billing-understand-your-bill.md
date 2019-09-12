@@ -1,148 +1,148 @@
 ---
 title: Az Azure számlázásának ismertetése
-description: 'Útmutató: a használati és az Azure-előfizetés számlájának értelmezése.'
+description: Ismerje meg, hogyan olvashatja el és értelmezheti az Azure-előfizetésének használatát és számlázását.
 author: bandersmsft
-manager: jureid
+manager: dougeby
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 07/28/2019
 ms.author: banders
-ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490328"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610135"
 ---
-# <a name="understand-your-microsoft-azure-bill"></a>A Microsoft Azure-elszámolások ismertetése
-Az Azure-elszámolások ismertetése, hasonlítsa össze a számla a részletes napi használat fájlt, és a költségkezelési jelentések az Azure Portalon.
+# <a name="understand-your-microsoft-azure-bill"></a>A Microsoft Azure-számla ismertetése
+Az Azure-számla megismeréséhez össze kell hasonlítani a számláját a részletes napi használati fájllal és a Azure Portal a Cost Management jelentéseivel.
 
-Ez a cikk az Azure-ügyfelek a nagyvállalati szerződés (EA-ügyfelek) nem vonatkozik. Ha Ön nagyvállalati szerződéssel rendelkező ügyfelek, [számlázással kapcsolatos tudnivalók az Azure-nagyvállalati szerződéssel rendelkező ügyfelek](billing-understand-your-bill-ea.md).
+Ez a cikk nem vonatkozik a következő ügyfelekre:
+- Azure-ügyfelek Nagyvállalati Szerződés (EA-ügyfelekkel). Ha Ön nagyvállalati ügyfél, tekintse [meg az Azure-ügyfelek számlájának megismerése nagyvállalati Szerződéskal](billing-understand-your-bill-ea.md)című témakört.
+- [Microsoft ügyfél](#check-access-to-a-microsoft-customer-agreement)-szerződéssel rendelkező Azure-ügyfelek. Ha rendelkezik Microsoft-ügyféli szerződéssel, tekintse [meg az Azure-díjakat a Microsoft Customer Agreement](billing-mca-understand-your-bill.md)-számláján.
 
-Ez a cikk az Azure-ügyfelek nem vonatkozik a [Microsoft Ügyfélszerződéséhez](#check-access-to-a-microsoft-customer-agreement). Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg [megismerheti az Azure díjat a Microsoft Ügyfélszerződéséhez számla](billing-mca-understand-your-bill.md).
+A Azure Cloud Solution Provider-(Azure CSP-) program számlázási működésének leírását, beleértve a számlázási ciklust, a díjszabást és a használatot, az [Azure CSP számlázási áttekintése](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)című témakörben olvashat.
 
-Hogyan működik a számlázás az Azure Cloud Solution Provider (az Azure CSP) program ismertetése, beleértve a számlázási ciklus, a díjszabást és a használatot, lásd: [Azure számlázási Konfigurációszolgáltatásokról](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
-
-## <a name="charges"></a>A költségek áttekintése
+## <a name="charges"></a>A díjak áttekintése
 
 >[!VIDEO https://www.youtube.com/embed/3YegFD769Pk]
 
-Ha további információt szeretne kapni, a számla díj, összehasonlíthatja használat és költségek a használatot részletező fájl vagy az Azure Portalon.
+Ha a számlán további információra van szüksége, a használat és a költségek összevetése a használati fájllal vagy a Azure Portal is lehetséges.
 
-### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Option 1: Hasonlítsa össze a használat és költségek a használati fájlban
+### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>1\. lehetőség: Használat és költségek összehasonlítása a használati fájllal
 
-A CSV formátumú részletes használati díjak a számlázási időszak és a napi használati jeleníti meg. Töltse le, vagy a fájl megtekintéséhez, lásd: [az Azure számlázási és napi használati adatainak lekérése](billing-download-azure-invoice-daily-usage-date.md).
+A részletes használati CSV-fájl számlázási időszak és napi használat szerint jeleníti meg a díjakat. A fájl letöltéséhez vagy megtekintéséhez tekintse [meg az Azure számlázási számla és a napi használati adatok](billing-download-azure-invoice-daily-usage-date.md)beszerzése című témakört.
 
-A használati díjak jelennek meg a fogyasztásmérő szintjén. Az alábbi feltételek a számlán és a részletes használati fájlt is ugyanazt jelenti. Például a számlázási ciklus a számlán megegyezik a számlázási időszak alatt jelenik meg a részletes használati fájlban.
+A használati díjak a mérési szinten jelennek meg. A következő kifejezések ugyanazt a dolgot jelentik, mint a számla és a részletes használati fájl. Például a számla számlázási ciklusa megegyezik a részletes használati fájlban látható számlázási időszaktal.
 
- | Invoice (PDF) | A részletes használati (CSV)|
+ | Számla (PDF) | Részletes használat (CSV)|
  | --- | --- |
 |Billing Cycle (Számlázási ciklus) | Billing Period (Számlázási időszak) |
- |Name (Név) |Meter Category (Mérési kategória) |
- |Típus |Fogyasztásmérő alkategóriája |
- |Resource |Meter Name (Mérés neve) |
- |Régió |Meter Region (Mérési régió) |
- |Consumed (Felhasznált mennyiség) |Consumed Quantity (Felhasznált mennyiség) |
+ |Name (Név) |Fogyasztásmérő kategóriája |
+ |Type |Fogyasztásmérő alkategóriája |
+ |Resource |Fogyasztásmérő neve |
+ |Régió |Fogyasztásmérő régiója |
+ |Felhasznált |Felhasznált mennyiség |
  |Tartalmazza |Included Quantity (Bennefoglalt mennyiség) |
  |Billable (Számlázandó) |Overage Quantity (Kereten túli mennyiség) |
 
-A **használati díjak** a számla részén láthatók a a számlázási időszak alatt felhasznált felbontáson teljes értékét. Ha például az alábbi képen látható az Azure Scheduler szolgáltatás használati díját.
+A számla **használati díjak** szakasza a számlázási időszakban felhasznált egyes mérőszámok teljes értékét jeleníti meg. Az alábbi képen például az Azure Scheduler szolgáltatás használati díja látható.
 
-![Számla használati díjak](./media/billing-understand-your-bill/1.png)
+![Számla használati díjai](./media/billing-understand-your-bill/1.png)
 
-A **utasítás** a részletes használati adatok CSV részén láthatók a azonos díjat. Mindkét a *Consumed* összeget és *érték* felel meg a számlán.
+A részletes használati CSV-fájl **utasítás** szakasza ugyanazt a díjat mutatja. Mind a *felhasznált* mennyiség, mind az *érték* megegyezik a számlával.
 
-![Fürt megosztott kötetei szolgáltatás a használati díjak](./media/billing-understand-your-bill/2.png)
+![CSV-használati díjak](./media/billing-understand-your-bill/2.png)
 
-A díj napi bontásban megtekintéséhez nyissa meg a **napi használat** szakaszában a CSV-fájlt. Állítson be szűrőt *Scheduler* alatt *mérőszám kategóriája*. Láthatja, hogy melyik nappal mérőszám lett megadva, és mennyi volt felhasznált. A *erőforrás* és *erőforráscsoport* információk is megjelennek az összehasonlítást. A *Consumed* értékeket kell felhasználni, és a felel meg a számlán jelenik meg.
+A díj napi bontásának megtekintéséhez nyissa meg a CSV-fájl **napi használat** szakaszát. A *Scheduler* szűrése az *Meter kategóriában*. Láthatja, hogy a rendszer mely napokat használta, és mennyit felhasznált. Az összehasonlításhoz az *erőforrás* -és *erőforráscsoport* -információ is látható. A *felhasznált* értékeknek fel kell venniük a számlát, és meg kell egyezniük a számlán láthatókkal.
 
-![A fürt megosztott kötetei szolgáltatás napi használat szakasz](./media/billing-understand-your-bill/3.png)
+![Napi használat szakasz a CSV-fájlban](./media/billing-understand-your-bill/3.png)
 
-A költség / nap lekéréséhez szorozza meg a *Consumed* az összegek a *arány* értéket a **utasítás** szakaszban.
+A napi díj megszerzéséhez szorozza meg a *felhasznált* mennyiségeket a *ráta* értékével az **utasítás** szakasz alapján.
 
 További tudnivalókért lásd:
 
-- [Az Azure-számlák ismertetése](billing-understand-your-invoice.md)
-- [Az Azure részletes használatának megértéséhez](billing-understand-your-invoice.md)
+- [Az Azure-számla megismerése](billing-understand-your-invoice.md)
+- [Az Azure részletes használatának megismerése](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>Option 2: Hasonlítsa össze a használat és költségek az Azure Portalon
+### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>2\. lehetőség: A Azure Portal használatának és költségeinek összehasonlítása
 
-Az Azure Portalon is segít a költségek ellenőrzése. A számlázott használat és a díj gyors áttekintést kaphat, hogy a cost management diagramok megtekintése.
+A Azure Portal a díjak ellenőrzéséhez is segítséget nyújt. Ha gyors áttekintést szeretne kapni a számlázott használatáról és díjairól, tekintse meg a Cost Management diagramokat.
 
-1. Az Azure Portalon lépjen a [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az előfizetést > **költségelemzés**.
-1. Szűrés **Timespan**.
-1. Az előző példában a folytatáshoz tekintse meg az Azure Scheduler szolgáltatás használati díját.
+1. A Azure Portal lépjen az előfizetések elemre. [](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. Válassza ki az előfizetését > a **Cost Analysis**elemet.
+1. Szűrés **TimeSpan**szerint.
+1. Az előző példa folytatásához az Azure Scheduler szolgáltatás használati díját fogja látni.
 
-   ![Az Azure portal nézetében költségelemzés](./media/billing-understand-your-bill/4.png)
+   ![Cost Analysis nézet a Azure Portal](./media/billing-understand-your-bill/4.png)
 
-1. Válassza ki a sort, amely megjeleníti a díjat a napi költségek részletezése megtekintéséhez.
+1. Válassza ki azt a sort, amely megjeleníti a díjat a napi költségek részletezésének megtekintéséhez.
 
-   ![Az Azure portal nézetében költségelőzmények](./media/billing-understand-your-bill/5.png)
+   ![Cost History-nézet a Azure Portal](./media/billing-understand-your-bill/5.png)
 
-További tudnivalókért lásd: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md#costs).
+További információ: [a váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](billing-getting-started.md#costs).
 
-## <a name="external"></a>Külső szolgáltatások számlázása külön
+## <a name="external"></a>Külön számlázott külső szolgáltatások
 
-Külső szolgáltatások vagy a piactér-díjak vonatkoznak külső szoftvergyártók által létrehozott erőforrásokat. Ezeket az erőforrásokat az Azure marketplace-ről való használatra érhetők el. Például Barracuda tűzfal egy harmadik fél által nyújtott egy az Azure marketplace-erőforrást. Minden költséget a tűzfal és az annak megfelelő mérőszámok külső szolgáltatási díjakkal jelennek meg.
+A külső szolgáltatások vagy a piactér díjai a külső gyártóktól származó szoftvergyártók által létrehozott erőforrásokra vonatkoznak. Ezek az erőforrások az Azure piactéren használhatók. A Barracuda-tűzfal például egy harmadik fél által kínált Azure Marketplace-erőforrás. A tűzfal és a hozzá tartozó mérőszámok összes díja külső szolgáltatási díjakként jelenik meg.
 
-A külső szolgáltatási díjak külön számlázzuk. A díjak nem jelennek meg az Azure-számlán. További tudnivalókért lásd: [az Azure külső szolgáltatási díjak értelmezése](billing-understand-your-azure-marketplace-charges.md).
+A külső szolgáltatási díjak számlázása külön történik. A díjak nem jelennek meg az Azure-számlán. További információ: [Az Azure-beli külső szolgáltatási díjak megismerése](billing-understand-your-azure-marketplace-charges.md).
 
-## <a name="resources-billed-by-usage-meters"></a>A számlázás alapját a használati mérőszámok erőforrások
+## <a name="resources-billed-by-usage-meters"></a>Használati mérőszámok által számlázott erőforrások
 
-Az Azure nem közvetlenül a számla alapján az erőforrás költségének. Egy erőforrás kamatot egy vagy több mérőszámok használatával. Mérőszámok segítségével nyomon követhető az erőforrás-használat élettartama során. Ezek a mérőszámok szolgálnak majd a számla kiszámításának alapjául.
+Az Azure nem számláz közvetlenül az erőforrás-költségeket. Egy erőforrás díjait egy vagy több mérőszám segítségével számítjuk ki. A mérőszámok segítségével nyomon követhető az erőforrás használatának teljes élettartama. A rendszer ezt a mérőszámot használja a számla kiszámításához.
 
-Ha például egy egyetlen Azure-erőforrás, például egy virtuális gép létrehozásakor azt egy vagy több mérőszám példánnyal rendelkezik létrehozott. Mérőszámok segítségével nyomon követhető az erőforrás-felhasználásának idővel. Minden használati rekord, a számla kiszámításának alapjául az Azure által használt bocsát ki.
+Ha például egyetlen Azure-erőforrást hoz létre, mint például egy virtuális gép, egy vagy több mérőszám-példány lett létrehozva. A mérőszámok az erőforrás használatának időbeli nyomon követésére szolgálnak. Az egyes mérőműszerek az Azure által a számla kiszámításához használt használati rekordokat bocsátanak ki.
 
-Az Azure-ban létrehozott egyetlen virtuális gép (VM) előfordulhat például, a következő mérőszámok esetében a használat nyomon követésére:
+Az Azure-ban létrehozott egyetlen virtuális gép (VM) például a következő mérőszámokkal hozható létre a használat nyomon követéséhez:
 
-- Compute Hours – számítási óraszám
-- IP-cím-Szolgáltatásóra
+- Üzemóra
+- IP-cím-szolgáltatásóra
 - Bejövő adatforgalom
 - Kimenő adatforgalom
-- Standard Managed Disk
-- Standard szintű felügyelt lemez műveletei
-- Standard IO – lemez
-- Standard IO – Block Blob olvasása
-- Standard IO – Block Blob írása
-- Standard IO – Block Blob törlése
+- Standard szintű felügyelt lemez
+- Standard felügyelt lemez műveletei
+- Standard i/o – lemez
+- Standard i/o – blob letiltása – olvasás
+- Standard i/o – blob-írás tiltása
+- Standard i/o – blob törlésének tiltása
 
-A virtuális gép létrehozásakor a felbontáson megkezdi a rekordok kibocsátó. A használat és a fogyasztásmérők ára van nyomon a mérési rendszer Azure-ban.
+A virtuális gép létrehozásakor minden mérőszám elkezdi a használati rekordok kibocsátását. Ezt a használatot és a fogyasztásmérő árát az Azure-mérési rendszeren követjük nyomon.
 
-## <a name="payment"></a>A számla kell fizetnie
+## <a name="payment"></a>Számla kifizetése
 
-Ha beállította hitelkártyával vagy bankkártyával kártya a fizetési módként alkalmazott, a fizetési automatikusan a számlázási időszak végén 10 napon belül kell fizetnie. A hitelkártya utasítás a sortételt építünk **MSFT Azure**.
+Ha bankkártyás kártyát állít be fizetési módszerként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan kiszámlázza a befizetést. A bankkártya-utasításban a tétel azt jelentené, hogy az **MSFT Azure**.
 
-Ha módosítani szeretné a bankkártya vagy egy hitelkártya, amely fel van töltve, lásd: [hozzáadása, frissítése vagy eltávolítása egy bankkártya vagy egy hitelkártya Azure](billing-how-to-change-credit-card.md).
+A felszámított hitelkártya módosításához tekintse meg az [Azure-beli hitelkártyák hozzáadása, frissítése és eltávolítása](billing-how-to-change-credit-card.md)című témakört.
 
-Ha Ön [azért kell fizetnie, a számla ellenében](billing-how-to-pay-by-invoice.md), a fizetési a helyet, a számla alján felsorolt küldése.
+Ha [számlán fizet](billing-how-to-pay-by-invoice.md), küldje el a fizetését a számla alján felsorolt helyre.
 
-A fizetési módot, a állapotának [hozzon létre egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A fizetés állapotának megtekintéséhez [hozzon létre egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 
-## <a name="tips-for-cost-management"></a>Tippek a cost management
+## <a name="tips-for-cost-management"></a>Tippek a Cost Managementhez
 
-- Becsült költség használatával a:
-  - [Azure díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-  - [Tulajdonjog Számológép teljes költsége](https://aka.ms/azure-tco-calculator)
-  - [Részletes díjszabási információkat az egyes szolgáltatások](https://azure.microsoft.com/pricing/)
-- [Tekintse át a használat és költségek az Azure Portalon rendszeresen](billing-getting-started.md#costs).
+- A költségek becslése a használatával:
+  - [Az Azure díjszabásának kalkulátora](https://azure.microsoft.com/pricing/calculator/)
+  - [A tulajdonosi kalkulátor teljes költsége](https://aka.ms/azure-tco-calculator)
+  - [Az egyes szolgáltatások részletes díjszabási információi](https://azure.microsoft.com/pricing/)
+- [Tekintse át a használatot és a költségeket rendszeresen a Azure Portal](billing-getting-started.md#costs)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft ügyfél-szerződéshez való hozzáférés engedélyezése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
-- [Az Azure számlázási számlázási és napi használati adatok lekérése](billing-download-azure-invoice-daily-usage-date.md)
-- [A Microsoft Azure-számla feltételeinek értelmezése](billing-understand-your-invoice.md)
-- [A feltételeinek értelmezése a Microsoft Azure részletes használat](billing-understand-your-usage.md)
-- [Az Azure portal Költségkezelés](https://docs.microsoft.com/azure/billing/billing-getting-started)
-- [Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md#costs)
+- [Azure számlázási számla és napi használati adatok beszerzése](billing-download-azure-invoice-daily-usage-date.md)
+- [A Microsoft Azure-számla feltételeinek megismerése](billing-understand-your-invoice.md)
+- [A Microsoft Azure részletes használati feltételeinek megismerése](billing-understand-your-usage.md)
+- [Azure Portal Cost Management](https://docs.microsoft.com/azure/billing/billing-getting-started)
+- [Az Azure-számlázással és a költségek kezelésével kapcsolatos váratlan költségek megelőzése](billing-getting-started.md#costs)

@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: Hitelesítés közös hozzáférésű jogosultságkóddal
               href: authenticate-shared-access-signature.md
-        - name: Biztonsági attribútumok
-          href: event-hubs-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: event-hubs-security-controls.md
     - name: AMQP 1.0 protokoll – útmutató
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true

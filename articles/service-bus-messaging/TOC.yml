@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: Hitelesítés egy alkalmazásból
                   href: authenticate-application.md
-        - name: Gyakori Azure-beli biztonsági attribútumok
-          href: service-bus-messaging-security-attributes.md
+        - name: Beépített biztonsági vezérlők
+          href: service-bus-messaging-security-controls.md
 - name: Útmutatók
   items:
     - name: Névtér létrehozása

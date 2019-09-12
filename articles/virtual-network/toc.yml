@@ -255,6 +255,10 @@
           href: manage-public-ip-address-prefix.md
     - name: Hibaelhárítás
       items:
+        - name: Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
+          href: virtual-network-configure-vnet-connections.md
         - name: Network security groups (Hálózati biztonsági csoportok)
           href: diagnose-network-traffic-filter-problem.md
         - name: Útvonalak
