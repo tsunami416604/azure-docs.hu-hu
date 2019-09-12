@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623898"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879463"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -87,19 +87,19 @@ A Ambari felhasználói felületének használatával letöltheti a fürt egy ad
 
 ### <a name="view-the-script-action-logs"></a>A parancsfájl műveleti naplóinak megtekintése
 
-A [](hdinsight-hadoop-customize-cluster-linux.md) HDInsight parancsfájlokat futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a következő címen `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`érhetők el:.
+A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a következő címen `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`érhetők el:.
 
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. lépés: A fürt feladatok végrehajtási naplófájljainak kezelése
 
 A következő lépés a feladatok végrehajtási naplófájljainak áttekintése a különböző szolgáltatásokhoz.  A szolgáltatások lehetnek például az Apache HBase, a Apache Spark és sok más. A Hadoop-fürtök nagy mennyiségű részletes naplót készítenek, így a hasznos naplók (és amelyek nem) időigényesek lehetnek.  A naplófájlok kezeléséhez fontos a naplózási rendszer ismertetése.  A következő példa egy naplófájlt mutat be.
 
-![HDInsight-naplófájl – példa](./media/hdinsight-log-management/logs.png)
+![HDInsight-naplófájl – példa](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>A Hadoop naplófájlok elérése
 
 A HDInsight a fürt fájlrendszerében és az Azure Storage-ban is tárolja a naplófájlokat. Megvizsgálhatja a fürt naplófájljait úgy, hogy megnyit egy [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -csatlakozást a fürthöz, és megkeresi a fájlrendszert, vagy a Hadoop fonal állapota portál használatával a távoli fő csomópont-kiszolgálón. Az Azure Storage-ban található naplófájlokat bármely olyan eszközzel megvizsgálhatja, amely hozzáférhet az Azure Storage-ból, és letöltheti azokat. Ilyenek például a [AzCopy](../storage/common/storage-use-azcopy.md), a [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)és a Visual Studio Server Explorer. A PowerShellt és az Azure Storage ügyféloldali kódtárait, illetve az Azure .NET SDK-kat is használhatja az Azure Blob Storage-ban tárolt adateléréshez.
 
-A Hadoop a feladatok munkáját a fürt különböző csomópontjain futtatja. A HDInsight megkezdheti a spekulációs feladatok kísérleteit, és leállíthatja a többi olyan feladatot, amely nem fejeződött be először. Ez jelentős tevékenységet generál, amely a vezérlőre, a stderr és a syslog-naplófájlokra van naplózva menet közben. Emellett egyszerre több feladat-kísérlet is fut, de a naplófájl csak lineárisan jeleníti meg az eredményeket.
+A Hadoop *a feladatok munkáját* a fürt különböző csomópontjain futtatja. A HDInsight megkezdheti a spekulációs feladatok kísérleteit, és leállíthatja a többi olyan feladatot, amely nem fejeződött be először. Ez jelentős tevékenységet generál, amely a vezérlőre, a stderr és a syslog-naplófájlokra van naplózva menet közben. Emellett egyszerre több feladat-kísérlet is fut, de a naplófájl csak lineárisan jeleníti meg az eredményeket.
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Az Azure Blob Storage-ba írt HDInsight-naplók
 
@@ -148,7 +148,7 @@ Miután meghatározta, hogy mely naplófájlok törölhetők, a naplózási para
 
 Bizonyos naplófájlok esetében alacsonyabb árú naplófájl-archiválási módszert használhat. Azure Resource Manager tevékenységi naplók esetében ezt a megközelítést a Azure Portal használatával is megismerheti.  Állítsa be az ARM-naplók archiválását úgy, hogy kijelöli a HDInsight-példányhoz tartozó Azure Portalban a **műveletnapló**hivatkozást.  A tevékenység naplójának keresése lap tetején válassza az **Exportálás** menüpontot az **exportálási tevékenység naplója** panel megnyitásához.  Töltse ki az előfizetést, a régiót, a Storage-fiókba való exportálást, valamint azt, hogy hány napig tart a naplók megőrzése. Ugyanezen az ablaktáblán azt is jelezheti, hogy az egy Event hub-ba exportálható-e. 
 
-![Naplófájlok exportálása](./media/hdinsight-log-management/archive.png)
+![Naplófájlok exportálása](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Azt is megteheti, hogy parancsfájl-archiválást végez a PowerShell használatával.  Példa a PowerShell-parancsfájlra: [Azure Automation naplók archiválása az Azure-ba blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

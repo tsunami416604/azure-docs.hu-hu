@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b63b68b7721dd848e6a72b3b7d9cfa38bf031b23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035084"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910232"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
@@ -89,7 +89,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge modult az el�
 
 1. Adja meg a modul nevét. Válassza ki a tároló beállításjegyzékében egyedi nevet.
 
-1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul\>nevével**. Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy néz ki, mint * **\<a beállításjegyzék neve\>*. azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy az utolsó eredmény a * *\<* Registry name *\>. azurecr.IO/* \<a modul neve\>* * *.
+1. Adja meg a modul rendszerkép-tárházának nevét. A Visual Studio Code automatikusan feltölti a modul nevét a **localhost: 5000/< a modul\>nevével**. Cserélje le a saját beállításjegyzék-információkat. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló úgy tűnik   **_\<, hogy\>a beállításjegyzék neve_. azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végső eredmény  **\<a *beállításjegyzék neveként*\>hasonlítson. azurecr.IO/ _\<a\>modul nevét_** .
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-csharp-module/repository.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Mesterséges intelligenciát használó index létrehozása Azure Portal-Azure Search'
+title: 'Gyors útmutató: Ismerje meg a kognitív keresés AI-bővítését Azure Portal-Azure Search'
 description: Adatok kinyerése, természetes nyelvi és képfeldolgozási képességek egy Azure Search indexelő portálon a Azure Portal és a mintaadatok használatával.
 manager: nitinme
 author: HeidiSteen
@@ -7,16 +7,16 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ff32be5410876d1ba61b3bce2fd5f57868745e50
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744734"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881088"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: AI-indexelési folyamat létrehozása a kognitív képességek használatával Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: AI-dúsítási folyamat létrehozása a Azure Search kognitív képességeinek használatával
 
 A Azure Search a [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kinyerését, a természetes nyelvi feldolgozást (NLP) és a képfeldolgozási képességeket egy Azure Search indexelési folyamatba integrálja, így a kereshető vagy strukturálatlan tartalmak kereshetők. 
 
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban létrehozza az első alkoholtartalom-növelési fol
 Ez a rövid útmutató az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha naponta többször szeretné futtatni ezt a rövid útmutatót, használjon kisebb fájlméretet, hogy több futtatással is elférjen.
 
 > [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
 > A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
@@ -79,11 +79,11 @@ Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. Ha nem
 
 1. Bontsa ki a **csatolás Cognitive Services** elemet a Cognitive Services API-k újraforrására vonatkozó beállítások megtekintéséhez. Ebben az oktatóanyagban használhatja az **ingyenes** erőforrást.
 
-   ![Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. Bontsa ki a bővítések **hozzáadása** lehetőséget, és válassza ki a természetes nyelvi feldolgozást végző szaktudást. Ebben a rövid útmutatóban válassza az entitások felismerése lehetőséget a személyekhez, szervezetekhez és helyekhez.
 
-   ![Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
+   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
 
    A portál beépített képességeket kínál az OCR-feldolgozáshoz és a szöveges elemzésekhez. A portálon egy képességcsoport egyetlen forrásmezőn végez műveleteket. Ez kis célnak tűnhet, de az Azure-blobok esetében a blobdokumentum (például egy Word-dokumentum vagy egy PowerPoint-bemutató) legnagyobb részét a `content` mező tartalmazza. Ez a mező tehát nem ideális bemenet, mert egy blob összes tartalma szerepel benne.
 

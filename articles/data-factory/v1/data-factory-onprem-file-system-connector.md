@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 92274f63db78d53bdd0fa3fd440977422be3b4a1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: eea0b930ab26e3f4d816fed69ccf8e987e6d33c7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036283"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881346"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Adatok másolása helyszíni fájlrendszerből és a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -29,7 +29,7 @@ ms.locfileid: "70036283"
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, lásd: [fájlrendszer-összekötő a v2-ben](../connector-file-system.md).
 
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni fájlrendszerbe történő másolásához. Az adattovábbítási [tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok helyszíni fájlrendszerbe történő másolásához. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Az adatok a következő adattárakból egy helyszíni **fájlrendszerbe**másolh
 > A másolási tevékenység nem törli a forrásfájlt, miután sikeresen átmásolta a célhelyre. Ha sikeres másolás után törölni kell a forrásfájlt, hozzon létre egy egyéni tevékenységet a fájl törléséhez, és használja a folyamatot a folyamatban.
 
 ## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
-A Data Factory **adatkezelés átjárón**keresztül támogatja a helyszíni fájlrendszerhez való csatlakozást. Telepítenie kell a adatkezelés átjárót a helyszíni környezetbe ahhoz, hogy a Data Factory szolgáltatás csatlakozhasson bármely támogatott helyszíni adattárhoz, beleértve a fájlrendszert is. Az adatkezelés átjáróval és az átjáró beállításával kapcsolatos részletes utasításokért lásd: az adatáthelyezés a helyszíni [források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md). A adatkezelés átjárón kívül más bináris fájlokat sem kell telepíteni a helyszíni fájlrendszerről történő kommunikációhoz. Akkor is telepítenie kell a adatkezelés-átjárót, ha a fájlrendszer az Azure IaaS virtuális gépen van. Az átjáróval kapcsolatos részletes információkért lásd: [adatkezelés átjáró](data-factory-data-management-gateway.md).
+A Data Factory **adatkezelés átjárón**keresztül támogatja a helyszíni fájlrendszerhez való csatlakozást. Telepítenie kell a adatkezelés átjárót a helyszíni környezetbe ahhoz, hogy a Data Factory szolgáltatás csatlakozhasson bármely támogatott helyszíni adattárhoz, beleértve a fájlrendszert is. Az adatkezelés átjáróval és az átjáró beállításával kapcsolatos részletes utasításokért lásd: az [adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md). A adatkezelés átjárón kívül más bináris fájlokat sem kell telepíteni a helyszíni fájlrendszerről történő kommunikációhoz. Akkor is telepítenie kell a adatkezelés-átjárót, ha a fájlrendszer az Azure IaaS virtuális gépen van. Az átjáróval kapcsolatos részletes információkért lásd: [adatkezelés átjáró](data-factory-data-management-gateway.md).
 
 Linux-fájlmegosztás használatához telepítse a [Samba](https://www.samba.org/) -t a Linux-kiszolgálóra, és telepítse adatkezelés átjárót egy Windows Serveren. Adatkezelés átjáró Linux-kiszolgálón való telepítése nem támogatott.
 
@@ -85,7 +85,7 @@ Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **
 | Forgatókönyv | Gazdagép a társított szolgáltatás definíciójában | folderPath az adatkészlet definíciójában |
 | --- | --- | --- |
 | Helyi mappa adatkezelés átjáró számítógépén: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\\* |D:\\ \\ (adatkezelés átjáró 2,0-es és újabb verziói esetén) <br/><br/> localhost (a adatkezelés Gateway 2,0-es verziójánál korábbi verziók esetében) |. \\ vagymappa\\almappája (adatkezelés átjáró 2,0-es és újabb verzióihoz)\\ \\ <br/><br/>D:\\ \\vagyd\\: mappa\\almappája (az átjáró 2,0-es verziójához)\\\\ |
-| Távoli megosztott mappa: <br/><br/>Példák: \\ \\MyServerShare\\ *vagy\\MyServerShare\\mappaalmappája\\ \\\\\\\\\\* |\\\\\\\\\\MyServer\\-megosztás |. \\ vagymappa\\almappája \\ \\ |
+| Távoli megosztott mappa: <br/><br/>Példák: \\ \\myserver\\megosztása\\ \* vagy \\ \\myserver\\megosztása\\mappa\\almappa\\\* |\\\\\\\\\\MyServer\\-megosztás |. \\ vagymappa\\almappája \\ \\ |
 
 >[!NOTE]
 >Ha létrehozási felhasználói felületen keresztül, nem szükséges bemeneti dupla fordított perjelet (`\\`) karaktert, mint amikor JSON-n keresztül, adjon meg egy fordított perjel.
@@ -124,7 +124,7 @@ Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: adatkészletek [létrehozása](data-factory-create-datasets.md). Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
+Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját lásd: [adatkészletek létrehozása](data-factory-create-datasets.md). Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
 
 A typeProperties szakasz eltérő az egyes adatkészletek esetében. Olyan információkat biztosít, mint például az adattárban lévő adatok helye és formátuma. A **fájlmegosztás** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
@@ -141,9 +141,9 @@ A typeProperties szakasz eltérő az egyes adatkészletek esetében. Olyan infor
 > A fájlnév és a fileFilter egyidejű használata nem lehetséges.
 
 ### <a name="using-partitionedby-property"></a>A partitionedBy tulajdonság használata
-Ahogy azt az előző szakaszban is említettük, megadhat egy dinamikus folderPath és fájlnevet az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, [Data Factory függvénnyel és a](data-factory-functions-variables.md)rendszerváltozókkal.
+Ahogy azt az előző szakaszban is említettük, megadhat egy dinamikus folderPath és fájlnevet az idősorozat-adatokhoz a **partitionedBy** tulajdonsággal, [Data Factory függvénnyel és a rendszerváltozókkal](data-factory-functions-variables.md).
 
-Az idősorozat-adatkészletek, az ütemezés és a szeletek részleteinek megismeréséhez lásd: adatkészletek [létrehozása](data-factory-create-datasets.md), [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md)és [folyamatok létrehozása](data-factory-create-pipelines.md).
+Az idősorozat-adatkészletek, az ütemezés és a szeletek részleteinek megismeréséhez lásd: [adatkészletek létrehozása](data-factory-create-datasets.md), [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md)és [folyamatok létrehozása](data-factory-create-pipelines.md).
 
 #### <a name="sample-1"></a>1\. példa:
 
@@ -195,12 +195,12 @@ Ez a szakasz ismerteti a másolási művelet eredményét a rekurzív és a copy
 
 | rekurzív érték | copyBehavior érték | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| true |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
-| true |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve, amely egy automatikusan létrehozott fájlnevet tartalmaz. |
-| false |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
-| false |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
-| false |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 tartalma egyetlen fájlba van egyesítve egy automatikusan létrehozott fájlnévvel.<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 automatikusan generált neve<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
+| true |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File5 |
+| true |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve, amely egy automatikusan létrehozott fájlnevet tartalmaz. |
+| false |preserveHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
+| false |flattenHierarchy |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatikusan létrehozott nevet a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
+| false |mergeFiles |A következő struktúrával rendelkező Mappa1:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>A célmappa Mappa1 az alábbi struktúrával jön létre:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 tartalma egyetlen fájlba van egyesítve egy automatikusan létrehozott fájlnévvel.<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 automatikusan generált neve<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
 
 ## <a name="supported-file-and-compression-formats"></a>Támogatott fájl-és Tömörítési formátumok
 A részletekért tekintse meg a [fájl-és tömörítési formátumokat Azure Data Factory](data-factory-supported-file-and-compression-formats.md) cikkben.
@@ -219,7 +219,7 @@ Ez a minta bemutatja, hogyan másolhat adatok egy helyszíni fájlrendszerből a
 
 Az alábbi minta egy helyszíni fájlrendszerből származó idősorozat-adatok óránkénti Azure Blob Storage-ba történő másolását végzi. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként állítsa be adatkezelés átjárót az adatáthelyezés a helyszíni [források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md)című részben leírtak szerint.
+Első lépésként állítsa be adatkezelés átjárót az [adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval](data-factory-move-data-between-onprem-and-cloud.md)című részben leírtak szerint.
 
 **Helyszíni fájlkiszolgáló társított szolgáltatása:**
 

@@ -1,6 +1,6 @@
 ---
-title: Feladatok beküldése az R Tools for Visual Studio – Azure HDInsight
-description: Egy HDInsight-fürtön a Visual Studio helyi gépről R-feladatok elküldéséhez.
+title: Feladatok elküldése az R Tools for Visual Studio alkalmazásból – Azure HDInsight
+description: R-feladatok elküldése a helyi Visual Studio-gépről egy HDInsight-fürtre.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,66 +8,66 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340799"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899939"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
-[Az R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) egy ingyenes, nyílt forráskódú bővítmény a Community (ingyenes), Professional, és Enterprise kiadás mindkét [Visual Studio 2017](https://www.visualstudio.com/downloads/), és [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)vagy újabb verziója. Nem áll rendelkezésre az RTVS [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019).
+[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) A (RTVS) a [Visual studio 2017](https://www.visualstudio.com/downloads/)és a [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) vagy újabb verziójának közösségi (ingyenes), Professional és Enterprise kiadásának ingyenes, nyílt forráskódú bővítménye. A RTVS nem érhető el a [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)-hez.
 
-RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní okno](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az intellisense (kódkiegészítés), [jeleníti meg képi megjelenítés](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) keresztül R-kódtárak ggplot2 és ggviz, például[R-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging), stb.
+A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az IntelliSense (kód befejezése), az r-könyvtárakon keresztüli [vizualizációk](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) , például a ggplot2 és a ggviz, az [r-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging)stb.
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-1. Telepítés [R Tools for Visual Studio](https://docs.microsoft.com/visualstudio/rtvs/installation).
+1. [A Visual studióhoz készült R Tools](https://docs.microsoft.com/visualstudio/rtvs/installation)telepítése.
 
-    ![A Visual Studio 2017 telepítése RTVS](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    ![A RTVS telepítése a Visual Studio 2017-ben](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Válassza ki a *adatelemzési és analitikai alkalmazások* számítási feladatot, majd válassza ki a **R nyelv támogatása**, **futásidő-támogatás az R-fejlesztéshez**, és  **A Microsoft R Client** beállítások.
+2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását**, az **r-fejlesztés futásidejű támogatását**, valamint a **Microsoft r-ügyfél** beállításait.
 
-3. Szüksége lesz az SSH-hitelesítésre szolgáló nyilvános és titkos kulcsokat.
+3. Nyilvános és titkos kulcsokat kell használnia az SSH-hitelesítéshez.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Telepítés [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a gépen. Machine Learning-kiszolgáló biztosítja az [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` funkciók.
+4. Telepítse a [ml Servert](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a gépre. ML Server biztosítja a [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` a függvényeket.
 
-5. Telepítse [PuTTY](https://www.putty.org/) biztosít számítási környezetek használatával futtassa `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz.
+5. Telepítse a [Putty](https://www.putty.org/) -t, hogy számítási környezetet biztosítson `RevoScaleR` a függvények a helyi ügyfélről a HDInsight-fürthöz való futtatásához.
 
-6. Lehetősége van az adatok adatelemzési beállítások alkalmazásához, amellyel az új elrendezéssel bővültek a munkaterület az R tools for Visual Studio környezetében.
-   1. A jelenlegi Visual Studio-beállítások mentéséhez használja a **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kijelölt környezeti beállítások exportálása** , és adjon meg egy fájlnevet. Ezek a beállítások visszaállításához használja ugyanazt a parancsot, és válassza ki **importálás kiválasztott környezeti beállítások**.
+6. Lehetősége van arra, hogy az adatelemzési beállításokat a Visual Studio-környezetre alkalmazza, amely új elrendezést biztosít a munkaterület számára az R-eszközökhöz.
+   1. A Visual Studio aktuális beállításainak mentéséhez használja az **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kiválasztott környezeti Beállítások exportálása** lehetőséget, és adjon meg egy fájlnevet. A beállítások visszaállításához használja ugyanazt a parancsot, és válassza a **kiválasztott környezeti beállítások importálása**lehetőséget.
 
-   2. Nyissa meg a **R Tools** menüben, majd válassza ki **Data Science beállítások...** .
+   2. Nyissa meg az **R Tools** menüelemet, majd válassza az **adatelemzési beállítások...** elemet.
 
-       ![Data Science beállítások...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Adatelemzési beállítások...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > A megközelítéssel az 1. lépésben, is mentheti, és állítsa vissza a személyre szabott adatokat adatszakértő elrendezés helyett a **Data Science beállítások** parancsot.
+      > Az 1. lépésben ismertetett módszer használatával az **adatelemzési beállítások** parancs megismétlése helyett mentheti és visszaállíthatja a személyre szabott adattudós-elrendezést.
 
-## <a name="execute-local-r-methods"></a>Hajtsa végre a helyi R-metódusok
+## <a name="execute-local-r-methods"></a>Helyi R-metódusok végrehajtása
 
-1. A Machine Learning-szolgáltatások HDInsight-fürt létrehozása.
-2. Telepítse a [RTVS bővítmény](https://docs.microsoft.com/visualstudio/rtvs/installation).
-3. Töltse le a [minták zip-fájl](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
-4. Nyissa meg `examples/Examples.sln` elindíthatja a megoldást a Visual Studióban.
-5. Nyissa meg a `1-Getting Started with R.R` fájlt a `A first look at R` megoldásmappára.
-6. Indítása a fájl elején a Ctrl + Enter küldése minden egyes sorban, egyenként, az R interaktív ablakban. Néhány sort a csomagok telepítési eltarthat egy ideig.
-    * Azt is megteheti válassza ki az összes sort az R-fájl (Ctrl + A), majd hajtsa végre az összes (Ctrl + Enter), vagy a végrehajtás interaktív ikonra az eszköztáron.
-        ![Végrehajtás interaktív](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+1. Hozza létre a HDInsight ML Services-fürtöt.
+2. Telepítse a [RTVS bővítményt](https://docs.microsoft.com/visualstudio/rtvs/installation).
+3. Töltse le a [minta zip-fájlt](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
+4. Nyissa meg `examples/Examples.sln` a megoldást a Visual Studióban.
+5. Nyissa `1-Getting Started with R.R` meg a fájlt `A first look at R` a megoldás mappájából.
+6. A fájl elejétől kezdve nyomja le a CTRL + ENTER billentyűkombinációt az egyes sorok egyszerre történő elküldéséhez az R interaktív ablakba. Egyes sorok a csomagok telepítésekor eltarthat egy ideig.
+    * Azt is megteheti, hogy kijelöli az R-fájl összes sorát (CTRL + A), majd végrehajtja az összeset (CTRL + ENTER), vagy kiválasztja az interaktív végrehajtás ikont az eszköztáron.
+        ![Interaktív végrehajtás](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
 
-7. Után minden sorban a parancsfájlban futtatja, akkor ehhez hasonló kimenetnek kell megjelennie:
+7. A parancsfájlban szereplő összes sor futtatása után a következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Data Science beállítások...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
+    ![Munkaterület](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Machine Learning-szolgáltatások HDInsight-fürthöz-feladatok elküldése
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Feladatok elküldése egy HDInsight ML Services-fürtbe
 
-PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft R ügyfél használata esetén létrehozhat egy számítási környezetet, futtatandó elosztott `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz. Használat `RxSpark` hozhat létre a számítási környezet, adja meg a felhasználónevet, az Apache Hadoop-fürt élcsomópont, SSH-kapcsolók, és így tovább.
+Ha egy Microsoft ml Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt Windows-számítógépről, létrehozhat egy számítási környezetet, amely elosztott `RevoScaleR` függvényeket futtat a helyi ügyfélről a HDInsight-fürtre. A `RxSpark` számítási környezet létrehozásához használja a felhasználónevet, a Apache Hadoop fürt peremhálózati csomópontját, az SSH-kapcsolókat és így tovább.
 
-1. A Machine Learning-szolgáltatások élcsomópont címe a HDInsight a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net` ahol `CLUSTERNAME` a Machine Learning-szolgáltatások fürt neve.
+1. A HDInsight `CLUSTERNAME-ed-ssh.azurehdinsight.net` -ben a ml-szolgáltatások peremhálózati csomópontjának címe, ahol `CLUSTERNAME` a a ml-szolgáltatások fürtjének neve.
 
-1. Illessze be az alábbi kód az R interaktív ablakban, a Visual Studióban, a változók értékeit, a telepítő a környezet megfelelő módosítása.
+1. Illessze be a következő kódot a Visual Studióban található R interaktív ablakba, és változtassa meg a telepítési változók értékeit a környezetnek megfelelően.
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -95,9 +95,9 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
     rxSetComputeContext(mySparkCluster)
     ```
     
-    ![A Spark környezet beállítása](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+    ![A Spark-környezet beállítása](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
 
-1. Az R interaktív ablakban hajtsa végre a következő parancsokat:
+1. Hajtsa végre a következő parancsokat az R interaktív ablakban:
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -107,25 +107,25 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Sikeres rx parancs végrehajtása](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
+    ![Az RX-parancs sikeres végrehajtása](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
 
-1. Ellenőrizze, hogy a `rxHadoopCopy` a rendszer sikeresen átmásolta a `people.json` fájlt a példa adatok mappából az újonnan létrehozott `/user/RevoShare/newUser` mappa:
+1. Ellenőrizze, hogy `rxHadoopCopy` a `people.json` fájl sikeresen átmásolva lett-e a példa adatmappából az újonnan létrehozott `/user/RevoShare/newUser` mappába:
 
-    1. Az Azure-ban a Machine Learning-szolgáltatások HDInsight fürt ablaktáblán válassza **tárfiókok** elemet a bal oldali menüben.
+    1. Az Azure HDInsight ML-szolgáltatások fürtjének paneljén válassza a bal oldali menüben a **Storage-fiókok** lehetőséget.
 
         ![Tárfiókok](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
-    2. Válassza ki a fürthöz, és jegyezze fel a tároló/könyvtár nevét, ami az alapértelmezett tárfiók.
+    2. Válassza ki a fürt alapértelmezett Storage-fiókját, jegyezze fel a tároló/könyvtár nevét.
 
-    3. Válassza ki **tárolók** a a storage-fiók panelen a bal oldali menüből.
+    3. A Storage-fiók panel bal oldali menüjében válassza a **tárolók** lehetőséget.
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Válassza ki a fürt tároló nevét, keresse meg a a **felhasználói** mappa (szükség lehet a kattintson *Továbbiak betöltése* a lista alján), majd *RevoShare*, majd **Új_felhasználó**. A `people.json` fájlt kell megjelennie a `newUser` mappát.
+    4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare*, majd a **newUser**lehetőséget. A `people.json` fájlnak a `newUser` mappában kell megjelennie.
 
-        ![Másolt fájl](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Fájl másolva](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-1. Miután végzett, a jelenlegi Apache Spark-környezetet használja, le kell állítania. Több környezet nem futtathatók egyszerre.
+1. Miután befejezte az aktuális Apache Spark környezet használatát, le kell állítania azt. Egyszerre nem futtathat több kontextust.
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -133,6 +133,6 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások](r-server-compute-contexts.md)
-* [ScaleR és SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) légitársaság járatkésések becsléséhez példát tartalmaz.
+* [Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz](r-server-compute-contexts.md)
+* A [scaleer és a sparker ötvözi](../hdinsight-hadoop-r-scaler-sparkr.md) a légitársaság repülési késési előrejelzéseit.
 

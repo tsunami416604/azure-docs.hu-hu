@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: a2189b2012f598542725acd2d5ebe3a7586bafd9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171914"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880819"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A cikk elvégzése után egy regisztrációs és bejelentkezési egyéni szabályzattal fog rendelkezni a márka és a megjelenés alapján. A Azure Active Directory B2C (Azure AD B2C) használatával szinte teljes mértékben vezérelheti a felhasználók számára megjelenített HTML-és CSS-tartalmakat. Ha egyéni házirendet használ, a felhasználói felület testreszabását az XML-ben kell konfigurálnia ahelyett, hogy a Azure Portal vezérlőit kellene használnia. 
+A cikk elvégzése után egy regisztrációs és bejelentkezési egyéni szabályzattal fog rendelkezni a márka és a megjelenés alapján. A Azure Active Directory B2C (Azure AD B2C) használatával szinte teljes mértékben vezérelheti a felhasználók számára megjelenített HTML-és CSS-tartalmakat. Ha egyéni házirendet használ, a felhasználói felület testreszabását az XML-ben kell konfigurálnia ahelyett, hogy a Azure Portal vezérlőit kellene használnia.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Hozzon létre HTML-tartalmat a termék márkájának nevében.
    </html>
    ```
 
-2. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *Customize-UI. html*néven.
+1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *Customize-UI. html*néven.
 
 > [!NOTE]
 > A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, használja a b2clogin.com-t. További előnyöket a [B2clogin.com használata](b2clogin.md) című témakörben talál.
@@ -59,73 +59,73 @@ Hozzon létre HTML-tartalmat a termék márkájának nevében.
 ## <a name="create-an-azure-blob-storage-account"></a>Azure Blob storage-fiók létrehozása
 
 >[!NOTE]
-> Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhez. Dönthet úgy, hogy webkiszolgálón üzemelteti a tartalmat, de engedélyeznie kell a [CORS a](https://enable-cors.org/server.html)webkiszolgálón.
+> Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhez. Dönthet úgy, hogy webkiszolgálón üzemelteti a tartalmat, de engedélyeznie kell a [CORS a webkiszolgálón](https://enable-cors.org/server.html).
 
-A HTML-tartalom blob Storage-ban való üzemeltetéséhez tegye a következőket:
+Ha ezt a HTML-tartalmat a blob Storage-ban szeretné tárolni, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
-3. Válasszon egy előfizetést a Storage-fiókjához.
-4. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
-5. Adja meg a Storage-fiók egyedi **nevét** .
-6. Válassza ki a tárolási fiók **földrajzi helyét** . 
-7. A **telepítési modell** maradhat a **Resource Managerben**.
-8. A **teljesítmény** továbbra is **standard**maradhat.
-9. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
-10. A **replikáció** az **ra-GRS**is maradhat.
-11. A **hozzáférési szint** ismegmaradhat. 
-12. A Storage-fiók létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.  
-    A telepítés befejezése után a Storage- **fiók** panelje automatikusan megnyílik.
+1. A **központi** menüben válassza az **új** > **Storage** > **Storage-fiók**lehetőséget.
+1. Válasszon egy előfizetést a Storage-fiókjához.
+1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
+1. Adja meg a Storage-fiók egyedi **nevét** .
+1. Válassza ki a tárolási fiók **földrajzi helyét** .
+1. A **telepítési modell** maradhat a **Resource Managerben**.
+1. A **teljesítmény** továbbra is **standard**maradhat.
+1. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
+1. A **replikáció** az **ra-GRS**is maradhat.
+1. A **hozzáférési szint** ismegmaradhat.
+1. A Storage-fiók létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
+    A telepítés befejezése után a Storage- **fiók** lap automatikusan megnyílik.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, tegye a következőket:
+Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a következő lépéseket:
 
 1. A bal oldali menüben a **blob Service** alatt válassza a **Blobok**elemet.
-2. Kattintson a **+ tároló**elemre.
-3. A **név**mezőbe írja be a *root*értéket. Ez lehet a választott név, például *wingtiptoys*, de az egyszerűség kedvéért ebben a példában a roott használjuk.
-4. **Nyilvános hozzáférési szint**esetén válassza a **blob**lehetőséget, majd **az OK gombot**.
-5. Az új tároló megnyitásához kattintson a **gyökér** elemre.
-6. Kattintson a **Feltöltés** gombra.
-7. Kattintson a **fájl kiválasztása**elem melletti mappa ikonra.
-8. Navigáljon a lapra, és válassza ki a korábban létrehozott **Customize-UI. html fájlt** az oldal felhasználói felületének testreszabása szakaszban.
-9. Ha egy almappában szeretne feltölteni, bontsa ki a **speciális** elemet, és adja meg a mappa nevét a **feltöltés mappába**.
-10. Válassza a **Feltöltés** lehetőséget.
-11. Válassza ki a feltöltött **Customize-UI. html** blobot.
-12. Az **URL-cím** szövegmező jobb oldalán válassza a **Másolás vágólapra** ikont az URL-cím vágólapra másolásához.
-13. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibát tapasztal, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
+1. Kattintson a **+ tároló**elemre.
+1. A **név**mezőbe írja be a *root*értéket. Ez lehet a választott név, például *wingtiptoys*, de az egyszerűség kedvéért ebben a példában a *roott* használjuk.
+1. **Nyilvános hozzáférési szint**esetén válassza a **blob**lehetőséget, majd **az OK gombot**.
+1. Az új tároló megnyitásához kattintson a **gyökér** elemre.
+1. Kattintson a **Feltöltés** gombra.
+1. Kattintson a **fájl kiválasztása**elem melletti mappa ikonra.
+1. Navigáljon a lapra, és válassza ki a korábban létrehozott **Customize-UI. html fájlt** az oldal felhasználói felületének testreszabása szakaszban.
+1. Ha egy almappában szeretne feltölteni, bontsa ki a **speciális** elemet, és adja meg a mappa nevét a **feltöltés mappába**.
+1. Válassza a **Feltöltés** lehetőséget.
+1. Válassza ki a feltöltött **Customize-UI. html** blobot.
+1. Az **URL-cím** szövegmező jobb oldalán válassza a **Másolás vágólapra** ikont az URL-cím vágólapra másolásához.
+1. A böngészőben nyissa meg a vágólapra másolt URL-címet, és ellenőrizze, hogy a feltöltött blob elérhető-e. Ha nem érhető el, például ha `ResourceNotFound` hibát tapasztal, győződjön meg arról, hogy a tároló hozzáférési típusa **blob**.
 
 ## <a name="configure-cors"></a>A CORS konfigurálása
 
-A blob Storage a következő módon konfigurálható a több eredetű erőforrás-megosztáshoz:
+Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen eredetű erőforrás-megosztáshoz:
 
 1. A menüben válassza a **CORS**lehetőséget.
-2. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
-3. Az **engedélyezett módszerek**esetében válassza a `GET` mindkettő `OPTIONS`és a lehetőséget.
-4. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
-5. Aközzétett fejlécek esetében írjon be egy csillagot (*).
-6. A **Max Age**értéknél adja meg a 200 értéket.
-7. Kattintson a **Save** (Mentés) gombra.
+1. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
+1. Az **engedélyezett módszerek**esetében válassza a `GET` mindkettő `OPTIONS`és a lehetőséget.
+1. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
+1. Aközzétett fejlécek esetében írjon be egy csillagot (*).
+1. A **Max Age**értéknél adja meg a 200 értéket.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="test-cors"></a>CORS tesztelése
 
-Ellenőrizze, hogy készen áll-e a következők elvégzésével:
+Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 
 1. Nyissa meg a [www.test-CORS.org](https://www.test-cors.org/) webhelyét, majd illessze be az URL-címet a **távoli URL-cím** mezőbe.
-2. Kattintson a **kérelem küldése**gombra.  
+1. Kattintson a **kérelem küldése**gombra.
     Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a [CORS beállításai](#configure-cors) . Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.
 
 ## <a name="modify-the-extensions-file"></a>A kiterjesztések fájljának módosítása
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például: *TrustFrameworkBase. XML*.
-2. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
-3. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
-4. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt. 
-5. Keresse meg a másolt XML `Id="api.signuporsignin"` -fájlban található ContentDefinition elemet.
-6. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
-    
+1. Nyissa meg a szabályzat alapfájlját. Például *`SocialAndLocalAccounts/`*****.`TrustFrameworkBase.xml` Ez az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
+1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
+1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
+1. Keresse meg a másolt XML `Id="api.signuporsignin"` -fájlban található ContentDefinition elemet.
+1. Módosítsa a **tartalomdefinícióban** értékét a Storage-ba feltöltött HTML-fájl URL-címére. Például: `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+
     Az egyéni szabályzatnak a következőhöz hasonlóan kell kinéznie:
 
     ```xml
@@ -143,22 +143,22 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
     </BuildingBlocks>
     ```
 
-7. Mentse a bővítmények fájlt.
+1. Mentse a bővítmények fájlt.
 
 ## <a name="upload-your-updated-custom-policy"></a>Töltse fel a frissített egyéni szabályzatot
 
 1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza az **identitási élmény keretrendszert**.
-2. Kattintson **a minden házirend**elemre.
-3. Kattintson a **szabályzat feltöltése**elemre.
-4. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **identitási élmény keretrendszert**.
+1. Kattintson **a minden házirend**elemre.
+1. Kattintson a **szabályzat feltöltése**elemre.
+1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. A **Azure ad B2C** panelen lépjen az **összes házirend**elemre.
-2. Válassza ki a feltöltött egyéni szabályzatot, majd kattintson a **Futtatás most** gombra.
-3. Regisztrálnia kell egy e-mail-cím használatával.
+1. A **Azure ad B2C** lapon lépjen a **minden házirend**elemre.
+1. Válassza ki a feltöltött egyéni szabályzatot, majd kattintson a **Futtatás most** gombra.
+1. Regisztrálnia kell egy e-mail-cím használatával.
 
 ## <a name="reference"></a>Hivatkozás
 
@@ -179,19 +179,20 @@ A sample_templates/Wingtip mappa a következő HTML-fájlokat tartalmazza:
 | *unified.html* | Ezt a fájlt sablonként használhatja az egyesített regisztrációs vagy bejelentkezési oldalhoz. |
 | *updateprofile.html* | Ezt a fájlt sablonként használhatja a profil frissítési lapjához. |
 
-Itt találja a minta használatának lépéseit. 
-1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát a sample_templates területen. Használhatja a `contoso`vagy a-t. `wingtip`
-2. Töltse fel a `css`, `fonts`és `images` a mappák alá tartozó összes fájlt a blob Storage-ba az előző szakaszokban leírtak szerint. 
-3. Ezután nyissa meg \*a (z) `wingtip` vagy `contoso` a gyökérkönyvtárában található. html fájlt, és cserélje le a "http://localhost" összes példányát a 2. lépésben feltöltött CSS, images és Fonts fájlok URL-címeire.
-4. Mentse a \*. html fájlokat, és töltse fel őket a blob Storage-ba.
-5. Most módosítsa a kiterjesztések fájlt, ahogy azt korábban már említettük a [kiterjesztések fájl módosításakor](#modify-the-extensions-file).
-6. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \*. HTML fájlok között.
+A példa a következőképpen használható:
 
-### <a name="content-defintion-ids"></a>Tartalom Defintion-azonosítói
+1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát a sample_templates területen. Használhatja a `contoso`vagy a-t. `wingtip`
+1. Töltse fel a `css`, `fonts`és `images` a mappák alá tartozó összes fájlt a blob Storage-ba az előző szakaszokban leírtak szerint.
+1. Ezután nyissa meg \*a (z) `wingtip` vagy `contoso` a gyökérkönyvtárában található. html fájlt, és cserélje le a "http://localhost" összes példányát a 2. lépésben feltöltött CSS, images és Fonts fájlok URL-címeire.
+1. Mentse a \*. html fájlokat, és töltse fel őket a blob Storage-ba.
+1. Most módosítsa a kiterjesztések fájlt, ahogy azt korábban már említettük a [kiterjesztések fájl módosításakor](#modify-the-extensions-file).
+1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a \*kiterjesztések és a. HTML fájlok között.
+
+### <a name="content-definition-ids"></a>Tartalom-definíciós azonosítók
 
 A regisztrációs vagy bejelentkezési egyéni házirend módosítása szakaszban konfigurálta a tartalom definícióját `api.idpselections`. A Azure AD B2C Identity Experience Framework által felismert és a leírások teljes készletét a következő táblázat tartalmazza:
 
-| Tartalom definíciójának azonosítója | Leírás | 
+| Tartalom definíciójának azonosítója | Leírás |
 |-----------------------|-------------|
 | *api.error* | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. |
 | *api.idpselections* | **Identitás-szolgáltató kiválasztása lap**. Ez az oldal azon identitás-szolgáltatók listáját tartalmazza, amelyeket a felhasználó a bejelentkezés során választhat. Ezek a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |

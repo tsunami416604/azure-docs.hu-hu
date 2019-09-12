@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d624f6a1711bf2c2bad5ebc252d00c299ebca225
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872679"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909826"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -633,7 +633,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       }
       ```
 
-   * **Nem felügyelt és titkosított virtuális gépek Azure ad nélkül (BEK és KEK)** – nem felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított) – Ha a forrás kulcstartó **/kulcs/titkos kód nem érhető el** , állítsa vissza a Key Vault kulcsát és titkait a következővel: a [nem titkosított virtuális gépek Azure Backup helyreállítási pontról](backup-azure-restore-key-secret.md)történő visszaállításának eljárása. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
+   * **Nem felügyelt és titkosított virtuális gépek Azure ad nélkül (BEK és KEK)** – nem felügyelt, titkosított virtuális gépekhez az Azure ad nélkül (a BEK & KEK használatával titkosított) – Ha a forrás kulcstartó **/kulcs/titkos kód nem érhető el** , állítsa vissza a Key Vault kulcsát és titkait a következővel: a [nem titkosított virtuális gépek Azure Backup helyreállítási pontról történő visszaállításának](backup-azure-restore-key-secret.md)eljárása. Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-blob titkosítási adatainak beállításához (ez a lépés nem szükséges az adatblobhoz). A $dekurl és $kekurl a visszaállított kulcstartóból hívható le.
 
    Az alábbi szkriptet csak akkor kell végrehajtani, ha a forrás kulcstartó/kulcs/titok nem érhető el.
 
@@ -647,7 +647,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
-   Ha a **kulcs/titkos** kulcsok elérhetők, és a titkosítási adatok az operációs rendszer blobján vannak beállítva, csatolja a lemezeket az alább megadott parancsfájllal.
+   Ha a **kulcs/titkos kulcsok elérhetők** , és a titkosítási adatok az operációs rendszer blobján vannak beállítva, csatolja a lemezeket az alább megadott parancsfájllal.
 
     Ha a forrás kulcstartó/kulcs/titkos kódok elérhetők, akkor a fenti szkriptet nem kell végrehajtani.
 
@@ -660,11 +660,11 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       }
       ```
 
-   * **Felügyelt és nem titkosított virtuális gépek** – felügyelt, nem titkosított virtuális gépekhez csatolja a visszaállított felügyelt lemezeket. Részletes információk: adatlemez csatolása [Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
+   * **Felügyelt és nem titkosított virtuális gépek** – felügyelt, nem titkosított virtuális gépekhez csatolja a visszaállított felügyelt lemezeket. Részletes információk: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Felügyelt és titkosított virtuális gépek az Azure ad-vel (csak BEK)** – felügyelt titkosított virtuális gépekhez az Azure ad-vel (csak a BEK használatával), csatolja a visszaállított felügyelt lemezeket. Részletes információk: adatlemez csatolása [Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
+   * **Felügyelt és titkosított virtuális gépek az Azure ad-vel (csak BEK)** – felügyelt titkosított virtuális gépekhez az Azure ad-vel (csak a BEK használatával), csatolja a visszaállított felügyelt lemezeket. Részletes információk: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
 
-   * **Felügyelt és titkosított virtuális gépek az Azure ad-vel (BEK és KEK)** – felügyelt titkosított virtuális gépekhez az Azure ad-vel (a BEK és a KEK használatával titkosítva) csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információk: adatlemez csatolása [Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
+   * **Felügyelt és titkosított virtuális gépek az Azure ad-vel (BEK és KEK)** – felügyelt titkosított virtuális gépekhez az Azure ad-vel (a BEK és a KEK használatával titkosítva) csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információk: [adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell használatával](../virtual-machines/windows/attach-disk-ps.md).
 
    * **Felügyelt és titkosított virtuális gépek az Azure ad nélkül (csak BEK)** – felügyelt, titkosított virtuális gépek Azure ad nélkül (csak BEK-vel titkosítva), ha a forrás kulcstartója **/titkos kulcsa nem érhető el** a Key vaulthoz való visszaállítási eljárás használatával. [ nem titkosított virtuális gép Azure Backup helyreállítási pontból](backup-azure-restore-key-secret.md). Ezután hajtsa végre a következő parancsfájlokat a visszaállított operációsrendszer-lemez titkosítási adatainak beállításához (ez a lépés nem szükséges az adatlemezhez). A $dekurl a visszaállított kulcstartóból hívható le.
 
@@ -716,6 +716,7 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
     ```
 
 7. Leküldéses ADE-bővítmény.
+   Ha az ade-bővítmények nincsenek leküldve, akkor az adatlemezek titkosítatlan lesznek megjelölve, ezért az alábbi lépések végrehajtásához kötelező:
 
    * **Virtuális gép az Azure ad-vel** – a következő parancs használatával manuálisan engedélyezheti az adatlemezek titkosítását  
 
@@ -746,6 +747,8 @@ A következő szakasz azokat a lépéseket sorolja fel, amelyek szükségesek a 
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+> [!NOTE]
+> Győződjön meg arról, hogy manuálisan törli a titkosított virtuális gép visszaállítási lemezének folyamata során létrehozott JASON-fájlokat.
 
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Fájlok visszaállítása Azure-beli virtuális gépek biztonsági másolatából

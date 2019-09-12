@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: 882c52995d788b0cd65c71a935ab795a7e7d2f53
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810847"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882402"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -23,7 +23,7 @@ A HDInsight lehetővé teszi értékes információk beszerzését nagy mennyis�
 
 ## <a name="advanced-analytics-process"></a>Fejlett elemzési folyamat
 
-![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
 Miután azonosította az üzleti problémát, és megkezdte az adatok gyűjtését és feldolgozását, létre kell hoznia egy modellt, amely az előre jelezni kívánt kérdést jelöli. A modell egy vagy több gépi tanulási algoritmust használ az üzleti igényeknek leginkább megfelelő előrejelzési típus elvégzéséhez.  Az adatok többségét a modell betanítására kell használni, a többit pedig tesztelésre vagy kiértékelésre használják. 
 

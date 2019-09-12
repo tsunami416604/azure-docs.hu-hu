@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 36233dc986752ded409389a0a8e267c92a40b5a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562599"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882484"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Apache Hive a HDInsight JDBC-illesztőn keresztül
 
@@ -63,11 +63,11 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 3. Indítsa el a mókus SQL-alkalmazást. Az ablak bal oldalán válassza az **illesztőprogramok**lehetőséget.
 
-    ![Illesztőprogramok lap az ablak bal oldalán](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
+    ![Illesztőprogramok lap az ablak bal oldalán](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
 4. Az **illesztőprogramok** párbeszédpanel tetején található ikonok közül válassza az **+** ikont az illesztőprogram létrehozásához.
 
-    ![Illesztőprogramok ikonjai](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
+    ![Illesztőprogramok ikonjai](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. Az illesztőprogram hozzáadása párbeszédpanelen adja meg a következő adatokat:
 
@@ -76,13 +76,13 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
     * **Extra osztály elérési útja**: A **Hozzáadás** gomb használatával adja hozzá a korábban letöltött összes jar-fájlt
     * **Osztály neve**: org. Apache. kaptár. JDBC. HiveDriver
 
-   ![illesztőprogram hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
+   ![illesztőprogram hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    A beállítások mentéséhez kattintson **az OK gombra** .
 
 6. A mókus SQL-ablak bal oldalán válassza az **aliasok**lehetőséget. Ezután válassza a **+** ikont a kapcsolódási alias létrehozásához.
 
-    ![új alias hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
+    ![új alias hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. Használja az alábbi értékeket az **alias hozzáadása** párbeszédpanelen.
 
@@ -98,7 +98,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     * **Jelszó**: A fürt bejelentkezési fiókjának jelszava.
 
-   ![alias hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
+   ![alias hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT] 
     > A **teszt** gomb használatával ellenőrizze, hogy a kapcsolódás működik-e. **Kapcsolódás a következőhöz: Ekkor megjelenik a** kaptár a HDInsight párbeszédpanelen, és válassza a **Kapcsolódás** lehetőséget a teszt végrehajtásához. Ha a teszt sikeres, a **sikeres kapcsolatok** párbeszédpanel jelenik meg. Ha hiba történik, tekintse meg a [Hibaelhárítás](#troubleshooting)című témakört.
@@ -107,7 +107,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
 8. A mókus SQL-oldal tetején található **Kapcsolódás** legördülő listáról válassza a **kaptár elemet a HDInsight**. Amikor a rendszer kéri, válassza ki a **Connect**.
 
-    ![kapcsolatok párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
+    ![kapcsolatok párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Ha csatlakoztatva van, adja meg a következő lekérdezést az SQL-lekérdezés párbeszédpanelen, majd válassza a **Futtatás** ikont (egy futó személy). Az eredmények területnek a lekérdezés eredményét kell megjelenítenie.
 
@@ -115,7 +115,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
     select * from hivesampletable limit 10;
     ```
 
-    ![SQL-lekérdezési párbeszédpanel, beleértve az eredményeket](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
+    ![SQL-lekérdezési párbeszédpanel, beleértve az eredményeket](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
 
 ## <a name="connect-from-an-example-java-application"></a>Csatlakozási példa Java-alkalmazásból
 
@@ -145,7 +145,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 Most, hogy megtanulta, hogyan használhatja a JDBC-t a kaptár használatára, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight való munkát.
 
-* Az [Azure HDInsight-ban a Microsoft Power BI Apache Hivei](apache-hadoop-connect-hive-power-bi.md)az adatmegjelenítést.
+* Az [Azure HDInsight-ban a Microsoft Power BI Apache Hivei az adatmegjelenítést](apache-hadoop-connect-hive-power-bi.md).
 * [Interaktív lekérdezési struktúra-adatmegjelenítés az Azure HDInsight Power BIával](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Apache Hive lekérdezések futtatása az Azure HDInsight az Apache Zeppelin használatával](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Az Excel és a HDInsight összekötése a Microsoft kaptár ODBC-illesztővel](apache-hadoop-connect-excel-hive-odbc-driver.md).

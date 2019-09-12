@@ -26,7 +26,7 @@ Az Azure webalkalmazási tűzfal (WAF) figyelése és naplózása a Azure Monito
 
 A FrontDoor naplóval rendelkező WAF integrálva van a [Azure monitor](../azure-monitor/overview.md). Azure Monitor lehetővé teszi a diagnosztikai információk nyomon követését, beleértve a WAF-riasztásokat és-naplókat. A WAF-figyelést a portálon belül, a **diagnosztika** lapon vagy közvetlenül a Azure monitor szolgáltatáson keresztül konfigurálhatja.
 
-Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A **** /bal oldali figyelési**metrikák** lapról hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
+Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A/bal oldali figyelési**metrikák** lapról hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
 
 ![WAFMetrics](./media//waf-front-door-monitor/waf-frontdoor-metrics.png)
 

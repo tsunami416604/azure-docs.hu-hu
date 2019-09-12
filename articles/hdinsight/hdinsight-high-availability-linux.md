@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68405993"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879766"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -94,7 +94,7 @@ A következő módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érh
 
 * **SSH-alagút**: Ha az egyik olyan csomóponton üzemeltetett webszolgáltatáshoz kell hozzáférni, amely nem érhető el az interneten, SSH-alagutat kell használnia. További információ: [SSH-alagút használata HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) -dokumentummal.
 
-* **Azure Virtual Network**: Ha a HDInsight-fürt egy Azure-Virtual Network része, akkor az ugyanazon Virtual Network található összes erőforrás közvetlenül hozzáférhet a fürtben lévő összes csomóponthoz. További információkért lásd a [virtuális hálózat](hdinsight-plan-virtual-network-deployment.md) megtervezése a HDInsight dokumentumhoz című témakört.
+* **Azure Virtual Network**: Ha a HDInsight-fürt egy Azure-Virtual Network része, akkor az ugyanazon Virtual Network található összes erőforrás közvetlenül hozzáférhet a fürtben lévő összes csomóponthoz. További információkért lásd a [virtuális hálózat megtervezése a HDInsight](hdinsight-plan-virtual-network-deployment.md) dokumentumhoz című témakört.
 
 ## <a name="how-to-check-on-a-service-status"></a>A szolgáltatás állapotának beadása
 
@@ -106,9 +106,9 @@ A Ambari webes felhasználói felülete a `https://CLUSTERNAME.azurehdinsight.ne
 
 Amikor megérkezik a Ambari lapra, a telepített szolgáltatások megjelennek a lap bal oldalán.
 
-![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/services.png)
+![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
-Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található riasztások hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
+Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található **riasztások** hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
 
 A következő riasztások segítik a fürt rendelkezésre állásának figyelését:
 
@@ -153,13 +153,13 @@ A következő riasztások segítik a fürt rendelkezésre állásának figyelés
 
 Az egyes szolgáltatások lehetőség kiválasztásával további információkat tekinthet meg.
 
-Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt információt arról, hogy melyik fő csomóponton fut a szolgáltatás. Ezen információk megtekintéséhez használja a gazdagépek hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
+Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt információt arról, hogy melyik fő csomóponton fut a szolgáltatás. Ezen információk megtekintéséhez használja a **gazdagépek** hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
 
-![gazdagépek listája](./media/hdinsight-high-availability-linux/hosts.png)
+![gazdagépek listája](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Az egyik fő csomóponthoz tartozó hivatkozás kiválasztásával megjeleníti az adott csomóponton futó szolgáltatásokat és összetevőket.
 
-![Összetevő állapota](./media/hdinsight-high-availability-linux/nodeservices.png)
+![Összetevő állapota](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 A Ambari használatával kapcsolatos további információkért lásd: [HDInsight figyelése és kezelése az Apache Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md).
 
@@ -175,7 +175,7 @@ A következő paranccsal ellenőrizhető a szolgáltatás állapota a Ambari RES
 * Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
 * Cserélje le a **szolgáltatásnév** nevet annak a szolgáltatásnak a nevére, amelynek az állapotát ellenőriznie szeretné.
 
-Ha például a **HDFS** szolgáltatás állapotát egy **mycluster**nevű fürtön szeretné megtekinteni, a jelszó jelszavával, **használja**a következő parancsot:
+Ha például a **HDFS** szolgáltatás állapotát egy **mycluster**nevű fürtön szeretné megtekinteni, **a jelszó jelszavával, használja**a következő parancsot:
 
     curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
@@ -241,7 +241,7 @@ Az elérhető parancsok listáját a `help` `sftp>` parancssorba írja be.
 
 A Ambari webes felhasználói felületén válassza ki azt a szolgáltatást, amelyre vonatkozóan meg szeretné tekinteni a naplókat (például a FONALat). Ezután a **gyors hivatkozások** használatával kiválaszthatja, hogy melyik főcsomóponton szeretné megtekinteni a naplókat.
 
-![Gyors hivatkozások használata a naplók megtekintéséhez](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Gyors hivatkozások használata a naplók megtekintéséhez](./media/hdinsight-high-availability-linux/quick-links-view-logs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>A csomópont méretének konfigurálása
 
@@ -251,7 +251,7 @@ Fürt létrehozásakor megadhatja a csomópontok méretét. A következő inform
 
 * **Azure Portal**: Fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
 
-    ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![A fürt létrehozási varázslójának képe a csomópontok méretének kiválasztásával](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
 * **Azure CLI**: Az az [hdinsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) parancs használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper csomópont méretét a `--headnode-size`, `--workernode-size`, és `--zookeepernode-size` paraméterek használatával.
 

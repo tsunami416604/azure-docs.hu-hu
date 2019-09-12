@@ -60,7 +60,7 @@ Ha már beállította [](how-to-create-group-machine-dependencies.md)a függős�
 
 1. A **kiszolgálók** lap **Azure Migratejában: Kiszolgáló-** értékelési csempe, kattintson a **csoportok**elemre.
 2. Kattintson arra a csoportra, amelyet szeretne pontosítani.
-    - Ha még nem állította be a függőségi leképezést, **** akkor a függőségek oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges**elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
+    - Ha még nem állította be a függőségi leképezést, akkor a függőségek oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges**elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
 
         ![Függőségi leképezés hozzáadása](./media/how-to-create-a-group/add-dependency-mapping.png)
 

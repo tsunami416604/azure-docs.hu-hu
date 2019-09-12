@@ -1,5 +1,5 @@
 ---
-title: 'Node. js gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Azure Search REST API-kkal – Azure Search'
+title: 'Gyors útmutató: Keresési index létrehozása a Node. js-ben REST API-k használatával – Azure Search'
 description: Node. js-minta a Azure Searchhoz, amely bemutatja, hogyan lehet a JavaScriptből létrehozni, betölteni a betöltést és a lekérdezést.
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656307"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881500"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Gyors útmutató: Azure Search index létrehozása a Node. js-ben
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása a Node. js-ben a REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és 
 + Ebben a cikkben vagy a tárház rövid útmutató [ könyvtárában](https://github.com/Azure-Samples/azure-search-javascript-samples/)talál egy minta-index struktúrát és a megfelelő dokumentumokat.
 + [Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
-Ajánlott
+Ajánlott:
 
 * [Visual Studio Code](https://code.visualstudio.com).
 * A VSCode [szebb](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) és [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) bővítményei.
@@ -124,9 +124,9 @@ Cserélje le `[SERVICE_NAME]` az értéket a keresési szolgáltatás nevére. C
 
 ## <a name="1---create-index"></a>1 – index létrehozása 
 
-Hozzon létre egy **hotels_quickstart_index. JSON**fájlt.  Ez a fájl határozza meg, hogy a Azure Search hogyan működik a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott `type`értékkel történik. Az egyes mezők több index-attribútummal is rendelkeznek, amelyek megadják, hogy Azure Search kereshet, szűrheti, rendezheti és részletezheti a mezőt. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) adattípusokról és az [index attribútumairól](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)itt olvashat. 
+Hozzon létre egy **hotels_quickstart_index. JSON**fájlt.  Ez a fájl határozza meg, hogy a Azure Search hogyan működik a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott `type`értékkel történik. Az egyes mezők több index-attribútummal is rendelkeznek, amelyek megadják, hogy Azure Search kereshet, szűrheti, rendezheti és részletezheti a mezőt. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott adattípusokról](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) és az [index attribútumairól](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)itt olvashat. 
 
-Adja hozzá a következőt a **hotels_quickstart_index. JSON** fájlhoz, vagy [töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
+Adja hozzá a következőt a **hotels_quickstart_index. JSON** [fájlhoz, vagy töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
 ```json
 {
@@ -453,7 +453,7 @@ Ne felejtsük el, hogy a `run()`végső hívás! A következő lépésben való 
 
 Figyelje meg `AzureSearchClient.indexExistsAsync()` , `AzureSearchClient.deleteIndexAsync()` hogy nem végez paramétereket. Ezek a függvények `AzureSearchClient.request()` argumentum nélkül `bodyJson` hívhatók. `AzureSearchClient.request()`A (z `bodyJson === null` `deleteIndexAsync()` `indexExistsAsync()` ) `true`óta a`init` struktúra úgy van beállítva, hogy csak a http-művelet ("Get" és "Delete") és a fejlécek legyenek megadva, amelyek meghatározzák a kérés kulcsát.  
 
-Ezzel szemben a `AzureSearchClient.createIndexAsync(indexDefinition)` metódus egy paramétert hajt végre. A `run` függvény a `index.js`alkalmazásban továbbítja a **hotels_quickstart_index. JSON** fájl tartalmát a `AzureSearchClient.createIndexAsync(indexDefinition)` metódusnak. A `createIndexAsync()` metódus átadja ezt a `AzureSearchClient.request()`definíciót a következőnek:. A `AzureSearchClient.request()`-ben `bodyJson === null` azóta `false`a `body` struktúra nem csak a http-műveletet ("put") és a fejléceket tartalmazza, de az index definíciós adatát állítja be. `init`
+Ezzel szemben `AzureSearchClient.createIndexAsync(indexDefinition)` _a metódus egy_ paramétert hajt végre. A `run` függvény a `index.js`alkalmazásban továbbítja a **hotels_quickstart_index. JSON** fájl tartalmát a `AzureSearchClient.createIndexAsync(indexDefinition)` metódusnak. A `createIndexAsync()` metódus átadja ezt a `AzureSearchClient.request()`definíciót a következőnek:. A `AzureSearchClient.request()`-ben `bodyJson === null` azóta `false`a `body` struktúra nem csak a http-műveletet ("put") és a fejléceket tartalmazza, de az index definíciós adatát állítja be. `init`
 
 ### <a name="prepare-and-run-the-sample"></a>A minta előkészítése és futtatása
 
@@ -465,7 +465,7 @@ A következő parancsokhoz használjon egy terminál-ablakot.
 
 A program által végrehajtott műveleteket ismertető üzenetnek kell megjelennie. Ha szeretné megtekinteni a kérések részletesebb ismertetését, a **AzureSearchClient. js**fájlban megadhatja a [sorok `AzureSearchClient.request()` a metódus https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) kezdetén] megjegyzést. 
 
-Nyissa meg a keresési szolgáltatás áttekintését a Azure Portal. Válassza ki az indexek lapot. Az alábbihoz hasonló kimenet jelenik meg:
+Nyissa meg a keresési szolgáltatás **áttekintését** a Azure Portal. Válassza ki az **indexek** lapot. Az alábbihoz hasonló kimenet jelenik meg:
 
 ![Képernyőkép a Azure Portalről, Search Service áttekintése, indexek lap](media/search-get-started-nodejs/create-index-no-data.png)
 
@@ -600,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Futtassa újra `node index.js`a programot a alkalmazással. Az 1. lépésben látott, némileg eltérő üzeneteket kell látnia. Ebben az esetben az index létezik, és az alkalmazás törlésével kapcsolatos üzenetnek kell megjelennie, mielőtt az alkalmazás létrehozza az új indexet, és az adatait közzéteszi. 
+Futtassa újra `node index.js`a programot a alkalmazással. Az 1. lépésben látott, némileg eltérő üzeneteket kell látnia. Ebben az esetben _az index létezik_ , és az alkalmazás törlésével kapcsolatos üzenetnek kell megjelennie, mielőtt az alkalmazás létrehozza az új indexet, és az adatait közzéteszi. 
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827588"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909799"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -106,8 +106,8 @@ Igen, használhat olyan biztonsági másolatokat, amelyeket a lemezek a nem fel�
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hogyan lehet visszaállítani egy virtuális gépet egy, a virtuális gép felügyelt lemezekre történő migrálását megelőző visszaállítási pontra?
 Alapértelmezés szerint a visszaállítási virtuálisgép-feladatok létrehoznak egy nem felügyelt lemezekkel rendelkező virtuális gépet. Virtuális gép létrehozása felügyelt lemezekkel:
-1. [Visszaállítás a](tutorial-restore-disk.md#restore-a-vm-disk)nem felügyelt lemezekre.
-2. [Konvertálja a visszaállított lemezeket](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)a felügyelt lemezekre.
+1. [Visszaállítás a nem felügyelt lemezekre](tutorial-restore-disk.md#restore-a-vm-disk).
+2. [Konvertálja a visszaállított lemezeket a felügyelt lemezekre](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
 3. [Hozzon létre egy virtuális gépet a Managed Disks szolgáltatással](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 [További](backup-azure-vms-automation.md#restore-an-azure-vm) információ a PowerShellben való használatáról.
@@ -120,6 +120,12 @@ A felügyelt lemezes Azure-beli virtuális gépek esetében a rendelkezésre ál
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Hogyan lehet gyorsabb visszaállítási teljesítményt kapni?
 Az [azonnali visszaállítási](backup-instant-restore-capability.md) funkció segíti a gyorsabb biztonsági mentést, és azonnal helyreállítja a pillanatképeket.
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Mi történik, ha módosítjuk a titkosított virtuális gép Key Vault-beállításait?
+
+Miután módosította a kulcstároló beállításait a titkosított virtuális gépen, a biztonsági mentések továbbra is működni fognak az új részletekkel, azonban a helyreállítási pontról a változás előtti visszaállítás után vissza kell állítania a kulcstartó titkait, mielőtt a virtuális gépet létre tudja hozni  Ez. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
+
+Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a lépést, és ugyanazt a kulcstartót is használhatják a visszaállítás után.
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

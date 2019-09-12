@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 39b87347212aef36bcced1a5b297f2f9e89bcc47
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734916"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885160"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -100,7 +100,7 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
 
 2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása**lehetőségre.
 
-    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase szabályzatok listája](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. A **házirend létrehozása** képernyőn adja meg a következő értékeket:
 
@@ -119,7 +119,7 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
    * `*`nulla vagy több karakterből álló előfordulást jelez.
    * `?`egyetlen karaktert jelöl.
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger-szabályzat – értékesítések létrehozása](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
@@ -138,7 +138,7 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
    |Felhasználó kijelölése  | marketing_user1 |
    |Engedélyek  | Olvasás |
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger-szabályzat létrehozása marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
 

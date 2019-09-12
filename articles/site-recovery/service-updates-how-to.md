@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828597"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910477"
 ---
 # <a name="service-updates-in-site-recovery"></a>Szolgáltatási frissítések a Site Recovery
 
@@ -103,8 +103,7 @@ Ha manuálisan szeretné kezelni a frissítéseket, tegye a következőket:
 
 1. A jelenlegi verzió és a [támogatási nyilatkozat](#support-statement-for-azure-site-recovery)alapján telepítse az első frissítést a helyszíni konfigurációs kiszolgálón a [következő utasítások](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)használatával. 
 2. Ha kibővített folyamat-kiszolgálókkal rendelkezik, [ezeket az utasításokat követve](vmware-azure-manage-process-server.md#upgrade-a-process-server)frissítse a következőt.
-3. Ha frissíteni szeretné a mobilitási ügynököt minden védett gépen, nyissa meg a **védett elemek** > **replikált elemek elemet**.
-4. Válassza ki a virtuális gépet, és kattintson az oldal alján megjelenő **frissítési ügynök** gombra az egyes virtuális gépekhez. Ezzel frissíti a mobilitási szolgáltatás ügynökét az összes védett virtuális gépen.
+3. Ha frissíteni szeretné a mobilitási ügynököt az egyes védett gépeken, tekintse meg [ezt](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) a cikket.
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>Újraindítás a mobilitási szolgáltatás frissítése után
 

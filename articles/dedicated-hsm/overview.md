@@ -2,8 +2,8 @@
 title: Mit jelent a dedikált HSM? -Az azure dedikált HSM |} A Microsoft Docs
 description: Azure dedikált HSM-be, e rövid áttekintés révén kulcstároló-képességeket, amely megfelel a FIPS Azure-ban 140-2-3. szint tanúsítvánnyal
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
@@ -12,83 +12,83 @@ ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 88a49c9c124c5399749d2b60595d7f5c7ec77b20
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: mbaldwin
+ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62117992"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881082"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Mi az az Azure-beli dedikált HSM?
 
-Az Azure, a dedikált HSM egy Azure-szolgáltatás, amely biztosítja a titkosítási kulcs tárolása az Azure-ban. Dedikált HSM megfelel-e a legszigorúbb biztonsági előírásokat. Az ideális megoldás az ügyfeleink számára, akiknek a FIPS 140-2 szintű 3 érvényesített eszközökhöz és a HSM-készülék teljes és kizárólagos vezérlő. 
+Az Azure, a dedikált HSM egy Azure-szolgáltatás, amely biztosítja a titkosítási kulcs tárolása az Azure-ban. Dedikált HSM megfelel-e a legszigorúbb biztonsági előírásokat. Ez az ideális megoldás olyan ügyfelek számára, akik FIPS 140-2 3. szintű, ellenőrzött eszközöket igényelnek, valamint a HSM-készülék teljes és kizárólagos felügyeletét. 
 
- Hardveres biztonsági modulokhoz globálisan több Azure-régióban vannak telepítve. Ezek egyszerűen két, az eszközök kiosztása és magas rendelkezésre állásúként konfigurálva. Hardveres biztonsági modulokhoz is bővítheti ahhoz, hogy biztosítsa elleni regionális szintű feladatátvételi régióban. A Microsoft biztosít a dedikált HSM-szolgáltatás használatával a [SafeNet Luna hálózati HSM 7 (modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) Gemalto készüléket. Ez az eszköz a legmagasabb szintű teljesítmény- és titkosítási integrációs lehetőségeket kínál. 
+ A HSM-eszközök világszerte több Azure-régióban is üzembe helyezhetők. Ezek egyszerűen üzembe helyezhetők, és magas rendelkezésre állású eszközökhöz konfigurálhatók. A HSM-eszközök a régiók között is üzembe helyezhetők, így biztosítható a regionális szintű feladatátvétel. A Microsoft a [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) berendezés használatával biztosítja a dedikált HSM szolgáltatást a Gemalto-ből. Ez az eszköz a legmagasabb szintű teljesítmény- és titkosítási integrációs lehetőségeket kínál. 
 
-Miután azok üzemelnek, hardveres biztonsági modulokhoz közvetlenül egy ügyfél virtuális hálózatán csatlakoznak. Azok is elérhető a helyszíni alkalmazás és a felügyeleti eszközök a pont – hely vagy a helyek közötti VPN-kapcsolat konfigurálásakor. Ügyfeleinknek minél több a szoftverek és a dokumentációt, konfigurálhatja és kezelheti a hardveres biztonsági modulokhoz Gemalto a támogatási portálról.
+A kiépítés után a HSM-eszközök közvetlenül csatlakoznak az ügyfél virtuális hálózatához. A helyszíni alkalmazások és a felügyeleti eszközök is hozzáférhetnek a pont – hely vagy helyek közötti VPN-kapcsolat konfigurálásához. Az ügyfelek a szoftvereket és a dokumentációt a Gemalto támogatási portálján található HSM-eszközök konfigurálásához és kezeléséhez kapják meg.
 
-## <a name="why-use-azure-dedicated-hsm"></a>Miért érdemes használni az Azure dedikált HSM-be?
+## <a name="why-use-azure-dedicated-hsm"></a>Miért érdemes az Azure dedikált HSM-et használni?
 
-### <a name="fips-140-2-level-3-compliance"></a>A FIPS 140-2-3. szint megfelelőség
+### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 szint – 3 megfelelőség
 
-Számos vállalat rendelkezik olyan szigorú iparági szabályozások a Diktálás, amely megfelel a titkosítási kulcs tárolása [FIPS 140-2-3. szint](https://csrc.nist.gov/publications/detail/fips/140/2/final) követelményeinek. A Microsoft több-bérlős Azure Key Vault szolgáltatás jelenleg csak biztosítja a FIPS 140-2 2. szintű tanúsítvánnyal. Dedikált HSM az Azure teljesíti a pénzügyi szolgáltatások iparágát kormányzati szerveknek és mások számára követelményeknek kell megfelelnie a FIPS 140-2-3. szint valós szüksége.
+Számos szervezet rendelkezik olyan szigorú iparági szabályozással, amely azt diktálja, hogy a kriptográfiai kulcsok tárolása megfelel a [FIPS 140-2 3. szintű](https://csrc.nist.gov/publications/detail/fips/140/2/final) követelményeinek. A Microsoft több-bérlős Azure Key Vault szolgáltatása jelenleg csak az FIPS 140-2 2-es szintű minősítést biztosítja. Az Azure dedikált HSM a pénzügyi szolgáltatások iparágában, a kormányzati szerveknél és másoknál is valós igénybe kell vennie a FIPS 140-2 3. szintű követelmények teljesítését.
 
 ### <a name="single-tenant-devices"></a>Egybérlős eszközök
 
-A titkosítási tárolóeszköz egyetlen bérlős követelmény számos ügyfelünk rendelkezik. A dedikált HSM Azure-szolgáltatás lehetővé teszi, hogy a Microsoft globálisan elosztott adatközpontokban egyik fizikai eszköz kiépítése. Miután egy ügyfél üzembe csak, hogy az ügyfél hozzáférhet az eszközhöz.
+A titkosítási tárolóeszköz egyetlen bérlős követelmény számos ügyfelünk rendelkezik. Az Azure dedikált HSM szolgáltatás lehetővé teszi, hogy fizikai eszközt helyezzen üzembe a Microsoft globálisan elosztott adatközpontjának egyikéről. Miután kiosztotta az ügyfelet, csak az ügyfél férhet hozzá az eszközhöz.
 
-### <a name="full-administrative-control"></a>Teljes körű felügyeletet
+### <a name="full-administrative-control"></a>Teljes körű felügyeleti felügyelet
 
-Számos ügyfél igényel teljes körű felügyeletet és az egyéni eszköz adminisztrációs célból való hozzáférést. Miután egy eszköz ki van építve, csak az ügyfél rendelkezik az eszköz felügyeleti vagy alkalmazásszintű hozzáférést.
+Számos ügyfél számára szükséges a teljes körű rendszergazdai ellenőrzés és az eszközre való kizárólagos hozzáférés felügyeleti célból. Az eszköz üzembe helyezése után csak az ügyfél rendelkezik rendszergazdai vagy alkalmazás-hozzáférési jogosultsággal az eszközhöz.
 
- A Microsoft nem rendszergazdai felügyelet rendelkezik, miután az ügyfél hozzáfér az eszköz első alkalommal, amikor az ügyfél megváltoztatja a jelszót. Ettől a ponttól az ügyfél egy igaz egybérlős teljes körű felügyeletet és alkalmazás-kezelési lehetőséget. A Microsoft biztosítja a figyelő szintű hozzáférést (nem rendszergazda szerepkörrel) telemetriai sorosport-kapcsolaton keresztül. Ezt a hozzáférést a hardver figyelők, például a hőmérséklet, power ellátási egészségügyi és ventilátor egészségügyi ismerteti. 
+ A Microsoft nem rendelkezik rendszergazdai ellenőrzéssel, miután az ügyfél első alkalommal hozzáfér az eszközhöz, amikor az ügyfél megváltoztatja a jelszót. Ettől kezdve az ügyfél egy teljes körű rendszergazdai vezérléssel és az alkalmazás-felügyeleti képességgel rendelkező, valódi önálló bérlő. A Microsoft a telemetria a soros porton keresztüli kapcsolaton keresztüli figyelési szintű hozzáférést (nem rendszergazdai szerepkört) tart fenn. Ez a hozzáférés magában foglalja a hardveres figyelőket, például a hőmérsékletet, a tápegység állapotát és a ventilátor állapotát. 
  
- Az ügyfél letilthatja, a monitorozás szükséges díjmentes. Azonban elkezdődnek, proaktív állapotriasztások a Microsoft nem kapnak.
+ Az ügyfél ingyenesen tilthatja le ezt a figyelést. Ha azonban letiltják, akkor nem kapnak proaktív egészségügyi riasztást a Microsofttól.
 
 ### <a name="high-performance"></a>Nagy teljesítmény
 
-A Gemalto eszköz ehhez a szolgáltatáshoz, különböző okok miatt választotta. Titkosítási algoritmus támogatást, a támogatott operációs rendszerek és a széles körű API-támogatás különféle széles körének biztosít. A modell üzembe helyezett RSA 2048-bites 10 000 műveletek száma másodpercenként a kiváló teljesítményt nyújt. Támogatja a 10 partíció, amely egyedi az alkalmazáspéldányok is használható. Ez az eszköz, egy alacsony késleltetésű, nagy kapacitású eszköz- és nagy átviteli sebességet.
+A Gemalto eszköz számos okból lett kiválasztva ehhez a szolgáltatáshoz. A titkosítási algoritmusok széles skáláját kínálja, számos támogatott operációs rendszert és széles körű API-támogatást. Az üzembe helyezett adott modell kiváló teljesítményt nyújt az RSA-2048 10 000 művelete másodpercenként. Támogatja a 10 partíció, amely egyedi az alkalmazáspéldányok is használható. Ez az eszköz egy kis késleltetésű, nagy kapacitású és nagy teljesítményű eszköz.
 
 ### <a name="unique-cloud-based-offering"></a>Egyedi felhőalapú ajánlat
 
-A Microsoft az ügyfelek egyedi készletének egy adott igénynek ismerhető fel. Legyen az egyetlen felhőszolgáltató, amely egy dedikált HSM-szolgáltatás, amely szint FIPS 140-2, 3 ellenőrzött és kínál olyan mértékben, felhőalapú és helyszíni alkalmazásintegráció kínál az új ügyfeleknek.
+A Microsoft felismerte, hogy egy egyedi ügyfél-készletre van szükség. Ez az egyetlen olyan felhőalapú szolgáltató, amely új ügyfelek számára biztosít egy dedikált HSM-szolgáltatást, amely az FIPS 140-2 3. szintű, és a felhőalapú és helyszíni alkalmazások integrálását is biztosítja.
 
 ## <a name="is-azure-dedicated-hsm-right-for-you"></a>Az Azure dedikált HSM-be a megfelelő választás az?
 
-Azure dedikált HSM olyan speciális szolgáltatás, amely egy adott típusú nagyméretű szervezet egyedi igényeinek. Ennek eredményeképpen várható, hogy az Azure-ügyfelek tömeges nem felelnek meg a profil, használja ezt a szolgáltatást. Számos megtalálja az Azure Key Vault szolgáltatás megfelelő, és költséghatékony. Eldöntheti, hogy megfelel a követelményeknek, azonosítottunk a következő feltételeknek.
+Az Azure dedikált HSM egy speciális szolgáltatás, amely egy adott típusú nagyméretű szervezet egyedi követelményeit tárgyalja. Ennek eredményeképpen várható, hogy az Azure-ügyfelek nagy része nem fér hozzá a szolgáltatáshoz használt profilhoz. Számos megtalálhatja a Azure Key Vault szolgáltatást, hogy megfelelőbb és költséghatékony legyen. Annak eldöntéséhez, hogy az megfelel-e a követelményeknek, a következő feltételeket azonosították.
 
-### <a name="best-fit"></a>Legjobb illesztés
+### <a name="best-fit"></a>Legjobb illeszkedés
 
-Az Azure, a dedikált HSM leginkább megfelelő hardveres biztonsági modulokhoz történő közvetlen és kizárólagos hozzáférést igénylő "lift-and-shift" forgatókönyvek esetén. Példák erre vonatkozóan:
+Az Azure dedikált HSM a legmegfelelőbb a "lift-and-SHIFT" forgatókönyvekhez, amelyek közvetlen és kizárólagos hozzáférést igényelnek a HSM-eszközökhöz. Példák erre vonatkozóan:
 
 - Helyszíni áttelepítés alkalmazások az Azure Virtual Machines
-- Az Amazon AWS EC2-é az AWS Cloud HSM klasszikus szolgáltatásfelügyeleti (Amazon nem biztosít a szolgáltatás új ügyfeleknek) használó virtuális gépek áttelepítése alkalmazások
-- Például az Apache/Ngnix SSL-alapú Kiszervezést, Oracle TDE és az Azure Virtual machines gépeken ADCS shrink-wrapped szoftverek futtatását 
+- Az Amazon AWS EC2 származó alkalmazások migrálása olyan virtuális gépekre, amelyek az AWS Cloud HSM klasszikus szolgáltatást használják (az Amazon nem nyújtja ezt a szolgáltatást új ügyfeleknek)
+- Shrink-burkolt szoftverek, például Apache/ngnix SSL-kiszervezési, Oracle TDE-és ADCS futtatása az Azure-ban Virtual Machines 
 
-### <a name="not-a-fit"></a>Nem egy laphoz
+### <a name="not-a-fit"></a>Nem fér
 
-Az Azure, a dedikált HSM nem jó megoldás lehet a következő típusú forgatókönyvet: A Microsoft cloud services –, hogy a titkosítás támogatása az ügyfél által felügyelt kulcsokat (például az Azure Information Protection, az Azure Disk Encryption, az Azure Data Lake Store, Azure Storage, Azure SQL Database és az Office 365-höz Ügyfélkulcs), amelyek nem integrálhatók Az Azure dedikált HSM.
+Az Azure dedikált HSM nem megfelelő a következő típusú forgatókönyvhöz: A Microsoft Cloud Services, amely támogatja a titkosítást az ügyfél által felügyelt kulcsokkal (például Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database és az Office 365-es ügyfél-kulcsával), amelyek nincsenek integrálva Azure dedikált HSM.
 
-### <a name="it-depends"></a>Attól függ
+### <a name="it-depends"></a>Ez a következőtől függ
 
-E Azure dedikált HSM-be, használhatja a attól függ, hogy feltörések, vagy nem hajtható végre, és a követelmények meglehetősen összetett vegyesen. Ilyen például, a FIPS 140-2-3. szint követelménynek. Ez a követelmény nem gyakori, és dedikált HSM jelenleg az egyetlen lehetőség, az értekezlet vonatkozó. Ha ezeket felhatalmazott követelményeinek nem megfelelő, majd gyakran, az Azure Key Vault és a dedikált HSM közötti választást. A követelmények elemzése alapján hoz döntést elvégzése előtt.
+Az, hogy az Azure dedikált HSM működni fog-e az Ön számára, a követelmények és a kompromisszumok potenciálisan összetett kombinációján múlik. Ilyen például a FIPS 140-2 3. szintű követelménye. Ez a követelmény gyakori, és a dedikált HSM jelenleg csak az egyetlen lehetőség a meghívására. Ha ezek a feltételek nem relevánsak, akkor gyakran a Azure Key Vault és a dedikált HSM között választhat. A döntés meghozatala előtt mérje fel a követelményeket.
 
-Olyan helyzetekben, amelyben kell tenniük a lehetőségek a következők: 
+Olyan helyzetekben, amelyekben a következőkre lesz szüksége: 
 
-- Az ügyfél az Azure virtuális gépen futó új kódot
-- Az SQL Server TDE-beli virtuális gépen
+- Az ügyfél Azure-beli virtuális gépén futó új kód
+- SQL Server TDE egy Azure-beli virtuális gépen
 - Az Azure Storage ügyféloldali titkosítás
 - SQL Server és az Always Encrypted az Azure SQL DB
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rendkívül specializált szolgáltatásként. Ezért azt javasoljuk, hogy megértette a dokumentációkészlet, beleértve a díjszabás, a támogatást és szolgáltatásiszint-szerződések kapcsolatos főbb fogalmakat. 
+Ez egy nagyon specializált szolgáltatás. Ezért javasoljuk, hogy teljes mértékben Ismerje meg a dokumentáció alapfogalmait, beleértve a díjszabást, a támogatást és a szolgáltatói szerződéseket. 
 
-A [Gemalto integrációs útmutatóiban](https://safenet.gemalto.com/partners/microsoft/) segítséget megkönnyítik a HSM-EK kiépítésének egy meglévő virtuális hálózati környezetben. Nincsenek is segít abban, megismerheti, hogyan állíthatja be az üzembe helyezési architektúra útmutatókat.
+A [Gemalto-integrációs útmutatók](https://safenet.gemalto.com/partners/microsoft/) segítségével megkönnyítheti a HSM kiépítését egy meglévő virtuális hálózati környezetbe. Az útmutató segítségével megtudhatja, hogyan állíthatja be a telepítési architektúrát.
 
 * [Magas rendelkezésre állás](high-availability.md)
-* [fizikai biztonság](physical-security.md)
+* [Fizikai biztonság](physical-security.md)
 * [Hálózat](networking.md)
 * [Támogatási lehetőségek](supportability.md)
 * [Monitorozás](monitoring.md)

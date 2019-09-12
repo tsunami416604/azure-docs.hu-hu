@@ -34,9 +34,9 @@ Az alábbiakban részletes útmutatást talál az egyes lehetséges érdeklődő
 
 **Dynamics CRM Online** - ide[kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) megtekintheti, hogyan konfigurálhatja a Dynamics CRM Online-t az érdeklődők beszerzéséhez.
 
-**** Marketo - ide[kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) megtekintheti a Marketo vezető konfigurációjának beállításához szükséges utasításokat az érdeklődők beszerzéséhez.
+Marketo - ide[kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) megtekintheti a Marketo vezető konfigurációjának beállításához szükséges utasításokat az érdeklődők beszerzéséhez.
 
-**** Salesforce - [kattintson ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) a Salesforce-példány beállításához az érdeklődők beszerzéséhez.
+Salesforce - [kattintson ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) a Salesforce-példány beállításához az érdeklődők beszerzéséhez.
 
 **Azure Table** – [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) megtudhatja, hogyan állíthatja be Azure Storage-fiókját az érdeklődők Azure-táblázatba való beszerzéséhez.
 

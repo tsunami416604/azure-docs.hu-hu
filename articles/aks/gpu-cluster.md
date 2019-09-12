@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381834"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899468"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
 A grafikus feldolgozási egységek (GPU-k) gyakran nagy számítási igényű munkaterhelésekhez, például grafikus és vizualizációs munkaterhelésekhez használatosak. Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását a nagy számítási igényű munkaterhelések Kubernetes való futtatásához. További információ a GPU-t használó elérhető virtuális gépekről: GPU-ra optimalizált virtuálisgép- [méretek az Azure-ban][gpu-skus]. AK-csomópontok esetén a minimális *standard nc6*-méretet ajánljuk.
 
 > [!NOTE]
-> A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információt a díjszabási eszköz [][azure-pricing] és a [régió rendelkezésre állása][azure-availability]című témakörben talál.
+> A GPU-kompatibilis virtuális gépek olyan speciális hardvert tartalmaznak, amely magasabb díjszabási és régióbeli rendelkezésre állást biztosít. További információt a [díjszabási][azure-pricing] eszköz és a [régió rendelkezésre állása][azure-availability]című témakörben talál.
 
 Jelenleg a GPU-t használó csomópont-készletek használata csak Linux-csomópontos készletek esetén érhető el.
 
@@ -66,14 +66,14 @@ Először hozzon létre egy névteret a [kubectl Create Namespace][kubectl-creat
 kubectl create namespace gpu-resources
 ```
 
-Hozzon létre egy *NVIDIA-Device-plugin-DS. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl a Kubernetes projekthez készült [NVIDIA-eszköz beépülő modul][nvidia-github]részeként van megadva.
+Hozzon létre egy *NVIDIA-Device-plugin-DS. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl a [Kubernetes projekthez készült NVIDIA-eszköz beépülő modul][nvidia-github]részeként van megadva.
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
-  namespace: kube-system
+  namespace: gpu-resources
 spec:
   updateStrategy:
     type: RollingUpdate
@@ -184,7 +184,7 @@ Non-terminated Pods:         (9 in total)
 
 ## <a name="run-a-gpu-enabled-workload"></a>GPU-t használó munkaterhelés futtatása
 
-A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-t használó munkaterhelést a megfelelő erőforrás-kéréssel. Ebben a példában egy [Tensorflow](https://www.tensorflow.org/) -feladatot futtatunk a [MNIST](http://yann.lecun.com/exdb/mnist/)adatkészleten.
+A GPU működés közbeni megtekintéséhez ütemezzen egy GPU-t használó munkaterhelést a megfelelő erőforrás-kéréssel. Ebben a példában egy [Tensorflow](https://www.tensorflow.org/) -feladatot futtatunk a [MNIST adatkészleten](http://yann.lecun.com/exdb/mnist/).
 
 Hozzon létre egy *Samples-TF-mnist-demo. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. A következő feladattípus egy erőforrás-korlátot `nvidia.com/gpu: 1`tartalmaz:
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Search szolgáltatás létrehozása a portálon – Azure Search
+title: 'Gyors útmutató: Azure Search szolgáltatás létrehozása a portálon – Azure Search'
 description: Azure Search erőforrás kiépítése a Azure Portal. Válassza az erőforráscsoportok, a régiók, az SKU vagy az árképzési szintet.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0aabf10b3be8f2f13abbba15d514a008f193646c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649954"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883848"
 ---
-# <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
+# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Gyors útmutató: Azure Search szolgáltatás létrehozása a portálon
 
 A Azure Search egy önálló erőforrás, amely az egyéni alkalmazások keresési funkcióinak csatlakoztatására szolgál. Bár a Azure Search egyszerűen integrálható más Azure-szolgáltatásokkal, önálló összetevőként is használható, vagy integrálható a hálózati kiszolgálókon lévő alkalmazásokkal, illetve más felhőalapú platformokon futó szoftverekkel.
 
@@ -42,7 +42,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 ## <a name="select-a-subscription"></a>Válasszon egy előfizetést
 
-Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database [](search-indexer-overview.md)és az Azure Cosmos db indexelést az indexelő használatával, de csak az azonos előfizetésben lévő szolgáltatásokhoz.
+Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database és az Azure Cosmos DB indexelést [*az indexelő használatával,* ](search-indexer-overview.md)de csak az azonos előfizetésben lévő szolgáltatásokhoz.
 
 ## <a name="set-a-resource-group"></a>Erőforráscsoport beállítása
 
@@ -78,7 +78,7 @@ Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzem
 
 A sávszélességgel kapcsolatos díjak minimalizálásához vagy elkerüléséhez válassza ki ugyanazt a helyet több szolgáltatás számára. Ha például egy másik Azure-szolgáltatás (Azure Storage, Azure Cosmos DB, Azure SQL Database) által biztosított adatok indexelését végzi, a Azure Search szolgáltatás ugyanabban a régióban való létrehozása elkerüli a sávszélességgel kapcsolatos költségeket (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások be vannak Ugyanez a régió).
 
-Emellett, ha kognitív keresési AI-bővítést használ, a szolgáltatást a Cognitive Services erőforrással megegyező régióban hozza létre. *Az Azure Search és Cognitive Services közös helye az adott régióban az AI-* bővítés követelménye.
+Emellett, ha kognitív keresési AI-bővítést használ, a szolgáltatást a Cognitive Services erőforrással megegyező régióban hozza létre. *Az Azure Search és Cognitive Services közös helye az adott régióban az AI-bővítés követelménye*.
 
 > [!Note]
 > Közép-India jelenleg nem érhető el az új szolgáltatásokhoz. Az India középső régiójában már meglévő szolgáltatások esetében korlátozás nélkül is méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A régió korlátozásai ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozás már nem érvényes.

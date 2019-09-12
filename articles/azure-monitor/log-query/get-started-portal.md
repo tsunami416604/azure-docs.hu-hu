@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348085"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899514"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Ismerkedés a Log Analyticsával Azure Monitor
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 A lekérdezés megkeresi az _eseménynaplóban_ azokat a rekordokat, amelyek a kifejezés _hibáját_ tartalmazzák bármely tulajdonságban.
 
-A lekérdezések egy Táblanév vagy egy [keresési](/azure/kusto/query/searchoperator) paranccsal is kezdődhetnek. A fenti példa a táblanév Eseménysel kezdődik , amely az Event tábla összes rekordját lekéri. A pipe (|) karakter elválasztja a parancsokat, így az első kimenet a következő parancs bemenetként szolgál. Egyetlen lekérdezéshez tetszőleges számú parancsot adhat hozzá.
+A lekérdezések egy Táblanév vagy egy [keresési](/azure/kusto/query/searchoperator) paranccsal is kezdődhetnek. A fenti példa a táblanév _eseménysel_kezdődik, amely az Event tábla összes rekordját lekéri. A pipe (|) karakter elválasztja a parancsokat, így az első kimenet a következő parancs bemenetként szolgál. Egyetlen lekérdezéshez tetszőleges számú parancsot adhat hozzá.
 
 Ugyanez a lekérdezés más módon is írható:
 
@@ -63,7 +63,7 @@ Ugyanez a lekérdezés más módon is írható:
 search in (Event) "error"
 ```
 
-Ebben a példában a **Keresés** az _Event_ táblára terjed ki, és a táblázatban szereplő összes rekord a kifejezés hibáját keresi.
+Ebben a példában a **Keresés** az _Event_ táblára terjed ki, és a táblázatban szereplő összes rekord a kifejezés _hibáját_keresi.
 
 ## <a name="running-a-query"></a>Lekérdezés futtatása
 Futtasson egy lekérdezést a **Futtatás** gombra kattintva, vagy nyomja le a **SHIFT + ENTER**billentyűkombinációt. Vegye figyelembe a következő adatokat, amelyek meghatározzák a futtatandó kódot és a visszaadott adatokat:
@@ -110,7 +110,7 @@ Kattintson az oszlop címe melletti szűrő ikonra, és az előugró ablakban v�
 
 
 ## <a name="sort-and-group-results"></a>Eredmények rendezése és csoportosítása
-Az eredmények mostantól szűkülnek, hogy csak az elmúlt 24 órában létrehozott SQL Server hibaüzeneteket tartalmazzák. Az eredményeket azonban semmilyen módon nem rendezi a rendszer. Ha az eredményeket egy adott oszlop szerint szeretné rendezni, például  például az időbélyegzőt, kattintson az oszlop címére. Egy kattintással növekvő sorrendbe rendezheti a rendezést, míg a második kattintás csökkenő sorrendben jelenik meg.
+Az eredmények mostantól szűkülnek, hogy csak az elmúlt 24 órában létrehozott SQL Server hibaüzeneteket tartalmazzák. Az eredményeket azonban semmilyen módon nem rendezi a rendszer. Ha az eredményeket egy adott oszlop szerint szeretné rendezni, például például az időbélyegzőt, kattintson az oszlop címére. Egy kattintással növekvő sorrendbe rendezheti a rendezést, míg a második kattintás csökkenő sorrendben jelenik meg.
 
 ![Oszlop rendezése](media/get-started-portal/sort-column.png)
 
@@ -162,7 +162,7 @@ Ha a idődiagramját hirtelen szeg vagy lépés szerepel az adataiban, akkor a s
 ![Intelligens diagnosztika](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>Rögzítés az irányítópulton
-Ha diagramot vagy táblázatot szeretne rögzíteni egy megosztott Azure-irányítópulton, kattintson a rögzítés ikonra.
+Ha diagramot vagy táblázatot szeretne rögzíteni egy megosztott Azure-irányítópulton, kattintson a rögzítés ikonra. Vegye figyelembe, hogy ez az ikon a Log Analytics ablak elejére került, amely eltér az alábbi képernyőképen.
 
 ![Rögzítés az irányítópulton](media/get-started-portal/pin-dashboard.png)
 

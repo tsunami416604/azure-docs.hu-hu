@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: fbd86698438e09a0c94c06e0e79800b8d38b57c1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: a7c02c92ed61e4c8c8bd6a634cc9c6ad3538396e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544844"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883690"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Gyors útmutató: Ügyféloldali kódtár testreszabása a Node. js-hez
 
@@ -46,6 +46,9 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 
 * `PERSONALIZER_KEY`az erőforrás-kulcshoz.
 * `PERSONALIZER_ENDPOINT`az erőforrás-végponthoz.
+
+A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
+
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -133,7 +136,7 @@ A műveletek a személyre szabáshoz használni kívánt tartalmi beállítások
 
 ## <a name="create-the-learning-loop"></a>A tanulási hurok létrehozása
 
-A személyre szabott tanulási hurok a Range [](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
+A személyre szabott tanulási hurok a [Range](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
 
 A következő hurkos kód hurkokat mutat egy ciklusban, amellyel a felhasználó a parancssorban megkérdezi a felhasználót, hogy az információt a személyre szabhatja a rangsorban, és megjelenítheti az ügyfélnek a listában kiválasztott kiválasztási lehetőséget, majd elküldheti a jutalmat Személyre szabott jelzés arról, hogy a szolgáltatás milyen mértékben volt rangsorolva a kijelölésben.
 
@@ -143,7 +146,7 @@ Tekintse meg alaposabban az alábbi részekben ismertetett rangot és jutalmazá
 
 ## <a name="request-a-rank"></a>Rangsor igénylése
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat létrehozhat olyan `excludeActions`tartalmat, amely kizárható a rangsorból, amely a következőként jelenik meg:. A rangsorolási kérelemnek [](concepts-features.md#actions-represent-a-list-of-options)szüksége van a műveletekre, a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-azonosítóra (GUID) a rangsorolt válasz fogadásához. 
+A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat létrehozhat olyan `excludeActions`tartalmat, amely kizárható a rangsorból, amely a következőként jelenik meg:. A rangsorolási kérelemnek szüksége van a [műveletekre](concepts-features.md#actions-represent-a-list-of-options), a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-azonosítóra (GUID) a rangsorolt válasz fogadásához. 
 
 Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](concepts-features.md) meghatározása és [értékelése](concept-feature-evaluation.md) nem triviális kérdés lehet.  
 
@@ -153,7 +156,7 @@ Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások
 
 A jutalmazási kérelem elvégzéséhez a program beolvassa a felhasználó kijelölését a parancssorból, hozzárendel egy numerikus értéket az egyes kijelölésekhez, majd elküldi az egyedi rangú esemény AZONOSÍTÓját és a numerikus értéket a jutalmazási metódusnak.
 
-Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés [](concept-rewards.md) lehet annak meghatározása, hogy mikor és mit kell elküldeni a jutalmazási hívásnak. 
+Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés lehet annak meghatározása, hogy mikor és mit kell elküldeni a [jutalmazási](concept-rewards.md) hívásnak. 
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

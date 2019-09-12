@@ -73,7 +73,7 @@ Az értékeléseket érintő gyakori környezeti problémák megoldásához.
 
 ###  <a name="out-of-sync-assessments"></a>Nem szinkronizált értékelések
 
-Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létrehozása után, a létrehozott értékelést a rendszer szinkronként jelöli **meg**. Futtassa újra az értékelést **** (újraszámítva), hogy tükrözze a csoport módosításait.
+Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létrehozása után, a létrehozott értékelést a rendszer szinkronként jelöli **meg**. Futtassa újra az értékelést(újraszámítva), hogy tükrözze a csoport módosításait.
 
 ### <a name="outdated-assessments"></a>Elavult értékelések
 
@@ -83,7 +83,7 @@ Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek eg
 
 Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes adatponttal:
 
-- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egy hétre beállított teljesítmény *-alapú értékelést* hoz létre, akkor legalább egy hétig várnia kell, miután elindította az összes adatpont felderítését. Az újraszámítások lehetőségre kattintva megtekintheti a legújabb alkalmazható megbízhatósági minősítést. **** A megbízhatósági minősítés csak akkor alkalmazható, ha *teljesítmény-alapú* értékelést hoz létre.
+- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egy hétre beállított teljesítmény *-alapú értékelést* hoz létre, akkor legalább egy hétig várnia kell, miután elindította az összes adatpont felderítését. Az újraszámítások lehetőségre kattintva megtekintheti a legújabb alkalmazható megbízhatósági minősítést. A megbízhatósági minősítés csak akkor alkalmazható, ha *teljesítmény-alapú* értékelést hoz létre.
 
 - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha néhány virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem fogja tudni gyűjteni az adott időszak teljesítményadatait.
 

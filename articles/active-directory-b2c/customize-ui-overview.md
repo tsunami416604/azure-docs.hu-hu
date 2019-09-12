@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716756"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880789"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Tudnivalók a felhasználói felület testreszabásáról Azure Active Directory B2C
 
-Az Azure Active Directory (Azure AD) B2C által az alkalmazásokhoz használt felhasználói felület (UI) márkájának és testreszabásának lehetősége fontos, hogy zökkenőmentes felhasználói élményt biztosítson ügyfeleinek. Ezek a tapasztalatok közé tartozik a regisztráció, a bejelentkezés, a profil szerkesztése és a jelszó-visszaállítás. Ez a cikk az alkalmazások felhasználói felületének testreszabását segítő információkat tartalmaz.
+Lehetővé teszi, hogy az alkalmazások számára elérhetővé Azure Active Directory B2C (Azure AD B2C) felhasználói felületét kialakítsa és testreszabja, hogy zökkenőmentes élményt biztosítson ügyfeleinek. Ezek a tapasztalatok közé tartozik a regisztráció, a bejelentkezés, a profil szerkesztése és a jelszó-visszaállítás. Ez a cikk az alkalmazások felhasználói felületének testreszabását segítő információkat tartalmaz.
 
 Az Ön igényeitől függően az alkalmazás felhasználói felületét többféleképpen testreszabhatja. Példa:
 
@@ -118,7 +118,7 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 | Helyi fiók regisztrálása | Egy űrlapot tartalmaz a helyi fiók regisztrálásához egy e-mail-cím vagy egy Felhasználónév alapján. Az űrlap különböző beviteli vezérlőket tartalmazhat, mint például a szövegbeviteli mező, a jelszó-beviteli mező, a választógomb, az egyszeres kijelölés legördülő lista és a többszörös kijelölés jelölőnégyzet. |
 | Közösségi fiók regisztrálása | Akkor jelenhet meg, ha egy közösségi identitás-szolgáltató, például a Facebook vagy a Google egy meglévő fiókjának használatával regisztrál. Akkor használatos, ha az ügyféltől további információkat kell gyűjteni a regisztrációs űrlap használatával. |
 | Egyesített regisztráció vagy bejelentkezés | A olyan ügyfelek regisztrációját és bejelentkezését kezeli, akik használhatják a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t vagy a helyi fiókokat. |
-| Többtényezős hitelesítés | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
+| Multi-Factor Authentication | Az ügyfelek a regisztrálás vagy a bejelentkezés során ellenőrizhetik a telefonszámokat (szöveg vagy hang használatával). |
 | Hiba | Információt nyújt az ügyfélnek. |
 
 
@@ -134,6 +134,9 @@ A testreszabási példákhoz töltse le és tekintse át ezeket a [sablonfájl-f
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha felhasználói folyamatokat használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével: [Testreszabhatja alkalmazásai felhasználói felületét Azure Active Directory B2Cban](tutorial-customize-ui.md).
-- Ha egyéni házirendeket használ, megkezdheti a felhasználói felület testreszabását a cikk használatával: [Testre szabhatja az alkalmazás felhasználói felületét az Azure Active Directory B2C-ban található egyéni házirend használatával](active-directory-b2c-ui-customization-custom.md).
+- Ha **felhasználói folyamatokat**használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével:
 
+    [Testreszabhatja alkalmazásai felhasználói felületét Azure Active Directory B2Cban](tutorial-customize-ui.md).
+- Ha **egyéni házirendeket**használ, megkezdheti a felhasználói felület testreszabását a cikk használatával:
+
+    [Testre szabhatja az alkalmazás felhasználói felületét az Azure Active Directory B2C-ban található egyéni házirend használatával](active-directory-b2c-ui-customization-custom.md).

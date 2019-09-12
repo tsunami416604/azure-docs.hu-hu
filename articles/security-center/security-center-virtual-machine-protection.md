@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 03/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907955"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910560"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Azure Security Center elemzi az Azure-erőforrások, a nem Azure-kiszolgálók és a virtuális gépek biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -62,7 +62,7 @@ A bővítményt a nem monitorozott virtuális gép vagy a számítógépen a má
 ### <a name="recommendations"></a>Javaslatok
 Ebben a szakaszban rendelkezik minden virtuális gép és számítógép, webes és feldolgozói szerepkörök, az Azure App Service Web Apps és az Azure App Service-környezet, amely a Security Center figyeli vonatkozó javaslatok szerepelnek. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
 
-Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Ha például a **hiányzó**rendszerfrissítések lehetőséget választja, akkor a virtuális gépek és a hiányzó javításokat tartalmazó számítógépek száma, valamint a hiányzó frissítés súlyossága jelenik meg.
+Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Ha például a **hiányzó rendszerfrissítések**lehetőséget választja, akkor a virtuális gépek és a hiányzó javításokat tartalmazó számítógépek száma, valamint a hiányzó frissítés súlyossága jelenik meg.
 
 **Rendszerfrissítések alkalmazása** rendelkezik grafikus formátumban, a Windows, és egy Linux-kritikus frissítések összegzése. A második részben az alábbi információkat tartalmazó táblázat található:
 
@@ -108,7 +108,6 @@ A listában szereplő ikon négy típusa van:
 Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. A szűrőket használhatja **Erőforrás típusa** és **Súlyosság**szerint is a listában való kereséshez.
 
 Az egyes virtuális gépek biztonsági javaslatainak részletezéséhez kattintson a virtuális gépre.
-Itt láthatja a biztonsági adatok a virtuális gép vagy a számítógépen. A panel alján a javasolt műveleteket, valamint az egyes problémák súlyosságát láthatja.
 ![Felhőszolgáltatások](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
@@ -125,7 +124,7 @@ Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, 
 ![Operációs rendszer verziójának frissítése](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services"></a>App Services
-A App Service információk megtekintéséhez engedélyeznie kell a App Service az előfizetésben. A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [App Service Azure Security Centerekkel való](security-center-app-services.md)ellátásának biztosítása.
+A App Service információk megtekintéséhez engedélyeznie kell a App Service az előfizetésében. A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [App Service Azure Security Centerekkel való védelemmel](security-center-app-services.md).
 [!NOTE]
 > Monitoring App Service-ben van, és csak a Standard szintű Security Centerben elérhető előzetes verzióban érhető el.
 
@@ -165,16 +164,16 @@ Security Center automatikusan felfedi, hogy vannak-e méretezési készletek, é
 
 A Microsoft monitoring Agent telepítése: 
 
-1. Válassza a **figyelési ügynök telepítése virtuálisgép**-méretezési csoportra lehetőséget. A nem figyelt méretezési csoportok listáját kapja meg.
+1. Válassza a **figyelési ügynök telepítése virtuálisgép-méretezési csoportra**lehetőséget. A nem figyelt méretezési csoportok listáját kapja meg.
 2. Válasszon egy nem kifogástalan állapotú méretezési készletet. Kövesse az utasításokat, és telepítse a figyelési ügynököt egy meglévő feltöltött munkaterületen, vagy hozzon létre egy újat. Ha nincs beállítva, ügyeljen arra, hogy a munkaterület [árképzési szintjét](security-center-pricing.md) állítsa be.
 
    ![Az MMS telepítése](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Ha új méretezési csoportokat szeretne beállítani a Microsoft monitoring Agent Automatikus telepítéséhez:
+Új méretezési csoportok beállítása a Microsoft monitoring Agent Automatikus telepítéséhez:
 1. Nyissa meg Azure Policy éskattintson a definíciók elemre.
 2. Keresse meg a házirendet a **Windows rendszerű virtuálisgép-méretezési csoportok log Analytics ügynökének üzembe helyezéséhez** , és kattintson rá.
 3. Kattintson a **Hozzárendelés** gombra.
-4. Állítsa be a **hatókör** és **log Analytics** munkaterületet, és kattintson a **hozzárendelés**elemre.
+4. Állítsa be a **hatókör** és **log Analytics munkaterületet** , és kattintson a **hozzárendelés**elemre.
 
 Ha az összes meglévő méretezési csoportot be szeretné állítani a Microsoft monitoring Agent telepítésére, akkor a Azure Policyban lépjen a **szervizelés** elemre, és alkalmazza a meglévő házirendet a meglévő méretezési csoportokra.
 

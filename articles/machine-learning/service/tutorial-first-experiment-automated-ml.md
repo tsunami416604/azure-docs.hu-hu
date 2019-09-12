@@ -1,7 +1,7 @@
 ---
 title: Az első automatizált gépi tanulási kísérlet létrehozása
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan lehet betanítani és üzembe helyezni egy besorolási modellt automatizált gépi tanulással a Azure Portalban.
+description: Megtudhatja, hogyan taníthat és helyezhet üzembe egy besorolási modellt automatikus gépi tanulással Azure Machine Learning munkaterület-kezdőlapján (előzetes verzió).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 08/14/2019
-ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.date: 09/09/2019
+ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982760"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910224"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a Azure Portalban (előzetes verzió) anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a munkaterület kezdőlapján (előzetes verzió) anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
 
 Az automatizált gépi tanulás segítségével automatizálhatja az időigényes feladatokat. Az automatizált gépi tanulás gyorsan megismétli az algoritmusok és hiperparaméterek beállítása számos kombinációját, így könnyebben megtalálhatja a legjobb modellt a választott sikerességi mérőszám alapján.
 
@@ -39,48 +39,82 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
+Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
+
+A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre. 
+
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
+
+>[!IMPORTANT] 
+> Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
 
 ## <a name="create-and-run-the-experiment"></a>A kísérlet létrehozása és futtatása
 
-Ezek a lépések végigvezetik az adatok kiválasztásának beállításán az elsődleges metrika és a modell típusának kiválasztásához. 
+A következő kísérlet beállítása és futtatása lépések a munkaterület kezdőlapján, egy összevont felület, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára.
 
-1. Nyissa meg a munkaterület bal oldali paneljét. Válassza az **automatikus gépi tanulás** lehetőséget az **authoring (előzetes verzió)** szakaszban.
-Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az első kísérlet az automatizált Machine learning.
+1. Jelentkezzen be a [munkaterület](https://ml.azure.com/workspaceportal/)kezdőlapján.
 
-    ![Azure Portal navigációs ablaktábla](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
+1. Válassza ki az előfizetését és a létrehozott munkaterületet.
 
-1. Válassza a **kísérlet létrehozása**lehetőséget. Ezután írja be a **My-1st-automl-Experiment** nevet a kísérlet neveként.
+1. Válassza az első **lépések**lehetőséget.
 
-1. Válassza a **Létrehozás új számítás** lehetőséget, és konfigurálja a számítási környezetet a kísérlethez.
+1.  A bal oldali ablaktábla **authoring (szerzői műveletek** ) szakaszában válassza az **automatikus ml** lehetőséget.
+Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérlet az automatizált Machine learning.
 
-    Mező| Value
-    ---|---
-    A számítás neve| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet. Ebben a példában a **automl-számítást**használjuk.
-    Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz. **Standard_DS12_V2**használunk.
-    További beállítások| *Minimális csomópont*: 1. Az adatprofilkészítés engedélyezéséhez legalább egy csomóponttal kell rendelkeznie. <br> *Csomópont maximális*száma: 6. 
+    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
-    Az új számítási számítás létrehozásához válassza a **Létrehozás**lehetőséget. Ez néhány percet vesz igénybe. 
+1. Válassza a **kísérlet létrehozása**lehetőséget. 
 
-    A létrehozás befejeződése után válassza ki az új számítást a legördülő listából, majd kattintson a **tovább**gombra.
+1. A kísérlet neveként adja meg **a My-1st-automl-Experiment** értéket.
+
+1. Válassza **az új számítás létrehozása**lehetőséget. 
+
+    1. A számítási környezet konfigurálása ehhez a kísérlethez.
+        
+        Mező | Value
+        ----|---
+        A számítás neve |  Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet. Ebben a példában a **automl-számítást**használjuk.
+        Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz. Használja az alapértelmezett **Standard_DS12_V2**.
+        További beállítások| *Minimális csomópont*: 1. Az adatprofilkészítés engedélyezéséhez legalább egy csomóponttal kell rendelkeznie. <br> *Csomópont maximális*száma: 6.
+ 
+    1. Az új számítási számítás létrehozásához válassza a **Létrehozás**lehetőséget. Ez eltarthat néhány percet. 
+
+    1. A létrehozás befejeződése után válassza ki az új számítást a legördülő listából, majd kattintson a **tovább**gombra.
 
     >[!NOTE]
-    >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót használjuk. Ezek automatikusan feltöltve lesznek az űrlapon.
+    >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót fogja használni. Ezek automatikusan feltöltve lesznek az űrlapon.
 
-1. Válassza a **feltöltés** lehetőséget, és válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépről, hogy feltöltse az alapértelmezett tárolóba. A nyilvános előzetes verzió csak a helyi fájlok feltöltését és az Azure Blob Storage-fiókokat támogatja. Ha a feltöltés befejeződött, válassza ki a fájlt a listából. 
+1. Válassza **a feltöltés helyi fájlból**lehetőséget. Innen létrehoz egy új adatkészletet az oktatóanyaghoz korábban letöltött **bankmarketing_train. csv** fájllal. 
 
-1. Az **előnézet** lapon további beállítások konfigurálhatók a kísérlethez.
+    1. Válassza a **Tallózás** lehetőséget, majd válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépen. 
 
-    Az **előnézet** lapon jelezze, hogy az adatai fejléceket tartalmaznak. A szolgáltatás alapértelmezés szerint tartalmazza a betanítás összes funkcióját (oszlopát). Ebben a példában görgessen jobbra, és **hagyja figyelmen kívül** a **day_of_week** funkciót.
+    1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
-    ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
+    1. Válassza a **tovább** lehetőséget a munkaterület létrehozása során automatikusan beállított alapértelmezett tárolóba való feltöltéshez. A nyilvános előzetes verzió csak a helyi fájlok feltöltését támogatja. 
 
-    >[!NOTE]
-    > Az adatprofilkészítés nem érhető el olyan számítási feladatokkal, amelyek nulla minimális csomóponttal rendelkeznek.
+    1. A feltöltés befejezésekor a rendszer a fájltípus alapján intelligens módon tölti ki a **beállításokat és az előnézet** űrlapot. Győződjön meg arról, hogy az űrlap a következőképpen van feltöltve.
+        
+        Mező|Value
+        ---|---
+        Fájl formátuma| Tagolt
+        Elválasztó karakter| Vessző
+        Encoding| UTF-8
+        Oszlopfejlécek| Minden fájlnak azonos fejléce van, a sorok kihagyása | Nincsenek
 
+        >[!NOTE]
+        > Ha az űrlap bármelyik beállítása frissül, az előzetes verzió frissítése ennek megfelelően történik.
+
+        Kattintson a **Tovább** gombra.
+    
+
+    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Válassza a **kész**lehetőséget, hogy elvégezze a fájl feltöltését és a kísérlethez tartozó adatkészlet létrehozását.
+
+        ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
+
+        
 1. Előrejelzési feladatként válassza a **besorolás** lehetőséget.
 
-1. Válassza az **y** elemet a cél oszlopként, ahol a jóslatokat szeretnénk elvégezni. Ebben az oszlopban látható, hogy az ügyfél előfizetett-e egy lejárati időszakra.
+1. Válassza az **y** elemet a cél oszlopként, amit meg szeretne jósolni. Ebben az oszlopban látható, hogy az ügyfél előfizetett-e egy lejárati időszakra.
 
 1. Bontsa ki a **Speciális beállítások** elemet, és töltse fel a mezőket az alábbiak szerint.
 
@@ -93,30 +127,30 @@ Ekkor megjelenik az **automatikus Machine learning** képernyő, mivel ez az els
     Egyidejűség| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
 
    >[!NOTE]
-   > Ebben a kísérletben nem állítunk be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem tiltjuk le az algoritmusok tesztelését is.
+   > Ebben a kísérletben nem állítanak be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem blokkolja az algoritmusok tesztelését is.
 
 1. A kísérlet futtatásához kattintson a **Start** gombra.
 
-   A kísérlet elindulásakor megjelenik egy üres **futtatási részlet** képernyő, amelyen felül a következő állapot látható.
-      
-A kísérlet előkészítési folyamata néhány percet vesz igénybe. Ha a folyamat befejeződik, a **rendszer**futtatja az állapotjelző üzenet futtatását.
+   A kísérlet elindulásakor egy üres képernyő jelenik meg, amelyen az állapotjelző üzenet jelenik meg felül.
+
+A kísérlet előkészítési folyamata több percet is igénybe vehet. Ha ez a folyamat befejeződik, a rendszer futtatja az állapotjelző üzenet **futtatását**.
 
 ##  <a name="view-experiment-details"></a>Kísérlet részleteinek megtekintése
 
-A kísérlet előrehaladása esetén a **Futtatás részletei** képernyő frissíti az iterációs diagramot és a listát a futtatott különböző iterációkkal (modellekkel). Az iterációk listája metrikai pontszám szerint van megrendezve. Alapértelmezés szerint a **AUC_weighted** metrika alapján a legmagasabb pontszám a lista tetején található.
+A kísérlet előrehaladásakor a képernyő frissíti az **iterációs diagramot** és az **iterációs listát** a futtatott különböző iterációkkal (modellekkel). Az iterációk listája metrikai pontszám szerint van megrendezve. Alapértelmezés szerint a **AUC_weighted** metrika alapján a legmagasabb pontszám a lista tetején található.
 
->[!TIP]
+>[!WARNING]
 > A betanítási feladatok elvégzése több percet is igénybe vehet, hogy minden folyamat fusson.
 
 [![Futtatás részletei irányítópult](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-A Azure Portal automatizált gépi tanulás alkalmazásával a legjobb modellt üzembe helyezheti webszolgáltatásként, amely előre jelezheti az új adatmennyiséget, és azonosíthatja a lehetséges területeket. Ebben a kísérletben az üzembe helyezés azt jelenti, hogy a pénzügyi intézmény most már rendelkezik egy iterációs és méretezhető megoldással a lehetséges rögzített lejáratú ügyfelek azonosításához.
+Az automatizált gépi tanulás alkalmazásával a munkaterület kezdőlapján üzembe helyezheti a legjobb modellt webszolgáltatásként, amely előre jelezheti az új adatmennyiséget, és azonosíthatja az esetleges lehetséges területeket. Ebben a kísérletben az üzembe helyezés azt jelenti, hogy a pénzügyi intézmény most már rendelkezik egy iterációs és méretezhető megoldással a lehetséges rögzített lejáratú ügyfelek azonosításához.
 
 Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe.
 
-1. A **Futtatás részletei** lapon válassza a **legjobb modell üzembe helyezése** gombot.
+1. A **Futtatás részletei** lapon válassza a **legjobb modell üzembe helyezése** gombot a jobb felső sarokban.
 
 1. Töltse fel a **legjobb modell üzembe helyezése** panelt az alábbiak szerint:
 
@@ -141,7 +175,7 @@ Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a k
 
 Ha az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából szeretné megtartani, törölje a Azure Portal csak a telepítési példányt. 
 
-1. Nyissa meg a bal oldali **eszközök** ablaktáblát, és válassza a **központi telepítések**lehetőséget. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com//). Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **központi telepítések**lehetőséget. 
 
 1. Válassza ki a törölni kívánt központi telepítést, és válassza a **Törlés**lehetőséget. 
 
@@ -153,15 +187,15 @@ Ha az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltár
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az automatizált gépi tanulási oktatóanyagban a Azure Portal használatával létrehozhatja és üzembe helyezheti a besorolási modellt. További információkat és további lépéseket a következő cikkekben talál:
+Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlapját használta egy besorolási modell létrehozásához és üzembe helyezéséhez. További információkat és további lépéseket a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md)
 
-+ További információ az [](how-to-create-portal-experiments.md#preprocess)előfeldolgozásról.
-+ További információ az [](how-to-create-portal-experiments.md#profile)adatprofilkészítésről.
++ További információ az [előfeldolgozásról](how-to-create-portal-experiments.md#preprocess).
++ További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 
 >[!NOTE]
 > Ez a bank marketing-adatkészlet elérhető a [Creative Commons (CCO: Nyilvános tartomány) licenc](https://creativecommons.org/publicdomain/zero/1.0/). Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
-> Adja meg a következő munkát: <br> [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez. Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez. Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.

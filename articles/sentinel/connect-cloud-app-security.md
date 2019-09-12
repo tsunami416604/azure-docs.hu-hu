@@ -40,7 +40,7 @@ Ha már rendelkezik Cloud App Security, győződjön meg arról, hogy az engedé
 Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a riasztási adatot könnyen továbbíthatja az Azure Sentinelbe.
 
 
-1. Az Azure Sentinelben válassza **** az adatösszekötők lehetőséget, majd kattintson a **Cloud app Security** csempére.
+1. Az Azure Sentinelben válassza az adatösszekötők lehetőséget, majd kattintson a **Cloud app Security** csempére.
 
 2. Kattintson a **Csatlakozás** gombra.
 

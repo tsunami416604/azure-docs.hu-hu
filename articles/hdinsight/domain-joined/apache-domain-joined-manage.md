@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811026"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884218"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és szerepköreit, valamint az ESP-fürtök kezelését.
@@ -60,7 +60,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
    
-   ![nem összekapcsolt fürt IntelliJ](./media/apache-domain-joined-manage/unlink.png)
+   ![nem összekapcsolt fürt IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
@@ -83,7 +83,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
    
-   ![leválasztási fürt Eclipse](./media/apache-domain-joined-manage/unlink.png)
+   ![leválasztási fürt Eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>A fürtök elérése Enterprise Security Packagesal.
 

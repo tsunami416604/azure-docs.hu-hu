@@ -49,7 +49,7 @@ Azure Media Services a helyszíni kódoló partnernek, Media Services népszerű
 
 Csatorna ellenőrzésének továbbítása
 1. Azure Media Services fiók létrehozása vagy meglátogatása
-2. Áteresztő csatorna létrehozása **** és elindítása
+2. Áteresztő csatorna létrehozása és elindítása
 3. Állítsa be a kódolót a többszörös sávszélességű élő stream küldéséhez.
 4. Közzétett élő esemény létrehozása
 5. Futtassa az élő kódolót körülbelül 10 percen keresztül
@@ -73,7 +73,7 @@ Csatorna ellenőrzésének továbbítása
 
 Élettartam ellenőrzése
 1. Azure Media Services fiók létrehozása vagy meglátogatása
-2. Áteresztő csatorna létrehozása **** és elindítása
+2. Áteresztő csatorna létrehozása és elindítása
 3. Állítsa be a kódolót a többszörös sávszélességű élő stream küldéséhez.
 4. Közzétett élő esemény létrehozása
 5. Élő kódoló futtatása egy hétig vagy tovább

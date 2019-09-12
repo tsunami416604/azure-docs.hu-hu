@@ -292,7 +292,7 @@ Minta diagram létrehozása:
 2. Kattintson a **Szerkesztés** elemre a hozzáadott diagramon.
 2. A diagram részleteit a következőképpen frissítheti:
    * **Diagram típusának** beállítása **rácsra**
-   * Állítsa **** az összesítést **átlag**értékre.
+   * Állítsa az összesítést **átlag**értékre.
    * Állítsa be a **Group By** **NodeId**.
    * A **metrikák**területen válassza az **Egyéni** > **blob Letöltés másodpercben**lehetőséget.
    * A megjelenítési **színpaletta** beállítása tetszés szerinti értékre 

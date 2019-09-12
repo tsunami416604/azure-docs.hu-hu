@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 536e2e3732a0b196801e37c51dfb6c746e070441
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101027"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910459"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>A hálózati erőforrások védetté Azure Security Center
 Azure Security Center folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
@@ -128,9 +128,9 @@ A **hálózati topológia** szakasz az erőforrások hierarchikus nézetét tart
 
 Ez a tábla (virtuális gépek és alhálózatok) súlyosság szerint rendezve jelennek meg.
 
-Ebben a topológia nézetben az első szint a virtuális hálózatok jeleníti meg. A második megjeleníti az alhálózatokat, a harmadik szint pedig az ezekhez az alhálózatokhoz tartozó virtuális gépeket jeleníti meg. A jobb oldali oszlopban látható a hálózati biztonsági csoportra vonatkozó javaslatok aktuális állapota az adott erőforrásokra vonatkozóan.
+Ebben a topológia nézetben az első szint a virtuális hálózatok jeleníti meg. A második alhálózatokat jelenít meg, a harmadik szint pedig az ezekhez az alhálózatokhoz tartozó virtuális gépeket jeleníti meg. A jobb oldali oszlopban látható a hálózati biztonsági csoportra vonatkozó javaslatok aktuális állapota az adott erőforrásokra vonatkozóan.
 
-A harmadik szint a korábban leírthoz hasonló virtuális gépeket jelenít meg. Bármelyik erőforrásra kattintva további információkat kaphat, vagy alkalmazhatja a szükséges biztonsági vezérlést vagy konfigurációt.
+A harmadik szint a korábban leírthoz hasonló virtuális gépeket jelenít meg. Az erőforrásokra kattintva további információkat kaphat, vagy alkalmazhatja a szükséges biztonsági vezérlést vagy konfigurációt.
 
 ## <a name="network-recommendations"></a>Hálózatokra vonatkozó javaslatok
 
@@ -143,7 +143,7 @@ A harmadik szint a korábban leírthoz hasonló virtuális gépeket jelenít meg
 |A App Serviceshoz való hozzáférést korlátozni kell|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.|Magas|10|App Service-ben|
 |A felügyeleti portokat be kell zárni a virtuális gépeken|A felügyeleti portokhoz való hozzáférés korlátozása érdekében a virtuális gépek hálózati biztonsági csoportjának megerősítése.|Magas|10|Virtuális gép|
 DDoS Protection a standardot engedélyezni kell|A DDoS Protection szolgáltatás szabványának engedélyezésével biztosíthatja a nyilvános IP-címekkel rendelkező alkalmazásokat tartalmazó virtuális hálózatok védelmét. A DDoS elleni védelem lehetővé teszi a hálózati térfogatos és a protokollok elleni támadások enyhítését.|Magas|10|Virtuális hálózat|
-|A virtuális gépen lévő IP-továbbítást le kell tiltani|Tiltsa le az IP-továbbítást. Ha az IP-továbbítás engedélyezve van egy virtuális gép hálózati adapterén, a gép más célhelyekre irányuló forgalmat is fogadhat. Az IP-továbbítás csak ritkán szükséges (például a virtuális gép hálózati virtuális berendezésként való használata esetén), ezért ezt a hálózati biztonsági csapatnak kell áttekintenie.|Közepes|10|Virtuális gép|
+|A virtuális gépen lévő IP-továbbítást le kell tiltani|Tiltsa le az IP-továbbítást. Ha az IP-továbbítás engedélyezve van egy virtuális gép hálózati adapterén, a gép más célhelyekre irányuló forgalmat is fogadhat. Az IP-továbbítást ritkán kell végrehajtani (például ha a virtuális GÉPET hálózati virtuális készülékként használja), ezért ezt a hálózati biztonsági csapatnak kell áttekintenie.|Közepes|10|Virtuális gép|
 |Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|A "csak HTTPS" hozzáférés engedélyezése a webes alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.|Közepes|20|Webalkalmazás|
 |Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken|Alkalmazzon igény szerinti (JIT) virtuálisgép-hozzáférés-vezérlést a kiválasztott portok elérésének végleges zárolásához, és engedélyezze, hogy a jogosult felhasználók csak korlátozott ideig nyissák meg őket a JIT használatával.|Magas|20|Virtuális gép|
 |A Function apps csak HTTPS-kapcsolaton keresztül érhető el|A "csak HTTPS" hozzáférés engedélyezése a Function apps alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.|Közepes|20|Függvényalkalmazás|

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241367"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772750"
 ---
 ::: zone target="docs"
 
@@ -80,10 +80,6 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
 6. A Data Boxot vízszintes felületre tudja helyezni. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné fektetni vagy állítani, egy legalább 7U méretű helyre lesz szükség a szekrényben.
-7. Rendelkezik a következő kábelekkel a Data Box gazdagéphez való csatlakoztatásához.
-    - Egy vagy több 10 GbE SFP+ Twinax rézkábel vagy SFP+ száloptikai kábel (a DATA 1 és DATA 2 hálózati adapterekhez). További információért tekintse meg a [Mellanox támogatott kábeleinek és kapcsolóinak listáját ](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf), amelyek kompatibilisek a Mellanox ConnectX®-3 Pro EN Dual-port 10GBASE-T adapterekkel és a PCI Express 3.0-s hálózati adapterrel.
-    - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
-    - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 
 ::: zone-end
 

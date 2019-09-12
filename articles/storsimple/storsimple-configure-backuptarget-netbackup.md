@@ -277,7 +277,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
     ![NetBackup felügyeleti konzol, válassza ki a StorSimple kötet lemezét](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Adja meg a biztonsági mentési cél nevét, majd a varázsló befejezéséhez kattintson a **tovább** > gombra. ****
+4.  Adja meg a biztonsági mentési cél nevét, majd a varázsló befejezéséhez kattintson a **tovább** > gombra.
 
 5.  Tekintse át a beállításokat, majd kattintson a **Befejezés gombra**.
 
@@ -340,7 +340,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, biztonsági mentés gyakorisága és elforgatása új szabályzathoz](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Válassza **a következő** >  **** **** Befejezéslehetőséget. >   A szabályzat létrehozása után módosíthatja az ütemtervet.
+8. Válassza **a következő** > Befejezéslehetőséget. >   A szabályzat létrehozása után módosíthatja az ütemtervet.
 
 9. Válassza ki az imént létrehozott házirend kibontását, majd válasszaaz ütemtervek lehetőséget.
 

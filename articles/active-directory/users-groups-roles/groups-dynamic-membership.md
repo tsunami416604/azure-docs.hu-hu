@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872183"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909782"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -99,8 +99,8 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
 | companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
 | Szervezeti egység |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
-| displayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
-| employeeId |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
+| displayName |bármely karakterlánc-érték |(User. displayName-EQ "value") |
+| employeeId |bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | facsimileTelephoneNumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
@@ -119,14 +119,14 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
-| userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
+| userPrincipalName |bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
 | userType |tag vendég *Null* |(User. userType-EQ "tag") |
 
 ### <a name="properties-of-type-string-collection"></a>String típusú gyűjtemény tulajdonságai
 
 | properties | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőtalias@domaintartalmazza: "") |
+| otherMails |bármely karakterlánc-érték |(User. otherMails – a következőtalias@domaintartalmazza: "") |
 | proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
@@ -376,7 +376,7 @@ A következő eszköz-attribútumok használhatók.
  deviceManufacturer | bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Személyes, vállalati, ismeretlen | (Device. deviceOwnership-EQ "vállalat")
- enrollmentProfileName | Apple-eszköz beléptetési profilja vagy a Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
+ enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
  deviceId | érvényes Azure AD-eszköz azonosítója | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

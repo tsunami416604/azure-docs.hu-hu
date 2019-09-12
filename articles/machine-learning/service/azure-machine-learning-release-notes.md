@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860942"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900447"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -34,7 +34,7 @@ Az új webes felület lehetővé teszi az adatszakértők és adatmérnökök sz
 
 Az új Azure Machine Learning felület használatával mostantól a következőket teheti:
 + Jegyzetfüzetek kezelése vagy Jupyter
-+ Automatizált ML-kísérletek futtatása
++ [Automatizált ML-kísérletek futtatása](tutorial-first-experiment-automated-ml.md)
 + [Adatkészletek létrehozása helyi fájlokból, adattárokból, & webfájlokból](how-to-create-register-datasets.md)
 + Ismerkedjen meg & adatkészletek előkészítésével a modell létrehozásához
 + A modellek adateltolódásának monitorozása 
