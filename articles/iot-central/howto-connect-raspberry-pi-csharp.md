@@ -3,17 +3,17 @@ title: Málna PI összekötése az Azure IoT Central alkalmazással (C#) | Micro
 description: Eszköz-fejlesztőként, hogyan csatlakoztatható a málna PI az Azure IoT Central-alkalmazáshoz a használatával C#.
 author: viv-liu
 ms.author: viviali
-ms.date: 04/15/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 9395fa5ba5ae8dfa6ff03aabd1a27942ca4fa60a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7a66925dceee4bf90bc6a5cd155f99347bbd124e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195188"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886016"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Málna PI összekötése az Azure IoT Central alkalmazással (C#)
 
@@ -27,12 +27,12 @@ Ez a cikk azt ismerteti, hogyan lehet az eszköz fejlesztője a málna PI-t a Mi
 
 A cikkben szereplő lépések végrehajtásához a következő összetevőkre van szükség:
 
-* A mintául szolgáló **Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * A Raspbian operációs rendszert futtató málna PI-eszköz. A málna PI-nek képesnek kell lennie az internethez való kapcsolódásra. További információ: [a málna PI beállítása](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 ## <a name="sample-devkits-application"></a>**Példa Devkits** alkalmazásra
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
 - Telemetria, amely a következő méréseket tartalmazza, amelyeket az eszköz gyűjt:
   - Nedvességtartalom
@@ -60,7 +60,7 @@ Az Azure IoT Central alkalmazásban vegyen fel egy valódi eszközt a **málna P
 
 Az eszköz alkalmazást az asztali gépen hozza létre és teszteli.
 
-A következő lépések végrehajtásához használhatja a Visual Studio Code-ot. További információ: Working [with C# ](https://code.visualstudio.com/docs/languages/csharp).
+A következő lépések végrehajtásához használhatja a Visual Studio Code-ot. További információ: [Working with C# ](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
 > Ha szeretné, a következő lépéseket elvégezheti egy másik Kódszerkesztő használatával.
@@ -271,7 +271,7 @@ A következő lépések végrehajtásához használhatja a Visual Studio Code-ot
 
 ## <a name="run-your-net-application"></a>.NET-alkalmazás futtatása
 
-Adja hozzá az eszközhöz tartozó kapcsolódási karakterláncot az eszköz kódjához az Azure IoT Central-hitelesítéshez. Az alábbi utasításokat követve [hozhatja létre az eszköz kapcsolódási karakterláncát](howto-generate-connection-string.md) a hatókör- **azonosító**, az **eszköz azonosítója**és az **elsődleges kulcs** alapján, amelyet korábban jegyzett készített.
+Adja hozzá az eszközhöz tartozó kapcsolódási karakterláncot az eszköz kódjához az Azure IoT Central-hitelesítéshez. Az alábbi utasításokat követve [hozhatja létre az eszköz kapcsolódási karakterláncát](howto-generate-connection-string.md) a **Hatókör-azonosító**, az **eszköz azonosítója**és az **elsődleges kulcs** alapján, amelyet korábban jegyzett készített.
 
 1. Cserélje `{your device connection string}` le a fájlt a **program.cs** fájlra a generált kapcsolatok karakterláncával.
 
@@ -319,7 +319,7 @@ Adja hozzá az eszközhöz tartozó kapcsolódási karakterláncot az eszköz k�
 
 ## <a name="raspberry-pi-device-template-details"></a>Málna PI-eszköz sablonjának részletei
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
@@ -358,7 +358,7 @@ Váltási beállítások
 
 | Type            | Display name | Mezőnév | Adattípus                              |
 | --------------- | ------------ | ---------- | -------------------------------------- |
-| Eszköz tulajdonsága | Die száma   | dieNumber  | szám                                 |
+| Eszköz tulajdonsága | Die száma   | dieNumber  | number                                 |
 | Location        | Location     | location   | {Lat: float, Long: float, Alt?: float} |
 
 ## <a name="next-steps"></a>További lépések

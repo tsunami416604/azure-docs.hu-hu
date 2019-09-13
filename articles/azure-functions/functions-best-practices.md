@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097543"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933055"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -36,7 +36,7 @@ Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functi
 
 ### <a name="cross-function-communication"></a>Cross Function kommunikáció
 
-A [Durable functions](durable/durable-functions-concepts.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
+A [Durable functions](durable/durable-functions-overview.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
 
 Ha nem használ Durable Functions vagy Logic Apps több függvénybe való integrálásra, általában ajánlott a tárolási várólisták használata a több funkciós kommunikációhoz.  A fő ok a tárolási várólisták olcsóbb és sokkal könnyebben kiépíthető. 
 
@@ -67,7 +67,7 @@ Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követ�
 
 Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
-Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és](functions-bindings-storage-queue.md#trigger---poison-messages)-kötések dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
+Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue.md#trigger---poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
 
 ## <a name="scalability-best-practices"></a>Méretezhetőség – ajánlott eljárások
 
@@ -113,7 +113,7 @@ A Hosts fájlban lévő beállítások a függvény *egyetlen példányán* bel�
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-A gazdagép konfigurációs dokumentumában más gazdagép [-](functions-host-json.md)konfigurációs beállítások is megtalálhatók.
+[A gazdagép konfigurációs dokumentumában](functions-host-json.md)más gazdagép-konfigurációs beállítások is megtalálhatók.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,8 +3,8 @@ title: Az oktatóanyag PowerShell – Azure dedikált HSM használata meglévő 
 description: Történő üzembe helyezése meglévő virtuális hálózatban a PowerShell használatával egy dedikált HSM bemutató oktatóanyag
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 581ce6d75df8f42bb72bbfc93e85684d97620e3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158974"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880989"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – üzembe helyezés HSM-EK virtuális hálózatban a meglévő PowerShell-lel
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban a HSM-EK párjai koncentrál, és a szükséges Express
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon, ezért összes kommunikációt a szolgáltatással parancssori vagy a Powershellen keresztül. Ez az oktatóanyag az Azure Cloud Shell PowerShell fogja használni. Ha még nem ismeri a powershellt, kövesse az első lépések az itt leírt utasításokat: [Az Azure PowerShell Get Started](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon, ezért összes kommunikációt a szolgáltatással parancssori vagy a Powershellen keresztül. Ez az oktatóanyag az Azure Cloud Shell PowerShell fogja használni. Ha most ismerkedik a PowerShell-lel, kövesse az első lépéseket ismertető útmutatót itt: [Azure PowerShell első lépések](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Előfeltételek:
 
@@ -190,7 +190,7 @@ Ez a parancs körülbelül 20 percet vesz igénybe. A "-verbose" beállítás bi
 
 ![kiépítési állapot](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Ha sikeresen befejeződött "provisioningState" látható: "Sikeres", jelentkezzen be a meglévő virtuális gépet és SSH-val a HSM eszközt rendelkezésre állásának biztosításához.
+Ha sikeresen befejeződött, a "provisioningState" látható: "Sikeres", bejelentkezhet a meglévő virtuális gépre, és az SSH használatával biztosíthatja a HSM-eszköz rendelkezésre állását.
 
 ## <a name="verifying-the-deployment"></a>A telepítés ellenőrzése
 
@@ -217,7 +217,7 @@ Az ssh eszköz segítségével csatlakozzon a virtuális géphez. A parancs a k�
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 A jelszó használata pedig a paraméter-fájlból.
-Miután bejelentkezett a Linux rendszerű virtuális gép a HSM-be a magánhálózati IP-cím található az erőforrás a portál használatával jelentkezzen be \<előtag > hsm_vnic.
+Miután bejelentkezett a Linux rendszerű virtuális gépre, jelentkezzen be a HSM-be a portálon található privát IP-cím használatával \<> hsm_vnic erőforrás-előtagjaként.
 
 ```powershell
 

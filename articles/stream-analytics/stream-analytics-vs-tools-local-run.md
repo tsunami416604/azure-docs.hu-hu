@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics-lekérdezések Visual studióval helyileg tesztelése
-description: Ez a cikk ismerteti, hogyan tesztelhet helyileg az Azure Stream Analytics Tools for Visual Studio.
+title: A Visual Studióval helyileg tesztelheti Azure Stream Analytics lekérdezéseit
+description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg tesztelni a Visual studióhoz készült Azure Stream Analytics eszközökkel.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,72 +9,74 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 1b86085a76f5ff87147db9dbd0a584784f5e4a2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ec427ad7af18f4f301e1e62ca21af643a0425aa
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686488"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914014"
 ---
-# <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Stream Analytics-lekérdezések Visual studióval helyileg tesztelése
+# <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
-Az Azure Stream Analytics tools for Visual Studio segítségével a Stream Analytics-feladatok helyileg mintaadatokkal tesztelheti.
+A Visual studióhoz készült Azure Stream Analytics Tools segítségével helyileg tesztelheti Stream Analytics-feladatait mintaadatok vagy [élő adatok](stream-analytics-live-data-local-testing.md)használatával. 
 
-Ezzel [rövid](stream-analytics-quick-create-vs.md) megtudhatja, hogyan hozhat létre egy Stream Analytics-feladatot a Visual Studio használatával.
+Ebből a [](stream-analytics-quick-create-vs.md) rövid útmutatóból megtudhatja, hogyan hozhat létre stream Analytics feladatokat a Visual Studióval.
 
 ## <a name="test-your-query"></a>A lekérdezés tesztelése
 
-Az Azure Stream Analytics-projektben kattintson duplán a **Script.asaql** a szkript a szerkesztőben való megnyitásához. A lekérdezést, hogy vannak-e szintaxishibát állíthat össze. A Lekérdezésszerkesztő támogatja az IntelliSense, a színezést szintaxis és a egy hiba jelölő.
+A Azure Stream Analytics projektben kattintson duplán a **script. asaql** elemre a szkript megnyitásához a szerkesztőben. A lekérdezés fordításával megállapíthatja, hogy vannak-e szintaktikai hibák. A lekérdezés-szerkesztő támogatja az IntelliSense, a szintaxis színezését és a hiba jelölőjét.
 
-![Lekérdezésszerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Lekérdezés-szerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Helyi bemenet hozzáadása
 
-A lekérdezéshez helyi statikus adatok érvényesítéséhez kattintson a jobb gombbal a bemeneti, és válassza **helyi bemenet hozzáadása**.
+A helyi statikus adatokra vonatkozó lekérdezés ellenőrzéséhez kattintson a jobb gombbal a bevitelre, és válassza a **helyi bemenet hozzáadása**elemet.
    
 ![Helyi bemenet hozzáadása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-Az előugró ablakban válassza a helyi elérési utat a mintaadatok és **mentése**.
+Az előugró ablakban válassza a mintaadatok lehetőséget a helyi elérési útról, és **mentse**.
    
 ![Helyi bemenet hozzáadása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-Nevű fájl **local_EntryStream.json** automatikusan hozzáadja a bemeneti mappában.
+A rendszer automatikusan hozzáadja a **local_EntryStream. JSON** nevű fájlt a bemenetek mappájához.
    
-![Bemeneti mappa helyi fájlok listája](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
+![Helyi bemeneti mappa fájljának listája](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-Válassza ki **futtatása helyileg** a Lekérdezésszerkesztő. Vagy nyomja le az F5 billentyűt.
+A lekérdezés-szerkesztőben válassza a **helyi Futtatás** lehetőséget. Vagy nyomja le az F5 billentyűt.
    
-![Helyileg történő futtatása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
+![Helyi Futtatás](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
-A kimenet táblázatos formában közvetlenül a Visual Studióból lehet megtekinteni.
+A kimenet táblázatos formában is megtekinthető közvetlenül a Visual studióból.
 
-![A kimenet táblázatos formában](./media/stream-analytics-vs-tools-local-run/stream-analytics-for-vs-local-result.png)
+![Kimenet táblázatos formátumban](./media/stream-analytics-vs-tools-local-run/stream-analytics-for-vs-local-result.png)
 
-A kimeneti elérési út a konzol kimenetében található. Nyomja le bármelyik billentyűt, nyissa meg az eredményt mappát.
+A kimeneti útvonalat a konzol kimenetében találja. A találati mappa megnyitásához nyomja le bármelyik billentyűt.
    
 ![Helyi futtatás](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
    
-Ellenőrizze az eredményeket a helyi mappában.
+Vizsgálja meg az eredményeket a helyi mappában.
    
 ![Helyi mappa eredménye](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-03.png)
    
 
-### <a name="sample-input"></a>Minta beviteli
-Egy helyi fájlba a bemeneti forrásból is gyűjthet a bemeneti mintaadatokat. Kattintson a jobb gombbal a bemeneti konfigurációs fájlt, és válassza ki **mintaadatok**. 
+### <a name="sample-input"></a>Minta bemenet
+A bemeneti forrásokból is gyűjthet minta bemeneti adatokat egy helyi fájlba. Kattintson a jobb gombbal a bemeneti konfigurációs fájlra, és válassza a **mintaadatok**elemet. 
 
 ![Adatmintavétel](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-Csak streamelés az Event Hubs vagy IoT-központok a mintaadatok is. Más bemeneti forrásokkal nem támogatottak. Az előugró párbeszédpanelen adja meg a minta adatait, és válassza ki a helyi elérési útja **minta**.
+Csak Event Hubs vagy IoT hubokból származó adatfolyamokat lehet megtekinteni. Más bemeneti források nem támogatottak. Az előugró párbeszédpanelen töltse ki a helyi elérési utat a mintaadatok mentéséhez és a **minta**elem kiválasztásához.
 
-![Példa adatok konfigurációja](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
+![Mintaadatok konfigurálása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-Láthatja, hogy a folyamatot a a **kimeneti** ablak. 
+A folyamat előrehaladását a **kimenet** ablakban tekintheti meg. 
 
-![Minta kimeneti adatok](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
+![Mintaadatok kimenete](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
 ## <a name="next-steps"></a>További lépések
 
+
+* [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata az Azure Stream Analytics-feladatok megtekintése](stream-analytics-vs-tools.md)
-* [Rövid útmutató: A Visual Studio használatával a Stream Analytics-feladat létrehozása](stream-analytics-quick-create-vs.md)
-* [Oktatóanyag: Üzembe helyezés az Azure Stream Analytics-feladat a CI/CD Azure DevOps használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)](stream-analytics-live-data-local-testing.md)
+* [Oktatóanyag: Azure Stream Analytics-feladatok üzembe helyezése CI/CD-vel az Azure DevOps használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

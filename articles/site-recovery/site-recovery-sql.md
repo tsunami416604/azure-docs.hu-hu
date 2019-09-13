@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742326"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934832"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
 
@@ -54,7 +54,7 @@ Site Recovery összehangolja a feladatátvételi tesztet és a teljes alkalmazá
 
 Néhány előfeltétel, hogy a helyreállítási terv teljes mértékben testre szabható legyen, igény szerint. A SQL Server üzembe helyezésének általában Active Directory központi telepítésre van szüksége. Emellett kapcsolódnia kell az alkalmazási szintjéhez.
 
-### <a name="step-1-set-up-active-directory"></a>1\. lépés: Active Directory beállítása
+### <a name="step-1-set-up-active-directory"></a>1\. lépés: Az Active Directory beállítása
 
 Állítsa be a Active Directory a másodlagos helyreállítási helyen, hogy a SQL Server megfelelően fusson.
 
@@ -111,7 +111,7 @@ Bizonyos BCDR-technológiák, például az SQL always on nem támogatják natív
 
     ![Képernyőkép a Content_AG és az állapotokat megjelenítő ablakról](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Hozzon létre egy Load balancert. Minden rendelkezésre állási csoport figyelője esetében hozzon létre egy IP-címet az előtér-IP-készletből. Adja hozzá a SQL Server VM a háttér-készlethez is.
+1. Győződjön meg arról, hogy a terheléselosztó a feladatátvételi hálózaton egyetlen IP-címmel rendelkezik, az előtéri IP-címkészletet, amely az egyes rendelkezésre állási csoportok figyelője, valamint a háttérbeli készlet SQL Server VM.
 
      ![Az "SQL-AlwaysOn-LB-frontend IP-címkészlet" nevű ablak képernyőképe](./media/site-recovery-sql/create-load-balancer1.png)
 

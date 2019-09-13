@@ -2,24 +2,18 @@
 title: Az Azure Policy-definíciók figyelése Azure Security Centerban | Microsoft Docs
 description: A Azure Security Centerban figyelt Azure-házirend-definíciók.
 services: security-center
-documentationcenter: na
 author: monhaber
 manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990507"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910353"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk azokat a Azure Policy-definíciókat sorolja fel, amelyeket a Azure Security Center figyelheti. További információ a biztonsági házirendekről: [a biztonsági házirendek használata](tutorial-security-policy.md).
@@ -50,7 +44,7 @@ Ha többet szeretne megtudni a Security Center által figyelt beépített szabá
 |A Azure Data Lake Store diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is tarthat. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
 |A Data Lake Analytics diagnosztikai naplóit engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
 |A Storage-fiókokat át kell telepíteni az új AzureRM-erőforrásokra|A biztonsági fejlesztéseket a Storage-fiókok Azure Resource Manager használatával biztosíthatja. Ezek a következők: <br>-Erősebb hozzáférés-vezérlés (RBAC)<br>– Jobb naplózás<br>-Azure Resource Manager-alapú üzembe helyezés és irányítás<br>-Hozzáférés a felügyelt identitásokhoz<br>– Hozzáférés Azure Key Vault a titkokhoz<br>– Azure AD-alapú hitelesítés<br>– Címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítéséhez|
-|A virtuális gépeket át kell telepíteni az új AzureRM-erőforrásokra|A virtuális gépek Azure Resource Manager használatával biztosíthatja a biztonsági fejlesztéseket.  Ezek a következők: <br>-Erősebb hozzáférés-vezérlés (RBAC)<br>– Jobb naplózás<br>-Azure Resource Manager-alapú üzembe helyezés és irányítás<br>-Hozzáférés a felügyelt identitásokhoz<br>– Hozzáférés Azure Key Vault a titkokhoz<br>– Azure AD-alapú hitelesítés<br>– Címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítéséhez|
+|A virtuális gépeket át kell telepíteni az új AzureRM-erőforrásokra|A virtuális gépek Azure Resource Manager használatával biztosíthatja a biztonsági fejlesztéseket. Ezek a következők: <br>-Erősebb hozzáférés-vezérlés (RBAC)<br>– Jobb naplózás<br>-Azure Resource Manager-alapú üzembe helyezés és irányítás<br>-Hozzáférés a felügyelt identitásokhoz<br>– Hozzáférés Azure Key Vault a titkokhoz<br>– Azure AD-alapú hitelesítés<br>– Címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítéséhez|
 |A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni|A metrikus riasztási szabályok konfigurációjának naplózása Azure Batch-fiókokon a szükséges metrika engedélyezéséhez.|
 |A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell|Naplózhatja a naplók engedélyezését, és akár egy évig is megtarthatja őket. Ez olyan tevékenységi nyomvonalat hoz létre, amely a biztonsági incidensek bekövetkezésekor, vagy a hálózat biztonsága során jelentkezik.|
 |Az Automation-fiók változói esetében engedélyezni kell a titkosítást.|Fontos, hogy a bizalmas adatok tárolása során engedélyezze Azure Automation Account változó eszközök titkosítását.|

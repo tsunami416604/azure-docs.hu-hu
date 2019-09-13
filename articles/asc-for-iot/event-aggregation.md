@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600617"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933901"
 ---
 # <a name="security-agent-event-aggregation"></a>Biztonsági ügynök eseményének összesítése
 
@@ -46,7 +46,7 @@ Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő f
 
 * ProcessCreate események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév** és a **userid** megegyezik
 * ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a **protokollt** és a **célport** azonos
-* ProcessTerminate események – ha a **végrehajtható fájl** és a kilépési **állapot** megegyezik
+* ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
 ### <a name="working-with-aggregated-events"></a>Összesített események használata
 
@@ -59,6 +59,7 @@ Az elemzést követően a IoT Azure Security Center biztonsági riasztásokat ho
 
 Az Összesítés kezdési időpontja, a befejezési idő és a találatok száma az egyes eseményekhez Log Analytics az Event **ExtraDetails** mezőben, a vizsgálatok során való használatra. 
 
+Minden összesített esemény a begyűjtött riasztások 24 órás időszakát jelenti. Az egyes események bal felső sarkában az Event Options (esemény beállításai) menü használatával **elvetheti** az egyes összesített eseményeket.    
 
 ## <a name="event-aggregation-twin-configuration"></a>Esemény-összesítési kettős konfiguráció
 Módosítsa Azure Security Center konfigurációját az IoT esemény összesítéséhez az **azureiotsecurity** modul modul- [konfigurációs objektumán](how-to-agent-configuration.md) belül.
@@ -93,6 +94,6 @@ A IoT-telepítés Azure Security Centerának folytatásához használja a követ
 
 - A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
 - [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
-- A IoT [szolgáltatás](service-prerequisites.md) előfeltételeinek áttekintése Azure Security Center
+- A IoT [szolgáltatás előfeltételeinek](service-prerequisites.md) áttekintése Azure Security Center
 - Megtudhatja, hogyan [engedélyezheti Azure Security Center a IoT szolgáltatáshoz a IoT hub](quickstart-onboard-iot-hub.md)
 - További információ a szolgáltatásról a [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 882c52995d788b0cd65c71a935ab795a7e7d2f53
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882402"
+ms.locfileid: "70918213"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -33,7 +33,7 @@ A modell létrehozását, betöltését, tesztelését és értékelését köve
 
 A speciális elemzési megoldások gépi tanulási algoritmusokat biztosítanak. Itt látható az algoritmusok és a kapcsolódó gyakori üzleti használati esetek kategóriáinak összefoglalása.
 
-![Machine Learning használati esetek](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![Machine Learning használati esetek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfontolnia, hogy szükséges-e az adatképzésben. A gépi tanulási algoritmusok a következőképpen vannak kategorizálva:
 
@@ -98,7 +98,7 @@ Ebben a fejlett elemzési forgatókönyvben három kulcsfontosságú feladat van
 
 Ez a példa a CIFAR-10 képkészletet használja, amelyet Alex Krizhevsky, vino Siro és Geoffrey Hinton lefordított és elosztott. A CIFAR-10 adatkészlet 60 000 32 × 32 színes képet tartalmaz, amelyek a 10 egymást kölcsönösen kizáró osztályhoz tartozóak:
 
-![Képek](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![Képek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Az adatkészlettel kapcsolatos további részletekért lásd: Alex Krizhevsky, [több rétegbeli funkcióinak megismerése apró képekből](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,7 +111,7 @@ Az adatkészlet 50 000 rendszerképekből és 10 000-es rendszerképekből áll�
 
 Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy percet vesz igénybe egy 4 munkavégző csomóponttal rendelkező fürtön. A modell pontosan megjósolja a ~ 9 100 (91%) címkéit képek. A zűrzavaros mátrix a leggyakoribb besorolási hibákat mutatja be. A mátrix például azt mutatja, hogy a kutyák macskákként való címkézése és fordítva gyakrabban történik, mint a többi címke pároknál.
 
-![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Próbálja ki!
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356573"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882843"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
 
@@ -22,7 +22,7 @@ A tanúsítványalapú hitelesítés lehetővé teszi az ügyfélalkalmazás hit
 
 * Telepítse a Azure PowerShell [legújabb verzióját](/powershell/azure/install-az-ps) .
 
-* Ha nem rendelkezik [Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+* Ha nem rendelkezik Azure- [előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 ## <a name="register-an-app-in-azure-ad"></a>Alkalmazás regisztrálása az Azure AD-ben
 
@@ -231,6 +231,6 @@ Az előző szakaszhoz hasonlóan megtekintheti az Azure Cosmos-fiókhoz tartozó
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Cosmos-kulcsok biztonságossá tétele Azure Key Vault használatával](access-secrets-from-keyvault.md)
+* [Azure Cosmos-kulcsok védelme az Azure Key Vaulttal](access-secrets-from-keyvault.md)
 
-* [Biztonsági attribútumok az Azure Cosmos DB-hez](cosmos-db-security-attributes.md)
+* [A Azure Cosmos DB biztonsági vezérlői](cosmos-db-security-controls.md)

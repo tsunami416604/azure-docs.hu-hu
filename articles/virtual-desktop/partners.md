@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036124"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918995"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
 Ez a cikk a Windows rendszerű virtuális asztali partnerek listáját sorolja fel betűrendben.
-
-## <a name="active-cypher"></a>Aktív Cypher
-
-![Aktív Cypher embléma](./media/partners/active-cypher.png)
-
-Az aktív Cypher egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely titkosítási technológiával gondoskodik a vállalatnak a behatolás és az adatvesztés elleni védelme érdekében. Az aktív Cypher az innovatív titkosítási technológia támogatja a Windows rendszerű virtuális asztalok Azure-on való futtatására vonatkozó általános fájl-védelmi stratégiát.
-
-A Windows rendszerű virtuális asztallal való használat esetén az aktív Cypher további képességeket biztosít a felhasználói információk hozzáférhetőségének és mobilitásának engedélyezéséhez, miközben megakadályozza a véletlen adatvesztést. Az aktív Cypher az Azure Information Protection meglévő biztonsági házirendjei és engedélyei használhatók a felhasználói fájlok titkosítására a Windows rendszerű virtuális asztal használata közben.
-
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [Lépjen a partner webhelyére.](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

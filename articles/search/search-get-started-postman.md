@@ -1,5 +1,5 @@
 ---
-title: 'REST gyors útmutató: Indexek létrehozása, betöltése és lekérdezése a Poster-Azure Search használatával'
+title: 'Gyors útmutató: Keresési index létrehozása a Poster-ben REST API-k használatával – Azure Search'
 description: Megtudhatja, hogyan hívhatja meg a Azure Search REST API-kat a Poster és a mintaadatok és a definíciók használatával.
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656778"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881538"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]

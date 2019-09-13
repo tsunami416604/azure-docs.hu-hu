@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.openlocfilehash: 3fb958b446c3f1e78f78f40f112d8d55d37b0986
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/11/2019
+ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141557"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915551"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Folyamatokat futtató trigger létrehozása egy kieséses ablakban
 Ez a cikk a bukdácsoló ablakos triggerek létrehozásának, indításának és figyelésének lépéseit ismerteti. Az eseményindítókkal és a támogatott típusokkal kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -25,11 +25,14 @@ Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek re
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
-Ha a Azure Portalban szeretne létrehozni egy kieséses ablak-triggert, válassza ki az Aktiválás > a kikapcsoló **ablak > a tovább**lehetőséget, majd konfigurálja a kikapcsoló ablakot meghatározó tulajdonságokat.
+1. Ha a Data Factory felhasználói felületén létre szeretne hozni egy kieséses ablak-eseményindítót, válassza az **Eseményindítók** fület, majd válassza az **új**lehetőséget. 
+1. Miután megnyitotta az aktiválási konfiguráció ablaktáblát, válassza a **kiesési ablak**lehetőséget, majd adja meg a kikapcsolt ablak triggerének tulajdonságait. 
+1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 ![Kieséses ablakos trigger létrehozása a Azure Portalban](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
 ## <a name="tumbling-window-trigger-type-properties"></a>Kiváltott ablak típusú trigger tulajdonságai
+
 A kiesési ablak a következő típusú trigger-tulajdonságokkal rendelkezik:
 
 ```
@@ -94,7 +97,7 @@ Az alábbi táblázat áttekintést nyújt azokról a fő JSON-elemekről, amely
 | **type** | Az trigger típusa. A típus a "TumblingWindowTrigger" rögzített érték. | String | "TumblingWindowTrigger" | Igen |
 | **runtimeState** | Az trigger futási idejének jelenlegi állapota.<br/>**Megjegyzés**: Ez az elem \<ReadOnly >. | String | "Started", "leállítva", "Letiltva" | Igen |
 | **frequency** | Az a gyakorisági egység (perc vagy óra) jelölő sztring, amelynél az trigger ismétlődik. Ha a **kezdő** időpontok értékének részletessége nagyobb, mint a **gyakoriság** értéke, a rendszer a **kezdő** időpontokat veszi figyelembe az ablak határainak kiszámításakor. Ha például a **gyakoriság** értéke óránként, a **kezdő időpont** pedig 2017-09-01T10:10:10Z, az első ablak a következő: (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | String | "minute", "Hour"  | Igen |
-| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, és a **gyakoriság** értéke "Hour", az trigger 3 óránként ismétlődik. | Integer | Pozitív egész szám. | Igen |
+| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, és a **gyakoriság** értéke "Hour", az trigger 3 óránként ismétlődik. <br/>**Megjegyzés**: A minimális ablak időköze 15 perc. | Integer | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely múltbeli lehet. Az első trigger időköze akövetkező: (Kezdés, **kezdő** + **időköz**). | DateTime | Egy DateTime érték. | Igen |
 | **endTime**| A legutóbbi előfordulás, amely múltbeli lehet. | DateTime | Egy DateTime érték. | Igen |
 | **delay** | Az ablak adatfeldolgozásának megkezdését késleltető idő. A folyamat futtatása a várt végrehajtási idő és a **késleltetés**mennyisége után indul el. A **késleltetés** határozza meg, hogy mennyi ideig várakozik az indítás a határidő lejártakor az új Futtatás elindítása előtt. A **késleltetés** nem változtatja meg az ablak **kezdő**időkeretét. Például az 00:10:00- as késleltetési érték 10 percet vesz igénybe. | Timespan<br/>(óó: PP: SS)  | Egy TimeSpan érték, amely az alapértelmezett 00:00:00. | Nem |
@@ -148,7 +151,7 @@ A következő pontok érvényesek a meglévő **TriggerResource** elemekre:
 
 ### <a name="tumbling-window-trigger-dependency"></a>Kiesési ablak trigger-függősége
 
-Ha azt szeretné, hogy a rendszer csak akkor hajtson végre egy késleltetésű ablakos triggert, ha egy másik, az adatgyárban lévő kiesést kiváltó ablak-trigger sikeres végrehajtását követően [létrehoz egy ablakos trigger](tumbling-window-trigger-dependency.md)-függőséget. 
+Ha azt szeretné, hogy a rendszer csak akkor hajtson végre egy késleltetésű ablakos triggert, ha egy másik, az adatgyárban lévő kiesést kiváltó ablak-trigger sikeres végrehajtását követően [létrehoz egy ablakos trigger-függőséget](tumbling-window-trigger-dependency.md). 
 
 ## <a name="sample-for-azure-powershell"></a>Példa Azure PowerShell
 

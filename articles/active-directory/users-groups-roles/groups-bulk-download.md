@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72f7776fde4558a49830ecbf14c77fa50e80bf36
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
-ms.translationtype: HT
+ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910946"
+ms.locfileid: "70914755"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Csoportok listájának tömeges letöltése (előzetes verzió) Azure Active Directory
 
@@ -29,7 +29,7 @@ A Azure Active Directory (Azure AD) portál használatával tömegesen letölthe
 
 ## <a name="bulk-download-service-limits"></a>Szolgáltatási korlátok tömeges letöltése
 
-A csoportok listájának létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez lehetővé teszi legalább 300 000 csoport létrehozását és letöltését.
+A csoportok listájának letöltésére szolgáló összes tömeges tevékenység legfeljebb egy óráig futhat. Ez lehetővé teszi, hogy legalább 300 000 csoportból álló listát töltsön le.
 
 ## <a name="to-download-a-list-of-groups"></a>A csoportok listájának letöltése
 

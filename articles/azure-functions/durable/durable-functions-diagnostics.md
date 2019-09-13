@@ -2,19 +2,19 @@
 title: Diagnosztika a Durable Functions-ben – Azure
 description: Ismerje meg, hogyan diagnosztizálhatja a problémákat a Azure Functions Durable Functions bővítménnyel.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734487"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933502"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnosztika Durable Functions az Azure-ban
 
@@ -32,7 +32,7 @@ Egy összehangoló példány minden életciklus-eseménye egy követési esemén
 
 * **hubName**: Annak a feladatnak a neve, amelyben a rendszer fut.
 * **appName**: A Function alkalmazás neve. Ez akkor hasznos, ha több Function-alkalmazással is rendelkezik, amelyek ugyanazt a Application Insights példányt osztják meg.
-* **slotName**: Az [üzembe helyezési](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) pont, amelyben az aktuális Function alkalmazás fut. Ez akkor lehet hasznos, ha az üzembe helyezési pontokat a felépítésük verziójára használja.
+* **slotName**: Az [üzembe helyezési](../functions-deployment-slots.md) pont, amelyben az aktuális Function alkalmazás fut. Ez akkor lehet hasznos, ha az üzembe helyezési pontokat a felépítésük verziójára használja.
 * **függvénynév**: A Orchestrator vagy a tevékenység függvény neve.
 * **functionType**: A függvény típusa, például **Orchestrator** vagy **tevékenység**.
 * **instanceId**: A koordináló példány egyedi azonosítója.
@@ -349,12 +349,13 @@ Az ügyfelek a következő választ kapják:
 
 Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen használatát, és ugyanezen támogatás a Durable Functions, akár az Azure-ban, akár helyileg fut. Előfordulhat azonban, hogy a hibakeresés során néhány viselkedést kell figyelembe vennie:
 
-* **Visszajátszás**: A Orchestrator függvények rendszeresen újrajátszják az új bemenetek fogadását. Ez azt jelenti, hogy egy Orchestrator-függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
-* **Várakozás**: Amikor a `await` rendszer megtalálta a műveletet, visszaadja a vezérlést a tartós feladatokra szolgáló Framework-diszpécsernek. Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik *, a várakozás (az F10* a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
-* **Üzenetkezelési időtúllépések**: A belső Durable Functions üzenetsor-üzeneteket használ a Orchestrator függvények és a tevékenységek funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
+* **Visszajátszás**: A Orchestrator függvények rendszeresen [újrajátszják](durable-functions-orchestrations.md#reliability) az új bemenetek fogadását. Ez azt jelenti, hogy egy Orchestrator-függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
+* **Várakozás**: Ha egy Orchestrator-függvényben fordul elő, a rendszervisszairányítjaavezérléstatartósfeladatokkeretrendszerénekkiosztójának.`await` Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik *, a várakozás (az F10* a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
+* **Üzenetkezelési időtúllépések**: A belső Durable Functions üzenetsor-üzeneteket használ a Orchestrator, a tevékenység és az entitás funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
+* **Leállítás és indítás**: A tartós függvények üzenetei megmaradnak a hibakeresési munkamenetek között. Ha leállítja a hibakeresést, és leállítja a helyi gazdagép folyamatát egy tartós függvény végrehajtása közben, akkor a függvény automatikusan újrafuthat egy jövőbeli hibakeresési munkamenetben. Ez zavaró lehet, ha nem várt. A [belső tárolási várólistákról](durable-functions-perf-and-scale.md#internal-queue-triggers) érkező összes üzenet törlése a hibakeresési munkamenetek között egy olyan módszer, amellyel elkerülhető a működés.
 
 > [!TIP]
-> A töréspontok beállításakor, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, amely `IsReplaying` csak `false`akkor szakad meg, ha a.
+> Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, `IsReplaying` amely `false`csak akkor szakad meg, ha a értéke.
 
 ## <a name="storage"></a>Storage
 
@@ -370,4 +371,4 @@ Ez a hibakereséshez hasznos, mert pontosan azt látja, hogy milyen állapotban 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan használhatja a tartós időzítőket](durable-functions-timers.md)
+> [További információ a Azure Functions figyeléséről](../functions-monitoring.md)

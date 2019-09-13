@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515378"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899725"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Üzletileg kritikus réteg – Azure SQL Database
 
@@ -45,6 +45,17 @@ Emellett üzletileg kritikus-fürt beépített [olvasási Felskálázási](sql-d
 ## <a name="when-to-choose-this-service-tier"></a>Mikor válassza ezt a szolgáltatási szintet?
 
 Üzletileg kritikus szolgáltatási szintet azon alkalmazások számára tervezték, amelyek alacsony késleltetésű válaszokat igényelnek a mögöttes SSD-tárolóból (átlagosan 1-2 MS), a gyors helyreállítást, ha az alapul szolgáló infrastruktúra meghibásodik, vagy ki kell töltenie a jelentéseket, az elemzéseket és a csak olvasható adatokat az elsődleges adatbázis díjmentesen olvasható másodlagos replikájának lekérdezése.
+
+A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgáltatási szintet általános célú szintje helyett:
+-   Alacsony IO-késési követelmények – a tárolási réteg gyors válaszát igénylő munkaterhelés (átlagosan 1-2 ezredmásodperc) üzletileg kritikus szintet kell használnia. 
+-   Gyakori kommunikáció az alkalmazás és az adatbázis között. Olyan alkalmazás, amely nem tudja kihasználni az alkalmazás-rétegbeli gyorsítótárazást, vagy [igénylést](sql-database-use-batching-to-improve-performance.md) végez, és sok olyan SQL-lekérdezést kell elküldenie, amelyet gyorsan fel kell dolgozni, üzletileg kritikus szinten jó jelöltek.
+-   Nagy számú frissítés – az INSERT, a Update és a DELETE művelet módosítja a memóriában (piszkos oldal) található adatlapokat, amelyeket a művelettel rendelkező `CHECKPOINT` adatfájlba kell menteni. A lehetséges adatbázismotor-folyamatok összeomlása vagy az adatbázis nagy mennyiségű piszkos oldallal rendelkező feladatátvétele általános célú szinten növelheti a helyreállítási időt. Üzletileg kritikus réteg használata, ha olyan számítási feladattal rendelkezik, amely sok memóriában végzett módosítást okoz. 
+-   Az adatmódosítást követően hosszú ideig futó tranzakciók. A hosszú ideig megnyitott tranzakciók megakadályozzák a naplófájlok méretének és a [virtuális naplófájlok (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)számának növelését. A feladatátvétel után a VLF nagy száma lelassíthatja az adatbázis helyreállítását.
+-   Munkaterhelések jelentési és elemzési lekérdezésekkel, amelyek átirányíthatók a díjmentes másodlagos írásvédett replikára.
+- Nagyobb rugalmasság és gyorsabb helyreállítás a hibáktól. Rendszerhiba esetén az elsődleges példányon lévő adatbázis le lesz tiltva, és az egyik másodlagos replika azonnal új írható-olvasható elsődleges adatbázis lesz, amely készen áll a lekérdezések feldolgozására. Az adatbázismotor nem kell elemezni és megismételni a tranzakciókat a naplófájlból, és be kell töltenie a memória pufferében lévő összes adatmennyiséget.
+- Advanced adatsérülés elleni védelem – üzletileg kritikusi szintű adatbázis-replikákat használ az üzletmenet folytonossága érdekében, és így a szolgáltatás automatikusan kihasználja az oldal javítását, ami ugyanaz, mint a SQL Server-adatbázis esetében is. [tükrözési és rendelkezésre állási csoportok](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Abban az esetben, ha egy replika nem tud beolvasni egy oldalt egy adatintegritási probléma miatt, a lap egy másik replikából lesz beolvasva, és az adatvesztés vagy az ügyfél leállása nélkül nem olvasható oldal jelenik meg. Ez a funkció általános célú szinten alkalmazható, ha az adatbázis rendelkezik geo-másodlagos replikával.
+- Magasabb rendelkezésre állás – a többszintű konfigurációban üzletileg kritikus szint az 99,995%-os rendelkezésre állást garantálja, az általános célú szint 99,99%-ában.
+- A Geo-replikációval konfigurált gyors geo-helyreállítási üzletileg kritikusi réteg 5 sec-os garantált helyreállítási időcélkitűzéssel (RPO) rendelkezik, és 30 mp-es helyreállítási időszakot (RTO) biztosít a telepített órák 100%-ában.
 
 ## <a name="next-steps"></a>További lépések
 

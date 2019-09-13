@@ -2,19 +2,19 @@
 title: HSM-védelemmel ellátott kulcsok generálása és átvitele a Azure Key Vault-Azure Key Vaulthoz | Microsoft Docs
 description: Ez a cikk segítséget nyújt a saját HSM-védelemmel ellátott kulcsok tervezéséhez, létrehozásához és átviteléhez a Azure Key Vault használatával. Más néven BYOK vagy saját kulcs használata.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: barclayn
-ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: mbaldwin
+ms.openlocfilehash: 3cd8cd0b72f1b3ccea557ce0e12394081329dc5b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575054"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883300"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>HSM-védelemmel ellátott kulcsok generálása és átvitele Azure Key Vault
 
@@ -65,7 +65,7 @@ Az alábbi táblázatban megtekintheti a saját kulcs (BYOK) használatának el�
 A következő öt lépést fogja használni a kulcs egy Azure Key Vault HSM-ben történő létrehozásához és átviteléhez:
 
 * [1. lépés: Az internetkapcsolattal rendelkező munkaállomás előkészítése](#step-1-prepare-your-internet-connected-workstation)
-* [2. lépés: A leválasztott munkaállomás előkészítése](#step-2-prepare-your-disconnected-workstation)
+* [2. lépés: A leválasztott munkaállomás előkészítése](#step-2-prepare-your-disconnected-workstation)
 * [3. lépés: A kulcs előállítása](#step-3-generate-your-key)
 * [4. lépés: A kulcs előkészítése az átvitelhez](#step-4-prepare-your-key-for-transfer)
 * [5. lépés: A kulcs átvitele Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
@@ -372,7 +372,7 @@ A letöltött csomag ellenőrzése:
      >
 2. Győződjön meg arról, hogy a következő jelenik meg, amely a sikeres ellenőrzést jelzi: **Találat SIKERES**
 
-Ez a szkript érvényesíti az aláíró láncot a nShield legfelső szintű kulcsával. A legfelső szintű kulcs kivonata be van ágyazva a szkriptbe, és annak értéke **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**kell, hogy legyen. Ezt az értéket külön is megerősítheti, ha felkeresi a [nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)webhelyét.
+Ez a szkript érvényesíti az aláíró láncot a nShield legfelső szintű kulcsával. A legfelső szintű kulcs kivonata be van ágyazva a szkriptbe, és annak értéke **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**kell, hogy legyen. Ezt az értéket külön is megerősítheti, ha felkeresi a [nCipher webhelyét](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
 Most már készen áll egy új kulcs létrehozására.
 
@@ -386,7 +386,7 @@ Futtassa a következő parancsot a kulcs létrehozásához:
 
 A parancs futtatásakor kövesse az alábbi utasításokat:
 
-* A *Protect* paramétert az érték modulra kellbeállítani az ábrán látható módon. Ez létrehoz egy modul által védett kulcsot. A BYOK eszközkészlet nem támogatja a OCS által védett kulcsokat.
+* A *Protect* paramétert az érték **modulra**kell beállítani az ábrán látható módon. Ez létrehoz egy modul által védett kulcsot. A BYOK eszközkészlet nem támogatja a OCS által védett kulcsokat.
 * Cserélje le az *contosokey értéket ugyanarra* értékét az **ident** és a **plainname** értékre bármilyen karakterlánccal. A rendszergazdai felügyelet csökkentése és a hibák kockázatának csökkentése érdekében javasoljuk, hogy mindkét értéknél ugyanazt az értéket használja. Az **ident** érték csak számokat, kötőjeleket és kisbetűket tartalmazhat.
 * Ebben a példában a pubexp üresen marad (alapértelmezett), de konkrét értékeket is megadhat. További információkért tekintse meg a [nCipher dokumentációját.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
@@ -564,4 +564,4 @@ Ha a feltöltés sikeres, megjelenik az imént hozzáadott kulcs tulajdonságai.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg ezt az árat és [](https://azure.microsoft.com/pricing/details/key-vault/)a szolgáltatás összehasonlítását.
+Ezt a HSM-védelemmel ellátott kulcsot már használhatja a kulcstartóban. További információkért tekintse meg ezt az árat és a szolgáltatás [összehasonlítását](https://azure.microsoft.com/pricing/details/key-vault/).

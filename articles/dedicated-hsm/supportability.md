@@ -3,7 +3,7 @@ title: Támogatási lehetőségek – Azure dedikált HSM |} A Microsoft Docs
 description: Támogatási lehetőségek és a különböző helyzetekben Azure dedikált HSM-be a felelősségi területeket
 services: dedicated-hsm
 author: johndaw
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 8341e9057b07fbb72957eddc342ae875e4591993
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912262"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881008"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Dedikált HSM Azure támogatási lehetőségek
 
@@ -26,12 +26,12 @@ Az Azure dedikált HSM Service egy fizikai eszköz az egyetlen ügyfél használ
 
 ## <a name="getting-support"></a>Támogatás igénybevétele
 
-Dedikált HSM ügyfél támogatása a Microsoft és Gemalto erőfeszítései. Bármilyen hardveres vagy hálózati elérési út problémák kibocsátásokban megtörténik a Microsoft, és a tényleges HSM, például a konfigurációt, a szoftver vagy a belső vezérlőprogram- és alkalmazásfejlesztés, bármilyen formában által Gemalto kibocsátásokban megtörténik. Ez a támogatási modell biztosítja, hogy a lehető leghatékonyabb támogatást a leggyorsabb útvonalat. Ha kétségei vannak az adott probléma, emelje a Microsoft támogatási kérelmet, és biztosíthatja, hogy megfelelően irányítja. A Microsoft maradjon szerepet játszanak az összes támogatási esetet, és a törekedni a legjobb támogatási szolgáltatásokat ügyfeleink számára.
+A dedikált HSM-hez készült ügyfélszolgálat a Microsoft és a Gemalto közötti közös munka. A Microsoft minden hardveres problémát vagy hálózati elérési utat elhárít, és a tényleges HSM-sel (például a konfigurációval, a szoftverekkel, a belső vezérlőprogram és az alkalmazás-fejlesztéssel) kapcsolatos teendőket a Gemalto fogja megoldani. Ez a támogatási modell biztosítja a leggyorsabb útvonalat a leghatékonyabb támogatáshoz. Ha bizonytalan egy adott problémával kapcsolatban, adjon meg egy támogatási kérést a Microsofttal, és gondoskodunk arról, hogy a megfelelő módon legyen átirányítva. A Microsoft minden támogatási forgatókönyvben részt vesz, és a legjobb támogatási élményt nyújtja ügyfeleinknek.
 
 ## <a name="gemalto-support"></a>Gemalto támogatása
 
-A dedikált HSM szolgáltatást használó ügyfeleink jogosultak a támogatásra Gemalto azok és támogatási csomag alapján. Ehhez mindössze a Gemalto támogatási portálról regisztrációs folyamatot. Egy ügyfél-Azonosítót és az utasításokat ennek a kezdeti kapcsolatfelvétel a Microsofttal a dedikált HSM-szolgáltatás eléréséhez részeként biztosítunk. A mechanizmus kérhet támogatást a Gemalto keresztül van azok [támogatási Ügyfélportál](https://supportportal.gemalto.com/csm/).
-Megjegyzés: az a lényeg, hogy az összes szoftver- és kell használnia a HSM (például hozzáférés ügyfélszoftvert és SDK-k) dokumentációja nyújt Gemalto letölthető az ügyfélszolgálati támogatási portálján keresztül.
+A dedikált HSM szolgáltatást használó ügyfelek a támogatási csomag keretében a Gemalto támogatását támogatják. Ehhez csak a Gemalto támogatási portál használatával kell regisztrálnia a regisztrációs folyamatot. Az ügyfél-azonosító és az utasítások erre a célra a Microsofttal való első részvétel részeként a dedikált HSM szolgáltatáshoz való hozzáféréshez nyújtanak hozzáférést. A mechanizmus kérhet támogatást a Gemalto keresztül van azok [támogatási Ügyfélportál](https://supportportal.gemalto.com/csm/).
+Fontos megjegyezni, hogy a Gemalto minden szoftvert és dokumentációt biztosít, amely a HSM (például az ügyfél-hozzáférési szoftver és az SDK-k) használatához szükséges a terméktámogatási portálon való letöltéssel.
 
 ### <a name="software-components"></a>Szoftver-összetevő
 
@@ -55,7 +55,7 @@ A tervezési, fejlesztési és a hardveres biztonsági MODULT használó egyéni
 
 ## <a name="microsoft-support"></a>Microsoft-ügyfélszolgálat
 
-A Microsoft biztosítja, fizikai hardveres biztonsági modulokhoz hálózati elérhetők maradnak, és a egy működési állapotot egyetlen ügyfél kizárólagos használatára. Ügyfelek felelős konfigurációs, felügyeleti és az eszközök feletti felügyeletet. A Microsoft feladatai a következők:
+A Microsoft biztosítja, hogy a fizikai HSM-eszközök a hálózat számára elérhetők legyenek, és működési állapotban legyenek egyetlen ügyfél kizárólagos használatára. Az ügyfelek felelősek az eszköz konfigurálásával, felügyeletével és kezelésével kapcsolatban. A Microsoft feladatai a következők:
 
 * Arról, hogy az eszköz energiagazdálkodási és hűtési
 * A hardveres biztonsági MODULT (például hibajavítási forgatókönyv) a egy működési állapotot karbantartása
@@ -76,7 +76,7 @@ Miután egy ügyfél rendelkezik egy jóváhagyott regisztrációs a dedikált H
 
 ### <a name="hardware-issues"></a>Hardverproblémák
 
-A HSM-eszközre van redundáns és cserélhető áramforrások és egységek ventilátor.  Azonban ventilátor egység eltávolító továbbra is egy illetéktelen esemény miatt. Összetevő hiba esetén a Microsoft használja a legmegfelelőbb folyamat a összetevő szintű probléma úgy, hogy minimális megszakítással használhatja tovább, és a legalacsonyabb kockázatát, az ügyfelek szolgáltatás rendelkezésre állása miatt.
+A HSM-eszközre van redundáns és cserélhető áramforrások és egységek ventilátor.  A ventilátoros egység eltávolítása azonban továbbra is egy illetéktelen módosítási eseményt eredményez. Összetevő hiba esetén a Microsoft használja a legmegfelelőbb folyamat a összetevő szintű probléma úgy, hogy minimális megszakítással használhatja tovább, és a legalacsonyabb kockázatát, az ügyfelek szolgáltatás rendelkezésre állása miatt.
 Az eszköz minden komolyabb hiba az eszköz váltja fel az ingyenes készletből egy friss eredményez. Az ügyfél az új eszköz egyszerűen tartalmazza a meglévő magas rendelkezésre ÁLLÁSÚ párok, szinkronizálását, és térjen vissza a teljes működési állapotot. A sikertelen eszköz kell szem előtt eltávolítja, és a helyen, az Adatközpont aprítva eszközök adatait. Csak a váz visszatér Gemalto újrafelhasználás céljából.
 
 

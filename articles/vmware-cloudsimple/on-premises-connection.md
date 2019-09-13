@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240718"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910545"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával
 
@@ -23,7 +23,7 @@ Ha már rendelkezik Azure ExpressRoute-kapcsolattal egy külső helyről (péld�
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A helyszíni környezetből Global Reach-kapcsolatok létrehozásához a **/29** hálózati címterület szükséges.  A/29 címterület a ExpressRoute-áramkörök közötti átviteli hálózaton van használatban.  Az átviteli hálózat nem fedi átfedésben az Ön Azure-beli virtuális hálózatait, a helyszíni hálózatokat vagy a CloudSimple.
+A helyszíni környezetből Global Reach-kapcsolatok létrehozásához a **/29** hálózati címterület szükséges.  A/29 címterület a ExpressRoute-áramkörök közötti átviteli hálózaton van használatban.  Az átviteli hálózatnak nem szabad átfedésben lennie az Azure-beli virtuális hálózatokkal, a helyszíni hálózatokkal vagy a CloudSimple.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ A helyszíni környezetből Global Reach-kapcsolatok létrehozásához a **/29**
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A helyszíni hálózat és a saját felhőalapú hálózat összekapcsolása lehetővé teszi a privát felhő különböző módokon történő használatát, többek között az alábbiakat:
+A helyszíni hálózat és a saját felhőalapú hálózat összekapcsolása lehetővé teszi a privát felhő különböző módokon történő használatát, többek között a következő esetekben:
 
 * A saját felhőalapú hálózatát helyek közötti VPN-kapcsolat létrehozása nélkül érheti el.
 * A helyszíni Active Directory identitás forrásaként használhatja a saját felhőben.
@@ -43,6 +43,7 @@ A helyszíni hálózat és a saját felhőalapú hálózat összekapcsolása leh
 ## <a name="connecting-expressroute-circuits"></a>ExpressRoute-áramkörök csatlakoztatása
 
 A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a ExpressRoute-áramkörön, és meg kell adnia az engedélyezési adatokat a CloudSimple.
+
 
 ### <a name="create-expressroute-authorization"></a>ExpressRoute-hitelesítés létrehozása
 
@@ -70,6 +71,11 @@ A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a E
     * Probléma altípusa: **Helyszíni ExpressRoute-kapcsolatok létrehozása**
     * Adja meg a részleteket tartalmazó ablaktáblán a vágólapra másolt és mentett erőforrás-azonosítót és engedélyezési kulcsot.
     * Adjon meg egy/29 hálózati címtartományt az átviteli hálózat számára.
+    * Elküldi az alapértelmezett útvonalat a ExpressRoute-on keresztül?
+    * A privát felhő forgalma a ExpressRoute-on keresztül továbbított alapértelmezett útvonalat használja?
+
+    > [!IMPORTANT]
+    > Az alapértelmezett útvonal küldése lehetővé teszi, hogy az összes internetes forgalmat a saját helyszíni internetkapcsolatával küldje el a privát felhőből.  Ha le szeretné tiltani a privát felhőben konfigurált alapértelmezett útvonalat, és a helyszíni kapcsolat alapértelmezett útvonalát szeretné használni, adja meg a támogatási jegy részleteit.
 
 ## <a name="next-steps"></a>További lépések
 

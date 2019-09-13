@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827226"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900318"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Az adattárház frissítése a Gen2
 
@@ -63,7 +63,7 @@ A következő táblázat összefoglalja a régiót, ha az alsó Gen2 számítás
 | Egyesült Arab Emírségek északi régiója |2019. július 20. |Kész |
 | Az Egyesült Királyság déli régiója |Elérhető |Folyamatban |
 | Az Egyesült Királyság nyugati régiója |Elérhető |Folyamatban |
-| USA nyugati középső régiója |2019. szeptember 1. |2019. október 1.|
+| USA nyugati középső régiója |November 1., 2019 |2019. december 1.|
 | Nyugat-Európa |Elérhető |Kész |
 | USA nyugati régiója |Elérhető |Kész |
 | USA nyugati régiója, 2. |Elérhető |Kész |
@@ -74,7 +74,7 @@ A fenti rendelkezésre állási diagram alapján a Gen1-példányok automatikus 
 
 A frissítési folyamat során az adattárház újraindításakor a kapcsolat rövid csökkenése (körülbelül 5 perc) lesz.  Az adattárház újraindítása után a szolgáltatás teljes mértékben elérhető lesz. A teljesítmény romlása azonban akkor is előfordulhat, ha a frissítési folyamat továbbra is frissíti az adatfájlokat a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
 
-Az adatfájlok frissítési folyamatát is felgyorsíthatja az [Alter index](sql-data-warehouse-tables-index.md) Újraépítés az összes elsődleges oszlopcentrikus-táblán való futtatásával, az újraindítás után egy nagyobb slo-t és egy erőforrás-osztályt használva.
+Az adatfájlok frissítési folyamatát is felgyorsíthatja az [Alter index Újraépítés](sql-data-warehouse-tables-index.md) az összes elsődleges oszlopcentrikus-táblán való futtatásával, az újraindítás után egy nagyobb slo-t és egy erőforrás-osztályt használva.
 
 > [!NOTE]
 > Az Alter index Rebuild egy offline művelet, és a táblák addig nem lesznek elérhetők, amíg az Újraépítés be nem fejeződik.
@@ -93,7 +93,7 @@ Az alábbi lépéseket egy meglévő Gen1-adattárházon végezheti el: saját f
 
 Visszaesést tapasztalhat a teljesítményben, miközben a frissítési folyamat az adatfájlok frissítését végzi a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
 
-A háttérben futó adatáttelepítési folyamat meggyorsítása érdekében azonnal kényszerítheti az adatáthelyezést az [Alter index](sql-data-warehouse-tables-index.md) -Újraépítés futtatásával minden olyan elsődleges oszlopcentrikus-táblán, amelyet egy nagyobb slo és Resource osztályban szeretne lekérdezni.
+A háttérben futó adatáttelepítési folyamat meggyorsítása érdekében azonnal kényszerítheti az adatáthelyezést az [Alter index-Újraépítés](sql-data-warehouse-tables-index.md) futtatásával minden olyan elsődleges oszlopcentrikus-táblán, amelyet egy nagyobb slo és Resource osztályban szeretne lekérdezni.
 
 > [!NOTE]
 > Az Alter index Rebuild egy offline művelet, és a táblák addig nem lesznek elérhetők, amíg az Újraépítés be nem fejeződik.
@@ -110,7 +110,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 **K: Hogyan befolyásolja a frissítések az Automation-parancsfájlokat?**
 
-- V: A szolgáltatási szintre vonatkozó célkitűzésre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse [](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)meg a részleteket.
+- V: A szolgáltatási szintre vonatkozó célkitűzésre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse meg [a részleteket.](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)
 
 **K: Mennyi ideig tart az önálló frissítés?**
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326610"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883586"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Az SSL-lezárás és a végpontok közötti SSL áttekintése Application Gateway
 
@@ -95,7 +95,7 @@ A hitelesítési tanúsítványok elavultak, és a megbízható főtanúsítván
    
 > [!NOTE] 
 >
-> Ahhoz, hogy egy SSL-tanúsítvány megbízható legyen, a háttér-kiszolgáló tanúsítványát ki kell állítani egy olyan HITELESÍTÉSSZOLGÁLTATÓ, amely szerepel a Applicatin-átjáró megbízható tárolójában. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki, akkor a Application Gateway a következő helyre fog bejelentkezni: Ellenőrizze, hogy a kiállító HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát megbízható HITELESÍTÉSSZOLGÁLTATÓ adta-e ki, és hogy nem található-e megbízható hitelesítésszolgáltató (ekkor a megbízható és biztonságos kapcsolatok létrejöttek), vagy nem található megbízható HITELESÍTÉSSZOLGÁLTATÓ (ekkor a Applicatin-átjáró a háttér-unhe fogja megjelölni. althy). Ezért javasoljuk, hogy a háttér-kiszolgáló tanúsítványa tartalmazza a legfelső szintű és a intermidiate CAs-t is.
+> Ahhoz, hogy egy SSL-tanúsítvány megbízható legyen, a háttér-kiszolgáló tanúsítványát egy olyan HITELESÍTÉSSZOLGÁLTATÓ állította ki, amely szerepel a Application Gateway megbízható tárolójában. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki, akkor a Application Gateway megkeresi annak ellenőrzéséhez, hogy a kiállító HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát megbízható HITELESÍTÉSSZOLGÁLTATÓ adta-e ki, és hogy nem található-e megbízható hitelesítésszolgáltató (ekkor a megbízható, biztonságos kapcsolatok létrejönnek), vagy nem található megbízható HITELESÍTÉSSZOLGÁLTATÓ (ekkor a Application Gateway meg fogja jelölni a háttérrendszer nem megfelelő állapotú). Ezért javasoljuk, hogy a háttér-kiszolgáló tanúsítványa tartalmazza a legfelső szintű és a intermidiate CAs-t is.
 
 - Ha a tanúsítvány önaláírt vagy ismeretlen közvetítők által van aláírva, akkor a végpontok közötti SSL engedélyezéséhez a v2 SKU-ban meg kell adni egy megbízható főtanúsítványt. Application Gateway csak olyan háttérrel kommunikál, amelynek a kiszolgálói tanúsítvány főtanúsítványa megegyezik a készlethez társított háttérbeli http-beállításban található megbízható legfelső szintű tanúsítványok egyikével.
 

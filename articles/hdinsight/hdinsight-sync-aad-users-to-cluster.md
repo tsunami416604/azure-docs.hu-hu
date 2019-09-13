@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e6534026bef139a94d2784be42025f8ea8b096ef
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811785"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879384"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
@@ -47,7 +47,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
 
 1. [Csatlakozzon az SSH-val a fürthöz](hdinsight-hadoop-linux-use-ssh-unix.md). A Azure Portal a fürt áttekintés paneljén válassza a **Secure Shell (SSH)** gombot.
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Másolja a megjelenített `ssh` parancsot, és illessze be az SSH-ügyfélbe. Ha a rendszer kéri, adja meg az ssh-felhasználó jelszavát.
 
@@ -139,7 +139,7 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 
 3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre `LDAP` van állítva `Local`.
 
-    ![Felhasználók oldal](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![Felhasználók oldal](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Jelentkezzen be a Ambari új felhasználóként
 

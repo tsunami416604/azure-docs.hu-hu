@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d599607da6653d088f53490ea4d4b5f7f6d0f236
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382932"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915982"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Alkalmazások jelszavainak kezelése a biztonsági adatok (előzetes verzió) lapján
 
@@ -30,11 +30,9 @@ Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépé
 
 Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
-- Az alkalmazás jelszavait automatikusan generálja a rendszer, és csak egyszer kell beírnia egy alkalmazásban.
+- Automatikusan létrejönnek az alkalmazások jelszavai, és egy alkalmazásban egyszer kell létrehozni és beírni.
 
 - Felhasználónként legfeljebb 40 jelszó adható meg. Ha a korlát után megpróbál létrehozni egyet, a rendszer arra kéri, hogy töröljön egy meglévő jelszót, mielőtt az újat hozna létre.
-
-- Egy eszközön egyetlen alkalmazás jelszava használható, nem pedig alkalmazásként. Hozzon létre például egyetlen jelszót a laptopján lévő összes alkalmazáshoz, majd egy másik jelszót az összes alkalmazáshoz az asztalon.
 
     >[!Note]
     >Az Office 2013-ügyfelek (beleértve az Outlookot is) támogatják az új hitelesítési protokollokat, és kétlépéses ellenőrzéssel használhatók. Ez a támogatás azt jelenti, hogy a kétlépéses ellenőrzés bekapcsolása után már nem lesz szükség az Office 2013-ügyfelekhez tartozó alkalmazások jelszavára. További információ: a [modern hitelesítés működése az office 2013 és az office 2016 Client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) cikkhez.
@@ -44,7 +42,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 Ha kétlépéses ellenőrzést használ a munkahelyi vagy iskolai fiókjával, és a rendszergazda bekapcsolta a biztonsági információk felületét, a **biztonsági adatok** lapon hozhatja létre és törölheti az alkalmazáshoz tartozó jelszavakat.
 
 >[!Note]
->Ha a rendszergazda nem kapcsolta be a biztonsági adatokkal kapcsolatos felhasználói élményt, kövesse az [alkalmazás jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md) kétlépéses ellenőrzéshez című szakaszban található utasításokat és információkat.
+>Ha a rendszergazda nem kapcsolta be a biztonsági adatokkal kapcsolatos felhasználói élményt, kövesse az [alkalmazás jelszavainak kezelése kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md) című szakaszban található utasításokat és információkat.
 
 ### <a name="to-create-a-new-app-password"></a>Új alkalmazás jelszavának létrehozása
 

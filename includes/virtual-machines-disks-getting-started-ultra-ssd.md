@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db8147717e825d9cc48b7f0704dc5eea0be223a9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510323"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919689"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 
@@ -42,7 +42,7 @@ Ha az előfizetés engedélyezve van, a kimenetnek a következőhöz hasonlóan 
 
 ## <a name="determine-your-availability-zone"></a>A rendelkezésre állási zóna meghatározása
 
-A jóváhagyást követően el kell döntenie, hogy melyik rendelkezésre állási zónát kívánja használni az ultra-lemezek használatához. Futtassa a következő parancsok egyikét annak meghatározásához, hogy melyik zónában szeretné üzembe helyezni az ultra-lemezt,és először cserélje le a régiót, a **vmSize**és az előfizetési értékeket:
+A jóváhagyást követően el kell döntenie, hogy melyik rendelkezésre állási zónát kívánja használni az ultra-lemezek használatához. Futtassa a következő parancsok egyikét annak meghatározásához, hogy melyik zónában szeretné üzembe helyezni az ultra-lemezt, és először cserélje le a **régiót**, a **vmSize**és az **előfizetési** értékeket:
 
 CLI:
 
@@ -79,7 +79,7 @@ Most, hogy megismerte, hogy melyik zónát kívánja telepíteni, kövesse a jel
 
 Először határozza meg a telepítendő virtuális gép méretét. Egyelőre csak a DsV3 és a EsV3 virtuálisgép-családok támogatják az ultra lemezeket. A virtuális gépek méretével kapcsolatos további részletekért tekintse meg a [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) második táblázatát.
 
-Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, tekintse meg a mintát [több Ultra lemezzel rendelkező virtuális gép létrehozása](https://aka.ms/UltraSSDTemplate)című témakörben.
+Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, tekintse meg a mintát [több Ultra lemezzel rendelkező virtuális gép létrehozása](https://aka.ms/ultradiskArmTemplate)című témakörben.
 
 Ha saját sablont szeretne használni, győződjön meg róla, hogy a **apiVersion** a `Microsoft.Compute/virtualMachines` `2018-06-01` és `Microsoft.Compute/Disks` a (vagy újabb) értékre van beállítva.
 
@@ -216,4 +216,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné kipróbálni az új lemez típusának [elérésére](https://aka.ms/UltraDiskSignup)vonatkozó kérést.
+Ha szeretné kipróbálni az új lemez típusának [elérésére vonatkozó kérést](https://aka.ms/UltraDiskSignup).

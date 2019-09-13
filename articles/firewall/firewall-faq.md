@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114761"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932742"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -113,7 +113,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>Milyen korlátozások vonatkoznak az ismert szolgáltatásokra?
 
-Azure Firewall szolgáltatási korlátokat az Azure-előfizetések [és-szolgáltatások korlátozásai, kvótái és](../azure-subscription-service-limits.md#azure-firewall-limits)megkötései című témakörben talál.
+Azure Firewall szolgáltatási korlátokat az [Azure-előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md#azure-firewall-limits)című témakörben talál.
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Egy hub-alapú virtuális hálózatban Azure Firewall a hálózati forgalmat két küllős virtuális hálózat között?
 
@@ -131,7 +131,7 @@ A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tool
 
 A kényszerített bújtatás alapértelmezés szerint nem támogatott, de a támogatással is engedélyezhető.
 
-Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat fenntartása érdekében ezt a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
+Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
 
 Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, engedélyezzük az előfizetését, és gondoskodni kell a tűzfal internetkapcsolatának fenntartásáról.
 
@@ -150,6 +150,9 @@ Ha a * **. contoso.com**konfigurálja, akkor a *anyvalue*. contoso.com, de nem c
 ## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent *a kiépítési állapot: Sikertelen* jelentés?
 
 Ha egy konfigurációs változást alkalmaz, Azure Firewall megkísérli frissíteni az összes mögöttes háttér-példányt. Ritka esetekben előfordulhat, hogy az egyik ilyen háttérbeli példány nem tud frissíteni az új konfigurációval, és a frissítési folyamat leáll sikertelen kiépítési állapottal. A Azure Firewall továbbra is működőképes, de az alkalmazott konfiguráció inkonzisztens állapotba kerülhet, ahol egyes példányok esetében az előző konfiguráció szerepel, ahol mások rendelkeznek a frissített szabálykészlet megadásával. Ha ez történik, próbálja meg még egyszer frissíteni a konfigurációt, amíg a művelet nem sikerül, és a tűzfal *sikeres* kiépítési állapotban van.
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hogyan kezeli a Azure Firewall a tervezett karbantartást és a nem tervezett hibákat?
+A Azure Firewall egy aktív-aktív konfigurációban számos háttér-csomópontból áll.  A tervezett karbantartáshoz a csomópontok zökkenőmentes frissítéséhez a kapcsolatok kiürítése szükséges.  A frissítések az egyes Azure-régiók esetében nem munkaidőn kívüli időpontokban vannak megtervezve, így tovább korlátozható a megszakadás kockázata.  A nem tervezett problémák esetén egy új csomópontot hozunk létre a meghibásodott csomópont cseréjéhez.  Az új csomóponthoz való csatlakozás általában a hiba időpontjától számított 10 másodpercen belül újra létrejön.
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Létezik a tűzfal neve?
 

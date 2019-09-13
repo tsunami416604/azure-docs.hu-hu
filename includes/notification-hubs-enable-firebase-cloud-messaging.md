@@ -5,55 +5,56 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 02/05/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fef6122eceda213fb6353ada53033d0d1e27fd7e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509083"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935099"
 ---
 1. Jelentkezzen be a [Firebase konzoljába](https://firebase.google.com/console/). Hozzon létre egy új Firebase-projektet, ha nem rendelkezik még ilyennel.
 2. A projekt létrehozása után válassza az **Add Firebase to your Android app** (A Firebase hozzáadása az Android-alkalmazáshoz) lehetőséget. 
 
     ![Firebase hozzáadása Android-alkalmazáshoz](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
-3. Az a **Firebase hozzáadása Android-alkalmazáshoz** lapon, tegye a következőket: 
-    1. A **Android-csomag neve**, másolja az értéket, a **applicationId** a az alkalmazás build.gradle fájllal. Ebben a példában van `com.fabrikam.fcmtutorial1app`. 
+3. A **Firebase hozzáadása az Android-alkalmazáshoz** oldalon hajtsa végre a következő lépéseket: 
+    1. Az **android-csomag neve mezőben**másolja a **applicationId** értékét az alkalmazás Build. gradle fájljába. Ebben a példában ez `com.fabrikam.fcmtutorial1app`a következő:. 
 
-        ![Adja meg a csomag neve](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
-    2. Válassza ki **alkalmazás regisztrálása**. 
-4. Válassza ki **töltse le a google-services.json**, mentse a fájlt, a **alkalmazás** a projektet, és válassza ki a mappa **tovább**. 
+        ![Adja meg a csomag nevét](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
+    2. Válassza az **alkalmazás regisztrálása**lehetőséget. 
+4. Válassza a **Google-Services. JSON letöltése**lehetőséget, mentse a fájlt a projekt **alkalmazás** mappájába, majd válassza a **tovább**lehetőséget. 
 
-    ![Google-services.json letöltése](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
-5. Győződjön meg arról, a következő **konfigurációs módosítások** az Android Studióban a projekthez. 
-    1.  A projekt szintű build.gradle fájlban (&lt;projekt&gt;/build.gradle), adja hozzá a következő utasítást a **függőségek** szakaszban. 
+    ![Google-Services. JSON letöltése](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
+5. Végezze el a következő **konfigurációs módosításokat** a projektben Android Studioban. 
+    1.  A projekt szintű Build. gradle fájlban (&lt;Project&gt;/Build.gradle) adja hozzá a következő utasítást a **függőségek** szakaszhoz. 
 
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. Az alkalmazásszintű build.gradle fájlban (&lt;projekt&gt;/&lt;app-module&gt;/build.gradle), adja hozzá a következő utasítást a **függőségek** szakaszban. 
+    2. Az alkalmazás szintű Build&lt;. gradle fájlban (Project/&lt;&gt;app-Module&gt;/Build.gradle) adja hozzá a következő utasításokat a **függőségek** szakaszhoz. 
 
         ```
-        implementation 'com.google.firebase:firebase-core:16.0.1'
+        implementation 'com.google.firebase:firebase-core:16.0.8'
+        implementation 'com.google.firebase:firebase-messaging:17.3.4'
         ```
 
-    3. A következő sort a függőségek szakasz után adja hozzá az alkalmazásszintű build.gradle fájl végéhez. 
+    3. Adja hozzá a következő sort az alkalmazás szintű Build. gradle fájl végéhez a függőségek szakasz után. 
 
         ```
         apply plugin: 'com.google.gms.google-services'
         ```        
-    4. Válassza ki **szinkronizálás** az eszköztáron. 
+    4. Kattintson a **szinkronizálás most** elemre az eszköztáron. 
  
-        ![build.gradle konfigurációs módosítások](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
+        ![a Build. gradle konfigurációs módosításai](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
 6. Kattintson a **Tovább** gombra. 
-7. Válassza ki **kihagyhatja ezt a lépést**. 
+7. Válassza **a lépés kihagyása**lehetőséget. 
 
     ![Az utolsó lépés kihagyása](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)
 8. A Firebase konzolján kattintson a projektjéhez tartozó fogaskerékre. Ezután kattintson a **Project Settings** (Projektbeállítások) elemre.
 
     ![A projektbeállítások kiválasztása](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. Ha még nem le a fájlt a google-services.json alkalmazásba a **alkalmazás** teheti az Android Studio projekt mappában, ez az oldal így tovább. 
-5. Váltson a **Cloud Messaging** a felső fülön. 
-6. Másolja ki és mentse a **kiszolgálókulcs** későbbi használatra. Ez az érték használatával a központ konfigurálása.
+4. Ha még nem töltötte le a Google-Services. JSON fájlt a Android Studio-projekt **alkalmazás** mappájába, ezt a lapon teheti meg. 
+5. Váltson a felül található **Cloud Messaging (Felhőbeli üzenetkezelés** ) lapra. 
+6. Másolja és mentse a **kiszolgálói kulcsot** későbbi használatra. Ezt az értéket használja a hub konfigurálásához.

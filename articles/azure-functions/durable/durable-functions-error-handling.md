@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734309"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933431"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
 
-A tartós függvények összehangolása programkódban valósul meg, és a programozási nyelv hiba-kezelési képességeit is használhatja. Ennek szem előtt tartásával valójában nem minden olyan új fogalomra van szükség, amelyből megismerheti a hibakezelés és a kompenzáció beépítését. Vannak azonban olyan viselkedések, amelyeket érdemes figyelembe vennie.
+A tartós függvények összehangolása programkódban valósul meg, és a programozási nyelv beépített hibák kezelésére szolgáló funkcióit használhatja. Valójában nincs olyan új fogalma, amelyet meg kell tanulnia a hibák kezelésére és a kompenzációba való felvételre. Vannak azonban olyan viselkedések, amelyeket érdemes figyelembe vennie.
 
 ## <a name="errors-in-activity-functions"></a>Hibák a Activity functions szolgáltatásban
 
-A tevékenységi függvényekben felmerülő kivételek visszakerülnek a Orchestrator függvénybe, és `FunctionFailedException`a következőre váltanak. A Orchestrator függvényben az igényeinek megfelelő hibakezelés és kompenzációs kód is írható.
+A tevékenységi függvényekben felmerülő kivételeket a rendszer visszaküldi a Orchestrator függvénynek `FunctionFailedException`. A Orchestrator függvényben az igényeinek megfelelő hibakezelés és kompenzációs kód is írható.
 
 Vegyük például a következő Orchestrator függvényt, amely az egyik fiókból a másikba továbbítja a forrásokat:
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Ha a **CreditAccount** függvény hívása meghiúsul a cél fióknál, a Orchestrator függvény kompenzálja ezt az összeget a forrás fiókba való visszaírásával.
+Ha az első **CreditAccount** -függvény hívása sikertelen, a Orchestrator függvény kompenzálja a források visszaküldését a forrás fiókba.
 
 ## <a name="automatic-retry-on-failure"></a>Sikertelen automatikus újrapróbálkozás
 
@@ -192,18 +192,18 @@ module.exports = df.orchestrator(function*(context) {
 
 A `CallActivityWithRetryAsync` (.net) vagy `callActivityWithRetry` (JavaScript) API egy `RetryOptions` paramétert használ. A (.net) vagy `CallSubOrchestratorWithRetryAsync` `callSubOrchestratorWithRetry` (JavaScript) API-t használó alfolyamati hívások ugyanezeket az újrapróbálkozási szabályzatokat használhatják.
 
-Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van. Ezek a következők:
+Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
 
 * **Kísérletek maximális száma**: Az újrapróbálkozási kísérletek maximális száma.
 * **Első újrapróbálkozás időköze**: Az első újrapróbálkozási kísérlet előtti várakozási idő.
 * **Leállítási együttható**: A leállítási növekedésének mértékét meghatározó együttható. Az alapértelmezett érték 1.
 * **Maximális újrapróbálkozási időköz**: Az újrapróbálkozási kísérletek között elvárt maximális időtartam.
 * **Újrapróbálkozás időkorlátja**: Az újrapróbálkozások elvégzéséhez szükséges maximális időtartam. Az alapértelmezett viselkedés az, ha határozatlan ideig próbálkozik.
-* **Leíró**: A felhasználó által definiált visszahívás megadható, amely meghatározza, hogy a függvény hívását újra kell-e próbálni.
+* **Leíró**: Felhasználó által definiált visszahívás megadható annak megállapításához, hogy egy függvényt újra kell-e próbálni.
 
 ## <a name="function-timeouts"></a>Függvények időtúllépései
 
-Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a művelet. Ez a megfelelő módszer a (z) (.net) vagy a ( `context.CreateTimer` JavaScript) együttes `context.df.Task.any` `Task.WhenAny` használatával `context.df.createTimer` történő [tartós időzítő](durable-functions-timers.md) létrehozásával a következő példában látható módon:
+Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ez a megfelelő módszer a (z) (.net) vagy a ( `context.CreateTimer` JavaScript) együttes `context.df.Task.any` `Task.WhenAny` használatával `context.df.createTimer` történő [tartós időzítő](durable-functions-timers.md) létrehozásával a következő példában látható módon:
 
 ### <a name="precompiled-c"></a>ElőfordítottC#
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 Ha egy Orchestrator függvény nem kezelt kivétel miatt meghiúsul, a rendszer naplózza a kivétel részleteit, és a példány `Failed` állapota állapottal fejeződik be.
 
 ## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Ismerje meg az örök összeszereléseket](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan diagnosztizálhatja a problémákat](durable-functions-diagnostics.md)

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/08/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 590b84acd57199b291aa44f7120507023ffd026a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389755"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910410"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
@@ -30,13 +30,13 @@ A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki
 
 Az alábbi ábrán a dinamikus csomagolással rendelkező igény szerinti kódoláshoz tartozó munkafolyamat látható.
 
-![Dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
 
 ## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
-Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](https://docs.microsoft.com/rest/api/media/transforms) és egy [feladatot](https://docs.microsoft.com/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információkért lásd: [átalakítások és feladatok](transforms-jobs-concept.md)
+Media Services v3 kódoláshoz létre kell hoznia egy átalakítót és [](https://docs.microsoft.com/rest/api/media/transforms) egy [feladatot](https://docs.microsoft.com/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információkért lásd: [átalakítások és feladatok](transforms-jobs-concept.md)
 
 A Media Services encoding, amikor a szolgáltatás használatával ossza meg a kódoló a bemeneti fájlok feldolgozásának módja. Például megadhatja a videó felbontást és/vagy a kívánt hang csatornák száma kódolt tartalmában. 
 

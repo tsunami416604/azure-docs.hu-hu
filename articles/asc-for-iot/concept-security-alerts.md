@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 99ffa49a8e379f6c3a2139c082cd23f95c126e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ccf1c912dbf982fde1eb5cde4cde6556fc88bc1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597246"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933915"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT biztonsági riasztások Azure Security Center
 
@@ -85,12 +85,12 @@ További részleteket az [egyéni riasztások létrehozása](quickstart-create-c
 | Közepes   | A tanúsítvány törölve lett egy IoT Hubból                                    | A (z \')% {DescCertificateName\' } nevű tanúsítvány törölve lett a (\'z)% {DescIoTHubName} IoT hub \'. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.| 1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította. <br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a szervezeti biztonsági csapatnak. |
 | Közepes   | Sikertelen kísérlet történt tanúsítvány hozzáadására egy IoT Hub     | Sikertelen kísérlet történt a (z)% {DescCertificateName \'}\' tanúsítvány hozzáadására a ( \'z)% {\'DescIoTHubName} IoT hub. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.|   Győződjön meg arról, hogy csak a jogosult felek kapnak engedélyeket a tanúsítványok módosításához.  |
 | Közepes   | Sikertelen kísérlet történt a tanúsítvány törlésére egy IoT Hub | Sikertelen kísérlet történt a (z)% {DescCertificateName \'}\' tanúsítvány törlésére a ( \'z)% {\'DescIoTHubName} IoT hub. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet. |Győződjön meg arról, hogy a tanúsítványok módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
-| Alacsony      | Kísérlet történt az észlelt IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére    | A rendszer a IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére tett kísérletet észlelt. A diagnosztikai beállítások lehetővé teszik a tevékenységi nyomvonalak újbóli létrehozását vizsgálat céljára, amikor biztonsági incidens következik be, vagy a hálózat biztonsága sérül. Ha ezt a műveletet nem egy engedélyező fél hozta létre, akkor kártékony tevékenységet jelezhet.  |
-| Alacsony      | Kísérlet történt diagnosztikai beállítás törlésére egy észlelt IoT Hub       | A (z)% {\' DescAttemptStatusMessage}% {DescDiagnosticSettingName}\' diagnosztikai \'beállítást próbált felvenni vagy szerkeszteni \'a (z)\'% {DescIoTHubName} IoT hub. A diagnosztikai beállítás lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. Ha ezt a műveletet nem egy engedélyező fél hajtotta végre, akkor előfordulhat, hogy rosszindulatú tevékenységet jelez. |1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította.<br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a tájékoztatási biztonsági csapatnak.
+| Alacsony      | Kísérlet történt az észlelt IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére    | A rendszer a IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére tett kísérletet észlelt. A diagnosztikai beállítások lehetővé teszik a tevékenységi nyomvonalak újbóli létrehozását vizsgálat céljára, amikor biztonsági incidens következik be, vagy a hálózat biztonsága sérül. Ha ezt a műveletet nem egy engedélyező fél hozta létre, akkor kártékony tevékenységet jelezhet.  |1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította.<br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a tájékoztatási biztonsági csapatnak.
+| Alacsony      | Kísérlet történt diagnosztikai beállítás törlésére egy észlelt IoT Hub       | A (z)% {\' DescAttemptStatusMessage}% {DescDiagnosticSettingName}\' diagnosztikai \'beállítást próbált felvenni vagy szerkeszteni \'a (z)\'% {DescIoTHubName} IoT hub. A diagnosztikai beállítás lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. Ha ezt a műveletet nem egy engedélyező fél hajtotta végre, akkor előfordulhat, hogy rosszindulatú tevékenységet jelez. |Győződjön meg arról, hogy a diagnosztikai beállítások módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
 |
 
 ## <a name="next-steps"></a>További lépések
 
 - Azure Security Center a IoT szolgáltatás [áttekintéséhez](overview.md)
 - [A biztonsági adatai elérésének](how-to-security-data-access.md) megismerése
-- További információ az [eszközök](how-to-investigate-device.md) kivizsgálása
+- További információ az [eszközök kivizsgálása](how-to-investigate-device.md)

@@ -1,77 +1,86 @@
 ---
-title: Egy értékelés vagy migrálási eszköz hozzáadásához először az Azure Migrate |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre Azure Migrate-projektet, és adjon hozzá egy értékelés vagy migrálási eszköz.
+title: Felmérési/áttelepítési eszköz hozzáadása a Azure Migrate első alkalommal | Microsoft Docs
+description: Útmutató Azure Migrate projekt létrehozásához és egy Assessment/Migration eszköz hozzáadásához.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: b226f7c5879673b573133cde45db78d8d1f2fffa
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812024"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934179"
 ---
-# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Egy értékelés vagy migrálási eszköz hozzáadása az első alkalommal
+# <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Felmérési/migrálási eszköz hozzáadása első alkalommal
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy értékelés vagy migrálási eszköz egy [Azure Migrate](migrate-overview.md) projekt első alkalommal.  
-Az Azure Migrate felderítési, felmérési és a helyszíni alkalmazások és a számítási feladatok és a privát és nyilvános felhőbeli VM-eken, az Azure-ba való migrálásának nyomon a központi agyhoz biztosít. A hub Azure Migrate eszközöket biztosít a felmérés és migrálás, valamint a külső, a független szoftverszállító (ISV) [ajánlatok](migrate-services-overview.md#isv-integration) . 
+Ez a cikk azt ismerteti, hogyan adhat hozzá értékelést vagy áttelepítési eszközt egy [Azure Migrate](migrate-overview.md) projekthez az első alkalommal.  
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó, független szoftvergyártók (ISV) [ajánlatokhoz](migrate-services-overview.md#isv-integration) . 
 
-## <a name="create-a-project-and-add-a-tool"></a>Hozzon létre egy projektet, és a egy eszköz hozzáadása
+## <a name="create-a-project-and-add-a-tool"></a>Projekt létrehozása és eszköz hozzáadása
 
-Egy új Azure Migrate-projektet az Azure-előfizetés beállítása, és a egy eszköz hozzáadásához.
+Hozzon létre egy új Azure Migrate projektet egy Azure-előfizetésben, és adjon hozzá egy eszközt.
 
-- Azure Migrate-projekt felderítése, a felmérési és a gyűjtött a környezet felmérése, vagy áttelepítése áttelepítési metaadatok tárolására szolgál. 
-- Egy projektet a felderített eszközök nyomon követése, és koordinálhatja az elemzésekhez és migráláshoz.
+- Azure Migrate-projekttel a rendszer az Ön által értékelt vagy áttelepíteni kívánt környezetből gyűjtött felderítési, értékelési és áttelepítési metaadatok tárolására szolgál. 
+- Egy projektben nyomon követheti a felderített eszközöket, és megszervezheti az értékelést és az áttelepítést.
 
-1. Az Azure Portal > **minden szolgáltatás**, keressen **Azure Migrate**.
-2. A **szolgáltatások**válassza **Azure Migrate**.
+1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
+2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
 
-    ![Az Azure Migrate beállítása](./media/how-to-add-tool-first-time/azure-migrate-search.png)
+    ![Azure Migrate beállítása](./media/how-to-add-tool-first-time/azure-migrate-search.png)
 
-3. A **áttekintése**, kattintson a **felmérési és a kiszolgálók áttelepítése**.
-4. A **felfedezheti, értékelni és migrálni a kiszolgálók**, kattintson a **felmérési és a kiszolgálók áttelepítése**.
+3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
+4. A **kiszolgálók felderítése, felmérése és migrálása**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
 
-    ![Felderítés és értékelés kiszolgálók](./media/how-to-add-tool-first-time/assess-migrate.png)
+    ![Kiszolgálók felderítése és értékelése](./media/how-to-add-tool-first-time/assess-migrate.png)
 
-1. A **felfedezheti, értékelni és migrálni a kiszolgálók**, kattintson a **eszközök hozzáadása**.
-2. A **Migrate projekt**, válassza ki az Azure-előfizetés, és ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
-3. A **Project Details**, adja meg a projekt nevét, és a földrajzi hely, amelyben a projekt létrehozásához szeretne. 
+1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
+2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
+3. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. 
 
-    ![Az Azure Migrate-projekt létrehozása](./media/how-to-add-tool-first-time/migrate-project.png)
+    ![Azure Migrate projekt létrehozása](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    Létrehozhat egy Azure Migrate-projekt bármely alábbi földrajzi területek számára.
+    Ezen földrajzi területek bármelyikében létrehozhat egy Azure Migrate projektet.
 
-    **Régiócsoport** | **Tárolási hely régió**
+   **Régiócsoport** | **Tárolási hely régiója**
     --- | ---
-    Ázsia | Délkelet-Ázsia és Kelet-Ázsia
-    Európa | Dél-Európában és Nyugat-Európa
-    Egyesült Királyság | Egyesült Királyság déli régiója vagy az Egyesült Királyság nyugati régiója
-    Egyesült Államok | USA középső RÉGIÓJA és USA 2. nyugati
+    Ázsia   | Délkelet-Ázsia vagy Kelet-Ázsia
+    Európa | Észak-Európa vagy Nyugat-Európa
+    Japán  | Kelet-japán vagy Nyugat-Japán
+    Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
+    Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
+    Kanada | Közép-Kanada
+    India  | Közép-India vagy Dél-India
+    Ausztrália | Délkelet-Ausztrália
 
-    A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. Kiválaszthatja, hogy az áttelepítés tényleges bármely célrégióban.
+    A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez kiválaszthatja a kívánt régiót.
 
-4. Kattintson a **tovább**, és a egy értékelés vagy migrálási eszköz hozzáadásához.
+    Ha az áttelepítési projekt és a hozzá tartozó erőforrások (az előfizetéshez tartozó szabályzatok) üzembe helyezéséhez egy földrajzon belül szeretne megadni egy adott régiót, az Azure-erőforrások csak egy adott Azure-régióba történő telepítését engedélyezheti, az alábbi API-t használhatja hozzon létre egy Áttelepítő projektet. Adja meg az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, az áttelepítési projekt nevét és helyét (a táblázatban említett összes Azure-régiót, ahol a Azure Migrate telepítve van).
+
+    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+
+
+4. Kattintson a **tovább**gombra, és adjon hozzá egy Assessment vagy áttelepítési eszközt.
 
     > [!NOTE]
-    > Egy projekt létrehozásakor hozzá kell legalább egy értékelés vagy migrálási eszközt.
+    > Projekt létrehozásakor legalább egy értékelési vagy áttelepítési eszközt hozzá kell adnia.
 
-5. A **válassza frissítésfelmérő eszköz**, adjon hozzá egy frissítésfelmérő eszköz. Ha már nincs szüksége a frissítésfelmérő eszközt, jelölje be **kihagyása a frissítésfelmérő eszköz felvétele most** > **tovább**. 
-2. A **válassza áttelepítési eszköz**, adjon hozzá egy migrációs eszköz szükség szerint. Ha egy áttelepítési eszköz most már nincs szüksége, válassza ki a **egy migrációs eszköz felvétele most kihagyása** > **tovább**.
-3. A **tekintse át + eszközök hozzáadása**, tekintse át a beállításokat, és kattintson a **eszközök hozzáadása**.
+5. Az **értékelés kiválasztása eszközben**adjon hozzá egy Assessment eszközt. Ha nincs szüksége értékelési eszközre, válassza **a kiértékelési eszköz hozzáadásának mellőzése most** > **tovább**lehetőséget. 
+2. Az **áttelepítési eszköz kiválasztása lapon**szükség szerint adjon hozzá egy áttelepítési eszközt. Ha jelenleg nincs szüksége áttelepítési eszközre, válassza a > **következőre** **az áttelepítési eszköz hozzáadásának mellőzése**lehetőséget.
+3. A **felülvizsgálat + eszközök hozzáadása**lapon tekintse át a beállításokat, majd kattintson az **eszközök hozzáadása**elemre.
 
-A projekt létrehozása után kiválaszthatja a további eszközök elemzésekhez és migráláshoz kiszolgálókon és a számítási feladatok, adatbázisok és webalkalmazásokat.
+A projekt létrehozása után további eszközöket választhat a kiszolgálók és munkaterhelések, adatbázisok és webalkalmazások értékeléséhez és áttelepítéséhez.
 
 ## <a name="create-additional-projects"></a>További projektek létrehozása
 
-Bizonyos esetekben szükség lehet további Azure Migrate-projekt létrehozása. Például ha az adatközpontok különböző földrajzi területeken rendelkezik, vagy egy másik földrajzi metaadatokat tárolni kívánt. Hozzon létre egy további projektet a következőképpen:
+Bizonyos esetekben előfordulhat, hogy további Azure Migrate projekteket kell létrehoznia. Ha például különböző földrajzi területeken vannak adatközpontok, vagy más földrajzi helyen kell tárolnia a metaadatokat. Hozzon létre egy további projektet a következőképpen:
 
-1. A jelenlegi Azure Migrate projektben kattintson **kiszolgálók** vagy **adatbázisok**.
-2. Kattintson a jobb felső sarokban, **módosítása** az aktuális projekt neve mellett.
-3. A **beállítások**válassza **Ide kattintva hozzon létre egy új projektet**.
-4. Hozzon létre egy új projektet, és adjon hozzá egy új eszköz, az előző eljárásban leírtak szerint.
+1. A jelenlegi Azure Migrate projektben kattintson a **kiszolgálók** vagy **adatbázisok**elemre.
+2. A jobb felső sarokban kattintson a jelenlegi projekt neve melletti **módosítás** elemre.
+3. A **Beállítások**területen válassza az **új projekt létrehozásához kattintson ide**.
+4. Hozzon létre egy új projektet, és adjon hozzá egy új eszközt az előző eljárásban leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan adhat hozzá további [értékelés](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközök. 
+Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

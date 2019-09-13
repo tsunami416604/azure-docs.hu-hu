@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844909"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933204"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>A IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -104,7 +104,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy er
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. A [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys) lehetőségre kattintva hozzon létre egy Azure Maps-fiók előfizetését S1 árképzési szinten, és tekintse meg a [hitelesítés részleteit](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , hogy megtudja, hogyan szerezhet be előfizetési kulcsot.
+Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Azure Maps fiók előfizetése S1 árképzési szinten való létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz tartozó elsődleges előfizetési kulcs beszerzéséhez című témakör lépéseit.
 
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
@@ -167,7 +167,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
     
     Az URL-cím `dataFormat` paraméteréhez tartozó "geojson" érték a feltöltött adatformátumot jelöli.
 
-3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps előfizetési kulcsára.
+3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps elsődleges előfizetési kulcsára.
    
     ![Kulcs-érték paraméterek Poster](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely 
 6. Másolja a [c#-kódot](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) a függvénybe, és kattintson a **Save (Mentés**) gombra.
  
 7. A c# parancsfájlban cserélje le a következő paramétereket:
-    * Cserélje le a **SUBSCRIPTION_KEY** a Azure Maps fiókjának előfizetési kulcsára.
+    * Cserélje le a **SUBSCRIPTION_KEY** a Azure Maps fiók elsődleges előfizetési kulcsára.
     * Cserélje le a **UDID** a feltöltött geokerítésen UDID. 
     * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, a **ACCOUNT_NAME** és a **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, valamint a fiók nevére és az adattároló-tárolóra.
 

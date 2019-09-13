@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478862"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933072"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Tároló-lokátor létrehozása Azure Maps használatával
 
@@ -35,7 +35,7 @@ Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia [Azure Maps](./tutorial-search-location.md#createaccount) -fiókját, és [le kell kérnie a fiókjához tartozó előfizetési kulcsot](./tutorial-search-location.md#getkey).
+Az oktatóanyag lépéseinek elvégzéséhez először [létre kell hoznia Azure Maps-fiókját](./tutorial-search-location.md#createaccount) , és a fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs lekérése](./tutorial-search-location.md#getkey) című rész lépéseit.
 
 ## <a name="design"></a>Tervezés
 
@@ -78,7 +78,7 @@ Az áruházbeli lokátor alkalmazás fejlesztése előtt létre kell hoznia egy 
 
 ![Képernyőfelvétel az áruházbeli lokátorról egy Excel-munkafüzetben](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
-Letöltheti [az Excel](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)-munkafüzetet. 
+[Letöltheti az Excel-munkafüzetet](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
 Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
     
@@ -174,7 +174,7 @@ A felhasználói felület létrehozásához vegyen fel egy kódot az *index. htm
     </main>
     ```
 
-Ha elkészült, az *index. html* fájlnak a következőhöz hasonlóan kell kinéznie: [index. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html).
+Ha elkészült, az *index. html* [fájlnak a következőhöz](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)hasonlóan kell kinéznie: index. html.
 
 A következő lépés a CSS-stílusok definiálása. A CSS-stílusok határozzák meg az alkalmazás-összetevők elrendezésének és az alkalmazás megjelenésének módját. Nyissa meg az *index. css* programot, és adja hozzá a következő kódot. A `@media` stílus alternatív stílusú beállításokat határoz meg, amelyeket akkor kell használni, ha a képernyő szélessége 700 képpontnál kisebb.  
 
@@ -401,7 +401,7 @@ Ekkor minden be van állítva a felhasználói felületen. Most hozzá kell adni
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Adja hozzá a kódot az *index. js*fájlhoz. A következő kód inicializálja a térképet, egy olyan [esemény](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) -figyelőt hoz létre, amely megvárja, amíg az oldal be nem fejeződik, és bekapcsolja az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gombra kattint.
+1. Adja hozzá a kódot az *index. js*fájlhoz. A következő kód inicializálja a térképet, egy olyan [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hoz létre, amely megvárja, amíg az oldal be nem fejeződik, és bekapcsolja az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gombra kattint.
 
    Ha a felhasználó a Keresés gombra kattint, vagy amikor a felhasználó megnyomja az ENTER billentyűt a keresőmezőbe való belépés után, a rendszer megkezdi a felhasználó lekérdezésével kapcsolatos fuzzy keresést. Adja át az ország ISO 2 értékének egy tömbjét `countrySet` a keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
@@ -417,7 +417,7 @@ Ekkor minden be van állítva a felhasználói felületen. Most hozzá kell adni
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
@@ -954,12 +954,12 @@ Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
 
 > [!div class="checklist"]
-> * A keresőmezőbe való beíráskor engedélyezze a [javaslatokat](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) .  
+> * A keresőmezőbe való [beíráskor](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) engedélyezze a javaslatokat.  
 > * [Több nyelv támogatásának](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)megadása. 
-> * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)a tárolóhelyeket. 
+> * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik a tárolóhelyeket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
 > * Adja [meg a szűrők beállításának](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)lehetőségét. 
 > * Adja meg a támogatást egy kezdeti keresési érték megadásához egy lekérdezési karakterlánc használatával. Ha ezt a lehetőséget használja az áruház lokátorában, a felhasználók könyvjelzőket és megosztási kereséseket is tartalmazhatnak. Emellett egyszerű módszert is biztosít, amellyel egy másik oldalról átadhatja a keresést ezen a lapon.  
-> * Az áruházbeli lokátor üzembe helyezése [Azure app Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)webalkalmazásként. 
+> * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
 > * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 > [!div class="nextstepaction"]

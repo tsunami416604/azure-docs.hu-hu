@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844891"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918819"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -211,13 +211,16 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |Kelet-Ausztrália |LRS     |Nem    |Igen|
 |Délkelet-Ausztrália|LRS     |Nem    |még nem|
 |Közép-India  |LRS     |Nem    |még nem|
+|East US        |LRS     |Nem    |még nem|
 |Közép-Franciaország |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
 |Dél-Franciaország   |LRS     |Nem    |Igen|
 |Dél-India    |LRS     |Nem    |még nem|
 |Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
 |USA nyugati középső régiója|LRS     |Nem    |még nem|
 |Nyugat-Európa    |LRS, ZRS|Nem    |Igen|
+|USA nyugati régiója        |LRS     |Nem    |még nem|
 |USA nyugati régiója, 2.      |LRS, ZRS|Nem    |Igen|
+
 
 \* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. Másik lehetőségként létrehozhat egy új megosztást a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
 

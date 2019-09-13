@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 226862c51417e311bc39feefa9f5e860d55b7dc1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 51f0e223abd7103663fddd8c06dcdf0be549c671
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034109"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70930806"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -37,7 +37,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. A menüsávban lépjen a bővítmények **megtekintése** > elemre.
+2. A menüsávban lépjen a**bővítmények** **megtekintése** > elemre.
 
 3. A keresőmezőbe írja be a **Spark & kaptár**kifejezést.
 
@@ -45,7 +45,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
    ![Spark & struktúra a Visual Studio Code Python telepítéséhez](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-5. Szükség esetén válassza az Újratöltés lehetőséget.
+5. Szükség esetén válassza az **Újratöltés** lehetőséget.
 
 
 ## <a name="open-a-work-folder"></a>Munkahelyi mappa megnyitása
@@ -56,7 +56,7 @@ Az alábbi lépéseket követve nyisson meg egy munkahelyi mappát, és hozzon l
 
 2. A **Explorer** nézetben válassza ki a **HDexample** mappát, majd válassza az **új fájl** ikont a munkahelyi mappa mellett:
 
-   ![Új fájl](./media/hdinsight-for-vscode/new-file.png)
+   ![Új fájl](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
 3. Nevezze el az új fájlt a `.hql` (kaptár-lekérdezések) vagy a `.py` (Spark script) fájlkiterjesztés használatával. Ez a példa a **HelloWorld. HQL**-t használja.
 
@@ -117,7 +117,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 3. Adja meg az általános Livy-végpontot. Például: http\://10.172.41.42:18080.
 
-4. Válassza az **Alap** vagy a **none**engedélyezési típust.  Ha az alapszintű lehetőséget választja:  
+4. Válassza az **Alap** vagy a **none**engedélyezési típust.  Ha az **alapszintű**lehetőséget választja:  
     &emsp;a. Adja meg a Ambari felhasználónevét; az alapértelmezett érték a **rendszergazda**.  
     &emsp;b. Adja meg a Ambari jelszavát.
 
@@ -131,7 +131,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 3. Tekintse át a **kimeneti** nézetet. Ez a nézet megjeleníti a társított fürtöt (vagy fürtöket) és az Azure-előfizetéshez tartozó összes fürtöt:
 
-    ![Alapértelmezett fürtkonfiguráció beállítása](./media/hdinsight-for-vscode/list-cluster-result.png)
+    ![Alapértelmezett fürtkonfiguráció beállítása](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="set-the-default-cluster"></a>Az alapértelmezett fürt beállítása
 
@@ -173,7 +173,7 @@ A Spark & kaptár Tools for Visual Studio Code használatával interaktív kapt�
 
     - **Eredmények** panel: A teljes eredményt CSV-, JSON-vagy Excel-fájlként mentheti egy helyi elérési útra, vagy egyszerűen több sort is kijelölhet.
 
-    - **Üzenetek** panel: Amikor kijelöl egy sorszámot, a futó parancsfájl első sorára ugrik.
+    - **Üzenetek** panel: Amikor kijelöl egy **sorszámot, a futó** parancsfájl első sorára ugrik.
 
 ## <a name="submit-interactive-pyspark-queries"></a>Interaktív PySpark-lekérdezések küldése
 
@@ -280,7 +280,7 @@ Küldje el a fájlt, és figyelje meg, hogy a rendszer automatikusan hozzáadja 
 
 + A projekt beállításai:
 
-    ![Livy-konfiguráció](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+    ![Livy-konfiguráció](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
     >A **driverMemory** és a **executorMemory** beállításnál állítsa be az értéket és az egységet. Példa: 1g vagy 1024m.
@@ -292,19 +292,19 @@ Küldje el a fájlt, és figyelje meg, hogy a rendszer automatikusan hozzáadja 
 
     | name | description | type | 
     | :- | :- | :- | 
-    | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
+    | file | A végrehajtandó alkalmazást tartalmazó fájl | elérési út (kötelező) |
     | proxyUser | A felhasználó megszemélyesítése a feladatok futtatásakor | Sztring |
     | className | Java/Spark fő osztály alkalmazása | Sztring |
-    | args | Az alkalmazás parancssori argumentumai | Karakterláncok listája |
-    | jars | A munkamenetben használandó tégelyek | Karakterláncok listája | 
-    | pyFiles | A munkamenetben használni kívánt Python-fájlok | Karakterláncok listája |
-    | files | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
+    | args | Az alkalmazás parancssori argumentumai | karakterláncok listája |
+    | jars | a munkamenetben használandó tégelyek | karakterláncok listája | 
+    | pyFiles | A munkamenetben használni kívánt Python-fájlok | karakterláncok listája |
+    | files | a munkamenetben használni kívánt fájlok | karakterláncok listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Sztring |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | Int |
     | executorMemory | A felhasználható memória mennyisége/végrehajtó folyamat | Sztring |
     | executorCores | Az egyes végrehajtók számára használandó magok száma | Int |
     | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | Int |
-    | archives | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
+    | archives | A munkamenetben használni kívánt archívumok | karakterláncok listája |
     | queue | A beküldeni kívánt FONÁL-várólista neve| Sztring |
     | name | A munkamenet neve | Sztring |
     | conf | Spark-konfiguráció tulajdonságai | Kulcs leképezése = val |
@@ -317,7 +317,7 @@ Küldje el a fájlt, és figyelje meg, hogy a rendszer automatikusan hozzáadja 
     | id | Munkamenet-azonosító | Int | 
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
     | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
-    | log | Naplózási sorok | Karakterláncok listája |
+    | log | Naplózási sorok | karakterláncok listája |
     | state |Köteg állapota | Sztring |
 
     >[!NOTE]
@@ -409,7 +409,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
   >
   >A következő paranccsal `Spark / Hive: List Cluster` ellenőrizhető a csatolt fürt:
   >
-  >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result.png)
+  >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 

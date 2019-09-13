@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279503"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934921"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Gyakori kérdések (GYIK)
 
@@ -26,6 +26,37 @@ Tekintse [meg a VMware](https://docs.microsoft.com/azure/migrate/migrate-support
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Mi a különbség a Azure Migrate és az Azure Site Recovery között?
 
 Azure Migrate központosított hubot biztosít a Migrálás elindításához, a gépek és munkaterhelések felderítésének és értékelésének végrehajtásához, valamint a gépek és számítási feladatok Azure-ba való áttelepítésének végrehajtásához és nyomon követéséhez. [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) vész-helyreállítási megoldás. Azure Migrate kiszolgáló áttelepítése a háttér-Azure Site Recovery használatával lehetővé teszi az áttelepítési forgatókönyvek használatát a helyszíni gépek áttelepítéséhez.
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Azure Migrate projekt törlése Hogyan
+
+Ha törölni szeretne egy Azure Migrate projektet és a hozzá tartozó erőforrásokat, beleértve a webhelyeket, a Recovery Services-tárolókat, a tárolókat, a kulcstartókat, az értékelési projekteket stb. Válassza a Azure Portal az "erőforráscsoportok" lapot, és válassza ki azt az erőforráscsoportot, amelyben az áttelepíteni kívánt projekt létrejött, és válassza a "rejtett típusok megjelenítése" lehetőséget. Ezután válassza ki az áttelepíteni kívánt projektet és a hozzá tartozó erőforrásokat, és törölje őket. Azt is megteheti, hogy ha az erőforráscsoportot kizárólag az áttelepíthető projekt és a hozzá tartozó erőforrások használják, törölheti a teljes erőforráscsoportot. Vegye figyelembe, hogy ez a lista az összes forgatókönyvhöz (felderítés, értékelés és áttelepítés) létrehozott összes erőforrástípus teljes listája. Csak azokat az erőforrásokat fogja megtalálni, amelyek az adott forgatókönyvhöz lettek létrehozva az erőforráscsoporthoz.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>A VMware vagy a fizikai kiszolgálókon felderített, felderített vagy áttelepített kiszolgálókhoz létrehozott erőforrások [erőforrás (típus)]:
+
+- "Appliancename" kV (Key Vault)
+- "Appliancename" webhely (Microsoft. OffAzure/VMwareSites)
+- "Projektnév" (Microsoft. Migrálás/migrateprojects)
+- "Projektnév" projekt (Microsoft. Migrálás/assessmentProjects)
+- "Projektnév" rsvault (Recovery Services-tároló)
+- "Projektnév"-MigrateVault-* (Recovery Services-tároló)
+- migrateappligwsa * (Storage-fiók)
+- migrateapplilsa * (Storage-fiók)
+- migrateapplicsa * (Storage-fiók)
+- migrateapplikv * (Key Vault)
+- migrateapplisbns16041 (Service Bus névtér)
+
+Megjegyzés: Törölje a Storage-fiókokat és a kulcstartókat körültekintően, mivel azok tartalmazhatják az alkalmazásadatok és a biztonsági kulcsok.
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Felderített, értékelni vagy áttelepített kiszolgálókhoz létrehozott erőforrások a Hyper-V-ben [erőforrás (típus)]:
+
+- "Projektnév" (Microsoft. Migrálás/migrateprojects)
+- "Projektnév" projekt (Microsoft. Migrálás/assessmentProjects)
+- HyperV * kV (Key Vault)
+- HyperV * hely (Microsoft. OffAzure/HyperVSites)
+- "Projektnév"-MigrateVault-* (Recovery Services-tároló) 
+
+Megjegyzés: Törölje a Key vaultot körültekintően, mert biztonsági kulcsokat tartalmazhat.
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 

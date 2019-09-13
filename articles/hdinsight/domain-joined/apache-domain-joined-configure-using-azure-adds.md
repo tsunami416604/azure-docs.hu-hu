@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 83e9e1364293601337f854f083bbb279361e29c5
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811002"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918305"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurációk Enterprise Security Package Azure Active Directory Domain Services a HDInsight-ben
 
@@ -74,7 +74,7 @@ Miután létrehozta a felügyelt identitást, és a megfelelő szerepkört adta,
 
 Az Azure AD-DS engedélyezése után a helyi tartománynév-szolgáltatási (DNS) kiszolgáló fut az AD Virtual Machineson (VM). Konfigurálja az Azure AD-DS Virtual Network (VNET) az egyéni DNS-kiszolgálók használatára. A megfelelő IP-címek megkereséséhez válassza a **kezelés** kategória **Tulajdonságok** elemét, és tekintse meg a **Virtual Network IP-címe**alatt felsorolt IP-címeket.
 
-![Helyi DNS-kiszolgálók IP-címeinek megkeresése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
+![Helyi DNS-kiszolgálók IP-címeinek megkeresése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
 
 Módosítsa az Azure AD-DS VNET található DNS-kiszolgálók konfigurációját úgy, hogy ezeket az egyéni IP-címeket használják a **Beállítások** kategóriába tartozó **DNS-kiszolgálók** kiválasztásával. Ezután kattintson az **Egyéni**elem melletti választógombra, adja meg az első IP-címet az alábbi szövegmezőben, majd kattintson a **Save (Mentés**) gombra. További IP-címeket is hozzáadhat ugyanezekkel a lépésekkel.
 

@@ -1,29 +1,29 @@
 ---
-title: Használatával a .NET-keretrendszerhez – Azure HDInsight az Apache Hadoop-fürtök létrehozása
-description: Ismerje meg, az Apache Hadoop, az Apache HBase, Apache Storm vagy az Apache Spark-fürtök létrehozása Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
-author: mamccrea
+title: Apache Hadoop-fürtök létrehozása a .NET-Azure HDInsight
+description: Megtudhatja, hogyan hozhat létre Apache Hadoop-, Apache HBase-, Apache Storm-vagy Apache Spark-fürtöket Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.author: mamccrea
-ms.openlocfilehash: d560c61339bd608ab9385f99583613526156ca41
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.author: hrasheed
+ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508052"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916487"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
+# <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight a .NET SDK használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-Ismerje meg, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/) -fürtön az Azure HDInsight-fürt .NET SDK használatával.
+Megtudhatja, hogyan hozhat létre [Apache Hadoop](https://hadoop.apache.org/) -fürtöt az Azure HDInsight-fürtben a .net SDK használatával.
 
 > [!IMPORTANT]  
-> A jelen dokumentumban leírt lépések egy munkavégző csomópont-fürt létrehozása. Ha azt tervezi, hogy több mint 32 feldolgozó csomópontokat, a fürt létrehozáskor vagy a fürt skálázást a létrehozás után kell válassza ki a fő csomópont méretének legalább 8 maggal és 14GB ram.
+> A jelen dokumentum lépései egy feldolgozói csomóponttal rendelkező fürtöt hoznak létre. Ha több mint 32 feldolgozó csomópontot tervez létrehozni a fürt létrehozásakor vagy a fürt a létrehozás után történő skálázásával, ki kell választania egy fő csomópont-méretet legalább 8 maggal és 14 GB RAM-mal.
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -32,15 +32,15 @@ Ismerje meg, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Az Azure storage-fiók**. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-quickstart-create-account.md).
+* **Egy Azure Storage-fiók**. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-quickstart-create-account.md).
 * **Visual Studio**.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
 1. Nyissa meg a Visual Studiót.
-2. Hozzon létre egy új Visual C# konzolalkalmazást.
-3. Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő**, és kattintson a **Package Manager Console**.
-4. A konzolon a csomagok telepítéséhez futtassa a következő parancsot:
+2. Hozzon létre egy C# új Visual Console-alkalmazást.
+3. A **Tools (eszközök** ) menüben kattintson a **NuGet csomagkezelő**elemre, majd a **Package Manager konzol**elemre.
+4. A csomagok telepítéséhez futtassa a következő parancsot a konzolon:
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -48,8 +48,8 @@ Ismerje meg, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/
     Install-Package Microsoft.Azure.Management.HDInsight
     ```
 
-    Ezek a parancsok hozzáadása az aktuális Visual Studio-projekt .NET-kódtárakkal és hivatkozások.
-5. A Megoldáskezelőben kattintson duplán a **Program.cs** megnyitható, illessze be a következő kódot, és adja meg a változók értékeit:
+    Ezek a parancsok .NET-kódtárakat és azokra mutató hivatkozásokat vesznek fel a Visual Studio aktuális projektbe.
+5. A Megoldáskezelő kattintson duplán a **program.cs** elemre a megnyitásához, illessze be a következő kódot, és adja meg a változók értékeit:
 
     ```csharp
     using System;
@@ -184,14 +184,14 @@ Ismerje meg, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/
     }
     ```
 
-6. Cserélje le az osztály tag értékeket.
-7. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A konzolablakban nyissa meg kell, és az alkalmazás állapotának megjelenítése. Az Azure-fiók hitelesítő adatainak megadását kéri. Általában körülbelül 15 egy HDInsight-fürt létrehozása több percet is igénybe vehet.
+6. Cserélje le az osztály tagjainak értékeit.
+7. Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A konzol ablakának nyitva kell lennie, és meg kell jelennie az alkalmazás állapotának. A rendszer felszólítja az Azure-fiók hitelesítő adatainak megadására. A HDInsight-fürt létrehozása több percet is igénybe vehet, általában körülbelül 15.
 
-## <a name="use-bootstrap"></a>Rendszerindítási használata
+## <a name="use-bootstrap"></a>Rendszertöltő használata
 
-Bootstrap használatával, a fürt létrehozása során további beállításokat lehet megadni.  További információkért lásd: [Bootstrap használatával testre szabhatja a HDInsight-fürtök](hdinsight-hadoop-customize-cluster-bootstrap.md).
+A bootstrap használatával a fürt létrehozása során is konfigurálhatja a hozzáadási beállításokat.  További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-Módosítja a mintát a [fürtöket](#create-clusters) egy Apache Hive-beállítás konfigurálása:
+Módosítsa a mintát a [fürtök létrehozása](#create-clusters) szolgáltatásban egy Apache Hive beállítás konfigurálásához:
 
 ```csharp
 static void Main(string[] args)
@@ -316,11 +316,11 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="use-script-action"></a>Szkriptműveleteket használata
+## <a name="use-script-action"></a>Parancsfájl-művelet használata
 
-Szkriptműveletek használatával fürt létrehozása során további beállításokat lehet megadni.  További információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
+A parancsfájl művelettel további beállításokat konfigurálhat a fürt létrehozásakor.  További információ: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md).
 
-Módosítja a mintát a [fürtöket](#create-clusters) R: telepítéséhez Szkriptműveletet meghívásához
+Módosítsa a mintát a [create Clusters](#create-clusters) utasításban a parancsfájl-művelet az R telepítéséhez való meghívásához:
 
 ```csharp
 static void Main(string[] args)
@@ -369,30 +369,30 @@ static void Main(string[] args)
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segítségével megtudhatja, hogyan működik a fürttel. 
+Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő paranccsal megismerheti, hogyan dolgozhat a fürttel. 
 
-### <a name="apache-hadoop-clusters"></a>Az Apache Hadoop-fürtök
-* [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
+### <a name="apache-hadoop-clusters"></a>Fürtök Apache Hadoop
+* [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Az Apache Pig és a HDInsight használata](hadoop/hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="apache-hbase-clusters"></a>Az Apache HBase-fürtök
-* [A HDInsight Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Az Apache HBase on HDInsight Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
+### <a name="apache-hbase-clusters"></a>Apache HBase-fürtök
+* [Ismerkedés az Apache HBase a HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Java-alkalmazások fejlesztése az Apache HBase a HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Apache Storm-fürtök
-* [Java-topológiák fejlesztése a HDInsight az Apache stormmal](storm/apache-storm-develop-java-topology.md)
-* [Az Apache Storm on HDInsight használata a Python-összetevők](storm/apache-storm-develop-python-topology.md)
-* [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)
+### <a name="apache-storm-clusters"></a>Fürtök Apache Storm
+* [Java-topológiák fejlesztése a HDInsight Apache Storméhez](storm/apache-storm-develop-java-topology.md)
+* [Python-összetevők használata a HDInsight-ben Apache Storm](storm/apache-storm-develop-python-topology.md)
+* [Topológiák üzembe helyezése és figyelése Apache Storm a HDInsight-on](storm/apache-storm-deploy-monitor-topology-linux.md)
 
-### <a name="apache-spark-clusters"></a>Az Apache Spark-fürtök
+### <a name="apache-spark-clusters"></a>Fürtök Apache Spark
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md)
-* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](spark/apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>Feladatok futtatása
-* [Az Apache Hive-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [Az Apache Sqoop-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
-* [A HDInsight Apache Oozie-feladatok futtatása](hdinsight-use-oozie-linux-mac.md)
+* [Apache Hive feladatok futtatása a HDInsight-ben a .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [Apache Sqoop-feladatok futtatása a HDInsight-ben a .NET SDK használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
+* [Apache Oozie-feladatok futtatása a HDInsight-ben](hdinsight-use-oozie-linux-mac.md)
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ea7d2c451127283f2af204de2c961747880e1bfe
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494904"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931116"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása nyelvi azonosító modellel
 
@@ -23,9 +23,9 @@ A Video Indexer támogatja az automatikus nyelvi azonosítást (FEDŐt), amely a
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Automatikus nyelvi azonosítás kiválasztása az indexeléshez
 
-Ha az API [](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) használatával indexel vagy újraindexel egy videót, válassza a `auto detect` `sourceLanguage` paraméterben található lehetőséget.
+Ha az API használatával indexel vagy [újraindexel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) egy videót, válassza a `auto detect` `sourceLanguage` paraméterben található lehetőséget.
 
-A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdőlapján keresse meg a **fiókja videóit** , és vigye az egérmutatót az újra indexelni kívánt videó nevére. A jobb alsó sarokban kattintson az újra index gombra. A **videó** újraindexelése párbeszédpanelen válassza az *automatikus észlelés* lehetőséget a **videó forrása nyelv** legördülő listából.
+A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdőlapján keresse meg a **fiókja videóit** , és vigye az egérmutatót az újra indexelni kívánt videó nevére. A jobb alsó sarokban kattintson az újra index gombra. A **videó újraindexelése** párbeszédpanelen válassza az *automatikus észlelés* lehetőséget a **videó forrása nyelv** legördülő listából.
 
 ![automatikus észlelés](./media/language-identification-model/auto-detect.png)
 
@@ -59,4 +59,5 @@ A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attr
 
 ## <a name="next-steps"></a>További lépések
 
-[Áttekintés](video-indexer-overview.md)
+* [Áttekintés](video-indexer-overview.md)
+* [Többnyelvű tartalom automatikus azonosítása és átírása](multi-language-identification-transcription.md)

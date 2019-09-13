@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087106"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933259"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Függvények láncolása Durable Functions-Hello Sequence minta
 
-A függvények láncolása egy adott sorrendben végrehajtott függvények sorrendjének a mintáját jelöli. Egy függvény kimenetét gyakran egy másik függvény bemenetére kell alkalmazni. Ez a cikk a Durable Functions rövid útmutató ([C#](durable-functions-create-first-csharp.md) vagy [JavaScript](quickstart-js-vscode.md)) befejezése után létrehozott láncolási sorozatot ismerteti. További információ a Durable Functionsről: [Durable functions minták és műszaki fogalmak](durable-functions-concepts.md).
+A függvények láncolása egy adott sorrendben végrehajtott függvények sorrendjének a mintáját jelöli. Egy függvény kimenetét gyakran egy másik függvény bemenetére kell alkalmazni. Ez a cikk a Durable Functions rövid útmutató ([C#](durable-functions-create-first-csharp.md) vagy [JavaScript](quickstart-js-vscode.md)) befejezése után létrehozott láncolási sorozatot ismerteti. További információ a Durable Functionsről: [Durable functions áttekintése](durable-functions-overview.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -63,13 +63,13 @@ Itt látható a forráskód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Minden JavaScript-előkészítési függvénynek tartalmaznia [ `durable-functions` ](https://www.npmjs.com/package/durable-functions)kell a modult. Ez egy olyan könyvtár, amely lehetővé teszi Durable Functions a JavaScriptben való írását. Három jelentős különbség van egy összehangoló függvény és más JavaScript-függvények között:
+Minden JavaScript-előkészítési függvénynek tartalmaznia kell a [ `durable-functions` modult](https://www.npmjs.com/package/durable-functions). Ez egy olyan könyvtár, amely lehetővé teszi Durable Functions a JavaScriptben való írását. Három jelentős különbség van egy összehangoló függvény és más JavaScript-függvények között:
 
 1. A függvény egy [Generator függvény.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
 2. A függvény a `durable-functions` `orchestrator` modul metódusának (itt `df`) hívásával van becsomagolva.
 3. A függvénynek szinkronnak kell lennie. Mivel a "Orchestrator" metódus kezeli a "Context. Done" hívását, a függvénynek egyszerűen "Return" értéknek kell lennie.
 
-Az `context` objektum tartalmaz egy `df` objektumot, amely lehetővé teszi más tevékenységi függvények meghívását és `callActivity` a bemeneti paraméterek átadását a metódusának használatával. A kód háromszor `E1_SayHello` meghívja a különböző paraméterek értékeit `yield` , ezzel jelezve, hogy a végrehajtásnak meg kell várnia a visszaadott aszinkron tevékenység függvényének hívását. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` listához, amelyet a függvény végén adnak vissza.
+Az `context` objektum tartalmaz egy `df` objektumot, amely lehetővé teszi más *tevékenységi* függvények meghívását és `callActivity` a bemeneti paraméterek átadását a metódusának használatával. A kód háromszor `E1_SayHello` meghívja a különböző paraméterek értékeit `yield` , ezzel jelezve, hogy a végrehajtásnak meg kell várnia a visszaadott aszinkron tevékenység függvényének hívását. Az egyes hívások visszatérési értéke hozzáadódik a `outputs` listához, amelyet a függvény végén adnak vissza.
 
 ## <a name="e1_sayhello"></a>E1_SayHello
 
@@ -136,12 +136,12 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-Amint láthatja, a példány `runtimeStatus` `output` befejeződik, és a tartalmazza a Orchestrator függvény végrehajtásának JSON-szerializált eredményét.
+Amint láthatja, a példány `runtimeStatus` `output` *befejeződik* , és a tartalmazza a Orchestrator függvény végrehajtásának JSON-szerializált eredményét.
 
 > [!NOTE]
 > A Orchestrator függvényt elindító HTTP POST-végpont a "HttpStart" nevű HTTP-trigger függvényként lett implementálva a minta alkalmazásban. Hasonló indító logikát alkalmazhat más típusú triggerekhez, `queueTrigger` `eventHubTrigger`például, vagy `timerTrigger`.
 
-Tekintse meg a függvény-végrehajtási naplókat. A függvény többször indult el és fejeződött be az áttekintésben ismertetett Replay-viselkedés miatt. [](durable-functions-concepts.md) `E1_HelloSequence` Másfelől azonban csak három végrehajtás `E1_SayHello` történt, mivel ezek a függvények végrehajtása nem kerül újra lejátszásra.
+Tekintse meg a függvény-végrehajtási naplókat. A függvény többször indult el és fejeződött be, mert a folyamat megbízhatósága című témakörben leírt újrajátszás viselkedése történt. [](durable-functions-orchestrations.md#reliability) `E1_HelloSequence` Másfelől azonban csak három végrehajtás `E1_SayHello` történt, mivel ezek a függvények végrehajtása nem kerül újra lejátszásra.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód
 

@@ -5,20 +5,20 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019031"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934808"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>SQL Server adatbázisok biztonsági mentésének kezelése és figyelése
 
 Ez a cikk az Azure-beli virtuális gépen (VM) futó SQL Server adatbázisok felügyeletének és figyelésének általános feladatait ismerteti, amelyek biztonsági mentése a [Azure Backup](backup-overview.md) szolgáltatás által Azure Backup Recovery Services-tárolóba történik. Megismerheti a feladatok és a riasztások figyelését, az adatbázis-védelem leállítását és folytatását, a biztonsági mentési feladatok futtatását és a virtuális gépek biztonsági másolatokból való regisztrációjának megszüntetését.
 
-Ha még nem konfigurált biztonsági másolatokat a SQL Server adatbázisokhoz, tekintse [meg a SQL Server adatbázisok biztonsági mentése Azure](backup-azure-sql-database.md) -beli virtuális gépeken című témakört.
+Ha még nem konfigurált biztonsági másolatokat a SQL Server adatbázisokhoz, tekintse [meg a SQL Server adatbázisok biztonsági mentése Azure-beli virtuális gépeken](backup-azure-sql-database.md) című témakört.
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Manuális biztonsági mentési feladatok figyelése a portálon
 
@@ -140,6 +140,32 @@ A védelem letiltása, de a tár törlése előtt törölje a SQL Server példá
 4. Kattintson a jobb gombbal a védett kiszolgálóra, és válassza a **Regisztráció törlése**lehetőséget.
 
    ![Törlés kiválasztása](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>Házirend módosítása
+Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy a megőrzési tartománynak a módosításához.
+
+> [!NOTE]
+> A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
+
+A tároló irányítópultján lépjen a**biztonsági mentési házirendek** **kezelése** > elemre, és válassza ki a szerkeszteni kívánt szabályzatot.
+
+  ![Biztonsági mentési szabályzat kezelése](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![Biztonsági mentési szabályzat módosítása](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+A szabályzat módosítása hatással lesz az összes kapcsolódó biztonsági mentési elemre, és elindítja a megfelelő **Konfigurálás-védelmi** feladatokat. 
+
+#### <a name="inconsistent-policy"></a>Inkonzisztens házirend 
+
+Előfordulhat, hogy a házirend-módosítási művelet bizonyos biztonsági másolati elemek esetében nem **konzisztens** házirend-verziót eredményezhet. Ez akkor fordulhat elő, ha a biztonsági mentési elemhez tartozó megfelelő **konfigurálási** művelet meghiúsult a házirend-módosítási művelet elindítása után. A biztonsági mentési elem nézetben a következőképpen jelenik meg:
+ 
+  ![Inkonzisztens házirend](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+Egy kattintással kijavíthatja az összes érintett elem szabályzatának verzióját:
+
+  ![Inkonzisztens házirend javítása](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>A bővítmény újbóli regisztrálása a SQL Server VM
 

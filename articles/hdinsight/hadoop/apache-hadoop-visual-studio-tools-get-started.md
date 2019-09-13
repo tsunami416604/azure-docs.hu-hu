@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7a243dd0eca179317309438c31c114c94f94bf00
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 706bcbed39ca2a3fe0a38eba864edb863c31b4ec
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736434"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884047"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához
 
@@ -46,7 +46,7 @@ A cikk elvégzéséhez és a Visual studióhoz készült Data Lake Tools haszná
 
   Meglévő telepítések esetén a menüsávban navigáljon > az eszközök**lekérése eszközök és szolgáltatások...** elemre a Visual Studio telepítőjének megnyitásához.  Ezután válassza ki az Azure- **fejlesztés** vagy **az adattárolás és-feldolgozás minimális számítási feladatait**.
 
-  ![A Visual Studio telepítő képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![A Visual Studio telepítő képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 és 2015  
   [Data Lake eszközök letöltése](https://www.microsoft.com/download/details.aspx?id=49504). Válassza ki a Data Lake Tools azon verzióját, amely megfelel a Visual Studio verziójának.  
@@ -195,13 +195,13 @@ Alkalmi lekérdezések létrehozása és futtatása:
 
       Jelölje be az **interaktív** jelölőnégyzetet, majd válassza a **végrehajtás**lehetőséget.
 
-      ![A lekérdezés és a végrehajtás képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![A lekérdezés és a végrehajtás képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       Győződjön meg arról, hogy a **Batch** be van jelölve, majd válassza a **Küldés**lehetőséget.  Ha a speciális küldés lehetőséget választja, konfigurálja a **feladatok nevét**, **argumentumait**, a **további konfigurációkat**és az **állapot könyvtárat** a parancsfájlhoz.
 
-      ![A lekérdezés és a Batch képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![A lekérdezés és a Batch képernyőképe](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "Lekérdezések küldése")
 
@@ -224,7 +224,7 @@ Hive-megoldás létrehozása és futtatása:
 
 A feladatok összegzése némileg eltér a **Batch** és az **interaktív** mód között.
 
-![Feladatok összegzése](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Struktúra-feladatok összegzése")
+![Feladatok összegzése](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Struktúra-feladatok összegzése")
 
 A **frissítés** gomb használatával frissítse az állapotot, amíg a feladatok állapota **Befejezettre**nem változik.  
 
@@ -232,7 +232,7 @@ A **frissítés** gomb használatával frissítse az állapotot, amíg a feladat
 
 * Az **interaktív** módból származó feladatok részleteiért lásd: lapok **kimeneti** és **HiveServer2 kimenete**.
 
-  ![feladatok részletei](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Kaptár-feladatok részletei")
+  ![feladatok részletei](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Kaptár-feladatok részletei")
 
 ### <a name="view-job-graph"></a>Feladatok gráfjának megtekintése
 

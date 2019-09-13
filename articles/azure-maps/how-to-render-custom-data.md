@@ -9,25 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638798"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915762"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
 Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](https://docs.microsoft.com/rest/api/maps/render/getmapimage) a képösszeállítási funkcióval a raszteres térképeken található átfedések engedélyezéséhez. A képösszeállítás lehetővé teszi a raszteres csempék visszaszerzését, további adatokkal (például egyéni pushpins, címkékkel és geometriai átfedésekkel).
 
-Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps adatszolgáltatási [API-kat](https://docs.microsoft.com/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
+Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps [adatszolgáltatási API-kat](https://docs.microsoft.com/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása
 
-A cikkben ismertetett eljárások elvégzéséhez először [létre kell hoznia egy Azure Maps fiókot](how-to-manage-account-keys.md) az S1 díjszabási szinten.
+A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia egy Azure Maps fiókot a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) részben leírt utasítások alapján, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz elsődleges előfizetési kulcs lekéréséhez című témakör lépéseit.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpins megjelenítése címkékkel és egyéni képpel
 
@@ -59,7 +60,7 @@ A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa
 > [!Note]
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
-Az elérési utat és a rögzítési hely adatait az adatfeltöltő [API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)használatával is beszerezheti. Az elérési út és a PIN-kód adatok feltöltéséhez kövesse az alábbi lépéseket.
+Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)használatával is beszerezheti. Az elérési út és a PIN-kód adatok feltöltéséhez kövesse az alábbi lépéseket.
 
 1. A Poster alkalmazásban nyisson meg egy új lapot az előző szakaszban létrehozott gyűjteményben. Válassza a HTTP POST metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a POST-kérelem elvégzéséhez:
 

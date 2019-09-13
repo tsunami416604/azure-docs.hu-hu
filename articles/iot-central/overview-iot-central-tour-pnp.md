@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 82996db232fde0424ccc8e3e478a70a5892231e6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211902"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884830"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Ismerkedjen meg az Azure IoT Central felhasználói felületével (előzetes verziójú funkciók)
 
@@ -44,24 +44,23 @@ A bal oldali navigációs menü használatával érheti el az alkalmazás külö
       ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
   :::column-end:::
   :::column span="2":::
+     Az **irányítópult** megjeleníti az alkalmazás irányítópultját. Építőként testreszabhatja az irányítópultot a kezelők számára. A felhasználók emellett saját irányítópultokat is létrehozhatnak.
+     
+     Az **eszközök** felsorolja az alkalmazásban az egyes eszközökhöz társított szimulált és valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.
 
-      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
-    
-      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
-    
-      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+     Az **eszközcsoport lehetővé teszi az erőforráscsoportok** megtekintését és létrehozását. Kezelőként létrehozhat eszközcsoport-csoportokat a lekérdezésben megadott eszközök logikai gyűjteményében.
 
-      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
-    
-      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
-    
-      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
-    
-      **Device templates** shows the tools a builder uses to create and manage device templates.
-    
-      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
-    
-      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+     A **szabályok** lehetővé teszi az eszköz telemetria alapuló szabályok szerkesztését, valamint a testreszabható műveletek elindítását.
+
+     Az **elemzések** az eszköz-és telemetria származó elemzéseket jelenítik meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.
+
+     A **feladatok** lehetővé teszik a tömeges eszközök felügyeletét azáltal, hogy a feladatokat az eszközök nagy léptékű frissítéséhez hozza létre és futtatja.
+
+     Az **eszköz sablonjai** a Builder által az eszközök sablonjainak létrehozásához és kezeléséhez használt eszközöket jelenítik meg.
+
+     Az **adatexportálás** lehetővé teszi a rendszergazda számára, hogy a folyamatos exportálást más Azure-szolgáltatásokhoz, például a tárolóhoz és a várólistákhoz konfigurálja.
+
+     Az **Adminisztráció** azokat az alkalmazás-felügyeleti lapokat jeleníti meg, ahol a rendszergazdák kezelhetik az Alkalmazásbeállítások, a felhasználók és a szerepkörök beállításait.
    :::column-end:::
 :::row-end:::
 
@@ -104,13 +103,13 @@ Az Explorer oldalon láthatók az Azure IoT Central alkalmazásban található _
 
 ![Eszközbeállítások lap](media/overview-iot-central-tour-pnp/devicesets.png)
 
-Az eszközcsoport oldalon láthatók a Builder által létrehozott eszközcsoport-csoportok. Az eszközcsoport kapcsolódó eszközök gyűjteménye. A szerkesztő definiál egy lekérdezést az eszközcsoport részét képező eszközök azonosításához. Az erőforráscsoportok az alkalmazásban található elemzések testreszabásakor használhatók. További tudnivalókat az [eszközök használata az Azure IoT Central alkalmazásban](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című cikkben talál.
+Az _eszközcsoport oldalon láthatók a_ Builder által létrehozott eszközcsoport-csoportok. Az eszközcsoport kapcsolódó eszközök gyűjteménye. A szerkesztő definiál egy lekérdezést az eszközcsoport részét képező eszközök azonosításához. Az erőforráscsoportok az alkalmazásban található elemzések testreszabásakor használhatók. További tudnivalókat az [eszközök használata az Azure IoT Central alkalmazásban](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című cikkben talál.
 
 ## <a name="rules"></a>Szabályok
 
 ![Szabályok lap](media/overview-iot-central-tour-pnp/rules.png)
 
-A szabályok lapon megadhatja a telemetria, az eszköz állapotát vagy az eszköz eseményein alapuló szabályokat. Amikor egy szabály elindít egy műveletet, például egy e-mailt küldhet az operátornak. A Builder ezt a lapot használja a szabályok létrehozásához és kezeléséhez. További információ: az eszközökre vonatkozó [szabályok és műveletek konfigurálása az Azure IoT Central](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) oktatóanyagban.
+A szabályok lapon megadhatja a telemetria, az eszköz állapotát vagy az eszköz eseményein alapuló szabályokat. Amikor egy szabály elindít egy műveletet, például egy e-mailt küldhet az operátornak. A Builder ezt a lapot használja a szabályok létrehozásához és kezeléséhez. További információ: az [eszközökre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Central](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) oktatóanyagban.
 
 ## <a name="analytics"></a>Elemzés
 

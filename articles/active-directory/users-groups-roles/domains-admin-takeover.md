@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872211"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914780"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
 
@@ -43,7 +43,7 @@ A SharePoint-és OneDrive, például az Office 365-et tartalmazó termékek nem 
 
 3. A Power BI megerősítő e-mailben válassza az **Igen, ez nekem**lehetőséget.
 
-4. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) a Power bi felhasználói fiókkal. Egy üzenet jelenik meg, amely arra utasítja Önt, hogy a nem felügyelt bérlőben már ellenőrzött tartománynév **rendszergazdája legyen** . válassza **az igen, szeretnék a rendszergazdát**.
+4. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://portal.office.com/admintakeover) a Power bi felhasználói fiókkal. Egy üzenet jelenik meg, amely arra utasítja Önt, hogy a nem felügyelt bérlőben már ellenőrzött tartománynév **rendszergazdája legyen** . válassza **az igen, szeretnék a rendszergazdát**.
   
    ![a rendszergazdai jogosultságok első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
   

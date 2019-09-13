@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599645"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931174"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS szolgáltatás az Azure-ban Service Fabric
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -28,7 +28,7 @@ A már meglévő URL-címeken keresztül számos szolgáltatás, különösen a 
 
 A DNS-szolgáltatás leképezi a DNS-neveket a szolgáltatás neveként, amelyet a elnevezési szolgáltatás a szolgáltatás végpontjának visszaküldéséhez feloldott. A szolgáltatás DNS-neve a létrehozás időpontjában van megadva. Az alábbi ábra bemutatja, hogyan működik a DNS-szolgáltatás az állapot nélküli szolgáltatások esetében.
 
-![szolgáltatási végpontok](./media/service-fabric-dnsservice/stateless-dns.png)
+![Szolgáltatási végpontok](./media/service-fabric-dnsservice/stateless-dns.png)
 
 A Service Fabric 6,3-es verziójától kezdve a Service Fabric DNS protokoll ki lett bővítve, hogy tartalmazza a particionált állapot-nyilvántartó szolgáltatások kezelésére szolgáló sémát. Ezek a bővítmények feloldják az adott partíciós IP-címeket az állapot-nyilvántartó DNS-név és a partíció neve együttes használatával. Mindhárom particionálási séma támogatott:
 
@@ -46,7 +46,7 @@ A DNS-szolgáltatás nem támogatja a dinamikus portokat. A dinamikus portokon e
 > [!NOTE]
 > A Service Fabric szolgáltatások DNS szolgáltatása még nem támogatott Linux rendszeren.
 
-Amikor a portál használatával hoz létre fürtöt, a DNS szolgáltatás alapértelmezés szerint engedélyezve van a **fürt konfigurációs** MENÜJÉNEK **DNS-szolgáltatás** belefoglalása jelölőnégyzetében:
+Amikor a portál használatával hoz létre fürtöt, a DNS szolgáltatás alapértelmezés szerint engedélyezve van a **fürt konfigurációs** MENÜJÉNEK **DNS-szolgáltatás belefoglalása** jelölőnégyzetében:
 
 ![DNS-szolgáltatás engedélyezése a portálon keresztül](./media/service-fabric-dnsservice/enable-dns-service.png)
 
@@ -111,7 +111,7 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
               ]
             }
        ```
-1. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, és a Service Fabric Explorer **rendszerszolgáltatás** szakasza alatt található. 
+1. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, és a Service Fabric Explorer rendszerszolgáltatás szakasza alatt található. 
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>A szolgáltatás DNS-nevének beállítása
@@ -133,7 +133,7 @@ Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és
 ```
 Az alkalmazás üzembe helyezését követően a Service Fabric Explorerben látható szolgáltatási példány megjeleníti a példány DNS-nevét, ahogy az a következő ábrán látható: 
 
-![szolgáltatási végpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
+![Szolgáltatási végpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
 Az alábbi példa egy állapot-nyilvántartó szolgáltatás `statefulsvc.app`DNS-nevét állítja be a következőre:. A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
@@ -179,7 +179,7 @@ A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 Az elemek magyarázata:
 
 - *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
-- A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "-". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Cél – a partíció* neve a partíció neve. 
 - A *PartitionSuffix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték üres karakterlánc. További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - A *tovább particionált-Service-DNSName* a szolgáltatás DNS-neve hátralévő része.
@@ -258,5 +258,5 @@ public class ValuesController : Controller
 * A Service Fabric szolgáltatások DNS szolgáltatása még nem támogatott Linux rendszeren. A DNS-szolgáltatás a Linux rendszerű tárolók esetében támogatott. A Fabric Client/ServicePartitionResolver manuális feloldása a rendelkezésre álló alternatíva.
 
 ## <a name="next-steps"></a>További lépések
-További információ a fürtön belüli, a [kapcsolattal és](service-fabric-connect-and-communicate-with-services.md) a szolgáltatásokkal való kommunikációval
+További információ a fürtön belüli, a [kapcsolattal és a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md) való kommunikációval
 

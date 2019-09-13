@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734666"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916562"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitásának megtervezése
 
@@ -96,9 +96,6 @@ A fürt élettartama után számítunk fel díjat. Ha csak bizonyos időpontokra
 
 Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, valamint a több csomópontot tartalmazó fürt összetevőinek csökkentése miatt. A probléma elkülönítéséhez próbálja meg az elosztott tesztelést úgy, hogy egyidejűleg több feladatot futtat egyetlen feldolgozó csomópont-fürtön, majd ezt a megközelítést kiterjesztve több feladatot is futtathat egyszerre több csomópontot tartalmazó fürtökön. Egy egycsomópontos HDInsight-fürt az Azure-ban való létrehozásához használja az *Egyéni (méret, beállítások, alkalmazások)* beállítást, és használja az 1 értéket a **fürt mérete** szakaszban lévő *munkavégző csomópontok* számára, ha új fürtöt szeretne kiépíteni a portálon.
 
-A helyi számítógépen is telepítheti az egycsomópontos fejlesztési környezetet, és tesztelheti a megoldást. A Hortonworks egyetlen csomópontos helyi fejlesztési környezetet biztosít a Hadoop-alapú megoldások számára, amely a kezdeti fejlesztés, a koncepció igazolása és a tesztelés szempontjából hasznos. További információ: [Hortonworks sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
-
-Az egycsomópontos helyi fürttel kapcsolatos probléma azonosításához újrafuttathatja a sikertelen feladatokat, és módosíthatja a bemeneti adatokat, vagy kisebb adatkészleteket is használhat. A feladatok futtatásának módja a platformtól és az alkalmazás típusától függ.
 
 ## <a name="quotas"></a>Kvóták
 

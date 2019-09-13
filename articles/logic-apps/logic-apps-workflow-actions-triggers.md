@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: c109627d2a2e9190afb2c27b9fb202e93baa68cb
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689656"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918962"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az aktiválási és a műveleti típusok referenciája a munkafolyamat-definíciós nyelvben Azure Logic Apps
 
@@ -133,7 +133,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 | Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | Sztring | Az trigger neve | 
-| <*kapcsolattípus*> | Karakterlánc | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
+| <*kapcsolattípus*> | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
 | <*metódus típusa*> | Sztring | A felügyelt API-val való kommunikáció HTTP-metódusa: A "GET", A "PUT", A "POST", A "JAVÍTÁS", A "DELETE" | 
 | <*api-operation*> | Sztring | A meghívni kívánt API-művelet | 
 | <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran: "Second", "minute", "Hour", "Day", "Week", "Month" | 
@@ -149,7 +149,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 | <*max-runs*> | Integer | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
 | <*max-runs-queue*> | Integer | Ha a munkafolyamata már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, minden új Futtatás az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kerül ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
 | <*splitOn-expression*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger szövegtörzsében visszaadott elemre vonatkozik:`@triggerbody()?['value']` |
-| <*művelet – beállítás*> | Karakterlánc | Az alapértelmezett viselkedést a `operationOptions` tulajdonság beállításával módosíthatja. További információ: [üzemeltetési beállítások](#operation-options). |
+| <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedést a `operationOptions` tulajdonság beállításával módosíthatja. További információ: [üzemeltetési beállítások](#operation-options). |
 ||||
 
 *Kimenetek*
@@ -158,7 +158,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 |---------|------|-------------|
 | fejlécek | JSON-objektum | A válaszból származó fejlécek |
 | törzs | JSON-objektum | A válasz törzse |
-| állapotkód | Integer | A válaszban szereplő állapotkód |
+| Állapotkód | Integer | A válaszban szereplő állapotkód |
 |||| 
 
 *Példa*
@@ -232,7 +232,7 @@ Ez az trigger egy [Microsoft által felügyelt API-](../connectors/apis-list.md)
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az újrapróbálkozási [szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
 | <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja `?api-version=2018-01-01` a hívást. | 
@@ -303,9 +303,9 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa*> | Karakterlánc | A megadott végpont lekérdezéséhez használandó HTTP-metódus: A "GET", A "PUT", A "POST", A "JAVÍTÁS", A "DELETE" | 
+| <*metódus típusa*> | Sztring | A megadott végpont lekérdezéséhez használandó HTTP-metódus: A "GET", A "PUT", A "POST", A "JAVÍTÁS", A "DELETE" | 
 | <*végpont – URL*> | Sztring | A lekérdezéshez használt végpont HTTP-vagy HTTPS-URL-címe <p>Karakterlánc maximális mérete: 2 KB | 
 | <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran: "Second", "minute", "Hour", "Day", "Week", "Month" | 
 | <*number-of-time-units*> | Integer | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>Hónap 1-16 hónap </br>Nap 1-500 nap </br>Óra 1 – 12000 óra </br>Percenként 1 – 72000 perc </br>Második 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
@@ -313,16 +313,16 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-objektum | A kérelemmel küldendő fejlécek <p>Például egy kérelem nyelvének és típusának megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | Karakterlánc | A kéréssel adattartalomként küldendő üzenet tartalma | 
+| <*body-content*> | Sztring | A kéréssel adattartalomként küldendő üzenet tartalma | 
 | <*hitelesítés – metódus*> | JSON-objektum | A kérelem által a hitelesítéshez használt metódus. További információ: [Scheduler kimenő hitelesítés](../scheduler/scheduler-outbound-authentication.md). A feladatütemezőn kívül `authority` a tulajdonság támogatott. Ha nincs megadva, az alapértelmezett érték `https://login.windows.net`a, de más értéket is használhat,`https://login.windows\-ppe.net`például:. |
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az újrapróbálkozási [szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |  
  <*lekérdezés – paraméterek*> | JSON-objektum | A kérelemben szerepeltetni kívánt lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja `?api-version=2018-01-01` a kérést. | 
 | <*max-runs*> | Integer | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
 | <*max-runs-queue*> | Integer | Ha a munkafolyamata már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, minden új Futtatás az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kerül ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*művelet – beállítás*> | Karakterlánc | Az alapértelmezett viselkedést a `operationOptions` tulajdonság beállításával módosíthatja. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedést a `operationOptions` tulajdonság beállításával módosíthatja. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 *Kimenetek*
@@ -331,7 +331,7 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból származó fejlécek | 
 | törzs | JSON-objektum | A válasz törzse | 
-| állapotkód | Integer | A válaszban szereplő állapotkód | 
+| Állapotkód | Integer | A válaszban szereplő állapotkód | 
 |||| 
 
 *A bejövő kérelmekre vonatkozó követelmények*
@@ -408,9 +408,9 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa*> | Karakterlánc | A lemondási kérelemhez használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*metódus típusa*> | Sztring | A lemondási kérelemhez használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
 | <*végpont – leiratkozás – URL*> | Sztring | Az a végpont URL-címe, ahová el kell küldeni a lemondási kérelmet | 
 | <*body-content*> | Sztring | Az előfizetéshez vagy a lemondási kérelemhez küldendő üzenet tartalma | 
 | <*hitelesítés – metódus*> | JSON-objektum | A kérelem által a hitelesítéshez használt metódus. További információ: [Scheduler kimenő hitelesítés](../scheduler/scheduler-outbound-authentication.md). |
@@ -426,7 +426,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból származó fejlécek | 
 | törzs | JSON-objektum | A válasz törzse | 
-| állapotkód | Integer | A válaszban szereplő állapotkód | 
+| Állapotkód | Integer | A válaszban szereplő állapotkód | 
 |||| 
 
 *Példa*
@@ -494,7 +494,7 @@ Ez az eseményindító a megadott ismétlődési ütemterv alapján fut, és egy
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran: "Second", "minute", "Hour", "Day", "Week", "Month" | 
 | <*number-of-time-units*> | Integer | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>Hónap 1-16 hónap </br>Nap 1-500 nap </br>Óra 1 – 12000 óra </br>Percenként 1 – 72000 perc </br>Második 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
@@ -502,10 +502,10 @@ Ez az eseményindító a megadott ismétlődési ütemterv alapján fut, és egy
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*kezdő-dátum-idő-formátum-éééé-hh-NNTóó: PP: mm*> | Sztring | A kezdő dátum és idő ebben a formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát ad meg <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem ad meg időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és adja meg az időzónát, például "csendes-óceáni téli idő", vagy adja meg a "2017-09-18T14:00:00Z" időzóna nélküli beállítását. <p>**Megjegyzés:** Ennek a kezdési időpontnak meg kell felelnie az [ISO 8601 dátum-idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri](https://en.wikipedia.org/wiki/Nautical_time)időpontra hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. A kezdő dátummal és időpontokkal kapcsolatos további információkért lásd: a [rendszeresen futó feladatok létrehozása és rendszeres futtatása](../connectors/connectors-native-recurrence.md). | 
-| <*time-zone*> | Karakterlánc | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC](https://en.wikipedia.org/wiki/UTC_offset)-eltolást. Itt adhatja meg az alkalmazni kívánt időzónát. | 
+| <*kezdő-dátum-idő-formátum-éééé-hh-NNTóó: PP: mm*> | Sztring | A kezdő dátum és idő ebben a formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát ad meg <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem ad meg időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és adja meg az időzónát, például "csendes-óceáni téli idő", vagy adja meg a "2017-09-18T14:00:00Z" időzóna nélküli beállítását. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri](https://en.wikipedia.org/wiki/Nautical_time)időpontra hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. A kezdő dátummal és időpontokkal kapcsolatos további információkért lásd: a [rendszeresen futó feladatok létrehozása és rendszeres futtatása](../connectors/connectors-native-recurrence.md). | 
+| <*time-zone*> | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC](https://en.wikipedia.org/wiki/UTC_offset)-eltolást. Itt adhatja meg az alkalmazni kívánt időzónát. | 
 | <*egy vagy több órás jelölés*> | Egész vagy egész tömb | Ha a (z) "Day" vagy a `frequency`"Week" értéket adja meg, akkor megadhat egy vagy több egész számot 0 és 23 között, vesszővel elválasztva, a nap azon órájában, amikor futtatni kívánja a munkafolyamatot. <p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor az óra jelzése 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig is megadható. | 
 | <*egy vagy több perces jelek*> | Egész vagy egész tömb | Ha a (z) "Day" vagy a `frequency`"Week" értéket adja meg, megadhat egy vagy több egész számot 0 és 59 között, vesszővel elválasztva, az óra percében, amikor futtatni szeretné a munkafolyamatot. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. | 
 | weekDays | Karakterlánc-vagy karakterlánc-tömb | Ha a "Week" `frequency`lehetőséget adja meg, megadhat egy vagy több napot, vesszővel elválasztva, ha a munkafolyamatot szeretné futtatni: "Hétfő", "kedd", "szerda", "csütörtök", "Friday", "szombat" és "vasárnap" | 
@@ -613,8 +613,8 @@ Az trigger meghívásához az `listCallbackUrl` API-t kell használnia, amelyet 
 
 | Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa*> | Karakterlánc | A beérkező kérelmek által a logikai alkalmazás meghívásához használt metódus: A "GET", A "PUT", A "POST", A "JAVÍTÁS", A "DELETE" |
-| <*relative-path-for-accepted-parameter*> | Karakterlánc | Annak a paraméternek a relatív elérési útja, amelyet a végpont URL-címe el tud fogadni | 
+| <*metódus típusa*> | Sztring | A beérkező kérelmek által a logikai alkalmazás meghívásához használt metódus: A "GET", A "PUT", A "POST", A "JAVÍTÁS", A "DELETE" |
+| <*relative-path-for-accepted-parameter*> | Sztring | Annak a paraméternek a relatív elérési útja, amelyet a végpont URL-címe el tud fogadni | 
 | <*kötelező – tulajdonságok*> | Array | Egy vagy több olyan tulajdonság, amely értékeket igényel | 
 | <*max-runs*> | Integer | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
 | <*max-runs-queue*> | Integer | Ha a munkafolyamata már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, minden új Futtatás az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kerül ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
@@ -776,7 +776,7 @@ A műveletek ezekkel a magas szintű elemekkel rendelkeznek, bár egyesek nem k�
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------|
 | <*művelet – név*> | Sztring | A művelet neve | 
 | <*művelet típusa*> | Sztring | A művelet típusa, például "http" vagy "ApiConnection"| 
@@ -972,10 +972,10 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*művelet – név*> | Sztring | Az összekötő által megadott művelet neve | 
-| <*metódus típusa*> | Karakterlánc | A végpontról való feliratkozáshoz vagy leiratkozáshoz használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*metódus típusa*> | Sztring | A végpontról való feliratkozáshoz vagy leiratkozáshoz használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
 | <*API – előfizetés – URL*> | Sztring | Az API-ra való feliratkozáshoz használandó URI | 
 |||| 
 
@@ -1073,7 +1073,7 @@ Ez a művelet egy JavaScript kódrészletet futtat, és visszaadja az `Result` e
 
 *Kötelező*
 
-| Érték | Type | Leírás |
+| Value | Type | Leírás |
 |-------|------|-------------|
 | <*JavaScript – kódrészlet*> | Változó | A futtatni kívánt JavaScript-kód. A kódokra vonatkozó követelmények és további információk: kódrészletek [hozzáadása és futtatása beágyazott kóddal](../logic-apps/logic-apps-add-run-inline-code.md). <p>Az `code` attribútumban a kódrészlet a írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez. További információ az `workflowContext` objektumról: az [trigger és a művelet eredményei a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
@@ -1158,7 +1158,7 @@ Ez a művelet egy korábban létrehozott [Azure](../azure-functions/functions-cr
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------|  
 | <*header-content*> | JSON-objektum | A hívással küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
@@ -1418,7 +1418,7 @@ Ez a művelet egy tömböt hoz létre egy másik tömb elemeiből egy megadott f
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*tömb*> | Array | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. |
 | <*condition-or-filter*> | Sztring | A forrás tömbben lévő elemek szűréséhez használt feltétel <p>**Megjegyzés**: Ha egyetlen érték sem felel meg a feltételnek, akkor a művelet egy üres tömböt hoz létre. |
@@ -1461,7 +1461,7 @@ Ez a művelet létrehozza a HTTP-kérelemre adott válasz adattartalmát.
 
 | Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*response-status-code*> | Egész szám | A bejövő kérelembe küldendő HTTP-állapotkód. Az alapértelmezett kód "200 OK", de a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx, de nem a 3XXX szint or-vel kezdődik. | 
+| <*response-status-code*> | Integer | A bejövő kérelembe küldendő HTTP-állapotkód. Az alapértelmezett kód "200 OK", de a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx, de nem a 3XXX szint or-vel kezdődik. | 
 |||| 
 
 *Választható*
@@ -1747,7 +1747,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatását, megszakítja a
 
 | Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*status*> | Karakterlánc | A futtatáshoz visszaadni kívánt állapot: "Sikertelen", "megszakított" vagy "sikeres" |
+| <*status*> | Sztring | A futtatáshoz visszaadni kívánt állapot: "Sikertelen", "megszakított" vagy "sikeres" |
 |||| 
 
 *Választható*
@@ -1815,7 +1815,7 @@ Ez a művelet szünetelteti a munkafolyamat-végrehajtást a megadott intervallu
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*egységek száma*> | Integer | A **késleltetési** művelethez a várakozási egységek száma | 
 | <*időköz*> | Sztring | A **késleltetési** művelethez a várakozási időköz: "Second", "minute", "Hour", "Day", "Week", "Month" | 
@@ -1888,13 +1888,13 @@ A Logic Apps motor ellenőrzi a hívni kívánt trigger elérését, ezért győ
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*nested-logic-app-name*> | Karakterlánc | A hívni kívánt logikai alkalmazás neve | 
+| <*nested-logic-app-name*> | Sztring | A hívni kívánt logikai alkalmazás neve | 
 | <*trigger – név*> | Sztring | A meghívni kívánt beágyazott logikai alkalmazásban lévő trigger neve | 
 | <*Azure-subscription-ID*> | Sztring | A beágyazott logikai alkalmazás Azure-előfizetési azonosítója |
 | <*Azure-resource-group*> | Sztring | Az Azure-erőforráscsoport neve a beágyazott logikai alkalmazáshoz |
-| <*nested-logic-app-name*> | Karakterlánc | A hívni kívánt logikai alkalmazás neve |
+| <*nested-logic-app-name*> | Sztring | A hívni kívánt logikai alkalmazás neve |
 ||||
 
 *Választható*
@@ -1965,7 +1965,7 @@ Ez a Looping művelet egy tömbön keresztül ismétli meg a műveleteket, és m
 
 *Kötelező* 
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*művelet – 1... n*> | Sztring | Az egyes tömb elemein futó műveletek nevei | 
 | <*művelet-definíció-1... n*> | JSON-objektum | A-t futtató műveletek definíciói | 
@@ -2128,7 +2128,7 @@ Ez a művelet logikailag csoportosítjaa műveleteket hatókörökre, amelyek az
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------|  
 | <*belső művelet – 1... n*> | JSON-objektum | Egy vagy több olyan művelet, amely a hatókörön belül fut |
 | <*művelet – bemenetek*> | JSON-objektum | Az egyes műveletek bemenetei |
@@ -2169,17 +2169,17 @@ Ez a művelet, más néven *switch-utasítás*, más műveleteket is szervez az 
 
 *Kötelező*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | Változó | A kiértékelni kívánt kifejezés, JSON-objektum vagy jogkivonat | 
-| <*művelet – név*> | Karakterlánc | Az egyező esethez futtatandó művelet neve | 
+| <*művelet – név*> | Sztring | Az egyező esethez futtatandó művelet neve | 
 | <*action-definition*> | JSON-objektum | A megfelelő esethez futtatandó művelet definíciója | 
 | <*egyező érték*> | Változó | A kiértékelt eredménnyel összehasonlítandó érték | 
 |||| 
 
 *Választható*
 
-| Érték | Type | Leírás | 
+| Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*default-action-name*> | Sztring | A futtatandó alapértelmezett művelet neve, ha nem létezik egyező eset | 
 | <*default-action-definition*> | JSON-objektum | Annak a műveletnek a definíciója, amely akkor fut, ha nem létezik egyező eset | 
@@ -2298,11 +2298,11 @@ Ez a hurok-művelet olyan műveleteket tartalmaz, amelyek addig futnak, amíg a 
 | Value | Type | Leírás | 
 |-------|------|-------------| 
 | <*művelet – név*> | Sztring | A hurokon belül futtatni kívánt művelet neve | 
-| <*művelet típusa*> | Karakterlánc | A futtatni kívánt Művelettípus | 
+| <*művelet típusa*> | Sztring | A futtatni kívánt Művelettípus | 
 | <*művelet – bemenetek*> | Különböző | A futtatandó művelet bemenetei | 
 | <*feltétel*> | Sztring | Annak a feltételnek vagy kifejezésnek a kiértékelése, amelyet a hurok befejezésének befejezése után kell kiértékelni | 
 | <*loop-count*> | Integer | A művelet által futtatható legtöbb hurok maximális száma. Az alapértelmezett `count` érték a 60. | 
-| <*hurok – időtúllépés*> | Karakterlánc | A hurok futtatásának leghosszabb időtartamára vonatkozó korlát. Az alapértelmezett `timeout` `PT1H`érték a, amely a szükséges [ISO 8601-formátum](https://en.wikipedia.org/wiki/ISO_8601). |
+| <*hurok – időtúllépés*> | Sztring | A hurok futtatásának leghosszabb időtartamára vonatkozó korlát. Az alapértelmezett `timeout` `PT1H`érték a, amely a szükséges [ISO 8601-formátum](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
 *Példa*

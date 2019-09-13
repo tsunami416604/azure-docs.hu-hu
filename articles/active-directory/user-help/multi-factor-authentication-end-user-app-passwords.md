@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088407"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914920"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Alkalmazások jelszavainak kezelése kétlépéses ellenőrzéshez
 
@@ -28,18 +28,16 @@ ms.locfileid: "70088407"
 
 Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
-- Az alkalmazás jelszavait automatikusan generálja a rendszer, és csak egyszer kell beírnia egy alkalmazásban.
+- Automatikusan létrejönnek az alkalmazások jelszavai, és egy alkalmazásban egyszer kell létrehozni és beírni.
 
 - Felhasználónként legfeljebb 40 jelszó adható meg. Ha a korlát után megpróbál létrehozni egyet, a rendszer arra kéri, hogy töröljön egy meglévő jelszót, mielőtt az újat hozna létre.
-
-- Egy eszközön egyetlen alkalmazás jelszava használható, nem pedig alkalmazásként. Hozzon létre például egyetlen jelszót a laptopján lévő összes alkalmazáshoz, majd egy másik jelszót az összes alkalmazáshoz az asztalon.
 
     >[!Note]
     >Az Office 2013-ügyfelek (beleértve az Outlookot is) támogatják az új hitelesítési protokollokat, és kétlépéses ellenőrzéssel használhatók. Ez a támogatás azt jelenti, hogy a kétlépéses ellenőrzés bekapcsolása után már nem lesz szükség az Office 2013-ügyfelekhez tartozó alkalmazások jelszavára. További információ: a [modern hitelesítés működése az office 2013 és az office 2016 Client apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) cikkhez.
 
 ## <a name="create-new-app-passwords"></a>Új alkalmazás jelszavának létrehozása
 
-A kezdeti kétfaktoros ellenőrzési regisztrációs folyamat során egyetlen alkalmazás jelszava van megadva. Ha egynél többre van szüksége, saját maga is létre kell hoznia őket. Az alkalmazások jelszavait több területről is létrehozhatja, attól függően, hogy hogyan van beállítva a kétfaktoros ellenőrzés a szervezetében. A kétfaktoros ellenőrzés munkahelyi vagy iskolai fiókkal való regisztrálásával kapcsolatos további információkért lásd: a kétfaktoros [ellenőrzés és a munkahelyi vagy iskolai fiók](multi-factor-authentication-end-user-first-time.md) , valamint a kapcsolódó cikkek áttekintése.
+A kezdeti kétfaktoros ellenőrzési regisztrációs folyamat során egyetlen alkalmazás jelszava van megadva. Ha egynél többre van szüksége, saját maga is létre kell hoznia őket. Az alkalmazások jelszavait több területről is létrehozhatja, attól függően, hogy hogyan van beállítva a kétfaktoros ellenőrzés a szervezetében. A kétfaktoros ellenőrzés munkahelyi vagy iskolai fiókkal való regisztrálásával kapcsolatos további információkért lásd: a [kétfaktoros ellenőrzés és a munkahelyi vagy iskolai fiók](multi-factor-authentication-end-user-first-time.md) , valamint a kapcsolódó cikkek áttekintése.
 
 ### <a name="where-to-create-and-delete-your-app-passwords"></a>Az alkalmazás jelszavainak létrehozása és törlése
 
@@ -49,7 +47,7 @@ Az alkalmazáshoz tartozó jelszavakat a kétfaktoros ellenőrzés használata a
 
 - **A szervezet kétfaktoros ellenőrzést és az Office 365 portált használja.** Ha munkahelyi vagy iskolai fiókját (például:, alain@contoso.com), kétfaktoros ellenőrzést és Office 365 alkalmazást használ a szervezetben, az alkalmazás jelszavait az [Office 365 portálról](https://www.office.com)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése az Office 365-portál használatával](#create-and-delete-app-passwords-using-the-office-365-portal) című cikkben talál.
 
-- **Kétfaktoros ellenőrzést használ személyes Microsoft-fiók.** Ha személyes Microsoft-fiók (például alain@outlook.com) használ kétfaktoros ellenőrzéssel, a [biztonsági alapok lapról](https://account.microsoft.com/security/)kezelheti az alkalmazáshoz tartozó jelszavakat. Részletes útmutatás: [alkalmazások jelszavainak használata olyan alkalmazásokkal, amelyek nem támogatják](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)a kétlépéses ellenőrzést.
+- **Kétfaktoros ellenőrzést használ személyes Microsoft-fiók.** Ha személyes Microsoft-fiók (például alain@outlook.com) használ kétfaktoros ellenőrzéssel, a [biztonsági alapok lapról](https://account.microsoft.com/security/)kezelheti az alkalmazáshoz tartozó jelszavakat. Részletes útmutatás: [alkalmazások jelszavainak használata olyan alkalmazásokkal, amelyek nem támogatják a kétlépéses ellenőrzést](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>Alkalmazások jelszavainak létrehozása és törlése a további biztonsági ellenőrzés lapról
 
@@ -75,7 +73,7 @@ Az alkalmazáshoz tartozó jelszavakat a munkahelyi vagy iskolai fiókjának **t
 
 ### <a name="to-delete-an-app-password-using-the-app-passwords-page"></a>Alkalmazás jelszavának törlése az alkalmazás jelszavai lapról
 
-1. Az **alkalmazás jelszavai** lapon válassza a Törlés lehetőséget a törölni kívánt alkalmazás jelszava mellett.
+1. Az **alkalmazás jelszavai** **lapon válassza a Törlés lehetőséget** a törölni kívánt alkalmazás jelszava mellett.
 
    ![Alkalmazás jelszavának törlése](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
@@ -93,7 +91,7 @@ Ha kétlépéses ellenőrzést használ munkahelyi vagy iskolai fiókjával és 
 
     ![Kibővített további biztonsági ellenőrzési területeket bemutató Office-portál](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 
-2. Válassza ki azt a szöveget, amely az alkalmazás jelszavainak megadásához , az alkalmazások jelszavainak **létrehozásához és kezeléséhez** használható.
+2. Válassza ki azt a szöveget, amely az alkalmazás jelszavainak megadásához, az **alkalmazások jelszavainak** **létrehozásához és kezeléséhez** használható.
 
     ![Az alkalmazás jelszavai lap kiemelve](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
 
@@ -113,7 +111,7 @@ Ha kétlépéses ellenőrzést használ munkahelyi vagy iskolai fiókjával és 
 
 ### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>Alkalmazások jelszavainak törlése az alkalmazás jelszavai oldalon
 
-1. Az **alkalmazás jelszavai** lapon válassza a Törlés lehetőséget a törölni kívánt alkalmazás jelszava mellett.
+1. Az **alkalmazás jelszavai** **lapon válassza a Törlés lehetőséget** a törölni kívánt alkalmazás jelszava mellett.
 
    ![Alkalmazás jelszavának törlése](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 

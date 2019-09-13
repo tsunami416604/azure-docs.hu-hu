@@ -1,6 +1,6 @@
 ---
 title: Az adatüzemek monitorozása Azure Monitor használatával | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a Azure Monitort a Data Factory folyamatok figyeléséhez, ha engedélyezi a diagnosztikai naplókat a Azure Data Factory információi alapján.
+description: Megtudhatja, hogyan használhatja a Azure Monitort a/Azure Data Factory folyamatok figyeléséhez, ha engedélyezi a diagnosztikai naplókat a Data Factory információi alapján.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,58 +11,68 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141135"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910185"
 ---
-# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Az adatgyárak riasztása és monitorozása Azure Monitor használatával
-A Felhőbeli alkalmazások számos mozgó részből összetettek. A figyelési szolgáltatással biztosítható, hogy az alkalmazás kifogástalan állapotban maradjon. Emellett segít elhárítani a lehetséges problémákat vagy a múltbeli hibák elhárítását. Emellett a figyelési adatok segítségével mélyebb elemzéseket nyerhet az alkalmazásról. Ez az információ segít az alkalmazások teljesítményének vagy karbantartásának javításában, vagy automatizálhatja azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
+# <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Az adatüzemek riasztása és monitorozása Azure Monitor használatával
 
-A Azure Monitor a Microsoft Azure legtöbb szolgáltatásához biztosít alapszintű infrastruktúra-metrikákat és-naplókat. Részletekért lásd: a [figyelés áttekintése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Az Azure diagnosztikai naplói olyan erőforrások által kibocsátott naplók, amelyek gazdag és gyakori adatmennyiséget biztosítanak az adott erőforrás működéséről. Data Factory a Azure Monitorban a diagnosztikai naplók kimenete.
+A Felhőbeli alkalmazások összetettek és számos mozgó részből állnak. A figyelők segítségével biztosítható, hogy az alkalmazások kifogástalan állapotban maradjanak és fussanak. A figyelők segítenek elkerülni a lehetséges problémákat és a múltbeli hibák elhárítását is.
 
-## <a name="persist-data-factory-data"></a>Data Factory-adatmegőrzés
-Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Ha több mint 45 napig kívánja megőrizni a feldolgozási folyamatot, a Azure Monitor használatával nem csak a diagnosztikai naplókat tudja átirányítani az elemzéshez, megtarthatja őket egy Storage-fiókba, így a választott időtartamra vonatkozóan a gyári adatok is megmaradnak.
+A monitorozási adataival részletes elemzéseket nyerhet az alkalmazásairól. Ez az információ segít az alkalmazások teljesítményének és karbantartásának javításában. Emellett segít automatizálni azokat a műveleteket, amelyek egyébként manuális beavatkozást igényelnek.
+
+A Azure Monitor a legtöbb Azure-szolgáltatás alapszintű infrastruktúrájának mérőszámait és naplóit biztosítja. Az Azure diagnosztikai naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. És Azure Data Factory diagnosztikai naplókat ír a figyelőben.
+
+Részletekért lásd: [Azure monitor áttekintése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+
+## <a name="keeping-azure-data-factory-data"></a>Azure Data Factory-adatvédelem megőrzése
+
+A Data Factory csak 45 napig tárolja az adatfeldolgozási folyamatokat. Ha továbbra is meg szeretné őrizni az adott időt, használja a monitort. A monitor segítségével a diagnosztikai naplókat átirányíthatja az elemzéshez. Megtarthatja azokat egy Storage-fiókban is, hogy a kiválasztott időtartamra vonatkozóan rendelkezzen gyári információval.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-* A naplózáshoz vagy a manuális ellenőrzéshez mentse őket egy **Storage** -fiókba. Megadhatja a megőrzési időt (napokban) a diagnosztikai beállítások használatával.
-* A harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például a Power BI) betöltéséhez továbbíthatja őket **Event Hubs** .
-* Elemezze őket **log Analytics**
+* A diagnosztikai naplókat a naplózáshoz vagy a manuális ellenőrzéshez mentse egy Storage-fiókba. A diagnosztikai beállítások segítségével megadhatja a megőrzési időt napokban.
+* Továbbítsa a naplókat az Azure Event Hubsba. A naplók bekerülnek egy partneri szolgáltatásba vagy egy egyéni analitikai megoldásba, például a Power BIba.
+* A naplók elemzése Log Analyticsokkal.
 
-Használhat olyan Storage-fiókot vagy Event hub-névteret, amely nem ugyanabban az előfizetésben található, mint a naplókat kibocsátó erőforrás. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) hozzáféréssel mindkét előfizetéshez.
+Használhat olyan Storage-fiókot vagy Event-hub névteret, amely nem szerepel a naplókat kibocsátó erőforrás előfizetésében. A beállítást konfiguráló felhasználónak megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) hozzáféréssel kell rendelkeznie mindkét előfizetéshez.
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása
 
 ### <a name="diagnostic-settings"></a>Diagnosztikai beállítások
-A nem számítási erőforrások diagnosztikai naplói a diagnosztikai beállítások használatával konfigurálhatók. Erőforrás-vezérlő diagnosztikai beállításai:
 
-* A diagnosztikai naplók küldése (Storage-fiók, Event Hubs vagy Azure Monitor napló).
-* A rendszer mely naplózási kategóriákat küldje el.
-* Mennyi ideig kell megőrizni az egyes naplók kategóriáit egy Storage-fiókban.
-* Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
-* Ha adatmegőrzési házirend van beállítva, de a naplók tárolása egy Storage-fiókban le van tiltva (például csak Event Hubs vagy Azure Monitor naplók beállításai vannak kiválasztva), az adatmegőrzési szabályzatok nem lépnek érvénybe.
-* Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének.
+Diagnosztikai beállítások használatával konfigurálhatja a nem számítási erőforrások diagnosztikai naplóit. Az erőforrás-vezérlő beállításai az alábbi funkciókkal rendelkeznek:
 
-### <a name="enable-diagnostic-logs-via-rest-apis"></a>Diagnosztikai naplók engedélyezése REST API-kon keresztül
+* Megadják a diagnosztikai naplók elküldéseinak helyét. Ilyenek például az Azure Storage-fiók, az Azure Event hub vagy a monitoring-naplók.
+* Ezek határozzák meg, hogy mely naplózási kategóriákat küldik el a rendszer.
+* Azt határozzák meg, hogy mennyi ideig kell megőrizni az egyes naplók kategóriáit egy Storage-fiókban.
+* Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték tetszőleges számú nap lehet, 1-től 2 147 483 647-ig.
+* Ha adatmegőrzési házirend van beállítva, de a naplók tárolása egy Storage-fiókban le van tiltva, az adatmegőrzési szabályzatok nem lépnek érvénybe. Ez a feltétel például akkor fordulhat elő, ha csak a Event Hubs vagy a figyelési naplók lehetőség van kiválasztva.
+* Az adatmegőrzési szabályzatok naponta lesznek alkalmazva. A tartomány napjai közötti határ éjfélkor, az egyezményes világidő (UTC) szerint történik. A nap végén a rendszer törli az adatmegőrzési házirenden túli napokat. Ha például egy nap adatmegőrzési szabályzattal rendelkezik, a rendszer a tegnapi naptól kezdve törli a naplókat.
 
-Diagnosztikai beállítás létrehozása vagy frissítése Azure Monitor REST API
+### <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Diagnosztikai naplók engedélyezése a Azure Monitor használatával REST API
 
-**Kérés**
+#### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Diagnosztikai beállítás létrehozása vagy frissítése a figyelő REST API
+
+##### <a name="request"></a>Kérés
+
 ```
 PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-**Fejlécek**
-* Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
-* A `{resource-id}` helyére írja be annak az erőforrásnak az erőforrás-azonosítóját, amelynek a diagnosztikai beállításait módosítani szeretné. További információ az [erőforráscsoportok használatával az Azure-erőforrások kezeléséhez](../azure-resource-manager/manage-resource-groups-portal.md).
-* Állítsa be `Content-Type` a `application/json`fejlécet a következőre:.
-* Állítsa be az engedélyezési fejlécet egy olyan JSON webes tokenre, amelyet a Azure Active Directorytól kapott. További információ: [kérelmek hitelesítése](../active-directory/develop/authentication-scenarios.md).
+##### <a name="headers"></a>Fejlécek
 
-**Törzs**
+* Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
+* Cserélje `{resource-id}` le annak az erőforrásnak az azonosítóját, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
+* Állítsa be `Content-Type` a `application/json`fejlécet a következőre:.
+* Állítsa be az engedélyezési fejlécet a Azure Active Directory (Azure AD) által kapott JSON webes tokenre. További információ: [kérelmek hitelesítése](../active-directory/develop/authentication-scenarios.md).
+
+##### <a name="body"></a>Body
+
 ```json
 {
     "properties": {
@@ -104,20 +114,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| storageAccountId |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyre a diagnosztikai naplókat el szeretné küldeni |
-| serviceBusRuleId |String | A Service Bus-névtér Service Bus-szabályának azonosítója, amelyben Event Hubs létrehozni a folyamatos átviteli diagnosztikai naplókhoz. A szabály azonosítója a következő formátumú: "{Service Bus erőforrás-azonosító}/authorizationrules/{Key neve}".|
-| workspaceId | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. Jelenleg ez a tulajdonság üres. |
-|metrikák| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum-hozzárendelési paraméter neve az argumentum értékéhez |
-| logs| Összetett típus| Az erőforrástípus diagnosztikai naplójának kategóriája. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez először végezze el a diagnosztikai beállítások beolvasása műveletet. |
-| category| String| A naplózási kategóriák és a megőrzési szabályzatok tömbje |
-| timeGrain | String | Az ISO 8601-es időtartamú formátumban rögzített mérőszámok részletessége. PT1M kell lennie (egy perc)|
-| enabled| Logikai | Meghatározza, hogy engedélyezve van-e az adott metrika vagy naplózási kategória gyűjteménye ehhez az erőforráshoz|
-| retentionPolicy| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Csak a Storage-fiók beállítására szolgál.|
-| days| Int| A metrikák vagy naplók megőrzésére szolgáló napok száma. A 0 érték határozatlan ideig megőrzi a naplókat. Csak a Storage-fiók beállítására szolgál. |
+| **storageAccountId** |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyhez diagnosztikai naplókat szeretne küldeni. |
+| **serviceBusRuleId** |Sztring | Annak a Service-Bus-névtérnek az azonosítója, amelyben a Event Hubs létre kívánja hozni a stream diagnosztikai naplóihoz. A szabály AZONOSÍTÓjának formátuma `{service bus resource ID}/authorizationrules/{key name}`.|
+| **Munkaterület azonosítója** | Összetett típus | Metrikus idő típusú gabona és adatmegőrzési szabályzatok tömbje. A tulajdonság értéke üres. |
+|**metrics**| A folyamat által a meghívott folyamatnak átadni kívánt folyamat paramétereinek értéke| Egy JSON-objektum, amely a paraméterek nevét az argumentum értékére képezi. |
+| **naplók**| Összetett típus| Az erőforrástípus diagnosztikai-naplózási kategóriájának neve. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez hajtsa végre a diagnosztikai beállítások beolvasása műveletet. |
+| **kategória**| Sztring| Naplózási kategóriák és adatmegőrzési szabályzatok tömbje. |
+| **timeGrain** | Sztring | A metrikák részletessége ISO 8601 időtartam formátumban rögzítve. A tulajdonság értékének a `PT1M`értéket kell tartalmaznia, amely egy percet ad meg. |
+| **engedélyezve**| Logikai | Meghatározza, hogy engedélyezve van-e a metrika vagy a napló kategóriájának gyűjteménye ehhez az erőforráshoz. |
+| **retentionPolicy**| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
+|**nap**| Int| A metrikák vagy naplók megtartására szolgáló napok száma. Ha a tulajdonság értéke 0, a naplók örökre megmaradnak. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
 
-**Válasz**
+##### <a name="response"></a>Válasz
 
-200 OK
+200 OK.
 
 
 ```json
@@ -166,23 +176,25 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-A diagnosztikai beállításokkal kapcsolatos információk beolvasása Azure Monitor REST API
+#### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>A figyelő diagnosztikai beállításaival kapcsolatos információk beolvasása REST API
 
-**Kérés**
+##### <a name="request"></a>Kérés
+
 ```
 GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-**Fejlécek**
+##### <a name="headers"></a>Fejlécek
+
 * Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
-* A `{resource-id}` helyére írja be annak az erőforrásnak az erőforrás-azonosítóját, amelynek a diagnosztikai beállításait módosítani szeretné. További információ az erőforráscsoportok használatával az Azure-erőforrások kezeléséhez.
+* Cserélje `{resource-id}` le annak az erőforrásnak az azonosítóját, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
 * Állítsa be `Content-Type` a `application/json`fejlécet a következőre:.
-* Állítsa be az engedélyezési fejlécet olyan JSON Web Tokenre, amelyet a Azure Active Directorytól kapott. További információ: kérelmek hitelesítése.
+* Állítsa be az engedélyezési fejlécet egy olyan JSON webes tokenre, amelyet az Azure AD-ből kapott. További információ: [kérelmek hitelesítése](../active-directory/develop/authentication-scenarios.md).
 
-**Válasz**
+##### <a name="response"></a>Válasz
 
-200 OK
+200 OK.
 
 ```json
 {
@@ -228,14 +240,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     },
     "identity": null
 }
+
 ```
-[További információ itt](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
+További információ: [diagnosztikai beállítások](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
-## <a name="schema-of-logs--events"></a>Naplók sémája & eseményekhez
+## <a name="schema-of-logs-and-events"></a>Naplók és események sémája
 
-### <a name="azure-monitor-schema"></a>Azure Monitor séma
+### <a name="monitor-schema"></a>Séma figyelése
 
-#### <a name="activity-run-logs-attributes"></a>Tevékenység-futtatási naplók attribútumai
+#### <a name="activity-run-log-attributes"></a>Tevékenység – napló attribútumainak futtatása
 
 ```json
 {
@@ -276,21 +289,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| Szint |Sztring | A diagnosztikai naplók szintje. A 4. szint mindig a tevékenység-futtatási naplók esetében használható. | `4`  |
-| correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| Sztring| A tevékenység futtatásának azonosítója | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| Sztring| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "ActivityRuns" értékre | `ActivityRuns` |
-|level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
-|operationName| Sztring |Az állapottal rendelkező tevékenység neve. Ha az állapot a kezdő szívverés, akkor `MyActivity -`a. Ha az állapot a záró szívverés, `MyActivity - Succeeded` a végső állapotú. | `MyActivity - Succeeded` |
-|pipelineName| Sztring | A folyamat neve | `MyPipeline` |
-|activityName| Sztring | A tevékenység neve | `MyActivity` |
-|start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
-|end| Sztring | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
+| **Szint** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+|**activityRunId**| Sztring| A tevékenység futtatásának azonosítója. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|**pipelineRunId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `ActivityRuns`. | `ActivityRuns` |
+|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational`. | `Informational` |
+|**OperationName**| Sztring | Az állapottal rendelkező tevékenység neve. Ha a tevékenység a kezdő szívverés, a tulajdonság értéke `MyActivity -`. Ha a tevékenység a záró szívverés, a tulajdonság értéke `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
+|**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
+|**activityName**| Sztring | A tevékenység neve. | `MyActivity` |
+|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`|
+|**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai napló azt mutatja, hogy egy tevékenység megkezdődött, de még nem fejeződött be, `1601-01-01T00:00:00Z`a tulajdonság értéke. | `2017-06-26T20:55:29.5007959Z` |
 
-#### <a name="pipeline-run-logs-attributes"></a>Folyamat futtatási naplóinak attribútumai
+#### <a name="pipeline-run-log-attributes"></a>Folyamat – naplózási attribútumok futtatása
 
 ```json
 {
@@ -322,20 +335,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| Szint |Sztring | A diagnosztikai naplók szintje. A 4-es szint a tevékenység-futtatási naplók esetében használható. | `4`  |
-| correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|runId| Sztring| A folyamat futtatásának azonosítója | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
-|level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
-|operationName| Sztring |Az állapottal rendelkező folyamat neve. "Folyamat – sikeres", végső állapottal, amikor a folyamat futtatása befejeződött| `MyPipeline - Succeeded` |
-|pipelineName| Sztring | A folyamat neve | `MyPipeline` |
-|start| Sztring | A TimeSpan, UTC formátumban futtatott tevékenység kezdete | `2017-06-26T20:55:29.5007959Z`|
-|end| Sztring | A tevékenység vége TimeSpan, UTC formátumban fut. Ha a tevékenység még nem fejeződött be (a tevékenységhez tartozó diagnosztikai naplóban), az alapértelmezett érték `1601-01-01T00:00:00Z` van beállítva.  | `2017-06-26T20:55:29.5007959Z` |
-|status| Sztring | A folyamat futásának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
+| **Szint** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+|**runId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns`. | `PipelineRuns` |
+|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational`. | `Informational` |
+|**OperationName**| Sztring | A folyamat neve az állapotával együtt. A folyamat futásának befejeződése után a tulajdonság értéke `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
+|**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
+|**start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
+|**végén**| Sztring | A tevékenység befejezési időpontja TimeSpan UTC formátumban fut. Ha a diagnosztikai naplóban egy tevékenység megkezdődött, de még nem fejeződött be, a tulajdonság `1601-01-01T00:00:00Z`értéke.  | `2017-06-26T20:55:29.5007959Z` |
+|**status**| Sztring | A folyamat futásának végső állapota. A lehetséges tulajdonságok értékei `Succeeded` a `Failed`következők: és. | `Succeeded`|
 
-#### <a name="trigger-run-logs-attributes"></a>Trigger futtatási naplók attribútumai
+#### <a name="trigger-run-log-attributes"></a>Trigger – napló attribútumainak futtatása
 
 ```json
 {
@@ -366,27 +379,27 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| Szint |Sztring | A diagnosztikai naplók szintje. Állítsa a 4-es szintre a tevékenység futtatási naplóihoz. | `4`  |
-| correlationId |Sztring | Egy adott kérelem végpontok közötti nyomon követésére szolgáló egyedi azonosító | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Sztring | Az esemény időpontja TimeSpan, UTC formátumban`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|triggerId| Sztring| Az trigger futtatásának azonosítója | `08587023010602533858661257311` |
-|resourceId| Sztring | Társított erőforrás-azonosító a (z) adatfeldolgozó erőforráshoz | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Sztring | A diagnosztikai naplók kategóriája. A tulajdonság beállítása "PipelineRuns" értékre | `PipelineRuns` |
-|level| Sztring | A diagnosztikai naplók szintje. A tulajdonság "tájékoztató" értékre állítása | `Informational` |
-|operationName| Sztring |A végleges állapotú trigger neve, függetlenül attól, hogy sikeresen kirúgták-e. "MyTrigger – sikeres", ha a szívverés sikeres volt| `MyTrigger - Succeeded` |
-|triggerName| Sztring | Az trigger neve | `MyTrigger` |
-|triggerType| Sztring | Az trigger típusa (manuális trigger vagy Schedule trigger) | `ScheduleTrigger` |
-|triggerEvent| Sztring | Az eseményindító eseménye | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|start| Sztring | Trigger-tűz elindítása TimeSpan, UTC formátumban | `2017-06-26T20:55:29.5007959Z`|
-|status| Sztring | Az aktiválás sikeres indításának végső állapota (sikeres vagy sikertelen) | `Succeeded`|
+| **Szint** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+|**triggerId**| Sztring| Az trigger futtatásának azonosítója. | `08587023010602533858661257311` |
+|**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns`. | `PipelineRuns` |
+|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational`. | `Informational` |
+|**OperationName**| Sztring | Az trigger neve a végső állapottal, amely azt jelzi, hogy az trigger sikeresen kilőtte-e. Ha a szívverés sikeres volt, a tulajdonság értéke `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
+|**triggerName**| Sztring | Az trigger neve. | `MyTrigger` |
+|**triggerType**| Sztring | Az trigger típusa. A lehetséges tulajdonságok értékei `Manual Trigger` a `Schedule Trigger`következők: és. | `ScheduleTrigger` |
+|**triggerEvent**| Sztring | Az eseményindító eseménye. | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|**start**| Sztring | A trigger égetésének kezdési időpontja TimeSpan UTC formátumban. | `2017-06-26T20:55:29.5007959Z`|
+|**status**| Sztring | Az a végső állapot, amely azt jelzi, hogy az trigger sikeresen kirúgták-e. A lehetséges tulajdonságok értékei `Succeeded` a `Failed`következők: és. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics séma
 
-Log Analytics örökli a sémát a Azure Monitortól a következő kivételekkel:
+A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
 
-* Az egyes oszlopok nevének első betűje tőkésítve lesz, például a Azure Monitor *correlationId* *correlationId* lesznek a log Analyticsban.
-* Az oszlop *szintje* el lesz dobva.
-* A dinamikus oszlop *tulajdonságait* a rendszer az alábbi dinamikus JSON-blob-típusként fogja megőrizni:
+* Az egyes oszlopok nevének első betűje tőkésített. A "correlationId" oszlop neve például "CorrelationId" a következőben: Log Analytics.
+* Nincs "level" oszlop.
+* A dinamikus "tulajdonságok" oszlop megmarad a következő dinamikus JSON-blob típusként.
 
     | Azure Monitor oszlop | Log Analytics oszlop | Type |
     | --- | --- | --- |
@@ -404,28 +417,28 @@ Log Analytics örökli a sémát a Azure Monitortól a következő kivételekkel
     
 ## <a name="metrics"></a>Mérőszámok
 
-A Azure Monitor lehetővé teszi a telemetria használatát az Azure-beli számítási feladatok teljesítményének és állapotának megismeréséhez. Az Azure telemetria-adatok legfontosabb típusa a legtöbb Azure-erőforrás által kibocsátott mérőszámok (más néven teljesítményszámlálók). A Azure Monitor számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
+A monitor segítségével megtekintheti az Azure-beli számítási feladatok teljesítményét és állapotát. A monitorozási adatok legfontosabb típusa a metrika, amelyet a teljesítményszámláló is nevez. A metrikákat a legtöbb Azure-erőforrás kibocsátja. A figyelő számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
 
-A ADFV2 a következő metrikákat bocsátja ki:
+A Azure Data Factory 2. verziója a következő metrikákat bocsátja ki.
 
 | **Metrika**           | **Metrika megjelenítendő neve**         | **Egység** | **Összesítés típusa** | **Leírás**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | A folyamat sikeresen futtatja a metrikákat | Count    | Összes                | A folyamatok teljes futtatása egy percen belül sikeres volt. |
-| PipelineFailedRuns   | Sikertelen folyamat-futtatási metrikák    | Count    | Összes                | A folyamatok teljes futtatása egy percen belül meghiúsult    |
-| ActivitySucceededRuns | A sikeres tevékenység metrikákat futtat | Count    | Összes                | A tevékenységek teljes futtatása egy percen belül sikeres volt.  |
-| ActivityFailedRuns   | Sikertelen tevékenység-futtatási metrikák    | Count    | Összes                | Egy percen belül nem sikerült a tevékenységek teljes futtatása.     |
-| TriggerSucceededRuns | A sikeres trigger metrikákat futtat  | Count    | Összes                | A triggerek teljes futtatása egy percen belül sikeres volt.   |
-| TriggerFailedRuns    | Sikertelen trigger-futtatási metrikák     | Count    | Összes                | Egy percen belül sikertelen volt az összes trigger-Futtatás.      |
+| PipelineSucceededRuns | A folyamat sikeresen futtatja a metrikákat | Count    | Összes                | A perceken belül sikeres folyamat-futtatások teljes száma. |
+| PipelineFailedRuns   | Sikertelen folyamat-futtatási metrikák    | Count    | Összes                | A meghiúsult folyamat-futtatások teljes száma egy percen belül.    |
+| ActivitySucceededRuns | A sikeres tevékenység metrikákat futtat | Count    | Összes                | Az egy percen belül sikeres tevékenység-futtatások teljes száma.  |
+| ActivityFailedRuns   | Sikertelen tevékenység-futtatási metrikák    | Count    | Összes                | A meghiúsult tevékenység-futtatások teljes száma egy percen belül.     |
+| TriggerSucceededRuns | A sikeres trigger metrikákat futtat  | Count    | Összes                | Egy percen belül sikeresen elindított trigger-futtatások teljes száma.   |
+| TriggerFailedRuns    | Sikertelen trigger-futtatási metrikák     | Count    | Összes                | A sikertelen trigger-futtatások teljes száma egy percen belül.      |
 
 A metrikák eléréséhez hajtsa végre az [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)adatplatformon megjelenő utasításokat.
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Data Factory metrikák figyelése Azure Monitor
 
-A Azure Monitor használatával Azure Data Factory-integrációt használhat az adatAzure Monitorba való továbbításhoz. Ez az integráció az alábbi helyzetekben hasznos:
+Data Factory-integrációt és figyelőt is használhat a figyeléshez. Ez az integráció az alábbi helyzetekben hasznos:
 
-1.  Összetett lekérdezéseket szeretne írni a Data Factory által közzétett mérőszámok gazdag készletén Azure Monitor. A lekérdezéseken Azure Monitor használatával is létrehozhat egyéni riasztásokat.
+* Összetett lekérdezéseket szeretne írni egy Data Factory által a figyelésre közzétett mérőszámok gazdag készletén. A lekérdezésekhez egyéni riasztásokat is létrehozhat.
 
-2.  Az adatüzemek között szeretne figyelni. Több adatgyárból is átirányíthat adatait egyetlen Azure Monitor munkaterületre.
+* Az adatüzemek között szeretne figyelni. Több adatgyárból is átirányíthat adatait egyetlen figyelő munkaterületre.
 
 A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 
@@ -433,47 +446,47 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
 ### <a name="configure-diagnostic-settings-and-workspace"></a>Diagnosztikai beállítások és munkaterület konfigurálása
 
-Engedélyezze a diagnosztikai beállításokat az adatai-előállítója számára.
+Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előállítóhoz.
 
-1. A portálon navigáljon Azure Monitor, majd kattintson a **Beállítások** menü **diagnosztikai beállítások** elemére.
+1. A portálon lépjen a figyelés elemre. Válassza a **Beállítások** > **diagnosztikai beállítások**lehetőséget.
 
-2. Válassza ki azt az adatelőállítót, amelynek diagnosztikai beállításait be szeretné állítani.
-    
-3. Ha a kiválasztott adatgyárban nem találhatók beállítások, a rendszer felszólítja, hogy hozzon létre egy beállítást. Kattintson a "Engedélyezze a diagnosztikát."
+1. Válassza ki azt az adatelőállítót, amelyhez diagnosztikai beállítást kíván beállítani.
 
-   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/data-factory-monitor-oms/monitor-oms-image1.png)
+1. Ha a kiválasztott adatgyárban nem találhatók beállítások, a rendszer kéri, hogy hozzon létre egy beállítást. Válassza ki **diagnosztika bekapcsolása**.
 
-   Ha vannak meglévő beállítások az adatgyárban, megjelenik az ezen az adatgyáron már konfigurált beállítások listája. Kattintson a "Diagnosztikai beállítás hozzáadása."
+   ![Diagnosztikai beállítás létrehozása, ha nem léteznek beállítások](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+   Ha vannak meglévő beállítások az adatgyárban, megjelenik az adatgyárban már konfigurált beállítások listája. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
 
-4. Adja meg a beállítás nevét, és jelölje be a **küldés log Analytics**számára jelölőnégyzetet, majd válasszon ki egy log Analytics munkaterületet.
+   ![Diagnosztikai beállítás hozzáadása, ha a beállítások léteznek](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-    ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+1. Adja meg a beállítás nevét, válassza a **küldés log Analytics**lehetőséget, majd válasszon ki egy munkaterületet **log Analytics munkaterületről**.
 
-5. Kattintson a **Save** (Mentés) gombra.
+    ![Adja meg a beállításokat, és válasszon egy log-Analytics-munkaterületet](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-Néhány pillanat elteltével megjelenik az új beállítás az adat-előállítóhoz tartozó beállítások listájában, és a diagnosztikai naplók a munkaterületre kerülnek, amint az új esemény adatai jönnek létre. Akár 15 percet is igénybe vehet egy esemény kibocsátása és Log Analytics megjelenésekor.
+1. Kattintson a **Mentés** gombra.
+
+Néhány pillanat elteltével az új beállítás megjelenik az adat-előállító beállításainak listájában. A rendszer a diagnosztikai naplókat az adott munkaterületre továbbítja, amint új esemény-adatforrások jönnek létre. Akár 15 percig is eltarthat egy esemény kibocsátása, és amikor megjelenik a Log Analyticsban.
 
 > [!NOTE]
-> Mivel az adott Azure-tábla kifejezett korlátja nem több mint 500 oszlopot tartalmaz, **erősen ajánlott az erőforrás-specifikus mód használata**. További információ: [log Analytics ismert korlátozások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
+> Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal, javasoljuk, hogy az erőforrás-specifikus módot válassza. További információ: [log Analytics ismert korlátozások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Data Factory Analytics telepítése az Azure Marketplace-ről
 
-![monitor-oms-image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+![Nyissa meg az "Azure Marketplace" kifejezést, írja be az "elemzési szűrő" kifejezést, és válassza a "Azure Data Factory Analytics (előzetes verzió)" lehetőséget.](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
-![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+![A "Azure Data Factory Analytics (előzetes verzió)" részletei](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-Kattintson a **Létrehozás** elemre, és válassza ki a munkaterület és a munkaterület beállításait.
+Válassza a **Létrehozás** lehetőséget, majd válassza ki a **OMS-munkaterület** és a OMS- **munkaterület beállításait**.
 
-![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+![Új megoldás létrehozása](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
 ### <a name="monitor-data-factory-metrics"></a>Data Factory metrikák figyelése
 
-A **Azure Data Factory Analytics** telepítése egy alapértelmezett nézetet hoz létre, amely a következő metrikákat teszi lehetővé:
+A Azure Data Factory Analytics telepítése a nézetek alapértelmezett készletét hozza létre, így a következő metrikák válnak elérhetővé:
 
 - ADF-futtatások – 1) a folyamat futása Data Factory
-
+ 
 - ADF-futtatások – 2) a tevékenységek Data Factory
 
 - ADF-futtatások – 3) a triggerek Data Factory
@@ -490,51 +503,50 @@ A **Azure Data Factory Analytics** telepítése egy alapértelmezett nézetet ho
 
 - ADF-statisztika – 3) a folyamat maximális futási időtartama
 
-![monitor-oms-image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+![A "munkafüzetek (előzetes verzió)" és a "AzureDataFactoryAnalytics" nevű ablak kiemelve](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-![monitor-oms-image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+![Futtatások és hibák grafikus ábrázolása](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
-Megjelenítheti a fenti mérőszámokat, megtekintheti a mérőszámok mögötti lekérdezéseket, szerkesztheti a lekérdezéseket, riasztásokat hozhat létre, és így tovább.
+Megjelenítheti az előző mérőszámokat, megtekintheti a mérőszámok mögötti lekérdezéseket, szerkesztheti a lekérdezéseket, riasztásokat hozhat létre, és egyéb műveleteket is végrehajthat.
 
-![monitor-oms-image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
+![A folyamat futtatásának grafikus ábrázolása a adat-előállítóban "](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>Riasztások
 
-Jelentkezzen be a Azure Portalba, > és kattintson a**riasztások** figyelése lehetőségre a riasztások létrehozásához.
+Jelentkezzen be a Azure Portalba, és válassza a**riasztások** **figyelése** > lehetőséget a riasztások létrehozásához.
 
 ![Riasztások a portál menüjében](media/monitor-using-azure-monitor/alerts_image3.png)
 
 ### <a name="create-alerts"></a>Riasztások létrehozása
 
-1.  Új riasztás létrehozásához kattintson az **+ új riasztási szabály** elemre.
+1. Új riasztás létrehozásához válassza az **+ új riasztási szabály** lehetőséget.
 
     ![Új riasztási szabály](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  Adja mega riasztási feltételt.
+1. Adja meg a riasztási feltételt.
 
     > [!NOTE]
-    > Ügyeljen rá, hogy a **szűrés erőforrás típusa szerint**válassza az **összes** lehetőséget.
+    > Ügyeljen rá, hogy a **szűrés erőforrás típusa** legördülő listában válassza az **összes** lehetőséget.
 
-    ![Riasztási feltétel, 1. képernyő 3](media/monitor-using-azure-monitor/alerts_image5.png)
+    !["A riasztási feltétel meghatározása" > "válassza a cél" lehetőséget, amely megnyitja az "erőforrás kiválasztása" panelt. ](media/monitor-using-azure-monitor/alerts_image5.png)
 
-    ![Riasztási feltétel, 2. képernyő, 3](media/monitor-using-azure-monitor/alerts_image6.png)
+    !["A riasztási feltétel meghatározása" > "feltételek hozzáadása", amely megnyitja a "jel logikai beállítása" panelt.](media/monitor-using-azure-monitor/alerts_image6.png)
 
-    ![Riasztási feltétel, 3. képernyő](media/monitor-using-azure-monitor/alerts_image7.png)
+    !["A jel típusának konfigurálása" panel](media/monitor-using-azure-monitor/alerts_image7.png)
 
-3.  Adja meg a **riasztás részleteit**.
+1. A riasztás részleteinek megadása.
 
     ![Riasztás részletei](media/monitor-using-azure-monitor/alerts_image8.png)
 
-4.  A **műveleti csoport**definiálása.
+1. A műveleti csoport definiálása.
 
-    ![Műveleti csoport, 1. képernyő, 4](media/monitor-using-azure-monitor/alerts_image9.png)
+    ![Szabály létrehozása a Kiemelt "új műveleti csoporttal"](media/monitor-using-azure-monitor/alerts_image9.png)
 
-    ![Műveleti csoport, 2. képernyő, 4](media/monitor-using-azure-monitor/alerts_image10.png)
+    ![Új műveleti csoport létrehozása](media/monitor-using-azure-monitor/alerts_image10.png)
 
-    ![Műveleti csoport, 3. képernyő, 4](media/monitor-using-azure-monitor/alerts_image11.png)
+    ![E-mailek, SMS-cím, leküldéses és hangvezéreltség konfigurálása](media/monitor-using-azure-monitor/alerts_image11.png)
 
-    ![Műveleti csoport, 4. képernyő](media/monitor-using-azure-monitor/alerts_image12.png)
+    ![Műveleti csoport definiálása](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>További lépések
-
-A folyamatok figyelésével és kezelésével kapcsolatos további információkért tekintse meg a [folyamatok programozott figyelése és kezelése](monitor-programmatically.md) című cikket.
+[Folyamatok programozott figyelése és kezelése](monitor-programmatically.md)

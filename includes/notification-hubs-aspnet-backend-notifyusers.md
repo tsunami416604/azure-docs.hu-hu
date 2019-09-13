@@ -5,23 +5,23 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227793"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934103"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
 Az alábbi szakaszok az új ASP.NET WebAPI hátterrendszer létrehozását ismertetik. E folyamat három fő célja:
 
-- **Ügyfelek hitelesítése**: Hozzáadhat egy üzenetkezelőt ügyfélkérések hitelesítéséhez, és rendelje hozzá a felhasználó a kérelmet.
-- **Értesítések regisztrálása a WebAPI háttérrendszert használatával**: Hozzáadhat egy vezérlő nem tudja kezelni az új regisztrációk az értesítések fogadásához egy ügyféleszközön. A rendszer [címke](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) formájában automatikusan hozzáadja a hitelesített felhasználó nevét a regisztrációhoz.
-- **Értesítések küldése az ügyfeleknek**: Hozzáadhat egy vezérlőt a felhasználók, eszközök és a címkéhez társított ügyfelek biztonságos leküldést indíthassanak lehetőséget biztosíthat.
+- **Ügyfelek hitelesítése**: Egy üzenetkezelővel hitelesítheti az ügyfelek kérelmeit, és hozzárendelheti a felhasználót a kérelemhez.
+- **Regisztrálja az értesítéseket a WebAPI háttérrendszer használatával**: Hozzáadhat egy vezérlőt az ügyféleszközök új regisztrációinak kezeléséhez az értesítések fogadásához. A rendszer [címke](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) formájában automatikusan hozzáadja a hitelesített felhasználó nevét a regisztrációhoz.
+- **Értesítések küldése az ügyfeleknek**: A vezérlő hozzáadásával lehetővé teheti, hogy a felhasználók biztonságos leküldést indítsanak a címkéhez társított eszközökre és ügyfelekre.
 
 Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel történik:
 
@@ -59,7 +59,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 
     ![A Configure Microsoft Azure Web App (Microsoft Azure-webalkalmazás konfigurálása) ablak][B5]
 
-    Ha nem látja ezt a lapot app service-csomag konfigurálása, folytassa az oktatóanyagot. Konfigurálhatja az alkalmazás újabb közzététele közben. 
+    Ha nem látja ezt a lapot az App Service-csomag konfigurálásához, folytassa az Oktatóanyaggal. Az alkalmazást később is beállíthatja az alkalmazás közzétételekor. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ügyfelek hitelesítése a WebAPI háttérrendszeren
 
@@ -140,7 +140,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
     ```
 
     > [!NOTE]
-    > Biztonsági Megjegyzés: A `AuthenticationTestHandler` osztály nem biztosít valós hitelesítést. A rendszer azt csak az alapszintű hitelesítés utánzására használja, és nem tekinthető biztonságosnak. Az éles alkalmazásokban és szolgáltatásokban implementálnia kell egy biztonságos hitelesítési mechanizmust.
+    > Biztonsági Megjegyzés: Az `AuthenticationTestHandler` osztály nem biztosít valódi hitelesítést. A rendszer azt csak az alapszintű hitelesítés utánzására használja, és nem tekinthető biztonságosnak. Az éles alkalmazásokban és szolgáltatásokban implementálnia kell egy biztonságos hitelesítési mechanizmust.
 5. Az üzenetkezelő regisztrálásához adja hozzá a következő kódot a `Register` metódus végéhez az **App_Start/WebApiConfig.cs** osztályban:
 
     ```csharp
@@ -185,6 +185,9 @@ Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhe
         }
     }
     ```
+    > [!IMPORTANT]
+    > A folytatás előtt adja meg a hub **nevét** és **DefaultFullSharedAccessSignature** . 
+    
 7. A következő lépésben hozzon létre egy új vezérlőt **RegisterController** néven. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
 8. Válassza a **Web API 2 Controller - Empty** (Web API 2 vezérlő – Üres) elemet, majd kattintson az **Add** (Hozzáadás) gombra.

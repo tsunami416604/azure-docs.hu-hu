@@ -8,15 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sstein
+ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173431"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934205"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -72,7 +72,8 @@ Adatbázis-másolat létrehozásához a következő szerepköröket kell megadni
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
 
 Az adatbázis-másolatok megszakításához a következő szerepköröket kell megadnia
 
@@ -80,7 +81,23 @@ Az adatbázis-másolatok megszakításához a következő szerepköröket kell m
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás Microsoft. SQL/kiszolgálók/adatbázisok/írás
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+   
+Az adatbázis-másolat Azure Portal használatával történő kezeléséhez a következő engedélyekre is szüksége lesz:
+
+&nbsp;&nbsp; Microsoft.Resources/előfizetések&nbsp; /erőforrások/olvasás   
+&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Write   
+&nbsp;&nbsp; Microsoft.Resources/&nbsp; központi telepítések/olvasás   
+&nbsp;&nbsp; Microsoft.Resources&nbsp; /üzembe helyezés/írás   
+&nbsp;&nbsp; Microsoft.Resources/üzembe&nbsp; helyezés/operationstatuses/olvasás    
+
+Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a portálon található erőforráscsoporthoz, több erőforrás-szolgáltató műveletei, beleértve az SQL-műveleteket, szüksége lesz ezekre a további RBAC szerepkörökre: 
+
+&nbsp;&nbsp; Microsoft.erőforrások/előfizetések/resourcegroups/üzembehelyezések&nbsp; /műveletek/olvasás   
+&nbsp;&nbsp; Microsoft.Resources/előfizetések/resourcegroups/üzembe&nbsp; helyezés/operationstatuses/olvasás
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Adatbázis másolása a Transact-SQL használatával
 
@@ -120,7 +137,7 @@ Az előző szakaszban ismertetett lépéseket követve másolhatja az adatbázis
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
-Figyelje a másolási folyamatot a sys. Databases és a sys. DM _database_copies nézetek lekérdezésével. Amíg a másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa másolásra van beállítva.
+Figyelje a másolási folyamatot a sys. Databases és a sys. DM _database_copies nézetek lekérdezésével. Amíg a másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
 
 * Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa a **gyanús**értékre van állítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
 * Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.

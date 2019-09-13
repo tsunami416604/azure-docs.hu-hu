@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a4a77a9b4cdd30c04de4c4eb9d8731c1ea0616c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699253"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932622"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -37,7 +37,7 @@ A **kiszolgáló-végpont hozzáadása**területen a következő információk s
 
 - **Regisztrált kiszolgáló**: Annak a kiszolgálónak vagy fürtnek a neve, amelyen létre szeretné hozni a kiszolgálói végpontot.
 - **Elérési út**: A szinkronizálási csoport részeként szinkronizálandó Windows Server elérési útja.
-- **Felhőbeli rétegek**: A felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. Ha ez a beállítás engedélyezve van, a Felhőbeli rétegek a fájlokat az Azure-fájlmegosztás szintjére fogják felvenni. Ez átalakítja a helyszíni fájlmegosztást egy gyorsítótárba, és nem az adatkészlet teljes másolatát, így segít a hely hatékonyságának kezelésében a kiszolgálón.
+- **Felhőbeli rétegek**: A felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. Ha ez a beállítás engedélyezve van, a Felhőbeli rétegek a fájlokat az Azure-fájlmegosztás *szintjére* fogják felvenni. Ez átalakítja a helyszíni fájlmegosztást egy gyorsítótárba, és nem az adatkészlet teljes másolatát, így segít a hely hatékonyságának kezelésében a kiszolgálón.
 - **Kötet szabad területe**: a kiszolgálói végpontot tároló köteten foglalható szabad terület mennyiségét. Ha például a kötet szabad területe 50%-ra van állítva egy olyan köteten, amely egyetlen kiszolgálói végponttal rendelkezik, az adatmennyiség nagyjából fele lesz a Azure Files. Függetlenül attól, hogy engedélyezve van-e a felhőalapú rétegek használata, az Azure-fájlmegosztás mindig a szinkronizálási csoportban lévő összes adattal rendelkezik.
 
 Válassza a **Létrehozás** lehetőséget a kiszolgálói végpont hozzáadásához. A szinkronizálási csoport névterében lévő fájlok már szinkronban lesznek tárolva. 
@@ -50,10 +50,15 @@ Ha azt szeretné, hogy a Azure File Sync egy adott kiszolgálói végponton ne h
 
 Annak biztosítása érdekében, hogy a rendszer az összes rétegű fájlt visszahívja a kiszolgálói végpont eltávolítása előtt, tiltsa le a felhő-előírásokat a kiszolgálói végponton, majd hajtsa végre a következő PowerShell-parancsmagot a kiszolgálói végpont névterében lévő összes rétegű fájl visszahívásához:
 
-```powershell
+```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+A megadásával a rendszer visszahívja a legutóbb módosított fájlokat. `-Order CloudTieringPolicy`
+További választható, de hasznos paraméterek:
+* `-ThreadCount`meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
+* `-PerFileRetryCount`meghatározza, hogy a rendszer milyen gyakran próbálkozzon a visszahívással egy jelenleg blokkolt fájlon.
+* `-PerFileRetryDelaySeconds`meghatározza azt az időtartamot másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
 
 > [!Note]  
 > Ha a kiszolgálót üzemeltető helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, a `Invoke-StorageSyncFileRecall` parancsmag meghiúsul.  

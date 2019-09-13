@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736426"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898716"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog gyakori kérdések
 Ez a cikk a Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -53,6 +53,15 @@ A jelenleg támogatott adatforrások listáját lásd: [Data Catalog DSR](data-c
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Hogyan egy másik adatforrás támogatását?
 A szolgáltatásra vonatkozó kérések és egyéb visszajelzések elküldéséhez lépjen a [Data Catalog az Azure visszajelzési fórumokon](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources).
 
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Miért kapok hibaüzenetet *, amikor megpróbálok új katalógust* létrehozni?
+
+Az Office 365 E5 Power BI Pro licenccel való megvásárlásakor a Microsoft automatikusan létrehoz egy alapértelmezett katalógust az előfizetés régiójában. Ez a katalógus az ingyenes SKU-t használja. Az Office 365/Power BI felhasználói licenc az Office 365 felügyeleti lapján van kezelve. 
+
+Ez a típusú adatkatalógus azonban nem rendelkezik **rendszergazdai lehetőséggel** , és nem látható a **Azure Portalban**. Ez a típusú adatkatalógus nem törölhető. Hasonlóképpen nem lehet átnevezni a adatkatalógust, és nem helyezhető át másik régióba. 
+
+Azok a felhasználói fiókok, amelyek Power BI Pro licenccel rendelkeznek, automatikusan hozzáférhetnek az adatkatalógushoz, amikor az Office 365 E5-es Power BI Pro licenccel regisztráltak. Ez a típusú felhasználó rendszergazdai jogosultságok nélkül teljes hozzáféréssel rendelkezik a adatkatalógus eszközeihez. Az ilyen típusú felhasználó *nem* része a **katalógus felhasználói** szerepkörének Azure Data Catalog.
+
+
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Hogyan első lépések a Data Catalog?
 Az első lépésekhez a legjobb módszer, ha a [első lépések a Data Catalog](data-catalog-get-started.md). Ez a cikk a szolgáltatás funkcióinak teljes körű áttekintése.
 
@@ -78,7 +87,7 @@ Az adott tulajdonságok eltérnek az adatforrástól az adatforrástól, de ált
 >
 
 > [!NOTE]
-> Az olyan adatforrások esetében, mint az első osztályú Description tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. SQL Server olyan, a Data Catalog adatforrás-regisztrációs eszköz, amely nem rendelkezik első osztályú leírási tulajdonsággal, kibontja az értéket az objektumok és oszlopok **ms_description** kiterjesztett tulajdonságában. További információ: [kiterjesztett tulajdonságok használata adatbázis](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)-objektumokon.
+> Az olyan adatforrások esetében, mint az első osztályú Description tulajdonsággal rendelkező SQL Server Analysis Services, a Data Catalog adatforrás-regisztrációs eszköz kibontja a tulajdonság értékét. SQL Server olyan, a Data Catalog adatforrás-regisztrációs eszköz, amely nem rendelkezik első osztályú **leírási** tulajdonsággal, kibontja az értéket az objektumok és oszlopok **ms_description** kiterjesztett tulajdonságában. További információ: [kiterjesztett tulajdonságok használata adatbázis-objektumokon](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 
@@ -116,7 +125,7 @@ Aktívan dolgozunk a Data Catalog képességeinek bővítésén. Ha további met
 Ha az oszlop/séma metaadatait, az előzeteseket és az adatprofilokat is bele kívánja foglalni olyan adatforrások esetében, amelyekben ezt a metaadatokat nem az adatforrás-regisztrációs eszköz kinyeri, a metaadatok hozzáadásához használhatja a Data Catalog API-t. További információ: [Azure Data Catalog REST API](https://docs.microsoft.com/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Hogyan korlátozni a regisztrált adategységek láthatóságát, hogy csak bizonyos személyek tudják felderíteni őket?
-Válassza ki az adategységeket a Data Catalogban, majd kattintson a **tulajdonosi részvétel** gombra. Az adategységek tulajdonosai a Data Catalogban megváltoztathatják a láthatósági beállításokat, hogy az összes felhasználó felderítse a tulajdonban lévő eszközöket, vagy korlátozni tudja az adott felhasználók láthatóságát. További információ: adategységek [kezelése Azure Data Catalogban](data-catalog-how-to-manage.md).
+Válassza ki az adategységeket a Data Catalogban, majd kattintson a **tulajdonosi részvétel** gombra. Az adategységek tulajdonosai a Data Catalogban megváltoztathatják a láthatósági beállításokat, hogy az összes felhasználó felderítse a tulajdonban lévő eszközöket, vagy korlátozni tudja az adott felhasználók láthatóságát. További információ: [adategységek kezelése Azure Data Catalogban](data-catalog-how-to-manage.md).
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>Hogyan frissíteni egy adategység regisztrációját, hogy az adatforrás változásai megjelennek a katalógusban?
 Ha frissíteni szeretné a katalógusban már regisztrált adategységek metaadatait, egyszerűen regisztrálja újra az eszközöket tartalmazó adatforrást. Az adatforrás bármilyen módosítása, például a táblákból vagy nézetből hozzáadott vagy eltávolított oszlopok frissülnek a katalógusban, a felhasználók által megadott megjegyzések azonban megmaradnak.

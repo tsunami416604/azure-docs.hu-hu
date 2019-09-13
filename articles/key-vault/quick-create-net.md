@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c67b24d57117a248559424497939a04ce347658c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308955"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934907"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Azure Key Vault
 
@@ -25,7 +25,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációs](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | -referenciák dokumentációs[könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -118,7 +118,7 @@ A művelet a kulcs/érték párok sorozatát fogja visszaadni.
 }
 ```
 
-Jegyezze fel a clientId, a clientSecret, a subscriptionId és a tenantId, ahogy ezeket a [hitelesítést a Key Vault](#authenticate-to-your-key-vault) következő lépésében fogjuk használni.
+Jegyezze fel a clientId és a clientSecret, ahogy azokat a [hitelesítés a Key vaultban](#authenticate-to-your-key-vault) című lépésében fogjuk használni.
 
 Szüksége lesz az egyszerű szolgáltatásnév appID is. Az az [ad SP-lista](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) futtatásával a `--show-mine` (z) paraméterrel megkeresheti:
 
@@ -156,7 +156,7 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 
 ### <a name="authenticate-to-your-key-vault"></a>Hitelesítés a Key vaultban
 
-Ez a .NET rövid útmutató környezeti változók alapján tárolja azokat a hitelesítő adatokat, amelyeket nem kell a programkódba helyezni. 
+Ez a .NET gyors útmutató környezeti változók alapján tárolja azokat a hitelesítő adatokat, amelyeket nem szabad programkódba helyezni. 
 
 Az alkalmazás létrehozása `setx` és futtatása előtt a parancs használatával állítsa be a `akvClientId`, `akvClientSecret` `akvTenantId`, és `akvSubscriptionId` környezeti változókat a fent említett értékekre.
 
@@ -164,10 +164,6 @@ Az alkalmazás létrehozása `setx` és futtatása előtt a parancs használatá
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 Minden alkalommal, amikor `setx`meghívja a (z) "sikeres" választ: A megadott érték mentése megtörtént. "
@@ -178,7 +174,7 @@ Rendelje hozzá ezeket a környezeti változókat a kódban szereplő karakterl�
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, a [SetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) a kulcstartóba helyezheti a titkos kulcsot, amely az űrlapon `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`található Key Vault URL-címét igényli. Emellett a titkos kulcs nevét is megköveteli – "keresési kifejezésként"-t használunk.  Előfordulhat, hogy ezeket a karakterláncokat resue változóhoz szeretné rendelni.
+Most, hogy az alkalmazás hitelesítése megtörtént, a [SetSecretAsync metódussal](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) a kulcstartóba helyezheti a titkos kulcsot, amely az űrlapon `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`található Key Vault URL-címét igényli. Emellett a titkos kulcs nevét is megköveteli – "keresési kifejezésként"-t használunk.  Előfordulhat, hogy ezeket a karakterláncokat újra kell rendelni egy változóhoz.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

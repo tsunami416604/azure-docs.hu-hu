@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240889"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932599"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Gyors útmutató: A szarvasgomba használata tranzakciós csomóponthoz való kapcsolódáshoz
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Gyors útmutató: A Truffle használata egy tranzakciós csomóponthoz való kapcsolódáshoz
 
 A szarvasgomba egy blockchain fejlesztési környezet, amellyel csatlakozhat egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz.
 
@@ -25,7 +25,7 @@ A szarvasgomba egy blockchain fejlesztési környezet, amellyel csatlakozhat egy
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure Blockchain-tag létrehozása](create-member.md)
+* Teljes [gyors útmutató: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel](create-member-cli.md)
 * A [szarvasgomba](https://github.com/trufflesuite/truffle)telepítése. A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)-t.
 * Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a Web3.
 
@@ -124,7 +124,7 @@ A *Web3* használatával kapcsolódjon a tranzakciós csomóponthoz.
 
 Ebben a rövid útmutatóban létrehozott egy szarvasgomba-projektet az Azure Blockchain szolgáltatás alapértelmezett tranzakciós csomópontjához való kapcsolódáshoz.
 
-Próbálja ki a következő oktatóanyagot a Ethereum és a szarvasgomba Azure Blockchain Development Kit használatával egy intelligens szerződési funkció végrehajtásához egy konzorciumi Blockchain-hálózat tranzakcióján keresztül.
+Próbálja ki a következő oktatóanyagot az Azure Blockchain Development Kit for Ethereum és a szarvasgomba használatával egy intelligens szerződési funkció egy tranzakción keresztül történő létrehozásához, létrehozásához, üzembe helyezéséhez és végrehajtásához.
 
 > [!div class="nextstepaction"]
-> [Intelligens szerződések használata az Azure Blockchain Service-ben](send-transaction.md)
+> [Intelligens szerződések létrehozása, készítése és üzembe helyezése a Visual Studio Code használatával](send-transaction.md)

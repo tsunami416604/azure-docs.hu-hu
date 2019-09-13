@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404549"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918554"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -45,7 +45,7 @@ A következő ábrán a zöld vonalak a virtuális hálózat DNS-utótagjának v
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* Ha a PowerShellt használja, szüksége lesz [](https://docs.microsoft.com/powershell/azure/overview)az az modulra.
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ## <a name="create-virtual-network-configuration"></a>Virtuális hálózat konfigurációjának létrehozása
@@ -67,7 +67,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
   
 2. A bal oldali menüben navigáljon a **+ erőforrás** > létrehozása**számítási** > **Ubuntu Server 18,04 LTS**elemre.
 
-    ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Az __alapok__ lapon adja meg a következő adatokat:  
   
@@ -77,14 +77,14 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Resource group |Válassza ki azt az erőforráscsoportot, amely a korábban létrehozott virtuális hálózatot tartalmazza.|
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy**-t használja.|
     |Régió | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
-    |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra**-redundancia. |
+    |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia**. |
     |Image | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
     |Hitelesítési típus | __Jelszó__ vagy __nyilvános SSH-kulcs__: Az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbá válnak. Ez a példa a **jelszót**használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
     |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználónevét.  Ez a példa az **sshuser**-t használja.|
     |Jelszó vagy nyilvános SSH-kulcs | A rendelkezésre álló mező meghatározása a **hitelesítési típus**alapján történik.  Adja meg a megfelelő értéket.|
     |Nyilvános bejövő portok|Válassza a **kiválasztott portok engedélyezése**lehetőséget. Ezután válassza az **SSH (22)** lehetőséget a **bejövő portok kiválasztása** legördülő listából.|
 
-    ![Virtuális gép alapszintű konfigurációja](./media/connect-on-premises-network/vm-basics.png)
+    ![Virtuális gép alapszintű konfigurációja](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Hagyja meg az egyéb bejegyzéseket az alapértelmezett értékeken, majd válassza a **hálózatkezelés** lapot.
 
@@ -109,7 +109,7 @@ A virtuális gép létrehozása után az **üzembe helyezés sikeres** értesít
 
 2. Jegyezze fel a **nyilvános IP-cím/DNS-név címke** és a **MAGÁNHÁLÓZATI IP-cím** értékét későbbi használatra.
 
-   ![Nyilvános és magánhálózati IP-címek](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Nyilvános és magánhálózati IP-címek](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Kötés telepítése és konfigurálása (DNS-szoftver)
 
@@ -163,7 +163,7 @@ A virtuális gép létrehozása után az **üzembe helyezés sikeres** értesít
     sudo nano /etc/bind/named.conf.options
     ```
 
-    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd  __írja be__a következőt:.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__a következőt:.
 
 4. Az SSH-munkamenetben használja a következő parancsot:
 
@@ -196,7 +196,7 @@ A virtuális gép létrehozása után az **üzembe helyezés sikeres** értesít
     sudo nano /etc/bind/named.conf.local
     ```
 
-    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd  __írja be__a következőt:.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__a következőt:.
 
 6. A kötés elindításához használja a következő parancsot:
 
@@ -334,7 +334,7 @@ Ha közvetlenül szeretne csatlakozni a HDInsight a virtuális hálózaton keres
 
 ## <a name="next-steps"></a>További lépések
 
-* A virtuális hálózatok HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md)-fürtökhöz.
+* A virtuális hálózatok HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](./hdinsight-plan-virtual-network-deployment.md).
 
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).
 

@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8e61f52282bcbc62a3eb069272cd7c1f3e329d3b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172702"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933997"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
@@ -58,7 +58,7 @@ A Kusto Explorer, a ADX web Explorer, a Jupyter Kqlmagic vagy a REST API haszná
 > * Az adatbázis nevének meg kell egyeznie a fürtben megadott erőforrás nevével. A nevek megkülönböztetik a kis-és nagybetűket.
 > * A fürtök közötti lekérdezésekben ellenőrizze, hogy helyesek-e a Application Insights alkalmazások és Log Analytics munkaterületek elnevezése.
 >     * Ha a nevek speciális karaktereket tartalmaznak, azokat a rendszer URL-kódolással helyettesíti a proxy fürt nevében. 
->     * Ha a nevek olyan karaktereket tartalmaznak, amelyek nem felelnek meg a [KQL](/azure/kusto/query/schema-entities/entity-names)-azonosítók nevének **-** , a kötőjel karakter váltja fel őket.
+>     * Ha a nevek olyan karaktereket tartalmaznak, amelyek nem felelnek meg a [KQL-azonosítók nevének](/azure/kusto/query/schema-entities/entity-names), a kötőjel **-** karakter váltja fel őket.
 
 ### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Lekérdezés a natív Azure Adatkezelő-fürtön 
 
@@ -107,7 +107,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ![Több lekérdezés az Azure Adatkezelő proxyról](media/adx-proxy/cross-query-adx-proxy.png)
 
-Ha az [ `join` operátort](/azure/kusto/query/joinoperator)használja az Union helyett, akkor előfordulhat, hogy egy tippet kell futtatnia egy Azure adatkezelő natív fürtön (és nem a proxyn). 
+[`hint`](/azure/kusto/query/joinoperator#join-hints) Ha az [ `join` operátort](/azure/kusto/query/joinoperator)használja, az Unió helyett a parancsot kell futtatnia egy Azure adatkezelő natív fürtön (és nem a proxyn). 
 
 ## <a name="additional-syntax-examples"></a>További példák a szintaxisra
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443337"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933010"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -43,7 +43,7 @@ Ha erre a lehetőségre van szüksége, készen áll.
 
 A következő lépések az [alkalmazás mérőszámait tekintik át](../../azure-monitor/app/metrics-explorer.md), és az [adatokat az elemzéssel kérdezik](../../azure-monitor/app/analytics.md)le. 
 
-Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a](../../azure-monitor/app/javascript.md)weblapokhoz.
+Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a weblapokhoz](../../azure-monitor/app/javascript.md).
 
 A következő fejezetek a következő további lehetőségeket tárgyalják:
 
@@ -63,7 +63,7 @@ Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
 Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](../../azure-monitor/app/overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 
 
-Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) -elemhez, amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
+Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
 
 A böngészőtelemetria általában ugyanabban az erőforrásban jelenik meg, mint a kiszolgálóoldali webes szerepköre.
 
@@ -78,14 +78,15 @@ A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Application Insights-erőforrás létrehozása mindegyik szerepkörhöz
 
-Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, automatizálhatja [a folyamatot](../../azure-monitor/app/powershell.md).
+Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).
 
 1. A [Azure Portal][portal]válassza az **új** > **fejlesztői szolgáltatások** > **Application Insights**lehetőséget.  
 
     ![Application Insights ablaktábla](./media/cloudservices/01-new.png)
 
-1. Az **alkalmazás típusa** legördülő listában válassza a **ASP.net webalkalmazás**lehetőséget.  
-    Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség lehet erre a kulcsra, ha manuálisan szeretné konfigurálni vagy ellenőrizni az SDK konfigurációját.
+1. Az **alkalmazás típusa** legördülő listában válassza a **ASP.net webalkalmazás**lehetőséget.
+
+Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség lehet erre a kulcsra, ha manuálisan szeretné konfigurálni vagy ellenőrizni az SDK konfigurációját.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
@@ -93,7 +94,7 @@ Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. 
 
 1. A Visual Studio megoldáskezelő >   **\<YourCloudService >** **szerepkörök**területén nyissa meg az egyes szerepkörök tulajdonságait.
 
-1. A **konfiguráció**területen jelölje be a **diagnosztikai** adatküldés Application Insightsba jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
+1. A **konfiguráció**területen jelölje be a **diagnosztikai adatküldés Application Insightsba** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
 
 Ha úgy döntött, hogy külön Application Insights-erőforrást használ mindegyik buildkonfigurációhoz, előbb válassza ki a konfigurációt.
 
@@ -110,7 +111,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 
 1. A **webes szerepkörök**konfigurálásához kattintson a jobb gombbal a projektre, majd válassza a **Application Insights konfigurálása** vagy **> Application Insights telemetria hozzáadása**lehetőséget.
 
-1. Feldolgozói **szerepkörök**konfigurálása: 
+1. **Feldolgozói szerepkörök**konfigurálása: 
 
     a. Kattintson a jobb gombbal a projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
@@ -133,8 +134,9 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
     * [Feldolgozói szerepkör](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Weblapok esetén](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Állítsa be a *ApplicationInsights. config* fájlt, hogy mindig a kimeneti könyvtárba másolja.  
-    A *. config* fájlban lévő üzenet arra kéri, hogy ott helyezze el a kialakítási kulcsot. A Cloud apps esetében azonban jobb, ha a *. cscfg* fájlból állítja be. Ez a megközelítés biztosítja, hogy a szerepkör helyesen legyen azonosítva a portálon.
+1. Állítsa be a *ApplicationInsights. config* fájlt, hogy mindig a kimeneti könyvtárba másolja.
+
+   A *. config* fájlban lévő üzenet arra kéri, hogy ott helyezze el a kialakítási kulcsot. A Cloud apps esetében azonban jobb, ha a *. cscfg* fájlból állítja be. Ez a megközelítés biztosítja, hogy a szerepkör helyesen legyen azonosítva a portálon.
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Állapotmonitor beállítása teljes SQL-lekérdezések gyűjtésére (opcionális)
 
@@ -171,16 +173,19 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
 
 1. Futtassa az alkalmazást, és jelentkezzen be az Azure-ba. 
 
-1. Nyissa meg a létrehozott Application Insights erőforrásokat.  
-    Az egyes adatpontok a [keresésben](../../azure-monitor/app/diagnostic-search.md)jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../../azure-monitor/app/metrics-explorer.md). 
+1. Nyissa meg a létrehozott Application Insights erőforrásokat.
+
+   Az egyes adatpontok a [keresésben][diagnostic]jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../../azure-monitor/app/metrics-explorer.md).
 
 1. Vegyen fel további telemetria (lásd a következő részeket), majd tegye közzé az alkalmazást az élő diagnosztika és a használati visszajelzések beszerzéséhez. 
 
 Ha nincs ilyen érték, tegye a következőket:
+
 1. Az egyes események megtekintéséhez nyissa meg a [Keresés][diagnostic] csempét.
 1. Az alkalmazásban nyissa meg a különböző lapokat, hogy egy bizonyos telemetria hozzon létre.
 1. Várjon néhány másodpercet, majd kattintson a **frissítés**gombra.  
-    További információk: [Hibaelhárítás][qna].
+
+További információk: [Hibaelhárítás][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics események megtekintése
 A [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) információk a Application Insights a következő helyszíneken találhatók:
@@ -254,7 +259,7 @@ Ezt a következőképpen teheti meg:
 * Adja hozzá az egyéni telemetriainicializálót. Ezt megteheti a *ApplicationInsights. config* fájlban vagy a kódban [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Ügyfél-telemetria
-A böngészőalapú telemetria beszerzéséhez, például a lapok megtekintésének száma, az oldal betöltési ideje vagy a parancsfájlok kivételei, valamint az egyéni telemetria írása az oldal parancsfájljaiba: [a JavaScript SDK hozzáadása a][client]weblapokhoz.
+A böngészőalapú telemetria beszerzéséhez, például a lapok megtekintésének száma, az oldal betöltési ideje vagy a parancsfájlok kivételei, valamint az egyéni telemetria írása az oldal parancsfájljaiba: [a JavaScript SDK hozzáadása a weblapokhoz][client].
 
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek
 Győződjön meg arról, hogy az alkalmazás élőben és rugalmasan működik, és [Beállítja a webes teszteket][availability].
@@ -270,7 +275,7 @@ Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../a
 [Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Kivétel "a metódus nem található" az Azure Cloud Servicesben való futtatáskor
-A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támogatott automatikusan az Azure Cloud Services szerepköreiben. Az alkalmazás futtatása előtt [telepítse a .net 4,6](../../cloud-services/cloud-services-dotnet-install-dotnet.md) -es verzióját az egyes szerepkörökre.
+A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támogatott automatikusan az Azure Cloud Services szerepköreiben. Az alkalmazás futtatása előtt [telepítse a .net 4,6-es verzióját az egyes szerepkörökre](../../cloud-services/cloud-services-dotnet-install-dotnet.md) .
 
 ## <a name="video"></a>Videó
 

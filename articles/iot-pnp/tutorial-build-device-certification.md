@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 019b2ba0fd87610195ca9e6c7cb749be9542bd72
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858860"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932677"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -84,6 +84,18 @@ Az **eszköz információs** felületének megtekintése a vs Code-ban:
 1. A nyilvános modell adattárában válassza a **felületek** fület, válassza a szűrő ikont, majd írja be az **eszköz adatait** a szűrő mezőbe.
 
 1. Az **eszköz adatai** felület helyi másolatának létrehozásához jelölje ki azt a szűrt listában, majd válassza a **Letöltés**lehetőséget. A VS Code megjeleníti a csatoló fájlját.
+
+Az **eszköz információs** felületének megtekintése az Azure CLI használatával:
+
+1. [Telepítse az Azure IOT CLI bővítményt](howto-install-pnp-cli.md).
+
+1. Az alábbi Azure CLI-paranccsal megjelenítheti az eszköz információs felületének AZONOSÍTÓját tartalmazó felületet:
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+További információkért lásd: [Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez](howto-install-pnp-cli.md).
 
 ## <a name="update-device-code"></a>Eszköz kódjának frissítése
 

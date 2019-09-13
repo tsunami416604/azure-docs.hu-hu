@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596333"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933884"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
@@ -39,7 +39,7 @@ Azure Security Center a IoT biztonsági ügynökének Twin konfigurációs objek
 
 Ezek a konfigurációk segítenek testreszabni az ügynököt minden szükséges forgatókönyvhöz. Például automatikusan kizárhat néhány eseményt, vagy megtarthatja az energiafogyasztást egy minimális szintre. Ehhez konfigurálja ezeket a tulajdonságokat.  
 
-A módosítások végrehajtásához használja a IoT biztonsági [](https://aka.ms/iot-security-github-module-schema) ügynök konfigurációs sémájának Azure Security Center.  
+A módosítások végrehajtásához használja a IoT biztonsági ügynök konfigurációs [sémájának](https://aka.ms/iot-security-github-module-schema) Azure Security Center.  
 
 ## <a name="configuration-objects"></a>Konfigurációs objektumok 
 
@@ -87,28 +87,28 @@ Az alapértelmezett tulajdonság értékének használatához távolítsa el a t
 
 1. A IoT Hub keresse meg és válassza ki a módosítani kívánt eszközt.
 
-2. Kattintson az eszközre, majd a **azureiotsecurity** modulban.
+1. Kattintson az eszközre, majd a **azureiotsecurity** modulban.
 
-3. Kattintson a **modul Identity Twin**elemre.
+1. Kattintson a **modul Identity Twin**elemre.
 
-4. Szerkessze a biztonsági modulban módosítani kívánt tulajdonságokat.
+1. Szerkessze a biztonsági modulban módosítani kívánt tulajdonságokat.
    
    Ha például a kapcsolódási eseményeket magas prioritással szeretné konfigurálni, és 7 percenként magas prioritású eseményeket szeretne gyűjteni, használja a következő konfigurációt.
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="using-a-default-value"></a>Alapértelmezett érték használata
 
@@ -120,7 +120,7 @@ A következő táblázat a IoT biztonsági ügynökök Azure Security Centeréne
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Name (Név)| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| State | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: Időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.| 

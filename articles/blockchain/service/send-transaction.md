@@ -1,28 +1,27 @@
 ---
-title: Intelligens szerződések használata az Azure Blockchain Service-ben
-description: Útmutató arról, hogyan használható az Azure Blockchain Service egy intelligens szerződés üzembe helyezéséhez és a függvények egy tranzakción keresztüli végrehajtásához.
+title: Intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain szolgáltatással a Visual Studio Code használatával
+description: Útmutató a Visual Studio Code-ban az Azure Blockchain Development Kit for Ethereum bővítmény használatáról az Azure Blockchain Service-ben intelligens szerződések létrehozásához, összeállításához és üzembe helyezéséhez.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 09/10/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705131"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935005"
 ---
-# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>Oktatóanyag: Intelligens szerződések használata az Azure Blockchain Service-ben
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Oktatóanyag: Intelligens szerződések létrehozása, készítése és üzembe helyezése a Visual Studio Code használatával
 
-Ebben az oktatóanyagban a Ethereum készült Azure Blockchain Development Kit használatával hozzon létre és helyezzen üzembe egy intelligens szerződést, majd hajtson végre egy intelligens szerződési funkciót egy konzorciumi Blockchain-hálózat tranzakcióján keresztül.
+Ebben az oktatóanyagban a Visual Studio Code-ban az Azure Blockchain Development Kit for Ethereum bővítmény használatával hozhat létre, építhet és helyezhet üzembe intelligens szerződést az Azure Blockchain Service-ben. A szarvasgomba is használható egy intelligens szerződési funkció tranzakción keresztüli végrehajtásához.
 
 A Ethereum készült Azure Blockchain Development Kit a következő célokra használható:
 
 > [!div class="checklist"]
-> * Kapcsolódás az Azure Blockchain Service Consortium Blockchain-taghoz
 > * Intelligens szerződés létrehozása
 > * Intelligens szerződés üzembe helyezése
 > * Intelligens szerződési funkció végrehajtása tranzakción keresztül
@@ -32,55 +31,14 @@ A Ethereum készült Azure Blockchain Development Kit a következő célokra has
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [gyors útmutató: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel](create-member-cli.md)
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js](https://nodejs.org)
-* [Git](https://git-scm.com)
-* [Python](https://www.python.org/downloads/release/python-2715/). Adja hozzá a Python. exe fájlt az elérési úthoz. Az Azure Blockchain Development Kit esetében a Python elérési útja szükséges.
-* [Szarvasgomba](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
-
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Az Azure Blockchain Development Kit-környezet ellenőrzése
-
-Az Azure Blockchain Development Kit ellenőrzi, hogy teljesülnek-e a fejlesztési környezet előfeltételei. A fejlesztési környezet ellenőrzése:
-
-A vs Code parancs palettáján válassza **az Azure Blockchain: Kezdőlap**megjelenítése.
-
-Az Azure Blockchain Development Kit olyan érvényesítési parancsfájlt futtat, amely körülbelül egy percet vesz igénybe. Megtekintheti a kimenetet a **terminal > új terminál**lehetőség kiválasztásával. A terminál menüsorában válassza a **kimenet** fület és az **Azure Blockchain** a legördülő menüben. A sikeres érvényesítés az alábbi képhez hasonlóan néz ki:
-
-![Érvényes fejlesztői környezet](./media/send-transaction/valid-environment.png)
-
- Ha hiányzik egy szükséges eszköz, az **Azure Blockchain Development Kit – Preview** nevű új lap felsorolja a telepíteni kívánt alkalmazásokat és az eszközök letöltésére vonatkozó hivatkozásokat.
-
-![Fejlesztői csomaghoz szükséges alkalmazások](./media/send-transaction/required-apps.png)
-
-## <a name="connect-to-consortium-member"></a>Kapcsolódás a konzorcium tagjához
-
-A konzorcium tagjaihoz az Azure Blockchain Development Kit VS Code bővítmény használatával csatlakozhat. A konzorciumhoz való csatlakozás után intelligens szerződéseket állíthat össze, építhet ki és helyezhet üzembe egy Azure Blockchain Service Consortium-tag számára.
-
-Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre [az előfeltételként szükséges rövid útmutatót: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI](create-member-cli.md)használatával.
-
-1. A Visual Studio Code (VS Code) Explorer ablaktáblán bontsa ki az **Azure Blockchain** bővítményt.
-1. Válassza **a kapcsolódás konzorciumhoz**lehetőséget.
-
-   ![Kapcsolódás a konzorciumhoz](./media/send-transaction/connect-consortium.png)
-
-    Ha az Azure-hitelesítésre kéri, kövesse az utasításokat a böngészőben való hitelesítéshez.
-1. Válassza a **Kapcsolódás az Azure Blockchain Service consortiumhoz** lehetőséget a parancssor legördülő menüben.
-1. Válassza ki az Azure Blockchain Service Consortium-taghoz társított előfizetést és erőforráscsoportot.
-1. Válassza ki a konzorciumot a listából.
-
-A konzorcium és a blockchain tagjai a Visual Studio Explorer oldalsó sávján jelennek meg.
-
-![A konzorcium megjelenik az Explorerben](./media/send-transaction/consortium-node.png)
+* Teljes [gyors útmutató: A Visual Studio Code használata Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Intelligens szerződés létrehozása
 
-A Ethereum készült Azure Blockchain Development Kit a Project templates és a szarvasgomba eszközt használja a szerződések készítéséhez, elkészítéséhez és üzembe helyezéséhez.
+A Ethereum készült Azure Blockchain Development Kit a Project templates és a szarvasgomba eszközt használja a szerződések készítéséhez, elkészítéséhez és üzembe helyezéséhez. Mielőtt elkezdené, hajtsa végre [az előfeltételként szükséges rövid útmutatót: A Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). A rövid útmutató végigvezeti a Ethereum készült Azure Blockchain Development Kit telepítésének és konfigurálásának lépésein.
 
 1. A vs Code parancs palettáján válassza **az Azure Blockchain: Új szilárdtest-projekt**.
-1. Válassza az alapszintű **projekt létrehozása**lehetőséget.
+1. Válassza az **alapszintű projekt létrehozása**lehetőséget.
 1. Hozzon létre egy nevű `HelloBlockchain` új mappát, és **válassza az új projekt elérési útja lehetőséget**.
 
 Az Azure Blockchain Development Kit létrehoz és inicializál egy új szilárdtest-projektet. Az alapszintű projekt tartalmaz egy minta **HelloBlockchain** intelligens szerződést, valamint az összes szükséges fájlt, amely az Azure Blockchain szolgáltatásban a konzorciumi tag felépítésére és üzembe helyezésére szolgál. A projekt létrehozása több percet is igénybe vehet. Az Azure Blockchain kimenetének kiválasztásával nyomon követheti a VS Code termináljának előrehaladását.
@@ -104,11 +62,11 @@ Az Azure Blockchain Development Kit a szarvasgomba használatával fordítja le 
 
 ## <a name="deploy-a-smart-contract"></a>Intelligens szerződés üzembe helyezése
 
-A szarvasgomba áttelepítési parancsfájlok használatával helyezi üzembe a szerződéseit egy Ethereum-hálózaton. A Migrálás a projekt áttelepítési könyvtárában található JavaScript-fájlok.
+A szarvasgomba áttelepítési parancsfájlok használatával helyezi üzembe a szerződéseit egy Ethereum-hálózaton. A Migrálás a projekt **áttelepítési** könyvtárában található JavaScript-fájlok.
 
 1. Az intelligens szerződés üzembe helyezéséhez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját.
-1. Válassza ki az Azure Blockchain Consortium **-hálózatot a truffle-config. js fájlból**. A projekt létrehozásakor a konzorcium blockchain-hálózata hozzá lett adva a projekt szarvasgomba konfigurációs fájljához.
-1. Válassza a **hívóbetűje**előállítása lehetőséget. Válasszon egy fájlnevet, és mentse a hívóbetűje fájlt a projekt mappájába. Például: `myblockchainmember.env`. A hívóbetűje-fájl egy Ethereum titkos kulcs létrehozásához használható a blockchain-tag számára.
+1. Válassza ki az Azure Blockchain Consortium-hálózatot a parancs palettáján. A projekt létrehozásakor a konzorcium blockchain-hálózata hozzá lett adva a projekt szarvasgomba konfigurációs fájljához.
+1. Válassza a **hívóbetűje előállítása**lehetőséget. Válasszon egy fájlnevet, és mentse a hívóbetűje fájlt a projekt mappájába. Például: `myblockchainmember.env`. A hívóbetűje-fájl egy Ethereum titkos kulcs létrehozásához használható a blockchain-tag számára.
 
 Az Azure Blockchain Development Kit a szarvasgomba használatával hajtja végre az áttelepítési parancsfájlt a szerződések a Blockchain való üzembe helyezéséhez.
 
@@ -140,7 +98,7 @@ A **HelloBlockchain** -szerződés **SendRequest hívás** funkciója módosítj
     ```
 
 1. Ha az Azure Blockchain Development Kit létrehoz egy projektet, a rendszer létrehozza a szarvasgomba konfigurációs fájlt a konzorcium Blockchain hálózati végpontjának részleteivel. Nyissa meg a **truffle-config. js fájlt** a projektben. A konfigurációs fájl két hálózatot listáz: egy névvel ellátott fejlesztést és egyet a konzorcium nevével.
-1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a konzorcium blockchain-hálózatán. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a PowerShellt a legördülő menüben.
+1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a konzorcium blockchain-hálózatán. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a **PowerShellt** a legördülő menüben.
 
     ```PowerShell
     truffle exec sendrequest.js --network <blockchain network>
@@ -173,7 +131,7 @@ Az intelligens szerződési függvények az állapot változóinak aktuális ér
     A függvény az állapot változójában tárolt üzenetet adja vissza a szerződés aktuális állapota alapján.
 
 1. Kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, majd válassza a **szerződések létrehozása** lehetőséget a menüből az intelligens szerződés módosításainak fordításához.
-1. A telepítéshez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját.
+1. A telepítéshez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját. Ha a rendszer kéri, válassza ki az Azure Blockchain Consortium-hálózatot a parancs palettáján.
 1. Ezután hozzon létre egy szkriptet a paranccsal a **getMessage** függvény meghívásához. Hozzon létre egy új fájlt a szarvasgomba-projekt gyökerében, `getmessage.js`és nevezze el. Adja hozzá a következő Web3 JavaScript-kódot a fájlhoz.
 
     ```javascript
@@ -195,7 +153,7 @@ Az intelligens szerződési függvények az állapot változóinak aktuális ér
     };
     ```
 
-1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a blockchain-hálózaton. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a PowerShellt a legördülő menüben.
+1. A VS Code terminál ablaktábláján a szarvasgomba használatával hajtsa végre a szkriptet a blockchain-hálózaton. A terminál ablaktáblájának menüsorában válassza a **terminál** fület és a **PowerShellt** a legördülő menüben.
 
     ```bash
     truffle exec getmessage.js --network <blockchain network>

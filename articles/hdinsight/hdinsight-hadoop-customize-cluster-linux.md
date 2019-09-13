@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: c6f55b40b3ee077b81a3cdd6f3add7a2cad23f95
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809923"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935283"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -165,11 +165,11 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
 3. A __Speciális beállítások__ szakaszban válassza a __parancsfájlok műveletek__elemet. A __parancsfájl-műveletek__ szakaszban válassza az __+ új elküldése__lehetőséget.
 
-    ![Új parancsfájl-művelet elküldése](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
+    ![Új parancsfájl-művelet elküldése](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
 4. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
 
-    ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Az alábbi táblázat az űrlap elemeit ismerteti:
 
@@ -185,7 +185,7 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
 5. Válassza a __Létrehozás__ lehetőséget a parancsfájl mentéséhez. Ezt követően a __+ Submit New__ paranccsal adhat hozzá újabb parancsfájlokat.
 
-    ![Több parancsfájl-művelet](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
+    ![Több parancsfájl-művelet](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Ha elkészült a parancsfájlok hozzáadásával, kattintson a __kiválasztás__ gombra, majd a __tovább__ gombra a __fürt összegzése__ szakaszhoz való visszatéréshez.
 
@@ -251,7 +251,7 @@ Ugrás a [Azure Portalra](https://portal.azure.com):
 
 4. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
 
-    ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/select-script.png)
+    ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
     Az alábbi táblázat az űrlap elemeit ismerteti:
 
@@ -356,11 +356,11 @@ Ha a .NET SDK-t a parancsfájlok fürtön való alkalmazására szeretné haszn�
 
 6. A műveletek végrehajtásához a Scripting Actions (parancsfájl-műveletek) szakaszának jobb oldalán található három pontot is kiválaszthatja **.**
 
-    ![Parancsfájl-műveletek, három pont](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
+    ![Parancsfájl-műveletek, három pont](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| parancsmag | Függvény |
+| Parancsmag | Függvény |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Információk beolvasása a megőrzött parancsfájl-műveletekről. |
 | `Get-AzHDInsightScriptActionHistory` |A fürtre alkalmazott parancsfájl-műveletek előzményeinek vagy egy adott parancsfájl részleteinek beolvasása. |
@@ -376,7 +376,7 @@ Az alábbi példa azt mutatja be, hogyan lehet a parancsmagokat a parancsfájlok
 
 ### <a name="the-azure-classic-cli"></a>A klasszikus Azure CLI
 
-| parancsmag | Függvény |
+| Parancsmag | Függvény |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |A megőrzött parancsfájl-műveletek listájának beolvasása. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Információ lekérése egy adott megőrzött parancsfájl-műveletről. |
@@ -438,11 +438,11 @@ A Ambari webes felhasználói felületén megtekintheti a parancsfájlok művele
 
 2. Az oldal tetején található sávban válassza az **Ops** bejegyzést. A lista a fürtön a Ambari használatával végzett aktuális és korábbi műveleteket jeleníti meg.
 
-    ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+    ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
 3. Keresse meg azokat a bejegyzéseket, amelyek a **customscriptaction futtatták\_** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
-    ![Képernyőfelvétel a műveletekről](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+    ![Képernyőfelvétel a műveletekről](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Az **StdOut** és a **stderr** kimenetének megtekintéséhez válassza ki a **run\customscriptaction** bejegyzést, és részletezse a hivatkozásokat. Ezt a kimenetet a szkript futtatásakor generálja a rendszer, és hasznos információkhoz vezethet.
 
@@ -452,7 +452,7 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
 
 * A tárolási naplók a következő címen `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`érhetők el:.
 
-    ![Parancsfájl műveleti naplói](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
+    ![Parancsfájl műveleti naplói](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz**, a **munkavégző csomópont**és a **Zookeeper csomópont**számára. Lásd az alábbi példákat:
 
@@ -520,4 +520,4 @@ Ez alól két kivétel van:
 * [Apache Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
 * [További tárterület hozzáadása egy HDInsight-fürthöz](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Szakaszok a fürt létrehozása során"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Szakaszok a fürt létrehozása során"

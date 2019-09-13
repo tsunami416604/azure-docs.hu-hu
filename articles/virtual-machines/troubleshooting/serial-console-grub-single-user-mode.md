@@ -1,6 +1,6 @@
 ---
-title: Azure soros konzol a GRUB és az single user mód számára | Microsoft Docs
-description: A grub soros konzoljának használata az Azure Virtual Machines szolgáltatásban.
+title: Azure soros konzol a GRUB-hoz és az egyfelhasználós üzemmódhoz | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használható a soros konzol a GRUB-hoz az Azure Virtual Machines szolgáltatásban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,61 +13,67 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124483"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883932"
 ---
-# <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és az single user mód eléréséhez
-A GRUB a nagy egyesített bootloader, amely valószínűleg az első dolog, amit látni fog egy virtuális gép indításakor. Mivel az operációs rendszer elindítása előtt megjelenik, az SSH-n keresztül nem érhető el. A GRUB-ból a rendszerindítási konfigurációt úgy módosíthatja, hogy az egy felhasználói módba induljon, egyebek között.
+# <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és a single-user mód eléréséhez
+A virtuális gép (VM) rendszerindításakor a rendszer valószínűleg elsőként látja a GRand Unified bootloadert (GRUB). Mivel az operációs rendszer elindítása előtt megjelenik, a GRUB nem érhető el SSH-n keresztül. A GRUB-ban módosíthatja a rendszerindítási konfigurációt úgy, hogy az egyfelhasználós módba induljon, egyebek között.
 
-Az egyfelhasználós mód a minimális funkcionalitással rendelkező minimális környezet. Hasznos lehet a rendszerindítási problémák, a fájlrendszeri problémák vagy a hálózati problémák kivizsgálásához. Előfordulhat, hogy kevesebb szolgáltatás fut a háttérben, és a runlevel függően előfordulhat, hogy a fájlrendszer még nem lesz automatikusan csatlakoztatva.
+Az egyfelhasználós mód minimális funkcionalitással rendelkező minimális környezet. Hasznos lehet a rendszerindítási problémák, fájlrendszeri problémák vagy hálózati problémák kivizsgálásához. Kevesebb szolgáltatás futhat a háttérben, és a runlevel függően előfordulhat, hogy a fájlrendszer még nem lesz automatikusan csatlakoztatva.
 
-Az egyfelhasználós mód olyan helyzetekben is hasznos, ahol a virtuális gép csak úgy konfigurálható, hogy fogadja az SSH-kulcsokat a bejelentkezéshez. Ebben az esetben előfordulhat, hogy az egyfelhasználós módot fogja használni a jelszó-hitelesítéssel rendelkező fiók létrehozásához. Vegye figyelembe, hogy a soros konzol szolgáltatás csak a közreműködői szintű hozzáférés vagy annál nagyobb felhasználók számára engedélyezi a virtuális gép soros konzoljának elérését.
+Az egyfelhasználós mód olyan helyzetekben is hasznos, amikor a virtuális gép úgy van konfigurálva, hogy csak az SSH-kulcsokat fogadja a bejelentkezéshez. Ebben az esetben előfordulhat, hogy az egyfelhasználós mód használatával jelszót használó fiókot hozhat létre. 
 
-Az egyfelhasználós mód megadásához meg kell adnia a GRUB-t a virtuális gép indításakor, és módosítania kell a rendszerindítási konfigurációt a GRUB-ban. A GRUB beírására vonatkozó részletes utasítások alább láthatók. Általánosságban elmondható, hogy a virtuális gép soros konzoljának újraindítás gombjával indítsa újra a virtuális gépet, és megjeleníti a GRUB-t, ha a virtuális gép a GRUB megjelenítésére lett konfigurálva.
+> [!NOTE]
+> A soros konzol szolgáltatás csak *közreműködő* vagy magasabb szintű jogosultsággal rendelkező felhasználókat engedélyez a virtuális gépek soros konzoljának eléréséhez.
 
-![Linux soros konzol újraindítása gomb](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
+Az egyfelhasználós mód megadásához írja be a GRUB-ot a virtuális gép indításakor, és módosítsa a rendszerindítási konfigurációt a GRUB-ban. A következő szakaszban részletes utasítások találhatók a GRUB beírásához. Általánosságban elmondható, hogy ha a virtuális gép a GRUB megjelenítésére lett konfigurálva, a virtuális gép soros konzolján található Újraindítás gombra kattintva indítsa újra a virtuális gépet, és jelenítse meg a GRUB-t.
+
+![A Linux soros konzol újraindítása gombja](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>Általános GRUB-hozzáférés
-A GRUB eléréséhez újra kell indítania a virtuális gépet, miközben nyitva tartja a soros konzol paneljét. Egyes disztribúciók billentyűzet-bevitelt igényelnek a GRUB megjelenítéséhez, míg mások néhány másodpercig automatikusan megjelenítik a GRUB-t, és lehetővé teszik a felhasználói billentyűzet bemenetének megszakítani az időkorlátot.
+A GRUB eléréséhez indítsa újra a virtuális gépet, amíg a soros konzol ablaktábla meg van nyitva. Egyes disztribúciók billentyűzet-bevitelt igényelnek a GRUB megjelenítéséhez, mások pedig néhány másodpercig automatikusan megmutatják a GRUB használatát, hogy a felhasználói billentyűzet bemenete megszakítsa az időkorlátot.
 
-Biztosítania kell, hogy a GRUB engedélyezve legyen a virtuális gépen, hogy az egyetlen felhasználói üzemmódhoz tudjon hozzáférni. A disztribúciótól függően előfordulhat, hogy a GRUB engedélyezve van. A disztribúcióra vonatkozó információk alább és ezen a [hivatkozáson](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)érhetők el.
+Az egyfelhasználós üzemmód eléréséhez biztosítania kell, hogy a GRUB engedélyezve legyen a virtuális gépen. A terjesztéstől függően előfordulhat, hogy bizonyos beállítási munkák szükségesek ahhoz, hogy a GRUB engedélyezve legyen. A Distribution-specifikus információkhoz tekintse meg a következő szakaszt és a [Linux Azure-beli támogatását](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) ismertető oldalt.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Indítsa újra a virtuális gépet a soros konzolon a GRUB eléréséhez
-Indítsa újra a virtuális gépet a soros konzolon a főkapcsoló gombra kattintva, majd kattintson a "virtuális gép újraindítása" lehetőségre. Ez elindítja a virtuális gép újraindítását, és értesítést fog látni a Azure Portalon belül az újraindítással kapcsolatban.
-A virtuális gép újraindítása SYSRQ `'b'` paranccsal is elvégezhető, ha a [SYSRQ](./serial-console-nmi-sysrq.md) engedélyezve van. Kövesse az alábbi disztribúció-specifikus utasításokat, hogy megtudja, mi várható a GRUB-ban az újraindításkor.
+A virtuális gép újraindításához a soros konzolon vigye az egérmutatót az **Újraindítás** gombra, majd válassza a **virtuális gép újraindítása**lehetőséget. A panel alján megjelenik egy értesítés az újraindításról.
+
+A virtuális gépet a "b" SysRq futtatásával is újraindíthatja, ha a [SYSRQ](./serial-console-nmi-sysrq.md) engedélyezve van. Ha szeretné megtudni, hogy mire számíthat a GRUB-ból, az újraindításkor tekintse meg a következő részekben található terjesztésre vonatkozó utasításokat.
 
 ![Linux soros konzol újraindítása](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
-## <a name="general-single-user-mode-access"></a>Általános egyszeri felhasználói módú hozzáférés
-Az egyfelhasználós mód manuális elérése olyan helyzetekben lehet szükséges, amikor még nem konfigurált jelszó-hitelesítéssel rendelkező fiókot. A GRUB-konfiguráció módosításával manuálisan kell megadnia egy felhasználói üzemmódot. Ha ezt elvégezte, további útmutatásért lásd: az egyfelhasználós mód használata a visszaállításhoz vagy a jelszó hozzáadásához.
+## <a name="general-single-user-mode-access"></a>Általános egyfelhasználós módú hozzáférés
+Előfordulhat, hogy manuális hozzáférésre van szüksége az egyfelhasználós üzemmódhoz, ha nem konfigurált jelszó-hitelesítéssel rendelkező fiókot. Módosítsa a GRUB-konfigurációt úgy, hogy manuálisan adja meg az egyfelhasználós üzemmódot. Ennek elvégzése után további útmutatásért tekintse meg az "egyfelhasználós mód használata az alaphelyzetbe állításához vagy a jelszó hozzáadása" című szakaszt.
 
-Azokban az esetekben, amikor a virtuális gép nem tud elindulni, a disztribúciók gyakran automatikusan egyszeri felhasználói módba vagy vészhelyzeti módba kerülnek. Másoknak azonban további beállításra van szükségük ahhoz, hogy a rendszer automatikusan egy felhasználói vagy vészhelyzeti üzemmódba vonja őket (például a gyökér jelszavának beállítása).
+Ha a virtuális gép nem tud elindulni, a disztribúciók gyakran automatikusan elvesznek egy egyfelhasználós módba vagy vészhelyzeti módba. Más disztribúciók esetében azonban szükség van további beállításra, például a root-jelszó beállítására, mielőtt a rendszer automatikusan egy felhasználói vagy vészhelyzeti üzemmódba vonja a felhasználókat.
 
-### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Jelszó alaphelyzetbe állítása vagy hozzáadása egyetlen felhasználói módban
-Ha egyfelhasználós módban van, az alábbi lépéseket követve adhat hozzá új felhasználót sudo jogosultságokkal:
-1. Futtatás `useradd <username>` felhasználó hozzáadásához
-1. Futtatás `sudo usermod -a -G sudo <username>` az új felhasználói gyökérszintű jogosultságok megadásához
-1. Az `passwd <username>` új felhasználó jelszavának beállításához használja a következőt:. Ezután bejelentkezhet az új felhasználóként
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Jelszó alaphelyzetbe állítása vagy hozzáadása egy felhasználói módban
+Ha az egyfelhasználós módban van, a következő lépésekkel adhat hozzá új felhasználót a sudo-jogosultságokkal:
+1. Felhasználó `useradd <username>` hozzáadásához futtassa a parancsot.
+1. Futtassa `sudo usermod -a -G sudo <username>` az parancsot az új felhasználói gyökérszintű jogosultságok megadásához.
+1. Az `passwd <username>` új felhasználó jelszavának beállításához használja a következőt:. Ezután bejelentkezhet új felhasználóként.
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Hozzáférés Red Hat Enterprise Linux (RHEL)
-A RHEL automatikusan egy felhasználói módba kerül, ha a szokásos módon nem indítható el. Ha azonban nem állított be rendszergazdai jogosultságot az egyfelhasználós üzemmódhoz, nem lesz rendszergazdai jelszava, és nem fog tudni bejelentkezni. Megkerülő megoldás (lásd az "egyfelhasználós üzemmód manuális megadása" szakaszt alább), de a javaslat a root Access kezdeti beállítására szolgál.
+Ha a RHEL nem indítható el rendesen, a rendszer automatikusan egy egyszeri felhasználói üzemmódba helyezi az adatvesztést. Ha azonban még nem állította be a gyökérszintű hozzáférést egyfelhasználós módban, nem rendelkezik rendszergazdai jelszóval, és nem tud bejelentkezni. Megkerülő megoldás (lásd a "egyfelhasználós mód manuális megadása a RHEL" szakaszban), de javasoljuk, hogy először állítsa be a gyökérszintű hozzáférést.
 
 ### <a name="grub-access-in-rhel"></a>GRUB-hozzáférés a RHEL-ben
-A RHEL a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le bármelyik billentyűt. Ekkor megjelenik a GRUB képernyő. Ha nem jelenik meg, győződjön meg arról, hogy az alábbi sorok szerepelnek a GRUB-`/etc/default/grub`fájlban ():
+A RHEL a GRUB engedélyezve van a dobozból. A grub megadásához futtassa `sudo reboot`újra a virtuális gépet, majd nyomja le bármelyik billentyűt. Ekkor meg kell jelennie a GRUB panelnek. Ha nem, győződjön meg arról, hogy az alábbi sorok találhatók a GRUB-fájlban`/etc/default/grub`():
 
-#### <a name="rhel-8"></a>RHEL 8:
+**RHEL 8**
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
 GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 ```
 
-#### <a name="rhel-7"></a>7\. RHEL:
+**A RHEL 7 esetében**
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL_OUTPUT="serial console"
@@ -75,147 +81,167 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 ```
 
 > [!NOTE]
-> A Red Hat dokumentációt is biztosít a mentési módba való rendszerindítás, a vészhelyzeti mód, a hibakeresési mód és a gyökér jelszavának alaphelyzetbe állításához. Ide [kattintva érheti el](https://aka.ms/rhel7grubterminal).
+> A Red Hat dokumentációt is biztosít a mentési módba, a vészhelyzeti módba vagy a hibakeresési módba való rendszerindítás, valamint a gyökér jelszavának alaphelyzetbe állításához. Útmutatásért lásd: [terminál-menü szerkesztése a rendszerindítás során](https://aka.ms/rhel7grubterminal).
 
-### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Rendszergazdai hozzáférés beállítása egyetlen felhasználói üzemmódhoz a RHEL-ben
-A RHEL egyfelhasználós üzemmódjában engedélyezni kell a legfelső szintű felhasználót, amely alapértelmezés szerint le van tiltva. Ha engedélyezni szeretné az egyfelhasználós üzemmódot, kövesse az alábbi utasításokat:
+### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Rendszergazdai hozzáférés beállítása egyfelhasználós módban a RHEL-ben
+A legfelső szintű felhasználó alapértelmezés szerint le van tiltva. A RHEL egyfelhasználós módja megköveteli, hogy a root felhasználó engedélyezzen. Ha engedélyezni szeretné az egyfelhasználós üzemmódot, kövesse az alábbi utasításokat:
 
-1. Bejelentkezés a Red Hat rendszerbe SSH-n keresztül
-1. Váltás a gyökérre
-1. Jelszó engedélyezése a legfelső szintű felhasználó számára
-    * `passwd root`(erős legfelső szintű jelszó beállítása)
-1. Győződjön meg arról, hogy a root felhasználó csak a ttyS0-on keresztül tud bejelentkezni
-    * `edit /etc/ssh/sshd_config`és győződjön meg arról, hogy a PermitRootLogIn értéke nem
-    * `edit /etc/securetty file`bejelentkezés engedélyezése a ttyS0-on keresztül
+1. Jelentkezzen be a Red Hat rendszerébe SSH-n keresztül.
+1. Váltson a gyökérre.
+1. Engedélyezze a legfelső szintű felhasználó jelszavát a következő módon:
+    * Futtatás `passwd root` (erős legfelső szintű jelszó beállítása).
+1. Győződjön meg arról, hogy a legfelső szintű felhasználó csak a ttyS0 keresztül tud bejelentkezni a következő módon:  
+    a. Futtassa `edit /etc/ssh/sshd_config`a parancsot, és győződjön `no`meg arról, hogy a PermitRootLogIn beállítása.  
+    b. Futtassa `edit /etc/securetty file` a parancsot, hogy csak a ttyS0 használatával engedélyezze a bejelentkezést.
 
-Most, ha a rendszer egyfelhasználós módba indul, bejelentkezhet a root password használatával.
+Ha a rendszer egyfelhasználós módban indul, bejelentkezhet a legfelső szintű jelszóval.
 
-Alternatívaként a RHEL 7.4 + vagy 6.9 + esetében engedélyezheti az egyfelhasználós üzemmódot a GRUB-kérésekben, [itt](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-rescuemode-booting-single) talál útmutatást.
+Azt is megteheti, hogy a RHEL 7.4 + vagy 6.9 + esetében engedélyezi az egyfelhasználós üzemmódot a GRUB-kérésekben: [rendszerindítás egyfelhasználós módban](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-rescuemode-booting-single).
 
 ### <a name="manually-enter-single-user-mode-in-rhel"></a>Egyfelhasználós mód manuális megadása a RHEL
-Ha a fenti utasításokkal beállította a GRUB és a root elérést, akkor a következő utasításokkal adhatja meg az egyfelhasználós üzemmódot:
+Ha a fenti utasítások alapján beállította a GRUB-és a gyökérszintű hozzáférést, az alábbi módon adhatja meg az egyfelhasználós módot:
 
-1. Nyomja meg az ESC billentyűt a virtuális gép újraindításakor a GRUB beírásához
-1. A GRUB-ban az "e" gomb megnyomásával szerkessze a kiválasztott operációs rendszert, amelyet be szeretne indítani (általában az első sor)
-1. Az Azure-ban található kernel-vonal megkeresése – ez a következővel kezdődik:`linux16`
-1. Nyomja le a CTRL + E billentyűkombinációt a sor végére való ugráshoz
-1. Adja hozzá a következőt a sor végéhez:`systemd.unit=rescue.target`
-    * Ez egy felhasználói módba fog indulni. Ha vészhelyzeti módot szeretne használni, adja hozzá `systemd.unit=emergency.target` a sort a sor végéhez a következő helyett`systemd.unit=rescue.target`
-1. Nyomja le a CTRL + X billentyűkombinációt a kilépéshez, majd indítsa újra az alkalmazott beállításokkal
-1. A rendszer kérni fogja a rendszergazdai jelszót, mielőtt beírja az egyfelhasználós módot – ez ugyanaz a jelszó, amelyet a fenti utasításokban hozott létre.
+1. A GRUB megadásához nyomja le az ESC billentyűt a virtuális gép újraindításakor.
+1. A GRUB-ban nyomja meg az E gombot a rendszerindításhoz használni kívánt operációs rendszer szerkesztéséhez. Az operációs rendszer általában az első sorban jelenik meg.
+1. A kernel vonalának megkeresése. Az Azure-ban a *linux16*-vel kezdődik.
+1. Nyomja le a CTRL + E billentyűkombinációt a sor végére való ugráshoz.
+1. A sor végén adja hozzá a *systemed. Unit = Rescue. Target*parancsot.
+    
+    Ez a művelet egy egyfelhasználós módba kerül. Ha vészhelyzeti módot szeretne használni, vegyen fel *systemed. Unit = Emergency. Target* értéket a sor végére (a *systemed. Unit = Rescue. Target*helyett).
+
+1. Nyomja le a CTRL + X billentyűkombinációt az alkalmazott beállításokkal való kilépéshez és az újraindításhoz.
+
+   Az egyfelhasználós mód megadása előtt meg kell adnia a rendszergazdai jelszót. Ez a jelszó az előző utasításokban létrehozott.
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Adja meg az egyfelhasználós üzemmódot anélkül, hogy a gyökérszintű fiók engedélyezve van a RHEL
-Ha nem hajtja végre a fenti lépéseket a root felhasználó engedélyezéséhez, akkor továbbra is alaphelyzetbe állíthatja a legfelső szintű jelszót. Kövesse az alábbi utasításokat:
+Ha nem engedélyezte a legfelső szintű felhasználót a korábbi utasítások követésével, a következő lépésekkel továbbra is alaphelyzetbe állíthatja a legfelső szintű jelszót:
 
-> Megjegyzés: Ha a SELinux-t használja, gondoskodjon arról, hogy a legfelső szintű jelszó alaphelyzetbe [](https://aka.ms/rhel7grubterminal) állításakor a Red Hat dokumentációjában leírt további lépéseket is megtegye.
+> [!NOTE]
+> Ha a SELinux használja, a legfelső szintű jelszó alaphelyzetbe állításakor kövesse a [Red Hat dokumentációjában](https://aka.ms/rhel7grubterminal)leírt további lépéseket.
 
-1. Nyomja meg az ESC billentyűt a virtuális gép újraindításakor a GRUB beírásához
-1. A GRUB-ban az "e" gomb megnyomásával szerkessze a kiválasztott operációs rendszert, amelyet be szeretne indítani (általában az első sor)
-1. Az Azure-ban található kernel-vonal megkeresése – ez a következővel kezdődik:`linux16`
-1. Adja `rd.break` hozzá a sort a sor végéhez, és győződjön meg arról, `rd.break` hogy van-e elég hely (lásd az alábbi példát)
-    - Ezzel a művelettel megszakítja a rendszerindítási `initramfs` folyamatot `systemd`, mielőtt a rendszer átadja a vezérlőt a (Red Hat) dokumentációban leírt módon. [](https://aka.ms/rhel7rootpassword)
-1. Nyomja le a CTRL + X billentyűkombinációt a kilépéshez, majd indítsa újra az alkalmazott beállításokkal
-1. A rendszerindítás után a rendszer a csak olvasható fájlrendszerrel rendelkező vészhelyzeti módban fogja eldobni. Adja `mount -o remount,rw /sysroot` meg a rendszerhéjat a rendszerindító fájlrendszer írási/olvasási engedéllyel való újracsatlakoztatásához
-1. Ha egyszeres felhasználói módba indította a `chroot /sysroot` `sysroot` rendszerindítást, írja be a következőt a börtönbe való váltáshoz.
-1. Most már a root. Alaphelyzetbe állíthatja a legfelső `passwd` szintű jelszót, majd a fenti utasítások segítségével megadhatja az egyfelhasználós üzemmódot. Ha `reboot -f` elkészült, írja be az újraindítást.
+1. A GRUB megadásához nyomja le az ESC billentyűt a virtuális gép újraindításakor.
+
+1. A GRUB-ban nyomja meg az E gombot a rendszerindításhoz használni kívánt operációs rendszer szerkesztéséhez. Az operációs rendszer általában az első sorban jelenik meg.
+1. A kernel vonalának megkeresése. Az Azure-ban a *linux16*-vel kezdődik.
+1. A sor végén adja hozzá a (z) *Rd. break* sort a sor végéhez. Hagyjon szóközt a kernel és a *Rd. break*között.
+
+    Ez a művelet megszakítja a rendszerindítási folyamatot `initramfs` `systemd`, mielőtt a rendszer átadja a vezérlőt a rendszernek a [Red Hat dokumentációjában](https://aka.ms/rhel7rootpassword)leírtaknak megfelelően.
+1. Nyomja le a CTRL + X billentyűkombinációt az alkalmazott beállításokkal való kilépéshez és az újraindításhoz.
+
+   Az újraindítást követően a rendszer a csak olvasható fájlrendszerrel rendelkező vészhelyzeti módban van. 
+   
+1. A rendszerhéjban írja be `mount -o remount,rw /sysroot` , hogy az olvasási/írási engedélyekkel csatlakoztassa újra a rendszerindító fájlrendszert.
+1. Az egyfelhasználós üzemmódba történő rendszerindítás után írja `chroot /sysroot` be a kapcsolót `sysroot` a börtönbe.
+1. Most már a root-on. A legfelső szintű jelszót a következő utasítások `passwd` beírásával állíthatja alaphelyzetbe, majd megadhatja az egyfelhasználós üzemmódot. 
+1. Ha elkészült, adja meg `reboot -f` az újraindítást.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Megjegyzés: Ha a fenti utasítások szerint fut, a rendszer elvégzi a vészhelyzeti rendszerhéjba, így olyan feladatokat is `fstab`végrehajthat, mint például a szerkesztés. Az általánosan elfogadott javaslat azonban a gyökér jelszavának alaphelyzetbe állítása, és az egyfelhasználós mód megadására használható.
-
+> [!NOTE]
+> Az előző utasításokon keresztül futtatva elkerülheti a vészhelyzeti rendszerhéjba, így olyan feladatokat is végrehajthat, mint például a Szerkesztés `fstab`. Azonban általában azt javasoljuk, hogy állítsa alaphelyzetbe a legfelső szintű jelszót, és használja azt az egyfelhasználós mód megadásához.
 
 ## <a name="access-for-centos"></a>CentOS-hozzáférés
-A Red Hat Enterprise Linuxhoz hasonlóan a CentOS-ben az egyfelhasználós mód a GRUB és a root felhasználó engedélyezését igényli.
+Akárcsak Red Hat Enterprise Linux, a CentOS-ben az egyfelhasználós mód a GRUB és a root felhasználó engedélyezését igényli.
 
 ### <a name="grub-access-in-centos"></a>GRUB-hozzáférés a CentOS-ben
-A CentOS a GRUB-ban engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le bármelyik billentyűt. Ekkor megjelenik a GRUB képernyő.
+A CentOS a GRUB-ban engedélyezve van a dobozból. A grub megadásához a beírásával `sudo reboot`indítsa újra a virtuális gépet, majd nyomja le bármelyik billentyűt. Ez a művelet a GRUB panelt jeleníti meg.
 
-### <a name="single-user-mode-in-centos"></a>Egy felhasználói mód a CentOS-ben
-Az egyfelhasználós mód a CentOS-ben való engedélyezéséhez kövesse a fenti RHEL utasításait.
+### <a name="single-user-mode-in-centos"></a>Egyfelhasználós mód a CentOS-ben
+Ha engedélyezni szeretné az egyfelhasználós üzemmódot a CentOS-ben, kövesse a RHEL korábbi utasításait.
 
 ## <a name="access-for-ubuntu"></a>Hozzáférés Ubuntu rendszerhez
 Az Ubuntu-lemezképekhez nem szükséges a gyökér jelszava. Ha a rendszer egyfelhasználós módba indul, további hitelesítő adatok nélkül használhatja.
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB-hozzáférés Ubuntuban
-A GRUB eléréséhez nyomja le és tartsa nyomva a "ESC" billentyűt, amíg a virtuális gép elindult.
+A GRUB eléréséhez nyomja le és tartsa lenyomva az ESC billentyűt a virtuális gép indításakor.
 
-Alapértelmezés szerint az Ubuntu-lemezképek nem jelenítik meg automatikusan a GRUB-képernyőt. Ez a következő utasításokkal módosítható:
-1. Megnyitás `/etc/default/grub.d/50-cloudimg-settings.cfg` egy tetszőleges szövegszerkesztőben
-1. `GRUB_TIMEOUT` Érték módosítása nullától eltérő értékre
-1. Megnyitás `/etc/default/grub` egy tetszőleges szövegszerkesztőben
-1. Megjegyzés a `GRUB_HIDDEN_TIMEOUT=1` sorban
-1. Győződjön meg arról, hogy van egy sor, amely szerint`GRUB_TIMEOUT_STYLE=menu`
-1. Futtassa a `sudo update-grub` parancsot.
+Alapértelmezés szerint az Ubuntu-lemezképek nem jelenítik meg automatikusan a GRUB panelt. A beállítást a következő módon módosíthatja:
+1. A szövegszerkesztőben nyissa meg a */etc/default/grub.d/50-cloudimg-Settings.cfg* fájlt.
 
-### <a name="single-user-mode-in-ubuntu"></a>Egyszeri felhasználói üzemmód az Ubuntuban
-Ha a szokásos módon nem tud elindulni, az Ubuntu automatikusan egy felhasználói módba kerül. Az egyfelhasználós mód manuális megadásához kövesse az alábbi utasításokat:
+1. Módosítsa az `GRUB_TIMEOUT` értéket nullától eltérő értékre.
+1. Egy szövegszerkesztőben nyissa meg a */etc/default/grub*.
+1. Megjegyzés a `GRUB_HIDDEN_TIMEOUT=1` sorban.
+1. Győződjön meg arról, hogy `GRUB_TIMEOUT_STYLE=menu` van egy sor.
+1. Futtassa az `sudo update-grub` parancsot.
 
-1. A GRUB-ból kattintson az "e" gombra a rendszerindítási bejegyzés szerkesztéséhez (Ubuntu-bejegyzés)
-1. Keresse meg a kezdetű `linux`vonalat, és keresse meg a következőt:`ro`
-1. Adja hozzá `single` a következőt ,ésgyőződjönmegróla,hogyvan-eszóközelőtteésutána`ro``single`
-1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adjon meg egy felhasználói módot
+### <a name="single-user-mode-in-ubuntu"></a>Single-user mód az Ubuntuban
+Ha az Ubuntu nem indítható el rendesen, akkor a rendszer automatikusan egy egyszeri felhasználói üzemmódba helyezi az adatvesztést. Az egyfelhasználós mód manuális megadásához tegye a következőket:
 
-### <a name="using-grub-to-invoke-bash-in-ubuntu"></a>A GRUB meghívása a bash használatával Ubuntuban
-Előfordulhat, hogy a fenti utasítások kipróbálása után előfordulhat, hogy nem fér hozzá egyetlen felhasználói üzemmód az Ubuntu virtuális gépen. Azt is megteheti, hogy a rendszermag a/bin/bash-t init-ként futtatja, nem pedig a rendszer inicializálását, amely egy bash-rendszerhéjt biztosít, és lehetővé teszi a rendszer karbantartását. Kövesse az alábbi utasításokat:
+1. A GRUB-ban nyomja meg az E gombot a rendszerindítási bejegyzés (Ubuntu-bejegyzés) szerkesztéséhez.
+1. Keresse meg a *Linux*rendszerű vonalat, és keresse meg a *ro*-t.
+1. Adja *hozzá* a t-t a *ro*után, és győződjön meg arról, hogy van egy szóköz az *egyszer*és után.
+1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adja meg az egyfelhasználós üzemmódot.
 
-1. A GRUB-ból kattintson az "e" gombra a rendszerindítási bejegyzés szerkesztéséhez (Ubuntu-bejegyzés)
-1. Keresse meg a kezdetű `linux`vonalat, és keresse meg a következőt:`ro`
-1. Csere `ro` erre`rw init=/bin/bash`
-    - Ezzel a művelettel a rendszer írható-olvashatóként csatlakoztatja a fájlrendszert, és az/bin/bash használja az inicializálási folyamatként.
-1. Nyomja le a CTRL + X billentyűkombinációt a következő beállításokkal való újraindításhoz
+### <a name="use-grub-to-invoke-bash-in-ubuntu"></a>Bash meghívása az Ubuntuban a GRUB használatával
+Az előző utasítások elvégzése után előfordulhat, hogy a helyzet (például elfelejtett root password), ahol továbbra sem tud hozzáférni az egyfelhasználós üzemmódhoz az Ubuntu-beli virtuális gépen. Azt is megteheti, hogy a `/bin/bash` kernelt init néven futtatja, nem pedig a rendszer inicializálását. Ez a művelet egy bash-rendszerhéjt biztosít, és lehetővé teszi a rendszer karbantartását. Kövesse az alábbi utasításokat:
+
+1. A GRUB-ban nyomja meg az E gombot a rendszerindítási bejegyzés (Ubuntu-bejegyzés) szerkesztéséhez.
+
+1. Keresse meg a *Linux*rendszerű vonalat, és keresse meg a *ro*-t.
+1. Cserélje le a *ro* -t az *RW init =/bin/bash*.
+
+    Ez a művelet írható-olvashatóként csatlakoztatja a fájlrendszert, `/bin/bash` és az inicializálási folyamatként használja.
+1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához.
 
 ## <a name="access-for-coreos"></a>Hozzáférés a CoreOS
-A CoreOS egyetlen felhasználói üzemmódjában engedélyezni kell a GRUB használatát.
+A CoreOS egyfelhasználós üzemmódjában engedélyezni kell a GRUB használatát.
 
 ### <a name="grub-access-in-coreos"></a>GRUB-hozzáférés a CoreOS-ben
 A GRUB eléréséhez nyomja le bármelyik billentyűt a virtuális gép indításakor.
 
-### <a name="single-user-mode-in-coreos"></a>Egyetlen felhasználói mód a CoreOS
-A CoreOS automatikusan egy felhasználói módba kerül, ha a szokásos módon nem indítható el. Az egyfelhasználós mód manuális megadásához kövesse az alábbi utasításokat:
-1. A GRUB-ból kattintson az "e" gombra a rendszerindítási bejegyzés szerkesztéséhez.
-1. Keresse meg a sort, amely a `linux$`következővel kezdődik:. 2, különböző if/Else záradékban ágyazva
-1. Hozzáfűzés `coreos.autologin=ttyS0` mindkét`linux$` sor végéhez
-1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adjon meg egy felhasználói módot
+### <a name="single-user-mode-in-coreos"></a>Egyfelhasználós mód a CoreOS
+Ha a CoreOS nem indítható el rendesen, a rendszer automatikusan egy egyszeri felhasználói üzemmódba helyezi az adatvesztést. Az egyfelhasználós mód manuális megadásához tegye a következőket:
+
+1. A GRUB-ban nyomja meg az E gombot a rendszerindítási bejegyzés szerkesztéséhez.
+
+1. Keresse meg a *Linux $* kezdetű sort. A sor két példányának kell lennie, amelyek mindegyike más, *Ha... Else* záradék.
+1. Fűzze hozzá a *CoreOS. autologin = ttyS0* az egyes *Linux $* -sorok végéhez.
+1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adja meg az egyfelhasználós üzemmódot.
 
 ## <a name="access-for-suse-sles"></a>Hozzáférés a SUSE SLES
-A SLES 12 SP3 és újabb rendszerképek a soros konzolon keresztül érhetik el a hozzáférést, ha a rendszerindítást vészhelyzeti módban indítja el.
+A SLES 12 SP3 és újabb rendszerképek a soros konzolon keresztül érhetik el a hozzáférést, ha a rendszerindítás vészhelyzeti módba kerül.
 
 ### <a name="grub-access-in-suse-sles"></a>GRUB-hozzáférés a SUSE SLES
-A SLES-ben a GRUB-hozzáféréshez a YaST-n keresztül szükséges a bootloader konfigurálása Ehhez kövesse az alábbi utasításokat:
+A SLES-ben a GRUB-hozzáféréshez a YaST-n keresztüli bootloader-konfiguráció szükséges. A konfiguráció létrehozásához tegye a következőket:
 
-1. SSH-t a SLES virtuális gépre `sudo yast bootloader`, és futtassa a parancsot. A gomb `tab` , `enter` a kulcs és a nyílbillentyűk használatával navigálhat a menüben.
-1. Keresse meg `Kernel Parameters`és jelölje be `Use serial console`a következőt:.
-1. Hozzáadás `serial --unit=0 --speed=9600 --parity=no` a konzol argumentumai
+1. Az SSH használatával jelentkezzen be a SLES virtuális gépre, majd futtassa `sudo yast bootloader`a parancsot. Nyomja le a TAB billentyűt, nyomja le az ENTER billentyűt, majd a nyílbillentyűk segítségével navigáljon a menüben.
 
-1. A beállítások mentéséhez és a kilépéshez nyomja meg az F10 billentyűt
-1. A GRUB megadásához indítsa újra a virtuális gépet, és nyomja le bármelyik billentyűt a rendszerindítási folyamat során, hogy a GRUB a képernyőn maradjon
-    - A GRUB alapértelmezett időtúllépése 1s. Ezt úgy módosíthatja, ha módosítja a `GRUB_TIMEOUT` változót a következőben:`/etc/default/grub`
+1. Nyissa meg a **kernel paramétereit**, majd jelölje be a **soros konzol használata** jelölőnégyzetet.
+1. Adja `serial --unit=0 --speed=9600 --parity=no` hozzá a **konzol** argumentumait.
+1. A beállítások mentéséhez és a kilépéshez nyomja le az F10 billentyűt.
+1. A GRUB megadásához indítsa újra a virtuális gépet, és nyomja le bármelyik billentyűt a rendszerindítási folyamat során a GRUB panel megjelenítésének megtartásához.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+    A GRUB alapértelmezett időtúllépése **1s**. Ezt a beállítást úgy módosíthatja, hogy megváltoztatja `GRUB_TIMEOUT` a változót a */etc/default/grub* fájlban.
 
-### <a name="single-user-mode-in-suse-sles"></a>Egyetlen felhasználói mód a SUSE SLES
-Ha a SLES normál esetben nem indítható el, a rendszer automatikusan eltávolítja a vészhelyzeti rendszerhéjba. A vészhelyzeti rendszerhéj manuális megadásához kövesse az alábbi utasításokat:
+![A rendszertöltő konfigurációjának inicializálása](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
-1. A GRUB-ból kattintson az "e" gombra a rendszerindítási bejegyzés szerkesztéséhez (az SLES-bejegyzés)
-1. Keresse meg a rendszermag sorát – ez a következővel kezdődik:`linux`
-1. Hozzáfűzés `systemd.unit=emergency.target` a sor végéhez
-1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adja meg a vészhelyzeti rendszerhéjt
-   > Vegye figyelembe, hogy a vészhelyzeti rendszerhéj egy _írásvédett_ fájlrendszerrel fog eldobni. Ha bármilyen fájlhoz szeretne módosításokat végezni, akkor újra kell csatlakoztatnia a fájlrendszert írási és olvasási engedélyekkel. Ehhez írja be `mount -o remount,rw /` a következőt a rendszerhéjba
+### <a name="single-user-mode-in-suse-sles"></a>Egy felhasználós mód a SUSE SLES
+Ha a SLES nem indítható el rendesen, a rendszer automatikusan elveti a vészhelyzeti rendszerhéjba. A vészüzemi rendszerhéj manuális megadásához tegye a következőket:
+
+1. A GRUB-ban nyomja meg az E gombot a rendszerindítási bejegyzés (a SLES-bejegyzés) szerkesztéséhez.
+
+1. Keresse meg a *Linux*rendszerű kernel-sort.
+1. Fűzze hozzá a *systemed. Unit = Emergency. Target* címet a kernel vonalának végéhez.
+1. Nyomja le a CTRL + X billentyűkombinációt a beállítások újraindításához, és adja meg a vészhelyzeti rendszerhéjt.
+
+   > [!NOTE]
+   > Ez a művelet elviszi a vészhelyzeti rendszerhéjba egy írásvédett fájlrendszerrel. A fájlok szerkesztéséhez csatlakoztassa újra a fájlrendszert írási és olvasási jogosultságokkal. Ehhez írja be `mount -o remount,rw /` a felületet a rendszerhéjba.
 
 ## <a name="access-for-oracle-linux"></a>Hozzáférés Oracle Linux
-A Red Hat Enterprise Linuxhoz hasonlóan a Oracle Linux egy felhasználói módja a GRUB és a root felhasználó engedélyezését igényli.
+A Red Hat Enterprise Linuxhoz hasonlóan a Oracle Linux egyfelhasználós módban a GRUB és a root felhasználó engedélyezése szükséges.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB-hozzáférés Oracle Linux
-A Oracle Linux a GRUB engedélyezve van a dobozból. A grub megadásához indítsa újra a `sudo reboot` virtuális gépet, és nyomja le az ESC billentyűt. Ekkor megjelenik a GRUB képernyő. Ha nem látja a grub-t, győződjön meg arról, hogy a `GRUB_TERMINAL` sor értéke "soros konzol", például:. `GRUB_TERMINAL="serial console"` Hozza létre újra a `grub2-mkconfig -o /boot/grub/grub.cfg`grub-t.
+A Oracle Linux a GRUB engedélyezve van a dobozból. A grub megadásához futtassa `sudo reboot`újra a virtuális gépet, majd nyomja le az ESC billentyűt. Ez a művelet a GRUB panelt jeleníti meg. Ha a grub panel nem jelenik meg, győződjön meg arról, hogy `GRUB_TERMINAL` a sor értéke *soros konzolt* tartalmaz `GRUB_TERMINAL="serial console"`(azaz). Hozza létre újra a `grub2-mkconfig -o /boot/grub/grub.cfg`grub-t.
 
-### <a name="single-user-mode-in-oracle-linux"></a>Egy felhasználói mód a Oracle Linuxban
-A fenti RHEL utasításait követve engedélyezze az egyfelhasználós üzemmódot a Oracle Linuxban.
+### <a name="single-user-mode-in-oracle-linux"></a>Egyfelhasználós mód a Oracle Linuxban
+Az egyfelhasználós üzemmód Oracle Linuxban való engedélyezéséhez kövesse a RHEL korábbi utasításait.
 
 ## <a name="next-steps"></a>További lépések
-* [Itt](serial-console-linux.md)található a soros konzolhoz tartozó fő Linux Dokumentációs oldal.
-* Megtudhatja, hogyan engedélyezheti a GRUB használatát a [különböző disztribúciókban](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) a soros konzol használatával
-* Soros konzol használata [NMI-és SYSRQ-hívásokhoz](serial-console-nmi-sysrq.md)
-* A soros konzol a [Windows](serial-console-windows.md) rendszerű virtuális gépekhez is elérhető
-* További információ a [rendszerindítási diagnosztika](boot-diagnostics.md) szolgáltatásról
+A soros konzolról további információt a következő témakörben talál:
+* [A Linux soros konzol dokumentációja](serial-console-linux.md)
+* [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [Soros konzol használata NMI-és SysRq-hívásokhoz](serial-console-nmi-sysrq.md)
+* [Soros konzol Windows rendszerű virtuális gépekhez](serial-console-windows.md)
+* [Rendszerindítási diagnosztika](boot-diagnostics.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873186"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918868"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -39,7 +39,7 @@ A nyugalmi állapotban lévő titkosítás az adatok kódolása (titkosítása),
 - A szimmetrikus titkosítási kulcs használatával titkosíthatja az adattárakat a tárolóba való írás során.
 - Ugyanazt a titkosítási kulcsot használja a rendszer a memóriában való használathoz readied.
 - Előfordulhat, hogy az adatpartíciók particionálva vannak, és az egyes partíciók esetében különböző kulcsok is használhatók.
-- A kulcsokat biztonságos helyen kell tárolni, az identitás-alapú hozzáférés-vezérléssel és a naplózási házirendekkel. Az adattitkosítási kulcsok gyakran aszimmetrikus titkosítással vannak titkosítva a hozzáférés további korlátozásához.
+- A kulcsokat biztonságos helyen kell tárolni, az identitás-alapú hozzáférés-vezérléssel és a naplózási házirendekkel. Az adattitkosítási kulcsokat gyakran titkosítja Azure Key Vault a hozzáférés további korlátozása érdekében a kulcs titkosítási kulcsával.
 
 A gyakorlatban a kulcsfontosságú felügyeleti és ellenőrzési forgatókönyvek, valamint a méretezési és rendelkezésre állási garanciák további szerkezeteket igényelnek. Az alábbiakban részletesen ismertetjük Microsoft Azure titkosítást a REST-fogalmakon és-összetevőkön.
 
@@ -71,12 +71,12 @@ A Azure Key Vaultban tárolt kulcsok használatára vonatkozó engedélyek, amel
 
 ### <a name="key-hierarchy"></a>Kulcs hierarchiája
 
-A REST-implementációban egynél több titkosítási kulcs van használatban. Az aszimmetrikus titkosítás hasznos lehet a kulcsfontosságú hozzáféréshez és felügyelethez szükséges megbízhatóság és hitelesítés kialakításához. A szimmetrikus titkosítás hatékonyabb a tömeges titkosítás és a visszafejtés terén, így erősebb titkosítást és jobb teljesítményt tesz lehetővé. Egyetlen titkosítási kulcs használatának korlátozása csökkenti annak a kockázatát, hogy a kulcs biztonsága sérül, valamint a kulcs cseréjének újratitkosításának költségeit. Az Azure-beli titkosítások a REST-modellekben a következő típusú kulcsokból épülő kulcs-hierarchiát használják:
+A REST-implementációban egynél több titkosítási kulcs van használatban. A titkosítási kulcs tárolása Azure Key Vault biztosítja a biztonságos kulcs-hozzáférést és a kulcsok központi felügyeletét. Azonban a szolgáltatás helyi hozzáférése a titkosítási kulcsokhoz hatékonyabb a tömeges titkosításhoz és a visszafejtéshez, mint a Key Vault összes adatművelettel való interakciója, ami erősebb titkosítást és jobb teljesítményt tesz lehetővé. Egyetlen titkosítási kulcs használatának korlátozása csökkenti annak a kockázatát, hogy a kulcs biztonsága sérül, valamint a kulcs cseréjének újratitkosításának költségeit. Az Azure-beli titkosítások a REST-modellekben a következő típusú kulcsokból állnak, hogy az összes ilyen szükségletet kezelni lehessen:
 
 - **Adattitkosítási kulcs (adattitkosítási kulcsot)** – egy partíció vagy adatblokk titkosításához használt szimmetrikus AES256-kulcs.  Egyetlen erőforrás több partícióval és számos adattitkosítási kulccsal is rendelkezhet. Az egyes adatblokkok egy másik kulccsal való titkosítása nehezebbé teszi a titkosítási elemzési támadásokat. A DEKs való hozzáférésre az erőforrás-szolgáltató vagy az alkalmazás-példány szükséges, amely egy adott blokk titkosítását és visszafejtését végzi. Ha egy ADATTITKOSÍTÁSI kulcsot egy új kulccsal van lecserélve, csak a hozzá tartozó blokkban lévő adatmennyiséget kell újra titkosítani az új kulccsal.
-- **Kulcs titkosítási kulcsa (KEK)** – az adattitkosítási kulcsok titkosítására használt aszimmetrikus titkosítási kulcs. A kulcs titkosítási kulcsainak használata lehetővé teszi, hogy az adattitkosítási kulcsok titkosítva és szabályozva legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Az entitások a ADATTITKOSÍTÁSI kulcsot való hozzáférést az egyes ADATTITKOSÍTÁSI kulcsot adott partícióhoz való hozzáférésének korlátozására használhatják. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
+- **Kulcs titkosítási kulcsa (KEK)** – az adattitkosítási kulcsok titkosításához használt titkosítási kulcs. Olyan kulcs-titkosítási kulcs használata, amely soha nem hagy Key Vault lehetővé teszi, hogy az adattitkosítási kulcsok titkosítva és szabályozva legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Az entitások a ADATTITKOSÍTÁSI kulcsot való hozzáférést az egyes ADATTITKOSÍTÁSI kulcsot adott partícióhoz való hozzáférésének korlátozására használhatják. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
 
-A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer külön tárolja, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások érhetik el az adott kulccsal titkosított adattitkosítási kulcsokat. A Key Storage különböző modelljei támogatottak. Az egyes modelleket a következő szakasz későbbi részében részletesebben ismertetjük.
+A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer külön tárolja, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások tudják visszafejteni ezeket az adattitkosítási kulcsokat. A Key Storage különböző modelljei támogatottak. Az egyes modelleket a következő szakasz későbbi részében részletesebben ismertetjük.
 
 ## <a name="data-encryption-models"></a>Adattitkosítási modellek
 
@@ -150,7 +150,9 @@ A szolgáltatás által felügyelt kulcsokkal rendelkező kiszolgálóoldali tit
 
 #### <a name="server-side-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsok használatával Azure Key Vault
 
-Olyan esetekben, amikor a követelmény az inaktív adatok titkosítása és a titkosítási kulcsok használata, a felhasználók a Key Vault felügyelt kulcsaival használhatják a kiszolgálóoldali titkosítást. Egyes szolgáltatások csak a legfelső szintű kulcs titkosítási kulcsát tárolhatják Azure Key Vaultban, és a titkosított adattitkosítási kulcsot egy belső helyen tárolják, amely közelebb áll az adatforgalomhoz. Ebben az esetben az ügyfelek saját kulcsaikat hozhatnak Key Vault (BYOK – Bring Your Own Key), vagy újakat generálnak, és a kívánt erőforrások titkosítására használhatják őket. Míg az erőforrás-szolgáltató végrehajtja a titkosítási és visszafejtési műveleteket, a beállított kulcsot használja az összes titkosítási művelet legfelső szintű kulcsaként.
+Olyan esetekben, amikor a követelmény az inaktív adatok titkosítása és a titkosítási kulcsok használata, a felhasználók a Key Vault felügyelt kulcsaival használhatják a kiszolgálóoldali titkosítást. Egyes szolgáltatások csak a legfelső szintű kulcs titkosítási kulcsát tárolhatják Azure Key Vaultban, és a titkosított adattitkosítási kulcsot egy belső helyen tárolják, amely közelebb áll az adatforgalomhoz. Ebben az esetben az ügyfelek saját kulcsaikat hozhatnak Key Vault (BYOK – Bring Your Own Key), vagy újakat generálnak, és a kívánt erőforrások titkosítására használhatják őket. Amíg az erőforrás-szolgáltató végrehajtja a titkosítási és a visszafejtési műveleteket, a konfigurált kulcs titkosítási kulcsát használja az összes titkosítási művelet legfelső szintű kulcsaként.
+
+A kulcs titkosítási kulcsainak elvesztése adatvesztést jelent. Emiatt a kulcsokat nem szabad törölni. A kulcsok létrehozásakor vagy elforgatásakor biztonsági mentést kell készíteni. A helyreállítható [törlést](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) engedélyezni kell minden olyan tárolón, amely a kulcs titkosítási kulcsait tárolja. A kulcs törlése helyett állítsa a beállítást hamis értékre, vagy állítsa be a lejárati dátumot.
 
 ##### <a name="key-access"></a>Kulcs elérése
 

@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3c16d8b5f1611c6c05e60d65551f73eb2d395668
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872907"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934846"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -35,9 +35,8 @@ SQL Server adatbázis biztonsági mentése előtt tekintse meg a következő fel
 
 1. Azonosítson vagy hozzon létre egy [Recovery Services](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) tárolót ugyanabban a régióban vagy területi beállításban, mint a SQL Server példányt futtató virtuális gép.
 2. Ellenőrizze, hogy a virtuális gép rendelkezik-e [hálózati kapcsolattal](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
-3. Győződjön meg arról, hogy a SQL Server adatbázisok a [Azure Backup adatbázis](#database-naming-guidelines-for-azure-backup)-elnevezési irányelveit követik.
-4. Kifejezetten az SQL 2008 és a 2008 R2 esetében [adja hozzá](#add-registry-key-to-enable-registration) a beállításjegyzéket a kiszolgáló regisztrálásának engedélyezéséhez. Erre a lépésre nem lesz szükség, ha a szolgáltatás általánosan elérhető.
-5. Győződjön meg arról, hogy nincs más biztonsági mentési megoldás, amely engedélyezve van az adatbázishoz. Az adatbázis biztonsági mentése előtt tiltsa le az összes többi SQL Server biztonsági mentést.
+3. Győződjön meg arról, hogy a SQL Server adatbázisok a [Azure Backup adatbázis-elnevezési irányelveit](#database-naming-guidelines-for-azure-backup)követik.
+4. Győződjön meg arról, hogy nincs más biztonsági mentési megoldás, amely engedélyezve van az adatbázishoz. Az adatbázis biztonsági mentése előtt tiltsa le az összes többi SQL Server biztonsági mentést.
 
 > [!NOTE]
 > Engedélyezheti az Azure-beli virtuális gépek Azure Backupét, valamint a virtuális gépen futó SQL Server-adatbázis ütközés nélküli működését is.
@@ -57,7 +56,7 @@ Kapcsolat létesítése a következő lehetőségek egyikének használatával:
     
     - A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
     - A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
-    - Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás** címkéje **AzureBackup**értékre van állítva.
+    - Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás címkéje** **AzureBackup**értékre van állítva.
     - Kattintson a **Hozzáadás**gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
     
    Szabály létrehozása a PowerShell használatával:
@@ -98,22 +97,6 @@ Kerülje a következő elemek használatát az adatbázis-nevekben:
 
 Az alias nem támogatott karakterekhez érhető el, de a rendszer elkerüli a használatát. További információt a [Table Service adatmodelljét ismertető](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) témakörben talál.
 
-### <a name="add-registry-key-to-enable-registration"></a>Beállításkulcs hozzáadása a regisztráció engedélyezéséhez
-
-1. A regedit megnyitása
-2. Hozza létre a beállításjegyzék könyvtárának elérési útját: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook (létre kell hoznia a "Key" TestHook a WorkloadBackup alatt, amelyet viszont a Microsofthoz kell létrehozni).
-3. A beállításjegyzék könyvtárának elérési útja alatt hozzon létre egy új "string Value" karakterláncot a **AzureBackupEnableWin2K8R2SP1** és az értékkel: **Igaz**
-
-    ![Regedit a regisztráció engedélyezéséhez](media/backup-azure-sql-database/reg-edit-sqleos-bkp.png)
-
-Azt is megteheti, hogy ezt a lépést a. reg fájl futtatásával automatizálja a következő paranccsal:
-
-```csharp
-Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WorkloadBackup\TestHook]
-"AzureBackupEnableWin2K8R2SP1"="True"
-```
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -143,7 +126,7 @@ Virtuális gépen futó adatbázisok felderítése:
 
 6. A virtuális gép listában válassza ki a SQL Server adatbázist futtató virtuális gépet > a **felderítési adatbázisok**.
 
-7. Az értesítésekben nyomonkövetheti az adatbázis-felderítést. A művelethez szükséges idő a virtuális gépek adatbázisainak számától függ. A kiválasztott adatbázisok észlelésekor megjelenik egy sikert jelző üzenet.
+7. Az **értesítésekben**nyomon követheti az adatbázis-felderítést. A művelethez szükséges idő a virtuális gépek adatbázisainak számától függ. A kiválasztott adatbázisok észlelésekor megjelenik egy sikert jelző üzenet.
 
     ![Sikeres üzembe helyezési üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
@@ -175,7 +158,7 @@ Virtuális gépen futó adatbázisok felderítése:
    A biztonsági mentési terhelések optimalizálásához Azure Backup egy biztonsági mentési feladatban lévő adatbázisok maximális számát 50-re állítja.
 
      * Több mint 50 adatbázis védelméhez több biztonsági mentést is konfigurálhat.
-     * A [](#enable-auto-protection) teljes példány vagy az Always On rendelkezésre állási csoport engedélyezéséhez az AutoProtect legördülő listában válassza **a**be lehetőséget, majd kattintson az **OK gombra**.
+     * A teljes példány vagy az Always On rendelkezésre állási csoport [engedélyezéséhez](#enable-auto-protection) az **AutoProtect** legördülő listában válassza **a**be lehetőséget, majd kattintson az **OK gombra**.
 
     > [!NOTE]
     > Az [automatikus védelem](#enable-auto-protection) funkció nem csak egyszerre engedélyezi a védelmet az összes meglévő adatbázison, de automatikusan védi az adott példányhoz vagy a rendelkezésre állási csoporthoz hozzáadott új adatbázisokat is.  
@@ -262,18 +245,6 @@ Biztonsági mentési szabályzat létrehozásához:
 
 14. Miután befejezte a módosításokat a biztonsági mentési szabályzatban, kattintson az **OK gombra**.
 
-
-### <a name="modify-policy"></a>Házirend módosítása
-Módosítsa a szabályzatot a biztonsági mentés gyakoriságának vagy a megőrzési tartománynak a módosításához.
-
-> [!NOTE]
-> A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
-
-A tároló irányítópultján lépjen a**biztonsági mentési házirendek** **kezelése** > elemre, és válassza ki a szerkeszteni kívánt szabályzatot.
-
-  ![Biztonsági mentési szabályzat kezelése](./media/backup-azure-sql-database/modify-backup-policy.png)
-
-
 ## <a name="enable-auto-protection"></a>Automatikus védelem engedélyezése  
 
 Az automatikus védelem engedélyezésével automatikusan biztonsági másolatot készíthet az összes meglévő és jövőbeli adatbázisról egy önálló SQL Server-példányra vagy egy always on rendelkezésre állási csoportba.
@@ -289,7 +260,7 @@ Az automatikus védelem engedélyezése:
 
       ![Automatikus védelem engedélyezése a rendelkezésre állási csoportban](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-  3. A Backup minden adatbázishoz konfigurálva van, és nyomon követhető a **biztonsági mentési**feladatokban.
+  3. A Backup minden adatbázishoz konfigurálva van, és nyomon követhető a **biztonsági mentési feladatokban**.
 
 Ha le kell tiltania az automatikus védelmet, válassza ki a példány nevét a **biztonsági mentés konfigurálása**területen, majd válassza az automatikus **védelem letiltása** a példányhoz lehetőséget. A rendszer az összes adatbázist biztonsági mentést folytatja, de a jövőbeli adatbázisok nem lesznek automatikusan védve.
 

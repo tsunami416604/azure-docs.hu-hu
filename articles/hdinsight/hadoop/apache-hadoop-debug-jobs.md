@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810875"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882429"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop naplók elemzése az Azure HDInsight
 
 Az Azure HDInsight minden Apache Hadoop-fürtje rendelkezik alapértelmezett fájlrendszerként használt Azure Storage-fiókkal. A Storage-fiókot az alapértelmezett Storage-fióknak nevezzük. A fürt az Azure Table Storage-t és a blob Storage-ot használja az alapértelmezett Storage-fiókban a naplók tárolásához.  A fürt alapértelmezett Storage-fiókjának megkereséséhez lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). A naplók a fürt törlése után is megmaradnak a Storage-fiókban.
 

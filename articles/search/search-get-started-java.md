@@ -1,5 +1,5 @@
 ---
-title: 'Java rövid útmutató: Indexek létrehozása, betöltése és lekérdezése Java-ban'
+title: 'Gyors útmutató: Keresési index létrehozása javában REST API-k használatával – Azure Search'
 description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és a Azure Search REST API-k használatával.
 author: lisaleib
 manager: nitinme
@@ -10,15 +10,15 @@ ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/11/2019
-ms.openlocfilehash: eec22d14c2d71a94f21a2403463315d477032ede
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 09/10/2019
+ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186726"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881573"
 ---
-# <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Gyors útmutató: Indexek létrehozása, betöltése és lekérdezése Azure Search REST API-val Java használatával
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -135,7 +135,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
 1. Válassza a **fájl** > **projekt szerkezete**lehetőséget.
-1. Válasszaki a modulokat, és bontsa ki a forrás fát a `src` `main` mappa tartalmának  >   eléréséhez.
+1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` `main` mappa tartalmának  >   eléréséhez.
 1. A mappában `src` adja hozzá  >   `main`  >  aés`java` a mappákat. `service` `app` Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
 1. A mappában `src` adja hozzá  >   `main`  > aés`resources` a mappákat. `service` `app`
 

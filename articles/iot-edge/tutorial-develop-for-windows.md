@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541930"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915139"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok létrehozása Windows-eszközökhöz
 
@@ -43,7 +43,7 @@ IoT Edge modulok fejlesztésekor fontos megérteni a fejlesztési gép és a cé
 
 Ez az oktatóanyag a IoT Edge rendszert futtató Windows-eszközöket célozza meg. A Windows IoT Edge-eszközök Windows-tárolókat használnak. Javasoljuk, hogy a Visual Studio használatával fejlesszen a Windows-eszközökön, hogy ez az oktatóanyag milyen módon fog használatba venni. Használhatja a Visual Studio Code-ot is, de a két eszköz között eltérések vannak.
 
-A következő táblázat a **Windows** -tárolók támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
+A következő táblázat a **Windows-tárolók** támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
@@ -76,7 +76,7 @@ Telepítse a Docker dokumentációját a fejlesztői gépre való telepítéshez
 
 * [A Windows rendszerhez készült Docker Desktop telepítése](https://docs.docker.com/docker-for-windows/install/)
 
-  * A Windows rendszerhez készült Docker Desktop telepítésekor megkérdezi, hogy Linux-vagy Windows-tárolókat kíván-e használni. Ebben az oktatóanyagban használja a **Windows**-tárolókat. További információ: váltás a [Windows és a Linux rendszerű tárolók között](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+  * A Windows rendszerhez készült Docker Desktop telepítésekor megkérdezi, hogy Linux-vagy Windows-tárolókat kíván-e használni. Ebben az oktatóanyagban használja a **Windows-tárolókat**. További információ: váltás a [Windows és a Linux rendszerű tárolók között](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 
 ## <a name="set-up-visual-studio-and-tools"></a>A Visual Studio és az eszközök beállítása
@@ -131,7 +131,7 @@ A Azure IoT Edge Tools bővítmény a Visual Studióban az összes támogatott I
 
    | Mező | Value |
    | ----- | ----- |
-   | Visual Studio-sablon | Válassza **C#** ki a modult. | 
+   | Visual Studio-sablon | Válassza ki  **C# a modult**. | 
    | Modulnév | Fogadja el az alapértelmezett **IotEdgeModule1**. | 
    | Adattár URL-címe | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/iotedgemodule1. |
 
@@ -194,13 +194,13 @@ A Project C# sablonhoz tartozó mintakód a [ModuleClient osztályt](https://doc
 
 6. Keresse meg a $edgeAgent kívánt tulajdonságok **modulok** tulajdonságát. 
 
-   Itt két modulnak kell szerepelnie. Az első a **tempSensor**, amely alapértelmezés szerint az összes sablonban szerepel, hogy szimulált hőmérsékleti értékeket biztosítson, amelyeket a modulok tesztelésére használhat. A második a projekt részeként létrehozott **IotEdgeModule1** -modul.
+   Itt két modulnak kell szerepelnie. Az első a **SimulatedTemperatureSensor**, amely alapértelmezés szerint az összes sablonban szerepel, hogy szimulált hőmérsékleti értékeket biztosítson, amelyeket a modulok tesztelésére használhat. A második a projekt részeként létrehozott **IotEdgeModule1** -modul.
 
    Ez a modul-tulajdonság azt deklarálja, hogy mely modulok szerepeljenek az eszközön vagy az eszközökön való üzembe helyezésben. 
 
-7. Keresse meg a $edgeHub kívánt tulajdonságok Routes ( **útvonalak** ) tulajdonságát. 
+7. Keresse meg a $edgeHub kívánt tulajdonságok **Routes (útvonalak** ) tulajdonságát. 
 
-   A függvények egyike, ha az IoT Edge hub-modul az üzenetek továbbítására szolgál a központi telepítés összes modulja között. Tekintse át az útvonalak tulajdonságban található értékeket. A **IotEdgeModule1ToIoTHub**első útvonala helyettesítő karaktert ( **\*** ) használ a IotEdgeModule1 modulban található bármelyik kimeneti sorból érkező üzenet belefoglalásához. Ezek az üzenetek bekerülnek *$upstreamba*, amely egy fenntartott név, amely IoT hub jelzi. A második útvonal, a **sensorToIotEdgeModule1**, a tempSensor-modultól érkező üzeneteket fogadja, és átirányítja őket a IotEdgeModule1 modul *input1* bemeneti sorába. 
+   A függvények egyike, ha az IoT Edge hub-modul az üzenetek továbbítására szolgál a központi telepítés összes modulja között. Tekintse át az útvonalak tulajdonságban található értékeket. A **IotEdgeModule1ToIoTHub**első útvonala helyettesítő karaktert ( **\*** ) használ a IotEdgeModule1 modulban található bármelyik kimeneti sorból érkező üzenet belefoglalásához. Ezek az üzenetek bekerülnek *$upstreamba*, amely egy fenntartott név, amely IoT hub jelzi. A második útvonal, a **sensorToIotEdgeModule1**, a SimulatedTemperatureSensor-modultól érkező üzeneteket fogadja, és átirányítja őket a IotEdgeModule1 modul *input1* bemeneti sorába. 
 
    ![Útvonalak áttekintése a Deployment. template. JSON fájlban](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +284,14 @@ Ellenőrizte, hogy a rendszer a tároló beállításjegyzékében tárolja a be
 
 4. Bontsa ki a IoT Edge eszközének részleteit a Cloud Explorerben, és tekintse meg az eszközön található modulokat.
 
-5. Az eszköz állapotának frissítéséhez használja a refresh ( **frissítés** ) gombot, és ellenőrizze, hogy a tempSensor és a IotEdgeModule1 modulok telepítve vannak-e az eszközön. 
+5. Az eszköz állapotának frissítéséhez használja a **refresh (frissítés** ) gombot, és ellenőrizze, hogy a SimulatedTemperatureSensor és a IotEdgeModule1 modulok telepítve vannak-e az eszközön. 
 
 
    ![A IoT Edge eszközön futó modulok megtekintése](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>Üzenetek megtekintése az eszközről
 
-A IotEdgeModule1 kód üzeneteket fogad a bemeneti várólistán keresztül, és továbbítja azokat a kimeneti várólistán keresztül. Az üzembe helyezési jegyzék olyan útvonalakat jelentett be, amelyek üzeneteket továbbítanak a tempSensor a IotEdgeModule1-be, majd továbbítottak üzeneteket a IotEdgeModule1-ből a IoT Hubba. A Visual studióhoz készült Azure IoT Edge Tools lehetővé teszi, hogy az egyes eszközökről érkező IoT Hub megtekintse az üzeneteket. 
+A IotEdgeModule1 kód üzeneteket fogad a bemeneti várólistán keresztül, és továbbítja azokat a kimeneti várólistán keresztül. Az üzembe helyezési jegyzék olyan útvonalakat jelentett be, amelyek üzeneteket továbbítanak a SimulatedTemperatureSensor a IotEdgeModule1-be, majd továbbítottak üzeneteket a IotEdgeModule1-ből a IoT Hubba. A Visual studióhoz készült Azure IoT Edge Tools lehetővé teszi, hogy az egyes eszközökről érkező IoT Hub megtekintse az üzeneteket. 
 
 1. A Visual Studio Cloud Explorerben válassza ki annak a IoT Edge eszköznek a nevét, amelyet központilag telepített. 
 
@@ -315,7 +315,7 @@ Az ebben a szakaszban található parancsok a IoT Edge eszközre, nem pedig a fe
    iotedge list
    ```
 
-   Négy modulnak kell megjelennie: a két IoT Edge futásidejű modul, a tempSensor és a IotEdgeModule1. Mind a négynek szerepelnie kell futtatásként.
+   Négy modulnak kell megjelennie: a két IoT Edge futásidejű modul, a SimulatedTemperatureSensor és a IotEdgeModule1. Mind a négynek szerepelnie kell futtatásként.
 
 * Egy adott modul naplófájljainak vizsgálata:
 
@@ -325,7 +325,7 @@ Az ebben a szakaszban található parancsok a IoT Edge eszközre, nem pedig a fe
 
    A IoT Edge modulok megkülönböztetik a kis-és nagybetűket. 
 
-   A tempSensor és a IotEdgeModule1 naplóknak meg kell jeleníteniük a feldolgozás alatt lévő üzeneteket. A edgeAgent modul felelős a többi modul indításához, így a naplók az üzembe helyezési jegyzék megvalósításával kapcsolatos információkat fognak tartalmazni. Ha valamelyik modul nem jelenik meg vagy nem fut, a edgeAgent-naplók valószínűleg a hibákkal fognak rendelkezni. A edgeHub modul felelős a modulok és a IoT Hub közötti kommunikációért. Ha a modulok működése folyamatban van, de az üzenetek nem érkeznek meg az IoT hub-ba, akkor a edgeHub-naplók valószínűleg a hibákkal fognak rendelkezni. 
+   A SimulatedTemperatureSensor és a IotEdgeModule1 naplóknak meg kell jeleníteniük a feldolgozás alatt lévő üzeneteket. A edgeAgent modul felelős a többi modul indításához, így a naplók az üzembe helyezési jegyzék megvalósításával kapcsolatos információkat fognak tartalmazni. Ha valamelyik modul nem jelenik meg vagy nem fut, a edgeAgent-naplók valószínűleg a hibákkal fognak rendelkezni. A edgeHub modul felelős a modulok és a IoT Hub közötti kommunikációért. Ha a modulok működése folyamatban van, de az üzenetek nem érkeznek meg az IoT hub-ba, akkor a edgeHub-naplók valószínűleg a hibákkal fognak rendelkezni. 
 
 ## <a name="next-steps"></a>További lépések
 

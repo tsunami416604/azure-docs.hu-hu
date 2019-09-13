@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b13eb6f61aed37344e0df3c864e021f68a4ca85b
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736480"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900287"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Oktatóanyag: Azure Toolkit for IntelliJ használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: Apache Spark alkalmazások létrehozása a HDInsight-fürthöz Azure Toolkit for IntelliJ használatával
 
 Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for IntelliJ beépülő modul a [Scala](https://www.scala-lang.org/)-ben írt Apache Spark alkalmazások fejlesztéséhez, majd a HDInsight Spark-fürtbe való beküldéshez közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A beépülő modult többféleképpen is használhatja:
 
@@ -135,27 +135,27 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
        
-   ![Az Azure Explorer hivatkozása](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
+   ![Az Azure Explorer megjelenítése](./media/apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 
 2. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Bejelentkezés**lehetőséget.
    
-   ![Az Azure Explorer hivatkozása](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   ![Explorer jobb gombbal kattintson az Azure elemre](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. Az **Azure bejelentkezési** párbeszédpanelen válassza az **eszköz bejelentkezés**lehetőséget, majd válassza a **Bejelentkezés**lehetőséget.
 
-    ![Az Azure bejelentkezési párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
+    ![Explorer 2 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-2.png)
 
 4. Az **Azure-eszköz bejelentkezési** párbeszédpanelén kattintson a **Másolás & Megnyitás**elemre.
    
-   ![Az Azure bejelentkezési párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
+   ![Explorer 5 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-5.png)
 
 5. A böngésző felületén illessze be a kódot, majd kattintson a **tovább**gombra.
    
-   ![Az Azure bejelentkezési párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
+   ![Explorer 6 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-6.png)
 
 6. Adja meg az Azure-beli hitelesítő adatait, majd zárjuk be a böngészőt.
    
-   ![Az Azure bejelentkezési párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
+   ![Explorer 7 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-7.png)
 
 7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd kattintson a **kiválasztás** gombra.
 
@@ -163,7 +163,7 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 8. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet, és tekintse meg az előfizetésekben található HDInsight Spark-fürtöket.
 
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
+    ![Explorer 3 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-3.png)
 
 9.  Ha meg szeretné tekinteni a fürthöz társított erőforrásokat (például Storage-fiókokat), akkor tovább bővítheti a fürt neve csomópontot.
 
@@ -213,7 +213,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
 2. A fürtöket az **Azure Explorerben**is leválaszthatja.
 
-   ![nem összekapcsolt fürt](./media/apache-spark-intellij-tool-plugin/unlink.png)
+   ![nem összekapcsolt fürt](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Spark Scala-alkalmazás futtatása HDInsight Spark-fürtön
 
@@ -377,17 +377,17 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
        
 2. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet az előfizetésében található HDInsight-fürtök megtekintéséhez. A **"szerepkör: olvasó"** jelölésű fürtökön csak a csak olvasási jogosultsággal rendelkező szerepkör jogosult.
 
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
+    ![az Explorer 15 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-15.png)
 
 3. Kattintson a jobb gombbal a fürtre, csak a csak olvasó szerepkörre vonatkozó engedéllyel. Válassza a **fürt csatolása** a helyi menüből lehetőséget a fürt összekapcsolásához. Adja meg a Ambari felhasználónevét és jelszavát.
 
   
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
+    ![Explorer 11 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-11.png)
 
 4. Ha a fürt sikeresen csatolva van, a rendszer frissíti a HDInsight.
    A fürt szakasza csatolva lesz.
   
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
+    ![Explorer 8 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Fürt csatolása a feladatok csomópont kibontásával
 
@@ -395,7 +395,7 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
    
 2. Kattintson **a fürt összekapcsolása** elemre a fürt csatolásához.
    
-    ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
+    ![Explorer 9 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>Fürt csatolása a futtatási/hibakeresési konfigurációk ablakból
 
@@ -403,21 +403,21 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
    
 2. Válasszon ki egy olyan fürtöt, amely csak a csak a Linux rendszerre vonatkozó szerepkör-engedéllyel rendelkezik a **Spark-fürtökhöz**. Figyelmeztető üzenet jelenik meg. A fürt csatolásához kattintson **a fürt csatolása** lehetőségre.
    
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
+   ![1\. konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin/create-config-1.png)
    
 ### <a name="view-storage-accounts"></a>Storage-fiókok megtekintése
 
 * A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés megtagadva** ablakra. A **Azure Storage Explorer** megnyitása lehetőségre kattintva megnyithatja Storage Explorer.
      
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
+   ![Explorer 14 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
+   ![Explorer 10 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
 
 * A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület- **hozzáférés megtagadva** ablak jelenik meg. Az **Azure Storage megnyitása** lehetőségre kattintva megnyithatja Storage Explorer.
      
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
+   ![Explorer 13 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 
-   ![HDInsight Spark-fürtök az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
+   ![Explorer 12 megtekintése](./media/apache-spark-intellij-tool-plugin/view-explorer-12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Meglévő IntelliJ IDEA-alkalmazások konvertálása Azure Toolkit for IntelliJ használatára
 

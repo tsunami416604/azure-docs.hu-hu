@@ -3,18 +3,18 @@ title: Key Vault .NET 2. x API kibocsátási megjegyzései | Microsoft Docs
 description: A .NET-fejlesztők ezt az API-t fogják használni a Azure Key Vault kódjához
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 editor: bryanla
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260441"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883263"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – kibocsátási megjegyzések és áttelepítési útmutató
 A következő információk segítséget nyújtnak a Azure Key Vault könyvtárának 2,0 C# -es verziójára és a .net-re való áttelepítésre.  A korábbi verziókhoz írt alkalmazásokat frissíteni kell a legújabb verzió támogatásához.  Ezek a módosítások az új és továbbfejlesztett szolgáltatások, például **Key Vault tanúsítványok**teljes körű támogatásához szükségesek.
@@ -48,7 +48,7 @@ Key Vault tanúsítványok kezelik a x509-tanúsítványokat, és a következő 
 
 * A *titkos* kód a *SecretBundle* módosult
 * A *szótár* *IDictionary* módosult
-* *A\<t > listázása, a sztring []* *IList\<T* -re változott >
+* *A\<t > listázása, a sztring []* *\<IList T* -re változott >
 * A *NextList* *NextPageLink* módosult
 
 ## <a name="return-types"></a>Visszatérési típusok
@@ -98,7 +98,7 @@ Ha egy ügyfél Key Vault függőséget dolgoz fel, a következő csomagok tölt
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* A tárolót visszaadó műveletek esetében a visszatérési típus olyan osztály volt, amely egy  tár tulajdonságot foglalt magukban. A visszatérési típus most a *Vault*.
+* A tárolót visszaadó műveletekesetében a visszatérési típus olyan osztály volt, amely egy tár tulajdonságot foglalt magukban. A visszatérési típus most a *Vault*.
 * A *PermissionsToKeys* és a *PermissionsToSecrets* mostantól engedélyekkel rendelkeznek *. kulcsok* és *engedélyek. titkok*
 * Bizonyos visszatérési típusok változásai a vezérlő-síkon is érvényesek.
 

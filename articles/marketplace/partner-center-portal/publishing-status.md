@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191778"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883405"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 
@@ -97,7 +97,10 @@ Ez a jelentés a sikertelen házirendek leírásait tartalmazza, valamint a fel�
 
 ## <a name="preview-creation"></a>Előnézet létrehozása
 
-Az **előzetes** verziójú létrehozási lépés során az ajánlat egy verzióját csak az ajánlat előzetes verzió szakaszában megadott célközönség számára elérhetővé tesszük.
+Az **előzetes verziójú létrehozási** lépés során az ajánlat egy verzióját csak az ajánlat előzetes verzió szakaszában megadott célközönség számára elérhetővé tesszük.
+
+>[!Note]
+> Ne használja ezt a lépést, ha a szervezeten kívüli személyeket is meg szeretné adni egy ajánlatban. Használja helyette a **privát ajánlat** lehetőséget. Ezen a ponton az ajánlat nem lett teljes körűen tesztelve és érvényesítve, és nem áll készen a külső terjesztésre.
 
 ## <a name="publisher-approval"></a>Közzétevő jóváhagyása
 

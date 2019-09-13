@@ -1,5 +1,5 @@
 ---
-title: HTTP-API-k a Durable Functions-ben – Azure
+title: HTTP-API-k Durable Functions-Azure Functions
 description: Megtudhatja, hogyan implementálhat HTTP API-kat a Azure Functions Durable Functions-bővítményében.
 services: functions
 author: cgillum
@@ -7,93 +7,20 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734270"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933390"
 ---
-# <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-API-k Durable Functions (Azure Functions)
+# <a name="http-api-reference"></a>HTTP API-referenciák
 
-A tartós feladathoz tartozó bővítmény olyan HTTP API-kat tesz elérhetővé, amelyek a következő feladatok végrehajtására használhatók:
+Az Durable Functions-bővítmény olyan beépített HTTP API-kat tesz elérhetővé, amelyek segítségével felügyeleti feladatokat hajthat végre az [előkészítési, az](durable-functions-types-features-overview.md#orchestrator-functions) [entitások](durable-functions-types-features-overview.md#entity-functions)és a [feladatok hubokon](durable-functions-task-hubs.md). Ezek a HTTP-API-k olyan bővíthetőségi webhookok, amelyek a Azure Functions gazdagép által engedélyezettek, de közvetlenül a Durable Functions bővítménnyel kezelhetők.
 
-* Egy előkészítési példány állapotának beolvasása.
-* Esemény küldése várakozási összehangoló példánynak.
-* Egy futó összehangoló példány leállítása.
-
-A HTTP API-k mindegyike egy webhook-művelet, amelyet közvetlenül a tartós feladatok bővítménye kezel. Nem tartoznak a Function alkalmazás egyik függvényéhez sem.
-
-> [!NOTE]
-> Ezek a műveletek közvetlenül is meghívhatók a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály példány-felügyeleti API-jai használatával. További információ: [példányok kezelése](durable-functions-instance-management.md).
-
-## <a name="http-api-url-discovery"></a>HTTP API URL-cím felderítése
-
-A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály egy [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API-t tesz elérhetővé, amely az összes támogatott műveletre mutató hivatkozásokat tartalmazó http-válasz adattartalom létrehozásához használható. Az alábbi példa egy HTTP-trigger függvényt mutat be, amely bemutatja, hogyan használhatja ezt az API-t:
-
-### <a name="precompiled-c"></a>ElőfordítottC#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
-
-### <a name="c-script"></a>C#Parancsfájl
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
-
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
-
-Az alábbi példában szereplő függvények a JSON-válaszok következő adatait eredményezik. Az összes mező `string`adattípusa.
-
-| Mező                   |Leírás                           |
-|-----------------------------|--------------------------------------|
-| **`id`**                    |A koordináló példány azonosítója. |
-| **`statusQueryGetUri`**     |A koordináló példány állapotának URL-címe |
-| **`sendEventPostUri`**      |A hangolási példány "esemény előléptetése" URL-címe. |
-| **`terminatePostUri`**      |A koordináló példány "leállítási" URL-címe. |
-| **`purgeHistoryDeleteUri`** |A koordináló példány "törlési előzmények" URL-címe. |
-| **`rewindPostUri`**         |előnézet A hangolási példány "Rewind" URL-címe. |
-
-Példa erre a válaszra:
-
-```http
-HTTP/1.1 202 Accepted
-Content-Length: 923
-Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
-
-{
-    "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
-    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
-}
-```
-
-> [!NOTE]
-> A webhook URL-címeinek formátuma eltérő lehet attól függően, hogy a Azure Functions gazdagép melyik verzióját futtatja. A fenti példa a Azure Functions 2. x gazdagépre mutat.
-
-## <a name="async-operation-tracking"></a>Aszinkron művelet követése
-
-A korábban említett HTTP-válasz úgy lett kialakítva, hogy segítse a hosszú ideig futó HTTP aszinkron API-k megvalósítását Durable Functions. Ezt más néven a *lekérdezési fogyasztói mintának*nevezzük. Az ügyfél/kiszolgáló folyamat a következőképpen működik:
-
-1. Az ügyfél HTTP-kérést bocsát ki egy hosszú ideig futó folyamat elindításához, például egy Orchestrator függvényt.
-2. A cél http-trigger egy http 202 választ ad vissza `Location` , amely egy `statusQueryGetUri` fejlécet tartalmaz az értékkel.
-3. Az ügyfél lekérdezi az URL- `Location` címet a fejlécben. Továbbra is megjelenik `Location` a http 202-válaszok fejléctel.
-4. Ha a példány befejeződik (vagy sikertelen), a `Location` fejlécben található végpont a http 200 értéket adja vissza.
-
-Ez a protokoll lehetővé teszi a hosszan futó folyamatok koordinálását olyan külső ügyfelekkel vagy szolgáltatásokkal, amelyek támogatják a http- `Location` végpontok lekérdezését és a fejlécet követve. Az alapvető darabok már be vannak építve a Durable Functions HTTP API-khoz.
-
-> [!NOTE]
-> Alapértelmezés szerint a [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/) által biztosított összes HTTP-alapú művelet támogatja a normál aszinkron műveleti mintát. Ez a funkció lehetővé teszi a hosszan futó tartós funkciók beágyazását egy Logic Apps munkafolyamat részeként. Az aszinkron HTTP-minták támogatásáról Logic Apps további részleteket a [Azure Logic apps munkafolyamat-műveletek és eseményindítók dokumentációjában](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)talál.
-
-## <a name="http-api-reference"></a>HTTP API-referenciák
-
-A bővítmény által megvalósított összes HTTP API a következő paramétereket használja. Az összes paraméter `string`adattípusa.
+A bővítmény által megvalósított összes HTTP API-nak a következő paramétereket kell megadni. Az összes paraméter `string`adattípusa.
 
 | Paraméter        | Paraméter típusa  | Leírás |
 |------------------|-----------------|-------------|
@@ -105,17 +32,101 @@ A bővítmény által megvalósított összes HTTP API a következő paramétere
 
 A következő néhány szakasz a bővítmény által támogatott HTTP API-kat fedi le, és példákat is tartalmaz a használatuk módjára.
 
-### <a name="get-instance-status"></a>Példány állapotának beolvasása
+## <a name="start-orchestration"></a>Előkészítés megkezdése
+
+Elindítja a megadott Orchestrator függvény új példányának végrehajtását.
+
+### <a name="request"></a>Kérés
+
+A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
+
+```http
+POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
+
+A functions Runtime 2. x verziójában az URL-formátum ugyanazokkal a paraméterekkel rendelkezik, mint egy kissé eltérő előtaggal:
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
+
+Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
+
+| Mező              | Paraméter típusa  | Leírás |
+|--------------------|-----------------|-------------|
+| **`functionName`** | URL             | Az elindítani kívánt Orchestrator-függvény neve. |
+| **`instanceId`**   | URL             | Nem kötelező paraméter. A koordináló példány azonosítója. Ha nincs megadva, a Orchestrator függvény véletlenszerűen kiválasztott AZONOSÍTÓJÚ példánnyal fog kezdődni. |
+| **`{content}`**    | Tartalom kérése | Nem kötelező. A JSON-formátumú Orchestrator függvény bemenete. |
+
+### <a name="response"></a>Válasz
+
+Több lehetséges állapotkód-érték is visszaadható.
+
+* **HTTP 202 (elfogadva)** : A megadott Orchestrator függvény futtatásának ütemezése megkezdődött. A `Location` válasz fejléce tartalmaz egy URL-címet, amely a hanghívási állapot lekérdezésére használható.
+* **HTTP 400 (hibás kérelem)** : A megadott Orchestrator függvény nem létezik, a megadott példány-azonosító érvénytelen, vagy a kérelem tartalma nem volt érvényes JSON.
+
+Az alábbi példa egy `RestartVMs` Orchestrator-függvény indítására szolgáló kérelmet tartalmaz, amely JSON-objektumok hasznos adatait tartalmazza:
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/RestartVMs?code=XXX
+Content-Type: application/json
+Content-Length: 83
+
+{
+    "resourceGroup": "myRG",
+    "subscriptionId": "111deb5d-09df-4604-992e-a968345530a9"
+}
+```
+
+A **HTTP 202** -esetek válasza egy JSON-objektum, amely a következő mezőket tartalmazhatja:
+
+| Mező                       | Leírás                          |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |A koordináló példány azonosítója. |
+| **`statusQueryGetUri`**     |A koordináló példány állapotának URL-címe |
+| **`sendEventPostUri`**      |A hangolási példány "esemény előléptetése" URL-címe. |
+| **`terminatePostUri`**      |A koordináló példány "leállítási" URL-címe. |
+| **`purgeHistoryDeleteUri`** |A koordináló példány "törlési előzmények" URL-címe. |
+| **`rewindPostUri`**         |előnézet A hangolási példány "Rewind" URL-címe. |
+
+Az összes mező `string`adattípusa.
+
+Az alábbi példa egy, a (z) azonosítóval rendelkező `abc123` összehangoló példány válaszának adattartalmát szemlélteti (az olvashatóság érdekében formázva):
+
+```http
+{
+    "id": "abc123",
+    "purgeHistoryDeleteUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/raiseEvent/{eventName}?code=XXX",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/terminate?reason={text}&code=XXX"
+}
+```
+
+A http-válasz célja, hogy kompatibilis legyen a *lekérdezési fogyasztói mintával*. A következő jelentős válasz fejléceket is tartalmazza:
+
+* **Hely**: Az állapot végpontjának URL-címe Ez az URL-cím a `statusQueryGetUri` mezővel megegyező értéket tartalmaz.
+* **Újrapróbálkozás**: Azon másodpercek száma, ameddig a lekérdezési műveletek között várni kell. Az alapértelmezett érték `10`.
+
+Az aszinkron HTTP-lekérdezési mintával kapcsolatos további információkért tekintse meg az aszinkron http- [műveletek követése](durable-functions-http-features.md#async-operation-tracking) dokumentációját.
+
+## <a name="get-instance-status"></a>Példány állapotának beolvasása
 
 Egy megadott összehangoló példány állapotának beolvasása.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
-    ?taskHub={taskHub
+    ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
     &showHistory=[true|false]
@@ -145,9 +156,9 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha a értékre `true`van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
 | **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
 | **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
-| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) témakört. |
+| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 Több lehetséges állapotkód-érték is visszaadható.
 
@@ -161,7 +172,7 @@ A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-obje
 
 | Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | Karakterlánc    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, *megszakított*, *leállított*, *befejezett*. |
+| **`runtimeStatus`**   | Karakterlánc    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, megszakított, leállított, *befejezett*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatbázis. Ez a mező `null` akkor van `showInput` beállítva, ha a lekérdezési `false`karakterlánc paraméter értéke.|
 | **`customStatus`**    | JSON      | Az egyéni előkészítési állapothoz használt JSON-adatértékek. `null` Ha nincs beállítva ez a mező. |
 | **`output`**          | JSON      | A példány JSON-kimenete. Ez a mező `null` akkor áll fenn, ha a példány nem befejezett állapotban van. |
@@ -226,14 +237,14 @@ A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-obje
 
 A **http 202** válasza tartalmaz egy **Location** Response fejlécet is, amely ugyanarra az URL `statusQueryGetUri` -címre hivatkozik, mint a korábban említett mező.
 
-### <a name="get-all-instances-status"></a>Az összes példány állapotának lekérése
+## <a name="get-all-instances-status"></a>Az összes példány állapotának lekérése
 
 Az összes példány `instanceId` állapotát lekérdezheti a "példány állapotának beolvasása" kérelemből. Ebben az esetben az alapszintű paraméterek ugyanazok, mint a "példány lekérése" állapot. A szűréshez a lekérdezési karakterlánc paraméterei is támogatottak.
 
-Az egyik dolog megjegyezni, hogy `connection` a `code` és a nem kötelező. Ha a függvényben névtelen hitelesítés van, akkor a kódnak nem kell megadnia.
+Az egyik dolog megjegyezni, hogy `connection` a `code` és a nem kötelező. Ha a függvényben névtelen hitelesítés található, akkor `code` nem szükséges.
 Ha nem szeretne más tárolási kapcsolódási karakterláncot használni, mint a AzureWebJobsStorage alkalmazás beállítása, akkor nyugodtan figyelmen kívül hagyhatja a kapcsolódási lekérdezési karakterlánc paraméterét.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -273,10 +284,10 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha a értékre `true`van állítva, a függvény kimenetei szerepelni fognak a előkészítési végrehajtási előzményekben.|
 | **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt követően létrehozott visszaadott példányok listáját.|
 | **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, szűri a megadott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott visszaadott példányok listáját.|
-| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) témakört. |
+| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a visszaadott példányok listáját a futásidejű állapotuk alapján szűri. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
 | **`top`**               | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, korlátozza a lekérdezés által visszaadott példányok számát. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 Íme egy példa a válasz hasznos adataira, beleértve az előkészítési állapotot (az olvashatóság érdekében formázva):
 
@@ -337,11 +348,11 @@ Ha több találat is létezik, a rendszer egy folytatási tokent ad vissza a vá
 
 Ha a folytatási jogkivonat értékét a következő kérelem fejlécében állítja be, akkor az eredmények következő oldalát szerezheti be. A kérelem fejlécének neve is `x-ms-continuation-token`.
 
-### <a name="purge-single-instance-history"></a>Egypéldányos előzmények végleges törlése
+## <a name="purge-single-instance-history"></a>Egypéldányos előzmények végleges törlése
 
 Törli a megadott előkészítési példány előzményeit és a kapcsolódó összetevőket.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -367,7 +378,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | A koordináló példány azonosítója. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 A következő HTTP-állapotkód értékei adhatók vissza.
 
@@ -388,11 +399,11 @@ A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő
 }
 ```
 
-### <a name="purge-multiple-instance-history"></a>Több példány előzményeinek kiürítése
+## <a name="purge-multiple-instance-histories"></a>Több példányos előzmények törlése
 
 Az előzményeket és a kapcsolódó összetevőket is törölheti egy adott munkaközpontban található több példányhoz, `{instanceId}` ha eltávolítja az "egypéldány-előzmények kiürítése" kérést. A példányok előzményeinek szelektív törléséhez használja az "összes példány állapota" kérelemben ismertetett szűrőket.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -424,12 +435,12 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Lekérdezési sztring    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
 | **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|
-| **`runtimeStatus`**   | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a rendszer kiszűri a törölt példányok listáját a futásidejű állapotuk alapján. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) témakört. |
+| **`runtimeStatus`**   | Lekérdezési sztring    | Nem kötelező paraméter. Ha meg van adva, a rendszer kiszűri a törölt példányok listáját a futásidejű állapotuk alapján. A lehetséges futásidejű állapotüzenetek listájának megtekintéséhez tekintse meg a [példányok lekérdezése](durable-functions-instance-management.md) című cikket. |
 
 > [!NOTE]
 > Ez a művelet nagyon költséges lehet az Azure Storage I/O esetében, ha a példányok és/vagy az előzmények táblázatában sok sor van. A táblázatokkal kapcsolatos további részletekért tekintse meg a [Durable functions (Azure functions) dokumentációjának teljesítményét és méretezését](durable-functions-perf-and-scale.md#instances-table) .
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 A következő HTTP-állapotkód értékei adhatók vissza.
 
@@ -450,11 +461,11 @@ A **HTTP 200** eset válaszának tartalma egy JSON-objektum, amely a következő
 }
 ```
 
-### <a name="raise-event"></a>Esemény előléptetése
+## <a name="raise-event"></a>Esemény előléptetése
 
 Esemény-értesítési üzenet küldése egy futó összehangoló példánynak.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -482,7 +493,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`eventName`**   | URL             | Annak az eseménynek a neve, amelyre a cél-előkészítési példány várakozik. |
 | **`{content}`**   | Tartalom kérése | A JSON-formátumú esemény hasznos adata. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 Több lehetséges állapotkód-érték is visszaadható.
 
@@ -503,11 +514,11 @@ Content-Length: 6
 
 Az API-val kapcsolatos válaszok nem tartalmaznak tartalmat.
 
-### <a name="terminate-instance"></a>Példány leállítása
+## <a name="terminate-instance"></a>Példány leállítása
 
 Leállítja a futó összehangoló példányt.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -536,7 +547,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`instanceId`**  | URL             | A koordináló példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Nem kötelező. Az előkészítési példány megszakításának oka. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 Több lehetséges állapotkód-érték is visszaadható.
 
@@ -552,11 +563,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Az API-val kapcsolatos válaszok nem tartalmaznak tartalmat.
 
-### <a name="rewind-instance-preview"></a>Felcsévélési példány (előzetes verzió)
+## <a name="rewind-instance-preview"></a>Felcsévélési példány (előzetes verzió)
 
 Visszaállítja a sikertelen előkészítési példányt egy futó állapotba a legutóbbi sikertelen műveletek visszajátszásával.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A functions futtatókörnyezet 1. x verziójában a kérelem formázása az alábbiak szerint történik (az érthetőség kedvéért több sor jelenik meg):
 
@@ -585,7 +596,7 @@ Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett
 | **`instanceId`**  | URL             | A koordináló példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Nem kötelező. Az előkészítési példány újratekercselésének oka. |
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 Több lehetséges állapotkód-érték is visszaadható.
 
@@ -601,11 +612,14 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Az API-val kapcsolatos válaszok nem tartalmaznak tartalmat.
 
-### <a name="signal-entity-preview"></a>Jel entitás (előzetes verzió)
+## <a name="signal-entity"></a>Jel entitás
 
 Egy egyirányú műveleti üzenetet küld egy [tartós entitásnak](durable-functions-types-features-overview.md#entity-functions). Ha az entitás nem létezik, a rendszer automatikusan létrehozza.
 
-#### <a name="request"></a>Kérés
+> [!NOTE]
+> A tartós entitások Durable Functions 2,0-tól kezdve érhetők el.
+
+### <a name="request"></a>Kérés
 
 A HTTP-kérés a következőképpen van formázva (az érthetőség kedvéért több sor jelenik meg):
 
@@ -635,7 +649,7 @@ Content-Type: application/json
 5
 ```
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 A művelet több lehetséges választ tartalmaz:
 
@@ -645,11 +659,11 @@ A művelet több lehetséges választ tartalmaz:
 
 A sikeres HTTP-kérések nem tartalmaznak semmilyen tartalmat a válaszban. A hibás HTTP-kérések tartalmazhatnak JSON-formátumú hibákat a válasz tartalmában.
 
-### <a name="query-entity-preview"></a>Lekérdezési entitás (előzetes verzió)
+## <a name="query-entity"></a>Lekérdezési entitás
 
 Lekéri a megadott entitás állapotát.
 
-#### <a name="request"></a>Kérés
+### <a name="request"></a>Kérés
 
 A HTTP-kérés a következőképpen van formázva (az érthetőség kedvéért több sor jelenik meg):
 
@@ -660,7 +674,7 @@ GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
     &code={systemKey}
 ```
 
-#### <a name="response"></a>Válasz
+### <a name="response"></a>Válasz
 
 A művelet két lehetséges választ tartalmaz:
 
@@ -669,8 +683,8 @@ A művelet két lehetséges választ tartalmaz:
 
 A sikeres válasz az entitás JSON-szerializált állapotát tartalmazza tartalomként.
 
-#### <a name="example"></a>Példa
-A következő példa egy olyan HTTP-kérésre mutat be, amely egy nevű `Counter` `steps`meglévő entitás állapotát kapja:
+### <a name="example"></a>Példa
+Az alábbi http-kérelem egy nevű `Counter` `steps`meglévő entitás állapotát kéri le:
 
 ```http
 GET /runtime/webhooks/durabletask/entities/Counter/steps
@@ -687,4 +701,4 @@ Ha az `Counter` entitás egyszerűen több, egy `currentValue` mezőben mentett 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató a hibák kezeléséhez](durable-functions-error-handling.md)
+> [Ismerje meg, hogyan használható a Application Insights a tartós függvények figyeléséhez](durable-functions-diagnostics.md)

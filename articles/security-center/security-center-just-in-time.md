@@ -2,31 +2,25 @@
 title: A virtuális gépek igény szerinti elérése a Azure Security Centerban | Microsoft Docs
 description: Ez a dokumentum azt mutatja be, hogy az Azure Security Center az Azure-beli virtuális gépekhez való hozzáférés szabályozása miként segít az igény szerinti virtuálisgép-hozzáférésben.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872913"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910609"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
 Az igény szerinti (JIT) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges.
 
 > [!NOTE]
-> Az igény szerinti funkció a Security Center standard szintű csomagjában érhető el.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+> Az igény szerinti funkció a Security Center standard szintű csomagjában érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
 
 
 > [!NOTE]
@@ -36,7 +30,7 @@ Az igény szerinti (JIT) virtuálisgép-hozzáférés lehetővé teszi az Azure-
 
 A találgatásos támadások általában a felügyeleti portok megcélzására szolgálnak, hogy hozzáférjenek a virtuális gépekhez. Ha ez sikeres, a támadó átveheti a vezérlést a virtuális gépen, és megadhat egy lábát a környezetében.
 
-A találgatásos támadásoknak való kitettség csökkentése az egyik lehetőség, hogy korlátozza a portok megnyitásának időtartamát. A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. Ha az igény szerinti hozzáférés engedélyezve van, a Security Center a [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) (NSG) és a Azure Firewall szabályok használatával korlátozza a felügyeleti portok elérését, hogy a támadók ne tudják megcélozni azokat.
+A találgatásos támadásoknak való kitettség csökkentése az egyik lehetőség, hogy korlátozza a portok megnyitásának időtartamát. A felügyeleti portokat nem kell mindig megnyitnia. Csak akkor kell megnyitnia őket, amikor csatlakozik a virtuális géphez, például felügyeleti vagy karbantartási feladatok elvégzéséhez. Ha az igény szerinti hozzáférés engedélyezve van, a Security Center a [hálózati biztonsági csoport](../virtual-network/security-overview.md#security-rules) (NSG) és a Azure Firewall szabályok használatával korlátozza a felügyeleti portok elérését, hogy a támadók ne tudják megcélozni azokat.
 
 ![Igény szerinti forgatókönyv](./media/security-center-just-in-time/just-in-time-scenario.png)
 
@@ -61,7 +55,7 @@ Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Ce
 
 ## <a name="configure-jit-on-a-vm"></a>JIT konfigurálása virtuális gépen
 
-Egy virtuális gépen 3 lehetőség van a JIT-szabályzatok konfigurálására:
+A JIT-szabályzatok konfigurálásának három módja van a virtuális gépen:
 
 - [JIT-hozzáférés konfigurálása Azure Security Center](#jit-asc)
 - [JIT-hozzáférés konfigurálása Azure-beli virtuális gépek paneljén](#jit-vm)
@@ -87,7 +81,7 @@ Az ASC szolgáltatásban beállíthat egy JIT-szabályzatot, és egy JIT-szabál
     Az igény szerinti virtuálisgép- **hozzáférés** információt nyújt a virtuális gépek állapotáról:
 
     - **Konfigurálva** – a virtuális gépek igény szerinti elérésének támogatásához konfigurált virtuális gépek. A bemutatott adatok az elmúlt héten szerepelnek, és minden virtuális géphez a jóváhagyott kérések száma, az utolsó hozzáférés dátuma és időpontja, valamint az utolsó felhasználó szerepel.
-    - **Ajánlott** – a virtuális gépek igény szerinti elérését támogató virtuális gépek, de nem lettek konfigurálva a szolgáltatáshoz. Javasoljuk, hogy engedélyezze az igény szerinti virtuálisgép-hozzáférés-vezérlést ezekhez a virtuális gépekhez. 
+    - **Ajánlott** – a virtuális gépek igény szerinti elérését támogató virtuális gépek, de nem lettek konfigurálva a szolgáltatáshoz. Javasoljuk, hogy engedélyezze az igény szerinti virtuálisgép-hozzáférés-vezérlést ezekhez a virtuális gépekhez.
     - **No recommendation** (Nincs javaslat) – A virtuális gépek a következő okokból kerülhetnek ebbe a kategóriába:
       - Hiányzó NSG – az igény szerinti megoldáshoz szükség van egy NSG.
       - Klasszikus virtuális gép – Security Center igény szerinti virtuálisgép-hozzáférés jelenleg csak a Azure Resource Manager használatával telepített virtuális gépeket támogatja. Az igény szerinti megoldás nem támogatja a klasszikus üzembe helyezést. 
@@ -131,7 +125,7 @@ Hozzáférés kérése egy virtuális géphez az ASC használatával:
 
     - A **kapcsolat részletei** oszlopban látható ikon jelzi, hogy a JIT engedélyezve van-e a NSG vagy az FW-on. Ha mindkettőn engedélyezve van, csak a tűzfal ikon jelenik meg.
 
-    - A **kapcsolat részletei** oszlopban találhatók a virtuális gép csatlakoztatásához szükséges megfelelő információk, valamint a megnyitott portok.
+    - A **kapcsolat részletei** oszlop a virtuális gép csatlakoztatásához és a nyitott portok eléréséhez szükséges információkat tartalmazza.
 
       ![Igény szerinti hozzáférés igénylése](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -191,11 +185,11 @@ Ez a virtuális gép igény szerinti elérését teszi lehetővé a következő 
 
 - Windows-kiszolgálók:
     - RDP-port 3389
-    - 3 órányi maximálisan engedélyezett hozzáférés
+    - Legfeljebb három órányi hozzáférés engedélyezett
     - Az engedélyezett forrás IP-címek beállítása bármelyik
 - Linux-kiszolgálók:
     - SSH-port – 22
-    - 3 órányi maximálisan engedélyezett hozzáférés
+    - Legfeljebb három órányi hozzáférés engedélyezett
     - Az engedélyezett forrás IP-címek beállítása bármelyik
      
 Ha egy virtuális gépen már van engedélyezve az igény szerinti kapcsolat, a konfigurációs lapjára kattintva láthatja, hogy az igény szerinti időpont engedélyezve van, és a hivatkozás használatával megnyithatja a szabályzatot Azure Security Center a beállítások megtekintéséhez és módosításához.
@@ -213,7 +207,7 @@ Ha a Azure Portal egy virtuális géphez próbál csatlakozni, az Azure ellenőr
   A hozzáférés kérése a következő alapértelmezett paraméterekkel történik:
 
   - **forrás IP-címe**: "Any" (*) (nem módosítható)
-  - **időtartomány**: 3 óra (nem módosítható)  <!--Isn't this set in the policy-->
+  - **időtartomány**: Három óra (nem módosítható) <!--Isn't this set in the policy-->
   - **portszám** RDP-port 3389 for Windows/a 22-es port a Linux rendszerhez (módosítható)
 
     > [!NOTE]

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/08/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844771"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932831"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -35,7 +35,8 @@ Ha például 2 típusú LUIS-alkalmazással rendelkezik, különböző tagokkal,
 
 A Migrálás a következőket tartalmazza:
 
-* **A tulajdonos** alkalmazásai.
+* A LUIS, a tulajdonosok és a közreműködők összes felhasználója.
+* **Minden** alkalmazás.
 * Egy **egyirányú** áttelepítés.
 
 A tulajdonos nem választhat az áttelepítendő alkalmazások egy részhalmazát, és a folyamat nem vonható vissza. 
@@ -87,13 +88,17 @@ Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműköd�
 
 ## <a name="migration-for-the-app-contributor"></a>Migrálás az alkalmazás közreműködője számára
 
+A LUIS minden felhasználóját át kell telepíteni, beleértve a közreműködőket és a közreműködőket is. 
+
 ### <a name="before-the-app-is-migrated"></a>Az alkalmazás migrálása előtt
 
 Dönthet úgy, hogy olyan alkalmazást exportál, amelyhez Ön is közreműködő, majd importálja újra az alkalmazást a LUIS-ba. Az importálási folyamat létrehoz egy új alkalmazást egy új alkalmazás-AZONOSÍTÓval, amelynek Ön a tulajdonosa.
 
 ### <a name="after-the-app-is-migrated"></a>Az alkalmazás migrálása után
 
-Ha az áttelepítési folyamat az eredeti alkalmazáshoz való hozzáférésre van szüksége, az alkalmazás tulajdonosaként hozzá kell adnia az Azure authoring erőforráshoz.  
+Az alkalmazás tulajdonosának [hozzá kell adnia az e-maileket az Azure authoring-erőforráshoz közreműködőként](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+
+Az áttelepítési folyamat után az Ön tulajdonában lévő alkalmazások a LUIS portál **saját alkalmazások** lapján érhetők el.  
 
 ## <a name="next-steps"></a>További lépések
 

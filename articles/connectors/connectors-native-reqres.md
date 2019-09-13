@@ -1,6 +1,6 @@
 ---
-title: Válaszadás HTTP-vagy HTTPS-kérelmekre – Azure Logic Apps
-description: Valós időben válaszolhat az eseményekre HTTP vagy HTTPS protokollon keresztül Azure Logic Apps
+title: Válaszoljon a HTTP-kérelmekre – Azure Logic Apps
+description: Valós időben válaszol az eseményekre a HTTP protokollon keresztül Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: c707326c810f111db220be1ffdfbcd4a52dbb2d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898317"
+ms.locfileid: "70914332"
 ---
-# <a name="respond-to-http-or-https-requests-by-using-azure-logic-apps"></a>Válaszadás HTTP-vagy HTTPS-kérelmekre Azure Logic Apps használatával
+# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Válaszoljon a HTTP-kérelmekre Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem trigger vagy Response művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek valós időben reagálnak és reagálnak a http vagy HTTPS protokollon keresztül küldött eseményekre. Használhatja például a logikai alkalmazást:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem-trigger vagy Response művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek valós időben érkeznek és reagálnak a HTTP-kérelmekre. Használhatja például a logikai alkalmazást:
 
 * Válasz HTTP-kérelemre egy helyszíni adatbázisban lévő adatkéréshez.
 * Munkafolyamat elindítása külső webhook-esemény bekövetkezésekor.
@@ -35,9 +35,9 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 
 <a name="add-request"></a>
 
-## <a name="add-the-request-trigger"></a>A kérelem-trigger hozzáadása
+## <a name="add-a-request-trigger"></a>Kérelem-trigger hozzáadása
 
-Ez a beépített trigger létrehoz egy végpontot, amely megvárja, és fogad egy bejövő kérelmet HTTP-vagy HTTPS-kapcsolaton keresztül. Ha ez az esemény történik, az eseményindító elindít és futtatja a logikai alkalmazást.
+Ez a beépített trigger létrehoz egy manuálisan hívható végpontot, amely képes fogadni a bejövő HTTP-kéréseket. Ha ez az esemény történik, az eseményindító elindít és futtatja a logikai alkalmazást. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a [kérelem trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatait http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
@@ -45,7 +45,17 @@ Ez a beépített trigger létrehoz egy végpontot, amely megvárja, és fogad eg
 
    ![HTTP-kérés trigger kiválasztása](./media/connectors-native-reqres/select-request-trigger.png)
 
-1. A **kérelem törzse JSON-séma** mezőben megadhat egy JSON-sémát, amely leírja a bejövő kérelemben várt HTTP-kérés törzsét, például:
+   A kérelem-trigger a következő tulajdonságokat jeleníti meg:
+
+   ![Kérelem triggere](./media/connectors-native-reqres/request-trigger.png)
+
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
+   |---------------|--------------------|----------|-------------|
+   | **HTTP POST URL-CÍM** | nEz egy | Igen | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
+   | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő HTTP-kérés törzsében található tulajdonságokat és értékeket leíró JSON-séma |
+   |||||
+
+1. A **kérelem törzse JSON-sémája** mezőben opcionálisan megadhat egy JSON-sémát, amely leírja a bejövő kérelem HTTP-kérés törzsét, például:
 
    ![Példa JSON-sémára](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -136,22 +146,27 @@ Ez a beépített trigger létrehoz egy végpontot, amely megvárja, és fogad eg
       }
       ```
 
-1. További tulajdonságok (például a kérelem vagy relatív elérési út) megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
+1. További tulajdonságok megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
 
-   Ez a példa hozzáadja a **Method** paramétert:
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
+   |---------------|--------------------|----------|-------------|
+   | **Metódus** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
+   | **Relatív elérési út** | `relativePath` | Nem | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
+   |||||
+
+   Ez a példa hozzáadja a **Method** tulajdonságot:
 
    ![Metódus hozzáadása paraméter](./media/connectors-native-reqres/add-parameters.png)
 
-   A **metódus** paraméter most megjelenik a triggerben, hogy kiválasszon egy metódust a listából.
+   A **Method** tulajdonság megjelenik a triggerben, hogy kiválasszon egy metódust a listából.
 
    ![Módszer kiválasztása](./media/connectors-native-reqres/select-method.png)
 
 1. Most adjon hozzá egy újabb műveletet a munkafolyamat következő lépéseként. Az trigger alatt válassza a **következő lépés** lehetőséget, hogy megtalálja a hozzáadni kívánt műveletet.
 
-   Választ kaphat például a kérelemre egy, a témakör későbbi részében ismertetett [Response művelet hozzáadásával](#add-response).
+   Választhatja például a kérést [egy válasz művelet hozzáadásával](#add-response), amelyet egy testreszabott válasz visszaadására használhat, és a jelen témakör későbbi részében is ismertetjük.
 
-   > [!NOTE]
-   > Ha nem tartalmaz és nem határoz meg választ a logikai alkalmazás munkafolyamatában, a logikai alkalmazás azonnal visszaadja `202 ACCEPTED` a választ a hívónak. A Response művelettel testreszabhatja a válaszokat.
+   A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai `504 GATEWAY TIMEOUT` alkalmazás a hívót adja vissza. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja `202 ACCEPTED` a hívónak küldött választ.
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
 
@@ -165,8 +180,8 @@ Ez a beépített trigger létrehoz egy végpontot, amely megvárja, és fogad eg
 
 További információ a kérelmek trigger kimenetéről:
 
-| Tulajdonság neve | Adattípus | Leírás |
-|---------------|-----------|-------------|
+| JSON-tulajdonság neve | Adattípus | Leírás |
+|--------------------|-----------|-------------|
 | `headers` | Object | Egy JSON-objektum, amely leírja a kérelem fejléceit. |
 | `body` | Object | Egy JSON-objektum, amely leírja a kérelem törzsének tartalmát |
 ||||
@@ -175,9 +190,9 @@ További információ a kérelmek trigger kimenetéről:
 
 ## <a name="add-a-response-action"></a>Response művelet hozzáadása
 
-A válasz művelettel testreszabhat egy választ, de csak olyan logikai alkalmazás-munkafolyamatban, amelyet egy HTTP-kérelem aktivál. A válasz műveletet a munkafolyamat bármely pontjára felveheti.
+A válasz művelettel válaszolhat egy adattartalomra (adatok) egy bejövő HTTP-kérelemre, de csak egy HTTP-kérelem által aktivált logikai alkalmazásban. A válasz műveletet a munkafolyamat bármely pontjára felveheti. További információ az adott trigger alapjául szolgáló JSON-definícióról: [Válasz művelet típusa](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai `504 GATEWAY TIMEOUT` alkalmazás a hívót adja vissza. Ha azonban a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja `202 ACCEPTED` a hívónak küldött választ. 
+A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai `504 GATEWAY TIMEOUT` alkalmazás a hívót adja vissza. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja `202 ACCEPTED` a hívónak küldött választ.
 
 1. A Logic app Designerben abban a lépésben, amelyhez hozzá szeretne adni egy válasz műveletet, válassza az **új lépés**lehetőséget.
 
@@ -197,7 +212,7 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
    Egyes mezőkben a szövegdobozokra kattintva megnyílik a dinamikus tartalmak listája. Ezután kiválaszthatja azokat a jogkivonatokat, amelyek a munkafolyamat előző lépéseiből származó elérhető kimeneteket jelölik. A korábbi példában megadott sémából származó tulajdonságok most megjelennek a dinamikus tartalmak listájában.
 
-   Például a **fejlécek** mezőben adja `Content-Type` meg a kulcs nevét, és adja meg `application/json`a kulcs értékét a értékre, a témakör korábbi részében leírtak szerint. A **törzs** mezőben kiválaszthatja az trigger törzsét a dinamikus tartalmak listájából.
+   Például a **fejlécek** mezőben adja `Content-Type` meg a kulcs nevét, és állítsa `application/json` a kulcs értékét a témakörben korábban említettek szerint. A **törzs** mezőben kiválaszthatja a dinamikus tartalom lista trigger törzsének kimenetét.
 
    ![Válasz művelet részletei](./media/connectors-native-reqres/response-details.png)
 
@@ -207,14 +222,14 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
    A válasz műveletben megadható tulajdonságokkal kapcsolatos további információk. 
 
-   | Display name | Tulajdonság neve | Kötelező | Leírás |
-   |--------------|---------------|----------|-------------|
-   | Állapotkód | `statusCode` | Igen | A visszaadni kívánt HTTP-állapotkód |
-   | Fejlécek | `headers` | Nem | Egy JSON-objektum, amely a felvenni kívánt válasz fejléceket írja le.  |
-   | Body | `body` | Nem | A válasz törzse |
+   | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
+   |---------------|--------------------|----------|-------------|
+   | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt HTTP-állapotkód |
+   | **Fejlécek** | `headers` | Nem | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
+   | **Törzs** | `body` | Nem | A válasz törzse |
    |||||
 
-1. Ha további tulajdonságokat szeretne megadni, például egy JSON-sémát a válaszhoz, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
+1. Ha további tulajdonságokat szeretne megadni, például egy JSON-sémát a válasz törzséhez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
 

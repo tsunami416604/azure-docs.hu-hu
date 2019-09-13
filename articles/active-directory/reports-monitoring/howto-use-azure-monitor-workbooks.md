@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1ecdb80263efda4cbbb43caaa4e27a04b261f81
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989799"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931252"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 
@@ -45,9 +45,18 @@ A cikk tartalma:
 
 A figyelő munkafüzetek használatához a következőkre lesz szüksége:
 
-- Egy Active Directory bérlő prémium szintű (P1 vagy P2) licenccel. Megtudhatja, hogyan [szerezhet be prémium](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)szintű licencet.
+- Egy Active Directory bérlő prémium szintű (P1 vagy P2) licenccel. Megtudhatja, hogyan [szerezhet be prémium szintű licencet](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
 
 - [Log Analytics munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+
+## <a name="roles"></a>Szerepkörök
+A következő szerepkörök egyikének kell lennie, valamint hozzáféréssel kell rendelkeznie az [alapul szolgáló log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) munkaterülethez a munkafüzetek kezeléséhez:
+-   Globális rendszergazda
+-   Biztonsági rendszergazda
+-   Biztonsági olvasó
+-   Jelentés olvasója
+-   Alkalmazás-rendszergazda
+
 
 ## <a name="workbook-access"></a>Munkafüzet-hozzáférés 
 
@@ -68,11 +77,11 @@ A munkafüzetek eléréséhez:
 
 ## <a name="sign-in-analysis"></a>Bejelentkezési elemzés
 
-A bejelentkezési elemzési munkafüzet eléréséhez a **használat** szakaszban válassza a bejelentkezések lehetőséget. 
+A bejelentkezési elemzési munkafüzet eléréséhez a **használat** szakaszban válassza a **bejelentkezések**lehetőséget. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
-- Az összes bejelentkezés
+- Minden bejelentkezés
 
 - Siker
 
@@ -109,7 +118,7 @@ Ha a munkafüzetet [örökölt hitelesítést](../conditional-access/block-legac
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
-- Az összes bejelentkezés
+- Minden bejelentkezés
 
 - Siker
 
@@ -202,11 +211,11 @@ A **bejelentkezések sikertelen elemzése** munkafüzettel a következő hibákk
 - Örökölt hitelesítés 
 
 
-A bejelentkezés feltételes hozzáférési adatai alapján való eléréséhez a **hibakeresés** szakaszban válassza az **örökölt hitelesítés használatával**történő bejelentkezések lehetőséget. 
+A bejelentkezés feltételes hozzáférési adatai alapján való eléréséhez a **hibakeresés** szakaszban válassza az **örökölt hitelesítés használatával történő bejelentkezések**lehetőséget. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
-- Az összes bejelentkezés
+- Minden bejelentkezés
 
 - Siker
 

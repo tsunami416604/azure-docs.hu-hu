@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – hitelesítés engedélyezése webalkalmazásban – Azure Active Directory B2C | Microsoft Docs
+title: Oktatóanyag – hitelesítés engedélyezése webalkalmazásban – Azure Active Directory B2C
 description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználói bejelentkezés biztosításához egy ASP.NET-es webalkalmazás esetén.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 2066a7848efaf067dddde3d5db1decfc88d94436
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464765"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914219"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hitelesítés engedélyezése webalkalmazásban Azure Active Directory B2C használatával
 
@@ -32,8 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Felhasználói folyamatokat hozhat létre](tutorial-create-user-flows.md) , amelyekkel engedélyezheti az alkalmazás felhasználói élményét.
-- Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a **ASP.net és a webes fejlesztési** munkaterheléssel.
+* [Felhasználói folyamatokat hozhat létre](tutorial-create-user-flows.md) , amelyekkel engedélyezheti az alkalmazás felhasználói élményét.
+* Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a **ASP.net és a webes fejlesztési** munkaterheléssel.
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
@@ -58,15 +58,21 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 A következő két projekt szerepel a minta megoldásban:
 
-- **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
+- **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja és bejelentkezik a felhasználók számára.
 - **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
 
-A mintát úgy változtathatja meg, hogy a bérlőben regisztrált alkalmazást használja, beleértve az alkalmazás AZONOSÍTÓját és a korábban rögzített kulcsot is. A létrehozott felhasználói folyamatokat is konfigurálhatja. A minta a konfigurációs értékeket a web. config fájlban megadott beállításokként határozza meg. A beállítások módosítása:
+A mintát úgy változtathatja meg, hogy a bérlőben regisztrált alkalmazást használja, beleértve az alkalmazás AZONOSÍTÓját és a korábban rögzített kulcsot is. A létrehozott felhasználói folyamatokat is konfigurálhatja. A minta a konfigurációs értékeket a *web. config* fájlban megadott beállításokként határozza meg.
+
+Frissítse a web. config fájlban lévő beállításokat a felhasználói folyamattal való együttműködéshez:
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-2. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt. Cserélje le az `ida:Tenant` értékét a létrehozott bérlő nevére. Cserélje le az `ida:ClientId` értékét a feljegyzett alkalmazásazonosítóra. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ahhoz, hogy hozzáadja a web. config fájlhoz, XML-kódolással kell kódolnia az ügyfél titkos kulcsát.
-3. A **Web.config** fájlban cserélje le az `ida:SignUpSignInPolicyId` értéket a `b2c_1_signupsignin1` értékre. Cserélje le az `ida:EditProfilePolicyId` értéket a `b2c_1_profileediting1` értékre. Cserélje le az `ida:ResetPasswordPolicyId` értéket a `b2c_1_passwordreset1` értékre.
-
+1. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt.
+    1. Cserélje le a `ida:Tenant` és `ida:AadInstance` a értéket a létrehozott bérlő nevére.
+    1. Cserélje le a értékét `ida:ClientId` a rögzített alkalmazás-azonosítóra.
+    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ahhoz, hogy hozzáadja a web. config fájlhoz, XML-kódolással kell kódolnia az ügyfél titkos kulcsát.
+    1. Cserélje le a értékét `ida:SignUpSignInPolicyId` a `b2c_1_signupsignin1`értékre.
+    1. Cserélje le a értékét `ida:EditProfilePolicyId` a `b2c_1_profileediting1`értékre.
+    1. Cserélje le a értékét `ida:ResetPasswordPolicyId` a `b2c_1_passwordreset1`értékre.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 

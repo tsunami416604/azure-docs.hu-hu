@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092685"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918798"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -59,10 +59,10 @@ A letölthető konfiguráció csupán egy példa; módosítsa a saját igényein
 
 ### <a name="sample-installation"></a>Minta telepítése
 
-Töltse ki a megfelelő paramétereket az első három sorban, majd hajtsa végre a parancsfájlt root-ként:
+A futtatása előtt adja meg az első szakaszban szereplő változók helyes értékeit:
 
 ```bash
-# Set your Azure VM diagnostic parameters correctly below
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -131,7 +131,7 @@ Name (Név) | Value
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános `https://core.windows.net`felhő. Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
-storageAccountSasToken | Egy [fiók sas](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) -jogkivonata a blob és`ss='bt'`Table Services () számára, amely a`srt='co'`tárolók és objektumok () számára érvényes, amely a hozzáadási, létrehozási`sp='acluw'`, listázási, frissítési és írási engedélyeket () biztosítja. Ne foglalja bele a kezdő kérdőjelet (?).
+storageAccountSasToken | Egy [fiók sas](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) -jogkivonata a blob és`ss='bt'`Table Services () számára, amely a`srt='co'`tárolók és objektumok () számára érvényes, amely a hozzáadási, létrehozási`sp='acluw'`, listázási, frissítési és írási engedélyeket () biztosítja. Ne *foglalja bele* a kezdő kérdőjelet (?).
 mdsdHttpProxy | választható A HTTP-proxy azon adatai, amelyek lehetővé teszik a bővítménynek a megadott Storage-fiókhoz és végponthoz való csatlakozást.
 sinksConfig | választható Azon alternatív célhelyek részletei, amelyekhez mérőszámokat és eseményeket lehet továbbítani. A bővítmény által támogatott adattárolók konkrét részletei az alábbi szakaszokban találhatók.
 
@@ -368,7 +368,7 @@ Ilyenek például `LinuxSyslog20170609` `LinuxSyslog20170410` a és a.
 
 ### <a name="perfcfg"></a>perfCfg
 
-Ez a választható szakasz vezérli a [](https://github.com/Microsoft/omi) tetszőleges típusú adatlekérdezések végrehajtását.
+Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com/Microsoft/omi) adatlekérdezések végrehajtását.
 
 ```json
 "perfCfg": [

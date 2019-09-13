@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: c7d8b946fc587d58f13e16c1d7d806390e712104
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879551"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932478"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése és használata
 
@@ -45,9 +45,9 @@ Egy eszközhöz csatlakozhat a saját eszközéhez, vagy használhatja a mintáu
 
 ### <a name="connect-to-your-hub"></a>Kapcsolódás a hubhoz
 
-Az Azure IoT Explorer első futtatásakor a rendszer a IoT hub csatlakozási karakterláncát kéri. A kapcsolati karakterlánc hozzáadása után válassza akapcsolat lehetőséget. Az eszköz beállításai segítségével másik IoT-hubhoz válthat a kapcsolódási karakterlánc frissítésével.
+Az Azure IoT Explorer első futtatásakor a rendszer a IoT hub csatlakozási karakterláncát kéri. A kapcsolati karakterlánc hozzáadása **után válassza a kapcsolat lehetőséget**. Az eszköz beállításai segítségével másik IoT-hubhoz válthat a kapcsolódási karakterlánc frissítésével.
 
-Egy IoT Plug and Play eszköz modell-definícióját a rendszer a nyilvános tárházban, a vállalati tárházban vagy a csatlakoztatott eszközön tárolja. Alapértelmezés szerint az eszköz a nyilvános modell adattárában és a csatlakoztatott eszközön keresi a modell definícióját. Hozzáadhat és eltávolíthat forrásokat, vagy konfigurálhatja a források prioritását a beállításokban:
+Egy IoT Plug and Play eszköz modell-definícióját a rendszer a nyilvános tárházban, a vállalati tárházban vagy a csatlakoztatott eszközön tárolja. Alapértelmezés szerint az eszköz a nyilvános modell adattárában és a csatlakoztatott eszközön keresi a modell definícióját. Hozzáadhat és eltávolíthat forrásokat, vagy konfigurálhatja a források prioritását a **beállításokban**:
 
 Forrás hozzáadása:
 
@@ -85,9 +85,9 @@ Kattintson duplán az eszközre az Áttekintés lapon a részletek következő s
 
 Ez a szakasz tartalmazza az **eszköz identitását**, a **telemetria**és az **eszköz két** lapját.
 
-- Az Eszközállapot lapon megtekintheti és frissítheti az eszköz identitásának adatait.
+- **Az Eszközállapot lapon** megtekintheti és frissítheti az eszköz identitásának adatait.
 - Ha egy eszköz csatlakoztatva van, és aktívan küld adatokat, megtekintheti a telemetria a **telemetria** lapon.
-- A Device twin (eszközök Twin) lapon érheti el az eszköz két adatát.
+- A Device Twin **(eszközök Twin) lapon érheti** el az eszköz két adatát.
 
 ### <a name="digital-twin"></a>Digitális Twin
 
@@ -120,4 +120,4 @@ A kiválasztott felület telemetria megtekintéséhez lépjen a **telemetria** l
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure IoT Explorer alkalmazást a IoT Plug and Play eszközeivel való interakcióhoz. Egy javasolt következő lépés a [modellek kezelésének](./howto-manage-models.md)megismerése.
+Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure IoT Explorer alkalmazást a IoT Plug and Play eszközeivel való interakcióhoz. A következő lépés azt ismerteti, hogyan [telepítheti és használhatja az Azure CLI-bővítményt](./howto-install-pnp-cli.md).

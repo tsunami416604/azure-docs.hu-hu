@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 520579334d88bbab8ac28df7e446879aa9736248
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098211"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933563"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -24,7 +24,7 @@ A Azure Functions [Durable functions](durable-functions-overview.md) -bővítmé
 > [!NOTE]
 > 
 > * Ha tartós funkciókat fejleszt a alkalmazásban C#, érdemes megfontolnia a [Visual Studio 2019 fejlesztését](durable-functions-create-first-csharp.md).
-> * Ha a JavaScriptben tartós funkciókat fejleszt, érdemes megfontolnia a [Visual Studio Code](./quickstart-js-vscode.md)-fejlesztést.
+> * Ha a JavaScriptben tartós funkciókat fejleszt, érdemes megfontolnia a [Visual Studio Code-fejlesztést](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -86,7 +86,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
 
 ## <a name="test-the-durable-function-orchestration"></a>A tartós függvények előkészítésének tesztelése
 
-1. Lépjen vissza a **HttpStart** függvényhez, válassza a **</> a függvény URL-címének** beolvasása lehetőséget, és **másolja** az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
+1. Lépjen vissza a **HttpStart** függvényhez, válassza a **</> a függvény URL-címének beolvasása** lehetőséget, és **másolja** az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
 
 1. Használjon olyan HTTP-eszközt, mint a Poster vagy a cURL, hogy POST-kérést küldjön a másolt URL-címre. A következő példa egy olyan cURL-parancs, amely POST-kérést küld a tartós függvénynek:
 
@@ -139,4 +139,4 @@ Az első tartós funkció most már működik az Azure-ban.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-concepts.md)
+> [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)

@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan kezelheti az Azure HDInsight-fürtöket Enterpr
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: c8103f5d0df7a71df5141ece3a8d67f308a562e1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884218"
+ms.locfileid: "70918914"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és szerepköreit, valamint az ESP-fürtök kezelését.
@@ -34,7 +34,7 @@ Az Apache Ambari Managed username használatával összekapcsolhat egy normál f
    
 3. Egy csatolt fürtöt a parancssori **fürt**használatával tekinthet meg. Most elküldhet egy parancsfájlt ehhez a csatolt fürthöz.
 
-   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster.png "csatolt fürt")
+   ![csatolt fürt](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "csatolt fürt")
 
 4. A fürtöket a HDInsight bevitelével **is leválaszthatja: Fürt** leválasztása a parancssorból.
 
@@ -71,7 +71,7 @@ A Ambari Managed username használatával összekapcsolhat egy normál fürtöt,
 
 2. Adja meg a **fürt nevét**, a **felhasználónevet** és a **jelszót**, majd kattintson az OK gombra a fürt csatolásához. Szükség esetén megadhatja a Storage-fiókot, a Storage-kulcsot, majd kiválaszthatja a Storage Explorer tárolási tárolóját a bal oldali fanézetben való működéshez.
    
-   ![fürt csatolása párbeszédpanel Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![fürt csatolása párbeszédpanel Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
    
    > [!NOTE]  
    > A csatolt Storage-kulcsot, a felhasználónevet és a jelszót használjuk, ha a fürt az Azure-előfizetésben is be van jelentkezve, és egy fürthöz kapcsolódik.

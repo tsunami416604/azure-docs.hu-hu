@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065928"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70886026"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -87,7 +87,7 @@ A következő szolgáltatási címkék használhatók a [hálózati biztonsági 
 * **SQL*** (csak Resource Manager esetén): Ez a címke a Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse szolgáltatások címeinek előtagjait jelöli. Ha az *SQL* értéket adja meg, az SQL szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions)szeretné engedélyezni az SQL-hozzáférést, megadhatja a régiót a következő formátumban: SQL. [régió neve]. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. Ez a címke a kimenő biztonsági szabályokhoz ajánlott. 
 * **SqlManagement*** (csak Resource Manager esetén): Ez a címke az SQL dedikált üzemelő példányok felügyeleti forgalmának előtagjait jelöli. Ha az értékhez *SqlManagement* ad meg, a forgalom a SqlManagement számára engedélyezett vagy megtagadható. Ez a címke a bejövő/kimenő biztonsági szabályhoz ajánlott. 
 * **Tároló*** (csak Resource Manager esetén): Ez a címke az Azure Storage szolgáltatás IP-címének területét jelöli. Ha a *Storage* értéket adja meg, a Storage szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions)szeretné engedélyezni a tárterület elérését, megadhatja a régiót a következő formátumban: Storage. [régió neve]. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. Ez a címke a kimenő biztonsági szabályokhoz ajánlott. 
-* **VirtualNetwork** (Resource Manager) (Klasszikus**VIRTUAL_NETWORK** ): Ez a címke tartalmazza a virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes CIDR-tartomány), az összes csatlakoztatott helyszíni címterület, a virtuális [](virtual-network-peering-overview.md) [hálózati átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) és a virtuális hálózathoz csatlakoztatott virtuális hálózatokat. a [felhasználó által megadott útvonalakon](virtual-networks-udr-overview.md)használt előtagok. Vegye figyelembe, hogy ez a címke az alapértelmezett útvonalat is tartalmazhatja. 
+* **VirtualNetwork** (Resource Manager) (Klasszikus**VIRTUAL_NETWORK** ): Ez a címke tartalmazza a virtuális hálózati címtartomány (a virtuális hálózathoz meghatározott összes CIDR-tartomány), az összes csatlakoztatott helyszíni [címterület, a](virtual-network-peering-overview.md) virtuális [hálózati átjáróhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)csatlakoztatott virtuális hálózatok vagy virtuális hálózat, a [ a](security-overview.md#azure-platform-considerations) [felhasználó által megadott útvonalakon](virtual-networks-udr-overview.md)használt gazdagép és a cím előtagjainak virtuális IP-címe. Vegye figyelembe, hogy ez a címke az alapértelmezett útvonalat is tartalmazhatja. 
 
 > [!NOTE]
 > Az Azure-szolgáltatások szolgáltatási címkéi a használt felhőből származó előtagokat jelzik. 

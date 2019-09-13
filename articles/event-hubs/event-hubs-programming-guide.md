@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d9a1dff9c44403ad14e58b3fc3cda880cf65a29c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679110"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913977"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -140,7 +140,10 @@ Az [EventProcessorHost][] osztály megvalósít továbbá egy Azure Storage-alap
 
 ## <a name="publisher-revocation"></a>Közzétevők visszavonása
 
-Fejlett futtatókörnyezeti szolgáltatásai mellett [EventProcessorHost][], az Event Hubs lehetővé teszi, hogy a közzétevők visszavonását annak érdekében, hogy adott közzétevők események eseményközpontba letiltása. Ezek a funkciók hasznosak, ha egy közzétevői token biztonsága sérült, vagy ha egy szoftverfrissítés okozza, azokat nem megfelelően viselkednek. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
+Az Event Processor Host speciális futásidejű funkciói mellett a Event Hubs szolgáltatás lehetővé teszi a [közzétevők visszavonását](/rest/api/eventhub/revoke-publisher) annak érdekében, hogy letiltsa bizonyos közzétevők számára esemény küldését az Event hub-ba. Ezek a funkciók hasznosak, ha egy közzétevői token biztonsága sérült, vagy ha egy szoftverfrissítés okozza, azokat nem megfelelően viselkednek. Ilyen helyzetekben a közzétevő identitása (amely a SAS-token részét képezi) blokkolható az események közzétételének a megakadályozásához.
+
+> [!NOTE]
+> Jelenleg csak a REST API támogatja ezt a funkciót (a[közzétevő visszavonása](/rest/api/eventhub/revoke-publisher)).
 
 A közzétevők visszavonásával és az eseményközpontokba közzétevőként való küldés módjával kapcsolatban a [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Event Hubs nagyléptékű biztonságos közzététele) mintában tekinthet meg további információt.
 

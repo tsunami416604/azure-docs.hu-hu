@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 06e1d881a14367c579bd58ffae04dc0970eb041a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941951"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910493"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Üzleti szempontból kritikus fontosságú adattárolás tárolása az Azure Blob Storage-ban
 
@@ -189,7 +189,7 @@ Igen, a tároló egyszerre rendelkezhet jogi és időalapú adatmegőrzési ház
 
 Nem, a jogi fenntartás csak a nem időalapú adatmegőrzési szabályhoz használt általános kifejezés. Nem szükséges kizárólag peres eljárással kapcsolatos eljáráshoz használni. A jogszabályi szabályzatok hasznosak a felülírás és a törlés letiltásához a fontos vállalati féreg-adatok védelméhez, ha a megőrzési időtartam ismeretlen. Vállalati szabályzatként használhatja a kritikus fontosságú féreg számítási feladatait, vagy átmeneti házirendként használhatja azt megelőzően, hogy az egyéni esemény eseményindítójának egy időalapú adatmegőrzési szabályzatot kell használnia. 
 
-**El tudom távolítani a *zárolt* időalapú adatmegőrzési szabályzatot vagy a jogi megtartást?**
+**El tudom távolítani a _zárolt_ időalapú adatmegőrzési szabályzatot vagy a jogi megtartást?**
 
 Csak a zárolt időalapú adatmegőrzési szabályzatok távolíthatók el a tárolóból. Az időalapú adatmegőrzési szabályzat zárolása után nem távolítható el; csak a tényleges megőrzési időszakra vonatkozó bővítmények engedélyezettek. A jogi megtartási címkék törölhetők. Ha az összes jogi címkét törli, a rendszer eltávolítja a jogi megtartást.
 

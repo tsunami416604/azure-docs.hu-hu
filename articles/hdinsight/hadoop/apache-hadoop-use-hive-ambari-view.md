@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4d314c033df70cf0ea9a6d248b73aaed42aa4020
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882136"
+ms.locfileid: "70917747"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari kaptár nézet használata a HDInsight Apache Hadoop
 
@@ -34,11 +34,11 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
 3. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
-    ![A struktúra nézet kiválasztva](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![A struktúra nézet kiválasztva](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     A kaptár nézet oldal a következő képhez hasonló:
 
-    ![A struktúra nézet lekérdezési munkalapjának képe](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![A struktúra nézet lekérdezési munkalapjának képe](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
 4. A __lekérdezés__ lapon illessze be az alábbi HiveQL-utasításokat a munkalapra:
 
@@ -104,7 +104,7 @@ A lekérdezés TEZ felhasználói felületének megjelenítéséhez válassza a 
 
 A __feladatok__ lap a struktúra-lekérdezések előzményeit jeleníti meg.
 
-![A feladatok előzményeinek képe](./media/apache-hadoop-use-hive-ambari-view/job-history.png)
+![A feladatok előzményeinek képe](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Adatbázistáblák
 
@@ -116,7 +116,7 @@ A __Tables (táblák__ ) lapon egy struktúra-adatbázisban lévő táblákkal d
 
 A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdezés mentése után újra felhasználhatja azt a __mentett lekérdezések__ lapról.
 
-![Mentett lekérdezések lap képe](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
+![Mentett lekérdezések lap képe](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlként tárolja a rendszer.

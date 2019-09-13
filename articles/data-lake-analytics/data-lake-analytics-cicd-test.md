@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics kód tesztelése
-description: Ismerje meg, hogyan vizsgálati eset hozzáadása az Azure Data Lake Analytics U-SQL és a kiterjesztett C#-kódot.
+title: A Azure Data Lake Analytics kód tesztelése
+description: Megtudhatja, hogyan adhat hozzá tesztelési eseteket a C# U-SQL és a kiterjesztett kód számára a Azure Data Lake Analyticshoz.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,64 +9,63 @@ ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/03/2018
-ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/30/2019
+ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630085"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913966"
 ---
-# <a name="test-your-azure-data-lake-analytics-code"></a>Az Azure Data Lake Analytics tesztelhetnek
+# <a name="test-your-azure-data-lake-analytics-code"></a>A Azure Data Lake Analytics kód tesztelése
 
-Az Azure Data Lake biztosít a U-SQL nyelv, amely egyesíti az SQL deklaratív imperatív C# bármilyen méretű adatok feldolgozásához. Ebből a dokumentumból megismerheti, hogyan vizsgálati eset létrehozása a U-SQL és C# UDO (felhasználó által definiált operátor) kiterjesztett kódot.
+Azure Data Lake a [U-SQL](data-lake-analytics-u-sql-get-started.md) nyelvet biztosítja. Az U-SQL a deklaratív SQL- C# t kombinálva kényszeríti az adatfeldolgozást bármilyen méretben. Ebből a dokumentumból megtudhatja, hogyan hozhat létre tesztelési eseteket a U C# -SQL és a kiterjesztett felhasználó által definiált operátor (Udo) kódjához.
 
 ## <a name="test-u-sql-scripts"></a>U-SQL-parancsfájlok tesztelése
 
-Az U-SQL-szkriptet összeállítani és optimalizált végrehajtható kód futtatására gépeken a felhőben vagy a helyi gépen. A fordítás és optimalizálási folyamata a teljes U-SQL parancsfájl egészében kezeli. Nem hajtható végre egy hagyományos "test jednotky" minden utasítás. Azonban a U-SQL használatával SDK tesztelése, és megteheti a helyi Futtatás SDK-t, parancsfájl-szintű teszteket.
+A U-SQL-szkript le van fordítva, és az Azure-ban vagy a helyi számítógépen futtatható végrehajtható kód futtatására van optimalizálva. A fordítási és optimalizálási folyamat a teljes U-SQL-szkriptet kezeli egészként. Minden utasításhoz nem végezheti el a hagyományos egység tesztelését. Azonban a U-SQL test SDK és a helyi Futtatás SDK használatával parancsfájl szintű teszteket végezhet.
 
-### <a name="create-test-cases-for-u-sql-script"></a>A U-SQL parancsfájl tesztelési eseteket hoznak létre.
+### <a name="create-test-cases-for-u-sql-script"></a>Tesztelési esetek létrehozása U-SQL-parancsfájlhoz
 
-Az Azure Data Lake Tools for Visual Studio lehetővé teszi, hogy a U-SQL parancsfájl tesztelési eseteket hozhat létre.
+A Visual studióhoz készült Azure Data Lake Tools lehetővé teszi U-SQL-parancsfájlok tesztelési eseteinek létrehozását.
 
-1.  Kattintson a jobb gombbal egy U-SQL parancsfájl a Megoldáskezelőben, és válassza **létrehozása egységtesztet**.
-2.  Hozzon létre egy új tesztelési projekt, vagy helyezze be a Teszteset egy meglévő tesztelő projektet.
+1. Kattintson a jobb gombbal egy U-SQL-parancsfájlra Megoldáskezelő, majd válassza az **egység tesztelése**elemet.
 
-    ![A Data Lake Tools for Visual Studio – teszt U-SQL projekt létrehozása](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project.png) 
+1. Hozzon létre egy új tesztelési projektet, vagy szúrja be a tesztelési esetet egy meglévő tesztelési projektbe.
 
-    ![A Data Lake Tools for Visual Studio – hozzon létre egy U-SQL projekt tesztkonfiguráció](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png) 
+   ![Data Lake Tools for Visual Studio – a U-SQL-teszt projekt konfigurációjának létrehozása](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png)
 
 ### <a name="manage-the-test-data-source"></a>A teszt adatforrás kezelése
 
-Ha U-SQL-parancsfájlok, tesztelnie kell a bemeneti fájlok. Kezelheti a Tesztadatok konfigurálásával **tesztelése adatforrás** a U-SQL projekt tulajdonságai. 
+U-SQL-parancsfájlok tesztelésekor be kell írnia a bemeneti fájlokat. A tesztelési célú adatkezeléshez kattintson a jobb gombbal a U-SQL projektre **megoldáskezelő**, majd válassza a **Tulajdonságok parancsot**. Megadhat egy forrást a **teszt adatforrásban**.
 
-Meghívásakor a `Initialize()` felület az U-SQL-teszt SDK-t és egy átmeneti helyi adatok legfelső szintű mappa alatt a munkakönyvtárban a tesztelési projekt jön létre, és minden fájlok és almappák (és almappák fájlokat) a teszt adatok forrásmappában található a ideiglenes helyi adatok legfelső szintű mappát, a U-SQL parancsfájl vizsgálati eset futtatása előtt. A teszt data mappa elérési útjának pontosvesszővel halmazra további vizsgálat adatok forrása mappákat is hozzáadhat.
+![A Visual Studio Data Lake eszközei – a Project test-adatforrás konfigurálása](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-![Data Lake Tools for Visual Studio – a projekt test-adatforrás konfigurálása](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
+Ha a U- `Initialize()` SQL test SDK-ban hívja meg az illesztőfelületet, a rendszer létrehoz egy ideiglenes helyi adatgyökér-mappát a teszt projekt munkakönyvtárában. Az U-SQL-parancsfájl tesztelési eseteinek futtatása előtt a rendszer a teszt adatforrás mappában található összes fájlt és mappát átmásolja az ideiglenes helyi adatgyökér mappába. A teszt adatmappa elérési útjának pontosvesszővel való felosztásával további tesztelési adatforrás-mappákat is hozzáadhat.
 
-### <a name="manage-the-database-environment-for-testing"></a>A tesztelési adatbázis-környezet kezelése
+### <a name="manage-the-database-environment-for-testing"></a>Az adatbázis-környezet kezelése teszteléshez
 
-Ha a U-SQL-parancsfájlokat használ, vagy a lekérdezés U-SQL-adatbázis objektumokat a (például, ha a tárolt eljárások hívása) akkor szükséges, az adatbázis-környezetének inicializálása a U-SQL-vizsgálati eset futtatása előtt. A `Initialize()` felület az U-SQL-teszt SDK segítséget nyújt a U-SQL projekt a munkakönyvtárban a test-projekt helyi ideiglenes adatokat gyökérmappájába által hivatkozott összes adatbázis üzembe helyezéséhez. 
+Ha a U-SQL-parancsfájlok U-SQL Database-objektumokat használnak vagy kérdeznek le, a U-SQL tesztelési esetek futtatása előtt inicializálnia kell az adatbázis-környezetet. Ez a megközelítés akkor lehet szükséges, ha tárolt eljárásokat hív meg. A `Initialize()` u-SQL test SDK felülete segít az u-SQL-projekt által hivatkozott összes adatbázis központi telepítéséhez a tesztelési projekt munkakönyvtárában lévő ideiglenes helyi adatgyökér-mappához.
 
-Tudjon meg többet [kezelése a U-SQL database projekt referenciáihoz U-SQL projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
+További információ az u-SQL-projekthez tartozó U-SQL-adatbázis-projekt-referenciák kezeléséről: u-SQL-projektre mutató [hivatkozás](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
 
-### <a name="verify-test-results"></a>Vizsgálati eredmények ellenőrzése
+### <a name="verify-test-results"></a>Teszt eredményeinek ellenőrzése
 
-A `Run()` felület feladat végrehajtási eredményt adja vissza. 0 azt jelenti, hogy a sikeres, és 1 azt jelenti, hogy sikertelen. Assert függvények C# használatával ellenőrizze a kimenetek. 
+Az `Run()` illesztőfelület a feladatok végrehajtási eredményét adja vissza. a *0* érték azt jelenti, hogy sikeres, és *1* hibát jelez. A kimenetek ellenőrzéséhez használhatja C# az érvényesítési függvényeket is.
 
-### <a name="run-test-cases-in-visual-studio"></a>Vizsgálati eset futtatása a Visual Studióban
+### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-A U-SQL parancsfájl tesztelési projekt egy C# egység teszt keretrendszer épül. A projekt buildjének elkészítéséhez, miután az összes vizsgálati eset segítségével futtathatja **tesztelése Explorer > lista**. Másik lehetőségként kattintson a jobb gombbal a .cs fájlt, és válassza **tesztek futtatása**.
+A U-SQL-szkriptek tesztelésére szolgáló projekt egy C# Unit test Framework-keretrendszerre épül. A projekt összeállítása után válassza a**Windows** > **test Explorer** **tesztelése** > elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
 
-## <a name="test-c-udos"></a>C# udo-k tesztelése
+## <a name="test-c-udos"></a>Udo C# tesztelése
 
-### <a name="create-test-cases-for-c-udos"></a>Vizsgálati eset létrehozása a C# udo-k
+### <a name="create-test-cases-for-c-udos"></a>Tesztelési esetek létrehozása C# a Udo
 
-Egy C# egység teszt keretrendszer segítségével tesztelheti a C# udo-k (felhasználó által definiált operátorok). Ha teszteli az udo-k, elő kell készíteni a megfelelő **IRowset** objektumok bemenetként.
+A C# C# felhasználó által definiált operátorok (Udo-k) teszteléséhez egy egység tesztelési keretrendszert használhat. A Udo tesztelésekor bemenetként kell előkészítenie a megfelelő **IRowset** -objektumokat.
 
-IRowset objektum létrehozása két módja van:
+Egy **IRowset** -objektumot kétféleképpen lehet létrehozni:
 
-- Adatok betöltése IRowset létrehozása fájlból:
+- Adatok betöltése fájlból **IRowset**létrehozásához:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -82,7 +81,7 @@ IRowset objektum létrehozása két módja van:
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- IRowset létrehozásához használja az adatok gyűjtemény adatait:
+- Adatgyűjtési adatok használata **IRowset**létrehozásához:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -103,49 +102,54 @@ IRowset objektum létrehozása két módja van:
     IRowset rowset = UnitTestHelper.GetRowsetFromCollection(rows, output.AsReadOnly());
     ```
 
-### <a name="verify-test-results"></a>Vizsgálati eredmények ellenőrzése
+### <a name="verify-test-results"></a>Teszt eredményeinek ellenőrzése
 
-UDO-függvények hívása, miután a séma és a sorkészlet érték ellenőrzési eredmények assert függvények C# használatával ellenőrizheti. Mintakód egy U-SQL C# UDO egység teszt mintaprojektet keresztül használhatja **fájl > Új > projekt** a Visual Studióban.
+A UDO függvények meghívása után az eredményeket a séma és a sorhalmaz értékének ellenőrzésével ellenőrizheti az C# érvényesítő függvények használatával. Hozzáadhat egy **U-SQL C# Udo-egység tesztelési projektet** a megoldásához. Ehhez válassza a **fájl > új > projekt** elemet a Visual Studióban.
 
-### <a name="run-test-cases-in-visual-studio"></a>Vizsgálati eset futtatása a Visual Studióban
+### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-Után a tesztelő projektet hoz létre, futtathatja az összes vizsgálati eset azonban **tesztelése Explorer > lista**, vagy kattintson a jobb gombbal a .cs fájlt, és válassza a **tesztek futtatása**.
+A projekt összeállítása után válassza a**Windows** > **test Explorer** **tesztelése** > elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
 
-## <a name="run-test-cases-in-azure-devops"></a>Vizsgálati eset futtatása az Azure DevOps
+## Tesztelési esetek futtatása az Azure-folyamatokban<a name="run-test-cases-in-azure-devops"></a>
 
-Mindkét **U-SQL parancsfájl tesztelési projekt** és **C# UDO tesztelési projekt** öröklik a C# egység tesztelési projekt. A [Visual Studio test feladat](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) az Azure DevOps futtathatja a vizsgálati eset. 
+Az **U-SQL-parancsfájlok tesztelési** projektjei és a Udo C# -  **C# tesztelési** projektek öröklik az egység tesztelési projektjeit. A [Visual Studio tesztelési feladata](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) az Azure-folyamatokban ezeket a tesztelési eseteket futtathatja.
 
-### <a name="run-u-sql-test-cases-in-azure-devops"></a>U-SQL-vizsgálati eset futtatása az Azure DevOps
+### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-tesztelési esetek futtatása az Azure-folyamatokban
 
-U-SQL teszteléséhez, ellenőrizze, hogy betöltötte `CPPSDK` a build gépre, és ezután pass a `CPPSDK` USqlScriptTestRunner elérési útját (cppSdkFolderFullPath: \@"").
+U-SQL-teszt esetén győződjön meg arról, hogy `CPPSDK` betölti a felépített számítógépet, majd `CPPSDK` adja át `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`az elérési utat a következőnek:.
 
-**Mit jelent a CPPSDK?**
+#### <a name="what-is-cppsdk"></a>Mi az a CPPSDK?
 
-CPPSDK egy csomagot, amely magában foglalja a Microsoft Visual C++ 14 és a Windows SDK 10.0.10240.0. Ez az a környezet, amely szükséges a U-SQL futtatókörnyezete. Ez a csomag az Azure Data Lake Tools for Visual Studio telepítési mappa alatt kaphat:
+A CPPSDK egy olyan csomag, amely a C++ Microsoft Visual 14 és a Windows SDK 10.0.10240.0 tartalmazza. Ez a csomag tartalmazza azt a környezetet, amelyre a U-SQL futtatókörnyezet szükséges. Ezt a csomagot a Azure Data Lake Tools for Visual Studio telepítési mappája alatt érheti el:
 
-- A Visual Studio 2015, alatt áll `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- A Visual Studio 2017, alatt áll `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
+- A Visual Studio 2015 esetében a`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- A Visual Studio 2017 esetében a`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- A Visual Studio 2019 esetében a`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
-**Az Azure DevOps fordító-ügynökhöz az CPPSDK előkészítése**
+#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>CPPSDK előkészítése az Azure-folyamatok Build-ügynökével
 
-A leggyakoribb módja az Azure DevOps CPPSDK függőség előkészítése a következőképpen történik:
+Az Azure-folyamatokban a CPPSDK függőség előkészítésének leggyakoribb módja a következő:
 
-1.  A ZIP a mappát, amely a CPPSDK kódtárait is tartalmazza.
-2.  Ellenőrizze, hogy a zip-fájlt a forráskódú verziókezelő rendszer. (A zip-fájlt biztosítja, hogy ellenőrizze az összes szalagtárra a CPPSDK mappában, hogy az egyes fájlok nem ".gitignore" által figyelmen kívül hagyja.)   
-3.  Bontsa ki a .zip fájlt, a létrehozási folyamat.
-4.  Pont `USqlScriptTestRunner` ezt a build gép kicsomagolt mappájába.
+1. Zip-fájl, amely tartalmazza a CPPSDK-kódtárakat.
 
-### <a name="run-c-udo-test-cases-in-azure-devops"></a>C# UDO vizsgálati eset futtatása az Azure DevOps
+1. Keresse meg a. zip-fájlt a verziókövetés rendszerébe. A. zip fájl gondoskodik arról, hogy a CPPSDK mappa minden könyvtárában bejelentkezzen, hogy a fájlok ne `.gitignore` legyenek figyelmen kívül hagyva egy fájl miatt.
 
-C# UDO teszteléséhez ügyeljen arra, hogy az alábbi szerelvényeket, amelyek szükségesek a udo-k hivatkozhat. Ha azokhoz [a Nuget-csomag Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), mindenképpen adja hozzá a NuGet-visszaállítási feladat a buildelési folyamat.
+1. Bontsa ki a. zip fájlt a Build folyamatban.
 
-* Microsoft.Analytics.Interfaces
-* Microsoft.Analytics.Types
-* Microsoft.Analytics.UnitTest
+1. Mutasson `USqlScriptTestRunner` erre a kibontott mappára a Build számítógépén.
+
+### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Udo C# -tesztelési esetek futtatása az Azure-folyamatokban
+
+A C# Udo-teszt esetében ügyeljen arra, hogy a következő szerelvényekre hivatkozzon, amelyek a Udo esetében szükségesek.
+
+- Microsoft.Analytics.Interfaces
+- Microsoft.Analytics.Types
+- Microsoft.Analytics.UnitTest
+
+Ha [a Microsoft. Azure. DataLake. USQL. interfaces Nuget-csomagon](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)keresztül hivatkozik rájuk, ügyeljen arra, hogy a létrehozási folyamat során vegyen fel egy Nuget-visszaállítási feladatot.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Data Lake Analytics CI/CD-folyamat beállítása](data-lake-analytics-cicd-overview.md)
-- [U-SQL-szkript futtatása helyi gépen](data-lake-analytics-data-lake-tools-local-run.md)
-- [Használata U-SQL database-projekt U-SQL-adatbázis fejlesztéséhez](data-lake-analytics-data-lake-tools-develop-usql-database.md)
-
+- [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
+- [U-SQL-szkript futtatása a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md)
+- [A U-SQL Database-projekt használata a U-SQL-adatbázis fejlesztéséhez](data-lake-analytics-data-lake-tools-develop-usql-database.md)

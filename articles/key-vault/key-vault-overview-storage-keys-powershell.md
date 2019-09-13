@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 7968c045a59e86ecb89c0cc797936210b9cfb07d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382699"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883285"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Felügyelt Storage-fiók Azure Key Vault – PowerShell
 
@@ -63,7 +63,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 > - Az Azure Government Cloud Azure AD-bérlői az alkalmazás `7e7c393b-45d0-48b1-a35e-2905ddf8183c`azonosítóját használják.
 > - Azure AD-bérlők az Azure nyilvános felhőben, az összes többi `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`pedig az alkalmazás azonosítóját használja.
 
-Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak *listázásához* és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
+Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak listázásához és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
 
 Rendelje hozzá ezt a szerepkört az Key Vault egyszerű szolgáltatáshoz, és korlátozza a hatókört a Storage-fiókra az alábbi lépések segítségével. A (z), `$resourceGroupName`, `$storageAccountName`és `$storageAccountKey` `$keyVaultName` változókat a parancsfájl futtatása előtt frissítse:
 

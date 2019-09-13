@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d7cb473c54dc9cf735e43c65bc079fb4f21e4c97
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812188"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913991"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -26,6 +26,8 @@ A Microsoft felhőt előnyben részesítő stratégiájának jegyében az SQL Se
 
 > [!NOTE]
 > A Azure SQL Database használati feltételeinek szószedetét lásd: [SQL Database kifejezések szószedete](sql-database-glossary-terms.md)
+
+## <a name="deployment-models"></a>Üzembe helyezési modellek
 
 Az Azure SQL Database az alábbi lehetőségeket kínálja az Azure SQL-adatbázisok üzembe helyezésére:
 
@@ -44,18 +46,26 @@ A SQL Database kiszámítható teljesítményt nyújt több erőforrástípus, s
 
 A SQL Database összes változata lehetővé teszi, hogy meghatározza a hozzárendelni kívánt erőforrások mennyiségét. 
 - Az önálló adatbázisok esetében minden adatbázis el van különítve egymástól és hordozható rendszertől, amelyek mindegyike saját, garantált mennyiségű számítási, memória-és tárolási erőforrásokkal rendelkezik. Az adatbázishoz rendelt erőforrások mennyisége dedikált az adatbázishoz, és nem lesz megosztva az Azure-felhőben lévő más adatbázisokkal. Lehetővé teszi az [önálló adatbázis-erőforrások](sql-database-single-database-scale.md) felfelé és lefelé történő dinamikus méretezését is. A önálló adatbázis különböző számítási, memória-és tárolási erőforrásokat biztosít a különböző igényekhez, amelyek 1 – 80 virtuális mag, 32 GB és 4 TB között változnak. Az önálló adatbázisok [nagy kapacitású-szolgáltatási rétege](sql-database-service-tier-hyperscale.md) lehetővé teszi, hogy a gyors biztonsági mentési és visszaállítási képességekkel bővítse a 100 TB-ot.
-- Rugalmas készletekkel hozzárendelhet erőforrásokat, amelyeket a készlet összes adatbázisa meg fog osztani. Létrehozhat egy új adatbázist, vagy áthelyezheti a meglévő önálló adatbázisokat egy erőforráskészletbe, így maximalizálhatja az erőforrások használatát, és pénzt takaríthat meg, és a [rugalmas készlet erőforrásainak fel-és leskálázását](sql-database-elastic-pool-scale.md) is lehetővé teszi.
+- Rugalmas készletekkel hozzárendelhet erőforrásokat, amelyeket a készlet összes adatbázisa meg fog osztani. Létrehozhat egy új adatbázist, vagy áthelyezheti a meglévő önálló adatbázisokat egy erőforráskészletbe, így maximalizálhatja az erőforrások használatát, és pénzt takaríthat meg, és a [rugalmas készlet erőforrásainak](sql-database-elastic-pool-scale.md) fel-és leskálázását is lehetővé teszi.
 - Felügyelt példányok esetén minden felügyelt példány el van különítve a garantált erőforrásokkal rendelkező más példányokból. Felügyelt példányon belül a példány-adatbázisok több erőforrást is megoszthatnak egymással, és a [felügyelt példányok erőforrásai](sql-database-managed-instance-resource-limits.md) fel és le dinamikusan méretezhetők.
 
 Az általános célú szolgáltatási szinten az első alkalmazást egy kis méretű, egyetlen adatbázison is felépítheti, és a szolgáltatási szintet manuálisan vagy programozottan módosíthatja az üzleti szempontból kritikus szolgáltatási rétegre, hogy megfeleljen a megoldás igényeinek. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Egyetlen adatbázis támogatja a manuális dinamikus méretezhetőséget, de nem automatikus méretezést. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálható egy adott adatbázis skálázhatósága. Példa: [egyetlen adatbázis figyelése és méretezése a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Modellek, szolgáltatási szintek, számítási méretek és tárolási összegek vásárlása
+### <a name="purchasing-models"></a>Vásárlási modellek
 
 SQL Database két vásárlási modellt kínál:
-- A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) segítségével kiválaszthatja a virtuális mag számát, a memória mennyiségét, valamint a tárterület mennyiségét és sebességét. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja. További információ a Azure Hybrid Benefitről: [Gyakori kérdések](#sql-database-frequently-asked-questions-faq).
+- A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) segítségével kiválaszthatja a virtuális mag számát, a memória mennyiségét, valamint a tárterület mennyiségét és sebességét. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a megtakarítások megszerzéséhez a **[SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)** is használja. További információ a Azure Hybrid Benefitről: [Gyakori kérdések](#sql-database-frequently-asked-questions-faq).
 - A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) a számítási, a memória-és az i/o-erőforrások keverékét kínálja három szolgáltatási szinten a könnyű és a nehéz adatbázis-számítási feladatok támogatásához. Az egyes szintjein belüli számítási méretek különböző mennyiségű erőforrást biztosítanak, amelyhez további tárolási erőforrásokat adhat hozzá.
+- A [kiszolgáló nélküli modell](sql-database-serverless.md) , amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási kapacitás mennyisége alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+
+### <a name="service-tiers"></a>Szolgáltatásszintek
+
+A Azure SQL Database három szolgáltatási szintet kínál, amelyek különböző típusú alkalmazásokhoz készültek:
+- [Általános célú/standard](sql-database-service-tier-general-purpose.md) szolgáltatási szint általános számítási feladatokhoz tervezve. A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.
+- [Üzletileg kritikus/prémium](sql-database-service-tier-business-critical.md) szintű szolgáltatási szint, amely nagy tranzakciós sebességgel és a legalacsonyabb késleltetésű i/o-OLTP alkalmazásokhoz lett tervezve. A maximális rugalmasságot nyújt a hibákhoz több, elkülönített replika használatával.
+- A [nagy kapacitású](sql-database-service-tier-hyperscale.md) szolgáltatási réteg rendkívül nagy OLTP-adatbázishoz készült, és lehetővé teszi a tárolási és a számítási kapacitások automatikus méretezését. 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -106,7 +116,7 @@ Valójában az Azure piacvezető, a Microsoft által felügyelt adatközpontok g
 
   A SQL Database automatikusan végrehajtja az Azure SQL Database-adatbázisok teljes, különbözeti és tranzakciós naplójának biztonsági másolatát, így bármikor visszaállíthatja őket. Az önálló adatbázisok és a készletezett adatbázisok esetében beállíthatja, hogy SQL Database az adatbázis teljes biztonsági mentését az Azure Storage-ba tárolja a hosszú távú biztonsági mentés megőrzése érdekében. Felügyelt példányok esetén a biztonsági másolatok hosszú távú megőrzéséhez is elvégezheti a csak másolással készített biztonsági mentést.
 
-- **[Időponthoz tartozó visszaállítások](sql-database-recovery-using-backups.md)** :
+- **[](sql-database-recovery-using-backups.md)** Időponthoz tartozó visszaállítások:
 
   Az összes SQL Database üzembe helyezési lehetőség az Azure SQL Database-adatbázisok automatikus biztonsági mentés megőrzési időszakában bármely időpontra támogatja a helyreállítást.
 - **[Aktív földrajzi replikálás](sql-database-active-geo-replication.md)** :
@@ -147,7 +157,7 @@ Emellett az [adaptív lekérdezésfeldolgozási](/sql/relational-databases/perfo
 Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](sql-database-security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
 
 > [!IMPORTANT]
-> Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
+> Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) központot, ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
@@ -169,7 +179,7 @@ A [naplózás](sql-database-auditing.md) nyomon követi az adatbázis eseményei
 
 ### <a name="data-encryption"></a>Adattitkosítás
 
-A SQL Database biztosítja az adatok védelmét azáltal, hogy a mozgásban lévő adatok titkosítását biztosítja a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatással, a REST-adatok [átlátható adattitkosítással](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)és a használatban lévő adatokhoz, és [mindig titkosított](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+A SQL Database biztosítja az adatok védelmét azáltal, hogy a mozgásban lévő adatok titkosítását biztosítja a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatással, a REST-adatok [átlátható](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)adattitkosítással és a használatban lévő adatokhoz, és [mindig titkosított](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
@@ -177,7 +187,7 @@ Az SQL Database az [Azure Active Directory-integráció](sql-database-aad-authen
 
 ### <a name="compliance-certification"></a>Megfelelőségi tanúsítvány
 
-Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
+Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkért tekintse meg a [Microsoft Azure adatvédelmi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) központot, ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
 ## <a name="easy-to-use-tools"></a>Egyszerűen használható eszközök
 

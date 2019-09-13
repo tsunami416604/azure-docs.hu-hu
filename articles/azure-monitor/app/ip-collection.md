@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694288"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916165"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -36,10 +36,9 @@ Ez a viselkedés úgy működik, hogy segít elkerülni a személyes adatgyűjt�
 
 Habár az alapértelmezett viselkedés a személyes adatok gyűjtésének csökkentése, továbbra is rugalmasságot biztosítunk az IP-címek adatainak gyűjtéséhez és tárolásához. A személyes adat (például IP-címek) tárolásának megkezdése előtt erősen ajánlott ellenőrizni, hogy ez nem oldja meg a megfelelőségi követelményeket vagy a helyi előírásokat. Ha többet szeretne megtudni a Application Insights személyes adatainak kezeléséről, tekintse meg a [személyes adatainak útmutatását](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
 
-## <a name="storing-partial-ip-address-data"></a>Részleges IP-címek tárolására szolgáló adattároló
+## <a name="storing-ip-address-data"></a>IP-címek tárolására szolgáló adattároló
 
-A részleges IP-gyűjtés és-tárolás `DisableIpMasking` engedélyezéséhez a Application Insights összetevő tulajdonságát `true`be kell állítani. Ezt a tulajdonságot Azure Resource Manager-sablonokon vagy a REST API meghívásával lehet beállítani. Az IP-címek rögzítése az utolsó oktetttel történik.
-
+Az IP-gyűjtés és-tárolás `DisableIpMasking` engedélyezéséhez a Application Insights összetevő tulajdonságát `true`be kell állítani. Ezt a tulajdonságot Azure Resource Manager-sablonokon vagy a REST API meghívásával lehet beállítani. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -86,13 +85,13 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
     > [!WARNING]
     > Ha olyan hibát tapasztal, amely az alábbiakat írja elő: **_Az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._** Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
 
-5. Válassza > az Elfogadom a**vásárlás**lehetőséget. 
+5. Válassza az **Elfogadom** > a**vásárlás**lehetőséget. 
 
     ![Sablon szerkesztése](media/ip-collection/purchase.png)
 
     Ebben az esetben semmi újat nem vásárol, csak a meglévő Application Insights erőforrás konfigurációját frissíti.
 
-6. Miután az üzembe helyezés befejeződött, az új telemetria-adatokat a rendszer az IP-címmel feltöltött első három oktetttel rögzíti, az utolsó oktett pedig nulla.
+6. Miután az üzembe helyezés befejeződött, a rendszer rögzíti az új telemetria-adatgyűjtést.
 
     Ha még egyszer kijelöli és szerkeszti a sablont, akkor csak az alapértelmezett sablont fogja látni, és nem fogja látni az újonnan hozzáadott tulajdonságot és a hozzá tartozó értéket. Ha nem látja az IP-címekre vonatkozó adatcímeket `"DisableIpMasking": true` , és szeretné megerősíteni, hogy a be van állítva. Futtassa a következő PowerShell-t: (Cserélje `Fabrikam-dev` le a megfelelő erőforrás-és erőforráscsoport-nevet.)
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetria inicializáló
 
-Ha csak az első három oktett helyett a teljes IP-címet kell rögzítenie, akkor a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) segítségével átmásolhatja az IP-címet egy olyan egyéni mezőre, amely nem lesz maszkban.
+Ha rugalmasabb alternatíva szükséges, mint `DisableIpMasking` az összes IP-cím rögzítése, a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) használatával az összeset vagy annak egy részét átmásolhatja egy egyéni mezőbe. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 

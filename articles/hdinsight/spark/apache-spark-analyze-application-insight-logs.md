@@ -1,6 +1,6 @@
 ---
-title: Application Insights-naplók elemzése a Spark – Azure HDInsight segítségével
-description: Ismerje meg, hogyan exportálhatja a blob storage-ban, és ezután a-naplók elemzése a Spark on HDInsight az Application Insights-naplókat.
+title: Alkalmazás-betekintési naplók elemzése a Spark-Azure HDInsight
+description: Ismerje meg, hogyan exportálhatja az Application Insight-naplókat a blob Storage-ba, majd elemezheti a naplókat a Spark on HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,83 +8,83 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066489"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899855"
 ---
-# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Az Apache Spark on HDInsight az Application Insights-telemetrianaplók elemzése
+# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights telemetria-naplók elemzése a HDInsight Apache Spark
 
-Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) a HDInsight Application Insights telemetriai adatok elemzéséhez.
+Megtudhatja, hogyan használhatja a [Apache Spark](https://spark.apache.org/) on HDInsight az alkalmazás Insight telemetria-adatainak elemzéséhez.
 
-[A Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) egy elemzési szolgáltatás, amely a webes alkalmazások figyelésére. Az Application Insights által létrehozott telemetriaadatok exportálhatók az Azure Storage. Amint az adatok Azure Storage-ban, HDInsight segítségével elemezhetők.
+A [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) egy elemzési szolgáltatás, amely figyeli a webalkalmazásait. A Application Insights által generált telemetria-adatkészletek exportálhatók az Azure Storage szolgáltatásba. Ha az Azure Storage-ban található az adattároló, a HDInsight használatával elemezheti azt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy alkalmazás, amely az Application Insights használatára van konfigurálva.
+* Application Insights használatára konfigurált alkalmazás.
 
-* Linux-alapú HDInsight-fürt létrehozásának ismerete. További információkért lásd: [HDInsight az Apache Spark létrehozása](apache-spark-jupyter-spark-sql.md).
+* Linux-alapú HDInsight-fürt létrehozásának ismerete. További információ: [Create Apache Spark on HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* Egy webböngészőben.
+* Egy webböngésző.
 
-A következő erőforrások fejleszthetik és tesztelhetik az ebben a dokumentumban is használja:
+A következő erőforrásokat használták a dokumentum fejlesztése és tesztelése során:
 
-* Application Insights telemetriai adatokat generálta egy [Node.js-webalkalmazások az Application Insights használatára konfigurált](../../azure-monitor/app/nodejs.md).
+* Application Insights telemetria-adat a [Application Insights használatára konfigurált Node. js-webalkalmazás](../../azure-monitor/app/nodejs.md)használatával lett létrehozva.
 
-* Egy Linux-alapú Spark on HDInsight fürt 3.5-ös verziója lett megadva az adatok elemzéséhez.
+* A Linux-alapú Spark on HDInsight-fürt 3,5-es verziója az adatelemzésre szolgál.
 
 ## <a name="architecture-and-planning"></a>Architektúra és tervezés
 
-Az alábbi ábra az ebben a példában a service-architektúra:
+A következő ábra a példa szolgáltatási architektúráját szemlélteti:
 
-![ábra, amely az Application Insights szolgáltatásból a blob storage, adatátvitel, és a Spark on HDInsight által feldolgozott azt](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![diagram, amely a Application Insightsról a blob Storage-ba áramló adatok feldolgozását mutatja be, majd a Spark on HDInsight](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage tárterület
 
-Az Application Insights beállítható úgy, hogy folyamatosan exportálhatja a blobokhoz telemetrikus adatokat. HDInsight el tudja olvasni a blobokban tárolt adatokat. Vannak azonban bizonyos követelményeknek, figyelembe kell venni:
+A Application Insights konfigurálható úgy, hogy folyamatosan exportálja a telemetria-adatokat a blobokra. A HDInsight ezután olvasni tudják a blobokban tárolt adatfájlokat. Vannak azonban néhány követelmény, amelyeket követnie kell:
 
-* **Hely**: Ha a Tárfiók és a HDInsight különböző helyeken vannak, növelheti, a késést. Kimenő adatforgalmi díjat akkor számítunk fel az adatok régiók közötti áthelyezése, költség, is nő.
+* **Hely**: Ha a Storage-fiók és a HDInsight különböző helyen találhatók, akkor ez megnövelheti a késést. Emellett növeli a költségeket is, mivel a kimenő költségek a régiók közötti adatforgalomra vonatkoznak.
 
     > [!WARNING]  
-    > HDInsight, mint egy másik helyen lévő Tárfiókok használata nem támogatott.
+    > A HDInsight eltérő helyen lévő Storage-fiók használata nem támogatott.
 
-* **BLOB típusát**: A HDInsight csak blokkblobokat támogat. Application Insights, az alapértelmezett érték blokkblobokat, így működnek a HDInsight alapértelmezés szerint.
+* **Blob típusa**: A HDInsight csak blokkblobokat támogat. Application Insights alapértelmezett értéke a blokk Blobok használata, ezért a HDInsight alapértelmezés szerint működnie kell.
 
-A tárolóeszközök hozzáadása egy meglévő fürthöz további információkért lásd: a [további tárfiókok hozzáadása](../hdinsight-hadoop-add-storage.md) dokumentumot.
+A tárolók meglévő fürthöz való hozzáadásával kapcsolatos információkért lásd a [további Storage-fiókok hozzáadása](../hdinsight-hadoop-add-storage.md) dokumentumot.
 
 ### <a name="data-schema"></a>Adatséma
 
-Az Application Insights nyújt [adatmodell exportálása](../../azure-monitor/app/export-data-model.md) blobok exportálják a telemetriai adatok formátuma. A jelen dokumentumban leírt lépések a Spark SQL használatával az adatok. Spark SQL automatikusan hozhat létre egy sémát a JSON-adatstruktúra Application Insights által naplózott számára.
+A Application Insights a blobokra exportált telemetria adatformátumra vonatkozó adatokat biztosít az [adatmodell exportálásához](../../azure-monitor/app/export-data-model.md) . A jelen dokumentumban leírt lépések a Spark SQL használatával működnek együtt az adatkezeléssel. A Spark SQL automatikusan létrehozhat sémát a Application Insights által naplózott JSON-adatstruktúra számára.
 
-## <a name="export-telemetry-data"></a>Telemetriai adatok exportálása
+## <a name="export-telemetry-data"></a>Telemetria-adatexportálás
 
-Kövesse a [folyamatos exportálást konfigurálni](../../azure-monitor/app/export-telemetry.md) konfigurálása az Application Insights telemetriai adatok exportálása az Azure storage-blobba.
+Kövesse a [folyamatos exportálás konfigurálásának](../../azure-monitor/app/export-telemetry.md) lépéseit a Application Insights konfigurálásához a telemetria-adatok Azure Storage-blobba való exportálásához.
 
-## <a name="configure-hdinsight-to-access-the-data"></a>Az adatok HDInsight konfigurálása
+## <a name="configure-hdinsight-to-access-the-data"></a>HDInsight konfigurálása az adateléréshez
 
-Egy HDInsight-fürtöt hoz létre, ha a tárfiók hozzáadása a fürt létrehozása során.
+Ha HDInsight-fürtöt hoz létre, adja hozzá a Storage-fiókot a fürt létrehozása során.
 
-Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja található információk a [további Tárfiókok hozzáadása](../hdinsight-hadoop-add-storage.md) dokumentumot.
+Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [további Storage-fiókok hozzáadása](../hdinsight-hadoop-add-storage.md) dokumentum információit.
 
-## <a name="analyze-the-data-pyspark"></a>Elemezheti az adatokat: PySpark
+## <a name="analyze-the-data-pyspark"></a>Az adatgyűjtés elemzése: PySpark
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultjai**, majd válassza ki **Jupyter Notebook** fürt Dashboard__ szakaszából.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a Spark on HDInsight-fürtöt. A **Gyorshivatkozások** szakaszban válassza ki a **fürt irányítópultok**elemet, majd válassza a **Jupyter notebook** lehetőséget a fürt Dashboard__ szakaszában.
 
-    ![A fürt irányítópultjai](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![A fürt irányítópultok](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
-2. A Jupyter lap jobb felső sarkában válassza **új**, majd **PySpark**. Egy Python-alapú Jupyter Notebook tartalmazó új böngészőlapon nyílik meg.
+2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **PySpark**lehetőséget. Megnyílik egy új, Python-alapú Jupyter Notebookt tartalmazó böngésző lap.
 
-3. Az első mező (nevű egy **cella**) lapon adja meg a következő szöveget:
+3. Az oldal első mezőjében ( **cella**neve) írja be a következő szöveget:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Ez a kód a bemeneti adatok rekurzív módon elérési a könyvtárstruktúra Spark konfigurálja. Application Insights telemetria a rendszer egy hasonló könyvtárstruktúrát naplózza a `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló `/{telemetry type}/YYYY-MM-DD/{##}/`címtár-struktúrába van naplózva:.
 
-4. Használat **SHIFT + ENTER** a kód futtatásához. A cella bal oldalán egy "\*" jelzi, hogy a kód a cellában lévő folyamatban van a zárójelek között jelenik meg. Ha kész, a "\*" cella alatti módosítások számát, illetve az alábbi szöveghez hasonló kimenet jelenik meg:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
         Creating SparkContext as 'sc'
 
@@ -93,38 +93,38 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Egy új cella jön létre alább az elsőt. Adja meg a következő szöveget az új cellára. Cserélje le `CONTAINER` és `STORAGEACCOUNT` az Azure storage-fiók nevét és az Application Insights-adatokat tartalmazó blobtároló neve.
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje `CONTAINER` le `STORAGEACCOUNT` az és az attribútumot az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights-adathalmazt tartalmaz.
 
    ```python
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Használat **SHIFT + ENTER** végrehajtani ezt a cellát. Az alábbi szöveghez hasonló eredmény jelenik meg:
+    A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Vissza a wasb-elérési út a helye az Application Insights telemetriai adatokat. Módosítsa a `hdfs dfs -ls` adott vissza a wasb-elérési út használata a cellában. sor, és használja **SHIFT + ENTER** a cella ismét futtatni. Ezúttal az eredményeket kell megjelenítenie a telemetriai adatokat tartalmazó könyvtárakat.
+    A visszaadott wasb útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella vonalátavisszaadottwasbelérésiúthasználatára,majdaSHIFT+ENTERbillentyűkombinációvalfuttassaújraacellát`hdfs dfs -ls` . Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
-   > Ebben a szakaszban a lépéseket további részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` directory lett megadva. A könyvtárstruktúra eltérő lehet.
+   > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. A címtár szerkezete eltérő lehet.
 
-6. A következő cella adja meg a következő kódot: Cserélje le `WASB_PATH` az előző lépésben az elérési útját.
+6. A következő cellában adja meg a következő kódot: Cserélje `WASB_PATH` le az elemet az előző lépésből származó elérési útra.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
    jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Ez a kód létrehozza a dataframe a folyamatos exportálás folyamat által exportált JSON-fájlokból. Használat **SHIFT + ENTER** futtatásához ezt a cellát.
-7. A következő cellába adja meg, és futtassa a következő, a sémát, amely a Spark létre a JSON-fájlok megtekintéséhez:
+    Ez a kód egy dataframe hoz létre a folyamatos exportálási folyamat által exportált JSON-fájlokból. A cella futtatásához használja a **SHIFT + ENTER** billentyűkombinációt.
+7. A következő cellában írja be és futtassa a következőt a JSON-fájlokhoz létrehozott séma megtekintéséhez:
 
    ```python
    jsonData.printSchema()
    ```
 
-    A séma az egyes telemetriai az eltérő. Az alábbi példában a rendszer által létrehozott webes kéréseket séma (a tárolt adatok a `Requests` alkönyvtár):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
 
         root
         |-- context: struct (nullable = true)
@@ -186,7 +186,7 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
-8. Az adathalmaz regisztrálása ideiglenes táblaként, és az adatokra irányuló lekérdezések futtatása a következő használatával:
+8. A következő paranccsal regisztrálja a dataframe ideiglenes táblaként, és futtasson lekérdezést az adatkezeléshez:
 
    ```python
    jsonData.registerTempTable("requests")
@@ -194,12 +194,12 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
    df.show()
    ```
 
-    Ez a lekérdezés visszaadja az első 20 bejegyzést a város adatai ahol context.location.city értéke nem null.
+    Ez a lekérdezés az első 20 rekord városának adatait adja vissza, ahol a Context. location. City nem null értékű.
 
    > [!NOTE]  
-   > A környezet struktúra Application Insights által naplózott összes telemetriai adat szerepel. Az városa elem nem lehet a naplók feltöltve. A séma segítségével azonosíthatja a más elemeket, lekérdezheti, ha a naplók adatokat is tartalmazhat.
+   > A környezeti struktúra a Application Insights által naplózott összes telemetria megtalálható. A város elem nem tölthető fel a naplókban. A sémával azonosíthatja azokat a más elemeket, amelyeket a naplók adatait tartalmazó lekérdezéshez használhat.
 
-    Ez a lekérdezés visszaadja az információkat az alábbi szöveghez hasonló:
+    Ez a lekérdezés az alábbi szöveghez hasonló adatokat ad vissza:
 
         +---------+
         |     city|
@@ -211,21 +211,21 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
         ...
         +---------+
 
-## <a name="analyze-the-data-scala"></a>Elemezheti az adatokat: Scala
+## <a name="analyze-the-data-scala"></a>Az adatgyűjtés elemzése: Scala
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultjai**, majd válassza ki **Jupyter Notebook** fürt Dashboard__ szakaszából.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a Spark on HDInsight-fürtöt. A **Gyorshivatkozások** szakaszban válassza ki a **fürt irányítópultok**elemet, majd válassza a **Jupyter notebook** lehetőséget a fürt Dashboard__ szakaszában.
 
-    ![A fürt irányítópultjai](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. A Jupyter lap jobb felső sarkában válassza **új**, majd **Scala**. Megjelenik egy új böngészőlap, amely tartalmazza a Jupyter Notebook Scala-alapú.
-3. Az első mező (nevű egy **cella**) lapon adja meg a következő szöveget:
+    ![A fürt irányítópultok](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **Scala**lehetőséget. Megjelenik egy új, a Scala-alapú Jupyter Notebook tartalmazó böngésző lap.
+3. Az oldal első mezőjében ( **cella**neve) írja be a következő szöveget:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Ez a kód a bemeneti adatok rekurzív módon elérési a könyvtárstruktúra Spark konfigurálja. Application Insights telemetria a rendszer naplózza a hasonló könyvtárstruktúrát `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló `/{telemetry type}/YYYY-MM-DD/{##}/`címtár-struktúrába van naplózva:.
 
-4. Használat **SHIFT + ENTER** a kód futtatásához. A cella bal oldalán egy "\*" jelzi, hogy a kód a cellában lévő folyamatban van a zárójelek között jelenik meg. Ha kész, a "\*" cella alatti módosítások számát, illetve az alábbi szöveghez hasonló kimenet jelenik meg:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
         Creating SparkContext as 'sc'
 
@@ -234,24 +234,24 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Egy új cella jön létre alább az elsőt. Adja meg a következő szöveget az új cellára. Cserélje le `CONTAINER` és `STORAGEACCOUNT` blobtároló neve, amely tartalmazza az Application Insights és az Azure storage-fiók nevét naplózza.
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. A `CONTAINER` és`STORAGEACCOUNT` az helyére írja be az Azure Storage-fiók nevét és a blob-tároló nevét, amely Application Insights naplókat tartalmaz.
 
    ```scala
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Használat **SHIFT + ENTER** végrehajtani ezt a cellát. Az alábbi szöveghez hasonló eredmény jelenik meg:
+    A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Vissza a wasb-elérési út a helye az Application Insights telemetriai adatokat. Módosítsa a `hdfs dfs -ls` adott vissza a wasb-elérési út használata a cellában. sor, és használja **SHIFT + ENTER** a cella ismét futtatni. Ezúttal az eredményeket kell megjelenítenie a telemetriai adatokat tartalmazó könyvtárakat.
+    A visszaadott wasb útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella vonalátavisszaadottwasbelérésiúthasználatára,majdaSHIFT+ENTERbillentyűkombinációvalfuttassaújraacellát`hdfs dfs -ls` . Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
-   > Ebben a szakaszban a lépéseket további részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` directory lett megadva. Ez a könyvtár nem létezik, kivéve, ha a telemetriai adatok webes alkalmazásokhoz.
+   > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. Előfordulhat, hogy ez a könyvtár nem létezik, kivéve, ha a telemetria-adatai egy webalkalmazáshoz készültek.
 
-6. A következő cella adja meg a következő kódot: Cserélje le `WASB\_PATH` az előző lépésben az elérési útját.
+6. A következő cellában adja meg a következő kódot: Cserélje `WASB\_PATH` le az elemet az előző lépésből származó elérési útra.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -259,15 +259,15 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
    var jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Ez a kód létrehozza a dataframe a folyamatos exportálás folyamat által exportált JSON-fájlokból. Használat **SHIFT + ENTER** futtatásához ezt a cellát.
+    Ez a kód egy dataframe hoz létre a folyamatos exportálási folyamat által exportált JSON-fájlokból. A cella futtatásához használja a **SHIFT + ENTER** billentyűkombinációt.
 
-7. A következő cellába adja meg, és futtassa a következő, a sémát, amely a Spark létre a JSON-fájlok megtekintéséhez:
+7. A következő cellában írja be és futtassa a következőt a JSON-fájlokhoz létrehozott séma megtekintéséhez:
 
    ```scala
    jsonData.printSchema
    ```
 
-    A séma az egyes telemetriai az eltérő. Az alábbi példában a rendszer által létrehozott webes kéréseket séma (a tárolt adatok a `Requests` alkönyvtár):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
 
         root
         |-- context: struct (nullable = true)
@@ -330,21 +330,21 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 
-8. Az adathalmaz regisztrálása ideiglenes táblaként, és az adatokra irányuló lekérdezések futtatása a következő használatával:
+8. A következő paranccsal regisztrálja a dataframe ideiglenes táblaként, és futtasson lekérdezést az adatkezeléshez:
 
    ```scala
    jsonData.registerTempTable("requests")
    var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
    ```
 
-    Ez a lekérdezés visszaadja az első 20 bejegyzést a város adatai ahol context.location.city értéke nem null.
+    Ez a lekérdezés az első 20 rekord városának adatait adja vissza, ahol a Context. location. City nem null értékű.
 
    > [!NOTE]  
-   > A környezet struktúra Application Insights által naplózott összes telemetriai adat szerepel. Az városa elem nem lehet a naplók feltöltve. A séma segítségével azonosíthatja a más elemeket, lekérdezheti, ha a naplók adatokat is tartalmazhat.
+   > A környezeti struktúra a Application Insights által naplózott összes telemetria megtalálható. A város elem nem tölthető fel a naplókban. A sémával azonosíthatja azokat a más elemeket, amelyeket a naplók adatait tartalmazó lekérdezéshez használhat.
    >
    >
 
-    Ez a lekérdezés visszaadja az információkat az alábbi szöveghez hasonló:
+    Ez a lekérdezés az alábbi szöveghez hasonló adatokat ad vissza:
 
         +---------+
         |     city|
@@ -358,14 +358,14 @@ Az Azure Storage-fiók hozzáadásához egy meglévő fürthöz használja talá
 
 ## <a name="next-steps"></a>További lépések
 
-Az Apache Spark-adatok és az Azure-szolgáltatások használatával további példákért lásd az alábbi dokumentumokat:
+Ha további példákat szeretne használni a Apache Spark használatára az Azure-beli adatkezelési és-szolgáltatásokkal kapcsolatban, tekintse meg a következő dokumentumokat:
 
-* [Az Apache Spark és BI: Spark on HDInsight használatával, BI-eszközökkel interaktív adatelemzés végrehajtása](apache-spark-use-bi-tools.md)
-* [Az Apache Spark és Machine Learning: A Spark használata a HDInsight HVAC-adatok épület-hőmérséklet elemzésére](apache-spark-ipython-notebook-machine-learning.md)
-* [Az Apache Spark és Machine Learning: A HDInsight Spark használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [A webhelynapló elemzése a HDInsight az Apache Spark használatával](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
-Információ létrehozása és alkalmazások futtatására a Spark az alábbi dokumentumokban talál:
+A Spark-alkalmazások létrehozásával és futtatásával kapcsolatos információkért tekintse meg a következő dokumentumokat:
 
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
+* [Feladatok távoli futtatása egy Apache Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)

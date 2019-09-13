@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
-ms.translationtype: MT
+ms.openlocfilehash: 2940073d18cfee5a2313c03a5e9de6c00782edff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207339"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882937"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár személyre szabása
 
@@ -26,7 +26,7 @@ Ismerkedés a .NET-hez készült személyre szabott ügyféloldali kódtár hasz
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | A dokumentációs[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[A dokumentációs](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,6 +47,8 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 
 * `PERSONALIZER_RESOURCE_KEY`az erőforrás-kulcshoz.
 * `PERSONALIZER_RESOURCE_ENDPOINT`az erőforrás-végponthoz.
+
+A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
 ### <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
@@ -236,7 +238,7 @@ Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások
 
 A jutalmazási kérelem elvégzéséhez a program beolvassa a felhasználó kijelölését a parancssorból, hozzárendel egy numerikus értéket az egyes kijelölésekhez, majd elküldi az egyedi rangú esemény AZONOSÍTÓját és a numerikus értéket a jutalmazási metódusnak.
 
-Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés [](concept-rewards.md) lehet annak meghatározása, hogy mikor és mit kell elküldeni a jutalmazási hívásnak. 
+Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés lehet annak meghatározása, hogy mikor és mit kell elküldeni a [jutalmazási](concept-rewards.md) hívásnak. 
 
 [!code-csharp[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=reward)]
 
@@ -250,7 +252,7 @@ dotnet run
 
 ![A gyors üzembe helyezési program néhány kérdést tesz fel a felhasználói preferenciák (más néven funkciók) összegyűjtésére, majd megadja a legfontosabb műveletet.](media/csharp-quickstart-commandline-feedback-loop/quickstart-program-feedback-loop-example.png)
 
-A [](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/csharp/PersonalizerExample/Program.cs) rövid útmutató forráskódja elérhető a személyre szabott minták GitHub-adattárában.
+A rövid útmutató [forráskódja](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/csharp/PersonalizerExample/Program.cs) elérhető a személyre szabott minták GitHub-adattárában.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

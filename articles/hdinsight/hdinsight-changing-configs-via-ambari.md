@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 57e5eef8563bca0e27024d6ff5a46b983273df07
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810664"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934578"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürtök konfigurációjának optimalizálásához
 
@@ -23,7 +23,7 @@ A Ambari webes felhasználói felületének bevezetését lásd: [HDInsight-für
 
 Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` -ba a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg.
 
-![Ambari-irányítópult](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Ambari-irányítópult](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 A Ambari webes felhasználói felülete a gazdagépek, a szolgáltatások, a riasztások, a konfigurációk és a nézetek kezelésére használható. A Ambari nem használható HDInsight-fürt létrehozásához, a szolgáltatások frissítéséhez, a stackek és verziók kezeléséhez, illetve a gazdagépek leszereléséhez, illetve a szolgáltatások a fürthöz való hozzáadásához.
 
@@ -31,7 +31,7 @@ A Ambari webes felhasználói felülete a gazdagépek, a szolgáltatások, a ria
 
 A konfigurációs beállítások segítenek egy adott szolgáltatás finomhangolásában. A szolgáltatás konfigurációs beállításainak módosításához válassza ki a szolgáltatást a **szolgáltatások** oldalsávról (a bal oldalon), majd keresse meg a **konfiguráció** lapot a szolgáltatás részletei lapon.
 
-![Szolgáltatások oldalsávja](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
+![Szolgáltatások oldalsávja](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>NameNode Java-halom méretének módosítása
 
@@ -41,15 +41,15 @@ Az NameNode Java-halom méretének módosítása:
 
 1. Válassza a **HDFS** elemet a szolgáltatások oldalsávon, és navigáljon a **konfigurációk** lapra.
 
-    ![HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
+    ![HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. A Java- **NameNode**beállításának megkeresése. A **szűrő** szövegmezővel egy adott beállítást is beírhat, és megkeresheti azt. Válassza a **toll** ikont a beállítás neve mellett.
 
-    ![NameNode Java-halom mérete](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![NameNode Java-halom mérete](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Írja be az új értéket a szövegmezőbe, majd nyomja le az **ENTER** billentyűt a módosítás mentéséhez.
 
-    ![NameNode Java heap-Size1 szerkesztése](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![NameNode Java heap-Size1 szerkesztése](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. A NameNode Java-halom mérete 1 GB-ra módosul 2 GB-ról.
 
@@ -57,7 +57,7 @@ Az NameNode Java-halom méretének módosítása:
 
 1. Mentse a módosításokat a konfigurációs képernyő felső részén található zöld **Mentés** gombra kattintva.
 
-    ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive optimalizálás
 
@@ -72,11 +72,11 @@ A kaptár két végrehajtó motort biztosít: [Apache Hadoop MapReduce](https://
 
 1. A kaptár- **konfigurációk** lapon írja be a végrehajtó **motor** értéket a szűrő mezőbe.
 
-    ![Keresési végrehajtó motor](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
+    ![Keresési végrehajtó motor](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. Az **optimalizálási** tulajdonság alapértelmezett értéke **TEZ**.
 
-    ![Optimalizálás – TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optimalizálás – TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Leképezések hangolása
 
@@ -93,7 +93,7 @@ Ha például négy Mapper-feladatot szeretne beállítani 128 MB adatmérethez, 
 
 1. Mindkét paraméter **33 554 432** bájtra (32 MB) állítható be.
 
-    ![Tez-csoportosítási méretek](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
+    ![Tez-csoportosítási méretek](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
  
 Ezek a módosítások a kiszolgálón lévő összes TEZ-feladatot érintik. Az optimális eredmény eléréséhez válassza a megfelelő paraméterek értékét.
 
@@ -109,7 +109,7 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter határozza meg a feldolgozha
 
 1. A paraméter módosításához navigáljon a struktúra- **konfigurációk** lapra, és keresse meg a beállítások lapon található, redukáló paraméterrel rendelkező **adatmennyiséget** .
 
-    ![Adatmennyiség csökkentése](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
+    ![Adatmennyiség csökkentése](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
  
 1. Válassza a **Szerkesztés** lehetőséget az érték 128 MB-ra (134 217 728 bájt) való módosításához, majd nyomja le az **ENTER** billentyűt a mentéshez.
 
@@ -127,7 +127,7 @@ A kaptár-lekérdezések végrehajtása egy vagy több szakaszban történik. Ha
  
 1.  A párhuzamosan futtatandó feladatok számának korlátozásához módosítsa a `hive.exec.parallel.thread.number` tulajdonságot. Az alapértelmezett érték 8.
 
-    ![A kaptár exec párhuzamos](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![A kaptár exec párhuzamos](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 
 ### <a name="enable-vectorization"></a>Vektorizációt engedélyezése
@@ -146,7 +146,7 @@ Alapértelmezés szerint a kaptár egy olyan szabályt követ, amely egy optimá
 
 A CBO engedélyezéséhez lépjen a struktúra- **konfigurációk** lapra, keresse meg a `parameter hive.cbo.enable`kifejezést, majd váltson a bekapcsolás **gombra.**
 
-![CBO config](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO config](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 A következő további konfigurációs paraméterek fokozzák a kaptár-lekérdezések teljesítményét, ha a CBO engedélyezve van:
 
@@ -373,7 +373,7 @@ A HBase halom mérete határozza meg a *régiók* *és főkiszolgálók* által 
 
 1. Módosítsa az alapértelmezett értéket 5 000 MB-ra.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
+    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 
 ### <a name="optimize-read-heavy-workloads"></a>Olvasási és nagy terhelések optimalizálása

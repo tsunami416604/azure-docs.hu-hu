@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860915"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882034"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -98,7 +98,12 @@ Az előrejelzések az üzleti tevékenység szerves részét képezik, függetle
 
 Az automatikus idősorozat-kísérletet többváltozós regressziós problémaként kezeli a rendszer. A korábbi idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. Ez a klasszikus idősorozat-módszerekkel ellentétben az egyik előnye, hogy természetesen több kontextusos változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolataikat. Az automatizált ML egyetlen, de gyakran belsőleg elágazó modellt tanul az adatkészlet összes eleméhez és előrejelzési horizontokhoz. Így több adat érhető el a modell paramétereinek becsléséhez és az általánosításhoz, hogy a láthatatlan adatsorozatok elérhetővé válnak.
 
-További információ: az [automatikus gépi tanulásra vonatkozó példa az idősorozat-előrejelzéshez](how-to-auto-train-forecast.md).
+További információ: az [automatikus gépi tanulásra vonatkozó példa az idősorozat-előrejelzéshez](how-to-auto-train-forecast.md). Vagy tekintse meg az [energia igényét bemutató jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) részletes kód példákkal a speciális előrejelzési konfigurációhoz, beleértve a következőket:
+
+* üdülés észlelése és featurization
+* gördülő-eredetű kereszt-ellenőrzés
+* konfigurálható késések
+* a gördülő ablak összesített funkciói
 
 ## <a name="ensemble"></a>Ensemble-modellek
 

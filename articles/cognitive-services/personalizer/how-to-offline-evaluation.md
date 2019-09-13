@@ -8,17 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557817"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884487"
 ---
-# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>Tanulási hurok elemzése offline kiértékeléssel
-
+# <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>A tanulási hurok elemzése offline kiértékeléssel
 
 Ismerje meg, hogyan végezheti el az offline kiértékelést, és megismerheti az eredményeket.
 
@@ -29,37 +28,42 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Meg kell adni egy személyre szabott hurok konfigurálását
-1. A személyre szabott huroknak reprezentatív mennyiségű adatnak kell lennie, de a naplókban legalább 50 000 eseményt recommmend az értelmes értékelés eredményeire.
-
-Előfordulhat, hogy korábban már exportálta a _tanulási szabályzatok_ fájljait, amelyeket összevetheti és tesztelheti ugyanabban az értékelésben.
+* Konfigurált személyre szabott hurok
+* A személyre szabott huroknak reprezentatív mennyiségű adatnak kell lennie, és a naplókban legalább 50 000 eseményt javasolt kiértékelési eredményekre. Előfordulhat, hogy korábban már exportálta a _tanulási szabályzatok_ fájljait, amelyeket összevetheti és tesztelheti ugyanabban az értékelésben.
 
 ## <a name="steps-to-start-a-new-offline-evaluation"></a>Új offline értékelés indításához szükséges lépések
 
-1. Keresse meg a személyre szabási hurok erőforrását a Azure Portal.
-1. Navigáljon a "kiértékelés" szakaszhoz.
-1. Kattintson az új próbaverzióra
-1. Válassza ki az offline értékelés kezdési és befejezési dátumát. Ezek a múltbeli dátumok, amelyek meghatározzák a kiértékelésben használandó adatok tartományát. Ezeknek az adatoknak szerepelniük kell a naplókban az adatmegőrzési beállításban megadott módon. [](how-to-settings.md)
-1. Igény szerint feltöltheti saját képzési szabályzatát. 
-1. Itt adhatja meg, hogy a testre szabott tanulási szabályzatot az adott időszakban megfigyelt felhasználói viselkedés alapján kell-e létrehozni.
-1. A kiértékelés elindítása
+1. A [Azure Portal](https://azure.microsoft.com/free/)keresse meg a személyre szabott erőforrást.
+1. A Azure Portal lépjen az **értékelések** szakaszra, és válassza az **Értékelés létrehozása**elemet.
+    ![A Azure Portal nyissa meg a * * értékelések * * szakaszt, és válassza a * * Create reértékelés * * elemet.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Válassza ki a következő beállításokat:
+
+    * Értékelés neve
+    * Kezdési és befejezési dátum – ezek a múltbeli dátumok, amelyek meghatározzák a kiértékelésben használandó adattartományt. Ezeknek az adatoknak szerepelniük kell a naplókban az [adatmegőrzési](how-to-settings.md) beállításban megadott módon.
+    * Az optimalizálási felderítés beállítása **Igen**
+
+    ![Offline kiértékelési beállítások kiválasztása](./media/offline-evaluation/create-an-evaluation-form.png)
+
+1. A kiértékelés elindításához kattintson **az OK gombra**. 
 
 ## <a name="results"></a>Results (Eredmények)
 
 Az értékelések hosszú időt vehetnek igénybe a feldolgozandó adatmennyiségtől, az összehasonlítani kívánt tanulási szabályzatok számától és a kért optimalizálástól függően.
 
-Ha elkészült, a következő eredményeket láthatja:
+Ha elkészült, kiválaszthatja a kiértékelést az értékelések listájában. 
 
-1. A tanulási szabályzatok összehasonlítása, beleértve a következőket:
-    * **Online házirend**: A személyre szabott alkalmazásban használt aktuális tanulási szabályzat
-    * **Alapterv**: Az alkalmazás alapértelmezett értéke (amelyet a Rank-hívásokban elindított első művelet határoz meg),
-    * **Véletlenszerű házirend**: Egy képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.
-    * **Egyéni szabályzatok**: A próbaverzió indításakor feltöltött további képzési szabályzatok.
-    * **Optimalizált szabályzat**: Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, azt a rendszer összehasonlítja, és letöltheti, vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.
+A tanulási szabályzatok összehasonlítása a következőket foglalja magában:
 
-1. A műveletek [](concepts-features.md) és a környezet funkcióinak hatékonysága.
+* **Online házirend**: A személyre szabott alkalmazásban használt aktuális tanulási szabályzat
+* **Alapterv**: Az alkalmazás alapértelmezett értéke (amelyet a Rank-hívásokban elindított első művelet határoz meg),
+* **Véletlenszerű házirend**: Egy képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.
+* **Egyéni szabályzatok**: A próbaverzió indításakor feltöltött további képzési szabályzatok.
+* **Optimalizált szabályzat**: Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, azt a rendszer összehasonlítja, és letöltheti, vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.
 
+![Offline kiértékelési beállítások eredményeinek diagramja](./media/offline-evaluation/evaluation-results.png)
 
-## <a name="more-information"></a>További információ
+A műveletek és a környezet [funkcióinak](concepts-features.md) hatékonysága.
+
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [hogyan működnek az offline értékelések](concepts-offline-evaluation.md).

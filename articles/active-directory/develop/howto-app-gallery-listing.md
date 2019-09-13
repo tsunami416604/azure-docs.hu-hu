@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/04/2019
+ms.date: 09/06/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3cbaf76489058624e56bec50b37eeb18a99ba7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812520"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898519"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -48,11 +48,16 @@ Ez a cikk bemutatja, hogyan listázhat egy alkalmazást az Azure AD-alkalmazás-
 
 - A jelszó egyszeri bejelentkezéséhez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolók a várt módon működjenek az egyszeri bejelentkezéshez.
 
+- Az automatikus felhasználó-kiépítési kérelmek esetében az alkalmazásnak szerepelnie kell a katalógusban a SAML 2.0/WS-fed használatával engedélyezett egyszeri bejelentkezés funkcióval. Ha még nem szerepel a portálon, kérheti az egyszeri bejelentkezést és a felhasználók kiépítését a portálon.
+
 - Állandó fiókra van szükség a 2. atleast regisztrált felhasználóval való teszteléshez.
+
+> [!NOTE]
+> Nagy számú SCIM-összekötő kéréssel dolgozunk, így új kérelmeket állítottunk be a portálon. További értesítésig tartsa a kéréseit. Elnézést kérünk erre a késésre, és az esetlegesen okozott kényelmetlenségeket.
 
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 
-Miután tesztelte az alkalmazás-integrációt az Azure AD-vel, küldje el a hozzáférési kérelmét az [Application Network-portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt (például az Outlookot vagy a Hotmailt) a bejelentkezéshez.
+Miután tesztelte az alkalmazás-integrációt az Azure AD-vel, küldje el a hozzáférési kérelmét az [Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps)-portálon. Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt (például az Outlookot vagy a Hotmailt) a bejelentkezéshez.
 
 Ha a bejelentkezés után a következő oldal jelenik meg, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) , és adja meg azt az e-mail-fiókot, amelyet a kérelem elküldéséhez használni kíván. Ezt követően az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
 
@@ -112,7 +117,7 @@ Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy elt
 
 ## <a name="listing-requests-by-customers"></a>Ügyfelek kéréseinek listázása
 
-Az ügyfelek az alkalmazásra **vonatkozó kérelmeket** -> az**új kérelem beküldésére**kattintva küldhetik be az alkalmazások listázására.
+Az ügyfelek az alkalmazásra **vonatkozó kérelmeket** -> az**új kérelem**beküldésére kattintva küldhetik be az alkalmazások listázására.
 
 ![Az ügyfél által kért alkalmazások csempe megjelenítése](./media/howto-app-gallery-listing/customer-submit-request.png)
 
