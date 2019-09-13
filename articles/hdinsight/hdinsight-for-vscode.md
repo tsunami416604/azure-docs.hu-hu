@@ -316,7 +316,7 @@ Küldje el a fájlt, és figyelje meg, hogy a rendszer automatikusan hozzáadja 
     | :- | :- | :- | 
     | id | Munkamenet-azonosító | Int | 
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
-    | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
+    | appInfo | Részletes alkalmazásadatok | Kulcs leképezése = val |
     | log | Naplózási sorok | karakterláncok listája |
     | state |Köteg állapota | Sztring |
 
