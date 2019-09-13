@@ -249,10 +249,10 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| authorization | objektum | A kért hitelesítést biztosít a műveletet. |
-| claims | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| authorization | object | A kért hitelesítést biztosít a műveletet. |
+| claims | object | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | A hibaelhárítási művelet azonosítója. |
-| httpRequest | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
+| httpRequest | object | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
 | resourceProvider | string | Az erőforrás-szolgáltató a művelethez. |
 | resourceUri | string | A műveletet az erőforrás URI azonosítója. |
 | operationName | string | A művelet, amely kerül. |

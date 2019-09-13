@@ -50,9 +50,9 @@ Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | includedEventTypes | tömb | Egyezés, ha az esemény típusa az eseményüzenetben pontos egyezés az egyik ezek az események típus neve. Hibát jelez, amikor az esemény neve nem egyezik meg a regisztrált esemény típusa az eseményforrás nevét. Alapértelmezett illeszkedik az összes eseménytípust. |
-| subjectBeginsWith | sztring | Előtag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. | 
-| subjectEndsWith | sztring | Utótag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. |
-| isSubjectCaseSensitive | sztring | Kis-és nagybetűket szűrőknek megfelelő szabályozza. |
+| subjectBeginsWith | string | Előtag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. | 
+| subjectEndsWith | string | Utótag-egyezés szűrheti a tulajdonos mezőben az üzenetet. Az alapértelmezett vagy üres karakterlánc megfelel. |
+| isSubjectCaseSensitive | string | Kis-és nagybetűket szűrőknek megfelelő szabályozza. |
 
 
 ## <a name="example-subscription-schema"></a>Példa előfizetési séma
