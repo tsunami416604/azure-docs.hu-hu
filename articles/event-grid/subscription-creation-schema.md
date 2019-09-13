@@ -35,15 +35,15 @@ Az Eseményelőfizetés neve 3 – 64 karakter hosszúságúnak kell lennie, és
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| destination | objektum | Az objektum, amely meghatározza a végpontot. |
-| filter | objektum | Eseménytípusok szűrése a választható mező. |
+| destination | object | Az objektum, amely meghatározza a végpontot. |
+| filter | object | Eseménytípusok szűrése a választható mező. |
 
 ### <a name="destination-object"></a>Célobjektum
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| endpointType | sztring | Az előfizetés (a HTTP/webhook, Event Hub vagy üzenetsor) végpont típusa. | 
-| endpointUrl | sztring | Az Eseményelőfizetés események cél URL-CÍMÉT. | 
+| endpointType | string | Az előfizetés (a HTTP/webhook, Event Hub vagy üzenetsor) végpont típusa. | 
+| endpointUrl | string | Az Eseményelőfizetés események cél URL-CÍMÉT. | 
 
 ### <a name="filter-object"></a>szűrő objektum
 
