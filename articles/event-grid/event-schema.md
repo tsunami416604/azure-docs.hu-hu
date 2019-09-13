@@ -85,14 +85,14 @@ Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | Karakterlánc | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
 | subject | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | Karakterlánc | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
+| id | string | Az esemény egyedi azonosítója. |
 | data | object | Eseményadatok adott erőforrás-szolgáltatónál. |
-| dataVersion | Karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az az objektum tulajdonságainak kapcsolatos további információkért tekintse meg az eseményforrás:
 
