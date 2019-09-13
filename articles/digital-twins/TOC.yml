@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Értesítések küldése a Logic Apps használatával
           href: tutorial-facilities-events.md
-        - name: Események megjelenítése a TSI-vel
+        - name: Események megjelenítése a Time Series Insights használatával
           href: tutorial-facilities-analyze.md
 - name: Alapelvek
   items:

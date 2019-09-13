@@ -1,78 +1,78 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: A Form Recognizer dokumentációja
+summary: Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat.
 metadata:
-  title: API-dokumentáció – Form Recognizer
-  titleSuffix: Azure Cognitive Services
-  description: 'Megtudhatja, hogyan használhatja a Form Recognizert a kulcs-érték típusú adatok az űrlapdokumentumokból való intelligens kinyeréséhez.'
+  title: A Form Recognizer dokumentációja
+  description: Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat.
   services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
   ms.service: cognitive-services
-  ms.subservice: forms-recognizer
+  ms.subservice: form-recognizer
   ms.topic: landing-page
-  ms.date: 04/16/2019
+  author: PatrickFarley
   ms.author: pafarley
-ms.custom: seodec18
-abstract:
-  description: 'Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/form-recognizer-landing-page-video.png
-      width: 250
-    title: 'Mesterségesintelligencia-alapú folyamatautomatizálás Form Recognizerrel (2:15)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>A Form Recognizer ismertetése.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Form Recognizer?
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: '<p>Megismerheti, hogyan használhatja a Form Recognizer-tárolót az űrlap- és táblaadatok elemzéséhez.</p>'
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Tárolók telepítése és futtatása
-          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
-            html: <p>Egyéni modell betanítására optimalizált adathalmaz létrehozása.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Betanítási adathalmaz létrehozása
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Form Recognizer-modell betanítása és adatok kinyerése az űrlapokból a következővel:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API-k
-            html: '<p><a href="https://aka.ms/form-recognizer/api">Form Recognizer API</a></p>'
-          - title: SDK-k
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: parancssori felület
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931827"
+landingContent:
+- title: Tudnivalók a Form Recognizerről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Form Recognizer?
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Mesterségesintelligencia-alapú folyamatautomatizálás Form Recognizerrel
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: Egyéni modell betanítása és adatok kinyerése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: quickstarts/dotnet-sdk.md
+    - text: A REST API használata (Python)
+      url: quickstarts/python-train-extract.md
+    - text: A REST API használata (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: Adatok kinyerése nyugtákból
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A .NET SDK használata
+      url: quickstarts/dotnet-sdk.md
+- title: Betanítási adathalmaz létrehozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Betanítási adathalmaz létrehozása
+      url: build-training-data-set.md
+- title: Tárolók használata
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Tárolók telepítése és futtatása
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tárolók konfigurálása
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: A Container Instances használata
+      url: deploy-form-recognizer-on-container-instances.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Form Recognizer API
+      url: https://aka.ms/form-recognizer/api
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure parancssori felület (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

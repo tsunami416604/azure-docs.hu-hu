@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: Engedélyek és letiltott műveletek
       href: permissions.md
+    - name: Riasztások konfigurálása javaslatokhoz
+      href: advisor-alerts.md
 - name: Referencia
   items:
     - name: Security Center

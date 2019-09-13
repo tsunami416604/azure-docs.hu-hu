@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: Útmutatók
   items:
-    - name: A Workbench használata IoT-eszközökhöz
-      href: howto-use-iot-device-workbench.md
+    - name: Fejlesztés a Visual Studio és a Visual Studio Code használatával
+      href: howto-develop-with-vs-vscode.md
     - name: Az IoT-kezelő telepítése
       href: howto-install-iot-explorer.md
+    - name: Az Azure CLI-bővítmény telepítése
+      href: howto-install-pnp-cli.md
     - name: Regisztráció az IoT-portálon
       href: howto-onboard-portal.md
     - name: Modellek kezelése

@@ -13,6 +13,8 @@
       href: create-member-cli.md
     - name: Csatlakozás tranzakciós csomóponthoz
       items:
+        - name: A VS Code használata
+          href: connect-vscode.md
         - name: A MetaMask használata
           href: connect-metamask.md
         - name: A Geth használata
