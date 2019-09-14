@@ -1,41 +1,43 @@
 ---
-title: A helyszíni adatátjáró használata az Azure Virtual Network adatforrásokat |} A Microsoft Docs
-description: Ismerje meg, hogy egy kiszolgáló egy átjáró használata az adatforrásokhoz a virtuális hálózat konfigurálása.
+title: Helyszíni adatátjáró használata az Azure Virtual Network adatforrásokhoz | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat egy kiszolgálót a VNet lévő adatforrások átjárójának használatára.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e97bd50e3d37218e0f88f722387fd1a53167e27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 675d8ecd3d6a3310a9b102df37df18bed02df3de
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534105"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958807"
 ---
-# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Átjáró használata az adatforrásokhoz egy Azure virtuális hálózaton (VNet)
+# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Átjáró használata adatforrásokhoz Azure-Virtual Network (VNet)
 
-Ez a cikk ismerteti a **AlwaysUseGateway** használja, ha az adatforrások azok a kiszolgáló tulajdonsága egy [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md).
+Ez a cikk a **AlwaysUseGateway** Server-tulajdonságot ismerteti, ha az adatforrások [Azure-Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)vannak használatban.
 
-## <a name="server-access-to-vnet-data-sources"></a>-Kiszolgáló hozzáférését a VNet-adatforrások
+## <a name="server-access-to-vnet-data-sources"></a>Kiszolgáló-hozzáférés VNet-adatforrásokhoz
 
-Az adatforrások egy virtuális hálózaton keresztül érhetők el, ha az Azure Analysis Services-kiszolgáló kapcsolódni kell ezeket az adatforrásokat, mintha azok a helyszínen, a saját környezetében. Konfigurálhatja a **AlwaysUseGateway** kiszolgáló tulajdonságot adja meg a kiszolgáló összes adatforrás adatigénylésekre keresztül egy [helyszíni átjáró](analysis-services-gateway.md). 
+Ha az adatforrások egy VNet keresztül érhetők el, a Azure Analysis Services-kiszolgálónak csatlakoznia kell ezekhez az adatforrásokhoz, mintha a helyszínen, a saját környezetében legyenek. A **AlwaysUseGateway** -kiszolgáló tulajdonság konfigurálásával megadhatja, hogy a kiszolgáló az összes adatforrást egy helyszíni [átjárón](analysis-services-gateway.md)keresztül férhessen hozzá. 
+
+Azure SQL Database felügyelt példány adatforrásai saját IP-címmel futnak az Azure VNet belül. Ha a nyilvános végpont engedélyezve van a példányon, nincs szükség átjáróra. Ha a nyilvános végpont nincs engedélyezve, egy helyszíni adatátjáróra van szükség, és a AlwaysUseGateway tulajdonságot igaz értékre kell állítani.
 
 > [!NOTE]
-> Ez a tulajdonság nem érvényes csak akkor, ha egy [a helyszíni adatátjáró](analysis-services-gateway.md) telepítve és konfigurálva van. Az átjáró lehet a virtuális hálózaton.
+> Ez a tulajdonság csak akkor érvényes, ha egy helyszíni [adatátjáró](analysis-services-gateway.md) van telepítve és konfigurálva. Az átjáró lehet a VNet.
 
-## <a name="configure-alwaysusegateway-property"></a>AlwaysUseGateway tulajdonság beállítása
+## <a name="configure-alwaysusegateway-property"></a>AlwaysUseGateway tulajdonság konfigurálása
 
-1. Az ssms-ben > kiszolgáló > **tulajdonságok** > **általános**válassza **megjelenítése (összes) speciális tulajdonságai**.
-2. Az a **ASPaaS\AlwaysUseGateway**válassza **igaz**.
+1. A SSMS > Server > **Tulajdonságok** > **általános**beállításnál válassza a **speciális (mind) tulajdonságok megjelenítése**lehetőséget.
+2. A **ASPaaS\AlwaysUseGateway**válassza az **igaz**lehetőséget.
 
-    ![Mindig használja az átjáró tulajdonság](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
+    ![Mindig az átjáró tulajdonság használata](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
 ## <a name="see-also"></a>Lásd még
 [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)   
-[Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md)   
-[Az Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   
+[Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)   
+[Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   
 

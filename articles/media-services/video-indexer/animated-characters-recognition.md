@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: d45842a4c61f871a479c91f7b192de8e567f9821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862017"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962631"
 ---
 # <a name="animated-character-detection-preview"></a>Animált karakterfelismerés (előzetes verzió)
 
@@ -40,7 +40,7 @@ A Video Indexer-fiók típusától függően különböző szolgáltatáskészle
 
 ### <a name="trial-vs-paid"></a>Próbaverzió és fizetett
 
-|Funkció|Próba|Fizetős|
+|Funkció|Próbaverzió|Díjköteles|
 |---|---|---|
 |Custom Vision fiók|A színfalak mögött a Video Indexer által felügyelt. |A Custom Vision-fiókja Video Indexerhoz van csatlakoztatva.|
 |Animációs modellek száma|Egy|Akár 100 modell/fiók (Custom Vision korlátozás).|
@@ -91,8 +91,7 @@ Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fió
     1. Az új név beírása után kattintson az új név melletti pipa ikonra. Ezzel az új nevet a modellben menti Video Indexerban.
     1. Miután befejezte az összes kívánt név szerkesztését, be kell tanítania a modellt.
 
-        * Próbaverziós fiókok: Nyissa meg a Testreszabás lapot, és kattintson az animált karakterek fülre, és kattintson a saját **betanítási** modellre.
-        * Fizetős fiókok: Nyissa meg a Testreszabás lapot, és kattintson az animált karakterek fülre. A megfelelő modellhez kattintson a **szerkesztés Custom Vision** hivatkozásra. Ezután a modell oldalára kerül a Custom Vision. Kattintson a "betanítás" gombra a modell betanításához. 
+        Nyissa meg a Testreszabás lapot, és kattintson az **animált karakterek** fülre. A megfelelő modellhez kattintson a **szerkesztés Custom Vision** hivatkozásra. Ezután a modell oldalára kerül a Custom Vision. Kattintson a **vonat** gombra a modell betanításához. 
     1. A betanítást követően minden, a modellel indexelt vagy újraindexelt videó felismeri majd a betanított karaktereket. 
     A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
 

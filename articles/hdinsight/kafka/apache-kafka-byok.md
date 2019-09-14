@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f619a0179849e2ca17a0528d97ef13f0788a4838
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09cca0eda9a82b1605323678d7442700dc1a2292
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811543"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960498"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Saját kulcs használata az Azure HDInsight Apache Kafka
 
@@ -58,7 +58,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 
         b. Adja **meg a** kívánt nevet a kulcs **létrehozásához** és megadásához.
 
-        ![Kulcs nevének előállítása](./media/apache-kafka-byok/kafka-create-a-key.png "Kulcs nevének előállítása")
+        ![Kulcs nevének előállítása](./media/apache-kafka-byok/apache-kafka-create-key.png "Kulcs nevének előállítása")
 
         c. Válassza ki a kulcsok listájából létrehozott kulcsot.
 
@@ -103,7 +103,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 
    A kulcs elforgatásához az új kulcs teljes URL-címével kell rendelkeznie (lásd [a Key Vault és a kulcsok beállításának](#setup-the-key-vault-and-keys)3. lépését). Ha ezt megteszi, nyissa meg a Kafka-fürt tulajdonságai szakaszt a portálon, és kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe**alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
 
-   ![Kafka elforgatása lemez titkosítási kulcsa](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka elforgatása lemez titkosítási kulcsa](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
 ## <a name="faq-for-byok-to-apache-kafka"></a>BYOK – gyakori kérdések Apache Kafka
 

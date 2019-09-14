@@ -1,40 +1,40 @@
 ---
-title: Piaci megjelenést Services – népszerűsítse cégét a Microsofttal |} Az Azure
-description: Ebben a szakaszban a Microsoft üzleti kinevezése piaci megjelenést szolgáltatások - közzétevők tudhat meg.
+title: Piaci megjelenést segítő szolgáltatások – népszerűsítse vállalkozását a Microsofttal | Azure
+description: Piaci megjelenést segítő szolgáltatások – a kiadók megismerhetik, hogyan népszerűsítheti üzleti tevékenységét a Microsofttal ebben a szakaszban.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 8bb064deae87e6545d003ffb1fa85058926f5dee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9549e40ea3b79c356867c2fe36dc336e69795c8b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688956"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962841"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Üzleti gyarapodás a Microsofttal
 
-Piactér partnereinek olyan szolgáltatásokat kell figyelembe venni a Microsoft Partner Network (MPN). MPN-tagsága, mint üzleti szempontok alapján további előnyöket is elérheti. Látogasson el [partner.microsoft.com](https://partner.microsoft.com) megtekintéséhez, hogyan használhatja a hálózat eléréséhez:
+A Piactéri partnereknek a Microsoft Partner Network (MPN) részét kell képezniük. MPN-tagként további üzleti irányultságú előnyöket érhet el. Látogasson el a [partner.microsoft.com](https://partner.microsoft.com) webhelyre, ahol megtudhatja, hogyan használhatja a hálózatot a következő eléréséhez:
 
-* Új üzleti lehetőségeket.
-* Csatlakozás a teams és a partnerei.
-* Megoldások és tanfolyamai segítségével növelheti a képességek alkalmazási lehetőségét.
+* Új üzleti lehetőségek.
+* Csatlakozás csapatokkal vagy partnerekkel.
+* Megoldások és képzés, amelyekkel növelheti a készségkészlet.
 
 ## <a name="benefits-and-resources"></a>Előnyök és erőforrások
 
-Az ajánlat vagy az előléptetni, és további előnyök és erőforrások elérését, használja az alábbi táblázatot:
+Az ajánlat vagy alkalmazás előléptetéséhez, valamint a további előnyök és erőforrások eléréséhez használja az alábbi táblázatot:
 
 | Előnyök | További források |
 |:--- |:--- |
-| Használja az alapértelmezett érték használatának legfontosabb előnyei | A Microsoft Partner Network részeként a kap egy készlete, amelyek segítségével időt és pénzt használatának legfontosabb előnyei. Az előnyök segítségével <ul> <li> a lehetőségek megerősítése </li> <li> hatékonyabb szolgáltatást nyújthassák ügyfeleinek, és </li> <li> kapcsolatokat épít annak érdekében a teljes üzleti lehetőségeit. </li> </ul> Használatának legfontosabb előnyei kapcsolatos további információkért látogasson el [használatának legfontosabb előnyei és követelmények](https://partner.microsoft.com/en-US/membership/core-benefits#tab-content-1). |
-| A Cloud Platform kompetencia megszerzésére | Kompetenciát megszerzéséhez nyújt segítséget <ul> <li> Saját kezűleg más Microsoft-partnerek közötti különbséget. </li> <li> A piacon elérhető technikai szakértelemmel és az ügyfél sikeres mutatják be. </li> </ul> Szakértelmére feltétele számos kulcsfontosságú partner programok, például a közös értékesítési. Lásd: [Cloud Platform kompetenciával](https://partner.microsoft.com/reach-customers/selling-with-microsoft) további információt. |
-| IP-közös értékesítési kész legyen | A kész IP-közös értékesítési program jogosult lehet.  Ez a program lehetővé teszi: <ul> <li> Együttműködhet közvetlenül Microsoft-értékesítőkkel közösen és más partnerek a cél ügyfél lehetőségeket és a fiók megtervezése. </li> <li> A megoldás a Microsoft-értékesítőkkel közösen láthatóvá tétele az értékesítői megoldás-katalógusban. </li> <li> Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg. </li> </ul> Lásd: [a közös értékesítési program és az előléptetés az üzleti](https://partner.microsoft.com/reach-customers/selling-with-microsoft) megfelelőségi feltételek további információk. |
+| Az alapvető előnyök használata | A Microsoft Partner Network részeként olyan alapvető előnyöket kap, amelyek segítségével időt és pénzt takaríthat meg. Az előnyök segítenek <ul> <li> növelje képességeit, </li> <li> jobban kiszolgálhatja az ügyfeleket, és </li> <li> hozzon létre kapcsolatokat a teljes üzleti potenciál eléréséhez. </li> </ul> Az alapszintű előnyökkel kapcsolatos további információkért tekintse meg az [alapvető előnyök és követelmények](https://partner.microsoft.com/membership/core-benefits#tab-content-1)című témakört. |
+| Szerezze be a Cloud platform kompetenciáját | A kompetenciák beszerzése segít <ul> <li> Ismerkedjen meg egymással a Microsoft más partnerei között. </li> <li> Bemutatjuk a piacon a technikai szakértelmet és az ügyfelek sikerességét. </li> </ul> A kompetencia számos kulcsfontosságú partneri program, például a közös értékesítés előfeltétele. További információért lásd a [Cloud platform kompetenciát](https://partner.microsoft.com/reach-customers/selling-with-microsoft) ismertető témakört. |
+| Legyen az IP-címek közös értékesítése | Lehet, hogy jogosult az IP közös értékesítésre kész programra.  A program a következőket teszi lehetővé: <ul> <li> Közvetlen együttműködés a Microsoft-értékesítők és más partnerek számára a célzott ügyfelek lehetőségei és a fiókok tervezése terén. </li> <li> A megoldás a Microsoft-értékesítők számára elérhetővé válik az eladói megoldás katalógusában. </li> <li> A Microsoft-értékesítők az együttműködésért és a győzelemért fizetnek. </li> </ul> Tekintse [meg a közös értékesítésre kész programot, és népszerűsítse vállalkozását](https://partner.microsoft.com/reach-customers/selling-with-microsoft) további információért, beleértve a támogathatósági követelményeket. |
 
 ## <a name="next-steps"></a>További lépések
 
-Marketplace-en GTM services kapcsolatos további információkért lépjen [piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
+A Marketplace GTM Services szolgáltatással kapcsolatos további információkért tekintse meg a piacra jutási [szolgáltatásokat](https://partner.microsoft.com/reach-customers/gtm).
 
 Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com) hozhat létre és konfigurálja az ajánlatát.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 63eb13dd131fcc1c424c02fdac10f531cc9f0282
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876624"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961473"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>A QnA Maker Tudásbázis-tartalmának nyelvi támogatása
 
@@ -29,19 +29,11 @@ A rendszer automatikusan felismeri a nyelvet a kinyert adatforrások tartalmáb�
 
     ![Azure Search erőforrás kiválasztása](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-1. Válassza ki a **testkb** indexet. Ez a Azure Search index mindig az első, és a szolgáltatásban található összes Tudásbázis mentett tartalmát tartalmazza. 
+1. Válassza az **indexek**lehetőséget, majd válassza ki a **testkb** indexet. Ez az első Azure Search-index, amely tartalmazza az adott szolgáltatás összes tudásbázisának mentett tartalmát. 
 
-    ![Válassza ki a teszt KB-ot](../media/qnamaker-how-to-language-kb/select-testkb.png)
+1. Válassza ki a **mezőket** az index mezőinek megjelenítéséhez.
 
-1. Válassza ki a **mezők** szakaszt a _testkb_ részleteinek megjelenítéséhez.
-
-    ![Válasszon mezőket](../media/qnamaker-how-to-language-kb/selectfields.png)
-
-1. Jelölje be az **analizátor** jelölőnégyzetét a nyelvi adatok megtekintéséhez.
-
-    ![Elemző kiválasztása](../media/qnamaker-how-to-language-kb/select-analyzer.png)
-
-1. Meg kell állapítania, hogy az _analizátor_ egy adott nyelvre van beállítva. Ezt a nyelvet a rendszer automatikusan észlelte a Tudásbázis létrehozási lépése során az importált fájlokból és URL-címekből. Az erőforrás létrehozása után ez a nyelv nem módosítható.
+1. A `questions` és`answer` a mezők Analyzer oszlopa egy adott nyelvre van beállítva. Ezt a nyelvet a rendszer automatikusan észlelte a Tudásbázis létrehozási lépése során az importált fájlokból és URL-címekből. Az erőforrás létrehozása után ez a nyelv nem módosítható.
 
     ![Kiválasztott elemző](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 

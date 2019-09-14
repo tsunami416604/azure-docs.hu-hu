@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: aabcf7ac6c7bf14264178831bb3e4f6670d29984
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885546"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960922"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -37,7 +37,7 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 |[Azure CLI](hdinsight-administer-use-command-line.md)|Az Azure hdinsight- \<fürt átméretezi a clusterName > \<a célként megadott példányszámot > |
 |[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
-![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 A módszerek bármelyikével akár percek alatt is méretezheti a HDInsight-fürtöt.
 
@@ -112,7 +112,7 @@ A függőben lévő és futó feladatok listájának megtekintéséhez a követk
 3. A Ambari felhasználói felületén válassza a **fonal** elemet a szolgáltatások listájában a bal oldali menüben.  
 4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **erőforráskezelő felhasználói felület**lehetőséget.
 
-    ![Erőforráskezelő felhasználói felület](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![Erőforráskezelő felhasználói felület](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 A erőforráskezelő felhasználói felületét `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`közvetlenül is elérheti.
 

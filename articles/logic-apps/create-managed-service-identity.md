@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: bb1443afa14f2a23b807af52ab8fef6ac41ea200
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934036"
+ms.locfileid: "70959971"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitásokkal rendelkező erőforrások hitelesítése és elérése Azure Logic Apps
 
@@ -23,7 +23,7 @@ Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne ho
 > [!NOTE]
 > A logikai alkalmazás csak a felügyelt identitásokat támogató összekötők használatával tud felügyelt identitásokat használni. Jelenleg csak a HTTP-összekötő támogatja a felügyelt identitásokat.
 >
-> Az egyes Azure-előfizetésekben jelenleg legfeljebb 10 logikai alkalmazás-munkafolyamattal rendelkezhet, amely rendszerhez rendelt felügyelt identitásokat tartalmaz.
+> Az egyes Azure-előfizetésekben jelenleg akár 100 logikai alkalmazás-munkafolyamattal is rendelkezhet, amely rendszerhez rendelt felügyelt identitásokkal rendelkezik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -168,7 +168,7 @@ Miután beállította a logikai alkalmazást egy rendszerhez rendelt felügyelt 
    > 
    > A **célközönség** tulajdonságban az erőforrás-azonosító értékének pontosan egyeznie kell azzal, amit az Azure ad vár, beleértve a szükséges záró perjeleket is. 
    > Ezek az erőforrás-azonosító értékek az [Azure ad-t támogató Azure-szolgáltatásokat ismertető táblázatban](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)találhatók. 
-   > Ha például az Azure erőforrások Manager erőforrás-AZONOSÍTÓját használja, győződjön meg róla, hogy az URI-nak záró perjele van.
+   > Ha például a Azure Resource Manager erőforrás-azonosítót használja, győződjön meg róla, hogy az URI-nak záró perjele van.
 
 1. Folytassa a logikai alkalmazás létrehozásával a kívánt módon.
 

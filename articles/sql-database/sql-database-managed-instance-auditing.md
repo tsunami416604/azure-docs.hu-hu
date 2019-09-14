@@ -9,20 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567731"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958511"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a Azure SQL Database felügyelt példányok naplózásával
 
-[](sql-database-managed-instance.md) A felügyelt példányok naplózása nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. Naplózás is:
+A [felügyelt példányok](sql-database-managed-instance.md) naplózása nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. Naplózás is:
 
 - Segít megőrizni a jogszabályi megfelelőséget, értelmezni az adatbázis tevékenységeit, és betekintést nyerhet olyan eltérésekkel és rendellenességekkel, amelyek üzleti vagy feltételezett biztonsági szabálysértéseket jelezhetnek.
 - Engedélyezi és megkönnyíti a megfelelőségi szabványok betartását, bár nem garantálja a megfelelőséget. A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.
@@ -32,14 +32,14 @@ ms.locfileid: "68567731"
 A következő szakasz ismerteti a felügyelt példány naplózásának konfigurációját.
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-1. Hozzon létre egy Azure Storage-tárolót, amelyben a naplók tárolása történik.
+1. Hozzon létre egy Azure Storage- **tárolót** , amelyben a naplók tárolása történik.
 
    1. Navigáljon az Azure Storage-ba, ahol a naplókat tárolni szeretné.
 
       > [!IMPORTANT]
       > A régiók közötti olvasási/írási műveletek elkerülése érdekében használjon a felügyelt példányokkal megegyező régióban található Storage-fiókot.
 
-   1. A Storage-fiókban válassza az **Áttekintés** lehetőséget,majd kattintson a Blobok elemre.
+   1. A Storage-fiókban válassza az **Áttekintés** lehetőséget, majd kattintson a **Blobok**elemre.
 
       ![Azure Blob widget](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
@@ -124,7 +124,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
         ![Biztonsági és naplózási csomópont kibontása](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. Győződjön meg arról, hogy az "URL " elem be van jelölve a naplózási célhelyen, és kattintson a **Tallózás**gombra:
+     1. Győződjön meg arról, hogy az "URL" elem be van jelölve a **naplózási célhelyen** , és kattintson a **Tallózás**gombra:
 
         ![Az Azure Storage tallózása](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
@@ -165,7 +165,7 @@ A felügyelt példányokból származó naplókat még hubokba vagy Azure Monito
 
 2. Kattintson a **diagnosztikai beállítások**elemre.
 
-3. Kattintson a **diagnosztika**bekapcsolása elemre. Ha a diagnosztika már engedélyezve van, a *+ diagnosztika hozzáadása beállítás* jelenik meg helyette.
+3. Kattintson a **diagnosztika bekapcsolása**elemre. Ha a diagnosztika már engedélyezve van, a *+ diagnosztika hozzáadása beállítás* jelenik meg helyette.
 
 4. A naplók listájában válassza a **SQLSecurityAuditEvents** lehetőséget.
 
@@ -206,7 +206,7 @@ Több módszer is használható a blob-naplózási naplók megtekintésére.
 
 - A naplókat a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a naplófájlok tárolására megadott tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappa hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának](sql-database-auditing.md)első lépéseivel foglalkozó témakört.
+- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
 
 ### <a name="consume-logs-stored-in-event-hub"></a>Az Event hub-ban tárolt naplók felhasználása
 
@@ -240,7 +240,7 @@ Az Azure Blob Storage- `CREATE AUDIT` ba való naplózás szintaxisának főbb e
 
 ## <a name="next-steps"></a>További lépések
 
-- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának](sql-database-auditing.md)első lépéseivel foglalkozó témakört.
+- A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
 - A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.
 
 <!--Image references-->

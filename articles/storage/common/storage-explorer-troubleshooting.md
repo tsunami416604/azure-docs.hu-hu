@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 69631b39403dedab56ed75cb145d464c0e1f747c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 3a95d52f2a0aa07094f91b0653fcb94ff1f88d44
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935342"
+ms.locfileid: "70958996"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -90,7 +90,7 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, a következő lép
 
 Ha az előző lépésekkel nem talál önaláírt tanúsítványokat, további segítségért lépjen kapcsolatba velünk a visszajelzési eszköz segítségével. Azt is megteheti, hogy elindít Storage Explorer a parancssorból `--ignore-certificate-errors` a jelzővel. Ha ezzel a jelzővel indul el, Storage Explorer figyelmen kívül hagyja a tanúsítvány hibáit.
 
-## <a name="sign-in-issues"></a>Bejelentkezési problémák
+## <a name="sign-in-issues"></a>Bejelentkezéssel kapcsolatos problémák
 
 ### <a name="blank-sign-in-dialog"></a>Üres bejelentkezési párbeszédpanel
 
@@ -230,7 +230,7 @@ A probléma megkerüléséhez megpróbálkozhat a sérült helyi kapcsolatok tö
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Fájlmegosztások
         * `StorageExplorer_CustomConnections_Files_v1`
-    * Várólisták
+    * Üzenetsorok
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Táblák
         * `StorageExplorer_CustomConnections_Tables_v1`
@@ -264,6 +264,7 @@ A helyi hitelesítő adatok kezelése a Linux-disztribúciótól függően vált
 1. Nyissa meg a helyi Hitelesítőadat-kezelő eszközt, és keresse meg a mentett hitelesítő adatokat.
 2. Keresse meg a kulcsot `<connection_type_key>/<corrupted_connection_name>` tartalmazó bejegyzéseket ( `StorageExplorer_CustomConnections_Accounts_v1/account1`például:).
 3. Törölje ezeket a bejegyzéseket, és adja hozzá a kapcsolatokat vissza.
+---
 
 Ha a fenti lépések elvégzése után is ezt a hibát tapasztalja, vagy ha meg szeretné osztani, hogy mit gondol a kapcsolatok, [Nyisson meg egy problémát](https://github.com/microsoft/AzureStorageExplorer/issues) a GitHub oldalán.
 

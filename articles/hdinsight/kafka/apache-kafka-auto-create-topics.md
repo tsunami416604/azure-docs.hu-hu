@@ -3,16 +3,17 @@ title: A témakör automatikus létrehozásának engedélyezése Apache Kafkaban
 description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálásához állítsa be az Auto. Create. témákat. engedélyezze a Ambari-n keresztül, vagy a fürt létrehozásakor a PowerShell vagy a Resource Manager-sablonok használatával.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
-ms.translationtype: HT
+ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900424"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960649"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>A HDInsight Apache Kafka konfigurálása a témakörök automatikus létrehozásához
 
@@ -34,11 +35,11 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 3. Válassza ki a Kafka szolgáltatást a lap bal oldalán található listából.
 
-    ![Szolgáltatások listája](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Szolgáltatások listája](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Válassza a konfigurációk lehetőséget az oldal közepén.
 
-    ![Szolgáltatás konfigurációja lap](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Szolgáltatás konfigurációja lap](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
 5. A szűrő mezőbe írja be a értékét `auto.create`. 
 

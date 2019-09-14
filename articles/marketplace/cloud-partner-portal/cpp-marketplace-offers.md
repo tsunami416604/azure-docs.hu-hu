@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884455"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962856"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure-és AppSource Marketplace-ajánlatok
 
@@ -36,14 +36,14 @@ Az új ajánlat létrehozásának folyamata nagy mértékben különbözik az aj
 
 A *Test Drive* egy Piactéri szolgáltatás, amely a "kipróbálás előtt" lehetőséget nyújt az ügyfeleknek az egyes ajánlatokhoz.  A test Drive funkció a következő típusú ajánlatokra korlátozódik: [Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 a Customer engagement](./dyn365ce/cpp-customer-engagement-offer.md), a [Dynamics 365 for Finance és Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS-alkalmazások](./saas-app/cpp-saas-offer.md)és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ehhez a funkcióhoz a közzétevőnek létre kell hoznia egy, az ajánlatához testreszabott tesztelési meghajtó-sablont.  További információt a [Test Drive](./test-drive/what-is-test-drive.md)című szakaszban talál.
 
-A test Drive- [szűrők](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)alkalmazásával tallózhat a meglévő Piactéri ajánlatokban. 
+A test Drive- [szűrők](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)alkalmazásával tallózhat a meglévő Piactéri ajánlatokban. 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace-és AppSource-ajánlatok típusai
 
 A következő táblázat felsorolja a [Cloud Partner Portal](https://cloudpartner.azure.com)által támogatott aktuális ajánlatokat.  Minden ajánlat típusa esetén felsorolja azokat a piactér (eke) t, amelyeken az ajánlat listázható, valamint az ajánlat megoldási technológiájának általános leírását.
 
-|                Csomag típusa                |  Marketplace  |   Leírás                                                           |
+|                Csomag típusa                |  Piactér  |   Leírás                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Azure-alkalmazás](./azure-applications/cpp-azure-app-offer.md) | Azure | A megoldás egy vagy több virtuális gépről (VM), opcionális egyéni Azure-kódra épül, amely Azure Resource Manger-sablonon keresztül helyezhető üzembe.  Az üzembe helyezés lehet az ügyfél vagy egy megoldás sablonja, vagy a közzétevő által felügyelt. Ez a típus nagyobb rugalmasságot biztosít, mint a virtuális gép által kínált ajánlat típusa.  |
 | [Tanácsadási szolgáltatás](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | mind | A Microsoft által minősített tanácsadók az Azure Marketplace-en vagy a AppSource-on is listázhatja a tartományra jellemző szolgáltatásokat.  Szakértelmük segítséget nyújt az ügyfeleknek a problémáik felméréséhez, valamint a megfelelő megoldások létrehozásához és üzembe helyezéséhez az üzleti célok teljesítése érdekében.  |
