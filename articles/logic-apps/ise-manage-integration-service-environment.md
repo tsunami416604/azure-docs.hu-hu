@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 8f10e3d3fd7c67d1e803e8f85c9918c91bb81d59
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517461"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967812"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
-Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hálózati állapotának, valamint a Logic apps, kapcsolatok, integrációs fiókok és az ISE-ben létező egyéni összekötők felügyeletéhez kövesse a jelen témakör lépéseit.
+Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hálózati állapotának vizsgálatához és az ISE-ben létező logikai alkalmazások, kapcsolatok, integrációs fiókok és összekötők kezeléséhez kövesse a jelen témakör lépéseit. Az összetevők az ISE-ben való hozzáadásával kapcsolatban lásd: összetevők [hozzáadása az integrációs szolgáltatási környezethez](../logic-apps/add-artifacts-integration-service-environment-ise.md).
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
@@ -46,37 +46,55 @@ Az ISE menü **Beállítások**területén válassza a **hálózati állapot**el
 
 ## <a name="manage-your-logic-apps"></a>Logikai alkalmazások kezelése
 
+Megtekintheti és kezelheti az ISE-ben található Logic apps-alkalmazásokat.
+
 1. Az ISE menü **Beállítások**területén válassza a **logikai alkalmazások**elemet.
 
-   ![Logikai alkalmazások keresése](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Logikai alkalmazások megtekintése](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Ha a logikai alkalmazásokat el szeretné távolítani az ISE-ről, ha már nincs rá szükség, válassza ki a logikai alkalmazásokat, majd válassza a **Törlés**lehetőséget.
+1. Ha el szeretné távolítani a már nem szükséges Logic apps-alkalmazásokat az ISE-ben, válassza ki a logikai alkalmazásokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>API-kapcsolatok kezelése
 
-1. Az ISE-ben futó Logic apps által létrehozott API-kapcsolatok megtekintéséhez az ISE menüben, a **Beállítások**területen válassza az **API-kapcsolatok**elemet.
+Megtekintheti és kezelheti az ISE-ben futó logikai alkalmazások által létrehozott kapcsolatokat.
 
-   ![API-kapcsolatok keresése](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+1. Az ISE menü **Beállítások**területén válassza az API- **kapcsolatok**elemet.
 
-1. Ha a továbbiakban nem szükséges a kapcsolatok eltávolítása az ISE-ből, válassza ki ezeket a kapcsolatokat, majd válassza a **Törlés**lehetőséget.
+   ![API-kapcsolatok megtekintése](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+
+1. Ha el szeretné távolítani a már nem szükséges kapcsolatokat az ISE-ben, válassza ki ezeket a kapcsolatokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
+
+<a name="manage-api-connectors"></a>
+
+## <a name="manage-ise-connectors"></a>ISE-összekötők kezelése
+
+Megtekintheti és kezelheti az ISE-ben üzembe helyezett API-összekötőket.
+
+1. Az ISE menü **Beállítások**területén válassza a **felügyelt összekötők**lehetőséget.
+
+   ![Felügyelt összekötők megtekintése](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+
+1. Ha el szeretné távolítani az ISE-ben nem elérhető összekötőket, válassza ki az összekötőket, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Egyéni összekötők kezelése
 
-1. Az ISE-ben létrehozott egyéni összekötők megtekintéséhez az ISE menüben, a **Beállítások**területen válassza az **Egyéni összekötők**lehetőséget.
+Megtekintheti és kezelheti az ISE-ben üzembe helyezett egyéni összekötőket.
+
+1. Az ISE menü **Beállítások**területén válassza az **Egyéni összekötők**lehetőséget.
 
    ![Egyéni összekötők keresése](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Ha a továbbiakban nem szükséges az egyéni összekötők eltávolítása az ISE-ből, válassza ki az összekötőket, majd válassza a **Törlés**lehetőséget.
+1. Ha el szeretné távolítani az ISE-ben már nem szükséges egyéni összekötőket, válassza ki az összekötőket, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>Integrációs fiókok kezelése
 
-1. Az ISE menü **Beállítások**területén válassza az integrációs **fiókok**elemet.
+1. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok**elemet.
 
    ![Integrációs fiókok keresése](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 

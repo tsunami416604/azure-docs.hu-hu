@@ -1,71 +1,71 @@
 ---
-title: Az Azure Marketplace és AppSource közzétételi útmutató
-description: Áttekintése az Azure Marketplace-en és a Microsoft AppSource-közzétevők alkalmazás és szolgáltatás.
+title: Azure Marketplace és AppSource közzétételi útmutató
+description: Az Azure Marketplace és az alkalmazások és szolgáltatások közzétevői Microsoft AppSource áttekintése.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956744"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962619"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Az Azure Marketplace és AppSource közzétételi útmutató
+# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace és AppSource közzétételi útmutató
 
-A Piactéri közzétételi útmutató célja új és meglévő közzétevők megtudhatja, hogyan használhatja a kirakattípus a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [Microsoft AppSource](https://appsource.microsoft.com) partnerségben üzleti növekedésért alkalmazások és szolgáltatások listázásával a Microsofttal.
+A piactér-közzétételi útmutató úgy lett kialakítva, hogy segítse az új és a meglévő közzétevők számára, hogyan használhatja a kirakatokat az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en, és [Microsoft AppSource](https://appsource.microsoft.com) a Microsofttal közösen fejlesztheti üzleti partnereit az alkalmazások listázásával Services.
 
 >[!Note]
->Itt a piactéren az Azure Marketplace és appsource-ban is hivatkozik.  Lásd: [egy Marketplace-en két kirakattípus](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) további információt.
+>A piactér az Azure Marketplace-re és a AppSource is vonatkozik.  További információért tekintse meg az [egyik piactéren, két kirakatban](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
 
-Ez az útmutató ismerteti a következő témaköröket: 
-*   Mi a Marketplace-en az eszközmegfelelőségről és működéséről 
-*   A különbség az Azure Marketplace és AppSource kirakattípus között 
-*   Részt vesz a Marketplace-en előnyei 
-*   Közzétevő válnak, és az alkalmazás vagy szolgáltatás listázása 
-*   Hogyan növelheti az üzleti 
+Ez az útmutató a következő témákat tárgyalja: 
+*   A piactér és működése 
+*   Az Azure Marketplace és a AppSource-kirakatok közötti különbség 
+*   A piactéren való részvétel előnyei 
+*   Az alkalmazás vagy szolgáltatás közzétevővé válása és listázása 
+*   Üzleti növekedés 
 
-Ez az útmutató technikai és az üzleti információkat tartalmaz a lépéseket kell tennie, mielőtt listázza az alkalmazások és szolgáltatások. Nyissa meg az útmutató különböző szakaszokat, és lépjen közvetlenül a legfontosabb témakörök, használja a tartalomjegyzéket.
+Ez az útmutató technikai és üzleti információkat is tartalmaz az alkalmazások és szolgáltatások listázásához szükséges lépésekről. A tartalomjegyzék segítségével az útmutató különböző részeire léphet, és közvetlenül a legfontosabb témakörökbe léphet.
 
-Kérdései vannak az Azure Marketplace és AppSource használatával kapcsolatban, küldjön nekünk üzenetet alatt **Problem Type** > **Marketplace bevezetési**.  Csapat Marketplace Publisher örömmel segítünk lesz! 
+Ha kérdése van az Azure Marketplace-ről és a AppSource, küldjön nekünk > egy üzenetet a**Marketplace**bevezetését ismertető szakaszban.  A Marketplace kiadó bevezetési csapata örömmel segít! 
 
-## <a name="benefits-of-participating-in-the-marketplace"></a>Részt vesz a Marketplace-en előnyei 
+## <a name="benefits-of-participating-in-the-marketplace"></a>A piactéren való részvétel előnyei 
 
-A piactéren, amelyek segítségével az üzleti növekedés felgyorsítása a Microsofttal közös piaci megjelenést tevékenységek a kiindulópont. Indítási előléptetés, igény szerinti generálása és közös értékesítési és marketing segítségével a Marketplace-ajánlatok a felhőbeli üzlet középpontjába áll majd is lehet. Nincsenek a piactéren való részvételhez díj nincs.
+A piactér a Microsofttal közös piaci megjelenést biztosító indítási pad, amely segíthet az üzleti növekedés felgyorsításában. A promóció elindítása, a kereslet létrehozása, valamint a közös értékesítés és marketing révén a piactéren a Felhőbeli üzleti motorja is lehet. A piactéren való részvételhez nem számítunk fel díjat.
 
-Célunk, a legjobb megoldás, amely a partneri ökoszisztémánkban kínál a Microsoft ügyfelei kapcsolódni. Ehhez támogatjuk, az úton, közzététel és a növekedés üzembe helyezése során. 
+Célunk, hogy a Microsoft-ügyfeleket a partneri ökoszisztémánk által kínált legjobb megoldásokkal kösse össze. Ehhez a teljes utazás során támogatjuk a bevezetést, a közzétételt és a növekedést. 
 
-A képességek előnyeit a Marketplace-en, hogy terjessze ki üzleti tevékenységét.
+Használja ki a piactér képességeit, hogy növelje vállalatát.
 
-### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Bontsa ki az új piacokat érhet el és a szegmensek, és hozzon létre új értékesítési lehetőségek
+### <a name="expand-to-new-markets-and-segments-and-generate-new-sales-opportunities"></a>Kiterjesztheti új piacokra és szegmensekre, és új értékesítési lehetőségeket hozhat
 
-Új piacokat érhet el, a szegmensek és a Microsoft felhőbeli felhasználók a megoldások portfóliójával rendelkező eléréséhez használja a Marketplace-en csatornán. Új marketing érdeklődőket, és kapcsolattartási új értékesítési lehetőségek vezet. Kihasználhatja a közös marketing és értékesítés tevékenységek beolvasni a több ügyfelet.
+A Piactért csatornaként használva érheti el az új piacokat, szegmenseket és a Microsoft Cloud-felhasználókat a portfóliójában. Új marketing-érdeklődők előállítása és az értékesítési lehetőségekhez vezető új érdeklődők kinevelése. A közös marketing-és értékesítési tevékenységek előnyeit kihasználva több ügyfelet érhet el.
 
-### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>Növelje üzleti értéket és jobb üzletek meglévő és új ügyfelek 
+### <a name="enhance-business-value-and-increase-deal-size-with-existing-and-new-customers"></a>A meglévő és új ügyfelekkel növelheti üzleti értékeit és növelheti az üzlet méretét 
 
-Felülértékesítési és keresztértékesítési a megoldások ügyfelek problémái kielégítésével számítási feladatokat a felhőbe való áthelyezése után. Ha értékesítheti, vagy üzembe helyezése a piactérről, értékesítési ciklus csökkentheti, projektek felgyorsíthatja és teljes körű megoldások értékesítése a cél adott számítási feladatok és iparági forgatókönyvek üzlet jövedelmezőség növelése. 
+A számítási feladatok felhőbe való áthelyezése után az ügyfelekkel kapcsolatos problémák megoldásával felupsell és értékesítheti a megoldásokat. Ha eladja vagy üzembe helyezi a piactéren, csökkentheti az értékesítési ciklusokat, felgyorsíthatja a projekteket, és növelheti az üzlet jövedelmezőségét olyan teljes körű megoldások értékesítésével, amelyek konkrét számítási feladatokat és iparági forgatókönyveket céloznak meg. 
 
 ### <a name="get-actionable-insights"></a>Gyakorlatban is hasznosítható részletes adatok 
 
-Elemzéseket kaphat a listaelemek teljesítményét és az elemzéseket, a Marketplace-en keresztül is elérhető. További információ a kampányok teljesítményét, a megrendelések és a kifizetések és azt, hogy a megoldás a kampány tevékenységek miként kaphat.
+A piactéren elérhető elemzések és elemzések segítségével bepillantást nyerhet a listák teljesítményére. További információk a kampány teljesítményéről, a rendelésekről és a kifizetésekről, valamint a kampány tevékenységeinek maximalizálása a megoldásban.
 
-### <a name="marketplace-go-to-market-benefits"></a>Marketplace piaci megjelenést előnyei 
+### <a name="commercial-marketplace-benefits"></a>Kereskedelmi piactér előnyei 
 
-A Marketplace új ajánlatai jogosultak kezébe a különböző segítségével növelje üzletét a Marketplace-en a partnerek ingyenesen használható. Ezeket az előnyöket a következő kategóriákba sorolhatók: 
+A piactéren elérhető új listák számos ingyenes előnyt kínálnak, amelyek segítenek a partnereknek üzleti szempontból növekedni a piactéren. Ezek az előnyök a következő kategóriákba sorolhatók: 
 
-*   Technikai: Minden le szeretné kérni az alkalmazás készen áll a bevezetésre. Műszaki támogatást, alkalmazás-tervezés és architektúra megtervezése, és az Azure-kreditek fejlesztési és tesztelési célra. 
+*   Technikai Minden, amire szüksége lehet, hogy az alkalmazás készen álljon az indításra. A technikai támogatástól, az alkalmazások kialakításával és az architektúra kialakításával az Azure-kreditek fejlesztéshez és teszteléshez. 
 
-*   Marketing-együttműködés: Minden szükséges összetevőt indítsa el az ajánlatot. Hozzáférés a Microsoft piaci megjelenést indítsa el a Fundamentals segítségével indítsa el, és a megoldás előléptetése ingyenes. Is jogosult lehet a Microsoft marketing további kampány belefoglalási és lehetőségeket a kiemelt a Marketplace-en.
+*   Közös marketing: Minden, amire szüksége lehet az ajánlat elindításához. Elérhetővé teheti a Microsoft piaci megjelenést segítő alapismereteket, amelyek segítségével elindíthatja és népszerűsítheti megoldását. Emellett jogosult lehet a Microsoft marketing-kampány további bevonására is, és elérhetővé kell tennie a piactéren kínált lehetőségeket.
 
-*   Közös értékesítés: Kezdődhet, és gyorsabban értékesítése a Microsofttal a Marketplace-en keresztül. Programok és a támogatási szolgáltatások együttes az értékesítést és a Microsoft teams eléréséhez.
+*   Közös értékesítés: Megkezdheti vagy felgyorsíthatja a Microsofttal való értékesítést a piactéren. Programok és támogatás a Microsoft Teams közös értékesítésének megvezetéséhez.
 
-Miután [küldje el a megoldás](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, az előkészítő csapatunk kapcsolatba lép a közzétételi felhasználói élmény támogatását.  Lásd: [Partnerközpont-fiókkal létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) további információt.
+Miután [elküldte megoldását](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, a bevezetési csapat felveszi Önnel a kapcsolatot a közzétételi élmény támogatásához.  További információt a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakörben talál.
 
-További információ a Microsoft a piaci megjelenést előnyökről és növelje üzletét a Marketplace-en: [a Microsoft piaci megjelenést szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
+További információ a [kereskedelmi piactér előnyeiről](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a felhőbeli piactér témakörök részletesebb tájékoztatást a bal oldali tartalomjegyzék áttekintésével. 
+Tekintse át a Felhőbeli piactérrel kapcsolatos témakörök részletes információit, ha a tartalomjegyzéket a bal oldalon vizsgálja. 

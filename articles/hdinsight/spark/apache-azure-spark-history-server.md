@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736469"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968143"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
@@ -47,23 +47,23 @@ Válassza ki a feladatok AZONOSÍTÓját, majd az eszköz menüjében kattintson
 
 + A lapokat külön kiválasztva jelölje be a **bemenetek**, a **kimenetek**és a **táblák műveleteit** .
 
-    ![Adatlapok](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![Adatlapok](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + A Másolás gombra kattintva másolja az összes **sort.**
 
-    ![Adatok másolása](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![Adatok másolása](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + Mentse az összes fájlt CSV-fájlként a **CSV**-fájl gombra kattintva.
 
-    ![Adatmentés](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![Adatmentés](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + Keresés kulcsszavak beírásával a mező **keresése**mezőbe a keresési eredmény azonnal megjelenik.
 
-    ![Adatkeresés](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![Adatkeresés](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + Kattintson az oszlop fejlécére a táblázat rendezéséhez, kattintson a pluszjelre egy sor kibontásához a további részletek megjelenítéséhez, vagy kattintson a mínusz jelre egy sor összecsukásához.
 
-    ![Adattábla](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![Adattábla](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + Töltsön le egy fájlt úgy, hogy a gomb **részleges Letöltés** lehetőségre kattint a jobb oldalon, majd a kiválasztott fájl a helyi helyre lesz letöltve, ha a fájl nem létezik többé, megnyílik egy új lap a hibaüzenetek megjelenítéséhez.
 
@@ -75,7 +75,7 @@ Válassza ki a feladatok AZONOSÍTÓját, majd az eszköz menüjében kattintson
 
 + A táblázat alatti számra kattintva navigáljon a lapokhoz, amikor túl sok sor jelenjen meg egy oldalon. 
 
-    ![Adatoldal](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![Adatoldal](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + Mutasson az adatok melletti kérdőjelre az elemleírás megjelenítéséhez, vagy kattintson a kérdőjelre további információk megszerzéséhez.
 
@@ -93,7 +93,7 @@ Válassza a feladatok azonosítója lehetőséget, majd kattintson a **Graph** e
 
 + Alapértelmezés szerint az összes feladat megjelenik, és a **Feladat azonosítója**alapján szűrhető.
 
-    ![gráf-feladatokhoz tartozó azonosító](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![gráf-feladatokhoz tartozó azonosító](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + Alapértelmezés szerint a **folyamat** ki van választva, a felhasználó az adatfolyamatot úgy is megtekintheti, hogy a **Megjelenítés**legördülő listájában az írás **/írás** lehetőséget választja.
 
@@ -211,15 +211,15 @@ A közösségi verzióra való visszaálláshoz hajtsa végre a következő lép
 5. A tulajdonság a **false (hamis) értéket** állítja be.
 6. A konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![funkció kikapcsolva](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![funkció kikapcsolva](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. Kattintson a **Spark2** elemre a bal oldali panelen, az **Összefoglalás** lapon, kattintson a **Spark2-előzmények kiszolgáló**elemre.
 
-    ![Kiszolgáló1 újraindítása](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![Kiszolgáló1 újraindítása](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. Indítsa újra az előzmények kiszolgálóját a **Spark2-előzmények kiszolgálójának** **újraindítása** elemre kattintva.
 
-    ![Kiszolgáló2 újraindítása](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![Kiszolgáló2 újraindítása](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. Frissítse a Spark History Server webes FELÜLETét, és a rendszer visszaállít egy közösségi verzióra.
 
@@ -236,7 +236,7 @@ Ha az előzmények kiszolgálói hibát futtat, kövesse az alábbi lépéseket 
 
 3. Adja meg a hiba címét és leírását, húzza a zip-fájlt a Szerkesztés mezőbe, majd kattintson az **új probléma küldése**elemre.
 
-    ![fájl probléma](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![fájl probléma](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Jar-fájl frissítése gyorsjavítási forgatókönyvhöz
@@ -314,7 +314,7 @@ Ha gyorsjavítással szeretné frissíteni, használja az alábbi parancsfájlt,
    + A **fej** és a **feldolgozó**keresése.
    + **Paraméterek**: állítsa be a paramétereket a bash-használat után.
 
-     ![napló-vagy frissítési gyorsjavítás feltöltése](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![napló-vagy frissítési gyorsjavítás feltöltése](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>Ismert problémák

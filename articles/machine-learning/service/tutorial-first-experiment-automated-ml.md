@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 0dd4447736469644875dff914c6284b087be87d0
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910224"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984514"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -99,7 +99,8 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
         Fájl formátuma| Tagolt
         Elválasztó karakter| Vessző
         Encoding| UTF-8
-        Oszlopfejlécek| Minden fájlnak azonos fejléce van, a sorok kihagyása | Nincsenek
+        Oszlopfejlécek| Minden fájlnak azonos fejléce van
+        Sorok kihagyása | Nincsenek
 
         >[!NOTE]
         > Ha az űrlap bármelyik beállítása frissül, az előzetes verzió frissítése ennek megfelelően történik.
@@ -124,7 +125,7 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
     Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok a teljes befejezés előtt véget ér: <br> *Tanítási feladatok időpontja (perc)* : 5  <br> *Ismétlések maximális száma*: 10 
     Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.
     Érvényesítés| Válassza a K-fold kereszt-érvényesítés lehetőséget, és a **2** értéket a kereszthivatkozások számához. 
-    Egyidejűség| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
+    Párhuzamosság| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
 
    >[!NOTE]
    > Ebben a kísérletben nem állítanak be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem blokkolja az algoritmusok tesztelését is.

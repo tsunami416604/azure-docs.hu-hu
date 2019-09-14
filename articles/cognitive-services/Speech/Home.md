@@ -1,64 +1,64 @@
 ---
-title: A Microsoft Bing – beszédszolgáltatás |} A Microsoft Docs
+title: Microsoft Bing Speech szolgáltatás | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Microsoft Speech API használatával beszédvezérlési hozzáadása az alkalmazáshoz, beleértve a felhasználók valós idejű interakciót.
+description: A Microsoft Speech API használatával beszédes műveleteket adhat hozzá alkalmazásaihoz, beleértve a valós idejű interakciót a felhasználókkal.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff9de2557583eecd5ddb2acd97b445a93abc5fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515090"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966643"
 ---
-# <a name="what-is-bing-speech"></a>Mit jelent a Bing Speech?
+# <a name="what-is-bing-speech"></a>Mi az Bing Speech?
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-A felhőalapú és a Microsoft Bing Speech API biztosít a fejlesztők könnyedén hozhat létre hatékony beszédfeldolgozó szolgáltatásokat biztosítani az alkalmazásokban, például a voice parancsvezérlő, természetes beszéd beszélgetés, és a lejegyzés és a Diktálás felhasználói párbeszédpanel. Microsoft Speech API-t is támogatja *Speech to Text* és *szöveg-beszéd átalakítás* átalakítás.
+A felhőalapú Microsoft Bing Speech API lehetővé teszi a fejlesztők számára, hogy hatékony beszédfelismerési funkciókat hozzanak létre alkalmazásaikban, például hangvezérelt vezérlést, felhasználói párbeszédpanelt a természetes beszéd beszélgetés használatával, valamint a beszédfelismerést és a diktálást. A Microsoft Speech API támogatja a *szöveg* -és *text to speech* konverziót is.
 
-- **Beszédfelismerés** API emberi beszéd szöveggé, szabályozhatja az alkalmazás bemeneteként vagy parancsok használható alakítja át.
-- **Szöveg-beszéd átalakítás** API audiostreamek lejátszásával, a felhasználónak az alkalmazás lejátszhatók szöveget alakítja át.
+- **Beszéd szövege** Az API átalakítja az emberi beszédet olyan szöveggé, amelyet bemenetként vagy parancsként használhat az alkalmazás vezérléséhez.
+- **Text to speech** Az API átalakítja a szöveget az alkalmazás felhasználója számára visszatekinthető hangadatfolyamokra.
 
-## <a name="speech-to-text-speech-recognition"></a>Diktálás (beszédfelismerés)
+## <a name="speech-to-text-speech-recognition"></a>Beszéd – szöveg (beszédfelismerés)
 
-A Microsoft beszédfelismerési API *transcribes* audiostreamek lejátszásával, szöveg, amely az alkalmazás a felhasználót, vagy mint való reagáláshoz bemeneti parancsot. A fejlesztők a beszédfelismerési hozzá alkalmazásaikat két módon biztosít: REST API-k **vagy** Websocket alapuló ügyféloldali kódtáraknál.
+A Microsoft Speech Recognition *API olyan* szöveggé alakítja át a hangadatfolyamokat, amelyet az alkalmazás megjelenít a felhasználó számára, vagy a parancs bemenetként is működhet. Két módszert biztosít a fejlesztők számára, hogy beszédfelismerést adjanak hozzá az alkalmazásaihoz: REST API-k **vagy** WebSocket-alapú ügyféloldali kódtárak.
 
-- [REST API-k](GetStarted/GetStartedREST.md): A fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
-- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): Speciális funkciók fejlesztők Microsoft Speech klienskódtárak letöltheti, és hivatkozás alkalmazásokba.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával. A REST API-k, ellentétben a klienskódtárak használatára Websocket-alapú protokoll.
+- [REST API](GetStarted/GetStartedREST.md)-k: A fejlesztők a beszédfelismeréshez használhatnak HTTP-hívásokat az alkalmazásaikat a szolgáltatáshoz.
+- [Ügyféloldali kódtárak](GetStarted/GetStartedClientLibraries.md): A fejlett funkciókhoz a fejlesztők letöltik a Microsoft Speech Client kódtárait, és az alkalmazásaikat is használhatják.  Az ügyféloldali kódtárak különböző platformokon (Windows, Android, iOS) érhetők el különböző nyelvekenC#(, Java, JavaScript, ObjectiveC). A REST API-kkal ellentétben az ügyféloldali kódtárak a WebSocket-alapú protokollt használják.
 
-| Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md) |
+| Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyféloldali kódtárak](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konvertálás egy rövid beszélt hangot képes, például parancsokat (hang hossza < 15 mp) ideiglenes eredmények nélkül | Igen | Igen |
-| Konvertálja a hosszú hang (> 15 % s) | Nem | Igen |
-| A köztes eredményeket kívánt Stream hang | Nem | Igen |
-| A LUIS használatával hang tartalomtárolási szöveg ismertetése | Nem | Igen |
+| Rövid hangalapú hang konvertálása, például parancsok (hanghossz < 15 s) ideiglenes eredmények nélkül | Igen | Igen |
+| Hosszú hang konvertálása (> 15 s) | Nem | Igen |
+| Stream hang a kívánt ideiglenes eredményekkel | Nem | Igen |
+| A hangról a LUIS használatával átalakított szöveg ismertetése | Nem | Igen |
 
-Bármelyik módszert a fejlesztők válasszon (REST API vagy klienskódtárak), és a Microsoft beszédfelismerési szolgáltatás a következőket támogatja:
+Bármelyik megközelítés fejlesztő kiválasztja (REST API-k vagy ügyféloldali kódtárak), a Microsoft Speech Service a következőket támogatja:
 
-- Speciális speech recognition technológiák a Microsoft, Cortana, a Diktálás Office, Office Translator és más Microsoft-termékek által használt.
-- Valós idejű folyamatos felismerése. A beszédfelismerő API lehetővé teszi a felhasználók számára lefényképezze hang valós időben, és támogatja az eddigi felismerhető szavak köztes eredmények szövegre. A beszédfelismerési szolgáltatás end-, beszéd észlelési is támogatja. Emellett a felhasználók választhatnak további formázási lehetőségeket, például a kis-és nagybetűk, és írásjelek, maszkolási cenzúrázása és szöveges normalizálási.
-- Támogatja a speech recognition eredményei optimalizált *interaktív*, *beszélgetés*, és *Diktálás* forgatókönyveket. A felhasználói esetek testreszabott nyelvi modell és akusztikai modell, melyekhez [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) lehetővé teszi, hogy az alkalmazás és a felhasználók személyre szabott beszédfelismerési modelleket hozhat létre.
-- Több Dialektusok számos használja a beszélt nyelvet támogatnak. Minden egyes felismerés módban támogatott nyelvek teljes listáját lásd: [nyelveket](api-reference-rest/supportedlanguages.md).
-- Integráció a language Understanding használatánál. Amellett, hogy a bemeneti audio átalakítása szöveggé, a *Speech to Text* lehetővé teszi a tudni, mi az szöveg azt jelenti, hogy egy további lehetőség. Használja a [Language Understanding Intelligent Service(LUIS)](../LUIS/what-is-luis.md) szándékok és entitások kibontani a felismert szöveget.
-
-### <a name="next-steps"></a>További lépések
-
-- Ismerkedés a Microsoft speech recognition szolgáltatása használandó [REST API-k](GetStarted/GetStartedREST.md) vagy [klienskódtárak](GetStarted/GetStartedClientLibraries.md).
-- Tekintse meg [mintaalkalmazások](samples.md) a kedvenc programozási nyelv.
-- Nyissa meg a referencia-csoportban található [Microsoft Speech protokoll](API-Reference-REST/websocketprotocol.md) részleteit és API-referenciák.
-
-## <a name="text-to-speech-speech-synthesis"></a>Szöveg-beszéd átalakítás (beszédszintézishez)
-
-*Szöveg-beszéd átalakítás* API-k a REST használata strukturált szöveg átalakítása a audio-adatfolyamokat. Az API-k biztosítanak a gyors szöveg-beszéd átalakítás különböző beszédhangot és nyelveket. Emellett a felhasználók is rendelkeznek a megváltoztathatja hang jellemzőkkel, például írásmódja, a kötet, a terv lényegét stb. címkék használatával SSML.
+- A Microsoft fejlett beszédfelismerési technológiáit, amelyeket a Cortana, az Office-diktálás, az Office Translator és más Microsoft-termékek használnak.
+- Valós idejű folyamatos felismerése. A beszédfelismerési API lehetővé teszi, hogy a felhasználók valós időben másolják a hanganyagot a szövegbe, és a támogatja az eddig felismerhető szavak közbenső eredményeinek fogadását. A beszédfelismerési szolgáltatás emellett támogatja a beszédfelismerés befejezését. Emellett a felhasználók további formázási képességeket is választhatnak, például a nagybetűket és a központozást, a káromkodás maszkolását és a szöveg normalizálása.
+- Támogatja az optimalizált beszédfelismerési eredményeket az *interaktív*, a *beszélgetési*és a *diktálási* forgatókönyvek esetében. A testreszabott nyelvi modelleket és akusztikus modelleket igénylő felhasználói forgatókönyvek esetében [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) lehetővé teszi az alkalmazásra és a felhasználókra szabott beszédfelismerési modellek létrehozását.
+- Számos különböző nyelven beszélő nyelv támogatása több dialektusban. Az egyes felismerési módok támogatott nyelveinek teljes listájáért lásd: [felismerési nyelvek](api-reference-rest/supportedlanguages.md).
+- Integráció a nyelvi ismeretekkel. A szövegbeviteli hang szöveggé alakításán kívül a szövegre való *beszédfelismerés* további képességet biztosít az alkalmazások számára, hogy megértse a szöveg módját. A [Language Understanding Intelligent Service (Luis)](../LUIS/what-is-luis.md) használatával Kinyeri a leképezéseket és az entitásokat a felismert szövegből.
 
 ### <a name="next-steps"></a>További lépések
 
-- Első lépések a Microsoft szöveg-beszéd átalakítás szolgáltatással: [Szöveg-beszéd átalakítás API-referencia](api-reference-rest/bingvoiceoutput.md). Nyelvek és beszédhangot szöveg-beszéd átalakítás által támogatott teljes listáját lásd: [támogatott nyelv és Hangtípust](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Ismerkedés a Microsoft Speech Recognition szolgáltatás [REST API](GetStarted/GetStartedREST.md) -kkal vagy [ügyféloldali kódtárakkal](GetStarted/GetStartedClientLibraries.md)való használatával.
+- Tekintse meg a [minta alkalmazásokat](samples.md) az előnyben részesített programozási nyelven.
+- A [Microsoft Speech Protocol](API-Reference-REST/websocketprotocol.md) részleteinek és API-hivatkozásainak megkereséséhez lépjen a hivatkozás szakaszra.
+
+## <a name="text-to-speech-speech-synthesis"></a>Szöveg-beszéd (Speech szintézis)
+
+*Text to speech* Az API-k a REST használatával alakítják át a strukturált szöveget egy hangadatfolyamba. Az API-k gyors szöveget biztosítanak a beszéd átalakításához különböző hangokon és nyelveken. Emellett a felhasználók is módosíthatják az olyan hangjellemzőket, mint a kiejtés, a hangerő, a szurok stb. SSML-címkék használata.
+
+### <a name="next-steps"></a>További lépések
+
+- Ismerkedjen meg a Microsoft Text to speech szolgáltatás használatával: [Text to Speech API hivatkozás](api-reference-rest/bingvoiceoutput.md). A Text to Speech által támogatott nyelvek és hangok teljes listájáért lásd: [támogatott területi beállítások és Hangbetűkészletek](api-reference-rest/bingvoiceoutput.md#SupLocales).

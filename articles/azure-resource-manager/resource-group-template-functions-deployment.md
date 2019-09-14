@@ -4,14 +4,14 @@ description: Ismerteti a Azure Resource Manager-sablonban a telepítési inform�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194347"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983992"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok üzembe helyezési funkciói 
 
@@ -24,8 +24,6 @@ A Resource Manager a következő függvényeket biztosítja a sablon és a telep
 Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekéréséhez lásd: [Resource functions](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -80,7 +78,7 @@ Ha az objektumot hivatkozásként adja át, például ha a **-TemplateUri** para
 }
 ```
 
-Ha egy erőforráscsoport helyett Azure-előfizetésre végez [üzembe helyezést](deploy-to-subscription.md), a Return objektum tartalmaz egy `location` tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
+Ha egy erőforráscsoport helyett [Azure-előfizetésre végez üzembe helyezést](deploy-to-subscription.md), a Return objektum tartalmaz egy `location` tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel.
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -134,18 +132,6 @@ Az előző példa a következő objektumot adja vissza:
     "provisioningState": "Accepted"
   }
 }
-```
-
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
 Az üzembe helyezési funkciót használó előfizetési szintű sablonért lásd: [előfizetés üzembe helyezési funkciója](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). A rendszer a `az deployment create` vagy `New-AzDeployment` a parancsot is alkalmazza.
@@ -254,17 +240,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | Sztring | 1\. lehetőség |
 
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+További információ a paraméterek használatáról: [Azure Resource Manager sablonban található paraméterek](template-parameters.md).
 
 <a id="variables" />
 
@@ -356,17 +332,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | exampleOutput3 | Sztring | myVariable |
 | exampleOutput4 |  Object | {"Tulajdonság1": "érték1", "property2": "érték2"} |
 
-Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
 
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).

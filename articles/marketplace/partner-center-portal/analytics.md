@@ -1,287 +1,287 @@
 ---
-title: A Partner Center kereskedelmi Marketplace-en Analytics
-description: Megtudhatja, hogyan figyelheti az értékesítést, teljesítmény kiértékelése és optimalizálhatja a marketplace-ajánlat elemzési jelentések eléréséhez.
-author: mattwojo
+title: A partner Center kereskedelmi Piactérének elemzései
+description: Ismerje meg, hogyan érheti el az elemzési jelentéseket az értékesítések figyelésére, a teljesítmény kiértékelésére és a Piactéri ajánlatok optimalizálására.
+author: chjenk
 manager: evansma
 ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/09/2019
+ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619689"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962734"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A Partner Center kereskedelmi Marketplace-en Analytics
+# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
-Ismerje meg, hogyan analitikai jelentéseket a Microsoft Partner Centeren értékesítési figyelése, a teljesítmény kiértékelése és optimalizálhatja az ajánlatokat a piactéren érheti el. Partnerként az ajánlati információk az adatvizualizációk és -Partnerközpont által támogatott insight-diagramok használatával figyelheti, és maximalizálja az értékesítést módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítmény eredmények viselkednek, és az ügyfelekkel és viszonteladók jobb kapcsolatok kezelése. 
+Ismerje meg, hogyan érheti el az elemzési jelentéseket a Microsoft partner Centerben az értékesítések figyelése, a teljesítmény kiértékelése és az ajánlatok a piactéren való optimalizálása érdekében. Partnerként a partner Center által támogatott adatvizualizációk és betekintési diagramok segítségével figyelheti az ajánlati listáját, és megtalálhatja az értékesítés maximalizálásának módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítménybeli eredmények elvégzését, valamint az ügyfelekkel és viszonteladókkal való jobb kapcsolatok fenntartását. 
 
-A Partner Center elemzési eszközök eléréséhez nyissa meg a **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópult kereskedelmi Marketplace területen.
+A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactéren.
 
 |**Irányítópult**|**Megjelenített tartalom**|
 |:---|:---|
-|[összegzés](#summary-dashboard)|Gráfok, trendeket és értékeket az összesített adatok, az ajánlatok piactéren tevékenység összefoglalója|
-|[Rendelések](#orders-dashboard)|A rendelések grafikus és letölthető formában adatait|
-|[Ügyfelek](#customer-dashboard)|Az ügyfelek, beleértve a növekedési trendeket, grafikus és letölthető formában adatait|
-|[Letöltések](#downloads-dashboard)|A letöltési kérelmek az elmúlt 30 napban listája|
+|[összegzés](#summary-dashboard)|Diagramok, trendek és az összesített adatok azon értékei, amelyek összegzik a Piactéri tevékenységet az ajánlatokhoz|
+|[Megrendelések](#orders-dashboard)|A megrendelésekkel kapcsolatos információk grafikus és letölthető formátumban|
+|[Ügyfelek](#customer-dashboard)|Az ügyfelekkel kapcsolatos információk, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg|
+|[Letölti](#downloads-dashboard)|A letöltési kérelmek listája az elmúlt 30 napban|
 
-## <a name="summary-dashboard"></a>Összegzési irányítópult
+## <a name="summary-dashboard"></a>Összefoglaló irányítópult
 
-A **összefoglalás** irányítópult áttekintést nyújt minden ajánlat alapján. **Insights** kritikus információk megjelenítése egy pillantással és értékesítési tevékenységét az ajánlatok széles körű dokumentálja. Ezek a jelentések használatával jelenítheti meg a **összefoglalás** irányítópult:
+Az **összegzési** irányítópult az egyes ajánlatok típusán alapuló áttekintést jelenít meg. Az információk egy pillantással **mutatják be** a kritikus információkat, és átfogó képet nyújtanak az ajánlatok értékesítési tevékenységéről. Ezeket a jelentéseket az **összegző** irányítópult használatával jelenítheti meg:
 
-- [Teljes rendelések](#totals)
-- [Teljes ügyfelek](#totals)
+- [Megrendelések összesen](#totals)
+- [Ügyfelek összesen](#totals)
 - [Az ügyfelek földrajzi helye](#customers-by-geography)
-- [Új trendek alapján az ügyfél és a rendelési adatokat](#growth-trend-chart)
-- [A legmagasabb rendelések ügyfél ranglista](#customer-leaderboard)
-- [Ajánlat neve szerint vannak rendezve megrendelések számát](#offers-by-orders)
+- [Az ügyfél és a megrendelési információk alapján felmerülő trendek](#growth-trend-chart)
+- [Ügyfél ranglista a legmagasabb szintű rendelésekkel](#customer-leaderboard)
+- [Az ajánlat neve szerint rendezett megrendelések száma](#offers-by-orders)
 
 ### <a name="date-range"></a>Dátumtartomány
 
-Minden oldal jobb felső sarkában található egy Dátumtartomány kijelölése. Kimenetét a **összegzése** oldal gráfok testre szabható a múltban alapján dátumtartományt kiválasztásával 3, 6 vagy 12 hónapban, vagy egy egyéni dátumtartományt maximális időtartama: 12 hónapig kiválasztásával. Az alapértelmezett dátum tartománya hat hónapban.
+Az egyes lapok jobb felső sarkában megtalálhatja a dátumtartomány kijelölését. Az **Összefoglalás** oldal diagramjainak kimenete testreszabható úgy, hogy kijelöl egy dátumtartományt az elmúlt 3, 6 vagy 12 hónap alapján, vagy egy olyan egyéni dátumtartományt választ, amelynek a maximális időtartama 12 hónap. Az alapértelmezett dátumtartomány hat hónap.
 
-![Partnerközpont elemzés irányítópult](./media/analyze-dashboard.png)
+![A partner Center elemzése irányítópult](./media/analyze-dashboard.png)
 
-### <a name="totals"></a>Összegek
+### <a name="totals"></a>Összesen
 
-A **összegek** szakasz az összes létrehozott rendeléseket, vagy az ügyfelek számára, a kijelölt dátumtartományban során szerzett számát jeleníti meg. 
+Az **összesítések** szakasz a kiválasztott dátumtartományt vagy a beszerzett ügyfelek számát jeleníti meg a kijelölt időtartományban. 
 
-- A százalékos érték a **Total Orders** és **teljes ügyfelek** növekedési rátákat az előző hónapra összegét jelöli. 
-- Egy pozitív növekedési trend felfelé egy zöld háromszögnek mutat jelzi. Egy piros háromszög mutat lefelé azt jelzi, hogy egy negatív növekedési trendje az előző hónapra viszonyítva. 
-- Rendelés és ügyfelek növekedési trendekre a sávdiagramok képviseli, és megjeleníti az értéket az egyes hónapok az egérmutatót a diagram oszlopai.
+- Az **összes megrendelés** és az **összes ügyfél** melletti százalékos érték az előző hónaphoz képest a növekedés mennyiségét jelöli. 
+- A felfelé mutató zöld háromszög pozitív növekedési trendet jelez. Egy lefelé mutató piros háromszög jelzi az előző hónaphoz viszonyított negatív növekedési tendenciát. 
+- A sorrend és az ügyfelek növekedési tendenciái a sávdiagramok szerint jelennek meg, és az egyes hónapok értékét a diagram oszlopai fölé helyezik.
 
-![Partnerközpont elemzés összegek](./media/analyze-totals.png)
+![A partner Center összesített elemzése](./media/analyze-totals.png)
 
-### <a name="customers-by-geography"></a>Felhasználók földrajzi hely szerint
+### <a name="customers-by-geography"></a>Ügyfelek földrajz szerint
 
-A **földrajzi hely szerint ügyfelek** intenzitástérkép az ügyfelek számát a világ térképen jeleníti meg. 
+Az **ügyfelek földrajzi** hő megjelenítik az ügyfelek darabszámát a globális térképen.
 
-- Továbbléphet a térkép megtekintéséhez a pontos helyét. 
-- Egy adott helyen nagyíthatja. 
-- Az intenzitástérkép rendelkezik egy kiegészítő rács ügyfelek száma részleteinek megtekintése (vagy [rendelés száma](#orders-by-geography)) az adott helyen. 
-- Kereshet, és válasszon egy országot a rácsban nagyítás helyét a térképen. Az eredeti nézet billentyű megnyomásával visszatérhet az **kezdőlap** gomb a térképen.
-- A **új** ügyfél egyik az ajánlatok először a kijelölt dátumtartományban belül a hónap során vásárolt.
+- A térképet áthelyezve megtekintheti a pontos helyet.
+- Egy adott helyre nagyíthat.
+- A hő tartalmaz egy kiegészítő rácsot az ügyfelek számának (vagy a [rendelések számának](#orders-by-geography)) az adott helyen való megtekintéséhez.
+- Megkeresheti és kiválaszthatja a rács egyik országát, hogy a térképen lévő helyre nagyítson. A **Kezdőlap** gomb megnyomásával visszatérhet az eredeti nézethez.
+- Egy **új** ügyfél első alkalommal vásárolta meg az ajánlatait a kiválasztott időtartományon belüli hónapban.
 
-![Partnerközpont elemzés ügyfél földrajzi hely](./media/analyze-customer-geography.png)
+![Partneri Központ elemzése ügyfél földrajza](./media/analyze-customer-geography.png)
 
 ### <a name="growth-trend-chart"></a>Növekedési trend diagram
 
-Megtekintheti a trendek alapján növekedését a **létrehozott rendelések** vagy **megszerzett ügyfelek**, havi megfelelően a kijelölt dátumtartományban jelennek meg. Ezek a trendek is további elemzéséhez, kövesse az alábbi hivatkozásokat a diagram, amely keresse meg a megfelelő kiválasztásával **rendelés** vagy **ügyfél** oldalakat.
+A trendeket a **létrehozott megrendelések** vagy a **beszerzett ügyfelek**növekedésének megfelelően tekintheti meg, a kiválasztott dátumtartomány szerint havonta. Ezeket a trendeket tovább elemezheti a diagram alatti hivatkozások kiválasztásával, amelyek a megfelelő **sorrendben** vagy az **ügyfelek** oldalain érhetők el.
 
-![Partnerközpont elemzés növekedési trendek](./media/analyze-growth-trends.png)
+![A partner Center elemzi a növekedési trendeket](./media/analyze-growth-trends.png)
 
-### <a name="customer-leaderboard"></a>Ügyfél-ranglista
+### <a name="customer-leaderboard"></a>Ügyfél ranglista
 
-A megrendelések számát vesszük figyelembe az 50 legfontosabb ügyfeleket jelennek meg a *érdeklődők*, rendezett legmagasabb rendelés száma és a sorrend százalékos. 
+A legmagasabb számú rendeléssel rendelkező legfelső szintű 50-ügyfeleket a *ranglistán*jeleníti meg a legmagasabb sorszám és a sorrend százaléka szerint rendezve. 
 
-- Válassza ki a vásárlók saját profil adatai, a rendelések ajánlat szerint vannak rendezve, illetve a rendelések Azure licenc típusa és árképzési csatorna szerint vannak rendezve megtekintése. 
-- A **kínál a rendelések** fánkdiagram megadja az első négy ajánlatok (sorrendben száma) szerint, és a csoportosított "Rest-All", a fennmaradó kínál.
-
-> [!NOTE]
-> Ügyfelek személyes adatainak csak akkor, ha az ügyfél adta jelenik meg. Ezen információk is megtekinthetők, ha, a bejelentkezés a következővel egy **tulajdonosa** engedélyek szerepkörszintű. A felhasználók a **közreműködői** szerepkör nem fogja tudni ezt az információt. [További információ a felhasználói szerepkörök és engedélyek](./manage-account.md#define-user-roles-and-permissions).
-
-![Partnerközpont elemzés növekedési trendek](./media/analyze-growth-trends.png)
-
-### <a name="offers-by-orders"></a>A rendelések ajánlatok
-
-A **kínál a rendelések** diagram az aktív megrendelések, az ajánlat neve alapján rendezi. 
-
-- Akkor is húzza át szeletek a bal oldali fánkdiagramot az a megfelelő fánkdiagram annak érdekében, hogy az ajánlat húzott további részletek megjelenítéséhez. Ezeken a diagramokon lehetővé teszi egy adott ajánlat, a teljesítmény, az összes az ("Rest minden") ajánlatok összehasonlítása. 
-
-![Partnerközpont elemzés ajánlatok által](./media/analyze-offer-by-order.png)
-
-## <a name="orders-dashboard"></a>Rendelések irányítópult
-
-A **rendelések** irányítópultján a **elemzés** menüben megjelenik az SaaS-ajánlatok mindegyike aktuális rendelését. Grafikus ábrázolását tekintheti meg:
-
-- [Rendelés összegek](#order-totals)
-- [Rendelések földrajzi hely szerint](#orders-by-geography)
-- [Az aktív és a visszavont rendelés trendek](#trends-for-active-and-canceled-orders)
-- [Rendelések marketplace licenc típusa szerint rendezve](#orders-by-marketplace-license-type)
-- [Rendelések új és meglévő ügyfelek szerint rendezve](#orders-by-customer-type)
-- [ORDER details táblához](#order-details-table)
+- Válasszon ki egy ügyfelet a profiljuk részleteinek megtekintéséhez, az ajánlat által szervezett rendelésekhez, valamint az Azure-licenc típusa és a díjszabási csatorna által szervezett rendelésekhez. 
+- Az **ajánlatok by Orders** fánk diagram az első négy ajánlatot (megrendelés száma szerint), a fennmaradó ajánlatokat pedig "Rest all"-ként csoportosítva mutatja be.
 
 > [!NOTE]
-> Hogyan analytics-jelentések megjelenítése a Cloud Partner Portal (CPP) és a Partner Center új kereskedelmi Piactérrel közötti különbségek vannak. Egy meghatározott módon, hogy a **értékesítői Insights** CPP rendelkezik egy **rendelések & használati** jeleníti meg a használat alapú ajánlatokat és ajánlatok nem használat alapú lapon. A Partner Center a **rendelések** oldalon külön lapon rendelkezik SaaS kínál.
+> Az ügyfél személyes adatai csak akkor jelennek meg, ha az ügyfél beleegyezett. Ezeket az információkat akkor tekintheti meg, ha **tulajdonosi** szerepkörre vonatkozó engedélyekkel jelentkezett be. A **közreműködő** szerepkörrel rendelkező felhasználók nem fogják tudni megtekinteni ezeket az információkat. [További információ a felhasználói szerepkörökről és engedélyekről](./manage-account.md#define-user-roles-and-permissions).
 
-### <a name="order-totals"></a>Rendelés összegek
+![A partner Center elemzi a növekedési trendeket](./media/analyze-growth-trends.png)
 
-A **megnyitjuk** szakasz mind hozta létre, az összes megrendelések számát jeleníti meg **aktív** és **meg lett szakítva** rendelések során a kiválasztott [dátumtartománya ](#date-range). 
+### <a name="offers-by-orders"></a>Ajánlatok megrendelések szerint
 
-- A százalékos érték a **Total Orders** növekedési rátákat az előző hónapra összegét jelöli. 
-- Egy pozitív növekedési trend felfelé egy zöld háromszögnek mutat jelzi. Egy piros háromszög mutat lefelé azt jelzi, hogy egy negatív növekedési trendje az előző hónapra viszonyítva. 
-- Növekedési trendeket a sávdiagramok képviseli, és megjeleníti az értéket az egyes hónapok az egérmutatót a diagram oszlopai.
+Az **ajánlatok by Orders** diagram az aktív rendeléseket az ajánlat neve alapján rendezi. 
 
-### <a name="orders-by-geography"></a>Rendelések földrajzi hely szerint
+- A bal oldali fánk diagramon lévő szeletek fölé húzva a jobb oldali fánk diagramot, hogy további részleteket jelenítsen meg a húzott ajánlatról. Ez a két diagram lehetővé teszi egy adott ajánlat összehasonlítását az összes többi ajánlat teljesítményével ("Rest all"). 
 
-A **földrajzi hely szerint rendelések** intenzitástérkép világ a térképen a megrendelések számát jeleníti meg, és a functions ugyanaz, mint a  **[földrajzi intenzitástérkép ügyfelek](#customers-by-geography)** .
+![A partner Center elemzési ajánlatai megrendelések szerint](./media/analyze-offer-by-order.png)
 
-### <a name="trends-for-active-and-canceled-orders"></a>Az aktív és a visszavont rendelés trendek
+## <a name="orders-dashboard"></a>Megrendelések irányítópultja
 
-A **aktív orders ajánlatok** fánkdiagram graph minden, az aktív rendelések ajánlat nevük alapján rendezi.
+Az **elemzés** menü **orders (megrendelések** ) irányítópultja megjeleníti az összes SaaS-ajánlat aktuális rendeléseit. Megtekintheti a grafikus ábrázolásait:
 
-- Az első 4 ajánlatok jelennek meg a Graph és az ajánlatokat a többi csoportosítva vannak benne, mint "Rest-All".
-- Kiválaszthat meghatározott ajánlatok a jelmagyarázatban megjelenítendő csak azokat az ajánlatokat a gráfban. 
-- Egy szeletet a diagramon felett megrendelések számát és százalékos arányát, hogy az ajánlat minden ajánlatok között képest a megrendelések teljes számát jeleníti meg.
-- **Ajánlatok trend által Orders** havonta készülő növekedési trendeket jelenít meg. A hónap oszlop ajánlat neve szerint megrendelések számát jelöli. A vonaldiagramot egy z ábrázolt növekedési százalékos trendjét jeleníti meg.
-- A diagram tetején a csúszka segítségével görgessen jobbra és balra fókusz és az x tengely mentén az adott adatpontokat.
-- A trend diagram a jelmagyarázat adott elem kiválasztásával jelenítheti meg.
-- Azt is beállíthatja trendeket és az adatok megjelenítéséhez **meg lett szakítva a rendelések**. A gráf aktív rendelések azonos módon fognak működni.
+- [Rendezési összegek](#order-totals)
+- [Megrendelések földrajz szerint](#orders-by-geography)
+- [Az aktív és a megszakított megrendelések trendjei](#trends-for-active-and-canceled-orders)
+- [A Piactéri licenc típusa szerint rendezett megrendelések](#orders-by-marketplace-license-type)
+- [Új és meglévő ügyfelek által szervezett megrendelések](#orders-by-customer-type)
+- [Rendelés részletei tábla](#order-details-table)
 
-![Partnerközpont elemzés aktív megrendelések](./media/analyze-active-orders.png)
+> [!NOTE]
+> Az elemzési jelentések az Cloud Partner Portal (CPP) és a partner Center új kereskedelmi piactér programjában jelennek meg. Az egyik konkrét módszer az, hogy a CPP-beli **értékesítői** elemzések olyan **Orders & használati** lapokkal rendelkeznek, amelyek a használati és a nem használaton alapuló ajánlatok adatait jelenítik meg. A partner Centerben a **megrendelések** oldalon külön lap található az SaaS-ajánlatok számára.
 
-### <a name="orders-by-marketplace-license-type"></a>Rendelések marketplace licenc típusa szerint
+### <a name="order-totals"></a>Rendezési összegek
+
+Az **Order összesítések** szakasz az összes létrehozott rendelés számát jeleníti meg, beleértve az **aktív** és a **megszakított** rendeléseket is a kiválasztott [dátumtartomány](#date-range)alatt. 
+
+- Az **összes megrendelés** melletti százalékos érték a növekedésnek az előző hónaphoz viszonyított mennyiségét jelöli. 
+- A felfelé mutató zöld háromszög pozitív növekedési trendet jelez. Egy lefelé mutató piros háromszög jelzi az előző hónaphoz viszonyított negatív növekedési tendenciát. 
+- A növekedési trendeket oszlopdiagram jelképezi, és az egyes hónapok értékét a diagram oszlopai fölé helyezve jeleníti meg.
+
+### <a name="orders-by-geography"></a>Megrendelések földrajz szerint
+
+A **Orders by földrajz** hő megjeleníti a megrendelések számát egy globális térképen, és ugyanazokat a feladatokat látja el, mint az **[ügyfelek földrajzi hő](#customers-by-geography)** .
+
+### <a name="trends-for-active-and-canceled-orders"></a>Az aktív és a megszakított megrendelések trendjei
+
+A fánk-gráf **által biztosított aktív megrendelések** az összes aktív rendelést az ajánlattételi nevüknek megfelelően rendezik.
+
+- A négy legfontosabb ajánlat a gráfban jelenik meg, a többi ajánlat pedig "Rest all"-ként van csoportosítva.
+- A jelmagyarázatban megadott ajánlatokat kiválasztva csak a gráfban található ajánlatokat jelenítheti meg. 
+- Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlaton alapul.
+- **A Orders by ajánlatok trend** megjeleníti a hónapról hónapra terjedő növekedési trendeket. A hónap oszlop a megrendelések számát jelöli az ajánlat neve alapján. A diagram egy z-tengelyen ábrázolt százalékos növekedési arányt jeleníti meg.
+- A diagram tetején található csúszka segítségével jobbra és balra görgetheti az x tengelyt, és az adott adatpontokra koncentrálhat.
+- A trend diagramot egy adott elem kiválasztásával jelenítheti meg a jelmagyarázatban.
+- Dönthet úgy is, hogy a **megszakított megrendelésekhez**kapcsolódó trendeket és az adatfolyamatokat is megjeleníti. A gráf ugyanúgy fog működni, mint az aktív megrendelések.
+
+![Partner Center – aktív megrendelések elemzése](./media/analyze-active-orders.png)
+
+### <a name="orders-by-marketplace-license-type"></a>Orders by Marketplace licenc típusa
 <!-- Section needs review and clarification!  -->
-A **marketplace licenc típusa szerint rendelések** diagram megjeleníti a licenc típusa és a számlázási módja a marketplace-ajánlat alapján havonta készülő rendelés számát. Licenctípusok a következők:
+Az **Orders by Marketplace licenc Type** diagram a Piactéri ajánlat licenc típusa és számlázási módszere alapján havonta havi sorrendet jelenít meg. A licencek típusai a következők:
 
-- **Azure-on keresztül számlázzuk**: A Microsoft bankkártyáján ügyfeleknek az Ön nevében, ha úgy dönt, hogy [értékesíthetik az ajánlat keretében a Microsoft](./create-new-saas-offer.md#sell-through-microsoft) és a licenc típusa. Fizetési típusok: hitelkártya vagy vállalati számlázás használatalapú fizetés.
-- **A saját licenc használata**: A Microsoft nem számláz ügyfelek számára az ilyen típusú marketplace-ajánlat, felhasználási. Állapottal **[Letöltés most (ingyenes)](./create-new-saas-offer.md#get-it-now-free)** a Marketplace-en.
-- **Ingyenes**: A Microsoft nem számláz ügyfelek számára az ilyen típusú marketplace-ajánlat, felhasználási. Állapottal **[az ingyenes próbaidőszak](./create-new-saas-offer.md##free-trial-listing)** a Marketplace-en.
-- **A Microsoft a viszonteladóként**: Egy Microsoft-viszonteladók által értékesített ajánlatok jelöli a  **[Cloud Solution Provider (CSP) program](./create-new-saas-offer.md#csp-program-opt-in)** .
+- **Számlázás az Azure**-on keresztül: A Microsoft számlázza az ügyfelet az Ön nevében, ha úgy dönt, hogy [eladja az ajánlatot a Microsofttal](./create-new-saas-offer.md#sell-through-microsoft) ezzel a licenccel. A fizetési típusok közé tartozik a bankkártya vagy a nagyvállalati számlázás.
+- **Saját licenc**használata: A Microsoft nem számlázza az ügyfeleket az ilyen típusú Piactéri ajánlat használatáért. A szolgáltatás **[most már (ingyenes) jelenik meg](./create-new-saas-offer.md#get-it-now-free)** a piactéren.
+- **Ingyenes**: A Microsoft nem számlázza az ügyfeleket az ilyen típusú Piactéri ajánlat használatáért. Az **[ingyenes próbaverzióként](./create-new-saas-offer.md##free-trial-listing)** szerepel a piactéren.
+- **Microsoft mint viszonteladó**: A a Microsoft-viszonteladók által a **[Cloud Solution Provider (CSP) program](./create-new-saas-offer.md#csp-program-opt-in)** részeként eladott ajánlatokat jelöli.
 
-![Írja be a Partnerközpontba elemzés rendelések licenc](./media/analyze-license-type.png)
+![A partner Center elemzi a rendeléseket licenc típusa szerint](./media/analyze-license-type.png)
 
-### <a name="orders-by-customer-type"></a>Rendelések ügyfél típusa szerint
+### <a name="orders-by-customer-type"></a>Megrendelések az ügyfél típusa szerint
 
-A **ügyfél típusa alapján rendelések** sávdiagram között elosztva megrendelések számát jeleníti meg **új ügyfeleket** és **meglévő ügyfelek**. 
+Az **ügyfél típusú sávdiagram által megrendelések szerint** az **új ügyfelek** és a **meglévő ügyfelek**között felosztott megrendelések száma látható. 
 
-- A **új ügyfél** szerzett meg legalább egy, az ajánlatok először a azonos naptári hónap (y tengely) belül. Egy **meglévő ügyfél** korábban szerzett egy ajánlatot, Ön előtt a naptári hónap jelentett (y tengely). 
-- Egy további tortadiagram a kijelölt dátumtartományban az új vagy meglévő ügyfél által létrehozott összes rendelést jelöli.
-- Mindkét diagramon csak az új vagy csak meglévő ügyfelek megtekintéséhez válassza a megfelelő jelmagyarázat választhatja ki.
+- Egy **új ügyfél** egy vagy több ajánlatát először ugyanazon a naptári hónapban (y tengelyen) belül szerezte be. Egy **meglévő ügyfél** korábban a jelentett naptári hónap előtt kapott ajánlatot (az y tengelyen). 
+- Egy további tortadiagram az új vagy a meglévő ügyfél által létrehozott összes rendelést megjeleníti a kiválasztott Dátumtartomány alapján.
+- Mindkét diagramon dönthet úgy, hogy csak az új vagy csak a meglévő ügyfeleket jeleníti meg a megfelelő jelmagyarázat kiválasztásával.
 
-![Írja be a Partnerközpontba elemzés rendelések ügyfél által](./media/analyze-order-by-customer.png)
+![A partner Center elemzi a rendeléseket az ügyfél típusa szerint](./media/analyze-order-by-customer.png)
 
-### <a name="order-details-table"></a>ORDER details táblához
+### <a name="order-details-table"></a>Rendelés részletei tábla
 
-A **Order details tábla** számozott a beszerzés dátuma szerint rendezve 1000 leggyakoribb rendelések listáját jeleníti meg.
+Az **Order Details (megrendelés részletei) tábla** a 1000 Top orders (beszerzési dátum szerint rendezve) számozott listát jeleníti meg.
 
-- A rács minden oszlop rendezhető.
-- Az adatok egy TSV-fájlt kiolvasható, ha a bejegyzések száma 1000-nél kisebb.
-- Ha a rekordok száma 1000, keresztül exportált adatok aszinkron módon kerülnek a letöltési oldalon a következő 30 napra.
-- Szűrők alkalmazhatók a **Order details tábla** csak az Önt érdeklő adatok megjelenítéséhez. Adatok szűrhetők, országonként Azure licenctípust, Marketplace licenctípus, ajánlattípusra, rendelés állapota, ingyenes nyomot hagyjanak maguk után, Marketplace előfizetés-azonosító, ügyfél azonosítója, és a céges neve.
+- A rács minden oszlopa rendezhető.
+- Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
+- Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
+- A szűrők a **Rendelés részletei táblára** alkalmazhatók, és csak azokat az adatokat jelenítik meg, amelyek érdeklik. Az adatszűrést ország, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján lehet szűrni.
 
-![Partnerközpont elemzés rendelés részletei](./media/analyze-order-details.png)
+![A partner Center elemzési sorrendjének részletei](./media/analyze-order-details.png)
 
 ## <a name="customer-dashboard"></a>Ügyfél-irányítópult
 
-A **ügyfél** irányítópultján a **elemzés** menüben az adatok ügyfelek esetében, akik az ajánlatok szerezték be jeleníti meg. Grafikus ábrázolását tekintheti meg:
+Az **elemzés** menü **Customer (ügyfél** ) irányítópultja megjeleníti az ajánlatokat beszerzett ügyfelek adatait. Megtekintheti a grafikus ábrázolásait:
 
-- [Ügyfelek összesen](#customer-totals)
-- [Felhasználók földrajzi hely szerint](#customers-by-geography)
-- [Ügyfelek trendekre](#customer-trends)
-- [Ügyfelek által](#customers-by-orders)
-- [Ügyfél details táblához](#customer-details-table)
+- [Ügyfelek összesített száma](#customer-totals)
+- [Ügyfelek földrajz szerint](#customers-by-geography)
+- [Ügyfelek trendjei](#customer-trends)
+- [Ügyfelek megrendelések szerint](#customers-by-orders)
+- [Ügyfél részletei tábla](#customer-details-table)
 
-### <a name="customer-totals"></a>Ügyfelek összesen
+### <a name="customer-totals"></a>Ügyfelek összesített száma
 
-A **ügyfél összegek** szakasz jelenít meg minden ügyfelünk, beleértve az új, meglévő és előállított, a kiválasztott során számát [dátumtartomány](#date-range).
+Az **ügyfelek összesítései** szakasz az összes ügyfél számát jeleníti meg, beleértve az új, a meglévő és a átesett, a kiválasztott [dátumtartomány](#date-range)alatt.
 
-- Ügyfelek százalékos növekedési rátákat az előző hónap száma és felfelé mutató, a zöld vagy a lefelé mutató vörös színnel jelöli.
-- Növekedési trendeket a sávdiagramok képviseli, és megjeleníti az értéket az egyes hónapok az egérmutatót a diagram oszlopai.
+- Az előző hónaphoz képest a növekedéshez tartozó ügyfelek százalékos arányát zöld vagy lefelé mutató piros színnel jelzi.
+- A növekedési trendeket oszlopdiagram jelképezi, és az egyes hónapok értékét a diagram oszlopai fölé helyezve jeleníti meg.
 
-#### <a name="customer-types"></a>Ügyfél-típusok
+#### <a name="customer-types"></a>Ügyfelek típusai
 
-Három ügyfél típusa: új, meglévő és előforduló. 
+Három ügyfél-típus létezik: új, meglévő és átvesző. 
 
-- Új ügyfél egy vagy több, az ajánlatok először a kiválasztott hónapok szerzett meg.
-- Egy meglévő ügyfél szerzett meg legalább egy, az ajánlatok kiválasztva a hónap előtt.
-- Churned ügyfél megszakította a korábban megvásárolt minden ajánlat.
+- Egy új ügyfél egy vagy több ajánlatát a kiválasztott hónapban első alkalommal szerezte be.
+- Egy meglévő ügyfél a kiválasztott hónap előtt legalább egy ajánlatot beszerzett.
+- Egy megszakított ügyfél megszakította az összes korábban megvásárolt ajánlatot.
 
-### <a name="customer-trends"></a>Ügyfelek trendekre
+### <a name="customer-trends"></a>Ügyfelek trendjei
 
-A **ügyfelek trendekre** diagram minden ügyfelünk, beleértve az új, meglévő és előforduló, és a egy havonta készülő növekedési trendje számát jeleníti meg.
+Az **ügyfél-trendek** diagram az összes ügyfél számát jeleníti meg, beleértve az új, a meglévő és a átvett adatokat is, a havi növekedési trend alapján.
 
-- A vonaldiagramot a teljes ügyfél növekedési százalékos jelöli. 
-- A hónap oszlop felel meg az új, meglévő és előforduló ügyfél-ig halmozott ügyfelek száma.
-- Y tengely negatív irányát az előforduló ügyfél száma jelenik meg.
-- Kiválaszthatja az adott jelmagyarázat-elemek jelennek meg, további részletes nézeteket. Például válassza ki az új ügyfelek csak az új ügyfelek megjelenítése a jelmagyarázatból.
-- A diagram tetején a csúszka segítségével görgessen jobbra és balra az x tengelyen, így nyugodtan összpontosíthat a meghatározott adatpontokat további részletek megtekintéséhez.
-- Egy oszlop, a diagram felett jelenik meg részletei csak az adott hónapban.
+- A vonalas diagram az ügyfelek teljes növekedési arányát jelöli. 
+- A hónap oszlop az új, meglévő és átvett ügyfelek által halmozott ügyfelek számát jelöli.
+- A megváltott ügyfelek száma az Y tengely negatív irányában jelenik meg.
+- Az egyes jelmagyarázat-elemek részletesebb nézetek megjelenítéséhez is kiválaszthatók. Válassza ki például az új ügyfelek lehetőséget a jelmagyarázatból, hogy csak az új ügyfelek jelenjenek meg.
+- A diagram tetején található csúszkával jobbra és balra görgetheti az x tengelyt, és az egyes adatpontokra koncentrálva részletesebben is megtekintheti az adatokat.
+- A diagram egy oszlopára mutató egérmutató csak az adott hónap részleteit jeleníti meg.
 
-![Partnerközpont elemzés ügyfelek trendekre](./media/analyze-customer-trends.png)
+![A partner Center elemzése az ügyfelek trendjeiről](./media/analyze-customer-trends.png)
 
-### <a name="customers-by-orders"></a>Ügyfelek által
+### <a name="customers-by-orders"></a>Ügyfelek megrendelések szerint
 
-A **ügyfelek által a rendelések** diagram megjeleníti a **felső ügyfél PERCENTILIS** mentén az x tengely, mint a megrendelések számát határozza meg. Az y tengelyen jeleníti meg az ügyfél rendelés száma. A z (vonaldiagram) összegző százalékos aránya a megrendelések teljes számát jeleníti meg. Megjelenítheti a részleteket az egérmutatót a vonaldiagram mentén pontok.
+Az **ügyfelek by Orders** diagram megjeleníti a **legfontosabb ügyfelek százalékos** értékeit az x tengelyen az adott számú megrendelés alapján. Az y tengely megjeleníti az ügyfél rendelésének darabszámát. A z tengely (line Graph) megjeleníti a megrendelések teljes számának összesített százalékos arányát. A részletek megjelenítéséhez vigye az egérmutatót a vonalak fölé a diagram mentén.
 
-Tegyük fel tudhat meg a a rendelés ügyféladatai, amely az első 30 %-a az ügyfelek a rendelések 2,130 rendelések egyenlő 83 % működik közre.
+Például megtudhatja, hogy az ügyfelek 30%-a a megrendelések 83%-ában járul hozzá, és megegyeznek a 2 130-es megrendelésekkel.
 
-![Partnerközpont elemzés megrendelések](./media/analyze-customer-orders.png)
+![Partner Center – ügyfelek rendeléseinek elemzése](./media/analyze-customer-orders.png)
 
-### <a name="customer-details-table"></a>Ügyfél details táblához
+### <a name="customer-details-table"></a>Ügyfél részletei tábla
 
-A **ügyfél details tábla** számozott listát a top 1000 ügyfelek először megszerezték a ajánlatok egyik dátuma szerint rendezve jeleníti meg.
+A **Customer Details (ügyfél részletei) tábla** a legnépszerűbb 1000-ügyfelek számozott listáját jeleníti meg, amelyet az egyik ajánlatának első beszerzése után rendeztek.
 
-- Ügyfelek személyes adatainak csak akkor érhető el, ha az ügyfél adta. Csak megtekintheti ezeket az információkat, a bejelentkezés a következővel: Ha egy **tulajdonosa** szerepkör szintű engedélyeket. [További információ a felhasználói szerepkörök és engedélyek](./manage-account.md#define-user-roles-and-permissions).
-- A rács minden oszlop rendezhető.
-- Az adatok egy TSV-fájlt kiolvasható, ha a bejegyzések száma 1000-nél kisebb.
-- Ha a rekordok száma 1000, keresztül exportált adatok aszinkron módon kerülnek a letöltési oldalon a következő 30 napra.
-- Szűrők is alkalmazható a táblázat csak az Önt érdeklő adatok megjelenítéséhez. Adatok szűrt vállalat neve, az ügyfél-azonosító, Marketplace előfizetés-azonosító, Azure licenctípus, dátum megszerzett, dátum elveszett, ügyfél E-mail, ügyfél város/állam / / Zip, ügyfél nyelvi, stb.
+- Az ügyfél személyes adatai csak akkor lesznek elérhetők, ha az ügyfél beleegyezett. Ezeket az adatokat csak akkor tekintheti meg, ha a **tulajdonosi** szerepkör jogosultsági szintjével jelentkezett be. [További információ a felhasználói szerepkörökről és engedélyekről](./manage-account.md#define-user-roles-and-permissions).
+- A rács minden oszlopa rendezhető.
+- Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
+- Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
+- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, az elveszett dátum, az ügyfél e-mail-címe, az ügyfél országa/állam/város/irányítószám, valamint az ügyfél nyelve
 
-![Partnerközpont elemzés ügyfelek részletei](./media/analyze-customer-table.png)
+![Partner Center – ügyfél adatainak elemzése](./media/analyze-customer-table.png)
 
 ## <a name="downloads-dashboard"></a>Letöltések irányítópult
 
-A **letölti** irányítópultján a **elemzés** menü bármely ügyfél vagy a rendelési adatok több mint 1000 sort tartalmazó letöltések kéréseket jeleníti meg.
+Az **elemzés** menü **letöltések** irányítópultján minden olyan letöltésre vonatkozó kérés látható, amely több mint 1000 sort tartalmaz az ügyfél vagy a megrendelés adatait illetően.
 
-Egy előugró értesítések és mutató hivatkozást tartalmazó e-mailt fog kapni a **letölti** irányítópult, amikor több mint 1000 adatsorokat tartalmazó letöltés kér. Adatok letöltéseket egy 30 napos időtartamon belül lesz elérhető, és ezután eltávolítja.
+Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letöltések** irányítópultra mutató hivatkozást, ha több mint 1000 sornyi adatra vonatkozó letöltést kér. Ezek az adatletöltések egy 30 napos időszakra lesznek elérhetők, majd törlődnek.
 
-![Partnerközpont elemzés letöltések](./media/analyze-downloads.png)
+![A partner Center letöltésének elemzése](./media/analyze-downloads.png)
 
-### <a name="dictionary-of-data-terms"></a>Adatok kifejezések listája
+### <a name="dictionary-of-data-terms"></a>Az adatszótár kifejezése
 
 | Attribútum neve | Jelentések | Meghatározás|
 |---|---|---|
-| Azure License Type | Ügyfél, Order | Az ügyfelek használják az Azure megvásárolható licencszerződés típusa. Más néven csatorna |
-| Azure License Type: Cloud Solution Provider program | Ügyfél, Order | A végfelhasználó ügyfél vásárol az Azure-ban és a Piactéri ajánlat használatával a Cloud Solution Provider, akik viszonteladójával funkcionál.|
-| Azure License Type: Vállalati | Ügyfél, Order | A végfelhasználó ügyfél vásárol az Azure-ban és a Piactéri ajánlat aláírt közvetlenül a Microsoft nagyvállalati szerződés keretében.|
-| Azure License Type: Vállalati viszonteladói keresztül  | Ügyfél, Order | A végfelhasználó ügyfél Azure-ban és a Piactéri ajánlat lehetővé teszi a Microsoft nagyvállalati szerződés viszonteladótól vásárol.|  |
-| Azure License Type: Használatalapú fizetés| Ügyfél, Order | A végfelhasználó ügyfél Azure-ban és a Piactéri ajánlat keresztül egy "Használatalapú fizetés" megállapodás, közvetlenül a Microsofttól vásárol.||
-| Felhő-példány neve| Rendelés| A Microsoft Cloud egy virtuális gép üzembe helyezésének lépett fel.||
-| Felhő-példány neve: Azure Global| Rendelés| A nyilvános globális Microsoft cloud.|| |
-| Felhő-példány neve: Azure Government | Rendelés| Kormányzati Microsoft felhők a következő kormányok egyike: Kína, Németország, vagy az Egyesült Államok jogszabályaival.| |
-| Ügyfél városa| Ügyfél| A város nevét, az ügyfél által biztosított. Város egy ügyfél az Azure-előfizetés az városa eltérő lehet.||
-| Ügyfél-kommunikáció nyelv  | Ügyfél| A nyelv, az ügyfél-kommunikációhoz ajánlott.||
-| Ügyfél cég neve | Ügyfél, Order | A vállalat nevét az ügyfél által biztosított. Lehet, hogy a neve eltér az városa egy ügyfél az Azure-előfizetés.|  |
-| Vevői ország | Ügyfél, Order | Az ügyfél által megadott ország neve. Ország, mint az ország, egy ügyfél az Azure-előfizetés eltérő lehet.|  |
-| Ügyfél e-mailben| Ügyfél| A végfelhasználó ügyfél által biztosított e-mail-címe. Lehet, hogy egy ügyfél az Azure-előfizetés az e-mail-cím eltér e-mailt.||
-| Ügyfél első neve| Ügyfél| Az ügyfél által megadott név. Lehet, hogy a neve eltér az ügyfél Azure-előfizetéshez megadott névvel.| |
-| Ügyfél-azonosító | Ügyfél, Order | Egy ügyfél hozzárendelt egyedi azonosítója. Egy ügyfél rendelkezhet, nulla vagy több Azure piactér-beli előfizetések.|  |
-| Ügyfél postai irányítószám  | Ügyfél| A postai irányítószám, az ügyfél által biztosított. Lehet, hogy a kód egy ügyfél az Azure-előfizetés a megadott irányítószám eltér.| |
-| Ügyfél állapota| Ügyfél| Az állam (cím) a vásárló által biztosított. Állapota a vezetéknevet, egy ügyfél az Azure-előfizetéshez biztosított eltérő lehet.| |
-| Beszerzés dátuma| Ügyfél| Első napjától az ügyfél az Ön által közzétett bármely ajánlatot vásárolt.| |
-| Elveszett dátuma| Ügyfél| A legutóbbi dátum: az ügyfél korábban megvásárolt minden ajánlat az utolsó megszakítva.||
-| Új ügyfél  | Rendelés| Az érték beszerzése legalább egy, az ajánlatok először a (vagy sem) egy új ügyfél azonosítja. Érték lesz az "Igen" azonos naptári hónap belül a "Dátum beszerzett". Érték "No" lesz, ha az ügyfél megvásárolta, az ajánlatok előtt a naptári hónap jelentett bármelyikét. |
-| Termékváltozat előzetes| Rendelés| Az érték értesítjük, ha az "előnézet" Termékváltozattal rendelkezik címkékkel ellátott. Érték lesz, "Igen" Ha a Termékváltozat címkével ellátott annak megfelelően, és csak az Azure-előfizetések által, üzembe helyezheti és használja ezt a képet. Érték "No" lesz, ha a Termékváltozat nem azonosította "előzetes".  |
-| Promóciós ügyfél engedélyezve van a| Ügyfél| Az érték értesítjük, ha az ügyfél proaktív módon másolásért gyártóktól származó promóciós kapcsolatba. Jelenleg azt nem bemutatót a beállítást az ügyfelek számára, így azt jelezte, hogy a tábla között a "No". Ez a funkció üzembe helyezését követően megkezdjük hogy ennek megfelelően frissíti.|
-| Marketplace-en licenc típusa| Rendelés| A Marketplace-ajánlat a számlázási mód.||
-| Marketplace License Type: Számlázás az Azure-on keresztül| Rendelés| A Microsoft az ügynök ezt az ajánlatot a piactéren, és keresztül számláz az adott felhasználók az Ön nevében. (Használatalapú hitelkártya vagy vállalati számla)||
-| Marketplace License Type: A saját licenc használata | Rendelés| A virtuális gép üzembe helyezéséhez az ügyfél által biztosított licenc kulcs szükséges. A Microsoft nem számláz ügyfelek ily módon a piactéren ajánlataik listázásához.||
-| Marketplace License Type: Free| Rendelés| Az ajánlat ingyenes minden felhasználóra van konfigurálva. A Microsoft nem számláz ügyfelek azok Ez az ajánlat használatáért.||
-| Marketplace License Type: A Microsoft a viszonteladóként  | Rendelés| A Microsoft a viszonteladójával, ezt az ajánlatot a piactéren.|  |
-| Marketplace-en előfizetés-azonosító | Ügyfél, Order | Az Azure-előfizetés az ügyfél a piactéren az ajánlat kifizetni társított egyedi azonosítója. Az Azure-előfizetés GUID azonosító korábban volt.||
-| Csomag neve  | Rendelés| A Marketplace kínálatának neve.|| |
-| Csomag típusa  | Rendelés| A Microsoft Marketplace-ajánlat típusát.|||
-| Csomag típusa: Felügyelt alkalmazás  | Ahhoz, | Használja az Azure-alkalmazás: az ajánlat alkalmazástípus kezelése, ha az alábbi feltételek szükségesek: Vagy egy előfizetés-alapú megoldás üzembe helyezése egy virtuális gép vagy a teljes IaaS-alapú megoldás segítségével az ügyfelek számára. Ön vagy az ügyfél van szükség, hogy a megoldás lehet egy partner kezeli. |
-| Csomag típusa: Azure-alkalmazás| Ahhoz, | Az Azure-alkalmazások megoldás ajánlat sablontípus akkor használja, ha a megoldáshoz szükséges további telepítési és konfigurációs automation túl egy egyszerű virtuális Gépet.||
-| Csomag típusa: Tanácsadói szolgáltatás| Rendelés| Az Azure Marketplace tanácsadási szolgáltatások segítségével való csatlakozáshoz ügyfeleket támogatja, és bővítheti használata során az Azure-szolgáltatásokkal.| |
-| Csomag típusa: Tároló | Rendelés| A tároló ajánlattípusra használja, amikor a megoldás üzembe egy Kubernetes-alapú Azure tárolószolgáltatás, Docker-tároló rendszerképét.||
-| Csomag típusa: Dynamics 365 Business Central| Rendelés| Ez az ajánlat típusát használja, ha a megoldás integrálva van a Dynamics 365 for Finance and Operations| |
-| Csomag típusa: Dynamics 365 for Customer Engagement | Rendelés| Ez az ajánlat típus akkor használja, ha a megoldás integrálva van a Dynamics 365 for Customer Engagement.||
-| Csomag típusa: IoT Edge Module | Rendelés| Az Azure IoT Edge-modulok IoT Edge által kezelt legkisebb számítási egységek és a Microsoft-szolgáltatások (például az Azure Stream Analytics), 3. fél szolgáltatások vagy a saját megoldásspecifikus kódját is tartalmazhat. |
-| Csomag típusa: Power BI-alkalmazás | Rendelés| A Power BI alkalmazás ajánlattípusra használja a Power BI szolgáltatással integrált alkalmazás központi telepítésekor.|  |
-| Csomag típusa: SaaS-alkalmazás| Rendelés| Az SaaS-alkalmazás ajánlattípus használatával engedélyezhető az ügyfelek a SaaS-alapú, technikai megoldás egy előfizetés vásárlása.||
-| Csomag típusa: Virtuális gép | Rendelés| Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát.||
-| Csomag típusa: Visual Studio Marketplace Extension  | Rendelés| Csomag típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Továbbítás az Azure DevOps fog bővítmény fejlesztők is értékesítheti a bővítmény közvetlenül az ügyfelek számára. Bővítmény ajánlatok konfigurálható, fizetős vagy egy próbaverzióra beleértve. |
-| Rendelés megszakítás dátuma| Rendelés| A dátum a Marketplace-en rendelés törölve lett.||
-| Rendelésazonosító| Rendelés| Az ügyfél ahhoz a Piactéri szolgáltatás egyedi azonosítója. Virtuális gép használatalapú ajánlatok, amelyek nem tartoznak egy megrendelés.| |
-| Rendelés vásárlás ideje| Rendelés| A piactér sorrendben létrehozásának dátuma.|||
-| Rendelés állapota| Rendelés| Az adatok utolsó frissítésének időpontjában a Marketplace-en rendelés állapota.|     |
-| Rendelés állapota: Aktív  | Rendelés| Az ügyfél egy megrendelés vásárolt, és nem visszavonta a rendelési.|         |
-| ORDER Status: megszakítva | Rendelés| Az ügyfél korábban megvásárolt egy rendelést, és ezt követően a megfelelő sorrendbe megszakítva.||
-| Szolgáltató E-mail| Ügyfél| A Microsoft és a végfelhasználó ügyfél közötti kapcsolat részt szolgáltató e-mail-címét. Ha az ügyfél vállalati viszonteladói keresztül, ez lesz a viszonteladó. Ha egy Felhőszolgáltató (CSP) van szó, ez lesz a kriptográfiai Szolgáltató.|
-| Szolgáltató neve| Ügyfél| A Microsoft és a záró ügyfél közötti kapcsolat részt szolgáltató neve. Ha az ügyfél vállalati viszonteladói keresztül, ez lesz a viszonteladó. Ha egy Felhőszolgáltató (CSP) van szó, ez lesz a kriptográfiai Szolgáltató.|
-| SKU| Rendelés| Termékváltozat neve meghatározott közzététele során. Ajánlat előfordulhat, hogy sok termékváltozatok, de a Termékváltozat csak egyetlen ajánlatba társítva.||
-| Próbaverziós befejezési dátum| Rendelés| A dátum a próbaidőszak alatt a megrendelés megszűnik, vagy véget ért.||
+| Azure-licenc típusa | Ügyfél, megrendelés | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna |
+| Azure-licenc típusa: Cloud Solution Provider program | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactért a felhőalapú megoldás szolgáltatóján keresztül szerzik be, aki viszonteladóként működik.|
+| Azure-licenc típusa: Vállalati | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy Nagyvállalati Szerződéson keresztül szerzik be, közvetlenül a Microsofttal.|
+| Azure-licenc típusa: Enterprise a viszonteladón keresztül  | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy viszonteladón keresztül szerzik be, amely megkönnyíti a Nagyvállalati Szerződés a Microsofttal.|  |
+| Azure-licenc típusa: Használatalapú fizetés| Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat a "Pay as go" szerződés keretében szerzik be közvetlenül a Microsofttal.||
+| Felhőbeli példány neve| Rendelés| Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént.||
+| Felhőbeli példány neve: Azure globális| Rendelés| A nyilvános globális Microsoft-felhő.|| |
+| Felhőbeli példány neve: Azure Government | Rendelés| Kormányzati specifikus Microsoft-felhők a következő kormányok egyikének esetében: Kína, Németország vagy Egyesült Államok.| |
+| Customer City| Ügyfél| Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól.||
+| Ügyfél-kommunikációs nyelv  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
+| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa.|  |
+| Ügyfél országa | Ügyfél, megrendelés | Az ügyfél által megadott ország neve. Az ország eltérő lehet az ügyfél Azure-előfizetésében lévő országtól.|  |
+| Ügyfél e-mail-címe| Ügyfél| A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím.||
+| Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
+| Ügyfél azonosítója | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |
+| Ügyfél postai irányítószáma  | Ügyfél| Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal.| |
+| Ügyfél állapota| Ügyfél| Az ügyfél által megadott állapot (címe). Az állapot különbözhet az ügyfél Azure-előfizetésében megadott vezetéknevtől.| |
+| Beszerzés dátuma| Ügyfél| Az első dátum, amikor az ügyfél az Ön által közzétett összes ajánlatot megvásárolta.| |
+| Elveszett dátum| Ügyfél| Az utolsó időpont, amikor az ügyfél megszakította a korábban megvásárolt összes ajánlatot.||
+| Új ügyfél  | Rendelés| Az érték azonosítja azt az új ügyfelet, amely első alkalommal szerez be egy vagy több ajánlatot (vagy nem). Az érték "yes" lesz, ha a "date beszerzett" dátummal megegyező naptári hónapon belül van. Az érték "nem" lesz, ha az ügyfél a jelentett naptári hónap előtt megvásárolta az ajánlatait. |
+| Előzetes verziójú SKU| Rendelés| Az érték tudatja Önnel, ha az SKU-t "Preview"-ként jelölte meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva.  |
+| A promóciós kapcsolatfelvételi lehetőség| Ügyfél| Az érték tudatja Önnel, hogy az ügyfél proaktív módon választotta-e a közzétevők számára a promóciós kapcsolatfelvételt. Jelenleg nem vesszük igénybe az ügyfeleket, ezért a táblán a "nem" jelölés szerepel. A szolgáltatás üzembe helyezését követően a frissítés ennek megfelelően kezdődik.|
+| Marketplace-licenc típusa| Rendelés| A Piactéri ajánlat számlázási módszere.||
+| Marketplace-licenc típusa: Az Azure-on keresztül számlázva| Rendelés| A Microsoft az Ön ügynöke ehhez a Piactéri ajánlathoz, és az Ön nevében számláz ügyfeleket. (TB hitelkártya vagy vállalati számla)||
+| Marketplace-licenc típusa: Saját licenc használata | Rendelés| A virtuális gépnek szüksége van az ügyfél által az üzembe helyezéshez biztosított licenckulcs használatára. A Microsoft nem számlázza az ügyfeleket az ajánlatuk ezen a piactéren való listázásához.||
+| Marketplace-licenc típusa: Free| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
+| Marketplace-licenc típusa: Microsoft mint viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
+| Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
+| Csomag neve  | Rendelés| A Piactéri ajánlat neve.|| |
+| Csomag típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
+| Ajánlat típusa: Felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
+| Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
+| Ajánlat típusa: Tanácsadói szolgáltatás| Rendelés| Az Azure piactéren elérhető tanácsadói szolgáltatások segítségével az ügyfeleket a szolgáltatásokkal összekapcsolhatják az Azure használatának támogatásához és kiterjesztéséhez.| |
+| Ajánlat típusa: Tároló | Rendelés| Ha a megoldás egy, a Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép, akkor használja a Container ajánlat típusát.||
+| Ajánlat típusa: Dynamics 365 Business Central| Rendelés| Akkor használja ezt az ajánlatot, ha a megoldás integrálva van a Dynamics 365 for Finance and Operations szolgáltatással| |
+| Ajánlat típusa: Dynamics 365 for Customer Engagement | Rendelés| Akkor használja ezt az ajánlatot, ha a megoldás integrálva van a Dynamics 365-mel a Customer engagement szolgáltatáshoz.||
+| Ajánlat típusa: IoT Edge Module | Rendelés| A Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
+| Ajánlat típusa: Power BI alkalmazás | Rendelés| Ha a Power BI integrált alkalmazást telepít központilag, használja a Power BI alkalmazási ajánlat típusát.|  |
+| Ajánlat típusa: SaaS-alkalmazás| Rendelés| A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását.||
+| Ajánlat típusa: Virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
+| Ajánlat típusa: Visual Studio Marketplace Extension  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
+| Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
+| Order ID (Rendelésazonosító)| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
+| Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
+| Megrendelés állapota: Aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |
+| Megrendelés állapota: megszakítva | Rendelés| Az ügyfél korábban megvásárolt egy rendelést, és később megszakította a rendelését.||
+| Szolgáltatói E-mail cím| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
+| Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
+| SKU| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
+| Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||

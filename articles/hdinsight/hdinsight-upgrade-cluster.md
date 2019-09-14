@@ -4,15 +4,16 @@ description: Útmutató az Azure HDInsight-fürt újabb verzióra való frissít
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: f4458b33edb9d55c30de8c5168668743abb33161
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811645"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960700"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt frissítése újabb verzióra
 A legújabb HDInsight funkciók kihasználásához javasoljuk, hogy a HDInsight-fürtök frissítése a legújabb verzióra történjen. A HDInsight-fürt verzióinak frissítéséhez kövesse az alábbi irányelveket.
@@ -23,7 +24,7 @@ A legújabb HDInsight funkciók kihasználásához javasoljuk, hogy a HDInsight-
 ## <a name="upgrade-tasks"></a>Frissítési feladatok
 A HDInsight-fürt frissítésének munkafolyamata a következő.
 
-![Munkafolyamat-diagram frissítése](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Munkafolyamat-diagram frissítése](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Olvassa el a jelen dokumentum egyes szakaszait, és Ismerje meg, hogy milyen módosítások szükségesek a HDInsight-fürt frissítésekor.
 2. Hozzon létre egy fürtöt tesztelési/minőségi megbízhatósági környezetben. A fürtök létrehozásáról további információt a [Linux-alapú HDInsight-fürtök létrehozásának megismerését](hdinsight-hadoop-provision-linux-clusters.md) ismertető témakörben talál.

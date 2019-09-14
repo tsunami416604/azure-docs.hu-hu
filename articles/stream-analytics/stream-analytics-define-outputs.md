@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563314"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984864"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -176,7 +176,7 @@ Dupla | Dupla | Karakterlánc | Karakterlánc | Dupla
 Karakterlánc | String | String | String | Karakterlánc 
 Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | Sztring
 
-## <a name="table-storage"></a>Táblatároló
+## <a name="table-storage"></a>Table Storage
 
 Az [Azure Table Storage](../storage/common/storage-introduction.md) kiválóan elérhető, nagy mértékben méretezhető tárhelyet kínál, így az alkalmazások automatikusan méretezhetők a felhasználói igények kielégítése érdekében. A Table Storage a Microsoft NoSQL kulcs-és attribútum-tárolója, amelyet a séma kevesebb korlátozásával rendelkező strukturált adatkészletekhez használhat. Az Azure Table storage segítségével tárolja az adatok megőrzését és a hatékony lekéréséhez.
 
@@ -192,7 +192,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kim
 | Sorkulcs |A sor kulcsot tartalmazó kimeneti oszlop neve. A sor kulcsa a partíción belüli entitás egyedi azonosítója. Egy entitás elsődleges kulcsának második részét képezi. A sor kulcsa egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Köteg mérete |A kötegelt műveleti rekordok száma. Az alapértelmezett (100) érték elegendők a legtöbb feladatot. A beállítás módosításával kapcsolatos további információkért tekintse meg a [tábla batch műveletének specifikációját](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) . |
 
-## <a name="service-bus-queues"></a>Service Bus-üzenetsorok
+## <a name="service-bus-queues"></a>Service Bus üzenetsorok
 
 [Service Bus várólisták](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) egy vagy több versengő fogyasztó számára biztosítanak egy FIFO-üzenet kézbesítését. Az üzeneteket általában a fogadók a várólistához való felvételének időbeli sorrendjében fogadják és dolgozzák fel. Minden üzenet fogadása és feldolgozása csak egy üzenet felhasználója által történik.
 
@@ -310,7 +310,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Az Azure Service Bus-témakörbe | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a kimenet a témakör a partíciók száma.  |
 | Az Azure Service Bus-üzenetsorba | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a kimeneti várólistában lévő partíciók száma. |
 | Azure Cosmos DB | Igen | A lekérdezésben a PARTITION BY záradék alapján. | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
-| Azure Functions | Nem | None | Nem alkalmazható. |
+| Azure Functions | Igen | A lekérdezésben a PARTITION BY záradék alapján. | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
 
 A kimeneti írók száma a lekérdezésben (lásd: `INTO <partition count>` [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) záradék használatával is vezérelhető, ami hasznos lehet a kívánt feladatok topológiájának megvalósításában. A konzolkimeneti adapter nincs particionálva, ha az egyik bemeneti partíciók adatainak hiánya miatt késői érkezési mennyi ideig akár késést. Ilyen esetekben a kimenet egyetlen író számára lesz egyesítve, ami szűk keresztmetszetet eredményezhet a folyamat során. Ha többet szeretne megtudni a késői beérkezési szabályzatról, tekintse meg az [Azure stream Analytics az események sorrendjét](stream-analytics-out-of-order-and-late-events.md)ismertető szakaszt
 

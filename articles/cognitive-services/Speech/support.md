@@ -1,32 +1,32 @@
 ---
-title: A Bing Speech támogatási |} A Microsoft Docs
+title: Bing Speech támogatás | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: Bing Speech támogatása.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/08/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3bd996f23c7253dde0a55198068d8535a62bf127
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1b185cf6f69a547c50c8d2cf0e8b5f0da39444e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60514938"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965621"
 ---
 # <a name="support"></a>Támogatás
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Ha kérdése, visszajelzések és javaslatok tudnivalók a Bing Speech, akkor is fel velünk a kapcsolatot Githubon keresztül.
- - [REST API-kapcsolatos kérdések](https://github.com/Azure-Samples/SpeechToText-REST/issues)
+Ha kérdése van, visszajelzése vagy javaslata van Bing Speechről, akkor a GitHubon keresztül elérheti velünk a kapcsolatot.
+ - [REST API kapcsolatos kérdések](https://github.com/Azure-Samples/SpeechToText-REST/issues)
  - [JavaScript-kódtár](https://github.com/Azure-Samples/Cognitive-Speech-STT-JavaScript/issues)
- - [C# asztali tár kapcsolatos kérdések](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
- - [C# service library kapcsolatos kérdések](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
- - [Java-kódtár az Android-kapcsolatos kérdések](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
- - [IOS-en Objective-C-függvénytár](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
- - Általános kérdések: [Cognitive Services UserVoice fórumot](https://cognitive.uservoice.com/)
+ - [C#asztali függvénytárral kapcsolatos kérdések](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)
+ - [C#a szolgáltatással kapcsolatos kérdések](https://github.com/Azure-Samples/Cognitive-Speech-STT-ServiceLibrary/issues)
+ - [Java-kódtár az Androidhoz kapcsolódó kérdésekben](https://github.com/Azure-Samples/Cognitive-Speech-STT-Android/issues)
+ - [Objective-C függvénytár iOS-en](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS/issues)
+ - Általános kérdések: [Cognitive Services UserVoice fórum](https://cognitive.uservoice.com/)

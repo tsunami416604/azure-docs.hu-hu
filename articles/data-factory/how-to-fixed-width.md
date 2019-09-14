@@ -8,85 +8,85 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: e1ba09f459152616941071c23f7a6545ec2a8b73
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210675"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962126"
 ---
-# <a name="process-fixed-length-text-files-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása Data Factory leképezési adatfolyamatok használatával
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása Data Factory leképezési adatfolyamatok használatával
 
-Data Factory leképezési adatfolyamatok támogatják a rögzített szélességű szövegfájlokból származó átalakítási adatok használatát. Megadhat egy adatkészletet egy szöveges fájlhoz elválasztó nélkül, majd beállíthatja az alsztringek felosztását a sorszám alapján.
+Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített szélességű szövegfájlokból is át lehet alakítani az adatok átalakítását. A következő feladatban definiálunk egy adatkészletet egy szöveges fájlhoz, elválasztó nélkül, majd az alsztringek felosztását a sorszám alapján.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1. Új folyamat elindításához nyissa meg az **+ új** folyamatot
+1. Új folyamat létrehozásához válassza az **+ új folyamat** elemet.
 
-2. Rögzített szélességű fájlok feldolgozásához használt adatfolyam-tevékenység hozzáadása
+2. Adjon hozzá egy adatfolyam-tevékenységet, amelyet a rendszer a rögzített szélességű fájlok feldolgozására használ:
 
-  ![Rögzített szélességű folyamat](media/data-flow/fwpipe.png)
+    ![Rögzített szélességű folyamat](media/data-flow/fwpipe.png)
 
-3. Az adatfolyam tevékenységben válassza az új leképezési adatfolyam lehetőséget.
+3. Az adatfolyam tevékenységben válassza az **új leképezési**adatfolyam lehetőséget.
 
-4. Forrás-átalakítás, származtatott oszlop, kijelölés és fogadó átalakítás hozzáadása
+4. Forrás, származtatott oszlop, Select és mosogató átalakítás hozzáadása:
 
-  ![Rögzített szélességű adatfolyam](media/data-flow/fw2.png)
+    ![Rögzített szélességű adatfolyam](media/data-flow/fw2.png)
 
-5. Állítsa be úgy a forrás-átalakítást, hogy egy olyan új adatkészletet használjon, amelynek típusa tagolt szöveg lesz.
+5. Konfigurálja úgy a forrás-átalakítást, hogy egy új adatkészletet használjon, amely a tagolt szöveg típusától függ.
 
-6. Nem állítható be az oszlop elválasztója, és nincsenek fejlécek
+6. Ne állítson be oszlop elválasztó karaktert vagy fejlécet.
 
-Ehhez a fájl tartalmához egyszerűen be kell állítani a mező kezdőpontját és hosszát:
+   Most beállíthatjuk a mező kiindulási pontjait és hosszát a fájl tartalmához:
 
-```
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-```
+    ```
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    ```
 
-7. A forrás-átalakítás leképezés lapján megjelenik egy "Column_1" nevű karakterlánc-oszlop.
+7. A forrás-átalakítás **vetítés** lapján egy *Column_1*nevű karakterlánc-oszlopot kell látnia.
 
-8. A származtatott oszlopban most hozzon létre egy új oszlopot
+8. A származtatott oszlopban hozzon létre egy új oszlopot.
 
-9. Az oszlopokhoz egyszerű neveket adunk, például col1
+9. Az oszlopokhoz egyszerű neveket adunk, például *col1*.
 
-10. Ezután a Kifejezésszerkesztő mezőbe írja be a következőt:
+10. A Kifejezésszerkesztő mezőbe írja be a következőt:
 
-  ```substring(Column_1,1,4)```
+    ```substring(Column_1,1,4)```
 
-  ![származtatott oszlop](media/data-flow/fwderivedcol1.png)
+    ![Származtatott oszlop](media/data-flow/fwderivedcol1.png)
 
-10. Ismételje meg ezt az összes elemezni kívánt oszlop esetében.
+11. Ismételje meg a 10. lépést az összes elemezni kívánt oszlop esetében.
 
-12. Kattintson a vizsgálat lapra a létrehozandó új oszlopok megtekintéséhez.
+12. Válassza a **vizsgálat** fület a létrehozandó új oszlopok megtekintéséhez:
 
-  ![vizsgálata](media/data-flow/fwinspect.png)
+    ![vizsgálata](media/data-flow/fwinspect.png)
 
-13. Az átalakítás kijelölése lehetőséggel távolítsa el azokat az oszlopokat, amelyekre nem lesz szüksége az átalakításhoz
+13. Az átalakítás kijelölése lehetőséggel távolítsa el a nem szükséges oszlopokat a transzformációhoz:
 
-  ![átalakítás kiválasztása](media/data-flow/fwselect.png)
+    ![átalakítás kiválasztása](media/data-flow/fwselect.png)
 
-14. Végül a fogadó használatával adja ki az adatokat egy mappába:
+14. A fogadó használatával az adatokat egy mappába exportálhatja:
 
-  ![rögzített szélességű fogadó](media/data-flow/fwsink.png)
+    ![rögzített szélességű fogadó](media/data-flow/fwsink.png)
 
-  A kimenet a következőképpen fog kinézni:
+    A kimenet így néz ki:
 
-  ![rögzített szélességű kimenet](media/data-flow/fxdoutput.png)
+    ![rögzített szélességű kimenet](media/data-flow/fxdoutput.png)
 
-  A rögzített szélességű adat most négy karakterből áll, amelyek mindegyike Col1, Col2, Col3, Col4,... A fenti példa alapján 4 oszlopra oszthatom az adatmegosztást
+  A rögzített szélességű adat már fel van osztva, és négy karakterből áll, amelyek mindegyike Col1, Col2, Col3, Col4 és így tovább van rendelve. Az előző példa alapján az adatgyűjtés négy oszlopra oszlik.
 
 ## <a name="next-steps"></a>További lépések
 
-* Az adatáramlási logikák kiépítése a leképezési adatfolyam [](concepts-data-flow-overview.md) -átalakítások használatával
+* Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

@@ -10,19 +10,19 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883967"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966948"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
 
 A modell betanítása után programozott módon tesztelheti a képeket az előrejelzési API-végpontra való küldéssel.
 
 > [!NOTE]
-> Ez a dokumentum C# használatával mutatja be a kép elküldését az előrejelzési API-hoz. További információért és Példákért lásd az [előrejelzési API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)-referenciát.
+> Ez a dokumentum C# használatával mutatja be a kép elküldését az előrejelzési API-hoz. További információért és Példákért lásd az [előrejelzési API-referenciát](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
 ## <a name="publish-your-trained-iteration"></a>A betanított iteráció közzététele
 
@@ -38,14 +38,12 @@ Miután a modell sikeresen közzé lett téve, megjelenik egy "közzétett" feli
 
 ## <a name="get-the-url-and-prediction-key"></a>Az URL és az előrejelzési kulcs megszerzése
 
-Ha a modell közzé lett téve, az __előrejelzési URL-cím__ kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az előrejelzési __kulcsot__ .
+Ha a modell közzé lett téve, az __előrejelzési URL-cím__kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az __előrejelzési kulcsot__.
 
 ![A teljesítmény lap az előrejelzési URL-cím gombját körülvevő piros négyszögtel jelenik meg.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![A Performance (teljesítmény) lap a prediktív URL-címet körülvevő piros négyszöget jeleníti meg a képfájl és az előrejelzési kulcs értékének használatával.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> Az __előrejelzési kulcs__ a projekthez társított Custom Vision Azure-erőforrás [Azure Portal](https://portal.azure.com) oldalán is megtalálható a __kulcsok__ panelen.
 
 Ebben az útmutatóban egy helyi rendszerképet fog használni, ezért másolja ki az URL-címet, ha egy ideiglenes helyre mutató **képfájl van** . Másolja a megfelelő __előrejelzési kulcs__ értékét is.
 

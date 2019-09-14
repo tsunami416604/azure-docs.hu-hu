@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991573"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984961"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage Gen2i adatelemzés Power BI használatával
 
@@ -28,13 +28,13 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 > * Hierarchikus névtérrel rendelkező Storage-fiók. Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
 > Ez a cikk azt feltételezi, hogy létrehozott egy nevű `myadlsg2`fiókot.
 > * A Storage-fiókban `Drivers.txt` található minta nevű adatfájl.
-> Ezt a mintát [Azure Data Lake git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt)-tárházból töltheti le, majd feltöltheti a fájlt a Storage-fiókjába.
+> Ezt a mintát [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)töltheti le, majd feltöltheti a fájlt a Storage-fiókjába.
 > * **Power bi Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
 
 1. Power BI Desktop elindítása a számítógépen.
-2. A menüszalag **kezdőlapján** kattintson az **adatok**lekérése elemre, majd kattintsona továbbiak elemre.
+2. A menüszalag **kezdőlapján** kattintson az **adatok lekérése**elemre, majd kattintson a **továbbiak**elemre.
 3. Az **adatlekérdezés** párbeszédpanelen kattintson az **Azure**elemre, majd a **Azure Data Lake Store Gen2 (bétaverzió)** elemre, majd a **kapcsolat**lehetőségre.
 
     ![Adatlekérdezés lap](media/data-lake-storage-use-power-bi/get-data-page.png)
@@ -73,7 +73,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     ![Output](media/data-lake-storage-use-power-bi/binary.png)
 
-11. A menüszalag **kezdőlapján** kattintson a **Bezárás** gombra, majd kattintsona **Bezárás** gombra, és válassza az **alkalmaz**lehetőséget.
+11. A menüszalag **kezdőlapján** kattintson a **Bezárás** gombra, majd kattintson a **Bezárás** **gombra, és**válassza az **alkalmaz**lehetőséget.
 
     ![Bezárás és alkalmazás](media/data-lake-storage-use-power-bi/close-apply.png)
 

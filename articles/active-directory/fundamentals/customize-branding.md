@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561713"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959039"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
@@ -29,7 +29,7 @@ A vállalat emblémája és egyéni színsémák használatával adjon meg egy e
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldal testreszabása
 Testre szabhatja az Azure AD bejelentkezési lapok, amelyek jelenik meg, amikor a felhasználók bejelentkeznek a szervezet bérlő-specifikus alkalmazások, mint például [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), vagy egy, a tartomány változót, például a átadásakor[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhelyekre látogatnak, mint a www\.-Office.com. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít.
+Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhelyekre látogatnak, mint a www\.-Office.com. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít. Miután a felhasználó bejelentkezett, a márkaépítés 15 percet vagy hosszabb időt is igénybe vehet. 
 
 > [!NOTE]
 > Az összes márkajelzési elemek egyike sem kötelező. Ha nincs háttérkép-megad szalagcímemblémát, például a bejelentkezési oldal jeleníti meg az embléma a célhelyről (például Office 365) alapértelmezett háttérben történő rendszerképpel.<br><br>Ezenkívül arculat megjelenítése a bejelentkezési oldal nem jelenik meg személyes Microsoft-fiókok. Ha a felhasználók vagy a vendégek személyes Microsoft-fiókkal, a bejelentkezési oldal nem jelenik meg a céges arculatot a szervezet.

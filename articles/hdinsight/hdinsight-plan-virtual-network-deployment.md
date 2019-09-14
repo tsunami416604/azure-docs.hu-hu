@@ -7,16 +7,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: a0c9c729081da9f6c7b8f549a4906d432af6ecb2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779544"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961649"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
-Ez a cikk háttér-információkat nyújt az Azure-beli [virtuális hálózatok](../virtual-network/virtual-networks-overview.md) Azure HDInsight való használatáról. Emellett ismerteti a tervezési és megvalósítási döntéseket is, amelyeket el kell végezni ahhoz, hogy a HDInsight-fürthöz virtuális hálózatot lehessen megvalósítani. Ha a tervezési fázis elkészült, akkor folytathatja a [virtuális hálózatok létrehozását az Azure HDInsight](hdinsight-create-virtual-network.md)-fürtökhöz. A hálózati biztonsági csoportok és a felhasználó által definiált útvonalak megfelelő konfigurálásához szükséges HDInsight-felügyeleti IP-címekkel kapcsolatos további információkért lásd: [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md).
+Ez a cikk háttér-információkat nyújt az Azure-beli [virtuális hálózatok](../virtual-network/virtual-networks-overview.md) Azure HDInsight való használatáról. Emellett ismerteti a tervezési és megvalósítási döntéseket is, amelyeket el kell végezni ahhoz, hogy a HDInsight-fürthöz virtuális hálózatot lehessen megvalósítani. Ha a tervezési fázis elkészült, akkor folytathatja a [virtuális hálózatok létrehozását az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md). A hálózati biztonsági csoportok és a felhasználó által definiált útvonalak megfelelő konfigurálásához szükséges HDInsight-felügyeleti IP-címekkel kapcsolatos további információkért lásd: [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md).
 
 Az Azure Virtual Network a következő forgatókönyvek használatát teszi lehetővé:
 
@@ -25,7 +25,7 @@ Az Azure Virtual Network a következő forgatókönyvek használatát teszi lehe
 * Közvetlen hozzáférés az interneten keresztül nyilvánosan nem elérhető [Apache Hadoop](https://hadoop.apache.org/) -szolgáltatásokhoz. Például [Apache Kafka](https://kafka.apache.org/) API-kat vagy az [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!IMPORTANT]
-> A HDInsight-fürt VNET való létrehozása számos hálózati erőforrást hoz létre, például hálózati adaptereket és terheléselosztókat. Ne törölje ezeket a hálózati erőforrásokat, mivel azok szükségesek ahhoz, hogy a fürt megfelelően működjön a VNET.
+> A HDInsight-fürt VNET való létrehozása számos hálózati erőforrást hoz létre, például hálózati adaptereket és terheléselosztókat. Ne **Törölje ezeket** a hálózati erőforrásokat, mivel azok szükségesek ahhoz, hogy a fürt megfelelően működjön a VNET.
 >
 > A 2019. február 28. után a VNET létrehozott új HDInsight-fürtök hálózati erőforrásai (például hálózati adapterek, LBs-EK stb.) ugyanabba a HDInsight-fürterőforrás-csoportba lesznek kiépítve. Korábban ezeket az erőforrásokat kiosztották a VNET erőforráscsoporthoz. Az aktuálisan futó fürtök és a VNET nélkül létrehozott fürtök nem változnak.
 
@@ -85,7 +85,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
         > [!IMPORTANT]  
         > A hálózati biztonsági csoport szabályait a rendszer a szabály prioritása alapján alkalmazza. A forgalmi mintának megfelelő első szabály lesz alkalmazva, és a rendszer nem alkalmazza másokat erre a forgalomra. A legtöbb engedékenység és a legkevésbé megengedő szabályok sorrendje. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
 
-    * Felhasználó által megadott útvonalak
+    * Felhasználó által definiált útvonalak
 
         Cserélje `RESOURCEGROUP` le a helyére a virtuális hálózatot tartalmazó erőforráscsoport nevét, majd írja be a parancsot:
 
@@ -212,7 +212,7 @@ Az Azure-beli virtuális hálózatok hálózati forgalmát a következő módsze
 
 Felügyelt szolgáltatásként a HDInsight a HDInsight állapot-és felügyeleti szolgáltatásokhoz való korlátlan hozzáférést igényel mind a VNET érkező bejövő, mind kimenő forgalmához. A NSG használatakor biztosítania kell, hogy ezek a szolgáltatások továbbra is kommunikálhatnak a HDInsight-fürttel.
 
-![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>HDInsight hálózati biztonsági csoportokkal
 
@@ -220,7 +220,7 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 1. Azonosítsa az HDInsight használni kívánt Azure-régiót.
 
-2. Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md).
+2. Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](hdinsight-management-ip-addresses.md).
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
@@ -230,7 +230,7 @@ A hálózati biztonsági csoportokkal kapcsolatos további információkért tek
 
 ### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight-fürtök kimenő forgalmának szabályozása
 
-További információ a HDInsight-fürtök kimenő forgalmának szabályozásáról: a [kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight](hdinsight-restrict-outbound-traffic.md)-fürtökhöz.
+További információ a HDInsight-fürtök kimenő forgalmának szabályozásáról: a [kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight-fürtökhöz](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyszínre
 
@@ -242,7 +242,7 @@ Ha hálózati biztonsági csoportokat vagy felhasználó által megadott útvona
     
 ## <a id="hdinsight-ports"></a>Szükséges portok
 
-Ha tűzfalat szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
+Ha **tűzfalat** szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
 
 Az egyes szolgáltatásokhoz tartozó portok listáját lásd: [Apache Hadoop Services által használt portok a HDInsight](hdinsight-hadoop-port-settings-for-services.md) -dokumentumban.
 
@@ -250,8 +250,8 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight](hdinsight-create-virtual-network.md)-fürtökhöz.
-* A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy](./connect-on-premises-network.md)helyszíni hálózattal.
+* Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
+* A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).
 * Az Apache HBase-fürtök Azure-beli virtuális hálózatokban való konfigurálásával kapcsolatban lásd: [Apache HBase-fürtök létrehozása a HDInsight-ben az azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
 * Az Apache HBase geo-replikáció konfigurálásával kapcsolatban lásd: [Apache HBase-fürtök replikálásának beállítása az Azure Virtual Networks](hbase/apache-hbase-replication.md)szolgáltatásban.
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).

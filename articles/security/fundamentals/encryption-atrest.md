@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 78062dd92d20da365bb4f3d9c21cc4d576bae01f
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918868"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984853"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -272,6 +272,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure Analysis Services          | Igen                | -                  | -                  |
 | Azure Data Catalog               | Igen                | -                  | -                  |
 | Apache Kafka az Azure HDInsight  | Igen                | Az összes RSA-hossz.   | -                  |
+| Azure Adatkezelő              | Igen                | -                  | -                  |
 | Azure Data Factory               | Igen                | -                  | -                  |
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
@@ -282,7 +283,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Virtuálisgép-méretezési csoport        | Igen                | Igen, RSA 2048-bit  | -                  |
 | SAP HANA                         | Igen                | Igen, RSA 2048-bit  | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
-| SQL Server on Virtual Machines   | Igen                | Igen, RSA 2048-bit  | Igen                |
+| SQL Server a Virtual Machines szolgáltatásban   | Igen                | Igen, RSA 2048-bit  | Igen                |
 | Azure SQL Database               | Igen                | Igen, RSA 2048-bit  | Igen                |
 | MariaDB Azure SQL Database   | Igen                | -                  | -                  |
 | MySQL-Azure SQL Database     | Igen                | -                  | -                  |
@@ -296,7 +297,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure-beli adattárak                      | Igen                | -                  | Igen                |
 | **Identitás**                     |                    |                    |                    |
 | Azure Active Directory           | Igen                | -                  | -                  |
-| Azure Active Directory tartományi szolgáltatások | Igen          | Igen, RSA 2048-bit  | -                  |
+| Active Directory Domain Services | Igen          | Igen, RSA 2048-bit  | -                  |
 | **Integrációs**                  |                    |                    |                    |
 | Service Bus                      | Igen                | -                  | Igen                |
 | Event Grid                       | Igen                | -                  | -                  |
@@ -308,7 +309,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | **Media**                        |                    |                    |                    |
 | Media Services                   | Igen                | -                  | Igen                |
 | **Storage**                      |                    |                    |                    |
-| Blobtároló                     | Igen                | Igen, RSA 2048-bit  | Igen                |
+| Blob Storage                     | Igen                | Igen, RSA 2048-bit  | Igen                |
 | Disk Storage                     | Igen                | -                  | -                  |
 | Managed Disk Storage             | Igen                | -                  | -                  |
 | File Storage                     | Igen                | Igen, RSA 2048-bit  | -                  |

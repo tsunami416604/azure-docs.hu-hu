@@ -7,6 +7,14 @@
       href: Home.md
 - name: Gyors útmutatók
   items:
+    - name: Az ügyfél-SDK használata
+      items:
+        - name: .NET SDK
+          href: quickstarts-sdk/csharp-sdk.md
+        - name: Python SDK
+          href: quickstarts-sdk/python-sdk.md
+        - name: Java SDK
+          href: quickstarts-sdk/java-sdk.md
     - name: A REST API használata
       items:
         - name: Távoli rendszerkép elemzése
@@ -75,18 +83,6 @@
           items:
             - name: Python
               href: QuickStarts/python-domain.md
-    - name: A .NET SDK használata
-      items:
-        - name: Rendszerkép elemzése
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: Miniatűr létrehozása
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: Szöveg kinyerése
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
-    - name: A Python SDK használata
-      href: quickstarts-sdk/python-sdk.md
-    - name: A Java SDK használata
-      href: quickstarts-sdk/java-sdk.md
 - name: Oktatóanyagok
   items:
     - name: Képek metaadatainak előállítása

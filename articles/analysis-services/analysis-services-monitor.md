@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596091"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958985"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -55,14 +55,18 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |MemoryLimitLow|Memória: Kevés a memória korlátja|Bájt|Average|Kevés a memória korlátja a konfigurációs fájlból.|
 |MemoryLimitVertiPaq|Memória: Memória korlátja VertiPaq|Bájt|Average|Memóriabeli korlát a konfigurációs fájlból.|
 |MemoryUsage|Memória: Memóriahasználat|Bájt|Average|A kiszolgálói folyamat memóriahasználat a tisztább memória árának kiszámításakor használt módon. Egyenlő a számláló Process\PrivateBytes és a memóriához rendelt adatmennyiséggel, figyelmen kívül hagyva a memóriát, amelyet a memória-elemzési motor (VertiPaq) leképezett vagy lefoglalt a memória korlátja felett.|
+|private_bytes_metric|Saját [nem megosztható] memória (bájt) |Bájt|Average|A memória teljes mennyisége a Analysis Services motor folyamata és az adategyesítési tároló folyamatai lefoglalva, nem beleértve a más folyamatokkal megosztott memóriát.|
+|virtual_bytes_metric|Virtuális bájtok |Bájt|Average|A Analysis Services motor és az adategyesítési tároló folyamatai által használt virtuális címtartomány jelenlegi mérete.|
+|mashup_engine_private_bytes_metric|M motor saját bájtjai |Bájt|Average|A memória-adategyesítési tároló folyamatainak teljes mennyisége kiosztott, és nem tartalmazza a más folyamatokkal megosztott memóriát.|
+|mashup_engine_virtual_bytes_metric|M motor virtuális bájtjai |Bájt|Average|A virtuális címtartomány összemashup-tároló folyamatainak jelenlegi mérete a.|
 |Kvóta|Memória: Kvóta|Bájt|Average|Az aktuális memória kvótája (bájt). A memória kvótáját memória-engedélyezési vagy memória-foglalásnak is nevezzük.|
 |QuotaBlocked|Memória: Kvóta letiltva|Count|Average|A letiltott kvóta-kérelmek aktuális száma, amíg a többi memória kvótája fel nem szabadul.|
 |VertiPaqNonpaged|Memória: VertiPaq nem lapozható|Bájt|Average|A memóriában lévő motor általi használatra a munkakészletben zárolt memória mennyisége (bájtban).|
 |VertiPaqPaged|Memória: VertiPaq lapozható|Bájt|Average|A memóriában tárolt adatmennyiséghez használt lapozható memória bájtjai.|
 |ProcessingPoolJobQueueLength|Feldolgozási készlet nyomtatási várólistájának hossza|Count|Average|A feldolgozási szál készletének várólistájában nem I/O típusú feladatok száma.|
-|RowsConvertedPerSec|Feldolgozás: Másodpercenként konvertált sorok száma|Egység/s|Average|A sorok konvertálásának sebessége a feldolgozás során.|
-|RowsReadPerSec|Feldolgozás: Olvasott sorok száma másodpercenként|Egység/s|Average|Az összes kapcsolódó adatbázisból beolvasott sorok száma.|
-|RowsWrittenPerSec|Feldolgozás: Másodpercenként írt sorok száma|Egység/s|Average|A sorok írásának sebessége a feldolgozás során.|
+|RowsConvertedPerSec|Feldolgozási Másodpercenként konvertált sorok száma|Egység/s|Average|A sorok konvertálásának sebessége a feldolgozás során.|
+|RowsReadPerSec|Feldolgozási Olvasott sorok száma másodpercenként|Egység/s|Average|Az összes kapcsolódó adatbázisból beolvasott sorok száma.|
+|RowsWrittenPerSec|Feldolgozási Másodpercenként írt sorok száma|Egység/s|Average|A sorok írásának sebessége a feldolgozás során.|
 |qpu_metric|QPU|Count|Average|QPU. 0-100-es tartomány S1, 0-200 az S2 és 0-400 for S4 esetében|
 |QueryPoolBusyThreads|Lekérdezési készlet foglalt szálai|Count|Average|A lekérdezési szál készletében lévő foglalt szálak száma.|
 |SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenként|Egység/s|Average|A sikeres kapcsolatok gyakorisága.|

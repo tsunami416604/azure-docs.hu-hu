@@ -17,12 +17,12 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129808"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983498"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -30,12 +30,12 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
-    - **A naplók** - naplózása rendszertevékenység-információkat biztosít a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.[](concept-audit-logs.md)
+    - **A naplók** - naplózása rendszertevékenység-[információkat biztosít a](concept-audit-logs.md) felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
     - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
-    - Kockázatnak kitett **felhasználók** – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
 Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 
@@ -50,7 +50,7 @@ Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 
 A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa a teljes kiépítési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. 
 
-## <a name="provisioning-logs"></a>Naplók kiépítés
+## <a name="provisioning-logs"></a>Üzembehelyezési naplók
 
 A kiépítési naplók a következő kérdésekre adnak választ:
 
@@ -58,9 +58,9 @@ A kiépítési naplók a következő kérdésekre adnak választ:
 * Hogyan lettek importálva a szerepkörök a Amazon Web Services?
 * Mely felhasználók lettek sikeresen létrehozva a DropBoxban?
 
-A kiépítési naplókat úgy érheti el, ha kijelöli a kiépítési naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
+A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
-![Naplók] kiépítés (./media/concept-provisioning-logs/access-provisioning-logs.png "Naplók") kiépítés
+![Naplók kiépítés](./media/concept-provisioning-logs/access-provisioning-logs.png "Naplók kiépítés")
 
 
 A kiépítési napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
@@ -85,7 +85,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/detailed-information.png "Részletes információk")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -106,7 +106,7 @@ Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára
 
 A **forrásrendszer** szűrője lehetővé teszi annak megadását, hogy az identitás honnan legyen kiépítve. Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, akkor a forrásoldali rendszer az Azure AD. 
 
-A **célként** megadott rendszerszűrő segítségével megadhatja, hogy az identitás hová legyen kiépítve a szolgáltatásba. Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, a rendszer ServiceNow. 
+A célként megadott rendszerszűrő segítségével megadhatja, hogy az identitás hová legyen kiépítve a **szolgáltatásba** . Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, a rendszer ServiceNow. 
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 

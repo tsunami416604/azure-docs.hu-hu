@@ -1,84 +1,84 @@
 ---
-title: Text to Speech API, Microsoft Speech Service |} A Microsoft Docs
+title: A Microsoft Speech Service Text to Speech APIja | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Adja meg a valós idejű szöveg-beszéd átalakítás beszédhangot és nyelvek széles a szöveg-beszéd átalakítás API használatával
+description: A szöveg-beszéd API használatával valós idejű szöveg-beszéd átalakítást biztosíthat különböző hangokon és nyelveken
 services: cognitive-services
-author: priyaravi20
-manager: yanbo
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: priyar
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee9b0b47fb88cba948bc06db6eb83fe9c076fe40
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515421"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966874"
 ---
-# <a name="bing-text-to-speech-api"></a>A Bing szöveg-beszéd átalakítás API
+# <a name="bing-text-to-speech-api"></a>A Bing szövege a Speech API-hoz
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="Introduction"></a>Bevezetés
 
-A Bing szöveg-beszéd átalakítás API-t az alkalmazás küldhet HTTP-kérelmekre a felhőbeli kiszolgálón, ahol szöveg azonnal emberi hangzó beszéddé, és adja vissza a hangfájl. Az API-t biztosít különböző beszédhangot és nyelvek széles valós idejű szöveg-beszéd átalakítás számos különböző környezetekben is használható.
+A Bing Text for Speech API használatával az alkalmazás HTTP-kéréseket küldhet egy felhőalapú kiszolgálónak, ahol a szöveg azonnal emberi hangzású beszédbe kerül, és hangfájlként lesz visszaadva. Ez az API számos különböző kontextusban használható, hogy valós idejű szöveg-beszéd átalakítást biztosítson számos különböző hangon és nyelven.
 
-## <a name="VoiceSynReq"></a>Hangalapú összefoglaló kérelem
+## <a name="VoiceSynReq"></a>Hangszintézisi kérelem
 
 ### <a name="Subscription"></a>Engedélyezési jogkivonat
 
-Minden egyes hangalapú összefoglaló kérés JSON webes jogkivonat (JWT) hozzáférési jogkivonat szükséges. A JWT jogkivonat átadott révén a beszéd-kérelem fejléce. A jogkivonat-lejárati idő 10 perc rendelkezik. Előfizetés és érvénytelen JWT-hozzáférési jogkivonatok használt API-kulcsok beszerzésével kapcsolatban lásd: [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/).
+Minden hangszintézisi kérelemhez JSON Web Token (JWT) hozzáférési token szükséges. A JWT hozzáférési token át lett adva a Speech Request fejlécben. A jogkivonat lejárati ideje 10 perc. Az érvényes JWT hozzáférési tokenek lekéréséhez használt API-kulcsok [előfizetésével](https://azure.microsoft.com/try/cognitive-services/)és beszerzésével kapcsolatos információkért lásd: Cognitive Services előfizetés.
 
-Az API-kulcsot a jogkivonat-szolgáltatás kerülnek. Példa:
+Az API-kulcsot a rendszer átadja a jogkivonat-szolgáltatásnak. Példa:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-A szükséges fejlécadatokat hozzáférési token a következő.
+A jogkivonat-hozzáféréshez szükséges fejléc-információ a következő.
 
 Name (Név)| Formátum | Leírás
 ----|----|----
-OCP-Apim-Subscription-Key | ASCII | Az előfizetési kulcs
+OCP-Apim-Subscription-Key | ASCII | Előfizetési kulcs
 
-A jogkivonat-szolgáltatás adja vissza, mint a JWT jogkivonat `text/plain`. A JWT átadott majd egy `Base64 access_token` engedélyeztetési fejléc előtaggal van ellátva a karakterlánc, a beszéd végpontra `Bearer`. Példa:
+A jogkivonat-szolgáltatás a JWT hozzáférési tokent `text/plain`adja vissza. Ezt követően a rendszer a JWT adja `Base64 access_token` át a Speech végpontnak, mint a sztringtel `Bearer`előrögzített engedélyezési fejlécet. Példa:
 
 `Authorization: Bearer [Base64 access_token]`
 
-Az ügyfelek a szöveg-hang transzformációs szolgáltatás eléréséhez a következő végpontot kell használnia:
+Az ügyfeleknek a következő végpontot kell használniuk a szöveg-beszéd szolgáltatás eléréséhez:
 
 `https://speech.platform.bing.com/synthesize`
 
 >[!NOTE]
->Beszerzett egy hozzáférési jogkivonatot az előfizetési kulccsal végzett korábban leírtaknak megfelelően, amíg ezt a hivatkozást hoz létre egy `403 Forbidden` válaszhoz tartozó hiba.
+>Amíg a korábban leírtak szerint nem kapott hozzáférési jogkivonatot az előfizetési kulccsal, a `403 Forbidden` hivatkozás hibát generál.
 
 ### <a name="Http"></a>HTTP-fejlécek
 
-Az alábbi táblázat az összefoglaló hangutasítások használt HTTP-fejléceket.
+A következő táblázat a hangszintézisi kérelmekhez használt HTTP-fejléceket mutatja be.
 
-Fejléc |Érték |Megjegyzések
+Fejléc |Value |Megjegyzések
 ----|----|----
-Content-Type | application/ssml+xml | A bemeneti tartalom típusa.
-X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bites-mono-Szövegfelolvasás <br> **2.** nyers – 16 khz – 16 bites-mono-pcm <br>**3.** hang-16 khz – 16 KB/s-mono-siren <br> **4.** riff – 16 khz – 16 KB/s-mono-siren <br> **5.** riff – 16 khz – 16 bites-mono-pcm <br> **6.** hang-16 khz-128kbitrate-mono-mp3 <br> **7.** hang-16 khz-64kbitrate-mono-mp3 <br> **8.** hang-16 khz-32kbitrate-mono-mp3 | A kimeneti audio formátum.
-X-Search-AppId | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
-X-Search-ClientID | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.
-User-Agent | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
-Authorization | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
+Content-Type | Application/ssml + XML | A bemeneti tartalom típusa
+X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-TTS <br> **2.** nyers-16khz-16bit-mono-PCM <br>**3.** hang-16khz-16kbps-monó-sziréna <br> **4.** riff-16khz-16kbps-mono-Szirén <br> **5.** riff-16khz-16bit-mono-PCM <br> **6.** hang-16khz-128kbitrate-mono-MP3 <br> **7.** hang-16khz-64kbitrate-mono-MP3 <br> **8.** hang-16khz-32kbitrate-mono-MP3 | A kimeneti hang formátuma.
+X-Search-AppId | GUID (csak hexadecimális, nincs kötőjel) | Az ügyfélalkalmazás egyedi azonosítására szolgáló azonosító. Ez lehet az alkalmazások áruház-azonosítója. Ha az egyik nem érhető el, az azonosító lehet a felhasználó által generált alkalmazás.
+X-Search-ClientID | GUID (csak hexadecimális, nincs kötőjel) | Egy olyan azonosító, amely egyedileg azonosít egy alkalmazás-példányt az egyes telepítésekhez.
+Felhasználói ügynök | Alkalmazás neve | Az alkalmazás nevének megadása kötelező, és 255 karakternél rövidebbnek kell lennie.
+Authorization | Engedélyezési jogkivonat |  Lásd: <a href="#Subscription">engedélyezési jogkivonat</a> szakasz.
 
 ### <a name="InputParam"></a>Bemeneti paraméterek
 
-A Bing szöveg-beszéd átalakítás API a kérések HTTP POST-hívásokkal. A fejlécek az előző szakaszban vannak megadva. A szervezet Speech összefoglaló Markup Language (SSML) bemeneti szöveg lehet synthesized képviselő tartalmazza. Például a nyelvi beszédfelismerési jellemzőit és nem a beszélő vezérelhetők jelölőnyelvi ismertetését lásd: a [SSML W3C specifikáció](https://www.w3.org/TR/speech-synthesis/).
+A Bing-szöveg és a beszédfelismerési API felé irányuló kérések HTTP POST-hívások használatával történnek. A fejlécek az előző szakaszban vannak megadva. A törzs tartalmaz egy Speech szintézis Markup Language (SSML) bemenetet, amely a szintetizálni kívánt szöveget jelöli. A beszéd szempontjainak, például a beszélő nyelvének és nemre vonatkozó szabályozásához használt jelölés leírását a [SSML W3C-specifikációban](https://www.w3.org/TR/speech-synthesis/)találhatja meg.
 
 >[!NOTE]
->A SSML bemenet támogatott maximális mérete 1024 karakter hosszúságú, beleértve az összes címke.
+>A támogatott SSML-bemenet maximális mérete 1 024 karakter, beleértve az összes címkét is.
 
-###  <a name="SampleVoiceOR"></a>Példa): hangalapú kimeneti kérelem (
+###  <a name="SampleVoiceOR"></a>Példa: hangkimeneti kérelem
 
-Hangalapú kimeneti kérelem például a következőképpen történik:
+A hangkimeneti kérelem példája a következő:
 
 ```HTTP
 POST /synthesize
@@ -94,13 +94,13 @@ Authorization: Bearer [Base64 access_token]
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>Microsoft Bing Voice Output API</voice></speak>
 ```
 
-## <a name="VoiceOutResponse"></a>Hangalapú kimeneti válasz
+## <a name="VoiceOutResponse"></a>Hangkimeneti válasz
 
-A Bing szöveg-beszéd átalakítás API HTTP POST használatával az ügyfélnek hang küldése. Az API-válasz tartalmazza az audio-adatfolyamot, és a kodeket, és a kulcs megegyezik-e a kért kimeneti formátum. A hanganyag adja vissza egy adott kérés esetében nem lehet hosszabb 15 másodperc.
+A Bing szöveg-beszéd API a HTTP POST használatával küldi vissza a hangot az ügyfélnek. Az API-válasz tartalmazza az audio streamet és a kodeket, és megfelel a kért kimeneti formátumnak. Egy adott kérelemhez megadott hang nem haladhatja meg a 15 másodpercet.
 
-### <a name="SuccessfulRecResponse"></a>Példa: a sikeres összefoglaló válasz
+### <a name="SuccessfulRecResponse"></a>Példa: sikeres szintézis-válasz
 
-A következő kódot egy JSON-válasz sikeres hangalapú összefoglaló kérelemre példája. A megjegyzéseket, és a kód formázása csak ebben a példában a célokat szolgálnak, és kimaradnak a tényleges válasz.
+A következő kód egy példát mutat be egy, a sikeres hangszintézisre irányuló kérelemre vonatkozó JSON-válaszra. A kód megjegyzései és formázása kizárólag ebben a példában szerepelnek, és kimaradnak a tényleges választól.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -110,9 +110,9 @@ Content-Type: audio/x-wav
 Response audio payload
 ```
 
-### <a name="RecFailure"></a>Példa: összefoglaló hiba
+### <a name="RecFailure"></a>Példa: szintézisi hiba
 
-Az alábbi példakód bemutatja, egy JSON-válasz voice-összefoglaló lekérdezés sikertelen:
+A következő példa egy olyan JSON-választ mutat be, amely egy hang-szintézis lekérdezési hibára mutat:
 
 ```HTTP
 HTTP/1.1 400 XML parser error
@@ -120,16 +120,16 @@ Content-Type: text/xml
 Content-Length: 0
 ```
 
-### <a name="ErrorResponse"></a>Hibaválaszok
+### <a name="ErrorResponse"></a>Hibaüzenetek
 
 Hiba | Leírás
 ----|----
-HTTP/400 – Hibás kérés | Egy kötelező paraméter hiányzik, üres vagy null, vagy átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. "Érvénytelen" válasz fogadása az egyik oka az, ha egy karakterláncérték, amely hosszabb a megengedettnél továbbítja. A problémás paraméter rövid leírása megtalálható.
-HTTP/401 – jogosulatlan hibaüzenetet | A kérelem nem engedélyezett.
-HTTP/413 RequestEntityTooLarge  | A SSML bemenet mérete nagyobb, mint a támogatott műveleteket ismerteti.
-HTTP/502-es BadGateway | A hálózattal kapcsolatos probléma vagy kiszolgálóoldali probléma van.
+HTTP/400 hibás kérelem | Egy kötelező paraméter hiányzik, üres vagy NULL értékű, vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Az "Érvénytelen" válasz beolvasásának egyik oka, hogy a karakterlánc értéke hosszabb, mint a megengedett hossz. A rendszer a problémás paraméter rövid leírását tartalmazza.
+HTTP/401 jogosulatlan | A kérelem nem engedélyezett.
+HTTP/413 RequestEntityTooLarge  | A SSML bemeneti értéke nagyobb a támogatottnál.
+HTTP/502 BadGateway | A hálózattal kapcsolatos problémák vagy kiszolgálóoldali problémák merültek fel.
 
-Egy példa egy hibaválasz a következőképpen történik:
+A következő hibaüzenetet választhatja:
 
 ```HTTP
 HTTP/1.0 400 Bad Request
@@ -139,11 +139,11 @@ Content-Type: text/plain; charset=UTF-8
 Voice name not supported
 ```
 
-## <a name="ChangeSSML"></a>SSML keresztül hangkimenet módosítása
+## <a name="ChangeSSML"></a>Hangkimenet módosítása SSML-n keresztül
 
-A Microsoft szöveg-hang transzformációs API támogatja SSML 1.0 a W3C [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). Ez a szakasz példát módosítása bizonyos létrehozott hangkimenet, például a különféle jellemzőit értékelje, írásmódja SSML címkék használatával stb.
+A Microsoft Text-to-Speech API a W3C [Speech szintézis Markup Language (SSML) 1,0-es verziójában](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)definiált SSML 1,0-et támogatja. Ez a szakasz példákat mutat be a generált hangkimenetek, például a felszólalási arány, a kiejtés és a SSML címkék használatával történő módosítására.
 
-1. Szünet hozzáadása
+1. Töréspont hozzáadása
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
@@ -173,26 +173,26 @@ A Microsoft szöveg-hang transzformációs API támogatja SSML 1.0 a W3C [Speech
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
    ```
 
-6. Változás prosody eloszlás
+6. Prosody-kontúr módosítása
 
    ```
    <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
    ```
 
 > [!NOTE]
-> Megjegyzés: a hívásaiból azt kell 8k vagy 16 k wav mezőjében a következő formátumban: **CRC-kód** (CRC-32): 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Hang formátumot jelző**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Minták száma**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris terjesztett méretének**: 4 bájtos (DWORD) az érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris törzs**: n bájt.
+> Vegye figyelembe, hogy a hangadatoknak a következő formátumban kell 8k vagy 16k WAV-t kell benyújtaniuk: **CRC-kód** (CRC-32): 4 bájt (DWORD) érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Hangformátum jelzője**: 4 bájt (DWORD) érvényes tartomány 0x00000000 ~ 0xFFFFFFFF; **Minták száma**: 4 bájt (DWORD) érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris törzs mérete**: 4 bájt (DWORD) érvényes tartomány 0x00000000 ~ 0x7FFFFFFF; **Bináris törzs**: n bájt.
 
-## <a name="SampleApp"></a>Mintaalkalmazás
+## <a name="SampleApp"></a>Minta alkalmazás
 
-A megvalósítás részleteit lásd: a [Visual C# .NET szöveg-hang transzformációs mintaalkalmazás](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
+A megvalósítás részleteiért tekintse meg a [ C#Visual .net szöveg-beszéd minta alkalmazását](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
 
-## <a name="SupLocales"></a>Támogatott nyelv és hangtípust
+## <a name="SupLocales"></a>Támogatott területi beállítások és hangbetűkészletek
 
-A következő táblázat ismerteti az egyes támogatott nyelv és kapcsolódó hangtípusokkal.
+A következő táblázat a támogatott területi beállításokat és a kapcsolódó hangbetűkészleteket ismerteti.
 
 Területi beállítás | Nem | A felhasználónév-leképezés
 ---------|--------|------------
-ar-EG* | Nő | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (ar-működtek az Adatbázisok, Hoda)"
+AR-EG * | Nő | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (ar-működtek az Adatbázisok, Hoda)"
 ar-SA | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ar-SA, Naayf)"
 bg-BG | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (bg-BG, Ivan)"
 CA-ES | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ca-ES, HerenaRUS)"
@@ -200,11 +200,11 @@ cs-CZ | Férfi | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfe
 da-DK | Nő | "A Microsoft Server beszéd szöveg Speech Voice (da-DK, HelleRUS)"
 Németország-AT | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (Németország-AT, Michael)"
 Németország – CH | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (Németország-CH, Karsten)"
-de-DE | Nő | "A Microsoft Server beszéd szöveg Speech Voice (de-DE, Hedda)"
+de-DE | Nő | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)"
 de-DE | Nő | "A Microsoft Server beszéd szöveg Speech Voice (de-DE, HeddaRUS)"
-de-DE | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (de-DE, lengyel, Apollo)"
+de-DE | Férfi | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)"
 el-GR | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (el-GR, Stefanos)"
-en-Ausztrália | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-Ausztrália, Catherine)"
+en-Ausztrália | Nő | "Microsoft Server Speech Text to Speech hang (en-AU, Catherine)"
 en-Ausztrália | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-Ausztrália, HayleyRUS)"
 en-hitelesítésszolgáltató | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-CA, Linda)"
 en-hitelesítésszolgáltató | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-CA, HeatherRUS)"
@@ -271,15 +271,15 @@ zh-TW | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, Yating, A
 zh-TW | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, HanHanRUS)"
 zh-TW | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (zh-TW, Zhiwei, Apollo)"
 
- \* ar – Például támogatja a Modern Standard arab (MSA).
+ \* AR-EG a modern szabványos Arab (MSA) szabványokat támogatja.
 
 > [!NOTE]
-> Vegye figyelembe, hogy az előző szolgáltatásnevek **Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (cs-CZ, Vit)** és **Microsoft Server hang-szöveg Speech szövegfelolvasás (en-IE, Shaun)** később elavulttá fog után 3/31/2018. sorrend optimalizálása, a Bing Speech API-funkciókat. Frissítse a kódot a frissített nevekkel.
+> Vegye figyelembe, hogy a korábbi szolgáltatásnév a **Microsoft Server speech Text to speech Voice (cs-cz, Vit)** és a **microsoft Server Speech Text to speech hang (en-IE, Shaun)** a 3/31/2018 után elavult, hogy optimalizálja a Bing Speech API képességek. Frissítse a kódot a frissített nevekkel.
 
 ## <a name="TrouNSupport"></a>Hibaelhárítás és támogatás
 
-Az összes kérdéseket és problémákat a [Bing – beszédszolgáltatás](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) MSDN-fórum. További információkat tartalmaznak, mint például:
+Tegye fel az összes kérdést és problémát a [Bing Speech szolgáltatás](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) MSDN fórumára. Adja meg a teljes részleteket, például:
 
-* Egy példa látható a kérelem teljes karakterláncra.
-* Ha szükséges, egy sikertelen kéréssel, amely tartalmazza a teljes kimenete jelentkezzen azonosítók.
-* Sikertelen kérelmek aránya.
+* Példa a teljes kérelem sztringre.
+* Ha alkalmazható, a sikertelen kérelem teljes kimenete, amely tartalmazza a napló-azonosítókat.
+* A sikertelen kérelmek százalékos aránya.

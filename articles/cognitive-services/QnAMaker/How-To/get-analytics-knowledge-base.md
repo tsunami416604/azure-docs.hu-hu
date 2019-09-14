@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: ebc06057dfa4bce72821ddf807cda46270e8ff3e
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 5c55084a57e46931049841f5011941b2115e9e69
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206834"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961530"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Tudásbázis elemzésének lekérése
 
@@ -26,9 +26,7 @@ QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az [QnA
 
     ![Válassza ki az Application ininsight-erőforrást](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Válassza az **elemzés**lehetőséget. Megnyílik egy új ablak, ahol lekérdezheti QnA Maker telemetria.
-
-    ![Elemzés kiválasztása](../media/qnamaker-how-to-analytics-kb/analytics.png)
+2. Válassza a **napló (elemzés)** lehetőséget. Megnyílik egy új ablak, ahol lekérdezheti QnA Maker telemetria.
 
 3. Illessze be a következő lekérdezést, és futtassa.
 
@@ -48,7 +46,7 @@ QnA Maker az összes csevegési naplót és más telemetria tárolja, ha az [QnA
 
     A lekérdezés futtatásához válassza a **Futtatás** lehetőséget.
 
-    ![Lekérdezés futtatása](../media/qnamaker-how-to-analytics-kb/run-query.png)
+    [![Lekérdezés futtatása a kérdések, válaszok és pontozás meghatározásához a felhasználóktól](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 ## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Lekérdezések futtatása a QnA Maker Tudásbázis egyéb elemzési adataihoz
 

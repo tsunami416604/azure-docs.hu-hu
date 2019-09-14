@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f58c847f512f2db72fdca823637192c3b638b1ae
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
-ms.translationtype: HT
+ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879384"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960846"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
@@ -31,11 +31,11 @@ A gazdagépek megtekintéséhez nyissa meg a Ambari webes felhasználói felüle
 
 2. Válassza a **minden felhasználó** lehetőséget a bal oldali menüben, majd válassza az **új felhasználó**lehetőséget.
 
-    ![Minden felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Minden felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP `HiveUsers` -fürtök létrehozására [vonatkozó példa](hdinsight-domain-joined-configure.md) a következő két csoport hozzáadását `AAD DC Administrators`tartalmazza: és.
 
-    ![Új felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Új felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -131,11 +131,11 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 
 1. A Ambari Irányítópultján kattintson a **felügyelet Ambari** elemre a **rendszergazda** menüben.
 
-    ![Ambari kezelése](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Ambari kezelése](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. A lap bal oldalán, a **felhasználó + csoport kezelése** menü csoportjában válassza a **felhasználók** lehetőséget.
 
-    ![Felhasználók menüelem](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![Felhasználók menüelem](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre `LDAP` van állítva `Local`.
 

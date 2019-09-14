@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 17615c0005a3cbc5b20cea697b4c75b5ed06ae0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811997"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961969"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Gépi tanulás a HDInsight-on
 
@@ -29,7 +29,7 @@ A Apache Spark Microsoft Machine Learning könyvtára [MMLSpark](https://github.
 
 Az [R](https://www.r-project.org/) jelenleg a legnépszerűbb statisztikai programozási nyelv a világon. Ez egy nyílt forráskódú adatvizualizációs eszköz, amelynek közössége több mint 2 500 000 felhasználó, és egyre nő. A virágzó felhasználói bázisával és a több mint 8 000 közreműködő csomaggal az R valószínűleg számos olyan vállalat számára valószínű választás, akiknek gépi tanulásra van szükségük. Létrehozhat egy HDInsight-fürtöt ML-szolgáltatásokkal, amelyek készen állnak a nagy adatkészletekkel és modellekkel való használatra. Ez a képesség olyan jól ismert R-felületet biztosít az adatszakértők és a statisztikusok számára, amely igény szerint méretezhető a HDInsight keresztül, a fürt beállítása és karbantartása nélkül.
 
-![Az R Serverrel való előrejelzés betanítása](./media/hdinsight-machine-learning-overview/r-training.png)
+![Az R Serverrel való előrejelzés betanítása](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
 A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához.  Lehetősége van arra is, hogy az R-szkripteket a fürt csomópontjain is futtassa, a skálázás Hadoop-térképének csökkentése vagy a Spark számítási környezetek használatával.
 
@@ -39,7 +39,7 @@ A Spark-nal rendelkező HDInsight ML-szolgáltatásaival a Spark számítási k�
 
 Azure Machine Learning eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amellyel a prediktív modelleket használatra kész webszolgáltatásként helyezheti üzembe. A Azure Machine Learning egy teljes körű prediktív elemzési megoldás a felhőben, amely a prediktív modellek létrehozásához, teszteléséhez, működővé tenni és kezeléséhez használható. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
 
-![A fejlett Analitika elérhetővé tétele a Hadoop és a Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![A fejlett Analitika elérhetővé tétele a Hadoop és a Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 HDInsight Hadoop-fürtben található adatszolgáltatások létrehozása a [kaptár-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md)használatával. A szolgáltatások *mérnöki* célja, hogy a tanulási algoritmusok által létrehozott nyers adatokból származó funkciók létrehozásával növelje a tanulási algoritmusok prediktív erejét. Azure Machine Learning studióból futtathat HiveQL-lekérdezéseket, és a kaptárban feldolgozott és a blob Storage-ban tárolt adatokhoz az [adatok importálása modul](../machine-learning/studio/import-data.md)használatával férhet hozzá.
 

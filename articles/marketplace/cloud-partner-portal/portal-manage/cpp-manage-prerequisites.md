@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 62269490355414a6b75759361cd574ac7e90e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598668"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962804"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A Cloud Partner Portal fiókok kezelésének előfeltételei 
 
@@ -21,7 +21,7 @@ Ahhoz, hogy használhassa a [Cloud Partner Portal](https://cloudpartner.azure.co
 
 ## <a name="account-terms-and-guidelines"></a>A fiókra vonatkozó feltételek és irányelvek
 
-Fiók létrehozása előtt körültekintően tekintse át a [A Microsoft szolgáltatási szerződése](https://www.microsoft.com/servicesagreement) és a [Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx) használati feltételeinek hatálya alá tartozó jogosultságait és felelősségeit.  
+Fiók létrehozása előtt körültekintően tekintse át a [A Microsoft szolgáltatási szerződése](https://www.microsoft.com/servicesagreement) és a [Microsoft használati feltételeinek](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx) hatálya alá tartozó jogosultságait és felelősségeit.  
 
 Gondosan válassza ki a fiók nevét.  A szervezetet képviseli, így nem tartalmazhat szerzői jogi vagy peres szavakat.  A Microsoft például megtiltja a szerzői jogi feltételek (például az "Azure" és a "Microsoft") használatát a fiókok neveiben.  További információ: [irányelvek az Azure Marketplace-hez](https://docs.microsoft.com/azure/marketplace/guidelines)
 

@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517656"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967230"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Összetevők hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
-Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után hozzáadhat olyan összetevőket, mint például a Logic apps, az integrációs fiókok és az egyéni összekötők, hogy hozzáférhessenek az Azure Virtual Network erőforrásaihoz.
+Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan összetevőket adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtua
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>Logikai alkalmazások létrehozása ISE-ben
+## <a name="create-logic-apps"></a>Logikai alkalmazások létrehozása
 
 Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások létrehozásához kövesse az alábbi lépéseket:
 
@@ -57,14 +57,14 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>Integrációs fiókok létrehozása ISE-ben
+## <a name="create-integration-accounts"></a>Integrációs fiókok létrehozása
 
 A létrehozáskor kiválasztott [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) alapján az ISE külön díj nélkül tartalmazza az integrációs fiók használatát. Az integrációs szolgáltatási környezetekben (ISE) található logikai alkalmazások csak olyan integrációs fiókokra hivatkozhatnak, amelyek ugyanabban az ISE-ban találhatók. Tehát ahhoz, hogy egy integrációs fiók működjön a Logic apps szolgáltatással egy ISE-ben, az integrációs fióknak és a Logic apps-nek *ugyanazt a környezetet* kell használnia, mint a helyük. Az integrációs fiókokkal és a ISEs kapcsolatos további [információkért lásd: integrációs fiókok és ISE.](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )
 
 ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lépéseket:
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az integrációs **fiókok** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok** > **Hozzáadás**elemet.
 
    ![Új integrációs fiók hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -84,9 +84,25 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
 1. Az ISE integrációs fiókjainak kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>ISE-összekötők hozzáadása
+
+Felveheti a Microsoft által felügyelt összekötőket, amelyek elérhetők az ISE-ben, de nincsenek telepítve az ISE-ben.
+
+1. Az ISE menü **Beállítások**területén válassza a **felügyelt összekötők**lehetőséget. Az eszköztáron válassza a **Hozzáadás**lehetőséget.
+
+   ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Ha a kívánt összekötő elérhető, válassza ki az összekötőt, majd válassza a **Létrehozás**lehetőséget.
+
+   A lista csak azokat az összekötőket jeleníti meg, amelyek jogosultak, de nincsenek telepítve az ISE-ben. Az ISE-ben már üzembe helyezett összekötők nem érhetők el a kijelöléshez.
+
+   ![Jogosult összekötő kiválasztása](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>Egyéni összekötők létrehozása ISE-ben
+## <a name="create-custom-connectors"></a>Egyéni összekötők létrehozása
 
 Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket az egyéni összekötőket közvetlenül az ISE-ben.
 
@@ -104,7 +120,7 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
    ![Egyéni összekötő kiválasztása és szerkesztése](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. Folytassa úgy, hogy az összekötőt a szokásos módon hozza létre egy [OpenAPI](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) -definícióból vagy [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)-ból.
+1. Folytassa úgy, hogy az összekötőt a szokásos módon hozza létre egy [OpenAPI-definícióból](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) vagy [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)-ból.
 
 1. Az ISE-ben lévő egyéni összekötők kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 

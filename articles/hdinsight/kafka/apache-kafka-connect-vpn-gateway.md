@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402781"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960429"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Kapcsolódás Apache Kafka HDInsight az Azure-on keresztül Virtual Network
 
@@ -38,7 +38,7 @@ A HDInsight nem teszi lehetővé a közvetlen kapcsolódást a Kafka-hez a nyilv
   4. Konfigurálja a DNS-kiszolgáló közötti továbbítást az egyes hálózatokban.
   5. Hozzon létre egy Kafka-t a HDInsight-fürtön a virtuális hálózaton.
 
-     További információkért tekintse meg a [kapcsolódás Apache Kafka](#on-premises) a helyszíni hálózatról című szakaszt. 
+     További információkért tekintse meg a [kapcsolódás Apache Kafka a helyszíni hálózatról](#on-premises) című szakaszt. 
 
 * Az egyes gépeket VPN-átjáró és VPN-ügyfél használatával csatlakoztatható a virtuális hálózathoz. A konfiguráció engedélyezéséhez hajtsa végre a következő feladatokat:
 
@@ -56,11 +56,11 @@ A HDInsight nem teszi lehetővé a közvetlen kapcsolódást a Kafka-hez a nyilv
      > * Minden ügyfélnek VPN-ügyfélszoftver használatával kell kapcsolódnia.
      > * A VPN-ügyfél nem továbbítja a névfeloldási kérelmeket a virtuális hálózatnak, ezért az IP-címzést kell használnia a Kafka-vel való kommunikációhoz. Az IP-kommunikációhoz további konfigurációra van szükség a Kafka-fürtön.
 
-A virtuális hálózat HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat megtervezése Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md)-fürtökhöz.
+A virtuális hálózat HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat megtervezése Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md).
 
 ## <a id="on-premises"></a>Kapcsolódás Apache Kafka helyszíni hálózatról
 
-A helyszíni hálózattal kommunikáló Kafka-fürt létrehozásához kövesse a HDInsight összekapcsolása a helyszíni [hálózati](./../connect-on-premises-network.md) dokumentumhoz című témakör lépéseit.
+A helyszíni hálózattal kommunikáló Kafka-fürt létrehozásához kövesse a [HDInsight összekapcsolása](./../connect-on-premises-network.md) a helyszíni hálózati dokumentumhoz című témakör lépéseit.
 
 > [!IMPORTANT]  
 > A HDInsight-fürt létrehozásakor válassza ki a __Kafka__ -fürt típusát.
@@ -252,7 +252,7 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
 3. A Kafka-konfiguráció megtekintéséhez válassza a __konfigurációk__ lehetőséget a felső középső listából.
 
-    ![A Kafka-hez készült konfigurációk hivatkozásai](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![A Kafka-hez készült konfigurációk hivatkozásai](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
 
@@ -270,19 +270,19 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
 6. A Kafka által figyelt felület konfigurálásához írja be `listeners` a jobb felső sarokban található __szűrő__ mezőt.
 
-7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert  figyelje, módosítsa a `PLAINTEXT://0.0.0.0:9092`figyelők mező értékét a következőre:.
+7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a `PLAINTEXT://0.0.0.0:9092`figyelők mező értékét a következőre:.
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
-    ![Konfiguráció mentése gomb](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Konfiguráció mentése gomb](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód__bekapcsolása lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
+9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 
     ![Szolgáltatási műveletek, a karbantartás bekapcsolásával](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
 10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
 
-    ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
 11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
 
@@ -368,7 +368,7 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
 
 ## <a name="next-steps"></a>További lépések
 
-A HDInsight virtuális hálózattal való használatával kapcsolatos további információkért tekintse meg a [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) -fürtökhöz című dokumentumot.
+A HDInsight virtuális hálózattal való használatával kapcsolatos további információkért tekintse meg a [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md) című dokumentumot.
 
 Az Azure-Virtual Network pont – hely típusú VPN-átjáróval való létrehozásával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

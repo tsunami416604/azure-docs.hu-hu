@@ -4,15 +4,16 @@ description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apa
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779528"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960262"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -38,7 +39,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 2. A bal oldali menüben navigáljon a **+ erőforrás** > létrehozása**elemzési** > **HDInsight**elemre.
    
-    ![HDInsight-fürt létrehozása](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![HDInsight-fürt létrehozása](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. Az **Alapvető beállítások** képernyőn adja meg vagy válassza ki a következő információkat:
 
@@ -49,7 +50,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     
    Válassza ki a __Fürt típusát__ a **Fürtkonfiguráció** megjelenítéséhez.
    
-   ![A HDInsight-beli Apache Kafka-fürt alapszintű konfigurálása](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![A HDInsight-beli Apache Kafka-fürt alapszintű konfigurálása](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. A __fürtkonfiguráció__területen válassza ki a következő értékeket:
 
@@ -58,9 +59,9 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     | Fürt típusa | Kafka |
     | Version | Kafka 1.1.0 (HDI 3.6) |
 
-    Válassza a **kijelölés** lehetőséget a fürt típusának beállításainak mentéséhez ésaz alapismeretekhez való visszatéréshez.
+    Válassza a **kijelölés** lehetőséget a fürt típusának beállításainak mentéséhez és az __alapismeretekhez__való visszatéréshez.
 
-    ![Fürt típusának kiválasztása](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![Fürt típusának kiválasztása](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. Az __Alapvető beállítások__ képernyőn adja meg vagy válassza ki a következő információkat:
 
@@ -98,7 +99,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
     A **lemezek száma feldolgozó csomópontonként** bejegyzés az Apache Kafka on HDInsight skálázhatóságát konfigurálja. Az Apache Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel az Apache Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Apache Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
-   ![Az Apache Kafka-fürt méretének beállítása](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Az Apache Kafka-fürt méretének beállítása](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra az alapértelmezett beállítások használatával való folytatáshoz.
 
@@ -300,7 +301,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
 > [!WARNING]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
+> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban.
 > 
 > Az Apache Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309616"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984938"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -244,7 +244,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 3. Állítsa be az **Azure-szolgáltatások hozzáférés engedélyezése** a kikapcsoláshoz lehetőséget.
 
     > [!IMPORTANT]
-    > Ha a vezérlőt a be értékre hagyja, akkor a Azure SQL Database-kiszolgáló bármely alhálózatról fogadja a kommunikációt. Ha a vezérlőt a be értékre állítja, előfordulhat, hogy a biztonsági szempontból túlságosan nagy a hozzáférés. A Microsoft Azure Virtual Network szolgáltatási végpont funkciója, amely a SQL Database virtuális hálózati szabály funkciójával együttműködve csökkenti a biztonsági felületét.
+    > Ha a vezérlőt a be értékre állítja, akkor a Azure SQL Database-kiszolgáló minden olyan IP-címről érkező kommunikációt fogad, amely az Azure-adatközpontok számára meghatározott tartományon belül ismert. Ha a vezérlőt a be értékre állítja, előfordulhat, hogy a biztonsági szempontból túlságosan nagy a hozzáférés. A Microsoft Azure Virtual Network szolgáltatási végpont funkciója, amely a SQL Database virtuális hálózati szabály funkciójával együttműködve csökkenti a biztonsági felületét.
 
 4. Kattintson a **+ meglévő vezérlő hozzáadása** lehetőségre a **Virtual Networks (virtuális hálózatok** ) szakaszban.
 

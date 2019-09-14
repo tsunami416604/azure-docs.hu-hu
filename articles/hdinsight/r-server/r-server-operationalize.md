@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736221"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967661"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -50,31 +50,31 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
 
-    ![one box op](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![egy box-op1](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Ezzel a lehetőséggel megadhatja, hogyan szeretné működővé tenni ML Server. A megjelenő beállítások közül válassza ki az elsőt a következő beírásával **:.**
 
-    ![one box op](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![egy box-op2](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Ha a rendszer kéri, írja be és írja be újra a helyi rendszergazda felhasználó jelszavát.
 
 1. A művelet sikerességét sugalló kimenetnek kell megjelennie. A menüben egy másik lehetőséget is meg kell adnia. Válassza az E lehetőséget a főmenüre való visszatéréshez.
 
-    ![one box op](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![egy box-op3](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. A diagnosztikai ellenőrzéseket a következőképpen végezheti el diagnosztikai tesztek futtatásával:
 
     a. A főmenüben válassza a **6** lehetőséget a diagnosztikai tesztek futtatásához.
 
-    ![one box op](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. A diagnosztikai tesztek menüből válassza ki **a**következőt:. Ha a rendszer kéri, adja meg a helyi rendszergazda felhasználóhoz megadott jelszót.
 
-    ![one box op](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Győződjön meg arról, hogy a kimenetben látható, hogy a teljes állapot pass.
 
-    ![one box op](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. A megjelenő menüben adja meg az **E** gombot a főmenühöz való visszatéréshez, majd írja be a **8-as** értéket a felügyeleti segédprogramból való kilépéshez.
 

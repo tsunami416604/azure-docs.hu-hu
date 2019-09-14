@@ -14,20 +14,20 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 3639eef1e95b354298b718af24217a8fbefb3a74
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173374"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967965"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
+Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Azure Service Bus üzenetkezelési funkciói (Queues and publish/subscribe) a népszerű Java Message Service-(JMS-) API-szabvány használatával. Ez a [cikk](service-bus-amqp-dotnet.md) azt ismerteti, hogyan végezheti el ugyanezt a Azure Service Bus .NET API használatával. A két útmutató együttes használatával megismerheti a AMQP 1,0-et használó platformok közötti üzenetkezelést.
+
 A Advanced Message Queueing Protocol (AMQP) 1,0 egy hatékony, megbízható, vezeték nélküli üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen üzenetkezelési alkalmazások hozhatók létre.
 
-A AMQP 1,0-es verziójának támogatása a Service Bus azt jelenti, hogy a több platformon futó, felügyelt és feliratkozott üzenetkezelési funkciókat egy hatékony bináris protokoll használatával lehet használni. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.
-
-Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Service Bus üzenetkezelési funkciói (Queues and publish/subscribe) a népszerű Java Message Service-(JMS-) API-szabvány használatával. Ez a [cikk](service-bus-amqp-dotnet.md) azt ismerteti, hogyan végezheti el ugyanezt a Service Bus .NET API használatával. A két útmutató együttes használatával megismerheti a AMQP 1,0-et használó platformok közötti üzenetkezelést.
+A AMQP 1,0-es verziójának támogatása a Azure Service Bus azt jelenti, hogy a több platformon futó, felügyelt és feliratkozott üzenetkezelési funkciókat egy hatékony bináris protokoll használatával lehet használni. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.
 
 ## <a name="get-started-with-service-bus"></a>A Service Bus használatának első lépései
 Ez az útmutató feltételezi, hogy már rendelkezik egy **basicqueue**nevű várólistát tartalmazó Service Bus névtérrel. Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).

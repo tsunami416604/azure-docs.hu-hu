@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 0ae717487f1538536601c8578e744d976798bf76
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899939"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967862"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -21,7 +21,7 @@ ms.locfileid: "70899939"
 
 A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az IntelliSense (kód befejezése), az r-könyvtárakon keresztüli [vizualizációk](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) , például a ggplot2 és a ggviz, az [r-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging)stb.
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>A környezet beállítása
 
 1. [A Visual studióhoz készült R Tools](https://docs.microsoft.com/visualstudio/rtvs/installation)telepítése.
 
@@ -55,7 +55,8 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](https
 5. Nyissa `1-Getting Started with R.R` meg a fájlt `A first look at R` a megoldás mappájából.
 6. A fájl elejétől kezdve nyomja le a CTRL + ENTER billentyűkombinációt az egyes sorok egyszerre történő elküldéséhez az R interaktív ablakba. Egyes sorok a csomagok telepítésekor eltarthat egy ideig.
     * Azt is megteheti, hogy kijelöli az R-fájl összes sorát (CTRL + A), majd végrehajtja az összeset (CTRL + ENTER), vagy kiválasztja az interaktív végrehajtás ikont az eszköztáron.
-        ![Interaktív végrehajtás](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![Interaktív végrehajtás](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. A parancsfájlban szereplő összes sor futtatása után a következőhöz hasonló kimenetnek kell megjelennie:
 
@@ -82,20 +83,20 @@ Ha egy Microsoft ml Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![A Spark-környezet beállítása](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![A Spark-környezet beállítása](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. Hajtsa végre a következő parancsokat az R interaktív ablakban:
 
@@ -107,13 +108,12 @@ Ha egy Microsoft ml Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Az RX-parancs sikeres végrehajtása](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![Az RX-parancs](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) sikeres végrehajtása
 1. Ellenőrizze, hogy `rxHadoopCopy` a `people.json` fájl sikeresen átmásolva lett-e a példa adatmappából az újonnan létrehozott `/user/RevoShare/newUser` mappába:
 
     1. Az Azure HDInsight ML-szolgáltatások fürtjének paneljén válassza a bal oldali menüben a **Storage-fiókok** lehetőséget.
 
-        ![Tárfiókok](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![Tárfiókok](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Válassza ki a fürt alapértelmezett Storage-fiókját, jegyezze fel a tároló/könyvtár nevét.
 
@@ -123,7 +123,7 @@ Ha egy Microsoft ml Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
 
     4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare*, majd a **newUser**lehetőséget. A `people.json` fájlnak a `newUser` mappában kell megjelennie.
 
-        ![Fájl másolva](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![Fájl másolva](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Miután befejezte az aktuális Apache Spark környezet használatát, le kell állítania azt. Egyszerre nem futtathat több kontextust.
 

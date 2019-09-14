@@ -1,22 +1,17 @@
 ---
 title: Ajánlott eljárások Azure Resource Manager-sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/16/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 361fcc6b60e863ee43d348cedd6b1571f3f563a2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812908"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983828"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager sablon – ajánlott eljárások
 
@@ -47,7 +42,8 @@ Amikor erőforrásokat telepít egy erőforráscsoporthoz, az erőforráscsoport
 Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A kockázat minimalizálásához keresse meg az erőforráscsoportot és az erőforrásokat ugyanabban a régióban.
 
 ## <a name="parameters"></a>Paraméterek
-Az ebben a szakaszban található információk hasznosak lehetnek, ha [paraméterekkel](resource-group-authoring-templates.md#parameters)dolgozik.
+
+Az ebben a szakaszban található információk hasznosak lehetnek, ha [paraméterekkel](template-parameters.md)dolgozik.
 
 ### <a name="general-recommendations-for-parameters"></a>Paraméterekre vonatkozó általános javaslatok
 
@@ -149,7 +145,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 ## <a name="variables"></a>Változók
 
-A következő információk hasznosak lehetnek a [változók](resource-group-authoring-templates.md#variables)használatakor:
+A következő információk hasznosak lehetnek a [változók](template-variables.md)használatakor:
 
 * A Camel Case változó nevek használata.
 
@@ -169,7 +165,7 @@ A következő információk hasznosak lehetnek a [változók](resource-group-aut
 
 ## <a name="resource-dependencies"></a>Erőforrás-függőségek
 
-A beállított [függőségek](resource-group-define-dependencies.md) meghatározásakor kövesse az alábbi irányelveket:
+A beállított függőségek [](resource-group-define-dependencies.md) meghatározásakor kövesse az alábbi irányelveket:
 
 * Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. Ha már definiált `dependsOn` implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
 
@@ -183,9 +179,9 @@ A beállított [függőségek](resource-group-define-dependencies.md) meghatáro
 
 ## <a name="resources"></a>További források
 
-A következő információk hasznosak lehetnek az [erőforrásokkal](resource-group-authoring-templates.md#resources)való munka során:
+A következő információk hasznosak lehetnek az erőforrásokkal való [](resource-group-authoring-templates.md#resources)munka során:
 
-* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját, a sablonban szereplő egyes erőforrások **megjegyzéseit** kell megadnia:
+* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját , a sablonban szereplő egyes erőforrások megjegyzéseit kell megadnia:
    
    ```json
    "resources": [
@@ -286,7 +282,7 @@ A következő információk hasznosak lehetnek az [erőforrásokkal](resource-gr
 
 ## <a name="outputs"></a>Kimenetek
 
-Ha a nyilvános IP-címek létrehozásához sablont használ, adjon meg egy [kimenet szakaszt](resource-group-authoring-templates.md#outputs) , amely az IP-cím és a teljes tartománynév (FQDN) adatait adja vissza. Nyilvános IP-címek és teljes tartománynevek könnyen hozzáférhet az üzembe helyezést követően a kimeneti értékeket is használhat.
+Ha a nyilvános IP-címek létrehozásához sablont használ, adjon meg egy [kimenet szakaszt](template-outputs.md) , amely az IP-cím és a teljes tartománynév (FQDN) adatait adja vissza. Nyilvános IP-címek és teljes tartománynevek könnyen hozzáférhet az üzembe helyezést követően a kimeneti értékeket is használhat.
 
 ```json
 "outputs": {

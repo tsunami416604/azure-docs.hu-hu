@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: c986b4efea905ce4e1d9ee6f08b688fe6ef6ef5e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142557"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984228"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -36,14 +36,14 @@ A Data Factory három típusú tevékenységet támogat: az [adattovábbítási 
 
 A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az adatkészlet létrehozását követően használhatja azt egy folyamat tevékenységei esetében. Az adatkészletek lehetnek például egy másolási tevékenység vagy egy HDInsightHive-tevékenység be- vagy kimeneti adatkészletei. Az adatkészletekről további információkat [Az Azure Data Factory adatkészletei](concepts-datasets-linked-services.md) cikkben talál.
 
-## <a name="data-movement-activities"></a>Adattovábbítási tevékenységek
+## <a name="data-movement-activities"></a>Adatáthelyezési műveletek
 A Data Factory másolási tevékenysége adatokat másol egy forrásadattárból egy fogadó adattárba. A Data Factory a jelen szakaszban található táblában felsorolt adattárakat támogatja. Az adatok bármilyen forrásból bármilyen fogadóba másolhatók. Az adattárra kattintva megtudhatja, hogy az adott tárolóba, illetve tárolóból hogyan másolhat adatokat.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
 
 További információkat a [Másolási tevékenység áttekintése](copy-activity-overview.md) cikkben talál.
 
-## <a name="data-transformation-activities"></a>Adatátalakítási tevékenységek
+## <a name="data-transformation-activities"></a>Adatátalakítási műveletek
 Az Azure Data Factory a következő átalakítási tevékenységeket támogatja, amelyek önállóan vagy más tevékenységekkel összekapcsolva adhatók hozzá a folyamatokhoz.
 
 Adatátalakítási tevékenység | Számítási környezet
@@ -95,7 +95,7 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Leírás | Type | Kötelező
+Címke | Leírás | Type | Szükséges
 --- | ----------- | ---- | --------
 name | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | Sztring | Igen
 description | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Sztring | Nem
@@ -128,7 +128,7 @@ A végrehajtási tevékenységek közé az [adatáthelyezési](#data-movement-ac
 
 Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonságok szerepelnek:
 
-Címke | Leírás | Kötelező
+Címke | Leírás | Szükséges
 --- | ----------- | ---------
 name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
 description | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
@@ -149,7 +149,7 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
     "properties": {
       "activities": [
         {
-          "name": "MyCopyBlobtoSqlActivity"
+          "name": "MyCopyBlobtoSqlActivity",
           "type": "Copy",
           "typeProperties": {
             ...
@@ -169,7 +169,7 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 }
 ```
 
-JSON-név | Leírás | Megengedett értékek | Kötelező
+JSON-név | Leírás | Megengedett értékek | Szükséges
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Timespan | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Integer | Nem. Az alapértelmezett érték: 0
@@ -193,7 +193,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 }
 ```
 
-Címke | Leírás | Kötelező
+Címke | Leírás | Szükséges
 --- | ----------- | --------
 name | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel vagy aláhúzással (\_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
 description | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen

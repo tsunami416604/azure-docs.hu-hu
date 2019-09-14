@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 20c4571ee795c280e6c916e3080279a6d13fecce
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814211"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984819"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Database-be való adatolvasásra és-írásra
 
@@ -182,7 +182,7 @@ Ebben a szakaszban az előző szakaszban az Azure SQL Database-ben már létreho
 
 1. A kimenet a **HVAC. csv**sémáját jeleníti meg. A **hvactable** ugyanazzal a sémával is rendelkezik. A kimenet listázza a tábla oszlopait.
 
-    ![Tábla sémája](./media/apache-spark-connect-to-sql-database/schema-of-table.png "Tábla sémája")
+    ![Tábla sémája](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tábla sémája")
 
 1. Végül használja az alábbi kódrészletet az adatok beolvasásához a HVAC. csv fájlból, és továbbítsa azt a **hvactable** az Azure SQL Database-ben. Illessze be a kódrészletet egy kód cellájába, cserélje le a helyőrző értékeket az Azure SQL Database-adatbázis értékeire, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 

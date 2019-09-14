@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515842"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984002"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -36,7 +36,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
 |  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
 |  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    Nem    |
-|  Az egyidejű IP-címek száma VNet (beleértve a virtuális hálózatok is), amelyek hozzáférhetnek Azure NetApp Files   |    1000   |    Nem   |
+|  Azon IP-címek száma a VNet (beleértve a virtuális hálózatok is), amelyek hozzáférhetnek Azure NetApp Files   |    1000   |    Igen   |
 |  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    Nem  |
 |  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   Nem   |
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
@@ -53,7 +53,7 @@ Azure Portal navigációs síkon:
 2. Kattintson az **+ új támogatási kérelem**elemre.
 3. Az alapvető beállítások lapon adja meg a következő információkat: 
     1. Probléma típusa: Válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-    2. Előfizetések: Válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
+    2. Előfizetések Válassza ki az erőforráshoz tartozó előfizetést, amelyre szüksége van a kvóta növeléséhez.
     3. Kvóta típusa: Tároló **kiválasztása: Azure NetApp Files korlátok**.
     4. Kattintson **a Tovább gombra: Megoldások**.
 4. A Részletek lapon:

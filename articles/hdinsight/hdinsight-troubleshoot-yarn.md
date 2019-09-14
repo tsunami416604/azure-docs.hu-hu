@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 15ef18663a42153c11a55d4c5963d47f0e2514d6
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573709"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961714"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Azure HDInsight használatával Apache Hadoop-FONALak hibáinak megoldása
 
@@ -33,27 +33,27 @@ Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thrif
 
 1. Válassza ki a **Ambari-nézetek** ikonra, és válassza ki a rács minta. Majd **YARN üzenetsor-kezelő**.
 
-    ![Az Ambari-nézetek ikon kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Az Ambari-nézetek ikon kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Válassza ki a **alapértelmezett** várólista.
 
-    ![Az alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![Az alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Az a **alapértelmezett** várólista, módosítsa a **kapacitás** 50 % 25 %-át. Az a **thriftsvr** várólista, módosítsa a **kapacitás** 25 %-át.
 
-    ![A kapacitás módosításához 25 %-át az alapértelmezett és thriftsvr várólisták](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![A kapacitás módosításához 25 %-át az alapértelmezett és thriftsvr várólisták](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Új várólista létrehozásához válassza **üzenetsor hozzáadása**.
 
-    ![Válassza ki az üzenetsor hozzáadása](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Válassza ki az üzenetsor hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Adjon nevet az új üzenetsort.
 
-    ![A Spark várólista neve](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![A Spark várólista neve](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Hagyja a **kapacitás** értékek 50 %-át, és válassza ki a **műveletek** gombra.
 
-    ![A műveletek gomb kiválasztása](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![A műveletek gomb kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Válassza ki **mentse, és frissítse az üzenetsorok**.
 
-    ![Válassza a Mentés és a frissítést](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Válassza a Mentés és a frissítést](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonnal láthatók.
 
@@ -141,4 +141,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 - Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a Azure Portaltól [](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

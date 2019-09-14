@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9bccd826a37b66f7f89e70c57260a0db08342421
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019191"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965137"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Az alábbi példa a [kubectl autoscale][kubectl-autoscale] paranccsal a hüvelyek számát az *Azure-vote-elülső* telepítésben használja. Ha a CPU-kihasználtság meghaladja a 50%-ot, az autoskálázás legfeljebb *10* példányra növeli a hüvelyt. Ezután legalább *3* példányt definiálnak a központi telepítéshez:
+Az alábbi példa a [kubectl autoscale][kubectl-autoscale] paranccsal a hüvelyek számát az *Azure-vote-elülső* telepítésben használja. Ha az összes hüvely átlagos CPU-kihasználtsága meghaladja a kért használat 50%-át, az autoskálázás legfeljebb *10* példányra növeli a hüvelyt. Ezután legalább *3* példányt definiálnak a központi telepítéshez:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

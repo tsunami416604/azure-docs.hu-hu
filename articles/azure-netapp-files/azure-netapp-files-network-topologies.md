@@ -3,7 +3,7 @@ title: Útmutató a Azure NetApp Files Network Planning szolgáltatáshoz | Micr
 description: Útmutatást nyújt a hatékony hálózati architektúra kialakításához Azure NetApp Files használatával.
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383500"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984126"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -36,13 +36,13 @@ Azure NetApp Files hálózat tervezésekor érdemes figyelembe vennie néhány m
 Az alábbi funkciók jelenleg nem támogatottak a Azure NetApp Files esetén: 
 
 * A delegált alhálózatra alkalmazott hálózati biztonsági csoportok (NSG-EK)
-* Felhasználó által megadott útvonalak (UDR-EK) a következő ugrással Azure NetApp-fájlok alhálózatként
+* Felhasználó által megadott útvonalak (UDR-EK) az Azure NetApp-fájlok alhálózata címének előtagjaként
 * Azure-szabályzatok (például egyéni elnevezési házirendek) a Azure NetApp Files felületen
 * Terheléselosztó Azure NetApp Files forgalomhoz
 
 A következő hálózati korlátozások érvényesek Azure NetApp Filesre:
 
-* A Azure NetApp Files (beleértve a társas virtuális hálózatok) VNet használt IP-címek száma nem haladhatja meg az 1000-ot.
+* A Azure NetApp Files (beleértve a társas virtuális hálózatok) VNet használt IP-címek száma nem haladhatja meg az 1000-ot. Dolgozunk a határérték növelésén, hogy megfeleljen az ügyfelek méretezési igényeinek. Ha további IP-címekre van szüksége, forduljon az ügyfélszolgálathoz a használati eset és a szükséges korlát alapján.
 * Minden egyes Azure-Virtual Network (VNet) esetében csak egy alhálózat delegálható Azure NetApp Fileshoz.
 
 

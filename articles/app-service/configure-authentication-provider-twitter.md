@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232054"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983598"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>A App Service alkalmazás konfigurálása a Twitter-bejelentkezés használatára
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,9 +31,9 @@ A jelen témakörben ismertetett eljárás végrehajtásához olyan Twitter-fió
 ## <a name="register"> </a>Alkalmazás regisztrálása a Twitteren
 1. Jelentkezzen be a [Azure Portal], és navigáljon az alkalmazáshoz. Másolja az **URL-címet**. Ezt fogja használni a Twitter-alkalmazás konfigurálásához.
 2. Navigáljon a [Twitter-fejlesztők] webhelyre, jelentkezzen be a Twitter-fiókja hitelesítő adataival, és kattintson az **új alkalmazás létrehozása**elemre.
-3. Írja be az új alkalmazás **nevét** és **leírását** . Illessze be az alkalmazás **URL-címét** a **webhely** értékéhez. Ezután a visszahívási **URL-cím**mezőbe írja be a app Service alkalmazás URL-címét, `/.auth/login/aad/callback`és adja hozzá az elérési utat. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Győződjön meg arról, hogy a HTTPS-sémát használja.
+3. Írja be az új alkalmazás **nevét** és **leírását** . Illessze be az alkalmazás **URL-címét** a **webhely** értékéhez. Ezután a **visszahívási URL-cím**mezőbe írja be a app Service alkalmazás URL-címét, `/.auth/login/twitter/callback`és adja hozzá az elérési utat. Például: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Győződjön meg arról, hogy a HTTPS-sémát használja.
 4. A lap alján olvassa el és fogadja el a feltételeket. Ezután kattintson **a Twitter-alkalmazás létrehozása**elemre. Megjelenik az alkalmazás részletei.
-5. Kattintson a **Beállítások** lapra, jelölje be az **alkalmazás használatának engedélyezése**a Twitterrel való bejelentkezéshez lehetőséget, majd kattintson a **beállítások frissítése**elemre.
+5. Kattintson a **Beállítások** lapra, jelölje be az **alkalmazás használatának engedélyezése a Twitterrel való bejelentkezéshez lehetőséget**, majd kattintson a **beállítások frissítése**elemre.
 6. Válassza a **kulcsok és hozzáférési tokenek** fület. Jegyezze fel a **fogyasztói kulcs (API-kulcs)** és a **fogyasztói titok (API-titok)** értékeit.
    
    > [!NOTE]

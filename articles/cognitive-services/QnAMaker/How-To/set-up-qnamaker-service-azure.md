@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277607"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984362"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -87,6 +87,8 @@ Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure 
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Végponti kulcsok keresése a QnA Maker portálon
 
+A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
+
 Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
 
 1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai**:
@@ -111,6 +113,8 @@ QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmego
 |App Service|X|Nem lehetséges a kialakítás|
 |Application Insights|✔|Megosztható|
 |Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név, amelyet mások nem használhatnak.<br>2. A név `synonym-map` szerint a QnAMaker szolgáltatás számára van fenntartva a szinonimák leképezése.<br>3. A közzétett tudásbázisok számát a keresési szolgáltatás szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
+
+További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 
 ### <a name="using-a-single-search-service"></a>Egyetlen keresési szolgáltatás használata
 
@@ -202,6 +206,8 @@ A jelenlegi verzióját a következő címen tekintheti meg: https://www.qnamake
 QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti adatfeldolgozás esetében használatos. Ez a szolgáltatás csak az USA nyugati régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
 
 ## <a name="next-steps"></a>További lépések
+
+További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
 > [Hozzon létre és Tudásbázis közzététele](../Quickstarts/create-publish-knowledge-base.md)

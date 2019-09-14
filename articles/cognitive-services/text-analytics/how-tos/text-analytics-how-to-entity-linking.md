@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390264"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984264"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -47,7 +47,6 @@ Az entitások különböző nyelveken való összekapcsolásához a megfelelő t
 | Mennyiség      | Szám        | „6”, „six”     |
 | Mennyiség      | Százalék    | „50%”, „fifty percent”|
 | Mennyiség      | Sorszám       | „2nd”, „second”     |
-| Mennyiség      | Számtartomány   | „4 to 8”     |
 | Mennyiség      | Kor           | "90 napos", "30 év régi"    |
 | Mennyiség      | Currency      | „$10.99”     |
 | Mennyiség      | Dimenzió     | „10 miles”, „40 cm”     |
@@ -59,7 +58,6 @@ Az entitások különböző nyelveken való összekapcsolásához a megfelelő t
 | DateTime      | Időtartomány     | „6pm to 7pm”     |
 | DateTime      | Duration      | „1 minute and 45 seconds”   |
 | DateTime      | Beállítás           | „every Tuesday”     |
-| DateTime      | Időzóna      |    |
 | URL           | N/A\*         | "https:\//www.Bing.com"    |
 | Email         | N/A\*         | "support@contoso.com" |
 

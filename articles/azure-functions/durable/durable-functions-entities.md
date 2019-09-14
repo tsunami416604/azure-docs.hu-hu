@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 419505404214d60a2c928770a34384f80c8446cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: HT
+ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935872"
+ms.locfileid: "70961468"
 ---
 # <a name="entity-functions-preview"></a>Entity functions (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az entitások (más néven Entity *instances*) egy egyedi azonosítóval, az *en
 
 Előfordulhat például, hogy egy *számláló* entitás függvényt egy online játékban kell tartani. A játék minden példánya egyedi azonosítóval fog rendelkezni, például `@Counter@Game1`, `@Counter@Game2`, stb. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
 
-## <a name="programing-models"></a>Programozási modellek
+## <a name="programming-models"></a>Programozási modellek
 
 A tartós entitások két különböző programozási modellt támogatnak. Az első modell egy dinamikus "funkcionális" modell, amelyben az entitás egyetlen függvénnyel van definiálva. A második modell egy objektumorientált modell, amelyben az entitást osztály és módszerek határozzák meg. Ezeket a modelleket és az entitásokkal való interakció programozási modelljét a következő szakaszokban ismertetjük.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389765"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959938"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -42,15 +42,15 @@ Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban 
 
 ## <a name="deployment-requirements"></a>Üzembe helyezési követelmények
 
-* Az Azure AD jelszavas védelemmel kapcsolatos licencelési követelmények a következő cikkben találhatók: [helytelen jelszavak eltávolítása a szervezetében](concept-password-ban-bad.md#license-requirements).
-* A Windows Server 2012-es vagy újabb verziójának kell futnia minden olyan tartományvezérlőn, amely az Azure AD jelszavas védelméhez a DC Agent szolgáltatást telepíti. Ez a követelmény nem jelenti azt, hogy a Active Directory tartománynak vagy erdőnek Windows Server 2012 tartomány vagy erdő működési szintjén kell lennie. A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint nem szükséges minimális DFL vagy FFL a DC-ügynök vagy a proxy szoftver futtatásához.
+* Az Azure AD jelszavas védelemmel kapcsolatos licencelési követelmények a következő cikkben találhatók: [helytelen jelszavak eltávolítása](concept-password-ban-bad.md#license-requirements)a szervezetében.
+* A Windows Server 2012-es vagy újabb verziójának kell futnia minden olyan tartományvezérlőn, amely az Azure AD jelszavas védelméhez a DC Agent szolgáltatást telepíti. Ez a követelmény nem jelenti azt, hogy a Active Directory tartománynak vagy erdőnek Windows Server 2012 tartomány vagy erdő működési szintjén kell lennie. A [tervezési](concept-password-ban-bad-on-premises.md#design-principles)alapelvekben említettek szerint nem szükséges minimális DFL vagy FFL a DC-ügynök vagy a proxy szoftver futtatásához.
 * A DC Agent szolgáltatást futtató összes gépnek telepítve kell lennie a .NET 4,5-nek.
 * Az Azure AD jelszavas védelemhez telepített proxy szolgáltatást futtató összes gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.
    > [!NOTE]
    > A proxykiszolgáló üzembe helyezése kötelezően szükséges az Azure AD jelszavas védelem üzembe helyezéséhez, annak ellenére, hogy a tartományvezérlő rendelkezik kimenő közvetlen internetkapcsolattal. 
    >
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, telepítve kell lennie a .NET 4,7-nek.
-  A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7-es offline telepítője a Windowshoz](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha ez nem igaz, töltse le és futtassa a következőt: a [.NET-keretrendszer 4,7](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)-es offline telepítője a Windowshoz.
 * Az Azure AD jelszavas védelem összetevőit futtató összes gépnek telepítve kell lennie az univerzális C futtatókörnyezetnek. A futtatókörnyezet beszerzéséhez győződjön meg arról, hogy Windows Update összes frissítését elvégezte. Azt is megteheti, hogy egy operációs rendszerre vonatkozó frissítési csomagban van. További információ: az [univerzális C futtatókörnyezet frissítése a Windowsban](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * A hálózati kapcsolatnak léteznie kell legalább egy, az egyes tartományokban lévő tartományvezérlő és legalább egy olyan kiszolgáló között, amely a proxykiszolgáló számára a jelszavas védelmet tárolja. Ez a kapcsolat lehetővé teszi, hogy a tartományvezérlő hozzáférhessen az RPC Endpoint Mapper port 135-es portjához és a proxykiszolgáló RPC-kiszolgáló portjához. Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * A proxy szolgáltatást futtató összes gépnek hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
@@ -65,6 +65,14 @@ Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban 
 * Globális rendszergazdai fiók a proxykiszolgáló regisztrálásához a jelszavas védelemhez és az erdőhöz az Azure AD-vel.
 * Egy olyan fiók, amely Active Directory tartományi rendszergazdai jogosultságokkal rendelkezik az erdő gyökértartományában, hogy regisztrálja a Windows Server Active Directory erdőt az Azure AD-ben.
 * A DC Agent Service szoftvert futtató Active Directory tartományoknak elosztott fájlrendszer replikációt (DFSR) kell használniuk a SYSVOL-replikációhoz.
+
+  Ha a tartomány még nem használja a DFSR-t, akkor az Azure AD jelszavas védelem telepítése előtt át kell telepítenie a DFSR használatára. További információt a következő hivatkozásra kattintva talál:
+
+  [SYSVOL-replikáció áttelepítési útmutatója: FRS – Elosztott fájlrendszer replikációs szolgáltatása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Az Azure AD jelszavas védelem TARTOMÁNYVEZÉRLŐi ügynöke jelenleg a SYSVOL-replikációhoz használt FRS (a megelőző technológia DFSR) használatával működő tartományvezérlőkön települ, de a szoftver nem fog megfelelően működni ebben a környezetben. További negatív mellékhatások például az egyes fájlok replikálásának meghiúsulása, a SYSVOL visszaállítási eljárásai pedig sikeresek, de az összes fájl replikálásának csendes sikertelensége esetén sikertelenek lesznek. A tartományt a lehető leghamarabb telepítse át a DFSR használatára, mind a DFSR rejlő előnyeit, mind pedig az Azure AD jelszavas védelem üzembe helyezésének feloldását is. A szoftver jövőbeli verziói automatikusan le lesznek tiltva, ha olyan tartományban fut, amely továbbra is FÁJLREPLIKÁCIÓS szolgáltatást használ.
+
 * A Key Distribution szolgáltatást engedélyezni kell a Windows Server 2012 rendszert futtató tartomány összes tartományvezérlőjén. Ez a szolgáltatás alapértelmezés szerint a manuális trigger indításával engedélyezhető.
 
 ## <a name="single-forest-deployment"></a>Egyerdős telepítés
@@ -105,7 +113,7 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
 
       `Get-Service AzureADPasswordProtectionProxy | fl`.
 
-     Az eredménynek a "Running" **állapotot** kell mutatnia.
+     Az eredménynek a " Running" állapotot kell mutatnia.
 
 1. Regisztrálja a proxyt.
    * A 3. lépés befejezése után a proxy szolgáltatás fut a gépen. A szolgáltatás azonban még nem rendelkezik az Azure AD-vel való kommunikációhoz szükséges hitelesítő adatokkal. Az Azure AD-vel való regisztráció szükséges:

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 09/12/2019
 ms.author: roiyz
-ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 200a5e93c24f6aa4ecf9d76cffac261d83498d02
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084331"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958838"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure-beli virtuálisgép-bővítmények és-funkciók
 Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációt és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken, meglévő lemezképeket használhat, majd az üzembe helyezés részeként testreszabhatja azokat, így az egyéni tevékenységek rendszerkép kiépítése.
@@ -37,7 +37,7 @@ Példák a bővítmények által használt főbb forgatókönyvekre:
 A bővítmények a virtuális gépek új üzembe helyezésével is elhelyezhetők. Lehetnek például egy nagyobb üzembe helyezések, a virtuális gépek üzembe helyezése, illetve a támogatott bővítmények által a telepítés után futtatott alkalmazások.
 
 ## <a name="how-can-i-find-what-extensions-are-available"></a>Hogyan találhatom meg a rendelkezésre álló bővítményeket?
-Az elérhető bővítmények a portál virtuálisgép-paneljén tekinthetők meg, a bővítmények alatt ez csupán kis mennyiségű, a teljes listához használhatja a CLI-eszközöket, lásd: a virtuálisgép-bővítmények felfedése [Linuxra](features-linux.md) és a [Windows rendszerhez](features-windows.md)készült virtuálisgép-bővítmények felfedése.
+Az elérhető bővítmények a portál virtuálisgép-paneljén tekinthetők meg, a bővítmények alatt ez csupán kis mennyiségű, a teljes listához használhatja a CLI-eszközöket, lásd: a virtuálisgép- [bővítmények felfedése Linuxra](features-linux.md) és a [Windows rendszerhez készült virtuálisgép-bővítmények felfedése](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Hogyan telepíthetek bővítményt?
 Az Azure virtuálisgép-bővítmények az Azure CLI, Azure PowerShell, Azure Resource Manager sablonok és a Azure Portal használatával kezelhetők. A bővítmény kipróbálásához lépjen a Azure Portalra, válassza ki az egyéni parancsfájl-bővítményt, majd adjon át egy parancsot/parancsfájlt, és futtassa a bővítményeket.
@@ -49,6 +49,30 @@ A bővítmény telepítéséhez és törléséhez nem kell közvetlenül csatlak
 
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Bármi mást érdemes meggondolni a bővítményekhez?
 A bővítmények telepítik az alkalmazásokat, például az alkalmazások bizonyos követelményeit, a bővítmények esetében a támogatott Windows-és Linux-alapú operációs rendszerek listája szerepel, és telepítenie kell az Azure virtuálisgép-ügynököket. A virtuálisgép-bővítmények egyes alkalmazásai rendelkezhetnek saját környezeti előfeltételekkel, például egy végponthoz való hozzáféréssel.
+
+## <a name="troubleshoot-extensions"></a>Bővítmények hibaelhárítása
+
+Az egyes bővítményekkel kapcsolatos hibaelhárítási információk a bővítmény áttekintésében, a **Hibaelhárítás és támogatás** szakaszban találhatók. Itt látható az elérhető hibaelhárítási információk listája:
+
+| Névtér | Hibaelhárítás |
+|-----------|-----------------|
+| Microsoft. Azure. monitoring. dependencyagent. dependencyagentlinux | [Linux-függőség Azure Monitor](agent-dependency-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. monitoring. dependencyagent. dependencyagentwindows | [Windows-függőség Azure Monitor](agent-dependency-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryptionforlinux | [Linux-Azure Disk Encryption](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. azurediskencryption | [Windows Azure Disk Encryption](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| Microsoft. számítás. customscriptextension | [Egyéni parancsfájl a Windowshoz](custom-script-windows.md#troubleshoot-and-support) |
+| Microsoft. ostcextensions. customscriptforlinux | [A Linux kívánt állapotának konfigurálása](dsc-linux.md#troubleshoot-and-support) |
+| Microsoft. PowerShell. DSC | [A Windows kívánt állapotának konfigurálása](dsc-windows.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverlinux | [NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| Microsoft. hpccompute. nvidiagpudriverwindows | [NVIDIA GPU illesztőprogram-bővítmény a Windowshoz](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| Microsoft. Azure. Security. iaasantimalware | [Antimalware-bővítmény a Windows rendszerhez](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| Microsoft. enterprisecloud. monitoring. omsagentforlinux | [Linux-Azure Monitor](oms-linux.md#troubleshoot-and-support)
+| Microsoft. enterprisecloud. monitoring. microsoftmonitoringagent | [Windows Azure Monitor](oms-windows.md#troubleshoot-and-support) |
+| stackify. linuxagent. Extension. stackifylinuxagentextension | [Stackify újrarajzolása Linux rendszeren](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. microsoft. ostcextensions | [Jelszó alaphelyzetbe állítása (VMAccess) Linux rendszeren](vmaccess.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices szolgáltatónál. vmsnapshot | [Linux-pillanatkép](vmsnapshot-linux.md#troubleshoot-and-support) |
+| Microsoft. recoveryservices szolgáltatónál. vmsnapshot | [Windows rendszerhez készült pillanatkép](vmsnapshot-windows.md#troubleshoot-and-support) |
+
 
 ## <a name="next-steps"></a>További lépések
 * A Linux-ügynök és-bővítmények működésével kapcsolatos további információkért lásd: Azure virtuálisgép- [bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

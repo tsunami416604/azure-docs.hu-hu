@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305485"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984233"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
@@ -44,11 +44,11 @@ A többi `Person`nyelvhez `Organization` csak a `Location` és a nevesített ent
 
 A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhető (GA) állapotra kell bevezetni, amely egymástól függetlenül, és a Text Analytics szolgáltatás teljes egészében. Lehetséges, hogy a nyelvek előzetes verzióban maradnak, még akkor is, ha a Text Analytics API általánosan elérhetővé vált.
 
-| Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Megnevezett entitások felismerése |   Megjegyzések  |
+| Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Nevesített entitások felismerése |   Megjegyzések  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | arab      | `ar`          |           |             | ✔ \*                     | |
 | cseh       | `cs`          |           |             | ✔ \*                     | |
-| Egyszerűsített kínai | `zh-CN`|           |             | ✔         |    |
+| Egyszerűsített kínai | `zh-CN`| ✔ \***     |             | ✔         |    |
 | dán      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | holland       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Angol     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
@@ -58,7 +58,7 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 | görög       | `el`          | ✔ \*     |             |            |     |
 | magyar   | `hu`          |           |             |  ✔ \*          |     | 
 | olasz     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| japán    | `ja`          |          | ✔           |  ✔ \*          |     |
+| japán    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | koreai      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norvég (nyelven) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | lengyel      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
@@ -71,7 +71,9 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 
 \*A nyelvi támogatás előzetes verzióban érhető el
 
-\*\*A [nevesített entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az entitások összekapcsolása egyaránt elérhető ehhez a nyelvhez. [](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)    
+\*\*A [nevesített entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az entitások összekapcsolása egyaránt elérhető ehhez a nyelvhez. [](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)  
+
+\** * Elérhető [Hangulatelemzés v3 nyilvános előzetes](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) verzióban
 
 ## <a name="see-also"></a>Lásd még
 

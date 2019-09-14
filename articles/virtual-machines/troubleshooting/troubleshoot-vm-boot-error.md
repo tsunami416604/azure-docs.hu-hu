@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gép rendszerindítási hibája
+title: Az Azure Virtual Machine rendszerindítási hibája
 description: Nem sikerült elindítani a virtuális gépet, mert a virtuális gép megadta a mentési konzolt
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 14bf7b289f3d03dd1437a18b0b5bd35fdec567ea
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143309"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984843"
 ---
 # <a name="vm-boot-error"></a>Virtuális gép rendszerindítási hibája
 
@@ -48,11 +48,11 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
     2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Ha `/boot/grub/menu.lst`a hiányzó fájl, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
+   * Ha `/boot/grub/menu.lst`a hiányzó fájl, akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok eltérhetnek. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
 
 ### <a name="error---no-such-partition"></a>Hiba – nincs ilyen partíció
 
-* Ha **nem kap ilyen partíciót**, tekintse meg az eseti [forgatókönyvet: "nincs ilyen partíció" hibaüzenetet, miközben megpróbálta ELINDÍTANI a virtuális gépet az operációs rendszer meghajtójának kibővítésére tett kísérlet után](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
+* Ha **nem kap ilyen partíciót**, tekintse meg az [eseti forgatókönyvet: "nincs ilyen partíció" hibaüzenetet, miközben megpróbálta ELINDÍTANI a virtuális gépet az operációs rendszer meghajtójának kibővítésére tett kísérlet után](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
 
 ### <a name="error---grubcfg-file-not-found"></a>Hiba – a grub. cfg fájl nem található
 

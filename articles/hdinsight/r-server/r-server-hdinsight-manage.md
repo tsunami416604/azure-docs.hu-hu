@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 3ff9cfbd312e672fb89afb4838ad9f8aa6574370
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900008"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967768"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>A ML Services-fürt kezelése az Azure HDInsight
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure HDInsight meglévő ML-
 
 Engedélyezheti több egyidejű felhasználó számára a HDInsight ML-szolgáltatások fürtjét azáltal, hogy további felhasználókat ad hozzá a peremhálózati csomóponthoz, amelyen a RStudio közösségi verziója fut. HDInsight-fürt létrehozásakor két felhasználót kell megadnia, egy HTTP-felhasználót és egy SSH-felhasználót:
 
-![1\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![1\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó fér hozzá az Apache Ambari felhasználói felületéhez, Apache Hadoop a fonal felhasználói felületéhez, valamint az egyéb felhasználói felületi összetevőkhöz.
 - **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
@@ -66,7 +66,7 @@ Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsoka
 
 Az alábbi képernyőfelvételen a kimenetek láthatók.
 
-![3\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![3\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Ha a rendszer az "aktuális Kerberos-jelszó:" üzenetet kéri, csak nyomja meg az **ENTER** billentyűt a mellőzéséhez. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
 

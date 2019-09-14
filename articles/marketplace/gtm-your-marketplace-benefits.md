@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309031"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962701"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -74,7 +74,7 @@ Minden olyan partner, aki élő ajánlattal rendelkezik, egy dedikált engagemen
 
 Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
 
-A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmazások partnerei számára is közzé vannak téve a Microsoft AppSource az ISV- [kapcsolaton](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview)keresztül elérhető kiegészítő programozással. Ez magában foglalja a technikai, a marketing és az értékesítés támogatását, amely az üzleti alkalmazásokhoz kapcsolódó partnereink igényeire specializálódott.
+A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmazások partnerei számára is közzé vannak téve a Microsoft AppSource az ISV- [kapcsolaton](https://partner.microsoft.com/solutions/business-applications/isv-overview)keresztül elérhető kiegészítő programozással. Ez magában foglalja a technikai, a marketing és az értékesítés támogatását, amely az üzleti alkalmazásokhoz kapcsolódó partnereink igényeire specializálódott.
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>A Marketplace jutalmazási követelményei és korlátozásai
 
@@ -101,9 +101,9 @@ A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az ajánlatot a Cloud Partner Portalban hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
+Ha az ajánlatot a [Cloud Partner Portalban](https://cloudpartner.azure.com)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
 
-Ha az ajánlatot a partner Centerben hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
+Ha az ajánlatot a [partner Centerben](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
 
 Tekintse át az [Ön számára elérhető](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)önkiszolgáló erőforrásokat.
 

@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: Fejlesztés SDK-eszközökkel
       href: how-to-use-sdk-tools.md
+    - name: Hibaelhárítás
+      href: how-to-troubleshoot-dps.md
 - name: Referencia
   items:
     - name: REST API

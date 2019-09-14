@@ -1,272 +1,272 @@
 ---
-title: A Bing Speech fogalmak |} A Microsoft Docs
+title: Bing Speech fogalmak | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Microsoft Speech Service-ben használt alapvető fogalmait.
+description: A Microsoft Speech Service-ben használt alapvető fogalmak.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1cbf1514ac5eba4e288ecb78944878217fc5ba3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba1bbdeaf68bdd45524b336011627a27cd024da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954520"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965716"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Ezen a lapon a Microsoft speech recognition szolgáltatás néhány alapvető fogalmait ismerteti. Azt javasoljuk, hogy az alkalmazás a Microsoft beszédfelismerési API használata előtt olvassa el a ezen a lapon.
+Ez az oldal a Microsoft Speech Recognition szolgáltatás néhány alapvető fogalmát ismerteti. Javasoljuk, hogy olvassa el ezt a lapot, mielőtt a Microsoft Speech Recognition API-t használja az alkalmazásban.
 
 ## <a name="understanding-speech-recognition"></a>A beszédfelismerés ismertetése
 
-Ha első alkalommal hoz létre egy beszéd-kompatibilis alkalmazás, vagy ha első alkalommal adja hozzá a beszédszolgáltatások egy meglévő alkalmazáshoz, ez a szakasz segítséget nyújt első lépései. Ha már rendelkezik némi tapasztalattal a beszédfeldolgozó alkalmazásokat, dönthet úgy, hogy ez a szakasz csak skim, vagy teljesen, ha egy régi aktuális, beszédfelismerési és protokoll adatait eredményes szeretné kihagyhatja.
+Ha első alkalommal hoz létre beszédfelismerésre alkalmas alkalmazást, vagy ha első alkalommal ad hozzá beszédfelismerési képességeket egy meglévő alkalmazáshoz, ez a szakasz segítséget nyújt a kezdéshez. Ha már rendelkezik némi tapasztalattal a beszédfelismerést használó alkalmazásokkal kapcsolatban, dönthet úgy, hogy csak leválasztja ezt a szakaszt, vagy teljesen kihagyhatja, ha Ön egy régi beszéd, és a protokoll részleteit szeretné megkapni.
 
-### <a name="audio-streams"></a>Audio-adatfolyamok
+### <a name="audio-streams"></a>Audio streamek
 
-Legelső az alapvető fogalmait, beszéd között van a *audio-adatfolyam*. Ellentétben az egy kattintással, egy ponton időpontban következik be, és a egy darab információkat tartalmaz, amely használja a beszélt kérelem száz között oszlik, és számos kilobájt információkat tartalmaz. Használja a beszélt utterances időtartama nehézségekbe megadja a fejlesztők számára szeretne biztosítani az alkalmazásokban egyszerű és elegáns speech élményt biztosítani. A mai számítógépek és algoritmusok hajtsa végre lejegyzés az utterance (kifejezés), időtartama körülbelül felét egy 2 másodperces utterance (kifejezés) is lehet megjelenített érzéseket, körülbelül 1 másodperc, azonban minden alkalmazás, amely során a feldolgozó felhasználó 1 másodperces késleltetés lép nem egyszerű és elegáns.
+A legfontosabb alapfogalmak közé tartozik az *audio stream*. A billentyűleütéstől eltérően, amely egy adott időpontban fordul elő, és egyetlen információt tartalmaz, a kimondott kérelmek több száz ezredmásodpercig terjednek, és sok kilobájtos információt tartalmaznak. A kimondott hosszúságú kimondott szöveg időtartama némi nehézségekbe ütközik a fejlesztők számára, hogy zökkenőmentes és elegáns beszédfelismerési élményt nyújtsanak az alkalmazáshoz. A mai számítógépek és algoritmusok a Kimondás időtartama körülbelül felében a beszéd átírását hajtják végre, így a 2 másodperces kiírás nagyjából 1 másodpercen belül elvégezhető, de minden olyan alkalmazás, amely a felhasználó 1 másodperces késleltetését tapasztalja. sem a áramvonalas, sem az elegáns.
 
-Szerencsére a módon a "elrejtése" beszédátírási idő szerint beszédátírási végez az utterance (kifejezés) egy részét, amíg a felhasználó egy másik elnököt. Például egy 1 másodperces utterance (kifejezés) adattömbökbe 10 ezredmásodperc 100 felosztásával és elvégzésével beszédátírási az egyes adattömbök viszont, több mint 450 beszédátírási szükséges teljes 500 idő ezredmásodpercben is "rejtett" úgy, hogy a felhasználó tudomása beszédátírási van végzi, beszéd közben. Során szem előtt tartva ebben a példában ne feledje, hogy a szolgáltatás működik-e beszédátírási az előző 100 ezredmásodpercben hang adja meg, amíg a felhasználó a következő 100 elnököt, így ha a felhasználó leállítja a beszéd, a szolgáltatás csak van lefényképezze körülbelül 100 az eredmény hang ezredmásodperc.
+Szerencsére a lemondási idő egy részének átírásával történik, ha a felhasználó egy másik részt beszél. Ha például egy 1 másodperces kiosztást oszt szét 10 darab 100 ezredmásodpercre, és az egyes adattömbökbe való átírást hajt végre, akkor az átíráshoz szükséges összes 500 ezredmásodpercnél több mint 450 lehet "rejtett", hogy a felhasználó ne legyen tisztában az átirattal folyamatban van. Ha erre a példára gondol, ne feledje, hogy a szolgáltatás az előző 100 ezredmásodpercben elvégezte az átírást, miközben a felhasználó a következő 100-as számú hangra mutat, így ha a felhasználó leállítja a beszédet, a szolgáltatásnak nagyjából 100-t kell átírnia. ezredmásodpercben, hogy eredményt hozzon létre.
 
-A felhasználói élmény eléréséhez használja a beszélt hang adatokat tömbökben gyűjti, és megjelenített érzéseket, ahogy a felhasználó ad elő. Ezek együttesen a hang adattömböket a *audio-adatfolyam*, és ezek hang adattömbök küld a szolgáltatásnak folyamatán nevezzük *hang streamelési.* Hang streamelési bármely beszédfeldolgozó alkalmazás; fontos részét képezi az adatrészlet méretének finomhangolásához és optimalizáláshoz streamelési végrehajtása néhány a legnagyobb hatású módon az alkalmazás felhasználói élmény javítása érdekében.
+Ennek a felhasználói élménynek a megvalósításához a rendszer a beszélt hangadatokat adattömbökben gyűjti össze, és a felhasználó beszél. Ezek a hangtömbök együttesen az *audio streamből*származnak, és a hangtömbök küldésének folyamatát *hangadatfolyamnak nevezzük.* A hangtovábbítás fontos részét képezi a beszédfelismerést használó alkalmazásoknak; az adathalmaz méretének finomhangolása és az adatfolyam-megvalósítás optimalizálása az alkalmazás felhasználói élményének leghatékonyabb módja.
 
 ### <a name="microphones"></a>Mikrofonok
 
-Személyek feldolgozni a beszélt hangot képes használja a füleket, de inanimate hardver által használt mikrofon. Engedélyezi a beszédfelismerési bármely alkalmazásban, meg kell integrációt biztosít az audio-adatfolyamot az alkalmazás a mikrofon.
+A felhasználók a füleik használatával dolgozzák fel a hanganyagot, de az inanimálási hardver mikrofont használ. A beszédfelismerés bármely alkalmazásban való engedélyezéséhez integrálni kell az alkalmazáshoz tartozó hangadatfolyamot biztosító mikrofonnal.
 
-Az API-k a mikrofon lehetővé kell tennie, hogy elindíthatja és leállíthatja a mikrofon hang bájtok fogadása. Döntse el, milyen felhasználói műveletek indítja a mikrofon megkezdeni a figyelést a beszédfelismerés kell. Dönthet úgy, hogy rendelkezik egy gomb megnyomása figyelés kezdete aktiválhat, vagy dönthet úgy, hogy rendelkezik egy *égbe tör* vagy *word ébresztési* spotter mindig figyeli a mikrofon és használatára, hogy a modul kimenete a Microsoft Speech Service küldés hang aktiválása.
+A mikrofonhoz tartozó API-k lehetővé teszik, hogy a mikrofonból elindítsa és leállítsa az audió bájtok fogadását. El kell döntenie, hogy mely felhasználói műveletek aktiválja a mikrofont a beszéd figyelésének megkezdéséhez. Dönthet úgy, hogy a gomb megnyomásával megnyomja a figyelés megkezdése gombot, vagy dönthet úgy is, *hogy a Word vagy a* *Wake Word* -figyelő mindig figyeli a mikrofont, és használja a modul kimenetét, hogy elindítsa a hangot a Microsoft Speech szolgáltatásnak Szolgáltatás.
 
-### <a name="end-of-speech"></a>Beszéd vége
+### <a name="end-of-speech"></a>A beszéd vége
 
-Észlelés *amikor* beszélő rendelkezik *leállt* , és beszéljen az emberek elég egyszerű úgy tűnik, de kívül laboratóriumi feltételek meglehetősen nehéz probléma. Nem áll elég egyszerűen a keresett tiszta csend után az utterance (kifejezés), mert gyakran sok dolog nehezíti a zajszint. A Microsoft beszédfelismerési szolgáltatás hajtja végre, amikor a felhasználó már le van állítva, és beszéljen, és a szolgáltatás tájékoztathatja a tényt, az alkalmazás, de ezzel az elrendezéssel fokozott jelenti azt, hogy az alkalmazás az utolsó tudni, hogy amikor a felhasználó állítsa le, és beszéljen gyors észlelése egy kiváló feladat. Ez nem minden más bemeneti formája például az alkalmazás esetén a *első* tudni, hogy ha a felhasználói bevitel kezdődik *és* ér véget.
+Észlelés, *Ha* egy beszélő *abbahagyta* a beszédet, elég egyszerűnek tűnik az emberek számára, de a laboratóriumi feltételeken kívüli, meglehetősen nehéz probléma. Nem elég, ha egyszerűen csak a tiszta csendet szeretnék kipróbálni, hiszen a probléma sokszor sok környezeti zajt okoz. A Microsoft Speech szolgáltatás kiváló feladatokkal szolgál a gyors észleléshez, amikor egy felhasználó abbahagyta a beszédet, és a szolgáltatás értesítheti az alkalmazást, de ez a megoldás azt jelenti, hogy az Ön alkalmazása a legutóbb tudnia kell, ha a felhasználó leállítja a beszédet. Ez egyáltalán nem más, mint a bevitel más formái, ahol az alkalmazás az *első* , aki tudni szeretné, hogy mikor kezdődik *és* végződik a felhasználó bemenete.
 
-### <a name="asynchronous-service-responses"></a>A szolgáltatás aszinkron válaszok
+### <a name="asynchronous-service-responses"></a>Aszinkron szolgáltatásokra adott válaszok
 
-A tény, hogy az alkalmazása szükséges, hogy értesüljön az, ha befejeződött a felhasználói bevitel nem ír elő, bármely teljesítmény ennek elmulasztása vagy az alkalmazás programozási nehézségeket, de igényel, és a megadott kérés a beszédalapú kéréseket gondolja / válasz minták, amellyel ismeri. Az alkalmazás nem tudja, ha a felhasználó leállítja a beszéd, mivel az alkalmazás továbbra is a szolgáltatás az audio adatfolyam párhuzamosan és aszinkron módon történik a szolgáltatás válaszára történő várakozás során. Ez a minta akkor ellentétben más HTTP kérés/válasz webes protokollokkal. Ezeket a protokollokat, a kérelem előtt teljesítendő; válasz fogadása a Microsoft Speech Service protokoll válaszokat kaphatnak *közben továbbra is a kéréshez hang folyamatos átviteli*.
+Az a tény, hogy az alkalmazásnak tájékoztatnia kell arról, ha a felhasználói bevitel befejeződött, nem számít fel semmilyen teljesítménnyel kapcsolatos szankciót vagy programozási nehézséget az alkalmazásában, de megköveteli, hogy a bemeneti kérelemtől eltérően gondoljon a beszédfelismerési kérésekre/ az ismerős válaszokat. Mivel az alkalmazás nem fogja tudni, hogy mikor szűnik meg a felhasználó, az alkalmazásnak továbbra is továbbítania kell a hangot a szolgáltatásnak, miközben egyidejűleg és aszinkron módon kell várnia a szolgáltatás válaszára. Ez a minta a más kérés/válasz webes protokollok, például a HTTP protokolltól eltérően van. Ezekben a protokollokban minden válasz fogadása előtt végre kell hajtania egy kérelmet; a Microsoft Speech Service protokollban választ kaphat, *Amikor továbbra is a hangvételt kéri a kéréshez*.
 
 > [!NOTE]
-> Ez a funkció nem támogatott a Speech HTTP REST API használata esetén.
+> Ez a funkció nem támogatott a Speech HTTP-REST API használata esetén.
 
-### <a name="turns"></a>Ennek a
+### <a name="turns"></a>Kiderül
 
-Beszéd egy szolgáltató információk. Amikor beszél, kívánt információ, amely az Öné, aki figyel, ez az információ átadásához. Küldött értesítésben információkat, általában ennek a beszéd, a figyelő igénybe vehet. Hasonlóképpen a beszéd-kompatibilis alkalmazás kommunikál felhasználók azt is megteheti figyeli és reagál, bár az alkalmazás általában teszi a figyelő a legtöbb. A felhasználó használja a beszélt bemeneti és a szolgáltatás válasza a bemeneti nevezzük egy *kapcsolja*. A *kapcsolja* elindul, amikor a felhasználó ad elő és ér véget, amikor az alkalmazás a beszédfelismerési szolgáltatás válasza kezelése befejeződött.
+A Speech az információk hordozója. Ha beszél, olyan információt próbál továbbítani, amely az Ön birtokában van, aki az adott információt figyeli. Az információk továbbításakor általában a beszéd és a figyelés válik elérhetővé. Hasonlóképpen, a beszédfelismerést támogató alkalmazás a felhasználókkal folytatja a figyelést és a válaszadást, bár az alkalmazás általában a figyelést végzi. A felhasználó szóbeli bemenetét és az erre a bemenetre adott válaszának neve *turn*. Ha az alkalmazás befejezte a beszédfelismerési szolgáltatás válaszának kezelését, *akkor a felhasználó* beszél és ér véget.
 
 ### <a name="telemetry"></a>Telemetria
 
-Beszédfelismerő eszköz vagy alkalmazás létrehozása kihívást jelenthet, akár a tapasztalt fejlesztők számára. Stream-alapú protokollokat, gyakran úgy tűnik, még ha ez ijesztően első ránézésre, és fontos részleteket, a csend észlelési lehet teljesen új. A sok üzenetek sikeresen küldött és fogadott kellene egy egyetlen kérés-válasz párosai végrehajtásához, *nagyon* fontos, hogy ezeket az üzeneteket teljes és pontos adatok gyűjtése. A Microsoft Speech Service protokoll biztosítja az adatok gyűjtését. Meg kell minden erőfeszítést; lehető legpontosabban adja meg a szükséges adatok teljes és pontos adatok megadásával, akkor lesz kell útmutatás nyújtása a saját maga – minden eddiginél szüksége van segítségre a Microsoft Speech Service csapatának ügyfél megvalósítása a hibaelhárítás, a telemetriai adatokat összegyűjtötte minőségét kritikus probléma lesz elemzés.
+A beszédfelismerésre képes eszköz vagy alkalmazás létrehozása kihívást jelenthet a tapasztalt fejlesztők számára is. A stream-alapú protokollok gyakran ijesztőnek tűnnek első pillantásra, és fontos részletek, például a csend észlelése teljesen új lehet. Ha sok üzenetre van szüksége ahhoz, hogy sikeresen lehessen elküldeni és fogadni egy kérés/válasz pár teljesítését, *nagyon* fontos, hogy az üzenetek teljes és pontos adatait összegyűjtse. A Microsoft Speech Service protokoll ezen adatgyűjtést biztosítja. Minden erőfeszítést meg kell tennie, hogy a lehető legpontosabban adja meg a szükséges adatmennyiséget; a teljes és pontos adatok megadásával segítheti magát – ha segítségre van szüksége a Microsoft Speech Service-csapattól az ügyfél-implementáció hibaelhárítása során, a gyűjtött telemetria-adatok minősége kritikus fontosságú lesz a probléma megoldásában. elemzés.
 
 > [!NOTE]
-> Ez a funkció nem támogatott a beszédfelismerés REST API használata esetén.
+> Ez a funkció nem támogatott a Speech Recognition REST API használata esetén.
 
-### <a name="speech-application-states"></a>Beszéd alkalmazás állapotok
+### <a name="speech-application-states"></a>Speech Application-állapotok
 
-A lépéseket, ahhoz, hogy az alkalmazás bemeneti kicsit más, mint a többi formáját bemeneti lépései, például az egérrel rákattint vagy rákoppint ujját. Meg kell nyomon követheti, ha az alkalmazás a mikrofonhoz figyeli, és adatokat küldeni a speech service, amikor vár választ a szolgáltatástól, és a egy inaktív állapotban van. Ezeket az állapotokat az közötti kapcsolatot az alábbi ábrán látható.
+Az alkalmazásban a beszédfelismerési bevitel engedélyezéséhez szükséges lépések némileg eltérnek a más típusú bemenetek, például egérkattintások vagy ujjal való Koppintások lépéseitől. Nyomon kell követnie, hogy az alkalmazás Mikor figyeli a mikrofont, és adatokat küld a beszédfelismerési szolgáltatásnak, amikor a szolgáltatás válaszára vár, és ha inaktív állapotban van. Ezen állapotok közötti kapcsolat az alábbi ábrán látható.
 
-![Beszéd alkalmazásállapot-Diagram](Images/speech-application-state-diagram.png)
+![Beszédfelismerő alkalmazás állapotának diagramja](Images/speech-application-state-diagram.png)
 
-A Microsoft Speech Service részt vesz az egyes állapotai, mivel a szolgáltatás protokoll, amely segít az alkalmazás átmeneti állapotok közötti üzenetek határozza meg. Az alkalmazásnak kell értelmezni, és az ezek protokoll üzenetek nyomon követése, és kezelheti a speech alkalmazás állapotok.
+Mivel a Microsoft Speech Service néhány államban részt vesz, a szolgáltatási protokoll olyan üzeneteket határoz meg, amelyek segítenek az alkalmazásnak az állapotok közötti átállásában. Az alkalmazásnak a beszédfelismerési alkalmazás állapotának nyomon követéséhez és kezeléséhez a protokoll üzeneteinek értelmezését és kezelését kell eljárnia.
 
-## <a name="using-the-speech-recognition-service-from-your-apps"></a>A speech recognition service az alkalmazások használata
+## <a name="using-the-speech-recognition-service-from-your-apps"></a>A beszédfelismerési szolgáltatás használata az alkalmazásokból
 
-Microsoft speech recognition szolgáltatás a fejlesztők a beszédfelismerési hozzá alkalmazásaikat kétféle módszert biztosít.
+A Microsoft Speech Recognition Service kétféle módszert biztosít a fejlesztők számára az alkalmazásokhoz való beszéd hozzáadására.
 
-- [REST API-k](GetStarted/GetStartedREST.md): A fejlesztők a beszédfelismerési a szolgáltatáshoz az alkalmazások HTTP-hívások.
-- [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md): Speciális funkciók fejlesztők Microsoft Speech klienskódtárak letöltheti, és hivatkozás alkalmazásokba.  A klienskódtárak érhetők el a különböző platformokon (Windows, Android, iOS) különböző nyelvekhez (C#, Java, JavaScript, ObjectiveC) használatával.
+- [REST API](GetStarted/GetStartedREST.md)-k: A fejlesztők a beszédfelismeréshez használhatnak HTTP-hívásokat az alkalmazásaikat a szolgáltatáshoz.
+- [Ügyféloldali kódtárak](GetStarted/GetStartedClientLibraries.md): A fejlett funkciókhoz a fejlesztők letöltik a Microsoft Speech Client kódtárait, és az alkalmazásaikat is használhatják.  Az ügyféloldali kódtárak különböző platformokon (Windows, Android, iOS) érhetők el különböző nyelvekenC#(, Java, JavaScript, ObjectiveC).
 
-| Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyfélkódtárak](GetStarted/GetStartedClientLibraries.md) |
+| Használati esetek | [REST API-k](GetStarted/GetStartedREST.md) | [Ügyféloldali kódtárak](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konvertálás egy rövid beszélt hangot képes, például parancsokat (hang hossza < 15 mp) ideiglenes eredmények nélkül | Igen | Igen |
-| Konvertálja a hosszú hang (> 15 % s) | Nem | Igen |
-| A köztes eredményeket kívánt Stream hang | Nem | Igen |
-| A LUIS használatával hang tartalomtárolási szöveg ismertetése | Nem | Igen |
+| Rövid hangalapú hang konvertálása, például parancsok (hanghossz < 15 s) ideiglenes eredmények nélkül | Igen | Igen |
+| Hosszú hang konvertálása (> 15 s) | Nem | Igen |
+| Stream hang a kívánt ideiglenes eredményekkel | Nem | Igen |
+| A hangról a LUIS használatával átalakított szöveg ismertetése | Nem | Igen |
 
- Ha Ön nyelvéhez vagy platformjához még nem rendelkezik egy SDK-t, a saját implementációjához alapján hozhat létre a [protokoll dokumentációja](API-Reference-REST/websocketprotocol.md).
+ Ha a nyelv vagy a platform még nem rendelkezik SDK-val, a [protokoll dokumentációja](API-Reference-REST/websocketprotocol.md)alapján hozhatja létre saját implementációját.
 
-## <a name="recognition-modes"></a>Elismerés módok
+## <a name="recognition-modes"></a>Felismerési módok
 
-Elismerés három módot: `interactive`, `conversation`, és `dictation`. A beszédfelismerést mód beszédfelismerés hogyan a felhasználók valószínűleg beszéd alapján állítja be. Válassza ki a megfelelő mód az alkalmazáshoz.
+Háromféle felismerési mód létezik: `interactive`, `conversation`és `dictation`. A felismerési mód úgy állítja be a beszédfelismerést, hogy a felhasználók milyen valószínűséggel fognak beszélni. Válassza ki az alkalmazás megfelelő felismerési módját.
 
 > [!NOTE]
-> Elismerés módok másként lehet a REST protokoll, mint ők a WebSocket protokoll. Például a REST API nem támogatja folyamatos felismerés beszélgetés vagy Diktálás módban is.
+> Az elismerési módok eltérő viselkedéssel rendelkezhetnek a REST protokollban, mint a WebSocket protokollban. A REST API például nem támogatja a folyamatos felismerést, még beszélgetési vagy diktálási módban is.
 > [!NOTE]
-> Módokban alkalmazandók, ha közvetlenül a REST vagy a WebSocket protokoll használ. A [klienskódtárak](GetStarted/GetStartedClientLibraries.md) különböző paraméterek használatával adja meg a mód. További információkért tekintse meg az ügyféloldali kódtár a választott.
+> Ezek a módok akkor alkalmazhatók, ha közvetlenül a REST vagy a WebSocket protokollt használja. Az [ügyféloldali kódtárak](GetStarted/GetStartedClientLibraries.md) eltérő paramétereket használnak az elismerési mód megadásához. További információkért tekintse meg az Ön által választott ügyféloldali könyvtárat.
 
-A Microsoft beszédfelismerési szolgáltatás minden felismerés mód csak egy felismerés kifejezés eredményét adja vissza. Minden olyan egyetlen utterance (kifejezés) a 15 másodperces korlátozva van.
+A Microsoft Speech Service csak egy felismerési kifejezés eredményét adja vissza az összes felismerési módhoz. Egyetlen Kimondás esetén a korlát 15 másodperc.
 
 ### <a name="interactive-mode"></a>Interaktív mód
 
-A `interactive` mód, a felhasználó rövid kérelmek segítségével, és vár választ egy műveletet az alkalmazás.
+A `interactive` módban a felhasználók rövid kérelmeket tesznek elérhetővé, és elvárják, hogy az alkalmazás egy adott műveletet hajtson végre.
 
-Interaktív mód kérelmek jellemzően a a következő jellemzőkkel:
+Az alábbi jellemzők jellemzőek az interaktív üzemmódú alkalmazásokra:
 
-- Felhasználók, hogy a gép és a egy másik emberi beszéd.
-- Alkalmazás felhasználói számára, hogy időben szeretnének tegyük fel, alapján, amit szeretnének tenni az alkalmazást.
-- Beszédmódok általában kapcsolatos legutóbbi 2-3 másodpercet.
+- A felhasználók tudják, hogy egy géppel beszélnek, nem pedig egy másik embernek.
+- Az alkalmazás felhasználói megtudják, mire szeretnének mondani, hogy mit szeretnének tenni az alkalmazásban.
+- A hosszúságú kimondott szöveg jellemzően utolsó körülbelül 2-3 másodperc.
 
-### <a name="conversation-mode"></a>Beszélgetés mód
+### <a name="conversation-mode"></a>Beszélgetési mód
 
-A `conversation` mód, felhasználók bízott emberi beszélgetésbe.
+A `conversation` módban a felhasználók emberi – emberi beszélgetést folytatnak.
 
-A következők jellemzően a beszélgetés módhoz készült alkalmazások a következő jellemzőkkel:
+A következő jellemzők jellemzőek a beszélgetési mód alkalmazásaira:
 
-- Felhasználók tudják, hogy meghatalmazottjával áll egy másik személynek.
-- A beszédfelismerés növeli az emberi beszélgetések azáltal, hogy legalább az egyik résztvevők a kimondott szöveg.
-- Felhasználók nem mindig tervezi tegyük fel, hogy szeretnének.
-- A felhasználók gyakran a szleng és az egyéb informális speech használhatják.
+- A felhasználók tudják, hogy egy másik személlyel beszélgetnek.
+- A beszédfelismerés azáltal javítja az emberi beszélgetéseket, hogy az egyik vagy mindkét résztvevő láthatja a beszélt szöveget.
+- A felhasználók nem mindig tervezik meg, hogy mit szeretnének mondani.
+- A felhasználók gyakran használják a szlenget és más informális beszédet.
 
-### <a name="dictation-mode"></a>Diktálás
+### <a name="dictation-mode"></a>Diktálási mód
 
-A `dictation` mód, felhasználók álmából hosszabb kimondott szöveg az alkalmazás további feldolgozás céljából.
+A `dictation` módban a felhasználók tovább hosszúságú kimondott szöveg az alkalmazásba további feldolgozás céljából.
 
-A következők jellemzően a Diktálás módhoz készült alkalmazások a következő jellemzőkkel:
+A következő jellemzők jellemzőek a diktálási üzemmódú alkalmazásokra:
 
-- Felhasználók tudják, hogy meghatalmazottjával áll egy géphez.
-- Felhasználók jelennek meg a speech recognition szöveges eredményt.
-- Felhasználók gyakran megtervezése, amit szeretnének tegyük fel, és a formális nyelvet használja.
-- Felhasználók alkalmaz teljes sentences, amely elmúlt 5 – 8 másodpercben.
+- A felhasználók tudják, hogy egy géppel beszélgetnek.
+- A felhasználók a beszédfelismerés szövegének eredményét jelenítik meg.
+- A felhasználók gyakran tervezik meg, hogy mit szeretnének mondani, és hogyan használják a formális nyelvet.
+- A felhasználók az utolsó 5-8 másodpercben teljes mondatokat alkalmaznak.
 
 > [!NOTE]
-> Diktálás és beszélgetés módban a Microsoft beszédfelismerési szolgáltatás nem ad vissza részleges eredményeket. Ehelyett a szolgáltatás az audio-adatfolyamot csend határokon után állandó kifejezés eredményeket ad vissza. A Microsoft fokozott előfordulhat, hogy ezek folyamatos felismerés módban a felhasználói élmény javítása érdekében a speech protokollt.
+> A diktálási és a beszélgetési módokon a Microsoft Speech szolgáltatás nem ad vissza részleges eredményeket. A szolgáltatás Ehelyett a stabil kifejezés eredményét adja vissza a hangadatfolyamban található csend határai után. A Microsoft növelheti a beszédfelismerési protokollt, hogy javítsa a felhasználói élményt ezekben a folyamatos felismerési módokban.
 
-## <a name="recognition-languages"></a>Nyelv felismerése
+## <a name="recognition-languages"></a>Felismerési nyelvek
 
-A *beszédfelismerési nyelv* meghatározza, hogy az alkalmazás felhasználói beszél nyelvét. Adja meg a *beszédfelismerési nyelv* együtt a *nyelvi* URL-cím lekérdezési paraméter a kapcsolat. Értékét a *nyelvi* lekérdezési paramétert használja az IETF nyelvcímkét [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag), és **kell** beszédfelismerő API által támogatott nyelvek valamelyikével kell. A beszédfelismerési szolgáltatás által támogatott nyelvek teljes listáját a lapon található [támogatott nyelvek](API-Reference-REST/supportedlanguages.md).
+Az *elismerés nyelve* határozza meg, hogy az alkalmazás felhasználója milyen nyelven beszél. Az *elismerés nyelvének* megadása a *nyelv* URL-lekérdezési paramétereként a kapcsolatban. A *Language* Query paraméter értéke a [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag)IETF nyelvi címkét használja **, és a** Speech Recognition API által támogatott nyelvek egyikének kell lennie. A beszédfelismerési szolgáltatás által támogatott nyelvek teljes listája megtalálható az oldal [támogatott nyelvein](API-Reference-REST/supportedlanguages.md).
 
-A Microsoft beszédfelismerési szolgáltatás visszautasítja az érvénytelen kapcsolati kérelem megjelenítésével egy `HTTP 400 Bad Request` választ. Érvénytelen kérést egyike, amelyek:
+A Microsoft Speech szolgáltatás visszautasítja az érvénytelen kapcsolatkérelmeket a `HTTP 400 Bad Request` válasz megjelenítésével. Egy érvénytelen kérelem:
 
-- Nem tartalmazza a *nyelvi* lekérdezési paraméter értéke.
-- Tartalmaz egy *nyelvi* lekérdezési paraméter, amely nem megfelelően van formázva.
-- Tartalmaz egy *nyelvi* lekérdezési paraméter, amely nem egy olyan támogatása.
+- A nem tartalmaz *nyelvi* lekérdezési paraméter értékét.
+- A nem megfelelően formázott *nyelvi* lekérdezési paramétert tartalmaz.
+- A *nyelvi* lekérdezési paramétert tartalmaz, amely nem a támogatási nyelvek egyike.
 
-Dönthet úgy hozhat létre egy alkalmazást, amely egy, vagy a szolgáltatás által támogatott nyelveket támogatja.
+Dönthet úgy, hogy olyan alkalmazást hoz létre, amely támogatja a szolgáltatás által támogatott nyelvek egyikét vagy mindegyikét.
 
 ### <a name="example"></a>Példa
 
-Az alkalmazás használja a következő példában *beszélgetés* beszédfelismerési mód az Amerikai angol nyelvű beszélő.
+Az alábbi példában egy alkalmazás a beszédfelismerési *módot használja az* Egyesült államokbeli angol nyelvű hangszórókhoz.
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-## <a name="transcription-responses"></a>Beszédátírási válaszok
+## <a name="transcription-responses"></a>Átírási válaszok
 
-Az átírási válaszok a felismert szöveget visszaadása az ügyfeleknek a hang. Beszédátírási választ a következő mezőket tartalmazzák:
+Az átírási válaszok visszaküldik a konvertált szöveget a hangról az ügyfeleknek. Az átírási válasz a következő mezőket tartalmazza:
 
-- `RecognitionStatus` a beszédfelismerést állapotát határozza meg. A lehetséges értékeket az alábbi táblázat a.
+- `RecognitionStatus`meghatározza az felismerés állapotát. A lehetséges értékeket az alábbi táblázatban találja.
 
-| Állapot | Leírás |
+| State | Leírás |
 | ------------- | ---------------- |
-| Siker | A beszédfelismerést sikeres volt, és a megjelenő mezőben szerepel. |
-| NoMatch | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. [NoMatch felismerés Status(#nomatch-recognition-status) további részletekért lásd:  |
-| InitialSilenceTimeout | A hang stream elején szereplő csak csend, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot |
-| BabbleTimeout | A hang stream elején szereplő csak zaj, és a szolgáltatás, beszédfelismerés várakozás túllépte az időkorlátot |
-| Hiba | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni |
+| Siker | Az felismerés sikeres volt, és a szöveg mező jelen van |
+| Nem egyező | Beszéd az audio-adatfolyam észlelt, de nincs szó azoktól a Célnyelv sem felel meg is. További részletek: [eltérő felismerési állapot (#nomatch-felismerés-állapot).  |
+| InitialSilenceTimeout | A hangadatfolyam kezdete csak csendet foglalt, és a szolgáltatás a beszédfelismerésre való várakozás során időtúllépést várt |
+| BabbleTimeout | A hangadatfolyam elején csak a zaj szerepel, és a szolgáltatás a beszédfelismerésre való várakozás során időtúllépést okozott. |
+| Hiba | A felismerési szolgáltatás belső hibát észlelt, és nem folytatható |
 
-- `DisplayText` a felismert kifejezés jelöli, kis-és nagybetűk, írásjelek és Inverz – szöveg-normalizálási alkalmazása és cenzúrázása maszkolva csillagok után. A megjelenő mezőben szerepel *csak* Ha a `RecognitionStatus` mező értéke `Success`.
+- `DisplayText`a felismert mondatot jelöli a nagybetűssé tétel, a központozás és az inverz szöveg-normalizálás után, és a káromkodás maszkolása csillagokkal van ellátva. A szöveg mező *csak* akkor jelenik meg, `RecognitionStatus` ha a mező értéke `Success`.
 
-- `Offset` eltolás (a 100 nanoszekundumos egységek), amellyel kifejezés ismerhető, a hang stream elején viszonyítva.
+- `Offset`meghatározza azt az eltolást (100-ns egységben), amelynél a kifejezés felismerhető, a hangadatfolyam elejéhez képest.
 
-- `Duration`Megadja a időtartama (100 nanoszekundumos egységek), a beszéd kifejezés helyett szerepel.
+- `Duration`Megadja a jelen Speech kifejezés időtartamát (100 ns egységben).
 
-Beszédátírási választ további információkat ad vissza, ha szükséges. Lásd: [kimeneti formátum](#output-format) , hogy hogyan kimenetek részletesebb visszaadása.
+Az átírási válasz további információkat ad vissza, ha szükséges. A részletes kimenetek visszaküldéséhez tekintse meg a [kimeneti formátumot](#output-format) .
 
-Microsoft Speech Service további beszédátírási folyamat, amely tartalmazza a kis-és nagybetűk és írásjelek, támogatja a maszkolási cenzúrázása és normalizálása közös képernyők szöveg. Például ha egy felhasználó által képviselt kifejezés beszél a szavak "Emlékeztessen megvásárlása hat iPhone-OK", a Microsoft beszédszolgáltatások visszatér az átírt szöveg "Emlékeztessen megvásárlása 6 iPhone-okon." A folyamat, amely a "hat" szót alakítja át a számot, "6" néven ismert *Inverz szöveg normalizálási* (*fel* röviden).
+A Microsoft Speech Service támogatja a további átírási folyamatot, amely magában foglalja a nagybetűk és a központozás hozzáadását, a káromkodás maszkolását és a szövegek gyakori űrlapokra való normalizálása. Ha például egy felhasználó a "emlékeztessen hat iPhone-ra" kifejezéssel jelölt kifejezést jelöl, a Microsoft Speech Services visszaküldi az átmásolt szöveget "emlékeztessen a 6 iPhone megvásárlására". A "hat" szót a "6" értékre konvertáló folyamat *inverz szöveg-normalizálás* (röviden*ITN* ).
 
-### <a name="nomatch-recognition-status"></a>NoMatch felismerés állapota
+### <a name="nomatch-recognition-status"></a>Nem egyező felismerési állapot
 
-Az átírási választ adja vissza `NoMatch` a `RecognitionStatus` Ha a Microsoft Speech Service speech észleli az audio-adatfolyamot, de nem felel meg, hogy a kéréshez használt nyelv nyelvtani beszédfelismerés. Ha például egy *NoMatch* az állapot akkor fordulhat elő, ha egy felhasználó valami német felirat, amikor a felismerő amerikai angolra használja a beszélt nyelv vár. Hullám mintát követik az utterance (kifejezés) lenne az emberi speech meglétének jelzéséhez, de egyike a kimondott szavakat akkor sem felel meg az Egyesült Államok angol nyelvű lexikális a felismerő használja.
+Az átírási `NoMatch` válasz `RecognitionStatus` abban az esetekben tér vissza, amikor a Microsoft Speech szolgáltatás észleli a hangadatfolyamban található beszédet, de nem tudja egyeztetni a kéréshez használt nyelvi nyelvtant. Előfordulhat például, hogy egy nem *megfelelő* feltétel akkor fordulhat elő, ha a felhasználó német nyelven mond valamit, ha a felismerő a beszélt nyelvként az angol nyelvet keresi. A Kimondás hullámforma-mintázata az emberi beszéd jelenlétét jelzi, de a felismert szavak egyike sem felel meg a felismerő által használt amerikai angol nyelvű lexikonnak.
 
-Egy másik *NoMatch* állapot akkor fordul elő, amikor a felismerés algoritmus nem tudja a hangok az audio-adatfolyamot szereplő pontos egyezést. Ez az állapot akkor fordul elő, amikor a Microsoft Speech Service eredményezhet *speech.hypothesis* tartalmazó üzeneteket *feltételezett átlagos szöveg* eredményez, de egy *speech.phrase*üzenet, amelyben a *RecognitionStatus* van *NoMatch*. Ez az állapot akkor normál; nem győződjön meg a pontosság vagy a minőség szövegének feltételezésekre a *speech.hypothesis* üzenet. Továbbá, hogy kell nem feltételezze, hogy a Microsoft Speech Service eredményez *speech.hypothesis* , amelyet a szolgáltatás képes előállítani egy *speech.phrase* üzenet  *RecognitionStatus* *sikeres*.
+Egy másik nem *egyező* állapot akkor fordul elő, ha az felismerő algoritmus nem talál pontos egyezést a hangadatfolyamban található hangok számára. Ha ez a feltétel történik, a Microsoft Speech szolgáltatás olyan *beszédet okozhat. hipotézisek* , amelyekben a rendszer *feltételezi a szöveget* , de létrehoz egy *beszédet. a kifejezés* olyan üzenetet tartalmaz, amelyben a *RecognitionStatus* nem *egyezik* . Ez az állapot normális; a *Speech. hipotézis* üzenetben nem lehet feltételezni a szöveg pontosságát vagy hűségét. Emellett nem feltételezheti azt, hogy a Microsoft Speech szolgáltatás a *Speech. hipotézisek* üzeneteit állítja elő, hogy a szolgáltatás képes legyen *beszédet létrehozni.* a *RecognitionStatus* *sikerességét*jelző üzenet jelenik meg.
 
 ## <a name="output-format"></a>Kimeneti formátum
 
-Microsoft Speech Service is adattartalom-formátumok különböző beszédátírási válaszok visszaadása. Az összes is észleltünk adattartalmakat. olyan struktúrák, JSON.
+A Microsoft Speech Service számos adattartalom-formátumot képes visszaadni az átírási válaszokban. Minden hasznos adat JSON-struktúra.
 
-A kifejezés eredményformátum megadásával szabályozhatja a `format` URL-cím lekérdezési paraméter. Alapértelmezés szerint a szolgáltatás visszaadja `simple` eredményeket.
+Az `format` URL-cím lekérdezési paraméterének megadásával szabályozhatja a kifejezés eredményének formátumát. Alapértelmezés szerint a szolgáltatás az eredményeket `simple` adja vissza.
 
 | Formátum | Leírás |
 |-----|-----|
-| `simple` | A beszédfelismerést állapota és a megjelenítési űrlap a felismert szöveget tartalmazó egyszerűsített kifejezés eredményt. |
-| `detailed` | Egy felismerése állapotát, és ahol minden egyes kifejezés eredménye tartalmaz minden négy felismerés űrlap és a egy megbízhatósági pontszám kifejezés eredményeinek legjobb N listázhatja. |
+| `simple` | Egy egyszerűsített kifejezés eredménye, amely tartalmazza az felismerési állapotot és a megjelenített szöveget a megjelenítési űrlapon. |
+| `detailed` | A kifejezés eredményének felismerési állapota és N-legjobb listája, ahol minden kifejezés eredménye mind a négy felismerési űrlapot és egy megbízhatósági pontszámot tartalmaz. |
 
-A `detailed` tartalmaz [legjobb N értéket](#n-best-values), mellett `RecognitionStatus`, `Offset`, és `duration`, a válaszban.
+A `detailed` formátum [N-legjobb értékeket](#n-best-values)tartalmaz `RecognitionStatus`, `Offset`a és a, valamint `duration`a válaszában.
 
-### <a name="n-best-values"></a>Legjobb N értéket
+### <a name="n-best-values"></a>N – a legjobb értékek
 
-Figyelők, akár emberi, akár gépi, soha nem lehet abban, hogy azok meghallgatni *pontosan* mi volt a beszélt. Egy figyelő is hozzárendelhet egy *valószínűségi* csak az egy adott értelmezése az utterance (kifejezés).
+A figyelők, akár emberi, akár a gép, soha nem biztos benne, hogy *pontosan* mit hallottak. Egy figyelő csak a teljes érték egy adott értelmezéséhez rendelhet *valószínűséget* .
 
-Normál körülmények között, amikor mások számára, akikkel gyakran használják, és beszéljen a felhasználók nagy valószínűséggel ismeri fel lettek kimondott szavakat is. Számítógép-alapú beszédfelismerési figyelői arra törekszik, hogy hasonló pontossági szint elérése és a megfelelő feltételek mellett [emberek való elérésének](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
+Normális körülmények között, amikor másokkal beszélgetnek, akikkel gyakran kommunikálnak, a személyek nagy valószínűséggel azonosítják a beszélt szavakat. A gépi alapú beszédek figyelői a hasonló pontossági szintek elérésére törekednek, és a megfelelő feltételek mellett az [emberek paritást érnek el](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
-A beszédfelismerés használt algoritmusok Fedezze fel az alternatív értelmezések, az utterance (kifejezés) normál feldolgozása során. Általában ezek az alternatívák értéke egy egyetlen értelmezése bizonyítékok elsöprő válik, elveti. Nem optimális körülmények között azonban a beszédfelismerő befejezi az alternatív lehetséges értelmezések listáját. A felső *N* alternatíva a listában szereplő nevezzük a *legjobb N lista*. Minden egyes alternatív hozzá van rendelve egy [megbízhatósági pontszám](#confidence). Megbízhatósági 0 és 1 közé eső pontszámmodell. Egy 1 pontszám a legmagasabb szintű megbízhatóság jelöli. A pontszám a 0 a legalacsonyabb megbízhatósági szintjét jelöli.
+A beszédfelismerés során használt algoritmusok a normál feldolgozás részeként megvizsgálják a teljes kiértékelés alternatív értelmezését. Ezeket az alternatívákat általában elveti a rendszer, mivel az egyetlen értelmezés előnyben részesített bizonyítéka egyre fontosabbá válik. Az optimális körülmények között azonban a beszédfelismerés a lehetséges alternatív értelmezések listájával fejeződik be. A lista legfontosabb *n* alternatíváit az *n-Best listának*nevezzük. Minden alternatíva [megbízhatósági pontszámot](#confidence)kap. A megbízhatósági pontszámok 0 és 1 közé esnek. Az 1 pontszám a legmagasabb szintű megbízhatóságot jelenti. A 0 pontszám a legalacsonyabb megbízhatósági szintet jelenti.
 
 > [!NOTE]
-> A legjobb N listában bejegyzések száma több utterances eltérőek. A bejegyzések száma változhat a között, több felismerés a *ugyanazon* utterance (kifejezés). Ezt a különbséget a speech recognition algoritmus valószínűségi jellege természetes és várt eredményét.
+> Az N-legjobb lista bejegyzéseinek száma több hosszúságú kimondott szöveg is változhat. A bejegyzések száma az *azonos* Kimondás több felismerésében is változhat. Ez a variáció a beszédfelismerési algoritmus valószínűségi természetének természetes és várt eredménye.
 
-A legjobb N listát adja vissza mindegyik bejegyzés tartalmazza
+Minden, az N-legjobb listán visszaadott bejegyzés tartalmazza a következőt:
 
-- `Confidence`, mely jelöli a [megbízhatósági pontszámok](#confidence) ez.
-- `Lexical`, amely a [lexikai űrlap](#lexical-form) felismert szöveget.
-- `ITN`, amely a [fel űrlap](#itn-form) felismert szöveget.
-- `MaskedITN`, amely a [fel űrlap maszkolva](#masked-itn-form) felismert szöveget.
-- `Display`, amely a [megjelenítési űrlap](#display-form) felismert szöveget.
+- `Confidence`, amely a bejegyzés [megbízhatósági pontszámait](#confidence) jelöli.
+- `Lexical`, amely a felismert szöveg [lexikális formája](#lexical-form) .
+- `ITN`, amely a felismert szöveg [ITN formája](#itn-form) .
+- `MaskedITN`, amely a felismert szöveg [MASZKOLT ITN formája](#masked-itn-form) .
+- `Display`, amely a felismert szöveg [megjelenítési formája](#display-form) .
 
-### Megbízhatósági pontszámok <a id="confidence"></a>
+### Megbízhatósági pontszámok<a id="confidence"></a>
 
-Megbízhatósági pontszámok szerves speech recognition rendszerekhez. A Microsoft Speech Service szerzi be a megbízhatósági pontszámok egy *megbízhatósági osztályozó*. A Microsoft bizalom osztályozó betanítja olyan szolgáltatások készlete, amelyek célja, hogy a megfelelő és nem megfelelő felismerése standardként megkülönböztetést keresztül. Megbízhatósági pontszámok értékeli az egyes szavak és a teljes kimondott szöveg.
+A megbízhatósági pontszámok a beszédfelismerési rendszerek szerves részét képezik. A Microsoft Speech szolgáltatás megbízhatósági mutatókat szerez be a *megbízhatósági besorolásból*. A Microsoft a megbízhatósági besorolást olyan funkciók összessége szerint állítja be, amelyek a helyes és a helytelen felismerés közötti maximális megkülönböztetéshez lettek kialakítva. A megbízhatósági pontszámok kiértékelése az egyes szavak és a teljes hosszúságú kimondott szöveg esetében történik.
 
-Ha a szolgáltatás által visszaadott megbízhatósági pontszámokat használatát választja, vegye figyelembe a következő viselkedés:
+Ha úgy dönt, hogy a szolgáltatás által visszaadott megbízhatósági pontszámokat használja, vegye figyelembe a következő viselkedést:
 
-- Megbízhatósági pontszámok összehasonlíthatók csak az azonos mód és a nyelvi belül. Más nyelvű vagy különböző felismerő módok között pontszámok hasonlítja össze. Például egy megbízhatósági pontszám, az interaktív mód rendelkezik *nincs* végezni, a Diktálás megbízhatósági pontszámot.
-- Megbízhatósági pontszámok legjobb szolgálnak korlátozott konfigurálásában a kimondott szöveg. Természetesen van a vonatkozó eredmények rengeteg utterances változékonyságát nagyszerű fokú.
+- A megbízhatósági pontszámok csak ugyanazon felismerési módban és nyelven hasonlíthatók össze. Ne hasonlítsa össze a pontszámokat a különböző nyelvek vagy a különböző felismerési módok között. Az interaktív felismerési mód megbízhatósági pontszáma például *nem* tartalmaz korrelációt a diktálási módban lévő megbízhatósági pontszámhoz.
+- A megbízhatósági pontszámokat a rendszer a hosszúságú kimondott szöveg korlátozott készletében használja legjobban. A hosszúságú kimondott szöveg nagy készlete esetében a pontszámok természetesen nagy mértékben változékonyságot eredményeznek.
 
-Ha úgy dönt, hogy egy megbízhatósági pontszám értékként használni egy *küszöbérték* az alkalmazás működik, használja a beszédfelismerés létesíteni a küszöbértékeket.
+Ha úgy dönt, hogy a megbízhatósági pontszám értékét az alkalmazás által használt *küszöbértékként* használja, a beszédfelismerés használatával állapítsa meg a küszöbértékeket.
 
-- Hajtsa végre a beszédfelismerés egy reprezentatív mintát, az alkalmazás kimondott szöveg.
-- A minta-készletben lévő minden egyes elismerési megbízhatósági pontszámokat összegyűjtése.
-- A küszöbérték alapja magabiztosan a minta néhány PERCENTILIS.
+- Beszédfelismerés végrehajtása az alkalmazáshoz tartozó hosszúságú kimondott szöveg reprezentatív mintáján.
+- Gyűjtsön minden egyes felismerés megbízhatósági pontszámát a mintavételi készletben.
+- Adja meg a küszöbértéket az adott minta megbízhatóságának bizonyos százalékában.
 
-Nincs egyetlen küszöbérték nem megfelelő összes alkalmazáshoz. Előfordulhat, hogy egy megfelelő megbízhatósági pontszám egy alkalmazáshoz egy másik alkalmazás fogadható el.
+Egyetlen küszöbérték sem felel meg az összes alkalmazásnak. Előfordulhat, hogy egy alkalmazás elfogadható megbízhatósági pontszáma nem fogadható el egy másik alkalmazás számára.
 
 ### <a name="lexical-form"></a>lexikális űrlap
 
-A lexikális képernyő az a felismert szöveget, és pontosan hogyan történt az utterance (kifejezés) és nem absztrakt vagy a kis-és nagybetűk. Például a cím "1020 vállalati módon" lexikális formájában lenne *10 20 vállalati módon*, feltéve, hogy ezzel a módszerrel azt volt beszélt. A mondat formájában lexikai "Emlékeztessen megvásárlása 5 ceruza" van *Emlékeztessen öt ceruza megvásárlása*.
+A lexikális elem a felismert szöveg, amely pontosan azt mutatja be, hogy milyen módon történt, és nincs írásjel vagy kapitalizáció. Például a "1020 Enterprise Way" címen található lexikális formában a következő lenne: *10 20 Enterprise Way*, feltéve, hogy ez így volt. A mondat lexikális formája: "emlékeztessen 5 ceruzát vásárolni", *emlékeztessen öt ceruza megvásárlására*.
 
-A lexikális képernyő az leginkább megfelelő, nem a szokásos szöveges normalizálási végrehajtásához igénylő alkalmazások esetében. A lexikális képernyő az szintén feldolgozatlan felismerés szavak igénylő alkalmazásokhoz megfelelő.
+A lexikális formátum a legmegfelelőbb olyan alkalmazások esetében, amelyek nem szabványos szöveg-normalizálás végrehajtásához szükségesek. A lexikális űrlap olyan alkalmazások esetében is megfelelő, amelyeknek feldolgozatlan felismerési szavakat kell megadniuk.
 
-Káromkodás soha nem lexikai formájában van maszkolva.
+A profán soha nem fedi le a lexikális alakot.
 
-### <a name="itn-form"></a>FEL űrlap
+### <a name="itn-form"></a>ITN űrlap
 
-Szöveg normalizálási az a folyamat egy űrlap szöveg konvertálása egy másik "kanonikus" formátumú. Ha például a telefonszám "555-1212" Előfordulhat, hogy alakítható át a kanonikus formájában *öt öt öt egy két egy két*. *Más néven inverz* szöveg normalizálási (fel) visszavonja ezt a folyamatot, a szavakat konvertálása "öt öt öt egy két egy két" fordított kanonikus formájában *555-1212*. A felismerés eredményét fel formájában nem tartalmazza a kis-és nagybetűk vagy absztrakt.
+A szöveg normalizálása az a folyamat, amelynek során a szöveg konvertálása az egyik űrlapról egy másik "kanonikus" űrlapra történik. Előfordulhat például, hogy a "555-1212" telefonszám a *5 5 5 1 2 1 2*kanonikus formára lett konvertálva. Az *inverz* szöveg normalizálása (ITN) megfordítja ezt a folyamatot, és átalakítja a "5 5 5 1 2 1 2" szöveget a fordított kanonikus formátumba *555-1212*. A felismerési eredmény ITN formája nem tartalmazza a nagybetűket vagy a központozást.
 
-A fel képernyő az leginkább megfelelő alkalmazásokat, amelyek a felismert szöveget cselekedhet. Például egy alkalmazás, amely lehetővé teszi a felhasználó mérnökeinkkel keresési kifejezéseket, majd ezeket a feltételeket a webes lekérdezésben használna fel formájában. Káromkodás soha nem fel formájában van maszkolva. Maszkolandó vulgáris, használja a *maszkolt fel űrlap*.
+A ITN űrlap a felismert szövegben szereplő alkalmazások esetében a legmegfelelőbb. Például egy olyan alkalmazás, amely lehetővé teszi a felhasználók számára, hogy a keresési kifejezéseket használják, majd ezeket a kifejezéseket egy webes lekérdezésben használja, használja a ITN űrlapot. A káromkodás soha nem szerepel a ITN űrlapon. A káromkodás maszkolásához használja a *MASZKOLT ITN űrlapot*.
 
-### <a name="masked-itn-form"></a>Maszkolt fel űrlap
+### <a name="masked-itn-form"></a>Maszkolt ITN űrlap
 
-Mivel cenzúrázása természetes módon használja a beszélt nyelv része, a Microsoft beszédfelismerési szolgáltatás érzékeli az ilyen szavak és kifejezések, amelyek beszélt. Káromkodás, azonban nem minden alkalmazás, különösen egy korlátozott, nem felnőtt felhasználói közönség számára az alkalmazások megfelelő.
+Mivel a káromkodás természetesen a beszélt nyelv részét képezi, a Microsoft Speech szolgáltatás a szóbeli szavakat és kifejezéseket ismeri fel. A káromkodás azonban nem feltétlenül megfelelő minden alkalmazáshoz, különösen azokhoz az alkalmazásokhoz, amelyek korlátozott, nem felnőtt felhasználói közönséggel rendelkeznek.
 
-A maszkolt fel képernyő adatmaszkolás segít Önnek az inverz szöveg normalizálási űrlap cenzúrázása vonatkozik. Maszkolandó vulgáris, állítsa az értékét a vulgáris paraméter értékének `masked`. Káromkodás maszkolva van, amikor a nyelv cenzúrázása lexikális részeként felismerhető szavak helyén csillagok. Például: *Emlékeztessen megvásárlása 5 x ceruza*. A maszkolt fel formájában a felismerés eredményét nem tartalmazza a kis-és nagybetűk vagy absztrakt.
+A maszkolt ITN űrlap a káromkodás maszkolását alkalmazza az inverz szöveg normalizálása űrlapra. A káromkodás maszkolásához állítsa a profán paraméter értékének `masked`értékét a következőre:. A káromkodás maszkolásakor a rendszer a nyelv káromkodási lexikonának részeként felismert szavakat csillagokkal helyettesíti. Például: *emlékeztessen 5 * * * * * ceruza megvásárlására*. A felismerési eredmények maszkolt ITN formája nem tartalmazza a nagybetűket vagy a központozást.
 
 > [!NOTE]
-> Ha a vulgáris lekérdezési paraméter értéke értéke `raw`, a maszkolt fel űrlap pedig ugyanaz, mint az fel űrlap. Káromkodás van *nem* maszkolva.
+> Ha a káromkodás lekérdezési paramétere értékre van állítva `raw`, a maszkolt ITN űrlap ugyanaz, mint a ITN űrlap. A káromkodás *nem* maszkolt.
 
 ### <a name="display-form"></a>Megjelenítési űrlap
 
-Absztrakt, és a nagybetűk jelezze, ha a felfüggesztés, és így tovább, ami lehetővé teszi szöveg megérteni a hangsúlyt, hová kerüljön. A megjelenítési űrlap absztrakt, és a nagybetűk hozzá felismerési eredményeket, így a legmegfelelőbb módja az alkalmazásokat, amelyek a kimondott szöveg megjelenítéséhez.
+A központozás és a nagybetűk kihasználása a hangsúlyt, a szüneteltetést és így tovább, ami megkönnyíti a szöveg megértését. A megjelenítési űrlap írásjeleket és nagybetűket jelenít meg az eredmények felismeréséhez, így a legmegfelelőbb formában jeleníti meg a szóbeli szöveget megjelenítő alkalmazásokat.
 
-A megjelenítési űrlap a maszkolt fel űrlapot terjeszti ki, mert a vulgáris paraméter értéke és megadható `masked` vagy `raw`. Ha az értéke `raw`, a felismerési eredményeket bármilyen közönséges kifejezést a felhasználó által felolvasott tartalmazza. Ha az értéke `masked`, csillagok ismeri fel a nyelvi cenzúrázása lexikális részeként szavak helyén.
+Mivel a megjelenítési űrlap kiterjeszti a maszkolt ITN űrlapot, beállíthatja a káromkodás paraméter értékét `masked` vagy `raw`értéket. Ha a érték van beállítva `raw`, az elismerés eredményei tartalmazzák a felhasználó által beszélt összes trágár értéket. Ha a érték értéke `masked`, a rendszer a nyelv káromkodási lexikonának részeként felismert szavakat csillagokkal helyettesíti.
 
 ### <a name="sample-responses"></a>Minta válaszok
 
-Az összes is észleltünk adattartalmakat. olyan struktúrák, JSON.
+Minden hasznos adat JSON-struktúra.
 
-Az adattartalom formátuma a `simple` kifejezés eredménye:
+A `simple` kifejezés eredményének hasznos formátuma:
 
 ```json
 {
@@ -277,7 +277,7 @@ Az adattartalom formátuma a `simple` kifejezés eredménye:
 }
 ```
 
-Az adattartalom formátuma a `detailed` kifejezés eredménye:
+A `detailed` kifejezés eredményének hasznos formátuma:
 
 ```json
 {
@@ -303,28 +303,28 @@ Az adattartalom formátuma a `detailed` kifejezés eredménye:
 }
 ```
 
-## <a name="profanity-handling-in-speech-recognition"></a>A beszédfelismerés cenzúrázása-kezelése
+## <a name="profanity-handling-in-speech-recognition"></a>Káromkodás – a beszédfelismerés feldolgozása
 
-A Microsoft Speech Service felismeri az emberi beszéd átalakítás, beleértve a szavak és kifejezések, amelyek sok ember szeretné besorolni "cenzúrázása.", az összes formáját Hogyan a szolgáltatás elvégzi a vulgáris segítségével szabályozhatja a *cenzúrázása* lekérdezési paraméter. Alapértelmezés szerint a szolgáltatás maszkolja a vulgáris *speech.phrase* eredményeket, és nem ad vissza *speech.hypothesis* cenzúrázása tartalmazó üzeneteket.
+A Microsoft Speech Service felismeri az emberi beszéd összes formáját, beleértve azokat a szavakat és kifejezéseket, amelyeket sok ember "káromkodásnak" minősít. Megadhatja, hogy a szolgáltatás hogyan kezelje a káromkodást a *káromkodás* lekérdezési paraméterének használatával. Alapértelmezés szerint a szolgáltatás elrejti a káromkodást a *beszédben. a kifejezés* eredményét, és nem ad vissza *beszédet.* a káromkodást tartalmazó hipotézisek üzeneteit.
 
-| *Káromkodás* érték | Leírás |
+| *Káromkodás* értéke | Leírás |
 | - | - |
-| `masked` | Maszkok cenzúrázása szószűrő. Ez a viselkedés az alapértelmezett érték. |
-| `removed` | Káromkodás eltávolít minden eredmény. |
-| `raw` | Felismeri és cenzúrázása összes eredményt adja vissza. |
+| `masked` | Maszkok káromkodása csillagokkal. Ez az alapértelmezett viselkedés. |
+| `removed` | Eltávolítja a káromkodást az összes eredményből. |
+| `raw` | Felismeri és visszaadja a káromkodást az összes eredményben. |
 
-### <a name="profanity-value-masked"></a>Káromkodás érték `Masked`
+### <a name="profanity-value-masked"></a>Káromkodás értéke`Masked`
 
-Maszkolandó vulgáris, állítsa be a *cenzúrázása* lekérdezési paraméter értéke a *maszkolva*. Ha a *cenzúrázása* lekérdezési paraméter értéke ezzel, vagy nincs megadva a kérelem, a szolgáltatás *maszkok* cenzúrázása. A szolgáltatás maszkolási cenzúrázása a felismerési eredményeket a szószűrő lecserélésével hajtja végre. Káromkodás-maszkolási kezelési megadása esetén a szolgáltatás nem ad vissza *speech.hypothesis* cenzúrázása tartalmazó üzeneteket.
+A káromkodás maszkolásához állítsa a *káromkodás* lekérdezési paraméterét a *maszkolt*értékre. Ha a *trágár* lekérdezési paraméter értéke vagy nincs megadva egy kérelemhez, a szolgáltatás *elrejti* a káromkodást. A szolgáltatás maszkolást végez azáltal, hogy a felismerési eredményekben csillagokkal helyettesíti a káromkodást. Ha a káromkodás-maszkolási kezelést megadja, a szolgáltatás nem ad vissza *beszédet.* a rendszer a káromkodást tartalmazó hipotézisi üzeneteket tartalmazza.
 
-### <a name="profanity-value-removed"></a>Káromkodás érték `Removed`
+### <a name="profanity-value-removed"></a>Káromkodás értéke`Removed`
 
-Ha a *cenzúrázása* lekérdezési paraméter értéke *eltávolított*, a szolgáltatás eltávolítja a vulgáris is *speech.phrase* és *speech.hypothesis* üzeneteket. Az eredmények ugyanazok *, mintha a TRÁGÁR szavakat nem voltak beszélt*.
+Ha a *káromkodás* lekérdezési paramétere *el lett távolítva*, a szolgáltatás eltávolítja a káromkodást mind a *Speech. kifejezésből* , mind a *Speech. hipotézis* üzenetből. Az eredmények ugyanazok *, mint ha a trágár szavakat nem beszélték*.
 
-#### <a name="profanity-only-utterances"></a>Csak cenzúrázása kimondott szöveg
+#### <a name="profanity-only-utterances"></a>Csak trágár hosszúságú kimondott szöveg
 
-A felhasználó előfordulhat, hogy beszéd *csak* cenzúrázása egy alkalmazást a szolgáltatás eltávolítja a vulgáris konfigurálásakor. Ebben a forgatókönyvben, ha a felismerés mód *Diktálás* vagy *beszélgetés*, a szolgáltatás nem ad vissza egy *speech.result*. Ha a felismerés mód *interaktív*, a szolgáltatás által visszaadott egy *speech.result* állapotkódú *NoMatch*.
+A felhasználók *csak* a káromkodást jelezhetik, ha egy alkalmazás úgy konfigurálta a szolgáltatást, hogy eltávolítsa a káromkodást. Ebben a forgatókönyvben, ha a felismerési mód *diktálás* vagy *beszélgetés*, a szolgáltatás nem ad vissza *beszédet. eredmény*. Ha az felismerési mód *interaktív*, a szolgáltatás egy *beszédet* ad vissza. az eredmény az állapotkód szerint *eltér.*
 
-### <a name="profanity-value-raw"></a>Káromkodás érték `Raw`
+### <a name="profanity-value-raw"></a>Káromkodás értéke`Raw`
 
-Ha a *cenzúrázása* lekérdezési paraméter értéke *nyers*, a szolgáltatás nem távolítsa el, vagy akár cenzúrázása maszkolja a *speech.phrase* vagy  *Speech.hypothesis* üzeneteket.
+Ha a *trágár* lekérdezési paraméter értéke *RAW*, a szolgáltatás nem távolítja el a káromkodást a *Speech. mondat* vagy a *Speech. hipotézis* üzeneteiben.

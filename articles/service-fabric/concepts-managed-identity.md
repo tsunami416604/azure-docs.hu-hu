@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3e95412675100043eb21f50c8f93aa0ec0b6b7e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963991"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968283"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Felügyelt identitás Service Fabric alkalmazáshoz (előzetes verzió)
 
@@ -62,9 +62,8 @@ Az előzetes kiadáshoz támogatott forgatókönyvek listája a következő:
 
 A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye figyelembe, hogy ezeket a műveleteket nem lehet letiltani, de az alkalmazásokban kimaradást eredményezhet:
 
-   - Egy alkalmazáshoz rendelt identitások eltávolítása vagy módosítása; Ha módosítania kell a módosításokat, külön központi telepítéseket kell elküldenie, hogy először új identitás-hozzárendelést adjon hozzá, majd egy korábban hozzárendelt egyet. Az identitás meglévő alkalmazásból való eltávolítása nem kívánt hatással lehet, például nem frissíthető állapotban hagyja az alkalmazást. Biztonságosan törölheti az alkalmazást, ha szükség van az identitás eltávolítására; vegye figyelembe, hogy ez törli az alkalmazáshoz társított rendszer-hozzárendelt identitást (ha van ilyen), és eltávolítja az alkalmazáshoz rendelt felhasználó által hozzárendelt identitásokkal rendelkező társításokat.
+   - Egy alkalmazáshoz rendelt identitások eltávolítása vagy módosítása; Ha módosításokat kell végeznie, külön központi telepítéseket kell elküldenie, hogy először új identitás-hozzárendelést adjon hozzá, majd egy korábban hozzárendelt egyet. Az identitás meglévő alkalmazásból való eltávolítása nem kívánt hatással lehet, például nem frissíthető állapotban hagyja az alkalmazást. Biztonságosan törölheti az alkalmazást, ha szükség van az identitás eltávolítására; vegye figyelembe, hogy ez törli az alkalmazáshoz társított rendszer-hozzárendelt identitást (ha van ilyen), és eltávolítja az alkalmazáshoz rendelt felhasználó által hozzárendelt identitásokkal rendelkező társításokat.
 
-   - A rendszer által hozzárendelt és felhasználó által hozzárendelt identitások együttes használata nem ajánlott ugyanabban az alkalmazásban.
 >
 > [!NOTE]
 >

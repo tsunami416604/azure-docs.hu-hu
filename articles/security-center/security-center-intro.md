@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 762ab2800193aa084b771b7d000b383a7004097e
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882846"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984919"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -30,7 +30,7 @@ Az erőforrások biztonságának fenntartása a felhőalapú szolgáltató, az A
 
 Azure Security Center a három legsürgetőbb biztonsági kihívással foglalkozik:
 
--   **Gyorsan változó** munkaterhelések – a felhő erőssége és kihívása. Egyrészt a végfelhasználók többek között felhatalmazást kapnak. A másik lehetőség, hogy hogyan gondoskodik arról, hogy az állandóan változó szolgáltatások használata és létrehozása a biztonsági szabványok szerint történjen, és kövesse az ajánlott biztonsági eljárásokat?
+-   **Gyorsan változó munkaterhelések** – a felhő erőssége és kihívása. Egyrészt a végfelhasználók többek között felhatalmazást kapnak. A másik lehetőség, hogy hogyan gondoskodik arról, hogy az állandóan változó szolgáltatások használata és létrehozása a biztonsági szabványok szerint történjen, és kövesse az ajánlott biztonsági eljárásokat?
 
 -   **Egyre kifinomultabb támadások** – bárhol is futtathatja a számítási feladatokat, a támadások egyre kifinomultabbak maradnak. Biztosítania kell a nyilvános Felhőbeli munkaterheléseket, amelyek valójában olyan internetes munkaterhelést jelentenek, amely még nagyobb biztonságot is biztosít, ha nem követi az ajánlott biztonsági eljárásokat.
 
@@ -38,7 +38,7 @@ Azure Security Center a három legsürgetőbb biztonsági kihívással foglalkoz
 
 Ha segítségre van szüksége a kihívások elleni védelemben, Security Center a következőket teszi lehetővé:
 
--   A **biztonsági testhelyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megértését, biztonságosak vagy nem?
+-   A **biztonsági testhelyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
 
 -   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a fenyegetések megelőzésére vonatkozó ajánlásokat és a veszélyforrások észlelésére vonatkozó riasztásokat.
 
@@ -64,7 +64,7 @@ Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések 
 
 ![A Security Center irányítópultja](media/security-center-intro/sc-dashboard.png)
 
-Security Center segít **AZONOSÍTANI az árnyék**-előfizetéseket. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
+Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket**. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
 
 ![Security Center szabályzat irányítópultja](media/security-center-intro/sc-policy-dashboard.png)
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565770"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967062"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -58,7 +58,7 @@ A Computer Vision használatával felderítheti a [felnőtt és](concept-detecti
 
 [Computer Vision tárolók használatával](computer-vision-how-to-install-containers.md) helyileg ismeri fel a nyomtatott és a kézírásos szövegeket, ha a szabványos Docker-tárolót az adataihoz közelebb telepíti.
 
-## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
+## <a name="image-requirements"></a>A lemezképre vonatkozó követelmények
 
 A Computer Vision a következő követelményeknek megfelelő képeket képes elemezni:
 
@@ -75,6 +75,6 @@ Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltat
 
 A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
 
-- [Rövid útmutató: Rendszerkép elemzése](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Rövid útmutató: Kézírásos szöveg kinyerése](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Rövid útmutató: Miniatűr létrehozása](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Rövid útmutató: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Rövid útmutató: Python SDK Computer Vision](quickstarts-sdk/python-sdk.md)
+- [Rövid útmutató: Java SDK Computer Vision](quickstarts-sdk/java-sdk.md)

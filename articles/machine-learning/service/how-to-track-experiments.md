@@ -1,7 +1,7 @@
 ---
-title: Naplózási mérőszámok a betanítási futtatások során
+title: Log ML-kísérletek & metrikák
 titleSuffix: Azure Machine Learning service
-description: Nyomon követheti a kísérleteket, és figyelheti a mérőszámokat a modell létrehozási folyamatának növelése érdekében. Megtudhatja, hogyan adhat hozzá naplózást a betanítási parancsfájlhoz, hogyan küldheti el a kísérletet, hogyan tekintheti át a futó feladatok állapotát, és hogyan tekintheti meg a Futtatás naplózott eredményeit.
+description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Vegyen fel naplózást a betanítási parancsfájlba, és tekintse meg a Futtatás naplózott eredményeit.  Használja a Run. log, a Run. start_logging vagy a ScriptRunConfig parancsot.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858719"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959945"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>A gépi tanulási képzés mérőszámait nyomon követheti Azure Machine Learning
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 
-A kísérletek és a monitorozási mérőszámok nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a betanítási parancsfájlhoz, elküldheti a kísérlet futtatását, figyelheti a futtatást, és ellenőrizheti az eredményeket Azure Machine Learning szolgáltatásban.
+A kísérletek és a figyelési futtatási metrikák nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a betanítási parancsfájlhoz, elküldheti a kísérlet futtatását, figyelheti a futtatást, és ellenőrizheti az eredményeket Azure Machine Learning szolgáltatásban.
 
 > [!NOTE]
 > A Azure Machine Learning szolgáltatás a betanítás során más forrásokból is naplózhat adatokat, például az automatizált gépi tanulási futtatásokat vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.

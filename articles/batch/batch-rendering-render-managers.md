@@ -1,45 +1,51 @@
 ---
-title: Leképezési manager-támogatás – Azure Batch
-description: Az Azure használatához megjelenítése az Azure Batch renderelési manager integrációjának használatával
+title: Render Manager támogatása – Azure Batch
+description: Az Azure használata rendereléshez Azure Batch Render Manager-integráció használatával
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436167"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983669"
 ---
-# <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch renderelési farm vezetők alá tartozó használatával
+# <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch használata a render Farm Managerrel
 
-Használata egy meglévő helyi farm, renderelni, akkor nagyon valószínű, hogy egy renderelési manager a renderelési farm kapacitás szabályozza, és a renderelési feladatok.
+Ha egy meglévő helyszíni Render farmot használ, akkor nagy valószínűséggel a render Manager a farmok renderelési kapacitását és a renderelési feladatokat vezérli.
 
-Az Azure beépített támogatást vagy a bővítményeket kínál népszerű renderelési kezelők. Ezután adja hozzá, és távolítsa el az Azure virtuális gépekhez, beleértve a használatalapú esetében használható az alkalmazáslicenceket rendelkező virtuális gépek és az alacsony prioritású virtuális gépek.
+Az Azure beépített támogatást vagy bővítményeket biztosít a népszerű Render managerekhez. Ezután hozzáadhat és eltávolíthat Azure-beli virtuális gépeket, beleértve a használaton kívüli alkalmazások licencelését és az alacsony prioritású virtuális gépeket is.
 
-Az alábbi renderelési kezelők támogatottak:
+A következő Render managerek támogatottak:
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Royal renderelési](https://www.royalrender.de/)
-* [Thinkbox határidő](https://deadline.thinkboxsoftware.com/)
+* [Royal Render](https://www.royalrender.de/)
+* [Thinkbox határideje](https://deadline.thinkboxsoftware.com/)
 
-## <a name="using-azure-with-pipelinefx-qube"></a>Az Azure-PipelineFX Qube
+## <a name="azure-render-hub"></a>Azure Render hub
 
-Parancsfájlok és útmutatást ahhoz, hogy az Azure Batch-készlet Qube munkavállalók a használni kívánt virtuális gépeket [a GitHub-adattár](https://github.com/Azure/azure-qube).
+Az Azure Render hub leegyszerűsíti az Azure Render-farmok létrehozását és felügyeletét.  A render hub natív módon támogatja a PipelineFx Qube és a 10. határidőt.  További információkért és részletes utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
-## <a name="using-azure-with-royal-render"></a>Az Azure-Királyi renderelési
+## <a name="using-azure-with-pipelinefx-qube"></a>Az Azure használata a PipelineFX Qube
 
-Royal renderelési rendelkezik beépített, az Azure és az Azure Batch integrációja lehetővé teszi, hogy terjessze ki az Azure-alapú virtuális gépeket a renderelési farm. Egy összefoglaló, lásd: [a súgófájlok](https://www.royalrender.de/help8/index.html?Cloudrendering.html).
+Az Azure Render hub támogatja a népszerű Render managereket, beleértve a határidőt is.  A render hub üzembe helyezésével és használatával kapcsolatos utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
-Az Azure-beli integrációs Royal jelennek meg Microsoft-példa: a [Jellyfish képek vásárlói beszámolónk](https://customers.microsoft.com/story/jellyfishpictures).
+Azok a parancsfájlok és utasítások, amelyek lehetővé teszik, hogy Azure Batch készletben lévő virtuális gépek Qube feldolgozóként is használhatók legyenek [a GitHub-tárházban](https://github.com/Azure/azure-qube).
 
-## <a name="using-azure-with-thinkbox-deadline"></a>Az Azure-Thinkbox határidő
+## <a name="using-azure-with-royal-render"></a>Az Azure és a Royal Render használata
 
-Parancsfájlok és útmutatást ahhoz, hogy az Azure Batch-készlet határidő alkiszolgálók a használni kívánt virtuális gépeket [a GitHub-adattár](https://github.com/Azure/azure-deadline).
+A Royal Render rendelkezik az Azure-nal és Azure Batch integrációs szolgáltatással, amely lehetővé teszi a render farmok Azure-alapú virtuális gépekkel való bővítését. Az összegzést [a súgófájlok](https://www.royalrender.de/help8/index.html?Cloudrendering.html)részben tekintheti meg.
+
+Az Azure-integrációt használó Royal Render-ügyfélre például a medúza- [képek vásárlói történetében](https://customers.microsoft.com/story/jellyfishpictures)olvashat.
+
+## <a name="using-azure-with-thinkbox-deadline"></a>Az Azure használata a Thinkbox határidővel
+
+Az Azure Render hub támogatja a népszerű Render managereket, beleértve a határidőt is.  A render hub üzembe helyezésével és használatával kapcsolatos utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az Azure Batch-integráció segítségével a megfelelő, a renderelési kezelője beépülő modul és útmutatás a Githubon, ahol lehetséges.
+Próbálja ki a render Manager Azure Batch integrációját a megfelelő beépülő modullal és a GitHubon megjelenő utasításokkal, ahol lehetséges.

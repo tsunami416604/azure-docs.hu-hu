@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858557"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984975"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -48,7 +48,7 @@ A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt
 - [RENDELKEZÉSRE ÁLLÁSI CSOPORT ELDOBÁSA](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) utasítás [set HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) záradéka
 
-### <a name="backup"></a>Tartalék
+### <a name="backup"></a>Backup
 
 A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így `COPY_ONLY` a felhasználók teljes adatbázis-biztonsági másolatokat hozhatnak létre. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
@@ -339,7 +339,7 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 - `ALTER ASSEMBLY`nem lehet hivatkozni a fájlokra. Lásd: az [Alter Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`a @file_attachments mellékletek nem küldhetők paraméterrel. Ez az eljárás nem érhető el a helyi fájlrendszer és a kiterjedési megosztások vagy az Azure Blob Storage szolgáltatásban.
+ - `sp_send_dbmail`a @file_attachments mellékletek nem küldhetők paraméterrel. A helyi fájlrendszer-és: Extertal-megosztások vagy az Azure Blob Storage nem érhetők el az eljárásban.
  - Tekintse meg `@query` a paraméterrel és a hitelesítéssel kapcsolatos ismert problémákat.
  
 ### <a name="dbcc"></a>DBCC
@@ -404,7 +404,7 @@ Műveletek
 
 A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső táblák nem támogatottak. További információ a következőről [: Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikálás
+### <a name="replication"></a>Replikáció
 
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) a felügyelt példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
@@ -479,9 +479,12 @@ Korlátozások
 - A dokumentumban ismertetett korlátozásokat ( `FILESTREAM` például vagy `FILETABLE` objektumokat) tartalmazó adatbázis fájljánakvisszaállításanemállíthatóvisszaafelügyeltpéldányon.`.BAK`
 - `.BAK`a több biztonságimásolat-készletet tartalmazó fájlok nem állíthatók vissza. 
 - `.BAK`a több naplófájlt tartalmazó fájlok nem állíthatók vissza.
-- A 8TB tárhely-nél nagyobb adatbázisok, aktív memóriában lévő OLTP-objektumok vagy több mint 280-es fájlok tárolására szolgáló biztonsági másolatok nem állíthatók vissza általános célú példányon. 
+- A 8TB tárhely-nál nagyobb adatbázisokat tartalmazó biztonsági másolatok, a memóriában tárolt OLTP objektumok, illetve a 280-es fájlokat meghaladó fájlok száma nem állítható vissza általános célú példányon. 
 - A 4TB vagy memóriában lévő OLTP-objektumoknál nagyobb méretű adatbázisokat tartalmazó biztonsági másolatok az [erőforrás-korlátokban](sql-database-managed-instance-resource-limits.md) leírt méretnél nagyobb teljes mérettel nem állíthatók vissza üzletileg kritikus példányon.
 További információ a visszaállítási utasításokról: [Restore utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+
+ > [!IMPORTANT]
+ > Ugyanezek a korlátozások érvényesek a beépített időpontra történő visszaállítási műveletre. Például általános célú-adatbázis 4 TB-nál nagyobb mértékben nem állítható vissza üzletileg kritikus példányon. Üzletileg kritikus adatbázis memóriában tárolt OLTP-fájlokkal vagy több mint 280 fájllal nem állítható vissza általános célú példányon.
 
 ### <a name="service-broker"></a>Service Broker
 

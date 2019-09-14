@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a Teradata a Azure Data Factory használatával | Microsoft Docs
-description: A Data Factory szolgáltatás Teradata-összekötője lehetővé teszi adatok másolását egy Teradata-adatbázisból a Data Factory által támogatott adattárakba mosogatóként.
+title: Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával | Microsoft Docs
+description: A Data Factory szolgáltatás Teradata-összekötője lehetővé teszi az adatok másolását a Data Factory által támogatott adattárakba a Teradata.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,31 +10,31 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bec1c0c3523e6d9cfb0b2fdbc7a093ffe0637743
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232499"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959015"
 ---
-# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Adatok másolása a Teradata a Azure Data Factory használatával
+# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuális verzió](connector-teradata.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Teradata-adatbázisból történő másolásához. A [másolási tevékenység áttekintésére](copy-activity-overview.md)épül.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához a Teradata Vantage-ból. A [másolási tevékenység áttekintésére](copy-activity-overview.md)épül.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A Teradata-adatbázisból bármely támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+A Teradata Vantage-ból származó adatok másolása bármely támogatott fogadó adattárba lehetséges. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Ez a Teradata-összekötő a következőket támogatja:
 
 - Teradata- **verzió: 14,10, 15,0, 15,10, 16,0, 16,10 és 16,20**.
-- Adatok másolása alapszintű vagy **Windows** -hitelesítés használatával.
+- Adatok másolása **Alapszintű** vagy **Windows** -hitelesítés használatával.
 - Párhuzamos másolás egy Teradata-forrásból. A részletekért tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát.
 
 > [!NOTE]
@@ -45,9 +45,9 @@ Ez a Teradata-összekötő a következőket támogatja:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-illesztőprogramot biztosít. Nem kell manuálisan telepítenie az illesztőprogramot. Az illesztőprogramhoz a saját C++ üzemeltetésű Integration Runtime-gépen a "Visual Redistributable 2012 Update 4" szükséges. Ha még nincs telepítve, töltse le innen. [](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
+Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-illesztőprogramot biztosít. Nem kell manuálisan telepítenie az illesztőprogramot. Az illesztőprogramhoz a saját C++ üzemeltetésű Integration Runtime-gépen a "Visual Redistributable 2012 Update 4" szükséges. Ha még nincs telepítve, [töltse le innen.](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
 
-Az 3,18-nál korábbi, saját üzemeltetésű Integration Runtime-verziók esetében telepítse a .net-adatszolgáltatót a [Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), 14-ös vagy újabb verzióra az Integration Runtime-gépen. 
+Az 3,18-nál korábbi, saját üzemeltetésű Integration Runtime-verziók esetében telepítse a [.net-adatszolgáltatót a Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), 14-ös vagy újabb verzióra az Integration Runtime-gépen. 
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -62,8 +62,8 @@ A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
-| connectionString | Meghatározza a Teradata adatbázis-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és `password` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
-| username | Adja meg a Teradata-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
+| connectionString | Meghatározza az Teradata-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és `password` lekérheti a konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
+| username | Adja meg a Teradata való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Azt is megteheti, hogy [hivatkozik Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). <br>A Windows-hitelesítés használatakor, vagy az alapszintű hitelesítéshez Key Vault jelszóra hivatkozik. | Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Igen |
 
@@ -135,15 +135,15 @@ A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Ez a szakasz a Teradata adatkészlet által támogatott tulajdonságok listáját tartalmazza. Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [](concepts-datasets-linked-services.md)adatkészletek.
+Ez a szakasz a Teradata adatkészlet által támogatott tulajdonságok listáját tartalmazza. Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md).
 
 Az adatok Teradata történő másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát be kell állítani `TeradataTable`. | Igen |
-| database | A Teradata-adatbázis neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
-| table | A tábla neve a Teradata adatbázisban. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| database | Az Teradata-példány neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+| table | A Teradata-példányban található tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa:**
 
@@ -197,7 +197,7 @@ Az adatok Teradata történő másolásához a másolási tevékenység **forrá
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre `TeradataSource`kell beállítani:. | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva table az adatkészletben) |
-| partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **Nincs** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), akkor a Teradata-adatbázisból származó adatok egyidejű betöltésének fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításai vezérlik. | Nem |
+| partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **Nincs** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), akkor a Teradata származó adatok párhuzamos betöltésének fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításai vezérlik. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a `None`partíció beállítása nem. | Nem |
 | partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a tartomány partíció vagy a kivonatoló partíció használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges indexét, és a partíciós oszlopként használja. <br>Akkor alkalmazza, ha a partíció `Hash` beállítás `DynamicRange`értéke vagy. Ha lekérdezést használ a forrásadatok, a Hook `?AdfHashPartitionCondition` vagy `?AdfRangePartitionColumnName` a WHERE záradék beolvasásához. Lásd: példa [párhuzamos másolással a Teradata](#parallel-copy-from-teradata) szakaszból. | Nem |
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a `DynamicRange`partíció lehetőség van. Ha lekérdezést használ a forrásadatok beolvasásához, a `?AdfRangePartitionUpbound` where záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Teradata](#parallel-copy-from-teradata) szakaszát. | Nem |
@@ -245,9 +245,9 @@ A Data Factory Teradata-összekötő beépített adatparticionálást biztosít 
 
 ![Képernyőfelvétel a partíciós beállításokról](./media/connector-teradata/connector-teradata-partition-options.png)
 
-A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérdezéseket futtat a Teradata-forráson az adatpartíciók betöltéséhez. A párhuzamos mértéket a másolási [`parallelCopies`](copy-activity-performance.md#parallel-copy) tevékenység beállításai vezérlik. Ha például a négy értékre `parallelCopies` van állítva, Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés a Teradata-adatbázisból származó adatok egy részét kéri le.
+A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérdezéseket futtat a Teradata-forráson az adatpartíciók betöltéséhez. A párhuzamos mértéket a másolási [`parallelCopies`](copy-activity-performance.md#parallel-copy) tevékenység beállításai vezérlik. Ha például négy értékre van `parallelCopies` állítva, Data Factory egyidejűleg létrehoz és futtat négy lekérdezést a megadott partíciós beállítás és beállítások alapján, és mindegyik lekérdezés a Teradata származó adatok egy részét kéri le.
 
-Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be a Teradata-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
+Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be a Teradata. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
 | Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -285,7 +285,7 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
 
 ## <a name="data-type-mapping-for-teradata"></a>Adattípusok leképezése Teradata
 
-Az adatok Teradata történő másolásakor a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus](copy-activity-schema-and-type-mapping.md)-leképezéseket.
+Az adatok Teradata történő másolásakor a következő leképezések érvényesek. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
 | Teradata adattípusa | Data Factory közbenső adattípus |
 |:--- |:--- |

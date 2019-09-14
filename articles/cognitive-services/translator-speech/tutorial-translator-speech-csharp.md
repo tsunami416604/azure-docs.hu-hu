@@ -3,22 +3,22 @@ title: 'Oktatóanyag: Translator Speech APIC#'
 titleSuffix: Azure Cognitive Services
 description: A Translator Speech API használatával valós időben fordíthat szövegeket.
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445583"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965285"
 ---
-# <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: A Translator Speech alkalmazásC#
+# <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: Translator Speech alkalmazás aC#
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
@@ -34,13 +34,13 @@ Az alkalmazáshoz tartozó Visual Studio-megoldásfájl [elérhető a GitHubon](
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban szüksége lesz minden Visual Studio 2019, beleértve a Community Edition kiadását.
+Ebben az oktatóanyagban szüksége lesz a Visual Studio 2019 bármely kiadására, beleértve a közösségi kiadást is.
 
 A Visual Studio-megoldás telepítőt is létrehoz az alkalmazáshoz. A funkció támogatásához a [WiX eszközkészlet](http://wixtoolset.org/) és a [WiX eszközkészlethez készült Visual Studio-bővítmény](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) szükséges.
 
 A Translator Speech szolgáltatáshoz szükség van továbbá egy előfizetői azonosítóra, amelyet a Microsoft Azure-irányítópultról szerezhet be. Az ingyenes tarifacsomag keretében havonta legfeljebb 10 órányi beszédet ingyenesen fordíthat le. Ez a szint elegendő ehhez az oktatóanyaghoz.
 
-A külső [JSON.NET könyvtár](https://www.newtonsoft.com/json) (a Newtonsoft) is szükség. Ezt a szerelvényt a NuGet automatikusan telepíti, ha mindkét csomag-visszaállítási jelölőnégyzet be van jelölve a Visual Studio beállításaiban.
+A külső gyártótól származó [JSON.net-függvénytár](https://www.newtonsoft.com/json) (Newtonsoft) is szükséges. Ezt a szerelvényt a NuGet automatikusan telepíti, ha mindkét csomag-visszaállítási jelölőnégyzet be van jelölve a Visual Studio beállításaiban.
 
 ## <a name="trying-the-translation-app"></a>A fordítóalkalmazás kipróbálása
 

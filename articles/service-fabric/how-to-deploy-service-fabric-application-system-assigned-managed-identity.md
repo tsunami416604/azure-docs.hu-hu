@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640705"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968245"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric alkalmazás üzembe helyezése rendszer által hozzárendelt felügyelt identitással (előzetes verzió)
 
@@ -93,15 +93,9 @@ Ez a tulajdonság deklarálja (Azure Resource Manager, valamint a felügyelt ide
     Ez egy, a fentiekben leírtak szerint a szolgáltatás azonosságának megfelelő leképezése, de a szolgáltatás definíciójának szemszögéből. Az identitást itt tekintheti meg az alkalmazás jegyzékfájljában deklarált rövid névvel (`WebAdmin`).
 
 ## <a name="next-steps"></a>További lépések
-
 * [Felügyelt identitások támogatásának](./concepts-managed-identity.md) áttekintése az Azure Service Fabric
-
 * [Új telepítése](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-fürt felügyelt identitások támogatásával 
-
 * [Felügyelt identitás engedélyezése](./configure-existing-cluster-enable-managed-identity-token-service.md) meglévő Azure Service Fabric-fürtben
-
-* Service Fabric alkalmazás felügyelt identitásának kihasználása [a forráskódból](./how-to-managed-identity-service-fabric-app-code.md)
-
+* Service Fabric alkalmazás [felügyelt identitásának kihasználása a forráskódból](./how-to-managed-identity-service-fabric-app-code.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
 * [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)

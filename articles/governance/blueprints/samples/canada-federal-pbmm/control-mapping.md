@@ -3,16 +3,16 @@ title: Minta – Kanada szövetségi PBMM terve – vezérlés leképezése
 description: A Kanada szövetségi PBMM tervének a Azure Policyra való leképezésének vezérlése.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 068e3253dbcb7ef8d0a5c0191ac1a0b75bd8c0e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 18c098263a4760c8b4b48f6799bcb263aa9709a9
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918769"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968290"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>A Kanada szövetségi PBMM tervezetének vezérlési mintája
 
@@ -310,6 +310,12 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
 ## <a name="next-steps"></a>További lépések
+
+Áttekintette a kanadai szövetségi PBMM terv mintájának vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
+
+> [!div class="nextstepaction"]
+> [Kanadai szövetségi PBMM terv – áttekintés](./control-mapping.md)
+> [Kanada szövetségi PBMM terv – lépések üzembe helyezése](./deploy.md)
 
 További cikkek a tervekről és azok használatáról:
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 6877595f191c326ed73b347d46cb1aeb404702b5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232234"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984467"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -31,7 +31,6 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 
 | Összetevő | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Hortonworks Data Platform | 3.0 | 2.6 | 2.5 | 2.4 | 2.3 | 2.2 |
 | Apache Hadoop és fonal | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache TEZ | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
@@ -158,21 +157,21 @@ A lejárati _dátum_ az a dátum, amely után a fürt verziója nem hozható lé
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>A HDInsight-verziókhoz tartozó Hortonworks kibocsátási megjegyzések
 
 A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók és a HDInsight-mel használt Apache-összetevők kibocsátási megjegyzései számára.
-* A HDInsight-fürt 4,0-es verziója olyan Hadoop-eloszlást használ, amely a 3,0-es [Hortonworks](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) -adatplatformon alapul
-* A HDInsight-fürt 3,6-es verziója olyan Hadoop-eloszlást használ, amely a 2,6-es [Hortonworks](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)-adatplatformon alapul.
-* A HDInsight-fürt 3,5-es verziója olyan Hadoop-eloszlást használ, amely a 2,5-es [Hortonworks](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)-adatplatformon alapul. A HDInsight-fürt 3,5-es verziója a Azure Portalban létrehozott _alapértelmezett_ Hadoop-fürt.
-* A HDInsight-fürt 3,4-es verziója olyan Hadoop-eloszlást használ, amely a 2,4-es [Hortonworks](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)-adatplatformon alapul.
-* A HDInsight-fürt 3,3-es verziója olyan Hadoop-eloszlást használ, amely a 2,3-es [Hortonworks](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)-adatplatformon alapul.
+* A HDInsight-fürt 4,0-es verziója olyan Hadoop-eloszlást használ, amely a 3,0-es [Hortonworks-Adatplatformon](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) alapul
+* A HDInsight-fürt 3,6-es verziója olyan Hadoop-eloszlást használ, amely a 2,6-es [Hortonworks-Adatplatformon](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)alapul.
+* A HDInsight-fürt 3,5-es verziója olyan Hadoop-eloszlást használ, amely a 2,5-es [Hortonworks-Adatplatformon](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)alapul. A HDInsight-fürt 3,5-es verziója a Azure Portalban létrehozott _alapértelmezett_ Hadoop-fürt.
+* A HDInsight-fürt 3,4-es verziója olyan Hadoop-eloszlást használ, amely a 2,4-es [Hortonworks-Adatplatformon](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)alapul.
+* A HDInsight-fürt 3,3-es verziója olyan Hadoop-eloszlást használ, amely a 2,3-es [Hortonworks-Adatplatformon](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)alapul.
 
   * [Apache Storm kibocsátási megjegyzések](https://storm.apache.org/2015/11/05/storm0100-released.html) az Apache webhelyén érhetők el.
   * [Apache Hive kibocsátási megjegyzések](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) az Apache webhelyén érhetők el.
-* A HDInsight-fürt 3,2-es verziója olyan Hadoop-eloszlást használ, amely a 2,2-es [Hortonworks][hdp-2-2]-adatplatformon alapul.
+* A HDInsight-fürt 3,2-es verziója olyan Hadoop-eloszlást használ, amely a 2,2-es [Hortonworks-Adatplatformon][hdp-2-2]alapul.
 
   * A megadott Apache-összetevők kibocsátási megjegyzései a következőképpen érhetők el: [Kaptár 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [fonal 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)és [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * A HDInsight-fürt 3,1-es verziója a [Hortonworks adatplatform-2.1.7][hdp-2-1-7]alapuló Hadoop-eloszlást használ. A HDInsight 3,1-es, 2014-ig létrehozott fürtök a [Hortonworks adatplatform 2.1.1][hdp-2-1-1]-es változata alapján lettek létrehozva.
-* A HDInsight-fürt 3,0-es verziója olyan Hadoop-eloszlást használ, amely a 2,0-es [Hortonworks][hdp-2-0-8]-adatplatformon alapul.
-* A HDInsight-fürt 2,1-es verziója olyan Hadoop-eloszlást használ, amely a 1,3-es [Hortonworks][hdp-1-3-0]-adatplatformon alapul.
-* A HDInsight-fürt 1,6-es verziója olyan Hadoop-eloszlást használ, amely a 1,1-es [Hortonworks][hdp-1-1-0]-adatplatformon alapul.
+* A HDInsight-fürt 3,0-es verziója olyan Hadoop-eloszlást használ, amely a 2,0-es [Hortonworks-Adatplatformon][hdp-2-0-8]alapul.
+* A HDInsight-fürt 2,1-es verziója olyan Hadoop-eloszlást használ, amely a 1,3-es [Hortonworks-Adatplatformon][hdp-1-3-0]alapul.
+* A HDInsight-fürt 1,6-es verziója olyan Hadoop-eloszlást használ, amely a 1,1-es [Hortonworks-Adatplatformon][hdp-1-1-0]alapul.
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>A csomópontok alapértelmezett konfigurációja és a virtuális gépek méretei a fürtökhöz
 
