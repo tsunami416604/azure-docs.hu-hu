@@ -71,9 +71,9 @@ A következő adattípusok támogatottak a **szerializáló** függvénytárral 
 | float |egyszeres pontosságú lebegőpontos szám |
 | long |hosszú egész szám |
 | int8\_t |8 bites egész szám |
-| Int16\_t |16 bites egész szám |
-| \_t t |32 bites egész szám |
-| Int64\_t |64 bites egész szám |
+| int16\_t |16 bites egész szám |
+| int32\_t |32 bites egész szám |
+| int64\_t |64 bites egész szám |
 | bool |boolean |
 | ascii\_char\_ptr |ASCII-karakterlánc |
 | EDM\_DATE\_TIME\_OFFSET |dátum és idő eltolása |
