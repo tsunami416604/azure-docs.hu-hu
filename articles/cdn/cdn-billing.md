@@ -1,6 +1,6 @@
 ---
-title: Azure CDN számlázásának ismertetése |} A Microsoft Docs
-description: Ez a GYIK az Azure CDN számlázásának működését ismerteti.
+title: A Azure CDN számlázás ismertetése | Microsoft Docs
+description: Ez a GYIK leírja, hogyan működik a Azure CDN számlázás.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 2fd3d2f8fbc98d8c7b19cbcc365748cc088d76fd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594082"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996816"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
-Ez a GYIK az Azure Content Delivery Network (CDN) tárolt tartalom számlázási struktúráját ismerteti.
+Ez a gyakori kérdések az Azure Content Delivery Network (CDN) által üzemeltetett tartalmak számlázási szerkezetét ismertetik.
 
-## <a name="what-is-a-billing-region"></a>Mi az, hogy egy számlázási régióban?
-A számlázási régióban egy földrajzi területen határozza meg, milyen díjjal díjszabásának kézbesítési objektumok az Azure CDN szolgáltatással. A jelenlegi számlázási zónák és a régiók a következők:
+## <a name="what-is-a-billing-region"></a>Mi az a számlázási régió?
+A számlázási régió egy földrajzi terület, amelynek alapján megállapítható, hogy milyen arányban kell fizetni az objektumok Azure CDNból való kézbesítésére. Az aktuális számlázási zónák és azok régiói a következők:
 
 - 1\. zóna: Észak-Amerika, Európa, Közel-Kelet és Afrika
 
@@ -38,51 +38,84 @@ A számlázási régióban egy földrajzi területen határozza meg, milyen díj
 
 - 5\. zóna: India
 
-Jelenléti pontok (POP) régiókkal kapcsolatos információkért lásd: [Azure CDN POP-helyek régiónként](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Mexikói található POP például Észak-amerikai régióban található, és ezért része a 1. zóna. 
+További információ a pontok közötti (POP) régiókkal kapcsolatban: [Azure CDN pop-helyszínek régiónként](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). A Mexikóban lévő POP például a Észak-Amerika régióban található, ezért az 1. zónában szerepel. 
 
-További információ az Azure CDN-tarifacsomag: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
+További információ a Azure CDN díjszabásáról: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
-## <a name="how-are-delivery-charges-calculated-by-region"></a>Hogyan számítják ki kézbesítési díjak régióban?
-Az Azure CDN számlázási régióban a forráskiszolgálón, a tartalom jusson el a felhasználó helye alapján. A cél (fizikai helyének) az ügyfél nem tekinthető a számlázási régióban.
+## <a name="how-are-delivery-charges-calculated-by-region"></a>Hogyan számítják ki a kézbesítési díjat régiónként?
+A Azure CDN számlázási régió a forrás-kiszolgáló azon helyén alapul, amely a tartalmat a végfelhasználó számára kézbesíti. Az ügyfél célja (fizikai helye) nem tekintendő a számlázási régiónak.
 
-Például ha Mexikó lévő felhasználó kibocsát egy kérelmet, és a egy Egyesült államokbeli POP társviszony-létesítés vagy felé irányuló forgalom feltételek miatt található kiszolgáló által kiszolgált ezt a kérelmet, a számlázási régióban lesz az Egyesült Államokban.
+Ha például egy Mexikóban található felhasználó kiadja a kérést, és ezt a kérést egy, az Egyesült Államok-előugróban található kiszolgáló szervizeli vagy forgalmi feltételek miatt, a számlázási régió lesz a Egyesült Államok.
 
-## <a name="what-is-a-billable-azure-cdn-transaction"></a>Mi az Azure CDN a számlázható tranzakciók?
-Bármilyen HTTP (S)-kérelmet, amely a CDN naplósorszámig esemény számlázható, amely tartalmazza az összes válasz típusa: sikeres, sikertelen vagy más. Azonban eltérő válaszokat is okoznak a különböző forgalom. Például *304 nem módosított* és más csak fejléc válaszok kis forgalmat hoz létre, mert azok egy kis válasz fejrészét; ehhez hasonlóan a hibaválaszok (például *404 nem található*) számlázhatók de kis költségkezelési miatt a nagyon kicsi válasz hasznos adatban.
+## <a name="what-is-a-billable-azure-cdn-transaction"></a>Mi az a számlázható Azure CDN tranzakció?
+Minden olyan HTTP-kérelem, amely a CDN-nél leáll, számlázható esemény, amely minden választ tartalmaz: sikeres, sikertelen vagy egyéb. Azonban a különböző válaszok különböző forgalmi mennyiségeket hozhatnak. Például a *304 nem módosult* , és a csak más fejlécekre adott válaszok kis forgalmat eredményeznek, mert kis fejlécre választanak. Hasonlóképpen, a hibaüzenetek (például a *404 nem található*) számlázva vannak, de a kis-és nagyszámú válasz miatt kisebb költségekkel járnak.
 
-## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Milyen egyéb Azure-költségek kapcsolódnak az Azure CDN használata az?
-Néhány az objektumok a forrásként használt szolgáltatásokra vonatkozó használati díjak is az Azure CDN szolgáltatás használata tekintetében. Ezeket a díjakat jellemzően kis teljes CDN használati költségeinek töredékéért.
+## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Milyen egyéb Azure-költségek vannak társítva Azure CDN használatra?
+A Azure CDN használata az objektumok forrásaként használt szolgáltatások használati díját is megterheli. Ezek a költségek jellemzően a CDN teljes használati költségének kis hányadát jelentik.
 
-Az Azure Blob storage, a forrás-tartalomra vonatkozó használ, ha a gyorsítótár kitölti a következő tárolási díjakat is díjak:
+Ha az Azure Blob Storage-t használja a tartalom forrásaként, a gyorsítótár kitöltéséhez a következő tárolási díjakat is fel kell vennie:
 
-- Tényleges GB felhasználva: Az adatforrás-objektumok a tényleges tároló.
+- Tényleges GB használatban: A forrásoldali objektumok tényleges tárterülete.
 
-- Adatforgalom GB-ban: Töltse ki a CDN-gyorsítótárak át adatok mennyisége.
+- Tranzakciók A gyorsítótár kitöltéséhez szükséges.
 
-- Tranzakciók: Szükséges megtöltené a gyorsítótárat.
+- Átvitel GB-ban: A CDN-gyorsítótárak kitöltéséhez továbbított adatmennyiség.
 
-Azure Storage szolgáltatás számlázásának kapcsolatos további információkért lásd: [ismertetése az Azure Storage Billing – sávszélesség, tranzakciók és a kapacitás](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
+> [!NOTE]
+> Október 2019-től kezdődően, ha Azure CDNt használ a Microsofttól, az Azure-ból a CDN-re üzemeltetett adatátviteli költségek díjmentesek. A Verizon és a Akamai Azure CDN Azure CDN a lent ismertetett díjszabás hatálya alá tartozik.
 
-Ha használ *üzemeltetett szolgáltatás*, díjat számolunk a következő:
+Az Azure Storage számlázási szolgáltatásával kapcsolatos további információkért lásd: az [Azure Storage számlázásának ismertetése – sávszélesség, tranzakciók és kapacitás](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Azure-beli számítási idő: A forrás-kiszolgálóként működő számítási példányokért.
+Ha *üzemeltetett szolgáltatás-kézbesítést*használ, a következő díjakat kell fizetnie:
 
-- Azure-beli számítási átvitel: Az adatok a számítási példányok töltse ki az Azure CDN-gyorsítótárak másolja át.
+- Azure számítási idő: A forrásként tevékenykedő számítási példányok.
 
-Ha az ügyfél bájttartomány-kérelmek (függetlenül a forrás-szolgáltatás) használ, a következő szempontokat kell figyelembe venni:
+- Azure-beli számítási átvitel: Az adatforgalom a számítási példányokból a Azure CDN gyorsítótárak kitöltéséhez.
 
-- A *bájttartomány-kérelem* a számlázható tranzakciók, a CDN-t. Amikor egy ügyfél kiad egy bájttartomány-kérelmet, a rendszer egy részét (tartomány) az objektum. A CDN fűzi hozzá a kért tartalmat csak részleges része. A részleges választ a számlázható tranzakciók és az átviteli összeget korlátozódik, a tartomány válasz (valamint a fejlécek) méretét.
+Ha az ügyfél bájt-tartományra vonatkozó kérelmeket használ (a forrástól függetlenül), a következő szempontokat kell figyelembe venni:
 
-- Amikor kérelem érkezik egy objektum csak egy részét (bájttartomány-fejléc megadásával), a CDN előfordulhat, hogy olvassa be a teljes objektum saját gyorsítótárába. Ennek eredményeképpen annak ellenére, hogy a CDN-ből a számlázható tranzakciók részleges választ, a forrásból a számlázható tranzakciók is igénybe vehet az objektum teljes méretét.
+- A *byte-Range kérelem* egy számlázható tranzakció a CDN-ben. Ha egy ügyfél egy bájtos tartományra vonatkozó kérelmet ad ki, akkor ez a kérelem az objektum egy részhalmazára (tartományára) érvényes. A CDN csak a kért tartalom részleges részét válaszolja meg. Ez a részleges válasz egy számlázható tranzakció, és az átvitel összege a tartomány válaszának (plusz fejlécek) méretére korlátozódik.
 
-## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Mekkora átviteli tevékenység támogatásához a gyorsítótárban történik?
-Minden egyes alkalommal, amikor a CDN összes jelenléti Pontjára kell töltse ki a gyorsítótárat, adatbeolvasási kérelmet küld az objektum gyorsítótárba helyezésből parancsra a forrásnak. Ennek eredményeképpen a a forrás minden egyes gyorsítótár-tévesztés a számlázható tranzakciók tekintetében. A gyorsítótár-tévesztések száma több tényezőtől függ:
+- Ha egy kérelem egy objektum csak egy részére érkezik (egy byte-Range fejléc megadásával), akkor a CDN a teljes objektumot beolvashatja a gyorsítótárba. Ennek eredményeképpen annak ellenére, hogy a CDN-ből származó számlázható tranzakció részleges válasz, a forrástól származó számlázható tranzakció az objektum teljes méretét is magában foglalja.
 
-- Hogyan gyorsítótárazható tartalom van: Ha a tartalom még magas TTL (time-to-live) / lejárati értékeli és gyakran elérni, hogy marad a gyorsítótárban, majd a terhelés túlnyomó többsége népszerű kezeli a CDN-t. Egy tipikus jó gyorsítótár találati arány, jól több mint 90 %-át, tehát, hogy kevesebb mint 10 %-a-ügyfélkérelmek kell térni a forrás, vagy egy gyorsítótár-tévesztés vagy az objektum frissítése.
+## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Mennyi adatátviteli tevékenység történik a gyorsítótár támogatásához?
+Minden alkalommal, amikor egy CDN-POP-nak ki kell töltenie a gyorsítótárát, kérést küld a gyorsítótárban lévő objektum eredetére. Ennek eredményeképpen a forrás számlázandó tranzakciót eredményezett minden egyes gyorsítótár-Kihagyás esetén. A gyorsítótár-kihagyók száma számos tényezőtől függ:
 
-- Hány csomóponttal kell betölteni az objektum: Minden alkalommal, amikor egy csomópont objektum betölti a forrásból a számlázható tranzakciók tekintetében. Több globális tartalom (több csomópont elérhető), ezért több számlázható tranzakciók eredményez.
+- A tartalom gyorsítótárazása: Ha a tartalom magas ÉLETTARTAMmal (élettartammal)/Expiration, és gyakran van elérhető, hogy a gyorsítótárban is népszerű maradjon, akkor a terhelés túlnyomó többségét a CDN kezeli. Egy tipikus jó gyorsítótár-találati arány 90%-os, ami azt jelenti, hogy az ügyfelek kéréseinek kevesebb mint 10%-át vissza kell térni a forráshoz, vagy a gyorsítótár-kihagyás vagy az objektum frissítése érdekében.
 
-- Befolyással élettartam: Nagyobb TTL-objektum, az azt jelenti, kell lennie a forrásból kevésbé gyakran lehívott. Azt is jelenti, ügyfelek, például böngészők, az objektumot, ami csökkentheti a tranzakciók és a CDN hosszabb, képes gyorsítótárazni.
+- Hány csomópontra van szükség az objektum betöltéséhez: Minden alkalommal, amikor egy csomópont betölt egy objektumot a forrásból, egy számlázható tranzakciót hoz. Ennek eredményeképpen a több csomópontból elérhető globális tartalom több számlázható tranzakciót eredményez.
 
-## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hogyan kezelhetem a költségeket a leghatékonyabban?
-A leghosszabb élettartam a tartalom lehet beállítani. 
+- TTL-hatás: Az objektumok magasabb ÉLETTARTAMa azt jelenti, hogy a forrást ritkábban kell beolvasni. Ez azt is jelenti, hogy az ügyfelek (például a böngészők) továbbra is gyorsítótárazzák az objektumot, ami csökkentheti a tranzakciókat a CDN-nek.
+
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Mely származási szolgáltatások jogosultak a Microsoft Azure CDN való ingyenes adatátvitelre? 
+Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, nem számítunk fel díjat a forrásról a CDN-durranás felé irányuló adatátvitel alól. 
+
+- Azure Storage
+- Azure Media Services
+- Azure Virtual Machines
+- Virtuális hálózat
+- Load Balancer
+- Application Gateway
+- Azure DNS
+- ExpressRoute
+- VPN Gateway
+- Traffic Manager
+- Network Watcher
+- Azure Firewall
+- Azure Front Door Service
+- Azure Bastion
+- Azure app Service
+- Azure Functions
+- Azure Data Factory
+- Azure API Management
+- Azure Batch 
+- Azure Data Explorer
+- HDInsight
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure Machine Learning szolgáltatás 
+- Azure SQL-adatbázis
+- Azure Cache for Redis
+
+## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hogyan a költségek leghatékonyabban kezelhetők?
+Állítsa be a leghosszabb ÉLETTARTAMot a tartalomban. 

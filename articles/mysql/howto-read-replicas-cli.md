@@ -1,23 +1,26 @@
 ---
-title: Létrehozása és kezelése olvasható replikák az Azure Database for MySQL-hez
-description: Ez a cikk ismerteti, hogyan beállítása és kezelése olvasható replikák az Azure Database for MySQL-hez az Azure CLI használatával.
+title: Olvasási replikák létrehozása és kezelése a Azure Database for MySQLban – Azure CLI, REST API
+description: Ez a cikk bemutatja, hogyan állíthatja be és kezelheti az olvasási replikákat Azure Database for MySQL az Azure CLI használatával, REST API
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 8a9366005ceef5a99fd66f0ec0cd53c98b481ee1
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 09/14/2019
+ms.openlocfilehash: 5bec4e7284e78506372d395bf022055fa31998e3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309334"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993541"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Létrehozása és kezelése olvasható replikák az Azure Database MySQL-hez az Azure CLI használatával
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL az Azure CLI és a REST API használatával
 
-Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet olvasható replikák az Azure Database for MySQL-szolgáltatás az Azure CLI-vel a fő Azure ugyanazon a régión belül.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat a Azure Database for MySQL szolgáltatásban az Azure CLI és a REST API használatával. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg [](concepts-read-replicas.md)az áttekintést.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="azure-cli"></a>Azure CLI
+Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelheti.
+
+### <a name="prerequisites"></a>Előfeltételek
 
 - [Telepítse az Azure CLI 2.0-t.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Egy [, Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md) , amely a fölérendelt kiszolgáló lesz. 
@@ -25,7 +28,7 @@ Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet olvasható repli
 > [!IMPORTANT]
 > A olvasható replika funkció érhető csak az Azure Database for MySQL-kiszolgálók, az általános célú és memóriahasználatra optimalizált tarifacsomagok az. Győződjön meg, hogy a fölérendelt kiszolgáló árképzési szintek egyikét.
 
-## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
+### <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
 
 Egy olvasási adatbázisreplika-kiszolgáló a következő parancs használatával hozható létre:
 
@@ -53,7 +56,23 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > [!NOTE]
 > A kiszolgáló konfigurációval megegyező a fő olvasható replikák jönnek létre. A másodpéldány konfigurációjának a létrehozása után módosítható. Javasoljuk, hogy az adatbázisreplika-kiszolgáló konfigurációs kell tárolni annak érdekében, hogy a replika nem tudják tartani a főkiszolgálóval a főkiszolgáló-nál nagyobb vagy egyenlő értéken.
 
-## <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
+
+### <a name="list-replicas-for-a-master-server"></a>Egy fölérendelt kiszolgáló replikáit listája
+
+Egy adott főkiszolgáló összes replika megtekintéséhez futtassa a következő parancsot: 
+
+```azurecli-interactive
+az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
+```
+
+A `az mysql server replica list` parancs paraméterei a következők:
+
+| Beállítás | Példaérték | Leírás  |
+| --- | --- | --- |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, ahol az adatbázisreplika-kiszolgálót hoz létre.  |
+| server-name | mydemoserver | A neve vagy a fölérendelt kiszolgáló azonosítója. |
+
+### <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
 
 > [!IMPORTANT]
 > A kiszolgáló replikációjának leállítása nem vonható vissza. Ha a replikáció leállt, a master és a replika között, nem lehet visszavonni. Az adatbázisreplika-kiszolgáló ezután lesz egy önálló kiszolgáló, és már támogatja az olvasási és írási műveletek. Ez a kiszolgáló nem hajtható végre egy replika be újra.
@@ -71,7 +90,7 @@ A `az mysql server replica stop` parancs paraméterei a következők:
 | resource-group |  myResourceGroup |  Az erőforráscsoport, ahol az adatbázisreplika-kiszolgálón található.  |
 | név | mydemoreplicaserver | Replikációleállítási az adatbázisreplika-kiszolgáló neve. |
 
-## <a name="delete-a-replica-server"></a>Adatbázisreplika-kiszolgáló törlése
+### <a name="delete-a-replica-server"></a>Adatbázisreplika-kiszolgáló törlése
 
 Ehhez futtassa egy olvasási adatbázisreplika-kiszolgáló törlése végezhető a **[az mysql server delete](/cli/azure/mysql/server)** parancsot.
 
@@ -79,7 +98,7 @@ Ehhez futtassa egy olvasási adatbázisreplika-kiszolgáló törlése végezhet�
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-## <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
+### <a name="delete-a-master-server"></a>Egy fölérendelt kiszolgáló törlése
 
 > [!IMPORTANT]
 > Egy fölérendelt kiszolgáló törlése az összes replika kiszolgálók replikálását, és törli magát a főkiszolgáló. Replikakiszolgáló önálló kiszolgálók által mostantól támogatják az olvasási és írási műveletek válnak.
@@ -90,20 +109,71 @@ Egy fölérendelt kiszolgáló törléséhez futtassa a **[az mysql server delet
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="list-replicas-for-a-master-server"></a>Egy fölérendelt kiszolgáló replikáit listája
 
-Egy adott főkiszolgáló összes replika megtekintéséhez futtassa a következő parancsot: 
+## <a name="rest-api"></a>REST API
+Az olvasási replikákat az [Azure REST API](/rest/api/azure/)használatával hozhatja létre és kezelheti.
 
-```azurecli-interactive
-az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
+### <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
+Olvasási replikát a [create API](/rest/api/mysql/servers/create)használatával hozhat létre:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
 ```
 
-A `az mysql server replica list` parancs paraméterei a következők:
+```json
+{
+  "location": "southeastasia",
+  "properties": {
+    "createMode": "Replica",
+    "sourceServerId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}"
+  }
+}
+```
 
-| Beállítás | Példaérték | Leírás  |
-| --- | --- | --- |
-| resource-group |  myResourceGroup |  Az erőforráscsoport, ahol az adatbázisreplika-kiszolgálót hoz létre.  |
-| server-name | mydemoserver | A neve vagy a fölérendelt kiszolgáló azonosítója. |
+> [!NOTE]
+> Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
+
+Ha nem állította be a `azure.replication_support` paramétert egy általános célú vagy memóriára optimalizált főkiszolgálón lévő **replika** számára, és újraindítja a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
+
+A replika ugyanazokkal a számítási és tárolási beállításokkal jön létre, mint a főkiszolgáló. A replika létrehozása után több beállítás is módosítható a főkiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület és biztonsági mentési megőrzési időszak. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
+
+
+> [!IMPORTANT]
+> A főkiszolgálói beállítás új értékre való frissítése előtt frissítse a replika beállításait egy egyenlő vagy nagyobb értékre. Ez a művelet segíti a replikát a főkiszolgálón végrehajtott bármilyen módosítással.
+
+### <a name="list-replicas"></a>Replikák listázása
+A Master Server replikáinak listáját a [replika lista API](/rest/api/mysql/replicas/listbyserver)használatával tekintheti meg:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
+```
+
+### <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
+A [frissítési API](/rest/api/mysql/servers/update)használatával leállíthatja a replikációt a főkiszolgáló és az olvasási replika között.
+
+Miután leállította a replikálást egy főkiszolgálóra és egy olvasási replikára, nem vonható vissza. Az olvasási replika önálló kiszolgáló lesz, amely támogatja az olvasást és az írást is. Az önálló kiszolgáló nem hozható létre újra replikába.
+
+```http
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}?api-version=2017-12-01
+```
+
+```json
+{
+  "properties": {
+    "replicationRole":"None"  
+   }
+}
+```
+
+### <a name="delete-a-master-or-replica-server"></a>Fő-vagy replika-kiszolgáló törlése
+A fő-vagy a replika-kiszolgáló törléséhez használja a [delete API](/rest/api/mysql/servers/delete)-t:
+
+Főkiszolgáló törlésekor a rendszer leállítja a replikálást az összes olvasási replikára. Az olvasási replikák olyan önálló kiszolgálók lesznek, amelyek már támogatják az olvasást és az írást is.
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}?api-version=2017-12-01
+```
+
 
 ## <a name="next-steps"></a>További lépések
 

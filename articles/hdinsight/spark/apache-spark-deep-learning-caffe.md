@@ -3,16 +3,17 @@ title: A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz
 description: Az Azure HDInsight-ben a Cafe on Apache Spark használatával elosztott Deep learning szolgáltatást használhat.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814196"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995613"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz
 
@@ -65,7 +66,7 @@ A második lépés a protopuf 2.5.0 letöltése, fordítása és telepítése az
 
 Első lépésként futtassa ezt a szkriptet a fürtön a munkavégző csomópontok és a fő csomópontok (HDInsight 3,5) számára. Futtathatja a parancsfájl műveleteit egy meglévő fürtön, vagy parancsfájl-műveleteket is használhat a fürt létrehozása során. A parancsfájl-műveletekkel kapcsolatos további információkért tekintse meg a dokumentációt [itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-![Függőségek telepítésére szolgáló parancsfájl-műveletek](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Függőségek telepítésére szolgáló parancsfájl-műveletek](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2\. lépés: Build Cafe Apache Spark HDInsight a fő csomóponton
@@ -175,7 +176,8 @@ Ehhez a példához, mivel a GPU helyett CPU-t használ, az utolsó sort kell meg
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Cafe Config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Cafe Config1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 Szükség szerint más vonalakat is módosíthat.
 
@@ -184,7 +186,7 @@ A második fájl ($ {CAFFE_ON_SPARK}/Data/lenet_memory_train_test.prototxt) megh
 - change the "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" to "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - change "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" to "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Cafe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Cafe Config2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 A hálózat definiálásával kapcsolatos további információkért olvassa el a [Cafe dokumentációját a MNIST adatkészleten](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) .
 
@@ -204,15 +206,15 @@ Ha tudni szeretné, hogy mi történt, általában be kell szereznie a Spark-ill
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![FONAL FELHASZNÁLÓI FELÜLETE](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![FONAL FELHASZNÁLÓI FELÜLETE](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 Megtekintheti, hogy hány erőforrás van lefoglalva az adott alkalmazáshoz. Az "ütemező" hivatkozásra kattintva láthatja, hogy ehhez az alkalmazáshoz kilenc tároló fut. a FONALat arra kéri, hogy nyolc végrehajtót adjon meg, és egy másik tárolót az illesztőprogram-folyamathoz. 
 
-![FONAL-ütemező](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![FONAL-ütemező](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 Ha hiba történik, érdemes lehet megtekinteni az illesztőprogram-naplókat vagy a tároló naplóit. Illesztőprogram-naplók esetén kattintson az alkalmazás-AZONOSÍTÓra a fonal felhasználói felületén, majd kattintson a "naplók" gombra. Az illesztőprogram-naplók bekerülnek a stderr.
 
-![2\. SZÁL FELHASZNÁLÓI FELÜLET](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![2\. SZÁL FELHASZNÁLÓI FELÜLET](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 Előfordulhat például, hogy az illesztőprogram-naplókból az alábbi hibaüzenet jelenik meg, ami azt jelzi, hogy túl sok végrehajtót foglal le.
 

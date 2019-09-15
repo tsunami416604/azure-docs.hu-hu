@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a8ac97aa3896eaf98651f5f1120fcc6bf25516
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814117"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995542"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Az Azure HDInsight futó Apache Spark-feladatok hibakeresése
 
@@ -29,14 +29,14 @@ A következőkkel kell rendelkeznie:
 ## <a name="track-an-application-in-the-yarn-ui"></a>Alkalmazás nyomon követése a fonal felhasználói felületén
 1. Indítsa el a fonal felhasználói felületét. Kattintson a **szál** elemre a **fürt irányítópultok**területen.
    
-    ![A fonal felhasználói felületének indítása](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![A fonal felhasználói felületének indítása](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületének elindításához kattintson a **Ambari** elemre a **fürt irányítópultok**területén. A Ambari felhasználói felületén kattintson a **fonal**elemre, kattintson a **Gyorshivatkozások**lehetőségre, majd az Active Resource Manager elemre, végül pedig a **Resource Manager felhasználói felület**elemre. 
 
 2. Mivel a Spark-feladatot a Jupyter-jegyzetfüzetek használatával indította el, az alkalmazás neve **remotesparkmagics** (a jegyzetfüzetekről indított összes alkalmazás neve). Az alkalmazás nevére kattintva további információkat kaphat a feladatról. Ez elindítja az alkalmazás nézetét.
    
-    ![Spark-alkalmazás AZONOSÍTÓjának megkeresése](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Spark-alkalmazás AZONOSÍTÓjának megkeresése](./media/apache-spark-job-debugging/find-application-id1.png)
    
     A Jupyter-jegyzetfüzetekről indított alkalmazások esetében az állapot mindig **fut** , amíg ki nem lép a jegyzetfüzetből.
 3. Az alkalmazás nézetből részletesebben is megtudhatja, hogy az alkalmazáshoz és a naplókhoz társított tárolók (StdOut/stderr) találhatók-e. A Spark felhasználói felületet úgy is elindíthatja, hogy a **nyomkövetési URL-címhez**tartozó hivatkozásra kattint az alább látható módon. 
@@ -48,13 +48,13 @@ A Spark felhasználói felületén megtekintheti azokat a Spark-feladatokat, ame
 
 1. A Spark felhasználói felület indításához az alkalmazás nézetből kattintson a **nyomkövetési URL-címre**mutató hivatkozásra, ahogy az a fenti képernyőfelvételen látható. A Jupyter notebookon futó alkalmazás által indított összes Spark-feladat megtekinthető.
    
-    ![Spark-feladatok megtekintése](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![Spark-feladatok megtekintése](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. Kattintson a **végrehajtók** lapra az egyes végrehajtók feldolgozási és tárolási adatainak megtekintéséhez. A hívási verem lekéréséhez kattintson a **szál kiírására** szolgáló hivatkozásra.
    
     ![Spark-végrehajtók megtekintése](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. A **szakaszok** lapra kattintva megtekintheti az alkalmazáshoz társított szakaszokat.
    
-    ![Spark-szakaszok megtekintése](./media/apache-spark-job-debugging/view-spark-stages.png "Spark-szakaszok megtekintése")
+    ![Spark-szakaszok megtekintése](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark-szakaszok megtekintése")
    
     Az egyes szakaszok több feladattal is rendelkezhetnek, amelyekhez a végrehajtás statisztikáit tekintheti meg, például alább látható.
    

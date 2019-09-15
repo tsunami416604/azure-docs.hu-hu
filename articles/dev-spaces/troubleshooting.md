@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019651"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993948"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -333,7 +333,7 @@ configurations:
 
 ### <a name="reason"></a>Reason
 
-A-hibakeresőt futtató Node. js-alkalmazással rendelkező csomópont túllépte az *FS. inotify. max _user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max _user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-](https://github.com/Azure/AKS/issues/772)hez csatolja.
+A-hibakeresőt futtató Node. js-alkalmazással rendelkező csomópont túllépte az *FS. inotify. max _user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max _user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
 
 ### <a name="try"></a>Kipróbálás
 A probléma ideiglenes megkerülő megoldásként növelje az *FS. inotify. max _user_watches* értékét a fürt mindegyik csomópontján, majd indítsa újra a csomópontot a módosítások érvénybe léptetéséhez.
@@ -445,7 +445,7 @@ Frissítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) te
 
 ### <a name="reason"></a>Reason
 
-Ha egy fejlesztési térben futtat egy szolgáltatást, a szolgáltatás Pod-je [további tárolókkal](how-dev-spaces-works.md#prepare-your-aks-cluster) van befecskendezve, és a pod összes tárolójának erőforrás-korláttal és kérelmekkel kell rendelkeznie a vízszintes Pod automatikus skálázáshoz. 
+Ha egy fejlesztési térben futtat egy szolgáltatást, a szolgáltatás Pod-je [további tárolókkal van befecskendezve](how-dev-spaces-works.md#prepare-your-aks-cluster) , és a pod összes tárolójának erőforrás-korláttal és kérelmekkel kell rendelkeznie a vízszintes Pod automatikus skálázáshoz. 
 
 
 A befecskendezett tároló (devspaces) esetében az erőforrás-kérelmek és a korlátozások alkalmazhatók, `azds.io/proxy-resources` Ha hozzáadja a jegyzetet a pod spechoz. Az értéket egy olyan JSON-objektumra kell beállítani, amely a proxyhoz tartozó tároló specifikációjának erőforrások szakaszát jelképezi.
@@ -456,3 +456,40 @@ Alább látható egy példa arra a proxy-erőforrások jegyzetre, amelyet alkalm
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>"Jogosulatlan: hitelesítés szükséges" hibaüzenet, ha Docker-rendszerképet szeretne használni egy privát beállításjegyzékből
+
+### <a name="reason"></a>Reason
+
+Olyan Docker-rendszerképet használ, amely hitelesítést igénylő privát beállításjegyzékből áll. A [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets)használatával engedélyezheti a fejlesztői szóközöket a privát beállításjegyzékből származó képek hitelesítéséhez és lekéréséhez.
+
+### <a name="try"></a>Kipróbálás
+
+A imagePullSecrets használatához [hozzon létre egy Kubernetes titkot](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) abban a névtérben, amelyben a rendszerképet használja. Ezután adja meg `azds.yaml`a titkot a imagePullSecret.
+
+Alább látható egy példa a imagePullSecrets megadására a `azds.yaml`alkalmazásban.
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> A imagePullSecrets `azds.yaml` beállítása felülbírálja a `values.yaml`imagePullSecrets megadott értéket.

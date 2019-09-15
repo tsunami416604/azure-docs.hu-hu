@@ -1,6 +1,6 @@
 ---
 title: 'Visual Interface példa #5: Besorolás az elváltozások előrejelzéséhez + szolgáltatóváltást + értékesítés'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ez a Visual Interface-példa a változás bináris osztályozó előrejelzését jeleníti meg, amely az Ügyfélkapcsolat-kezelés (CRM) általános feladata.
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 054ac3ea5224a4ffea2e7bae9da329ba7bc81233
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016465"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997138"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5\. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés 
 
 Megtudhatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával.
 
-Ez a kísérlet három, kétosztályos kibővített döntési faosztályozási struktúrát biztosít az Ügyfélkapcsolat-kezelési (CRM) rendszerek általános feladatainak előrejelzéséhez: adatforgalom, szolgáltatóváltást és értékesítés. Az adatértékek és a címkék több adatforráson oszlanak el, és a névtelenség az ügyfelek adataival vannak összekeverve, de továbbra is használhatjuk a vizualizációs felületet az adatkészletek összevonásához és a modell betanításához a kódolt értékek használatával.
+Ez a kísérlet három, **kétosztályos kibővített döntési faosztályozási struktúrát** biztosít az Ügyfélkapcsolat-kezelési (CRM) rendszerek általános feladatainak előrejelzéséhez: adatforgalom, szolgáltatóváltást és értékesítés. Az adatértékek és a címkék több adatforráson oszlanak el, és a névtelenség az ügyfelek adataival vannak összekeverve, de továbbra is használhatjuk a vizualizációs felületet az adatkészletek összevonásához és a modell betanításához a kódolt értékek használatával.
 
 Mivel megpróbáljuk választ adni a "melyik?" kérdésre? ezt besorolási problémanak nevezzük. Ebben a kísérletben azonban ugyanezeket a lépéseket alkalmazhatja a gépi tanulási problémák bármilyen típusának kezelésére, akár a regresszió, a besorolás, a fürtözés és így tovább.
 
@@ -55,13 +55,13 @@ Először is végezzünk el néhány egyszerű adatfeldolgozást.
 
     ![Oszlop adatkészletének hozzáadása](./media/ui-sample-classification-predict-churn/added-column1.png)
 
-- Az adathalmazt a kiosztási és a tesztelési csoportokra bontva használjuk az adatfelosztási modul használatával.
+- Az adathalmazt a kiosztási és a tesztelési csoportokra bontva használjuk az **Adatfelosztási** modul használatával.
 
     Ezután a megnövelt döntési fa bináris besorolást használjuk az alapértelmezett paraméterekkel az előrejelzési modellek létrehozásához. Feladathoz egy modellt hozunk létre, azaz egy modellt, amely az értékesítés, a szolgáltatóváltást és a forgalom előrejelzésére szolgál.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Jelenítse meg a **modell** kiértékelése modul kimenetét a modell teljesítményének megjelenítéséhez a tesztelési készleten. Az eladási feladatokhoz a ROC-görbe azt mutatja, hogy a modell jobb, mint egy véletlenszerű modell. A görbe alatti terület (AUC) 0,857. A 0,5-as küszöbértéknél a pontosság 0,7, a visszahívás 0,463, az F1 pontszám pedig 0,545.
+Jelenítse meg a **modell kiértékelése** modul kimenetét a modell teljesítményének megjelenítéséhez a tesztelési készleten. Az eladási feladatokhoz a ROC-görbe azt mutatja, hogy a modell jobb, mint egy véletlenszerű modell. A görbe alatti terület (AUC) 0,857. A 0,5-as küszöbértéknél a pontosság 0,7, a visszahívás 0,463, az F1 pontszám pedig 0,545.
 
 ![Az eredmények kiértékelése](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 

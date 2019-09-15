@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136749"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993029"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Az adatreplikálás Azure Database for MariaDBba
 
@@ -34,13 +34,13 @@ A főkiszolgálón található [*MySQL rendszeradatbázis*](https://mariadb.com/
 - Minden táblának elsődleges kulccsal kell rendelkeznie.
 - A főkiszolgálónak a InnoDB motort kell használnia.
 - A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
-- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL hitelesítésszolgáltatói tanúsítvány szerepel- `mariadb.az_replication_change_master` e a tárolt eljárásban. Tekintse át az [](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) alábbi példákat `master_ssl_ca` és a paramétert.
+- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL hitelesítésszolgáltatói tanúsítvány szerepel- `mariadb.az_replication_change_master` e a tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
 - Győződjön meg arról, hogy a fő kiszolgáló IP-címe hozzá lett adva az Azure Database for MariaDB replikakiszolgálójának tűzfalszabályaihoz. A tűzfalszabályokat az [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) használatával frissítheti.
 - Győződjön meg arról, hogy a főkiszolgálót üzemeltető gép engedélyezi a bejövő és kimenő forgalmat is a 3306-os porton.
-- Gondoskodjon róla, hogy a főkiszolgálónak **nyilvános IP-címe** legyen, vagy a DNS legyen nyilvánosan hozzáférhető.
+- Győződjön meg arról, hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 
 ## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan [állíthatja be](howto-data-in-replication.md)az adatreplikációt.
+- Megtudhatja, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md).

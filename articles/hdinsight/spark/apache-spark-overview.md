@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476848"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993800"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -21,11 +21,11 @@ A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a m
 
 ![Spark: egyesített keretrendszer](./media/apache-spark-overview/hdinsight-spark-overview.png)
 
-## <a name="what-is-apache-spark"></a>Mi az Apache Spark?
+## <a name="what-is-apache-spark"></a>Mi az az Apache Spark?
 
 a Spark alapelemeket nyújt a memórián belüli fürtszámításhoz. A Spark-feladatokkal az adatok betölthetők és gyorsítótárazhatók a memóriába, majd ismétlődő jelleggel lekérdezhetők. A memórián belüli számítástechnika sokkal gyorsabb, mint a lemezes alkalmazások, például a Hadoop, amelyek az Hadoop elosztott fájlrendszeren (HDFS) keresztül osztják meg az adatmegosztást. A Spark a Scala programozási nyelvbe is integrálható, így a helyi gyűjteményekhez hasonlóan módosíthatja az elosztott adatkészleteket. Nem kell mindent térképként rendszerezni és csökkenteni a műveletek számát.
 
-![A hagyományos MapReduce és Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![A hagyományos MapReduce és Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatást nyújtanak. A HDInsight-alapú Spark-fürt létrehozásának előnyeit ez a lista foglalja össze.
 
@@ -33,7 +33,7 @@ A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatá
 | --- | --- |
 | Könnyű létrehozás |Az Azure Portal, az Azure PowerShell vagy a HDInsight .NET SDK használatával percek alatt létrehozható egy új Spark-fürt a HDInsight platformon. Lásd: Ismerkedés [a Apache Spark-fürttel a HDInsight-ben](apache-spark-jupyter-spark-sql-use-portal.md). |
 | Könnyű használat |A HDInsight-beli Spark-fürt tartalmazza a Jupyter-és az Apache Zeppelin-jegyzetfüzeteket. Ezeket a notebookokat interaktív adatfeldolgozásra és -vizualizációra használhatja.|
-| REST API-k |A HDInsight-beli Spark-fürtök közé tartozik az [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), egy REST API-alapú Spark-feladat, amely a feladatok távoli elküldésére és figyelésére szolgál. Lásd: [Apache Spark REST API használata távoli feladatok HDInsight Spark-fürtbe](apache-spark-livy-rest-interface.md)való küldéséhez.|
+| REST API-k |A HDInsight-beli Spark-fürtök közé tartozik az [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), egy REST API-alapú Spark-feladat, amely a feladatok távoli elküldésére és figyelésére szolgál. Lásd: [Apache Spark REST API használata távoli feladatok HDInsight Spark-fürtbe való küldéséhez](apache-spark-livy-rest-interface.md).|
 | Azure Data Lake Storage támogatása | A HDInsight-alapú Spark-fürtök az elsődleges tárolóként vagy további tárterületként is használhatják a Azure Data Lake Storage. További információ a Data Lake Storageről: [Azure Data Lake Storage áttekintése](../../data-lake-store/data-lake-store-overview.md). |
 | Integráció az Azure-szolgáltatásokkal |A HDInsight-alapú Spark-fürt Azure Event Hubs-összekötőt is tartalmaz. A Event Hubs a [Apache Kafka](https://kafka.apache.org/)mellett is létrehozhat adatfolyam-alkalmazásokat, amelyek már elérhetők a Spark részeként. |
 | ML Server-támogatás | Az ML Server HDInsighton belüli támogatását az **ML-szolgáltatási** fürttípus biztosítja. Az ML-szolgáltatások fürtjei elosztott R-számítások futtatására állíthatók be a Spark-fürtre jellemző sebesség mellett. További információ: [Mi az a ml Services az Azure HDInsight-ben](../r-server/r-server-overview.md). |
@@ -57,7 +57,7 @@ A HDInsight-alapú Spark-fürtök [ODBC-illesztőt](https://go.microsoft.com/fwl
 
 ## <a name="spark-cluster-architecture"></a>Spark-fürtarchitektúra
 
-![A HDInsight Spark architektúrája](./media/apache-spark-overview/spark-architecture.png)
+![A HDInsight Spark architektúrája](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 A Spark összetevőinek szerepét legegyszerűbben a Spark HDInsight-fürtökön történő futtatásán keresztül érhetjük meg.
 

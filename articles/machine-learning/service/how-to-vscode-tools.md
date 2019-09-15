@@ -1,6 +1,6 @@
 ---
 title: A Visual Studio Code használata a Machine learninghez
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan telepítheti Azure Machine Learning a Visual Studio Code-ba, és hogyan hozhat létre egy egyszerű kísérletet Azure Machine Learningban.
 services: machine-learning
 ms.service: machine-learning
@@ -10,24 +10,24 @@ ms.author: ronglu
 author: ronglums
 ms.date: 7/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1d18006e6ec3ff1659f8fb80f8cf6766797d76b
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114429"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997182"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Ismerkedés a Visual Studio Code Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code Azure Machine Learning bővítményét a Machine learning és a Deep learning modellek betanításához és üzembe helyezéséhez.
 
-A [Azure Machine learning szolgáltatás](overview-what-is-azure-ml.md) támogatja a helyileg és távoli számítási célokon futtatott kísérletek támogatását. Minden egyes kísérlethez azt is nyomon követheti, több Futtatás gyakran különböző technikák, hiperparaméterek és egyéb iteratív próbálja szükség szerint. Az Azure Machine Learning segítségével nyomon követheti az egyéni metrikákat, és kísérletezzen a futtatásakor a data science megismételhetősége és auditability engedélyezése.
+A [Azure Machine learning](overview-what-is-azure-ml.md) a helyileg futtatott és a távoli számítási célokon futó kísérletek támogatását teszi lehetővé. Minden egyes kísérlethez azt is nyomon követheti, több Futtatás gyakran különböző technikák, hiperparaméterek és egyéb iteratív próbálja szükség szerint. Az Azure Machine Learning segítségével nyomon követheti az egyéni metrikákat, és kísérletezzen a futtatásakor a data science megismételhetősége és auditability engedélyezése.
 
 Ezeket a modelleket a tesztelési és a termelési igényekhez is üzembe helyezheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
++ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 + Telepíteni kell a Visual Studio Code-ot. A Visual Studio Code egy egyszerű, de hatékony forráskód-szerkesztő, amely az asztalon fut. Beépített támogatást nyújt a Pythonhoz és más programozási nyelvekhez. Ha még nem telepítette a Visual Studio Code-ot, [tekintse meg](https://code.visualstudio.com/docs/setup/setup-overview)a című témakört.
 
@@ -69,13 +69,13 @@ A Azure Machine Learning bővítmény telepítése:
 
    ![A tolmács kiválasztása](./media/vscode-tools-for-ai/python.png)
 
-1. Az ablak jobb alsó sarkában megjelenik egy értesítés, amely azt jelzi, hogy a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) telepítése automatikusan megtörténik. Az újonnan létrehozott Python-környezet helyi és privát, és rendelkezik a Visual Studio Code előfeltételeivel a Azure Machine Learning szolgáltatással való használathoz.
+1. Az ablak jobb alsó sarkában megjelenik egy értesítés, amely azt jelzi, hogy a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) telepítése automatikusan megtörténik. Az újonnan létrehozott Python-környezet helyi és privát, és a Visual Studio Code előfeltételei a Azure Machine Learning használatának.
 
    ![A Pythonhoz készült Azure Machine Learning SDK telepítése](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Ismerkedés az Azure Machine Learning szolgáltatással
 
-Mielőtt elkezdi a gépi tanulási modellek a Visual Studio Code-ban való üzembe helyezését, létre kell hoznia egy [Azure Machine learning szolgáltatás](concept-workspace.md) -munkaterületet a felhőben. Ez a munkaterület fogja tartalmazni a modelleket és az erőforrásokat. 
+Mielőtt elkezdi a gépi tanulási modellek a Visual Studio Code-ban való üzembe helyezését, létre kell hoznia egy [Azure Machine learning munkaterületet](concept-workspace.md) a felhőben. Ez a munkaterület fogja tartalmazni a modelleket és az erőforrásokat. 
 
 Munkaterület létrehozása és az első kísérlet hozzáadása:
 
@@ -117,7 +117,7 @@ Számítási cél létrehozása:
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
-2. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén. Az alábbi ábrán az előfizetés neve **ingyenes próbaverzió**, a munkaterület pedig **TeamWorkspace**. 
+2. A fanézetben bontsa ki az Azure-előfizetését és Azure Machine Learning munkaterületét. Az alábbi ábrán az előfizetés neve **ingyenes próbaverzió**, a munkaterület pedig **TeamWorkspace**. 
 
 3. A munkaterület csomópont alatt, kattintson a jobb gombbal a **számítási** csomópont, majd **létrehozása számítási**.
 
@@ -147,7 +147,7 @@ A kísérlet helyi futtatása a Azure Machine Learning használatával:
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
-1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén. 
+1. A fanézetben bontsa ki az Azure-előfizetését és Azure Machine Learning munkaterületét. 
 
 1. A munkaterület csomópont alatt bontsa ki a **számítási** csomópontot, majd kattintson a jobb gombbal a használni kívánt számítási **konfiguráció futtatására** . 
 
@@ -196,7 +196,7 @@ A kísérlet futtatása a Azure Machine Learning használatával távoli számí
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
-1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén. 
+1. A fanézetben bontsa ki az Azure-előfizetését és Azure Machine Learning munkaterületét. 
 
 1. A szerkesztő ablakban kattintson a jobb gombbal a Python-szkriptre, és **válassza a pénzmosás elemet: Futtasson kísérletet az**Azure-ban. 
 
@@ -224,7 +224,7 @@ A modell regisztrálása:
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
-1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén.
+1. A fanézetben bontsa ki az Azure-előfizetését és Azure Machine Learning munkaterületét.
 
 1. A munkaterület csomópont alatt, kattintson a jobb gombbal **modellek** válassza **regisztrálása modell**.
 
@@ -247,13 +247,13 @@ A Visual Studio Code-ban a webszolgáltatását a következőre helyezheti üzem
 + Azure Container Instances (ACI) teszteléshez.
 + Azure Kubernetes szolgáltatás (ak) éles környezetben.
 
-A teszteléshez nem kell ACI-tárolót létrehoznia, mert az ACI-tárolók menet közben jönnek létre. Azonban az AK-fürtöket előre kell konfigurálnia. További információ: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+A teszteléshez nem kell ACI-tárolót létrehoznia, mert az ACI-tárolók menet közben jönnek létre. Azonban az AK-fürtöket előre kell konfigurálnia. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 Webszolgáltatás üzembe helyezése:
 
 1. A Visual Studio Code tevékenység sávján válassza az Azure ikont. Megjelenik a Azure Machine Learning oldalsáv.
 
-1. A fanézetben bontsa ki az Azure-előfizetés és az Azure Machine Learning szolgáltatás munkaterületén.
+1. A fanézetben bontsa ki az Azure-előfizetését és a Azure Machine Learning munkaterületét.
 
 1. A munkaterület csomópontja alatt bontsa ki a **modellek** csomópont.
 

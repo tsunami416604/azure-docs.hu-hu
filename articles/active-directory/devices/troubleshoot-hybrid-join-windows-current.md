@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297573"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995207"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása 
 
@@ -98,7 +98,7 @@ Ez a mező jelzi, hogy az eszköz egy helyszíni Active Directoryhoz csatlakozik
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
 
-Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD- ben személyes eszközként (munkahelyhez csatlakoztatottként megjelölve). Ez az érték **nem** lehet olyan tartományhoz csatlakoztatott számítógép esetében, amely szintén hibrid Azure ad-hez csatlakozik. Ha az érték **Igen**, a hibrid Azure ad-csatlakozás befejezése előtt munkahelyi vagy iskolai fiók lett hozzáadva. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot, ha a Windows 10 évfordulós frissítési verzióját használja (1607).
+Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-ben személyes eszközként (munkahelyhez csatlakoztatottként megjelölve). Ez az érték **nem** lehet olyan tartományhoz csatlakoztatott számítógép esetében, amely szintén hibrid Azure ad-hez csatlakozik. Ha az érték **Igen**, a hibrid Azure ad-csatlakozás befejezése előtt munkahelyi vagy iskolai fiók lett hozzáadva. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot, ha a Windows 10 évfordulós frissítési verzióját használja (1607).
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined : IGEN  
 
@@ -404,6 +404,9 @@ Ezek a mezők jelzik, hogy a felhasználó sikeresen hitelesített-e az Azure AD
 - Másodlagos bejelentkezési azonosító
 - A HTTP-proxy nem található
 
+## <a name="known-issues"></a>Ismert problémák
+- A beállítások – > fiókok – > hozzáférés munkahelyi vagy iskolai rendszerhez, a hibrid Azure AD-hez csatlakoztatott eszközök két különböző fiókot mutatnak be, amelyek közül az egyik az Azure AD, egy pedig a helyszíni AD-hez, a mobil hozzáférési pontokhoz vagy külső WiFi hálózatokhoz csatlakoztatva. Ez csak egy felhasználói felületi probléma, és nincs hatással a funkcióra. 
+ 
 ## <a name="next-steps"></a>További lépések
 
 [Az eszközök hibaelhárításának folytatása a dsregcmd parancs használatával](troubleshoot-device-dsregcmd.md)

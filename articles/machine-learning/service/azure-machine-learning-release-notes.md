@@ -1,7 +1,7 @@
 ---
 title: A kiadás újdonságai
-titleSuffix: Azure Machine Learning service
-description: Ismerkedjen meg Azure Machine Learning szolgáltatás legújabb frissítéseivel, valamint a Machine learning és az adat-előkészítő Python SDK-k használatával.
+titleSuffix: Azure Machine Learning
+description: Ismerkedjen meg a Azure Machine Learning legújabb frissítéseivel, valamint a gépi tanulással és az adat-előkészítéssel kapcsolatos Python SDK-val.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2721e134e03d3d622e61085dc39a2914098ba570
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930742"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993423"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
+# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
-Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -referenciát tartalmazó oldalt. 
+Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -referenciát tartalmazó oldalt. 
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
 
@@ -557,7 +557,7 @@ A Azure Portal mostantól a következőket teheti:
 + Élő diagram és metrika frissítése a jelentések futtatása és a részletek lapok futtatása
 + A naplófájlok, a kimenetek és a pillanatképek frissített fájlkezelője a futtatási részletek oldalain.
 + Új és továbbfejlesztett jelentés-létrehozási élmény a kísérletek lapon. 
-+ Lehetőség van a config. JSON fájl letöltésére a Azure Machine Learning szolgáltatás munkaterület áttekintés lapján.
++ Lehetőség van a config. JSON fájl letöltésére a Azure Machine Learning munkaterület áttekintés lapján.
 + Machine Learning szolgáltatás-munkaterület Azure Databricks munkaterületről való létrehozásának támogatása 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -576,7 +576,7 @@ A notebookos virtuális gépek biztonságos, nagyvállalati használatra kész �
 + [Gyorsan elindíthat egy előre konfigurált jegyzetfüzet virtuális gépet](tutorial-1st-experiment-sdk-setup.md) , amely az Azure Machine learning SDK és a kapcsolódó csomagok legújabb verzióját tartalmazza.
 + A hozzáférést bizonyított technológiák, például HTTPS, Azure Active Directory hitelesítés és engedélyezés biztosítja.
 + A notebookok és kódok megbízható Felhőbeli tárolása a Azure Machine Learning-munkaterület blob Storage-fiókban. A notebook virtuális gépet biztonságosan törölheti a munka elvesztése nélkül.
-+ Előtelepített minta-jegyzetfüzetek Azure Machine Learning szolgáltatás funkcióinak megismeréséhez és kipróbálásához.
++ Előtelepített minta-jegyzetfüzetek Azure Machine Learning funkciók megismeréséhez és kipróbálásához.
 + Az Azure-beli virtuális gépek teljes körű testreszabási képességei, bármilyen virtuálisgép-típus, bármely csomag és bármely illesztőprogram. 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -873,7 +873,7 @@ Megjegyzés: Az adat-előkészítő Python SDK többé `numpy` nem `pandas` lesz
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: Általános rendelkezésre állás
 
-Az Azure Machine Learning szolgáltatás már általánosan elérhető.
+A Azure Machine Learning már általánosan elérhető.
 
 ### <a name="azure-machine-learning-compute"></a>Az Azure Machine Learning Compute
 Ebben a kiadásban bejelentjük az új felügyelt számítási élményt a [Azure Machine learning számítási](how-to-set-up-training-targets.md#amlcompute)feladatokon keresztül. Ez a számítási cél a Azure Machine Learning Azure Batch AI számítását váltja fel. 
@@ -985,7 +985,7 @@ További információ a Data Prep SDK olvasásával [docs hivatkozhat](https://a
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure Portal 
-Az Azure Portalon az Azure Machine Learning szolgáltatás rendelkezik a következő frissítéseket:
+A Azure Machine Learning Azure Portal a következő frissítésekkel rendelkezik:
   * Egy új **folyamatok** lapján közzétett folyamatokhoz.
   * Támogatás hozzáadva a csatolása egy meglévő HDInsight-fürt egy számítási célnak.
 
@@ -1098,4 +1098,4 @@ Azure Machine Learning új, frissített kiadása: További információ erről a
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Azure Machine learning szolgáltatás](../service/overview-what-is-azure-ml.md)áttekintését.
+Olvassa el az [Azure Machine Learning](../service/overview-what-is-azure-ml.md) áttekintését.

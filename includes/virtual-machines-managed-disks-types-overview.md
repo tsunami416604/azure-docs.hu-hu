@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7385888c54d46e706621f781a64d12d3ae7aa5fb
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512692"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997632"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetők el az Azure-ban?
 
@@ -33,7 +33,7 @@ Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a
 
 ## <a name="ultra-disk"></a>Ultravékony lemez
 
-Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS virtuális gépek számára. Az ultra-lemezek további előnyei közé tartozik a lemez teljesítményének dinamikus módosítása, valamint a számítási feladatok, anélkül, hogy újra kellene indítani a virtuális gépeket. Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok. Az ultra lemezeket csak adatlemezként lehet használni. Javasoljuk, hogy a prémium SSD-ket operációsrendszer-lemezként használja.
+Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS virtuális gépek számára. Az ultra-lemezek további előnyei közé tartozik a lemez teljesítményének dinamikus módosítása, valamint a számítási feladatok, anélkül, hogy újra kellene indítania a virtuális gépeket (VM). Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok. Az ultra lemezeket csak adatlemezként lehet használni. Javasoljuk, hogy a prémium SSD-ket operációsrendszer-lemezként használja.
 
 ### <a name="performance"></a>Teljesítmény
 
@@ -42,9 +42,9 @@ Ultra-lemez kiépítésekor egymástól függetlenül konfigurálhatja a lemez k
 Az ultra-lemezek főbb képességei a következők:
 
 - Lemez kapacitása: Az ultrakönnyű lemezek kapacitása 4 GiB-tól 64 TiB-ig terjed.
-- Lemez IOPS: Az ultra Disks támogatja a 300 IOPS/GiB IOPS korlátait, legfeljebb 160 K IOPS. A kiépített IOPS eléréséhez győződjön meg arról, hogy a kiválasztott lemez IOPS kisebbek, mint a virtuális gép IOPS korlátja. A lemezen lévő minimális IOPS 2 IOPS/GiB, amely a teljes alapkonfiguráció minimuma 100 IOPS. Ha például 4 GiB Ultra-lemezzel rendelkezett, akkor 8 IOPS helyett legalább 100 IOPS kell lennie.
+- Lemez IOPS: Az ultra Disks támogatja a 300 IOPS/GiB IOPS korlátait, legfeljebb 160 K IOPS. A kiépített IOPS eléréséhez győződjön meg arról, hogy a kiválasztott lemez IOPS kisebbek, mint a virtuális gép IOPS korlátja. A lemezen lévő minimális IOPS 2 IOPS/GiB, amely a teljes alapkonfiguráció minimuma 100 IOPS. Ha például 4 GiB Ultra-lemezzel rendelkezett, akkor nyolc IOPS helyett legalább 100 IOPS kell lennie.
 - Lemez sebessége: Az ultrakönnyű lemezek esetében az egyes lemezek átviteli korlátja 256 KiB/s minden kiépített IOPS, legfeljebb 2000 MB/s-onként (ahol MBps = 10 ^ 6 bájt/másodperc). Minden egyes kiépített IOPS esetében a minimális átviteli sebesség 4KiB/s, a teljes alapértéknek legalább 1 MBps-nek kell lennie.
-- Az ultra Disks támogatja a lemez teljesítmény-attribútumainak (IOPS és átviteli sebesség) beállítását futásidőben, anélkül, hogy leválasztja a lemezt a virtuális gépről. Ha a lemez teljesítményének átméretezési művelete egy lemezen van kiadva, akár egy óráig is eltarthat, amíg a változás ténylegesen érvénybe lép.
+- Az ultra Disks támogatja a lemez teljesítmény-attribútumainak (IOPS és átviteli sebesség) beállítását futásidőben, anélkül, hogy leválasztja a lemezt a virtuális gépről. Ha a lemez teljesítményének átméretezési művelete egy lemezen van kiadva, akár egy óráig is eltarthat, amíg a változás ténylegesen érvénybe lép. Egy 24 órás időszakban legfeljebb négy teljesítmény-átméretezési művelet lehet. A teljesítmény-átméretezési művelet sikertelen a teljesítmény-sávszélességi kapacitás hiánya miatt.
 
 ### <a name="disk-size"></a>Lemezméret
 
@@ -71,3 +71,4 @@ Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a követ
 - Csak üres lemezként hozható létre  
 - Még nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, a virtuálisgép-méretezési csoportokat és az Azure Disk encryptiont
 - Még nem támogatja az integrációt Azure Backup vagy Azure Site Recovery
+- A GA virtuális gépek IOPS jelenlegi maximális korlátja 80 000.

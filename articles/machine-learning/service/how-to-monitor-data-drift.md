@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 07/08/2019
-ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/13/2019
+ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858708"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993230"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatásban üzembe helyezett modellek adateltolódásának (előzetes verzió) észlelése
 
@@ -133,7 +133,6 @@ A drift mérőszámok több módon is megtekinthetők:
 
 * Használja a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
 * Használja a [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) függvényt bármely `datadrift` futtatási objektumon.
-* Megtekintheti a modell Azure Portal mérőszámait.
 * A mérőszámokat a munkaterület kezdőlapjának **modellek** szakaszában tekintheti meg [(előzetes verzió)](https://ml.azure.com).
 
 A következő Python-példa bemutatja, hogyan ábrázolhatja a kapcsolódó adateltolódási metrikákat. A visszaadott metrikák használatával egyéni vizualizációkat hozhat létre:
@@ -159,17 +158,16 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Az adatdrift-detektor konfigurációját a Azure Portal vagy a munkaterület kezdőlapja (előzetes verzió) modell részletei oldalán tekintheti meg.
+Az adatdrift detektor konfigurációját a munkaterület kezdőlapjának **részletek** lapjának **modellek** területén tekintheti meg [(előzetes verzió)](https://ml.azure.com).
 
-![Azure Portal adateltolódás-konfiguráció](media/how-to-monitor-data-drift/drift_config.png)
+![Adateltolódás Azure Portal](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-azure-portal"></a>Eredmények megtekintése Azure Portal
+## <a name="view-results-in-your-workspace-landing-page"></a>Eredmények megtekintése a munkaterület kezdőlapján
 
-Ha [Azure Portalban](https://portal.azure.com)szeretné megtekinteni az eredményeket a munkaterületen, navigáljon a modell lapra. A modell részletek lapján megjelenik az adatdrift-konfiguráció. Mostantól elérhető az adateltolódási mérőszámok megjelenítésére szolgáló "adateltolódás (előzetes verzió)" lap. 
+Ha meg szeretné tekinteni az eredményeket a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com), navigáljon a modell lapra. A modell részletek lapján megjelenik az adatdrift-konfiguráció. Mostantól elérhető egy **adatdrift** lap az adatdrift mérőszámok megjelenítéséhez. 
 
-![Adateltolódás Azure Portal](media/how-to-monitor-data-drift/drift_ui.png)
+[![munkaterület kezdőlapjának adateltolódása](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
-Az eredmények a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)a modell részletei között is elérhetők.
 
 ## <a name="receiving-drift-alerts"></a>Drift-riasztások fogadása
 

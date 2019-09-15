@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e57b5a49ac0c99fa81e54134e74964bf38418e4d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934907"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996644"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár Azure Key Vault
 
@@ -26,7 +26,6 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
 [API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | -referenciák dokumentációs[könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -120,24 +119,12 @@ A művelet a kulcs/érték párok sorozatát fogja visszaadni.
 
 Jegyezze fel a clientId és a clientSecret, ahogy azokat a [hitelesítés a Key vaultban](#authenticate-to-your-key-vault) című lépésében fogjuk használni.
 
-Szüksége lesz az egyszerű szolgáltatásnév appID is. Az az [ad SP-lista](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) futtatásával a `--show-mine` (z) paraméterrel megkeresheti:
-
-```azurecli
-az ad sp list --show-mine
-```
-
-Az `appID` megjelenik a visszaadott JSON-ben:
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
-
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
 
-Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak. Ezt az az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal teheti meg. Az egyszerű szolgáltatás lekérése, listázása és beállítása a kulcsokhoz és titkokhoz is érvényes lesz.
+Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak a clientId az az a Key Vault [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal. Adja meg a szolgáltatás egyszerű lekérését, listáját, és állítsa be mindkét kulcs és titok engedélyeit.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>Objektummodell

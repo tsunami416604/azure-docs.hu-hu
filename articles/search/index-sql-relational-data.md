@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: f6cc119387482e4f5403e91de98916cbe2aaff2a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963498"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993571"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>A kapcsolódó SQL-adattípusok modellezése importáláshoz és indexeléshez Azure Search
 
@@ -152,11 +152,11 @@ Az előző eredményhalmaz és a fenti index séma miatt a sikeres indexelési m
 
 ## <a name="next-steps"></a>További lépések
 
-Az [adatimportálás varázsló](search-import-data-portal.md) segítségével az ebben a cikkben leírthoz hasonló sorhalmazt indexelheti. A varázsló észleli a beágyazott JSON-gyűjteményt a *szobákban* , és kikövetkeztet egy index sémát, amely a megfelelő komplex típusú gyűjteményt biztosítja. 
+Az index létrehozásához és betöltéséhez használja az [adatimportálás varázsló](search-import-data-portal.md) segítségével a saját adatkészletét. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *szobákban*találhatót, és egy összetett típusú gyűjteményt tartalmazó index sémát következtet ki. 
 
   ![Index következtetni az adatimportálás varázsló segítségével](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index következtetni az adatimportálás varázsló segítségével")
 
-Az importálás befejezéséhez és a használható index létrehozásához ki kell választania a kulcsot, és saját magának kell beállítania az attribútumokat. Ha nem ismeri ezt a varázslót, próbálja ki az alábbi rövid útmutatót az alapszintű lépések elsajátításához.
+Az adatok importálása varázsló alapvető lépéseinek megismeréséhez próbálkozzon a következő rövid útmutatóval.
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Keresési index létrehozása Azure Portal használatával](search-get-started-portal.md)

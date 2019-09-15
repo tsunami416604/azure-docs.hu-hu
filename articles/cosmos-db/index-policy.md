@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914174"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996668"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Szabályzatok indexelése a Azure Cosmos DBban
 
@@ -29,7 +29,7 @@ A Azure Cosmos DB két indexelési módot támogat:
 - **Konzisztens**: Ha egy tároló indexelési házirendje konzisztens értékre van állítva, az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
 - **Nincs**: Ha egy tároló indexelési házirendje a none értékre van állítva, az indexelés hatékonyan le van tiltva ezen a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. A tömeges beszúrási műveletek felgyorsítását is lehetővé teszi.
 
-Emellett az indexelési házirendben az **automatikus** tulajdonságot **igaz**értékre kell állítani. Ha ez a tulajdonság TRUE (igaz) értékre van állítva, a Azure Cosmos DB automatikusan indexeli a dokumentumokat írásuk szerint.
+Alapértelmezés szerint az indexelési házirend a `automatic`következőre van beállítva:. Ez úgy érhető el, ha `automatic` `true`a tulajdonságot az indexelési házirendben a értékre állítja. Ennek a tulajdonságnak `true` a beállításával engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
 
 ## <a name="including-and-excluding-property-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 

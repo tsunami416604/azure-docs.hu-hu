@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást a Azure Machine Learning szolgáltatás vizuális felületén. Gépi tanulási modell betanítása, pontszáma és üzembe helyezése a drag and drop modulok használatával. Ez az oktatóanyag egy kétrészes sorozat második része, amely az autók árának lineáris regresszió használatával történő előrejelzését ismerteti.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning vizuális felületén. Gépi tanulási modell betanítása, pontszáma és üzembe helyezése a drag and drop modulok használatával. Ez az oktatóanyag egy kétrészes sorozat második része, amely az autók árának lineáris regresszió használatával történő előrejelzését ismerteti.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858637"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997008"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen
 
@@ -105,7 +105,7 @@ További API-részletekért keresse fel az **API doc** lapot.
 
 ## <a name="manage-models-and-deployments"></a>Modellek és központi telepítések kezelése
 
-A vizuális felületen létrehozott modellek és webszolgáltatás-telepítések a Azure Machine Learning szolgáltatás munkaterületről is kezelhetők.
+A vizuális felületen létrehozott modellek és webszolgáltatás-telepítések a Azure Machine Learning munkaterületről is kezelhetők.
 
 1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  
 

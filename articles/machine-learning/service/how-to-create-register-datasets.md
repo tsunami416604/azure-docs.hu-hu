@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 215660b0f0b8748461849f20e65a3585f939085e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8f684a9c0c40774c8c17a08801997c569be74c8d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858795"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993336"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Adatkészletek létrehozása és elérése (előzetes verzió) Azure Machine Learning
 
@@ -76,7 +76,12 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 ```
+
 ### <a name="create-tabulardatasets"></a>TabularDatasets létrehozása
+
+A TabularDatasets az SDK-n keresztül vagy a munkaterület kezdőlapjának (előzetes verzió) segítségével hozhatók létre.
+
+#### <a name="sdk"></a>SDK 
 
 Az `from_delimited_files()` `TabularDatasetFactory` osztályban található metódus használatával olvassa be a CSV-vagy TSV-formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlból olvas be adatokat, a rendszer összesíti az eredményeket egy táblázatos ábrázolásba.
 
@@ -103,7 +108,18 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
+#### <a name="workspace-landing-page"></a>Munkaterület kezdőlapja 
+
+Jelentkezzen be a [munkaterület](https://ml.azure.com) kezdőlapján, és hozzon létre egy adatkészletet a webes felületen keresztül. Jelenleg a munkaterület kezdőlapja csak a TabularDatasets létrehozását támogatja.
+
+A következő animáció bemutatja, hogyan hozhat létre adatkészletet a munkaterület kezdőlapján. 
+
+Először válassza az **adatkészletek** lehetőséget a bal oldali ablaktábla **eszközök** részén. Ezután válassza az **+ adatkészlet létrehozása** lehetőséget az adatkészlet forrásának kiválasztásához; Ez lehet helyi fájlokból, adattárból vagy nyilvános webes URL-címekből is. A **beállítások és az előnézet** és a **séma** űrlapja intelligens módon van feltöltve a fájl típusa alapján. A **tovább** gombra kattintva megtekintheti őket, vagy az adatkészlet további konfigurálását a létrehozás előtt. Az adatkészlet létrehozásának befejezéséhez kattintson a **kész** gombra. 
+
+![Adatkészlet létrehozása a felhasználói felületen](media/how-to-create-register-datasets/create-dataset-ui.gif)
+
 ### <a name="create-filedatasets"></a>FileDatasets létrehozása
+
 Az `FileDatasetFactory` osztályban `from_files()` lévő metódus használatával bármilyen formátumban betöltheti a fájlokat, és létrehozhat egy nem regisztrált FileDataset.
 
 ```Python
@@ -134,6 +150,9 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data')
 ```
 
+>[!Note]
+> A munkaterület kezdőlapján létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen. 
+
 ## <a name="version-datasets"></a>Verziók adatkészletei
 
 Egy új verzió létrehozásával regisztrálhat egy új adatkészletet ugyanazon a néven. Az adatkészlet verziója lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így a kísérletezéshez vagy a későbbi sokszorosításhoz az adatkészlet adott verzióját is alkalmazhatja. A verziószámozás megfontolásának tipikus forgatókönyvei: 
@@ -141,7 +160,7 @@ Egy új verzió létrehozásával regisztrálhat egy új adatkészletet ugyanazo
 * Ha különböző adatelőkészítési vagy szolgáltatás-mérnöki módszereket alkalmaz.
 
 ```Python
-# create a TabularDataset from new Titanic training data
+# create a TabularDataset from Titanic training data
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'

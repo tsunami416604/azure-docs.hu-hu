@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 02/23/2019
-ms.openlocfilehash: 8709d88c4d21a40ac8ebb27e5c1669d8f5fa3555
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934225"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995434"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database szolgáltatási szintek
 
@@ -46,8 +46,6 @@ A következő táblázat ismerteti a legújabb generációs szolgáltatási szin
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **TempDB mérete** | Önálló adatbázis/rugalmas készlet | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Felügyelt példány  | [24 GB/virtuális mag](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | Legfeljebb 4 TB – [a tárterület mérete korlátozva](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **IO-átviteli sebesség** | Önálló adatbázis | [500 IOPS/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | A hatékony IOPs a munkaterheléstől függ. | [4000 IOPS/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute)|
-| | Felügyelt példány | [100-250MB/s és 500-7500 IOPS fájlonként](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [1375 IOPS/virtuális mag](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Írási sebesség naplózása** | Önálló adatbázis | [1,875 MB/s/virtuális mag (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s/s/virtuális mag (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
 | | Felügyelt példány | [3 MB/s/s virtuális mag (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [4 MB/s/s virtuális mag (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**Rendelkezésre állás**|Összes| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |

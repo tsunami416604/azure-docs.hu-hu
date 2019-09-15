@@ -1,7 +1,7 @@
 ---
 title: Üzembehelyezési hibaelhárítási útmutató
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani az általános Docker-telepítési hibákat az Azure Kubernetes Service szolgáltatással, és Azure Container Instances a Azure Machine Learning szolgáltatás használatával.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani a Common Docker-telepítési hibákat az Azure Kubernetes szolgáltatással, és Azure Container Instances a Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183537"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997161"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
-Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) Azure Machine Learning szolgáltatás használatával.
+Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) a Azure Machine Learning használatával.
 
-Amikor üzembe helyezéséhez az Azure Machine Learning szolgáltatáshoz, a rendszer számos feladatot hajt végre. A központi telepítésének feladatai a következők:
+Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre. A központi telepítésének feladatai a következők:
 
 1. A munkaterület-modell beállításjegyzék regisztrálja a modellt.
 
@@ -46,7 +46,7 @@ További információ a folyamatot a [Modellkezelési](concept-model-management-
 
 Ha bármilyen problémát tapasztal,-e az első teendő a szolgáltatástelepítési feladat felosztania (előző ismertetett) az egyes lépéseket a probléma.
 
-Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API-t, vagy a webservice [. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API-t használja, akkor az üzembe helyezés a feladatok során is hasznos lehet, mivel mindkét függvény egyetlen műveletként hajtja végre a fenti lépéseket. Általában ezek az API-k kényelmesek, de segít megszüntetni az alábbi API-hívásokkal végzett hibaelhárítási lépéseket.
+Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API-t, vagy a [webservice. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API-t használja, akkor az üzembe helyezés a feladatok során is hasznos lehet, mivel mindkét függvény egyetlen műveletként hajtja végre a fenti lépéseket. Általában ezek az API-k kényelmesek, de segít megszüntetni az alábbi API-hívásokkal végzett hibaelhárítási lépéseket.
 
 1. Regisztrálja a modellt. Íme néhány mintakódját:
 
@@ -346,7 +346,7 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ Ebben a példában a beállításjegyzék neve `myregistry` , és a rendszerkép
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Ha a VS Code-t a tárolón belül PTVSD szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, vagy válassza a Ha a rendszer kéri, __válassza ki a Azure Machine learning szolgáltatást: Docker-__ hibakeresési konfiguráció. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning szolgáltatásban: A hibakeresési__ legördülő menüből a Docker hibakeresési bejegyzését, majd a zöld nyíl használatával csatolja a hibakeresőt.
+1. Ha a VS Code-t a tárolón belül PTVSD szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, __vagy válassza a__ Ha a rendszer kéri, __válassza ki a Azure Machine learning: Docker-__ hibakeresési konfiguráció. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a __Azure Machine learning: A hibakeresési__ legördülő menüből a Docker hibakeresési bejegyzését, majd a zöld nyíl használatával csatolja a hibakeresőt.
 
     ![A hibakeresés ikon, a hibakeresés elindítása gomb és a konfigurációs választó](media/how-to-troubleshoot-deployment/start-debugging.png)
 

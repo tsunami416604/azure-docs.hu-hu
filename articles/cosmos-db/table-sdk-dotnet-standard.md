@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034583"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996220"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: Megjegyzések letöltése és kibocsátási megjegyzései
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ a 2.0.0 sorozat a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Micr
 
 ## <a name="release-notes-for-100-series"></a>A 1.0.0 sorozat kibocsátási megjegyzései
 a 1.0.0-sorozat a [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* A TableClientConfiguration alatt új konfigurációt kell bevezetni a REST-végrehajtó használatára Cosmos DB Table API való kommunikációhoz
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5 – előzetes verzió
 * Hibajavítások
@@ -75,7 +78,7 @@ a 1.0.0-sorozat a [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/pac
    > Az előző Azure Storage Table SDK-k bizonyos funkciói még nem támogatottak, például az ügyféloldali titkosítás.
 
 ### <a name="a-name091-preview091-preview"></a><a name="0.9.1-preview"/>0.9.1 – előzetes verzió
-* Azure Cosmos DB table .NET Standard SDK egy platformfüggetlen .NET-könyvtár, amely hatékony hozzáférést biztosít a Table adatmodellhez Cosmos DB. Ez a kezdeti kiadás a tábla és az entitások közötti szifilisz + lekérdezési funkciók teljes készletét támogatja hasonló API-kkal, mint a .NET-keretrendszerhez készült [Cosmos db Table SDK](table-sdk-dotnet.md)-t. 
+* Azure Cosmos DB table .NET Standard SDK egy platformfüggetlen .NET-könyvtár, amely hatékony hozzáférést biztosít a Table adatmodellhez Cosmos DB. Ez a kezdeti kiadás a tábla és az entitások közötti szifilisz + lekérdezési funkciók teljes készletét támogatja hasonló API-kkal, mint a [.net-keretrendszerhez készült Cosmos db Table SDK](table-sdk-dotnet.md)-t. 
    > [!NOTE]
    >  Az Azure Storage Table-végpontok még nem támogatottak a 0.9.1 előzetes verziójában.
 
@@ -92,6 +95,7 @@ Ez a platformfüggetlen .NET Standard könyvtár a [Microsoft. Azure. Cosmos. ta
 ### <a name="100-series"></a>1.0.0-sorozat
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [1.0.5](#1.0.5) |Szeptember 13., 2019 |--- |
 | [1.0.5 – előzetes verzió](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4 – előzetes verzió](#1.0.4-preview) |2019. július 26. |--- |

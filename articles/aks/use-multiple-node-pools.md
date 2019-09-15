@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 516d4f47cb971dee91bc678ff56eeca71a28183a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915842"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996892"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -76,9 +76,9 @@ az provider register --namespace Microsoft.ContainerService
 A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek:
 
 * Több csomópontos készlet csak akkor érhető el az előfizetéshez tartozó *MultiAgentpoolPreview* funkció sikeres regisztrálása után létrehozott fürtökhöz. A szolgáltatás sikeres regisztrálása előtt nem adhat hozzá és nem kezelhet meglévő AK-fürtöt tartalmazó csomópont-készleteket.
-* Az első csomópont-készlet nem törölhető.
+* Az alapértelmezett (első) csomópont-készlet nem törölhető.
 * A HTTP-alkalmazás útválasztási bővítménye nem használható.
-* Csomópont-készleteket nem lehet hozzáadni/frissíteni vagy törölni egy meglévő Resource Manager-sablon használatával a legtöbb művelethez hasonlóan. Ehelyett [használjon egy különálló Resource Manager-sablont](#manage-node-pools-using-a-resource-manager-template) , amellyel módosításokat hajthat végre egy AK-fürtben lévő csomópont-készleteken.
+* A legtöbb művelethez hasonlóan a meglévő Resource Manager-sablonok használatával nem adhat hozzá vagy törölhet csomópont-készleteket. Ehelyett [használjon egy különálló Resource Manager-sablont](#manage-node-pools-using-a-resource-manager-template) , amellyel módosításokat hajthat végre egy AK-fürtben lévő csomópont-készleteken.
 
 Habár ez a funkció előzetes verzióban érhető el, a következő további korlátozások érvényesek:
 
@@ -89,6 +89,8 @@ Habár ez a funkció előzetes verzióban érhető el, a következő további ko
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
 Első lépésként hozzon létre egy AK-fürtöt egyetlen csomópontos készlettel. Az alábbi példa az az [Group Create][az-group-create] paranccsal létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ezután létrejön egy *myAKSCluster* nevű AK-fürt az az [AK Create][az-aks-create] paranccsal. A *1.13.10* egy *--kubernetes-verziója* a következő lépésben mutatja be, hogyan lehet frissíteni egy csomópont-készletet. Megadhat bármilyen [támogatott Kubernetes-verziót][supported-versions].
+
+A standard SKU Load Balancer használata erősen ajánlott, ha több csomópontos készletet használ. [Ebből a dokumentumból](load-balancer-standard.md) megtudhatja, hogyan használhatja a standard Load balancert az AK-val.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -101,7 +103,8 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10
+    --kubernetes-version 1.13.10 \
+    --load-balancer-sku standard
 ```
 
 A fürt létrehozása néhány percet vesz igénybe.
@@ -578,7 +581,7 @@ A Resource Manager-sablonban definiált csomópont-készlet beállításaitól �
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Nyilvános IP-cím társítása egy csomópont-készletben
 
 > [!NOTE]
-> Az előzetes verzió ideje alatt a szolgáltatás a virtuális gépek üzembe helyezésével ütköző lehetséges Load Balancer-szabályok miatt korlátozva van a *standard Load BALANCER SKU-ban (előzetes verzió)* . Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t használja, ha csomóponthoz kell hozzárendelni egy nyilvános IP-címet.
+> A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t használja, ha csomóponthoz kell hozzárendelni egy nyilvános IP-címet.
 
 Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. Bizonyos esetekben azonban előfordulhat, hogy a csomópontok csomópontjain a saját nyilvános IP-címeiket kell megadni. Egy példa a játékra, ahol a konzolnak közvetlen csatlakoznia kell egy felhőalapú virtuális géphez a ugrások minimalizálásához. Ezt úgy érheti el, ha regisztrál egy külön előzetes verziójú szolgáltatásra, a Node nyilvános IP-címére (előzetes verzió).
 

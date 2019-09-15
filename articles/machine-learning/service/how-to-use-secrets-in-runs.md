@@ -1,6 +1,6 @@
 ---
 title: Titkok használata a betanítási futtatásokban
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: A titkok átadása biztonságos módon, a munkaterület Key Vault használatával
 services: machine-learning
 author: rastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777818b74f935a560047d1eea20e0d0e657efcac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019419"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996575"
 ---
 # <a name="use-secrets-in-training-runs"></a>Titkok használata a betanítási futtatásokban
 
@@ -32,7 +32,7 @@ A titkok használatának alapszintű folyamata a következő:
 
 ## <a name="set-secrets"></a>Titkos kódok beállítása
 
-Azure Machine Learning Python SDK-ban a [](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) kulcstartó osztály a titkok beállítására szolgáló metódusokat tartalmaz. A helyi Python-munkamenetben először szerezzen be egy hivatkozást a munkaterületre Key Vault, majd a [set_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) metódus használatával állítsa be a titkos kulcsot név és érték alapján.
+Azure Machine Learning Python SDK-ban a [kulcstartó osztály a](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py) titkok beállítására szolgáló metódusokat tartalmaz. A helyi Python-munkamenetben először szerezzen be egy hivatkozást a munkaterületre Key Vault, majd a [set_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) metódus használatával állítsa be a titkos kulcsot név és érték alapján.
 
 ```python
 from azureml.core import Workspace
@@ -50,7 +50,7 @@ A titkos neveket a [list_secrets](https://docs.microsoft.com/python/api/azureml-
 
 ## <a name="get-secrets"></a>Titkok beolvasása
 
-A helyi kódban használhatja a kulcstartót [. a _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) metódus lekérésével beolvashatja a titkos értéket név alapján.
+A helyi kódban használhatja a kulcstartót [. a _secret metódus lekérésével](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) beolvashatja a titkos értéket név alapján.
 
 A [kísérlet. Submit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-)használatával elküldött futtatások esetében használja a [Run. Get _secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) metódust. Mivel a beküldött futtatási funkció ismeri a munkaterületét, ez a módszer a munkaterület-példányát, és közvetlenül a titkos értéket adja vissza.
 
@@ -69,4 +69,4 @@ A set és a Get metódushoz a Batch-verziók [set_secrets](https://docs.microsof
 ## <a name="next-steps"></a>További lépések
 
  * [Példa jegyzetfüzetek megtekintése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Tudnivalók a vállalati biztonságról Azure Machine Learning szolgáltatással](concept-enterprise-security.md)
+ * [Ismerkedjen meg a nagyvállalati biztonsággal Azure Machine Learning](concept-enterprise-security.md)

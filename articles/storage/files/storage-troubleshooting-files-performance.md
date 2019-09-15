@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816523"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996603"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problé
 
 ### <a name="cause-1-share-experiencing-throttling"></a>1\. ok: Megosztási sávszélesség szabályozása
 
-A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg [](storage-files-planning.md#provisioned-shares) a tervezési útmutató kiépített megosztások című szakaszát.
+A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg a tervezési útmutató [kiépített megosztások](storage-files-planning.md#provisioned-shares) című szakaszát.
 
 Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kihasználhatja az Azure-mérőszámokat a portálon.
 
@@ -85,6 +85,7 @@ Ennek egyik lehetséges oka a többcsatornás SMB-támogatás hiánya. Az Azure-
 
 - A nagyobb mag-t tartalmazó virtuális gépek beszerzése segíthet az átviteli sebesség növelésében.
 - Az ügyfélalkalmazás több virtuális gépről való futtatása növeli az átviteli sebességet.
+
 - Ha lehetséges, használja a REST API-kat.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>A Linux-ügyfelek átviteli sebessége jelentősen alacsonyabb a Windows-ügyfelekhez képest.
@@ -95,8 +96,9 @@ Ez egy ismert probléma az SMB-ügyfél Linux rendszeren történő megvalósít
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- A terhelés elosztása több virtuális gépen
+- A terhelés elosztása több virtuális gép között.
 - Ugyanazon a virtuális gépen használjon több csatlakoztatási pontot a **nosharesock** kapcsolóval, majd a terhelést a csatlakoztatási pontok között.
+- Linux rendszeren próbálja meg az **nostrictsync** kapcsolóval való csatlakoztatást, hogy ne kényszerítse az SMB ürítését minden Fsync-híváson. A Azure Files esetében ez a beállítás nem zavarja az adatok consistentcy, de az elavult fájlok metaadatait is eredményezheti a címtár listázásakor (**ls-l** parancs). A fájl metaadatainak közvetlen lekérdezése (**stat** Command) a legnaprakészebb fájl-metaadatokat fogja visszaadni.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Magas késés a metaadatok nagy számítási feladataihoz, amelyek kiterjedt nyitott/zárási műveleteket foglalnak magukban.
 

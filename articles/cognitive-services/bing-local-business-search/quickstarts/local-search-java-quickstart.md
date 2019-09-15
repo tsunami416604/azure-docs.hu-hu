@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: aa10891ca713ad5030670fea3e9fa81c43f81c56
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: 3e71268004ca8fd171835adf289436a65d866fdc
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906292"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994409"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: Lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
@@ -29,7 +29,7 @@ Ez a példában szereplő alkalmazás a keresési lekérdezés `hotel in Bellevu
 
 Egy Bing Search API-kat tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásához megadott hozzáférési kulcsra.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Ez a példa az alkalmazás helyi válaszüzeneteket olvas be a *Bellevue*egyik szállodájának lekérdezése alapján.
+Ez a példa az alkalmazás helyi válaszüzeneteket olvas be a *Bellevue egyik szállodájának*lekérdezése alapján.
 
 ## <a name="create-the-request"></a>A kérelem létrehozása 
 

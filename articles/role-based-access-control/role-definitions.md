@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142842"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996431"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Az Azure-erőforrások szerepkör-definícióinak megismerése
 
-Ha meg szeretné ismerni, hogyan működik a szerepkör, vagy ha saját egyéni szerepkört hoz létre [Az Azure](custom-roles.md)-erőforrásokhoz, hasznos lehet megérteni a szerepkörök definiálásának módját. Ez a cikk a szerepkör-definíciók részleteit ismerteti, és példákat is tartalmaz.
+Ha meg szeretné ismerni, hogyan működik a szerepkör, vagy ha saját [Egyéni szerepkört hoz létre az Azure-erőforrásokhoz](custom-roles.md), hasznos lehet megérteni a szerepkörök definiálásának módját. Ez a cikk a szerepkör-definíciók részleteit ismerteti, és példákat is tartalmaz.
 
 ## <a name="role-definition-structure"></a>Szerepkör-definíciós struktúra
 
@@ -120,7 +120,7 @@ Itt látható a [Storage blob Adatolvasó](built-in-roles.md#storage-blob-data-r
 }
 ```
 
-Csak adatműveletek adhatók hozzá a `DataActions` és `NotDataActions` a tulajdonsághoz. Az erőforrás-szolgáltatók határozzák meg, hogy mely műveletek legyenek adatműveletek, ha `isDataAction` `true`a tulajdonságot értékre állítja. A következő műveletek `isDataAction` `true`listájának megtekintéséhez lásd: erőforrás-szolgáltatói [műveletek](resource-provider-operations.md). Azok a szerepkörök, amelyek nem rendelkeznek adatműveletekkel, nem `DataActions` szükségesek a szerepkör-definícióban lévő és `NotDataActions` a tulajdonságok eléréséhez.
+Csak adatműveletek adhatók hozzá a `DataActions` és `NotDataActions` a tulajdonsághoz. Az erőforrás-szolgáltatók határozzák meg, hogy mely műveletek legyenek adatműveletek, ha `isDataAction` `true`a tulajdonságot értékre állítja. A következő műveletek `isDataAction` `true`listájának megtekintéséhez lásd: erőforrás- [szolgáltatói műveletek](resource-provider-operations.md). Azok a szerepkörök, amelyek nem rendelkeznek adatműveletekkel, nem `DataActions` szükségesek a szerepkör-definícióban lévő és `NotDataActions` a tulajdonságok eléréséhez.
 
 Az összes felügyeleti művelet API-hívásának hitelesítését Azure Resource Manager kezeli. Az adatműveleti API-hívások engedélyezését vagy erőforrás-szolgáltató vagy Azure Resource Manager kezeli.
 
@@ -150,7 +150,7 @@ Storage-blobadatok közreműködője
 
 Mivel Alice egy helyettesítő karakter (`*`) művelettel rendelkezik egy előfizetési hatókörben, az engedélyeik öröklik az összes felügyeleti művelet végrehajtását. Alice képes a tárolók olvasására, írására és törlésére. Alice azonban nem végezheti el az adatműveleteket további lépések végrehajtása nélkül. Alapértelmezés szerint például Alice nem tudja beolvasni a blobokat egy tárolón belül. A Blobok olvasásához Alice-nek le kell kérnie a tároló-hozzáférési kulcsokat, és a Blobok eléréséhez használnia kell őket.
 
-A Bob engedélyei a [Storage blob](built-in-roles.md#storage-blob-data-contributor) -adatközreműködői `DataActions` szerepkörben csak a és a `Actions` értékre korlátozódnak. A Bob szerepkör alapján a felügyeleti és az adatműveletek is elvégezhetők. Például Bob elolvashatja, írhatja és törölheti a tárolókat a megadott Storage-fiókban, valamint elolvashatja, írhatja és törölheti is a blobokat.
+A Bob engedélyei a `Actions` [Storage blob-adatközreműködői](built-in-roles.md#storage-blob-data-contributor) szerepkörben csak a és `DataActions` a értékre korlátozódnak. A Bob szerepkör alapján a felügyeleti és az adatműveletek is elvégezhetők. Például Bob elolvashatja, írhatja és törölheti a tárolókat a megadott Storage-fiókban, valamint elolvashatja, írhatja és törölheti is a blobokat.
 
 A tárolással kapcsolatos felügyelettel és adatsíkokkal kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md).
 
@@ -213,18 +213,20 @@ Az `NotDataActions` engedély meghatározza azokat az adatműveleteket, amelyek 
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-A `AssignableScopes` tulajdonság meghatározza azokat a hatóköröket (előfizetéseket, erőforráscsoportokat vagy erőforrásokat), amelyeken ez a szerepkör-definíció elérhető. A szerepkört csak azokhoz az előfizetésekhez vagy erőforráscsoportokhöz lehet kijelölni, amelyeknek szükségük van rá, és ne legyenek túlterhelve a felhasználói élmény a többi előfizetés vagy erőforráscsoport esetében. Legalább egy előfizetést, erőforráscsoportot vagy erőforrás-azonosítót kell használnia.
+A `AssignableScopes` tulajdonság határozza meg, hogy mely hatókörök (felügyeleti csoportok, előfizetések, erőforráscsoportok vagy erőforrások) érhetők el ehhez a szerepkör-definícióhoz. A szerepkört csak azokhoz a felügyeleti csoportokhoz, előfizetésekhez vagy erőforráscsoportokhöz lehet hozzárendelni, amelyekhez szükség van. Legalább egy felügyeleti csoportot, előfizetést, erőforráscsoportot vagy erőforrás-azonosítót kell használnia.
 
 A beépített szerepkörök a gyökérszintű `AssignableScopes` hatókörre (`"/"`) vannak beállítva. A gyökérszintű hatókör azt jelzi, hogy a szerepkör minden hatókörben elérhető a hozzárendeléshez. Érvényes hozzárendelhető hatókörök például a következők:
 
-| Forgatókönyv | Példa |
+| A szerepkör hozzárendelésre elérhető | Példa |
 |----------|---------|
-| A szerepkör egyetlen előfizetésben használható hozzárendeléshez. | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| A szerepkör két előfizetésben is elérhető a hozzárendeléshez | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| A szerepkör csak a hálózati erőforráscsoporthoz való hozzárendeléshez érhető el | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| A szerepkör minden hatókörben elérhető a hozzárendeléshez (csak a beépített szerepkörökre vonatkozik) | `"/"` |
+| Egy előfizetés | `"/subscriptions/{subscriptionId1}"` |
+| Két előfizetés | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Hálózati erőforráscsoport | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Egy felügyeleti csoport | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Felügyeleti csoport és előfizetés | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Minden hatókör (csak a beépített szerepkörökre vonatkozik) | `"/"` |
 
-További információ `AssignableScopes` az egyéni szerepkörökről: [Egyéni szerepkörök az Azure](custom-roles.md)-erőforrásokhoz.
+További információ `AssignableScopes` az egyéni szerepkörökről: [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md).
 
 ## <a name="next-steps"></a>További lépések
 

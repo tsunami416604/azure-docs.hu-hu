@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a671b2ddd3cfa1237b6d843369e78233960f1c14
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 139ebe02727bab8cc80f6f0c6bbbd2156f025c21
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013199"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70992305"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 [Felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) több Azure-funkció, amely lehetővé teszi, hogy a központi telepítést, amely alatt az alkalmazás kódja fut társított biztonságos identitás létrehozása. Ezután társíthatja az identitásukat hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adott, az alkalmazásnak szüksége van az Azure erőforrások eléréséhez.
@@ -28,7 +28,7 @@ A felügyelt identitásokból az Azure platform kezeli a futtatókörnyezet iden
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
 
- 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. 
+ 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent `https://servicebus.azure.net`kérő erőforrás neve.
  1. Ezután a jogkivonat a Service Bus szolgáltatásnak küldött kérelem részeként a megadott erőforráshoz való hozzáférés engedélyezéséhez lesz átadva.
 
 A hitelesítési lépés megköveteli, hogy egy alkalmazás-kérelem OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Function-alkalmazáson belül fut, akkor a felügyelt identitás használatával férhet hozzá az erőforrásokhoz. Ha meg szeretné tudni, hogyan hitelesítheti a felügyelt identitás által küldött kéréseket Service Bus szolgáltatásra, tekintse meg a [Azure Service Bus erőforrásokhoz való hozzáférés hitelesítése Azure Active Directory és felügyelt identitások Azure-erőforrásokhoz](service-bus-managed-service-identity.md)című témakört. 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (
 Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt identitás az Azure-erőforrásokhoz.
 
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>A Azure Service Bus beépített RBAC szerepkörei
-Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés* -vezérlési (RBAC) modell használatával. Az Azure az alábbi beépített RBAC szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
+Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés-vezérlési* (RBAC) modell használatával. Az Azure az alábbi beépített RBAC szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
 
 - [Azure Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Engedélyezi Service Bus névtér és az entitások (várólisták, témakörök, előfizetések és szűrők) elérését.
 - [Azure Service Bus adatfeladó](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Ezzel a szerepkörrel hozzáférést biztosíthat a Service Bus névtérhez és a hozzá tartozó entitásokhoz.
@@ -63,7 +63,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforr
 > [!NOTE]
 > Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 
-További információ a beépített szerepkörök meghatározásáról: a szerepkör-definíciók [ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../role-based-access-control/custom-roles.md)című témakört.
+További információ a beépített szerepkörök meghatározásáról: a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../role-based-access-control/custom-roles.md)című témakört.
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése egy virtuális gépen
 Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuális gép Service Bus erőforrásainak engedélyezéséhez, először engedélyeznie kell az Azure-erőforrások felügyelt identitásait a virtuális gépen. Ha szeretné megtudni, hogyan engedélyezheti az Azure-erőforrások felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
@@ -87,7 +87,7 @@ Itt egy [Azure app Service](https://azure.microsoft.com/services/app-service/)-b
 Az alkalmazás létrehozása után kövesse az alábbi lépéseket: 
 
 1. Lépjen a **Beállítások** menüpontra, és válassza az **identitás**elemet. 
-1. Válassza ki a bekapcsolni kívánt **állapotot** . 
+1. Válassza ki a **bekapcsolni**kívánt **állapotot** . 
 1. A beállítás mentéséhez kattintson a **Mentés** gombra. 
 
     ![Webalkalmazás felügyelt identitása](./media/service-bus-managed-service-identity/identity-web-app.png)
@@ -104,9 +104,9 @@ Ha egy szerepkört Service Bus névtérhez szeretne rendelni, akkor navigáljon 
 > 
 > Ha nem rendelkezik ilyennel, [hozzon létre egy Service Bus üzenetküldési névteret](service-bus-create-namespace-portal.md) . 
 
-1. A Azure Portal navigáljon a Service Bus névtérhez, és jelenítse meg a névtér áttekintését. 
+1. A Azure Portal navigáljon a Service Bus névtérhez, és jelenítse meg a névtér **áttekintését** . 
 1. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget a Service Bus névtér hozzáférés-vezérlési beállításainak megjelenítéséhez.
-1.  Válassza ki a **szerepkör** -hozzárendelések lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
+1.  Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 3.  Új szerepkör hozzáadásához válassza a **Hozzáadás** lehetőséget.
 4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Azure Service Bus-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
@@ -119,7 +119,7 @@ Miután hozzárendelte a szerepkört, a webalkalmazás hozzáfér a megadott hat
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A webalkalmazás kódját a [GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)-adattárból is használhatja.  
+Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A webalkalmazás kódját a [GitHub-adattárból](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)is használhatja.  
 
 Az alapértelmezett. aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a küldési és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
 

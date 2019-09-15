@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78e113f881d1f62c9848ba40f039fa19eeb09055
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129193"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996451"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -395,6 +395,18 @@ Ez a hiba azért fordul elő, mert az Azure File Sync ügynök nem fér hozzá a
     ```
 2. [Ellenőrizze, hogy létezik-e a Storage-fiók.](#troubleshoot-storage-account)
 3. [Ellenőrizze, hogy a Storage-fiók tűzfal-és virtuális hálózati beállításai megfelelően vannak-e konfigurálva (ha engedélyezve vannak)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Ismeretlen hiba történt a Storage-fiók elérésekor.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8308a |
+| **HRESULT (decimális)** | – 2134364022 |
+| **Hiba karakterlánca** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Szervizelés szükséges** | Igen |
+
+1. [Ellenőrizze, hogy létezik-e a Storage-fiók.](#troubleshoot-storage-account)
+2. [Ellenőrizze, hogy a Storage-fiók tűzfal-és virtuális hálózati beállításai megfelelően vannak-e konfigurálva (ha engedélyezve vannak)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**A szinkronizálás nem sikerült, mert a szinkronizálási adatbázissal kapcsolatos probléma merült fel.**  
 

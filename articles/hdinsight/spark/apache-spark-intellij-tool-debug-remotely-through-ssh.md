@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 844901d9c689d5a04312b52101572854f4d7fe6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814177"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70994002"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
 Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) HDInsight eszközei az alkalmazások távoli HDInsight-fürtökön való hibakereséséhez. A projekt hibakereséséhez a [HDInsight Spark-alkalmazásokat Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) videóval is megtekintheti.
 
 **Előfeltételek**
-* **Azure Toolkit for IntelliJ HDInsight eszközei**. Ez az eszköz a Azure Toolkit for IntelliJ részét képezi. További információ: [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation). És **Azure Toolkit for IntelliJ**. Ezzel az eszközkészlettel Apache Spark-alkalmazásokat hozhat létre egy HDInsight-fürthöz. További információért kövesse az [Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)című témakör utasításait.
+* **Azure Toolkit for IntelliJ HDInsight eszközei**. Ez az eszköz a Azure Toolkit for IntelliJ részét képezi. További információ: [Install Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation). És **Azure Toolkit for IntelliJ**. Ezzel az eszközkészlettel Apache Spark-alkalmazásokat hozhat létre egy HDInsight-fürthöz. További információért kövesse az [Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)-fürthöz való létrehozásához című témakör utasításait.
 
 * **HDINSIGHT SSH-szolgáltatást felhasználónévvel és jelszó-kezeléssel**. További információ: [Kapcsolódás a HDInsight (Apache Hadoop) az SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és az [SSH-alagút használata a Ambari webes felhasználói felület, a JobHistory, a NameNode, az Apache Oozie és más webes felület eléréséhez](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
  
@@ -77,7 +77,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 1. Nyissa meg a **SparkCore_wasbloTest** parancsfájlt, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **"[Spark Job] xxx"** parancsot a helyi Futtatás végrehajtásához.
 1. A helyi Futtatás befejezése után a kimeneti fájl mentése a jelenlegi **Project Explorer** > - **__adatalapértelmezett__** értékre.
 
-    ![Helyi Futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
+    ![Helyi Futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 1. Az eszközök a helyi Futtatás és a helyi hibakeresés végrehajtásakor automatikusan beállították az alapértelmezett helyi futtatási konfigurációt. A jobb felső sarokban található **[Spark on HDInsight] XXX** megnyitásával megtekintheti a **[Spark on HDInsight] XXX** -t, amelyet a **HDInsight**-ben már Apache Spark létrehoztak. Váltson a **helyi Futtatás** lapra.
 
     ![Helyi futtatási konfiguráció](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
@@ -114,13 +114,11 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 
 1. A konfigurációk beállításainak elvégzése után futtathatja a projektet a távoli fürtön, vagy távoli hibakeresést végezhet.
    
-   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
+   ![Távoli Futtatás gomb](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
 1. Kattintson a **Leválasztás** gombra, hogy a beküldési naplók ne jelenjenek meg a bal oldali panelen. Azonban továbbra is fut a háttérön.
 
-   ![Távoli Futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
-
-
+   ![Távoli Futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ### <a name="scenario-2-perform-remote-debugging"></a>2\. forgatókönyv: Távoli hibakeresés végrehajtása
 1. Állítsa be a törési pontokat, majd kattintson a **távoli hibakeresés** ikonra. A távoli beküldéssel való különbség az, hogy az SSH-felhasználónevet/jelszót be kell állítani.
@@ -140,7 +138,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 
    ![Dobási hiba](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png) 
 
-1. Válassza újra a **program folytatása** ikont. A **HDInsight Spark beküldési** ablakában a "sikertelen feladatok futtatása" hibaüzenet jelenik meg.
+1. Válassza újra a **program folytatása** ikont. A **HDInsight Spark** beküldési ablakában a "sikertelen feladatok futtatása" hibaüzenet jelenik meg.
 
    ![Hiba küldése](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png) 
 
@@ -148,7 +146,7 @@ A hiba elhárításához [töltse le a végrehajtható fájlt](https://public-re
 
 1. Kattintson a jobb gombbal a cél elemre a **hibakeresés** lapon, majd válassza az **érték beállítása**lehetőséget. Ezután adjon meg egy új értéket a változóhoz. Ezután válassza az **ENTER billentyűt** az érték mentéséhez. 
 
-   ![Érték beállítása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Érték beállítása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
 1. Válassza a **program folytatása** ikont a program futtatásának folytatásához. Ezúttal egyetlen kivétel sem kerül kifogásra. Láthatja, hogy a projekt kivételek nélkül fut sikeresen.
 

@@ -1,6 +1,6 @@
 ---
 title: 'A Visual Interface példa #1: regresszió az ár előrejelzéséhez'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan hozhat létre gépi tanulási modellt az autó árának előrejelzéséhez egyetlen sor kód írása nélkül.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 0c86955e0b10111bf9b6db0d884b73867a4467c5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4d41efcaeb93c0843686f9e8ef1b62da5367e071
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990410"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996540"
 ---
 # <a name="sample-1---regression-predict-price"></a>1\. példa – regresszió: Ár előrejelzése
 
@@ -48,7 +48,7 @@ Ebben a kísérletben az UCI Machine Learning adattárból származó **Automobi
 
 ## <a name="pre-process-the-data"></a>Az adatfeldolgozás előkezelése
 
-A fő adat-előkészítési feladatok közé tartozik az adatok tisztítása, az integráció, az átalakítás, a csökkentés és a diszkretizálási vagy a kvantálás. A vizualizációs felületen a bal oldali panelen található Adatátalakítási csoportban található modulok segítségével elvégezheti ezeket a műveleteket , valamint az egyéb adatfeldolgozás előtti feladatokat.
+A fő adat-előkészítési feladatok közé tartozik az adatok tisztítása, az integráció, az átalakítás, a csökkentés és a diszkretizálási vagy a kvantálás. A vizualizációs felületen a bal oldali panelen található **Adatátalakítási** csoportban található modulok segítségével elvégezheti ezeket a műveleteket, valamint az egyéb adatfeldolgozás előtti feladatokat.
 
 Az adatkészlet kiválasztása modulban az **oszlopok kijelölése** lehetőséggel kizárhatja azokat a normalizált veszteségeket, amelyek sok hiányzó értéket tartalmaznak. Ezután tiszta, **hiányzó adatok** használatával távolítsa el a hiányzó értékeket tartalmazó sorokat. Ez segít a betanítási adathalmazok tiszta készletének létrehozásában.
 
@@ -66,13 +66,13 @@ Az **adatok felosztása** modul használatával véletlenszerűen osztjuk meg a 
 
  Feldaraboljuk az adatkészletet, és különböző adatkészleteket használunk a modell betanításához és teszteléséhez, hogy a modell kiértékelése nagyobb legyen.
 
-A modell betanítása után a **pontszám modellt** használjuk, és kiértékeljük a **modell** moduljait az előre jelzett eredmények létrehozásához és a modellek kiértékeléséhez.
+A modell betanítása után a **pontszám modellt** használjuk, és **kiértékeljük a modell** moduljait az előre jelzett eredmények létrehozásához és a modellek kiértékeléséhez.
 
 A **score Model** a betanított modell használatával generál előrejelzéseket a teszt adatkészlethez. Az eredmény ellenőrzéséhez válassza ki a **pontszám modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
 
 ![Pontszám eredménye](./media/ui-sample-regression-predict-automobile-price-basic/score-result.png)
 
-Ezután átadjuk a pontszámokat a **modell** kiértékelése modulhoz az értékelési mérőszámok létrehozásához. Az eredmény ellenőrzéséhez válassza ki a kiértékelési **modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
+Ezután átadjuk a pontszámokat a **modell kiértékelése** modulhoz az értékelési mérőszámok létrehozásához. Az eredmény ellenőrzéséhez válassza ki a **kiértékelési modell** kimeneti portját, majd válassza a **Megjelenítés**lehetőséget.
 
 ![Eredmény kiértékelése](./media/ui-sample-regression-predict-automobile-price-basic/evaluate-result.png)
 

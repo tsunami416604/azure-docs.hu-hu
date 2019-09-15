@@ -1,6 +1,6 @@
 ---
 title: 'Visual Interface példa #3: Besorolás a hitelkockázat előrejelzéséhez'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 7565f94910d0e926682a72af42b02059fe7295ea
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 26e3f5f237cdd148d12f0a413eb97ed52cb84b49
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990054"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997041"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>3\. példa – besorolás: Hitelkockázat előrejelzése
 
-Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával. Ez a példa egy kétosztályos, Kiemelt **döntési fát** mutat be a hitelkockázat (magas vagy alacsony) alapján történő jóváírásra, például a kreditek előzményeire, az életkorra és a hitelkártyák számára.
+Megtudhatja, hogyan hozhat létre egy gépi tanulási osztályozó anélkül, hogy egyetlen sor kódot kellene írnia a vizualizáció felületének használatával. Ez a példa egy **kétosztályos, Kiemelt döntési fát** mutat be a hitelkockázat (magas vagy alacsony) alapján történő jóváírásra, például a kreditek előzményeire, az életkorra és a hitelkártyák számára.
 
 Mivel megpróbáljuk választ adni a "melyik?" kérdésre? ezt besorolási problémanak nevezzük. Ugyanakkor ugyanezen alapvető eljárást alkalmazhatja bármilyen gépi tanulási probléma megoldásához, legyen szó a regresszióról, a besorolásról, a fürtözésről és így tovább.
 
@@ -51,10 +51,10 @@ A kísérletet a következő lépésekkel hozhatja létre:
 1. Húzza a német hitelkártya UCI adathalmaz modult a kísérlet vásznon.
 1. Vegyen fel egy **metaadatok szerkesztése** modult, hogy minden oszlophoz hozzá lehessen adni az értelmes neveket.
 1. A képzési és tesztelési készletek létrehozásához vegyen fel egy **felosztott adat** -modult. Állítsa az első kimeneti adatkészletben lévő sorok töredékét 0,7-re. Ezzel a beállítással megadható, hogy az adatok 70%-a a modul bal oldali portjára, a többi pedig a megfelelő portra kerüljön. A bal oldali adatkészletet a képzéshez és a megfelelő teszteléshez használjuk.
-1. Vegyen fel egy kétosztályos, növelt döntési faszerkezetet a megnövelt döntési fa besorolásának inicializálásához.
+1. Vegyen fel egy **kétosztályos, növelt döntési faszerkezetet** a megnövelt döntési fa besorolásának inicializálásához.
 1. Vegyen fel egy **Train Model** -modult. Kapcsolja össze az osztályozó az előző lépésből a **vonat modell**bal oldali bemeneti portjába. Adja hozzá a betanítási készletet (a **felosztott adatok**bal oldali kimeneti portját) a **vonat modell**megfelelő bemeneti portjához. A **betanítási modell** az osztályozó tanítását fogja képezni.
 1. Vegyen fel egy **pontszám-modell** modult, és kapcsolódjon hozzá a **Train Model** modulhoz. Ezután adja hozzá a tesztelési készletet (a **felosztott**adatmennyiség megfelelő portját) a **pontszám modellhez**. A **pontszám modell** az előrejelzéseket fogja végezni. Kiválaszthatja a kimeneti portját a jóslatok és a pozitív osztály valószínűségének megtekintéséhez.
-1. Adja hozzá a **modell** kiértékelése modult, és kapcsolja össze a mutatós adatkészletet a bal oldali bemeneti portjával. A kiértékelés eredményeinek megtekintéséhez válassza ki a **modell** kiértékelése modul kimeneti portját, és válassza a **Megjelenítés**lehetőséget.
+1. Adja hozzá a **modell kiértékelése** modult, és kapcsolja össze a mutatós adatkészletet a bal oldali bemeneti portjával. A kiértékelés eredményeinek megtekintéséhez válassza ki a **modell kiértékelése** modul kimeneti portját, és válassza a **Megjelenítés**lehetőséget.
 
 Itt látható a teljes kísérleti gráf:
 

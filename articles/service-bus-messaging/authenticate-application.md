@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 0860b1d621d2df5f371638bb48a03fdd8474d12d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014541"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996993"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
 Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
 
- 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. 
+ 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent `https://servicebus.azure.net`kérő erőforrás neve.
  1. Ezután a jogkivonat a Service Bus szolgáltatásnak küldött kérelem részeként a megadott erőforráshoz való hozzáférés engedélyezéséhez lesz átadva.
 
 A hitelesítési lépés megköveteli, hogy egy alkalmazás-kérelem OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Function-alkalmazáson belül fut, akkor a felügyelt identitás használatával férhet hozzá az erőforrásokhoz. Ha meg szeretné tudni, hogyan hitelesítheti a felügyelt identitás által küldött kéréseket Service Bus szolgáltatásra, tekintse meg a [Azure Service Bus erőforrásokhoz való hozzáférés hitelesítése Azure Active Directory és felügyelt identitások Azure-erőforrásokhoz](service-bus-managed-service-identity.md)című témakört. 
@@ -34,10 +34,10 @@ A Service Busra irányuló kérelmeket használó natív alkalmazások és webal
 ## <a name="assigning-rbac-roles-for-access-rights"></a>RBAC-szerepkörök kiosztása hozzáférési jogosultságokhoz
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Azure Service Bus olyan beépített RBAC-szerepköröket határoz meg, amelyek a Service Bus entitások eléréséhez használt engedélyek közös készleteit foglalják magukban, és egyéni szerepköröket is meghatározhat az adatokhoz való hozzáféréshez.
 
-Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt [identitás az Azure](../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz.
+Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés az előfizetés, az erőforráscsoport vagy a Service Bus névtér szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>A Azure Service Bus beépített RBAC szerepkörei
-Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés* -vezérlési (RBAC) modell használatával. Az Azure az alábbi beépített RBAC szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
+Azure Service Bus esetében a névterek és az összes kapcsolódó erőforrás a Azure Portal és az Azure Resource Management API segítségével való kezelése már védett a *szerepköralapú hozzáférés-vezérlési* (RBAC) modell használatával. Az Azure az alábbi beépített RBAC szerepköröket biztosítja a Service Bus névtérhez való hozzáférés engedélyezéséhez:
 
 - [Azure Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Engedélyezi Service Bus névtér és az entitások (várólisták, témakörök, előfizetések és szűrők) elérését.
 - [Azure Service Bus adatfeladó](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Ezzel a szerepkörrel hozzáférést biztosíthat a Service Bus névtérhez és a hozzá tartozó entitásokhoz.
@@ -56,7 +56,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforr
 > [!NOTE]
 > Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 
-További információ a beépített szerepkörök meghatározásáról: a szerepkör-definíciók [ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../role-based-access-control/custom-roles.md)című témakört.
+További információ a beépített szerepkörök meghatározásáról: a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../role-based-access-control/custom-roles.md)című témakört.
 
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>RBAC szerepkörök kiosztása a Azure Portal használatával  
@@ -70,7 +70,7 @@ Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navi
 1. A [Azure Portal](https://portal.azure.com/)navigáljon a Service Bus-névtérhez. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget a névtér hozzáférés-vezérlési beállításainak megjelenítéséhez. Ha Service Bus névteret kell létrehoznia, kövesse a cikk utasításait: [Hozzon létre egy Service Bus üzenetküldési névteret](service-bus-create-namespace-portal.md).
 
     ![Access Control kiválasztása a bal oldali menüben](./media/authenticate-application/select-access-control-menu.png)
-1. Válassza ki a **szerepkör** -hozzárendelések lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
+1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
 
     ![Hozzáadás gomb az eszköztáron](./media/authenticate-application/role-assignments-add-button.png)
 1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:
@@ -83,7 +83,7 @@ Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navi
         
         ![A listában szereplő felhasználó](./media/authenticate-application/user-in-list.png)
 
-A hasonló lépések végrehajtásával hozzárendelhet egy olyan szerepkört, amely egy erőforráscsoporthoz vagy egy előfizetéshez tartozik. A szerepkör és a hozzá tartozó hatókör meghatározása után tesztelheti ezt a viselkedést a [githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)található mintákkal.
+A hasonló lépések végrehajtásával hozzárendelhet egy olyan szerepkört, amely egy erőforráscsoporthoz vagy egy előfizetéshez tartozik. A szerepkör és a hozzá tartozó hatókör meghatározása után tesztelheti ezt a viselkedést a [githubon található mintákkal](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl).
 
 
 ## <a name="authenticate-from-an-application"></a>Hitelesítés egy alkalmazásból
@@ -133,10 +133,10 @@ Ha az alkalmazás egy konzolos alkalmazás, regisztrálnia kell egy natív alkal
 ### <a name="client-libraries-for-token-acquisition"></a>Az ügyfél kódtárai a tokenek beszerzéséhez  
 Miután regisztrálta az alkalmazást, és engedélyezte az engedélyek küldését és fogadását Azure Service Busban, programkódot adhat hozzá az alkalmazáshoz egy rendszerbiztonsági tag hitelesítéséhez és a OAuth 2,0 token beszerzéséhez. A jogkivonat hitelesítéséhez és beszerzéséhez használhatja a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md) egyikét vagy egy olyan nyílt forráskódú függvénytárat, amely támogatja az OpenID vagy a Connect 1,0-et. Az alkalmazás ezután a hozzáférési token használatával engedélyezheti a kérelmeket Azure Service Bus.
 
-A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft Authentication Library (MSAL) a .net GitHub-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) adattárhoz című szakaszában találja. [](https://aka.ms/msal-net-scenarios)
+A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft Authentication Library (MSAL) a .net GitHub-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) adattárhoz [című szakaszában találja](https://aka.ms/msal-net-scenarios) .
 
 ## <a name="sample-on-github"></a>Minta a GitHubon
-Tekintse meg a következő mintát a GitHubon: [A Service Bus szerepköralapú hozzáférés](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)-vezérlése. 
+Tekintse meg a következő mintát a GitHubon: [A Service Bus szerepköralapú hozzáférés-vezérlése](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 Használja az **ügyfél titkos bejelentkezési** beállítását, ne pedig az **interaktív felhasználói bejelentkezés** lehetőséget. Ha az ügyfél titkos kulcsát használja, nem jelenik meg egy előugró ablak. Az alkalmazás a bérlő AZONOSÍTÓját és az alkalmazás AZONOSÍTÓját használja a hitelesítéshez. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 36f70ebaaf3fe6d841ef700561bbd6a200366c84
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563873"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996249"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban (előzetes verzió)
 
@@ -32,16 +32,20 @@ A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és 
 
 A kombinált szolgáltatás a következőket biztosítja:
 
-* A tárolási szolgáltatás vagy az API-művelet állapota alapján a rendelkezésre állás pillanatképét bemutató méretezési perspektívában a kihasználtság a tárolási szolgáltatás által fogadott kérelmek teljes számát, valamint az átlagos időpontot jelző késést mutatja. a tárolási szolgáltatás vagy az API-művelet típusa folyamatban van a kérelmek feldolgozásához. A kapacitást blob, fájl, tábla és üzenetsor alapján is megtekintheti.
+* A tárolási szolgáltatás vagy az API-művelet állapota alapján a rendelkezésre állás pillanatképét bemutató **méretezési perspektívában** a kihasználtság a tárolási szolgáltatás által fogadott kérelmek teljes számát, valamint az átlagos időpontot jelző késést mutatja. a tárolási szolgáltatás vagy az API-művelet típusa folyamatban van a kérelmek feldolgozásához. A kapacitást blob, fájl, tábla és üzenetsor alapján is megtekintheti.
 
-* Egy adott Storage-fiók elemzésének részletezése a problémák diagnosztizálásához, illetve a kategóriánkénti rendelkezésre állás, a teljesítmény, a hibák és a kapacitások részletes elemzéséhez. Bármelyik lehetőség kiválasztásával részletesen áttekintheti a metrikákat.  
+* Egy adott Storage-fiók **elemzésének részletezése** a problémák diagnosztizálásához, illetve a kategóriánkénti rendelkezésre állás, a teljesítmény, a hibák és a kapacitások részletes elemzéséhez. Bármelyik lehetőség kiválasztásával részletesen áttekintheti a metrikákat.  
 
 * **Testreszabható** , ahol megváltoztathatja, hogy mely metrikákat szeretné megtekinteni, módosítani vagy beállítani a határértékekhez igazított küszöbértékeket, és a mentést saját munkafüzetként. A munkafüzetben található diagramok az Azure-irányítópulton rögzíthetők.  
 
-Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, a Storage-fiókokból származó tárolási metrikák alapértelmezés szerint lesznek gyűjtve. Ha nem ismeri az Azure Storage-ban elérhető metrikákat, tekintse meg az Azure Storage-metrikák leírását és definícióját az [Azure Storage](../../storage/common/storage-metrics-in-azure-monitor.md)-metrikák áttekintésével.
+Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, a Storage-fiókokból származó tárolási metrikák alapértelmezés szerint lesznek gyűjtve. Ha nem ismeri az Azure Storage-ban elérhető metrikákat, tekintse meg az Azure Storage-metrikák leírását és definícióját az [Azure Storage-metrikák](../../storage/common/storage-metrics-in-azure-monitor.md)áttekintésével.
 
 >[!NOTE]
 >A szolgáltatáshoz való hozzáférés díjmentes, és a [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapon leírtak szerint csak az Ön által konfigurált vagy engedélyezett Azure monitor alapvető funkciókért kell fizetnie.
+
+>[!NOTE]
+>A tárolóhoz Azure Monitor nem támogatja az [általános célú v1-fiókokat](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
+>
 
 ## <a name="view-from-azure-monitor"></a>Nézet Azure Monitor
 
@@ -51,15 +55,15 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és rendelkezésr
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az áttekintések szakaszban válassza a **Storage-fiókok (előzetes verzió)** lehetőséget.
+2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az **áttekintések** szakaszban válassza a **Storage-fiókok (előzetes verzió)** lehetőséget.
 
     ![Több Storage-fiók nézet](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
 ### <a name="overview-workbook"></a>Áttekintő munkafüzet
 
-A kiválasztott előfizetéshez tartozó áttekintő munkafüzetben a tábla interaktív tárolási metrikákat és szolgáltatás rendelkezésre állási állapotát jeleníti meg legfeljebb 10 Storage-fiókhoz az előfizetésben. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
+A kiválasztott előfizetéshez tartozó **áttekintő** munkafüzetben a tábla interaktív tárolási metrikákat és szolgáltatás rendelkezésre állási állapotát jeleníti meg legfeljebb 10 Storage-fiókhoz az előfizetésben. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
 
-* Előfizetések – csak a Storage-fiókkal rendelkező előfizetések jelennek meg.  
+* **Előfizetések** – csak a Storage-fiókkal rendelkező előfizetések jelennek meg.  
 
 * **Storage-fiókok** – alapértelmezés szerint a 10 Storage-fiók előre ki van választva. Ha a hatókör-választóban az összes vagy több Storage-fiókot választja, a rendszer legfeljebb 200 Storage-fiókot ad vissza. Ha például összesen 573 Storage-fiókkal rendelkezett a kiválasztott három előfizetésben, csak 200-fiókok jelennek meg. 
 
@@ -81,13 +85,13 @@ Ha meg szeretné határozni a rendelkezésre állási küszöbértéket a megfig
 
 ### <a name="capacity-workbook"></a>Kapacitás munkafüzet
 
-Válassza ki a kapacitást a lap tetején, és megnyílik a **kapacitás** munkafüzet. Azt mutatja, hogy a fiókban használt összes tárterület, valamint a fiókban lévő egyes adatszolgáltatások által használt kapacitás mennyisége a használaton kívüli és a felhasznált tárolók azonosításának megkönnyítésére szolgál.
+Válassza ki a **kapacitást** a lap tetején, és megnyílik a **kapacitás** munkafüzet. Azt mutatja, hogy a fiókban használt összes tárterület, valamint a fiókban lévő egyes adatszolgáltatások által használt kapacitás mennyisége a használaton kívüli és a felhasznált tárolók azonosításának megkönnyítésére szolgál.
 
 ![Több Storage-fiók kapacitása munkafüzet](./media/storage-insights-overview/storage-account-capacity-02.png) 
 
 A munkafüzet oszlopaihoz feltételes színkódolás vagy intenzitástérképei van, amely kék értékű kapacitási metrikákat jelent. A legmélyebb szín a legmagasabb és a világosabb szín a legalacsonyabb értékeken alapul.
 
-Amikor kiválaszt egy értéket a munkafüzet egyik oszlopában, a Storage-fiók kapacitási munkafüzetét részletezi . A részletezési jelentéssel kapcsolatos további részletekért lásd az alábbi [részletes tárolási munkafüzetek](#detailed-storage-workbooks) szakaszt. 
+Amikor kiválaszt egy értéket a munkafüzet egyik oszlopában, a Storage-fiók **Kapacitási** munkafüzetét részletezi. A részletezési jelentéssel kapcsolatos további részletekért lásd az alábbi [részletes tárolási munkafüzetek](#detailed-storage-workbooks) szakaszt. 
 
 ## <a name="view-from-a-storage-account"></a>Megtekintés egy Storage-fiókból
 
@@ -99,7 +103,7 @@ Azure Monitor for VMs közvetlenül egy Storage-fiókból való elérése:
 
     ![Kiválasztott Storage-fiók – Áttekintés lap](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
-A Storage -fiók áttekintő munkafüzetében számos tárolási teljesítménymutató látható, amelyek segítségével gyorsan elemezheti a következőket:
+A Storage-fiók **áttekintő** munkafüzetében számos tárolási teljesítménymutató látható, amelyek segítségével gyorsan elemezheti a következőket:
 
 * A tárolási szolgáltatás állapota azonnal kiderül, hogy a vezérlőn kívüli probléma hatással van-e a tárolási szolgáltatásra abban a régióban, amelyre a rendszer telepíti, amely az **Összefoglalás** oszlopban szerepel.
 
@@ -113,7 +117,7 @@ A **hibák**, a **teljesítmény**, a **rendelkezésre állás**és a **kapacit�
 
 ## <a name="detailed-storage-workbooks"></a>Részletes tárolási munkafüzetek
 
-Azt jelzi, hogy az oszlopok **rendelkezésre állása**, **a E2E késése**, a **kiszolgáló késése**és a tranzakciós **hiba típusa/hibái** a több Storage-fiók áttekintő munkafüzetében vannak-e megadva, vagy bármelyik gomb kiválasztásával A **hibák**, a **teljesítmény**, a **rendelkezésre állás**és a **kapacitás** egy adott Storage-fiókból származó áttekintő munkafüzetből, amelyek mindegyike az adott kategóriára szabott, interaktív tárterülettel kapcsolatos információt szolgáltat.  
+Azt jelzi, hogy az oszlopok **rendelkezésre állása**, a **E2E késése**, a **kiszolgáló késése**és a **tranzakciós hiba típusa/hibái** a több Storage-fiók **áttekintő** munkafüzetében vannak-e megadva, vagy bármelyik gomb kiválasztásával A **hibák**, a **teljesítmény**, a **rendelkezésre állás**és a **kapacitás** egy adott Storage-fiókból származó **áttekintő** munkafüzetből, amelyek mindegyike az adott kategóriára szabott, interaktív tárterülettel kapcsolatos információt szolgáltat.  
 
 * A **rendelkezésre állás** megnyitja a **rendelkezésre állási** munkafüzetet. Megjeleníti az Azure Storage szolgáltatás aktuális állapotát, amely egy tábla, amely a Storage-fiókban definiált adatszolgáltatás által kategorizált egyes objektumok rendelkezésre állási állapotát jeleníti meg egy, a kiválasztott időtartományt jelképező trendvonal és a rendelkezésre állási trend diagram a fiók minden adatszolgáltatása.  
 
@@ -156,13 +160,13 @@ A testreszabásokat egy egyéni munkafüzetbe menti a rendszer, hogy megakadály
 
 ### <a name="specifying-a-subscription-or-storage-account"></a>Előfizetés-vagy Storage-fiók meghatározása
 
-A több előfizetés és a Storage-fiók áttekintését , illetve a **kapacitás** -munkafüzetek hatókörét beállíthatja egy adott előfizetéshez vagy a Storage-fiókhoz minden futtatáskor, és végrehajthatja a következő lépéseket.
+A több előfizetés és a Storage-fiók **áttekintését** , illetve a **kapacitás** -munkafüzetek hatókörét beállíthatja egy adott előfizetéshez vagy a Storage-fiókhoz minden futtatáskor, és végrehajthatja a következő lépéseket.
 
 1. Válassza a **figyelő** lehetőséget a portálon, majd válassza ki a **Storage-fiókok (előzetes verzió)** elemet a bal oldali ablaktáblán.
 
 2. Az **Áttekintés** munkafüzet parancssáv területén válassza a **Szerkesztés**lehetőséget.
 
-3. Válasszon az előfizetések legördülő listából egy vagy több olyan előfizetést, amelyet alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 10 előfizetés kiválasztását támogatja.  
+3. Válasszon az **előfizetések** legördülő listából egy vagy több olyan előfizetést, amelyet alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 10 előfizetés kiválasztását támogatja.  
 
 4. Válassza ki a **Storage-fiókok** legördülő lista egy vagy több olyan fiókját, amelyet alapértelmezettként szeretne használni. Ne feledje, hogy a munkafüzet összesen 200 Storage-fiók kiválasztását támogatja. 
 
@@ -181,7 +185,7 @@ Ugyanazokat a módosításokat hajthatja végre az előre elkészített **hibák
 
 1. Válassza a **figyelő** lehetőséget a portálon, majd válassza ki a **Storage-fiókok (előzetes verzió)** elemet a bal oldali ablaktáblán.
 
-2. Válassza ki a kapacitást a kapacitás munkafüzetre való váltáshoz és a parancssorból válassza a **Szerkesztés** elemet a parancssorból.
+2. Válassza **ki a** kapacitást a kapacitás munkafüzetre való váltáshoz és a parancssorból válassza a **Szerkesztés** elemet a parancssorból.
 
     ![A munkafüzet módosításához válassza a szerkesztés lehetőséget.](./media/storage-insights-overview/workbook-edit-workbook.png)
 
@@ -189,11 +193,11 @@ Ugyanazokat a módosításokat hajthatja végre az előre elkészített **hibák
 
     ![A kapacitás munkafüzet metrikáinak módosításához válassza a szerkesztés lehetőséget.](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
-4. El fogjuk távolítani a **fiókhoz használt kapacitás** idővonalának oszlopát, ezért a mérőszámok rácson válassza az **oszlop beállításai** lehetőséget.
+4. El fogjuk távolítani a **fiókhoz használt kapacitás idővonalának** oszlopát, ezért a mérőszámok rácson válassza az **oszlop beállításai** lehetőséget.
 
     ![Oszlopbeállítások szerkesztése](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/Storageaccounts-Capacity-UsedCapacity Timeline $ lehetőséget. A fiók**felhasználta a kapacitás idővonalát $, és a legördülő lista **oszlopainak megjelenítéséhez** válassza a **rejtett**lehetőséget. 
+5. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/Storageaccounts-Capacity-UsedCapacity Timeline $ lehetőséget. A fiók felhasználta a kapacitás idővonalát $** , és a legördülő lista **oszlopainak megjelenítéséhez** válassza a **rejtett**lehetőséget. 
 
 6. A módosítás véglegesítéhez válassza a **Mentés és bezárás** lehetőséget.
 
@@ -201,7 +205,7 @@ Most változtassuk meg a jelentés kapacitási metrikáinak színtémáját, hog
 
 1. Válassza ki az **oszlop beállításait** a metrikák rácsban.
 
-2. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-Capacity-BlobCapacity $ | Microsoft. Storage/ storageaccounts/fileservices-Capacity-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $** . A legördülő lista színpalettáján válassza a **zöld**lehetőséget.
+2. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-Capacity-BlobCapacity $ | Microsoft. Storage/ storageaccounts/fileservices-Capacity-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $** . A legördülő lista **színpalettáján**válassza a **zöld**lehetőséget.
 
 3. A módosítás véglegesítéhez válassza a **Mentés és bezárás** lehetőséget.
 
@@ -209,9 +213,9 @@ Most változtassuk meg a jelentés kapacitási metrikáinak színtémáját, hog
 
 ### <a name="modify-the-availability-threshold"></a>A rendelkezésre állási küszöbérték módosítása
 
-Ebben a példában a Storage-fiók kapacitása munkafüzettel dolgozunk, és bemutatjuk, hogyan módosítható a rendelkezésre állási küszöbérték. Alapértelmezés szerint a csempe és a rács jelentési százalékának rendelkezésre állása a 90-as és a 99-os küszöbértéket tartalmazó minimális küszöbértékkel van konfigurálva. A rendelkezésre állási százalék minimális küszöbértékét a rendelkezésre állás **%-ában** , az **API** -k és a 85% közötti értékre változtatjuk, ami azt jelenti, hogy az állapot kritikusra változik, ha a küszöbérték kevesebb, mint 85 százalék. 
+Ebben a példában a Storage-fiók kapacitása munkafüzettel dolgozunk, és bemutatjuk, hogyan módosítható a rendelkezésre állási küszöbérték. Alapértelmezés szerint a csempe és a rács jelentési százalékának rendelkezésre állása a 90-as és a 99-os küszöbértéket tartalmazó minimális küszöbértékkel van konfigurálva. A rendelkezésre **állási százalék** minimális küszöbértékét a rendelkezésre állás%-ában, az **API** -k és a 85% közötti értékre változtatjuk, ami azt jelenti, hogy az állapot kritikusra változik, ha a küszöbérték kevesebb, mint 85 százalék. 
 
-1. Válassza ki a **Storage** -fiókokat a portálon, majd válasszon ki egy Storage-fiókot a listából.
+1. Válassza ki a **Storage-fiókokat** a portálon, majd válasszon ki egy Storage-fiókot a listából.
 
 2. A bal oldali ablaktáblán válassza az adatok **(előzetes verzió)** lehetőséget.
 

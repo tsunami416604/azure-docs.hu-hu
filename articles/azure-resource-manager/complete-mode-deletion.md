@@ -4,14 +4,14 @@ description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes m�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 268f6b7f3e7462986e6289088a0716794dc832f1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983967"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995268"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -154,6 +154,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -668,7 +669,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | AggregatedCost | Nem |
 > | Egyenlegek | Nem |
-> | Költségkeret | Nem |
+> | Költségvetések | Nem |
 > | Díjak | Nem |
 > | CostTags | Nem |
 > | hitelek | Nem |
@@ -737,7 +738,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazás | Igen |
+> | alkalmazások | Igen |
 > | updateCommunicationPreference | Nem |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
@@ -754,7 +755,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Riasztások | Nem |
 > | billingAccounts | Nem |
-> | Költségkeret | Nem |
+> | Költségvetések | Nem |
 > | CloudConnectors | Nem |
 > | Összekötők | Igen |
 > | Részlegek | Nem |
@@ -1209,7 +1210,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | labaccounts | Igen |
-> | felhasználó | Nem |
+> | Felhasználók | Nem |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1625,7 +1626,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazás | Igen |
+> | alkalmazások | Igen |
 > | saasresources | Nem |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
@@ -1732,7 +1733,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazás | Igen |
+> | alkalmazások | Igen |
 > | fürtök | Igen |
 > | fürtök/alkalmazások | Nem |
 > | containerGroups | Igen |
@@ -1750,7 +1751,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazás | Igen |
+> | alkalmazások | Igen |
 > | containerGroups | Igen |
 > | átjárók | Igen |
 > | hálózatok | Igen |
@@ -1794,7 +1795,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | applicationDefinitions | Igen |
-> | alkalmazás | Igen |
+> | alkalmazások | Igen |
 > | jitRequests | Igen |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -1822,6 +1823,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | servers/restorableDroppedDatabases | Nem |
 > | kiszolgálók/serviceobjectives | Nem |
 > | kiszolgálók/tdeCertificates | Nem |
+> | virtualClusters | Nem |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -1964,7 +1966,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kapcsolatok | Igen |
 > | customApis | Igen |
 > | deletedSites | Nem |
-> | functions | Nem |
+> | függvény | Nem |
 > | hostingEnvironments | Igen |
 > | hostingEnvironments/multiRolePools | Nem |
 > | hostingEnvironments/workerPools | Nem |

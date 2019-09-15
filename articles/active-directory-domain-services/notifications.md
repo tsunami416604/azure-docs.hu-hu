@@ -1,102 +1,89 @@
 ---
-title: 'Az Azure Active Directory tartományi szolgáltatások: Értesítési beállítások |} A Microsoft Docs'
-description: Értesítési beállítások az Azure AD tartományi szolgáltatásokhoz
+title: E-mail-értesítések a Azure AD Domain Serviceshoz | Microsoft Docs "
+description: Megtudhatja, hogyan konfigurálhatja az e-mail-értesítéseket egy Azure Active Directory Domain Services felügyelt tartomány problémáinak riasztására
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: a89b13d40f4eea08ecdb0f1eb8d68d1a146aca2b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472798"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993136"
 ---
-# <a name="notification-settings-in-azure-ad-domain-services"></a>Értesítési beállítások az Azure AD tartományi szolgáltatásokban
+# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
-Az Azure AD tartományi szolgáltatásokhoz értesítések frissíteni kell a lehető legrövidebb időn belül a felügyelt tartományra a Szolgáltatásállapot-riasztás észlelt a rendszer teszi lehetővé.  
+Egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány állapotát az Azure platform figyeli. A Azure Portal állapot lapja a felügyelt tartományra vonatkozó riasztásokat jeleníti meg. Annak biztosítása érdekében, hogy a problémák időben megválaszolva legyenek, az e-mail-értesítések beállíthatók úgy, hogy az Azure AD DS felügyelt tartományban észlelt állapotú riasztásokat azonnal jelentsenek.
 
-Ez a funkció csak a felügyelt tartományok, amelyek nem klasszikus virtuális hálózatokon érhető el.
+Ez a cikk bemutatja, hogyan konfigurálhatja az e-mailes értesítés címzettjeit egy Azure AD DS felügyelt tartományhoz.
 
+## <a name="email-notification-overview"></a>Értesítő e-mail – áttekintés
 
-## <a name="how-to-check-your-azure-ad-domain-services-email-notification-settings"></a>Az Azure AD tartományi szolgáltatások e-mail értesítési beállítások ellenőrzése
+Az Azure AD DS felügyelt tartományával kapcsolatos problémák elhárításához beállíthatja az e-mailes értesítéseket. Ezek az e-mail-értesítések határozzák meg az Azure AD DS felügyelt tartományt, amelyen a riasztás megtalálható, valamint az észlelés időpontját és a Azure Portal állapot lapjára mutató hivatkozást. A problémák elhárításához kövesse a megadott hibaelhárítási tanácsokat.
 
-1. Keresse meg a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon
-2. Válassza ki a felügyelt tartományra a táblázatból
-3. A bal oldali navigációs sávján válassza **értesítési beállítások**
+A következő példa az e-mail-értesítésre kritikus figyelmeztetést vagy riasztást generált az Azure AD DS felügyelt tartományon:
 
-A lapon azt sorolja fel az át az e-mail címzett e-mail-értesítések az Azure AD tartományi szolgáltatásokhoz.
-
-## <a name="what-does-an-email-notification-look-like"></a>Milyen kinéznie e-mailben értesítést?
-
-A következő képen látható a következő e-mail-értesítés egy példát:
-
-![Példa e-mail-értesítés](./media/active-directory-domain-services-alerts/email-alert.png)
-
-Az e-mailben adja meg a riasztás-e a felügyelt tartomány, valamint, hogy az Azure AD tartományi szolgáltatások health-oldal az Azure Portalon az idő az észlelési és a egy hivatkozást küldjön.
+![Példa e-mail-értesítésre](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> Mindig győződjön meg arról, hogy az e-mail érkezik egy ellenőrzött Microsoft küldő előtt az e-mailek hivatkozásokra. Az e-maileket mindig származnak az e-mailben azure-noreply@microsoft.com
+> Mindig győződjön meg arról, hogy az e-mailben egy ellenőrzött Microsoft-feladó származik, mielőtt rákattint az üzenetben található hivatkozásokra. Az e-mail-értesítések mindig `azure-noreply@microsoft.com` a címről származnak.
 
+### <a name="why-would-i-receive-email-notifications"></a>Miért kapok e-mailes értesítéseket?
 
-## <a name="why-would-i-receive-email-notifications"></a>Miért szeretne email értesítéseket kapni?
+Az Azure AD DS e-mail-értesítéseket küld a felügyelt tartományra vonatkozó fontos frissítésekről. Ezek az értesítések csak olyan sürgős problémákra vonatkoznak, amelyek hatással vannak a szolgáltatásra, és azonnal foglalkozni kell. A rendszer minden e-mail-értesítést aktivál az Azure AD DS felügyelt tartományon lévő riasztásokkal. A riasztások a Azure Portal is megjelennek, és az [Azure AD DS Health (állapot) lapon][check-health]tekinthetők meg.
 
-Az Azure AD Domain Services e-mailben értesítést küld a fontos frissítéseket a tartománnyal kapcsolatban.  Ezek az értesítések csak sürgős kérdések, amely negatív hatással lesz a szolgáltatás, azonnal foglalkozzon vonatkoznak. Minden egyes e-mail értesítés által a felügyelt tartományra a riasztás aktiválódik. Ezek a riasztások az Azure Portalon is megjelenik, és meg lehet nézni az [health-oldal az Azure AD tartományi szolgáltatások](check-health.md).
+Az Azure AD DS nem küld e-maileket a hirdetményekhez, frissítésekhez vagy értékesítési célokra.
 
-Az Azure AD Domain Services nem küld e-maileket a hirdetményt, a frissítések vagy a értékesítési célra listáját.
+### <a name="when-will-i-receive-email-notifications"></a>Mikor kapom meg az e-mailes értesítéseket?
 
-## <a name="when-will-i-receive-email-notifications"></a>Amikor kap e-mail-értesítések?
+A rendszer azonnal elküld egy értesítést, amikor [új riasztást][troubleshoot-alerts] talál egy Azure AD DS felügyelt tartományon. Ha a riasztás nincs feloldva, a rendszer négy nap múlva küldi el a további e-mail-értesítéseket.
 
-Egy értesítés jelenik meg azonnal amikor egy [új riasztás](troubleshoot-alerts.md) a felügyelt tartományban található. Ha a riasztás nem szűnik meg, e-mailben értesítést küld emlékeztetőként naponta négy.
+### <a name="who-should-receive-the-email-notifications"></a>Kik kapják meg az e-mailes értesítéseket?
 
-## <a name="who-should-receive-the-email-notifications"></a>Ki kapja meg az e-mail-értesítések?
+Az Azure AD DS e-mail-címzettjeinek listáját olyan személyeknek kell tartalmaznia, akik felügyelhetik és módosíthatják a felügyelt tartományt. Az e-mail-lista a riasztások és a problémák első válaszadójának tekintendő.
 
+Az e-mailes értesítésekhez legfeljebb öt további e-mail-címzettet adhat hozzá. Ha ötnél több címzettet szeretne e-mail-értesítések küldéséhez, hozzon létre egy terjesztési listát, és vegye fel az értesítési listára.
 
- Azt javasoljuk, hogy állítható össze, akik képesek felügyelni, és hajtsa végre a módosításokat a felügyelt tartományhoz az Azure AD tartományi szolgáltatásokat az e-mailek címzettjeinek listája. Ez a lista e-mail kell értelmezhetők, az "első válaszadók" a talált hibák a. Ha több mint öt további e-mailek, amelyet szeretne hozzáadni, javasolt létrehozni egy terjesztési lista listához való hozzáadásához az értesítési helyette.
+Azt is megteheti, hogy az Azure AD-címtár minden *globális rendszergazdája* és az *HRE DC-rendszergazdák* csoport minden tagja megkapja az e-mailes értesítéseket. Az Azure AD DS csak a 100-es e-mail-címekre küld értesítést, beleértve a globális rendszergazdák és a HRE tartományvezérlő-rendszergazdák listáját is.
 
-Ön az Azure AD tartományi szolgáltatásokkal kapcsolatos értesítéseket küldenek legfeljebb öt további e-mailt adhat hozzá. Emellett akkor is választja, hogy a címtár minden globális rendszergazda, és az "AAD DC rendszergazdák" csoport minden tagja az Azure AD Domain Services email értesítéseket kapni. Az Azure AD Domain Services csak fog értesítések küldése akár 100 e-mail-címeket, beleértve a globális rendszergazdák és AAD DC rendszergazdák listáját.
+## <a name="configure-email-notifications"></a>E-mail-értesítések konfigurálása
 
+A meglévő e-mailes értesítés címzettjeinek áttekintéséhez vagy további címzettek hozzáadásához hajtsa végre a következő lépéseket:
 
-## <a name="how-to-add-an-additional-email-recipient"></a>Egy további e-mail címzett felvétele
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
+1. Válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*.
+1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **értesítési beállítások**lehetőséget. Az e-mail értesítések meglévő címzettjei jelennek meg.
+1. E-mail címzett hozzáadásához írja be az e-mail-címet a további címzettek táblába.
+1. Ha elkészült, válassza a **Mentés** lehetőséget a felső navigációs sávon.
 
 > [!WARNING]
-> Az értesítési beállítások módosítása, ha módosítja a teljes felügyelt tartományba, nem csak magát az értesítési beállításait.
-
-1. Keresse meg a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
-2. Kattintson a felügyelt tartományra.
-3. A bal oldali navigációs sávján kattintson **értesítési beállítások**.
-4. Adja hozzá az e-mailt, írja be az e-mail-címet a további címzettek táblában.
-5. Kattintson "a Mentés" a top-oldali navigációs menüben.
+> Az értesítési beállítások módosításakor a teljes Azure AD DS felügyelt tartomány értesítési beállításai frissülnek, nem csupán saját kezűleg.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-#### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>E-mail-értesítés egy riasztás érkezett, de ha jelentkezve az Azure Portalra riasztás nem létezik. Mi történt?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Értesítést kaptam a riasztásról, de amikor bejelentkezett a Azure Portal nem volt riasztás. Mi történt?
 
-Ha egy riasztás oldódik meg, a riasztás eltűnik az Azure Portalról. A legvalószínűbb oka, hogy valaki más e-mail-értesítéseket fogadó a felügyelt tartomány a riasztás feloldása, vagy az Azure AD tartományi szolgáltatások által automatikusan Megoldva volt.
+Riasztás feloldásakor a rendszer törli a riasztást a Azure Portalról. A legvalószínűbb ok az, hogy valaki más, aki e-mail-értesítéseket kap, megoldotta a riasztást az Azure AD DS felügyelt tartományon, vagy az Azure platformon keresztül lett feloldva.
 
+### <a name="why-can-i-not-edit-the-notification-settings"></a>Miért nem lehet szerkeszteni az értesítési beállításokat?
 
-#### <a name="why-can-i-not-edit-the-notification-settings"></a>Miért nem frissíthetem az értesítési beállítások?
+Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, nem rendelkezik az Azure AD DS felügyelt tartományának szerkesztéséhez szükséges engedélyekkel. Kérje meg a globális rendszergazdát, hogy kérjen engedélyt az Azure AD DS erőforrásának szerkesztésére, vagy távolítsa el a címzettek listájáról.
 
-Ha nem fér hozzá az értesítési beállítások oldal az Azure Portalon, az engedélyek szerkesztése az Azure AD Domain Services nem rendelkezik. A globális rendszergazdai vagy beolvasni az Azure AD Domain Services-erőforrások szerkesztési, vagy el kell távolítani a címzettlistából kapcsolatba kell lépnie.
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Úgy tűnik, hogy nem Fogadok e-mailes értesítéseket, bár az e-mail címem is megérkezett. Hogy miért?
 
-#### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Nincs e-mail értesítéseket kap, annak ellenére, hogy szeretnék a saját e-mail-cím megadott szerepkörömhöz. Hogy miért?
-
-Ellenőrizze a levélszemét és a Levélszemét mappát, az e-mailben, az értesítés, és ellenőrizze, hogy az engedélyezési listára a feladó (azure-noreply@microsoft.com).
+Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról `azure-noreply@microsoft.com`, hogy a küldője engedélyezte a következőt:.
 
 ## <a name="next-steps"></a>További lépések
-- [Riasztások a felügyelt tartományon](troubleshoot-alerts.md)
-- [További információ az Azure AD tartományi szolgáltatások](overview.md)
-- [Lépjen kapcsolatba a termékcsoport](contact-us.md)
 
-## <a name="contact-us"></a>Kapcsolat
-Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](contact-us.md).
+A jelentett problémák némelyikével kapcsolatos további információkért lásd: [riasztások feloldása Azure AD DS felügyelt tartományon][troubleshoot-alerts].
+
+<!-- INTERNAL LINKS -->
+[check-health]: check-health.md
+[troubleshoot-alerts]: troubleshoot-alerts.md

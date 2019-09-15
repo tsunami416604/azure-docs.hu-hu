@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 6c1104ba340f23a76d5b9b4167f895f5a115152c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 8faa6338179eb1540eb4f9a375bf3bc696c745f3
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773291"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995375"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Replikák olvasása a Azure Database for MariaDBban
 
@@ -85,7 +85,7 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
 ## <a name="monitor-replication"></a>Replikáció figyelése
 
-A Azure Database for MariaDB a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
+A Azure Database for MariaDB a **replikáció késését** a Azure monitor másodpercben mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
 
 Ezt a metrikát a `seconds_behind_master` `SHOW SLAVE STATUS` MariaDB parancsában elérhető metrika alapján számítjuk ki.
 
@@ -155,4 +155,4 @@ A [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](howto-read-replicas-cli.md)
+- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

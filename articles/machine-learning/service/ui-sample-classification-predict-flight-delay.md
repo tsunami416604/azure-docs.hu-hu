@@ -1,6 +1,6 @@
 ---
 title: 'Visual Interface példa #6: Besorolás a repülési késések előrejelzésére'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy gépi tanulási modellt a repülési késések előrejelzésére a fogd és vidd vizualizáció felület és az egyéni R-kód használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 07/02/2019
-ms.openlocfilehash: 4c0a990ae3f45fc7b08c157f180d8ecf805c24e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3d1363d24aa6e5f8875ba90513a8d9d5b951c9db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990025"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997109"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>6\. példa – besorolás: Repülési késések előrejelzése R használatával
 
@@ -63,7 +63,7 @@ A **Carrier**, a **OriginAirportID**és a **DestAirportID** oszlopok egész szá
 
 ![metaadatok szerkesztése](media/ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Ezután az adatkészlet **kijelölése oszlopban válassza** ki az adatkészletek oszlopait, amelyekkel lehetséges a szivárgások célja: **DepDelay**, **DepDel15**, **ArrDelay**,megszakítva, **év**. 
+Ezután az adatkészlet **kijelölése oszlopban válassza** ki az adatkészletek oszlopait, amelyekkel lehetséges a szivárgások célja: **DepDelay**, **DepDel15**, **ArrDelay**, **megszakítva**, **év**. 
 
 Ha a repülési rekordokat az óránkénti időjárási adatokkal szeretné csatlakoztatni, használja az ütemezett indulási időt az illesztési kulcsok egyikének megfelelően. Az illesztés végrehajtásához a CSRDepTime oszlopot a legközelebbi órára kell kerekíteni, amelyet az **R-parancsfájl végrehajtása modul hajt** végre. 
 
@@ -104,13 +104,13 @@ Modell létrehozásához használhatja az összes elérhető funkciót, vagy kiv
 
 ## <a name="choose-and-apply-a-learning-algorithm"></a>Tanulási algoritmus kiválasztása és alkalmazása
 
-Hozzon létre egy modellt a kétosztályos logisztikai regressziós modullal, és tanítsa be azt a betanítási adatkészleten. 
+Hozzon létre egy modellt a **kétosztályos logisztikai regressziós** modullal, és tanítsa be azt a betanítási adatkészleten. 
 
-A betanítási **modell** modul eredménye egy betanított besorolási modell, amely az előrejelzések készítéséhez használható új minták kiértékelésére. A test (teszt) beállítással pontokat hozhat létre a betanított modellből. Ezután használja a **modell** kiértékelése modult a modellek minőségének elemzéséhez és összehasonlításához.
+A **betanítási modell** modul eredménye egy betanított besorolási modell, amely az előrejelzések készítéséhez használható új minták kiértékelésére. A test (teszt) beállítással pontokat hozhat létre a betanított modellből. Ezután használja a **modell kiértékelése** modult a modellek minőségének elemzéséhez és összehasonlításához.
 
 A kísérlet futtatása után megtekintheti a **pontszám modell** modul kimenetét. ehhez kattintson a kimeneti portra, és válassza a **Megjelenítés**lehetőséget. A kimenet tartalmazza a pontszámmal ellátható címkéket és a címkék valószínűségét.
 
-Végül az eredmények minőségének teszteléséhez adja hozzá a **modell** kiértékelése modult a kísérlet vászonhoz, és a bal oldali bemeneti portot a pontszám modell modul kimenetéhez kapcsolja. Futtassa a kísérletet, és tekintse meg a **modell** kiértékelése modul kimenetét a kimeneti portra kattintva, és válassza a **Megjelenítés**lehetőséget.
+Végül az eredmények minőségének teszteléséhez adja hozzá a **modell kiértékelése** modult a kísérlet vászonhoz, és a bal oldali bemeneti portot a pontszám modell modul kimenetéhez kapcsolja. Futtassa a kísérletet, és tekintse meg a **modell kiértékelése** modul kimenetét a kimeneti portra kattintva, és válassza a **Megjelenítés**lehetőséget.
 
 ## <a name="evaluate"></a>Értékelés
 A logisztikai regressziós modell 0,631 AUC rendelkezik a tesztelési készleten.

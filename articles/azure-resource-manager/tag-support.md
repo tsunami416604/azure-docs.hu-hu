@@ -4,24 +4,23 @@ description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a c�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194720"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996829"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
-Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő címke jelzi, hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
+Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](resource-group-using-tags.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek.
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [tag-support. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)fájlt.
 
 Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
-> - [Microsoft. AADDomainServices](#microsoftaaddomainservices)
 > - [Microsoft. addons](#microsoftaddons)
 > - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft. Advisor](#microsoftadvisor)
@@ -29,6 +28,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. igazolás](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
@@ -62,14 +62,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataConnect](#microsoftdataconnect)
 > - [Microsoft.DataFactory](#microsoftdatafactory)
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
@@ -112,7 +110,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft. ManagedLab](#microsoftmanagedlab)
 > - [Microsoft. ManagedServices](#microsoftmanagedservices)
 > - [Microsoft. Management](#microsoftmanagement)
 > - [Microsoft. Maps](#microsoftmaps)
@@ -154,6 +151,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
@@ -179,13 +177,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | DomainServices | Igen |Igen |
 > | DomainServices/oucontainer | Nem |Nem |
 > | DomainServices/ReplicaSets | Igen |Igen |
-
-## <a name="microsoftaaddomainservices"></a>Microsoft. AADDomainServices
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
-> | ------------- | ----------- | ----------- |
-> | tartományok | Nem |Nem |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -231,8 +222,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | alertsMetaData | Nem |Nem |
 > | alertsSummary | Nem |Nem |
 > | alertsSummaryList | Nem |Nem |
-> | visszajelzés | Nem |Nem |
-> | smartDetectorAlertRules | Nem |Nem |
+> | Visszajelzés | Nem |Nem |
+> | smartDetectorAlertRules | Igen |Igen |
 > | smartDetectorRuntimeEnvironments | Nem |Nem |
 > | smartGroups | Nem |Nem |
 
@@ -259,6 +250,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | configurationStores | Igen |Igen |
 > | configurationStores/eventGridFilters | Nem |Nem |
+
+## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
+> | ------------- | ----------- | ----------- |
+> | Tavasz | Igen |Igen |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -328,6 +326,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
+> | hybridDataManagers | Igen |Igen |
+> | postgresInstances | Igen |Igen |
+> | sqlBigDataClusters | Igen |Igen |
+> | sqlInstances | Igen |Igen |
 > | sqlServerRegistrations | Igen |Igen |
 > | sqlServerRegistrations/sqlServers | Nem |Nem |
 
@@ -354,11 +356,28 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | billingAccounts | Nem |Nem |
 > | billingAccounts/szerződések | Nem |Nem |
+> | billingAccounts/billingPermissions | Nem |Nem |
 > | billingAccounts/billingProfiles | Nem |Nem |
+> | billingAccounts/billingProfiles/billingPermissions | Nem |Nem |
+> | billingAccounts/billingProfiles/billingRoleAssignments | Nem |Nem |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Nem |Nem |
 > | billingAccounts/billingProfiles/billingSubscriptions | Nem |Nem |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | Nem |Nem |
+> | billingAccounts/billingProfiles/ügyfelek | Nem |Nem |
 > | billingAccounts/billingProfiles/invoices | Nem |Nem |
 > | billingAccounts/billingProfiles/invoices/pricesheet | Nem |Nem |
 > | billingAccounts/billingProfiles/invoiceSections | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek/átvitel | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek/updateAutoRenew | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/tranzakciók | Nem |Nem |
+> | billingAccounts/billingProfiles/invoiceSections/Transfers | Nem |Nem |
 > | billingAccounts/BillingProfiles/patchOperations | Nem |Nem |
 > | billingAccounts/billingProfiles/paymentMethods | Nem |Nem |
 > | billingAccounts/billingProfiles/házirendek | Nem |Nem |
@@ -366,10 +385,17 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Nem |Nem |
 > | billingAccounts/billingProfiles/products | Nem |Nem |
 > | billingAccounts/billingProfiles/transactions | Nem |Nem |
+> | billingAccounts/billingRoleAssignments | Nem |Nem |
+> | billingAccounts/billingRoleDefinitions | Nem |Nem |
 > | billingAccounts/billingSubscriptions | Nem |Nem |
+> | billingAccounts/createBillingRoleAssignment | Nem |Nem |
 > | billingAccounts/createInvoiceSectionOperations | Nem |Nem |
 > | billingAccounts/ügyfelek | Nem |Nem |
 > | billingAccounts/ügyfelek/billingSubscriptions | Nem |Nem |
+> | billingAccounts/ügyfelek/initiateTransfer | Nem |Nem |
+> | billingAccounts/ügyfelek/termékek | Nem |Nem |
+> | billingAccounts/ügyfelek/tranzakciók | Nem |Nem |
+> | billingAccounts/ügyfelek/átvitelek | Nem |Nem |
 > | billingAccounts/részlegek | Nem |Nem |
 > | billingAccounts/enrollmentAccounts | Nem |Nem |
 > | billingAccounts/számlák | Nem |Nem |
@@ -392,11 +418,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts/termékek | Nem |Nem |
 > | billingAccounts/transactions | Nem |Nem |
 > | billingPeriods | Nem |Nem |
-> | billingPermissions | Nem |Nem |
+> | BillingPermissions | Nem |Nem |
 > | billingProperty | Nem |Nem |
-> | billingRoleAssignments | Nem |Nem |
-> | billingRoleDefinitions | Nem |Nem |
-> | createBillingRoleAssignment | Nem |Nem |
+> | BillingRoleAssignments | Nem |Nem |
+> | BillingRoleDefinitions | Nem |Nem |
+> | CreateBillingRoleAssignment | Nem |Nem |
 > | részlegek | Nem |Nem |
 > | enrollmentAccounts | Nem |Nem |
 > | számlák | Nem |Nem |
@@ -404,6 +430,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | átvitelek/acceptTransfer | Nem |Nem |
 > | átvitelek/declineTransfer | Nem |Nem |
 > | transfers/operationStatus | Nem |Nem |
+> | átvitelek/validateTransfer | Nem |Nem |
 > | validateAddress | Nem |Nem |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -450,7 +477,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | botServices | Igen |Igen |
 > | botServices/csatornák | Nem |Nem |
 > | botServices/kapcsolatok | Nem |Nem |
-> | nyelvek | Nem |Nem |
+> | Nyelvek | Nem |Nem |
 > | sablonok | Nem |Nem |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
@@ -529,7 +556,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kvóták | Nem |Nem |
 > | resourceTypes | Nem |Nem |
 > | validateSubscriptionMoveAvailability | Nem |Nem |
-> | virtualMachines | Igen |Igen |
+> | VirtualMachines | Igen |Igen |
 > | virtualMachines/diagnosticSettings | Nem |Nem |
 > | virtualMachines/metricDefinitions | Nem |Nem |
 > | virtualMachines/mérőszámok | Nem |Nem |
@@ -570,12 +597,16 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | publicImages | Nem |Nem |
 > | kvóták | Nem |Nem |
 > | storageAccounts | Igen |Igen |
+> | storageAccounts/blobServices | Nem |Nem |
+> | storageAccounts/fileServices | Nem |Nem |
 > | storageAccounts/metricDefinitions | Nem |Nem |
 > | storageAccounts/mérőszámok | Nem |Nem |
+> | storageAccounts/queueServices | Nem |Nem |
 > | storageAccounts/szolgáltatások | Nem |Nem |
 > | storageAccounts/szolgáltatások/diagnosticSettings | Nem |Nem |
 > | storageAccounts/szolgáltatások/metricDefinitions | Nem |Nem |
 > | storageAccounts/szolgáltatások/mérőszámok | Nem |Nem |
+> | storageAccounts/tableServices | Nem |Nem |
 > | storageAccounts/vmImages | Nem |Nem |
 > | Lemezképet | Nem |Nem |
 
@@ -616,7 +647,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | sharedVMImages | Igen |Igen |
 > | sharedVMImages/verziók | Igen |Igen |
 > | pillanatképek | Igen |Igen |
-> | virtualMachines | Igen |Igen |
+> | VirtualMachines | Igen |Igen |
 > | virtualMachines/bővítmények | Igen |Igen |
 > | virtualMachines/metricDefinitions | Nem |Nem |
 > | virtualMachines/scriptJobs | Nem |Nem |
@@ -720,13 +751,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | Riasztások | Nem |Nem |
-> | BillingAccounts | Nem |Nem |
+> | billingAccounts | Nem |Nem |
 > | Költségvetések | Nem |Nem |
 > | CloudConnectors | Nem |Nem |
 > | Összekötők | Igen |Igen |
 > | Részlegek | Nem |Nem |
 > | Dimenziók | Nem |Nem |
-> | EnrollmentAccounts | Nem |Nem |
+> | enrollmentAccounts | Nem |Nem |
 > | Exportálások | Nem |Nem |
 > | ExternalBillingAccounts | Nem |Nem |
 > | ExternalBillingAccounts/riasztások | Nem |Nem |
@@ -746,25 +777,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Beállítások | Nem |Nem |
 > | showbackRules | Nem |Nem |
 > | Nézetek | Nem |Nem |
-
-## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
-> | ------------- | ----------- | ----------- |
-> | Hubs | Igen |Igen |
-> | hubok/Applyallocationpolicy | Nem |Nem |
-> | hubok és összekötők | Nem |Nem |
-> | hubok/összekötők/leképezések | Nem |Nem |
-> | hubok/interakciók | Nem |Nem |
-> | hubs/kpi | Nem |Nem |
-> | hubok/hivatkozások | Nem |Nem |
-> | hubok/profilok | Nem |Nem |
-> | hubok/roleAssignments | Nem |Nem |
-> | hubok/szerepkörök | Nem |Nem |
-> | hubs/suggestTypeSchema | Nem |Nem |
-> | hubok/nézetek | Nem |Nem |
-> | hubok/widgetTypes | Nem |Nem |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
@@ -810,15 +822,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | katalógusok | Igen |Igen |
 > | datacatalogs | Igen |Igen |
+> | datacatalogs/adatforrások | Nem |Nem |
+> | datacatalogs/adatforrások/vizsgálatok | Nem |Nem |
+> | datacatalogs/adatforrások/vizsgálatok/adatkészletek | Nem |Nem |
+> | datacatalogs/adatforrások/vizsgálatok/triggerek | Nem |Nem |
 > | datacatalogs/scantargets | Nem |Nem |
 > | datacatalogs/scantargets/adatkészletek | Nem |Nem |
-
-## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
-> | ------------- | ----------- | ----------- |
-> | connectionManagers | Igen |Igen |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -936,7 +945,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | applicationgroups | Igen |Igen |
 > | applicationgroups/alkalmazások | Nem |Nem |
-> | applicationgroups/assignedusers | Nem |Nem |
 > | applicationgroups/startmenuitems | Nem |Nem |
 > | hostpools | Igen |Igen |
 > | hostpools/sessionhosts | Nem |Nem |
@@ -949,7 +957,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | ElasticPools | Igen |Igen |
+> | elasticPools | Igen |Igen |
 > | ElasticPools/IotHubTenants | Igen |Igen |
 > | IotHubs | Igen |Igen |
 > | IotHubs/eventGridFilters | Nem |Nem |
@@ -1081,8 +1089,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
+> | autoManagedVmConfigurationProfiles | Igen |Igen |
 > | guestConfigurationAssignments | Nem |Nem |
-> | szoftver | Nem |Nem |
+> | Szoftver | Nem |Nem |
 > | softwareUpdateProfile | Nem |Nem |
 > | softwareUpdates | Nem |Nem |
 
@@ -1135,7 +1144,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | összetevők | Igen |Igen |
+> | Összetevők | Igen |Igen |
 > | networkScopes | Igen |Igen |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -1207,6 +1216,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | hostingEnvironments | Igen |Igen |
 > | integrationAccounts | Igen |Igen |
 > | integrationServiceEnvironments | Igen |Igen |
+> | integrationServiceEnvironments/król | Igen |Igen |
 > | isolatedEnvironments | Igen |Igen |
 > | munkafolyamatok | Igen |Igen |
 
@@ -1234,13 +1244,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | Identitások | Nem |Nem |
 > | userAssignedIdentities | Igen |Igen |
-
-## <a name="microsoftmanagedlab"></a>Microsoft.ManagedLab
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
-> | ------------- | ----------- | ----------- |
-> | labaccounts | Igen |Igen |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
@@ -1348,8 +1351,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
+> | holographicsBroadcastAccounts | Igen |Igen |
+> | objectUnderstandingAccounts | Igen |Igen |
 > | remoteRenderingAccounts | Igen |Igen |
 > | spatialAnchorsAccounts | Igen |Igen |
+> | surfaceReconstructionAccounts | Igen |Igen |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1475,6 +1481,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
+> | fürtök | Igen |Igen |
 > | eszközök | Nem |Nem |
 > | linkTargets | Nem |Nem |
 > | storageInsightConfigs | Nem |Nem |
@@ -1501,6 +1508,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | legacyPeerings | Nem |Nem |
 > | peerAsns | Nem |Nem |
 > | társviszonyok | Igen |Igen |
+> | peeringServiceProviders | Nem |Nem |
+> | peeringServices | Igen |Igen |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
@@ -1518,7 +1527,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | konzolok | Nem |Nem |
-> | irányítópultok | Igen |Igen |
+> | Irányítópultok | Igen |Igen |
 > | userSettings | Nem |Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -1561,7 +1570,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | fiókok | Nem |Nem |
-> | gyűjtemények | Igen |Igen |
+> | Gyűjtemények | Igen |Igen |
 > | gyűjtemények/alkalmazások | Nem |Nem |
 > | gyűjtemények/securityprincipals | Nem |Nem |
 > | templateImages | Nem |Nem |
@@ -1596,21 +1605,18 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | üzemelő példányok | Nem |Nem |
+> | üzemelő példányok | Igen |Nem |
 > | üzembe helyezések/műveletek | Nem |Nem |
-> | linkek | Nem |Nem |
+> | Linkek | Nem |Nem |
 > | notifyResourceJobs | Nem |Nem |
 > | Szolgáltatók | Nem |Nem |
-> | resourceGroups | Nem |Nem |
+> | resourceGroups | Igen |Nem |
 > | erőforrások | Nem |Nem |
 > | előfizetés | Nem |Nem |
 > | előfizetések/szolgáltatók | Nem |Nem |
-> | előfizetések/resourceGroups | Nem |Nem |
-> | előfizetések/resourcegroups/erőforrások | Nem |Nem |
 > | előfizetések/erőforrások | Nem |Nem |
 > | előfizetések/tagNames | Nem |Nem |
 > | előfizetések/tagNames/tagValues | Nem |Nem |
-> | címkék | Nem |Nem |
 > | bérlők | Nem |Nem |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1626,7 +1632,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | forgalom | Igen |Igen |
 > | feladatgyűjtemények | Igen |Igen |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1661,6 +1666,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | Nem |Nem |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | Nem |Nem |
 > | jitNetworkAccessPolicies | Nem |Nem |
+> | networkData | Nem |Nem |
 > | playbookConfigurations | Igen |Igen |
 > | házirendek | Nem |Nem |
 > | pricings | Nem |Nem |
@@ -1693,7 +1699,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | összesítések | Nem |Nem |
 > | Riasztási szabályok | Nem |Nem |
-> | könyvjelzők | Nem |Nem |
+> | alertRuleTemplates | Nem |Nem |
+> | Könyvjelzők | Nem |Nem |
 > | esetekben | Nem |Nem |
 > | dataConnectors | Nem |Nem |
 > | entitás | Nem |Nem |
@@ -1814,6 +1821,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | servers/restorableDroppedDatabases | Nem | Nem |
 > | kiszolgálók/serviceobjectives | Nem | Nem |
 > | kiszolgálók/tdeCertificates | Nem | Nem |
+> | virtualClusters | Nem | Nem |
 
 <a id="sqlnote" />
 
@@ -1919,6 +1927,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | mégse | Nem |Nem |
 > | CreateSubscription | Nem |Nem |
+> | engedélyezése | Nem |Nem |
 > | átnevezés | Nem |Nem |
 > | SubscriptionDefinitions | Nem |Nem |
 > | SubscriptionOperations | Nem |Nem |
@@ -1940,7 +1949,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | dedicatedCloudNodes | Igen |Igen |
 > | dedicatedCloudServices | Igen |Igen |
-> | virtualMachines | Igen |Igen |
+> | VirtualMachines | Igen |Igen |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -2007,7 +2016,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | összetevők | Nem |Nem |
+> | Összetevők | Nem |Nem |
 > | componentsSummary | Nem |Nem |
 > | monitorInstances | Nem |Nem |
 > | monitorInstancesSummary | Nem |Nem |

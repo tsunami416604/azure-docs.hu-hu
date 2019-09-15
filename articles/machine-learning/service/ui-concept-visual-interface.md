@@ -1,7 +1,7 @@
 ---
 title: Vizuális felület
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg a Azure Machine Learning szolgáltatás vizualizációs felületét (előnézet) alkotó feltételeket, fogalmakat és munkafolyamatokat.
+titleSuffix: Azure Machine Learning
+description: Ismerkedjen meg az Azure Machine Learning vizuális felületét (előzetes verzió) alkotó feltételekkel, fogalmakkal és munkafolyamatokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 70141e3ad438ff7ff6d4486e6c27ff4163416e95
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860402"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996529"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Mi a Azure Machine Learning szolgáltatás vizuális felülete? 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Mi a Azure Machine Learning vizuális felülete? 
 
-A Azure Machine Learning szolgáltatás vizuális felülete (előzetes verzió) lehetővé teszi a gépi tanulási modellek előkészítését, használatát, tesztelését, üzembe helyezését, kezelését és nyomon követését programkód írása nélkül.
+A Azure Machine Learning vizuális felülete (előzetes verzió) lehetővé teszi a gépi tanulási modellek előkészítését, használatát, tesztelését, üzembe helyezését, kezelését és nyomon követését programkód írása nélkül.
 
 Nincs szükség programozásra, vizuálisan összekapcsolhatók az [adatkészletek](#dataset) és [modulok](#module) a modell létrehozásához.
 
-A vizuális felület a Azure Machine Learning szolgáltatás [munkaterületét](concept-workspace.md) használja a következőhöz:
+A vizuális felület a Azure Machine Learning [munkaterületét](concept-workspace.md) használja a következőhöz:
 
 + Az írási összetevők a munkaterületen [futnak.](#experiment)
 + Hozzáférési [adatkészletek](#dataset).

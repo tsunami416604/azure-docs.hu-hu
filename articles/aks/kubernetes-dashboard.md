@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126887"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996969"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -36,34 +36,47 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 
 Ez a parancs létrehoz egy proxyt a fejlesztői rendszer és a Kubernetes API között, és egy webböngészőt nyit meg a Kubernetes-irányítópulton. Ha egy webböngésző nem nyílik meg a Kubernetes irányítópultra, másolja és illessze be az Azure CLI-ben feljegyzett URL `http://127.0.0.1:8001`-címet, jellemzően.
 
-![A Kubernetes webes irányítópultjának bejelentkezési lapja](./media/kubernetes-dashboard/dashboard-login.png)
+<!--
+![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
 
-A következő beállításokkal jelentkezhet be a fürt irányítópultján:
+You have the following options to sign in to your cluster's dashboard:
 
-* Egy [kubeconfig-fájl][kubeconfig-file]. Létrehozhat egy kubeconfig [-fájlt az az az Kaba Get-hitelesítő adatok][az-aks-get-credentials]használatával.
-* Token, például [szolgáltatásfiók-jogkivonat][aks-service-accounts] vagy felhasználói jogkivonat. [HRE-kompatibilis fürtökön][aad-cluster]ez a jogkivonat HRE token lenne. A paranccsal `kubectl config view` listázhatja a kubeconfig-fájlban található jogkivonatokat. Az HRE-jogkivonat AK-fürthöz való létrehozásával kapcsolatos további információkért lásd: [Az Azure Kubernetes szolgáltatással való integráció Azure Active Directory az Azure CLI használatával][aad-cluster].
-* Az alapértelmezett irányítópult-szolgáltatásfiók, amely akkor használható, ha a *kihagyás*gombra kattint.
+* A [kubeconfig file][kubeconfig-file]. You can generate a kubeconfig file using [az aks get-credentials][az-aks-get-credentials].
+* A token, such as a [service account token][aks-service-accounts] or user token. On [AAD-enabled clusters][aad-cluster], this token would be an AAD token. You can use `kubectl config view` to list the tokens in your kubeconfig file. For more details on creating an AAD token for use with an AKS cluster see [Integrate Azure Active Directory with Azure Kubernetes Service using the Azure CLI][aad-cluster].
+* The default dashboard service account, which is used if you click *Skip*.
 
 > [!WARNING]
-> A használt hitelesítési módszertől függetlenül soha ne tegye közzé nyilvánosan a Kubernetes-irányítópultot.
+> Never expose the Kubernetes dashboard publicly, regardless of the authentication method used.
 > 
-> A Kubernetes-irányítópult hitelesítésének beállításakor azt javasoljuk, hogy használjon jogkivonatot az alapértelmezett irányítópult-szolgáltatásfiók használatával. A tokenek lehetővé teszik, hogy az egyes felhasználók saját engedélyeiket használják. Az alapértelmezett irányítópult-szolgáltatásfiók lehetővé teheti, hogy a felhasználó megkerüljék a saját engedélyeiket, és inkább a szolgáltatásfiókot használják.
+> When setting up authentication for the Kubernetes dashboard, it is recommended that you use a token over the default dashboard service account. A token allows each user to use their own permissions. Using the default dashboard service account may allow a user to bypass their own permissions and use the service account instead.
 > 
-> Ha úgy dönt, hogy az alapértelmezett irányítópult-szolgáltatásfiókot használja, és az AK-fürt RBAC használ, létre kell hoznia egy *ClusterRoleBinding* ahhoz, hogy megfelelően hozzáférhessen az irányítópulthoz. Alapértelmezés szerint a Kubernetes irányítópult minimális olvasási hozzáféréssel van telepítve, és megjeleníti a RBAC hozzáférési hibáit. A fürt rendszergazdája dönthet úgy, hogy további hozzáférést biztosít a *kubernetes-irányítópult* szolgáltatásfiók számára, azonban ez a jogosultság-eszkaláció vektora lehet. A Azure Active Directory hitelesítését is integrálhatja, hogy részletesebb hozzáférési szintet biztosítson.
+> If you do choose to use the default dashboard service account and your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 >
-> Kötés létrehozásához használja a [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] parancsot az alábbi példában látható módon. **Ez a minta kötés nem alkalmaz további hitelesítési összetevőket, és nem biztonságos használatot eredményezhet.**
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command as shown in the following example. **This sample binding does not apply any additional authentication components and may lead to insecure use.**
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> Most már elérheti a Kubernetes-irányítópultot a RBAC-kompatibilis fürtben. A Kubernetes-irányítópult elindításához használja az az [AK Browse][az-aks-browse] parancsot az előző lépésben részletezett módon.
+> You can now access the Kubernetes dashboard in your RBAC-enabled cluster. To start the Kubernetes dashboard, use the [az aks browse][az-aks-browse] command as detailed in the previous step.
 >
-> Ha a fürt nem használ RBAC, nem ajánlott *ClusterRoleBinding*létrehozni.
+> If your cluster does not use RBAC, it is not recommended to create a *ClusterRoleBinding*.
 > 
-> A különböző hitelesítési módszerek használatával kapcsolatos további információkért tekintse meg a [hozzáférés][dashboard-authentication]-vezérlések Kubernetes irányítópult wikijét.
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
-Miután kiválasztotta a bejelentkezni kívánt módszert, megjelenik a Kubernetes irányítópult. Ha a *token* vagy a *kihagyás*lehetőséget választotta, a Kubernetes-irányítópult az aktuálisan bejelentkezett felhasználó engedélyeit fogja használni a fürt eléréséhez.
+After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
+-->
+
+> [!IMPORTANT]
+> Ha az AK-fürt RBAC használ, létre kell hoznia egy *ClusterRoleBinding* ahhoz, hogy megfelelően hozzáférhessen az irányítópulthoz. Alapértelmezés szerint a Kubernetes irányítópult minimális olvasási hozzáféréssel van telepítve, és megjeleníti a RBAC hozzáférési hibáit. A Kubernetes irányítópult jelenleg nem támogatja a felhasználó által megadott hitelesítő adatokat a hozzáférés szintjének meghatározásához, hanem a szolgáltatásfiók által biztosított szerepköröket használja. A fürt rendszergazdája dönthet úgy, hogy további hozzáférést biztosít a *kubernetes-irányítópult* szolgáltatásfiók számára, azonban ez a jogosultság-eszkaláció vektora lehet. A Azure Active Directory hitelesítését is integrálhatja, hogy részletesebb hozzáférési szintet biztosítson.
+> 
+> Kötés létrehozásához használja a [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] parancsot. Az alábbi példa bemutatja, hogyan hozhat létre egy minta kötést, azonban ez a minta kötés nem alkalmazza a további hitelesítési összetevőket, és nem biztonságos használatot eredményezhet. A Kubernetes irányítópultja bárki számára elérhető, aki hozzáfér az URL-címhez. Ne tegye közzé nyilvánosan a Kubernetes-irányítópultot.
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
+> 
+> A különböző hitelesítési módszerek használatával kapcsolatos további információkért tekintse meg a [hozzáférés-vezérlések][dashboard-authentication]Kubernetes irányítópult wikijét.
 
 ![A Kubernetes webes irányítópultjának Áttekintés lapja](./media/kubernetes-dashboard/dashboard-overview.png)
 

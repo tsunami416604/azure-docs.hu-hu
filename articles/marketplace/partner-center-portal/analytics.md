@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 535dae4226f7db9cbc7240f9a92642f0e206cd3b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962734"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993724"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
@@ -244,7 +244,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Felhőbeli példány neve: Azure Government | Rendelés| Kormányzati specifikus Microsoft-felhők a következő kormányok egyikének esetében: Kína, Németország vagy Egyesült Államok.| |
 | Customer City| Ügyfél| Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól.||
 | Ügyfél-kommunikációs nyelv  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
-| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa.|  |
+| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet azonos az ügyfél Azure-előfizetésében szereplő névvel.|  |
 | Ügyfél országa | Ügyfél, megrendelés | Az ügyfél által megadott ország neve. Az ország eltérő lehet az ügyfél Azure-előfizetésében lévő országtól.|  |
 | Ügyfél e-mail-címe| Ügyfél| A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím.||
 | Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
@@ -262,7 +262,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Marketplace-licenc típusa: Free| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
 | Marketplace-licenc típusa: Microsoft mint viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
 | Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
-| Csomag neve  | Rendelés| A Piactéri ajánlat neve.|| |
+| Ajánlat neve  | Rendelés| A Piactéri ajánlat neve.|| |
 | Csomag típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
 | Ajánlat típusa: Felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
 | Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
@@ -276,7 +276,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Ajánlat típusa: Virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
 | Ajánlat típusa: Visual Studio Marketplace Extension  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
 | Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
-| Order ID (Rendelésazonosító)| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Rendelés azonosítója| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
 | Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
 | Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
 | Megrendelés állapota: Aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |

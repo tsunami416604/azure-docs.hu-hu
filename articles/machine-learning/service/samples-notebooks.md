@@ -1,7 +1,7 @@
 ---
 title: A példában Jupyter notebookok
-titleSuffix: Azure Machine Learning service
-description: Megkeresheti és használhatja például a Jupyter notebookokat a Azure Machine Learning Service Python SDK megismeréséhez.
+titleSuffix: Azure Machine Learning
+description: Megkeresheti és használhatja például a Jupyter jegyzetfüzeteket a Azure Machine Learning Python for SDK megismeréséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860392"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997064"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Azure Machine Learning szolgáltatás megismerése Jupyter notebookokkal
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 
 A [Azure Machine learning jegyzetfüzetek tárháza](https://github.com/azure/machinelearningnotebooks) tartalmazza a legújabb Azure Machine learning Python SDK-mintákat. Ezek a Juypter-jegyzetfüzetek úgy vannak kialakítva, hogy segítsenek az SDK megismerésében, és modellként szolgálni a saját gépi tanulási projektekhez.
 
@@ -55,7 +55,7 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerk
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a [minta jegyzetfüzetekkel](https://aka.ms/aml-notebooks) , hogy felderítse, mi Azure Machine learning szolgáltatás, vagy próbálja ki az alábbi oktatóanyagokat:
+Ismerkedjen meg a [minta jegyzetfüzetekkel](https://aka.ms/aml-notebooks) , hogy megismerje, milyen Azure Machine learning teheti, vagy próbálja ki a következő oktatóanyagokat:
 
 - [Betanítása és a egy kép osztályozási modell a MNIST üzembe helyezése](tutorial-train-models-with-aml.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Környezetek létrehozása, használata és kezelése modellek képzéséhez és üzembe helyezéséhez
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Környezetek létrehozása és kezelése modellek képzéséhez és üzembe helyezéséhez. Python-csomagok és egyéb beállítások kezelése a környezetben.
 services: machine-learning
 author: rastala
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098950"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996620"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre [](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) és kezelhet Azure Machine learning környezeteket, így nyomon követheti és reprodukálhatja projektjei szoftveres függőségeit.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet Azure Machine Learning [környezeteket](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , így nyomon követheti és reprodukálhatja projektjei szoftveres függőségeit.
 
-A szoftveres függőségek kezelése a fejlesztők közös feladata. Szeretné biztosítani, hogy a buildek megismételhetők legyenek a sok kézi szoftveres konfiguráció nélkül. A helyi fejlesztésre, például a pip-re és a Conda vonatkozó megoldásokkal a Azure Machine Learning Service Environments osztály megoldást kínál a helyi és az elosztott Felhőbeli fejlesztéshez.
+A szoftveres függőségek kezelése a fejlesztők közös feladata. Szeretné biztosítani, hogy a buildek megismételhetők legyenek a sok kézi szoftveres konfiguráció nélkül. A helyi fejlesztésre, például a pip-re és a Conda vonatkozó megoldásokkal a Azure Machine Learning Environments osztály megoldást kínál a helyi és az elosztott Felhőbeli fejlesztésre.
 
 A cikkben szereplő példák a következőket mutatják be:
 
@@ -52,7 +52,7 @@ A rendszer által felügyelt környezetek akkor használhatók, ha azt szeretné
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Azure Machine Learning SDK for Python [telepítve van](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* Egy [Azure Machine learning szolgáltatás](how-to-manage-workspace.md)munkaterülete.
+* Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
 ## <a name="create-an-environment"></a>Környezet létrehozása
 
@@ -231,7 +231,7 @@ myenv.docker.enabled = True
 
 A kiépítés után a Docker-rendszerkép alapértelmezés szerint a munkaterülethez társított Azure Container Registry jelenik meg.  Az adattár neve *azureml/azureml_\<\>UUID*formátumú. Az egyedi azonosító (*uuuid*) rész a környezeti konfiguráció alapján számított kivonatnak felel meg. Ez lehetővé teszi a szolgáltatás számára annak meghatározását, hogy az adott környezetnek megfelelő rendszerkép már létezik-e az újrafelhasználáshoz.
 
-Emellett a szolgáltatás automatikusan a Ubuntu Linux-alapú alaplemezképek egyikét használja, és telepíti a megadott Python-csomagokat. [](https://github.com/Azure/AzureML-Containers) Az alaprendszerkép rendelkezik CPU-és GPU-verziókkal, és beállíthatja a GPU- `gpu_support=True`rendszerképet.
+Emellett a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)egyikét használja, és telepíti a megadott Python-csomagokat. Az alaprendszerkép rendelkezik CPU-és GPU-verziókkal, és beállíthatja a GPU- `gpu_support=True`rendszerképet.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -280,7 +280,7 @@ Ha nem adja meg a környezetet a futtatási konfigurációban, a szolgáltatás 
 
 ### <a name="train-with-an-estimator"></a>Az egy estimator betanítása
 
-Ha kalkulátort használ a [](how-to-train-ml-models.md) betanításhoz, egyszerűen beküldheti a kalkulátor-példányt közvetlenül, mivel már bezárta a környezetet és a számítási célt.
+Ha [kalkulátort](how-to-train-ml-models.md) használ a betanításhoz, egyszerűen beküldheti a kalkulátor-példányt közvetlenül, mivel már bezárta a környezetet és a számítási célt.
 
 A következőkben egy scikit-modellen alapuló, egycsomópontos képzésre vonatkozó becslést használunk, amely egy korábban létrehozott számítási cél objektumot `compute_target` és adattár- `ds`objektumot feltételez.
 
@@ -339,5 +339,5 @@ Ez a [példa](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-
 ## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: A modell](tutorial-train-models-with-aml.md) betanítása felügyelt számítási célt használ a modellek betanításához.
-* A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe](how-to-deploy-and-where.md)a modelleket.
+* A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
 * Tekintse meg a [környezeti osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) SDK-referenciáját.

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az autó árának előrejelzése a vizuális felületen'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan lehet a gépi tanulási modellt kitanítani és üzembe helyezni egy drag and drop vizualizációs felület használatával. Ez az oktatóanyag egy kétrészes sorozat első része, amely az autók árának lineáris regresszió használatával történő előrejelzését ismerteti.
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891658"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996777"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Oktatóanyag: Az autó árának előrejelzése a vizuális felületen
 
-Ebben a kétrészes oktatóanyagban megtudhatja, hogyan hozhat létre és helyezhet üzembe egy prediktív elemzési megoldást a Azure Machine Learning szolgáltatás vizuális felületének használatával, amely előre jelezheti a személygépkocsik árát. 
+Ebben a kétrészes oktatóanyagban megtudhatja, hogyan használhatja a Azure Machine Learning vizuális felületét olyan prediktív elemzési megoldások fejlesztésére és üzembe helyezésére, amelyek előre jelezik a személygépkocsik árát. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ A **kísérletek lapon**válassza az **új hozzáadása**lehetőséget, majd vá
 
 ## <a name="create-a-new-experiment"></a>Új kísérlet létrehozása
 
-Visual Interface-kísérlet létrehozásához először egy Azure Machine learning szolgáltatás-munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
+Visual Interface-kísérlet létrehozásához először Azure Machine Learning szolgáltatás-munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
 
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-Ha Azure Machine Learning szolgáltatás-munkaterülettel rendelkezik, ugorjon a következő szakaszra.
+Ha Azure Machine Learning munkaterülettel rendelkezik, ugorjon a következő szakaszra.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -163,7 +163,7 @@ Először távolítsa el teljesen a normalizált veszteségek oszlopot.
 
 A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az esetben hozzáadhat egy modult, amely eltávolítja az összes hiányzó sort, amelyből hiányzik az adathalmaz.
 
-1. A **tiszta hiányzó** adatmodul megtalálásához a keresőmezőbe írja be a törlés kifejezést.
+1. A **tiszta hiányzó** adatmodul megtalálásához a **keresőmezőbe írja be** a törlés kifejezést.
 
 1. Húzza a **tiszta hiányzó adat** modult a kísérleti vászonra, és kapcsolja össze az **adathalmaz-modul Select oszlopaival** . 
 
@@ -209,7 +209,7 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
     ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/ui-tutorial-automobile-price-train-score/train-model.png)
 
-1. Válassza ki a **Train Model** modult. A Tulajdonságok ablaktáblán válassza ki az oszlop kiválasztó indítása lehetőséget , majd írja be a következőt: az **oszlopnevek**belefoglalása. Az ár az az érték, amelyet a modell előre meg fog jósolni
+1. Válassza ki a **Train Model** modult. A Tulajdonságok ablaktáblán válassza ki az oszlop kiválasztó indítása lehetőséget, **majd írja be** a következőt: az oszlopnevek belefoglalása. Az ár az az érték, amelyet a modell előre meg fog jósolni
 
     ![Képernyőfelvétel: az oszlop kiválasztó moduljának megfelelő konfigurációja. A szabályokkal > tartalmaz oszlopnevek > "Price"](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
@@ -221,9 +221,9 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
 Most, hogy az adatok 70 százalékával lett kitanítva a modellre, használhatja az adatok további 30 százalékát, hogy megtudja, milyen jól működik a modellje.
 
-1. Írja be a pontszám Model kifejezést a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a kísérleti vászonra. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az adatforráshoz tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
+1. Írja **be** a pontszám Model kifejezést a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a kísérleti vászonra. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az adatforráshoz tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
 
-1. Írja be a kiértékelés kifejezést a keresőmezőbe a **kiértékelési modell** megkereséséhez, majd húzza a modult a kísérleti vászonra. A **pontszám modell** modul kimenetének összekötése a **modell**kiértékelésének bal oldali bemenetével. Az elkészült kísérletnek a következőképpen kell kinéznie:
+1. Írja **be** a kiértékelés kifejezést a keresőmezőbe a **kiértékelési modell** megkereséséhez, majd húzza a modult a kísérleti vászonra. A **pontszám modell** modul kimenetének összekötése a **modell**kiértékelésének bal oldali bemenetével. Az elkészült kísérletnek a következőképpen kell kinéznie:
 
     ![A kísérlet utolsó helyes konfigurációját bemutató képernyőkép.](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
 

@@ -9,26 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56d41d92b77ea6ef536f1e371a825b775a780bef
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369696"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993887"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C# eszközoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Ezek a lépések bemutatják, hogyan használható a [Azure IoT-minták az C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) szimulálja a TPM-eszköz, a Windows operációs rendszert futtató fejlesztői gépen. A minta a szimulált eszközt is csatlakozik az IoT Hub Device Provisioning Service használatával. 
+Ezek a lépések bemutatják, hogyan lehet az [Azure IoT C# -minták](https://github.com/Azure-Samples/azure-iot-samples-csharp) használatával szimulálni a TPM-eszközt egy Windows operációs rendszert futtató fejlesztői gépen. A minta a szimulált eszközt is összekapcsolja egy IoT Hub a Device kiépítési szolgáltatás használatával. 
 
 A mintakód a Windows TPM-szimulátort használja az eszköz [Hardveres biztonsági moduljaként (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). 
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
+
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálására szolgál.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálására szolgál.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -37,23 +38,21 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Ellenőrizze, hogy a [.NET Core SDK-t 2.1-es vagy újabb](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
+1. Győződjön meg arról, hogy a [.net Core 2,1 SDK vagy újabb verziója](https://www.microsoft.com/net/download/windows) telepítve van a gépen. 
 
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
-1. Nyisson meg egy parancssort vagy a Git Basht. Klónozza az Azure IoT-minták az C# GitHub-adattárat:
-    
+1. Nyisson meg egy parancssort vagy a Git Basht. Az Azure IoT-minták klónozása a C# GitHub-tárházban:
+
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
 
-
 1. Jelentkezzen be az Azure portálra. A bal oldali menüben kattintson az **Összes erőforrás** gombra, és nyissa meg Device Provisioning Service-t. Jegyezze fel az **_Azonosító hatóköre_** értéket az **Áttekintés** panelről.
 
     ![Másolja ki a kiépítési szolgáltatás azonosítójának hatókörét a portál paneljéről](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
-
 
 2. Egy parancssorban módosítsa a könyvtárakat a TPM-eszközkiépítési minta projektkönyvtárára.
 
@@ -67,9 +66,9 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
     dotnet run <IDScope>
     ```
 
-    Ez a parancs elindít egy különálló parancssorban a TPM-lapka szimulátort.  
+    Ez a parancs egy külön parancssorban fogja elindítani a TPM-lapka szimulátort. Windows rendszeren a Windows biztonsági riasztása megkérdezi, hogy szeretné-e engedélyezni a Simulator. exe programot a nyilvános hálózatokon való kommunikációhoz. A minta esetében megszakíthatja a kérelmet.
 
-1. A parancsablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_**, **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_**. Jegyezze fel ezeket az értékeket. Ezek a értéket fogja használni a hozhat létre egyéni regisztrációt a Device Provisioning Service-példányában. 
+1. A parancsablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_** , **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_** . Jegyezze fel ezeket az értékeket. Ezeket az értékeket fogja használni az eszköz kiépítési szolgáltatási példányában lévő egyéni regisztráció létrehozásához. 
    > [!NOTE]
    > Ne keverje össze a parancskimenetet tartalmazó ablakot a TPM-szimulátor kimenetét tartalmazó ablakkal. Lehet, hogy a parancsablakra kell kattintania, hogy az előtérbe kerüljön.
 
@@ -79,24 +78,23 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 5. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-   - Adja meg a *regisztrációs azonosító* és *ellenőrzőkulcsot* a TPM-eszköz, amelyet korábban feljegyzett.
+   - Adja meg a korábban feljegyzett TPM-eszköz *regisztrációs azonosítóját* és *hátirat-kulcsát* .
    - Kiválaszthatja a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
    - Adjon meg egy egyedi eszközazonosítót. Beírhatja a mintakimenetben javasolt eszközazonosítót, vagy megadhat egy saját értéket. Ha saját azonosítót használ, ne adjon meg bizalmas adatokat az eszköz elnevezésekor. 
-   - Szükség esetén frissítse a **eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával együtt.
+   - Opcionálisan frissítheti a **kezdeti eszköz Twin állapotát** az eszköz kívánt kezdeti konfigurációjával.
    - Ha végzett, kattintson a **Mentés** gombra. 
 
      ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni beléptetések* lapon lévő listában. 
 
-6. A szimulált eszköz beléptetéséhez nyomja le az Enter billentyűt (az **_ellenőrzőkulcsot_**, a **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_** megjelenítő) parancsablakban. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket. 
+6. A szimulált eszköz beléptetéséhez nyomja le az Enter billentyűt (az **_ellenőrzőkulcsot_** , a **_regisztrációs azonosítót_** és egy javasolt **_eszközazonosítót_** megjelenítő) parancsablakban. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket. 
 
 1. Ellenőrizze, hogy a rendszer kiépítette-e az eszközt. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz csatolt IoT Hubon, az eszköz azonosítója megjelenik a hub **IoT-eszközök** panelén. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     Ha módosította az *Eszköz kezdeti ikerállapota* alapértelmezett értékét az eszköz beléptetési bejegyzésében, az lekérheti és felhasználhatja a kívánt ikerállapotot a központból. További információ: [Eszközök ikerállapotának megismerése és használata az IoT hubon](../iot-hub/iot-hub-devguide-device-twins.md)
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

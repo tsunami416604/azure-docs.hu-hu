@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114492"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996905"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -130,7 +130,7 @@ Adjon engedélyt az Azure CDN számára, hogy hozzáférhessen az Azure Key Vaul
 
     ![Hozzáférési szabályzat beállításai](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Jelölje be a **titkos engedélyek** beolvasása, majd a **tanúsítvány** lekérése és listázása jelölőnégyzetet, hogy a CDN engedélyezze ezeket az engedélyeket a tanúsítványok lekéréséhez és listázásához. 
+3. Válassza a **tanúsítvány engedélyei**lehetőséget, majd jelölje be a **beolvasás** és **Listázás** jelölőnégyzetet, hogy a CDN engedélyezze ezeket az engedélyeket a tanúsítványok lekéréséhez és listázásához.
 
 4. Kattintson az **OK** gombra. 
 
