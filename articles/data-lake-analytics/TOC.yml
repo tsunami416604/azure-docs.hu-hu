@@ -1,5 +1,5 @@
 - name: Azure Data Lake Analytics – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi a Data Lake Analytics?
