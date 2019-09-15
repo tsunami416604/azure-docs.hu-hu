@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: c92b019e15c6a9ee5b2d38e240ae4f9891621f72
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360195"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998496"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (Python)
 
@@ -30,22 +30,6 @@ A gyors útmutató egy előre megírt Python-alkalmazást használ a telemetria 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Az ebben a rövid útmutatóban futtatott alkalmazás a Python használatával íródik. Jelenleg a Pythonhoz készült Microsoft Azure IoT SDK-k csak a Python adott verzióit támogatják az egyes platformokhoz. További információ: [PYTHON SDK – readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
-
-Ez a rövid útmutató azt feltételezi, hogy Windowsos fejlesztői gépet használ. Windows rendszereken csak a [Python 3.6. x verzió](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrája 32 bites, töltse le az x86-os telepítőt; az 64 bites architektúrához töltse le az x86-64 telepítőt. Továbbá győződjön meg arról, hogy a [Visual Studio 2019 C++ ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) -hoz készült Microsoft vizualizációs terjeszthető csomag telepítve van az architektúrához (x86 vagy x64).
-
-A Python más platformokra is letölthető a [Python.org](https://www.python.org/downloads/)webhelyről.
-
-A Python aktuális verzióját a következő parancsok egyikével ellenőrizheti a fejlesztői gépen:
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
@@ -100,7 +84,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazás futtatásához:
@@ -112,13 +96,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
     ![A szimulált eszköz futtatása](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-    
-### <a name="to-avoid-the-import-iothubclient-error"></a>Az importálási iothub_client hibájának elkerülése
-Az Azure IoT SDK for Python jelenlegi verziója a [C SDK](https://github.com/azure/azure-iot-sdk-c)-ra épülő burkoló. A szolgáltatás a [Boost](https://www.boost.org/) Library használatával jön létre. Emiatt számos jelentős korlátozást is tartalmaz. További részletek [itt](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) találhatók
 
-1. Győződjön meg arról, hogy a [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)megfelelő verziója van. Vegye figyelembe, hogy csak bizonyos verziók jól működnek ehhez a mintához. 
-2. Győződjön meg arról, hogy rendelkezik a C++ [Microsoft Visual C++ Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)-es verziójának megfelelő verziójával. (A legújabbat javasoljuk).
-3. Ellenőrizze, hogy telepítette-e a iothub `pip install azure-iothub-device-client`-ügyfelet:.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: ce9d96a90a2463d1ab8e1a9774a019e38ca681f4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ad6dcf7307955300a781a7a649b6ac76b3c69589
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036033"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003546"
 ---
 # <a name="linq-to-sql-translation"></a>"LINQ to SQL fordítási"
 
@@ -324,5 +324,5 @@ Egy beágyazott lekérdezés a belső lekérdezést alkalmazza a külső tárol�
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentum-adattípusok](modeling-data.md)

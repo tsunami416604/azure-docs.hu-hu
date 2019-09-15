@@ -1,34 +1,34 @@
 ---
-title: SSL-lezárást konfigurálása a Key Vault tanúsítványokkal az Azure PowerShell-lel
-description: Ismerje meg, hogyan integrálható az Azure Application Gateway a Key Vault használata a HTTPS használatára konfigurált figyelői csatolt kiszolgálói tanúsítványok.
+title: Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
+description: Ismerje meg, hogyan integrálhatja az Azure Application Gatewayt a Key Vaultval a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: e011caa8c7a0c7383d16c81f4bff29d3c1c99f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827616"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001006"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>SSL-lezárást konfigurálása a Key Vault tanúsítványokkal az Azure PowerShell-lel
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Az SSL-lezárás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
-[Az Azure Key Vault](../key-vault/key-vault-whatis.md) a platform által felügyelt titkos kulcs tárolása, hogy a titkos kulcsok és SSL-tanúsítványok védelme érdekében használhatja. Az Azure Application Gateway támogatja a Key Vault integration (a nyilvános előzetes verzió) HTTPS használatára konfigurált figyelői csatolt kiszolgálói tanúsítványok. Ez a támogatás a v2 Termékváltozat Application Gateway-átjáró korlátozódik.
+A [Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely a titkok, kulcsok és SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault (nyilvános előzetes verzióban) való integrálását. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
 
-További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
+További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
 
-Ez a cikk bemutatja, hogyan használhatja az Azure PowerShell-szkript a key vault integrálható az application gateway SSL-lezárást tanúsítványokra vonatkozó.
+Ez a cikk bemutatja, hogyan használható egy Azure PowerShell-szkript a kulcstartó és az Application Gateway integrálásához az SSL-leállítási tanúsítványokhoz.
 
-Ehhez a cikkhez az Azure PowerShell-modul verzióját 1.0.0 vagy újabb. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ez a cikk a parancsok futtatásához is szeretne létrehozni kapcsolatot az Azure-ral futtatásával `Connect-AzAccount`.
+Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a futtatásával `Connect-AzAccount`is létre kell hoznia egy, az Azure-nal való kapcsolódást.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, a ManagedServiceIdentity modul kell rendelkeznie:
+Mielőtt elkezdené, telepítenie kell a ManagedServiceIdentity modult:
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -47,7 +47,7 @@ $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Hozzon létre egy erőforráscsoportot és a egy felhasználó által felügyelt identitás
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Erőforráscsoport és felhasználó által felügyelt identitás létrehozása
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -55,7 +55,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>A key vault, a házirend és az application gateway által használható tanúsítvány létrehozása
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Az Application Gateway által használandó kulcstartó, szabályzat és tanúsítvány létrehozása
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -78,14 +78,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-virtual-ip-vip-address"></a>Hozzon létre egy statikus nyilvános virtuális IP-cím (VIP) címet
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>Statikus nyilvános virtuális IP-cím (VIP) létrehozása
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-front-end-ports"></a>Hozzon létre a készletet és az előtérrendszer portjai
+### <a name="create-pool-and-front-end-ports"></a>Készlet és előtér-portok létrehozása
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -98,13 +98,13 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Az SSL-tanúsítványt a key vault pont
+### <a name="point-the-ssl-certificate-to-your-key-vault"></a>Az SSL-tanúsítvány átirányítása a kulcstartóra
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
 ```
 
-### <a name="create-listeners-rules-and-autoscale"></a>Hozzon létre a figyelők, szabályok és az automatikus méretezés
+### <a name="create-listeners-rules-and-autoscale"></a>Figyelők, szabályok és autoskálázás létrehozása
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Https `
@@ -121,7 +121,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>A felhasználó által felügyelt identitás hozzárendelése az application gateway
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>A felhasználó által felügyelt identitás társítása az Application gatewayhez
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ az SSL-lezárás](ssl-overview.md)
+[További információ az SSL-lezárásról](ssl-overview.md)

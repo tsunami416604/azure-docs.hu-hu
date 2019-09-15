@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: dc30aeae842cf9c3cd39422517ed49773c524f1e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232835"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002449"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
 
@@ -29,7 +29,7 @@ A felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintá
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és biztonságos, teljes körűen monitorozott, vállalati használatra kész szabályozást biztosít. A környezet összetevői:
 
-- Az [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett tanúsítványok, kulcsok és titkos kulcsok titkos kulcsainak tárolására szolgál
+- Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett tanúsítványok, kulcsok és titkos kulcsok titkos kulcsainak tárolására szolgál
 - A [Log Analytics](../../../../azure-monitor/overview.md) üzembe helyezése biztosítja, hogy a migrálás megkezdésétől fogva az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen
 - Az [Azure Security Center](../../../../security-center/security-center-intro.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára.
 - Az [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) üzembe helyezése izolált hálózatot és alhálózatokat biztosít a virtuális gép számára.

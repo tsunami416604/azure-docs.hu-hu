@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure ML-folyamatok kötegelt pontozáshoz'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hozzon létre egy ML-folyamatot a Batch-pontozás a képbesorolási modellen való futtatásához. A gépi tanulási folyamatok gyorsabbá, hordozhatóságot és újrahasznosítást tesznek jobbá a munkafolyamatban, így az infrastruktúra és az automatizálás helyett a szaktudásra, a gépi tanulásra koncentrálhat.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 039dbc435cbffed9fe2a9e9be0053d5eb663e9bb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997354"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001624"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Azure Machine Learning folyamatok használata a Batch pontozáshoz
 
-Ebben az oktatóanyagban Azure Machine Learning szolgáltatási folyamatokat használ a Batch-pontozási vagy következtetési feladatok futtatásához. Ebben a példában a feladatokhoz az előre betanított megerősítő [-v3](https://arxiv.org/abs/1512.00567) típusú, a nem címkézett képek besorolására szolgáló neurális hálózati Tensorflow modellt használja. Egy folyamat létrehozása és közzététele után egy REST-végpontot kell konfigurálnia, hogy bármilyen platformon bármely HTTP-könyvtárból aktiválható legyen a folyamat.
+Ebben az oktatóanyagban Azure Machine Learning folyamatokat használ a Batch-pontozási vagy következtetési feladatok futtatásához. Ebben a példában a feladatokhoz az előre betanított megerősítő [-v3](https://arxiv.org/abs/1512.00567) típusú, a nem címkézett képek besorolására szolgáló neurális hálózati Tensorflow modellt használja. Egy folyamat létrehozása és közzététele után egy REST-végpontot kell konfigurálnia, hogy bármilyen platformon bármely HTTP-könyvtárból aktiválható legyen a folyamat.
 
 A gépi tanulási folyamatok gyorsabbá, hordozhatóságot és újrahasznosítást tesznek jobbá a munkafolyamatban, így az infrastruktúra és az automatizálás helyett a szaktudásra, a gépi tanulásra koncentrálhat. [További információ az ml-folyamatokról](concept-ml-pipelines.md).
 
@@ -33,11 +33,11 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > * Folyamat létrehozása, futtatása és közzététele
 > * REST-végpont engedélyezése a folyamat számára
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nem rendelkezik Azure Machine Learning szolgáltatás-munkaterülettel vagy notebook virtuális géppel, fejezze be [a telepítési oktatóanyag 1. részét](tutorial-1st-experiment-sdk-setup.md) .
+* Ha még nem rendelkezik Azure Machine Learning munkaterülettel vagy notebook virtuális géppel, fejezze be [a telepítési oktatóanyag 1. részét](tutorial-1st-experiment-sdk-setup.md) .
 * A telepítési oktatóanyag befejezése után nyissa meg az **oktatóanyagok/tutorial-pipeline-batch-Scoring-Classification. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
 
 Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetben](how-to-configure-environment.md#local)szeretné futtatni. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` a parancsot a szükséges csomagok beszerzéséhez.
@@ -512,7 +512,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning szolgáltatás-oktatóanyagokat szeretne futtatni.
+Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
 ### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
 

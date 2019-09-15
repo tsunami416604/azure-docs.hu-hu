@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: ae9aaea91f62a7e79835e65a5a9f9c76017afdb1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934386"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003854"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata Windows rendszerű virtuális géppel a Pythonban
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Felügyelt identitás engedélyezése.
 > * Rendeljen engedélyeket a virtuális gép identitásához.
 
-Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](key-vault-whatis.md#basic-concepts). 
+Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](basic-concepts.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -46,7 +46,7 @@ Windows, Mac és Linux rendszerekhez:
 
 A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító identitást biztosít, amely leegyszerűsíti a folyamatot.
 
-Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](key-vault-whatis.md#basic-concepts). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
+Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](basic-concepts.md). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
 
 ![MSI](media/MSI.png)
 
@@ -81,7 +81,7 @@ Az előző lépésben létrehozott erőforráscsoporthoz tartozó kulcstartó l�
 
 * Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat (0-9), betűket (a-z, A-z) és kötőjeleket (-) tartalmazhat.
 * Erőforráscsoport neve
-* Hely: **USA nyugati régiója**
+* Helyen **USA nyugati régiója**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -136,7 +136,7 @@ A virtuális gépre való bejelentkezéshez kövesse a [Kapcsolódás és bejele
 
 ## <a name="create-and-run-a-sample-python-app"></a>Minta Python-alkalmazás létrehozása és futtatása
 
-A következő szakaszban egy *sample.py*nevű fájl látható. A kérések [](http://docs.python-requests.org/en/master/) KÖNYVTÁRÁVAL HTTP Get hívásokat hajt végre.
+A következő szakaszban egy *sample.py*nevű fájl látható. A [kérések](http://docs.python-requests.org/en/master/) KÖNYVTÁRÁVAL HTTP Get hívásokat hajt végre.
 
 ## <a name="edit-samplepy"></a>Sample.py szerkesztése
 

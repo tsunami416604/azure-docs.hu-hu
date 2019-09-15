@@ -1,7 +1,7 @@
 ---
 title: Mély tanulási neurális hálózat betanítása a kerasz
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan lehet betanítani és regisztrálni a TensorFlow-on futó kerasz Deep neurális hálózati besorolási modellt Azure Machine Learning szolgáltatás használatával.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan lehet betanítani és regisztrálni a TensorFlow-on futó kerasz Deep neurális hálózati besorolási modellt Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966818"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999371"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning szolgáltatással
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning
 
-Ez a cikk bemutatja, hogyan lehet betanítani és regisztrálni a TensorFlow-re épülő kerasz-besorolási modellt Azure Machine Learning szolgáltatás használatával. A szolgáltatás a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) -adatkészletet használja a kézzel írt számjegyek besorolására egy olyan Deep neurális hálózat (DNN) használatával, amely a [TensorFlow](https://www.tensorflow.org/overview)-on futó [kerasz Python-kódtár](https://keras.io) használatával készült.
+Ez a cikk bemutatja, hogyan végezheti el a TensorFlow-ra épülő kerasz-besorolási modell betanítását és regisztrálását Azure Machine Learning használatával. A szolgáltatás a népszerű [MNIST-adatkészletet](http://yann.lecun.com/exdb/mnist/) használja a kézzel írt számjegyek besorolására egy olyan Deep neurális hálózat (DNN) használatával, amely a [TensorFlow](https://www.tensorflow.org/overview)-on futó [kerasz Python-kódtár](https://keras.io) használatával készült.
 
-A kerasz egy magas szintű neurális hálózati API, amely a fejlesztés egyszerűsítése érdekében más népszerű DNN-keretrendszerek felett is futtatható. A Azure Machine Learning szolgáltatással rugalmas felhőalapú számítási erőforrásokkal gyorsan bővítheti a betanítási feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
+A kerasz egy magas szintű neurális hálózati API, amely a fejlesztés egyszerűsítése érdekében más népszerű DNN-keretrendszerek felett is futtatható. A Azure Machine Learning segítségével rugalmas felhőalapú számítási erőforrásokkal gyorsan kibővítheti a betanítási feladatokat. Nyomon követheti a képzések futtatását, a verziók modelljeit, a modellek üzembe helyezését és még sok mást is.
 
-Függetlenül attól, hogy a kerasz-modellt fejleszti az alapoktól, vagy egy meglévő modellt hoz létre a felhőben, Azure Machine Learning a szolgáltatás segítséget nyújt a termelésre kész modellek létrehozásában.
+Függetlenül attól, hogy a kerasz-modellt fejleszti az alapoktól, vagy egy meglévő modellt hoz létre a felhőben, Azure Machine Learning segíthet a termelésre kész modellek létrehozásában.
 
 A gépi tanulás és a mély tanulás közötti különbségekkel kapcsolatos információkat a [fogalmi cikkben](concept-deep-learning-vs-machine-learning.md) találja.
 
@@ -68,7 +68,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
 Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -203,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a Azure Machine Learning Service-ben betanított és regisztrált egy kerasz modellt. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
+Ebben a cikkben egy kerasz-modellt képzett és regisztrált Azure Machine Learningon. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)

@@ -1,6 +1,6 @@
 ---
 title: Kezelését és kérését erőforráskvóták
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ez az útmutató ismerteti a különböző a kvóták az erőforrásokat az Azure Machine Learning és a megtekintése, és további kvótát.
 services: machine-learning
 ms.service: machine-learning
@@ -11,26 +11,26 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2ee819625f772c96ac6c5a771935da17ee05f3aa
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278069"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002688"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
-Mint Azure-szolgáltatásokat, korlátozva van bizonyos az Azure Machine Learning szolgáltatáshoz kapcsolódó erőforrások. Ezek a korlátok az olyan munkaterületek számától függenek, amelyekkel a modell képzéséhez vagy következtetéséhez vagy pontozásához használt tényleges számítási kapacitás korlátaira korlátozható. 
+A többi Azure-szolgáltatáshoz hasonlóan a Azure Machine Learninghöz kapcsolódó erőforrások bizonyos korlátai is vannak. Ezek a korlátok az olyan munkaterületek számától függenek, amelyekkel a modell képzéséhez vagy következtetéséhez vagy pontozásához használt tényleges számítási kapacitás korlátaira korlátozható. 
 
 Ez a cikk áttekintést nyújt a további részleteket az előfizetéshez tartozó különböző Azure-erőforrások előre konfigurált korlátait, valamint kérelem kvóta fejlesztései erőforrás minden típusú hasznos hivatkozásokat is tartalmaz. Ezek a korlátok a költségvetés túlzott futtatások miatt csalás megelőzése érdekében, és tartsa tiszteletben az Azure kapacitásbeli megszorításokon kerüljenek.
 
-Tartsa szem előtt ezeket a kvótákat, amikor tervezési és vertikális Felskálázási Azure Machine Learning szolgáltatási erőforrásait az éles számítási feladatokhoz. Ha például a fürt nem éri el a megadott számú csomópontot, akkor lehet, hogy elérte az előfizetéséhez Azure Machine Learning számítási magokra vonatkozó korlátot. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik.
+Tartsa szem előtt ezeket a kvótákat, amikor megtervezi és bővíti a Azure Machine Learning erőforrásait az éles számítási feladatokhoz. Ha például a fürt nem éri el a megadott számú csomópontot, akkor lehet, hogy elérte az előfizetéséhez Azure Machine Learning számítási magokra vonatkozó korlátot. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik.
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
 + Kvóta kreditjét, nem kapacitás garantálja. Ha nagyméretű kapacitásigények, forduljon az Azure ügyfélszolgálatához.
 
-+ A kvóta az előfizetésekben, beleértve az Azure Machine Learning szolgáltatás közösen használja az összes szolgáltatás. Az egyetlen kivétel Azure Machine Learning számítás, amely az alapszintű számítási kvótától eltérő kvótával rendelkezik. Ügyeljen arra, hogy a kvótahasználat kiszámítása az összes szolgáltatásban a kapacitásigények kiértékelése során.
++ A kvóta az előfizetésekben található összes szolgáltatás között meg van osztva, beleértve a Azure Machine Learningt is. Az egyetlen kivétel Azure Machine Learning számítás, amely az alapszintű számítási kvótától eltérő kvótával rendelkezik. Ügyeljen arra, hogy a kvótahasználat kiszámítása az összes szolgáltatásban a kapacitásigények kiértékelése során.
 
 + Alapértelmezett korlátok régiónként eltérő ajánlat kategóriája, például az ingyenes próba, használatalapú fizetés és sorozat, mint a Dv2, F, G, és így tovább.
 
@@ -81,7 +81,7 @@ Azure Machine Learning folyamatok esetében a folyamat lépéseinek száma, vala
 - Az ütemezett futtatások és a blob-lekérések összegének maximális száma az előfizetéshez tartozó közzétett folyamatokra vonatkozóan, havonta 100 000
 
 > [!NOTE]
-> Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
+> Ha szeretné megnövelni ezt a korlátot [](https://azure.microsoft.com/support/options/), forduljon a Microsoft ügyfélszolgálatahoz.
 
 ### <a name="container-instances"></a>Container Instances szolgáltatásban
 

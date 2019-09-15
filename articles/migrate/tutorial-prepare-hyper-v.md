@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 87a585f821f7b41c689899818627d863394fe844
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952085"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003097"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
@@ -99,7 +99,7 @@ A Hyper-V értékelésének előkészítéséhez tegye a következőket:
 1. A Hyper-V gazdagép beállításainak ellenőrzése.
 2. Állítsa be a PowerShell-távelérést minden gazdagépen, hogy az Azure Migrate készülék PowerShell-parancsokat futtasson a gazdagépen egy WinRM-kapcsolaton keresztül.
 3. Ha a VM-lemezek távoli SMB-tárolóban találhatók, a hitelesítő adatok delegálása szükséges. 
-    - Engedélyezze az CredSSP delegálást, hogy az Azure Migrate készülék ügyfélként működhet, hitelesítő adatokat delegáljon egy gazdagépre. T?
+    - Engedélyezze az CredSSP delegálást, hogy az Azure Migrate készülék ügyfélként működhet, hitelesítő adatokat delegáljon egy gazdagépre.
     - Az alábbi módon engedélyezheti, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben.
     - Később, amikor beállítja a készüléket, engedélyezni fogja a delegálást a berendezésen.
 4. Tekintse át a készülékre vonatkozó követelményeket, valamint a készülékhez szükséges URL-címet/port elérését.
@@ -113,7 +113,7 @@ Ezeket a beállításokat manuálisan is megadhatja az alábbi eljárásokkal. A
 
 A parancsfájl ellenőrzi a Hyper-V-gazdagépeket, és konfigurálja a Hyper-V virtuális gépek felderítéséhez és értékeléséhez szükséges beállításokat. A következőképpen működik:
 
-- Ellenőrzi, hogy a parancsfájl egy támogatott PowerShell-verzión fut-e.
+- Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e.
 - Ellenőrzi, hogy Ön (a parancsfájlt futtató felhasználó) rendelkezik-e rendszergazdai jogosultságokkal a Hyper-V-gazdagépen.
 - Lehetővé teszi egy helyi felhasználói fiók (nem rendszergazda) létrehozását, amelyet a Azure Migrate szolgáltatás a Hyper-V-gazdagépkel való kommunikációhoz használ. Ezt a felhasználói fiókot a rendszer a gazdagépen adja hozzá a következő csoportokhoz:
     - Távfelügyeleti felhasználók

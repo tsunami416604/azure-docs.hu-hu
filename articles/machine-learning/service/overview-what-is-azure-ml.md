@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure Machine Learning szolgáltatás?
-description: A Azure Machine Learning szolgáltatás áttekintése – integrált, teljes körű adatelemzési megoldás professzionális adatszakértők számára a fejlett analitikai alkalmazások fejlesztéséhez, kipróbálásához és üzembe helyezéséhez Felhőbeli méretezéssel.
+title: Mi az Azure Machine Learning?
+description: Az Azure Machine Learning áttekintése – integrált, teljes körű adatelemzési megoldás professzionális adatszakértők számára a fejlett analitikai alkalmazások fejlesztéséhez, kipróbálásához és üzembe helyezéséhez Felhőbeli méretezéssel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858653"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999941"
 ---
-# <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
+# <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
-A Azure Machine Learning Service egy felhőalapú szolgáltatás, amely a gépi tanulási modellek betanításához, üzembe helyezéséhez, automatizálásához és felügyeletéhez használható, mindezt a felhő által biztosított széles skálán.
+A Azure Machine Learning egy felhőalapú szolgáltatás, amely a gépi tanulási modellek betanítására, üzembe helyezésére, automatizálására és felügyeletére használható, mindezt a felhő által biztosított széles skálán.
 
 ## <a name="what-is-machine-learning"></a>Mit jelent a gépi tanulás funkció?
 
@@ -26,9 +26,9 @@ A Machine Learning egy olyan adatelemzési módszer, amely lehetővé teszi, hog
 
 A gépi tanulás által biztosított előrejelzéseket felhasználva intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárol, a gépi tanulás segítséget nyújt más, a vásárolt termékek alapján. Vagy például a bankkártya lehúzásakor a gépi tanulás összeveti az adott tranzakciót az adatbázisában található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a gépi tanulás segít eldönteni, hogy a feladat el lett-e végezve.
 
-## <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
+## <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
-A Azure Machine Learning szolgáltatás olyan felhőalapú környezetet biztosít, amellyel előkészítheti az adatfeldolgozást, betaníthatja, üzembe helyezheti, kezelheti és nyomon követheti a gépi tanulási modelleket. Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. A szolgáltatás teljes mértékben támogatja a nyílt forráskódú technológiákat, például a PyTorch, a TensorFlow és a scikit, és bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra.
+A Azure Machine Learning felhőalapú környezetet biztosít, amely lehetővé teszi az adatelőkészítést, a betanítást, a tesztelést, az üzembe helyezést, a felügyeletet és nyomon követni a gépi tanulási modelleket. Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. A szolgáltatás teljes mértékben támogatja a nyílt forráskódú technológiákat, például a PyTorch, a TensorFlow és a scikit, és bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra.
 
 Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modelleket, és számos olyan eszközt alkalmazhat, mint például a:
 + Olyan [vizualizációs felület](ui-tutorial-automobile-price-train-score.md) , amelyben az n-drop modulok használatával felépítheti a kísérleteket, majd üzembe helyezheti a modelleket
@@ -38,9 +38,9 @@ Felderítheti és előkészítheti az adatfeldolgozási és-tesztelési modellek
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Mire használhatom az Azure Machine Learning szolgáltatást?
+## <a name="what-can-i-do-with-azure-machine-learning"></a>Mire használhatom a Azure Machine Learning?
 
-A <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning PYTHON SDK</a> -t nyílt forráskódú Python-csomagokkal használhatja, vagy a [Visual Interface (előzetes verzió)](ui-tutorial-automobile-price-train-score.md) használatával magas szintű gépi tanulást és mélyreható tanulási modelleket építhet ki és taníthat ki egy Azure Machine learning-szolgáltatásban Munkaterület.
+Használhatja <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine learning a PYTHON SDK</a> -t nyílt forráskódú Python-csomagokkal, vagy használhatja a [vizualizációs felületet (előzetes verzió)](ui-tutorial-automobile-price-train-score.md) , hogy a gépi tanulást és a részletes tanulási modelleket egy Azure Machine learning-munkaterület saját maga is felépítse és betanítsa.
 
 A nyílt forráskódú Python-csomagokban elérhető számos gépi tanulási összetevő közül választhat, például a <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-Learn</a>, a <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, a <a href="https://pytorch.org" target="_blank">PyTorch</a>és a <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -58,7 +58,7 @@ A kód nélküli képzéshez próbálkozzon az alábbiakkal:
 
 + [AUTOMATIZÁLT ml-kísérletek](tutorial-first-experiment-automated-ml.md) létrehozása a könnyen használható felületen.
 + A [drag-n-drop kísérletezés a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md).
-  ![Azure Machine Learning szolgáltatás vizuális felülete](media/overview-what-is-azure-ml/visual-interface.png)
+  ![Azure Machine Learning vizuális felülete](media/overview-what-is-azure-ml/visual-interface.png)
 
 
 
@@ -77,17 +77,17 @@ A fejlett [gépi tanulási folyamatokkal](concept-ml-pipelines.md)pedig az üzem
 * Különböző számítási erőforrások használata az egyes lépésekben
 * Batch-pontozási feladatok futtatása
 
-A Azure Machine Learning szolgáltatás használatának megkezdéséhez tekintse meg a [következő lépéseket](#next-steps).
+A Azure Machine Learning használatának megkezdéséhez tekintse meg a [következő lépéseket](#next-steps).
 
-## <a name="how-does-azure-machine-learning-service-differ-from-studio"></a>Miben különbözik Azure Machine Learning szolgáltatás a Studiótól?
+## <a name="how-does-azure-machine-learning-differ-from-studio"></a>Miben különbözik Azure Machine Learning a Studiótól?
 
 A [Machine learning Studio](../studio/what-is-ml-studio.md) egy együttműködésen alapuló, húzással ellátható vizualizációs munkaterület, amely képes gépi tanulási megoldások létrehozására, tesztelésére és üzembe helyezésére anélkül, hogy kódot kellene írnia. Előre összeépített és előre konfigurált gépi tanulási algoritmusokat és adatkezelési modulokat, valamint egy szabadalmaztatott számítási platformot használ.
 
-A Azure Machine Learning szolgáltatás az SDK **-k és a-** a vizualizációs felületet (előzetes verzió) is lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és telepítéséhez. Ez a vizuális felület (előzetes verzió) hasonló húzási felületet biztosít a studióhoz. A Studio tulajdonosi számítási platformjának eltérően azonban a vizualizációs felület saját számítási erőforrásokat használ, és teljes mértékben integrálva van Azure Machine Learning szolgáltatásba.
+A Azure Machine Learning az SDK **-k és a-** a vizualizációs felületet (előzetes verzió) is biztosítja az adatelőkészítés, a gépi tanulási modellek betanítása és üzembe helyezése során. Ez a vizuális felület (előzetes verzió) hasonló húzási felületet biztosít a studióhoz. A Studio tulajdonosi számítási platformjának eltérően azonban a vizualizációs felület saját számítási erőforrásokat használ, és teljes mértékben integrálva van Azure Machine Learningba.
 
 Íme egy gyors összehasonlítás.
 
-|| Machine Learning Studio | Azure Machine Learning szolgáltatás:<br/>Vizuális felület|
+|| Machine Learning Studio | Azure Machine Learning:<br/>Vizuális felület|
 |---| --- | --- |
 || Általánosan elérhető (GA) | Előzetes verzióban|
 |Illesztőfelületi modulok| Számos | Népszerű modulok kezdeti készlete|
@@ -98,11 +98,11 @@ A Azure Machine Learning szolgáltatás az SDK **-k és a-** a vizualizációs f
 Próbálja ki a vizualizációs felületet (előzetes verzió [) az Oktatóanyaggal: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
 
 > [!NOTE]
-> A Studióban létrehozott modellek nem helyezhetők üzembe vagy nem kezelhetők Azure Machine Learning szolgáltatással. A szolgáltatás vizualizációs felületén létrehozott és üzembe helyezett modellek azonban a Azure Machine Learning szolgáltatás munkaterületén kezelhetők.
+> A Studióban létrehozott modellek nem helyezhetők üzembe vagy nem kezelhetők Azure Machine Learning. A szolgáltatás vizualizációs felületén létrehozott és üzembe helyezett modellek azonban a Azure Machine Learning munkaterületen kezelhetők.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása után megtarthatja a fiókját, és tovább használhatja azt az [ingyenes Azure-szolgáltatásokkal](https://azure.microsoft.com/free/). A bankkártyáját semmilyen költség nem terheli, hacsak Ön kifejezetten nem módosítja beállításait ennek engedélyezéséhez. Vagy [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), amelyek havi kreditet biztosítanak a fizetős Azure-szolgáltatásokhoz.
 
@@ -112,11 +112,11 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 
 - Kövesse a teljes hosszúságú oktatóanyagokat:
   + [Munkaterület létrehozása és az első ML-modell betanítása](tutorial-1st-experiment-sdk-setup.md)
-  + [Rendszerkép-besorolási modell betanítása Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md)
+  + [Rendszerkép-besorolási modell betanítása Azure Machine Learning](tutorial-train-models-with-aml.md)
 
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.
 
-- Olvassa el a részletes [Azure Machine Learning szolgáltatás architektúrája és fogalmak](concept-azure-machine-learning-architecture.md) cikk.
+- Olvassa el a részletes [Azure Machine learning architektúrát és fogalmakat](concept-azure-machine-learning-architecture.md) ismertető cikket.
 
 - További információ: [a Microsoft egyéb gépi tanulási termékei](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).

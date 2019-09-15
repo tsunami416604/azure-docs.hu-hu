@@ -1,7 +1,7 @@
 ---
 title: Modell üzembe helyezése a GPU-val való következtetéshez
-titleSuffix: Azure Machine Learning service
-description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatást egy GPU-t támogató Tensorflow mély tanulási modell webszolgáltatásként való üzembe helyezésére. a szolgáltatás és a pontszámokra vonatkozó következtetések.
+titleSuffix: Azure Machine Learning
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning egy GPU-t támogató Tensorflow mély tanulási modell webszolgáltatásként való üzembe helyezéséhez. a szolgáltatás és a pontszámokra vonatkozó következtetések.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bfed4daed51e95bb0b86ef187d45722e2c3a25ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844985"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002770"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 
-Ez a cikk bemutatja, hogyan használható a Azure Machine Learning szolgáltatás egy GPU-t támogató modell webszolgáltatásként való üzembe helyezéséhez. A cikkben található információk az Azure Kubernetes Service (ak) modell üzembe helyezésén alapulnak. Az AK-fürt egy GPU-erőforrást biztosít, amelyet a modell használ a következtetésekhez.
+Ez a cikk bemutatja, hogyan használható a Azure Machine Learning egy GPU-t támogató modell webszolgáltatásként való üzembe helyezéséhez. A cikkben található információk az Azure Kubernetes Service (ak) modell üzembe helyezésén alapulnak. Az AK-fürt egy GPU-erőforrást biztosít, amelyet a modell használ a következtetésekhez.
 
 A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe helyezett modellt használják az előrejelzések készítéséhez. A GPU-k használata a CPU-k helyett teljesítménybeli előnyökkel jár a nagyon párhuzamosítható számításokhoz.
 
@@ -34,7 +34,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+* Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 * A Azure Machine Learning SDK-val telepített Python-fejlesztési környezet. További információ: [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -51,7 +51,7 @@ A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe hely
 Egy meglévő munkaterülethez való kapcsolódáshoz használja a következő kódot:
 
 > [!IMPORTANT]
-> Ez a kódrészlet arra vár, hogy a munkaterület-konfiguráció az aktuális könyvtárba vagy a szülőbe legyen mentve. A munkaterület létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning szolgáltatás-munkaterületek létrehozása és kezelése](how-to-manage-workspace.md).   A konfiguráció fájlra való mentésével kapcsolatos további információkért lásd: [munkaterület konfigurációs fájljának létrehozása](how-to-configure-environment.md#workspace).
+> Ez a kódrészlet arra vár, hogy a munkaterület-konfiguráció az aktuális könyvtárba vagy a szülőbe legyen mentve. A munkaterület létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning munkaterületek létrehozása és kezelése](how-to-manage-workspace.md).   A konfiguráció fájlra való mentésével kapcsolatos további információkért lásd: [munkaterület konfigurációs fájljának létrehozása](how-to-configure-environment.md#workspace).
 
 ```python
 from azureml.core import Workspace
@@ -93,7 +93,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Az Azure számlázni fogja, amíg az AK-fürt létezik. Ha végzett, mindenképp törölje az AK-fürtöt.
 
-További információ az AK Azure Machine Learning szolgáltatással való használatáról: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-azure-kubernetes-service.md).
+További információ a Azure Machine Learning-vel való használatáról: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="write-the-entry-script"></a>A bejegyzés parancsfájljának írása
 

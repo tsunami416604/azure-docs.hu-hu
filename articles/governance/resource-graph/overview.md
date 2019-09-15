@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207590"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001652"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -49,9 +49,9 @@ Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf em
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
-Most, hogy már jobban érti az Azure Resource Graph lényegét, ismerkedjünk meg közelebbről a lekérdezések összeállításával.
+Most, hogy jobban megértette az Azure-erőforrások Gráfját, nézzük meg, hogyan lehet lekérdezéseket felépíteni.
 
-Fontos tisztában lenni azzal, hogy az Azure Resource Graph lekérdezési nyelve az Azure Adatkezelő által használt [Kusto](../../data-explorer/data-explorer-overview.md) -lekérdezési nyelven alapul.
+Fontos tisztában lenni azzal, hogy az Azure Resource Graph lekérdezési nyelve az Azure Adatkezelő által használt [Kusto-lekérdezési nyelven](../../data-explorer/data-explorer-overview.md) alapul.
 
 Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket.
 Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
@@ -92,5 +92,5 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
 - Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
-- Kezdje a [](./samples/starter.md)kezdő lekérdezésekkel.
+- Kezdje a kezdő [lekérdezésekkel](./samples/starter.md).
 - Fokozza a [speciális lekérdezések](./samples/advanced.md)megismerését.

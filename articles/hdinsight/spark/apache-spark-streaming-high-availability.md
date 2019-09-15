@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 9424ebbd4ed2e1536a10d77a88257bad948628e2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915384"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002978"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
 
@@ -21,7 +21,7 @@ ms.locfileid: "70915384"
 
 A Spark streaming olyan hosszan futó feladatokat hoz létre, amelyekben az adatok átalakítását el tudja végezni, majd leküldheti az eredményeket a fájlrendszer, az adatbázisok, az irányítópultok és a konzol számára. A Spark streaming az adatok mikro-kötegeit dolgozza fel, és először egy adott időintervallumban gyűjti össze az események kötegét. Ezt követően a köteg feldolgozásra és kimenetre lesz küldve. A Batch-időintervallumok általában egy másodperc töredékében vannak meghatározva.
 
-![Spark streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -57,7 +57,7 @@ Ha olyan alkalmazást szeretne létrehozni, amely az egyes eseményeket egyszer 
 
 A HDInsight a fürt működését *egy másik erőforrás-tárgyaló* (fonal) koordinálja. A Spark streaming magas rendelkezésre állásának megtervezése magában foglalja a Spark streaming technikáit, valamint a fonal-összetevőket is.  Alább látható egy példa a FONALat használó konfigurációra. 
 
-![FONAL architektúrája](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![FONAL architektúrája](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 A következő szakaszok a konfigurációra vonatkozó tervezési szempontokat ismertetik.
 

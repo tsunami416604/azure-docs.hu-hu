@@ -1,7 +1,7 @@
 ---
 title: Munkaterületek létrehozása az Azure CLI-vel
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning szolgáltatás-munkaterületet az Azure CLI használatával.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan hozhat létre új Azure Machine Learning munkaterületet az Azure CLI használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873494"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002632"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learning szolgáltatáshoz az Azure CLI-vel
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning szolgáltatás-munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning szolgáltatás erőforrásainak használatához.
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munkaterületet az Azure CLI használatával. Az Azure CLI parancsokat biztosít az Azure-erőforrások kezeléséhez. A gépi tanulási bővítmény a parancssori felülethez parancsokat biztosít a Azure Machine Learning erőforrásainak használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki [Azure Machine learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-re.
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-A Azure Machine Learning szolgáltatás munkaterület a következő Azure-szolgáltatásokra vagy-entitásokra támaszkodik:
+A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra vagy-entitásokra támaszkodik:
 
 > [!IMPORTANT]
 > Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot.
@@ -68,10 +68,10 @@ A Azure Machine Learning szolgáltatás munkaterület a következő Azure-szolg�
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure Machine Learning szolgáltatás munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
+Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
 
 > [!TIP]
-> Válassza ki azt a régiót, ahol a Azure Machine Learning szolgáltatás elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Ki kell választania egy régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > A tároló-beállításjegyzéknek a Azure Machine Learning szolgáltatás munkaterülettel való használata előtt engedélyeznie kell a [rendszergazdai fiókot](/azure/container-registry/container-registry-authentication#admin-account) .
+    > A tároló beállításjegyzékének az Azure Machine Learning munkaterülettel való használata előtt engedélyeznie kell a [rendszergazdai fiókot](/azure/container-registry/container-registry-authentication#admin-account) .
 
 Miután megtörtént a munkaterülethez használni kívánt erőforrás (ok) azonosítóinak azonosítója, használja az `az workspace create -w <workspace-name> -g <resource-group-name>` alapparancst, és adja hozzá a meglévő erőforrások paraméter (eke) t és azonosítóját. A következő parancs például egy meglévő tároló-beállításjegyzéket használó munkaterületet hoz létre:
 
@@ -302,7 +302,7 @@ Ha egy munkaterületet egy másik felhasználóval szeretne megosztani az előfi
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-A szerepköralapú hozzáférés-vezérléssel (RBAC) Azure Machine Learning szolgáltatással kapcsolatos további információkért lásd: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
+A szerepköralapú hozzáférés-vezérléssel (RBAC Azure Machine Learning) kapcsolatos további információkért lásd: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
 További információ: az [ml Workspace Share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) dokumentáció.
 

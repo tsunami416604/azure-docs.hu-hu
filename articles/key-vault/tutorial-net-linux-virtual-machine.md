@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – használata Linux rendszerű virtuális gép és a egy ASP.NET-Konzolalkalmazás titkos kulcsok tárolására az Azure Key Vault |} A Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogyan konfigurálhatja az ASP.NET Core-alkalmazás az Azure Key vault titkos olvasásához.
+title: Oktatóanyag – a Linux rendszerű virtuális gépek és a ASP.NET-konzol alkalmazás használata a titkok tárolására Azure Key Vaultban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy ASP.NET Core alkalmazást a titkos kulcs Azure Key vaultból való beolvasásához.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -9,51 +9,51 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c142b4c1663a7ccd462836e9aac4ee80accaae4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874838"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003353"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és a egy .NET-alkalmazás titkos kulcsok tárolására az Azure Key Vault használatával
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: A titkos kódok tárolása Linux rendszerű virtuális gépen és .NET-alkalmazáson Azure Key Vault
 
-Az Azure Key Vault segít, például az API-kulcsokat és az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges adatbázis-kapcsolati karakterláncok titkainak védelmére.
+Azure Key Vault segít az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges titkok, például az API-kulcsok és az adatbázis-kapcsolati karakterláncok védelemmel való ellátásában.
 
-Ebben az oktatóanyagban beállította egy .NET-konzolalkalmazást az Azure Key Vault származó információk olvasásához az Azure-erőforrások felügyelt identitások használatával. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben az oktatóanyagban egy .NET-konzolos alkalmazást állít be, amely az Azure-erőforrások felügyelt identitások használatával olvassa be a Azure Key Vault információit. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
-> * A Key Vaultban titkos Store
-> * Egy Azure-beli Linuxos virtuális gép létrehozása
-> * Engedélyezze a [identitás](../active-directory/managed-identities-azure-resources/overview.md) a virtuális gép
-> * A szükséges a Konzolalkalmazás adatokat olvasni a Key Vault-engedélyek megadására
-> * A Key Vault titkos kulcs lekérése
+> * Titkos kód tárolása Key Vault
+> * Azure Linux rendszerű virtuális gép létrehozása
+> * [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális géphez
+> * Adja meg a szükséges engedélyeket a konzol alkalmazás számára az adatok olvasásához Key Vault
+> * Titkos kód beolvasása Key Vault
 
-Mielőtt továbbmennénk, olvassa el [key vault alapvető fogalmait](key-vault-whatis.md#basic-concepts).
+Mielőtt továbblépne, olvassa el a [Key Vault alapfogalmait](basic-concepts.md)ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Git](https://git-scm.com/downloads).
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* [Az Azure CLI 2.0-s vagy újabb](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy az Azure Cloud Shellben.
+* [Azure CLI 2,0 vagy újabb](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy Azure Cloud shell.
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="understand-managed-service-identity"></a>Felügyeltszolgáltatás-identitás ismertetése
+## <a name="understand-managed-service-identity"></a>A Managed Service Identity megismerése
 
-Az Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem találhatók meg a kódban, azonban a lekérésükhöz hitelesítés szükséges az Azure Key Vaultban. Azonban hitelesítést a Key Vault, kell hitelesítő adatokat. Klasszikus rendszerindítási hiba. Az Azure és az Azure Active Directory (Azure AD) révén a Felügyeltszolgáltatás-identitás (MSI) biztosíthat egy rendszer-indításkori identitás, amely megkönnyíti a jóval egyszerűbb, felhatalmazást.
+Az Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem találhatók meg a kódban, azonban a lekérésükhöz hitelesítés szükséges az Azure Key Vaultban. Key Vault hitelesítéséhez azonban szükség van egy hitelesítő adatra. Ez egy klasszikus rendszertöltő probléma. Az Azure és a Azure Active Directory (Azure AD) segítségével a Managed Service Identity (MSI) rendszerindító identitást biztosíthat, amely sokkal egyszerűbbé teszi a dolgok megkezdését.
 
-MSI engedélyezésekor például a virtuális gépek, az App Service-ben vagy a függvények az Azure-szolgáltatások az Azure létrehoz egy egyszerű szolgáltatást a service-példány az Azure Active Directoryban. A hitelesítő adatokat, kódtárba a szolgáltatásnévhez tartozó, a szolgáltatás példánya.
+Ha az MSI-t olyan Azure-szolgáltatáshoz engedélyezi, mint például a Virtual Machines, a App Service vagy a functions, az Azure létrehoz egy szolgáltatásnevet a szolgáltatás példányához Azure Active Directory. Az egyszerű szolgáltatásnév hitelesítő adatait a szolgáltatás egy példányához adja.
 
 ![MSI](media/MSI.png)
 
-Ezután a kód meghívja a egy helyi metadata szolgáltatás érhető el a az Azure-erőforráshoz hozzáférési jogkivonatot kapjon.
+Ezután a kód meghívja az Azure-erőforráson elérhető helyi metaadat-szolgáltatást egy hozzáférési jogkivonat beszerzéséhez.
 A kód a helyi MSI_ENDPOINT-tól beszerzett hozzáférési jogkivonattal végzi el a hitelesítést az Azure Key Vault szolgáltatásban.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-bA az Azure CLI-vel, írja be:
+Ha az Azure CLI használatával szeretne bejelentkezni az Azure-ba, írja be a következőt:
 
 ```azurecli-interactive
 az login
@@ -61,46 +61,46 @@ az login
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a használatával a `az group create` parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot a `az group create` parancs használatával. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az USA nyugati régiójában. Adjon meg egy nevet az erőforráscsoport, és cserélje le `YourResourceGroupName` az alábbi példában:
+Hozzon létre egy erőforráscsoportot az USA nyugati régiójában. Válassza ki az erőforráscsoport nevét, és cserélje le `YourResourceGroupName` a következő példában szereplőre:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-Ez az oktatóanyag során az erőforráscsoport használja.
+Ezt az erőforráscsoportot az oktatóanyag során használhatja.
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Következő lépésként hozzon létre egy kulcstartót az erőforráscsoportban. Adja meg az alábbi információkat:
+Ezután hozzon létre egy Key vaultot az erőforráscsoporthoz. Adja meg az alábbi információkat:
 
-* A Key vault neve: egy karakterlánc, amely csak számokat, betűket és kötőjeleket tartalmazhat 3 – 24 karakter (0-9, a – z, A-Z, és \- ).
+* Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat, betűket és kötőjeleket tartalmazhat (0-9, a-z, A-Z és \- ).
 * Erőforráscsoport neve
-* Hely: **USA nyugati régiója**
+* Helyen **USA nyugati régiója**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 
-Ezen a ponton csak az Azure-fiók jogosult végez semmilyen olyan műveletet az új tárolón.
+Ezen a ponton csak az Azure-fiókja jogosult bármilyen művelet végrehajtására ezen az új tárolón.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Titkos kulcs hozzáadása a kulcstartóhoz
 
-Ezután adjon hozzá egy titkos kulcsot. A való életből vett helyzet akkor is tárolhatnak, egy SQL-kapcsolati karakterlánc vagy bármely más biztonságos megtartani, de az alkalmazás számára elérhetővé tenni kívánt információkat.
+Most adjon hozzá egy titkos kulcsot. Valós forgatókönyv esetén előfordulhat, hogy egy SQL-kapcsolódási sztringet vagy bármilyen más olyan információt tárol, amelyet biztonságosan meg kell őriznie, de elérhetővé kell tennie az alkalmazás számára.
 
-A jelen oktatóanyag esetében írja be a következő parancsok futtatásával hozzon létre egy titkos kulcsot a kulcstartóban. A titkos kulcs nevezzük **AppSecret** , értéke pedig **MySecret**.
+Ebben az oktatóanyagban írja be a következő parancsokat a titkos kulcs létrehozásához a kulcstartóban. A titkos kód neve **AppSecret** , és az értéke **keresési kifejezésként**.
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
 
-A virtuális gép létrehozása a `az vm create` parancsot.
+Hozzon létre egy virtuális `az vm create` gépet a paranccsal.
 
-A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter USA segítségével automatikusan létrehozhat egy SSH-kulcsának, és tegye a kulcsok alapértelmezett helyén ( **~/.ssh**). Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
+A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. Az `--generate-ssh-keys` általunk használt paraméter az SSH-kulcs automatikus létrehozásához és az alapértelmezett kulcs helyére ( **~/.ssh**) való elhelyezésére szolgál. Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
 
 ```azurecli-interactive
 az vm create \
@@ -111,7 +111,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. Az alábbi példa kimenet látható, hogy a virtuális gép létrehozási művelet sikeresen befejeződött.
+A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő példa kimenete azt mutatja, hogy a virtuális gép létrehozási művelete sikeres volt.
 
 ```azurecli
 {
@@ -126,17 +126,17 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-Jegyezze fel a `publicIpAddress` a kimenetben a virtuális gépről. Ezt a címet fogja használni a későbbi lépésekben a virtuális gép eléréséhez.
+Jegyezze `publicIpAddress` fel a virtuális gép kimenetét. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
 
-## <a name="assign-an-identity-to-the-vm"></a>Identitás hozzárendelése a virtuális gép
+## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 
-A virtuális gépet a rendszer által hozzárendelt identitás létrehozása a következő parancs futtatásával:
+Hozzon létre egy rendszer által hozzárendelt identitást a virtuális géphez a következő parancs futtatásával:
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-A parancs kimenete kell lennie:
+A parancs kimenetének a következőket kell tennie:
 
 ```azurecli
 {
@@ -145,19 +145,19 @@ A parancs kimenete kell lennie:
 }
 ```
 
-Jegyezze fel a `systemAssignedIdentity`. Használhatja a következő lépésben.
+Jegyezze fel a `systemAssignedIdentity`-t. Ezt a következő lépésben használhatja.
 
-## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép identitása engedélyt ad a Key Vault
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép személyazonosságának engedélyezése Key Vault
 
-Most már engedélyt adhat a Key Vault létrehozott identitásra. Futtassa a következő parancsot:
+Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa a következő parancsot:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-in-to-the-vm"></a>Jelentkezzen be a virtuális Gépre
+## <a name="log-in-to-the-vm"></a>Bejelentkezés a virtuális gépre
 
-Jelentkezzen be a virtuális gép egy terminál használatával.
+Jelentkezzen be a virtuális gépre egy terminál használatával.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
@@ -165,16 +165,16 @@ ssh azureuser@<PublicIpAddress>
 
 ## <a name="install-net-core-on-linux"></a>A .NET Core telepítése Linux rendszeren
 
-A Linux rendszerű virtuális gépen:
+Linux rendszerű virtuális gépen:
 
-Regisztráljon a Microsoft-termékkulcs megbízhatóként a következő parancsok futtatásával:
+A következő parancsok futtatásával regisztrálja megbízhatóként a Microsoft-termékkulcsot:
 
    ```console
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
    ```
 
-Állítsa be a kívánt verziót gazdagép csomag hírcsatorna alapján operációs rendszer:
+A kívánt verziójú Host Package-hírcsatorna beállítása operációs rendszer alapján:
 
 ```console
    # Ubuntu 17.10
@@ -194,16 +194,16 @@ Regisztráljon a Microsoft-termékkulcs megbízhatóként a következő parancso
    sudo apt-get update
 ```
 
-Telepítse a .NET és a verzió ellenőrzéséhez:
+Telepítse a .NET-et, és keresse meg a verziót:
 
    ```console
    sudo apt-get install dotnet-sdk-2.1.4
    dotnet --version
    ```
 
-## <a name="create-and-run-a-sample-net-app"></a>Létrehozása és futtatása a .NET-mintaalkalmazást
+## <a name="create-and-run-a-sample-net-app"></a>Minta .NET-alkalmazás létrehozása és futtatása
 
-Futtassa a következő parancsokat. Megjelenik a "Hello World" nyomtatott a konzolhoz.
+Futtassa az alábbi parancsokat. A ""Helló világ!"alkalmazás" szöveg jelenik meg a konzolon.
 
 ```console
 dotnet new console -o helloworldapp
@@ -211,9 +211,9 @@ cd helloworldapp
 dotnet run
 ```
 
-## <a name="edit-the-console-app-to-fetch-your-secret"></a>A Konzolalkalmazás beolvasni a titkos kód szerkesztése
+## <a name="edit-the-console-app-to-fetch-your-secret"></a>A konzol alkalmazás szerkesztése a titkos kód beolvasásához
 
-Nyissa meg a Program.cs fájlt, és adja hozzá ezeket a csomagokat:
+Nyissa meg a Program.cs fájlt, és adja hozzá a következő csomagokat:
 
    ```csharp
    using System;
@@ -224,12 +224,12 @@ Nyissa meg a Program.cs fájlt, és adja hozzá ezeket a csomagokat:
    using Newtonsoft.Json.Linq;
    ```
 
-Egy kétlépéses folyamat engedélyezése az alkalmazásnak a titkos kulcsot a kulcstartóban a osztály fájl módosítása.
+Ez egy kétlépéses folyamat, amely lehetővé teszi, hogy az alkalmazás hozzáférjen a titkos kulcshoz a kulcstartóban.
 
-1. A virtuális gépen, amely ezután lekéri egy tokent az Azure Active Directoryból olvassa be a jogkivonatot a helyi MSI-végpontról.
-1. A jogkivonat átadni a Key Vault és a titkos kód beolvasása.
+1. A virtuális gép helyi MSI-végpontján lévő jogkivonat beolvasása, amely a tokent lekéri Azure Active Directoryról.
+1. Adja át a tokent Key Vault és olvassa be a titkot.
 
-   Szerkessze a osztály fájlt a következő kódot tartalmazza:
+   Szerkessze a Class (osztály) fájlt, hogy az tartalmazza a következő kódot:
 
    ```csharp
     class Program
@@ -276,13 +276,13 @@ Egy kétlépéses folyamat engedélyezése az alkalmazásnak a titkos kulcsot a 
        }
    ```
 
-Most már bemutattuk, hogyan lehet egy Azure-beli Linuxos virtuális gépen futó .NET-alkalmazásokban az Azure Key Vault műveletek végrehajtásához.
+Most, hogy megismerte, hogyan végezheti el a műveleteket a Azure Key Vaultekkel egy Azure Linux rendszerű virtuális gépen futó .NET-alkalmazásban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége, törölje az erőforráscsoportot, virtuális gép és minden kapcsolódó erőforrás. Ehhez válassza ki az erőforráscsoportot a virtuális Gépet, majd válassza a **törlése**.
+Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-Törölje a key vault használatával a `az keyvault delete` parancsot:
+Törölje a Key vaultot a `az keyvault delete` paranccsal:
 
 ```azurecli-interactive
 az keyvault delete --name
@@ -293,4 +293,4 @@ az keyvault delete --name
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Key Vault REST API-val](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

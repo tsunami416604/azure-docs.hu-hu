@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726763"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999171"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
 Ebben a cikkben az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét tárgyaljuk, amelyekkel biztosítható a platform-szolgáltatásként szolgáló webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -71,7 +71,7 @@ További információ a RBAC:
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata nagy értékű adathoz
 Az ügyféloldali titkosítás lehetővé teszi, hogy programozott módon titkosítsa az adatok átvitelét az Azure Storage-ba való feltöltés előtt, és programozott módon visszafejtse az adatoknak a beolvasása során. Ez az átvitel során az adatok titkosítását is lehetővé teszi, de az inaktív adatok titkosítását is biztosítja. Az ügyféloldali titkosítás a legbiztonságosabb módszer az adattitkosításhoz, de megköveteli, hogy programozott módosításokat hajtson végre az alkalmazásban, és a kulcsfontosságú felügyeleti folyamatokat helyezze üzembe.
 
-Az ügyféloldali titkosítás azt is lehetővé teszi, hogy a titkosítási kulcsok egyetlen vezérléssel rendelkezzenek. Saját titkosítási kulcsokat is létrehozhat és kezelhet. Egy Burkológörbe-technikát használ, amelyben az Azure Storage ügyféloldali kódtára létrehoz egy titkosító kulcsot (CEK), amelyet a rendszer a kulcs titkosítási kulcs (KEK) használatával csomagolt be (titkosított). A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy [Azure Key Vault](/azure/key-vault/key-vault-whatis)tárolható.
+Az ügyféloldali titkosítás azt is lehetővé teszi, hogy a titkosítási kulcsok egyetlen vezérléssel rendelkezzenek. Saját titkosítási kulcsokat is létrehozhat és kezelhet. Egy Burkológörbe-technikát használ, amelyben az Azure Storage ügyféloldali kódtára létrehoz egy titkosító kulcsot (CEK), amelyet a rendszer a kulcs titkosítási kulcs (KEK) használatával csomagolt be (titkosított). A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy [Azure Key Vault](/azure/key-vault/key-vault-overview)tárolható.
 
 Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtáraba van beépítve. Lásd: [ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage](/azure/storage/common/storage-client-side-encryption) az ügyfélalkalmazások adatainak titkosításához, valamint a saját titkosítási kulcsok létrehozásához és kezeléséhez.
 

@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB SQL-lekérdezések skaláris kifejezések
-description: További információ az Azure Cosmos DB SQL-szintaxis a skaláris kifejezés.
+title: Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
+description: A skaláris kifejezés SQL-szintaxisának megismerése Azure Cosmos DBhoz.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4464c39a45c47c680a13f3ebc34841b47ee0d7c6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342858"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003542"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Az Azure Cosmos DB SQL-lekérdezések skaláris kifejezések
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
 
-A [SELECT záradékban](sql-query-select.md) skaláris kifejezések támogatja. Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Skaláris kifejezések például: állandók, tulajdonság hivatkozik, tömb elem hivatkozásokat, alias hivatkozásokat vagy függvényhívásokat. Skaláris kifejezéseinek operátorok használatával összetett kifejezések egyesíthetők.
+A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket. Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Skaláris kifejezések például a következők: konstansok, tulajdonság-referenciák, tömb elemek hivatkozásai, alias-hivatkozások vagy függvények hívásai. A skaláris kifejezések összetett kifejezésekkel kombinálhatók a kezelők használatával.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -59,11 +59,11 @@ A [SELECT záradékban](sql-query-select.md) skaláris kifejezések támogatja. 
   
 - `<scalar_expression>.property_name`  
   
-   A tulajdonság az objektum olyan értékét jelöli. A tulajdonság nem létezik vagy tulajdonság értéket, amely nem objektum, a hivatkozott, majd a kifejezés eredménye **nem definiált** értéket.  
+   A tulajdonság az objektum olyan értékét jelöli. Ha a tulajdonság nem létezik, vagy a tulajdonság egy értékre hivatkozik, amely nem objektum, a kifejezés kiértékelése nem **definiált** értékre történik.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Egy nevű tulajdonság értékét jelöli `property_name` vagy az index tömbelem `array_index` egy tömb. A tulajdonság/tömbindex nem létezik, vagy a tulajdonság/tömbindex hivatkozik egy érték alapján ez nem egy objektum vagy tömb, akkor a kifejezés eredménye nem meghatározott értéket eredményezne.  
+   Egy tömb indexével `property_name` `array_index` rendelkező Name vagy Array elemet tartalmazó tulajdonság értékét jelöli. A tulajdonság/tömbindex nem létezik, vagy a tulajdonság/tömbindex hivatkozik egy érték alapján ez nem egy objektum vagy tömb, akkor a kifejezés eredménye nem meghatározott értéket eredményezne.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ A [SELECT záradékban](sql-query-select.md) skaláris kifejezések támogatja. 
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Beépített vagy felhasználó által definiált skaláris függvény hívásakor az összes argumentum definiálni kell. Ha bármelyik argumentum nem definiált, a függvény nem hívható, és az eredmény az lesz meghatározva.  
+  Beépített vagy felhasználó által definiált skaláris függvény meghívásakor az összes argumentumot meg kell adni. Ha bármelyik argumentum nem definiált, a függvény nem hívható, és az eredmény az lesz meghatározva.  
   
   Objektum létrehozásakor bármely vlastnost, amelyek nem definiált értéket kapja kihagyva, és nem tartalmazza a létrehozott objektum.  
   
@@ -119,7 +119,7 @@ Az eredmények a következők:
     }]
 ```
 
-A következő lekérdezést a skaláris kifejezés eredménye egy logikai érték:
+A következő lekérdezésben a skaláris kifejezés eredménye egy logikai érték:
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState
@@ -141,6 +141,6 @@ Az eredmények a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Cosmos DB bemutatása](introduction.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Segédlekérdezések](sql-query-subquery.md)
+- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Allekérdezéseket](sql-query-subquery.md)

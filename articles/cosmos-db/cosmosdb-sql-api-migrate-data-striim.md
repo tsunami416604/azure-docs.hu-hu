@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981833"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003288"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB SQL API-fiókba a Striim használatával
  
 Az Azure piactéren elérhető Striim-rendszerkép folyamatos, valós idejű adatáthelyezést biztosít az adattárházak és az adatbázisok között az Azure-ba. Az adatok áthelyezésekor elvégezhető a beágyazott denormalizálás, az adatok átalakítása, a valós idejű elemzések és az adatjelentéskészítési forgatókönyvek. A Striim könnyen megkezdhető a vállalati adatAzure Cosmos DB SQL API-ba való folyamatos áthelyezéséhez. Az Azure egy Piactéri ajánlatot biztosít, amely megkönnyíti a Striim üzembe helyezését és az Azure Cosmos DBba való áttelepítését. 
 
-Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle** -adatbázisból egy **Azure Cosmos db SQL API**-fiókba.
+Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle-adatbázisból** egy **Azure Cosmos db SQL API-fiókba**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik [Azure](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+* Ha nem rendelkezik Azure- [előfizetéssel](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
-* Egy helyszíni Oracle-adatbázis, amely néhány adattal rendelkezik.
+* A helyszínen futó Oracle-adatbázis, amely valamilyen adattal rendelkezik.
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>A Striim Marketplace-megoldás üzembe helyezése
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle** -adatbázi
 
    ![Striim Marketplace-tétel keresése](./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png)
 
-1. Ezután adja meg a Striim-példány konfigurációs tulajdonságait. A Striim-környezet üzembe helyezése egy virtuális gépen történik. Az **alapvető beállítások** panelen adja meg avirtuális gép felhasználónevét, a **virtuális gép jelszavát** (ezt a jelszót használja a rendszer az SSH-ba a virtuális géphez). Válassza kiaz előfizetését, az **erőforráscsoportot**és a **hely részleteit** , ahol a Striim telepíteni szeretné. Ha elkészült, kattintson **az OK gombra**.
+1. Ezután adja meg a Striim-példány konfigurációs tulajdonságait. A Striim-környezet üzembe helyezése egy virtuális gépen történik. Az **alapvető beállítások** panelen adja meg a virtuális gép **felhasználónevét**, a **virtuális gép jelszavát** (ezt a jelszót használja a rendszer az SSH-ba a virtuális géphez). Válassza ki az **előfizetését**, az **erőforráscsoportot**és a **hely részleteit** , ahol a Striim telepíteni szeretné. Ha elkészült, kattintson **az OK gombra**.
 
    ![A Striim alapszintű beállításainak konfigurálása](./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png)
 
@@ -42,7 +42,7 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle** -adatbázi
 
    |Beállítás | Érték | Leírás |
    | ---| ---| ---|
-   |Striim központi telepítési típus |Különálló | A Striim **önálló** vagy fürtbeli központi telepítési típusokban is futtathatók. Az önálló mód a Striim-kiszolgálót egyetlen virtuális gépre telepíti, és az adatmennyiségtől függően kiválaszthatja a virtuális gépek méretét. A fürt mód két vagy több virtuális gépre telepíti a Striim-kiszolgálót a kiválasztott mérettel. A több mint 2 csomóponttal rendelkező fürt-környezetek automatikus magas rendelkezésre állást és feladatátvételt biztosítanak.</br></br> Ebben az oktatóanyagban a különálló lehetőséget választhatja. Használja az alapértelmezett "Standard_F4s" méretű virtuális gépet.  | 
+   |Striim központi telepítési típus |Különálló | A Striim **önálló** vagy **Fürtbeli** központi telepítési típusokban is futtathatók. Az önálló mód a Striim-kiszolgálót egyetlen virtuális gépre telepíti, és az adatmennyiségtől függően kiválaszthatja a virtuális gépek méretét. A fürt mód két vagy több virtuális gépre telepíti a Striim-kiszolgálót a kiválasztott mérettel. A több mint 2 csomóponttal rendelkező fürt-környezetek automatikus magas rendelkezésre állást és feladatátvételt biztosítanak.</br></br> Ebben az oktatóanyagban a különálló lehetőséget választhatja. Használja az alapértelmezett "Standard_F4s" méretű virtuális gépet.  | 
    | A Striim-fürt neve|    < Striim_cluster_Name >|  A Striim-fürt neve.|
    | Striim-fürt jelszava|   < Striim_cluster_password >|  A fürt jelszava.|
 
@@ -58,7 +58,7 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle** -adatbázi
 
 ## <a name="configure-the-source-database"></a>A forrásadatbázis konfigurálása 
 
-Ebben a szakaszban az Oracle-adatbázist konfigurálja az adatáthelyezés forrásaként.  Az Oracle-hez való kapcsolódáshoz szüksége lesz az [Oracle JDBC](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) -illesztőprogramra. Ha olvasni szeretné a forrás Oracle-adatbázis változásait, használhatja a [LogMiner](https://www.oracle.com/technetwork/database/features/availability/logmineroverview-088844.html) vagy a [xStream API-kat](https://docs.oracle.com/cd/E11882_01/server.112/e16545/xstrm_intro.htm#XSTRM72647). Az Oracle JDBC illesztőprogramjának jelen kell lennie a Striim Java-osztályútvonal az Oracle-adatbázisból származó adatok olvasásához, írásához és megőrzéséhez.
+Ebben a szakaszban az Oracle-adatbázist konfigurálja az adatáthelyezés forrásaként.  Az Oracle-hez való kapcsolódáshoz szüksége lesz az [Oracle JDBC-illesztőprogramra](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) . Ha olvasni szeretné a forrás Oracle-adatbázis változásait, használhatja a [LogMiner](https://www.oracle.com/technetwork/database/features/availability/logmineroverview-088844.html) vagy a [xStream API-kat](https://docs.oracle.com/cd/E11882_01/server.112/e16545/xstrm_intro.htm#XSTRM72647). Az Oracle JDBC illesztőprogramjának jelen kell lennie a Striim Java-osztályútvonal az Oracle-adatbázisból származó adatok olvasásához, írásához és megőrzéséhez.
 
 Töltse le a [ojdbc8. jar](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) illesztőprogramot a helyi gépre. Később telepíteni fogja a Striim-fürtön.
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
 1. A következő oldalon nevezze el az alkalmazást. Megadhat egy nevet, például **oraToCosmosDB** , majd a **Mentés**lehetőséget.
 
-1. Ezután adja meg a forrás Oracle-példány forrás-konfigurációját. Adja meg a **forrás nevének**értékét. A forrás neve csak a Striim alkalmazás elnevezési konvenciója, például a **src_onPremOracle**-t használhatja. Adja meg a forrás paraméterek **URL-címének**,a felhasználónévnek és a **jelszónak**a többi értékét, válassza a **LogMiner** lehetőséget az Oracle-adatok olvasására szolgáló olvasóként. A folytatáshoz kattintson a **Tovább** gombra.
+1. Ezután adja meg a forrás Oracle-példány forrás-konfigurációját. Adja meg a **forrás nevének**értékét. A forrás neve csak a Striim alkalmazás elnevezési konvenciója, például a **src_onPremOracle**-t használhatja. Adja meg a forrás paraméterek **URL-címének**, a **felhasználónévnek**és a **jelszónak**a többi értékét, válassza a **LogMiner** lehetőséget az Oracle-adatok olvasására szolgáló olvasóként. A folytatáshoz kattintson a **Tovább** gombra.
 
    ![Forrás paramétereinek konfigurálása](./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png)
 
@@ -193,7 +193,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
    ![Áttelepített adatértékek ellenőrzése az Azure-ban](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Az Azure-beli Striim megoldás használatával folyamatosan áttelepítheti az adatok Azure Cosmos DB különböző forrásokból, például Oracle, Cassandra, MongoDB és másoktól, hogy Azure Cosmos DB. Az áttelepítési útvonal Striim-vel való beállításakor felmerülő problémák esetén a [Striim webhelyén](https://go2.striim.com/request-support-striim)adja meg a támogatási kérelmet.
+Az Azure-beli Striim megoldás használatával folyamatosan áttelepítheti az adatok Azure Cosmos DB különböző forrásokból, például Oracle, Cassandra, MongoDB és másoktól, hogy Azure Cosmos DB. Ha többet szeretne megtudni, látogasson el a [Striim webhelyére](https://www.striim.com/), [töltse le a Striim 30 napos ingyenes próbaverzióját](https://go2.striim.com/download-free-trial), és az áttelepítési útvonal a Striim-vel való beállításakor vegye fel a [támogatási kérelmet.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>További lépések
 

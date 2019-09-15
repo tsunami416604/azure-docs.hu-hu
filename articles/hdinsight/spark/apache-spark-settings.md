@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736017"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003165"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -44,11 +44,11 @@ Apache Spark három rendszerkonfigurációs hellyel rendelkezik:
 A Spark egy adott verziójának kiválasztásakor a fürt tartalmazza az alapértelmezett konfigurációs beállításokat.  Az alapértelmezett Spark-konfigurációs értékeket egyéni Spark-konfigurációs fájl használatával módosíthatja.  Alább látható egy példa.
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 A fenti példában szereplő példa több alapértelmezett értéket felülbírál az öt Spark konfigurációs paraméternél.  Ezek a tömörítési kodek, Apache Hadoop a MapReduce felosztásának minimális mérete és a parketta-blokkok mérete, valamint a Spar SQL-partíció és a megnyíló fájlméret alapértelmezett értékei is.  Ezek a konfigurációs változások úgy vannak kiválasztva, hogy a kapcsolódó adatok és feladatok (ebben a példában a genomikai adatok) bizonyos jellemzőkkel rendelkezzenek, ami jobban teljesíti ezeket az egyéni konfigurációs beállításokat.
@@ -63,7 +63,7 @@ Megjelenik az Apache Ambari webes KEZELŐFELÜLETe, amely a fő fürterőforrás
 
 A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei**lehetőséget, majd válassza a **Spark2**lehetőséget.  Válassza a **konfigurációk** fület, majd a szolgáltatás `Spark` listában válassza `Spark2`a (vagy a verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
 
-![Spark-konfigurációk](./media/apache-spark-settings/spark-config.png)
+![Spark-konfigurációk](./media/apache-spark-settings/spark-configurations.png)
 
 Az egyes Spark-konfigurációs értékek megtekintéséhez és módosításához válassza a "Spark" szót a hivatkozás címében.  A Spark-konfigurációk a következő kategóriákban tartalmazzák az egyéni és a speciális konfigurációs értékeket is:
 
@@ -82,7 +82,7 @@ Ha nem alapértelmezett konfigurációs értékeket hoz létre, akkor a konfigur
 
 A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőprogram-program és a hozzá tartozó Spark-környezet, valamint a Fürtfelügyelő és az *n* feldolgozó csomópontok.  Minden feldolgozói csomópont tartalmaz egy végrehajtót, egy gyorsítótárat és egy *n* Task instances-példányt.
 
-![Fürtözött objektumok](./media/apache-spark-settings/spark-arch.png)
+![Fürtözött objektumok](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 A Spark-feladatok a feldolgozói erőforrásokat, különösen a memóriát használják, ezért gyakori a Spark-konfigurációs értékek beállítása a feldolgozó csomópont-végrehajtók számára.
 
@@ -93,7 +93,7 @@ Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására mó
 
 A Spark-végrehajtók által használt erőforrásokkal kapcsolatos információkat a Spark-alkalmazás felhasználói felületén is megtalálhatja.  A Spark felhasználói felületén válassza a **végrehajtók** fület a konfiguráció és a végrehajtók által felhasznált erőforrások összesített és részletes nézeteinek megjelenítéséhez.  E nézetek segítségével meghatározhatja, hogy a teljes fürt Spark-végrehajtóinak, vagy csak a feladat-végrehajtások adott részének alapértelmezett értékeit szeretné-e módosítani.
 
-![Spark-végrehajtók](./media/apache-spark-settings/spark-executors.png)
+![Spark-végrehajtók](./media/apache-spark-settings/apache-spark-executors.png)
 
 Azt is megteheti, hogy a Ambari REST API használatával programozottan ellenőrizheti a HDInsight és a Spark-fürt konfigurációs beállításait.  További információ a [githubon elérhető Apache AMBARI API-referenciában](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)található.
 
@@ -105,7 +105,7 @@ A Spark számítási feladattól függően előfordulhat, hogy egy nem alapérte
 
 Íme egy példa két feldolgozói csomópontra, különböző konfigurációs értékekkel:
 
-![Két csomópontos konfiguráció](./media/apache-spark-settings/executor-config.png)
+![Két csomópontos konfiguráció](./media/apache-spark-settings/executor-configuration.png)
 
 Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
@@ -116,7 +116,7 @@ Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
 A fonal az egyes Spark-csomópontokon lévő tárolók által használt memória maximális számát szabályozza. Az alábbi ábrán a szálak konfigurációs objektumai és a Spark-objektumok közötti csomópont-kapcsolatok láthatók.
 
-![A fonal Spark memóriájának kezelése](./media/apache-spark-settings/yarn-spark-memory.png)
+![A fonal Spark memóriájának kezelése](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter-jegyzetfüzetben futó alkalmazás paramétereinek módosítása
 
@@ -136,8 +136,8 @@ A Jupyter notebookon futó alkalmazások esetében használja a `%%configure` pa
 Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter-jegyzetfüzetben futó alkalmazás konfigurációját.
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>Összegzés

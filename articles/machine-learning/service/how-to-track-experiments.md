@@ -1,6 +1,6 @@
 ---
 title: Log ML-kísérletek & metrikák
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Figyelje az Azure ML-kísérleteit, és figyelje a futtatási metrikákat a modell létrehozási folyamatának növelése érdekében. Vegyen fel naplózást a betanítási parancsfájlba, és tekintse meg a Futtatás naplózott eredményeit.  Használja a Run. log, a Run. start_logging vagy a ScriptRunConfig parancsot.
 services: machine-learning
 author: heatherbshapiro
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c2747c8eaac0323ac32f67afb27ac854a3a5ce9
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959945"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002706"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 
-A kísérletek és a figyelési futtatási metrikák nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a betanítási parancsfájlhoz, elküldheti a kísérlet futtatását, figyelheti a futtatást, és ellenőrizheti az eredményeket Azure Machine Learning szolgáltatásban.
+A kísérletek és a figyelési futtatási metrikák nyomon követésével növelheti a modell létrehozásának folyamatát. Ebből a cikkből megtudhatja, hogyan adhat hozzá naplózási kódot a betanítási parancsfájlhoz, elküldheti a kísérlet futtatását, figyelheti a futtatást, és megvizsgálhatja az eredményeket Azure Machine Learning.
 
 > [!NOTE]
-> A Azure Machine Learning szolgáltatás a betanítás során más forrásokból is naplózhat adatokat, például az automatizált gépi tanulási futtatásokat vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
+> A Azure Machine Learning a betanítás során más forrásokból is naplózhat adatokat, például automatizált gépi tanulási futtatásokat vagy a betanítási feladatot futtató Docker-tárolót. Ezek a naplók nincsenek dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
 
 ## <a name="available-metrics-to-track"></a>A nyomon követett elérhető metrikák
 
@@ -65,7 +65,7 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
 
 **start_logging** notebookok – egyéb felhasználási helyzetek egy interaktív Futtatás használatra hoz létre. A munkamenet során naplózott összes metrikák kerülnek a futtatási rekordját a kísérletben.
 
-Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyter notebook betanítja. A különböző környezetekben kísérletek elküldése kapcsolatos további információkért lásd: [állítsa be a modell betanítása és az Azure Machine Learning szolgáltatás a számítási célokhoz](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyter notebook betanítja. A kísérletek különböző környezetekben történő elküldésével kapcsolatos további tudnivalókért lásd: [számítási célok beállítása a modell betanításához Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
 1. Helyi Jupyter notebook létrehozása egy tanítási szkriptet. 
 
@@ -91,7 +91,7 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Adjon hozzá kísérlet nyomon követése az Azure Machine Learning szolgáltatás SDK használatával, és a egy megőrzött modell feltöltése rekord futtassa a kísérletet. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
+2. A Azure Machine Learning SDK használatával vegyen fel kísérlet-követést, és töltsön fel egy megőrzött modellt a kísérlet futtatása rekordba. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
 
    ```python
     # Get an experiment object from Azure Machine Learning

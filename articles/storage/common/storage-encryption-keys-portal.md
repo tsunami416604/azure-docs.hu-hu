@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c8ec6b1e90eb6638c99ca43715c5e8bea6e48c22
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 892cbe66222626a6847ad7a5b6c990d23991c182
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030953"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002266"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-titkosításhoz a Azure Portal
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által fe
 
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy a Key Vault két szükséges tulajdonsággal rendelkezzen, a helyreállítható törléssel és a **kiürítéssel**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy a Key Vault két szükséges tulajdonsággal rendelkezzen, a helyreállítható **törléssel** és a **kiürítéssel**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
 > Csak az RSA-kulcsok és a 2048-es kulcs mérete támogatott.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
@@ -73,4 +73,4 @@ A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot
 ## <a name="next-steps"></a>További lépések
 
 - [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
-- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

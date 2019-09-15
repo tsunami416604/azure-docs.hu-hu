@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: dd47f4b7e0e9e27714be3862494bfdabf122d458
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726798"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999154"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure App Service használatával
 
@@ -35,10 +35,10 @@ A App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató sz
 A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, például a szükséges ismeretet és a legalacsonyabb szintű biztonsági alapelveket. Ha többet szeretne megtudni a felhasználók alkalmazásokhoz való hozzáférésének biztosításáról, tekintse meg a [Mi a szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview)című témakört.
 
 ## <a name="protect-your-keys"></a>A kulcsok megóvása
-Nem számít, hogy mennyire jó a biztonsága, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja. További információ: [Mi a Azure Key Vault](../../key-vault/key-vault-whatis.md) .
+Nem számít, hogy mennyire jó a biztonsága, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja. További információ: [Mi a Azure Key Vault](../../key-vault/key-vault-overview.md) .
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>Bejövő forrás IP-címeinek korlátozása
-[App Service környezetek](../../app-service/environment/intro.md) virtuális hálózati integrációs funkciója segítségével a bejövő forrás IP-címeket hálózati biztonsági csoportokkal (NSG) korlátozhatja. Ha nem ismeri az Azure Virtual Networks (virtuális hálózatok) szolgáltatást, ez egy olyan képesség, amely lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes, átirányítható hálózaton helyezzen el, amely a hozzáférését szabályozza. További információ: [az alkalmazás integrálása Azure](../../app-service/web-sites-integrate-with-vnet.md)-Virtual Networkokkal.
+[App Service környezetek](../../app-service/environment/intro.md) virtuális hálózati integrációs funkciója segítségével a bejövő forrás IP-címeket hálózati biztonsági csoportokkal (NSG) korlátozhatja. Ha nem ismeri az Azure Virtual Networks (virtuális hálózatok) szolgáltatást, ez egy olyan képesség, amely lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes, átirányítható hálózaton helyezzen el, amely a hozzáférését szabályozza. További információ: [az alkalmazás integrálása Azure-Virtual Networkokkal](../../app-service/web-sites-integrate-with-vnet.md).
 
 A Windows App Service esetében a web. config fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 

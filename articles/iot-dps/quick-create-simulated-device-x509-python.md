@@ -10,14 +10,15 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 12ccff3676cb35ac27126360dbcf5a1b9b3e131f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3474d30d051e88d0e9150ea649958caa460932c7
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65914148"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001294"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Python eszközoldali SDK-val
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Ezek a lépések bemutatják, hogyan hozhat létre szimulált X.509-eszközt egy Windows operációs rendszert futtató fejlesztői gépen, és hogyan kötheti össze ezt a szimulált eszközt a Device Provisioning Service-szel és az IoT Hubbal egy Python kódminta segítségével. 
@@ -25,16 +26,19 @@ Ezek a lépések bemutatják, hogyan hozhat létre szimulált X.509-eszközt egy
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálására szolgál.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálására szolgál.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> Ez az útmutató csak a most már elavult v1 Python SDK-ra vonatkozik. A szimulált X. 509 eszközök még nem támogatottak a v2-ben. A csapat jelenleg nem működik a v2-ben a szolgáltatás paritásán.
+
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
-1. Győződjön meg arról, hogy telepítette, vagy [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió, az "asztali fejlesztés C++" számítási feladat, a Visual Studio telepítésekor engedélyezni.
+1. Győződjön meg arról, hogy telepítette a [Visual studio](https://visualstudio.microsoft.com/vs/) 2015-es C++vagy újabb verzióját, és a Visual Studio telepítéséhez engedélyezve van az "asztali fejlesztés" munkaterhelése.
 
 2. Töltse le és telepítse a [CMake buildelési rendszert](https://cmake.org/download/).
 

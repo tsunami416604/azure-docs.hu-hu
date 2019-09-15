@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: b78f81e16afbd044306c6697e0d8823bdd02b81a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232872"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003299"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
@@ -27,7 +27,7 @@ A felhőbevezetési keretrendszer alaprendszeréhez tartozó tervminta olyan aj�
 
 Ez az implementálás több Azure-szolgáltatást foglal magába a biztonságos, teljes körűen felügyelt, vállalati használatra kész alaprendszer biztosítása érdekében. A környezet összetevői:
 
-- Az [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
+- Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett virtuális gépek titkos kulcsainak tárolására szolgál
 - A [Log Analytics](../../../../azure-monitor/overview.md) üzembe helyezése biztosítja, hogy az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen onnantól kezdve, hogy megkezdi a [tárfiókokba](../../../../storage/common/storage-introduction.md) való biztonságos üzembe helyezést diagnosztikai naplózás céljából
 - Az [Azure Security Center](../../../../security-center/security-center-intro.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára
 - A terv emellett meghatároz és üzembe helyez [Azure-szabályzatokat](../../../policy/overview.md) a következőkhöz: 

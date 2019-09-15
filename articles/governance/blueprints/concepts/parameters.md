@@ -7,12 +7,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231954"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004088"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -58,7 +58,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. A bal oldali oldalon válassza a **tervezet** -definíciók lehetőséget.
+1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
 1. Kattintson egy meglévő tervre, majd kattintson a **terv szerkesztése** vagy a **+ terv létrehozása** lehetőségre, és adja meg az alapvető tudnivalókat az **alapok** lapon.
 
@@ -175,17 +175,17 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
 
-1. A bal oldali oldalon válassza a **tervezet** -definíciók lehetőséget.
+1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. Kattintson a jobb gombbal a hozzárendelni kívánt tervre. Válassza a **terv** kiosztása lehetőséget, vagy kattintson a hozzárendelni kívánt tervre, majd kattintson a **terv** kiosztása gombra.
+1. Kattintson a jobb gombbal a hozzárendelni kívánt tervre. Válassza a **terv kiosztása** lehetőséget, vagy kattintson a hozzárendelni kívánt tervre, majd kattintson a **terv kiosztása** gombra.
 
-1. A **terv** kiosztása lapon keresse meg az összetevő **paramétereinek** szakaszát. Minden olyan összetevő, amely legalább egy **dinamikus paraméterrel** rendelkezik, megjeleníti az összetevőt és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv kiosztása előtt. Az alábbi példában a _Name_ egy **dinamikus paraméter** , amelyet meg kell határozni a terv hozzárendelésének befejezéséhez.
+1. A **terv kiosztása** lapon keresse meg az összetevő **paramétereinek** szakaszát. Minden olyan összetevő, amely legalább egy **dinamikus paraméterrel** rendelkezik, megjeleníti az összetevőt és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv kiosztása előtt. Az alábbi példában a _Name_ egy **dinamikus paraméter** , amelyet meg kell határozni a terv hozzárendelésének befejezéséhez.
 
    ![Tervezet-hozzárendelés dinamikus paramétere a terv hozzárendelése során](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása REST API
 
-A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a  **\<\> Name** és az **Value** kulcspár **paraméterei** alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
+A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a **\<name\>** és az **Value** kulcspár **paraméterei** alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
 
 - REST API URI
 
@@ -239,7 +239,7 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [terv függvények](../reference/blueprint-functions.md)listáját.
-- A [terv életciklusának](lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.

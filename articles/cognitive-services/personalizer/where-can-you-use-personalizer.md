@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663638"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999649"
 ---
 # <a name="where-can-you-use-personalizer"></a>Hol használhatja a Personalizert?
 
@@ -36,7 +36,7 @@ A személyre szabás olyan helyzetekben is alkalmazható, ahol:
 * Az alkalmazáshoz tartozó rangsorolt választék meghatározása a felhasználói viselkedés bizonyos aspektusának mérésével, valamint a _jutalom pontszámának_kifejezésével határozható meg. Ez egy-1 és 1 közötti szám.
 * A jutalom pontszáma nem túl sok összetételt vagy külső tényezőt eredményez. A kísérlet időtartama elég alacsony ahhoz, hogy a jutalom pontszám kiszámítható legyen, miközben továbbra is releváns.
 * A rangsorhoz tartozó kontextust úgy fejezheti be, hogy legalább 5 olyan [funkciót](concepts-features.md) tartalmaz, amelyet úgy gondol, hogy kihasználja a megfelelő választást, és nem tartalmaz személyazonosításra alkalmas adatokat. (PII).
-* Minden egyes tartalomra vonatkozó döntésről, _műveletről_, legalább 5 olyan szolgáltatásról van [](concepts-features.md) szó, amelyről úgy gondolja, hogy a megfelelő választást fogja segíteni személyre szabni.
+* Minden egyes tartalomra vonatkozó döntésről, _műveletről_, legalább 5 olyan [szolgáltatásról](concepts-features.md) van szó, amelyről úgy gondolja, hogy a megfelelő választást fogja segíteni személyre szabni.
 * Az alkalmazás képes megőrizni az adatmennyiséget, hogy az előzmények legalább 100 000 interakciót gyűjtsenek.
 
 ## <a name="machine-learning-considerations-for-applying-personalizer"></a>Gépi tanulási szempontok a személyre szabás alkalmazásához
@@ -58,7 +58,7 @@ Az [Offline értékelések](concepts-offline-evaluation.md)végrehajtásával re
 
 Számos vállalat ajánlási motorokat, marketing-és kampánycélok-eszközöket, a célközönség szegmentálását és fürtözését, az együttműködési szűrést és más eszközöket ajánl fel a nagy katalógusból az ügyfeleknek szánt termékek használatát.
 
-A [Microsoft Ajánlói GitHub](https://github.com/Microsoft/Recommenders) -tárháza példákat és ajánlott eljárásokat biztosít a Jupyter-jegyzetfüzetként biztosított, ajánlásokat tartalmazó rendszerek létrehozásához. Az útmutató az adatelőkészítéshez, modellek létrehozásához, kiértékeléséhez, finomhangolásához és végrehajtott, számos gyakori megközelítéshez, többek között a xDeepFM, a SAR-hoz, az ALS-hez, a DKN-hez,
+A [Microsoft Ajánlói GitHub-tárháza](https://github.com/Microsoft/Recommenders) példákat és ajánlott eljárásokat biztosít a Jupyter-jegyzetfüzetként biztosított, ajánlásokat tartalmazó rendszerek létrehozásához. Az útmutató az adatelőkészítéshez, modellek létrehozásához, kiértékeléséhez, finomhangolásához és végrehajtott, számos gyakori megközelítéshez, többek között a xDeepFM, a SAR-hoz, az ALS-hez, a DKN-hez,
 
 A személyre szabott ajánlási motorral működhet, ha jelen van.
 

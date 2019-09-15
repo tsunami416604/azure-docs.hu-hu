@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900010"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000525"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -73,7 +73,7 @@ Az Azure Resource Graph REST API csak `Content-Type` az **alkalmazás-vagy JSON-
 
 #### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök rendelkezik-e az `Content-Type` alkalmazáshoz **/JSON-** hoz konfigurált REST API fejléctel.
+Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök rendelkezik-e az `Content-Type` **alkalmazáshoz/JSON-** hoz konfigurált REST API fejléctel.
 ### <a name="rest-403"></a>Forgatókönyv Nincs olvasási engedélye a listában szereplő összes előfizetéshez
 
 #### <a name="issue"></a>Probléma
@@ -94,4 +94,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 - Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 - Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

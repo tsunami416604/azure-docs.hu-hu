@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés engedélyezése Azure Machine Learning szolgáltatásban
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan engedélyezheti a naplózást Azure Machine Learning szolgáltatásban az alapértelmezett Python-naplózási csomaggal, valamint az SDK-specifikus funkciók használatával.
+title: Bejelentkezés engedélyezése Azure Machine Learning
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan engedélyezheti a naplózást Azure Machine Learning az alapértelmezett Python-naplózási csomaggal, valamint az SDK-specifikus funkciók használatával.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847924"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002753"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Bejelentkezés engedélyezése Azure Machine Learning szolgáltatásban
+# <a name="enable-logging-in-azure-machine-learning"></a>Bejelentkezés engedélyezése Azure Machine Learning
 
 A Azure Machine Learning Python SDK lehetővé teszi, hogy az alapértelmezett Python-naplózási csomaggal engedélyezze a naplózást, valamint a helyi naplózáshoz és a portálon a munkaterületre való bejelentkezéshez egyaránt használja az SDK-specifikus funkciókat. A naplók valós idejű információkat biztosítanak a fejlesztőknek az alkalmazás állapotáról, és segíthetnek a hibák vagy figyelmeztetések diagnosztizálásában. Ebből a cikkből megismerheti a naplózás engedélyezésének különböző módjait a következő területeken:
 
@@ -27,7 +27,7 @@ A Azure Machine Learning Python SDK lehetővé teszi, hogy az alapértelmezett P
 > * Üzembe helyezett modellek
 > * Python `logging` -beállítások
 
-[Hozzon létre egy Azure Machine learning szolgáltatás](how-to-manage-workspace.md)munkaterületet. Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+[Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md). Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Képzési modellek és számítási cél naplózása
 

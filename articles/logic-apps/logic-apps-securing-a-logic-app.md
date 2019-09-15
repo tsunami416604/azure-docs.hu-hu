@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845432"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004094"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -185,7 +185,7 @@ Annak megakadályozása érdekében, hogy mások módosíthassák vagy törölj�
 
 A logikai alkalmazások futtatása során a rendszer az átvitel során titkosítja az összes adatforgalmat a [tranzit Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) és a [nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Ha a logikai alkalmazás futása befejeződött, megtekintheti a Futtatás előzményeit, beleértve az egyes műveletek állapotával, időtartamával, bemenetével és kimenetével együtt futtatott lépéseket is. Ez a részletes információk betekintést biztosítanak a logikai alkalmazás futtatásának módjára, valamint az esetlegesen felmerülő problémák elhárítására.
 
-Amikor hozzáfér a logikai alkalmazás futtatási előzményeihez, Logic Apps hitelesíti a hozzáférést, és hivatkozásokat biztosít a logikai alkalmazás futtatásához tartozó kérések és válaszok bemeneteit és kimeneteit illetően. A jelszavakat, titkos kulcsokat vagy más bizalmas adatokat kezelő műveletek esetében azonban meg kell akadályozni, hogy mások megtekintsék és hozzáférjenek az adatokhoz. Ha például a logikai alkalmazás a HTTP-műveletek hitelesítéséhez [Azure Key Vault](../key-vault/key-vault-whatis.md) titkos kulcsot kap, akkor a titkos kulcsot el szeretné rejteni a nézetből.
+Amikor hozzáfér a logikai alkalmazás futtatási előzményeihez, Logic Apps hitelesíti a hozzáférést, és hivatkozásokat biztosít a logikai alkalmazás futtatásához tartozó kérések és válaszok bemeneteit és kimeneteit illetően. A jelszavakat, titkos kulcsokat vagy más bizalmas adatokat kezelő műveletek esetében azonban meg kell akadályozni, hogy mások megtekintsék és hozzáférjenek az adatokhoz. Ha például a logikai alkalmazás a HTTP-műveletek hitelesítéséhez [Azure Key Vault](../key-vault/key-vault-overview.md) titkos kulcsot kap, akkor a titkos kulcsot el szeretné rejteni a nézetből.
 
 A logikai alkalmazás futtatási előzményeiben található bemenetekhez és kimenetekhez való hozzáférés szabályozásához a következő lehetőségek közül választhat:
 
@@ -370,7 +370,7 @@ További információ: [biztonságos paraméterek a munkafolyamat-definíciókba
 
 Ha [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters)-sablonokkal automatizálja az üzembe helyezést, megadhatja a biztonságos sablon paramétereit, amelyek kiértékelése a `securestring` telepítéskor történik a és `secureobject` a típus használatával. A sablon paramétereinek megadásához használja a sablon legfelső `parameters` szintű szakaszát, amely külön és eltér a munkafolyamat- `parameters` definíció szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-whatis.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információkért tekintse meg a következő témaköröket:
+Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információkért tekintse meg a következő témaköröket:
 
 * [A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezéskor](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 * [Biztonságos paraméterek Azure Resource Manager](#secure-parameters-deployment-template) -sablonokban a témakör későbbi részében
@@ -425,7 +425,7 @@ A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok vé
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Biztonságos paraméterek Azure Resource Manager-sablonokban
 
-A logikai alkalmazások Resource Manager-sablonjai több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós `securestring` szinten `secureobject` a vagy a típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-whatis.md) , és a [paraméter fájllal](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/resource-manager-keyvault-parameter.md)átadására a telepítéskor.
+A logikai alkalmazások Resource Manager-sablonjai több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós `securestring` szinten `secureobject` a vagy a típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-overview.md) , és a [paraméter fájllal](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/resource-manager-keyvault-parameter.md)átadására a telepítéskor.
 
 További információ az alábbi `parameters` fejezetekről:
 

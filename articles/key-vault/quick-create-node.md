@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2010
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259241"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003497"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Azure Key Vault titkos kulcsának beállítása és beolvasása egy csomópont-webalkalmazás használatával 
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan tárolhatja a titkos kulcsokat a Azure 
 * [Felügyelt identitás](../active-directory/managed-service-identity/overview.md) engedélyezése a webalkalmazáshoz.
 * A szükséges engedélyek megadása a webalkalmazás számára az adatoknak a kulcstartóból való olvasásához.
 
-A folytatás előtt győződjön meg arról, hogy már ismeri a [Key Vault alapvető fogalmait](key-vault-whatis.md#basic-concepts).
+A folytatás előtt győződjön meg arról, hogy már ismeri a [Key Vault alapvető fogalmait](basic-concepts.md).
 
 > [!NOTE]
 > A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak és a felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Az ajánlott biztonsági eljárásoknak megfelelően ezt az első titkot rendszeresen el kell forgatni. 

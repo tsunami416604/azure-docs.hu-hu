@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ca640b058a1d91d15c5accb9367936368511a3ef
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881606"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000798"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault fejlesztői útmutató
 
@@ -24,7 +24,7 @@ Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalma
 - Az alkalmazás a kulcsokat az aláíráshoz és a titkosításhoz is használhatja, és az alkalmazáson kívül is tartja a kulcskezelő szolgáltatást, így a megoldás földrajzilag elosztott alkalmazásként is használható.
 - A Key Vault szeptember 2016-es kiadásával az alkalmazásai már kezelhetik Key Vault tanúsítványokat. További információ: [a kulcsok, titkos kódok és tanúsítványok](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
-További általános információk a Azure Key Vaultről: [Mi az Key Vault](key-vault-whatis.md).
+További általános információk a Azure Key Vaultről: [Mi az Key Vault](key-vault-overview.md).
 
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
@@ -148,7 +148,7 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 - [Key Vault a Storage-fiók kulcsainak áttekintése](key-vault-ovw-storage-keys.md) az Azure Storage-fiókokhoz tartozó Key Vault-integrációs fiókok kulcsait ismerteti.
 - [Key Vault biztonsági világok](key-vault-ovw-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 
-## <a name="social"></a>Közösségi
+## <a name="social"></a>Közösség
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault fórum](https://aka.ms/kvforum)

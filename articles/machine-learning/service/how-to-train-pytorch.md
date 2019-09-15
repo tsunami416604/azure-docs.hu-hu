@@ -1,6 +1,6 @@
 ---
 title: Mély tanulási neurális hálózat betanítása a PyTorch
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning PyTorch kalkulátor-osztályának használatával.  A példaként szolgáló parancsfájlok a csirkét és a pulyka képét sorolják fel, hogy PyTorch az adatátviteli tanulási oktatóanyag alapján mély tanulási neurális hálózatot hozzanak létre.
 services: machine-learning
 ms.service: machine-learning
@@ -11,18 +11,18 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966789"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002566"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>A Pytorch mély tanulási modelljeinek betanítása Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan futtathatja nagyvállalati szintű [PyTorch](https://pytorch.org/) -betanítási parancsfájljait Azure Machine learning [PyTorch kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) -osztályának használatával.  
 
-Az ebben a cikkben szereplő szkriptek a csirkék és a Törökország képeinek osztályozására szolgálnak, hogy a PyTorch az adatátviteli [](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)tanulási oktatóanyaga alapján mély tanulási neurális hálózatot hozzanak létre. 
+Az ebben a cikkben szereplő szkriptek a csirkék és a Törökország képeinek osztályozására szolgálnak, hogy a PyTorch az adatátviteli tanulási [oktatóanyaga](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)alapján mély tanulási neurális hálózatot hozzanak létre. 
 
 Legyen szó akár egy mély tanulási PyTorch modellről az alapoktól, akár egy meglévő modellt hoz létre a felhőben, a Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
 Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -93,7 +93,7 @@ Az adatkészlet körülbelül 120 betanítási képet tartalmaz a pulykák és c
 
 ### <a name="prepare-training-scripts"></a>Betanítási parancsfájlok előkészítése
 
-Ebben az oktatóanyagban már meg van biztosítva a betanítási szkript `pytorch_train.py`. A gyakorlatban bármilyen egyéni tanítási szkriptet igénybe vehet, és futtathatja Azure Machine Learning szolgáltatással.
+Ebben az oktatóanyagban már meg van biztosítva a betanítási szkript `pytorch_train.py`. A gyakorlatban bármilyen egyéni tanítási szkriptet igénybe vehet, és futtathatja a Azure Machine Learning használatával.
 
 Töltse fel a Pytorch betanítási szkriptjét `pytorch_train.py`.
 
@@ -101,7 +101,7 @@ Töltse fel a Pytorch betanítási szkriptjét `pytorch_train.py`.
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Ha azonban a Azure Machine Learning Service Tracking és a mérőszámok funkcióit szeretné használni, egy kis mennyiségű kódot kell felvennie a betanítási parancsfájlba. A metrikák nyomon követésének példái a `pytorch_train.py`következő címen találhatók:.
+Ha azonban Azure Machine Learning követési és mérőszám-képességeket szeretne használni, egy kis mennyiségű kódot kell hozzáadnia a betanítási parancsfájlban. A metrikák nyomon követésének példái a `pytorch_train.py`következő címen találhatók:.
 
 ## <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Elosztott betanítás
 
-A [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) kalkulátor a CPU-és a GPU-fürtökön egyaránt támogatja az elosztott képzést. Könnyedén futtathatja az elosztott PyTorch-feladatokat, és a Azure Machine Learning szolgáltatás fogja felügyelni az Ön számára.
+A [`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) kalkulátor a CPU-és a GPU-fürtökön egyaránt támogatja az elosztott képzést. Könnyedén futtathatja az elosztott PyTorch-feladatokat, és Azure Machine Learning felügyeli az Ön számára.
 
 ### <a name="horovod"></a>Horovod
 A [Horovod](https://github.com/uber/horovod) egy nyílt forráskódú, amely az Über által fejlesztett elosztott képzések összes csökkentési keretrendszerét csökkenti. Az elosztott GPU PyTorch feladatok egyszerű elérési útját kínálja.
@@ -218,11 +218,11 @@ import horovod
 ```
 ## <a name="export-to-onnx"></a>Exportálás ONNX
 
-Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként [](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) tekintse meg az oktatóanyagot.
+Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként tekintse meg az [oktatóanyagot](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a PyTorch-t használó, Azure Machine Learning szolgáltatáson keresztül betanított és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
+Ebben a cikkben a PyTorch-on Azure Machine Learning-on keresztül tanult és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)

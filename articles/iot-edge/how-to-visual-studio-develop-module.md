@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58c88e9b7cf2e0f80c88d32e02d13096a9623a4b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ed668f744716b062fd70d2f63d89152f6fc8a902
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914025"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999137"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -44,7 +44,7 @@ Miután a Visual Studio 2019 elkészült, a következő eszközökre és összet
 
 - Töltse le és telepítse a [Docker Community Editiont](https://docs.docker.com/install/) a fejlesztői gépen a modul lemezképének elkészítéséhez és futtatásához. A Docker CE-t úgy kell beállítania, hogy Linux-tároló módban vagy Windows-tároló módban fusson.
 
-- Állítsa be a helyi fejlesztési környezetet a IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez az [Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/)telepítésével. Telepítse a [Pythont (2.7/3.6) és a pip](https://www.python.org/) -et, majd telepítse a **iotedgehubdev** csomagot a következő parancs futtatásával a terminálon. Ellenőrizze, hogy az Azure IoT EdgeHub fejlesztési eszköz verziószáma nagyobb, mint 0.3.0.
+- Állítsa be a helyi fejlesztési környezetet a IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez az [Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/)telepítésével. Telepítse a [Pythont (2.7/3.6 +) és a pip](https://www.python.org/) -et, majd telepítse a **iotedgehubdev** csomagot a következő parancs futtatásával a terminálon. Ellenőrizze, hogy az Azure IoT EdgeHub fejlesztési eszköz verziószáma nagyobb, mint 0.3.0.
 
    ```cmd
    pip install --upgrade iotedgehubdev

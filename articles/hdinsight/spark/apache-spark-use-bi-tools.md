@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/16/2019
-ms.openlocfilehash: 319668ac81b390f9a8bf70da36dd3cf1508f5c37
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bb803861fa64beb0b4afe2202230209493f42a1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885171"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003637"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatelemzés a HDInsight Power BI használatával
 
@@ -46,7 +46,7 @@ Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott `
 
     A kimenet a következőképpen fog kinézni:
 
-    ![Táblák megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/show-tables.png)
+    ![Táblák megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
 
     Ha az oktatóanyag elindítása előtt már bezárta a notebookot, a `hvactemptable` törlődik, így az nem szerepel a kimenetben.  A BI-eszközökkel csak a metaadattárban tárolt Hive-táblákhoz (ezeket **Hamis** érték jelzi az **isTemporary** oszlopban) lehet hozzáférni. Ebben az oktatóanyagban kapcsolatot létesít az Ön által létrehozott **HVAC**-táblával.
 
@@ -59,7 +59,7 @@ Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott `
 
     A kimenet a következőképpen fog kinézni:
 
-    ![A HVAC-tábla sorainak megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/select-limit.png)
+    ![A HVAC-tábla sorainak megjelenítése a Sparkban](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
 
 3. A notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Állítsa le a notebookot az erőforrások felszabadításához.
 
@@ -127,31 +127,32 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat oszthat meg a vállalaton belül. Ebben a szakaszban először az adatkészlet és a jelentés közzétételét végezzük el. Ezután rögzíteni fogjuk a jelentést egy irányítópulton. Az irányítópultok jellemzően az adott jelentés adatai egy részének középpontba helyezésére szolgálnak. Ugyan a jelentésben csak egy vizualizáció szerepel, mégis hasznos lehet végigmenni a lépéseken.
 
 1. Nyissa meg a Power BI Desktopot.
-2. A **Kezdőlapon** kattintson a **Közzététel** gombra.
+
+1. A **Kezdőlapon** kattintson a **Közzététel** gombra.
 
     ![Közzététel a Power BI Desktopból](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Közzététel a Power BI Desktopból")
 
-2. Válasszon ki egy munkaterületet az adatkészlet és a jelentés közzétételéhez, majd kattintson a **Kiválasztás** gombra. A következő képen az alapértelmezett **Saját munkaterület** mező van kiválasztva.
+1. Válasszon ki egy munkaterületet az adatkészlet és a jelentés közzétételéhez, majd kattintson a **Kiválasztás** gombra. A következő képen az alapértelmezett **Saját munkaterület** mező van kiválasztva.
 
     ![Munkaterület kiválasztása az adatkészlet és a jelentés közzétételéhez](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Munkaterület kiválasztása az adatkészlet és a jelentés közzétételéhez") 
 
-3. Ha a közzététel sikeresen megtörtént, kattintson a **„BuildingTemperature.pbix” fájl megnyitása a Power BI-ban** elemre.
+1. Ha a közzététel sikeresen megtörtént, kattintson a **„BuildingTemperature.pbix” fájl megnyitása a Power BI-ban** elemre.
 
     ![Sikeres közzététel, kattintson a hitelesítő adatok megadásához](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Sikeres közzététel, kattintson a hitelesítő adatok megadásához") 
 
-4. A Power BI szolgáltatás felületén kattintson a **Hitelesítő adatok megadása** elemre.
+1. A Power BI szolgáltatás felületén kattintson a **Hitelesítő adatok megadása** elemre.
 
     ![Hitelesítő adatok megadása a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Hitelesítő adatok megadása a Power BI szolgáltatásban")
 
-5. Kattintson a **Hitelesítő adatok szerkesztése** gombra.
+1. Kattintson a **Hitelesítő adatok szerkesztése** gombra.
 
     ![Hitelesítő adatok szerkesztése a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Hitelesítő adatok szerkesztése a Power BI szolgáltatásban")
 
-6. Adja meg a HDInsight bejelentkezési fiókadatait, majd kattintson a **Bejelentkezés** gombra. Az alapértelmezett fióknév az *admin*.
+1. Adja meg a HDInsight bejelentkezési fiókadatait, majd kattintson a **Bejelentkezés** gombra. Az alapértelmezett fióknév az *admin*.
 
     ![Bejelentkezés Spark-fürtre](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Bejelentkezés Spark-fürtre")
 
-7. A bal oldali panelen lépjen a **Munkaterületek** > **Saját munkaterület** > **JELENTÉSEK** részre, majd kattintson a **BuildingTemperature** elemre.
+1. A bal oldali panelen lépjen a **Munkaterületek** > **Saját munkaterület** > **JELENTÉSEK** részre, majd kattintson a **BuildingTemperature** elemre.
 
     ![A bal oldali ablaktábla Jelentések területén szereplő jelentés](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "A bal oldali ablaktábla Jelentések területén szereplő jelentés")
 
@@ -159,15 +160,15 @@ A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat 
 
     A Power BI Desktopban létrehozott vizualizáció mostantól a Power BI szolgáltatásban is elérhető. 
 
-8. Vigye az egérmutatót a vizualizáció fölé, majd kattintson a jobb felső sarokban lévő rögzítés ikonra.
+1. Vigye az egérmutatót a vizualizáció fölé, majd kattintson a jobb felső sarokban lévő rögzítés ikonra.
 
     ![Jelentés a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Jelentés a Power BI szolgáltatásban")
 
-9. Válassza az „Új irányítópult” lehetőséget, adja meg a `Building temperature` nevet, majd kattintson a **Rögzítés** gombra.
+1. Válassza az „Új irányítópult” lehetőséget, adja meg a `Building temperature` nevet, majd kattintson a **Rögzítés** gombra.
 
     ![Rögzítés új irányítópulton](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Rögzítés új irányítópulton")
 
-10. A jelentésben kattintson az **Ugrás az irányítópultra** gombra. 
+1. A jelentésben kattintson az **Ugrás az irányítópultra** gombra.
 
 Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további vizualizációkat is a jelentésbe, amelyeket ugyanezen az irányítópulton rögzíthet. A jelentésekkel és irányítópultokkal kapcsolatos további információkért tekintse meg a Power BI Power BI és [irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/) [jelentései](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) című témakört.
 

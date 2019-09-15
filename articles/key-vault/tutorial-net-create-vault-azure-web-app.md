@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: c27c787eeac9bbf68b512b55b9ceab11074a81d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934357"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003362"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Oktatóanyag: Azure Key Vault használata Azure-webalkalmazással a .NET-ben
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Rendeljen engedélyt a webalkalmazáshoz.
 > * Futtassa a webalkalmazást az Azure-ban.
 
-Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](key-vault-whatis.md#basic-concepts). 
+Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](basic-concepts.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító identitást biztosít, amely leegyszerűsíti a folyamatot.
 
-Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](key-vault-whatis.md#basic-concepts). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba.
+Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](basic-concepts.md). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba.
 
 ![MSI-diagram](media/MSI.png)
 
@@ -85,7 +85,7 @@ A Key Vault az erőforráscsoporthoz való létrehozásához adja meg a követke
 
 * Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat (0-9), betűket (a-z, A-z) és kötőjeleket (-) tartalmazhat.
 * Erőforráscsoport neve
-* Hely: **USA nyugati régiója**
+* Helyen **USA nyugati régiója**
 
 Az Azure CLI-ben adja meg a következő parancsot:
 
@@ -191,7 +191,7 @@ Az alábbi videót is megtekintheti:
 
 ## <a name="run-the-web-app"></a>A webalkalmazás futtatása
 
-1. A Visual Studio 2019 főmenüjében kattintson > a hibakeresés**indítása**lehetőségre hibakeresés nélkül. 
+1. A Visual Studio 2019 > főmenüjében **kattintson a hibakeresés** **indítása**lehetőségre hibakeresés nélkül. 
 1. A böngészőben nyissa meg a **Névjegy** lapot.  
     Megjelenik az **AppSecret** értéke.
 

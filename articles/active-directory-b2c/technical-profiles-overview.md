@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716671"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998759"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -37,7 +37,6 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Rest-szolgáltató](restful-technical-profile.md) – olyan REST API szolgáltatásokat hív meg, mint például a felhasználói bevitel ellenőrzése, a felhasználói adatok gazdagítása vagy az üzletági alkalmazásokkal való integráció.
 - [Egy saml2](saml-technical-profile.md) – összevonás bármely SAML protokoll identitás-szolgáltatóval.
 - [](self-asserted-technical-profile.md) Önérvényesített – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
-- **WsFed** – összevonás bármely WsFed protokoll-identitás-szolgáltatóval.
 - [Munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) – különböző típusú munkamenetek kezelése.
 - **Application bepillantást**
 

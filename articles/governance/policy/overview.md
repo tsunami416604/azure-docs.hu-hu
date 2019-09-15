@@ -7,16 +7,16 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: da045a561fba81bf9a5e412a6f2bf0a6160acfa7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b0c2d8060756c23cc69325ab88803d0423ba45b9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807451"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002298"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Az Azure Policy szolgáltatás áttekintése
+# <a name="overview-of-the-azure-policy-service"></a>A Azure Policy szolgáltatás áttekintése
 
-Cégirányítási ellenőrzi, hogy a szervezet a célok leghatékonyabb használatán keresztül érhető el, informatikai. Üzleti céljait és informatikai projektek között egyértelműség létrehozásával megfelel ennek az igénynek.
+A szabályozás azt ellenőrzi, hogy a szervezet hatékony és hatékony használattal tudja-e elérni a céljait. Üzleti céljait és informatikai projektek között egyértelműség létrehozásával megfelel ennek az igénynek.
 
 A cégben jelentős mennyiségű, láthatóan megoldhatatlan informatikai probléma jelentkezik?
 A hatékony informatikai szabályozás stratégiai szinten kezeli a kezdeményezések tervezését és a prioritások meghatározását a problémák kezelése és megelőzése érdekében. A stratégiai szükség, ahol az Azure Policy pedig kifejezetten.
@@ -30,7 +30,7 @@ Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályz
 
 ## <a name="how-is-it-different-from-rbac"></a>Mennyiben különbözik ez az RBAC-től?
 
-Az Azure Policy és a szerepköralapú hozzáférés-vezérlés (RBAC) közötti néhány fontos különbség van. Az RBAC a különféle hatókörű felhasználói műveletekre összpontosít. Előfordulhat, hogy lehet hozzáadni egy erőforráscsoport, a közreműködő szerepkört lehetővé teszi, hogy hajtsa végre a módosításokat az adott erőforráscsoporton. A meglévő erőforrások erőforrás-tulajdonságok üzembe helyezés során, és már az Azure házirend összpontosít. Az Azure Policy tulajdonságok, mint például a fájltípusok vagy az erőforrások szabályozza. RBAC, eltérően az Azure Policy alapértelmezés szerint, és explicit tiltási rendszer.
+A Azure Policy és a szerepköralapú hozzáférés-vezérlés (RBAC) között van néhány lényeges különbség. Az RBAC a különféle hatókörű felhasználói műveletekre összpontosít. Előfordulhat, hogy lehet hozzáadni egy erőforráscsoport, a közreműködő szerepkört lehetővé teszi, hogy hajtsa végre a módosításokat az adott erőforráscsoporton. A Azure Policy az erőforrás tulajdonságaira koncentrál az üzembe helyezés során és a már meglévő erőforrások esetében. Azure Policy a vezérlők tulajdonságait, például az erőforrások típusait vagy helyét. A RBAC-től eltérően a Azure Policy egy alapértelmezett engedélyezési és explicit megtagadás rendszer.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-engedélyek az Azure Policyban
 
@@ -39,7 +39,7 @@ Az Azure Policy több engedéllyel (más néven művelettel) rendelkezik két er
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. A **erőforrás-szabályzati közreműködő (előzetes verzió)** szerepkör tartalmazza a legtöbb Azure szabályzat-műveletek. **Tulajdonos** teljes körű jogosultságokkal rendelkezik. Mindkét **közreműködői** és **olvasó** minden olvasási műveletek az Azure Policy, használhatja, de **közreműködői** is el lehet indítani a szervizelés.
+Számos beépített szerepkör oszt ki engedélyeket Azure Policy-erőforrásoknak. Az **erőforrás-házirend közreműködője (előzetes verzió)** szerepkör magában foglalja a legtöbb Azure Policy műveletet. **Tulajdonos** teljes körű jogosultságokkal rendelkezik. Mind a **közreműködő** , mind az **olvasó** használhatja az összes olvasási Azure Policy műveletet, de a **közreműködő** is aktiválhatja a szervizelést.
 
 Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hozzon létre egy [egyéni szerepkört](../../role-based-access-control/custom-roles.md).
 
@@ -49,14 +49,14 @@ Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyama
 
 Az Azure Policy biztosítunk számos beépített szabályzatok alapértelmezés szerint elérhető. Példa:
 
-- **SQL Server 12.0-s verziójának megkövetelése**: Ellenőrzi, hogy minden SQL-kiszolgáló 12.0-s verziót használja-e. Hatás az, hogy ezek a feltételek nem felelnek meg az összes kiszolgáló megtagadja.
-- **Engedélyezett termékváltozatok a tárolási fiók**: Meghatározza, hogy parancsfájlműveletekkel tárfiók a Termékváltozat-méretek belül. Annak hatását, hogy megtagadja az összes storage-fiókok, amelyek nem a Termékváltozat-méretek meghatározott készletét.
-- **Engedélyezett erőforrástípus**: Határozza meg az üzembe helyezhető erőforrástípusok. Hatás az összes olyan erőforrást, amely nem része a definiált listában elutasítása.
-- **Engedélyezett helyek**: Korlátozza az elérhető helyek új erőforrások. Biztosítja a földrajzi megfelelőségi követelmények betartását.
-- **Engedélyezett virtuálisgép-termékváltozatok**: Virtuális gépek azon Termékváltozatai, amely központilag telepíthető egy halmazát határozza meg.
-- **Címke és címke alapértelmezett értékének alkalmazása**: Érvényes egy címke és az alapértelmezett értékére, ha a telepítés kérelemben nincs megadva.
-- **Címke és címke értékének kényszerítése**: Kényszerít egy címkét és a hozzá tartozó érték megadását egy erőforráshoz.
-- **Nem engedélyezett erőforrástípusok**: Megakadályozza, hogy erőforrástípusok listája üzembe helyezve.
+- **SQL Server 12,0 szükséges**: Ellenőrzi, hogy az összes SQL-kiszolgáló az 12,0-es verziót használja-e. Hatás az, hogy ezek a feltételek nem felelnek meg az összes kiszolgáló megtagadja.
+- **Engedélyezett Storage-fiók SKU**-i: Meghatározza, hogy egy üzembe helyezett Storage-fiók SKU-méreteken belül van-e. Annak hatását, hogy megtagadja az összes storage-fiókok, amelyek nem a Termékváltozat-méretek meghatározott készletét.
+- **Engedélyezett erőforrástípus**: Meghatározza az üzembe helyezhető erőforrástípusok típusát. Hatás az összes olyan erőforrást, amely nem része a definiált listában elutasítása.
+- **Engedélyezett helyszínek**: Az új erőforrások elérhető helyeinek korlátozása. Biztosítja a földrajzi megfelelőségi követelmények betartását.
+- **Engedélyezett virtuális gépek SKU**-i: Az üzembe helyezhető virtuálisgép-SKU-készletet határozza meg.
+- **Címke és az alapértelmezett érték alkalmazása**: A kötelező címkét és az alapértelmezett értéket alkalmazza, ha azt nem az üzembe helyezési kérelem adja meg.
+- **A címke és a hozzá tartozó érték betartatása**: Egy kötelező címkét és annak értékét egy erőforrásra kényszeríti.
+- **Nem engedélyezett erőforrástípusok**: Megakadályozza, hogy a rendszer ne telepítse az erőforrástípusok listáját.
 
 Megvalósítani a ezeket a szabályzatdefiníciók (mind a beépített és egyéni-definíciók), kell rendelni őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
 
@@ -70,7 +70,7 @@ A szabályzat-hozzárendelés egy olyan szabályzatdefiníció, amely egy adott 
 
 Egy előfizetésre vonatkozóan megadhat például egy olyan szabályzatot, amely megakadályozza a hálózati erőforrások létrehozását, Egy erőforráscsoport, az adott előfizetésben hálózati infrastruktúra szánt sikerült kizárni. Ezután a hálózati erőforrások létrehozásával megbízott felhasználóknak hálózati erőforráscsoporthoz hozzáférést adhat.
 
-Egy másik példa lehet hozzárendelni kívánt erőforrás típusát engedélyezése esetén a lista szabályzatok a felügyeleti csoport szintjén. Ezután hozzárendelne egy megengedőbb (több erőforrástípust engedélyező) szabályzatot egy alárendelt felügyeleti csoporthoz vagy akár közvetlenül az előfizetésekhez. Ez azonban nem működne, mivel a szabályzat egy explicit tiltási rendszer. A megoldás az, hogy kizárja az alárendelt felügyeleti csoportot vagy az előfizetést a felügyeleti csoport szintjén hozzárendelt szabályzatból, majd hozzárendeli a megengedőbb szabályzatot az alárendelt felügyeleti csoportok vagy az előfizetések szintjén. Ha egy szabályzat eredménye egy erőforrás, majd az erőforrás engedélyezésének egyetlen módja, hogy a tiltó szabályzat módosítása.
+Egy másik példában előfordulhat, hogy a felügyeleti csoport szintjén hozzá kell rendelnie egy erőforrástípus engedélyezési lista házirendjét. Ezután hozzárendelne egy megengedőbb (több erőforrástípust engedélyező) szabályzatot egy alárendelt felügyeleti csoporthoz vagy akár közvetlenül az előfizetésekhez. Ez azonban nem működne, mivel a szabályzat egy explicit tiltási rendszer. A megoldás az, hogy kizárja az alárendelt felügyeleti csoportot vagy az előfizetést a felügyeleti csoport szintjén hozzárendelt szabályzatból, majd hozzárendeli a megengedőbb szabályzatot az alárendelt felügyeleti csoportok vagy az előfizetések szintjén. Ha egy szabályzat eredménye egy erőforrás, majd az erőforrás engedélyezésének egyetlen módja, hogy a tiltó szabályzat módosítása.
 
 További, a szabályzatdefiníciók és -hozzárendelések a portálon keresztül történő beállítására vonatkozó tudnivalókért lásd a [szabályzat-hozzárendelés nem megfelelő erőforrások azonosításának céljából, az Azure környezetben történő létrehozásával](assign-policy-portal.md) foglalkozó cikket. A [PowerShellhez](assign-policy-powershell.md) és az [Azure CLI-hez](assign-policy-azurecli.md) is elérhetők lépések.
 
@@ -111,13 +111,13 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
 
-- A kezdeményezés belüli szabályzatdefiníciók paramétereinek használata: Ebben a példában *allowedLocations* és *allowedSingleLocation* válnak a kezdeményezési paraméterek **kezdeményezés**.
-- Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben az esetben megadhat egy helylistát az **A szabályzat paramétere – allowedLocations** és a **B szabályzat paramétere – allowedSingleLocation** számára. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
+- Használja a házirend-definíciók paramétereit a következő kezdeményezésen belül: Ebben a példában a *allowedLocations* és a *allowedSingleLocation* kezdeményezési paramétereket vált a **c**számára.
+- Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben a példában megadhat egy listát a **policya paraméterhez – allowedLocations** és **B szabályzat paraméter – allowedSingleLocation**. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
 - Adjon meg egy listát mindazon lehetséges *értékekről*, amelyeket használhat a kezdeményezés hozzárendelésekor. A kezdeményezés hozzárendelésekor a kezdeményezésen belüli szabályzatdefiníciók örökölt paraméterei csak olyan értékekkel rendelkezhetnek, amelyek ebben a listában szerepelnek.
 
 Amikor érték beállítások egy kezdeményezési definíciót hoz létre, Ön nem adhat egy másik értéket a kezdeményezés hozzárendelésekor, mert nem szerepel a listában.
 
-## <a name="maximum-count-of-azure-policy-objects"></a>Az Azure a csoportházirend-objektumok maximális száma
+## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy objektumok maximális száma
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -136,7 +136,7 @@ Például, hogy a szabályzat-definíció *policyDefA* , majd hozza létre a kez
 
 - Kezdeményezési hozzárendelések abban az esetben, ha a kezdeményezésen belül minden szabályzat is értékeli ki. Egy házirend kiértékelése külön-külön kell, ha fontos foglalja bele-kezdeményezéshez.
 
-## <a name="video-overview"></a>Áttekintő videó
+## <a name="video-overview"></a>Videó – áttekintés
 
 Az Azure Policy alábbi áttekintése a 2018-as buildből származik. Diák vagy videó letöltése, látogasson el [szabályozása az Azure-környezetben keresztül az Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) Channel 9-on.
 
@@ -146,8 +146,8 @@ Az Azure Policy alábbi áttekintése a 2018-as buildből származik. Diák vagy
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 
-- [A portál használatával szabályzatdefiníció hozzárendelése](assign-policy-portal.md).
-- [Az Azure CLI-vel szabályzatdefiníció hozzárendelése](assign-policy-azurecli.md).
-- [PowerShell-lel szabályzatdefiníció hozzárendelése](assign-policy-powershell.md).
-- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](..//management-groups/overview.md).
-- Nézet [szabályozása az Azure-környezetben keresztül az Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) Channel 9-on.
+- [Rendeljen hozzá egy szabályzat-definíciót a portál használatával](assign-policy-portal.md).
+- [Rendeljen hozzá egy szabályzat-definíciót az Azure CLI használatával](assign-policy-azurecli.md).
+- [Házirend-definíció társítása a PowerShell használatával](assign-policy-powershell.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](..//management-groups/overview.md).
+- Tekintse meg az Azure-környezetet a Channel 9 [Azure Policyon keresztül](https://channel9.msdn.com/events/Build/2018/THR2030) .

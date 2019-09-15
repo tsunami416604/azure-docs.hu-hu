@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034373"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002895"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
@@ -89,31 +89,6 @@ A személyre szabott tudomány és kutatás területén a megerősítő [tanulá
 * Bot-tulajdonságok & hang: olyan robotok esetében, amelyek a tónustól, részletességtől és írástól eltérőek lehetnek, érdemes lehet ezeket a tulajdonságokat személyre szabott módon megváltoztatni.
 * Értesítési & riasztás tartalma: döntse el, hogy a riasztások milyen szöveggel legyenek felhasználva a felhasználók számára.
 * Értesítési & riasztás időzítése: személyre szabott tanulás arról, hogy mikor küldjön értesítéseket a felhasználóknak, hogy további műveleteket folytassanak.
-
-## <a name="checklist-for-applying-personalizer"></a>Ellenőrzőlista a személyre szabás alkalmazásához
-
-A személyre szabás olyan helyzetekben is alkalmazható, ahol:
-
-* Az alkalmazáshoz üzleti vagy használhatósági cél tartozik.
-* Van egy olyan helye az alkalmazásban, ahol a felhasználók számára megjelenítendő kontextusbeli döntés alapján fejlesztheti ezt a célt.
-* A legjobb választás a kollektív felhasználói viselkedésből és az összes jutalom pontszámból is elsajátítható.
-* A gépi tanulás a személyre szabáshoz a [felelős használati irányelveket](ethics-responsible-use.md) és a választásokat követi a csapat számára.
-* A döntés a legjobb lehetőségként (a korlátozott választási lehetőségek közül a[művelet](concepts-features.md#actions-represent-a-list-of-options) ) fejezhető ki.
-* A felhasználói viselkedés bizonyos aspektusának mérésével, valamint 1 és 1 közötti számban kifejezve az üzleti logikája alapján kiszámíthatja, hogy a választás milyen mértékben van meghatározva.
-* A jutalom pontszáma nem túl sok összetételhez vagy külső tényezőhöz vezet, különösen a kísérlet időtartama elég alacsony ahhoz, hogy a jutalom pontszám kiszámítható legyen, miközben továbbra is releváns.
-* Megadhatja, hogy a rangsorban legalább 5 olyan szolgáltatás szerepeljen, amely a megfelelő választást segíti, és amely nem tartalmaz személyazonosításra alkalmas adatokat.
-* Az egyes műveletekkel kapcsolatban legalább 5 attribútumot vagy olyan funkciót tartalmaz, amelyet úgy gondol, hogy a személyre szabott megfelelő választást nyújt.
-* Az adatmegőrzés elég hosszú lehet, hogy legalább 100 000 interakciót gyűjtsön.
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Gépi tanulási szempontok a személyre szabás alkalmazásához
-
-A személyre szabás a megerősítő tanuláson alapul, és a gépi tanulás olyan megközelítését biztosítja, amelyet visszajelzések alapján tanít. 
-
-A személyre szabás a legjobban olyan helyzetekben tanul, ahol:
-* Van elég esemény az optimális személyre szabáshoz, ha a probléma idővel sodródik (például hírek vagy Fashion beállítások). A személyre szabás alkalmazkodik a valós világ folytonos változásaihoz, de az eredmények nem lesznek optimálisak, ha nem áll rendelkezésre elegendő esemény és információ az új minták felderítéséhez és rendezéséhez. Olyan használati esetet kell választania, amely elég gyakran előfordul. Érdemes lehet olyan használati eseteket keresni, amelyek naponta legalább 500 alkalommal történnek.
-* A környezet és a műveletek elegendő funkcióval rendelkeznek a tanulás megkönnyítéséhez.
-* A rangsorok száma kevesebb mint 50 művelet.
-* Az adatmegőrzési beállítások lehetővé teszik a személyre szabott adatok összegyűjtését az offline értékelések és a házirendek optimalizálásának elvégzéséhez. Ez általában legalább 50 000 adatpont.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Személyre szabott webes alkalmazás használata
 

@@ -9,12 +9,12 @@ ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ca155763109dbf4292738354244dc397272d06f4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036632"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002239"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Storage-titkosításhoz az Azure CLI-ből
 
@@ -23,7 +23,7 @@ ms.locfileid: "69036632"
 Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal az Azure CLI használatával.
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy a Key Vault két szükséges tulajdonsággal rendelkezzen, a helyreállítható törléssel és a **kiürítéssel**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy a Key Vault két szükséges tulajdonsággal rendelkezzen, a helyreállítható **törléssel** és a **kiürítéssel**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
 > Csak az RSA-kulcsok és a 2048-es kulcs mérete támogatott.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Identitás kiosztása a Storage-fiókhoz
@@ -41,7 +41,7 @@ az storage account update \
     --assign-identity
 ```
 
-A rendszerhez rendelt felügyelt identitások Azure CLI-vel való konfigurálásával kapcsolatos további információkért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure [CLI használatával](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md).
+A rendszerhez rendelt felügyelt identitások Azure CLI-vel való konfigurálásával kapcsolatos további információkért lásd: [felügyelt identitások konfigurálása](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)Azure-beli virtuális gépeken az Azure CLI használatával.
 
 ## <a name="create-a-new-key-vault"></a>Új kulcstartó létrehozása
 
@@ -120,4 +120,4 @@ A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot
 ## <a name="next-steps"></a>További lépések
 
 - [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md) 
-- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+- [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

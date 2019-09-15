@@ -1,51 +1,51 @@
 ---
-title: Az Azure Cosmos DB SQL segédlekérdezések
-description: SQL-segédlekérdezést és az Azure Cosmos DB a gyakori alkalmazási helyzetek
+title: SQL-allekérdezések Azure Cosmos DB
+description: Ismerje meg az SQL allekérdezéseket és azok gyakori használati eseteit Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 4181a44e87d59d35d424a51c8fedc89523223f90
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342513"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003485"
 ---
-# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL segédlekérdezés példák
+# <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Példák az SQL allekérdezésre Azure Cosmos DB
 
-Segédlekérdezésben ágyazva egy másik lekérdezésével egy lekérdezést. Egy belső lekérdezés vagy a belső válassza ki az allekérdezés is nevezik. Az utasítást, segédlekérdezést tartalmazó neve általában egy külső lekérdezést.
+A segédlekérdezés egy másik lekérdezésbe ágyazott lekérdezés. A segédlekérdezés belső lekérdezésnek vagy belső kijelölésnek is nevezik. Az allekérdezést tartalmazó utasítást általában külső lekérdezésnek nevezzük.
 
-Ez a cikk bemutatja az SQL-segédlekérdezést és az Azure Cosmos DB a gyakori alkalmazási helyzetek. Táplálkozási adatkészletet, amely előre feltölti az összes mintalekérdezések feljegyzett futtatható a [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo).
+Ez a cikk az SQL allekérdezéseket és azok gyakori használati eseteit ismerteti Azure Cosmos DBban. Az ebben a dokumentumban található összes lekérdezés futtatható egy olyan táplálkozási adatkészleten, amely előre be van töltve a [Azure Cosmos DB lekérdezési demókörnyezet](https://www.documentdb.com/sql/demo).
 
-## <a name="types-of-subqueries"></a>Segédlekérdezések típusai
+## <a name="types-of-subqueries"></a>Allekérdezések típusai
 
-Segédlekérdezések két fő típusa van:
+Az allekérdezéseknek két fő típusa van:
 
-* **Korrelált**: A külső lekérdezésből származó értékek hivatkozó segédlekérdezés. A segédlekérdezés egyszer, amely feldolgozza a külső lekérdezés minden egyes sorára lesz kiértékelve.
-* **Nem korrelált**: A külső lekérdezés független segédlekérdezés. A saját anélkül, hogy az a külső lekérdezés futtatható.
+* **Korrelált**: Egy segédlekérdezés, amely a külső lekérdezés értékeit hivatkozik. A segédlekérdezés egyszer lesz kiértékelve minden olyan sorban, amelyet a külső lekérdezés feldolgoz.
+* **Nem korrelált**: A külső lekérdezéstől független allekérdezés. A külső lekérdezésre való támaszkodás nélkül is futtatható.
 
 > [!NOTE]
-> Az Azure Cosmos DB támogatja a csak a kapcsolódó allekérdezés.
+> A Azure Cosmos DB csak a korrelált allekérdezéseket támogatja.
 
-Segédlekérdezések további osztályozhatók sorokat és oszlopokat, amelyeket vissza száma alapján. Három feltételtípus érhető el:
-* **tábla**: Több sort, és több oszlopot ad vissza.
-* **Többértékű**: Több sort és a egy egyoszlopos adja vissza.
-* **Skaláris**: Egyetlen sor és a egy egyoszlopos adja vissza.
+Az allekérdezések tovább csoportosíthatók a visszaadott sorok és oszlopok száma alapján. Háromféle típus létezik:
+* **Tábla**: Több sort és több oszlopot ad vissza.
+* **Többszörös érték**: Több sort és egyetlen oszlopot ad vissza.
+* **Skaláris**: Egyetlen sort és egyetlen oszlopot ad vissza.
 
-Az Azure Cosmos DB SQL-lekérdezések mindig csak egy oszlop (vagy egy egyszerű érték, vagy egy összetett dokumentumot) ad vissza. Ezért csak a többértékű és skaláris segédlekérdezések vonatkoznak az Azure Cosmos DB-ben. Többértékű segédlekérdezés csak a FROM záradékban használható relációs kifejezésként. Egy skaláris kifejezés, és a VÁLASSZA vagy a WHERE záradékban vagy a FROM záradékban relációs kifejezésként használható skaláris segédlekérdezés.
+Azure Cosmos DB SQL-lekérdezések mindig egyetlen oszlopot adnak vissza (egyszerű vagy összetett dokumentum). Ezért a Azure Cosmos DBban csak a többértékű és a skaláris allekérdezések alkalmazhatók. A FROM záradékban csak a többértékű allekérdezés használható viszonyítási kifejezésként. Skaláris allekérdezést használhat skaláris kifejezésként a SELECT vagy WHERE záradékban, vagy egy viszonyítási kifejezésként a FROM záradékban.
 
-## <a name="multi-value-subqueries"></a>Többértékű segédlekérdezések
+## <a name="multi-value-subqueries"></a>Többértékű allekérdezések
 
-Többértékű segédlekérdezések adja vissza azon dokumentumok, és mindig használunk a FROM záradék. A használhatók:
+A többértékű allekérdezések dokumentumok készletét adják vissza, és a FROM záradékban mindig használatosak. A következőket használják:
 
-* Optimalizálás ILLESZTÉSI kifejezésében. 
-* Költséges kifejezések kiértékelése után, és többször hivatkozik.
+* ILLESZTÉSi kifejezések optimalizálása. 
+* Költséges kifejezések kiértékelése egyszer és többszöri hivatkozással.
 
-## <a name="optimize-join-expressions"></a>Csatlakozás kifejezések optimalizálása
+## <a name="optimize-join-expressions"></a>ILLESZTÉSi kifejezések optimalizálása
 
-Többértékű segédlekérdezések optimalizálhatja ILLESZTÉSI kifejezésében predikátumok küldésével, minden egyes kiválasztása – több kifejezés után, nem pedig után minden cross-összekapcsolások a WHERE záradékban.
+A többértékű allekérdezések optimalizálják az összekapcsolási kifejezéseket úgy, hogy az egyes Select-many kifejezéseket nem a WHERE záradékban lévő összes illesztés után küldi el.
 
 Vegye figyelembe a következő lekérdezést:
 
@@ -59,11 +59,11 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-Ehhez a lekérdezéshez az index egyezni fog minden olyan dokumentumot, amely rendelkezik egy címkét a neve "anyatej képlettel." Ez nem egy 0 és 10 közötti értéket makroelem elem és a egy kiszolgáló elemet a 1-nél nagyobb méretű. A JOIN kifejezéshez címkék tápanyagok és adagok tömbök minden elem keresztszorzatát elvégzi az egyes egyező dokumentumok, bármely szűrő alkalmazása előtt. 
+Ebben a lekérdezésben az index minden olyan dokumentumnak megfelel, amelynek a neve "Infant formula" nevű címkével rendelkezik. Ez egy 0 és 10 közötti értéket tartalmazó tápanyag-elem, valamint egy kiszolgáló elem, amelynek értéke nagyobb, mint 1. A JOIN kifejezés itt hajtja végre a címkék és a tápanyagok összes elemének, valamint az összes egyező dokumentum tömbjét a szűrő alkalmazása előtt. 
 
-A WHERE záradékban a szűrő predikátuma minden < c, t, n, s > rekord érvényes lesz. Például ha egy egyező dokumentum 10 elemet a három tömbök minden, azt bővített 1 x 10 x 10 x 10 (azaz 1000) rekordok. Itt a segédlekérdezések használata segíthet szűri ki a csatlakoztatott tömbelemek, mielőtt a következő kifejezésben.
+A WHERE záradék Ezután alkalmazza a Filter predikátumot minden < c, t, n, s > rekordon. Ha például egy egyező dokumentum 10 elemet tartalmaz mindhárom tömbben, akkor az 1 x 10 x 10 x 10 (azaz 1 000) rekordok bővül. Az allekérdezések használatával a következő kifejezéssel való csatlakozás előtt segíthet a csatlakoztatott tömbök kiszűrésében.
 
-Ez a lekérdezés megegyezik az előző egy, de a segédlekérdezések használja:
+Ez a lekérdezés megegyezik az előzővel, de allekérdezéseket használ:
 
 ```sql
 SELECT Count(1) AS Count
@@ -73,13 +73,13 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-Tegyük fel, hogy a címkék tömb csak egy elemet a szűrő megfelel, és tartoznak tápanyagok és a adagok tömbök öt elemek. Az ILLESZTÉSI kifejezések majd bővített 1 x 1 x 5 x 5 = 25 elemek 1000 tétel az első lekérdezés helyett.
+Tegyük fel, hogy a címkék tömbben csak egy elem felel meg a szűrőnek, és öt elem van a tápanyagok számára, és tömböket is kiszolgál. Az ILLESZTÉSi kifejezések ezután 1 x 1 x 5 x 5 = 25 elemre lesznek kiterjesztve, az első lekérdezés 1 000 elemével szemben.
 
-## <a name="evaluate-once-and-reference-many-times"></a>Egyszer, és hivatkozás sokszor kiértékelése
+## <a name="evaluate-once-and-reference-many-times"></a>Egyszeri kiértékelés és hivatkozás többször
 
-Segédlekérdezések segítségével, például a felhasználó által definiált függvények (UDF), az összetett karakterláncokat vagy a számtani kifejezéseket költséges kifejezésekkel-lekérdezések optimalizálása. Allekérdezés együtt egy ILLESZTÉSI kifejezés használatával kiértékelni a kifejezést egyszer, de sokszor hivatkozni rá.
+Az allekérdezések olyan költséges kifejezésekkel optimalizálják a lekérdezéseket, mint a felhasználó által definiált függvények (UDF), az összetett karakterláncok vagy a aritmetikai kifejezések. A kifejezést egy JOIN kifejezéssel együtt használva kiértékelheti a kifejezést egyszer, de többször is hivatkozhat rá.
 
-A következő lekérdezést futtat az UDF `GetMaxNutritionValue` kétszer:
+A következő lekérdezés kétszer futtatja `GetMaxNutritionValue` az UDF-t:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -87,7 +87,7 @@ FROM c
 WHERE udf.GetMaxNutritionValue(c.nutrients) > 100
 ```
 
-Itt látható egy azonos lekérdezés, amely az UDF csak egyszer fut:
+Az alábbi egy egyenértékű lekérdezés, amely csak egyszer futtatja az UDF-t:
 
 ```sql
 SELECT TOP 1000 c.id, MaxNutritionValue
@@ -97,10 +97,10 @@ WHERE MaxNutritionValue > 100
 ``` 
 
 > [!NOTE] 
-> Vegye figyelembe az ILLESZTÉSI kifejezésében termékcsaládon belüli viselkedését. Ha nem definiált az UDF-kifejezés kiértékelése is biztosítania kell, hogy a JOIN kifejezéseket mindig egy objektumot közvetlenül az értéket, hanem a segédlekérdezés visszaadó egyetlen sor eredményez.
+> Ne feledje, hogy az ILLESZTÉSi kifejezések több termékkel kapcsolatos viselkedését is figyelembe kell venni. Ha az UDF-kifejezés kiértékelése nem definiált, akkor ügyeljen arra, hogy az ILLESZTÉSi kifejezés mindig egyetlen sort hozzon létre egy objektumnak az allekérdezésből való visszaadásával közvetlenül az érték helyett.
 >
 
-Íme egy hasonló példa, amely értéket, hanem egy objektumot ad vissza:
+Az alábbi példa egy objektumot ad vissza egy érték helyett:
 
 ```sql
 SELECT TOP 1000 c.id, m.MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-A módszer nem korlátozódik el az UDF-EK. Bármely potenciálisan drága kifejezés vonatkozik. Ugyanezzel a módszerrel a matematikai függvénnyel Vegyünk példának `avg`:
+A megközelítés nem korlátozódik a UDF. Ez minden potenciálisan költséges kifejezésre vonatkozik. Tegyük fel, hogy ugyanezt a módszert használja a matematikai függvénnyel `avg`:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -118,34 +118,34 @@ JOIN (SELECT VALUE avg(n.nutritionValue) FROM n IN c.nutrients) AvgNutritionValu
 WHERE AvgNutritionValue > 80
 ```
 
-## <a name="mimic-join-with-external-reference-data"></a>Külső hivatkozási adatokkal való csatlakozás utánzására
+## <a name="mimic-join-with-external-reference-data"></a>Külső referenciák összekapcsolásának szimulálása
 
-Gyakran szüksége lehet, amely ritkán változnak, például a mérési vagy országkódok egységeinek statikus referenciaadatok. Jobb, ha nincs ilyen adatok minden egyes dokumentum esetében ismétlődő. A felesleges ismétlésének elkerülése érdekében a storage mentse, és tartja a dokumentum mérete kisebb írási teljesítményének javítása. Használhatja a segédlekérdezés referenciaszámítógépnek belső illesztés szemantika a referencia-adatok gyűjteménye.
+Előfordulhat, hogy gyakran olyan statikus adatmennyiségre kell hivatkoznia, amely ritkán változik, például mértékegység-vagy országkódok. Jobb, ha nem ismétli meg az egyes dokumentumok adattartalmait. Ennek az ismétlődésnek az elkerülése érdekében a rendszer megtakarítja a tárterületet, és javítja az írási teljesítményt a dokumentum méretének csökkentésével. Az allekérdezéssel belső illesztésű szemantikai és hivatkozási adatgyűjteményeket is használhat.
 
-Például érdemes lehet a referencia-adatok készletét:
+Vegyük például a következő hivatkozási adatkészletet:
 
-| **Egység** | **Name (Név)**            | **Szorzó** | **Alapegység** |
+| **Egység** | **Name**            | **Szorzó** | **Alapegység** |
 | -------- | ------------------- | -------------- | ------------- |
-| ng       | Nanogrammos érzékenység is            | 1.00E-09       | Gram          |
-| µg       | Analitikai           | 1.00E-06       | Gram          |
-| mg       | Milligramm           | 1.00E-03       | Gram          |
-| g        | Gram                | 1.00E+00       | Gram          |
-| kg       | Kg            | 1.00E + 03       | Gram          |
-| Mg       | Megagram            | 1.00E + 06       | Gram          |
-| Gg       | Gigagram            | 1.00E + 09       | Gram          |
-| nJ       | Nanojoule           | 1.00E-09       | Joule         |
-| µJ       | Microjoule          | 1.00E-06       | Joule         |
-| mJ       | Millijoule          | 1.00E-03       | Joule         |
-| J        | Joule               | 1.00E+00       | Joule         |
-| kJ       | Kalápocsonkénti           | 1.00E + 03       | Joule         |
-| MJ       | Megajoule           | 1.00E + 06       | Joule         |
-| GJ       | Gigajoule           | 1.00E + 09       | Joule         |
-| CAL      | Kalória             | 1.00E+00       | Kalória       |
-| kcal     | Kalória             | 1.00E + 03       | Kalória       |
-| IU       | Nemzetközi |                |               |
+| ng       | Nanogrammos            | 1.00 E-09       | Gram          |
+| µg       | Mikrogramm           | 1.00 E-06       | Gram          |
+| mg       | Milligramm           | 1.00 E-03       | Gram          |
+| k        | Gram                | 1.00 E + 00       | Gram          |
+| kg       | Kilogramm            | 1.00 E + 03       | Gram          |
+| mg       | Megagram            | 1.00 E + 06       | Gram          |
+| Gg       | Gigagram            | 1.00 E + 09       | Gram          |
+| Egyet       | Nanojoule           | 1.00 E-09       | Joule         |
+| μJ       | Aljoule          | 1.00 E-06       | Joule         |
+| mJ       | Millijoule          | 1.00 E-03       | Joule         |
+| C        | Joule               | 1.00 E + 00       | Joule         |
+| kJ       | Kalápocsonkénti ütési           | 1.00 E + 03       | Joule         |
+| MJ       | Megajoule           | 1.00 E + 06       | Joule         |
+| GJ       | Gigajoule           | 1.00 E + 09       | Joule         |
+| Cal      | Kalória             | 1.00 E + 00       | kalória       |
+| kcal     | Kalória             | 1.00 E + 03       | kalória       |
+| NE       | Nemzetközi egységek |                |               |
 
 
-A következő lekérdezés utánozza, az alábbi adatokkal való csatlakozás, hogy az egység nevét hozzá a kimenetet:
+A következő lekérdezés utánozza az adatokat, hogy hozzáadja az egység nevét a kimenethez:
 
 ```sql
 SELECT TOP 10 n.id, n.description, n.nutritionValue, n.units, r.name
@@ -175,19 +175,19 @@ JOIN r IN (
 WHERE n.units = r.unit
 ```
 
-## <a name="scalar-subqueries"></a>A segédlekérdezések skaláris
+## <a name="scalar-subqueries"></a>Skaláris allekérdezések
 
-Egy skaláris segédlekérdezés kifejezés csak egyetlen értéket visszaadó segédlekérdezés. A segédlekérdezés skaláris kifejezés értéke a segédlekérdezés vetülete (SELECT záradékban) értékét.  Használhat egy segédlekérdezés skaláris kifejezés sok helyen, ahol egy skaláris kifejezés érvénytelen. Például minden olyan mindkét VÁLASSZA a kifejezést, és a WHERE záradék skaláris allekérdezés is használhatja.
+A skaláris allekérdezési kifejezés egy olyan segédlekérdezés, amely egyetlen értékre értékel ki. A skaláris allekérdezési kifejezés értéke a segédlekérdezés kivetítésének (SELECT záradékának) értéke.  Skaláris segédlekérdezés kifejezést használhat számos olyan helyen, ahol egy skaláris kifejezés érvényes. Használhat például egy skaláris allekérdezést bármely kifejezésben a SELECT és a WHERE záradékban.
 
-Használatával skaláris allekérdezés nem mindig segít optimalizálni, azonban. Például skaláris allekérdezés átadása argumentumként egy rendszerhez vagy a felhasználó által definiált függvények haszna nincs, az erőforrás-használat egység (RU) vagy a késés.
+Skaláris allekérdezés használata nem mindig segít az optimalizálásban, bár. Például, ha egy skaláris allekérdezést egy rendszer vagy felhasználó által definiált függvény argumentumként ad át, az erőforrás-egység (RU) használatának vagy késésének nem kell haszna.
 
-A segédlekérdezések skaláris további meghatározhassa:
-* Egyszerű kifejezést skaláris segédlekérdezések
-* Összesített skaláris segédlekérdezések
+A skaláris allekérdezések továbbra is csoportosíthatók:
+* Egyszerű kifejezésű skaláris allekérdezések
+* Összesített skaláris allekérdezések
 
-## <a name="simple-expression-scalar-subqueries"></a>Egyszerű kifejezést skaláris segédlekérdezések
+## <a name="simple-expression-scalar-subqueries"></a>Egyszerű kifejezésű skaláris allekérdezések
 
-Egy egyszerű kifejezést skaláris segédlekérdezésben, amely rendelkezik a SELECT záradékban, amely nem tartalmaz semmilyen összesítő kifejezések kapcsolódó allekérdezés. Ezeket a segédlekérdezések nem optimalizálási előnyt nyújtanak, mert a fordító alakítja át őket egy nagyobb egyszerű kifejezés. Nincs kapcsolódó környezet a belső és külső lekérdezések között.
+Egy egyszerű kifejezéssel rendelkező skaláris segédlekérdezés olyan korrelált segédlekérdezés, amelynek SELECT záradéka nem tartalmaz összesítő kifejezést. Ezek az allekérdezések nem biztosítanak optimalizálási előnyöket, mert a fordító egy nagyobb egyszerű kifejezésre konvertálja őket. A belső és a külső lekérdezések között nincs korrelációs környezet.
 
 Íme néhány példa:
 
@@ -197,13 +197,13 @@ Egy egyszerű kifejezést skaláris segédlekérdezésben, amely rendelkezik a S
 SELECT 1 AS a, 2 AS b
 ```
 
-Ez a lekérdezés egy egyszerű kifejezést skaláris allekérdezés használatával is újraírási:
+Ezt a lekérdezést egy egyszerű kifejezéssel rendelkező skaláris segédlekérdezés használatával írhatja át a következőre:
 
 ```sql
 SELECT (SELECT VALUE 1) AS a, (SELECT VALUE 2) AS b
 ```
 
-Mindkét lekérdezést Ez a kimenet előállításához:
+Mindkét lekérdezés ezt a kimenetet hozza létre:
 
 ```json
 [
@@ -218,7 +218,7 @@ SELECT TOP 5 Concat('id_', f.id) AS id
 FROM food f
 ```
 
-Ez a lekérdezés egy egyszerű kifejezést skaláris allekérdezés használatával is újraírási:
+Ezt a lekérdezést egy egyszerű kifejezéssel rendelkező skaláris segédlekérdezés használatával írhatja át a következőre:
 
 ```sql
 SELECT TOP 5 (SELECT VALUE Concat('id_', f.id)) AS id
@@ -244,7 +244,7 @@ SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : und
 FROM food f
 ```
 
-Ez a lekérdezés egy egyszerű kifejezést skaláris allekérdezés használatával is újraírási:
+Ezt a lekérdezést egy egyszerű kifejezéssel rendelkező skaláris segédlekérdezés használatával írhatja át a következőre:
 
 ```sql
 SELECT TOP 10 f.id, (SELECT f.description WHERE Contains(f.description, 'fruit')).description
@@ -263,13 +263,13 @@ Lekérdezés kimenete:
 ]
 ```
 
-### <a name="aggregate-scalar-subqueries"></a>Összesített skaláris segédlekérdezések
+### <a name="aggregate-scalar-subqueries"></a>Összesített skaláris allekérdezések
 
-Egy összesített skaláris segédlekérdezésben, amely rendelkezik a leképezés vagy egyetlen értéket visszaadó szűrő aggregátumfüggvényt segédlekérdezésben.
+Az összesített skaláris segédlekérdezés olyan allekérdezés, amely összesítő függvényt tartalmaz a kivetítésben vagy a szűrőben, amely egyetlen értékre van kiértékelve.
 
 **1. példa:**
 
-Itt látható egy összesítő függvény egyetlen kifejezéssel a leképezés a segédlekérdezés:
+Az alábbi allekérdezés egyetlen összesítő függvény kifejezéssel rendelkezik a kivetítés során:
 
 ```sql
 SELECT TOP 5 
@@ -293,7 +293,7 @@ Lekérdezés kimenete:
 
 **2. példa**
 
-A következő segédlekérdezés több aggregátumfüggvény kifejezésekkel:
+Íme egy segédlekérdezés több összesítő függvény kifejezéssel:
 
 ```sql
 SELECT TOP 5 f.id, (
@@ -318,7 +318,7 @@ Lekérdezés kimenete:
 
 **3. példa**
 
-Itt látható egy összesítő segédlekérdezés a leképezési és a szűrő-lekérdezés:
+Az alábbiakban egy összesítő allekérdezéssel rendelkező lekérdezés szerepel a vetítésben és a szűrőben:
 
 ```sql
 SELECT TOP 5 
@@ -340,7 +340,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-Ez a lekérdezés írása több optimális úgy, hogy csatlakozzon a segédlekérdezés, és hivatkozhat a segédlekérdezés alias a egyaránt a SELECT és a WHERE záradék. Ez a lekérdezés hatékonyabb, mert szüksége lesz a segédlekérdezés csak a join utasítás belül, és nem a leképezési és a szűrő a végrehajtásához.
+A lekérdezés megírásának optimális módja, ha az allekérdezéshez csatlakozik, és az allekérdezési aliasra hivatkozik mind a SELECT, mind a WHERE záradékban. Ez a lekérdezés hatékonyabb, mert az allekérdezést csak a JOIN utasításon belül kell végrehajtania, nem pedig a vetítés és a szűrő között.
 
 ```sql
 SELECT TOP 5 f.id, count_mg
@@ -349,28 +349,28 @@ JOIN (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') AS count
 WHERE count_mg > 20
 ```
 
-## <a name="exists-expression"></a>EXISTS kifejezés
+## <a name="exists-expression"></a>LÉTEZIK kifejezés
 
-Az Azure Cosmos DB támogatja az EXISTS kifejezés. Ez a beépített az Azure Cosmos DB SQL API egy összesített skaláris segédlekérdezés. EXISTS egy logikai kifejezés, amely egy segédlekérdezés kifejezést, és ha a segédlekérdezés azokat a sorokat ad vissza IGAZ értéket ad vissza. Ellenkező esetben az eredmény false (hamis).
+Azure Cosmos DB támogatja a létező kifejezéseket. Ez egy összesített skaláris segédlekérdezés a Azure Cosmos DB SQL API-ba építve. LÉTEZIK egy olyan logikai kifejezés, amely allekérdezési kifejezést vesz fel, és igaz értéket ad vissza, ha az allekérdezés bármilyen sort visszaad. Ellenkező esetben hamis értéket ad vissza.
 
-Mivel az Azure Cosmos DB SQL API nem tesz különbséget a logikai kifejezésen, és bármely más skaláris kifejezések között, és mindkét VÁLASSZA az EXISTS és a WHERE záradék is használhatja. Ez nem a T-SQL, ahol egy logikai kifejezés (például EXISTS, között, valamint a) korlátozódik, a szűrő.
+Mivel a Azure Cosmos DB SQL API nem tesz különbséget a logikai kifejezések és az egyéb skaláris kifejezések között, a SELECT és a WHERE záradékban is használható. Ez a T-SQL-vel ellentétben, ahol a logikai kifejezés (például létezik, a és a között) a szűrőre korlátozódik.
 
-Az EXISTS allekérdezés nincs definiálva, létezik-e egyetlen értéket ad vissza. Ha hamis értékre fogja kiértékelni. Például vegye figyelembe a következő lekérdezést, amely a kifejezés hamis:
+Ha a létező segédlekérdezés egyetlen, nem definiált értéket ad vissza, akkor a rendszer a hamis értéket fogja kiértékelni. Vegyük például a következő lekérdezést, amely hamis értéket ad vissza:
 ```sql
 SELECT EXISTS (SELECT VALUE undefined)
 ```   
 
 
-Ha az érték kulcsszó, az előző allekérdezés nincs megadva, a lekérdezés is igaz értéked:
+Ha az előző allekérdezésben szereplő VALUE kulcsszó ki van hagyva, a lekérdezés az igaz értéket fogja kiértékelni:
 ```sql
 SELECT EXISTS (SELECT undefined) 
 ```
 
-A segédlekérdezés értékek listája lesz tegye az objektum a kijelölt listához. A kiválasztott lista nem tartalmaz értéket, ha a segédlekérdezés egyetlen értéket fogja visszaadni a(z){}". Ez az érték van meghatározva, hogy a EXISTS igaz értéket ad vissza.
+A segédlekérdezés egy objektum kiválasztott listájában lévő értékek listáját fogja csatolni. Ha a kiválasztott lista nem tartalmaz értékeket, a segédlekérdezés az "{}" egyetlen értéket fogja visszaadni. Ez az érték definiálva van, ezért a függvény Igaz értéket ad vissza.
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>Példa: Átírása ARRAY_CONTAINS és Csatlakozás másként EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Példa: ARRAY_CONTAINS újraírása és CSATLAKOZTATÁSa
 
-Egy gyakori alkalmazási helyzet ARRAY_CONTAINS az, hogy a dokumentum szűrés létezik-e egy elem a tömbben. Ebben az esetben mi vagyunk ellenőrzése, ha a címkék tömböt tartalmaz-e a "narancs" nevű elem
+A ARRAY_CONTAINS gyakori felhasználási esete, ha egy tömbben lévő elem megléte alapján szűri a dokumentumot. Ebben az esetben ellenőrzi, hogy a címkék tömb tartalmazza-e a "narancssárga" nevű elemeket.
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -378,7 +378,7 @@ FROM food f
 WHERE ARRAY_CONTAINS(f.tags, {name: 'orange'})
 ```
 
-EXISTS használandó ugyanabból a lekérdezés is újraírási:
+Ugyanazzal a lekérdezéssel is újraírható, hogy létezik:
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Ezenkívül ARRAY_CONTAINS csak azt tudja ellenőrizni egy érték egyenlő-e bármely elem egy tömbben. Ha összetettebb szűrőket a tömb tulajdonságok van szüksége, használja az ILLESZTÉSI.
+Emellett a ARRAY_CONTAINS csak azt tudja megtekinteni, hogy az érték egyenlő-e egy tömbben lévő bármelyik elemmel. Ha összetettebb szűrőkre van szüksége a tömb tulajdonságainál, használja a JOIN (csatlakozás) parancsot.
 
-Vegye figyelembe a következő lekérdezést, amely szűri az egységek alapján és `nutritionValue` a tömbben található tulajdonságok: 
+Vegye figyelembe a következő lekérdezést, amely a tömb egységei `nutritionValue` és tulajdonságai alapján szűr: 
 
 ```sql
 SELECT VALUE c.description
@@ -397,9 +397,9 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-Minden egyes a gyűjteményben a dokumentumok esetében a termékek közötti megtörténik a tömbelemek rekordsémáját. Az ILLESZTÉSI művelet lehetővé teszi a tömbön belüli tulajdonságok alapján végezhet szűrést. Ez a lekérdezés fogyasztott azonban jelentős lesz. Például ha 1000 dokumentum 100 elemet minden tömb, akkor bővített 1000 x 100 (azaz 100 000) rekordok.
+A gyűjtemény összes dokumentuma esetében a rendszer a tömb elemeivel együttesen végzi a termék összevetését. Ez az ILLESZTÉSi művelet lehetővé teszi a tömbön belüli tulajdonságok szűrését. A lekérdezés RU-fogyasztása azonban jelentős lesz. Ha például az 1 000-dokumentumok mindegyik tömbben 100 elemek voltak, akkor a rendszer a 1 000 x 100 (azaz 100 000) rekordok bővíti.
 
-EXISTS használata segíthet elkerülni a költséges termékcsaládon belüli:
+A meglévő használata segíthet elkerülni ezt a költséges termékeket:
 
 ```sql
 SELECT VALUE c.description
@@ -411,9 +411,9 @@ WHERE EXISTS(
 )
 ```
 
-Ebben az esetben a EXISTS segédlekérdezés található tömbelemek szűrésre. Ha egy tömbelem megegyezik a szűrőt, majd projektre, és EXISTS igaz értéket ad vissza.
+Ebben az esetben a tömb elemeit szűrheti a létező allekérdezésen belül. Ha egy tömb elem megfelel a szűrőnek, akkor a projekt, és a kiértékelése igaz értékre van állítva.
 
-Is alias EXISTS és hivatkozzon arra a leképezés:
+Alias is létezik, és hivatkozhat a vetítésre:
 
 ```sql
 SELECT TOP 1 c.description, EXISTS(
@@ -434,9 +434,9 @@ Lekérdezés kimenete:
 ]
 ```
 
-## <a name="array-expression"></a>TÖMB kifejezés
+## <a name="array-expression"></a>TÖMB kifejezése
 
-A TÖMB kifejezés használatával projekt tömbként egy lekérdezés eredményeit. Ez a kifejezés a lekérdezés csak a SELECT záradékban belül is használhatja.
+A tömb kifejezés használatával a lekérdezés eredményeit tömbként is kioszthatja. Ez a kifejezés csak a lekérdezés SELECT záradékán belül használható.
 
 ```sql
 SELECT TOP 1   f.id, ARRAY(SELECT VALUE t.name FROM t in f.tags) AS tagNames
@@ -459,7 +459,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-Csakúgy, mint más segédlekérdezések a TÖMBÖT megadó kifejezést a szűrőkkel is előfordulhatnak.
+Más allekérdezésekhez hasonlóan lehetséges a ARRAY kifejezéssel rendelkező szűrők is.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t FROM t in c.tags WHERE t.name != 'infant formula') AS tagNames
@@ -493,7 +493,7 @@ Lekérdezés kimenete:
 ]
 ```
 
-Tömb kifejezéseket is visszatérhet a FROM záradék a segédlekérdezésekben után.
+A tömb kifejezései az allekérdezésekben a FROM záradék után is származhatnak.
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t.name FROM t in c.tags) as tagNames
@@ -519,5 +519,5 @@ Lekérdezés kimenete:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Dokumentumadatok modellezése](modeling-data.md)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dokumentum-adattípusok](modeling-data.md)

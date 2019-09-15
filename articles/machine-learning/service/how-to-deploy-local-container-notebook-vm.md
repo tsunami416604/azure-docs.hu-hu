@@ -1,7 +1,7 @@
 ---
 title: Modellek üzembe helyezése notebook virtuális gépeken
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning szolgáltatási modelljeit webszolgáltatásként notebook-alapú virtuális gépek használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként notebook-alapú virtuális gépek használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947759"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002829"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>Modell üzembe helyezése notebook virtuális gépeken
 
-Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a notebook virtuális gépén a Azure Machine Learning szolgáltatás használatával. Használjon notebookos virtuális gépeket, ha az alábbi feltételek egyike teljesül:
+Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a notebook virtuális gépén a Azure Machine Learning használatával. Használjon notebookos virtuális gépeket, ha az alábbi feltételek egyike teljesül:
 
 - Gyors üzembe helyezése és a modell érvényesítése kell.
 - A tesztelt egy olyan modell, fejlesztés alatt áll.
 
 > [!TIP]
-> Egy modell üzembe helyezése egy jegyzetfüzet-alapú virtuális gépen lévő Jupyter Notebookról egy _helyi üzembe helyezést_nyújtó webszolgáltatásra. Ebben az esetben a "helyi" számítógép a notebook virtuális gép. További információ a központi telepítésekről: [modellek üzembe helyezése Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+> Egy modell üzembe helyezése egy jegyzetfüzet-alapú virtuális gépen lévő Jupyter Notebookról egy _helyi üzembe helyezést_nyújtó webszolgáltatásra. Ebben az esetben a "helyi" számítógép a notebook virtuális gép. További információ a központi telepítésekről: [modellek üzembe helyezése a Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Machine Learning szolgáltatás munkaterülete, amelyen fut egy jegyzetfüzet virtuális gép. További információ: [telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
+- Azure Machine Learning munkaterület, amelyen fut egy jegyzetfüzet virtuális gép. További információ: [telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="deploy-to-the-notebook-vms"></a>Üzembe helyezés a notebook virtuális gépeken
 

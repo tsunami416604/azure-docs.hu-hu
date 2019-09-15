@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d97ca91466516b8722ecca77d19078399a258f7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814094"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001785"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight 
 
@@ -51,17 +51,19 @@ A Spark History-kiszolgáló webes felhasználói felülete a következőképpen
 ![HDInsight Spark-előzmények kiszolgálója](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>A fonal felhasználói felületének megnyitása
+
 A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó alkalmazások figyelésére.
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Spark-fürtöt. További információ: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. A **Gyorshivatkozások**területen kattintson a **fürt irányítópultja**, majd a **fonal**elemre.
 
-    ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületének elindításához kattintson a **fürt irányítópultja**, majd a **HDInsight-fürt irányítópultja**elemre. A Ambari felhasználói felületén kattintson a **fonal**elemre, kattintson a **Gyorshivatkozások**lehetőségre, majd az Active Resource Manager elemre, végül pedig a **Resource Manager felhasználói felület**elemre.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Fürtök optimalizálása Spark-alkalmazásokhoz
+
 A Spark konfigurálásához használható három kulcsfontosságú paraméter az alkalmazás követelményeitől `spark.executor.instances` `spark.executor.cores`függően a, a és `spark.executor.memory`a. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. A feldolgozó csomóponton fut, és feladata az alkalmazás feladatainak elvégzése. A végrehajtók és a végrehajtói méretek alapértelmezett számának kiszámítása a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket az információkat a rendszer `spark-defaults.conf` a fürt fő csomópontjain tárolja.
 
 A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a fürtön futó összes alkalmazás esetében), illetve az egyes alkalmazásokhoz is megadható.
@@ -76,7 +78,7 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
 3. A konfigurációs módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. A lap tetején a rendszer felszólítja az összes érintett szolgáltatás újraindítására. Kattintson a **Restart** (Újraindítás) elemre.
 
-    ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/restart-services.png)
+    ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter notebookon futó alkalmazás paramétereinek módosítása
 A Jupyter notebookon futó alkalmazások esetén a `%%configure` Magic használatával módosíthatja a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a `-f` paramétert kell használnia. Ezzel azonban az alkalmazás minden folyamata elvész.
@@ -135,21 +137,21 @@ A Spark dinamikus kiosztása miatt a takarékossági kiszolgáló által felhasz
 ## <a name="restart-the-jupyter-service"></a>A Jupyter szolgáltatás újraindítása
 Indítsa el a Ambari webes felhasználói felületét a cikk elején látható módon. A bal oldali navigációs panelen kattintson a **Jupyter**elemre, kattintson a **szolgáltatási műveletek**, majd **az összes újraindítása**elemre. Ezzel elindítja a Jupyter szolgáltatást az összes átjárócsomópontokkal.
 
-![Jupyter újraindítása](./media/apache-spark-resource-manager/restart-jupyter.png "Jupyter újraindítása")
+![Jupyter újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter újraindítása")
 
 ## <a name="monitor-resources"></a>Erőforrások megfigyelése
 Indítsa el a fonal felhasználói felületét a cikk elején látható módon. A képernyő felső részén található fürt Metrikái táblában a **felhasznált memória** és a **memória összes** oszlopának értékét kell megnéznie. Ha a két érték be van zárva, előfordulhat, hogy nem áll rendelkezésre elegendő erőforrás a következő alkalmazás elindításához. Ugyanez vonatkozik a **használt virtuális mag** és a **virtuális mag összes** oszlopára is. Emellett a fő nézetben, ha egy alkalmazás **elfogadott** állapotban maradt, és nem a **futó** és a **sikertelen** állapotra vált, akkor ez azt is jelezheti, hogy nem kap elég erőforrást az induláshoz.
 
-![Erőforrás-korlát](./media/apache-spark-resource-manager/resource-limit.png "Erőforrás-korlát")
+![Erőforrás-korlát](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Erőforrás-korlát")
 
 ## <a name="kill-running-applications"></a>Futó alkalmazások leölése
 1. A fonal felhasználói felületén, a bal oldali panelen kattintson a **Futtatás**elemre. A futó alkalmazások listájából állapítsa meg a leölési alkalmazást, és kattintson az **azonosítóra**.
 
-    ![App1 leölése](./media/apache-spark-resource-manager/kill-app1.png "App1 leölése")
+    ![App1 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "App1 leölése")
 
 2. Kattintson az **alkalmazás leölése** lehetőségre a jobb felső sarokban, majd kattintson **az OK**gombra.
 
-    ![App2 leölése](./media/apache-spark-resource-manager/kill-app2.png "App2 leölése")
+    ![App2 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 leölése")
 
 ## <a name="see-also"></a>Lásd még
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)

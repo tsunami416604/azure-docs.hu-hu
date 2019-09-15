@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 60b323c12e5c548c974a7d660d08861637ac2381
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996668"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000323"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Szabályzatok indexelése a Azure Cosmos DBban
 
@@ -26,8 +26,11 @@ Bizonyos helyzetekben érdemes lehet felülbírálni ezt az automatikus viselked
 
 A Azure Cosmos DB két indexelési módot támogat:
 
-- **Konzisztens**: Ha egy tároló indexelési házirendje konzisztens értékre van állítva, az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
-- **Nincs**: Ha egy tároló indexelési házirendje a none értékre van állítva, az indexelés hatékonyan le van tiltva ezen a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. A tömeges beszúrási műveletek felgyorsítását is lehetővé teszi.
+- **Konzisztens**: Az index az elemek létrehozásakor, frissítésekor vagy törlésekor szinkron módon frissül. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
+- **Nincs**: Az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) a befejezésig figyelhető.
+
+> [!NOTE]
+> A Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Emellett a tömeges műveletek esetében a "None" helyett a lusta indexelés használata sem biztosít előnyt, mert az index mód bármilyen módosítása az index eldobását és újbóli létrehozását eredményezi. Ezen okok miatt javasoljuk, hogy az ügyfeleket használja. A tömeges műveletek teljesítményének növeléséhez állítsa az index módot a none értékre, majd térjen vissza konzisztens módba `IndexTransformationProgress` , és figyelje a tárolóban lévő tulajdonságot a befejezésig.
 
 Alapértelmezés szerint az indexelési házirend a `automatic`következőre van beállítva:. Ez úgy érhető el, ha `automatic` `true`a tulajdonságot az indexelési házirendben a értékre állítja. Ennek a tulajdonságnak `true` a beállításával engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
 

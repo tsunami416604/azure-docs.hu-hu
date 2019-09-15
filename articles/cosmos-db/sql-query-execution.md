@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614438"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999913"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>SQL-lekérdezés végrehajtásának Azure Cosmos DB
 
-A HTTP/HTTPS-kérések létrehozására alkalmas bármely nyelv hívhatja a Cosmos DB REST API. A Cosmos DB a .NET, a Node. js, a JavaScript és a Python programozási nyelvekhez is biztosít programozási kódtárakat. A REST API és a kódtárak támogatják az SQL-en keresztüli lekérdezéseket, és a .NET SDK is támogatja a [LINQ](sql-query-linq-to-sql.md)-lekérdezéseket.
+A HTTP/HTTPS-kérések létrehozására alkalmas bármely nyelv hívhatja a Cosmos DB REST API. A Cosmos DB a .NET, a Node. js, a JavaScript és a Python programozási nyelvekhez is biztosít programozási kódtárakat. A REST API és a kódtárak támogatják az SQL-en keresztüli lekérdezéseket, és a .NET SDK is támogatja a [LINQ-lekérdezéseket](sql-query-linq-to-sql.md).
 
 Az alábbi példák bemutatják, hogyan hozhat létre egy lekérdezést, és hogyan küldhet el egy Cosmos-adatbázis-fiókkal.
 
 ## <a id="REST-API"></a>REST API-VAL
 
-A cosmos DB egy megnyitott RESTful programozási modellt kínál a HTTP-n keresztül. Az erőforrás-modell egy, az Azure-előfizetéshez tartozó adatbázis-fiókhoz tartozó erőforrás-készletből áll. Az adatbázis-fiók adatbázisokból áll,amelyek mindegyike több tárolót is tartalmazhat, amelyek pedig *elemeket*, UDF és más erőforrásokat tartalmaznak. Minden Cosmos DB erőforrás egy logikai és egy stabil URI-vel van címezve. Az erőforrások készletét *hírcsatorna*-csoportnak nevezzük. 
+A cosmos DB egy megnyitott RESTful programozási modellt kínál a HTTP-n keresztül. Az erőforrás-modell egy, az Azure-előfizetéshez tartozó adatbázis-fiókhoz tartozó erőforrás-készletből áll. Az adatbázis-fiók *adatbázisokból*áll, amelyek mindegyike több *tárolót*is tartalmazhat, amelyek pedig *elemeket*, UDF és más erőforrásokat tartalmaznak. Minden Cosmos DB erőforrás egy logikai és egy stabil URI-vel van címezve. Az erőforrások készletét *hírcsatorna*-csoportnak nevezzük. 
 
 Az ezekkel az erőforrásokkal rendelkező alapszintű interakciós modell `GET`a `PUT`http `POST`-műveletek `DELETE`, a, a és a standard értelmezések segítségével érhető el. Új `POST` erőforrás létrehozásához, tárolt eljárás végrehajtásához vagy Cosmos db-lekérdezés kikibocsátásához használható. Lekérdezések mindig csak olvasható műveletekhez, nincs mellékhatásokkal.
 
@@ -245,11 +245,11 @@ A .net-ügyfél automatikusan megismétli a lekérdezés eredményének összes 
 
 A lapozást explicit módon is szabályozhatja az `IDocumentQueryable` `IQueryable` objektummal való létrehozással `ResponseContinuationToken` , majd az értékek olvasásával és a `RequestContinuationToken` alkalmazásban `FeedOptions`történő visszaadásával. Beállíthatja `EnableScanInQuery` , hogy engedélyezze a vizsgálatokat, ha a konfigurált indexelési házirend nem támogatja a lekérdezést. Particionált tárolók esetén a paranccsal `PartitionKey` egyetlen partíción futtathatja a lekérdezést, bár a Azure Cosmos db automatikusan kinyerheti ezt a lekérdezési szövegből. A paranccsal `EnableCrossPartitionQuery` több partíción is futtathat lekérdezéseket.
 
-További .NET-minták lekérdezésekkel kapcsolatban: [Azure Cosmos db .net-minták](https://github.com/Azure/azure-cosmosdb-dotnet) a githubban.
+További .NET-minták lekérdezésekkel kapcsolatban: [Azure Cosmos db .net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3) a githubban.
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript server-side API
 
-A Azure Cosmos DB egy programozási modellt biztosít a [JavaScript-alapú alkalmazások](stored-procedures-triggers-udfs.md) logikájának futtatásához a tárolókban, tárolt eljárások és eseményindítók használatával. A tároló szintjén regisztrált JavaScript-logika ezután a környezeti sav-tranzakciókban becsomagolt adatbázis-műveleteket adhat ki az adott tároló elemein.
+A Azure Cosmos DB egy programozási modellt biztosít a [JavaScript-alapú alkalmazások logikájának futtatásához](stored-procedures-triggers-udfs.md) a tárolókban, tárolt eljárások és eseményindítók használatával. A tároló szintjén regisztrált JavaScript-logika ezután a környezeti sav-tranzakciókban becsomagolt adatbázis-műveleteket adhat ki az adott tároló elemein.
 
 Az alábbi példa bemutatja, hogyan használható `queryDocuments` a JavaScript Server API-ban a tárolt eljárások és eseményindítók használatával történő lekérdezések elvégzéséhez:
 
@@ -288,5 +288,5 @@ Az alábbi példa bemutatja, hogyan használható `queryDocuments` a JavaScript 
 ## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a Azure Cosmos DBba](introduction.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB konzisztencia szintjei](consistency-levels.md)

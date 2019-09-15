@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55cdb70a02aae62a69f4fc930f4c6ee385a24702
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839549"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001105"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Python IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
@@ -34,9 +34,12 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+> [!NOTE]
+> A következő útmutató a v1 Python SDK-hoz készült, amely azóta elavult. Jelenleg dolgozunk azon, hogy ez az útmutató v2 kompatibilis legyen. Tekintse meg ezt a helyet a frissítésekhez.
+
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet a **Python** modult a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux**-eszközre. A IoT Edge nem támogatja a Windows-eszközökhöz készült Python-modulokat. 
+Ez az oktatóanyag bemutatja, hogyan fejleszthet a **Python** modult a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja a Windows-eszközökhöz készült Python-modulokat. 
 
 A következő táblázat segítségével megismerheti a Python-modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit: 
 
@@ -47,7 +50,7 @@ A következő táblázat segítségével megismerheti a Python-modulok Linux ren
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok fejlesztése Linux](tutorial-develop-for-linux.md)-eszközökhöz. Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek: 
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok fejlesztése Linux-eszközökhöz](tutorial-develop-for-linux.md). Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek: 
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)

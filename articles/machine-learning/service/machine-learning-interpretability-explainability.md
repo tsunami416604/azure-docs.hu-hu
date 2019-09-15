@@ -1,6 +1,6 @@
 ---
 title: Modell értelmezhetősége
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Machine Learning SDK használatával. A képzés során felhasználható, hogy megtudja, hogyan teszi lehetővé a modell előrejelzéseit.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872388"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002358"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>A modell értelmezése Azure Machine Learning szolgáltatással
+# <a name="model-interpretability-with-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogy a modell miért hozta létre az előrejelzéseket a Azure Machine Learning Python SDK különböző értelmező csomagjaival.
 
@@ -30,7 +30,7 @@ A fejlesztési ciklus betanítási fázisában a modell-tervezők és-értékel�
 
 A gépi tanulásban a **funkciók** a célként megadott adatpontok előrejelzésére szolgáló adatmezők. Például a hitelkockázat előrejelzéséhez az életkor, a fiók mérete és a fiók kora adatmezőket lehet használni. Ebben az esetben a kor, a fiók mérete és a fiók kora **funkciók**. A szolgáltatás fontossága azt mutatja be, hogy az egyes adatmezők hogyan érintik a modell előrejelzéseit. Előfordulhat például, hogy az életkor nagy mértékben használatban van az előrejelzésben, míg a fiók mérete és kora nem befolyásolja az előrejelzés pontosságát. Ez a folyamat lehetővé teszi, hogy az adatszakértők elmagyarázzák az eredményül kapott előrejelzéseket, így az érintettek a modellben a legfontosabb adatpontok betekintést nyerhetnek.
 
-Ezeknek az eszközöknek a használatával a gépi tanulási modelleket globálisan az **összes adattal**megmagyarázhatja, vagy **egy adott adatponton helyileg** , a legkorszerűbb technológiák használatával könnyen használható és méretezhető módon.
+Ezeknek az eszközöknek a használatával a gépi tanulási modelleket **globálisan az összes adattal**megmagyarázhatja, vagy **egy adott adatponton helyileg** , a legkorszerűbb technológiák használatával könnyen használható és méretezhető módon.
 
 Az értelmező osztályok több SDK-csomagon keresztül érhetők el. Ismerje meg, hogyan [TELEPÍTHET SDK-csomagokat Azure Machine Learninghoz](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -63,16 +63,16 @@ A __közvetlen magyarázatok__ az integrált könyvtárakból származnak. Az SD
 * **Alakítási fa magyarázata**: A SHAP 's Tree deformálója, amely a fák és a fák különböző részeire jellemző, a többhelyes idő gyors FORMÁLÁSára szolgáló algoritmusra koncentrál.
 * **Mélyreható magyarázat**: A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a SHAP-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A TensorFlow modellek és kerasz modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).
 * **SHAP kernel-magyarázat**: A SHAP kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az egyes modellek FORMÁLÁSi értékeinek becsléséhez.
-* Elmagyarázó: A magyarázó elmagyarázó a globális helyettesítő modellek ötlete alapján történik. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kiképezve, hogy a lehető legpontosabban közelítse meg a fekete doboz modelljeinek előrejelzéseit. Az adattudós értelmezheti a helyettesítő modellt a fekete Box-modellel kapcsolatos következtetések összeállításához. A következő értelmezhető modellek egyike használható helyettesítő modellként: LightGBM (LinearExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillat megmagyarázható modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).
+* **Elmagyarázó**: A magyarázó elmagyarázó a globális helyettesítő modellek ötlete alapján történik. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kiképezve, hogy a lehető legpontosabban közelítse meg a fekete doboz modelljeinek előrejelzéseit. Az adattudós értelmezheti a helyettesítő modellt a fekete Box-modellel kapcsolatos következtetések összeállításához. A következő értelmezhető modellek egyike használható helyettesítő modellként: LightGBM (LinearExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillat megmagyarázható modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).
 
 
-* A **permutáció funkció fontossági magyarázata**: A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) kapcsolatos tanulmányai által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy mekkora a kamat teljesítményének mérőszáma. Minél nagyobb a változás, annál fontosabb a funkció.
+* A **permutáció funkció fontossági magyarázata**: A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy mekkora a kamat teljesítményének mérőszáma. Minél nagyobb a változás, annál fontosabb a funkció.
 
 * **Lime-magyarázat** (`contrib`): A lime-alapú, LIME-elmagyarázó a helyi helyettesítő modellek létrehozásához használja a modern helyi, értelmezhető modell-(LIME-) algoritmust. A globális helyettesítő modellektől eltérően a LIME a helyi helyettesítő modellek betanítására összpontosít az egyes előrejelzések elmagyarázása érdekében.
 * **Han Text-magyarázat** (`contrib`): A HAN Text demagyarázó egy hierarchikus hanghálózatot használ a modell magyarázatának beszerzéséhez egy adott fekete Box Text-modell szöveges adatainak használatával. Betanítjuk a HAN helyettes modelljét egy adott tanári modell előre jelzett kimenetén. Miután globálisan betanított a Text corpusba, a magyarázatok pontosságának javítása érdekében egy adott dokumentumhoz is kibővítettük a megfelelő lépéseket. A HAN kétirányú RNN használ két figyelmet a mondatok és a szó figyelemmel. Ha a DNN betanítják a tanári modellre, és egy adott dokumentumra finomítják őket, kinyerheti a szó fontosságát a figyelmet tartalmazó rétegekből. A HAN-t úgy találtuk, hogy pontosabbak legyenek, mint az olyan MÉSZek, mint a szöveges adatmennyiség, de költségesebb a képzési idő szempontjából is. Azonban javítottuk a betanítási időt azáltal, hogy a felhasználó számára lehetőséget biztosít a hálózat és a kesztyűs Word-beágyazások inicializálására, bár ez még mindig lassú. A betanítási idő jelentősen növelhető a HAN távoli Azure GPU virtuális gépen való futtatásával. A HAN megvalósítását ["hierarchikus figyelmet igénylő hálózatok a dokumentumok besorolásához (Yang et al., 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)című cikk írja le.
 
 
-A __meta__ -magyarázatok automatikusan kiválasztják a megfelelő közvetlen magyarázatot, és az adott modell és adatkészletek alapján létrehozzák a legjobb magyarázati információkat. A meta-magyarázatok kihasználják az általunk integrált vagy fejlesztett kódtárakat (SHAP, LIME, utánozza stb.). Az SDK-ban a következő meta-magyarázatok érhetők el:
+A __meta-magyarázatok__ automatikusan kiválasztják a megfelelő közvetlen magyarázatot, és az adott modell és adatkészletek alapján létrehozzák a legjobb magyarázati információkat. A meta-magyarázatok kihasználják az általunk integrált vagy fejlesztett kódtárakat (SHAP, LIME, utánozza stb.). Az SDK-ban a következő meta-magyarázatok érhetők el:
 
 * **Táblázatos magyarázat**: Táblázatos adatkészletekhez használatos.
 * **Szöveg magyarázata**: Szöveges adatkészletekhez használatos.
@@ -90,8 +90,8 @@ A beépített `TabularExplainer` intelligencia egyre kifinomultabb lesz, mivel e
 
 `TabularExplainer`jelentős funkciókkal és teljesítménnyel kapcsolatos fejlesztéseket hajtott végre a közvetlen magyarázatok során:
 
-* **Az inicializálási adatkészlet**összefoglalása. Azokban az esetekben, amikor a magyarázat sebessége a legfontosabb, összefoglaljuk az inicializálási adatkészletet, és létrehozunk egy kis reprezentatív mintát, amely felgyorsítja a globális és a helyi magyarázatot is.
-* **A**kiértékelési adatkészlet mintavételezése. Ha a felhasználó a kiértékelési minták nagy készletét adja vissza, de valójában nem szükséges mindegyiket kiértékelni, a mintavételi paraméter értéke TRUE (igaz) lehet, hogy felgyorsítsa a globális magyarázatot.
+* **Az inicializálási adatkészlet összefoglalása**. Azokban az esetekben, amikor a magyarázat sebessége a legfontosabb, összefoglaljuk az inicializálási adatkészletet, és létrehozunk egy kis reprezentatív mintát, amely felgyorsítja a globális és a helyi magyarázatot is.
+* **A kiértékelési adatkészlet mintavételezése**. Ha a felhasználó a kiértékelési minták nagy készletét adja vissza, de valójában nem szükséges mindegyiket kiértékelni, a mintavételi paraméter értéke TRUE (igaz) lehet, hogy felgyorsítsa a globális magyarázatot.
 
 A következő ábra a közvetlen és a meta-magyarázatok aktuális szerkezetét mutatja be.
 
@@ -206,7 +206,7 @@ A `explain` csomag úgy van kialakítva, hogy a helyi és távoli számítási c
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
 
-    vagy
+    or
 
     ```python
     # explain the first five data points in the test set
@@ -219,7 +219,7 @@ A `explain` csomag úgy van kialakítva, hogy a helyi és távoli számítási c
 
 ### <a name="train-and-explain-remotely"></a>Betanítás és magyarázat távolról
 
-Habár a Azure Machine Learning szolgáltatás által támogatott különféle számítási célok betanítására van lehetőség, az ebben a szakaszban ismertetett példa azt szemlélteti, hogyan végezheti el ezt egy Azure Machine Learning számítási cél használatával.
+Habár a Azure Machine Learning által támogatott különböző számítási célok betanítására van lehetőség, az ebben a szakaszban ismertetett példa azt szemlélteti, hogyan végezheti el ezt egy Azure Machine Learning számítási cél használatával.
 
 1. Hozzon létre egy betanítási szkriptet egy helyi Jupyter-jegyzetfüzetben (például run_explainer.).
 
@@ -251,7 +251,7 @@ Habár a Azure Machine Learning szolgáltatás által támogatott különféle s
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. A számítási [célok beállítása a modell](how-to-set-up-training-targets.md#amlcompute) betanításához című témakör útmutatását követve megtudhatja, hogyan állíthat be Azure Machine learning számítási célt, és hogyan küldhet betanítási kísérleteket.
+2. A számítási [célok beállítása a modell betanításához](how-to-set-up-training-targets.md#amlcompute) című témakör útmutatását követve megtudhatja, hogyan állíthat be Azure Machine learning számítási célt, és hogyan küldhet betanítási kísérleteket.
 
 3. Töltse le a magyarázatot a helyi Jupyter notebookon.
 
@@ -474,7 +474,7 @@ A magyarázat az eredeti modellel együtt helyezhető üzembe, és pontozással 
 
 1. A rendszerkép üzembe helyezése számítási célra:
 
-   1. Hozzon létre egy pontozási fájlt (ehhez a lépéshez kövesse a [modellek üzembe helyezése a Azure Machine learning szolgáltatással](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) című témakör lépéseit az eredeti előrejelzési modell regisztrálásához)
+   1. Hozzon létre egy pontozási fájlt (ehhez a lépéshez kövesse a [modellek üzembe helyezése a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) használatával című részt az eredeti előrejelzési modell regisztrálásához)
 
         ```python
         %%writefile score.py

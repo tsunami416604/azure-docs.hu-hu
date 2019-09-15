@@ -1,6 +1,6 @@
 ---
 title: A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan indíthatja el, állíthatja be a gépi tanulási kísérletek állapotát, címkézheti és rendszerezheti azokat.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376296"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002730"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -33,9 +33,9 @@ Ez a cikk a következő feladatokra mutat be példákat:
 
 A következő elemekre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy [Azure Machine learning szolgáltatás munkaterülete](how-to-manage-workspace.md).
+* Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
 * A Pythonhoz készült Azure Machine Learning SDK (1.0.21 vagy újabb verzió). Az SDK legújabb verziójának telepítéséhez vagy frissítéséhez lásd: [az SDK telepítése vagy frissítése](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -45,7 +45,7 @@ A következő elemekre lesz szüksége:
     print(azureml.core.VERSION)
     ```
 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és [cli bővítmény a Azure Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md).
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és [cli bővítmény a Azure Machine Learninghoz](reference-azure-machine-learning-cli.md).
 
 ## <a name="start-a-run-and-its-logging-process"></a>Futtatás és a naplózási folyamat elindítása
 
@@ -79,7 +79,7 @@ A kísérlet futtatásának elindításához kövesse az alábbi lépéseket:
     az login
     ```
 
-1. Csatoljon egy munkaterület-konfigurációt a betanítási parancsfájlt tartalmazó mappához. Cserélje `myworkspace` le a t a Azure Machine learning szolgáltatás munkaterületére. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó Azure-erőforráscsoportot:
+1. Csatoljon egy munkaterület-konfigurációt a betanítási parancsfájlt tartalmazó mappához. Cserélje `myworkspace` le a t a Azure Machine learning munkaterületére. Cserélje `myresourcegroup` le a helyére a munkaterületet tartalmazó Azure-erőforráscsoportot:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
 
-Azure Machine Learning szolgáltatásban a tulajdonságok és címkék segítségével rendszerezheti és lekérdezheti a futtatásokat a fontos információkhoz.
+Azure Machine Learning a tulajdonságok és címkék segítségével rendszerezheti és lekérdezheti a futtatásokat a fontos információkhoz.
 
 ### <a name="add-properties-and-tags"></a>Tulajdonságok és Címkék hozzáadása
 
@@ -341,4 +341,4 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).
+* Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, [](how-to-track-experiments.md)tekintse meg a következő témakört: a betanítási mérőszámok.

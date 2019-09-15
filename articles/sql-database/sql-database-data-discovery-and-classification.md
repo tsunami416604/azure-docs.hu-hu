@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073026"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000564"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
-Az adatfelderítési & besorolása olyan speciális képességeketbiztosít & , amelyek aAzure SQL Databaseba illeszkednek, és a bizalmas adatoknak az adatbázisokban való**védelmét** is lehetővé teszi.
+Az adatfelderítési & besorolása olyan speciális képességeket biztosít, & amelyek aAzure SQL Databaseba illeszkednek **, és**a bizalmas adatoknak az adatbázisokban való**védelmét** is lehetővé teszi.
 
 A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 
@@ -81,7 +81,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
    ![Adatbázis vizsgálata](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. Az **Áttekintés** lap az adatbázis aktuális besorolási állapotának összegzését tartalmazza, beleértve az összes besorolt oszlop részletes listáját is, amelyet szűrheti úgy is, hogy csak bizonyos sémákat, adattípusokat és címkéket tekintse meg. Ha még nem sorolt be oszlopokat, [ugorjon az 5](#step-5). lépésre.
+3. Az **Áttekintés** lap az adatbázis aktuális besorolási állapotának összegzését tartalmazza, beleértve az összes besorolt oszlop részletes listáját is, amelyet szűrheti úgy is, hogy csak bizonyos sémákat, adattípusokat és címkéket tekintse meg. Ha még nem sorolt be oszlopokat, [ugorjon az 5. lépésre](#step-5).
 
    ![Aktuális besorolási állapot összegzése](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
@@ -107,7 +107,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
       ![Javaslatok alkalmazása](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. Az oszlopokat **manuálisan** is kiminősítheti alternatívként, illetve a javaslaton alapuló besoroláshoz:
+7. Az oszlopokat **manuálisan is kiminősítheti** alternatívként, illetve a javaslaton alapuló besoroláshoz:
 
    - Kattintson a **besorolás hozzáadása** lehetőségre az ablak felső menüjében.
 
@@ -137,6 +137,8 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 - Egy vagy több oszlop besorolásának hozzáadása/frissítése: [ÉRZÉKENYSÉGI BESOROLÁS HOZZÁADÁSA](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Távolítsa el a besorolást egy vagy több oszlopból: [ELDOBÁSI ÉRZÉKENYSÉG BESOROLÁSA](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+### <a name="manage-classifications-using-rest-apis"></a>Besorolások kezelése REST API-k használatával
 
 Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A közzétett REST API-k a következő műveleteket támogatják:
 
@@ -174,7 +176,7 @@ További információ az [Azure-erőforrások RBAC](https://docs.microsoft.com/a
 
 ## <a id="subheading-5"></a>Következő lépések
 
-- További információ a [speciális](sql-database-advanced-data-security.md)adatbiztonságról.
+- További információ a [speciális adatbiztonságról](sql-database-advanced-data-security.md).
 - Érdemes lehet beállítani [Azure SQL Database naplózást](sql-database-auditing.md) a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
 
 <!--Anchors-->

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098626"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999041"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -88,7 +88,7 @@ A hálózati peremhálózat alapelvei és mintái évtizedek óta rendelkezésre
 Az alábbi ajánlott eljárások az identitás peremhálózati kezeléséhez szükségesek.
 
 **Ajánlott eljárás**: A kulcsok és a hitelesítő adatok biztonságossá tétele a Pásti-telepítés biztonságossá tételéhez.   
-**Részletek**: A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Olyan központosított megoldást használhat, amelyben a kulcsok és a titkos kódok a hardveres biztonsági modulokban (HSM) tárolhatók. [Azure Key Vault](../../key-vault/key-vault-whatis.md) védi a kulcsokat és a titkokat a hitelesítő kulcsok, a Storage-fiókok kulcsai, az adattitkosítási kulcsok, a. pfx-fájlok és a jelszavak a HSM által védett kulcsokkal történő titkosításával.
+**Részletek**: A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Olyan központosított megoldást használhat, amelyben a kulcsok és a titkos kódok a hardveres biztonsági modulokban (HSM) tárolhatók. [Azure Key Vault](../../key-vault/key-vault-overview.md) védi a kulcsokat és a titkokat a hitelesítő kulcsok, a Storage-fiókok kulcsai, az adattitkosítási kulcsok, a. pfx-fájlok és a jelszavak a HSM által védett kulcsokkal történő titkosításával.
 
 **Ajánlott eljárás**: Ne helyezzen el hitelesítő adatokat és más titkokat a forráskódban vagy a GitHubban.   
 **Részletek**: A kulcsok és a hitelesítő adatok elvesztésekor az egyetlen dolog rosszabb, mint a jogosulatlan felek hozzáférése. A támadók kihasználhatják a robot-technológiák előnyeit, hogy megtalálják a kódrészletekben, például a GitHubban tárolt kulcsokat és titkokat. Ne helyezze el a kulcsokat és a titkos kódokat ezekben a nyilvános programkódokban.
@@ -130,13 +130,13 @@ A App Service használatának ajánlott eljárásai a következők:
 **Részletek**: A App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez.
 
 **Ajánlott eljárás**: A hozzáférés korlátozása a szükséges ismeret és a legalacsonyabb szintű biztonsági alapelvek alapján.   
-**Részletek**: A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés](/azure/role-based-access-control/overview)-kezeléssel.
+**Részletek**: A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A RBAC segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A felhasználók alkalmazásokhoz való hozzáférésének biztosításával kapcsolatos további tudnivalókért lásd: Ismerkedés [a hozzáférés-kezeléssel](/azure/role-based-access-control/overview).
 
 **Ajánlott eljárás**: A kulcsok megóvása.   
-**Részletek**: Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](/azure/key-vault/key-vault-whatis) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
+**Részletek**: Azure Key Vault segít megőrizni a Felhőbeli alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. További információ: [Azure Key Vault](/azure/key-vault/key-vault-overview) . A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja.
 
 **Ajánlott eljárás**: A bejövő forrás IP-címeinek korlátozása.   
-**Részletek**: A [app Service Environment](/azure/app-service/environment/intro) virtuális hálózati integrációs funkciójával a bejövő forrás IP-címeket hálózati biztonsági csoportokon keresztül korlátozhatja. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure](/azure/app-service/web-sites-integrate-with-vnet)-beli virtuális hálózattal.
+**Részletek**: A [app Service Environment](/azure/app-service/environment/intro) virtuális hálózati integrációs funkciójával a bejövő forrás IP-címeket hálózati biztonsági csoportokon keresztül korlátozhatja. A virtuális hálózatok lehetővé teszik az Azure-erőforrások olyan nem internetes, irányítható hálózatban való elhelyezését, amellyel a hozzáférését szabályozhatja. További információ: [az alkalmazás integrálása egy Azure-beli virtuális hálózattal](/azure/app-service/web-sites-integrate-with-vnet).
 
 **Ajánlott eljárás**: App Service környezetek biztonsági állapotának figyelése.   
 **Részletek**: A App Service-környezetek figyeléséhez használja a Azure Security Center. Ha a Security Center felismeri a lehetséges biztonsági réseket, [javaslatokat](../../security-center/security-center-virtual-machine-protection.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán.
@@ -149,7 +149,7 @@ A App Service használatának ajánlott eljárásai a következők:
 ## <a name="install-a-web-application-firewall"></a>Webalkalmazási tűzfal telepítése
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának számos rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
-A webalkalmazási [tűzfal (WAF)](/azure/frontdoor/waf-overview) a Application Gateway szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF az [Open Web Application Security Project (OWASP) alapszintű szabálykészlet (3,0)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) vagy a 2.2.9.
+A [webalkalmazási tűzfal (WAF)](/azure/frontdoor/waf-overview) a Application Gateway szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF az [Open Web Application Security Project (OWASP) alapszintű szabálykészlet (3,0)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) vagy a 2.2.9.
 
 ## <a name="monitor-the-performance-of-your-applications"></a>Az alkalmazások teljesítményének figyelése
 A monitorozás az adatok összegyűjtését és elemzését, valamint az alkalmazás teljesítményének, állapotának és rendelkezésre állásának meghatározására szolgáló eljárás. A hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás összetevőinek működéséről. Ez segít az üzemidő növelésében, ha a kritikus fontosságú problémákkal értesíti Önt, hogy feloldja őket, mielőtt problémák lépnek fel. Emellett segít a biztonsággal kapcsolatos rendellenességek észlelésében.
@@ -159,7 +159,7 @@ Az [Azure Application Insights](https://azure.microsoft.com/documentation/servic
 Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. A Kusto lekérdezési nyelvével kihasználhatja a megosztott funkciók, például a riasztások, az irányítópultok és a mélyreható elemzés előnyeit.
 
 ## <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
-A biztonsági védelem ellenőrzése olyan fontos, mint bármely más funkció tesztelése. A [](pen-testing.md) létrehozási és üzembe helyezési folyamat standard részét a behatolások tesztelésével teheti meg. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
+A biztonsági védelem ellenőrzése olyan fontos, mint bármely más funkció tesztelése. A létrehozási és üzembe helyezési folyamat standard részét a [behatolások tesztelésével](pen-testing.md) teheti meg. Rendszeres biztonsági tesztek és sebezhetőségi vizsgálat ütemezett végrehajtása a telepített alkalmazásokon, valamint a nyitott portok, végpontok és támadások figyelése.
 
 A fuzz Testing metódus a programbeli hibák (hibakódok) megkeresésére, ha helytelenül formázott bemeneti adatokat ad meg az adatok elemzésére és felhasználására szolgáló kezelőfelületekhez (belépési pontokhoz). A [Microsoft biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security-risk-detection/) egy felhőalapú eszköz, amellyel a szoftverben az Azure-ba történő üzembe helyezése előtt hibákat és egyéb biztonsági réseket kereshet. Az eszköz úgy van kialakítva, hogy a szoftverek központi telepítése előtt elkapjon biztonsági réseket, így nem kell hibát kijavítania, összeomlásokkal foglalkoznia, vagy támadásra reagálni a szoftver felszabadítása után.
 
@@ -176,7 +176,7 @@ Ebben a cikkben az Azure Pásti üzembe helyezésének és a felhőalapú alkalm
 
 Tekintse meg a [biztonságos alkalmazások fejlesztése az Azure](abstract-develop-secure-apps.md) -ban biztonsági kérdéseket és ellenőrzéseket a szoftverfejlesztés életciklusának minden fázisában a Felhőbeli alkalmazások fejlesztésekor.
 
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági](best-practices-and-patterns.md) eljárásaival és modelljeivel foglalkozó témakörben talál.
+Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
 * Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről

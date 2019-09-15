@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 4d4fe32b5f457e2b223132006afd20bfe3161bbd
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/14/2019
+ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142607"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002407"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és szállítás (CI/CD) Azure Data Factory
 
@@ -108,7 +108,7 @@ Az alábbi útmutató egy Azure-beli folyamatok kiadásának beállítására sz
 
 1.  Azure Resource Manager telepítési feladat hozzáadása:
 
-    a.  A fázis nézetben kattintson a megtekintési **szakasz feladatok** hivatkozásra.
+    a.  A fázis nézetben kattintson a **megtekintési szakasz feladatok** hivatkozásra.
 
     ![](media/continuous-integration-deployment/continuous-integration-image14.png)
 
@@ -122,7 +122,7 @@ Az alábbi útmutató egy Azure-beli folyamatok kiadásának beállítására sz
 
     f.  Válassza a **... lehetőséget.** a **sablon paraméterei mezőben.** a parameters (paraméterek) fájl kiválasztásához. Válassza ki a megfelelő fájlt attól függően, hogy létrehozott-e egy másolatot, vagy az alapértelmezett *ARMTemplateParametersForFactory. JSON*fájlt használja.
 
-    g.  Válassza a **... lehetőséget.** a felülbírálási **sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, adja meg `"$(cred1)"`az értékét.
+    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, adja meg `"$(cred1)"`az értékét.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -426,7 +426,7 @@ Alább látható a fenti sablon kialakításának magyarázata, erőforrás típ
 * A `typeProperties`rendszerben a két tulajdonság paraméteres. Az első `maxConcurrency`a, amely az alapértelmezett értékkel van megadva, és típusa`string`. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`:.
 * A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képeznek `interval` a tulajdonság, amely a szám típusaként van paraméterként, a paraméter pedig a (z `<entityName>_properties_typeProperties_recurrence_triggerSuffix`) előtaggal van ellátva. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>LinkedServices
+#### <a name="linkedservices"></a>linkedServices
 
 * A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában minden típusú `AzureDataLakeStore`társított szolgáltatás, egy adott sablon lesz alkalmazva, és minden más (a-n keresztül \*) egy másik sablon lesz alkalmazva.
 * A `connectionString` tulajdonság `securestring` értéke paraméterként fog megjelenni, nem lesz alapértelmezett értéke, és egy rövidített paraméter neve lesz, amely az utótaggal van ellátva `connectionString`.

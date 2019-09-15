@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 85376bddbfbf8249438c9027eaf4dc63b83fe2fe
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186227"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004010"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>A kivetítések használata a Azure Searchban található Knowledge Store-ban
 
@@ -34,7 +34,7 @@ Az áruház két típusú kivetítést támogat:
 
 + **Objektumok**: Ha az adatai és a bővítések JSON-ábrázolására van szüksége, a rendszer blobként menti az objektumok kivetítéseit.
 
-Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, tekintse át az [Ismerkedés a Knowledge Store szolgáltatással](knowledge-store-howto.md) című témakört.
+Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, tekintse át az [Ismerkedés a Knowledge Store szolgáltatással](knowledge-store-howto.md)című témakört.
 
 ## <a name="projection-groups"></a>Kivetítési csoportok
 
@@ -67,13 +67,16 @@ Az indexben egyetlen dokumentumot is létrehozhat több táblázatba, és megőr
 
 A készségkészlet `knowledgeStore` elemében a táblázat kivetítésének meghatározásakor először egy csomópontot kell hozzárendelni a dúsítási fában a tábla forrásához. Ez a csomópont általában egy olyan **formáló** képesség kimenete, amelyet a szaktudás listájához adott hozzá, hogy egy adott alakzatot hozzon létre a táblázatokban való projekthez. A projekthez kiválasztott csomópont több táblázatba is feldarabolható a projektbe. A táblák definíciója a projekthez használni kívánt táblák listáját tartalmazza. 
 
+#### <a name="projection-slicing"></a>Leképezések szeletelése
+A táblázatos kivetítési csoportok definiálásakor a dúsítási fa egyetlen csomópontja több kapcsolódó táblába is feldarabolható. Ha olyan táblát ad hozzá a forrás elérési útjához, amely egy meglévő táblázatos leképezés gyermeke, akkor a gyermek csomópont ki lesz darabolva a szülő csomópontból, és az új, még kapcsolódó táblába kerül. Ez lehetővé teszi, hogy egyetlen csomópontot határozzon meg egy olyan alakzatban, amely a tábla összes vetületének forrása lehet.
+
 Minden táblázathoz három tulajdonság szükséges:
 
 + Táblanév A tábla neve az Azure Storage-ban.
 
 + generatedKeyName: Azon kulcs oszlopának neve, amely egyedileg azonosítja ezt a sort.
 
-+ forrás A dúsítási fában lévő csomópont, amelyből a dúsítást beadja. Ez általában egy formáló kimenete, de az is lehet, hogy bármelyik ismeret kimenete lehetséges.
++ Forrás A dúsítási fában lévő csomópont, amelyből a dúsítást beadja. Ez általában egy formáló kimenete, de az is lehet, hogy bármelyik ismeret kimenete lehetséges.
 
 Íme egy példa a tábla-kivetítésekre.
 
@@ -111,11 +114,11 @@ Ahogy az ebben a példában is látható, a legfontosabb kifejezések és entit�
 
 A következő ábra a Caselaw gyakorlatra mutat, amely [bemutatja, hogyan kezdheti el a Knowledge Store](knowledge-store-howto.md)-t. Abban az esetben, ha egy esetnek több véleménye is van, és az egyes véleményeket a benne található entitások azonosításával gazdagítják, az itt látható módon modellezheti az előrejelzéseket.
 
-![Entitások és kapcsolatok a táblákban](media/knowledge-store-projection-overview/TableRelationships.png "Modellezési kapcsolatok a táblázatos") kivetítésekben
+![Entitások és kapcsolatok a táblákban](media/knowledge-store-projection-overview/TableRelationships.png "Modellezési kapcsolatok a táblázatos kivetítésekben")
 
 ## <a name="object-projections"></a>Objektum-kivetítések
 
-Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek bármely csomópontból származnak. Sok esetben ugyanaz a Shapeer -képesség, amely létrehoz egy tábla-kivetítést egy objektum-kivetítés létrehozásához. 
+Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek bármely csomópontból származnak. Sok esetben ugyanaz a **shapeer** -képesség, amely létrehoz egy tábla-kivetítést egy objektum-kivetítés létrehozásához. 
 
 ```json
 {
@@ -153,8 +156,8 @@ Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek b�
 Az objektumok leképezésének létrehozásához néhány objektum-specifikus attribútumra van szükség:
 
 + storageContainer: Az a tároló, ahová a rendszer menti az objektumokat
-+ forrás A kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja
-+ kulcs Egy elérési út, amely a tárolni kívánt objektum egyedi kulcsát jelöli. A rendszer felhasználja a blob nevének létrehozására a tárolóban.
++ Forrás A kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja
++ Kulcs Egy elérési út, amely a tárolni kívánt objektum egyedi kulcsát jelöli. A rendszer felhasználja a blob nevének létrehozására a tárolóban.
 
 ## <a name="projection-lifecycle"></a>Leképezési életciklus
 

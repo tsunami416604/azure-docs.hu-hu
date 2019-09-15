@@ -1,25 +1,25 @@
 ---
-title: A paraméteres lekérdezések az Azure Cosmos DB-ben
-description: Paraméteres SQL-lekérdezések ismertetése
+title: Paraméteres lekérdezések a Azure Cosmos DBban
+description: Tudnivalók az SQL paraméteres lekérdezésekről
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 2bfc22346c1dd43d7d3c2937ffc286e48ae774d0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342639"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003609"
 ---
-# <a name="parameterized-queries-in-azure-cosmos-db"></a>A paraméteres lekérdezések az Azure Cosmos DB-ben
+# <a name="parameterized-queries-in-azure-cosmos-db"></a>Paraméteres lekérdezések a Azure Cosmos DBban
 
-A cosmos DB támogatja a lekérdezések az ismerős @ jelöléssel kifejezett paraméterekkel. Paraméteres SQL hatékony kezelése és a felhasználói adatbevitel escape-karaktersorozat biztosít, és megakadályozza, hogy a SQL-injektálás az adatok véletlen kapta.
+Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalmazó lekérdezéseket. A paraméteres SQL lehetővé teszi a felhasználói adatbevitel robusztus kezelését és megmenekülését, és megakadályozza az adatok véletlen kisugárzását az SQL-injektáláson keresztül.
 
 ## <a name="examples"></a>Példák
 
-Például írhat egy lekérdezést, amely a `lastName` és `address.state` meg paraméterként, és hajtsa végre, a különböző értékek `lastName` és `address.state` felhasználói bemenet alapján.
+Írhat például egy `lastName` olyan lekérdezést, amely `address.state` paramétereket fogad `lastName` el, és paraméterként végrehajtja azt, és a felhasználói bevitelen `address.state` alapuló különböző értékekre hajtja végre.
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ Például írhat egy lekérdezést, amely a `lastName` és `address.state` meg p
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Majd elküldheti a kérelem Cosmos DB-hez egy paraméteres JSON lekérdezést a következőhöz hasonló:
+Ezt a kérést elküldheti Cosmos DB paraméteres JSON-lekérdezésként, például az alábbiak szerint:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Majd elküldheti a kérelem Cosmos DB-hez egy paraméteres JSON lekérdezést a 
     }
 ```
 
-Az alábbi példa egy parametrizált lekérdezés első argumentumban állítja be: 
+A következő példa a felső argumentumot egy paraméteres lekérdezéssel állítja be: 
 
 ```sql
     {
@@ -50,10 +50,10 @@ Az alábbi példa egy parametrizált lekérdezés első argumentumban állítja 
     }
 ```
 
-A paraméter értéke lehet bármely érvényes JSON: karakterláncok, számok, logikai értékek, NULL értékű, akkor is igaz, tömbök, vagy beágyazott JSON. Mivel a Cosmos DB séma nélküli, paraméterek bármilyen nem ellenőrzi.
+A paraméter értéke lehet bármilyen érvényes JSON: karakterlánc, szám, logikai érték, null, páros vagy beágyazott JSON. Mivel Cosmos DB séma nélküli, a paraméterek nem ellenőrizhetők semmilyen típuson.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Dokumentumadatok modellezése](modeling-data.md)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dokumentum-adattípusok](modeling-data.md)

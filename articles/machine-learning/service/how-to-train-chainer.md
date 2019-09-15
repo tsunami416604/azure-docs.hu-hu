@@ -1,6 +1,6 @@
 ---
 title: Mély tanulási neurális hálózat betanítása a Chainer szolgáltatással
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning Chainer kalkulátor-osztályának használatával.  A példa a kézírásos classifis, hogy egy Deep learning neurális hálózatot építsen ki a NumPy-on futó, a láncot használó Python-kódtár használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966826"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002721"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning szolgáltatással
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning
 
-Ebből a cikkből megtudhatja, hogyan [](https://chainer.org/) futtathatja nagyvállalati szinten a chainer-betanítási szkripteket Azure Machine learning [chainer kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -osztályának használatával. Az ebben a cikkben ismertetett betanítási szkript a népszerű [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészletet használja a kézzel írt számjegyek besorolásához a [NumPy](https://www.numpy.org/)-on futó, a chainer Python-kódtár használatával létrehozott Deep neurális hálózat (DNN) használatával.
+Ebből a cikkből megtudhatja, hogyan futtathatja nagyvállalati szinten a [chainer](https://chainer.org/) -betanítási szkripteket Azure Machine learning [chainer kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -osztályának használatával. Az ebben a cikkben ismertetett betanítási szkript a népszerű [MNIST adatkészletet](http://yann.lecun.com/exdb/mnist/) használja a kézzel írt számjegyek besorolásához a [NumPy](https://www.numpy.org/)-on futó, a chainer Python-kódtár használatával létrehozott Deep neurális hálózat (DNN) használatával.
 
 Akár az alapoktól, akár egy meglévő modellt szeretne készíteni a felhőbe, az Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
 
 További információ a [Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatásról.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
     - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
-    - A notebook-kiszolgáló minták Deep learning mappájában keresse meg az elkészült jegyzetfüzeteket és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with** -láncolási mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+    - A notebook-kiszolgáló minták Deep learning mappájában keresse meg az elkészült jegyzetfüzeteket és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with-láncolási** mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 - Saját Jupyter Notebook-kiszolgáló
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
 Hozzon létre egy munkaterület-objektumot `config.json` az [Előfeltételek szakaszban](#prerequisites)létrehozott fájl beolvasásával:
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a Azure Machine Learning Service-ben a Chainer használatával egy mélyreható tanulási és neurális hálózatot oktatott és regisztrált. A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
+Ebben a cikkben a Azure Machine Learning láncolásával foglalkozó, mély tanulási és neurális hálózatot oktatott és regisztrált. A modellek üzembe helyezésének megismeréséhez folytassa a [modell üzembe](how-to-deploy-and-where.md) helyezésével kapcsolatos cikket.
 
 * [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
 

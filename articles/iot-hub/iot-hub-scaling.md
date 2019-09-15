@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 9be0b93335cef919db4efa2fce361bda1f9b934e
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891996"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999969"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Válassza ki a megoldás megfelelő IoT Hubi szintjét
 
@@ -33,7 +33,7 @@ Az egyes IoT Hub szintek három méretben érhetők el, attól függően, hogy m
 
 A IoT Hub standard szintje lehetővé teszi az összes funkció használatát, és minden olyan IoT-megoldáshoz szükséges, amely a kétirányú kommunikációs képességeket kívánja kihasználni. Az alapszintű csomag lehetővé teszi a szolgáltatások egy részhalmazát, és olyan IoT-megoldások számára készült, amelyek csak az eszközökről a felhőbe irányuló, UNI-irányú kommunikációt igényelnek. Mindkét szinten ugyanazokat a biztonsági és hitelesítési funkciókat kínálja.
 
-Egy adott rétegen [](https://azure.microsoft.com/pricing/details/iot-hub/) belül csak egy kiadást lehet kiválasztani IoT hub. Létrehozhat például egy IoT Hubt az S1 több egységével, de nem különböző kiadásokból származó egységekkel, például S1 és B3, illetve S1 és S2 használatával.
+Egy adott rétegen [](https://azure.microsoft.com/pricing/details/iot-hub/) belül csak egy kiadást lehet kiválasztani IoT hub. Létrehozhat például egy, az S1 több egységgel rendelkező IoT Hub, de különböző kiadásokból (például S1 és S2) álló egységeket is.
 
 | Képesség | Alapszintű csomag | Ingyenes/standard szint |
 | ---------- | ---------- | ------------- |
@@ -86,6 +86,10 @@ Az alapszintű és a standard szintű IoT Hub által támogatott képességek k�
 | Modul küldése esemény | Csak AMQP és MQTT | Csak AMQP és MQTT |
 | [Fájlfeltöltés állapotának frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
 | [Tömeges eszköz művelete](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Igen, a IoT Edge képességek kivételével | Igen |
+| [Importálási exportálási feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Igen | Igen |
+| [Importálási exportálási feladatok létrehozása](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Igen | Igen |
+| [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Igen | Igen |
+| [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Igen | Igen |
 | [Parancssori várólista kiürítése](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Igen |
 | [Eszköz dupla beolvasása](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Igen |
 | [Dupla modul beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Igen |
@@ -107,17 +111,17 @@ IoT Hub megoldás méretezésének legjobb módja a forgalom kiértékelése egy
 * Felhőből az eszközre irányuló üzenetek
 * Identitásjegyzék műveletei
 
-A forgalmat egységenként, nem pedig központilag mérik. Az 1. vagy 2. szintű IoT Hub példányokhoz legfeljebb 200 egység rendelhető hozzá. A 3. szintű IoT Hub példány legfeljebb 10 egységet tartalmazhat. Az IoT hub létrehozása után megváltoztathatja az egységek számát, illetve az 1, 2 és 3 méret közötti váltást egy adott szinten anélkül, hogy megszakítja a meglévő műveleteket. További információ: a [IoT hub frissítése](iot-hub-upgrade.md).
+Az IoT hub forgalmát egységenként kell mérni. Az IoT hub létrehozásakor kiválaszthatja annak szintjét és kiadását, és beállíthatja a rendelkezésre álló egységek számát. Akár 200 egységet is megvásárolhat a B1, a B2, az S1 vagy az S2 kiadáshoz, vagy akár 10 egységet a B3 vagy az S3 kiadáshoz. Az IoT hub létrehozása után megváltoztathatja a kiadáson belül elérhető egységek számát, a szintet (B1 – B2) belüli kiadások közötti frissítést vagy visszalépést, vagy az alapszintről a standard szintre (B1 – S1) történő frissítést anélkül, hogy megszakítja a meglévő műveleteket. További információ: az [IoT hub frissítése](iot-hub-upgrade.md).  
 
 Az egyes szintek forgalmának, az eszközről a felhőbe irányuló üzenetek esetében például a következő fenntartható átviteli sebességre vonatkozó irányelvek láthatók:
 
-| Szint | Tartós átviteli sebesség | Tartós küldési arány |
+| Szintű kiadás | Tartós átviteli sebesség | Tartós küldési arány |
 | --- | --- | --- |
 | B1, S1 |Akár 1111 KB/perc egységenként<br/>(1,5 GB/nap/egység) |Átlagosan 278 üzenet/perc egységenként<br/>(400 000 üzenet/nap egységenként) |
 | B2, S2 |Akár 16 MB/perc egységenként<br/>(22,8 GB/nap/egység) |Átlagosan 4 167 üzenet/perc egységenként<br/>(6 000 000 üzenet/nap egységenként) |
 | B3, S3 |Akár 814 MB/perc egységenként<br/>(1144,4 GB/nap/egység) |Átlagosan 208 333 üzenet/perc egységenként<br/>(300 000 000 üzenet/nap egységenként) |
 
-Az átviteli sebességre vonatkozó információk mellett tekintse meg a [IoT hub kvótákat és](iot-hub-devguide-quotas-throttling.md) a szabályozásokat, és tervezze meg a megoldást ennek megfelelően.
+Az eszközről a felhőbe irányuló átviteli sebesség csak az egyik mérőszám, amelyet figyelembe kell vennie egy IoT-megoldás tervezésekor. További információk: [IoT hub kvóták és szabályozások](iot-hub-devguide-quotas-throttling.md).
 
 ### <a name="identity-registry-operation-throughput"></a>Azonosító beállításjegyzékbeli művelet átviteli sebessége
 
@@ -127,7 +131,7 @@ Adott burst-teljesítményi számok esetében lásd: [IoT hub kvóták és szab�
 
 ## <a name="auto-scale"></a>Automatikus méretezés
 
-Ha közeledik az engedélyezett üzenet korlátja a IoT Hubon, akkor a következő [lépésekkel automatikusan méretezheti](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) az IoT hub egységet ugyanabban a IoT hub szinten.
+Ha közeledik az engedélyezett IoT hub-korláthoz, a következő [lépésekkel automatikusan méretezheti](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) az IoT hub egységet ugyanazon a IoT hub szinten.
 
 ## <a name="next-steps"></a>További lépések
 

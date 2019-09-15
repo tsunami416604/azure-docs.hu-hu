@@ -1,25 +1,25 @@
 ---
-title: -Tömbök és az Azure Cosmos DB objektumok használata
-description: További információ az Azure Cosmos DB tömb- és létrehozása SQL-szintaxis.
+title: Tömbök és objektumok használata Azure Cosmos DB
+description: Tudnivalók a tömb-és objektum-létrehozási SQL-szintaxisról Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 338f3b51edf38d20a963992e121b7e2dbd0c6873
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342781"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003934"
 ---
-# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>-Tömbök és az Azure Cosmos DB objektumok használata
+# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Tömbök és objektumok használata Azure Cosmos DB
 
-Az Azure Cosmos DB SQL API egyik legfőbb jellemzője a tömb- és létrehozása.
+A Azure Cosmos DB SQL API egyik fő funkciója a tömb és az objektum létrehozása.
 
-## <a name="arrays"></a>tömbök
+## <a name="arrays"></a>Tömbök
 
-Tömbök, hozhatnak létre, az alábbi példában látható módon:
+Tömböket a következő példában látható módon hozhat létre:
 
 ```sql
     SELECT [f.address.city, f.address.state] AS CityState
@@ -45,7 +45,7 @@ Az eredmények a következők:
     ]
 ```
 
-Is használhatja a [TÖMBÖT megadó kifejezést](sql-query-subquery.md#array-expression) létrehozására a tömb [segédlekérdezés](sql-query-subquery.md) eredményeket. A lekérdezés lekérdezi a distinct megadott nevek a gyermekek tömbben.
+A [Array kifejezéssel](sql-query-subquery.md#array-expression) a [segédlekérdezés](sql-query-subquery.md) eredményeiből is készíthet tömböt. Ez a lekérdezés lekérdezi a tömbben lévő gyermekek egyedi nevét.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -54,7 +54,7 @@ FROM f
 
 ## <a id="Iteration"></a>Iteráció
 
-Az SQL API támogatja a léptetés át, JSON-tömbök és a egy új szerkezet hozzáadva a [KULCSSZÓT](sql-query-keywords.md#in) a FROM forrás. Az alábbi példában:
+Az SQL API támogatást nyújt a JSON-tömbök megismétléséhez, és egy új, a FROM forrásban található [kulcsszóval](sql-query-keywords.md#in) hozzáadott összeállítást biztosít. A következő példában:
 
 ```sql
     SELECT *
@@ -90,7 +90,7 @@ Az eredmények a következők:
     ]
 ```
 
-A következő lekérdezés végrehajtja az iteráció `children` a a `Families` tároló. A kimeneti tömbben eltér az előző lekérdezés. Ebben a példában bontja `children`, és simítja egybe az eredményeket egy egyetlen olyan tömböt be:  
+A következő lekérdezés ismétlést `children` `Families` hajt végre a tárolóban. A kimeneti tömb eltér az előző lekérdezéstől. Ez a példa feldarabolja `children`, és az eredményeket egyetlen tömbbe simítsa:  
 
 ```sql
     SELECT *
@@ -122,7 +122,7 @@ Az eredmények a következők:
     ]
 ```
 
-Szűrheti a tömb minden egyes bejegyzés a további, az alábbi példában látható módon:
+A tömb egyes bejegyzésein tovább szűrhető, ahogy az alábbi példában is látható:
 
 ```sql
     SELECT c.givenName
@@ -138,7 +138,7 @@ Az eredmények a következők:
     }]
 ```
 
-Egy tömb iteráció eredményét feletti is lehet összesíteni. A következő lekérdezés például megszámlálja a gyermekek többek között az összes olyan családot:
+Egy tömb iterációs eredménye is összesíthető. Az alábbi lekérdezés például megszámolja a gyermekek számát az összes család között:
 
 ```sql
     SELECT COUNT(child)
@@ -158,5 +158,5 @@ Az eredmények a következők:
 ## <a name="next-steps"></a>További lépések
 
 - [Bevezetés](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Illesztés](sql-query-join.md)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Csatlakozik](sql-query-join.md)

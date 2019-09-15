@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: e6f6ba131a4fb5dd31f113afd2b6de2d65aeaea0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915162"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003833"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Apache Storm C# -topológiák fejlesztése a Visual studióhoz készült Data Lake Tools használatával
 
@@ -135,7 +135,7 @@ Az ezt az összetevőt használó, például a HDInsight 3,5-as Storm-vel műkö
 
 2. Az **új projekt** ablakban bontsa ki a **telepített** > **sablonok**csomópontot, és válassza a **Azure Data Lake**lehetőséget. A sablonok listájában válassza a **Storm Application**elemet. A képernyő alján adja meg a **WordCount** nevet az alkalmazás neveként.
 
-    ![Képernyőfelvétel az új projekt ablakról](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Képernyőfelvétel az új projekt ablakról](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. A projekt létrehozása után a következő fájlokkal kell rendelkeznie:
 
@@ -338,7 +338,7 @@ Az ezt az összetevőt használó, például a HDInsight 3,5-as Storm-vel műkö
 
 A kiöntő és a csavarok egy gráfba vannak rendezve, amely meghatározza, hogy az adatáramlás Hogyan zajlik az összetevők között. Ehhez a topológiához a gráf a következő:
 
-![Az összetevők elrendezésének diagramja](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Az összetevők elrendezésének diagramja](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 A kiöntő kibocsátja a mondatokat, és az elosztó bolt példányaira terjeszti őket. Az osztó-csavar a mondatokat szavakba bontja, amelyek el vannak osztva a Counter-boltba.
 
@@ -461,7 +461,6 @@ Hibrid topológia esetén például hozzon létre egy projektet, és válassza a
   > [!NOTE]  
   > Ez a verzió azt is bemutatja, hogyan használható a Clojure-kód egy szövegfájlban Java-összetevőként.
 
-
 A projekt elküldésekor használt topológia átváltásához vigye `[Active(true)]` az utasítást a használni kívánt topológiára, mielőtt elküldené a fürtbe.
 
 > [!NOTE]  
@@ -571,15 +570,15 @@ Bár a topológia egyszerűen üzembe helyezhető egy fürtben, bizonyos esetekb
    > [!NOTE]
    > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.
 
-2. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az > **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az **LocalTest.cs** nevet. Végül kattintson a **Hozzáadás**gombra.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az > **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az **LocalTest.cs** nevet. Végül kattintson a **Hozzáadás**gombra.
 
-3. Nyissa meg a **LocalTest.cs**, és adja hozzá a következő **using** utasítást a felső részen:
+1. Nyissa meg a **LocalTest.cs**, és adja hozzá a következő **using** utasítást a felső részen:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Használja a következő kódot a **LocalTest** osztály tartalmáként:
+1. Használja a következő kódot a **LocalTest** osztály tartalmáként:
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ Bár a topológia egyszerűen üzembe helyezhető egy fürtben, bizonyos esetekb
     Console.ReadKey();
     ```
 
-2. Mentse a módosításokat, majd kattintson az **F5** gombra, **vagy válassza a hibakeresés** > **indítása** a projekt elindításához lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Ha a **tesztek befejeződött** , nyomja le az egyik billentyűt az ablak bezárásához.
+1. Mentse a módosításokat, majd kattintson az **F5** gombra, **vagy válassza a hibakeresés** > **indítása** a projekt elindításához lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Ha a **tesztek befejeződött** , nyomja le az egyik billentyűt az ablak bezárásához.
 
-3. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. Példa: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban nyissa meg a **bin**mappát, majd kattintson a **hibakeresés**elemre. A tesztek futtatásakor létrehozott szövegfájlokat a mondatok. txt, a Counter. txt és az Splitter. txt fájl tartalmazza. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
+1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. Példa: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban nyissa meg a **bin**mappát, majd kattintson a **hibakeresés**elemre. A tesztek futtatásakor létrehozott szövegfájlokat a mondatok. txt, a Counter. txt és az Splitter. txt fájl tartalmazza. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
 
    > [!NOTE]  
    > A karakterlánc-adatok az ezekben a fájlokban lévő decimális értékek tömbje is megmaradnak. Például \[: [97 103 111]] az **osztó. txt** fájlban a szó *és*a.

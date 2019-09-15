@@ -1,7 +1,7 @@
 ---
 title: 'A regressziós modell oktatóanyaga: Automatizált ML'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozhatja ki gépi tanulási modellt az automatizált gépi tanulás használatával. A Azure Machine Learning az adatok előfeldolgozását, az algoritmus kiválasztását és a hiperparaméter kiválasztását automatizált módon végezheti el. Ezután az utolsó modell üzembe helyezése Azure Machine Learning szolgáltatással történik.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan hozhatja ki gépi tanulási modellt az automatizált gépi tanulás használatával. A Azure Machine Learning az adatok előfeldolgozását, az algoritmus kiválasztását és a hiperparaméter kiválasztását automatizált módon végezheti el. Ezután az utolsó modell üzembe helyezése Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036251"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003977"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: Automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
 
-Ebben az oktatóanyagban az Azure Machine Learning Service-ben az automatikus gépi tanulás használatával regressziós modellt hozhat létre a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
+Ebben az oktatóanyagban a Azure Machine Learning automatizált gépi tanulást használ egy regressziós modell létrehozásához a New York-i taxi díjszabásának előrejelzéséhez. Ez a folyamat fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkció-normalizálás/szabványosítási módszerek, modellek és hiperparaméter-beállítások kombinációit, hogy a legjobb modellt lehessen megérkezni.
 
 ![Folyamatábra](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,14 +30,14 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > * Automatizált gépi tanulási regressziós modell betanítása
 > * Modell pontosságának kiszámítása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning Service [ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a Azure Machine Learning [ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nem rendelkezik Azure Machine Learning szolgáltatás-munkaterülettel vagy notebook virtuális géppel, fejezze be a [telepítési útmutatót](tutorial-1st-experiment-sdk-setup.md) .
+* Ha még nem rendelkezik Azure Machine Learning munkaterülettel vagy notebook virtuális géppel, fejezze be a [telepítési útmutatót](tutorial-1st-experiment-sdk-setup.md) .
 * A telepítési oktatóanyag befejezése után nyissa meg az **oktatóanyagok/Regression-Automated-ml. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
 
-Ez az oktatóanyag a githubon [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetben](how-to-configure-environment.md#local)szeretné futtatni. Futtassa `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` a parancsot a szükséges csomagok beszerzéséhez.
+Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetben](how-to-configure-environment.md#local)szeretné futtatni. Futtassa `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` a parancsot a szükséges csomagok beszerzéséhez.
 
 ## <a name="download-and-prepare-data"></a>Az adatgyűjtés letöltése és előkészítése
 
@@ -1012,7 +1012,7 @@ y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-`root mean squared error` Az eredmények kiszámítása. Alakítsa át `y_test` a dataframe egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értéket vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál hibát. Nagyjából azt jelzi, hogy a taxi díjszabása milyen messzire kerül a tényleges díjszabás alapján.
+`root mean squared error` Az eredmények kiszámítása. Alakítsa át `y_test` a dataframe egy listára, hogy összehasonlítsa az előre jelzett értékeket. A függvény `mean_squared_error` két tömb értéket vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Az eredmény négyzet gyökerének megadásával az y változóval megegyező egységekben talál **hibát.** Nagyjából azt jelzi, hogy a taxi díjszabása milyen messzire kerül a tényleges díjszabás alapján.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1057,7 +1057,7 @@ A hagyományos gépi tanulási modell fejlesztési folyamatok magas erőforrás-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning szolgáltatás-oktatóanyagokat szeretne futtatni.
+Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
 ### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
 
@@ -1088,4 +1088,4 @@ Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat
 > * Automatikus regressziós modell használatával, helyi egyéni paraméterekkel.
 > * A betanítási eredmények megismerése és felülvizsgálata.
 
-[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) Azure Machine learning szolgáltatással.
+[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) az Azure Machine Learning.

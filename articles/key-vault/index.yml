@@ -20,7 +20,7 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - href: /azure/key-vault/key-vault-whatis
+          - href: /azure/key-vault/key-vault-overview
             html: <p>Megismerkedhet az Azure Key Vaulthoz kapcsolódó alapvető fogalmakkal.</p>
             image:
               src: 'https://docs.microsoft.com/media/common/i_article.svg'

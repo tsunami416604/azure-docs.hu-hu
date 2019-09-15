@@ -1,7 +1,7 @@
 ---
 title: 'A képbesorolás oktatóanyaga: Modellek üzembe helyezése'
-titleSuffix: Azure Machine Learning service
-description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell üzembe helyezésére a scikit-learn alkalmazásával egy Python Jupyter-notebookban. Ez az oktatóanyag a két részből álló sorozat második része.
+titleSuffix: Azure Machine Learning
+description: Ez az oktatóanyag bemutatja, hogyan használhatók a Azure Machine Learning egy képbesorolási modell üzembe helyezéséhez a scikit-Learn használatával egy Python Jupyter notebookon. Ez az oktatóanyag a két részből álló sorozat második része.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6e5ab17a04c994f09bccc0f51f11749ee8590b1d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036220"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003055"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: Rendszerkép-besorolási modell üzembe helyezése Azure Container Instances
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az 
 
 Most már készen áll arra, hogy webszolgáltatásként telepítse a modellt [Azure Container instances](https://docs.microsoft.com/azure/container-instances/)-ben. A webszolgáltatás egy rendszerkép, ebben az esetben egy Docker-rendszerkép. Magába foglalja a pontozási logikát és a modellt. 
 
-Az oktatóanyag ezen részében a következő feladatokhoz használja a Azure Machine Learning szolgáltatást:
+Az oktatóanyag ezen részében a Azure Machine Learning a következő feladatokhoz használhatja:
 
 > [!div class="checklist"]
 > * A tesztelési környezet beállítása.
@@ -41,7 +41,7 @@ A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és 
 
 A jegyzetfüzet futtatásához először végezze el [a modell betanítását az oktatóanyagban (1. rész): Képbesorolási modell](tutorial-train-models-with-aml.md)betanítása.   Ezután nyissa meg az **oktatóanyagok/IMG-Classification-part2-Deploy. ipynb** jegyzetfüzetet ugyanazzal a notebook-kiszolgálóval.
 
-Ez az oktatóanyag a githubon [](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítve `scikit-learn` van és a környezetében. 
+Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy `matplotlib` telepítve `scikit-learn` van és a környezetében. 
 
 ## <a name="start"></a>A környezet beállítása
 
@@ -378,7 +378,7 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-+ További információ a [Azure Machine learning szolgáltatás összes üzembe helyezési lehetőségéről](how-to-deploy-and-where.md).
++ További információ a Azure Machine Learning összes [üzembe helyezési lehetőségéről](how-to-deploy-and-where.md).
 + Ismerje meg, hogyan [hozhat létre ügyfeleket a](how-to-consume-web-service.md)webszolgáltatáshoz.
 +  [Előrejelzések készítése aszinkron módon nagy mennyiségű adattal](how-to-run-batch-predictions.md) .
 + A Azure Machine Learning-modellek monitorozása [Application Insightsokkal](how-to-enable-app-insights.md).

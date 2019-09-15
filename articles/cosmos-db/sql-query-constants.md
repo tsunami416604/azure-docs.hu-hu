@@ -1,19 +1,19 @@
 ---
-title: Az Azure Cosmos DB SQL állandók
-description: További tudnivalók az Azure Cosmos DB SQL állandók
+title: SQL-állandók a Azure Cosmos DBban
+description: További információ az SQL-állandók Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ed337c8330eb8b3e4ad97c92cca1d0c5977f9588
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342856"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002042"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Az Azure Cosmos DB SQL-lekérdezés állandók  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
 
  Egy állandó, más néven szövegkonstans vagy skaláris, egy meghatározott értéket jelölő szimbólumot. Egy állandó formátumát az érték azt jelenti, hogy függ.  
   
@@ -26,7 +26,7 @@ ms.locfileid: "67342856"
 |**Logikai érték**|Értékek: **hamis**, **igaz**.|  
 |**Szám**|Egy dupla pontosságú lebegőpontos számnál, szabvány IEEE 754.|  
 |**Karakterlánc**|Nulla vagy több Unicode karakter sorozata. Karakterláncok egyszeres vagy kettős idézőjelek közé kell tenni.|  
-|**Pole**|Nulla vagy több elemek sorrendjét. Minden elem kivételével minden skaláris adattípusú érték lehet **Undefined**.|  
+|**Pole**|Nulla vagy több elemek sorrendjét. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált**értéket.|  
 |**Object**|Egy nulla vagy több név/érték párok rendezetlen készlete. Név egy Unicode karakterlánc, kivéve értéke lehet bármely skaláris adattípusú **Undefined**.|  
   
 ## <a name="bk_syntax"></a>Szintaxis
@@ -59,7 +59,7 @@ ms.locfileid: "67342856"
   
 ```  
   
-##  <a name="bk_arguments"></a> argumentumok
+##  <a name="bk_arguments"></a>Argumentumok
   
 * `<undefined_constant>; Undefined`  
   
@@ -118,5 +118,5 @@ ms.locfileid: "67342856"
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Dokumentumadatok modellezése](modeling-data.md)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Dokumentum-adattípusok](modeling-data.md)

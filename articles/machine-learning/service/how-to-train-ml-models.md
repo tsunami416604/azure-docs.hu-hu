@@ -1,7 +1,7 @@
 ---
 title: ML modellek betanítása a becslések
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hajthat végre egy csomópontos és elosztott képzési hagyományos gép tanulási és deep learning-modellek Azure Machine Learning services Estimator osztály használatával
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan hajthat végre egycsomópontos és elosztott képzéseket hagyományos gépi tanulási és Deep learning-modellekben Azure Machine Learning kalkulátor osztály használatával
 ms.author: maxluk
 author: maxluk
 services: machine-learning
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 041f80937e3ebae15dd5bd64858ccbd8269104a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815905"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002583"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
 
 A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md#compute-targets-for-training)a [RunConfiguration objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és a [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
 
-A részletes tanulási modell tanításának elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít, amely lehetővé teszi a felhasználók számára a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat egy általános számítást [](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) , amellyel betaníthatja az oktatási szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
+A részletes tanulási modell tanításának elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít, amely lehetővé teszi a felhasználók számára a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat egy általános számítást, amellyel betaníthatja [az oktatási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 
 ## <a name="train-with-an-estimator"></a>Az egy estimator betanítása
 

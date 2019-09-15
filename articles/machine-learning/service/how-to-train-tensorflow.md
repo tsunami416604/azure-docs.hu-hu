@@ -1,7 +1,7 @@
 ---
 title: Mély tanulási neurális hálózat betanítása a TensorFlow
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan futtathat TensorFlow-betanítási szkripteket Azure Machine Learning szolgáltatás használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan futtathat TensorFlow-betanítási szkripteket a méretezés Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b65a9b7440922d2b1d7a02a79cc6d0811a1d9fc
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 52c675369fa70d1b1113f34b9b0dda2126547e0a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639347"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002517"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
 Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -201,9 +201,9 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Elosztott betanítás
 
-A [`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) kalkulátor a CPU-és a GPU-fürtökön egyaránt támogatja az elosztott képzést. Könnyedén futtathatja az elosztott TensorFlow-feladatokat, és a Azure Machine Learning szolgáltatás fogja felügyelni az Ön számára.
+A [`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) kalkulátor a CPU-és a GPU-fürtökön egyaránt támogatja az elosztott képzést. Könnyedén futtathatja az elosztott TensorFlow-feladatokat, és Azure Machine Learning felügyeli az Ön számára.
 
-A Azure Machine Learning szolgáltatás a TensorFlow-ben kétféleképpen terjeszthetők ki az elosztott képzést:
+Az Azure Machine Learning elosztott képzési két módszert támogat, a tensorflow-hoz:
 
 - [MPI-alapú](https://www.open-mpi.org/) elosztott képzések a [Horovod](https://github.com/uber/horovod) -keretrendszer használatával
 - Natív [elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed) a paraméter-kiszolgáló metódus használatával

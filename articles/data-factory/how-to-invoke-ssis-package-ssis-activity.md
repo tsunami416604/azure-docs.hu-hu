@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d2fe8da1c4d49f5b57f907a5940ec9c445d0d1f7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 9057cefa5108924c57dbc85bbb895b31e804a51c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984318"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000642"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a SSIS-csomag végrehajtása tevékenységgel Azure Data Factory
 Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integration Services (SSIS) csomagot Azure Data Factory (ADF) folyamatban a SSIS-csomag végrehajtása tevékenység használatával. 
@@ -269,7 +269,7 @@ Ebben a lépésben létrehoz egy folyamatot a SSIS-csomag végrehajtása tevéke
    }
    ```
 
-A fájlrendszerekben/fájlmegosztás/Azure Filesban tárolt csomagok végrehajtásához a következő módon adhatja meg a csomag/napló hely tulajdonságainak értékeit.
+   A fájlrendszerekben/fájlmegosztás/Azure Filesban tárolt csomagok végrehajtásához a következő módon adhatja meg a csomag/napló hely tulajdonságainak értékeit.
 
    ```json
    {
@@ -318,7 +318,7 @@ A fájlrendszerekben/fájlmegosztás/Azure Filesban tárolt csomagok végrehajt�
    }
    ```
 
-A fájlrendszerek/fájlmegosztás/Azure Filesban tárolt projekteken belüli csomagok végrehajtásához a következő módon adhatja meg a csomag Location tulajdonságának értékeit.
+   A fájlrendszerek/fájlmegosztás/Azure Filesban tárolt projekteken belüli csomagok végrehajtásához a következő módon adhatja meg a csomag Location tulajdonságának értékeit.
 
    ```json
    {

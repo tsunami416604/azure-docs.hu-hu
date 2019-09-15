@@ -15,16 +15,16 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074039"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001214"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása Azure App Servicehoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan védheti meg [](https://docs.microsoft.com/azure/azure-functions/) [app Service alkalmazásait](https://docs.microsoft.com/azure/app-service/) vagy funkcióit app Service-tanúsítvány létrehozásával (megvásárlásával) [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , majd egy app Service alkalmazáshoz kötheti.
+Ebből az oktatóanyagból megtudhatja, hogyan védheti meg [app Service alkalmazásait](https://docs.microsoft.com/azure/app-service/) vagy [funkcióit](https://docs.microsoft.com/azure/azure-functions/) app Service-tanúsítvány létrehozásával (megvásárlásával) [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , majd egy app Service alkalmazáshoz kötheti.
 
 > [!TIP]
 > App Service tanúsítványokat bármely Azure-beli vagy nem Azure-szolgáltatáshoz használhat, és nem korlátozható a App Services. Ehhez létre kell hoznia egy App Service tanúsítvány helyi PFX-példányát, amelyet bárhol igénybe vehet. További információ: [app Service-tanúsítvány helyi pfx-példányának létrehozása](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
@@ -64,9 +64,9 @@ Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.a
 
 ![az áruházba való használatra kész kép beszúrása KV-ban](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-A [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) egy Azure-szolgáltatás, amely segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Ez a App Service-tanúsítványok számára választható tároló.
+A [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) egy Azure-szolgáltatás, amely segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Ez a App Service-tanúsítványok számára választható tároló.
 
-A **Key Vault állapota** lapon kattintson a **Key Vault adattár** elemre egy új tároló létrehozásához, vagy válasszon egy meglévő tárat. Ha úgy dönt, hogy létrehoz egy új tárat, a következő táblázat segítségével konfigurálja a tárolót, és kattintson a Létrehozás gombra. További információ: új Key Vault létrehozása ugyanazon az előfizetésen belül és az erőforráscsoporthoz.
+A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új tároló létrehozásához, vagy válasszon egy meglévő **tárat** . Ha úgy dönt, hogy létrehoz egy új tárat, a következő táblázat segítségével konfigurálja a tárolót, és kattintson a Létrehozás gombra. További információ: új Key Vault létrehozása ugyanazon az előfizetésen belül és az erőforráscsoporthoz.
 
 | Beállítás | Leírás |
 |-|-|
@@ -92,7 +92,7 @@ Válassza ki **app Service ellenőrzést**. Mivel már leképezte a tartományt 
 > 
 > - **App Service** – a legkényelmesebb lehetőség, ha a tartomány már le van képezve egy app Service alkalmazásra ugyanabban az előfizetésben. Kihasználja azt a tényt, hogy a App Service alkalmazás már ellenőrizte a tartomány tulajdonjogát.
 > - **Tartomány** – az [Azure-ból vásárolt app Service tartomány](manage-custom-dns-buy-domain.md)ellenőrzése. Az Azure automatikusan hozzáadja az ellenőrző TXT-rekordot az Ön számára, és befejezi a folyamatot.
-> - E-mail – ellenőrizze a tartományt úgy, hogy e-mailt küld a tartományi rendszergazdának. A beállítás kiválasztásakor a rendszer útmutatást ad.
+> - **E-mail – ellenőrizze** a tartományt úgy, hogy e-mailt küld a tartományi rendszergazdának. A beállítás kiválasztásakor a rendszer útmutatást ad.
 > - **Manuális** – ellenőrizze a TARTOMÁNYT egy HTML-oldal használatával (csak**normál** tanúsítvány esetén) vagy egy DNS TXT-rekorddal. A beállítás kiválasztásakor a rendszer útmutatást ad.
 
 ## <a name="bind-certificate-to-app"></a>Tanúsítvány kötése az alkalmazáshoz
@@ -105,7 +105,7 @@ Az alkalmazás bal oldali navigációs sávján válassza az **SSL** >  **-Beál
 
 Válassza ki az imént megvásárolt tanúsítványt.
 
-Most, hogy importálta a tanúsítványt, hozzá kell kötnie egy hozzárendelt tartománynévhez az alkalmazásban. Válassza > a kötések**SSL-kötés hozzáadása**elemet. 
+Most, hogy importálta a tanúsítványt, hozzá kell kötnie egy hozzárendelt tartománynévhez az alkalmazásban. Válassza a **kötések** > **SSL-kötés hozzáadása**elemet. 
 
 ![Importálási tanúsítvány képének beszúrása](./media/app-service-web-purchase-ssl-web-site/AddBinding.png)
 
@@ -138,7 +138,7 @@ Az újragenerálási művelet befejezése után kattintson a **szinkronizálás*
 
 ## <a name="renew-certificate"></a>Tanúsítvány megújítása
 
-Ha bármikor be szeretné kapcsolni a tanúsítvány automatikus megújítását, válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs menüben kattintson a **beállítások automatikus** megújítása elemre. Alapértelmezés szerint a App Service tanúsítványok 1 év érvényességi időtartammal rendelkeznek.
+Ha bármikor be szeretné kapcsolni a tanúsítvány automatikus megújítását, válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs menüben kattintson a **beállítások automatikus megújítása** elemre. Alapértelmezés szerint a App Service tanúsítványok 1 év érvényességi időtartammal rendelkeznek.
 
 Válassza **a** be lehetőséget, majd kattintson a **Mentés**gombra. A tanúsítványok automatikusan megújítják a 60 nappal a lejárat előtt, ha az automatikus megújítás be van kapcsolva.
 

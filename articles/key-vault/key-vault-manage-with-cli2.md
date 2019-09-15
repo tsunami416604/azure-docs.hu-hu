@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 952126b76b00ff472181c72b1fd7b1a0e1b14e40
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976350"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000623"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
 
@@ -35,7 +35,7 @@ Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A K
 > Ez a cikk nem tartalmaz útmutatást arról, hogyan írhat az Azure-alkalmazást, hogy az egyik lépés tartalmazza, amely bemutatja, hogyan engedélyezheti az alkalmazások számára a kulcsok vagy titkos kulcsok használatát a kulcstartóban.
 >
 
-A Azure Key Vault áttekintése: [Mi az Azure Key Vault?](key-vault-whatis.md)
+A Azure Key Vault áttekintése: [Mi az Azure Key Vault?](key-vault-overview.md)
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -193,7 +193,7 @@ A kulcstartót használó alkalmazásoknak az Azure Active Directoryból szárma
 
 Az alkalmazásnak mindkét értékkel rendelkeznie kell ahhoz, hogy Azure Active Directory-jogkivonatot kapjon. A jogkivonatok lekérésére konfigurált alkalmazások az alkalmazástól függenek. A [Key Vault-mintaalkalmazás](https://www.microsoft.com/download/details.aspx?id=45343) esetében az alkalmazás tulajdonosa adja meg ezeket az értékeket az app.config fájlban.
 
-Az alkalmazások Azure Active Directory segítségével történő regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)használatával című cikket, [és a portálon hozzon létre egy Azure Active Directory alkalmazást és szolgáltatást a rendszerbiztonsági tag, amely hozzáférhet](../active-directory/develop/howto-create-service-principal-portal.md)az erőforrásokhoz, és [létrehoz egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
+Az alkalmazások Azure Active Directory segítségével történő regisztrálásának részletes lépéseiért tekintse át az [alkalmazások integrálása a Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)használatával című cikket, [és a portálon hozzon létre egy Azure Active Directory alkalmazást és szolgáltatást a rendszerbiztonsági tag, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md), és [létrehoz egy Azure-szolgáltatást az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Alkalmazás regisztrálása Azure Active Directoryban:
 

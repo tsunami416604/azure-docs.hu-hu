@@ -1,6 +1,6 @@
 ---
 title: Az első automatizált gépi tanulási kísérlet létrehozása
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan taníthat és helyezhet üzembe egy besorolási modellt automatikus gépi tanulással Azure Machine Learning munkaterület-kezdőlapján (előzetes verzió).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: e831b94099a8bdf96710fc8ae8915938bbe997c4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984514"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001850"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -26,7 +26,7 @@ Az automatizált gépi tanulás segítségével automatizálhatja az időigénye
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületet.
+> * Az Azure Machine Learning-munkaterület létrehozása.
 > * Futtasson automatizált gépi tanulási kísérletet.
 > * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.

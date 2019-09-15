@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698631"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999399"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Egy alárendelt eszköz csatlakoztatása az Azure IoT Edge-átjáró
 
@@ -39,7 +39,7 @@ Ez a cikk a használati *átjáró* és *IoT Edge-átjáró* transzparens átjá
 Lehet, hogy egy alsóbb rétegbeli eszköz bármilyen alkalmazás vagy a platform, amely rendelkezik egy létrehozott identitás a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) felhőalapú szolgáltatás. Sok esetben ezek az alkalmazások használni a [Azure IoT eszközoldali SDK-t](../iot-hub/iot-hub-devguide-sdks.md). Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás. Azonban egy másik IoT Edge eszköz nem lehet egy IoT Edge átjárón. 
 
 >[!NOTE]
->A IoT Hubban regisztrált identitásokkal rendelkező eszközök IoT a különböző [](../iot-hub/iot-hub-devguide-module-twins.md) folyamatok, hardverek vagy függvények egyetlen eszközön való elkülönítéséhez használhatók. IoT Edge átjárók támogatják az alárendelt modulok kapcsolatait a szimmetrikus kulcsos hitelesítéssel, de X. 509 tanúsítványalapú hitelesítést nem. 
+>A IoT Hubban regisztrált identitásokkal rendelkező eszközök [IoT a különböző](../iot-hub/iot-hub-devguide-module-twins.md) folyamatok, hardverek vagy függvények egyetlen eszközön való elkülönítéséhez használhatók. IoT Edge átjárók támogatják az alárendelt modulok kapcsolatait a szimmetrikus kulcsos hitelesítéssel, de X. 509 tanúsítványalapú hitelesítést nem. 
 
 Egy alárendelt eszköz csatlakoztatása az IoT Edge-átjáró, két dologra van szükség:
 
@@ -170,10 +170,9 @@ Ez a szakasz bemutatja egy mintaalkalmazást az Azure IoT-Java ügyfél csatlako
 
 Ez a szakasz bemutatja egy mintaalkalmazást az Azure IoT Python ügyfél csatlakozik az IoT Edge-átjáró. 
 
-1. A minta első **edge_downstream_client** származó a [Python-minták az Azure IoT eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples). 
-2. Győződjön meg arról, hogy rendelkezik-e a minta futtatásához áttekintésével összes előfeltételt, a **readme.md** fájlt. 
-3. A edge_downstream_client.py fájlban frissítse a **connections_string** és **TRUSTED_ROOT_CA_CERTIFICATE_PATH** változókat. 
-4. Tekintse meg az eszközön a minta futtatásához útmutatást az SDK dokumentációját. 
+1. Szerezze be a **send_message** származó mintát a [Python-mintákhoz készült Azure IoT Device SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)-ból. 
+2. Győződjön meg arról, hogy egy peremhálózati tárolóban fut, vagy hibakeresési forgatókönyvben a `EdgeHubConnectionString` és `EdgeModuleCACertificateFile` a környezeti változók vannak beállítva.
+3. Tekintse meg az eszközön a minta futtatásához útmutatást az SDK dokumentációját. 
 
 
 ## <a name="test-the-gateway-connection"></a>Az átjáró-kapcsolat tesztelése

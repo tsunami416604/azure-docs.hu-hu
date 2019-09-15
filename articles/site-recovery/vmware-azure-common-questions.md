@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 27e5323e2c9fed3886b2ddf175a2c67718ad52d0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959150"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002280"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések a VMware-ről az Azure-ba történő replikálásra
 
@@ -104,7 +104,7 @@ Minden replikálni kívánt virtuális gépen telepítse a szolgáltatást több
 - [Manuális telepítés](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) a felhasználói felületen vagy a PowerShellben
 - Üzembe helyezés egy központi telepítési eszköz használatával, például [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Felügyelt lemezek
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Hová Site Recovery az adatreplikálás?
 
@@ -138,7 +138,7 @@ Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](https://docs.mic
 
 Nem. A felügyelt és a nem felügyelt közötti váltás nem támogatott.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik a replikált virtuális gépekre vonatkozó követelmények?
 
@@ -231,7 +231,7 @@ Tekintse [](vmware-azure-deploy-configuration-server.md#prerequisites)át az el�
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Manuálisan is beállítható a konfigurációs kiszolgáló a sablon használata helyett?
 
-Javasoljuk, hogy a [konfigurációs kiszolgáló virtuális gépet](vmware-azure-deploy-configuration-server.md) a nyílt virtuálisgép-formátum (OVF) sablon legújabb verziójával hozza létre. Ha nem tudja használni a sablont (például ha nem rendelkezik hozzáféréssel a VMware-kiszolgálóhoz), [töltse le](physical-azure-set-up-source.md) a telepítőfájlt a portálról, és állítsa be a konfigurációs kiszolgálót.
+Azt javasoljuk, hogy a [konfigurációs kiszolgáló virtuális gépet](vmware-azure-deploy-configuration-server.md) a Open VIRTUALIZATION Format (OVF) sablon legújabb verziójával hozza létre. Ha nem tudja használni a sablont (például ha nem rendelkezik hozzáféréssel a VMware-kiszolgálóhoz), [töltse le](physical-azure-set-up-source.md) a telepítőfájlt a portálról, és állítsa be a konfigurációs kiszolgálót.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Replikálhat egy konfigurációs kiszolgálót több régióban is?
 

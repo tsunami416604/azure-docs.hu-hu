@@ -1,27 +1,27 @@
 ---
-title: Key Vault titkos kulcsából, Azure Resource Manager-sablonnal |} A Microsoft Docs
-description: Bemutatja, hogyan adhatók át titkos key vault paraméterként üzembe helyezése során.
+title: Key Vault titkos kód Azure Resource Manager sablonnal | Microsoft Docs
+description: Bemutatja, hogyan lehet átadni egy titkos kulcsot a Key vaultból paraméterként az üzembe helyezés során.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: de52dbb10d515a2255b5886df5bf0a0faa454f6b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672763"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998891"
 ---
-# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
+# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezés során
 
-Helyett üzembe egy biztonságos értékre (például a jelszó) közvetlenül a sablon vagy paraméter fájlban, az értéket lekérheti egy [Azure Key Vault](../key-vault/key-vault-whatis.md) egy üzembe helyezés során. A key vaulttal és a titkos kulcsot az alkalmazásparaméter-fájlt a hivatkozó kérje le az értéket. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. A key vault létezhet az erőforráscsoport, helyezi üzembe, mint egy másik előfizetésben található.
+Ahelyett, hogy egy biztonságos értéket (például a jelszót) közvetlenül a sablonban vagy a paraméterben található fájlba helyezze, lekérheti az értéket egy [Azure Key Vault](../key-vault/key-vault-overview.md) egy központi telepítés során. Az értéket úgy kell lekérnie, hogy a kulcstárolóra hivatkozik, és a titkos kulcsot a paraméter fájljában. Az érték soha nem lesz kitéve, mert csak a Key Vault-AZONOSÍTÓra hivatkozik. A Key Vault egy másik előfizetésben is létezhet, mint az üzembe helyezett erőforráscsoport.
 
-## <a name="deploy-key-vaults-and-secrets"></a>Kulcstartó és a titkos kódok üzembe helyezése
+## <a name="deploy-key-vaults-and-secrets"></a>Kulcstartók és titkos kulcsok üzembe helyezése
 
-Key vault eléréséhez a sablon üzembe helyezése során, állítsa `enabledForTemplateDeployment` , a kulcstartóra vonatkozó `true`.
+Egy kulcstartó eléréséhez a sablon üzembe helyezése során `enabledForTemplateDeployment` állítsa be a Key `true`vaultot a következőre:.
 
-A következő Azure CLI-vel és az Azure PowerShell-példák bemutatják, hogyan hozhat létre a key vaultban, és egy titkos kulcsot.
+A következő Azure CLI és Azure PowerShell minták bemutatják, hogyan hozhatja létre a kulcstartót, és hogyan adhat hozzá egy titkos kulcsot.
 
 ```azurecli
 az group create --name $resourceGroupName --location $location
@@ -44,7 +44,7 @@ $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 $secret = Set-AzKeyVaultSecret -VaultName $keyVaultName -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
 
-A key vault tulajdonosának akkor automatikusan hozzáférést kapnak a titkos kulcsok létrehozása. Ha a felhasználó titkos kulcsok használata a key vault tulajdonosának nem, a hozzáférést:
+A Key Vault tulajdonosaként automatikusan hozzáférhet a titkok létrehozásához. Ha a titkos kulcsokkal dolgozó felhasználó nem tulajdonosa a kulcstartónak, a következőkhöz biztosít hozzáférést:
 
 ```azurecli
 az keyvault set-policy \
@@ -62,21 +62,21 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToSecrets set,delete,get,list
 ```
 
-Kulcstartó létrehozása és a titkos kulcsok hozzáadása kapcsolatos további információkért lásd:
+A kulcstartók létrehozásával és a titkok hozzáadásával kapcsolatos további információkért lásd:
 
-- [Beállítása és lekérése egy titkos kulcsot a parancssori felület használatával](../key-vault/quick-create-cli.md)
-- [Beállítása és lekérése egy titkos kulcsot a Powershell használatával](../key-vault/quick-create-powershell.md)
-- [Beállítása és lekérése egy titkos kulcsot a portál használatával](../key-vault/quick-create-portal.md)
-- [Beállítása és titkos kulcs lekérése a .NET-keretrendszerrel](../key-vault/quick-create-net.md)
-- [Beállítása és lekérése egy titkos kulcsot a Node.js használatával](../key-vault/quick-create-node.md)
+- [Titkos kód beállítása és lekérése a parancssori felület használatával](../key-vault/quick-create-cli.md)
+- [Titkos kód beállítása és beolvasása a PowerShell használatával](../key-vault/quick-create-powershell.md)
+- [Titkos kód beállítása és lekérése a portál használatával](../key-vault/quick-create-portal.md)
+- [Titkos kód beállítása és lekérése a .NET használatával](../key-vault/quick-create-net.md)
+- [Titkos kód beállítása és lekérése a Node. js használatával](../key-vault/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>A titkos kódokhoz való hozzáférés engedélyezése
+## <a name="grant-access-to-the-secrets"></a>Hozzáférés biztosítása a titkokhoz
 
-A felhasználó, aki helyezi üzembe a sablont kell rendelkeznie a `Microsoft.KeyVault/vaults/deploy/action` engedéllyel a hatókör az erőforráscsoportot és a key vaultban. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez. Létrehozta a kulcstartót, Ön a tulajdonosa, így Ön jogosult.
+A sablont telepítő felhasználónak `Microsoft.KeyVault/vaults/deploy/action` engedéllyel kell rendelkeznie az erőforráscsoport és a kulcstartó hatóköréhez. A [tulajdonos](../role-based-access-control/built-in-roles.md#owner) és a [közreműködő](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt megadja ezt a hozzáférést. Ha létrehozta a kulcstartót, akkor Ön a tulajdonosa, hogy Ön rendelkezik az engedélyekkel.
 
-A következő eljárás azt mutatja be, a minimális hozzáférésű szerepkör létrehozása, és rendelje hozzá a felhasználót
+A következő eljárás azt mutatja be, hogyan hozható létre egy szerepkör a minimális engedélyekkel, és hogyan rendelhető hozzá a felhasználó
 
-1. Hozzon létre egy egyéni szerepkör definíció JSON-fájlt:
+1. Hozzon létre egy egyéni szerepkör-definíciós JSON-fájlt:
 
     ```json
     {
@@ -94,9 +94,9 @@ A következő eljárás azt mutatja be, a minimális hozzáférésű szerepkör 
       ]
     }
     ```
-    "00000000-0000-0000-0000-000000000000" cserélje le az előfizetés azonosítóját.
+    Cserélje le az "00000000-0000-0000-0000-000000000000" kifejezést az előfizetés-AZONOSÍTÓra.
 
-2. Az új szerepkör JSON-fájl létrehozása:
+2. Hozza létre az új szerepkört a JSON-fájl használatával:
 
     ```azurecli
     az role definition create --role-definition "<PathToRoleFile>"
@@ -114,19 +114,19 @@ A következő eljárás azt mutatja be, a minimális hozzáférésű szerepkör 
       -SignInName $userPrincipalName
     ```
 
-    A minták az egyéni szerepkör hozzárendelése a felhasználói az erőforráscsoport szintjén.  
+    A minták hozzárendelik az egyéni szerepkört a felhasználóhoz az erőforráscsoport szintjén.  
 
-A sablon egy Key Vault használata esetén egy [felügyelt alkalmazás](../managed-applications/overview.md), hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű szolgáltatást. További információkért lásd: [Access Key Vault titkos kulcsából, Azure által felügyelt alkalmazások telepítésekor](../managed-applications/key-vault-access.md).
+Ha egy felügyelt alkalmazáshoz tartozó sablonnal Key Vault [](../managed-applications/overview.md)használ, hozzáférést kell biztosítania a **készülék erőforrás** -szolgáltatói egyszerű szolgáltatásához. További információ: [hozzáférés Key Vault secret Azure Managed Applications telepítésekor](../managed-applications/key-vault-access.md).
 
-## <a name="reference-secrets-with-static-id"></a>Titkos kódok hivatkozás statikus azonosítója
+## <a name="reference-secrets-with-static-id"></a>Hivatkozási titkok statikus AZONOSÍTÓval
 
-Ezzel a módszerrel a key vault a paraméterfájlban, nem a sablon hivatkozik. Az alábbi képen látható, hogyan alkalmazásparaméter-fájlt hivatkozik a titkos kulcsot, és ezt az értéket átadja a sablonhoz.
+Ezzel a módszerrel a Key vaultra hivatkozik a paraméter fájljában, nem pedig a sablonban. Az alábbi képen látható, hogy a paraméter fájlja hogyan hivatkozik a titkos kulcsra, és átadja ezt az értéket a sablonnak.
 
-![Erőforrás-kezelő a key vault integration statikus azonosító diagramja](./media/resource-manager-keyvault-parameter/statickeyvault.png)
+![Resource Manager Key Vault-integráció – statikus azonosító diagramja](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon üzembe helyezési](./resource-manager-tutorial-use-key-vault.md) ezt a módszert használja.
+[Oktatóanyag: A Azure Key Vault integrálása a Resource](./resource-manager-tutorial-use-key-vault.md) Manager template Deployment ezt a metódust használja.
 
-Az alábbi sablont helyez üzembe egy SQL server rendszergazdai jelszót tartalmaz. A password paramétert egy biztonságos karakterláncra van beállítva. De a sablon nem adja meg, ha az érték származik.
+A következő sablon olyan SQL Servert telepít, amely rendszergazdai jelszót tartalmaz. A Password paraméter egy biztonságos karakterláncra van beállítva. A sablon azonban nem határozza meg, hogy az adott érték honnan származik.
 
 ```json
 {
@@ -162,9 +162,9 @@ Az alábbi sablont helyez üzembe egy SQL server rendszergazdai jelszót tartalm
 }
 ```
 
-Most hozzon létre egy paraméterfájlt az előző sablon. A paraméterfájlban adjon meg egy paramétert, amely megegyezik-e a paraméter a sablonban. A paraméter értéke tekintse a titkos kulcsot a kulcstartóban található. A titkos kulcsot a key vault erőforrás-azonosítója és a titkos kód nevét átadásával hivatkozik:
+Most hozzon létre egy paramétert az előző sablonhoz. A paraméter fájljában adjon meg egy paramétert, amely megegyezik a sablonban található paraméter nevével. A paraméter értékeként hivatkozzon a Key Vault titkos kódjára. A titkos kulcsot a Key Vault erőforrás-azonosítójának és a titkos kulcs nevének a megadásával hivatkozhat:
 
-A következő paraméterfájl már léteznie kell, a key vault titkos kulcsából, és statikus érték megadása az erőforrás-azonosítója.
+A következő paraméter fájljában a Key Vault-titoknak már léteznie kell, és statikus értéket kell megadnia az erőforrás-AZONOSÍTÓhoz.
 
 ```json
 {
@@ -189,14 +189,14 @@ A következő paraméterfájl már léteznie kell, a key vault titkos kulcsábó
 }
 ```
 
-Ha szeretné a titkos kód verziója eltérő verzióját használja, használja a `secretVersion` tulajdonság.
+Ha az aktuális verziótól eltérő titkos verziót kell használnia, használja a `secretVersion` tulajdonságot.
 
 ```json
 "secretName": "ExamplePassword",
 "secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 
-Helyezze üzembe a sablont, és adja át az alkalmazásparaméter-fájlt:
+Telepítse a sablont, és adja meg a paramétert a fájlban:
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -218,17 +218,17 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile <The Parameter File>
 ```
 
-## <a name="reference-secrets-with-dynamic-id"></a>Hivatkozás titkos kódok dinamikus azonosítója
+## <a name="reference-secrets-with-dynamic-id"></a>Hivatkozási titkok dinamikus AZONOSÍTÓval
 
-Az előző szakaszban bemutatta, hogyan adhatók át a paraméter egy statikus erőforrás-azonosító számára a kulcstartó titkos kulcsot. Azonban bizonyos esetekben szüksége a key vault titkos kulcs, amely alapján a jelenlegi üzemelő példány hivatkozni. Vagy előfordulhat, hogy szeretne paraméterértékek át a sablon a paraméterfájlban hivatkozási paraméter létrehozása helyett. Mindkét esetben dinamikusan csatolt sablonok segítségével hozhatja létre a key vault titkos kulcs az erőforrás-azonosító.
+Az előző szakasz azt mutatta be, hogyan lehet átadni a Key Vault titkos kulcsának statikus erőforrás-AZONOSÍTÓját a paraméterből. Bizonyos helyzetekben azonban egy Key Vault-titokra kell hivatkoznia, amely az aktuális telepítéstől függően változik. Vagy előfordulhat, hogy paramétereket kell átadnia a sablonnak, és nem kell hivatkozási paramétert létrehoznia a paraméter fájljában. Mindkét esetben a Key Vault-titok erőforrás-AZONOSÍTÓját egy csatolt sablon használatával lehet dinamikusan előállítani.
 
-A paraméterfájl dinamikusan, nem hozható létre az erőforrás-azonosító, mert a sablon kifejezésekben nem engedélyezett a paraméterfájlban. 
+A Parameters fájlban nem lehet dinamikusan előállítani az erőforrás-azonosítót, mert a Parameters fájlban nem engedélyezettek a sablon kifejezései. 
 
-A szülő-sablonban adja hozzá a hivatkozott sablonnak, és adja át a paramétert, amely tartalmazza a dinamikusan létrehozott erőforrás-azonosítója. Az alábbi képen látható, hogyan a társított sablon egyik paraméterének hivatkozik-e a titkos kulcsot.
+A fölérendelt sablonban adja hozzá a csatolt sablont, és adjon meg egy olyan paramétert, amely a dinamikusan generált erőforrás-azonosítót tartalmazza. Az alábbi képen látható, hogy a csatolt sablon egyik paramétere hogyan hivatkozik a titkos kulcsra.
 
-![A dinamikus azonosítója](./media/resource-manager-keyvault-parameter/dynamickeyvault.png)
+![Dinamikus azonosító](./media/resource-manager-keyvault-parameter/dynamickeyvault.png)
 
-A [sablon alábbi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-use-dynamic-id) dinamikusan hoz létre a key vault-azonosítója és paraméterként átadja azokat.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-key-vault-use-dynamic-id) dinamikusan létrehozza a Key Vault-azonosítót, és paraméterként továbbítja azt.
 
 ```json
 {
@@ -321,7 +321,7 @@ A [sablon alábbi](https://github.com/Azure/azure-quickstart-templates/tree/mast
 }
 ```
 
-Az előző sablon üzembe helyezése, és adja meg a paraméterek értékeit. A példa-sablont a Githubból is használhat, de a paraméter értékét meg kell adnia a környezetben.
+Telepítse az előző sablont, és adja meg a paraméterek értékeit. Használhatja a GitHubról a példa sablont, de meg kell adnia a környezet paramétereinek értékét.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -345,5 +345,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>További lépések
 
-- Kulcstartók kapcsolatos általános információkért lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md).
-- A hívóbetű titkos kulcsait hivatkozó teljes példákért lásd [Key Vault példák](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- A Key vaultokkal kapcsolatos általános információkért lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+- A legfontosabb titkokra hivatkozó példákat itt talál: [Key Vault példák](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

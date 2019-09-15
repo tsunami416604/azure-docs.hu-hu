@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e2e730c623b6ee802938b930c4874f6c4920cc64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934400"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003315"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata Windows rendszerű virtuális géppel a .NET-ben
 
@@ -30,10 +30,10 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Adjon hozzá egy titkos kulcsot a kulcstartóhoz.
 > * Titkos kulcs lekérése a kulcstartóból.
 > * Hozzon létre egy Azure-beli virtuális gépet.
-> * Felügyelt [identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális géphez.
+> * [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális géphez.
 > * Rendeljen engedélyeket a virtuális gép identitásához.
 
-Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](key-vault-whatis.md#basic-concepts). 
+Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](basic-concepts.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,7 +47,7 @@ Windows, Mac és Linux rendszerekhez:
 
 A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító identitást biztosít, amely leegyszerűsíti a folyamatot.
 
-Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](key-vault-whatis.md#basic-concepts). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
+Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](basic-concepts.md). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
 
 ![MSI](media/MSI.png)
 
@@ -84,7 +84,7 @@ Hozzon létre egy Key vaultot az erőforráscsoporthoz úgy, hogy az az kulcstar
 
 * Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat (0-9), betűket (a-z, A-z) és kötőjeleket (-) tartalmazhat.
 * Erőforráscsoport neve
-* Hely: **USA nyugati régiója**
+* Helyen **USA nyugati régiója**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"

@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Az első ML-modell betanítása'
-titleSuffix: Azure Machine Learning service
-description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning szolgáltatás alapszintű kialakítási mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
+titleSuffix: Azure Machine Learning
+description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241291"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004030"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
-Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning szolgáltatás alapszintű kialakítási mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
+Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
 Ez az oktatóanyag a következő feladatokat ismerteti:
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning szolgáltatás-oktatóanyagokat szeretne futtatni.
+Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
 ### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
 

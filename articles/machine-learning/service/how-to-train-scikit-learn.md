@@ -1,6 +1,6 @@
 ---
 title: Gépi tanulási modellek betanítása a scikit-Learn
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan futtathat scikit – tanuljon nagyvállalati szinten Azure Machine Learning SKlearn kalkulátor-osztály használatával. A példaként szolgáló szkriptek írisz virág-képeket osztályoznak a gépi tanulási modellek scikit-Learn Iris-adatkészleten alapuló létrehozásához.
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963001"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002538"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Scikit-modellek készítése Azure Machine Learning szolgáltatással méretezéssel
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan futtathatja a scikit – tanulja meg nagyvállalati szinten a Azure Machine Learning [SKlearn kalkulátor](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -osztályának használatával. 
 
-Az ebben a cikkben ismertetett parancsfájlok az írisz virág-rendszerképek besorolására szolgálnak a gépi tanulási modellek scikit-Learn [Iris](https://archive.ics.uci.edu/ml/datasets/iris)-adatkészleten alapuló létrehozásához.
+Az ebben a cikkben ismertetett parancsfájlok az írisz virág-rendszerképek besorolására szolgálnak a gépi tanulási modellek scikit-Learn [Iris-adatkészleten](https://archive.ics.uci.edu/ml/datasets/iris)alapuló létrehozásához.
 
 Legyen szó akár a gépi tanulás scikit, akár a modellről, akár egy meglévő modellt hoz létre a felhőben, a Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket.
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning szolgáltatás munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) objektum létrehozásával érheti el a munkaterület összetevőit.
 
 Hozzon létre egy munkaterület- `config.json` objektumot az [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -193,7 +193,7 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 ## <a name="next-steps"></a>További lépések
 
 
-Ebben a cikkben a Azure Machine Learning Service-ben betanított és regisztrált egy kerasz modellt. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
+Ebben a cikkben egy kerasz-modellt képzett és regisztrált Azure Machine Learningon. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 
 > [!div class="nextstepaction"]
 > [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)

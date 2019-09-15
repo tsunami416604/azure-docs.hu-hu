@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934576"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998952"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 Az [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) egy elosztott rendszerplatform, amely megkönnyíti a méretezhető és megbízható szolgáltatások csomagolását, üzembe helyezését és felügyeletét. Service Fabric a felhőalapú alkalmazások fejlesztésének és kezelésének kihívásaival foglalkozik. A fejlesztők és a rendszergazdák elkerülhetik a komplex infrastrukturális problémákat, és a nagy teljesítményű, méretezhető és megbízható számítási feladatok megvalósítására összpontosítanak.
@@ -41,7 +41,7 @@ Az Azure-on vagy a Windows rendszeren futó önálló fürtökön futó fürtök
 
 A Service Fabric a fürt létrehozásakor megadott X. 509 kiszolgálói tanúsítványokat használja. A tanúsítványok és azok beszerzésének és létrehozásának gyors áttekintését a [tanúsítványok használata](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)című témakörben tekintheti meg.
 
-A tanúsítványok biztonsága akkor állítható be, amikor létrehozza a fürtöt a Azure Portalon, Azure Resource Manager sablonokon vagy egy önálló JSON-sablonon keresztül. Megadhat egy elsődleges tanúsítványt és egy opcionális másodlagos tanúsítványt, amelyet a tanúsítvány-átváltáshoz használ. Az elsődleges és a másodlagos tanúsítványnak meg kell egyeznie az ügyfél és a [csomópont](../../service-fabric/service-fabric-cluster-security.md)közötti biztonsághoz megadott rendszergazdai ügyféltől és csak olvasható ügyféltanúsítvány-tanúsítvánnyal.
+A tanúsítványok biztonsága akkor állítható be, amikor létrehozza a fürtöt a Azure Portalon, Azure Resource Manager sablonokon vagy egy önálló JSON-sablonon keresztül. Megadhat egy elsődleges tanúsítványt és egy opcionális másodlagos tanúsítványt, amelyet a tanúsítvány-átváltáshoz használ. Az elsődleges és a másodlagos tanúsítványnak meg kell egyeznie az ügyfél és a [csomópont közötti biztonsághoz](../../service-fabric/service-fabric-cluster-security.md)megadott rendszergazdai ügyféltől és csak olvasható ügyféltanúsítvány-tanúsítvánnyal.
 
 ### <a name="client-to-node-security"></a>Az ügyfél és a csomópont közötti biztonság
 Az ügyfél és a csomópont közötti biztonságot az ügyfél-identitások használatával konfigurálhatja. Az ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozásához konfigurálnia kell a fürtöt, hogy megtudja, melyik ügyfél-identitások bízhatnak meg.
@@ -132,7 +132,7 @@ Az ügyfél és a csomópont közötti biztonságot az ClientIdentities használ
 ### <a name="manage-secrets-in-service-fabric-applications"></a>A titkok kezelése Service Fabric alkalmazásokban
 A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni.
 
-A kulcsok és a titkos kódok kezeléséhez [Azure Key Vault](../../key-vault/key-vault-whatis.md) is használhatja. Egy alkalmazásban azonban nem használhatók a titkos kódok egy adott felhőalapú platformon. Alkalmazásokat telepíthet egy bárhol üzemeltetett fürtre. A folyamat négy fő lépésből áll:
+A kulcsok és a titkos kódok kezeléséhez [Azure Key Vault](../../key-vault/key-vault-overview.md) is használhatja. Egy alkalmazásban azonban nem használhatók a titkos kódok egy adott felhőalapú platformon. Alkalmazásokat telepíthet egy bárhol üzemeltetett fürtre. A folyamat négy fő lépésből áll:
 
 1.  Titkosítási-tanúsítvány beszerzése.
 2.  Telepítse a tanúsítványt a fürtön.

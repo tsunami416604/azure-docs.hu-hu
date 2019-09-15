@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976976"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000665"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával. Hozz
 > Ez a cikk Azure PowerShell útmutatást nyújt a diagnosztikai naplózás frissítéséhez. A diagnosztikai naplózást a Azure Portal **diagnosztikai naplók** szakaszának Azure monitor használatával is frissítheti. 
 >
 
-További információ a Key Vaultről: [Mi az Azure Key Vault?](key-vault-whatis.md). További információ a Key Vault rendelkezésre állásáról: díjszabási [oldal](https://azure.microsoft.com/pricing/details/key-vault/).
+További információ a Key Vaultről: [Mi az Azure Key Vault?](key-vault-overview.md). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -248,7 +248,7 @@ Ez egy, a következőhöz hasonló naplóbejegyzést ad vissza:
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mezőnév | Leírás |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Az Azure Resource Manager-erőforrás azonosítója. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
@@ -310,7 +310,7 @@ További információk, például a beállításának módja: [Azure Key Vault m
 
 ## <a id="next"></a>Következő lépések
 
-A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata](tutorial-net-create-vault-azure-web-app.md)webalkalmazásból.
+A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért lásd: [Azure Key Vault használata webalkalmazásból](tutorial-net-create-vault-azure-web-app.md).
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
 

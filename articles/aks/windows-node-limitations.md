@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233130"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000223"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -36,9 +36,9 @@ A Windows Server-csomópontok készletének támogatása olyan korlátozásokat 
 
 A Kubernetes történelmileg Linux-alapú. A felsőbb rétegbeli [Kubernetes.IO][kubernetes] webhely számos példája Linux-csomópontokon használható. Ha Windows Server-tárolókat használó központi telepítéseket hoz létre, a következő szempontokat kell figyelembe venni az operációs rendszer szintjén:
 
-- Az **Identity** -Linux a userid (UID) és a GROUPID (GID) karakterláncot használja egész típusúként. A felhasználók és csoportok neve nem kanonikus – csak egy alias a */etc/groups* -ben, vagy */etc/passwd* vissza a UID + GID-be.
+- **Identitás** – a Linux a felhasználót egy egész számú felhasználói azonosító (UID) alapján azonosítja. A felhasználó a bejelentkezéshez alfanumerikus felhasználónevet is tartalmaz, amelyet a Linux a felhasználó UID azonosítójának fordít. A Linux hasonló módon azonosítja a felhasználói csoportokat egy egész számú csoportazonosító (GID) alapján, és a csoport nevét a hozzá tartozó GID-re fordítja.
     - A Windows Server egy nagyobb bináris biztonsági azonosítót (SID) használ, amelyet a Windows Security Access Manager (SAM) adatbázisa tárol. Ez az adatbázis nincs megosztva a gazdagép és a tárolók között, vagy a tárolók között.
-- Fájlengedélyek – a Windows Server SID-alapú hozzáférés-vezérlési listát használ a bitmaszk és az UID + GID helyett
+- **Fájlengedélyek –** a Windows Server SID-alapú hozzáférés-vezérlési listát használ a bitmaszk és az UID + GID helyett
 - **Fájlelérési utak** – a Windows Server-konvenció a \ helyett a következőt használja:/.
     - A kötetek csatlakoztatására szolgáló Pod specifikációban a Windows Server-tárolók megfelelő elérési útját kell megadnia. Például egy Linux-tárolóban a */mnt/Volume* csatlakoztatási pontja helyett olyan meghajtóbetűjelet és helyet kell megadnia, mint amilyen például a */K/Volume* a *K:* meghajtó csatlakoztatására.
 
@@ -68,7 +68,7 @@ Az AK-ban lévő Windows Server-csomópontokat *frissíteni* kell a legújabb ja
 
 ## <a name="how-many-node-pools-can-i-create"></a>Hány Node-készletet hozhatok létre?
 
-Az AK-fürt legfeljebb nyolc (8) csomópont-készletet tartalmazhat. Ezekhez a csomópont-készletekhez legfeljebb 400 csomópont tartozhat. [Csomópont][nodepool-limitations]-készletre vonatkozó korlátozások.
+Az AK-fürt legfeljebb nyolc (8) csomópont-készletet tartalmazhat. Ezekhez a csomópont-készletekhez legfeljebb 400 csomópont tartozhat. [Csomópont-készletre vonatkozó korlátozások][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Mire használhatom a Windows-csomópontok készleteit?
 

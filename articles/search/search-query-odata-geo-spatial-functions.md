@@ -1,7 +1,7 @@
 ---
 title: OData geo-térbeli függvények referenciája – Azure Search
 description: OData geo-térbeli függvények, Geo. Distance és Geo. metszetek Azure Search lekérdezésekben.
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647564"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003445"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények a Azure Search- `geo.distance` és`geo.intersects`
 
-Azure Search támogatja a Geo-térbeli lekérdezéseket a [OData](query-odata-filter-orderby-syntax.md) -szűrési `geo.intersects` kifejezésekben a `geo.distance` és függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor `true` adja vissza, ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
+Azure Search támogatja a Geo-térbeli lekérdezéseket a [OData-szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) a `geo.distance` és `geo.intersects` függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor `true` adja vissza, ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
 
 A `geo.distance` függvény a [ **$OrderBy** paraméterben](search-query-odata-orderby.md) is használható a keresési eredmények rendezésére egy adott pont távolsága alapján. A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. A `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az alkalmazás vonatkozik, típusnak `Edm.GeographyPoint` kell lennie, és azt is **rendezve**kell lennie.
+
+> [!NOTE]
+> A `geo.distance` **$OrderBy** paraméter használatakor a függvénynek átadott mezőnek csak egyetlen földrajzi pontot kell tartalmaznia. Más szóval a típusnak és nem `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`típusúnak kell lennie. A Azure Search gyűjtemény mezőinek rendezése nem lehetséges.
 
 ## <a name="syntax"></a>Szintaxis
 

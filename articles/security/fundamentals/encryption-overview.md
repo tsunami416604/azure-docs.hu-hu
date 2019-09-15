@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727355"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003949"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure encryption áttekintése
 
@@ -61,7 +61,7 @@ A három kiszolgálóoldali titkosítási modell különböző kulcskezelő jell
 
 A Windows-és Linux-alapú virtuális gépeket az [Azure Disk Encryption](/azure/security/azure-security-disk-encryption)használatával biztosíthatja, amely a [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) Technology és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) segítségével védi az operációs rendszer lemezeit és adatlemezeit teljes kötet titkosítással.
 
-A titkosítási kulcsok és a titkos kódok védelme a [Azure Key Vault](../../key-vault/key-vault-whatis.md)-előfizetésben történik. A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthatja a titkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépeket (VM).
+A titkosítási kulcsok és a titkos kódok védelme a [Azure Key Vault-előfizetésben](../../key-vault/key-vault-overview.md)történik. A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthatja a titkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépeket (VM).
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 
@@ -193,7 +193,7 @@ További információkért lásd:
 
 Az átvitt adatok (azaz a mozgásban lévő adatok) titkosítása is mindig a Data Lake Store-ban történik. Az adatok titkosítása az állandó adathordozón való tárolást megelőzően kívül az adatok a HTTPS protokollon keresztül is mindig az átvitel során lesznek biztosítva. A HTTPS az egyetlen olyan protokoll, amely támogatott a Data Lake Store REST-felületeihez.
 
-Ha többet szeretne megtudni az átvitt adattitkosításról Data Lakeban, [](../../data-lake-store/data-lake-store-encryption.md)tekintse meg az adattitkosítás Data Lake Storeban című témakört.
+Ha többet szeretne megtudni az átvitt adattitkosításról Data Lakeban, tekintse meg az [adattitkosítás Data Lake Storeban](../../data-lake-store/data-lake-store-encryption.md)című témakört.
 
 ## <a name="key-management-with-key-vault"></a>Kulcskezelő Key Vault
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813924"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002495"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -25,7 +25,6 @@ Ebben a cikkben a HDInsight Spark-fürtökkel elérhető [Jupyter Notebookeket](
 
 * Azure HDInsight Spark a fürtöt Data Lake Storage Gen1 tárolóként. Kövesse a rövid útmutató [utasításait: Fürtök beállítása a HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)-ben.
 
-    
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
 > [!NOTE]  
@@ -57,7 +56,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>HDInsight Spark-fürt használata Data Lake Storage Gen1
 
-1. Az [Azure Portalon](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)**  > **HDInsight Clusters** (HDInsight-fürtök).
+1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)**  > **HDInsight Clusters** (HDInsight-fürtök).
 
 2. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -120,7 +119,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
      Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon például az alábbihoz hasonlóan fog kinézni.
 
-     ![A lekérdezési eredmény területgrafikonja](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "A lekérdezési eredmény területgrafikonja")
+     ![A lekérdezési eredmény területgrafikonja](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "A lekérdezési eredmény területgrafikonja")
 
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 

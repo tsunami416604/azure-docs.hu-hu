@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: d729ab4b3f42f5d353309023cf07ae5e212e02ec
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147599"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001480"
 ---
 # <a name="get-started-with-device-twins-python"></a>Ismerkedés a Device Twins (Python) eszközzel
 
@@ -49,14 +49,14 @@ Az oktatóanyag végén két Python-konzolos alkalmazás lesz:
 
 Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely metaadatainak hozzáadását teszi elérhetővé a **{Device ID}** szolgáltatáshoz hozzárendelt eszközökhöz. Ezután lekérdezi az IoT hub eszközben tárolt ikreket, és kiválasztja a Redmondban található eszközöket, majd azokat, amelyek a mobil kapcsolatokat jelentik.
 
-1. Nyisson meg egy parancssort a munkakönyvtárában, és telepítse a Pythonhoz készült **Azure IoT hub Service SDK**-t.
+1. Nyisson meg egy parancssort a munkakönyvtárában, és telepítse a **Pythonhoz készült Azure IoT hub Service SDK**-t.
 
    ```cmd/sh
    pip install azure-iothub-service-client
    ```
 
    > [!NOTE]
-   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
+   > Az Azure-iothub-Service-Client pip-csomag jelenleg csak Windows operációs rendszerhez érhető el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése a Pythonhoz](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) című témakörben.
    >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **AddTagsAndQuery.py** -fájlt.
@@ -70,7 +70,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Adja hozzá a következő kódot. A `[IoTHub Connection String]` helyére írja be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának](#get-the-iot-hub-connection-string)beolvasása során másolt karakterláncot. Cserélje `[Device Id]` le a helyére az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítóját.
+4. Adja hozzá a következő kódot. A `[IoTHub Connection String]` helyére írja be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncot. Cserélje `[Device Id]` le a helyére az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítóját.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -155,84 +155,57 @@ A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít
 
 Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a következőhöz csatlakozik a központhoz: **{Device ID}** , majd frissíti az eszköz Twin által jelentett tulajdonságait, hogy tartalmazza a mobil hálózaton keresztül csatlakoztatott adatokat.
 
-1. A munkakönyvtárban található parancssorból telepítse a Pythonhoz készült **Azure IoT hub Service SDK**-t:
+1. A munkakönyvtárban található parancssorból telepítse a **Pythonhoz készült Azure IoT hub Device SDK**-t:
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
-
-   > [!NOTE]
-   > Az Azure-iothub-Service-Client és az Azure-iothub-Device-Client pip-csomagjai jelenleg csak Windows operációs rendszer esetén érhetők el. Linux/Mac OS esetén tekintse meg a Linux-és Mac OS-specifikus szakaszt a [fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) a Pythonhoz című témakörben.
-   >
 
 2. Egy szövegszerkesztővel hozzon létre egy új **ReportConnectivity.py** -fájlt.
 
-3. Adja hozzá az alábbi kódot a szükséges modulok importálásához a szolgáltatás SDK-jából:
+3. Adja hozzá a következő kódot a szükséges modulok importálásához az eszköz SDK-ból:
 
     ```python
     import time
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
+    import threading
+    from azure.iot.device import IoTHubModuleClient
     ```
 
 4. Adja hozzá a következő kódot. Cserélje le `[IoTHub Device Connection String]` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban elemre másolt eszköz-összekapcsolási karakterlánccal.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
-
-    # choose HTTP, AMQP, AMQP_WS or MQTT as transport protocol
-    PROTOCOL = IoTHubTransportProvider.MQTT
-
-    TIMER_COUNT = 5
-    TWIN_CONTEXT = 0
-    SEND_REPORTED_STATE_CONTEXT = 0
     ```
 
 5. Adja hozzá a következő kódot a **ReportConnectivity.py** fájlhoz az eszköz ikrek funkciójának megvalósításához:
 
     ```python
-    def device_twin_callback(update_state, payload, user_context):
-        print ( "" )
-        print ( "Twin callback called with:" )
-        print ( "    updateStatus: %s" % update_state )
-        print ( "    payload: %s" % payload )
-
-    def send_reported_state_callback(status_code, user_context):
-        print ( "" )
-        print ( "Confirmation for reported state called with:" )
-        print ( "    status_code: %d" % status_code )
+    def twin_update_listener(client):
+        while True:
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print("Twin patch received:")
+            print(patch)
 
     def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        if client.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
-            client.set_device_twin_callback(
-                device_twin_callback, TWIN_CONTEXT)
-
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():
         try:
             client = iothub_client_init()
 
-            if client.protocol == IoTHubTransportProvider.MQTT:
-                print ( "Sending data as reported property..." )
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
 
-                reported_state = "{\"connectivity\":\"cellular\"}"
-
-                client.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
+            # Send reported 
+            print ( "Sending data as reported property..." )
+            reported_patch = {"connectivity": "cellular"}
+            client.patch_twin_reported_properties(reported_patch)
+            print ( "Reported properties updated" )
 
             while True:
-                print ( "Press Ctrl-C to exit" )
-
-                status_counter = 0
-                while status_counter <= TIMER_COUNT:
-                    status = client.get_send_status()
-                    time.sleep(10)
-                    status_counter += 1 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
+                time.sleep(1000000)
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
     ```
@@ -244,6 +217,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Device Twins Python client sample..." )
+        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```

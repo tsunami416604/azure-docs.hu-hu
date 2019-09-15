@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847054"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999105"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ A **ClaimsSchema** elem határozza meg azokat a jogcímeket, amelyeket a szabál
 
 A **claimType** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Id | Igen | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
 
 A **claimType** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték honosítható [](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai, dátum, dateTime, int, Long, string, StringCollection stb és alternativeSecurityIdCollection adattípusok használhatók. |
@@ -63,15 +63,15 @@ PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mut
 
 A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
-| Elem | Események | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
 A **protokoll** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek a következők:  OAuth1, OAuth2, egy SAML2, OpenIdConnect, WsFed vagy WsTrust. |
+| Name (Név) | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek a következők:  OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
 | PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
 
 A következő példában, amikor az Identity Experience Framework egy egy saml2-identitás szolgáltatóval vagy egy függő entitás alkalmazásával kommunikál **, a OpenIdConnect** és a OAuth2 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` `family_name` -mel leképezi a jogcímet. .
@@ -88,7 +88,7 @@ A következő példában, amikor az Identity Experience Framework egy egy saml2-
 </ClaimType>
 ```
 
-Ennek eredményeképpen a Azure ad B2C által kiállított JWT-jogkivonat a claimType neve `family_name` helyett kibocsátja **** a nevet.
+Ennek eredményeképpen a Azure ad B2C által kiállított JWT-jogkivonat a claimType neve `family_name` helyett kibocsátjaa nevet.
 
 ```JSON
 {
@@ -104,7 +104,7 @@ Ennek eredményeképpen a Azure ad B2C által kiállított JWT-jogkivonat a clai
 
 A **maszk** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. Az `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszk van alkalmazva egy karakterlánc-jogcím vezető részére. Az `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha az `Regex` érték meg van adva, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
 | `Regex` | Nem | Ha **`Type`** a értéke `Regex`, akkor adja meg a használni kívánt reguláris kifejezést.
@@ -144,13 +144,13 @@ Az Identity Experience Framework csak az e-mail-cím és az e-mail tartományné
 
 A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. Az `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. Az `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. Az `ReplaceAll` érték a szülő házirendben megadott, figyelmen kívül hagyott adatgyűjtemény. |
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
 | Pattern | 1:1 | A használandó reguláris kifejezés. |
@@ -159,7 +159,7 @@ A **korlátozási** elem a következő elemeket tartalmazza:
 
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Text | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
 |Value | Igen | A beállítás kiválasztásához társított jogcím értéke. |
@@ -188,7 +188,7 @@ A legördülő lista alapértelmezett értéke New York:
 
 A **minta** elem a következő attribútumokat tartalmazhatja:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | RegularExpression | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
 | HelpText | Nem | A jogcím mintája vagy reguláris kifejezése. |
@@ -218,7 +218,7 @@ Az Identity Experience Framework az e-mail-cím jogcímet a bemeneti ellenőrzé
 
 A Azure AD B2C számos felhasználói beviteli típust támogat, például a szövegmezőt, a jelszót és a legördülő listát, amely akkor használható, ha a jogcím-adatok manuális bevitele a jogcím típusához történik. A **UserInputType** akkor kell megadnia, amikor adatokat gyűjt a felhasználótól egy önérvényesített [technikai profil](self-asserted-technical-profile.md)használatával.
 
-### <a name="textbox"></a>TextBox
+### <a name="textbox"></a>Szövegmező
 
 A **szövegmező** felhasználói beviteli típus egy egysoros szövegmező megadására szolgál.
 
