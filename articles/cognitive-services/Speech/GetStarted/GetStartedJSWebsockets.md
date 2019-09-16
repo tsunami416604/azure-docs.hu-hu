@@ -1,75 +1,75 @@
 ---
-title: A Bing Speech Recognition API a JavaScript használatának első lépései |} A Microsoft Docs
+title: Ismerkedés a Bing Speech-felismerési API-val a JavaScriptben | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: A Cognitive Services a Bing Speech Recognition API használatával hozhat létre alkalmazásokat, amelyek folyamatosan beszélt hangot képes szöveggé alakítani.
+description: A Cognitive Services a Bing Speech felismerési API-val fejlesztheti azokat az alkalmazásokat, amelyek folyamatosan szöveggé alakítják a beszélt hangot.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eef1a4885b77ae94f11d3d5bda5ded9b70ed63a4
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515213"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965815"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>A Speech Recognition API a JavaScript használatának első lépései
+# <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Ismerkedés a Speech Recognition API-val a JavaScriptben
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Alkalmazások, amelyek a beszélt hangot képes szöveggé a Speech Recognition API használatával is fejleszthet. A JavaScript-klienskódtár használja a [Speech Service WebSocket protokoll](../API-Reference-REST/websocketprotocol.md), egyidejűleg így a kommunikációhoz, és fogadjon megjelenített érzéseket szöveget. Ez a cikk segít a Speech Recognition API a JavaScript használatának első lépései.
+A beszédfelismerési API használatával kifejlesztheti azokat az alkalmazásokat, amelyek a beszélt hangot szöveggé alakítják. A JavaScript ügyféloldali kódtár a [Speech Service WebSocket protokollt](../API-Reference-REST/websocketprotocol.md)használja, amely lehetővé teszi az átirattal rendelkező szöveg egyidejű beszélgetését és fogadását. Ez a cikk segítséget nyújt a beszédfelismerési API JavaScript-ben való használatának megkezdéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Fizessen elő a Speech Recognition API és a egy ingyenes próba-előfizetését kulcs lekérése
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Feliratkozás a Speech Recognition API-ra, és ingyenes próbaverziós előfizetési kulcs beszerzése
 
-A beszédfelismerő API a Cognitive Services részét képezi. Ingyenes próba-előfizetését helyenk beszerezheti a [Cognitive Services-előfizetés](https://azure.microsoft.com/try/cognitive-services/) lapot. Miután kiválasztotta a beszédfelismerő API, válassza ki a **API-kulcs lekérése** a kulcs beszerzése. Egy elsődleges és másodlagos kulcsát adja vissza. Mindkét kulcsot kvóta, így használhatja az egyiket sem vannak társítva.
+A Speech API Cognitive Services része. A [Cognitive Services előfizetés](https://azure.microsoft.com/try/cognitive-services/) oldaláról ingyenes próbaverziós előfizetési kulcsokat szerezhet be. Miután kiválasztotta a Speech API-t, válassza az **API-kulcs beolvasása** elemet a kulcs lekéréséhez. Egy elsődleges és egy másodlagos kulcsot ad vissza. Mindkét kulcs ugyanahhoz a kvótához van kötve, így bármelyik kulcsot használhatja.
 
 > [!IMPORTANT]
-> Előfizetési kulcs lekérése. Ügyfélkódtárak beszéd használata előtt rendelkeznie kell egy [előfizetési kulcs](https://azure.microsoft.com/try/cognitive-services/).
+> Előfizetési kulcs beszerzése. A Speech Client kódtárak használata előtt rendelkeznie kell egy [előfizetési kulccsal](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="get-started"></a>Bevezetés
 
-Ebben a szakaszban a Microsoft végigvezeti egy minta HTML-oldalt betöltéséhez szükséges lépéseket. A mintában található a [GitHub-adattár](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Is **nyissa meg a minta közvetlenül** a tárházból, vagy **nyissa meg a mintát a helyi másolat** a tárház.
+Ebben a szakaszban végigvezeti a minta HTML-lapok betöltéséhez szükséges lépéseken. A minta a [GitHub-tárházban](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)található. **A mintát közvetlenül** a tárházból is megnyithatja, vagy **megnyithatja a mintát a tárház helyi példányáról** .
 
 > [!NOTE]
-> Egyes böngészők blokkolják a nem biztonságos eredet mikrofon-hozzáférés. Ezért javasoljuk a minta futtatásához / "alkalmazását" az összes támogatott böngésző működéséhez https.
+> Néhány böngésző blokkolja a mikrofonhoz való hozzáférést a nem biztonságos forrásokon. Ezért javasoljuk, hogy a "Sample"/"Your app" szolgáltatást a HTTPS-en tárolja, hogy az összes támogatott böngészőben működjön.
 
-### <a name="open-the-sample-directly"></a>Nyissa meg közvetlenül a minta
+### <a name="open-the-sample-directly"></a>A minta megnyitása közvetlenül
 
-Egy előfizetési kulcsot beszerezni a fent leírtak szerint. Nyissa meg a [a minta mutató hivatkozás](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Ez az oldal betölti az alapértelmezett böngésző be (használatával [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
+Szerezzen be egy előfizetési kulcsot a fentiekben leírtak szerint. Ezután nyissa meg a [minta hivatkozását](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Ezzel betölti a lapot az alapértelmezett böngészőbe (a [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)használatával megjelenítve).
 
-### <a name="open-the-sample-from-a-local-copy"></a>Nyissa meg a mintát a helyi másolat
+### <a name="open-the-sample-from-a-local-copy"></a>A minta megnyitása helyi másolatból
 
-Próbálja ki a minta helyileg, klónozza a tárházat:
+A minta helyi kipróbálásához a következő adattár klónozása:
 
 ```
 git clone https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
 ```
 
-Fordítsa le a TypeScript-adatforrások és kötegeli őket egy egységes JavaScript-fájlt ([npm](https://www.npmjs.com/) telepítve kell lennie a gépen). Módosítsa a klónozott adattár gyökérkönyvtárában, és futtassa a parancsokat:
+fordítsa le az írógéppel-forrásokat, és csomagolja őket egyetlen JavaScript-fájlba ([NPM](https://www.npmjs.com/) kell telepíteni a számítógépre). Váltson át a klónozott tárház gyökerére, és futtassa a következő parancsokat:
 
 ```
 cd SpeechToText-WebSockets-Javascript && npm run bundle
 ```
 
-Nyissa meg `samples\browser\Sample.html` kedvenc böngészőjében.
+Nyissa meg `samples\browser\Sample.html` a kedvenc böngészőjét.
 
 ## <a name="next-steps"></a>További lépések
 
-Bővebben az SDK venni az saját weblapon érhető el [Itt](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript).
+További információ az SDK saját weboldalra való felvételéről [itt](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)található.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- A Speech Recognition API támogatja a három [felismerés módok](../concepts.md#recognition-modes). A mód módosításával válthat a **Setup()** függvény a Sample.html fájlban található. A minta a mód beállítása `Interactive` alapértelmezés szerint. A mód módosításához frissítse a paraméter `SR.RecognitionMode.Interactive` egy másik módra. Módosítsa például a paraméter `SR.RecognitionMode.Conversation`.
-- Támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](../API-Reference-REST/supportedlanguages.md).
+- A Speech Recognition API három [felismerési módot](../concepts.md#recognition-modes)támogat. A módot a sample. html fájlban található **Setup ()** függvény frissítésével állíthatja át. A minta alapértelmezés `Interactive` szerint beállítja a módot. A mód módosításához frissítse a paramétert `SR.RecognitionMode.Interactive` egy másik módra. Módosítsa például a paramétert `SR.RecognitionMode.Conversation`a következőre:.
+- A támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](../API-Reference-REST/supportedlanguages.md).
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [A JavaScript Speech Recognition API-mintaadattár](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
-- [A REST API használatának első lépései](GetStartedREST.md)
+- [JavaScript Speech Recognition API minta adattár](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
+- [Ismerkedés a REST API](GetStartedREST.md)
