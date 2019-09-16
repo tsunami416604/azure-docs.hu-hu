@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 09/16/2019
 ms.locfileid: "70174625"
 ---
 A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt kínálnak, amely kiválóan használható a kapcsolódó adatbázis-kiszolgálók, a közepes és a nagy gyorsítótárak, valamint a memóriabeli elemzések számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózati sávszélességgel kapcsolatos információkat tartalmaz ebben a csoportosításban.
@@ -29,7 +29,7 @@ A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt k
 
 * A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A rendszer a legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 2,4 GHz-es (Haswell) vagy E5-2673 v4 2,3 GHz-es (Broadwell-) processzorok alapján, valamint az Intel Turbo Boost Technology 2,0-es verziójának használatával képes felmenni a 3,1 GHz-es verzióra. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
-* Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)-támogatásának használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.  Az elkülönített virtuálisgép-lehetőségekért tekintse meg az alábbi virtuálisgép-családok táblázatait.
+* Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.  Az elkülönített virtuálisgép-lehetőségekért tekintse meg az alábbi virtuálisgép-családok táblázatait.
 
 ## <a name="esv3-series"></a>Esv3 sorozat
 
@@ -147,7 +147,7 @@ A Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technol
 
 <sup>1</sup> ezek a nagyméretű virtuális gépek a következő támogatott vendég operációs rendszer egyikét igénylik: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
-<sup>2</sup> a Mv2 sorozatú virtuális gépek csak [2](/azure/virtual-machines/linux/generation-2) . generációsak. Ha Linuxot használ, tekintse meg a következő szakaszt a SUSE Linux-rendszerképek megkereséséhez és kiválasztásához.
+<sup>2</sup> a Mv2 sorozatú virtuális gépek csak 2. generációsak. Ha Linuxot használ, tekintse meg a következő szakaszt a SUSE Linux-rendszerképek megkereséséhez és kiválasztásához.
 
 #### <a name="find-a-suse-image"></a>SUSE-rendszerkép keresése
 

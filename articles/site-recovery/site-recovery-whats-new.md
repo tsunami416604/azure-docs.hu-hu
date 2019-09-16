@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d40e6fef215219035720ee64492a91fcdafb472
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933937"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010245"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -59,7 +59,7 @@ Az Azure-beli virtuális gép vész-helyreállításának új funkciói a tábl�
 **Törlés a feladat-visszavétel után** | A másodlagos Azure-ba történő feladatátvétel után, majd az elsődleges régióba való visszalépés után Site Recovery automatikusan törli a gépeket a másodlagos régióban. Nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket.
 **A feladatátvételi teszt megtartja az IP-címet** | Mostantól megtarthatja a forrás virtuális gép IP-címét a vész-helyreállítási részletezés során, és egy statikus IP-címet is kiválaszthat a feladatátvételi teszthez.
 
-## <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fizikai kiszolgáló – vész-helyreállítás
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fizikai kiszolgáló – vész-helyreállítás
 
 Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban látható.
 
@@ -67,13 +67,13 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 --- | ---
 Új Process Server-riasztások | Új Process Server-riasztások lettek hozzáadva. [További információk](vmware-physical-azure-monitor-process-server.md). 
 
-## <a name="hyper-v-disaster-recovery"></a>Hyper-V vész-helyreállítás
+### <a name="hyper-v-disaster-recovery"></a>Hyper-V vész-helyreállítás
 
 Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban látható.
 
 **Funkció** | **Részletek**
 --- | ---
-Tárfiók | Site Recovery mostantól támogatja az olyan Storage-fiók használatát, amelyeken engedélyezve van a szerepköralapú hozzáférés-vezérlés (RBAC). [További](../storage/common/storage-account-manage.md#access-control) információ a Storage-fiókok hozzáférés-vezérléséről. 
+Tárfiók | A Site Recovery mostantól támogatja a Hyper-V-ről az Azure-ba irányuló, a tűzfalon engedélyezve lévő Storage-fiókok használatát.  A tűzfalat támogató Storage-fiókokat célként fiókként vagy gyorsítótárbeli tárolóként is kiválaszthatja. Ha tűzfalat használó fiókot használ, engedélyezze a megbízható Microsoft-szolgáltatások engedélyezését.
 
 
 ## <a name="updates-august-2019"></a>Frissítések (2019. augusztus)

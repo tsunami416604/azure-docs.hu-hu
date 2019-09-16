@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0f29df02e8242872311df3d4cb660d46bbc2cee3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733489"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018787"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és más szolgáltatásokkal
 
@@ -111,10 +111,21 @@ Nem kell explicit módon megadnia a fürt helyét: A fürt az alapértelmezett t
 
 ## <a name="storage-endpoints-for-clusters"></a>Fürtök tárolási végpontjai
 
-Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) használja a fürtön lévő tároláshoz, a felhőben a fürthöz csatlakozó tárolási végpontokat használja. A HDInsight-fürtök [Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) vagy [blobokat használnak az Azure Storage-ban](hdinsight-hadoop-use-blob-storage.md). Az Azure Storage vagy a Data Lake Storage használatával biztonságosan törölheti a számításhoz használt HDInsight-fürtöket, miközben továbbra is megőrizheti az adatait. 
+Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) használja a fürtön lévő tároláshoz, a felhőben a fürthöz csatlakozó tárolási végpontokat használja. A felhőalapú tárolás eszközzel biztonságosan törölheti a számításhoz használt HDInsight-fürtöket, miközben továbbra is megőrizheti az adatait. 
+
+A HDInsight-fürtök a következő tárolási lehetőségeket használhatják:
+
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
+* Azure Storage általános célú v2
+* Azure Storage általános célú v1
+* Azure Storage Block-blob (**csak másodlagos tárolóként támogatott**)
+
+További információ a tárolási lehetőségekről a HDInsight használatával: a [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használatra](hdinsight-hadoop-compare-storage-options.md).
 
 > [!WARNING]  
 > A HDInsight-fürttől eltérő helyen található további Storage-fiók használata nem támogatott.
+
 
 A konfiguráció során az alapértelmezett tárolási végponthoz meg kell adnia egy Azure Storage-fiók vagy Data Lake Storage blob-tárolóját. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. Megadhat további társított Azure Storage-fiókokat és Data Lake Storage fiókokat is, amelyeket a fürt elérhet. A HDInsight-fürtnek és a függő tárolási fiókoknak ugyanabban az Azure-helyen kell lenniük.
 
@@ -199,7 +210,7 @@ Ha csak kipróbálja a HDInsight, javasoljuk, hogy használjon egy feldolgozói 
 > [!NOTE]  
 > A fürt méretének korlátozása az Azure-előfizetések között változhat. A korlát növeléséhez vegye fel a kapcsolatot az [Azure számlázási támogatási szolgálatával](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
 
-Ha a Azure Portal a fürt konfigurálására használja, a csomópont mérete a **csomópontok díjszabási szintjei** panelen érhető el. A portálon megtekintheti a különböző csomópont-méretekhez kapcsolódó költségeket is. 
+Ha a Azure Portal a fürt konfigurálására használja, a csomópont mérete a csomópontok díjszabási **szintjei** panelen érhető el. A portálon megtekintheti a különböző csomópont-méretekhez kapcsolódó költségeket is. 
 
 ![HDInsight VM-csomópontok mérete](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-node-sizes.png)
 
@@ -217,7 +228,7 @@ További információkért lásd: [virtuális gépek méretei](../virtual-machin
 
 ## <a name="advanced-settings-script-actions"></a>Speciális beállítások: Szkriptműveletek
 
-További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md).
+További összetevőket is telepíthet, vagy testre szabhatja a fürt konfigurációját parancsfájlok használatával a létrehozás során. Az ilyen parancsfájlokat parancsfájl- **művelettel**hívja meg, amely a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. További információ: a [HDInsight-fürt testreszabása parancsfájl](hdinsight-hadoop-customize-cluster-linux.md)-művelettel.
 
 Egyes natív Java-összetevők, például az Apache Mahout és a kaszkádolt, Java Archive (JAR) fájlokként futtathatók a fürtön. Ezek a JAR-fájlok eloszthatók az Azure Storage-ba, és a Hadoop-feladatok beküldési mechanizmusaival HDInsight-fürtökbe elküldve További információt a [Apache Hadoop feladatok programozott beküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)című témakörben talál.
 

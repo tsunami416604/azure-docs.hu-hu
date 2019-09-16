@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 61c10055a7f85f849fc366211eb41382c4c3039b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 70eb70d7c63d66601aebf8e05a2b14b582058296
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275199"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009245"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQuery-ből az Azure Data Factory használatával
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása a Google BigQuery-ből. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Google BigQuery-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Google BigQuery-ből adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -162,7 +167,7 @@ Adatok másolása a Google BigQuery, állítsa be a forrás típusaként a máso
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **GoogleBigQuerySource**. | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -193,6 +198,10 @@ Adatok másolása a Google BigQuery, állítsa be a forrás típusaként a máso
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

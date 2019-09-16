@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f51ad3d0a75ab1f0662ea0b747852fcb98e5026
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 8c583214fdf21f0ecd8bec132f82c0c32550006f
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259053"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010470"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 
@@ -27,6 +27,11 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 >Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez az SAP ECC-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Az SAP ECC-adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -200,6 +205,10 @@ Az SAP ECC-ból történő adatmásoláskor a következő leképezések használ
 
 > [!NOTE]
 > Az összetett adattípusok jelenleg nem támogatottak.
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 

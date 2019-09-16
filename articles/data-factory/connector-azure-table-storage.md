@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 30685e59f6f8318c66a8500f33e8200743e487aa
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061493"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009889"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-ba és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -29,6 +29,11 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez az Azure Table Storage-összekötő a következő tevékenységek esetében támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Bármilyen támogatott forrás adattárból másolhat adatokat a Table Storage-ba. Az adatok a Table Storage-ból bármely támogatott fogadó adattárba is másolhatók. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -325,9 +330,9 @@ A "DivisionID" paraméter a partíciós kulcsként van megadva.
 
 ## <a name="data-type-mapping-for-azure-table"></a>Adattípusok leképezése az Azure Table szolgáltatáshoz
 
-Amikor Adatmásolást végez az Azure Table-be, az Azure Table adattípusokból az alábbi leképezéseket használja az ideiglenes adattípusok Data Factoryához. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus](copy-activity-schema-and-type-mapping.md)-leképezéseket.
+Amikor Adatmásolást végez az Azure Table-be, az Azure Table adattípusokból az alábbi leképezéseket használja az ideiglenes adattípusok Data Factoryához. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
-Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Table által definiált](https://msdn.microsoft.com/library/azure/dd179338.aspx) következő leképezések az Azure Table OData típusaitól a .net-be és fordítva is használhatók.
+Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Table által definiált következő leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData típusaitól a .net-be és fordítva is használhatók.
 
 | Az Azure Table adattípusa | Data Factory közbenső adattípus | Részletek |
 |:--- |:--- |:--- |
@@ -339,6 +344,10 @@ Amikor az Azure Table-be vagy az-ba helyezi át az adatátvitelt, az [Azure Tabl
 | Edm.Int32 |Int32 |32 bites egész szám. |
 | Edm.Int64 |Int64 |64 bites egész szám. |
 | Edm.String |Sztring |Egy UTF-16 kódolású érték. A karakterláncok értéke legfeljebb 64 KB lehet. |
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

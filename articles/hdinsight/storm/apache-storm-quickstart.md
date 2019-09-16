@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre, és az Azure HDInsight az Apache Storm-topológia figyelése'
-description: A rövid útmutatóban megtudhatja, hogyan hozhat létre és figyelhet egy Azure HDInsight az Apache Storm-topológia.
+title: 'Gyors útmutató: Apache Storm topológia létrehozása és figyelése az Azure HDInsight'
+description: A rövid útmutatóból megtudhatja, hogyan hozhat létre és figyelheti az Apache Storm topológiát az Azure HDInsight-ben.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,34 +8,34 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 12001aef970d3b465a7f5c8e0c7af072b8f4ec80
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428446"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018582"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Gyors útmutató: Létrehoz és felügyel egy Azure HDInsight az Apache Storm-topológia
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Gyors útmutató: Apache Storm topológia létrehozása és figyelése az Azure HDInsight
 
 Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számítási rendszer az adatstreamek feldolgozására. A Storm on Azure HDInsight segítségével olyan felhőalapú Storm-fürtöket hozhat létre, amelyek valós időben végeznek big data elemzést.
 
-Ebben a rövid útmutatóban használja példaként, az Apache [storm-starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt hozhat létre és figyelhet az Apache Storm-topológia egy meglévő Apache Storm-fürt.
+Ebben a rövid útmutatóban egy példát használ az Apache [Storm-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projektből egy Apache Storm topológia létrehozására és figyelésére egy meglévő Apache Storm-fürthöz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy HDInsight az Apache Storm-fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **Storm** a **fürt típusa**.
+* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
 
-* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-topology"></a>A topológia létrehozása
 
-1. A Storm-fürt csatlakozni. Az alábbi parancsot szerkesztése lecserélésével `CLUSTERNAME` alatt futó Storm nevére a fürt, és írja be a parancsot:
+1. Kapcsolódjon a Storm-fürthöz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a Storm-fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. A **WordCount** példa tartalmazza a HDInsight-fürtön, `/usr/hdp/current/storm-client/contrib/storm-starter/`. A topológia állít elő mondatokat véletlenszerű, és megszámolja a szavak fordulhat elő, hogy hány alkalommal. A következő paranccsal indítsa el a **wordcount** topológia a fürtön:
+2. A **WordCount** példa a HDInsight-fürtön `/usr/hdp/current/storm-client/contrib/storm-starter/`található. A topológia véletlenszerű mondatokat generál, és megszámolja, hogy hányszor fordulnak elő szavak. A következő parancs használatával indítsa el a fürtön a **WordCount** topológiát:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -43,42 +43,42 @@ Ebben a rövid útmutatóban használja példaként, az Apache [storm-starter](h
 
 ## <a name="monitor-the-topology"></a>A topológia figyelése
 
-A Storm webes felületet biztosít a futó topológiákkal való munkavégzéshez, és tartalmazza a HDInsight-fürtön.
+A Storm egy webes felületet biztosít a futó topológiák használatához, és a HDInsight-fürt részét képezi.
 
 Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületével történő figyeléséhez:
 
 1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net/stormui` oldalt. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 
-2. A **topológia összegzése**, jelölje be a **wordcount** bejegyzést a **neve** oszlop. Megjelennek a topológiával kapcsolatos információk.
+2. A **topológia összegzése**területen válassza ki a **WordCount** bejegyzést a **Name (név** ) oszlopban. Megjelennek a topológiával kapcsolatos információk.
 
-    ![A Storm irányítópultja a Storm Starter WordCount-topológiára vonatkozó információkkal.](./media/apache-storm-quickstart/topology-summary.png)
+    ![A Storm irányítópultja a Storm Starter WordCount-topológiára vonatkozó információkkal.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 
-    Az új oldal a következő információkat biztosítja:
+    Az új oldal a következő információkat tartalmazza:
 
     |Tulajdonság | Leírás |
     |---|---|
-    |Topológiastatisztikák|Alapszintű információkat tartalmaz a topológia teljesítményével kapcsolatban, időtartományokba. Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.|
-    |Spoutok|Alapszintű információkat tartalmaz a spoutokkal kapcsolatban, beleértve az utolsó hiba egyes spoutok által visszaadott.|
-    |A boltok|Alapszintű információkat tartalmaz a boltokkal kapcsolatban.|
-    |Topológia konfigurálása|Topológia konfigurációjával kapcsolatos részletes információkat.|
-    |Aktiválás|Folytatja az inaktivált topológia feldolgozásra.|
-    |inaktiválása|Megszakítja a futó topológiát.|
-    |Újraegyensúlyozása|Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
-    |Kill|Storm-topológia leállítása időtúllépést követően.|
+    |Topológia statisztikái|Alapvető információk a topológia teljesítményéről, időablakok szerint rendezve. Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.|
+    |Spoutok|Alapszintű információk a kiöntő szolgáltatásokról, beleértve az egyes kiöntő által visszaadott utolsó hibát is.|
+    |Csavarok|A boltokkal kapcsolatos alapvető információk.|
+    |Topológia konfigurációja|Részletes információk a topológia konfigurációjával kapcsolatban.|
+    |Aktiválás|Folytatja a deaktivált topológia feldolgozását.|
+    |Inaktiválás|Szünetelteti a futó topológiát.|
+    |Újra egyensúlyba hozni|A topológia párhuzamosságának módosítása. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információ: [Apache Storm topológia párhuzamosságának megismerése](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
+    |Leállítás|A megadott időkorlát után leállítja a Storm-topológiát.|
 
 3. Válassza ki a jelen lapon található **Spoutok** vagy **Boltok** szakaszok bejegyzéseinek egyikét. Ekkor információk jelennek meg a kiválasztott összetevővel kapcsolatban.
 
-    ![A Storm irányítópultja a kiválasztott összetevőkkel kapcsolatos információkkal.](./media/apache-storm-quickstart/component-summary.png)
+    ![A Storm irányítópultja a kiválasztott összetevőkkel kapcsolatos információkkal.](./media/apache-storm-quickstart/hdi-component-summary.png)
 
-    Az új lap az alábbi információkat jeleníti meg:
+    Az új oldalon az alábbi információk jelennek meg:
 
     |Tulajdonság | Leírás |
     |---|---|
-    |Spout vagy Bolt-statisztikák|Az összetevő teljesítménye, időtartományokba alapszintű információkat tartalmaz. Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.|
-    |Beviteli statisztikák (csak bolt)|Információk a bolt által feldolgozott adatokat előállító összetevőkről.|
-    |Kimeneti statisztikák|Információkat tartalmaz a bolt által kibocsátott adatokról.|
-    |Végrehajtóval|Információ a jelen összetevő példányairól.|
-    |Hibák|Ez az összetevő által létrehozott hibaüzeneteket.|
+    |Kiöntő/bolt statisztikái|Alapszintű információk a komponens teljesítményéről, időablakok szerint rendezve. Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.|
+    |Bemeneti statisztika (csak bolt)|Információk a bolt által felhasznált adatokat előállító összetevőkről.|
+    |Kimeneti statisztika|Információk a bolt által kibocsátott adatokról.|
+    |Végrehajtók|Az összetevő példányaival kapcsolatos információk.|
+    |Hibák|Az összetevő által létrehozott hibák.|
 
 4. Egy adott spout vagy bolt részletes adatainak megtekintésekor az összetevők adott példánya részletes adatainak megtekintéséhez jelöljön ki egy bejegyzést a **Port** oszlopból az **Executors** (Végrehajtók) szakaszban.
 
@@ -99,13 +99,13 @@ Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-cou
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett a gyors üzembe helyezéssel, érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-Törölje a fürtöt, tekintse meg a [törlése egy HDInsight-fürtön a böngészőben, a PowerShell vagy az Azure CLI](../hdinsight-delete-cluster.md).
+Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban egy, az Apache származó példa használt [storm-starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt hozhat létre és figyelhet az Apache Storm-topológia egy meglévő Apache Storm-fürt. Folytassa a következő cikkben talál a kezelése és figyelése Apache Storm-topológiák alapjait.
+Ebben a rövid útmutatóban az Apache [Storm-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt egy példáját használta egy Apache Storm topológia létrehozásához és figyeléséhez egy meglévő Apache Storm-fürthöz. Folytassa a következő cikkel, amely a Apache Storm topológiák kezelésével és figyelésével kapcsolatos alapvető tudnivalókat ismerteti.
 
 > [!div class="nextstepaction"]
->[Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák](./apache-storm-deploy-monitor-topology-linux.md)
+>[Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight](./apache-storm-deploy-monitor-topology-linux.md)

@@ -8,16 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: e154b830df6b49855414563be8c740bfe513c85a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967891"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018246"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Az SSL-szabályzat verziói és a titkosítási csomagok konfigurálása Application Gateway
 
-Ismerje meg, hogyan konfigurálhatja az SSL-házirend verzióit és a titkosítási csomagokat Application Gatewayon. Előre meghatározott szabályzatok közül választhat, amelyek az SSL-szabályzatverziók és az engedélyezett titkosítócsomagok különböző konfigurációit tartalmazzák. Lehetősége van arra is, hogy [Egyéni SSL](#configure-a-custom-ssl-policy) -házirendet határozzon meg a követelmények alapján.
+Ismerje meg, hogyan konfigurálhatja az SSL-házirend verzióit és a titkosítási csomagokat Application Gatewayon. Előre meghatározott szabályzatok közül választhat, amelyek az SSL-szabályzatverziók és az engedélyezett titkosítócsomagok különböző konfigurációit tartalmazzák. Lehetősége van arra is, hogy [Egyéni SSL-házirendet](#configure-a-custom-ssl-policy) határozzon meg a követelmények alapján.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -116,13 +116,7 @@ Az alábbi példa egyéni SSL-szabályzatot állít be egy Application gatewayen
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> Az egyéni SSL-házirend konfigurálásakor a következő listából legalább egy titkosítási csomagot ki kell választani. Az Application Gateway RSA SHA256 titkosítási csomagokat használ a háttér-kezeléshez.
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-> * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_256_CBC_SHA256
-> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> Egyéni SSL-házirend konfigurálásakor ki kell választani a TLS_RSA_WITH_AES_256_CBC_SHA256. Az Application Gateway ezt a titkosítási csomagot használja a háttér-felügyelethez. Ezt bármilyen más lakosztállyal együtt is használhatja, de ezt is ki kell választani. 
 
 ```powershell
 # get an application gateway resource

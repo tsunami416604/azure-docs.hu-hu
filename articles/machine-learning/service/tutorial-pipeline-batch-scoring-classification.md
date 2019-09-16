@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: aa280ea71735ce7c4000951e5c11de2913aaebe8
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 15a11ba74262ec5a354f0cb3fe22c09167c8d5a6
+ms.sourcegitcommit: d15b23e23328ce7502dd3d2846b49fd2d6d8209c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001624"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005390"
 ---
 # <a name="use-azure-machine-learning-pipelines-for-batch-scoring"></a>Azure Machine Learning folyamatok használata a Batch pontozáshoz
 
-Ebben az oktatóanyagban Azure Machine Learning folyamatokat használ a Batch-pontozási vagy következtetési feladatok futtatásához. Ebben a példában a feladatokhoz az előre betanított megerősítő [-v3](https://arxiv.org/abs/1512.00567) típusú, a nem címkézett képek besorolására szolgáló neurális hálózati Tensorflow modellt használja. Egy folyamat létrehozása és közzététele után egy REST-végpontot kell konfigurálnia, hogy bármilyen platformon bármely HTTP-könyvtárból aktiválható legyen a folyamat.
+Ebben az oktatóanyagban Azure Machine Learning folyamatokat használ a Batch-pontozási feladatok futtatásához. Ez a példa az előre betanított megerősítő [-v3](https://arxiv.org/abs/1512.00567) típusú, a nem címkézett képek besorolására szolgáló Tensorflow modellt használja. Egy folyamat létrehozása és közzététele után beállíthat egy REST-végpontot, hogy bármely platformon bármely HTTP-könyvtárból aktiválható legyen a folyamat.
 
 A gépi tanulási folyamatok gyorsabbá, hordozhatóságot és újrahasznosítást tesznek jobbá a munkafolyamatban, így az infrastruktúra és az automatizálás helyett a szaktudásra, a gépi tanulásra koncentrálhat. [További információ az ml-folyamatokról](concept-ml-pipelines.md).
 

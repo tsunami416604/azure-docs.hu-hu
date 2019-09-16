@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 01712508b15be947f4c3d7df401ad431d9f25455
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 3f637314045210d89f8ac1da5d8675855e5d8b55
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276384"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009036"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatmásolás az Impala Azure Data Factory (előzetes verzió) használatával
 
@@ -27,6 +27,11 @@ Ez a cikk az Azure Data Factory másolási tevékenység használatával adatoka
 > Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez az Impala-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Másolhat adatokat Impala bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -129,7 +134,7 @@ Adatok másolása az Impala, állítsa be a forrás típusaként a másolási te
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **ImpalaSource**. | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -160,6 +165,11 @@ Adatok másolása az Impala, állítsa be a forrás típusaként a másolási te
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

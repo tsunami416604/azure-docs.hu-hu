@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: e795e1de32ce51d80062d30d6880abbca37f9386
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 04945906e1a1506a3a56fe4565233e960ec6b797
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720268"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008502"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Zoho
 
@@ -27,6 +27,12 @@ Ez a cikk az Azure Data Factory a másolási tevékenység használatával adato
 > Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Zoho-összekötő a következő tevékenységek esetében támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 
 Másolhat adatokat Zoho bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -110,7 +116,7 @@ Adatok másolása Zoho, állítsa be a forrás típusaként a másolási tevéke
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ZohoSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Accounts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -141,6 +147,10 @@ Adatok másolása Zoho, állítsa be a forrás típusaként a másolási tevéke
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

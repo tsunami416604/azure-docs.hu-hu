@@ -5,63 +5,39 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/29/2019
 ms.author: mlearned
-ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3010973c7d0af784938e9295bb80fc22b7f718f3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034948"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018642"
 ---
-# <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürtcsomópontok kimenő forgalmának korlátozása és a szükséges portokhoz és szolgáltatásokhoz való hozzáférés szabályozása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
-Alapértelmezés szerint az AK-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkeznek. A hálózati hozzáférés ezen szintje lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások igény szerint hozzáférhessenek a külső erőforrásokhoz. Ha korlátozni szeretné a kimenő forgalom forgalmát, a fürt kifogástalan karbantartási feladatainak megtartása érdekében korlátozott számú portot és címet kell elérhetővé tenni. A fürt ezután úgy van konfigurálva, hogy csak a Microsoft Container Registry (MCR) vagy a Azure Container Registry (ACR) alapszintű rendszertároló-lemezképeit használja, nem pedig a külső nyilvános adattárakat. A szükséges portok és címek engedélyezéséhez konfigurálnia kell az előnyben részesített tűzfalat és biztonsági szabályokat.
+Alapértelmezés szerint az AK-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkeznek. A hálózati hozzáférés ezen szintje lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások igény szerint hozzáférhessenek a külső erőforrásokhoz. Ha korlátozni szeretné a kimenő forgalom forgalmát, a fürt kifogástalan karbantartási feladatainak megtartása érdekében korlátozott számú portot és címet kell elérhetővé tenni. A fürt alapértelmezés szerint úgy van konfigurálva, hogy csak a Microsoft Container Registry (MCR) vagy a Azure Container Registry (ACR) alapszintű rendszertároló-lemezképeit használja. Konfigurálja az előnyben részesített tűzfal-és biztonsági szabályokat, hogy engedélyezze ezeket a szükséges portokat és címeket.
 
-Ez a cikk részletesen ismerteti, hogy mely hálózati portok és teljes tartománynevek (FQDN-EK) szükségesek és választhatók, ha egy AK-fürtön korlátozza a kimenő forgalmat.  Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+Ez a cikk részletesen ismerteti, hogy mely hálózati portok és teljes tartománynevek (FQDN-EK) szükségesek és választhatók, ha egy AK-fürtön korlátozza a kimenő forgalmat.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
->
-> * [AK-támogatási szabályzatok][aks-support-policies]
-> * [Azure-támogatás – gyakori kérdések][aks-faq]
+> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK nem rendelkezik bejövő követelményekkel.  A belső alhálózati forgalom blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [hálózati házirendeket][network-policy].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Szüksége lesz az Azure CLI-verzió 2.0.66 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-Ha olyan AK-fürtöt szeretne létrehozni, amely képes korlátozni a kimenő forgalom forgalmát, először engedélyezzen egy szolgáltatás-jelölőt az előfizetésében. Ez a szolgáltatás regisztrál minden olyan AK-fürtöt, amelyet Ön hoz létre a MCR vagy ACR alapszintű rendszertárolói lemezképek használatához. A *AKSLockingDownEgressPreview* szolgáltatás jelzőjét a következő példában látható módon regisztrálja az az [Feature Register][az-feature-register] parancs használatával:
-
-> [!CAUTION]
-> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
-
-```azurecli-interactive
-az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
-```
-
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
-```
-
-Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 ## <a name="egress-traffic-overview"></a>Kimenő forgalom áttekintése
 
 A felügyeleti és működési célokra az AK-fürtök csomópontjainak bizonyos portokhoz és teljes tartománynevek (FQDN) eléréséhez kell rendelkezniük. Ezek a műveletek az API-kiszolgálóval való kommunikációra, illetve az alapvető Kubernetes-fürt összetevőinek és a csomópontok biztonsági frissítéseinek letöltésére és telepítésére is használhatók. Alapértelmezés szerint a kimenő (kimenő) internetes forgalom nem korlátozódik egy AK-fürt csomópontjaira. A fürt lehívhatja a rendszertároló lemezképeit a külső adattárakból.
 
-Az AK-fürt biztonságának növeléséhez előfordulhat, hogy korlátozni szeretné a kimenő forgalmat. A fürt úgy van konfigurálva, hogy lekérje az alapszintű rendszertároló lemezképeit a MCR vagy az ACR-ből. Ha ily módon zárolja a kimenő forgalom forgalmát, meg kell határoznia bizonyos portokat és FQDN-ket, hogy az AK-csomópontok megfelelően kommunikáljanak a szükséges külső szolgáltatásokkal. Ezen engedélyezve portok és teljes tartománynevek nélkül az AK-csomópontok nem tudnak kommunikálni az API-kiszolgálóval, vagy nem telepíthetik az alapvető összetevőket.
+Az AK-fürt biztonságának növeléséhez előfordulhat, hogy korlátozni szeretné a kimenő forgalmat. A fürt úgy van konfigurálva, hogy lekérje az alapszintű rendszertároló lemezképeit a MCR vagy az ACR-ből. Ha ily módon zárolja a kimenő forgalom forgalmát, definiáljon bizonyos portokat és FQDN-ket, hogy az AK-csomópontok megfelelően kommunikáljanak a szükséges külső szolgáltatásokkal. Ezen engedélyezve portok és teljes tartománynevek nélkül az AK-csomópontok nem tudnak kommunikálni az API-kiszolgálóval, vagy nem telepíthetik az alapvető összetevőket.
 
 A kimenő forgalom védelméhez [Azure Firewall][azure-firewall] vagy külső gyártótól származó tűzfal-berendezést használhat, és meghatározhatja a szükséges portokat és címeket. Az AK nem hozza létre automatikusan ezeket a szabályokat. A következő portok és címek hivatkoznak a megfelelő szabályok a hálózati tűzfalban való létrehozásakor.
 
 > [!IMPORTANT]
-> Ha Azure Firewall használatával korlátozza a kimenő forgalom forgalmát, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom kikényszerítéséhez, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalban, hogy megfelelően engedélyezze a bejövő forgalmat. A Azure Firewall használata UDR megszakítja a bejövő beállításokat az aszimmetrikus útválasztás miatt. (A probléma oka, hogy az AK-alhálózatnak van egy alapértelmezett útvonala, amely a tűzfal magánhálózati IP-címére mutat, de nyilvános terheléselosztó-bejövő vagy Kubernetes-szolgáltatást használ: Terheléselosztó). Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb)-nal című
->
+> Ha Azure Firewall használatával korlátozza a kimenő forgalom forgalmát, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom kikényszerítéséhez, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalban, hogy megfelelően engedélyezze a bejövő forgalmat. A Azure Firewall használata UDR megszakítja a bejövő beállításokat az aszimmetrikus útválasztás miatt. (A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de nyilvános terheléselosztó-bejövő vagy Kubernetes-szolgáltatást használ: Terheléselosztó). Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb)-nal című
+> A 9000-es TCP-port és a 22-es TCP-port forgalmát a kimenő munkavégző csomópont IP-címei és az API-kiszolgáló IP-címe közötti hálózati szabály használatával zárolhatja.
 
 Az AK-ban két portot és címet kell kijelölni:
 
@@ -69,15 +45,17 @@ Az AK-ban két portot és címet kell kijelölni:
 * Az [AK-fürtök választható ajánlott címei és portjai](#optional-recommended-addresses-and-ports-for-aks-clusters) nem szükségesek az összes forgatókönyvhöz, de más szolgáltatásokkal, például Azure monitor való integráció nem fog megfelelően működni. Tekintse át a választható portok és a teljes tartománynevek listáját, és engedélyezze az AK-fürtben használt szolgáltatások és összetevők engedélyezését.
 
 > [!NOTE]
-> A kimenő forgalom korlátozása csak a funkció-jelölő regisztrációjának engedélyezése után létrehozott új AK-fürtökön működik. Meglévő fürtök esetén [hajtson végre egy fürt-frissítési műveletet][aks-upgrade] a paranccsal a `az aks upgrade` kimenő forgalom korlátozása előtt.
+> A kimenő forgalom korlátozása csak az új AK-fürtökön működik. Meglévő fürtök esetén [hajtson végre egy fürt-frissítési műveletet][aks-upgrade] a paranccsal a `az aks upgrade` kimenő forgalom korlátozása előtt.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Szükséges portok és címek az AK-fürtökhöz
 
 A következő kimenő portok/hálózati szabályok szükségesek egy AK-fürthöz:
 
 * *443* -es TCP-port
+* TCP [IPAddrOfYourAPIServer]: a 443-as verzióra akkor van szükség, ha olyan alkalmazással rendelkezik, amelynek az API-kiszolgálóval kell kommunikálnia.  Ezt a módosítást a fürt létrehozása után lehet beállítani.
 * A *9000* -es TCP-port és a *22-es* TCP-port az alagút elülső Pod-portjához az API-kiszolgáló bújtatási végpontjának használatával folytatott kommunikációhoz.
     * További részletekért tekintse meg a * *. HCP.\< Location\>. azmk8s.IO* és * *. TUN.\< a\>location. azmk8s.IO* címei a következő táblázatban láthatók.
+* A DNS esetében a *53* -es UDP-portra akkor is szükség van, ha közvetlenül az API-kiszolgálóhoz fér hozzá.
 
 A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 
@@ -92,23 +70,68 @@ A következő teljes tartománynév/alkalmazás szabályok szükségesek:
 | management.azure.com       | HTTPS:443 | Ez a címe a Kubernetes GET/PUT műveletekhez szükséges. |
 | login.microsoftonline.com  | HTTPS:443 | Ez a címe Azure Active Directory hitelesítéshez szükséges. |
 | ntp.ubuntu.com             | UDP:123   | Ez a címe a Linux-csomópontok NTP-időszinkronizálásához szükséges. |
+| packages.microsoft.com     | HTTPS:443 | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez.  A csomagok közé tartoznak például a Moby, a PowerShell és az Azure CLI. |
+| acs-mirror.azureedge.net   | HTTPS:443 | Ez a címe a szükséges bináris fájlok, például a kubenet és az Azure CNI telepítéséhez szükséges tárház. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Választható ajánlott címek és portok az AK-fürtökhöz
 
-* *53* -es UDP-port a DNS-hez
+A következő kimenő portok/hálózati szabályok nem kötelezőek egy AK-fürthöz:
 
 A következő teljes tartománynév/alkalmazás-szabályok javasoltak az AK-fürtök megfelelő működéséhez:
 
 | TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
 |-----------------------------------------|-----------|----------|
-| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP:80   | Ez a címe lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
-| packages.microsoft.com                  | HTTPS:443 | Ez a címe a Microsoft Packages adattárat használja a gyorsítótárazott *apt-get* műveletekhez. |
-| dc.services.visualstudio.com            | HTTPS:443 | Ajánlott a megfelelő metrikák és figyelési Azure Monitor használatával. |
-| *.opinsights.azure.com                  | HTTPS:443 | Ajánlott a megfelelő metrikák és figyelési Azure Monitor használatával. |
-| *.monitoring.azure.com                  | HTTPS:443 | Ajánlott a megfelelő metrikák és figyelési Azure Monitor használatával. |
-| gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Ez a címe a Azure Policy helyes működéséhez használatos (jelenleg előzetes verzióban az AK-ban). |
-| apt.dockerproject.org                   | HTTPS:443 | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
-| nvidia.github.io                        | HTTPS:443 | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com | HTTP:80   | Ez a címe lehetővé teszi, hogy a Linux-fürtcsomópontok letöltsék a szükséges biztonsági javításokat és frissítéseket. |
+
+## <a name="required-addresses-and-ports-for-gpu-enabled-aks-clusters"></a>Szükséges címek és portok a GPU-t támogató AK-fürtökhöz
+
+A GPU-t használó AK-fürtök esetében a következő teljes tartománynév/alkalmazás szabályok szükségesek:
+
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+|-----------------------------------------|-----------|----------|
+| nvidia.github.io | HTTPS:443 | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
+| us.download.nvidia.com | HTTPS:443 | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
+| apt.dockerproject.org | HTTPS:443 | Ez a címe a megfelelő illesztőprogram-telepítéshez és-művelethez használható a GPU-alapú csomópontokon. |
+
+## <a name="required-addresses-and-ports-with-azure-monitor-for-containers-enabled"></a>Szükséges címek és portok Azure Monitor for containers engedélyezve
+
+A következő teljes tartománynevek és alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van az Azure Monitor a tárolók számára:
+
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+|-----------------------------------------|-----------|----------|
+| dc.services.visualstudio.com | HTTPS:443  | Ez a megfelelő mérőszámok és figyelési telemetria Azure Monitor használatával. |
+| *.ods.opinsights.azure.com    | HTTPS:443 | Ezt az Azure Monitor használja a log Analytics-adatfeldolgozáshoz. |
+| *.oms.opinsights.azure.com | HTTPS:443 | Ezt a címeket a omsagent használja, amely a log Analytics szolgáltatás hitelesítésére szolgál. |
+|*.microsoftonline.com | HTTPS:443 | Ezt a rendszer a metrikák Azure Monitor való hitelesítésére és küldésére használja. |
+|*.monitoring.azure.com | HTTPS:443 | Ez a metrikai adatok Azure Monitorba küldésére szolgál. |
+
+## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Szükséges címek és portok az AK-fürtökhöz Azure Policy (nyilvános előzetes verzióban) engedélyezve
+
+> [!CAUTION]
+> Az alábbi funkciók némelyike előzetes verzióban érhető el.  A cikkben szereplő javaslatok változhatnak, mivel a szolgáltatás a nyilvános előzetes verzióra és a későbbi kiadási szakaszokra helyezi át a szolgáltatást.
+
+A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
+
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+|-----------------------------------------|-----------|----------|
+| gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Ez a címe Azure Policy helyes működéséhez használatos. (jelenleg előzetes verzióban érhető el az AK-ban) |
+| raw.githubusercontent.com | HTTPS:443 | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. (jelenleg előzetes verzióban érhető el az AK-ban) |
+| *. GK. <location>. azmk8s.IO | HTTPS:443 | Az Azure Policy bővítmény a főkiszolgálón futó forgalomirányító végpontot tárgyalja a naplózási eredmények beszerzéséhez. |
+| dc.services.visualstudio.com | HTTPS:443 | Az Azure Policy bővítmény telemetria adatokat küld az Applications-elemzések végpontjának. |
+
+## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>A Windows Server-alapú csomópontok (nyilvános előzetes verzió) által igényelt engedélyezve
+
+> [!CAUTION]
+> Az alábbi funkciók némelyike előzetes verzióban érhető el.  A cikkben szereplő javaslatok változhatnak, mivel a szolgáltatás a nyilvános előzetes verzióra és a későbbi kiadási szakaszokra helyezi át a szolgáltatást.
+
+A Windows Server-alapú AK-fürtökhöz a következő FQDN-/alkalmazás-szabályok szükségesek:
+
+| TELJES TARTOMÁNYNÉV                                    | Port      | Használat      |
+|-----------------------------------------|-----------|----------|
+| onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS:443 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
+| mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP:80 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
+| kms.core.windows.net | TCP: 1688 | A Windows rendszerhez kapcsolódó bináris fájlok telepítése |
+
 
 ## <a name="next-steps"></a>További lépések
 

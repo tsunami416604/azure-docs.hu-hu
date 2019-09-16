@@ -1,37 +1,41 @@
 ---
-title: Az Azure Cosmos Emulator letöltése és a kibocsátási megjegyzések
-description: Olvassa el az Azure Cosmos-emulátor kibocsátási megjegyzéseket, és töltse le.
+title: Az Azure Cosmos Emulator letöltése és kibocsátási megjegyzései
+description: Olvassa el az Azure Cosmos Emulator kiadási megjegyzéseit, és töltse le.
 ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 5985d0d82341c76993ee91b8dff6927edd1ed8b4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 587c730dfa436760d42e614c2dabee117f3b61d3
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332127"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018817"
 ---
-# <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
+# <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
-Ez a cikk bemutatja az Azure Cosmos emulátor kibocsátási megjegyzések az egyes kiadások elvégzett funkciófrissítések listája. Felsorolja a letöltését és használatát emulator legújabb verziója.
+Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes kiadásokban végrehajtott szolgáltatások frissítéseinek listájával. Emellett felsorolja az emulátor legújabb verzióját is a letöltéshez és a használatához.
 
 ## <a name="download"></a>Letöltés
 
 | | |
 |---------|---------|
 |**MSI letöltése**|[Microsoft letöltőközpont](https://aka.ms/cosmosdb-emulator)|
-|**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulátorral](local-emulator.md)|
+|**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="246"></a>2.4.6
+
+- Ez a kiadás paritást biztosít az Azure Cosmos szolgáltatás szolgáltatásaival július 2019-ig, az [Azure Cosmos Emulator segítségével helyileg fejleszthető](local-emulator.md)kivételekkel. Emellett javít számos, az emulátor leállításával kapcsolatos hibát, amikor a parancssorból és a belső IP-címek felülbírálásait használja a közvetlen módú kapcsolattal rendelkező SDK-ügyfelek számára.
+
 ### <a name="243"></a>2.4.3
 
-- A letiltott alapértelmezés szerint a MongoDB-szolgáltatás indítása. Csak az SQL-végpont alapértelmezés szerint engedélyezve van. A felhasználónak kell elindítani a végpontot, manuálisan segítségével az emulátort "/ EnableMongoDbEndpoint" parancssori kapcsolót. Most a többi szolgáltatás végpont, például Cassandra, tábla és a Gremlin hasonlít.
-- Kijavítva a hiba az emulátorban, amikor kezdve "/ AllowNetworkAccess", a Gremlin, a Cassandra és a tábla végpontok nem megfelelően kezelik a külső ügyfelek kéréseit.
-- Közvetlen kapcsolat portjai adja hozzá a tűzfalszabályok beállításokat.
+- Alapértelmezés szerint le van tiltva a MongoDB szolgáltatás elindítása. Csak az SQL-végpont engedélyezett alapértelmezettként. A felhasználónak manuálisan kell elindítania a végpontot az emulátor "/EnableMongoDbEndpoint" parancssori kapcsolójának használatával. Most, mint az összes többi szolgáltatási végpont, például Gremlin, Cassandra és Table.
+- Kijavított egy hibát az emulátorban a "/AllowNetworkAccess" kifejezéssel kezdődően, ahol a Gremlin, Cassandra és Table végpontok nem tudták megfelelően kezelni a külső ügyfelektől érkező kéréseket.
+- Közvetlen kapcsolódási portok hozzáadása a tűzfalszabályok beállításaihoz.
 
 ### <a name="240"></a>2.4.0
 
-- Kijavítva emulátor sikertelen elindításához, amikor a hálózati figyelési alkalmazások, például Pulse ügyfél, az állomás számítógépén jelen.
+- Kijavítva egy probléma az emulátorban, amely nem indul el, ha a hálózati figyelési alkalmazások (például a Pulse-ügyfél) jelen vannak a gazdagépen.

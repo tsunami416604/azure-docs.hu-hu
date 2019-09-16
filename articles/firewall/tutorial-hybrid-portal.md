@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918788"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018970"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -58,9 +58,9 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-the-routes) című szakaszát.
 
 >[!NOTE]
->Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
+>Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 >
->Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, engedélyezzük az előfizetését, és gondoskodni kell a tűzfal internetkapcsolatának fenntartásáról.
+>A Azure Firewall jelenleg nem támogatja a kényszerített bújtatást. Ha a konfigurációhoz kényszerített bújtatásra van szükség egy helyszíni hálózathoz, és meghatározhatja az internetes célhelyek cél IP-előtagjait, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a felhasználó által megadott útvonalon keresztül a AzureFirewallSubnet. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
@@ -373,7 +373,7 @@ Hozzon létre egy virtuális gépet a küllős virtuális hálózaton, amely nyi
     - **Felhasználónév**: *azureuser*.
     - **Jelszó**: *Azure123456!*
 4. Válassza a **Tovább: lemezek**lehetőséget.
-5. Fogadja el az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
+5. Fogadja el az alapértelmezett értékeket **, és válassza a tovább lehetőséget: Hálózatkezelés**.
 6. Válassza ki a virtuális hálózat **VNet** , és az alhálózat az **SN-munkaterhelés**.
 7. A **nyilvános IP-címek**esetében válassza a **nincs**lehetőséget.
 8. **Nyilvános bejövő portok**esetében válassza a **kiválasztott portok engedélyezése**lehetőséget, majd válassza a **http (80)** és az **RDP (3389) lehetőséget.**

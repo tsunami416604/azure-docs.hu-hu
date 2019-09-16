@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1096505a8789d722594cff13841e97930846ee53
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277630"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010643"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az ODBC-adattárakba Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,9 +28,14 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
+Ez az ODBC-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 Az ODBC-forrásból származó adatok bármely támogatott fogadó adattárba másolhatók, vagy bármely támogatott forrásból származó adattárból másolhatók az ODBC-tárolóba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Ez az ODBC-összekötő az **alapszintű** vagy a **Névtelen** hitelesítés használatával támogatja az adatok másolását **bármely ODBC-kompatibilis adattárba** .
+Ez az ODBC-összekötő az alapszintű vagy a **Névtelen** hitelesítés használatával támogatja az adatok másolását **bármely ODBC-kompatibilis adattárba** .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +58,7 @@ Az ODBC társított szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Odbc** | Igen |
 | connectionString | A hitelesítő adatok kivételével a kapcsolatok karakterlánca. Megadhatja a kapcsolati karakterláncot, `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`mint például a `"DSN=<name of the DSN on IR machine>;"` (z), vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) a következővel: (a hitelesítő adatoknak a társított szolgáltatásban való megadása ennek megfelelően történik)<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
-| authenticationType | Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
+| authenticationType | Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: Alapszintű és **Névtelen**. | Igen |
 | userName | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | credential | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"RefreshToken=<secret refresh token>;"`. A mező megjelölése SecureString. | Nem |
@@ -278,6 +283,11 @@ Hozzon létre egy ODBC-társított szolgáltatást egy SAP HANA adattár egy Azu
 
 A másolási művelet során olvassa el a következő cikket: az ODBC-adattárak forrás/fogadó adattárként való használatának részletes áttekintése.
 
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+
 ## <a name="troubleshoot-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
 A kapcsolódási problémák elhárításához használja **Integration Runtime Configuration Manager** **diagnosztika** lapját.
@@ -285,7 +295,7 @@ A kapcsolódási problémák elhárításához használja **Integration Runtime 
 1. **Integration Runtime Configuration Manager**elindítása.
 2. Váltson a **diagnosztika** lapra.
 3. A "kapcsolat tesztelése" szakaszban válassza ki az adattár **típusát** (társított szolgáltatás).
-4. Adja meg az adattárhoz való kapcsolódáshoz használt **kapcsolati karakterláncot** , válassza ki a **hitelesítést** , és írja be a **felhasználónevet**, a **jelszót**és/vagy a **hitelesítő adatokat**.
+4. Adja meg az adattárhoz való kapcsolódáshoz használt kapcsolati karakterláncot, válassza ki a **hitelesítést** , és írja be a felhasználónevet, a **jelszót**és/vagy a **hitelesítő adatokat**.
 5. Kattintson a **Kapcsolódás tesztelése** elemre az adattárhoz való kapcsolódás teszteléséhez.
 
 ## <a name="next-steps"></a>További lépések

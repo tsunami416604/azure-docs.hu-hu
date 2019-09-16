@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 3082c568b3ce3fa5199c7a7d0d082db36720d293
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 561f383327738c9a2ab29f2907f00ace1eec6def
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233034"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010273"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Cosmos DB (az SQL API-t) az Azure Data Factory használatával
 
@@ -31,6 +31,11 @@ Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data 
 >Az összekötő podporují másolja az adatokat és a Cosmos DB SQL API. A MongoDB API-hoz tekintse [meg a MONGODB API](connector-azure-cosmos-db-mongodb-api.md)-hoz készült összekötőjét a következő témakörben: Azure Cosmos db. Más API-típusok jelenleg nem támogatottak.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Azure Cosmos DB (SQL API) összekötő a következő tevékenységek esetében támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 A Azure Cosmos DB (SQL API) adatait átmásolhatja bármely támogatott fogadó adattárba, vagy bármely támogatott forrásból származó adattárolóból átmásolhatja az adatok Azure Cosmos DB (SQL API) szolgáltatásba. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -251,6 +256,9 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="import-or-export-json-documents"></a>JSON-dokumentumok importálása és exportálása
 

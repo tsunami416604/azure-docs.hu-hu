@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3325cb7170ebe42962c403d25d04c9fe2bae3b45
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 5f85478137b9ab7d24e1466f6b6653b118b02c3c
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276024"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010148"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Adatok másolása Azure Database for MariaDB használatával Azure Data Factory 
 
@@ -25,6 +25,11 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
+Ez az Azure Database for MariaDB-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+ 
 Azure Database for MariaDB adatait átmásolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
@@ -136,7 +141,7 @@ Az adatok Azure Database for MariaDBból történő másolásához a másolási 
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureMariaDBSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -167,6 +172,9 @@ Az adatok Azure Database for MariaDBból történő másolásához a másolási 
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

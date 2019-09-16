@@ -1,17 +1,17 @@
 ---
-title: Ajánlott eljárások az értékelés létrehozásához a Azure Migrate Server Assessment szolgáltatással | Microsoft Docs
+title: Ajánlott eljárások az értékelés létrehozásához Azure Migrate Server Assessment alapján
 description: Tippek az értékelések létrehozásához Azure Migrate Server Assessment segítségével.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234301"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007711"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -33,8 +33,8 @@ Ha például egy helyszíni virtuális gép négy maggal rendelkezik 20%-os kiha
 
 - **Teljesítmény-alapú értékelés**:
     - A hatékony magok és memória azonosítása a mag (4 x 0,20 = 0,8) és a memória (8 GB x 0,10 = 0,8) kihasználtsága alapján.
-    - Az értékelés tulajdonságainál megadott kényelmi tényezőt alkalmazza (le'ts mondjuk 1,3 x) a méretezéshez használandó értékek lekéréséhez. 
-    - Az Azure-ban a legközelebbi virtuálisgép-méretet javasolja, amely támogatja a ~ 1,4 mag (0,8 x 1,3) és a ~ 1,4 GB (0,8 x 1,3) memóriát.
+    - Az értékelés tulajdonságaiban megadott kényelmi tényezőt alkalmazza (tegyük fel, hogy 1,3 x) a méretezéshez használandó értékek lekéréséhez. 
+    - Az Azure-ban a legközelebbi virtuálisgép-méretet javasolja, amely támogatja a ~ 1,04 mag (0,8 x 1,3) és a ~ 1,04 GB (0,8 x 1,3) memóriát.
 
 - A **(helyszíni) felmérés**:
     -  Négy maggal rendelkező virtuális gépet javasol; 8 GB memória.
@@ -85,9 +85,9 @@ Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes ad
 
 - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egy hétre beállított teljesítmény *-alapú értékelést* hoz létre, akkor legalább egy hétig várnia kell, miután elindította az összes adatpont felderítését. Az újraszámítások lehetőségre kattintva megtekintheti a legújabb alkalmazható megbízhatósági minősítést. A megbízhatósági minősítés csak akkor alkalmazható, ha *teljesítmény-alapú* értékelést hoz létre.
 
-- Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha néhány virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem fogja tudni gyűjteni az adott időszak teljesítményadatait.
+- Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha egyes virtuális gépek egy ideig ki lettek kapcsolva, a Server Assessment nem fog tudni teljesítményadatokat gyűjteni az adott időszakra vonatkozóan.
 
-- A kiszolgáló értékelésének megkezdése után néhány virtuális gép lett létrehozva. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ebben az esetben az új virtuális gépek teljesítményadatait nem lehet a teljes időtartamra elérhetővé tennie, és a megbízhatósági minősítés alacsony lenne.
+- Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
 
 ## <a name="next-steps"></a>További lépések

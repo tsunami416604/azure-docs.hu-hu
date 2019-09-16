@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 29fd82eb0253f2f7f6b9bc8b6a84882e2372124c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984975"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018995"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -24,7 +24,7 @@ Ez a cikk összefoglalja és ismerteti a Azure SQL Database felügyelt példány
 
 ![Áttelepítés](./media/sql-database-managed-instance/migration.png)
 
-Néhány, a felügyelt példányban bevezetett, és a SQL Serverhoz képest valamilyen viselkedési változás következik be. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
+Néhány, a felügyelt példányban bevezetett és néhány viselkedési változás a SQL Serverhoz képest. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
 
 - A [rendelkezésre állás](#availability) magában foglalja a [mindig](#always-on-availability) és a [biztonsági mentések](#backup)közötti különbségeket.
 - A [Biztonság](#security) magában foglalja a [naplózás](#auditing), a [tanúsítványok](#certificates), a [hitelesítő adatok](#credential), a kriptográfiai [szolgáltatók](#cryptographic-providers), a bejelentkezések [és a felhasználók](#logins-and-users), valamint a [szolgáltatás kulcsa és a szolgáltatás](#service-key-and-service-master-key)főkulcsa közötti különbségeket.
@@ -48,7 +48,7 @@ A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt
 - [RENDELKEZÉSRE ÁLLÁSI CSOPORT ELDOBÁSA](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Az [Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) utasítás [set HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) záradéka
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Tartalék
 
 A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így `COPY_ONLY` a felhasználók teljes adatbázis-biztonsági másolatokat hozhatnak létre. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
@@ -339,14 +339,14 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 - `ALTER ASSEMBLY`nem lehet hivatkozni a fájlokra. Lásd: az [Alter Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Database Mail (db_mail)
- - `sp_send_dbmail`a @file_attachments mellékletek nem küldhetők paraméterrel. A helyi fájlrendszer-és: Extertal-megosztások vagy az Azure Blob Storage nem érhetők el az eljárásban.
+ - `sp_send_dbmail`a @file_attachments mellékletek nem küldhetők paraméterrel. A helyi fájlrendszer és a külső megosztások vagy az Azure Blob Storage nem érhetők el ebből az eljárásból.
  - Tekintse meg `@query` a paraméterrel és a hitelesítéssel kapcsolatos ismert problémákat.
  
 ### <a name="dbcc"></a>DBCC
 
 A SQL Serverban engedélyezett nem dokumentált DBCC utasítások nem támogatottak a felügyelt példányokban.
 
-- Csak korlátozott számú globális `Trace flags` támogatott. A munkamenet- `Trace flags` szint nem támogatott. Lásd [](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql): nyomkövetési jelzők.
+- Csak korlátozott számú globális nyomkövetési jelző támogatott. A munkamenet- `Trace flags` szint nem támogatott. Lásd [](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql): nyomkövetési jelzők.
 - A [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) és a [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) korlátozott számú globális nyomkövetési jelzővel működik.
 - A REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST és REPAIR_REBUILD beállításokkal rendelkező [DBCC-CHECKDB utasítást](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) nem használhatók, mert az adatbázis `SINGLE_USER` nem állítható be a mode-ban – lásd az [adatbázis-eltérések módosításait](#alter-database-statement). A lehetséges adatbázis-sérüléseket az Azure-támogatási csapat kezeli. Vegye fel a kapcsolatot az Azure támogatási szolgálatával, ha az adatbázis sérülését rögzíti.
 
@@ -404,7 +404,7 @@ Műveletek
 
 A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső táblák nem támogatottak. További információ a következőről [: Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikáció
+### <a name="replication"></a>Replikálás
 
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) a felügyelt példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
@@ -415,7 +415,7 @@ A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső t
 A replikáció konfigurálásával kapcsolatos információkért tekintse meg a [replikálási oktatóanyagot](replication-with-sql-database-managed-instance.md).
 
 
-Ha a replikáció engedélyezve van egy [feladatátvételi csoportban](sql-database-auto-failover-group.md)lévő adatbázison, a felügyelt példány rendszergazdájának ki kell állítania a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődleges feladatátvétel után. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
+Ha a replikáció engedélyezve van egy [feladatátvételi csoportban](sql-database-auto-failover-group.md)lévő adatbázison, a felügyelt példány rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
 
 1. Állítsa le az adatbázison futó összes replikációs feladatot, ha vannak ilyenek.
 2. Az előfizetés metaadatainak eldobása a közzétevőtől a következő parancsfájl futtatásával a közzétevő adatbázisán:
@@ -479,8 +479,8 @@ Korlátozások
 - A dokumentumban ismertetett korlátozásokat ( `FILESTREAM` például vagy `FILETABLE` objektumokat) tartalmazó adatbázis fájljánakvisszaállításanemállíthatóvisszaafelügyeltpéldányon.`.BAK`
 - `.BAK`a több biztonságimásolat-készletet tartalmazó fájlok nem állíthatók vissza. 
 - `.BAK`a több naplófájlt tartalmazó fájlok nem állíthatók vissza.
-- A 8TB tárhely-nál nagyobb adatbázisokat tartalmazó biztonsági másolatok, a memóriában tárolt OLTP objektumok, illetve a 280-es fájlokat meghaladó fájlok száma nem állítható vissza általános célú példányon. 
-- A 4TB vagy memóriában lévő OLTP-objektumoknál nagyobb méretű adatbázisokat tartalmazó biztonsági másolatok az [erőforrás-korlátokban](sql-database-managed-instance-resource-limits.md) leírt méretnél nagyobb teljes mérettel nem állíthatók vissza üzletileg kritikus példányon.
+- A 8 TB-nál nagyobb adatbázisok, a memóriában tárolt OLTP-objektumok, illetve a 280-nál több fájlt meghaladó fájlok száma nem állítható vissza általános célú példányon. 
+- A 4 TB-nál nagyobb vagy memóriában lévő OLTP-objektumokba tartozó, az [erőforrás-korlátokban](sql-database-managed-instance-resource-limits.md) leírt méretnél nagyobb méretű adatbázisokat tartalmazó biztonsági másolatok nem állíthatók vissza üzletileg kritikus példányon.
 További információ a visszaállítási utasításokról: [Restore utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
  > [!IMPORTANT]
@@ -540,9 +540,19 @@ A maximális fájlméret nem lehet `tempdb` nagyobb, mint 24 GB általános cél
 
 ### <a name="error-logs"></a>Hibanaplók
 
-A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló naplójában számos belső rendszeresemény van naplózva. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Ismert problémák
+
+### <a name="missing-validations-in-restore-process"></a>Hiányzó érvényességek a visszaállítási folyamatban
+
+**Dátum** Sep 2019
+
+`RESTORE`az utasítás és a beépített időponthoz tartozó visszaállítás nem hajt végre bizonyos nessecary-ellenőrzéseket a visszaállított adatbázison:
+- **A DBCC CHECKDB utasítást**  -  `RESTORE` utasítás nem `DBCC CHECKDB` hajtható végre a visszaállított adatbázisban. Ha egy eredeti adatbázis sérült, vagy sérült a biztonságimásolat-fájl az Azure Blob Storage-ba való másoláskor, az automatikus biztonsági mentések nem lesznek elvégezve, és az Azure-támogatás kapcsolatba lép az ügyféllel. 
+- A beépített időponthoz tartozó visszaállítási folyamat nem jelöli meg, hogy az üzletileg kritikus példány automatikus biztonsági mentése tartalmazza [-e a memóriában lévő OLTP objektumokat](sql-database-in-memory.md#in-memory-oltp). 
+
+**Áthidaló megoldás**: Győződjön meg arról, hogy a forrásadatbázis `DBCC CHECKDB` a biztonsági másolat készítése előtt van végrehajtva, és a `WITH CHECKSUM` biztonsági mentés lehetőség használatával elkerülheti a felügyelt példányon visszaállítható esetleges sérüléseket. Győződjön meg róla, hogy a forrásadatbázis nem tartalmaz [memóriában tárolt OLTP objektumokat](sql-database-in-memory.md#in-memory-oltp) , ha általános célú szinten állítja vissza.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Előfordulhat, hogy a üzletileg kritikus szolgáltatási szinten újra kell konfigurálni a Resource Governor a feladatátvétel után
 
@@ -552,19 +562,19 @@ A felügyelt példányok részletes információkat helyeznek el a hibák napló
 
 **Áthidaló megoldás**: Rendszeres `ALTER RESOURCE GOVERNOR RECONFIGURE` időközönként vagy SQL Agent-feladat részeként futtassa, amely végrehajtja az SQL-feladatot, amikor a példány elindul, ha [Resource Governort](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)használ.
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Biztonságos kapcsolat (SSL) használatával nem hitelesítéshez külső levelezési kiszolgálókra
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Biztonságos kapcsolat (SSL) használatával nem végezhető el a hitelesítés a külső levelezési kiszolgálókon
 
 **Dátum** Augusztus 2019
 
 A [biztonságos kapcsolat (SSL) használatával konfigurált](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) adatbázis-levelezés nem tud hitelesíteni az Azure-on kívüli e-mail-kiszolgálókon. Ez a biztonsági konfigurációs probléma hamarosan megoldódik.
 
-**Workaround** A biztonságos kapcsolat ideiglenes eltávolítása (SSL) az adatbázis levelezési konfigurációját a probléma megoldása előtt alkotja. 
+**Workaround** Ideiglenesen távolítsa el a biztonságos kapcsolatokat (SSL) az adatbázis levelezési konfigurációjától, amíg a probléma meg nem oldódik. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.
 
 **Dátum** Augusztus 2019
 
-Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek **nem vesznek** el, és a küldő várólistáján találhatók. A felügyelt példányban a virtuális mag vagy a példány tárolási méretének változása miatt `service_broke_guid` a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra hivatkozó [BEGIN Dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden egyes létrehozott üzenet nem fogja kézbesíteni az üzenetek küldését a célként megadott szolgáltatásnak.
+Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek **nem vesznek** el, és a küldő várólistáján találhatók. A felügyelt példányban a virtuális mag vagy a példány tárolási méretének változása miatt `service_broke_guid` a [sys. Databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra hivatkozó [BEGIN Dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden egyes létrehozott üzenet nem fog üzeneteket kézbesíteni a célként megadott szolgáltatásnak.
 
 **Workaround** Állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszédet használ a szolgáltatási réteg frissítése előtt, majd újra inicializálja őket. Ha a szolgáltatási szintek változása után még nem elérhető üzenetek vannak, olvassa el a forrás-üzenetsor üzeneteit, és küldje el újra a cél várólistára.
 
@@ -586,13 +596,13 @@ A `@query` [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases
 
 **Dátum** Mar 2019
 
-Ha a tranzakciós replikáció engedélyezve van egy automatikus feladatátvételi csoportban lévő adatbázison, akkor a felügyelt példány rendszergazdájának a régi elsődleges összes kiadványt ki kell állítania, majd újra kell konfigurálnia azokat az új elsődleges feladatátvétel után egy másik régióba. További részletekért lásd: [replikáció](#replication) .
+Ha a tranzakciós replikáció engedélyezve van egy automatikus feladatátvételi csoportban lévő adatbázison, a felügyelt példány rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően egy másik régióba. További részletekért lásd: [replikáció](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>A HRE-bejelentkezések és a felhasználók nem támogatottak az eszközökön
 
 **Dátum** Jan 2019
 
-SQL Server Management Studio és SQL Server Data Tools nem támogatja az Azure-beli fuly-bejelentkezések és-felhasználók támogatását.
+SQL Server Management Studio és SQL Server Data Tools nem támogatja teljes mértékben az Azure Active Directory-bejelentkezéseket és-felhasználókat.
 - Az Azure AD Server-rendszerbiztonsági tag (Logins) és a felhasználók (nyilvános előzetes verzió) használata SQL Server Data Tools jelenleg nem támogatott.
 - SQL Server Management Studio nem támogatja az Azure AD-kiszolgáló résztvevői (bejelentkezések) és a felhasználók (nyilvános előzetes verzió) parancsfájlkezelését.
 
@@ -612,7 +622,7 @@ Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete 
 
 Az egyes általános célú felügyelt példányok esetében akár 35 TB tárterület is rendelkezésre áll az Azure Premium lemezterület számára. Minden adatbázisfájl külön fizikai lemezre kerül. A lemezek mérete 128 GB, 256 GB, 512 GB, 1 TB vagy 4 TB lehet. A lemez nem használt lemezterülete nem számít fel díjat, de az Azure Premium-lemezek teljes mérete nem haladhatja meg a 35 TB-ot. Bizonyos esetekben előfordulhat, hogy egy felügyelt példány, amely nem igényel 8 TB-ot, a belső töredezettség miatt túllépheti a 35 TB-os Azure-korlátot a tárterületen.
 
-Előfordulhat például, hogy egy általános célú felügyelt példány egy 4 TB-os lemezre helyezett, 1,2 TB méretű nagy fájllal rendelkezik. Az is előfordulhat, hogy a 248-es fájl 1 GB-os fájlokat tartalmaz, amelyek mindegyike külön 128 GB-os lemezekre van helyezve. Ebben a példában:
+Előfordulhat például, hogy egy általános célú felügyelt példány egy 4 TB-os lemezre helyezett 1,2 TB-os méretű fájllal rendelkezik. Az is előfordulhat, hogy a 248-es fájlok mérete 1 GB, amely külön 128 GB-os lemezekre van helyezve. Ebben a példában:
 
 - A lefoglalt tárterület teljes mérete 1 x 4 TB + 248 x 128 GB = 35 TB.
 - A példányon lévő adatbázisok teljes lefoglalt területe 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -629,7 +639,7 @@ A rendszernézetek, a teljesítményszámlálók, a hibaüzenetek, a Xevent típ
 
 ### <a name="error-logs-arent-persisted"></a>A hibanapló nem marad meg
 
-A felügyelt példányban elérhető naplók nem maradnak meg, és a méreteik nem szerepelnek a maximális tárolási korlátban. Előfordulhat, hogy a naplók automatikusan törlődnek, ha a feladatátvétel történik. Hiányosságok merülhetnek fel a hibák naplózási előzményeiben, mivel a felügyelt példány több alkalommal lett áthelyezve több virtuális gépen.
+A felügyelt példányban elérhető naplók nem maradnak meg, és a méreteik nem szerepelnek a maximális tárolási korlátban. Előfordulhat, hogy a naplók automatikusan törlődnek, ha a feladatátvétel történik. Hiányosságok merülhetnek fel a hibák naplózási előzményeiben, mivel a felügyelt példányok többször is át lettek helyezve több virtuális gépre.
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Ugyanazon példányon belül két adatbázis tranzakciós hatóköre nem támogatott
 

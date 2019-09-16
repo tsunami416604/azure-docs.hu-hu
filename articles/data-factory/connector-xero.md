@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6793fbcc50711e10231b87fa6e1f11f54f90d325
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: d9e31c1c7decec159de9224f97edfcba15f93966
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445434"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007834"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Xero
 
@@ -27,6 +27,11 @@ Ez a cikk az Azure Data Factory a másolási tevékenység használatával adato
 > Ez az összekötő jelenleg előzetes verzióban érhető el. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Xero-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Másolhat adatokat Xero bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -49,7 +54,7 @@ Xero-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Xero** | Igen |
+| type | A Type tulajdonságot a következőre kell beállítani: **Xero** | Igen |
 | host | A végpont a Xero-kiszolgáló (`api.xero.com`).  | Igen |
 | consumerKey | A Xero-alkalmazáshoz társított fogyasztói kulcs. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | privateKey | A titkos kulcsot a .pem fájl jött létre a Xero magánhálózati alkalmazáshoz, tekintse meg [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Vegye figyelembe, hogy **készítése a privatekey.pem az 512 numbits** használatával `openssl genrsa -out privatekey.pem 512`; 1024 nem támogatott. A .pem-fájlt, többek között a Unix sor endings(\n) minden szöveget tartalmaznak, tekintse meg az alábbi mintát.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -95,7 +100,7 @@ Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObje
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot az adatkészlet értékre kell állítani: **XeroObject** | Igen |
+| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **XeroObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
 **Példa**
@@ -105,11 +110,12 @@ Xero adatmásolás, állítsa be a type tulajdonság, az adatkészlet **XeroObje
     "name": "XeroDataset",
     "properties": {
         "type": "XeroObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Xero linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -124,7 +130,7 @@ Adatok másolása a Xero, állítsa be a forrás típusaként a másolási tevé
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **XeroSource** | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Contacts"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
@@ -212,6 +218,11 @@ Az alábbi táblázatok a teljes séma csak kérdezhetők le:
 - Complete.Receipt_Line_Items 
 - Complete.Receipt_Line_Item_Tracking 
 - Complete.Tracking_Category_Options
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

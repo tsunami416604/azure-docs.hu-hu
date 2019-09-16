@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 8925ea9da06ff718f08b7be73944c75d388bc01f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5ba530a614dd7eb064e1d9b5a59fc00b9280ef0a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814155"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008627"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -33,6 +33,7 @@ Ez az Azure Blob-összekötő a következő tevékenységek esetében támogatot
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
+- [Tevékenység törlése](delete-activity.md)
 
 A Blob storage-összekötővel, a következőket támogatja:
 
@@ -638,6 +639,18 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási műve
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
 A forrás- [átalakítás](data-flow-source.md) és a fogadó [átalakítás](data-flow-sink.md) részleteinek megismerése a leképezési folyamatokban.
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
+
+## <a name="delete-activity-properties"></a>Tevékenység tulajdonságainak törlése
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység törlése](delete-activity.md) lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

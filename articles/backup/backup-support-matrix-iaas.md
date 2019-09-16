@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 62f633b617abb52e1be4003f65cc537cc9ff2a25
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983776"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018674"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági mentést készíthet a helyszíni gépekről és munkaterhelésekről, valamint az Azure-beli virtuális gépekről. Ez a cikk az Azure-beli virtuális gépek Azure Backup-vel történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat foglalja össze.
@@ -42,7 +42,7 @@ További információ a biztonsági mentésről [a Backup Server használatával
 Biztonsági mentés engedélyezése Windows Azure-beli virtuális gép létrehozásakor | Támogatott: <br/><br/> – Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
 Biztonsági mentés engedélyezése Linux rendszerű virtuális gép létrehozásakor | Támogatott:<br/><br/> -Ubuntu-kiszolgáló: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Leállítás/offline virtuális gép biztonsági mentése | Támogatott.<br/><br/> A pillanatkép csak Crash-konzisztens, nem az alkalmazás-konzisztens.
-Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
+Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Semmit nem kell tenni.
 Felügyelt lemezek biztonsági mentése az erőforráscsoport zárolásának engedélyezése után | Nem támogatott.<br/><br/> Azure Backup nem tudja törölni a régebbi visszaállítási pontokat, és a biztonsági mentések sikertelenek lesznek, ha elérik a visszaállítási pontok maximális korlátját.
 Virtuális gép biztonsági mentési szabályzatának módosítása | Támogatott.<br/><br/> A virtuális gép biztonsági mentése az új házirend ütemterv és adatmegőrzési beállítások használatával történik. Ha a megőrzési beállítások meg vannak hosszabbítva, a meglévő helyreállítási pontok meg vannak jelölve és megmaradnak. Ha csökkennek, a rendszer a meglévő helyreállítási pontokat metszi a következő karbantartási feladatokban, és végül törölve lesz.
 Biztonsági mentési feladat megszakítása | A pillanatkép-készítési folyamat során támogatott.<br/><br/> Nem támogatott, ha a pillanatképet a tárolóba helyezi át.
@@ -158,13 +158,13 @@ Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtu�
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel. <br/><br/> A legfeljebb 4 TB méretű lemezeket támogat.<br/><br/>A 4 TB-nál nagyobb méretű lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verzióra való regisztrálásához tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Adatlemez mérete | Az egyes lemezek 4095 GB-ig lehetnek.<br/><br/>Ha Azure Backup nagyméretű lemezes támogatás korlátozott nyilvános előzetes verziójára szeretne regisztrálni a 4TB-nál nagyobb méretű lemezek esetében, tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
-Tárhely típusa | Standard HDD, standard SSD, prémium SSD.
-Managed Disks | Támogatott.
+Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel. <br/><br/> A támogatja a virtuális gépek biztonsági mentését, amely az egyes lemezek mérete 30TB, és legfeljebb 256TB kombinálható a virtuális gép összes lemeze számára.
+Adatlemez mérete | Az egyes lemezek akár 30TB is lehetnek.
+Tárolótípus | Standard HDD, standard SSD, prémium SSD.
+Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
 írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> Az Azure Backup automatikusan kizárja a lemezeket, amelyeken engedélyezve van a írásgyorsító a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem tudja visszaállítani ezeket a lemezeket a virtuális gép helyreállítási pontjairól.
-Deduplikált lemezek biztonsági mentése | Nem támogatott.
+Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nem duplikálja a Recovery Services-tárolóban lévő virtuális gépek között <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot.
 Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.
 Megosztott tároló| Nem ajánlott biztonsági másolatot készíteni a virtuális gépekről Fürt megosztott kötete (CSV) vagy kibővíthető fájlkiszolgáló használatával. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.

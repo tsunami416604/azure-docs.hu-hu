@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/27/2019
-ms.openlocfilehash: 0dea447ed44a61b20faf9a0a1690b2bbdd674b30
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/16/2019
+ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70930623"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010192"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
-Ez a cikk áttekintést nyújt a felügyelt példányok Azure SQL Database erőforrás-korlátairól, és információt nyújt arról, hogyan kérheti a határértékek növelését.
+Ez a cikk áttekintést nyújt a Azure SQL Database felügyelt példányának technikai jellemzőiről és erőforrás-korlátairól, valamint arról, hogy miként kérhető a határértékek növelésére.
 
 > [!NOTE]
-> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-utasítások támogatását](sql-database-managed-instance-transact-sql-information.md).
+> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-utasítások támogatását](sql-database-managed-instance-transact-sql-information.md). Az önálló adatbázis és a felügyelt példány szolgáltatási szintjei közötti általános különbségekért lásd a [szolgáltatási réteg összehasonlítását](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="instance-level-resource-limits"></a>Példány szintű erőforrás-korlátok
 
@@ -36,18 +36,18 @@ Azure SQL Database felügyelt példány két hardveres generáción is üzembe h
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
-| Virtuális mag száma | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| Virtuális magok száma | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | Maximális memória (memória/mag arány) | 7 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. | 5,1 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
 | Memóriában tárolt OLTP memória maximális száma | Példány korlátja: 3 GB/virtuális mag<br/>Adatbázis korlátai:<br/> -8 mag: 8 GB/adatbázis<br/> – 16 Magos: 20 GB/adatbázis<br/> -24 mag: 36 GB/adatbázis | Példány korlátja: 2,5 GB/virtuális mag<br/>Adatbázis korlátai:<br/> -8 mag: 13 GB/adatbázis<br/> – 16 Magos: 32 GB/adatbázis |
 | Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
 > - A Gen4 hardvere folyamatban van. Ajánlott új felügyelt példányokat telepíteni a Gen5 hardveren.
-> - A Gen4 hardver jelenleg a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, USA középső régiója, Közép-Kanada, Dél-India, Délkelet-Ázsia
+> - A Gen4 hardver jelenleg csak a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, USA középső régiója, Közép-Kanada, Dél-India, Délkelet-Ázsia
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
 
-A felügyelt példány két szolgáltatási szintet tartalmaz: Általános célú és üzletileg kritikus. Ezek a szintek különböző képességeket biztosítanak, az alábbi táblázatban leírtak szerint:
+A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános célú](sql-database-service-tier-general-purpose.md) és [üzletileg kritikus](sql-database-service-tier-business-critical.md). Ezek a szintek [különböző képességeket](sql-database-service-tiers-general-purpose-business-critical.md)biztosítanak, az alábbi táblázatban leírtak szerint:
 
 | **Funkció** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
@@ -73,6 +73,9 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: Általános cél�
 > - Az átviteli sebesség és a IOPS a felügyelt példányok által kifejezetten nem korlátozott oldalméret is függ.
 > Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
 
+> [!NOTE]
+> A [felügyelt példányok készletében található erőforrás-korlátokkal](sql-database-instance-pools.md#instance-pools-resource-limitations)kapcsolatos további információkat ebben a cikkben talál.
+
 ## <a name="supported-regions"></a>Támogatott régiók
 
 Felügyelt példányok csak a [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha a felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](#obtaining-a-larger-quota-for-sql-managed-instance).
@@ -93,7 +96,7 @@ A felügyelt példány jelenleg csak a következő típusú előfizetések eset�
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek az előfizetés típusától függően:
 
 - **Alhálózat korlátja**: Azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag korlátja**: Az egyetlen régió összes példányán üzembe helyezhető virtuális mag maximális száma.
+- **virtuális mag korlátja**: Az egyetlen régió összes példányán üzembe helyezhető virtuális mag maximális száma. A példányok teljes száma nincs korlátozva, amíg az virtuális mag korláton belül van.
 
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.

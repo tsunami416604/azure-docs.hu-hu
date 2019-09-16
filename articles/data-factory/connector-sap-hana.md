@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 72019b3bf5c17525b9a0dd8afc126f1bfc248041
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9a5592c0c5fa06d8319b91c6d624a74c83bdeb1f
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274446"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010433"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -31,16 +31,21 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
+Ez az SAP HANA-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 Az adatok másolása SAP HANA adatbázisból bármely támogatott fogadó adattárba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
 Pontosabban, ez az SAP HANA-összekötő a következőket támogatja:
 
 - Adatok másolása SAP HANA adatbázis bármely verziójáról.
 - Adatok másolása a **HANA-információs modellből** (például analitikai és számítási nézetből) és **sor/oszlop táblákból**.
-- Adatok másolása az **alapszintű** vagy a **Windows** -hitelesítéssel.
+- Adatok másolása az alapszintű vagy a **Windows** -hitelesítéssel.
 
 > [!TIP]
-> Az Adatmásolás **SAP HANA adattárba való** másolásához használja az általános ODBC-összekötőt. További részletek: [SAP HANA](connector-odbc.md#sap-hana-sink) fogadó. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
+> Az Adatmásolás SAP HANA adattárba való másolásához használja az általános ODBC-összekötőt. További részletek: [SAP HANA](connector-odbc.md#sap-hana-sink) fogadó. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -249,6 +254,10 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 | VARCHAR            | String                         |
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

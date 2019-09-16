@@ -4,15 +4,16 @@ description: Az Apache Spark és az Azure HDInsight használatához kapcsolatos 
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049549"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018430"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
@@ -26,49 +27,49 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás `OutofMemoryError` 
 
 1. Navigáljon a **Spark2** > -**konfigurációkhoz**.
 
-    ![Válassza ki a Configs lap](./media/apache-troubleshoot-spark/update-config-2.png)
+    ![Válassza ki a Configs lap](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket**.
 
 1. Keresse meg a beállítás, amely kell beállítani, mint például **spark.executor.memory**. Ebben az esetben a **9728m** értéke túl magas.
 
-    ![Válassza ki az egyéni – a spark-alapértelmezései](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![Válassza ki az egyéni – a spark-alapértelmezései](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Állítsa az értékét az ajánlott beállítás. Az érték **2048m** állítja ezt a beállítást javasoljuk.
 
 1. Mentse az értéket, és mentse a konfigurációt. Kattintson a **Mentés** gombra.
 
-    ![Módosítsa az értéket a 2048m](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![Módosítsa az értéket a 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
     Írjon megjegyzést a konfigurációs változásokról, és válassza ki **mentése**.
 
-    ![Adja meg a végzett módosítások kapcsolatos megjegyzés](./media/apache-troubleshoot-spark/update-config-6c.png)
+    ![Adja meg a végzett módosítások kapcsolatos megjegyzés](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
     Ha a figyelmet igénylő konfigurációk értesítést kap. Jegyezze fel az elemeket, és válassza ki **folytatja ennek ellenére**.
 
-    ![Válassza ki folytatja ennek ellenére](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Válassza ki folytatja ennek ellenére](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
 1. Amikor egy konfigurációs mentette, a rendszer kéri, indítsa újra a szolgáltatást. Válassza ki **indítsa újra a**.
 
-    ![Válassza az újraindítás](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![Válassza az újraindítás](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     Erősítse meg az újraindítást.
 
-    ![Indítsa újra az összes jóváhagyás kijelölése](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![Indítsa újra az összes jóváhagyás kijelölése](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     A futó folyamatok tekintheti meg.
 
-    ![Tekintse át a futó folyamatok](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![Tekintse át a futó folyamatok](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
 1. Konfigurációkat adhat hozzá. Konfigurációk listájából válassza ki **egyéni-spark2 – alapértelmezett**, majd válassza ki **tulajdonság hozzáadása**.
 
-    ![Válassza ki a tulajdonság hozzáadása](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![Válassza ki a tulajdonság hozzáadása](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Adjon meg egy új tulajdonság. Egyetlen tulajdonság meghatározhatja az egyes beállítások, például az adattípus párbeszédpanel használatával. Vagy több tulajdonságok adhatók soronként egy definíció használatával.
 
     Ebben a példában a **spark.driver.memory** tulajdonság értékkel van definiálva **4g**.
 
-    ![Adja meg az új tulajdonság](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![Adja meg az új tulajdonság](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
 1. A konfiguráció mentéséhez, és indítsa újra a 6 és 7 lépésben ismertetett módon.
 
@@ -106,10 +107,10 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * A [Spark memória-kezelési áttekintése](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-* [A Spark-alkalmazás hibakeresése a HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)-fürtökön.
+* [A Spark-alkalmazás hibakeresése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a Azure Portaltól [](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

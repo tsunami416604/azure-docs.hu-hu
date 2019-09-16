@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f17a7ef2131662cdb9ef4d138303556215810fba
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b91ec46d47814418de21e9afe3e6e5534473c921
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959015"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008963"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,6 +28,11 @@ ms.locfileid: "70959015"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához a Teradata Vantage-ból. A [másolási tevékenység áttekintésére](copy-activity-overview.md)épül.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Teradata-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 A Teradata Vantage-ból származó adatok másolása bármely támogatott fogadó adattárba lehetséges. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -328,6 +333,11 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | VarChar |Sztring |
 | VarGraphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Xml |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
+
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>További lépések

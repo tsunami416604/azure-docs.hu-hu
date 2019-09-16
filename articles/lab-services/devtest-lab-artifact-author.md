@@ -122,7 +122,7 @@ Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), 
 Az alábbi lista tartalmazza a közös funkciók:
 
 * **parameters(parameterName)** : Az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
-* **concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
+* **Concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és függvények használatával:
 

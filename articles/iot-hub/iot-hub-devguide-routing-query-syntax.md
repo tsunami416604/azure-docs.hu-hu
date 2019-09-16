@@ -57,7 +57,7 @@ A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának 
 | contentEncoding | string | A felhasználó megadja az üzenet kódolási típusát. Az engedélyezett értékek: UTF-8, UTF-16, UTF-32, ha a contentType alkalmazás/JSON értékre van beállítva. |
 | iothub-connection-device-id | string | Ezt az értéket IoT Hub állítja be, és azonosítja az eszköz AZONOSÍTÓját. A lekérdezéshez használja `$connectionDeviceId`a következőt:. |
 | iothub-enqueuedtime | string | Ezt az értéket a IoT Hub állítja be, és a tényleges időpontot jelöli, hogy az üzenet enqueuing az UTC-ben. A lekérdezéshez használja `enqueuedTime`a következőt:. |
-| iothub-interface-name | string | Ezt az értéket a felhasználó állítja be, és a telemetria-üzenetet megvalósító digitális kettős interfész nevét jelöli. A lekérdezéshez használja `$interfaceName`a következőt:. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. |
+| iothub – csatoló neve | string | Ezt az értéket a felhasználó állítja be, és a telemetria-üzenetet megvalósító digitális kettős interfész nevét jelöli. A lekérdezéshez használja `$interfaceName`a következőt:. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. |
 
 A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. A **ContentType**, a **ContentEncoding**és a **enqueuedTime**mellett a **connectionDeviceId** és a **connectionModuleId** is lekérdezhető.
 

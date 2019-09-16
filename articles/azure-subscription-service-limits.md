@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698277"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018518"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -89,8 +89,9 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
-  * [Nyilvános IP-cím](#publicip-address)
   * [Network Watcher](#network-watcher-limits)
+  * [Nyilvános IP-cím](#publicip-address)
+  * [Privát hivatkozás](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
 * [Értesítési központ](#notification-hubs-limits)
@@ -168,6 +169,9 @@ A következő táblázat a v1, v2, standard és WAF SKU-ra vonatkozik, hacsak m�
 
 #### <a name="network-watcher-limits"></a>Network Watcher korlátok
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Privát hivatkozás korlátai
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager korlátok
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

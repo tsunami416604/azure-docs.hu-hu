@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: ab2035ec344e07d88e2ac4ffb19cb1b2361f2e92
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 26eb3852106fdacd30425abd14aa2c594aed978c
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277467"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007798"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása Sybase használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,12 +28,17 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
+Ez a Sybase-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 A Sybase-adatbázisból bármilyen támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Ez a Sybase-összekötő a következőket támogatja:
 
 - SAP Sybase SQL Anywhere (ASA) **16. és újabb verzió**; Az IQ és a bemutató nem támogatott.
-- Adatok másolása az **alapszintű** vagy a **Windows** -hitelesítéssel.
+- Adatok másolása az alapszintű vagy a **Windows** -hitelesítéssel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -169,6 +174,11 @@ Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is tá
 A Sybase-adatok másolása során a rendszer a következő leképezéseket használja a Sybase-adattípusokból Azure Data Factory ideiglenes adattípusokra. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
 A Sybase támogatja a T-SQL-típusokat. Az SQL-típusokból Azure Data Factory köztes adattípusokra vonatkozó leképezési táblázathoz lásd: [Azure SQL Database Connector-adattípus-leképezési](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) szakasz.
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 
 ## <a name="next-steps"></a>További lépések

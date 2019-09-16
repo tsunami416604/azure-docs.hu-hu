@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 391ad5c6535d457c2df988cd29d21e481310b17f
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061756"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018169"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hiba hibaelhárítása: Az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -105,12 +105,12 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **5. ok: A Backup szolgáltatásnak nincs engedélye a régi visszaállítási pontok törlésére egy erőforráscsoport-zárolás miatt** <br>
 **6. ok: [A virtuális gépnek nincs internet-hozzáférése](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095-gb"></a>UserErrorUnsupportedDiskSize – jelenleg Azure Backup nem támogatja a 4095 GB-nál nagyobb méretű lemezeket
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – a rendszer jelenleg nem támogatja a konfigurált lemezes méret (eke) t Azure Backup.
 
 **Hibakód**: UserErrorUnsupportedDiskSize <br>
-**Hibaüzenet**: A Azure Backup jelenleg nem támogatja a 4095 GB-nál nagyobb méretű lemezeket <br>
+**Hibaüzenet**: Az Azure Backup jelenleg nem támogatja a konfigurált lemezes méretet (ka) t. <br>
 
-A biztonsági mentési művelet meghiúsulhat a 4095 GB-nál nagyobb méretű virtuális gépek biztonsági mentésekor. A 4 TB-nál nagyobb méretű lemezek Azure Backup nagyméretű lemezes támogatásának korlátozott nyilvános előzetes verzióra való regisztrálásához tekintse meg ezt a [cikket](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+A biztonsági mentési művelet sikertelen lehet, ha a virtuális gépet a 30 TB-nál nagyobb méretű lemezre készíti. Emellett a 4TB-nál nagyobb méretű titkosított lemezek biztonsági mentése jelenleg nem támogatott. A lemez (ek) felosztásával győződjön meg arról, hogy a lemez mérete (i) kisebb vagy egyenlő, mint a támogatott korlát.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem sikerült elindítani a biztonsági mentést, mert folyamatban van egy másik biztonsági mentési művelet végrehajtása.
 
@@ -122,12 +122,10 @@ A legutóbbi biztonsági mentési feladata sikertelen volt, mert folyamatban van
 1. Jelentkezzen be a Azure Portalba, és kattintson a **minden szolgáltatás**elemre. Írja be a Recovery Services kifejezést, és kattintson a **Recovery Services-tárolók** elemre. A Recovery Services-tárolók listája megjelenik.
 2. A Recovery Services-tárolók listájából válassza ki azt a tárat, amelyben a biztonsági mentés konfigurálva van.
 3. A tároló irányítópultjának menüjében kattintson a **biztonsági mentési feladatok** lehetőségre az összes biztonsági mentési feladat megjelenítéséhez.
-
-- Ha folyamatban van egy biztonsági mentési feladat, várja meg, amíg befejeződik, vagy szakítsa meg a biztonsági mentési feladatot.
-  - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, majd kattintson a **Mégse** gombra, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
-- Ha újrakonfigurálta a biztonsági mentést egy másik tárolóban, akkor győződjön meg arról, hogy a régi tárolóban nem fut biztonsági mentési feladat. Ha létezik, szakítsa meg a biztonsági mentési feladatot.
-  - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatra, majd a **Mégse** elemre, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
-
+   - Ha folyamatban van egy biztonsági mentési feladat, várja meg, amíg befejeződik, vagy szakítsa meg a biztonsági mentési feladatot.
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, majd kattintson a **Mégse** gombra, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+   - Ha újrakonfigurálta a biztonsági mentést egy másik tárolóban, akkor győződjön meg arról, hogy a régi tárolóban nem fut biztonsági mentési feladat. Ha létezik, szakítsa meg a biztonsági mentési feladatot.
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatra, majd a **Mégse** elemre, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Próbálkozzon újra a biztonsági mentési művelettel.
 
 Ha az ütemezett biztonsági mentési művelet tovább tart, ütközik a következő biztonsági mentési konfigurációval, tekintse át az [ajánlott eljárásokat](backup-azure-vms-introduction.md#best-practices), a [biztonsági mentés teljesítményét](backup-azure-vms-introduction.md#backup-performance)és a [visszaállítási szempontot](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -156,8 +154,7 @@ Lehet, hogy a virtuálisgép-ügynök sérült, vagy a szolgáltatást leállít
 4. Töltse le és telepítse az [Agent MSI legújabb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
 5. Ellenőrizze, hogy a Windows Azure Guest Agent szolgáltatás megjelenik-e a szolgáltatások között.
 6. Igény szerinti biztonsági mentés futtatása:
-
-- A portálon válassza a **biztonsági mentés**lehetőséget.
+   - A portálon válassza a **biztonsági mentés**lehetőséget.
 
 Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A .NET 4,5 szükséges ahhoz, hogy a virtuálisgép-ügynök kommunikáljon a szolgáltatással.
 
@@ -179,7 +176,7 @@ A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolato
    - Ubuntu esetén:`service walinuxagent start`
    - Egyéb disztribúciók esetén:`service waagent start`
 
-3. [Konfigurálja az automatikus](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)újraindítási ügynököt.
+3. [Konfigurálja az automatikus újraindítási ügynököt](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Futtasson egy új teszt biztonsági mentést. Ha a hiba továbbra is fennáll, Gyűjtse össze a következő naplókat a virtuális gépről:
 
    - /var/lib/waagent/*. XML
@@ -221,7 +218,7 @@ A bővítmény eltávolítása:
 4. Válassza ki a **Vmsnapshot bővítményt**.
 5. Válassza az **Eltávolítás**lehetőséget.
 
-Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux](../virtual-machines/linux/update-agent.md)-ügynököt, majd futtassa a biztonsági mentést.
+Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a biztonsági mentést.
 
 Ezeknek a lépéseknek a végrehajtásával a bővítmény újratelepíthető a következő biztonsági mentés során.
 

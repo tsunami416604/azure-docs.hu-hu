@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1531ed86c36182daad61f139ced3a814634e8b6e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 442ceab68851dc108d327cdf212dcf58d5b31084
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845261"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008565"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítheti a streamelt adatokat az Event hubs- [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) hozzáadott rugalmasságával a kiválasztott fiók Adjon meg egy idő- vagy méretbeli intervallumokat. Rögzítés beállítása a gyors, nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
@@ -103,7 +103,7 @@ A [Apache Spark][Apache Spark] egy "egységes analitikai motor a nagyméretű ad
 A [Avro-eszközök][Avro Tools] jar-csomagként érhetők el. A jar-fájl letöltése után a következő parancs futtatásával megtekintheti egy adott Avro-fájl sémáját:
 
 ```shell
-java -jar avro-tools-1.8.2.jar getschema <name of capture file>
+java -jar avro-tools-1.9.1.jar getschema <name of capture file>
 ```
 
 Ez a parancs visszaadja
@@ -156,7 +156,7 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-1.9.1-javadoc.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.1.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

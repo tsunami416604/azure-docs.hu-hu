@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5d5db9e837846a20bf4b68f7dc5c39ad587f4de9
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813527"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009976"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Netezza adatokat másol az Azure Data Factory használatával
 
@@ -27,6 +27,12 @@ Ez a cikk az Azure Data Factory másolási tevékenység használatával adatoka
 >A Netezza-ből az Azure-ba irányuló adatáttelepítési forgatókönyvek esetében további információ a [Azure Data Factory használatával a helyszíni Netezza-kiszolgálóról az Azure-ba való Migrálás](data-migration-guidance-netezza-azure-sqldw.md)során.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Netezza-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 
 Másolhat adatokat Netezza bármely támogatott fogadó adattárba. Az adatok listáját tárolja, hogy a másolási tevékenység támogatja a forrásként és fogadóként, lásd: [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -159,9 +165,9 @@ Adatok másolása Netezza, állítsa be a **forrás** írja be a másolási tev�
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **NetezzaSource**. | Igen |
 | query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
-| partitionOptions | Meghatározza az adatok Netezza való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **Nincs** (alapértelmezett), **DataSlice** és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), a Netezza-adatbázisból származó adatok párhuzamos betöltésének foka a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításával szabályozható. | Nem |
+| partitionOptions | Meghatározza az adatok Netezza való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **Nincs** (alapértelmezett), **DataSlice**és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), a Netezza-adatbázisból származó adatok párhuzamos betöltésének foka a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállításával szabályozható. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a `None`partíció beállítása nem. | Nem |
-| partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan észleli a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionColumnName` akkor a WHERE záradékot kell beolvasnia. Lásd: példa [párhuzamos másolással a Netezza](#parallel-copy-from-netezza) szakaszból. | Nem |
+| partitionColumnName | Adja meg a forrás oszlop **olyan egész típusú** nevét, amelyet a párhuzamos másolási tartomány particionálásakor fog használni. Ha nincs megadva, a rendszer automatikusan felismeri a tábla elsődleges kulcsát, és a partíció oszlopként használja. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, `?AdfRangePartitionColumnName` akkor a WHERE záradékot kell beolvasnia. Lásd: példa [párhuzamos másolással a Netezza](#parallel-copy-from-netezza) szakaszból. | Nem |
 | partitionUpperBound | Az adatmásolásra szolgáló partíciós oszlop maximális értéke. <br>Akkor alkalmazza, ha a `DynamicRange`partíció lehetőség van. Ha lekérdezést használ a forrásadatok beolvasásához, a `?AdfRangePartitionUpbound` where záradékban lévő hookot. Példaként tekintse meg a [Parallel másolás a Netezza](#parallel-copy-from-netezza) szakaszát. | Nem |
 | partitionLowerBound | Az adatmásolásra szolgáló partíciós oszlop minimális értéke. <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange`. Ha lekérdezést használ a forrásadatok beolvasásához, a WHERE záradékban lévő hookot `?AdfRangePartitionLowbound` . Példaként tekintse meg a [Parallel másolás a Netezza](#parallel-copy-from-netezza) szakaszát. | Nem |
 
@@ -237,6 +243,11 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálá
     }
 }
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: 681a99d31e7ededda74aa186ff36cc837125bbda
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a496b91ab8ec14ce859df0da93e0ad5d87c50982
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052211"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019028"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Az Azure csatlakoztatása nyilvános Felhőkkel
 
@@ -36,7 +36,7 @@ A Layer3-szolgáltatón keresztüli csatlakozáskor a Microsoft a BGP-n kereszt�
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-A szolgáltató az egyes felhőalapú szolgáltatókat külön VRF is lefoglalhatja. Ha az összes felhőalapú szolgáltatótól érkező forgalom elérhető lesz az ügyfél-útválasztón. Ha az ügyfél a BGP-t futtatja a szolgáltatónál, a rendszer alapértelmezés szerint ezeket az útvonalakat más felhőalapú szolgáltatók számára is újra meghirdeti. 
+Előfordulhat, hogy a szolgáltató minden felhőalapú szolgáltatót külön VRF, ha az összes felhőalapú szolgáltatótól érkező forgalom eléri az ügyfél útválasztóját. Ha az ügyfél a BGP-t futtatja a szolgáltatónál, a rendszer alapértelmezés szerint ezeket az útvonalakat más felhőalapú szolgáltatók számára is újra meghirdeti. 
 
 Ha a szolgáltató az összes felhőalapú szolgáltatót kiadja ugyanabban a VRF, akkor az útvonalakat más felhőalapú szolgáltatók is meghirdetik közvetlenül a szolgáltatótól. Ez olyan Standard BGP-műveletet feltételez, amelyben a eBGP útvonalakat a rendszer alapértelmezés szerint más eBGP-szomszédoknak hirdeti meg.
 

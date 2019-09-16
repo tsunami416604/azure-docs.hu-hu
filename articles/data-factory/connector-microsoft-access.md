@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 796d2a4730f5de8d2f294fb2b30a0616b81f3e59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9b7f63606733c8be1a6f9593db0862d39e432d68
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276235"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010054"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Microsoft Access-adattárakba Azure Data Factory használatával
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factory az adatok Microsoft Access-adattárból történő másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Microsoft Access Connector a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 A Microsoft Access forrásból származó adatok másolása bármely támogatott fogadó adattárba lehetséges. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -51,7 +56,7 @@ A Microsoft Access társított szolgáltatás a következő tulajdonságokat tá
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **MicrosoftAccess** | Igen |
 | connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia).<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
-| authenticationType | A Microsoft Access adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
+| authenticationType | A Microsoft Access adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: Alapszintű és **Névtelen**. | Igen |
 | userName | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | credential | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | Nem |
@@ -126,7 +131,7 @@ Az adatok Microsoft Access-kompatibilis adattárból való másolásához a más
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MicrosoftAccessSource** | Igen |
 | query | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -157,6 +162,10 @@ Az adatok Microsoft Access-kompatibilis adattárból való másolásához a más
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

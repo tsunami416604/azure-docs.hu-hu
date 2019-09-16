@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 5671c3e36a49680b72b1f7b138cbd6e9c0bc4313
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914849"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018714"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes Service-ben (ak)
 
@@ -104,7 +104,7 @@ A fürt létrehozása és a fürt autoskálázási beállításainak konfigurál
 ## <a name="change-the-cluster-autoscaler-settings"></a>A fürt autoskálázási beállításainak módosítása
 
 > [!IMPORTANT]
-> Ha az előfizetésben engedélyezve van *több ügynök-készlet* funkció, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](##use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtökön engedélyezve van a `az aks nodepool` parancs használata, hogy a csomópont-készletre vonatkozó `az aks`tulajdonságok ne legyenek módosítva. Az alábbi utasítások feltételezik, hogy nem engedélyezte a több csomópontos készletet. Ellenőrizze, hogy engedélyezve van-e a Futtatás `az feature  list -o table` , és keresse `Microsoft.ContainerService/multiagentpoolpreview`meg a következőt:.
+> Ha az előfizetésben engedélyezve van *több ügynök-készlet* funkció, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtökön engedélyezve van a `az aks nodepool` parancs használata, hogy a csomópont-készletre vonatkozó `az aks`tulajdonságok ne legyenek módosítva. Az alábbi utasítások feltételezik, hogy nem engedélyezte a több csomópontos készletet. Ellenőrizze, hogy engedélyezve van-e a Futtatás `az feature  list -o table` , és keresse `Microsoft.ContainerService/multiagentpoolpreview`meg a következőt:.
 
 Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1*, a csomópontok maximális száma pedig *3*. Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
 

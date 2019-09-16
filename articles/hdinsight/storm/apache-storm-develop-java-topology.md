@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840212"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018617"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Apache Storm topológia létrehozása javában
 
@@ -487,7 +487,7 @@ A topológia összeköti a kifolyókat és a boltokat egy gráfba, amely meghat�
 
 A következő kép a topológiához tartozó összetevők gráfjának alapszintű ábrája.
 
-![a kiöntő és a csavarok elrendezését bemutató ábra](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![a kiöntő és a csavarok elrendezését bemutató ábra](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
 A topológia megvalósításához írja be az alábbi parancsot egy új fájl `WordCountTopology.java`létrehozásához és megnyitásához:
 
@@ -758,7 +758,7 @@ További információ a Fluxról: [Flux Framework (https://storm.apache.org/rele
     > [!WARNING]  
     > Ha a topológia a Storm 1.0.1 BITS-t használja, ez a parancs sikertelen lesz. Ezt a hibát a okozza [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Ehelyett [telepítse a Storm-t a fejlesztési környezetében](https://storm.apache.org/releases/current/Setting-up-development-environment.html) , és kövesse az alábbi lépéseket:
     >
-    > Ha [a Storm-](https://storm.apache.org/releases/current/Setting-up-development-environment.html)t telepítette a fejlesztési környezetében, a következő parancsokat használhatja helyette:
+    > Ha [a Storm-t telepítette a fejlesztési környezetében](https://storm.apache.org/releases/current/Setting-up-development-environment.html), a következő parancsokat használhatja helyette:
     >
     > ```cmd
     > mvn compile package

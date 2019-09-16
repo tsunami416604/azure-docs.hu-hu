@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 625f31252942c3d8dea9ca9b4772af19f60e17ab
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720714"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010514"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a és a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -27,6 +27,12 @@ ms.locfileid: "68720714"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Salesforce történő másolásához. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a Salesforce-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+
 
 Az adatok a Salesforce bármely támogatott fogadó adattárba másolhatók. Az adatok másolása bármely támogatott forrás-adattárból Salesforce is elvégezhető. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
@@ -66,7 +72,7 @@ A Salesforce társított szolgáltatás a következő tulajdonságokat támogatj
 | environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br> – Az `"https://login.salesforce.com"`alapértelmezett érték. <br> – Adatok másolása a homokozóból, a `"https://test.salesforce.com"`következőt kell megadnia:. <br> – Az adatok egyéni tartományból történő másolásához például `"https://[domain].my.salesforce.com"`a következőt kell megadnia:. |Nem |
 | username |Adja meg a felhasználói fiók felhasználónevét. |Igen |
 | password |A felhasználói fiókhoz tartozó jelszó megadása.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
-| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával és lekérésével kapcsolatos útmutatásért lásd: [biztonsági jogkivonat](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)beszerzése. A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával és lekérésével kapcsolatos útmutatásért lásd: [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem, forrás, igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
 
 >[!IMPORTANT]
@@ -312,7 +318,7 @@ Ha a következő hibaüzenetet találta: "MALFORMED_QUERY: Csonkolt ", általáb
 
 ## <a name="data-type-mapping-for-salesforce"></a>Adattípusok leképezése Salesforce
 
-Az adatok Salesforce-ből való másolása során a rendszer a következő leképezéseket használja a Salesforce adattípusok között az ideiglenes adattípusok Data Factory. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus](copy-activity-schema-and-type-mapping.md)-leképezéseket.
+Az adatok Salesforce-ből való másolása során a rendszer a következő leképezéseket használja a Salesforce adattípusok között az ideiglenes adattípusok Data Factory. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadónak, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md).
 
 | Salesforce adattípusa | Data Factory közbenső adattípus |
 |:--- |:--- |
@@ -334,7 +340,12 @@ Az adatok Salesforce-ből való másolása során a rendszer a következő leké
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |String |
+| URL |Sztring |
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

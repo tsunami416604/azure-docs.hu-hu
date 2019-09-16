@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8766ff461227a749a432771dfe7dbe96a291109a
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140971"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008715"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adatelőállító létrehozása Azure Resource Manager sablon használatával
 
@@ -47,71 +47,34 @@ A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
-Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial** mappában a következő tartalommal:
+Hozzon létre egy **ADFTutorialARM. JSON** nevű JSON-fájlt a **C:\ADFTutorial** mappában (hozza létre a ADFTutorial mappát, ha még nem létezik) a következő tartalommal:
 
 ```json
-{
-    "contentVersion": "1.0.0.0",
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "parameters": {
-        "dataFactoryName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the data factory. Must be globally unique."
+{  
+    "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{  
+        "dataFactoryName":{  
+            "type":"string",
+            "metadata":"Data Factory Name"
+        },
+        "dataFactoryLocation":{  
+            "type":"string",
+            "defaultValue":"East US",
+            "metadata":{  
+                "description":"Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
             }
         },
-        "dataFactoryLocation": {
-            "type": "string",
-            "allowedValues": [
-                "East US",
-                "East US 2",
-                "West Europe"
-            ],
-            "defaultValue": "East US",
-            "metadata": {
-                "description": "Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
+        "storageAccountName":{  
+            "type":"string",
+            "metadata":{  
+                "description":"Name of the Azure storage account that contains the input/output data."
             }
         },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Azure storage account that contains the input/output data."
-            }
-        },
-        "storageAccountKey": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Key for the Azure storage account."
-            }
-        },
-        "blobContainer": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the blob container in the Azure Storage account."
-            }
-        },
-        "inputBlobFolder": {
-            "type": "string",
-            "metadata": {
-                "description": "The folder in the blob container that has the input file."
-            }
-        },
-        "inputBlobName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the input file/blob."
-            }
-        },
-        "outputBlobFolder": {
-            "type": "string",
-            "metadata": {
-                "description": "The folder in the blob container that will hold the transformed data."
-            }
-        },
-        "outputBlobName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the output file/blob."
+        "storageAccountKey":{  
+            "type":"securestring",
+            "metadata":{  
+                "description":"Key for the Azure storage account."
             }
         },
         "triggerStartTime": {
@@ -126,149 +89,199 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFTutorial**
                 "description": "End time for the trigger."
             }
         }
+    },      
+    "variables":{  
+        "factoryId":"[concat('Microsoft.DataFactory/factories/', parameters('dataFactoryName'))]"
     },
-    "variables": {
-        "azureStorageLinkedServiceName": "ArmtemplateStorageLinkedService",
-        "inputDatasetName": "ArmtemplateTestDatasetIn",
-        "outputDatasetName": "ArmtemplateTestDatasetOut",
-        "pipelineName": "ArmtemplateSampleCopyPipeline",
-        "triggerName": "ArmTemplateTestTrigger"
-    },
-    "resources": [{
-        "name": "[parameters('dataFactoryName')]",
-        "apiVersion": "2018-06-01",
-        "type": "Microsoft.DataFactory/factories",
-        "location": "[parameters('dataFactoryLocation')]",
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "resources": [{
-                "type": "linkedservices",
-                "name": "[variables('azureStorageLinkedServiceName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureStorage",
-                    "description": "Azure Storage linked service",
-                    "typeProperties": {
-                        "connectionString": {
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]",
-                            "type": "SecureString"
+    "resources":[  
+        {  
+            "name":"[parameters('dataFactoryName')]",
+            "apiVersion":"2018-06-01",
+            "type":"Microsoft.DataFactory/factories",
+            "location":"[parameters('dataFactoryLocation')]",
+            "identity":{  
+                "type":"SystemAssigned"
+            },
+            "resources":[  
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
+                    "type":"Microsoft.DataFactory/factories/linkedServices",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "annotations":[  
+
+                        ],
+                        "type":"AzureBlobStorage",
+                        "typeProperties":{  
+                            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
                         }
-                    }
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('inputDatasetName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureBlob",
-                    "typeProperties": {
-                        "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'), '/')]",
-                        "fileName": "[parameters('inputBlobName')]"
                     },
-                    "linkedServiceName": {
-                        "referenceName": "[variables('azureStorageLinkedServiceName')]",
-                        "type": "LinkedServiceReference"
-                    }
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('outputDatasetName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureBlob",
-                    "typeProperties": {
-                        "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'), '/')]",
-                        "fileName": "[parameters('outputBlobName')]"
-                    },
-                    "linkedServiceName": {
-                        "referenceName": "[variables('azureStorageLinkedServiceName')]",
-                        "type": "LinkedServiceReference"
-                    }
-                }
-            },
-            {
-                "type": "pipelines",
-                "name": "[variables('pipelineName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]",
-                    "[variables('inputDatasetName')]",
-                    "[variables('outputDatasetName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "activities": [{
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "BlobSource"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
+                    "type":"Microsoft.DataFactory/factories/datasets",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "linkedServiceName":{  
+                            "referenceName":"ArmtemplateStorageLinkedService",
+                            "type":"LinkedServiceReference"
+                        },
+                        "annotations":[  
+
+                        ],
+                        "type":"Binary",
+                        "typeProperties":{  
+                            "location":{  
+                                "type":"AzureBlobStorageLocation",
+                                "fileName":"emp.txt",
+                                "folderPath":"input",
+                                "container":"adftutorial"
                             }
-                        },
-                        "name": "MyCopyActivity",
-                        "inputs": [{
-                            "referenceName": "[variables('inputDatasetName')]",
-                            "type": "DatasetReference"
-                        }],
-                        "outputs": [{
-                            "referenceName": "[variables('outputDatasetName')]",
-                            "type": "DatasetReference"
-                        }]
-                    }]
-                }
-            },
-            {
-                "type": "triggers",
-                "name": "[variables('triggerName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]",
-                    "[variables('inputDatasetName')]",
-                    "[variables('outputDatasetName')]",
-                    "[variables('pipelineName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "ScheduleTrigger",
-                    "typeProperties": {
-                        "recurrence": {
-                            "frequency": "Hour",
-                            "interval": 1,
-                            "startTime": "[parameters('triggerStartTime')]",
-                            "endTime": "[parameters('triggerEndTime')]",
-                            "timeZone": "UTC"
                         }
                     },
-                    "pipelines": [{
-                        "pipelineReference": {
-                            "type": "PipelineReference",
-                            "referenceName": "ArmtemplateSampleCopyPipeline"
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
+                    "type":"Microsoft.DataFactory/factories/datasets",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "linkedServiceName":{  
+                            "referenceName":"ArmtemplateStorageLinkedService",
+                            "type":"LinkedServiceReference"
                         },
-                        "parameters": {}
-                    }]
+                        "annotations":[  
+
+                        ],
+                        "type":"Binary",
+                        "typeProperties":{  
+                            "location":{  
+                                "type":"AzureBlobStorageLocation",
+                                "folderPath":"output",
+                                "container":"adftutorial"
+                            }
+                        }
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
+                    "type":"Microsoft.DataFactory/factories/pipelines",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "activities":[  
+                            {  
+                                "name":"MyCopyActivity",
+                                "type":"Copy",
+                                "dependsOn":[  
+
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
+
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"BinarySource",
+                                        "storeSettings":{  
+                                            "type":"AzureBlobStorageReadSettings",
+                                            "recursive":true
+                                        }
+                                    },
+                                    "sink":{  
+                                        "type":"BinarySink",
+                                        "storeSettings":{  
+                                            "type":"AzureBlobStorageWriteSettings"
+                                        }
+                                    },
+                                    "enableStaging":false
+                                },
+                                "inputs":[  
+                                    {  
+                                        "referenceName":"ArmtemplateTestDatasetIn",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+
+                                        }
+                                    }
+                                ],
+                                "outputs":[  
+                                    {  
+                                        "referenceName":"ArmtemplateTestDatasetOut",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "annotations":[  
+
+                        ]
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
+                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
+                    "type":"Microsoft.DataFactory/factories/triggers",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "annotations":[  
+
+                        ],
+                        "runtimeState":"Started",
+                        "pipelines":[  
+                            {  
+                                "pipelineReference":{  
+                                    "referenceName":"ArmtemplateSampleCopyPipeline",
+                                    "type":"PipelineReference"
+                                },
+                                "parameters":{  
+
+                                }
+                            }
+                        ],
+                        "type":"ScheduleTrigger",
+                        "typeProperties":{  
+                            "recurrence":{  
+                                "frequency":"Hour",
+                                "interval":1,
+                                "startTime":"[parameters('triggerStartTime')]",
+                                "endTime":"[parameters('triggerEndTime')]",
+                                "timeZone":"UTC"
+                            }
+                        }
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
+                    ]
                 }
-            }
-        ]
-    }]
+            ]
+        }
+    ]
 }
 ```
-
 ## <a name="parameters-json"></a>Paramétereket tartalmazó JSON-file
 
 Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, amely paramétereket tartalmaz az Azure Resource Manager-sablon számára.
@@ -276,48 +289,33 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 > [!IMPORTANT]
 > - Adja meg az Azure Storage-fiók nevét és kulcsát a **storageAccountName** és **storageAccountKey** paraméterek értékeinek ebben a paraméterfájlban. Létrehozta az adftutorial tárolót, és feltöltötte a mintafájlt (emp.txt) az Azure Blob Storage bemeneti mappájába.
 > - Adjon meg egy globálisan egyedi nevet az adat-előállító számára a **dataFactoryName** paraméterhez. Példa: ARMTutorialFactoryJohnDoe11282017.
-> - A **triggerStartTime** paraméterhez adja meg az aktuális napot a következő formátumban: `2017-11-28T00:00:00`.
-> - A **triggerEndTime** paraméterhez adja meg a következő napot a következő formátumban: `2017-11-29T00:00:00`. Az aktuális UTC-időt is megtekintheti, és befejezési időpontként megadhatja a következő egy-két órát. Például ha az aktuális UTC-idő 1:32, adja meg a következőt befejezési időpontként: `2017-11-29:03:00:00`. Ebben az esetben az eseményindító kétszer futtatja a folyamatot (2:00-kor és 3:00-kor).
+> - A **triggerStartTime** paraméterhez adja meg az aktuális napot a következő formátumban: `2019-09-08T00:00:00`.
+> - A **triggerEndTime** paraméterhez adja meg a következő napot a következő formátumban: `2019-09-09T00:00:00`. Az aktuális UTC-időt is megtekintheti, és befejezési időpontként megadhatja a következő egy-két órát. Például ha az aktuális UTC-idő 1:32, adja meg a következőt befejezési időpontként: `2019-09-09:03:00:00`. Ebben az esetben az eseményindító kétszer futtatja a folyamatot (2:00-kor és 3:00-kor).
 
 ```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "dataFactoryName": {
-      "value": "<datafactoryname>"
-    },
-    "dataFactoryLocation": {
-      "value": "East US"
-    },
-    "storageAccountName": {
-      "value": "<yourstorageaccountname>"
-    },
-    "storageAccountKey": {
-      "value": "<yourstorageaccountkey>"
-    },
-    "blobContainer": {
-      "value": "adftutorial"
-    },
-    "inputBlobFolder": {
-      "value": "input"
-    },
-    "inputBlobName": {
-      "value": "emp.txt"
-    },
-    "outputBlobFolder": {
-      "value": "output"
-    },
-    "outputBlobName": {
-      "value": "emp.txt"
-    },
-    "triggerStartTime": {
-        "value": "2017-11-28T00:00:00. Set to today"
-    },
-    "triggerEndTime": {
-        "value": "2017-11-29T00:00:00. Set to tomorrow"
+{  
+    "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{  
+        "dataFactoryName":{  
+            "value":"<datafactoryname>"
+        },
+        "dataFactoryLocation":{  
+            "value":"East US"
+        },
+        "storageAccountName":{  
+            "value":"<yourstorageaccountname>"
+        },
+        "storageAccountKey":{  
+            "value":"<yourstorageaccountkey>"
+        },
+        "triggerStartTime":{  
+            "value":"2019-09-08T11:00:00"
+        },
+        "triggerEndTime":{  
+            "value":"2019-09-08T14:00:00"
+        }
     }
-  }
 }
 ```
 
@@ -326,7 +324,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 
 ## <a name="deploy-data-factory-entities"></a>Data Factory-entitások üzembe helyezése
 
-A PowerShellben futtassa a következő parancsot Data Factory-entitások a rövid útmutató során korábban létrehozott Resource Manager-sablonnal történő üzembe helyezéséhez.
+A PowerShellben futtassa a következő parancsot, hogy Data Factory entitásokat telepítsen az erőforráscsoporthoz (ebben az esetben a ADFTutorialResourceGroup példaként használja) az ebben a rövid útmutatóban korábban létrehozott Resource Manager-sablonnal.
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
@@ -338,26 +336,21 @@ A következő mintához hasonló kimenet jelenik meg:
 DeploymentName          : MyARMDeployment
 ResourceGroupName       : ADFTutorialResourceGroup
 ProvisioningState       : Succeeded
-Timestamp               : 11/29/2017 3:11:13 AM
+Timestamp               : 9/8/2019 10:52:29 AM
 Mode                    : Incremental
-TemplateLink            :
-Parameters              :
-                          Name                 Type            Value
-                          ===============      ============    ==========
-                          dataFactoryName      String          <data factory name>
-                          dataFactoryLocation  String          East US
-                          storageAccountName   String          <storage account name>
-                          storageAccountKey    SecureString
-                          blobContainer        String          adftutorial
-                          inputBlobFolder      String          input
-                          inputBlobName        String          emp.txt
-                          outputBlobFolder     String          output
-                          outputBlobName       String          emp.txt
-                          triggerStartTime     String          11/29/2017 12:00:00 AM
-                          triggerEndTime       String          11/29/2017 4:00:00 AM
-
-Outputs                 :
-DeploymentDebugLogLevel :
+TemplateLink            : 
+Parameters              : 
+                          Name                   Type                       Value     
+                          =====================  =========================  ==========
+                          dataFactoryName        String                     <data factory name>
+                          dataFactoryLocation    String                     East US   
+                          storageAccountName     String                     <storage account name>
+                          storageAccountKey      SecureString                         
+                          triggerStartTime       String                     9/8/2019 11:00:00 AM
+                          triggerEndTime         String                     9/8/2019 2:00:00 PM
+                          
+Outputs                 : 
+DeploymentDebugLogLevel : 
 ```
 
 ## <a name="start-the-trigger"></a>Az eseményindító elindítása
@@ -365,7 +358,7 @@ DeploymentDebugLogLevel :
 A sablon a következő Data Factory-entitásokat helyezi üzembe:
 
 - Azure Storage társított szolgáltatás
-- Azure Blob-adatkészletek (bemeneti és kimeneti)
+- Bináris adatkészletek (bemeneti és kimeneti)
 - Másolási tevékenységgel rendelkező folyamat
 - A folyamatot elindító eseményindító
 
@@ -395,9 +388,10 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az trigger i
     Itt látható a minta kimenete:
 
     ```json
+
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ARMFactory1128
+    DataFactoryName   : ADFQuickstartsDataFactory0905
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
     RuntimeState      : Stopped
     ```
@@ -428,7 +422,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az trigger i
     ```console
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ARMFactory1128
+    DataFactoryName   : ADFQuickstartsDataFactory0905
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
     RuntimeState      : Started
     ```
@@ -437,33 +431,24 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az trigger i
 
 1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a **Minden szolgáltatás** elemre, végezzen keresést a kulcsszóval (például: **adat-el**), és válassza az **Adat-előállítók** lehetőséget.
 
-    ![Böngészés az adat-előállítók menüjében](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
-
 2. Az **Adat-előállítók** lapon kattintson a létrehozott adat-előállítóra. Szükség esetén szűrje a listát az adat-előállító nevével.
 
-    ![Adat-előállító kiválasztása](media/quickstart-create-data-factory-resource-manager-template/select-data-factory.png)
+3. Az adatfeldolgozó lapon kattintson a **szerző & figyelés** csempére.
 
-3. Az Adat-előállító lapon kattintson a **Figyelés és felügyelet** csempére.
-
-    ![Figyelés és felügyelet csempe](media/quickstart-create-data-factory-resource-manager-template/monitor-manage-tile.png)
-
-4. Ekkor megnyílik a webböngészőben az **adatintegrációs alkalmazás** egy új lapon. Ha a figyelés lap nem aktív, váltson át a **figyelés lapra**. A folyamat futtatását egy **ütemező eseményindító** indította el.
-
-    ![Folyamat futtatásának figyelése](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
+4. Az **első lépések** lapon válassza a **figyelés fület**.  ![Folyamat futtatásának figyelése](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
     > A folyamat futását csak az óra órája látja (például: 4, 5, 6, stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
 
-5. Kattintson a **Műveletek** oszlopokban található hivatkozásra.
+5. Kattintson a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozására.
 
     ![Folyamat művelethivatkozása](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamatnak csak egy típusú tevékenysége van: Másolja. Így ennek a tevékenységnek a futtatása látható.
 
     ![Tevékenységfuttatások](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. Kattintson a **Kimenet** oszlop alatti hivatkozásra. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
+7. Kattintson a **kimenet** hivatkozásra a műveletek oszlop alatt. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
 
-    ![Kimeneti ablak](media/quickstart-create-data-factory-resource-manager-template/output-window.png)
 8. Ha sikeres/sikertelen futtatást lát, állítsa le az eseményindítót. Az eseményindító óránként egyszer futtatja a folyamatot. A folyamat minden futtatáskor átmásolja ugyanazt a fájlt a bemeneti mappából a kimeneti mappába. Az eseményindító leállításához futtassa a következő parancsot a PowerShell ablakában.
     
     ```powershell
@@ -477,8 +462,8 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az trigger i
 Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva:
 
 - [Azure Storage társított szolgáltatás](#azure-storage-linked-service)
-- [Azure blobbemeneti adatkészlet](#azure-blob-input-dataset)
-- [Azure blobkimeneti adatkészlet](#azure-blob-output-dataset)
+- [Bináris bemeneti adatkészlet](#binary-input-dataset)
+- [Bináris kimeneti adatkészlet](#binary-output-dataset)
 - [Másolási tevékenységgel rendelkező adatfolyamat](#data-pipeline)
 - [Eseményindító](#trigger)
 
@@ -487,119 +472,166 @@ Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva:
 Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Létrehozott egy tárolót, és adatokat töltött fel ebbe a tárfiókba az előfeltételek részeként. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](connector-azure-blob-storage.md#linked-service-properties) című szakaszt.
 
 ```json
-{
-    "type": "linkedservices",
-    "name": "[variables('azureStorageLinkedServiceName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureStorage",
-        "description": "Azure Storage linked service",
-        "typeProperties": {
-            "connectionString": {
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]",
-                "type": "SecureString"
-            }
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
+    "type":"Microsoft.DataFactory/factories/linkedServices",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "type":"AzureBlobStorage",
+        "typeProperties":{  
+            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
         }
-    }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]"
+    ]
 }
 ```
 
 A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName.
 
-#### <a name="azure-blob-input-dataset"></a>Azure blobbemeneti adatkészlet
+#### <a name="binary-input-dataset"></a>Bináris bemeneti adatkészlet
 
-Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. Az Azure Blob-adatkészletek definíciójában adhatja meg a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](connector-azure-blob-storage.md#dataset-properties) című szakaszt.
+Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bináris adatkészlet definíciójában adja meg a bemeneti adatokat tartalmazó blob-tároló, mappa és fájl nevét. A bináris adatkészlet definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért lásd a [bináris adatkészlet tulajdonságai](format-binary.md#dataset-properties) című témakört.
 
 ```json
-{
-    "type": "datasets",
-    "name": "[variables('inputDatasetName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'), '/')]",
-            "fileName": "[parameters('inputBlobName')]"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"ArmtemplateStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName": {
-            "referenceName": "[variables('azureStorageLinkedServiceName')]",
-            "type": "LinkedServiceReference"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "fileName":"emp.txt",
+                "folderPath":"input",
+                "container":"adftutorial"
+            }
         }
-    }
-},
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+    ]
+}
 ```
 
-#### <a name="azure-blob-output-dataset"></a>Azure blobkimeneti adatkészlet
+#### <a name="binary-output-dataset"></a>Bináris kimeneti adatkészlet
 
-Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti mappából másolt adatokat tartalmazza. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](connector-azure-blob-storage.md#dataset-properties) című szakaszt.
+Megadhatja az Azure Blob Storage-ban található mappa nevét, amely a bemeneti mappából másolt adatokat tartalmazza. A bináris adatkészlet definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért lásd a [bináris adatkészlet tulajdonságai](format-binary.md#dataset-properties) című témakört.
 
 ```json
-{
-    "type": "datasets",
-    "name": "[variables('outputDatasetName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'), '/')]",
-            "fileName": "[parameters('outputBlobName')]"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"ArmtemplateStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName": {
-            "referenceName": "[variables('azureStorageLinkedServiceName')]",
-            "type": "LinkedServiceReference"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "folderPath":"output",
+                "container":"adftutorial"
+            }
         }
-    }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+    ]
 }
 ```
 
 #### <a name="data-pipeline"></a>Adatfolyamat
 
-Meghatározhat egy folyamatot, amely adatokat másol egy Azure Blob-adatkészletből egy másik Azure Blob-adatkészletbe. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](concepts-pipelines-activities.md#pipeline-json) című szakaszt.
+Definiálhat egy folyamatot, amely adatokat másol egy bináris adatkészletből egy másik bináris adatkészletbe. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](concepts-pipelines-activities.md#pipeline-json) című szakaszt.
 
 ```json
-{
-    "type": "pipelines",
-    "name": "[variables('pipelineName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('inputDatasetName')]",
-        "[variables('outputDatasetName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "activities": [{
-            "type": "Copy",
-            "typeProperties": {
-                "source": {
-                    "type": "BlobSource"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
+    "type":"Microsoft.DataFactory/factories/pipelines",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "activities":[  
+            {  
+                "name":"MyCopyActivity",
+                "type":"Copy",
+                "dependsOn":[  
+
+                ],
+                "policy":{  
+                    "timeout":"7.00:00:00",
+                    "retry":0,
+                    "retryIntervalInSeconds":30,
+                    "secureOutput":false,
+                    "secureInput":false
                 },
-                "sink": {
-                    "type": "BlobSink"
-                }
-            },
-            "name": "MyCopyActivity",
-            "inputs": [{
-                "referenceName": "[variables('inputDatasetName')]",
-                "type": "DatasetReference"
-            }],
-            "outputs": [{
-                "referenceName": "[variables('outputDatasetName')]",
-                "type": "DatasetReference"
-            }]
-        }]
-    }
+                "userProperties":[  
+
+                ],
+                "typeProperties":{  
+                    "source":{  
+                        "type":"BinarySource",
+                        "storeSettings":{  
+                            "type":"AzureBlobStorageReadSettings",
+                            "recursive":true
+                        }
+                    },
+                    "sink":{  
+                        "type":"BinarySink",
+                        "storeSettings":{  
+                            "type":"AzureBlobStorageWriteSettings"
+                        }
+                    },
+                    "enableStaging":false
+                },
+                "inputs":[  
+                    {  
+                        "referenceName":"ArmtemplateTestDatasetIn",
+                        "type":"DatasetReference",
+                        "parameters":{  
+
+                        }
+                    }
+                ],
+                "outputs":[  
+                    {  
+                        "referenceName":"ArmtemplateTestDatasetOut",
+                        "type":"DatasetReference",
+                        "parameters":{  
+
+                        }
+                    }
+                ]
+            }
+        ],
+        "annotations":[  
+
+        ]
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
+        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
+    ]
 }
 ```
 
@@ -608,36 +640,41 @@ Meghatározhat egy folyamatot, amely adatokat másol egy Azure Blob-adatkészlet
 Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el a triggert a **Start-AzDataFactoryV2Trigger** parancsmag használatával. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers) című cikkben talál.
 
 ```json
-{
-    "type": "triggers",
-    "name": "[variables('triggerName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('inputDatasetName')]",
-        "[variables('outputDatasetName')]",
-        "[variables('pipelineName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "ScheduleTrigger",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "Hour",
-                "interval": 1,
-                "startTime": "2017-11-28T00:00:00",
-                "endTime": "2017-11-29T00:00:00",
-                "timeZone": "UTC"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
+    "type":"Microsoft.DataFactory/factories/triggers",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "runtimeState":"Started",
+        "pipelines":[  
+            {  
+                "pipelineReference":{  
+                    "referenceName":"ArmtemplateSampleCopyPipeline",
+                    "type":"PipelineReference"
+                },
+                "parameters":{  
+
+                }
             }
-        },
-        "pipelines": [{
-            "pipelineReference": {
-                "type": "PipelineReference",
-                "referenceName": "ArmtemplateSampleCopyPipeline"
-            },
-            "parameters": {}
-        }]
-    }
+        ],
+        "type":"ScheduleTrigger",
+        "typeProperties":{  
+            "recurrence":{  
+                "frequency":"Hour",
+                "interval":1,
+                "startTime":"[parameters('triggerStartTime')]",
+                "endTime":"[parameters('triggerEndTime')]",
+                "timeZone":"UTC"
+            }
+        }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
+    ]
 }
 ```
 

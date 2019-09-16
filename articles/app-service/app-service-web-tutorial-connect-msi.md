@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 09e9a89fc79763eee5d154ba589b599fe8a180b2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743394"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018286"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Biztonságos Azure SQL Database-kapcsolatok a App Service felügyelt identitás használatával
 
@@ -83,10 +83,22 @@ Active Directory-rendszergazda hozzáadásával kapcsolatos további informáci�
 
 ## <a name="set-up-visual-studio"></a>A Visual Studio beállítása
 
-A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a**Fiókbeállítások** **kiválasztásával** > a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
+### <a name="windows"></a>Windows
+A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a**Fiókbeállítások** **kiválasztásával** > a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
 
 Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök** > **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési** > **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
 
+Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
+
+### <a name="macos"></a>MacOS
+
+Visual Studio for Mac nincs integrálva az Azure AD-hitelesítéssel. Azonban a későbbiekben használni kívánt [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) függvénytár használhat jogkivonatokat az Azure CLI-ből. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez először [telepítenie kell az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t a helyi gépre.
+
+Miután telepítette az Azure CLI-t a helyi gépen, jelentkezzen be az Azure CLI-be az alábbi paranccsal az Azure AD-felhasználó használatával:
+
+```bash
+az login --allow-no-subscriptions
+```
 Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
 
 ## <a name="modify-your-project"></a>A projekt módosítása

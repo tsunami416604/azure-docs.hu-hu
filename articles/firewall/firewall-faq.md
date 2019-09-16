@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: da5880d27e5dd51d3a5f90b7cd6cf2e7dec50f89
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932742"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018852"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -129,11 +129,9 @@ A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tool
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>A hálózati virtuális berendezésre kényszerített bújtatás/láncolás?
 
-A kényszerített bújtatás alapértelmezés szerint nem támogatott, de a támogatással is engedélyezhető.
+A kényszerített bújtatás jelenleg nem támogatott. Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 
-Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
-
-Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, engedélyezzük az előfizetését, és gondoskodni kell a tűzfal internetkapcsolatának fenntartásáról.
+Ha a konfigurációhoz kényszerített bújtatásra van szükség egy helyszíni hálózathoz, és meghatározhatja az internetes célhelyek cél IP-előtagjait, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a felhasználó által megadott útvonalon keresztül a AzureFirewallSubnet. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak olyan tűzfal-erőforráscsoport korlátozásai?
 

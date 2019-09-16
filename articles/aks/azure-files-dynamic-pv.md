@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 580363973afd918351931edfb187a1a8d38d6985
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67665974"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018839"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,11 +28,12 @@ Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a tele
 
 ## <a name="create-a-storage-class"></a>Tárolási osztály létrehozása
 
-A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage][storage-skus] -redundancia *skuName*:
+A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName*:
 
 * *Standard_LRS* – standard, helyileg redundáns tárolás (LRS)
 * *Standard_GRS* – szabványos geo-redundáns tárolás (GRS)
 * *Standard_RAGRS* – szabványos olvasási hozzáférésű geo-redundáns tárolás (ra-GRS)
+* *Premium_LRS* – prémium szintű, helyileg redundáns tárolás (LRS)
 
 > [!NOTE]
 > Azure Files támogatja a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtökben.
@@ -52,6 +53,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```
@@ -101,7 +105,7 @@ kubectl apply -f azure-pvc-roles.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>Állandó kötet jogcímek létrehozása
 
-Az állandó mennyiségi jogcím (PVC) a tárolási osztály objektum használatával dinamikusan kiépít egy Azure-fájlmegosztást. A következő YAML a *ReadWriteMany* -hozzáféréssel rendelkező állandó mennyiségi jogcím ( *5 GB* méretű) létrehozásához használható. A hozzáférési módokkal kapcsolatos további információkért tekintse meg a [Kubernetes állandó kötet][access-modes] dokumentációját.
+Az állandó mennyiségi jogcím (PVC) a tárolási osztály objektum használatával dinamikusan kiépít egy Azure-fájlmegosztást. A következő YAML a *ReadWriteMany* -hozzáféréssel rendelkező, *5 GB* méretű állandó mennyiségi jogcím létrehozásához használható. A hozzáférési módokkal kapcsolatos további információkért tekintse meg a [Kubernetes állandó kötet][access-modes] dokumentációját.
 
 Most hozzon létre egy `azure-file-pvc.yaml` nevű fájlt, és másolja a következő YAML. Győződjön meg arról, hogy a *storageClassName* megegyezik az utolsó lépésben létrehozott tárolási osztállyal:
 
@@ -118,6 +122,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!NOTE]
+> Ha a *Premium_LRS* SKU-t használja a tárolási osztályhoz, a *tárterület* minimális értékének *100Gi*kell lennie.
 
 Hozza létre az állandó kötet jogcímet a [kubectl Apply][kubectl-apply] paranccsal:
 
@@ -196,17 +203,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-Az alapértelmezett *fileMode* és *DirMode* értékek a Kubernetes-verziók között különböznek a következő táblázatban leírtak szerint.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 vagy újabb | 0755 |
-| v1.9.0 | 0700 |
-| v 1.9.1 vagy újabb | 0755 |
-
-Ha 1.8.5 vagy nagyobb verziójú fürtöt használ, és egy tárolási osztállyal dinamikusan létrehozza az állandó kötetet, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es vagy újabb verziójához. Ha olyan fürtöt használ, amelynek Kuberetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -219,6 +216,9 @@ mountOptions:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
 parameters:
   skuName: Standard_LRS
 ```

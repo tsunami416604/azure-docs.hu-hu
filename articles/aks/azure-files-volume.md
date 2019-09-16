@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: e3050d189396a797dbc0980e06e11533b9de977e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098616"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018733"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Files megosztással rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -135,17 +135,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-Az alapértelmezett *fileMode* és *DirMode* értékek a Kubernetes-verziók között különböznek a következő táblázatban leírtak szerint.
-
-| version | value |
-| ---- | ---- |
-| v1.6.x, v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v 1.8.6 vagy újabb | 0755 |
-| v1.9.0 | 0700 |
-| v 1.9.1 vagy újabb | 0755 |
-
-Ha 1.8.5 vagy nagyobb méretű fürtöt használ, és statikusan létrehozza az állandó kötet objektumot, a csatlakoztatási beállításokat meg kell adni a *PersistentVolume* objektumon.
+A *fileMode* és a *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es vagy újabb verziójához. Ha olyan fürtöt használ, amelynek Kuberetes-verziója 1.8.5 vagy nagyobb, és statikusan hozza létre az állandó kötet objektumot, a csatlakoztatási beállításokat meg kell adni a *PersistentVolume* objektumon. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 apiVersion: v1
@@ -157,6 +147,7 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
+  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -166,9 +157,79 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
 ```
 
 Ha 1.8.0-1.8.4-alapú fürtöt használ, a *runAsUser* értékkel megadható egy biztonsági környezet, amely a *0*értékre van állítva. A pod biztonsági környezettel kapcsolatos további információkért lásd: [biztonsági környezet konfigurálása][kubernetes-security-context].
+
+A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-PV. YAML* fájlt egy *PersistentVolume*. Példa:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  azureFile:
+    secretName: azure-secret
+    shareName: aksshare
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+
+Hozzon létre egy *azurefile-mount-options-PVC. YAML* fájlt egy olyan *PersistentVolumeClaim* , amely a *PersistentVolume*használja. Példa:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+A `kubectl` *PersistentVolume* és a *PersistentVolumeClaim*létrehozásához használja a parancsokat.
+
+```console
+kubectl apply -f azurefile-mount-options-pv.yaml
+kubectl apply -f azurefile-mount-options-pvc.yaml
+```
+
+Ellenőrizze, hogy létrejött-e a *PersistentVolumeClaim* , és kötődik-e a *PersistentVolume*.
+
+```console
+$ kubectl get pvc azurefile
+
+NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
+```
+
+A tároló specifikációjának frissítésével hivatkozhat a *PersistentVolumeClaim* , és frissítheti a pod-t. Példa:
+
+```yaml
+...
+  volumes:
+  - name: azure
+    persistentVolumeClaim:
+      claimName: azurefile
+```
 
 ## <a name="next-steps"></a>További lépések
 

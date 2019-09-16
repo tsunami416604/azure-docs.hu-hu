@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802460"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010217"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -42,7 +42,7 @@ Az SQL Database naplózási szolgáltatásával a következőket végezheti el:
 - Jelentések **elemzése** . Megtalálhatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
 
 > [!IMPORTANT]
-> A naplófájlok az Azure Blob Storage-ban az Azure-előfizetéshez tartozó Blobok **hozzáfűzésével** íródnak.
+> A naplófájlok az Azure blob Storage-ban az Azure-előfizetéshez tartozó Blobok hozzáfűzésével íródnak.
 >
 > - Az összes tárolási típus (v1, v2, blob) támogatott.
 > - Minden tárolási replikációs konfiguráció támogatott.
@@ -91,9 +91,12 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
    > [!WARNING]
    > A Log Analytics naplózásának engedélyezése a betöltési díjak alapján jár. Vegye figyelembe a kapcsolódó költségeket ezzel a [lehetőséggel](https://azure.microsoft.com/pricing/details/monitor/), vagy a naplókat egy Azure Storage-fiókban kell tárolnia.
 
-    ![tárolási beállítások](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+    ![Tárolási beállítások](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
 6. A naplók a Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget, és nyissa meg a **tároló adatait**. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időtartamot. A rendszer törli a régi naplókat. Ezután kattintson az **OK** gombra.
+
+   > [!IMPORTANT]
+   > A megőrzési időtartam alapértelmezett értéke 0 (korlátlan megőrzés). Ezt az értéket módosíthatja úgy, hogy a Storage-fiók konfigurálásakor áthelyezi a tárolási **Beállítások** **megőrzés (nap)** csúszkáját a naplózáshoz.
 
     ![tárfiók](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 

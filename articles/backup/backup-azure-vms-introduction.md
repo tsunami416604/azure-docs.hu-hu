@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951849"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018690"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
@@ -79,7 +79,7 @@ A Azure Backup a biztonsági mentés ütemtervének megfelelően hozza a pillana
 
 A következő táblázat a pillanatkép-konzisztencia különböző típusait ismerteti:
 
-**Snapshot** | **Részletek** | **Helyreállítási** | **Figyelembe**
+**Snapshot** | **Részletek** | **Helyreállítási** | **Szempont**
 --- | --- | --- | ---
 **Application-consistent** | Az alkalmazással konzisztens biztonsági másolatok rögzítik a memória tartalmát és a függőben lévő I/O-műveleteket. Az alkalmazás-konzisztens Pillanatképek VSS-író (vagy Linux előtti/post szkriptek) használatával biztosítják az alkalmazásadatok egységességét a biztonsági mentés előtt. | Ha egy virtuális gépet egy alkalmazással konzisztens pillanatképtel állít le, a virtuális gép elindul. Nincs adatsérülés vagy adatvesztés. Az alkalmazások konzisztens állapotban kezdődnek. | Windows: Az összes VSS-író sikeresen befejeződött<br/><br/> Linux: Az előzetes/post parancsfájlokat a rendszer konfigurálta és sikeresen elvégezte
 **Fájlrendszer-konzisztens** | A fájlrendszerrel konzisztens biztonsági másolatok következetességet biztosítanak azáltal, hogy az összes fájlról pillanatképet készítenek.<br/><br/> | Ha olyan virtuális gépet állít vissza, amely fájlrendszerrel konzisztens pillanatképet használ, a virtuális gép elindul. Nincs adatsérülés vagy adatvesztés. Az alkalmazásoknak saját "felerősítő" mechanizmust kell alkalmazniuk, hogy a visszaállított adategységek konzisztensek legyenek. | Windows: Egyes VSS-írók sikertelenek voltak <br/><br/> Linux: Alapértelmezett (ha a Pre/post parancsfájl nincs konfigurálva vagy sikertelen)
@@ -87,7 +87,7 @@ A következő táblázat a pillanatkép-konzisztencia különböző típusait is
 
 ## <a name="backup-and-restore-considerations"></a>Biztonsági mentési és visszaállítási megfontolások
 
-**Figyelembe** | **Részletek**
+**Szempont** | **Részletek**
 --- | ---
 **Lemez** | A VM-lemezek biztonsági mentése párhuzamos. Ha például egy virtuális gépnek négy lemeze van, a Backup szolgáltatás mind a négy lemezről párhuzamosan kísérli meg a biztonsági mentést. A biztonsági mentés növekményes (csak módosult adatértékek).
 **Ütemezési** |  A biztonsági mentési forgalom csökkentése érdekében készítsen biztonsági másolatot a különböző virtuális gépekről a nap különböző pontjain, és győződjön meg arról, hogy az idő nem fedi át egymást. A virtuális gépek biztonsági mentése egy időben a forgalmi torlódásokat okoz.
@@ -111,9 +111,9 @@ Ezek a gyakori forgatókönyvek a teljes biztonsági mentés idejére hatással 
 Ha virtuális gépek biztonsági mentését konfigurálja, javasoljuk, hogy kövesse a következő eljárásokat:
 
 - Módosíthatja a házirendben beállított alapértelmezett ütemezett időpontokat. Ha például a házirendben az alapértelmezett idő 12:00, az időzítést több percen belül növelni kell, hogy az erőforrások optimálisan használhatók legyenek.
-- Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) -fiókokat annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
+- Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage-fiókokat](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
 - A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
-- Az általános célú v1 tárolási réteg (snapshot) visszaállítása percek alatt elvégezhető, mivel a pillanatkép ugyanabban a Storage-fiókban található. Az általános célú v2 tárolási rétegből (tárolóból) való visszaállítás akár órákig is elvégezhető. Azokban az esetekben, amikor az adat elérhető az általános célú v1-tárolóban, javasoljuk, hogy az [azonnali visszaállítás](backup-instant-restore-capability.md) funkciót használja a gyorsabb visszaállításhoz. (Ha az adatok visszaállítását egy tárolóból kell visszaállítani, a rendszer több időt vesz igénybe.)
+- Az általános célú v1 tárolási réteg (snapshot) visszaállítása percek alatt elvégezhető, mivel a pillanatkép ugyanabban a Storage-fiókban található. Az általános célú v2 tárolási rétegből (tárolóból) való visszaállítás akár órákig is elvégezhető. Azokban az esetekben, amikor az adat elérhető az általános célú v1-tárolóban, javasoljuk, hogy az azonnali visszaállítás funkciót használja a gyorsabb [visszaállításhoz](backup-instant-restore-capability.md) . (Ha az adatok visszaállítását egy tárolóból kell visszaállítani, a rendszer több időt vesz igénybe.)
 - A lemezek tárolási fiókra vonatkozó korlátozása attól függ, hogy milyen mértékben fér hozzá a lemezek a szolgáltatásként szolgáló infrastruktúra-(IaaS-) virtuális gépen futó alkalmazások számára. Általános gyakorlatként, ha 5 – 10 lemez vagy több van jelen egyetlen Storage-fiókban, akkor a terhelést úgy egyenlítheti ki, hogy egyes lemezeket külön Storage-fiókokra helyez át.
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
@@ -140,49 +140,14 @@ Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Korlátozott nyilvános előzetes verzió: A virtuális gép biztonsági mentése 30 TB-ig terjedő méretű lemezekkel
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Nyilvános előzetes: A virtuális gép biztonsági mentése 30 TB-ig terjedő méretű lemezekkel
 
-Azure Backup mostantól támogatja a nagyobb és nagyobb teljesítményű Azure- [Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) korlátozott nyilvános előzetes verzióját, amely akár 30 TB méretű is lehet. Ez az előzetes verzió a felügyelt virtuális gépek termelési szintű támogatását biztosítja.
+A Azure Backup mostantól támogatja a nagyobb és nagyobb teljesítményű [Azure-Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) nyilvános előzetes verzióját, amely akár 30 TB méretű is lehet. Ez az előzetes verzió a felügyelt virtuális gépek termelési szintű támogatását biztosítja.
 
-A folyamatban lévő biztonsági mentésekre gyakorolt hatás nélkül is zökkenőmentesen regisztrálhat az előzetes verzióra. Miután az előfizetés regisztrálva van az előzetes verzióban, az összes olyan virtuális gépet, amelynek a mérete legfeljebb 30 TB, sikeresen biztonsági mentést kell készíteni. Regisztrálás az előzetes verzióban:
- 
-Hajtsa végre a következő parancsmagokat egy emelt szintű PowerShell-terminálról:
+A virtuális gépek biztonsági mentései az egyes lemezek mérete 30TB, és a virtuális gép összes lemezének teljes 256TB kombinálva zökkenőmentesen dolgozhatnak a meglévő biztonsági mentések hatása nélkül. Nincs szükség felhasználói beavatkozásra a nagy méretű lemezeken futó biztonsági másolatok beszerzéséhez, ha a virtuális gép már konfigurálva van Azure Backup.
 
-1. Jelentkezzen be Azure-fiókjába.
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. Válassza ki azt az előfizetést, amelyet regisztrálni szeretne a frissítéshez:
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. Az előfizetés regisztrálása az előzetes programban: 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    Várjon 30 percet, amíg az előfizetés regisztrálva lesz az előzetes verzióban. 
-
- 4. Az állapot ellenõrzéséhez futtassa a következő parancsmagokat:
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. Ha az előfizetés regisztráltként jelenik meg, futtassa a következő parancsot:
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> Ez az előzetes verzió nem támogatja a 4 TB-nál nagyobb méretű lemezekkel rendelkező titkosított virtuális gépeket.
-
-
+A biztonsági mentést tartalmazó nagyméretű lemezekkel rendelkező összes Azure-Virtual Machines biztonsági mentése sikeresen megtörtént.
 
 ## <a name="next-steps"></a>További lépések
 
-Most [készítse elő az Azure](backup-azure-arm-vms-prepare.md)-beli virtuális gépek biztonsági mentését.
+Most [készítse elő az Azure-beli virtuális gépek biztonsági mentését](backup-azure-arm-vms-prepare.md).
