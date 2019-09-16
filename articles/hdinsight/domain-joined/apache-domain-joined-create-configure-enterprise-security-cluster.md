@@ -306,12 +306,12 @@ Ellenőrizze, hogy a tanúsítvány telepítve van-e\'a számítógép személye
         |---|---|
         | Source | Any |
         | Source port ranges | * |
-        | Cél | Any |
+        | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
         | Action | Allow |
         | Priority | \<Desired Number\> |
-        | Name (Név) | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![Bejövő biztonsági szabály](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
