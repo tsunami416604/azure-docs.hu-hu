@@ -116,13 +116,13 @@ Egy másik fontos megjegyezni, hogy nem a titkos kulcsokat a konzolba való, a k
 
 ## <a name="artifact-expressions-and-functions"></a>Összetevő-kifejezések és függvények
 Használhat kifejezéseket, és a függvények létrehozására, az összetevő telepítési parancs.
-Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), és az összetevő telepítésekor a rendszer értékeli. Kifejezések bárhol megjelenhet egy JSON-karakterlánc értéken. Kifejezések mindig egy másik JSON-értéket ad vissza. Ha szeretné használni a szögletes zárójel ([]) kezdetű konstans sztring, két zárójelek közé ([[) kell használnia.
+Kifejezések parancsfájlblokkjában találhatók a zárójelek közé ([és]), és az összetevő telepítésekor a rendszer értékeli. Kifejezések bárhol megjelenhet egy JSON-karakterlánc értéken. Kifejezések mindig egy másik JSON-értéket ad vissza. Ha szeretné használni a szögletes zárójel ([) kezdetű konstans sztring, két zárójelek közé ([[) kell használnia.
 Általában használatával kifejezések függvényekkel hozhat létre egy értéket. Ugyanúgy, mint a JavaScript, függvényhívások formázott **functionName (arg1, arg2, arg3)** .
 
 Az alábbi lista tartalmazza a közös funkciók:
 
 * **parameters(parameterName)** : Az összetevő parancs futtatásakor megadott paraméter értéket ad vissza.
-* **Concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
+* **concat (arg1, arg2, arg3,...)** : Több karakterlánc-értékek egyesíti. Ez a függvény argumentumainak különböző is igénybe vehet.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és függvények használatával:
 
