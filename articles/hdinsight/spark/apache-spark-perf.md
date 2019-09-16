@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cda974a71c0d24bda9422fb8444fbf4dec0088f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885103"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995555"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark feladatok optimalizálása a HDInsight-ben
 
@@ -96,7 +96,7 @@ A következő képen látható a Spark-memória szerkezete és néhány kulcsfon
 
 Ha [Apache HADOOP fonalat](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)használ, akkor a fonalak az egyes Spark-csomópontokon lévő összes tároló által felhasznált memória maximális számát vezérlik.  A következő ábrán a legfontosabb objektumok és azok kapcsolatai láthatók.
 
-![A fonal Spark memóriájának kezelése](./media/apache-spark-perf/yarn-spark-memory.png)
+![A fonal Spark memóriájának kezelése](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel:
 

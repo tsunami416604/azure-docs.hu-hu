@@ -32,9 +32,15 @@
       href: ./samples/index.md
     - name: Canada Federal PBMM
       items:
+        - name: Áttekintés
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/index.md
         - name: Vezérlőelem-leképezés
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
       items:
         - name: Áttekintés
