@@ -35,10 +35,10 @@ A következő HTTP PUT kérelmet használatával hozzon létre egy új Azure ala
 
 |Name (Név)  |A  |Szükséges |Típus |Leírás |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  elérési út       |  True (Igaz)       |   sztring      |  Az előfizetés hitelesítő adatait, amelyek egyértelműen azonosítják a Microsoft Azure-előfizetéshez. Az előfizetés-Azonosítót az URI-t minden szolgáltatás hívás részét képezi.      |
-|resourceGroupName     |     elérési út    | True (Igaz)        |  sztring       |   Az erőforráscsoport neve.     |
-|loadBalancerName     |  elérési út       |      True (Igaz)   |    sztring     |    A terheléselosztó neve.    |
-|api-version    |   lekérdezés     |  True (Igaz)       |     sztring    |  API-verzió.      |
+|subscriptionId   |  path       |  True (Igaz)       |   string      |  Az előfizetés hitelesítő adatait, amelyek egyértelműen azonosítják a Microsoft Azure-előfizetéshez. Az előfizetés-Azonosítót az URI-t minden szolgáltatás hívás részét képezi.      |
+|resourceGroupName     |     path    | True (Igaz)        |  string       |   Az erőforráscsoport neve.     |
+|loadBalancerName     |  path       |      True (Igaz)   |    string     |    A terheléselosztó neve.    |
+|api-version    |   query     |  True (Igaz)       |     string    |  API-verzió.      |
 
 
 
@@ -48,7 +48,7 @@ Csak a szükséges paraméter `location`. Ha nem adja meg a *Termékváltozat* v
 
 | Name (Név) | Típus | Leírás |
 | :--- | :--- | :---------- |
-| location | sztring | Erőforrás helye. Helyek használatával aktuális listájának lekérése a [lista helyek](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) műveletet. |
+| location | string | Erőforrás helye. Helyek használatával aktuális listájának lekérése a [lista helyek](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) műveletet. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Alapszintű Load Balancer létrehozása és frissítése
