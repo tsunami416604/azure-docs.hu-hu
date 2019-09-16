@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773124"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000587"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -25,7 +25,7 @@ A Azure Key Vault lehetővé teszi Microsoft Azure alkalmazások és felhasznál
 - Tanúsítványok A a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót is felvesz.
 - Azure Storage: Kezelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. 
 
-További általános információk a Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+További általános információk a Key Vaultről: [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
@@ -69,7 +69,7 @@ Az objektumazonosító a következő általános formátumú:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Az elemek magyarázata:  
+Helyszín:  
 
 |||  
 |-|-|  

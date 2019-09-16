@@ -1,22 +1,22 @@
 ---
-title: Elemezheti és az Azure HDInsight az Apache Hive JSON-dokumentumok feldolgozása
-description: Ismerje meg, hogyan használja a JSON-dokumentumok és elemezheti az Azure HDInsight az Apache Hive segítségével.
+title: JSON-dokumentumok elemzése és feldolgozása Apache Hive az Azure HDInsight
+description: Megtudhatja, hogyan használhatja a JSON-dokumentumokat, és hogyan elemezheti őket az Azure HDInsight Apache Hive használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461991"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883397"
 ---
-# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok elemzését az Azure HDInsight az Apache Hive használatával
+# <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok feldolgozása és elemzése Apache Hive használatával az Azure HDInsight
 
-Megtudhatja, hogyan dolgozza fel, és a JavaScript Object Notation (JSON) fájlok elemezhet az Apache Hive, az Azure HDInsight. Ez a cikk a következő JSON-dokumentum használja:
+Megtudhatja, hogyan dolgozhatja fel és elemezheti JavaScript Object Notation (JSON) fájlokat az Azure HDInsight Apache Hive használatával. Ez a cikk a következő JSON-dokumentumot használja:
 
 ```json
 {
@@ -55,12 +55,12 @@ Megtudhatja, hogyan dolgozza fel, és a JavaScript Object Notation (JSON) fájlo
 }
 ```
 
-A fájl található `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Apache Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
+A fájl a következő címen érhető `wasb://processjson@hditutorialdata.blob.core.windows.net/`el:. Az Azure Blob Storage és a HDInsight használatával kapcsolatos további információkért lásd: [HDFS-kompatibilis Azure Blob Storage használata a HDInsight-ben való Apache Hadoop](../hdinsight-hadoop-use-blob-storage.md). A fájlt átmásolhatja a fürt alapértelmezett tárolójába.
 
-Ez a cikk az Apache Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [használata az Apache Ambari az Apache hadooppal a HDInsight Hive-nézet](apache-hadoop-use-hive-ambari-view.md).
+Ebben a cikkben a Apache Hive-konzolt használja. A kaptár-konzol megnyitásával kapcsolatos utasításokért lásd: az [Apache Ambari kaptár nézet használata a HDInsight-ben való Apache Hadoop](apache-hadoop-use-hive-ambari-view.md).
 
-## <a name="flatten-json-documents"></a>JSON-dokumentumok egybesimítására
-A következő szakaszban felsorolt módszerek szükséges, hogy a JSON-dokumentum tevődik össze egyetlen sor. Tehát simítja egybe a JSON-dokumentum karakterlánccá. Ha a JSON-dokumentumok már lett simítva, ezt a lépést kihagyhatja, és egyenesen eljuthat a következő szakasz a JSON-adatok elemzése. A JSON-dokumentumok egybesimítására, futtassa a következő parancsfájlt:
+## <a name="flatten-json-documents"></a>JSON-dokumentumok összeolvasztása
+A következő szakaszban felsorolt metódusok megkövetelik, hogy a JSON-dokumentum egyetlen sorból legyen kibontva. Ezért a JSON-dokumentumot egy sztringbe kell lelapulnia. Ha a JSON-dokumentum már össze van tömörítve, kihagyhatja ezt a lépést, és közvetlenül a következő szakaszhoz juthat a JSON-adatok elemzéséhez. A JSON-dokumentum lelapulához futtassa a következő parancsfájlt:
 
 ```sql
 DROP TABLE IF EXISTS StudentsRaw;
@@ -81,30 +81,30 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-A nyers JSON-fájl `wasb://processjson@hditutorialdata.blob.core.windows.net/`. A **StudentsRaw** a nyers JSON-dokumentum, amely nem lett simítva, Hive-tábla pontokat.
+A nyers JSON-fájl a következő `wasb://processjson@hditutorialdata.blob.core.windows.net/`helyen található:. A **StudentsRaw** struktúra táblázata a nyers JSON-dokumentumra mutat, amely nem lapított.
 
-A **StudentsOneLine** Hive-tábla tárolja az adatokat a HDInsight alapértelmezett fájlrendszer alatt a **/json/tanulók/** elérési útja.
+A **StudentsOneLine** -struktúra tábla a **/JSON/Students/** elérési útja alatt tárolja az HDInsight alapértelmezett fájlrendszerében tárolt értékeket.
 
-A **BESZÚRÁSA** utasítás tölti fel a **StudentOneLine** egybesimított JSON-adatokat tartalmazó táblát.
+Az **Insert** utasítás feltölti a **StudentOneLine** TÁBLÁT az összeolvasztott JSON-adatokkal.
 
-A **kiválasztása** utasítás csak egy sort adja vissza.
+A **Select** utasítás csak egy sort ad vissza.
 
-A kimenet az itt látható a **kiválasztása** utasítást:
+Itt látható a **Select** utasítás kimenete:
 
-![Az egybesimítás a JSON-dokumentum](./media/using-json-in-hive/flatten.png)
+![A JSON-dokumentum összeolvasztása](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
-## <a name="analyze-json-documents-in-hive"></a>JSON-dokumentumok Hive elemzése
-Hive a JSON-dokumentumok lekérdezések futtatására használható három különböző mechanizmusokat biztosít, vagy írhat saját:
+## <a name="analyze-json-documents-in-hive"></a>JSON-dokumentumok elemzése a kaptárban
+A kaptár három különböző mechanizmust biztosít a lekérdezések JSON-dokumentumokon való futtatásához, vagy saját maga is írhat:
 
-* Használja a get_json_object felhasználói függvény (UDF).
-* Az UDF json_tuple használja.
-* Az egyéni szerializáló/deszerializáló (SerDe) használja.
-* Írhat saját UDF Python vagy más nyelv használatával. Saját Python-kód futtatása Hive-val kapcsolatos további információkért lásd: [az Apache Hive- és Apache Pig Python felhasználói függvények] [hdinsight-python].
+* Használja a get_json_object felhasználó által definiált függvényt (UDF).
+* Használja a json_tuple UDF-t.
+* Használja az egyéni szerializáló/deszerializáló (SerDe) használatát.
+* Saját UDF-t írhat a Python vagy más nyelvek használatával. A saját Python-kódok struktúrával való futtatásával kapcsolatos további információkért lásd: [Python UDF Apache Hive és Apache Pig használatával] [hdinsight-Python].
 
-### <a name="use-the-getjsonobject-udf"></a>Használja a get_json_object UDF-ben
-Hive biztosít egy beépített UDF nevű [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) , amely JSON lekérdezése során futásidejű hajthat végre. Ez a módszer két argumentumot – a táblázat neve és a metódus nevét, amely rendelkezik a egybesimított JSON-dokumentum és a JSON-mezőt, amely elemezni kell. Nézzük meg, például hogy az UDF működését.
+### <a name="use-the-get_json_object-udf"></a>A get_json_object UDF használata
+A kaptár egy [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) nevű beépített UDF-t biztosít, amely a Futtatás közben JSON-lekérdezéseket hajt végre. Ez a metódus két argumentumot vesz igénybe: a tábla neve és a metódus neve, amely az összeolvasztott JSON-dokumentummal és az elemezni kívánt JSON-mezővel rendelkezik. Lássunk egy példát, hogy lássuk, hogyan működik ez az UDF.
 
-A következő lekérdezést ad vissza, az utónév és Vezetéknév minden tanuló számára:
+A következő lekérdezés az egyes tanulók vezetéknevét és vezetéknevét adja vissza:
 
 ```sql
 SELECT
@@ -113,19 +113,19 @@ SELECT
 FROM StudentsOneLine;
 ```
 
-Ez a lekérdezés futtatásakor a konzolablakban a kimenet itt látható:
+A következő kimenet jelenik meg, amikor futtatja ezt a lekérdezést a konzol ablakban:
 
-![get_json_object UDF](./media/using-json-in-hive/getjsonobject.png)
+![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
-Korlátozottak a get_json_object UDF-ben:
+A get_json_object UDF korlátai vannak:
 
-* A lekérdezés minden egyes mezőjéhez használatához a lekérdezés reparsing, a teljesítményt befolyásolja.
-* **ELSŐ\_JSON_OBJECT()** a tömb karakterláncként adja vissza. A tömb átalakítása a Hive-tömb, cserélje le a szögletes zárójelek reguláris kifejezések használatával kell "[" és "]", és ezután is kell beolvasni a tömb split hívja.
+* Mivel a lekérdezés egyes mezői a lekérdezés újraelemzését igénylik, hatással vannak a teljesítményre.
+* **A\_Get JSON_OBJECT ()** függvény egy tömb sztring-ábrázolását adja vissza. Ahhoz, hogy a tömböt egy struktúra-tömbre konvertálja, reguláris kifejezésekkel kell helyettesítenie a szögletes zárójeleket ([) és a "]"), majd meg kell hívnia a felosztást a tömb beszerzéséhez.
 
-Ezért a Hive wiki json_tuple használatát javasolja.  
+Ezért javasoljuk, hogy a kaptár wiki a json_tuple használatát javasolja.  
 
-### <a name="use-the-jsontuple-udf"></a>Használja a json_tuple UDF-ben
-Egy másik UDF Hive által biztosított nevezzük [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), melyik teljesít jobban, mint [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ez a metódus szükséges kulcsokat és a egy JSON-karakterlánc, és adja vissza egy rekord érték egy függvény használatával. A következő lekérdezést a tanulói Azonosítóját és a besorolási a JSON-dokumentum adja vissza:
+### <a name="use-the-json_tuple-udf"></a>A json_tuple UDF használata
+A kaptár által biztosított egy másik UDF-t a [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)nevezik, amely jobb, mint a [get_ JSON-_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ez a metódus kulcsok és JSON-karakterláncok készletét veszi át, és az értékek egy rekordját egy függvény használatával adja vissza. A következő lekérdezés a tanulói azonosítót és a JSON-dokumentum fokozatát adja vissza:
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -134,22 +134,22 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
   AS StudentId, Grade;
 ```
 
-Ez a szkript a Hive-konzol kimenetét:
+A szkript kimenete a kaptár-konzolon:
 
-![json_tuple UDF](./media/using-json-in-hive/jsontuple.png)
+![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Az UDF-ben használt json_tuple a [nézet oldalirányú](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) struktúra, amely lehetővé teszi a json szintaxist\_virtuális tábla létrehozása a UDT függvény az eredeti tábla minden egyes sorára való alkalmazásával a rekordot. A ismételt használata miatt túl nehézkessé válhat összetett JSONs **OLDALNÉZET**. Ezenkívül **JSON_TUPLE** beágyazott JSONs nem tudja kezelni.
+Az json_tuple UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely\_lehetővé teszi, hogy a JSON-rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet**ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
 
-### <a name="use-a-custom-serde"></a>Egy egyéni SerDe használata
-SerDe a legjobb választás beágyazott JSON-dokumentumok elemzését. Lehetővé teszi, hogy a JSON-séma határozza meg, és ezután használhatja a sémát a dokumentumok elemzése. Útmutatásért lásd: [egy egyéni JSON-SerDe használata a Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+### <a name="use-a-custom-serde"></a>Egyéni SerDe használata
+A SerDe a legjobb választás a beágyazott JSON-dokumentumok elemzéséhez. Lehetővé teszi a JSON-séma definiálását, majd a séma segítségével elemezheti a dokumentumokat. Útmutatásért lásd: [Egyéni JSON-SerDe használata Microsoft Azure HDInsight használatával](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
-## <a name="summary"></a>Összefoglalás
-Végezetül JSON operátor az Ön által választott Hive típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentum, és keresse ki csak egy mezőt, válassza ki a Hive-UDF get_json_object használja. Ha egynél több kulcs keressük meg, majd használhatja json_tuple. Ha rendelkezik egy beágyazott dokumentumot, akkor a JSON-SerDe kell használnia.
+## <a name="summary"></a>Összegzés
+Végezetül, a kiválasztott kaptárban található JSON-operátor típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentummal rendelkezik, és csak egyetlen mezővel rendelkezik a kereséshez, dönthet úgy, hogy a kaptár UDF-get_json_object használja. Ha egynél több kulccsal rendelkezik a kereséshez, használhatja a json_tuple. Ha beágyazott dokumentummal rendelkezik, akkor a JSON-SerDe kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 
-Kapcsolódó cikkek lásd:
+Kapcsolódó cikkek esetében lásd:
 
-* [Az Apache Hive és a HiveQL használata a HDInsight az Apache Hadoop Apache log4j mintafájl elemzéséhez](../hdinsight-use-hive.md)
-* [Repülőjáratok késési adatainak elemzése a HDInsight interaktív lekérdezés használatával](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Twitter-adatok elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-twitter-data-linux.md)
+* [A Apache Hive és a HiveQL használata a HDInsight Apache Hadoop a minta Apache log4j-fájl elemzéséhez](../hdinsight-use-hive.md)
+* [Repülési késleltetési adatelemzések elemzése a HDInsight interaktív lekérdezés használatával](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Twitter-adatelemzések elemzése Apache Hive használatával a HDInsight-ben](../hdinsight-analyze-twitter-data-linux.md)

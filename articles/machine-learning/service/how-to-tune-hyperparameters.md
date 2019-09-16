@@ -1,7 +1,7 @@
 ---
 title: Hiperparaméterek a modell finomhangolása
-titleSuffix: Azure Machine Learning service
-description: Hatékonyan finomhangolja az Azure Machine Learning szolgáltatás használatával a mély tanulás / gépi tanulási modell hiperparaméterek. Megtudhatja, hogyan határozhatja meg a paraméterek keresési területét, hogyan adhat meg egy elsődleges metrikát az optimalizáláshoz, és korai megszakítást hajthat végre a rosszul futó futtatások.
+titleSuffix: Azure Machine Learning
+description: A Azure Machine Learning használatával hatékonyan hangolhatja a Deep learning-és gépi tanulási modell hiperparaméterek beállítása. Megtudhatja, hogyan határozhatja meg a paraméterek keresési területét, hogyan adhat meg egy elsődleges metrikát az optimalizáláshoz, és korai megszakítást hajthat végre a rosszul futó futtatások.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873069"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999394"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>A modell Azure Machine Learning szolgáltatással hiperparaméterek hangolása
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
 
-Hatékonyan finomhangolja hiperparaméterek a modell Azure Machine Learning szolgáltatás használatával.  Hiperparaméter finomhangolása a következő lépésekből áll:
+Azure Machine Learning használatával hatékonyan hangolhatja be a modell hiperparaméterek beállítása.  Hiperparaméter finomhangolása a következő lépésekből áll:
 
 * Adja meg a paraméter keresési terület
 * Adjon meg egy elsődleges metrika optimalizálása  
@@ -94,7 +94,7 @@ Ez a kód határozza meg a keresési tárhely két paraméter – `learning_rate
 
 ### <a name="sampling-the-hyperparameter-space"></a>Mintavétel a hiperparaméter terület
 
-A paraméter-mintavételezési módszerét használja a hiperparaméter definícióhoz-en keresztül is megadhatja. Az Azure Machine Learning szolgáltatás a szúrópróbaszerű, rács mintavételi és Bayes mintavételi támogatja.
+A paraméter-mintavételezési módszerét használja a hiperparaméter definícióhoz-en keresztül is megadhatja. Azure Machine Learning támogatja a véletlenszerű mintavételezést, a rácsos mintavételezést és a Bayes mintavételezést.
 
 #### <a name="random-sampling"></a>Véletlenszerű mintavétel
 
@@ -186,7 +186,7 @@ Egy korai lemondási szabályzat használatakor konfigurálhatja az alábbi para
 * `evaluation_interval`: a házirend alkalmazására vonatkozó gyakoriságát. Minden egyes a tanítási szkriptet az elsődleges metrika számít egy időközt. Így egy `evaluation_interval` 1 alkalmazza a szabályzatot minden alkalommal, amikor a tanítási szkriptet jelenti az elsődleges metrikát. Egy `evaluation_interval` 2 alkalmazza a szabályzatot minden más, a tanítási szkriptet jelenti az elsődleges metrika alkalommal. Ha nincs megadva, `evaluation_interval` alapértelmezés szerint 1-re van állítva.
 * `delay_evaluation`: késlelteti az intervallumok megadott számú első szabályzat-kiértékelés. Egy nem kötelező paraméter, amely lehetővé teszi az összes konfiguráció futtatása egy kezdeti minimális számú időközök, elkerülve a képzés korai lemondási futtatja. Ha meg van adva, a szabályzat vonatkozik, amely nagyobb vagy egyenlő delay_evaluation evaluation_interval minden többszöröse.
 
-Az Azure Machine Learning szolgáltatás a következő korai lemondási házirendeket támogatja.
+Azure Machine Learning a következő korai megszakítási házirendeket támogatja.
 
 ### <a name="bandit-policy"></a>Bandit házirend
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` a neve, hozzárendeli a hiperparaméter finomhangolása a kísérletet, és `workspace` a munkaterülete, amelyben meg szeretné a kísérlet létrehozása (kísérletek további információkért lásd: [Azure Machine Learning szolgáltatás működése?](concept-azure-machine-learning-architecture.md))
+`experiment_name`a hiperparaméter-hangolási kísérlethez hozzárendelt név, és `workspace` az a munkaterület, amelyben létre kívánja hozni a kísérletet (a kísérletekről további információt a [Hogyan működik Azure Machine learning?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Kísérlet megjelenítése
 
