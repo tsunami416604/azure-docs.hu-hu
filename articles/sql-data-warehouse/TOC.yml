@@ -129,10 +129,16 @@
               href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
         - name: Tényleges táblán alapuló nézet
           items:
+            - name: Teljesítmény-finomhangolási útmutató
+              href: performance-tuning-materialized-views.md
             - name: Létrehozás
               href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
             - name: Módosítás
               href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Rendezett fürtözött oszlopcentrikus index
+          items:
+            - name: Teljesítmény-finomhangolási útmutató
+              href: performance-tuning-ordered-CCI.md
         - name: Eredményhalmaz gyorsítótárazása
           href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Táblák

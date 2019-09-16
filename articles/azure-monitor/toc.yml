@@ -144,8 +144,6 @@
               href: platform/service-providers.md
             - name: Hozzáférés kezelése
               href: platform/manage-access.md
-            - name: Integrálás a Configuration Managerrel
-              href: platform/collect-sccm.md
         - name: Használat és költségek
           items:
             - name: Használat és becsült költségek
@@ -643,8 +641,6 @@
               href: insights/service-map.md
             - name: Számítógépcsoportok
               href: platform/computer-groups.md
-            - name: Configuration Manager
-              href: platform/collect-sccm.md
         - name: Azure-erőforrások
           items:
             - name: Diagnosztikai naplók
@@ -745,6 +741,8 @@
               href: platform/om-agents.md
             - name: Az Operations Manager felmérése
               href: insights/scom-assessment.md
+            - name: A Configuration Manager csatlakoztatása
+              href: platform/collect-sccm.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Adatok elemzése
@@ -764,6 +762,8 @@
             - name: Naplólekérdezések áttekintése
               displayname: 'log query, log queries, query, queries'
               href: log-query/log-query-overview.md
+            - name: Egyszerű naplózás
+              href: log-query/simple-logs.md
             - name: Oktatóanyagok
               items:
                 - name: Log Analytics-oktatóanyag
@@ -785,9 +785,9 @@
                 - name: Nyelvi különbözőségek
                   href: log-query/data-explorer-difference.md
                 - name: Hasznos operátorok
-                  href: log-query/functions.md
-                - name: Functions
                   href: log-query/useful-operators.md
+                - name: Functions
+                  href: log-query/functions.md
                 - name: Váltás a naplóbeli keresésről
                   href: log-query/log-search-transition.md
                 - name: Leckék

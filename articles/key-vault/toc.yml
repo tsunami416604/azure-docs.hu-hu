@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: Alapelvek
   items:
+    - name: Alapfogalmak
+      href: basic-concepts.md
     - name: Biztonság
       items:
         - name: Biztonsági áttekintés
@@ -68,8 +70,6 @@
           href: key-vault-ovw-security-worlds.md
         - name: Kulcstartó védelme
           href: key-vault-secure-your-key-vault.md
-    - name: Mi a Key Vault?
-      href: key-vault-whatis.md
     - name: Helyreállítható törlés
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -92,6 +92,8 @@
           href: create-certificate-scenarios.md
 - name: Útmutatók
   items:
+    - name: App Service által felügyelt identitás használata
+      href: managed-identity.md
     - name: Az Azure Key Vault naplózása
       href: key-vault-logging.md
     - name: Tűzfal mögötti hozzáférés

@@ -121,6 +121,10 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: Profil szerkesztése
       href: billing-how-to-change-azure-account-profile.md
+    - name: Nyílt bankolási és erős ügyfél-hitelesítés
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: Késedelmes egyenleg kezelése
+      href: billing-azure-subscription-past-due-balance.md
     - name: Hozzáférés biztosítása a számlázáshoz
       href: billing-manage-access.md
     - name: A Microsoft ügyfélszerződések szerepkörei az Azure-ban
@@ -131,6 +135,8 @@
       href: billing-view-all-accounts.md
     - name: Költségek rendszerezése számlaszakaszokkal
       href: billing-mca-section-invoice.md
+    - name: A Microsoft ügyfélszerződés EA-feladatai
+      href: billing-mca-enterprise-operations.md
     - name: Nagyvállalati szerződések felügyelete
       items:
         - name: Első lépések a nagyvállalati szerződéses Azure Portalon
@@ -151,8 +157,6 @@
           href: billing-ea-portal-troubleshoot.md
         - name: A Microsoft ügyfélszerződés EA-feladatai
           href: billing-mca-enterprise-operations.md
-    - name: Késedelmes egyenleg kezelése
-      href: billing-azure-subscription-past-due-balance.md
     - name: Számlázási fiók beállítása a Microsoft ügyfélszerződéshez
       href: billing-mca-setup-account.md
     - name: Regisztráció Office 365-fiókkal

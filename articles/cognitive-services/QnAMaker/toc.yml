@@ -111,7 +111,7 @@
         - name: Válasz kérése metaadatok használatával
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Tudásbázist használni képes robot létrehozása
+        - name: Robot létrehozása a QnA Maker és a LUIS használatával
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Más nyelvű tudásbázis létrehozása
           href: How-To/language-knowledge-base.md

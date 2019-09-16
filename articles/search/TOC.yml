@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Cognitive Search
       href: cognitive-search-concept-intro.md
+    - name: Készségek
+      href: cognitive-search-working-with-skillsets.md
     - name: Tudástár
       href: knowledge-store-concept-intro.md
     - name: Leképezések
@@ -166,9 +168,7 @@
         - name: Összetett adattípusok modellezése
           href: search-howto-complex-data-types.md
         - name: Relációs adatok modellezése
-          href: search-example-adventureworks-modeling.md
-        - name: Többszintű aspektusok modellezése
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: Adatok betöltése
       items:
         - name: Adatimportálás áttekintése
@@ -241,10 +241,14 @@
           href: cognitive-search-resources-documentation.md
     - name: Tudástár (előzetes verzió)
       items:
-        - name: Kapcsolódás a Power BI használatával
-          href: knowledge-store-connect-powerbi.md
+        - name: Tudástár létrehozása az Azure Portalon
+          href: knowledge-store-create-portal.md
         - name: Létrehozás a REST és a Postman használatával
           href: knowledge-store-howto.md
+        - name: Megtekintés a Storage Explorerrel
+          href: knowledge-store-view-storage-explorer.md
+        - name: Kapcsolódás Power BI-jal
+          href: knowledge-store-connect-power-bi.md
     - name: Adatok lekérdezése
       items:
         - name: Alapszintű lekérdezés létrehozása
@@ -273,6 +277,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: A gyűjteményszűrők megismerése
           href: search-query-understand-collection-filters.md
+        - name: Többszintű aspektusok példája
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: Az eredmények kezelése
       items:
         - name: Oldalhoz kapcsolódó szolgáltatások

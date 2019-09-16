@@ -614,6 +614,12 @@
       items:
         - name: Rögzített szélességű szövegfájlok feldolgozása
           href: how-to-fixed-width.md
+    - name: SSIS-migrálás helyszínről
+      items:
+        - name: SSIS-migrálás áttekintése
+          href: scenario-ssis-migration-overview.md
+        - name: SSISDB-migrálás felügyelt Azure SQL Database-példányra
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referencia
   items:
     - name: .NET

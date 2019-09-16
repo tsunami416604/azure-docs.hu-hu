@@ -1,63 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure Data Share előzetes verziójának dokumentációja
+### YamlMime:Landing
+title: Az Azure Data Share (előzetes verzió) dokumentációja
+summary: Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
 metadata:
-  title: 'Az Azure Data Share előzetes verziójának dokumentációja – oktatóanyagok, útmutatók'
-  description: Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
-  author: joannapea
-  ms.author: joanpo
+  title: Azure Data Share (előzetes verzió)
+  description: Az Azure Data Share (előzetes verzió) egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
+  services: service
   ms.service: data-share
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/10/2019
-abstract:
-  description: '<p>Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására. Válassza ki a megosztani kívánt adathalmazt, adjon hozzá címzetteket, és máris megoszthatja adatait úgy, hogy közben szabályozhatja, monitorozhatja és felügyelheti az adatmegosztási viszonyokat. </p><p>Ismerje meg oktatóanyagainkból és útmutatóinkból az Azure Data Share használatát.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/azure-friday.png
-      width: 250
-    title: Az Azure Data Share az Azure Fridayen
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
-    width: 250
-sections:
-  - title: Útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg a következő útmutatókból többek között azt, hogyan monitorozhatja adatmegosztását, konfigurálhatja adathalmaz-leképezéseit vagy vehet fel címzetteket:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Az Azure Data Share monitorozása
-            href: /azure/data-share/how-to-monitor
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Adathalmaz-leképezés konfigurálása
-            href: /azure/data-share/how-to-configure-mapping
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Az Azure Data Share hibaelhárítása
-            href: /azure/data-share/data-share-troubleshoot
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: Útmutató az adatok Azure Data Share használatával történő megosztásához
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="share-your-data">Adatok megosztása az Azure Data Share használatával</a>
-          - html: <a href="subscribe-to-data-share">Adatok elfogadása és fogadása az Azure Data Share használatával</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/datashare">REST API</a></p>
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
+  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/14/2019
+  ms.locfileid: "70993942"
+landingContent:
+- title: Tudnivalók az Azure Data Share-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Data Share?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Az Azure Data Share alapelvei
+      url: terminology.md
+    - text: Az Azure Data Share szerepkörei és követelményei
+      url: concepts-roles-permissions.md
+- title: Adatok megosztása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Adatok megosztása az Azure Data Share használatával
+      url: share-your-data.md
+    - text: Adatok elfogadása és fogadása az Azure Data Share használatával
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adathalmaz-leképezések konfigurálása
+      url: how-to-configure-mapping.md
+    - text: Adathalmazok hozzáadása
+      url: how-to-add-datasets.md
+- title: Monitorozás és kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Data Share monitorozása
+      url: how-to-monitor.md
+    - text: Gyakori problémák megoldása
+      url: data-share-troubleshoot.md
+    - text: Adathalmazok hozzáadása
+      url: how-to-add-datasets.md
+    - text: Meghívó törlése
+      url: how-to-delete-invitation.md
+    - text: Megosztási előfizetés visszavonása
+      url: how-to-revoke-share-subscription.md

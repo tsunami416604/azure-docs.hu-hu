@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Anomaly Detector API dokumentációja
+summary: Megtudhatja, hogyan gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint hogyan észlelheti a gépi tanulással kapcsolatos anomáliákat az Anomáliadetektor API használatával. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.
 metadata:
-  title: 'Anomaly Detector API – oktatóanyagok, gyorsútmutatók és API-referencia'
+  title: Anomaly Detector API – oktatóanyagok, gyorsútmutatók és API-referencia
   titleSuffix: Azure Cognitive Services
-  description: 'Az Anomaly Detector API használatával gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint észlelheti a gépi tanulással kapcsolatos rendellenességeket. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.'
+  description: Az Anomaly Detector API használatával gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint észlelheti a gépi tanulással kapcsolatos rendellenességeket. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,62 +12,102 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 'Az Anomaly Detector API használatával könnyedén beágyazhat rendellenességészlelési képességeket az alkalmazásaiba, így a felhasználók gyorsan azonosíthatják a felmerülő a problémákat, ezáltal minimálisra csökkenthetik a veszteséget és az adott probléma az ügyfelekre gyakorolt hatását. Mindehhez nem szükségesek gépi tanulási háttérismeretek. Egyetlen API-hívással aktiválhatja az előre betanított MI-modellt, amely típustól és mennyiségtől függetlenül feldolgozza az idősorozat-adatokat, a pontosság növelése érdekében kiválasztja az adatokhoz legmegfelelőbb rendellenességészlelési modellt, és azonnal automatikusan megjeleníti a felmerülő incidenseket. A szolgáltatást testre szabhatja úgy, hogy mérettől függetlenül minden rendellenességet észleljen.  Az Anomaly Detector használatával többek között azonosíthatja az üzleti incidenseket, monitorozhatja az IoT-eszközök forgalmát, felügyelheti a visszaéléseket és reagálhat a változó piaci viszonyokra.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>Tudnivalók az Anomaly Detector API-ról</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi az az Anomaly Detector API?
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>Optimalizálhatja a rendellenességészlelés eredményeit az API-val kapcsolatos ajánlott eljárások alkalmazásával</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: <p>Többek között beállíthatja a rendellenességészlelés érzékenységét és különféle észlelési módokat használhat.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Az Anomaly Detection API használata
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Idősorozat-adatok rendellenességeinek észlelése a következők használatával:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Anomaly Detector API</a></p>'
-          - title: SDK-k
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: parancssori felület
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: 61db0fe16557b582ad43cd2eddbe8e421a0b743a
+  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/13/2019
+  ms.locfileid: "70967075"
+landingContent:
+- title: Tudnivalók az Anomáliadetektor API-ról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Anomaly Detector API?
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Anomáliadetektor-bemutató
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Az Animáliadetektor API bemutatása
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Az Anomaly Detection API által használt algoritmusok
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: Az anomáliadetektáláshoz használt algoritmusok (tanulmány)
+      url: https://arxiv.org/abs/1906.03821
+- title: Adatok anomáliáinak észlelése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A C# használata
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: A Python használata
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: Anomáliák vizualizálása kötegelt észlelés és a Power BI használatával
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Streamelési adatok anomáliáinak észlelése az Azure Databricks használatával
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: Az észlelési eredmények optimalizálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Beállíthatja az anomáliadetektálás módjait és paramétereit az adatokhoz.
+      url: how-to/identify-anomalies.md
+    - text: Ajánlott eljárásokkal optimalizálhatja az anomáliadetektálás eredményeit.
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Ajánlott eljárások az anomáliadetektor használatához
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Docker-tárolók használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anomáliadetektor-tárolók telepítése és futtatása
+      url: anomaly-detector-container-howto.md
+    - text: Anomáliadetektor-tárolók konfigurálása
+      url: anomaly-detector-container-configuration.md
+    - text: Tárolópéldány üzembe helyezése az Azure-ba
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: Az anomáliadetektor helyszínre helyezése a tárolók támogatásával
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Csatlakozás az Anomáliadetektor-közösséghez
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Csatlakozzon az Anomaly Detector Advisors csoporthoz a Microsoft Teamsben
+      url: https://aka.ms/adadvisorsjoin
+    - text: Felhasználó által létrehozott kiemelt tartalom
+      url: user-generated-content.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list

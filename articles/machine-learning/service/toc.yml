@@ -1,9 +1,9 @@
-- name: Az Azure Machine Learning service dokumentációja
+- name: Az Azure Machine Learning dokumentációja
   href: ../index.yml
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az Azure Machine Learning szolgáltatás?
+    - name: Mi az Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Architektúra és kifejezések
@@ -31,6 +31,11 @@
             - name: Automatizált gépi tanulási modellek betanítása
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Kötegelt kiértékelés folyamatokkal (speciális)
+          items:
+            - name: Besorolási modell kötegelt kiértékelése
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: Vizuális felület
       items:
         - name: 1. Regressziós modell betanítása
@@ -122,7 +127,7 @@
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "Fejlesztési környezet beállítása\_"
+    - name: Fejlesztési környezet beállítása
       items:
         - name: Fejlesztési környezetek konfigurálása
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'

@@ -32,6 +32,10 @@
     - name: Dinamikus titkosítás DRM-mel
       displayName: 'PlayReady, Widevine, FairPlay'
       href: protect-with-drm.md
+- name: Példák
+  items:
+    - name: Media Services-minták
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: Alapelvek
   items:
     - name: Áttekintés

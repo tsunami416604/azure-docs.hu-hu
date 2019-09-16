@@ -98,6 +98,10 @@
       href: functions-premium-plan.md
     - name: Központi telepítés
       href: functions-deployment-technologies.md
+    - name: Események és üzenetkezelés
+      items:
+        - name: Azonos bemenetet szem előtt tartó tervezés
+          href: functions-idempotent.md
     - name: Eseményindítók és kötések
       items:
         - name: Az eseményindítók és kötések ismertetése

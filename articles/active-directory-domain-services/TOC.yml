@@ -89,7 +89,7 @@
       items:
         - name: Üzembe helyezés az Azure AD-alkalmazásproxyval
           href: deploy-azure-app-proxy.md
-        - name: Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz
+        - name: Profilszinkronizálás engedélyezése a SharePoint-kiszolgálóhoz
           href: deploy-sp-profile-sync.md
     - name: Hibaelhárítás
       items:

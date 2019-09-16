@@ -253,6 +253,10 @@
           href: virtual-network-public-ip-address.md
         - name: Nyilvános IP-előtag
           href: manage-public-ip-address-prefix.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Virtuális hálózatok – Portál
+          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
     - name: Hibaelhárítás
       items:
         - name: Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása

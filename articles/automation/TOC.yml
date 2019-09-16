@@ -236,7 +236,7 @@
         - name: Első lépések
           href: automation-dsc-getting-started.md
           displayName: DSC
-        - name: Linux-konfiguráció kezelése
+        - name: Gép konfigurációjának kezelése
           href: automation-quickstart-dsc-configuration.md
           displayName: 'DSC, state configuration, config, node configuration, node'
     - name: Előkészítés

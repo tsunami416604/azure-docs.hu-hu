@@ -4,6 +4,8 @@
   items:
     - name: Tudnivalók az Azure Portalról
       href: azure-portal-overview.md
+    - name: Bevezetés az Azure Gyorskonfigurálási központ használatába
+      href: azure-portal-quickstart-center.md
     - name: Támogatott böngészők és eszközök
       href: azure-portal-supported-browsers-devices.md
 - name: Alapelvek
@@ -25,7 +27,7 @@
     - name: Felhasználói beállítások exportálása vagy törlése
       href: azure-portal-export-delete-settings.md
     - name: Az Azure Portal útmutató videósorozata
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Referencia
   items:
     - name: Billentyűparancsok
