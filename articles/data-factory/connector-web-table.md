@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: eceb61234e3ae10934e6bb9057f8ddc800c19c94
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274712"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009736"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása webes táblából Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -33,6 +33,11 @@ A webes tábla összekötője, a REST- [összekötő](connector-rest.md) és a [
 - A **http-összekötő** általános az adatok bármely http-végpontból való lekéréséhez, például a fájl letöltéséhez. 
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
+
+Ez a webes tábla összekötő a következő tevékenységek esetében támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Az adatok a webes tábla adatbázisából bármilyen támogatott fogadó adattárba másolhatók. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -116,7 +121,7 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="web-table-as-source"></a>Webes tábla forrásként
 
-Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be a forrás típusát a **Websource**értékre, a további tulajdonságok nem támogatottak.
+Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be aforrás típusát a websource értékre, a további tulajdonságok nem támogatottak.
 
 **Példa:**
 
@@ -153,7 +158,7 @@ Az adatok webtáblából való másolásához a másolási tevékenységben áll
 
 Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonságaiban](#dataset-properties)kell konfigurálni, az alábbi módon használhatja például az Excel 2016 eszközt:
 
-1. Indítsa el az **Excel 2016 alkalmazást** , és váltson át az **adatlapra.**
+1. Indítsa el az **Excel 2016 alkalmazást** , és váltson át az adatlapra.
 2. Kattintson a **New Query (új lekérdezés** ) elemre az eszköztáron, mutasson a **más forrásokból** lehetőségre, és kattintson **a from web**
 
     ![Power Query menü](./media/copy-data-from-web-table/PowerQuery-Menu.png)
@@ -165,7 +170,7 @@ Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonsá
 4. Ha a **webes tartalom elérése** párbeszédpanel jelenik meg, válassza ki a **megfelelő URL-címet**, a **hitelesítést**, majd kattintson a **Kapcsolódás**elemre.
 
    ![Hozzáférés a webes tartalomhoz párbeszédpanel](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. Kattintson a fanézetben **a táblázat elemre** a tartalom megjelenítéséhez, majd kattintson a lap alján található **Szerkesztés** gombra.  
+5. Kattintson a fanézetben a táblázat elemre a tartalom megjelenítéséhez, majd kattintson a lap alján található **Szerkesztés** gombra.  
 
    ![Navigátor párbeszédpanel](./media/copy-data-from-web-table/Navigator-DialogBox.png)
 6. A **Lekérdezés-szerkesztő** ablakban kattintson **speciális szerkesztő** gombra az eszköztáron.
@@ -177,6 +182,10 @@ Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonsá
 
 Ha az Excel 2013-et használja, az index beszerzéséhez használja a [Excelhez készült Microsoft Power Query](https://www.microsoft.com/download/details.aspx?id=39379) . További részletekért lásd [a kapcsolódás weblaphoz](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) című cikket. A lépések hasonlóak, ha a [Microsoft Power bi for Desktopot](https://powerbi.microsoft.com/desktop/)használja.
 
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

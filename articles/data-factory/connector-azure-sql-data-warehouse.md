@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813588"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009954"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,7 +28,7 @@ Ez a cikk az adatok Azure SQL Data Warehouseba való másolásának módját ism
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez az Azure Blob-összekötő a következő tevékenységek esetében támogatott:
+Ez az Azure SQL Data Warehouse-összekötő a következő tevékenységek esetén támogatott:
 
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrix-](copy-activity-overview.md) táblázattal
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
@@ -379,7 +379,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa máso
 | rejectType        | Megadja, hogy a **rejectValue** akkor Szövegkonstansérték vagy százalékos.<br/><br/>Engedélyezett értékek a következők **érték** (alapértelmezett), és **százalékos**. | Nem                                            |
 | rejectSampleValue | Mielőtt PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg.<br/><br/>Megengedett értékek: 1, 2, stb. | Igen, ha a **rejectType** van **százalékos**. |
 | useTypeDefault    | Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett).<br><br> | Nem                                            |
-| writeBatchSize    | A **kötegekben**az SQL-táblába beillesztett sorok száma. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan határozza meg a megfelelő batch-méretet a sor mérete alapján. | Nem                                            |
+| writeBatchSize    | A **kötegekben**az SQL-táblába beillesztett sorok száma. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján. | Nem                                            |
 | writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **timespan**. Példa: "00:30:00" (30 perc). | Nem                                            |
 | preCopyScript     | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem                                            |
 | tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a szakaszos másolás a másolási tevékenységben van konfigurálva. Az engedélyezett értékek a `none` következők: (alapértelmezett `autoCreate`),. |Nem |
@@ -440,7 +440,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
    3. `rowDelimiter`**alapértelmezett**, **\n**, **\r\n**vagy **\r**.
    4. `nullValue`Alapértelmezés szerint marad, vagy **üres karakterláncra** ("") van állítva, `treatEmptyAsNull` és az alapértelmezett érték, vagy igaz értékre van állítva.
    5. `encodingName`Alapértelmezés szerint marad, vagy az **UTF-8**értékre van állítva.
-   6. `quoteChar`, `escapeChar` és`skipLineCount` nincs megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
+   6. `quoteChar`, `escapeChar` és`skipLineCount` nincs megadva. A albase-támogatás kihagyása `firstRowAsHeader` a fejlécsorból, amely az ADF-ben konfigurálható.
    7. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységben igaz értékre kell állítani.
@@ -625,6 +625,14 @@ Másolt adatok vagy az Azure SQL Data Warehouse, a következő hozzárendelések
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak és formátumok](copy-activity-overview.md##supported-data-stores-and-formats).

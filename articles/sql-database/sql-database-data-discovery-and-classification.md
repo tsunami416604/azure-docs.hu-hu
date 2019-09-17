@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0bba755ec5683e988bb8ae3f2308a1c298b228b0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000564"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009991"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
@@ -144,8 +144,11 @@ Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A kö
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése
 - [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) ) – egy adott oszlop érzékenységi címkéjét törli
+- [Javaslat letiltása](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) – az érzékenységi javaslatok letiltása egy adott oszlopban
+- [Javaslat engedélyezése](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) – az érzékenységi javaslatok engedélyezése egy adott oszlopban (a javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -lekéri egy adott oszlop érzékenységi címkéjét
 - [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – egy adott adatbázis aktuális érzékenységi címkéit kapja meg
+
 - [Adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – egy adott adatbázis javasolt érzékenységi címkéit kéri le
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Adatfelderítés és besorolás kezelése az Azure PowerShell használatával

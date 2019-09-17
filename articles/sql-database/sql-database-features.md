@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2ddef73121ef2f6c145516ca114989aa12b8003c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873514"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010298"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -32,7 +32,7 @@ Azure SQL Database kezeli az adatbázisait, és garantálja a magas rendelkezés
 
 A következő táblázat felsorolja a SQL Server főbb funkcióit, és információt nyújt arról, hogy a szolgáltatás részben vagy teljes mértékben támogatott-e a felügyelt példányban, illetve a önálló adatbázis és a rugalmas készletekben, és a szolgáltatással kapcsolatos további információkra mutató hivatkozást tartalmaz.
 
-| **SQL-szolgáltatás** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
+| **SQL-szolgáltatás** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) |
 | [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | A [magas rendelkezésre állás](sql-database-high-availability.md) minden adatbázishoz tartozik. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) | A [magas rendelkezésre állást](sql-database-high-availability.md) minden adatbázis tartalmazza, és a [felhasználók nem kezelhetik](sql-database-managed-instance-transact-sql-information.md#always-on-availability). A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) |
@@ -112,7 +112,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 
 Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáadott, új értékkel rendelkező Pásti-képességet biztosít. Számos külső szolgáltatás használható Azure SQL Database szolgáltatással. 
 
-| **Platform funkció** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
+| **Platform funkció** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
 | [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Nem, lásd: [automatikus feladatátvételi csoportok (előzetes verzió)](sql-database-auto-failover-group.md) Alternatív megoldásként |
 | [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen, a [nyilvános előzetes](sql-database-auto-failover-group.md) verzióban|
@@ -131,7 +131,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | [Házirend alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
 | Nyilvános IP-cím | Igen. A hozzáférés tűzfal vagy szolgáltatási végpontok használatával korlátozható.  | Igen. Explicit módon engedélyezni kell, és engedélyezni kell a 3342-es portot a NSG-szabályokban. Ha szükséges, a nyilvános IP-cím is letiltható. További részletekért tekintse meg a [nyilvános végpontot](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Időponthoz tartozó adatbázis-visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Nem. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. A felügyelt példányok nem oszthatnak meg erőforrásokat. |
+| Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Igen. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett több felügyelt példányt is telepíthet olyan példány- [készletekbe (előzetes verzió)](sql-database-instance-pools.md) , amelyek megoszthatják az erőforrásokat. |
 | Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
 | SQL-alias | Igen, lásd: [DNS-alias](dns-alias-overview.md) | Nem |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
@@ -146,7 +146,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 ## <a name="tools"></a>Eszközök
 Az Azure SQL Database különféle adateszközöket támogat, amelyek segítségével kezelheti adatait.
 
-| **Eszköz** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok** |
+| **Eszköz** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
 | Azure Portal | Igen | Igen |
 | Azure CLI | Igen | Igen|
@@ -167,7 +167,7 @@ Az Azure SQL Database különféle adateszközöket támogat, amelyek segítség
 
 Különböző áttelepítési módszerekkel helyezheti át az adatait SQL Server, önálló adatbázis és felügyelt példány-adatbázisok között. Bizonyos módszerek **online** állapotú, és a forráson végrehajtott összes módosítást az áttelepítés futtatása során hajtják végre, a **kapcsolat nélküli** módszerekkel pedig le kell állítania a forrásban lévő adatok módosításának folyamatát, miközben az áttelepítés folyamatban van.
 
-| **Forrás** | **Önálló adatbázis és rugalmas készlet** | **Felügyelt példány** |
+| **Forrás** | **Önálló adatbázis és rugalmas készlet** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
 | SQL Server (helyszíni, AzureVM, Amazon RDS) | **Online:** [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) <br/> **Offline** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) <br/> **Offline** Natív biztonsági mentés/visszaállítás, [BACPAC fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [Pillanatkép-replikáció](sql-database-managed-instance-transactional-replication.md) |
 | Önálló adatbázis | **Offline** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline** [BACPAC-fájl (Importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
@@ -183,3 +183,4 @@ A Microsoft továbbra is felveszi a szolgáltatásokat a Azure SQL Databasehoz. 
 További információ az Azure SQL Database-ízekkel kapcsolatban:
 - [Mi az SQL Database?](sql-database-technical-overview.md)
 - [Mi az a felügyelt példány?](sql-database-managed-instance.md)
+- [Mik azok a felügyelt példányok készletei?](sql-database-instance-pools.md)

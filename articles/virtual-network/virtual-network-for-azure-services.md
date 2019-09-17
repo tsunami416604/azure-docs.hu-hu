@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 80d89914f33273fcb033ab47098a8864b11974c9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c345b31c218c4678e7811c36113c94e0c4d2ac03
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876159"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019056"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózati integráció az Azure-szolgáltatásokhoz
 
 Az Azure-szolgáltatások Azure-beli virtuális hálózatba való integrálása lehetővé teszi a szolgáltatáshoz való privát hozzáférést a virtuális gépekről vagy a virtuális hálózatban lévő számítási erőforrásokról.
 A virtuális hálózatban az alábbi beállításokkal integrálhatja az Azure-szolgáltatásokat:
 - A szolgáltatás dedikált példányainak üzembe helyezése virtuális hálózatban. A szolgáltatások ezután a virtuális hálózaton és a helyszíni hálózatokon is elérhetők.
-- Virtuális hálózat kiterjesztése a szolgáltatásra a szolgáltatási végpontokon keresztül. A szolgáltatási végpontok lehetővé teszik az egyes szolgáltatási erőforrások védelmét a virtuális hálózattal.
+- [Privát hivatkozás](../private-link/private-link-overview.md) használatával a szolgáltatás egy adott példányát a virtuális hálózatról és a helyszíni hálózatokról is elérheti.
 
-Ha több Azure-szolgáltatást szeretne integrálni a virtuális hálózatba, a fenti minták közül egyet vagy többet is egyesíthet. Telepítheti például a HDInsight-t a virtuális hálózatba, és biztonságossá teheti a Storage-fiókot a HDInsight-alhálózaton a szolgáltatási végpontokon keresztül.
+A szolgáltatást nyilvános végpontok használatával is elérheti, ha a virtuális hálózatot kiterjeszti a szolgáltatásra a szolgáltatási [végpontokon](virtual-network-service-endpoints-overview.md)keresztül. A szolgáltatási végpontok lehetővé teszik a szolgáltatási erőforrások védelmét a virtuális hálózattal.
  
 ## <a name="deploy-azure-services-into-virtual-networks"></a>Azure-szolgáltatások üzembe helyezése virtuális hálózatokban
 
@@ -57,12 +57,7 @@ A szolgáltatások virtuális hálózaton belüli üzembe helyezése a következ
 | Identitás | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nem <br/>
 | Containers | [Az Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service motor](https://github.com/Azure/acs-engine) az Azure Virtual Network CNI [beépülő modullal](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|Nem ²<br/> Igen <br/><br/> Nem
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-környezet](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Igen <br/> Igen <br/> Igen
-| Házigazdája | [Azure dedikált HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Igen <br/> Igen <br/>
+| Szolgáltatott | [Azure dedikált HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Igen <br/> Igen <br/>
 | | |
 
 ¹ a "dedikált" kifejezés azt jelenti, hogy csak az adott alhálózaton üzemelő szolgáltatás-erőforrások helyezhetők üzembe, és nem kombinálhatók az ügyfél virtuális géppel/VMSSs <br/> ² ajánlott, de nem kötelező követelmény a szolgáltatás számára.
-
-
-## <a name="service-endpoints-for-azure-services"></a>Szolgáltatási végpontok az Azure-szolgáltatásokhoz
-
-Bizonyos Azure-szolgáltatások nem helyezhetők üzembe virtuális hálózatokban. A virtuális hálózati szolgáltatás végpontjának engedélyezésével korlátozhatja a hozzáférését bizonyos szolgáltatási erőforrásokhoz, csak meghatározott virtuális hálózati alhálózatokra.  További információ a [virtuális hálózati szolgáltatás](virtual-network-service-endpoints-overview.md)-végpontokról és azokról a szolgáltatásokról, amelyekhez engedélyezhető a végpontok.
