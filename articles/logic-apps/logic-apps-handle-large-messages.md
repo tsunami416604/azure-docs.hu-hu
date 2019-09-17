@@ -119,7 +119,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Logic Apps kérelem fejlécének mezője | Value | Type | Leírás |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
+   | **x-ms-transfer-mode** | darabolásos | String | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-ms-content-length** | <*Content-Length*> | Integer | A teljes tartalom mérete bájtban a darabolás előtt |
    ||||
 
@@ -128,7 +128,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
    | Végpont válaszának fejléce mező | Type | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nem | A javasolt adathalmaz mérete bájtban |
-   | **Location** | Sztring | Igen | A HTTP-javítási üzenetek küldésének helye |
+   | **Location** | String | Igen | A HTTP-javítási üzenetek küldésének helye |
    ||||
 
 3. A logikai alkalmazás a következő adatokat tartalmazó HTTP-javítási üzeneteket hozza létre és küldi el:
