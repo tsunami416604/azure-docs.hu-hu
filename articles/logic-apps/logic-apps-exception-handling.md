@@ -72,8 +72,8 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 | Value | Type | Leírás |
 |-------|------|-------------|
-| <*retry-policy-type*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` `fixed`, `none`,, vagy`exponential` | 
-| <*retry-interval*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz `PT5S` , a maximális `PT1D`intervallum. Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. | 
+| <*retry-policy-type*> | String | A használni kívánt újrapróbálkozási szabályzat típusa: `default` `fixed`, `none`,, vagy`exponential` | 
+| <*retry-interval*> | String | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz `PT5S` , a maximális `PT1D`intervallum. Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. | 
 | <*retry-attempts*> | Integer | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie | 
 ||||
 
