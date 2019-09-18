@@ -76,7 +76,7 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 | outgoingHeaders |Tartalmazó JToken | Kimenő AS2-üzenet fejléc részleteit. (Választható lehetőség) |
 | isNrrEnabled | Boolean | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
 | isMdnExpected | Boolean | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
-| mdnType | Enum | Engedélyezett értékek a következők **NotConfigured**, **szinkronizálási**, és **aszinkron**. (Kötelező) |
+| mdnType | Enum | Engedélyezett értékek a következők **NotConfigured**, **Sync**, és **Async**. (Kötelező) |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN követési séma
