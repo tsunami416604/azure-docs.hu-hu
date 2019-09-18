@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552563"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073813"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: Bevételezési adatok kinyerése az űrlap-felismerő REST API és a cURL használatával
 
@@ -34,9 +34,9 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-a-receipt"></a>Visszaigazolás elemzése
 
-A nyugták elemzésének megkezdéséhez hívja meg az **elemzés** visszaigazolása API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
+A nyugták elemzésének megkezdéséhez hívja meg az **elemzés visszaigazolása** API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje `<Endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje `<your receipt URL>` le a értékét egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
 
@@ -52,7 +52,7 @@ https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations
 
 ## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Az elemzési beérkezési  API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez.
+Az elemzési **beérkezési** API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez.
 
 1. Cserélje `<operationId>` le az elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
