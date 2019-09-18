@@ -62,26 +62,6 @@ sections:
           - title: Magas szintű biztonság
             href: /azure/sql-database/sql-database-security-index
             html: <p>Példánya és adatbázisainak biztonságáról az Azure SQL Database beépített biztonsági funkcióival gondoskodhat.<p>
-  - title: Új és előzetes verziójú funkciók
-    items:
-      - type: paragraph
-        text: 'A felügyelt példányt folyamatosan fejlesztjük új funkciók hozzáadásával:'
-      - type: list
-        style: unordered
-        items:
-          - html: (Előzetes verzió) <a href="/azure/sql-database/sql-database-instance-pools"> Példánykészletek</a> – kényelmes és költséghatékony megoldás a kisebb SQL-példányok felhőbe való migrálására.
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuális mag a Gen5 hardvergeneráción</a>'
-          - html: 'Visual Studio-előfizetők havi <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > Azure-kreditjét használó előfizetések támogatása</a>'
-          - html: 'A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 és SharePoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> támogatása'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Időzóna konfigurálása</a> a példány létrehozása során.'
-          - html: '<a href="https://aka.ms/managed-instance-collation">Szabadon választott kiszolgálói szintű rendezéssel</a> rendelkező példányok létrehozása.'
-          - html: 'A georedundáns visszaállítási funkció lehetővé teszi az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázis egy másik adatközpontba történő visszaállítását a PowerShell használatával</a>.'
-          - html: '(Előzetes verzió) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Elvetett adatbázisok újbóli létrehozása a PowerShell használatával</a>'
-          - html: A felügyelt példányokat <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a> védi.
-          - html: '(Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcs használata</a> a helyszíni adatbázisok migrálásakor, amelyeken már engedélyezve van a transzparens adattitkosítás (TDE).'
-          - html: '(Előzetes verzió) A <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportokkal</a> megőrizheti a példány másolatát egy másik régióban, és biztosíthatja, hogy az adatai még egy regionális katasztrófa esetén is elérhetők legyenek.'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Akár 35 napig megőrizheti a biztonsági másolatokat</a> az időponthoz kötött visszaállítás céljából. Vegye figyelembe, hogy a biztonsági másolatok hosszú távú (legfeljebb 10 éves) megőrzése továbbra sem támogatott, így másik megoldásként a <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Csak másolással készült biztonsági másolatok</a> használhatók.'
-          - html: '(Előzetes verzió) <a href="https://aka.ms/managed-instance-aadlogins">Példányszintű Azure AD-szolgáltatásnevek (-bejelentkezések)</a> létrehozása a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> utasítással.'
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
