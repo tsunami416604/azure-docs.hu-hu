@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: Titkos kód beállítása és lekérése – Node.js
       href: quick-create-node.md
-    - name: Titkos kód beállítása és lekérése – Resource Manager-sablon
+    - name: Titkos kód beállítása és lekérése – sablon
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Oktatóanyagok

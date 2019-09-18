@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: Kiszolgálói naplók
               href: concepts-server-logs.md
+            - name: Naplók
+              href: concepts-audit.md
             - name: Lekérdezéstár
               items:
                 - name: Lekérdezéstár
