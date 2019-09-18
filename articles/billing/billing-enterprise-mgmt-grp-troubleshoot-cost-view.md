@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás Azure vállalati költségek nézet
-description: Megtudhatja, hogyan lehetséges, hogy az Azure Portalon szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
+title: Az Azure Enterprise költségnézeteinek hibaelhárítása
+description: Megtudhatja, hogyan oldhatja meg az Azure Portalon található szervezeti költségnézetek esetleges problémáit.
 author: bandersmsft
 manager: amberb
 ms.service: billing
@@ -12,38 +12,38 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491273"
 ---
-# <a name="troubleshoot-enterprise-cost-views"></a>Vállalati költségek nézet hibaelhárítása
+# <a name="troubleshoot-enterprise-cost-views"></a>Az Enterprise költségnézeteinek hibaelhárítása
 
-Vállalati belépéseket, belül számos beállítás, amely a felhasználót a regisztrációs belül nem jelenik meg a költségek tartoznak.  Ezek a beállítások a beléptetés adminisztrátora kezeli. Vagy, ha a regisztráció nem vásárolta meg közvetlenül a Microsoft, a beállításokat a partner által kezelt.  Ezen cikk segítségével megtudhatja, Mik azok a beállítások, és hogy azok hatással a regisztráció. Ezek a beállítások az Azure szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök függetlenek egymástól.
+A vállalati regisztrációkban számos olyan beállítás létezik, amelyek miatt előfordulhat, hogy a regisztrációhoz tartozó felhasználók nem látják a költségeket.  Ezeket a beállításokat a regisztrációs adminisztrátor kezeli. Ha a regisztrációt nem közvetlenül a Microsofton keresztül vásárolja, a beállításokat a partner kezeli.  Ennek a cikknek a segítségével megismerheti a beállításokat és azok a regisztrációra gyakorolt hatását. Ezek a beállítások függetlenek az Azure szerepköralapú hozzáférés-vezérlési (RBAC-) szerepköreitől.
 
-## <a name="enable-access-to-costs"></a>Engedélyezze a hozzáférést a költségek
+## <a name="enable-access-to-costs"></a>Hozzáférés engedélyezése a költségekhez
 
-Nem engedélyezett, üzenetet látja, vagy *"költség nézetek le vannak tiltva a regisztrációs."* Ha a költségadatok keres?
-![Képernyőkép a "nem engedélyezett" előfizetéshez tartozó aktuális költség mezőben.](media/billing-enterprise-mgmt-groups/unauthorized.png)
+A „Jogosulatlan” vagy a *„A költségnézetek le vannak tiltva a regisztrációban”* üzenetet látja a költségekkel kapcsolatos adatok keresésekor?
+![Képernyőkép az előfizetés Aktuális költség mezőjének „Jogosulatlan” hibaüzenetéről.](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
-A következő okok valamelyike lehet:
+Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 
-1. Az Azure enterprise-partneren keresztül vásárolt, és a partner nem kiadás díjszabása még. Lépjen kapcsolatba a partnerrel az árképzés belül beállítás frissítése a [az Enterprise portal](https://ea.azure.com).
-2. Ha már a közvetlen nagyvállalati szerződéssel rendelkező ügyfelek, van néhány lehetőségeket:
-    * Ön a fiók tulajdonosa és a regisztráció rendszergazdájához le van tiltva a **AO költségek megtekintése** beállítás.  
-    * A részleg rendszergazdája, és a regisztráció rendszergazdájához le van tiltva a **DA költségek megtekintése** beállítás.
-    * Lépjen kapcsolatba a regisztrációs rendszergazdától kérhet hozzáférést. A regisztrációs adminisztrátoránál frissítheti a beállításokat a [az Enterprise portal](https://ea.azure.com/manage/enrollment).
+1. Egy vállalati partneren keresztül vásárolta meg az Azure-t, és a partner még nem adta ki a díjszabást. A díjszabási beállítás az [Enterprise Portalon](https://ea.azure.com) történő beállításának frissítése érdekében vegye fel a kapcsolatot a partnerrel.
+2. Ha Ön EA Direct-ügyfél, több ok is szóba jöhet:
+    * Ön fióktulajdonos, és a regisztrációs adminisztrátor letiltotta a **díjtételek megtekintésének engedélyezését a fióktulajdonos számára**.  
+    * Ön részlegszintű tulajdonos, és a regisztrációs adminisztrátor letiltotta a **díjtételek megtekintésének engedélyezését a részlegszintű rendszergazda számára**.
+    * Hozzáférésért vegye fel a kapcsolatot a regisztrációs adminisztrátorral. A regisztrációs adminisztrátor az [Enterprise Portalon](https://ea.azure.com/manage/enrollment) frissítheti a beállításokat.
 
-      ![Képernyőkép a vállalati portál beállításait nézet eredő díjakat kiszámlázzuk.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
+      ![Képernyőkép a díjtételek megtekintésének beállításáról az Enterprise Portalon.](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
 
-## <a name="asset-is-unavailable"></a>Eszköz nem érhető el.
+## <a name="asset-is-unavailable"></a>Az objektum nem érhető el
 
-Ha hibaüzenetet kap **az objektum nem érhető el** amikor megpróbál hozzáférni egy előfizetést, vagy a felügyeleti csoportban, majd nem rendelkezik a megfelelő szerepkört ezen elem megtekintéséhez.  
+Ha olyan hibaüzenetet kap, amikor megpróbál hozzáférni egy előfizetéshez vagy egy felügyeleti csoporthoz, amely szerint **Az objektum nem érhető el**, akkor nem rendelkezik megfelelő szerepkörrel az elem megtekintéséhez.  
 
-!["Az eszköz nem érhető el" üzenet megjelenítő képernyőkép.](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![Képernyőkép „Az objektum nem érhető el” hibaüzenetről.](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
-Hozzáférés kérése az Azure előfizetés vagy a felügyeleti csoport rendszergazdája. További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
+Kérjen hozzáférést az Azure-előfizetés vagy a felügyeleti csoport rendszergazdájától. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 - Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

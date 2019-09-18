@@ -1,6 +1,6 @@
 ---
-title: Újraaktiválás Azure tanulók számára előfizetése le van tiltva. |} A Microsoft Docs
-description: Azt ismerteti, miért az Azure tanulók számára előfizetése le van tiltva, és újraaktiválása azt.
+title: Letiltott Azure for Students-előfizetés újraaktiválása | Microsoft Docs
+description: Ez a cikk azt ismerteti, miért lett letiltva az Azure for Students-előfizetése, és hogyan aktiválhatja újra.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -16,45 +16,45 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "60615936"
 ---
-# <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért az Azure tanulók számára előfizetése le van tiltva, és hogyan aktiválja újra azt?
+# <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért lett letiltva az Azure for Students-előfizetésem, és hogyan aktiválhatom újra?
 
-Előfordulhat, hogy az Azure tanulók számára előfizetése letiltásának mert felhasználta az összes kreditjét, kreditje lejárt, vagy az előfizetés véletlenül megszakította. Bemutatjuk, milyen probléma érvényes Önre, és megtudhatja, hogyan kezdheti előfizetését újraaktiválni.
+Az Azure for Students-előfizetés letiltásának több oka lehet: felhasználta az összes kreditet, a kreditek lejártak, illetve véletlenül lemondta az előfizetést. Válassza ki az Ön esetében érvényes problémát, és ismerje meg, hogyan aktiválhatja újra az előfizetését.
 
-## <a name="youve-used-all-of-your-credit"></a>Felhasználta az összes kreditjét
+## <a name="youve-used-all-of-your-credit"></a>Felhasználta az összes kreditet
 
-Az Azure diákoknak fiókjában kínál 100 USD kreditet és ingyenes szolgáltatások 12 hónapig korlátozott mennyiségű. A kredit az ingyenes szolgáltatásokat és egy mennyiségek támogatáson túli használat vonni. Miután kreditjeit ér véget, Azure letiltja a szolgáltatások és az előfizetés. Azure-szolgáltatások használatának folytatásához, kell az előfizetés frissítése használatalapú fizetéses előfizetésre kapcsolatba lép a [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A frissítés befejezése után az előfizetés továbbra is hozzáfér, ingyenes szolgáltatások 12 hónapig a regisztráció dátuma. Ön csak fizetnem az ingyenes szolgáltatásokat és egy mennyiségek használat.
+Az Azure for Students-fiók 100 dollár értékű kreditet és korlátozott mennyiségű ingyenes szolgáltatást biztosít Önnek 12 hónapig. Az ingyenes szolgáltatásokon és mennyiségeken felüli használat levonása a kreditekből történik. Ha elfogynak a kreditek, az Azure letiltja a szolgáltatásait és az előfizetését. Az Azure-szolgáltatások használatának folytatásához használatalapú fizetésesre kell frissítenie az előfizetését. Ehhez vegye fel a kapcsolatot az [Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A frissítést követően a regisztráció dátumától számított 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatásokon és mennyiségeken felüli használatért kell fizetnie.
 
-A fennmaradó kredit ellenőrzéséhez a [a Microsoft Azure Sponsorship portálon](https://www.microsoftazuresponsorships.com/balance)
+A fennmaradó kreditek mennyiségét a [Microsoft Azure Sponsorships portálon](https://www.microsoftazuresponsorships.com/balance) tekintheti meg.
 
-1. Jelentkezzen be az Azure diákoknak fiók hitelesítő adatait.
-2. Az egyenleg oldal használt és a fennmaradó kredit tájékoztatást nyújt. A kreditek lejárati dátuma a kredit diagram alatt találja.  
+1. Jelentkezzen be Azure for Students-fiókja hitelesítő adataival.
+2. Az egyenleg oldalán megtekintheti a felhasznált és a fennmaradó kreditekkel kapcsolatos információkat. A kreditek lejárati dátumát a kreditdiagram alatt találja.  
    
-    ![Képernyőkép kredit információk az Azure tanulók számára előfizetése, amely jeleníti meg](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
+    ![Képernyőkép az Azure for Students-előfizetésre vonatkozó kreditinformációkról](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. Használat az Azure-kredit által felhasznált szolgáltatások ellenőrzéséhez válassza **használati** majd a bal oldali navigációs menüben válassza ki az Azure tanulók számára előfizetése.
+3. Az Azure-kreditet felhasználó szolgáltatások használati adatainak megtekintéséhez a bal oldali navigációs sávon válassza a **Usage** (Használat) lehetőséget, majd válassza ki Azure for Students-előfizetését.
 
-    ![Az Azure tanulók számára ajánlatbeli kreditek méretkihasználtsági adatait bemutató képernyőkép](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-usage.png)
+    ![Képernyőkép az Azure for Students-kreditek használati adatairól](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 
-A tábla a következő oszlopokat tartalmazza:
+A táblázat az alábbi oszlopokat tartalmazza:
 
-* **Szolgáltatás neve:** Szolgáltatás, amely az Azure-kredit is használja.
-* **Szolgáltatás-erőforrást:** Mértékegység meghatározásáért rendszer, elérheti a szolgáltatást.
-* **Költségek:** A szolgáltatás töltött USD($) a hitel összegét.
+* **Service Name** (Szolgáltatásnév): Az Azure-kreditet felhasználó szolgáltatás.
+* **Service Resource** (Szolgáltatási erőforrás): A mértékegység a használt szolgáltatás esetében.
+* **Spend** (Költség): A szolgáltatásra költött kredit mennyisége amerikai dollárban (USD).
 
-## <a name="your-credit-has-expired"></a>Kreditje lejárt
+## <a name="your-credit-has-expired"></a>A kredit lejárt
 
-Az Azure tanulók számára ajánlatbeli kreditek lejár a 12 hónap végén. Miután kreditje lejárt, Azure letiltja az előfizetését. Azure-szolgáltatások használatának folytatásához, kell az előfizetés frissítése használatalapú fizetéses előfizetésre kapcsolatba lép a [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A frissítés befejezése után az Azure, utólagos elszámolású díjszabás szerint használ szolgáltatásokért díjat.
+Az Azure for Students-kredit 12 hónap letelte után lejár. A kredit lejáratakor az Azure letiltja az előfizetést. Az Azure-szolgáltatások használatának folytatásához használatalapú fizetésesre kell frissítenie az előfizetését. Ehhez vegye fel a kapcsolatot az [Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). A frissítés után az Azure használatalapú díjat számít fel a használt szolgáltatásokért.
 
-## <a name="youve-accidentally-canceled-your-subscription"></a>Az előfizetés véletlenül megszakította
+## <a name="youve-accidentally-canceled-your-subscription"></a>Véletlenül lemondta az előfizetést
 
-Ha véletlenül megszakította a az Azure diákoknak, újraaktiválhatja kapcsolatba lép a [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Ha mégis újraaktiválná, ha továbbra is fennáll férhessenek hozzá a fennmaradó kredit és ingyenes szolgáltatások 12 hónapig a regisztráció dátuma.
+Ha véletlenül lemondta az Azure for Students-előfizetést, akkor az újraaktiváláshoz vegye fel a kapcsolatot az [Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Az újraaktiválást követően a regisztráció dátumától számított 12 hónapig továbbra is hozzáférhet a fennmaradó kreditekhez és az ingyenes szolgáltatásokhoz.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

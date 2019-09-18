@@ -1,6 +1,6 @@
 ---
-title: Figyelje és kövesse az Azure ingyenes szolgáltatás használata
-description: Ismerje meg, hogyan ellenőrizheti az ingyenes szolgáltatás használata az Azure portal és a használati CSV-fájl.
+title: Az ingyenes Azure-szolgáltatás használatának monitorozása és nyomon követése
+description: Tudja meg, hogyan ellenőrizheti az ingyenes szolgáltatások használatát az Azure Portalon és a használati CSV-fájlban.
 author: amberbhargava
 manager: amberb
 tags: billing
@@ -12,62 +12,62 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 3543bed7f699fd149ca7f2a6f61e9eb5aad5f1a3
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491425"
 ---
-# <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Ellenőrizze az Azure ingyenes fiókhoz tartozó ingyenes szolgáltatás használata
+# <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Az ingyenes Azure-fiókhoz járó ingyenes szolgáltatások ellenőrzése
 
-Ön nem kell fizetnie szolgáltatásokért díjmentesen ingyenes Azure-fiókra, kivéve, ha túllépi a szolgáltatások korlátozásait. Megőrzési ideje a korlátokat, használhatja az Azure portal vagy a használati fájlban figyeléséhez és nyomon követéséhez az ingyenes szolgáltatás használata.
+Az ingyenes Azure-fiókhoz tartozó ingyenes szolgáltatásokat díjmentesen veheti igénybe, amennyiben nem lépi túl a szolgáltatások korlátait. Annak érdekében, hogy a korlátokon belül maradjon, használhatja az Azure Portalt vagy a használati fájlját az ingyenes szolgáltatáshasználat monitorozásához és nyomon követéséhez.
 
-## <a name="check-usage-in-the-azure-portal"></a>Ellenőrizze a használatot az Azure Portalon
+## <a name="check-usage-in-the-azure-portal"></a>A használati adatok ellenőrzése az Azure Portalon
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2.  A bal oldali navigációs területen jelölje ki a **minden szolgáltatás**.
+2.  A navigációs terület bal oldalán válassza ki a **Minden szolgáltatás** elemet.
 
 3.  Válassza az **Előfizetések** lehetőséget.
 
-4.  Válassza ki a létrehozott való regisztráció során az ingyenes fiók előfizetést.
+4.  Válassza ki azt az előfizetést, amelyet az ingyenes fiók regisztrációjakor hozott létre.
 
-    ![Előfizetések bemutató képernyőkép](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
+    ![Az összes előfizetést megjelenítő képernyőkép](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
 
-5.  Az Áttekintés szakaszban jeleníti meg az előfizetéssel kapcsolatos alapvető adatokat. Például előfizetés-azonosító, ajánlat és az előfizetés neve. Ha a lejár a fiókjához tartozó ingyenes kreditekkel is talál információt.
+5.  Az áttekintési szakasz lényeges információkat jelenít meg az előfizetéséről. Ilyen például az előfizetés azonosítója, az ajánlat típusa és az előfizetés neve. Ezek az információk az ingyenes fiókkreditek lejárta után is elérhetők.
 
-    ![Előfizetés alapvető információkat bemutató képernyőkép](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
+    ![Az előfizetés lényeges információit megjelenítő képernyőkép](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 
-6.  Görgessen le a jelenlegi és az előre jelzett költség található információ. A költségek magában foglalja a szolgáltatás használata nem találhatók meg az ingyenes fiók és a ingyenesen használhatja a szolgáltatásokat meghaladó használat.
+6.  Görgessen le az aktuális és előre jelzett díjakkal kapcsolatos információkért. A költség tartalmazza az ingyenes fiókba nem beletartozó szolgáltatások használatát és az ingyenes szolgáltatások korlátait meghaladó használatot.
 
-    ![Előfizetési költség információkat bemutató képernyőkép](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
+    ![Az előfizetés költségeivel kapcsolatos információkat megjelenítő képernyőkép](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
 
-7.  Az Áttekintés szakasz utolsó része belefoglalja rendelkezik egy ingyenes szolgáltatás használati megjelenítő táblázat.
+7.  Az áttekintési szakasz utolsó része egy táblázat, amely az ingyenes szolgáltatáshasználatot mutatja be.
 
-    ![Ingyenes szolgáltatások használatának bemutató képernyőkép](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
+    ![Ingyenes szolgáltatások használatát megjelenítő képernyőkép](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
-    A táblázatban szerepel a következő oszlopokat:
+    A táblázat az alábbi oszlopokat tartalmazza:
 
-* **Fogyasztásmérő neve:** A rendszer, elérheti az érték mértékegységét azonosítja. Fogyasztásmérő leképezés szolgáltatás kapcsolatos további információkért lásd: [mérőszám leképezés ingyenes szolgáltatás ismertetése](billing-understand-free-service-meter-mapping.md).
-* **Használat/korlát:** Aktuális havi használat és a mértékegységek korlátot. Ezeket az adatokat az állapotsorban is megkeresheti.
-* **Állapot:** A mérőszámok használati állapota. A használati minta alapján, akkor az alábbi alapszabály egyikét:
-  * **Nincs használatban:** Még nem használta az a fogyasztásmérő, vagy a mérőszám a használata még nem elérte a számlázási rendszerhez.
-  * **Túllépte a \<dátum >:** Túllépte a korlátot, a mértékegységek a \<dátum >.
-  * **Valószínűleg nem lépi túl:** Most már valószínűleg nem lépi túl a korlátot, a mértékegységek.
-  * **Túllépés \<dátum >:** Valószínűleg meghaladja a korlátot, a mérő az Ön \<dátum >.
+* **Mérő neve:** Megadja a használt fogyasztásmérő mértékegységét. Ha többet szeretne megtudni a szolgáltatásmérő-társításról, olvassa el [az ingyenes szolgáltatásmérő-társítások ismertetését](billing-understand-free-service-meter-mapping.md).
+* **Használat/korlát:** A mérőszám aktuális havi használata és korlátja. Ezeket az információkat megtalálja az állapotsávon is.
+* **Állapot:** A mérő használati állapota. A használati mintája alapján a következő állapotok egyike lehet:
+  * **Nincs használatban:** Nem használta a mérőt, vagy a mérő használata nem érte el a számlázási rendszer szintjét.
+  * **Túllépés időpontja: \<dátum>:** A megadott \<dátumon> túllépte a mérőszám korlátját.
+  * **Valószínűleg nem lépi túl:** Valószínűleg nem fogja túllépni a mérőszám korlátját.
+  * **Túllépés: \<dátum>:** Valószínűleg a megadott \<dátumon> túl fogja lépni a mérőszám korlátját.
 
-## <a name="check-usage-with-the-usage-file"></a>Ellenőrizze a használatot és a használatot részletező fájl
+## <a name="check-usage-with-the-usage-file"></a>Használat ellenőrzése a használati fájllal
 
-A használati fájlban az Azure-előfizetés részletes információkat szolgáltat. Az Azure Account Center a havi és napi használati fájl is letölthető. Ismerje meg, hogyan a használatot részletező fájl letöltése és megismerése a hozzáférés szükséges, lásd: [első számlák és használati adatok](billing-download-azure-invoice-daily-usage-date.md). A használatot részletező fájl oszlopai kapcsolatos további információkért lásd: [a használat feltételeinek értelmezése](billing-understand-your-usage.md).
+A használati fájlja részletes információt nyújt az Azure-előfizetéséről. Havi vagy napi használati fájlját letöltheti az Azure Fiókközpontból. A használati fájl letöltéséhez és a szükséges hozzáférés megismeréséhez lásd a [számla és használat beszerzését](billing-download-azure-invoice-daily-usage-date.md) ismertető szakaszt. A használati fájlban található oszlopok megismeréséhez lásd [a használat feltételeinek értelmezését](billing-understand-your-usage.md).
 
-A használatot részletező fájl rendelkezik egyaránt ingyenes vagy fizetős szolgáltatás méretkihasználtsági adatait. Ingyenes szolgáltatás mérőszámok kellene **ingyenes** hozzáfűzi a végén a fogyasztásmérő nevét. Ingyenes mérőszámok, nyissa meg a fájlt az excel- és szűrő keresése a **mérőszám kategóriája oszlop** szöveg rendelkező cellák **– ingyenes** (használata Szövegszűrők &rarr; tartalmazza szűrő).
+A használati fájl mind az ingyenes, mind a fizetős szolgáltatások használati információit tartalmazza. Az ingyenes szolgáltatásmérők neve után az **Ingyenes** kifejezés áll. Az ingyenes mérők megkereséséhez nyissa meg a fájlt az Excelben, és szűrje a **Fogyasztásmérő kategóriája oszlop** tartalmát olyan cellákra, amelyek az **– Ingyenes** szöveget tartalmazzák (ehhez használja a Szövegszűrők &rarr; Tartalmazza szűrőt).
 
 
-![Ingyenes szolgáltatások használatának bemutató képernyőkép](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
+![Ingyenes szolgáltatások használatát megjelenítő képernyőkép](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
-- [Az előfizetés frissítése](billing-upgrade-azure-subscription.md)
+- [Váltás magasabb szintű előfizetésre](billing-upgrade-azure-subscription.md)

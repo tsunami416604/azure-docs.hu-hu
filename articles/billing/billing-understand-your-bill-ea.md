@@ -1,6 +1,6 @@
 ---
-title: Az Azure enterprise-elszámolások ismertetése
-description: Útmutató az Azure Enterprise-megállapodások a használatának és számlájának értelmezése.
+title: Az Azure nagyvállalati elszámolásainak ismertetése
+description: Ismerje meg, hogyan olvashatók le és értelmezhetők az Azure Nagyvállalati Szerződésekhez tartozó használati adatok és a hozzájuk tartozó számlák.
 author: adpick
 manager: dougeby
 tags: billing
@@ -12,124 +12,124 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490287"
 ---
-# <a name="understand-your-azure-enterprise-agreement-bill"></a>A nagyvállalati szerződés Azure-elszámolások ismertetése
+# <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
-Azure-nagyvállalati szerződéssel rendelkező ügyfelek igazoló számla haladhatja meg a munkahelyi kredit és használata a szolgáltatások, a kredit nem vonatkozik.
+A Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek akkor kapnak számlát, amikor túllépik a vállalat kreditkeretét, vagy olyan szolgáltatást használnak, amelyet nem fedez a kredit.
 
-A munkahelyi kredit a pénzügyi kötelezettségvállalását is tartalmaz. A pénzügyi kötelezettségvállalás az a szervezet Azure-szolgáltatások használati előre fizetett összeg. A nagyvállalati szerződésbe fiókbeli vállalt díjkeretet kapcsolatba lép a Microsoft ügyfélmenedzserével vagy viszonteladójával adhat hozzá.  
+A szervezet kreditjébe beleszámít a pénzügyi kötelezettségvállalás is. A pénzügyi Kötelezettségvállalás az az összeg, amelyet a szervezet előre befizet az Azure-szolgáltatások használatára. Amennyiben pénzügyi kötelezettségvállalási befizetéseket kíván hozzáadni a Nagyvállalati Szerződéséhez, lépjen kapcsolatba a Microsoft ügyfélkapcsolati munkatársával vagy viszonteladójával.  
 
-## <a name="invoices-for-most-customers"></a>A legtöbb ügyfél számára számlák
+## <a name="invoices-for-most-customers"></a>Számlák a legtöbb ügyfél esetén
 
-Ebben a szakaszban Azure Ausztrália, japán, vagy a szingapúri-ügyfeleket nem vonatkozik. Ha ezen országok/régiók egyikében, tekintse meg [a többi ügyfél számlákat](#invoices-for-other-customers).
+Az alábbi szakasz nem vonatkozik az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő Azure-ügyfelekre. Ha a fenti országok vagy régiók egyikében működik a vállalkozása, tekintse meg a [Számlák egyéb ügyfelek esetén](#invoices-for-other-customers) című szakaszt.
 
-Olyan Azure számlát küld, ha az alábbiak egyikét az elszámolási időszakban lép fel:
+Akkor kap Azure-számlát, ha sor kerül a következők egyikére a számlázási ciklus folyamán:
 
-- **Szolgáltatási kerettúllépés**: A szervezet használati díjak a kreditegyenlegét lehet.
-- **Külön számlázott díjak**: A szolgáltatások, a szervezet használja a kredit nem vonatkozik. Függetlenül az kreditegyenlegét számlázott van a következő szolgáltatásokat:
+- **Szolgáltatási keret túllépése**: A szervezet használati díjai meghaladják a kreditegyenlegét.
+- **Külön számlázott tételek**: Olyan szolgáltatások, amelyeket nem fed le a szervezeti kredit. A következő szolgáltatások számlázása mindig külön történik, a szervezet kreditegyenlegétől függetlenül:
     - Canonical
-    - Citrix XenApp Essentials rendszerbe
-    - A Citrix xendesktop-példányok
-    - Regisztrált felhasználó
+    - Citrix XenApp Essentials
+    - Citrix XenDesktop
+    - Registered User
     - Openlogic
-    - Távoli hozzáférési jogok a XenApp Essentials regisztrált felhasználó
+    - Remote Access Rights XenApp Essentials Registered User
     - Ubuntu Advantage
-    - A Visual Studio Enterprise (havi)
-    - Visual Studio Enterprise (Annual)
-    - A Visual Studio Professional (havonta)
-    - Visual Studio Professional (Annual)
-- **Piactér-díjak**: Az Azure piactéren történt vásárlást és használati nem tartoznak a munkahelyi kredit. Így már számlázása a piactér-díjak a kreditegyenlegét függetlenül. A vállalati portál egy vállalati rendszergazda engedélyezheti és tiltsa le a piactér-beli vásárlásokra.
+    - Visual Studio Enterprise (havi)
+    - Visual Studio Enterprise (éves)
+    - Visual Studio Professional (havi)
+    - Visual Studio Professional (éves)
+- **A Marketplace díjai**: Az Azure Marketplace-beli vásárlásokat és használatot nem fedezi a szervezeti kredit. Ezért a Marketplace díjairól mindig számlát kap, a kreditegyenlegétől függetlenül. Az Enterprise Portalon egy vállalati rendszergazda engedélyezheti vagy tilthatja le a Marketplace-beli vásárlásokat.
 
-## <a name="review-charges-for-most-customers"></a>Tekintse át a legtöbb ügyfél kell fizetni
-Ebben a szakaszban Azure Ausztrália, japán, vagy a szingapúri-ügyfeleket nem vonatkozik. Ha egy adott országban, tekintse meg [tekintse át a díjak a többi ügyfél](#review-charges-for-other-customers).
+## <a name="review-charges-for-most-customers"></a>Díjak áttekintése a legtöbb ügyfél esetén
+Az alábbi szakasz nem vonatkozik az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő Azure-ügyfelekre. Ha a fenti országok egyikében működik a vállalkozása, tekintse meg a [Díjak áttekintése egyéb ügyfelek esetén](#review-charges-for-other-customers) című szakaszt.
 
-Tekintse át, és ellenőrizze a díjait a számlán, a vállalati rendszergazdának kell lennie. További információkért lásd: [rendszergazdai szerepkörök az Azure nagyvállalati szerződés ismertetése az Azure-ban](billing-understand-ea-roles.md). Ha nem tudja, aki a vállalati rendszergazda engedélyezte a szervezete számára [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A számlán szereplő díjak áttekintésére és ellenőrzésére a vállalati rendszergazdáknak van lehetőségük. További információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](billing-understand-ea-roles.md). Ha nem tudja, hogy ki a szervezet vállalati rendszergazdája, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-A számla megjeleníti az összes az Azure-használat, a Marketplace-díjakat követ. Ha egy kreditegyenlegét, a rendszer alkalmazza az Azure-használat.
+A számla feltünteti az összes Azure-használatot és az esetleges Marketplace-beli díjakat. Ha rendelkezik kreditegyenleggel, a rendszer alkalmazza azt az Azure-használatra.
 
-Hasonlítsa össze a kombinált teljes összege jelenik meg a vállalati portálon a **jelentések** > **használati összegzés** együtt az Azure-számlán. Az összegeket a **használati összegzés** nem tartalmazzák a forgalmi adót.
+Hasonlítsa össze az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján található teljes összeget az Azure-számlájával. A **Használat összefoglalásának** összegei az adót nem tartalmazzák.
 
-1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
-1. Válassza ki **jelentések**.
-1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
-    ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. Összesített mennyisége **teljes felhasználás** és **Azure Marketplace-en** meg kell egyeznie a **kiterjesztett mennyiségén** a számlán.
-1. A díjak kapcsolatos további információért lépjen **használati adatok letöltése**.  
-    ![A használati adatok letöltése lapot ábrázoló képernyőfelvétel](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
+1. Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com).
+1. Válassza a **Jelentések** elemet.
+1. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
+    ![Képernyőkép az M + C lehetőségről a Használat összefoglalása lapon.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Az **Összes használat** és az **Azure Marketplace** összegének meg kellene egyeznie a számlán szereplő **teljes bővített összeggel**.
+1. További részleteket a díjakról a **használati adatok letöltését** ismertető cikkben talál.  
+    ![Képernyőkép a használati adatok letöltésére szolgáló lapról](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
 
-## <a name="invoices-for-other-customers"></a>A többi ügyfél számlák
+## <a name="invoices-for-other-customers"></a>Számlák egyéb ügyfelek esetén
 
-Ez a szakasz csak az Azure-ügyfeleket Ausztrália, japán, vagy a szingapúri vonatkozik.
+Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő Azure-ügyfelekre vonatkozik.
 
-Egy vagy több Azure-számlák kapja, amikor az alábbiak történnek:
+A következő esetekben kaphat egy vagy több Azure-számlát:
 
-- **Szolgáltatási kerettúllépés**: A szervezet használati díjak a kreditegyenlegét lehet.
-- **Külön számlázott díjak**: A szolgáltatások, a szervezet használja a kredit nem vonatkozik. Függetlenül az kreditegyenlegét számlázott van a következő szolgáltatásokat:
+- **Szolgáltatási keret túllépése**: A szervezet használati díjai meghaladják a kreditegyenlegét.
+- **Külön számlázott tételek**: Olyan szolgáltatások, amelyeket nem fed le a szervezeti kredit. A következő szolgáltatások számlázása mindig külön történik, a szervezet kreditegyenlegétől függetlenül:
     - Canonical
-    - Citrix XenApp Essentials rendszerbe
-    - A Citrix xendesktop-példányok
-    - Regisztrált felhasználó
+    - Citrix XenApp Essentials
+    - Citrix XenDesktop
+    - Registered User
     - Openlogic
-    - Távoli hozzáférési jogok a XenApp Essentials regisztrált felhasználó
+    - Remote Access Rights XenApp Essentials Registered User
     - Ubuntu Advantage
-    - A Visual Studio Enterprise (havi)
-    - Visual Studio Enterprise (Annual)
-    - A Visual Studio Professional (havonta)
-    - Visual Studio Professional (Annual)
-- **Piactér-díjak**: Az Azure piactéren történt vásárlást és használatát a munkahelyi kredit nem vonatkozik, és külön számlázzuk. A vállalati portál egy vállalati rendszergazda engedélyezheti és tiltsa le a piactér-beli vásárlásokra.
+    - Visual Studio Enterprise (havi)
+    - Visual Studio Enterprise (éves)
+    - Visual Studio Professional (havi)
+    - Visual Studio Professional (éves)
+- **A Marketplace díjai**: Az Azure Marketplace-beli vásárlásokat és használatot nem fedezi a vállalati kredit; ezekről külön számla készül. Az Enterprise Portalon egy vállalati rendszergazda engedélyezheti vagy tilthatja le a Marketplace-beli vásárlásokat.
 
-Ha rendelkezik esedékes díjak szolgáltatás túlhasználattal és tartozó számlázási időszak alatt külön-külön számlázzuk, egy számla kap. Mindkét típusú díjakat tartalmazza. Piactér-díjak mindig számlázása külön történik.
+A szolgáltatási keret túllépéséből adódó díjakról és a számlázási időszak során külön számlázott díjakról egyetlen számlát kap. Ez tartalmazza a fenti két típusba tartozó díjakat. A Marketplace-beli díjakról mindig külön számlát kap.
 
-## <a name="review-charges-for-other-customers"></a>Felülvizsgálat díjak a többi ügyfél
+## <a name="review-charges-for-other-customers"></a>Díjak áttekintése egyéb ügyfelek esetén
 
-Ez a szakasz csak akkor érvényes, ha, Ausztrália, japán vagy Szingapúr találhatók.
+Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő ügyfelekre vonatkozik.
 
-Tekintse át, és ellenőrizze a díjait a számlán, a vállalati rendszergazdának kell lennie. További információkért lásd: [rendszergazdai szerepkörök az Azure nagyvállalati szerződés ismertetése az Azure-ban](billing-understand-ea-roles.md). Ha nem tudja, aki a vállalati rendszergazda engedélyezte a szervezete számára [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A számlán szereplő díjak áttekintésére és ellenőrzésére a vállalati rendszergazdáknak van lehetőségük. További információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](billing-understand-ea-roles.md). Ha nem tudja, hogy ki a szervezet vállalati rendszergazdája, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="review-service-overage-invoice"></a>Szolgáltatási szint keretét túllépő számla felülvizsgálata
+### <a name="review-service-overage-invoice"></a>Szolgáltatási kerettúllépés számlájának áttekintése
 
-Hasonlítsa össze a teljes használati mennyiséget, a vállalati portál **jelentések** > **használati összegzés** a szolgáltatási keretet túllépő számla. A szolgáltatás kerettúllépési számlán tartalmaz, amely meghaladja a munkahelyi kredit felhasználást és/vagy a szolgáltatások, a kredit nem vonatkozik. Összegek az **használati összegzés** nem tartalmazzák a forgalmi adót.
+Hasonlítsa össze az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján található teljes összeget a szolgáltatási kerettúllépés számlájával. A szolgáltatási kerettúllépés számlája olyan használatra vonatkozik, amely túllépi a szervezeti keretet, és/vagy a kredit által nem fedezett szolgáltatásokra. A **Használati összefoglalásának** összegei az adót nem tartalmazzák.
 
-1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
-1. Válassza ki **jelentések**.
-1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
-    ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. A **teljes felhasználás** összeg meg kell egyeznie a **kiterjesztett mennyiségén** a szolgáltatás kerettúllépési számlán.  
-1. További információ a díjakról, keresse fel **használati adatok letöltése** > **speciális jelentés letöltése**. A jelentés nem tartalmazza a adók vagy foglalások kell fizetni, vagy a piactér-díjak.  
-      ![Képernyőkép a speciális jelentés töltse le a letöltés használati lapon.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
+1. Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com).
+1. Válassza a **Jelentések** elemet.
+1. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
+    ![Képernyőkép az M + C lehetőségről a Használat összefoglalása lapon.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
+1. Az **Összes használat** összegének egyezne kell a szolgáltatási kerettúllépés számláján szereplő **teljes bővített összeggel**.  
+1. További információt a díjakról a **Használati adatok letöltése** > **Speciális jelentés letöltése** alatt talál. A jelentés nem tartalmazza az adókat és a foglalási vagy piactéri díjakat.  
+      ![Képernyőkép a Használati adatok letöltése lapon található Speciális jelentés letöltése lehetőségről.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
-Az alábbi táblázatban a használati jelenik meg a számlán és a leírások a **használati összegzés** a vállalati portálon:
+A következő lista számba veszi a számlákon és az Enterprise Portal **Használat összefoglalása** lapon előforduló kifejezéseket és leírásokat:
 
-|Számla kifejezés|Használati összesítő kifejezés|Leírás|
+|Számlázási kifejezés|A Használat összefoglalása lap kifejezései|Leírás|
 |---|---|---|
-|Kiegészítő összeg összesen|Teljes felhasználás|A teljes előtti használati díjat a jóváírás alkalmazása előtt a meghatározott időszakra vonatkozóan.|
-|Kötelezettségvállalás használat|Kötelezettségvállalás használat|A kreditek adott időszak alatt a alkalmazni.|
-|Teljes értékesítés|Kerettúllépés összesen|A teljes felhasználás díja, amely meghaladja a kreditösszeg erejéig. Ez a mennyiség nem tartalmazzák a forgalmi adót.|
-|Adó összege|Nem alkalmazható|Áfa, amely a teljes értékesítési összeg az adott időszakra vonatkozik.|
-|Teljes összeg|Nem alkalmazható|Az összeg miután alkalmazta a kreditek, és adó bekerül a számla esedékessége.|
+|Teljes bővített összeg|Összes használat|A teljes adók nélküli használati díj az adott időszakban, a kredit alkalmazása előtt.|
+|Kötelezettségvállalás felhasználása|Kötelezettségvállalás felhasználása|Az adott időszak során alkalmazott kredit.|
+|Összes értékesítés|Kerettúllépés összesen|A teljes, a kredit mennyiségét meghaladó használati díj. Az összeg az adókat nem tartalmazza.|
+|Adó összege|Nem alkalmazható|Az adott időszakban keletkező összes értékesítésre vonatkozó adó összege.|
+|Teljes összeg|Nem alkalmazható|A számla fizetendő összege a kredit alkalmazása és az adók hozzáadása után.|
 
-### <a name="marketplace-invoice"></a>Marketplace-számlában
+### <a name="marketplace-invoice"></a>Marketplace-számla
 
-Ez a szakasz csak akkor érvényes, ha, Ausztrália, japán vagy Szingapúr találhatók.
+Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő ügyfelekre vonatkozik.
 
-Hasonlítsa össze az Azure Marketplace-en található összes **jelentések** > **használati összegzés** a vállalati portál a marketplace-számlában. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. Összegek az **használati összegzés** nem tartalmazzák a forgalmi adót.
+Hasonlítsa össze az Azure Marketplace-re vonatkozó teljes összeget a piactéri számlájával az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. A **Használati összefoglalásának** összegei az adót nem tartalmazzák.
 
-1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
-1. Válassza ki **jelentések**.
-1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
-     ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
-1. A **Azure Marketplace-en** összesen meg kell egyeznie a **teljes értékesítés** a marketplace-számlában.
-1. További információ a használat alapú költségek, keresse fel **használati adatok letöltése**. A **piactér-díjak**válassza **letöltése**. A jelentés nem tartalmazza az adókat és az egyszeri vásárlásokat.  
-     ![Képernyőkép a töltse le a piactér-díjak lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
+1. Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com).
+1. Válassza a **Jelentések** elemet.
+1. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
+     ![Képernyőkép az M + C lehetőségről a Használat összefoglalása lapon.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
+1. Az **Azure Marketplace-re** vonatkozó teljes összegnek meg kell egyeznie a piactéri számla **összes értékesítésre** vonatkozó összegével.
+1. További információt a használaton alapuló díjakról a **használati adatok letöltését** ismertető cikkben talál. A **Marketplace díjai** területen válassza a **Letöltés** lehetőséget. A jelentés nem tartalmazza az adókat és az egyszeri vásárlásokat.  
+     ![Képernyőkép a Marketplace díjai alatt megjelenő letöltési lehetőségről.](./media/billing-understand-your-bill-ea/ea-portal-download-usage-marketplace.png)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
-- [Megtekintése és letöltése az Azure-használat és költségek](billing-download-azure-daily-usage.md)
+- [Az Azure használati adatainak és díjainak megtekintése és letöltése](billing-download-azure-daily-usage.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure külső szolgáltatási díjak értelmezése |} A Microsoft Docs
-description: Ismerje meg a külső szolgáltatások, korábbi nevén a Marketplace-en a költségeket az Azure számlázását.
+title: Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése | Microsoft Docs
+description: Megismerheti a külső szolgáltatások (korábbi nevén Marketplace) számlázását és díjait az Azure-ban.
 author: jureid
 manager: jureid
 tags: billing
@@ -13,23 +13,23 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 278e873d01eb3dd7d614d771e5b50b8fe624800a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490351"
 ---
-# <a name="understand-your-azure-external-services-charges"></a>A külső szolgáltatások az Azure-költségek ismertetése
-Külső szolgáltatások az Azure Marketplace-en külső szoftvergyártók által közzétett. Ha például a SendGrid egy külső szolgáltatás, amely az Azure-ban is vásárolhat, de nem a Microsoft által közzétett. Bizonyos Microsoft-termékek vannak az Azure Marketplace-en árult túl.
+# <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
+A külső szolgáltatásokat külső szoftverszállítók teszik közzé az Azure Marketplace-en. A SendGrid például egy olyan külső szolgáltatás, amelyet megvásárolhat az Azure-ban, de nem a Microsoft adta ki. Emellett azonban bizonyos Microsoft-termékek értékesítése is az Azure Marketplace-en történik.
 
-## <a name="how-external-services-are-billed"></a>Hogyan külső szolgáltatások számlázása
+## <a name="how-external-services-are-billed"></a>A külső szolgáltatások számlázása
 
-- Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#check-access), a külső szolgáltatások számlázása a többi Azure-szolgáltatását.
-- Ha nem rendelkezik a Microsoft ügyfél-szerződés, a külső szolgáltatások elkülönítve számlázzuk az Azure-szolgáltatások.
-- Minden külső szolgáltatásnak van egy másik számlázási modellt. Bizonyos szolgáltatások a használatalapú fizetést biztosító módon elszámolással számlázzuk, míg mások megoldottuk a havi díjak.
-- Havi ingyenes kreditjeinek külső szolgáltatások nem használható. Ha használ, amely tartalmazza az Azure-előfizetéssel [ingyenes krediteket](https://azure.microsoft.com/pricing/spending-limits/), azok nem alkalmazható díjak a külső szolgáltatások. Amikor üzembe helyezi egy új külső szolgáltatáshoz vagy erőforráshoz, egy figyelmeztetés jelenik meg:
+- Ha [Microsoft-ügyfélszerződéssel](#check-access) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatás számlázásával együtt történik.
+- Ha nem rendelkezik Microsoft-ügyfélszerződéssel, a külső szolgáltatások számlázása a többi Azure-szolgáltatástól külön történik.
+- Minden egyes külső szolgáltatás eltérő számlázási modellel rendelkezik. Bizonyos szolgáltatások számlázása használatalapú fizetésessel történik, míg más szolgáltatásokért fix havi díjat kell fizetni.
+- A külső szolgáltatásokhoz nem használhatók fel az ingyenes havi kreditek. Ha [ingyenes krediteket](https://azure.microsoft.com/pricing/spending-limits/) tartalmazó Azure-előfizetést használ, a külső szolgáltatások díjaira nem alkalmazhatja azokat. Új külső szolgáltatás vagy erőforrás kiépítésekor megjelenik egy figyelmeztetés:
 
-    ![Marketplace-en beszerzési figyelmeztetés](./media/billing-understand-your-azure-marketplace-charges/credit-warning.png)
+    ![Marketplace vásárlási figyelmeztetése](./media/billing-understand-your-azure-marketplace-charges/credit-warning.png)
 
 <!-- ## View external service spending and history in the Azure portal
 You can view a list of the external services that are on each subscription within the [Azure portal](https://portal.azure.com/):
@@ -48,33 +48,33 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Megtekintheti és letöltheti a számlákat
+## <a name="view-and-download-invoices"></a>Számlák megtekintése és letöltése
 
-Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#check-access), a harmadik fél díjakat az ugyanazon a, az Azure-szolgáltatások díjait számlán. Ismerje meg, hogyan [megtekintése és letöltése az Azure-számla](billing-download-azure-invoice.md) a külső díjak megtekintéséhez az Azure Portalról.
+Ha [Microsoft-ügyfélszerződéssel](#check-access) rendelkezik, a külső szolgáltatások díjai ugyanazon a számlán szerepelnek, mint az Azure-szolgáltatások díjai. Megtudhatja, hogyan [tekintheti meg és töltheti le Azure-számláját](billing-download-azure-invoice.md) az Azure Portalról a külső szolgáltatások díjainak megtekintéséhez.
 
-Ha nem rendelkezik a Microsoft Ügyfélszerződéséhez, azok külön számlák harmadik féltől eredő díjakat kiszámlázzuk. Megtekintheti és az Azure Marketplace-en számlákat letölteni az Azure Portalról az alábbi lépéseket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg **Cost Management és számlázás**.
-1. A bal oldali menüben válassza ki a **számlákat**.
-1. Kattintson a **Azure Marketplace-en és foglalások** fülre.  ![Az Azure Marketplace-en és foglalások lap képe](./media/billing-understand-your-azure-marketplace-charges/invoice-tabs.png)
-1. Az előfizetés legördülő válassza ki az előfizetést, amely tartalmazza a külső szolgáltatások meg szeretné tekinteni a számlákat.
-
-## <a name="external-spending-for-ea-customers"></a>Külső költségkeret-beállítási nagyvállalati szerződéssel rendelkező ügyfelek számára
-
-Nagyvállalati szerződéssel rendelkező ügyfelek tekintheti külső szolgáltatás költségeit és a nagyvállalati szerződések portáljának a jelentések letöltése. Lásd: [nagyvállalati szerződéssel rendelkező ügyfeleink az Azure Marketplace-en](https://ea.azure.com/helpdocs/azureMarketplace) a kezdéshez.
-
-## <a name="manage-payment-for-external-services"></a>Fizetési külső szolgáltatások kezelése
-
-Ha a szolgáltatást egy külső szolgáltatás, válassza ki az erőforrás Azure-előfizetést. A kiválasztott Azure-előfizetés fizetési mód lesz a fizetési módot, a külső szolgáltatáshoz. Ha módosítani szeretné egy külső szolgáltatás a fizetési módot, kell [a fizetési módot, az Azure-előfizetés](billing-how-to-change-credit-card.md) vannak kötve, hogy külső szolgáltatáshoz. Ismerhetik meg, hogy melyik előfizetéssel, a külső szolgáltatás sorrendben vannak kötve, az alábbi lépéseket:
+Ha nem rendelkezik Microsoft-ügyfélszerződéssel, a külső szolgáltatások díjairól külön számlát kap. Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Kattintson a **összes erőforrás** a bal oldali navigációs menüben.
-     ![Képernyőkép az összes erőforrás menüpont](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
-1. Keresse meg a külső szolgáltatáshoz.
-1. Keresse meg az előfizetés nevét a **előfizetés** oszlop.
-    ![Képernyőkép az előfizetés-erőforrás neve](./media/billing-understand-your-azure-marketplace-charges/sub-selected.png)
-1. Kattintson a az előfizetés nevét és [frissíteni az aktív fizetési mód](billing-how-to-change-credit-card.md).
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+1. A bal oldali menüben válassza a **Számlák** elemet.
+1. Kattintson az **Azure Marketplace és foglalások** lapra.  ![Kép az Azure Marketplace és foglalások lapról](./media/billing-understand-your-azure-marketplace-charges/invoice-tabs.png)
+1. Az előfizetéseket tartalmazó legördülő listából válassza ki az azon külső szolgáltatásokat tartalmazó előfizetést, amelyek számláit meg szeretné tekinteni.
+
+## <a name="external-spending-for-ea-customers"></a>Külső költségek EA-ügyfelek esetén
+
+Az EA-ügyfelek megtekinthetik a külső szolgáltatások költségeit, és jelentéseket tölthetnek le az EA Portalról. Az első lépésekkel kapcsolatban tekintse meg [az EA-ügyfelek számára elérhető Azure Marketplace-t](https://ea.azure.com/helpdocs/azureMarketplace).
+
+## <a name="manage-payment-for-external-services"></a>A külső szolgáltatásokkal kapcsolatos kifizetések kezelése
+
+Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az erőforráshoz. A külső szolgáltatás fizetési módja azonos lesz a kiválasztott Azure-előfizetésével. A külső szolgáltatás fizetési módjának módosításához [módosítania kell annak az Azure-előfizetésnek a fizetési módját](billing-how-to-change-credit-card.md), amely a külső szolgáltatáshoz kapcsolódik. Ha szeretné kideríteni, hogy a külső szolgáltatás melyik előfizetéshez kapcsolódik, kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
+     ![képernyőkép a menü Minden erőforrás eleméről](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
+1. Keresse meg a külső szolgáltatást.
+1. Az **Előfizetés** oszlopban keresse meg az előfizetés nevét.
+    ![képernyőkép az erőforráshoz tartozó előfizetés nevéről](./media/billing-understand-your-azure-marketplace-charges/sub-selected.png)
+1. Kattintson az előfizetés nevére, és [frissítse az aktív fizetési módot](billing-how-to-change-credit-card.md).
 
 <!-- Update your payment methods for external service orders from the [Account Center](https://account.windowsazure.com/).
 
@@ -94,26 +94,26 @@ Ha a szolgáltatást egy külső szolgáltatás, válassza ki az erőforrás Azu
 
     ![Select edit info](./media/billing-understand-your-azure-marketplace-charges/edit-info.png) -->
 
-## <a name="cancel-an-external-service-order"></a>Egy külső szolgáltatás megrendelés törlése
-Biztosan megszakítja a külső szolgáltatás rendeléséhez, ha törli az erőforrás a [az Azure portal](https://portal.azure.com).
+## <a name="cancel-an-external-service-order"></a>Külső szolgáltatás lemondása
+Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az [Azure Portalon](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Kattintson a **összes erőforrás** a bal oldali navigációs menüben.
-    ![Képernyőkép az összes erőforrás menüpont](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
-1. Keresse meg a külső szolgáltatáshoz.
-1. A törölni kívánt erőforrás melletti jelölőnégyzetet.
-1. Válassza ki **törlése** a parancssávon.
-    ![Képernyőkép a Törlés gombra.](./media/billing-understand-your-azure-marketplace-charges/delete-button.png)
-1. Típus *"Igen"* a megerősítési panelen.
+1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
+    ![Képernyőkép a menü Minden erőforrás eleméről](./media/billing-understand-your-azure-marketplace-charges/all-resources.png)
+1. Keresse meg a külső szolgáltatást.
+1. Jelölje be a törölni kívánt erőforrás melletti jelölőnégyzetet.
+1. A parancssávon válassza a **Törlés** gombot.
+    ![Képernyőkép a Törlés gombról](./media/billing-understand-your-azure-marketplace-charges/delete-button.png)
+1. A megerősítési párbeszédpanelen írja be az *Igen* kifejezést.
     ![Erőforrás törlése](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Kattintson a **Törlés** gombra.
 
 ## <a name="check-access"></a>Hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 - [Költségelemzés indítása](../cost-management/quick-acm-cost-analysis.md)

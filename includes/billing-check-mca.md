@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490329"
 ---
-Ellenőrizze a Szerződés típus megállapításához, hogy a Microsoft vevői szerződéssel rendelkezik számlázási fiókjához való hozzáférés.
+A szerződéstípusra kattintva megállapíthatja, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz.
  
 1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
  
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
  
-   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-check-mca/billing-search-cost-management-billing.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
-3. Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza ki a **tulajdonságok** bal oldalán. Hozzáfér egy számlázási fiók a Microsoft vevői szerződés számlázási fióktípus esetén **Microsoft Ügyfélszerződéséhez**.
+3. Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a bal oldalon található **Tulajdonságok** elemet. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-ügyfélszerződés**.
  
-    ![Képernyőkép a microsoft ügyfélszerződéséhez a Tulajdonságok lap](./media/billing-check-mca/billing-mca-property.png)
+    ![Képernyőkép a Tulajdonságok lapon található Microsoft-ügyfélszerződésről](./media/billing-check-mca/billing-mca-property.png)
  
-4. Ha hozzáférése több számlázási hatókör, ellenőrizze a számlázási oszlop típusát. Rendelkezik egy számlázási fiókjához való hozzáférés a Microsoft Ügyfélszerződéséhez Ha bármelyik a hatókörök számlázási fiók típusa **Microsoft Ügyfélszerződéséhez**.
+4. Ha több számlázási hatókörhöz van hozzáférése, a számlázási fiók oszlopában ellenőrizheti a fiók típusát. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha bármelyik hatókör számlázási fiókjának típusa **Microsoft-ügyfélszerződés**.
  
-    ![Képernyőkép a microsoft vevői szerződés számlázási fiók lista lap](./media/billing-check-mca/billing-mca-in-the-list.png)
+    ![Képernyőkép a Számlázási fiókok listája lapon található Microsoft-ügyfélszerződésről](./media/billing-check-mca/billing-mca-in-the-list.png)
  

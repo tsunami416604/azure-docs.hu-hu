@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241431"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898179"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Győződjön meg arról, hogy az adatok eszközre történő másolása befejez�
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>Szállítás az Egyesült Államokban, Kanadában és Európában
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[Az Egyesült Államokban, Kanadában és Európában](#tab/in-us-canada-europe)
 
 Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokban, Kanadában vagy Európában küldi vissza.
 
@@ -94,7 +94,7 @@ Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokba
 4. Miután a futár felvette és beolvasta a Data Boxot, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
 
 
-## <a name="ship-in-australia"></a>Szállítás Ausztráliában
+## <a name="in-australiatabin-australia"></a>[Ausztráliában](#tab/in-australia)
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában történő szállításhoz az alábbi lépéseket végezze el.
 
@@ -126,7 +126,7 @@ A rendelésével kapcsolatos telefonos tájékoztatásért:
 - Először küldjön e-mailben egy csomagfelvételi kérést.
 - A hívás során adja meg a rendelés nevét.
 
-## <a name="ship-in-japan"></a>Szállítás Japánban 
+## <a name="in-japantabin-japan"></a>[Japánban](#tab/in-japan) 
 
 1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.

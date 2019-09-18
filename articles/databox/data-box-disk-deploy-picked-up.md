@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390408"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910120"
 ---
 ::: zone target="chromeless"
 
@@ -52,7 +52,7 @@ Mielőtt hozzákezd, mindenképp végezze el az [ adatok Azure Data Box Diskre t
 
 A következő lépéseket az határozza meg, hogy hová küldi vissza az eszközt. Az utasítások különbözőek az Egyesült Államok/Kanada, az Európai Unió (EU), Ausztrália és az ázsiai országok esetén.
 
-### <a name="pick-up-in-us-canada"></a>Csomagfelvétel az Egyesült Államokban és Kanadában
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[Az Egyesült Államokban vagy Kanadában](#tab/in-us-or-canada)
 
 Végezze el a következő lépéseket, ha az Egyesült Államokba vagy Kanadába küldi vissza az eszközt.
 
@@ -68,7 +68,7 @@ Végezze el a következő lépéseket, ha az Egyesült Államokba vagy Kanadába
     - Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
     - A csomagfelvétel ütemezése helyett a legközelebbi átadóhelyen is leadhatja a Data Box Disket.
 
-### <a name="pick-up-in-europe"></a>Csomagfelvétel Európában
+### <a name="in-europetabin-europe"></a>[Európában](#tab/in-europe)
 
 Végezze el a következő lépéseket, ha Európába küldi vissza az eszközt.
 
@@ -81,7 +81,7 @@ Végezze el a következő lépéseket, ha Európába küldi vissza az eszközt.
 4. Lépjen az ország/régió DHL Express webhelyére, és válassza az **Online futárrendelés > Visszáru online megrendelése** lehetőséget.    
 3. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
-### <a name="pick-up-in-australia"></a>Csomagfelvétel Ausztráliában
+### <a name="in-australiatabin-australia"></a>[Ausztráliában](#tab/in-australia)
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában való csomagfelvételhez tegye a következőket.
 
@@ -89,9 +89,9 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 3. Ragassza a címkét a dobozra. 
 4. A hivatkozásra kattintva https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference foglaljon egy csomagfelvételt az interneten. 
 
-### <a name="pick-up-in-asia"></a>Csomagfelvétel Ázsiában
+### <a name="in-japan-koreatabin-japan-korea"></a>[Japánban és Koreában](#tab/in-japan-korea)
 
-A csomagfelvételi utasítások Japán, Korea és Szingapúr esetében eltérőek.
+Itt láthatók a Japánban és Koreában érvényes csomagfelvételi utasítások.
 
 #### <a name="pick-up-in-japan"></a>Csomagfelvétel Japánban
 
@@ -134,7 +134,8 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
     3. Ha a futár nem érkezik meg a csomagfelvételért, hívja a *Quantium Solutions International* telefonszámát alternatív megoldásokért. 
     4. Ha telefonon intézi a kérelmet, szóbeli megerősítést kap.
 
-#### <a name="pick-up-in-singapore"></a>Csomagfelvétel Szingapúrban
+
+### <a name="in-singaporetabin-singapore"></a>[Szingapúrban](#tab/in-singapore)
 
 1. Nyomtassa ki a szállítási címkét, és ragassza a dobozra. Ha a címke sérült vagy elveszett:
     - Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra, és töltsön le egy visszaküldési címkét.

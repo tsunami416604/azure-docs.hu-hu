@@ -1,6 +1,6 @@
 ---
-title: A számlázási fiókok megtekintése az Azure Portalon |} A Microsoft Docs
-description: Ismerje meg a számlázási fiókok megtekintése az Azure Portalon.
+title: Számlázási fiókok megtekintése az Azure Portalon | Microsoft Docs
+description: Ismerje meg, hogyan tekintheti meg számlázási fiókjait az Azure Portalon.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 36430e9b0a4554761d53b537d3c32fa57068eabb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490219"
 ---
-# <a name="view-billing-accounts-in-azure-portal"></a>Az Azure portal számlázási fiókok megtekintése  
+# <a name="view-billing-accounts-in-azure-portal"></a>Számlázási fiókok megtekintése az Azure Portalon  
 
-Feliratkozás használható az Azure számlázási fiók jön létre. A számlázási fiók használata kezelheti a számlákon, a fizetés, és nyomon követni a költségeket. Több számlázási fiók rendelkezhet. Például előfordulhat, hogy feliratkozott az Azure-hoz a személyes projektekhez. Hozzáférés a szervezet nagyvállalati szerződéssel vagy Microsoft Ügyfélszerződéséhez keresztül is lehet. Az egyes forgatókönyvek esetében, a számlázási fiókra kell.
+A számlázási fiók akkor jön létre, amikor regisztrálja magát az Azure használatára. A számlázási fiókban kezelheti számláit, fizetéseit és nyomon követheti kiadásait. Több számlázási fiókhoz is rendelkezhet hozzáféréssel. Előfordulhat például, hogy az egyéni projektjei kezeléséhez regisztrált az Azure-ba. Emellett rendelkezhet hozzáféréssel a szervezete Nagyvállalati Szerződésén vagy egy Microsoft-ügyfélszerződésen keresztül is. Mindegyik regisztrációhoz egy külön számlázási fiók tartozik.
 
-Az Azure portal jelenleg a következő típusú számlázási fiókok használatát támogatja:
+Az Azure Portal jelenleg a következő típusú számlázási fiókokat támogatja:
 
-- **A Microsoft Online Services Program**: Egy számlázási fiók a Microsoft Online Services Program jön létre, amikor regisztrál az Azure-hoz az Azure-webhelyen keresztül. Például, ha bejelentkezik az egy [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/), [fiók az utólagos elszámolású díjszabás szerint](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy mint egy [Visual studio-előfizetők](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+- **Microsoft Online Services Program**: A Microsoft Online Services Program számlázási fiókjai akkor jönnek létre, amikor az Azure-webhelyen keresztül regisztrál az Azure-ba. Erre példa az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/), a [használatalapú fizetést használó fiók](https://azure.microsoft.com/offers/ms-azr-0003p/) és a [Visual Studio-előfizetés](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-- **Nagyvállalati szerződés**: A nagyvállalati szerződés számlázási fiók jön létre, amikor egy szervezet előfizet egy [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) Azure használatához.
+- **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) köt az Azure használatára.
 
-- **A Microsoft Ügyfélszerződéséhez**: Ha a szervezet együttműködik a Microsoft képviselője a Microsoft vevői szerződést kötnek, egy számlázási fiók a Microsoft vevői szerződés jön létre. Néhány keresztül az Azure-webhelyen a regisztráló ügyfelek minden régióban, egy [fiók az utólagos elszámolású díjszabás szerint](https://azure.microsoft.com/offers/ms-azr-0003p/) , vagy frissítse a [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/) egy Microsoft Customer előfordulhat, hogy rendelkezik számlázási fiók Szerződés is. További információkért lásd: [Microsoft Ügyfélszerződéséhez Ismerkedés az Ön számlázási fiókjához](billing-mca-overview.md).
+- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy [használatalapú fizetést használó fiókot](https://azure.microsoft.com/offers/ms-azr-0003p/), vagy frissíti [ingyenes Azure-fiókját](https://azure.microsoft.com/offers/ms-azr-0044p/), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez. További információkért tekintse meg [a Microsoft-ügyfélszerződés számlázási fiókjával kapcsolatos első lépéseket](billing-mca-overview.md).
 
 <!--Todo Add section to identify the type of accounts -->
 
-## <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatókörök
-A hatókör egy csomópontot egy számlázási fiókot használó felhasználók megtekintése és kezelése a számlázási belül. Ahol a felhasználók kezelése a számlázási adatokat, kifizetések, számlák, és viselkedési szabályzattal az általános felhasználóifiók-kezelés. 
+## <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatóköre
+A hatókör egy csomópont a számlázási fiókon belül. A felhasználók ezt használva tekinthetik meg és kezelhetik a számlázást. A felhasználók itt kezelik a számlázási adatokat, a fizetéseket, a számlákat, és itt történik az általános fiókkezelés. 
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
-|Scope  |Meghatározás  |
+|Hatókör  |Meghatározás  |
 |---------|---------|
-|Számlázási fiók     | Egy vagy több Azure-előfizetések egyetlen tulajdonosnak (fiókadminisztrátori) jelöli. Egy fiók rendszergazdája, előfizetések létrehozása, számlák megtekintése vagy módosítása a számlázás az előfizetések különböző számlázási feladatok végrehajtására jogosult.  |
-|Előfizetés     |  Azure-erőforrások egy csoportját jelöli. Számla jön létre a hatókörben. A saját a számlás fizetési használt fizetési módok rendelkezik.|
+|Számlázási fiók     | Egy vagy több Azure-előfizetés önálló tulajdonosát (fiókadminisztrátorát) jelöli. A fiókadminisztrátor jogosult elvégezni bizonyos számlázási feladatokat, például az előfizetések létrehozását, a számlák megtekintését vagy az előfizetések számlázásának módosítását.  |
+|Előfizetés     |  Adott Azure-erőforrások csoportja. Ebben a hatókörben történik számlakiállítás. Saját fizetési módokkal rendelkezik, amelyek a számlák kiegyenlítésére szolgálnak.|
 
 
 ### <a name="enterprise-agreement"></a>Nagyvállalati Szerződés
 
-|Scope  |Meghatározás  |
+|Hatókör  |Meghatározás  |
 |---------|---------|
-|Számlázási fiók    | A nagyvállalati szerződésre való beléptetésről jelöli. Számla jön létre a hatókörben. Van felépítve, részlegek és regisztrációs fiókok használatával.  |
-|Részleg     |  Regisztrációs fiókok csoportja nem kötelező.      |
-|Regisztrációs fiók     |  Egy egyetlen fiók tulajdonosa jelöli. Az Azure-előfizetések a hatókör alatt jönnek létre.  |
+|Számlázási fiók    | Egy Nagyvállalati Szerződésre való regisztrációt jelöl. Ebben a hatókörben történik számlakiállítás. A struktúráját a bevont részlegek és regisztrált fiókok határozzák meg.  |
+|Részleg     |  Regisztrált fiókok opcionális csoportja.      |
+|Regisztrációs fiók     |  Egyetlen fióktulajdonost jelöl. Ebben a hatókörben létrejönnek Azure-előfizetések.  |
 
 
-### <a name="microsoft-customer-agreement"></a>Microsoft Ügyfélszerződés
+### <a name="microsoft-customer-agreement"></a>Microsoft-ügyfélszerződés
 
-|Scope  |Feladatok  |
+|Hatókör  |Feladatok  |
 |---------|---------|
-|Számlázási fiók     |   Egy több Microsoft-termékek és szolgáltatások ügyfélszerződéséhez jelöli. Számlázási profilok és a számla szakaszok felépítése.   |
-|Számlázási profilja     |  Számla és a hozzá tartozó fizetési módok jelöli. Számla jön létre a hatókörben. Lehet, hogy a szakaszokat számla.      |
-|Számla szakasz     |   Költségek a számla egy csoportját jelöli. Előfizetések és az egyéb vásárlási hatókör társítva.    |
+|Számlázási fiók     |   Egy több Microsoft-terméket és -szolgáltatást magában foglaló ügyfélszerződést jelöl. A struktúráját a számlázási fiókok és a számlázási szakaszok határozzák meg.   |
+|Számlázási profil     |  Egy számlát és annak fizetési módjait jelöli. Ebben a hatókörben történik számlakiállítás. Több számlázási szakaszt is magában foglalhat.      |
+|Számlázási szakasz     |   Egy költségcsoportot jelöl a számlán belül. Az előfizetések és más vásárlások ehhez a hatókörhöz vannak társítva.    |
 
 
-## <a name="switch-billing-scope-in-the-azure-portal"></a>Váltás az Azure Portal számlázási hatókör
+## <a name="switch-billing-scope-in-the-azure-portal"></a>A számlázás hatókörének módosítása az Azure Portalon
 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg **Cost Management és számlázás**.
+2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Válassza ki **számlázási mindegyikének** bal oldalán.
+3. A bal oldalon válassza ki a **Minden számlázási hatókör** elemet.
 
-   ![Minden elszámolási hatókör bemutató képernyőkép](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+   ![Az összes számlázási hatókört megjelenítő képernyőkép](./media/billing-view-all-accounts/billing-list-of-accounts.png)
 
-   ** Nem jelenik meg **számlázási mindegyikének** Ha csak rendelkezik hozzáféréssel egy hatókört.
+   **Ha csak egyetlen hatókörhöz van hozzáférése, nem jelenik meg a **Minden számlázási hatókör** lehetőség.
 
-4. Válassza ki a hatókör részleteinek megtekintéséhez.
+4. Válasszon ki egy hatókört a részletek megtekintéséhez.
 
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [a költségek elemzésével](../cost-management/quick-acm-cost-analysis.md).
+- Ismerje meg, hogyan [elemezheti költségeit](../cost-management/quick-acm-cost-analysis.md).

@@ -22,6 +22,7 @@
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
       href: application-proxy-add-on-premises-application.md
 - name: Alapelvek
+  expanded: true
   items:
     - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
@@ -240,6 +241,8 @@
           items:
             - name: A felhasználók átadásának hibaelhárítása
               href: application-provisioning-config-problem.md
+            - name: Üzembehelyezési naplók
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
               href: user-provisioning-sync-attributes-for-mapping.md
             - name: Órákat vesz igénybe – katalógusbeli alkalmazás
