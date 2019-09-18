@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860283"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075502"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -403,6 +403,8 @@ A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, a
 >A **Ne feledje multi-Factor Authentication** funkció nem kompatibilis a AD FS **bejelentkezett** szolgáltatásával, amikor a felhasználók kétlépéses AD FS ellenőrzést végeznek az Azure multi-Factor Authentication-kiszolgáló vagy egy harmadik féltől származó multi-Factor hitelesítési megoldás.
 >
 >Ha a felhasználók a AD FS **bejelentkezve szeretnék megtartani** az eszközt, és a multi-Factor Authentication számára is megbízhatóként jelölik meg az eszközét, a felhasználó nem lesz automatikusan ellenőrizve a **multi-Factor Authentication számának megjegyzése** lejár. Az Azure AD egy friss kétlépéses ellenőrzést kér, de AD FS visszaadja az eredeti Multi-Factor Authentication jogcím és dátum értékű jogkivonatot ahelyett, hogy a kétlépéses ellenőrzést újra elvégezze. **Ez a reakció ellenőrző hurkot állít be az Azure AD és a AD FS között.**
+>
+>A **megjegyzés multi-Factor Authentication** funkció nem kompatibilis a B2B-felhasználókkal, és nem lesz látható a B2B-felhasználók számára a meghívott bérlők bejelentkezésekor.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Megjegyzés engedélyezése Multi-Factor Authentication
