@@ -10,18 +10,67 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 26d66dad1e9953ddcbdbe0fd3b495bb3e418b3e7
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993423"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067732"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -referenciát tartalmazó oldalt. 
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK a Python v 1.0.62
+
++ **Új funkciók**
+  + Bevezette a idősor tulajdonságot a TabularDataset. Ez a funkció lehetővé teszi, hogy a TabularDataset egyszerű időbélyeg-szűrést biztosítson, például egy adott időtartam vagy a legfrissebb adatmennyiség között. Ha többet szeretne megtudni erről a idősor-tulajdonságról a TabularDataset https://aka.ms/azureml-data -on, https://aka.ms/azureml-tsd-notebook tekintse meg a dokumentációt vagy egy jegyzetfüzetet. 
+  + TabularDataset-és FileDataset-alapú betanítás. Nyisson meg https://aka.ms/dataset-tutorial egy példát a jegyzetfüzetre. 
+  
+  + **azureml-train-core**
+    + Nccl-és gloo-támogatás hozzáadva a PyTorch-kalkulátorban
+  
++ **Hibajavítások és javítások**
+  + **azureml-automl-Core**
+    + A "lag_length" és a LaggingTransformer AutoML-beállítás elavult.
+    + A bemeneti adatok helyes érvényesítésének javítása, ha adatfolyam formátumban vannak megadva
+    + Módosította a fit_pipeline. a diagramot a Graph JSON létrehozásához és az összetevőkre való feltöltéshez. 
+    + A gráfot a userrun alá tették a Cytoscape használatával.
+  + **azureml-core**
+    + Tekintse át a kivételt az ADB-kódban, és végezze el a módosítást új hibakezelés esetén
+    + Automatikus MSI-hitelesítés hozzáadva a notebook virtuális gépekhez.
+    + Kijavítja a hibát, ha a hibás újrapróbálkozások miatt a sérült vagy üres modelleket fel lehet tölteni.
+    + Kijavítva a hiba `DataReference` , ahol a név `DataReference` megváltozik, amikor a mód megváltozik ( `as_upload`pl `as_download`. hívás `as_mount`,, vagy).
+    + `mount_point`Aés a`FileDataset.download`használata nem kötelező. `target_path` `FileDataset.mount`
+    + Kivétel az időbélyegző-oszlop nem található, ha az idősoros kapcsolódó API-t a rendszer az időbélyegző oszlop kiosztása nélkül hívja meg, vagy a hozzárendelt időbélyeg-oszlopok el lesznek dobva.
+    + Az idősoros oszlopokat olyan oszlophoz kell rendelni, amelynek a típusa dátum, ellenkező esetben a rendszer kivételt vár.
+    + A "with_timestamp_columns" API-t hozzárendelő idő-sorozatszámok egyike sem lehet a (z) nem érték típusú, illetve durva időbélyeg-oszlop neve, ami törli a korábban hozzárendelt időbélyeg-oszlopokat
+    + A kivétel akkor jelenik meg, ha a durva vagy a részletes időbélyeg-oszlop el van dobva, és jelzi, hogy az eldobást követően a felhasználó megszakította az időbélyegző oszlopot a ledobások listájában, vagy a nincs értékkel meghívja a with_time_stamp oszlopok
+    + Kivétel keletkezik, ha a durva vagy a részletes időbélyeg-oszlop nem szerepel az oszlopok megtartása listán, és jelzi, hogy a felhasználó megtartja a tartást Az időbélyeg-oszlopok kiadásának értéke.
+    + Egy regisztrált modell méretének naplózása hozzáadva.
+  + **azureml-explain-model**
+    + Rögzített figyelmeztetés kinyomtatva a konzolra, ha a "csomagolás" Python-csomag nincs telepítve: "A lightgbm által támogatottnál régebbi verzió használata esetén frissítsen a 2.2.1-nál nagyobb verzióra"
+    + Rögzített letöltési modell magyarázata a globális magyarázatok számos funkcióval
+    + A rögzített utánozó-magyarázat hiányzó inicializálási példákat tartalmaz a kimeneti magyarázaton
+    + Rögzített megváltoztathatatlan hiba történt a tulajdonságok beállításakor, ha két különböző típusú modellt használ a magyarázó ügyféllel való feltöltéshez
+    + Felvettünk egy get_raw paramétert a magyarázathoz. magyarázza el, hogy az egyik pontozási elválasztó a mesterséges és a nyers értékeket is visszaadja.
+  + **azureml-train-automl**
+    + Nyilvános API-k bevezetése a AutoML-ből a AutoML magyarázatának támogatásához – újabb módszer a AutoML-magyarázatok támogatásához a AutoML-featurization leválasztásával és az SDK-val integrált, a azureml magyarázata és a AutoML modellek.
+    + Azureml eltávolítása – Alapértelmezések a távoli képzési környezetekben.
+    + A FileCacheStore alapján módosította az alapértelmezett gyorsítótár-tároló helyét a AzureDatabricks-AzureFileCacheStore egy AutoML-re.
+    + A bemeneti adatok helyes érvényesítésének javítása, ha adatfolyam formátumban vannak megadva
+  + **azureml-train-core**
+    + Visszaállított source_directory_data_store-érvénytelenítés.
+    + A azureml telepített csomag verzióinak felülbírálásának lehetősége. 
+    + Docker-támogatás `environment_definition` hozzáadva a paraméterben a becslések-ben.
+    + Egyszerűsített elosztott tanítási paraméterek a becslések-ben.
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
 
 ## <a name="2019-09-09"></a>2019-09-09
 
