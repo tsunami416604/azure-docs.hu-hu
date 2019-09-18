@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 651c15c8206f7956bb35520f9c5837cb0c9308f9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980694"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063255"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: Alkalmazás regisztrálása Azure Active Directory B2C
 
-Az [alkalmazások](active-directory-b2c-apps.md) a Azure Active Directory (Azure ad) B2C-vel való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben. Ez az oktatóanyag bemutatja, hogyan regisztrálhat egy webalkalmazást a Azure Portal használatával.
+Az [alkalmazások](active-directory-b2c-apps.md) Azure Active Directory B2C (Azure ad B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben. Ez az oktatóanyag bemutatja, hogyan regisztrálhat egy webalkalmazást a Azure Portal használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -35,7 +35,7 @@ Ha még nem hozott létre saját [Azure ad B2C bérlőt](tutorial-create-tenant.
 
 ## <a name="register-a-web-application"></a>Webalkalmazás regisztrációja
 
-1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 1. Adja meg az alkalmazás nevét. Például: *webapp1*.

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83269a5ae0d2e5fb7ae2651dbc27926c910a0e03
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302496"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065849"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory (Azure ad) B2C-bérlő működését. Ebben a cikkben egy olyan egyéni házirendet hoz létre, amely támogatja a helyi fiók regisztrálását vagy bejelentkezését e-mail-cím és jelszó használatával. Az identitás-szolgáltatók hozzáadására is elő kell készítenie a környezetet.
+Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure ad B2C) bérlő viselkedését. Ebben a cikkben egy olyan egyéni házirendet hoz létre, amely támogatja a helyi fiók regisztrálását vagy bejelentkezését e-mail-cím és jelszó használatával. Az identitás-szolgáltatók hozzáadására is elő kell készítenie a környezetet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigur
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Kattintson a **könyvtár és előfizetés szűrőre** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 

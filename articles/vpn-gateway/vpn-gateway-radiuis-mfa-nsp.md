@@ -4,7 +4,7 @@ description: Ismerteti az Azure-átjáró RADIUS-hitelesítés integrálása az 
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666217"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058883"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN gateway RADIUS-hitelesítés integrálása az NPS-kiszolgálóval a multi-factor Authentication 
 
@@ -40,10 +40,10 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
     ![Átjáró-alhálózat hozzáadása bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Hozzon létre egy virtuális hálózati átjáró a következő beállítások megadásával:
 
-    - **Átjáró típusa**: Válassza ki **VPN**.
-    - **VPN-típust**: Válassza ki **útvonalalapú**.
-    - **TERMÉKVÁLTOZAT**: Válassza ki a követelmények alapján Termékváltozatának típusa.
-    - **Virtuális hálózat**: Válassza ki a virtuális hálózatot, amelyben létrehozta az átjáró-alhálózat.
+    - **Átjáró típusa**: Válassza a **VPN**lehetőséget.
+    - **VPN típusa**: Válassza az **útvonal-alapú**lehetőséget.
+    - **SKU**: A követelmények alapján válasszon SKU-típust.
+    - **Virtuális hálózat**: Válassza ki azt a virtuális hálózatot, amelyben létrehozta az átjáró-alhálózatot.
 
         ![Virtuális hálózati átjáró beállításainak bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -52,18 +52,18 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2\. lépés a hálózati házirend-kiszolgáló konfigurálása az Azure MFA-hoz
 
 1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA-kiszolgáló](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Nyissa meg a hálózati házirend-kiszolgáló konzolját, kattintson a jobb gombbal **RADIUS-ügyfelek**, majd válassza ki **új**. Hozza létre a RADIUS-ügyfél a következő beállítások megadásával:
+2. Nyissa meg az NPS-konzolt, kattintson a jobb gombbal a **RADIUS-ügyfelek**elemre, majd válassza az **új**lehetőséget. Hozza létre a RADIUS-ügyfelet a következő beállítások megadásával:
 
-    - **Rövid név**: Adjon neki tetszőleges nevet.
-    - **(IP- vagy DNS-) cím**: Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
+    - **Felhasználóbarát név**: Írjon be bármilyen nevet.
+    - **Cím (IP vagy DNS)** : Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
     - **Közös titkos kulcsot**: írja be a bármely titkos kulcsot, és ne felejtse el későbbi használatra.
 
-      ![RADIUS-ügyfélbeállításokat bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![A RADIUS-ügyfél beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Az a **speciális** lapon, a szállító nevét állítsa **RADIUS Standard** , és ellenőrizze, hogy a **további beállítások** jelölőnégyzet nincs bejelölve.
 
-    ![RADIUS-ügyfél speciális beállításai bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![A RADIUS-ügyfél speciális beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Lépjen a **házirendek** > **hálózati házirendek**, kattintson duplán a **Microsoft Routing és távelérési kiszolgáló felé irányuló kapcsolatot** szabályzatot, jelölje be  **Hozzáférés biztosítása**, és kattintson a **OK**.
 
@@ -74,8 +74,8 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 3. Kattintson a **Helykonfiguráció mutasson** > **konfigurálás most**, és adja meg a következő beállításokat:
 
     - **Címkészlet**: Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
-    - **Hitelesítési típus**: Válassza ki **RADIUS-hitelesítés**.
-    - **Kiszolgáló IP-cím**: Írja be a hálózati házirend-kiszolgáló IP-címét.
+    - **Hitelesítés típusa**: Válassza a **RADIUS-hitelesítés**lehetőséget.
+    - **Kiszolgáló IP-címe**: Írja be az NPS-kiszolgáló IP-címét.
 
       ![Mutasson a hely beállításait bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 

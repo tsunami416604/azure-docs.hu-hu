@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566885"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037433"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Database Azure Resource Manager sablonjai
 
 Azure Resource Manager sablonok lehetővé teszik az infrastruktúra kódként való definiálását és a megoldások üzembe helyezését az Azure-felhőben.
 
-## <a name="single-database--elastic-pool"></a>Önálló adatbázis & rugalmas készlet
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Önálló adatbázis & rugalmas készlet](#tab/single-database)
 
 Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
@@ -41,7 +41,7 @@ Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mu
 | [HDInsight-fürt SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Ez a sablon lehetővé teszi egy HDInsight-fürt, egy SQL Database-kiszolgáló, egy SQL Database és két tábla létrehozását. Ezt a sablont [használja a Sqoop használata a Hadoop-ben a HDInsight cikkben](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) |
 | [Az Azure logikai alkalmazás, amely egy ütemezett SQL tárolt eljárást futtat](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Ez a sablon lehetővé teszi, hogy olyan logikai alkalmazást hozzon létre, amely egy ütemezett SQL tárolt eljárást fog futtatni. Az eljáráshoz tartozó argumentumok a sablon törzs szakaszába helyezhetők.|
 
-## <a name="managed-instance"></a>Felügyelt példány
+## <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
 Az alábbi táblázat a Azure SQL Database által felügyelt példányokra Azure Resource Manager sablonokra mutató hivatkozásokat tartalmaz.
 
@@ -51,3 +51,5 @@ Az alábbi táblázat a Azure SQL Database által felügyelt példányokra Azure
 | [A felügyelt példány hálózati környezete](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Ez az üzembe helyezés egy konfigurált Azure-Virtual Network hoz létre két alhálózattal – az egyiket a felügyelt példányok számára, és egy másikat, ahol más erőforrásokat (például virtuális gépeket, App Service környezeteket stb.) helyezhet el. Ez a sablon egy megfelelően konfigurált hálózati környezetet hoz létre, ahol felügyelt példányokat helyezhet üzembe. |
 | [Felügyelt példány P2S-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Ez az üzembe helyezés egy Azure `ManagedInstance` -Virtual Network hoz létre két alhálózattal és. `GatewaySubnet` A felügyelt példány a ManagedInstance-alhálózatban lesz telepítve. A rendszer létrehozza a virtuális hálózati átjárót az `GatewaySubnet` alhálózatban, és a pont – hely VPN-kapcsolathoz van konfigurálva. |
 | [Felügyelt példány virtuális géppel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Ez az üzembe helyezés egy Azure `ManagedInstance` -Virtual Network hoz létre két alhálózattal és. `Management` A felügyelt példány az `ManagedInstance` alhálózaton lesz telepítve. A SQL Server Management Studio (SSMS) legújabb verzióját tartalmazó virtuális gép az `Management` alhálózaton lesz telepítve. |
+
+---

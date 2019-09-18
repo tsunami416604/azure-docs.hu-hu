@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967790"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036334"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -95,7 +95,7 @@ Ha meg szeretné tudni, hogyan hozhat létre prémium szintű fájlmegosztást, 
 Jelenleg nem konvertálhatók közvetlenül a standard fájlmegosztás és a prémium fájlmegosztás között. Ha bármelyik szinten szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait a létrehozott új megosztásra. Ezt a Azure Files támogatott másolási eszközei (például a Robocopy vagy a AzCopy) használatával teheti meg.
 
 > [!IMPORTANT]
-> A prémium fájlmegosztás csak a LRS érhető el, és a legtöbb olyan régióban elérhető, amelyek Storage-fiókokat kínálnak. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) .
+> A prémium szintű fájlmegosztás a legtöbb régióban LRS érhető el, amelyek a Storage-fiókokat és a ZRS-t a régiók kisebb részhalmazában kínálják. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . Ha szeretné megtudni, hogy mely régiók támogatják a ZRS, tekintse meg a [támogatási lefedettség és a regionális rendelkezésre állás](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)című témakört
 
 #### <a name="provisioned-shares"></a>Kiosztott megosztások
 
@@ -157,7 +157,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 
 Azure Files a standard szintű megosztások négy adatredundancia-beállítást támogatnak: helyileg redundáns tárolást (LRS), a zóna redundáns tárolását (ZRS), a Geo-redundáns tárolást (GRS) és a Geo-zóna-redundáns tárolást (előzetes verzió).
 
-Azure Files Premium-megosztások csak a helyileg redundáns tárolást (LRS) támogatják.
+Azure Files prémium szintű megosztások támogatják mind a LRS, mind a ZRS, a ZRS jelenleg a régiók kisebb részhalmazában érhető el.
 
 A következő szakaszok a különböző redundancia-beállítások közötti különbségeket ismertetik:
 

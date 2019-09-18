@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: c4eba3e08e403243e76ac891d3bfcb59f12cad85
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: f794fad0f42a27190bdd948df49d0133dfaa1a92
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211908"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066413"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -44,22 +44,21 @@ A bal oldali navigációs menü használatával érheti el az alkalmazás külö
       ![Left navigation menu](media/overview-iot-central-tour/navigationbar.png)
   :::column-end:::
   :::column span="2":::
-
-      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+     Az **irányítópult** megjeleníti az alkalmazás irányítópultját. Építőként testreszabhatja az irányítópultot a kezelők számára. A felhasználók emellett saját irányítópultokat is létrehozhatnak.
     
-      **Device Explorer** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+     **Device Explorer** felsorolja az alkalmazásban az egyes eszközökhöz társított szimulált és valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.
     
-      **Device Sets** enables you to view and create device sets. As an operator, you can create device sets as a logical collection of devices specified by a query.
+     Az **eszközök készletei** lehetővé teszik az eszközbeállítások megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.
     
-      **Analytics** shows analytics derived from device telemetry for devices and device sets. As an operator, you can create custom views on top of device data to derive insights from your application.
+     Az **elemzések** az eszközök és az eszközök telemetria származtatott elemzéseket jelenítik meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.
     
-      **Jobs** enables bulk device management by having you create and run jobs to perform updates at scale.
+     A **feladatok** lehetővé teszik a tömeges eszközök felügyeletét azáltal, hogy feladatokkal hozza létre és futtatja a frissítéseket a méretezési feladatok végrehajtásához.
     
-      **Device Templates** shows the tools a builder uses to create and manage device templates.
+     Az **eszköz sablonjai** a Builder által az eszközök sablonjainak létrehozásához és kezeléséhez használt eszközöket jelenítik meg.
     
-      **Continuous Data Export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+     A **folyamatos adatexportálás** lehetővé teszi a rendszergazda számára, hogy folyamatos exportálást konfiguráljon más Azure-szolgáltatásokba, például a Storage-ba és a várólistákba.
     
-      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+     Az **Adminisztráció** azokat az alkalmazás-felügyeleti lapokat jeleníti meg, ahol a rendszergazdák kezelhetik az Alkalmazásbeállítások, a felhasználók és a szerepkörök beállításait.
    :::column-end:::
 :::row-end:::
 

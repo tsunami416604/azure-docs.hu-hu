@@ -4,14 +4,14 @@ description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775350"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036953"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár csatlakoztatása
 
@@ -19,13 +19,13 @@ A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű csatlakoztat
 
 Használja a gyorsítótár áttekintése oldalon felsorolt csatlakoztatási címeket, valamint a tárolási cél létrehozásakor beállított virtuális névtér elérési útját. 
 
-![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/mount-addresses.png)
+![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Ezek a hálózati adapterek az erőforráscsoport `-cluster-nic-` és egy szám végződésű névvel jelennek meg. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
 
-A virtuális névtér elérési útjai a **tárolási célok** lapon jelennek meg. 
-![képernyőfelvétel a gyorsítótár tárolási céljáról panelről, a tábla Path oszlopában lévő egyik mező körül](media/storage-target-path.png)
+A virtuális névtér elérési útjai a **tárolási célok** lapon jelennek meg. Kattintson a cél nevére a részletek megjelenítéséhez, beleértve a hozzá társított összesített névtér elérési útját (vagy elérési útvonalát). 
+![képernyőfelvétel a gyorsítótár tárolási céljáról panelről, a tábla Path oszlopában lévő egyik mező körül](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Csatlakoztatási parancs szintaxisa
 

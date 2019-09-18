@@ -1,7 +1,7 @@
 ---
 title: Mi az a munkaterület?
-titleSuffix: Azure Machine Learning service
-description: A munkaterület a Azure Machine Learning szolgáltatás legfelső szintű erőforrása. Megőrzi az összes képzési folyamat előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő
+titleSuffix: Azure Machine Learning
+description: A munkaterület a Azure Machine Learning legfelső szintű erőforrása. Megőrzi az összes képzési folyamat előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860505"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035322"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Mi az Azure Machine Learning szolgáltatás munkaterülete?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
-A munkaterület a Azure Machine Learning szolgáltatás legfelső szintű erőforrása, amely központosított helyet biztosít a Azure Machine Learning szolgáltatás használatakor létrehozott összes összetevővel való együttműködéshez.  A munkaterület megőrzi az összes betanítási Futtatás előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő.  
+A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központosított helyet biztosít a Azure Machine Learning használatakor létrehozott összes összetevővel való együttműködéshez.  A munkaterület megőrzi az összes betanítási Futtatás előzményeit, beleértve a naplókat, a metrikákat, a kimenetet és a parancsfájlok pillanatképét. Ezekkel az információkkal meghatározhatja, hogy melyik betanítási Futtatás a legjobb modellt állítja elő.  
 
 Ha egy modellt szeretne, regisztrálja azt a munkaterületen. Ezután a regisztrált modell-és pontozási szkriptekkel üzembe helyezheti az Azure Container Instances, az Azure Kubernetes Service-t vagy egy mezőre programozható Gate array (FPGA)-t REST-alapú HTTP-végpontként. A modellt egy Azure IoT Edge eszközre is üzembe helyezheti modulként.
 
@@ -103,9 +103,9 @@ Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a 
 
 ## <a name="next-steps"></a>További lépések
 
-A Azure Machine Learning szolgáltatás megkezdéséhez lásd:
+A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 
-+ [Azure Machine Learning szolgáltatás áttekintése](overview-what-is-azure-ml.md)
++ [Azure Machine Learning áttekintése](overview-what-is-azure-ml.md)
 + [Munkaterület létrehozása](how-to-manage-workspace.md)
 + [Munkaterületek kezelése](how-to-manage-workspace.md)
 + [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)

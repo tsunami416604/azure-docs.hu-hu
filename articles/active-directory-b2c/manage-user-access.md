@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846777"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064132"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
-Ez a cikk azt ismerteti, hogyan kezelheti az alkalmazásokhoz való felhasználói hozzáférést Azure Active Directory (Azure AD) B2C használatával. A hozzáférés-kezelés az alkalmazásban az alábbiakat tartalmazza:
+Ez a cikk azt ismerteti, hogyan kezelheti az alkalmazásokhoz való felhasználói hozzáférést Azure Active Directory B2C (Azure AD B2C) használatával. A hozzáférés-kezelés az alkalmazásban az alábbiakat tartalmazza:
 
 - A kiskorúak azonosítása és az alkalmazáshoz való felhasználói hozzáférés szabályozása.
 - Szülői engedély kérése kiskorúak számára az alkalmazások használatához.
@@ -54,7 +54,7 @@ A következő példa egy felhasználói folyamatot mutat be a szülői engedély
 
 4. Az alkalmazás lehetőséget biztosít a kiskorú számára a beleegyezés visszavonására.
 
-5. Ha a kiskorú vagy a felnőtt visszavonja a beleegyezését, az Azure AD Graph API a **consentProvidedForMinor** megtagadására is használható. Azt is megteheti, hogy az alkalmazás törli azt a kiskorút, amelynek a beleegyezését visszavonták. Lehetőség van a felhasználói folyamat testreszabására is, hogy a hitelesített kiskorú (vagy a kiskorú fiókját használó szülő) visszavonja a beleegyezést. Azure AD B2C a **consentProvidedForMinor** a megtagadott módon rögzíti.
+5. Ha a kiskorú vagy a felnőtt visszavonja a beleegyezését, az Azure AD Graph API a **consentProvidedForMinor** megtagadásárais használható. Azt is megteheti, hogy az alkalmazás törli azt a kiskorút, amelynek a beleegyezését visszavonták. Lehetőség van a felhasználói folyamat testreszabására is, hogy a hitelesített kiskorú (vagy a kiskorú fiókját használó szülő) visszavonja a beleegyezést. Azure AD B2C a **consentProvidedForMinor** amegtagadott módon rögzíti.
 
 A **legalAgeGroupClassification**, a **ConsentProvidedForMinor**és a **beszerzésimennyiség**szolgáltatással kapcsolatos további információkért lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). További információ az egyéni attribútumokról: [Egyéni attribútumok használata a felhasználók adatainak gyűjtéséhez](active-directory-b2c-reference-custom-attr.md). Ha az Azure AD Graph API használatával kezeli a kiterjesztett attribútumokat, az attribútum hosszú verzióját kell használnia, például *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
@@ -72,7 +72,7 @@ A következő lépések azt mutatják be, hogy milyen logikát kell kiszámítan
 
     a. Annak a dátumnak a kiszámítása, amely szerint a felhasználónak felnőttnek kell lennie. Ha például az aktuális dátum március 14, 2015, a **MinorConsent** pedig 18, a születési dátum nem lehet későbbi, mint a 2000. március 14.
 
-    b. A születési dátum és a tényleges születési dátum összevetése. Ha a minimális születési dátum a felhasználó születési dátuma, akkor a számítás a korcsoport szerinti  számításnak minősülő alhálózatot adja vissza.
+    b. A születési dátum és a tényleges születési dátum összevetése. Ha a minimális születési dátum a felhasználó születési dátuma, akkor a számítás a korcsoport szerinti számításnak minősülő alhálózatot adja vissza.
 
 3. Ha a **MinorNoConsentRequired** csomópont szerepel az ország elemben, ismételje meg a 2a és a 2B lépést a **MinorNoConsentRequired**értékének használatával. A 2B kimenete **MinorNoConsentRequired** ad vissza, ha a minimális születési dátum a felhasználó születési dátuma.
 
@@ -81,7 +81,7 @@ A következő lépések azt mutatják be, hogy milyen logikát kell kiszámítan
 Ha egy alkalmazás más módszerekkel megbízhatóan gyűjtött DOB vagy ország/régió adatait, az alkalmazás a Graph API használatával frissítheti a felhasználói rekordot ezekkel az adatokkal. Példa:
 
 - Ha egy felhasználó ismert felnőttnek, akkor frissítse a **beszerzésimennyiség** Directory-attribútumot **felnőtt**értékkel.
-- Ha a felhasználó neve kisebb, akkor frissítse a **beszerzésimennyiség** attribútumot, és adja meg a **consentProvidedForMinor**értéket  a megfelelő értékkel.
+- Ha a felhasználó neve kisebb, akkor frissítse a **beszerzésimennyiség** attribútumot, és adja meg a **consentProvidedForMinor**értéket a megfelelő értékkel.
 
 További információ a DOB-adatok gyűjtéséről: [Age kapuzás használata a Azure ad B2Cban](basic-age-gating.md).
 

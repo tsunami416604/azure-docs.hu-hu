@@ -1,7 +1,7 @@
 ---
 title: Biztonságos webszolgáltatások SSL használatával
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan védheti a Azure Machine Learning szolgáltatáson keresztül központilag telepített webszolgáltatásokat a HTTPS engedélyezésével. A HTTPS a Transport Layer Security (TLS) használatával védi az ügyfelek adatait a Secure Socket Layer (SSL) helyett. Az ügyfelek emellett a HTTPS protokollt is használják a webszolgáltatás identitásának ellenőrzéséhez.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan védheti meg a Azure Machine Learning által központilag telepített webszolgáltatás védelmét a HTTPS engedélyezésével. A HTTPS a Transport Layer Security (TLS) használatával védi az ügyfelek adatait a Secure Socket Layer (SSL) helyett. Az ügyfelek emellett a HTTPS protokollt is használják a webszolgáltatás identitásának ellenőrzéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772527"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034377"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatások biztonságossá tétele az SSL használatával Azure Machine Learning
 
-Ez a cikk bemutatja, hogyan védheti meg a Azure Machine Learning szolgáltatáson keresztül üzembe helyezett webszolgáltatásokat.
+Ez a cikk bemutatja, hogyan védheti meg az Azure Machine Learning használatával üzembe helyezett webszolgáltatásokat.
 
 A [https](https://en.wikipedia.org/wiki/HTTPS) használatával korlátozhatja a webszolgáltatásokhoz való hozzáférést, és gondoskodhat az ügyfelek által elküldött adatvédelemről. A HTTPS segíti a kommunikációt az ügyfél és a webszolgáltatás között a kettő közötti kommunikáció titkosításával. A titkosítás [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)protokollt használ. A TLS-t néha *SSL* (SSL) néven is emlegetik, amely a TLS elődje volt.
 
@@ -151,7 +151,7 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
   Frissítse az AK-fürt nyilvános IP-címének DNS-címét a **konfiguráció** lapon a bal oldali ablaktábla **Beállítások** területén. (Lásd az alábbi ábrát.) A nyilvános IP-cím olyan erőforrástípus, amely az AK-ügynök csomópontjait és egyéb hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
 
-  [![Azure Machine Learning szolgáltatás: Webszolgáltatások biztonságossá tétele SSL használatával](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Webszolgáltatások biztonságossá tétele SSL használatával](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Az SSL-tanúsítvány frissítése
 

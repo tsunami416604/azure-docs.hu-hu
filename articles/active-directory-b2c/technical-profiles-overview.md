@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998759"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063325"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A technikai profil egy beépített mechanizmust biztosít a különböző típusú felekkel való kommunikációhoz a Azure Active Directory (Azure AD) B2C egyéni szabályzatával. A technikai profilok a Azure AD B2C Bérlővel való kommunikációhoz, felhasználó létrehozásához vagy felhasználói profil beolvasásához használhatók. A technikai profil önérvényesíthető úgy, hogy lehetővé tegye a felhasználóval való interakciót. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, majd jelenítse meg a regisztrációs lapot vagy a jelszó-visszaállítási lapot.
+A technikai profil egy beépített mechanizmust biztosít a különböző típusú felekkel való kommunikációhoz Azure Active Directory B2C (Azure AD B2C) egyéni szabályzatának használatával. A technikai profilok a Azure AD B2C Bérlővel való kommunikációhoz, felhasználó létrehozásához vagy felhasználói profil beolvasásához használhatók. A technikai profil önérvényesíthető úgy, hogy lehetővé tegye a felhasználóval való interakciót. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, majd jelenítse meg a regisztrációs lapot vagy a jelszó-visszaállítási lapot.
 
 ## <a name="type-of-technical-profiles"></a>Technikai profilok típusa
 

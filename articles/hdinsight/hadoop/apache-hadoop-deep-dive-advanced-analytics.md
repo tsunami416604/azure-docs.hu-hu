@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918213"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066987"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -23,17 +23,17 @@ A HDInsight lehetővé teszi értékes információk beszerzését nagy mennyis�
 
 ## <a name="advanced-analytics-process"></a>Fejlett elemzési folyamat
 
-![Folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![Fejlett elemzési folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-Miután azonosította az üzleti problémát, és megkezdte az adatok gyűjtését és feldolgozását, létre kell hoznia egy modellt, amely az előre jelezni kívánt kérdést jelöli. A modell egy vagy több gépi tanulási algoritmust használ az üzleti igényeknek leginkább megfelelő előrejelzési típus elvégzéséhez.  Az adatok többségét a modell betanítására kell használni, a többit pedig tesztelésre vagy kiértékelésre használják. 
+Miután azonosította az üzleti problémát, és megkezdte az adatok gyűjtését és feldolgozását, létre kell hoznia egy modellt, amely az előre jelezni kívánt kérdést jelöli. A modell egy vagy több gépi tanulási algoritmust használ az üzleti igényeknek leginkább megfelelő előrejelzési típus elvégzéséhez.  Az adatok többségét a modell betanítására kell használni, a többit pedig tesztelésre vagy kiértékelésre használják.
 
-A modell létrehozását, betöltését, tesztelését és értékelését követően a következő lépés a modell üzembe helyezése, hogy megkezdje a válaszok megadását a kérdéseire. Az utolsó lépés a modell teljesítményének figyelése és szükség szerinti finomhangolása. 
+A modell létrehozását, betöltését, tesztelését és értékelését követően a következő lépés a modell üzembe helyezése, hogy megkezdje a válaszok megadását a kérdéseire. Az utolsó lépés a modell teljesítményének figyelése és szükség szerinti finomhangolása.
 
 ## <a name="common-types-of-algorithms"></a>Az algoritmusok gyakori típusai
 
 A speciális elemzési megoldások gépi tanulási algoritmusokat biztosítanak. Itt látható az algoritmusok és a kapcsolódó gyakori üzleti használati esetek kategóriáinak összefoglalása.
 
-![Machine Learning használati esetek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+![Machine Learning kategória összefoglalói](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfontolnia, hogy szükséges-e az adatképzésben. A gépi tanulási algoritmusok a következőképpen vannak kategorizálva:
 
@@ -98,7 +98,7 @@ Ebben a fejlett elemzési forgatókönyvben három kulcsfontosságú feladat van
 
 Ez a példa a CIFAR-10 képkészletet használja, amelyet Alex Krizhevsky, vino Siro és Geoffrey Hinton lefordított és elosztott. A CIFAR-10 adatkészlet 60 000 32 × 32 színes képet tartalmaz, amelyek a 10 egymást kölcsönösen kizáró osztályhoz tartozóak:
 
-![Képek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+![Machine Learning képek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Az adatkészlettel kapcsolatos további részletekért lásd: Alex Krizhevsky, [több rétegbeli funkcióinak megismerése apró képekből](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,7 +111,7 @@ Az adatkészlet 50 000 rendszerképekből és 10 000-es rendszerképekből áll�
 
 Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy percet vesz igénybe egy 4 munkavégző csomóponttal rendelkező fürtön. A modell pontosan megjósolja a ~ 9 100 (91%) címkéit képek. A zűrzavaros mátrix a leggyakoribb besorolási hibákat mutatja be. A mátrix például azt mutatja, hogy a kutyák macskákként való címkézése és fordítva gyakrabban történik, mint a többi címke pároknál.
 
-![Results (Eredmények)](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+![Machine Learning eredmények diagramja](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Próbálja ki!
 

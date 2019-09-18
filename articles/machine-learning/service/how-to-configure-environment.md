@@ -1,7 +1,7 @@
 ---
 title: Python fejlesztői környezet beállítása
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan konfigurálhat fejlesztési környezetet, ha együttműködik a Azure Machine Learning szolgáltatással. Ebből a cikkből megtudhatja, hogyan használhatja a Conda-környezeteket, hogyan hozhat létre konfigurációs fájlokat, és hogyan konfigurálhatja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, a Azure Databricksokat, az ide-ket, a Code Editort és a Data Science Virtual Machine.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan konfigurálhat fejlesztési környezetet a Azure Machine Learning használatakor. Ebből a cikkből megtudhatja, hogyan használhatja a Conda-környezeteket, hogyan hozhat létre konfigurációs fájlokat, és hogyan konfigurálhatja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, a Azure Databricksokat, az ide-ket, a Code Editort és a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860581"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034878"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy fejlesztési környezetet Azure Machine Learning szolgáltatással való együttműködéshez. Azure Machine Learning szolgáltatás a platform agnosztikus. A fejlesztői környezetének egyetlen nehéz követelménye a Python 3. Egy elkülönített környezet (például anaconda vagy Virtualenv) is ajánlott.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy fejlesztési környezetet a Azure Machine Learning való együttműködéshez. Azure Machine Learning a platform agnosztikus. A fejlesztői környezetének egyetlen nehéz követelménye a Python 3. Egy elkülönített környezet (például anaconda vagy Virtualenv) is ajánlott.
 
 A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környezetet tartalmazza, valamint az előnyeit és hátrányait.
 
@@ -40,7 +40,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), a [DSVM](#dsvm)vagy a [Azure Databrickstel](#aml-databricks)kezdheti meg.
+Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásával kapcsolatban tekintse meg [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak a saját [felhőalapú notebook-kiszolgálóval](#notebookvm), a [DSVM](#dsvm)vagy a [Azure Databrickstel](#aml-databricks)kezdheti meg.
 
 A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter notebook Server](#jupyter) vagy a [Visual Studio Code](#vscode) is szükséges:
 
@@ -70,7 +70,7 @@ A notebook virtuális gép:
   + Mély tanulási keretrendszerek kiválasztása
 
 
-  Ha kódot használ, a virtuális gép oktatóanyagokat és mintákat tartalmaz, amelyek segítségével megismerheti a Azure Machine Learning szolgáltatás használatát. A minta jegyzetfüzeteket a munkaterület Azure Blob Storage fiókjában tárolja, így azok megoszthatók a virtuális gépek között. A futtatáskor hozzáférhetnek a munkaterület adattárakhoz és számítási erőforrásaihoz is.
+  Ha kódot használ, a virtuális gép oktatóanyagokat és mintákat tartalmaz, amelyek segítenek a Azure Machine Learning használatának megismerésében. A minta jegyzetfüzeteket a munkaterület Azure Blob Storage fiókjában tárolja, így azok megoszthatók a virtuális gépek között. A futtatáskor hozzáférhetnek a munkaterület adattárakhoz és számítási erőforrásaihoz is.
 
 + **Egyszerű beállítás**: Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt [az oktatóanyagot: Környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md)beállítása.
 
@@ -145,7 +145,7 @@ A DSVM fejlesztési környezetként való használatához tegye a következőket
     print(azureml.core.VERSION)
     ```
 
-1. Ha a DSVM a Azure Machine Learning szolgáltatás munkaterületének használatára szeretné konfigurálni, tekintse meg a [munkaterület-konfigurációs fájl létrehozása](#workspace) című szakaszt.
+1. Ha a DSVM a Azure Machine Learning munkaterület használatára szeretné konfigurálni, tekintse meg a [munkaterület-konfigurációs fájl létrehozása](#workspace) című szakaszt.
 
 További információ: adatelemzési [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
@@ -255,7 +255,7 @@ A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges öss
     sys.path
     ```
     
-1. A Jupyter Notebook a Azure Machine Learning szolgáltatás munkaterületének használatára való konfigurálásához lépjen a [munkaterület-konfigurációs fájl létrehozása](#workspace) szakaszra.
+1. A Jupyter Notebook a Azure Machine Learning munkaterület használatára való konfigurálásához lépjen a munkaterület- [konfigurációs fájl létrehozása](#workspace) szakaszra.
 
 
 ### <a id="vscode"></a>A Visual Studio Code
@@ -287,7 +287,7 @@ Ha a Visual Studio Code-ot szeretné használni a fejlesztéshez, tegye a követ
 ## <a name="azure-databricks"></a>Azure Databricks
 A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. Együttműködik a notebookon alapuló, CPU-vagy GPU-alapú számítási fürttel.
 
-Hogyan működik a Azure Databricks Azure Machine Learning szolgáltatással:
+Hogyan működik a Azure Databricks Azure Machine Learning:
 + A modelleket Spark MLlib használatával is betaníthatja, és a modellt ACI/AK-ba helyezheti el Azure Databricks belülről.
 + Az [automatizált gépi tanulási](concept-automated-ml.md) képességeket egy speciális Azure ml SDK-val is használhatja Azure Databricks.
 + A Azure Databricks számítási célként [Azure Machine learning folyamatból](concept-ml-pipelines.md)is használhatja.
@@ -355,7 +355,7 @@ Próbálja ki:
 
 ## <a id="workspace"></a>Munkaterület-konfigurációs fájl létrehozása
 
-A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning szolgáltatás munkaterületével. A fájl neve *config. JSON*, és a formátuma a következő:
+A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config. JSON*, és a formátuma a következő:
 
 ```json
 {

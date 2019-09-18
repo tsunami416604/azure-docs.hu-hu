@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852721"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056383"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat meghívó Daemon-alkalmazás
 
@@ -60,9 +60,9 @@ Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk szám
 A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következő szempontokat öleli fel:
 
 - A Daemon-alkalmazások csak az Azure AD-bérlők esetében működhetnek. Nem érdemes olyan Daemon-alkalmazást létrehozni, amely megkísérli a személyes Microsoft-fiókok kezelését. Ha Ön üzletági (LOB) alkalmazás fejlesztője, a démoni alkalmazást a bérlőben hozza létre. Ha Ön ISV-t használ, érdemes lehet több-bérlős démon alkalmazást létrehoznia. Minden bérlői rendszergazdának meg kell adnia.
-- Az [alkalmazás regisztrálása](./scenario-daemon-app-registration.md)során a **Válasz URI-ja** nem szükséges. Meg kell osztania a titkokat vagy tanúsítványokat az Azure AD-vel, és meg kell kérnie az alkalmazások engedélyeit, és rendszergazdai jóváhagyást kell adnia az alkalmazás engedélyeinek használatához.
+- Az [alkalmazás regisztrálása](./scenario-daemon-app-registration.md)során a **Válasz URI-ja** nem szükséges. Meg kell osztania a titkokat, a tanúsítványokat vagy az aláírt állításokat az Azure AD-vel, és meg kell kérnie az alkalmazások engedélyeit, és rendszergazdai jóváhagyást kell adnia az alkalmazás engedélyeinek használatához.
 - Az [alkalmazás konfigurációjának](./scenario-daemon-app-configuration.md) az Azure ad-ben megosztott ügyfél-hitelesítő adatokat kell megadnia az alkalmazás regisztrációja során.
-- Az [](scenario-daemon-acquire-token.md#scopes-to-request) ügyfél hitelesítő adataival rendelkező token beszerzéséhez használt hatókörnek statikus hatókörre van szüksége.
+- Az ügyfél hitelesítő adataival rendelkező token beszerzéséhez használt [hatókörnek](scenario-daemon-acquire-token.md#scopes-to-request) statikus hatókörre van szüksége.
 
 ## <a name="next-steps"></a>További lépések
 

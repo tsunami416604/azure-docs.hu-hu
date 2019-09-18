@@ -3,17 +3,17 @@ title: Általános Node. js-ügyfélalkalmazás összekötése az Azure IoT Cent
 description: Eszköz-fejlesztőként, hogyan csatlakoztatható egy általános Node. js-eszköz az Azure IoT Central-alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/14/2019
+ms.date: 09/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876236"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066442"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Általános ügyfélalkalmazás összekötése az Azure IoT Central-alkalmazással (node. js)
 
@@ -25,8 +25,8 @@ Ez a cikk azt ismerteti, hogyan lehet egy eszköz fejlesztőként csatlakozni eg
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-1. A [Node. js](https://nodejs.org/) 4.0.0 vagy újabb verzióját futtató fejlesztői gép. A parancssorban `node --version` futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető.
+- Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+- A [Node. js](https://nodejs.org/) 4.0.0 vagy újabb verzióját futtató fejlesztői gép. A parancssorban `node --version` futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
 
@@ -73,7 +73,7 @@ Adja hozzá a következő eseményt a **mérések** lapon:
 
 ### <a name="location-measurements"></a>Hely mértékegysége
 
-Adja hozzá a következő hely mértékét a mérések lapon:
+Adja hozzá a következő hely mértékét a **mérések** lapon:
 
 | Megjelenítendő név | Mező neve  |
 | ------------ | ----------- |
@@ -111,13 +111,13 @@ Adja hozzá a következő parancsot a **parancsok** lapon:
 
 | Megjelenítendő név    | Mező neve     | Alapértelmezett határidő-túllépés | Adattípus |
 | --------------- | -------------- | --------------- | --------- |
-| Visszaszámlálás       | visszaszámlálás      | 30              | szám    |
+| Visszaszámlálás       | visszaszámlálás      | 30              | number    |
 
 Adja hozzá a következő beviteli mezőt a visszaszámlálási parancshoz:
 
 | Megjelenítendő név    | Mező neve     | Adattípus | Value |
 | --------------- | -------------- | --------- | ----- |
-| Darabszám      | countFrom      | szám    | 10    |
+| Darabszám      | countFrom      | number    | 10    |
 
 Adja meg a mezőneveket pontosan úgy, ahogy az az eszköz sablonjában látható. Ha a mezők nevei nem egyeznek a megfelelő eszköz kódjában található nevekkel, az eszköz nem tudja feldolgozni a parancsot.
 
@@ -125,11 +125,13 @@ Adja meg a mezőneveket pontosan úgy, ahogy az az eszköz sablonjában láthat�
 
 Az Azure IoT Central alkalmazásban adjon hozzá egy valós eszközt az előző szakaszban létrehozott sablonhoz.
 
-Ezután kövesse az "eszköz hozzáadása" oktatóanyag utasításait a [valódi eszközhöz tartozó kapcsolódási karakterlánc létrehozásához](tutorial-add-device.md#generate-connection-string). Ezt a következő szakaszban találja:
+Jegyezze fel az eszköz csatlakoztatásával kapcsolatos információkat az eszköz **csatlakoztatása** lapon: A **Hatókör-azonosító**, az **eszköz azonosítója**és az **elsődleges kulcs**. Ezeket az értékeket az eszköz kódjában később adja hozzá a útmutatóhoz:
+
+![Eszköz csatlakoztatási adatai](./media/howto-connect-nodejs/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás, amely megvalósítja az alkalmazáshoz hozzáadott valós eszközt. Itt a Node. js-alkalmazás a valódi eszközt jelöli. 
+Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás, amely megvalósítja az alkalmazáshoz hozzáadott valós eszközt. Itt a Node. js-alkalmazás a valódi eszközt jelöli.
 
 1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Navigáljon erre a mappára a parancssori környezetben.
 
@@ -137,7 +139,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
 
     ```cmd/sh
     npm init
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. Hozzon létre egy **connectedAirConditionerAdv. js** nevű fájlt `connected-air-conditioner-adv` a mappában.
@@ -148,22 +150,31 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
     "use strict";
 
     // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
 1. Adja a következő változódeklarációkat a fájlhoz:
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
+
     var targetTemperature = 0;
     var locLong = -122.1215;
     var locLat = 47.6740;
-    var client = clientFromConnectionString(connectionString);
     ```
 
-    Frissítse a helyőrzőt `{your device connection string}` az [eszköz csatlakoztatási karakterláncával](tutorial-add-device.md#generate-connection-string). Ebben a példában nulla értékre állítja `targetTemperature` az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
+    Frissítse a helyőrzőket `{your Scope ID}` `{your Device ID}`, és `{your Primary Key}` a korábban megjegyzett értékekkel. Ebben a példában nulla értékre állítja `targetTemperature` az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
 
 1. A telemetria, az állapot, az esemény és a hely mérésének az Azure IoT Central-alkalmazásba való küldéséhez adja hozzá a következő függvényt a fájlhoz:
 
@@ -187,7 +198,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
             lat: locationLat }
         });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -262,14 +273,14 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
     // Handle countdown command
     function onCountdown(request, response) {
       console.log('Received call to countdown');
-
+    
       var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
-
+    
       response.send(200, (err) => {
         if (err) {
           console.error('Unable to send method response: ' + err.toString());
         } else {
-          client.getTwin((err, twin) => {
+          hubClient.getTwin((err, twin) => {
             function doCountdown(){
               if ( countFrom >= 0 ) {
                 var patch = {
@@ -282,7 +293,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
                 setTimeout(doCountdown, 2000 );
               }
             }
-
+    
             doCountdown();
           });
         }
@@ -301,13 +312,13 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
         console.log('Device successfully connected to Azure IoT Central');
 
         // Create handler for countdown command
-        client.onDeviceMethod('countdown', onCountdown);
+        hubClient.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
 
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
@@ -325,8 +336,20 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
       }
     };
 
-    // Start the device (connect it to Azure IoT Central).
-    client.open(connectCallback);
+    // Start the device (register and connect to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log('Error registering device: ' + err);
+      } else {
+        console.log('Registration succeeded');
+        console.log('Assigned hub=' + result.assignedHub);
+        console.log('DeviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
 ## <a name="run-your-nodejs-application"></a>A Node. js-alkalmazás futtatása
@@ -343,7 +366,7 @@ Az Azure IoT Central-alkalmazásban a valódi eszközhöz tartozó operátorkén
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Tekintse meg a helyet a mérések oldalon:
+* Tekintse meg a helyet a **mérések** oldalon:
 
     ![Hely mértékegységének megtekintése](media/howto-connect-nodejs/viewlocation.png)
 

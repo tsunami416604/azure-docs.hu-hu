@@ -1,10 +1,11 @@
 ---
-title: A virtuális gépek (klasszikus) – az Azure klasszikus parancssori felület magánhálózati IP-címek konfigurálása
+title: Virtuális gépek magánhálózati IP-címeinek konfigurálása (klasszikus) – klasszikus Azure CLI
 titlesuffix: Azure Virtual Network
 description: Megtudhatja, hogyan konfigurálhatja a magánhálózati IP-címek a virtuális gépek (klasszikus) használatával az Azure klasszikus parancssori felület (CLI).
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64342c6dcf4c9a052442a6f4b0afb7a56994f496
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62107977"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059226"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>A klasszikus Azure CLI használatával virtuális gépek (klasszikus) magánhálózati IP-címek konfigurálása
 
@@ -99,7 +100,7 @@ Várt kimenet:
     info:    vm static-ip remove command OK
 
 ## <a name="how-to-add-a-static-private-ip-to-an-existing-vm"></a>Meglévő virtuális géphez statikus magánhálózati IP-cím hozzáadása
-A fenti szkript használatával létrehozott virtuális géphez statikus magánhálózati IP-cím hozzáadásához futtassa a következő parancsot:
+Ha a fenti szkript használatával létrehozott virtuális géphez statikus magánhálózati IP-címet szeretne hozzáadni, futtassa a következő parancsot:
 
     azure vm static-ip set DNS01 192.168.1.101
 
@@ -114,7 +115,7 @@ Várt kimenet:
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>Állítsa be az operációs rendszer belüli IP-címek
 
-Javasoljuk, hogy nem statikusan rendel a privát IP-cím az Azure virtuális gépen belül a virtuális gépek, az operációs rendszer rendelt, kivéve, ha szükséges. Ha manuálisan állítsa be a magánhálózati IP-címet az operációs rendszerből, győződjön meg arról, hogy-e az Azure virtuális Géphez rendelt magánhálózati IP-címet a címmel, vagy a virtuális gép is megszakad a kapcsolat. Ne rendeljen manuálisan a virtuális gép operációs rendszerén belül egy Azure virtuális géphez társított nyilvános IP-cím.
+Javasoljuk, hogy nem statikusan rendel a privát IP-cím az Azure virtuális gépen belül a virtuális gépek, az operációs rendszer rendelt, kivéve, ha szükséges. Ha manuálisan állítsa be a magánhálózati IP-címet az operációs rendszerből, győződjön meg arról, hogy-e az Azure virtuális Géphez rendelt magánhálózati IP-címet a címmel, vagy a virtuális gép is megszakad a kapcsolat. A virtuális gép operációs rendszerén belül ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt nyilvános IP-címet.
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [lefoglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címeket.

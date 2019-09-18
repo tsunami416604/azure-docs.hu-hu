@@ -1,10 +1,10 @@
 ---
-title: Migrálás affinitáscsoportból régióba az Azure virtuális hálózat (klasszikus) |} A Microsoft Docs
-description: 'Útmutató: virtuális hálózat (klasszikus) migrálás affinitáscsoportból régióba.'
+title: Azure-beli virtuális hálózat (klasszikus) migrálása az affinitási csoportból egy régióba | Microsoft Docs
+description: Megtudhatja, hogyan telepíthet át egy virtuális hálózatot (klasszikus) egy affinitási csoportból egy régióba.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d3bb93d12a217e6d9066d037ff92f071b6139ab3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648635"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058398"
 ---
-# <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrálás affinitáscsoportból régióba egy virtuális hálózat (klasszikus)
+# <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Virtuális hálózat (klasszikus) áttelepítése egy affinitási csoportból egy régióba
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager üzemi modell.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a Resource Manager-alapú üzemi modellt használja.
 
-Az affinitáscsoportok győződjön meg arról, hogy ugyanahhoz az affinitáscsoporthoz belül létrehozott erőforrás, amely egymáshoz közel, ezekhez az erőforrásokhoz való kommunikációhoz gyorsabb engedélyezése kiszolgálók fizikailag működtetnek. Múltbeli időpont a virtuális hálózatok (klasszikus) létrehozására vonatkozó követelmény volt affinitáscsoportokra. Ugyanakkor a virtuális hálózatok (klasszikus) felügyelt hálózati manager szolgáltatás csak működhetnek a fizikai kiszolgálók vagy a skálázási egység belül. Architekturális fejlesztéseket régióba hálózati kezelési hatókör nőtt.
+Az affinitási csoportok biztosítják, hogy az egyazon affinitási csoporton belül létrehozott erőforrásokat fizikailag a egymáshoz közeledő kiszolgálók üzemeltetik, így ezek az erőforrások gyorsabban kommunikálhatnak. A múltban az affinitási csoportok a virtuális hálózatok (klasszikus) létrehozásához szükségesek voltak. Ekkor a virtuális hálózatok (klasszikus) felügyelt hálózati kezelő szolgáltatás csak fizikai kiszolgálókon vagy méretezési egységen belül működhet. Az architektúra fejlesztése megnövelte a hálózatkezelés hatókörét egy adott régióban.
 
-Ezek a architekturális fejlesztések eredményeként affinitáscsoportok már nem ajánlott, vagy virtuális hálózatok (klasszikus) szükséges. A az affinitáscsoportok használatát a virtuális hálózatok (klasszikus) régióban váltotta fel. Virtuális hálózatok (klasszikus) társított régiók regionális virtuális hálózatok nevezzük.
+Ezen architektúra-tökéletesítések eredményeképpen az affinitási csoportok már nem ajánlottak, vagy a virtuális hálózatok (klasszikus) esetében szükségesek. A virtuális hálózatok (klasszikus) affinitási csoportjainak használatát a régiók váltja fel. A régiókkal társított virtuális hálózatok (klasszikus) neve regionális virtuális hálózatok.
 
-Azt javasoljuk, hogy általában nem használ affinitáscsoportokat. Azokat a virtuális hálózat követelmény, kivéve az affinitáscsoportok is fontos, hogy ellenőrizze az erőforrások, például a (klasszikus) számítási és tárolási (klasszikus) használatával, egymáshoz közel kerültek. Azonban az aktuális Azure-beli hálózati architektúra az elhelyezési követelménynek nem lesznek szükséges.
+Azt javasoljuk, hogy ne használjon affinitási csoportokat általánosságban. A virtuális hálózat követelményeitől eltekintve az affinitási csoportok is fontosak voltak az erőforrások, például a számítás (klasszikus) és a tárolás (klasszikus) biztosításához. Az aktuális Azure hálózati architektúrával azonban ezek az elhelyezési követelmények már nem szükségesek.
 
 > [!IMPORTANT]
-> Bár ez továbbra is lehetséges az hozzon létre egy virtuális hálózatot, amely egy affinitáscsoporthoz tartozik, nem indokolt meggyőző ennek a végrehajtására. Sok virtuális hálózati funkciók, például a hálózati biztonsági csoportok csak érhetők el egy regionális virtuális hálózat használata esetén, és nem érhetők el az affinitáscsoportok társított virtuális hálózatok.
+> Habár még műszakilag lehetséges az affinitási csoporttal társított virtuális hálózatok létrehozása, ennek nincs kényszerítő oka. Számos virtuális hálózati szolgáltatás, például a hálózati biztonsági csoportok csak regionális virtuális hálózatok használata esetén érhetők el, és nem érhetők el az affinitási csoportokhoz társított virtuális hálózatokhoz.
 > 
 > 
 
 ## <a name="edit-the-network-configuration-file"></a>A hálózati konfigurációs fájl szerkesztése
 
-1. Exportálhatja a hálózati konfigurációs fájlt. Ismerje meg, hogyan exportálhatja a hálózati konfigurációs fájlt a PowerShell vagy az Azure parancssori felület (CLI), 1.0-t, tekintse meg [egy virtuális hálózatot a hálózati konfigurációs fájl segítségével konfigurálja](virtual-networks-using-network-configuration-file.md#export).
-2. Módosítsa a hálózati konfigurációs fájlt, és cserélje le **AffinityGroup** a **hely**. Megadhatja az Azure-beli [régió](https://azure.microsoft.com/regions) a **hely**.
+1. Exportálja a hálózati konfigurációs fájlt. A hálózati konfigurációs fájlok a PowerShell vagy az Azure parancssori felület (CLI) 1,0 használatával történő exportálásával kapcsolatban lásd: [virtuális hálózat konfigurálása hálózati konfigurációs fájl használatával](virtual-networks-using-network-configuration-file.md#export).
+2. Szerkessze a hálózati konfigurációs fájlt, és cserélje le a **AffinityGroup** **helyet**. Meg kell adnia egy Azure- [régiót](https://azure.microsoft.com/regions) a **helyhez**.
    
    > [!NOTE]
-   > A **hely** a régió, a virtuális hálózat (klasszikus) társított az affinitáscsoport megadott. Ha a virtuális hálózat (klasszikus) társítva egy affinitáscsoportban található USA nyugati RÉGIÓJA, ha telepít át, például a **hely** kell mutatnia, USA nyugati RÉGIÓJA. 
+   > A **hely** az a régió, amelyet a virtuális hálózathoz (klasszikus) társított affinitási csoporthoz adott meg. Ha például a virtuális hálózat (klasszikus) az USA nyugati régiójában található affinitási csoporttal van társítva, akkor az áttelepítés során a helynek az USA nyugati **régiójának** kell mutatnia. 
    > 
    > 
    
-    A következő sorokat a hálózati konfigurációs fájlt, és cserélje le az értékeket saját szerkesztése: 
+    Szerkessze a következő sorokat a hálózati konfigurációs fájlban, és cserélje le az értékeket a saját értékeire: 
    
     **Régi érték:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
     **Új érték:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
-3. A módosítások mentéséhez és [importálása](virtual-networks-using-network-configuration-file.md#import) a hálózati konfigurációt, az Azure-bA.
+3. Mentse a módosításokat, és [importálja](virtual-networks-using-network-configuration-file.md#import) a hálózati konfigurációt az Azure-ba.
 
 > [!NOTE]
-> Az áttelepítés esetén nem tapasztalnak állásidőt az Ön felhőszolgáltatásainak.
+> Ez az áttelepítés nem okoz leállást a szolgáltatásokhoz.
 > 
 > 
 
-## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>Mi a teendő, ha egy affinitáscsoportban található virtuális gépek (klasszikus)
-Virtuális gépek az (klasszikus), amely jelenleg egy affinitáscsoportban található nem távolítható el az affinitáscsoportot kell. Virtuális gép üzembe helyezése után egy egyetlen skálázási egység van telepítve. Affinitáscsoportok korlátozhatja az egy új virtuális gép üzembe helyezésének elérhető Virtuálisgép-méretek készletét, de bármely meglévő virtuális Gépet üzembe helyezett már korlátozódik, a skálázási egység, amely a virtuális gép üzembe lesz helyezve az elérhető Virtuálisgép-méretek készletét. A virtuális gép már telepítve van egy méretezési egység, mert affinitáscsoport egy virtuális gép eltávolítása nem befolyásolja a virtuális Gépet.
+## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>Mi a teendő, ha van egy virtuális gép (klasszikus) egy affinitási csoportban
+A jelenleg egy affinitási csoportban lévő virtuális gépeket (klasszikus) nem kell eltávolítani az affinitási csoportból. A virtuális gép üzembe helyezését követően egyetlen méretezési egységbe kerül. Az affinitási csoportok korlátozhatják a rendelkezésre álló virtuálisgép-méretek készletét egy új virtuálisgép-telepítéshez, de az üzembe helyezett meglévő virtuális gépek már csak a virtuális gép üzembe helyezési egységében elérhető virtuálisgép-méretek készletére korlátozódnak. Mivel a virtuális gép már telepítve van egy méretezési egységre, a virtuális gép egy affinitási csoportból való eltávolítása nincs hatással a virtuális gépre.

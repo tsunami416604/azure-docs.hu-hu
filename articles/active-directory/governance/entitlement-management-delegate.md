@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207137"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057781"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Feladatok delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -69,7 +69,7 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 | Role | Leírás |
 | --- | --- |
-| Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. |
+| Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. A katalógus-létrehozó nem tudja kezelni vagy megtekinteni azokat a katalógusokat, amelyeket nem a saját, és nem adhatnak hozzá olyan erőforrásokat, amelyek nem a katalógusba tartoznak. Ha a katalógus létrehozójának egy másik katalógust kell kezelnie, vagy nem a saját erőforrásokat kell hozzáadnia, kérheti, hogy a katalógus vagy az erőforrás közös tulajdonosa legyen. |
 | Katalógus tulajdonosa | Meglévő katalógusok szerkesztése és kezelése. Általában rendszergazda vagy erőforrás-tulajdonos, vagy a katalógus tulajdonosának kijelölt felhasználója. |
 | A Package Manager elérése | A katalógusban lévő összes meglévő hozzáférési csomag szerkesztése és kezelése. |
 
@@ -103,7 +103,7 @@ A következő táblázat felsorolja a szerepkörök által végrehajtható felad
 
 A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőben létrehozott Office 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyeket katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban.
 
-Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a felhasználónak rendelkeznie kell a szükséges Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
+Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a *felhasználónak rendelkeznie kell a szükséges* Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -117,7 +117,7 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 | [Cloud Application Administrator](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
 
-Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)a Azure Active Directoryban is hivatkozhatnak a rendszergazda szerepkörre.
+Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
 ## <a name="add-a-catalog-creator"></a>Katalógus létrehozójának hozzáadása
 
@@ -139,7 +139,15 @@ Ha a katalógus létrehozását szeretné delegálni, vegye fel a felhasználók
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Katalógus tulajdonosának vagy egy Access Package Managernek a hozzáadása
 
-Ha a katalógusban lévő katalógus vagy hozzáférési csomagok felügyeletét szeretné delegálni, vegye fel a felhasználókat a katalógus tulajdonosához, vagy a hozzáférés csomagkezelő szerepkörhöz. Aki létrehoz egy katalógust, az első katalógus tulajdonosa lesz. Az alábbi lépéseket követve rendelhet hozzá egy felhasználót a katalógus tulajdonosához vagy a Access Package Manager szerepkörhöz.
+Katalógus vagy hozzáférési csomagok felügyeletének delegálásához a katalógusban felhasználókat kell hozzáadnia a katalógus tulajdonosához vagy a hozzáférés csomagkezelő szerepköreihez. Aki létrehoz egy katalógust, az első katalógus tulajdonosa lesz. 
+
+A hozzárendelt katalógus tulajdonosának vagy a hozzáférési csomag kezelőjének ismerősnek kell lennie a projektben. A katalógus létrehozójának létre kell hoznia a hozzáférési csomagot, ha az a projekt napi műveleteiben részt vesz, és a következő információkat ismeri:
+- milyen erőforrásokra van szükség
+- Kinek lesz hozzáférése
+- Kinek kell jóváhagynia a hozzáférést
+- mennyi ideig tart a projekt?
+
+A katalógus létrehozójának delegálnia kell a feladatot a projekt érdeklődőnek, aki létrehozza és kezeli a hozzáférési csomagot, ha nem vesz részt a projekt napi műveleteiben. Az alábbi lépéseket követve rendelhet hozzá felhasználókat a katalógus tulajdonosához vagy az Access Package Manager szerepkörhöz:
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 

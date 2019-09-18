@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5ecd5ee4a053d3ebb550b6f2387a0e915b3c2c23
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569412"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055248"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-minták az Azure SQL Database-hez
 
@@ -28,7 +28,7 @@ Azure SQL Database konfigurálható az <a href="/cli/azure">Azure CLI</a>-vel.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="single-database--elastic-pools"></a>Önálló adatbázis & rugalmas készletek
+## <a name="single-database--elastic-poolstabsingle-database"></a>[Önálló adatbázis & rugalmas készletek](#tab/single-database)
 
 A következő táblázat hivatkozásokat tartalmaz az Azure SQL Database szolgáltatással kapcsolatos Azure CLI-példaszkriptekre.
 
@@ -46,7 +46,7 @@ A következő táblázat hivatkozásokat tartalmaz az Azure SQL Database szolgá
 
 További információ az [önálló adatbázis Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)-ról.
 
-## <a name="managed-instance"></a>Felügyelt példány
+## <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
 Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tartalmaz Azure SQL Database által felügyelt példányra.
 
@@ -58,3 +58,5 @@ Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tart
 |||
 
 Tudjon meg többet a [felügyelt példány Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) -ról, és keressen [további példákat itt](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+
+---

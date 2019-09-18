@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70380968"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066357"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -66,7 +66,7 @@ A szkript először egy erőforráscsoportot hoz létre az USA keleti régiójá
 |Paraméter         |Leírás |
 |------------------|------------|
 |ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-|Location |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában, **Észak-Európában**és Nyugat- **Európában** . |
+|Location |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak**-és **Nyugat-Európában** , illetve az **ausztráliai** földrajzban. |
 |Name (Név)              |Az alkalmazás neve a Azure Portalban. |
 |Subdomain         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com:. |
 |Termékváltozat               |Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |

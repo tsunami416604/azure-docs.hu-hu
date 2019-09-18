@@ -10,16 +10,16 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 06ac81105ad8871c934715c18cd5f78fc3ea05f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 06bb71b27edf97f9b7e3333aef93af7bd0e0529e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858514"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064789"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hitelesítés engedélyezése egyoldalas alkalmazásban Azure Active Directory B2C használatával
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Active Directory (Azure AD) B2C-t a bejelentkezéshez és a felhasználók regisztrálásához egy egyoldalas alkalmazásban (SPA). Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
+Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) a bejelentkezéshez és a felhasználók regisztrálásához egy egyoldalas alkalmazásban (SPA). Azure AD B2C lehetővé teszi az alkalmazások számára, hogy a nyílt szabványos protokollok használatával hitelesítsék a közösségi fiókokat, a vállalati fiókokat és a Azure Active Directory fiókokat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -49,7 +49,7 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 Az előfeltételek részeként elvégzett második oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Az oktatóanyagban szereplő példával való kommunikáció engedélyezéséhez hozzá kell adnia egy átirányítási URI-t az alkalmazáshoz Azure AD B2C.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja a felső menüben található **címtár és előfizetés** szűrő kiválasztásával, majd a bérlőt tartalmazó könyvtár kiválasztásával.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza ki a *webapp1* alkalmazást.
 1. A **Válasz URL-cím**területen adja hozzá `http://localhost:6420`a címet.

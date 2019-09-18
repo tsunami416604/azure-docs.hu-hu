@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 24c00d8d5db7c36746d68ad10edc4db4f76e0aac
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 482e3e534486a226783e2377c10b074a087e67ed
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918727"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037299"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight
 
@@ -25,7 +25,7 @@ Az útmutató célja, hogy kiegészítse a [használati Enterprise Security Pack
 
 Mielőtt a folyamatot a saját környezetében használja, a telepítő Active Directory és a tartománynév-szolgáltatás (DNS). Emellett engedélyezze Azure Active Directory és szinkronizálja a helyszíni felhasználói fiókokat a Azure Active Directory.
 
-![Architektúradiagram](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
+![Azure Active Directory architektúra diagram](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
 
 ## <a name="create-on-premises-environment"></a>Helyszíni környezet létrehozása
 
@@ -75,19 +75,19 @@ Mielőtt a folyamatot a saját környezetében használja, a telepítő Active D
 
     1. Az **új objektum – felhasználó** képernyőn adja meg `HDIUser` a **felhasználói bejelentkezési nevet** , majd kattintson a **tovább**gombra.
 
-        ![Első rendszergazda felhasználó létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
+        ![Első rendszergazdai felhasználói objektum létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
     1. A megjelenő előugró ablakban adja meg az új fiókhoz használni kívánt jelszót. Jelölje be azt a jelölőnégyzetet, amely szerint a **jelszó soha nem jár le**. HDIClick **OK**.
     1. Az új fiók létrehozásához kattintson a **Befejezés** gombra.
     1. Hozzon létre `HDIAdmin`egy másik felhasználót.
 
-        ![Második rendszergazda felhasználó létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
+        ![Második rendszergazdai felhasználói objektum létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
 
 1. A **Active Directory felhasználók és számítógépek** képernyőn kattintson a **művelet** > **új** > **csoport**elemre. Új `HDIUserGroup` csoport létrehozása.
 
     ![Új Active Directory csoport létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
-    ![új Group2 létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
+    ![új objektum csoport létrehozása párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 
 1. Adja hozzá az előző lépésben létrehozott **HDIUser** a **HDIUserGroup** tagként.
 
@@ -96,7 +96,7 @@ Mielőtt a folyamatot a saját környezetében használja, a telepítő Active D
     1. Adja `HDIUser` meg a kijelölendő **objektumok nevét** , majd kattintson az **OK**gombra.
     1. A másik fiók előző lépéseinek megismétlése`HDIAdmin`
 
-        ![Tagok felvétele a csoportba](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
+        ![tag HDIUser felvétele a HDIUserGroup csoportba](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
 
 Ezzel létrehozta Active Directory-környezetét, valamint két felhasználót és egy felhasználói csoportot a HDInsight-fürt eléréséhez.
 
@@ -116,7 +116,7 @@ Ezek a felhasználók az Azure AD-vel lesznek szinkronizálva.
 
 ![új Azure Active Directory létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
-![új egyéni tartomány létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
+![Azure AD, új egyéni tartomány létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
 
 ## <a name="configure-your-azure-ad-tenant"></a>Az Azure AD-bérlő konfigurálása
 
@@ -133,11 +133,11 @@ Ezek a felhasználók az Azure AD-vel lesznek szinkronizálva.
 
     1. Kattintson a **csoportok** szakaszra, keresse meg a **HRE tartományvezérlő rendszergazdáit**, és kattintson a **kiválasztás**elemre.
 
-        ![Csoportok](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0038.png)
+        ![Azure Active Directory csoportok párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0038.png)
 
     1. Kattintson a **címtár szerepkör** szakaszra, és válassza a **globális rendszergazda** lehetőséget a jobb oldalon. Kattintson az **OK** gombra.
 
-        ![Címtárszerepkör](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0040.png)
+        ![Azure Active Directory szerepkör párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0040.png)
 
     1. Adja meg a felhasználó jelszavát. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -150,27 +150,33 @@ Ezek a felhasználók az Azure AD-vel lesznek szinkronizálva.
 1. [Azure ad Connect letöltése](https://www.microsoft.com/download/details.aspx?id=47594).
 
 1. Telepítse Microsoft Azure Active Directory a kapcsolatot a tartományvezérlőn.
+
     1. Nyissa meg az előző lépésben letöltött végrehajtható fájlt, és fogadja el a licencfeltételeket. Kattintson a **Folytatás** gombra.
 
-        ![Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
+        ![Üdvözli a Azure AD Connect párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
 
     1. Kattintson az **expressz beállítások használata** lehetőségre, és fejezze be a telepítést.
 
-        ![Gyorsbeállítások használata](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0054.png)
+        ![Azure AD Connect expressz beállítások](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0054.png)
 
 ### <a name="configure-sync-with-on-premises-domain-controller"></a>Szinkronizálás konfigurálása a helyszíni tartományvezérlővel
 
 1. A **Kapcsolódás az Azure ad-hoz** képernyőn adja meg az Azure ad globális rendszergazdájának felhasználónevét és jelszavát. Kattintson a **tovább**gombra. Ez az ad- `fabrikamazureadmin@hdifabrikam.com` bérlő konfigurálásakor létrehozott Felhasználónév.
-    ![Csatlakozás az Azure AD-hez](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+
+    ![Kapcsolódás Azure Active Directoryhoz ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+
 1. A **kapcsolódás Active Directory tartományi szolgáltatások** képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **tovább**gombra. Ez a Felhasználónév `HDIFabrikam\HDIFabrikamAdmin` és a hozzá tartozó jelszó, amelyet korábban hozott létre.
 
    ![Kapcsolódás Active Directory tartományi szolgáltatásokhoz](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. Az **Azure ad bejelentkezési konfigurációja** lapon kattintson a **tovább**gombra.
     ![Azure AD bejelentkezési konfiguráció](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
+
 1. A konfigurálásra kész képernyőn kattintson a **telepítés**elemre.
-    ![Telepítés](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+
+    ![Azure AD Connect készen áll a konfigurálásra párbeszédpanelre](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+
 1. Ha megjelenik a **konfiguráció befejezése** képernyő, kattintson a **Kilépés**gombra.
-    ![A konfigurálás befejeződött](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
+    ![Az Azure AD konfigurálása befejeződött](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. A szinkronizálás befejeződése után ellenőrizze, hogy a IAAS létrehozott felhasználók Active Directory szinkronizálva vannak-e a Azure Active Directory.
     1. Jelentkezzen be az Azure portálra.
@@ -213,23 +219,23 @@ További információ: [Azure Active Directory Domain Services engedélyezése a
     1. Válassza ki előfizetését.
     1. Itt adhatja meg az **HDIFabrikam-CentralUS** és az **USA középső** **régiójának helyét** .
 
-        ![Azure AD-DS alapszintű részletek](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
+        ![Azure AD Domain Services alapszintű részletek](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
 1. A **hálózat** képernyőn válassza ki az előző PowerShell-parancsfájllal létrehozott hálózatot (**HDIFabrikam-VNET**) és az alhálózatot (**AADDS-alhálózat**). Vagy használhatja az **új létrehozása** lehetőséget egy virtuális hálózat létrehozásához.
 
-    ![Hálózatválasztás](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
+    ![Azure AD Domain Services virtuális hálózat létrehozása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
 1. A **Rendszergazda csoport** képernyőjén egy értesítés jelenik meg arról, hogy az **HRE DC-rendszergazdák** nevű csoport már létrejött a Csoport felügyeletéhez. Lehetősége van a csoport tagságának módosítására, de ez nem szükséges a jelen cikk lépéseihez. Kattintson az **OK** gombra.
 
-    ![rendszergazdai csoport megtekintése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
+    ![Azure AD-rendszergazdai csoport megtekintése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
 1. A **szinkronizálási** képernyőn engedélyezze a teljes szinkronizálást az **összes** kiválasztásával, majd kattintson **az OK**gombra.
 
-    ![szinkronizálás engedélyezése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
+    ![Azure AD Domain Services szinkronizálás engedélyezése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
 
 1. Az **Összefoglalás** képernyőn ellenőrizze az Azure AD-DS adatait, majd kattintson **az OK gombra**.
 
-    ![Részletek ellenőrzése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
+    ![Azure AD Domain Services összegzésének engedélyezése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
 
 1. Az Azure AD-DS engedélyezése után a helyi tartománynév-szolgáltatási (DNS) kiszolgáló fut az AD Virtual Machineson (VM).
 
@@ -248,7 +254,7 @@ Az ebben a szakaszban ismertetett lépések segítséget nyújtanak az Azure AD-
 
 1. Ebben az esetben az Azure AD-DS-t úgy konfigurálták, hogy az IP-címek 10.0.0.4 és 10.0.0.5 használatára legyen konfigurálva, ugyanezt az IP-címet állítsa be a AADDS-VNet az alábbi képen látható módon.
 
-    ![Egyéni DNS-kiszolgálók megtekintése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
+    ![Egyéni DNS-kiszolgálók megjelenítése párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
 
 ## <a name="securing-ldap-traffic"></a>Az LDAP-forgalom biztonságossá tétele
 
@@ -276,13 +282,13 @@ Ellenőrizze, hogy a tanúsítvány telepítve van-e\'a számítógép személye
 1. Adja hozzá a Tanúsítványok beépülő modult, amely a helyi számítógépen lévő tanúsítványokat kezeli.
 1. Bontsa ki a **tanúsítványok (helyi számítógép)** , **személyes**csomópontot, majd a **tanúsítványok**csomópontot. A személyes tárolóban léteznie kell egy új tanúsítványnak. Ezt a tanúsítványt a rendszer a teljes állomásnév számára adja ki.
 
-    ![tanúsítvány létrehozásának ellenőrzése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
+    ![Helyi tanúsítvány létrehozásának ellenőrzése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
 1. A jobb oldali ablaktáblában kattintson a jobb gombbal az előző lépésben létrehozott tanúsítványra, mutasson a **minden feladat**pontra, majd kattintson az **Exportálás**parancsra.
 
 1. A **titkos kulcs** exportálása lapon kattintson **az Igen gombra, exportálja a titkos kulcsot**. A titkos kulcs szükséges ahhoz, hogy a titkosított üzenetek beolvashatók legyenek a kulcs importálására szolgáló számítógépről.
 
-    ![titkos kulcs exportálása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
+    ![Tanúsítvány varázsló, titkos kulcs exportálása lap](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1. Az **Exportálás fájlformátuma** lapon hagyja meg az alapértelmezett beállításokat, majd kattintson a **tovább**gombra. 
 1. A **jelszó** lapon adja meg a titkos kulcshoz tartozó jelszót, válassza a **TripleDES-SHA1** lehetőséget a **titkosításhoz** , és kattintson a **tovább**gombra.
@@ -295,7 +301,7 @@ Ellenőrizze, hogy a tanúsítvány telepítve van-e\'a számítógép személye
     1. Tallózással keresse meg a számítógépen exportált. pfx tanúsítványfájl-fájlt.
     1. Adja meg a tanúsítvány jelszavát.
 
-    ![biztonságos LDAP engedélyezése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
+    ![Azure AD – DS, biztonságos LDAP engedélyezése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
 
 1. Most, hogy engedélyezte Secure LDAP, győződjön meg arról, hogy elérhető a 636-es port engedélyezésével.
     1. Kattintson a **AADDS-HDIFabrikam.com-NSG** hálózati biztonsági csoportra a **HDIFabrikam-CentralUS** erőforráscsoporthoz.
@@ -313,7 +319,7 @@ Ellenőrizze, hogy a tanúsítvány telepítve van-e\'a számítógép személye
         | Priority | \<Desired Number\> |
         | Name | Port_LDAP_636 |
 
-    ![Bejövő biztonsági szabály](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+    ![Bejövő biztonsági szabály hozzáadása párbeszédpanel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
 1. `HDIFabrikamManagedIdentity`a felhasználó által hozzárendelt felügyelt identitás, a HDInsight tartományi szolgáltatások közreműködői szerepköre engedélyezve van a felügyelt identitás számára, amely lehetővé teszi az identitás számára a tartományi szolgáltatások beolvasását, létrehozását, módosítását és törlését.
 
@@ -347,7 +353,7 @@ Ehhez a lépéshez a következő előfeltételek szükségesek:
     1. Válassza az **Egyéni** lehetőséget `10.0.0.4` , `10.0.0.5`és adja meg a és a értéket.
     1. Kattintson a **Save** (Mentés) gombra.
 
-        ![Egyéni DNS-beállítások mentése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
+        ![A virtuális hálózat egyéni DNS-beállításainak mentése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
 1. Hozzon létre egy új ESP-kompatibilis HDInsight Spark-fürtöt.
     1. Kattintson **az egyéni (méret, beállítások, alkalmazások)** elemre.
@@ -359,13 +365,13 @@ Ehhez a lépéshez a következő előfeltételek szükségesek:
 
         1. Kattintson a **fürt-hozzáférési csoport** , majd a **HDIUserGroup**elemre. A jövőben a csoportba felvett összes felhasználó hozzáférhet a HDInsight-fürtökhöz.
 
-            ![fürt-hozzáférési csoport kiválasztása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
+            ![Válassza ki a fürt hozzáférési csoportjának HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
     1. Fejezze be a fürtkonfiguráció további lépéseit, és ellenőrizze a **fürt összegzésének**részleteit. Kattintson a **Create** (Létrehozás) gombra.
 
 1. Jelentkezzen be az újonnan létrehozott fürt `https://CLUSTERNAME.azurehdinsight.net` Ambari felhasználói felületén a rendszergazdai `hdiadmin@hdifabrikam.com` felhasználónevével és jelszavával.
 
-    ![Bejelentkezés a Ambari](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
+    ![Apache Ambari felhasználói felületének bejelentkezési ablaka](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
 1. Kattintson a **szerepkörök** elemre a fürt irányítópultján.
 1. A **szerepkörök** lapon adja meg azt a **hdiusergroup** , amelyet hozzá szeretne rendelni a **fürt rendszergazdai** szerepköréhez a **szerepkörök társítása ehhez**.
@@ -374,7 +380,7 @@ Ehhez a lépéshez a következő előfeltételek szükségesek:
 
 1. Nyissa meg az SSH-ügyfelet, és jelentkezzen be a fürtbe a korábban a helyszíni Active Directoryban létrehozott **hdiuser** használatával.
 
-    ![Bejelentkezés a fürtbe SSH-val](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
+    ![Bejelentkezés a fürtbe SSH-ügyféllel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
 Ha be tud jelentkezni ezzel a fiókkal, akkor helyesen konfigurálta az ESP-fürtöt a helyszíni Active Directoryval való szinkronizáláshoz.
 

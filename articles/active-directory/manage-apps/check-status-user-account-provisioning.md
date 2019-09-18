@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda7654ca2d825ae4112dd06021c7e83ed6867cd
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2e5ef4067f22d0e9e015e4d9a646f8b92309010a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381260"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033530"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentéskészítés a felhasználói fiókok automatikus üzembe helyezéséről
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan ellenőrizhető a kiépítési feladatok állapo
 A kiépítési összekötők a [Azure Portal](https://portal.azure.com)használatával állíthatók be és konfigurálhatók, a támogatott alkalmazáshoz mellékelt [dokumentáció](../saas-apps/tutorial-list.md) alapján. A konfigurálás és a Futtatás után a kiépítési feladatok a következő két módszer egyikének használatával adhatók meg:
 
 * **Azure Portal** – ez a cikk elsősorban azt ismerteti, hogyan kell beolvasni a jelentési adatokat a [Azure Portalból](https://portal.azure.com), amely egyszerre egy kiépítési összegző jelentést is biztosít, valamint egy adott alkalmazás részletes kiépítési naplóit.
-* A **audit API** -Azure Active Directory egy olyan naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplók programozott lekérését. Tekintse meg az API használatára vonatkozó dokumentáció [Azure Active Directory naplózási API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) -referenciát. Habár ez a cikk nem fedi le az API használatát, részletesen ismerteti a naplóban rögzített kiépítési események típusait.
+* A **audit API** -Azure Active Directory egy olyan naplózási API-t is biztosít, amely lehetővé teszi a részletes kiépítési naplók programozott lekérését. Tekintse meg az API használatára vonatkozó dokumentáció [Azure Active Directory naplózási API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . Habár ez a cikk nem fedi le az API használatát, részletesen ismerteti a naplóban rögzített kiépítési események típusait.
 
 ### <a name="definitions"></a>Definíciók
 
@@ -44,72 +44,32 @@ Ez a cikk az alábbi, az alábbiakban meghatározott kifejezéseket használja:
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Kiépítési jelentések beolvasása a Azure Portalból
 
-Ha egy adott alkalmazáshoz szeretne kiépíteni egy jelentést, először indítsa el a [Azure Portalt](https://portal.azure.com) , és tallózással keresse meg azt a vállalati alkalmazást, amelyhez a kiépítés konfigurálva van. Ha például a felhasználókat a LinkedIn jogosultságszint-emeléssel kívánja kiépíteni, az alkalmazás adatainak navigációs útvonala a következő:
+Ha egy adott alkalmazáshoz szeretne kiépíteni egy jelentést, először indítsa el a [Azure Portal](https://portal.azure.com) és **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplóit (előzetes verzió)** a **következőben: Tevékenység** szakasz. Azt is megteheti, hogy megkeresi azt a vállalati alkalmazást, amelyhez a kiépítés konfigurálva van. Ha például a felhasználókat a LinkedIn jogosultságszint-emeléssel kívánja kiépíteni, az alkalmazás adatainak navigációs útvonala a következő:
 
 **Azure Active Directory > vállalati alkalmazások > minden alkalmazás > LinkedIn emelt szintű**
 
-Innen elérheti a kiépítési összesítő jelentést és a kiépítési naplókat is, amelyeket az alábbiakban ismertetünk.
+Innen elérheti a kiépítési folyamatjelző sávot és a kiépítési naplókat is, amelyeket az alábbiakban ismertetünk.
 
-## <a name="provisioning-summary-report"></a>Kiépítési összegző jelentés
+## <a name="provisioning-progress-bar"></a>Kiépítés folyamatjelző sáv
 
-A kiépítési összegző jelentés az adott alkalmazás **létesítés** lapján látható. A **Beállítások**alatt a **szinkronizálás részletei** szakaszban található, és a következő információkat biztosítja:
+A [kiépítési folyamatjelző sáv](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) az adott alkalmazás **létesítés** lapján látható. Az aktuális **állapot** szakaszban a **Beállítások**alatt található, és az aktuális kezdeti vagy növekményes ciklus állapotát jeleníti meg. Ez a szakasz a következőket is tartalmazza:
 
 * A szinkronizált felhasználók és/csoportok teljes száma, amelyek jelenleg a forrásrendszer és a célként megadott rendszer közötti kiépítés hatókörében vannak.
-* A szinkronizálás legutóbbi futtatásakor. A szinkronizálások jellemzően 20-40 percenként történnek, a [kezdeti szinkronizálás](user-provisioning.md#what-happens-during-provisioning) befejeződése után.
-* Azt határozza meg, hogy befejeződött-e a [kezdeti szinkronizálás](user-provisioning.md#what-happens-during-provisioning) .
+* A szinkronizálás legutóbbi futtatásakor. A szinkronizálások jellemzően 20-40 percenként történnek, a [kezdeti ciklus](user-provisioning.md#what-happens-during-provisioning) befejeződése után.
+* Azt határozza meg, hogy befejeződött-e a [kezdeti ciklus](user-provisioning.md#what-happens-during-provisioning) .
 * Azt határozza meg, hogy a kiépítési folyamat karanténba helyezése megtörtént-e, és hogy a karantén milyen okból áll fenn (például érvénytelen rendszergazdai hitelesítő adatok miatt nem lehet kommunikálni a megcélzott rendszerrel).
 
-A kiépítési összefoglaló jelentésnek az első hely rendszergazdáinak kell megkeresnie a kiépítési feladatok működési állapotát.
+Az **aktuális állapotnak** az első hely rendszergazdáinak kell megkeresnie a kiépítési feladatok működési állapotát.
 
- ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
-## <a name="provisioning-audit-logs"></a>Naplózási naplók kiépítés
+## <a name="provisioning-logs-preview"></a>Kiépítési naplók (előzetes verzió)
 
-A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD-naplók rögzítik, amelyek a **fiók létesítési** kategóriájának **naplók lapján** tekinthetők meg. Naplózott tevékenység típusú események a következők:
-
-* **Események importálása** – az "import" esemény minden alkalommal rögzítésre kerül, amikor az Azure ad-létesítési szolgáltatás egy adott felhasználóra vagy csoportra vonatkozó információt kér le egy forrásoldali rendszerből vagy egy célként megadott rendszerből. A szinkronizálás során először a rendszer beolvassa a felhasználókat a forrásrendszer, és az eredményeket "importálási" eseményként rögzíti. A rendszer lekérdezi a beolvasott felhasználók egyező azonosítóit, hogy ellenőrizze, hogy léteznek-e, és hogy az eredmények "importálási" eseményként is szerepelnek-e. Ezek az események rögzítik az összes hozzárendelt felhasználói attribútumot és azok értékeit, amelyeket az Azure AD-kiépítési szolgáltatás észlelt az esemény időpontjában.
-* **Szinkronizálási szabály eseményei** – ezek az események az attribútum-hozzárendelési szabályok és bármely konfigurált hatókör-szűrő eredményeiről számoltak be, miután a felhasználói adatok importálása és kiértékelése a forrás-és a célszámítógépeken történt. Ha például a forrásrendszer egyik felhasználójának a kiépítés hatókörében kell lennie, és úgy kell tekinteni, hogy nem létezik a célszámítógépen, akkor ez az esemény rögzíti, hogy a felhasználó kiépítve lesz a megcélzott rendszeren.
-* **Események exportálása** – az "export" esemény minden alkalommal rögzítésre kerül, amikor az Azure ad-kiépítési szolgáltatás egy felhasználói fiókot vagy egy csoport objektumot ír egy célként megadott rendszerbe. Ezek az események rögzítik az Azure AD-kiépítési szolgáltatás által az esemény időpontjában írt összes felhasználói attribútumot és azok értékeit. Ha hiba történt a felhasználói fiók vagy a csoport objektumának a célként megadott rendszerbe való írásakor, akkor itt jelenik meg.
-* **Letétbe helyezendő események feldolgozása** – a folyamat akkor fordul elő, ha a létesítési szolgáltatás hibát észlel a művelet megkísérlése közben, és megkezdi a műveletet a visszalépési időintervallumon belül. A rendszer minden alkalommal rögzíti a "letéti" eseményt, amikor újrapróbálták a kiépítési műveletet.
-
-Ha egy adott felhasználó kiépítési eseményeit keresi, az események általában ebben a sorrendben történnek:
-
-1. Importálási esemény: A felhasználó beolvasása a forrásoldali rendszerből történik.
-1. Importálási esemény: A rendszer lekérdezi a lekért felhasználó létezését.
-1. Szinkronizálási szabály eseménye: A forrás-és a célszámítógép felhasználói adatait a rendszer kiértékeli a konfigurált attribútum-leképezési szabályok és a hatóköri szűrők alapján, hogy meghatározza, milyen műveleteket kell végrehajtani.
-1. Esemény exportálása: Ha a szinkronizálási szabály eseménye azt állította be, hogy műveletet kell végrehajtani (Hozzáadás, frissítés, törlés), akkor a művelet eredményeit egy exportálási esemény rögzíti.
-
-   ![Példa: A naplózási napló lapja, amely a tevékenységeket és az állapotot jeleníti meg](./media/check-status-user-account-provisioning/audit_logs.PNG)
-
-### <a name="looking-up-provisioning-events-for-a-specific-user"></a>Adott felhasználó kiépítési eseményeinek keresése
-
-A kiépítési naplók leggyakoribb felhasználási esete egy adott felhasználói fiók kiépítési állapotának ellenőrzése. Egy adott felhasználó utolsó kiépítési eseményeinek megkeresése:
-
-1. Lépjen a **naplók** szakaszra.
-1. A **Kategória** menüben válassza a **fiók**kiépítés lehetőséget.
-1. A **dátumtartomány** menüben válassza ki a keresni kívánt dátumtartományt.
-1. A keresősáv  mezőben adja meg a keresendő felhasználó felhasználói azonosítóját. Az azonosító érték formátumának egyeznie kell azzal, amit az attribútum-hozzárendelési konfigurációban elsődleges megfeleltetési AZONOSÍTÓként választott (például userPrincipalName vagy alkalmazotti azonosító száma). A kötelező azonosító érték a cél (ok) oszlopban látható lesz.
-1. A kereséshez nyomja le az ENTER billentyűt. A rendszer először a legutóbbi kiépítési eseményeket adja vissza.
-1. Ha a rendszer visszaadja az eseményeket, jegyezze fel a tevékenységek típusát, valamint azt, hogy sikeresek vagy sikertelenek voltak-e. Ha a rendszer nem ad vissza eredményt, az azt jelenti, hogy a felhasználó vagy nem létezik, vagy a kiépítési folyamat még nem észlelte, ha a teljes szinkronizálás még nem fejeződött be.
-1. Az egyes eseményekre kattintva megtekintheti a részletes részleteket, beleértve az esemény részeként beolvasott, kiértékelt vagy írt felhasználói tulajdonságokat is.
-
-A naplók használatáról az alábbi videóban talál további információt. A naplók a 5:30-es jel körül jelennek meg:
-
-> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
-
-### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tippek a kiépítési naplók megtekintéséhez
-
-A Azure Portal legjobb olvashatósága érdekében válassza az **oszlopok** gombot, és válassza ki az alábbi oszlopokat:
-
-* **Date (dátum** ) – az esemény időpontját jeleníti meg.
-* **Cél (ok)** – megjeleníti az esemény tárgyát képező alkalmazás nevét és felhasználói azonosítóját.
-* **Tevékenység** – a tevékenység típusa a korábban leírtak szerint.
-* **Állapot** – azt jelzi, hogy az esemény sikeres volt-e.
-* **Állapot oka** – összefoglalás arról, hogy mi történt a kiépítési eseményben.
+A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD- [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)rögzítik. A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Naplózott tevékenység típusú események a következők:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A kiépítési összegző jelentés és a naplók kulcsszerepet játszanak a rendszergazdáknak a különböző felhasználói fiókok üzembe helyezésével kapcsolatos problémák elhárításában.
+A kiépítési összefoglalás és a kiépítési naplók kulcsszerepet játszanak a rendszergazdáknak a különböző felhasználói fiókok üzembe helyezésével kapcsolatos problémák elhárításában.
 
 Az automatikus felhasználó-kiépítés hibaelhárításával kapcsolatos forgatókönyv-alapú útmutatásért tekintse meg a [felhasználók egy alkalmazáshoz való konfigurálásával és](application-provisioning-config-problem.md)kikapcsolásával kapcsolatos problémákat.
 

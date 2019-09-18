@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop-fürtök kezelése a HDInsight-ben a PowerShell használatával – Azure
 description: Megtudhatja, hogyan hajthat végre felügyeleti feladatokat a HDInsight Apache Hadoop-fürtökön a Azure PowerShell használatával.
-ms.reviewer: tyfox
+ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tyfox
-ms.openlocfilehash: 3f4ccd8de1f26ea898b0e7ec4bb57aa20b1be209
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 751f064df271aeb0899a00aea8b1ff09e8b8bdf4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885366"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077044"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

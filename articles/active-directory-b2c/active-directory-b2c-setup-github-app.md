@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 056570db89fbe1a3db55c138b46e5b73acc282f8
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 74c663d8847c2829a5d9466f8e601dd44593a6f8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622428"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065197"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Regisztráljon, és jelentkezzen be a GitHub-fiók az Azure Active Directory B2C beállítása
 
@@ -23,7 +23,7 @@ ms.locfileid: "69622428"
 
 ## <a name="create-a-github-oauth-application"></a>Egy GitHub-OAuth-alkalmazás létrehozása
 
-Ha GitHub-fiókot kíván használni a Azure Active Directory (Azure AD) B2C-ben lévő [identitás](active-directory-b2c-reference-oauth-code.md) -szolgáltatóként, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik GitHub-fiókkal, regisztrálhat a következő címen: [https://www.github.com/](https://www.github.com/).
+Ha a GitHub-fiókot Azure Active Directory B2C (Azure AD B2C) [identitás-szolgáltatóként](active-directory-b2c-reference-oauth-code.md) szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik GitHub-fiókkal, regisztrálhat a következő címen: [https://www.github.com/](https://www.github.com/).
 
 1. Jelentkezzen be a [GitHub fejlesztői](https://github.com/settings/developers) webhely a GitHub hitelesítő adataival.
 1. Válassza ki **OAuth alkalmazások** majd **új OAuth-alkalmazás**.

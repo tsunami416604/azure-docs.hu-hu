@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5b0d236424803056530eed81d9821fbafa14309
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 45b0d499f04de2bb20eeec913abaef11632fb504
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952847"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066101"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Google-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést a Google-fiókok felhasználói számára a Azure Active Directory (Azure AD) B2C-ben lévő [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést a Google-fiókokban lévő felhasználók számára az Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeinek](active-directory-b2c-overview-custom.md) használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,10 +36,10 @@ Google-fiók felhasználói számára való bejelentkezés engedélyezéséhez l
 2. Adja meg a **projekt nevét**, kattintson a **Létrehozás**elemre, majd győződjön meg arról, hogy az új projektet használja.
 3. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a **hitelesítő adatok létrehozása > OAUTH ügyfél-azonosító**lehetőséget.
 4. Válassza a **beleegyezés beállítása képernyőt**.
-5. Válasszon ki vagy adjon meg egy érvényes **e-mail-címet**, adja meg a felhasználók `b2clogin.com` számára megjelenített **terméknév nevet** , írja be a jogosultsági **tartományokat**, majd kattintson a **Mentés**gombra.
+5. Válasszon ki vagy adjon meg egy érvényes **e-mail-címet**, adja meg a felhasználók `b2clogin.com` számára megjelenített **terméknév nevet** , írja be a **jogosultsági tartományokat**, majd kattintson a **Mentés**gombra.
 6. Az **alkalmazás típusa**területen válasszaa webalkalmazás lehetőséget.
 7. Adja meg az alkalmazás **nevét** .
-8. A **hitelesítő JavaScript**-forrásokban írja be `https://your-tenant-name.b2clogin.com` a és a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`jogosultságokat az átirányítási **URI**-k mezőbe. Cserélje le a-bérlő nevét a bérlő nevére. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+8. A **hitelesítő JavaScript**-forrásokban írja be `https://your-tenant-name.b2clogin.com` a és a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`jogosultságokat az átirányítási URI-k mezőbe. Cserélje le a-bérlő nevét a bérlő nevére. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
 8. Kattintson a **Create** (Létrehozás) gombra.
 9. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának**értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az ügyfél titkos kulcsa fontos biztonsági hitelesítő adat.
 
@@ -48,7 +48,7 @@ Google-fiók felhasználói számára való bejelentkezés engedélyezéséhez l
 A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tárolnia.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -162,7 +162,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 Az Azure AD B2c-vel folytatott kommunikáció egy, a bérlőben létrehozott alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 5. Adja meg az alkalmazás nevét, például *testapp1*.

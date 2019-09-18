@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 14aff313ece93feabc39194ba6859e3bca6be3bc
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622400"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065091"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft-fiók-alkalmazás létrehozása
 
-Ha a Azure Active Directory (Azure AD) B2C-ben [identitás](active-directory-b2c-reference-oidc.md) -szolgáltatóként szeretne Microsoft-fiók használni, létre kell hoznia egy alkalmazást az Azure ad-bérlőben. Az Azure AD-bérlő nem azonos a Azure AD B2C Bérlővel. Ha még nem rendelkezik Microsoft-fiókval, beszerezhet egyet [https://www.live.com/](https://www.live.com/).
+Ha Microsoft-fiók [identitás-szolgáltatóként](active-directory-b2c-reference-oidc.md) szeretné használni Azure Active Directory B2C (Azure ad B2C), létre kell hoznia egy alkalmazást az Azure ad-bérlőben. Az Azure AD-bérlő nem azonos a Azure AD B2C Bérlővel. Ha még nem rendelkezik Microsoft-fiókval, beszerezhet egyet [https://www.live.com/](https://www.live.com/).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
@@ -36,7 +36,7 @@ Ha a Azure Active Directory (Azure AD) B2C-ben [identitás](active-directory-b2c
 1. Jegyezze fel az alkalmazás – Áttekintés lapon megjelenő **alkalmazást (ügyfél-azonosítót)** . Erre akkor van szükség, amikor a következő szakaszban konfigurálja az identitás-szolgáltatót.
 1. **Tanúsítványok kiválasztása & Secrets**
 1. Kattintson az **új ügyfél titka** elemre.
-1. Adja meg a titok leírását, például az *1. alkalmazás jelszava*, majd kattintson a **Hozzáadás**gombra.
+1. Adja meg a titok **leírását** , például az *1. alkalmazás jelszava*, majd kattintson a **Hozzáadás**gombra.
 1. Jegyezze fel az **érték** oszlopban látható alkalmazás jelszavát. Erre akkor van szükség, amikor a következő szakaszban konfigurálja az identitás-szolgáltatót.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Microsoft-fiók konfigurálása identitás-szolgáltatóként

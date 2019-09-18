@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774685"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037090"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -21,7 +21,7 @@ A gyorsítótár létrehozásához használja a Azure Portal.
 
 ## <a name="define-basic-details"></a>Alapszintű részletek meghatározása
 
-![képernyőkép a Project details lapról Azure Portal](media/create-1.png)
+![képernyőkép a Project details lapról Azure Portal](media/hpc-cache-create-basics.png)
 
 A **Project Details (projekt részletei**) területen válassza ki azt az előfizetést és erőforráscsoportot, amely az Azure HPC gyorsítótárát fogja tárolni. Győződjön meg arról, hogy az előfizetés az [előnézeti hozzáférési](hpc-cache-prereqs.md#azure-subscription) listán van.
 
@@ -47,7 +47,7 @@ Ne feledje, hogy a tényleges adatátviteli sebesség a munkaterhelés, a háló
 
 A gyorsítótár-tároláshoz az Azure HPC cache kezeli a gyorsítótárban tárolt és előre feltöltött fájlokat, hogy maximalizálja a gyorsítótár találati arányát. A gyorsítótár tartalmának folyamatos ellenőrzése megtörténik, és a fájlok átkerülnek a hosszú távú tárolásba, ha ritkábban férnek hozzá. Válasszon egy olyan gyorsítótár-tárolási méretet, amely kényelmesen tárolhatja a munkafájlok aktív készletét, és további helyet biztosít a metaadatok és egyéb terhelések számára.
 
-![a gyorsítótár-méretezés oldalának képernyőképe](media/create-cache-iops.png)
+![a gyorsítótár-méretezés oldalának képernyőképe](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>Tárolási célok hozzáadása
 
@@ -55,19 +55,21 @@ A tárolási célok a gyorsítótár tartalmának háttér-és hosszú távú t�
 
 A tárolási célokat a gyorsítótár létrehozásakor definiálhatja, de később is hozzáadhatja őket a portál gyorsítótár lapjának **configure (Konfigurálás** ) szakaszának hivatkozásával.
 
-![a tárolási célok oldalának képernyőképe](media/create-targets.png)
+![a tárolási célok oldalának képernyőképe](media/hpc-cache-storage-targets-pop.png)
 
 Kattintson a **tárolási cél hozzáadása hivatkozásra** a háttérbeli tárolók meghatározásához. A tároló lehet Azure Blob-tároló vagy helyszíni NFS-rendszer.
 
 Akár tíz különböző tárolási célt is meghatározhat.
 
-A tárolási cél hozzáadásával kapcsolatos részletes utasításokért olvassa el a [tárterület hozzáadása](hpc-cache-add-storage.md)című témakört. Az eljárás eltérő a blob Storage-ban vagy az NFS-exportálásokban.
+A Storage-tároló hozzáadásának részletes utasításait a [tár hozzáadása](hpc-cache-add-storage.md)témakör tartalmazza. Az eljárás eltérő a blob Storage-ban vagy az NFS-exportálásokban.
 
-Mindkét típusú tároló esetében meg kell adnia, hogyan kell megkeresni a háttérrendszer tárolási rendszerét (egy NFS-vagy blob-tároló nevét) és az ügyfél felé irányuló névtér elérési útját.
+Íme néhány tipp: 
 
-BLOB Storage-tároló létrehozásakor győződjön meg arról, hogy a gyorsítótár rendelkezik hozzáférési engedélyekkel a Storage-fiókhoz a [hozzáférés-vezérlési Szerepkörök hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint. Ha nem biztos abban, hogy a szerepkör-konfiguráció sikeres lesz, először hozza létre a gyorsítótárat, majd utána adja hozzá a blob Storage-tárolót.
+* Mindkét típusú tároló esetében meg kell adnia, hogyan kell megkeresni a háttérrendszer tárolási rendszerét (egy NFS-vagy blob-tároló nevét) és az ügyfél felé irányuló névtér elérési útját.
 
-NFS-tárolási cél létrehozásakor meg kell adnia egy [használati modellt](hpc-cache-add-storage.md#choose-a-usage-model). A használati modell beállítása segít a gyorsítótár optimalizálásában a munkafolyamatot.
+* BLOB Storage-tároló létrehozásakor győződjön meg arról, hogy a gyorsítótár rendelkezik hozzáférési engedélyekkel a Storage-fiókhoz a [hozzáférés-vezérlési Szerepkörök hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint. Ha nem biztos abban, hogy a szerepkör-konfiguráció sikeres lesz, először hozza létre a gyorsítótárat, majd utána adja hozzá a blob Storage-tárolót.
+
+* NFS-tárolási cél létrehozásakor meg kell adnia egy [használati modellt](hpc-cache-add-storage.md#choose-a-usage-model). A használati modell beállítása segít a gyorsítótár optimalizálásában a munkafolyamatot.
 
 ## <a name="add-resource-tags-optional"></a>Erőforrás-Címkék hozzáadása (nem kötelező)
 
@@ -77,11 +79,13 @@ A **címkék** lapon hozzáadhat erőforrás- [CÍMKÉKET](https://go.microsoft.
 
 Az új gyorsítótár konfigurálása után kattintson a **felülvizsgálat + létrehozás** fülre. A portál ellenőrzi a beállításokat, és lehetővé teszi a lehetőségek áttekintését. Ha minden helyes, kattintson a **Létrehozás**gombra. 
 
-A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. A folyamat nyomon követhető a Azure Portal értesítések paneljén. Amikor befejeződik, megjelenik egy értesítés, amely az új Azure HPC cache-példányra mutató hivatkozást jelenít meg. 
+A gyorsítótár létrehozása körülbelül 10 percet vesz igénybe. A folyamat nyomon követhető a Azure Portal értesítések paneljén. 
 
-A gyorsítótár az előfizetés **erőforrásainak** listájában is látható. 
+![képernyőkép a gyorsítótár létrehozásáról "üzembe helyezés folyamatban" és "értesítések" oldalain a portálon](media/hpc-cache-deploy-status.png)
 
-![képernyőkép az Azure HPC cache-példányról Azure Portal](media/finished-hpc-cache.png)
+A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HPC cache-példányra mutató hivatkozással, a gyorsítótár pedig megjelenik az előfizetés **erőforrások** listájában. 
+
+![képernyőkép az Azure HPC cache-példányról Azure Portal](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>További lépések
 

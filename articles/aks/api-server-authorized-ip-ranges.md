@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276485"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058348"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes szolgáltatásban (ak) lévő, jogosult IP-címtartományok használatával
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan használható az API-kiszolgáló által engedélyez
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy a [kubenet] [kubenet]-t használó fürtökkel dolgozik.  Az [Azure Container Network Interface (CNI)] [CNI-Networking] alapú fürtök esetében nem lesz szükség a hozzáférés biztonságossá tételéhez szükséges útválasztási táblázatra.  Az útválasztási táblázatot manuálisan kell létrehoznia.  További információért lásd: [útválasztási táblázatok kezelése](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+Ez a cikk feltételezi, hogy a [kubenet][kubenet]-t használó fürtökkel dolgozik.  Az [Azure Container Network Interface (CNI)][cni-networking] alapú fürtök esetében nem lesz szükség a hozzáférés biztosításához szükséges útválasztási táblázatra.  Az útválasztási táblázatot manuálisan kell létrehoznia.  További információért lásd: [útválasztási táblázatok kezelése](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
@@ -256,6 +256,8 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

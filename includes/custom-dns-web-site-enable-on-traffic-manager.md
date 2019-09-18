@@ -4,40 +4,40 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ddeb46a2c7bc7f24f55c22f446926529cee7b598
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179696"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059690"
 ---
-Miután a a tartománynév-rekordok propagálása megtörtént, a böngésző használatával győződjön meg arról, hogy használható-e az egyéni tartománynév Azure App Service-ben a webalkalmazás eléréséhez képesnek kell lennie.
+A tartománynév rekordjainak propagálása után a böngészővel ellenőrizheti, hogy az egyéni tartományneve használható-e a webalkalmazás eléréséhez Azure App Service.
 
 > [!NOTE]
-> It can take some time for your CNAME to propagate through the DNS system. Használhat például egy szolgáltatás <a href="https://www.digwebinterface.com/"> https://www.digwebinterface.com/ </a> annak ellenőrzéséhez, hogy a CNAME érhető el.
+> Eltarthat egy ideig, amíg a CNAME-fájl propagálni tudja a DNS-rendszerét. Használhat olyan szolgáltatást <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> , amellyel ellenőrizheti, hogy a CNAME elérhető-e.
 > 
 > 
 
-Ha nem rendelkezik már hozzáadva a webalkalmazás a Traffic Manager-végpontként kell ehhez előtt a névfeloldás működik, mint a egyéni tartomány nevét, a Traffic Manager. A TRAFFIC Manager ezután továbbítja a webalkalmazás. Olvassa el az [telepítése és törlése végpontok](../articles/traffic-manager/traffic-manager-endpoints.md) hozzáadása a webes alkalmazás egy végpontot a Traffic Manager-profil az.
+Ha még nem adta hozzá a webalkalmazást Traffic Manager-végpontként, ezt a névfeloldás működésének megkezdése előtt kell végrehajtania, mivel az Egyéni tartománynév Traffic Manager. Traffic Manager majd útvonalakat a webalkalmazáshoz. A következő témakörben található információk használatával adhatja hozzá a webalkalmazást végpontként a Traffic Manager profiljában: [Add vagy DELETE végpontok](../articles/traffic-manager/traffic-manager-endpoints.md) .
 
 > [!NOTE]
-> Ha a webalkalmazás nem találja a végpont hozzáadásakor, győződjön meg arról, hogy konfigurálva van a **Standard** App Service-csomag mód. Használjon **Standard** mód a webalkalmazás annak érdekében, hogy a Traffic Managerrel működnek.
+> Ha a webalkalmazás nem szerepel a végpont hozzáadásakor, ellenőrizze, hogy az a **Standard** app Service csomag üzemmódra van-e konfigurálva. A webalkalmazáshoz **szabványos** módot kell használnia, hogy működjön a Traffic Managerokkal.
 > 
 > 
 
-1. A böngészőben nyissa meg a [az Azure Portal](https://portal.azure.com).
-2. Az a **Web Apps** fülre, kattintson a nevére, a webalkalmazás válassza **beállítások**, majd válassza ki **egyéni tartományok**
+1. A böngészőben nyissa meg az [Azure Portalt](https://portal.azure.com).
+2. A **Web Apps** lapon kattintson a webalkalmazás nevére, válassza a **Beállítások**, majd az **Egyéni tartományok** elemet.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. Az a **egyéni tartományok** panelen kattintson a **gazdagépnév hozzáadása**.
-4. Használja a **állomásnév** szövegmezők adja meg a webes alkalmazás társítása a Traffic Manager szolgáltatásbeli tartománynévre.
+3. Az **Egyéni tartományok** panelen kattintson az **állomásnév hozzáadása**elemre.
+4. Az **állomásnév** szövegmezők használatával adja meg a webalkalmazáshoz társítandó egyéni tartománynevet.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
-5. Kattintson a **ellenőrzése** a tartomány nevét konfigurációjának mentéséhez.
-6. Gomb megnyomásakor **ellenőrzése** Azure elindít tartomány-ellenőrzés munkafolyamat. Ez a tartomány tulajdonjogának, valamint a rendelkezésre állás és a jelentés sikeres állomásnév vagy a hiba elhárításához követendő útmutatást a hiba részletei ellenőrzi.    
-7. Sikeres ellenőrzés esetén **gazdagépnév hozzáadása** gomb aktívvá válik, és nem fogja tudni hozzárendelése gazdagépnevét. Most nyissa meg böngészőben az egyéni tartomány nevét. Meg kell jelennie az alkalmazás fut, az egyéni tartománynév használatával. 
+5. A tartománynév-konfiguráció mentéséhez kattintson az **Érvényesítés** elemre.
+6. Az Azure **ellenőrzése** lehetőségre kattintva elindíthatja a tartomány-ellenőrzési munkafolyamatot. Ezzel a művelettel megkeresheti a tartomány tulajdonjogát, valamint az állomásnév rendelkezésre állását, valamint a sikeres vagy részletes hibajelentést a hiba elhárításához szükséges útmutatással.    
+7. Sikeres ellenőrzés esetén a **hostname (állomásnév hozzáadása** ) gomb aktívvá válik, és az állomásnév kiosztása is megtörténik. Most nyissa meg az egyéni tartománynevet egy böngészőben. Ekkor az Egyéni tartománynév használatával kell megjelennie az alkalmazásnak. 
    
-   Konfiguráció befejezését követően az egyéni tartománynév jelenik meg a **tartománynevek** szakasz a webalkalmazás.
+   A konfiguráció befejezése után az Egyéni tartománynév a webalkalmazás tartománynevek szakaszában jelenik meg.
 
-Ezen a ponton kell lennie a Traffic Manager szolgáltatásbeli tartománynévre adja meg a böngészőben, és tekintse meg, hogy sikeresen vesz igénybe, a webes alkalmazás.
+Ekkor meg kell tudnia adni a Traffic Manager tartománynevet a böngészőben, és láthatja, hogy a webalkalmazás sikeresen elvégezhető.
 

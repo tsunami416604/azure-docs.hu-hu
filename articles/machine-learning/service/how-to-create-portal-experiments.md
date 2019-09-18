@@ -1,6 +1,6 @@
 ---
 title: Az Azure automatizált ML-felületének használata & üzembe helyezési modelljeinek betanításához
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Automatikus gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése Azure Machine Learning munkaterület kezdőlapján (előzetes verzió).
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910418"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034829"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatikus gépi tanulási kísérletek létrehozása, feltárása és üzembe helyezése Azure Machine Learning munkaterületének kezdőlapján (előzetes verzió)
 
@@ -26,9 +26,9 @@ ms.locfileid: "70910418"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+* Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -185,7 +185,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
 1. Van néhány lehetőség a telepítéshez. 
 
-    + 1\. lehetőség: A legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a legjobb modell telepítése lehetőséget a Futtatás részletei lapon.
+    + 1\. módszer: A legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a legjobb modell telepítése lehetőséget a Futtatás részletei lapon.
 
     + 2\. lehetőség: Ha egy adott modell-iterációt szeretne üzembe helyezni ebből a kísérletből, a modell lefúrásával nyissa meg a Futtatás részletei lapot, és válassza a modell üzembe helyezése lehetőséget.
 

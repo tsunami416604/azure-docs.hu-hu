@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849381"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063280"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: A felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
-A gyakori felhasználói élmények, például a regisztráció, a bejelentkezés és a profil szerkesztése során Azure Active Directory (Azure AD) B2C-ben is használhat [felhasználói folyamatokat](active-directory-b2c-reference-policies.md) . Az oktatóanyagban található információk segítségével megtudhatja, hogyan [szabhatja testre a felhasználói felületét](customize-ui-overview.md) a saját HTML-és CSS-fájljaival.
+A gyakori felhasználói élmények, például a regisztráció, a bejelentkezés és a profil szerkesztése során Azure Active Directory B2C (Azure AD B2C) [felhasználói folyamatokat](active-directory-b2c-reference-policies.md) is használhat. Az oktatóanyagban található információk segítségével megtudhatja, hogyan [szabhatja testre a felhasználói felületét](customize-ui-overview.md) a saját HTML-és CSS-fájljaival.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -43,7 +43,7 @@ Létrehoz egy Azure Storage-fiókot és-tárolót, majd elhelyezi az alapszintű
 Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)-ban tárolhatja őket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár nem azonos az Azure B2C-bérlőt tartalmazó címtárral.
+2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár nem azonos az Azure B2C-bérlőt tartalmazó címtárral.
 3. A Azure Portal bal felső sarkában válassza a minden szolgáltatás lehetőséget, majd keresse meg és válassza ki a **Storage**-fiókokat.
 4. Válassza a **Hozzáadás** lehetőséget.
 5. Az **erőforráscsoport**területen válassza az **új létrehozása**elemet, adja meg az új erőforráscsoport nevét, majd kattintson **az OK**gombra.
@@ -54,7 +54,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
-1. A Storage-fiók áttekintés lapján válassza a Blobok lehetőséget.
+1. A Storage-fiók áttekintés lapján válassza a Bloboklehetőséget.
 2. Válassza a **tároló**elemet, adja meg a tároló nevét, válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK**gombra.
 
 ### <a name="enable-cors"></a>CORS engedélyezése
@@ -65,7 +65,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 2. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
 3. Az **engedélyezett módszerek**esetében válassza a `GET` mindkettő `OPTIONS`és a lehetőséget.
 4. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
-5. A közzétett fejlécek esetében írjon be egy csillagot (*).
+5. Aközzétett fejlécek esetében írjon be egy csillagot (*).
 6. A **Max Age**értéknél adja meg a 200 értéket.
 
     ![A CORS konfigurációs lapja az Azure Blob Storage-ban Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
@@ -127,7 +127,7 @@ A regisztrációs élmény felhasználói felületének testreszabásához hozzo
 Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hogy Azure AD B2C el tudja érni őket.
 
 1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki a **Storage**-fiókokat.
-2. Válassza ki a létrehozott Storage-fiókot, válassza a Blobok lehetőséget, majd válassza ki a létrehozott tárolót.
+2. Válassza ki a létrehozott Storage-fiókot,válassza a Blobok lehetőséget, majd válassza ki a létrehozott tárolót.
 3. Válassza a **feltöltés**lehetőséget, keresse meg és válassza ki a *Custom-UI. html* fájlt, majd kattintson a **feltöltés**elemre.
 
     ![BLOB-oldal feltöltése a portálon a feltöltés gombbal és a kijelölt fájlokkal](./media/tutorial-customize-ui/upload-blob.png)
@@ -139,7 +139,7 @@ Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hog
 
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 2. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget, majd válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
-3. Válassza ki a lapelrendezések lehetőséget, majd az **egyesített regisztráció vagy a bejelentkezés lapon**kattintson az **Igen** lehetőségre az **Egyéni oldal tartalmának használatához**.
+3. Válasszaki a lapelrendezések lehetőséget, majd az **egyesített regisztráció vagy a bejelentkezés lapon**kattintson az **Igen** lehetőségre az **Egyéni oldal tartalmának használatához**.
 4. Az **Egyéni lap URI-ja**mezőben adja meg a korábban rögzített *Custom-UI. html* fájl URI azonosítóját.
 5. A lap tetején válassza a **Mentés**lehetőséget.
 

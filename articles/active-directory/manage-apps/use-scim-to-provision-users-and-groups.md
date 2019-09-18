@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68741351"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033460"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
 A SCIM szabványosított protokoll és séma, amelynek célja, hogy nagyobb konzisztencia legyen az identitások rendszerek közötti felügyeletében. Ha egy alkalmazás támogatja a SCIM-végpontot a felhasználói felügyelethez, az Azure AD-felhasználó kiépítési szolgáltatása kéréseket küldhet a hozzárendelt felhasználók és csoportok létrehozásához, módosításához vagy törléséhez ehhez a végponthoz.
 
-Számos alkalmazás, amely esetében az Azure AD támogatja az [előzetesen integrált automatikus felhasználó](../saas-apps/tutorial-list.md) -kiépítés megvalósítását, scim, mint a felhasználói módosítási értesítések fogadásának módja.  Ezen kívül az ügyfelek olyan alkalmazásokat is összekapcsolhatnak, amelyek támogatják a [SCIM 2,0 protokoll specifikációjának](https://tools.ietf.org/html/rfc7644) egy adott profilját, az általános "nem katalógus" integrációs lehetőség használatával a Azure Portalban.
+Számos alkalmazás, amely esetében az Azure AD támogatja az [előzetesen integrált automatikus felhasználó-kiépítés](../saas-apps/tutorial-list.md) megvalósítását, scim, mint a felhasználói módosítási értesítések fogadásának módja.  Ezen kívül az ügyfelek olyan alkalmazásokat is összekapcsolhatnak, amelyek támogatják a [SCIM 2,0 protokoll specifikációjának](https://tools.ietf.org/html/rfc7644) egy adott profilját, az általános "nem katalógus" integrációs lehetőség használatával a Azure Portalban.
 
 Ennek a cikknek a fő témája a SCIM 2,0 profilja, amelyet az Azure AD az általános SCIM-összekötő részeként implementál a nem Gallery-alkalmazásokhoz. Egy olyan alkalmazás sikeres tesztelése azonban, amely támogatja a SCIM-t az általános Azure AD-összekötővel, egy lépés az Azure AD-katalógusban szereplő alkalmazás beszerzésére, amely támogatja a felhasználók üzembe helyezését. Az alkalmazás Azure ad-alkalmazás-katalógusban való beszerzésével kapcsolatos további információkért [lásd: How to: Az alkalmazás listázása az Azure AD Application Galleryben](../develop/howto-app-gallery-listing.md).
 
@@ -67,7 +67,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
    ![Képernyőfelvétel az Azure AD Application galleryről][1]<br/>
    *2. ábra: Azure AD-alkalmazás katalógusa*
 
-1. Az App Management képernyőn válassza a kiépítés lehetőséget a bal oldali panelen.
+1. Az App Management képernyőn válassza a **kiépítés** lehetőséget a bal oldali panelen.
 1. Az a **Kiépítési mód** menüjében válassza **automatikus**.
 
    ![Példa: Egy alkalmazás kiépítési lapja a Azure Portal][2]<br/>
@@ -78,7 +78,7 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
 1. Válassza a **kapcsolat tesztelése** lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
 
     > [!NOTE]
-    > A scim a nem létező felhasználóhoz tartozó végpontot kérdezi le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK, amely üres SCIM ListResponse-üzenettel rendelkezik.
+    > A SCIM a nem létező felhasználóhoz tartozó végpontot **kérdezi** le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK, amely üres SCIM ListResponse-üzenettel rendelkezik.
 
 1. Ha az alkalmazáshoz való kapcsolódási kísérlet sikeres, kattintson a **Save (Mentés** ) gombra a rendszergazdai hitelesítő adatok mentéséhez.
 1. Az a **leképezések** szakaszban, a két választható eljáráscsoport attribútumleképezések: egy a felhasználói objektumok és a egy csoport objektumainak. Válassza ki az alkalmazását az Azure Active Directoryból szinkronizált attribútumok áttekintéséhez egyenként. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználókat és csoportokat a frissítési műveleteket az alkalmazásban. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
@@ -91,10 +91,10 @@ Ebben a cikkben leírt az SCIM-profil támogató alkalmazások csatlakoztatható
 1. Válassza a **Mentés** lehetőséget az Azure ad-kiépítési szolgáltatás elindításához.
 1. Ha csak a hozzárendelt felhasználókat és csoportokat szinkronizálja (ajánlott), akkor ügyeljen arra, hogy a **felhasználók és csoportok** lapot jelölje ki, és rendelje hozzá a szinkronizálni kívánt felhasználókat vagy csoportokat.
 
-A kezdeti szinkronizálás megkezdése után kiválaszthatja a **naplók** lehetőséget a bal oldali panelen a folyamat figyeléséhez, amely a kiépítési szolgáltatás által az alkalmazáson végzett összes műveletet megjeleníti. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
+A kezdeti ciklus megkezdése után a bal oldali panelen kiválaszthatja a **naplókat** a folyamat figyeléséhez, amely a kiépítési szolgáltatás által az alkalmazáson végzett összes műveletet megjeleníti. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
 
 > [!NOTE]
-> A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut.
+> A kezdeti ciklus hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, ami körülbelül 40 percenként történik, amíg a szolgáltatás fut.
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Az Azure AD SCIM implementációjának ismertetése
 
@@ -103,8 +103,8 @@ Ha olyan alkalmazást hoz létre, amely támogatja a SCIM 2,0 felhasználó-fel�
 Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specification)keretében az alkalmazásnak meg kell felelnie a következő követelményeknek:
 
 * Támogatja a felhasználók létrehozását és opcionálisan csoportokat is, [az scim protokoll 3,3](https://tools.ietf.org/html/rfc7644#section-3.3). szakaszának megfelelően.  
-* Támogatja a javítási kérelmekkel rendelkező felhasználók vagy csoportok módosítását [a scim protokoll 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2). szakasza szerint.  
-* A támogatja a korábban létrehozott felhasználók vagy csoportok ismert erőforrásának beolvasását, [a scim protokoll 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)-es szakaszának megfelelően.  
+* Támogatja a javítási kérelmekkel rendelkező felhasználók vagy csoportok módosítását [a scim protokoll 3.5.2. szakasza](https://tools.ietf.org/html/rfc7644#section-3.5.2)szerint.  
+* A támogatja a korábban létrehozott felhasználók vagy csoportok ismert erőforrásának beolvasását, [a scim protokoll 3.4.1-es szakaszának](https://tools.ietf.org/html/rfc7644#section-3.4.1)megfelelően.  
 * Támogatja a felhasználók vagy csoportok lekérdezését [a scim protokoll 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2). szakaszának megfelelően.  Alapértelmezés szerint a felhasználók lekérik a és `id` a által lekérdezett `username` `externalid`felhasználókat, és a csoportokat a által kérdezik `displayName`le.  
 * Támogatja a felhasználó azonosító és kezelő általi lekérdezését az SCIM protokoll 3.4.2. szakaszának megfelelően.  
 * Támogatja a csoportok lekérdezését azonosító és tag szerint, a SCIM protokoll 3.4.2. szakaszának megfelelően.  
@@ -121,7 +121,7 @@ Az Azure AD-vel való kompatibilitás érdekében kövesse az alábbi általáno
      - `and`
 * Nincs szükség a kis-és nagybetűk megkülönböztetésére a scim szerkezeti elemein, `op` különösen a javítás műveleti értékein https://tools.ietf.org/html/rfc7644#section-3.5.2 , ahogy az a-ben van meghatározva. Az Azure ad az "op" `Add` `Replace`értékeket bocsátja ki, és `Remove`.
 * Microsoft Azure AD egy véletlenszerűen kiválasztott felhasználó és csoport beolvasását kéri a végpont és a hitelesítő adatok érvényességének biztosításához. Emellett a [Azure Portal](https://portal.azure.com) **tesztelési kapcsolati** folyamatának részeként is végrehajtja. 
-* Azt az attribútumot, amely alapján az erőforrásokat le lehet kérdezni, megfelelő attribútumként kell beállítani az alkalmazásban [](https://portal.azure.com)a Azure Portalban. További információ: a [felhasználói kiépítési attribútumok társításának testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Azt az attribútumot, amely alapján az erőforrásokat le lehet kérdezni, megfelelő attribútumként kell beállítani az alkalmazásban a [Azure Portalban](https://portal.azure.com). További információ: a [felhasználói kiépítési attribútumok társításának testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>Felhasználói üzembe helyezést és megszüntetést
 
@@ -676,7 +676,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
 1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
 1. Válassza az **+ új alkalmazás** > **minden** > nem katalógusbeli**alkalmazás**lehetőséget.
 1. Adja meg az alkalmazás nevét, majd kattintson a **Hozzáadás** elemre az alkalmazás-objektum létrehozásához. A létrehozott alkalmazás objektum célja a célalkalmazással kívánja kell való üzembe helyezést, majd egyszeri bejelentkezést a, és nem csak az SCIM-végpont jelölésére.
-1. Az App Management képernyőn válassza a kiépítés lehetőséget a bal oldali panelen.
+1. Az App Management képernyőn válassza a **kiépítés** lehetőséget a bal oldali panelen.
 1. Az a **Kiépítési mód** menüjében válassza **automatikus**.    
 1. Az a **bérlői URL-cím** mezőben adja meg az alkalmazás SCIM-végpont URL-CÍMÉT. Például: https://api.contoso.com/scim/
 
@@ -684,7 +684,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
 1. Válassza a **kapcsolat tesztelése** lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
 
     > [!NOTE]
-    > A scim a nem létező felhasználóhoz tartozó végpontot kérdezi le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK egy üres SCIM ListResponse-üzenettel
+    > A SCIM a nem létező felhasználóhoz tartozó végpontot **kérdezi** le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK egy üres SCIM ListResponse-üzenettel
 
 1. Ha az alkalmazáshoz való kapcsolódási kísérlet sikeres, kattintson a **Save (Mentés** ) gombra a rendszergazdai hitelesítő adatok mentéséhez.
 1. Az a **leképezések** szakaszban, a két választható eljáráscsoport attribútumleképezések: egy a felhasználói objektumok és a egy csoport objektumainak. Válassza ki az alkalmazását az Azure Active Directoryból szinkronizált attribútumok áttekintéséhez egyenként. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználókat és csoportokat a frissítési műveleteket az alkalmazásban. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
@@ -693,7 +693,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
 1. Válassza a **Mentés** lehetőséget az Azure ad-kiépítési szolgáltatás elindításához.
 1. Ha csak a hozzárendelt felhasználókat és csoportokat szinkronizálja (ajánlott), akkor ügyeljen arra, hogy a **felhasználók és csoportok** lapot jelölje ki, és rendelje hozzá a szinkronizálni kívánt felhasználókat vagy csoportokat.
 
-A kezdeti szinkronizálás megkezdése után kiválaszthatja a **naplók** lehetőséget a bal oldali panelen a folyamat figyeléséhez, amely a kiépítési szolgáltatás által az alkalmazáson végzett összes műveletet megjeleníti. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
+A kezdeti ciklus megkezdése után a bal oldali panelen kiválaszthatja a **naplókat** a folyamat figyeléséhez, amely a kiépítési szolgáltatás által az alkalmazáson végzett összes műveletet megjeleníti. Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](check-status-user-account-provisioning.md).
 
 Az utolsó lépés a minta ellenőrzése, hogy nyissa meg a TargetFile.csv fájlt a Windows-gépen \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug mappában. A kiépítési folyamat futtatása után a fájl részleteit az összes hozzárendelt, és üzembe helyezett felhasználók és csoportok jeleníti meg.
 
@@ -894,7 +894,7 @@ A SCIM szolgáltatás létrehozásához a Microsoft által biztosított CLI Azur
 1. Az Azure Active Directory az Azure ad-ben a felhasználó mailNickname attribútum értéke egyező externalId attribútumértékkel rendelkező felhasználó számára a szolgáltatás lekérdezi. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
 
     >[!NOTE]
-    > Ez csak példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és a felhasználó értéke nem lehet egyedi a címtárban. Továbbá a megfeleltetéshez használt attribútum (amely ebben az esetben a externalId) az [Azure ad attribútum](customize-application-attributes.md)-hozzárendelésekben konfigurálható.
+    > Ez csak példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és a felhasználó értéke nem lehet egyedi a címtárban. Továbbá a megfeleltetéshez használt attribútum (amely ebben az esetben a externalId) az [Azure ad attribútum-hozzárendelésekben](customize-application-attributes.md)konfigurálható.
 
    ```
     GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1

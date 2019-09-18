@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ab2bf0334b58f3a5ac8ad4abacfcc45e0366240
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917747"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077016"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari kaptár nézet használata a HDInsight Apache Hadoop
 
@@ -34,7 +34,7 @@ Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár 
 
 3. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
-    ![A struktúra nézet kiválasztva](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari – Apache Hive nézet kiválasztása](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     A kaptár nézet oldal a következő képhez hasonló:
 
@@ -98,25 +98,25 @@ A lekérdezés **vizuális magyarázatot** ábrázoló nézete hasznos lehet az 
 A lekérdezés TEZ felhasználói felületének megjelenítéséhez válassza a **TEZ felhasználói felület** fület a munkalap alatt.
 
 > [!IMPORTANT]  
-> A TEZ nem az összes lekérdezés feloldására szolgál. A TEZ használata nélkül is megoldhat sok lekérdezést. 
+> A TEZ nem az összes lekérdezés feloldására szolgál. A TEZ használata nélkül is megoldhat sok lekérdezést.
 
 ## <a name="view-job-history"></a>Feladatelőzmények megtekintése
 
 A __feladatok__ lap a struktúra-lekérdezések előzményeit jeleníti meg.
 
-![A feladatok előzményeinek képe](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Apache Hive a feladatok lap előzményeinek megtekintése](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Adatbázistáblák
 
 A __Tables (táblák__ ) lapon egy struktúra-adatbázisban lévő táblákkal dolgozhat.
 
-![A Tables (táblák) lap képe](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![A Apache Hive Tables lap képe](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Mentett lekérdezések
 
 A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdezés mentése után újra felhasználhatja azt a __mentett lekérdezések__ lapról.
 
-![Mentett lekérdezések lap képe](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive mentett lekérdezések lap megtekintése](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlként tárolja a rendszer.
@@ -129,7 +129,7 @@ A struktúrát a felhasználó által definiált függvények (UDF) használatá
 
 Deklaráljon és mentsen egy UDF a kaptár nézet tetején található **UDF** lapon. Ezek a UDF a **lekérdezés-szerkesztővel**is használhatók.
 
-![UDF-lap képe](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Apache Hive megtekintés UDF lap megjelenítése](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Miután hozzáadta az UDF-t a kaptár nézethez, megjelenik egy **beszúrási UDF** gomb a **lekérdezési szerkesztő**alján. Ennek a bejegyzésnek a kiválasztásával megjelenítheti a kaptár nézetben meghatározott UDF legördülő listáját. Az UDF kiválasztásával HiveQL-utasítások adhatók hozzá a lekérdezéshez az UDF engedélyezéséhez.
 

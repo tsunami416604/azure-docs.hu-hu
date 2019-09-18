@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c0ade6b0728717cfb8524eea92b63b49a979ec1f
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e629a921b5c853f1cae2c224be35570cd71e5d37
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018962"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067798"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Privát végpont létrehozása Azure Portal használatával
 
@@ -199,8 +199,9 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Az SQL Database-kiszolgáló magánhálózati elérése a virtuális gépről
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
-2. Adja `myserver.database.windows.net`meg a értéket. 
-' A következőhöz hasonló üzenet jelenik meg:
+2. Adja `nslookup myserver.database.windows.net`meg a értéket. 
+
+    Ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16

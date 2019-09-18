@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b18a7d98654422951773c0a5497f69db93782f51
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c75eae72b94c807897d74e365ec9f4ef74c83dd9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849454"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063674"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban
 
@@ -49,7 +49,7 @@ A következő használati esetek engedélyezettek a következő tulajdonságok h
 ## <a name="configure-the-properties"></a>A tulajdonságok konfigurálása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben kattintson a **címtár és előfizetés szűrőre** , és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőt tartalmazza.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
 5. Nyissa meg a korábban létrehozott felhasználói folyamatot.

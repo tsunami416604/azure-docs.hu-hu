@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: be7ff67f07ed8eaeb3f04a15c6185191bf107cf2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 33f70ba33168190577baf1757e9be0ece5d315ba
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918511"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066893"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -34,7 +34,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
 
 1. A Azure Portal lépjen az **erőforrás** > -**elemzési** > **HDInsight**létrehozása elemre.
 
-    ![Databricks az Azure Portalon](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Databricks az Azure Portalon")
+    ![Erőforrás-HDInsight fürt létrehozása](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Erőforrás-HDInsight fürt létrehozása")
 
 1. Az **HDInsight** > **gyors létrehozása** > **alapismeretek**területen adja meg vagy válassza ki a következő értékeket:
 
@@ -101,7 +101,7 @@ Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevőj
 
 3. Nyissa meg a **Hive View** nézetet az alábbi képernyőfelvételen látható módon:
 
-    ![Az Ambari-nézetek kiválasztása](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Viewer menü")
+    ![A kaptár nézet kiválasztása a Ambari](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight-struktúra megjelenítői menü")
 
 4. A **QUERY** (Lekérdezés) lapon másolja be a következő HiveQL-kifejezést a munkalapra:
 
@@ -109,13 +109,13 @@ Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevőj
     SHOW TABLES;
     ```
 
-    ![HDInsight Hive-nézetek](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive View lekérdezésszerkesztő")
+    ![HDInsight-struktúra nézet lekérdezés-szerkesztője](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight-struktúra nézet lekérdezés-szerkesztője")
 
 5. Válassza a **Végrehajtás** lehetőséget. A **QUERY** (Lekérdezés) lap alatt megjelenik a **RESULTS** (Eredmények) lap, amelyen a feladat információi láthatók. 
 
     A lekérdezés befejeződése után a **lekérdezés** lap a művelet eredményét jeleníti meg. Látni fog egy **hivesampletable** nevű táblát. Ezzel a Hive mintatáblával az összes HDInsight-fürt rendelkezik.
 
-    ![HDInsight-struktúra nézet eredményei](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight-struktúra nézet eredményei")
+    ![HDInsight Apache Hive eredményeinek megtekintése](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight Apache Hive eredményeinek megtekintése")
 
 6. Ismételje meg a 4. és az 5. lépést az alábbi lekérdezés futtatásához:
 
@@ -125,7 +125,7 @@ Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevőj
 
 7. A lekérdezés eredményeit mentheti is. Válassza a jobb oldalon lévő menügombot, és adja meg, hogy letölti az eredményeket CSV-fájlként, vagy a fürthöz társított tárfiókban szeretné tárolni őket.
 
-    ![Hive-lekérdezés eredményének mentése](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Hive-lekérdezés eredményének mentése")
+    ![Apache Hive lekérdezés eredményének mentése](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Apache Hive lekérdezés eredményének mentése")
 
 Egy Hive-feladat befejezése után [exportálhatja az eredményeket az Azure SQL-adatbázisba vagy az SQL Server-adatbázisba](apache-hadoop-use-sqoop-mac-linux.md), valamint az [Excel segítségével meg is jelenítheti az eredményeket](apache-hadoop-connect-excel-power-query.md). További információ a kaptár HDInsight-ben való használatáról: a [Apache Hive és a HiveQL használata Apache Hadoop a HDInsight-ben egy minta Apache log4j-fájl elemzéséhez](hdinsight-use-hive.md).
 
@@ -140,7 +140,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 1. Térjen vissza ahhoz a böngészőlaphoz, amelyen meg van nyitva az Azure Portal. A portálon a fürt áttekintési lapja lesz látható. Ha csak a fürtöt szeretné törölni, de meg szeretné tartani az alapértelmezett tárfiókot, válassza a **Törlés** lehetőséget.
 
-    ![HDInsight – fürt törlése](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "HDInsight-fürt törlése")
+    ![Azure HDInsight-fürt törlése](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight-fürt törlése")
 
 2. Ha a fürtöt és az alapértelmezett tárfiókot is törölni kívánja, válassza ki az erőforráscsoport nevét (amely az előző képernyőképen ki van emelve) az erőforráscsoport lapjának megnyitásához.
 

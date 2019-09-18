@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 41caa5807ce837e1ff00ceadd3fe5aef958d01b6
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693345"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066055"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása LinkedIn-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a LinkedIn-fiók felhasználói számára a Azure Active Directory (Azure AD) B2C-ben lévő [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával.
+Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a LinkedIn-fiók felhasználói számára a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](active-directory-b2c-overview-custom.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +60,7 @@ Ha a LinkedIn-t identitás-szolgáltatóként szeretné használni Azure AD B2Cb
 A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tárolnia.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -220,7 +220,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 A Azure AD B2C folytatott kommunikáció egy, a bérlőben létrehozott alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 5. Adja meg az alkalmazás nevét, például *testapp1*.
@@ -251,7 +251,7 @@ A **kivonatjogcím**meglévő **metaadat** elemében frissítse a következő **
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-Címzett:
+hogy
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -277,7 +277,7 @@ A **kivonatjogcím**meglévő **OutputClaims** frissítse a következő **Output
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-Címzett:
+hogy
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
@@ -393,7 +393,7 @@ A LinkedIn 1.0-ről v 2.0-ra való áttelepítésének részeként egy másik AP
 
 Az e-mail-cím beszerzése a LinkedIn-ből a regisztráció során nem kötelező. Ha úgy dönt, hogy nem kívánja beolvasni az e-mailt a LinkedIn-től, de a regisztráció során egyet kér, a felhasználónak manuálisan kell megadnia az e-mail-címet és hitelesítenie.
 
-A LinkedIn Identity providert használó szabályzat teljes mintájának megtekintéséhez tekintse meg az [egyéni házirend](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider)alapszintű csomagját.
+A LinkedIn Identity providert használó szabályzat teljes mintájának megtekintéséhez tekintse meg az [egyéni házirend alapszintű csomagját](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider).
 
 <!-- Links - EXTERNAL -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

@@ -1,7 +1,7 @@
 ---
 title: 'Számítási célok: a modellek betanítása és üzembe helyezése'
-titleSuffix: Azure Machine Learning service
-description: Itt adhatja meg, hogy hol szeretné betanítani vagy üzembe helyezni a modellt Azure Machine Learning szolgáltatással.
+titleSuffix: Azure Machine Learning
+description: Itt adhatja meg, hogy hol szeretné betanítani vagy üzembe helyezni a modellt Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860585"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035522"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Mik azok a számítási célok a Azure Machine Learning szolgáltatásban? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
 A **számítási cél** egy kijelölt számítási erőforrás/környezet, amelyben futtathatja a betanítási szkriptet, vagy üzemeltetheti a szolgáltatás központi telepítését. Ez a hely lehet a helyi számítógép vagy egy felhőalapú számítási erőforrás. A számítási célok használatával könnyedén módosíthatja a számítási környezetet a kód módosítása nélkül.  
 
@@ -29,7 +29,7 @@ A számítási célokhoz használt számítási erőforrások egy [munkaterület
 
 ## <a name="train"></a>Számítási célok betanítása
 
-A Azure Machine Learning szolgáltatás különböző számítási erőforrásokon keresztül eltérő támogatást nyújt.  Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása eltérő lehet.
+A Azure Machine Learning különböző számítási erőforrásokon keresztül eltérő támogatást nyújt.  Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása eltérő lehet.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -46,7 +46,7 @@ Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célr
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning számítás (felügyelt)
 
-A felügyelt számítási erőforrásokat Azure Machine Learning szolgáltatás hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning a számítási kapacitás az egyetlen felügyelt számítás, amely 2019. május 30-ig tart. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
+A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning a számítási kapacitás az egyetlen felügyelt számítás, amely 2019. május 30-ig tart. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
 
 Használhatja Azure Machine Learning számítást képzéshez és a Batch-következtetésekhez (előzetes verzió).  Ezzel a számítási erőforrással a következőket teheti:
 
@@ -59,7 +59,7 @@ Létrehozhat Azure Machine Learning számítási példányokat Azure Portal vagy
 
 ## <a name="unmanaged-compute"></a>Nem felügyelt számítás
 
-A nem felügyelt számítási célt *nem* a Azure Machine learning szolgáltatás felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
+A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

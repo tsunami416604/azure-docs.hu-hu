@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624919"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037488"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással (előzetes verzió)
 
@@ -27,7 +27,7 @@ Service Fabric alkalmazás felügyelt identitással való üzembe helyezéséhez
 
 ## <a name="user-assigned-identity"></a>Felhasználó által hozzárendelt identitás
 
-Ha a felhasználó által hozzárendelt identitással szeretné engedélyezni az alkalmazást, először adja hozzá az **Identity** tulajdonságot az alkalmazás-erőforráshoz a következő típusú **userAssigned** és a hivatkozott felhasználó által hozzárendelt identitásokkal. Ezután adjon hozzá egy **managedIdentities** szakaszt a **Properties (Tulajdonságok** ) szakaszban az **alkalmazás** -erőforráshoz, amely a felhasználó által hozzárendelt identitások principalId leképezését tartalmazó rövid név listáját tartalmazza.
+Ha a felhasználó által hozzárendelt identitással szeretné engedélyezni az alkalmazást, először adja hozzá az **Identity** tulajdonságot az alkalmazás-erőforráshoz a következő típusú **userAssigned** és a hivatkozott felhasználó által hozzárendelt identitásokkal. Ezután adjon hozzá egy **managedIdentities** szakaszt a **Properties (Tulajdonságok** ) szakaszban az **alkalmazás** -erőforráshoz, amely a felhasználó által hozzárendelt identitások principalId leképezését tartalmazó rövid név listáját tartalmazza. A felhasználó által hozzárendelt identitásokkal kapcsolatos további információkért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### <a name="application-template"></a>Alkalmazássablon
 
@@ -66,7 +66,7 @@ A fenti példában a felhasználóhoz rendelt identitás erőforrásának neve m
 
 ### <a name="application-package"></a>Alkalmazáscsomag
 
-1. A Azure Resource Manager sablon `managedIdentities` szakaszában meghatározott minden identitáshoz adjon hozzá egy `<ManagedIdentity>` címkét az alkalmazás-jegyzékfájlban a rendszerbiztonsági tag szakaszban. Az `Name` attribútumnak meg kell `name` egyeznie a `managedIdentities` szakaszban meghatározott tulajdonsággal.
+1. A Azure Resource Manager sablon `managedIdentities` szakaszában meghatározott minden identitáshoz adjon hozzá egy `<ManagedIdentity>` címkét az alkalmazás-jegyzékfájlban a **rendszerbiztonsági** tag szakaszban. Az `Name` attribútumnak meg kell `name` egyeznie a `managedIdentities` szakaszban meghatározott tulajdonsággal.
 
     **ApplicationManifest. XML**
 

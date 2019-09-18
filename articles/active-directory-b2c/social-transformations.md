@@ -1,6 +1,6 @@
 ---
-title: Közösségi fiók jogcím-átalakítási példák az az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
-description: Közösségi fiók jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
+title: A közösségi fiók jogcímek átalakításának példái a Azure Active Directory B2C identitás-keretrendszer sémája esetében | Microsoft Docs
+description: A közösségi fiók jogcím-átalakítási példái a Azure Active Directory B2C identitás-keretrendszer sémájának.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37fe192e83c946089e2374f24ae10a756134e45a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a25c5fed4fd88866f46a9ca254213cae5db893a4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807867"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063590"
 ---
-# <a name="social-accounts-claims-transformations"></a>Közösségi fiókok a jogcímek átalakítása
+# <a name="social-accounts-claims-transformations"></a>A közösségi fiókok jogcímei átalakítások
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C-vel, a közösségi fiók identitások tárolódnak a `userIdentities` attribútuma egy **alternativeSecurityIdCollection** jogcím típusa. Minden eleme a **alternativeSecurityIdCollection** adja meg a kibocsátó (identity szolgáltató neve, például Facebook.com weboldalt) és a `issuerUserId`, amely az a kibocsátó egyedi felhasználói azonosító.
+Azure Active Directory B2C (Azure ad B2C) esetében a közösségi fiók identitásait egy `userIdentities` **alternativeSecurityIdCollection** -jogcím egyik attribútuma tárolja. A **alternativeSecurityIdCollection** minden eleme megadja a kiállítót (identitás-szolgáltató neve, például Facebook.com) és a `issuerUserId`, amely a kiállító egyedi felhasználói azonosítója.
 
 ```JSON
 "userIdentities": [{
@@ -34,19 +34,19 @@ Az Azure Active Directory (Azure AD) B2C-vel, a közösségi fiók identitások 
   }]
 ```
 
-Ez a cikk példákat ad az Azure AD B2C-ben a közösségi fiók a jogcímek átalakítása az identitás-kezelőfelületi keretrendszer séma használatával. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat mutat be a közösségi fiókra vonatkozó jogcímek átalakítására a Azure AD B2Cban az identitási élmény keretrendszere sémájában. További információ: [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Az Azure Active Directory felé irányuló hoz létre a felhasználó alternativeSecurityId tulajdonság használható JSON-ábrázolását. További információkért lásd: [AlternativeSecurityId a séma](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type).
+A felhasználó alternativeSecurityId tulajdonságának JSON-ábrázolását hozza létre, amely a Azure Active Directory hívásokban használható. További információ: [AlternativeSecurityId sémája](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type).
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | key | string | A ClaimType, amely meghatározza a közösségi identitásszolgáltató által használt egyedi felhasználói azonosító. |
-| Bemeneti jogcím | Identitásszolgáltató | string | A ClaimType, amely meghatározza a közösségi fiók identitását szolgáltatójának neve, például Facebook.com weboldalt. |
-| OutputClaim | alternativeSecurityId | string | A takar, amelyek a ClaimsTransformation meghívása után jön létre. Az identitás közösségi fiók felhasználói információkat tartalmaz. A **kibocsátó** értéke a `identityProvider` jogcím. A **issuerUserId** értéke a `key` jogcím base64 formátumban. |
+| InputClaim | key | Karakterlánc | A ClaimType, amely a közösségi identitás szolgáltatója által használt egyedi felhasználói azonosítót határozza meg. |
+| InputClaim | identitásszolgáltató | Karakterlánc | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
+| outputClaim | alternativeSecurityId | Karakterlánc | A ClaimsTransformation meghívása után létrehozott ClaimType. A közösségi fiók felhasználójának identitásával kapcsolatos információkat tartalmaz. A **kiállító** a `identityProvider` jogcím értéke. A **issuerUserId** a `key` jogcím értéke Base64 formátumban. |
 
-A jogcím-átalakítás létrehozásához használja a `alternativeSecurityId` takar. Használja azt minden közösségi szolgáltató technikai profil, például `Facebook-OAUTH`. A következő jogcímek átalakítását kap a felhasználó közösségi fiók Azonosítóját és az identitásszolgáltató nevét. A technikai profil kimenete az Azure AD directory szolgáltatások használható JSON-karakterlánc formátumú.
+A jogcímek átalakítása `alternativeSecurityId` claimType létrehozásához. Ezt a közösségi identitás-szolgáltató technikai profiljai használják, például `Facebook-OAUTH`:. A következő jogcím-átalakítás fogadja a felhasználó közösségi fiókjának AZONOSÍTÓját és az identitás-szolgáltató nevét. A technikai profil kimenete egy JSON-karakterlánc-formátum, amely az Azure AD-címtár szolgáltatásaiban használható.
 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
@@ -62,7 +62,7 @@ A jogcím-átalakítás létrehozásához használja a `alternativeSecurityId` t
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
     - **kulcs**: 12334
     - **identityProvider**: Facebook.com
 - Kimeneti jogcímek:
@@ -70,20 +70,20 @@ A jogcím-átalakítás létrehozásához használja a `alternativeSecurityId` t
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
-Hozzáad egy `AlternativeSecurityId` , egy `alternativeSecurityIdCollection` jogcím.
+`AlternativeSecurityId` Egy`alternativeSecurityIdCollection` jogcím hozzáadására szolgál.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Elem | string | A kimeneti jogcímek hozzáadandó takar. |
-| Bemeneti jogcím | Gyűjtemény | alternativeSecurityIdCollection | A ClaimTypes, ha a szabályzatban elérhető a jogcímek átalakításáról által használt. Ha meg van adva, a jogcímek átalakításáról hozzáadja a `item` végén található a gyűjteményben. |
-| OutputClaim | Gyűjtemény | alternativeSecurityIdCollection | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az új gyűjtemény bemeneti mindkét elemeket tartalmazó `collection` és `item`. |
+| InputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
+| InputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes, ha elérhetők a házirendben. Ha meg van adni, a jogcím- `item` átalakítás hozzáadja a gyűjtemény végéhez. |
+| outputClaim | gyűjtemény | alternativeSecurityIdCollection | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az új gyűjtemény, amely a bemenetből `collection` és `item`a-ból származó elemeket is tartalmazza. |
 
-Az alábbi példa egy új közösségi identitását egy meglévő fiókon az hivatkozásokat tartalmaz. Új közösségi identitás mutató hivatkozást:
-1. Az a **AAD-UserReadUsingAlternativeSecurityId** és **AAD-UserReadUsingObjectId** technikai profilok, a felhasználó kimeneti **alternativeSecurityIds** jogcím.
-1. Kérje meg a felhasználót, hogy jelentkezzen be az egyik az Identitásszolgáltatók, amelyek nem tartoznak a felhasználóhoz.
-1. Használatával a **CreateAlternativeSecurityId** jogcím-átalakítás, hozzon létre egy új **alternativeSecurityId** jogcím nevű típusa `AlternativeSecurityId2`
-1. Hívja a **AddItemToAlternativeSecurityIdCollection** jogcím-átalakítás hozzáadása a **AlternativeSecurityId2** jogcímet a meglévő **AlternativeSecurityIds** az igényt.
-1. Továbbra is fennáll a **alternativeSecurityIds** jogcímet a felhasználói fiók
+Az alábbi példa egy új közösségi identitást csatol egy meglévő fiókkal. Új közösségi identitás összekapcsolása:
+1. A **HRE-UserReadUsingAlternativeSecurityId** és a **HRE-UserReadUsingObjectId** műszaki profilokban adja meg a felhasználó **alternativeSecurityIds** -jogcímeit.
+1. Kérje meg a felhasználót, hogy jelentkezzen be az egyik olyan identitás-szolgáltatóval, amely nincs társítva ehhez a felhasználóhoz.
+1. A **CreateAlternativeSecurityId** jogcím-átalakítás használatával hozzon létre egy új **alternativeSecurityId** jogcím-típust a következő névvel`AlternativeSecurityId2`
+1. Hívja meg a **AddItemToAlternativeSecurityIdCollection** jogcímek átalakítását, és adja hozzá a **AlternativeSecurityId2** -jogcímet a meglévő **AlternativeSecurityIds** -jogcímhez.
+1. **AlternativeSecurityIds** jogcím megőrzése a felhasználói fiók számára
 
 ```XML
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
@@ -99,22 +99,22 @@ Az alábbi példa egy új közösségi identitását egy meglévő fiókon az hi
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **item**: { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" }
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
+- Bemeneti jogcímek:
+    - **elem**: {"kiállító": "Facebook.com", "issuerUserId": "MTIzNDU ="}
+    - **gyűjtemény**: [{"kiállító": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
 - Kimeneti jogcímek:
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "Facebook.com weboldalt", "issuerUserId": "MTIzNDU=" } ]
+    - **gyűjtemény**: [{"kiállító": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "facebook.com", "issuerUserId": "MTIzNDU ="}]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
-A tanúsítványkibocsátók listájának visszaadása a **alternativeSecurityIdCollection** be egy új jogcím **Publishedresources** jogcím.
+A **alternativeSecurityIdCollection** jogcím kiállítóinak listáját adja vissza egy új **StringCollection stb** -jogcímbe.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Az Identitásszolgáltatók (kibocsátó) listájának beolvasásához használandó takar. |
-| OutputClaim | identityProvidersCollection | Publishedresources | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az Identitásszolgáltatók listája a alternativeSecurityIdCollection bemeneti jogcímek társítása |
+| InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Az ClaimType (kiállító) listájának beolvasásához használandó alkalmazás. |
+| outputClaim | identityProvidersCollection | StringCollection stb | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az alternativeSecurityIdCollection bemeneti jogcímevel társított Identitáskezelő-szolgáltatók listája |
 
-A következő jogcímek átalakítását olvassa be a felhasználó **alternativeSecurityIds** jogcím és a kivonatot a fiókhoz társított az identity provider nevek listája. Használja a kimeneti **identityProvidersCollection** a felhasználói fiókhoz tartozó Identitásszolgáltatók listájának megjelenítéséhez. Másik lehetőségként az identitásszolgáltató kiválasztása oldal, a kimeneti alapján Identitásszolgáltatók listájának szűrése **identityProvidersCollection** jogcím. Így a felhasználó mutató hivatkozást, amely még nem a fiókjához társított közösségi identitás választhat.
+A következő jogcím-átalakítás beolvassa a felhasználói **alternativeSecurityIds** jogcímet, és Kinyeri a fiókhoz társított Identity Provider-nevek listáját. A kimeneti **identityProvidersCollection** használatával jelenítheti meg a felhasználó számára a fiókhoz társított identitás-szolgáltatók listáját. Vagy az identitás-szolgáltató kijelölése lapon szűrheti a kimeneti **identityProvidersCollection** -jogcím alapján az identitás-szolgáltatók listáját. Így a felhasználó a fiókhoz még nem társított új közösségi identitás összekapcsolására is választhatja.
 
 ```XML
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
@@ -127,26 +127,26 @@ A következő jogcímek átalakítását olvassa be a felhasználó **alternativ
 </ClaimsTransformation>
 ```
 
-- A bemeneti jogcímek:
-    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "Facebook.com weboldalt", "issuerUserId": "MTIzNDU=" } ]
+- Bemeneti jogcímek:
+    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "facebook.com", "issuerUserId": "MTIzNDU ="}]
 - Kimeneti jogcímek:
-    - **identityProvidersCollection**: ["Facebook.com weboldalt", "google.com"]
+    - **identityProvidersCollection**: ["Facebook.com", "Google.com"]
 
 ## <a name="removealternativesecurityidbyidentityprovider"></a>RemoveAlternativeSecurityIdByIdentityProvider
 
-Eltávolít egy **AlternativeSecurityId** a egy **alternativeSecurityIdCollection** jogcím.
+Eltávolít egy **AlternativeSecurityId** egy **alternativeSecurityIdCollection** -jogcímből.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Identitásszolgáltató | string | A ClaimType, amely tartalmazza az identitásszolgáltató el kell távolítani a gyűjtemény neve. |
-| Bemeneti jogcím | Gyűjtemény | alternativeSecurityIdCollection | A ClaimTypes használják a jogcímek átalakítását. A jogcímek átalakításáról eltávolítja az identitásszolgáltató a gyűjteményből. |
-| OutputClaim | Gyűjtemény | alternativeSecurityIdCollection | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az új gyűjtemény, miután az identitásszolgáltató eltávolít a gyűjteményből. |
+| InputClaim | identitásszolgáltató | Karakterlánc | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
+| InputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes. A jogcím-átalakítás eltávolítja a identityProvider a gyűjteményből. |
+| outputClaim | gyűjtemény | alternativeSecurityIdCollection | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az új gyűjteményt, miután a identityProvider eltávolította a gyűjteményből. |
 
-Az alábbi példa a közösségi identitását egy meglévő fiókon az egyik csatolás megszüntetése. Leválasztja a közösségi identitás:
-1. Az a **AAD-UserReadUsingAlternativeSecurityId** és **AAD-UserReadUsingObjectId** technikai profilok, a felhasználó kimeneti **alternativeSecurityIds** jogcím.
-2. Kérje meg a felhasználó számára, hogy melyik közösségi fiók távolítsa el a felhasználóhoz társított lista identitás-szolgáltatóktól származó.
-3. Hívja a jogcímek átalakítása technikai profil, amely meghívja a **RemoveAlternativeSecurityIdByIdentityProvider** jogcím-átalakítás, eltávolítani a kiválasztott közösségi identitást, az identitásszolgáltató neve.
-4. Továbbra is fennáll a **alternativeSecurityIds** jogcímet a felhasználói fiókot.
+Az alábbi példa egy meglévő fiókkal kapcsolja össze a közösségi identitás egyikét. Közösségi identitás leválasztása:
+1. A **HRE-UserReadUsingAlternativeSecurityId** és a **HRE-UserReadUsingObjectId** műszaki profilokban adja meg a felhasználó **alternativeSecurityIds** -jogcímeit.
+2. Kérje meg a felhasználót, hogy válassza ki, hogy melyik közösségi fiókot kívánja eltávolítani az ehhez a felhasználóhoz hozzárendelt identitás-szolgáltatók listájából.
+3. Hívjon fel egy jogcím-átalakítási technikai profilt, amely meghívja a **RemoveAlternativeSecurityIdByIdentityProvider** jogcímek átalakítását, amely eltávolította a kiválasztott közösségi identitást az identitás-szolgáltató neve alapján.
+4. A **alternativeSecurityIds** jogcímet a felhasználói fiók számára is megőrzi.
 
 ```XML
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -163,8 +163,8 @@ Az alábbi példa a közösségi identitását egy meglévő fiókon az egyik cs
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **identityProvider**: Facebook.com weboldalt
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "Facebook.com weboldalt", "issuerUserId": "MTIzNDU=" } ]
+- Bemeneti jogcímek:
+    - **identityProvider**: Facebook.com
+    - **gyűjtemény**: [{"kiállító": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"kiállító": "facebook.com", "issuerUserId": "MTIzNDU ="}]
 - Kimeneti jogcímek:
-    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
+    - **gyűjtemény**: [{"kiállító": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326624"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076314"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure app Configurationvel
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Érték |
+    | Kulcs | Value |
     |---|---|
     | TestApp:Settings:BackgroundColor | Fehér |
     | TestApp:Settings:FontSize | 24 |
@@ -57,9 +57,9 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 ## <a name="add-secret-manager"></a>Secret Manager hozzáadása
 
-Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) a projekthez. A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokhoz tartozó bizalmas adatokat. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait.
+A Secret Manager használatához adjon hozzá egy `UserSecretsId` elemet a *. csproj* fájlhoz.
 
-- Nyissa meg a *. csproj* fájlt. Vegyen `UserSecretsId` fel egy elemet az itt látható módon, és cserélje le az értékét a saját értékére, amely általában egy GUID. Mentse a fájlt.
+- Nyissa meg a *. csproj* fájlt. Adjon hozzá `UserSecretsId` egy elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is. Mentse a fájlt.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     </Project>
     ```
 
+A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokhoz tartozó bizalmas adatokat. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait. A Secret Managerrel kapcsolatos további információkért lásd: az [alkalmazás-titkok biztonságos tárolása a fejlesztésben ASP.net Core](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
 1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
@@ -95,7 +97,10 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás üzembe helyezése [Azure app Servicere](https://azure.microsoft.com/services/app-service/web)történik, például egy alkalmazás-beállítási karakterláncot  használ app Service helyett a Secret Managerrel a kapcsolódási karakterlánc tárolásához.
+    > [!IMPORTANT]
+    > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes kapcsolatok sztringjét jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
+
+    A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás üzembe helyezése [Azure app Servicere](https://azure.microsoft.com/services/app-service/web)történik, például egy alkalmazás-beállítási karakterláncot használ app Service helyett a Secret Managerrel a kapcsolódási karakterlánc tárolásához.
 
     Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
@@ -182,7 +187,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja, hogyan konfigurálhatja a webalkalmazást a konfigurációs beállítások dinamikus frissítéséhez.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)
+> [Dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban](./enable-dynamic-configuration-aspnet-core.md)

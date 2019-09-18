@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7d09ebd9c6ef04aff4d750024216b51513c3cca
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576822"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037468"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Saját CloudSimple-Felhőbeli virtuális gépek kezelése az Azure-ban
 
-A [CloudSimple saját felhőhöz létrehozott](azure-create-vm.md)virtuális gépek kezeléséhez jelentkezzen be a Azure Portalba. [](http://portal.azure.com) Keresse meg és válassza ki a virtuális (Keresés az **összes szolgáltatás** vagy **Virtual Machines** oldalon a helyi menüben).
+A [CloudSimple saját felhőhöz létrehozott](azure-create-vm.md)virtuális gépek kezeléséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com). Keresse meg és válassza ki a virtuális (Keresés az **összes szolgáltatás** vagy **Virtual Machines** oldalon a helyi menüben).
 
 ## <a name="control-virtual-machine-operation"></a>Virtuális gép műveletének vezérlése
 
@@ -36,7 +36,7 @@ A kiválasztott virtuális gép **Áttekintés** lapján a következő vezérlő
 
 ### <a name="view-performance-information"></a>Teljesítményadatok megtekintése
 
-Az áttekintő oldal alsó területén lévő diagramok a kiválasztott intervallumhoz tartozó teljesítményadatokat jelenítik meg (az utolsó órában az elmúlt 30 napban; az alapértelmezett érték az utolsó óra). Az egyes diagramokon az intervallumon belül bármikor megjelenítheti a numerikus értékeket úgy, hogy az egérmutatót a diagramon oda-vissza mozgatja.
+Az **áttekintő** oldal alsó területén lévő diagramok a kiválasztott intervallumhoz tartozó teljesítményadatokat jelenítik meg (az utolsó órában az elmúlt 30 napban; az alapértelmezett érték az utolsó óra). Az egyes diagramokon az intervallumon belül bármikor megjelenítheti a numerikus értékeket úgy, hogy az egérmutatót a diagramon oda-vissza mozgatja.
 
 A következő diagramok jelennek meg.
 
@@ -67,7 +67,7 @@ A virtuális gép kapacitásának módosításához nyissa meg a kiválasztott v
 | Elem | Leírás |
 | ------------ | ------------- |
 | Magok száma | A virtuális géphez rendelt magok száma.  |
-| Hardveres virtualizálás | Jelölje be a jelölőnégyzetet, hogy a hardveres virtualizálás elérhető legyen a vendég operációs rendszeren. Tekintse meg a [VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)-hardveres virtualizációs szolgáltatást támogató VMware-cikket. |
+| Hardveres virtualizálás | Jelölje be a jelölőnégyzetet, hogy a hardveres virtualizálás elérhető legyen a vendég operációs rendszeren. Tekintse meg a [VMware-hardveres virtualizációs szolgáltatást támogató](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)VMware-cikket. |
 | Memóriaméret | Adja meg a virtuális gép számára lefoglalható memória mennyiségét.  
 
 ## <a name="manage-network-interfaces"></a>Hálózati adapterek kezelése
@@ -78,7 +78,7 @@ Illesztőfelület hozzáadásához kattintson a **hálózati adapter hozzáadás
    | ------------ | ------------- |
    | Name (Név) | Adja meg a felületet azonosító nevet.  |
    | Network (Hálózat) | Válasszon a saját Felhőbeli vSphere konfigurált hálózatok listájából.  |
-   | Adapter | Válasszon ki egy vSphere-adaptert a virtuális géphez konfigurált elérhető típusok listájából. További információkért lásd a VMware tudásbázist a [virtuális gép hálózati adapterének](https://kb.vmware.com/s/article/1001805)kiválasztásával foglalkozó cikkben. |
+   | Adapter | Válasszon ki egy vSphere-adaptert a virtuális géphez konfigurált elérhető típusok listájából. További információkért lásd a VMware tudásbázist a [virtuális gép hálózati adapterének kiválasztásával](https://kb.vmware.com/s/article/1001805)foglalkozó cikkben. |
    | Bekapcsolás rendszerindításkor | Adja meg, hogy engedélyezi-e a hálózati adapter hardverét a virtuális gép indításakor. Az alapértelmezett érték az **Engedélyezés**. |
 
 Hálózati adapter törléséhez jelölje ki azt, és kattintson a **Törlés**gombra.

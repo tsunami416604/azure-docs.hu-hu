@@ -4,7 +4,7 @@ description: Bemutatja az Azure Performance Diagnostics virtuálisgép-bővítm�
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f933a7414771d5e485498ef909a7dea8e0b1210c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090379"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057543"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure Performance Diagnostics VM-bővítmény Windows rendszerhez
 
@@ -72,7 +72,7 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
 |publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény közzétevői névterét.
 |type|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
 |typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
-|performanceScenario|alapszintű|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek akövetkezők: alapszintű, **vmslow**, **azurefiles**és **Custom**.
+|performanceScenario|alapszintű|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles**és **Custom**.
 |traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
 |perfCounterTrace|p|A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
 |networkTrace|n|A hálózati nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **n** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
@@ -92,7 +92,7 @@ Az alábbi utasításokat követve telepítse a bővítményt a Windows rendszer
 2. Válassza ki azt a virtuális gépet, amelyre telepíteni kívánja ezt a bővítményt.
 
     ![Képernyőkép a Azure Portalről, a virtuális gépek kiemelésével](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. Válassza ki a bővítmények panelt, és válassza a **Hozzáadás**lehetőséget.
+3. Válassza ki a **bővítmények** panelt, és válassza a **Hozzáadás**lehetőséget.
 
     ![Képernyőkép a bővítmények panelről, a Hozzáadás Kiemelt](media/performance-diagnostics-vm-extension/select-extensions.png)
 4. Válassza az **Azure Performance Diagnostics**elemet, tekintse át a használati feltételeket, majd válassza a **Létrehozás**lehetőséget.
@@ -255,4 +255,4 @@ A zip-fájlt közvetlenül a portálról is letöltheti a bővítmény kiválasz
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/)webhelyét, és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

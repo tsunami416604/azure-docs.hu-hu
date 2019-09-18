@@ -1,7 +1,7 @@
 ---
 title: Ml modellek üzembe helyezése Azure App Service (előzetes verzió)
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan helyezhet üzembe egy modellt egy webalkalmazásban a Azure App Serviceban a Azure Machine Learning szolgáltatás használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure App Service-ban webalkalmazásokban a Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,24 +10,24 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147901"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034593"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
-Megtudhatja, hogyan helyezhet üzembe egy modellt a Azure Machine Learning szolgáltatásból webalkalmazásként a Azure App Serviceban.
+Megtudhatja, hogyan helyezhet üzembe modellt Azure Machine Learning webalkalmazásként a Azure App Serviceban.
 
 > [!IMPORTANT]
-> Noha a Azure Machine Learning szolgáltatás és a Azure App Service egyaránt általánosan elérhető, a modellnek a Machine Learning szolgáltatásból való üzembe helyezésének lehetősége a App Service előzetes verzióban érhető el.
+> Noha a Azure Machine Learning és az Azure App Service is általánosan elérhető, a modell üzembe helyezésének lehetősége a Machine Learning szolgáltatásból a App Service előzetes verzióban érhető el.
 
-A Azure Machine Learning szolgáltatással Docker-rendszerképeket hozhat létre a képzett gépi tanulási modellekből. Ez a rendszerkép olyan webszolgáltatást tartalmaz, amely fogadja az adatok fogadását, elküldi a modellbe, majd visszaadja a választ. A Azure App Service használható a lemezkép üzembe helyezéséhez, és a következő funkciókat biztosítja:
+A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a képzett gépi tanulási modellekből. Ez a rendszerkép olyan webszolgáltatást tartalmaz, amely fogadja az adatok fogadását, elküldi a modellbe, majd visszaadja a választ. A Azure App Service használható a lemezkép üzembe helyezéséhez, és a következő funkciókat biztosítja:
 
 * Speciális [hitelesítés](/azure/app-service/configure-authentication-provider-aad) a fokozott biztonsághoz. A hitelesítési módszerek közé tartozik a Azure Active Directory és a multi-Factor Auth is.
-* [](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) Az autoskálázást anélkül, hogy újra kellene telepíteni.
+* Az [autoskálázást](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) anélkül, hogy újra kellene telepíteni.
 * [SSL-támogatás](/azure/app-service/app-service-web-ssl-cert-load) az ügyfelek és a szolgáltatás közötti biztonságos kommunikációhoz.
 
 A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további információkért tekintse meg a [app Service áttekintését](/azure/app-service/overview).
@@ -37,9 +37,9 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
+* Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 * A [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a képbesorolási [oktatóanyagot:](tutorial-train-models-with-aml.md) a betanítási modell betanítása és regisztrálása.
+* A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
     > [!IMPORTANT]
     > A cikkben szereplő kódrészletek azt feltételezik, hogy a következő változókat állította be:
@@ -48,7 +48,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
     > * `model`– A rendszerbe állított regisztrált modell.
     > * `inference_config`– A modellre vonatkozó következtetési konfiguráció.
     >
-    > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+    > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 
@@ -66,11 +66,11 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
     >
     > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-run-batch-predictions.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
 
-    A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+    A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 * **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
-Ezek az entitások egy következtetési __konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik.
+Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik.
 
 > [!IMPORTANT]
 > Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) objektumot kell használnia. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
@@ -89,7 +89,7 @@ Ezek az entitások egy következtetési __konfigurációba__vannak ágyazva. A k
 
 További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
 
-További információ a konfigurációról: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
@@ -99,7 +99,7 @@ További információ a konfigurációról: [modellek üzembe helyezése a Azure
 A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
-> A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md).
+> A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -150,10 +150,10 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Ebben a példában egy alapszintű árképzési`--sku B1`szintet () használunk.
+    Ebben a példában egy __alapszintű__ árképzési`--sku B1`szintet () használunk.
 
     > [!IMPORTANT]
-    > A Azure Machine learning szolgáltatás által létrehozott rendszerképek Linux-t használnak, ezért a `--is-linux` paramétert kell használnia.
+    > A Azure Machine learning által létrehozott rendszerképek Linux rendszert használnak, ezért a `--is-linux` paramétert kell használnia.
 
 1. A webalkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékek közül:
 

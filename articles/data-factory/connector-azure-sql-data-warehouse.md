@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 78b74c1db5f331e7b74a730148d52b1ff7694ec0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009954"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058986"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -444,6 +444,9 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
    7. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységben igaz értékre kell állítani.
+
+>[!NOTE]
+>Ha a forrás mappa, vegye figyelembe, hogy a Base lekéri a fájlokat a mappából és annak összes almappájából, és nem kéri le az adatokból azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik [.](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)
 
 ```json
 "activities":[

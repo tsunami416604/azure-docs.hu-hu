@@ -1,6 +1,6 @@
 ---
-title: Logikai érték-jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
-description: Logikai érték átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C jogcímmel.
+title: Logikai jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájához | Microsoft Docs
+description: Logikai jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájára.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,37 +10,37 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a08849340d19055a03f85ca401757a81cd2c95d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da4fc4704ee72210e180ef95fe6a821c8d116fa2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511742"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064572"
 ---
-# <a name="boolean-claims-transformations"></a>Logikai jogcímek átalakítása
+# <a name="boolean-claims-transformations"></a>Logikai jogcím-átalakítások
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk példákat ad a logikai jogcímek átalakítása az identitás-kezelőfelületi keretrendszer séma használatával az Azure Active Directory (Azure AD) B2C-ben. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Identity Experience Framework sémájának logikai jogcímek átalakítására. További információ: [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="andclaims"></a>AndClaims
 
-Egy két logikai inputClaims és műveletet hajtja végre, és beállítja a a kimeneti jogcím és a művelet eredményét.
+Két logikai Szabályzattípushoz és műveletet hajt végre, és beállítja a outputClaim a művelet eredményével.
 
 | Elem  | TransformationClaimType  | Adattípus  | Megjegyzések |
 |-------| ------------------------ | ---------- | ----- |
-| Bemeneti jogcím | inputClaim1 | logikai | Az első takar értékelheti ki. |
-| Bemeneti jogcím | inputClaim2  | logikai | A második ClaimType értékelheti ki. |
-|OutputClaim | outputClaim | logikai | Az a jogcím-átalakítás után előállított ClaimTypes meghívása (IGAZ vagy hamis). |
+| InputClaim | inputClaim1 | boolean | A ClaimType első kiértékelése. |
+| InputClaim | inputClaim2  | boolean | A második ClaimType kiértékelése. |
+|outputClaim | outputClaim | boolean | A jogcím-átalakítás meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
 
-A következő jogcímek átalakítását bemutatja, hogyan lehet, és két logikai ClaimTypes: `isEmailNotExist`, és `isSocialAccount`. A kimeneti jogcímek `presentEmailSelfAsserted` értékre van állítva `true` mind a bemeneti jogcímek e `true`. Egy vezénylési lépés a segítségével egy előfeltétel előbeállítást önellenőrzött oldal, csak akkor, ha egy közösségi fiók e-mail-címe üres.
+A következő jogcím-átalakítás azt mutatja be, hogyan és hogyan lehet `isEmailNotExist`két logikai `isSocialAccount`ClaimTypes: és. A kimeneti jogcím `presentEmailSelfAsserted` akkor van beállítva `true` , ha a bemeneti jogcímek értéke `true`is. Egy előkészítési lépésben feltételt használhat egy önjelölt lap beállítására, csak akkor, ha a közösségi fiók e-mail-címe üres.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isSocialAccount" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentEmailSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -49,27 +49,27 @@ A következő jogcímek átalakítását bemutatja, hogyan lehet, és két logik
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **inputClaim1**: igaz
-    - **inputClaim2**: False (hamis)
+- Bemeneti jogcímek:
+    - **inputClaim1**: true
+    - **inputClaim2**: hamis
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: False (hamis)
+    - **outputClaim**: hamis
 
 
 ## <a name="assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue
 
-Ellenőrzi, hogy két jogcímek logikai értékek egyenlő-e, és kivételt jelez, ha azok nem.
+Ellenőrzi, hogy a két jogcím logikai értékei egyenlőek-e, és kivételt jelez, ha nem.
 
 | Elem | TransformationClaimType  | Adattípus  | Megjegyzések |
 | ---- | ------------------------ | ---------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | logikai | Az egyenértékű takar. |
-| InputParameter |valueToCompareTo | logikai | Az érték összehasonlításához (true vagy false). |
+| InputClaim | InputClaim | boolean | Az érvényesíteni kívánt ClaimType. |
+| InputParameter |valueToCompareTo | boolean | Az összehasonlítandó érték (igaz vagy hamis). |
 
-A **AssertBooleanClaimIsEqualToValue** jogcímek átalakítását a rendszer mindig futtatja a egy [ellenőrzési technikai profil](validation-technical-profile.md) , hívja meg a [önálló kiszolgáló által megerősített technikai profil](self-asserted-technical-profile.md). A **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** önellenőrzött technikai profil metaadataiban szabályozza a hibaüzenet, amely a technikai profil jeleníti meg a felhasználó számára.
+Az **AssertBooleanClaimIsEqualToValue** jogcímek átalakítását mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre a rendszer. A **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** önérvényesített technikai profil metaadatai a technikai profil által a felhasználónak megjelenített hibaüzenetet vezérlik.
 
-![AssertStringClaimsAreEqual execution](./media/boolean-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual-végrehajtás](./media/boolean-transformations/assert-execution.png)
 
-A következő jogcímek átalakítását bemutatja, hogyan ellenőrizheti egy logikai takar az értékét egy `true` értéket. Ha az érték a `accountEnabled` takar értéke HAMIS, egy hibaüzenet fordul elő.
+A következő jogcím-átalakítás azt mutatja be, hogyan ellenőrizhető egy `true` értékkel rendelkező logikai claimType értéke. Ha a `accountEnabled` claimType értéke hamis, a rendszer hibaüzenetet küld.
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
@@ -83,7 +83,7 @@ A következő jogcímek átalakítását bemutatja, hogyan ellenőrizheti egy lo
 ```
 
 
-A `login-NonInteractive` érvényesítési technikai profil hívások a `AssertAccountEnabledIsTrue` jogcím-átalakítás.
+Az `login-NonInteractive` érvényesítési technikai profil meghívja a `AssertAccountEnabledIsTrue` jogcím-átalakítást.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -93,7 +93,7 @@ A `login-NonInteractive` érvényesítési technikai profil hívások a `AssertA
 </TechnicalProfile>
 ```
 
-Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelentkezési nem interaktív** technikai profil.
+Az önérvényesített technikai profil meghívja az érvényesítési **bejelentkezést nem interaktív** technikai profilt.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -108,21 +108,21 @@ Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelent
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **bemeneti jogcím**: False (hamis)
+- Bemeneti jogcímek:
+    - **inputClaim**: hamis
     - **valueToCompareTo**: true
-- Eredmény: Hiba lépett fel
+- Találat Hiba történt
 
 ## <a name="notclaims"></a>NotClaims
 
-A logikai bemeneti jogcím még nem műveletet hajt végre, és beállítja a kimeneti jogcím és a művelet eredményét.
+A nem végez műveletet a logikai inputClaim, és a művelet eredményével beállítja a outputClaim.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | logikai | Az igényt az működtetni. |
-| OutputClaim | outputClaim | logikai | A ClaimTypes, amelyek előállítják a ClaimsTransformation (IGAZ vagy hamis) meghívása után. |
+| InputClaim | InputClaim | boolean | Az üzemeltetni kívánt jogcím. |
+| outputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimTypes (TRUE vagy FALSE). |
 
-Logikai negálást végez egy jogcímet a jogcím-átalakítást használja.
+A jogcím-átalakítás használatával logikai tagadást hajthat végre a jogcímen.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
@@ -136,29 +136,29 @@ Logikai negálást végez egy jogcímet a jogcím-átalakítást használja.
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **bemeneti jogcím**: False (hamis)
+- Bemeneti jogcímek:
+    - **inputClaim**: hamis
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: igaz
+    - **outputClaim**: true
 
-## <a name="orclaims"></a>OrClaims 
+## <a name="orclaims"></a>OrClaims
 
-Egy vagy két logikai inputClaims, kiszámítja, és beállítja a kimeneti jogcím és a művelet eredményét.
+Kiszámítja a vagy a két logikai Szabályzattípushoz, és beállítja a outputClaim a művelet eredményével.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | inputClaim1 | logikai | Az első takar értékelheti ki. |
-| Bemeneti jogcím | inputClaim2 | logikai | A második ClaimType értékelheti ki. |
-| OutputClaim | outputClaim | logikai | Az előállított után ez ClaimsTransformation ClaimTypes meghívása (IGAZ vagy hamis). |
+| InputClaim | inputClaim1 | boolean | A ClaimType első kiértékelése. |
+| InputClaim | inputClaim2 | boolean | A második ClaimType kiértékelése. |
+| outputClaim | outputClaim | boolean | A ClaimsTransformation meghívása után előállított ClaimTypes (TRUE vagy FALSE). |
 
-A következő jogcímek átalakítását bemutatja, hogyan `Or` két logikai ClaimTypes. Az orchestration lépésben segítségével másnak az előfeltétele előbeállítást önellenőrzött oldal, ha az érték egy, a jogcímek `true`.
+A következő jogcím-átalakítás azt mutatja be `Or` , hogyan lehet két logikai ClaimTypes. A előkészítési lépésben feltételt használhat egy önérvényesített lap beállításához, ha az egyik jogcím `true`értéke.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedGreaterThanNow" TransformationClaimType="inputClaim2" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -168,9 +168,9 @@ A következő jogcímek átalakítását bemutatja, hogyan `Or` két logikai Cla
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-    - **inputClaim1**: igaz
-    - **inputClaim2**: False (hamis)
+- Bemeneti jogcímek:
+    - **inputClaim1**: true
+    - **inputClaim2**: hamis
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: igaz
+    - **outputClaim**: true
 

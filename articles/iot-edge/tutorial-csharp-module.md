@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e2bfc65ad8fafa07de6e3727d651fccabaddc90e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839578"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077259"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése linuxos eszközökhöz
 
@@ -36,7 +36,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 Ez az oktatóanyag bemutatja, hogyan fejleszthet modult a **C#** **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux**-eszközre. Ha Windows-eszközökhöz fejleszt modulokat, ugorjon a [ C# IoT Edge modul fejlesztése Windows](tutorial-csharp-module-windows.md) -eszközökhöz lehetőségre.
 
-A következő táblázat segítségével megismerheti a C modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit: 
+A következő táblázat segítségével megismerheti a C# modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit: 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |

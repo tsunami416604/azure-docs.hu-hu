@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885272"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035902"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETének használatával
 
@@ -47,7 +47,7 @@ A Ambari webes felhasználói felületéhez való csatlakozáskor a rendszer fel
 
 Amikor megnyílik az oldal, jegyezze fel a felső sávot. Ez a sáv a következő információkat és vezérlőket tartalmazza:
 
-![ambari – NAV](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![ambari – NAV](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Elem |Leírás |
 |---|---|
@@ -80,7 +80,7 @@ A riasztások több alapértelmezett csoportba vannak rendezve, amelyek a **rias
 
 A csoportokat a **műveletek** menü segítségével kezelheti, és a **riasztási csoportok kezelése**lehetőségre kattintva.
 
-![riasztási csoportok kezelése párbeszédpanel](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![riasztási csoportok kezelése párbeszédpanel](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Emellett a riasztási módszereket is kezelheti, és riasztási értesítéseket hozhat létre a **műveletek** menüből a __Riasztási értesítések kezelése__lehetőség kiválasztásával. Minden aktuális értesítés megjelenik. Itt is létrehozhat értesítéseket. Értesítéseket küldhet **e-mailben** vagy **SNMP** -n, ha adott riasztási/súlyossági kombinációk történnek. Küldhet például egy e-mailt, ha a **fonal alapértelmezett** csoportjában lévő bármelyik riasztás **kritikus**értékre van állítva.
 
@@ -100,20 +100,20 @@ A **intenzitástérképei** lap színes intenzitástérképei jeleníti meg a me
 
 A fürtben lévő csomópontokkal kapcsolatos további információkért válassza a **gazdagépek**lehetőséget. Ezután válassza ki az Önt érdeklő csomópontot.
 
-![Gazdagép adatai](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Gazdagép adatai](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Szolgáltatások
 
 Az irányítópulton található **szolgáltatások** oldalsáv gyors betekintést nyújt a fürtön futó szolgáltatások állapotával. A különböző ikonok jelzik az állapotot vagy a végrehajtandó műveleteket. A sárga Lomtár például akkor jelenik meg, ha egy szolgáltatást újra kell indítani.
 
-![szolgáltatások oldalsó sáv](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![szolgáltatások oldalsó sáv](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > A megjelenített szolgáltatások különböznek a HDInsight-fürtök típusai és verziói között. Az itt megjelenő szolgáltatások eltérhetnek a fürthöz megjelenített szolgáltatástól.
 
 A szolgáltatás kiválasztása részletesebb információkat jelenít meg a szolgáltatásról.
 
-![szolgáltatás összegző információi](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![szolgáltatás összegző információi](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Gyorshivatkozások
 
@@ -168,7 +168,7 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
 
 Az **irányítópult** vagy **szolgáltatások** lapon a szolgáltatások listájának alján található **műveletek** gomb használatával állítsa le és indítsa el az összes szolgáltatást.
 
-![szolgáltatási műveletek](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![szolgáltatási műveletek](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > A **Hozzáadási szolgáltatás** megjelenik ebben a menüben, ezért nem használható szolgáltatások hozzáadására a HDInsight-fürthöz. Az új szolgáltatásokat a fürt üzembe helyezése során parancsfájl-művelettel kell hozzáadni. A parancsfájl-műveletek használatával kapcsolatos további információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).
@@ -195,7 +195,7 @@ A szolgáltatás konfigurálásához kövesse az alábbi lépéseket:
 
 2. Válassza ki a **Configs** fülre. Megjelenik az aktuális konfiguráció. Megjelenik a korábbi konfigurációk listája is.
 
-    ![konfigurációk](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![konfigurációk](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. A megjelenített mezők használatával módosítsa a konfigurációt, majd válassza a **Mentés**lehetőséget. Vagy válasszon egy korábbi konfigurációt, majd válassza az **aktuális** lehetőséget az előző beállításokra való visszalépéshez.
 

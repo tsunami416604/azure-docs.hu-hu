@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885160"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037272"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -88,7 +88,8 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase-rendszerhéj](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase-rendszerhéj kimenete](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 
@@ -96,7 +97,7 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson a  **\<ClusterName > _hbase** elemre a **hbase**alatt.
 
-   ![Apache Ranger rendszergazdai felhasználói felület](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása**lehetőségre.
 
@@ -202,14 +203,14 @@ A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az os
    kinit marketing_user1
    ```
 
-2. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot:
+1. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Figyelje meg, hogy a marketing felhasználó csak az `Contact` oszlop öt oszlopát tekintheti meg.
+1. Figyelje meg, hogy a marketing felhasználó csak az `Contact` oszlop öt oszlopát tekintheti meg.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az os
     2 row(s) in 0.0730 seconds
     ```
 
-9. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
+1. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
-   ![A Ranger felhasználói felület házirendnaplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger felhasználói felületi szabályzatának naplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

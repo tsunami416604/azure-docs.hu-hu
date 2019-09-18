@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e8f03b17c5e8ea68affa9fe83875382fd5d8512
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716700"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063945"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C támogatást nyújt az [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitás-szolgáltatója számára. Az OpenID Connect 1,0 a OAuth 2,0-es számú identitási réteget definiálja, és a modern hitelesítési protokollokban lévő Art állapotot jelöli. Az OpenID Connect technikai profillal összevonása az OpenID Connect-alapú identitás-szolgáltatóval, például az Azure AD-vel. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
+A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitás-szolgáltatójának támogatásához. Az OpenID Connect 1,0 a OAuth 2,0-es számú identitási réteget definiálja, és a modern hitelesítési protokollokban lévő Art állapotot jelöli. Az OpenID Connect technikai profillal összevonása az OpenID Connect-alapú identitás-szolgáltatóval, például az Azure AD-vel. Az egyesítő lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
 
 ## <a name="protocol"></a>Protocol
 
@@ -98,7 +98,7 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be `https://login.microsoftonline.com/te/tenant/oauth2/authresp`a (z) értéket. Ne felejtse el **lecserélni** a bérlő nevét (például contosob2c.onmicrosoft.com) vagy a bérlő azonosítóját. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
+Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be `https://login.microsoftonline.com/te/tenant/oauth2/authresp`a (z) értéket. Ne felejtse el **lecserélni a bérlő nevét** (például contosob2c.onmicrosoft.com) vagy a bérlő azonosítóját. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
 
 Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
 

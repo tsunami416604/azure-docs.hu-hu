@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880088"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065946"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
 >[!NOTE]
 > Az [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) használatával felügyelheti a felhasználókat egy Azure ad B2C könyvtárban. Ez eltér a Microsoft Graph API-tól. További információkat [itt](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) talál.
 
-Azure Active Directory (Azure AD) B2C-bérlők általában nagyon nagy méretűek. Ez azt jelenti, hogy számos gyakori bérlői felügyeleti feladatot programozott módon kell végrehajtani. Elsődleges példa a felhasználók kezelése. Előfordulhat, hogy egy meglévő felhasználói tárolót kell áttelepítenie egy B2C-bérlőre. Előfordulhat, hogy a felhasználói regisztrációt a saját oldalán szeretné tárolni, és felhasználói fiókokat szeretne létrehozni a Azure AD B2C könyvtárban a jelenetek mögött. Az ilyen típusú feladatok lehetővé teszik felhasználói fiókok létrehozását, olvasását, frissítését és törlését. Ezeket a feladatokat az Azure AD Graph API használatával végezheti el.
+A Azure Active Directory B2C (Azure AD B2C) bérlők általában nagyon nagy méretűek. Ez azt jelenti, hogy számos gyakori bérlői felügyeleti feladatot programozott módon kell végrehajtani. Elsődleges példa a felhasználók kezelése. Előfordulhat, hogy egy meglévő felhasználói tárolót kell áttelepítenie egy B2C-bérlőre. Előfordulhat, hogy a felhasználói regisztrációt a saját oldalán szeretné tárolni, és felhasználói fiókokat szeretne létrehozni a Azure AD B2C könyvtárban a jelenetek mögött. Az ilyen típusú feladatok lehetővé teszik felhasználói fiókok létrehozását, olvasását, frissítését és törlését. Ezeket a feladatokat az Azure AD Graph API használatával végezheti el.
 
 A B2C-bérlők esetében két elsődleges mód van a Graph API való kommunikációra.
 
@@ -43,10 +43,10 @@ A B2C-bérlőt követően regisztrálnia kell az alkalmazást a [Azure Portal](h
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a Azure AD B2C bérlőt a lap jobb felső sarkában található fiók kiválasztásával.
 3. A bal oldali navigációs panelen válassza a **minden szolgáltatás**, majd az **alkalmazás-regisztrációk**lehetőséget, és kattintson az **új regisztráció**elemre.
-4. Kövesse az utasításokat az új alkalmazás létrehozásához. 
+4. Kövesse az utasításokat az új alkalmazás létrehozásához.
     1. Adjon hozzá egy megfelelő nevet
     2. **Csak az ebben a szervezeti könyvtárban lévő fiókok** kijelölése
-    3. Az alkalmazás típusaként válassza a **web** lehetőséget, és adja meg a **bejelentkezési URL** - `https://B2CGraphAPI`címet (például), mivel ez nem releváns ehhez a példához.  
+    3. Az alkalmazás típusaként válassza a **web** lehetőséget, és adja meg a **bejelentkezési URL** - `https://B2CGraphAPI`címet (például), mivel ez nem releváns ehhez a példához.
     4. Kattintson a regisztrálás gombra.
 5. Az alkalmazás ekkor megjelenik az alkalmazások listájában, és az **alkalmazás-azonosító** (más néven ügyfél-azonosító) beszerzéséhez kattintson rá. Másolja be, mert szüksége lesz rá egy későbbi szakaszban.
 6. A beállítások menüben kattintson a **tanúsítványok & Secrets**elemre.
@@ -65,8 +65,8 @@ Most már rendelkezik egy olyan alkalmazással, amely jogosult a B2C-bérlő fel
 
 > [!NOTE]
 > Az engedélyek megadása több percet is igénybe vehet.
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Az alkalmazáshoz tartozó jelszó törlésének vagy frissítésének konfigurálása
 Jelenleg az *olvasási és írási könyvtári* engedély nem tartalmazza a felhasználók törlésének vagy a felhasználói jelszavak frissítésének lehetőségét. Ha azt szeretné, hogy az alkalmazás lehetővé tegye a felhasználók törlését vagy a jelszavak frissítését, akkor a PowerShellt érintő további lépéseket is el kell végeznie, a következő szakaszra ugorhat.
@@ -132,8 +132,8 @@ A Graph APIre irányuló minden kérelemhez hozzáférési jogkivonat szüksége
 
 > [!NOTE]
 > Ez a mintakód a ADAL v2 protokollt használja a Graph API való kommunikációhoz.  Az Azure AD Graph API használható hozzáférési jogkivonatok beszerzéséhez a ADAL v2 vagy a v3 verziót kell használnia.
-> 
-> 
+>
+>
 
 A futtatáskor létrehozza a `B2CGraphClient` osztály egy példányát. `B2CGraphClient` Az osztály konstruktora egy ADAL hitelesítési állványzatot állít be:
 
@@ -260,8 +260,8 @@ Láthatja, hogyan épül fel a POST- `B2CGraphClient.SendGraphPostRequest(...)`k
 
 > [!NOTE]
 > Ha a meglévő felhasználói tárolóból áttelepíteni kívánt fiókoknál alacsonyabb a jelszó erőssége, mint az [Azure ad B2C által kényszerített erős jelszó erőssége](/previous-versions/azure/jj943764(v=azure.100)), akkor letilthatja az erős jelszó megkövetelését `DisableStrongPassword` a következő értékkel: `passwordPolicies`tulajdonság. A fentiekben megadott felhasználói kérelem például a következő módon módosítható: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok frissítése
 Amikor frissíti a felhasználói objektumokat, a folyamat hasonló a felhasználói objektumok létrehozásához használthoz. Ez a folyamat azonban a http `PATCH` -metódust használja:

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 30587af098b5ced7962dc45d6a059184f8b5f319
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 8e00053d5ce7c481b026d2fe0ce590d7b8799d8a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914898"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075457"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -149,7 +149,7 @@ az aks create \
 > Ha jelszó-érvényesítési hibát kap, próbálja meg létrehozni az erőforráscsoportot egy másik régióban.
 > Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
 
-Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza.
+Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A fürt esetenként több percig is eltarthat. Ezekben az esetekben akár 10 percet is igénybe vehet. 
 
 ## <a name="add-a-windows-server-node-pool"></a>Windows Server Node-készlet hozzáadása
 
@@ -264,7 +264,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Az alkalmazás futtatásakor a Kubernetes szolgáltatás az előtér-alkalmazást az internethez teszi elérhetővé. A folyamat eltarthat pár percig.
+Az alkalmazás futtatásakor a Kubernetes szolgáltatás az előtér-alkalmazást az internethez teszi elérhetővé. A folyamat eltarthat pár percig. Alkalmanként a szolgáltatás több percig is eltarthat. Ezekben az esetekben akár 10 percet is igénybe vehet.
 
 A folyamat állapotának monitorozásához használja [kubectl get service][kubectl-get] parancsot a `--watch` argumentummal.
 

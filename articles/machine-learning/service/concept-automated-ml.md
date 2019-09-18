@@ -1,7 +1,7 @@
 ---
 title: Mi az az automatizált ML/automl
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogy Azure Machine Learning szolgáltatás hogyan tud automatikusan kiválasztani egy algoritmust, és létrehoz egy modellt, hogy időt takarítson meg az Ön által megadott paraméterek és feltételek használatával, hogy kiválassza a modellhez legmegfelelőbb algoritmust.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhatja ki a Azure Machine Learning automatikusan egy algoritmust, és létrehoz egy modellt, hogy időt takarítson meg az Ön által megadott paraméterek és feltételek használatával, hogy kiválassza a modellhez legmegfelelőbb algoritmust.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882034"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035709"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -39,7 +39,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 
 ## <a name="how-automated-ml-works"></a>Az automatizált ML működése
 
-A **Azure Machine learning szolgáltatás**használatával a következő lépésekkel megtervezheti és futtathatja az automatizált ml-betanítási kísérleteket:
+A **Azure Machine learning**használatával a következő lépésekkel megtervezheti és futtathatja az automatizált ml-betanítási kísérleteket:
 
 1. **Azonosítsa a megoldandó problémát** : besorolás, előrejelzés vagy regresszió
 
@@ -53,7 +53,7 @@ A **Azure Machine learning szolgáltatás**használatával a következő lépés
 
   ![Automatizált gépi tanulás](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-A betanítás során a Azure Machine Learning szolgáltatás számos párhuzamos folyamatot hoz létre, amelyek különböző algoritmusokat és paramétereket próbálnak ki. Ekkor leáll, ha eléri a kísérletben meghatározott kilépési feltételeket.
+A betanítás során Azure Machine Learning több párhuzamos folyamatot hoz létre, amelyek különböző algoritmusokat és paramétereket próbálnak ki. Ekkor leáll, ha eléri a kísérletben meghatározott kilépési feltételeket.
 
 Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot`.pkl` (fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567061"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059263"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-minták az Azure SQL Database-hez
 
@@ -27,7 +27,7 @@ A Azure SQL Database lehetővé teszi az adatbázisok, példányok és készlete
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="single-database-and-elastic-pools"></a>önálló adatbázis és rugalmas készletek
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[önálló adatbázis és rugalmas készletek](#tab/single-database)
 
 A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz.
 
@@ -58,7 +58,7 @@ A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-p
 
 További információ a [önálló adatbázis Azure POWERSHELL API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)-ról.
 
-## <a name="managed-instance"></a>Felügyelt példány
+## <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
 A következő táblázat a Azure SQL Database által felügyelt példányokra mutató hivatkozásokat tartalmaz Azure PowerShell parancsfájlokra.
 
@@ -74,6 +74,8 @@ A következő táblázat a Azure SQL Database által felügyelt példányokra mu
 
 További információ a [felügyelt példány Azure POWERSHELL API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)-ról.
 
+---
+
 ## <a name="additional-resources"></a>További források
 
-Az ezen a lapon felsorolt példák az Azure SQL-erőforrások létrehozására és kezelésére szolgáló [Azure SQL Database](/powershell/module/az.sql/) -parancsmagokat használják. A lekérdezések futtatására szolgáló további parancsmagok és számos adatbázis-feladat végrehajtása a [SQLServer](/powershell/module/sqlserver/) modulban található. További információ: [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).
+Az ezen a lapon felsorolt példák az Azure SQL-erőforrások létrehozására és kezelésére szolgáló [Azure SQL Database-parancsmagokat](/powershell/module/az.sql/) használják. A lekérdezések futtatására szolgáló további parancsmagok és számos adatbázis-feladat végrehajtása a [SQLServer](/powershell/module/sqlserver/) modulban található. További információ: [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

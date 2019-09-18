@@ -4,7 +4,7 @@ description: Helyi Windows-felhasználói fiók jelszavának alaphelyzetbe áll�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 75d6c10ded4038297689835d5ff012f344540e6f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638857"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058645"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Helyi Windows-jelszó visszaállítása az Azure-beli virtuális géphez offline
 Alaphelyzetbe állíthatja az Azure-beli virtuális gép helyi Windows-jelszavát a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , ha telepítve van az Azure Guest Agent ügynök. Ez a módszer az Azure-beli virtuális gépek jelszavának alaphelyzetbe állításának elsődleges módja. Ha az Azure vendég ügynökével kapcsolatos problémákba ütközik, vagy ha az egyéni rendszerkép feltöltése után nem sikerül telepíteni, manuálisan is visszaállíthatja a Windows-jelszót. Ez a cikk részletesen ismerteti a helyi fiók jelszavának alaphelyzetbe állítását úgy, hogy a forrás operációs rendszer virtuális lemezét egy másik virtuális géphez csatolja. A cikkben ismertetett lépések nem vonatkoznak a Windows-tartományvezérlőkre. 
@@ -87,7 +87,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
 6. A Azure Portalban válassza le a lemezt a hibaelhárítási virtuális gépről.
 
-7. [Módosítsa az érintett virtuális gép operációsrendszer](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)-lemezét.
+7. [Módosítsa az érintett virtuális gép operációsrendszer-lemezét](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm).
 
 8. Az új virtuális gép futása után kapcsolódjon a virtuális géphez távoli asztal használatával a `FixAzureVM.cmd` parancsfájlban megadott új jelszóval.
 
@@ -191,7 +191,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
    
    1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portalon, majd kattintson a *lemezek*elemre.
    
-   2. Válassza ki a 2. lépésben csatolt adatlemezt, kattintson a Leválasztás elemre, majd **az OK**gombra.
+   2. Válassza ki a 2. lépésben csatolt adatlemezt, kattintson a **Leválasztás**elemre, majd **az OK**gombra.
 
      ![Lemez leválasztása](./media/reset-local-password-without-agent/data-disks-classic.png)
      
@@ -212,11 +212,11 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 2. A távoli munkamenetből az új virtuális gépre, távolítsa el a következő fájlokat a környezet tisztításához:
     
     * A`%windir%\System32`
-      * eltávolítása`FixAzureVM.cmd`
+      * Eltávolítása`FixAzureVM.cmd`
     * A`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * eltávolítása`scripts.ini`
+      * Eltávolítása`scripts.ini`
     * A`%windir%\System32\GroupPolicy`
       * Távolítsa `gpt.ini` el `gpt.ini` (ha korábban létezett, és `gpt.ini.bak`átnevezte a-re `gpt.ini`), `.bak` nevezze át a fájlt a (z) névre.
 
 ## <a name="next-steps"></a>További lépések
-Ha továbbra sem tud kapcsolatot létesíteni Távoli asztal használatával, tekintse meg az [RDP-hibaelhárítási útmutatót](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az [RDP-hibaelhárítás részletes útmutatója](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az egyes lépések helyett a hibaelhárítási módszereket vizsgálja. [Egy Azure-támogatási kérést](https://azure.microsoft.com/support/options/) is megnyithat gyakorlati segítségért.
+Ha továbbra sem tud kapcsolatot létesíteni Távoli asztal használatával, tekintse meg az [RDP-hibaelhárítási útmutatót](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az [RDP-hibaelhárítás részletes útmutatója](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az egyes lépések helyett a hibaelhárítási módszereket vizsgálja. [Egy Azure-támogatási kérést is megnyithat](https://azure.microsoft.com/support/options/) gyakorlati segítségért.

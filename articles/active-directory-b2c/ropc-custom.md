@@ -1,6 +1,6 @@
 ---
-title: Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C |} A Microsoft Docs
-description: Ismerje meg, hogy az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C-t.
+title: Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása a Azure Active Directory B2Cban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja az erőforrás-tulajdonosi jelszó hitelesítő adatait a Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164849"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063705"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Az Azure Active Directory (Azure AD) B2C-vel az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamatát. Ezt a folyamatot, az alkalmazás, más néven a függő entitás cseréje jogkivonatokat érvényes hitelesítő adatokat. A hitelesítő adatok közé tartozik a felhasználói Azonosítót és jelszót. A visszaadott jogkivonatok egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot.
+Azure Active Directory B2C (Azure AD B2C) esetében az erőforrás-tulajdonos jelszava hitelesítő adatai (ROPC) folyamata egy szabványos OAuth-hitelesítési folyamat. Ebben a folyamatban egy alkalmazás, más néven a függő entitás, érvényes hitelesítő adatokat cserél a tokenekhez. A hitelesítő adatok tartalmazzák a felhasználói azonosítót és a jelszót. A visszaadott tokenek azonosító tokenek, hozzáférési tokenek és frissítési tokenek.
 
-A következő beállítások támogatottak a ROPC folyamatban:
+A ROPC folyamat a következő beállításokat támogatja:
 
-- **Natív ügyfél** -felhasználói beavatkozás során a hitelesítés során történik, ha a felhasználó ügyféloldali eszközön fut kódja.
-- **Nyilvános client flow** – csak a felhasználó hitelesítő adatait, amely gyűjti az adatokat az alkalmazások által az API-hívás küldi el. A hitelesítő adatokat, az alkalmazás nem küld.
-- **Új jogcímeket adhatnak hozzá** – új jogcímeket adhatnak hozzá az azonosító jogkivonat tartalma módosítható.
+- **Natív ügyfél** -felhasználói interakció a hitelesítés során akkor történik meg, amikor a kód egy felhasználói oldali eszközön fut.
+- Az API-hívásban az alkalmazás által összegyűjtött **nyilvános ügyféloldali** felhasználói hitelesítő adatok lesznek elküldve. Az alkalmazás hitelesítő adatai nem lesznek elküldve.
+- **Új jogcímek hozzáadása** – az azonosító jogkivonat tartalma módosítható új jogcímek hozzáadásához.
 
 A következő folyamatok nem támogatottak:
 
-- **Kiszolgálók közötti** – az identity protection rendszer kell egy megbízható IP-címet a hívó (a natív ügyfél) a interakció részeként összegyűjtött. Kiszolgálóoldali API-hívással, csak a kiszolgáló IP-címet használja. Ha túl sok bejelentkezések nem sikerül, az identity protection rendszer előfordulhat, hogy tekintse meg egy ismétlődő IP-cím egy támadó.
-- **Egyetlen lap alkalmazás** – egy előtér-alkalmazás, amely elsősorban a JavaScript nyelven írt. Az alkalmazás gyakran, például az AngularJS, az Ember.js vagy a Durandal keretrendszer használatával írt.
-- **Bizalmas client flow** – az alkalmazás ügyfél-azonosító érvényességét, de az alkalmazás titkos nem.
+- **Kiszolgáló – kiszolgáló** – az Identity Protection rendszernek a kapcsolat részeként a hívótól (a natív ügyféltől) gyűjtött megbízható IP-címet kell tartalmaznia. Kiszolgálóoldali API-hívás esetén csak a kiszolgáló IP-címe van használatban. Ha túl sok bejelentkezés meghiúsul, az Identity Protection rendszer egy ismétlődő IP-címet is megvizsgálhat támadóként.
+- **Egyoldalas alkalmazás** – az előtér-alkalmazás, amely elsősorban JavaScript nyelven íródott. Az alkalmazást gyakran olyan keretrendszerrel kell megírni, mint például a AngularJS, az izzó. js vagy a Durand.
+- **Bizalmas ügyféloldali folyamat** – az alkalmazás ügyfél-azonosítója érvényesítve van, de az alkalmazás titkos kulcsa nem.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](active-directory-b2c-get-started-custom.md).
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
-5. Adja meg egy nevet az alkalmazásnak, például *ROPC_Auth_app*.
-6. Válassza ki **nem** a **Web App/Web API**, majd válassza ki **Igen** a **natív ügyfél**.
-7. Az összes többi értéket hagyja, és válassza ki **létrehozás**.
-8. Válassza ki az új alkalmazást, és jegyezze fel az Alkalmazásazonosítót későbbi használatra.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+5. Adja meg az alkalmazás nevét, például *ROPC_Auth_app*.
+6. Válassza a **nem** lehetőséget a **Web App/web API**elemnél, majd válassza az **Igen** lehetőséget a **natív ügyfél**esetében.
+7. Hagyja meg az összes többi értéket, és válassza a **Létrehozás**lehetőséget.
+8. Válassza ki az új alkalmazást, és jegyezze fel az alkalmazás AZONOSÍTÓját későbbi használatra.
 
-##  <a name="create-a-resource-owner-policy"></a>Erőforrás tulajdonosának szabályzat létrehozása
+##  <a name="create-a-resource-owner-policy"></a>Erőforrás-tulajdonosi szabályzat létrehozása
 
-1. Nyissa meg a *TrustFrameworkExtensions.xml* fájlt.
-2. Ha már nem létezik, adjon hozzá egy **ClaimsSchema** elem és az alárendelt elemei alapján első elemeként a **BuildingBlocks** elem:
+1. Nyissa meg a *TrustFrameworkExtensions. XML* fájlt.
+2. Ha még nem létezik, vegyen fel egy **ClaimsSchema** elemet és annak alárendelt elemeit az **BuildingBlocks** elem alatti első elemként:
 
     ```XML
     <ClaimsSchema>
@@ -76,7 +76,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </ClaimsSchema>
     ```
 
-3. Után **ClaimsSchema**, adjon hozzá egy **ClaimsTransformations** elem és az alárendelt elemei, a **BuildingBlocks** elem:
+3. **ClaimsSchema**után adjon hozzá egy **ClaimsTransformations** elemet és annak alárendelt elemeit a **BuildingBlocks** elemhez:
 
     ```XML
     <ClaimsTransformations>
@@ -88,7 +88,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -102,7 +102,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </ClaimsTransformations>
     ```
 
-4. Keresse meg a **ClaimsProvider** elem, amely rendelkezik egy **DisplayName** , `Local Account SignIn` , és adja hozzá a következő technikai profil:
+4. Keresse meg azt a `Local Account SignIn` **ClaimsProvider** -elemet, amely a **DisplayName** paraméterrel rendelkezik, és adja hozzá a következő technikai profilt:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -140,9 +140,9 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </TechnicalProfile>
     ```
 
-    Cserélje le a **DefaultValue** , **client_id** ProxyIdentityExperienceFramework alkalmazás, amelyet az előfeltételnek számító oktatóanyagot az alkalmazás azonosítójával. Ezután cserélje le **DefaultValue** , **erőforrás_azonosítója** az előfeltételnek számító oktatóanyagot is létrehozott IdentityExperienceFramework alkalmazás az alkalmazás azonosítójával.  
+    Cserélje le a **Client_id** **DefaultValue** értékét az előfeltételként megadott oktatóanyagban létrehozott PROXYIDENTITYEXPERIENCEFRAMEWORK alkalmazás alkalmazás-azonosítójával. Ezután cserélje le az **Resource_id** **DefaultValue** értékét az előfeltételként szükséges oktatóanyagban létrehozott IDENTITYEXPERIENCEFRAMEWORK alkalmazás alkalmazás-azonosítójával.
 
-5. Adjon hozzá következő **ClaimsProvider** , a technikai profilok olyan elemet a **ClaimsProviders** elem:
+5. Adja hozzá a következő **ClaimsProvider** elemeket a technikai profiljaihoz a **ClaimsProviders** elemhez:
 
     ```XML
     <ClaimsProvider>
@@ -196,7 +196,7 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </ClaimsProvider>
     ```
 
-6. Adjon hozzá egy **UserJourneys** elem és az alárendelt elemei, a **TrustFrameworkPolicy** elem:
+6. Adjon hozzá egy **UserJourneys** elemet és annak alárendelt elemeit a **TrustFrameworkPolicy** elemhez:
 
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
@@ -233,19 +233,19 @@ Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – els
     </UserJourney>
     ```
 
-7. Az a **egyéni szabályzatok** az Azure AD B2C-bérlő, válassza a lap **szabályzat feltöltése**.
-8. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
+7. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
+8. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
 9. Kattintson a **Feltöltés** gombra.
 
-## <a name="create-a-relying-party-file"></a>Hozzon létre egy függő entitás fájlt
+## <a name="create-a-relying-party-file"></a>Függő entitás fájljának létrehozása
 
-Ezután frissítse a függő entitás fájlt, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi:
+Következő lépésként frissítse a függő entitás fájlját, amely kezdeményezi a létrehozott felhasználói utat:
 
-1. Készítsen másolatot *SignUpOrSignin.xml* a munkakönyvtárban fájlt, és nevezze át, hogy *ROPC_Auth.xml*.
-2. Nyissa meg az új fájlt, és módosítsa az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egy egyedi értékre. A házirend-azonosító a házirend nevét. Ha például **B2C_1A_ROPC_Auth**.
-3. Módosítsa a **referenceid megadása** attribútum **DefaultUserJourney** való `ResourceOwnerPasswordCredentials`.
-4. Módosítsa a **OutputClaims** elem csak a következő jogcímeket tartalmaz:
-    
+1. Készítsen másolatot a *SignUpOrSignin. XML* fájlról a munkakönyvtárában, és nevezze át a *ROPC_Auth. XML*fájlba.
+2. Nyissa meg az új fájlt, és módosítsa a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékre. A házirend-azonosító a szabályzat neve. Például: **B2C_1A_ROPC_Auth**.
+3. Módosítsa a **DefaultUserJourney** ReferenceId attribútum értékét a következőre: `ResourceOwnerPasswordCredentials`.
+4. Módosítsa a **OutputClaims** elemet úgy, hogy csak a következő jogcímeket tartalmazza:
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -254,34 +254,34 @@ Ezután frissítse a függő entitás fájlt, amely az Ön által létrehozott f
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. Az a **egyéni szabályzatok** az Azure AD B2C-bérlő, válassza a lap **szabályzat feltöltése**.
-6. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *ROPC_Auth.xml* fájlt.
+5. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
+6. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *ROPC_Auth. XML* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
-## <a name="test-the-policy"></a>A házirend tesztelése
+## <a name="test-the-policy"></a>A szabályzat tesztelése
 
-A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan API-hívás, és tekintse át a válasz lehet hibákat keresni a házirend. Ebben a példában az alábbi információkkal, mint a POST-kérés törzse például egy hívás össze:
+Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a szabályzat hibakeresésére adott választ. A POST kérelem törzsének a következő információk alapján hozhat létre egy hívást:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
-- Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
+- A `B2C_1A_ROPC_Auth` helyére írja be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
 | grant_type | password |
-| scope | openid `application-id` offline_access |
+| scope | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
-- Cserélje le `user-account` egy felhasználói fiók a bérlő nevével.
-- Cserélje le `password1` a felhasználói fiókhoz jelszót.
-- Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció.
-- *Offline_access* nem kötelező, ha szeretne kapni a frissítési jogkivonatot.
+- Cserélje `user-account` le a nevet a bérlő felhasználói fiókjának nevére.
+- Cserélje `password1` le a-t a felhasználói fiók jelszavára.
+- Cserélje `application-id` le a elemet a *ROPC_Auth_app* -regisztrációhoz tartozó alkalmazás-azonosítóra.
+- A *Offline_access* nem kötelező, ha frissítési tokent szeretne kapni.
 
-A tényleges POST-kérés a következő példához hasonlóan néz ki:
+A tényleges POST-kérelem a következő példához hasonlóan néz ki:
 
 ```HTTPS
 POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
@@ -291,7 +291,7 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-Offline hozzáférés a sikeres válasz az alábbi példához hasonlóan néz ki:
+Az offline-hozzáférés sikeres válasza a következő példához hasonlóan néz ki:
 
 ```JSON
 {
@@ -303,16 +303,16 @@ Offline hozzáférés a sikeres válasz az alábbi példához hasonlóan néz ki
 }
 ```
 
-## <a name="redeem-a-refresh-token"></a>A frissítési jogkivonat beváltása
+## <a name="redeem-a-refresh-token"></a>Frissítési jogkivonat beváltása
 
-Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat használja az alábbi táblázatban a kérelem törzse:
+Állítson össze egy POST hívást, amely az itt láthatóhoz hasonló. Használja a következő táblázatban szereplő információkat a kérelem törzse:
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
-- Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
+- A `B2C_1A_ROPC_Auth` helyére írja be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -320,10 +320,10 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Cserélje le `application-id` az alkalmazás azonosítójával, a *ROPC_Auth_app* regisztráció.
-- Cserélje le `refresh-token` együtt a **refresh_token** , amely az előző válaszban küldték.
+- Cserélje `application-id` le a elemet a *ROPC_Auth_app* -regisztrációhoz tartozó alkalmazás-azonosítóra.
+- Cserélje `refresh-token` le az értékét az előző válaszban visszaküldött **refresh_token** .
 
-A sikeres válasz az alábbi példához hasonlóan néz ki:
+A sikeres válasz a következő példához hasonlít:
 
 ```JSON
 {
@@ -341,11 +341,11 @@ A sikeres válasz az alábbi példához hasonlóan néz ki:
 }
 ```
 
-## <a name="use-a-native-sdk-or-app-auth"></a>Egy natív SDK-t vagy alkalmazás-alapú hitelesítés használata
+## <a name="use-a-native-sdk-or-app-auth"></a>Natív SDK vagy alkalmazás-Auth használata
 
-Az Azure AD B2C megfelel-e nyilvános ügyfél erőforrás tulajdonosának jelszavas hitelesítő adatai az OAuth 2.0-s előírásoknak, és a legtöbb ügyfél SDK-k kompatibilisnek kell lennie. A legfrissebb információkért lásd: [natív App SDK az OAuth 2.0 és OpenID Connect modern ajánlott eljárások végrehajtására](https://appauth.io/).
+Azure AD B2C megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
 ## <a name="next-steps"></a>További lépések
 
-- Az ebben a forgatókönyvben egy teljes példa a [egyéni házirendet kezdőcsomag az Azure Active Directory B2C](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- További információ az Azure Active Directory B2C a által használt jogkivonatokat a [jogkivonat-referencia](active-directory-b2c-reference-tokens.md).
+- Tekintse meg a forgatókönyv teljes példáját a [Azure Active Directory B2C egyéni házirend alapszintű csomagban](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
+- További információ a Azure Active Directory B2C által használt jogkivonatokról a [jogkivonat-hivatkozásban](active-directory-b2c-reference-tokens.md).

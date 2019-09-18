@@ -4,7 +4,7 @@ description: Ismerje meg, hogy miként lehet elhárítani az Azure-beli virtuál
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 16322b2cca4875f1ace89e29752608b95fe568ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be563e39ed1bfa405830999a96d8630b6f8254bb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103454"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057973"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Távoli asztal gyakori leválasztása az Azure-beli virtuális gépen
 
@@ -36,7 +36,7 @@ Ez a probléma akkor fordulhat elő, ha az RDP-figyelő helytelenül van konfigu
 
 ## <a name="solution"></a>Megoldás
 
-Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép [operációsrendszer](../windows/snapshot-copy-managed-disk.md) -lemezéről biztonsági másolatként. 
+Az alábbi lépések [elvégzése előtt készítsen pillanatképet](../windows/snapshot-copy-managed-disk.md) az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. 
 
 A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy helyreállítási virtuális géphez csatolva csatlakoztassa a soros vezérlőt vagy [javítsa ki a virtuális gépet](#repair-the-vm-offline) .
 
@@ -166,7 +166,7 @@ A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy
 18. Indítsa újra a virtuális gépet, majd próbálja meg újra az RDP használatával való kapcsolódáshoz.
 
 ## <a name="need-help"></a>Segítség 
-Forduljon a támogatási szolgálathoz. Ha továbbra is segítségre van szüksége, [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz a probléma gyors megoldása érdekében.
+Forduljon a támogatási szolgálathoz. Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347908"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076327"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: Szolgáltatás-jelzők hozzáadása egy ASP.NET Core alkalmazáshoz
 
@@ -36,9 +36,9 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **szolgáltatás-kezelő** >  **+ Létrehozás** lehetőséget a következő funkció-jelzők hozzáadásához:
+6. Válassza a **Feature Manager** >  **+ Hozzáadás** lehetőséget a következő funkció-jelzők hozzáadásához:
 
-    | Kulcs | Állapot |
+    | Kulcs | State |
     |---|---|
     | Bétaverzió | Ki |
 
@@ -81,10 +81,11 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. A következő parancsok futtatásával adjon `Microsoft.FeatureManagement.AspNetCore` hozzá hivatkozásokat a `Microsoft.Azure.AppConfiguration.AspNetCore` és a NuGet-csomagokhoz:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
@@ -103,7 +104,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
     ```
 
-    A Secret Manager csak a webalkalmazás helyi tesztelésére használható. Amikor az alkalmazást Azure App Servicera telepíti [](https://azure.microsoft.com/services/app-service), például a kapcsolódási karakterláncok nevű alkalmazás-beállítást  használja app Service ahelyett, hogy a Secret Managert használja a kapcsolódási karakterlánc tárolásához.
+    A Secret Manager csak a webalkalmazás helyi tesztelésére használható. Amikor az alkalmazást Azure App Servicera telepíti [](https://azure.microsoft.com/services/app-service), például a kapcsolódási karakterláncok nevű alkalmazás-beállítást használja app Service ahelyett, hogy a Secret Managert használja a kapcsolódási karakterlánc tárolásához.
 
     Ezt a titkot az alkalmazás konfigurációs API-jával érheti el. Egy kettőspont (:) a konfiguráció neve az App Configuration API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
@@ -193,13 +194,13 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     }
     ```
 
-1. Nyissa meg a *_ViewImports. cshtml* mappát a views ( *nézetek* ) könyvtárban, és adja hozzá a Feature Manager tag helpert:
+1. Nyissa meg a *_ViewImports. cshtml* mappát a *views (nézetek* ) könyvtárban, és adja hozzá a Feature Manager tag helpert:
 
     ```html
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Nyissa meg a *_Layout. cshtml* \\ `<nav>`  `<body>` mappátanézetekmegosztottkönyvtárában,éscseréljelea >  vonalkódot a következő kódra: `<header>`
+1. Nyissa meg a *_Layout. cshtml* \\ `<nav>` `<body>` mappátanézetekmegosztottkönyvtárában,éscseréljelea >  vonalkódot a következő kódra: `<header>`
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -262,9 +263,11 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 1. Válassza ki a **Feature Manager**elemet, és módosítsa a **bétaverzió** állapotát a **következőre:**
 
-    | Kulcs | Állapot |
+    | Kulcs | State |
     |---|---|
     | Bétaverzió | Bekapcsolva |
+
+1. Indítsa újra az alkalmazást úgy, hogy visszavált a parancssorba `Ctrl-C` , és lenyomva tartja a futó `dotnet` folyamatot, `dotnet run`majd újból futtatja.
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
@@ -281,3 +284,4 @@ Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs t�
 - További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
 - [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
 - [A szolgáltatás-jelzők használata egy ASP.net Core alkalmazásban](./use-feature-flags-dotnet-core.md).
+- [Dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban](./enable-dynamic-configuration-aspnet-core.md)

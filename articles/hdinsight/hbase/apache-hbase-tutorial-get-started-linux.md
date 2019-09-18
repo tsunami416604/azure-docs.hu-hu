@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917405"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077140"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: Az Apache HBase használata az Azure HDInsightban
 
@@ -41,7 +41,7 @@ Az alábbi eljárás egy Azure Resource Manager sablonnal hoz létre egy HBase-f
 
 1. Válassza ki az alábbi képet a sablon megnyitásához a Azure Portal. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/)található.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. Az **Egyéni üzembe helyezés** panelen adja meg a következő értékeket:
 
@@ -68,11 +68,11 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
-![HDInsight HBase táblázatos adatok](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase táblázatos adatokat](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
 A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja) ugyanazokat az adatmennyiségeket keresi:
 
-![HDInsight HBase BigTable-adatok](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable-adatbázis](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **A Hbase-rendszerhéj használata**
 
@@ -115,7 +115,7 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
     scan 'Contacts'
     ```
 
-    ![HDInsight Hadoop HBase-rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![HDInsight Apache Hadoop HBase-rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
 1. Egy `get` sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
 
@@ -284,7 +284,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 1. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd válassza ki **HBase Master felhasználói felületet**.  A felület egy új böngészőlapon nyílik meg:
 
-   ![HDInsight HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight Apache HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    A HBase-mesterfelület az alábbi részeket tartalmazza:
 

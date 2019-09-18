@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 50264b1364f40ff5e68ae4a93783d62837c167b3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d881ffff81119167f54b5ef8f0c5e2c1ad1e4791
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898816"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075136"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (ak) fürt frissítése
 
@@ -47,10 +47,14 @@ Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
 -------  ----------------  ---------------  -----------------  ---------------
 default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
+Ha nincs elérhető frissítés, a következőket kapja:
+```console
+ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
+```
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
-Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új csomópontot ad hozzá a fürthöz, amely a megadott Kubernetes-verziót futtatja, majd alaposan kiüríti [és][kubernetes-drain] kiüríti az egyik régi csomópontot, hogy csökkentse az alkalmazások futtatásának megszakadását. Ha az új csomópontot alkalmazásként futtatja, a rendszer törli a régi csomópontot. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült.
+Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új csomópontot ad hozzá a fürthöz, amely a megadott Kubernetes-verziót futtatja, majd alaposan [kiüríti és kiüríti][kubernetes-drain] az egyik régi csomópontot, hogy csökkentse az alkalmazások futtatásának megszakadását. Ha az új csomópontot alkalmazásként futtatja, a rendszer törli a régi csomópontot. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült.
 
 A következő példa egy fürtöt frissít a *1.13.10*verzióra:
 

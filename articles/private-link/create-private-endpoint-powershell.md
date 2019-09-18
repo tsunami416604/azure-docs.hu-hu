@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: f9a2bd4c4ec176e018948a7a5a01603d075a7ea2
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ca3fec3dbb4fbe77a1d375c0329275b7b799d06b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018009"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067849"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -182,25 +182,38 @@ mstsc /v:<publicIpAddress>
 2. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
   > [!NOTE]
   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
+  
 3. Kattintson **az OK gombra**. 
 4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
 
 1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Enternslookup myserver.database.windows.net a következőhöz hasonló üzenet jelenik meg:  Azure PowerShellCopy-kiszolgáló:  Ismeretlen címe:  168.63.129.16 nem mérvadó Válasz:  Név: myserver.privatelink.database.windows.net-címe:  10.0.0.5-aliasok: myserver.database.windows.net
-3. SQL Server Management Studio telepítése
-4. A Kapcsolódás a kiszolgálóhoz lapon adja meg vagy válassza ki az alábbi adatokat: Érték-kiszolgáló típusának beállítása válassza az adatbázismotor lehetőséget.
-      Kiszolgáló neve válassza a myserver.database.windows.net felhasználónevet, adja meg a létrehozás során megadott felhasználónevet.
-      A jelszó mezőbe írja be a létrehozás során megadott jelszót.
-      Jelszó megjegyzése: válassza az Igen lehetőséget.
-5. Válassza a kapcsolat lehetőséget.
-6. A bal oldali menüben lévő adatbázisok tallózása. 
-7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase
-8. A távoli asztali kapcsolat bezárásával *myVM*. 
+2. Adja `nslookup myserver.database.windows.net`meg a értéket. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha végzett a privát végponttal, SQL Database-kiszolgálóval és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
+    Ehhez hasonló üzenet jelenik meg:
+    ```azurepowershell
+    Server:  UnKnown
+    Address:  168.63.129.16
+    Non-authoritative answer:
+    Name:    myserver.privatelink.database.windows.net
+    Address:  10.0.0.5
+    Aliases:   myserver.database.windows.net
+3. Install SQL Server Management Studio
+4. In Connect to server, enter or select this information:
+    Setting Value
+      Server type   Select Database Engine.
+      Server name   Select myserver.database.windows.net
+      Username  Enter a username provided during creation.
+      Password  Enter a password provided during creation.
+      Remember password Select Yes.
+5. Select Connect.
+6. Browse Databases from left menu. 
+7. (Optionally) Create or query information from mydatabase
+8. Close the remote desktop connection to *myVM*. 
+
+## Clean up resources 
+When you're done using the private endpoint, SQL Database server and the VM, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all the resources it has:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

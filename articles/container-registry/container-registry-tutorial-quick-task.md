@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310443"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057495"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
 
@@ -75,7 +75,7 @@ Az oktatóanyag-sorozatban használt parancsok a Bash-felületnek megfelelően v
 
 Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzon lére egy tárolóregisztrációs adatbázist, és állítsa össze a tárolórendszerképet az ACR Tasks használatával.
 
-A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A **\<registry-name\>** helyőrzőt cserélje az új tárolóregisztrációs adatbázis egyedi nevével. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
+A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A **\<registry-name\>** helyőrzőt cserélje az új tárolóregisztrációs adatbázis egyedi nevével. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -222,7 +222,7 @@ az keyvault secret set \
 Létrehozott egy Azure Key Vault-tárolót, és eltárolt benne két titkos kulcsot:
 
 * `$ACR_NAME-pull-usr`: Az egyszerű szolgáltatásnév azonosítója, amelyet tároló-beállításjegyzékbeli **felhasználónévként**kell használni.
-* `$ACR_NAME-pull-pwd`: A szolgáltatás egyszerű jelszava, a tároló-beállításjegyzék jelszavaként való használathoz.
+* `$ACR_NAME-pull-pwd`: A szolgáltatás egyszerű jelszava, a tároló-beállításjegyzék jelszavakéntvaló használathoz.
 
 Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy az alkalmazások és szolgáltatások rendszerképeket kérnek le a regisztrációs adatbázisból.
 

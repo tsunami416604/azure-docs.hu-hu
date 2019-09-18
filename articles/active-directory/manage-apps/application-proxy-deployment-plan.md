@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812838"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033636"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -64,7 +64,7 @@ Az Azure AD Application Proxy konfigurálásához és megvalósításához a kö
 
 *  Az **Azure**bevezetése: Az alkalmazásproxy üzembe helyezése előtt a felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-* **Feltételes hozzáférési követelmények**: Nem ajánlott az alkalmazásproxy használata az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy diretly a hitelesítést a HRE használatával. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
+* **Feltételes hozzáférési követelmények**: Nem ajánlott az alkalmazásproxy használata az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy azok közvetlenül hitelesíthetők a HRE. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
 
 * **Szolgáltatási korlátok**: Az egyes bérlők erőforrásainak túlfogyasztása elleni védelem érdekében az alkalmazások és a bérlők szabályozási korlátokkal rendelkeznek. A korlátozások megtekintéséhez tekintse meg az [Azure ad szolgáltatás korlátozásait és korlátozásait](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a sávszélesség-szabályozási korlátok a tipikus használati köteten felüli teljesítményteszten alapulnak, és bőséges puffert biztosítanak az üzemelő példányok többsége számára.
 
@@ -239,7 +239,7 @@ Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül 
 
 3. Az **előhitelesítés** mezőben válassza a legördülő listát a **Azure Active Directory**kiválasztásához, majd válassza a **Mentés**lehetőséget.
 
-Az előhitelesítés engedélyezése esetén az Azure AD először a hitelesítést fogja felvenni a felhasználók számára, és ha az egyszeri bejelentkezés configued, akkor a háttérbeli alkalmazás is ellenőrzi a felhasználót, mielőtt hozzáférést kap az alkalmazáshoz. Ha az előhitelesítési mód átadását az Azure AD-be módosítja, a külső URL-cím HTTPS-sel is konfigurálható, ezért a rendszer minden olyan alkalmazást HTTPS-védelemmel fog védeni, amelyet eredetileg a HTTP-hez konfiguráltak.
+Az előhitelesítés engedélyezése esetén az Azure AD először a hitelesítést fogja felvenni a felhasználók számára, és ha az egyszeri bejelentkezés be van állítva, akkor a háttérbeli alkalmazás is ellenőrzi a felhasználót, mielőtt hozzáférést kap az alkalmazáshoz. Ha az előhitelesítési mód átadását az Azure AD-be módosítja, a külső URL-cím HTTPS-sel is konfigurálható, ezért a rendszer minden olyan alkalmazást HTTPS-védelemmel fog védeni, amelyet eredetileg a HTTP-hez konfiguráltak.
 
 ### <a name="enable-single-sign-on"></a>Egyszeri bejelentkezés engedélyezése
 
@@ -292,11 +292,11 @@ A felhasználóknak azonban továbbra is napi szintű jogosultságokkal rendelke
 
 ### <a name="reporting-and-monitoring"></a>Jelentéskészítés és figyelés
 
-Az Azure AD további elemzéseket biztosít a szervezet alkalmazás-használatáról és az üzemeltetési állapotáról a [naplók és jelentések](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)segítségével. Az alkalmazásproxy az Azure AD-portál és a Windows-eseménynaplók közötti összekötők figyelését is megkönnyíti.
+Az Azure AD további elemzéseket biztosít a szervezet alkalmazás-használatáról és az üzemeltetési állapotáról a [naplók és jelentések](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)segítségével. Az alkalmazásproxy az Azure AD-portál és a Windows-eseménynaplók közötti összekötők figyelését is megkönnyíti.
 
 #### <a name="application-audit-logs"></a>Alkalmazások auditnaplói
 
-Ezek a naplók részletes információkkal szolgálnak az alkalmazásproxy használatával konfigurált alkalmazásokhoz és az alkalmazáshoz hozzáférő felhasználóhoz való bejelentkezésekről. A [naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) a Azure Portal és az export [audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) -ban találhatók. Emellett a [használati és](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) betekintő jelentések is elérhetők az alkalmazáshoz.
+Ezek a naplók részletes információkkal szolgálnak az alkalmazásproxy használatával konfigurált alkalmazásokhoz és az alkalmazáshoz hozzáférő felhasználóhoz való bejelentkezésekről. A [naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) a Azure Portal és az export [audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) -ban találhatók. Emellett a [használati és](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) betekintő jelentések is elérhetők az alkalmazáshoz.
 
 #### <a name="application-proxy-connector-monitoring"></a>Alkalmazásproxy-összekötő figyelése
 

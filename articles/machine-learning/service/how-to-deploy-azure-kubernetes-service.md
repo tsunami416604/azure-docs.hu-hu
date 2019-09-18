@@ -1,7 +1,7 @@
 ---
 title: Modellek üzembe helyezése az Azure Kubernetes Service-ben
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning szolgáltatási modelljeit webszolgáltatásként az Azure Kubernetes Service használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként az Azure Kubernetes Service használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858733"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034631"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
-Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azure Kubernetes szolgáltatásban (ak) a Azure Machine Learning szolgáltatás használatával. Az Azure Kubernetes szolgáltatás kiválóan alkalmas a nagy léptékű éles környezetekben való üzembe helyezésre. Ha a következő lehetőségek közül egyet vagy többet szeretne használni, használja az Azure Kubernetes szolgáltatást:
+Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azure Kubernetes szolgáltatásban (ak) a Azure Machine Learning használatával. Az Azure Kubernetes szolgáltatás kiválóan alkalmas a nagy léptékű éles környezetekben való üzembe helyezésre. Ha a következő lehetőségek közül egyet vagy többet szeretne használni, használja az Azure Kubernetes szolgáltatást:
 
 - __Gyors válaszidő__.
 - A telepített szolgáltatás automatikus __skálázása__ .
@@ -30,15 +30,15 @@ Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azur
 
 Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterülethez csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
 
-* Hozza létre az AK-fürtöt a Azure Machine Learning Service SDK, a Machine Learning parancssori felület, a [Azure Portal](https://portal.azure.com) vagy a [munkaterület kezdőlapja (előzetes verzió)](https://ml.azure.com)használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
-* Csatoljon egy meglévő AK-fürtöt a Azure Machine Learning szolgáltatás munkaterületéhez. A fürtök csatlakoztathatók a Azure Machine Learning Service SDK-val, Machine Learning parancssori felülettel vagy a Azure Portalsal.
+* Hozza létre az AK-fürtöt az Azure Machine Learning SDK, a Machine Learning parancssori felület, a [Azure Portal](https://portal.azure.com) vagy a [munkaterület kezdőlapja (előzetes verzió)](https://ml.azure.com)használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
+* Csatoljon egy meglévő AK-fürtöt az Azure Machine Learning-munkaterülethez. A fürtök csatlakoztathatók a Azure Machine Learning SDK-val, Machine Learning parancssori felülettel vagy a Azure Portalsal.
 
 > [!IMPORTANT]
 > A létrehozási vagy a mellékleti folyamat egy egyszeri feladat. Ha egy AK-fürt csatlakozik a munkaterülethez, használhatja azt az üzembe helyezésekhez. Ha már nincs szüksége rá, leválaszthatja vagy törölheti az AK-fürtöt. A detatched vagy a törlés után a továbbiakban nem fogja tudni telepíteni a fürtöt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 - A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ További információ: az [ml computetarget Create Ask](https://docs.microsoft.c
 Ha már rendelkezik AK-fürttel az Azure-előfizetésében, és 1.12-es verzióban van, akkor használhatja a lemezkép üzembe helyezéséhez.
 
 > [!TIP]
-> A meglévő AK-fürt lehet egy Azure-régióban, mint a Azure Machine Learning szolgáltatás munkaterülete.
+> A meglévő AK-fürt lehet egy Azure-régióban, mint a Azure Machine Learning munkaterülete.
 >
 > Ha Azure-Virtual Network használatával szeretné biztonságossá tenni az AK-fürtöt, először létre kell hoznia a virtuális hálózatot. További információ: [biztonságos kísérletezés és következtetés az Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 

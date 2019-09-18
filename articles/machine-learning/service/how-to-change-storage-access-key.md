@@ -1,7 +1,7 @@
 ---
 title: A Storage-fiók hozzáférési kulcsainak módosítása
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan módosíthatja a munkaterület által használt Azure Storage-fiók elérési kulcsait. Azure Machine Learning szolgáltatás egy Azure Storage-fiókot használ az adattároláshoz és a modellekhez. A Storage-fiók elérési kulcsának újragenerálása után frissítenie kell a Azure Machine Learning szolgáltatást az új kulcsok használatára.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan módosíthatja a munkaterület által használt Azure Storage-fiók elérési kulcsait. Azure Machine Learning egy Azure Storage-fiók használatával tárolja az adattípusokat és a modelleket. A Storage-fiók elérési kulcsának újragenerálása után frissítenie kell Azure Machine Learning az új kulcsok használatához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,22 +10,22 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558228"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034953"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
-Megtudhatja, hogyan módosíthatja a Azure Machine Learning szolgáltatás által használt Azure Storage-fiókok hozzáférési kulcsait. Azure Machine Learning használhatja a Storage-fiókokat az adattároláshoz vagy a betanított modellekhez.
+Megtudhatja, hogyan módosíthatja a Azure Machine Learning által használt Azure Storage-fiókok hozzáférési kulcsait. Azure Machine Learning használhatja a Storage-fiókokat az adattároláshoz vagy a betanított modellekhez.
 
 Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fiók hozzáférési kulcsait. A hozzáférési kulcs újralétrehozásakor a Azure Machine Learning frissíteni kell az új kulcs használatához. A Azure Machine Learning a Storage-fiókot is használhatja mind a Model Storage, mind pedig adattárként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
+* Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -35,7 +35,7 @@ Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fi
 
 ## <a name="what-needs-to-be-updated"></a>Mit kell frissíteni
 
-A Storage-fiókokat a Azure Machine Learning szolgáltatás munkaterülete (naplók, modellek, Pillanatképek stb.) és adattárként használhatja. A munkaterület frissítésének folyamata egyetlen Azure CLI-parancs, amely a Storage-kulcs frissítése után futtatható. Az adattárolók frissítésének folyamata nagyobb szerepet játszik, és azt igényli, hogy mely adattárakat használja jelenleg a Storage-fiók, majd regisztrálja újra azokat.
+A Storage-fiókokat a Azure Machine Learning munkaterület (naplók, modellek, Pillanatképek stb.) és adattárként használhatja. A munkaterület frissítésének folyamata egyetlen Azure CLI-parancs, amely a Storage-kulcs frissítése után futtatható. Az adattárolók frissítésének folyamata nagyobb szerepet játszik, és azt igényli, hogy mely adattárakat használja jelenleg a Storage-fiók, majd regisztrálja újra azokat.
 
 > [!IMPORTANT]
 > Frissítse a munkaterületet az Azure CLI-vel és az adattárolókkal egy időben a Python használatával. Csak az egyik vagy a másik frissítése nem elegendő, és hibákhoz vezethet, amíg mindkettő nem frissül.
@@ -74,7 +74,7 @@ Ha létezik egy bejegyzés ahhoz a Storage-fiókhoz, amelyet a hozzáférési ku
 
 ## <a name="update-the-access-key"></a>Az elérési kulcs frissítése
 
-Ha Azure Machine Learning szolgáltatást szeretné frissíteni az új kulcs használatára, kövesse az alábbi lépéseket:
+Az új kulcs használatára Azure Machine Learning frissítéséhez kövesse az alábbi lépéseket:
 
 > [!IMPORTANT]
 > Hajtsa végre az összes lépést, és frissítse a munkaterületet a parancssori felület és az adattárolók használatával a Python használatával. A csak az egyik vagy a másik frissítése hibákhoz vezethet, amíg mindkettő nem frissül.

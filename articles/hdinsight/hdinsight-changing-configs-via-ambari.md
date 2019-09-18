@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7261aad8f42168449f2c892fe8aaaa6667964654
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934578"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076962"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürtök konfigurációjának optimalizálásához
 
@@ -23,7 +23,7 @@ A Ambari webes felhasználói felületének bevezetését lásd: [HDInsight-für
 
 Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` -ba a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg.
 
-![Ambari-irányítópult](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
+![Az Apache Ambari felhasználói irányítópultja megjelenik](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 A Ambari webes felhasználói felülete a gazdagépek, a szolgáltatások, a riasztások, a konfigurációk és a nézetek kezelésére használható. A Ambari nem használható HDInsight-fürt létrehozásához, a szolgáltatások frissítéséhez, a stackek és verziók kezeléséhez, illetve a gazdagépek leszereléséhez, illetve a szolgáltatások a fürthöz való hozzáadásához.
 
@@ -31,25 +31,25 @@ A Ambari webes felhasználói felülete a gazdagépek, a szolgáltatások, a ria
 
 A konfigurációs beállítások segítenek egy adott szolgáltatás finomhangolásában. A szolgáltatás konfigurációs beállításainak módosításához válassza ki a szolgáltatást a **szolgáltatások** oldalsávról (a bal oldalon), majd keresse meg a **konfiguráció** lapot a szolgáltatás részletei lapon.
 
-![Szolgáltatások oldalsávja](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
+![Apache Ambari Services oldalsáv](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>NameNode Java-halom méretének módosítása
 
-A NameNode Java-halom mérete számos tényezőtől függ, például a fürt terhelésével, a fájlok számával és a blokkok számával. Az alapértelmezett 1 GB-os méret a legtöbb fürttel jól működik, bár egyes munkaterhelések esetén több vagy kevesebb memória szükséges. 
+A NameNode Java-halom mérete számos tényezőtől függ, például a fürt terhelésével, a fájlok számával és a blokkok számával. Az alapértelmezett 1 GB-os méret a legtöbb fürttel jól működik, bár egyes munkaterhelések esetén több vagy kevesebb memória szükséges.
 
 Az NameNode Java-halom méretének módosítása:
 
 1. Válassza a **HDFS** elemet a szolgáltatások oldalsávon, és navigáljon a **konfigurációk** lapra.
 
-    ![HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
+    ![Apache Ambari HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. A Java- **NameNode**beállításának megkeresése. A **szűrő** szövegmezővel egy adott beállítást is beírhat, és megkeresheti azt. Válassza a **toll** ikont a beállítás neve mellett.
 
-    ![NameNode Java-halom mérete](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
+    ![Apache Ambari NameNode Java halom mérete](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Írja be az új értéket a szövegmezőbe, majd nyomja le az **ENTER** billentyűt a módosítás mentéséhez.
 
-    ![NameNode Java heap-Size1 szerkesztése](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
+    ![Ambari szerkesztése NameNode Java heap Size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. A NameNode Java-halom mérete 1 GB-ra módosul 2 GB-ról.
 
@@ -57,7 +57,7 @@ Az NameNode Java-halom méretének módosítása:
 
 1. Mentse a módosításokat a konfigurációs képernyő felső részén található zöld **Mentés** gombra kattintva.
 
-    ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    ![Ambari Ambari-mentési konfigurációk](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive optimalizálás
 
@@ -72,11 +72,11 @@ A kaptár két végrehajtó motort biztosít: [Apache Hadoop MapReduce](https://
 
 1. A kaptár- **konfigurációk** lapon írja be a végrehajtó **motor** értéket a szűrő mezőbe.
 
-    ![Keresési végrehajtó motor](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
+    ![Apache Ambari keresési végrehajtó motor](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. Az **optimalizálási** tulajdonság alapértelmezett értéke **TEZ**.
 
-    ![Optimalizálás – TEZ](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
+    ![Optimalizálás – Apache TEZ Engine](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Leképezések hangolása
 
@@ -93,8 +93,8 @@ Ha például négy Mapper-feladatot szeretne beállítani 128 MB adatmérethez, 
 
 1. Mindkét paraméter **33 554 432** bájtra (32 MB) állítható be.
 
-    ![Tez-csoportosítási méretek](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
- 
+    ![Apache Ambari TEZ-csoportosítási méretek](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
+
 Ezek a módosítások a kiszolgálón lévő összes TEZ-feladatot érintik. Az optimális eredmény eléréséhez válassza a megfelelő paraméterek értékét.
 
 ### <a name="tune-reducers"></a>Szűkítők hangolása
@@ -109,11 +109,11 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter határozza meg a feldolgozha
 
 1. A paraméter módosításához navigáljon a struktúra- **konfigurációk** lapra, és keresse meg a beállítások lapon található, redukáló paraméterrel rendelkező **adatmennyiséget** .
 
-    ![Adatmennyiség csökkentése](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
- 
+    ![Apache Ambari-adatmennyiség csökkentése](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
+
 1. Válassza a **Szerkesztés** lehetőséget az érték 128 MB-ra (134 217 728 bájt) való módosításához, majd nyomja le az **ENTER** billentyűt a mentéshez.
 
-    ![Adatmennyiség csökkentése – szerkesztett](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
+    ![Ambari-adatmennyiség csökkentése – szerkesztett](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     A bemeneti méret 1 024 MB, a 128 MB adatmennyiség pedig a redukáló értéknél 8 szűkítő (1024/128).
 
@@ -123,22 +123,21 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter határozza meg a feldolgozha
 
 A kaptár-lekérdezések végrehajtása egy vagy több szakaszban történik. Ha a független szakaszok párhuzamosan is futtathatók, a lekérdezési teljesítményt is növeli.
 
-1.  A párhuzamos lekérdezés végrehajtásának engedélyezéséhez keresse meg a struktúra **konfigurációja** fület, és `hive.exec.parallel` keresse meg a tulajdonságot. Az alapértelmezett értéke FALSE (hamis). Módosítsa az értéket True értékre, majd nyomja le az **ENTER** billentyűt az érték mentéséhez.
- 
-1.  A párhuzamosan futtatandó feladatok számának korlátozásához módosítsa a `hive.exec.parallel.thread.number` tulajdonságot. Az alapértelmezett érték 8.
+1. A párhuzamos lekérdezés végrehajtásának engedélyezéséhez keresse meg a struktúra **konfigurációja** fület, és `hive.exec.parallel` keresse meg a tulajdonságot. Az alapértelmezett értéke FALSE (hamis). Módosítsa az értéket True értékre, majd nyomja le az **ENTER** billentyűt az érték mentéséhez.
 
-    ![A kaptár exec párhuzamos](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
+1. A párhuzamosan futtatandó feladatok számának korlátozásához módosítsa a `hive.exec.parallel.thread.number` tulajdonságot. Az alapértelmezett érték 8.
 
+    ![Apache Hive exec párhuzamos megjelenítés](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 ### <a name="enable-vectorization"></a>Vektorizációt engedélyezése
 
 A struktúra soronként dolgozza fel az adatsort. A vektorizációt a Kaptárat úgy irányítja át, hogy az adatfeldolgozást egy sor helyett 1 024 sor formájában dolgozza fel. A vektorizációt csak az ork fájlformátumra alkalmazható.
 
 1. A vektoros lekérdezés végrehajtásának engedélyezéséhez navigáljon a kaptár **konfigurációk** lapra, és keresse meg a `hive.vectorized.execution.enabled` paramétert. Az alapértelmezett érték a kaptár 0.13.0 vagy újabb verziója esetén igaz.
- 
+
 1. A lekérdezés csökkentése érdekében a vektoros végrehajtás engedélyezéséhez állítsa igaz értékre a `hive.vectorized.execution.reduce.enabled` paramétert. Az alapértelmezett értéke FALSE (hamis).
 
-    ![Struktúra – vektoros végrehajtás](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
+    ![Vektoros végrehajtás Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
 ### <a name="enable-cost-based-optimization-cbo"></a>Cost-alapú optimalizálás engedélyezése (CBO)
 
@@ -146,7 +145,7 @@ Alapértelmezés szerint a kaptár egy olyan szabályt követ, amely egy optimá
 
 A CBO engedélyezéséhez lépjen a struktúra- **konfigurációk** lapra, keresse meg a `parameter hive.cbo.enable`kifejezést, majd váltson a bekapcsolás **gombra.**
 
-![CBO config](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
+![HDInsight-alapú optimalizáló](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 A következő további konfigurációs paraméterek fokozzák a kaptár-lekérdezések teljesítményét, ha a CBO engedélyezve van:
 
@@ -154,13 +153,13 @@ A következő további konfigurációs paraméterek fokozzák a kaptár-lekérde
 
     Ha igaz értékre van állítva, a struktúra a saját metaadattár tárolt statisztikát használja az `count(*)`egyszerű lekérdezések megválaszolásához, például:.
 
-    ![CBO statisztikái](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
+    ![Számítási lekérdezés Apache Hive statisztikák használatával](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
 
 * `hive.stats.fetch.column.stats`
 
     Az oszlop statisztikái akkor jönnek létre, ha a CBO engedélyezve van. A kaptár a metaadattár tárolt oszlopok statisztikáit használja a lekérdezések optimalizálására. Az oszlopok statisztikáinak beolvasása az egyes oszlopoknál tovább tart, ha az oszlopok száma magas. Ha false értékre van állítva, akkor ez a beállítás letiltja az oszlopok statisztikáinak beolvasását a metaadattár.
 
-    ![A kaptárak statisztikáinak beállítása oszlop statisztikái](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
+    ![Apache Hive statisztika-készlet oszlopainak statisztikája](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
 
 * `hive.stats.fetch.partition.stats`
 
@@ -206,7 +205,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     e. Kattintson a **Hozzáadás**lehetőségre.
 
-    ![Struktúra egyéni tulajdonsága](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    ![Egyéni tulajdonság hozzáadása Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
     Ezzel tömöríti a közbenső fájlt a Snappy Compression használatával. A tulajdonság hozzáadása után az megjelenik az egyéni struktúra – hely ablaktáblán.
 
@@ -221,7 +220,7 @@ A struktúra utolsó kimenete is tömöríthető.
 
 1. A kimeneti tömörítési kodek kiválasztásához adja `mapred.output.compression.codec` hozzá az egyéni tulajdonságot az egyéni struktúra – hely panelhez az előző szakasz 3. lépésében leírtak szerint.
 
-    ![Struktúra egyéni tulajdonsága](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
+    ![Apache Hive egyéni tulajdonság add2](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
 ### <a name="enable-speculative-execution"></a>Spekulatív végrehajtás engedélyezése
 
@@ -240,9 +239,9 @@ A struktúra lehetővé teszi, hogy dinamikus partíciókat hozzon létre, amiko
 1. Ahhoz, hogy a struktúra dinamikus partíciókat `hive.exec.dynamic.partition` végezzen, a paraméter értékének igaznak kell lennie (az alapértelmezett beállítás).
 
 1. Módosítsa a dinamikus partíciós módot a *szigorú*értékre. Szigorú módban legalább egy partíciónak statikusnak kell lennie. Ez megakadályozza a lekérdezéseket a WHERE záradékban lévő partíciós szűrő nélkül, azaz az összes partíciót ellenőrző lekérdezések *szigorú* meggátolása. Navigáljon a kaptár- **konfigurációk** lapra, és állítsa a `hive.exec.dynamic.partition.mode` **szigorú**értékre. Az alapértelmezett érték nem **szigorú**.
- 
+
 1. A létrehozandó dinamikus partíciók számának korlátozásához módosítsa a `hive.exec.max.dynamic.partitions` paramétert. Az alapértelmezett érték a 5000.
- 
+
 1. A dinamikus partíciók teljes számának korlátozásához módosítsa `hive.exec.max.dynamic.partitions.pernode`a csomópontot. Az alapértelmezett érték a 2000.
 
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
@@ -251,7 +250,7 @@ A helyi mód lehetővé teszi, hogy a kaptár a feladatok összes feladatát egy
 
 A helyi mód engedélyezéséhez adja hozzá `hive.exec.mode.local.auto` a (z) paramétert az egyéni struktúra – hely panelhez a [köztes tömörítés engedélyezése](#enable-intermediate-compression) szakasz 3. lépésében leírtak szerint.
 
-![Kaptár exec mód helyi automatikus](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
+![Apache Hive exec mód helyi automatikus](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
 ### <a name="set-single-mapreduce-multigroup-by"></a>Egyetlen MapReduce többcsoportos beállítása
 
@@ -269,7 +268,7 @@ A következő szakaszok a kaptárral kapcsolatos további optimalizálásokat is
 
 A kaptárban az alapértelmezett illesztési típus egy *shuffle illesztés*. A kaptárban a speciális leképezések beolvassák a bemenetet, és egy összekapcsolási kulcs/érték párokat bocsátanak ki egy köztes fájlba. A Hadoop rendezi és egyesíti ezeket a párokat egy véletlenszerű szakaszban. Ez a véletlenszerű szakasz költséges. Ha kiválasztja a megfelelő illesztést az adatai alapján, jelentősen növelheti a teljesítményt.
 
-| Csatlakozás típusa | Mikor: | Hogyan | Struktúra beállításai | Megjegyzések |
+| Csatlakozás típusa | mikor | Hogyan | Struktúra beállításai | Megjegyzések |
 | -- | -- | -- | -- | -- |
 | Összekeverhető illesztés | <ul><li>Alapértelmezett választás</li><li>Mindig működik</li></ul> | <ul><li>Olvasás az egyik táblázat részéből</li><li>Az illesztési kulcshoz tartozó gyűjtők és rendezések</li><li>Egy gyűjtőt küld minden egyes csökkentéshez</li><li>A csatlakozás a csökkentés oldalon történik</li></ul> | Nincs szükség jelentős kaptár-beállításra | Minden alkalommal működik |
 | Csatlakoztatás leképezése | <ul><li>Egy tábla fér el a memóriában</li></ul> | <ul><li>Kisméretű tábla beolvasása a memória kivonatának táblájába</li><li>Streamek a nagyméretű fájl részeként</li><li>Az egyes rekordok összekapcsolása a kivonatoló táblából</li><li>Egyedül a Mapper csatlakozik</li></ul> | `hive.auto.confvert.join=true` | Nagyon gyors, de korlátozott |
@@ -297,8 +296,8 @@ Az [Apache Pig](https://pig.apache.org/) tulajdonságai módosíthatók a AMBARI
 
 1. Az új érték mentéséhez kattintson a **Save (Mentés** ) gombra az ablak jobb felső részén. Bizonyos tulajdonságok esetében előfordulhat, hogy a szolgáltatás újraindítása szükséges.
 
-    ![Speciális Pig – tulajdonságok](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
- 
+    ![Speciális Apache Pig-tulajdonságok](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
+
 > [!NOTE]  
 > Minden munkamenet-szintű beállítás felülbírálja a `pig.properties` fájl tulajdonságának értékét.
 
@@ -310,7 +309,6 @@ A Pig-parancsfájlok végrehajtásához két végrehajtó motor érhető el: Map
 
 1. Az alapértelmezett érték a **MapReduce**. Módosítsa a **TEZ**.
 
-
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
 
 A Kaptárhoz hasonlóan a helyi mód is a feladatok gyorsabb, viszonylag kis mennyiségű adattal való felgyorsítására szolgál.
@@ -318,7 +316,6 @@ A Kaptárhoz hasonlóan a helyi mód is a feladatok gyorsabb, viszonylag kis men
 1. A helyi mód engedélyezéséhez állítsa a `pig.auto.local.enabled` **true (igaz**) értéket. Az alapértelmezett értéke FALSE (hamis).
 
 1. A `pig.auto.local.input.maxbytes` tulajdonság értéknél kisebb bemeneti adatmérettel rendelkező feladatok kisebb feladatoknak tekintendők. Az alapértelmezett érték 1 GB.
-
 
 ### <a name="copy-user-jar-cache"></a>Felhasználói jar-gyorsítótár másolása
 
@@ -328,7 +325,6 @@ A Pig a UDF által igényelt JAR-fájlokat egy elosztott gyorsítótárba másol
 
 1. A gyorsítótárazott tégelyek alapelérési útjának megadásához állítsa `pig.user.cache.location` az alap elérési utat. A mező alapértelmezett értéke: `/tmp`.
 
-
 ### <a name="optimize-performance-with-memory-settings"></a>A teljesítmény optimalizálása a memória beállításaival
 
 A következő memória-beállítások segíthetnek a Pig-parancsfájlok teljesítményének optimalizálásában.
@@ -336,7 +332,6 @@ A következő memória-beállítások segíthetnek a Pig-parancsfájlok teljesí
 * `pig.cachedbag.memusage`: A táska számára lefoglalt memória mennyisége. A táska a rekordok gyűjteménye. A rekord mezők rendezett halmaza, és a mező egy adat. Ha a zsákban lévő adatmennyiség meghaladja a lefoglalt memóriát, a lemezre kerül. Az alapértelmezett érték 0,2, amely a rendelkezésre álló memória 20 százalékát jelöli. Ez a memória az alkalmazás összes csomagjai között meg van osztva.
 
 * `pig.spill.size.threshold`: A rendszer a kiömlött méretnél nagyobb méretű, bájtban kifejezett táskákat lemezre önti. Az alapértelmezett érték 5 MB.
-
 
 ### <a name="compress-temporary-files"></a>Ideiglenes fájlok tömörítése
 
@@ -350,16 +345,13 @@ A Pig ideiglenes fájlokat hoz létre a feladatok végrehajtása során. Az idei
 
 Ha ez a beállítás engedélyezve van, a kis méretű fájlok kevesebb leképezési feladathoz vannak egyesítve. Ez javítja a sok kis fájllal rendelkező feladatok hatékonyságát. Az engedélyezéshez állítsa `pig.noSplitCombination` igaz értékre. Az alapértelmezett értéke FALSE (hamis).
 
-
 ### <a name="tune-mappers"></a>Leképezések hangolása
 
 A leképezések számát a tulajdonság `pig.maxCombinedSplitSize`módosításával szabályozhatja. Ezzel a beállítással adható meg, hogy a rendszer hogyan dolgozza fel az adatok méretét egyetlen térképes feladattal. Az alapértelmezett érték a fájlrendszer alapértelmezett blokkjának mérete. Az érték növelése a Mapper-feladatok számának csökkenését eredményezi.
 
-
 ### <a name="tune-reducers"></a>Szűkítők hangolása
 
 A rendszer a paraméter `pig.exec.reducers.bytes.per.reducer`alapján számítja ki a szűkítők számát. A paraméter a redukáló által feldolgozott bájtok számát adja meg, alapértelmezés szerint 1 GB. A szűkítők maximális számának korlátozásához állítsa a `pig.exec.reducers.max` tulajdonságot a 999 alapértelmezett értékre.
-
 
 ## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Apache HBase-optimalizálás a Ambari webes felhasználói felületén
 
@@ -373,8 +365,7 @@ A HBase halom mérete határozza meg a *régiók* *és főkiszolgálók* által 
 
 1. Módosítsa az alapértelmezett értéket 5 000 MB-ra.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
-
+    ![Apache Ambari HBase memória heapsize](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 ### <a name="optimize-read-heavy-workloads"></a>Olvasási és nagy terhelések optimalizálása
 
@@ -386,10 +377,9 @@ A blokk gyorsítótára az olvasási gyorsítótár. A méretet a `hfile.block.c
 
 1. A paraméter módosításához navigáljon a **Beállítások** lapra a HBase **konfigurációk** lapon, majd keresse meg az **olvasási pufferek számára lefoglalt RegionServer%** -át.
 
-    ![HBase-blokk gyorsítótárának mérete](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
- 
-1. Az érték módosításához kattintson a **Szerkesztés** ikonra.
+    ![Apache HBase-gyorsítótár mérete](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
 
+1. Az érték módosításához kattintson a **Szerkesztés** ikonra.
 
 #### <a name="memstore-size"></a>Memstore mérete
 
@@ -401,30 +391,26 @@ A rendszer az összes módosítást a *Memstore*nevezett memória-pufferben tár
 
 A véletlenszerű olvasások optimalizálásához csökkentheti a Memstore alsó és felső korlátját.
 
-
 #### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>A lemezről való vizsgálatkor beolvasott sorok száma
 
 A `hbase.client.scanner.caching` beállítás határozza meg a lemezről beolvasott sorok számát `next` , ha a metódust egy képolvasó hívja meg.  Az alapértelmezett érték 100. Minél nagyobb a szám, annál kevesebb az ügyfél és a régió-kiszolgáló közötti távoli hívások száma, ami gyorsabb vizsgálatot eredményez. Ez azonban növeli a memória terhelését is az ügyfélen.
 
-![HBase beolvasott sorok száma](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
+![Apache HBase beolvasott sorok száma](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
 > Ne állítsa be úgy az értéket, hogy a képolvasó következő metódusának hívása közötti idő nagyobb legyen, mint a képolvasó időkorlátja. A képolvasó időtúllépési időtartamát a `hbase.regionserver.lease.period` tulajdonság határozza meg.
-
 
 ### <a name="optimize-write-heavy-workloads"></a>Írási-nagy számítási feladatok optimalizálása
 
 A következő konfigurációk fontosak a nagy mennyiségű számítási feladatok teljesítményének javításához.
 
-
 #### <a name="maximum-region-file-size"></a>A régió maximális fájlmérete
 
 A HBase belső fájlformátumban tárolja az adattárolást, amelynek neve *HFile*. A tulajdonság `hbase.hregion.max.filesize` a régió egyetlen HFile méretét határozza meg.  Ha egy régió összes HFiles összege meghaladja ezt a beállítást, a régió két régióra oszlik.
- 
-![HBase HRegion max. filesize](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+
+![Apache HBase HRegion max. filesize](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
 Minél nagyobb a régió fájlmérete, annál kisebb a felosztások száma. Megnövelheti a fájlméretet úgy, hogy meghatározza a maximális írási teljesítményt eredményező értéket.
-
 
 #### <a name="avoid-update-blocking"></a>A frissítés blokkolásának elkerülése
 
@@ -436,20 +422,17 @@ Minél nagyobb a régió fájlmérete, annál kisebb a felosztások száma. Megn
 
     A kiürítési méret és a szorzó alapértelmezett értékeivel a frissítések le lesznek tiltva, ha a Memstore 128 * 4 = 512 MB méretű. A frissítési blokkolások számának csökkentéséhez növelje a értékét `hbase.hregion.memstore.block.multiplier`.
 
-![HBase-régió blokk szorzója](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
-
+![Apache HBase region Block szorzó](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 ### <a name="define-memstore-size"></a>Memstore méretének meghatározása
 
 A Memstore méretét a és `hbase.regionserver.global.memstore.UpperLimit` `hbase.regionserver.global.memstore.LowerLimit` a paraméterek határozzák meg. Ha ezeket az értékeket úgy állítja be, hogy azok egyenlőek legyenek az írások során (ami még gyakoribb kiürítést is eredményez), és növeli az írási teljesítményt.
 
-
 ### <a name="set-memstore-local-allocation-buffer"></a>Memstore helyi foglalási pufferének beállítása
 
 A Memstore helyi kiosztási puffer használatát a tulajdonság `hbase.hregion.memstore.mslab.enabled`határozza meg. Ha engedélyezve van (igaz), ez megakadályozza a halom töredezettségét a nehéz írási művelet során. Az alapértelmezett érték: true.
- 
-![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 ## <a name="next-steps"></a>További lépések
 

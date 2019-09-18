@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e4f79a1978b77c2b744d523c8f42f1497d63007
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918367"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037293"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark strukturált adatfolyam használata Apache Kafka és Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz
 Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is létrehozhatók, könnyebben Azure Resource Manager sablont használni. Az alábbi lépéseket követve üzembe helyezhet egy Azure-beli virtuális hálózatot, Kafka-t és Spark-fürtöt az Azure-előfizetésében.
 
 1. Az alábbi gombbal jelentkezzen be az Azure szolgáltatásba, és nyissa meg a sablont az Azure Portalon.
-    
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
@@ -66,11 +66,11 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
      > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. Az alábbi információk segítségével töltheti fel a bejegyzéseket az **Egyéni telepítés** szakaszban:
-   
-    ![HDInsight egyéni üzembe helyezése](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+
+    ![HDInsight egyéni telepítési értékek](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
     * **Előfizetés**: Válassza ki az Azure-előfizetését.
-   
+
     * **Erőforráscsoport**: Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt. Ez a csoport tartalmazza a HDInsight-fürtöt.
 
     * **Hely**: Válasszon ki egy földrajzilag közel lévő helyet.

@@ -1,10 +1,10 @@
 ---
-title: Ismételt üzembe helyezése Linux rendszerű virtuális gépek az Azure-ban |} A Microsoft Docs
-description: Hogyan ismételt üzembe helyezése Linux rendszerű virtuális gépek az Azure-ban az SSH-kapcsolati problémák elhárításához.
+title: Linux Virtual Machines újbóli üzembe helyezése az Azure-ban | Microsoft Docs
+description: Linux rendszerű virtuális gépek újratelepítése az Azure-ban az SSH-kapcsolódási problémák enyhítése érdekében.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: e9530dd6-f5b0-4160-b36b-d75151d99eb7
 ms.service: virtual-machines-linux
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cffed7949eff63484c84f385510baa8cd4244958
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d8096a14bf2abc0b06b7ab7c3d340a313b1cd24c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710270"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057305"
 ---
-# <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Ismételt üzembe helyezése Linux rendszerű virtuális gépet az új Azure csomópontra
-Ha SSH hibaelhárítási nehézségek között, vagy segítségére lehetnek az alkalmazás elérését egy Linux rendszerű virtuális gép (VM) az Azure-ban, a virtuális gép újratelepítése. Ha egy virtuális gép újbóli telepítése, a virtuális gép áthelyezése egy másik csomópontra az Azure infrastruktúráján belül, és majd használja újra. A konfigurációs beállításokat és a kapcsolódó erőforrásokat megmaradnak. Ez a cikk bemutatja, hogyan újratelepíteni a virtuális gép Azure parancssori felület vagy az Azure portal használatával.
+# <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Linuxos virtuális gép újratelepítése új Azure-csomópontra
+Ha problémákba ütközik az SSH-val vagy az Azure-beli linuxos virtuális géppel való alkalmazással kapcsolatos problémák elhárítása során, akkor a virtuális gép újbóli üzembe helyezése segíthet. Egy virtuális gép újratelepítésekor a virtuális gépet az Azure-infrastruktúra egy új csomópontjára helyezi át, majd visszakapcsolja azt. A rendszer megőrzi a konfigurációs beállításokat és a kapcsolódó erőforrásokat. Ez a cikk bemutatja, hogyan telepíthet újra egy virtuális gépet az Azure CLI vagy a Azure Portal használatával.
 
 > [!NOTE]
-> Miután egy virtuális gép újbóli telepítése, az ideiglenes lemez elvesztését, és dinamikus, virtuális hálózati adapterhez társított IP-címek frissülnek. 
+> A virtuális gép újbóli üzembe helyezése után az ideiglenes lemez elvész, és a rendszer frissíti a virtuális hálózati adapterhez társított dinamikus IP-címeket. 
 
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index).
+Telepítse a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és jelentkezzen be az Azure-fiókjába az [az login](/cli/azure/reference-index)használatával.
 
-Ismételt üzembe helyezése virtuális Gépen való [az vm redeploy](/cli/azure/vm). Az alábbi példa ismét üzembe helyezi a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
+Telepítse újra a virtuális gépet az [az VM redeploy](/cli/azure/vm)paranccsal. A következő példa újratelepíti a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoport-csoportba:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
-## <a name="use-the-azure-classic-cli"></a>A klasszikus Azure parancssori felületének használata
-Telepítse a [legújabb Azure klasszikus parancssori felület](../../cli-install-nodejs.md) , és jelentkezzen be az Azure-fiókjával. Győződjön meg arról, hogy biztosan megfeleljen az erőforrás-kezelő módban (`azure config mode arm`).
+## <a name="use-the-azure-classic-cli"></a>A klasszikus Azure parancssori felület használata
+Telepítse a [legújabb Azure-beli klasszikus CLI](../../cli-install-nodejs.md) -t, és jelentkezzen be az Azure-fiókjába. Győződjön meg arról, hogy erőforrás-kezelő módban (`azure config mode arm`) van.
 
-Az alábbi példa ismét üzembe helyezi a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
+A következő példa újratelepíti a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoport-csoportba:
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
@@ -48,6 +48,6 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>További lépések
-Ha a virtuális Géphez való csatlakozással kapcsolatos problémákat tapasztal, találhat segítséget [SSH-kapcsolatok hibaelhárításának](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [részletes hibaelhárítási lépések az SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ha a virtuális Gépen futó alkalmazásokhoz nem elérhető, is olvashatja [kapcsolatos hibák elhárítása alkalmazás](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, az [SSH-kapcsolatok hibaelhárításával](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és az [SSH-hibaelhárítás részletes lépéseivel](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kapcsolatban talál konkrét segítséget. Ha nem fér hozzá a virtuális gépen futó alkalmazáshoz, az [alkalmazások hibaelhárításával kapcsolatos problémákat](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is elolvashatja.
 
 

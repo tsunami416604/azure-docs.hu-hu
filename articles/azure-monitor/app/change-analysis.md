@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849173"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033388"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -87,57 +87,39 @@ Azure Monitor a Change Analysis jelenleg az önkiszolgáló diagnosztizálása �
 
 ### <a name="enable-change-analysis-at-scale"></a>Módosítási elemzés engedélyezése a skálán
 
-Ha az előfizetése számos webalkalmazást tartalmaz, a webalkalmazás szintjén a szolgáltatás engedélyezése nem hatékony. Ebben az esetben kövesse az alábbi alternatív utasításokat.
+Ha az előfizetése számos webalkalmazást tartalmaz, a webalkalmazás szintjén a szolgáltatás engedélyezése nem hatékony. Futtassa az alábbi parancsfájlt az előfizetésben lévő összes webalkalmazás engedélyezéséhez.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Regisztrálja a Change Analysis erőforrás-szolgáltatót az előfizetéséhez
+Előfeltételek:
+* PowerShell az Module. Kövesse [az Azure PowerShell modul telepítésének](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) utasításait
 
-1. Regisztrálja a Change Analysis szolgáltatás jelzőjét (előzetes verzió). Mivel a funkció jelzője előzetes verzióban érhető el, regisztrálnia kell, hogy láthatóvá tegye az előfizetését:
+Futtassa a következő parancsfájlt:
 
-   1. Nyissa meg az [Azure Cloud Shellt](https://azure.microsoft.com/features/cloud-shell/).
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![Képernyőkép a változásról Cloud Shell](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. Módosítsa a rendszerhéj típusát a **powershellre**.
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![Képernyőkép a változásról Cloud Shell](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. Futtassa az alábbi PowerShell-parancsot:
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. Regisztrálja a Change Analysis erőforrás-szolgáltatót az előfizetéshez.
+```
 
-   - Lépjen azelőfizetések elemre, és válassza ki azt az előfizetést, amelyet engedélyezni szeretne a Change Service-ben. Ezután válassza az erőforrás-szolgáltatók elemet:
 
-        ![A Change Analysis erőforrás-szolgáltató regisztrálását bemutató képernyőkép](./media/change-analysis/register-rp.png)
-
-       - Válassza a **Microsoft. ChangeAnalysis**elemet. Ezután a lap tetején válassza a **regisztráció**lehetőséget.
-
-       - Az erőforrás-szolgáltató engedélyezése után a webalkalmazásban beállíthat egy rejtett címkét a módosítások észleléséhez a telepítés szintjén. Rejtett címke beállításához kövesse a **nem sikerült beolvasni az elemzési adatok módosítása**című szakasz utasításait.
-
-   - Azt is megteheti, hogy egy PowerShell-parancsfájl használatával regisztrálja az erőforrás-szolgáltatót:
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        A következő parancs futtatásával a PowerShell használatával egy webalkalmazás rejtett címkéjét állíthatja be:
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > A rejtett címke hozzáadása után előfordulhat, hogy a módosítások megkezdése előtt akár 4 órát is várnia kell. Az eredmények késleltetve lettek, mert a Change Analysis csak 4 óránként vizsgálja a webalkalmazást. A 4 órás ütemterv korlátozza a vizsgálat teljesítményére gyakorolt hatást.
 
 ## <a name="next-steps"></a>További lépések
 

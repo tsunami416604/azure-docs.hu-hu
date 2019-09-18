@@ -3,18 +3,18 @@ title: A VPN átviteli sebességének ellenőrzése egy Microsoft Azure Virtual 
 description: A dokumentum célja, hogy segítséget nyújtson a felhasználóknak a helyszíni erőforrásaik által az Azure-beli virtuális gépek felé irányuló hálózati teljesítmény ellenőrzésében.
 services: vpn-gateway
 author: cherylmc
-manager: jasmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 1531bbe97c842fbae2ffe7df41f19a3a7be689d5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228341"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058797"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>A VPN átviteli sebességének ellenőrzése virtuális hálózaton
 

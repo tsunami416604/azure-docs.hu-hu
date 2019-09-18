@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848077"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063397"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: Felhasználói folyamatok létrehozása a Azure Active Directory B2Cban
 
-Előfordulhat, hogy az alkalmazásaiban [felhasználói folyamatok](active-directory-b2c-reference-policies.md) vannak, amelyek lehetővé teszik a felhasználók számára, hogy regisztráljanak, jelentkezzenek be vagy kezelhetik a profiljaikat. Több különböző típusú felhasználói folyamat is létrehozható a Azure Active Directory (Azure AD) B2C-bérlőben, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok az alkalmazások között újra felhasználhatók.
+Előfordulhat, hogy az alkalmazásaiban [felhasználói folyamatok](active-directory-b2c-reference-policies.md) vannak, amelyek lehetővé teszik a felhasználók számára, hogy regisztráljanak, jelentkezzenek be vagy kezelhetik a profiljaikat. A Azure Active Directory B2C (Azure AD B2C) bérlőben több különböző típusú felhasználói folyamatot is létrehozhat, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok az alkalmazások között újra felhasználhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -41,7 +41,7 @@ Regisztrálja a létrehozni kívánt felhasználói folyamatok részét képező
 A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigurációval kezeli a regisztrálási és a bejelentkezési élményt. Az alkalmazás felhasználói a környezettől függően a megfelelő útvonalat vezetik le.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 
     ![Címtár-és előfizetés-szűrő a B2C-bérlő kiválasztásával](./media/tutorial-create-user-flows/switch-directories.PNG)
 

@@ -1,10 +1,10 @@
 ---
-title: Szabályozhatja az Azure Virtual Network - CLI - klasszikus Útválasztás |} A Microsoft Docs
-description: Ismerje meg, hogyan vezérelheti az útválasztást a virtuális hálózatok a klasszikus üzemi modellben az Azure CLI használatával
+title: Útválasztás vezérlése Azure-Virtual Network – CLI-klasszikus | Microsoft Docs
+description: Ismerje meg, hogyan vezérelheti az útválasztást a virtuális hálózatok az Azure CLI használatával a klasszikus üzemi modellben
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1193145b315175e6394db4caf93ab2e76a942ed9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743921"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058788"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Vezérelheti az útválasztást és a virtuális készülékek (klasszikus) használatával az Azure parancssori felület használata
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Az Útválasztás és a virtuális készülékek használata (klasszikus) az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
@@ -34,18 +34,18 @@ ms.locfileid: "60743921"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [vezérelheti az útválasztást és a virtuális készülékek használata a Resource Manager-alapú üzemi modellben](tutorial-create-route-table-cli.md).
+Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. [A Resource Manager-alapú üzemi modellben a virtuális berendezések útválasztását és használatát is szabályozhatja](tutorial-create-route-table-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-A minta Azure CLI-parancsokat az alábbi számíthat egy egyszerű környezetet állítunk már létrehozta a fenti forgatókönyv alapján. Ha szeretné a parancsokat a jelen dokumentum megjelenített, hozzon létre a környezet látható [virtuális hálózat létrehozása (klasszikus) az Azure CLI-vel](virtual-networks-create-vnet-classic-cli.md).
+Az alábbi minta Azure CLI-parancsok a fenti forgatókönyv alapján már létrehozott egyszerű környezetet várnak. Ha a dokumentumban megjelenő parancsokat szeretné futtatni, hozza létre a [VNet (klasszikus) létrehozása az Azure CLI használatával](virtual-networks-create-vnet-classic-cli.md)című részében bemutatott környezetet.
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Az udr-t az előtér-alhálózat létrehozása
-Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az előtérbeli alhálózat létrehozásához kövesse az alábbi lépéseket.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Az előtér-alhálózat UDR létrehozása
+A fenti forgatókönyv alapján az előtér-alhálózathoz szükséges útválasztási táblázat és útvonal létrehozásához kövesse az alábbi lépéseket.
 
-1. Futtassa a következő parancsot a klasszikus módra váltani:
+1. A klasszikus módra váltáshoz futtassa a következő parancsot:
 
     ```azurecli
     azure config mode asm
@@ -55,7 +55,7 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
 
         info:    New mode is asm
 
-2. A következő paranccsal hozzon létre egy útválasztási táblázatot az előtér-alhálózat:
+2. A következő parancs futtatásával hozzon létre egy útválasztási táblázatot az előtér-alhálózathoz:
 
     ```azurecli
     azure network route-table create -n UDR-FrontEnd -l uswest
@@ -72,9 +72,9 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-l (vagy --location)** . Az Azure régióban, ahol létrejön az új NSG-t. A mi esetünkben *westus*.
-   * **-n (vagy --name)** . Az új NSG neve. A mi esetünkben *NSG-FrontEnd*.
-3. Futtassa a következő parancsot az útvonaltáblában a háttérbeli alhálózat (192.168.2.0/24) felé irányuló összes forgalmat útvonal létrehozása a **FW1** VM (192.168.0.4):
+   * **-l (vagy --location)** . Az Azure-régió, ahol az új NSG létre lesz hozva. Ebben az esetben a *westus*.
+   * **-n (vagy --name)** . Az új NSG neve. Ebben az esetben a *NSG-FrontEnd*.
+3. A következő parancs futtatásával hozzon létre egy útvonalat az útválasztási táblában a háttér-alhálózatra (192.168.2.0/24) irányuló összes forgalom küldéséhez a **FW1** virtuális géphez (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
@@ -89,11 +89,11 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-r (vagy--route-table-neve)** . Az útvonaltábla, ahova a rendszer hozzáadja az útvonal neve. A mi esetünkben *UDR-FrontEnd*.
-   * **-a (vagy --address-prefix)** . Az alhálózat, amelyben a csomagok felé irányuló címelőtag. A mi esetünkben *192.168.2.0/24*.
-   * **-t (vagy--next-hop-type)** . Objektum forgalom típusának megfelelő küld. Lehetséges értékek a következők *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, vagy *None*.
-   * **-p (vagy--next-hop-ip-address**). Következő ugrás IP-címét. A mi esetünkben *192.168.0.4*.
-4. A következő parancsot a létrehozott útválasztási táblázat hozzárendelése a **előtérbeli** alhálózat:
+   * **-r (vagy--Route-Table-Name)** . Annak az útválasztási táblának a neve, ahová az útvonalat hozzá kívánja adni. Ebben az esetben a *UDR-FrontEnd*.
+   * **-a (vagy --address-prefix)** . Annak az alhálózatnak a címe, ahol a csomagokat szánják. Ebben az esetben a *192.168.2.0/24*.
+   * **-t (vagy--Next-hop-Type)** . A rendszer elküldi az objektum adatforgalmának típusát. A lehetséges értékek a következők: *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*vagy *none*.
+   * **-p (vagy--Next-hop-IP-cím**). A következő ugrás IP-címe. Ebben az esetben a *192.168.0.4*.
+4. Futtassa a következő parancsot az előtér-alhálózattal létrehozott útválasztási táblázat hozzárendeléséhez:
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -114,25 +114,25 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-t (vagy--vnet-name)** . A VNet neve, ahol az alhálózaton-e. A mi esetünkben *TestVNet*.
-   * **-n (vagy--subnet-name**. Az útválasztási táblázat hozzáadódik az alhálózat neve. A mi esetünkben *FrontEnd*.
+   * **-t (vagy--vnet-Name)** . Azon VNet neve, ahol az alhálózat található. A mi esetünkben *TestVNet*.
+   * **-n (vagy--subnet-Name**. Annak az alhálózatnak a neve, amelyhez az útválasztási tábla hozzá lesz adva. A mi esetünkben *FrontEnd*.
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Az udr-t, a háttérbeli alhálózat létrehozása
-Az útvonaltábla és útvonal szükséges a háttérbeli alhálózat forgatókönyv alapján létrehozásához hajtsa végre az alábbi lépéseket:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>A UDR létrehozása a háttérbeli alhálózathoz
+A forgatókönyv alapján a háttérbeli alhálózathoz szükséges útválasztási táblázat és útvonal létrehozásához hajtsa végre a következő lépéseket:
 
-1. A következő paranccsal hozzon létre egy útválasztási táblázatot, a háttérbeli alhálózat:
+1. Futtassa a következő parancsot egy útválasztási táblázat létrehozásához a háttérbeli alhálózathoz:
 
     ```azurecli
     azure network route-table create -n UDR-BackEnd -l uswest
     ```
 
-2. Futtassa a következő parancsot az útválasztási táblázatban az előtérbeli alhálózat (192.168.1.0/24) felé irányuló összes forgalmat útvonal létrehozása a **FW1** VM (192.168.0.4):
+2. A következő parancs futtatásával hozzon létre egy útvonalat az útválasztási táblában az előtér-alhálózatra (192.168.1.0/24) irányuló összes forgalom küldéséhez a **FW1** virtuális géphez (192.168.0.4):
 
     ```azurecli
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
     ```
 
-3. Futtassa a következő parancsot az útvonaltáblában a társítása a **háttérrendszer** alhálózat:
+3. A következő parancs futtatásával társítsa az útválasztási táblázatot a **háttér** -alhálózathoz:
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd

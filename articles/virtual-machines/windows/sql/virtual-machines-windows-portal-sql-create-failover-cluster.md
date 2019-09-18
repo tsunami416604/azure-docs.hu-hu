@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100641"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036391"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása az Azure-ban Virtual Machines
 
@@ -32,7 +32,7 @@ Az alábbi ábrán az Azure Virtual Machines teljes megoldása látható:
 
 Az előző ábrán az alábbiak láthatók:
 
-- Két Azure-beli virtuális gép egy Windows feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben van, akkor azt is nevezik *fürtcsomópont*vagy csomópontoknak.
+- Két Azure-beli virtuális gép egy Windows feladatátvevő fürtben. Ha egy virtuális gép feladatátvevő fürtben van, akkor azt is nevezik *fürtcsomópont*vagy *csomópontoknak*.
 - Mindegyik virtuális gép két vagy több adatlemezzel rendelkezik.
 - A S2D szinkronizálja az adatokat az adatlemezen, és a szinkronizált tárolót tárolóként jeleníti meg.
 - A Storage-készlet egy fürt megosztott kötetét (CSV) jeleníti meg a feladatátvevő fürtben.
@@ -55,13 +55,13 @@ Az Azure-beli SQL Server TB licencelési szolgáltatásának feladatátvételi f
 
 A frissítési garanciával rendelkező Nagyvállalati Szerződésokkal rendelkező ügyfelek jogosultak az egyes aktív csomópontok egy ingyenes passzív és 1. szintű csomópontjának használatára. Ahhoz, hogy használhassa ezt az előnyt az Azure-ban, használja a BYOL virtuálisgép-rendszerképeket, majd ugyanazt a licencet használja a (z) és a (z)-es verzió aktív és passzív További információ: [nagyvállalati szerződés](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Az Azure Virtual Machines SQL Server TB és BYOL-licencelésének összehasonlításához tekintse meg az SQL-alapú [virtuális gépek](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)első lépéseivel foglalkozó témakört.
+Az Azure Virtual Machines SQL Server TB és BYOL-licencelésének összehasonlításához tekintse meg az SQL-alapú [virtuális gépek első lépéseivel](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)foglalkozó témakört.
 
-A licencelési SQL Serverával kapcsolatos teljes információkért [](https://www.microsoft.com/sql-server/sql-server-2017-pricing)tekintse meg a díjszabást.
+A licencelési SQL Serverával kapcsolatos teljes információkért tekintse meg a [díjszabást](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Példa Azure-sablonra
 
-A teljes megoldás az Azure-ban egy sablonból is létrehozható. Egy sablon például elérhető a GitHub [Azure gyorsindító](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)-sablonokban. Ez a példa nincs megtervezve vagy tesztelve az adott számítási feladatokhoz. A sablon futtatásával létrehozhatja a tartományhoz csatlakoztatott S2D-tárolóval rendelkező SQL Server-t. Kiértékelheti a sablont, és módosíthatja azt a célra.
+A teljes megoldás az Azure-ban egy sablonból is létrehozható. Egy sablon például elérhető a GitHub [Azure gyorsindító-sablonokban](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ez a példa nincs megtervezve vagy tesztelve az adott számítási feladatokhoz. A sablon futtatásával létrehozhatja a tartományhoz csatlakoztatott S2D-tárolóval rendelkező SQL Server-t. Kiértékelheti a sablont, és módosíthatja azt a célra.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -102,7 +102,7 @@ Ezeknek az előfeltételeknek a végrehajtásával folytathatja a feladatátvét
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az előfizetésével.
 
-1. [Hozzon létre egy Azure](../tutorial-availability-sets.md)-beli rendelkezésre állási készletet.
+1. [Hozzon létre egy Azure-beli rendelkezésre állási készletet](../tutorial-availability-sets.md).
 
    A rendelkezésre állási csoport a tartalék tartományok és a frissítési tartományok között csoportosítja a virtuális gépeket. A rendelkezésre állási csoport gondoskodik arról, hogy az alkalmazást egyetlen meghibásodási pont sem befolyásolja, például a hálózati kapcsoló vagy a kiszolgálók rack egysége.
 
@@ -241,7 +241,7 @@ A fürt felhasználói felülettel való ellenőrzéséhez hajtsa végre az alá
 1. Kattintson a **Tovább** gombra.
 1. A **kiszolgálók vagy fürt kijelölése lapon**írja be mindkét virtuális gép nevét.
 1. A **tesztelési beállítások**lapon válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. Kattintson a **Tovább** gombra.
-1. A **tesztelés**kiválasztásakor adja meg az összes tesztet a **tárterület**kivételével. Tekintse meg a következő képet:
+1. A **tesztelés kiválasztásakor**adja meg az összes tesztet a **tárterület**kivételével. Tekintse meg a következő képet:
 
    ![Tesztek ellenőrzése](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
@@ -267,11 +267,22 @@ A feladatátvevő fürt létrehozásához a következők szükségesek:
 - A feladatátvevő fürt neve
 - A feladatátvevő fürt IP-címe. Olyan IP-címet is használhat, amely nem szerepel ugyanazon az Azure-beli virtuális hálózaton és az alhálózaton, mint a fürtcsomópontok.
 
-A következő PowerShell létrehoz egy feladatátvevő fürtöt. Frissítse a parancsfájlt a csomópontok nevével (a virtuális gépek neveivel) és egy elérhető IP-címmel az Azure VNET:
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+A következő PowerShell egy feladatátvevő fürtöt hoz létre a **Windows Server 2008-2016**-hez. Frissítse a parancsfájlt a csomópontok nevével (a virtuális gépek neveivel) és egy elérhető IP-címmel az Azure VNET:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>A Windows Server 2019
+
+A következő PowerShell egy feladatátvevő fürtöt hoz létre a Windows Server 2019-hez.  További információkért tekintse át a blog [feladatátvevő fürtöt: Fürt hálózati objektuma](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).  Frissítse a parancsfájlt a csomópontok nevével (a virtuális gépek neveivel) és egy elérhető IP-címmel az Azure VNET:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Felhőbeli tanúsító létrehozása
 
@@ -339,7 +350,7 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Miután a telepítő sikeresen telepítette a-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési**központot. Kattintson a **telepítés**elemre.
+1. Nyissa meg a **SQL Server telepítési központot**. Kattintson a **telepítés**elemre.
 
 1. Kattintson **a csomópont hozzáadása SQL Server feladatátvevő fürthöz**elemre. A varázsló utasításait követve telepítse az SQL Servert, és adja hozzá ezt a kiszolgálót a modulhoz.
 
@@ -479,7 +490,7 @@ Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Hajtsa v�
 A kapcsolat teszteléséhez jelentkezzen be egy másik virtuális gépre ugyanabban a virtuális hálózaton. Nyissa meg a **SQL Server Management Studiot** , és kapcsolódjon a SQL Server.
 
 >[!NOTE]
->Ha szükséges, letöltheti [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+>Ha szükséges, [letöltheti SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Korlátozások
 

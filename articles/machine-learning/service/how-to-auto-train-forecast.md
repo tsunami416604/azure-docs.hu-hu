@@ -1,7 +1,7 @@
 ---
 title: Idősorozat-előrejelzési modell automatikus betanítása
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a Azure Machine Learning szolgáltatás egy idősorozat-előrejelzési regressziós modell automatikus gépi tanulással történő betanításához.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a Azure Machine Learning egy idősorozat-előrejelzési regressziós modell automatikus gépi tanulással történő betanításához.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278183"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035051"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
-Ebből a cikkből megtudhatja, hogyan végezheti el az idősorozat-előrejelzési regressziós modell betanítását a Azure Machine Learning szolgáltatásban található automatikus gépi tanulás használatával. Az előrejelzési modell konfigurálása hasonló ahhoz, hogy szabványos regressziós modellt állítson be automatizált gépi tanulással, de bizonyos konfigurációs beállítások és előfeldolgozási lépések léteznek az idősorozat-információkkal való munkavégzéshez. Az alábbi példák a következőket mutatják be:
+Ebből a cikkből megtudhatja, hogyan végezheti el az idősorozat-előrejelzési regressziós modell betanítását a Azure Machine Learning automatikus gépi tanulásával. Az előrejelzési modell konfigurálása hasonló ahhoz, hogy szabványos regressziós modellt állítson be automatizált gépi tanulással, de bizonyos konfigurációs beállítások és előfeldolgozási lépések léteznek az idősorozat-információkkal való munkavégzéshez. Az alábbi példák a következőket mutatják be:
 
 * Az idősorozat-modellezéssel kapcsolatos adatelőkészítés
 * Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) objektumban
@@ -37,7 +37,7 @@ A betanítási adatokból kinyert funkciók kritikus szerepet játszanak. Az aut
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásával kapcsolatban tekintse meg a [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)című témakört.
+* Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásával kapcsolatban tekintse meg [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)című témakört.
 * Ez a cikk azt feltételezi, hogy alapszintű ismerettel rendelkezik egy automatizált gépi tanulási kísérlet beállításával. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapszintű gépi tanulási kísérlet tervezési mintáit.
 
 ## <a name="preparing-data"></a>Az adatelőkészítés
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> Az önellenőrzési (CV) eljárás esetében az idősoros adatok megsértik a Canonical K-fold – több ellenőrzési stratégia alapszintű statisztikai feltételezéseit, így az automatizált gépi tanulás egy gördülő eredetű ellenőrzési eljárást valósít meg a létrehozáshoz az idősoros adatsorozatok több érvényesítéssel is rendelkeznek. Az eljárás használatához a `n_cross_validations` paramétert az `AutoMLConfig` objektumban kell megadni. Megkerülheti az `X_valid` érvényesítést, és a és `y_valid` a paraméterekkel saját ellenőrzési készleteket is használhat.
+Tekintse meg az [energia igényét bemutató notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) a speciális előrejelzési konfigurációk részletes kódjával kapcsolatban, beleértve a következőket:
+
+* üdülés észlelése és featurization
+* gördülő-eredetű kereszt-ellenőrzés
+* konfigurálható késések
+* a gördülő ablak összesített funkciói
 
 ### <a name="view-feature-engineering-summary"></a>Szolgáltatások mérnöki összefoglalásának megtekintése
 

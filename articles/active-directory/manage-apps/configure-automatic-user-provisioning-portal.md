@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996728"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056134"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
@@ -33,13 +33,13 @@ A Azure Active Directory portálon megtekintheti és kezelheti az egyszeri bejel
 1. Nyissa meg a [Azure Active Directory portált](https://aad.portal.azure.com).
 1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
 1. Válassza ki bármelyik alkalmazást az erőforrás-ablaktábla betöltéséhez, ahol megtekintheti a jelentéseket, és kezelheti az alkalmazás beállításait.
-1. A kiépítés lehetőség kiválasztásával kezelheti a kiválasztott alkalmazás felhasználói fiókjának kiépítési beállításait.
+1. A **kiépítés** lehetőség kiválasztásával kezelheti a kiválasztott alkalmazás felhasználói fiókjának kiépítési beállításait.
 
    ![Kiépítési képernyő a felhasználói fiókok üzembe helyezési beállításainak kezeléséhez](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Üzembe helyezési módok
 
-A kiépítés ablaktábla egy **üzemmód** menüvel kezdődik, amely a vállalati alkalmazások által támogatott üzembe helyezési módokat mutatja, és lehetővé teszi a konfigurálását. Az elérhető lehetőségek a következők:
+A **kiépítés** ablaktábla egy **üzemmód** menüvel kezdődik, amely a vállalati alkalmazások által támogatott üzembe helyezési módokat mutatja, és lehetővé teszi a konfigurálását. Az elérhető lehetőségek a következők:
 
 * **Automatikus** – ez a beállítás akkor jelenik meg, ha az Azure ad támogatja az API-alapú üzembe helyezést vagy a felhasználói fiókok ezen alkalmazáshoz való kivonását. Válassza ezt a módot egy olyan felület megjelenítéséhez, amely segít a rendszergazdáknak:
 
@@ -75,13 +75,13 @@ A támogatott testreszabások a következők:
 
   Ha például csak a **frissítés** lehetőséget választja, és az Azure ad csak a meglévő felhasználói fiókokat frissíti egy alkalmazásban, de nem hoz létre újakat. Csak a **Létrehozás** és az Azure lehetőséget kell választania, csak új felhasználói fiókokat hoz létre, de nem frissíti a meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák különböző leképezéseket hozzanak létre a fiókok létrehozásához és a munkafolyamatokhoz.
 
-* Új attribútum-hozzárendelés hozzáadása. Az **attribútum** -hozzárendelési ablaktábla alján kattintson az **Új leképezés hozzáadása** lehetőségre. Töltse ki az **attribútum szerkesztése** űrlapot, és kattintson az **OK** gombra az új hozzárendelésnek a listához való hozzáadásához.
+* Új attribútum-hozzárendelés hozzáadása. Az **attribútum-hozzárendelési** ablaktábla alján kattintson az **Új leképezés hozzáadása** lehetőségre. Töltse ki az **attribútum szerkesztése** űrlapot, és kattintson az **OK** gombra az új hozzárendelésnek a listához való hozzáadásához.
 
 ### <a name="settings"></a>Beállítások
 
 A **kiépítési** képernyő **Beállítások** területén elindíthatja és leállíthatja az Azure ad kiépítési szolgáltatást a kiválasztott alkalmazáshoz. Dönthet úgy is, hogy törli a kiépítési gyorsítótárat, és újraindítja a szolgáltatást.
 
-Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja be a szolgáltatást úgy, hogy a **kiépítési állapotot** **a be**értékre módosítja. Ez a módosítás azt eredményezi, hogy az Azure AD-kiépítési szolgáltatás kezdeti szinkronizálást futtat. Beolvassa a **felhasználók és csoportok** szakaszban hozzárendelt felhasználókat, lekérdezi azokat, majd futtatja az Azure ad-leképezések szakaszban meghatározott üzembe helyezési műveleteket . A folyamat során a kiépítési szolgáltatás tárolja a gyorsítótárazott információkat arról, hogy milyen felhasználói fiókokat kezel, ezért a nem felügyelt fiókokat a nem a hozzárendelés hatókörébe tartozó alkalmazásokon belül nem érinti a kiépítési műveletek. A kezdeti szinkronizálást követően a kiépítési szolgáltatás tíz percenként automatikusan szinkronizálja a felhasználók és a csoportok objektumait.
+Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja be a szolgáltatást úgy, hogy a **kiépítési állapotot** **a be**értékre módosítja. Ez a módosítás azt eredményezi, hogy az Azure AD-kiépítési szolgáltatás kezdeti ciklust futtat. Beolvassa a **felhasználók és csoportok** szakaszban hozzárendelt felhasználókat, lekérdezi azokat, majd futtatja az Azure ad- **leképezések** szakaszban meghatározott üzembe helyezési műveleteket. A folyamat során a kiépítési szolgáltatás tárolja a gyorsítótárazott információkat arról, hogy milyen felhasználói fiókokat kezel, ezért a nem felügyelt fiókokat a nem a hozzárendelés hatókörébe tartozó alkalmazásokon belül nem érinti a kiépítési műveletek. A kezdeti ciklust követően a kiépítési szolgáltatás tíz percenként automatikusan szinkronizálja a felhasználók és a csoportok objektumait.
 
 Állítsa a **kiépítési állapotot** **ki** értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
 
@@ -89,6 +89,6 @@ Jelölje be a **jelenlegi állapot törlése és a szinkronizálás újraindít�
 
 * A kiépítési szolgáltatás leállítása
 * Az Azure AD által kezelt fiókok gyorsítótárazott adatainak kiírása
-* Indítsa újra a szolgáltatásokat, és futtassa újra a kezdeti szinkronizálást
+* Indítsa újra a szolgáltatásokat, és futtassa újra a kezdeti ciklust
 
 Ez a beállítás lehetővé teszi, hogy a rendszergazdák újra elindítsák a kiépítési telepítési folyamatot.

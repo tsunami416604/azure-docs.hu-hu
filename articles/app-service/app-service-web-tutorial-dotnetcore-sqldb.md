@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 800454c3a8037d4562ae80d1093519733472c89c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824609"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71055616"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása a Azure App Service
 
@@ -177,7 +177,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name&gt;* , valamint a *\<connections_string&gt;* paramétert a korábban beállított kapcsolati sztringre.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
 A ASP.net Coreban ezt a névvel ellátott kapcsolatok karakterláncát`MyDbConnection`() használja a standard mintával, például az *appSettings. JSON*fájlban megadott kapcsolatok karakterláncával. Ebben az esetben `MyDbConnection` a *appSettings. JSON*fájlban is meg van adva. Ha App Service fut, a App Serviceban definiált kapcsolati karakterlánc elsőbbséget élvez a *appSettings. JSON*fájlban megadott kapcsolati karakterlánccal szemben. A kód a *appSettings. JSON* értéket használja a helyi fejlesztés során, és ugyanaz a kód a app Service értéket használja az üzembe helyezéskor.
@@ -225,7 +225,7 @@ Ha ez a kód azt észleli, hogy éles üzemben fut (amely az Azure-környezetet 
 A `Database.Migrate()` hívás segít, ha az Azure-ban fut, mert az automatikusan létrehozza a .net Core-alkalmazás által igényelt adatbázisokat az áttelepítési konfiguráció alapján. 
 
 > [!IMPORTANT]
-> A bővíteni kívánt éles alkalmazások esetében kövesse az [áttelepítés éles](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)környezetben való alkalmazásának ajánlott eljárásait.
+> A bővíteni kívánt éles alkalmazások esetében kövesse az [áttelepítés éles környezetben való alkalmazásának](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)ajánlott eljárásait.
 > 
 
 Mentse a módosításokat, majd véglegesítse őket a Git adattárban. 
@@ -384,7 +384,7 @@ A minta projekt már a következő útmutatást követi: [ASP.net Core naplózá
 - Hivatkozást `Microsoft.Extensions.Logging.AzureAppServices` tartalmaz a *DotNetCoreSqlDb. csproj*-ben.
 - Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *program.cs*-ben.
 
-A ASP.net Core naplózási [szintjének](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) app Service `Information` az alapértelmezett [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) szintről `Error`történő beállításához használja a Cloud shell parancsot.
+A ASP.net Core [naplózási szintjének](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) app Service `Information` az alapértelmezett [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) szintről `Error`történő beállításához használja a Cloud shell parancsot.
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information

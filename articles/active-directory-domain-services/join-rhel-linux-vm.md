@@ -1,150 +1,205 @@
 ---
-title: 'Azure Active Directory Domain Services: RHEL virtuális gép csatlakoztatása felügyelt tartományhoz | Microsoft Docs'
-description: Red Hat Enterprise Linux virtuális gép csatlakoztatása Azure AD Domain Services
+title: RHEL virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs "
+description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy Red Hat Enterprise Linux virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
-ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
+ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: b59bd7c7196ceb87da087967498eca6dda7c212b
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990602"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075532"
 ---
-# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 virtuális gépek csatlakoztatása felügyelt tartományokhoz
-Ez a cikk bemutatja, hogyan csatlakozhat egy Red Hat Enterprise Linux (RHEL) 7 virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
+# <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+Annak érdekében, hogy a felhasználók egyetlen hitelesítő adat használatával jelentkezzenek be a virtuális gépekre az Azure-ban, csatlakoztathatja a virtuális gépeket egy Azure Active Directory Domain Services (AD DS) felügyelt tartományhoz. Amikor egy virtuális gépet csatlakoztat egy Azure AD DS felügyelt tartományhoz, a tartomány felhasználói fiókjai és hitelesítő adatai használhatók a kiszolgálók bejelentkezéséhez és kezeléséhez. Az Azure AD DS felügyelt tartományból származó csoporttagságok a virtuális gépen található fájlokhoz vagy szolgáltatásokhoz való hozzáférés szabályozására is vonatkoznak.
 
-## <a name="before-you-begin"></a>Előkészületek
-A cikkben felsorolt feladatok elvégzéséhez a következőkre lesz szüksége:  
-1. Érvényes **Azure-előfizetés**.
-2. Egy **Azure ad-címtár** – szinkronizálva van egy helyszíni címtárral vagy egy csak felhőalapú címtárral.
-3. **Azure ad Domain Services** engedélyezni kell az Azure ad-címtárat. Ha még nem tette meg, kövesse az [első lépések útmutatóban](tutorial-create-instance.md)ismertetett összes feladatot.
-4. Győződjön meg arról, hogy a felügyelt tartomány IP-címeit a virtuális hálózat DNS-kiszolgálóinak megfelelően konfigurálta. További információ: [Az Azure-beli virtuális hálózat DNS-beállításainak frissítése](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
-5. Hajtsa végre a [jelszavak Azure ad Domain Services felügyelt tartományhoz](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)való szinkronizálásához szükséges lépéseket.
+Ez a cikk bemutatja, hogyan csatlakozhat egy Red Hat Enterprise Linux (RHEL) virtuális géphez egy Azure AD DS felügyelt tartományhoz.
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Red Hat Enterprise Linux virtuális gép kiépítése
-Hozzon létre egy RHEL 7 virtuális gépet az Azure-ban az alábbi módszerek bármelyikével:
+Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+
+* Aktív Azure-előfizetés.
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services példányt hoz létre és konfigurál][create-azure-ad-ds-instance].
+* Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+
+## <a name="create-and-connect-to-a-rhel-linux-vm"></a>RHEL Linux rendszerű virtuális gép létrehozása és kapcsolódás
+
+Ha rendelkezik egy meglévő RHEL Linux virtuális géppel az Azure-ban, csatlakozzon az SSH-val, majd folytassa a következő lépéssel a [virtuális gép konfigurálásának megkezdéséhez](#configure-the-hosts-file).
+
+Ha létre kell hoznia egy RHEL Linux rendszerű virtuális gépet, vagy létre szeretne hozni egy tesztelési virtuális gépet, amely a jelen cikkben használható, a következő módszerek egyikét használhatja:
+
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-> [!IMPORTANT]
-> * Telepítse a virtuális gépet ugyanabba a **virtuális hálózatba, amelyben engedélyezte a Azure ad Domain Services**.
-> * Válasszon egy **másik** alhálózatot, amelynél engedélyezte a Azure ad Domain Services.
->
+A virtuális gép létrehozásakor ügyeljen arra, hogy a virtuális gép képes legyen kommunikálni az Azure AD DS felügyelt tartománnyal:
 
+* Telepítse a virtuális gépet ugyanabba vagy egy olyan virtuális hálózatba, amelyben engedélyezte a Azure AD Domain Services.
+* Telepítse a virtuális gépet egy másik alhálózatra, mint a Azure AD Domain Services példánya.
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Távoli kapcsolódás az újonnan kiosztott linuxos virtuális géphez
-Az RHEL 7,2 virtuális gép üzembe helyezése az Azure-ban történt. A következő feladat a virtuális gép távoli kapcsolódása a virtuális géphez a virtuális gép üzembe helyezése során létrehozott helyi rendszergazdai fiók használatával.
+A virtuális gép üzembe helyezését követően hajtsa végre a lépéseket, hogy SSH-kapcsolaton keresztül csatlakozzon a virtuális géphez.
 
-Kövesse a cikk utasításait a [Linux rendszerű virtuális gépekre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)való bejelentkezéshez.
+## <a name="configure-the-hosts-file"></a>A Hosts fájl konfigurálása
 
-
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>A Hosts fájl konfigurálása a Linux rendszerű virtuális gépen
-Az SSH-terminálban szerkessze a/etc/hosts fájlt, és frissítse a gép IP-címét és állomásnevét.
+Győződjön meg arról, hogy a virtuális gép állomásneve helyesen van konfigurálva a felügyelt tartományhoz, szerkessze a */etc/hosts* fájlt, és állítsa be a hostname:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-A Hosts fájlban adja meg a következő értéket:
+A *gazdagépek* fájlban frissítse a *localhost* -címeket. A következő példában:
+
+* a *contoso.com* az Azure AD DS felügyelt tartományának DNS-tartományneve.
+* a *RHEL* a felügyelt tartományhoz csatlakozó RHEL-alapú virtuális gép állomásneve.
+
+Frissítse ezeket a neveket a saját értékeivel:
 
 ```console
-127.0.0.1 contoso-rhel.contoso.com contoso-rhel
+127.0.0.1 rhel rhel.contoso.com
 ```
 
-Itt a "contoso.com" a felügyelt tartomány DNS-tartományneve. a "contoso-RHEL" a felügyelt tartományhoz csatlakozó RHEL virtuális gép állomásneve.
+Ha elkészült, mentse és zárja be a *hosts* fájlt `:wq` a szerkesztő parancs használatával.
 
+## <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>A szükséges csomagok telepítése a linuxos virtuális gépen
-Ezután telepítse a virtuális gépen a tartományhoz való csatlakozáshoz szükséges csomagokat. Az SSH-terminálon írja be a következő parancsot a szükséges csomagok telepítéséhez:
+A virtuális gépnek szüksége van néhány további csomagra a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz csatlakozó eszközöket a következő `yum`használatával:
 
 ```console
-sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
+sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
 ```
 
+## <a name="join-vm-to-the-managed-domain"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>A linuxos virtuális gép csatlakoztatása a felügyelt tartományhoz
-Most, hogy a szükséges csomagok telepítve vannak a linuxos virtuális gépen, a következő feladat a virtuális gép csatlakoztatása a felügyelt tartományhoz.
+Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz.
 
-1. Fedezze fel a HRE Domain Services által felügyelt tartományt. Az SSH-terminálban írja be a következő parancsot:
+1. Használja az `realm discover` parancsot az Azure AD DS felügyelt tartomány felderítéséhez. A következő példa felfedi a *contoso.com*tartományát. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   > [!NOTE]
-   > **Hibaelhárítás** Ha a *tartomány felderítése* nem találja a felügyelt tartományt:
-   >   * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről (ping kipróbálása).
-   >   * Győződjön meg arról, hogy a virtuális gép valóban telepítve van ugyanazon a virtuális hálózaton, amelyben a felügyelt tartomány elérhető.
-   >   * Ellenőrizze, hogy frissítette-e a virtuális hálózat DNS-kiszolgálójának beállításait, hogy a felügyelt tartomány tartományvezérlőjére mutasson.
+   Ha a `realm discover` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
 
-2. Kerberos inicializálása. Az SSH-terminálban írja be a következő parancsot:
+    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja `ping contoso.com` meg megtekinteni, hogy a rendszer pozitív választ ad-e vissza.
+    * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
+    * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
 
-    > [!TIP]
-    > * Győződjön meg arról, hogy az "HRE DC-rendszergazdák" csoportba tartozó felhasználót ad meg.
-    > * Adja meg a tartománynevet nagybetűvel, különben a kinit parancsot sikertelen lesz.
+1. Most inicializálja a Kerberost `kinit` a parancs használatával. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+
+    Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában a nevű `contosoadmin@contoso.com` fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely a *HRE DC-rendszergazdák* csoport tagja:
 
     ```console
-    kinit bob@CONTOSO.COM
+    kinit contosoadmin@CONTOSO.COM
     ```
 
-3. Csatlakoztassa a gépet a tartományhoz. Az SSH-terminálban írja be a következő parancsot:
-
-    > [!TIP]
-    > Használja ugyanazt a felhasználói fiókot, amelyet az előző lépésben ("kinit parancsot") adott meg.
-    >
-    > Ha a virtuális gép nem tud csatlakozni a tartományhoz, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat az 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
+1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz az `realm join` paranccsal. Ugyanazt a felhasználói fiókot használja, amely az előző `kinit` `contosoadmin@CONTOSO.COM`parancsban megadott *HRE DC-rendszergazdák* csoport tagja, például:
 
     ```console
-    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM'
     ```
 
-Ha a gép sikeresen csatlakoztatva van a felügyelt tartományhoz, egy üzenetet kell kapnia ("a számítógép sikeres regisztrálása a tartományban").
+Néhány percet vesz igénybe, hogy csatlakozzon a virtuális géphez az Azure AD DS felügyelt tartományhoz. A következő példa kimenete azt mutatja, hogy a virtuális gép sikeresen csatlakozott az Azure AD DS felügyelt tartományhoz:
 
+```output
+Successfully enrolled machine in realm
+```
 
-## <a name="verify-domain-join"></a>Tartományhoz való csatlakozás ellenőrzése
-Ellenőrizze, hogy a gép sikeresen csatlakozott-e a felügyelt tartományhoz. Kapcsolódjon a tartományhoz csatlakoztatott RHEL virtuális géphez egy másik SSH-kapcsolat használatával. Használjon tartományi felhasználói fiókot, és ellenőrizze, hogy a felhasználói fiók megfelelően van-e feloldva.
+Ha a virtuális gép nem tudja sikeresen befejezni a tartományhoz való csatlakozás folyamatát, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat a 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
 
-1. Az SSH-terminálon írja be a következő parancsot a tartományhoz csatlakoztatott RHEL virtuális géphez való csatlakozáshoz az SSH használatával. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik (ebben azbob@CONTOSO.COMesetben például "").
-    
+## <a name="allow-password-authentication-for-ssh"></a>Jelszó-hitelesítés engedélyezése SSH-hoz
+
+Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hitelesítés használatával jelentkezhetnek be egy virtuális gépre. A jelszó-alapú hitelesítés meghiúsul. Amikor csatlakoztatja a virtuális gépet egy Azure AD DS felügyelt tartományhoz, a tartományi fiókoknak jelszó alapú hitelesítést kell használniuk. Frissítse az SSH-konfigurációt a jelszó alapú hitelesítés engedélyezéséhez az alábbiak szerint.
+
+1. Nyissa meg a *sshd_conf* fájlt szerkesztővel:
+
     ```console
-    ssh -l bob@CONTOSO.COM contoso-rhel.contoso.com
+    sudo vi /etc/ssh/sshd_config
     ```
 
-2. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a kezdőkönyvtár megfelelően lett-e inicializálva.
-    
+1. A *PasswordAuthentication* vonalának frissítése *Igen*értékre:
+
+    ```console
+    PasswordAuthentication yes
+    ```
+
+    Ha elkészült, mentse és zárja be a *sshd_conf* fájlt `:wq` a szerkesztő parancsával.
+
+1. A módosítások alkalmazásához és a felhasználók jelszóval való bejelentkezéséhez indítsa újra az SSH-szolgáltatást:
+
+    ```console
+    sudo systemctl restart sshd
+    ```
+
+## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>A "HRE DC Administrators" csoport sudo-jogosultságának megadása
+
+Ahhoz, hogy a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai számára rendszergazdai jogosultságokat lehessen adni a RHEL virtuális gépen, hozzá kell adnia egy bejegyzést a */etc/sudoers*. A Hozzáadás után a *HRE tartományvezérlő rendszergazdák* csoportjának tagjai használhatják a `sudo` parancsot a RHEL virtuális gépen.
+
+1. Nyissa meg a *sudoers* fájlt a szerkesztéshez:
+
+    ```console
+    sudo visudo
+    ```
+
+1. Adja hozzá a következő bejegyzést a */etc/sudoers* fájl végéhez. A *HRE DC-rendszergazdák* csoport szóközt tartalmaz a névben, így a csoport neve tartalmazza a fordított perjel karaktert. Adja hozzá a saját tartománynevét, például *contoso.com*:
+
+    ```console
+    # Add 'AAD DC Administrators' group members as admins.
+    %AAD\ DC\ Administrators@contoso.com ALL=(ALL) NOPASSWD:ALL
+    ```
+
+    Ha elkészült, mentse és zárja be a szerkesztőt `:wq` a szerkesztő parancsának használatával.
+
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Bejelentkezés a virtuális gépre tartományi fiók használatával
+
+Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e az Azure AD DS felügyelt tartományhoz, indítson el egy új SSH-kapcsolódást egy tartományi felhasználói fiók használatával. Győződjön meg arról, hogy a kezdőkönyvtár létrejött, és a rendszer a tartományból származó csoporttagság alkalmazását alkalmazza.
+
+1. Hozzon létre egy új SSH-kapcsolatokat a konzolon. Használjon olyan tartományi fiókot, amely a felügyelt tartományhoz tartozik `ssh -l` a parancs használatával, `contosoadmin@contoso.com` például:, majd adja meg a virtuális gép (például *RHEL.contoso.com*) címeit. Ha a Azure Cloud Shell használja, a belső DNS-név helyett használja a virtuális gép nyilvános IP-címét.
+
+    ```console
+    ssh -l contosoadmin@CONTOSO.com rhel.contoso.com
+    ```
+
+1. Ha sikeresen csatlakozott a virtuális géphez, ellenőrizze, hogy helyesen lett-e inicializálva a kezdőkönyvtár:
+
     ```console
     pwd
     ```
 
-3. Az SSH-terminálon írja be a következő parancsot annak ellenőrzéséhez, hogy a csoporttagság megfelelően van-e feloldva.
-    
+    A */Home* könyvtárban kell lennie a saját címtárával, amely megfelel a felhasználói fióknak.
+
+1. Most győződjön meg arról, hogy a csoporttagságok megfelelően vannak feloldva:
+
     ```console
     id
     ```
 
+    Az Azure AD DS felügyelt tartományból kell megjelennie a csoporttagságok.
 
-## <a name="troubleshooting-domain-join"></a>Tartományhoz való csatlakozás hibaelhárítása
-Tekintse meg a tartományhoz való [Csatlakozás hibaelhárítása](join-windows-vm.md#troubleshoot-domain-join-issues) című cikket.
+1. Ha a *HRE DC-rendszergazdák* csoport tagjaként jelentkezett be a virtuális gépre, ellenőrizze, hogy helyesen használja-e a `sudo` következő parancsot:
 
-## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
-* [Windows Server rendszerű virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Bejelentkezés egy Linux rendszerű virtuális gépre](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* [A Kerberos telepítése](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
-* [Red Hat Enterprise Linux 7 – Windows-integrációs útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
+    ```console
+    sudo yum update
+    ```
+
+## <a name="next-steps"></a>További lépések
+
+Ha problémái adódnak a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel kapcsolatban, olvassa el a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md

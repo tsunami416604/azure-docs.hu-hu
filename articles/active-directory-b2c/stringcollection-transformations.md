@@ -1,6 +1,6 @@
 ---
-title: Publishedresources-jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C |} A Microsoft Docs
-description: Publishedresources jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
+title: StringCollection stb jogcím-átalakítási példák a Azure Active Directory B2C Identity Experience Framework sémájához | Microsoft Docs
+description: A StringCollection stb jogcím-átalakítási példákat tartalmaz a Azure Active Directory B2C Identity Experience Framework sémájára.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,32 +10,32 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98453daeb34d093b49cdcc636f68c3d7ae017126
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512433"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063320"
 ---
-# <a name="stringcollection-claims-transformations"></a>Publishedresources jogcím-átalakítás
+# <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk példákat ad az Azure Active Directory (Azure AD) B2C-ben a karakterlánc gyűjtemény a jogcímek átalakítása az identitás-kezelőfelületi keretrendszer séma használatával. További információkért lásd: [ClaimsTransformations](claimstransformations.md).
+Ez a cikk példákat tartalmaz a karakterlánc-gyűjtési jogcímek átalakítására a Azure Active Directory B2C (Azure AD B2C) identitási élmény keretrendszere-sémájának használatával. További információ: [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Egy karakterlánc szabálykészlethez Publishedresources új jogcímet ad. 
+Karakterlánc-jogcímet hoz létre egy új StringCollection stb jogcímhez.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Elem | string | A kimeneti jogcímek hozzáadandó takar. |
-| Bemeneti jogcím | Gyűjtemény | Publishedresources | [Opcionális] Ha meg van adva, a jogcímek átalakításáról másolja át az elemeket a gyűjteményhez, és hozzáadja az elem a kimeneti gyűjtemény jogcímek végéhez. |
-| OutputClaim | Gyűjtemény | Publishedresources | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. |
+| InputClaim | item | Karakterlánc | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
+| InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
+| outputClaim | gyűjtemény | StringCollection stb | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. |
 
-Használja a jogcím-átalakítás karakterláncnak hozzá egy új vagy meglévő Publishedresources. A gyakran használják a **AAD-UserWriteUsingAlternativeSecurityId** technikai profil. Egy új közösségi fiók jön létre, mielőtt **CreateOtherMailsFromEmail** jogcímek átalakítását a ClaimType olvassa be, és hozzáadja az értéket a **otherMails** takar. 
+A jogcím-átalakítás használatával hozzáadhat egy karakterláncot egy új vagy egy meglévő StringCollection stb. Ez általában egy **HRE-UserWriteUsingAlternativeSecurityId** technikai profilban használatos. Új közösségi fiók létrehozása előtt a **CreateOtherMailsFromEmail** jogcím-átalakítás beolvassa a claimType, és hozzáadja az értéket a **otherMails** -claimType.
 
-A következő jogcímek átalakítását hozzáadja a **e-mail** takar a **otherMails** takar.
+A következő jogcím-átalakítás hozzáadja az **e-mail-** claimType az **otherMails** claimType.
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -51,23 +51,23 @@ A következő jogcímek átalakítását hozzáadja a **e-mail** takar a **other
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
   - **gyűjtemény**: ["someone@outlook.com"]
   - **elem**: "admin@contoso.com"
-- Kimeneti jogcímek: 
-  - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
+- Kimeneti jogcímek:
+  - **gyűjtemény**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-Új Publishedresources jogcímet ad hozzá egy karakterlánc-paramétert. 
+Egy karakterlánc-paramétert szúr be egy új StringCollection stb jogcímbe.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Gyűjtemény | Publishedresources | [Opcionális] Ha meg van adva, a jogcímek átalakításáról másolja át az elemeket a gyűjteményhez, és hozzáadja az elem a kimeneti gyűjtemény jogcímek végéhez. |
-| InputParameter | Elem | string | A kimeneti jogcímek hozzáadandó érték. |
-| OutputClaim | Gyűjtemény | Publishedresources | A ClaimTypes ez ClaimsTransformation meghívása után előállított. |
+| InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
+| InputParameter | item | Karakterlánc | A kimeneti jogcímhez hozzáadandó érték. |
+| outputClaim | gyűjtemény | StringCollection stb | A ClaimsTransformation meghívása után előállított ClaimTypes. |
 
-Használja a jogcím-átalakítás karakterlánc-érték hozzáadása egy új vagy meglévő Publishedresources. Az alábbi példa hozzáad egy állandó e-mail-címet (admin@contoso.com), a **otherMails** jogcím. 
+Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollection stb karakterlánc-értéket. A következő példa egy állandó e-mail-admin@contoso.comcímet () hoz létre a **otherMails** jogcímhez.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -85,23 +85,23 @@ Használja a jogcím-átalakítás karakterlánc-érték hozzáadása egy új va
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
+- Bemeneti jogcímek:
   - **gyűjtemény**: ["someone@outlook.com"]
-- Bemeneti paraméterek 
+- Bemeneti paraméterek
   - **elem**: "admin@contoso.com"
 - Kimeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
+  - **gyűjtemény**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-A megadott karakterlánc gyűjteményt az első elem beolvasása. 
+A megadott karakterlánc-gyűjtemény első elemének beolvasása.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Gyűjtemény | Publishedresources | A ClaimTypes lekérni az elemet használják a jogcímek átalakítását. |
-| OutputClaim | extractedItem | string | A ClaimTypes, amelyek előállítják a ClaimsTransformation meghívása után. Az első elem a gyűjteményben. |
+| InputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
+| outputClaim | extractedItem | Karakterlánc | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
 
-Az alábbi példa beolvassa a **otherMails** jogcím és az első elemét adja vissza a **e-mail** jogcím. 
+A következő példa beolvassa a **otherMails** jogcímet, és az első tételt visszaküldi az **e-mail-** jogcímbe.
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -116,8 +116,8 @@ Az alábbi példa beolvassa a **otherMails** jogcím és az első elemét adja v
 
 ### <a name="example"></a>Példa
 
-- A bemeneti jogcímek:
-  - **gyűjtemény**: ["someone@outlook.com","someone@contoso.com"]
-- Kimeneti jogcímek: 
+- Bemeneti jogcímek:
+  - **gyűjtemény**: ["someone@outlook.com", "someone@contoso.com"]
+- Kimeneti jogcímek:
   - **extractedItem**: "someone@outlook.com"
 

@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ddc42bc9315d50b8b8cdd40264de561d0edf5c7d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: be347fe33e03b4c2a7ecc1015a407c5a58062326
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622382"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065153"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn-alkalmazás létrehozása
 
-Ha egy LinkedIn-fiókot Azure Active Directory (Azure AD) B2C [identitás](active-directory-b2c-reference-oauth-code.md) -szolgáltatóként szeretne használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/).
+Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](active-directory-b2c-reference-oauth-code.md) szeretné használni a LinkedIn-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/).
 
-1. Jelentkezzen be a [LinkedIn Developers](https://www.developer.linkedin.com/) webhelyére a LinkedIn-fiókja hitelesítő adataival.
+1. Jelentkezzen be a [LinkedIn Developers webhelyére](https://www.developer.linkedin.com/) a LinkedIn-fiókja hitelesítő adataival.
 1. Válassza **a saját alkalmazások**lehetőséget, majd kattintson az **alkalmazás létrehozása**elemre.
 1. Adja meg a **vállalat nevét**, az **alkalmazás nevét**, az **alkalmazás leírását**, az **alkalmazás emblémáját**, **az alkalmazás használatát**, a **webhely URL-címét**, az **üzleti levelezést**és a **munkahelyi telefont**
-1. Fogadja el a **LINKEDIN API használati** feltételeit, és kattintson a **Submit (Küldés**) lehetőségre.
+1. Fogadja el a **LINKEDIN API használati feltételeit** , és kattintson a **Submit (Küldés**) lehetőségre.
 1. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Ezek a **hitelesítési kulcsok**alatt találhatók. Mindkettőre szüksége lesz a LinkedIn identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 1. Adja `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` meg a **jóváhagyott átirányítási URL-címeket**. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C. Válassza a **Hozzáadás**, majd a **frissítés**lehetőséget.
 

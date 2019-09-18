@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan lehet elhárítani a BitLocker rendszerindítá
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b9ff0dfa98fb3b6f12974512e197142d44223b80
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080288"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058106"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -27,7 +27,7 @@ ms.locfileid: "70080288"
 
 ## <a name="symptom"></a>Jelenség
 
- Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a rendszerindítási [diagnosztika](../windows/boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
+ Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../windows/boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
 
 - Csatlakoztassa a BitLocker-kulcsot tartalmazó USB-illesztőprogramot
 
@@ -103,7 +103,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
     Ha két duplikált kötet jelenik meg, akkor az újabb időbélyeggel rendelkező kötet a jelenlegi BEK-fájl, amelyet a helyreállítási virtuális gép használ.
 
-    Ha a **tartalomtípus** értéke becsomagolt **BEK**, lépjen a [Key encryption Key (KEK) forgatókönyvekhez](#key-encryption-key-scenario).
+    Ha a **tartalomtípus** értéke **becsomagolt BEK**, lépjen a [Key encryption Key (KEK) forgatókönyvekhez](#key-encryption-key-scenario).
 
     Most, hogy már rendelkezik a meghajtóhoz tartozó BEK-fájl nevével, létre kell hoznia a titkos fájl nevét. BEK-fájl a meghajtó zárolásának feloldásához.
 
@@ -145,7 +145,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
 A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a bejelentkezett felhasználói fiók "nincs becsomagolt" engedélyre van szüksége a felhasználó Key Vault hozzáférési házirendjében **| Kulcs engedélyei | Titkosítási műveletek | Kulcs**kicsomagolása.
+1. Győződjön meg arról, hogy a bejelentkezett felhasználói fiók "nincs becsomagolt" engedélyre van szüksége a felhasználó Key Vault hozzáférési házirendjében **| Kulcs engedélyei | Titkosítási műveletek | Kulcs kicsomagolása**.
 2. Mentse a következő szkriptet a-be. PS1-fájl:
 
     ```powershell

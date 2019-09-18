@@ -1,6 +1,6 @@
 ---
 title: Nagy teljesítményű, több platformos következtetés a ONNX
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Tudnivalók a ONNX és a ONNX Futtatókörnyezetről a felgyorsuló modellekhez
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d97e2d2698c482b75f037dbd8cde1027c472125
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534878"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035411"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
@@ -28,14 +28,14 @@ A Microsoft és a partnerek egyik közössége nyílt szabványként hozta létr
 
 A [ONNX Runtime](https://github.com/Microsoft/onnxruntime) egy nagy teljesítményű, a ONNX-modellek éles környezetben történő üzembe helyezéséhez használható. A felhő és a peremhálózat számára egyaránt optimalizált, és Linux, Windows és Mac rendszereken is működik. A C++szolgáltatásban C, Python és C# API-k is szerepelnek. Az ONNX Runtime támogatást nyújt az összes ONNX-ML specifikációhoz, és a különböző hardverek, például az NVidia GPU-k TensorRT is integrálható a gyorssegédekkel.
 
-A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és a Cognitive Servicesban használatos. A teljesítménybeli nyereség számos tényezőtől függ, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__-ban. A ONNX Runtime a Windows ML részeként is használatos több száz millió eszközön. A futtatókörnyezetet Azure Machine Learning szolgáltatásokkal is használhatja. A ONNX Runtime használatával kihasználhatja a nagy teljesítményű optimalizálási, tesztelési és folyamatos fejlesztéseket.
+A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és a Cognitive Servicesban használatos. A teljesítménybeli nyereség számos tényezőtől függ, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__-ban. A ONNX Runtime a Windows ML részeként is használatos több száz millió eszközön. A futtatókörnyezetet Azure Machine Learning használatával használhatja. A ONNX Runtime használatával kihasználhatja a nagy teljesítményű optimalizálási, tesztelési és folyamatos fejlesztéseket.
 
 [![ONNX-folyamatábra, amely bemutatja a képzést, a konvertereket és az üzembe helyezést](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
 ONNX-modellekkel többféle módon szerezheti be:
-+ Új ONNX-modell betanítása Azure Machine Learning szolgáltatásban (lásd a cikk alján található példákat)
++ Új ONNX-modell betanítása Azure Machine Learningban (lásd a cikk alján található példákat)
 + Meglévő modell átalakítása más formátumból ONNX (lásd az [oktatóanyagokat](https://github.com/onnx/tutorials)) 
 + Egy előre betanított ONNX-modell beszerzése a [ONNX Model Zoo](https://github.com/onnx/models) -ból (lásd a cikk alján található példákat)
 + Hozzon létre egy testre szabott ONNX-modellt a [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
@@ -44,11 +44,11 @@ Számos modell, beleértve a képbesorolást, az objektumok észlelését és a 
 
 ## <a name="deploy-onnx-models-in-azure"></a>Az Azure-ban az ONNX-modellek üzembe helyezése
 
-Az Azure Machine Learning szolgáltatás üzembe helyezése, kezelése és figyelése az ONNX-modellekkel. A standard használatával [üzembe helyezést megvalósító munkafolyamat](concept-model-management-and-deployment.md) ONNX-futtatókörnyezet, hozhat létre a felhőben üzemeltetett REST-végponton. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
+A Azure Machine Learning segítségével üzembe helyezheti, kezelheti és figyelheti a ONNX-modelljeit. A standard használatával [üzembe helyezést megvalósító munkafolyamat](concept-model-management-and-deployment.md) ONNX-futtatókörnyezet, hozhat létre a felhőben üzemeltetett REST-végponton. Tekintse meg a cikk végén található példa Jupyter jegyzetfüzeteket a kipróbáláshoz. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>A ONNX Runtime telepítése és használata a Python használatával
 
-A ONNX Runtime Python-csomagjai a [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)) szolgáltatásban érhetők el. A telepítés [](https://github.com/Microsoft/onnxruntime#system-requirements) előtt olvassa el a rendszerkövetelményeket. 
+A ONNX Runtime Python-csomagjai a [PyPi.org](https://pypi.org) ([CPU](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)) szolgáltatásban érhetők el. A telepítés előtt olvassa el a [rendszerkövetelményeket](https://github.com/Microsoft/onnxruntime#system-requirements) . 
 
  A Pythonhoz készült ONNX Runtime telepítéséhez használja az alábbi parancsok egyikét: 
 ```python   

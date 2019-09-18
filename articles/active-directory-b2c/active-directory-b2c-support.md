@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4bb82665ecd9d04c097a127f46814bb7198f393
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: f7f2217677b81c6f3e87eaa2612880adf3b499c2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227177"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064941"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Fájl-támogatási kérelmek
-A Azure Portal Azure Active Directory (Azure AD) B2C-hez tartozó támogatási kérelmeket a következő lépések végrehajtásával teheti meg:
+A Azure Portal Azure Active Directory B2C (Azure AD B2C) támogatási kérelmeit a következő lépések segítségével teheti meg:
 
 1. Váltson a B2C-bérlőről egy másik bérlőre, amelyhez hozzá van rendelve egy Azure-előfizetés. Az utóbbi általában az Ön alkalmazott bérlője vagy az alapértelmezett bérlő, amely az Azure-előfizetésre való regisztráláskor lett létrehozva. További információ: [how an Azure-előfizetés az Azure ad-hez kapcsolódóan](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -56,7 +56,7 @@ A Azure Portal Azure Active Directory (Azure AD) B2C-hez tartozó támogatási k
 
     ![Kapcsolattartási adatok lap a portálon Kiemelt létrehozás gombbal](./media/active-directory-b2c-support/support-contact.png)
 
-1. A támogatási kérelem elküldése után a Kezdőpulton, majd a **támogatási kérések kezelése**lehetőségre **kattintva** figyelheti azt.
+1. A támogatási kérelem elküldése után a Kezdőpulton, majd a **támogatási kérések kezelése**lehetőségre kattintva figyelheti azt.
 
 ## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Ismert probléma: Támogatási kérelem bejelentése B2C-bérlő kontextusában
 

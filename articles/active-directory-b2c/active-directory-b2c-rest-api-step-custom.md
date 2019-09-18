@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644925"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065319"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>REST API jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory (Azure AD) B2C-ben a REST API-val is hozzáadhat interakciót az [Egyéni szabályzatokhoz](active-directory-b2c-overview-custom.md) . Ez a cikk bemutatja, hogyan hozhat létre olyan Azure AD B2C felhasználói utat, amely a REST-szolgáltatásokkal kommunikál.
+A REST API-val a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeihez](active-directory-b2c-overview-custom.md) is hozzáadhat interakciókat. Ez a cikk bemutatja, hogyan hozhat létre olyan Azure AD B2C felhasználói utat, amely a REST-szolgáltatásokkal kommunikál.
 
 Az interakció magában foglalja a jogcímek REST API jogcímek és Azure AD B2C közötti információcserét. A jogcímek cseréje a következő jellemzőkkel rendelkezik:
 
@@ -117,7 +117,7 @@ Nyissa meg a *TrustFrameworkExtensions. XML* fájlt, és adja hozzá a következ
 
 A **szabályzattípushoz** elem határozza meg a REST szolgáltatásnak eljuttatott jogcímeket. Ebben a példában a jogcím `givenName` értékét a rendszer elküldi a REST szolgáltatásnak jogcímként. `email` A **OutputClaims** elem határozza meg a REST szolgáltatástól várt jogcímeket.
 
-A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez tekintse meg a [biztonságos REST API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) -k alapszintű hitelesítéssel és [biztonságos REST API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)-k hitelesítéssel című témakörét.
+A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez tekintse meg a [biztonságos REST API-k alapszintű hitelesítéssel](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) és [biztonságos REST API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)-k hitelesítéssel című témakörét.
 
 ## <a name="add-the-claim-definition"></a>Jogcím-definíció hozzáadása
 

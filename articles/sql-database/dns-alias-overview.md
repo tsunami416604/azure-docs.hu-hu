@@ -7,16 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi, ayolubek, jrasnick
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550656"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058567"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
 
@@ -60,7 +60,7 @@ A következő tulajdonságok a SQL Database-kiszolgáló minden DNS-aliasára é
   - SQL Database-kiszolgáló eldobásakor az Azure-rendszer az összes olyan DNS-aliast is eldobja, amely a kiszolgálóra hivatkozik.
 - *Nincs a régióhoz kötve:* A DNS-aliasok nincsenek régióhoz kötve. Bármely DNS-alias frissíthető úgy, hogy egy Azure SQL Database-kiszolgálóra hivatkozzon, amely bármely földrajzi régióban található.
   - Ha azonban egy alias frissítése egy másik kiszolgálóra hivatkozik, mindkét kiszolgálónak ugyanabban az Azure-előfizetésbenkell lennie.
-- *Engedélyek* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../role-based-access-control/overview.md).
+- *Engedélyek:* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>A DNS-aliasok kezelése
 
@@ -106,7 +106,7 @@ A DNS-aliasok jelenléte a következő korlátozásokkal jár:
 - *DNS-címkeresés:* Egyelőre az egyetlen mérvadó módszer annak ellenőrzéséhez, hogy egy adott DNS-alias melyik kiszolgálóra hivatkozik a [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup)végrehajtásával.
 - _A tábla naplózása nem támogatott:_ Nem használhat DNS-aliast olyan Azure SQL Database-kiszolgálón, amelyen engedélyezve van a *tábla naplózása* egy adatbázison.
   - A tábla naplózása elavult.
-  - Javasoljuk, hogy térjen át a [blob](sql-database-auditing.md)-naplózásra.
+  - Javasoljuk, hogy térjen át a [blob-naplózásra](sql-database-auditing.md).
 
 ## <a name="related-resources"></a>Kapcsolódó erőforrások
 

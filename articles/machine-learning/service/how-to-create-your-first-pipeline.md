@@ -1,6 +1,6 @@
 ---
 title: ML-folyamatok létrehozása, futtatása, & nyomon követése
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hozzon létre, és futtassa a machine learning-folyamat, az Azure Machine Learning-SDK Pythonhoz készült. A gépi tanulási (ML) fázisokat összevarró munkafolyamatok létrehozásához és kezeléséhez használjon ML-es folyamatokat. Ezek a fázisok közé tartozik az adatelőkészítés, a modell betanítása, a modell üzembe helyezése, valamint a következtetések/pontozás.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858771"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034847"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -26,11 +26,11 @@ Habár az [Azure-folyamatokat](https://docs.microsoft.com/azure/devops/pipelines
 
 Egy ML-folyamat minden fázisa (például az adatelőkészítés és a modell betanítása) egy vagy több lépést is tartalmazhat.
 
-A létrehozott ML-folyamatok a Azure Machine Learning szolgáltatás [munkaterületének](how-to-manage-workspace.md)tagjai számára láthatók. 
+A létrehozott ML-folyamatok a Azure Machine Learning [munkaterület](how-to-manage-workspace.md)tagjai számára láthatók. 
 
 A ML-folyamatok távoli számítási célokat használnak a számításhoz és a folyamathoz társított közbenső és végső adatok tárolásához. A támogatott [Azure Storage](https://docs.microsoft.com/azure/storage/) -helyekről olvashatnak és írhatnak az adatokról.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki [Azure Machine learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -283,7 +283,7 @@ A korábbi eredmények (`allow_reuse`) használata kulcsfontosságú, ha a folya
 A lépések meghatározása után a folyamatokat a fenti lépések némelyikével vagy mindegyikével kell felépíteni.
 
 > [!NOTE]
-> A lépések megadása vagy a folyamat összeállítása során a rendszer nem tölt fel fájlt vagy adatfájlt a Azure Machine Learning szolgáltatásba.
+> A lépések megadása vagy a folyamat összeállítása során a rendszer nem tölt fel fájlt vagy Azure Machine Learning.
 
 ```python
 # list of steps to run
@@ -322,7 +322,7 @@ További információkért lásd az [Azure-pipeline-Steps csomag](https://docs.m
 
 ## <a name="submit-the-pipeline"></a>Küldje el a folyamat
 
-A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépésekhez tartozó függőségeket, és feltölti a megadott forrás könyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve. A pillanatkép a munkaterületen a kísérlet részeként is tárolódik.
+A folyamat elküldésekor Azure Machine Learning ellenőrzi az egyes lépésekhez tartozó függőségeket, és feltölti a megadott forrás-könyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve. A pillanatkép a munkaterületen a kísérlet részeként is tárolódik.
 
 > [!IMPORTANT]
 > Ha meg szeretné akadályozni, hogy a fájlok szerepeljenek a pillanatképben, `.amlignore` hozzon létre egy [. gitignore](https://git-scm.com/docs/gitignore) vagy fájlt a címtárban, és adja hozzá a fájlokat. A `.amlignore` fájl ugyanazt a szintaxist és mintázatot használja, mint a [. gitignore](https://git-scm.com/docs/gitignore) fájl. Ha mindkét fájl létezik, a `.amlignore` fájl elsőbbséget élvez.

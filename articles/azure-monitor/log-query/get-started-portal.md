@@ -8,16 +8,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899514"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076824"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Ismerkedés a Log Analyticsával Azure Monitor
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://portal.loganalytics.io/demo), amely rengeteg mintavételi adatmennyiséget tartalmaz.
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Portal Log Analytics a Azure Monitor-naplók lekérdezéséhez. A következőket fogja megtanítani:
 

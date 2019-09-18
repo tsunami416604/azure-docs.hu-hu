@@ -1,5 +1,5 @@
 ---
-title: Node.js használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
+title: 'Gyors útmutató: A Node. js használata a Azure SQL Database lekérdezéséhez'
 description: A Node. js használata olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947101"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059278"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
@@ -56,7 +57,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Nyissa meg az **SQL-adatbázisok** vagy az SQL-felügyelt **példányok** lapot.
+2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett egyetlen adatbázishoz vagy a felügyelt példányhoz tartozó **gazdagép** melletti teljes kiszolgálónévhez. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont. 
 

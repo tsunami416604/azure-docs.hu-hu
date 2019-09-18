@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c81c0de98442f576145f2c2e12f0b2053b80e83a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882822"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033603"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Az Excel és az Apache Hadoop összekötése az Azure HDInsight a Microsoft kaptár ODBC-illesztővel
 
@@ -32,9 +32,11 @@ A cikk elkezdése előtt a következő elemeket kell megadnia:
 * Egy Office 2010 Professional Plus vagy újabb, vagy Excel 2010 vagy újabb verziójú munkaállomás.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>A Microsoft kaptár ODBC-illesztő telepítése
+
 Töltse le és telepítse a [Microsoft kaptár ODBC-illesztőprogram](https://go.microsoft.com/fwlink/?LinkID=286698) verziószámát, amely megegyezik annak az alkalmazásnak a verziójával, amely az ODBC-illesztőt fogja használni.  Ebben a cikkben a-illesztőprogramot az Office Excelhez használja a rendszer.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>ODBC-adatforrás létrehozása Apache Hive
+
 A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-adatforrást.
 
 1. A Windowsban navigáljon a Start > Windows felügyeleti eszközök > ODBC-adatforrások (32 bites)/(64 bites) elemre.  Ekkor megnyílik az **ODBC-adatforrás rendszergazdája** ablak.
@@ -65,7 +67,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-ad
    |  Beolvasott sorok száma blokkban |Nagy számú rekord beolvasása esetén a paraméter finomhangolása az optimális teljesítmény biztosítása érdekében szükséges lehet. |
    |  Alapértelmezett karakterlánc-oszlop hossza, Bináris oszlop hossza, decimális oszlop mérete |Az adattípus hossza és pontossága befolyásolhatja az adatvisszaadás módját. Helytelen adatokat eredményeznek a pontosság és/vagy a csonkítás elvesztése miatt. |
 
-    ![Speciális beállítások](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Speciális DSN-konfigurációs beállítások")
+    ![Speciális DSN-konfigurációs beállítások](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Speciális DSN-konfigurációs beállítások")
 
 1. Válassza a **teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **sikert**mutatja.  
 
@@ -83,7 +85,7 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 2. Az **adatok** lapon navigáljon az >  **adatok beolvasása** **más forrásokból** > az**ODBC** -ből, hogy elindítsa a **from ODBC** ablakot.
 
-    ![Az adatkapcsolatok varázsló megnyitása](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Az adatkapcsolatok varázsló megnyitása")
+    ![Az Excel-adatkapcsolatok varázsló megnyitása](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Az Excel-adatkapcsolatok varázsló megnyitása")
 
 3. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra**.
 
@@ -91,7 +93,7 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 5. A **Navigátorban**navigáljon a **kaptár** > **alapértelmezett** > **hivesampletable**, majd válassza a **Betöltés**lehetőséget. Néhány percet vesz igénybe, mielőtt az Excelbe importálja az adatimportálást.
 
-    ![HDInsight-struktúra ODBC-navigátor](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Az adatkapcsolatok varázsló megnyitása")
+    ![HDInsight Excel-struktúra ODBC-navigátor](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel-struktúra ODBC-navigátor")
 
 ## <a name="next-steps"></a>További lépések
 

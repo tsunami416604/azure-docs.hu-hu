@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: c6994127b504cba31df051c757295f3e575bc23f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.date: 09/01/2019
+ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931207"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077269"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
-A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni adatátjárót. Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen és a logikai alkalmazásokban lévő adatforrások között. Ugyanezt az átjáró-telepítést más felhőalapú szolgáltatásokkal is használhatja, például Power BI, Microsoft Flow, PowerApps és Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
+A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni [adatátjárót](https://aka.ms/on-premises-data-gateway-installer) . Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen és a logikai alkalmazásokban lévő adatforrások között. Ugyanezt az átjáró-telepítést más felhőalapú szolgáltatásokkal is használhatja, például Power BI, Microsoft Flow, PowerApps és Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
 
 * [Microsoft Power BI helyszíni adatátjáró](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Helyszíni adatátjáró Microsoft PowerApps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Helyszíni adatátjáró Microsoft Flow](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Helyszíni adatátjáró Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a helyszíni adatátjárót, hogy a helyszíni adatforrások hozzáférhessenek Azure Logic Apps. További információ arról, [hogy az adatátjáró hogyan működik a](#gateway-cloud-service) témakör későbbi részében.
+Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a helyszíni adatátjárót, hogy a helyszíni adatforrások hozzáférhessenek Azure Logic Apps. További információ arról, [hogy az adatátjáró hogyan működik a](#gateway-cloud-service) témakör későbbi részében. Az átjáróval kapcsolatos további információkért lásd: [Mi az a helyszíni átjáró](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
@@ -264,8 +264,8 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 További információkért tekintse meg a következő témaköröket:
 
-* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/service-gateway-onprem-faq)
-* [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway-service-gateway-tshoot)
+* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
 * [Az átjáró teljesítményének figyelése és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>További lépések

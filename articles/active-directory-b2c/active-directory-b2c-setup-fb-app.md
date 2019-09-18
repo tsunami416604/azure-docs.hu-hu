@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 524e1e5f877fcb03d4252d79635ef855b9811f09
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c13f3166c50d9afc03125d66155ce654c84e5e0a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622096"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065240"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
 ## <a name="create-a-facebook-application"></a>Facebook-alkalmazás létrehozása
 
-Ha Facebook-fiókot szeretne használni Azure Active Directory (Azure AD) B2C-beli [identitás](active-directory-b2c-reference-oauth-code.md) -szolgáltatóként, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/).
+Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](active-directory-b2c-reference-oauth-code.md) szeretné használni a Facebook-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/).
 
-1. A Facebook-fiók hitelesítő adataival jelentkezzen be a facebookba a [fejlesztők számára](https://developers.facebook.com/) .
+1. A Facebook-fiók hitelesítő adataival jelentkezzen be a [facebookba a fejlesztők számára](https://developers.facebook.com/) .
 1. Ha még nem tette meg, regisztrálnia kell Facebook-fejlesztőként. Ehhez válassza az első **lépések** lehetőséget az oldal jobb felső sarkában, fogadja el a Facebook szabályzatait, és végezze el a regisztráció lépéseit.
 1. Válassza **a saját alkalmazások** lehetőséget, majd **vegyen fel új alkalmazást**.
 1. Adjon meg egy **megjelenítendő nevet** és egy érvényes **kapcsolattartási e-mailt**.

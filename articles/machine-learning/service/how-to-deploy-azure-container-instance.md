@@ -1,7 +1,7 @@
 ---
 title: Modellek üzembe helyezése Azure Container Instances
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning szolgáltatási modelljeit webszolgáltatásként Azure Container Instances használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként Azure Container Instances használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279136"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034635"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése Azure Container Instances
 
-Megtudhatja, hogyan helyezheti üzembe a modelleket Azure Container Instances (ACI) webszolgáltatásként a Azure Machine Learning szolgáltatás használatával. Azure Container Instances használata, ha a következő feltételek egyike igaz:
+Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Container Instances (ACI) Azure Machine Learning használatával. Azure Container Instances használata, ha a következő feltételek egyike igaz:
 
 - Gyors üzembe helyezése és a modell érvényesítése kell. Előre nem kell létrehoznia ACI-tárolókat. Ezek a telepítési folyamat részeként jönnek létre.
 - A tesztelt egy olyan modell, fejlesztés alatt áll. 
@@ -28,7 +28,7 @@ Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos informá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 - A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik regisztrált modellel, tekintse meg a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md).
 

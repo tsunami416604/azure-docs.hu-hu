@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan lehet elhárítani a "0x0000005A-CRITICal SERVI
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 2a6e8985a2cb13da0f2e34f4e9961f84aacdd974
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103508"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058059"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
 Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akkor fordulhat elő, amikor Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure. Hibaelhárítási lépéseket biztosít a problémák megoldásához. 
@@ -41,7 +41,7 @@ A leállítási hibák számos oka lehet. A leggyakoribb okok a következők:
 
 ## <a name="solution"></a>Megoldás 
 
-A probléma megoldásához forduljon az ügyfélszolgálathoz, [és küldjön el egy memóriaképfájl-fájlt](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), amely segít a probléma gyorsabb diagnosztizálásában, vagy próbálja ki a következő önsegítő megoldást.
+A probléma megoldásához [forduljon az ügyfélszolgálathoz, és küldjön el egy memóriaképfájl-fájlt](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), amely segít a probléma gyorsabb diagnosztizálásában, vagy próbálja ki a következő önsegítő megoldást.
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
 
@@ -93,7 +93,7 @@ A memóriaképek és a soros konzol engedélyezéséhez futtassa az alábbi szkr
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
 2. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A virtuális gép biztonságos módba fog indulni. Ha továbbra is tapasztalja a hibát, lépjen a választható lépésre.
-3. Nyissa meg a **Futtatás** mezőt , és futtassa a vezérlőt az illesztőprogram-ellenőrző kezelő eszköz elindításához.
+3. Nyissa meg a **Futtatás** mezőt, és futtassa a vezérlőt **az illesztőprogram-ellenőrző** kezelő eszköz elindításához.
 4. Jelölje be az **aláíratlan illesztőprogramok automatikus kiválasztása**jelölőnégyzetet, majd kattintson a **tovább**gombra.
 5. Ekkor megjelenik az Aláíratlan illesztőprogram-fájlok listája. Jegyezze fel a fájlneveket.
 6. Másolja a fájlok ugyanazon verzióját egy működő virtuális gépről, majd cserélje le ezeket a nem aláírt fájlokat. 
@@ -117,7 +117,7 @@ A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
     Autoújraindítás = 0
 
     CrashDumpEnabled = 2
-7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl** > kitöltése**struktúrát**.
+7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl** > **kitöltése struktúrát**.
 8.  Módosítsa a BCD-telepítőt hibakeresési módba való indításra. Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
 
     ```cmd

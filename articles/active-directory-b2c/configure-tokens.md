@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846936"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064388"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása a Azure Active Directory B2Cban
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a [tokenek élettartamát és kompatibilitását](active-directory-b2c-reference-tokens.md) Azure Active Directory (Azure ad) B2C-ben.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a [jogkivonatok élettartamát és kompatibilitását](active-directory-b2c-reference-tokens.md) Azure Active Directory B2C (Azure ad B2C).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a [tokenek élettartamát
 A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
 5. Nyissa meg a korábban létrehozott felhasználói folyamatot.

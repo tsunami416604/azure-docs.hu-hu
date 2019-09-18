@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: bfe8b1297b155ecd947140149c13da6c3a08c3c8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464796"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065978"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Twitter-fiókkal való bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Twitter-fiók felhasználói számára [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával Azure Active Directory (Azure ad) B2C-ben.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy Twitter-fiók felhasználói számára [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával Azure Active Directory B2C (Azure ad B2C).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,17 +36,17 @@ Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban
 2. Válassza **az alkalmazás létrehozása**lehetőséget.
 3. Adja meg az alkalmazás **nevét** és **leírását**.
 4. A **webhely URL**-címe `https://your-tenant.b2clogin.com`mezőbe írja be a értéket. Cserélje `your-tenant` le a helyére a bérlő nevét. Például: https://contosob2c.b2clogin.com.
-5. A **visszahívás URL**-címéhez `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`írja be a következőt:. Cserélje `your-tenant` le a nevet a bérlő neve és `your-policy-Id` a szabályzat azonosítójának helyére. Például: `b2c_1A_signup_signin_twitter`. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+5. A **visszahívás URL-címéhez**írja be `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`a következőt:. Cserélje `your-tenant` le a nevet a bérlő neve és `your-policy-Id` a szabályzat azonosítójának helyére. Például: `b2c_1A_signup_signin_twitter`. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
 6. A lap alján olvassa el és fogadja el a feltételeket, majd válassza a **Létrehozás**lehetőséget.
-7. Az **alkalmazás részletei** lapon válassza a **Szerkesztés > a részletek szerkesztése**lehetőséget, jelölje be a **bejelentkezés engedélyezése**a Twitteren jelölőnégyzetet, majd kattintson a **Mentés**gombra.
-8. Válassza a **kulcsok és** jogkivonatok lehetőséget, és jegyezze fel a **fogyasztói API-kulcsot** és a **fogyasztói API titkos kulcsának** értékeit, amelyeket később szeretne használni.
+7. Az **alkalmazás részletei** lapon válassza a **Szerkesztés > a részletek szerkesztése**lehetőséget, jelölje be a **bejelentkezés engedélyezése a Twitteren**jelölőnégyzetet, majd kattintson a **Mentés**gombra.
+8. Válassza a **kulcsok és jogkivonatok** lehetőséget, és jegyezze fel a **fogyasztói API-kulcsot** és a **fogyasztói API titkos kulcsának** értékeit, amelyeket később szeretne használni.
 
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 
 A Azure AD B2C bérlőben korábban rögzített titkos kulcsot kell tárolnia.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -130,7 +130,7 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha hozzáad egy **ClaimsProviderSelection** elemet egy Twitter-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg  az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
+1. Keresse meg az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
 2. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `TwitterExchange`:
 
     ```XML
@@ -141,7 +141,7 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy egy Twitter-fiókkal kommunikáljon a jogkivonatok fogadásához.
 
-1. Keresse meg  a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```XML
@@ -157,7 +157,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 Az Azure AD B2c-vel folytatott kommunikáció egy, a bérlőben létrehozott alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 5. Adja meg az alkalmazás nevét, például *testapp1*.

@@ -4,7 +4,7 @@ description: A távoli asztali hibákkal kapcsolatos részletes hibaelhárítás
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: nem lehet csatlakozni a távoli asztalhoz, a távoli asztal hibaelhárítása, távoli asztal nem tud csatlakozni, távoli asztali hibák, távoli asztal hibaelhárítása, távoli asztali problémák
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a0f4c4172661b0f041a30df2d4d63ba58f203e89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 053a209829f30ea92d76b29f24d028d77ca732e7
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080542"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058904"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Az Azure-beli Windows rendszerű virtuális gépek távoli asztali kapcsolataival kapcsolatos problémáinak részletes hibaelhárítási lépései
 Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Azure-beli virtuális gépek összetett Távoli asztal hibáinak diagnosztizálásához és javításához.
 
 > [!IMPORTANT]
-> A gyakoribb Távoli asztal hibák elkerülése érdekében olvassa el az alapszintű [hibaelhárítási cikket távoli asztal](troubleshoot-rdp-connection.md) a továbblépés előtt.
+> A gyakoribb Távoli asztal hibák elkerülése érdekében olvassa el [az alapszintű hibaelhárítási cikket távoli asztal](troubleshoot-rdp-connection.md) a továbblépés előtt.
 
-Előfordulhat, hogy Távoli asztal hibaüzenet jelenik meg, amely nem hasonlít az alapszintű [Távoli asztal hibaelhárítási útmutatójában](troubleshoot-rdp-connection.md)ismertetett hibaüzenetekre. Az alábbi lépéseket követve megállapíthatja, hogy miért nem tud csatlakozni az Azure-beli virtuális gép RDP-szolgáltatásához a Távoli asztal (RDP) ügyfél.
+Előfordulhat, hogy Távoli asztal hibaüzenet jelenik meg, amely nem hasonlít az [alapszintű távoli asztal hibaelhárítási útmutatójában](troubleshoot-rdp-connection.md)ismertetett hibaüzenetekre. Az alábbi lépéseket követve megállapíthatja, hogy miért nem tud csatlakozni az Azure-beli virtuális gép RDP-szolgáltatásához a Távoli asztal (RDP) ügyfél.
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és kattintson a **támogatás kérése**lehetőségre. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="components-of-a-remote-desktop-connection"></a>Távoli asztal-kapcsolatok összetevői
 Az RDP-kapcsolatok a következő összetevőket érintik:
@@ -48,7 +48,7 @@ A továbblépés előtt hasznos lehet a virtuális géphez való legutóbbi sike
 Mielőtt folytatná a részletes hibaelhárítást,
 
 * A Azure Portalban található virtuális gép állapotának ellenőrzését bármilyen nyilvánvaló probléma miatt.
-* Az alapszintű hibaelhárítási útmutatóban kövesse az [Általános RDP-hibák gyors javításának lépéseit](troubleshoot-rdp-connection.md#quick-troubleshooting-steps).
+* Az [alapszintű hibaelhárítási útmutatóban kövesse az általános RDP-hibák gyors javításának lépéseit](troubleshoot-rdp-connection.md#quick-troubleshooting-steps).
 * Egyéni lemezképek esetén győződjön meg arról, hogy a virtuális merevlemez megfelelően fel van készítve a feltöltés előtt. További információ: [Windows VHD vagy VHDX előkészítése az Azure](../windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez.
 
 
@@ -107,12 +107,12 @@ Ha Távoli asztalon keresztül tud csatlakozni egy felhőalapú szolgáltatásba
 * A cél virtuális gépen Távoli asztal forgalom végpont-konfigurációja: A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gép Távoli asztal szolgáltatását figyeli (az alapértelmezett érték 3389).
 * A cél virtuális gépen a Távoli asztal forgalmi végponthoz tartozó ACL: A hozzáférés-vezérlési listák lehetővé teszik az internetről a forrás IP-címe alapján engedélyezett vagy megtagadott bejövő forgalom megadását. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő Távoli asztal forgalmat a végpontra. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [Mi az a Network Access Control List (ACL)?](../../virtual-network/virtual-networks-acl.md)
 
-Annak vizsgálatához, hogy a végpont a probléma forrása-e, távolítsa el az aktuális végpontot, és hozzon létre egy újat, és válasszon egy véletlenszerű portot a 49152 – 65535 tartományból a külső portszámhoz. További információ: végpontok [beállítása virtuális géphez](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Annak vizsgálatához, hogy a végpont a probléma forrása-e, távolítsa el az aktuális végpontot, és hozzon létre egy újat, és válasszon egy véletlenszerű portot a 49152 – 65535 tartományból a külső portszámhoz. További információ: [végpontok beállítása virtuális géphez](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="source-4-network-security-groups"></a>4\. Forrás: Network Security Groups (Hálózati biztonsági csoportok)
 A hálózati biztonsági csoportok lehetővé teszik a bejövő és kimenő forgalom részletesebb szabályozását. Az alhálózatokat és a Cloud Servicest egy Azure-beli virtuális hálózaton átívelő szabályok hozhatók létre.
 
-Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális](../../virtual-network/diagnose-network-traffic-filter-problem.md)gépek forgalmának hibakereséséhez.
+Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ## <a name="source-5-windows-based-azure-vm"></a>5\. Forrás: Windows-alapú Azure-beli virtuális gép
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443852"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074139"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap-felismerő modell betanítása és űrlapadatok kinyerése a REST API és a Python használatával
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
-- Legalább öt azonos típusú űrlap. Ezeket az adattípusokat fogja használni a modell betanításához. Ehhez a rövid útmutatóhoz [minta](https://go.microsoft.com/fwlink/?linkid=2090451) adatkészletet is használhat. Töltse fel az adatok egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
+- Legalább öt azonos típusú űrlap. Ezeket az adattípusokat fogja használni a modell betanításához. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel az adatok egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -34,13 +34,13 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="train-a-form-recognizer-model"></a>Űrlap-felismerő modell betanítása
 
-Először is szüksége lesz egy Azure Storage blob-tárolóban található betanítási adathalmazra. Legalább öt kitöltött űrlapot (PDF-dokumentumot és/vagy képet) kell tartalmaznia a fő bemeneti adatokhoz hasonló típusú vagy szerkezetű űrlapokon. Vagy egyetlen üres űrlapot is használhat két kitöltött űrlap használatával. Az üres űrlap fájlnevének tartalmaznia kell a "Empty" szót. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési](../build-training-data-set.md) adatkészletének létrehozása című témakört.
+Először is szüksége lesz egy Azure Storage blob-tárolóban található betanítási adathalmazra. Legalább öt kitöltött űrlapot (PDF-dokumentumot és/vagy képet) kell tartalmaznia a fő bemeneti adatokhoz hasonló típusú vagy szerkezetű űrlapokon. Vagy egyetlen üres űrlapot is használhat két kitöltött űrlap használatával. Az üres űrlap fájlnevének tartalmaznia kell a "Empty" szót. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört.
 
 Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő Python-kód futtatásával hívja meg a **Train** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
-1. A `<Endpoint>` helyére írja be az űrlap-felismerő erőforrás végpontjának URL-címét abban az Azure-régióban, ahol az előfizetési kulcsokat beszerezte.
+1. Cserélje `<Endpoint>` le az értékét az űrlap-felismerő erőforrás végponti URL-címére.
 1. Cserélje `<Subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
-1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás**beolvasása elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
 
     ```python
     ########### Python Form Recognizer Train #############

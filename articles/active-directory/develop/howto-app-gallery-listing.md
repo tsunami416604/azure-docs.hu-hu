@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898519"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033756"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -48,12 +48,7 @@ Ez a cikk bemutatja, hogyan listázhat egy alkalmazást az Azure AD-alkalmazás-
 
 - A jelszó egyszeri bejelentkezéséhez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolók a várt módon működjenek az egyszeri bejelentkezéshez.
 
-- Az automatikus felhasználó-kiépítési kérelmek esetében az alkalmazásnak szerepelnie kell a katalógusban a SAML 2.0/WS-fed használatával engedélyezett egyszeri bejelentkezés funkcióval. Ha még nem szerepel a portálon, kérheti az egyszeri bejelentkezést és a felhasználók kiépítését a portálon.
-
 - Állandó fiókra van szükség a 2. atleast regisztrált felhasználóval való teszteléshez.
-
-> [!NOTE]
-> Nagy számú SCIM-összekötő kéréssel dolgozunk, így új kérelmeket állítottunk be a portálon. További értesítésig tartsa a kéréseit. Elnézést kérünk erre a késésre, és az esetlegesen okozott kényelmetlenségeket.
 
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 

@@ -1,10 +1,10 @@
 ---
-title: Szabályozhatja az Azure Virtual Network - PowerShell – klasszikus Útválasztás |} A Microsoft Docs
-description: Ismerje meg, hogyan vezérelheti az útválasztást a PowerShell-lel virtuális hálózatok |} Klasszikus
+title: Útválasztás vezérlése Azure-beli Virtual Network – PowerShell – klasszikus | Microsoft Docs
+description: Megtudhatja, hogyan vezérelheti az útválasztást a virtuális hálózatok a PowerShell használatával | Klasszikus
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: d8d07c16-cbe5-4536-acd6-870269346fe3
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 1441ee9a3d4a563ab35cd9b01e8347d8f51b827a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743367"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058774"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Vezérelheti az útválasztást és a PowerShell-lel (klasszikus) virtuális berendezések használata
+# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Az Útválasztás és a virtuális berendezések használata (klasszikus) a PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
@@ -33,26 +33,26 @@ ms.locfileid: "60743367"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Az Azure-erőforrásokkal való munka előtt fontos megérteni, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik: Az Azure Resource Manager és klasszikus. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../azure-resource-manager/resource-manager-deployment-model.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. Megtekintheti a különféle eszközök dokumentációit a cikk tetején lévő egyik lehetőség kiválasztásával. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
+> Az Azure-erőforrásokkal való munka előtt fontos tisztában lennie azzal, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik: Azure Resource Manager és klasszikus. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../azure-resource-manager/resource-manager-deployment-model.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különböző eszközök dokumentációját a cikk tetején lévő egyik lehetőség kiválasztásával tekintheti meg. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-A minta az alábbi parancsok várható már létrehozott egy egyszerű környezetet az Azure PowerShell a fenti forgatókönyv alapján. Ha szeretné a parancsokat a jelen dokumentum megjelenített, hozzon létre a környezet látható [virtuális hálózat létrehozása (klasszikus) PowerShell-lel](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Az alábbi minta Azure PowerShell parancsok a fenti forgatókönyv alapján már létrehozott egyszerű környezetet várnak. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, hozza létre a [VNet létrehozása (klasszikus) nevű környezetet a PowerShell használatával](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Az udr-t az előtér-alhálózat létrehozása
-Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az előtérbeli alhálózat létrehozásához kövesse az alábbi lépéseket.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Az előtér-alhálózat UDR létrehozása
+A fenti forgatókönyv alapján az előtér-alhálózathoz szükséges útválasztási táblázat és útvonal létrehozásához kövesse az alábbi lépéseket.
 
-1. A következő paranccsal hozzon létre egy útválasztási táblázatot az előtér-alhálózat:
+1. A következő parancs futtatásával hozzon létre egy útválasztási táblázatot az előtér-alhálózathoz:
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
     -Label "Route table for front end subnet"
     ```
 
-2. Futtassa a következő parancsot az útvonaltáblában a háttérbeli alhálózat (192.168.2.0/24) felé irányuló összes forgalmat útvonal létrehozása a **FW1** VM (192.168.0.4):
+2. A következő parancs futtatásával hozzon létre egy útvonalat az útválasztási táblában a háttér-alhálózatra (192.168.2.0/24) irányuló összes forgalom küldéséhez a **FW1** virtuális géphez (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-FrontEnd `
@@ -61,7 +61,7 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Futtassa a következő parancsot az útvonaltáblában a társítása a **előtérbeli** alhálózat:
+3. Futtassa az alábbi parancsot az útválasztási táblázat az előtér-alhálózathoz való hozzárendeléséhez:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -69,10 +69,10 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
     -RouteTableName UDR-FrontEnd
     ```
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Az udr-t, a háttérbeli alhálózat létrehozása
-Az útvonaltábla és útvonal szükséges a háttér-alhálózat forgatókönyv alapján létrehozásához hajtsa végre az alábbi lépéseket:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>A UDR létrehozása a háttérbeli alhálózathoz
+Ha a forgatókönyv alapján a háttérbeli alhálózathoz szükséges útválasztási táblázatot és útvonalat szeretné létrehozni, hajtsa végre a következő lépéseket:
 
-1. A következő paranccsal hozzon létre egy útválasztási táblázatot, a háttérbeli alhálózat:
+1. Futtassa a következő parancsot egy útválasztási táblázat létrehozásához a háttérbeli alhálózathoz:
 
     ```powershell
     New-AzureRouteTable -Name UDR-BackEnd `
@@ -80,7 +80,7 @@ Az útvonaltábla és útvonal szükséges a háttér-alhálózat forgatókönyv
     -Label "Route table for back end subnet"
     ```
 
-2. Futtassa a következő parancsot az útválasztási táblázatban az előtérbeli alhálózat (192.168.1.0/24) felé irányuló összes forgalmat útvonal létrehozása a **FW1** VM (192.168.0.4):
+2. A következő parancs futtatásával hozzon létre egy útvonalat az útválasztási táblában az előtér-alhálózatra (192.168.1.0/24) irányuló összes forgalom küldéséhez a **FW1** virtuális géphez (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd
@@ -91,7 +91,7 @@ Az útvonaltábla és útvonal szükséges a háttér-alhálózat forgatókönyv
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Futtassa a következő parancsot az útvonaltáblában a társítása a **háttérrendszer** alhálózat:
+3. A következő parancs futtatásával társítsa az útválasztási táblázatot a **háttér** -alhálózathoz:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -99,18 +99,18 @@ Az útvonaltábla és útvonal szükséges a háttér-alhálózat forgatókönyv
     -RouteTableName UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>A virtuális Gépen FW1 IP-továbbítás engedélyezése
+## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>IP-továbbítás engedélyezése a FW1 virtuális gépen
 
-Ahhoz, hogy az IP-továbbítási a FW1 virtuális gépen, kövesse az alábbi lépéseket:
+Ha engedélyezni szeretné az IP-továbbítást a FW1 virtuális gépen, hajtsa végre a következő lépéseket:
 
-1. Futtassa a következő parancsot az IP-továbbítás állapotának ellenőrzéséhez:
+1. Futtassa az alábbi parancsot az IP-továbbítás állapotának vizsgálatához:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `
     | Get-AzureIPForwarding
     ```
 
-2. IP-továbbítási az engedélyezéséhez a következő parancsot a *FW1* virtuális Géphez:
+2. Futtassa a következő parancsot a *FW1* virtuális gép IP-továbbításának engedélyezéséhez:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

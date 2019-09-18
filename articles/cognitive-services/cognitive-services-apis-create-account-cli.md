@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383257"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057651"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -38,7 +38,7 @@ Telepítse az [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-c
 az login
 ```
 
-A parancsok a böngészőben való futtatásához a zöld **kipróbálom** gombot is használhatja.
+A parancsok a böngészőben való futtatásához a zöld kipróbálom gombot is használhatja.
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Új Azure Cognitive Services erőforráscsoport létrehozása
 
@@ -138,7 +138,7 @@ Az alábbi paranccsal létrehozhat egy F0 (ingyenes) erőforrást az anomália `
 ```azurecli-interactive
 az cognitiveservices account create \
     --name anomaly-detector-resource \
-    --group cognitive-services-resource-group \
+    --resource-group cognitive-services-resource-group \
     --kind AnomalyDetector \
     --sku F0 \
     --location westus2 \

@@ -1,7 +1,7 @@
 ---
 title: Mik azok a FPGA – üzembe helyezési útmutató
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan helyezhet üzembe egy webszolgáltatást egy olyan FPGA, amelyen fut egy Azure Machine Learning szolgáltatás az alacsony késleltetésű következtetésekhez.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan helyezhet üzembe egy webszolgáltatást egy olyan FPGA, amely egy Azure Machine Learning az alacsony késleltetésű következtetésekhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860475"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034452"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 
-Ez a cikk bevezetést nyújt a Field-programozható Gate-tömbök (FPGA) számára, és bemutatja, hogyan helyezheti üzembe a modelleket Azure Machine Learning szolgáltatás használatával egy Azure-FPGA. 
+Ez a cikk bevezetést nyújt a Field-programozható Gate-tömbök (FPGA) számára, és bemutatja, hogyan helyezheti üzembe a modelleket Azure Machine Learning használatával egy Azure-FPGA. 
 
 A FPGA programozható logikai blokkok tömbjét és az újrakonfigurálható összekapcsolások hierarchiáját tartalmazza. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja.
 
@@ -28,7 +28,7 @@ A FPGA programozható logikai blokkok tömbjét és az újrakonfigurálható ös
 
 A következő diagram és táblázat bemutatja, hogyan hasonlítható össze a FPGA más processzorokkal.
 
-![A Azure Machine Learning Service FPGA összehasonlításának ábrája](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Azure Machine Learning FPGA összehasonlításának ábrája](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Processzor||Leírás|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA Azure Machine L
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés.  Ha még nem rendelkezik ilyennel, hozzon létre egy ingyenes fiókot a Kezdés előtt. Próbálja ki a [Azure Machine learning Service ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+- Azure-előfizetés.  Ha még nem rendelkezik ilyennel, hozzon létre egy ingyenes fiókot a Kezdés előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 - FPGA kvóta. Az Azure CLI használatával győződjön meg arról, hogy rendelkezik-e kvótával:
 
@@ -112,7 +112,7 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA Azure Machine L
 
     Ha nem rendelkezik kvótával, küldje el a kérelmet a következő [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)címen:.
 
-- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
+- Azure Machine Learning munkaterület és a Python Azure Machine Learning SDK telepítve. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
  
 - A Python SDK a hardveres gyorsítású modellekhez:
 

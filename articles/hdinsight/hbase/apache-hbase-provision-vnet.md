@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8fc7c931f31e1ff58f41faa9a29f7e77e9655fd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60a7afb6e610294ccaa535eaa7371ff8d5015db3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917320"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077201"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-fürtök létrehozása a HDInsight-ben az Azure-ban Virtual Network
 Ismerje meg, hogyan hozhat létre Azure HDInsight Apache HBase-fürtöket egy [Azure-Virtual Network][1].
@@ -47,10 +47,10 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 >
 > &lt;A fürt neve > a sablon használatakor megadott fürt nevével lesz lecserélve.
 
-
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)található.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
 2. Az **Egyéni telepítés** panelen adja meg a következő tulajdonságokat:
 
    * **Előfizetés**: Válasszon ki egy Azure-előfizetést, amely a HDInsight-fürt, a függő Storage-fiók és az Azure virtuális hálózat létrehozásához használatos.

@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227170"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065708"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
-A Azure Active Directory (Azure AD) B2C egy vállalat és egy ügyfél közötti Identitáskezelés-kezelő szolgáltatás. Ezzel a szolgáltatással testreszabhatja és szabályozhatja, hogy a felhasználók hogyan kezelhetik biztonságosan a web-, asztali, mobil-vagy egyoldalas alkalmazásokkal. A Azure AD B2C használatával a felhasználók regisztrálhatnak, bejelentkezhetnek, visszaállíthatják a jelszavakat és szerkeszthetik a profilokat. Azure AD B2C az OpenID Connect és a OAuth 2,0 protokollok formáját valósítja meg. A protokollok megvalósításának fontos kulcsa a biztonsági jogkivonatok és jogcímek, amelyek lehetővé teszik biztonságos hozzáférés biztosítását az erőforrásokhoz.
+A Azure Active Directory B2C (Azure AD B2C) a vállalattól a felhasználótól származó Identity Management szolgáltatás. Ezzel a szolgáltatással testreszabhatja és szabályozhatja, hogy a felhasználók hogyan kezelhetik biztonságosan a web-, asztali, mobil-vagy egyoldalas alkalmazásokkal. A Azure AD B2C használatával a felhasználók regisztrálhatnak, bejelentkezhetnek, visszaállíthatják a jelszavakat és szerkeszthetik a profilokat. Azure AD B2C az OpenID Connect és a OAuth 2,0 protokollok formáját valósítja meg. A protokollok megvalósításának fontos kulcsa a biztonsági jogkivonatok és jogcímek, amelyek lehetővé teszik biztonságos hozzáférés biztosítását az erőforrásokhoz.
 
 A *felhasználói út* egy olyan házirendet meghatározó kérelem, amely a felhasználó és az alkalmazás működésének működését szabályozza Azure ad B2C. Két elérési út áll rendelkezésre a felhasználói útvonalak definiálásához Azure AD B2Cban.
 

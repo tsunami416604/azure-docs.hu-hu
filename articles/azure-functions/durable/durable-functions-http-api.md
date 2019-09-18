@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933390"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033966"
 ---
 # <a name="http-api-reference"></a>HTTP API-referenciák
 
@@ -28,7 +28,7 @@ A bővítmény által megvalósított összes HTTP API-nak a következő paramé
 | **`connection`** | Lekérdezési sztring    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
 | **`systemKey`**  | Lekérdezési sztring    | Az API meghívásához szükséges hitelesítési kulcs. |
 
-`systemKey`a Azure Functions gazdagép által automatikusan generált engedélyezési kulcs. Kifejezetten hozzáférést biztosít a tartós feladathoz tartozó API-khoz, és ugyanúgy kezelhető, mint a [többi hitelesítési kulcs](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Az `systemKey` érték felderítésének legegyszerűbb módja a `CreateCheckStatusResponse` korábban említett API használata.
+`systemKey`a Azure Functions gazdagép által automatikusan generált engedélyezési kulcs. Kifejezetten hozzáférést biztosít a tartós feladathoz tartozó API-khoz, és ugyanúgy kezelhető, mint a [többi hitelesítési kulcs](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Olyan URL-címeket hozhat létre, amelyek `taskHub`a `connection`megfelelő, `systemKey` és lekérdezési karakterlánc-értékeket tartalmazzák a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) -kötési `CreateCheckStatusResponse` API `CreateHttpManagementPayload` -kkal, például a .net `createCheckStatusResponse` -ben és a-ben lévő API-kkal, illetve `createHttpManagementPayload` API-k a JavaScriptben.
 
 A következő néhány szakasz a bővítmény által támogatott HTTP API-kat fedi le, és példákat is tartalmaz a használatuk módjára.
 

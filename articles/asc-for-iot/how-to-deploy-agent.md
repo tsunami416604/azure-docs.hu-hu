@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596344"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933647"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
@@ -43,8 +43,8 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 
 |     | C-alapú biztonsági ügynök | C#-alapú biztonsági ügynök |
 | --- | ----------- | --------- |
-| Nyílt forráskódú | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető [](https://aka.ms/iot-security-github-cs) el a githubban | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető [](https://aka.ms/iot-security-github-c) el a githubban |
-| Fejlesztési nyelv    | C | C# |
+| Nyílt forráskódú | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-cs) | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-c) |
+| Fejlesztői nyelv    | C | C# |
 | Támogatott Windows-platformok? | Nem | Igen |
 | Windows előfeltételek | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Támogatott linuxos platformok? | Igen, x64 és x86 | Igen, csak x64 |
@@ -78,7 +78,7 @@ Válaszoljon a IoT-eszközökkel kapcsolatos alábbi kérdésekre a megfelelő �
 
 - Linux-disztribúciót használ x64 architektúrával?
 
-    Bármelyik ügynököt használhatja. <br>
+    Mindkét ügynök-aroma használható. <br>
     [Helyezzen üzembe egy C-alapú biztonsági ügynököt Linuxra](how-to-deploy-linux-c.md) és/vagy [telepítsen egy C#Linux-alapú biztonsági ügynököt](how-to-deploy-linux-cs.md).
 
 Mindkét ügynök-íz ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs beállításokat.
@@ -97,7 +97,7 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 |C#|Ubuntu 18.04    |x64|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
-|C#|Windows 10 IoT Core Build 17763 |x64|
+|C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
 ## <a name="next-steps"></a>További lépések

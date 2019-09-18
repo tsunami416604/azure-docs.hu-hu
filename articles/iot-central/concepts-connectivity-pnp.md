@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 26f05e60761af0b8f0db9508488f28613b82293f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81e386be98f9c5684402c376372f43e90fefcb42
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880240"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066751"
 ---
 # <a name="device-connectivity-in-azure-iot-central-preview-features"></a>Eszköz csatlakoztatása az Azure IoT Central (előzetes verziójú funkciók)
 
@@ -34,15 +34,18 @@ A DPS használata lehetővé teszi a következőket:
 
 Ez a cikk a következő használati eseteket ismerteti:
 
-1. [Egyetlen eszköz gyors csatlakoztatása SAS használatával](#connect-a-single-device)
-1. [Eszközök csatlakoztatása nagy méretekben SAS használatával](#connect-devices-at-scale-using-sas)
-1. Az [eszközök méretezése az X. 509 tanúsítvánnyal](#connect-devices-using-x509-certificates) . Ez az ajánlott módszer az éles környezetekben.
-1. [Csatlakoztatás az eszközök első regisztrációja nélkül](#connect-without-registering-devices)
-1. [Eszközök csatlakoztatása a IoT Plug and Play funkcióival](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+- [Egyetlen eszköz gyors csatlakoztatása SAS használatával](#connect-a-single-device)
+- [Eszközök csatlakoztatása nagy méretekben SAS használatával](#connect-devices-at-scale-using-sas)
+- Az [eszközök méretezése az X. 509 tanúsítvánnyal](#connect-devices-using-x509-certificates) . Ez az ajánlott módszer az éles környezetekben.
+- [Csatlakoztatás az eszközök első regisztrációja nélkül](#connect-without-registering-devices)
+- [Eszközök csatlakoztatása a IoT Plug and Play funkcióival](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
-Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. Az eszközhöz tartozó kapcsolódási karakterlánc létrehozásához használhatja a IoT Central-alkalmazás eszköz csatlakoztatási adatait. Részletes útmutatást a következő témakörben talál: [eszköz kapcsolati karakterláncának létrehozása Azure IoT Central-alkalmazáshoz való kapcsolódáshoz](howto-generate-connection-string.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. A IoT Central alkalmazás eszköz kapcsolati adataival csatlakoztathat egy eszközt a IoT Central alkalmazáshoz az eszköz kiépítési szolgáltatása (DPS) használatával. A következő nyelveken talál minta DPS-eszköz ügyféloldali kódját:
+
+- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
+- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása nagy méretekben SAS használatával
 
@@ -140,7 +143,7 @@ A következő lépések részletesen ismertetik ezt a folyamatot. A lépések ki
 
 1. Ezután kapcsolja be az eszközt a IoT Central alkalmazáshoz való kapcsolódáshoz. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez, hogy beolvassa a IoT Central regisztrációs adatait.
 
-1. A csatlakoztatott eszköz kezdetben az **eszközök** lapon nem társítottként jelenik meg. Az eszköz kiépítési állapota regisztrálvavan. **Telepítse át** az eszközt a megfelelő eszköz sablonba, és hagyja jóvá az eszközt a IoT Central alkalmazáshoz való kapcsolódáshoz. Az eszköz lekérheti a kapcsolódási karakterláncot a IoT Hubről, és megkezdheti az adatok küldését. Az eszköz üzembe helyezése befejeződött, és a létesítési állapot már kiépítve.
+1. A csatlakoztatott eszköz kezdetben az **eszközök** lapon nem **társítottként** jelenik meg. Az eszköz kiépítési állapota regisztrálvavan. **Telepítse át** az eszközt a megfelelő eszköz sablonba, és hagyja jóvá az eszközt a IoT Central alkalmazáshoz való kapcsolódáshoz. Az eszköz lekérheti a kapcsolódási karakterláncot a IoT Hubről, és megkezdheti az adatok küldését. Az eszköz üzembe helyezése befejeződött, és a létesítési állapot már kiépítve.
 
 ## <a name="connect-devices-with-iot-plug-and-play"></a>Eszközök csatlakoztatása a IoT Plug and Play
 
@@ -170,16 +173,16 @@ Ha egy valós eszköz csatlakozik a IoT Central alkalmazáshoz, az eszköz álla
     - A rendszer új valódi eszközt ad hozzá az **eszközök** lapon.
     - Az **eszközök** lapon az **Importálás** használatával adhat hozzá eszközöket.
 
-1. Az Eszközállapot akkor változik, ha a IoT Central alkalmazáshoz az érvényes hitelesítő adatokkal csatlakozó eszköz befejezi a kiépítési lépést. Ebben a lépésben az eszköz lekérdezi a IoT Hubból a kapcsolatok karakterláncát. Az eszköz most már csatlakozhat IoT Hubhoz, és megkezdheti az adatok küldését.
+1. Az **Eszközállapot akkor változik, ha a** IoT Central alkalmazáshoz az érvényes hitelesítő adatokkal csatlakozó eszköz befejezi a kiépítési lépést. Ebben a lépésben az eszköz lekérdezi a IoT Hubból a kapcsolatok karakterláncát. Az eszköz most már csatlakozhat IoT Hubhoz, és megkezdheti az adatok küldését.
 
-1. Az operátor letilthat egy eszközt. Ha egy eszköz le van tiltva, nem tud adatküldést küldeni a IoT Central alkalmazásnak. A letiltott eszközök állapota letiltva. Az operátornak vissza kell állítania az eszközt az adatok küldésének folytatásához. Ha egy operátor feloldja egy eszköz zárolását, az állapot visszatér az előző értékre, **regisztrálva** vagy kiépítve.
+1. Az operátor letilthat egy eszközt. Ha egy eszköz le van tiltva, nem tud adatküldést küldeni a IoT Central alkalmazásnak. A letiltott eszközök állapota **Letiltva**. Az operátornak vissza kell állítania az eszközt az adatok küldésének folytatásához. Ha egy operátor feloldja egy eszköz zárolását, az állapot visszatér az előző értékre, **regisztrálva** vagy **kiépítve**.
 
-1. Az eszköz állapota **jóváhagyásra vár** , ami azt jelenti, hogy az **automatikus jóváhagyás** lehetőség le van tiltva, és az IoT Centralhoz csatlakozó összes eszközt explicit módon jóvá kell hagyni egy operátor. Az eszközök lapon nem regisztrált eszközök , de az érvényes hitelesítő adatokkal való kapcsolat az eszköz állapota **jóváhagyásra vár**. Az operátorok a **jóváhagyás** gomb használatával hagyhatják jóvá ezeket az eszközöket az **eszközök** lapról.
+1. Az eszköz állapota **jóváhagyásra vár** , ami azt jelenti, hogy az **automatikus jóváhagyás** lehetőség le van tiltva, és az IoT Centralhoz csatlakozó összes eszközt explicit módon jóvá kell hagyni egy operátor. Az **Eszközök lapon nem** regisztrált eszközök, de az érvényes hitelesítő adatokkal való kapcsolat az eszköz állapota **jóváhagyásra vár**. Az operátorok a **jóváhagyás** gomb használatával hagyhatják jóvá ezeket az eszközöket az **eszközök** lapról.
 
 1. Az eszköz állapota nem **társított** , ami azt jelenti, hogy a IoT Centralhoz csatlakozó eszközökhöz nem tartozik sablon társítva. Ez általában a következő esetekben fordul elő:
     - A Devices ( **eszközök** ) lapon az **Importálás** használatával bővülnek az eszközök egy készlete az eszköz sablonjának megadása nélkül
     - Azok az eszközök, amelyek nem lettek kézzel regisztrálva az **eszközök** lapon érvényes hitelesítő adatokkal, de nem határozzák meg a sablon azonosítóját a regisztráció során.  
-Az operátor a Migrálás gomb használatával rendelheti hozzá az eszközöket egy sablonhoz az **eszközök** lapról.
+Az operátor a **Migrálás** gomb használatával rendelheti hozzá az eszközöket egy sablonhoz az **eszközök** lapról.
 
 ## <a name="sdk-support"></a>SDK-támogatás
 
@@ -190,8 +193,6 @@ Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló l
 - [Node. js-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
 - [Javához készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK a .NET-hez](https://github.com/azure/azure-iot-sdk-csharp)
-
-Minden eszköz egy egyedi kapcsolati karakterlánc használatával csatlakozik, amely azonosítja az eszközt. Egy eszköz csak akkor tud csatlakozni az IoT hubhoz, ahol regisztrálva van. Amikor valódi eszközt hoz létre az Azure IoT Central alkalmazásban, az alkalmazás létrehozza a kapcsolódási karakterlánc létrehozásához szükséges adatokat a használatával `dps-keygen`.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>Az SDK szolgáltatásai és IoT Hub kapcsolat
 
@@ -208,7 +209,7 @@ Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkció
 | Eszköztulajdonságok | Eszköz kettős jelentett tulajdonságai |
 | Beállítások | Az eszköz Twin kívánt és jelentett tulajdonságai |
 
-Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [DevDiv-készlet eszköz csatlakoztatása az Azure IoT Central](howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) -alkalmazáshoz, például kód című témakört.
+Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [DevDiv-készlet eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) , például kód című témakört.
 
 ### <a name="protocols"></a>Protokollok
 

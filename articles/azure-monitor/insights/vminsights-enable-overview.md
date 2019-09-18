@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: bd4016d91000ee23023eaa64872bff9a057058d1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f3aca6f62ff529dc2ea8356e18a0162e7d9a85d8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916053"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067051"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése – áttekintés
 
@@ -45,10 +45,13 @@ A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics mun
 - USA nyugati középső régiója
 - USA<sup>2.</sup> nyugati régiója
 - East US
+- Kelet-RÉGIÓJA<sup>1</sup>
 - Közép-Kanada
 - Az Egyesült Királyság déli régiója
+- Észak-Európa<sup>1</sup>
 - Nyugat-Európa
 - Délkelet-Ázsia
+- Kelet-japán<sup>1</sup>
 - Kelet-Ausztrália<sup>1</sup>
 - Délkelet-Ausztrália<sup>1</sup>
 

@@ -1,7 +1,7 @@
 ---
 title: Modellek üzembe helyezésének módja és helye
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan és hol helyezheti üzembe a Azure Machine Learning szolgáltatási modelljeit, beleértve a Azure Container Instances, az Azure Kubernetes Service, a Azure IoT Edge és a Field-programozható Gate-tömböket.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan és hol helyezheti üzembe a Azure Machine Learning modelleket, beleértve a Azure Container Instances, az Azure Kubernetes Service, a Azure IoT Edge és a Field-programozható Gate-tömböket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ff3a19a543f87833420f585bbdf7891cc7589746
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f70975749be52e8498488d7019bf5cb8d858df54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997209"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034681"
 ---
-# <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
+# <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 
 Megtudhatja, hogyan helyezheti üzembe a gépi tanulási modellt webszolgáltatásként az Azure-felhőben, vagy Azure IoT Edge eszközöket.
 
@@ -29,11 +29,11 @@ A munkafolyamat a modell [üzembe helyezésének helyétől](#target) független
 1. A modell üzembe helyezése a számítási célra.
 1. Tesztelje az üzembe helyezett modellt, más néven webszolgáltatást.
 
-Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, üzembe helyezése és figyelése Azure Machine learning szolgáltatással](concept-model-management-and-deployment.md).
+Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, üzembe helyezése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Machine Learning szolgáltatás munkaterületén. További információ: [Azure Machine learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md).
+- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 - A modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
 
@@ -41,7 +41,7 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 ## <a name="connect-to-your-workspace"></a>Kapcsolódás a munkaterülethez
 
-A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning szolgáltatási munkaterülethez a helyi fejlesztési környezetbe gyorsítótárazott információk használatával:
+A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning munkaterülethez a helyi fejlesztési környezetbe gyorsítótárazott információk használatával:
 
 + **Az SDK használata**
 
@@ -118,7 +118,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
 
 ### <a name="register-a-model-from-a-local-file"></a>Modell regisztrálása helyi fájlból
 
-A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Megadhatja egy mappa vagy egy fájl elérési útját. Ezzel a módszerrel regisztrálhatja a Azure Machine Learning szolgáltatással betanított modelleket, majd letöltheti azt. Ezt a módszert használhatja a Azure Machine Learningon kívül betanított modellek regisztrálására is.
+A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Megadhatja egy mappa vagy egy fájl elérési útját. Ezzel a módszerrel regisztrálhatja Azure Machine Learning, majd letöltheti a betanított modelleket. Ezt a módszert használhatja a Azure Machine Learningon kívül betanított modellek regisztrálására is.
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
@@ -154,7 +154,7 @@ A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Meg
 
 További információkért tekintse meg a [modell osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)dokumentációját.
 
-További információ a Azure Machine Learning szolgáltatáson kívül betanított modellek használatáról: [meglévő modell üzembe helyezése](how-to-deploy-existing-model.md).
+A Azure Machine Learningon kívül betanított modellek használatáról a következő témakörben talál további információt: [meglévő modell üzembe helyezése](how-to-deploy-existing-model.md).
 
 <a name="target"></a>
 
@@ -214,7 +214,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 
 #### <a name="optional-automatic-schema-generation"></a>Választható Séma automatikus létrehozása
 
-Ha automatikusan szeretne létrehozni egy sémát a webszolgáltatás számára, adja meg a bemeneti és/vagy kimeneti adatokat a konstruktorban egy adott típusú objektumhoz. A rendszer a típust és a mintát használja a séma automatikus létrehozásához. A Azure Machine Learning szolgáltatás ezután létrehoz egy [OpenAPI](https://swagger.io/docs/specification/about/) (hencegő) specifikációt a webszolgáltatás számára az üzembe helyezés során.
+Ha automatikusan szeretne létrehozni egy sémát a webszolgáltatás számára, adja meg a bemeneti és/vagy kimeneti adatokat a konstruktorban egy adott típusú objektumhoz. A rendszer a típust és a mintát használja a séma automatikus létrehozásához. A Azure Machine Learning Ezután létrehoz egy [OpenAPI](https://swagger.io/docs/specification/about/) (hencegő) specifikációt a webszolgáltatás számára az üzembe helyezés során.
 
 Ezek a típusok jelenleg támogatottak:
 
@@ -630,7 +630,7 @@ A következő JSON-dokumentum egy példa egy központi telepítéshez létrehozo
     "swagger": "2.0",
     "info": {
         "title": "myservice",
-        "description": "API specification for the Azure Machine Learning service myservice",
+        "description": "API specification for Azure Machine Learning myservice",
         "version": "1.0"
     },
     "schemes": [
@@ -762,7 +762,7 @@ További információ: OpenAPI- [specifikáció](https://swagger.io/specificatio
 Egy olyan segédprogram esetében, amely a specifikációból tud ügyféloldali kódtárakat létrehozni, tekintse meg a következőt: [hencegés-CODEGEN](https://github.com/swagger-api/swagger-codegen).
 
 ### <a id="azuremlcompute"></a>Batch-következtetés
-Azure Machine Learning számítási célokat a Azure Machine Learning szolgáltatás hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.
+A Azure Machine Learning számítási célokat Azure Machine Learning hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.
 
 A Batch-következtetések Azure Machine Learning számítási feladatokkal való áttekintését lásd: [a Batch-előrejelzések futtatása](tutorial-pipeline-batch-scoring-classification.md).
 
@@ -776,7 +776,7 @@ A peremhálózati üzembe helyezésének támogatása előzetes verzióban érhe
 
 ## <a name="continuously-deploy-models"></a>Modellek folyamatos üzembe helyezése
 
-A modellek folyamatos üzembe helyezéséhez használja az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-bővítményét. Az Azure DevOps Machine Learning-bővítményével elindíthat egy központi telepítési folyamatot, amikor egy új gépi tanulási modell van regisztrálva egy Azure Machine Learning szolgáltatás munkaterületen.
+A modellek folyamatos üzembe helyezéséhez használja az [Azure DevOps](https://azure.microsoft.com/services/devops/)Machine learning-bővítményét. Az Azure DevOps Machine Learning bővítményével elindíthat egy központi telepítési folyamatot, amikor egy új gépi tanulási modell van regisztrálva egy Azure Machine Learning munkaterületen.
 
 1. Regisztráljon az [Azure-folyamatokra](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), ami lehetővé teszi az alkalmazás folyamatos integrálását és megvalósítását bármilyen platformon vagy felhőben. (Vegye figyelembe, hogy az Azure-folyamatok nem egyeznek meg [Machine learning folyamatokkal](concept-ml-pipelines.md#compare).)
 
@@ -784,7 +784,7 @@ A modellek folyamatos üzembe helyezéséhez használja az [Azure DevOps](https:
 
 1. Telepítse az [Azure-folyamatok Machine learning-bővítményét](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList).
 
-1. A szolgáltatási kapcsolatok szolgáltatással hozzon létre egy egyszerű szolgáltatásnevet a Azure Machine Learning szolgáltatás munkaterületéhez, hogy hozzáférjen az összetevőkhöz. Nyissa meg a projekt beállításait, válassza a **szolgáltatás kapcsolatai**lehetőséget, majd válassza a **Azure Resource Manager**:
+1. A szolgáltatási kapcsolatok szolgáltatással hozzon létre egy egyszerű szolgáltatásnevet a Azure Machine Learning munkaterülethez, hogy hozzáférjen az összetevőkhöz. Nyissa meg a projekt beállításait, válassza a **szolgáltatás kapcsolatai**lehetőséget, majd válassza a **Azure Resource Manager**:
 
     [![Azure Resource Manager kiválasztása](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png)
 

@@ -3,7 +3,7 @@ title: Azure Állapotmonitor v2 – első lépések | Microsoft Docs
 description: Egy rövid útmutató a Állapotmonitor v2-hez. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: a0c836c8ef947e190a0090b3435eec1c53ded436
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326260"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058236"
 ---
-# <a name="get-started-with-status-monitor-v2"></a>Ismerkedés a Állapotmonitor v2-vel
+# <a name="get-started-with-status-monitor-v2"></a>Első lépések az Állapotfigyelő v2-höz
 
 Ez a cikk a legtöbb környezetben várhatóan használható gyors üzembe helyezési parancsokat tartalmazza.
 Az utasítások a frissítések terjesztésének PowerShell-galéria függenek.
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Letöltés és telepítés PowerShell-galéria használatával
 
-### <a name="install-prerequisites"></a>Az előfeltételek telepítése
+### <a name="install-prerequisites"></a>Előfeltételek telepítése
 Futtassa a PowerShellt rendszergazdaként.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -48,7 +48,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ``` 
 
-### <a name="enable-monitoring"></a>Monitorozás engedélyezése
+### <a name="enable-monitoring"></a>Figyelés engedélyezése
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -67,7 +67,7 @@ $pathToNupkg | rename-item -newname $pathToZip
 $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.ApplicationMonitor"
 Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
-### <a name="enable-monitoring"></a>Monitorozás engedélyezése
+### <a name="enable-monitoring"></a>Figyelés engedélyezése
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```

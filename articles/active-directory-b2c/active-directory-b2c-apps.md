@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369399"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066145"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
 
-A Azure Active Directory (Azure AD) B2C számos modern alkalmazás-architektúra hitelesítését támogatja. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ez a cikk ismerteti a felépíthető alkalmazások típusait, a kívánt nyelvtől és platformtól függetlenül. Emellett az alkalmazások létrehozásának megkezdése előtt is segít megérteni a magas szintű forgatókönyveket.
+A Azure Active Directory B2C (Azure AD B2C) számos modern alkalmazás-architektúrán támogatja a hitelesítést. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ez a cikk ismerteti a felépíthető alkalmazások típusait, a kívánt nyelvtől és platformtól függetlenül. Emellett az alkalmazások létrehozásának megkezdése előtt is segít megérteni a magas szintű forgatókönyveket.
 
-Az Azure AD B2Ct használó összes alkalmazást regisztrálni kell a [Azure ad B2C](active-directory-b2c-get-started.md) -bérlőben a [Azure Portal](https://portal.azure.com/)használatával. Az alkalmazás regisztrációs folyamata az értékeket gyűjti és rendeli hozzá, például:
+Az Azure AD B2Ct használó összes alkalmazást regisztrálni kell a [Azure ad B2C-bérlőben](active-directory-b2c-get-started.md) a [Azure Portal](https://portal.azure.com/)használatával. Az alkalmazás regisztrációs folyamata az értékeket gyűjti és rendeli hozzá, például:
 
 * Egy **alkalmazás-azonosító** , amely egyedileg azonosítja az alkalmazást.
 * A **Válasz URL-címe** , amellyel a válaszok visszaállíthatók az alkalmazásba.
@@ -56,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-További információ a tokenek típusairól és a [Azure ad B2C jogkivonat](active-directory-b2c-reference-tokens.md)-referenciában található alkalmazásokhoz elérhető jogcímekről.
+További információ a tokenek típusairól és a [Azure ad B2C jogkivonat-referenciában](active-directory-b2c-reference-tokens.md)található alkalmazásokhoz elérhető jogcímekről.
 
 Egy webalkalmazásban a szabályzatok minden végrehajtása [](active-directory-b2c-reference-policies.md) a következő magas szintű lépéseket hajtja végre:
 
@@ -132,12 +132,12 @@ Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitel
 
 A következő módokon ne szerkessze Azure AD B2C alkalmazást:
 
-- Más alkalmazás-felügyeleti portálokon, például az [alkalmazás regisztrációs portálján](https://apps.dev.microsoft.com/).
+- Más alkalmazás-felügyeleti portálokon, például az [alkalmazás regisztrációs portálján](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - A Graph API vagy a PowerShell használatával.
 
 Ha a Azure AD B2C alkalmazást a Azure Portalon kívül szerkeszti, akkor az egy hibás alkalmazás lesz, és már nem használható a Azure AD B2C. Törölje az alkalmazást, majd hozza létre újra.
 
-Az alkalmazás törléséhez nyissa meg az [alkalmazás regisztrációs portálját](https://apps.dev.microsoft.com/) , és törölje az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
+Az alkalmazás törléséhez nyissa meg az [alkalmazás regisztrációs portálját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , és törölje az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
 ## <a name="next-steps"></a>További lépések
 

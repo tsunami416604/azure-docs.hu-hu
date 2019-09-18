@@ -3,20 +3,21 @@ title: Azure HDInsight-felügyelet IP-címei
 description: Megtudhatja, hogy mely IP-címeken kell engedélyezni a bejövő adatforgalmat, hogy megfelelően konfigurálja a hálózati biztonsági csoportokat és a felhasználó által megadott útvonalakat a virtuális hálózatkezeléshez az Azure HDInsight használatával.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479205"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076632"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-felügyeleti IP-címek
 
-Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure-beli állapot-és felügyeleti szolgáltatásokkal.  A szolgáltatások egyes IP-címei a régióra jellemzőek, és némelyikük az összes Azure-régióra vonatkozik. Ha nem egyéni DNS-t használ, akkor is engedélyeznie kell a forgalmat a Azure DNS szolgáltatástól.
+Ha hálózati biztonsági csoportokat (NSG) vagy felhasználó által megadott útvonalakat (UDR) használ a HDInsight-fürt bejövő forgalmának vezérlésére, akkor biztosítania kell, hogy a fürt képes legyen kommunikálni a kritikus Azure-beli állapot-és felügyeleti szolgáltatásokkal.  A szolgáltatások egyes IP-címei a régióra jellemzőek, és némelyikük az összes Azure-régióra vonatkozik. Ha nem egyéni DNS-t használ, akkor engedélyeznie kell az Azure DNS szolgáltatástól érkező forgalmat is.
 
 A következő fejezetek a megadott IP-címeket tárgyalják, amelyeket engedélyezni kell.
 
@@ -28,7 +29,7 @@ Ha az Azure által biztosított DNS-szolgáltatást használja, engedélyezze a 
 
 A következő IP-címekről érkező forgalom engedélyezése az Azure HDInsight Health and Management Services esetében, amely az összes Azure-régióra érvényes:
 
-| Forrás IP-címe | Cél  | Direction |
+| Forrás IP-címe | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | Bejövő |
 | 23.99.5.239 | \*:443 | Bejövő |

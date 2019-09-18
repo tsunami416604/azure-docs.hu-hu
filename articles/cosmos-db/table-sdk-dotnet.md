@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: aa9752cdc2148036b3edff8a6002dc81ebff6312
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036302"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058585"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: Megjegyzések letöltése és kibocsátási megjegyzései
 
@@ -38,6 +38,10 @@ ms.locfileid: "69036302"
 >
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* Hibajavítások
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -85,6 +89,7 @@ A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérel
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.2](#2.1.2) |Szeptember 16., 2019| |
 | [2.1.0](#2.1.0) |2019. január 22.|Április 01., 2020 |
 | [2.0.0](#2.0.0) |Szeptember 26., 2018|Március 01., 2020 |
 | [1.1.3](#1.1.3) |Július 17., 2018|December 01., 2019 |

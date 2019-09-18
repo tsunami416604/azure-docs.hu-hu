@@ -1,6 +1,6 @@
 ---
-title: Multi-factor Authentication szolgáltatás Azure Active Directory B2C |} A Microsoft Docs
-description: Hogyan többtényezős hitelesítés engedélyezése az Azure Active Directory B2C által védett felhasználók felé néző alkalmazásokban.
+title: Multi-Factor Authentication a Azure Active Directory B2Cban | Microsoft Docs
+description: A Multi-Factor Authentication engedélyezése a Azure Active Directory B2C által védett, a felhasználók felé irányuló alkalmazásokban.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,42 +10,42 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509314"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065575"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-t a többtényezős hitelesítés engedélyezése
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Multi-Factor Authentication engedélyezése Azure Active Directory B2C
 
-Az Azure Active Directory (Azure AD) B2C közvetlenül integrálódik az [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy az alkalmazások a regisztrációs és bejelentkezési élményt egy második biztonsági réteggel is hozzáadhat. Engedélyezi a multi-factor authentication szolgáltatás egy egyetlen sor kód írása nélkül. Ha már létrehozott jelentkezzen be, és jelentkezzen be a felhasználói folyamatok, a multi-factor authentication továbbra is engedélyezheti.
+A Azure Active Directory B2C (Azure AD B2C) közvetlenül az [Azure multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) integrálódik, így egy második biztonsági réteget adhat hozzá az alkalmazásaiban való regisztráláshoz és bejelentkezési élményekhez. A többtényezős hitelesítés engedélyezése egyetlen sor kód írása nélkül. Ha már létrehozott egy regisztrációs és bejelentkezési felhasználói folyamatot, továbbra is engedélyezheti a többtényezős hitelesítést.
 
-Ez a szolgáltatás segít az alkalmazások kezelésére a következőkhöz hasonló forgatókönyveket:
+Ez a funkció segít az alkalmazásoknak olyan forgatókönyvek kezelésében, mint például a következők:
 
-- Hozzáférni egy alkalmazáshoz a multi-factor Authentication hitelesítés nem feltétlenül szükséges, de van szüksége, hogy egy másik eléréséhez. Például az ügyfél egy közösségi vagy helyi fiók automatikus biztosítási alkalmazás be tud jelentkezni, de a telefonszám ellenőriznie kell, mielőtt az otthoni biztosítási alkalmazás elérésének ugyanabban a címtárban regisztrált.
-- Az általános hozzáférni egy alkalmazáshoz a multi-factor Authentication hitelesítés nem feltétlenül szükséges, de van szüksége, hogy a benne lévő bizalmas részeket eléréséhez. Például az ügyfél tud bejelentkezni a banki alkalmazás egy TAJ- vagy helyi fiók, és ellenőrizze a fiók elosztása, de a wire átvitel megkísérlése előtt ellenőriznie kell a telefonszámot.
+- Nincs szükség többtényezős hitelesítésre egy alkalmazáshoz való hozzáféréshez, de ehhez egy másikra van szükség. Például az ügyfél be tud jelentkezni egy automatikus biztosítási alkalmazásba egy közösségi vagy helyi fiókkal, de ellenőriznie kell a telefonszámot, mielőtt hozzáfér az ugyanabban a címtárban regisztrált Home Insurance-alkalmazáshoz.
+- A többtényezős hitelesítés nem szükséges ahhoz, hogy általánosan hozzáférjen egy alkalmazáshoz, de ehhez a bizalmas részeit is hozzá kell férnie. Például az ügyfél bejelentkezhet egy banki alkalmazásba egy közösségi vagy helyi fiókkal, és ellenőrizheti a fiók egyenlegét, de a hálózati átvitel megkísérlése előtt ellenőriznie kell a telefonszámot.
 
-## <a name="set-multi-factor-authentication"></a>Többtényezős hitelesítés beállítása
+## <a name="set-multi-factor-authentication"></a>Multi-Factor Authentication beállítása
 
-Amikor egy felhasználó folyamatot hoz létre, lehetősége van a multi-factor authentication szolgáltatás engedélyezése.
+Felhasználói folyamat létrehozásakor lehetősége van a többtényezős hitelesítés engedélyezésére.
 
-![Többtényezős hitelesítés beállítása](./media/active-directory-b2c-reference-mfa/add-policy.png)
+![Multi-Factor Authentication beállítása](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-Állítsa be **többtényezős hitelesítés** való **engedélyezve**.
+**Engedélyezze**a **többtényezős hitelesítés** beállítást.
 
-Használhat **felhasználói folyamat futtatása** ellenőrizheti a felhasználói élményt. Erősítse meg az alábbi forgatókönyvet:
+A **felhasználói folyamat futtatásával** ellenőrizheti a felhasználói élményt. Erősítse meg a következő helyzetet:
 
-Egy felhasználói fiók a bérlő jön létre, akkor fordul elő, a multi-factor Authentication hitelesítés lépés előtt. A lépés során az ügyfél ekkor adja meg egy telefonszámot, majd ellenőrzi, hogy az. Ha az ellenőrzés sikeres, a telefonszámot a fiók későbbi használatra van csatolva. Akkor is, ha az ügyfél lemond vagy csökken, az ügyfél is megkéri, hogy egy telefonszám ellenőrzése során újra a következő bejelentkezéskor és a többtényezős hitelesítés engedélyezve van.
+A multi-Factor Authentication lépése előtt létrejön egy ügyfél-fiók a bérlőben. A lépés során a rendszer megkéri az ügyfelet, hogy adjon meg egy telefonszámot, és ellenőrizze azt. Ha az ellenőrzés sikeres, a telefonszámot a rendszer a fiókhoz csatolja későbbi használatra. Annak ellenére, hogy az ügyfél megszakítja vagy kiesik, az ügyfél megkérheti, hogy a következő bejelentkezéskor ismét ellenőrizze a telefonszámot a többtényezős hitelesítés engedélyezésekor.
 
-## <a name="add-multi-factor-authentication"></a>A multi-factor authentication szolgáltatás hozzáadása
+## <a name="add-multi-factor-authentication"></a>Multi-Factor Authentication hozzáadása
 
-Akkor lehet multi-factor authentication szolgáltatás engedélyezése a korábban létrehozott felhasználói folyamat. 
+A többtényezős hitelesítés engedélyezhető egy korábban létrehozott felhasználói folyamaton.
 
-A multi-factor authentication szolgáltatás engedélyezése:
+A többtényezős hitelesítés engedélyezése:
 
-1. Nyissa meg a felhasználói folyamatot, majd **tulajdonságok**. 
-2. A **többtényezős hitelesítés**válassza **engedélyezve**.
+1. Nyissa meg a felhasználói folyamatot, majd válassza a **Tulajdonságok**lehetőséget.
+2. A **többtényezős hitelesítés**mellett válassza az **engedélyezve**lehetőséget.
 3. Kattintson az oldal tetején lévő **Mentés** elemre.
 
 

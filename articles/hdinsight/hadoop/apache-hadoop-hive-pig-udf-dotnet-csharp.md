@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: c05e72cd28c78b26b7c23a123b133d10147a4421
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810784"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066921"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó C# által definiált függvények használata az Apache Hive és az Apache Pig használatával Apache Hadoop HDInsight
 
@@ -161,7 +161,7 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
 
 4. Bontsa ki azt a HDInsight-fürtöt, amelyre telepíteni kívánja az alkalmazást. Megjelenik egy bejegyzés a szöveggel __(alapértelmezett Storage-fiók)__ .
 
-    ![A fürthöz tartozó Storage-fiókot megjelenítő Server Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![A fürthöz tartozó Storage-fiókot megjelenítő Server Explorer](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
     * Ha ezt a bejegyzést ki lehet bővíteni, az __Azure Storage-fiókot__ használja alapértelmezett tárolóként a fürt számára. Ha meg szeretné tekinteni a fürt alapértelmezett tárolójában lévő fájlokat, bontsa ki a bejegyzést, majd kattintson duplán a __(alapértelmezett tároló)__ elemre.
 
@@ -171,7 +171,7 @@ A .NET-keretrendszer és a Mono HDInsight-verziókhoz tartozó verziójával kap
 
    * Ha __Azure Storage-fiókot__használ, kattintson a feltöltés ikonra, majd keresse meg a **Bin\debug** mappát a **HiveCSharp** projekthez. Végül válassza ki a **HiveCSharp. exe** fájlt, és kattintson **az OK**gombra.
 
-       ![ikon feltöltése](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![HDInsight feltöltés ikonja új projekthez](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * Ha __Azure Data Lake Storage__használ, kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a __feltöltés__lehetőséget. Végül válassza ki a **HiveCSharp. exe** fájlt, és kattintson a **Megnyitás**gombra.
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098768"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067864"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -343,7 +343,8 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 * SAP-környezet: egy vagy több SAP-összetevő logikailag csoportosítva olyan üzleti funkciók végrehajtásához, mint például a fejlesztés, a QAS, a képzés, a DR vagy a termelés.
 * SAP-környezet: Ez a kifejezés a teljes SAP-eszközre vonatkozik az ügyfél informatikai környezetében. Az SAP-környezet az összes éles és nem éles környezetet magában foglalja.
 * SAP-System: Az adatbázis-kezelő réteg és az alkalmazás rétegének kombinációja, például egy SAP ERP fejlesztői rendszer, SAP BW test System, SAP CRM üzemi rendszer stb. Az Azure-beli üzemelő példányok nem támogatják ezt a két réteget a helyszíni és az Azure közötti felosztásban. Azt jelenti, hogy az SAP-rendszer központi telepítése helyileg történik, vagy az Azure-ban van üzembe helyezve. Az SAP-környezetek különböző rendszereit azonban az Azure-ban vagy a helyszínen is üzembe helyezheti. Például üzembe helyezheti az SAP CRM fejlesztési és tesztelési rendszereit az Azure-ban, de az SAP CRM üzemi rendszerét a helyszínen.
-* Létesítmények közötti vagy hibrid: Leírja azt a forgatókönyvet, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy ExpressRoute kapcsolatot létesít a helyszíni adatközpont (ok) és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti vagy hibrid forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az előfizetés Azure-eszközeire van kiterjesztve. Ennek a bővítménynek a birtokában a virtuális gépek a helyszíni tartomány részei lehetnek. A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és szolgáltatásokat futtathatnak ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure-beli üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a leggyakoribb és szinte kizárólagos eset, ha SAP-eszközöket helyez üzembe az Azure-ban. További információt [ebben][vpn-gateway-cross-premises-options] a cikkben talál. [][vpn-gateway-site-to-site-create]
+* Létesítmények közötti vagy hibrid: Leírja azt a forgatókönyvet, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy ExpressRoute kapcsolatot létesít a helyszíni adatközpont (ok) és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti vagy hibrid forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az előfizetés Azure-eszközeire van kiterjesztve. Ennek a bővítménynek a birtokában a virtuális gépek a helyszíni tartomány részei lehetnek. A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és szolgáltatásokat futtathatnak ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure-beli üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a leggyakoribb és szinte kizárólagos eset, ha SAP-eszközöket helyez üzembe az Azure-ban. További információt [ebben][vpn-gateway-cross-premises-options] [a cikkben talál.][vpn-gateway-site-to-site-create]
+* Azure monitoring Extension, továbbfejlesztett monitorozás és Azure-bővítmény az SAP-hoz: Egy és ugyanaz az elemek leírása. Leírja, hogy milyen virtuálisgép-bővítményt kell központilag telepítenie az Azure-infrastruktúráról az SAP-gazdagép ügynökének alapvető adatainak biztosításához. Az SAP az SAP-megjegyzésekben figyelési bővítményként vagy továbbfejlesztett Figyelésként is hivatkozhat. Az Azure-ban az SAP-hez készült Azure- **bővítményként**hivatkozunk rá.
 
 > [!NOTE]
 > Az SAP-rendszerek olyan létesítmények közötti vagy hibrid telepítései, amelyeken az Azure Virtual Machines az SAP Systems-t futtatja, az éles környezetben működő SAP-rendszerek tagjai. A létesítmények közötti vagy hibrid konfigurációk támogatják a részek üzembe helyezését vagy az SAP-tájak Azure-ba való betöltését. A teljes SAP-környezetnek az Azure-ban való futtatásához a virtuális gépeknek a helyszíni tartományhoz és a HIRDETÉSekhez/OpenLDAP kell tartozniuk. 
@@ -390,7 +391,7 @@ Olvassa el a Linux rendszerhez készült összes SAP-megjegyzést tartalmazó [�
 ## <a name="possible-scenarios"></a>Lehetséges forgatókönyvek
 Az SAP-t gyakran a vállalatok egyik legfontosabb alapvető fontosságú alkalmazásának tekinti. Az alkalmazások architektúrája és műveletei többnyire összetettek, és fontos, hogy megfeleljenek a rendelkezésre állásra és a teljesítményre vonatkozó követelményeknek.
 
-Ezért a vállalatoknak alaposan meg kell fontolniuk, hogy melyik felhőalapú szolgáltató dönti el, hogy az üzleti szempontból kritikus fontosságú üzleti folyamatokat kívánják-e futtatni. Az Azure ideális nyilvános felhőalapú platform az üzleti szempontból kritikus fontosságú SAP-alkalmazások és az üzleti folyamatok számára. Az Azure-infrastruktúra széles választéka miatt napjainkban szinte minden meglévő SAP NetWeaver-és S/4HANA-rendszer üzemeltethető az Azure-ban. Az Azure számos terabájt memóriát és több mint 200 processzort biztosít a virtuális gépek számára. Az Azure-on túl [nagy méretű Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)-példányok is használhatók, amelyek lehetővé teszik a legfeljebb 120TB 24TB és kibővíthető Ana üzembe helyezését. 
+Ezért a vállalatoknak alaposan meg kell fontolniuk, hogy melyik felhőalapú szolgáltató dönti el, hogy az üzleti szempontból kritikus fontosságú üzleti folyamatokat kívánják-e futtatni. Az Azure ideális nyilvános felhőalapú platform az üzleti szempontból kritikus fontosságú SAP-alkalmazások és az üzleti folyamatok számára. Az Azure-infrastruktúra széles választéka miatt napjainkban szinte minden meglévő SAP NetWeaver-és S/4HANA-rendszer üzemeltethető az Azure-ban. Az Azure számos terabájt memóriát és több mint 200 processzort biztosít a virtuális gépek számára. Az Azure-on túl [nagy méretű Hana-példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)is használhatók, amelyek lehetővé teszik a legfeljebb 120TB 24TB és kibővíthető Ana üzembe helyezését. 
 
 
 Az SAP-rendszerek sikeres üzembe helyezéséhez az Azure IaaS vagy a IaaS-ben fontos megérteni a hagyományos outsourcerek vagy a szolgáltatók és a IaaS-ajánlatok ajánlatai közötti jelentős különbségeket. Míg a hagyományos szolgáltató vagy a kiszervezés az infrastruktúrát (hálózat, tárolás és kiszolgáló típusa) az ügyfél által üzemeltetett munkaterheléshez igazítja, az ügyfél vagy a partner feladata a számítási feladat jellemzése, és kiválasztja a megfelelő Azure-t a virtuális gépek, a tárolás és a hálózat összetevői a IaaS üzembe helyezéséhez.
@@ -483,7 +484,7 @@ Az Azure-régiók mindegyikében (az Azure-régiók esetében lásd a következ�
 >
 
 ### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure-régiók
-A Virtual Machines üzembe helyezése az *Azure*-régiókba történik. Egy Azure-régió lehet egy vagy több olyan adatközpont is, amelyek közelében található. A világon a legtöbb geopolitikai régió esetében a Microsoft legalább két Azure-régióval rendelkezik. Európában például egy *észak-európai* Azure-régió és egy *Nyugat-Európa*található. A geopolitikai régiókban a két Azure-régiót elég nagy távolság választja el, így a természeti vagy technikai katasztrófák nem érintik az azonos geopolitikai régióba tartozó Azure-régiókat. Mivel a Microsoft folyamatosan felépíti az új Azure-régiókat a különböző geopolitikai régiókban, a régiók száma folyamatosan növekszik, és a DEC 2015 a már meglévő további régiókkal rendelkező 20 Azure-régiót is elérte. Ön, hogy az ügyfél minden régióban üzembe helyezhet SAP-rendszereket, beleértve a két, Kínában található Azure-régiót. Az Azure-régiók aktuális naprakész információit a következő webhely tartalmazza:<https://azure.microsoft.com/regions/>
+A Virtual Machines üzembe helyezése az *Azure-régiókba*történik. Egy Azure-régió lehet egy vagy több olyan adatközpont is, amelyek közelében található. A világon a legtöbb geopolitikai régió esetében a Microsoft legalább két Azure-régióval rendelkezik. Európában például egy *észak-európai* Azure-régió és egy *Nyugat-Európa*található. A geopolitikai régiókban a két Azure-régiót elég nagy távolság választja el, így a természeti vagy technikai katasztrófák nem érintik az azonos geopolitikai régióba tartozó Azure-régiókat. Mivel a Microsoft folyamatosan felépíti az új Azure-régiókat a különböző geopolitikai régiókban, a régiók száma folyamatosan növekszik, és a DEC 2015 a már meglévő további régiókkal rendelkező 20 Azure-régiót is elérte. Ön, hogy az ügyfél minden régióban üzembe helyezhet SAP-rendszereket, beleértve a két, Kínában található Azure-régiót. Az Azure-régiók aktuális naprakész információit a következő webhely tartalmazza:<https://azure.microsoft.com/regions/>
 
 ### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>A Microsoft Azure virtuális gép koncepciója
 A Microsoft Azure egy infrastruktúra-szolgáltatási (IaaS) megoldást kínál, amely a helyszíni virtualizációs megoldásként hasonló funkciókkal rendelkező Virtual Machines üzemeltetésére szolgál. Létrehozhat Virtual Machineseket a Azure Portal, a PowerShell vagy a parancssori felületről, amely üzembe helyezési és felügyeleti funkciókat is kínál.
@@ -597,7 +598,7 @@ A fenti sztringnek egyedi módon kell azonosítania az Azure Storage-ban tárolt
 
 #### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
 
-A Managed Disks Azure Resource Manager új erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. Managed Disks automatikusan összehangolja a virtuális gép rendelkezésre állási csoportját, amelyhez csatolva van, így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az áttekintő [cikket](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+A Managed Disks Azure Resource Manager új erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. Managed Disks automatikusan összehangolja a virtuális gép rendelkezésre állási csoportját, amelyhez csatolva van, így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az [áttekintő cikket](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
 Javasoljuk, hogy felügyelt lemezt használjon, mivel leegyszerűsítik a virtuális gépek üzembe helyezését és felügyeletét.
 Az SAP jelenleg csak a prémium szintű Managed Disks támogatja. További információ: SAP Note [1928533].
@@ -792,14 +793,14 @@ A Windows PowerShell egy hatékony és bővíthető keretrendszer, amelyet az ü
 
 [Ez a cikk][powershell-install-configure]a helyi asztali számítógép/laptop Azure PowerShell-parancsmagok használatára való használatának, valamint az Azure-előfizetésekkel való használathoz való konfigurálásának folyamatát ismerteti.
 
-Az Azure PowerShell-parancsmagok telepítésével, frissítésével és konfigurálásával kapcsolatos részletesebb lépések a [telepítési útmutató ebben][deployment-guide-4.1]a fejezetében is találhatók.
+Az Azure PowerShell-parancsmagok telepítésével, frissítésével és konfigurálásával kapcsolatos részletesebb lépések a [telepítési útmutató ebben a fejezetében][deployment-guide-4.1]is találhatók.
 
 Az eddigi felhasználói élmény az volt, hogy a PowerShell (PS) minden bizonnyal a virtuális gépek üzembe helyezéséhez és a virtuális gépek üzembe helyezéséhez szükséges egyéni lépések létrehozásához használható. Az Azure-beli SAP-példányokat futtató összes ügyfél PS-parancsmagokkal egészíti ki a Azure Portal felügyeleti feladatait, vagy akár csak PS parancsmagokat használ az Azure-ban való üzembe helyezések kezeléséhez. Mivel az Azure-specifikus parancsmagok ugyanazt az elnevezési konvenciót használják, mint a több mint 2000 Windows-hez kapcsolódó parancsmag, ez egy egyszerű feladat, amellyel a Windows-rendszergazdák kihasználhatják ezeket a parancsmagokat.
 
 Lásd itt a példát:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
-Az SAP-hez készült Azure monitorozási bővítmény üzembe helyezése (lásd a jelen dokumentum [Azure monitoring-megoldás SAP][planning-guide-9.1] -ban című szakaszát) csak a PowerShell vagy a CLI használatával lehetséges. Ezért a PowerShell vagy a parancssori felület beállítása és konfigurálása szükséges az Azure-beli SAP NetWeaver-rendszerek telepítésekor vagy felügyeletekor.  
+Az SAP-hez készült Azure-bővítmény üzembe helyezése (lásd a jelen dokumentum [Azure-bővítmény az SAP-hez][planning-guide-9.1] című szakaszát) csak a PowerShell vagy a CLI használatával lehetséges. Ezért a PowerShell vagy a parancssori felület beállítása és konfigurálása szükséges az Azure-beli SAP NetWeaver-rendszerek telepítésekor vagy felügyeletekor.  
 
 Mivel az Azure további funkciókat biztosít, új PS-parancsmagokat kell hozzáadnia, amelyek a parancsmagok frissítését igénylik. Ezért érdemes az Azure letöltési webhelyét legalább egyszer <https://azure.microsoft.com/downloads/> megkeresni a parancsmagok új verziójához. Az új verzió a régebbi verzióra van telepítve.
 
@@ -816,7 +817,7 @@ További információ a telepítéséről, konfigurálásáról és a CLI-paranc
 * [Telepítését és kezelését a virtuális gépek Azure Resource Manager-sablonok és az Azure parancssori felület használatával][../../linux/create-ssh-secured-vm-from-template.md]
 * [A klasszikus Azure CLI használata Mac, Linux és Windows rendszerhez Azure Resource Manager][xplat-cli-azure-resource-manager]
 
-Olvassa el [][planning-guide] a [Linux rendszerű virtuális gépekhez készült Azure CLI][deployment-guide-4.5.2] című témakört is, amely bemutatja, hogyan használhatja az Azure CLI-t az SAP-hez készült Azure monitoring bővítmény üzembe helyezéséhez.
+Olvassa [el a][planning-guide] Linux rendszerű [virtuális gépekhez készült Azure CLI][deployment-guide-4.5.2] című fejezetet is, amely bemutatja, hogyan használható az Azure CLI az SAP-hez készült Azure-bővítmény üzembe helyezéséhez.
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Az Azure-beli virtuális gépek üzembe helyezésének különböző módjai
 
@@ -828,7 +829,7 @@ Microsoft Azure több módszert kínál a virtuális gépek és a kapcsolódó l
 
 #### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Virtuális gép áthelyezése a helyszínről az Azure-ba egy nem általánosított lemezzel
 
-Egy adott SAP-rendszer áthelyezését tervezi a helyszínről az Azure-ba. Ezt úgy teheti meg, hogy feltölti a virtuális merevlemezt, amely tartalmazza az operációs rendszer, az SAP bináris fájljait és az adatbázis-kezelő bináris fájljait, valamint a virtuális merevlemezeket, amelyek az adatbázis-kezelő és az Azure-ba Az [alább #2 forgatókönyvhöz][planning-guide-5.1.2]képest a helyi környezetben konfigurált ÁLLOMÁSNÉV, SAP SID és SAP felhasználói fiókok is megmaradnak az Azure-beli virtuális gépen. Ezért a rendszerkép általánosítása nem szükséges. A helyszíni előkészítési lépések és a nem általánosított virtuális gépek vagy virtuális merevlemezek Azure-ba való feltöltésének előkészítési fejezeteiben lásd: [felkészülés a virtuális gép helyszíni rendszerből az Azure-][planning-guide-5.2.1] ba történő áthelyezésére. A 3 [. forgatókönyv olvasása: Egy virtuális gép helyszíni áthelyezése egy nem általánosított Azure VHD-vel, SAP][deployment-guide-3.4] használatával a [telepítési útmutatóban][deployment-guide] az ilyen lemezképek Azure-beli üzembe helyezésének részletes lépéseihez.
+Egy adott SAP-rendszer áthelyezését tervezi a helyszínről az Azure-ba. Ezt úgy teheti meg, hogy feltölti a virtuális merevlemezt, amely tartalmazza az operációs rendszer, az SAP bináris fájljait és az adatbázis-kezelő bináris fájljait, valamint a virtuális merevlemezeket, amelyek az adatbázis-kezelő és az Azure-ba Az [alább #2 forgatókönyvhöz][planning-guide-5.1.2]képest a helyi környezetben konfigurált ÁLLOMÁSNÉV, SAP SID és SAP felhasználói fiókok is megmaradnak az Azure-beli virtuális gépen. Ezért a rendszerkép általánosítása nem szükséges. A helyszíni előkészítési lépések és a nem általánosított virtuális gépek vagy virtuális merevlemezek Azure-ba való feltöltésének előkészítési fejezeteiben lásd: [felkészülés a virtuális gép helyszíni rendszerből az Azure-ba történő áthelyezésére][planning-guide-5.2.1] . A 3 [. forgatókönyv olvasása: Egy virtuális gép helyszíni áthelyezése egy nem általánosított Azure VHD-vel, SAP][deployment-guide-3.4] használatával a [telepítési útmutatóban][deployment-guide] az ilyen lemezképek Azure-beli üzembe helyezésének részletes lépéseihez.
 
 #### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Virtuális gép üzembe helyezése egy ügyfél-specifikus képpel
 
@@ -934,7 +935,7 @@ Mivel a virtuálisgép-lemezképek és-lemezek az Azure-ba való feltöltése ne
 A harmadik alternatíva a különböző külső gyártótól származó GUI-alapú eszközök használata. Azonban győződjön meg arról, hogy ezek az eszközök támogatják az Azure Page blobokat. Ehhez az Azure Page blob Store-t kell használnia (a különbségek itt vannak leírva: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Az Azure által biztosított eszközök is hatékonyan tömörítik a virtuális gépeket és a virtuális merevlemezeket, amelyeket fel kell tölteni. Ez azért fontos, mert a tömörítésnek ez a hatékonysága csökkenti a feltöltési időt (ami egyébként az internetre a helyszíni létesítményből és az Azure-beli üzembe helyezési régióból származó feltöltési hivatkozástól függően változhat). Ez egy valós feltételezés, hogy egy virtuális gépet vagy virtuális merevlemezt az Európai helyről az Egyesült államokbeli Azure-adatközpontba tölt fel, hosszabb ideig tart, mint az Európai Azure-adatközpontokban.
 
 #### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Virtuális merevlemez feltöltése a helyszínről az Azure-ba
-Ha egy meglévő virtuális gépet vagy virtuális MEREVLEMEZt szeretne feltölteni a helyszíni hálózatból, például egy virtuális gépről vagy virtuális merevlemezről, meg kell felelnie a (z) című fejezet a [virtuális gép helyszíniről Azure-][planning-guide-5.2.1] ba való áthelyezésének előkészítésével kapcsolatos követelményeknek, a jelen dokumentum nem általánosított lemezével.
+Ha egy meglévő virtuális gépet vagy virtuális MEREVLEMEZt szeretne feltölteni a helyszíni hálózatból, például egy virtuális gépről vagy virtuális merevlemezről, meg kell felelnie a (z) című fejezet a virtuális gép helyszíniről Azure-ba való áthelyezésének előkészítésével kapcsolatos követelményeknek, a jelen dokumentum [nem általánosított lemezével][planning-guide-5.2.1] .
 
 Az ilyen virtuális gépeket nem kell általánosítani, és a helyszíni oldalon való leállítás után fel lehet tölteni az állapotba és az alakzatba. Ugyanez érvényes a további VHD-k esetében is, amelyek nem tartalmaznak operációs rendszert.
 
@@ -964,12 +965,12 @@ Ebben az esetben egy virtuális merevlemezt kell feltöltenie az operációs ren
 
 * A virtuális merevlemez feltöltése a PowerShell vagy az Azure CLI használatával
 * Választható Felügyelt lemez létrehozása a VHD-ből a PowerShell, az Azure CLI vagy a Azure Portal használatával
-* Telepítse a virtuális gépet egy olyan JSON-sablonnal, amely a virtuális merevlemezre hivatkozik, ahogy az [ebben a PÉLDÁBAN JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) -sablonban is látható, vagy használja a Managed Disks az [ebben a példában szereplő JSON-sablonnal](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)
+* Telepítse a virtuális gépet egy olyan JSON-sablonnal, amely a virtuális merevlemezre hivatkozik, ahogy az [ebben a PÉLDÁBAN JSON-sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) is látható, vagy használja a Managed Disks az [ebben a példában szereplő JSON-sablonnal](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)
 
 #### <a name="deployment-of-a-vm-image"></a>Virtuálisgép-rendszerkép üzembe helyezése
 Ha egy meglévő virtuális gépet vagy virtuális merevlemezt szeretne feltölteni a helyszíni hálózatból, akkor azt Azure-beli virtuálisgép-rendszerképként kell használni, mint egy virtuális gépet vagy virtuális merevlemezt, meg kell felelnie a jelen dokumentum [SAP-re vonatkozó ügyfél-specifikus rendszerképpel rendelkező virtuális gép üzembe helyezésének előkészítése][planning-guide-5.2.2] című fejezetben felsorolt követelményeknek.
 
-* A *Sysprep* használata Windows rendszeren vagy *waagent –* Linux rendszeren való kiépítés a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
+* A *Sysprep* használata Windows rendszeren vagy Waagent – Linux rendszeren való *kiépítés* a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
 * Jelentkezzen be az előfizetésbe a *AzAccount*
 * Állítsa be a környezet előfizetését a *set-AzContext* és a paraméter SubscriptionId vagy SubscriptionName – lásd:<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
 * Töltse fel a VHD-t az *Add-AzVhd* használatával egy Azure Storage-fiókba – lásd:<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
@@ -981,7 +982,7 @@ Ha egy meglévő virtuális gépet vagy virtuális merevlemezt szeretne feltölt
 
 **Azure CLI**
 
-* A *Sysprep* használata Windows rendszeren vagy *waagent –* Linux rendszeren való kiépítés a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
+* A *Sysprep* használata Windows rendszeren vagy Waagent – Linux rendszeren való *kiépítés* a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
 * Jelentkezzen be az előfizetésbe az *az login* használatával
 * Válassza ki az előfizetését az *az Account set `<subscription name or id` - > -előfizetés* paranccsal
 * Töltse fel a VHD-t az *az Storage blob upload* -lásd: [Az Azure CLI használata az Azure Storage használatával][storage-azure-cli]
@@ -990,10 +991,10 @@ Ha egy meglévő virtuális gépet vagy virtuális merevlemezt szeretne feltölt
 
 **Sablon**
 
-* A *Sysprep* használata Windows rendszeren vagy *waagent –* Linux rendszeren való kiépítés a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
+* A *Sysprep* használata Windows rendszeren vagy Waagent – Linux rendszeren való *kiépítés* a virtuális gép általánosítása érdekében – lásd: [Sysprep – technikai útmutató](https://technet.microsoft.com/library/cc766049.aspx) a Windowshoz vagy Linux rendszerű [virtuális gép rögzítése Linux Resource Manager-sablonként való használatra][capture-image-linux-step-2-create-vm-image]
 * A virtuális merevlemez feltöltése a PowerShell vagy az Azure CLI használatával
 * Választható Felügyelt lemezkép létrehozása a VHD-ből a PowerShell, az Azure CLI vagy a Azure Portal használatával
-* Telepítse a virtuális gépet egy olyan JSON-sablonnal, amely hivatkozik a virtuális merevlemezre, ahogy az [ebben a PÉLDÁBAN JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) -sablonban is látható, vagy a felügyelt lemez lemezképét használja az [ebben a példában szereplő JSON-sablonnal](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
+* Telepítse a virtuális gépet egy olyan JSON-sablonnal, amely hivatkozik a virtuális merevlemezre, ahogy az [ebben a PÉLDÁBAN JSON-sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) is látható, vagy a felügyelt lemez lemezképét használja az [ebben a példában szereplő JSON-sablonnal](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>VHD-k vagy Managed Disksek letöltése a helyszíni környezetbe
 Az Azure-infrastruktúra mint szolgáltatás nem a VHD-k és az SAP-rendszerek feltöltésére szolgáló egyirányú utca. Az Azure-beli SAP-rendszereket a helyszíni világban is áthelyezheti.
@@ -1139,7 +1140,7 @@ A virtuális merevlemezeket az előfizetések között is másolhatja. További 
 
 A PS-parancsmag logikájának alapszintű folyamata így néz ki:
 
-* Hozzon létre egy Storage-fiók környezetét a forrásként szolgáló Storage-fiókhoz a *New-AzStorageContext* -lásd:<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Hozzon létre egy Storage-fiók környezetét a **forrásként** szolgáló Storage-fiókhoz a *New-AzStorageContext* -lásd:<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * Hozzon létre egy Storage-fiók környezetét a **cél** Storage-fiókhoz a *New-AzStorageContext* -lásd:<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * A másolás elindítása a
 
@@ -1270,7 +1271,7 @@ Ezután el kell döntenie, hogy létre kell-e hoznia egy új és egy üres lemez
 ---
 Ha az új lemez üres lemez, a lemezt is formázni kell. A formázáshoz, különösen az adatbázis-kezelői és a naplófájlok esetében, ugyanazok a javaslatok érvényesek, mint az adatbázis-kezelőrendszer operációs rendszer nélküli üzembe helyezésére.
 
-Ahogy már említettük [a Microsoft Azure virtuálisgép][planning-guide-3.2]-koncepcióban, az Azure Storage-fiók nem biztosít végtelen erőforrásokat az I/O-kötetek, a IOPS és az adatmennyiségek tekintetében. Ez általában az adatbázis-kezelő virtuális gépeket érinti. Érdemes lehet külön Storage-fiókot használni az egyes virtuális gépekhez, ha kevés magas I/O-kötettel rendelkező virtuális gép van üzembe helyezni ahhoz, hogy az Azure Storage-fiók kötetén belül maradjon. Ellenkező esetben meg kell ismernie, hogyan egyenlítheti ki ezeket a virtuális gépeket a különböző Storage-fiókok között anélkül, hogy megütötte az egyes Storage-fiókok korlátját. További részleteket az [adatbázis-kezelő üzembe helyezési útmutatójában][dbms-guide]talál. Ezeket a korlátozásokat figyelembe kell vennie a tiszta SAP Application Server-alapú virtuális gépek vagy más virtuális gépek esetében is, amelyek esetleg további VHD-ket igényelhetnek. A felügyelt lemez használata esetén ezek a korlátozások nem érvényesek. Ha Premium Storage használatát tervezi, javasoljuk, hogy felügyelt lemezt használjon.
+Ahogy már említettük [a Microsoft Azure virtuálisgép-koncepcióban][planning-guide-3.2], az Azure Storage-fiók nem biztosít végtelen erőforrásokat az I/O-kötetek, a IOPS és az adatmennyiségek tekintetében. Ez általában az adatbázis-kezelő virtuális gépeket érinti. Érdemes lehet külön Storage-fiókot használni az egyes virtuális gépekhez, ha kevés magas I/O-kötettel rendelkező virtuális gép van üzembe helyezni ahhoz, hogy az Azure Storage-fiók kötetén belül maradjon. Ellenkező esetben meg kell ismernie, hogyan egyenlítheti ki ezeket a virtuális gépeket a különböző Storage-fiókok között anélkül, hogy megütötte az egyes Storage-fiókok korlátját. További részleteket az [adatbázis-kezelő üzembe helyezési útmutatójában][dbms-guide]talál. Ezeket a korlátozásokat figyelembe kell vennie a tiszta SAP Application Server-alapú virtuális gépek vagy más virtuális gépek esetében is, amelyek esetleg további VHD-ket igényelhetnek. A felügyelt lemez használata esetén ezek a korlátozások nem érvényesek. Ha Premium Storage használatát tervezi, javasoljuk, hogy felügyelt lemezt használjon.
 
 Egy másik témakör, amely a Storage-fiókok esetében fontos, hogy a Storage-fiókban lévő virtuális merevlemezek földrajzilag replikálódnak-e. A Geo-replikáció engedélyezve van vagy le van tiltva a tárolási fiók szintjén, nem pedig a virtuális gép szintjén. Ha a Geo-replikáció engedélyezve van, a Storage-fiókban található virtuális merevlemezek egy másik Azure-adatközpontba lesznek replikálva ugyanazon a régión belül. Mielőtt döntene, gondolja át a következő korlátozást:
 
@@ -1302,7 +1303,7 @@ Az Azure geo-Replication helyileg működik a virtuális gépek mindegyik virtu�
 ---
 ### <a name="final-deployment"></a>Végső üzembe helyezés
 
-A végső telepítés és a pontos lépések esetében, különösen az SAP kiterjesztett figyelésének üzembe helyezésével kapcsolatban, tekintse meg a [telepítési útmutatót][deployment-guide].
+A végső telepítés és a pontos lépések esetében, különösen az Azure-bővítmény SAP-hoz való üzembe helyezésével kapcsolatban tekintse meg a [telepítési útmutatót][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Azure-beli virtuális gépeken futó SAP-rendszerek elérése
 
@@ -1490,7 +1491,7 @@ Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -
 
 ##### <a name="cli"></a>parancssori felület
 
-A következő példában a kód Linux rendszeren is használható. Windows esetén a PowerShellt a fent leírtak szerint használja, vagy a példát a (z)% rgName% használatára a $rgName helyett, a környezetiváltozót pedig a Windows-paranccsal állíthatja be.
+A következő példában a kód Linux rendszeren is használható. Windows esetén a PowerShellt a fent leírtak szerint használja, vagy a példát a ( *z)%* rgName% használatára a $rgName helyett, a környezeti változót pedig a Windows-paranccsal állíthatja be.
 
 * Új erőforráscsoport létrehozása minden betanítási vagy demó környezethez
 
@@ -1585,7 +1586,7 @@ A sablonok a GitHubon használhatók az Azure-Gyorsindítás-sablonok tárházba
 
 Ez a nem hibrid forgatókönyv egy tipikus forgatókönyv a betanítási és a bemutató célokra, ahol a bemutató/betanítási forgatókönyvet jelképező szoftver több virtuális gépre oszlik. A különböző virtuális gépeken telepített különböző összetevőknek kommunikálnia kell egymással. Ebben az esetben ez a forgatókönyv nem igényel helyszíni hálózati kommunikációt vagy létesítmények közötti helyzetet.
 
-Ez a forgatókönyv az önálló virtuális gép fejezetében ismertetett telepítés kiterjesztése a jelen dokumentum [SAP NetWeaver demo/][planning-guide-7.1] betanítási forgatókönyvével. Ebben az esetben a rendszer több virtuális gépet ad hozzá egy meglévő erőforráscsoporthoz. A következő példában a betanítási környezet egy SAP ASCS/SCS virtuális gépről, egy adatbázis-kezelő rendszert futtató virtuális gépről és egy SAP Application Server-példány virtuális gépről áll.
+Ez a forgatókönyv az önálló virtuális gép fejezetében ismertetett telepítés kiterjesztése a jelen dokumentum [SAP NetWeaver demo/betanítási forgatókönyvével][planning-guide-7.1] . Ebben az esetben a rendszer több virtuális gépet ad hozzá egy meglévő erőforráscsoporthoz. A következő példában a betanítási környezet egy SAP ASCS/SCS virtuális gépről, egy adatbázis-kezelő rendszert futtató virtuális gépről és egy SAP Application Server-példány virtuális gépről áll.
 
 A forgatókönyv létrehozása előtt gondolja át az alapszintű beállításokat, ahogy azt korábban már gyakorolta.
 
@@ -1775,29 +1776,29 @@ Az Azure-ban található SAP-példányoknak a vállalati helyszínen lévő fáj
 
 ## <a name="supportability"></a>Támogatási lehetőségek
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure monitoring megoldás az SAP-hoz
+### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-bővítmény az SAP-hoz
 
-Az Azure-beli kritikus fontosságú SAP-rendszerek monitorozásának engedélyezéséhez az SAP monitoring Tools SAPOSCOL vagy az SAP-állomás ügynöke az Azure-beli virtuálisgép-szolgáltatásból származó adatmennyiséget az SAP-hez készült Azure monitoring bővítménnyel érheti el. Mivel az SAP igényei az SAP-alkalmazásokhoz voltak jellemzőek, a Microsoft úgy döntött, hogy nem általános módon implementálja a szükséges funkciókat az Azure-ban, de hagyja, hogy az ügyfelek a szükséges monitorozási összetevőket és konfigurációkat a virtuális helyükre telepítsék. Az Azure-ban futó gépek. A figyelési összetevők üzembe helyezését és életciklus-felügyeletét azonban többnyire az Azure fogja automatizálni.
+Ahhoz, hogy a kritikus fontosságú SAP-rendszerekhez tartozó Azure-infrastruktúra egyes részeit a virtuális gépekre telepített SAP Host Agent-példányokkal lássa el, telepíteni kell a telepített virtuális gépekre az SAP-hez készült Azure (VM) bővítményt. Mivel az SAP igényei az SAP-alkalmazásokhoz voltak jellemzőek, a Microsoft úgy döntött, hogy a szükséges funkciókat általános módon nem implementálja az Azure-ban, de az ügyfelek számára a szükséges virtuálisgép-bővítményt és konfigurációkat nem kell telepíteniük a Virtual Machines fut Az Azure-ban. Az Azure virtuálisgép-bővítményének üzembe helyezési és életciklus-kezelési szolgáltatását azonban többnyire az Azure fogja automatizálni.
 
 #### <a name="solution-design"></a>Megoldásterv
 
-Az SAP-figyelés engedélyezéséhez kifejlesztett megoldás az Azure virtuálisgép-ügynök és a kiterjesztési keretrendszer architektúráján alapul. Az Azure-beli virtuálisgép-ügynök és-bővítmény keretrendszerének ötlete az Azure virtuálisgép-bővítmények katalógusában elérhető szoftveres alkalmazás (ok) telepítésének engedélyezése a virtuális gépen belül. A koncepció mögött az elv az, hogy lehetővé tegye a speciális funkciók üzembe helyezését egy virtuális gépre, valamint az ilyen szoftverek konfigurálását az üzembe helyezéskor.
+Az SAP-gazdagép ügynökének a szükséges információk beszerzését lehetővé tevő megoldás az Azure virtuálisgép-ügynök és a kiterjesztési keretrendszer architektúráján alapul. Az Azure-beli virtuálisgép-ügynök és-bővítmény keretrendszerének ötlete az Azure virtuálisgép-bővítmények katalógusában elérhető szoftveres alkalmazás (ok) telepítésének engedélyezése a virtuális gépen belül. Ennek a koncepciónak a hátterében a (például az SAP-hez készült Azure-bővítmény), a speciális funkciók üzembe helyezése a virtuális gépeken és az ilyen szoftverek konfigurációjában a telepítéskor lehetőség van.
 
 Az Azure virtuálisgép-ügynök, amely lehetővé teszi, hogy a virtuális GÉPEN lévő adott Azure-beli virtuálisgép-bővítmények kezelését a virtuális gépeken a Azure Portal alapértelmezés szerint beinjektálja a Windows rendszerű virtuális gépekre. SUSE, Red hat vagy Oracle Linux esetén a virtuálisgép-ügynök már része az Azure Marketplace-rendszerképnek. Ha egy Linux rendszerű virtuális gépet a helyszínen az Azure-ba tölt fel, akkor manuálisan kell telepíteni a virtuálisgép-ügynököt.
 
-Az Azure-beli monitorozási megoldás alapszintű építőelemei a következőképpen néz ki:
+A megoldás alapszintű építőelemei, amelyek az Azure-infrastruktúrával kapcsolatos információkat biztosítanak az Azure-beli SAP-gazdagép számára, így néz ki:
 
 ![Microsoft Azure bővítmény összetevői][planning-guide-figure-2400]
 
-Ahogy az a fenti blokk ábrán is látható, az SAP-figyelési megoldás egyik része az Azure VM-rendszerkép és az Azure-bővítmények katalógusában található, amely az Azure-műveletek által felügyelt, globálisan replikált tárház. Az SAP Azure-beli implementációjában dolgozó közös SAP/MS-csapat feladata az Azure-ban, hogy az SAP-hez készült Azure monitoring Extension új verzióit közzétegyék.
+Ahogy az a fenti blokk ábrán is látható, a megoldás egyik része az Azure VM-rendszerkép és az Azure-bővítmények katalógusában található, amely az Azure-műveletek által felügyelt, globálisan replikált tárház. Az SAP Azure-implementációjában dolgozó közös SAP/MS csapat feladata az Azure-műveletekkel való együttműködés a SAP-hez készült Azure-bővítmény új verzióinak közzétételéhez.
 
-Új Windows rendszerű virtuális gép telepítésekor a rendszer automatikusan hozzáadja az Azure virtuálisgép-ügynököt a virtuális géphez. Az ügynök funkciója az Azure-bővítmények betöltésének és konfigurációjának koordinálása az SAP NetWeaver-rendszerek figyeléséhez. Linux rendszerű virtuális gépek esetében az Azure-beli virtuálisgép-ügynök már része az Azure Marketplace operációsrendszer-rendszerképének.
+Új Windows rendszerű virtuális gép telepítésekor a rendszer automatikusan hozzáadja az Azure virtuálisgép-ügynököt a virtuális géphez. Ennek az ügynöknek a funkciója a virtuális gépek Azure-bővítményeinek betöltésének és konfigurációjának koordinálása. Linux rendszerű virtuális gépek esetében az Azure-beli virtuálisgép-ügynök már része az Azure Marketplace operációsrendszer-rendszerképének.
 
 Van azonban egy olyan lépés, amelyet továbbra is az ügyfélnek kell végrehajtania. Ez a teljesítmény-gyűjtemény engedélyezése és konfigurációja. A konfigurációhoz kapcsolódó folyamatot egy PowerShell-parancsfájl vagy CLI-parancs automatizálja. A PowerShell-szkript a Microsoft Azure script Centerben tölthető le a [telepítési útmutatóban][deployment-guide]leírtak szerint.
 
-Az SAP-hez készült Azure monitoring megoldás általános architektúrája a következőképpen néz ki:
+Az SAP-hez készült Azure-bővítmény általános architektúrája a következőképpen néz ki:
 
-![Azure monitoring megoldás az SAP NetWeaver-hoz][planning-guide-figure-2500]
+![Azure-bővítmény az SAP-hoz ][planning-guide-figure-2500]
 
 **A PowerShell-parancsmagok vagy a CLI-parancsok üzembe helyezés során történő használatának pontos útmutatója és részletes lépéseinek végrehajtásához kövesse a [telepítési útmutatóban][deployment-guide]megadott utasításokat.**
 
@@ -1835,7 +1836,7 @@ Ha testre szeretné szabni az SAP-Enterprise Portal URL-címét és/vagy portjai
 
 ### <a name="definition-of-terminologies"></a>A terminológia definíciója
 
-A **magas rendelkezésre állású (ha)** kifejezés általában olyan technológiákhoz kapcsolódik, amelyek lekicsinyítik az IT-szolgáltatások üzletmenet-folytonosságát a redundáns, hibatűrő vagy feladatátvételi védelemmel ellátott összetevőkön belül. adatközpont. Ebben az esetben egy Azure-régión belül.
+A **magas rendelkezésre állású (ha)** kifejezés általában olyan technológiákhoz kapcsolódik, amelyek lekicsinyítik az IT-szolgáltatások üzletmenet-folytonosságát **a redundáns** , hibatűrő vagy feladatátvételi védelemmel ellátott összetevőkön belül. adatközpont. Ebben az esetben egy Azure-régión belül.
 
 A vész- **helyreállítási (Dr)** az IT-szolgáltatások megszakadásának minimalizálása és a helyreállításuk, de **különböző** adatközpontok esetében is megcélozza, amelyek általában több száz kilométerre találhatók. A mi esetünkben általában a különböző Azure-régiók között, amelyek ugyanabban a geopolitikai régióban találhatóak, vagy Ön az Ön által létrehozott ügyfél.
 
@@ -1909,16 +1910,16 @@ A kritikus fontosságú SAP-összetevők esetében eddig a következőt értünk
 
 * Az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása (AS)
 
-  Az SAP Application Server-példányok redundáns összetevők. Minden SAP mint példány a saját virtuális gépén van telepítve, amely egy másik Azure-beli hiba-és frissítési tartományban fut (lásd: [][planning-guide-3.2.1] a tartalék tartományok és a [frissítési tartományok][planning-guide-3.2.2]fejezetei). Ezt az Azure rendelkezésre állási csoportok használatával biztosítjuk (lásd az Azure-beli [rendelkezésre állási készletek][planning-guide-3.2.3]című fejezetet). Egy Azure-beli hiba vagy frissítési tartomány lehetséges tervezett vagy nem tervezett leállása miatt a korlátozott számú virtuális gép nem lesz elérhető az SAP-példányokkal.
+  Az SAP Application Server-példányok redundáns összetevők. Minden SAP mint példány a saját virtuális gépén van telepítve, amely egy másik Azure-beli hiba [-és frissítési][planning-guide-3.2.1] tartományban fut (lásd: a tartalék tartományok és a [frissítési tartományok][planning-guide-3.2.2]fejezetei). Ezt az Azure rendelkezésre állási csoportok használatával biztosítjuk (lásd az Azure-beli [rendelkezésre állási készletek][planning-guide-3.2.3]című fejezetet). Egy Azure-beli hiba vagy frissítési tartomány lehetséges tervezett vagy nem tervezett leállása miatt a korlátozott számú virtuális gép nem lesz elérhető az SAP-példányokkal.
 
-  A rendszer minden egyes SAP-példányt saját Azure Storage-fiókba helyez el – az egyik Azure Storage-fiók lehetséges nem érhető el, mert az SAP-példánnyal csak egy virtuális gép lesz elérhető. Vegye azonban figyelembe, hogy az Azure Storage-fiókok egyetlen Azure-előfizetésen belül vannak korlátozva. Annak érdekében, hogy az (A) SCS-példány automatikus indítása a virtuális gép újraindítása után történjen, ügyeljen arra, hogy az (A) SCS-példány indítási profiljában a ( [][planning-guide-11.5]
+  A rendszer minden egyes SAP-példányt saját Azure Storage-fiókba helyez el – az egyik Azure Storage-fiók lehetséges nem érhető el, mert az SAP-példánnyal csak egy virtuális gép lesz elérhető. Vegye azonban figyelembe, hogy az Azure Storage-fiókok egyetlen Azure-előfizetésen belül vannak korlátozva. Annak érdekében, hogy az (A) SCS-példány automatikus indítása a virtuális gép [újraindítása után][planning-guide-11.5]történjen, ügyeljen arra, hogy az (a) SCS-példány indítási profiljában a (
   További részletekért olvassa el az [SAP-alkalmazások kiszolgálóinak magas rendelkezésre állásáról][planning-guide-11.4.1] szóló fejezetet is.
 
   Még ha Managed Disks is használ, ezeket a lemezeket egy Azure Storage-fiókban is tárolja a rendszer, és a tárolási leállás esetén nem érhető el.
 
 * *Magasabb szintű* Az SAP (A) SCS-példány rendelkezésre állása
 
-  Itt az Azure-beli virtuális gép újraindítását használjuk a virtuális gép a telepített SAP (A) SCS-példánnyal való védelemmel való ellátásához. Az Azure-beli kiszolgálók tervezett vagy nem tervezett leállása esetén a virtuális gépek egy másik elérhető kiszolgálón lesznek újraindítva. Ahogy korábban említettük, az Azure-beli virtuális gép újraindítása elsődlegesen védi a virtuális gépeket és nem alkalmazásokat, ebben az esetben az (A) SCS-példányt. A virtuális gép újraindításakor a SAP (A) SCS-példány közvetettan magasabb rendelkezésre állása érhető el. Ha az (A) SCS-példány automatikus indítását szeretné biztosítani a virtuális gép újraindítása után, ügyeljen arra, hogy a (A) SCS-példány indítási profiljában a ( [][planning-guide-11.5] Ez azt jelenti, hogy az (A) SCS-példány egyetlen virtuális gépen futtatott egyetlen meghibásodási pont (SPOF) lesz a teljes SAP-környezet rendelkezésre állásának lezáró tényezője.
+  Itt az Azure-beli virtuális gép újraindítását használjuk a virtuális gép a telepített SAP (A) SCS-példánnyal való védelemmel való ellátásához. Az Azure-beli kiszolgálók tervezett vagy nem tervezett leállása esetén a virtuális gépek egy másik elérhető kiszolgálón lesznek újraindítva. Ahogy korábban említettük, az Azure-beli virtuális gép újraindítása elsődlegesen védi a virtuális gépeket és nem alkalmazásokat, ebben az esetben az (A) SCS-példányt. A virtuális gép újraindításakor a SAP (A) SCS-példány közvetettan magasabb rendelkezésre állása érhető el. Ha az (A) SCS-példány automatikus indítását szeretné biztosítani a virtuális gép [újraindítása után][planning-guide-11.5], ügyeljen arra, hogy A (a) SCS-példány indítási profiljában a ( Ez azt jelenti, hogy az (A) SCS-példány egyetlen virtuális gépen futtatott egyetlen meghibásodási pont (SPOF) lesz a teljes SAP-környezet rendelkezésre állásának lezáró tényezője.
 
 * *Magasabb szintű* Az adatbázis-kezelő kiszolgáló rendelkezésre állása
 
@@ -2012,7 +2013,7 @@ Nem támogatott az alkalmazási réteg, illetve az alkalmazás-és az adatbázis
 A tavalyi év folyamán azonban az adatközpont-partnerek közös helyszíneket fejlesztettek ki az Azure-régiók között. Ezek a közös helyszínek gyakran az Azure-régióban található fizikai Azure-adatközpontok közelében vannak. A ExpressRoute-ből az Azure-ba történő közös elhelyezésű adategységek rövid távolsága és összekapcsolása olyan késést eredményezhet, amely kisebb, mint a 2ms. Ilyen esetekben az adatbázis-kezelő réteget (beleértve a Storage SAN/NAS-t) a közös helyen és az Azure-beli SAP-alkalmazás rétegében lehet megkeresni. [HANA nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
 
 ### <a name="offline-backup-of-sap-systems"></a>Az SAP Systems offline biztonsági mentése
-A kiválasztott SAP-konfigurációtól (kétrétegű vagy 3 szintű) függ, hogy szükség van-e biztonsági mentésre. A virtuális gép tartalma, valamint az adatbázis biztonsági mentése. Az adatbázis-KEZELŐi szolgáltatással kapcsolatos biztonsági másolatok várhatóan adatbázis-metódusokkal lesznek végrehajtva. A különböző adatbázisok részletes leírását az [adatbázis][dbms-guide]-kezelői útmutatóban találja. Másfelől az SAP-adatokat kapcsolat nélküli módban is lehet készíteni (beleértve az adatbázis tartalmát is), ahogyan azt a következő szakaszban leírtak szerint a jelen szakaszban vagy az interneten is ismertetjük.
+A kiválasztott SAP-konfigurációtól (kétrétegű vagy 3 szintű) függ, hogy szükség van-e biztonsági mentésre. A virtuális gép tartalma, valamint az adatbázis biztonsági mentése. Az adatbázis-KEZELŐi szolgáltatással kapcsolatos biztonsági másolatok várhatóan adatbázis-metódusokkal lesznek végrehajtva. A különböző adatbázisok részletes leírását az [adatbázis-kezelői útmutatóban][dbms-guide]találja. Másfelől az SAP-adatokat kapcsolat nélküli módban is lehet készíteni (beleértve az adatbázis tartalmát is), ahogyan azt a következő szakaszban leírtak szerint a jelen szakaszban vagy az interneten is ismertetjük.
 
 Az offline biztonsági mentés alapvetően a virtuális gép leállítását igényli a Azure Portalon keresztül, valamint az alap VM-lemez és az összes csatlakoztatott lemez másolatát a virtuális géphez. Ez megőrizheti a virtuális gép és a hozzá tartozó lemez időpontját. Azt javasoljuk, hogy a biztonsági mentéseket egy másik Azure Storage-fiókba másolja. Ezért alkalmazni kell a jelen dokumentum [Azure Storage-fiókok közötti másolása][planning-guide-5.4.2] című fejezetben ismertetett eljárást.
 A Leállítás mellett a Azure Portal használatával is megteheti a PowerShell vagy a parancssori felület segítségével, az itt leírtak szerint:<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
@@ -2024,7 +2025,7 @@ Ez a cikk egy példát mutat be a folyamat PowerShellben való megírására:<ht
 
 ### <a name="online-backup-of-an-sap-system"></a>SAP-rendszer online biztonsági mentése
 
-Az adatbázis-kezelő rendszer biztonsági mentését az adatbázis-kezelői útmutatóban [][dbms-guide]leírtak szerint, az adatbázis-kezelői szolgáltatással kapcsolatos módszerek
+Az adatbázis-kezelő rendszer biztonsági mentését az adatbázis-kezelői [útmutatóban][dbms-guide]leírtak szerint, az adatbázis-kezelői szolgáltatással kapcsolatos módszerek
 
 Az SAP-rendszeren belüli más virtuális gépek biztonsági mentését az Azure virtuális gépek biztonsági mentési funkciója segítségével végezheti el. Az Azure-beli virtuális gépek biztonsági mentése standard módszer egy teljes virtuális gép biztonsági mentésére az Azure-ban. Azure Backup tárolja a biztonsági másolatokat az Azure-ban, és lehetővé teszi a virtuális gép visszaállítását.
 
@@ -2057,7 +2058,7 @@ A megoldás üzembe helyezésének részletes leírását itt találja: <https:/
 Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pontjai a következők:
 
 * Ebben az időpontban az SAP egypontos meghibásodása nem biztosítható pontosan ugyanúgy, mint a helyszíni környezetekben. Ennek az az oka, hogy a megosztott lemezes fürtök még nem hozhatók létre az Azure-ban harmadik féltől származó szoftverek használata nélkül.
-* Az adatbázis-kezelő réteghez olyan adatbázis-kezelői funkciót kell használnia, amely nem a megosztott lemezes fürt technológiára támaszkodik. A részletek leírását az [adatbázis][dbms-guide]-kezelői útmutatóban találja.
+* Az adatbázis-kezelő réteghez olyan adatbázis-kezelői funkciót kell használnia, amely nem a megosztott lemezes fürt technológiára támaszkodik. A részletek leírását az [adatbázis-kezelői útmutatóban][dbms-guide]találja.
 * Az Azure-infrastruktúra vagy a gazdagép karbantartása során felmerülő problémák hatásának csökkentése érdekében az Azure rendelkezésre állási készleteit kell használnia:
   * Azt javasoljuk, hogy egy rendelkezésre állási csoport legyen az SAP-alkalmazás rétegében.
   * Azt javasoljuk, hogy az SAP adatbázis-kezelő rétegéhez külön rendelkezésre állási készlet legyen.

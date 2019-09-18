@@ -1,7 +1,7 @@
 ---
 title: Munkaterület létrehozása Azure Resource Manager sablonnal
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan hozhat létre új Azure Machine Learning szolgáltatás-munkaterületet egy Azure Resource Manager sablon használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhat létre egy új Azure Machine Learning-munkaterületet egy Azure Resource Manager sablon használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,28 +10,28 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e0897f92dd5ead939cbae9d6bf269bd22152419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390513"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034777"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Munkaterületek létrehozása Azure Machine Learning szolgáltatáshoz Azure Resource Manager sablon használatával
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning szolgáltatás-munkaterületet Azure Resource Manager sablonok használatával. A Resource Manager-sablonok segítségével egyszerűen hozhat létre erőforrásokat egyetlen, koordinált műveletként. A sablon egy JSON-dokumentum, amely meghatározza a központi telepítéshez szükséges erőforrásokat. Emellett telepítési paramétereket is megadhat. A paraméterek a sablon használatakor a bemeneti értékek biztosítására szolgálnak.
+Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munkaterületet Azure Resource Manager sablonok használatával. A Resource Manager-sablonok segítségével egyszerűen hozhat létre erőforrásokat egyetlen, koordinált műveletként. A sablon egy JSON-dokumentum, amely meghatározza a központi telepítéshez szükséges erőforrásokat. Emellett telepítési paramétereket is megadhat. A paraméterek a sablon használatakor a bemeneti értékek biztosítására szolgálnak.
 
 További információ: [alkalmazások központi telepítése Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki [Azure Machine learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t kell használnia.
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
 
-A következő Resource Manager-sablon használatával létrehozhat egy Azure Machine Learning szolgáltatás-munkaterületet és a hozzá tartozó Azure-erőforrásokat:
+A következő Resource Manager-sablon használatával létrehozhat egy Azure Machine Learning munkaterületet és a hozzá tartozó Azure-erőforrásokat:
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 

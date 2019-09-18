@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 9d983dc4a2623e7f2a272ea2a320d2658d784dee
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698568"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003580"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Saját IoT Edge-modulok fejlesztése
 
@@ -60,7 +60,7 @@ Csatlakozás a helyi IoT Edge hubot a modulból két lépésből áll:
 1. Hozzon létre egy ModuleClient-példányt az alkalmazásban.
 2. Ellenőrizze, hogy az alkalmazás fogad el, hogy az eszközről az IoT Edge hub által bemutatott tanúsítványt.
 
-Hozzon létre egy ModuleClient-példányt, amely az eszközön futó IoT Edge hubhoz csatlakoztatja a modult, hasonlóan ahhoz, ahogy a DeviceClient-példányok IoT-eszközök csatlakoztatását IoT Hubhoz. A ModuleClient osztálysal és annak kommunikációs módszereivel kapcsolatos további információkért tekintse meg az előnyben részesített SDK-nyelv API-referenciáját: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C és Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Hozzon létre egy ModuleClient-példányt, amely az eszközön futó IoT Edge hubhoz csatlakoztatja a modult, hasonlóan ahhoz, ahogy a DeviceClient-példányok IoT-eszközök csatlakoztatását IoT Hubhoz. A ModuleClient osztálysal és annak kommunikációs módszereivel kapcsolatos további információkért tekintse meg az előnyben részesített SDK-nyelv API-referenciáját: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 ## <a name="language-and-architecture-support"></a>Nyelvi és architektúra-támogatás
 
@@ -70,7 +70,7 @@ IoT Edge támogatja több operációs rendszer, eszköz architektúrája és fej
 
 Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64-és ARM32-alapú Linux-eszközök fejlesztését. 
 
-| Fejlesztési nyelv | Fejlesztői eszközök |
+| Fejlesztői nyelv | Fejlesztői eszközök |
 | -------------------- | ----------------- |
 | C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
@@ -85,7 +85,7 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja az AMD64 Windows-eszközök fejlesztését.
 
-| Fejlesztési nyelv | Fejlesztői eszközök |
+| Fejlesztői nyelv | Fejlesztői eszközök |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (nincs hibakeresési képesség)<br>Visual Studio 2017/2019 |

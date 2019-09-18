@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998814"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033827"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -92,12 +92,13 @@ Az Azure AD Reporting API-hoz való parancsfájl-vagy alkalmazás-hozzáférés 
 * Microsoft Graph
   * Alkalmazás: Az összes naplózási napló adatolvasása
 
-Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő alkalmazás-regisztrációhoz, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
+Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő Azure Active Directory alkalmazások regisztrálásához, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
 
 Új alkalmazás létrehozásához rendelje hozzá a szükséges API-engedélyeket, és hozzon létre egy titkos kulcsot, hajtsa végre a következő lépéseket:
 
-1. Alkalmazás regisztrálása
-    1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), váltson arra a könyvtárra, amely a Azure ad B2C bérlőt tartalmazza, majd keresse meg a **Azure ad B2C**.
+1. Alkalmazás regisztrálása a Azure Active Directoryban
+    1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és váltson arra a könyvtárra, amely a Azure ad B2C bérlőjét tartalmazza.
+    1. A bal oldali menüben válassza a **Azure Active Directory** (*nem* Azure ad B2C) lehetőséget. Vagy válassza a **minden szolgáltatás**lehetőséget, majd keresse meg és válassza a **Azure Active Directory**lehetőséget.
     1. A bal oldali menü **kezelés** területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
     1. **Új alkalmazás regisztrációjának** kiválasztása
     1. Adja meg az alkalmazás nevét. Például *naplózási napló alkalmazás*.

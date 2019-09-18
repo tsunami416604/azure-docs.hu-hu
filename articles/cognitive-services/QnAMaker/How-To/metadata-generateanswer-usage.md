@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542995"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066721"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -53,13 +53,13 @@ A végpont részleteinek beszerzése:
 
     ![A végpont részleteinek képernyőképe](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-A végpont adatait a Tudásbázis Settings ( **Beállítások** ) lapjáról is lekérheti.
+A végpont adatait a Tudásbázis **Settings (beállítások** ) lapjáról is lekérheti.
 
 <a name="generateanswer-request"></a>
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer-kérelem konfigurálása
 
-A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívását bemutató mintakód: gyors útmutató. [](../quickstarts/csharp.md) 
+A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívását bemutató mintakód: gyors [útmutató.](../quickstarts/csharp.md) 
 
 A POST kérelem a következőket használja:
 
@@ -129,6 +129,9 @@ using Microsoft.Bot.Builder.AI.QnA;
 var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
 var qnaOptions = new QnAMakerOptions();
 
+metadata.Name = Constants.MetadataName.Intent;
+metadata.Value = topIntent;
+qnaOptions.StrictFilters = new Microsoft.Bot.Builder.AI.QnA.Metadata[] { metadata };
 qnaOptions.Top = Constants.DefaultTop;
 qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
@@ -243,7 +246,7 @@ A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis has
 
 ## <a name="next-steps"></a>További lépések
 
-A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel választ [](../Quickstarts/get-answer-from-kb-using-postman.md) kaphat a Poster és a [curl](../Quickstarts/get-answer-from-kb-using-curl.md)használatával. 
+A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel választ kaphat a [Poster](../Quickstarts/get-answer-from-kb-using-postman.md) és a [curl](../Quickstarts/get-answer-from-kb-using-curl.md)használatával. 
 
 > [!div class="nextstepaction"]
 > [Tudásbázis létrehozása](./create-knowledge-base.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 1a1196da62b9d28280150dd1ddf1582db64a93d4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073795"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074962"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -48,16 +48,13 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 
 -   Ha sok **kiszolgáló** van megadva, API Management megpróbálja kiválasztani az első HTTPS URL-címet. Ha nincsenek HTTPs URL-címek – az első HTTP URL-cím. Ha nincs HTTP URL-cím, akkor a kiszolgáló URL-címe üres lesz.
 -   A **példák** nem támogatottak, de a **példa** :.
--   **Multipart/form – az** adattípusok nem támogatottak.
-
-> [!IMPORTANT]
-> Az OpenAPI-importálásról ebben a [dokumentumban](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) talál fontos információt és cikkeket.
+-   **Multipart/form – az adattípusok** nem támogatottak.
 
 ## <a name="wsdl"> </a>WSDL
 
 A WSDL-fájlok SOAP-alapú áteresztő és SOAP-REST API-k létrehozásához használhatók.
 
--   **SOAP** -kötések – csak a "document" és a "literális" kódolású SOAP-kötések támogatottak. Az "RPC" stílus vagy a SOAP-kódolás nem támogatott.
+-   **SOAP-kötések** – csak a "document" és a "literális" kódolású SOAP-kötések támogatottak. Az "RPC" stílus vagy a SOAP-kódolás nem támogatott.
 -   **Wsdl: import** – ez az attribútum nem támogatott. Az ügyfeleknek egyetlen dokumentumba kell egyesíteni az importálást.
 -   **Több részből álló üzenetek** – az ilyen típusú üzenetek nem támogatottak.
 -   **WCF wsHttpBinding** – a Windows Communication Foundation által létrehozott SOAP-szolgáltatásoknak az BasicHttpBinding-wsHttpBinding használata nem támogatott.

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744576"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067087"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése
 A tárolók Azure Monitor a teljesítmény-diagramok és az állapot használatával figyelheti az Azure Kubernetes Service-(ak-) fürtök munkaterhelését két perspektívából. A monitort közvetlenül egy AK-fürtről is figyelheti, vagy a Azure Monitor-előfizetésben lévő összes AK-fürtöt nyomon követheti. A Azure Container Instances megtekintése akkor is lehetséges, ha egy adott AK-fürtöt figyel.
@@ -106,7 +106,7 @@ Az alapértelmezett lap megnyílik, amikor kiválasztja az **áttekintési** > *
 A teljesítmény-diagramok négy teljesítménymutatót jelenítenek meg:
 
 - **Csomópont CPU-kihasználtsága&nbsp;%** : A teljes fürt CPU-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
-- **Csomópont memóriájának&nbsp;%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
+- **&nbsp;Csomópont memóriájának%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
 - **Csomópontok száma**: Csomópontok száma és állapota a Kubernetes. A megjelenített fürtcsomópontok állapota összesen, kész és nem üzemkész. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 - **Aktív Pod-szám**: A Kubernetes származó Pod-szám és-állapot. A képviselt hüvelyek állapota összesen, függőben, fut, ismeretlen, sikeres vagy sikertelen. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 
@@ -170,9 +170,13 @@ Egy kibontott csomópontból lehatolhat a csomóponton futó Pod vagy tárolób�
 
 Válassza az oldal tetején található vezérlők vagy tárolók lehetőséget az objektumok állapotának és erőforrás-kihasználtságának áttekintéséhez. A memóriahasználat áttekintéséhez a **metrika** legördülő listában válassza ki a **memória RSS** vagy a **memória munkakészlete**elemet. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték.
 
-A **memória-munkakészletben** a rezidens memória és a virtuális memória (gyorsítótár) is látható, és az alkalmazás teljes egészében a használatos. A **memória RSS** -je csak a fő memóriát jeleníti meg (amely nem más, mint a rezidens memória, más szóval). Ez a metrika a rendelkezésre álló memória tényleges kapacitását mutatja.
-
 ![Tároló csomópontok teljesítmény nézet](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+A **memória-munkakészletben** a rezidens memória és a virtuális memória (gyorsítótár) is látható, és az alkalmazás teljes egészében a használatos. A **memória RSS** -je csak a fő memóriát jeleníti meg (amely nem más, mint a rezidens memória, más szóval). Ez a metrika a rendelkezésre álló memória tényleges kapacitását mutatja. Mi a különbség a rezidens memória és a virtuális memória között?
+
+- A rezidens memória vagy a fő memória a fürt csomópontjai számára elérhető tényleges memória mennyisége.
+
+- A virtuális memória az operációs rendszer által a memóriából a lemezre való adatcserére használt szabad lemezterület (gyorsítótár), amely a memória nyomása alatt, majd a memóriába való beolvasása, ha szükséges.
 
 Alapértelmezés szerint a teljesítményadatok az elmúlt hat órában alapulnak, de a bal felső sarokban található **TimeRange** lehetőség használatával módosíthatja az ablakot. Az eredményeket az időtartományon belül is szűrheti, ha a percentilis választóban a **min**, az **AVG**, az **50**, a **kilencven**, a **95.** és a **Max** elemet választja. 
 

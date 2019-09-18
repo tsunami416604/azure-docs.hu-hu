@@ -1,6 +1,6 @@
 ---
-title: Jelszó bonyolultsága – Azure Active Directory B2C |} A Microsoft Docs
-description: Hogyan kell konfigurálni a bonyolultsági feltételeknek az Azure Active Directory B2C a fogyasztók által megadott jelszót.
+title: Jelszó-bonyolultság – Azure Active Directory B2C | Microsoft Docs
+description: A Azure Active Directory B2C felhasználók által szolgáltatott jelszavak bonyolultsági követelményeinek konfigurálása.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,70 +10,70 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37f8305d8ed212cf2c6678b35220d823611b9d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509015"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065459"
 ---
-# <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Jelszavak bonyolultsági feltételeknek konfigurálása az Azure Active Directory B2C-vel
+# <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
-Az Azure Active Directory (Azure AD) B2C támogatja a bonyolultsági feltételeknek-fiók létrehozása során a felhasználó által megadott jelszavak módosítása. Alapértelmezés szerint az Azure AD B2C-t használja `Strong` jelszavakat. Az Azure AD B2C-t is támogatja a konfigurációs beállítások vezérléséhez, amellyel az ügyfelek jelszavak bonyolultságát.
+A Azure Active Directory B2C (Azure AD B2C) a fiók létrehozásakor támogatja a végfelhasználók által megadott jelszavak összetettségi követelményeinek módosítását. Alapértelmezés szerint a Azure ad B2C jelszavakat használ `Strong` . A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat.
 
-## <a name="password-rule-enforcement"></a>Jelszó szabály kényszerítése
+## <a name="password-rule-enforcement"></a>Jelszavas szabály kényszerítése
 
-A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia. Jelszó-bonyolultsági szabályokat a rendszer egy felhasználói folyamat érvényesíti. A regisztráció ideje alatt egy másik felhasználói folyamat során szüksége van egy nyolc karakterből álló karakterlánc-előfizetési négyjegyű PIN-kódot egy felhasználói folyamat lehetőség. Például használhat egy felhasználói folyamat a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
+A regisztráció vagy a jelszó alaphelyzetbe állítása során a végfelhasználónak meg kell adnia egy jelszót, amely megfelel az összetettségi szabályoknak. A jelszó bonyolultsági szabályait felhasználónként kell érvényesíteni. Egy felhasználói folyamatnak egy négyjegyű PIN-kódot kell megadnia a regisztráció során, míg egy másik felhasználói folyamat 8 karakterből álló karakterláncot igényel a regisztráció során. Használhat például egy olyan felhasználói folyamatot, amely különböző jelszó-bonyolultságot biztosít a felnőttek számára, mint a gyermekek számára.
 
-Jelszó bonyolultsága bejelentkezései soha nem lép érvénybe. Felhasználók bejelentkezései soha nem kéri a jelszó módosítására, mert nem felel meg az aktuális bonyolultsági követelményeknek.
+A bejelentkezés során a rendszer soha nem kényszeríti ki a jelszó bonyolultságát. A rendszer a bejelentkezés során soha nem kéri a felhasználókat a jelszavuk módosítására, mert nem felel meg a jelenlegi összetettségi követelményeknek.
 
-Jelszó bonyolultsága felhasználókövetési adatai a következő típusú konfigurálható:
+A jelszó bonyolultságát a következő típusú felhasználói folyamatokban lehet konfigurálni:
 
-- Regisztrálási vagy bejelentkezési felhasználói folyamata
-- Jelszó alaphelyzetbe állítása felhasználói folyamat
+- Regisztrációs vagy bejelentkezési felhasználói folyamat
+- Felhasználói folyamat jelszavának alaphelyzetbe állítása
 
-Ha egyéni szabályzatokat használ, akkor az ([jelszóösszetettség konfigurálása egyéni szabályzatokban](active-directory-b2c-reference-password-complexity-custom.md)).
+Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni szabályzatban állíthatja be](active-directory-b2c-reference-password-complexity-custom.md)).
 
-## <a name="configure-password-complexity"></a>Jelszó bonyolultsága konfigurálása
+## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **felhasználókövetési adatai**.
-2. Válassza ki a felhasználói folyamat, és kattintson a **tulajdonságok**.
-3. A **jelszóösszetettség**, módosítsa a jelszó erőssége ezen felhasználói folyamat **egyszerű**, **erős**, vagy **egyéni**.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza a **felhasználói folyamatok**lehetőséget.
+2. Válasszon ki egy felhasználói folyamatot, majd kattintson a **Tulajdonságok**elemre.
+3. A **jelszó bonyolultsága**területen módosítsa a felhasználói folyamat jelszavának bonyolultságát **egyszerű**, **erős**vagy **Egyéni**értékre.
 
-### <a name="comparison-chart"></a>Összehasonlítási táblázata
+### <a name="comparison-chart"></a>Összehasonlító diagram
 
-| Bonyolultsága | Leírás |
+| Összetettség | Leírás |
 | --- | --- |
-| Egyszerű | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. |
-| Erős | Ez a jelszó legalább 8 és 64 karakter hosszú lehet. 3 / 4 kisbetűk, nagybetűk, számok és szimbólumok van szükség. |
-| Egyéni | Ezt a beállítást a jelszó-bonyolultsági szabályokat a legtöbb felett biztosít.  Ez lehetővé teszi, hogy egy egyéni hosszának konfigurálása.  Lehetővé teszi elfogadásával csak szám jelszavak (PIN). |
+| Egyszerű | Egy legalább 8 – 64 karakterből álló jelszó. |
+| Erős | Egy legalább 8 – 64 karakterből álló jelszó. Ehhez 3 kisbetűs, nagybetűs, szám vagy szimbólum közül 3. |
+| Egyéni | Ez a beállítás biztosítja a jelszó bonyolultságára vonatkozó szabályok szabályozását.  Lehetővé teszi az egyéni hossz konfigurálását.  Emellett lehetővé teszi a csak számú jelszó (PIN-kód) fogadását. |
 
 ## <a name="custom-options"></a>Egyéni beállítások
 
 ### <a name="character-set"></a>Karakterkészlet
 
-Lehetővé teszi, hogy fogadja el a számjegyek csak (PIN) vagy a teljes készletet.
+Lehetővé teszi, hogy csak számjegyeket (PIN-ket) vagy a teljes karakterkészletet fogadja el.
 
-- **Csak számok** lehetővé teszi, hogy a számjegyek csak (0 – 9) során, hogy jelszót írna be.
-- **Az összes** lehetővé teszi, hogy bármely betűvel, számmal vagy szimbólumot.
+- A **számok csak** számjegyeket (0-9) engedélyeznek a jelszó beírása közben.
+- **Minden** betűt, számot vagy szimbólumot engedélyez.
 
 ### <a name="length"></a>Hossz
 
-Lehetővé teszi, hogy szabályozza a hosszúsági követelményeknek, a jelszó.
+Lehetővé teszi a jelszó hosszára vonatkozó követelmények szabályozását.
 
-- **Minimális hossz** legalább 4 kell lennie.
-- **Maximális hossz** nagyobb vagy azzal egyenlő minimális hosszának kell lennie, és legfeljebb 64 karakter lehet.
+- A **minimális hossznak** legalább 4-nek kell lennie.
+- A **maximális hossznak** nagyobbnak vagy egyenlőnek kell lennie a minimális hosszsal, és legfeljebb 64 karakter hosszú lehet.
 
-### <a name="character-classes"></a>Karakterosztályok
+### <a name="character-classes"></a>Karakter osztályok
 
-Segítségével szabályozhatja a különböző karakterkészletnek a jelszót használja.
+Lehetővé teszi a jelszóban használt különböző karakterkészletek szabályozását.
 
-- **2 / 4: Kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó legalább két karakter típusú tartalmaz. Például egy számot és egy kisbetűt.
-- **3. a 4-ből: Kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó legalább két karakter típusú tartalmaz. Például több, egy kisbetűt és a egy nagybetűs karaktert.
-- **4. 4: Kisbetűt, nagybetűt, számot (0 – 9), a szimbólum** biztosítja, hogy a jelszó tartalmazza az összes karaktertípusokat.
+- **2/4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám és egy kisbetűs karakter.
+- **3/4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó legalább két karaktert tartalmazzon. Például egy szám, egy kisbetűs karakter és egy nagybetűs karakter.
+- **4 – 4: Kisbetűs karakter, nagybetűs karakter, szám (0-9)** , a szimbólum biztosítja, hogy a jelszó tartalmazza az összes karaktert.
 
     > [!NOTE]
-    > Igénylő **4 4** végfelhasználói as gazdasági válság után eredményezhet. Néhány tanulmányok kimutatták, hogy ez a követelmény nem növelhető az jelszó vysokou. Lásd: [NIST jelszavakra vonatkozó irányelvek](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)
+    > A **4 – 4** . megkövetelése végfelhasználói frusztrációt eredményezhet. Egyes tanulmányok azt mutatták, hogy ez a követelmény nem javítja a jelszó entrópiat. Lásd: a [NIST-jelszóra vonatkozó irányelvek](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

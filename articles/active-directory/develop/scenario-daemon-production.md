@@ -1,6 +1,6 @@
 ---
-title: Webes API-k (Váltás az éles környezetben) – a Microsoft identity platform démon alkalmazás hívása
-description: Ismerje meg, hogyan hozhat létre egy démon alkalmazást, hogy a hívások webes API-k (Váltás az éles környezetben)
+title: Web API-kat hívó Daemon-alkalmazás (áttérés éles környezetbe) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre a webes API-kat meghívó Daemon-alkalmazást (az éles környezetbe)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,59 +12,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545402"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056325"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Démon alkalmazás, amely meghívja a webes API-k – helyezze át az éles környezetbe
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
-Most, hogy tudja, hogyan szeretné beszerezni és a egy szolgáltatások közötti hívások jogkivonat használata, ismerje meg, hogyan helyezheti át az alkalmazás az éles környezetbe.
+Most, hogy már tudja, hogyan szerezheti be és használhatja a szolgáltatás-szolgáltatás hívására szolgáló tokent, megtudhatja, hogyan helyezheti át az alkalmazást éles környezetbe.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Üzembe helyezés – több-bérlős démon alkalmazások esetében
+## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Üzembe helyezés – több-bérlős Daemon-alkalmazások esetén
 
-Ha Ön egy démon alkalmazást, amely képes futni számos bérlők egy független, győződjön meg arról, hogy kell a bérlői rendszergazdák:
+Ha olyan Daemon-alkalmazást hoz létre, amely több bérlőn is futtatható, meg kell győződnie arról, hogy a bérlői rendszergazdák:
 
-- Egy egyszerű szolgáltatást az alkalmazás kiépíti
-- Támogatás beleegyezik abba, hogy az alkalmazás
+- Egy egyszerű szolgáltatásnév kiosztása az alkalmazáshoz
+- Hozzájárulást biztosít az alkalmazáshoz
 
-Az ügyfelek számára bemutatják, hogyan hajtsa végre ezeket a műveleteket kell. További információ: [hozzájárulás kérése egy teljes bérlő](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a műveleteket. További információ: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban néhány további hivatkozásokat:
+Íme néhány hivatkozás, amely további információkat tartalmaz:
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- Ha még nem tette, próbálja meg a rövid útmutató [egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás identitását](./quickstart-v2-netcore-daemon.md).
-- Segédanyagok:
-  - Hárítható el [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
-  - Hívó [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
-- Más minták és oktatóanyagok:
-  - [a Microsoft-identitás-platform-konzol-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) funkciókat egy egyszerű .NET Core démon konzolalkalmazást, amely jelennek meg a felhasználók a Microsoft Graph lekérdezése egy bérlő.
+- Ha még nem tette meg, próbálkozzon a gyors üzembe helyezési lehetőséggel, [és hívja meg Microsoft Graph API-t egy, az alkalmazás identitását használó Console-alkalmazásból](./quickstart-v2-netcore-daemon.md).
+- Dokumentáció a következőhöz:
+  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) példányának példányai
+  - [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder) meghívása
+- Egyéb minták/oktatóanyagok:
+  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) egy egyszerű .net Core Daemon Console-alkalmazás, amely megjeleníti a bérlő felhasználóit, és lekérdezi a Microsoft Graph.
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![topológia](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Egyazon mintából is szemlélteti a változat tanúsítványokkal.
+    Ugyanez a minta is szemlélteti a tanúsítványokkal való változást.
 
-    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![topológia](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) funkciók, amelyek az adatok a Microsoft Graph használatával egy felhasználó nevében helyett az alkalmazás identitását az ASP.NET MVC webalkalmazás. A minta is a rendszergazdai jóváhagyás folyamatát mutatja be.
+  - a [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) egy ASP.net MVC-webalkalmazást tartalmaz, amely az alkalmazás identitásával szinkronizálja az Microsoft Graph adatait a felhasználó nevében. A minta a rendszergazdai engedélyezési folyamatot is szemlélteti.
 
-    ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
+    ![topológia](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Az MSAL Python jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Python ügyfél hitelesítő adatai a tárház minta](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/client_credentials_sample.py).
+A MSAL Python jelenleg nyilvános előzetes verzióban érhető el.
+További információ: [MSAL Python in-repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-Az MSAL Python jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java-adattárban található példák](https://github.com/AzureAD/azure-activedirectory-library-for-java/tree/dev/src/samples).
+msal4j (MSAL. A Java) jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java in-repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+
+---

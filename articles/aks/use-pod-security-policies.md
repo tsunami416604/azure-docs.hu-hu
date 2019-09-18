@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061844"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058324"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -95,22 +95,21 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Alapértelmezett AK-szabályzatok
 
-Ha engedélyezi a pod biztonsági házirendet, az AK létrehoz két, *privilegizált* és *korlátozott*nevű alapértelmezett szabályzatot. Ne szerkessze vagy távolítsa el ezeket az alapértelmezett házirendeket. Ehelyett hozzon létre saját szabályzatokat, amelyek meghatározzák a vezérelni kívánt beállításokat. Először nézzük meg, hogy ezek az alapértelmezett szabályzatok hogyan befolyásolják a pod üzemelő példányait.
+Ha engedélyezi a pod biztonsági házirendet, az AK létrehoz egy *privilegizált*nevű alapértelmezett szabályzatot. Ne szerkessze vagy távolítsa el az alapértelmezett házirendet. Ehelyett hozzon létre saját szabályzatokat, amelyek meghatározzák a vezérelni kívánt beállításokat. Először nézzük meg, hogy ezek az alapértelmezett szabályzatok hogyan befolyásolják a pod üzemelő példányait.
 
-Az elérhető szabályzatok megtekintéséhez használja a [kubectl Get PSP][kubectl-get] parancsot az alábbi példában látható módon. Az alapértelmezett *korlátozott* szabályzat részeként a felhasználó megtagadja a *priv* használatát a privilegizált Pod-eszkalációhoz, és a felhasználó *MustRunAsNonRoot*.
+Az elérhető szabályzatok megtekintéséhez használja a [kubectl Get PSP][kubectl-get] parancsot az alábbi példában látható módon.
 
 ```console
 $ kubectl get psp
 
 NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
-privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-A *korlátozott* Pod biztonsági szabályzatot az AK-fürt bármely hitelesített felhasználója alkalmazza. Ezt a hozzárendelést a ClusterRoles és a ClusterRoleBindings vezérli. Használja a [kubectl Get clusterrolebindings][kubectl-get] parancsot, és keresse meg az *alapértelmezett: korlátozott:* kötés:
+A *Privileged* Pod biztonsági szabályzatot az AK-fürt bármely hitelesített felhasználója alkalmazza. Ezt a hozzárendelést a ClusterRoles és a ClusterRoleBindings vezérli. Használja a [kubectl Get clusterrolebindings][kubectl-get] parancsot, és keresse meg az *alapértelmezett: jogosultságú:* kötés:
 
 ```console
-kubectl get clusterrolebindings default:restricted -o yaml
+kubectl get clusterrolebindings default:priviledged -o yaml
 ```
 
 Ahogy az a következő tömörített kimenetben látható, a *PSP: korlátozott* ClusterRole bármely rendszerhez van rendelve *: hitelesített* felhasználók. Ez a képesség alapvető szintű korlátozásokat biztosít a saját szabályzatok meghatározása nélkül.
@@ -120,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:restricted
+  name: default:priviledged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:restricted
+  name: psp:priviledged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -387,8 +386,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted            false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Egyéni Pod biztonsági házirend használatának engedélyezése a felhasználói fiók számára

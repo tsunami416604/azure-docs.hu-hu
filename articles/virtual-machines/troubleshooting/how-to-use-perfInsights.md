@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan használható a PerfInsights a Windowsos virtu�
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eace9c196ebd9f71b7a6f2bac7a59f581e6f313f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090463"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058177"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
-A [PerfInsights](https://aka.ms/perfinsightsdownload) egy önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést nyújt a Windows rendszerű virtuális gépek teljesítményével kapcsolatos problémák megoldásához az Azure-ban. A PerfInsights virtuális gépeken is futtathatók önálló eszközként, közvetlenül a portálról az [Azure Virtual Machines teljesítmény-diagnosztika](performance-diagnostics.md)használatával vagy az [Azure Performance Diagnostics](performance-diagnostics-vm-extension.md)virtuálisgép-bővítményének telepítésével.
+A [PerfInsights](https://aka.ms/perfinsightsdownload) egy önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést nyújt a Windows rendszerű virtuális gépek teljesítményével kapcsolatos problémák megoldásához az Azure-ban. A PerfInsights virtuális gépeken is futtathatók önálló eszközként, közvetlenül a portálról az [Azure Virtual Machines teljesítmény-diagnosztika](performance-diagnostics.md)használatával vagy az [Azure Performance Diagnostics virtuálisgép-bővítményének](performance-diagnostics-vm-extension.md)telepítésével.
 
 Ha teljesítménnyel kapcsolatos problémákat tapasztal a virtuális gépekkel kapcsolatban, akkor a támogatáshoz való kapcsolatfelvétel előtt futtassa ezt az eszközt.
 
@@ -178,7 +178,7 @@ Diskspd I/O-munkaterhelési tesztek (operációsrendszer-lemez [írás] és kés
 
 ### <a name="how-do-i-run-perfinsights"></a>Hogyan futtatni a PerfInsights-t? 
 
-Az [Azure Performance Diagnostics](performance-diagnostics-vm-extension.md)virtuálisgép-bővítményének telepítésével virtuális gépen is futtathat PerfInsights. Önálló eszközként is futtatható. 
+Az [Azure Performance Diagnostics virtuálisgép-bővítményének](performance-diagnostics-vm-extension.md)telepítésével virtuális gépen is futtathat PerfInsights. Önálló eszközként is futtatható. 
 
 **A PerfInsights telepítése és futtatása a Azure Portal**
 

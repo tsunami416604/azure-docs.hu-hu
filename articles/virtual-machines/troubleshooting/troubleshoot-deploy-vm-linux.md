@@ -4,7 +4,7 @@ description: A Linux rendszerű virtuális gépek problémáinak üzembe helyez�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6aed61f13da8f6a29c1c3fa619af58cb720ea8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089952"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058226"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>A linuxos virtuális gépek Azure-beli üzembe helyezésével kapcsolatos problémák elhárítása
 
 A virtuális gépek üzembe helyezésével kapcsolatos problémák elhárításához az Azure-ban tekintse át a leggyakoribb hibák és megoldások [legfontosabb problémáit](#top-issues) .
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 ## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
@@ -34,7 +34,7 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 \<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
 - Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 - Ha a kért virtuális gép mérete nem módosítható:
-    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson az erőforráscsoportok > az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
+    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
     - Az összes virtuális gép leállítása után a kívánt méretben hozza létre a virtuális gépet.
     - Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 
@@ -90,4 +90,4 @@ Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő 
 ## <a name="next-steps"></a>További lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
-Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

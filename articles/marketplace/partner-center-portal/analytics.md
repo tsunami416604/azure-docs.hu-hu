@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 4357a91a87648885def69d8e75e19e38a5a3f751
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993724"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036646"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
@@ -250,7 +250,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
 | Ügyfél azonosítója | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |
 | Ügyfél postai irányítószáma  | Ügyfél| Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal.| |
-| Ügyfél állapota| Ügyfél| Az ügyfél által megadott állapot (címe). Az állapot különbözhet az ügyfél Azure-előfizetésében megadott vezetéknevtől.| |
+| Ügyfél állapota| Ügyfél| Az ügyfél által megadott állapot (címe). Az állapot különbözhet az ügyfél Azure-előfizetésében megadott állapottól.| |
 | Beszerzés dátuma| Ügyfél| Az első dátum, amikor az ügyfél az Ön által közzétett összes ajánlatot megvásárolta.| |
 | Elveszett dátum| Ügyfél| Az utolsó időpont, amikor az ügyfél megszakította a korábban megvásárolt összes ajánlatot.||
 | Új ügyfél  | Rendelés| Az érték azonosítja azt az új ügyfelet, amely első alkalommal szerez be egy vagy több ajánlatot (vagy nem). Az érték "yes" lesz, ha a "date beszerzett" dátummal megegyező naptári hónapon belül van. Az érték "nem" lesz, ha az ügyfél a jelentett naptári hónap előtt megvásárolta az ajánlatait. |

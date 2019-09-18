@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073878"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033717"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect szinkronizálás: Az Office 365-erőforrások előnyben részesített adatelérési helyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki multi-geo képességeket használ az Office 365-ben, ezzel az attribútummal jelölheti meg a felhasználó Office 365-beli adatmennyiségének földrajzi helyét. (A feltételek régiója és a *földrajzi* *terület* szinonimaként használható.)
@@ -172,7 +172,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True |
 
-    A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk az "out to AD – user identity" OOB (beépített) szinkronizálási szabályra. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
+    A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokat alkalmazza a kimenő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk a "kimenő az Azure AD – felhasználói identitás" OOB (beépített) szinkronizálási szabálya alapján. Megakadályozza, hogy a szinkronizálási szabály olyan **felhasználói** objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
 6. Nyissa meg az **átalakítás** lapot, és hajtsa végre a következő átalakítási szabályt:
 

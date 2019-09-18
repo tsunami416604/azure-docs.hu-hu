@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019824"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066335"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet egy Windows IoT Core-eszközt a Microsoft 
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-- A mintául szolgáló **Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+- A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 
 - A Windows 10 IoT Core operációs rendszert futtató eszköz. További információ: [a Windows 10 IoT Core-eszköz beállítása](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
@@ -33,23 +33,37 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="the-sample-devkits-application"></a>A minta Devkits alkalmazás
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **Windows IoT Core** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT Core** -eszközt tartalmaznak a következő jellemzőkkel:
 
 - Telemetria mérések az eszközhöz: **Páratartalom**, **hőmérséklet**és **nyomás**.
 - A **ventilátor sebességének**szabályozására szolgáló beállítás.
-- Egy eszköz tulajdonságának megnyomási **száma** és egy Felhőbeli tulajdonság **helye**.
+- Egy eszköz tulajdonságának **Megnyomási száma** és egy Felhőbeli tulajdonság **helye**.
 
 Az eszköz sablonjának konfigurálásával kapcsolatos részletes információkért lásd: a [Windows IoT Core-eszköz sablonjának részletei](#device-template-details).
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central alkalmazásban használja a **Device Explorer** lapot, és adjon hozzá egy valódi eszközt a **Windows 10 IoT Core** -eszköz sablonhoz. Jegyezze fel az eszköz kapcsolatának részleteit (a**hatókör azonosítóját**, az **eszköz azonosítóját**és az **elsődleges kulcsot**). További információ: a [kapcsolatok adatainak](howto-generate-connection-string.md#get-connection-information)beolvasása.
+Az Azure IoT Central alkalmazásban használja a **Device Explorer** lapot, és adjon hozzá egy valódi eszközt a **Windows 10 IoT Core** -eszköz sablonhoz. Jegyezze fel az eszköz kapcsolatának részleteit (a**hatókör azonosítóját**, az **eszköz azonosítóját**és az **elsődleges kulcsot**).
 
 ## <a name="prepare-the-device"></a>Az eszköz előkészítése
 
-Ahhoz, hogy az eszköz csatlakozhasson IoT Centralhoz, kapcsolati karakterláncra van szükség.
+Ahhoz, hogy az eszköz csatlakozhasson IoT Centralhoz, kapcsolati karakterláncra van szüksége:
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. Használja a `dps-keygen` parancssori segédprogramot egy kapcsolódási karakterlánc létrehozásához:
+
+    A [Key Generator segédprogram](https://github.com/Azure/dps-keygen)telepítéséhez futtassa a következő parancsot:
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. Kapcsolati karakterlánc létrehozásához futtassa a következő parancsot a korábban feljegyzett kapcsolati adatok használatával:
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. Másolja a kapcsolódási sztringet `dps-keygen` az eszköz kódjában használandó kimenetből.
 
 Ahhoz, hogy az eszköz kódja hozzáférhessen a kapcsolati karakterlánchoz, mentse azt egy **kapcsolat. string. iothub** nevű fájlba a `C:\Data\Users\DefaultAccount\Documents\` Windows 10 IoT Core-eszköz mappájában.
 
@@ -76,7 +90,7 @@ Néhány perc elteltével megtekintheti a telemetria az eszközéről a IoT Cent
 A [Windows-eszközök portálon](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) olyan eszközök találhatók, amelyek segítségével elháríthatja az eszközt:
 
 - Az **alkalmazások kezelője** lapon vezérelheti az eszközön futó alkalmazásokat.
-- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az eszközbeállítások lapon rögzítheti az eszköz képernyőképeit. Példa:
+- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az **eszközbeállítások lapon rögzítheti az eszköz** képernyőképeit. Példa:
 
     ![Alkalmazás képernyőképe](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -86,7 +100,7 @@ Ha szeretné felderíteni és módosítani az ügyfélalkalmazás forráskódjá
 
 ## <a name="device-template-details"></a>Az eszköz sablonjának részletei
 
-A mintául szolgáló **Devkits** létrehozott alkalmazások egy **Windows IoT Core** -eszközt tartalmaznak a következő jellemzőkkel:
+A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT Core** -eszközt tartalmaznak a következő jellemzőkkel:
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
@@ -108,7 +122,7 @@ Numerikus beállítások
 
 | Type            | Display name | Mezőnév | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
-| Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
+| Eszköz tulajdonsága | Die száma   | dieNumber  | number    |
 | Text            | Location     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések

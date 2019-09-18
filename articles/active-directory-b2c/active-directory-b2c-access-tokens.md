@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874093"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066122"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat igénylése Azure Active Directory B2C
 
-A *hozzáférési* jogkivonatok olyan jogcímeket tartalmaznak, amelyeket Azure Active Directory (Azure ad) B2C-ben használhat az API-khoz megadott engedélyek azonosítására. Egy erőforrás-kiszolgáló meghívásakor a hozzáférési tokennek jelen kell lennie a HTTP-kérelemben. A hozzáférési jogkivonatot a Azure AD B2C válaszai **access_token** jelöli.
+A *hozzáférési jogkivonatok* olyan jogcímeket tartalmaznak, amelyeket Azure Active Directory B2C (Azure ad B2C) az API-khoz megadott engedélyek azonosítására használhat. Egy erőforrás-kiszolgáló meghívásakor a hozzáférési tokennek jelen kell lennie a HTTP-kérelemben. A hozzáférési jogkivonatot a Azure AD B2C válaszai **access_token** jelöli.
 
 Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmazáshoz és webes API-hoz. A Azure AD B2C jogkivonatokkal kapcsolatos további információkért tekintse meg a [Azure Active Directory B2C jogkivonatok áttekintése](active-directory-b2c-reference-tokens.md)című témakört.
 
@@ -29,13 +29,13 @@ Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmaz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
-- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C](add-web-application.md)-bérlőhöz.
+- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C-bérlőhöz](add-web-application.md).
 
 ## <a name="scopes"></a>Hatókörök
 
 A hatókörök lehetővé teszik a védett erőforrásokra vonatkozó engedélyek kezelését. Hozzáférési jogkivonat kérése esetén az ügyfélalkalmazás a kérelem **hatókör** -paraméterében meg kell adnia a kívánt engedélyeket. Ha például meg szeretné határozni a **hatókör értékét** `read` azon API számára `https://contoso.onmicrosoft.com/api`, amelynek az **alkalmazás-azonosító URI-ja** , a hatókör `https://contoso.onmicrosoft.com/api/read`a következő lesz:.
 
-A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ha több engedélyt szeretne beszerezni ugyanabban a kérésben, több bejegyzést is hozzáadhat a kérelem egyetlen hatókörű paraméteréhez, szóközzel elválasztva.
+A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ha több engedélyt szeretne beszerezni ugyanabban a kérésben, több bejegyzést is hozzáadhat a kérelem egyetlen **hatókörű** paraméteréhez, szóközzel elválasztva.
 
 Az alábbi példa egy URL-címben dekódolt hatóköröket mutatja be:
 
@@ -137,4 +137,4 @@ Ha a https://jwt.ms használatával vizsgálja meg a visszaadott hozzáférési 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a jogkivonatok [konfigurálásáról a Azure ad B2C](configure-tokens.md)
+- Tudnivalók a [jogkivonatok konfigurálásáról a Azure ad B2C](configure-tokens.md)

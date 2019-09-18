@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016433"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036250"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016433"
 
 ## <a name="support-coverage-and-regional-availability"></a>A lefedettség és a regionális rendelkezésre állás támogatása
 
-A ZRS jelenleg támogatja a standard általános célú v2-fiókok típusát. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
+A ZRS jelenleg a standard általános célú v2-és FileStorage-típusok használatát támogatja. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md).
 
 A ZRS a Blobok, a nem lemezes Blobok, a fájlok, a táblák és a várólisták számára érhető el.
 
-A ZRS általánosan elérhető a következő régiókban:
+Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
 
 - Délkelet-Ázsia
 - Nyugat-Európa
@@ -38,6 +38,10 @@ A ZRS általánosan elérhető a következő régiókban:
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. nyugati régiója
+
+A FileStorage-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
+
+- Nyugat-Európa
 
 A Microsoft továbbra is engedélyezi a ZRS további Azure-régiókban. Az új régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 
@@ -64,6 +68,9 @@ Két elsődleges lehetőség van a ZRS való áttelepítésre:
 
 - Az adatok manuális másolása vagy áthelyezése egy új ZRS-fiókból egy meglévő fiókból.
 - Élő áttelepítés kérése.
+
+> [!IMPORTANT]
+> A prémium szintű fájlmegosztás jelenleg nem támogatja az élő áttelepítést. Az adatok manuális másolása és áthelyezése jelenleg nem támogatott.
 
 Ha az áttelepítést egy meghatározott dátummal kell végrehajtania, érdemes lehet manuális áttelepítést végeznie. A manuális áttelepítés nagyobb rugalmasságot biztosít, mint az élő áttelepítés. A manuális áttelepítéssel szabályozhatja az időzítést.
 
@@ -94,7 +101,7 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
 4. A **probléma** szakasz a következő értékeket határozza meg: 
     - **Súlyosság**: Hagyja meg az alapértelmezett értéket.
     - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
-    - **Kategória**: Válassza **az áttelepítés a régión belüli ZRS**lehetőséget.
+    - **Kategória**: Válassza **az áttelepítés a ZRS**lehetőséget.
     - **Cím**: Írjon be egy leíró címet, például: ZRS- **fiók áttelepítése**.
     - **Részletek**: Írja be a további részleteket a **részletek** mezőbe, például a (z) [LRS, GRS] területről a \_ \_ ZRS-be kíván migrálni. 
 5. Kattintson a **Tovább** gombra.
@@ -137,7 +144,7 @@ Ha olyan ZRS-fiókba kívánja áttelepíteni az adatait, amely eltér a forrás
 
 A klasszikus ZRS aszinkron módon replikálja az adatközpontokat egy-két régión belül. Előfordulhat, hogy a replikált adatértékek nem állnak rendelkezésre, kivéve, ha a Microsoft feladatátvételt kezdeményez a másodlagosnak. A klasszikus ZRS-fiók nem alakítható át LRS, GRS vagy RA-GRS típusúra vagy onnan. A klasszikus ZRS-fiókok nem támogatják a metrikákat és a naplózást is.
 
-A klasszikus ZRS csak az általános célú v1-(GPv1-) Storage-fiókokban lévő blokkos Blobok esetén érhető el. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](storage-account-overview.md).
+A klasszikus ZRS csak az általános célú v1-(GPv1-) Storage-fiókokban lévő **blokkos Blobok** esetén érhető el. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](storage-account-overview.md).
 
 A ZRS-fiók adatainak manuális áttelepítéséhez egy LRS, a klasszikus, a GRS vagy az RA-GRS fiókból a következő eszközök egyikét használja: AzCopy, Azure Storage Explorer, Azure PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage ügyféloldali kódtárainak egyikével.
 

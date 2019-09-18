@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899634"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066137"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Az ADFS-t SAML-identitás-szolgáltatóként adja hozzá Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy ADFS-felhasználói fiókhoz az Azure Active Directory (Azure AD) B2C-ben lévő [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával. A bejelentkezéshez [SAML technikai profilt](saml-technical-profile.md) kell hozzáadnia egy egyéni szabályzathoz.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy ADFS-felhasználói fiókhoz a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](active-directory-b2c-overview-custom.md) . A bejelentkezéshez [SAML technikai profilt](saml-technical-profile.md) kell hozzáadnia egy egyéni szabályzathoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy ADFS
 A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
@@ -45,7 +45,7 @@ A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
-Ha azt szeretné, hogy a felhasználók ADFS-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e. 
+Ha azt szeretné, hogy a felhasználók ADFS-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
 Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában.
 
@@ -138,7 +138,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
-    
+
     Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil azonosítójával. Például: `Contoso-SAML2`.
 
 3. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
@@ -157,7 +157,7 @@ Cserélje le a következő értékeket:
 - **a** bérlő neve, például Your-Tenant.onmicrosoft.com.
 - **az Ön** házirendje a szabályzat nevével. Például: B2C_1A_signup_signin_adfs.
 - az **Ön műszaki profilja** a SAML-identitás szolgáltatójának műszaki profiljának nevével. Például: contoso-egy SAML2.
- 
+
 Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg arról, hogy a helyes URL-címet adja meg, és hogy van-e hozzáférése az XML-metaadat fájlhoz. Új függő entitás megbízhatóságának az ADFS-kezelő beépülő modullal való hozzáadásához és a beállítások manuális konfigurálásához hajtsa végre az alábbi eljárást egy összevonási kiszolgálón. Az eljárás végrehajtásához legalább a **rendszergazdák** vagy ezzel egyenértékű csoport tagjának kell lennie a helyi számítógépen.
 
 1. A Kiszolgálókezelőben válassza az **eszközök**, majd az ADFS- **kezelés**lehetőséget.
@@ -168,9 +168,9 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
 6. A **Access Control házirend kiválasztása** lapon válasszon ki egy házirendet, majd kattintson a **tovább**gombra.
 7. A **készen áll a megbízhatósági kapcsolat hozzáadására** lapon tekintse át a beállításokat, majd kattintson a **tovább** gombra a függő entitás megbízhatósági adatainak mentéséhez.
 8. A **Befejezés** lapon kattintson a **Bezárás**gombra, ez a művelet automatikusan megjeleníti a **jogcím szabályainak szerkesztése** párbeszédpanelt.
-9. Válassza a **szabály hozzáadása**elemet.  
+9. Válassza a **szabály hozzáadása**elemet.
 10. A **jogcím-szabály sablonjában**válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget.
-11. Adja meg a **jogcím szabályának nevét**. Az **attribútum**-tárolóban válassza a **Active Directory kiválasztása**lehetőséget, adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **az OK gombra**.
+11. Adja meg a **jogcím szabályának nevét**. Az **attribútum-tárolóban**válassza a **Active Directory kiválasztása**lehetőséget, adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **az OK gombra**.
 
     | LDAP-attribútum | Kimenő jogcím típusa |
     | -------------- | ------------------- |
@@ -179,19 +179,19 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
     | Given-Name | given_name |
     | E-Mail-Address | email |
     | Megjelenítendő név | name |
-    
-    Vegye figyelembe, hogy ezek a nevek nem fognak megjelenni a kimenő jogcím típusa legördülő listában. Manuálisan kell beírnia azokat a alkalmazásban. (A legördülő lista valójában szerkeszthető). 
-    
-12.  A tanúsítvány típusa alapján előfordulhat, hogy a KIVONATOLÓ algoritmust kell beállítania. A függő entitás megbízhatósága (B2C-bemutató) tulajdonságai ablakban válassza a **speciális** fület `SHA-256`, és módosítsa a **biztonságos kivonatoló algoritmust** a verzióra, majd kattintson **az OK**gombra.  
+
+    Vegye figyelembe, hogy ezek a nevek nem fognak megjelenni a kimenő jogcím típusa legördülő listában. Manuálisan kell beírnia azokat a alkalmazásban. (A legördülő lista valójában szerkeszthető).
+
+12.  A tanúsítvány típusa alapján előfordulhat, hogy a KIVONATOLÓ algoritmust kell beállítania. A függő entitás megbízhatósága (B2C-bemutató) tulajdonságai ablakban válassza a **speciális** fület `SHA-256`, és módosítsa a **biztonságos kivonatoló algoritmust** a verzióra, majd kattintson **az OK**gombra.
 13. A Kiszolgálókezelőben válassza az **eszközök**, majd az ADFS- **kezelés**lehetőséget.
-14. Válassza ki a létrehozott függő entitás megbízhatóságát, válassza a **frissítés az összevonási metaadatokból**elemet, majd kattintson a **frissítés**elemre. 
+14. Válassza ki a létrehozott függő entitás megbízhatóságát, válassza a **frissítés az összevonási metaadatokból**elemet, majd kattintson a **frissítés**elemre.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
 
 Az Azure AD B2c-vel folytatott kommunikáció egy, a bérlőben létrehozott alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 5. Adja meg az alkalmazás nevét, például *testapp1*.

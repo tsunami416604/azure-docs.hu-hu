@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: bb7711eea927212042ed2299bae74130867c1692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019986"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067647"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -34,14 +34,17 @@ A DPS használata lehetővé teszi a következőket:
 
 Ez a cikk a következő négy felhasználási esetet ismerteti:
 
-1. [Egyetlen eszköz gyors csatlakoztatása SAS használatával](#connect-a-single-device)
-1. [Eszközök csatlakoztatása nagy méretekben SAS használatával](#connect-devices-at-scale-using-sas)
-1. Az [eszközök méretezése az X. 509 tanúsítvánnyal](#connect-devices-using-x509-certificates) . Ez az ajánlott módszer az éles környezetekben.
-1. [Csatlakoztatás az eszközök első regisztrációja nélkül](#connect-without-registering-devices)
+- [Egyetlen eszköz gyors csatlakoztatása SAS használatával](#connect-a-single-device)
+- [Eszközök csatlakoztatása nagy méretekben SAS használatával](#connect-devices-at-scale-using-sas)
+- Az [eszközök méretezése az X. 509 tanúsítvánnyal](#connect-devices-using-x509-certificates) . Ez az ajánlott módszer az éles környezetekben.
+- [Csatlakoztatás az eszközök első regisztrációja nélkül](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
-Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. Az eszközhöz tartozó kapcsolódási karakterlánc létrehozásához használhatja a IoT Central-alkalmazás eszköz csatlakoztatási adatait. Részletes útmutatást a következő témakörben talál: [eszköz kapcsolati karakterláncának létrehozása Azure IoT Central-alkalmazáshoz való kapcsolódáshoz](howto-generate-connection-string.md).
+Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszközökkel kísérletezik. A IoT Central alkalmazás eszköz kapcsolati adataival csatlakoztathat egy eszközt a IoT Central alkalmazáshoz az eszköz kiépítési szolgáltatása (DPS) használatával. A következő nyelveken talál minta DPS-eszköz ügyféloldali kódját:
+
+- [C\#](./howto-connect-raspberry-pi-csharp.md)
+- [Node.js](./howto-connect-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása nagy méretekben SAS használatával
 
@@ -163,8 +166,6 @@ Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló l
 - [Node. js-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
 - [Javához készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK a .NET-hez](https://github.com/azure/azure-iot-sdk-csharp)
-
-Minden eszköz egy egyedi kapcsolati karakterlánc használatával csatlakozik, amely azonosítja az eszközt. Egy eszköz csak akkor tud csatlakozni az IoT hubhoz, ahol regisztrálva van. Amikor valódi eszközt hoz létre az Azure IoT Central alkalmazásban, az alkalmazás létrehozza a kapcsolódási karakterlánc létrehozásához szükséges adatokat a használatával `dps-keygen`.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>Az SDK szolgáltatásai és IoT Hub kapcsolat
 

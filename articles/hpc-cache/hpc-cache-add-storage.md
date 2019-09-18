@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775259"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037215"
 ---
 # <a name="add-storage"></a>Tároló hozzáadása
 
@@ -27,13 +27,15 @@ Az Azure HPC-gyorsítótár létrehozásakor vagy később is hozzáadhat tárol
 
 A gyorsítótár-létrehozás varázsló **tárolási célok** lapján definiálhatja a tárterületet, amikor létrehozza a gyorsítótár-példányt.
 
-![a tárolási célok oldalának képernyőképe](media/create-targets.png)
+![a tárolási célok oldalának képernyőképe](media/hpc-cache-storage-targets-pop.png)
 
 A tárterület hozzáadásához kattintson a **tároló hozzáadása** hivatkozásra.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Tárolási célok hozzáadása a gyorsítótárból
 
 A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal oldali oldalsávon található **tárolási célok** elemre. A tárolási cél lap felsorolja az összes meglévő célt, és egy hivatkozást ad hozzá egy újat.
+
+![képernyőfelvétel a Storage Targets hivatkozásáról az oldalsávon, a configure (Konfigurálás) fejléc alatt, amely a kategória fejlécek beállításai és figyelése között található.](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Új Azure Blob Storage-cél hozzáadása
 
@@ -52,15 +54,13 @@ Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 * **Virtuális névtér elérési útja** – itt állíthatja be az ügyfél felé irányuló filepath ehhez a tárolási célhoz. A virtuális névtér szolgáltatással kapcsolatos további tudnivalókért olvassa el az [összesített névtér konfigurálása](hpc-cache-namespace.md) című témakört.
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hozzáférés-vezérlési Szerepkörök hozzáadása a fiókhoz
 
 Az Azure HPC cache [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) használ, hogy engedélyezze a gyorsítótár-alkalmazás számára az Azure Blob Storage-célokhoz való hozzáférést a Storage-fiókhoz.
 
-A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a Rolls [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "StorageCache erőforrás-szolgáltató" felhasználóhoz.
+A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "StorageCache erőforrás-szolgáltató" felhasználóhoz.
 
 Ezt előre elvégezheti, vagy egy hivatkozásra kattintva megadhatja a blob Storage-tárolót tartalmazó oldalon.
 

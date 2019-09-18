@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 57aed26fe2f2f03dca347836f21d1cad14a07642
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849395"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063355"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C bérlő létrehozása
 
-Az alkalmazások a Azure Active Directory (Azure AD) B2C-vel való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben.
+Az alkalmazások Azure Active Directory B2C (Azure AD B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C bérlő létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy az előfizetést tartalmazó könyvtárat használja. Kattintson a **könyvtár és előfizetés szűrőre** a felső menüben, majd válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár különbözik a Azure AD B2C bérlőt tartalmazó mappától.
+2. Győződjön meg arról, hogy az előfizetést tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár különbözik a Azure AD B2C bérlőt tartalmazó mappától.
 
     ![Címtár-és előfizetés-szűrő a kiválasztott előfizetési Bérlővel](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
 
@@ -51,9 +51,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     Válassza ki a létrehozott bérlőt, és válassza ki az előfizetését.
 
     Az erőforráscsoport területen válassza az **új létrehozása**lehetőséget. Adja meg a bérlőt tartalmazó erőforráscsoport nevét, válassza ki a helyet, majd kattintson a **Létrehozás**gombra.
-1. Az új bérlő használatának megkezdéséhez győződjön meg arról, hogy a felső menüben található **címtár és előfizetés szűrőre** kattint, és kiválasztja az azt tartalmazó könyvtárat, és a Azure ad B2C bérlőjét tartalmazó könyvtárat használja.
+1. Az új bérlő használatának megkezdéséhez győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja a felső menüben, majd válassza ki **a könyvtárat,** amely tartalmazza azt.
 
-    Ha először nem látja az új Azure B2C-bérlőt a listában, frissítse a böngészőablakot, majd a felső menüben válassza újra a **címtár-és előfizetés-szűrőt** .
+    Ha először nem látja az új Azure B2C-bérlőt a listában, frissítse a böngészőablakot, majd a felső menüben válassza újra a **címtár + előfizetés** szűrőt.
 
     ![Címtár-és előfizetés-szűrő a B2C-bérlő kiválasztásával](./media/tutorial-create-tenant/switch-directories.PNG)
 

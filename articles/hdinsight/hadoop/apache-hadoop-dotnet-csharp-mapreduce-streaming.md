@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882338"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066946"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# a MapReduce streaming Apache Hadoop a HDInsight-ben
 
@@ -162,7 +162,7 @@ Az alkalmazás létrehozása után hozza létre, hogy létrehozza a `/bin/Debug/
 
    * Ha __Azure Storage-fiókot__használ, kattintson a feltöltés ikonra, majd keresse meg a **bin\debug** mappát a **Mapper** projekthez. Végül válassza ki a **mapper. exe** fájlt, majd kattintson **az OK**gombra.
 
-        ![ikon feltöltése](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        ![HDInsight feltöltése ikon a Mapper számára](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * Ha __Azure Data Lake Storage__használ, kattintson a jobb gombbal egy üresre a fájl listázása területen, majd válassza a __feltöltés__lehetőséget. Végül válassza ki a **mapper. exe** fájlt, és kattintson a **Megnyitás**gombra.
 

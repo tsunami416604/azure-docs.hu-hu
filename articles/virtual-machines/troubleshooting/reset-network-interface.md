@@ -1,10 +1,10 @@
 ---
-title: Azure Windows virtuális gép alaphelyzetbe állítása a hálózati adapter |} A Microsoft Docs
-description: Bemutatja, hogyan Azure Windows virtuális gép hálózati adapter alaphelyzetbe állítása
+title: Az Azure Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása | Microsoft Docs
+description: Bemutatja, hogyan lehet alaphelyzetbe állítani az Azure Windows rendszerű virtuális gépek hálózati adapterét
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,44 +12,44 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307314"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058466"
 ---
-# <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows virtuális gép alaphelyzetbe állítása a hálózati adapter 
+# <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Az Azure Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Ez a cikk bemutatja az Azure Windows virtuális gép problémák megoldásához, ha nem tud kapcsolódni a Microsoft Azure Windows virtuális gép (VM) után a hálózati adapter alaphelyzetbe állítása:
+Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszerű virtuális gép hálózati adapterét a problémák megoldásához, ha nem tud csatlakozni Microsoft Azure Windows rendszerű virtuális géphez (VM), miután:
 
 * Letiltja az alapértelmezett hálózati adaptert (NIC). 
-* Manuálisan beállított egy statikus IP-címet a hálózati adaptert. 
+* Manuálisan állítson be statikus IP-címet a hálózati adapterhez. 
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
 ## <a name="reset-network-interface"></a>Hálózati adapter alaphelyzetbe állítása
 
-### <a name="for-vms-deployed-in-resource-group-model"></a>A csoport erőforrásmodell üzembe helyezett virtuális gépek
+### <a name="for-vms-deployed-in-resource-group-model"></a>Erőforráscsoport-modellben üzembe helyezett virtuális gépek esetén
 
 1.  Nyissa meg az [Azure Portal](https://ms.portal.azure.com).
 2.  Válassza ki az érintett virtuális gépet.
-3.  Válassza ki **hálózatkezelés** , és válassza ki a hálózati adapter a virtuális gép.
+3.  Válassza a **hálózatkezelés** lehetőséget, majd válassza ki a virtuális gép hálózati adapterét.
 
     ![Hálózati adapter helye](./media/reset-network-interface/select-network-interface-vm.png)
     
-4.  Válassza ki **IP-konfigurációk**.
-5.  Válassza ki a IP-cím. 
-6.  Ha a **magánhálózati IP-hozzárendelés** nem **statikus**, módosítsa a következőre **statikus**.
-7.  Módosítsa a **IP-cím** egy másik alhálózaton elérhető IP-címre.
-8. Inicializálja az új hálózati Adaptert a rendszer a virtuális gép újraindul.
-9.  Próbálja ki az RDP-hez a gépre. Sikeres művelet esetén módosíthatja a magánhálózati IP-cím vissza az eredeti, ha szeretné. Ellenkező esetben megtarthatja ezt. 
+4.  Válassza az **IP-konfigurációk**lehetőséget.
+5.  Válassza ki az IP-címet. 
+6.  Ha a **magánhálózati IP-hozzárendelés** nem **statikus**, módosítsa **statikusra**.
+7.  Módosítsa az **IP-címet** egy másik IP-címhez, amely elérhető az alhálózatban.
+8. A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
+9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja. 
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-1. Győződjön meg arról, hogy rendelkezik-e [az Azure PowerShell legújabb verzióját](https://docs.microsoft.com/powershell/azure/overview) telepítve
+1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
 
     ```powershell
@@ -70,27 +70,27 @@ Ez a cikk bemutatja az Azure Windows virtuális gép problémák megoldásához,
     #Add/Change static IP. This process will not change MAC address
     Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
-3. Próbálja ki az RDP-hez a gépre.  Sikeres művelet esetén módosíthatja a magánhálózati IP-cím vissza az eredeti, ha szeretné. Ellenkező esetben megtarthatja ezt.
+3. Próbálja meg az RDP-t a gépre.  Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja.
 
-### <a name="for-classic-vms"></a>A klasszikus virtuális gépek
+### <a name="for-classic-vms"></a>Klasszikus virtuális gépek esetén
 
-Hálózati adapter alaphelyzetbe állítása, kövesse az alábbi lépéseket:
+A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépéseket:
 
 #### <a name="use-azure-portal"></a>Az Azure Portal használata
 
 1.  Nyissa meg az [Azure Portal]( https://ms.portal.azure.com).
-2.  Válassza ki **virtuális gépek (klasszikus)** .
+2.  Válassza a **Virtual Machines (klasszikus)** lehetőséget.
 3.  Válassza ki az érintett virtuális gépet.
-4.  Válassza ki **IP-címek**.
-5.  Ha a **magánhálózati IP-hozzárendelés** nem **statikus**, módosítsa a következőre **statikus**.
-6.  Módosítsa a **IP-cím** egy másik alhálózaton elérhető IP-címre.
+4.  Válassza az **IP-címek**lehetőséget.
+5.  Ha a **magánhálózati IP-hozzárendelés** nem **statikus**, módosítsa **statikusra**.
+6.  Módosítsa az **IP-címet** egy másik IP-címhez, amely elérhető az alhálózatban.
 7.  Kattintson a **Mentés** gombra.
-8.  Inicializálja az új hálózati Adaptert a rendszer a virtuális gép újraindul.
-9.  Próbálja ki az RDP-hez a gépre. Ha ez sikeres, ha szeretné, térhet vissza az eredeti a magánhálózati IP-cím.  
+8.  A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
+9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, dönthet úgy, hogy visszaállít egy magánhálózati IP-címet az eredetire.  
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-1. Győződjön meg arról, hogy rendelkezik-e [az Azure PowerShell legújabb verzióját](https://docs.microsoft.com/powershell/azure/overview) telepítve.
+1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
 
     ```powershell
@@ -111,22 +111,22 @@ Hálózati adapter alaphelyzetbe állítása, kövesse az alábbi lépéseket:
     #Add/Change static IP. This process will not change MAC address
     Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
-3. Próbálja ki az RDP-hez a gépre. Sikeres művelet esetén módosíthatja a magánhálózati IP-cím vissza az eredeti, ha szeretné. Ellenkező esetben megtarthatja ezt. 
+3. Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja. 
 
-## <a name="delete-the-unavailable-nics"></a>Nem érhető el a hálózati adapter törlése
-Után is a távoli asztal a géphez, törölnie kell a régi hálózati adaptereket a lehetséges problémák elkerülése érdekében:
+## <a name="delete-the-unavailable-nics"></a>A nem elérhető hálózati adapterek törlése
+Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
-1.  Nyissa meg az Eszközkezelőt.
-2.  Válassza ki **nézet** > **rejtett eszközök megjelenítése**.
-3.  Válassza ki **hálózati adapterek**. 
-4.  Ellenőrizze, hogy a "Microsoft Hyper-V hálózati Adapter" nevű adaptereket.
-5.  A nem elérhető adapterek szürke színnel jelennek meg. Kattintson a jobb gombbal az adaptert, és kattintson az eltávolítás.
+1.  Nyissa meg Eszközkezelő.
+2.  Válassza a **nézet** > **rejtett eszközök megjelenítése**lehetőséget.
+3.  Válassza a **hálózati adapterek**lehetőséget. 
+4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.
+5.  A nem elérhető adapterek szürke színnel jelennek meg. Kattintson a jobb gombbal az adapterre, majd válassza az Eltávolítás lehetőséget.
 
     ![a hálózati adapter képe](media/reset-network-interface/nicpage.png)
 
     > [!NOTE]
-    > Csak távolítsa el a nem érhető el "Microsoft Hyper-V hálózati Adapter" nevű adaptereket. Ha bármely más rejtett adapter távolítja el, további problémákat okozhat.
+    > Csak a "Microsoft Hyper-V hálózati adapter" nevű nem elérhető adaptereket távolítsa el. Ha eltávolít egy másik rejtett adaptert, további problémák merülhetnek fel.
     >
     >
 
-6.  Most már nem érhető el az összes adapter ne legyen bejelölve, a rendszer.
+6.  Most az összes nem elérhető adaptert törölni kell a rendszeren.

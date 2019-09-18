@@ -1,7 +1,7 @@
 ---
 title: Architektúra & főbb fogalmak
-titleSuffix: Azure Machine Learning service
-description: Ismerkedjen meg az Azure Machine Learning szolgáltatást alkotó architektúrával, kifejezésekkel, fogalmakkal és munkafolyamatokkal.
+titleSuffix: Azure Machine Learning
+description: Ismerkedjen meg a Azure Machine Learning alkotó architektúrával, kifejezésekkel, fogalmakkal és munkafolyamatokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845004"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035594"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning működése: Architektúra és fogalmak
 
-Ismerje meg Azure Machine Learning szolgáltatás architektúráját, fogalmait és munkafolyamatát. A szolgáltatás fő összetevői és a szolgáltatás használatának általános munkafolyamata az alábbi ábrán látható:
+Ismerje meg a Azure Machine Learning architektúráját, fogalmait és munkafolyamatát. A szolgáltatás fő összetevői és a szolgáltatás használatának általános munkafolyamata az alábbi ábrán látható:
 
-![Azure Machine Learning szolgáltatás architektúrája és munkafolyamata](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning architektúra és munkafolyamat](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Munkafolyamat
 
@@ -47,10 +47,10 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 +  A szolgáltatással bármilyen Python-környezetben dolgozhat a Pythonhoz készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
 + A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)felülettel.
 + Kód írása a Visual Studio Code-ban [Azure Machine learning vs Code bővítménnyel](how-to-vscode-tools.md)
-+ A [Visual Interface (előzetes verzió) használatával Azure Machine learning szolgáltatáshoz](ui-concept-visual-interface.md) a munkafolyamat lépéseit kód írása nélkül hajthatja végre.
++ A [Azure Machine learning Visual Interface (előzetes verzió)](ui-concept-visual-interface.md) használatával hajtsa végre a munkafolyamat lépéseit kód írása nélkül.
 
 > [!NOTE]
-> Bár ez a cikk a Azure Machine Learning szolgáltatás által használt feltételeket és fogalmakat határozza meg, nem határozza meg az Azure platformra vonatkozó feltételeket és fogalmakat. További információ az Azure platform terminológiáról: [Microsoft Azure Szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+> Bár ez a cikk az Azure Machine Learning által használt feltételeket és fogalmakat határozza meg, nem határozza meg az Azure platformra vonatkozó feltételeket és fogalmakat. További információ az Azure platform terminológiáról: [Microsoft Azure Szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Szószedet
 
@@ -75,7 +75,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 
 ### <a name="workspaces"></a>Munkaterületek
 
-[A munkaterület](concept-workspace.md) a Azure Machine learning szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít a Azure Machine Learning szolgáltatás használatakor létrehozott összes összetevővel való együttműködéshez. A munkaterületeket másokkal is megoszthatja. A munkaterületek részletes ismertetését lásd: [Mi az Azure Machine learning munkaterület?](concept-workspace.md).
+[A munkaterület](concept-workspace.md) a Azure Machine learning legfelső szintű erőforrása. Központi helyet biztosít a Azure Machine Learning használatakor létrehozott összes összetevővel való együttműködéshez. A munkaterületeket másokkal is megoszthatja. A munkaterületek részletes ismertetését lásd: [Mi az Azure Machine learning munkaterület?](concept-workspace.md).
 
 ### <a name="experiments"></a>Kísérletek
 
@@ -87,13 +87,13 @@ A kísérletet bemutató példát a következő témakörben [talál: oktatóany
 
 A legegyszerűbb esetben egy modell olyan kódot, amely veszi a bemenetnek és kimenetet. Egy gépi tanulási modellek létrehozásával magában foglalja a algoritmusok kiválasztása, megadják a data és a hangolási hiperparaméterek. Képzési, amely a betanított modell, amely magában foglalja, mi a modell a betanítási folyamat során megtanult iteratív folyamat.
 
-Futtatás az Azure Machine Learning-modell elő. A Azure Machine Learningon kívül betanított modellt is használhat. A modelleket Azure Machine Learning szolgáltatás munkaterületen lehet regisztrálni.
+Futtatás az Azure Machine Learning-modell elő. A Azure Machine Learningon kívül betanított modellt is használhat. A modelleket Azure Machine Learning munkaterületen lehet regisztrálni.
 
-Azure Machine Learning szolgáltatás a Framework agnosztikus. Modell létrehozásakor bármilyen népszerű Machine learning-keretrendszert használhat, például a Scikit-Learn, a XGBoost, a PyTorch, a TensorFlow és a Chainer platformot.
+Azure Machine Learning a Framework agnosztikus. Modell létrehozásakor bármilyen népszerű Machine learning-keretrendszert használhat, például a Scikit-Learn, a XGBoost, a PyTorch, a TensorFlow és a Chainer platformot.
 
-A Scikit-Learn és a kalkulátort használó modellek képzését bemutató példát itt talál [: oktatóanyag: Rendszerkép-besorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine learning szolgáltatással.
+A Scikit-Learn és a kalkulátort használó modellek képzését bemutató példát itt talál [: oktatóanyag: Képbesorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine Learningsal.
 
-A **modell beállításjegyzéke** nyomon követi a Azure Machine learning szolgáltatás munkaterületén lévő összes modellt.
+A **modell beállításjegyzéke** nyomon követi a Azure Machine learning munkaterület összes modelljét.
 
 Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy olyan modellt regisztrál, amelynek a neve megegyezik egy meglévővel, a beállításjegyzék feltételezi, hogy ez egy új verzió. A verzió növekményes, és az új modell ugyanazon a néven van regisztrálva.
 
@@ -124,8 +124,8 @@ További információkért tekintse át a következő cikkeket:
 
 * [Ml modellek betanítása a becslések](how-to-train-ml-models.md).
 * [A Pytorch mély tanulási modelljeinek Kiképzése Azure Machine learning](how-to-train-pytorch.md).
-* [TensorFlow-modellek betanítása és regisztrálása Azure Machine learning szolgáltatással](how-to-train-tensorflow.md).
-* [A Azure Machine learning szolgáltatással nagy léptékben betaníthatja és regisztrálhatja a láncolt modelleket](how-to-train-chainer.md).
+* [TensorFlow-modellek betanítása és regisztrálása Azure Machine learning](how-to-train-tensorflow.md).
+* [A láncolt modelleket Kitaníthatja és regisztrálhatja Azure Machine learning](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Adatkészletek és adattárolók
 
@@ -147,7 +147,7 @@ További információ a [képzéshez és az üzembe helyezéshez rendelkezésre 
 
 A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó fájlokat tartalmazó könyvtárra. Megadhat egy kísérlet nevét is, amely a betanítás során összegyűjtött információk tárolására szolgál. A betanítás során a rendszer átmásolja a teljes könyvtárat a betanítási környezetre (számítási célra), a futtatási konfiguráció által megadott parancsfájlt pedig elindítják. A könyvtár pillanatképet is tárolja a munkaterületen a kísérlet keretében.
 
-Példaként tekintse [meg az oktatóanyagot: Rendszerkép-besorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine learning szolgáltatással.
+Példaként tekintse [meg az oktatóanyagot: Képbesorolási modell betanítása](tutorial-train-models-with-aml.md)Azure Machine Learningsal.
 
 ### <a name="runs"></a>Futtatások
 
@@ -193,7 +193,7 @@ Azure Machine Learning kétféle rendszerképet hozhat létre:
 * **FPGA-rendszerkép**: Az Azure-ban egy mezőre programozható Gate tömbbe való üzembe helyezéskor használatos.
 * **Docker-rendszerkép**: Akkor használatos, ha a FPGA-től eltérő számítási célokat kíván üzembe helyezni. Ilyenek például a Azure Container Instances és az Azure Kubernetes szolgáltatás.
 
-A Azure Machine Learning szolgáltatás alapszintű rendszerképet biztosít, amelyet alapértelmezés szerint használ a rendszer. Egyéni lemezképeket is megadhat.
+Azure Machine Learning biztosít egy alapszintű rendszerképet, amelyet alapértelmezés szerint használ a rendszer. Egyéni lemezképeket is megadhat.
 
 ### <a name="image-registry"></a>Regisztrációs adatbázisba
 
@@ -239,8 +239,8 @@ A megoldás fejlesztésekor a Python-szkript Azure Machine Learning Python SDK-v
 
 ### <a name="next-steps"></a>További lépések
 
-A Azure Machine Learning szolgáltatás megkezdéséhez lásd:
+A Azure Machine Learning megkezdéséhez tekintse meg a következőt:
 
-* [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
-* [Azure Machine Learning szolgáltatás munkaterületének létrehozása](how-to-manage-workspace.md)
+* [Mi az Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Az Azure Machine Learning-munkaterület létrehozása](how-to-manage-workspace.md)
 * [Oktatóanyag (1. rész): Modell betanítása](tutorial-train-models-with-aml.md)

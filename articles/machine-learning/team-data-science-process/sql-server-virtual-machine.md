@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606467"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036613"
 ---
 # <a name="heading"></a>Dolgozza fel az adatokat az SQL Server virtuális gépen az Azure-ban
 Ez a dokumentum bemutatja, hogyan elemezheti adatait, és hozzon létre funkciók az SQL Server virtuális gép az Azure-ban tárolt adatok. Ezt megteheti, adatok konvertálása SQL-lel vagy a programozási nyelvet, például a Python használatával.
@@ -87,7 +87,7 @@ Ebben a szakaszban bemutatjuk, hogyan vezethet be csak egy oszlop a tábla létr
 * A bejelentkezési azt jelzi, hogy vannak-e Észak vagy Dél-India, keleti vagy nyugati jelöl.
 * Egy nem nulla több száz számjegy tudatja velünk, hogy használjuk-e hosszúság, szélesség nem!
 * A több számjegy biztosít olyan helyzetben, hogy körülbelül 1000 alapján. Milyen kontinens vagy vagyunk az óceán hasznos információkat biztosít velünk a kapcsolatot.
-* Az egységek számjegy (decimális mértékű) biztosít egy helyen legfeljebb 111 kilométerben (60 tengeri mérföldre, körülbelül 69 mérföld). Azt is ossza meg velünk nagyjából milyen nagy állam vagy ország/régió tudunk.
+* Az egységek számjegy (decimális mértékű) biztosít egy helyen legfeljebb 111 kilométerben (60 tengeri mérföldre, körülbelül 69 mérföld). Megtudhatja, hogy nagyjából milyen államot, országot vagy régiót használ.
 * Az első tizedes ér akár 11.1 km-re: azt megkülönböztethesse a szomszédos nagy város egy nagy város pozícióját.
 * A második tizedes ér akár 1.1 km-re: azt is egy falu elkülönítése a Tovább gombra.
 * A harmadik tizedes ér legfeljebb 110 m: nagy mezőgazdasági mező vagy intézményi campus segítenek azonosítani.
@@ -116,7 +116,7 @@ Ezek a helyalapú szolgáltatások további használható a fentebb leírt módo
 > 
 
 ### <a name="sql-aml"></a>Csatlakozás az Azure Machine Learning
-Az újonnan létrehozott szolgáltatást meglévő táblához oszlopként hozzáadható vagy egy új tábla tárolja és csatlakozik, a machine Learning szolgáltatáshoz az eredeti tábla. Szolgáltatások jön létre, vagy ha már létrehozta, keresztül érhető a [adatok importálása] [ import-data] modul az Azure Machine Learning alább látható módon:
+Az újonnan létrehozott szolgáltatást meglévő táblához oszlopként hozzáadható vagy egy új tábla tárolja és csatlakozik, a machine Learning szolgáltatáshoz az eredeti tábla. A szolgáltatások létrehozhatók vagy elérhetők, ha már létrejöttek, az [adatimportálási][import-data] modul használatával Azure Machine learning az alábbi ábrán látható módon:
 
 ![az azureml-olvasók][1] 
 

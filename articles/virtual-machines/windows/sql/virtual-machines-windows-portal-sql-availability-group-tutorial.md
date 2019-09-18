@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102365"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036525"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Oktatóanyag: AlwaysOn rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépen manuálisan
 
@@ -49,7 +49,7 @@ A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el ke
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Telepítési tartományi fiók | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
 
 
-Az oktatóanyag megkezdése előtt be kell fejeznie az [Always On rendelkezésre állási csoportok létrehozásához](virtual-machines-windows-portal-sql-availability-group-prereq.md)szükséges előfeltételeket az Azure Virtual Machinesban. Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
+Az oktatóanyag megkezdése előtt be kell [fejeznie az Always On rendelkezésre állási csoportok létrehozásához szükséges előfeltételeket az Azure Virtual Machinesban](virtual-machines-windows-portal-sql-availability-group-prereq.md). Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
 
   >[!NOTE]
   > Az oktatóanyagban ismertetett lépések közül sokat automatizálhat az [Azure SQL VM parancssori](virtual-machines-windows-sql-availability-group-cli.md) felülettel és az [Azure Gyorsindítás sablonjaival](virtual-machines-windows-sql-availability-group-quickstart-template.md).
@@ -65,7 +65,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
 1. Az első SQL Server RDP-t egy olyan tartományi fiók használatával, amely az SQL-kiszolgálók és a tanúsító kiszolgáló rendszergazdája.
 
    >[!TIP]
-   >Ha követte az előfeltételeket tartalmazó [dokumentumot](virtual-machines-windows-portal-sql-availability-group-prereq.md), létrehozott egy **CORP\Install**nevű fiókot. Használja ezt a fiókot.
+   >Ha követte az [előfeltételeket tartalmazó dokumentumot](virtual-machines-windows-portal-sql-availability-group-prereq.md), létrehozott egy **CORP\Install**nevű fiókot. Használja ezt a fiókot.
 
 2. A **Kiszolgálókezelő** irányítópultján válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő**lehetőséget.
 3. A bal oldali ablaktáblán kattintson a jobb gombbal a **Feladatátvevőfürt-kezelő**elemre, majd kattintson **a fürt létrehozása**parancsra.
@@ -81,6 +81,9 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
    | Megerősítés |Csak akkor használja az alapértelmezett értékeket, ha tárolóhelyeket használ. Lásd a táblázatot követő megjegyzést. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>A Windows Server feladatátvételi fürt IP-címének beállítása
+
+  > [!NOTE]
+  > A Windows Server 2019 rendszeren a fürt egy **elosztott kiszolgálónevet** hoz létre a **fürt hálózati neve**helyett. Ha a Windows Server 2019-et használja, ugorja át az oktatóanyagban szereplő, a fürt alapvető nevére vonatkozó lépéseket. Fürt hálózati nevét a [PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)használatával hozhatja létre. Tekintse át [a blog feladatátvevő fürtöt: Fürt hálózati objektuma](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) további információért. 
 
 1. A **Feladatátvevőfürt-kezelőban**görgessen le a **fürt alapvető erőforrásai** elemre, és bontsa ki a fürt részleteit. A **hibás** állapotú **nevet** és az **IP-cím** erőforrásait is látnia kell. Az IP-cím erőforrás nem hozható online állapotba, mert a fürt ugyanahhoz az IP-címhez van hozzárendelve, mint maga a gép, ezért ez egy duplikált cím.
 
@@ -100,16 +103,16 @@ Adja hozzá a másik SQL Server a fürthöz.
 
     ![Csomópont hozzáadása a fürthöz](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/44-addnode.png)
 
-1. A **Csomópont hozzáadása varázslóban**kattintson a **tovább**gombra. A **kiszolgálók kiválasztása** lapon adja hozzá a második SQL Server. A Kiszolgálónév mezőbe írja be a kiszolgáló nevét, majd kattintson a **Hozzáadás**gombra. Ha elkészült, kattintson a **tovább**gombra.
+1. A **Csomópont hozzáadása varázslóban**kattintson a **tovább**gombra. A **kiszolgálók kiválasztása** lapon adja hozzá a második SQL Server. A Kiszolgálónév mezőbe írja be a kiszolgáló **nevét, majd** kattintson a **Hozzáadás**gombra. Ha elkészült, kattintson a **tovább**gombra.
 
 1. Az **érvényesítési figyelmeztetés** lapon kattintson a **nem** (éles környezetben az ellenőrzési tesztek elvégzéséhez) elemre. Ezután kattintson a **Tovább** gombra.
 
-8. Ha tárolóhelyeket használ a megerősítő lapon, törölje a jelet az összes megfelelő **tároló hozzáadása a fürthöz** feliratú jelölőnégyzetből.
+8. Ha tárolóhelyeket használ a **megerősítő** lapon, törölje a jelet az összes megfelelő **tároló hozzáadása a fürthöz** feliratú jelölőnégyzetből.
 
    ![Csomópont-megerősítés hozzáadása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/46-addnodeconfirmation.png)
 
     >[!WARNING]
-   >Ha tárolóhelyeket használ, és nem törli **az összes megfelelő tároló hozzáadása a fürthöz**lehetőséget, a Windows leválasztja a virtuális lemezeket a fürtözési folyamat során. Ennek eredményeképpen azok nem jelennek meg a Lemezkezelés eszközben vagy az Intézőben, amíg a tárolóhelyek el nem lesznek távolítva a fürtből, és nem kapcsolódnak újra a PowerShell használatával. A tárolóhelyek több lemezt is csoportosítanak a Storage-készletekbe. További információ: tárolóhelyek [](https://technet.microsoft.com/library/hh831739).
+   >Ha tárolóhelyeket használ, és nem törli **az összes megfelelő tároló hozzáadása a fürthöz**lehetőséget, a Windows leválasztja a virtuális lemezeket a fürtözési folyamat során. Ennek eredményeképpen azok nem jelennek meg a Lemezkezelés eszközben vagy az Intézőben, amíg a tárolóhelyek el nem lesznek távolítva a fürtből, és nem kapcsolódnak újra a PowerShell használatával. A tárolóhelyek több lemezt is csoportosítanak a Storage-készletekbe. További információ: [tárolóhelyek](https://technet.microsoft.com/library/hh831739).
 
 1. Kattintson a **Tovább** gombra.
 
@@ -129,7 +132,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
 1. Kattintson a **megosztott mappák**elemre.
 
-1. Kattintson a jobbgombbal a Megosztások elemre, majd kattintson az **új megosztás..** . elemre.
+1. Kattintson a jobb gombbal a **megosztások**elemre, majd kattintson az **új megosztás..** . elemre.
 
    ![Új megosztás](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
@@ -139,7 +142,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
 1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **megosztott mappa engedélyeinek** beállítása testreszabja az **engedélyeket**. Kattintson az **Egyéni...** elemre.
+1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Kattintson az **Egyéni...** elemre.
 
 1. A **testreszabási engedélyek**területen kattintson a **Hozzáadás...** elemre.
 
@@ -170,7 +173,7 @@ Ezután állítsa be a fürt kvórumát.
 1. A **kvórum tanúsító kijelölése lapon**kattintson **a tanúsító fájlmegosztás konfigurálása**elemre.
 
    >[!TIP]
-   >A Windows Server 2016 támogatja a Felhőbeli tanúkat. Ha ezt a típusú tanúsító választja, nincs szükség a tanúsító fájlmegosztás megosztására. További információ: Felhőbeli [tanúsító üzembe helyezése feladatátvevő fürtön](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ez az oktatóanyag egy tanúsító fájlmegosztást használ, amelyet a korábbi operációs rendszerek támogatnak.
+   >A Windows Server 2016 támogatja a Felhőbeli tanúkat. Ha ezt a típusú tanúsító választja, nincs szükség a tanúsító fájlmegosztás megosztására. További információ: [Felhőbeli tanúsító üzembe helyezése feladatátvevő fürtön](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ez az oktatóanyag egy tanúsító fájlmegosztást használ, amelyet a korábbi operációs rendszerek támogatnak.
 
 1. A **tanúsító fájlmegosztás konfigurálása**területen adja meg a létrehozott megosztás elérési útját. Kattintson a **Tovább** gombra.
 
@@ -231,7 +234,7 @@ Repeat these steps on the second SQL Server.
 
 1. Kattintson a **megosztott mappák**elemre.
 
-1. Kattintson a jobbgombbal a Megosztások elemre, majd kattintson az **új megosztás..** . elemre.
+1. Kattintson a jobb gombbal a **megosztások**elemre, majd kattintson az **új megosztás..** . elemre.
 
    ![Új megosztás](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
@@ -241,7 +244,7 @@ Repeat these steps on the second SQL Server.
 
 1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **megosztott mappa engedélyeinek** beállítása testreszabja az **engedélyeket**. Kattintson az **Egyéni...** elemre.
+1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Kattintson az **Egyéni...** elemre.
 
 1. A **testreszabási engedélyek**területen kattintson a **Hozzáadás...** elemre.
 
@@ -290,18 +293,18 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
    ![Új AG varázsló, replikák meghatározása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
 5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Kattintson a **Csatlakozás** gombra.
 
-   A replikák megadására szolgáló lapon a második kiszolgáló jelenik meg a **rendelkezésre állási replikák**területen. Konfigurálja a replikákat az alábbiak szerint.
+   A **replikák megadására** szolgáló lapon a második kiszolgáló jelenik meg a **rendelkezésre állási replikák**területen. Konfigurálja a replikákat az alábbiak szerint.
 
    ![Új AG varázsló, adja meg a replikákat (kész)](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/64-newagreplica.png)
 
-6. Kattintson a végpontok elemre a rendelkezésre állási csoport adatbázis-tükrözési végpontjának megtekintéséhez. Használja ugyanazt a portot, amelyet a [Tűzfalszabály adatbázis-tükrözési végpontokhoz való](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)beállításakor használt.
+6. Kattintson a **végpontok** elemre a rendelkezésre állási csoport adatbázis-tükrözési végpontjának megtekintéséhez. Használja ugyanazt a portot, amelyet a [Tűzfalszabály adatbázis-tükrözési végpontokhoz való](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)beállításakor használt.
 
     ![Új AG varázsló, válassza a kezdeti adatszinkronizálás lehetőséget.](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
 8. A **kezdeti adatszinkronizálás kiválasztása** lapon válassza a **teljes** lehetőséget, és adjon meg egy megosztott hálózati helyet. A helyhez használja a [létrehozott biztonsági mentési megosztást](#backupshare). A példában  **\\ először\\SQLServer\backup\>. \<\\** Kattintson a **Tovább** gombra.
 
    >[!NOTE]
-   >A teljes szinkronizálás teljes biztonsági mentést készít az adatbázisról SQL Server első példányán, és visszaállítja a második példányra. Nagyméretű adatbázisok esetén a teljes szinkronizálás nem ajánlott, mert hosszú időt is igénybe vehet. Ezt az időt manuálisan is elvégezheti, ha kézzel készít biztonsági másolatot az adatbázisról `NO RECOVERY`, és visszaállítja azt. Ha az adatbázis már vissza van állítva `NO RECOVERY` a második SQL Server a rendelkezésre állási csoport konfigurálása előtt, válassza a **csak csatlakozás**lehetőséget. Ha a rendelkezésre állási csoport konfigurálása után szeretné a biztonsági mentést készíteni, válassza a **kezdeti adatszinkronizálás**kihagyása lehetőséget.
+   >A teljes szinkronizálás teljes biztonsági mentést készít az adatbázisról SQL Server első példányán, és visszaállítja a második példányra. Nagyméretű adatbázisok esetén a teljes szinkronizálás nem ajánlott, mert hosszú időt is igénybe vehet. Ezt az időt manuálisan is elvégezheti, ha kézzel készít biztonsági másolatot az adatbázisról `NO RECOVERY`, és visszaállítja azt. Ha az adatbázis már vissza van állítva `NO RECOVERY` a második SQL Server a rendelkezésre állási csoport konfigurálása előtt, válassza a **csak csatlakozás**lehetőséget. Ha a rendelkezésre állási csoport konfigurálása után szeretné a biztonsági mentést készíteni, válassza a **kezdeti adatszinkronizálás kihagyása**lehetőséget.
 
     ![Új AG varázsló, válassza a kezdeti adatszinkronizálás lehetőséget.](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
 
@@ -334,7 +337,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
    ![AG Feladatátvevőfürt-kezelő](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Ne próbálkozzon a rendelkezésre állási csoport feladatátvételével a Feladatátvevőfürt-kezelő. Az összes feladatátvételi műveletet a SSMS **AlwaysOn** -irányítópultján belül kell végrehajtani. További információ: [a Feladatátvevőfürt-kezelő és a rendelkezésre állási csoportok használatának korlátozásai](https://msdn.microsoft.com/library/ff929171.aspx).
+   > Ne próbálkozzon a rendelkezésre állási csoport feladatátvételével a Feladatátvevőfürt-kezelő. Az összes feladatátvételi műveletet a SSMS **AlwaysOn-irányítópultján** belül kell végrehajtani. További információ: [a Feladatátvevőfürt-kezelő és a rendelkezésre állási csoportok használatának korlátozásai](https://msdn.microsoft.com/library/ff929171.aspx).
     >
 
 Ezen a ponton van egy rendelkezésre állási csoport, amely replikákat tartalmaz SQL Server két példányán. A rendelkezésre állási csoportot példányok között helyezheti át. Még nem tud csatlakozni a rendelkezésre állási csoporthoz, mert nem rendelkezik figyelővel. Az Azure Virtual Machines szolgáltatásban a figyelőnek terheléselosztó szükséges. A következő lépés a terheléselosztó létrehozása az Azure-ban.

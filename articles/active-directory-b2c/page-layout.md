@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 011fb262ff91c56269c5b7dc9adf4aaeab9acbd5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229049"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063841"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Lapelrendezés kiválasztása Azure Active Directory B2C egyéni házirendek használatával
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Engedélyezheti a JavaScript ügyféloldali kódot a Azure Active Directory (Azure AD) B2C-szabályzatokban, függetlenül attól, hogy felhasználói folyamatokat vagy egyéni házirendeket használ. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](active-directory-b2c-overview-custom.md), ki kell választania egy lapelrendezést, és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
+Engedélyezheti a JavaScript ügyféloldali kódot a Azure Active Directory B2C (Azure AD B2C) házirendekben, függetlenül attól, hogy felhasználói folyamatokat vagy egyéni házirendeket használ. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](active-directory-b2c-overview-custom.md), ki kell választania egy lapelrendezést, és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
 
 Az oldalelrendezés olyan elemek társítása, amelyeket Azure AD B2C biztosít, valamint az Ön által megadott tartalmat.
 

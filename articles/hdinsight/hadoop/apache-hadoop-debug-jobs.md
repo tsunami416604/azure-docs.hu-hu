@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882429"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059213"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop naplók elemzése az Azure HDInsight
 
@@ -110,7 +110,7 @@ Az alkalmazás naplóival kapcsolatos további információkért lásd: [a felha
 ### <a name="access-the-ambari-ui"></a>Hozzáférés a Ambari felhasználói felületéhez
 A Azure Portal a fürt ablaktábla megnyitásához kattintson egy HDInsight-fürt nevére. A fürt ablaktáblán kattintson az **irányítópult**elemre.
 
-![A fürt irányítópultjának elindítása](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight-indító fürt irányítópultja](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>A fonal felhasználói felületének elérése
@@ -120,7 +120,7 @@ A fonal felhasználói felületét a következő műveletek elvégzésére haszn
 
 * **Fürt állapotának beolvasása**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson **a névjegy**elemre. Ez a fürt állapotának részleteit, például az összes lefoglalt memóriát, a felhasznált magokat, a fürterőforrás-kezelő állapotát, a fürt verzióját és így tovább.
   
-    A ![fürt irányítópult-szálának elindítása] A (./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "fürt irányítópult-szálának elindítása")
+    ![HDInsight indítása – fürt irányítópultjának fonala](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight indítása – fürt irányítópultjának fonala")
 * **Csomópont állapotának beolvasása**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson a **csomópontok**elemre. Ez felsorolja a fürt összes csomópontját, az egyes csomópontok HTTP-címeit, az egyes csomópontokhoz lefoglalt erőforrásokat stb.
 * A **feladatok állapotának figyelése**. A bal oldali ablaktáblán bontsa ki a **fürt**csomópontot, majd kattintson az **alkalmazások** elemre a fürt összes feladatának listázásához. Ha egy adott állapotban szeretné megtekinteni a feladatokat (például új, elküldött, futó stb.), kattintson a megfelelő hivatkozásra az **alkalmazások**területen. A feladatokra kattintva további információkat kaphat a feladatokról, például a kimenetről, a naplókról stb.
 

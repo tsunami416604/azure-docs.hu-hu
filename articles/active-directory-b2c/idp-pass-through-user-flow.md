@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510105"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064288"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Azure AD B2C jelenleg csak az [OAuth 2,0](active-directory-b2c-reference-oauth-c
 ## <a name="enable-the-claim"></a>Jogcím engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár és előfizetés szűrőt** a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget, majd válassza ki a felhasználói folyamatot. Például: **B2C_1_signupsignin1**.
 5. Válassza az **Alkalmazásjogcímek** lehetőséget.

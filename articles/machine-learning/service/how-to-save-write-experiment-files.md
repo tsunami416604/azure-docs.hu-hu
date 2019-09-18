@@ -1,6 +1,6 @@
 ---
 title: Honnan menthetők a & írási kísérlet fájljai
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hová mentse a kísérlet bemeneti fájljait, és hova írhat kimeneti fájlokat a tárolási korlátozási hibák és a kísérletek késleltetésének megakadályozása érdekében.
 services: machine-learning
 author: rastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114518"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034287"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 
@@ -33,7 +33,7 @@ Azure Machine Learning futtatja a betanítási parancsfájlokat úgy, hogy a tel
 
 Ezért javasoljuk, hogy:
 
-* **Fájlok tárolása egy Azure Machine Learning adattárban [](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Ez meggátolja a kísérletek késésével kapcsolatos problémákat, és a távoli számítási céltól származó adatok elérésének előnyeit biztosítja, ami azt jelenti, hogy a hitelesítést és a csatlakoztatást Azure Machine Learning szolgáltatás kezeli. További információ az adattár forrásként való megadásáról és a fájlok az adattárba való feltöltéséről az adattárolók című cikk [hozzáférési adataiban](how-to-access-data.md) .
+* **Fájlok tárolása egy Azure Machine Learning [adattárban](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Ez meggátolja a kísérletek késésével kapcsolatos problémákat, és a távoli számítási céltól származó adatok elérésének előnyeit biztosítja, ami azt jelenti, hogy a hitelesítést és a csatlakoztatást Azure Machine Learning kezeli. További információ az adattár forrásként való megadásáról és a fájlok az adattárba való feltöltéséről az [adattárolók című cikk hozzáférési adataiban](how-to-access-data.md) .
 
 * **Ha csak pár adatfájlra és függőségi parancsfájlra van szüksége, és nem tud adattárt használni,** helyezze a fájlokat ugyanabba a mappába, mint a betanítási parancsfájlt. Adja meg ezt a mappát `source_directory` közvetlenül a betanítási parancsfájlban, vagy a betanítási parancsfájlt meghívó kódban.
 

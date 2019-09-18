@@ -1,10 +1,10 @@
 ---
-title: Hozzon létre egy hálózati biztonsági csoport (klasszikus) PowerShell-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és telepíthet egy hálózati biztonsági csoport (klasszikus) PowerShell-lel
+title: Hálózati biztonsági csoport (klasszikus) létrehozása a PowerShell használatával | Microsoft Docs
+description: Útmutató hálózati biztonsági csoport (klasszikus) létrehozásához és üzembe helyezéséhez a PowerShell használatával
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 86810b0d-0240-46a2-8548-fca22daa56f3
@@ -15,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: d685f395aa25580c009fe3be660a8afc42dc79d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ef80ccd01c9c6979fd95d161d97d0dfaab58b24
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125763"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056669"
 ---
-# <a name="create-a-network-security-group-classic-using-powershell"></a>Hozzon létre egy hálózati biztonsági csoport (klasszikus) PowerShell-lel
+# <a name="create-a-network-security-group-classic-using-powershell"></a>Hálózati biztonsági csoport (klasszikus) létrehozása a PowerShell használatával
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. Emellett [NSG-k létrehozása a Resource Manager-alapú üzemi modellben](tutorial-filter-network-traffic.md).
+Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. [NSG is létrehozhat a Resource Manager-alapú üzemi modellben](tutorial-filter-network-traffic.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-A minta PowerShell-parancsokat az alábbi hatással vannak a már létrehozott egy egyszerű környezetet a fenti forgatókönyv alapján. Ha azt szeretné, akkor jelennek meg ebben a dokumentumban a parancsok futtatásához először hozhat létre a tesztkörnyezetben által [létre virtuális hálózat](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Az alábbi PowerShell-parancsok a fenti forgatókönyv alapján már létrehozott egyszerű környezetet várnak. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, először hozzon [létre egy VNet a tesztkörnyezet létrehozásával](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="create-an-nsg-for-the-front-end-subnet"></a>Hozzon létre egy NSG-t az előtér-alhálózat
+## <a name="create-an-nsg-for-the-front-end-subnet"></a>NSG létrehozása az előtér-alhálózathoz
 
-1. Ha még nem használta az Azure Powershellt, tekintse meg [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+1. Ha még soha nem használta a Azure PowerShellt, olvassa el [a Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
 
-2. Hozzon létre egy hálózati biztonsági csoport nevű *NSG-FrontEnd*:
+2. Hozzon létre egy *NSG-FrontEnd*nevű hálózati biztonsági csoportot:
 
     ```powershell   
     New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `
       -Label "Front end subnet NSG"
    ```
 
-3. Hozzon létre egy biztonsági szabály engedélyezi a hozzáférést az internetről 3389-es port:
+3. Hozzon létre egy biztonsági szabályt, amely engedélyezi az internetről a 3389-es port elérését:
 
     ```powershell   
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -56,7 +56,7 @@ A minta PowerShell-parancsokat az alábbi hatással vannak a már létrehozott e
       -DestinationAddressPrefix '*' -DestinationPortRange '3389'
    ```
 
-4. Hozzon létre egy biztonsági szabály engedélyezi a hozzáférést az internetről a 80-as port:
+4. Hozzon létre egy biztonsági szabályt, amely engedélyezi az internetről a 80-es port elérését:
 
     ```powershell   
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -66,16 +66,16 @@ A minta PowerShell-parancsokat az alábbi hatással vannak a már létrehozott e
       -DestinationAddressPrefix '*' -DestinationPortRange '80'
     ```
 
-## <a name="create-an-nsg-for-the-back-end-subnet"></a>Az NSG a háttérbeli alhálózat létrehozása
+## <a name="create-an-nsg-for-the-back-end-subnet"></a>NSG létrehozása a háttérbeli alhálózathoz
 
-1. Hozzon létre egy hálózati biztonsági csoport nevű *NSG-háttérrendszer*:
+1. Hozzon létre egy *NSG-backend*nevű hálózati biztonsági csoportot:
    
     ```powershell
     New-AzureNetworkSecurityGroup -Name "NSG-BackEnd" -Location uswest `
       -Label "Back end subnet NSG"
     ```
 
-2. Hozzon létre egy biztonsági szabály engedélyezi a hozzáférést az előtérbeli alhálózatból az 1433-as port (SQL Server által használt alapértelmezett port):
+2. Hozzon létre egy biztonsági szabályt, amely engedélyezi a hozzáférést az előtér-alhálózatról a 1433-es portra (az SQL Server által használt alapértelmezett port):
    
     ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -85,7 +85,7 @@ A minta PowerShell-parancsokat az alábbi hatással vannak a már létrehozott e
       -DestinationAddressPrefix '*' -DestinationPortRange '1433'
     ```
 
-3. Hozzon létre egy biztonsági szabály blokkolja a hozzáférést az alhálózatról, az internethez:
+3. Biztonsági szabály létrehozása az alhálózatról az internetre való hozzáférés blokkolásával:
    
     ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-BackEnd" `

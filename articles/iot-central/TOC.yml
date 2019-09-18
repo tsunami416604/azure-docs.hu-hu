@@ -35,8 +35,6 @@
   items:
     - name: Eszközök csatlakoztatása
       items:
-        - name: Eszköz kapcsolati sztringjének előállítása
-          href: howto-generate-connection-string.md
         - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
           href: howto-connect-nodejs.md
         - name: MXChip IoT DevKit előkészítése és csatlakoztatása

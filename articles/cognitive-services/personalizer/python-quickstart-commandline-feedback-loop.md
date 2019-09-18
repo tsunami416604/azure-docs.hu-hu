@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: de11db64ed67872380b665f4839d406fd06bc9c8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5b5efa4a8c6d92f9937709f57f99851c90058dda
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959384"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067698"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Gyors útmutató: Az ügyféloldali kódtár testreszabása a Pythonhoz
 
@@ -37,7 +37,7 @@ Ismerkedjen meg a Python személyre szabott ügyféloldali kódtáraval. Az alá
 
 ### <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
+Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://portal.azure.com/) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További részletekért tekintse meg, [hogyan hozhat létre Cognitive Services-erőforrást a Azure Portal használatával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . További lehetőségek:
 
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).

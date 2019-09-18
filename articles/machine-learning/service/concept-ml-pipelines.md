@@ -1,6 +1,6 @@
 ---
 title: Mi az a ML-folyamat?
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ebben a cikkben megismerkedhet a machine learning-folyamatokat hozhat létre Azure Machine Learning-SDK-val a Python és a folyamatok használatának előnye. Machine learning (gépi tanulás) folyamatok segítségével az adatszakértők hozhat létre, optimalizálhat és kezelhet a machine learning-munkafolyamatokat.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993283"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035489"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Mik a Azure Machine Learning-szolgáltatásban található ML-folyamatok?
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Mik a Azure Machine Learning ML-folyamatok?
 
-Megtudhatja, hogyan hozhat létre és kezelhet Azure Machine Learning szolgáltatással felépíthető gépi tanulási folyamatokat. 
+Ismerje meg, hogyan hozhat létre és kezelhet Azure Machine Learningekkel rendelkező gépi tanulási folyamatokat. 
 
 Machine learning (gépi tanulás) folyamatok, az adatszakértők, adatmérnökök és informatikai szakemberek számára használatával közösen dolgozhatnak a lépéseit:
 + Adat-előkészítés, például normalizations és átalakítások
@@ -30,7 +30,7 @@ Machine learning (gépi tanulás) folyamatok, az adatszakértők, adatmérnökö
 
 Ismerje meg, hogyan [az első folyamat létrehozása](how-to-create-your-first-pipeline.md).
 
-![Gépi tanulási folyamatok Azure Machine Learning szolgáltatásban](./media/concept-ml-pipelines/pipeline-flow.png)
+![Gépi tanulási folyamatok Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Milyen Azure-adatcsatorna-technológiát használok?

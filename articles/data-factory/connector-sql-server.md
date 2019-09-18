@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b6e5d90d72e84f3a8a54ea0aadcad687b598b2d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 7b266a21aabf37765de4f4f94cd3939cec697585
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010349"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058513"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Adatok másolása SQL Serverba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Azure Data Factory verzióját:"]
@@ -158,7 +158,9 @@ Az adatok SQL Server adatbázisba való másolásához a következő tulajdonsá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát **SqlServerTable**értékre kell állítani. | Igen |
-| tableName |Ez a tulajdonság annak a táblának vagy nézetnek a neve, amelyre a társított szolgáltatás a SQL Server adatbázis-példányában hivatkozik. | Nincs forrás, a fogadó Igen |
+| schema | A séma neve. |Nincs forrás, a fogadó Igen  |
+| table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz `table`használja `schema` a és a elemet. | Nincs forrás, a fogadó Igen |
 
 **Példa**
 
@@ -174,7 +176,8 @@ Az adatok SQL Server adatbázisba való másolásához a következő tulajdonsá
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }

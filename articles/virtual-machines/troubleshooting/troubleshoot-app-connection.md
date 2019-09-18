@@ -4,7 +4,7 @@ description: Ezekkel a részletes hibaelhárítási lépésekkel elkülöníthet
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: az alkalmazás nem indítható el, a program nem nyílik meg, a figyelő port blokkolva, nem indítható el a program, a figyelési port blokkolva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fd79e04cdd8f9d01131c016031d696c1583eb55d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080400"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058125"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Az alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken
 
@@ -31,7 +31,7 @@ Ha a virtuális géphez RDP vagy SSH használatával csatlakozik, először olva
 * [Windows-alapú Azure-beli virtuális gépekkel létesített Távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md)
 * [A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](troubleshoot-ssh-connection.md).
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 ## <a name="quick-start-troubleshooting-steps"></a>Gyors indítás – hibaelhárítási lépések
 Ha problémája merül fel az alkalmazáshoz való csatlakozás során, próbálkozzon az alábbi általános hibaelhárítási lépésekkel. Az egyes lépések után próbálkozzon újra az alkalmazással való csatlakozással:
@@ -75,7 +75,7 @@ Próbálja meg elérni az alkalmazást a megfelelő ügyfélprogrammal azon a vi
 
 Ha például az alkalmazás egy webkiszolgáló, nyisson meg egy böngészőt a virtuális gépen, és próbáljon meg hozzáférni egy, a virtuális gépen tárolt weboldalhoz.
 
-Ha elérheti az alkalmazást, folytassa a [2](#step2). lépéssel.
+Ha elérheti az alkalmazást, folytassa a [2. lépéssel](#step2).
 
 Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításokat:
 
@@ -91,7 +91,7 @@ Próbálja meg elérni az alkalmazást egy másik virtuális gépről, de ugyana
 
 Ha például az alkalmazás egy webkiszolgáló, próbáljon meg hozzáférni egy weboldalhoz egy másik, ugyanazon a virtuális hálózaton lévő virtuális GÉPEN.
 
-Ha elérheti az alkalmazást, folytassa a [3](#step3). lépéssel.
+Ha elérheti az alkalmazást, folytassa a [3. lépéssel](#step3).
 
 Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításokat:
 
@@ -117,7 +117,7 @@ Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításoka
   
   * Ellenőrizze, hogy a virtuális gép végpont-konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
   * Ellenőrizze, hogy a végponton lévő hozzáférés-vezérlési listák (ACL-ek) nem akadályozzák-e az internetről érkező bejövő forgalmat.
-  * További információ: végpontok [beállítása virtuális géphez](../windows/classic/setup-endpoints.md).
+  * További információ: [végpontok beállítása virtuális géphez](../windows/classic/setup-endpoints.md).
 * A Resource Manager-alapú üzemi modell használatával létrehozott virtuális gépek esetén:
   
   * Ellenőrizze, hogy a virtuális gép bejövő NAT-szabályának konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.

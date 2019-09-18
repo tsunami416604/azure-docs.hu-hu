@@ -7,18 +7,18 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231982"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058308"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web Application Firewall v2 egyéni szabályok létrehozása és használata
 
 Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 védelmet biztosít a webalkalmazások számára. Ezt a védelmet az Open Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) adja meg. Bizonyos esetekben előfordulhat, hogy saját egyéni szabályokat kell létrehoznia az adott igények kielégítése érdekében. További információ az egyéni WAF-szabályokról: [Egyéni webalkalmazási tűzfalszabályok – áttekintés](custom-waf-rules-overview.md).
 
-Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatához használható egyéni szabályokról. Ha szeretné megtudni, hogyan helyezhet üzembe egy WAF egyéni szabállyal Azure PowerShell használatával, tekintse meg a webalkalmazási [tűzfal egyéni szabályainak konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md)című témakört.
+Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatához használható egyéni szabályokról. Ha szeretné megtudni, hogyan helyezhet üzembe egy WAF egyéni szabállyal Azure PowerShell használatával, tekintse meg a [webalkalmazási tűzfal egyéni szabályainak konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md)című témakört.
 
 >[!NOTE]
 > Ha az Application Gateway nem a WAF szintet használja, akkor a jobb oldali ablaktáblán megjelenik az Application Gateway WAF szintre való frissítésének lehetősége.
@@ -75,7 +75,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-Az egyéni szabállyal telepített WAF megtekintéséhez lásd: webalkalmazási [tűzfal egyéni szabályának konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md).
+Az egyéni szabállyal telepített WAF megtekintéséhez lásd: [webalkalmazási tűzfal egyéni szabályának konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>1\. példa
 
@@ -179,7 +179,7 @@ Megfelelő CRS-szabály:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,
 
 ## <a name="example-3"></a>3\. példa
 
-Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.0/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy a *evilbot* a felhasználói ügynök fejlécében **és** a 192.168.5.0/24 tartományból származó IP-címek is le legyenek tiltva.
+Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.0/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy ha a felhasználó-ügynök fejlécben **és** a 192.168.5.0/24 tartományba tartozó IP-címek mindkét *evilbot* egyeztetve vannak, akkor a rendszer letiltja a kérést.
 
 Logic: p **és** q
 

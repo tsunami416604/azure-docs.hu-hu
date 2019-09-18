@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716829"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065775"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek a Azure Active Directory B2Cban
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory (Azure AD) B2C-bérlő működését. A felhasználói folyamatok előre definiálva vannak a Azure AD B2C-portálon a leggyakoribb identitási feladatokhoz. Az egyéni házirendek teljes mértékben szerkeszthetők egy identitás-fejlesztőtől számos különböző feladat elvégzéséhez.
+Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure AD B2C) bérlő viselkedését. A felhasználói folyamatok előre definiálva vannak a Azure AD B2C-portálon a leggyakoribb identitási feladatokhoz. Az egyéni házirendek teljes mértékben szerkeszthetők egy identitás-fejlesztőtől számos különböző feladat elvégzéséhez.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Felhasználói folyamatok és egyéni házirendek összehasonlítása
 
@@ -55,7 +55,7 @@ Az Azure-beli ügyfél-identitás-és hozzáférés-kezelési (CIAM) szolgáltat
 
 A Azure AD B2C identitás-szolgáltatók, felhasználók, más rendszerek és a helyi felhasználói könyvtár használatával kommunikálnak az identitási feladatok eléréséhez. Például jelentkezzen be egy felhasználóval, regisztráljon egy új felhasználót, vagy állítsa alaphelyzetbe a jelszót. Az identitási élmény keretrendszere és a szabályzat (más néven felhasználói út vagy megbízhatósági keretrendszer-házirend) többrésztvevős megbízhatóságot hoz létre, és explicit módon meghatározza a szereplőkkel, a műveletekkel, a protokollokkal és a végrehajtandó lépések sorozatával kapcsolatos feladatokat.
 
-Az Identity Experience Framework egy teljes körűen konfigurálható, házirend által vezérelt, felhőalapú Azure-platform, amely a szabványos protokoll-formátumokban, például az OpenID Connect, a OAuth, az SAML, a WSFed és néhány nem standard formátumú entitás közötti bizalmi kapcsolatot hangolja össze, például REST-alapú API-alapú rendszer-rendszerbeli jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott, a HTML-t és a CSS-t támogató tapasztalatokat hoz létre.
+Az Identity Experience Framework egy teljes körűen konfigurálható, házirend által vezérelt, felhőalapú Azure-platform, amely az entitások közötti megbízhatósági kapcsolatot hangolja össze a szabványos protokoll-formátumokban, mint például az OpenID Connect, a OAuth, az SAML és néhány nem standard, például REST API-alapú rendszer-rendszerbeli jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott, a HTML-t és a CSS-t támogató tapasztalatokat hoz létre.
 
 Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg, egymásra hierarchikus sorrendben hivatkozva. Az XML-elemek meghatározzák a jogcímek sémáját, a jogcímek átalakítását, a tartalmi definíciókat, a jogcím-szolgáltatókat, a technikai profilokat és a felhasználói útvonalak előkészítésének lépéseit a többi elem Az egyéni szabályzatok egy vagy több olyan XML-fájlhoz érhetők el, amelyet az Identity Experience Framework hajt végre, amikor egy függő entitás meghívja őket. Az egyéni házirendeket konfiguráló fejlesztőknek alapos részletességgel kell megadniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadatok végpontját, a pontos jogcím-definíciókat, valamint a titkok, kulcsok és tanúsítványok konfigurálását az egyes identitás-szolgáltatók igényei szerint.
 

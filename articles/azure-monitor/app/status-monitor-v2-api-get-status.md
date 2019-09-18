@@ -3,7 +3,7 @@ title: 'Az Azure Állapotmonitor v2 API-referenciája: Állapot beolvasása | Mi
 description: Állapotmonitor v2 API-referenciát. Get-ApplicationInsightsMonitoringStatus. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 50703ede205b42032e9618c1b16b0de2bd7f3a23
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424141"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058257"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Állapotmonitor v2 API: Get-ApplicationInsightsMonitoringStatus
 

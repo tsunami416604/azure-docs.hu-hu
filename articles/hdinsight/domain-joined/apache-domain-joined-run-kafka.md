@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6be97e3a94a10097e53863577da5bf9c6cde5ea0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734903"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037173"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
@@ -36,7 +36,7 @@ Egy [HDInsight Kafka-fürt Enterprise Security Package](./apache-domain-joined-c
 
 2. Jelentkezzen be az Azure Active Directory (AD) rendszergazdai hitelesítő adataival. Az Azure AD rendszergazdai hitelesítő adatok nem azonosak a HDInsight-fürt hitelesítő adataival vagy a Linux rendszerű HDInsight-csomópont SSH hitelesítő adataival.
 
-   ![Apache Ranger rendszergazdai felhasználói felület](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
 
@@ -64,7 +64,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
    * \* – Nulla vagy több karaktert helyettesíthet.
    * ? – Egy tetszőleges karaktert helyettesít.
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger felügyeleti felhasználói felület létrehozása Házirend1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
 
@@ -79,7 +79,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
    |Felhasználó kiválasztása  |  marketing_user1 |
    |Engedélyek  | közzététel, felhasználás, létrehozás |
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger felügyeleti felhasználói felület létrehozása Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. A házirend mentéséhez válassza a **Hozzáadás** lehetőséget.
 
@@ -183,7 +183,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
 9. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
-   ![A Ranger felhasználói felület házirendnaplózása](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![A Ranger felhasználói felületi házirendjének naplózási hozzáférési eseményei ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

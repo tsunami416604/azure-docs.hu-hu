@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142818"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057666"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: Űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
@@ -22,9 +22,11 @@ Ismerkedés a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval. 
 
 Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következőhöz:
 
-* Egyéni űrlap-felismerő modell betanítása
-* Űrlapok elemzése egyéni modellel
-* Egyéni modellek listájának beolvasása
+* [Egyéni űrlap-felismerő modell betanítása](#train-a-custom-model)
+* [Kinyert kulcsok listájának beolvasása](#get-a-list-of-extracted-keys)
+* [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
+* [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
+* [Egyéni modell törlése](#delete-a-custom-model)
 
 [Dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -32,7 +34,7 @@ Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a k�
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
-* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési](../build-training-data-set.md) adatkészletének létrehozása című témakört. 
+* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. 
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 A projekt könyvtárában nyissa meg a _program.cs_ fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using`-utasításokat:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Ezután adja hozzá a következő kódot az alkalmazás **fő** metódusához. Ezt az aszinkron feladatot később is megadhatja.
 
@@ -115,25 +110,27 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Egyéni űrlap-felismerő modell betanítása](#train-a-custom-model)
+* [Kinyert kulcsok listájának beolvasása](#get-a-list-of-extracted-keys)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
+* [Egyéni modell törlése](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Változók meghatározása
+## <a name="define-variables"></a>Változók meghatározása
 
 A módszerek meghatározása előtt adja hozzá a következő változó definíciókat a **program** osztályának elejéhez. A változók némelyikét saját kezűleg kell kitöltenie. 
 
 * A szolgáltatás végpontjának értékét a Azure Portal **Áttekintés** szakaszában találja. 
-* A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás**beolvasása elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+* A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
+## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 A metódus alatt adja meg a `Main`hivatkozott feladatot. `Main` Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Egyéni modell betanítása
+## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
 A következő módszer az űrlap-felismerő ügyfél objektumát használja az Azure Blob-tárolóban tárolt dokumentumokra vonatkozó új felismerési modell betanításához. Egy segítő módszer segítségével jeleníti meg az újonnan betanított modell ( [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) -objektum által jelölt) adatait, és visszaadja a modell azonosítóját.
 
@@ -143,9 +140,18 @@ A következő segítő módszer az űrlap-felismerő modellel kapcsolatos inform
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Űrlapok elemzése egyéni modellel
+## <a name="get-a-list-of-extracted-keys"></a>Kinyert kulcsok listájának beolvasása
+
+A betanítás befejezése után az egyéni modell megőrzi a kinyert kulcsok listáját a betanítási dokumentumokból. A jövőben a következő formátumú dokumentumokat fogja tartalmazni, amelyek tartalmazzák a kulcsokat, és Kinyeri a megfelelő értékeket az elemzési műveletben. A következő módszer használatával kérheti le a kinyert kulcsok listáját, és kinyomtathatja azt a-konzolra. Ez jó módszer a betanítási folyamat hatékonyságának ellenőrzésére.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Űrlapok elemzése egyéni modellel
 
 Ez a módszer az űrlap-felismerő ügyfelet és a modell AZONOSÍTÓját használja egy PDF-űrlap dokumentumának elemzéséhez és a kulcs/érték adatok kinyeréséhez. Egy segítő metódus használatával jeleníti meg az eredményeket (amelyet egy [AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) objektum képvisel).
+
+> [!NOTE]
+> A következő módszer egy PDF-űrlapot elemez. A JPEG-és PNG-űrlapokat elemző hasonló módszerekhez tekintse meg a teljes mintakód a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ A következő segítő módszer az elemzési művelettel kapcsolatos informáci�
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Egyéni modellek listájának beolvasása
+## <a name="get-a-list-of-custom-models"></a>Egyéni modellek listájának beolvasása
 
 Visszaállíthatja a fiókjához tartozó összes betanított modell listáját, és lekérheti a létrehozásuk időpontját. A modellek listáját egy [ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) objektum képviseli.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Egyéni modell törlése
+
+Ha törölni szeretné az egyéni modellt a fiókjából, használja a következő metódust:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -174,9 +186,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Emellett, ha olyan egyéni modellt adott ki, amelyet törölni szeretne a fiókjából, használja a következő metódust:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Ha a fiókból törölni kívánt egyéni modellt is betanított, futtassa a metódust az [Egyéni modell törlése](#delete-a-custom-model)lehetőséggel.
 
 ## <a name="next-steps"></a>További lépések
 

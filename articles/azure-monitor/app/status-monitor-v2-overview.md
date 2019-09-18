@@ -3,21 +3,21 @@ title: Az Azure Állapotmonitor v2 áttekintése | Microsoft Docs
 description: A Állapotmonitor v2 áttekintése. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333685"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057830"
 ---
 # <a name="status-monitor-v2"></a>Állapotmonitor v2
 
@@ -59,7 +59,15 @@ A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.m
   *Igen*. A Állapotmonitor v2 letöltése több módon is lehetséges. Ha a számítógépnek van internet-hozzáférése, akkor paraméterek használatával `-Proxy` bejelentkezhet a PowerShell-galériaba.
 Manuálisan is letöltheti a modult, és telepítheti a számítógépre, vagy közvetlenül is használhatja azt.
 Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed-instructions.md)ismertetik.
+
+- Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat?
+
+  *Nem*. ASP.NET Core alkalmazások figyelésének engedélyezéséhez lásd: [Application Insights ASP.net Core alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Nincs szükség a StatusMonitor telepítésére egy ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
   
+Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat? 
+
+  *Nem*. A ASP.NET Core alkalmazások figyelésének engedélyezéséhez kövesse [az alábbi](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) utasításokat. Nem szükséges StatusMonitor telepíteni ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
+
 - Hogyan ellenőrizze, hogy az engedélyezés sikeres volt-e?
 
   - A [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) parancsmag használatával ellenőrizheti, hogy az engedélyezés sikeres volt-e.

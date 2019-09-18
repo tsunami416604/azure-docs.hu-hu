@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060710"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067104"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
@@ -26,8 +26,8 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott térségek** | Kelet-Ausztrália, Délkelet-Ausztrália <br> Dél-Brazília <br> Közép-Kanada, Kelet-Kanada <br> Dél-Kelet-Ázsia, Kelet-Ázsia <br> USA keleti régiója, USA 2. keleti régiója, USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója, USA északi középső régiója, USA középső régiója<br> Közép-India, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
-**Támogatott VM-operációs rendszerek** | SLES: 12 SP2 vagy SP3.
-**Támogatott HANA-verziók** | SDC on HANA 1. x, MDC on HANA 2. x < = SPS03
+**Támogatott VM-operációs rendszerek** | SLES 12 SP2, SP3 vagy SP4 szervizcsomaggal.
+**Támogatott HANA-verziók** | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 42
 
 ### <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -189,5 +189,5 @@ Ha SAP HANA 1,0-es adatbázisok védelmét kívánja biztosítani, és a 2,0-re 
 
 ## <a name="next-steps"></a>További lépések
 
-[](backup-azure-sap-hana-database-troubleshoot.md) A SAP HANA biztonsági mentés Azure-beli virtuális gépeken való használata során megtudhatja, hogyan lehet gyakori hibákat elhárítani.
+A SAP HANA biztonsági mentés Azure-beli virtuális gépeken való használata során [megtudhatja](backup-azure-sap-hana-database-troubleshoot.md) , hogyan lehet gyakori hibákat elhárítani.
 [Ismerje meg az](backup-azure-arm-vms-prepare.md) Azure-beli virtuális gépek biztonsági mentését.

@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369293"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064693"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból Azure Active Directory B2C használatával
 
-Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory (Azure AD) B2C-védelemmel ellátott ASP.NET Core webes API-erőforrást egy egyoldalas alkalmazásból.
+Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory B2C (Azure AD B2C) által védett ASP.NET Core webes API-erőforrást egy egyoldalas alkalmazásból.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogadják és reagálni tudják a védett erőforrásokra vonatkozó kéréseket olyan ügyfélalkalmazások számára, amelyek hozzáférési jogkivonatot mutatnak be.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 1. Adja meg az alkalmazás nevét. Például: *webapi1*.

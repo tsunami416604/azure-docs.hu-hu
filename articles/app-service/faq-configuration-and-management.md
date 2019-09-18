@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 217601a430b40772eaf1f24c8e1501bc4b4fcae5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073190"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055310"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -43,7 +43,7 @@ A App Service webalkalmazás egyéni tartományának megvásárlásáról és be
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan a webalkalmazáshoz meglévő SSL-tanúsítvány feltöltése és konfigurálása?
 
-Ha meg szeretné tudni, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, tekintse meg a [meglévő egyéni SSL-tanúsítvány kötése egy Azure](app-service-web-tutorial-custom-ssl.md#upload)-webalkalmazáshoz című témakört.
+Ha meg szeretné tudni, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, tekintse meg a [meglévő egyéni SSL-tanúsítvány kötése egy Azure-webalkalmazáshoz](app-service-web-tutorial-custom-ssl.md#upload)című témakört.
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hogyan új SSL-tanúsítvány vásárlása és konfigurálása az Azure-ban a webalkalmazáshoz?
@@ -71,7 +71,7 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
     * Value = *a kívánt időzóna*
 3. Kattintson a **Mentés** gombra.
 
-Az elfogadott értékekhez tekintse meg az [alapértelmezett](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) időzónák című cikk időzóna oszlopát.
+A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: Amerika/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
@@ -96,7 +96,7 @@ Vegye figyelembe, hogy ha dedikált vagy fenntartott IP-címet szeretne használ
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Exportálhatók az App Service-tanúsítvány az Azure-on kívüli használatra, például egy máshol üzemeltetett webhelyre? 
 
-App Service tanúsítványok Azure-erőforrásoknak számítanak. Nem az Azure-szolgáltatásokon kívüli használatra készültek. Nem exportálhatja őket az Azure-on kívüli használatra. További információ: App Service- [tanúsítványok és egyéni tartományok – gyakori kérdések](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Igen, az Azure-on kívül is exportálhatja őket. További információ: App Service- [tanúsítványok és egyéni tartományok – gyakori kérdések](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Exportálhatók a App Service-tanúsítványom más Azure Cloud Services-szolgáltatásokkal való használatra?
 
@@ -111,7 +111,7 @@ A biztonsági mentési hiba gyakori oka az, hogy egyes fájlokat az alkalmazás 
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hogyan eltávolítani a HTTP-válasz fejlécét?
 
-Ha el szeretné távolítani a fejléceket a HTTP-válaszból, frissítse a webhely web. config fájlját. További információ: a [szabványos kiszolgálók fejlécének eltávolítása az Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)-webhelyeken.
+Ha el szeretné távolítani a fejléceket a HTTP-válaszból, frissítse a webhely web. config fájlját. További információ: a [szabványos kiszolgálók fejlécének eltávolítása az Azure-webhelyeken](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service megfelel a PCI standard 3,0-es és 3,1-es verziójának?
 
@@ -131,7 +131,7 @@ További információ az üzembe helyezési pontok használatáról: [átmeneti 
 
 Webjobs-naplók áttekintése:
 
-1. Jelentkezzen be a [kudu](https://*yourwebsitename*.scm.azurewebsites.net)webhelyére.
+1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Válassza ki a Webjobs.
 3. Válassza a **kimenet váltása** gombot.
 4. A kimeneti fájl letöltéséhez válassza a **letöltési** hivatkozást.
@@ -162,7 +162,7 @@ A hely szintjén két lehetőség közül választhat a App Service bejövő for
 * Kapcsolja be a dinamikus IP-korlátozásokat. A dinamikus IP-korlátozások bekapcsolásának megismeréséhez tekintse meg [Az Azure websites IP-és tartományi korlátozásait](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)ismertető témakört.
 * A modul biztonságának bekapcsolása. A modul biztonságának bekapcsolásával kapcsolatos további információkért lásd: [ModSecurity webalkalmazási tűzfal az Azure websites szolgáltatásban](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/).
 
-Ha App Service Environment használ, a [Barracuda](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)-tűzfalat használhatja.
+Ha App Service Environment használ, a [Barracuda-tűzfalat](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)használhatja.
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Hogyan letiltani a portokat egy App Service webalkalmazásban?
 
@@ -205,7 +205,7 @@ Jelenleg nem rendelkezhet pont – hely típusú VPN-kapcsolattal olyan virtuál
 
 Jelenleg nem támogatott egy App Service webalkalmazás csatlakoztatása egy statikus útválasztási (házirend-alapú) átjáróval rendelkező virtuális hálózathoz. Ha a célként megadott virtuális hálózat már létezik, akkor az alkalmazáshoz való csatlakozás előtt a pont – hely típusú VPN-nek engedélyezve kell lennie, és dinamikus útválasztási átjárót kell használnia. Ha az átjáró statikus útválasztásra van beállítva, akkor nem engedélyezheti pont – hely típusú VPN-t. 
 
-További információ: [alkalmazás integrálása Azure](web-sites-integrate-with-vnet.md#getting-started)-beli virtuális hálózattal.
+További információ: [alkalmazás integrálása Azure-beli virtuális hálózattal](web-sites-integrate-with-vnet.md#getting-started).
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>A saját App Service Environmenton miért hozhatok létre csak egy App Service csomagot, még ha van két feldolgozóm?
 
@@ -254,7 +254,7 @@ A behatolási teszt elvégzéséhez [küldje el a kérelmet](https://portal.msrc
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Hogyan a Traffic Managert használó App Service webalkalmazáshoz egyéni tartománynevet konfigurálhat?
 
-Ha szeretné megismerni, hogyan használhat egyéni tartománynevet egy olyan App Service alkalmazással, amely az Azure Traffic Managert használja a terheléselosztáshoz, tekintse meg az [Egyéni tartománynév konfigurálása az Azure](web-sites-traffic-manager-custom-domain-name.md)-webalkalmazásokhoz Traffic Manager használatával című témakört.
+Ha szeretné megismerni, hogyan használhat egyéni tartománynevet egy olyan App Service alkalmazással, amely az Azure Traffic Managert használja a terheléselosztáshoz, tekintse meg az [Egyéni tartománynév konfigurálása az Azure-webalkalmazásokhoz Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)használatával című témakört.
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Az App Service-tanúsítvány csalásra van megjelölve. Hogyan megoldja ezt?
 
@@ -266,7 +266,7 @@ Az App Service-tanúsítvány megvásárlásának tartományi ellenőrzése sor�
 
 Az üzenet azt jelzi, hogy a csalás ellenőrzési folyamata akár 24 órát is igénybe vehet. Ebben az időszakban továbbra is megjelenik az üzenet.
 
-Ha a App Service-tanúsítvány 24 óra elteltével továbbra is megjeleníti ezt az üzenetet, futtassa a következő PowerShell-szkriptet. A parancsfájl közvetlenül kapcsolatba [](https://www.godaddy.com/) lép a hitelesítésszolgáltatóval a probléma megoldásához.
+Ha a App Service-tanúsítvány 24 óra elteltével továbbra is megjeleníti ezt az üzenetet, futtassa a következő PowerShell-szkriptet. A parancsfájl közvetlenül kapcsolatba lép a [hitelesítésszolgáltatóval](https://www.godaddy.com/) a probléma megoldásához.
 
 ```powershell
 Connect-AzAccount

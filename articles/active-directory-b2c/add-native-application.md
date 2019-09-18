@@ -1,6 +1,6 @@
 ---
-title: Adjon hozzá egy natív ügyfélalkalmazás – Azure Active Directory B2C |} A Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá az Active Directory B2C-bérlő natív ügyfélalkalmazás.
+title: Natív ügyfélalkalmazás hozzáadása – Azure Active Directory B2C | Microsoft Docs
+description: Ismerje meg, hogyan adhat hozzá natív ügyfélalkalmazás a Active Directory B2C bérlőhöz.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,28 +10,28 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4e9b95cb226aeec686816d0ed7160062e110c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc953d5c6109fbc6eacbd946ecd112db4639fa5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511824"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064596"
 ---
-# <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Egy natív ügyfélalkalmazást az Azure Active Directory B2C-bérlő hozzáadása
+# <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Natív ügyfélalkalmazás hozzáadása a Azure Active Directory B2C bérlőhöz
 
-Natív ügyfél erőforrások a bérlőben, mielőtt az alkalmazás képes kommunikálni az Azure Active Directory B2C regisztrálni kell.
+A natív ügyfél-erőforrásokat regisztrálni kell a bérlőn, mielőtt az alkalmazás kommunikálni tudjon a Azure Active Directory B2Cokkal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-1. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
-2. Adjon meg egy nevet az alkalmazásnak. Ha például *nativeapp1*.
-3. A **közé tartozik a webalkalmazás vagy webes API**válassza **nem**.
-4. A **natív ügyfél belefoglalása**válassza **Igen**.
-5. A **átirányítási URI-t**, adjon meg egy érvényes átirányítási URI-t egy egyéni sémával. Két szempontot fontos egy átirányítási URI-JÁNAK kiválasztásakor:
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+2. Adja meg az alkalmazás nevét. Például: *nativeapp1*.
+3. A **Web App/web API**belefoglalásához válassza a **nem**lehetőséget.
+4. A **natív ügyfél**belefoglalása beállításnál válassza az **Igen**lehetőséget.
+5. Az **átirányítási URI**esetében adjon meg egy érvényes átirányítási URI-t egy egyéni sémával. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
 
-    - **Egyedi** -átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példában `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` a séma. Ezt a mintát kell követnie. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó a hibajelentési szolgáltatás egy alkalmazás kiválasztásához. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul.
-    - **Teljes** -átirányítási URI-JÁNAK rendelkeznie kell egy sémát és a egy elérési utat. Az elérési utat a tartomány után legalább egy perjelet tartalmaznia kell. Ha például `//contoso/` működik és `//contoso` sikertelen lesz. Győződjön meg arról, hogy az átirányítási URI-t nem tartalmazza a különleges karaktereket, például aláhúzásjeleket.
+    - **Egyedi** – az átirányítási URI sémájának minden alkalmazás esetében egyedinek kell lennie. A példában `com.onmicrosoft.contoso.appname://redirect/path` `com.onmicrosoft.contoso.appname` a séma. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazást. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
+    - **Befejezés** – az átirányítási URI-nak rendelkeznie kell sémával és elérési úttal. Az elérési útnak legalább egy perjelet tartalmaznia kell a tartomány után. Például `//contoso/` működik és `//contoso` sikertelen. Győződjön meg arról, hogy az átirányítási URI nem tartalmaz speciális karaktereket, például aláhúzást.
 
 6. Kattintson a **Create** (Létrehozás) gombra.
-7. A Tulajdonságok lapon jegyezze fel az Alkalmazásazonosítót, amely natív ügyfélalkalmazás konfigurálása során fogja használni.
+7. A Tulajdonságok lapon jegyezze fel a natív ügyfélalkalmazás konfigurálásakor használni kívánt alkalmazás AZONOSÍTÓját.

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376097"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066779"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>A Hyper-V felmérésének és migrálásának támogatási mátrixa
 
@@ -27,9 +27,9 @@ A táblázat összefoglalja a Hyper-V virtuális gépek támogatott forgatókön
 **Üzembe helyezés** | **Részletek***
 --- | ---
 **Helyszíni Hyper-V virtuális gépek felmérése** | [Állítsa be](tutorial-prepare-hyper-v.md) az első értékelést.<br/><br/> Nagy léptékű értékelés [futtatása](scale-hyper-v-assessment.md) .
-**A Hyper-V virtuális gépek migrálása az Azure-ba** | [Próbálja ki](tutorial-migrate-hyper-v.md) az Azure-ba való áttelepítést. 
+**A Hyper-V virtuális gépek migrálása az Azure-ba** | [Próbálja ki](tutorial-migrate-hyper-v.md) az Azure-ba való áttelepítést.
 
-A System Center Virtual Machine Manager (VMM) által felügyelt Hyper-V-kiszolgálók áttelepítése nem támogatott Azure Migrate-kiszolgáló áttelepítése esetén. 
+A System Center Virtual Machine Manager (VMM) által felügyelt Hyper-V-kiszolgálók áttelepítése nem támogatott Azure Migrate-kiszolgáló áttelepítése esetén.
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projektek
 
@@ -44,10 +44,13 @@ Földrajzi hely | Azure Migrate-projekteket számos földrajzi régióban is lé
   Azure Government | USA-beli államigazgatás – Virginia
   Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
   Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
+  Brazília | Dél-Brazília
   Kanada | Közép-Kanada vagy Kelet-Kanada
   Európa | Észak-Európa vagy Nyugat-Európa
+  Franciaország | Közép-Franciaország
   India | Közép-India vagy Dél-India
   Japán |  Kelet-japán vagy Nyugat-Japán
+  Korea | Korea középső régiója vagy Dél-Korea
   Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
   Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -87,7 +90,7 @@ Az értékeléshez Azure Migrate egy könnyű berendezést futtat a Hyper-V virt
 | **Hyper-V-gazdagépek**          | Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 | **Felfedezés**              | Egyetlen készülék akár 5000 virtuális gépet is képes felderíteni.
 | **Értékelési csoport**       | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.
-| **Assessment**             | Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
+| **Értékelés**             | Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
 
 

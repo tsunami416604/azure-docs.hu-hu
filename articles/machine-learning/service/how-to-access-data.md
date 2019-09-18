@@ -1,7 +1,7 @@
 ---
 title: Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja az adattárakat az Azure Storage-szolgáltatások elérésére Azure Machine Learning szolgáltatással való betanítás során
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használhatja az adattárakat az Azure Storage-szolgáltatások eléréséhez Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191926"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035301"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 
@@ -173,7 +173,7 @@ datastore.path('./bar').as_download()
 
 A következő példák [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) a osztályra vonatkoznak az adatok betanítás közbeni eléréséhez. 
 
-`script_params`a egy olyan szótár, amely paramétereket tartalmaz a entry_script. Azt is megteheti, hogy átadja az adattárolót, és leírja, hogyan kell elérhetővé tenni az adatok számítási célra való használatát. További információt a teljes körű oktatóanyagban olvashat. [](tutorial-train-models-with-aml.md)
+`script_params`a egy olyan szótár, amely paramétereket tartalmaz a entry_script. Azt is megteheti, hogy átadja az adattárolót, és leírja, hogyan kell elérhetővé tenni az adatok számítási célra való használatát. További információt a teljes körű [oktatóanyagban](tutorial-train-models-with-aml.md)olvashat.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -232,7 +232,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>Az adathozzáférés a pontozás során
 
-A Azure Machine Learning szolgáltatás számos lehetőséget kínál a modellek pontozásra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
+A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
 | Módszer | Adattár-hozzáférés | Leírás |
 | ----- | :-----: | ----- |

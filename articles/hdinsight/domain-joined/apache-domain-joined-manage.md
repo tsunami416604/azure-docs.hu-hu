@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: e5062ce27e1e9367a262d263070ab01f899dfc54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918914"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034122"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-fürtök kezelése Enterprise Security Package
 Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és szerepköreit, valamint az ESP-fürtök kezelését.
@@ -21,69 +21,73 @@ Megismerheti a HDInsight Enterprise Security Package (ESP) felhasználóit és s
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
 Az Apache Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Apache Hadoop fürtöt.
+
 1. Nyissa meg a parancssort a **CTRL + SHIFT + P billentyűkombinációval**, **majd írja be a HDInsight: Fürt**csatolása.
 
-   ![fürt csatolása parancs](./media/apache-domain-joined-manage/link-cluster-command.png)
+   ![parancs-paletta, fürt csatolása](./media/apache-domain-joined-manage/link-cluster-command.png)
 
 2. Adja meg a HDInsight-fürt URL-címét – > bemeneti felhasználónevet – > bemeneti jelszó – > válassza a fürt típusa lehetőséget – > Ez a siker információit jeleníti meg, ha az ellenőrzés
-   
-   ![fürt csatolása párbeszédpanel](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   ![fürt-folyamat lépéseinek csatolása párbeszédpanel](./media/apache-domain-joined-manage/link-cluster-process.png)
 
    > [!NOTE]  
-   > A rendszer a csatolt felhasználónevet és jelszót használja, ha a fürt mind az Azure-előfizetésben jelentkezett be, mind a fürthöz csatlakoztatva van. 
-   
+   > A rendszer a csatolt felhasználónevet és jelszót használja, ha a fürt mind az Azure-előfizetésben jelentkezett be, mind a fürthöz csatlakoztatva van.
+
 3. Egy csatolt fürtöt a parancssori **fürt**használatával tekinthet meg. Most elküldhet egy parancsfájlt ehhez a csatolt fürthöz.
 
-   ![csatolt fürt](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "csatolt fürt")
+   a ![cluster parancs kimeneti ellenőrzésének listázása](./media/apache-domain-joined-manage/hdinsight-linked-cluster.png "csatolt fürt")
 
 4. A fürtöket a HDInsight bevitelével **is leválaszthatja: Fürt** leválasztása a parancssorból.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
-A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt. 
+A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
    ![fürt helyi menüjének csatolása IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Adja meg a **fürt nevét**, a **felhasználónevet** és a **jelszót**. Ha hitelesítési hiba van, ellenőrizze a felhasználónevet és a jelszót. Igény szerint vegye fel a Storage-fiókot, a tárolási kulcsot, majd válasszon ki egy tárolót a tárolóból. A tároló adatai a bal oldali fában található Storage Explorerben
-   
-   ![fürt csatolása párbeszédpanel IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   ![Azure Explorer csatolási fürt párbeszédpanel IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > A csatolt Storage-kulcsot, a felhasználónevet és a jelszót használjuk, ha a fürt az Azure-előfizetésben is be van jelentkezve, és egy fürthöz kapcsolódik.
-   > ![Storage Explorer a IntelliJ-ben](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+   > 
+   > ![Azure Explorer Storage-fiók a IntelliJ-ben](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
-   
 3. Ha a bemeneti adatok helyesek, a **HDInsight** csomópontban láthat egy csatolt fürtöt. Most elküldheti az alkalmazást ehhez a csatolt fürthöz.
 
-   ![csatolt fürt IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "csatolt fürt IntelliJ]")
+   ![Azure Explorer csatolt fürt IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "csatolt fürt IntelliJ]")
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
-   
-   ![nem összekapcsolt fürt IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+
+   ![Az Azure Explorer nem kapcsolódik a fürt IntelliJ](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
 A Ambari Managed username használatával összekapcsolhat egy normál fürtöt, és a tartomány felhasználóneve (például: `user1@contoso.com`) használatával is összekapcsolhatja a biztonsági Hadoop-fürtöt.
+
 1. Kattintson **a fürt csatolása** az **Azure Explorerben**elemre.
 
    ![fürt helyi menüjének összekapcsolása](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Adja meg a **fürt nevét**, a **felhasználónevet** és a **jelszót**, majd kattintson az OK gombra a fürt csatolásához. Szükség esetén megadhatja a Storage-fiókot, a Storage-kulcsot, majd kiválaszthatja a Storage Explorer tárolási tárolóját a bal oldali fanézetben való működéshez.
-   
-   ![fürt csatolása párbeszédpanel Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
-   
+
+   ![Azure Explorer hivatkozás fürt párbeszédpanel Eclipse](./media/apache-domain-joined-manage/link-cluster-dialog1.png)
+
    > [!NOTE]  
    > A csatolt Storage-kulcsot, a felhasználónevet és a jelszót használjuk, ha a fürt az Azure-előfizetésben is be van jelentkezve, és egy fürthöz kapcsolódik.
-   > ![Storage Explorer az Eclipse-ben](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+   > 
+   > ![Azure Explorer Storage-fiók az Eclipse-ben](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
 3. Ha a bemeneti adatok helyesek, az OK gombra kattintás után megtekintheti a csatolt fürtöt a **HDInsight** -csomópontban. Most elküldheti az alkalmazást ehhez a csatolt fürthöz.
 
-   ![csatolt fürt Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![Azure Explorer csatolt fürt Eclipse](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. A fürtöket az **Azure Explorerben**is leválaszthatja.
    
-   ![leválasztási fürt Eclipse](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
+   ![Az Azure Explorer nem kapcsolódik a fürt Eclipse-hez](./media/apache-domain-joined-manage/hdinsight-unlink-cluster.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>A fürtök elérése Enterprise Security Packagesal.
 
@@ -104,8 +108,8 @@ A biztonság és a felhasználók elkülönítése a HDInsight-fürtök esetébe
 
 A standard API-k használata a biztonsági szempontból nyújt segítséget. Emellett a következő előnyöket veheti igénybe:
 
-1.  **Felügyelet** – kezelheti a kódot, és automatizálhatja a feladatokat standard API-k használatával – LIVY, HS2 stb.
-2.  **Auditálás** – SSH-val nem lehet naplózni, hogy mely felhasználók SSH-t kívánnak a fürtön. Ez nem lehetséges, ha a feladatokat standard végpontokon keresztül készíti el, mivel azok a felhasználó kontextusában lesznek végrehajtva. 
+- **Felügyelet** – kezelheti a kódot, és automatizálhatja a feladatokat standard API-k használatával – LIVY, HS2 stb.
+- **Auditálás** – SSH-val nem lehet naplózni, hogy mely felhasználók SSH-t kívánnak a fürtön. Ez nem lehetséges, ha a feladatokat standard végpontokon keresztül készíti el, mivel azok a felhasználó kontextusában lesznek végrehajtva. 
 
 
 
@@ -183,11 +187,11 @@ A HDInsight Enterprise Security Package a következő szerepkörökkel rendelkez
 4. Jelentkezzen be a Ambari a fürt rendszergazdai tartományának felhasználónevével és jelszavával.
 5. Kattintson a jobb felső sarokban található **rendszergazda** legördülő menüre, majd kattintson a **Ambari kezelése**lehetőségre.
 
-    ![ESP-HDInsight a Ambari kezelése](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight az Apache Ambari kezelése](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     A felhasználói felület a következőképpen néz ki:
 
-    ![ESP-HDInsight Ambari-kezelési felhasználói felülete](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ESP HDInsight Apache Ambari-kezelési felhasználói felület](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>A Active Directoryról szinkronizált tartományi felhasználók listázása
 1. Nyissa meg a Ambari-kezelő felhasználói felületét.  Lásd: [a Ambari-kezelés felhasználói felületének megnyitása](#open-the-ambari-management-ui).

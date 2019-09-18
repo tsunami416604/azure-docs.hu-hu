@@ -1,6 +1,6 @@
 ---
 title: Ügyfél létrehozása a telepített webszolgáltatás használatára
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhat olyan webszolgáltatást, amely akkor jött létre, amikor egy modellt Azure Machine Learning modellel telepítettek. A webszolgáltatás REST API tesz elérhetővé. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279124"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034800"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
@@ -43,7 +43,7 @@ A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azur
 * `auth_enabled`– Ha a kulcsos hitelesítés engedélyezve `True`van, `False`egyéb esetben.
 * `token_auth_enabled`– Ha engedélyezve van a jogkivonat- `True`hitelesítés, `False`más esetben.
 * `scoring_uri` – A REST API-cím.
-* `swagger_uri`– A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése a Azure Machine learning szolgáltatással](how-to-deploy-and-where.md#schema).
+* `swagger_uri`– A OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md#schema).
 
 Az üzembe helyezett webszolgáltatások ezen információk lekérése egy három módja van:
 

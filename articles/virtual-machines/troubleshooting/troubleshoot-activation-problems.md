@@ -4,7 +4,7 @@ description: Az Azure-beli Windows rendszerű virtuális gépek aktiválási pro
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: d403292a7f7ab1080f4270a420c23353eda5fd71
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090043"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058137"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Az Azure Windows rendszerű virtuális gépek aktiválási problémáinak elhárítása
 
@@ -46,7 +46,7 @@ Az Azure-beli virtuális gépek aktiválásával kapcsolatos problémák által�
 ## <a name="solution"></a>Megoldás
 
 >[!NOTE]
->Ha helyek közötti VPN-t és kényszerített bújtatást használ, tekintse meg az [Egyéni Azure-útvonalak használata a KMS-Aktiválás kényszerített bújtatással](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)való engedélyezését ismertető témakört. 
+>Ha helyek közötti VPN-t és kényszerített bújtatást használ, tekintse meg az [Egyéni Azure-útvonalak használata a KMS-Aktiválás kényszerített bújtatással való engedélyezését](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)ismertető témakört. 
 >
 >Ha a ExpressRoute-t használja, és van egy alapértelmezett útvonala, akkor [Az Azure-beli virtuális gép nem tud aktiválni a ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)-et.
 
@@ -128,8 +128,8 @@ Igen.
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows-aktiválási időszak lejár? 
 
  
-Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a licencelési [feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
+Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
-Ha továbbra is segítségre van szüksége, [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz a probléma gyors megoldása érdekében.
+Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

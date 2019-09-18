@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights rendelkezésre állási teszt hibáinak elhárítása |} A Microsoft Docs
-description: Hibaelhárítás az Azure Application Insights webes teszteket. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
+title: Az Azure Application Insights rendelkezésre állási tesztek megoldása | Microsoft Docs
+description: Webtesztek hibakeresése az Azure Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
 services: application-insights
 documentationcenter: ''
 author: lgayhardt
@@ -13,79 +13,79 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 87bc87d7d105d581f0143e87044fb0337c0fd7f6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305138"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067077"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
-Ez a cikk segít rendelkezésre állásának figyelésére szolgáló használatakor előforduló gyakori problémák megoldása.
+Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetlegesen előforduló gyakori hibák elhárításához.
 
-## <a name="ssltls-errors"></a>Az SSL/TLS-hibák
+## <a name="ssltls-errors"></a>SSL/TLS-hibák
 
-|Jelenség/hibaüzenet| Lehetséges okok|
+|Tünet/hibaüzenet| A lehetséges okok|
 |--------|------|
-|Nem sikerült létrehozni az SSL/TLS Secure Channel  | SSL-verzió. Csak a TLS 1.0, 1.1 és 1.2-es támogatottak. **SSLv3 nem támogatott.**
-|TLSv1.2 rekord réteg: Riasztás (szint: Végzetes, Leírás: Hibás rekord MAC)| Lásd a StackExchange szálat [bővebben](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
-|URL-cím, amelyet nem az, hogy a CDN (Tartalomkézbesítési hálózat) | Ezt okozhatja egy hibás, a CDN-en |  
+|Nem hozható létre SSL/TLS biztonságos csatorna  | Az SSL verziója. Csak a TLS 1,0, 1,1 és 1,2 támogatottak. **A SSLv3 nem támogatott.**
+|TLS 1.2 rekord réteg: Riasztás (szint: Végzetes, leírás: Rossz rekord MAC)| [További információért](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)lásd a StackExchange szálat.
+|A sikertelen URL-cím egy CDN (Content Delivery Network) | Ezt a CDN helytelen konfigurációja okozhatja |  
 
-### <a name="possible-workaround"></a>Lehetséges megoldás
+### <a name="possible-workaround"></a>Lehetséges Áthidaló megoldás
 
-* Ha az URL-címeket a hibát tapasztaló mindig a tőle függő erőforrások, ajánlott letiltani a **függő kérelmek elemzése** a webes teszt.
+* Ha a problémát tapasztaló URL-címek mindig függő erőforrások, ajánlott letiltani a webes teszthez tartozó **függő kérelmek elemzését** .
 
-## <a name="test-fails-only-from-certain-locations"></a>Teszt sikertelen, csak meghatározott helyekről
+## <a name="test-fails-only-from-certain-locations"></a>A teszt csak bizonyos helyekről sikertelen
 
-|Jelenség/hibaüzenet| Lehetséges okok|
+|Tünet/hibaüzenet| A lehetséges okok|
 |----|---------|
-|Kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél nem válaszolt egy idő után  | Az egyes helyek tesztügynök tűzfal blokkolja.|
-|    |Az egyes IP-címek átirányítási (Terheléselosztók, a földrajzi forgalom-kezelők Azure Express Route.) keresztül történik 
-|    |Azure ExpressRoute segítségével, hogy vannak-e forgatókönyvek, ahol csomagok törölhetők azokban az esetekben, ahol [az aszimmetrikus útválasztás akkor fordul elő](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+|A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél egy adott idő elteltével nem válaszolt megfelelően.  | Bizonyos helyszíneken lévő tesztelési ügynököket tűzfal blokkolja.|
+|    |Bizonyos IP-címek átirányítása a (terheléselosztó, Geo Traffic Manager, Azure Express Route) használatával történik. 
+|    |Ha az Azure ExpressRoute-t használja, vannak olyan helyzetek, amikor a csomagokat el lehet dobni azokban az esetekben, amikor [aszimmetrikus útválasztás történik](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Az időszakos teszt meghiúsult egy protokollmegsértési hiba az
+## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Időszakos tesztelési hiba a protokoll megsértése miatt
 
-|Jelenség/hibaüzenet| Lehetséges okok|
+|Tünet/hibaüzenet| A lehetséges okok|
 |----|---------|
-protokoll megsértése CR kell következnie | Ez akkor fordul elő, amikor hibás formátumú fejlécek vannak észlelt. Kifejezetten néhány fejléc nem a CRLF jelzi a sor végét, ami a HTTP-specifikációnak sérti végén, és ezért lesz az ellenőrzés meghiúsul a .NET WebRequest szintjén.
- || Ez is okozhatja terheléselosztók vagy CDN.
+a protokoll-megsértési CR után az LF utasításnak kell szerepelnie | Ez akkor fordul elő, ha a rendszer hibásan formázott fejléceket észlel. Előfordulhat, hogy egyes fejlécek nem használják a CRLF-t a sor végére, ami megsérti a HTTP-specifikációt, ezért a .NET webkérelem szintjén sikertelen lesz az ellenőrzés.
+ || Ezt a terheléselosztó vagy a CDNs is okozhatja.
 
 > [!NOTE]
-> Az URL nem hiúsul meg, amelyek olyan böngészőkön a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Előfordulhat, hogy az URL-cím nem sikerül a HTTP-fejlécek nyugodt érvényesítését biztosító böngészőkön. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
 ## <a name="common-troubleshooting-questions"></a>Gyakori hibaelhárítási kérdések
 
-### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Webhely megfelelőnek tűnik, de látom tesztelési hibák? Miért van az Application Insights riasztási velem?
+### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>A webhely jól néz ki, de a tesztek sikertelenek? Miért Application Insights a riasztás?
 
-   * A teszt rendelkezik **függő kérelmek elemzése** engedélyezve van? Erőforrások, például parancsfájlokat, szigorú ellenőrzés eredményez, amely képeket stb. Előfordulhat, hogy az ilyen típusú hibák nem észrevehető, egy böngészőben. Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt van jelentve, még akkor is, ha a fő HTML-oldal hiba nélkül betölt. Az ilyen erőforrás sikertelen teszt desensitize, csak törölje a jelölést elemezni a függő kérelmeit a konfigurálása.
+   * A tesztben engedélyezve vannak a **függő kérelmek** elemzése? Ez szigorú ellenőrzési eredményeket eredményez, például szkripteket, képeket stb. Előfordulhat, hogy az ilyen típusú hibák nem észlelhetők a böngészőben. Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha bármelyikük meghibásodik, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal probléma nélkül betöltődik. Ha a tesztet ilyen erőforrás-hibákra szeretné leegyszerűsíteni, egyszerűen törölje a függő kérelmek elemzését a tesztelési konfigurációból.
 
-   * Átmeneti hálózati jelekből stb. származó zajok csökkentéséhez biztosítása a konfigurációs be van jelölve, a teszt hibáinak újrapróbálkozások engedélyezése. Teszt több helyről is, és meggátolja az indokolatlan riasztásokat okozó helyspecifikus problémák elkerülése érdekében megfelelően kezelheti a riasztási szabály küszöbértékét.
+   * Annak érdekében, hogy csökkentse a zaj esélyét az átmeneti hálózati visszavertség stb. esetében, ellenőrizze, hogy be van-e jelölve az újrapróbálkozások tesztelési hibákhoz beállítás Azt is megteheti, hogy több helyről is teszteli, és ennek megfelelően kezeli a riasztási szabály küszöbértékét, hogy megakadályozza az indokolatlan riasztásokat okozó helyadatok
 
-   * Kattintson bármelyik a piros pötty a rendelkezésre állási származó, vagy minden rendelkezésre állási hiba a keresési ablak miért azt jelenti, hogy a hiba részleteinek megtekintéséhez. A vizsgálat eredményének, valamint a kapcsolódó kiszolgálóoldali telemetriát (Ha engedélyezve van) segíthet megérteni, hogy miért a teszt sikertelen volt. Átmeneti hibák gyakori okai hálózati és kapcsolati problémák.
+   * Kattintson bármelyik piros pontra a rendelkezésre állási élményben, vagy a keresési Explorer bármely rendelkezésre állási hibája alapján, és tekintse meg, hogy miért jelentettük be a hibát. A teszt eredménye, valamint a korrelált kiszolgálóoldali telemetria (ha engedélyezve van) segít megérteni, miért nem sikerült a teszt. Az átmeneti problémák gyakori okai a hálózati vagy a kapcsolatok problémái.
 
-   * A teszt időtúllépése volt? Tesztek 2 perc múlva le azt. A ping vagy többlépéses teszt hosszabb, mint 2 percet vesz igénybe, ha azt hibaként tartozik. Vegye figyelembe, hogy a teszt ossza több címkéket, is elvégezheti a rövidebb időtartam.
+   * A teszt időkorlátja? 2 perc múlva megszakítjuk a teszteket. Ha a ping vagy a többlépéses teszt 2 percnél hosszabb időt vesz igénybe, a rendszer hibát jelez. Érdemes lehet többre feltörni a tesztet, amely rövidebb időtartamokban is elvégezhető.
 
-   * Hiba, vagy csak néhány jelentettek az összes hely? Ha csak néhány jelentett hibák, valószínűleg hálózati/a CDN-hibák miatt. Újra piros pontra kattint segíthet megérteni, hogy miért érdemes az a hely jelentett hibák.
+   * Az összes helyszín hibát jelzett, vagy csak néhányat? Ha csak egyes jelentett hibák történtek, a hálózati/CDN-problémák miatt előfordulhat. A piros pontokra kattintva könnyebben megismerheti, miért jelentettek hibát a hely.
 
-### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>E nem tudták beszerezni, ha a riasztás aktiválódik, vagy nem oldják fel e-mailt vagy mindkettő?
+### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nem kaptam meg e-mailt, amikor a riasztást aktiváltam, vagy megoldottam vagy mindkettőt?
 
-Ellenőrizze a klasszikus riasztások beállítását, ellenőrizze az e-maileket közvetlenül szerepel a listán, vagy a terjesztési lista értesítések fogadására van beállítva. Ha igen, majd ellenőrizze a terjesztési lista konfigurációját megkaphatja a külső e-mailek megerősítéséhez. A levelezési rendszergazda előfordulhat, hogy van-e bármilyen konfigurált szabályzatok, előfordulhat, hogy a probléma kiváltó is ellenőrizheti.
+A klasszikus riasztások konfigurációjában ellenőrizze, hogy az e-mailek közvetlenül szerepelnek-e a listában, vagy a terjesztési lista az értesítések fogadására van konfigurálva. Ha igen, akkor a terjesztési lista konfigurációjában ellenőrizze, hogy fogadhat-e külső e-maileket. Ellenőrizze azt is, hogy a levelezési rendszergazdája rendelkezhet-e a problémát okozó házirendekkel.
 
-### <a name="i-did-not-receive-the-webhook-notification"></a>Nem kaptam a webhook értesítést?
+### <a name="i-did-not-receive-the-webhook-notification"></a>Nem kaptam meg a webhook-értesítést?
 
-Ellenőrizze, hogy az alkalmazás a webhook értesítés érhető el, és sikeresen dolgozza fel a webhook-kérelmeket. Lásd: [ez](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) további információt.
+Győződjön meg arról, hogy a webhook-értesítést fogadó alkalmazás elérhető, és sikeresen feldolgozza a webhook-kérelmeket. További információért tekintse meg [ezt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) a témakört.
 
-### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Az időszakos teszt meghiúsult egy protokollmegsértési hiba a?
+### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Időnkénti tesztelési hiba történt egy protokoll megsértésével kapcsolatban?
 
-A „protokollmegsértés... A CR karakter után LF karakternek kell következnie” hiba a kiszolgáló (vagy a függőségek) problémáját jelzi. Ez akkor történik, amikor hibás formátumú fejlécek vannak beállítva a válaszban. Ezt a terheléselosztók vagy a CDN-ek okozhatják. Pontosabban néhány fejléc előfordulhat, hogy nem a CRLF jelzi a sor, amely megsérti a HTTP-specifikációnak, és ezért az ellenőrzés a .NET WebRequest szintjén meghiúsul. Vizsgálja meg a választ, előfordulhat, hogy nem megfelelő fejlécek.
+A „protokollmegsértés... A CR karakter után LF karakternek kell következnie” hiba a kiszolgáló (vagy a függőségek) problémáját jelzi. Ez akkor történik, amikor hibás formátumú fejlécek vannak beállítva a válaszban. Ezt a terheléselosztók vagy a CDN-ek okozhatják. Konkrétan előfordulhat, hogy egyes fejlécek nem használják a CRLF a sor végére, ami megsérti a HTTP-specifikációt, ezért a .NET webkérési szinten nem végez ellenőrzést. Vizsgálja meg, hogy milyen válaszokat tartalmaz a helyszíni fejlécek.
 
 > [!NOTE]
-> Az URL nem hiúsul meg, amelyek olyan böngészőkön a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Előfordulhat, hogy az URL-cím nem sikerül a HTTP-fejlécek nyugodt érvényesítését biztosító böngészőkön. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nem látható, hogy minden kapcsolódó kiszolgálóoldali telemetriát teszt hibáinak diagnosztizálása? *
+### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nem látok kapcsolódó kiszolgálóoldali telemetria a tesztelési hibák diagnosztizálásához? *
 
-Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](../../azure-monitor/app/sampling.md) van folyamatban. Válasszon ki egy másik rendelkezésre állási eredményt.
+Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](../../azure-monitor/app/sampling.md) van folyamatban. Válasszon másik rendelkezésre állási eredményt.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Meghívhatok egy kódot a webes tesztből?
 
@@ -101,11 +101,11 @@ A két kifejezés hasonló értelmű, felcserélhető. A „rendelkezésre áll�
    Két lehetséges megoldás létezik:
 
    * Konfigurálhatja úgy a tűzfalat, hogy az engedélyezze a [webes tesztügynökök IP-címeiről](../../azure-monitor/app/ip-addresses.md) érkező bejövő kéréseket.
-   * Saját kód megírásával rendszeresen ellenőrizheti a belső kiszolgálót. Futtassa a kódot a tűzfal mögötti tesztkiszolgáló háttérfolyamataként. A tesztelési folyamat az eredményeket a Core SDK-csomag [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API-jával küldheti el az Application Insightsba. Ehhez szükség van arra, hogy a tesztkiszolgáló kimenő hozzáféréssel rendelkezzen az Application Insights betöltési végpontjához, de ez jóval kisebb biztonsági kockázatot jelent a bejövő kérések engedélyezéséhez képest. Az eredmények nem jelennek meg a rendelkezésre állási webes tesztek paneljein, de rendelkezésre állási eredményként megtekinthetők az Elemzés, a Keresés és a Metrikaböngésző panelen.
+   * Saját kód megírásával rendszeresen ellenőrizheti a belső kiszolgálót. Futtassa a kódot a tűzfal mögötti tesztkiszolgáló háttérfolyamataként. A tesztelési folyamat az eredményeket a Core SDK-csomag [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API-jával küldheti el az Application Insightsba. Ehhez szükség van arra, hogy a tesztkiszolgáló kimenő hozzáféréssel rendelkezzen az Application Insights betöltési végpontjához, de ez jóval kisebb biztonsági kockázatot jelent a bejövő kérések engedélyezéséhez képest. Az eredmények megjelennek a rendelkezésre állási webes tesztek paneleken, bár a felhasználói élmény kis mértékben le lesz egyszerűsítve a portálon keresztül létrehozott tesztek esetében. Az egyéni rendelkezésre állási tesztek az elemzés, a keresés és a mérőszámok rendelkezésre állási eredményeiként is megjelennek.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>A többlépéses teszt feltöltése sikertelen
 
-Néhány ok, Ez azért fordulhat elő:
+Ennek valamilyen oka lehet:
    * A méretkorlát: 300 KB.
    * A hurkok nem támogatottak.
    * A más webes tesztekre mutató hivatkozások nem támogatottak.
@@ -113,28 +113,28 @@ Néhány ok, Ez azért fordulhat elő:
 
 ### <a name="my-multi-step-test-doesnt-complete"></a>A többlépéses teszt nem fejeződik be
 
-Egy teszt legfeljebb 100 kérelemből állhat. A teszt leáll, ha két percnél tovább fut.
+Egy teszt legfeljebb 100 kérelemből állhat. Emellett a teszt leáll, ha két percnél hosszabb ideig fut.
 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Hogyan futtathatok tesztet ügyféltanúsítványokkal?
 
 Ez jelenleg nem támogatott.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kik kapják meg a (klasszikus) riasztási értesítéseket?
 
-Ez a szakasz csak klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Ismerje meg jobban a különbség a [klasszikus riasztások](../platform/alerts-classic.overview.md), majd tekintse át a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Riasztás szabályozhatja az új riasztások az értesítési használata élményt [Műveletcsoportok](../platform/action-groups.md).
+Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket, így biztosítva, hogy csak a kívánt címzettek kapják meg az értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../platform/alerts-classic.overview.md)közötti különbségről és az új riasztások élményéről, tekintse meg a [riasztások áttekintése című cikket](../platform/alerts-overview.md). A riasztások értesítésének vezérléséhez az új riasztások használatakor használjon [műveleti csoportokat](../platform/action-groups.md).
 
-* A klasszikus riasztási értesítéseket meghatározott címzettek használatát javasoljuk.
+* A klasszikus riasztási értesítések esetében javasoljuk, hogy adott címzetteket használjon.
 
-* Sikertelen X kívül Y helyen, a riasztások a **tömeges/csoport** jelölőnégyzetet, a beállítást, ha engedélyezve van, küld rendszergazda/társadminisztrátor szerepkörrel rendelkező felhasználók számára.  Lényegében _összes_ rendszergazdái a _előfizetés_ értesítéseket kap.
+* A nem Y helyekről érkező hibákkal kapcsolatos riasztások esetén a **csoportos/csoportos** jelölőnégyzetes beállítás, ha engedélyezve van, a a rendszergazdai/társ-rendszergazdai szerepkörökkel rendelkező felhasználóknak küldi a felhasználókat.  Lényegében az _előfizetés_ _összes_ rendszergazdája értesítést kap.
 
-* A rendelkezésre állási metrikák riasztásaihoz a **tömeges/csoport** jelölőnégyzetet, a beállítás engedélyezve van, ha elküldi az előfizetésben tulajdonosi, közreműködői vagy olvasói szerepkörrel rendelkező felhasználók. Gyakorlatilag _összes_ az előfizetés az Application Insights-erőforráshoz hozzáféréssel rendelkező felhasználók terjed ki, és értesítéseket kap. 
+* Ha engedélyezve van a rendelkezésre állási metrikákkal kapcsolatos riasztások, akkor a **csoportos vagy csoportos** jelölőnégyzet be van jelölve, ha engedélyezve van, az előfizetésben tulajdonos, közreműködő vagy olvasó szerepkörrel rendelkező felhasználók számára küldi el a rendszer. _Minden_ olyan felhasználó, aki hozzáféréssel rendelkezik az előfizetéshez, a Application Insights erőforrás hatókörben van, és értesítést fog kapni. 
 
 > [!NOTE]
-> Ha jelenleg használja a **tömeges/csoport** jelölőnégyzetet, a beállítást, és tiltsa le, nem állíthatja vissza a módosítást.
+> Ha jelenleg a **tömeges/csoportos** jelölőnégyzetet használja, és letiltja, akkor nem fogja tudni visszaállítani a változást.
 
-Az új riasztás élmény/közel valós idejű riasztások használja, ha értesítse a felhasználókat a szerepkörökhöz alapján kell. A [Műveletcsoportok](../platform/action-groups.md), bármelyik (nem egyesíthet egyetlen lehetőségként) közreműködői vagy tulajdonosi vagy olvasó szerepkört konfigurálható e-mail értesítések küldéséhez felhasználók számára.
+Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Többlépéses webes tesztelése](availability-multistep.md)
+* [Többlépéses webes tesztelés](availability-multistep.md)
 * [URL-ping tesztek](monitor-web-app-availability.md)

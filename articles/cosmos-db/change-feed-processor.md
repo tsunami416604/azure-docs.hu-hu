@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018779"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073686"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Adatcsatorna-processzor módosítása Azure Cosmos DB 
 
@@ -95,5 +95,6 @@ A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adat
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
 * [A hírcsatorna változásának áttekintése](change-feed.md)
+* [Áttelepítés a Change feed Processor Library webhelyről](how-to-migrate-from-change-feed-library.md)
 * [A Change feed kalkulátor használata](how-to-use-change-feed-estimator.md)
 * [Hírcsatorna-processzor kezdő időpontjának módosítása](how-to-configure-change-feed-start-time.md)

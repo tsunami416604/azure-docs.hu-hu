@@ -1,10 +1,11 @@
 ---
-title: Névkeresési zónák egy SMTP szalagcím-ellenőrzésre konfigurálása az Azure-ban
+title: Névkeresési zónák konfigurálása SMTP szalagcím-bejelentkezéshez az Azure-ban
 titlesuffix: Azure Virtual Network
-description: Névkeresési zónák egy SMTP szalagcím-ellenőrzésre konfigurálása az Azure-ban
+description: Útmutató a névkeresési zónák konfigurálásához az Azure-ban található SMTP szalagcím-ellenőrzések esetében
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,35 +13,35 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 203c3c5f371af7de891f0949a35378294bb50a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713639"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059019"
 ---
-# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Névkeresési zónák egy SMTP szalagcím-ellenőrzésre konfigurálása
+# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Névkeresési zónák konfigurálása SMTP-szalagcímek vizsgálatához
 
-Ez a cikk bemutatja, hogyan használhatja az Azure DNS-névkeresési zóna, és hozzon létre egy rekordot a fordított DNS (PTR) SMTP szalagcím ellenőrzése.
+Ez a cikk azt ismerteti, hogyan használható egy fordított zóna a Azure DNSban, és hogyan hozható létre fordított DNS (PTR) rekord az SMTP-szalagcímek vizsgálatához.
 
 ## <a name="symptom"></a>Jelenség
 
-Ha egy SMTP-kiszolgálót a Microsoft Azure-ban, a következő hibaüzenet jelenhet mikor küldjön vagy üzenetet fogadó távoli levelezési kiszolgálóján:
+Ha Microsoft Azureban futtat egy SMTP-kiszolgálót, a következő hibaüzenet jelenhet meg a távoli levelezési kiszolgálókról küldött üzenetek küldésekor vagy fogadásakor:
 
-**554: PTR típusú rekord**
+**554: Nincs PTR-rekord**
 
 ## <a name="solution"></a>Megoldás
 
-Virtuális IP-cím az Azure-ban a Microsoft tulajdonában lévő tartományi zónák, nem az egyéni tartomány zónák a fordított rekordok jönnek létre.
+Az Azure-beli virtuális IP-címek esetében a fordított rekordok a Microsoft tulajdonában lévő tartományi zónákban jönnek létre, nem egyéni tartományi zónákban.
 
-A Microsoft tulajdonában lévő zónák PTR-rekordok konfigurálásához használja a fordított teljes tartománynév - tulajdonság a PublicIpAddress erőforráson. További információkért lásd: [– címfeloldási DNS konfigurálása az Azure-ban üzemeltetett szolgáltatások](../dns/dns-reverse-dns-for-azure-services.md).
+A PTR-rekordok Microsoft tulajdonú zónákban való konfigurálásához használja a-ReverseFqdn tulajdonságot a PublicIpAddress-erőforráson. További információkért lásd: [fordított DNS konfigurálása az Azure-ban üzemeltetett szolgáltatásokhoz](../dns/dns-reverse-dns-for-azure-services.md).
 
-A PTR-rekordok konfigurálásakor győződjön meg arról, hogy az IP-cím és a fordított teljes Tartománynevet az előfizetés tulajdonosa. Ha fordított teljes tartománynév, amely nem tartozik az előfizetés beállításához, a következő hibaüzenet jelenhet meg:
+A PTR-rekordok konfigurálásakor győződjön meg arról, hogy az előfizetés tulajdonosa az IP-cím és a fordított FQDN. Ha olyan fordított FQDN-t próbál beállítani, amely nem tartozik az előfizetéshez, a következő hibaüzenet jelenik meg:
 
     Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
                         
-    1) Fordított teljes tartománynév egyezik a az előfizetéshez tartozó nyilvános IP-cím erőforrás teljes tartományneve
-    2) Fordított teljes tartománynév feloldása egy olyan teljes tartománynevét (a CName rekordok lánc) bármely nyilvános IP-cím erőforráshoz az előfizetés;
-    3) Az ip-címet (CName és A rekordok lánc) az előfizetéshez tartozó statikus nyilvános IP-cím erőforrás legyen hozzárendelve.
+    1) A ReverseFqdn az előfizetés alá tartozó nyilvános IP-erőforrások teljes tartománynevére illeszkedik.
+    2) A ReverseFqdn az előfizetés alá tartozó nyilvános IP-erőforrások teljes tartománynevét (CName rekordok láncán keresztül) oldja fel.
+    3) A szolgáltatás az előfizetés alatt egy statikus nyilvános IP-erőforrás IP-címére (CName és A rekordok láncán keresztül) oldódik fel.
 
-Ha manuálisan módosítja az alapértelmezett megfelelően az SMTP szalagcím fordított teljes tartománynév, a távoli levelezési kiszolgáló továbbra is sikertelen, mert a, előfordulhat, hogy várhatóan az MX-rekord a tartomány megfelelően hostitel SMTP szalagcím.
+Ha az SMTP-szalagcímet manuálisan módosítja az alapértelmezett fordított FQDN-ként, akkor a távoli levelezési kiszolgáló továbbra is meghiúsulhat, mert várható, hogy az SMTP-szalagcím gazdagépe megfelel a tartomány MX-rekordjának.

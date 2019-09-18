@@ -1,5 +1,5 @@
 ---
-title: Webes API védelme az Azure AD-vel | Microsoft Docs
+title: 'Gyors útmutató: Webes API-k biztonságossá tétele Azure Active Directory'
 description: Megtudhatja, hogyan hozhat létre Node.js-alapú REST webes API-t, amely az Azure AD-vel integrálható a hitelesítéshez.
 services: active-directory
 documentationcenter: nodejs
@@ -14,16 +14,16 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: seo-javascript-september2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7307afb2ce9e10326c42f96733d3f80979c4a4b3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545972"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056538"
 ---
-# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Gyors útmutató: Védelem biztosítása webes API-t az Azure Active Directoryval
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Gyors útmutató: Webes API-k biztonságossá tétele Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -106,9 +106,9 @@ Az egyéni konfigurációs beállításokról a [passport-azure-ad](https://gith
 
 ### <a name="implement-the-server"></a>A kiszolgáló megvalósítása
 
-A [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul két hitelesítési stratégiák funkciók: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A cikkben megvalósított kiszolgáló a tulajdonosi stratégiát használja az API-végpont védelmére.
+A [Passport-Azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modul két hitelesítési stratégiát tartalmaz: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) és [tulajdonosi](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratégiák. A cikkben megvalósított kiszolgáló a tulajdonosi stratégiát használja az API-végpont védelmére.
 
-### <a name="step-1-import-dependencies"></a>1\. lépés: Importálja a függőségeket
+### <a name="step-1-import-dependencies"></a>1\. lépés: Függőségek importálása
 
 Hozzon létre egy új fájlt `app.js` néven, és illessze be a következő szöveget:
 
@@ -126,13 +126,13 @@ const
 
 Ebben a kódszakaszban:
 
-- A `restify` és beépülő modulok hivatkozott annak érdekében, hogy a Restify kiszolgáló beállításához.
+- A `restify` és a plugins modulok a Restify-kiszolgáló beállításához vannak hivatkozva.
 - A `passport` és a `passport-azure-ad` modulok felelnek az Azure AD-vel való kommunikációért.
 - A `config` változó inicializálása az előző lépésben létrehozott `config.js` fájl értékeivel történik.
 - A rendszer létrehoz egy tömböt az `authenticatedUserTokens` számára, amely a felhasználói jogkivonatokat tárolja a védett végpontoknak való átadáskor.
 - A `serverPort` a feldolgozó környezet portjából vagy a konfigurációs fájlból lesz meghatározva.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. lépés: Hitelesítési stratégia vezérlőként
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. lépés: Hitelesítési stratégia létrehozása
 
 Amikor beállítja egy végpont védelmét, meg kell adnia egy stratégiát, amely meghatározza, hogy a jelenlegi kérés hitelesített felhasználótól származik-e. Az `authenticatonStrategy` változó itt a `passport-azure-ad` `BearerStrategy` osztályának egyik példánya. Adja hozzá a következő kódot a `require` utasítások után.
 
@@ -173,7 +173,7 @@ server.use(passport.session());
 ```
 Ez a kiszolgáló inicializálva van, és úgy konfigurálták, hogy elemezze az engedélyeztetési fejléceket, majd beállítsa a Passport használatát.
 
-### <a name="step-4-define-routes"></a>4\. lépés: Útvonalak megadása
+### <a name="step-4-define-routes"></a>4\. lépés: Útvonalak meghatározása
 
 Most már meghatározhat útvonalakat, és eldöntheti, hogy melyeket védje az Azure AD-vel. Ez a projekt két olyan útvonalat tartalmaz, ahol a gyökérszint nyitva van, az `/api` útvonal pedig úgy van beállítva, hogy hitelesítést igényeljen.
 

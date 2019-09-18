@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424246"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056067"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Az alkalmazás típusának kiválasztása Azure Active Directory-alkalmazás hozzáadásakor
 
@@ -45,7 +45,7 @@ Az Azure AD-ben az előző négy alkalmazás-típus bármelyike támogatja a kö
 
 - Gyors útmutató **– az** [egyszerű üzembe helyezési lépések](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) követésével gyorsan elsajátíthatja az alkalmazásokat
 
-- **Általános tulajdonságok kezelése** – [közvetlenül mélyhivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) egy alkalmazáshoz, testreszabhatja [az](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) alkalmazások arculatát, vagy letilthatja [az alkalmazást](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
+- **Általános tulajdonságok kezelése** – egy alkalmazásra [mutató közvetlen mély hivatkozás](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) beszerzése, [az alkalmazások arculatának testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) vagy [az alkalmazás letiltása](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) az összes felhasználó számára.
 
 - Felhasználók **és csoportok kezelése** – felhasználókat és csoportokat [rendelhet hozzá](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) vagy [távolíthat el](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) egy alkalmazáshoz, és opcionálisan hozzárendelheti azokat a konkrét alkalmazási szerepköröket, amelyekre ezek a felhasználók és csoportok hozzáférnek
 
@@ -63,13 +63,13 @@ Az Azure AD-ben az előző négy alkalmazás-típus bármelyike támogatja a kö
 
 A következő táblázat ismerteti az előző alkalmazások különböző típusai által támogatott egyszeri bejelentkezést és kiépítési módokat. A táblázat segítségével megtudhatja, hogy melyik alkalmazást kell hozzáadnia egy adott cél támogatásához.
 
-  ![Tábla: Az egyes alkalmazások típusai által támogatott SSO-és üzembe helyezési módok](./media/choose-application-type/table1.png)
+  ![Tábla Az egyes alkalmazások típusai által támogatott SSO-és üzembe helyezési módok](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Egyszeri bejelentkezési mód kiválasztása
 
 Az alábbiakban az Azure AD-alkalmazások támogatott **egyszeri bejelentkezési** módjai láthatók.
 
-- **Azure ad egyszeri bejelentkezés** letiltva – válassza az Azure ad egyszeri bejelentkezés letiltott **egyszeri bejelentkezés üzemmódot** , ha még nem áll készen az alkalmazás integrálására az Azure ad-vel való egyszeri bejelentkezéssel, vagy egyszerűen tesztelheti azt
+- **Azure ad egyszeri bejelentkezés letiltva** – válassza az Azure ad egyszeri bejelentkezés letiltott **egyszeri bejelentkezés üzemmódot** , ha még nem áll készen az alkalmazás integrálására az Azure ad-vel való egyszeri bejelentkezéssel, vagy egyszerűen tesztelheti azt
 
 - **Csatolt bejelentkezés** – ha olyan alkalmazással rendelkezik, amely már kapcsolódik egy meglévő egyszeri bejelentkezési megoldáshoz, akkor válassza a [kapcsolt bejelentkezési](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **egyszeri bejelentkezési módot** , vagy ha csak egy egyszerű hivatkozást szeretne közzétenni a felhasználók számára [ Alkalmazás-hozzáférési panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) vagy [Office 365 Application Launcher](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
@@ -121,14 +121,11 @@ Az alkalmazás egyszeri bejelentkezési módjának beállításához kövesse az
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>Kiépítési mód kiválasztása
 
-- **Manuális** kiépítés – válassza ki a [manuális](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) létesítési módot, ha már van fiókja, vagy az Azure ad-n kívül szeretné kezelni az alkalmazás fiókját.
+- **Manuális kiépítés** – válassza ki a [manuális](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) létesítési módot, ha már van fiókja, vagy az Azure ad-n kívül szeretné kezelni az alkalmazás fiókját.
 
-- **Automatikus** kiépítés – válassza ki az [automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **kiépítési módot** , ha engedélyezni szeretné az automatikus API-alapú üzembe helyezést és/vagy a felhasználói fiókok ezen alkalmazáshoz való kivonását. 
+- **Automatikus kiépítés** – válassza ki az [automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **kiépítési módot** , ha engedélyezni szeretné az automatikus API-alapú üzembe helyezést és/vagy a felhasználói fiókok ezen alkalmazáshoz való kivonását. 
 
-  >[!NOTE]
-  >Ez a beállítás csak az [Azure ad Application Gallery](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal) **Kiemelt** kategóriájában lévő alkalmazásokhoz érhető el.
-
-- **Scim-alapú automatikus** kiépítés – [scim-alapú automatikus](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) kiépítés használata, ha az alkalmazás támogatja a scim protokollt a felhasználók és csoportok változásainak észlelésére, amelyeket a rendszer automatikusan kibocsát az összes integrált alkalmazás változásaihoz Az Azure AD-vel 
+- **Scim-alapú automatikus kiépítés** – [scim-alapú automatikus kiépítés](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) használata, ha az alkalmazás támogatja a scim protokollt a felhasználók és csoportok változásainak észlelésére, amelyeket a rendszer automatikusan kibocsát az összes integrált alkalmazás változásaihoz Az Azure AD-vel 
 
   >[!NOTE]
   >Ez a beállítás nem szerepel a megadott kiépítési módban, de alapértelmezés szerint engedélyezve van az Azure AD-vel integrált összes alkalmazás esetében.
@@ -146,7 +143,7 @@ Az alkalmazás **létesítési** módjának beállításához kövesse az alább
    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
 1. Válassza ki azt az alkalmazást, amelyhez konfigurálni kívánja a létesítést.
-1. Az alkalmazás betöltése után kattintson a  kiépítés lehetőségre az alkalmazás bal oldali navigációs menüjében.
+1. Az alkalmazás betöltése után kattintson a **kiépítés** lehetőségre az alkalmazás bal oldali navigációs menüjében.
 
 ## <a name="next-steps"></a>További lépések
 
