@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: b840f1ce42c9d7e4af8854a2c6bd7fd26f5b88e9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307444"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067610"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre elkészített tartományi referenciák a LUIS-alkalmazáshoz
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -54,10 +54,10 @@ A naptár a személyes találkozókról és a találkozókról szól, nem nyilv�
 Cél neve | Leírás | Példák
 ---------|----------|---------------
  AcceptEventEntry | Fogadjon el egy (n) találkozót/értekezletet/eseményt a naptárban. | Fogadja el a találkozót. <br> Az esemény elfogadása <br> fogadja el a mai találkozót.
- Mégse | Szakítsa meg a folyamatban lévő műveletet a virtuális asszisztens által, például szakítsa meg az értekezlet létrehozásának folyamatát. <br> ***Figyelmeztetés**: Ez a szándék elsősorban a "Mégse" műveletet tartalmazza a naptári forgatókönyvekben. Ha a "Mégse" kifejezésre általános kifejezésre van szüksége, használja a "Mégse" szándékot a **Utilities** tartományban. * | Rendben van, csak szakítsa meg az eseményt. <br> Nem, csak megszakítom a találkozót.
+ Mégse | Szakítsa meg a folyamatban lévő műveletet a virtuális asszisztens által, például szakítsa meg az értekezlet létrehozásának folyamatát. <br> _**Figyelmeztetés**: Ez a szándék elsősorban a "Mégse" műveletet tartalmazza a naptári forgatókönyvekben. Ha a "Mégse" kifejezésre általános kifejezésre van szüksége, használja a "Mégse" szándékot a **Utilities** tartományban._ | Rendben van, csak szakítsa meg az eseményt. <br> Nem, csak megszakítom a találkozót.
  ChangeCalendarEntry | Módosítsa vagy ütemezze át a naptári bejegyzést. | 6 óra újraütemezett találkozó holnaptól 2 óráig <br> Az orvos kinevezésének átütemezett időpontja 5 óráig <br> Az ebédet a Jenny olsonval péntekig újraütemezhetjük. <br> Esemény időpontjának módosítása
  CheckAvailability | Rendelkezésre állási találkozó vagy a felhasználó vagy egy másik személy naptárat az értekezlet található. | Ha van elérhető teljesítéséhez Jim? <br> Azt mutatja, hogy a Carol elérhető holnap. <br> Chris szombat ingyenes van?
- Megerősítés | Erősítse meg, hogy az előző szándékon alapuló műveletet/műveletet hajt végre. <br> ***Figyelmeztetés**: Ez a szándék elsősorban a "Confirm" műveletet tartalmazza a naptári forgatókönyv esetében. Ha több általános kifejezésre van szüksége a "Confirm" (megerősítés) mezőben, használja a "Confirm" szándékot a **segédprogramok** tartományában. *| Ez helyes, hozzon létre egy értekezletet <br> Igen, Köszönjük, hogy csatlakozik a találkozóhoz.
+ Megerősítés | Erősítse meg, hogy az előző szándékon alapuló műveletet/műveletet hajt végre. <br> _**Figyelmeztetés**: Ez a szándék elsősorban a "Confirm" műveletet tartalmazza a naptári forgatókönyv esetében. Ha több általános kifejezésre van szüksége a "Confirm" (megerősítés) mezőben, használja a "Confirm" szándékot a **Utilities** tartományban._| Ez helyes, hozzon létre egy értekezletet <br> Igen, Köszönjük, hogy csatlakozik a találkozóhoz.
  ConnectToMeeting | Kapcsolódjon egy értekezlethez. | Kapcsolódjon a 11:00-es konferenciahíváshoz Andy használatával. <br> Fogadja el a költségvetési értekezlet hívását.
  ContactMeetingAttendees | Lépjen kapcsolatba az értekezlet résztvevőinek. | Mondja el, hogy az értekezlet a 3:00-es értekezlet végén fut. <br> Értesítse a munkatársakat a 8. találkozóról, hogy el kell kezdenie a 8:30-at.
  CreateCalendarEntry | Új egyszeri elem felvétele a naptárba. | Hozzon létre egy értekezletet a problémák megvitatásához. <br> Értekezlet létrehozása aabc@microsoft.com
@@ -69,17 +69,17 @@ Cél neve | Leírás | Példák
  FindCalendarDetail | Tekintse át és jelenítse meg az ütemterv részleteit. | Meg kell adnia nekem a kollégám Paul használatával ütemezett értekezlet részleteit.
  FindDuration | Vizsgálja meg az időtartamot. | Mennyi ideig kell vennem a élelmiszereket? <br> Meddig kell ebédelni?
  FindMeetingRoom | Keresse meg a rendelkezésre álló konferenciatermeket. | Mi felel meg a szobáknak? <br> Egy új értekezlet helye, keresse meg az egyiket.
- GoBack | Lépjen vissza az utolsó lépéshez vagy az elemmel.  <br> ***Figyelmeztetés**: További GoBack általános hosszúságú kimondott szöveg tekintse meg a **segédprogramok** tartományát. * | Előző egy <br> Vissza az utolsó e-mailhez.
- Elutasítás | A felhasználó elutasítja a javasolt virtuális Segédet. <br> ***Figyelmeztetés**: Az általános hosszúságú kimondott szöveg elutasításához tekintse meg a **segédprogramok** tartományát. * | Nem kell beállítani az eseményt. <br> Ebben az időben más dolgom van.
-ShowNext | Keresse meg a következő eseményt. <br> ***Figyelmeztetés**: További ShowNext általános hosszúságú kimondott szöveg tekintse meg a **segédprogramok** tartományát. * | Adja meg a következő eseményt. <br> Mi a következő a naptárban?
- ShowPrevious | Keresse meg az előző eseményt. <br> ***Figyelmeztetés**: További ShowPrevious általános hosszúságú kimondott szöveg tekintse meg a **segédprogramok** tartományát. * | Mi az az ütemterv?
+ GoBack | Lépjen vissza az utolsó lépéshez vagy az elemmel.  <br> _**Figyelmeztetés**: További GoBack általános hosszúságú kimondott szöveg a **segédprogramok** tartománya nyújt további információt._ | Előző egy <br> Vissza az utolsó e-mailhez.
+ Elutasítás | A felhasználó elutasítja a javasolt virtuális Segédet. <br> _**Figyelmeztetés**: Az általános hosszúságú kimondott szöveg a tartalomjegyzék **segédprogramok** tartományában tekintheti meg._ | Nem kell beállítani az eseményt. <br> Ebben az időben más dolgom van.
+ShowNext | Keresse meg a következő eseményt. <br> _**Figyelmeztetés**: További ShowNext általános hosszúságú kimondott szöveg a **segédprogramok** tartománya nyújt további információt._ | Adja meg a következő eseményt. <br> Mi a következő a naptárban?
+ ShowPrevious | Keresse meg az előző eseményt. <br> _**Figyelmeztetés**: További ShowPrevious általános hosszúságú kimondott szöveg a **segédprogramok** tartománya nyújt további információt._ | Mi az az ütemterv?
  TimeRemaining | A következő esemény előtt keresse meg a hátralévő időt. | Megjeleníti, hogy mennyi idő van az értekezletek előtt. <br> A következő értekezlet megkezdése előtti időtartam megjelenítése.
  
 ### <a name="entities"></a>**Szervezetek**
 Entitás neve | Entitás típusa | Leírás | Példák | Tárolóhelyek
 -------|-----------------------|-------------|---------|--------
 ContactName | personName | A partner vagy az értekezlet résztvevője neve. | Találkozzon a **Betsy**-vel. <br>  Ismerkedjen **meg a** következővel: július 3., 19:00. | Betsy <br> Aubrey <br> Amy 
-DestinationCalendar | egyszerű | A cél naptár neve. | ebédelés MOM kedd 12 **személyes** <br> Saját **Google** naptár használata alapértelmezett naptárként. <br> A jóga osztály frissítése a Mon Wed-ra 3 órakor a **személyes** naptár listázása. | Google <br> személyes <br> vállalata számára <br> fő
+DestinationCalendar | egyszerű | A cél naptár neve. | ebédelés MOM kedd 12 **személyes** <br> Saját **Google** naptár használata alapértelmezett naptárként. <br> A jóga osztály frissítése a Mon Wed-ra 3 órakor a **személyes** naptár listázása. | Google <br> Személyes <br> vállalata számára <br> fő
 Duration | datetime | Értekezlet, találkozó vagy hátralévő idő időtartama. | Vegyen fel a Work Calendar Meeting-be Gary segítségével, hogy beszéljen az ösztöndíj részleteiről holnap 11 órakor **20 percre**. <br> Felvétel a naptárba egy esemény a metroban **pénteken, este este 9** órakor | egy óra <br> 2 nap <br> 20 perc 
 EndDate | datetime | Értekezlet vagy találkozó befejezési dátuma. | A koncert hozzáadása a Bass hallban Mary 3 – **Mary 5th** | Mary 5  
 EndTime | datetime | Értekezlet vagy találkozó befejezési időpontja. | teheti 2 30- **három** | három 
@@ -152,7 +152,7 @@ Entitás neve | Entitás típusa | Leírás | Példák | Tárolóhelyek
 Attachment | egyszerű | Az a melléklet, amelyet a felhasználó SMS-ben vagy e-mailben szeretne elküldeni. | **Fájl** küldése a OneNote-ből. <br> A kitakarítási **doc** küldése a Katie-nek. | file <br> doc
 AudioDeviceType | egyszerű | Az audioeszköz típusa (hangszóró, fejhallgató, mikrofon stb.). | Válasz a **kihangosító**használatával. <br> Tárcsázzon újra a **hangszórón**. | Speaker <br> kihangosító <br> Bluetooth
 Category | egyszerű | Az üzenetek vagy e-mailek kategóriájának egyértelmű definícióval kell rendelkeznie az e-mail-rendszeren, például "olvasatlan", "Flag". A Description Description Clear Definition (például "New" és "legutóbbi") nem kategóriák. | Az összes e-mail megjelölése **olvasottként**  <br> Új, **magas prioritású** e-mailek Paul-hoz | fontos <br> magas prioritás <br> olvasás
-ContactAttribute | egyszerű | A felhasználó által megkérdezett kapcsolathoz tartozó attribútum.| Minden, a jövő hónapban megjelenő **születésnapom** ? | születésnapok <br> cím <br> telefonszám
+ContactAttribute | egyszerű | A felhasználó által megkérdezett kapcsolathoz tartozó attribútum.| Minden, a jövő hónapban megjelenő **születésnapom** ? | születésnapok <br> cím <br> Telefonszám
 ContactName | personName  | Egy ügyfél vagy üzenet címzettje neve. | Küldje el az e-mailt a **Stevens** -nek | Stevens
 Date/Time | datetime | A fogadott e-mailek datetime-értéke. | A **mai**e-mail olvasása <br> A **mai napon**e-mailt küldött? <br> ki, **7 órakor**telefonált? | ma <br> holnap
 DestinationPhone | egyszerű | A célként megadott felhasználó szeretne hívni vagy elküldeni egy szöveget a következőnek:. | Hívás kezdeményezése a **házba** <br> szöveges üzenet küldése a **kezdőlapnak** | házon <br> kezdőlap
@@ -164,7 +164,7 @@ SenderName | personName | A feladó neve. | Az e-mail olvasása **David** -ból 
 FromRelationshipName | egyszerű | A küldő kapcsolatának neve. | Üzenet olvasása **apa**-ból. <br> El tudja olvasni az **anya**összes szöveges üzenetét? | Apának <br> MOM 
 Message | egyszerű, minta. Bármely |  Küldendő e-mail vagy szöveges üzenet.  | E-mail küldése – "**elfoglalt vagyok**". | Foglalt
 OrderReference | egyszerű | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. | Mi volt az **utolsó** üzenet, amit küldtem? <br> Olvassa el a **legújabb** Nokia e-mailt. <br> **Új** szöveges üzenetek olvasása. | utolsó <br> legújabb <br> Legutóbbi <br> legújabb
-PositionReference | egyszerű, sorszám | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója.| Mi volt az **első** üzenet, amit küldtem? <br> A **harmadik** egy.| Utónév <br> külső
+PositionReference | egyszerű, sorszám | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója.| Mi volt az **első** üzenet, amit küldtem? <br> A **harmadik** egy.| Első <br> külső
 Telefonszám | Telefonszám | A telefonszám-felhasználó szeretne meghívni vagy elküldeni egy szöveget. | szöveg küldése **4 1 5 6 8 4 5 2 8 4** -re | 3525214446
 RelationshipName | egyszerű | Egy partner vagy üzenet címzettjének kapcsolati neve. | E-mailek a **feleségemnek** | feleségemmel
 SearchTexts | egyszerű, minta. bármilyen | Az e-mailek vagy üzenetek szűréséhez használt szövegek | A "**Surface Pro**" kifejezést tartalmazó e-mailek keresése | Surface Pro
@@ -204,7 +204,7 @@ FromRelationshipName | egyszerű | A küldő kapcsolatának neve. | Üzenet olva
 Message | egyszerű, minta. Bármely |  Küldendő e-mail vagy szöveges üzenet.  | E-mail küldése – "**elfoglalt vagyok**". | Foglalt
 Category | egyszerű | Az üzenetek vagy e-mailek kategóriájának egyértelmű definícióval kell rendelkeznie az e-mail-rendszeren, például "olvasatlan", "Flag". A Description Description Clear Definition (például "New" és "legutóbbi") nem kategóriák. | Az összes e-mail megjelölése **olvasottként**  <br> Új, **magas prioritású** e-mailek Paul-hoz | fontos <br> magas prioritás <br> olvasás
 OrderReference | egyszerű | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója. | Mi volt az **utolsó** üzenet, amit küldtem? <br> Olvassa el a **legújabb** Nokia e-mailt. <br> **Új** szöveges üzenetek olvasása. | utolsó <br> legújabb <br> Legutóbbi <br> legújabb
-PositionReference | egyszerű, sorszám | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója.| Mi volt az **első** üzenet, amit küldtem? <br> A **harmadik** egy.| Utónév <br> külső
+PositionReference | egyszerű, sorszám | Sorszámnál vagy relatív azonosító lekéréséhez elem lista pozíciója.| Mi volt az **első** üzenet, amit küldtem? <br> A **harmadik** egy.| Első <br> külső
 RelationshipName | egyszerű | Egy partner vagy üzenet címzettjének kapcsolati neve. | E-mailek a **feleségemnek** | feleségemmel
 Time | datetime | Time | e-mail küldése **ma este**. | Tonight
 SearchTexts | egyszerű, minta. bármilyen | Az e-mailek vagy üzenetek szűréséhez használt szövegek | A "**Surface Pro**" kifejezést tartalmazó e-mailek keresése | Surface Pro 
@@ -238,7 +238,7 @@ Eszköznév | List | A felhasználó által definiált szöveg az eszközökhöz
 DeviceType | List | Támogatott eszközök. | Fények <br> Légkondicionáló <br> lámpa
 Location | egyszerű | Az eszköz helye vagy helye. | Konyhai<br> Földszinten <br> Hálószoba
 NumericalChange | egyszerű | A beállítás növelésének vagy csökkenésének mértéke. <br> <br> _A tárolóhely csak a turn_up és a turn_down leképezésekkel jelenik meg._ | 3<br> 50%<br>
-OrderReference | ordinal | Ennek a tárolóhelynek a célja az elemek kiválasztásának rögzítése. Jelzi az elem pozícióját egy listán. | Utónév<br> második
+OrderReference | ordinal | Ennek a tárolóhelynek a célja az elemek kiválasztásának rögzítése. Jelzi az elem pozícióját egy listán. | Első<br> második
 Számlálónak | List | A mennyiségi azonosító azt jelzi, hogy egy adott entitás hány példánya van hivatkozva. Például: "all", "every" stb. | Összes<br> Minden<br> Mindenben
 Beállítás | Egyszerű | Annak beállítása, hogy a felhasználó a saját eszközét szeretné beállítani, amely magában foglalja a következőket: jelenet, szint, intenzitás, szín, üzemmód, hőmérséklet, az eszköz állapota. | Kék<br> 72 <br> Intenzitástérkép 
 Példányokat | List | Az az eszköz, amely a felhasználót érdekli. | Hőmérséklet<br> 
@@ -268,7 +268,7 @@ Entitás neve | Entitás típusa | Leírás | Példák
 Text | egyszerű, minta. Bármely | Egy megjegyzés vagy emlékeztető szöveg. | a Stretch walking előtt <br> hosszú futtatású holnap
 Beosztás | egyszerű, minta. Bármely | Megjegyzés címe. | élelmiszerszükségletét <br> Személyek meghívásához <br> TEENDŐ
 CreationDate | datetimeV2 | Ez a tárolóhely akkor használható, ha a felhasználó egy adott dátum/idő ablakon belül létrehozott megjegyzéseket kér. | 
-Számlálónak | List | Amikor egy felhasználó az "all", az "all" vagy az "any" vagy a "bármelyik" elemre vagy egy Megjegyzés összes szövegére vonatkozó műveletet kér. | mind <br> bármilyen <br> minden
+Számlálónak | List | Amikor egy felhasználó az "all", az "all" vagy az "any" vagy a "bármelyik" elemre vagy egy Megjegyzés összes szövegére vonatkozó műveletet kér. | összes <br> Bármely <br> minden
 OrderReference | ordinal | A felhasználó az "első", az "utolsó", a "Next" és az "etc." elemek használatával szeretne műveleteket végezni. | első <br> utolsó
 
 
@@ -386,7 +386,7 @@ LUIS entitás | Entitás típusa | Leírás | Példák
 ------------|-------------|-------------|---------
 ordinal | ordinal | Egy tételhez tartozó sorszám vagy numerikus hivatkozás. | A **második** . <br> **Ezután** .
 number | number | A felhasználó által kiakart elemek mennyisége | A következő **3** elem
-DirectionalReference | egyszerű | Egy hivatkozási pont, ahol a képernyőn egy elem található. | A jobb oldal <br> felső
+DirectionalReference | egyszerű | Egy hivatkozási pont, ahol a képernyőn egy elem található. | A jobb oldal <br> Felső
 
 ## <a name="weather"></a>**Weather**
 Az időjárási tartomány az időjárási feltételek és az olyan tanácsadók ellenőrzésére összpontosít, amelyekben a hely és az idő, illetve az idő időjárási körülmények között van.
@@ -402,14 +402,14 @@ Cél neve | Leírás | Példák
 ### <a name="entities"></a>**Szervezetek**
 LUIS entitás | Entitás típusa | Leírás | Példák
 ------------|-------------|-------------|---------
-Location | földrajz | Az időjárási kérések abszolút vagy implicit helye. | Palo Alto<br>Sanghaj<br>Seattle<br>Delvina<br>
+Location | Földrajz | Az időjárási kérések abszolút vagy implicit helye. | Palo Alto<br>Sanghaj<br>Seattle<br>Delvina<br>
 Date/Time   | datetime | Az időjárás lekérdezésének dátuma vagy időtartama. | November<br>óránként<br>reggel<br>Ezen a hétvégén<br>10 nap<br>
-AdditionalWeatherCondition | list | Az időjárás további leírása, például a szél sebessége vagy iránya. | direction<br>Gyors<br>sebességű
+AdditionalWeatherCondition | list | Az időjárás további leírása, például a szél sebessége vagy iránya. | direction<br>Gyors<br>Sebességű
 Történelmi | egyszerű | A múltbeli időjárási feltételek Leírás szavai, beleértve az átlagot, az elmúlt időszakban megjelenő eseteket. | elmúlt<br>korábbi/korábbi előzmények<br>szezonális<br>legjobb idő<br>valaha rögzített
 PrecipitationUnit | dimenzió | A hó vagy az eső csapadéka. | 5 hüvelyk<br>6 cm
 SuitableFor | egyszerű | Egy időjárási feltétel alá tartozó emberi tevékenység leírása, amely gyakori, amikor a felhasználók az időjárási feltételektől függő tevékenységekre vonatkozó tanácsokat kérdeznek le. | kabát<br>esernyő<br>úszni
 TemperatureUnit |hőmérséklet | hőmérséklet | 18 Celsius<br>7 Kelvin fok
-WeatherRange | egyszerű | A hőmérséklet, a szél és az egyéb időjárási feltételek konkrét feltétele egy adott időtartam alatt | maximum<br>magas<br>alacsony<br>átlagos magas<br>Legmagasabb
+WeatherRange | egyszerű | A hőmérséklet, a szél és az egyéb időjárási feltételek konkrét feltétele egy adott időtartam alatt | maximum<br>Magas<br>alacsony<br>átlagos magas<br>Legmagasabb
 WeatherCondition | egyszerű | Időjárási feltétel leírása | Sunny<br>eső<br>eső<br>hőmérséklet<br>vízisízni<br>gyakori elérésű
 WindDirectionUnit | list | A szél irányának szavai | Észak<br>Dél<br>Kelet<br>Nyugat<br>Északkelet Németország
 
