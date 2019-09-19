@@ -5,6 +5,7 @@ description: Ismerje meg, hogyan hozható létre belső terheléselosztó a Powe
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b864a4bf352c547779bb368650971fa8b805fca7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848545"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090968"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Bevezetés a belső terheléselosztó (klasszikus) PowerShell használatával történő létrehozásába
 
@@ -30,7 +31,7 @@ ms.locfileid: "60848545"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](load-balancer-get-started-ilb-arm-ps.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. [ Ismerje meg, hogyan ](load-balancer-get-started-ilb-arm-ps.md)hajthatja végre ezeket a lépéseket a Resource Manager-modell használatával.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -44,7 +45,7 @@ Egy belső terheléselosztó készletnek, illetve azoknak a kiszolgálóknak a l
 2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat fogják kapni.
 3. Konfigurálja úgy a kiszolgálókat, amelyek a terheléselosztóra fogják küldeni a forgalmat, hogy azt a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>1\. lépés: Egy belső terheléselosztási példány létrehozása
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>1\. lépés: Belső terheléselosztási példány létrehozása
 
 Egy meglévő felhőalapú szolgáltatás vagy egy regionális virtuális hálózat alatt üzembe helyezett felhőalapú szolgáltatás esetében a következő Windows PowerShell-parancsokkal hozhat létre belső terheléselosztási példányt:
 
@@ -59,7 +60,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Vegye figyelembe, hogy az [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) Windows PowerShell-parancsmag ilyen használata a DefaultProbe paraméterkészletet használja. A további paraméterkészletekkel kapcsolatos további információkért lásd: [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>2\. lépés: Végpontok hozzáadása a belső terheléselosztási példány
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>2\. lépés: Végpontok hozzáadása a belső terheléselosztási példányhoz
 
 Például:
 
@@ -75,7 +76,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>3\. lépés: Az új belső terheléselosztási végpontra forgalmukat küldik a kiszolgálók konfigurálása
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>3\. lépés: Konfigurálja úgy a kiszolgálókat, hogy a forgalmat az új belső terheléselosztási végpontra küldjék
 
 Azokat a kiszolgálókat, amelyeknek a forgalmán terheléselosztás történik, úgy kell konfigurálni, hogy a belső terheléselosztási példány új IP-címét (a VIP-címet) használják. Ez az a cím, amelyet a belső terheléselosztási példány figyel. A legtöbb esetben csak hozzá kell adnia egy DNS-rekordot a belső terheléselosztási példány VIP-címéhez, vagy módosítania kell a DNS-rekordot.
 

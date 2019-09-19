@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211876"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086995"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -32,15 +32,16 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 
 ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-> ## <a name="prerequisites"></a>Előfeltételek
-> A minta futtatásához a következőkre lesz szüksége: 
-> - A Java Development Kit (JDK) 8 vagy újabb, illetve Maven.
->
+## <a name="prerequisites"></a>Előfeltételek
+
+A minta futtatásához a következőkre lesz szüksége: 
+- A Java Development Kit (JDK) 8 vagy újabb, illetve Maven.
+
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A gyors üzembe helyezési alkalmazás elindításához két lehetőség közül választhat: Express (1. lehetőség) vagy manuális (2. lehetőség)
 > 
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. módszer: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
 >
 > 1. Nyissa meg a [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
@@ -105,7 +106,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 > 1. Az alkalmazás tulajdonságainak cseréje
 >   1. Megkeresheti `aad.clientId` és frissítheti `Enter_the_Application_Id_here` a regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét. 
 >   1. A `aad.authority` regisztrált alkalmazás **címtár-(bérlői) azonosító** értékének megkeresése és frissítése `Enter_the_Tenant_Name_Here` .
->   1. Megkeresheti `aad.secretKey` és frissítheti `Enter_the_Client_Secret_Here` a tanúsítványokban létrehozott **&** **titkos** kulcs értékét a regisztrált alkalmazáshoz.
+>   1. Megkeresheti `aad.secretKey` és frissítheti `Enter_the_Client_Secret_Here` a **tanúsítványokban létrehozott &** **titkos** kulcs értékét a regisztrált alkalmazáshoz.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. lépés: A kód mintájának futtatása
 1. Futtassa a kód mintát, és nyisson meg egy böngészőt, *http://localhost:8080* és navigáljon a következőhöz:.

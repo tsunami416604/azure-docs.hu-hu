@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569070"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090902"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database kapcsolati problémák és átmeneti hibák használata
 
@@ -29,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan lehet megakadályozni, elhárítani, diagnosztiz
 
 Az átmeneti hiba, amely átmeneti hibának is nevezik, egy mögöttes oka van, amely hamarosan feloldja magát. Az átmeneti hibák esetenként előfordulnak, amikor az Azure-rendszer gyorsan áthelyezi a hardveres erőforrásokat a különböző számítási feladatok egyensúlyának növelése érdekében. Ezeknek az újrakonfigurálási eseményeknek a többsége kevesebb, mint 60 másodperc. Az újrakonfigurálási időszak során előfordulhat, hogy a SQL Database kapcsolódási problémái vannak. Az SQL Databasehoz csatlakozó alkalmazásokat úgy kell felépíteni, hogy elvárják ezeket az átmeneti hibákat. A kezeléséhez az újrapróbálkozási logikát implementálja a kódban, ahelyett, hogy az alkalmazási hibákat felszínre helyezze őket a felhasználók számára.
 
-Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**eldobásával kapcsolatos átmeneti hibáról tájékoztat. Hasonlítsa össze a **Number** tulajdonságot azon átmeneti hibák listájával, amelyek az SQL-hibakódok az [SQL Database ügyfélalkalmazások számára](sql-database-develop-error-messages.md)című cikk elején találhatók.
+Ha az ügyfélalkalmazás a ADO.NET-t használja, a program a **SqlException**eldobásával kapcsolatos átmeneti hibáról tájékoztat. Hasonlítsa össze a **Number** tulajdonságot azon átmeneti hibák listájával, amelyek az [SQL-hibakódok az SQL Database ügyfélalkalmazások számára](sql-database-develop-error-messages.md)című cikk elején találhatók.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -124,7 +125,7 @@ A teszt gyakorlati elvégzéséhez a program felismeri a futásidejű paraméter
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection paraméterek a kapcsolatok újrapróbálkozásához
 
-Ha az ügyfélalkalmazás a .NET-keretrendszer **System. SqlClient. SqlConnection**használatával csatlakozik a SQL Databasehoz, használja a .net 4.6.1-es vagy újabb verzióját (vagy a .net Core-ot), hogy használhassa a kapcsolati újrapróbálkozási funkciót. A szolgáltatással kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)a weblapot.
+Ha az ügyfélalkalmazás a .NET-keretrendszer **System. SqlClient. SqlConnection**használatával csatlakozik a SQL Databasehoz, használja a .net 4.6.1-es vagy újabb verzióját (vagy a .net Core-ot), hogy használhassa a kapcsolati újrapróbálkozási funkciót. A szolgáltatással kapcsolatos további információkért tekintse meg [ezt a weblapot](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -134,7 +135,7 @@ Amikor létrehozza a **SqlConnection** objektumhoz tartozó [kapcsolódási kara
 
 - **ConnectRetryCount**&nbsp;:&nbsp;az alapértelmezett érték 1. A tartomány 0 és 255 között van.
 - **ConnectRetryInterval**&nbsp;:&nbsp;az alapértelmezett érték 10 másodperc. A tartomány értéke 1 – 60.
-- **Kapcsolat**időtúllépése&nbsp;:&nbsp;az alapértelmezett érték 15 másodperc. A tartomány 0 és 2147483647 között van.
+- **Kapcsolat időtúllépése**:&nbsp;&nbsp;az alapértelmezett érték 15 másodperc. A tartomány 0 és 2147483647 között van.
 
 Pontosabban a kiválasztott értékeknek a következő egyenlőséget kell elvégezniük: Kapcsolat időtúllépése = ConnectRetryCount * ConnectionRetryInterval
 
@@ -210,7 +211,7 @@ Ha a program ADO.NET-osztályokat használ, például a **System. SqlClient. Sql
 
 Ha egy kapcsolódási készletből használ egy kapcsolódási objektumot, azt javasoljuk, hogy a program átmenetileg zárja be a kapcsolódást, ha nem azonnal használatban van. Nem drága a kapcsolatok újbóli megnyitása, de új kapcsolatok létrehozása.
 
-Ha a ADO.NET 4,0-es vagy korábbi verzióját használja, javasoljuk, hogy frissítsen a legújabb ADO.NET. Augusztus 2018-én letöltheti a [ADO.net 4.6.2](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
+Ha a ADO.NET 4,0-es vagy korábbi verzióját használja, javasoljuk, hogy frissítsen a legújabb ADO.NET. Augusztus 2018-én [letöltheti a ADO.net 4.6.2](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Néhány visszaadott sor a sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Néhány visszaadott sor a sys. fn_xe_telemetry_blob_target_read_file
 
 Az alábbi példa azt szemlélteti, hogy a visszaadott sor milyen módon nézhet ki. A megjelenített null értékek gyakran nem null értékűek más sorokban.
 
@@ -353,9 +354,9 @@ A **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport
 
 Íme néhány hivatkozás a EntLib60 kapcsolatos információkra:
 
-- Ingyenes könyv letöltése: [Fejlesztői útmutató a Microsoft Enterprise Library 2](https://www.microsoft.com/download/details.aspx?id=41145). kiadásához.
-- Ajánlott eljárások: Az újrapróbálkozások [általános útmutatója](../best-practices-retry-general.md) részletesen ismerteti az újrapróbálkozási logikát.
-- NuGet letöltése: [Enterprise Library – átmeneti hiba az alkalmazás 6,0-](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)es blokkjában.
+- Ingyenes könyv letöltése: [Fejlesztői útmutató a Microsoft Enterprise Library 2. kiadásához](https://www.microsoft.com/download/details.aspx?id=41145).
+- Ajánlott eljárások: Az [újrapróbálkozások általános útmutatója](../best-practices-retry-general.md) részletesen ismerteti az újrapróbálkozási logikát.
+- NuGet letöltése: [Enterprise Library – átmeneti hiba az alkalmazás 6,0-es blokkjában](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 

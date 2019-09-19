@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918554"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034127"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -40,7 +40,7 @@ Ez a konfiguráció a következő viselkedést teszi lehetővé:
 
 A következő ábrán a zöld vonalak a virtuális hálózat DNS-utótagjának végét képező erőforrásokra vonatkozó kérések. A kék vonalak a helyszíni hálózaton vagy a nyilvános interneten található erőforrásokra vonatkozó kérések.
 
-![A dokumentumban használt konfigurációban a DNS-kérelmek feloldásának ábrája](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![A DNS-kérelmek konfigurációban való feloldásának ábrája](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +96,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Subnet | Válassza ki a korábban létrehozott virtuális hálózat alapértelmezett alhálózatát. Ne __válassza ki__ a VPN-átjáró által használt alhálózatot.|
     |Nyilvános IP-cím | Használja az automatikusan feltöltött értéket.  |
 
-    ![Virtuális hálózati beállítások](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight virtuális hálózati beállításai](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Hagyja meg az egyéb bejegyzéseket az alapértelmezett értékeken, majd válassza a **felülvizsgálat + létrehozás**elemet.
 

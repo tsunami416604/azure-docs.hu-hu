@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901762"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091100"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -58,7 +58,7 @@ További információért lásd a globális társítás [követelményeit és ko
 Ha a virtuális hálózatokat különböző előfizetésekben vagy Active Directory-bérlőben lévő virtuális hálózatokhoz szeretné konfigurálni, kövesse a társítás [létrehozása az Azure CLI-hez különböző előfizetésekben](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakör lépéseit.
 
 > [!Note]
-> A hálózati társítás konfigurálásához a hálózat **közreműködői** engedélyekkel kell rendelkeznie mindkét előfizetésben. További információ: [egyenrangú engedélyek](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions).
+> A hálózati társítás konfigurálásához a hálózat **közreműködői** engedélyekkel kell rendelkeznie mindkét előfizetésben. További információ: [egyenrangú engedélyek](virtual-network-manage-peering.md#permissions).
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>2\. forgatókönyv: A virtuális hálózati topológia konfigurálása a helyi erőforrásokat használó sugaras topológiával
 
@@ -104,7 +104,7 @@ Ha többet szeretne megtudni a globálisan megjelenő követelményekről és a 
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>4\. forgatókönyv: Kapcsolati probléma van két, egymástól független virtuális hálózat között
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions). Válassza ki a virtuális hálózatot, válassza a **társítás lehetőséget,** majd jelölje be az **állapot** mezőt. Mi az az állapot?
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](virtual-network-manage-peering.md#permissions). Válassza ki a virtuális hálózatot, válassza a **társítás lehetőséget,** majd jelölje be az **állapot** mezőt. Mi az az állapot?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>1\. kapcsolattípus: Az egyenrangú állapot a "Connected"
 

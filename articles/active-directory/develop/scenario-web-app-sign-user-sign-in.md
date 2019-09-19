@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 4ed61a09ffc76b4813dcb97330d3a1a436aa16eb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812395"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086455"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Felhasználók bejelentkezési webalkalmazása – bejelentkezés
 
@@ -38,15 +38,31 @@ A webalkalmazásnak is át kell irányítani a felhasználót a Microsoft `logou
 
 További információért lásd a [kijelentkezési kérelem küldése](v2-protocols-oidc.md#send-a-sign-out-request) szakaszt a [Microsoft Identity platform és az OpenID Connect protokoll](v2-protocols-oidc.md) fogalmi dokumentációjában.
 
-## <a name="application-registration"></a>Alkalmazás regisztrálása
+### <a name="application-registration"></a>Alkalmazás regisztrálása
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Az alkalmazás regisztrálása során regisztrálva lesz egy **utólagos kijelentkezési URI**. Az oktatóanyagban a **hitelesítés** lap `https://localhost:44321/signout-oidc` **Speciális beállítások** szakaszának **kijelentkezési URL-címe** mezőjében regisztrálta a regisztrációt. Részletekért lásd: [a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
 
-## <a name="aspnet-core-code"></a>ASP.NET Core kód
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-### <a name="signout-button"></a>Kijelentkezés gomb
+Az alkalmazás regisztrálása során regisztrálva lesz egy **utólagos kijelentkezési URI**. Az oktatóanyagban a **hitelesítés** lap `https://localhost:44308/Account/EndSession` **Speciális beállítások** szakaszának **kijelentkezési URL-címe** mezőjében regisztrálta a regisztrációt. Részletekért lásd: [a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)
 
-A kijelentkezés gomb ki van téve `Views\Shared\_LoginPartial.cshtml` a szolgáltatásban, és csak akkor jelenik meg, ha van egy hitelesített fiók (ha a felhasználó korábban bejelentkezett).
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Az alkalmazás regisztrálása során regisztrálnia kell egy **utólagos kijelentkezési URI**-t. Az oktatóanyagban a **hitelesítés** lap `http://localhost:8080/msal4jsample/` **Speciális beállítások** szakaszának **kijelentkezési URL-címe** mezőjében regisztrálta a regisztrációt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Az alkalmazás regisztrálása során nem kell regisztrálnia a kijelentkezési URL-címet. A minta nem valósít meg globális kijelentkezést
+
+---
+
+### <a name="sign-out-button"></a>Kijelentkezés gomb
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+ASP.net Core a kijelentkezési gomb `Views\Shared\_LoginPartial.cshtml` a és csak akkor jelenik meg, ha van egy hitelesített fiók (azaz amikor a felhasználó korábban bejelentkezett).
 
 ```html
 @using Microsoft.Identity.Web
@@ -65,9 +81,89 @@ else
 }
 ```
 
-### <a name="signout-action-of-the-accountcontroller"></a>`Signout()`a művelet`AccountController`
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Ha megnyomja a **kijelentkezés** gombot a webalkalmazásban, `SignOut` elindítja `Account` a műveletet a vezérlőn. A ASP.net Core-sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be, de ez már nem jelent meg, mert már része a ASP.net Core-keretrendszernek. 
+A ASP.net MVC-ben a kijelentkezési gomb `Views\Shared\_LoginPartial.cshtml` megjelenik, és csak akkor jelenik meg, ha van egy hitelesített fiók (vagyis amikor a felhasználó korábban bejelentkezett).
+
+```html
+@if (Request.IsAuthenticated)
+{
+    <text>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-text">
+                Hello, @User.Identity.Name!
+            </li>
+            <li>
+                @Html.ActionLink("Sign out", "SignOut", "Account")
+            </li>
+        </ul>
+    </text>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java gyors útmutatóban a kijelentkezés gomb a main/resources/templates/auth_page.html fájlban található.
+
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form action="/msal4jsample/sign_out">
+    <input type="submit" value="Sign out">
+</form>
+...
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python rövid útmutatójában a kijelentkezési gomb a [templates/Display.html](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e1199b4c3cdcb637cf0d8306832efbd85492e123/templates/display.html#L18-L20) fájlban található.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acquire Token Result </title>
+</head>
+<body>
+    {% if cond  %}
+        <p1><b>Your information</b> </p1>
+        <table>
+        {% for key, value in auth_result.items() %}
+           <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+           </tr>
+        {% endfor %}
+        </table>
+        <form action="/logout" >
+            <input type="submit" value=" Logout"/>
+        </form>
+    {% else %}
+        <p1><b> {{auth_result}} </b> </p1>
+        <form action="/authenticate" >
+            <input type="submit" value=" Sign-in"/>
+        </form>
+    {% endif %}
+</body>
+</html>
+```
+
+---
+
+### <a name="signout-action-of-the-controller"></a>`Signout()`a vezérlő művelete
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+A ASP.net a webalkalmazásban a **kijelentkezés** gomb megnyomásával elindítja `SignOut` a műveletet `AccountController` a vezérlőn. A ASP.net Core-sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be, de már nem ez a helyzet, mert már része a ASP.net Core-keretrendszernek.
 
 A kód `AccountController` a ASP.net Core adattárból érhető el a [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs)-ból. A fiókok felügyelete:
 
@@ -75,37 +171,11 @@ A kód `AccountController` a ASP.net Core adattárból érhető el a [AccountCon
 - Meghívások `Signout()`, amelyek lehetővé teszi, hogy a OpenIdConnect köztes kapcsolat a Microsoft Identity platform `logout` végpontján keresztül lépjen kapcsolatba:
 
   - Törli a munkamenet-cookie-t a böngészőből, és
-  - A hívások végül a **kijelentkezési URL-t**kérik vissza, amely alapértelmezés szerint megjeleníti a kijelentkezett nézet [SignedOut. html fájlt](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) , amely a ASP.net Core részeként is elérhető.
+  - Végül a **kijelentkezési URL-címet**hívja vissza, amely alapértelmezés szerint megjeleníti a kijelentkezett nézetet a [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) ASP.net Core részeként is.
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>A `logout` végpontra irányuló hívás elfogása
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.net Core OpenIdConnect middleware lehetővé teszi, hogy az alkalmazás elhallgassa a hívást a `logout` Microsoft Identity platform végpontján egy nevű `OnRedirectToIdentityProviderForSignOut`OpenIdConnect-esemény biztosításával. A webalkalmazás használatával megkísérli elkerülni a fiók kiválasztása párbeszédpanelt, hogy a rendszer kijelentkezéskor megjelenítse a felhasználót. Ez a feltartóztatás az újrafelhasználható `AddAzureAdV2Authentication` függvénytárban `Microsoft.Identity.Web` történik. Lásd: [StartupHelpers.cs L58 – L66](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/b87a1d859ff9f9a4a98eb7b701e6a1128d802ec5/Microsoft.Identity.Web/StartupHelpers.cs#L58-L66)
-
-```CSharp
-public static IServiceCollection AddAzureAdV2Authentication(this IServiceCollection services,
-                                                            IConfiguration configuration)
-{
-    ...
-    services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-    {
-        ...
-        options.Authority = options.Authority + "/v2.0/";
-        ...
-        // Attempt to avoid displaying the select account dialog when signing out
-        options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-        {
-            var user = context.HttpContext.User;
-            context.ProtocolMessage.LoginHint = user.GetLoginHint();
-            context.ProtocolMessage.DomainHint = user.GetDomainHint();
-            await Task.FromResult(0);
-        };
-    }
-}
-```
-
-## <a name="aspnet-code"></a>ASP.NET Code
-
-A ASP.NET-ben a kijelentkezés a kijelentkezés () metódusból aktiválódik a vezérlőn (például AccountController). Ez a metódus nem része a ASP.NET-keretrendszernek (ellentétben a ASP.NET Core), és nem használja az aszinkron használatát, ezért:
+A ASP.net-ben a kijelentkezés a `SignOut()` vezérlő metódusa alapján történik (például AccountController). Ez a metódus nem része a ASP.NET-keretrendszernek (ellentétben a ASP.NET Core). Nem használja `async`, és ezért:
 
 - OpenId-kijelentkezési kihívás küldése
 - a gyorsítótár kiürítése
@@ -120,14 +190,84 @@ public void SignOut()
  HttpContext.GetOwinContext()
             .Authentication
             .SignOut(CookieAuthenticationDefaults.AuthenticationType);
- MsalAppBuilder.ClearUserTokenCache();
  Response.Redirect("/");
 }
 ```
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java-ban a kijelentkezés a Microsoft Identity platform kijelentkezési végpontjának közvetlen meghívásával és a post_logout_redirect_uri biztosításával kezelhető.
+
+```Java
+@RequestMapping("/msal4jsample/sign_out")
+    public void signOut(HttpServletRequest httpRequest, HttpServletResponse response) throws IOException {
+
+        httpRequest.getSession().invalidate();
+
+        String endSessionEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/logout";
+
+        String redirectUrl = "http://localhost:8080/msal4jsample/";
+        response.sendRedirect(endSessionEndpoint + "?post_logout_redirect_uri=" +
+                URLEncoder.encode(redirectUrl, "UTF-8"));
+    }
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/logout")
+def logout():
+    return flask.redirect(flask.url_for('index'))
+```
+
+---
+
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>A `logout` végpontra irányuló hívás elfogása
+
+A kilépés utáni URI lehetővé teszi, hogy az alkalmazások részt vegyenek a globális kijelentkezésben.
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+A ASP.net Core OpenIdConnect middleware lehetővé teszi, hogy az alkalmazás elhallgassa a hívást a `logout` Microsoft Identity platform végpontján egy nevű `OnRedirectToIdentityProviderForSignOut`OpenIdConnect-esemény biztosításával. Tekintse meg a [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) című példát, amely bemutatja, hogyan fizethet elő erre az eseményre (a jogkivonat-gyorsítótár törléséhez)
+
+```CSharp
+               // Handling the global sign-out
+                options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
+                {
+                    // Forget about the signed-in user
+                };
+```
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+A ASP.NET delegálja a köztes kapcsolatot a kijelentkezés végrehajtásához, törölje a munkamenet cookie-jait:
+
+```CSharp
+public class AccountController : Controller
+{
+ ...
+ public void EndSession()
+ {
+  Request.GetOwinContext().Authentication.SignOut();
+  Request.GetOwinContext().Authentication.SignOut(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ApplicationCookie);
+  this.HttpContext.GetOwinContext().Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
+ }
+}
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java gyors útmutatóban a kijelentkezési átirányítás URI-ja csak az index. html lapot jeleníti meg. 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python rövid útmutatójában a kijelentkezési átirányítás URI-ja csak az index. html lapot jeleníti meg.
+
+---
+
 ## <a name="protocol"></a>Protocol
 
-Ha nem szeretne ASP.NET Core vagy ASP.NET használni, tekintse meg a protokoll dokumentációját, amely elérhető az [Open ID csatlakozás](./v2-protocols-oidc.md)lehetőségnél.
+Ha többet szeretne megtudni a kijelentkezésről, olvassa el a protokoll dokumentációját, amely elérhető az [Open ID csatlakozás](./v2-protocols-oidc.md)lehetőségnél.
 
 ## <a name="next-steps"></a>További lépések
 

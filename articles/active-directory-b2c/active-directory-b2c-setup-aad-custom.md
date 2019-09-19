@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c8efc4b7bbee6b3209160b570e3e70bfccfc72e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964503"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065310"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Azure Active Directory fiókkal egyéni házirendek használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy Azure Active Directory (Azure AD) szervezet felhasználói számára az Azure Active Directory (Azure AD) B2C-ben lévő [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) használatával.
+Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Azure Active Directory (Azure AD) szervezet felhasználói számára Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](active-directory-b2c-overview-custom.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 

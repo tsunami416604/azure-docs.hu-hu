@@ -5,24 +5,25 @@ services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 8b24c7517402aa6f29c95c0cd0f58bb1d51e1082
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876466"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091736"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight gyorsított írások az Apache HBase
 
-Ez a cikk a gyorsított **írások** funkciójának hátterét mutatja be az Apache HBase az Azure HDInsight, valamint azt, hogy miként használható hatékonyan az írási teljesítmény javítása érdekében. A gyorsított írások az [Azure Premium SSD Managed Disks](../../virtual-machines/linux/disks-types.md#premium-ssd) használatával javítják az Apache HBase Write Ahead log (Wal) teljesítményét. Ha többet szeretne megtudni az Apache HBase, olvassa el a [Mi az Apache HBase a HDInsight-ben](apache-hbase-overview.md)című témakört.
+Ez a cikk a **gyorsított írások** funkciójának hátterét mutatja be az Apache HBase az Azure HDInsight, valamint azt, hogy miként használható hatékonyan az írási teljesítmény javítása érdekében. A **gyorsított írások** az [Azure Premium SSD Managed Disks](../../virtual-machines/linux/disks-types.md#premium-ssd) használatával javítják az Apache HBase Write Ahead log (Wal) teljesítményét. Ha többet szeretne megtudni az Apache HBase, olvassa el a [Mi az Apache HBase a HDInsight-ben](apache-hbase-overview.md)című témakört.
 
 ## <a name="overview-of-hbase-architecture"></a>A HBase architektúra áttekintése
 
 A HBase-ben egy **sor** egy vagy több **oszlopból** áll, és egy **sor kulcs**azonosítja. Több sor alkot egy **táblát**. Az oszlopok **cellákat**tartalmaznak, amelyek az oszlopban szereplő érték időbélyegzős verziói. Az oszlopok **oszlopos családokba**vannak csoportosítva, és egy adott oszlopban lévő összes oszlop együtt tárolódik a **HFiles**nevű tárolási fájlokban.
 
-Az adatfeldolgozási terhelés kiegyensúlyozására a HBase régióit használják. A HBase először a tábla sorait tárolja egyetlen régióban. A sorok több régióban oszlanak el, mivel a tábla adatai mennyisége növekszik. A **régió-kiszolgálók** több régióban is kezelhetik a kérelmeket.
+Az adatfeldolgozási terhelés kiegyensúlyozására a HBase **régióit** használják. A HBase először a tábla sorait tárolja egyetlen régióban. A sorok több régióban oszlanak el, mivel a tábla adatai mennyisége növekszik. A **régió-kiszolgálók** több régióban is kezelhetik a kérelmeket.
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Írási napló az Apache HBase
 
@@ -36,7 +37,7 @@ A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést,** a tárterületet. A **Metaadattár beállításai**területen kattintson a **gyorsított írások engedélyezése (előzetes verzió)** elem melletti jelölőnégyzetre. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
+Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai**területen kattintson a **gyorsított írások engedélyezése (előzetes verzió)** elem melletti jelölőnégyzetre. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
 ![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

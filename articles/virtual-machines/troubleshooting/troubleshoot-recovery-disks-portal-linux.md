@@ -4,7 +4,7 @@ description: A Linux rendszerű virtuális gépekkel kapcsolatos hibák elhárí
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 2dcd2009d93fdf39d1221f2a2f5354fe68658077
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 87b4d761eb7bd1c4a16998e44e8160cda24a05b4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103365"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088250"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez csatolásával a Azure Portal használatával
 Ha a linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatti hibát észlel, lehetséges, hogy a virtuális merevlemezen hibaelhárítási lépéseket kell végrehajtania. Egy gyakori példa lehet egy olyan bejegyzés, `/etc/fstab` amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan lehet a Azure Portal használatával összekapcsolni a virtuális merevlemezt egy másik linuxos virtuális géppel a hibák elhárítása érdekében, majd újból létre kell hoznia az eredeti virtuális gépet.
@@ -39,7 +39,7 @@ A hibaelhárítási folyamat a következő:
 ## <a name="determine-boot-issues"></a>Rendszerindítási problémák meghatározása
 Vizsgálja meg a rendszerindítási diagnosztika és a virtuális gép képernyőképét annak meghatározásához, hogy a virtuális gép miért nem tud megfelelően elindulni. Gyakori például `/etc/fstab`, hogy a bejegyzés érvénytelen, vagy egy mögöttes virtuális merevlemez törölve vagy áthelyezve lett.
 
-Válassza ki a virtuális gépet a portálon, majd görgessen le a **támogatás + hibaelhárítás** szakaszhoz. Kattintson a rendszerindítási **diagnosztika** elemre a virtuális gépről továbbított konzol üzeneteinek megtekintéséhez. Tekintse át a konzol naplóit, és ellenőrizze, hogy a virtuális gép miért nem fog problémát észlelni. Az alábbi példa egy olyan virtuális gépet mutat be, amely kézi interakciót igénylő karbantartási módban ragadt:
+Válassza ki a virtuális gépet a portálon, majd görgessen le a **támogatás + hibaelhárítás** szakaszhoz. Kattintson a **rendszerindítási diagnosztika** elemre a virtuális gépről továbbított konzol üzeneteinek megtekintéséhez. Tekintse át a konzol naplóit, és ellenőrizze, hogy a virtuális gép miért nem fog problémát észlelni. Az alábbi példa egy olyan virtuális gépet mutat be, amely kézi interakciót igénylő karbantartási módban ragadt:
 
 ![VIRTUÁLIS gépek rendszerindítási diagnosztikai konzoljának naplófájljainak megtekintése](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
@@ -158,7 +158,7 @@ A hibák megoldása után válassza le a meglévő virtuális merevlemezt a hiba
     sudo umount /dev/sdc1
     ```
 
-2. Most válassza le a virtuális merevlemezt a virtuális gépről. Válassza ki a virtuális gépet a portálon, és kattintson a **lemezek**elemre. Válassza ki a meglévő virtuális merevlemezt, majdkattintson a Leválasztás elemre:
+2. Most válassza le a virtuális merevlemezt a virtuális gépről. Válassza ki a virtuális gépet a portálon, és kattintson a **lemezek**elemre. Válassza ki a meglévő virtuális merevlemezt, majd kattintson a **Leválasztás**elemre:
 
     ![Meglévő virtuális merevlemez leválasztása](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 

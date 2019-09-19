@@ -3,7 +3,7 @@ title: Azure Állapotmonitor v2 – részletes utasítások | Microsoft Docs
 description: Részletes utasítások a Állapotmonitor v2 első lépéseihez. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326282"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057850"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Állapotmonitor v2: Részletes utasítások
 
@@ -165,7 +165,7 @@ Ha bármilyen okból nem tud csatlakozni a PowerShell-modulhoz, akkor manuálisa
 2. Válassza ki a fájl legújabb verzióját az **verziótörténete** táblában.
 3. A **telepítési beállítások**alatt válassza a **manuális Letöltés**lehetőséget.
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>1\. lehetőség: Telepítés PowerShell-modulok könyvtárába
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>1\. módszer: Telepítés PowerShell-modulok könyvtárába
 Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
 További információ: PowerShell- [modul telepítése](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
@@ -222,7 +222,7 @@ A telepítési parancsfájlok írásakor tekintse át a fenti utasításokat.
 A Application Insights SDK-nak el kell küldenie az alkalmazás telemetria a Microsoftnak. Javasoljuk, hogy konfigurálja az alkalmazás proxybeállításait a web. config fájlban. További információt [a Application Insights gyakori kérdések: Proxy átengedése](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
-## <a name="enable-monitoring"></a>Monitorozás engedélyezése
+## <a name="enable-monitoring"></a>Figyelés engedélyezése
 
 A parancs `Enable-ApplicationInsightsMonitoring` használatával engedélyezze a figyelést.
 

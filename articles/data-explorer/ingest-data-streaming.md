@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843873"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090634"
 ---
 # <a name="streaming-ingestion-preview"></a>Folyamatos átvitel (előzetes verzió)
 
@@ -41,8 +41,9 @@ Az adatfolyamok betöltése helyett a klasszikus (tömeges) betöltést használ
  
 1. A [webes felhasználói felületen](https://dataexplorer.azure.com/)adja meg az adatfolyam-betöltési [szabályzatot](/azure/kusto/concepts/streamingingestionpolicy) olyan táblázat (ok) ra vagy adatbázis (ok) ra, amely a folyamatos átviteli adatot fogja fogadni. 
 
-    > [!TIP]
-    > Ha a házirend az adatbázis szintjén van meghatározva, a rendszer az adatbázisban lévő összes táblát engedélyezi a folyamatos átvitelhez.
+    > [!NOTE]
+    > * Ha a házirend az adatbázis szintjén van meghatározva, a rendszer az adatbázisban lévő összes táblát engedélyezi a folyamatos átvitelhez.
+    > * Az alkalmazott házirend csak az újonnan betöltött adatmennyiségre és az adatbázis más tábláira hivatkozhat.
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Adatfolyamok betöltésének használata a fürtön tárolt adatbevitelhez
 

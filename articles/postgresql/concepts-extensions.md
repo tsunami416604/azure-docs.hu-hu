@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: 04b17d2e3acba7f003325ca7fdef2107108aea4d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 09/10/2019
+ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013417"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091142"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -44,6 +44,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[helytelen átvitt](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | a nemzetközi termékek számozási szabványainak adattípusai|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | A függvények és csomagok egy részhalmazát emuláló függvények és operátorok kereskedelmi RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
@@ -88,6 +89,7 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[helytelen átvitt](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | A függvények és csomagok egy részhalmazát emuláló függvények és operátorok kereskedelmi RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
@@ -133,6 +135,7 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[helytelen átvitt](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | A függvények és csomagok egy részhalmazát emuláló függvények és operátorok kereskedelmi RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
@@ -178,6 +181,7 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 > |[helytelen átvitt](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | a nemzetközi termékek számozási szabványainak adattípusai|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | A függvények és csomagok egy részhalmazát emuláló függvények és operátorok kereskedelmi RDBMS|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | sor szintű zárolási információk megjelenítése|
@@ -213,13 +217,16 @@ A Azure Database for PostgreSQL kimenő kapcsolatai jelenleg nem támogatottak, 
 Ha az UUID-ossp bővítményből tervezi használni a használatát, érdemes lehet `uuid_generate_v4()` `gen_random_uuid()` összehasonlítást alkalmazni a pgcrypto-bővítménnyel a teljesítménnyel kapcsolatos előnyökhöz.
 
 
+## <a name="pgaudit"></a>pgAudit
+Az pgAudit bővítmény munkamenet-és objektum-naplózási naplózást biztosít. Ha meg szeretné tudni, hogyan használhatja ezt a bővítményt Azure Database for PostgreSQLban, tekintse meg a [naplózási fogalmakat ismertető cikket](concepts-audit.md). 
+
 ## <a name="timescaledb"></a>TimescaleDB
 A TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-bővítményként van csomagolva. A TimescaleDB időalapú analitikai funkciókat, optimalizálásokat és skálázási postgres biztosít az idősoros számítási feladatokhoz.
 
 [További információ a TimescaleDB-ről](https://docs.timescale.com/latest): az [időskála, Inc.](https://www.timescale.com/) bejegyzett védjegye.
 
 ### <a name="installing-timescaledb"></a>A TimescaleDB telepítése
-A TimescaleDB telepítéséhez fel kell vennie azt a kiszolgáló megosztott előtelepítő könyvtáraiba. A postgres `shared_preload_libraries` paraméterének módosítása a **kiszolgáló** újraindítását igényli. A paramétereket a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával módosíthatja.
+A TimescaleDB telepítéséhez fel kell vennie azt a kiszolgáló megosztott előtelepítő könyvtáraiba. A postgres `shared_preload_libraries` paraméterének módosítása a **kiszolgáló újraindítását** igényli. A paramétereket a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával módosíthatja.
 
 > [!NOTE]
 > A TimescaleDB a 9,6-es és a 10-es Azure Database for PostgreSQL-verziókon engedélyezhető
@@ -244,7 +251,7 @@ Mostantól engedélyezheti a TimescaleDB a postgres-adatbázisban. Kapcsolódjon
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 ```
 > [!TIP]
-> Ha hibaüzenet jelenik meg, ellenőrizze, hogy a shared_preload_libraries mentése után újraindította-e [a kiszolgálót](howto-restart-server-portal.md) . 
+> Ha hibaüzenet jelenik meg, ellenőrizze, hogy a shared_preload_libraries mentése után [újraindította-e a kiszolgálót](howto-restart-server-portal.md) . 
 
 Most már létrehozhat egy TimescaleDB-hypertable [a semmiből](https://docs.timescale.com/getting-started/creating-hypertables) , vagy áttelepítheti a [meglévő idősoros adatok a PostgreSQL-ben](https://docs.timescale.com/getting-started/migrating-data).
 

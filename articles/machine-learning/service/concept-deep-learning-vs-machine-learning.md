@@ -1,6 +1,6 @@
 ---
 title: Mélyreható tanulás és gépi tanulás
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Ismerkedjen meg a Deep learning és a Machine learning szolgáltatással, valamint a mesterséges intelligenciával kapcsolatos fogalmakkal. A mélyreható tanulás olyan helyzetekben alkalmazható, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240960"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035501"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
 
@@ -106,9 +106,9 @@ A többrészes neurális hálózatok olyan területeken lettek felhasználva, mi
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine learning szolgáltatásban](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
+A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 
 - [Kézzel írt számjegyek osztályozása TensorFlow-modell használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Rendszerképek osztályozása Pytorch-modell használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

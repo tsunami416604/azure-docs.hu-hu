@@ -1,7 +1,7 @@
 ---
 title: Mély tanulási neurális hálózat betanítása a Chainer szolgáltatással
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning Chainer kalkulátor-osztályának használatával.  A példa a kézírásos classifis, hogy egy Deep learning neurális hálózatot építsen ki a NumPy-on futó, a láncot használó Python-kódtár használatával.
+description: Megtudhatja, hogyan futtathatja nagyvállalati szintű PyTorch-betanítási parancsfájljait Azure Machine Learning Chainer kalkulátor-osztályának használatával.  A példaként szolgáló parancsfájl a kézzel írt számjegyek rendszerképeit sorolja fel egy Deep learning neurális hálózat kiépítéséhez a NumPy-on futó, a láncot használó Python-könyvtár használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002721"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076419"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning
 
@@ -84,7 +84,7 @@ Ebben az oktatóanyagban már meg van biztosítva a **chainer_mnist.** a betaní
 
 Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **chainer_mnist.** a betanítási szkript azt mutatja be, hogyan lehet naplózni néhány mérőszámot az `Run` Azure ml-ben a szkripten belüli objektum használatával.
 
-A megadott betanítási parancsfájl példákat használ a láncolási `datasets.mnist.get_mnist` függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#upload-dataset-and-scripts) , hogy az adatok elérhetők legyenek a képzés során.
+A megadott betanítási parancsfájl példákat használ a láncolási `datasets.mnist.get_mnist` függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md) , hogy az adatok elérhetők legyenek a képzés során.
 
 Másolja a **chainer_mnist.** a betanítási szkriptet a projekt könyvtárába.
 

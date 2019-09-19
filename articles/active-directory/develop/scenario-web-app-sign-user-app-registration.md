@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás, amely képes bejelentkeztetni a felhasználókat (alkalmazásregisztráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, amely képes bejelentkeztetni a felhasználókat (alkalmazásregisztráció)
+title: Felhasználók számára bejelentkező webes alkalmazás (alkalmazás-regisztráció) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely bejelentkezik a felhasználók számára (alkalmazás regisztrálása)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,59 +15,59 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 0bdf04014d7b0382913c0a4094f7474686658441
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150227"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086704"
 ---
-# <a name="web-app-that-signs-in-users---app-registration"></a>Webes alkalmazás, amely képes bejelentkeztetni a felhasználókat – alkalmazás regisztrálása
+# <a name="web-app-that-signs-in-users---app-registration"></a>Felhasználók számára bejelentkező webalkalmazás – alkalmazás regisztrálása
 
-Jelen lap bemutatja egy webalkalmazás-alkalmazás regisztrációs adatait, hogy jelentkezik be felhasználókat.
+Ezen a lapon megtudhatja, hogy az alkalmazás regisztrálva van-e egy olyan webalkalmazáshoz, amely bejelentkezik a felhasználók számára.
 
-Az alkalmazás regisztrálásához használhatja:
+Az alkalmazás regisztrálásához a következőket használhatja:
 
-- A [webes alkalmazások gyors útmutatók](#register-an-app-using-the-quickstarts) -mellett egy alkalmazás létrehozásának első nagyszerűen, az Azure Portalon a rövid útmutatók gombot tartalmaz **számomra a módosítás végrehajtása**. Ez a gomb segítségével állítsa be a tulajdonságokat kell, még ha egy meglévő alkalmazást. Alkalmazkodjon az értékeket a saját eset ezeket a tulajdonságokat kell. A webes API URL-címe az alkalmazás, valószínűleg történik, különbözik a javasolt alapértelmezett beállítás, amely szintén hatással van az URI-t a kijelentkezési.
-- Az Azure Portalon [manuálisan regisztrálhatja alkalmazását](#register-an-app-using-azure-portal)
-- PowerShell és a parancssori eszközök
+- A [webalkalmazás gyors](#register-an-app-using-the-quickstarts) üzembe helyezése – amellett, hogy nagyszerű első élményt nyújt egy alkalmazás létrehozásához, a Azure Portalban található gyors útmutatóban egy, a **módosítást**elnevező gombot is tartalmaz. Ezt a gombot használhatja a szükséges tulajdonságok beállításához még egy meglévő alkalmazáshoz is. A tulajdonságok értékeit a saját esetéhez kell igazítania. Az alkalmazás webes API URL-címe valószínűleg eltér a javasolt alapértelmezetttől, ami hatással lesz a kijelentkezési URI-ra is.
+- Az [alkalmazás manuális regisztrálásának](#register-an-app-using-azure-portal) Azure Portal
+- PowerShell és parancssori eszközök
 
-## <a name="register-an-app-using-the-quickstarts"></a>A rövid útmutatók használatával alkalmazás regisztrálása
+## <a name="register-an-app-using-the-quickstarts"></a>Alkalmazás regisztrálása a gyors útmutatók használatával
 
-Ha ez a hivatkozás ugrik, hozhat létre rendszer-indításkori webes alkalmazásainak létrehozását:
+Ha megnyitja ezt a hivatkozást, létrehozhat rendszerindítást a webalkalmazás létrehozásakor:
 
 - [ASP.NET Core](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)
 - [ASP.NET](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
 
-### <a name="register-an-app-using-azure-portal"></a>Az Azure portal használatával alkalmazás regisztrálása
+### <a name="register-an-app-using-azure-portal"></a>Alkalmazás regisztrálása a Azure Portal használatával
 
 > [!NOTE]
-> a portál használatához eltér attól függően, ha az alkalmazás fut, a Microsoft Azure nyilvános felhőjében vagy a nemzeti és szuverén felhő. További információkért lásd: [országos felhők](./authentication-national-cloud.md#app-registration-endpoints)
+> a használni kívánt portál eltérő lehet attól függően, hogy az alkalmazás a Microsoft Azure nyilvános felhőben, vagy egy nemzeti vagy szuverén felhőben fut-e. További információ: [National felhők](./authentication-national-cloud.md#app-registration-endpoints)
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com). Azt is megteheti jelentkezzen be a országos felhőben tetszőleges Azure-portálon.
-1. Ha a fiók lehetőséget biztosít több bérlő hozzáférést, a jobb felső sarokban válassza ki a fiókját, és állítsa be a portál munkamenet a kívánt Azure ad-bérlőben.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk** > **új regisztrációs**.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com). Másik lehetőségként jelentkezzen be a nemzeti felhőbe Azure Portal.
+1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-   1. Válassza ki az alkalmazás a támogatott fióktípus esetében (lásd: [támogatott fióktípusok](./v2-supported-account-types.md))
+   1. Válassza ki az alkalmazás támogatott fiókjának típusát (lásd a [támogatott fióktípus](./v2-supported-account-types.md))
    1. A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-WebApp`).
-   1. A **átirányítási URI-t**adja hozzá az alkalmazás és az URI-t a cél, amely elfogadja a sikeres hitelesítés után jogkivonatválaszok adja vissza. Például: `https://localhost:44321/`.  Kattintson a **Register** (Regisztrálás) elemre.
-1. Válassza ki a **hitelesítési** menüben, majd adja hozzá a következő információkat:
-   1. A **válasz URL-cím**, adjon hozzá `https://localhost:44321/signin-oidc`.
-   1. Az a **speciális beállítások** szakaszában **kijelentkezési URL-címe** való `https://localhost:44321/signout-oidc`.
-   1. A **típusú Implicit engedélyezés**, ellenőrizze **azonosító-jogkivonatokat**.
+   1. Az **átirányítási URI**-ban adja meg az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után fogadja a visszaadott jogkivonat-válaszokat. Például: `https://localhost:44321/`.  Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
+   1. A **Válasz URL**-címe `https://localhost:44321/signin-oidc`mezőben adja hozzá a címet.
+   1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `https://localhost:44321/signout-oidc`következőre:.
+   1. Az **implicit támogatás szakaszban adja**meg az **azonosító jogkivonatokat**.
    1. Kattintson a **Mentés** gombra.
 
-### <a name="register-an-app-using-powershell"></a>PowerShell-lel alkalmazás regisztrálása
+### <a name="register-an-app-using-powershell"></a>Alkalmazás regisztrálása a PowerShell-lel
 
 > [!NOTE]
-> Jelenleg az Azure AD PowerShell csak hoz létre alkalmazást a következő támogatott fióktípusok:
+> Az Azure AD PowerShell jelenleg csak a következő támogatott fióktípus-típusokat hozza létre:
 >
-> - MyOrg (fiókok csak a szervezeti könyvtárban található)
-> - AnyOrg (az összes szervezeti directory-fiókok).
+> - MyOrg (csak ebben a szervezeti könyvtárban lévő fiókok)
+> - AnyOrg (fiókok bármely szervezeti címtárban).
 >
-> Ha azt szeretné, hogy bejelentkezik felhasználók alkalmazás létrehozása a személyes Microsoft-Accounts (például a Skype, XBox, Outlook.com), először létrehozhat egy több-bérlős alkalmazás (fióktípus esetében támogatott fiókok = bármely szervezeti könyvtárban), majd módosítsa a `signInAudience` tulajdonság az alkalmazásjegyzékben, az Azure Portalról. Ez a lépés a részletek kifejtett [1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) az ASP.NET Core-oktatóanyag (és a web Apps-alkalmazások bármilyen nyelven is általánosítva).
+> Ha olyan alkalmazást szeretne létrehozni, amely a felhasználók személyes Microsoft-fiókjaival (például Skype, XBox, Outlook.com) jelentkezik be, először hozzon létre egy több-bérlős alkalmazást (támogatott fióktípus = fiókok bármely szervezeti címtárban), majd módosítsa az alkalmazás jegyzékfájljának tulajdonsága a Azure Portalból. `signInAudience` Ezt részletesen ismerteti a ASP.NET Core oktatóanyag [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) . lépésében (és bármilyen nyelven általánosítható a webalkalmazások számára).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás kód konfigurációját](scenario-web-app-sign-user-app-configuration.md)
+> [Az alkalmazás kódjának konfigurálása](scenario-web-app-sign-user-app-configuration.md)

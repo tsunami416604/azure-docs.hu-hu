@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c5583f38f7a7f5a3654bfdd27620593175cf58
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562664"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073746"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: Bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -34,9 +34,9 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-a-receipt"></a>Visszaigazolás elemzése
 
-A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **elemzés** visszaigazolása API-t. A szkript futtatása előtt végezze el a következő módosításokat:
+A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **elemzés visszaigazolása** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje `<Endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje `<your receipt URL>` le a értékét egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
 
@@ -78,7 +78,7 @@ https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations
 
 ## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Az elemzési beérkezési  API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ezzel kibontja a műveleti azonosító értékét, és átadja egy új API-hívásnak. A művelet aszinkron, így a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
+Az elemzési **beérkezési** API meghívása után hívja meg a **Get beérkezési eredmény** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ezzel kibontja a műveleti azonosító értékét, és átadja egy új API-hívásnak. A művelet aszinkron, így a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python
 operationId = operationURL.split("operations/")[1]

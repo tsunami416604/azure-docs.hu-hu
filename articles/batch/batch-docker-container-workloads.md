@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095176"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090751"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
 
@@ -89,7 +89,7 @@ Az egyéni Linux-lemezképek használatának további szempontjai:
 
 ## <a name="container-configuration-for-batch-pool"></a>A Batch-készlet tároló-konfigurációja
 
-Ha engedélyezni szeretné a Batch-készlet számára a tároló-munkaterhelések futtatását, meg kell adnia a [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) beállításait a készlet [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) objektumában. (Ez a cikk a Batch .NET API-referenciára mutató hivatkozásokat tartalmaz. A megfelelő beállítások a [Batch Python](/python/api/azure.batch) API-ban találhatók.)
+Ha engedélyezni szeretné a Batch-készlet számára a tároló-munkaterhelések futtatását, meg kell adnia a [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) beállításait a készlet [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) objektumában. (Ez a cikk a Batch .NET API-referenciára mutató hivatkozásokat tartalmaz. A megfelelő beállítások a [Batch Python](/python/api/overview/azure/batch) API-ban találhatók.)
 
 A következő példákban látható módon létrehozhat egy tárolóval rendelkező készletet, amely előre beolvasott tároló-rendszerképekkel vagy anélkül is létrehozható. A lekérési (vagy a prefektusi) folyamat lehetővé teszi a tároló lemezképek előzetes betöltését a Docker hub-ból vagy egy másik, az interneten található tároló-beállításjegyzékből. A legjobb teljesítmény érdekében a Batch-fiókkal megegyező régióban használjon [Azure Container registryt](../container-registry/container-registry-intro.md) .
 

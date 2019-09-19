@@ -4,7 +4,7 @@ description: A virtuális gép újraindítását okozó események listája
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: aea4c20ceeb9b4f1ad70187da2690fd5d202fe7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089545"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086977"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Az Azure-beli virtuális gép rendszer-újraindításának ismertetése
 
@@ -56,7 +56,7 @@ Az Azure tervezett karbantartásának megismeréséhez és a linuxos virtuális 
 
 A Microsoft Azure frissítéseinek ezen osztályában a felhasználók nem gyakorolnak hatást a futó virtuális gépekre. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. Némelyik a gazdagép operációs rendszerének platform-infrastruktúrájának frissítései, amelyeket a virtuális gépek újraindítása nélkül lehet alkalmazni.
 
-Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. A frissítés során a virtuális gép szüneteltetett állapotba kerül. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
+Ezeket a memóriamegőrző frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést. A frissítés során a virtuális gép *szüneteltetett* állapotba kerül. Ez az állapot megőrzi a memóriát a RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A szüneteltetés után a virtuális gép órája automatikusan szinkronizálódik.
 
 A rövid szüneteltetési időszak miatt a frissítések ezen a mechanizmuson keresztül történő üzembe helyezése jelentősen csökkenti a virtuális gépekre gyakorolt hatást. Így azonban nem minden frissítés helyezhető üzembe. 
 
@@ -67,7 +67,7 @@ A többpéldányos frissítések végrehajtása (a rendelkezésre állási csopo
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Felhasználó által kezdeményezett újraindítási vagy leállítási műveletek
 
-Ha újraindítást végez a Azure Portal, Azure PowerShell, parancssori felület vagy az Alaphelyzetbe állítás API használatával, megkeresheti az eseményt az [Azure](../../azure-monitor/platform/activity-logs-overview.md)-beli tevékenység naplójában.
+Ha újraindítást végez a Azure Portal, Azure PowerShell, parancssori felület vagy az Alaphelyzetbe állítás API használatával, megkeresheti az eseményt az [Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-logs-overview.md).
 
 Ha a virtuális gép operációs rendszerének a műveletét hajtja végre, a rendszernaplókban megkeresheti az eseményt.
 
@@ -75,7 +75,7 @@ Más forgatókönyvek, amelyek általában a virtuális gép újraindítását o
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center és Windows Update
 
-Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: rendszerfrissítések [alkalmazása Azure Security Centerban](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/security-center-apply-system-updates.md).
 
 A helyszíni kiszolgálókhoz hasonlóan az Azure nem küldi le a frissítéseket a Windows Updateról a Windows rendszerű virtuális gépekre, mert ezeket a gépeket a felhasználók számára kívánja felügyelni. Javasoljuk azonban, hogy engedélyezze az automatikus Windows Update beállítást. A frissítések Windows Updateról történő automatikus telepítése a frissítések alkalmazása után is okozhat újraindítást. További információ: [Windows Update GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 

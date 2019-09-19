@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617329"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086582"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure AD Domain Services konfigurációs beállításai
 
@@ -36,7 +36,7 @@ Az Azure AD DS virtuális hálózatának tervezésekor az alábbi szempontokat k
     * A késés csökkentése érdekében az alapvető alkalmazásai közel vagy ugyanabban a régióban legyenek, mint az Azure AD DS felügyelt tartományának virtuális hálózati alhálózata. Virtuális hálózati vagy virtuális magánhálózati (VPN) kapcsolatokat is használhat az Azure Virtual Networks között.
 * A virtuális hálózat nem hivatkozhat az Azure AD DS által biztosított DNS-szolgáltatásokra.
     * Az Azure AD DS saját DNS-szolgáltatást biztosít. A virtuális hálózatot ezen DNS-szolgáltatási címek használatára kell konfigurálni. A további névterek névfeloldása feltételes továbbítók használatával végezhető el.
-    * Az egyéni DNS-kiszolgáló beállításai nem használhatók más DNS-kiszolgálók, például virtuális gépeken történő közvetlen lekérdezésére. A virtuális hálózatban lévő erőforrásoknak az Azure AD DS által biztosított DNS-szolgáltatást kell használniuk.
+    * Az egyéni DNS-kiszolgáló beállításai nem használhatók más DNS-kiszolgálókról, például virtuális gépekről érkező lekérdezések lekérdezéséhez. A virtuális hálózatban lévő erőforrásoknak az Azure AD DS által biztosított DNS-szolgáltatást kell használniuk.
 
 > [!IMPORTANT]
 > Az Azure AD DS nem helyezhető át másik virtuális hálózatra, miután engedélyezte a szolgáltatást.
@@ -105,7 +105,7 @@ A [hálózati biztonsági csoport (NSG)](https://docs.microsoft.com/azure/virtua
 
 A következő hálózati biztonsági csoportokra vonatkozó szabályok szükségesek az Azure AD DS számára a hitelesítési és felügyeleti szolgáltatások biztosításához. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportokra vonatkozó szabályokat azon virtuális hálózati alhálózaton, amelyhez az Azure AD DS felügyelt tartománya telepítve van.
 
-| Portszám | Protocol | Forrás                             | Cél | Action | Kötelező | Cél |
+| Portszám | Protocol | Forrás                             | Destination | Action | Kötelező | Cél |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Igen      | A tartomány kezelése. |
@@ -132,7 +132,7 @@ A következő hálózati biztonsági csoportokra vonatkozó szabályok szükség
 * Az alapértelmezett hálózati biztonsági csoport szabály a *CorpNetSaw* szolgáltatás címkéjét használja a forgalom további korlátozására.
     * Ez a szolgáltatási címke csak a biztonságos hozzáférési munkaállomásokat engedélyezi a Microsoft vállalati hálózaton a távoli asztal használatához az Azure AD DS felügyelt tartományhoz.
     * A hozzáférés csak üzleti indoklással engedélyezett, például felügyeleti vagy hibaelhárítási helyzetekben.
-* Ez a szabály beállítható a *Megtagadás*értékre, és csak akkor állítható be, ha szükséges. A legtöbb felügyeleti és figyelési feladat a PowerShell távelérés használatával történik. Az RDP-t csak abban a ritka eseményben használják, amelyet a Microsoftnak a felügyelt tartományhoz való távoli kapcsolódásra kell használnia a speciális hibaelhárítás érdekében.
+* Ez a szabály beállítható a *Megtagadás*értékre, és csak *akkor állítható be, ha* szükséges. A legtöbb felügyeleti és figyelési feladat a PowerShell távelérés használatával történik. Az RDP-t csak abban a ritka eseményben használják, amelyet a Microsoftnak a felügyelt tartományhoz való távoli kapcsolódásra kell használnia a speciális hibaelhárítás érdekében.
 
 > [!NOTE]
 > Ha megpróbálja szerkeszteni a hálózati biztonsági csoport szabályát, manuálisan nem választhatja ki a *CorpNetSaw* szolgáltatás címkéjét a portálról. A *CorpNetSaw* szolgáltatás címkét használó szabályok manuális konfigurálásához Azure PowerShell vagy az Azure CLI-t kell használnia.

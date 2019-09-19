@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532953"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086733"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Alapterv házirend: MFA megkövetelése a Service Management szolgáltatáshoz (előzetes verzió)
 
@@ -28,7 +28,7 @@ Lehetséges, hogy különböző Azure-szolgáltatásokat használ a szervezetben
 
 A Azure Resource Manager használata a szolgáltatások kezeléséhez magas jogosultsági szintű művelet. Azure Resource Manager megváltoztathatja a bérlői szintű konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását. Az egytényezős hitelesítés számos különböző támadáshoz, például az adathalászathoz és a jelszó-permetezéshez van kitéve. Ezért fontos annak ellenőrzése, hogy a hozzáférés engedélyezése előtt a többtényezős hitelesítés megkövetelése érdekében a felhasználók identitását szeretné-e elérni a Azure Resource Manager és a frissítési konfigurációkhoz.
 
-Az MFA megkövetelése a **Service Management szolgáltatáshoz** olyan alapkonfigurációs szabályzat, amely a Azure Portal, Azure PowerShell vagy az Azure CLI-t elérő felhasználók számára megköveteli az MFA használatát. [](concept-baseline-protection.md) Ez a szabályzat minden olyan felhasználóra vonatkozik, amely a Azure Resource Managerhoz fér, függetlenül attól, hogy rendszergazda-e.
+Az **MFA megkövetelése a Service Management szolgáltatáshoz** olyan alapkonfigurációs szabályzat [, amely a](concept-baseline-protection.md) Azure Portal, Azure POWERSHELL vagy az Azure CLI-t elérő felhasználók számára megköveteli az MFA használatát. Ez a szabályzat minden olyan felhasználóra vonatkozik, amely a Azure Resource Managerhoz fér, függetlenül attól, hogy rendszergazda-e.
 
 Ha ez a szabályzat engedélyezve van a bérlőben, az Azure felügyeleti erőforrásaiba bejelentkező összes felhasználó a multi-Factor Authentication szolgáltatással lesz feltámadva. Ha a felhasználó nincs regisztrálva az MFA-ban, akkor a folytatáshoz a felhasználónak regisztrálnia kell a Microsoft Authenticator alkalmazás használatával.
 
@@ -50,7 +50,7 @@ Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és bet
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-Mivel az **MFA megkövetelése a Service Management** -szabályzathoz az összes Azure Resource Manager felhasználóra vonatkozik, a zökkenőmentes üzembe helyezés érdekében számos szempontot kell figyelembe venni. Ezen megfontolások közé tartozik az Azure AD azon felhasználói és szolgáltatási alapelveinek azonosítása, amelyeken nem végezhető el az MFA, valamint a szervezet által használt, a modern hitelesítést nem támogató alkalmazások és ügyfelek.
+Az **MFA megkövetelése a Service Management** házirendjéhez minden Azure Resource Manager felhasználóra érvényes.
 
 ## <a name="enable-the-baseline-policy"></a>Az alapkonfiguráció házirend engedélyezése
 

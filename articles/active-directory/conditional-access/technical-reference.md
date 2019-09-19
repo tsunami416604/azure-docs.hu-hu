@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 390c961eaa692e6ca5bf26e2954c0764207fc210
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853673"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086831"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory feltételes hozzáférési beállítások ismertetése
 
@@ -125,7 +125,7 @@ Ez a beállítás minden böngészővel működik. Ahhoz azonban, hogy kielégí
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
 | Windows Phone          | Microsoft Edge, Internet Explorer               |
 | A Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
-| Windows Server 2016    | Microsoft Edge, Internet Explorer               |
+| Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
 | macOS                  | Chrome, Safari                                  |
@@ -234,8 +234,8 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 **Megjegyzések**
 
 - A jóváhagyott ügyfélalkalmazások támogatják az Intune Mobile Application Management szolgáltatást.
-- A **jóváhagyott ügyfélalkalmazás** megkövetelése:
-   - A csak az iOS és az Android for [Device platform](#device-platform-condition)feltételeit támogatja.
+- A **jóváhagyott ügyfélalkalmazás megkövetelése** :
+   - A csak az iOS és az Android for [Device platform feltételeit](#device-platform-condition)támogatja.
 
 ## <a name="app-protection-policy-requirement"></a>Alkalmazás-védelmi szabályzat követelménye 
 
@@ -254,8 +254,8 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 **Megjegyzések**
 
 - Az App Protection-házirend alkalmazásai támogatják az Intune Mobile Application Management szolgáltatást a házirend-védelemmel.
-- Az **alkalmazás-védelmi házirend** követelményeinek megkövetelése:
-    - A csak az iOS és az Android for [Device platform](#device-platform-condition)feltételeit támogatja.
+- Az **alkalmazás-védelmi házirend követelményeinek megkövetelése** :
+    - A csak az iOS és az Android for [Device platform feltételeit](#device-platform-condition)támogatja.
 
 ## <a name="next-steps"></a>További lépések
 

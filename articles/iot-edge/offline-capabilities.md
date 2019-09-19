@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147279"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091366"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -62,7 +62,7 @@ A gyermek eszközök bármely nem IoT Edge eszköz, amely ugyanahhoz a IoT Hub v
 
 A következő szakaszokban példákat talál arra, hogyan deklarálhatja a szülő-gyermek kapcsolatot IoT Hub a meglévő IoT-eszközökhöz. Ha új eszköz-identitásokat hoz létre a gyermek eszközökhöz, további információt a következő témakörben talál: [alárendelt eszköz hitelesítése az Azure IoT hub](how-to-authenticate-downstream-device.md) .
 
-#### <a name="option-1-iot-hub-portal"></a>1\. lehetőség: IoT Hub portál
+#### <a name="option-1-iot-hub-portal"></a>1\. módszer: IoT Hub portál
 
 Új eszköz létrehozásakor deklarálhatja a szülő-gyermek kapcsolatot. Vagy a meglévő eszközök esetében deklarálhatja a kapcsolatot a szülő IoT Edge eszköz vagy a gyermek IoT eszköz részletek lapján. 
 
@@ -98,7 +98,7 @@ A [lekérdezés](../iot-hub/iot-hub-devguide-query-language.md) módosításáva
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>3\. lehetőség: A IoT Hub Service SDK használata 
 
-Végül a szülő-gyermek kapcsolatokat programozott módon kezelheti a vagy C#a Java vagy a Node. js IOT hub Service SDK használatával. Íme egy példa arra, hogy az C# SDK használatával rendeljen [egy alárendelt eszközt](https://aka.ms/set-child-iot-device-c-sharp) .
+Végül a szülő-gyermek kapcsolatokat programozott módon kezelheti a vagy C#a Java vagy a Node. js IOT hub Service SDK használatával. Íme egy példa arra, hogy az C# SDK használatával [rendeljen egy alárendelt eszközt](https://aka.ms/set-child-iot-device-c-sharp) .
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>A szülő eszköz beállítása átjáróként
 
@@ -110,7 +110,7 @@ A megbízhatósági kapcsolat létrehozásának egyik módját a következő cik
 
 ## <a name="specify-dns-servers"></a>DNS-kiszolgálók meghatározása 
 
-A robusztusság javítása érdekében erősen ajánlott megadnia a környezetben használt DNS-kiszolgáló címét. A [DNS-kiszolgáló beállításáról a hibaelhárítási cikkben](troubleshoot.md#resolution-7)két lehetőség látható.
+A robusztusság javítása érdekében erősen ajánlott megadnia a környezetben használt DNS-kiszolgáló címét. Ha IoT Edge DNS-kiszolgálóját szeretné beállítani, tekintse meg a következő témakört: az [Edge Agent modul felbontása folyamatosan jelentést készít az "üres konfigurációs fájlról", és a hibaelhárítási cikkben egyetlen modul sem indul el](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) .
 
 ## <a name="optional-offline-settings"></a>Nem kötelező offline beállítások
 
@@ -207,5 +207,5 @@ További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#
 További információ a szülő/gyermek eszköz kapcsolatainak transzparens átjáró beállításáról: 
 
 * [A transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md)
-* [Alsóbb rétegbeli eszköz hitelesítése az Azure IoT Hub](how-to-authenticate-downstream-device.md)
-* [Alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md)
+* [Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon](how-to-authenticate-downstream-device.md)
+* [Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-device.md)

@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan lehet elhárítani a problémát, ha egy Azure-
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: b9a93448e084a42a935a8281ccd069e3604b1f18
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089620"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087021"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure-beli virtuális gép indítása a Windows Update szolgáltatásban megakadt
 
@@ -28,7 +28,7 @@ Ez a cikk segítséget nyújt a probléma megoldásában, ha a virtuális gép (
 
 ## <a name="symptom"></a>Jelenség
 
- Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a rendszerindítási [diagnosztika](../troubleshooting/boot-diagnostics.md) ablakban, láthatja, hogy az indítás megakadt a frissítési folyamat során. Az alábbi példákban megjelenhetnek az üzenetek:
+ Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) ablakban, láthatja, hogy az indítás megakadt a frissítési folyamat során. Az alábbi példákban megjelenhetnek az üzenetek:
 
 - A Windows # #% telepítése nem kapcsolja ki a számítógépet. Ez eltarthat egy ideig, amíg a számítógép többször is újraindul
 - Tartsa SZÁMÍTÓGÉPét, amíg ez megtörténik. A # (#) frissítésének telepítése... 

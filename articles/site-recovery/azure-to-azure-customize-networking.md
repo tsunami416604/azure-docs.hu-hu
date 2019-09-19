@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886896"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087707"
 ---
-# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációinak testreszabása
+# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
 Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a cél Azure-beli virtuális gépen, ha az Azure-beli virtuális gépeket az egyik régióból a másikba, [Azure site Recovery](site-recovery-overview.md)használatával replikálja és helyreállítja.
 
@@ -23,13 +23,16 @@ Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a 
 
 [Ebből a forgatókönyvből](azure-to-azure-architecture.md)megtudhatja, hogyan biztosít a site Recovery vész-helyreállítást.
 
-## <a name="support-networking-resources"></a>Hálózati erőforrások támogatása
+## <a name="supported-networking-resources"></a>Támogatott hálózati erőforrások
 
 Az Azure-beli virtuális gépek replikálásakor a feladatátvételi virtuális gép következő fő erőforrás-konfigurációi adhatók meg.
 
 - [Belső terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Nyilvános IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) mind az alhálózathoz, mind a hálózati adapterhez
+
+ > [!IMPORTANT]
+  > Ezek a beállítások csak a feladatátvételi műveletben támogatottak, és nem a feladatátvételi teszthez.
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
@@ -38,7 +41,7 @@ Az Azure-beli virtuális gépek replikálásakor a feladatátvételi virtuális 
 
 ## <a name="steps-to-customize-failover-networking-configurations"></a>A feladatátvételi hálózati konfigurációk testreszabásának lépései
 
-1. Navigáljona replikált elemekhez. 
+1. Navigáljon a **replikált elemekhez**. 
 2. Kattintson a kívánt Azure-beli virtuális gépre.
 3. Kattintson a **számítás és a hálózat**, majd a **Szerkesztés**elemre. Figyelje meg, hogy a hálózati adapter konfigurációs beállításai tartalmazzák a forráshoz tartozó megfelelő erőforrásokat. 
 

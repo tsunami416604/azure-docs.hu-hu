@@ -8,15 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566313"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090797"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>A Azure SQL Database kapcsolódási problémáinak elhárítása
 
@@ -65,7 +66,7 @@ Ez a hiba akkor fordul elő, amikor az adatbázist áthelyezi (vagy újrakonfigu
 1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett összes ismert leállás látható.
 2. A felhőalapú szolgáltatásokhoz, például a Azure SQL Databasehoz csatlakozó alkalmazásoknak rendszeres újrakonfigurálási eseményeket kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk a hibák kezeléséhez, ahelyett, hogy ezeket a hibákat felhasználja a felhasználóknak További információért és általános újrapróbálkozási stratégiákért tekintse át az [átmeneti hibák](sql-database-connectivity-issues.md) szakaszt, valamint az ajánlott eljárásokat és tervezési irányelveket [SQL Database fejlesztés áttekintésében](sql-database-develop-overview.md) . Ezt követően tekintse meg a [SQL Database és SQL Server](sql-database-libraries.md) a következő témakörben talál példákat:
 3. Mivel az adatbázis megközelíti az erőforrás-korlátozásokat, úgy tűnhet, hogy átmeneti kapcsolódási probléma. Lásd: [erőforrás-korlátok](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
-4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás** beszerzése lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás beszerzése** lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
 
 ## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure SQL Databasehoz, általában a következők egyikével kapcsolatos problémát jelez:

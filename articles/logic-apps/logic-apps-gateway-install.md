@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077269"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087729"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
@@ -264,9 +264,9 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 További információkért tekintse meg a következő témaköröket:
 
-* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Helyszíni adatátjáróval kapcsolatos hibák](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
-* [Az átjáró teljesítményének figyelése és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Helyszíni adatátjáró – GYIK](/data-integration/gateway/service-gateway-onprem-faq)
+* [Helyszíni adatátjáróval kapcsolatos hibák](/data-integration/gateway/service-gateway-tshoot)
+* [Az átjáró teljesítményének figyelése és optimalizálása](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>További lépések
 
