@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d3a36615109383074833e9af634eb611fb863339
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034498"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103654"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>szövegfelismerés tárolók telepítése és futtatása
 
@@ -36,6 +36,8 @@ Szövegfelismerés tárolók használata előtt meg kell felelnie a következő 
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)és [Linux](https://docs.docker.com/engine/installation/#supported-platforms)rendszereken. A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.| 
 |Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}** : A **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}** : Az **Áttekintés** oldalon megadott végpont|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
@@ -77,16 +79,9 @@ Miután a tároló a gazdagépen [](#the-host-computer)található, a következ�
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A parancs a következő paramétereket használja:
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{ENDPOINT_URI}` és`{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-| Helyőrző | Value |
-|-------------|-------|
-|{API_KEY} | Ez a kulcs a tároló elindítására szolgál, és elérhető az Azure `Cognitive Services` Keys lapon.  |
-|{ENDPOINT_URI} | A számlázási végpont URI-értéke. Példa:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
-
-A következő BILLING_ENDPOINT_URI példában látható `vision/v2.0` módon hozzá kell adnia az útválasztást a végpont URI-hoz.
-
-Cserélje le ezeket a paramétereket a saját értékeire a következő `docker run` példában szereplő parancsban.
+[](computer-vision-resource-container-config.md#example-docker-run-commands) A`docker run` parancs például elérhető.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

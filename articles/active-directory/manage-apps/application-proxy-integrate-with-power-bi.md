@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb1e26d9f10ae9b9549421e72a99f2c4e5341c2
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: b3d758b63b56bb84b1cb4e5793731da5eb4f5209
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056087"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103874"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure AD Application Proxy anna
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már telepítette a Report Services és az [enabled Application proxy](application-proxy-add-on-premises-application.md)szolgáltatást.
+Ez a cikk feltételezi, hogy már telepítette a Report Services és az [enabled Application proxy](application-proxy-add-on-premises-application.md)szolgáltatást.
 
 - Az alkalmazásproxy engedélyezéséhez telepítenie kell egy összekötőt egy Windows-kiszolgálón, és el kell töltenie az [előfeltételeket](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , hogy az összekötő képes legyen kommunikálni az Azure ad-szolgáltatásokkal.  
 - A Power BI közzétételekor azt javasoljuk, hogy ugyanazokat a belső és külső tartományokat használja. Az egyéni tartományokkal kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Application proxyban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)című témakört.
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy már telepítette a Report Services és az [enabl
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1\. lépés: A Kerberos által korlátozott delegálás konfigurálása (KCD)
 
-Windows-hitelesítést használó helyszíni alkalmazások akkor érhető el, egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) szolgáltatás. Ha be van állítva, a KCD lehetővé teszi, hogy az alkalmazásproxy-összekötő beszerezzen egy Windows-jogkivonatot a felhasználó számára akkor is, ha a felhasználó nem jelentkezett be közvetlenül a Windowsba. További információ a KCD: a [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx) és a [Kerberos által korlátozott delegálás az alkalmazásokba való egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md).
+Windows-hitelesítést használó helyszíni alkalmazások akkor érhető el, egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) szolgáltatás. Ha be van állítva, a KCD lehetővé teszi, hogy az alkalmazásproxy-összekötő beszerezzen egy Windows-jogkivonatot a felhasználó számára akkor is, ha a felhasználó nem jelentkezett be közvetlenül a Windowsba. További információ a KCD: a [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx) és a [Kerberos által korlátozott delegálás az alkalmazásokba való egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Nem sok a konfigurálás a jelentéskészítési szolgáltatási oldalon. Győződjön meg arról, hogy érvényes egyszerű szolgáltatásnév (SPN) van a megfelelő Kerberos-hitelesítés engedélyezéséhez. Győződjön meg arról is, hogy a Reporting Services-kiszolgáló engedélyezve van az egyeztetéses hitelesítéshez.
 
@@ -45,8 +45,8 @@ A Reporting Services KCD beállításához folytassa a következő lépésekkel.
 
 ### <a name="configure-the-service-principal-name-spn"></a>Egyszerű szolgáltatásnév (SPN) konfigurálása
 
-Az egyszerű szolgáltatásnév a Kerberos-hitelesítést használó szolgáltatás egyedi azonosítója. Győződjön meg arról, hogy rendelkezik megfelelő HTTP SPN-vel a jelentéskészítő kiszolgálón. A jelentéskészítő kiszolgáló megfelelő egyszerű szolgáltatásnév (SPN) konfigurálásával kapcsolatos információkért lásd: egyszerű szolgáltatásnév [(SPN) regisztrálása egy jelentéskészítő kiszolgálóhoz](https://msdn.microsoft.com/library/cc281382.aspx).
-A Setspn parancs a-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzá lett-e adva. További információ a parancsról: [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+Az egyszerű szolgáltatásnév a Kerberos-hitelesítést használó szolgáltatás egyedi azonosítója. Győződjön meg arról, hogy rendelkezik megfelelő HTTP SPN-vel a jelentéskészítő kiszolgálón. A jelentéskészítő kiszolgáló megfelelő egyszerű szolgáltatásnév (SPN) konfigurálásával kapcsolatos információkért lásd: egyszerű szolgáltatásnév [(SPN) regisztrálása egy jelentéskészítő kiszolgálóhoz](https://msdn.microsoft.com/library/cc281382.aspx).
+A Setspn parancs a-L kapcsolóval való futtatásával ellenőrizheti, hogy az egyszerű szolgáltatásnév hozzá lett-e adva. Ezzel a paranccsal kapcsolatos további információkért lásd: [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Egyeztetéses hitelesítés engedélyezése
 
@@ -60,20 +60,20 @@ Ha engedélyezni szeretné a jelentéskészítő kiszolgáló számára a Kerber
 </AuthenticationTypes>
 ```
 
-További információt a [Reporting Services konfigurációs fájljának](https://msdn.microsoft.com/library/bb630448.aspx) módosítása és a [Windows-hitelesítés konfigurálása jelentéskészítő kiszolgálón](https://msdn.microsoft.com/library/cc281253.aspx)című témakörben talál.
+További információt a [Reporting Services konfigurációs fájljának módosítása](https://msdn.microsoft.com/library/bb630448.aspx) és a [Windows-hitelesítés konfigurálása jelentéskészítő kiszolgálón](https://msdn.microsoft.com/library/cc281253.aspx)című témakörben talál.
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Győződjön meg arról, hogy az összekötő megbízható a Reporting Services alkalmazáskészlet-fiókhoz hozzáadott egyszerű szolgáltatásnév delegálásához.
 Konfigurálja úgy a KCD, hogy az Azure AD Application Proxy szolgáltatás delegálja a felhasználói identitásokat a Reporting Services alkalmazáskészlet-fiókjába. Konfigurálja a kcd Szolgáltatáshoz beolvasni a felhasználók, akik az Azure ad-ben hitelesített Kerberos-jegyet az Application Proxy connector engedélyezésével. Ezt követően a kiszolgáló továbbítja a környezetet a célalkalmazás vagy a Reporting Services szolgáltatásnak ebben az esetben.
 
 A KCD konfigurálásához ismételje meg az alábbi lépéseket minden összekötő-gépen:
 
-1. Jelentkezzen be tartományi rendszergazdaként egy tartományvezérlőre, majd nyissa meg **Active Directory felhasználókat és számítógépeket**.
+1. Jelentkezzen be tartományi rendszergazdaként egy tartományvezérlőre, majd nyissa meg **Active Directory felhasználókat és számítógépeket**.
 2. Az összekötőt futtató számítógépen található.  
-3. Kattintson duplán a számítógépre, majd válassza a **delegálás** lapot.
-4. A delegálási beállítások beállításával **bízza meg a számítógépet, hogy csak a megadott szolgáltatásokhoz delegáljon delegálást**. Ezután válassza **a bármely hitelesítési protokoll használata**lehetőséget.
+3. Kattintson duplán a számítógépre, majd válassza a **delegálás** lapot.
+4. A delegálási beállítások beállításával **bízza meg a számítógépet, hogy csak a megadott szolgáltatásokhoz delegáljon delegálást**. Ezután válassza ki **bármely hitelesítési protokoll**.
 5. Válassza a **Hozzáadás**, majd a **felhasználók vagy számítógépek**lehetőséget.
 6. Adja meg a Reporting Services szolgáltatáshoz használt szolgáltatásfiókot. Ezt a fiókot adta hozzá az SPN-nek a Reporting Services-konfigurációban való hozzáadásához.
-7. Kattintson **az OK**gombra. A módosítások mentéséhez kattintson ismét **az OK** gombra.
+7. Kattintson az **OK** gombra. A módosítások mentéséhez kattintson ismét **az OK** gombra.
 
 További információ: [Kerberos által korlátozott delegálás az alkalmazásokba való egyszeri bejelentkezéshez az Application proxy használatával](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -81,7 +81,7 @@ További információ: [Kerberos által korlátozott delegálás az alkalmazáso
 
 Most már készen áll az Azure AD Application Proxy konfigurálására.
 
-1. Jelentéskészítési szolgáltatások közzététele az Application proxyn keresztül a következő beállításokkal. Az alkalmazások alkalmazásproxy használatával történő közzétételének részletes ismertetését lásd: [alkalmazások közzététele az Azure ad Application proxy segítségével](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+1. Jelentéskészítési szolgáltatások közzététele az Application proxyn keresztül a következő beállításokkal. Az alkalmazások alkalmazásproxy használatával történő közzétételének részletes ismertetését lásd: [alkalmazások közzététele az Azure ad Application proxy segítségével](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    - **Belső URL-cím**: Adja meg annak a jelentéskészítő kiszolgálónak az URL-címét, amelyet az összekötő elérhet a vállalati hálózaton. Győződjön meg arról, hogy ez az URL-cím elérhető azon a kiszolgálón, amelyen az összekötő telepítve van. Az ajánlott eljárás egy legfelső szintű tartományt használ, például `https://servername/` a nem az alkalmazásproxy használatával közzétett alelérési problémák elkerülésére ( `https://servername/reportserver/` `https://servername/reports/` például és).
      > [!NOTE]
      > A jelentéskészítő kiszolgálóhoz biztonságos HTTPS-kapcsolat használatát javasoljuk. További információ: az [SSL-kapcsolatok konfigurálása natív módú jelentéskészítő kiszolgálón](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
@@ -91,17 +91,17 @@ Most már készen áll az Azure AD Application Proxy konfigurálására.
 
 2. Az alkalmazás közzététele után konfigurálja az egyszeri bejelentkezés beállításai az alábbi lépéseket:
 
-   a. A portál alkalmazás lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+   a. Az alkalmazás oldalán a portálon, válassza **egyszeri bejelentkezési**.
 
-   b. **Egyszeri bejelentkezési mód**esetén válassza az **integrált Windows-hitelesítés**lehetőséget.
+   b. **Egyszeri bejelentkezési mód**esetén válassza az **integrált Windows-hitelesítés**lehetőséget.
 
    c. A **belső alkalmazás SPN** beállítása a korábban megadott értékre.  
 
-   d. Válassza ki az összekötő **meghatalmazott bejelentkezési azonosítóját** , amelyet a felhasználók nevében kíván használni. További információ: [a különböző helyszíni és Felhőbeli identitások használata](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Válassza ki a **delegált bejelentkezési azonosító** az összekötő használatára a felhasználó nevében. További információ: [a különböző helyszíni és Felhőbeli identitások használata](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
    e. Kattintson a **mentése** a módosítások mentéséhez.
 
-Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez.
+Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók és csoportok** szakaszt, és rendelje hozzá a felhasználókat az alkalmazás eléréséhez.
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3\. lépés: A válasz URI-azonosítójának módosítása az alkalmazáshoz
 
@@ -127,13 +127,13 @@ Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Servic
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. lépés: Kapcsolódjon a Power BI Mobile alkalmazásból
 
-1. A Power BI Mobile alkalmazásban kapcsolódjon a Reporting Services-példányhoz. Ehhez adja meg az Application proxyn keresztül közzétett alkalmazás **külső URL-címét** .
+1. A Power BI Mobile alkalmazásban kapcsolódjon a Reporting Services-példányhoz. Ehhez adja meg az Application proxyn keresztül közzétett alkalmazás **külső URL-címét** .
 
    ![Power BI Mobile alkalmazás külső URL-címmel](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
 2. Kattintson a **Csatlakozás** gombra. A rendszer átirányítja a Azure Active Directory bejelentkezési oldalára.
 
-3. Adjon meg érvényes hitelesítő adatokat a felhasználó számára, és válassza a **Bejelentkezés**lehetőséget. Ekkor megjelennek a Reporting Services-kiszolgáló elemei.
+3. Adjon meg érvényes hitelesítő adatokat a felhasználó számára, és válassza a **Bejelentkezés**lehetőséget. Ekkor megjelennek a Reporting Services-kiszolgáló elemei.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5\. lépés: Az Intune-szabályzat konfigurálása a felügyelt eszközökhöz (nem kötelező)
 
@@ -142,7 +142,7 @@ Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Servic
 
 A Microsoft Intune segítségével kezelheti a vállalat munkaerő által használt ügyfélalkalmazások felügyeletét. Az Intune lehetővé teszi olyan képességek használatát, mint például az adattitkosítás és a további hozzáférési követelmények. Az alkalmazások Intune-nal történő kezelésével kapcsolatos további információkért lásd: az Intune app Management. Az alábbi lépéseket követve engedélyezheti, hogy a Power BI Mobile Application működjön az Intune-szabályzattal.
 
-1. Nyissa meg **Azure Active Directory** , majd az **alkalmazások regisztrációját**.
+1. Nyissa meg **Azure Active Directory** , majd az **alkalmazások regisztrációját**.
 2. Válassza ki a natív ügyfélalkalmazás regisztrálása során a 3. lépésben konfigurált alkalmazást.
 3. Az alkalmazás lapján válassza az API- **engedélyek**lehetőséget.
 4. Kattintson **az engedély hozzáadása**lehetőségre. 

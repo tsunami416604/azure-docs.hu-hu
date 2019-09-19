@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: d05f98ae695dd428a28ce49934e05c60de6328bc
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9d1a6ab698ceb6ac1c0a4fc635b5a8fe1e68b0c6
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257044"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102041"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
  
@@ -34,9 +34,11 @@ A LUIS-tároló futtatásához a következőkre van szükség:
 
 |Kötelező|Cél|
 |--|--|
-|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), Windows és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) [rendszereken](https://docs.docker.com/docker-for-windows/). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
+|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)és [Linux](https://docs.docker.com/engine/installation/#supported-platforms)rendszereken. A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.| 
 |Azure `Cognitive Services` -erőforrás és Luis [csomagolt alkalmazás](luis-how-to-start-new-app.md#export-app-for-containers) fájlja |A tároló használatához a következőket kell tennie:<br><br>* Egy _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges. A következő BILLING_ENDPOINT_URI példában látható `luis/v2.0` módon hozzá kell adnia az útválasztást a végpont URI-hoz. <br>* Egy betanított vagy közzétett alkalmazás, amely csatlakoztatott bemenetként van csomagolva a tárolóhoz a hozzá tartozó alkalmazás-AZONOSÍTÓval. A csomagolt fájlt a LUIS portálról vagy a szerzői API-k használatával szerezheti be. Ha a [szerzői API](#authoring-apis-for-package-file)-kkal becsomagolta a Luis csomagolási alkalmazást, a _szerzői kulcsra_is szüksége lesz.<br><br>Ezek a követelmények a parancssori argumentumok átadására szolgálnak a következő változókra:<br><br>**{AUTHORING_KEY}** : Ezzel a kulccsal lekérheti a csomagolt alkalmazást a felhőben található LUIS szolgáltatásból, és feltöltheti a lekérdezési naplókat a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`:.<br><br>**{APPLICATION_ID}** : Ez az azonosító az alkalmazás kiválasztására szolgál. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`:.<br><br>**{API_KEY}** : Ez a kulcs a tároló elindítására szolgál. A végpont kulcsa két helyen található. Az első az _Cognitive Services_ erőforrás kulcsai listán szereplő Azure Portal. A végpont kulcsa a LUIS portálon is elérhető a kulcsok és a végpont beállításai lapon. Ne használja az alapszintű kulcsot.<br><br>**{ENDPOINT_URI}** : Az Áttekintés oldalon megadott végpont.<br><br>A [szerzői kulcs és a végpont kulcsa](luis-boundaries.md#key-limits) eltérő célokat szolgál. Ne használja szinonimaként. |
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ### <a name="authoring-apis-for-package-file"></a>A csomagfájl API-jai készítése
 
@@ -76,21 +78,20 @@ Az elérhető címkék teljes leírását, például `latest` az előző parancs
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a [gazdagépen](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Miután a tároló a gazdagépen [](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
 
 ![Language Understanding (LUIS) tároló használatának folyamata](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Csomag exportálása](#export-packaged-app-from-luis) a tárolóhoz a Luis Portalról vagy Luis API-kkal.
-1. Helyezze át a csomag fájlját a [gazdagépen](#the-host-computer)a szükséges **bemeneti** könyvtárba. A LUIS-csomagfájl átnevezése, módosítása, felülírása vagy kibontása nem végezhető el.
+1. Helyezze át a csomag fájlját a gazdagépen a [](#the-host-computer)szükséges **bemeneti** könyvtárba. A LUIS-csomagfájl átnevezése, módosítása, felülírása vagy kibontása nem végezhető el.
 1. [Futtassa a tárolót](##run-the-container-with-docker-run)a szükséges _bemeneti csatlakoztatási_ és számlázási beállításokkal. További [példák](luis-container-configuration.md#example-docker-run-commands) a `docker run` parancsra. 
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint). 
-1. Ha végzett a tárolóval, [importálja a végponti naplókat](#import-the-endpoint-logs-for-active-learning) a Luis-portál kimeneti csatlakoztatásáról, és [állítsa le](#stop-the-container) a tárolót.
+1. Ha végzett a tárolóval, importálja [a végponti naplókat](#import-the-endpoint-logs-for-active-learning) a Luis-portál kimeneti csatlakoztatásáról, és [állítsa le](#stop-the-container) a tárolót.
 1. Az alkalmazás fejlesztéséhez használja a LUIS Portal [aktív tanulását](luis-how-to-review-endpoint-utterances.md) a **végpontok áttekintése hosszúságú kimondott szöveg** oldalon.
 
-A tárolóban futó alkalmazás nem módosítható. A tárolóban lévő alkalmazás módosításakor [a Luis-portálon](https://www.luis.ai) , vagy a Luis [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával módosítania kell az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
+A tárolóban futó alkalmazás nem módosítható. A tárolóban lévő alkalmazás módosításakor a Luis [-portálon](https://www.luis.ai) , vagy a Luis [authoring API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-k használatával módosítania kell az alkalmazást a Luis szolgáltatásban. Ezután végezze el a betanítást és/vagy közzétételt, majd töltsön le egy új csomagot, majd futtassa újra a tárolót.
 
 A tárolón belüli LUIS-alkalmazás nem exportálható vissza a LUIS szolgáltatásba. Csak a lekérdezési naplók tölthetők fel. 
 
@@ -104,7 +105,7 @@ Helyezze a csomagfájl egy könyvtárba, és hivatkozzon erre a könyvtárra a D
 
 ### <a name="package-types"></a>Csomagok típusai
 
-A bemeneti csatlakoztatási könyvtár az alkalmazás **éles üzemi**, **előkészítési**és **betanított** verzióit is tartalmazhatja. Az összes csomag csatlakoztatva van. 
+A bemeneti csatlakoztatási könyvtár az alkalmazás **éles üzemi**, **előkészítési**és betanított verzióit is tartalmazhatja. Az összes csomag csatlakoztatva van. 
 
 |Csomag típusa|Lekérdezési végpont API|Lekérdezés elérhetősége|Csomag fájlnevének formátuma|
 |--|--|--|--|
@@ -121,7 +122,7 @@ A LUIS-alkalmazás csomagolása előtt a következőkkel kell rendelkeznie:
 
 |Csomagolási követelmények|Részletek|
 |--|--|
-|Azure- _Cognitive Services_ erőforrás-példány|A támogatott régiók a következők:<br><br>USA nyugati régiója (```westus```)<br>Nyugat-Európa```westeurope```()<br>Kelet-Ausztrália (```australiaeast```)|
+|Azure- _Cognitive Services_ erőforrás-példány|A támogatott régiók a következők:<br><br>USA nyugati régiója (`westus`)<br>Nyugat-Európa`westeurope`()<br>Kelet-Ausztrália (`australiaeast`)|
 |Betanított vagy közzétett LUIS-alkalmazás|Nem [támogatott függőségek](#unsupported-dependencies)nélkül. |
 |Hozzáférés a [gazdaszámítógép](#the-host-computer)fájlrendszeréhez |A gazdaszámítógépnek engedélyeznie kell egy [bemeneti csatlakoztatást](luis-container-configuration.md#mount-settings).|
   
@@ -157,7 +158,6 @@ A betanított alkalmazás csomagja a **verziók** listája lapon érhető el.
 
 ![Exportálja a tárolóhoz tartozó betanított csomagot a verziók oldal exportálás menüjéből.](./media/luis-container-how-to/export-trained-package-for-container.png)
 
-
 ### <a name="export-published-apps-package-from-api"></a>Közzétett alkalmazás csomagjának exportálása az API-ból
 
 A következő REST API módszer használatával csomagolja ki a már [közzétett](luis-how-to-publish-app.md)Luis-alkalmazást. Az API-hívásban szereplő helyőrzők saját megfelelő értékeinek helyettesítése a HTTP-specifikáció alatt található táblázat használatával.
@@ -171,15 +171,15 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | Helyőrző | Value |
 |-------------|-------|
 |{APPLICATION_ID} | A közzétett LUIS-alkalmazás alkalmazás-azonosítója. |
-|{APPLICATION_ENVIRONMENT} | A közzétett LUIS-alkalmazás környezete. Használja az alábbi értékek egyikét:<br/>```PRODUCTION```<br/>```STAGING``` |
+|{APPLICATION_ENVIRONMENT} | A közzétett LUIS-alkalmazás környezete. Használja az alábbi értékek egyikét:<br/>`PRODUCTION`<br/>`STAGING` |
 |{AUTHORING_KEY} | A LUIS-fiók szerzői kulcsa a közzétett LUIS-alkalmazáshoz.<br/>A szerzői kulcsot a LUIS-portál **felhasználói beállítások** lapján szerezheti be. |
-|{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>```westus```– USA nyugati régiója<br/>```westeurope```– Nyugat-Európa<br/>```australiaeast```– Kelet-Ausztrália |
+|{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>`westus`– USA nyugati régiója<br/>`westeurope`– Nyugat-Európa<br/>`australiaeast`– Kelet-Ausztrália |
 
 A közzétett csomag letöltéséhez tekintse meg az [API-dokumentációt itt][download-published-package]. Ha a fájl letöltése sikeres volt, a válasz egy LUIS csomagfájl. Mentse a fájlt a tároló bemeneti csatlakoztatásához megadott tárolási helyre. 
 
 ### <a name="export-trained-apps-package-from-api"></a>Betanított alkalmazás csomagjának exportálása az API-ból
 
-A következő REST API módszer használatával csomagolja ki a már [betanított](luis-how-to-train.md)Luis-alkalmazást. Az API-hívásban szereplő helyőrzők saját megfelelő értékeinek helyettesítése a HTTP-specifikáció alatt található táblázat használatával.
+A következő REST API módszer használatával csomagolja ki a már betanított LUIS- [](luis-how-to-train.md)alkalmazást. Az API-hívásban szereplő helyőrzők saját megfelelő értékeinek helyettesítése a HTTP-specifikáció alatt található táblázat használatával.
 
 ```http
 GET /luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip HTTP/1.1
@@ -192,20 +192,15 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | A betanított LUIS alkalmazás alkalmazás-azonosítója. |
 |{APPLICATION_VERSION} | A betanított LUIS alkalmazás alkalmazásának verziója. |
 |{AUTHORING_KEY} | A LUIS-fiók szerzői kulcsa a közzétett LUIS-alkalmazáshoz.<br/>A szerzői kulcsot a LUIS-portál **felhasználói beállítások** lapján szerezheti be.  |
-|{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>```westus```– USA nyugati régiója<br/>```westeurope```– Nyugat-Európa<br/>```australiaeast```– Kelet-Ausztrália |
+|{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>`westus`– USA nyugati régiója<br/>`westeurope`– Nyugat-Európa<br/>`australiaeast`– Kelet-Ausztrália |
 
 A betanított csomag letöltéséhez tekintse meg az [API-dokumentációt itt][download-trained-package]. Ha a fájl letöltése sikeres volt, a válasz egy LUIS csomagfájl. Mentse a fájlt a tároló bemeneti csatlakoztatásához megadott tárolási helyre. 
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A parancs a következő paramétereket használja:
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{ENDPOINT_URI}` és`{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-| Helyőrző | Value |
-|-------------|-------|
-|{API_KEY} | Ez a kulcs a tároló elindítására szolgál. Ne használja az alapszintű kulcsot. |
-|{ENDPOINT_URI} | A végpont értéke a Azure Portal `Cognitive Services` áttekintés lapján érhető el. |
-
-Cserélje le ezeket a paramétereket a saját értékeire a következő `docker run` példában szereplő parancsban. Futtassa a parancsot a Windows-konzolon.
+[](luis-container-configuration.md#example-docker-run-commands) A`docker run` parancs például elérhető.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -226,10 +221,10 @@ ApiKey={API_KEY}
 Ez a parancs:
 
 * Tároló futtatása a LUIS-tároló rendszerképből
-* Betölti a (z) c:\input-on található LUIS alkalmazást a Container Host-on.
+* Betölti a (z) *C:\input*-on található Luis alkalmazást a Container Host-on.
 * Két CPU-mag és 4 gigabájt (GB) memória kiosztása
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* Tároló-és LUIS-naplókat ment a c:\output-on lévő, a tároló gazdagépén található kimeneti csatlakoztatásra.
+* Tároló-és LUIS-naplókat ment a *C:\output*-on lévő, a tároló gazdagépén található kimeneti csatlakoztatásra.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen. 
 
 További [példák](luis-container-configuration.md#example-docker-run-commands) a `docker run` parancsra. 
@@ -260,7 +255,7 @@ A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogya
 |Lekérdezési paraméter|Type|Cél|
 |--|--|--|
 |`q`|Karakterlánc|A felhasználó megnyilatkozása.|
-|`timezoneOffset`|number|A timezoneOffset lehetővé teszi az előre elkészített entitások datetimeV2 által használt [időzóna módosítását](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) .|
+|`timezoneOffset`|number|A timezoneOffset lehetővé teszi az [](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) előre elkészített entitások datetimeV2 által használt időzóna módosítását.|
 |`verbose`|boolean|Az összes leképezést és azok pontszámát adja vissza, ha igaz értékre van állítva. Az alapértelmezett érték a False (hamis), amely csak a felső leképezést adja vissza.|
 |`staging`|boolean|Az átmeneti környezet eredményeiből származó lekérdezést adja vissza, ha igaz értékre van állítva. |
 |`log`|boolean|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Az alapértelmezett érték a True (igaz).|
@@ -302,7 +297,7 @@ A LUIS portálon válassza ki az alkalmazást, majd válassza a **végponti napl
 
 ![Tároló naplófájljának importálása az aktív tanuláshoz](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
-A napló feltöltése után [tekintse át a hosszúságú kimondott szöveg végpontját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) a Luis portálon.
+A napló feltöltése után tekintse [át a](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) hosszúságú kimondott szöveg végpontját a Luis portálon.
 
 <!--  ## Validate container is running -->
 
@@ -314,7 +309,7 @@ A tároló leállításához a parancssori környezetben, ahol a tároló fut, n
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót egy kimeneti [csatlakoztatással](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához. 
+Ha a tárolót egy kimeneti csatlakoztatással [](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához. 
 
 ## <a name="billing"></a>Számlázás
 
@@ -328,14 +323,14 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 A 2019 Build kiadásban kiadott legújabb tároló a következőt fogja támogatni:
 
-* Bing helyesírás-ellenőrzés: kérelmek a lekérdezés-előrejelzési végponthoz a `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` lekérdezési karakterlánc paraméterei alapján. További információért használja a [Bing Spell Check v7-oktatóanyagot](luis-tutorial-bing-spellcheck.md) . Ha ezt a funkciót használja, a tároló elküldi a teljes Bing Spell Check v7-erőforrást.
+* Bing helyesírás-ellenőrzés: kérelmek a lekérdezés-előrejelzési végponthoz a `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` lekérdezési karakterlánc paraméterei alapján. További információért használja a [Bing Spell Check v7](luis-tutorial-bing-spellcheck.md) -oktatóanyagot. Ha ezt a funkciót használja, a tároló elküldi a teljes Bing Spell Check v7-erőforrást.
 * [Új előre összeépített tartományok](luis-reference-prebuilt-domains.md): ezek a nagyvállalati szintű tartományok többek között entitásokat, például hosszúságú kimondott szöveg és mintákat tartalmaznak. Kiterjesztheti ezeket a tartományokat saját használatra. 
 
 <a name="unsupported-dependencies"></a>
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>A tárolóhoz tartozó `latest` függőségek nem támogatottak
 
-Ha a LUIS-alkalmazás nem támogatott függőségekkel rendelkezik, nem tud [exportálni a tárolóba](#export-packaged-app-from-luis) , amíg el nem távolítja a nem támogatott funkciókat. Ha tárolóra próbál exportálni, a LUIS-portál a nem támogatott funkciókat jelenti, amelyeket el kell távolítania.
+Ha a LUIS-alkalmazás nem támogatott függőségekkel rendelkezik, nem tud exportálni [](#export-packaged-app-from-luis) a tárolóba, amíg el nem távolítja a nem támogatott funkciókat. Ha tárolóra próbál exportálni, a LUIS-portál a nem támogatott funkciókat jelenti, amelyeket el kell távolítania.
 
 LUIS-alkalmazást használhat, ha az **nem tartalmazza** a következő függőségek egyikét sem:
 
@@ -366,7 +361,7 @@ Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltés�
 ## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálat [tárolók konfigurálása](luis-container-configuration.md) a konfigurációs beállítások
-* A LUIS-funkciókkal kapcsolatos problémák megoldásához tekintse meg a [hibaelhárítást ismertető témakört](troubleshooting.md) .
+* A LUIS [](troubleshooting.md) -funkciókkal kapcsolatos problémák megoldásához tekintse meg a hibaelhárítást ismertető témakört.
 * További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata
 
 <!-- Links - external -->

@@ -2,18 +2,18 @@
 title: Apache Phoenix a HDInsight-ben – Azure HDInsight
 description: A Apache Phoenix áttekintése
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: ashishth
-ms.openlocfilehash: 1e7059d30c5d480948eb681b477239151020b266
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961828"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105385"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
 
@@ -129,7 +129,7 @@ An méretű HDInsight HBase-fürt tartalmazza a [Ambari felhasználói felület�
 
 2. A bal oldali menüben válassza a **HBase** lehetőséget, majd válassza a **konfigurációk** lapot.
 
-    ![Ambari HBase-konfiguráció](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
+    ![Apache Ambari HBase-konfigurációk](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Keresse meg a **Phoenix SQL** konfigurációs szakaszt a Phoenix engedélyezéséhez vagy letiltásához, és állítsa be a lekérdezés időtúllépését.
 

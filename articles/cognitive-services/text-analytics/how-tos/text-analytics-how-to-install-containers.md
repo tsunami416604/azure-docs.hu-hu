@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: dapine
-ms.openlocfilehash: 3cc61798fb5e5ecba91fef93a743b492dce75211
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 893beb479ee42f5de39d6e2e52251ab4113e3e43
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966755"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105070"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics tárolók telepítése és futtatása
 
@@ -32,7 +32,7 @@ A Text Analytics tárolók futtatásához rendelkeznie kell a gazdagép és a t�
 
 Szövegelemzés tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)és [Linux](https://docs.docker.com/engine/installation/#supported-platforms)rendszereken. A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.| 
@@ -112,7 +112,7 @@ Miután a tároló a gazdagépen [](#the-host-computer)található, a következ�
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A három tároló bármelyikének futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{Endpoint_URI}` és`{API_Key}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
+A három tároló bármelyikének futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{ENDPOINT_URI}` és`{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
 [](../text-analytics-resource-container-config.md#example-docker-run-commands) A`docker run` parancs például elérhető.
 

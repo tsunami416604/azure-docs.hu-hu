@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961395"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105513"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -33,7 +33,7 @@ A példában szereplő folyamat megvárja, amíg az új időszak repülési adat
 
 Az alábbi ábrán a példa folyamat látható.
 
-![Repülési adatfolyamat](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![A HDI Flight példa adatfolyamatának áttekintése](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie-megoldás áttekintése
 
@@ -43,7 +43,7 @@ A Oozie a *műveletek*, *munkafolyamatok*és *koordinátorok*tekintetében ismer
 
 Az alábbi ábrán a példa Oozie folyamatának magas szintű kialakítása látható.
 
-![Oozie repülési adatfolyamat](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie repülési példa adatfolyamata](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Azure-erőforrások kiépítése
 
@@ -55,23 +55,23 @@ Ehhez a folyamathoz egy Azure SQL Database és egy HDInsight Hadoop-fürtnek kel
 2. Az `oozie` erőforráscsoport keretében hozzon létre egy Azure-SQL Server és-adatbázist. Nincs szüksége az S1 standard díjszabási szintjénél nagyobb adatbázisra.
 3. A Azure Portal használatával navigáljon az újonnan telepített SQL Database ablaktáblájához, és válassza az **eszközök**lehetőséget.
 
-    ![Eszközök gomb](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
+    ![HDInsight SQL-adatbázis eszközei gomb ikonja](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. Válassza ki a **lekérdezés-szerkesztőt**.
 
-    ![Lekérdezés szerkesztője gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
+    ![Eszközök SQL db Query Editor – előzetes verzió](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. A **Lekérdezés-szerkesztő** ablaktáblán válassza a **Bejelentkezés**lehetőséget.
 
-    ![Bejelentkezés gomb](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
+    ![Lekérdezési szerkesztő SQL-adatbázisának bejelentkezési ablaka](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. Adja meg a SQL Database hitelesítő adatait, és kattintson **az OK gombra**.
 
-   ![Bejelentkezési űrlap](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
+   ![Lekérdezési szerkesztő SQL-adatbázis bejelentkezési paraméterei](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. A lekérdezés-szerkesztő szövegmezőbe írja be a következő SQL-utasításokat a `dailyflights` táblázat létrehozásához, amely a folyamat egyes futtatásainak összesített adatait fogja tárolni.
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -90,7 +90,7 @@ Ehhez a folyamathoz egy Azure SQL Database és egy HDInsight Hadoop-fürtnek kel
 
 8. Válassza a **Futtatás** lehetőséget az SQL-utasítások végrehajtásához.
 
-    ![Futtatás gomb](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
+    ![HDInsight SQL-adatbázis végrehajtás gombja](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 A Azure SQL Database most már készen áll.
 
@@ -104,12 +104,12 @@ A Azure SQL Database most már készen áll.
 
 4. A **fürt típusa** ablaktáblán válassza ki a **Hadoop** -fürt típusát, a **Linux** operációs rendszert és a HDInsight-fürt legújabb verzióját. A **fürt szintje** a **standard**értéknél marad.
 
-    ![A HDInsight-fürt típusa](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
+    ![Azure Portal fürtkonfiguráció típusa](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. Válassza **a Kiválasztás elemet a** fürt típusának kiválasztásához.
 6. Az **alapvető beállítások** panelen adja meg `oozie` a bejelentkezési jelszót, és válassza ki az erőforráscsoportot a listából, majd kattintson a **tovább**gombra.
 
-    ![HDInsight – alapvető beállítások panel](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
+    ![Azure Portal a fürt alapjainak létrehozása panel](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. A **tároló** ablaktáblán hagyja meg az elsődleges tároló típusát az **Azure Storage**-ba, válassza az **új létrehozása**lehetőséget, és adja meg az új fiók nevét.
 
@@ -123,13 +123,13 @@ A Azure SQL Database most már készen áll.
 
     ![HDInsight-struktúra Metaadattár hitelesítése](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Adja meg az SQL-adatbázis felhasználónevét és jelszavát, majd válassza a **kiválasztás**lehetőséget. 
+10. Adja meg az SQL-adatbázis felhasználónevét és jelszavát, majd válassza a **kiválasztás**lehetőséget.
 
        ![HDInsight-struktúra Metaadattár hitelesítése bejelentkezés](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. A Metaadattár- **Beállítások** panelen válassza ki az adatbázist a Oozie metaadat-tárolóhoz, és végezze el a hitelesítést az előzőekben leírtak szerint. 
+11. A Metaadattár- **Beállítások** panelen válassza ki az adatbázist a Oozie metaadat-tárolóhoz, és végezze el a hitelesítést az előzőekben leírtak szerint.
 
-       ![HDInsight Metaadattár beállításai](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Azure Portal Metaadattár beállításai](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. Kattintson a **Tovább** gombra.
 13. Az **Összefoglalás** panelen válassza a **Létrehozás** lehetőséget a fürt telepítéséhez.
@@ -176,17 +176,18 @@ A fájlt átmásolhatja az scp használatával a `bash` rendszerhéj-munkamenetb
 A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázatot igényel a feldolgozáshoz, egyet a bejövő adatértékekhez (`rawFlights`), egyet pedig az összegzett adatértékekhez (`flights`). Hozza létre ezeket a táblákat a Ambari az alábbiak szerint.
 
 1. Jelentkezzen be a Ambari-be a http:\//headnodehost: 8080 címen.
+
 2. A szolgáltatások listájából válassza a **struktúra**elemet.
 
-    ![Struktúra kiválasztása a Ambari-ben](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Az Apache Ambari Services-lista struktúra kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. A struktúra nézet 2,0 címkéjén válassza a **Ugrás** a következőhöz lehetőséget.
 
-    ![Struktúra nézet kiválasztása a Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Ambari Apache Apache Hive összefoglaló lista](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. A lekérdezés szövege területen illessze be a következő utasításokat a `rawFlights` tábla létrehozásához. A `rawFlights` tábla az Azure Storage-ban lévő `/example/data/flights` mappában található CSV-fájlok sémájának beolvasását is lehetővé teszi. 
+4. A lekérdezés szövege területen illessze be a következő utasításokat a `rawFlights` tábla létrehozásához. A `rawFlights` tábla az Azure Storage-ban lévő `/example/data/flights` mappában található CSV-fájlok sémájának beolvasását is lehetővé teszi.
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -211,7 +212,7 @@ A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázat
 
 5. Válassza a **végrehajtás** lehetőséget a tábla létrehozásához.
 
-    ![Struktúra-lekérdezés a Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![HDI ambari Services-struktúra lekérdezése](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. A `flights` tábla létrehozásához cserélje le a szöveget a lekérdezés szövege területen az alábbi utasításokra. A `flights` tábla egy struktúra által felügyelt tábla, amely az adott évben, hónapban és hónapban betöltött adatpartíciókat. Ez a táblázat tartalmazza az összes korábbi repülési adatokat, amelyek a legalacsonyabb részletességgel jelennek meg a forrásadatok egy sorában.
 
@@ -463,7 +464,7 @@ A bash-munkamenet szolgáltatáskapcsolódási pontjának használatával üzemb
 
 7. Figyelje meg az állapotot a Oozie webkonzol használatával. A Ambari-on belül válassza a **Oozie**, a **gyors hivatkozások**, majd a **Oozie webkonzol**lehetőséget. A **munkafolyamat-feladatok** lapon válassza a **minden feladat**lehetőséget.
 
-    ![Oozie webkonzol-munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![HDI oozie webkonzol-munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. Ha az állapot sikeres, a beszúrt sorok megtekintéséhez kérdezze le az SQL Database-táblázatot. A Azure Portal használatával navigáljon a SQL Database ablaktáblához, válassza az **eszközök**lehetőséget, majd nyissa meg a **lekérdezés-szerkesztőt**.
 
@@ -475,7 +476,7 @@ Most, hogy a munkafolyamat egy tesztelési napra fut, becsomagolhatja ezt a munk
 
 Ha úgy szeretné ütemezni ezt a munkafolyamatot, hogy naponta (vagy a dátumtartomány összes napján) fusson, a koordinátort is használhatja. A koordinátort egy XML-fájl határozza meg, például `coordinator.xml`:
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -554,7 +555,7 @@ Amint láthatja, a koordinátor többsége csak a konfigurációs adatokat tová
 
 * 2\. pont: A munkafolyamat dátum tartományán belül az `dataset` elem megadja, hogy hol kell megkeresni egy adott dátumtartomány adatait, valamint azt, hogy a Oozie hogyan határozza meg, hogy az adatok még HDFS legyenek-e a feldolgozáshoz.
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -567,7 +568,7 @@ Amint láthatja, a koordinátor többsége csak a konfigurációs adatokat tová
 
 * 3\. pont: Az `data-in` elem megadja az adott időbélyeget, amelyet a `uri-template` rendszer a társított adatkészlet értékeinek cseréjekor a névleges időpontig használ.
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>

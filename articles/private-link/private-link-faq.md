@@ -1,18 +1,18 @@
 ---
 title: Azure Private-hivatkozás – gyakori kérdések (GYIK)
 description: További információ az Azure Private linkről.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7e08c91636089abf25e46e1303097fc27b2d75b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037509"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104584"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
@@ -23,8 +23,8 @@ ms.locfileid: "71037509"
 - **[Azure Private-végpont](private-endpoint-overview.md)** : Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül az Ön számára biztosít privát és biztonságos szolgáltatásokat. A privát végpontok használatával kapcsolódhat egy olyan Azure Pásti szolgáltatáshoz, amely támogatja a privát vagy a saját privát kapcsolati szolgáltatását.
 - **[Azure Private link Service](private-link-service-overview.md)** : Az Azure Private link Service egy szolgáltató által létrehozott szolgáltatás. Jelenleg egy magánhálózati kapcsolati szolgáltatás csatlakoztatható egy standard Load Balancer előtérbeli IP-konfigurációjához. 
 
-### <a name="how-is-traffic-being-send-when-using-private-link"></a>Hogyan történik a forgalom küldése a privát hivatkozás használatakor?
-A forgalmat a Microsoft gerincén keresztül küldi el a rendszer. Nem halad át az interneten.  
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hogyan történik a forgalom küldése a privát hivatkozás használatakor?
+A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az interneten.  
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Mi a különbség a szolgáltatási végpontok és a privát végpontok között?
 - Privát végpontok használata esetén a hálózati hozzáférés egy adott szolgáltatás mögötti, részletes szegmentálást biztosító erőforrásokhoz van biztosítva, a forgalom azonban a helyi végpontok használata nélkül is elérheti a szolgáltatási erőforrást a helyszínen.

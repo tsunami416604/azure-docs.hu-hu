@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: e6a13688bba1c3a0e62e427e078e78c8f8dd4e70
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560614"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101979"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -42,7 +42,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 
 ## <a name="apikey-setting"></a>A beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie  a [`Billing`](#billing-setting) konfigurációs beállításhoz megadott Cognitive Services erőforráshoz.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-setting) konfigurációs beállításhoz megadott Cognitive Services erőforráshoz.
 
 Ez a beállítás a következő helyeken érhető el:
 
@@ -106,7 +106,7 @@ A következő táblázat ismerteti a támogatott beállítások.
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](luis-container-howto.md#stop-the-container) azt.
 
-* Ezek a példák a `c:` meghajtón lévő könyvtárat használják, hogy elkerüljék az engedélyek ütközését a Windowson. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
+* Ezek a példák a `C:` meghajtón lévő könyvtárat használják, hogy elkerüljék az engedélyek ütközését a Windowson. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
 * Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 * Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel `^`rendelkező Windows-konzolt feltételeznek. Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
 
@@ -116,11 +116,13 @@ Cserélje le a(z)_argument_name_} a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-|{API_KEY} | A végpont kulcs a betanított LUIS-alkalmazás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URL} | A számlázási végpont értéke elérhető az Azure `Cognitive Services` Áttekintés oldalán. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+| **{API_KEY}** | Az `LUIS` erőforrás Endpoint kulcsa az Azure `LUIS` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `LUIS` Áttekintés oldalán.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](luis-container-howto.md#gathering-required-parameters) ismertető témakört. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](luis-container-howto.md#billing).
+> A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el. További információkért lásd: [számlázási](luis-container-howto.md#billing).
 > A ApiKey értéke a Luis portál kulcsok és végpontok lapjának **kulcsa** , és az Azure `Cognitive Services` Resource Keys oldalon is elérhető. 
 
 ### <a name="basic-example"></a>Alapszintű példa

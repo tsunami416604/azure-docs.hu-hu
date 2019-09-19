@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348694"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105103"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap-felismerő tárolók konfigurálása
 
@@ -31,7 +31,7 @@ Az űrlap-felismerő tároló futásidejű környezetét a `docker run` parancs 
 
 ## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. A ApiKey értékének érvényes kulcsnak kell lennie a "  számlázási konfigurációs beállítás" szakaszban megadott `Billing` , az űrlap-felismerő erőforrás számára.
+A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. A ApiKey értékének érvényes kulcsnak kell lennie a " számlázási konfigurációs beállítás" szakaszban megadott `Billing` , az űrlap-felismerő erőforrás számára.
 
 Ez a beállítás a Azure Portalban, a **kulcsok**területen, az **űrlap-felismerő erőforrás-kezelés**szakaszban található.
 
@@ -45,7 +45,7 @@ A `Billing` beállítás megadja az Azure-beli _űrlap-felismerő_ erőforrás v
 
 Ez a beállítás a Azure Portalban, az űrlap- **felismerő áttekintés**területén, a **végpont**területen található.
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -74,10 +74,10 @@ Az űrlap-felismerő tárolóhoz bemeneti csatlakoztatás és kimeneti csatlakoz
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer) csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók engedélyei és a gazdagép csatlakoztatási helyének engedélyei ütköznek.
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Szükséges| `Input` | Sztring | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Szükséges| `Output` | Karakterlánc | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Kötelező| `Input` | Sztring | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Kötelező| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
@@ -88,18 +88,19 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 
 Cserélje le a {_argument_name_} értéket a következő táblázatba a saját értékeivel:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | A tároló elindításához használt kulcs. Ez a Azure Portal űrlap-felismerési kulcsok lapon érhető el.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | A számlázási végpont URI-értéke a Azure Portal űrlap-felismerő eszköz áttekintés lapján érhető el.|
-|{COMPUTER_VISION_API_KEY}| A kulcs a Azure Portal Computer Vision API kulcsok lapon érhető el.|
-|{COMPUTER_VISION_ENDPOINT_URI}|A számlázási végpont. Ha felhőalapú Computer Vision-erőforrást használ, az URI-érték a Azure Portal Computer Vision API – áttekintés oldalon érhető el. Ha *kognitív-szolgáltatások-felismerő-Text* tárolót használ, használja a `docker run` parancsban szereplő tárolónak átadott számlázási végpont URL-címét.|
+| **{FORM_RECOGNIZER_API_KEY}** | A tároló elindításához használt kulcs. Ez a Azure Portal űrlap-felismerési kulcsok lapon érhető el. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | A számlázási végpont URI-értéke a Azure Portal űrlap-felismerő eszköz áttekintés lapján érhető el.|
+| **{COMPUTER_VISION_API_KEY}** | A kulcs a Azure Portal Computer Vision API kulcsok lapon érhető el.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | A számlázási végpont. Ha felhőalapú Computer Vision-erőforrást használ, az URI-érték a Azure Portal Computer Vision API – áttekintés oldalon érhető el. Ha *kognitív-szolgáltatások-felismerő-Text* tárolót használ, használja a `docker run` parancsban szereplő tárolónak átadott számlázási végpont URL-címét. |
+
+Az értékek beszerzésével kapcsolatos részletekért lásd a [szükséges paraméterek összegyűjtése](form-recognizer-container-howto.md#gathering-required-parameters) című témakört.
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > A tároló futtatásához adja meg a `Eula`, `Billing`a és `ApiKey` a beállításokat; egyéb esetben a tároló nem indul el. További információkért lásd: [számlázási](#billing-configuration-setting).
-
-> [!NOTE] 
-> A ApiKey értéke az Azure Form felismerő erőforrás-kulcsok oldalának **kulcsa** .
 
 ## <a name="form-recognizer-container-docker-examples"></a>Űrlap-felismerő tárolók Docker-példák
 

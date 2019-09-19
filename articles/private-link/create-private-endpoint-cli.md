@@ -1,18 +1,18 @@
 ---
 title: Azure Private-végpont létrehozása az Azure CLI használatával | Microsoft Docs
 description: További tudnivalók az Azure Private-végpontról
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7d27cb58bfbe0669bf1e6d0e0f0d696e3e85d38a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104786"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépeket egy virtuális hálózaton, egy SQL Database-kiszolgálót az Azure CLI használatával. Ezután elérheti a virtuális gépet, és biztonságosan hozzáférhet a privát kapcsolati erőforráshoz (ebben a példában egy privát Azure SQL Database-kiszolgáló). 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010298"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103156"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -114,8 +114,8 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 
 | **Platform funkció** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
-| [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Nem, lásd: [automatikus feladatátvételi csoportok (előzetes verzió)](sql-database-auto-failover-group.md) Alternatív megoldásként |
-| [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen, a [nyilvános előzetes](sql-database-auto-failover-group.md) verzióban|
+| [Aktív georeplikáció](sql-database-active-geo-replication.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Nem, lásd: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) Alternatív megoldásként |
+| [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen, lásd: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)|
 | Automatikus méretezés | Igen, de csak [kiszolgáló nélküli modellben](sql-database-serverless.md). A nem kiszolgáló nélküli modellben a szolgáltatási réteg (virtuális mag, tárterület vagy DTU) változása gyors és online állapotú. A szolgáltatási rétegek változásához minimális vagy nem állásidő szükséges. | Nem, a fenntartott számítási és tárolási kapacitást kell választania. A szolgáltatási szintek (virtuális mag vagy maximális tárterület) módosítása online állapotú, és minimális vagy leállást igényel. |
 | [Automatikus biztonsági mentések](sql-database-automated-backups.md) | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. |
 | [Automatikus hangolás (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |

@@ -5,35 +5,35 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493755"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105127"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
-A felhasználók számára az Azure Enterprise-megállapodások az Azure portal és a Nagyvállalati portálon megadott engedélyek kombinációját Azure Cost Management adataihoz való hozzáférés egy felhasználó szintjét határozza meg. A felhasználók más Azure-fiók típusú, a felhasználó hozzáférési szintjét, hogy a Cost Management adataihoz az egyszerűbb. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
+Az Azure nagyvállalati szerződéssel rendelkező felhasználók számára a Azure Portal és a nagyvállalati (EA) portálon megadott engedélyek kombinációja határozza meg, hogy a felhasználó milyen szintű hozzáférést biztosít a Azure Cost Managementi adatmennyiséghez. A többi Azure-fiókkal rendelkező felhasználók számára a felhasználó hozzáférési szintje az, hogy Cost Management az adatmennyiséget. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
 
 Adja meg az adatok összevonása, és a költségadatok való hozzáférésének a hatókör, amely a felhasználó kiválaszt Cost Management használja. Hatókörök használatakor a felhasználók ne válassza ki őket. Ehelyett, válassza ki a nagyobb hatókör, amely gyermek hatókörök visszaállítás akár, és ezután azok szűrő válassza ki, amit szeretnének megtekintéséhez. Adatok összevonása fontos tudni, mert vannak, akik nem rendelkezik hozzáféréssel, annak egy szülőhatóköréhez gyermek hatókörök összegző akár.
 
-Tekintse meg a [hozzárendelése az Azure Cost Managementbe hozzáférés](https://www.youtube.com/watch?v=J997ckmwTa8) videó megismerheti a hozzáférés a költségek és a díjak az Azure szerepköralapú hozzáférés-vezérlés hozzárendelése.
+Tekintse meg a [hozzáférés kiosztása Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) videóval című témakört, amelyből megtudhatja, hogyan oszthatja meg a költségeket és a díjakat az Azure szerepköralapú hozzáférés-vezérléssel.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
 ## <a name="cost-management-scopes"></a>A Cost Management hatókörök
 
-A Cost management többféle típusú Azure-fiók támogat. A támogatott típusok teljes listáját, tekintse meg [megismerheti a Cost Management adataihoz](understand-cost-mgt-data.md). Fiók típusa határozza meg a rendelkezésre álló hatókörök.
+A Cost Management számos Azure-fióktípus használatát támogatja. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A fiók típusa határozza meg az elérhető hatóköröket.
 
-### <a name="azure-ea-subscription-scopes"></a>Az Azure nagyvállalati szerződéssel rendelkező előfizetés hatókörök
+### <a name="azure-ea-subscription-scopes"></a>Azure EA-előfizetési hatókörök
 
-Azure EA-előfizetések a költségadatok megtekintéséhez egy felhasználó kell rendelkeznie legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörök közül.
+Az Azure EA-előfizetések költségadatok megtekintéséhez a felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörökhöz.
 
 | **Hatókör** | **Meghatározás helye** | **Hozzáférési adatok megtekintéséhez** | **Nagyvállalati Szerződés előfeltételként szükséges beállítása** | **Összesíti az adatokat** |
 | --- | --- | --- | --- | --- |
@@ -48,21 +48,21 @@ Azure EA-előfizetések a költségadatok megtekintéséhez egy felhasználó ke
 
 <sup>2</sup> a regisztrációs fiók is nevezzük a fiók tulajdonosától.
 
-A következő ábra szemlélteti a Cost Management hatókörök szerepkörökkel és a nagyvállalati szerződéssel rendelkező portálbeállítások közötti kapcsolat.
+Az alábbi ábra a Cost Management hatókörök és a szerepkörök és az EA-portál beállításai közötti kapcsolatot szemlélteti.
 
-![Cost Management hatókörök szerepkörökkel és a Nagyvállalati portál beállításai között bemutató diagram](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+![A szerepkörökkel és az EA-portál beállításaival Cost Management hatókörök közötti kapcsolatot bemutató ábra](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
-Amikor **DA költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* amikor próbálja költségek szervezeti egységek és a fiókok megtekintéséhez.
+Ha az EA Portalon le vannak tiltva a **megtekintési díjak** , megjelenik egy üzenet, amely a *szervezetnél letiltott költségeket* jeleníti meg, amikor a részlegek és a fiókok költségeit szeretné megtekinteni.
 
-Hasonlóképpen, ha **AO költségek megtekintése** le vannak tiltva az EA-portálon megjelenik egy üzenet, amelyen *költségek le van tiltva, a szervezet* regisztrációs fiókok, a felügyeleti csoportok, a költségek megtekintése közben Előfizetések és erőforráscsoportok.
+Hasonlóképpen, ha az **Ao View díjak** le vannak tiltva az EA-portálon, megjelenik egy üzenet, amely a *szervezetnél letiltott költségeket* jeleníti meg a regisztrációs fiókok, a felügyeleti csoportok, az előfizetések és az erőforráscsoportok költségeinek megtekintésekor.
 
-## <a name="other-azure-account-scopes"></a>Más Azure-fiók hatókörök
+## <a name="other-azure-account-scopes"></a>Egyéb Azure-fiók hatókörök
 
-Más Azure-előfizetésekre vonatkozó költségadatok megtekintéséhez, a felhasználó kell rendelkeznie legalább olvasási hozzáféréssel kell rendelkeznie egy vagy több, a következő hatókörök:
+Más Azure-előfizetésekhez tartozó költségadatok megtekintéséhez a felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörökhöz:
 
 - Azure-fiók
 - Felügyeleti csoport
-- Erőforráscsoport
+- Resource group
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>A nagyvállalati szerződések portáljának költségek hozzáférésének engedélyezése
 
@@ -129,7 +129,7 @@ A fenti lépések végrehajtását követően a felhasználói fiók lesz az Ent
 
 ## <a name="assign-management-group-scope-access"></a>Felügyeleti csoport hozzáférési hatókör hozzárendelése
 
-A felügyeleti csoport hatóköre használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+A felügyeleti csoport hatókörének megtekintéséhez legalább a Cost Management olvasó (vagy olvasó) engedélyre van szükség. A felügyeleti csoport engedélyeit az Azure Portalon konfigurálhatja. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) a felügyeleti csoport hozzáférésének engedélyezésére vonatkozó másokkal. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _felügyeleti csoportok_, majd **felügyeleti csoportok**.
@@ -145,7 +145,7 @@ A felügyeleti csoport hatóköre használatához legalább a Cost Management Re
 
 ## <a name="assign-subscription-scope-access"></a>Előfizetés hozzáférési hatókör hozzárendelése
 
-Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély szükséges. Az Azure Portal előfizetés engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) az előfizetés hozzáférésének engedélyezésére vonatkozó másokkal. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _előfizetések_, majd **előfizetések**.
@@ -159,7 +159,7 @@ Egy előfizetéshez legalább a Cost Management Reader (vagy olvasó) engedély 
 
 ## <a name="assign-resource-group-scope-access"></a>Erőforrás-csoport hozzáférési hatókör hozzárendelése
 
-Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. Azure nagyvállalati szerződéssel rendelkező fiókok esetében kell is engedélyezve van a **AO költségek megtekintése** a nagyvállalati szerződések portáljának beállítását.
+Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy olvasó) engedéllyel. Az Azure Portalon egy erőforráscsoportba tartozó engedélyeket is konfigurálhat. Engedéllyel kell rendelkeznie legalább a felhasználói hozzáférés rendszergazdája (vagy a tulajdonos) hozzáférésének engedélyezésére vonatkozó mások az erőforráscsoportnak. Az Azure EA-fiókok esetében továbbá engedélyeznie kell az **Ao View díjak** beállítást is az EA portálon.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza ki **minden szolgáltatás** az oldalsáv keressen _erőforráscsoportok_, majd **erőforráscsoportok**.
@@ -173,9 +173,9 @@ Egy erőforráscsoport használatához legalább a Cost Management Reader (vagy 
 
 ## <a name="cross-tenant-authentication-issues"></a>Több-bérlős hitelesítési problémák
 
-Az Azure Cost Management jelenleg korlátozott több-bérlős hitelesítés támogatása. Bizonyos esetekben meg a bérlőn, akkor jelenhet egy **hozzáférés megtagadva** hiba történt a költségek elemzése. Ez a hiba akkor fordulhat elő, ha szerepköralapú hozzáférés-vezérlés (RBAC) a bérlő egy másik előfizetéshez konfigurálása, és ismételje meg a költségadatok megtekintéséhez.
+A Azure Cost Management jelenleg korlátozott támogatást biztosít a több-bérlős hitelesítéshez. Bizonyos esetekben, amikor megkísérli a hitelesítést a bérlők között, **hozzáférés-megtagadási** hibaüzenetet kaphat a Cost Analysis szolgáltatásban. Ez a probléma akkor fordulhat elő, ha szerepköralapú hozzáférés-vezérlést (RBAC) konfigurál egy másik bérlői előfizetéshez, majd megpróbálja megtekinteni a költségadatok megtekintését.
 
-*A probléma megkerüléséhez*: Miután konfigurálta a több-bérlős RBAC, várjon egy órát. Ezt követően próbálja meg költségelemzés költségek megtekintése vagy Cost Management hozzáférést biztosít a felhasználók mind a bérlők számára.  
+*A probléma*megoldása: A több-bérlős RBAC konfigurálása után várjon egy órát. Ezután próbálja meg megtekinteni a költségeket a Cost Analysis szolgáltatásban, vagy adja meg Cost Management hozzáférést a bérlők felhasználói számára.  
 
 
 ## <a name="next-steps"></a>További lépések

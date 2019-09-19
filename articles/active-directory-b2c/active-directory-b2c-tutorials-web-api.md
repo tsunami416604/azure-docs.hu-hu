@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – hozzáférés biztosítása egy ASP.NET webes API-hoz – Azure Active Directory B2C | Microsoft Docs
+title: Oktatóanyag – hozzáférés biztosítása egy ASP.NET webes API-hoz – Azure Active Directory B2C
 description: Útmutató a ASP.NET webes API-k és a ASP.NET-webalkalmazások általi meghívásához a Active Directory B2C használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064721"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103401"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
@@ -82,20 +82,20 @@ Két projekt szerepel a mintául szolgáló megoldásban:
 
 A következő két projekt szerepel a minta megoldásban:
 
-- **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
-- **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
+* **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
+* **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.
 
 ### <a name="configure-the-web-application"></a>A webalkalmazás konfigurálása
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
-2. Nyissa meg a **Web.config** elemet a **TaskWebApp** projektben.
-3. Az API helyi futtatásához használja az **api:TaskServiceUrl** localhost-beállítást. Az alábbiak szerint módosítsa a Web.config fájlt:
+1. A **TaskWebApp** projektben nyissa meg a **web. config**fájlt.
+1. Az API helyi futtatásához használja az **api:TaskServiceUrl** localhost-beállítást. Az alábbiak szerint módosítsa a Web.config fájlt:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Konfigurálja az API URI-ját. Ez az az URI, amelyet a webalkalmazás az API-kérelem elvégzéséhez használ. A kért engedélyeket is konfigurálja.
+1. Konfigurálja az API URI-ját. Ez az az URI, amelyet a webalkalmazás az API-kérelem elvégzéséhez használ. A kért engedélyeket is konfigurálja.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -105,26 +105,27 @@ A következő két projekt szerepel a minta megoldásban:
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. Nyissa meg a **Web.config** elemet a **TaskService** projektben.
-2. Konfigurálja az API-t a bérlő használatához.
+1. A **TaskService** projektben nyissa meg a **web. config**fájlt.
+1. Konfigurálja az API-t a bérlő használatához.
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. Állítsa be az ügyfél-azonosítót az API regisztrált alkalmazásazonosítójára.
+1. Állítsa be az ügyfél-azonosítót a regisztrált webes API-alkalmazás *webapi1*.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Frissítse a felhasználói folyamat beállítását a regisztrációs és bejelentkezési felhasználói folyamat nevével.
+1. Frissítse a felhasználói folyamat beállítását a regisztrációs és bejelentkezési felhasználói folyamat *B2C_1_signupsignin1*.
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Konfigurálja a hatókör beállításait, hogy egyezzenek a portálon korábban létrehozottakkal.
+1. Konfigurálja a hatókörök beállítást a portálon létrehozott beállításoknak megfelelően.
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -136,16 +137,17 @@ A következő két projekt szerepel a minta megoldásban:
 A **TaskWebApp** és a **TaskService** projektet is futtatnia kell.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, és válassza az **Indítási projektek beállítása...** lehetőséget.
-2. **Több indítási projektet**is kijelölhet.
-3. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**.
-4. A konfiguráció mentéséhez kattintson **az OK** gombra.
-5. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás a saját böngésző lapján nyílik meg. `https://localhost:44316/` a webalkalmazás.
-    `https://localhost:44332/` a webes API.
+1. **Több indítási projektet**is kijelölhet.
+1. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**.
+1. A konfiguráció mentéséhez kattintson **az OK** gombra.
+1. Nyomja le az **F5** gombot mindkét alkalmazás futtatásához. Minden alkalmazás saját böngészőablakban nyílik meg.
+    * `https://localhost:44316/`a webalkalmazás.
+    * `https://localhost:44332/` a webes API.
 
-6. A webalkalmazásban kattintson a **regisztráció/bejelentkezés** lehetőségre a webalkalmazásba való bejelentkezéshez. Használja a korábban létrehozott fiókot.
-7. A bejelentkezést követően kattintson **a Feladatlista** elemre, és hozzon létre feladatlistát.
+1. A webalkalmazásban válassza a **regisztráció/bejelentkezés** lehetőséget a webalkalmazásba való bejelentkezéshez. Használja a korábban létrehozott fiókot.
+1. A bejelentkezést követően válassza a **Feladatlista** elemet, és hozzon létre feladatlistát.
 
-Ha feladatlistát hoz létre, a webalkalmazás egy kérést küld a webes API-nak a Feladatlista elem létrehozásához. A védett webalkalmazás meghívja a védett webes API-t a Azure AD B2C-bérlőben.
+Ha feladatlistát hoz létre, a webalkalmazás egy kérést küld a webes API-nak a Feladatlista elem létrehozásához. A védett webalkalmazás a Azure AD B2C által védett webes API-t hívja meg.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,14 +4,14 @@ description: Az Azure Blob Storage feltöltése az Azure HPC cache használatáv
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775649"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105316"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Adatáthelyezés az Azure Blob Storage-ba az Azure HPC cache szolgáltatásba
 
@@ -31,15 +31,17 @@ Ha nem kívánja használni a betöltési segédprogramot, vagy ha tartalmat sze
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>A blob Storage-ban tárolt előzetes betöltés a CLFSLoad-mel
 
-A [avere CLFSLoad](https://aka.ms/avere-clfsload) segédprogrammal az új blob Storage-tárolóba másolhatja az Adatmásolást, mielőtt hozzáadja azt a tároló céljához. Ez a segédprogram Linux rendszerű virtuális gépen fut, és az Azure HPC cache-hez szükséges saját formátumban írja az adatot. Ez a leghatékonyabb módszer a blob Storage-tárolók feltöltésére a gyorsítótárral való használatra.
+Használhatja a <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> A avere CLFSLoad segédprogrammal az új blob Storage-tárolóba másolhatja az Adatmásolást, mielőtt hozzáadja azt tárolási célként. Ez a segédprogram egyetlen Linux rendszeren fut, és az Azure HPC cache számára szükséges saját formátumban írja az adatot. A CLFSLoad a leghatékonyabb módszer a blob Storage-tárolók feltöltésére a gyorsítótárral való használatra.
+
+Az avere CLFSLoad segédprogram az Azure HPC cache csapatának kérésére érhető el. Kérje meg a csapat kapcsolattartóját, vagy nyisson meg egy támogatási jegyet a segítség kéréséhez.
 
 Ez a beállítás csak az új, üres tárolókkal működik. Hozza létre a tárolót a avere CLFSLoad használata előtt.
 
-Részletes információkat a [avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md)tartalmaz. <!-- caution literal link -->
+A részletes információkat a avere CLFSLoad-eloszlás tartalmazza, amely az Azure HPC cache csapatának kérésére érhető el. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 A folyamat általános áttekintése:
 
-1. Készítse elő a linuxos rendszert (fizikai vagy virtuális gépet) a Python 3,6-es vagy újabb verziójával. (A Python 3,7 ajánlott a jobb teljesítmény érdekében.)
+1. Készítse elő a linuxos rendszert (VM vagy fizikai) a Python 3,6-es vagy újabb verziójával. (A Python 3,7 ajánlott a jobb teljesítmény érdekében.)
 1. Telepítse a avere-CLFSLoad szoftvert a Linux rendszerre.
 1. Hajtsa végre az átvitelt a Linux parancssorból.
 
@@ -50,7 +52,7 @@ A avere CLFSLoad segédprogramnak a következő információkra van szüksége:
 * Közös hozzáférésű aláírási (SAS) token, amely lehetővé teszi a segédprogram számára a tárolóba való írást
 * Az adatforrás helyi elérési útja – vagy egy helyi könyvtár, amely a másolni kívánt adatforrást vagy egy csatlakoztatott távoli rendszer helyi elérési útját tartalmazza.
 
-A követelményeket részletesen ismertetjük a [avere CLFSLoad readme](https://aka.ms/avere-clfsload)-ban.
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Adatmásolás az Azure HPC cache használatával
 

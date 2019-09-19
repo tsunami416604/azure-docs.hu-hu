@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e0c85dba22a7c689631a853bc22d58d1cc4093aa
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991049"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105002"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: A Modern olvasó indítása (Node.js)
 
@@ -85,7 +85,7 @@ Ezután nyissa meg az _app. js_ fájlt, és adja hozzá a következőt a fájl e
 require('dotenv').config();
 ```
 
-Nyissa meg a _routes\index.js_ fájlt, és az alábbi importálást a fájl elejére:
+Nyissa meg a _routes\index.js_ fájlt, és adja hozzá a következő kódot a fájl elejéhez:
 
 ```javascript
 var request = require('request');
@@ -214,7 +214,7 @@ A lebilincselő olvasó számos különböző nyelvet támogat. A tartalom nyelv
     });
     ```
 
-3. Navigáljon _http://localhost:3000_ újra. Meg kell jelennie a spanyol szövegnek az oldalon, és amikor a magával **ragadó olvasóra**kattint, megjelenik a magától megjelenő olvasó is.
+3. Navigáljon _http://localhost:3000_ újra. Meg kell jelennie a spanyol szövegnek az oldalon, és amikor a **magával ragadó olvasóra**kattint, megjelenik a magától megjelenő olvasó is.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>A lebilincselő olvasó felület nyelvének meghatározása
 
@@ -264,5 +264,5 @@ A [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)használatával a
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a magára az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK](./reference.md) -referenciával
-* Kód mintáinak megtekintése [](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp) a githubon
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
+* Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

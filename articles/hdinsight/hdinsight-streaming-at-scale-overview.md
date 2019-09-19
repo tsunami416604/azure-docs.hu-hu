@@ -8,22 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076796"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105334"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
 A valós idejű big data megoldások a mozgásban lévő adatkezelési műveletek során működnek. Ezek az értékek jellemzően a legértékesebb a megérkezéskor. Ha a bejövő adatfolyam ennél a pillanatnál nagyobb lesz, lehet, hogy le kell állítania az erőforrásokat. Azt is megteheti, hogy egy HDInsight-fürt vertikálisan képes megfelelni a folyamatos átviteli megoldásoknak. ehhez szükség van csomópontok hozzáadására.
 
-
 Egy adatfolyam-alkalmazásban egy vagy több adatforrás olyan eseményeket generál (néha több millió másodpercenként), amelyeket gyorsan kell bevezetni a hasznos információk eldobása nélkül. A bejövő eseményeket *adatfolyam-puffereléssel*, más néven *Event Queuing*szolgáltatással kezelik, például [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Az események összegyűjtése után az *adatfolyam-feldolgozási* rétegben található valós idejű elemzési rendszer használatával elemezheti az adatokat, például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók hosszú távú tárolási rendszerekben, például a [Azure Data Lake Storageban](https://azure.microsoft.com/services/storage/data-lake-storage/), és valós időben jeleníthetők meg az üzleti intelligencia irányítópultján, például [Power bi](https://powerbi.microsoft.com), tabló vagy egyéni weblap.
 
-
-![HDInsight streaming-mintázatok](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight streaming-minták](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

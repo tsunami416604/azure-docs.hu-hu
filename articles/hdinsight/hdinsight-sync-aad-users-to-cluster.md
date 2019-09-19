@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960846"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105371"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
@@ -31,11 +31,11 @@ A gazdagépek megtekintéséhez nyissa meg a Ambari webes felhasználói felüle
 
 2. Válassza a **minden felhasználó** lehetőséget a bal oldali menüben, majd válassza az **új felhasználó**lehetőséget.
 
-    ![Minden felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    ![Az összes felhasználó és csoport Azure Portal](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Fejezze be az új felhasználói űrlapot. Válassza ki a fürtön alapuló engedélyek hozzárendeléséhez létrehozott csoportokat. Ebben a példában hozzon létre egy "HiveUsers" nevű csoportot, amelyhez új felhasználókat rendelhet hozzá. Az ESP `HiveUsers` -fürtök létrehozására [vonatkozó példa](hdinsight-domain-joined-configure.md) a következő két csoport hozzáadását `AAD DC Administrators`tartalmazza: és.
 
-    ![Új felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    ![Azure Portal felhasználói ablaktábla csoportok kiválasztása](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -47,7 +47,7 @@ A következő metódus a POST és a Ambari REST API használja. További inform�
 
 1. [Csatlakozzon az SSH-val a fürthöz](hdinsight-hadoop-linux-use-ssh-unix.md). A Azure Portal a fürt áttekintés paneljén válassza a **Secure Shell (SSH)** gombot.
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
+    ![HDInsight Secure Shell (SSH) ikon](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Másolja a megjelenített `ssh` parancsot, és illessze be az SSH-ügyfélbe. Ha a rendszer kéri, adja meg az ssh-felhasználó jelszavát.
 
@@ -131,15 +131,15 @@ Nyissa meg az [Apache Ambari webes felületét](hdinsight-hadoop-manage-ambari.m
 
 1. A Ambari Irányítópultján kattintson a **felügyelet Ambari** elemre a **rendszergazda** menüben.
 
-    ![Ambari kezelése](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    ![Apache Ambari-irányítópult Ambari kezelése](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. A lap bal oldalán, a **felhasználó + csoport kezelése** menü csoportjában válassza a **felhasználók** lehetőséget.
 
-    ![Felhasználók menüelem](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    ![HDInsight-felhasználók és-csoportok menü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Az új felhasználónak szerepelnie kell a felhasználók táblában. A típus nem értékre `LDAP` van állítva `Local`.
 
-    ![Felhasználók oldal](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    ![HDInsight HRE-felhasználók lap – áttekintés](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Jelentkezzen be a Ambari új felhasználóként
 

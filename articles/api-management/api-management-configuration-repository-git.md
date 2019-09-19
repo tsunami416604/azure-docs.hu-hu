@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b4ee4ca2ede2e0a2d6d1af906cc34051c76353bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073760"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104968"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>A API Management szolgáltatás konfigurációjának mentése és konfigurálása a git használatával
 
@@ -99,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 Ha ez hibát jelez, próbálja meg az URL-címet kódolni a parancs jelszó részében. Ennek egyik gyors módja a Visual Studio megnyitása, és a következő parancs kiadása a **parancsablakban**. Az **azonnali ablak**megnyitásához nyisson meg bármilyen megoldást vagy projektet a Visual Studióban (vagy hozzon létre egy új üres konzol alkalmazást), és válassza a **Windows**, **azonnali** lehetőséget a **hibakeresés** menüben.
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 A git parancs létrehozásához használja a kódolt jelszót a felhasználónévvel és a tárház helyével együtt.
@@ -112,7 +112,7 @@ A tárház klónozása után megtekintheti és használhatja a helyi fájlrendsz
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>A helyi tárház frissítése a legújabb szolgáltatási példány-konfigurációval
 
-Ha módosítja a API Management Service-példányát a Azure Portal vagy a REST API használatával, ezeket a változtatásokat a tárházba kell mentenie, mielőtt frissíteni tudja a helyi tárházat a legújabb módosításokkal. Ehhez kattintson a **konfiguráció mentése** a tárházba lehetőségre a Azure Portal **konfigurációs tárház** lapján, majd adja ki a következő parancsot a helyi tárházban.
+Ha módosítja a API Management Service-példányát a Azure Portal vagy a REST API használatával, ezeket a változtatásokat a tárházba kell mentenie, mielőtt frissíteni tudja a helyi tárházat a legújabb módosításokkal. Ehhez kattintson a **konfiguráció mentése a tárházba** lehetőségre a Azure Portal **konfigurációs tárház** lapján, majd adja ki a következő parancsot a helyi tárházban.
 
 ```
 git pull
@@ -229,7 +229,7 @@ A `apis` mappa a szolgáltatási példányban található minden API-hoz tartalm
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa a szolgáltatási példányban definiált egyes csoportok mappáját tartalmazza.
 
-* `groups\<group name>\configuration.json`– Ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott csoport](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) beolvasása műveletet.
+* `groups\<group name>\configuration.json`– Ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott csoport beolvasása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) műveletet.
 * `groups\<group name>\description.html`– Ez a csoport leírása, és a `description` [csoport entitás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)tulajdonságának felel meg.
 
 ### <a name="policies-folder"></a>házirendek mappa
@@ -249,7 +249,7 @@ A `portalStyles` mappa konfigurációs és stíluslapokat tartalmaz a szolgálta
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa tartalmazza a szolgáltatási példányban definiált egyes termékek mappáját.
 
-* `products\<product name>\configuration.json`– Ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott termék](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) beolvasása műveletet.
+* `products\<product name>\configuration.json`– Ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha meghívja az [adott termék beolvasása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) műveletet.
 * `products\<product name>\product.description.html`– Ez a termék leírása, és megfelel `description` a [termék entitás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) tulajdonságának a REST APIban.
 
 ### <a name="templates"></a>sablonok

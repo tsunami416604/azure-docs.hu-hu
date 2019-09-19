@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141771"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105493"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Mért számlázás a Marketplace-mérési szolgáltatás használatával
 
@@ -36,7 +36,7 @@ Ha az ajánlatot az árképzési modelljeivel együtt határozza meg, fontos meg
 
 * Minden SaaS-ajánlat úgy van konfigurálva, hogy a Microsofton keresztül értékesítsen vagy sem.  Ez a beállítás az ajánlat közzétételekor nem módosítható.
 * A Microsofton keresztüli értékesítésre konfigurált SaaS-ajánlatok egy vagy több csomaggal rendelkezhetnek. A felhasználók a SaaS-ajánlatra fizetnek, de a Microsoft a csomag keretében vásárolható meg.
-* Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagyfelhasználónként. Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Például nem lehet olyan ajánlat, amelyben az egyik terve átalánydíjas díjszabási modell, a másik pedig felhasználónkénti díjszabási modell.
+* Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagy **felhasználónként**. Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Például nem lehet olyan ajánlat, amelyben az egyik terve átalánydíjas díjszabási modell, a másik pedig felhasználónkénti díjszabási modell.
 * Az átalánydíjas számlázási modellhez konfigurált minden egyes csomagon belül legalább egy ismétlődő díj szerepel (amely $0):
     * Ismétlődő **havi** díj: a csomag megvásárlásakor a rendszer havi ismétlődéssel előre fizetett átalányösszegű havi díjat számít fel.
     * Ismétlődő **éves** díj: a csomag megvásárlásakor a felhasználó éves ismétlődéssel előre fizetett átalányösszegű éves díj.
@@ -55,7 +55,7 @@ A contoso például egy contoso Notification Services (CNS) nevű SaaS-szolgált
     * Az 50000-es e-mailek után fizessen $0,5 minden egyes 100 e-mailhez
     * Az 10000-es szövegeken kívül minden szövegért fizessen $0,01
 
-A CNS szolgáltatásra előfizető Azure-ügyfelek a kiválasztott csomag alapján havonta elküldhetik a benne foglalt mennyiségű szöveget és e-maileket.  Ha az ügyfelek a benne foglalt mennyiségnél többet használnak, nem kell megváltoztatniuk a csomagokat, vagy bármi mást elvégezniük.  A contoso a befoglalt mennyiségen felül méri a túlterhelést, és megkezdi a használati események kibocsátását a Microsoftnak a [Piactéri mérési szolgáltatás API](./marketplace-metering-service-apis.md)használatával történő további használat érdekében.  A Microsoft ezt követően a kiadó által megadott további használatért díjat számít fel.
+A CNS szolgáltatásra előfizető Azure-ügyfelek a kiválasztott csomag alapján havonta elküldhetik a benne foglalt mennyiségű szöveget és e-maileket.  A contoso a használati események a Microsoftnak való elküldése nélkül méri a használatot a befoglalt mennyiséggel.  Ha az ügyfelek a benne foglalt mennyiségnél többet használnak, nem kell megváltoztatniuk a csomagokat, vagy bármi mást elvégezniük.  A contoso a befoglalt mennyiségen felül méri a túlterhelést, és megkezdi a használati események kibocsátását a Microsoftnak a [Piactéri mérési szolgáltatás API](./marketplace-metering-service-apis.md)használatával történő további használat érdekében.  A Microsoft ezt követően a kiadó által megadott további használatért díjat számít fel.
 
 ## <a name="billing-dimensions"></a>Számlázási méretek
 

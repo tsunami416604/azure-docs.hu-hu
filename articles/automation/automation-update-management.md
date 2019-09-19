@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a2b62cc0548b0bbedae35f6a0d72ac327723e60
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743838"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102650"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -55,9 +55,9 @@ A megoldás azt mutatja be, hogy a számítógép naprakészen van-e attól füg
 > [!NOTE]
 > Ahhoz, hogy a szolgáltatás megfelelően jelentsen, Update Management szükség van bizonyos URL-címekre és portokra. Ha többet szeretne megtudni ezekről a követelményekről, tekintse meg [a hibrid feldolgozók hálózati tervezése](automation-hybrid-runbook-worker.md#network-planning)című témakört.
 
-A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. A *választhatóként* besorolt frissítések nem szerepelnek a Windows rendszerű számítógépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
+A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. A választhatóként besorolt frissítések nem szerepelnek a Windows rendszerű számítógépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
 
-Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket, vagy a számítógépek explicit módon történő megadásával, vagy egy adott számítógép, illetve egy [Azure-lekérdezés](#azure-machines) naplójának keresésén alapuló [számítógépcsoport](../azure-monitor/platform/computer-groups.md) kiválasztásával. Ez dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján. Ezek a csoportok eltérnek a [hatókör-konfigurációtól](../azure-monitor/insights/solution-targeting.md), amely csak annak meghatározására szolgál, hogy mely gépek kapják meg a megoldást használó felügyeleti csomagokat.
+Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket, vagy a számítógépek explicit módon történő megadásával, vagy egy adott számítógép, illetve egy [Azure-lekérdezés](#azure-machines) naplójának keresésén alapuló [számítógépcsoport](../azure-monitor/platform/computer-groups.md) kiválasztásával. Ez dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján. Ezek a csoportok eltérnek a [hatókör](../azure-monitor/insights/solution-targeting.md)-konfigurációtól, amely csak annak meghatározására szolgál, hogy mely gépek kapják meg a megoldást használó felügyeleti csomagokat.
 
 Megadhat egy ütemtervet is a jóváhagyáshoz, és beállíthatja azt az időtartamot, ameddig a frissítések telepíthetők. Ezt az időtartamot karbantartási időszaknak nevezzük. Ha újraindításra van szükség, a karbantartási időszak tíz perce van fenntartva újraindítás esetén, és kiválasztotta a megfelelő újraindítási beállítást. Ha a javítás a vártnál hosszabb időt vesz igénybe, és a karbantartási időszakban kevesebb, mint tíz perc van, a rendszer újraindítást hajt végre.
 
@@ -75,7 +75,7 @@ A következő táblázat a támogatott operációs rendszerek listáját tartalm
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (RTM és SP1 standard)|**Frissítési felmérések**: Támogatott<br><br>**Javítás**: Hibrid Runbook-feldolgozót igényel. Lásd: [hibrid Runbook Worker-követelmények](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
+|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM és SP1 standard)|**Frissítési felmérések**: Támogatott<br><br>**Javítás**: Hibrid Runbook-feldolgozót igényel. Lásd: [hibrid Runbook Worker-követelmények](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)|
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz a "yum" utasítás szükséges ahhoz, hogy a CentOS ne legyen a dobozban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](#linux-2) rendszeren          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -99,7 +99,7 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 
 #### <a name="windows"></a>Windows
 
-A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzá kell férniük Microsoft Updatehoz. A Update Management a System Center Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a System Center Configuration Manager integrálása Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration)használatával. A [Windows-ügynököt](../azure-monitor/platform/agent-windows.md) kötelező megadni. Az ügynök automatikusan települ, ha Azure-beli virtuális gépet helyez üzembe.
+A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzá kell férniük Microsoft Updatehoz. A Update Management a System Center Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a System Center Configuration Manager integrálása Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration)használatával. A [Windows](../azure-monitor/platform/agent-windows.md) -ügynököt kötelező megadni. Az ügynök automatikusan települ, ha Azure-beli virtuális gépet helyez üzembe.
 
 > [!NOTE]
 > Lehetséges, hogy a felhasználó módosíthatja Csoportházirend, hogy a számítógép újraindítása csak a felhasználó által, nem pedig a rendszer által végezhető el. A felügyelt gépek elakadnak, ha Update Management nem rendelkezik jogosultsággal a gép újraindításához a felhasználó manuális beavatkozása nélkül.
@@ -108,7 +108,7 @@ A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kom
 
 #### <a name="linux"></a>Linux
 
-Linux esetén a gépnek hozzá kell férnie egy frissítési tárházhoz. A frissítési tárház lehet magán vagy nyilvános. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. Ez a megoldás nem támogatja az olyan Log Analytics Linux-ügynököt, amely több Log Analytics munkaterületnek való jelentésre van konfigurálva.
+Linux esetén a gépnek hozzá kell férnie egy frissítési tárházhoz. A frissítési tárház lehet magán vagy nyilvános. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. Ez a megoldás nem támogatja az olyan Log Analytics Linux-ügynököt, amely több Log Analytics munkaterületnek való jelentésre van konfigurálva.  A gépnek a Python 2. x verziójának is telepítve kell lennie.
 
 További információ a Linux rendszerhez készült Log Analytics-ügynök telepítéséről és a legújabb verzió letöltéséről: [log Analytics Agent for Linux](https://github.com/microsoft/oms-agent-for-linux). További információ a Windows Log Analytics-ügynök telepítéséről: [Microsoft monitoring Agent for Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -124,7 +124,7 @@ A megoldás a következő erőforrásokból áll. A rendszer hozzáadja az erőf
 
 A megoldás engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakozó Windows-számítógépek automatikusan hibrid Runbook-feldolgozóként vannak konfigurálva, hogy támogassák a megoldásban foglalt runbookok.
 
-A megoldás által felügyelt Windows-számítógépek a **hibrid munkavégző csoportok** ablaktáblán jelennek meg az Automation-fiókhoz tartozó **rendszer hibrid feldolgozói csoportként** . A megoldások az elnevezési konvenció *hostname FQDN_GUID*használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, sikertelenek lesznek. Ezek a csoportok kizárólag a felügyeleti megoldást támogatják.
+A megoldás által felügyelt Windows-számítógépek a **hibrid munkavégző csoportok** ablaktáblán jelennek meg az Automation-fiókhoz tartozó **rendszer hibrid** feldolgozói csoportként. A megoldások az elnevezési konvenció *hostname FQDN_GUID*használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, sikertelenek lesznek. Ezek a csoportok kizárólag a felügyeleti megoldást támogatják.
 
 A Windows rendszerű számítógépeket felveheti az Automation-fiókjában lévő hibrid Runbook-feldolgozó csoportba az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook Worker Group tagsághoz. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
@@ -174,9 +174,9 @@ Heartbeat
 Windows rendszerű számítógépen a következő információkat tekintheti meg az ügynök kapcsolatának ellenőrzéséhez Azure Monitor naplók használatával:
 
 1. A vezérlőpulton nyissa meg a **Microsoft monitoring Agent ügynököt**. Az **Azure log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **A Microsoft monitoring Agent sikeresen csatlakozott a log Analyticshoz**.
-2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
+2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
 
-Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
+Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows](../azure-monitor/platform/agent-windows.md) -ügynökhöz vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
 
 > [!NOTE]
 > Ha a linuxos rendszerek proxy vagy Log Analytics átjáróval való kommunikációra vannak konfigurálva, és a megoldás előkészítését végzi, frissítse a *proxy. conf* engedélyeit, hogy a omiuser csoport olvasási engedélyt adjon a fájlhoz a következő parancsok használatával:
@@ -184,7 +184,7 @@ Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök �
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Az újonnan hozzáadott Linux-ügynökök a felmérés végrehajtása után **frissülő** állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
+Az újonnan hozzáadott Linux-ügynökök a felmérés végrehajtása után frissülő állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
 
 Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e Azure Monitor naplókkal, tekintse meg az [Operations Manager integráció ellenőrzése Azure monitor naplókkal](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)című témakört.
 
@@ -214,7 +214,7 @@ Az átlagos Azure Monitor a Update Management-t használó gépek adatfelhaszná
 
 Az Automation-fiókjában válassza a **Update Management** lehetőséget a gépek állapotának megtekintéséhez.
 
-Ez a nézet a gépekre, a hiányzó frissítésekre, a frissítések telepítésére és az ütemezett frissítések telepítésére vonatkozó információkat tartalmaz. A **megfelelőség oszlopban**láthatja, hogy mikor történt a gép utolsó értékelése. A **frissítési ügynök készültségi** oszlopában láthatja, hogy a frissítési ügynök állapota. Ha probléma merül fel, a hivatkozásra kattintva keresse meg a hibaelhárítási dokumentációt, amelyből megtudhatja, hogy milyen lépéseket kell tennie a probléma megoldásához.
+Ez a nézet a gépekre, a hiányzó frissítésekre, a frissítések telepítésére és az ütemezett frissítések telepítésére vonatkozó információkat tartalmaz. A **megfelelőség oszlopban**láthatja, hogy mikor történt a gép utolsó értékelése. A **frissítési** ügynök készültségi oszlopában láthatja, hogy a frissítési ügynök állapota. Ha probléma merül fel, a hivatkozásra kattintva keresse meg a hibaelhárítási dokumentációt, amelyből megtudhatja, hogy milyen lépéseket kell tennie a probléma megoldásához.
 
 Ha olyan naplót szeretne futtatni, amely adatokat ad vissza a gépre, a frissítésre vagy a központi telepítésre vonatkozóan, válassza ki az elemet a listában. Megnyílik a **napló keresése** ablaktábla a kiválasztott elem lekérdezésével:
 
@@ -243,7 +243,7 @@ Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) 
 | Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
 |Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [beilleszkedési viselkedés](automation-update-management.md#inclusion-behavior) |
-|Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
+|Ütemezési beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
 | Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
 | Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
 | Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
@@ -299,7 +299,7 @@ Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel
 |Kumulatív frissítések     | Az egyszerű üzembe helyezéshez együtt csomagolt gyorsjavítások összesített készlete.        |
 |Funkciócsomagok     | A termék kiadásán kívül terjesztett új termék-szolgáltatások.        |
 |Szervizcsomagok     | Egy alkalmazásra alkalmazott gyorsjavítások kumulatív készlete.        |
-|Definíciófrissítések     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
+|A definíciók frissítései     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
 |Eszközök     | Olyan segédprogram vagy szolgáltatás, amely egy vagy több feladat elvégzését segíti elő.        |
 |Frissítések     | Egy aktuálisan telepített alkalmazás vagy fájl frissítése.        |
 
@@ -324,7 +324,7 @@ A Update Management Windows Update a Windows-frissítések letöltésére és te
 
 ### <a name="pre-download-updates"></a>Frissítések előzetes letöltése
 
-A frissítések Csoportházirendban való automatikus letöltésének konfigurálásához beállíthatja az [Automatikus frissítések konfigurálása beállítást](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**értékre. Ezzel letölti a háttérben a szükséges frissítéseket, de nem telepíti őket. Ez Update Management az ütemtervek vezérlésében, de a frissítések letöltésének engedélyezése a Update Management karbantartási időszakon kívül. Ez megakadályozhatja, hogy a **karbantartási időszak túllépte** a hibákat a Update Managementban.
+A frissítések Csoportházirendban való automatikus letöltésének konfigurálásához beállíthatja az [Automatikus frissítések konfigurálása beállítást](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**értékre. Ezzel letölti a háttérben a szükséges frissítéseket, de nem telepíti őket. Ez Update Management az ütemtervek vezérlésében, de a frissítések letöltésének engedélyezése a Update Management karbantartási időszakon kívül. Ez megakadályozhatja, hogy a **karbantartási** időszak túllépte a hibákat a Update Managementban.
 
 Ezt a PowerShell-lel is beállíthatja, ha egy olyan rendszeren futtatja a következő PowerShell-t, amelyen szeretné automatikusan letölteni a frissítéseket.
 
@@ -380,7 +380,7 @@ A kivételek meghatározásakor a felsorolt címek használatát javasoljuk. IP-
 
 Az Internet-hozzáférés [nélküli számítógépek összekapcsolására](../azure-monitor/platform/gateway.md) vonatkozó utasításokat követve konfigurálja azokat a gépeket, amelyek nem rendelkeznek interneteléréssel.
 
-## <a name="search-logs"></a>Keresési naplók
+## <a name="search-logs"></a>Keresés naplókban
 
 A Azure Portalban megadott részletek mellett a naplókon is végezhet keresést. A megoldás oldalain válassza a **log Analytics**lehetőséget. Megnyílik a **napló keresése** panel.
 
@@ -663,7 +663,7 @@ A frissítések Update besorolással történő központi telepítése nem műk�
 Virtuális gép eltávolítása Update Managementról:
 
 * A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
-* Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)-ügynököt.
 
 ## <a name="next-steps"></a>További lépések
 

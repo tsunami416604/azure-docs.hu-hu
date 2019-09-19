@@ -2,18 +2,18 @@
 title: Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel
 description: Ismerje meg, hogyan használhatja a Azure Data Lake Storage Gen2t az Azure HDInsight-fürtökkel.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: bd459998568287db767e98a2094d6f80a126ccde
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077113"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104466"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel
 
@@ -90,9 +90,9 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
         ![A Data Lake Storage Gen2 Azure HDInsight való használatának tárolási beállításai](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * Az **identitás**területen válassza ki a megfelelő előfizetést és az újonnan létrehozott, felhasználó által hozzárendelt felügyelt identitást.
-        
-        ![Az Data Lake Storage Gen2 Azure HDInsight való használatának identitás-beállításai](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-        
+
+        ![Az Data Lake Storage Gen2 és a HDInsight használatára vonatkozó identitás-beállítások](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
 > [!Note]
 > Másodlagos Data Lake Storage Gen2 fiók hozzáadásához a Storage-fiók szintjén egyszerűen rendelje hozzá a korábban létrehozott felügyelt identitást a hozzáadni kívánt új Data Lake Storage Gen2 Storage-fiókhoz. Javasoljuk, hogy a HDInsight nem támogatja a másodlagos Data Lake Storage Gen2 fiók hozzáadását a "további Storage-fiókok" panelen. 
 

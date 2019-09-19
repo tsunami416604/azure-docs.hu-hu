@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542889"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103795"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással
 
@@ -60,7 +60,7 @@ Az első Azure AD-alkalmazás a felhasználó Azure AD-csoporttagság beszerzés
 
     d. Ha elkészült, válassza a **regisztráció** lehetőséget.
 
-2. Válassza a **jegyzékfájl**lehetőséget, majd szerkessze a **groupMembershipClaims:** Value értéket. Ha végzett a frissítésekkel, válassza a **Mentés**lehetőséget.
+2. Válassza a **jegyzékfájl**lehetőséget, majd szerkessze a **groupMembershipClaims:** Value **értéket.** Ha végzett a frissítésekkel, válassza a **Mentés**lehetőséget.
 
     ![Csoporttagság frissítése az összesre](media/aad-integration/edit-manifest.png)
 
@@ -86,7 +86,7 @@ Az első Azure AD-alkalmazás a felhasználó Azure AD-csoporttagság beszerzés
 
     e. A frissítések mentéséhez válassza az **engedélyek** megadása lehetőséget.
 
-    f. A **jóváhagyás engedélyezése**területen válassza a **rendszergazdai jóváhagyás megadása**lehetőséget. Ez a gomb nem érhető el, ha az aktuális fiók nem bérlői rendszergazda.
+    f. A **jóváhagyás engedélyezése**területen válassza a **rendszergazdai jóváhagyás megadása**lehetőséget. Ez a gomb nem érhető el, mert a jelenleg használt fiók nem szerepel bérlői rendszergazdaként.
 
     Az engedélyek sikeres megadása után a következő értesítés jelenik meg a portálon:
 

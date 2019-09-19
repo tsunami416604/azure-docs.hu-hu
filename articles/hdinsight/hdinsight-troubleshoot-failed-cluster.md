@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8ec081a758096298036efacfe1b0e6d62ed00cbd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961929"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105344"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight-fürtön futó lassú vagy sikertelen feladat hibáinak megoldása
 
@@ -80,7 +80,7 @@ Minden HDInsight-fürt különböző Azure-szolgáltatásokra támaszkodik, vala
 
 Az Apache Ambari egy HDInsight-fürt felügyeletét és figyelését teszi lehetővé webes felhasználói felületen és REST API. A Ambari a Linux-alapú HDInsight-fürtökön található. Válassza ki a **fürt irányítópultjának** paneljét a Azure Portal HDInsight oldalon.  A **HDInsight-fürt irányítópultja** ablaktáblán kattintson a Ambari felhasználói felületének megnyitásához, és adja meg a fürt bejelentkezési hitelesítő adatait.  
 
-![Az Ambari felhasználói felületén](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari nézetek** elemet a Azure Portal oldalon.  Ez a lista a telepített könyvtáraktól függ. Például megtekintheti a FONALak üzenetsor-kezelőjét, a kaptár nézetet és a TEZ nézetet.  Válasszon ki egy szolgáltatási hivatkozást a konfiguráció és a szolgáltatás adatainak megtekintéséhez.
 
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 A Ambari megjelenít egy riasztást, amely megjeleníti azokat a gazdagépeket, amelyeken a Webhcaten szolgáltatás le van kapcsolva. A Webhcaten szolgáltatás biztonsági mentését úgy teheti meg, hogy újraindítja a szolgáltatást a gazdagépén.
 
-![Webhcaten-kiszolgáló újraindítása](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+![Apache Ambari – Webhcaten-kiszolgáló újraindítása](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 Ha a Webhcaten-kiszolgáló továbbra sem jelenik meg, akkor ellenőrizze az operatív naplóban a hibaüzeneteket. További részletekért lásd a `stderr` csomóponton hivatkozott és `stdout` fájlokat.
 
@@ -176,7 +176,7 @@ A fonal szintjén két típusú időkorlát létezik:
 
     Az alábbi képen a joblauncher-várólista a 714,4%-os túlhasználatú helyen látható. Ez akkor fogadható el, ha az alapértelmezett várólistában továbbra is szabad kapacitás áll rendelkezésre a kölcsönzéshez. Ha azonban a fürt teljes mértékben használatban van, és a szál memóriája 100%-os kapacitású, az új feladatoknak várniuk kell, ami végül időtúllépéseket okoz.
 
-    ![Joblauncher-várólista](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    ![HDInsight Job Launcher üzenetsor nézet](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     A probléma kétféleképpen oldható meg: csökkentse a beküldött új feladatok sebességét, vagy növelje a régi feladatok felhasználásának sebességét a fürt skálázásával.
 
@@ -208,7 +208,7 @@ A problémák diagnosztizálásához:
 
 A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a **Stacks és a Versions**elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
 
-![Verem és verziók](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+![Apache Ambari stack és verziók](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>5\. lépés: A naplófájlok vizsgálata
 

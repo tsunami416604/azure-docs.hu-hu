@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989042"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP NetWeaver-vel
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés az SAP NetWeaver használatával történő 
 
     b. Kattintson a **metaadatok**elemre.
 
-    c. Mentse a generált **metaadatokat tartalmazó XML-fájlt** a számítógépén, és töltse fel az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL** -címének automatikus feltöltéséhez Azure Portalban.
+    c. Mentse a generált **metaadatokat tartalmazó XML-fájlt** a számítógépén, és töltse fel az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL-címének** automatikus feltöltéséhez Azure Portalban.
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -163,11 +163,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > ``` 
     > Az ServicePrincipal objektum AZONOSÍTÓját elsőként kell beállítani, vagy itt is átadhatja.
 
-1. Az SAP NetWeaver alkalmazás meghatározott formátumban várja az SAML-kijelentéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. Az SAP NetWeaver alkalmazás meghatározott formátumban várja az SAML-kijelentéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
     a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -181,7 +181,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
@@ -247,11 +247,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. Az **egyszeri** kijelentkezési végpontokon válassza a **HTTPRedirect** lehetőséget, majd a folytatáshoz kattintson a **tovább** gombra.
+8. Az **egyszeri kijelentkezési végpontokon** válassza a **HTTPRedirect** lehetőséget, majd a folytatáshoz kattintson a **tovább** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. Az összetevő- **végpontokon**kattintson a Tovább gombra a folytatáshoz.
+9. Az összetevő- **végpontokon**kattintson **a Tovább gombra a** folytatáshoz.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
@@ -259,7 +259,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Ugrás a lapon a **megbízható szolgáltató** > **identitás** -összevonása elemre (a képernyő aljáról). Kattintson a **Szerkesztés** gombra.
+11. Ugrás a lapon a **megbízható szolgáltató** > **identitás-összevonása** elemre (a képernyő aljáról). Kattintson a **Szerkesztés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
@@ -345,7 +345,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > Üzenet `soft state status is not supported` – figyelmen kívül hagyható, mert nincs probléma. További részletekért tekintse [](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) meg a következőt:
+    > Üzenet `soft state status is not supported` – figyelmen kívül hagyható, mert nincs probléma. További részletekért [tekintse](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) meg a következőt:
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>Szolgáltatás felhasználójának létrehozása a OAuth 2,0-ügyfél számára
 
@@ -354,7 +354,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 2. OAuth-ügyfél regisztrálásakor a `SAML Bearer Grant type`.
 
     >[!NOTE]
-    >További részletekért tekintse meg a OAuth 2,0 ügyfél regisztrációját az SAML-tulajdonos [](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) engedélyezési típusához.
+    >További részletekért tekintse meg a OAuth 2,0 ügyfél regisztrációját az SAML-tulajdonos [engedélyezési típusához](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) .
 
 3. tcod: SU01/hozza létre az ÜGYFÉL1 `System type` felhasználót, és rendelje hozzá a jelszót, mentse el a hitelesítő adatokat az API-programozó számára, akinek a felhasználónevével kell elírnia a felhasználónevet. Nincs hozzárendelve profil vagy szerepkör.
 

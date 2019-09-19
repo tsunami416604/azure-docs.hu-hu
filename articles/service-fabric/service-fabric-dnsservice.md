@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931174"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103243"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS szolgáltatás az Azure-ban Service Fabric
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -73,16 +73,16 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
 
    - Ha engedélyezni szeretné a DNS-szolgáltatást az alapértelmezett beállításokkal, adja `addonFeatures` hozzá azt a `properties` szakaszon belüli szakaszhoz az alábbi példában látható módon:
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - Ha a szolgáltatást nem az alapértelmezett beállításokkal szeretné engedélyezni, vegyen fel `DnsService` egy `fabricSettings` szakaszt a szakaszon belüli `properties` szakaszba. Ebben az esetben nem kell hozzáadnia a DnsService `addonFeatures`a következőhöz:. A DNS szolgáltatáshoz beállítható tulajdonságokkal kapcsolatos további tudnivalókért lásd: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
@@ -111,7 +111,10 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
               ]
             }
        ```
-1. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, és a Service Fabric Explorer rendszerszolgáltatás szakasza alatt található. 
+3. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService`, és a Service Fabric Explorer rendszerszolgáltatás szakasza alatt található. 
+
+> [!NOTE]
+> Ha a DNS-t Letiltottról engedélyezettre frissíti, előfordulhat, hogy a Service Fabric Explorer nem tükrözi az új állapotot. Az Azure Resource Manager-sablonban található UpgradePolicy módosításával oldja fel újra a csomópontokat. További információkért tekintse meg a [Service Fabric-sablonra vonatkozó referenciát](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>A szolgáltatás DNS-nevének beállítása

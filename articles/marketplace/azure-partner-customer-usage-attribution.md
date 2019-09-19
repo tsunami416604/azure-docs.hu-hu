@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962935"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105611"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -33,7 +33,7 @@ Az Azure-alkalmazásban az ügyfél [](https://docs.microsoft.com/azure/marketpl
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-resource-manager-templates"></a>Erőforrás-kezelői sablonok használata
+## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 Számos partneri megoldás van telepítve az ügyfél előfizetéséhez Resource Manager-sablonok használatával. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy gyors útmutatóként, akkor a sablon módosításának folyamata legyen egyszerű.
 
 A megoldási sablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
@@ -166,43 +166,28 @@ A GUID azonosítókat részletesebben is nyomon követheti, például az SKU-t, 
 
 A GUID azonosítókat regisztrálni kell az ügyfelek használati feltételének engedélyezéséhez.
 
-A sablon GUID-azonosítóinak minden regisztrációja az Azure Marketplace Cloud Partner Portal (CPP) használatával történik.
+A sablon GUID-azonosítóinak minden regisztrációja a partner centeren belül történik.
 
-Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a CPP-ben, a rendszer az összes központi telepítést nyomon követi.
+Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a partner Centerben, a rendszer az összes központi telepítést nyomon követi.
 
-1. Jelentkezzen be az [Azure Marketplace](https://aka.ms/listonazuremarketplace) -re, és szerezzen hozzáférést a CPP-hoz.
+1. Regisztráljon [kereskedelmi Piactéri közzétevőként](https://aka.ms/JoinMarketplace).
 
-   * A partnereknek egy profilra van szükségük a [CPP-ben](https://docs.microsoft.com/azure/marketplace/become-publisher). Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
+   * A partnereknek [profilra van](https://docs.microsoft.com/azure/marketplace/become-publisher)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
    * A partnerek több GUID-azonosítót is regisztrálhatnak.
    * A partnerek regisztrálhatnak egy GUID azonosítót a nem Piactéri megoldás sablonjaihoz és ajánlatokhoz.
 
-1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+1. Jelentkezzen be a [partner](https://partner.microsoft.com/dashboard)központba.
 
-1. A jobb felső sarokban válassza ki a fiók ikonját, majd válassza a **közzétevői profil**lehetőséget.
+1. A jobb felső sarokban válassza a beállítások fogaskerék ikont, majd válassza a **fejlesztői beállítások**lehetőséget.
 
-   ![Közzétevői profil kiválasztása](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. A **Fiókbeállítások lapon**válassza a **nyomkövetési GUID hozzáadása elemet.**
 
-1. A **Profil lapon**válassza a **nyomkövetési GUID hozzáadása elemet.**
-
-   ![Válassza a nyomkövetési GUID hozzáadása elemet.](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. A **nyomkövetési GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. A **PID** előtag nélkül adja meg a GUID azonosítót. Az **Egyéni Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
-
-   ![Profil lap](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![Adja meg a GUID azonosítót és az ajánlat leírását](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. A **GUID** mezőben adja meg a nyomkövetési GUID azonosítóját. A **PID** előtag nélkül adja meg a GUID azonosítót. A **Leírás** mezőben adja meg az ajánlat nevét vagy leírását.
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
-   ![Válassza ismét a nyomkövetési GUID hozzáadása elemet.](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Adjon meg egy másik GUID azonosítót és az ajánlat leírását](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. Kattintson a **Mentés** gombra.
 
-   ![Mentés kiválasztása](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a CPP-ben, a rendszer az összes központi telepítést nyomon követi.
 
 ## <a name="verify-the-guid-deployment"></a>A GUID központi telepítésének ellenőrzése
 

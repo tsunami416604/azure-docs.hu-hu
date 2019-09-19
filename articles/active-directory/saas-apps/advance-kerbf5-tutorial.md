@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e8e6a9eb50d15e6e4eb788fefe13d7e5983a834
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 1411d64a6adc6f340b3ad49ca38ca30136bdef47
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166057"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-szel
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)az **F5** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek megszerzéséhez lépjen kapcsolatba az [F5 ügyfél-támogatási csapattal](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
@@ -179,7 +179,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
      ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató** -összekötőt.
+1. Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** .
 
     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure10.png)
  
@@ -194,7 +194,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure11.png)
 
-1. Hozzáférési profil konfigurálásához nyissa meg **> profil/szabályzatok > hozzáférési profil (munkamenetenkénti házirendek) című szakaszt**.
+1. Hozzáférési profil konfigurálásához **nyissa meg > profil/szabályzatok > hozzáférési profil (munkamenetenkénti házirendek) című szakaszt**.
 
     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure12.png)
 
@@ -244,7 +244,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 ### <a name="setting-up-kerberos-delegation"></a>A Kerberos-delegálás beállítása 
 
 >[!Note]
->További részletekért tekintse meg a következőt: [](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf)
+>További részletekért [tekintse](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) meg a következőt:
 
 * **1. lépés: Delegálási fiók létrehozása**
 
@@ -263,7 +263,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
         ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure25.png)
 
-1. Adja meg a fenti hivatkozási dokumentumban említett részleteket [](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)
+1. Adja meg [a fenti hivatkozási](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) dokumentumban említett részleteket
 
 1. Függelék – SAML – F5 BIG-IP változó-hozzárendelések az alábbiakban láthatók:
 
@@ -279,15 +279,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 | eb46b6b6. Session. SAML. Last. assertionID | _9a4e4ddd-148f-45c4-b959-f4d148172e00 |
 | eb46b6b6. Session. SAML. Last. assertionIssueInstant  | 2019-06-16T19:18:03.054 Z |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname | user0 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | user0@superdemo.live |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name | user0@superdemo.live |
-| eb46b6b6.session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/DisplayName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/objectidentifier | 90d5f0e5-8f46-4bfd-b40f-ec973d00fcb7 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/tenantid | e6abffcf-4d23-4388-91c2-bfdfcbb1530c |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/EmailAddress | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/Name | user0@superdemo.live |
+| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. hallgatóság | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: nevek: TC: SAML: 2.0: AC: classs: Password |
 | eb46b6b6. Session. SAML. Last. authNInstant | 2019-06-16T19:18:00.318 Z |

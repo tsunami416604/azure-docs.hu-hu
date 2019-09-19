@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan regisztrálhat és hívhat meg tárolt eljárá
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7732039ff2494ef16fda5afe384a824ec786a8cf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092927"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104835"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB
 
@@ -26,9 +26,9 @@ Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy táro
 > [!NOTE]
 > Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
 
-### <a name="stored-procedures---net-sdk"></a>Tárolt eljárások – .NET SDK
+### <a name="stored-procedures---net-sdk-v2"></a>Tárolt eljárások – .NET SDK v2
 
-Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK használatával:
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK V2 használatával:
 
 ```csharp
 dynamic newItem = new
@@ -56,7 +56,32 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
+```
+
+### <a name="stored-procedures---net-sdk-v3"></a>Tárolt eljárások – .NET SDK v3
+
+Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a .NET SDK v3 használatával:
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy tárolt eljárást a .NET SDK v3 használatával:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Tárolt eljárások – Java SDK
@@ -176,9 +201,9 @@ A végrehajtásakor az eseményindítók átadása a RequestOptions objektumba a
 > [!NOTE]
 > Annak ellenére, hogy az trigger neve listaként van átadva, a művelet végrehajtása csak egy triggert tud végrehajtani.
 
-### <a name="pre-triggers---net-sdk"></a>Előzetes eseményindítók – .NET SDK
+### <a name="pre-triggers---net-sdk-v2"></a>Előzetes eseményindítók – .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy pre-triggert a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy pre-triggert a .NET SDK V2 használatával:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -193,7 +218,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a .NET SDK V2 használatával:
 
 ```csharp
 dynamic newItem = new
@@ -207,6 +232,34 @@ dynamic newItem = new
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
+```
+
+### <a name="pre-triggers---net-sdk-v3"></a>Előzetes eseményindítók – .NET SDK v3
+
+A következő kód bemutatja, hogyan regisztrálhat egy előzetes triggert a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy előzetes triggert a .NET SDK v3 használatával:
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
 ### <a name="pre-triggers---java-sdk"></a>Előzetes eseményindítók – Java SDK
@@ -301,9 +354,9 @@ client.CreateItem(container_link, item, {
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a rendszer a post-trigger forrását menti `trgPostUpdateMetadata.js`.
 
-### <a name="post-triggers---net-sdk"></a>Eseményindítók után – .NET SDK
+### <a name="post-triggers---net-sdk-v2"></a>Eseményindítók utáni .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy triggert a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy triggert a .NET SDK V2 használatával:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -318,7 +371,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy triggert a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy triggert a .NET SDK V2 használatával:
 
 ```csharp
 var newItem = { 
@@ -330,6 +383,32 @@ var newItem = {
 RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
+```
+
+### <a name="post-triggers---net-sdk-v3"></a>Eseményindítók után – .NET SDK v3
+
+A következő kód bemutatja, hogyan regisztrálhat egy post-triggert a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy triggert a .NET SDK v3 használatával:
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
 ### <a name="post-triggers---java-sdk"></a>Triggerek utáni – Java SDK
@@ -422,16 +501,16 @@ client.CreateItem(container_link, item, {
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) az utólagos trigger `udfTax.js`forrását.
 
-### <a name="user-defined-functions---net-sdk"></a>Felhasználó által definiált függvények – .NET SDK
+### <a name="user-defined-functions---net-sdk-v2"></a>Felhasználó által definiált függvények – .NET SDK v2
 
-A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a .NET SDK használatával:
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a .NET SDK V2 használatával:
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -439,7 +518,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a .NET SDK használatával:
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a .NET SDK V2 használatával:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -448,6 +527,32 @@ var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM I
 foreach (var result in results)
 {
     //iterate over results
+}
+```
+
+### <a name="user-defined-functions---net-sdk-v3"></a>Felhasználó által definiált függvények – .NET SDK v3
+
+A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvényt a .NET SDK v3 használatával:
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+A következő kód bemutatja, hogyan hívhat meg egy felhasználó által definiált függvényt a .NET SDK v3 használatával:
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
 }
 ```
 

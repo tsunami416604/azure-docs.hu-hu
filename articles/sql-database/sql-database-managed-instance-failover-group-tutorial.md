@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103104"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103212"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
@@ -29,9 +29,9 @@ SQL Database felügyelt példány hozzáadása egy feladatátvételi csoporthoz.
 > - Feladatátvételi teszt
 
   > [!NOTE]
-  > - Ha ezt az oktatóanyagot hajtja végre, győződjön meg arról, hogy az erőforrásokat a felügyelt példányhoz tartozó [feladatátvételi csoportok beállításának](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)előfeltételei szerint konfigurálja. 
-  > - A felügyelt példányok létrehozása jelentős időt vehet igénybe. Ennek eredményeképpen ez az oktatóanyag több órát is igénybe vehet. További információ a kiépítési időszakokról: felügyelt [példányok kezelési műveletei](sql-database-managed-instance.md#managed-instance-management-operations). 
-  > - A felügyelt példányokkal rendelkező feladatátvevő csoportok jelenleg előzetes verzióban érhetők el. 
+  > - Ha ezt az oktatóanyagot hajtja végre, győződjön meg arról, hogy az erőforrásokat a [felügyelt példányhoz tartozó feladatátvételi csoportok beállításának előfeltételei](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)szerint konfigurálja. 
+  > - A felügyelt példányok létrehozása jelentős időt vehet igénybe. Ennek eredményeképpen ez az oktatóanyag több órát is igénybe vehet. További információ a kiépítési időszakokról: [felügyelt példányok kezelési műveletei](sql-database-managed-instance.md#managed-instance-management-operations). 
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,12 +45,12 @@ Ebben a lépésben létrehozza az erőforráscsoportot és a feladatátvételi c
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
-1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL** -példányok csempén. 
+1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL-példányok** csempén. 
 
     ![Felügyelt példány kiválasztása](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
 1. A **Azure SQL Database felügyelt példány létrehozása** lap **alapok** lapján
-    1. A **Project Details (projekt részletei**) területen válassza ki az előfizetését a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például `myResourceGroup`:. 
+    1. A **Project Details (projekt részletei**) területen válassza ki az **előfizetését** a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például `myResourceGroup`:. 
     1. A **felügyelt példány részletei**területen adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Hagyja meg a számítási és a **tárolási** értékeket az alapértelmezett értékeken. 
     1. A **rendszergazdai fiók**területen adjon meg egy rendszergazdai bejelentkezési azonosítót, `azureuser`például, és egy összetett rendszergazdai jelszót. 
 
@@ -65,7 +65,7 @@ Ebben a lépésben létre fog hozni egy virtuális hálózatot a másodlagos fel
 
 Az elsődleges virtuális hálózat alhálózati tartományának ellenőrzéséhez kövesse az alábbi lépéseket:
 1. A [Azure Portal](https://portal.azure.com)navigáljon az erőforráscsoporthoz, és válassza ki az elsődleges példány virtuális hálózatát. 
-1. Válassza ki az alhálózatok lehetőséget a **Beállítások** területen, és jegyezze fel a **címtartományt**. A másodlagos felügyelt példányhoz tartozó virtuális hálózat alhálózati címtartomány nem fedi át ezt a tartományt. 
+1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, és jegyezze fel a **címtartományt**. A másodlagos felügyelt példányhoz tartozó virtuális hálózat alhálózati címtartomány nem fedi át ezt a tartományt. 
 
 
    ![Elsődleges alhálózat](media/sql-database-managed-instance-failover-group-tutorial/verify-primary-subnet-range.png)
@@ -102,7 +102,7 @@ A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépés
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
-1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL** -példányok csempén. 
+1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL-példányok** csempén. 
 
     ![Felügyelt példány kiválasztása](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
@@ -124,7 +124,7 @@ A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépés
 
    ![Másodlagos MI hálózatkezelés](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. A **További beállítások** lap **geo-replikáció**területén válassza az **Igen** lehetőséget a _feladatátvétel másodlagosként_való használathoz. Válassza ki az elsődleges felügyelt példányt a legördülő menüből. 
+1. A **További beállítások** lap **geo-replikáció**területén válassza az **Igen** lehetőséget a _feladatátvétel másodlagosként való használathoz_. Válassza ki az elsődleges felügyelt példányt a legördülő menüből. 
     1. Ügyeljen arra, hogy a rendezés és az időzóna megfeleljen az elsődleges felügyelt példánynak. Az oktatóanyagban létrehozott elsődleges felügyelt példány az alapértelmezett `SQL_Latin1_General_CP1_CI_AS` rendezést és az `(UTC) Coordinated Universal Time` időzónát használta. 
 
    ![Másodlagos MI hálózatkezelés](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
@@ -138,7 +138,7 @@ A másodlagos felügyelt példány létrehozásához kövesse az alábbi lépés
 Két felügyelt példánynak a feladatátvételi csoportban való részvételhez a két felügyelt példány virtuális hálózatai között olyan átjárót kell konfigurálni, amely engedélyezi a hálózati kommunikációt. Az elsődleges felügyelt példány átjáróját a Azure Portal használatával hozhatja létre:
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az erőforráscsoportot, és válassza ki a **virtuális hálózati** erőforrást az elsődleges felügyelt példányhoz. 
-1. Válassza ki az alhálózatok lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat**hozzáadásához. Hagyja meg az alapértelmezett értékeket. 
+1. Válassza ki az **alhálózatok** lehetőséget a **Beállítások** területen, majd válassza a lehetőséget egy új **átjáró-alhálózat**hozzáadásához. Hagyja meg az alapértelmezett értékeket. 
 
    ![Átjáró hozzáadása az elsődleges felügyelt példányhoz](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
@@ -196,7 +196,7 @@ Ebben a lépésben hozzon létre egy kapcsolatot az átjárók között. Az els�
 
 A kapcsolat konfigurálásához kövesse az alábbi lépéseket:
 
-1. Navigáljon az erőforráscsoporthoz a Azure Portalban [](https://portal.azure.com) , és válassza ki a 4. lépésben létrehozott elsődleges átjárót. 
+1. Navigáljon az erőforráscsoporthoz a [Azure Portalban](https://portal.azure.com) , és válassza ki a 4. lépésben létrehozott elsődleges átjárót. 
 1. A **Beállítások** területen válassza a **kapcsolatok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget egy új kapcsolat létrehozásához. 
 
    ![Elsődleges átjáróhoz való kapcsolódás hozzáadása](media/sql-database-managed-instance-failover-group-tutorial/add-primary-gateway-connection.png)
@@ -230,7 +230,7 @@ Ebben a lépésben létrehozza a feladatátvételi csoportot, és hozzáadja a f
 ## <a name="8---test-failover"></a>8 – feladatátvételi teszt
 Ebben a lépésben a feladatátvételi csoportot a másodlagos kiszolgálóra fogja felvenni, majd a Azure Portal használatával hajtja végre a feladatokat. 
 
-1. Navigáljon a felügyelt példányhoz [](https://portal.azure.com) a Azure Portalon belül, és válassza a **példányok feladatátvételi csoportok** lehetőséget a beállítások területen. 
+1. Navigáljon a felügyelt példányhoz a [Azure Portalon](https://portal.azure.com) belül, és válassza a **példányok feladatátvételi csoportok** lehetőséget a beállítások területen. 
 1. Tekintse át, hogy melyik felügyelt példány az elsődleges, és melyik felügyelt példány a másodlagos. 
 1. Válassza a **feladatátvétel** lehetőséget, majd válassza az **Igen** lehetőséget a TDS-munkamenetek leválasztására vonatkozó figyelmeztetésben. 
 

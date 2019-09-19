@@ -1,20 +1,20 @@
 ---
 title: Magas rendelkezésre állás a Hadoop – Azure HDInsight
 description: Ismerje meg, hogy a HDInsight-fürtök hogyan javítják a megbízhatóságot és a rendelkezésre állást egy további fő csomópont használatával. Ismerje meg, hogy ez milyen hatással van a Hadoop-szolgáltatásokra, például a Ambari és a kaptárra, valamint az egyes fő csomópontok SSH-val való összekapcsolásának módjára.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879766"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104410"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -106,7 +106,7 @@ A Ambari webes felhasználói felülete a `https://CLUSTERNAME.azurehdinsight.ne
 
 Amikor megérkezik a Ambari lapra, a telepített szolgáltatások megjelennek a lap bal oldalán.
 
-![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Apache Ambari telepített szolgáltatások](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Az állapot jelzéséhez számos ikon jelenhet meg a szolgáltatás mellett. A szolgáltatással kapcsolatos riasztások az oldal tetején található **riasztások** hivatkozás használatával tekinthetők meg.  A Ambari számos előre meghatározott riasztást biztosít.
 
@@ -155,11 +155,11 @@ Az egyes szolgáltatások lehetőség kiválasztásával további információka
 
 Míg a szolgáltatás oldala információt nyújt az egyes szolgáltatások állapotáról és konfigurációjáról, nem nyújt információt arról, hogy melyik fő csomóponton fut a szolgáltatás. Ezen információk megtekintéséhez használja a **gazdagépek** hivatkozást az oldal tetején. Ezen a lapon láthatók a fürtön belüli gazdagépek, beleértve a fő csomópontokat is.
 
-![gazdagépek listája](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Apache Ambari átjárócsomóponthoz-gazdagépek listája](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Az egyik fő csomóponthoz tartozó hivatkozás kiválasztásával megjeleníti az adott csomóponton futó szolgáltatásokat és összetevőket.
 
-![Összetevő állapota](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Apache Ambari-összetevő állapota](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 A Ambari használatával kapcsolatos további információkért lásd: [HDInsight figyelése és kezelése az Apache Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: d545cd997b35cfa5e7fec58b17507ce63097fd20
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 7624f15e878e13a93b5b5f395ef9cf9af48c95e4
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898836"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104511"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive lekérdezések optimalizálása az Azure HDInsight
 
@@ -29,11 +29,11 @@ A munkavégző csomópontok számának növelése egy HDInsight-fürtben lehető
 
 * A fürt létrehozásakor megadhatja a munkavégző csomópontok számát a Azure Portal, a Azure PowerShell vagy a parancssori felület használatával.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőfelvételen a Azure Portal munkavégző csomópontjának konfigurációja látható:
   
-    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
-    
+    ![Azure Portal fürt méretének csomópontjai](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
+
 * A létrehozást követően szerkesztheti a munkavégző csomópontok számát úgy, hogy az újbóli létrehozása nélkül is kibővítse a fürtöt:
 
-    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure Portal méretezési fürt mérete](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
 További információ a HDInsight skálázásáról: HDInsight- [fürtök méretezése](hdinsight-scaling-best-practices.md)
 
@@ -41,7 +41,7 @@ További információ a HDInsight skálázásáról: HDInsight- [fürtök méret
 
 Az [Apache TEZ](https://tez.apache.org/) egy alternatív végrehajtási motor a MapReduce motorhoz. A Linux-alapú HDInsight-fürtök alapértelmezés szerint engedélyezve vannak a TEZ.
 
-![tez_1](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight Apache TEZ – áttekintési diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 A TEZ az alábbiak miatt gyorsabb:
 
@@ -55,9 +55,9 @@ További információ ezekről a fogalmakról: [Apache TEZ](https://tez.apache.o
 
 A kaptár lekérdezési TEZ a következő SET paranccsal engedélyezheti a lekérdezés előjavításával:
 
-   ```hive
-   set hive.execution.engine=tez;
-   ```
+```hive
+set hive.execution.engine=tez;
+```
 
 ## <a name="hive-partitioning"></a>Struktúra particionálás
 
@@ -65,7 +65,7 @@ Az I/O műveletek a kaptár-lekérdezések futtatásának legnagyobb teljesítm�
 
 A struktúra particionálását úgy valósítja meg, hogy átrendezi a nyers adattárakat új címtárakba. Minden partíció saját könyvtárral rendelkezik. A particionálást a felhasználó határozza meg. Az alábbi ábrán egy struktúra-táblázat particionálását mutatjuk be az oszlop *év*szerint. A rendszer minden évben létrehoz egy új könyvtárat.
 
-![Struktúra particionálás](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![HDInsight Apache Hive particionálás](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 Néhány particionálási szempont:
 
@@ -75,32 +75,32 @@ Néhány particionálási szempont:
 
 Partíciós tábla létrehozásához használja a *particionált by* záradékot:
 
-   ```hive
-   CREATE TABLE lineitem_part
-       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
-        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
-        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
-   PARTITIONED BY(L_SHIPDATE STRING)
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-   STORED AS TEXTFILE;
-   ```
-   
+```sql
+CREATE TABLE lineitem_part
+      (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
+      L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+      L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+      L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
+PARTITIONED BY(L_SHIPDATE STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE;
+```
+
 A particionált tábla létrehozása után létrehozhat statikus particionálást vagy dinamikus particionálást.
 
 * A **statikus particionálás** azt jelenti, hogy a megfelelő címtárakban már vannak a szilánkokra osztott adathalmazok. A statikus partíciók esetében manuálisan adja hozzá a kaptár-partíciókat a címtár helye alapján. A következő kódrészlet egy példa.
   
-   ```hive
+   ```sql
    INSERT OVERWRITE TABLE lineitem_part
    PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
    SELECT * FROM lineitem 
    WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
-   
+
    ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
-   
+
 * A **dinamikus particionálás** azt jelenti, hogy azt szeretné, hogy a kaptár automatikusan hozzon létre partíciókat. Mivel már létrehozta a particionálási táblázatot az előkészítési táblából, mindössze annyit kell tennie, hogy az adatok beillesztése a particionált táblába:
   
    ```hive
@@ -117,7 +117,7 @@ A particionált tábla létrehozása után létrehozhat statikus particionálás
        L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
-   
+
 További információ: [particionált táblák](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>ORCFile formátum használata
@@ -136,40 +136,40 @@ Az ork (optimalizált sor oszlopos) formátuma igen hatékony módszer a strukt�
 
 Az ork formátum engedélyezéséhez először létre kell hoznia egy táblázatot az *ork-ként tárolt*záradékkal:
 
-   ```hive
-   CREATE TABLE lineitem_orc_part
-       (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
-        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
-        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
-   PARTITIONED BY(L_SHIPDATE STRING)
-   STORED AS ORC;
-   ```
-   
+```sql
+CREATE TABLE lineitem_orc_part
+      (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
+      L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+      L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
+      L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
+PARTITIONED BY(L_SHIPDATE STRING)
+STORED AS ORC;
+```
+
 Ezután szúrja be az adatait az ork táblába az előkészítési táblából. Példa:
 
-   ```hive
-   INSERT INTO TABLE lineitem_orc
-   SELECT L_ORDERKEY as L_ORDERKEY, 
-          L_PARTKEY as L_PARTKEY , 
-          L_SUPPKEY as L_SUPPKEY,
-          L_LINENUMBER as L_LINENUMBER,
-          L_QUANTITY as L_QUANTITY, 
-          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-          L_DISCOUNT as L_DISCOUNT,
-          L_TAX as L_TAX,
-          L_RETURNFLAG as L_RETURNFLAG,
-          L_LINESTATUS as L_LINESTATUS,
-          L_SHIPDATE as L_SHIPDATE,
-           L_COMMITDATE as L_COMMITDATE,
-           L_RECEIPTDATE as L_RECEIPTDATE, 
-           L_SHIPINSTRUCT as L_SHIPINSTRUCT,
-           L_SHIPMODE as L_SHIPMODE,
-           L_COMMENT as L_COMMENT
-    FROM lineitem;
-   ```
-   
+```sql
+INSERT INTO TABLE lineitem_orc
+SELECT L_ORDERKEY as L_ORDERKEY, 
+         L_PARTKEY as L_PARTKEY , 
+         L_SUPPKEY as L_SUPPKEY,
+         L_LINENUMBER as L_LINENUMBER,
+         L_QUANTITY as L_QUANTITY, 
+         L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+         L_DISCOUNT as L_DISCOUNT,
+         L_TAX as L_TAX,
+         L_RETURNFLAG as L_RETURNFLAG,
+         L_LINESTATUS as L_LINESTATUS,
+         L_SHIPDATE as L_SHIPDATE,
+         L_COMMITDATE as L_COMMITDATE,
+         L_RECEIPTDATE as L_RECEIPTDATE, 
+         L_SHIPINSTRUCT as L_SHIPINSTRUCT,
+         L_SHIPMODE as L_SHIPMODE,
+         L_COMMENT as L_COMMENT
+FROM lineitem;
+```
+
 További információ az ork formátumról a [Apache Hive nyelvi kézikönyvben](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)olvasható.
 
 ## <a name="vectorization"></a>Vektorizációt
@@ -178,13 +178,14 @@ A vektorizációt lehetővé teszi, hogy a kaptár egyszerre több sorba dolgozz
 
 A vektorizációt-előtag a következő beállítással engedélyezhető a kaptár-lekérdezésben:
 
-   ```hive
-    set hive.vectorized.execution.enabled = true;
-   ```
+```hive
+set hive.vectorized.execution.enabled = true;
+```
 
 További információ: a [vektoros lekérdezés végrehajtása](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
 ## <a name="other-optimization-methods"></a>Egyéb optimalizálási módszerek
+
 Több optimalizálási módszer is megvizsgálható, például:
 
 * **Struktúra-gyűjtő:** olyan technika, amely lehetővé teszi, hogy a lekérdezési teljesítmény optimalizálása érdekében a nagy mennyiségű adat fürtbe vagy szegmentálásba kerüljön.
@@ -192,6 +193,7 @@ Több optimalizálási módszer is megvizsgálható, például:
 * **Növelje a szűkítőket**.
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További információt a következő cikkekben talál:
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)

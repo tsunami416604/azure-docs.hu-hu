@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9b74491c76747bd635547f6f22964fe792dbf01a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931937"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104081"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Alapterv házirend: Örökölt hitelesítés blokkolása (előzetes verzió)
 
@@ -106,11 +106,11 @@ A házirend **alapkonfigurációjának házirendje: Az örökölt hitelesítés 
 
 A szabályzat engedélyezése és a szervezet megóvása:
 
-1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
+1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory** > a**feltételes hozzáférést**.
 1. A szabályzatok listájában válassza ki **az alapházirend elemet: Örökölt hitelesítés (előzetes verzió**) letiltása.
 1. Állítsa be a házirend **engedélyezése** beállítást a **szabályzat azonnali használatára**.
-1. Kattintson a **Mentés**gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="next-steps"></a>További lépések
 

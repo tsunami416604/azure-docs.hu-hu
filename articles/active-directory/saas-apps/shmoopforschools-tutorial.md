@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fa47e029434b70166403b8603c820d611690f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975985"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102887"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Oktatóanyag: Shmoop integrálása az iskolákba Azure Active Directory
 
@@ -45,7 +45,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * Az Shmoop for iskolák támogatják az **SP** által KEZDEMÉNYEZett SSO-t
-* Az Shmoop for iskolák a felhasználók üzembe helyezésének időpontját támogatják
+* Az Shmoop for iskolák a felhasználók üzembe helyezésének **időpontját** támogatják
 
 ## <a name="adding-shmoop-for-schools-from-the-gallery"></a>Shmoop hozzáadása az iskolákhoz a katalógusból
 
@@ -89,16 +89,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot [az Shmoop for iskolák](mailto:support@shmoop.com) ügyfélszolgálati csapatával az értékek beszerzéséhez. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot [az Shmoop for iskolák ügyfélszolgálati csapatával](mailto:support@shmoop.com) az értékek beszerzéséhez. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az Shmoop for Schools-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. Az Shmoop for Schools-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > A Shmoop for School két szerepkört támogat a felhasználók számára: **Tanár** és **tanuló**. Állítsa be ezeket a szerepköröket az Azure AD-ben, hogy a felhasználók hozzá lehessen rendelni a megfelelő szerepköröket. A szerepkörök Azure AD-ben való konfigurálásának megismeréséhez lásd [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-6. A fentieken kívül az Shmoop for Schools alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A  **felhasználó attribútumai** **** párbeszédpanelfelhasználóijogcímekszakaszábanakövetkezőlépésekkeladjahozzáazSAML-jogkivonatattribútumátazalábbitáblázatbanlátható módon: 
+6. A fentieken kívül az Shmoop for Schools alkalmazás néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
     | Name (Név) |  Forrás attribútum|
     | --------- | --------------- |

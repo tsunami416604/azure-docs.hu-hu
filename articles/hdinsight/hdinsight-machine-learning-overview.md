@@ -2,18 +2,18 @@
 title: Gépi tanulás – áttekintés – Azure HDInsight
 description: Az Azure HDInsight lévő fürtök big data gépi tanulási lehetőségeinek áttekintése.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961969"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105419"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Gépi tanulás a HDInsight-on
 
@@ -39,7 +39,7 @@ A Spark-nal rendelkező HDInsight ML-szolgáltatásaival a Spark számítási k�
 
 Azure Machine Learning eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amellyel a prediktív modelleket használatra kész webszolgáltatásként helyezheti üzembe. A Azure Machine Learning egy teljes körű prediktív elemzési megoldás a felhőben, amely a prediktív modellek létrehozásához, teszteléséhez, működővé tenni és kezeléséhez használható. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
 
-![A fejlett Analitika elérhetővé tétele a Hadoop és a Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+![Microsoft Azure Machine learning – áttekintés](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 HDInsight Hadoop-fürtben található adatszolgáltatások létrehozása a [kaptár-lekérdezések](../machine-learning/team-data-science-process/create-features-hive.md)használatával. A szolgáltatások *mérnöki* célja, hogy a tanulási algoritmusok által létrehozott nyers adatokból származó funkciók létrehozásával növelje a tanulási algoritmusok prediktív erejét. Azure Machine Learning studióból futtathat HiveQL-lekérdezéseket, és a kaptárban feldolgozott és a blob Storage-ban tárolt adatokhoz az [adatok importálása modul](../machine-learning/studio/import-data.md)használatával férhet hozzá.
 

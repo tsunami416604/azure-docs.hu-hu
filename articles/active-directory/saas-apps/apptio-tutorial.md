@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967230"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104383"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Oktatóanyag: A Apptio integrálása Azure Active Directory
 
@@ -85,12 +85,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     Az **azonosító** szövegmezőbe írja be a következő értéket:`urn:federation:apptio`
 
-5. A Apptio alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+5. A Apptio alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Ide kattintva [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a **szerepkört** az Azure ad-ben
+    > [Ide kattintva](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a **szerepkört** az Azure ad-ben
 
 6. A fentieken kívül a Apptio alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
@@ -156,7 +156,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Apptio** oldalon, el 
 
 ### <a name="create-apptio-test-user"></a>Apptio-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Apptio-ben. Együttműködik a [Apptio támogatási csapatával](https://www.apptio.com/about/contact) , hogy hozzáadja a felhasználókat a Apptio platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Apptio-ben. Együttműködik a [Apptio támogatási csapatával](https://www.apptio.com/about/contact) , hogy hozzáadja a felhasználókat a Apptio platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

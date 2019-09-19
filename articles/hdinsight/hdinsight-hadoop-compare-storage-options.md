@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ced2c888a412a72643bb0c12fceb7e83d39936cf
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
-ms.translationtype: HT
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098734"
+ms.locfileid: "71104541"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
 
@@ -34,7 +34,7 @@ A következő táblázat összefoglalja a HDInsight különböző verziói álta
 |Azure Storage| Blob Storage** | Object | Blokkblob | Standard | Gyors elérésű, ritka elérésű Archívum | Összes | Összes |
 |Azure Data Lake Storage Gen1| – | Hierarchikus (fájlrendszer) | – | N/A | – | 3,6 csak | A HBase kivételével |
 
-\* * A HDInsight-fürtök esetében csak a másodlagos Storage-fiókok lehetnek BlobStorage típusúak.
+\* * A HDInsight-fürtök esetében csak a másodlagos Storage-fiókok lehetnek BlobStorage, és az oldal Blobja nem támogatott tárolási lehetőség.
 
 Az Azure Storage-fiókok típusairól további információt az [Azure Storage-fiók áttekintése](../storage/common/storage-account-overview.md) című témakörben talál.
 

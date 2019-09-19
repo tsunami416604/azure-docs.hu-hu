@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 5d287165e77597943d298178689c216497361570
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879665"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104481"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -45,7 +45,7 @@ Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális h�
 ## <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 A következő ábra az Azure Storage-ot használó HDInsight tároló-architektúra absztrakt nézetét nyújtja:
 
-![A Hadoop-fürtök a HDFS API-val érik el és tárolják a strukturált és strukturálatlan adatokat a Blob Storage-ban.](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight-tárarchitektúra")
+A ![Hadoop-fürtök a HDFS API-val férnek hozzá a blob Storage-ban tárolt és tárolt adattároláshoz](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight-tár architektúra")
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer a teljes URI használatával érhető el, például:
 
@@ -73,6 +73,7 @@ Több Webhcaten-feladat, többek között a Apache Hive, a MapReduce, a Apache H
 A blobok a strukturált és strukturálatlan adatokhoz használhatók. A blobtárolók kulcs/érték párokként tárolnak adatokat, és nincs könyvtár-hierarchia. A perjel karakter ( / ) azonban használható a kulcsnévben, hogy úgy tűnjön, mintha a fájl könyvtárszerkezetben lenne tárolva. Egy blob kulcsa lehet például az *input/log1.txt*. Nem létezik tényleges *input* könyvtár, de mivel jelen van a perjel karakter a kulcsnévben, úgy néz ki, mint egy fájlútvonal.
 
 ## <a id="benefits"></a>Az Azure Storage előnyei
+
 A számítási fürtök és a tárolási erőforrások nem helyezhetők el egymással, a számítási fürtöket pedig az Azure-régióban található Storage-fiók erőforrásaihoz közeledve csökkentik, ahol a nagy sebességű hálózat teszi hatékonyabbá a számítási csomópontok az Azure Storage-ban tárolt adatok eléréséhez.
 
 Több előnye is van annak, ha az adatokat a HDFS helyett az Azure Blob Storage tárolóban tárolja:
@@ -93,6 +94,7 @@ Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak 
 > A legtöbb HDFS-parancs (például `ls` `copyFromLocal` , és `mkdir`) továbbra is a várt módon működik. Az Azure Storage-ban csak a natív HDFS-implementációra (azaz a DFS-re) `fschk` `dfsadmin`vonatkozó parancsok láthatók.
 
 ## <a name="address-files-in-azure-storage"></a>Az Azure Storage tárolóban található címfájlok
+
 Az Azure Storage tárolóban a HDInsight eszközről végzett fájlelérés URI sémája a következő:
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > Amikor a HDInsight eszközön kívüli blobokkal dolgozik, a legtöbb segédprogram nem ismeri fel a WASB formátumot, és ehelyett alapvető elérési út formátumot vár, például a következőt: `example/jars/hadoop-mapreduce-examples.jar`.
 
 ##  <a name="blob-containers"></a>BLOB-tárolók
+
 A Blobok használatához először létre kell hoznia egy [Azure Storage-fiókot](../storage/common/storage-create-storage-account.md). Ennek részeként meg kell adnia egy Azure-régiót, amelyben a tárfiók létrejön. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. Az Hive-metaadattár SQL Server adatbázisnak és az Apache Oozie metaadattár SQL Server adatbázisnak ugyanabban a régióban kell lennie.
 
 Akárhol él, mindegyik létrehozott blob az Azure Storage-fiókban lévő tárolóhoz tartozik. Ez a tároló egy már létező, a HDInsight eszközön kívül létrejövő blob vagy egy HDInsight-fürthöz létrehozott tároló lehet.

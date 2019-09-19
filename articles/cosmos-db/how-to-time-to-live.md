@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti az élettartamot
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: bb67e6e4fbef51a0fbd26efd2618be8cc9896beb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092987"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104871"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
@@ -43,10 +43,10 @@ A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy t
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Az SDK-t használó tárolón való élő idő engedélyezése
 
-### <a id="dotnet-enable-noexpiry"></a>.NET SDK
+### <a id="dotnet-enable-noexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
-// Create a new collection with TTL enabled and without any expiration value
+// Create a new container with TTL enabled and without any expiration value
 DocumentCollection collectionDefinition = new DocumentCollection();
 collectionDefinition.Id = "myContainer";
 collectionDefinition.PartitionKey.Paths.Add("/myPartitionKey");
@@ -54,18 +54,29 @@ collectionDefinition.DefaultTimeToLive = -1; //(never expire by default)
 
 DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
-    collectionDefinition,
-    new RequestOptions { OfferThroughput = 20000 });
+    collectionDefinition);
+```
+
+### <a id="dotnet-enable-noexpiry"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
+
+```csharp
+// Create a new container with TTL enabled and without any expiration value
+await client.GetDatabase("database").CreateContainerAsync(new ContainerProperties
+{
+    Id = "container",
+    PartitionKeyPath = "/myPartitionKey",
+    DefaultTimeToLive = -1 //(never expire by default)
+});
 ```
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Időtartam beállítása egy tárolón az SDK használatával
 
-### <a id="dotnet-enable-withexpiry"></a>.NET SDK
-
 Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem `_ts` utolsó módosításának időbélyegzője után.
 
+### <a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
+
 ```csharp
-// Create a new collection with TTL enabled and a 90 day expiration
+// Create a new container with TTL enabled and a 90 day expiration
 DocumentCollection collectionDefinition = new DocumentCollection();
 collectionDefinition.Id = "myContainer";
 collectionDefinition.PartitionKey.Paths.Add("/myPartitionKey");
@@ -73,8 +84,19 @@ collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all docume
 
 DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
-    collectionDefinition,
-    new RequestOptions { OfferThroughput = 20000 });
+    collectionDefinition;
+```
+
+### <a id="dotnet-enable-withexpiry"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
+
+```csharp
+// Create a new container with TTL enabled and a 90 day expiration
+await client.GetDatabase("database").CreateContainerAsync(new ContainerProperties
+{
+    Id = "container",
+    PartitionKeyPath = "/myPartitionKey",
+    DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+});
 ```
 
 ### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
@@ -132,7 +154,7 @@ A következő lépésekkel engedélyezheti az élettartamot egy elemen:
    }
    ```
 
-### <a id="dotnet-set-ttl-item"></a>.NET SDK
+### <a id="dotnet-set-ttl-item"></a>.NET SDK (bármilyen)
 
 ```csharp
 // Include a property that serializes to "ttl" in JSON
@@ -173,7 +195,7 @@ const itemDefinition = {
 
 Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az aktuális időpontot állítja be `_ts` , a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
 
-### <a id="dotnet-extend-ttl-item"></a>.NET SDK
+### <a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -187,11 +209,22 @@ readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
+### <a id="dotnet-extend-ttl-item"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
+
+```csharp
+// This examples leverages the Sales Order class above.
+// Read a document, update its TTL, save it.
+ItemResponse<SalesOrder> itemResponse = await client.GetContainer("database", "container").ReadItemAsync<SalesOrder>("SO05", new PartitionKey("CO18009186470"));
+
+itemResponse.Resource.ttl = 60 * 30 * 30; // update time to live
+await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
+```
+
 ## <a name="turn-off-time-to-live"></a>Az élettartam kikapcsolása
 
 Ha az élettartam értéke be van állítva egy elemre, és már nem szeretné, hogy az elem lejárjon, akkor lekérheti az adott tételt, eltávolíthatja a TTL mezőt, és lecserélheti a kiszolgálón lévő elemre. Ha a TTL mező el lett távolítva az elemből, a rendszer a tárolóhoz rendelt alapértelmezett TTL-értéket alkalmazza az elemre. Állítsa a TTL értéket a-1 értékre, hogy megakadályozza egy elem lejáratát, és nem örökli a TTL értékét a tárolóból.
 
-### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK
+### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -201,23 +234,44 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.ttl = null; // inherit the default TTL of the collection
+readDocument.ttl = null; // inherit the default TTL of the container
 
 response = await client.ReplaceDocumentAsync(readDocument);
+```
+
+### <a id="dotnet-turn-off-ttl-item"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
+
+```csharp
+// This examples leverages the Sales Order class above.
+// Read a document, turn off its override TTL, save it.
+ItemResponse<SalesOrder> itemResponse = await client.GetContainer("database", "container").ReadItemAsync<SalesOrder>("SO05", new PartitionKey("CO18009186470"));
+
+itemResponse.Resource.ttl = null; // inherit the default TTL of the container
+await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
 
 ## <a name="disable-time-to-live"></a>Élettartam letiltása
 
 Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek `DefaultTimeToLive` ellenőrzésével, a tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
 
-### <a id="dotnet-disable-ttl"></a>.NET SDK
+### <a id="dotnet-disable-ttl"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
 ```csharp
-// Get the collection, update DefaultTimeToLive to null
+// Get the container, update DefaultTimeToLive to null
 DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
 // Disable TTL
 collection.DefaultTimeToLive = null;
 await client.ReplaceDocumentCollectionAsync(collection);
+```
+
+### <a id="dotnet-disable-ttl"></a>.NET SDK v3 (Microsoft. Azure. Cosmos)
+
+```csharp
+// Get the container, update DefaultTimeToLive to null
+ContainerResponse containerResponse = await client.GetContainer("database", "container").ReadContainerAsync();
+// Disable TTL
+containerResponse.Resource.DefaultTimeToLive = null;
+await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806606"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103194"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -173,9 +173,6 @@ Az üzletmenet folytonosságát szem előtt tartva az alábbi általános irány
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Ajánlott eljárások a feladatátvételi csoportok használatáról felügyelt példányokkal
 
-> [!IMPORTANT]
-> A felügyelt példányok automatikus feladatátvételi csoportjai nyilvános előzetes verzióban érhetők el.
-
 Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példánnyal kell csatlakoznia.  A példány összes adatbázisa replikálva lesz a másodlagos példányra. 
 
 A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti, amely felügyelt példányt és automatikus feladatátvételi csoportot használ.
@@ -259,7 +256,7 @@ Ha [Virtual Network szolgáltatási végpontokat és szabályokat](sql-database-
 4. A manuális feladatátvétel elindítása a leállás észlelésekor. Ez a beállítás olyan alkalmazásokra van optimalizálva, amelyek konzisztens késést igényelnek az előtér és az adatréteg között, és támogatja a helyreállítást, ha az előtér, az adatréteg vagy mindkettő hatással van a kimaradásra.
 
 > [!NOTE]
-> Ha az írásvédett **figyelőt** a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
+> Ha az írásvédett figyelőt a csak olvasási feladatok terheléselosztásához használja, akkor győződjön meg arról, hogy ez a számítási feladat a másodlagos régióban lévő virtuális gépen vagy más erőforráson fut, így a másodlagos adatbázishoz csatlakozhat.
 
 ### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Feladatátvételi csoportok és SQL Database-tűzfalszabályok használata
 
@@ -319,7 +316,7 @@ A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron 
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Feladatátvételi csoportok és időponthoz történő visszaállítás
 
-További információ a feladatátvételi csoportokkal való időpontra történő visszaállításról: [időponthoz való helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+További információ a feladatátvételi csoportokkal való időpontra történő visszaállításról: időponthoz való [helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 
@@ -365,7 +362,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 | [Feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Frissíti a feladatátvételi csoportot. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API: Feladatátvételi csoportok kezelése felügyelt példányokkal (előzetes verzió)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Feladatátvételi csoportok kezelése felügyelt példányokkal
 
 | API | Leírás |
 | --- | --- |

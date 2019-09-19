@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet az újraparticionálással op
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517435"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101509"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Az újraparticionálással optimalizálja a feldolgozást Azure Stream Analytics
 
@@ -54,7 +54,17 @@ Kísérletezzen és figyelje meg a feladatok erőforrás-használatát a szüks�
 
 ## <a name="repartitions-for-sql-output"></a>SQL-kimenet újraparticionálása
 
-Ha a feladata SQL Database-t használ a kimenethez, az átviteli sebesség maximalizálása érdekében használjon explicit újraparticionálást az optimális partíciók számának megfelelően. Mivel az SQL nyolc író használatával működik a legjobban, a folyamat átparticionálása a kiürítés előtt nyolcra, vagy valahol további upstream, a feladatok teljesítményére is felhasználható. További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).
+Ha a feladata SQL Database-t használ a kimenethez, az átviteli sebesség maximalizálása érdekében használjon explicit újraparticionálást az optimális partíciók számának megfelelően. Mivel az SQL nyolc író használatával működik a legjobban, a folyamat átparticionálása a kiürítés előtt nyolcra, vagy valahol további upstream, a feladatok teljesítményére is felhasználható. 
+
+Ha több mint 8 bemeneti partíció van, akkor előfordulhat, hogy a bemeneti particionálási séma öröklése nem megfelelő választás. Vegye fontolóra [a-ben való](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) használatát a lekérdezésben, hogy explicit módon adja meg a kimeneti írók számát. 
+
+A következő példa beolvassa a bevitelt, függetlenül attól, hogy a rendszer természetesen particionálja, és újraparticionálja a stream tízszeresére a DeviceID dimenzió alapján, és kiüríti az adatokat a kimenetre. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 
 ## <a name="next-steps"></a>További lépések
