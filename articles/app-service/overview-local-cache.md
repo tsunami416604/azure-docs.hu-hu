@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098461"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097658"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -49,8 +49,8 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 * A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 300 MB-ra van korlátozva, de akár 2 GB-ot is megnövelheti.
 * A helyi gyorsítótár írható-olvasható. Ha azonban az alkalmazás a virtuális gépeket helyezi át, vagy újraindul, a módosítások elvesznek. Ne használja a helyi gyorsítótárat olyan alkalmazások esetében, amelyek kritikus fontosságú adatokat tárolnak a tartalom-tárolóban.
 * A _D:\home\LogFiles_ és a _D:\home\Data_ naplófájlokat és alkalmazásadatokat tartalmaznak. A két almappát a rendszer helyileg tárolja a virtuálisgép-példányon, és rendszeres időközönként átmásolja őket a megosztott tartalom tárolójába. Az alkalmazások a naplófájlokat és az adatfájlokat a mappákba írással is megőrzik. A megosztott tartalom tárolójába való másolás azonban a legjobb megoldás, ezért lehetséges, hogy a naplófájlok és az adatmennyiség elvész a virtuálisgép-példányok hirtelen összeomlása miatt.
-* [](troubleshoot-diagnostic-logs.md#streamlogs) A naplózási adatfolyamra a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.
-* A megosztott tartalom tárolóban módosul a _naplófájlok_ és az adatmappák mappa szerkezete a helyi gyorsítótárat használó alkalmazásokhoz. A bennük található almappákban az "egyedi azonosító" és az időbélyeg elnevezési mintája látható. Az almappák mindegyike egy olyan virtuálisgép-példánynak felel meg, amelyben az alkalmazás fut vagy fut.
+* A [naplózási adatfolyamra](troubleshoot-diagnostic-logs.md#stream-logs) a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.
+* A megosztott tartalom tárolóban módosul a _naplófájlok_ _és az adatmappák mappa szerkezete_ a helyi gyorsítótárat használó alkalmazásokhoz. A bennük található almappákban az "egyedi azonosító" és az időbélyeg elnevezési mintája látható. Az almappák mindegyike egy olyan virtuálisgép-példánynak felel meg, amelyben az alkalmazás fut vagy fut.
 * A _D:\home_ egyéb mappái a helyi gyorsítótárban maradnak, és nem másolódnak át a megosztott tartalom-tárolóba.
 * Az alkalmazás központi telepítése bármely támogatott módszerrel közvetlenül a tartós megosztott tartalom tárolójába kerül. A helyi gyorsítótárban lévő _D:\home\site_ -és _D:\home\siteextensions_ -mappák frissítéséhez az alkalmazást újra kell indítani. Az életciklus zökkenőmentesvé tételéhez tekintse meg a cikk későbbi részében található információkat.
 * Az SCM-hely alapértelmezett tartalmi nézete továbbra is megegyezik a megosztott tartalom tárolójával.

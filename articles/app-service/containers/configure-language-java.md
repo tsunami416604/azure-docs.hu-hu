@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8e47365f74668ba2b93bad2b65a9dc9e83080832
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034904"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098125"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -32,8 +32,8 @@ A [Maven beépülő modult használhatja Azure app Service](/java/api/overview/a
 
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 
-- A. War fájlok tomcatbe való üzembe helyezéséhez `/api/wardeploy/` használja a végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)a dokumentációt.
-- A. jar fájlok Java SE-lemezképeken való üzembe helyezéséhez `/api/zipdeploy/` használja a kudu-hely végpontját. Az API-val kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)a dokumentációt.
+- A. War fájlok tomcatbe való üzembe helyezéséhez `/api/wardeploy/` használja a végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- A. jar fájlok Java SE-lemezképeken való üzembe helyezéséhez `/api/zipdeploy/` használja a kudu-hely végpontját. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Ne telepítse a. War vagy a. jar fájlt FTP használatával. Az FTP-eszköz indítási parancsfájlok, függőségek vagy más futásidejű fájlok feltöltésére szolgál. A webalkalmazások üzembe helyezése nem optimális megoldás.
 
@@ -49,11 +49,11 @@ A teljesítménnyel kapcsolatos jelentések, a forgalmi vizualizációk és az �
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-További információ: [folyamatos átvitelű naplók az Azure CLI-vel](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+További információ: [stream-naplók Cloud Shellban](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Alkalmazás naplózása
 
-Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */Home/LogFiles/Application/* könyvtárban találhatók.
+Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */Home/LogFiles/Application/* könyvtárban találhatók.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) használ a nyomkövetéshez, ezeket a nyomkövetéseket áttekintheti az Azure [Application Insights-ba Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -143,7 +143,7 @@ Ha JAR-alkalmazást helyez üzembe, akkor az *app. jar* névvel kell rendelkezni
 
 ### <a name="turn-on-web-sockets"></a>Webes szoftvercsatornák bekapcsolása
 
-A WebSockets támogatásának bekapcsolása a Azure Portal az alkalmazás **alkalmazás** -beállításaiban. A beállítás érvénybe léptetéséhez újra kell indítania az alkalmazást.
+A WebSockets támogatásának bekapcsolása a Azure Portal az alkalmazás **alkalmazás-beállításaiban** . A beállítás érvénybe léptetéséhez újra kell indítania az alkalmazást.
 
 Kapcsolja be a web socket-támogatást az Azure CLI használatával a következő paranccsal:
 
@@ -235,7 +235,7 @@ A meglévő SSL-tanúsítvány feltöltéséhez és az alkalmazás tartománynev
 
 Az [Azure](../../key-vault/key-vault-overview.md) kulcstartó központosított titkos felügyeletet biztosít a hozzáférési házirendekkel és a naplózási előzményekkel. A kulcsok (például jelszavak vagy kapcsolati karakterláncok) a kulcstartóban tárolhatók, és a titkos kulcsokat az alkalmazásban környezeti változókon keresztül érhetik el.
 
-Először is kövesse az alkalmazáshoz [való hozzáférés](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) megadására vonatkozó utasításokat, és a titkos kulcshoz tartozó kulcstároló [-hivatkozást egy Alkalmazásbeállítások alapján](../app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
+Először is kövesse az alkalmazáshoz [való hozzáférés megadására](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) vonatkozó utasításokat, és a [titkos kulcshoz tartozó kulcstároló-hivatkozást egy Alkalmazásbeállítások alapján](../app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
 
 Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja`${MY_ENV_VAR}`a környezeti változók befecskendezésének szintaxisát (). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
@@ -248,24 +248,24 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
 2. Töltse le a Java-ügynököt a NewRelic-ből, mert a fájlnév a *newrelic-Java-x. x. x. zip*fájlhoz hasonló lesz.
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
-4. [SSH-t a app Service](app-service-linux-ssh-support.md) -példányba, és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
+4. [SSH-t a app Service-példányba](app-service-linux-ssh-support.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic*-ben kell lenniük.
 6. Módosítsa a YAML fájlt a */Home/site/wwwroot/APM/newrelic/newrelic.YML* címen, és cserélje le a helyőrző licenc értékét a saját licenckulcs használatára.
 7. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
     - Ha az alkalmazás **Java SE**-t használ, hozzon létre egy `JAVA_OPTS` nevű környezeti változót az értékkel. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
     - Ha a **tomcat**-t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót az értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Ha a **WildFly**-t használja, az új ereklye dokumentációjában talál útmutatást a Java-ügynök és a JBoss-konfiguráció telepítéséhez. [](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java)
+    - Ha a **WildFly**-t használja [, az új ereklye dokumentációjában](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) talál útmutatást a Java-ügynök és a JBoss-konfiguráció telepítéséhez.
 
 ### <a name="configure-appdynamics"></a>AppDynamics konfigurálása
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
 2. Töltse le a Java-ügynököt a AppDynamics webhelyről, és a fájlnév a *AppServerAgent-x. x. x. xxxxx. zip* fájlhoz hasonló lesz.
-3. [SSH-t a app Service](app-service-linux-ssh-support.md) -példányba, és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
+3. [SSH-t a app Service-példányba](app-service-linux-ssh-support.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics*-ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
     - Ha **Java SE**-t használ, hozzon létre egy nevű `JAVA_OPTS` környezeti változót `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , `<app-name>` amelynek értéke a app Service neve.
     - Ha a **tomcat**- `<app-name>` t használja, hozzon létre egy `CATALINA_OPTS` nevű környezeti változót, amelynek értéke `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` a app Service neve.
-    - Ha a **WildFly**-t használja, a Java- [](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) ügynök és a JBoss-konfiguráció telepítésével kapcsolatos útmutatásért tekintse meg a AppDynamics dokumentációját.
+    - Ha a **WildFly**-t használja, a Java-ügynök és a JBoss-konfiguráció telepítésével kapcsolatos útmutatásért tekintse [meg a](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics dokumentációját.
 
 >  Ha már rendelkezik környezeti változóval `JAVA_OPTS` a vagy `CATALINA_OPTS`a esetében, az `-javaagent:/...` aktuális érték végéhez fűzze hozzá a kapcsolót.
 
@@ -273,7 +273,7 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 
 ### <a name="starting-jar-apps"></a>JAR-alkalmazások indítása
 
-Alapértelmezés szerint a App Service a JAR-alkalmazást *app. jar*néven várja. Ha ezt a nevet adja, a rendszer automatikusan futtatja. A Maven-felhasználók számára beállíthatja a jar nevét a `<finalName>app</finalName>` *Pom. xml fájl* `<build>` szakaszának használatával. [Ugyanezt a Gradle is](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) megteheti a `archiveFileName` tulajdonság beállításával.
+Alapértelmezés szerint a App Service a JAR-alkalmazást *app. jar*néven várja. Ha ezt a nevet adja, a rendszer automatikusan futtatja. A Maven-felhasználók számára beállíthatja a jar nevét a `<finalName>app</finalName>` *Pom. xml fájl* `<build>` szakaszának használatával. [Ugyanezt a Gradle is megteheti](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) a `archiveFileName` tulajdonság beállításával.
 
 Ha más nevet szeretne használni a JAR számára, meg kell adnia a JAR-fájlt végrehajtó [indítási parancsot](app-service-linux-faq.md#built-in-images) is. Például: `java -jar my-jar-app.jar`. Megadhatja az indítási parancs értékét a portálon, a konfiguráció > általános beállítások alatt, vagy egy nevű `STARTUP_COMMAND`Alkalmazásbeállítás használatával.
 
@@ -400,7 +400,7 @@ Végül helyezze el az illesztőprogram-tégelyeket a Tomcat osztályútvonal, �
 
     3. Kapcsolódjon a helyi bújtatási porthoz az SFTP-ügyféllel, és töltse fel a fájlokat a */Home/tomcat/lib* mappába.
 
-    Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)beszerzéséhez kövesse az alábbi utasításokat.
+    Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok beszerzéséhez kövesse az alábbi utasításokat](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 2. Ha létrehozta a kiszolgálói szintű adatforrást, indítsa újra a App Service Linux alkalmazást. A Tomcat alaphelyzetbe `CATALINA_BASE` áll `/home/tomcat` , és a frissített konfigurációt fogja használni.
 
@@ -439,7 +439,7 @@ Ez a szakasz a következő alszakaszokat tartalmazza:
 
 A Linuxon App Service futó WildFly-alkalmazáskiszolgáló önálló módban fut, nem pedig tartományi konfigurációban. A App Service terv kiskálázásakor minden WildFly-példány önálló kiszolgálóként van konfigurálva.
 
-Az alkalmazást függőlegesen vagy horizontálisan [](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) méretezheti méretezési szabályokkal, és [növelheti a példányszámot](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Az alkalmazást függőlegesen vagy horizontálisan méretezheti méretezési [szabályokkal](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) , és [növelheti a példányszámot](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="customize-application-server-configuration"></a>Alkalmazáskiszolgáló konfigurációjának testreszabása
 
@@ -462,7 +462,7 @@ Az FTP használatával töltse fel az indítási szkriptet a App Service-példá
 
 A Azure Portal **indítási parancsfájl** mezőjében adja meg az indítási rendszerhéj parancsfájljának helyét (például */Home/site/Deployments/Tools/Your-Startup-script.sh*).
 
-Adja [](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) meg az alkalmazás konfigurációjában a környezeti változók átadását a parancsfájlban való használathoz. Az Alkalmazásbeállítások megtartják a kapcsolatok karakterláncait és az alkalmazás verziószám-vezérlésének konfigurálásához szükséges egyéb titkokat.
+Adja [meg az](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) alkalmazás konfigurációjában a környezeti változók átadását a parancsfájlban való használathoz. Az Alkalmazásbeállítások megtartják a kapcsolatok karakterláncait és az alkalmazás verziószám-vezérlésének konfigurálásához szükséges egyéb titkokat.
 
 ### <a name="install-modules-and-dependencies"></a>Modulok és függőségek telepítése
 
@@ -649,7 +649,7 @@ Az üzenet-vezérelt bab engedélyezése a Service Bus használatával üzenetk�
 
 3. Adja át a megosztott elérési házirend kulcsát a kódnak URL-kódolással – kódolja a házirend elsődleges kulcsát, vagy [használja a Service Bus SDK](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory)-t.
 
-4. Kövesse a modulok és függőségek telepítése szakasz lépéseit a modul XML-leírójának,. jar-függőségeinek, JBoss CLI-parancsainak és az JMS-szolgáltató indítási parancsfájljának használatával. A négy fájlon kívül létre kell hoznia egy XML-fájlt is, amely meghatározza a JMS-várólista és a témakör JNDI nevét. Tekintse meg [ezt](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) a tárházat a hivatkozási konfigurációs fájlokhoz.
+4. Kövesse a modulok és függőségek telepítése szakasz lépéseit a modul XML-leírójának,. jar-függőségeinek, JBoss CLI-parancsainak és az JMS-szolgáltató indítási parancsfájljának használatával. A négy fájlon kívül létre kell hoznia egy XML-fájlt is, amely meghatározza a JMS-várólista és a témakör JNDI nevét. Tekintse meg [ezt a tárházat](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) a hivatkozási konfigurációs fájlokhoz.
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>A Redis használata munkamenet-gyorsítótárként a Tomcat használatával
 
@@ -696,7 +696,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
 3. Az FTP használatával töltse fel a munkamenet-kezelő JAR-fájlját a App Service-példányba, és helyezze a */Home/tomcat/lib* könyvtárba. További információ: [az alkalmazás üzembe helyezése Azure app Service FTP/S használatával](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-4. Tiltsa le a [munkamenet-affinitás cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) -t a app Service példányhoz. Ezt megteheti a Azure Portal az alkalmazásra való navigálással, majd a **konfiguráció > az általános beállítások > az ARR-affinitás** beállítás kikapcsolásával. Másik lehetőségként a következő parancsot használhatja:
+4. Tiltsa le a [munkamenet-affinitás cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) -t a app Service példányhoz. Ezt megteheti a Azure Portal az alkalmazásra való navigálással, majd a **konfiguráció > az általános beállítások > az ARR-affinitás** beállítás **kikapcsolásával**. Másik lehetőségként a következő parancsot használhatja:
 
     ```azurecli
     az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
@@ -708,7 +708,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
 6. Az egyes IP-címekhez hozzon létre egy tűzfalszabályot az Azure cache-ben a Redis-példányhoz. Ezt a Redis-példány **tűzfal** szakaszának Azure Portal teheti meg. Adjon egyedi nevet az egyes szabályoknak, és állítsa be a **kezdő IP-cím** és a **záró IP-cím** értékeket ugyanahhoz az IP-címhez.
 
-7. Nyissa meg a Redis-példány **Speciális beállítások** szakaszát, és állítsa a **hozzáférés engedélyezése csak SSL-kapcsolaton keresztül** beállítást. Ez lehetővé teszi, hogy az App Service-példány kommunikáljon a Redis cache-vel az Azure-infrastruktúrán keresztül.
+7. Nyissa meg a **Redis-példány** **Speciális beállítások** szakaszát, és állítsa a **hozzáférés engedélyezése csak SSL-kapcsolaton keresztül** beállítást. Ez lehetővé teszi, hogy az App Service-példány kommunikáljon a Redis cache-vel az Azure-infrastruktúrán keresztül.
 
 8. Frissítse az `azure-webapp-maven-plugin` alkalmazás *Pom. XML* fájljának konfigurációját, hogy a Redis-fiók adataira hivatkozzon. Ez a fájl a korábban beállított környezeti változókat használja, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
 
@@ -782,13 +782,13 @@ A Linux rendszerhez készült App Service két futtatókörnyezetet támogat a J
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és-karbantartás
 
-A Azul Zulu Enterprise-OpenJDK az Azure-hoz készült OpenJDK, valamint a Microsoft és a Azul rendszerek által támogatott, az Azure-ra vonatkozó, és a Azure Stack. A Java SE-alkalmazások létrehozásához és futtatásához szükséges összes összetevőt tartalmazzák. A JDK-t a [Java jdk](https://aka.ms/azure-jdks)-telepítésből telepítheti.
+A Azul Zulu Enterprise-OpenJDK az Azure-hoz készült OpenJDK, valamint a Microsoft és a Azul rendszerek által támogatott, az Azure-ra vonatkozó, és a Azure Stack. A Java SE-alkalmazások létrehozásához és futtatásához szükséges összes összetevőt tartalmazzák. A JDK-t a [Java jdk-telepítésből](https://aka.ms/azure-jdks)telepítheti.
 
 A támogatott JDK minden év januárjában, áprilisban, júliusban és októberben automatikusan megtörténik.
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
-A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2](https://nvd.nist.gov/cvss.cfm). verziójában.
+A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2. verziójában](https://nvd.nist.gov/cvss.cfm).
 
 ### <a name="deprecation-and-retirement"></a>Elavulás és nyugdíjazás
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058974"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091995"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 
@@ -282,17 +282,109 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Ok**: Az Azure Function tevékenység definíciója nem fejeződött be.
 
-- **Javaslat**: Győződjön meg arról, hogy a bemeneti AzureFunction tevékenység JSON-definíciója "Method" nevű tulajdonsággal rendelkezik.
+- **Javaslat**: Ellenőrizze, hogy a bemeneti AzureFunction tevékenység JSON-definíciója "Method" nevű tulajdonsággal rendelkezik-e.
 
 
 ### <a name="error-code--3612"></a>Hibakód:  3612
 
 - **Üzenet**:`Azure function activity missing LinkedService definition in JSON.`
 
-- **Ok**: Az Azure Function tevékenység definíciója nem fejeződött be.
+- **Ok**: Előfordulhat, hogy az Azure Function tevékenység definíciója nem fejeződött be.
 
 - **Javaslat**: Ellenőrizze, hogy a bemeneti AzureFunction tevékenység JSON-definíciója rendelkezik-e társított szolgáltatás részleteivel.
 
+
+## <a name="azure-machine-learning"></a>Azure Machine Learning
+
+
+### <a name="error-code--4101"></a>Hibakód:  4101
+
+- **Üzenet**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **Ok**: Helytelen formátumú vagy hiányzó definíció a tulajdonsághoz.
+
+- **Javaslat**:  Ellenőrizze, hogy a tevékenység a megfelelő adatokkal van-e definiálva.
+
+
+### <a name="error-code--4110"></a>Hibakód:  4110
+
+- **Üzenet**: A AzureMLExecutePipeline-tevékenység LinkedService-definíciója hiányzik a JSON-ben.
+
+- **Ok**: A AzureMLExecutePipeline tevékenység definíciója nem fejeződött be.
+
+- **Javaslat**:  Ellenőrizze, hogy a bemeneti AzureMLExecutePipeline tevékenység JSON-definíciója rendelkezik-e társított szolgáltatás részleteivel.
+
+
+### <a name="error-code--4111"></a>Hibakód:  4111
+
+- **Üzenet**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **Ok**: Helytelen tevékenység-definíció.
+
+- **Javaslat**:  Ellenőrizze, hogy a bemeneti AzureMLExecutePipeline tevékenység JSON-definíciója rendelkezik-e megfelelő társított szolgáltatás részleteivel.
+
+
+### <a name="error-code--4112"></a>Hibakód:  4112
+
+- **Üzenet**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **Ok**: Helytelen formátumú vagy hiányzó definíció a tulajdonsághoz.
+
+- **Javaslat**:  Ellenőrizze, hogy a társított szolgáltatás definíciója megfelelő adatokkal rendelkezik-e.
+
+
+### <a name="error-code--4121"></a>Hibakód:  4121
+
+- **Üzenet**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Ok**: Az Azure ML szolgáltatás eléréséhez használt hitelesítő adatok lejártak.
+
+- **Javaslat**:  Ellenőrizze a hitelesítő adatok érvényességét, és próbálkozzon újra
+
+
+### <a name="error-code--4122"></a>Hibakód:  4122
+
+- **Üzenet**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Ok**: A AzureML szolgáltatás társított szolgáltatásában megadott hitelesítő adat érvénytelen vagy nem rendelkezik engedéllyel a művelethez.
+
+- **Javaslat**:  Ellenőrizze, hogy érvényes-e a hitelesítő adatok a társított szolgáltatásban, és jogosult-e a AzureML szolgáltatás elérésére.
+
+
+### <a name="error-code--4123"></a>Hibakód:  4123
+
+- **Üzenet**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **OK**:`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **Javaslat**:  Ellenőrizze a tevékenység tulajdonságainak értékét, hogy megegyezzen a társított szolgáltatásban megadott közzétett Azure ML-folyamat várt hasznos adattartalmával.
+
+
+### <a name="error-code--4124"></a>Hibakód:  4124
+
+- **Üzenet**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Ok**: A közzétett Azure ML-folyamat végpontja nem létezik.
+
+- **Javaslat**:  Ellenőrizze, hogy a társított szolgáltatásban megadott közzétett Azure ML pipeline-végpont létezik-e az Azure ML szolgáltatásban.
+
+
+### <a name="error-code--4125"></a>Hibakód:  4125
+
+- **Üzenet**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Ok**: Kiszolgálóhiba az Azure ML Service-ben.
+
+- **Javaslat**:  Próbálkozzon újra később. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az Azure ML Service csapatával.
+
+
+### <a name="error-code--4126"></a>Hibakód:  4126
+
+- **Üzenet**:`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **Ok**: A AzureML folyamat futtatása nem sikerült.
+
+- **Javaslat**:  A AzureMLService további hibák naplózása és a ML-folyamat javítása érdekében kérjük, ellenőrizze a következőt:
 
 
 ## <a name="custom"></a>Egyéni
@@ -316,6 +408,15 @@ A következő táblázat a Azure Batchra vonatkozik.
 - **Ok**: A Batch-hozzáférési kulcs vagy a készlet neve helytelen.
 
 - **Javaslat**: Ellenőrizze a készlet nevét és a Batch-elérési kulcsot a társított szolgáltatásban.
+
+
+### <a name="error-code--2502"></a>Hibakód:  2502
+
+- **Üzenet**:`Cannot access user storage account; please check storage account settings.`
+
+- **Ok**: Helytelen a Storage-fiók neve vagy a hozzáférési kulcs.
+
+- **Javaslat**: Ellenőrizze a Storage-fiók nevét és a hozzáférési kulcsot a társított szolgáltatásban.
 
 
 ### <a name="error-code--2504"></a>Hibakód:  2504
@@ -472,7 +573,7 @@ A következő táblázat a Spark, a kaptár, a MapReduce, a Pig és a Hadoop str
 
 ## <a name="web-activity"></a>Webes tevékenység
 
-### <a name="error-code--2310"></a>Hibakód:  2310
+### <a name="error-code--2108"></a>Hibakód:  2108
 
 - **Üzenet**:`Invalid HttpMethod: '...'.`
 
@@ -559,6 +660,25 @@ A következő táblázat a Spark, a kaptár, a MapReduce, a Pig és a Hadoop str
 - **Ok**: A webes tevékenység törzse helytelen.
 
 - **Javaslat**:  Hegedűs vagy Poster használatával keresse meg a végpontot.
+
+
+### <a name="error-code--2208"></a>Hibakód:  2208
+
+- **Üzenet**:`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **Ok**: A célhely sikertelen állapotot adott vissza.
+
+- **Javaslat**:  A Hegedűs/Poster használatával ellenőrizze a kérést.
+
+
+### <a name="error-code--2308"></a>Hibakód:  2308
+
+- **Üzenet**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **Ok**: Ennek a hibának több oka lehet, például a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés.
+
+- **Javaslat**:  A Hegedűs/Poster használatával ellenőrizze a kérést.
+
 
 A Hegedűs használata a figyelt webalkalmazás HTTP-munkamenetének létrehozásához:
 

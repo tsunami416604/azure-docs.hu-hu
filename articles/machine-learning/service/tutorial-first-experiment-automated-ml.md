@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001850"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092009"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -67,7 +67,7 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
 
 1. A kísérlet neveként adja meg **a My-1st-automl-Experiment** értéket.
 
-1. Válassza **az új számítás létrehozása**lehetőséget. 
+1. Válassza **az új számítás létrehozása**lehetőséget. A számítási módszer egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ehhez a kísérlethez felhőalapú számítást használunk. 
 
     1. A számítási környezet konfigurálása ehhez a kísérlethez.
         
@@ -125,7 +125,7 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
     Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok a teljes befejezés előtt véget ér: <br> *Tanítási feladatok időpontja (perc)* : 5  <br> *Ismétlések maximális száma*: 10 
     Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.
     Érvényesítés| Válassza a K-fold kereszt-érvényesítés lehetőséget, és a **2** értéket a kereszthivatkozások számához. 
-    Párhuzamosság| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
+    Egyidejűség| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
 
    >[!NOTE]
    > Ebben a kísérletben nem állítanak be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem blokkolja az algoritmusok tesztelését is.
@@ -147,9 +147,9 @@ A kísérlet előrehaladásakor a képernyő frissíti az **iterációs diagramo
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-Az automatizált gépi tanulás alkalmazásával a munkaterület kezdőlapján üzembe helyezheti a legjobb modellt webszolgáltatásként, amely előre jelezheti az új adatmennyiséget, és azonosíthatja az esetleges lehetséges területeket. Ebben a kísérletben az üzembe helyezés azt jelenti, hogy a pénzügyi intézmény most már rendelkezik egy iterációs és méretezhető megoldással a lehetséges rögzített lejáratú ügyfelek azonosításához.
+Az automatizált gépi tanulás a munkaterület kezdőlapján a legjobb modellt webszolgáltatásként helyezheti üzembe néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
 
-Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe.
+Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe. Az üzembe helyezési folyamat több lépést is magában foglal, beleértve a modell regisztrálását, az erőforrások létrehozását és a webszolgáltatás konfigurálását.
 
 1. A **Futtatás részletei** lapon válassza a **legjobb modell üzembe helyezése** gombot a jobb felső sarokban.
 
@@ -162,7 +162,7 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
     Pontozási parancsfájl| Autogenerate
     Környezeti parancsfájl| Autogenerate
     
-1. Válassza az **Üzembe helyezés** lehetőséget.
+1. Válassza az **Üzembe helyezés** lehetőséget.  
 
     Az üzembe helyezés sikeres befejeződése után megjelenik egy üzembe helyezési teljes üzenet.
     

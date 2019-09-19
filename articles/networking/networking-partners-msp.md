@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: bd67dbd16d058f43baf8a7d9699b3576f6277718
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3b5f5ab278a14d3a5b12eae34d5c0076cfba5494
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900200"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098992"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
@@ -49,6 +49,8 @@ Az ebben a szakaszban található hivatkozásokra kattintva további informáci�
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
 [Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)
+
+[Orixcom]( https://www.orixcom.com/cloud-solutions/)
 
 [Tata-kommunikáció](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
 

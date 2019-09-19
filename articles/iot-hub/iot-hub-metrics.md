@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f0bcf12a43a4732b371dd2d64c0b174a0087bea9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877082"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098940"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub mérőszámok ismertetése
 
@@ -81,7 +81,7 @@ A IoT Hub számos mérőszámot biztosít, amely áttekintést nyújt a központ
 |C2D<br>. metódusok<br>. hiba|Sikertelen közvetlen metódusok meghívása|Count|Összes|A sikertelen közvetlen metódusok összes hívásának száma.|Nincs dimenzió|
 |C2D<br>. metódusok<br>.requestSize|A közvetlen metódus meghívásának mérete|Bájt|Average|Az összes sikeres közvetlen metódus-kérelem átlagos, minimális és maximális száma.|Nincs dimenzió|
 |C2D<br>. metódusok<br>.responseSize|A közvetlen metódus-meghívások válaszának mérete|Bájt|Average|Az összes sikeres közvetlen metódus válaszának átlagos, minimális és maximális száma.|Nincs dimenzió|
-|C2D<br>. Twin<br>. Read<br>. sikeres|Sikeres dupla olvasások a háttérből|Count|Összes|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|Nincs dimenzió|
+|C2D<br>. Twin<br>. Read<br>. sikeres|Sikeres dupla olvasások a háttérből|Count|Összes|Az összes sikeres háttér által kezdeményezett dupla olvasás száma. Ez a szám nem tartalmazza a Twin-lekérdezésekből kezdeményezett kettős olvasást.|Nincs dimenzió|
 |C2D<br>. Twin<br>. Read<br>. hiba|Sikertelen dupla olvasások a háttérből|Count|Összes|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|Nincs dimenzió|
 |C2D<br>. Twin<br>. Read<br>. size|Dupla olvasások válaszának mérete a háttérből|Bájt|Average|Az összes sikeres háttér-kezdeményező dupla olvasás átlagos, minimális és maximális száma.|Nincs dimenzió|
 |C2D<br>. Twin<br>. frissítés<br>. sikeres|Sikeres dupla frissítések a háttérből|Count|Összes|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|Nincs dimenzió|
@@ -106,7 +106,7 @@ A IoT Hub számos mérőszámot biztosít, amely áttekintést nyújt a központ
 |dailyMessage<br>QuotaUsed|A felhasznált üzenetek teljes száma|Count|Average|A jelenleg használt üzenetek teljes száma. Ez egy kumulatív érték, amely minden nap 00:00-kor, a nulla időpontra visszaáll.|Nincs dimenzió|
 |deviceDataUsage|Az eszköz összes adatfelhasználása|Bájt|Összes|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincs dimenzió|
 |totalDeviceCount|Összes eszköz (előzetes verzió)|Count|Average|Az IoT hub-ban regisztrált eszközök száma|Nincs dimenzió|
-|csatlakoztatott<br>Eszközök száma|Csatlakoztatott eszközök (előzetes verzió)|Count|Average|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincs dimenzió|
+|Csatlakoztatott<br>Eszközök száma|Csatlakoztatott eszközök (előzetes verzió)|Count|Average|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincs dimenzió|
 |konfigurációk|Konfigurációs mérőszámok|Count|Összes|A konfigurációs műveletek metrikái|Nincs dimenzió|
 
 ## <a name="next-steps"></a>További lépések

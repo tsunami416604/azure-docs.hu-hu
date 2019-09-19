@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699377"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098965"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok esetében az "offline" attribútum és az FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is be van állítva az NTFS-ben, hogy a külső alkalmazások biztonságosan tudják azonosítani a többrétegű fájlokat.
@@ -72,14 +72,14 @@ Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjér
         
         | Attribútum betűjele | Attribútum | Meghatározás |
         |:----------------:|-----------|------------|
-        | J | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
+        | A | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. |
         | K | Újraelemzési pont | Azt jelzi, hogy a fájl újraelemzési ponttal rendelkezik. Az újraelemzési pont egy speciális mutató, amely egy fájlrendszer-szűrő általi használatra szolgál. A Azure File Sync újraelemzési pontokat használ a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) megadásához a fájl tárolására szolgáló Felhőbeli helyen. Ez támogatja a zökkenőmentes hozzáférést. A felhasználóknak nem kell tudniuk, hogy a Azure File Sync használatban van, vagy hogyan érhetik el az Azure-fájlmegosztás fájlját. Ha egy fájl teljesen visszahívásra kerül, Azure File Sync eltávolítja az újraelemzési pontot a fájlból. |
         | O | Offline | Azt jelzi, hogy a fájl tartalma nem tárolódik a lemezen. Ha egy fájl teljesen visszahívásra kerül, Azure File Sync eltávolítja ezt az attribútumot. |
 
         ![A fájlhoz tartozó Tulajdonságok párbeszédpanel, ahol a Részletek lap van kijelölve](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        A mappában található összes fájl attribútumait úgy tekintheti meg, hogy hozzáadja az **attribútumok** mezőt a fájlkezelő tábla megjelenítéséhez. Ehhez kattintson a jobb gombbal egy meglévő oszlopra (például **méret**), válassza a továbbiak lehetőséget, majd válassza az **attribútumok** elemet a legördülő listából.
+        A mappában található összes fájl attribútumait úgy tekintheti meg, hogy hozzáadja az **attribútumok** mezőt a fájlkezelő tábla megjelenítéséhez. Ehhez kattintson a jobb gombbal egy meglévő oszlopra (például **méret**), válassza a **továbbiak**lehetőséget, majd válassza az **attribútumok** elemet a legördülő listából.
         
    * **Egy `fsutil` fájl újraelemzési pontjainak keresésére használható.**
        Az előző beállításban leírtaknak megfelelően a többplatformos fájlok esetében mindig van egy újraelemzési pont beállítása. Az újraelemzési mutató egy speciális mutató a Azure File Sync fájlrendszer-szűrőhöz (StorageSync. sys). Annak ellenőrzéséhez, hogy egy fájl újraelemzési ponttal rendelkezik-e, futtassa a `fsutil` következő parancsot egy rendszergazda jogú parancssorban vagy PowerShell-ablakban:
@@ -100,10 +100,10 @@ A fájlok lemezre való felidézésének legegyszerűbb módja a fájl megnyitá
 
 A PowerShell használatával is kényszerítheti a fájlok visszahívását. Ez a beállítás akkor lehet hasznos, ha egyszerre több fájlt szeretne felidézni, például egy mappa összes fájlját. Nyisson meg egy PowerShell-munkamenetet azon a kiszolgáló-csomóponton, ahol a Azure File Sync telepítve van, majd futtassa a következő PowerShell-parancsokat:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+```
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Miért nem egyezik *meg* a fájl mérete a *méret tulajdonsággal* a Azure file Sync használata után? 
@@ -113,10 +113,10 @@ A Windows fájlkezelő két tulajdonságot tesz elérhetővé a fájl méreténe
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hogyan egy fájl vagy könyvtár lépcsőzetes kikényszerítését?
 Ha engedélyezve van a felhő-előállítási funkció, a Felhőbeli rétegek automatikusan a legutóbbi hozzáférés és a módosítási idő alapján, a Felhőbeli végponton megadott mennyiségű szabad terület százalékos arányának eléréséhez. Időnként előfordulhat azonban, hogy manuálisan szeretné kényszeríteni a fájl a szintet. Ez akkor lehet hasznos, ha olyan nagyméretű fájlt ment, amelyet hosszú ideje nem kíván újra használni, és azt szeretné, hogy a köteten lévő szabad terület más fájlokhoz és mappákhoz is használható legyen. Az alábbi PowerShell-parancsokkal kényszerítheti a rétegek használatát:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>További lépések
 * [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)

@@ -1,7 +1,7 @@
 ---
-title: A .NET háttérkiszolgáló-SDK használata a Mobile Apps-alkalmazáshoz |} A Microsoft Docs
-description: Megtudhatja, hogyan használható a .NET háttérkiszolgáló-SDK az Azure App Service Mobile Apps a.
-keywords: App Service-ben, az azure app Service-ben, mobilalkalmazás, mobilszolgáltatások, méretezhető, méretezhető, alkalmazás üzembe helyezés, azure alkalmazástelepítés
+title: A .NET backend Server SDK használata a Mobile Appshoz | Microsoft Docs
+description: Megtudhatja, hogyan dolgozhat a Azure App Service Mobile Apps .NET-háttérbeli kiszolgálói SDK-val.
+keywords: App Service, az Azure app Service, a Mobile App, a Mobile Service, a Scale, a skálázható, az alkalmazások telepítése, az Azure-alkalmazások üzembe helyezése
 services: app-service\mobile
 documentationcenter: ''
 author: conceptdev
@@ -15,76 +15,76 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d277786fd08e1448b3d5ccf4fd45055fe069e4c0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119528"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097776"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
-Ez a témakör bemutatja, hogyan használható a .NET háttérkiszolgáló-SDK az Azure App Service Mobile Apps alkalmazási helyzeteket. Az Azure Mobile Apps SDK segítségével dolgozhat a mobilügyfelek az ASP.NET-alkalmazás.
+Ebből a témakörből megtudhatja, hogyan használhatja a .NET backend Server SDK-t a Azure App Service Mobile Apps forgatókönyvekben. Az Azure Mobile Apps SDK segítségével a ASP.NET-alkalmazásból származó mobil ügyfelekkel dolgozhat.
 
 > [!TIP]
-> A [.NET server SDK for Azure Mobile Apps] [ 2] nyílt forráskódú, a Githubon. A tárház minden forráskódját, beleértve a teljes kiszolgáló SDK egység és az egyes mintaprojektekkel tartalmazza.
+> Az Azure-hoz készült [.NET Server SDK Mobile apps][2] nyílt forráskódú a githubon. A tárház tartalmazza az összes forráskódot, beleértve a teljes Server SDK Unit test Suite és néhány minta projektet is.
 >
 >
 
 ## <a name="reference-documentation"></a>Segédanyagok
-Az a kiszolgáló SDK dokumentációja Itt megtalálható: [Az Azure Mobile Apps .NET-referencia][1].
+A Server SDK dokumentációja itt található: [Azure Mobile apps .net-referenciák][1].
 
-## <a name="create-app"></a>kézikönyv: .NET Mobile Apps-háttéralkalmazás létrehozása
-Ha a számítógépet egy új projekt, egy App Service-alkalmazás használatával hozhat létre a [Azure Portal] vagy a Visual Studio. Az App Service-alkalmazás helyi futtatásához, vagy a projekt közzététele a felhőalapú alkalmazásszolgáltatás mobilalkalmazáshoz.
+## <a name="create-app"></a>kézikönyv: .NET Mobile-alkalmazás háttérrendszer létrehozása
+Új projekt indításához létrehozhat egy App Service alkalmazást a [Azure Portal] vagy a Visual Studio használatával. A App Service alkalmazást helyileg is futtathatja, vagy közzéteheti a projektet a felhőalapú App Service Mobile-alkalmazásban.
 
-Ha mobileszközös lehetőségek hozzáadni egy meglévő projekt, tekintse meg a [töltse le és inicializálja az SDK-t](#install-sdk) szakaszban.
+Ha meglévő projekthez ad hozzá mobil képességeket, tekintse meg az [SDK letöltése és inicializálása](#install-sdk) című szakaszt.
 
-### <a name="create-a-net-backend-using-the-azure-portal"></a>Hozzon létre egy .NET-háttérrendszer az Azure portal használatával
-Hozzon létre egy App Service-ben mobil háttérszolgáltatás használatára, vagy kövesse a [a rövid útmutató] [ 3] vagy kövesse az alábbi lépéseket:
+### <a name="create-a-net-backend-using-the-azure-portal"></a>.NET-háttérrendszer létrehozása a Azure Portal használatával
+App Service Mobile háttérrendszer létrehozásához kövesse a gyors [útmutató oktatóanyagot][3] , vagy kövesse az alábbi lépéseket:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-Térjen vissza a *Ismerkedés* panel alatt **tábla API létrehozása**, válassza a **C#** , a **háttérrendszer nyelveként**. Kattintson a **letöltése**, bontsa ki a tömörített projektfájlokat a helyi számítógépen, és nyissa meg a megoldást a Visual Studióban.
+Vissza az *első lépések* panelen, a **Table API létrehozása**területen válassza a **C#** **háttér nyelv**lehetőséget. Kattintson a **Letöltés**gombra, bontsa ki a tömörített projektfájlok a helyi számítógépre, és nyissa meg a megoldást a Visual Studióban.
 
-### <a name="create-a-net-backend-using-visual-studio-2017"></a>Hozzon létre egy .NET-háttérrendszer a Visual Studio 2017 használatával
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>.NET-háttérrendszer létrehozása a Visual Studio 2017 használatával
 
-Telepítse az Azure-beli számítási keresztül a Visual Studióból az Azure Mobile Apps-projekt közzététele a Visual Studio telepítőjében. Miután telepítette az SDK-t, hozzon létre egy ASP.NET-alkalmazás az alábbi lépéseket követve:
+Telepítse az Azure-beli számítási feladatot a Visual Studio telepítőjének használatával, és tegye közzé az Azure Mobile Apps-projektet a Visual studióból. Miután telepítette az SDK-t, hozzon létre egy ASP.NET-alkalmazást a következő lépések végrehajtásával:
 
-1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt...** ).
-2. Bontsa ki a **Visual C#** válassza **webes**.
-3. Válassza ki **ASP.NET-es webalkalmazás (.NET-keretrendszer)** .
+1. Nyissa meg az **új projekt** párbeszédpanelt (a **fájl** > **új** > **projektből...** ).
+2. Bontsa ki a **vizualizáció C#**  elemet, és válassza a **web**lehetőséget.
+3. Válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet.
 4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
-5. Válassza ki **Azure Mobile Apps** sablont a listából.
-6. Kattintson a **OK** a megoldás létrehozásához.
-7. Kattintson a jobb gombbal a projektre a a **Megoldáskezelőben** válassza **Publish...** , majd válassza a **App Service-ben** közzétételi célként.
-8. Kövesse az utasításokat hitelesítéséhez és a egy új vagy meglévő Azure App Service szolgáltatásban való közzétételéhez válassza.
+5. Válassza ki az **Azure Mobile App** elemet a sablonok listájában.
+6. A megoldás létrehozásához kattintson **az OK** gombra.
+7. Kattintson a jobb gombbal a projektre a **megoldáskezelő** , majd válassza a **Közzététel...** lehetőséget, majd válassza ki a **app Service** közzétételi célként.
+8. Kövesse az utasításokat a hitelesítéshez, és válasszon ki egy új vagy meglévő Azure App Service a közzétételhez.
 
-### <a name="create-a-net-backend-using-visual-studio-2015"></a>Hozzon létre egy Visual Studio 2015 használata .NET-háttérrendszer
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>.NET-háttérrendszer létrehozása a Visual Studio 2015 használatával
 
-Telepítse a [Azure SDK for .NET] [ 4] (2.9.0-s verzió vagy újabb verzió) az Azure Mobile Apps-projekt létrehozása a Visual Studióban. Miután telepítette az SDK-t, hozzon létre egy ASP.NET-alkalmazás az alábbi lépéseket követve:
+Telepítse a [.net-hez készült Azure SDK][4] -t (2.9.0 vagy újabb verzió) egy Azure Mobile apps-projekt létrehozásához a Visual Studióban. Miután telepítette az SDK-t, hozzon létre egy ASP.NET-alkalmazást a következő lépések végrehajtásával:
 
-1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt...** ).
-2. Bontsa ki a **sablonok** > **Visual C#** , és válassza ki **webes**.
+1. Nyissa meg az **új projekt** párbeszédpanelt (a **fájl** > **új** > **projektből...** ).
+2. Bontsa ki a **sablonok** > **vizualizáció C#** csomópontot, és válassza a **web**lehetőséget.
 3. Válassza az **ASP.NET Web Application** (ASP.NET-es webalkalmazás) lehetőséget.
 4. Adja meg a projekt nevét. Ezután kattintson az **OK** gombra.
-5. A *ASP.NET 4.5.2 sablonok*válassza **Azure Mobile Apps**. Ellenőrizze **üzemeltetés a felhőben** mobilháttérmodul létrehozása, amelyre a projekt közzéteheti a felhőben.
+5. Az *ASP.net 4.5.2-sablonok*területen válassza az **Azure Mobile App**elemet. A **felhőben** keresse meg a gazdagépet, és hozzon létre egy mobil hátteret a felhőben, amelyen közzéteheti a projektet.
 6. Kattintson az **OK** gombra.
 
-## <a name="install-sdk"></a>kézikönyv: Töltse le és inicializálja az SDK-t
-Az SDK-val érhető el az [NuGet.org]. A csomag tartalmazza az SDK használatának megkezdéséhez szükséges alapvető funkciót biztosítja. Inicializálja az SDK-t, műveleteket hajthat végre kell a **HttpConfiguration** objektum.
+## <a name="install-sdk"></a>kézikönyv: Az SDK letöltése és inicializálása
+Az SDK a [NuGet.org]címen érhető el. Ez a csomag tartalmazza az SDK használatának megkezdéséhez szükséges alapszintű funkciókat. Az SDK inicializálásához műveleteket kell végrehajtania a **HttpConfiguration** objektumon.
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
-Telepítse az SDK-t, kattintson a jobb gombbal a Visual Studióban, válassza ki a kiszolgálói projekt **NuGet-csomagok kezelése**, keresse meg a [Microsoft.Azure.Mobile.Server] csomagot, majd kattintson a **telepítése** .
+Az SDK telepítéséhez kattintson a jobb gombbal a kiszolgálói projektre a Visual Studióban, válassza a **NuGet-csomagok kezelése**lehetőséget, keresse meg a [Microsoft.Azure.Mobile.Server] csomagot, majd kattintson a **telepítés**gombra.
 
-### <a name="server-project-setup"></a> A kiszolgálói projekt inicializálása
-Egy .NET-háttérrendszer kiszolgálóprojektet inicializálva van más ASP.NET-projektek hasonló azzal egy OWIN indítási osztályt. Győződjön meg arról, hogy rendelkezik-e hivatkozott a NuGet-csomag `Microsoft.Owin.Host.SystemWeb`. Ez az osztály hozzáadása a Visual Studióban, kattintson a jobb gombbal a kiszolgálói projektet, és válassza ki **Hozzáadás** >
-**új elem**, majd **webes**  >  ** Általános** > **OWIN indítási osztályt**.  Egy osztály hozza létre a következő attribútumot:
+### <a name="server-project-setup"></a>A kiszolgálói projekt inicializálása
+A .NET háttér-kiszolgálói projekt a többi ASP.NET-projekthez hasonlóan inicializálva van, a OWIN indítási osztályával együtt. Győződjön meg arról, hogy hivatkozik a `Microsoft.Owin.Host.SystemWeb`NuGet-csomagra. Ha ezt az osztályt a Visual Studióban szeretné felvenni, kattintson a jobb gombbal a kiszolgálói projektre, és válassza az**új elem** **hozzáadása** >
+, majd a **webes** > **általános** > **OWIN indítási osztály**elemet.  Egy osztály jön létre a következő attribútummal:
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
-Az a `Configuration()` az OWIN indítási osztályt, a használat módja egy **HttpConfiguration** objektum konfigurálása az Azure Mobile Apps-környezetben.
-Az alábbi példa inicializálja a kiszolgálói projektet, nem hozzáadott funkciókat:
+A OWIN indítási osztályának metódusábanhasználjonegyHttpConfigurationobjektumotazAzureMobileapps-környezetkonfigurálásához`Configuration()` .
+A következő példa a kiszolgálói projektet a hozzáadott funkciók nélkül inicializálja:
 
     // in OWIN startup class
     public void Configuration(IAppBuilder app)
@@ -98,13 +98,13 @@ Az alábbi példa inicializálja a kiszolgálói projektet, nem hozzáadott funk
         app.UseWebApi(config);
     }
 
-Egyes funkciók engedélyezéséhez meg kell hívni a bővítő metódusokat a **MobileAppConfiguration** hívása előtt objektum **ApplyTo**. Például az alábbi kód hozzáadja az alapértelmezett útvonalakat a attribútummal rendelkező összes API-vezérlő `[MobileAppController]` inicializálása során:
+Az egyes funkciók engedélyezéséhez a **ApplyTo**meghívása előtt meg kell hívnia a bővítmények metódusait a **MobileAppConfiguration** objektumon. A következő kód például hozzáadja az alapértelmezett útvonalakat az összes olyan API-vezérlőhöz, amelyek `[MobileAppController]` az inicializálás során rendelkeznek az attribútummal:
 
     new MobileAppConfiguration()
         .MapApiControllers()
         .ApplyTo(config);
 
-A server gyors üzembe helyezése az Azure portal-hívások **UseDefaultConfiguration()** . Ez egyenértékű a következő beállítás:
+A kiszolgáló rövid útmutatója a Azure Portal meghívja a **UseDefaultConfiguration ()** metódust. Ez egyenértékű a következő beállítással:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package
@@ -118,55 +118,55 @@ A server gyors üzembe helyezése az Azure portal-hívások **UseDefaultConfigur
             .MapLegacyCrossDomainController()         // from the CrossDomain package
             .ApplyTo(config);
 
-A bővítmény használt módszerek a következők:
+A használt bővítményi módszerek a következők:
 
-* `AddMobileAppHomeController()` az alapértelmezett Azure Mobile Apps kezdőlap biztosít.
-* `MapApiControllers()` egyéni API-funkciókat biztosít a WebAPI-tartományvezérlőket az kitüntetett a `[MobileAppController]` attribútum.
-* `AddTables()` tartalmazza a `/tables` tábla tartományvezérlők végpontok.
-* `AddTablesWithEntityFramework()` a leképezés egy röviden kézből a `/tables` Entity Framework használatával végpontok alapú tartományvezérlők.
-* `AddPushNotifications()` eszközök regisztrálása a Notification Hubs egy egyszerű módszert kínál.
-* `MapLegacyCrossDomainController()` Standard szintű CORS fejléceket biztosít a helyi fejlesztési.
+* `AddMobileAppHomeController()`az alapértelmezett Azure Mobile Apps kezdőlapot adja meg.
+* `MapApiControllers()`Egyéni API-képességeket biztosít az `[MobileAppController]` attribútummal díszített WebAPI-vezérlőkhöz.
+* `AddTables()`a `/tables` végpontok táblázatos vezérlőkhöz való leképezését biztosítja.
+* `AddTablesWithEntityFramework()`a a `/tables` végpontok Entity Framework-alapú vezérlőkkel való leképezésének rövid beosztása.
+* `AddPushNotifications()`egyszerű módszert biztosít a Notification Hubs eszközök regisztrálásához.
+* `MapLegacyCrossDomainController()`a szabványos CORS-fejléceket biztosít a helyi fejlesztéshez.
 
 ### <a name="sdk-extensions"></a>SDK-bővítmények
-A következő NuGet-alapú bővítmény csomagok adja meg az alkalmazás által használható különféle mobil szolgáltatások. Bővítmények az inicializálás során használatával engedélyezheti a **MobileAppConfiguration** objektum.
+A következő NuGet-alapú kiterjesztési csomagok különböző mobil funkciókat biztosítanak, amelyeket az alkalmazás használhat. A bővítményeket az inicializálás során a **MobileAppConfiguration** objektum használatával engedélyezheti.
 
-* [Microsoft.Azure.Mobile.Server.Quickstart] támogatja a Mobile Apps alapszintű beállítás. Meghívásával része a konfigurációnak a **UseDefaultConfiguration** metódust az inicializálás során. Ez a bővítmény tartalmazza a következő bővítmények: Értesítések, hitelesítés, entitás, táblák, a tartományok közötti és a kezdőlap csomagok. A Mobile Apps – első lépések az Azure Portalon ezt a csomagot használja.
-* [Microsoft.Azure.Mobile.Server.Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) valósítja meg az alapértelmezett *ezt a mobilalkalmazást működik-lap* webhely legfelső szintű. Adja hozzá a konfigurációhoz meghívásával a **AddMobileAppHomeController** metódust.
-* [Microsoft.Azure.Mobile.Server.Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) adatkezelési osztályokat tartalmazza, és a csoportok mentése adatfolyamat. Adja hozzá a konfigurációhoz meghívásával a **AddTables** metódust.
-* [Microsoft.Azure.Mobile.Server.Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) lehetővé teszi, hogy az Entity Framework adatok elérését az SQL Database-ben. Adja hozzá a konfigurációhoz meghívásával a **AddTablesWithEntityFramework** metódust.
-* [Microsoft.Azure.Mobile.Server.Authentication] lehetővé teszi a hitelesítést és a csoportok felfelé az OWIN közbenső szoftver jogkivonatok érvényesítésére használni. Adja hozzá a konfigurációhoz meghívásával a **AddAppServiceAuthentication** és **IAppBuilder**. **UseAppServiceAuthentication** bővítő metódusokat.
-* [Microsoft.Azure.Mobile.Server.Notifications] lehetővé teszi, hogy leküldéses értesítéseket és a egy leküldéses regisztrációs végpont meghatározása. Adja hozzá a konfigurációhoz meghívásával a **AddPushNotifications** metódust.
-* [Microsoft.Azure.Mobile.Server.CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) hoz létre egy vezérlő, amely régebbi webböngészők, a Mobile App szolgáltat adatokat. Adja hozzá a konfigurációhoz meghívásával a **MapLegacyCrossDomainController** metódust.
-* [Microsoft.Azure.Mobile.Server.Login] biztosít a AppServiceLoginHandler.CreateToken() módszer, amely egy egyéni hitelesítési forgatókönyvek során használt statická metoda.
+* A [Microsoft.Azure.Mobile.Server.Quickstart] támogatja az alapszintű Mobile apps telepítőt. A konfigurációhoz való hozzáadásához hívja meg a **UseDefaultConfiguration** bővítmény metódust az inicializálás során. Ez a bővítmény a következő bővítményeket tartalmazza: Értesítések, hitelesítés, entitás, táblák, tartományok és otthoni csomagok. Ezt a csomagot a Azure Portal elérhető Mobile Apps rövid útmutatója használja.
+* A [Microsoft. Azure. Mobile. Server. Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementálja az alapértelmezett *Ez a Mobile-alkalmazás* a webhely gyökeréhez. Adja hozzá a konfigurációhoz a **AddMobileAppHomeController** -bővítmény metódus meghívásával.
+* A [Microsoft. Azure. Mobile. Server. Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) az adatkezelési osztályokat és az adatfolyamatok beállítását is tartalmazza. Adja hozzá a konfigurációhoz a **AddTables** -bővítmény metódus meghívásával.
+* A [Microsoft. Azure. Mobile. Server. Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) lehetővé teszi, hogy a Entity Framework hozzáférjenek a SQL Database lévő adatszolgáltatásokhoz. Adja hozzá a konfigurációhoz a **AddTablesWithEntityFramework** -bővítmény metódus meghívásával.
+* A [Microsoft.Azure.Mobile.Server.Authentication] engedélyezi a hitelesítést és beállítja a jogkivonatok érvényesítéséhez használt OWIN middleware-t. Adja hozzá a konfigurációhoz a **AddAppServiceAuthentication** és a **IAppBuilder**meghívásával. **UseAppServiceAuthentication** -bővítmény módszerei.
+* A [Microsoft.Azure.Mobile.Server.Notifications] lehetővé teszi a leküldéses értesítések küldését, és leküldéses regisztrációs végpontot definiál. Adja hozzá a konfigurációhoz a **AddPushNotifications** -bővítmény metódus meghívásával.
+* A [Microsoft. Azure. Mobile. Server. CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) egy vezérlőt hoz létre, amely az adatoknak a mobil alkalmazásból származó, régi webböngészőkbe való kiszolgálása érdekében. Adja hozzá a konfigurációhoz a **MapLegacyCrossDomainController** -bővítmény metódus meghívásával.
+* A [Microsoft.Azure.Mobile.Server.Login] a AppServiceLoginHandler. okta () metódust biztosítja, amely az egyéni hitelesítési forgatókönyvek során használt statikus metódus.
 
 ## <a name="publish-server-project"></a>kézikönyv: A kiszolgálói projekt közzététele
-Ez a szakasz bemutatja, hogyan teheti közzé a .NET-háttérrendszer projekt a Visual Studióból. Ezenkívül telepítheti a háttér-projektet az [Git](../app-service/deploy-local-git.md) vagy bármely más módszerek elérhető itt.
+Ez a szakasz bemutatja, hogyan teheti közzé a .NET-háttér-projektet a Visual studióból. A háttér-projektet a [git](../app-service/deploy-local-git.md) használatával vagy az ott elérhető egyéb módszerekkel is üzembe helyezheti.
 
-1. A Visual Studióban építse újra a projektet a NuGet-csomagok visszaállítására.
-2. A Megoldáskezelőben kattintson a jobb gombbal a projektre, kattintson a **közzététel**. Először tesz közzé, amelyet akkor kell meghatároznia egy közzétételi profilt. Ha már rendelkezik egy meghatározott profil, válassza ki, és kattintson a **közzététel**.
-3. Ha egy közzétételi célként válassza kéri, kattintson a **Microsoft Azure App Service** > **tovább**, majd (ha szükséges) jelentkezzen be Azure hitelesítő adatait.
-   A Visual Studio letölti és biztonságosan tárolja a közzétételi beállítások közvetlenül az Azure-ból.
+1. A Visual Studióban építse újra a projektet a NuGet-csomagok visszaállításához.
+2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd a **Közzététel**elemre. Amikor először tesz közzé, meg kell adnia egy közzétételi profilt. Ha már van definiálva profil, kiválaszthatja, majd kattintson a **Közzététel**elemre.
+3. Ha a rendszer a közzétételi cél kiválasztására kéri, kattintson a **Microsoft Azure app Service** > **tovább**gombra, majd (ha szükséges) az Azure-beli hitelesítő adataival jelentkezzen be.
+   A Visual Studio letölti és biztonságosan tárolja a közzétételi beállításokat közvetlenül az Azure-ból.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
-4. Válassza ki a **előfizetés**, jelölje be **erőforrástípus** a **nézet**, bontsa ki a **mobilalkalmazás**, és kattintson a Mobile Apps-háttéralkalmazást, majd kattintson **OK**.
+4. Válassza ki az **előfizetést**, válassza ki az **erőforrás típusát** a **nézetből**, bontsa ki a **Mobile App**elemet, majd kattintson a Mobile apps-háttérre, majd **az OK**gombra
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
-5. Ellenőrizze a közzétételi profil adatait, és kattintson a **közzététel**.
+5. Ellenőrizze a profil közzétételének adatait, majd kattintson a **Közzététel**elemre.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-3.png)
 
-    Ha a Mobile Apps-háttéralkalmazást közzététele sikeresen befejeződött, megjelenik egy kezdőlapja jelzi a sikert.
+    Ha a Mobile apps-háttér sikeresen közzé lett téve, megjelenik egy, a sikert jelző Kezdőlap.
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a> kézikönyv: Egy tábla vezérlő definiálása
-Adjon meg egy Table Controller elérhetővé a mobilügyfelek SQL-táblájába.  Egy Table Controller konfigurálása három lépésből áll:
+## <a name="define-table-controller"></a>kézikönyv: Táblázatos vezérlő definiálása
+Definiáljon egy tábla-vezérlőt, amely egy SQL-táblázatot tesz elérhetővé a mobil ügyfelek számára.  A táblázatos vezérlő konfigurálásához három lépés szükséges:
 
-1. Hozzon létre egy Data Transfer objektumot (dto-t) osztályt.
-2. Adja meg a táblahivatkozást a Mobile DbContext osztályt.
-3. Hozzon létre egy táblavezérlőnek.
+1. Hozzon létre egy Adatátvitel Object (DTO) osztályt.
+2. Konfigurálja a táblázat hivatkozását a Mobile DbContext osztályban.
+3. Hozzon létre egy tábla-vezérlőt.
 
-A Data Transfer objektumot (dto-t) egy olyan egyszerű C# objektum, amely örökli az `EntityData`.  Példa:
+A Adatátvitel objektum (DTO) egy egyszerű C# objektum, amely a következőtől `EntityData`örökli:.  Példa:
 
     public class TodoItem : EntityData
     {
@@ -174,7 +174,7 @@ A Data Transfer objektumot (dto-t) egy olyan egyszerű C# objektum, amely örök
         public bool Complete {get; set;}
     }
 
-A dto-t a tábla az SQL Database meghatározására szolgál.  Az adatbázis-bejegyzést létrehozásához adja hozzá a `DbSet<>` tulajdonságot használ a DbContext.  Az Azure Mobile Apps alapértelmezett projektsablonnal a DbContext neve `Models\MobileServiceContext.cs`:
+A DTO az SQL-adatbázison belüli tábla definiálására szolgál.  Az adatbázis-bejegyzés létrehozásához vegyen `DbSet<>` fel egy tulajdonságot a használni kívánt DbContext.  Az Azure Mobile Apps alapértelmezett Project sablonjában a DbContext neve `Models\MobileServiceContext.cs`:
 
     public class MobileServiceContext : DbContext
     {
@@ -195,79 +195,79 @@ A dto-t a tábla az SQL Database meghatározására szolgál.  Az adatbázis-bej
         }
     }
 
-Ha az Azure SDK-t, a következő most már létrehozhat egy sablont kontroler tabulek:
+Ha telepítette az Azure SDK-t, mostantól a következőképpen hozhat létre egy sablon tábla-vezérlőt:
 
-1. Kattintson a jobb gombbal a tartományvezérlők mappához, és válassza ki **Hozzáadás** > **vezérlő...** .
-2. Válassza ki a **Azure Mobile Apps Table Controller** lehetőséget, majd kattintson a **Hozzáadás**.
-3. Az a **vezérlő hozzáadása** párbeszédpanel:
-   * Az a **Model class** legördülő menüben válassza ki az új dto-t.
-   * Az a **DbContext** legördülő menüben válassza ki a Mobile Service DbContext osztályt.
-   * A tartományvezérlő neve jön létre az Ön számára.
+1. Kattintson a jobb gombbal a vezérlők mappára, majd válassza a vezérlő **hozzáadása** >  **...** lehetőséget.
+2. Válassza ki az **Azure Mobile apps tábla-vezérlő** lehetőséget, majd kattintson a **Hozzáadás**gombra.
+3. A **vezérlő hozzáadása** párbeszédpanelen:
+   * A **modell osztály** legördülő menüben válassza ki az új DTO.
+   * A **DbContext** legördülő menüben válassza ki a Mobile Service DbContext osztályt.
+   * A rendszer létrehozza a vezérlő nevét.
 4. Kattintson a **Hozzáadás**lehetőségre.
 
-A rövid útmutató kiszolgálói projektet tartalmaz egy egyszerű példa **TodoItemController**.
+A gyors üzembe helyezési kiszolgáló projekt egy példát tartalmaz egy egyszerű **TodoItemController**.
 
-### <a name="adjust-pagesize"></a>kézikönyv: A tábla lapozófájl méretének módosítása
-Alapértelmezés szerint az Azure Mobile Apps-alkalmazások / kérelem 50 rekordjait adja vissza.  Lapozófájl biztosítja, hogy az ügyfél nem lefoglalják a felhasználói felület szála, sem a kiszolgáló túl sokáig várakozott egy jó felhasználói élményt biztosítva. A táblázat lapozófájl méretének módosításához növelni a kiszolgáló oldalán "engedélyezett a lekérdezések mérete", és az ügyféloldali oldal méretezése a kiszolgálóoldali "engedélyezett a lekérdezések mérete" úgy kell beállítani, használja a `EnableQuery` attribútum:
+### <a name="adjust-pagesize"></a>kézikönyv: A tábla lapozófájljának méretének módosítása
+Alapértelmezés szerint az Azure Mobile Apps kérelemként 50 rekordot ad vissza.  A lapozás biztosítja, hogy az ügyfél ne kösse össze a felhasználói felületi szálat és a kiszolgálót túl hosszú ideig, így biztosítva a megfelelő felhasználói élményt. A tábla lapozófájljának méretének módosításához növelje a kiszolgálóoldali "megengedett lekérdezési méret" és az ügyféloldali oldal méretét a "megengedett lekérdezési méret" értékkel `EnableQuery` a következő attribútummal:
 
     [EnableQuery(PageSize = 500)]
 
-Győződjön meg, hogy a PageSize azonos vagy nagyobb, mint az ügyfél által kért mérete.  Tekintse meg az adott ügyfél HOWTO dokumentációjában az ügyfél oldalméret módosítására.
+Győződjön meg arról, hogy a PageSize megegyezik az ügyfél által kért mérettel, vagy annál nagyobb.  Az ügyfél oldal méretének módosításával kapcsolatban tekintse meg az adott ügyfél-HOWTO dokumentációját.
 
-## <a name="how-to-define-a-custom-api-controller"></a>Útmutató: Adja meg egy egyéni API-vezérlő
-Az egyéni API-vezérlő biztosítja, hogy a Mobile Apps-háttéralkalmazást a legalapvetőbb funkciókat elérhetővé tenni a végpontokat. Egy mobileszköz-specifikus API-vezérlő a [MobileAppController] attribútum használatával lehet regisztrálni. A `MobileAppController` attribútum regisztrálja az útvonalat, állítja be a Mobile Apps JSON-szerializáló, és kapcsolja be a [ügyfél verziója ellenőrzése](app-service-mobile-client-and-server-versioning.md).
+## <a name="how-to-define-a-custom-api-controller"></a>Útmutató: Egyéni API-vezérlő definiálása
+Az egyéni API-vezérlő a legalapvetőbb funkciókat biztosítja a Mobile apps-háttér számára a végpontok kimutatása révén. A [MobileAppController] attribútum használatával regisztrálhat egy Mobile-specifikus API-vezérlőt. Az `MobileAppController` attribútum regisztrálja az útvonalat, beállítja a Mobile apps JSON-szerializáló, és bekapcsolja az [ügyfél verziójának ellenőrzését](app-service-mobile-client-and-server-versioning.md).
 
-1. A Visual Studióban kattintson a jobb gombbal a tartományvezérlők mappát, majd kattintson **Hozzáadás** > **vezérlő**válassza **Web API 2 vezérlő&mdash;üres** és Kattintson a **Hozzáadás**.
-2. Adjon meg egy **vezérlőnév**, például `CustomController`, és kattintson a **Hozzáadás**.
-3. Az új tartományvezérlő osztály fájlban adja hozzá a következő using utasítást:
+1. A Visual Studióban kattintson a jobb gombbal a vezérlők mappára, majd kattintson a**vezérlő** **hozzáadása** > parancsra, válassza ki a **web API&mdash;2 vezérlőt üresen** , majd kattintson a **Hozzáadás**gombra.
+2. Adja meg a **vezérlő nevét**, például `CustomController`:, és kattintson a **Hozzáadás**gombra.
+3. Az új vezérlő osztály fájljában adja hozzá a következő using utasítást:
 
         using Microsoft.Azure.Mobile.Server.Config;
-4. Alkalmazza a **[MobileAppController]** attribútumot az API vezérlő az osztálykiterjesztések definíciója az alábbi példában látható módon:
+4. Alkalmazza a **[MobileAppController]** attribútumot az API-vezérlő osztályának meghatározására, az alábbi példában látható módon:
 
         [MobileAppController]
         public class CustomController : ApiController
         {
               //...
         }
-5. App_Start/Startup.MobileApp.cs fájlban adja hozzá a hívást a **MapApiControllers** metódust, az alábbi példában látható módon:
+5. A App_Start/Startup. MobileApp. cs fájlban adja meg a **MapApiControllers** -bővítmény metódusának hívását, ahogy az alábbi példában is látható:
 
         new MobileAppConfiguration()
             .MapApiControllers()
             .ApplyTo(config);
 
-Is használhatja a `UseDefaultConfiguration()` bővítmény metódusa `MapApiControllers()`. Minden vezérlő, amely nem rendelkezik **MobileAppControllerAttribute** alkalmazza az ügyfelek által továbbra is elérhető, de, előfordulhat, hogy nem megfelelően használni az ügyfelek bármilyen mobilalkalmazás-ügyféloldali SDK-val.
+A `UseDefaultConfiguration()` kiterjesztési metódust a `MapApiControllers()`helyett is használhatja. Az ügyfelek továbbra is hozzáférhetnek a **MobileAppControllerAttribute** -t nem használó vezérlőkhöz, de előfordulhat, hogy az ügyfelek nem tudják megfelelően használni az összes Mobile App Client SDK-t.
 
 ## <a name="how-to-work-with-authentication"></a>Útmutató: Hitelesítés használata
-Az Azure Mobile Apps használja az App Service-hitelesítés / engedélyezés a mobil háttérmodul védelme az.  Ez a szakasz bemutatja, hogyan hajtsa végre a következő hitelesítési feladatok a .NET-háttérrendszer kiszolgálói projektet:
+Az Azure Mobile Apps App Service hitelesítés/engedélyezés használatával gondoskodik a mobil háttérrendszer védelméről.  Ez a szakasz bemutatja, hogyan végezheti el a következő hitelesítéssel kapcsolatos feladatokat a .NET háttér-kiszolgálói projektben:
 
-* [Útmutató: Hitelesítés hozzáadása a kiszolgálói projekt](#add-auth)
-* [Útmutató: Az alkalmazás egyéni hitelesítés használata](#custom-auth)
+* [Útmutató: Hitelesítés hozzáadása egy kiszolgálói projekthez](#add-auth)
+* [Útmutató: Egyéni hitelesítés használata az alkalmazáshoz](#custom-auth)
 * [Útmutató: Hitelesített felhasználói adatok beolvasása](#user-info)
-* [Útmutató: A jogosult felhasználók adatokhoz való hozzáférést](#authorize)
+* [Útmutató: Az adathozzáférés korlátozása a jogosult felhasználók számára](#authorize)
 
-### <a name="add-auth"></a>kézikönyv: Hitelesítés hozzáadása a kiszolgálói projekt
-Hozzáadhat hitelesítési a kiszolgálói projektet által bővítése a **MobileAppConfiguration** objektum és az OWIN közbenső szoftver konfigurálása. Amikor telepíti a [Microsoft.Azure.Mobile.Server.Quickstart] csomagot, és hívja a **UseDefaultConfiguration** metódust, továbbléphet a 3. lépés.
+### <a name="add-auth"></a>kézikönyv: Hitelesítés hozzáadása egy kiszolgálói projekthez
+A kiszolgálói projekthez a **MobileAppConfiguration** objektum kibővítésével és a OWIN middleware konfigurálásával adhat hozzá hitelesítést. A [Microsoft.Azure.Mobile.Server.Quickstart] gyorsindítási csomag telepítésekor és a **UseDefaultConfiguration** -bővítmény metódusának meghívásakor ugorjon a 3. lépésre.
 
-1. A Visual Studio telepítése a [Microsoft.Azure.Mobile.Server.Authentication] csomagot.
-2. Projekt a Startup.cs fájlban adja hozzá a következő kódsort a elején a **konfigurációs** módszer:
+1. A Visual Studióban telepítse a [Microsoft.Azure.Mobile.Server.Authentication] csomagot.
+2. A Startup.cs projekt fájljában adja hozzá a következő kódrészletet a **konfigurációs** módszer elején:
 
         app.UseAppServiceAuthentication(config);
 
-    Az OWIN közbenső szoftveres összetevők érvényesíti a társított App Service-átjáró által kiállított jogkivonatokban.
-3. Adja hozzá a `[Authorize]` bármely tartományvezérlő vagy a metódus, amelyhez hitelesítés szükséges.
+    Ez a OWIN köztes összetevő ellenőrzi a társított App Service átjáró által kiállított jogkivonatokat.
+3. Adja hozzá `[Authorize]` az attribútumot bármely olyan vezérlőhöz vagy metódushoz, amelyhez hitelesítés szükséges.
 
-Hogyan hitelesítheti az ügyfelek számára, hogy a Mobile Apps-háttéralkalmazást kapcsolatos további információkért lásd: [hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-ios-get-started-users.md).
+Ha szeretné megtudni, hogyan hitelesítheti az ügyfeleket a Mobile Apps háttérrel, tekintse meg [a hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-ios-get-started-users.md)című témakört.
 
-### <a name="custom-auth"></a>kézikönyv: Az alkalmazás egyéni hitelesítés használata
+### <a name="custom-auth"></a>kézikönyv: Egyéni hitelesítés használata az alkalmazáshoz
 > [!IMPORTANT]
-> Annak érdekében, hogy egyéni hitelesítés engedélyezéséhez először engedélyeznie kell App Service-hitelesítés anélkül, hogy egy szolgáltató az App Service az Azure Portalon. Ez lehetővé teszi a WEBSITE_AUTH_SIGNING_KEY környezeti változót, ha ezek üzemelnek.
+> Az egyéni hitelesítés engedélyezéséhez először engedélyeznie kell App Service hitelesítést anélkül, hogy kijelöli a App Servicehoz tartozó szolgáltatót a Azure Portal. Ez a szolgáltatás a WEBSITE_AUTH_SIGNING_KEY környezeti változót fogja engedélyezni a gazdagépen.
 > 
 > 
-> Ha nem szeretne használni az App Service hitelesítés/engedélyezés egyik, a saját bejelentkezési rendszer valósíthat meg. Telepítse a [Microsoft.Azure.Mobile.Server.Login] csomag, amelyek segítik a hitelesítési jogkivonat létrehozása.  Adja meg a saját kódját felhasználó hitelesítő adatainak ellenőrzése. Például megkereshet egy adatbázisban sózott és kivonatolt jelszavak ellen. Az alábbi példában a `isValidAssertion()` (máshol megadott) módszer felelős ezeket az ellenőrzéseket.
+> Ha nem kívánja használni a App Service hitelesítés/engedélyezés szolgáltatók egyikét, saját bejelentkezési rendszerét is megvalósíthatja. Telepítse a [Microsoft.Azure.Mobile.Server.Login] csomagot, hogy segítséget nyújtson a hitelesítési jogkivonat létrehozásához.  Adja meg saját kódját a felhasználói hitelesítő adatok érvényesítéséhez. Előfordulhat például, hogy egy adatbázisban megtekinti a sózott és a kivonatos jelszavakat. Az alábbi példában a `isValidAssertion()` (máshol definiált) metódus felelős az ellenőrzésekért.
 
-Az egyéni hitelesítési tesz elérhetővé egy ApiController létrehozása és adatokhoz hozzáférést biztosító `register` és `login` műveleteket. Az ügyfélnek, az adatokat gyűjt a felhasználó egy egyéni felhasználói használnia kell.  Az információkat ezután az egy normál HTTP POST-hívás az API-hoz. Miután a kiszolgáló ellenőrzi a helyességi feltétel, a jogkivonat használatával kiadott a `AppServiceLoginHandler.CreateToken()` metódust.  A ApiController **nem** használja a `[MobileAppController]` attribútum.
+Az egyéni hitelesítés ApiController `register` létrehozásával, valamint a kilépéssel és a `login` műveletekkel érhető el. Az ügyfélnek egyéni felhasználói felületet kell használnia az adatoknak a felhasználótól való összegyűjtéséhez.  Ezt követően a rendszer a szabványos HTTP POST hívással küldi el az adatokat az API-nak. Ha a kiszolgáló érvényesíti az állítást, a rendszer egy jogkivonatot állít ki a `AppServiceLoginHandler.CreateToken()` metódus használatával.  A ApiController **nem** használhatja az `[MobileAppController]` attribútumot.
 
-Példa `login` művelet:
+Példa `login` a műveletre:
 
         public IHttpActionResult Post([FromBody] JObject assertion)
         {
@@ -290,7 +290,7 @@ Példa `login` művelet:
             }
         }
 
-Az előző példában LoginResult LoginResultUser jsou kötelező tulajdonságok feltáró szerializálható objektumok. Az ügyfél vár a válaszokat az űrlap JSON-objektumként kell visszaadni:
+Az előző példában a LoginResult és a LoginResultUser szerializálható objektumok, amelyek a szükséges tulajdonságokat teszik közzé. Az ügyfél az űrlap JSON-objektumaiként visszaadott bejelentkezési válaszokat vár:
 
         {
             "authenticationToken": "<token>",
@@ -299,31 +299,31 @@ Az előző példában LoginResult LoginResultUser jsou kötelező tulajdonságok
             }
         }
 
-A `AppServiceLoginHandler.CreateToken()` metódus egy *célközönség* és a egy *kibocsátó* paraméter. Mindkét paraméter beállítása az URL-címe az alkalmazás gyökérkönyvtáraként használatával a HTTPS-sémát. Hasonlóképpen kell beállítania *secretKey* kell az alkalmazás értékét a aláíró kulcs. Ne ossza el az ügyfélprogram aláírókulcsot Mentaízű kulcsok és a felhasználók megszemélyesítésére is használható. Az aláírókulcs közben hivatkozva App Service-ben üzemeltetett szerezheti be a *webhely\_AUTH\_aláírás\_kulcs* környezeti változót. Egy helyi hibakeresési környezetben szükség esetén kövesse a a [helyi hibakeresés hitelesítéssel](#local-debug) szakasz lekérni a kulcsot, és a egy alkalmazás beállításként tárolja.
+A `AppServiceLoginHandler.CreateToken()` metódus *célközönséget* és *kiállítói* paramétert tartalmaz. Mindkét paraméter az alkalmazás gyökérkönyvtárának URL-címére van beállítva a HTTPS-séma használatával. Hasonlóképpen be kell állítania az *secretKey* értékét az alkalmazás aláíró kulcsának értékeként. Ne terjesszen az aláíró kulcsot az ügyfélen, mivel a kulcsok megverésére és a felhasználók megszemélyesítésére használható. Az aláíró kulcsot a *webhely\_Auth\_-aláíró\_kulcs* környezeti változóra való hivatkozással szerezheti be a app Service futtatva. Ha helyi hibakeresési környezetben van szükség, kövesse a [helyi hibakeresés a hitelesítéssel](#local-debug) című szakaszt a kulcs lekéréséhez és az alkalmazás-beállításként való tárolásához.
 
-A kiállított jogkivonat is tartalmazhat más jogcímet, és a egy lejárati dátumot.  A kiállított jogkivonat mezőgyűjteményre tartalmaznia kell egy tulajdonos (**sub**) jogcím.
+A kiállított jogkivonat tartalmazhat más jogcímeket és lejárati dátumot is.  A kiállított jogkivonatnak minimálisan tartalmaznia kell egy tárgy (**Sub**) jogcímet.
 
-A standard szintű ügyfél támogathatja `loginAsync()` metódus által a hitelesítés útvonal terhelve.  Ha az ügyfél meghívja a `client.loginAsync('custom');` való bejelentkezéshez, az útvonal lehet `/.auth/login/custom`.  Beállíthatja, hogy az egyéni hitelesítési vezérlő használatával útvonala `MapHttpRoute()`:
+A standard szintű ügyfél `loginAsync()` -metódust a hitelesítési útvonal túlterhelésével is támogathatja.  Ha az ügyfél meghívja `client.loginAsync('custom');` a bejelentkezést, az útvonalnak a következőnek kell lennie `/.auth/login/custom`:.  Az egyéni hitelesítési vezérlő `MapHttpRoute()`útvonalát a következő módon állíthatja be:
 
     config.Routes.MapHttpRoute("custom", ".auth/login/custom", new { controller = "CustomAuth" });
 
 > [!TIP]
-> Használatával a `loginAsync()` megközelítés biztosítja, hogy a hitelesítési jogkivonat csatolva van a szolgáltatás minden ezt követő meghívásához.
+> A `loginAsync()` módszer használatával biztosíthatja, hogy a hitelesítési jogkivonat a szolgáltatás minden további hívásához legyen csatlakoztatva.
 >
 >
 
 ### <a name="user-info"></a>kézikönyv: Hitelesített felhasználói adatok beolvasása
-Ha a felhasználók hitelesítése az App Service, érheti el a hozzárendelt felhasználói Azonosítót és egyéb információkat a a .NET-háttéralkalmazás kódjához. A felhasználói adatokat a hitelesítési döntések meghozatala során a háttérben is használható. A következő kódot a felhasználói azonosító, a kéréshez társított kéri le:
+Ha App Service hitelesíti a felhasználót, hozzáférhet a hozzárendelt felhasználói AZONOSÍTÓhoz és egyéb információkhoz a .NET-háttér kódjában. A felhasználói adatok a háttérbeli engedélyezési döntések meghozatalához is használhatók. A következő kód beolvassa a kérelemhez társított felhasználói azonosítót:
 
     // Get the SID of the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-A SID származik a szolgáltatóhoz tartozó felhasználói azonosító és a egy adott felhasználó és a bejelentkezés-szolgáltató statikus.  A biztonsági azonosító értéke null a következőnél érvénytelen hitelesítési token.
+A SID a szolgáltató-specifikus felhasználói AZONOSÍTÓból származik, és az adott felhasználó és bejelentkezési szolgáltató számára statikus.  A SID null értékű az érvénytelen hitelesítési tokenek esetében.
 
-App Service-ben is lehetővé teszi a bejelentkezés-szolgáltató adott jogcímek kérhet. Minden egyes identitásszolgáltató SDK identitásszolgáltatóval további információk megadására.  Használhatja például a Facebook Graph API barátok információt.  A szolgáltató panel az Azure Portalon is megadhat igényelt jogcímeket. Egyes jogcímek az identitásszolgáltatónál történő további konfiguráció szükséges.
+App Service is lehetővé teszi, hogy konkrét jogcímeket Kérjen a bejelentkezési szolgáltatójától. Az egyes identitás-szolgáltatók több információt is biztosíthatnak az Identity Provider SDK használatával.  Használhatja például a barátokra vonatkozó Facebook-Graph API.  Megadhat olyan jogcímeket, amelyeket a rendszer a Azure Portal szolgáltató paneljén kér. Egyes jogcímek esetében további konfigurációra van szükség az identitás-szolgáltatónál.
 
-A következő kód meghívja a **GetAppServiceIdentityAsync** metódust a bejelentkezési hitelesítő adatokat, többek között a hozzáférési jogkivonat beszerzése az szükséges, hogy a Facebook Graph API kérelmeket:
+A következő kód meghívja a **GetAppServiceIdentityAsync** -bővítmény metódust a bejelentkezési hitelesítő adatok beszerzéséhez, amely tartalmazza a Facebook Graph APIhoz való kérések elvégzéséhez szükséges hozzáférési jogkivonatot:
 
     // Get the credentials for the logged-in user.
     var credentials =
@@ -347,10 +347,10 @@ A következő kód meghívja a **GetAppServiceIdentityAsync** metódust a bejele
         var fbInfo = await resp.Content.ReadAsStringAsync();
     }
 
-Adjon hozzá egy utasítást a `System.Security.Principal` biztosít a **GetAppServiceIdentityAsync** metódust.
+Vegyen fel egy Using `System.Security.Principal` utasítást a **GetAppServiceIdentityAsync** -bővítményi metódus biztosításához.
 
-### <a name="authorize"></a>kézikönyv: A jogosult felhasználók adatokhoz való hozzáférést
-Az előző szakaszban megmutattuk, hogyan kérhető le egy hitelesített felhasználó felhasználói azonosítója. Az adatok és más erőforrások, ez az érték alapján korlátozhatja a hozzáférést. Például táblák felhasználói azonosító oszlop hozzáadásával és szűrése a lekérdezés eredményeit a felhasználói azonosító egy egyszerű módja visszaadott adatok csak a jogosult felhasználókra korlátozzák. A következő kódot az adatok sorát adja vissza, csak akkor, ha a biztonsági AZONOSÍTÓT a TodoItem tábla UserId oszlopára értéke megegyezik:
+### <a name="authorize"></a>kézikönyv: Az adathozzáférés korlátozása a jogosult felhasználók számára
+Az előző szakaszban bemutatjuk, hogyan lehet beolvasni egy hitelesített felhasználó felhasználói AZONOSÍTÓját. Ezen érték alapján korlátozhatja az adatelérést és az egyéb erőforrásokat. Ha például egy userId oszlopot ad hozzá a táblákhoz, és a lekérdezési eredményeket a felhasználói azonosító alapján szűri, a visszaadott adatmennyiséget csak a jogosultsággal rendelkező felhasználókra korlátozhatja. A következő kód csak akkor adja vissza az adatsorokat, ha a SID megegyezik a TodoItem tábla UserId oszlopának értékével:
 
     // Get the SID of the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
@@ -359,20 +359,20 @@ Az előző szakaszban megmutattuk, hogyan kérhető le egy hitelesített felhasz
     // Only return data rows that belong to the current user.
     return Query().Where(t => t.UserId == sid);
 
-A `Query()` metódus adja vissza egy `IQueryable` LINQ szűrés kezelésére, amelyek kezelhetők.
+A `Query()` metódus egy olyan `IQueryable` értéket ad vissza, amely a LINQ által kezelhető a szűrés kezeléséhez.
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>Útmutató: Leküldéses értesítések hozzáadása a kiszolgálói projekt
-Leküldéses értesítések hozzáadása a kiszolgálói projektet által bővítése a **MobileAppConfiguration** objektum és a egy a Notification Hubs-ügyfelének létrehozása.
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>Útmutató: Leküldéses értesítések hozzáadása egy kiszolgálói projekthez
+Leküldéses értesítések hozzáadása a kiszolgálói projekthez a **MobileAppConfiguration** objektum kibővítésével és egy Notification Hubs-ügyfél létrehozásával.
 
-1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektet, és kattintson a **NuGet-csomagok kezelése**, keressen `Microsoft.Azure.Mobile.Server.Notifications`, majd kattintson a **telepítése**.
-2. Telepítse ezt a lépést ismételje meg a `Microsoft.Azure.NotificationHubs` csomagot, amely tartalmazza a Notification Hubs ügyféloldali kódtárral.
-3. A App_Start/Startup.MobileApp.cs és adja hozzá a hívást a **AddPushNotifications()** metódust az inicializálás során:
+1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektre, majd kattintson a NuGet- `Microsoft.Azure.Mobile.Server.Notifications` **csomagok kezelése**elemre, keresse meg, majd kattintson a **telepítés**gombra.
+2. Ezt a lépést megismételve `Microsoft.Azure.NotificationHubs` telepítse a csomagot, amely tartalmazza az Notification Hubs ügyféloldali függvénytárat.
+3. A App_Start/Startup. MobileApp. cs fájlból, és adjon hozzá egy hívást a **AddPushNotifications ()** Extension metódushoz az inicializálás során:
 
         new MobileAppConfiguration()
             // other features...
             .AddPushNotifications()
             .ApplyTo(config);
-4. Adja hozzá a következő kódot, amely létrehozza a Notification Hubs-ügyfél:
+4. Adja hozzá a következő kódot, amely létrehoz egy Notification Hubs ügyfelet:
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
@@ -388,15 +388,15 @@ Leküldéses értesítések hozzáadása a kiszolgálói projektet által bőví
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-Most már használhatja a Notification Hubs-ügyfél leküldéses értesítések küldéséhez regisztrált eszközökre. További információkért lásd: [leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-ios-get-started-push.md). A Notification hubs szolgáltatással kapcsolatos további információkért lásd: [Notification Hubs – áttekintés](../notification-hubs/notification-hubs-push-notification-overview.md).
+Mostantól a Notification Hubs ügyfél használatával leküldéses értesítéseket küldhet a regisztrált eszközökre. További információ: [leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-ios-get-started-push.md). További információ a Notification Hubsről: [Notification Hubs Overview (áttekintés](../notification-hubs/notification-hubs-push-notification-overview.md)).
 
-## <a name="tags"></a>kézikönyv: Célzott leküldés címkék használatával engedélyezése
-A Notification Hubs lehetővé teszi célzott értesítések küldése adott regisztrációk címkék használatával. Több címkét automatikusan jönnek létre:
+## <a name="tags"></a>kézikönyv: Célként megadott leküldés engedélyezése címkék használatával
+Notification Hubs lehetővé teszi a célzott értesítések küldését adott regisztrációra címkék használatával. Több címke is automatikusan létrejön:
 
-* A telepítési azonosító egy adott eszköz azonosítja.
-* A felhasználói azonosítót, a hitelesített SID alapján azonosítja az egy adott felhasználó.
+* A telepítési azonosító egy adott eszközt azonosít.
+* A hitelesített SID alapján megadott felhasználói azonosító egy adott felhasználót azonosít.
 
-A telepítési azonosító elérhetők a **installationId** tulajdonsága a **MobileServiceClient**.  Az alábbi példa bemutatja, hogyan használható a telepítési Azonosítót egy adott telepítés a Notification Hubs egy címke hozzáadása:
+A telepítési azonosító a **MobileServiceClient** **telepítésazonosító** tulajdonságának használatával érhető el.  Az alábbi példa azt szemlélteti, hogyan használható a telepítési azonosító egy címke adott telepítéshez való hozzáadásához Notification Hubsban:
 
     hub.PatchInstallation("my-installation-id", new[]
     {
@@ -408,12 +408,12 @@ A telepítési azonosító elérhetők a **installationId** tulajdonsága a **Mo
         }
     });
 
-Az ügyfél által a leküldéses értesítésre való regisztráció során megadott címkéket figyelmen kívül hagyják a háttérrendszer létrehozása a telepítés során. Ahhoz, hogy egy ügyfél címkék hozzáadása a telepítés, létre kell hoznia egy egyéni API-t, amely hozzáadja a címkék az előző minta használatával.
+A háttérben a leküldéses értesítési regisztráció során az ügyfél által megadott címkéket a rendszer a telepítés létrehozásakor figyelmen kívül hagyja. Annak engedélyezéséhez, hogy az ügyfél címkéket adjon a telepítéshez, létre kell hoznia egy egyéni API-t, amely az előző minta alapján címkéket ad hozzá.
 
-Lásd: [ügyfél által hozzáadott leküldéses értesítések címkék] [ 5] a App Service Mobile Apps befejezett rövid mintában példa.
+Példaként tekintse meg az [ügyfél által hozzáadott leküldéses értesítési címkéket][5] a app Service Mobile apps befejezett rövid útmutatóban.
 
-## <a name="push-user"></a>kézikönyv: Leküldéses értesítések küldése hitelesített felhasználók
-Ha egy hitelesített felhasználó regisztrálja a leküldéses értesítésekhez, felhasználói azonosító címkét automatikusan hozzáadódik a regisztráció. Ez a címke használatával leküldéses értesítéseket küldhet az adott személy által regisztrált összes eszközre. A következő kód lekéri a kérelmező felhasználó biztonsági azonosítója, és a sablon leküldéses értesítést küld minden eszközregisztráció személyre:
+## <a name="push-user"></a>kézikönyv: Leküldéses értesítések küldése hitelesített felhasználónak
+Ha egy hitelesített felhasználó regisztrálja a leküldéses értesítéseket, a rendszer automatikusan hozzáadja a felhasználói azonosító címkét a regisztrációhoz. A címke használatával leküldéses értesítéseket küldhet az adott személy által regisztrált összes eszközre. A következő kód lekéri a kérést küldő felhasználó biztonsági azonosítóját, és leküldéses értesítést küld minden eszköz regisztrálására az adott személy számára:
 
     // Get the current user SID and create a tag for the current user.
     var claimsPrincipal = this.User as ClaimsPrincipal;
@@ -426,37 +426,37 @@ Ha egy hitelesített felhasználó regisztrálja a leküldéses értesítésekhe
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Egy hitelesített ügyfél leküldéses értesítésekhez történő regisztráláskor győződjön meg arról, hogy a hitelesítés befejezése előtt regisztrációs. További információkért lásd: [felhasználók leküldése] [ 6] a App Service Mobile Apps befejezett rövid mintában a .NET-háttérrendszert.
+Ha egy hitelesített ügyfélről próbál leküldéses értesítéseket regisztrálni, győződjön meg arról, hogy a hitelesítés befejeződött a regisztráció megkísérlése előtt. További információ: [leküldés a felhasználóknak][6] a app Service Mobile apps befejezett gyors üzembe helyezési minta a .net-háttérrendszer számára.
 
-## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Útmutató: Hibakeresés és a .NET Server SDK hibaelhárítása
-Az Azure App Service biztosítja több hibakeresési és hibaelhárítási módszerekről az ASP.NET-alkalmazások:
+## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>Útmutató: A .NET Server SDK hibakeresése és hibaelhárítása
+A Azure App Service számos hibakeresési és hibaelhárítási eljárást biztosít a ASP.NET-alkalmazásokhoz:
 
-* [Figyelés az Azure App Service platformon](../app-service/web-sites-monitor.md)
-* [Az Azure App Service-ben a diagnosztikai naplózás engedélyezése](../app-service/troubleshoot-diagnostic-logs.md)
-* [A Visual Studio Azure App Service hibaelhárítása](../app-service/troubleshoot-dotnet-visual-studio.md)
+* [Azure App Service figyelése](../app-service/web-sites-monitor.md)
+* [Diagnosztikai naplózás engedélyezése Azure App Service](../app-service/troubleshoot-diagnostic-logs.md)
+* [Azure App Service hibakeresése a Visual Studióban](../app-service/troubleshoot-dotnet-visual-studio.md)
 
 ### <a name="logging"></a>Naplózás
-Standard írását az ASP.NET nyomkövetési használatával írhat a diagnosztikai naplók App Service-ben. Ahhoz, hogy a naplókba, engedélyeznie kell diagnosztika a Mobile Apps-háttéralkalmazását.
+A diagnosztikai naplókat a szabványos ASP.NET-nyomkövetési írás használatával írhatja App Service. A naplókba való íráshoz engedélyeznie kell a diagnosztika alkalmazást a Mobile apps-háttérben.
 
-Diagnosztika engedélyezése, és írja a naplókba:
+A diagnosztika engedélyezéséhez és a naplókba való íráshoz:
 
-1. Kövesse a [diagnosztika engedélyezése](../app-service/troubleshoot-diagnostic-logs.md#enablediag).
-2. Adja hozzá a következő using utasítást a kód fájlban:
+1. Kövesse az [alkalmazások naplózásának engedélyezése (Windows)](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows)című témakör lépéseit.
+2. Adja hozzá a következő using utasítást a Code fájlban:
 
         using System.Web.Http.Tracing;
-3. Hozzon létre egy nyomkövetési writer használatával írhat a .NET-háttérrendszer a diagnosztikai naplók a következő:
+3. Hozzon létre egy nyomkövetési írót a .NET-háttérből a diagnosztikai naplókba való íráshoz, a következőképpen:
 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
-4. Tegye közzé újra a kiszolgálói projektet, és hajtsa végre a kódelérési út a naplózással, a Mobile Apps-háttéralkalmazás eléréséhez.
-5. Töltse le és kiértékelheti a naplók leírtak szerint [hogyan: Naplók letöltése](../app-service/troubleshoot-diagnostic-logs.md#download).
+4. Tegye közzé újra a kiszolgálói projektet, és nyissa meg a Mobile apps-hátteret, és futtassa a kód elérési útját a naplózással.
+5. Töltse le és értékelje ki a naplókat a [hozzáférési naplófájlok](../app-service/troubleshoot-diagnostic-logs.md#access-log-files)című témakörben leírtak szerint.
 
 ### <a name="local-debug"></a>Helyi hibakeresés hitelesítéssel
-Az alkalmazás helyileg tesztelheti a módosításokat a felhőbe való közzététel előtt is futtathatja. A legtöbb Azure Mobile Apps-háttérrendszerek esetében nyomja le az ENTER *F5* során a Visual Studióban. Vannak azonban néhány további szempontot-hitelesítés használata esetén.
+Az alkalmazást helyileg is futtathatja a módosítások teszteléséhez, mielőtt közzéteszi őket a felhőben. A legtöbb Azure Mobile Apps-háttér esetében nyomja le az *F5* billentyűt a Visual Studióban. A hitelesítés használatakor azonban további szempontokat is figyelembe kell venni.
 
-Rendelkeznie kell egy felhőalapú mobilalkalmazást az App Service hitelesítés/engedélyezés konfigurált, és az ügyfél a felhőbeli végpont a másodlagos bejelentkezési gazdagépként megadott kell rendelkeznie. A szükséges konkrét eljárás ügyfélplatform dokumentációjában talál.
+App Service hitelesítéssel/hitelesítéssel konfigurált felhőalapú alkalmazásnak kell lennie, és az ügyfélnek rendelkeznie kell a másodlagos bejelentkezési gazdagépként megadott Felhőbeli végponttal. A szükséges lépésekért tekintse meg az ügyfél platformjának dokumentációját.
 
-Győződjön meg arról, hogy rendelkezik-e a mobil háttérszolgáltatásban [Microsoft.Azure.Mobile.Server.Authentication] telepítve. Ezt követően az alkalmazás OWIN indítási osztályt, adja hozzá a következő után `MobileAppConfiguration` lett alkalmazva a `HttpConfiguration`:
+Győződjön meg arról, hogy a mobil backend a [Microsoft.Azure.Mobile.Server.Authentication] telepítve van. Ezután az alkalmazás OWIN-indítási osztályában adja hozzá a következőt, miután `MobileAppConfiguration` alkalmazta `HttpConfiguration`a alkalmazást:
 
         app.UseAppServiceAuthentication(new AppServiceAuthenticationOptions()
         {
@@ -466,15 +466,15 @@ Győződjön meg arról, hogy rendelkezik-e a mobil háttérszolgáltatásban [M
             TokenHandler = config.GetAppServiceTokenHandler()
         });
 
-Az előző példában, konfigurálnia kell a *authAudience* és *authIssuer* Alkalmazásbeállítások belül a Web.config fájlt az egyes URL-címe az alkalmazás gyökérkönyvtáraként használatával a HTTPS-sémát kell. Hasonlóképpen kell beállítania *authSigningKey* kell az alkalmazás értékét a aláíró kulcs.
+Az előző példában a web. config fájl *authAudience* és *authIssuer* kell konfigurálnia az alkalmazás gyökérkönyvtárának URL-címére a https-séma használatával. Hasonlóképpen be kell állítania az *authSigningKey* értékét az alkalmazás aláíró kulcsának értékeként.
 Az aláíró kulcs beszerzése:
 
-1. Keresse meg az alkalmazás belül a [Azure Portal]
-2. Kattintson a **eszközök**, **Kudu**, **Go**.
-3. A Kudu felügyeleti hely, kattintson a **környezet**.
-4. Keresse meg az értéket a *webhely\_AUTH\_aláírás\_kulcs*.
+1. Navigáljon az alkalmazáshoz a [Azure Portal] belül
+2. Kattintson az **eszközök**, **kudu**, **tovább**elemre.
+3. A kudu-kezelés helyen kattintson a **környezet**elemre.
+4. Keresse meg a *webhely\_Auth\_-aláíró\_kulcsának*értékét.
 
-Az aláíró kulcs használata a *authSigningKey* paraméter a helyi alkalmazások Config.  A mobil háttérszolgáltatásban most már rendelkezik a jogkivonatok helyileg fut, amikor az ügyfél a felhő alapú végpontról kéri le a jogkivonatot, amely ellenőrzése.
+Használja az *authSigningKey* paraméterhez tartozó aláíró kulcsot a helyi alkalmazás konfigurációjában.  A mobil háttérrendszer most már készen áll a jogkivonatok érvényesítésére a helyi futtatásakor, amelyet az ügyfél a felhőalapú végponttól szerez be a tokenhez.
 
 [1]: https://msdn.microsoft.com/library/azure/dn961176.aspx
 [2]: https://github.com/Azure/azure-mobile-apps-net-server

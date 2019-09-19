@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899950"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091954"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 
@@ -107,7 +107,7 @@ A vállalati Windows Hello szolgáltatással kapcsolatos egyéb helyzetekben a h
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>A felhasználó kezeli a vállalati Windows Hello-beli hitelesítő adatait
 
-A [Microsoft PIN-kód-visszaállítási szolgáltatása](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) az Azure ad egyik funkciója, amely lehetővé teszi a felhasználók számára, hogy szükség esetén visszaállítsák a PIN-kódját. A csoportházirend, Microsoft Intune vagy egy kompatibilis MDM használatával a rendszergazdák úgy konfigurálhatják a Windows 10-es eszközöket, hogy biztonságosan használják a Microsoft PIN-kód-átállítási szolgáltatását, amely lehetővé teszi, hogy a felhasználók az elfelejtett PIN-kódot a beállítások vagy a zárolási képernyő felett, anélkül, hogy újbóli regisztráció.
+A [Microsoft PIN-kód-visszaállítási szolgáltatása](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) az Azure ad egyik funkciója, amely lehetővé teszi a felhasználók számára, hogy szükség esetén visszaállítsák a PIN-kódját. A csoportházirend, Microsoft Intune vagy egy kompatibilis MDM használatával a rendszergazdák úgy konfigurálhatják a Windows 10-es eszközöket, hogy biztonságosan használják a Microsoft PIN-kód-átállítási szolgáltatását, amely lehetővé teszi, hogy a felhasználók az elfelejtett PIN-kódot a beállítások vagy a zárolási képernyő felett, anélkül, hogy újbóli regisztráció.
 
 Időnként a felhasználóknak vissza kell térniük a jelszavak használatára. Önkiszolgáló [jelszó-visszaállítás](../../active-directory/authentication/howto-sspr-deployment.md) A (SSPR) egy másik Azure AD-szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy kapcsolatba kell lépnie az informatikai részleggel. A felhasználónak regisztrálnia kell az önkiszolgáló jelszó-visszaállításhoz, vagy regisztrálnia kell a szolgáltatást a szolgáltatás használata előtt. A regisztráció során a felhasználó egy vagy több, a szervezete által engedélyezett hitelesítési módszert választ. A SSPR lehetővé teszi, hogy a felhasználók gyorsan feloldják a blokkolást, és a munka helyétől függetlenül is működjenek. Azáltal, hogy a felhasználók letiltják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
 

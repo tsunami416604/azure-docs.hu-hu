@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233122"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098608"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>A Python üzembe helyezése a Visual Studio Code-Azure Functions
 
@@ -45,7 +45,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [Regisztráljon most](https://azure.mi
 
 Telepítse a következő szoftvereket:
 
-- A Python 3.6. x a Azure Functions által megkövetelt módon. A [Python 3.6.8](https://www.python.org/downloads/release/python-368/) a legújabb 3.6. x verzió.
+- A Python 3.6. x a Azure Functions által megkövetelt módon. A [Python 3.6.9](https://www.python.org/downloads/release/python-369/) a legújabb 3.6. x verzió.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - A [Python bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a [Visual Studio Code Python-oktatóanyagban leírt módon – előfeltételek](https://code.visualstudio.com/docs/python/python-tutorial).
 - A [Azure functions bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Általános információkat a [vscode-Azurefunctions GitHub-adattárban](https://github.com/Microsoft/vscode-azurefunctions)találhat.
@@ -69,7 +69,7 @@ Az előfizetéshez hozzárendelt név is megjelenik az **Azure-ban: Functions** 
 ![Az előfizetéseket megjelenítő Visual Studio Code Azure App Service Explorer](media/tutorial-vs-code-serverless-python/azure-subscription-view.png)
 
 > [!NOTE]
-> Ha a **"nem találja a (z) [előfizetés-azonosító] nevű**előfizetést" hibaüzenet jelenik meg, ennek az lehet az oka, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja `HTTP_PROXY` és`HTTPS_PROXY` környezeti változókat a proxy adataival a terminálon:
+> Ha a **"nem találja a (z) [előfizetés-azonosító] nevű előfizetést**" hibaüzenet jelenik meg, ennek az lehet az oka, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja `HTTP_PROXY` és`HTTPS_PROXY` környezeti változókat a proxy adataival a terminálon:
 >
 > ```bash
 > # macOS/Linux
@@ -98,7 +98,7 @@ Ha a `func` parancs nem ismerhető fel, ellenőrizze, hogy a Azure functions Cor
 
 ## <a name="create-the-function"></a>A függvény létrehozása
 
-1. A Azure Functions kódja a functions projektbenvan kezelve, amelyet először a kód létrehozása előtt hoz létre. Az **Azure-ban: Functions** Explorer (a bal oldalon az Azure ikon használatával nyílik meg), válassza az **új projekt** parancs ikont, vagy nyissa meg a Command paletta ( **F1) parancsot, és válassza a Azure functions: Új projekt**létrehozása.
+1. A Azure Functions kódja a functions _projektben_van kezelve, amelyet először a kód létrehozása előtt hoz létre. Az **Azure-ban: Functions** Explorer (a bal oldalon az Azure ikon használatával nyílik meg), válassza az **új projekt** parancs ikont, vagy nyissa meg a Command paletta ( **F1) parancsot, és válassza a Azure functions: Új projekt**létrehozása.
 
     ![Új projekt létrehozása gomb a functions Explorerben](media/tutorial-vs-code-serverless-python/project-create-new.png)
 
@@ -238,11 +238,11 @@ A kód fontos részei a következők:
         --data {"""name""":"""Visual Studio Code"""} http://localhost:7071/api/HttpExample
     ```
 
-    Másik lehetőségként hozzon létre egy fájlt, például `{"name":"Visual Studio Code"}` a következőt:, `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`és használja az parancsot.
+    Másik lehetőségként hozzon létre egy fájlt, például `{"name":"Visual Studio Code"}` a következőt *:, és* használja az parancsot. `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`
 
 1. A függvény hibakereséséhez állítson be egy töréspontot az URL- `name = req.params.get('name')` címre, amely beolvassa és elküld egy kérést az URL-címhez. A Visual Studio Code debuggernek le kell állnia az adott sorban, így megvizsgálhatja a változókat, és áttekintheti a kódot. (Az alapszintű hibakeresés rövid áttekintését lásd: [Visual Studio Code oktatóanyag – a hibakereső konfigurálása és futtatása](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
 
-1. Ha meggyőződött arról, hogy a funkciót helyileg tesztelte, állítsa le a hibakeresőt > (a hibakeresés**leállítása** vagy a hibakeresési eszköztáron a leválasztási parancs leállítása paranccsal).
+1. Ha meggyőződött arról, hogy a funkciót helyileg tesztelte, állítsa le a hibakeresőt **(a** > hibakeresés**leállítása** vagy a hibakeresési eszköztáron a **leválasztási** parancs leállítása paranccsal).
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=04-test-debug)
@@ -260,7 +260,7 @@ Ezekben a lépésekben a functions bővítmény használatával hozzon létre eg
 1. A bővítmény a következő műveleteket hajtja végre, amelyeket megfigyelheti a Visual Studio Code felugró üzeneteiben és a **kimeneti** ablakban (a folyamat eltarthat néhány percig):
 
     - Hozzon létre egy erőforráscsoportot az adott név használatával (kötőjelek eltávolítása).
-    - Ebben az erőforráscsoportban hozza létre a Storage-fiókot, a üzemeltetési tervet és a Function alkalmazást. Alapértelmezés szerint a rendszer létrehoz egy [felhasználási tervet](functions-scale.md#consumption-plan) . A függvények dedikált csomagban való futtatásához engedélyeznie kell a [speciális létrehozási beállításokkal](functions-develop-vs-code.md)történő közzétételt.
+    - Ebben az erőforráscsoportban hozza létre a Storage-fiókot, a üzemeltetési tervet és a Function alkalmazást. Alapértelmezés szerint a rendszer létrehoz egy [felhasználási tervet](functions-scale.md#consumption-plan) . A függvények dedikált csomagban való futtatásához engedélyeznie kell a [speciális létrehozási beállításokkal történő közzétételt](functions-develop-vs-code.md).
     - Telepítse a kódot a Function alkalmazásba.
 
     Az **Azure: A** functions Explorer az előrehaladást is megjeleníti:
@@ -287,7 +287,7 @@ Ezekben a lépésekben a functions bővítmény használatával hozzon létre eg
 
 ### <a name="stream-logs"></a>Naplók streamelése
 
-A log streaming támogatása jelenleg fejlesztés alatt áll, ahogy az a [589](https://github.com/microsoft/vscode-azurefunctions/issues/589) -es számú, a Azure functions-bővítményre vonatkozó probléma. Az üzembe helyezési üzenet előugró ablakának **stream-naplók** gombja végül az Azure-ban a Visual Studio Code-hoz csatlakozik a log kimenethez. A log streamet a **Azure functions** Explorerben is elindíthatja és leállíthatja, ha a jobb gombbal a functions projektre kattint, és kiválasztja a **streaming naplók indítása** vagy a **folyamatos átviteli naplók leállítása**lehetőséget.
+A log streaming támogatása jelenleg fejlesztés alatt áll, ahogy az a [589-es számú](https://github.com/microsoft/vscode-azurefunctions/issues/589) , a Azure functions-bővítményre vonatkozó probléma. Az üzembe helyezési üzenet előugró ablakának **stream-naplók** gombja végül az Azure-ban a Visual Studio Code-hoz csatlakozik a log kimenethez. A log streamet a **Azure functions** Explorerben is elindíthatja és leállíthatja, ha a jobb gombbal a functions projektre kattint, és kiválasztja a **streaming naplók indítása** vagy a **folyamatos átviteli naplók leállítása**lehetőséget.
 
 Jelenleg azonban ezek a parancsok még nem működnek. A log streaming egy böngészőben, a következő parancs futtatásával, a functions `<app_name>` alkalmazás Azure-beli nevével való lecserélésekor érhető el:
 
@@ -393,7 +393,7 @@ Az első üzembe helyezés után módosításokat végezhet a kódban, például
     }
     ```
 
-1. Indítsa el a hibakeresőt az **F5 billentyű** lenyomásával > , vagy a hibakeresés**indításának** megkezdése menüparancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
+1. Indítsa el a hibakeresőt az **F5 billentyű** lenyomásával, **vagy a** > hibakeresés**indításának megkezdése** menüparancs bejelölésével. A **kimeneti** ablakban most mindkét végpontot meg kell jeleníteni a projektben:
 
     ```output
     Http Functions:
@@ -446,6 +446,18 @@ Ebben a szakaszban egy tárolási kötést ad hozzá az oktatóanyag korábbi r�
         }
     ```
 
+1. Cserélje le a *Host. JSON* tartalmát a következőre, és adja hozzá a [kiterjesztési kötegek hivatkozását](functions-bindings-register.md#extension-bundles).
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
+    ```
+
 1. Most, hogy konfigurálta a kötést, használhatja azt a függvény kódjában. Az újonnan definiált kötés újra megjelenik a kódban argumentumként `main` az  *\_ \_\_init\_.* a................. Például módosíthatja az `msg`  *\_ \_init.HttpExamplefájlt\_a következővel, hogy az megfeleljen az alábbi feltételeknek, ami azt mutatja, hogy az argumentum használatával egy időbélyeggel ellátott üzenetet ír a\_* kérelem. A megjegyzések a konkrét módosításokat ismertetik:
 
     ```python
@@ -479,13 +491,13 @@ Ebben a szakaszban egy tárolási kötést ad hozzá az oktatóanyag korábbi r�
             )
     ```
 
-1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az **F5 billentyű** lenyomásával, vagy a > hibakeresés megkezdése menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
+1. A módosítások helyi teszteléséhez indítsa el újra a hibakeresőt a Visual Studio Code-ban az **F5 billentyű** lenyomásával, **vagy a** > hibakeresés**megkezdése** menüparancs kiválasztásával. A **kimeneti** ablaknak a projektben lévő végpontok megjelenítéséhez hasonlóan kell megjelennie.
 
 1. Egy böngészőben nyissa meg az URL `http://localhost:7071/api/HttpExample?name=VS%20Code` -címet, és hozzon létre egy kérelmet a HttpExample-végpontnak, amely szintén üzenetet ír a várólistára.
 
 1. Annak ellenőrzéséhez, hogy az üzenet az "üzenetsor" várólistára lett-e írva (a kötésben leírtak szerint), a következő három módszer egyikét használhatja:
 
-    1. Jelentkezzen be [](https://portal.azure.com)a Azure Portalba, és lépjen a functions projektet tartalmazó erőforráscsoporthoz. Az adott erőforráscsoport alatt keresse meg és nyissa meg a projekthez tartozó Storage-fiókot, majd lépjen a **várólisták**elemre. Ezen az oldalon ugorjon az "üzenetsor" elemre, amely megjeleníti az összes naplózott üzenetet.
+    1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és lépjen a functions projektet tartalmazó erőforráscsoporthoz. Az adott erőforráscsoport alatt keresse meg és nyissa meg a projekthez tartozó Storage-fiókot, majd lépjen a **várólisták**elemre. Ezen az oldalon ugorjon az "üzenetsor" elemre, amely megjeleníti az összes naplózott üzenetet.
 
     1. Nyissa meg és vizsgálja meg a várólistát a Azure Storage Explorer segítségével, amely integrálható a Visual Studióval, ahogy az az [Azure Storage-hoz való kapcsolódás a Visual Studio Code használatával](functions-add-output-binding-storage-queue-vs-code.md)című témakörben leírtak szerint, különösen a [kimeneti várólista vizsgálata](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) szakaszban.
 
@@ -508,7 +520,7 @@ Amint azt korábban említettük, további információt a functions bővítmén
 
 Olvassa el a [Azure functions áttekintése című témakört](functions-overview.md) , amelyből megismerheti a különböző használható eseményindítókat.
 
-Ha többet szeretne megtudni a Pythonból használható Azure-szolgáltatásokról, beleértve az adattárolást az AI-és Machine Learning-szolgáltatásokkal együtt, látogasson el az [Azure Python fejlesztői](/azure/python/?view=azure-python)központba.
+Ha többet szeretne megtudni a Pythonból használható Azure-szolgáltatásokról, beleértve az adattárolást az AI-és Machine Learning-szolgáltatásokkal együtt, látogasson el az [Azure Python fejlesztői központba](/azure/python/?view=azure-python).
 
 Más Azure-bővítmények is hasznosak lehetnek a Visual Studio Code-hoz. Csak keressen rá az "Azure" kifejezésre a bővítmények Explorerben:
 

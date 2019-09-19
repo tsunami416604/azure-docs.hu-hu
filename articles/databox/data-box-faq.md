@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142924"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098802"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -41,7 +41,7 @@ A. A Azure Data Box az Azure-ba való gyors, költséges és biztonságos adatá
 Miután az eszköz megérkezett, gyorsan beállítható a helyi webes felhasználói felülettel. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok automatikusan feltöltődnek az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
 
 ### <a name="q-when-should-i-use-data-box"></a>K. Mikor érdemes a Data Boxot használni?
-A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box használata. Az 40 TB-nál < adatméretekhez használja a Data Box Disk és az adatméretet > 500 TB [](data-box-heavy-overview.md)-ot, regisztráljon a Data Box Heavyra.
+A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box használata. Az 40 TB-nál < adatméretekhez használja a Data Box Disk és az adatméretet > 500 TB-ot, regisztráljon a [Data Box Heavyra](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>K. Mennyibe kerül a Data Box?
 A. A Data Box 10 napig egy névleges díj fejében érhető el. Amikor az Azure Portalon egy rendelés létrehozásakor kiválaszt egy termékmodellt, megjelenik az eszköz ára. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár. További információt [az Azure Data Box díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/databox/) talál. 
@@ -59,7 +59,7 @@ A. A Data Box az USA, Nyugat-Európa, Észak-Európa, Franciaország, Egyesült 
 A. Ha bármilyen probléma merülne fel a Data Box kapcsán, kérjük, [forduljon a Microsoft támogatási szolgálatához](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>K. Elveszítettem a Data Box. Elveszett az eszköz díja?
-A. Igen. Elveszett vagy sérült az eszköz díja. Ez a díj a díjszabási [oldalon](https://azure.microsoft.com/pricing/details/storage/databox/) , valamint a [termék használati feltételeiben](https://www.microsoft.com/licensing/product-licensing/products)is szerepel.
+A. Igen. Elveszett vagy sérült az eszköz díja. Ez a díj a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/storage/databox/) , valamint a [termék használati feltételeiben](https://www.microsoft.com/licensing/product-licensing/products)is szerepel.
 
 
 ## <a name="order-device"></a>Eszköz rendelése
@@ -156,10 +156,10 @@ További információkért keresse fel az [oktatóanyagot: Adatmásolás Azure D
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: Másolja az adatAzure Data Box és ellenőrizze](data-box-deploy-copy-data.md)a következőt:.
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: Adatok másolása az Azure Data Boxra, majd ellenőrzése](data-box-deploy-copy-data.md) lépéseit.
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyhez a Data Boxot csatlakoztatja.
-- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a összetevők fület, és töltse le az MSI-t.
+- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -180,8 +180,19 @@ A.  Igen. A Data Boxhoz legfeljebb 10 tárfiók használata támogatott. Ezek le
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>K. Megérkezett az eszközöm, de sérültnek tűnik. Mit tegyek?
 A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésre utalnak, ne használja az eszközt. Vegye fel a kapcsolatot a [Microsoft támogatási szolgálatával](data-box-disk-contact-microsoft-support.md), és a lehető leghamarabb küldje vissza az eszközt. Létrehozhat egy új Data Box-megrendelést is egy csereeszköz igényléséhez. Ebben az esetben nem számítjuk fel a csereeszköz árát.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>K. Használhatom a saját futáromat a Data Box szállításához?
-A. A Data Box szolgáltatás keretében a Microsoft intézi az Azure-adatközpontba és onnan történő szállítást. Ha saját futárt szeretne igénybe venni, használja az Azure Import/Export szolgáltatást. További információ [az Azure Import/Export szolgáltatásról](../storage/common/storage-import-export-service.md).
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>K. Felvehetem magam is a Data Box rendelést? Visszaadhatom a Data Box a választott szolgáltatón keresztül?
+A. Igen. A Microsoft csak US Gov régióban biztosít önfelügyelt szállítást is. A Data Box rendelés elhelyezésekor kiválaszthatja az önfelügyelt szállítási lehetőséget is. A Data Box eszköz kiválasztásához hajtsa végre a következő lépéseket:
+    
+1. A rendelés elhelyezése után a rendszer feldolgozza a rendelést, és előkészíti a Data Box. E-mailben értesítést küldünk arról, hogy a megrendelés készen áll a felvételre. 
+2. Ha a rendelés készen áll a beléptetésre, lépjen a megrendelésre a Azure Portal, és navigáljon az **Áttekintés** panelre. 
+3. Ekkor megjelenik egy értesítés, amely tartalmazza a kódot a Azure Portalban. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg nekik a kódot. A csapat megadja a felvételi dátum és idő helyét és ütemtervét. Az e-mailes értesítés kézhezvételét követően 5 munkanapon belül meg kell hívnia a csapatot.
+
+Az Adatmásolás befejezése után végezze el az alábbi lépéseket az eszköz visszaküldéséhez:
+
+1. Ha az Adatmásolás hibák nélkül fejeződött be, futtassa a **szállításra való előkészítés**. Az előkészítés befejezése után az eszköz helyi webes FELÜLETén egy kódot fog kapni. Másolja ki és mentse a kódot.
+2. Kapcsolja ki az eszközt, és távolítsa el a csatlakozó kábeleket.
+3. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
+4. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg a korábban mentett kódot. A felhasználók az eszköz kidobásának helyét és időpontját adják meg.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>K. Az Data Box-eszközök az országbeli határokon átívelő határok lesznek a szállítás során?
 A. Az összes Data Box eszköz a rendeltetési országon belülről szállítható, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az eszközök bármelyik EU-országba elhelyezhetők. Ez a Data Box és a Data Box Heavy eszközre is vonatkozik.

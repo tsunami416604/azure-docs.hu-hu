@@ -1,19 +1,19 @@
 ---
-title: Rövid útmutató – Azure Kubernetes-szolgáltatás (ak) fürt létrehozása
+title: 'Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése'
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) az Azure CLI használatával.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 05/20/2019
+ms.date: 09/13/2019
 ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 8a5fb9313fca2a8d787d0fbde47401f6d3e1d229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019
+ms.openlocfilehash: 0ad1bb4acf27ff542b94b2e6f4aef82705f4b46a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68880676"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097991"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes szolgáltatásbeli (ak-) fürt üzembe helyezése az Azure CLI használatával
 
@@ -23,13 +23,16 @@ Ha Windows Server-tárolókat szeretne használni (jelenleg előzetes verzióban
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes][kubernetes-concepts]alapfogalmai.
+A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.64 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+
+> [!Note]
+> Ha a rövid útmutatóban helyileg futtatja a parancsokat (Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -58,15 +61,10 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A Tárolókhoz készült Azure Monitor szintén engedélyezve van az *--enable-addons monitoring* paraméterrel.
+Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A Tárolókhoz készült Azure Monitor szintén engedélyezve van az *--enable-addons monitoring* paraméterrel.  A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-count 1 \
-    --enable-addons monitoring \
-    --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
 
 Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza.
@@ -234,30 +232,11 @@ Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy 
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="monitor-health-and-logs"></a>Állapot és naplók monitorozása
-
-Az AK-fürt létrehozásakor a tárolók Azure Monitor a fürt csomópontjai és a hüvelyek állapotára vonatkozó mérőszámok rögzítésére lettek beállítva. Ezek az állapotmetrikák elérhetők az Azure Portalon.
-
-Az Azure vote hüvely aktuális állapotának, üzemidőének és erőforrás-használatának megtekintéséhez hajtsa végre a következő lépéseket:
-
-1. Nyisson meg egy webböngészőt a [https://portal.azure.com][azure-portal]Azure Portal.
-1. Válassza ki az erőforráscsoportját (pl. *myResourceGroup*), majd válassza i az AKS-fürtöt (pl. *myAKSCluster*).
-1. A bal oldali **figyelés** területen válassza az eredmények lehetőséget.
-1. A felső részen válassza a **+ szűrő hozzáadása**elemet.
-1. Válassza ki a névteret tulajdonságként, majd válassza  *\<az összes,\>de Kube-rendszer*elemet.
-1. Válasszaa tárolók lehetőséget.
-
-Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló, az alábbi példában látható módon:
-
-![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-containers.png)
-
-Ha szeretné megtekinteni `azure-vote-back` a pod-naplókat, válassza a **Megtekintés az elemzésekben**lehetőséget, majd a tárolók listájának jobb oldalán válassza ki a **tárolók megtekintése** hivatkozást. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
-
-![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough/monitor-container-logs.png)
+Az AK-fürt létrehozásakor a [tárolók Azure monitor](../azure-monitor/insights/container-insights-overview.md) a fürt csomópontjai és a hüvelyek állapotára vonatkozó mérőszámok rögzítésére lettek beállítva. Ezek az állapotmetrikák elérhetők az Azure Portalon.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Ha a fürtre már nincs szükség, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot, a Container Service-t és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot, a Container Service-t és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -274,7 +253,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját][kubernetes-dashboard] is elérheti az AK-fürthöz.
+Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját is elérheti][kubernetes-dashboard] az AK-fürthöz.
 
 Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe helyezésig terjedő teljes útmutatóért folytassa a Kubernetes-fürtöket bemutató oktatóanyaggal.
 

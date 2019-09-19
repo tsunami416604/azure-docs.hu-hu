@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-üzenetsorok használata Node.js-ben |} A Microsoft Docs
-description: Megtudhatja, hogyan használhatja a Service Bus-üzenetsorok az Azure Node.js-alkalmazásból.
+title: Azure Service Bus Queues használata a Node. js-ben
+description: Ismerje meg, hogyan használhatja az Azure-beli Service Bus-várólistákat Node. js-alkalmazásokból.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,42 +14,43 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 1426b3d31159280ad9aac2dd240a5f083c40752d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: df3f5a3773265249751352ce8d9c966c54bf197d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988306"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091795"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Service Bus-üzenetsorok használata a Node.js és az azure-sb csomag
-> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node.js pacakge"]
-> - [(Node.js |} azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js |} @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azure-sb-package"></a>Service Bus Queues használata Node. js-sel és az Azure-SB csomaggal
+> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-Ebben az oktatóanyagban megismerheti, hogyan hozhat létre a Node.js-alkalmazások üzeneteket küld és fogad üzeneteket egy Service Bus üzenetsor használatával a [azure-sb](https://www.npmjs.com/package/azure-sb) csomagot. A minták JavaScript nyelven íródtak, és a Node.js használata [Azure-modul](https://www.npmjs.com/package/azure) melyik belső használ a `azure-sb` csomagot.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást az üzenetek küldéséhez és fogadásához egy Service Bus [-sorból az Azure-SB-](https://www.npmjs.com/package/azure-sb) csomag használatával. A mintákat JavaScript nyelven írták, és a Node. js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg `azure-sb` használja a csomagot.
 
-A [azure-sb](https://www.npmjs.com/package/azure-sb) használ csomag [Service Bus REST futásidejű API-k](/rest/api/servicebus/service-bus-runtime-rest). Kérheti, hogy egy gyorsabb, az új felület [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) csomag, amely használja a gyorsabb [AMQP 1.0 protokoll](service-bus-amqp-overview.md). Az új csomag kapcsolatos további információkért lásd: [Service Bus-üzenetsorok használata a Node.js és @azure/service-bus csomag](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), ellenkező esetben kihívásokra, hogyan használhatja a [azure](https://www.npmjs.com/package/azure) csomagot.
+Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új csomag használatával gyorsabb élményt érhet el. Az új csomaggal kapcsolatos további tudnivalókért tekintse meg a [Service Bus Queues with Node. js és @azure/service-bus a Package használatát](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)ismertető témakört, máskülönben folytassa az olvasással, hogy az [Azure](https://www.npmjs.com/package/azure) -csomag hogyan használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
-    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
-    2. Hozzon létre egy Service Bus **névtér**. 
-    3. Első a **kapcsolati karakterlánc**. 
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
+    1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
+    2. Hozzon létre egy Service Bus **névteret**. 
+    3. A **kapcsolatok karakterláncának**beolvasása. 
 
         > [!NOTE]
-        > Létrehozhat egy **várólista** a Node.js használatával ebben az oktatóanyagban a Service Bus-névteret. 
+        > Ebben az oktatóanyagban a Node. js használatával fog létrehozni egy **várólistát** a Service Bus névtérben. 
  
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatásért lásd: [hozzon létre és helyezhet üzembe egy Node.js-alkalmazás Azure-webhelyen][Create and deploy a Node.js application to an Azure Website], vagy [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows PowerShell használatával.
+Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos útmutatásért lásd: [Node. js-alkalmazás létrehozása és telepítése Azure-webhelyre][Create and deploy a Node.js application to an Azure Website]vagy [Node. js felhőalapú szolgáltatás][Node.js Cloud Service] a Windows PowerShell használatával.
 
-## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
-Az Azure Service Bus, töltse le, és használhatja az Node.js Azure-csomagot. Ez a csomag tartalmaz-kódtárak, amely a Service Bus REST-szolgáltatásokkal kommunikálni.
+## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
+Azure Service Bus használatához töltse le és használja a Node. js Azure-csomagot. Ez a csomag olyan kódtárakat tartalmaz, amelyek a Service Bus REST-szolgáltatásokkal kommunikálnak.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Használja a Node Package Manager (NPM) a csomag beszerzése
-1. Használja a **node.js-hez készült Windows PowerShell** parancssori ablakban, keresse meg a **c:\\csomópont\\sbqueues\\WebRole1** mappa, amelyben létrehozta a minta az alkalmazás.
-2. Típus **npm telepítése azure** a parancssori ablakba, amely kell eredményeznie, az alábbi példához hasonló kimenetet:
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
+1. A **Node. js-hez készült Windows PowerShell** -parancs segítségével navigáljon a **c\\:\\Node\\sbqueues webrole1 webes** mappájához, amelyben létrehozta a minta alkalmazást.
+2. Írja be a **NPM az Azure** -t a parancsablakban, amelynek az alábbi példához hasonló kimenetet kell eredményeznie:
 
     ```
     azure@0.7.5 node_modules\azure
@@ -64,28 +65,28 @@ Az Azure Service Bus, töltse le, és használhatja az Node.js Azure-csomagot. E
         ├── xml2js@0.2.7 (sax@0.5.2)
         └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
     ```
-3. A **node_modules** mappa létrehozásának ellenőrzéséhez manuálisan is futtathatja az **ls** parancsot. Keresse meg a mappán belül a **azure** csomagot, amely tartalmazza a Service Bus-üzenetsorok eléréséhez szükséges kódtárakat.
+3. A **node_modules** mappa létrehozásának ellenőrzéséhez manuálisan is futtathatja az **ls** parancsot. A mappában keresse meg azt az **Azure** -csomagot, amely a Service Bus Queues eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-module"></a>A modul importálása
-A Jegyzettömb vagy egy másik szövegszerkesztőt, adja hozzá a következő elejéhez a **server.js** fájlt az alkalmazás:
+A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt az alkalmazás **Server. js** fájljának elejéhez:
 
 ```javascript
 var azure = require('azure');
 ```
 
-### <a name="set-up-an-azure-service-bus-connection"></a>Egy Azure Service Bus-kapcsolat beállítása
-Az Azure-modul olvassa be a környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` a Service Bus a csatlakozáshoz szükséges információk beszerzéséhez. Ha ez a környezeti változó értéke nincs beállítva, meg kell adnia a fiókadatok hívásakor `createServiceBusService`.
+### <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus-kapcsolatok beállítása
+Az Azure-modul beolvassa `AZURE_SERVICEBUS_CONNECTION_STRING` a környezeti változót a Service Bushoz való kapcsolódáshoz szükséges információk beszerzéséhez. Ha nincs beállítva ez a környezeti változó, a meghívásakor `createServiceBusService`meg kell adnia a fiók adatait.
 
-A környezeti változók beállítása példa a [az Azure portal] [ Azure portal] egy Azure-webhelyen talál [a Storage Node.js-webalkalmazás] [ Node.js Web Application with Storage].
+Ha egy Azure-webhelyhez tartozó [Azure Portal][Azure portal] környezeti változóit kívánja beállítani, tekintse meg a [Node. js webalkalmazás a Storage][Node.js Web Application with Storage]szolgáltatással című témakört.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
-A **ServiceBusService** objektum lehetővé teszi, hogy a Service Bus-üzenetsorok. Az alábbi kód létrehoz egy **ServiceBusService** objektum. Tetején adja hozzá a **server.js** fájl, az utasítást, hogy az Azure-modul importálása után:
+A **ServiceBusService** objektum lehetővé teszi Service Bus várólistákkal való munkát. A következő kód létrehoz egy **ServiceBusService** objektumot. Adja hozzá a **Server. js** fájl elejéhez a következő utasítást az Azure-modul importálásához:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Meghívásával `createQueueIfNotExists` a a **ServiceBusService** objektumot, a megadott várólista adja vissza (ha van ilyen), vagy létrehoz egy új várólistát a megadott néven. A következő kódban `createQueueIfNotExists` létrehozása vagy csatlakozás az üzenetsorhoz nevű `myqueue`:
+Ha meghívja `createQueueIfNotExists` a **ServiceBusService** objektumot, a rendszer a megadott várólistát adja vissza (ha létezik), vagy új várólistát hoz létre a megadott névvel. A következő kód a `createQueueIfNotExists` nevű `myqueue`várólista létrehozásához vagy kapcsolódásához használja:
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -95,7 +96,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 });
 ```
 
-A `createServiceBusService` módszer is támogatja a további lehetőségeket, amelyek lehetővé teszik például a valós idejű vagy maximális Várólistaméret üzenet ideje alapértelmezett várólista beállításainak felülbírálására. Az alábbi példa a várólista maximális mérete 5 GB-os és egy időt élettartam (TTL) értékének 1 percre állítja:
+A `createServiceBusService` metódus további beállításokat is támogat, amelyek lehetővé teszik az alapértelmezett várólista-beállítások, például az üzenet élettartamának vagy a várólista maximális méretének felülbírálását. A következő példa a várólista maximális méretét 5 GB-ra állítja, az élettartam (TTL) értéke pedig 1 perc:
 
 ```javascript
 var queueOptions = {
@@ -111,21 +112,21 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ```
 
 ### <a name="filters"></a>Szűrők
-Választható szűrési műveletek használatával végrehajtott műveletek alkalmazhatók **ServiceBusService**. Műveletek szűrésének is tartalmazhat, naplózás, automatikus újrapróbálkozása, stb. A szűrők olyan objektumok, amelyek metódusokat implementálnak az alábbi aláírással:
+A nem kötelező szűrési műveletek alkalmazhatók a **ServiceBusService**használatával végrehajtott műveletekre. A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek metódusokat implementálnak az alábbi aláírással:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Ezután a előfeldolgozásához kérelem a beállítások, a metódust kell meghívnia `next`, átadja egy visszahívást, az alábbi aláírással:
+Miután megtette az előfeldolgozást a kérés beállításaiban, a metódusnak hívnia `next`kell a visszahívást a következő aláírással:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-A visszahívási, és feldolgozás után a `returnObject` (a válasz a kérelemből a kiszolgálóhoz), a visszahívás vagy musí vyvolat `next` folytatni a többi szűrőt, vagy meghívása létezésének `finalCallback`, a szolgáltatásmeghívási ér véget, amely .
+Ebben a visszahívásban, és a `returnObject` (a kéréstől a kiszolgálónak küldött válasz) feldolgozását követően a visszahívásnak `next` meg kell hívnia, hogy továbbra is feldolgozza-e más szűrőket, vagy meghívja `finalCallback`a szolgáltatást, amely a szolgáltatás meghívását befejezi .
 
-Két szűrők, amelyek újrapróbálkozási logikát alkalmazzák a a nodejs-hez készült Azure SDK mellékelt `ExponentialRetryPolicyFilter` és `LinearRetryPolicyFilter`. Az alábbi kód létrehoz egy `ServiceBusService` objektum, amely használja a `ExponentialRetryPolicyFilter`:
+Két, az újrapróbálkozási logikát megvalósító szűrő szerepel a Node. js- `ExponentialRetryPolicyFilter` hez `LinearRetryPolicyFilter`készült Azure SDK-ban és a-ben. A következő kód egy `ServiceBusService` objektumot hoz létre, amely a `ExponentialRetryPolicyFilter`következőket használja:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -133,9 +134,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Üzenet küldése a Service Bus-üzenetsorba, az alkalmazás meghívja a `sendQueueMessage` metódust a **ServiceBusService** objektum. Üzeneteket küldenek (és a fogadott) a Service Bus-üzenetsor **BrokeredMessage** objektumokat, és a egy szabványos tulajdonságkészlettel rendelkezik (például **címke** és **TimeToLive**), amely egy egyéni alkalmazásspecifikus tulajdonságokat, és a egy tetszőleges alkalmazásadatokból álló törzzsel törzs tárolására használt szótárban. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncot adja át az üzenetnek számít. Minden szükséges alapvető tulajdonságainak alapértelmezett értékekkel fel van töltve.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `sendQueueMessage` a metódust a **ServiceBusService** objektumon. A (és onnan érkező) Service Bus várólisták **BrokeredMessage** objektumok, és a szabványos tulajdonságok (például a **label** és a **TimeToLive**) egy készlete, amely az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgál. tetszőleges alkalmazásadatok törzse. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy karakterláncot küld üzenetként. A kötelező szabványos tulajdonságok alapértelmezett értékekkel vannak feltöltve.
 
-Az alábbi példa bemutatja, hogyan tesztüzenet küldése az üzenetsorba nevű `myqueue` használatával `sendQueueMessage`:
+Az alábbi példa bemutatja, hogyan küldhet tesztüzenet üzenetet a nevű `myqueue` várólistára a következő paranccsal: `sendQueueMessage`
 
 ```javascript
 var message = {
@@ -150,16 +151,16 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Nem egy üzenetsorban tárolt üzenetek száma korlátozott, de korlátozva van az üzenetsor által tárolt üzenetek teljes mérete. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. Kvóták kapcsolatos további információkért lásd: [Service Bus-kvóták][Service Bus quotas].
+A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A várólistán lévő üzenetek száma nincs korlátozva, de a várólista által tárolt üzenetek teljes méretére vonatkozó korlát szerepel. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. További információ a kvótákkal kapcsolatban: [Service Bus kvóták][Service Bus quotas].
 
-## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
-Egy üzenetsor használatával fogadása a `receiveQueueMessage` metódust a **ServiceBusService** objektum. Alapértelmezés szerint az üzenetek törlődnek az üzenetsorból, az olvasott; azonban olvasása (betekintési), és az üzenet zárolása törlése az üzenetsorból által a nem kötelező paraméter nélkül `isPeekLock` való **igaz**.
+## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
+Az üzenetek a `receiveQueueMessage` **ServiceBusService** objektum metódusának használatával érkeznek egy várólistából. Alapértelmezés szerint az üzenetek törlődnek a várólistából az olvasáskor. a nem kötelező paraméter `isPeekLock` **igaz**értékre állításával azonban elolvashatja (betekintést), és zárolhatja az üzenetet anélkül, hogy törölné a várólistából.
 
-Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és a leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Az üzenet olvasásának és törlésének alapértelmezett viselkedése a fogadási művelet részeként a legegyszerűbb modell, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. A viselkedés megértéséhez vegye fontolóra azt a forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Mivel Service Bus az üzenetet felhasználva fogja megtekinteni, majd az alkalmazás újraindításakor és az üzenetek újrafelhasználásakor a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Ha a `isPeekLock` paraméter értéke **igaz**, a receive két szakaszból álló művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `deleteMessage` metódust, és a paramétert a törlendő üzenet megadása. A `deleteMessage` módszer jelöli meg az üzenetet, és eltávolítja az üzenetsorból.
+Ha a `isPeekLock` paraméter értéke TRUE ( **igaz**), a fogadás kétlépéses művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a metódus meghívásával `deleteMessage` végrehajtja a fogadási folyamat második szakaszát, és megadja az üzenet paraméterként való törlését. A `deleteMessage` metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
 
-Az alábbi példa bemutatja, hogyan használatával üzenetek fogadásához és feldolgozásához `receiveQueueMessage`. A példában először kap, és törli az üzenetet, és majd kap egy üzenetet az `isPeekLock` beállítása **igaz**, majd törli az üzenetet használatával `deleteMessage`:
+Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket a `receiveQueueMessage`használatával. A példa először fogad és töröl egy üzenetet, majd a `isPeekLock` **true**értékre állítással fogad egy üzenetet, majd törli az üzenetet `deleteMessage`a következő használatával:
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -180,20 +181,20 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlockMessage` metódust a **ServiceBusService** objektum. Service Bus feloldja az az üzenetsorban lévő üzenet zárolását, és tegye elérhetővé számára az azonos fogyasztó alkalmazás általi vagy egy másik fogyasztó alkalmazás általi ismételt fogadását fog okozni.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor meghívhatja a `unlockMessage` metódust a **ServiceBusService** objektumon. Ennek hatására a rendszer a várólistán belüli üzenet zárolásának feloldását Service Bus teszi, és elérhetővé teheti, hogy ugyanazt a fogyasztót használó alkalmazás vagy egy másik alkalmazás használja.
 
-Emellett van egy zárolva van, az üzenetsorban lévő üzenethez társított időtúllépés, és az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúllépés előtt lejár (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását lesz, és adja meg elérhető az újbóli fogadását.
+A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenetet, és elvégzi ismét elérhető.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `deleteMessage` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt a módszert gyakran nevezik *legalább egyszeri feldolgozásnak*, vagyis minden üzenetet legalább egyszer dolgozza, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek, az alkalmazásfejlesztők hozzá kell adnia további logikát az alkalmazásuk kezelésére a duplikált üzenetek kézbesítését. Gyakran elért használatával a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, `deleteMessage` de a metódus hívása előtt, akkor az üzenet az újraindításkor újra bekerül az alkalmazásba. Ezt a megközelítést gyakran *legalább egyszer*kell feldolgozni, azaz minden üzenet feldolgozása legalább egyszer történik, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni a duplikált feldolgozást, az alkalmazások fejlesztőinek további logikát kell hozzáadniuk az alkalmazáshoz az üzenetek ismétlődő kézbesítésének kezeléséhez. Ez gyakran az üzenet **MessageID** tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
 
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
-Üzenetsorokkal kapcsolatos további tudnivalókért lásd a következőket.
+A várólistákkal kapcsolatos további tudnivalókért tekintse meg a következő forrásokat.
 
-* [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]
-* [Az Azure SDK a Node] [ Azure SDK for Node] tárházban a Githubon
+* [Queues, topics, and subscriptions][Queues, topics, and subscriptions] (Üzenetsorok, témakörök és előfizetések)
+* [Azure SDK a Node][Azure SDK for Node] adattárhoz a githubon
 * [Node.js fejlesztői központ](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node

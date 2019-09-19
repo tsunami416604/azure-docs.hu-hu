@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 226a3b0ffa4b770d1738e69fd04592476b9f4075
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935283"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098795"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -45,11 +45,11 @@ További információ a hozzáférés-kezeléssel kapcsolatban:
 A parancsfájl művelete egy HDInsight-fürt csomópontjain futó bash-parancsfájl. A parancsfájl-műveletek jellemzői és funkciói a következők:
 
 * Olyan URI-n kell tárolni, amely elérhető a HDInsight-fürtből. A következő tárolási helyszínek lehetségesek:
-    
+
     * Normál fürtök esetén:
-    
+
       * ADLS Gen1: Az egyszerű szolgáltatásnak a HDInsight való Data Lake Storage eléréséhez olvasási hozzáféréssel kell rendelkeznie a parancsfájlhoz. A Data Lake Storage Gen1ban `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`tárolt parancsfájlok URI-formátuma.
-      
+
       * Egy Azure Storage-fiókban található blob, amely a HDInsight-fürthöz tartozó elsődleges vagy további Storage-fiók. A HDInsight mindkét típusú Storage-fiókhoz hozzáférést kap a fürt létrehozása során.
 
         > [!IMPORTANT]  
@@ -60,9 +60,9 @@ A parancsfájl művelete egy HDInsight-fürt csomópontjain futó bash-parancsf�
         Az URI-k például a [parancsfájl műveleti parancsfájljai](#example-script-action-scripts)című részben olvashatók.
 
      * ESP-vel rendelkező fürtök esetén:
-         
+
          * A wasb://vagy a wasbs://vagy a http [s]://URI-k támogatottak.
-            
+
 * Csak bizonyos csomópont-típusok futtatására korlátozható. Ilyenek például a fő csomópontok vagy a munkavégző csomópontok.
 
 * Maradhat vagy alkalmi.
@@ -107,14 +107,12 @@ A parancsfájl a HDInsight konfigurálása közben fut. A parancsfájl párhuzam
 > [!NOTE]  
 > Olyan műveleteket hajthat végre, mint a szolgáltatások leállítása és elindítása, beleértve a Apache Hadoop kapcsolódó szolgáltatásokat is. Ha leállítja a szolgáltatásokat, győződjön meg arról, hogy a Ambari szolgáltatás és más Hadoop kapcsolódó szolgáltatások futnak a parancsfájl befejeződése előtt. Ezek a szolgáltatások a fürt állapotának és állapotának sikeres megállapításához szükségesek a létrehozása során.
 
-
 A fürt létrehozása során egyszerre több parancsfájl-műveletet is használhat. Ezeket a parancsfájlokat a megadott sorrendben hívja meg a rendszer.
 
 > [!IMPORTANT]  
 > A parancsfájl-műveleteknek 60 percen belül be kell fejeződnie, vagy időtúllépéssel kell rendelkezniük. A fürt kiépítés során a parancsfájl egyidejűleg fut más beállítási és konfigurációs folyamatokkal. Az erőforrások, például a CPU-idő vagy a hálózati sávszélesség versenye miatt a szkript hosszabb időt vehet igénybe, mint a fejlesztői környezetben.
 >
 > A parancsfájl futtatásához szükséges idő minimalizálásához Kerülje a feladatok, például a forrásból származó alkalmazások letöltését és fordítását. Alkalmazások előfordítása és a bináris fájl tárolása az Azure Storage-ban.
-
 
 ### <a name="script-action-on-a-running-cluster"></a>Parancsfájl-művelet egy futó fürtön
 
@@ -161,13 +159,13 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
 1. Hozzon létre egy fürtöt a HDInsight-ben a [fürtök beállítása a Apache Hadoop, Apache Spark, Apache Kafka és sok más](hdinsight-hadoop-provision-linux-clusters.md)használatával című témakörben leírtak szerint. A fürt létrehozása során a rendszer egy __fürt összegző__ lapjára érkezik. A __fürt összegzése__ lapon válassza a __Speciális beállítások__ __Szerkesztés__ hivatkozását.
 
-    ![Speciális beállítások hivatkozása](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
+    ![A fürt speciális beállításainak Azure Portal](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
-3. A __Speciális beállítások__ szakaszban válassza a __parancsfájlok műveletek__elemet. A __parancsfájl-műveletek__ szakaszban válassza az __+ új elküldése__lehetőséget.
+1. A __Speciális beállítások__ szakaszban válassza a __parancsfájlok műveletek__elemet. A __parancsfájl-műveletek__ szakaszban válassza az __+ új elküldése__lehetőséget.
 
-    ![Új parancsfájl-művelet elküldése](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Portál parancsfájl műveletei új beküldése](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
 
-4. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
+1. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
 
     ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -183,13 +181,13 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
     A parancsfájl megtartása __művelet__ bejegyzésével győződjön meg arról, hogy a parancsfájlt a rendszer a skálázási műveletek során alkalmazza.
 
-5. Válassza a __Létrehozás__ lehetőséget a parancsfájl mentéséhez. Ezt követően a __+ Submit New__ paranccsal adhat hozzá újabb parancsfájlokat.
+1. Válassza a __Létrehozás__ lehetőséget a parancsfájl mentéséhez. Ezt követően a __+ Submit New__ paranccsal adhat hozzá újabb parancsfájlokat.
 
-    ![Több parancsfájl-művelet](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+    ![HDInsight több parancsfájl-művelet](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
     Ha elkészült a parancsfájlok hozzáadásával, kattintson a __kiválasztás__ gombra, majd a __tovább__ gombra a __fürt összegzése__ szakaszhoz való visszatéréshez.
 
-3. A fürt létrehozásához kattintson a __Létrehozás__ elemre a __fürt összesítésének__ kiválasztása listából.
+1. A fürt létrehozásához kattintson a __Létrehozás__ elemre a __fürt összesítésének__ kiválasztása listából.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Parancsfájl-művelet használata Azure Resource Manager sablonokból
 
@@ -249,7 +247,7 @@ Ugrás a [Azure Portalra](https://portal.azure.com):
 
     ![Parancsfájl hozzáadása egy futó fürthöz](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-4. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
+1. Az előkészített parancsfájl kiválasztásához használja a __parancsfájl kiválasztása__ bejegyzést. Egyéni parancsfájl használatához válassza az __Egyéni__lehetőséget. Ezután adja meg a parancsfájl __nevét__ és a __bash parancsfájl URI-ját__ .
 
     ![Parancsfájl hozzáadása a parancsfájl kiválasztása űrlapon](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -265,7 +263,7 @@ Ugrás a [Azure Portalra](https://portal.azure.com):
 
     A parancsfájl megtartása __művelettel__ ellenőrizze, hogy a parancsfájlt a rendszer a skálázási műveletek során alkalmazza-e.
 
-5. Végül a **Létrehozás** gombra kattintva alkalmazza a parancsfájlt a fürtre.
+1. Végül a **Létrehozás** gombra kattintva alkalmazza a parancsfájlt a fürtre.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Parancsfájl-művelet alkalmazása futó fürtön Azure PowerShell
 
@@ -346,17 +344,17 @@ Ha a .NET SDK-t a parancsfájlok fürtön való alkalmazására szeretné haszn�
 
 1. Az alapértelmezett nézet **Beállítások**területén válassza a **parancsfájlok műveletek**elemet.
 
-4. A fürt parancsfájljainak előzményei a parancsfájl-műveletek szakaszban jelennek meg. Ez az információ tartalmazza a megőrzött parancsfájlok listáját. A következő képernyőfelvételen látható, hogy a Solr parancsfájlt futtattak ezen a fürtön. A képernyőképen nem láthatók megőrzött parancsfájlok.
+1. A fürt parancsfájljainak előzményei a parancsfájl-műveletek szakaszban jelennek meg. Ez az információ tartalmazza a megőrzött parancsfájlok listáját. A következő képernyőfelvételen látható, hogy a Solr parancsfájlt futtattak ezen a fürtön. A képernyőképen nem láthatók megőrzött parancsfájlok.
 
-    ![Szkriptműveletek](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![A portál parancsfájljainak műveletei elküldik az előzményeket](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-5. Válasszon ki egy parancsfájlt az előzményekből a parancsfájl **Tulajdonságok** szakaszának megjelenítéséhez. A képernyő felső részén újra futtathatja a szkriptet, vagy előléptetheti azt.
+1. Válasszon ki egy parancsfájlt az előzményekből a parancsfájl **Tulajdonságok** szakaszának megjelenítéséhez. A képernyő felső részén újra futtathatja a szkriptet, vagy előléptetheti azt.
 
-    ![Parancsfájl-műveletek, tulajdonságok](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+    ![Parancsfájl-műveletek tulajdonságai – előléptetés](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-6. A műveletek végrehajtásához a Scripting Actions (parancsfájl-műveletek) szakaszának jobb oldalán található három pontot is kiválaszthatja **.**
+1. A műveletek végrehajtásához a Scripting Actions (parancsfájl-műveletek) szakaszának jobb oldalán található három pontot is kiválaszthatja **.**
 
-    ![Parancsfájl-műveletek, három pont](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+    ![Megőrzött parancsfájl-műveletek törlése](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -414,7 +412,7 @@ A HDInsight szolgáltatás két különböző típusú nyílt forráskódú öss
 > [!WARNING]  
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) . 
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) .
 >
 > Az Apache-projektek az [Apache webhelyén](https://apache.org)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/).
 
@@ -442,7 +440,7 @@ A Ambari webes felhasználói felületén megtekintheti a parancsfájlok művele
 
 3. Keresse meg azokat a bejegyzéseket, amelyek a **customscriptaction futtatták\_** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
-    ![Képernyőfelvétel a műveletekről](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
+    ![Apache Ambari parancsfájl műveleti műveletei](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
     Az **StdOut** és a **stderr** kimenetének megtekintéséhez válassza ki a **run\customscriptaction** bejegyzést, és részletezse a hivatkozásokat. Ezt a kimenetet a szkript futtatásakor generálja a rendszer, és hasznos információkhoz vezethet.
 

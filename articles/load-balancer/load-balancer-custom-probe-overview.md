@@ -12,45 +12,79 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275337"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098927"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
-Azure Load Balancer a terheléselosztási szabályokkal használható állapot-mintavételt biztosít.  Az állapot-mintavételi konfiguráció és a mintavételi válaszok határozzák meg, hogy mely háttérbeli készlet-példányok kapják meg az új folyamatokat. Állapot-mintavételei használatával észleli a hibát egy alkalmazás egy háttér-példányon. Egyéni választ is létrehozhat az állapot-mintavételre, és a Flow Control állapot-ellenőrzésével kezelheti a terhelést vagy a tervezett állásidőt. Ha az állapotfigyelő mintavételező nem sikerül, a terheléselosztó nem irányít, több új folyamatok a megfelelő nem megfelelő állapotú példányhoz.
+Ha a terheléselosztási szabályokat Azure Load Balancer használatával használja, meg kell adnia egy állapot-mintavételt, hogy az Load Balancer a háttérbeli végpont állapotának észlelését.  Az állapot-mintavétel és a mintavételi válaszok konfigurációja határozza meg, hogy mely háttérbeli készlet-példányok kapják meg az új folyamatokat. Az állapot-mintavételek segítségével észlelhető egy alkalmazás meghibásodása egy háttér-végponton. Egyéni választ is létrehozhat az állapot-mintavételre, és a Flow Control állapot-ellenőrzésével kezelheti a terhelést vagy a tervezett állásidőt. Ha az állapot-mintavétel sikertelen, Load Balancer leállítja az új folyamatok küldését a megfelelő sérült példányra.
 
-Az állapotadatok több protokollt is támogatnak. Egy adott típusú állapot-mintavételi típus rendelkezésre állása egy adott protokoll támogatásához Load Balancer SKU-ra változik.  Emellett a szolgáltatás működése Load Balancer SKU-ra változik.
+Az állapotadatok több protokollt is támogatnak. Egy adott állapot mintavételi protokolljának rendelkezésre állása Load Balancer SKU-tól függ.  Emellett a szolgáltatás működése Load Balancer SKU-ban is változik a táblázatban látható módon:
 
 | | Standard termékváltozat | Alapszintű termékváltozat |
 | --- | --- | --- |
 | [Mintavétel típusok](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Mintavételi viselkedésének lefelé](#probedown) | Az összes mintavételek le, az összes TCP-adatfolyamok továbbra is. | Az összes TCP-folyamat lejár. | 
 
-> [!IMPORTANT]
-> Load Balancer állapot-mintavételek az IP-168.63.129.16 származnak, és nem szabad blokkolni a mintavételek számára a példányok jelölését.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
 
+>[!IMPORTANT]
+>Tekintse át a dokumentumot teljes egészében, beleértve az alábbi fontos [tervezési útmutatót](#design) egy megbízható szolgáltatás létrehozásához.
+
+>[!IMPORTANT]
+>Load Balancer állapot-mintavételek az IP-168.63.129.16 származnak, és nem szabad blokkolni a mintavételek számára a példányok jelölését.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
+
+## <a name="probes"></a>Mintavételi konfiguráció
+
+Az állapot-mintavételi konfiguráció a következő elemekből áll:
+
+- Az egyéni mintavételek közötti intervallum időtartama
+- Azoknak a mintavételi válaszoknak a száma, amelyeket meg kell figyelni a mintavétel más állapotba való átállása előtt
+- A mintavétel protokollja
+- A mintavétel portja
+- Http-alapú http-(S-) mintavételek használatakor használandó HTTP-elérési út
+
+## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Az alkalmazási jel ismertetése, a jel észlelése és a platform reakciója
+
+A mintavételi válaszok száma mindkettőre vonatkozik
+
+- azon sikeres mintavételek száma, amelyek lehetővé teszik, hogy a példány megjelölve legyen megjelölve, és
+- Azon sikertelen mintavételek száma, amelyek miatt egy példány le lesz jelölve.
+
+A megadott időkorlát-és intervallum-értékek határozzák meg, hogy egy példány fel vagy le lesz-e jelölve.  Az Intervallum időtartamának szorzata a mintavételi válaszok száma határozza meg azt az időtartamot, ameddig a mintavételi válaszokat észlelni kell.  A szolgáltatás pedig a szükséges mintavételek elvégzése után fog reagálni.
+
+A viselkedést egy példával is illusztráljuk. Ha a mintavételi válaszok számát a 2 értékre állítja, és az intervallum 5 másodpercre van állítva, akkor ez azt jelenti, hogy a mintavételi hibákat 10 másodpercen belül meg kell figyelni.  Mivel a mintavétel elküldésének időpontja nincs szinkronizálva az alkalmazás állapotának megváltozásakor, a következő két forgatókönyv szerint lehet megkötni az időt:
+
+1. Ha az alkalmazás megkezdi az első mintavétel megkezdése előtt egy sikertelen mintavételi választ, az események észlelése 10 másodpercet vesz igénybe (2 x 5 másodperc intervallum), valamint az alkalmazás időtartamát, amely az első a mintavétel megérkezik.  Feltételezzük, hogy az észlelés valamivel több mint 10 másodpercet vesz igénybe.
+2. Ha az alkalmazás közvetlenül az első mintavétel után kezdi meg a sikertelen mintavételt, akkor az események észlelése nem kezdődik el, amíg a következő mintavétel megérkezik (és sikertelen lesz), plusz egy 10 másodpercet (2 x 5 másodperces intervallum).  Feltételezheti, hogy ez az észlelés 15 másodpercen belül eltarthat.
+
+Ebben a példában az észlelést követően a platform némi időt vesz igénybe, hogy reagáljon erre a változásra.  Ez a következőtől függ: 
+
+1. Amikor az alkalmazás megkezdi az állapot módosítását, és
+2. Ha ez a változás észlelhető, és megfelel a szükséges feltételeknek (a mintavételek száma a megadott időközönként történik), és
+3. Ha az észlelést a platformon keresztül közölték 
+
+Tegyük fel, hogy a hibás mintavételre adott reakció legalább 10 másodpercnél kevesebb, míg 15 másodpercnél több időt vesz igénybe, hogy reagáljon az alkalmazáson belüli jel változására.  Ez a példa arra szolgál, hogy bemutassa, mi történik, de nem lehet előre jelezni a fenti durva útmutatón túli pontos időtartamot.
+ 
 ## <a name="types"></a>Mintavétel típusok
 
-Az állapot-mintavétel a következő három protokoll használatával állítható be a figyelőkhöz:
+Az állapot-mintavétel által használt protokoll a következők egyikére konfigurálható:
 
 - [TCP-figyelő](#tcpprobe)
 - [HTTP-végpontokat](#httpprobe)
 - [Koncové body protokolu HTTPS](#httpsprobe)
 
-Az elérhető típusokat állapot-mintavételei eltérőek lehetnek attól függően, a Load Balancer Termékváltozat kiválasztott:
+Az elérhető protokollok a használt Load Balancer SKU-tól függnek:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
 | Standard termékváltozat |    &#9989; |   &#9989; |   &#9989; |
 | Alapszintű termékváltozat |   &#9989; |   &#9989; | &#10060; |
-
-Függetlenül attól, hogy melyik mintavételi típust választja, az állapot-mintavételek megfigyelheti a háttér-példányok bármely portját, beleértve azt a portot is, amelyen a tényleges szolgáltatást megadták.
 
 ### <a name="tcpprobe"></a> TCP-mintavétel
 
@@ -62,7 +96,7 @@ A TCP-mintavétel meghiúsul, ha:
 * A TCP-figyelőt a példányon egyáltalán nem válaszol az időkorláton során.  A mintavétel a sikertelen mintavételi kérelmek száma alapján van megjelölve, amelyek úgy vannak konfigurálva, hogy a mintavétel előtt megválaszolják a választ.
 * A mintavétel egy TCP alaphelyzetbe állítani a példányt kap.
 
-#### <a name="resource-manager-template"></a>Resource Manager-sablon
+Az alábbi ábrán látható, hogyan fejezheti ki az ilyen típusú mintavételi konfigurációkat egy Resource Manager-sablonban:
 
 ```json
     {
@@ -77,8 +111,8 @@ A TCP-mintavétel meghiúsul, ha:
 
 ### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS-mintavétel
 
-> [!NOTE]
-> Csak akkor érhető el, a HTTPS-mintavétel [Standard Load Balancer](load-balancer-standard-overview.md).
+>[!NOTE]
+>Csak akkor érhető el, a HTTPS-mintavétel [Standard Load Balancer](load-balancer-standard-overview.md).
 
 A HTTP-és HTTPS-mintavételek a TCP-mintavételre épülnek, és a megadott elérési úttal rendelkező HTTP GET-t adnak ki. Relatív elérési utakat is az ilyen mintavételezők támogatja a HTTP GET. HTTPS-vizsgálatok ugyanazok, mint a HTTP-mintavételek a Transport Layer Security (TLS, SSL-ként ismert) igény szerinti hozzáadásával burkolót. Az állapotminta van megjelölve, ha a példány válaszol a HTTP-állapotkódot 200 az időkorláton belül.  Az állapot mintavétele alapértelmezés szerint 15 másodpercenként megkísérli a beállított állapot mintavételi portjának ellenőrzését. A minimális mintavételi időköz 5 másodperc. Az összes intervallum teljes időtartama nem haladhatja meg a 120 másodpercet.
 
@@ -91,7 +125,7 @@ Egy olyan HTTP / HTTPS-mintavétel meghiúsul, ha:
 * A mintavételi végpont nem válaszol a 31 másodperces időkorlát alatt. Több mintavételi kérelem is megválaszolható, mielőtt a mintavétel nem fut állapotba kerül, és az összes időtúllépési intervallum összegét el nem éri.
 * Állapotminta-végpontot lezárja a kapcsolatot a TCP alaphelyzetbe állítása keresztül.
 
-#### <a name="resource-manager-templates"></a>Resource Manager-sablonok
+Az alábbi ábrán látható, hogyan fejezheti ki az ilyen típusú mintavételi konfigurációkat egy Resource Manager-sablonban:
 
 ```json
     {
@@ -132,42 +166,35 @@ Ha a vendégügynök válaszol egy HTTP 200-as, a terheléselosztó küld új fo
 Webes szerepkör használata esetén a webhely kód általában lefut az w3wp.exe, amely az Azure által nem felügyelt hálóhoz vagy Vendég ügynök. A vendégügynök nem jelentett hibák a w3wp.exe (például a HTTP 500-as választ). Ennek következtében a terheléselosztó nem használ annak a példánynak a rotációból.
 
 <a name="health"></a>
-## <a name="probehealth"></a>Állapot-mintavételi
+## <a name="probehealth"></a>Mintavételezési viselkedés
 
-TCP, HTTP és HTTPS állapot-mintavételei tekinti a kifogástalan állapotú, és jelölje meg a szerepkörpéldány kifogástalan amennyiben:
+A TCP, a HTTP és a HTTPS állapotú tesztek kifogástalannak minősülnek, és a háttér-végpontot a következőképpen kell megjelölni:
 
 * Az állapot mintavétele a virtuális gép indítása után sikeres volt.
-* A szerepkör-példány kifogástalanként való megjelöléséhez szükséges mintavételek száma teljesült.
+* A háttérbeli végpont megfelelő állapotának megjelöléséhez szükséges mintavételek száma teljesült.
+
+Minden olyan háttér-végpont, amely kifogástalan állapotot ért el, jogosult az új folyamatok fogadására.  
 
 > [!NOTE]
-> Ha az állapot-mintavétel ingadozik, a terheléselosztó továbbra is vár, mielőtt a szerepkör-példányt visszaállítja a Kifogástalan állapotba. Az extra várakozási idő a felhasználó és az infrastruktúra védi, és olyan szándékos szabályzat.
-
-## <a name="probe-count-and-timeout"></a>Mintavétel száma és időtúllépés
-
-Állapotminta viselkedésére függ:
-
-* Sikeres, amelyek lehetővé teszik egy példányt való megjelölésének mintavételek száma szerint, akár.
-* Egy példány való megjelölésének kiváltó sikertelen mintavételek száma leállítottnak.
-
-A megadott időkorlát-és intervallum-értékek határozzák meg, hogy egy példány fel vagy le van-e jelölve.
+> Ha az állapot-mintavétel ingadozik, a terheléselosztó a háttér-végpont Kifogástalan állapotba való visszaállítását követően is megvárja a problémát. Az extra várakozási idő a felhasználó és az infrastruktúra védi, és olyan szándékos szabályzat.
 
 ## <a name="probedown"></a>Mintavételi viselkedésének lefelé
 
 ### <a name="tcp-connections"></a>TCP-kapcsolatok
 
-Az új TCP-kapcsolatok sikeresek maradnak az egészséges háttérbeli példányok számára.
+Az új TCP-kapcsolatok sikeresen megmaradnak az egészséges háttérbeli végponton.
 
-Ha egy háttér-példány állapotadat-mintavétel meghiúsul, a háttér-példányhoz létrehozott TCP-kapcsolatok továbbra is.
+Ha a háttérbeli végpont állapota nem sikerül, a rendszer a háttérbeli végponthoz tartozó TCP-kapcsolatokat folytatja.
 
 Minden mintavételek háttérkészlet szereplő összes példány sikertelen lesz, ha nincsenek új folyamatok küld a háttérkészlethez. A standard Load Balancer lehetővé teszik a létrehozott TCP-adatfolyamok folytatásához.  Alapszintű Load Balancer le fog állni az összes meglévő TCP forgalom a háttérkészlethez.
  
-Load Balancer egy átmenő szolgáltatás (nem szakítja meg a TCP-kapcsolatokat), és a folyamat mindig az ügyfél és a virtuális gép vendég operációs rendszere és alkalmazása között van. Az összes mintavétel nélküli készlet esetén a frontend nem válaszol a TCP-kapcsolatok nyílt kísérleteinek (SYN) állapotára, mivel nincs kifogástalan állapotú háttér-példány a folyamat fogadására és a SYN-ACK-k megválaszolására.
+Load Balancer egy átmenő szolgáltatás (nem szakítja meg a TCP-kapcsolatokat), és a folyamat mindig az ügyfél és a virtuális gép vendég operációs rendszere és alkalmazása között van. Az összes mintavétel nélküli készlet esetén a frontend nem válaszol a TCP-kapcsolatok nyílt kísérleteinek (SYN) állapotára, mivel nincs kifogástalan háttér-végpont a folyamat fogadásához és a SYN-ACK-vel való reagáláshoz.
 
 ### <a name="udp-datagrams"></a>UDP-datagramok
 
-UDP-datagramok megfelelően működő háttér-példányok lesz elküldve.
+Az UDP-datagramok kifogástalan háttérbeli végpontokra lesznek továbbítva.
 
-UDP kapcsolat nélküli, és nincs teljesítményfolyamati állapot nyomon követett UDP-hez. Ha bármely háttérrendszer példányra állapotvizsgálat nem sikerül, előfordulhat, hogy meglévő UDP-forgalom helyezheti át egy másik kifogástalan példányra a háttérkészletben.
+UDP kapcsolat nélküli, és nincs teljesítményfolyamati állapot nyomon követett UDP-hez. Ha a háttérbeli végpont állapotának mintavétele sikertelen, a meglévő UDP-folyamatok a háttér-készlet egy másik kifogástalan példányára léphetnek.
 
 Minden mintavételek háttérkészlet szereplő összes példány sikertelen lesz, ha a meglévő UDP-folyamatok az alapszintű és standard szintű terheléselosztóhoz le fog állni.
 
@@ -188,15 +215,15 @@ Load Balancer Health-mintavételen kívül a [következő műveletek ezt az IP-c
 
 A rendszer az állapot-mintavételt használja a szolgáltatás rugalmas és méretezhetővé tételéhez. A helytelen konfiguráció vagy a rossz kialakítási minta befolyásolhatja a szolgáltatás rendelkezésre állását és méretezhetőségét. Tekintse át ezt a teljes dokumentumot, és gondolja át, milyen hatással van a forgatókönyvre, ha a mintavételi válasz megjelölve vagy megjelölve van, és hogyan befolyásolja az alkalmazási forgatókönyv rendelkezésre állását.
 
-Amikor megtervezi az alkalmazáshoz tartozó állapot modelljét, a háttér-példányon található portot olyan portra kell figyelnie, amely az adott példány állapotát és a megadott alkalmazás __-__ szolgáltatást tükrözi.  Az alkalmazás portjának és a mintavételi portnak nem kell megegyeznie.  Bizonyos helyzetekben érdemes lehet a mintavételi port más, mint az alkalmazás által a szolgáltatás által biztosított port.  
+Amikor megtervezi az alkalmazáshoz tartozó állapotfigyelő modellt, a háttér-végponton található portot kell mintavételre felhasználnia, amely tükrözi az adott példány állapotát __és__ az Ön által biztosított alkalmazást.  Az alkalmazás portjának és a mintavételi portnak nem kell megegyeznie.  Bizonyos helyzetekben érdemes lehet a mintavételi port más, mint az alkalmazás által a szolgáltatás által biztosított port.  
 
 Esetenként hasznos lehet az alkalmazás számára, hogy az állapot-mintavételi választ ne csak az alkalmazás állapotának észlelésére, hanem közvetlenül a Load Balancer is jelezze, ha a példánynak fogadnia kell vagy nem kap új folyamatokat.  A mintavételi választ úgy is kezelheti, hogy az alkalmazás ellennyomás hozzon létre, és szabályozza az új folyamatok egy példányra való továbbítását az állapot-ellenőrzés elvégzésével, illetve az alkalmazás karbantartásának előkészítésével és a forgatókönyv kiürítésének elindításával.  Standard Load Balancer használatakor a mintavétel [](#probedown) nélküli jelek mindig lehetővé teszik a TCP-forgalom folytatását az Üresjárati időkorlát vagy a kapcsolat lezárása után. 
 
-Az UDP-terheléselosztáshoz egyéni állapot-mintavételi jelet kell kiállítani a háttér-példányból, és a megfelelő figyelőhöz tartozó TCP-, HTTP-vagy HTTPS-alapú állapot-mintavételt kell használnia, hogy tükrözze az UDP-alkalmazás állapotát.
+Az UDP-terheléselosztáshoz egyéni állapot-mintavételi jelet kell kiállítani a háttérbeli végpontból, és a megfelelő figyelőhöz tartozó TCP-, HTTP-vagy HTTPS-alapú állapot-mintavételt kell használnia, hogy tükrözze az UDP-alkalmazás állapotát.
 
 Ha a [hektáros portok terheléselosztási](load-balancer-ha-ports-overview.md) szabályait [standard Load Balancerekkel](load-balancer-standard-overview.md)használja, az összes port terheléselosztásra kerül, és egyetlen állapot-mintavételi válasznak kell tükröznie a teljes példány állapotát.
 
-Ne fordítsa le vagy ne vezessen olyan állapotú mintavételt az VNet egy másik példányára, amely megkapja az állapot-mintavételt, mivel ez a konfiguráció lépcsőzetes hibákat eredményezhet a forgatókönyvben.  Vegye figyelembe a következő helyzetet: a külső gyártótól származó készülékek készletét egy Load Balancer erőforrás háttér-készletében helyezi üzembe, amely biztosítja a berendezések méretezését és redundanciát, valamint az állapot mintavételét úgy, hogy a külső gyártótól származó vagy a berendezés mögött más virtuális gépekre fordít.  Ha ugyanazt a portot használja, amellyel lefordítja vagy proxyul kéri a többi virtuális gépre irányuló kéréseket a készülék mögött, akkor a készülék mögötti egyetlen virtuális gépről érkező összes mintavételi válasz megjelöli a berendezést. Ez a konfiguráció a teljes alkalmazási forgatókönyv lépcsőzetes meghibásodását eredményezheti a berendezés mögötti egyetlen backend-példány eredményeként.  Az trigger lehet egy időszakos mintavételi hiba, amely Load Balancer az eredeti célhely (a berendezés példánya) megjelölését, és a teljes alkalmazás-forgatókönyv letiltását eredményezi. A készülék állapotának mintavétele helyette. A mintavétel kiválasztásával megállapítható, hogy az állapot jelzése a hálózati virtuális berendezések (NVA-) forgatókönyvek esetében fontos szempont-e
+Ne fordítsa le vagy ne vezessen olyan állapotú mintavételt az VNet egy másik példányára, amely megkapja az állapot-mintavételt, mivel ez a konfiguráció lépcsőzetes hibákat eredményezhet a forgatókönyvben.  Vegye figyelembe a következő helyzetet: a külső gyártótól származó készülékek készletét egy Load Balancer erőforrás háttér-készletében helyezi üzembe, amely biztosítja a berendezések méretezését és redundanciát, valamint az állapot mintavételét úgy, hogy a külső gyártótól származó vagy a berendezés mögött más virtuális gépekre fordít.  Ha ugyanazt a portot használja, amellyel lefordítja vagy proxyul kéri a többi virtuális gépre irányuló kéréseket a készülék mögött, akkor a készülék mögötti egyetlen virtuális gépről érkező összes mintavételi válasz megjelöli a berendezést. Ez a konfiguráció a teljes alkalmazási forgatókönyv lépcsőzetes meghibásodását eredményezheti a berendezés mögötti egyetlen háttérbeli végpont eredményeként.  Az trigger lehet egy időszakos mintavételi hiba, amely Load Balancer az eredeti célhely (a berendezés példánya) megjelölését, és a teljes alkalmazás-forgatókönyv letiltását eredményezi. A készülék állapotának mintavétele helyette. A mintavétel kiválasztásával megállapítható, hogy az állapot jelzése a hálózati virtuális berendezések (NVA-) forgatókönyvek esetében fontos szempont-e
 
 Ha nem engedélyezi a mintavétel [forrás IP-címét](#probesource) a tűzfal házirendjeiben, az állapot-mintavétel sikertelen lesz, mert nem tudja elérni a példányát.  Load Balancer megjelöli, a példány a állapot-mintavételi hiba miatt le.  Ez a helytelen konfiguráció a terheléselosztási alkalmazás meghibásodását okozhatja.
 
@@ -208,18 +235,18 @@ Ne konfigurálja a VNet a 168.63.129.16-t tartalmazó Microsoft tulajdonú IP-c�
 
 Ha a virtuális Gépen több adapterrel rendelkezik, annak érdekében, hogy a mintavétel a kapcsolaton, a kapott válaszol szüksége.  Előfordulhat, hogy a hálózati címfordítást a virtuális gépen, illesztőfelület alapján kell lefordítani.
 
-Ne engedélyezze a [TCP](https://tools.ietf.org/html/rfc1323)-időbélyeget.  A TCP-időbélyegek engedélyezése azt eredményezi, hogy az állapot-ellenőrzéseket a virtuális gép vendég operációs rendszerének TCP-vereme által eldobott TCP-csomagok okozzák, ami Load Balancer megjelöli a megfelelő végpontot.  A TCP-időbélyegek alapértelmezés szerint engedélyezve vannak a biztonsági megerősített virtuális gépek rendszerképein, és le kell tiltani őket.
+Ne engedélyezze a [TCP](https://tools.ietf.org/html/rfc1323)-időbélyeget.  A TCP-időbélyegek engedélyezése a virtuális gép vendég operációs rendszerének TCP-verem által eldobott TCP-csomagok meghibásodása esetén az állapot-ellenőrzéseket okozhatja, ami Load Balancer megjelöli a megfelelő végpontot.  A TCP-időbélyegek alapértelmezés szerint engedélyezve vannak a biztonsági megerősített virtuális gépek rendszerképein, és le kell tiltani őket.
 
 ## <a name="monitoring"></a>Figyelés
 
-A nyilvános és a belső [Standard Load Balancer](load-balancer-standard-overview.md) végpont és a háttérkiszolgáló példány állapota Hálózatfigyelő állapot szerint, többdimenziós metrikák az Azure monitoron keresztül teszi közzé. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
+Mind a nyilvános, mind a belső [standard Load Balancer](load-balancer-standard-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
 
 Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesíti az állapot mintavételi állapotát Azure Monitor naplókon keresztül.  A belső alapszintű terheléselosztó számára nem érhetők el Azure Monitor naplók.  [Azure monitor naplók](load-balancer-monitor-log.md) használatával megtekintheti a nyilvános terheléselosztó mintavételi állapotának állapotát és a mintavételek darabszámát. Adja meg a load balancer állapot statisztikája naplózás használható a Power bi-ban vagy az Azure Operational Insights.
 
 ## <a name="limitations"></a>Korlátozások
 
 - HTTPS-vizsgálatok nem támogatják a kölcsönös hitelesítés ügyféltanúsítvánnyal.
-- Az állapot-tesztek sikertelenek lesznek, ha a TCP-időbélyegek engedélyezve vannak.
+- Ha a TCP-időbélyegek engedélyezve vannak, a assumehHealth-mintavétel sikertelen lesz.
 
 ## <a name="next-steps"></a>További lépések
 

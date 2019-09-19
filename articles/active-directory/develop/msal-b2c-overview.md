@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2019
+ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 784ec507027d6ec0ac1b5288c101e2a76cab436e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 0eea0fd03b1df49e912a867b0c667ff0fd28c08a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835059"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097615"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>A Microsoft hitelesítési függvénytárának használata a Azure Active Directory B2C való együttműködéshez
 
@@ -56,21 +56,30 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 1. Nyissa meg az **index. html** fájlt a mintában.
 
-1. Konfigurálja a mintát az alkalmazás regisztrálása során korábban rögzített alkalmazás-AZONOSÍTÓval és kulccsal. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a címtár és az API-k nevére:
+1. Konfigurálja a mintát az alkalmazás regisztrálása során korábban rögzített ügyfél-AZONOSÍTÓval és kulccsal. Módosítsa a kód következő sorait úgy, hogy lecseréli az értékeket a címtár és az API-k nevére:
 
    ```javascript
-   // The current application coordinates were pre-registered in a B2C directory.
+   // The current application coordinates were pre-registered in a B2C tenant.
 
-   const msalConfig = {
-       auth:{
-           clientId: "Enter_the_Application_Id_here",
-           authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>",
-           b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/hello/demo.read"],
-           webApi: 'http://localhost:5000/hello',
-     };
+    var appConfig = {
+        b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+        webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+    };
 
-   // create UserAgentApplication instance
-   const myMSALObj = new UserAgentApplication(msalConfig);
+    const msalConfig = {
+        auth: {
+            clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902" //This is your client/application ID
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi", //This is your tenant info
+            validateAuthority: false
+        },
+        cache: {
+            cacheLocation: "localStorage",
+            storeAuthStateInCookie: true
+        }
+    };
+    // create UserAgentApplication instance
+    const myMSALObj = new Msal.UserAgentApplication(msalConfig);
+
    ```
 
 Az oktatóanyagban szereplő [felhasználói folyamat](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) neve **B2C_1_signupsignin1**. Ha más felhasználói folyamatot használ, állítsa be a **szolgáltató** értékét erre a névre.

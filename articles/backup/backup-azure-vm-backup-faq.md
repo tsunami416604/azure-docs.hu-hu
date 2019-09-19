@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909799"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098385"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -126,6 +126,10 @@ Az [azonnali visszaállítási](backup-instant-restore-capability.md) funkció s
 Miután módosította a kulcstároló beállításait a titkosított virtuális gépen, a biztonsági mentések továbbra is működni fognak az új részletekkel, azonban a helyreállítási pontról a változás előtti visszaállítás után vissza kell állítania a kulcstartó titkait, mielőtt a virtuális gépet létre tudja hozni  Ez. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
 
 Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a lépést, és ugyanazt a kulcstartót is használhatják a visszaállítás után.
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>A virtuális gép a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt is elérhető a helyreállításhoz?
+
+Igen, a virtuális gépet a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt kell visszaállítani. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

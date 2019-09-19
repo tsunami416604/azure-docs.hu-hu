@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0538b3ea4ac3a7999a3028cfd8b2cfafbbf7856c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967280"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097731"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -33,7 +33,7 @@ A. War fájlok telepítéséhez a [Maven beépülő modult használhatja a Azure
 
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 
-- A. War fájlok tomcatbe való üzembe helyezéséhez `/api/wardeploy/` használja a végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)a dokumentációt.
+- A. War fájlok tomcatbe való üzembe helyezéséhez `/api/wardeploy/` használja a végpontot az archív fájl közzétételéhez. Az API-val kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
 
 Ne telepítse a. War-t FTP használatával. Az FTP-eszköz indítási parancsfájlok, függőségek vagy más futásidejű fájlok feltöltésére szolgál. A webalkalmazások üzembe helyezése nem optimális megoldás.
 
@@ -49,11 +49,11 @@ A teljesítménnyel kapcsolatos jelentések, a forgalmi vizualizációk és az �
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-További információ: [folyamatos átvitelű naplók az Azure CLI-vel](troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+További információ: [stream-naplók Cloud Shellban](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Alkalmazás naplózása
 
-Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */LogFiles/Application/* könyvtárban találhatók.
+Az Azure Portal vagy az [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) -n keresztül történő [alkalmazás-naplózás](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) engedélyezésével beállíthatja, hogy a app Service az alkalmazás szabványos konzoljának kimenetét és standard konzoljának hibáit a helyi fájlrendszerbe vagy az Azure-Blob Storageba írja. A helyi App Service filesystem-példányra való naplózás a konfigurálás után 12 órával le van tiltva. Ha nagyobb adatmegőrzésre van szüksége, konfigurálja úgy az alkalmazást, hogy egy blob Storage-tárolóba írja a kimenetet. A Java-és a Tomcat-alkalmazás naplói a */LogFiles/Application/* könyvtárban találhatók.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) használ a nyomkövetéshez, ezeket a nyomkövetéseket áttekintheti az Azure [Application Insights-ba Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -95,7 +95,7 @@ Az alkalmazás-halom beállításainak hangolásához tekintse át a App Service
 
 ### <a name="turn-on-web-sockets"></a>Webes szoftvercsatornák bekapcsolása
 
-A WebSockets támogatásának bekapcsolása a Azure Portal az alkalmazás **alkalmazás** -beállításaiban. A beállítás érvénybe léptetéséhez újra kell indítania az alkalmazást.
+A WebSockets támogatásának bekapcsolása a Azure Portal az alkalmazás **alkalmazás-beállításaiban** . A beállítás érvénybe léptetéséhez újra kell indítania az alkalmazást.
 
 Kapcsolja be a web socket-támogatást az Azure CLI használatával a következő paranccsal:
 
@@ -179,7 +179,7 @@ A meglévő SSL-tanúsítvány feltöltéséhez és az alkalmazás tartománynev
 
 Az [Azure](../key-vault/key-vault-overview.md) kulcstartó központosított titkos felügyeletet biztosít a hozzáférési házirendekkel és a naplózási előzményekkel. A kulcsok (például jelszavak vagy kapcsolati karakterláncok) a kulcstartóban tárolhatók, és a titkos kulcsokat az alkalmazásban környezeti változókon keresztül érhetik el.
 
-Először is kövesse az alkalmazáshoz [való hozzáférés](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) megadására vonatkozó utasításokat, és a titkos kulcshoz tartozó kulcstároló [-hivatkozást egy Alkalmazásbeállítások alapján](app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
+Először is kövesse az alkalmazáshoz [való hozzáférés megadására](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) vonatkozó utasításokat, és a [titkos kulcshoz tartozó kulcstároló-hivatkozást egy Alkalmazásbeállítások alapján](app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
 
 Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja`${MY_ENV_VAR}`a környezeti változók befecskendezésének szintaxisát (). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
@@ -285,7 +285,7 @@ Végül elhelyezjük az illesztőprogram-tégelyeket a Tomcat osztályútvonal, 
 
 3. Kapcsolódjon a helyi bújtatási porthoz az SFTP-ügyféllel, és töltse fel a fájlokat a */Home/tomcat/lib* mappába.
 
-Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok](deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)beszerzéséhez kövesse az alábbi utasításokat.
+Azt is megteheti, hogy FTP-ügyfél használatával tölti fel a JDBC-illesztőt. Az [FTP-hitelesítő adatok beszerzéséhez kövesse az alábbi utasításokat](deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ## <a name="configuring-tomcat"></a>A Tomcat konfigurálása
 
@@ -308,7 +308,7 @@ A támogatott JDK minden év januárjában, áprilisban, júliusban és október
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
-A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2](https://nvd.nist.gov/cvss.cfm). verziójában.
+A főbb biztonsági rések javításait és javításait a rendszer azonnal felszabadítja, amint azok elérhetők lesznek a Azul Systems-től. A "fő" biztonsági rést az 9,0-es vagy újabb alappontszám határozza meg a [NIST Common sebezhetőségi pontozási rendszer 2. verziójában](https://nvd.nist.gov/cvss.cfm).
 
 ### <a name="deprecation-and-retirement"></a>Elavulás és nyugdíjazás
 
@@ -316,7 +316,7 @@ Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókör
 
 ### <a name="local-development"></a>Helyi fejlesztés
 
-A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fejlesztésre az [Azul letöltési](https://www.azul.com/downloads/azure-only/zulu/)webhelyéről.
+A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fejlesztésre az [Azul letöltési webhelyéről](https://www.azul.com/downloads/azure-only/zulu/).
 
 ### <a name="development-support"></a>Fejlesztési támogatás
 
@@ -324,7 +324,7 @@ Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azur
 
 ### <a name="runtime-support"></a>Podpora modulu Runtime
 
-A fejlesztők az Azure-támogatással megnyithatják az Azul Zulu JDK [kapcsolatos problémákat](/azure/azure-supportability/how-to-create-azure-support-request) , ha rendelkeznek [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/).
+A fejlesztők az Azure-támogatással [megnyithatják](/azure/azure-supportability/how-to-create-azure-support-request) az Azul Zulu JDK kapcsolatos problémákat, ha rendelkeznek [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>További lépések
 

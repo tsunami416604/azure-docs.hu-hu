@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085611"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098684"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -610,9 +610,9 @@ Az alkalmazások fejlesztése során gyakran azt szeretné, hogy a naplók az Az
 
 Kétféle módon lehet megtekinteni a függvények végrehajtásával létrehozott naplófájlok streamjét.
 
-* **Beépített log streaming**: a app Service platformon megtekintheti az alkalmazás naplófájljainak streamjét. Ez egyenértékű azzal a kimenettel, amelyet a függvények a [helyi fejlesztés](functions-develop-local.md) során végzett hibakereséskor, illetve a portálon a **teszt** lap használatakor észlelt. Megjelenik az összes napló alapú információ. További információ: [How to stream logs](../app-service/troubleshoot-diagnostic-logs.md#streamlogs). Ez a folyamatos átviteli módszer csak egyetlen példányt támogat, és nem használható a Linux rendszeren futó alkalmazással egy használati tervben.
+* **Beépített log streaming**: a app Service platformon megtekintheti az alkalmazás naplófájljainak streamjét. Ez egyenértékű azzal a kimenettel, amelyet a függvények a [helyi fejlesztés](functions-develop-local.md) során végzett hibakereséskor, illetve a portálon a **teszt** lap használatakor észlelt. Megjelenik az összes napló alapú információ. További információ: stream- [naplók](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ez a folyamatos átviteli módszer csak egyetlen példányt támogat, és nem használható a Linux rendszeren futó alkalmazással egy használati tervben.
 
-* **Élő metrikastream**: Ha a Function alkalmazás [csatlakoztatva](#enable-application-insights-integration)van a Application Insightshoz, akkor a Azure Portal a [élő metrikastream](../azure-monitor/app/live-stream.md)segítségével közel valós időben megtekintheti a naplózási adatokat és az egyéb metrikákat. Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó figyelési funkciót használ a használati tervben. Ez a metódus [mintavételes](#configure-sampling)adathalmazt használ.
+* **Élő metrikastream**: Ha a Function alkalmazás csatlakoztatva van a [Application Insightshoz](#enable-application-insights-integration), akkor a Azure Portal a [élő metrikastream](../azure-monitor/app/live-stream.md)segítségével közel valós időben megtekintheti a naplózási adatokat és az egyéb metrikákat. Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó figyelési funkciót használ a használati tervben. Ez a metódus [mintavételes adathalmazt](#configure-sampling)használ.
 
 A naplózási streamek a Portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. 
 

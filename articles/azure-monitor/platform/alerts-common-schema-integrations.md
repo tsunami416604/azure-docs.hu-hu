@@ -1,6 +1,6 @@
 ---
-title: A gyakori riasztási séma integrálása a Logic Apps használatával
-description: Ismerje meg, hogyan hozhat létre egy logikai alkalmazást, amely minden riasztás kezelése közös riasztási sémát.
+title: A közös riasztási séma integrálása a Logic Apps
+description: Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.
 author: ananthradhakrishnan
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f431e5e5f4537d1a5f889457eb81b881e47ee178
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091791"
 ---
-# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A gyakori riasztási séma integrálása a Logic Apps használatával
+# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A közös riasztási séma integrálása a Logic Apps
 
-Ez a cikk bemutatja, hogyan hozhat létre egy logikai alkalmazást, amely minden riasztás kezelése közös riasztási sémát.
+Ez a cikk bemutatja, hogyan hozhat létre egy logikai alkalmazást, amely kihasználja a közös riasztási sémát az összes riasztás kezeléséhez.
 
 ## <a name="overview"></a>Áttekintés
 
-A [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs) biztosít a szabványos és bővíthető JSON-séma minden más riasztási típus. Gyakori riasztási sémája a leghasznosabb, ha a webhookok, a runbookok és a logic Apps-alkalmazások programozott módon – ki. Ebben a cikkben bemutatjuk, hogyan egy-egy logikai alkalmazást hozhat létre minden riasztás kezelése. Ugyanezek az elvek alkalmazhatók az egyéb programozott módszerekkel. A logikai alkalmazás ebben a cikkben leírt jól definiált változókat hoz létre a ["fontos" mezők](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields), és azt is leírja, hogy miként kezelheti [riasztási típus](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) specifikus logika.
+A [Common Alert séma](https://aka.ms/commonAlertSchemaDocs) szabványosított és bővíthető JSON-sémát biztosít az összes különböző riasztási típusban. A gyakori riasztási séma a leggyakrabban a webhookok, a runbookok és a Logic Apps használatával történő programozott használat esetén hasznos. Ebben a cikkben bemutatjuk, hogyan hozhat létre egyetlen logikai alkalmazást az összes riasztás kezeléséhez. Ugyanezen alapelvek alkalmazhatók más programozott módszerekre is. Az ebben a cikkben ismertetett logikai alkalmazás jól definiált változókat hoz létre az ["Essential" mezőkhöz](alerts-common-schema-definitions.md#essentials), valamint leírja, hogyan kezelheti a [riasztás típusának](alerts-common-schema-definitions.md#alert-context) adott logikáját.
 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Ez a cikk feltételezi, hogy az olvasó már megszokott 
-* Riasztási szabályok beállítása ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [log](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [tevékenységnapló](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* Beállítása [Műveletcsoportok](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Engedélyezi a [gyakori riasztási séma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) a Műveletcsoportok belül
+Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt 
+* Riasztási szabályok beállítása ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [napló](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [műveletnapló](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
+* [Műveleti csoportok](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) beállítása
+* A [Common Alert-séma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) engedélyezése a műveleti csoportokon belül
 
-## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Hozzon létre egy logikai alkalmazást, kihasználva a gyakori riasztási séma
+## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>A Common Alert sémát használó logikai alkalmazás létrehozása
 
-1. Kövesse a [a logikai alkalmazás létrehozása lépéseinek végrehajtása](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Kövesse a [logikai alkalmazás létrehozásához szükséges lépéseket](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
-1.  Az eseményindító kiválasztása: **HTTP-kérés fogadásakor**.
+1.  Válassza ki az triggert: **Http-kérelem fogadásakor**.
 
-    ![A logikai alkalmazások eseményindítói](media/action-groups-logic-app/logic-app-triggers.png "Logikaialkalmazás-triggerek")
+    ![Logikai alkalmazás-eseményindítók](media/action-groups-logic-app/logic-app-triggers.png "Logikai alkalmazás-eseményindítók")
 
-1.  Válassza ki **szerkesztése** módosíthatja a HTTP-kérés eseményindító.
+1.  A HTTP-kérelem triggerének módosításához válassza a **Szerkesztés** lehetőséget.
 
-    ![HTTP-kérelem eseményindítók](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-kérelem eseményindítók")
+    ![Http-kérelem eseményindítói](media/action-groups-logic-app/http-request-trigger-shape.png "Http-kérelem eseményindítói")
 
 
-1.  Másolja és illessze be a következő mintát követik:
+1.  Másolja és illessze be a következő sémát:
 
     ```json
         {
@@ -113,34 +113,34 @@ Ez a cikk feltételezi, hogy az olvasó már megszokott
         }
     ```
 
-1. Válassza ki **+** **új lépés** majd **művelet hozzáadása**.
+1. Válassza **+** az **új lépés** , majd **a művelet hozzáadása**lehetőséget.
 
-    ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "művelet hozzáadása")
+    ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "Művelet hozzáadása")
 
-1. Ezen a ponton többfajta összekötőt (Microsoft Teams, Slack, Salesforce stb.) a Speciális üzleti igények alapján adhat hozzá. A "lényeges mezők"-a-beépített is használhatja. 
+1. Ebben a szakaszban számos összekötőt (Microsoft Teams, Slack, Salesforce stb.) adhat hozzá az adott üzleti követelmények alapján. Az "Essential Fields" nem használható. 
 
-    ![Alapvető mezők](media/alerts-common-schema-integrations/logic-app-essential-fields.png "alapvető mezők")
+    ![Alapvető mezők](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Alapvető mezők")
     
-    Másik lehetőségként hozhat létre feltételes logika alapján a riasztási típus az "Expression" lehetőséget.
+    Azt is megteheti, hogy a "kifejezés" beállítás használatával feltételes logikát hoz létre a riasztás típusa alapján.
 
-    ![Logic app kifejezés](media/alerts-common-schema-integrations/logic-app-expressions.png "Logic app kifejezés")
+    ![Logikai alkalmazás kifejezése](media/alerts-common-schema-integrations/logic-app-expressions.png "Logikai alkalmazás kifejezése")
     
-     A ["monitoringService" mező](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) lehetővé teszi, hogy egyedi azonosítására a riasztási típus alapján a amely hozhat létre feltételes logikát.
+     A ["monitoringService" mező](alerts-common-schema-definitions.md#alert-context) lehetővé teszi, hogy egyedileg azonosítsa a riasztás típusát, amely alapján létrehozhatja a feltételes logikát.
 
     
-    Ha például az alábbi kódrészlet ellenőrzi, ha a riasztás az Application Insights-alapú naplóriasztás, és ha igen jelenít meg a keresési eredmények között. Más esetben "NA" jelenít meg.
+    Az alábbi kódrészlet például ellenőrzi, hogy a riasztás Application Insights-alapú napló-riasztás-e, és ha igen, kiírja a keresési eredményeket. Más esetben a "NA"-t nyomtatja ki.
 
     ```text
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Tudjon meg többet [logic app-kifejezések írása](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     További információ a [Logic app-kifejezések írásáról](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
 
     
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a műveletcsoportokról](../../azure-monitor/platform/action-groups.md).
-* [További információ a gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs).
+* [További információ a műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
+* [További információ a közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
 

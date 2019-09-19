@@ -7,14 +7,14 @@ manager: carmonm
 keywords: biztonsági másolat visszaállítása; visszaállítás; helyreállítási pont;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3d7497b7afd44a05f3691d3e3094e84c3dd73747
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: c479249a3a09b625e37fb80e7b73dcc8a1268622
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983921"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098362"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -188,7 +188,27 @@ A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
 - Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - A helyreállított virtuális gépek nem rendelkeznek rendelkezésre állási csoporttal. Ha a lemez visszaállítása lehetőséget használja, [megadhat egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a megadott sablonnal vagy PowerShell-lel hozza létre a virtuális gépet a lemezről.
 - Ha felhő-init-alapú Linux-disztribúciót, például Ubuntut használ, biztonsági okokból a rendszer letiltja a jelszót a visszaállítás után. A [jelszó alaphelyzetbe állításához](../virtual-machines/linux/reset-password.md)használja a VISSZAÁLLÍTOTT virtuális gép VMAccess bővítményét. Javasoljuk, hogy SSH-kulcsokat használjon ezeken a disztribúciókban, így a visszaállítás után nem kell alaphelyzetbe állítania a jelszót.
+- Ha a virtuális gép a tartományvezérlővel való megszakadt kapcsolat miatt nem fér hozzá a virtuális géphez, akkor a virtuális gép üzembe helyezéséhez kövesse az alábbi lépéseket:
+    - OPERÁCIÓSRENDSZER-lemez csatlakoztatása adatlemezként egy helyreállított virtuális géphez.
+    - Manuálisan telepítse a virtuálisgép-ügynököt, ha az Azure-ügynök nem válaszol a [hivatkozás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)követésével.
+    - A soros konzol elérésének engedélyezése a virtuális gépen a parancssori hozzáférés engedélyezése a virtuális gépen
+    
+  ```
+    bcdedit /store <drive letter>:\boot\bcd /enum
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+    - A virtuális gép újraépítése Azure Portal a helyi rendszergazdai fiók és a jelszó alaphelyzetbe állításához
+    - A virtuális gép leválasztása Serial console hozzáférés és a CMD használatával a tartományból
 
+    ```
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+    ```
+
+- A virtuális gép leválasztása és újraindítása után a virtuális gép a helyi rendszergazdai hitelesítő adatokkal sikeresen újraindulhat, és a virtuális gépet sikeresen újra csatlakoztathatja a tartományhoz.
 
 ## <a name="backing-up-restored-vms"></a>Visszaállított virtuális gépek biztonsági mentése
 
