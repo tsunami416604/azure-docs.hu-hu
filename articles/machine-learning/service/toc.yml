@@ -152,6 +152,9 @@
         - name: Adathalmazok hozzáadása és regisztrálása
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Betanítás adathalmazok használatával
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Modellek betanítása
       items:
         - name: Betanítási környezetek beállítása

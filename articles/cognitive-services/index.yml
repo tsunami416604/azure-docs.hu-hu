@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965462"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087548"
 highlightedContent:
   items:
   - title: Mi a Cognitive Services?
@@ -53,7 +53,7 @@ conceptualContent:
       text: Arcfelismerés
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Form Recognition (előzetes verzió)
+      text: Form Recognizer (előzetes verzió)
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Ink Recognizer (előzetes verzió)
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Translator Speech (kivonás alatt)
-  - title: Döntési szolgáltatások
+  - title: Döntés
     summary: Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Web Search
-  - title: Containers
+  - title: Cognitive Services-tárolók
     summary: A tárolók támogatása az Azure Cognitive Servicesben lehetővé teszi a fejlesztőknek, hogy ugyanazokat a tartalomban gazdag API-kat használják, amelyek az Azure-ban is elérhetők, valamint rugalmasságot kínál azon a téren, hogy hol lehet üzembe helyezni és üzemeltetni a Docker-tárolókkal rendelkező szolgáltatásokat.
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Tárolók a Cognitive Serviceshez
+      text: Cognitive Services-tárolók
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: Tárolók létrehozása újbóli felhasználáshoz

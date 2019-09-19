@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: Támogatott Kubernetes-verzió
       href: supported-kubernetes-versions.md
+    - name: A biztonság megerősítése a gazda operációs rendszeren
+      href: security-hardened-vm-host-image.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek
@@ -116,7 +118,7 @@
         - name: AKS-fürt törlése
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: ACR létrehozása AKS-fürttel (előzetes verzió)
+        - name: ACR létrehozása AKS-fürttel
           href: cluster-container-registry-integration.md
         - name: Virtuális csomópontok létrehozása
           items:

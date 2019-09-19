@@ -1,69 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Application Gateway – dokumentáció
+### YamlMime:Landing
+title: Azure Application Gateway-dokumentáció
+summary: Útmutató Application Gateway-átjárók létrehozásához. A dokumentáció segít az Azure-erőforrásokba érkező webes forgalom tervezésében, üzembe helyezésében és kezelésében.
 metadata:
-  title: Az Azure Application Gateway dokumentációja – oktatóanyagok és API-referencia
-  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Azure Application Gateway-dokumentáció
+  description: További tudnivalók az Azure Firewall üzembe helyezéséről, amely egy felhőalapú hálózati biztonsági szolgáltatás.
   services: application-gateway
-  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 5/20/2019
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gateway alkalmazáskézbesítési vezérlőt (ADC). Oktatóanyagok, API-referenciák, és egyéb dokumentációk, amelyek bemutatják, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztási szolgáltatásokat, amelyek lehetővé teszik méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozását.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan kezelheti az erőforrásai felé irányuló webes forgalmat az Application Gateway használatával:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat alkalmazásátjárókat az Azure-ban'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Alkalmazásátjáró létrehozása webalkalmazási tűzfallal</a>
-          - html: <a href="/azure/application-gateway/create-ssl-portal">Alkalmazásátjáró konfigurálása az SSL leállításával</a>
-          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">Alkalmazásátjáró létrehozása és konfigurálása több webhely üzemeltetéséhez</a>
-          - html: <a href="/azure/application-gateway/create-url-route-portal">Alkalmazásátjáró létrehozása útvonalalapú útválasztási szabályokkal</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Alkalmazásátjáró létrehozása URL-alapú átirányítással</a>
-          - html: <a href="/azure/application-gateway/tutorial-autoscale-ps">Webalkalmazás-hozzáférést javító alkalmazásátjáró létrehozása</a>
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Webes forgalom kezelése alkalmazásátjáróval.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
-          - title: Nyelvek
-            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.applicationgatewaysoperations">Python</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">Teljes REST API-referencia</a></p>'
+  ms.date: 09/18/2019
+  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076027"
+landingContent:
+- title: Az Application Gateway ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Application Gateway?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Gyakori kérdések
+      url: application-gateway-faq.md
+- title: Az Application Gateway üzembe helyezése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A webes forgalom irányítása az Azure Application Gatewayjel
+      url: quick-create-portal.md
+- title: Üzembe helyezés SSL-leállítással
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SSL leállítása és végpontok közötti SSL az Application Gatewayjel
+      url: ssl-overview.md
+    - text: SSL-szabályzatok áttekintése
+      url: application-gateway-ssl-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Alkalmazásátjáró konfigurálása az SSL leállításával
+      url: create-ssl-portal.md
+- title: Automatikusan skálázó és zónaredundáns Application Gateway-átjárók
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Automatikusan skálázó és zónaredundáns Application Gateway v2
+      url: application-gateway-autoscaling-zone-redundant.md
+  - linkListType: tutorial
+    links:
+    - text: Webalkalmazás-hozzáférést javító alkalmazásátjáró létrehozása
+      url: tutorial-autoscale-ps.md
+- title: Application Gateway hibaelhárítása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Application Gateway Resource Health áttekintése
+      url: resource-health-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: A Log Analytics használata az Application Gateway webalkalmazási tűzfal naplóinak vizsgálatához
+      url: log-analytics.md
+    - text: A háttérrendszer állapotának problémái az Application Gateway szolgáltatásban
+      url: application-gateway-backend-health-troubleshooting.md

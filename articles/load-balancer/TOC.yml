@@ -123,6 +123,14 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: Magas rendelkezésre állású portok konfigurálása belső Load Balancerhez
       href: load-balancer-configure-ha-ports.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Külső terheléselosztó – Portal
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: Külső terheléselosztó – PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: Belső terheléselosztó – PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: Hibaelhárítás
       items:
         - name: Az Azure Load Balancer hibaelhárítása

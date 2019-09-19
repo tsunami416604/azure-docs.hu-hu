@@ -19,10 +19,10 @@
 - name: Alapelvek
   expanded: false
   items:
-    - name: Feltételes hozzáférés bevezetése
-      href: howto-conditional-access-adoption-kit.md
     - name: Gyakori feltételes hozzáférési szabályzatok
       href: concept-conditional-access-policy-common.md
+    - name: Feltételes hozzáférési szabályzatok komponensei
+      href: concept-conditional-access-policies.md
     - name: Feltételek
       href: conditions.md
     - name: Helyfeltételek

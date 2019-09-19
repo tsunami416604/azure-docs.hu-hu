@@ -1,45 +1,77 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Portal-dokumentáció
+summary: Az Azure Portal egy egységesített felületet biztosító webes konzol, amely alternatívát biztosít a parancssori eszközökkel szemben. Azure-előfizetését kezelheti az Azure Portalon. Az egyszerű webalkalmazásoktól az összetett felhőalapú üzemelő példányokig bármit létrehozhat, kezelhet és monitorozhat. Egyéni irányítópultokat hozhat létre az erőforrások rendszerezett nézetének létrehozásához, és a lehető legjobb felhasználói élmény érdekében konfigurálhatja a kisegítő lehetőségeket.
 metadata:
-  description: 'Megtudhatja, hogyan hozhat létre egyéni irányítópultokat az Azure Portalon.'
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Azure Portal-dokumentáció
+  description: Ismerje meg, hogyan használhatja az Azure Portalt az Azure-előfizetés és az -erőforrások kezelésére.
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
+  ms.collection: collection
+  author: kfollis
   ms.author: kfollis
-abstract:
-  description: 'Az Azure Portal egy egységesített felületet biztosító webes konzol, amely sokféle alkalmazás összeállítását, kezelését és monitorozását teszi lehetővé, az egyszerű webalkalmazásoktól egészen az összetett felhőalapú megoldásokig. Az irányítópultja testre szabható, és kisegítő lehetőségekkel is rendelkezik.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: '<p>Az Azure Portal minden modern asztali és táblagépen, és minden korszerű böngészőben futtatható.</p>'
-            title: Támogatott böngészők és eszközök
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>Az Azure Portal kontrasztbeállításai és színsémája módosítható.</p>
-            title: Kontrasztos megjelenítés bekapcsolása
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: '<p>Megismerkedhet azokkal a billentyűparancsokkal, amelyek az Azure Portal minden felületén működnek.</p>'
-            title: Billentyűparancsok
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: '<p>Több irányítópultot is létrehozhat, amelyeket megoszthat azokkal, akik hozzáféréssel rendelkeznek Azure-előfizetéseihez.</p>'
-            title: Azure-irányítópultok létrehozása és megosztása
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: '<p>Közzéteheti az irányítópultjait, amelyeket a cégen belül másokkal is megoszthat.</p>'
-            title: Irányítópultok megosztása RBAC-vel
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>Irányítópultok programozott módon történő létrehozása és közzététele a cégen belül</p>
-            title: Azure-irányítópultok létrehozása programozott módon
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076656"
+landingContent:
+- title: Tudnivalók az Azure Portalról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Portal?
+      url: azure-portal-overview.md
+    - text: Támogatott böngészők és eszközök
+      url: azure-portal-supported-browsers-devices.md
+- title: Az Azure Portal testreszabása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni irányítópultok létrehozása és megosztása
+      url: azure-portal-dashboards.md
+    - text: Kedvencek kezelése
+      url: azure-portal-add-remove-sort-favorites.md
+- title: Az Azure Portalhoz való hozzáférés kezelése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Az Azure Portal URL-címeinek megbízhatósági listára helyezése
+      url: azure-portal-safelist-urls.md
+    - text: Szerepköralapú hozzáférés-vezérlés irányítópultokhoz
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: Erőforrások kezelése az Azure-ban
+      url: /learn/paths/manage-resources-in-azure/
+    - text: Azure-erőforrások védelme szerepköralapú hozzáférés-vezérléssel (RBAC)
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Előkészítés az Azure Gyorskonfigurálási központban
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Portal útmutató videósorozata
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Azure – alapok
+      url: /learn/paths/azure-fundamentals/
+    - text: Felhőfogalmak – A felhőalapú számítástechnika alapelvei
+      url: /learn/modules/principles-cloud-computing/
+- title: Kisegítő lehetőségek használata
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Billentyűparancsok
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kontrasztos megjelenítés bekapcsolása
+      url: azure-portal-change-theme-high-contrast.md

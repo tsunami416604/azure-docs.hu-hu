@@ -584,6 +584,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: Változásadatok másolása adatbázisból
           href: solution-template-delta-copy-with-control-table.md
+        - name: Adatok migrálása az Amazon S3-ból az Azure Storage-ba
+          href: solution-template-migration-s3-azure.md
         - name: Fájlok áthelyezése
           href: solution-template-move-files.md
         - name: Adatátalakítás a Databricksszel

@@ -7,11 +7,11 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Több előfizetéses alkalmazás létrehozása
-      href: terrafom-quickstart.md
     - name: A Terraform telepítése és konfigurálása
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
+    - name: Több előfizetéses alkalmazás létrehozása
+      href: terrafom-quickstart.md
     - name: Linux rendszerű virtuális gép létrehozása
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
@@ -67,10 +67,6 @@
   items:
     - name: Konfigurációs sablonok
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Alapelvek
-  items:
-    - name: Azure Cloud Shell-integráció
-      href: terraform-cloud-shell.md
 - name: Útmutatók
   items:
     - name: Állapot tárolása az Azure Storage-ban
@@ -79,7 +75,7 @@
   items:
     - name: Azure-modulok beállításjegyzéke
       href: 'https://registry.terraform.io/modules/Azure'
-    - name: Terraform-referencia
+    - name: 'Terraform: Azure-szolgáltató'
       href: 'https://aka.ms/terraform'
 - name: További források
   items:

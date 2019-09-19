@@ -251,7 +251,7 @@ A ITN űrlap a felismert szövegben szereplő alkalmazások esetében a legmegfe
 
 Mivel a káromkodás természetesen a beszélt nyelv részét képezi, a Microsoft Speech szolgáltatás a szóbeli szavakat és kifejezéseket ismeri fel. A káromkodás azonban nem feltétlenül megfelelő minden alkalmazáshoz, különösen azokhoz az alkalmazásokhoz, amelyek korlátozott, nem felnőtt felhasználói közönséggel rendelkeznek.
 
-A maszkolt ITN űrlap a káromkodás maszkolását alkalmazza az inverz szöveg normalizálása űrlapra. A káromkodás maszkolásához állítsa a profán paraméter értékének `masked`értékét a következőre:. A káromkodás maszkolásakor a rendszer a nyelv káromkodási lexikonának részeként felismert szavakat csillagokkal helyettesíti. Például: *emlékeztessen 5 * * * * * ceruza megvásárlására*. A felismerési eredmények maszkolt ITN formája nem tartalmazza a nagybetűket vagy a központozást.
+A maszkolt ITN űrlap a káromkodás maszkolását alkalmazza az inverz szöveg normalizálása űrlapra. A káromkodás maszkolásához állítsa a profán paraméter értékének `masked`értékét a következőre:. A káromkodás maszkolásakor a rendszer a nyelv káromkodási lexikonának részeként felismert szavakat csillagokkal helyettesíti. Például: *emlékeztessen 5 ceruza megvásárlására*. A felismerési eredmények maszkolt ITN formája nem tartalmazza a nagybetűket vagy a központozást.
 
 > [!NOTE]
 > Ha a káromkodás lekérdezési paramétere értékre van állítva `raw`, a maszkolt ITN űrlap ugyanaz, mint a ITN űrlap. A káromkodás *nem* maszkolt.

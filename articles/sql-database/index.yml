@@ -73,7 +73,7 @@ sections:
       - type: list
         style: cards
         className: cardsM
-        columns: 3
+        columns: 2
         items:
           - href: /azure/sql-database/sql-database-single-index
             html: '<p>Az SQL-adatbáziskiszolgálón futó önálló adatbázisokat olyan SaaS-alkalmazásokhoz és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>'
@@ -90,6 +90,11 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: Felügyelt példány
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>A felügyelt példányok készletei egyszerű és költséghatékony megoldásként használhatók több felügyelt példány üzembe helyezéséhez, amelyek közös erőforrásokat használnak és gyorsan méretezhetők.</p>'
+            image:
+              src: media/index/i_instancepool.png
+            title: Példánykészlet
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
@@ -128,6 +133,12 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+          - title: Példánykészlet létrehozása
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
   - title: Részletes útmutatók és oktatóanyagok
     items:
       - type: paragraph
