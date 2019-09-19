@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984233"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097142"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvi és területi támogatása
 
@@ -44,20 +44,21 @@ A többi `Person`nyelvhez `Organization` csak a `Location` és a nevesített ent
 
 A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhető (GA) állapotra kell bevezetni, amely egymástól függetlenül, és a Text Analytics szolgáltatás teljes egészében. Lehetséges, hogy a nyelvek előzetes verzióban maradnak, még akkor is, ha a Text Analytics API általánosan elérhetővé vált.
 
-| Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Nevesített entitások felismerése |   Megjegyzések  |
+| Nyelv    | Nyelvkód | Hangulat | Kulcskifejezések | Megnevezett entitások felismerése |   Megjegyzések  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | arab      | `ar`          |           |             | ✔ \*                     | |
 | cseh       | `cs`          |           |             | ✔ \*                     | |
-| Egyszerűsített kínai | `zh-CN`| ✔ \***     |             | ✔         |    |
+| Egyszerűsített kínai | `zh-hans`| ✔ \***     |             | ✔         |    |
+| Kínai – hagyományos | `zh-hant`| ✔ \***     |             | ✔         |    |
 | dán      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | holland       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
-| Angol     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
+| Angol     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | finn     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| francia      | `fr`          | ✔        | ✔           |  ✔            |     |
+| francia      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
 | német      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | görög       | `el`          | ✔ \*     |             |            |     |
 | magyar   | `hu`          |           |             |  ✔ \*          |     | 
-| olasz     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |
+| olasz     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
 | japán    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
 | koreai      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norvég (nyelven) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |

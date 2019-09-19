@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959881"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097574"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 
@@ -136,6 +136,10 @@ Nem.
 **K: Az Azure AD miért is elutasítja a gyenge jelszavakat, bár úgy konfiguráltam, hogy a házirend naplózási módban legyen?**
 
 A naplózási mód csak a helyszíni Active Directory környezetekben támogatott. Az Azure AD implicit módon mindig "kényszerítve" módban van, amikor kiértékeli a jelszavakat.
+
+**K: A felhasználók a hagyományos Windows-hibaüzenetet látják, ha az Azure AD jelszavas védelme visszautasítja a jelszót. Lehet testreszabni ezt a hibaüzenetet, hogy a felhasználók tudják, mi történt valójában?**
+
+Nem. A felhasználók által a tartományvezérlő által a jelszó elutasításakor megjelenő hibaüzenetet az ügyfélszámítógép nem a tartományvezérlő vezérli. Ez a viselkedés megtörténik, hogy a rendszer elutasítja-e a jelszót az alapértelmezett Active Directory jelszóházirend vagy egy jelszó-szűrő alapú megoldás, például az Azure AD jelszavas védelme.
 
 ## <a name="additional-content"></a>További tartalom
 

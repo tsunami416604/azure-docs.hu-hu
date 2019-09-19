@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305166"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097801"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Előzetes verzió – hitelesítés a Azure Container Registry az Azure Kubernetes Service-ben
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
 Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a cikk a két Azure-szolgáltatás közötti hitelesítés ajánlott konfigurációit részletezi.
 
 Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel.
-
-> [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
->
-> * [AK-támogatási szabályzatok](support-policies.md)
-> * [Azure-támogatás – gyakori kérdések](faq.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 A következőkkel kell rendelkeznie:
 
 * Az **Azure-előfizetéshez** tartozó **tulajdonosi** vagy **Azure-fiók rendszergazdai** szerepköre
-* Szüksége lesz az Azure CLI 2.0.70 vagy újabb verziójára, valamint az AK-előnézet 0.4.8-bővítményre
+* Szüksége lesz az Azure CLI 2.0.73 vagy újabb verziójára is
 * Szüksége van az ügyfélre [telepített Docker](https://docs.docker.com/install/) -ra, és hozzá kell férnie a [Docker hub](https://hub.docker.com/) -hoz
-
-## <a name="install-latest-aks-cli-preview-extension"></a>A legújabb AK CLI előnézet bővítmény telepítése
-
-Szüksége lesz az **AK-előnézet 0.4.13-** bővítményre vagy újabb verzióra.
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AK-fürt létrehozása ACR-integrációval
 
@@ -52,7 +37,7 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-\* * Az ACR erőforrás-azonosító formátuma a következő: 
+**Az ACR erőforrás-azonosító formátuma a következő:** 
 
 /Subscriptions/< előfizetés-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   

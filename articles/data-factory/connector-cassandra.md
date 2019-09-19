@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 91ac76d85422f5f323a833a99b5cc02d9a07889b
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1531f2530af9c2fbc90d1bf25f04962fb4148a8d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009462"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090469"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása a Cassandra használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 
 Ez a Cassandra-összekötő a következő tevékenységek esetében támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Az adatok a Cassandra Database-ből bármilyen támogatott fogadó adattárba másolhatók. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
@@ -252,7 +252,7 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |J |
+| 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
@@ -260,10 +260,10 @@ A következő táblázatok azokat a virtuális táblákat mutatják be, amelyek 
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |J |
+| 1 |A |
 | 1 |B |
 | 1 |C |
-| 3 |J |
+| 3 |A |
 | 3 |E |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai

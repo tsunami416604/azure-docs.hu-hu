@@ -4,7 +4,7 @@ description: A Windows rendszerű virtuális gépekkel kapcsolatos problémák h
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080206"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058039"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépekkel kapcsolatos problémák elhárítása az Azure-ban
 
 A virtuális gépek üzembe helyezésével kapcsolatos problémák elhárításához az Azure-ban tekintse át a leggyakoribb hibák és megoldások [legfontosabb problémáit](#top-issues) .
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 ## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
@@ -34,7 +34,7 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 \<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
 - Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 - Ha a kért virtuális gép mérete nem módosítható:
-    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson az erőforráscsoportok > az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
+    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
     - Az összes virtuális gép leállítása után a kívánt méretben hozza létre a virtuális gépet.
     - Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 
@@ -97,7 +97,7 @@ A rendelkezésre álló termékek elérhetőségét a [régiók táblázata alap
 Az Azure-ban a Windows 7, a Windows 8 vagy a Windows 10 operációs rendszert használhatja fejlesztési és tesztelési forgatókönyvekhez, ha rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. 
 
 - A Windows 10-es lemezképek az Azure Galleryben érhetők el a [jogosult fejlesztési és tesztelési ajánlatokon](../windows/client-images.md#eligible-offers)belül. 
-- A Visual Studio-előfizetők bármilyen típusú ajánlaton belül a 64 bites Windows 7, Windows 8 vagy Windows 10 rendszerű rendszerképek [megfelelő előkészítését és létrehozását](../windows/prepare-for-upload-vhd-image.md) is lehetővé teszi, majd feltöltheti őket [Az Azure](../windows/upload-generalized-managed.md)-ba. A használat az aktív Visual Studio-előfizetők által a fejlesztéshez és teszteléshez is korlátozott.
+- A Visual Studio-előfizetők bármilyen típusú ajánlaton belül a 64 bites Windows 7, Windows 8 vagy Windows 10 rendszerű rendszerképek [megfelelő előkészítését és létrehozását](../windows/prepare-for-upload-vhd-image.md) is lehetővé teszi, majd [feltöltheti őket az Azure](../windows/upload-generalized-managed.md)-ba. A használat az aktív Visual Studio-előfizetők által a fejlesztéshez és teszteléshez is korlátozott.
 
 Ez a [cikk](../windows/client-images.md) a Windows-ügyfél Azure-ban való futtatásának és az Azure Gallery-lemezképek használatának támogathatósági követelményeit ismerteti.
 
@@ -121,4 +121,4 @@ Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő 
 ## <a name="next-steps"></a>További lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
-Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

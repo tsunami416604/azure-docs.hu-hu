@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384085"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097581"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -81,10 +81,10 @@ Ha a háttérrendszer-kiszolgáló állapota nem kifogástalan állapotú a hát
 A háttér állapota lap részletek oszlopában megjelenő üzenet részletesebb információkat nyújt a problémáról, és ezek alapján elindítható a probléma elhárítása.
 
 > [!NOTE]
-> Az alapértelmezett mintavételi kérelmet <protocol>://127.0.0.1:<port> <http://127.0.0.1/> /, például a 80-es porton belüli http-mintavételre küldi a rendszer, és csak a 200-399-es HTTP-állapotkódok válaszát tekinti meg kifogástalan válaszként. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és más állapotkódot fogadjon el kifogástalan állapotként, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
+> Az alapértelmezett mintavételi \<kérelmet a\>rendszer a <http://127.0.0.1/> (z)://127.0.0.1: port\>/\<, a 80-es porton lévő http-mintavétel esetén küldi el, és csak a 200-399-es HTTP-állapotkódok válaszát veszi figyelembe. kifogástalan válasz. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és más állapotkódot fogadjon el kifogástalan állapotként, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
 
-### <a name="error-messages"></a>Hibaüzenetek
-
+<a name="error-messages"></a>Hibaüzenetek
+------------------------
 #### <a name="backend-server-timeout"></a>Háttér-kiszolgáló időtúllépése
 
 **Üzenetet** A háttér által az Application Gateway\'s Health mintavételre való reagáláshoz szükséges idő nagyobb, mint a mintavételi beállítás időtúllépési küszöbértéke.

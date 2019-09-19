@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735576"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098397"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -132,7 +132,7 @@ A védelem leállítása és a virtuális gép adattartalmának törlése:
 
 ## <a name="resume-protection-of-a-vm"></a>Virtuális gép védelmének folytatása
 
-Ha úgy döntött, hogy leállítja [a védelmet, és megőrzi a biztonsági mentési](#stop-protection-and-retain-backup-data) adatvédelmet, a virtuális gép védelmének leállítása lehetőségnél használhatja a **biztonsági mentést**. Ez a beállítás nem érhető el, ha a [védelem leállítása és a biztonsági másolati](#stop-protection-and-delete-backup-data) beállítások törlése lehetőségre kattint, vagy [törli a biztonsági](#delete-backup-data)mentési adatkészletet.
+Ha úgy döntött, hogy leállítja [a védelmet, és megőrzi a biztonsági mentési](#stop-protection-and-retain-backup-data) adatvédelmet, a virtuális gép védelmének leállítása lehetőségnél használhatja a **biztonsági mentést**. Ez a beállítás nem érhető el, ha a [védelem leállítása és a biztonsági másolati](#stop-protection-and-delete-backup-data) beállítások törlése lehetőségre kattint, vagy [törli a biztonsági mentési adatkészletet](#delete-backup-data).
 
 A virtuális gép védelmének folytatása:
 
@@ -168,4 +168,4 @@ A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölhet
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
 - Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).
-- Ismerje meg, hogyan figyelheti az [Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).
+- Ismerje meg, hogyan [figyelheti az Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).

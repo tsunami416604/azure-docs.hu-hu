@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850641"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098627"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
@@ -34,7 +34,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Kattintson a **FOLYAMATOK AUTOMATIZÁLÁSA** területen lévő **Runbookok** lehetőségre. Megjelenik a runbookok listája.
 
-1. Kattintson a lista tetején található **Runbook hozzáadása** gombra. A **Runbook hozzáadása** oldalon válassza a **Gyors létrehozás** lehetőséget.
+1. Kattintson a lista tetején található **Runbook létrehozása** gombra.
 
 1. Adja a runbooknak a „Hello-World” **nevet**, és válassza a **PowerShell** lehetőséget a **runbook típusaként**. Kattintson a **Create** (Létrehozás) gombra.
 

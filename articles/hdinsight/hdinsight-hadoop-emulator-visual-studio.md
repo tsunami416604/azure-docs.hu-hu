@@ -2,18 +2,18 @@
 title: A Visual studióhoz készült Data Lake eszközök Hortonworks-alapú homokozóval – Azure HDInsight
 description: Megtudhatja, hogyan használhatja a Visual studióhoz készült Azure Data Lake-eszközöket a helyi virtuális gépen futó Hortonworks-homokozóval. Ezekkel az eszközökkel létrehozhat és futtathat kaptár-és Pig-feladatokat a homokozóban, és megtekintheti a feladatok kimenetét és előzményeit.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962406"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098776"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>A Visual studióhoz készült Azure Data Lake Tools használata a Hortonworks sandbox használatával
 
@@ -41,7 +41,7 @@ Győződjön meg arról, hogy a Hortonworks-homokozó fut. Ezután kövesse az [
 
 2. A **Server Explorerben**kattintson a jobb gombbal a **HDInsight** bejegyzésre, majd válassza a **Kapcsolódás a HDInsight emulatorhoz**lehetőséget.
 
-    ![A Server Explorer képernyőképe, a Kapcsolódás a HDInsight-emulátorhoz kiemelve](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![A Server Explorer és a HDInsight-emulátorhoz való kapcsolódás Kiemelt](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. A **Kapcsolódás a HDInsight-emulátorhoz** párbeszédpanelen adja meg a Ambari konfigurált jelszót.
 
@@ -112,7 +112,7 @@ A kaptár egy SQL-szerű lekérdezési nyelvet (HiveQL) biztosít a strukturált
     > [!NOTE]  
     > A feladatok befejeződése után az információ megegyezik a **feladatütemezés** hivatkozásával.
 
-    ![A kimeneti napló képernyőképe](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![Képernyőkép a HiveServer2 kimenetéről](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Struktúra-projekt létrehozása
 
@@ -122,7 +122,7 @@ Létrehozhat egy olyan projektet is, amely több kaptár-parancsfájlt is tartal
 
 2. A projektek listájában bontsa ki a **sablonok**, majd a **Azure Data Lake**elemet, majd válassza a **kaptár (HDInsight)** elemet. A sablonok listájában válassza a **struktúra minta**lehetőséget. Adja meg a nevet és a helyet, majd kattintson **az OK gombra**.
 
-    ![Képernyőfelvétel az új projekt ablakról, a Azure Data Lake, a kaptár, a méhkas minta és az OK kiemelésével](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![Új projekt ablak, Azure Data Lake, kaptár minta és OK](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 A **kaptár minta** projekt két parancsfájlt tartalmaz: a **WebLogAnalysis. HQL** és a **SensorDataAnalysis. HQL**. Ezeket a szkripteket az ablak felső részén található **Küldés** gomb használatával küldheti el.
 
@@ -179,7 +179,7 @@ Data Lake eszközök segítségével egyszerűen megtekintheti a Hadoop-on futta
 
 2. A táblázat kibontása megjeleníti a tábla oszlopait. Az adatmegjelenítéshez kattintson a jobb gombbal a táblázatra, majd válassza a **felső 100-sorok megtekintése**lehetőséget.
 
-    ![A Server Explorer képernyőképe, a táblázat kibontva és a felső 100-sorok megtekintése kijelölve](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![Server Explorer, a táblázat kibontva és a felső 100-sorok megjelenítése kiválasztva](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Adatbázis és tábla tulajdonságai
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4c6499cd0e105e28954b6d4df667c71a51b9ccff
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 432d81b4282e45bc2f33d098e618f2edd152628b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017755"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098030"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -28,7 +28,7 @@ A Hangulatelemzés következő verziója már elérhető a nyilvános előzetes 
 * Automatikus címkézés a különböző érzelemekhez a szövegben.
 * A dokumentumok és a mondatok szintjének elemzése és kimenete. 
 
-Támogatja az angol, a japán és az egyszerűsített kínai nyelvet, és a következő régiókban `Australia East`érhető `Central Canada`el `Central US`: `East Asia` `Southeast Asia` `North Europe` `East US` `East US 2`,,,,, `South Central US` ,,, , `UK South`,és .`West US 2` `West Europe`
+Angol, francia, olasz, Japán, egyszerűsített kínai és hagyományos-kínai nyelveket támogat, és a következő régiókban érhető el: `Australia East` `East US` `North Europe` `Central Canada` `Central US` `East Asia` `East US 2`,,,,,, ,,,,`South Central US`és .`West US 2` `Southeast Asia` `UK South` `West Europe`
 
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

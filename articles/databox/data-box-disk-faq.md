@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076902"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098820"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Gyakori kérdések
 
@@ -60,7 +60,7 @@ A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa é
 A. Data Box Disk szállítása a rendeltetési országon belül történik, és nem léphet fel nemzetközi határokra. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a lemezek bármelyik EU-országba oda tudnak szállítani.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
-A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)a Microsoft ügyfélszolgálataval.
+A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot a Microsoft ügyfélszolgálataval](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
@@ -89,6 +89,24 @@ A.  A Data Box Disk-lemez megrendelésének állapotát az Azure Portalon követ
 ### <a name="q-how-do-i-return-the-disks"></a>K. Hogyan küldhetem vissza a lemezeket? 
 A.  A Microsoft a Data Box Disk-lemezek csomagjában egy levélcímkét is elküld Önnek. Ragassza ezt a címkét egy szállítódobozra, majd adja le a lezárt dobozt a szállítmányozójánál. Ha a címke megsérült vagy elveszett, nyissa meg az **Áttekintés > Levélcímke letöltése** menüpontot, és töltsön le egy új levélcímkét.
 
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Felvehetem magam is a Data Box Disk rendelést? Visszaadhatom a lemezeket egy kiválasztott szolgáltatón keresztül?
+A. Igen. A Microsoft csak US Gov régióban biztosít önfelügyelt szállítást is. A Data Box Disk rendelés elhelyezésekor kiválaszthatja az önfelügyelt szállítási lehetőséget is. A Data Box Disk sorrend kiválasztásához hajtsa végre a következő lépéseket:
+    
+1. A rendelés elhelyezése után a rendszer feldolgozza a sorrendet, és előkészíti a lemezeket. E-mailben értesítést küldünk arról, hogy a megrendelés készen áll a felvételre. 
+2. Ha a rendelés készen áll a beléptetésre, lépjen a megrendelésre a Azure Portal, és navigáljon az **Áttekintés** panelre. 
+3. Ekkor megjelenik egy értesítés, amely tartalmazza a kódot a Azure Portalban. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg nekik a kódot. A csapat megadja a felvételi dátum és idő helyét és ütemtervét. Az e-mailes értesítés kézhezvételét követően 5 munkanapon belül meg kell hívnia a csapatot.
+
+Miután az Adatmásolás és az érvényesítés befejeződött, hajtsa végre a következő lépéseket a lemez visszaküldéséhez:
+
+1. Miután az adatok érvényesítése befejeződött, válassza le a lemezeket. Távolítsa el a csatlakoztatott kábeleket.
+2. Csomagolja be az összes lemezt és kábelt buborékfóliába, és helyezze őket a szállítási dobozba. Ha a tartozékok hiányoznak, a szolgáltató költségeket számíthat fel.
+
+    - Használja fel újra az első szállításkor kapott csomagolást. Ajánlott megfelelően rögzített buborékfóliát használni a lemezek becsomagolásához.
+    - Gondoskodjon róla, hogy a lemez szorosan illeszkedjen a dobozba.
+3. A megrendelés **Áttekintés** paneljén Azure Portal. Egy kóddal rendelkező értesítést kell látnia.
+4. Használja ezt a kódot, és küldje el e-mailben a [Azure Data Box Operations csapatnak](mailto:adbops@microsoft.com) , és adja meg nekik a kódot. A felhasználók a lemezek ledobásának helyét és időpontját is megadják.
+
+
 ## <a name="migrate-data"></a>Adatok migrálása
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>K. Legfeljebb mekkora méretű adat esetén használhatók a Data Box Disk-lemezek?  
@@ -109,11 +127,11 @@ A.  Az adatok egy SMB-másoló eszköz, például a Robocopy vagy a Diskboss has
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: Másolja az adatAzure Data Box Disk és ellenőrizze](data-box-disk-deploy-copy-data.md#copy-data-to-disks)a következőt:.
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: adatok Azure Data Box Diskre történő másolását és ellenőrzését](data-box-disk-deploy-copy-data.md#copy-data-to-disks) ismertető oktatóanyagot.
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyre a lemezeket csatlakoztatja.
 - Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.
-- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a összetevők fület, és töltse le az MSI-t.
+- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>K. Hogyan lehet felgyorsítani az adatok másolását, ha a forrásadatok között sok kisméretű fájl található (KB-os vagy néhány MB-os méretűek)?
 A.  A másolási folyamat felgyorsításához:
@@ -173,6 +191,6 @@ A. Igen. Az adatai az Azure-ba lettek feltöltve, de ha nem lát felügyelt leme
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a [Data Box Disk](data-box-disk-system-requirements.md)rendszerkövetelményeit.
+- Tekintse át a [Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md).
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

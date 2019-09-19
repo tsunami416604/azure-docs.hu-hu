@@ -1,6 +1,6 @@
 ---
-title: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
-description: Részletes útmutató különböző Azure VPN-és VNet-telepítések konfigurálásához és ellenőrzéséhez
+title: Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
+description: Részletes útmutató különböző Azure VPN-és virtuális hálózati telepítések konfigurálásához és ellenőrzéséhez
 services: virtual-network
 documentationcenter: na
 author: v-miegge
@@ -14,54 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc4b649ce8d082d8d854c4c19b617c088ff3141c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71099055"
 ---
-# <a name="configure-and-validate-vnet-or-vpn-connections"></a>VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése
+# <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
 
-Ez az útmutató részletes útmutatást nyújt a különböző Azure-beli VPN-és VNet-telepítések konfigurálásához és ellenőrzéséhez olyan forgatókönyvekben, mint például a tranzit útválasztás, a VNet – VNet, a BGP, a többhelyes, a pont – hely stb.
+Ez az útmutató részletes útmutatást nyújt a különböző Azure VPN-és virtuális hálózati telepítések konfigurálásához és ellenőrzéséhez. A forgatókönyvek közé tartozik például az átviteli útválasztás, a hálózatról a hálózatra irányuló kapcsolatok, a Border Gateway Protocol (BGP), a többhelyes kapcsolatok és a pont – hely kapcsolatok.
 
-Az Azure-beli VPN-átjárók rugalmasságot biztosítanak szinte bármilyen csatlakoztatott Virtual Network (VNet) topológia megszervezésében az Azure-ban: a virtuális hálózatok különböző régiókban, VNet-típusok között (Azure Resource Manager és Klasszikus), az Azure-ban vagy a helyszíni hibrid környezettel, különböző előfizetésekben és így tovább. 
+Az Azure VPN Gateways lehetővé teszi a rugalmasságot az Azure-ban szinte bármilyen csatlakoztatott virtuális hálózati topológia megszervezésében. Például a virtuális hálózatok összekapcsolhatók:
 
-## <a name="scenario-1-vnet-to-vnet-vpn-connection"></a>forgatókönyv 1: VNet – VNet VPN-kapcsolat
+- Régiók között.
+- A virtuális hálózati típusok (Azure Resource Manager és a klasszikus) között.
+- Az Azure-ban vagy egy helyszíni hibrid környezeten belül.
+- Különböző előfizetésekben. 
 
-A virtuális hálózat VPN-kapcsolaton keresztüli csatlakoztatása egy másik virtuális hálózathoz (VNet – VNet) hasonló ahhoz, hogy egy VNet egy helyszíni helyhez kapcsolódjon. Mindkét kapcsolattípus VPN-átjárót használ a biztonságos alagút biztosításához az **IPSec/IKE**használatával. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben.
+## <a name="network-to-network-vpn-connection"></a>Hálózat – hálózat közötti VPN-kapcsolat
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
+A virtuális hálózatok VPN-kapcsolaton keresztüli másik virtuális hálózathoz (hálózat – hálózat) való csatlakoztatása hasonló a virtuális hálózat helyszíni helyhez való csatlakoztatásához. Mindkét kapcsolattípus VPN-átjárót használ a biztonságos alagút biztosításához az IPsec és az IKE használatával. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben.
+
+![Hálózatok közötti hálózati kapcsolatok IPsec-sel](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
  
-1\. ábra – VNet és VNet az IPsec használatával
+Ha a virtuális hálózatok ugyanabban a régióban találhatók, érdemes lehet megfontolni a csatlakozást a virtuális hálózati kapcsolatok használatával. A virtuális hálózat társítása nem használ VPN-átjárót. Növeli az átviteli sebességet, és csökkenti a késést. A virtuális hálózati társ-összekapcsolási kapcsolatok konfigurálásához válassza a **VNet-társítás konfigurálása és érvényesítése**lehetőséget.
 
-Ha a virtuális hálózatok ugyanabban a régióban vannak, érdemes megfontolni, hogy a VNet-társítással kapcsolódjon hozzájuk, amely nem VPN-átjárót használ, növeli az átviteli sebességet, és csökkenti a késést, válassza a VNet-társítás **konfigurálása és érvényesítése** a VNet-társítás konfigurálásához lehetőséget. kapcsolat.
+Ha a virtuális hálózatok az Azure Resource Manger-alapú üzemi modellel lettek létrehozva, válassza a **Resource Manager-VNet konfigurálása és érvényesítése Resource Manager-VNet kapcsolattal** a VPN-kapcsolat konfigurálását.
 
-Ha a virtuális hálózatok az Azure Resource Manger-alapú üzemi modellel is létrehozták, akkor válassza a **Resource Manager-VNet konfigurálása és ellenőrzése Resource Manager VNet-kapcsolaton** lehetőséget a VPN-kapcsolat konfigurálásához.
+Ha a virtuális hálózatok egyike a klasszikus Azure üzemi modellel lett létrehozva, és a másik a Resource Managerrel lett létrehozva, akkor válassza a **klasszikus VNet konfigurálása és ellenőrzése Resource Manager VNet-kapcsolaton** lehetőséget a VPN-kapcsolat konfigurálásához.
 
-Ha az egyik virtuális hálózatok-t a klasszikus Azure üzemi modellel hozza létre, a másikat a Resource Manager hozza létre, válassza a **klasszikus VNet konfigurálása és ellenőrzése Resource Manager VNet-kapcsolaton** lehetőséget a VPN-kapcsolat konfigurálásához.
+### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>Virtuális hálózati társítás konfigurálása két virtuális hálózat között ugyanabban a régióban
 
-### <a name="configuration-1-configure-vnet-peering-for-two-vnets-in-the-same-region"></a>1\. konfiguráció: VNet-társítás konfigurálása két virtuális hálózatok ugyanabban a régióban
-
-Az Azure VNet-társítás megvalósításának megkezdése előtt győződjön meg arról, hogy megfelel a következő előfeltételeknek a VNet-társítás konfigurálásához:
+Mielőtt megkezdené az Azure-beli virtuális hálózatok társításának megvalósítását és konfigurálását, győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:
 
 * A virtuális társhálózatoknak ugyanabban az Azure-régióban kell lenniük.
-* A társ virtuális hálózatoknak egymást nem fedő IP-címmel kell rendelkezniük.
-* A virtuális hálózati társviszony két virtuális hálózat között jön létre. Nincs származtatott tranzitív kapcsolat a különböző társítások között. Ha például az A virtuális hálózat társviszonyban áll a B virtuális hálózattal, és a B hálózat társviszonyban áll a C virtuális hálózattal, az *nem* jelenti azt, hogy társviszony van az A virtuális hálózat és a C virtuális hálózat között.
+* A társ virtuális hálózatoknak olyan IP-címtartomány szükségesek, amelyek nem fedik át egymást.
+* A virtuális hálózati társviszony két virtuális hálózat között jön létre. Nincs származtatott tranzitív kapcsolat a különböző társítások között. Ha például a Társviszonyban áll a b-mel van társítva, és a b a VNetC-vel van társítva, akkor a Társviszonyban áll *nem* kapcsolódik a VNetC.
 
-A követelmények teljesítése után a VNet-társítás létrehozásához és konfigurálásához kövesse [a virtuális hálózat társításának létrehozása oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) .
+A követelmények teljesítése után kövesse [az oktatóanyagot: A virtuális hálózatok összekapcsolásához a Azure Portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) segítségével hozzon létre és konfiguráljon a társítást a virtuális hálózatokkal.
 
-A VNet-társítás konfigurációjának vizsgálatához használja a következő módszereket:
+A társítás konfigurációjának vizsgálatához használja a következő metódust:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions).
-2. A Azure Portal tetején található szöveges *keresési erőforrásokat* tartalmazó mezőbe írja be a következőt: *Virtual Networks (virtuális hálózatok*). Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, kattintson rá.
-3. A megjelenő **Virtual Networks (virtuális hálózatok** ) panelen kattintson arra a virtuális hálózatra, amelyhez a társítást létre kívánja hozni.
-4. A kiválasztott virtuális hálózatban megjelenő ablaktáblán kattintson a **Beállítások** szakaszban található társítások **elemre** .
-5. Kattintson arra a társra, amelynél ellenőriznie szeretné a konfigurációt.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](virtual-network-manage-peering.md#permissions).
+2. A portál felső részén található szöveges **keresési erőforrásokat** tartalmazó mezőbe írja be a következőt: **Virtual Networks (virtuális hálózatok**). Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
+3. A megjelenő **Virtual Networks (virtuális hálózatok** ) panelen válassza ki azt a virtuális hálózatot, amelyhez létre kíván hozni egy társítást.
+4. A virtuális hálózatban megjelenő ablaktáblán válassza a **Beállítások** **szakaszban található** társítások lehetőséget.
+5. Válasszon ki egy társítást, és tekintse meg a konfigurációs eredményeket.
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
+![A virtuális hálózat társítási konfigurációjának ellenőrzéséhez kiválasztott beállítások](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Az Azure PowerShell használatával futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez, például:
+Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Például:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -84,187 +87,178 @@ RemoteGateways                   : null
 RemoteVirtualNetworkAddressSpace : null
 ```
 
-### <a name="connection-type-1-connect-a-resource-manager-vnet-to-anther-resource-manager-vnet-azure-resource-manager-to-azure-resource-manager"></a>1\. kapcsolattípus: Resource Manager-VNet összekötése a portok Resource Manager-VNet (Azure Resource Manager Azure Resource Manager)
+### <a name="connect-a-resource-manager-virtual-network-to-another-resource-manager-virtual-network"></a>Resource Manager-beli virtuális hálózat összekötése egy másik Resource Manager virtuális hálózattal
 
-Az egyik Resource Manager-VNet közötti kapcsolatokat közvetlenül is konfigurálhatja egy másik Resource Manager-VNet, vagy konfigurálhatja a kapcsolódást az IPsec használatával.
+Az egyik Resource Manager-beli virtuális hálózatról egy másik Resource Manager-beli virtuális hálózathoz is beállíthat kapcsolatokat. Vagy az IPsec használatával is konfigurálhatja a kapcsolatokat.
 
-### <a name="configuration-2-configure-vpn-connection-between-resource-manager-vnets"></a>2\. konfiguráció: A VPN-kapcsolat konfigurálása Resource Manager-virtuális hálózatok között
+### <a name="configure-a-vpn-connection-between-resource-manager-virtual-networks"></a>VPN-kapcsolat konfigurálása Resource Manager-alapú virtuális hálózatok között
 
-Ha az IPsec nélküli Resource Manager-virtuális hálózatok közötti kapcsolatot szeretne konfigurálni, tekintse meg a következőt: [VNet-to-VNET VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+Ha az IPsec nélküli Resource Manager-alapú virtuális hálózatok közötti kapcsolatot szeretne konfigurálni, tekintse meg a [hálózat – hálózat közötti VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)című témakört.
 
-Ha két Resource Manager-virtuális hálózatok között IPsec-kapcsolatot szeretne konfigurálni, kövesse 1-5 az egyes VNet [Azure Portal helyek közötti kapcsolat létrehozása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) című szakaszát.
-
-> [!Note]
-> Ezek a lépések csak egyazon előfizetésben lévő virtuális hálózatokkal működnek. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, a kapcsolatot a PowerShell használatával kell létrehozni. Lásd a [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)-re vonatkozó cikket.
-
-### <a name="validate-vpn-connection-between-resource-manager-vnets"></a>A Resource Manager virtuális hálózatok közötti VPN-kapcsolat ellenőrzése
-
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
-
-4\. ábra – klasszikus VNet-kapcsolatok Azure Resource Manager VNet
-
-A VPN-kapcsolat megfelelő konfigurálásának ellenőrzéséhez kövesse az alábbi utasításokat:
+Ha két Resource Manager-alapú virtuális hálózat között szeretne IPsec-kapcsolatot konfigurálni, hajtsa végre az 1 – 5. lépést a [helyek közötti kapcsolat létrehozása a Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) az egyes virtuális hálózatok esetében.
 
 > [!Note]
-> A virtuális hálózati összetevők, például az alábbi lépések "vnet 1" utáni száma a 4. ábrán szereplő számoknak felel meg.
+> Ezek a lépések csak az azonos előfizetésben lévő virtuális hálózatok esetében működnek. Ha a virtuális hálózatok különböző előfizetésekben találhatók, a kapcsolódáshoz a PowerShellt kell használnia. Lásd a [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)-re vonatkozó cikket.
 
-1. A csatlakoztatott virtuális hálózatok található átfedésben lévő címek keresése.
+### <a name="validate-the-vpn-connection-between-resource-manager-virtual-networks"></a>A VPN-kapcsolat ellenőrzése Resource Manager-alapú virtuális hálózatok között
 
-   > [!Note]
-   > A vnet 1 és a vnet 6 nem tartalmazhat átfedésben lévő címeket. 
+![Klasszikus virtuális hálózati kapcsolódás Azure Resource Manager virtuális hálózathoz](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
 
-2. Ellenőrizze, hogy Azure Resource Manager vnet 1 címtartomány pontosan van-e definiálva a 4. **összekötő objektumban** .
-3. Ellenőrizze, hogy Azure Resource Manager vnet 6 címtartomány pontosan van-e definiálva a 3. **objektumban** .
-4. Ellenőrizze, hogy az előmegosztott kulcsok megfelelnek-e a 3. és a 4. összekapcsolási objektumoknak.
-5. Ellenőrizze, hogy az Azure Resource Manager vnet Gateway 2 VIP-je pontosan van-e definiálva a 4. **összekötő objektumban** .
-6. Ellenőrizze, hogy a Azure Resource Manager vnet-átjáró 5 VIP-je pontosan van-e definiálva a 3. **összekötő objektumban** .
+A VPN-kapcsolat megfelelő konfigurálásának ellenőrzéséhez kövesse az alábbi utasításokat.
 
-### <a name="connection-type-2-connect-a-classic-vnet-to-a-resource-manager-vnet"></a>2\. kapcsolattípus: Hagyományos és erőforrás-kezelői virtuális hálózatok csatlakoztatása
+> [!Note] 
+> A fenti lépésekben szereplő virtuális hálózati összetevők száma az előző ábrán szereplő számoknak felel meg.
 
-Létrehozhat egy kapcsolatot a különböző előfizetésekben és különböző régiókban található virtuális hálózatok között. Olyan virtuális hálózatok is csatlakozhat, amelyek már rendelkeznek kapcsolattal a helyszíni hálózatokkal, feltéve, hogy az átjáró típusát Route-alapúként konfigurálták.
+1. Győződjön meg arról, hogy nincs átfedésben lévő címterület a csatlakoztatott virtuális hálózatokban.
+2. Győződjön meg arról, hogy a Azure Resource Manager virtuális hálózat (1) címtartomány pontosan van definiálva a (4) **Kapcsolatfájl** -példányban.
+3. Győződjön meg arról, hogy a Azure Resource Manager virtuális hálózat (6) címtartomány pontosan van definiálva a (3) **kapcsolattípus** -példányban.
+4. Ellenőrizze, hogy az előmegosztott kulcsok megfelelnek-e a kapcsolatok objektumainak.
+5. Győződjön meg arról, hogy a virtuális hálózati átjáró (2) Azure Resource Manager pontosan van definiálva a (4) **Kapcsolatfájl** -példányban.
+6. Győződjön meg arról, hogy a virtuális hálózati átjáró (5) Azure Resource Manager pontosan van definiálva a (3) **kapcsolattípus** -példányban.
 
-A klasszikus VNet és a Resource Manager-VNet közötti kapcsolat konfigurálásával kapcsolatban lásd: [a virtuális hálózatok összekapcsolása különböző üzemi modellekkel a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal) további információért.
+### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Klasszikus virtuális hálózat összekötése Resource Manager-alapú virtuális hálózattal
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+Létrehozhat egy kapcsolatot a különböző előfizetésekben és különböző régiókban található virtuális hálózatok között. Emellett olyan virtuális hálózatokat is összekapcsolhat, amelyek már rendelkeznek kapcsolattal a helyszíni hálózatokkal, feltéve, hogy az átjáró típusát Route-alapúként konfigurálta.
 
-5\. ábra – klasszikus VNet-kapcsolatok Azure Resource Manager VNet
+Egy klasszikus virtuális hálózat és egy Resource Manager-alapú virtuális hálózat közötti kapcsolat konfigurálásához lásd: [a virtuális hálózatok összekapcsolása különböző üzemi modellekkel a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
 
-A klasszikus VNet Azure Resource Manager VNet való összekapcsolásához kövesse az alábbi utasításokat:
+![Klasszikus virtuális hálózati kapcsolódás Azure Resource Manager virtuális hálózathoz](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
-> [!Note]
-> A virtuális hálózati összetevők, például az alábbi lépések "vnet 1" utáni száma az 5. ábrán szereplő számoknak felel meg.
+Ha a klasszikus virtuális hálózat Azure Resource Manager virtuális hálózathoz való összekapcsolásakor szeretné megtekinteni a konfigurációt, kövesse az alábbi utasításokat.
 
-1. A csatlakoztatott virtuális hálózatok található átfedésben lévő címek keresése.
+> [!Note] 
+> A fenti lépésekben szereplő virtuális hálózati összetevők száma az előző ábrán szereplő számoknak felel meg. 
 
-   > [!Note]
-   > A vnet 1 és a vnet 6 nem tartalmazhat átfedésben lévő címeket.
+1. Győződjön meg arról, hogy nincs átfedésben lévő címterület a csatlakoztatott virtuális hálózatokban.
+2. Ellenőrizze, hogy a Azure Resource Manager virtuális hálózat (6) címtartomány pontosan van-e meghatározva a klasszikus helyi hálózat definíciójában (3).
+3. Győződjön meg arról, hogy a klasszikus virtuális hálózat (1) címtartomány pontosan van definiálva a Azure Resource Manager a következőhöz: **kapcsolatbiztonsági** példány (4).
+4. Győződjön meg arról, hogy a klasszikus virtuális hálózati átjáró (2) pontosan van definiálva a Azure Resource Manager a következőhöz: **kapcsolatbiztonsági** példány (4).
+5. Győződjön meg arról, hogy a virtuális hálózati átjáró (5) Azure Resource Manager pontosan van definiálva a klasszikus **helyi hálózati definíciós** példányban (3).
+6. Ellenőrizze, hogy az előmegosztott kulcsok megfelelőek-e a csatlakoztatott virtuális hálózatokon:
+   - Klasszikus virtuális hálózat: **Helyi hálózat definíciója** 3
+   - Azure Resource Manager virtuális hálózat: **Kapcsolatok objektum** 4
 
-2. Ellenőrizze, hogy Azure Resource Manager VNet 6 címtartomány pontosan van-e meghatározva a klasszikus helyi hálózati definícióban 3.
-3. Ellenőrizze, hogy a klasszikus VNet 1 címtartomány pontosan van-e definiálva a (Azure Resource Manager) 4. **összekötő objektumban** .
-4. Győződjön meg arról, hogy a klasszikus VNet-átjáró 2 VIP-je pontosan van definiálva a (Azure Resource Manager) 4. **összekötő objektumban** .
-5. Ellenőrizze, hogy a Azure Resource Manager VNet-átjáró 5 VIP-je pontosan van-e meghatározva a klasszikus **helyi hálózati definícióban** 3.
-6. Ellenőrizze, hogy az előmegosztott kulcsok megfelelnek-e mindkét csatlakoztatott virtuális hálózatok:
-   1. Klasszikus vnet – helyi hálózati definíció 3
-   2. Azure Resource Manager vnet – 4. összekötő objektum
+## <a name="create-a-point-to-site-vpn-connection"></a>Pont – hely típusú VPN-kapcsolat létrehozása
 
-## <a name="scenario-2-point-to-site-vpn-connection"></a>2\. forgatókönyv: Pont – hely típusú VPN-kapcsolat
+A pont – hely kapcsolat (a következő ábrán látható*P2S* ) konfigurálásával biztonságos kapcsolat hozható létre egy adott ügyfélszámítógépről egy virtuális hálózatra. A pont – hely kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy konferenciáról. Emellett akkor is hasznosak, ha csak néhány ügyfelet szeretne virtuális hálózathoz csatlakozni. 
 
-A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolatok akkor hasznosak, ha egy távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról, vagy akkor, ha csak néhány ügyfelet szeretne csatlakoztatni egy virtuális hálózathoz. A P2S VPN kapcsolatot az ügyfélszámítógépről kezdeményezik a natív Windows VPN-ügyfél használatával. Az ügyfelek hitelesítése a kapcsolódáskor tanúsítványokkal történik.
+A pont – hely VPN-kapcsolat az ügyfélszámítógépről a natív Windows VPN-ügyfélen keresztül kezdeményezhető. Az ügyfelek hitelesítése a kapcsolódáskor tanúsítványokkal történik.
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034387_en_3.png)
+![Pont–hely kapcsolat](./media/virtual-network-configure-vnet-connections/4034387_en_3.png)
 
-2\. ábra – pont – hely kapcsolat
+A pont – hely kapcsolatokhoz nem szükséges VPN-eszköz. A VPN-kapcsolat létrehozása a Secure Socket Tunneling Protocol (SSTP) protokollal történik. A pont – hely kapcsolat egy virtuális hálózathoz különböző üzembe helyezési eszközök és üzembe helyezési modellek használatával kapcsolódhat:
 
-A pont – hely kapcsolatokhoz nem szükséges VPN-eszköz. A P2S-kapcsolat SSTP (Secure Socket Tunneling Protocol) használatával hozza létre a VPN-kapcsolatot. A pont – hely kapcsolat összekapcsolható egy VNet egy másik üzembe helyezési eszköz és telepítési modell használatával:
+* [Pont – hely kapcsolat konfigurálása egy virtuális hálózathoz a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Pont – hely kapcsolat konfigurálása egy virtuális hálózathoz a Azure Portal (klasszikus) használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
+* [Pont – hely kapcsolat konfigurálása egy virtuális hálózathoz a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
-* [Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Pont – hely kapcsolat konfigurálása VNet a Azure Portal (klasszikus) használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
-* [Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-
-### <a name="validate-your-point-to-site-connections"></a>Pont – hely kapcsolatok ellenőrzése
+### <a name="validate-your-point-to-site-connection"></a>Pont – hely kapcsolat ellenőrzése
 
 A cikk [hibaelhárítása: Az Azure pont – hely kapcsolati problémák](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) a pont – hely kapcsolatokkal kapcsolatos gyakori problémákon haladnak végig.
 
-## <a name="scenario-3-multi-site-vpn-connection"></a>3\. forgatókönyv: Többhelyes VPN-kapcsolat
+## <a name="create-a-multisite-vpn-connection"></a>Többhelyes VPN-kapcsolat létrehozása
 
-Hozzáadhat egy helyek közötti (S2S) kapcsolatokat egy olyan VNet, amely már rendelkezik S2S-kapcsolattal, pont – hely kapcsolattal vagy VNet – VNet kapcsolattal, ez a fajta kapcsolat gyakran **többhelyes** konfigurációként is ismert. 
+A helyek közötti kapcsolat (*S2S* a következő ábrán) használatával hozzáadhat egy olyan virtuális hálózathoz, amely már rendelkezik helyek közötti kapcsolattal, pont – hely kapcsolattal vagy hálózat – hálózat kapcsolattal. Ezt a fajta kapcsolatot gyakran *többhelyes* konfigurációnak nevezik. 
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
+![Többhelyes kapcsolat](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
-3\. ábra – többhelyes kapcsolat
+Az Azure jelenleg két üzembe helyezési modellel működik: Resource Manager és klasszikus. A két modell nem teljesen kompatibilis egymással. Ha többhelyes kapcsolatokat szeretne konfigurálni különböző modellekkel, tekintse meg a következő cikkeket:
 
-Az Azure jelenleg két üzembe helyezési modellel működik: Resource Manager és klasszikus. A két modell nem teljesen kompatibilis egymással. A **többhelyes** kapcsolat különböző modellekkel való konfigurálásához olvassa el a következő cikkeket:
-
-* [Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
-* [Helyek közötti kapcsolat hozzáadása egy VNet meglévő VPN Gateway-kapcsolattal (klasszikus)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
+* [Helyek közötti kapcsolat hozzáadása egy virtuális hálózathoz meglévő VPN Gateway-kapcsolattal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
+* [Helyek közötti kapcsolat hozzáadása egy virtuális hálózathoz meglévő VPN Gateway-kapcsolattal (klasszikus)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
 
 > [!Note]
-> Ezek a lépések nem vonatkoznak a ExpressRoute és a helyek közötti egyidejű kapcsolati konfigurációkra. További információ a meglévő kapcsolatokról: [ExpressRoute/S2S](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)egyidejű kapcsolatok.
+> Az ezekben a cikkekben szereplő lépések nem vonatkoznak az Azure ExpressRoute és a helyek közötti meglévő kapcsolati konfigurációkra. További információ: [ExpressRoute és helyek közötti egyidejű kapcsolatok](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
 
-## <a name="scenario-4-configure-transit-routing"></a>4\. forgatókönyv: Tranzit útválasztás konfigurálása
+## <a name="configure-transit-routing"></a>Tranzit útválasztás konfigurálása
 
-A tranzitív útválasztás egy adott útválasztási forgatókönyv, amelyben több hálózat is csatlakoztatható egy "Daisy Chain" topológiában. Ez az Útválasztás lehetővé teszi, hogy a "lánc" végén a virtuális hálózatok-ban lévő erőforrások egymással kommunikáljanak egymással a virtuális hálózatok között. A tranzitív útválasztás nélkül a hub-on keresztül megjelenő hálózatok vagy eszközök nem tudnak egymáshoz jutni.
+A tranzit útválasztás egy adott útválasztási forgatókönyv, amelyben több hálózat is csatlakoztatható egy Daisy láncú topológiában. Ez az Útválasztás lehetővé teszi, hogy a lánc végén lévő virtuális hálózatok erőforrásai egymással kommunikáljanak egymással a (z) közötti virtuális hálózatok használatával. Az átirányítási útválasztás nélkül a hub-on keresztül megjelenő hálózatok vagy eszközök nem tudnak egymáshoz jutni.
 
-### <a name="configuration-1-configure-transit-routing-in-a-point-to-site-connection"></a>1\. konfiguráció: Tranzit útválasztás konfigurálása pont – hely kapcsolaton
+### <a name="configure-transit-routing-in-a-point-to-site-connection"></a>Tranzit útválasztás konfigurálása pont – hely kapcsolaton
 
-Ebben a forgatókönyvben a helyek közötti VPN-kapcsolatot konfigurálja a Társviszonyban áll és a b között, továbbá egy pont – hely VPN-t is konfigurálhat az ügyfél számára a Társviszonyban áll-átjáróhoz való csatlakozáshoz. Ezt követően engedélyezni szeretné a pont – hely típusú ügyfelek számára a b-hez való kapcsolódáshoz szükséges tranzit útválasztást, amely áthalad a Társviszonyban áll. Ez a forgatókönyv akkor támogatott, ha a BGP engedélyezve van a helyen a Társviszonyban áll és a b közötti VPN-kapcsolaton. További információ: [a pont – hely VPN-útválasztás](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing).
+Képzelje el, hogy egy helyek közötti VPN-kapcsolatot szeretne konfigurálni a Társviszonyban áll és a b között. Emellett egy pont – hely típusú VPN-t is konfigurálnia kell az ügyfél számára a Társviszonyban áll átjáróhoz való csatlakozáshoz. Ezt követően engedélyezni szeretné a pont – hely típusú ügyfelek számára a b-hez való kapcsolódáshoz szükséges tranzit útválasztást, amely áthalad a Társviszonyban áll. 
 
-### <a name="configuration-2-configure-transit-routing-in-an-expressroute-connection"></a>2\. konfiguráció: ExpressRoute-kapcsolat átviteli útvonalának konfigurálása
+Ez a forgatókönyv akkor támogatott, ha a BGP engedélyezve van a helyek közötti VPN-en a Társviszonyban áll és a b között. További információ: [a pont – hely VPN-útválasztás](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing).
 
-A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.  További információ: [ExpressRoute – áttekintés](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+### <a name="configure-transit-routing-in-an-expressroute-connection"></a>ExpressRoute-kapcsolat átviteli útvonalának konfigurálása
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
+Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365. További információ: [ExpressRoute – áttekintés](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
-6\. ábra – a "privát ExpressRoute" kapcsolódás az Azure virtuális hálózatok
-
-> [!Note]
-> Azt javasoljuk, hogy ha a Társviszonyban áll és a b ugyanabban a geopolitikai régióban legyenek, amelyet a [ExpressRoute-áramkörhöz](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) is csatlakoztatni kell a tranzitív útválasztás konfigurálása helyett. Ha a virtuális hálózatok különböző geopolitikai régiókban vannak, akkor közvetlenül is összekapcsolhatja őket az áramkörrel, ha [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)van. 
-
-Ha a ExpressRoute és a helyek közötti párhuzamos tárolással rendelkezik, a tranzit útválasztás nem támogatott. További információ: [a ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
-
-Ha engedélyezte a ExpressRoute számára a helyi hálózatok Azure-beli virtuális hálózathoz való összekapcsolását, akkor engedélyezheti a VNet a tranzitív útválasztást igénylő virtuális hálózatok között. Annak engedélyezéséhez, hogy a helyi hálózatok csatlakozzanak a távoli VNet, konfigurálnia kell a [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)társítást. 
+![ExpressRoute az Azure-beli virtuális hálózatokhoz](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 
 > [!Note]
-> A VNet-társítás csak ugyanabban a régióban található virtuális hálózatok érhető el.
+> Azt javasoljuk, hogy ha a Társviszonyban áll és a b ugyanabban a geopolitikai régióban vannak, akkor a [virtuális hálózatokat a ExpressRoute-áramkörhöz](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) is csatlakoztathatja az átviteli útválasztás konfigurálása helyett. Ha a virtuális hálózatok különböző geopolitikai régiókban találhatók, akkor közvetlenül is összekapcsolhatja őket az áramkörhöz, ha [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)van. 
 
-Kövesse az alábbi utasításokat, hogy meggyőződjön arról, hogy konfigurálta-e a VNet-társítás továbbítási útvonalát:
+Ha a ExpressRoute és a helyek közötti párhuzamos tárolással rendelkezik, a tranzit útválasztás nem támogatott. További információ: a [ExpressRoute és a helyek közötti kapcsolat konfigurálása a PowerShell használatával](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions).
-2. [Hozzon létre egy társítást az a és B VNet között](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) a korábbi diagramhoz hasonlóan (6. ábra). 
-3. A kiválasztott virtuális hálózatban megjelenő ablaktáblán kattintson a **Beállítások** szakaszban **található** társítások elemre.
-4. Kattintson a megtekinteni és **konfigurálni** kívánt társításra annak ellenőrzéséhez, hogy engedélyezve van-e az **átjáró továbbítása** az ExpressRoute-áramkörhöz csatlakoztatott társviszonyban áll, és használja a távoli **átjárót** a távoli b, amely nem csatlakozik a ExpressRoute kapcsolatcsoport.
-
-### <a name="configuration-3-configure-transit-routing-in-a-vnet-peering-connection"></a>3\. konfiguráció: VNet-társítási kapcsolat átviteli útvonalának konfigurálása
-
-Ha két virtuális hálózat között társhálózati viszony van, a virtuális társhálózatban működő átjáró is konfigurálható átviteli pontként a helyi hálózat felé. A VNet-társítás átviteli útvonalának konfigurálásához keresse meg a [virtuális hálózat – virtuális hálózati kapcsolatok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json)csomópontot.
+Ha engedélyezte a ExpressRoute számára a helyi hálózatok Azure-beli virtuális hálózathoz való összekapcsolását, akkor engedélyezheti a társítást azok között a virtuális hálózatok között, amelyeken át szeretné irányítani az átviteli útválasztást. Ha engedélyezni szeretné a helyi hálózatok számára a távoli virtuális hálózathoz való kapcsolódást, konfigurálnia kell a [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)társítást. 
 
 > [!Note]
-> Az átjáró átvitele nem támogatott a különböző üzembe helyezési modelleken keresztül létrehozott virtuális hálózatok közötti társítási kapcsolaton. Ahhoz, hogy az átjárón át történő átvitel működjön, a társviszonyban álló virtuális hálózatok közül mindkettőt a Resource Manager-alapú üzemi modellel kell létrehozni.
+> A virtuális hálózat társítása csak az azonos régióban található virtuális hálózatok esetében érhető el.
 
-Kövesse az alábbi utasításokat, hogy meggyőződjön arról, hogy konfigurálta-e a VNet-társítás továbbítási útvonalát:
+Kövesse az alábbi utasításokat, hogy meggyőződjön arról, hogy konfigurálta-e az átviteli útválasztást a virtuális hálózatokhoz:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions).
-2. A Azure Portal tetején található szöveges keresési erőforrásokat tartalmazó mezőbe írja be a következőt: *Virtual Networks (virtuális hálózatok*). Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, kattintson rá.
-3. A megjelenő **Virtual Networks (virtuális hálózatok** ) panelen kattintson arra a virtuális hálózatra, amelyen meg szeretné nézni a társítási beállítást.
-4. A kiválasztott virtuális hálózatban megjelenő ablaktáblán kattintson a **Beállítások** szakaszban **található** társítások elemre.
-5. Kattintson a megtekinteni kívánt társításra, és ellenőrizze, hogy engedélyezve van-e az **átjárók átvitelének engedélyezése** és **távoli átjáró használata** a **konfiguráció**alatt.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](virtual-network-manage-peering.md#permissions).
+2. [Hozzon létre egy társítást a társviszonyban áll és a b között](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) a korábbi ábrán látható módon. 
+3. A virtuális hálózatban megjelenő ablaktáblán válassza a **Beállítások** **szakaszban található** társítások lehetőséget.
+4. Válassza ki a megtekinteni kívánt társat. Ezután válassza a **konfiguráció** elemet annak ellenőrzéséhez, hogy engedélyezve van-e az **átjáró továbbítása** az ExpressRoute-áramkörhöz csatlakoztatott társviszonyban áll hálózaton, és a távoli b hálózat **távoli átjáró használata** a ExpressRoute nem csatlakozik kapcsolatcsoport.
 
-![LEMEZKÉP](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
+### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Átviteli útválasztás konfigurálása virtuális hálózati társ-létrehozási kapcsolaton belül
 
-### <a name="configuration-4-configure-transit-routing-in-a-vnet-to-vnet-connection"></a>4\. konfiguráció: VNet-VNet kapcsolat átviteli útvonalának konfigurálása
-
-A virtuális hálózatok közötti átviteli útválasztás konfigurálásához engedélyeznie kell a BGP-t az összes köztes VNet-VNet kapcsolaton a Resource Manager-alapú üzemi modell és a PowerShell használatával. Útmutatásért lásd: a [BGP konfigurálása az Azure VPN Gatewayn a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
-
-Az Azure VPN gatewayen keresztüli átmenő forgalom a klasszikus üzemi modell használatával lehetséges, de a hálózati konfigurációs fájlban statikusan definiált címekre támaszkodik. A BGP még nem támogatott az Azure Virtual Networks és a VPN Gateway használatával a klasszikus üzemi modellel. A BGP nélkül az átviteli címterület manuális definiálása hibás, és nem ajánlott.
+Ha két virtuális hálózat között társhálózati viszony van, a virtuális társhálózatban működő átjáró is konfigurálható átviteli pontként a helyi hálózat felé. A virtuális hálózati társítások átviteli útvonalának konfigurálásához lásd: [hálózat – hálózati kapcsolatok](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json).
 
 > [!Note]
-> A klasszikus VNet-VNet kapcsolatok az Azure Portal (klasszikus) vagy egy hálózati konfigurációs fájl használatával konfigurálhatók a klasszikus portálon. Klasszikus virtuális hálózat nem hozható létre és nem módosítható a Azure Resource Manager üzemi modell vagy Azure Portal használatával. További információ a klasszikus virtuális hálózatok átmenő útválasztásról: [Hub & küllő, Daisy-Chain és Full-Mesh VNET-topológiák az Azure ARM-ben VPN (v1) használatával](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> Az átjáró átvitele nem támogatott a különböző üzembe helyezési modelleken keresztül létrehozott virtuális hálózatok közötti társítási kapcsolaton. A társítási kapcsolaton belül mindkét virtuális hálózatot létre kell hozni a Resource Manageren keresztül az átjáró működéséhez.
 
-### <a name="configuration-5-configure-transit-routing-in-a-site-to-site-connection"></a>5\. konfiguráció: Az átviteli útválasztás konfigurálása helyek közötti kapcsolaton keresztül
+Kövesse az alábbi utasításokat, hogy meggyőződjön arról, hogy konfigurált-e átviteli útvonalat a virtuális hálózatokhoz:
 
-A helyszíni hálózat és a helyek közötti kapcsolattal rendelkező VNet közötti átviteli útválasztás konfigurálásához engedélyeznie kell a BGP-t az összes köztes helyek közötti kapcsolathoz a Resource Manager-alapú üzemi modell és a PowerShell használatával: [Konfigurálás BGP az Azure VPN Gateway átjárón a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) az utasításokhoz.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](virtual-network-manage-peering.md#permissions).
+2. A portál felső részén található szöveges **keresési erőforrásokat** tartalmazó mezőbe írja be a következőt: **Virtual Networks (virtuális hálózatok**). Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
+3. A megjelenő **Virtual Networks (virtuális hálózatok** ) panelen válassza ki azt a virtuális hálózatot, amelynek meg szeretné nézni a társítási beállításait.
+4. A kiválasztott virtuális hálózathoz megjelenő ablaktáblán válassza a **Beállítások** **szakaszban található** társítások lehetőséget.
+5. Válassza ki a megtekinteni kívánt társítást. Ellenőrizze, hogy engedélyezve van-e az **átjárók átvitelének engedélyezése** és **távoli átjárók használata** a **konfiguráció**alatt.
 
-Az Azure VPN gatewayen keresztüli átmenő forgalom a klasszikus üzemi modell használatával lehetséges, de a hálózati konfigurációs fájlban statikusan definiált címekre támaszkodik. A BGP még nem támogatott az Azure Virtual Networks és a VPN Gateway használatával a klasszikus üzemi modellel. A BGP nélkül az átviteli címterület manuális definiálása hibás, és nem ajánlott.
+![Kiválasztás annak ellenőrzéséhez, hogy van-e átviteli útvonal konfigurálva a virtuális hálózatokhoz](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
+
+### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Átviteli útválasztás konfigurálása hálózat – hálózat kapcsolatba
+
+A virtuális hálózatok közötti átviteli útválasztás konfigurálásához engedélyeznie kell a BGP-t az összes köztes hálózat – hálózat kapcsolathoz a Resource Manager-alapú üzemi modell és a PowerShell használatával. Útmutatásért lásd: a [BGP konfigurálása az Azure VPN Gatewayn a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
+
+Az Azure VPN Gateway átjárón keresztüli átmenő forgalom a klasszikus üzemi modellen keresztül lehetséges, de a hálózati konfigurációs fájlban a statikusan definiált címekre támaszkodik. A BGP még nem támogatott az Azure Virtual Networks és a VPN Gateway használatával a klasszikus üzemi modellen keresztül. A BGP nélkül az átviteli címterület manuális definiálása hibás, ezért nem ajánlott.
 
 > [!Note]
-> A klasszikus helyek közötti kapcsolatok a Azure Portal (klasszikus) vagy egy hálózati konfigurációs fájl használatával konfigurálhatók a klasszikus portálon. Klasszikus virtuális hálózat nem hozható létre és nem módosítható a Azure Resource Manager üzemi modell vagy Azure Portal használatával. További információ a klasszikus virtuális hálózatok átmenő útválasztásról: [Hub & küllő, Daisy-Chain és Full-Mesh VNET-topológiák az Azure ARM-ben VPN (v1) használatával](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> A klasszikus hálózat – hálózat kapcsolatokat a klasszikus Azure portál használatával, vagy a klasszikus portál hálózati konfigurációs fájljának használatával konfigurálhatja. Klasszikus virtuális hálózat nem hozható létre és nem módosítható a Azure Resource Manager üzemi modell vagy a Azure Portal használatával. A klasszikus virtuális hálózatok tranzit útválasztásával kapcsolatos további információkért tekintse meg a [Microsoft fejlesztői blogját](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
 
-## <a name="scenario-5-configure-bgp-for-a-vpn-gateway"></a>5\. forgatókönyv: BGP konfigurálása egy VPN-átjáró számára
+### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Az átviteli útválasztás konfigurálása helyek közötti kapcsolaton keresztül
 
-A BGP az interneten használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információk két vagy több hálózat közötti cseréjéhez. Ha a BGP az Azure Virtual Networks környezetében használatos, a BGP lehetővé teszi az Azure VPN Gateway és a helyszíni VPN-eszközök, azaz a BGP-társak vagy a szomszédok használatát. Ők cserélik az "útvonalakat", amely tájékoztatja mindkét átjárót az előtagok rendelkezésre állásáról és elérhetőségéről, hogy átmenjen az érintett átjárók vagy útválasztók között. A BGP lehetővé teszi a több hálózat közötti tranzit útválasztást azon útvonalak propagálásával az összes többi BGP-társ számára, amelyeket a BGP-átjáró az egyik BGP-társtól vesz át. További információ: [a BGP és az Azure VPN Gateway közötti áttekintés](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview).
+A helyszíni hálózat és a helyek közötti kapcsolattal rendelkező virtuális hálózat közötti átviteli útválasztás konfigurálásához engedélyeznie kell a BGP-t az összes köztes helyek közötti kapcsolathoz a Resource Manager-alapú üzemi modell és a PowerShell használatával. Tekintse [meg, hogyan konfigurálhatja a BGP-t az Azure VPN Gateways szolgáltatásban a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) útmutatásért.
+
+Az Azure VPN Gateway átjárón keresztüli átmenő forgalom a klasszikus üzemi modellen keresztül lehetséges, de a hálózati konfigurációs fájlban a statikusan definiált címekre támaszkodik. A BGP még nem támogatott az Azure Virtual Networks és a VPN Gateway használatával a klasszikus üzemi modellen keresztül. A BGP nélkül az átviteli címterület manuális definiálása hibás, ezért nem ajánlott.
+
+> [!Note]
+> A klasszikus helyek közötti kapcsolatokat a klasszikus Azure portálon, vagy a klasszikus portálon található hálózati konfigurációs fájl használatával konfigurálhatja. Klasszikus virtuális hálózat nem hozható létre és nem módosítható a Azure Resource Manager üzemi modell vagy a Azure Portal használatával. A klasszikus virtuális hálózatok tranzit útválasztásával kapcsolatos további információkért tekintse meg a [Microsoft fejlesztői blogját](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+
+## <a name="configure-bgp-for-a-vpn-gateway"></a>BGP konfigurálása egy VPN-átjáró számára
+
+A BGP az interneten használt szabványos útválasztási protokoll az útválasztási és elérhetőségi információk két vagy több hálózat közötti cseréjéhez. Ha a BGP az Azure Virtual Networks környezetében használatos, lehetővé teszi az Azure VPN Gateway és a helyszíni VPN-eszközök, más néven BGP-társak vagy szomszédok használatát. Ők cserélik az "útvonalakat", amely tájékoztatja mindkét átjárót az előtagok rendelkezésre állásáról és elérhetőségéről, hogy átmenjen az érintett átjárók vagy útválasztók között. 
+
+A BGP a több hálózat között is lehetővé teszi az átviteli útválasztást olyan útvonalak propagálásával, amelyekkel a BGP-átjáró egy BGP-társtól megtanulja az összes többi BGP-társat. További információ: [a BGP és az Azure VPN Gateway áttekintése](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview).
 
 ### <a name="configure-bgp-for-a-vpn-connection"></a>A BGP konfigurálása VPN-kapcsolathoz
 
 A BGP-t használó VPN-kapcsolat konfigurálásával kapcsolatban lásd: a [BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
 
-> [!Note]
-> 1. Engedélyezze a BGP-t a Virtual Network átjárón úgy, hogy létrehoz egy AS-számot. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal VPN Gateway paneljének áttekintés szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t ([az átjáró átméretezése](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) a **VpnGw1** SKU-ra. Az SKU ellenőrzése 20-30 percet eredményez. Amint az átjáró megfelelő SKU-val rendelkezik, az AS a [set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell-paranccsal vehető fel. A AS szám konfigurálása után a rendszer automatikusan megadja a BGP-társ IP-címet az átjáró számára.
-> 2. A LocalNetworkGateway **manuálisan** kell MEGADNI az as-számmal és egy BGP-társi címtől. Az **ASN** és a **-BgpPeeringAddress** értékeket a [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) vagy a [set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell-paranccsal állíthatja be. Egyes számok az Azure számára vannak fenntartva, és nem használhatók fel az Azure-beli [BGP-vel VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview#bgp-faq).
-> 3. Végezetül a kapcsolatok objektumnak BGP-kompatibilisnek kell lennie. A **-EnableBGP** értéket beállíthatja a `$True` [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) vagy a [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)értékre.
+Engedélyezze a BGP-t a virtuális hálózati átjárón egy autonóm rendszer (AS) számának létrehozásával. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal **VPN Gateway** paneljének **Áttekintés** szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t (lásd: [az átjáró átméretezése](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) a **VpnGw1**. 
+
+Az SKU ellenőrzése 20 – 30 perces állásidőt eredményez. Amint az átjáró megfelelő SKU-val rendelkezik, az AS-számot a [set-AzureRmVirtualNetworkGateway PowerShell-](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) parancsmagot használatával adhatja hozzá. A AS szám konfigurálása után a rendszer automatikusan megadja a BGP-társ IP-címet az átjáró számára.
+
+Manuálisan kell megadnia `LocalNetworkGateway` az as-számot és a BGP-társ-címeket. A `ASN` és`-BgpPeeringAddress` az értékek a [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) vagy a [set-AzureRmLocalNetworkGateway PowerShell-](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) parancsmagot használatával állíthatók be. Egyes számok az Azure-hoz vannak fenntartva, és nem használhatók fel a BGP és az [azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)című témakörben leírtak szerint.
+
+A kapcsolási objektumnak BGP-kompatibilisnek kell lennie. `-EnableBGP` Az`$True` értéket beállíthatja a [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) vagy a [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)értékre.
 
 ### <a name="validate-the-bgp-configuration"></a>A BGP-konfiguráció ellenőrzése
 
-Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, `get-AzureRmVirtualNetworkGateway` futtathatja a parancsmagot, és `get-AzureRmLocalNetworkGateway`a BgpSettingsText részben a BGP-vel kapcsolatos kimenetet fogja észlelni. Példa: BgpSettingsText:
+Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva `get-AzureRmVirtualNetworkGateway` , `get-AzureRmLocalNetworkGateway` futtathatja a és a parancsmagok. Ezután észreveheti a BGP-vel kapcsolatos kimenetet `BgpSettingsText` a részben. Példa:
 
 ```
 {
@@ -278,32 +272,34 @@ Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, `get-Azure
 }
 ```
 
-## <a name="scenario-6-highly-available-active-active-vpn-connection"></a>6\. forgatókönyv: Fokozottan elérhető aktív-aktív VPN-kapcsolat
+## <a name="create-a-highly-available-activeactive-vpn-connection"></a>Magasan elérhető aktív/aktív VPN-kapcsolat létrehozása
 
-Az aktív-aktív és az aktív-készenléti átjárók közötti fő különbségek:
+Az aktív/aktív és aktív/készenléti átjárók közötti fő különbségek a következők:
 
-* Két nyilvános IP-címmel rendelkező átjáró IP-konfigurációt kell létrehoznia
-* Be kell állítania a *EnableActiveActiveFeature* jelzőt.
-* Az átjáró SKU-jának VpnGw1, VpnGw2, VpnGw3 kell lennie
+* Két nyilvános IP-címmel rendelkező átjáró IP-konfigurációt kell létrehoznia.
+* Be kell állítania a **EnableActiveActiveFeature** jelzőt.
+* Az átjáró SKU-jának **VpnGw1**, **VpnGw2**vagy **VpnGw3**kell lennie.
 
-Ha magas rendelkezésre állást szeretne biztosítani a létesítmények közötti és VNet kapcsolatokhoz, több VPN-átjárót kell üzembe helyeznie, és több párhuzamos kapcsolatot kell létesítenie a hálózatok és az Azure között. A kapcsolódási lehetőségek és a topológia áttekintését lásd: a [létesítmények közötti, illetve a VNet és a VNet közötti kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable).
+Ha magas rendelkezésre állást szeretne biztosítani a létesítmények közötti és hálózatról hálózati kapcsolatokhoz, több VPN-átjárót kell üzembe helyeznie, és több párhuzamos kapcsolatot kell létesítenie a hálózatok és az Azure között. A kapcsolódási lehetőségek és a topológia áttekintését lásd: a [létesítmények közötti, illetve a hálózat – hálózat közötti kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable).
 
-Az aktív-aktív és a VNet közötti kapcsolatok létrehozásához kövesse az [Active-Active S2S VPN-kapcsolatok konfigurálása Azure VPN-átjárókkal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) az Azure VPN Gateway aktív/aktív módban való konfigurálásához című témakör utasításait.
+Aktív/aktív létesítmények közötti és hálózat – hálózat típusú kapcsolatok létrehozásához kövesse az [Active/aktív S2S VPN-kapcsolatok konfigurálása Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) használatával az Azure VPN Gateway aktív/aktív módban való konfigurálásának utasításait.
 
 > [!Note]  
-> 1. Ha olyan címeket ad hozzá a helyi hálózati átjáróhoz, amelyeken engedélyezve van a BGP, az aktív – aktív mód *csak a BGP-társak/32-címét adja hozzá*. Ha további címeket ad hozzá, akkor a rendszer statikus útvonalaknak számít, és elsőbbséget élvez a BGP-útvonalakkal szemben.
-> 2. Az Azure-hoz csatlakozó helyszíni hálózatokhoz eltérő BGP-ASN kell használnia. (Ha ezek megegyeznek, akkor módosítania kell a VNet ASN-t, ha a helyszíni VPN-eszköze már használja az ASN-t a többi BGP-szomszédokkal.)
+> * Ha a BGP-kompatibilis aktív/aktív módban címeket ad hozzá a helyi hálózati átjáróhoz, *vegye fel csak a BGP-társak/32-címét*. Ha további címeket ad hozzá, akkor a rendszer statikus útvonalaknak számít, és elsőbbséget élvez a BGP-útvonalakkal szemben.
+> * Az Azure-hoz csatlakozó helyszíni hálózatokhoz eltérő BGP-számokat kell használnia. (Ha ugyanazok, akkor a virtuális hálózatot számként kell módosítania, ha a helyszíni VPN-eszköz már használja az ASN-t a többi BGP-szomszédokkal.)
 
-## <a name="scenario-7-change-an-azure-vpn-gateway-type-after-deployment"></a>7\. forgatókönyv: Azure-beli VPN-átjáró típusának módosítása üzembe helyezés után
+## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>Azure-beli VPN-átjáró típusának módosítása üzembe helyezés után
 
-Az Azure VNet-átjáró típusa nem módosítható házirend-alapúról Route-alapú vagy más módon közvetlenül. Az átjárót az IP-cím és az előmegosztott kulcs (PSK) won'tbe megőrzése után törölnie kell. Ezután létrehozhatja a kívánt típusú új átjárót. Átjáró törléséhez és létrehozásához kövesse az alábbi lépéseket:
+Az Azure-beli virtuális hálózati átjárók típusa nem módosítható házirend alapján, vagy közvetlenül útvonalon vagy más módon. Először törölnie kell az átjárót. Ezt követően a rendszer nem őrzi meg az IP-címet és az előmegosztott kulcsot. Ezután létrehozhat egy új átjárót a kívánt típushoz. 
+
+Átjáró törléséhez és létrehozásához kövesse az alábbi lépéseket:
 
 1. Törölje az eredeti átjáróhoz társított összes kapcsolatot.
-2. Az átjáró törlése Azure Portal, PowerShell vagy klasszikus PowerShell használatával: 
+2. Törölje az átjárót a Azure Portal, a PowerShell vagy a klasszikus PowerShell használatával: 
    * [Virtuális hálózati átjáró törlése a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
    * [Virtuális hálózati átjáró törlése a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell)
    * [Virtuális hálózati átjáró törlése a PowerShell (klasszikus) használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
-3. A kívánt típusú új átjáró létrehozásához és a VPN-beállítás befejezéséhez kövesse a [VPN Gateway létrehozása](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#a-namevnetgatewaya4-create-the-vpn-gateway) című témakör lépéseit.
+3. Kövesse a [VPN Gateway létrehozása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) a kívánt típus új átjárójának létrehozásához és a VPN-beállítás befejezéséhez című témakör lépéseit.
 
 > [!Note]
 > Ez a folyamat körülbelül 60 percet vesz igénybe.

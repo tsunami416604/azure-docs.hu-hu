@@ -4,7 +4,7 @@ description: Útmutató a Windows újraindítási ciklusának hibakereséséhez 
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: e4715225e56e50502348040fa501cbfd76bd5c9f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103384"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088474"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
 Ez a cikk a Windows rendszerű virtuális gépeken (VM) tapasztalható újraindítási hurkot ismerteti Microsoft Azureban.
 
 ## <a name="symptom"></a>Jelenség
 
-Ha rendszerindítási [diagnosztikát](./boot-diagnostics.md) használ egy virtuális gép képernyőképének beszerzéséhez, a rendszer elindítja a virtuális gépet, de a rendszerindítási folyamat megszakad, és a folyamat elindul.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ egy virtuális gép képernyőképének beszerzéséhez, a rendszer elindítja a virtuális gépet, de a rendszerindítási folyamat megszakad, és a folyamat elindul.
 
 ![1\. kezdőképernyő](./media/troubleshoot-reboot-loop/start-screen-1.png)
 
@@ -50,13 +50,13 @@ A fájlrendszer sérülése ezt okozhatta. Azonban nehéz diagnosztizálni és a
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához végezze el [az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
+A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
 1. Miután az operációsrendszer-lemez csatlakoztatva van egy működő virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon, és jegyezze fel a **\Windows** mappát tároló partíció meghajtóbetűjelét.
 
-2. Ha a lemez **Offline**értékre van beállítva, akkor állítsa **online**állapotba.
+2. Ha a lemez offline értékre van beállítva, akkor állítsa **online** **állapotba**.
 
 3. Hozzon létre egy másolatot a **\Windows\System32\config** mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 

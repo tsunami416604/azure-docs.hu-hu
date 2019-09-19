@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983555"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097598"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -44,6 +44,9 @@ Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik m
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) kapcsolatos további információért kövesse ezt a hivatkozást
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>Korábban a helyszíni AD-hez csatlakoztatott Windows Down-szintű számítógépek helytelenül lettek szinkronizálva a felhőbe bizonyos körülmények között. Például a userCertificate attribútum értéke a Windows Down-szintű eszközökhöz az AD-ben feltöltve. Az Azure AD-beli eszközök azonban mindig "függő" állapotban maradnak, mivel ezek az operációsrendszer-verziók nem az Azure AD-ben való regisztrálásra lettek kialakítva AAD-szinkronizálóon keresztül. A Azure AD Connect jelen verziójában AAD-szinkronizáló leállítja a Windows Down-szintű számítógépeinek Azure AD-be való szinkronizálását, és eltávolítja a korábban helytelenül szinkronizált Windows rendszerű, régebbi verziójú eszközöket az Azure AD-ből. Vegye figyelembe, hogy ez a változás nem törli az Azure AD-ben az MSI-csomag használatával megfelelően regisztrált Windows Down-szintű eszközöket. Ezek az eszközök továbbra is a várt módon fognak működni az eszköz alapú feltételes hozzáférés szempontjából. Egyes ügyfelek láthatják, hogy a Windows Down-szintű eszközeinek némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel ezek az eszközök identitásait soha nem használták az Azure AD a feltételes hozzáférés engedélyezésekor. Előfordulhat, hogy az ilyen ügyfeleknek https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan újra kell megkeresniük és a Windows rendszerbeli régebbi eszközöket kell regisztrálniuk ahhoz, hogy az ilyen eszközök teljes mértékben részt vehessenek az eszközön alapuló feltételes hozzáférésben. Vegye figyelembe, hogy ha az Azure AD-ben ezek a törlési hibák meghaladják az Exportálás törlésére vonatkozó küszöbértéket, akkor azt javasoljuk, hogy az ügyfél az alábbi törlési lépésekkel engedélyezze ezeket a törléseket:.
 
 ### <a name="release-status"></a>Kiadás állapota
 9/10/2019: Csak automatikus frissítésre van kiadva
