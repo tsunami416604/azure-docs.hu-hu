@@ -64,7 +64,7 @@ Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalm
 | runId | Igen | String | A logikai alkalmazás futtatásának azonosítóját. |
 | operationName | Igen | String | A művelet (például művelet vagy trigger) neve. |
 | repeatItemScopeName | Igen | String | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. |
-| repeatItemIndex | Igen | Egész szám | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. |
+| repeatItemIndex | Igen | Integer | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. |
 | trackingId | Nem | String | Követési azonosító, az üzenetek korrelációját. |
 | correlationId | Nem | String | Korrelációs azonosító, az üzenetek korrelációját. |
 | clientRequestId | Nem | String | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. |
