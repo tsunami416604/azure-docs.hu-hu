@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827986"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120486"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -23,13 +23,14 @@ Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókb
 
 | Resource | Alapértelmezett korlát |
 | --- | --- |
-| Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) bejelentésével |
-| Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) bejelentésével |
+| Maximális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
 | Maximális RUs/(logikai) partíciós kulcs | 10,000 |
 | Maximális tárterület az összes elem/(logikai) partíciós kulcs között| 10 GB |
 | Eltérő (logikai) partíciós kulcsok maximális száma | Korlátlan |
 | Tárolók maximális száma | Korlátlan |
 | Tárolók maximális száma adatbázis szerint | Korlátlan |
+| A mellékletek maximális mérete (a melléklet funkciójának értékcsökkenése) | 2 GB | 
 
 > [!NOTE]
 > Ajánlott eljárások a tárolási vagy átviteli sebességre vonatkozó magasabb szintű partíciós kulcsokkal rendelkező munkaterhelések kezeléséhez: [a gyors particionálási kulcsok tervezése](synthetic-partition-keys.md) .
@@ -58,12 +59,12 @@ A Cosmos DB az SDK-k vagy a portál használatával támogatja a tárolók vagy 
 
 ## <a name="control-plane-operations"></a>Vezérlési sík műveletei
 
-[Azure Cosmos](how-to-manage-database-account.md) -fiókját az Azure Portal, az Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával is kiépítheti és kezelheti. A következő táblázat felsorolja az előfizetések, a fiókok és a műveletek számát.
+Azure Cosmos-fiókját az Azure Portal, az Azure PowerShell, az Azure CLI és a Azure Resource Manager sablonok használatával is [kiépítheti és kezelheti](how-to-manage-database-account.md) . A következő táblázat felsorolja az előfizetések, a fiókok és a műveletek számát.
 
 | Resource | Alapértelmezett korlát |
 | --- | --- |
-| Adatbázis-fiókok maximális száma (előfizetés) | 50 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) bejelentésével|
-| Regionális feladatátvételek maximális száma | Alapértelmezés szerint 1/óra. Megnövelheti [egy Azure-támogatási jegy](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) bejelentésével|
+| Adatbázis-fiókok maximális száma (előfizetés) | 50 alapértelmezés szerint. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Regionális feladatátvételek maximális száma | Alapértelmezés szerint 1/óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
 
 > [!NOTE]
 > A regionális feladatátvétel csak az egyetlen régióba írja a fiókokat. A többrégiós írási fiókok nem igénylik vagy nem korlátozzák az írási régió módosítását.
@@ -80,7 +81,7 @@ A Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot ké
 
 ## <a name="per-container-limits"></a>/Tároló korlátok
 
-Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjteményeket, táblákat vagy diagramokat is jelenthetnek. A tárolók támogatják az [egyedi kulcsokra](unique-keys.md)vonatkozó megkötések, [tárolt eljárások, eseményindítók és UDF](stored-procedures-triggers-udfs.md)konfigurációját, valamint az [indexelési szabályzatot](how-to-manage-indexing-policy.md). A következő táblázat felsorolja a tárolón belüli konfigurációkra vonatkozó korlátozásokat. 
+Attól függően, hogy melyik API-t használja, az Azure Cosmos-tárolók gyűjteményeket, táblákat vagy diagramokat is jelenthetnek. A tárolók támogatják az [egyedi kulcsokra vonatkozó megkötések](unique-keys.md), [tárolt eljárások, eseményindítók és UDF](stored-procedures-triggers-udfs.md)konfigurációját, valamint az [indexelési szabályzatot](how-to-manage-indexing-policy.md). A következő táblázat felsorolja a tárolón belüli konfigurációkra vonatkozó korlátozásokat. 
 
 | Resource | Alapértelmezett korlát |
 | --- | --- |
@@ -123,13 +124,13 @@ Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](https://docs.m
 
 Ha egy művelet, például a lekérdezés eléri a végrehajtás időtúllépését vagy a válasz méretkorlát értéket, a rendszer visszaadja az eredmények egy oldalát, valamint egy folytatási tokent az ügyfélnek a végrehajtás folytatásához. Az időtartamra vonatkozóan nincs gyakorlati korlát az egyes oldalakra vagy folytatásokra vonatkozó egyetlen lekérdezés futtatásához.
 
-Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vagy egy [erőforrás](secure-access-to-data.md) -jogkivonatot a részletes hozzáférés-vezérléshez olyan erőforrásokhoz, mint a tárolók, a partíciós kulcsok vagy az elemek. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
+Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vagy egy [erőforrás-jogkivonatot](secure-access-to-data.md) a részletes hozzáférés-vezérléshez olyan erőforrásokhoz, mint a tárolók, a partíciós kulcsok vagy az elemek. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
 
 | Resource | Alapértelmezett korlát |
 | --- | --- |
 | Fő jogkivonat lejárati idejének maximális ideje | 15 perc  |
 | Erőforrás-jogkivonat minimális lejárati ideje | 10 perc  |
-| Erőforrás-jogkivonat maximális lejárati ideje | Alapértelmezés szerint 24 óra. Megnövelheti [egy Azure-támogatási jegy](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) bejelentésével|
+| Erőforrás-jogkivonat maximális lejárati ideje | Alapértelmezés szerint 24 óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
 | Token-engedélyezés maximális órajele| 15 perc |
 
 Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A szolgáltatás legfeljebb egy trigger előtti és egy trigger utáni műveletet támogat. 

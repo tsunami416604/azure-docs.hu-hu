@@ -1,18 +1,18 @@
 ---
 title: Az Azure HDInsight YARN hibaelhárítása
 description: Az Apache Hadoop YARN és az Azure HDInsight használatához kapcsolatos gyakori kérdésekre adott válaszok.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a0eb0d15d931cf1b2f71740c7a9359cf16205481
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076568"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122515"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Azure HDInsight használatával Apache Hadoop-FONALak hibáinak megoldása
 
@@ -34,24 +34,24 @@ Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thrif
 
 1. Válassza ki a **Ambari-nézetek** ikonra, és válassza ki a rács minta. Majd **YARN üzenetsor-kezelő**.
 
-    ![Az Ambari-nézetek ikon kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Apache Ambari irányítópult-szál üzenetsor-kezelője](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Válassza ki a **alapértelmezett** várólista.
 
-    ![Az alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari-fonal – alapértelmezett üzenetsor kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. Az a **alapértelmezett** várólista, módosítsa a **kapacitás** 50 % 25 %-át. Az a **thriftsvr** várólista, módosítsa a **kapacitás** 25 %-át.
 
     ![A kapacitás módosításához 25 %-át az alapértelmezett és thriftsvr várólisták](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Új várólista létrehozásához válassza **üzenetsor hozzáadása**.
 
-    ![Válassza ki az üzenetsor hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache Ambari-FONÁL irányítópult-várólista hozzáadása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Adjon nevet az új üzenetsort.
 
-    ![A Spark várólista neve](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache Ambari-szál irányítópultjának neve üzenetsor](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Hagyja a **kapacitás** értékek 50 %-át, és válassza ki a **műveletek** gombra.
 
-    ![A műveletek gomb kiválasztása](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Apache Ambari-fonal kiválasztása művelet](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Válassza ki **mentse, és frissítse az üzenetsorok**.
 
     ![Válassza a Mentés és a frissítést](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Ezeket a módosításokat a YARN felhasználói felületén a Scheduler a azonna
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan tölthetek le YARN-naplókat fürtből?
 
-### <a name="resolution-steps"></a>A megoldás lépései 
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Csatlakozzon a HDInsight-fürthöz egy Secure Shell (SSH) ügyfél használatával. További információkért lásd: [További olvasnivaló](#additional-reading-2).
 

@@ -260,9 +260,9 @@
         - name: Hálózati biztonsági csoportok – PowerShell
           href: move-across-regions-nsg-powershell.md
         - name: Virtuális hálózatok – Portál
-          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+          href: move-across-regions-vnet-portal.md
         - name: Virtuális hálózatok – PowerShell
-          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+          href: move-across-regions-vnet-powershell.md
         - name: Nyilvános IP-k – Portál
           href: move-across-regions-publicip-portal.md
         - name: Nyilvános IP-k – PowerShell

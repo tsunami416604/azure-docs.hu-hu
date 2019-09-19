@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Apptio-szel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Apptio | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Apptio között.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104383"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129729"
 ---
-# <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Oktatóanyag: A Apptio integrálása Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Apptio
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Apptio a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Apptio-t az Azure AD-vel, a következőket teheti:
 
@@ -46,6 +46,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Apptio támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
 ## <a name="adding-apptio-from-the-gallery"></a>Apptio hozzáadása a gyűjteményből
 
 A Apptio Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Apptio a katalógusból a felügyelt SaaS-alkalmazások listájához.
@@ -57,7 +60,6 @@ A Apptio Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Apptio** kifejezést a keresőmezőbe.
 1. Válassza ki a **Apptio** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-apptio"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Apptio
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Apptio a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Apptio-ben.
@@ -67,9 +69,9 @@ Az Azure AD SSO és a Apptio konfigurálásához és teszteléséhez hajtsa vég
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-2. **[APPTIO SSO konfigurálása](#configure-apptio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+1. **[APPTIO SSO konfigurálása](#configure-apptio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
     1. **[Hozzon létre Apptio-teszt felhasználót](#create-apptio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Apptio rendelkezik.
-3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
@@ -77,46 +79,21 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/) **Apptio** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    Az **azonosító** szövegmezőbe írja be a következő értéket:`urn:federation:apptio`
+    Az **azonosító** szövegmezőbe írja be az URL-címet:`urn:federation:apptio`
 
-5. A Apptio alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. A szerepkör-jogcím előre konfigurálva van, így nem kell konfigurálnia, de az Azure AD-ben is létre kell hoznia őket a jelen [cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)használatával.
 
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > [Ide kattintva](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a **szerepkört** az Azure ad-ben
-
-6. A fentieken kívül a Apptio alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
-
-    | Name (Név) |  Forrás attribútum|
-    | -------------- | -------------------- |
-    | FullName       | user.displayname |
-    | levelezés           | user.mail |
-    | role           | User. assignedrole |
-
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
-
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. Hagyja üresen a **névteret** .
-
-    d. Válassza a forrás **attribútumként**lehetőséget.
-
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
-
-    f. Kattintson a **Save** (Mentés) gombra.
-
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. A **Apptio beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **Apptio beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -127,10 +104,10 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-    1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -140,7 +117,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **Apptio**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -156,7 +133,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Apptio** oldalon, el 
 
 ### <a name="create-apptio-test-user"></a>Apptio-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Apptio-ben. Együttműködik a [Apptio támogatási csapatával](https://www.apptio.com/about/contact) , hogy hozzáadja a felhasználókat a Apptio platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Apptio-ben. Együttműködik a [Apptio támogatási csapatával](https://www.apptio.com/about/contact) , hogy hozzáadja a felhasználókat a Apptio platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -172,3 +149,4 @@ Ha a hozzáférési panelen a Apptio csempére kattint, automatikusan be kell je
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [A Apptio kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

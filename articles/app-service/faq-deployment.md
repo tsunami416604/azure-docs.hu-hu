@@ -4,7 +4,7 @@ description: Választ kaphat a Azure App Service Web Apps funkciójának üzembe
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c7551a13c84798b5a594d4646b8faa619619724b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073148"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121205"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps üzembe helyezésével kapcsolatos gyakori kérdések
 
@@ -66,7 +66,7 @@ Több erőforrásból is beállíthat folyamatos üzembe helyezést, többek kö
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Hogyan a GitHubról és a bitbucket folytatott folyamatos üzembe helyezéssel kapcsolatos problémákat.
 
-A GitHub-vagy bitbucket-alapú folyamatos üzembe helyezéssel kapcsolatos problémák kivizsgálásához tekintse meg a [folyamatos üzembe helyezés](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)kivizsgálása című témakört.
+A GitHub-vagy bitbucket-alapú folyamatos üzembe helyezéssel kapcsolatos problémák kivizsgálásához tekintse meg a [folyamatos üzembe helyezés kivizsgálása](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)című témakört.
 
 ## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Nem tudok FTP-t a webhelyemre, és közzétenni a kódot. Hogyan a probléma megoldásához?
 

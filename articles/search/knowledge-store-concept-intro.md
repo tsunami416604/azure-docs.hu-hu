@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638183"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123109"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Mi az a Knowledge Store a Azure Searchban?
 
@@ -28,7 +28,7 @@ Ha korábban már használta a kognitív keresést, akkor már tudja, hogy a sza
 
 Fizikailag, a rendszer létrehoz egy tudásbázist egy Azure Storage-fiókban az Azure Table Storage vagy a blob Storage szolgáltatásban, attól függően, hogy hogyan konfigurálja a folyamatot. Minden olyan eszköz vagy folyamat, amely képes az Azure Storage-hoz kapcsolódni, felhasználhatja a Tudásbázis tartalmát.
 
-A kivetítések az adattárakban lévő adatstrukturálás mechanizmusa. A kivetítések segítségével például megadhatja, hogy a kimenet egyetlen blobként vagy kapcsolódó táblák gyűjteménye legyen mentve. Az Azure Storage beépített Storage Explorerán keresztül könnyedén megtekintheti a Knowledge Store [](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) -tartalmakat.
+A kivetítések az adattárakban lévő adatstrukturálás mechanizmusa. A kivetítések segítségével például megadhatja, hogy a kimenet egyetlen blobként vagy kapcsolódó táblák gyűjteménye legyen mentve. Az Azure Storage beépített [Storage Explorerán](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) keresztül könnyedén megtekintheti a Knowledge Store-tartalmakat.
 
 ![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Knowledge Store a folyamat ábráján")
 
@@ -53,7 +53,7 @@ Enumerált, a Knowledge Store előnyei a következők:
 
 ## <a name="create-a-knowledge-store"></a>Knowledge Store létrehozása
 
-A Tudásbázis egy készségkészlet-definíció részét képezi. Ebben az előzetes verzióban `api-version=2019-05-06-Preview` a létrehozásához a portálon a REST API, a vagy az adatimportálás varázsló szükséges.
+A Tudásbázis egy készségkészlet-definíció részét képezi. Ebben az előzetes verzióban `api-version=2019-05-06-Preview` a létrehozásához a portálon a REST API, a vagy az **adatimportálás** varázsló szükséges.
 
 A következő JSON a `knowledgeStore`, amely egy készségkészlet része, amelyet egy indexelő hív meg (nem látható). A kivetítések meghatározása a meghatározza `knowledgeStore` , hogy a táblák vagy objektumok az Azure Storage-ban jönnek-e létre.
 
@@ -132,7 +132,7 @@ A bővíteni kívánt adatforrásoknak és dokumentumoknak Azure Search indexel�
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 
-Az [Azure Table Storage](search-howto-indexing-azure-tables.md) egy tudásbázisbeli kimenő adathoz használható, de nem használható erőforrásként a bejövő adathoz egy AI-alapú indexelési folyamat számára.
+* [Azure Table storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2 – Azure Search szolgáltatás
 
@@ -185,7 +185,7 @@ A dokumentumok tartalmával együtt a bővített dokumentumok tartalmazzák a d�
 
 ## <a name="inside-a-knowledge-store"></a>Egy tudásbázison belül
 
-A Knowledge Store egy Megjegyzés-gyorsítótárból és-kivetítésből áll. A szolgáltatás a gyorsítótárat belsőleg használja a képességek eredményeinek gyorsítótárazására és a változások nyomon követésére. A *kivetítés* határozza meg a kívánt felhasználási feltételeknek megfelelő dúsítások sémáját és szerkezetét. Az egyes tudásbázisokban egy gyorsítótár található, de több kivetítés is. 
+A Knowledge Store egy Megjegyzés-gyorsítótárból és-kivetítésből áll. A szolgáltatás a *gyorsítótárat* belsőleg használja a képességek eredményeinek gyorsítótárazására és a változások nyomon követésére. A *kivetítés* határozza meg a kívánt felhasználási feltételeknek megfelelő dúsítások sémáját és szerkezetét. Az egyes tudásbázisokban egy gyorsítótár található, de több kivetítés is. 
 
 A gyorsítótár mindig blob-tároló, de a vetítések táblázatként vagy objektumként is megadhatók:
 
@@ -235,7 +235,7 @@ Több szolgáltatás használatakor a legjobb teljesítmény érdekében hozza l
 
 **1. lépés: [Azure Search erőforrás létrehozása](search-create-service-portal.md)** 
 
-**2. lépés: [Azure Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
+**2. lépés: [Azure Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
 
 **3. lépés: [Cognitive Services erőforrás létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
 
@@ -249,7 +249,7 @@ A Knowledge Store számos előnyt kínál, többek között a nem a keresés, a 
 
 ## <a name="next-steps"></a>További lépések
 
-A dúsított dokumentumok létrehozásának legegyszerűbb módja az adatimportálás varázsló .
+A dúsított dokumentumok létrehozásának legegyszerűbb módja az **adatimportálás** varázsló.
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: A kognitív keresés kipróbálása egy portálon – útmutató](cognitive-search-quickstart-blob.md)

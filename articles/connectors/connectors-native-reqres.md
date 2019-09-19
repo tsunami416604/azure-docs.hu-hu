@@ -1,6 +1,6 @@
 ---
-title: Válaszoljon a HTTP-kérelmekre – Azure Logic Apps
-description: Valós időben válaszol az eseményekre a HTTP protokollon keresztül Azure Logic Apps
+title: HTTPS-hívások fogadása és megválaszolása – Azure Logic Apps
+description: HTTPS-kérelmek és-események kezelése valós időben a Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914332"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122713"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Válaszoljon a HTTP-kérelmekre Azure Logic Apps használatával
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem-trigger vagy Response művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek valós időben érkeznek és reagálnak a HTTP-kérelmekre. Használhatja például a logikai alkalmazást:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem-trigger vagy Response művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek fogadják és válaszolnak a bejövő HTTPS-kérelmekre. Használhatja például a logikai alkalmazást:
 
-* Válasz HTTP-kérelemre egy helyszíni adatbázisban lévő adatkéréshez.
+* Egy HTTPS-kérelem fogadása és megválaszolása egy helyszíni adatbázisban lévő adatszolgáltatáshoz.
 * Munkafolyamat elindítása külső webhook-esemény bekövetkezésekor.
-* Egy logikai alkalmazás meghívása egy másik logikai alkalmazásból.
+* Egy másik logikai alkalmazástól érkező HTTPS-hívás fogadása és megválaszolása.
+
+A kérelem-trigger *csak* HTTPS protokollt támogat. A kimenő HTTP-vagy HTTPS-hívások létrehozásához használja a beépített [http-triggert vagy műveletet](../connectors/connectors-native-http.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,15 +37,15 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>Kérelem-trigger hozzáadása
+## <a name="add-request-trigger"></a>Kérelem-trigger hozzáadása
 
-Ez a beépített trigger létrehoz egy manuálisan hívható végpontot, amely képes fogadni a bejövő HTTP-kéréseket. Ha ez az esemény történik, az eseményindító elindít és futtatja a logikai alkalmazást. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a [kérelem trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatait http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md)
+Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre, amely *csak* a bejövő HTTPS-kérelmek fogadására képes. Ha ez az esemény történik, az eseményindító elindít és futtatja a logikai alkalmazást. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a [kérelem trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatait http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
 1. A Logic app Designer megnyitása után a keresőmezőbe írja be szűrőként a "http-kérelem" kifejezést. Az eseményindítók listából válassza ki a **http-kérelem fogadása** eseményindítót, amely a logikai alkalmazás munkafolyamatának első lépése.
 
-   ![HTTP-kérés trigger kiválasztása](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Kérelem triggerének kiválasztása](./media/connectors-native-reqres/select-request-trigger.png)
 
    A kérelem-trigger a következő tulajdonságokat jeleníti meg:
 
@@ -52,10 +54,10 @@ Ez a beépített trigger létrehoz egy manuálisan hívható végpontot, amely k
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL-CÍM** | nEz egy | Igen | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
-   | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő HTTP-kérés törzsében található tulajdonságokat és értékeket leíró JSON-séma |
+   | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
    |||||
 
-1. A **kérelem törzse JSON-sémája** mezőben opcionálisan megadhat egy JSON-sémát, amely leírja a bejövő kérelem HTTP-kérés törzsét, például:
+1. A **kérelem törzse JSON-sémája** mezőben opcionálisan megadhat egy JSON-sémát, amely leírja a beérkező kérelem törzsét, például:
 
    ![Példa JSON-sémára](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -190,7 +192,7 @@ További információ a kérelmek trigger kimenetéről:
 
 ## <a name="add-a-response-action"></a>Response művelet hozzáadása
 
-A válasz művelettel válaszolhat egy adattartalomra (adatok) egy bejövő HTTP-kérelemre, de csak egy HTTP-kérelem által aktivált logikai alkalmazásban. A válasz műveletet a munkafolyamat bármely pontjára felveheti. További információ az adott trigger alapjául szolgáló JSON-definícióról: [Válasz művelet típusa](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
+A válasz művelettel válaszolhat egy adattartalomra (adatok) egy bejövő HTTPS-kérelemre, de csak egy HTTPS-kérelem által aktivált logikai alkalmazásban. A válasz műveletet a munkafolyamat bármely pontjára felveheti. További információ az adott trigger alapjául szolgáló JSON-definícióról: [Válasz művelet típusa](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
 A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai `504 GATEWAY TIMEOUT` alkalmazás a hívót adja vissza. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja `202 ACCEPTED` a hívónak küldött választ.
 
@@ -224,7 +226,7 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt HTTP-állapotkód |
+   | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt állapotkód |
    | **Fejlécek** | `headers` | Nem | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
    | **Törzs** | `body` | Nem | A válasz törzse |
    |||||

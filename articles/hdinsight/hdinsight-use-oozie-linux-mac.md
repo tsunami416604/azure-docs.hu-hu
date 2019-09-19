@@ -1,18 +1,18 @@
 ---
 title: Hadoop Oozie-munkafolyamatok használata Linux-alapú Azure-HDInsight
 description: Hadoop Oozie használata Linux-alapú HDInsight. Ismerje meg, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan küldhet el egy Oozie-feladatot.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c24370c91c7164786503cdd8e3c44de60abc8370
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900646"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122496"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához Linux-alapú Azure-HDInsight
 
@@ -39,12 +39,11 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 * A fürtök elsődleges tárolójának [URI-sémája](./hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `wasb://` `abfs://` Storage számára lenne Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetén. Ha az Azure Storage vagy a Data Lake Storage Gen2 esetében engedélyezve van a biztonságos átvitel, az `wasbs://` URI `abfss://`-t vagy a-t, illetve a [biztonságos átvitelt](../storage/common/storage-require-secure-transfer.md)is el kell látnia.
 
-
 ## <a name="example-workflow"></a>Példa munkafolyamat
 
 A dokumentumban használt munkafolyamat két műveletet tartalmaz. A műveletek olyan tevékenységek definíciói, mint például a kaptár, a Sqoop, a MapReduce vagy más folyamatok futtatása:
 
-![Munkafolyamat-diagram][img-workflow-diagram]
+![HDInsight oozie munkafolyamat-diagramja](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
 
 1. A kaptárak egy HiveQL parancsfájlt futtatnak a `hivesampletable` HDInsight-ben található rekordok kinyeréséhez. Az egyes adatsorok egy adott mobileszköz egy látogatását írják le. A rekord formátuma az alábbi szöveghez hasonlóan jelenik meg:
 
@@ -510,29 +509,29 @@ A Oozie webes felhasználói felületének eléréséhez hajtsa végre a követk
 
 3. A lap bal oldalán válassza a **Oozie** > **Gyorshivatkozások** > **Oozie webes felhasználói felület**lehetőséget.
 
-    ![A menük képe](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    ![Apache Ambari oozie webes felhasználói felületének lépései](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. A Oozie webes felhasználói felülete alapértelmezés szerint megjeleníti a futó munkafolyamat-feladatokat. A munkafolyamat összes feladatának megtekintéséhez válassza a **minden feladat**lehetőséget.
 
-    ![Az összes megjelenített feladat](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    ![Oozie web Console munkafolyamat-feladatok](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. A feladattal kapcsolatos további információk megtekintéséhez válassza ki a feladatot.
 
-    ![Munkakör adatai](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    ![HDInsight Apache Oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. A feladat **adatai** lapon megtekintheti az alapszintű feladatok adatait és a feladaton belüli egyes műveleteket. A felül található lapfülek segítségével megtekintheti **a feladatdefiníció, a** **feladatok konfigurációja**, a **Projektnapló**hozzáférése vagy a feladathoz tartozó aciklikus gráf (Dag) megtekintését **.**
 
    * **Projektnapló**: Kattintson a **naplók beolvasása** gombra a feladatokhoz tartozó összes napló beolvasásához, vagy használja a **keresési szűrő megadása** mezőt a naplók szűréséhez.
 
-       ![Projektnapló](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       ![HDInsight Apache Oozie-feladatok naplója](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **Dag-feladatok**: A DAG a munkafolyamaton keresztül végrehajtott adatelérési utak grafikus áttekintése.
 
-       ![DAG-feladatok](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       ![HDInsight Apache Oozie-feladatok Dag](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. Ha a **Job info (feladatok** ) lapon a műveletek egyikét választja, akkor a műveletre vonatkozó információkat hoz létre. Válassza ki például a **RunSqoopExport** műveletet.
 
-    ![Művelet adatai](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    ![HDInsight oozie-feladatok adatai](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. Láthatja a művelet részleteit, például a **konzol URL-címére**mutató hivatkozást. Ezzel a hivatkozással megtekintheti a feladathoz tartozó feladatok követési adatait.
 
@@ -632,18 +631,18 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
 
 7. Ha a Oozie webes felhasználói felületére kattint, és kiválasztja a **koordinátori feladatok** lapot, a következő képen látható információk jelennek meg:
 
-    ![Koordinátori feladatok lap](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    ![Oozie webkonzol-koordinátori feladatok lap](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     A **következő megvalósításának gyakorlatban** -bejegyzés a művelet következő futási idejét tartalmazza.
 
 8. A korábbi munkafolyamat-feladathoz hasonlóan, ha a webes felhasználói felületen kiválasztja a feladathoz tartozó bejegyzést, akkor a feladattal kapcsolatos információkat jeleníti meg:
 
-    ![Koordinátori feladatok adatai](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    ![Apache Oozie-koordinátor feladatának adatai](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > Ez a rendszerkép csak a feladatok sikeres futtatását mutatja, nem az ütemezett munkafolyamaton belüli egyes műveleteket. Az egyes műveletek megtekintéséhez válassza ki az egyik **műveleti** bejegyzést.
 
-    ![Koordinátori művelet adatai](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    ![A OOzie webkonzoljának Job info lapja](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -747,7 +746,6 @@ Ebben a cikkben megtanulta, hogyan határozhat meg egy Oozie-munkafolyamatot, é
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

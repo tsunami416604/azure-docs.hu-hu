@@ -1,140 +1,110 @@
 ---
-title: Oktatóanyag meghívása a B2B-együttműködés felhasználók – az Azure Active Directory tömeges |} A Microsoft Docs
+title: Oktatóanyag a B2B együttműködési felhasználók tömeges meghívásához – Azure Active Directory | Microsoft Docs
 description: Ebben az oktatóanyagban megismerheti, hogyan küldhet az Azure AD B2B együttműködés külső felhasználói számára tömeges meghívókat a PowerShell és egy CSV-fájl használatával.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278003"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128720"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: Tömeges meghívása az Azure AD B2B együttműködés felhasználók
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Oktatóanyag: Azure AD B2B csoportmunka-felhasználók tömeges meghívása (előzetes verzió)
 
-Ha Azure Active Directory (Azure AD) B2B együttműködéssel dolgozik együtt külső partnerekkel, egyszerre több vendégfelhasználót meghívhat a szervezetébe. Ebben az oktatóanyagban megismerheti, hogyan küldhet külső felhasználók számára tömeges meghívókat a PowerShell használatával. A következőket fogja elvégezni:
+|     |
+| --- |
+| Ez a cikk a Azure Active Directory nyilvános előzetes verzióját ismerteti. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
+
+
+Ha Azure Active Directory (Azure AD) B2B együttműködéssel dolgozik együtt külső partnerekkel, egyszerre több vendégfelhasználót meghívhat a szervezetébe. Ebből az oktatóanyagból megtudhatja, hogyan küldhet tömeges meghívásokat a külső felhasználóknak a Azure Portal használatával. A következőket fogja elvégezni:
 
 > [!div class="checklist"]
-> * Felhasználói adatokat tartalmazó, vesszővel tagolt adatfájl (.csv-fájl) előkészítése
-> * Meghívók küldése egy PowerShell-szkripttel
+> * **Tömeges Meghívási felhasználók (előzetes verzió)** – a felhasználói adatokat és a Meghívási beállításokat tartalmazó vesszővel tagolt (. csv) fájl előkészítése
+> * Töltse fel a. csv fájlt az Azure AD-be
 > * A felhasználók címtárhoz való hozzáadásának ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nincs Azure Active Directory, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="install-the-latest-azureadpreview-module"></a>A legújabb AzureADPreview modul telepítése
-Győződjön meg róla, hogy az Azure AD PowerShell for Graph module (AzureADPreview) legújabb verzióját telepíti. 
-
-Először ellenőrizze, melyik modulokat telepítette. Nyissa meg a Windows PowerShellt rendszergazdaként (Futtatás rendszergazdaként), majd futtassa a következő parancsot:
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-A kimenet alapján tegye a következők egyikét:
-
-- Ha nem kapott eredményt, a következő parancs futtatásával telepítse az AzureADPreview modult:
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- Ha csak az AzureAD modul látható az eredmények között, a következő parancsok futtatásával telepítse az AzureADPreview modult: 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- Ha csak az AzureADPreview modul látható az eredmények között, azonban kap egy üzenetet, amely szerint elérhető egy újabb verzió, a következő parancsok futtatásával frissítse a modult: 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-Előfordulhat, hogy egy megjelenő üzenet tájékoztatja Önt, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg az **Y-t** a modul telepítéséhez.
-
-### <a name="get-test-email-accounts"></a>E-mail-tesztfiókok létrehozása
-
 Szüksége lesz kettő vagy több e-mail-tesztfiókra, ahova a meghívókat küldheti. A fiókoknak a szervezeten kívüli kell lenniük. Bármilyen típusú fiókot használhat, így közösségi fiókokat is, például gmail.com vagy outlook.com végződésűeket.
 
-## <a name="prepare-the-csv-file"></a>A CSV-fájl előkészítése
+## <a name="invite-guest-users-in-bulk"></a>Vendég felhasználóinak meghívása ömlesztve
 
-A Microsoft Excelben hozzon létre egy CSV-fájlt a meghívott felhasználók neveivel és e-mail-címeivel. Győződjön meg róla, hogy belefoglalta a **Name** és **InvitedUserEmailAddress** oszlopfejléceket. 
+1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
+2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+3. A **kezelés**területen válassza a **felhasználók** > **tömeges meghívás**lehetőséget.
+4. A **felhasználók tömeges meghívása (előzetes verzió)** lapon válassza a **Letöltés** lehetőséget a meghívó tulajdonságokkal rendelkező érvényes. csv fájl beszerzéséhez.
 
-Például az alábbi formátumban hozza létre a munkalapot:
+    ![Tömeges meghívás letöltése gomb](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. Nyissa meg a. csv-fájlt, és adjon hozzá egy sort minden vendég felhasználóhoz. A szükséges értékek a következők:
 
-![Felhasználói elfogadásra várakozást mutató PowerShell-kimenet](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **Meghívó e-mail-cím** – a meghívót kérő felhasználó
 
-Mentse a fájlt a **C:\BulkInvite\Invitations.csv** helyre. 
+   * **Átirányítási URL** -cím – az az URL-cím, amelyre a meghívott felhasználó továbbítva lett a meghívó elfogadása után
 
-Ha nem rendelkezik az Excellel, létrehozhatja a CSV-fájlt bármelyik szövegszerkesztőben, például a Jegyzettömbben. Minden értéket vesszővel válasszon el, minden sort pedig új sorba írjon. 
+    ![Példa a vendég felhasználókat tartalmazó CSV-fájlra](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>Bejelentkezés a bérlőbe
+   > [!NOTE]
+   > Ne használjon vesszőket a **testreszabott Meghívási üzenetben** , mert megakadályozza, hogy az üzenet elemzése sikeres legyen.
 
-Futtassa a következő parancsot a bérlőtartományhoz való csatlakozáshoz:
+6. Mentse a fájlt.
+7. A **felhasználók tömeges meghívása (előzetes verzió)** lapon, a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a. csv-fájl érvényesítése. 
+8. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+9. Ha a fájl érvényesíti az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget a meghívókat felvenni kívánó Azure tömeges művelet elindításához. 
+10. A feladatok állapotának megtekintéséhez válassza a **kattintson ide az egyes műveletek állapotának megtekintéséhez**. Vagy kiválaszthatja a **tömeges művelet eredményeit (előzetes verzió)** a **tevékenység** szakaszban. A tömeges művelet minden egyes sorával kapcsolatos részletekért jelölje ki az értékeket a **# sikeres**, **# sikertelen**vagy az **összes kérelem** oszlopban. Ha hiba történt, a hiba okai lesznek felsorolva.
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-Például: `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`.
+    ![Példa tömeges művelet eredményeire](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
+11. Amikor a feladatok befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeresen befejeződött.
 
-## <a name="send-bulk-invitations"></a>Tömeges meghívók küldése
+## <a name="verify-guest-users-in-the-directory"></a>Vendég felhasználók ellenőrzése a címtárban
 
-A meghívók elküldéséhez futtassa a következő PowerShell-szkriptet (ahol a **c:\bulkinvite\invitations.csv** a CSV-fájl útvonala): 
+Ellenőrizze, hogy a hozzáadott vendég felhasználók szerepelnek-e a könyvtárban a Azure Portal vagy a PowerShell használatával.
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-A szkript meghívót küld az Invitations.csv fájlban található e-mail-címeknek. Minden felhasználó számára a következőhöz hasonló kimenetnek kell megjelennie:
+### <a name="view-guest-users-in-the-azure-portal"></a>Vendég felhasználók megtekintése a Azure Portalban
 
-![Felhasználói elfogadásra várakozást mutató PowerShell-kimenet](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
+2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+3. A **Kezelés** alatt válassza a **Felhasználókat**.
+4. A **Megjelenítés**területen válassza ki a **csak vendég felhasználók** elemet, és ellenőrizze, hogy a hozzáadott felhasználók szerepelnek-e a listáján.
 
-## <a name="verify-users-exist-in-the-directory"></a>A felhasználók a könyvtárban való megjelenésének ellenőrzése
+### <a name="view-guest-users-with-powershell"></a>Vendég felhasználók megtekintése a PowerShell-lel
 
-Annak ellenőrzésére, hogy a meghívott felhasználókat hozzáadták-e az Azure AD-hoz, futtassa a következő parancsot:
+Futtassa a következő parancsot:
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Megtekintheti a meghívott felhasználó szerepel a listában, egy egyszerű felhasználónévvel (UPN) a következő formátumban *emailaddress*EXT #\@*tartomány*. Ha például *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a Meghívók küldése.
+
+A meghívott felhasználókat a következő formátumban kell megjelennie: *EmailAddress*#EXT #\@*tartomány*. Például: *lstokes_fabrikam. com #\@ext # contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölheti a tesztfelhasználói fiókokat a címtárban. A felhasználói fiók törléséhez a következő parancsot futtassa:
+Ha már nincs rá szükség, törölheti a felhasználói fiókokat a Azure Portal a felhasználók lapon, ha bejelöli a vendég felhasználó melletti jelölőnégyzetet, majd kiválasztja a **Törlés**lehetőséget. 
+
+Vagy futtathatja a következő PowerShell-parancsot egy felhasználói fiók törléséhez:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 Például:`Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban tömeges meghívókat küldött szervezeten kívüli vendégfelhasználóknak. A következő szakaszban megtudhatja, hogyan működik a meghívások érvényesítési folyamata.
 
 > [!div class="nextstepaction"]
 > [További információ az Azure AD B2B együttműködés meghívóérvényesítési folyamatáról](redemption-experience.md)
-

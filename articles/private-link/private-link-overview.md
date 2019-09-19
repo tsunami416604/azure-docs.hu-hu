@@ -1,21 +1,21 @@
 ---
-title: Mi az az Azure Private link?
-description: További információ az Azure Private linkről.
-services: virtual-network
+title: Mi az az Azure privát kapcsolat?
+description: Ismerje meg, hogyan használhatja az Azure Private-hivatkozást az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérésére a virtuális hálózat privát végpontján keresztül.
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 9b7dea0507d4434274d78546b98961b008ea8cd8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017891"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104656"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Mi az az Azure Private link? (Előzetes verzió)
-Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át, ami kiküszöböli a nyilvános internetről való kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
+# <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
+Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
 
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az ismert korlátozásokért lásd: [privát végpont](private-endpoint-overview.md#limitations) és [privát kapcsolat szolgáltatás](private-link-service-overview.md#limitations).

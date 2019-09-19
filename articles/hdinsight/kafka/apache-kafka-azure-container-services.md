@@ -1,19 +1,19 @@
 ---
 title: Az Azure Kubernetes szolgáltatás használata a Kafka on HDInsight
 description: Ismerje meg, hogyan használható a Kafka a HDInsight az Azure Kubernetes szolgáltatásban (ak) üzemeltetett tárolók rendszerképein.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960583"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122641"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
@@ -43,10 +43,9 @@ Ez a dokumentum azt is feltételezi, hogy elvégezte az [Azure Kubernetes szolg�
 
 Mind a HDInsight, mind az AK egy Azure-Virtual Network használ a számítási erőforrások tárolójának. A HDInsight és az AK közötti kommunikáció engedélyezéséhez engedélyeznie kell a hálózatok közötti kommunikációt. A jelen dokumentum lépései a Virtual Network a hálózatokra való kapcsolódást használják. Más kapcsolatok, például a VPN is működnek. A társítással kapcsolatos további információkért tekintse meg a [virtuális hálózat](../../virtual-network/virtual-network-peering-overview.md) társítása című dokumentumot.
 
-
 A következő ábra a dokumentumban használt hálózati topológiát szemlélteti:
 
-![HDInsight egy virtuális hálózatban, AK-ban egy másikban, és a hálózatokkal összekapcsolt hálózatok](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![HDInsight egy virtuális hálózatban (ak) egy másikban, a társítás használatával](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]  
 > A névfeloldás nincs engedélyezve a megosztott hálózatok között, ezért az IP-címzést használja a rendszer. Alapértelmezés szerint a Kafka on HDInsight úgy van konfigurálva, hogy az IP-címek helyett a gazdagépek nevét állítsa vissza, amikor az ügyfelek csatlakoznak. A jelen dokumentumban ismertetett lépések a Kafka-t úgy módosítják, hogy helyette az IP-hirdetéseket használják.
@@ -113,7 +112,7 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
 3. A Kafka-konfiguráció megtekintéséhez válassza a __konfigurációk__ lehetőséget a felső középső listából.
 
-    ![A Kafka-hez készült konfigurációk hivatkozásai](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    ![Apache Ambari Services-konfiguráció](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
 
@@ -135,7 +134,7 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
-    ![Konfiguráció mentése gomb](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 
@@ -192,6 +191,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
+
     A művelet végrehajtása több percet is igénybe vehet.
 
 8. Szerkessze a Kubernetes jegyzékfájlját`kafka-aks-test.yaml`(), `microsoft` és cserélje le a 4. lépésben beolvasott ACR-lekéréséhez.
@@ -212,7 +212,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
 11. Nyisson meg egy webböngészőt, és adja meg a szolgáltatás külső IP-címét. A következő képhez hasonló oldal érkezik:
 
-    ![Weblap képe](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    ![Apache Kafka weblap képe](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. Írja be a szöveget a mezőbe, majd kattintson a __Küldés__ gombra. Az adatküldés a Kafka szolgáltatásba történik. Az alkalmazásban a Kafka-fogyasztó beolvassa az üzenetet, és hozzáadja azt a Kafka-szakasz __üzeneteihez__ .
 

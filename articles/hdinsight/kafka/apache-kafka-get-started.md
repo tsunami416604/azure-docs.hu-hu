@@ -1,19 +1,19 @@
 ---
 title: A HDInsight Apache Kafka beállítása a Azure Portal-gyors útmutató használatával
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960262"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123589"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -38,8 +38,8 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A bal oldali menüben navigáljon a **+ erőforrás** > létrehozása**elemzési** > **HDInsight**elemre.
-   
-    ![HDInsight-fürt létrehozása](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Erőforrás-HDInsight Azure Portal létrehozása](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. Az **Alapvető beállítások** képernyőn adja meg vagy válassza ki a következő információkat:
 
@@ -47,9 +47,9 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     | --- | --- |
     | Fürt neve | A HDInsight-fürt egyedi neve. |
     | Előfizetés | Válassza ki előfizetését. |
-    
+
    Válassza ki a __Fürt típusát__ a **Fürtkonfiguráció** megjelenítéséhez.
-   
+
    ![A HDInsight-beli Apache Kafka-fürt alapszintű konfigurálása](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. A __fürtkonfiguráció__területen válassza ki a következő értékeket:
@@ -61,7 +61,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
     Válassza a **kijelölés** lehetőséget a fürt típusának beállításainak mentéséhez és az __alapismeretekhez__való visszatéréshez.
 
-    ![Fürt típusának kiválasztása](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight Apache Kafka-fürt típusa](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. Az __Alapvető beállítások__ képernyőn adja meg vagy válassza ki a következő információkat:
 
@@ -77,7 +77,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
     Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
 
-   ![Előfizetés kiválasztása](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![A fürt alapalapjainak Azure Portal létrehozása](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Kattintson a __tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
@@ -105,7 +105,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
 
 11. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül válassza a **Létrehozás** elemet a fürt létrehozásához.
 
-    ![A fürtkonfiguráció összegzése](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![a Kafka-fürt konfigurációjának összegzése](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     A fürt létrehozása 20 percig is eltarthat.
 
@@ -301,7 +301,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
 > [!WARNING]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban.
+> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
 > 
 > Az Apache Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 

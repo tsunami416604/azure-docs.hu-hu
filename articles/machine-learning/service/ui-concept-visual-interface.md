@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996529"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128805"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Mi a Azure Machine Learning vizuális felülete? 
 
@@ -95,8 +95,8 @@ A modell üzembe helyezésének megismeréséhez tekintse [meg az oktatóanyag: 
 
 * Ismerkedjen meg a prediktív elemzés és a gépi tanulás [alapjaival az Oktatóanyaggal: Az autó árának előrejelzése a vizuális felületen](ui-tutorial-automobile-price-train-score.md)
 * Használja az egyik mintát, és módosítsa az igényeinek megfelelően:
-    * [1. példa – regresszió: Előre jelzett ár](ui-sample-regression-predict-automobile-price-basic.md)
-    * [2. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [3. példa – besorolás: Hitelkockázat előrejelzése](ui-sample-classification-predict-credit-risk-basic.md)
-    * [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [5. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés](ui-sample-classification-predict-churn.md)
+    * [1. példa – regresszió: Előre jelzett ár](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [2. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [3. példa – besorolás: Hitelkockázat előrejelzése](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [5. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés](how-to-ui-sample-classification-predict-churn.md)

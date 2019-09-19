@@ -1,30 +1,30 @@
 ---
-title: Lekérdezés az Apache Hive ODBC-illesztőt és PowerShell – Azure HDInsight
-description: A Microsoft Hive ODBC-illesztőt használja, és a PowerShell-lel az Apache Hive-lekérdezést az Azure HDInsight-fürtök.
-keywords: Hive, a hive odbc, a powershell
+title: Lekérdezés Apache Hive ODBC-illesztővel és PowerShell-Azure HDInsight
+description: A Microsoft kaptár ODBC-illesztővel és a PowerShell-lel lekérdezheti Apache Hive fürtöket az Azure HDInsight.
+keywords: struktúra, kaptár ODBC, PowerShell
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b02c865e953861b5ac396538fdd0f0623b0e5428
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486101"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122180"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Oktatóanyag: Lekérdezés az Apache Hive ODBC és a PowerShell segítségével
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Oktatóanyag: Lekérdezés Apache Hive ODBC-vel és PowerShell-lel
 
-Microsoft ODBC-illesztőprogramok kommunikál a különböző típusú adatforrásokat, többek között az Apache Hive rugalmas lehetőséget biztosíthat. A PowerShell parancsfájl-kezelési nyelvet, amely megnyit egy kapcsolatot a Hive-fürthöz, szabadon lekérdezés adja át az ODBC-illesztőprogramok használatával kód írása, és megjeleníti az eredményeket.
+A Microsoft ODBC-illesztők rugalmas módszert biztosítanak különböző típusú adatforrásokkal való kommunikációra, beleértve a Apache Hivet is. Az ODBC-illesztőket használó parancsfájlok olyan parancsfájlokat írhatnak, mint például a PowerShell, amelyekkel megnyitható egy kapcsolódás a kaptár-fürthöz, át kell adni a választott lekérdezést, és megjeleníti az eredményeket.
 
-Ebben az oktatóanyagban teheti meg a következő feladatokat:
+Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
-> * Töltse le és telepítse a Microsoft Hive ODBC-illesztő
-> * A fürthöz társított egy Apache Hive ODBC-adatforrás létrehozása
-> * Lekérdezés minta adatait a fürthöz PowerShell használatával
+> * Töltse le és telepítse a Microsoft kaptár ODBC-illesztőt
+> * A fürthöz kapcsolódó Apache Hive ODBC-adatforrás létrehozása
+> * Minta adatainak lekérdezése a fürtből a PowerShell használatával
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -32,57 +32,57 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* Egy HDInsight interaktív lekérdezési fürtöt. Hozzon létre egyet, tekintse meg [Azure HDInsight – első lépések](../hdinsight-hadoop-provision-linux-clusters.md). Válassza ki **interaktív lekérdezés** , a fürt típusát.
+* Egy interaktív lekérdezési fürt a HDInsight-on. Az első lépésekhez tekintse meg [Az Azure HDInsight megismerését](../hdinsight-hadoop-provision-linux-clusters.md)ismertető témakört. Válassza az **interaktív lekérdezés** lehetőséget a fürt típusaként.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>A Microsoft Hive ODBC-illesztőprogram telepítése
+## <a name="install-microsoft-hive-odbc-driver"></a>A Microsoft kaptár ODBC-illesztő telepítése
 
-Töltse le és telepítse a [a Microsoft Hive ODBC-illesztő](https://go.microsoft.com/fwlink/?LinkID=286698).
+Töltse le és telepítse a [Microsoft kaptár ODBC-illesztőt](https://go.microsoft.com/fwlink/?LinkID=286698).
 
-## <a name="create-apache-hive-odbc-data-source"></a>Az Apache Hive ODBC-adatforrás létrehozása
+## <a name="create-apache-hive-odbc-data-source"></a>ODBC-adatforrás létrehozása Apache Hive
 
-A következő lépések bemutatják, hogyan hozhat létre egy Apache Hive ODBC-adatforrásból.
+A következő lépések bemutatják, hogyan hozhat létre Apache Hive ODBC-adatforrást.
 
-1. Lépjen a Windows, **Start** > **Windows felügyeleti eszközök** > **ODBC adatforrások (32-bit)/(64-bit)** .  Egy **ODBC Data Source Administrator** ablak nyílik meg.
+1. A Windowsban navigáljon a**Windows felügyeleti eszközök** > **ODBC-adatforrások (32 bites)/(64 bites)** **elindításához** > .  Megnyílik egy **ODBC adatforrás-rendszergazda** ablak.
 
-    ![OBDC az adatforrás rendszergazdájához](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC Data Source Administrator használatával Adatforrásnevet konfigurálása")
+    ![OBDC-adatforrás rendszergazdája](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Adatforrás konfigurálása az ODBC-adatforrás rendszergazdájával")
 
-1. Az a **felhasználói DSN** lapon jelölje be **Hozzáadás** megnyitásához a **új adatforrás létrehozása** ablak.
+1. A **felhasználói DSN** lapon válassza a **Hozzáadás** lehetőséget az **új adatforrás létrehozása** ablak megnyitásához.
 
-1. Válassza ki **a Microsoft Hive ODBC-illesztő**, majd válassza ki **Befejezés** megnyitásához a **a Microsoft Hive ODBC DSN illesztőinek** ablak.
+1. Válassza a **Microsoft kaptár ODBC-illesztő**lehetőséget, majd kattintson a **Befejezés** gombra a **Microsoft kaptár ODBC-illesztő DSN-telepítő** ablak megnyitásához.
 
 1. Írja be vagy válassza ki az alábbi értékeket:
 
    | Tulajdonság | Leírás |
    | --- | --- |
    |  Adatforrás neve |Adjon nevet az adatforrásának |
-   |  Host(s) |Írja be a `CLUSTERNAME.azurehdinsight.net` (igen) kifejezést. Például: `myHDICluster.azurehdinsight.net` |
+   |  Állomás (ok) |Írja be a `CLUSTERNAME.azurehdinsight.net` (igen) kifejezést. Például: `myHDICluster.azurehdinsight.net` |
    |  Port |Használja a **443** számú portot.|
-   |  Adatbázis |Használat **alapértelmezett**. |
-   |  Mechanizmus |Válassza ki **Windows Azure HDInsight szolgáltatást** |
-   |  Felhasználónév |Adja meg a HDInsight fürt HTTP-felhasználó felhasználóneve. Az alapértelmezett felhasználónév az **admin**. |
-   |  Jelszó |Adja meg a HDInsight-fürt felhasználói jelszót. Jelölje be a **(titkosított) jelszó mentése**.|
+   |  Adatbázis |Használja az **alapértelmezett értéket**. |
+   |  Eljárás |A **Windows Azure HDInsight szolgáltatás** kiválasztása |
+   |  Felhasználónév |Adja meg a HDInsight-fürt HTTP-felhasználói felhasználónevét. Az alapértelmezett felhasználónév az **admin**. |
+   |  Windows 10 |Adja meg a HDInsight-fürt felhasználói jelszavát. Jelölje be a **Jelszó mentése (titkosított)** jelölőnégyzetet.|
 
-1. Nem kötelező: Válassza ki **speciális beállítások**.  
+1. Nem kötelező: Válassza a **Speciális beállítások lehetőséget**.  
 
    | Paraméter | Leírás |
    | --- | --- |
-   |  Natív lekérdezés használata |Ha be van jelölve, az ODBC-illesztő nem meg HiveQL TSQL alakíthatja. Használja ezt a beállítást, csak ha 100 %-os arról, hogy beküld tiszta HiveQL utasításokat. Ha csatlakozik az SQL Server vagy az Azure SQL Database, akkor hagyja bejelölve. |
-   |  Egy blokk lehívott sorok száma |Ha nagy számú rekord beolvasása, hangolása ezt a paramétert fiókdíjat optimális teljesítményének biztosítása érdekében. |
-   |  Alapértelmezett karakterlánc oszlop hossza, a bináris oszlop hossza, a decimális oszlop skála |Az adattípus hosszúságok és hatással lehet szükséges, milyen adatokat ad vissza. Helytelen adatokat vissza kell az pontosság csökkenése és csonkolása miatt azok kárt. |
+   |  Natív lekérdezés használata |Ha be van jelölve, az ODBC-illesztő nem próbálkozik a TSQL konvertálásával a HiveQL-be. Ezt a lehetőséget csak akkor használja, ha 100%-ban biztos abban, hogy tiszta HiveQL-utasításokat küld. SQL Server vagy Azure SQL Databasehoz való csatlakozáskor nincs bejelölve. |
+   |  Beolvasott sorok száma blokkban |Nagy számú rekord beolvasása esetén a paraméter finomhangolása az optimális teljesítmény biztosítása érdekében szükséges lehet. |
+   |  Alapértelmezett karakterlánc-oszlop hossza, Bináris oszlop hossza, decimális oszlop mérete |Az adattípus hossza és pontossága befolyásolhatja az adatvisszaadás módját. A pontosság és a csonkítás elvesztése miatt helytelen adatokat ad vissza. |
 
-    ![Speciális beállítások](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "DSN speciális konfigurációs lehetőségek")
+    ![Speciális DSN-konfigurációs beállítások](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Speciális DSN-konfigurációs beállítások")
 
-1. Válassza ki **tesztelése** teszteléséhez az adatforrás. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye látható **sikeres**.  
+1. Válassza a **teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **sikert**mutatja.  
 
-1. Válassza ki **OK** a Teszt ablak bezárásához.  
+1. A teszt ablak bezárásához kattintson **az OK gombra** .  
 
-1. Válassza ki **OK** gombra kattintva zárja be a **a Microsoft Hive ODBC DSN illesztőinek** ablak.  
+1. Kattintson az **OK** gombra a **Microsoft kaptár ODBC illesztőprogram-DSN telepítési** ablak bezárásához.  
 
-1. Válassza ki **OK** gombra kattintva zárja be a **ODBC Data Source Administrator** ablak.  
+1. Kattintson az **OK** gombra az **ODBC-adatforrás felügyeleti** ablakának bezárásához.  
 
-## <a name="query-data-with-powershell"></a>Adatok lekérdezése a PowerShell-lel
+## <a name="query-data-with-powershell"></a>Adatlekérdezés a PowerShell-lel
 
-A következő PowerShell-parancsfájlt az egy függvényt, hogy ODBC lekérdezni egy Hive-fürtöt.
+A következő PowerShell-szkript egy olyan függvény, amely az ODBC-vel kérdezi le a kaptár-fürtöt.
 
 ```powershell
 function Get-ODBC-Data {
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-A következő kódrészletet használja a fenti funkciót hajthat végre egy lekérdezést az interaktív lekérdezési fürt, az oktatóanyag kezdetén létrehozott. Cserélje le `DATASOURCENAME` együtt a **adatforrás neve** a megadott a **a Microsoft Hive ODBC DSN illesztőinek** képernyő. Amikor a rendszer kéri a hitelesítő adatokat, adja meg a felhasználónevet és jelszót, amely alatt a megadott **fürt bejelentkezési felhasználóneve** és **fürt bejelentkezési jelszavának** a fürt létrehozásakor.
+Az alábbi kódrészlet a fenti függvény használatával hajt végre egy lekérdezést az oktatóanyag elején létrehozott interaktív lekérdezési fürtön. Cserélje `DATASOURCENAME` le a értéket a **Microsoft kaptár ODBC-illesztőprogram DSN-telepítő** képernyőjén megadott **adatforrás nevére** . Ha a rendszer a hitelesítő adatok megadását kéri, adja meg a fürt létrehozásakor a **fürt bejelentkezési felhasználóneve** és a **fürt bejelentkezési jelszava** alatt megadott felhasználónevet és jelszót.
 
 ```powershell
 
@@ -122,11 +122,11 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a HDInsight-fürt és a storage-fiókot. Ehhez válassza ki az erőforráscsoportot, amelyben a fürt létrejött, és kattintson a **törlése**.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a HDInsight-fürtöt és a Storage-fiókot. Ehhez válassza ki azt az erőforráscsoportot, amelyben a fürtöt létrehozták, majd kattintson a **Törlés**gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja a Microsoft Hive ODBC-illesztőt és a PowerShell-adatokat lekérni az Azure HDInsight interaktív lekérdezési fürt.
+Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Microsoft kaptár ODBC-illesztőt és a PowerShellt az Azure HDInsight interaktív lekérdezési fürt adatainak lekéréséhez.
 
 > [!div class="nextstepaction"]
-> [Az Excel összekapcsolása a Apache Hive ODBC segítségével](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
+> [Az Excel és a Apache Hive összekötése az ODBC használatával](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

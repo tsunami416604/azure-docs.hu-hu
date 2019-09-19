@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018852"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130226"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -163,3 +163,7 @@ A Azure Firewallnak több virtuálisgép-példányt kell kiépítenie. A/26 cím
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Meg kell változtatni a tűzfal alhálózatának méretét a szolgáltatás léptékének megfelelően?
 
 Nem. Azure Firewall a/26-nál nagyobb alhálózatra nincs szükség.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
+
+Nem. A Azure Firewall alapértelmezés szerint blokkolja Active Directory hozzáférését. A hozzáférés engedélyezéséhez konfigurálja a AzureActiveDirectory szolgáltatás címkéjét. További információ: [Azure Firewall szolgáltatás címkéi](service-tags.md).

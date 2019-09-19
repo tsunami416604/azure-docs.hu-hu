@@ -2,18 +2,18 @@
 title: Azure HDInsight-eszközök – interaktív PySpark-környezet a Visual Studio Code-hoz
 description: Megtudhatja, hogyan hozhat létre és küldhet el lekérdezéseket és parancsfájlokat a Visual Studio Code-hoz készült Azure HDInsight Tools használatával.
 keywords: VScode, Azure HDInsight-eszközök, struktúra, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktív struktúra, interaktív lekérdezés
-ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: d220d81b8dc57541113f7ef1e477bb77d394e206
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f62f7994818e487202e35e4931472355fb6ac3d2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879289"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130192"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A PySpark interaktív környezet beállítása a Visual Studio Code-hoz
 
@@ -22,19 +22,18 @@ A következő lépések bemutatják, hogyan állíthatja be a PySpark interaktí
 A **Python/pip** parancs használatával virtuális környezetet építhet ki a saját elérési útjában. Ha más verziót szeretne használni, manuálisan kell módosítania a **Python/pip** parancs alapértelmezett verzióját. További részletek: [update-alternatives](https://linux.die.net/man/8/update-alternatives).
 
 1. Telepítse a [Pythont](https://www.python.org/downloads/) és a [pip](https://pip.pypa.io/en/stable/installing/)-et.
-   
+
    + Telepítse a Pythont a alkalmazásból [https://www.python.org/downloads/](https://www.python.org/downloads/).
    + A pip [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) telepítése (ha nem a Python-telepítésből van telepítve).
    + Ellenőrizze, hogy a Python és a pip telepítése sikeresen megtörtént-e az alábbi parancsokkal. Választható
- 
-        ![Python pip verziója](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+
+        ![A Python pip Version parancsának keresése](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
      > Javasoljuk, hogy a macOS alapértelmezett verziójának használata helyett manuálisan telepítse a Pythont.
 
-
 2. Telepítse a **virtualenv** az alábbi parancs futtatásával.
-   
+
    ```
    pip install virtualenv
    ```
@@ -43,7 +42,7 @@ A **Python/pip** parancs használatával virtuális környezetet építhet ki a 
 
 Ha hibaüzenetet kap, telepítse a szükséges csomagokat a következő parancsok futtatásával:
 
-   ![libkrb5-csomag](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   ![A Pythonhoz készült libkrb5-csomag telepítése](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
 ```
 sudo apt-get install libkrb5-dev

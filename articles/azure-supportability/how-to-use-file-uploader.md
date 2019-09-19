@@ -1,10 +1,10 @@
 ---
-title: A Microsoft Azure új támogatási kérelem segédprogram irányelvek fájl feltöltése |} A Microsoft Docs
-description: Az útmutató ismerteti, Microsoft Azure új támogatási kérelem fájlfeltöltés segédprogram használata esetén
+title: Microsoft Azure új támogatási kérelem fájlfeltöltés-használati útmutatója | Microsoft Docs
+description: Útmutatás a Microsoft Azure új támogatási kérelem fájlfeltöltés-segédprogramjának használatakor
 services: ''
 documentationcenter: ''
 author: genlin
-manager: ''
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 949d6b00b4e04921ea745dd4efa1b8a58c49f534
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 088835f6983814bbe47afeeec210ac41964e7863
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995643"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121161"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>A Microsoft Azure új támogatási kérelem segédprogram irányelvek fájl feltöltése
-Ha Ön [hozzon létre egy támogatási kérést](https://portal.azure.com/#create/Microsoft.Support), a fájl feltöltése segédprogram segítségével könnyedén diagnosztikai fájlok feltöltése vagy úgy véli, hogy az incidens a többi fájlt.  
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure új támogatási kérelem fájl feltöltése segédprogramra vonatkozó irányelvek
+Ha [támogatási kérést hoz létre](https://portal.azure.com/#create/Microsoft.Support), a fájlfeltöltés segédprogrammal könnyedén fel lehet tölteni a diagnosztikai fájlokat vagy az incidenshez kapcsolódó más fájlokat.  
 
 > [!NOTE]
-> Adatainak védelme, nem tartalmaznak személyes adatokat a feltöltést.
+> Az adatvédelem védelme érdekében ne adjon meg személyes adatokat a feltöltéshez.
 >
 >
 
-Ha a fájl feltöltése segédprogramot használja, kövesse az alábbi irányelveket:
+A fájlfeltöltés segédprogram használatakor kövesse az alábbi irányelveket:
 
-* Minden fájl a fájlnév kiterjesztését, például a .docx vagy .xlsx-fájlba kell rendelkeznie. Tekintse meg a tábla engedélyezett fájlnévkiterjesztések listájához.
-* A fájlnév legfeljebb 110 karakter kell lennie.
-* Egynél több fájl feltöltése nem sikerült.
-* Fájlok nem lehet nagyobb, mint 4 MB.
+* Minden fájlnak rendelkeznie kell fájlnévkiterjesztés (például. docx vagy. xlsx). Tekintse meg az engedélyezett fájlnévkiterjesztések listáját tartalmazó táblázatot.
+* A fájl neve nem lehet hosszabb 110 karakternél.
+* Legfeljebb egy fájlt tölthet fel.
+* A fájlok nem lehetnek nagyobbak 4 MB-nál.
 
-## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblája
+## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblázata
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
-| .a          | .db   | .ics        | .oft  | .RDL     | .tdf       | .xlr    |
-| .abc        | .DMP  | .ini        | .old  | .RDLC    | .text      | .xls    |
-| .adm        | .do_  | .java       | .one  | .re_     | .thmx      | .xlsb   |
-| .aspx       | .doc  | .jpg        | .osd  | .reg     | .tif       | .xlsm   |
-| .ATF        | .docm | .LDF        | .OUT  | .remove  | .TRC       | .xlsx   |
-| .b          | .docx | .letterhead | .p1   | .ren     | .TTD       | .xlt    |
-| .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
-| .bak        | .dotx | .lo_        | .pdb  | .RFT     | .txt       | .xml    |
-| .bat        | .dtsx | .log        | .pdf  | .rpt     | .uccapilog | .xmla   |
-| .blg        | .eds  | .lpk        | .piz  | .RTE     | .uccplog   | .xps    |
-| .CA_        | .emf  | .manifest   | .pmls | .rtf     | .udcx      | .xsd    |
-| .CAB        | .eml  | .master     | .png  | .run     | .vb_       | .xsn    |
-| .cap        | .emz  | .mdmp       | .potx | .saz     | .vbs_      | .xxx    |
-| .catx       | .err fájllal egészít ki  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
+| .7z         | .dat  | .hwl        | .odx  | . rar     | .tdb       | . xlam   |
+| . a          | .db   | . ics        | . gyakran  | . rdl     | .tdf       | . XLR    |
+| .abc        | .DMP  | . ini        | . régi  | . RDLC    | . Text      | . xls    |
+| .adm        | .do_  | .java       | . egy  | .re_     | .thmx      | .xlsb   |
+| .aspx       | . doc  | . jpg        | .osd  | . reg     | .tif       | . xlsm   |
+| . ATF        | . docm | .LDF        | . KI  | .remove  | . TRC       | .xlsx   |
+| .b          | .docx | . levélpapírfejléc | . P1   | .ren     | . TTD       | . xlt    |
+| .ba_        | . dotm | . lnk        | . Pcap | .rename  | .tx_       | .xltx   |
+| . bak        | .dotx | .lo_        | .pdb  | . RFT     | .txt       | .xml    |
+| .bat        | .dtsx | .log        | .pdf  | . RPT     | .uccapilog | .xmla   |
+| . blg        | . EDS  | . LPK        | . Piz  | . RTE     | .uccplog   | . XPS    |
+| .CA_        | . EMF  | . manifest   | .pmls | .rtf     | .udcx      | .xsd    |
+| .CAB        | . EML  | . Master     | .png  | .run     | .vb_       | . xsn    |
+| . Cap        | . a. a  | .mdmp       | .potx | .saz     | .vbs_      | .xxx    |
+| .catx       | . err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
 | .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
-| .compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
-| .Config     | .evtx | .ms_        | .prn  | .svclog  | .wks       | .zi     |
-| .cpk        | .EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
-| .cpp        | .ex_  | .msi        | .pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
-| .CSV        | .FRD  | .msu        | -      |-          | .wps       | .zipp   |
-| .CVR        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
-| -            | .GUID | -            | -      | -         | .wsdl      | .zippy  |
+| . tömörített | .evt  | .mpg        | .pptx | .stp     | . wdb       | .z02    |
+| .Config     | .evtx | .ms_        | . prn  | .svclog  | . WKS       | .zi     |
+| . CPK        | . PÉLDÁUL   | .msg        | .psf  |   -       | . WMA       | .zi_    |
+| .cpp        | .ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
+| . cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
+| .CSV        | .FRD  | .msu        | -      |-          | . wps       | .zipp   |
+| . CVR        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
+| -            | . GUID | -            | -      | -         | .wsdl      | .zippy  |
 | -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
-| -            | -      | -            | -      | -         | .wtl       | .zit    |
+| -            | -      | -            | -      | -         | .wtl       | . zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |
 | -            | -      | -            | -      | -         |  -          | .zzz    |

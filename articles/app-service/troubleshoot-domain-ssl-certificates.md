@@ -4,7 +4,7 @@ description: A tartomány-és SSL-tanúsítványokkal kapcsolatos problémák el
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.service: app-service-web
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 097d4ea45827223a5d3e64a2d1ca326569db9958
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113537"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121983"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>A tartomány-és SSL-tanúsítványokkal kapcsolatos problémák elhárítása Azure App Service
 
 Ez a cikk azokat a gyakori problémákat sorolja fel, amelyek akkor merülhetnek fel, ha a Azure App Service webalkalmazásaihoz konfigurál egy tartományi vagy SSL-tanúsítványt. Emellett leírja a problémák lehetséges okait és megoldásait is.
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN-és stack overflow fórumokban](https://azure.microsoft.com/support/forums/)található Azure-szakértőkkel. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN-és stack overflow fórumokban](https://azure.microsoft.com/support/forums/)található Azure-szakértőkkel. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -137,7 +137,7 @@ Egy altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet az alk
 #### <a name="solution"></a>Megoldás
 
 - Az előfizetés rendszergazdájával ellenőrizze, hogy van-e engedélye az állomásnév hozzáadására az alkalmazáshoz.
-- Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: altartomány [hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
 
 ### <a name="dns-cant-be-resolved"></a>A DNS nem oldható fel
 
@@ -268,7 +268,7 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 
     |Rekordtípus|Gazdagép|Mutasson a|
     |------|------|-----|
-    |J|@|Alkalmazás IP-címe|
+    |A|@|Alkalmazás IP-címe|
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 

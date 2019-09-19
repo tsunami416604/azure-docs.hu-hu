@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987904"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129288"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás Azure Active Directory Activity naplók a Content Pack hibái 
 
@@ -47,7 +47,7 @@ Ez a cikk a lehetséges okokkal és a hibák megoldásával kapcsolatos informá
 | Ok | A javítás módja |
 | ---   | ---        |
 | A hibák frissítése akkor okozhat hibát, ha a Content Packhez csatlakozó felhasználók hitelesítő adatai alaphelyzetbe lettek állítva, de nem frissültek a Content Pack csatlakozási beállításaiban. | A Power BIban keresse meg az Azure AD-tevékenységek naplói irányítópultjának megfelelő adatkészletet (**Azure Active Directory tevékenység naplóit**), válassza az ütemezett frissítés lehetőséget, majd adja meg az Azure ad-beli hitelesítő adatait. |
-| Nagy adathalmazok miatt a frissítés sikertelen lehet. | Jelenleg az Azure AD Content Pack Power BI csak kisméretű adatkészleteket tud támogatni (kevesebb, mint 500, 00 sor), mert néhány korlátozás miatt a Power BI szolgáltatásban időtúllépések fordulnak elő. Ha szabályozási hibák merülnek fel, vagy ha a frissítés időtúllépési problémák miatt meghiúsul, ennek oka az lehet, hogy nagy adatkészletet próbál beolvasni. Csökkentse a lekérdezés időszakát, és próbálkozzon újra.|
+| Nagy adathalmazok miatt a frissítés sikertelen lehet. | Jelenleg az Azure AD Content Pack Power BI csak kisméretű adatkészleteket tud támogatni (kevesebb mint 500 000 sor), mert a Power BI szolgáltatásban megjelenő időtúllépések miatt bizonyos korlátozások vannak érvényben. Ha szabályozási hibák merülnek fel, vagy ha a frissítés időtúllépési problémák miatt meghiúsul, ennek oka az lehet, hogy nagy adatkészletet próbál beolvasni. Csökkentse a lekérdezés időszakát, és próbálkozzon újra.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nem sikerült frissíteni az adatforrás hitelesítő adatait 

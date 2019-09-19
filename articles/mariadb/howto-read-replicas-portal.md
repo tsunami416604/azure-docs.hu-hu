@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309179"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123593"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a Azure Portal használatával
 
@@ -47,7 +47,7 @@ Az olvasási replika kiszolgáló a következő lépések segítségével hozhat
     ![Azure Database for MariaDB – replika helye](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
+   > A régiók közötti replikáció előzetes verzióban érhető el. Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
 
 7. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** .
 
@@ -122,7 +122,7 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt replikát Azure Database for MariaDB-kiszolgálót.
 
-2. Az oldalsáv **figyelés** szakaszában válassza a **metrikák**elemet:
+2. Az oldalsáv **figyelés** szakaszában válassza a metrikák elemet:
 
 3. A rendelkezésre álló metrikák legördülő listájában válassza a **replikálás késése másodpercben** lehetőséget.
 

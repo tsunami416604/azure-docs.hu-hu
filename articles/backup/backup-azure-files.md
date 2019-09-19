@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624357"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129551"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése és visszaállítása
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -86,13 +86,15 @@ Esetenként érdemes lehet létrehozni biztonsági mentési pillanatképet vagy 
 
    ![Kattintson a Biztonsági mentés elemre az Azure-fájlmegosztás tárolóval történő társításához](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Az Azure-fájlmegosztások listájában jelölje ki a kívánt fájlmegosztást. Megnyílik a kijelölt fájlmegosztáshoz tartozó Biztonságimásolat-elem menü.
+3. Az Azure-fájlmegosztások listájában jelölje ki a kívánt fájlmegosztást. Megjelenik a **biztonsági mentési elem** részletei. A **biztonsági mentési elem** menüben kattintson a **biztonsági mentés most**elemre. Mivel ez egy igény szerinti biztonsági mentési feladat, nincs társítva adatmegőrzési szabályzat a helyreállítási ponthoz.
 
    ![Kattintson a Biztonsági mentés elemre az Azure-fájlmegosztás tárolóval történő társításához](./media/backup-file-shares/backup-item-menu.png)
 
-4. Kattintson a Biztonságimásolat-elem menü **Biztonsági mentés** lehetőségére. Mivel ez egy igény szerinti biztonsági mentési feladat, nincs társítva adatmegőrzési szabályzat a helyreállítási ponthoz. Megnyílik a **Biztonsági mentés** párbeszédpanel. Adja meg a helyreállítási pont megőrzésének utolsó napját.
+4. Megnyílik a **Biztonsági mentés** párbeszédpanel. Adja meg a helyreállítási pont megőrzésének utolsó napját.
 
    ![Kattintson a Biztonsági mentés elemre az Azure-fájlmegosztás tárolóval történő társításához](./media/backup-file-shares/backup-now-menu.png)
+
+5. Az igény szerinti biztonsági mentési feladatok megerősítéséhez kattintson **az OK** gombra.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Azure-fájlmegosztás visszaállítása biztonsági másolatból
 Ha vissza kell állítania egy teljes fájlmegosztást, illetve egyes fájlokat vagy mappákat egy helyreállítási pontról, lépjen a Biztonságimásolat-elemre az előző szakaszban leírtak szerint. Válassza a **Megosztás visszaállítása** lehetőséget egy teljes fájlmegosztás egy kívánt időpontból történő visszaállításához. Ekkor megjelenik a visszaállítási pontok listája. Jelöljön ki egyet, hogy felülírhassa a jelenlegi fájlmegosztást, vagy állítsa vissza ezt egy másik fájlmegosztásra ugyanabban a régióban.

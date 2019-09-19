@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e4f2d4f0e7dd9380ba708d84dfe7588043fd4a68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236701"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122381"
 ---
-# <a name="cli-example-create-and-submit-a-job"></a>CLI-példa: Egy feladat létrehozása és elküldése
+# <a name="cli-example-create-and-submit-a-job"></a>CLI-példa: Feladatok létrehozása és elküldése
 
-A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell adnia a Media Services számára a bemeneti videó helyét. A beállításokat egyik HTTPS URL-címet adja meg a feladat bemeneti (ahogyan az ebben a cikkben látható). 
+A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell adnia a Media Services számára a bemeneti videó helyét. Az egyik lehetőség, ha egy HTTPS URL-címet ad meg a feladathoz tartozó bemenetként (a jelen cikkben látható módon). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -33,11 +33,11 @@ A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell a
 
 ## <a name="example-script"></a>Példaszkript
 
-Futtatásakor `az ams job start`, a feladat kimenetének állíthat be egy címkét. A címke később azonosíthatja, hogy a kimeneti adategység Mi az a használható. 
+A futtatásakor `az ams job start`beállíthat egy címkét a feladatok kimenetén. A címke később is használható annak azonosítására, hogy mi ez a kimeneti eszköz. 
 
-- A címkét rendel egy értéket, ha "--kimeneti-objektumok," assetname = label "
-- A címke nem rendel egy értéket, ha "--kimeneti-objektumok," assetname = ".
-  Figyelje meg, hogy, adja hozzá a "=" való a `output-assets`. 
+- Ha a címkéhez értéket rendel, állítsa a "--output-assets" kifejezést "assetname = label" értékre.
+- Ha nem rendel értéket a címkéhez, állítsa a "--output-assets" értéket a "assetname =" értékre.
+  Figyelje meg, hogy hozzáadja a "=" `output-assets`kifejezést a következőhöz:. 
 
 ```azurecli
 az ams job start \
@@ -50,7 +50,7 @@ az ams job start \
   -g amsResourceGroup 
 ```
 
-Ehhez hasonló kapott választ:
+Ehhez hasonló választ kap:
 
 ```
 {
@@ -87,4 +87,4 @@ Ehhez hasonló kapott választ:
 
 ## <a name="next-steps"></a>További lépések
 
-[Media Services áttekintése](media-services-overview.md)
+[az AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

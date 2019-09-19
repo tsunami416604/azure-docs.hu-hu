@@ -1,19 +1,19 @@
 ---
 title: A HDInsight Apache Kafka beállítása a Azure PowerShell-gyors útmutató használatával
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure PowerShell használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: c47df581edafbb2a378e7c5e75516a44fafcab71
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779502"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123152"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Gyors útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
@@ -317,7 +317,7 @@ Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használ
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a Remove [-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a HDInsight és az összes kapcsolódó erőforrást.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a HDInsight és az összes kapcsolódó erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992236"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130406"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ A fő feladat az URI-k lefordítása, amelyeknek `adl://` `abfss://` előtaggal 
 
 Schéma URI Pro Data Lake Storage Gen1 említett [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) részletei, de Összefoglalva elmondható, a rendszer *adl://mydatalakestore.azuredatalakestore.net/\<fájl_elérési_útja\>.*
 
-A Data Lake Storage Gen2 fájlok eléréséhez szükséges URI-sémát részletesen ismertetjük, de széles körben szólva. [](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`
+A Data Lake Storage Gen2 fájlok eléréséhez szükséges URI-sémát részletesen ismertetjük, de széles körben szólva. [](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
 Haladjon végig a meglévő alkalmazásokkal, és győződjön meg arról, hogy módosította az URI-k megfelelően, Data Lake Storage Gen2-re mutasson kell megjelennek. Emellett szüksége adja hozzá a megfelelő hitelesítő adatokat. Végül hogyan az eredeti telepítéséhez, és cserélje le az új alkalmazást kell szorosan össze kell hangolni a teljes frissítési stratégia.
 

@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási aj
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165252"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105267"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -21,9 +21,9 @@ Ebből a cikkből megtudhatja, hogyan tehet közzé egy nyilvános vagy privát 
 > [!NOTE]
 > Az ajánlatok létrehozásához és közzétételéhez érvényes fiókkal kell rendelkeznie a [partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Ha még nem rendelkezik fiókkal, a [regisztrációs folyamat](https://aka.ms/joinmarketplace) végigvezeti a fiók létrehozásának lépésein a partner Centerben és a kereskedelmi piactér programban való regisztrálásban. A [rendszer automatikusan hozzárendeli](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) az Ön Microsoft Partner Network (MPN) azonosítóját a közzétett ajánlatokhoz, és nyomon követheti az ügyfelek bevonásának következményeit.
 >
-> Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, Azure Resource Manager-sablonok használatával manuálisan is bevezetheti az ügyfeleket. További információ: az ügyfél beléptetése [Az Azure által delegált erőforrás](onboard-customer.md)-felügyeletbe.
+> Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, Azure Resource Manager-sablonok használatával manuálisan is bevezetheti az ügyfeleket. További információ: az ügyfél beléptetése [Az Azure által delegált erőforrás-felügyeletbe](onboard-customer.md).
 
-A felügyelt szolgáltatások ajánlatának közzététele hasonló az Azure Marketplace-en bármilyen más típusú ajánlat közzétételéhez. Ennek a folyamatnak a megismeréséhez tekintse meg az [Azure Marketplace és a AppSource közzétételi útmutatóját](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) , és kezelje az [Azure és a AppSource Marketplace ajánlatait](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Tekintse át a [kereskedelmi piactérre](https://docs.microsoft.com/legal/marketplace/certification-policies)vonatkozó minősítési szabályzatokat, különösen a [felügyelt szolgáltatások](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) szakaszt.
+A felügyelt szolgáltatások ajánlatának közzététele hasonló az Azure Marketplace-en bármilyen más típusú ajánlat közzétételéhez. Ennek a folyamatnak a megismeréséhez tekintse meg az [Azure Marketplace és a AppSource közzétételi útmutatóját](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) , és [kezelje az Azure és a AppSource Marketplace ajánlatait](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Tekintse át a [kereskedelmi piactérre vonatkozó minősítési szabályzatokat](https://docs.microsoft.com/legal/marketplace/certification-policies), különösen a [felügyelt szolgáltatások](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) szakaszt.
 
 > [!IMPORTANT]
 > A felügyelt szolgáltatások ajánlatának minden csomagja tartalmaz egy **jegyzékfájl részleteit** tartalmazó szakaszt, ahol megadhatja a bérlőben a Azure Active Directory (Azure ad) azon entitásait, amelyek hozzáférhetnek a delegált erőforráscsoportok és/vagy előfizetésekhez azon ügyfelek számára, akik a csomag megvásárlása. Fontos megjegyezni, hogy az itt foglalt bármely csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkához, egy külön privát csomagot kell közzétennie, amely kizárólag az egyes ügyfelekre vonatkozik.
@@ -62,7 +62,7 @@ Ezután hajtsa végre a következő szakaszokat a **terv részletei** szakaszban
 |**Számlázási modell**     | Itt 2 számlázási modell látható, de **a saját licencét** kell választania a felügyelt szolgáltatások ajánlatait illetően. Ez azt jelenti, hogy az ügyfeleket közvetlenül az ajánlattal kapcsolatos költségekkel számoljuk fel, és a Microsoft semmilyen díjat nem számít fel Önnek.   |
 |**Ez egy privát csomag?**     | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános). Ha ezt a beállítást választja, a csomag nem korlátozódik meghatározott ügyfelekre (vagy bizonyos számú ügyfélre); Miután közzétett egy nyilvános csomagot, később nem módosíthatja magánjellegűre. Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 20 000 előfizetés esetén). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot. További információ: [Private SKU-i és csomagok](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
 
-Végül fejezze be a **manifest** details szakaszt. Ezzel létrehoz egy jegyzékfájlt, amely engedélyezési információkat biztosít az ügyfelek erőforrásainak kezeléséhez. Az itt megadott információk az Azure-beli delegált erőforrás-kezelésre vonatkozó ügyfeleinek bevezetéséhez szükségesek. A fentiekben leírtak szerint ezek az engedélyek minden olyan ügyfélre érvényesek lesznek, aki megvásárolja a csomagot, így ha korlátozni szeretné egy adott ügyfél hozzáférését, közzé kell tennie egy privát csomagot a kizárólagos használatra.
+Végül fejezze be a **manifest details** szakaszt. Ezzel létrehoz egy jegyzékfájlt, amely engedélyezési információkat biztosít az ügyfelek erőforrásainak kezeléséhez. Az itt megadott információk az Azure-beli delegált erőforrás-kezelésre vonatkozó ügyfeleinek bevezetéséhez szükségesek. A fentiekben leírtak szerint ezek az engedélyek minden olyan ügyfélre érvényesek lesznek, aki megvásárolja a csomagot, így ha korlátozni szeretné egy adott ügyfél hozzáférését, közzé kell tennie egy privát csomagot a kizárólagos használatra.
 
 - Először adja meg a jegyzékfájl **verzióját** . Használja az *n. n. n* formátumot (például 1.2.5).
 - Ezután adja meg a **bérlői azonosítóját**. Ez a szervezet Azure Active Directory bérlői azonosítójával társított GUID (azaz a bérlő, amely az ügyfelek erőforrásainak kezeléséhez fog dolgozni). Ha nem rendelkezik ezzel a hasznos megoldással, a fiók neve fölé helyezve a Azure Portal jobb felső sarkában vagy a **címtár váltása**lehetőségre kattintva. 
@@ -71,7 +71,7 @@ Végül fejezze be a **manifest** details szakaszt. Ezzel létrehoz egy jegyzék
   - **Azure ad-objektum azonosítója**: Egy felhasználó, felhasználói csoport vagy alkalmazás Azure AD-azonosítója, amely bizonyos engedélyeket kap (a szerepkör-definíció szerint) az ügyfelek erőforrásai számára.
   - **Azure ad-objektum megjelenített neve**: Egy rövid név, amely segít az ügyfélnek megérteni az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
   - **Szerepkör-definíció**: Válassza ki az elérhető Azure AD-beli szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. További információ ezekről a szerepkörökről: [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Hozzárendelhető szerepkörök**: Ha az engedélyezés **szerepkör** -definíciójában a felhasználói hozzáférés rendszergazdája lehetőséget választotta, akkor itt hozzáadhat egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
+  - **Hozzárendelhető szerepkörök**: Erre csak akkor van szükség, ha az engedélyezéshez a szerepkör- **definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
 
 > [!TIP]
 > A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet.
@@ -112,7 +112,7 @@ A **Hero (815x290)** embléma nem kötelező, de ajánlott. Ha egy Hero-emblém�
 - A hős emblémájának háttere nem lehet fekete, fehér vagy átlátszó. Győződjön meg arról, hogy a háttérszín nem túl világos, mert a beágyazott szöveg fehér színnel jelenik meg.
 - Miután közzétette az ajánlatát egy hős ikonnal, nem távolíthatja el (bár szükség esetén más verzióval is frissítheti).
 
-Az **érdeklődői felügyelet** szakaszban kiválaszthatja azt a CRM-rendszert, amelyen az érdeklődőket tárolni fogja. Vegye figyelembe, hogy a felügyelt szolgáltatásokra vonatkozó [minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** .
+Az **érdeklődői felügyelet** szakaszban kiválaszthatja azt a CRM-rendszert, amelyen az érdeklődőket tárolni fogja. Vegye figyelembe, hogy a [felügyelt szolgáltatásokra vonatkozó minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** .
 
 Végül adja meg az **adatvédelmi szabályzat URL-címét** és **használati feltételek** a **jogi** szakaszban. Itt megadhatja azt is, hogy a [standard szerződést](https://docs.microsoft.com/azure/marketplace/standard-contract) használja-e az ajánlathoz.
 
@@ -190,4 +190,4 @@ Microsoft.ManagedServices  Registered
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
-- [Megtekintheti és kezelheti](view-manage-customers.md) az ügyfeleket a Azure Portalban lévő **ügyfelekkel** .
+- [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

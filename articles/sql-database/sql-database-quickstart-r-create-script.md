@@ -1,7 +1,7 @@
 ---
-title: Hozzon létre, és egyszerű R-szkriptek futtatása
+title: Egyszerű R-parancsfájlok létrehozása és futtatása
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Egyszerű R-szkriptek futtatása az Azure SQL Database, Machine Learning Services (előzetes verzió).
+description: Futtasson egyszerű R-parancsfájlokat Azure SQL Database Machine Learning Servicesban (előzetes verzió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,34 +13,34 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708586"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123195"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Hozzon létre, és egyszerű R-szkriptek futtatása az Azure SQL Database, Machine Learning Services (előzetes verzió)
+# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Egyszerű R-parancsfájlok létrehozása és futtatása Azure SQL Database Machine Learning Servicesban (előzetes verzió)
 
-Ebben a rövid útmutatóban fog létrehozása és futtatása az egyszerű R-szkriptek használata a nyilvános előzetes verziója [Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database](sql-database-machine-learning-services-overview.md). Megtudhatja, hogyan burkolhatja egy megfelelően formázott R-szkript a tárolt eljárás az, hogy [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , és hajtsa végre a parancsfájl egy SQL database-ben.
+Ebben a rövid útmutatóban egyszerű R-szkripteket hozhat létre és futtathat a [Azure SQL Database Machine learning Services (R)](sql-database-machine-learning-services-overview.md)nyilvános előzetes verziójával. Megtudhatja, hogyan csomagolhat jól formázott R-szkriptet a tárolt eljárás [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , és hogyan hajthatja végre a szkriptet egy SQL-adatbázisban.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/) .
 
-- Példakód futtatható a témaköröket, először szüksége van egy Azure SQL database, a Machine Learning-szolgáltatások (az r nyelv) engedélyezve van. A nyilvános előzetes verzió ideje alatt a Microsoft is megjelenik majd, és engedélyezze a gépi tanulás a meglévő vagy új adatbázis számára. Kövesse a [regisztrálni az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
+- A fenti gyakorlatokban szereplő mintakód futtatásához először rendelkeznie kell egy Azure SQL Database-adatbázissal, amelynek Machine Learning Services (R) engedélyezve van. A nyilvános előzetes verzióban a Microsoft bevezeti Önt, és lehetővé teszi a gépi tanulást a meglévő vagy az új adatbázishoz. Kövesse a regisztráció az [előzetes](sql-database-machine-learning-services-overview.md#signup)verzióra című témakör lépéseit.
 
-- Győződjön meg arról, hogy telepítette a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Más adatbázis-kezelő vagy a lekérdezési eszközökkel R-szkriptek futtatása, de ez a rövid útmutató az ssms-t fogja használni.
+- Győződjön meg arról, hogy telepítette a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Az R-szkripteket más adatbázis-kezelő vagy lekérdezési eszközök használatával is futtathatja, de ebben a rövid útmutatóban a SSMS-t fogja használni.
 
-- Ebben a rövid útmutatóban egy kiszolgálószintű tűzfalszabály konfigurálását igényli. Ennek módjáról további információkért lásd: [kiszolgálószintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
+- Ehhez a rövid útmutatóhoz kiszolgálói szintű tűzfalszabály konfigurálására van szükség. Ennek módjáról további információt a [kiszolgálói szintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md)című témakörben talál.
 
-## <a name="run-a-simple-script"></a>Egy egyszerű szkript futtatása
+## <a name="run-a-simple-script"></a>Egyszerű parancsfájl futtatása
 
-Egy R-szkript futtatásához fog át kell adnia azt az argumentumként a rendszerszintű tárolt eljárással [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+R-szkript futtatásához adja át argumentumként a rendszer tárolt eljárásának [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-A következő lépésekben fog futtassa az SQL database-ben Ez a példa R-szkript:
+A következő lépésekben az alábbi R-szkriptet fogja futtatni az SQL-adatbázisban:
 
 ```r
 a <- 1
@@ -52,11 +52,11 @@ print(c(c, d))
 
 1. Nyissa meg az **SQL Server Management Studiót**, és csatlakozzon az SQL-adatbázishoz.
 
-   Ha a kapcsolódás segítségre van szüksége, tekintse meg [a rövid útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez](sql-database-connect-query-ssms.md).
+   Ha segítségre van szüksége a csatlakozáshoz, tekintse [meg a gyors útmutató: Az Azure SQL Database-adatbázisok](sql-database-connect-query-ssms.md)összekapcsolásához és lekérdezéséhez használja a SQL Server Management Studio.
 
-1. Adja át a teljes R-szkriptet a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárást.
+1. Adja át a teljes R-parancsfájlt a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásnak.
 
-   A parancsfájl keresztülmegy a `@script` argumentum. Minden belül a `@script` argumentum érvényes R-kódot kell lennie.
+   A szkript áthalad az `@script` argumentumon. Az `@script` argumentumon belül minden elemnek érvényes R-kódnak kell lennie.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -69,15 +69,15 @@ print(c(c, d))
     '
     ```
 
-   Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. Lásd: [Előfeltételek](#prerequisites) felett.
+   Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. Lásd a fenti [előfeltételeket](#prerequisites) .
 
    > [!NOTE]
-   > Ha Ön rendszergazda, a külső kód automatikusan is futtathatja. A engedélyt más felhasználóknak a parancsot:
-   <br>**ENGEDÉLYEZÉS végrehajtása bármely külső parancsfájl a**  *\<felhasználónév\>*.
+   > Ha Ön rendszergazda, a külső kódokat automatikusan is futtathatja. A paranccsal engedélyeket adhat más felhasználóknak a következő parancs használatával:
+   <br>**külső parancsfájl végrehajtásának engedélyezése** Felhasználónév.  *\<\>*
 
-2. A megfelelő eredmény kiszámítása és az R `print` függvény az eredményt adja vissza a **üzenetek** ablak.
+2. A rendszer kiszámítja a megfelelő eredményt `print` , és az R függvény visszaadja az eredményt az **üzenetek** ablakba.
 
-   valahogy így kell kinéznie.
+   Ehhez hasonlóan kell kinéznie.
 
     **Results**
 
@@ -86,9 +86,9 @@ print(c(c, d))
     0.5 2
     ```
 
-## <a name="run-a-hello-world-script"></a>Egy "Hello World" parancsfájl futtatása
+## <a name="run-a-hello-world-script"></a>"Helló világ!" alkalmazás szkript futtatása
 
-Egy tipikus példaszkript egyike, amely csak a "Hello World" karakterlánc. Futtassa a következő parancsot.
+Egy tipikus példa a parancsfájl az egyik, hogy csak a ""Helló világ!"alkalmazás" karakterláncot adja eredményül. Futtassa a következő parancsot.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -98,30 +98,28 @@ WITH RESULT SETS(([Hello World] INT));
 GO
 ```
 
-Ez a tárolt eljárás bemeneti adatokat a következők:
+A tárolt eljárás bemenetei a következők:
 
 | | |
 |-|-|
-| @language | Meghatározza a szeretne hívásokat indítani, ebben az esetben az R nyelv bővítmény |
-| @script | határozza meg a parancsok átadva az R futtatókörnyezettel. A teljes R-szkript közé kell tenni ehhez az argumentumhoz Unicode formátumú. Is hozzáadhatja a szöveg típusú változó **nvarchar** majd hívja a változó |
-| @input_data_1 | az R futtatókörnyezettel, amely visszaadja az adatokat az SQL Server adatkeretek átadott a lekérdezés által visszaadott adatok |
-|A RESULT SETS | záradék meghatározása a visszaadott adatok tábla sémája az SQL Server, az oszlop neve "Hello World" hozzáadása **int** az adattípus |
+| @language | meghatározza, hogy milyen nyelvi bővítményt kell hívni, ebben az esetben R |
+| @script | az R Runtime számára átadott parancsokat határozza meg. Ebben az argumentumban a teljes R-szkriptet Unicode-szövegként kell megadni. Azt is megteheti, hogy hozzáadta a szöveget egy **nvarchar** típusú változóhoz, majd meghívja a változót. |
+| @input_data_1 | a lekérdezés által visszaadott adatok, amelyek az R futtatókörnyezetnek lettek átadva, amely visszaadja az adatok SQL Server adatkeretként |
+|EREDMÉNYHALMAZ | a záradék meghatározza a visszaadott adattábla sémáját a SQL Serverhoz, hozzáadva a ""Helló világ!"alkalmazás" nevet az oszlop neveként, az **int** adattípushoz. |
 
-A parancs kimenete a következő szöveget:
+A parancs kimenete a következő szöveg:
 
 | Hello World |
 |-------------|
 | 1 |
 
-## <a name="use-inputs-and-outputs"></a>Használat bemenetek és kimenetek
+## <a name="use-inputs-and-outputs"></a>Bemenetek és kimenetek használata
 
-Alapértelmezés szerint [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) egyetlen adatkészletet fogad bemenetként, amely általában adjon meg egy érvényes SQL-lekérdezést formájában. Ezután visszaadja egy egyetlen R-adatkeretbe kimenetként.
+Alapértelmezés szerint a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) egyetlen adatkészletet fogad el bemenetként, amely általában érvényes SQL-lekérdezés formájában van megadva. Ezután egy adott R-adatkeretet ad vissza kimenetként.
 
-Csak egy bemeneti adathalmaz továbbítható paraméterként, és csak egy adathalmaz adható vissza. Azonban az R-kódból más adathalmazokat is meghívhat, és az adathalmaz mellett más típusú kimeneteket is visszaadhat. Az OUTPUT kulcsszó hozzáadásával az eredmények között bármely paramétert visszaadhatja.
+Egyelőre a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)alapértelmezett bemeneti és kimeneti változóit fogjuk használni: **InputDataSet** és **OutputDataSet**.
 
-Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti változókat [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **InputDataSet** és **OutputDataSet**.
-
-1. Tesztadatok kis tábla létrehozása.
+1. Hozzon létre egy kis táblát a tesztelési adathoz.
 
     ```sql
     CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -137,7 +135,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
     GO
     ```
 
-1. Használja a `SELECT` utasítással lekérdezése a tábla.
+1. A tábla `SELECT` lekérdezéséhez használja az utasítást.
   
     ```sql
     SELECT *
@@ -148,7 +146,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
     ![Az RTestData tábla tartalma](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. A következő R-szkript futtatásához. Lekéri az adatokat a tábla használatával a `SELECT` utasítással, azt áthalad az R futtatókörnyezettel, és visszaadja az adatokat, adatkeretek. A `WITH RESULT SETS` záradékban az SQL Database, az oszlop nevét határozza meg a visszaadott adatok tábla sémája *NewColName*.
+1. Futtassa a következő R-szkriptet. Lekéri a táblázat adatait az `SELECT` utasítás használatával, átadja azt az R Runtime-on keresztül, és adatkeretként adja vissza az adatokból. A `WITH RESULT SETS` záradék meghatározza a visszaadott adattábla sémáját a SQL Databasehoz, és hozzáadja a *NewColName*oszlop nevét.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -161,7 +159,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
     ![Egy R-szkript kimenete, amely adatokat ad vissza egy táblából](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Most módosítsuk a a bemeneti és kimeneti változók nevében. Az alapértelmezett bemeneti és kimeneti változók nevében a rendszer **InputDataSet** és **OutputDataSet**, ez a szkript módosítja a nevek **SQL_in** és **SQL_out**:
+1. Most változtassa meg a bemeneti és a kimeneti változók nevét. A bemeneti és kimeneti változók alapértelmezett nevei a **InputDataSet** és a **OutputDataSet**, ez a szkript a neveket a **SQL_in** és a **SQL_out**értékre módosítja:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -172,14 +170,14 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Vegye figyelembe, hogy az R a kis-és nagybetűket. A bemeneti és kimeneti változókat használja az R-szkript (**SQL_out**, **SQL_in**) meg kell egyeznie a megadott érték beolvasása `@input_data_1_name` és `@output_data_1_name`, beleértve az esetet.
+    Vegye figyelembe, hogy az R a kis-és nagybetűk megkülönböztetése. Az R-szkriptben (**SQL_out**, **SQL_in**) használt bemeneti és kimeneti változóknak meg kell egyezniük a `@input_data_1_name` és `@output_data_1_name`a által definiált értékekkel, beleértve az esetet is.
 
    > [!TIP]
    > Csak egy bemeneti adathalmaz továbbítható paraméterként, és csak egy adathalmaz adható vissza. Azonban az R-kódból más adathalmazokat is meghívhat, és az adathalmaz mellett más típusú kimeneteket is visszaadhat. Az OUTPUT kulcsszó hozzáadásával az eredmények között bármely paramétert visszaadhatja.
 
-1. Csak az R-szkript használata nincs a bemeneti adatok értékeket is generálható (`@input_data_1` értéke üres).
+1. A bemeneti adatok nélkül is létrehozhat értékeket az R-parancsfájl használatával (`@input_data_1` üresre van állítva).
 
-   A következő parancsfájl jelenít meg a "hello" szöveggel és a "world".
+   A következő szkript a "Hello" és a "World" szöveget adja eredményül.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -197,7 +195,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
 ## <a name="check-r-version"></a>Az R verziószámának ellenőrzése
 
-Ha szeretné, megtekintheti, melyik R verziója telepítve van az SQL database-ben, futtassa a következő szkriptet.
+Ha szeretné megtekinteni, hogy az R melyik verziója van telepítve az SQL-adatbázisban, futtassa az alábbi szkriptet.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -205,7 +203,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-Az R `print` funkciója a **Messages** (Üzenetek) ablakban adja vissza a verziót. Az alábbi példa kimenetében látható, hogy az SQL Database ebben az esetben rendelkezik R 3.4.4 telepített verziója.
+Az R `print` funkciója a **Messages** (Üzenetek) ablakban adja vissza a verziót. Az alábbi példában látható kimenetben láthatja, hogy ebben az esetben a SQL Database R Version 3.4.4 van telepítve.
 
 **Results**
 
@@ -232,7 +230,7 @@ nickname       Someone to Lean On
 
 A Microsoft számos előre telepített R-csomagot biztosít a Machine Learning Services-hez az SQL-adatbázisban.
 
-Milyen r csomagok telepítése, verzió, a függőségeket, a licenc és a könyvtár elérési útja információk, beleértve listájának megtekintéséhez futtassa az alábbi parancsfájlt.
+Ha meg szeretné tekinteni, hogy mely R-csomagok vannak telepítve, beleértve a verziószámot, a függőségeket, a licenceket és a könyvtár elérési útját, futtassa az alábbi szkriptet.
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -247,7 +245,7 @@ WITH result sets((
             ));
 ```
 
-A kimenet származik `installed.packages()` az R és eredményeként visszaadott beállítása.
+A kimenet az R `installed.packages()` -ből származik, és eredményként adja vissza.
 
 **Results**
 
@@ -255,13 +253,13 @@ A kimenet származik `installed.packages()` az R és eredményeként visszaadott
 
 ## <a name="next-steps"></a>További lépések
 
-Hozzon létre egy gépi tanulási modellt az R használata SQL Database-ben, kövesse az ebben a rövid útmutatóban:
+Ha a gépi tanulási modellt a SQL Database R használatával szeretné létrehozni, kövesse az alábbi rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Hozzon létre és betanítunk egy prediktív modellt az R az Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-train-score-model.md)
+> [Prediktív modell létrehozása és betanítása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-train-score-model.md)
 
-További információ az Azure SQL Database Machine Learning Services (előzetes verzió) R-rel tekintse meg a következő cikkekben talál.
+Az R (előzetes verzió) Azure SQL Database Machine Learning Servicesról a következő cikkekben talál további információt.
 
-- [Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel](sql-database-machine-learning-services-overview.md)
-- [Az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával speciális R-függvények írása](sql-database-machine-learning-services-functions.md)
-- [R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
+- [Azure SQL Database Machine Learning Services R-vel (előzetes verzió)](sql-database-machine-learning-services-overview.md)
+- [Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
+- [R-és SQL-adatmennyiség használata Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165034"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105279"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -20,10 +20,10 @@ Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe 
 
 Ezt a folyamatot megismételheti, ha több ügyfél erőforrásait kezeli. Ezután, amikor egy jogosult felhasználó bejelentkezik a bérlőbe, a felhasználó jogosult lehet az ügyfél-kihelyezés hatókörében a felügyeleti műveletek végrehajtására anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
 
-A Microsoft Partner Network-(MPN-) azonosítót társíthatja a beérkező előfizetésekkel, hogy nyomon követhesse az ügyfelek és a fogadások elismerését. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Vegye figyelembe, hogy ezt a társítást külön kell elvégeznie minden olyan ügyfél-bérlőnél, amelyben erőforrásokat kezel. 
+A Microsoft Partner Network-(MPN-) azonosítót társíthatja a beérkező előfizetésekkel, hogy nyomon követhesse az ügyfelek és a fogadások elismerését. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Vegye figyelembe, hogy ezt a társítást a szolgáltatói bérlőben kell végrehajtania.
 
 > [!NOTE]
-> Az ügyfelek automatikusan beállíthatók az Azure Marketplace-en közzétett felügyelt szolgáltatások (nyilvános vagy privát) vásárlása esetén. További információ: felügyelt [szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal is elvégezheti.
+> Az ügyfelek automatikusan beállíthatók az Azure Marketplace-en közzétett felügyelt szolgáltatások (nyilvános vagy privát) vásárlása esetén. További információ: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal is elvégezheti.
 
 A bevezetési folyamathoz a szolgáltató bérlője és az ügyfél bérlője között végrehajtandó műveletek szükségesek. A fenti lépéseket a cikk ismerteti.
 
@@ -275,4 +275,4 @@ az account list
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
-- [Megtekintheti és kezelheti](view-manage-customers.md) az ügyfeleket a Azure Portalban lévő **ügyfelekkel** .
+- [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

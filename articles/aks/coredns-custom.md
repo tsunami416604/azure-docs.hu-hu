@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018663"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130014"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása az Azure Kubernetes szolgáltatással
 
@@ -20,7 +20,7 @@ Az Azure Kubernetes Service (ak) a [CoreDNS][coredns] -projektet használja a f�
 
 Mivel az AK felügyelt szolgáltatás, nem módosíthatja a CoreDNS (a *alapfájl*) fő konfigurációját. Ehelyett Kubernetes- *ConfigMap* használ az alapértelmezett beállítások felülbírálásához. Az alapértelmezett AK-CoreDNS ConfigMaps megtekintéséhez használja az `kubectl get configmaps --namespace=kube-system coredns -o yaml` parancsot.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS alapszintű, az AK-ban található testreszabási lehetőségei
+Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS alapszintű, az AK-ban található testreszabási lehetőségei Ez a megközelítés különbözik a CoreDNS más kontextusokban való konfigurálásának, például a alapfájl használatával. Ellenőrizze, hogy a futtatott CoreDNS verziója módosul-e a verziók között.
 
 > [!NOTE]
 > `kube-dns`a Kubernetes konfigurációs térképén keresztül különböző [testreszabási lehetőségek][kubednsblog] is elérhetők. A CoreDNS visszafelé **nem** kompatibilis a Kube-DNS szolgáltatással. A korábban használt testreszabásokat frissíteni kell a CoreDNS-mel való használatra.
@@ -31,7 +31,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 
 ## <a name="what-is-supportedunsupported"></a>Támogatás/nem támogatott
 
-A beépített CoreDNS beépülő modulok támogatottak. A bővítmények és a harmadik féltől származó beépülő modulok nem támogatottak. 
+A beépített CoreDNS beépülő modulok támogatottak. A bővítmények és a harmadik féltől származó beépülő modulok nem támogatottak.
 
 ## <a name="rewrite-dns"></a>DNS újraírása
 

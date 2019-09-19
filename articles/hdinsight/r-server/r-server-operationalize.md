@@ -1,19 +1,19 @@
 ---
 title: Működővé tenni ML-szolgáltatások a HDInsight-ben – Azure
 description: Ismerje meg, hogyan működővé tenni az adatmodellt, hogy előrejelzéseket készítsen az Azure HDInsight ML-szolgáltatásaival.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967661"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123562"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -50,31 +50,31 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
 
-    ![egy box-op1](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R Server felügyeleti segédprogram kiválasztása](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Ezzel a lehetőséggel megadhatja, hogyan szeretné működővé tenni ML Server. A megjelenő beállítások közül válassza ki az elsőt a következő beírásával **:.**
 
-    ![egy box-op2](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R Server felügyeleti segédprogram működővé tenni](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. Ha a rendszer kéri, írja be és írja be újra a helyi rendszergazda felhasználó jelszavát.
 
 1. A művelet sikerességét sugalló kimenetnek kell megjelennie. A menüben egy másik lehetőséget is meg kell adnia. Válassza az E lehetőséget a főmenüre való visszatéréshez.
 
-    ![egy box-op3](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![Az R Server felügyeleti segédprogramjának sikeressége](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. A diagnosztikai ellenőrzéseket a következőképpen végezheti el diagnosztikai tesztek futtatásával:
 
     a. A főmenüben válassza a **6** lehetőséget a diagnosztikai tesztek futtatásához.
 
-    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![R Server felügyeleti segédprogram diagnosztika](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. A diagnosztikai tesztek menüből válassza ki **a**következőt:. Ha a rendszer kéri, adja meg a helyi rendszergazda felhasználóhoz megadott jelszót.
 
-    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![R Server felügyeleti segédprogram tesztelése](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Győződjön meg arról, hogy a kimenetben látható, hogy a teljes állapot pass.
 
-    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R Server felügyeleti segédprogram pass](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. A megjelenő menüben adja meg az **E** gombot a főmenühöz való visszatéréshez, majd írja be a **8-as** értéket a felügyeleti segédprogramból való kilépéshez.
 
@@ -148,7 +148,7 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 
 1. Kattintson a **műveletek** > **kiválasztott gazdagépek** > **gazdagépek** > **karbantartási mód bekapcsolása**elemre. A következő képen például a wn3 és a wn4 pontokat választottuk ki leszerelésre.  
 
-   ![feldolgozó csomópont(ok) leszerelése](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Az Apache Ambari bekapcsolja a karbantartási módot](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * Válassza a **műveletek** > **kiválasztott gazdagépek** > **adatcsomópontok** > kattintson a **leszerelés**elemre.
 * Válassza a **műveletek** > **kiválasztott gazdagépek** > **csomópontkezelők** > kattintson a **leszerelés**elemre.

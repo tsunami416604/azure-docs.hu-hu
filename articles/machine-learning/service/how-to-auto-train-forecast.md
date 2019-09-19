@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035051"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130234"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -95,10 +95,10 @@ Az `AutoMLConfig` objektum meghatározza az automatizált gépi tanulási felada
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
 |`max_horizon`|Meghatározza a maximálisan kívánatos előrejelzési horizontot a Time-sorozat gyakoriságának egységében. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havonta, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
-|`target_lags`|*n* időszakok – a modell betanítása előtt továbbítson késési célként megadott értékeket.||
+|`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. Ez listaként vagy egyetlen egész számként jelenik meg.||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, < = betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete.||
 
-Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa az `time_column_name` `day_datetime` értékét a mezőre az adatkészletben. Adja meg `grain_column_names` a paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adathalmazhoz, egy pedig az a és a `max_horizon` B tárolóhoz. Végül állítsa a 50-re a teljes tesztelési csoport előrejelzéséhez. Állítsa be az előrejelzési ablakot 10 időszakra `target_rolling_window_size`, és a megjelenő értékeket a `target_lags` paraméterrel megelőzően 2 időszakra késlelteti.
+Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa az `time_column_name` `day_datetime` értékét a mezőre az adatkészletben. Adja meg `grain_column_names` a paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adathalmazhoz, egy pedig az a és a `max_horizon` B tárolóhoz. Végül állítsa a 50-re a teljes tesztelési csoport előrejelzéséhez. Állítsa be az előrejelzési ablakot 10 időszakra a `target_rolling_window_size`értékkel, és egyetlen késést határozzon meg a megcélzott értékeken a `target_lags` paraméterrel megjelenő 2 időszakra vonatkozóan.
 
 ```python
 time_series_settings = {
@@ -111,8 +111,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+
+`grain_column_names` A fenti kódrészletben a AutoML két külön idősorozat-csoportot hoz létre, más néven több idősorozatot. Ha nincs megadva gabona, a AutoML azt feltételezi, hogy az adatkészlet egy egyidejű adatsorozat. Ha többet szeretne megtudni az egyidejű adatsorozatokról, tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+
+
 
 Most hozzon létre `AutoMLConfig` egy standard objektumot, adja `forecasting` meg a feladattípust, és küldje el a kísérletet. A modell befejeződése után kérje le a legjobb futtatási iterációt.
 

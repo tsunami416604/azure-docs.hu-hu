@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102284"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129966"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>szövegfelismerés Docker-tárolók konfigurálása
+# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
-A **szövegfelismerés** tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tárolóra jellemző beállítások a számlázási beállítások. 
+A Computer Vision tároló futásidejű környezetét a `docker run` parancs argumentumai segítségével állíthatja be. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tárolóra jellemző beállítások a számlázási beállítások. 
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -63,9 +63,9 @@ Ne felejtse el `vision/v1.0` hozzáadni az útválasztást a végpont URI-hoz az
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http-proxy hitelesítő adatainak beállításai
+## <a name="http-proxy-credentials-settings"></a>HTTP-proxy hitelesítő adatainak beállításai
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Naplózási beállítások
  
@@ -84,14 +84,12 @@ A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs r
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
+## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
 Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](computer-vision-how-to-install-containers.md#stop-the-container) azt.
 
 * **Vonal-folytatási karakter**: A következő részben található Docker-parancsok a háttér perjelet `\`használják, mint a sor folytatási karaktere. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
 * **Argumentumok sorrendje**: Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
-
-Ne felejtse el `vision/v1.0` hozzáadni az útválasztást a végpont URI-hoz az alábbi táblázatban látható módon. 
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
@@ -104,17 +102,19 @@ Cserélje le a(z)_argument_name_} a saját értékeire:
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](computer-vision-how-to-install-containers.md#billing).
-> A ApiKey értéke az Azure `Cognitive Services` Resource Keys oldal kulcsa. 
+> A ApiKey értéke az Azure `Cognitive Services` Resource Keys oldal kulcsa.
 
-## <a name="recognize-text-container-docker-examples"></a>A szöveges tároló Docker-példák felismerése
+## <a name="container-docker-examples"></a>Tárolók Docker-példák
 
-A következő Docker-példák a felismerhető szöveg tárolóra vonatkoznak. 
+#### <a name="readtabread"></a>[Olvasás](#tab/read)
 
-### <a name="basic-example"></a>Alapszintű példa 
+A következő Docker-példák az olvasási tárolóra vonatkoznak.
+
+### <a name="basic-example"></a>Alapszintű példa
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -123,7 +123,32 @@ A következő Docker-példák a felismerhető szöveg tárolóra vonatkoznak.
 ### <a name="logging-example"></a>Példa naplózásra 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+#### <a name="recognize-texttabrecognize-text"></a>[Szövegének felismerése](#tab/recognize-text)
+
+A következő Docker-példák a szövegfelismerés tárolóra vonatkoznak.
+
+### <a name="basic-example"></a>Alapszintű példa
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>Példa naplózásra
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
   Billing={ENDPOINT_URI} \
@@ -131,6 +156,8 @@ A következő Docker-példák a felismerhető szöveg tárolóra vonatkoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
+***
+
 ## <a name="next-steps"></a>További lépések
 
-* Felülvizsgálat [telepítéséről és a tárolókat futtatják](computer-vision-how-to-install-containers.md)
+* [A tárolók telepítésének és futtatásának](computer-vision-how-to-install-containers.md)áttekintése.

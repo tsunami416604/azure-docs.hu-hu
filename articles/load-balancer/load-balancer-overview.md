@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: allensu
-ms.openlocfilehash: fb7c0c31ad91bfdb6ea360c1909a216f0779ebde
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 349d8afd46a06455edcd25e2a7ea48f407d285ef
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274618"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130421"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -171,6 +171,7 @@ A Standard Load Balancer SLA-ról a [Load Balancer SLA](https://aka.ms/lbsla) ol
 
 - A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Egy előtér kapcsolatának sikeres érvényesítését a terheléselosztásnál vagy belső NAT-szabálynál (TCP vagy UDP) használt protokollal megegyező sávban kell elvégezni, _és_ a virtuális gépek közül legalább egynek választ kell előállítania egy ügyfél számára, hogy választ kapjon egy előtérbeli helyről.  Ha nem érkezik sávon belüli válasz a Load Balancer előteréből, az azt jelzi, hogy egyetlen virtuális gép sem tudott válaszolni.  Egy Load Balancer előterével nem lehetséges kapcsolatot létesíteni, ha nincs válaszra képes virtuális gép.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
 - A nyilvános Load Balancerektől eltérően (amelyek [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosítanak a virtuális hálózaton belüli magánhálózati IP-címek nyilvános IP-címekre való váltásakor) a belső Load Balancerek nem fordítják le a kintről érkező kapcsolatokat egy belső Load Balancer előterébe, mivel mindkettő magánhálózati IP-címtérben található.  Ezzel elkerülhető a lehetséges SNAT-portfogyás az egyedi belső IP-címtéren belül, ahol nincs szükség a fordításra.  Ennek mellékhatása, hogy ha a háttérkészlet egy virtuális gépéről egy kimenő folyamat megkísérel egy folyamatot a belső Load Balancer előterébe juttatni, abba a készletbe, amelyben található, _és_ a rendszer saját magára képezi le, akkor a folyamat egyik forrása sem egyezik, és a folyamat meghiúsul.  Ha a folyamat nincs visszairányítva ugyanarra a háttérkészletben található virtuális gépre, amely létrehozta a folyamatot az előtér számára, akkor a folyamat sikeres lesz.   Amikor a folyamat saját magára mutat vissza, úgy tűnhet, mintha az előtérhez érkező kimenő folyamat a virtuális gépről származna, és a hozzá kapcsolódó bejövő folyamat pedig a virtuális gépről saját maga felé mutatna. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  Amikor a folyamatot a háttérkészlet bármely más virtuális gépéhez irányítja a rendszer, a folyamat két fele egyezni fog, és a virtuális gép sikeresen válaszolhat a folyamatnak.  Ennek a forgatókönyvnek a tünete az időszakos kapcsolati időtúllépés, amikor a folyamat visszatér a folyamatot létrehozó háttérhez. Több gyakori kerülő megoldás létezik ennek a forgatókönyvnek a megvalósítására (a folyamatok indítása a háttérkészletből a háttérkészlethez tartozó belső Load Balancer előterébe), amelyekhez vagy egy proxyréteget kell beilleszteni a belső Load Balancer mögé, vagy [DSR stílusú szabályokat kell alkalmazni](load-balancer-multivip-overview.md).  Az ügyfelek egy belső Load Balancert ötvözhetnek bármely, harmadik féltől származó proxyval, vagy helyettesíthetik belső [Application Gatewayyel](../application-gateway/application-gateway-introduction.md) a HTTP/HTTPS protokollra korlátozott proxyforgatókönyvekhez. Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
+- Általánosságban elmondható, hogy az IP-töredékek továbbítása vagy az UDP-és TCP-csomagok IP-töredezettségének végrehajtása nem támogatott a terheléselosztási szabályokban.  [Ha a portok](load-balancer-ha-ports-overview.md) terheléselosztási szabályai kivételt képeznek az általános utasítás alól, és a meglévő IP-töredékek továbbítására is használhatók.
 
 ## <a name="next-steps"></a>További lépések
 

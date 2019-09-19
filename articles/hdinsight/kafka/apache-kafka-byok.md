@@ -1,18 +1,18 @@
 ---
 title: Saját kulcs használata az Azure HDInsight Apache Kafka
 description: Ez a cikk azt ismerteti, hogyan használhatja a saját kulcsát a Azure Key Vaultból az Azure HDInsight Apache Kafka tárolt adatok titkosításához.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000100"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122688"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Saját kulcs használata az Azure HDInsight Apache Kafka
 
@@ -22,7 +22,7 @@ A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) 
 
 A BYOK-titkosítás egy egylépéses folyamat, amely a fürt létrehozása során külön díj nélkül kezelhető. Mindössze annyit kell tennie, hogy felügyelt identitásként regisztrálja a HDInsight-t Azure Key Vault és hozzáadja a titkosítási kulcsot a fürt létrehozásakor.
 
-A Kafka-fürtre (beleértve a Kafka által karbantartott replikákat is) származó összes üzenetet szimmetrikus adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) titkosítja a rendszer. A ADATTITKOSÍTÁSI kulcsot a Key encryption Key (KEK) használatával védett a kulcstartóban. A titkosítási és a visszafejtési folyamatokat teljes mértékben az Azure HDInsight kezeli. 
+A Kafka-fürtre (beleértve a Kafka által karbantartott replikákat is) származó összes üzenetet szimmetrikus adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) titkosítja a rendszer. A ADATTITKOSÍTÁSI kulcsot a Key encryption Key (KEK) használatával védett a kulcstartóban. A titkosítási és a visszafejtési folyamatokat teljes mértékben az Azure HDInsight kezeli.
 
 A Key vaultban lévő kulcsok biztonságos elforgatásához használhatja a Azure Portal vagy az Azure CLI-t is. Ha egy kulcs forog, a HDInsight Kafka-fürt perceken belül megkezdi az új kulcs használatát. Engedélyezze a "Soft Delete" kulcsfontosságú védelmi funkciókat a ransomware-forgatókönyvek és a véletlen törlés elleni védelemhez. A védelmi funkciót nem támogató kulcstartók nem támogatottak.
 
@@ -46,6 +46,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
    1. Új kulcstartó létrehozásához kövesse az [Azure Key Vault](../../key-vault/key-vault-overview.md) rövid útmutatót. A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md)című témakört.
 
    2. Engedélyezze a "Soft-Delete" parancsot a Key-vaulton az az kulcstartó [Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI parancs használatával.
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 
         b. Adja **meg a** kívánt nevet a kulcs **létrehozásához** és megadásához.
 
-        ![Kulcs nevének előállítása](./media/apache-kafka-byok/apache-kafka-create-key.png "Kulcs nevének előállítása")
+        Az ![Apache Kafka létrehozza a kulcs nevét](./media/apache-kafka-byok/apache-kafka-create-key.png "Kulcs nevének előállítása")
 
         c. Válassza ki a kulcsok listájából létrehozott kulcsot.
 
-        ![Azure Key Vault kulcsok listája](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Apache Kafka Key Vault-kulcsok listája](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Ha a Kafka-fürt titkosításához saját kulcsot használ, meg kell adnia a kulcs URI-JÁT. Másolja a **kulcs azonosítóját** , és mentse valahova, amíg készen nem áll a fürt létrehozására.
 
-        ![Kulcs azonosítójának másolása](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka – kulcs azonosítójának beolvasása](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Adja hozzá a felügyelt identitást a Key Vault hozzáférési házirendjéhez.
 
         a. Hozzon létre egy új Azure Key Vault hozzáférési szabályzatot.
@@ -99,6 +100,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
    A fürt létrehozása során adja meg a teljes kulcs URL-címét, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
 
 ## <a name="rotating-the-encryption-key"></a>A titkosítási kulcs elforgatása
+
    Előfordulhat, hogy előfordulhat, hogy módosítani szeretné a Kafka-fürt által a létrehozás után használt titkosítási kulcsokat. Ez könnyen elvégezhető a portálon keresztül. Ehhez a művelethez a fürtnek hozzá kell férnie az aktuális kulcshoz és a kívánt új kulcshoz, ellenkező esetben az elforgatási kulcs művelete sikertelen lesz.
 
    A kulcs elforgatásához az új kulcs teljes URL-címével kell rendelkeznie (lásd [a Key Vault és a kulcsok beállításának](#setup-the-key-vault-and-keys)3. lépését). Ha ezt megteszi, nyissa meg a Kafka-fürt tulajdonságai szakaszt a portálon, és kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe**alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
@@ -122,7 +124,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 **Mi történik, ha a fürt elveszti a Key Vault vagy a kulcs elérését?**
 Ha a fürt elveszti a kulcs elérését, a figyelmeztetések az Apache Ambari portálon jelennek meg. Ebben az állapotban a **kulcs módosítása** művelet sikertelen lesz. A kulcs-hozzáférés visszaállítása után a Ambari figyelmeztetései elindulnak, és a műveletek, például a kulcsok elforgatása sikeresen elvégezhető.
 
-   ![A Kafka Key Access Ambari riasztása](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Apache Kafka Key Access Ambari riasztása](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Hogyan állíthatom helyre a fürtöt a kulcsok törlésekor?**
 

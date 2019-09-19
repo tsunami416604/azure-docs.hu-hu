@@ -4,7 +4,7 @@ description: A Azure App Service Web Apps funkciójában a rendelkezésre állá
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2b9689eeecb0549fae9f7131dd424e15c040b042
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073183"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122073"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
 
@@ -34,7 +34,7 @@ Ez a cikk válaszokat tartalmaz a [Azure App Service Web Apps funkciójának](ht
 
 ## <a name="why-is-my-app-slow"></a>Miért lassú az alkalmazásom?
 
-Több tényező is hozzájárulhat a lassú alkalmazások teljesítményéhez. A részletes hibaelhárítási lépéseket lásd: [lassú](troubleshoot-performance-degradation.md)webalkalmazások teljesítményének hibaelhárítása.
+Több tényező is hozzájárulhat a lassú alkalmazások teljesítményéhez. A részletes hibaelhárítási lépéseket lásd: [lassú webalkalmazások teljesítményének hibaelhárítása](troubleshoot-performance-degradation.md).
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan a nagy CPU-fogyasztási forgatókönyvet?
 
@@ -52,7 +52,7 @@ A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App 
 
 A webalkalmazás eseménynaplóinak megtekintése:
 
-1. Jelentkezzen be a [kudu](https://*yourwebsitename*.scm.azurewebsites.net)webhelyére.
+1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
 2. A menüben válassza a **Debug konzol** > **cmd**elemet.
 3. Válassza a **naplófájlok** mappát.
 4. Az eseménynaplók megtekintéséhez válassza az **Eseménynapló. XML**melletti ceruza ikont.
@@ -62,7 +62,7 @@ A webalkalmazás eseménynaplóinak megtekintése:
 
 A webalkalmazás felhasználói módú memóriaképének rögzítése:
 
-1. Jelentkezzen be a [kudu](https://*yourwebsitename*.scm.azurewebsites.net)webhelyére.
+1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
 2. Válassza a **Process Explorer** menüt.
 3. Kattintson a jobb gombbal a **W3wp. exe** folyamatra vagy a webjobs folyamatra.
 4. Válassza a memóriakép **letöltése** > **teljes memóriakép**lehetőséget.
@@ -75,7 +75,7 @@ A webalkalmazáshoz tartozó folyamat-szintű információk megtekintésére ké
     1. Nyissa meg a webalkalmazáshoz tartozó **Process Explorert** .
     2. A részletek megtekintéséhez válassza ki a **W3wp. exe** folyamatot.
 *   A kudu-konzolon:
-    1. Jelentkezzen be a [kudu](https://*yourwebsitename*.scm.azurewebsites.net)webhelyére.
+    1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
     2. Válassza a **Process Explorer** menüt.
     3. A **W3wp. exe** folyamatnál válassza a **Tulajdonságok**lehetőséget.
 
@@ -95,7 +95,7 @@ További információ a kvótákkal és a korlátozásokkal kapcsolatban: [app S
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>Hogyan csökkentse az első kérelem válaszideje az üresjárati idő után?
 
-Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Így a rendszeren erőforrásokat takaríthat meg. A hátránya, hogy a webalkalmazás eltávolítását követően az első kérelemre adott válasz már nem érhető el, így a webalkalmazás betöltődik, és megkezdheti a válaszok kiszolgálását. Az alapszintű és a standard szintű szolgáltatási csomagokban a **mindig** bekapcsolva beállítás megadásával megtarthatja az alkalmazás folyamatos betöltését. Ez a várakozási idő elteltével nem töltődik be az alkalmazás üresjárata után. Az Always **on** beállítás módosítása:
+Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Így a rendszeren erőforrásokat takaríthat meg. A hátránya, hogy a webalkalmazás eltávolítását követően az első kérelemre adott válasz már nem érhető el, így a webalkalmazás betöltődik, és megkezdheti a válaszok kiszolgálását. Az alapszintű és a standard szintű szolgáltatási csomagokban a **mindig** bekapcsolva beállítás megadásával megtarthatja az alkalmazás folyamatos betöltését. Ez a várakozási idő elteltével nem töltődik be az alkalmazás üresjárata után. Az **Always On** beállítás módosítása:
 
 1. A Azure Portal nyissa meg a webalkalmazást.
 2. Válassza az **Alkalmazásbeállítások**lehetőséget.
@@ -111,7 +111,7 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
 5. Kattintson a **Mentés** gombra.
 6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
 7. Válassza a **Visual Studio online**lehetőséget.
-8. Ha a beállítás nincs bekapcsolva, válassza **a be**lehetőséget.
+8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.
 9. Válassza az **Indítás**lehetőséget.
 10. Válassza a **web. config**lehetőséget.
 11. A System. webserverben adja hozzá ezt a konfigurációt (egy adott URL-cím rögzítéséhez):
@@ -146,10 +146,10 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
     </add> </traceFailedRequests>
     </tracing>
     ```
-13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg [](https://portal.azure.com)a webhelyet a portálon.
+13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg a webhelyet a [portálon](https://portal.azure.com).
 15. Válassza az **eszközök** > **kudu** > **Go**lehetőséget.
 18. A menüben válassza a **Debug konzol** > **cmd**elemet.
-19. Jelölje ki a naplófájlok mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
+19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
 20. Az XML-fájl megtekintéséhez válassza a ceruza ikont.
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>"A (z)" munkavégző folyamat újrahasznosítása a "memória százalékos korlátja miatt" üzenet jelenik meg. Hogyan a probléma megoldásához?
@@ -160,7 +160,7 @@ Egy 32 bites folyamat számára rendelkezésre álló memória maximális mennyi
 
 Azt is vegye figyelembe, hogy egy 64 bites környezethez alapszintű vagy standard szolgáltatási csomag szükséges. Az ingyenes és a közös csomagok mindig 32 bites környezetben futnak.
 
-További információkért lásd: webalkalmazások [konfigurálása app Serviceban](configure-common.md).
+További információkért lásd: [webalkalmazások konfigurálása app Serviceban](configure-common.md).
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>Miért van a kérésem időtúllépése 230 másodperc után?
 

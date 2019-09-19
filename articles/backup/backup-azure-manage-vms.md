@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098397"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130177"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -164,6 +164,13 @@ A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölhet
 
   > [!NOTE]
   > Ha törli a biztonsági mentési adatmennyiséget, az összes kapcsolódó helyreállítási pontot törli. A törlendő helyreállítási pontok nem választhatók ki.
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Olyan biztonsági mentési elem, amelyben az elsődleges adatforrás már nem létezik
+
+- Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen ad hoc biztonsági mentési feladatok esetében kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg). 
+- Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
+- A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mert az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a következőképpen számítjuk fel: a biztonsági mentés díjszabása érvényes.
+
 
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).

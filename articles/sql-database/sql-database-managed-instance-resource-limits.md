@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010192"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128919"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -52,18 +52,18 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános cél
 | **Funkció** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális mag száma\* | Gen4 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maximális memória | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 40,8 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
-| Példányok maximálisan fenntartott tárolási mérete | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4 1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
-| Adatbázisok maximális mérete | 8 TB | 4 TB |
-| Adatbázisok maximális száma egy példányon | 100 | 100 |
-| Adatbázisfájlok maximális száma egy példányban | Akár 280 | 32 767 fájl/adatbázis |
-| Maximális fájlméret | 8 TB | 4 TB |
-| Naplófájl maximális mérete | 2 TB | 2 TB |
+| Maximális memória | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
+| Példány maximális tárolási mérete (fenntartott) | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4 1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
+| Adatbázisok maximális mérete | Az aktuálisan elérhető példány mérete (legfeljebb 2 TB-8 TB a virtuális mag számától függően). | Akár jelenleg elérhető példány mérete (max. 1 TB-4 TB a virtuális mag számától függően). |
+| Maximális tempDB-méret | Legfeljebb 24 GB/virtuális mag (96-1 920 GB) és jelenleg elérhető példány mérete.<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | Akár a jelenleg elérhető példányok mérete. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
+| Adatbázisok maximális száma egy példányon | 100, kivéve, ha elérte a példány tárolási méretének korlátját. | 100, kivéve, ha elérte a példány tárolási méretének korlátját. |
+| Adatbázisfájlok maximális száma egy példányban | Akár 280-ig, kivéve, ha elérte a példány tárolási méretét vagy az [Azure Premium lemez tárterületének lefoglalási](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) korlátját. | 32 767 fájl/adatbázis, kivéve, ha elérte a példány tárolási méretének korlátját. |
+| Maximális fájlméret | Legfeljebb 8 TB, jelenleg elérhető példány mérete (max. 2 TB-8 TB) és az [Azure Premium Disk Storage foglalási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Legfeljebb 4 TB és jelenleg elérhető példány mérete (legfeljebb 1 TB-4 TB). |
+| Naplófájl maximális mérete | Legfeljebb 2 TB, jelenleg elérhető példány mérete és az [Azure Premium Disk Storage kiosztási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Legfeljebb 2 TB és jelenleg elérhető példány mérete. |
 | Adat/napló IOPS (hozzávetőleges) | 500 – 7 500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
-| Napló írási átviteli korlátja | 3 MB/s/virtuális mag<br/>Legfeljebb 22 MB/s/példány | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s/példány|
-| Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
+| Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
+| Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Maximális tempDB-méret | 192 – 1 920 GB (24 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | A példányok maximális tárolási mérete korlátozza. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
 | Memóriabeli OLTP beállítása | Nem támogatott | Elérhető |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
@@ -93,10 +93,10 @@ A felügyelt példány jelenleg csak a következő típusú előfizetések eset�
 
 ## <a name="regional-resource-limitations"></a>Regionális erőforrásokra vonatkozó korlátozások
 
-A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek az előfizetés típusától függően:
+A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez az igény szerint növelhető, ha egy speciális [támogatási kérelmet hoz létre a Azure Portal) az](#obtaining-a-larger-quota-for-sql-managed-instance)előfizetés típusától függően:
 
 - **Alhálózat korlátja**: Azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag korlátja**: Az egyetlen régió összes példányán üzembe helyezhető virtuális mag maximális száma. A példányok teljes száma nincs korlátozva, amíg az virtuális mag korláton belül van.
+- **virtuális mag-egység korlátja**: Az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.

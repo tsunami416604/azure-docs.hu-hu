@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001661"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128945"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: Képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 
@@ -143,11 +143,11 @@ Most már rendelkezésre állnak a modell felhőben történő betanításához 
 
 ## <a name="explore-data"></a>Adatok megismerése
 
-A modellek betanítása előtt meg kell ismernie a betanításához használt adattípust. A felhőbe is át kell másolnia az adatfájlokat. Ezt követően a felhőalapú képzési környezete is elérhető. Ebből a szakaszból megtudhatja, hogyan végezheti el a következő műveleteket:
+A modellek betanítása előtt meg kell ismernie a betanításához használt adattípust. Emellett fel kell töltenie az adatait a felhőbe, hogy elérhető legyen a felhőalapú képzési környezetében. Ebből a szakaszból megtudhatja, hogyan végezheti el a következő műveleteket:
 
 * Töltse le a MNIST adatkészletet.
 * Néhány mintakép megjelenítése.
-* Adatok feltöltése a felhőbe.
+* Adatok feltöltése a munkaterületre a felhőben.
 
 ### <a name="download-the-mnist-dataset"></a>Az MNIST-adathalmaz letöltése
 
@@ -209,18 +209,29 @@ A véletlenszerű képminta a következőket jeleníti meg:
 
 Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen előrejelzési eredmény várható.
 
-### <a name="upload-data-to-the-cloud"></a>Adatok feltöltése a felhőbe
+### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
-Letöltötte és használta a betanítási adatait azon a számítógépen, amelyen a jegyzetfüzet fut.  A következő szakaszban egy modellt fog képezni a távoli Azure Machine Learning számítási feladatokhoz.  A távoli számítási erőforráshoz emellett hozzá kell férnie az adatokhoz. A hozzáférés biztosításához töltse fel az adatait egy, a munkaterülethez társított központosított adattárba. Ez az adattár gyors hozzáférést biztosít az adatokhoz, amikor távoli számítási célokat használ a felhőben, mivel az az Azure-adatközpontban található.
-
-Töltse fel a MNIST-fájlokat egy nevű `mnist` könyvtárba az adattár gyökerében. További információért lásd [Az adattárolók adatainak elérését](how-to-access-data.md) ismertető témakört.
+Egy `FileDataset` objektum egy vagy több fájlra hivatkozik a munkaterület adattárában vagy a nyilvános URL-címekben. A fájlok bármilyen formátumúak lehetnek, és a osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A `FileDataset`létrehozásával létrehoz egy hivatkozást az adatforrás helyére. Ha az adatkészletbe átalakításokat alkalmazott, azokat az adatkészletben is tárolja a rendszer. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek. További információért tekintse `Dataset` [meg a csomag útmutatóját](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) .
 
 ```python
-ds = ws.get_default_datastore()
-print(ds.datastore_type, ds.account_name, ds.container_name)
+from azureml.core.dataset import Dataset
 
-ds.upload(src_dir=data_folder, target_path='mnist',
-          overwrite=True, show_progress=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
+
+`register()` A módszer használatával regisztrálja az adatkészletet a munkaterületen, hogy másokkal is megoszthatók legyenek, újra felhasználható a különböző kísérletekben, és nevük alapján a betanítási szkriptben.
+
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 ```
 
 Most már a modell betanításának megkezdéséhez szükséges összes előfeltétellel rendelkezik.
@@ -253,6 +264,7 @@ A feladatnak a fürtre való elküldéséhez először hozzon létre egy betaní
 import argparse
 import os
 import numpy as np
+import glob
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
@@ -260,7 +272,7 @@ from sklearn.externals import joblib
 from azureml.core import Run
 from utils import load_data
 
-# let user feed in 2 parameters, the location of the data files (from datastore), and the regularization rate of the logistic regression model
+# let user feed in 2 parameters, the dataset to mount or download, and the regularization rate of the logistic regression model
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
 parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
@@ -271,10 +283,10 @@ print('Data folder:', data_folder)
 
 # load train and test set into numpy arrays
 # note we scale the pixel intensity values to 0-1 (by dividing it with 255.0) so the model can converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -322,19 +334,31 @@ A Futtatás elküldéséhez egy [SKLearn kalkulátor](https://docs.microsoft.com
 * A betanítási szkript neve, **Train.py**.
 * A betanítási parancsfájlhoz szükséges paraméterek.
 
-Ebben az oktatóanyagban ez a cél AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adattár `ds.path('mnist').as_mount()`használatára van beállítva:
+Ebben az oktatóanyagban ez a cél AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. Először hozzon létre egy környezeti objektumot, amely meghatározza a betanításhoz szükséges függőségeket. 
+
+```python
+from azureml.core.environment import Environment
+from azureml.core.conda_dependencies import CondaDependencies
+
+env = Environment('my_env')
+cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+env.python.conda_dependencies = cd
+```
+
+Ezután hozza létre a kalkulátort a következő kóddal.
 
 ```python
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--regularization': 0.5
 }
 
 est = SKLearn(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
+              environment_definition=env, 
               entry_script='train.py')
 ```
 

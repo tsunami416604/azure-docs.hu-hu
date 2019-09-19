@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960649"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122664"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>A HDInsight Apache Kafka konfigurálása a témakörök automatikus létrehozásához
 
@@ -25,7 +25,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a Kafka-fürtöt.
 
-2. A __fürt áttekintése__lapon válassza a __fürt irányítópultja__lehetőséget. 
+2. A __fürt áttekintése__lapon válassza a __fürt irányítópultja__lehetőséget.
 
     ![A portál képe, amelyen a fürt irányítópultja ki van választva](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 3. Válassza ki a Kafka szolgáltatást a lap bal oldalán található listából.
 
-    ![Szolgáltatások listája](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Apache Ambari-szolgáltatás listája lap](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Válassza a konfigurációk lehetőséget az oldal közepén.
 
-    ![Szolgáltatás konfigurációja lap](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Apache Ambari szolgáltatás – konfigurációk lap](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. A szűrő mezőbe írja be a értékét `auto.create`. 
+5. A szűrő mezőbe írja be a értékét `auto.create`.
 
-    ![A szűrő mező képe](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Apache Ambari keresési szűrő mező](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Ezzel kiszűri a tulajdonságok listáját, és `auto.create.topics.enable` megjeleníti a beállítást.
 
@@ -53,7 +53,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 7. Válassza ki a Kafka szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
-    ![Újraindítási kijelölés képe](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > A Ambari értékeket a Ambari REST API is megadhatja. Ez általában nehezebb, mivel több REST-hívást kell megszereznie a jelenlegi konfiguráció beolvasásához, a módosítást stb. További információ: [HDInsight-fürtök kezelése az Apache Ambari REST API dokumentum használatával](../hdinsight-hadoop-manage-ambari-rest-api.md) .

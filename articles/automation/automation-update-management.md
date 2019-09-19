@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102650"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129680"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -83,7 +83,7 @@ A következő táblázat a támogatott operációs rendszerek listáját tartalm
 
 > [!NOTE]
 > Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképet. A frissítéseket növekményes módon kell ütemeznie, hogy az összes virtuálisgép-példány egyszerre ne legyen frissítve.
-> VMSS-csomópontok hozzáadásához kövesse a [nem Azure-beli gép onbaord](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)tartozó lépéseket.
+> VMSS-csomópontok hozzáadásához kövesse a [nem Azure-beli gép](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)bevezetésének lépéseit.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 

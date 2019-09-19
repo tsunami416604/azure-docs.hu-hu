@@ -1,37 +1,39 @@
 ---
-title: Erőforrás-tokenek Azure Cosmos DB Gremlin
-description: Ismerje meg, hogyan hozhat létre erőforrás-jogkivonatokat, és hogyan használhatja őket a Graph-adatbázis eléréséhez
+title: Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
+description: Ismerje meg, hogyan hozhat létre erőforrás-jogkivonatokat, és hogyan használhatja őket a Graph-adatbázis eléréséhez.
 author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: olignat
-ms.openlocfilehash: fcb18fb14cf787713735da07ca2048d0853fa46c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806910"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105024"
 ---
-# <a name="azure-cosmos-db-resource-tokens-with-gremlin"></a>Erőforrás-tokenek Azure Cosmos DB Gremlin
-Ez a cikk azt ismerteti, hogyan használhatók [Cosmos db erőforrás-tokenek](secure-access-to-data.md) a Graph-adatbázis eléréséhez a Gremlin SDK-n keresztül.
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
+
+Ez a cikk azt ismerteti, hogyan használhatók [Azure Cosmos db erőforrás-tokenek](secure-access-to-data.md) a Graph-adatbázis eléréséhez a Gremlin SDK-val.
 
 ## <a name="create-a-resource-token"></a>Erőforrás-jogkivonat létrehozása
 
-Az TinkerPop Gremlin SDK nem rendelkezik API-val erőforrás-tokenek létrehozásához. Az erőforrás-jogkivonat Cosmos DB koncepció. Erőforrás-tokenek létrehozásához töltse le [Azure Cosmos db SDK](sql-api-sdk-dotnet.md)-t. Ha az alkalmazásnak erőforrás-jogkivonatokat kell létrehoznia, és azokat a Graph-adatbázis eléréséhez szeretné használni, akkor 2 különálló SDK-t kell használnia.
+Az Apache TinkerPop Gremlin SDK nem rendelkezik olyan API-val, amely erőforrás-tokenek létrehozására használható. Az *erőforrás-jogkivonat* kifejezés Azure Cosmos db koncepció. Erőforrás-tokenek létrehozásához töltse le a [Azure Cosmos db SDK](sql-api-sdk-dotnet.md)-t. Ha az alkalmazásnak erőforrás-jogkivonatokat kell létrehoznia, és azokat a Graph-adatbázis eléréséhez kell használnia, két külön SDK-t igényel.
 
-Objektummodell-hierarchia az erőforrás-jogkivonatok felett:
-- **Cosmos db fiók** – legfelső szintű entitás, amelyhez DNS társítva van, például:`contoso.gremlin.cosmos.azure.com`
-  - **Adatbázis Cosmos DB**
+Az erőforrás-tokenek feletti objektummodell-hierarchia a következő vázlatban látható:
+
+- **Azure Cosmos db fiók** – a legfelső szintű entitás, amelyhez DNS társítva van (például `contoso.gremlin.cosmos.azure.com`:).
+  - **Adatbázis Azure Cosmos DB**
     - **Felhasználói**
       - **Engedéllyel**
-        - *Token* – az **engedély** objektum tulajdonsága, amely azt jelzi, hogy milyen műveleteket lehet engedélyezni vagy megtagadni.
+        - **Token** – A Permission objektum tulajdonsága, amely azt jelzi, hogy milyen műveleteket lehet engedélyezni vagy megtagadni.
 
-Az erőforrás-jogkivonat formátuma `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen használható: módosítás vagy értelmezés nélkül.
+Az erőforrás-jogkivonat a következő formátumot használja `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`:. Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen kell használni módosítás vagy értelmezés nélkül.
 
 ```csharp
-// Notice that document client is created against .NET SDK end-point rather than Gremlin.
+// Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
   "<master key>", 
@@ -42,10 +44,10 @@ DocumentClient client = new DocumentClient(
   });
 
   // Read specific permission to obtain a token.
-  // Token will not be returned during ReadPermissionReedAsync() call.
-  // This call will succeed only if database id, user id and permission id already exist. 
-  // Note that <database id> is not a database name, it is a base64 string that represents database identifier, for example "KalVAA==".
-  // Similar comment applies to <user id> and <permission id>
+  // The token isn't returned during the ReadPermissionReedAsync() call.
+  // The call succeeds only if database id, user id, and permission id already exist. 
+  // Note that <database id> is not a database name. It is a base64 string that represents the database identifier, for example "KalVAA==".
+  // Similar comment applies to <user id> and <permission id>.
   Permission permission = await client.ReadPermissionAsync(UriFactory.CreatePermissionUri("<database id>", "<user id>", "<permission id>"));
 
   Console.WriteLine("Obtained token {0}", permission.Token);
@@ -53,21 +55,21 @@ DocumentClient client = new DocumentClient(
 ```
 
 ## <a name="use-a-resource-token"></a>Erőforrás-jogkivonat használata
-Az erőforrás-jogkivonatok közvetlenül a "password" tulajdonságként használhatók `GremlinServer` az osztály összeállításakor.
+Az erőforrás-jogkivonatok közvetlenül "password" tulajdonságként használhatók a GremlinServer osztály összeállításakor.
 
 ```csharp
-// Gremlin application needs to be given a resource token. It can't discover the token on its own.
-// Token can be obtained for a given permission using Cosmos DB SDK or passed into the application as command line argument or configuration value.
+// The Gremlin application needs to be given a resource token. It can't discover the token on its own.
+// You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure gremlin servier to use resource token rather than master key
+// Configure the Gremlin server to use a resource token rather than a master key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
   enableSsl: true,
   username: "/dbs/<database name>/colls/<collection name>",
 
-  // Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+  // The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
   password: resourceToken);
 
   using (GremlinClient gremlinClient = new GremlinClient(server, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType))
@@ -85,7 +87,7 @@ AuthProperties authenticationProperties = new AuthProperties();
 authenticationProperties.with(AuthProperties.Property.USERNAME,
     String.format("/dbs/%s/colls/%s", "<database name>", "<collection name>"));
 
-// Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+// The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
 authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 
 builder.authProperties(authenticationProperties);
@@ -93,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Korlát
 
-Egyetlen Gremlin-fiók korlátlan számú tokent tud kiadni, azonban legfeljebb **100** tokent lehet egyszerre **1 órán**belül használni. Ha az alkalmazás túllépi a jogkivonat-korlátot óránként, a hitelesítési kérelem elutasítása hibaüzenetet `"Exceeded allowed resource token limit of 100 that can be used concurrently"`kap. Az aktív kapcsolatok bezárása adott jogkivonatokkal az új tokenekhez tartozó tárolóhelyek felszabadítása nem lesz gyümölcsöző. Cosmos DB Gremlin-adatbázismotor a hitelesítési kérelem előtt nyomon követi a különböző tokeneket az elmúlt órában.
+Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfeljebb 100 tokent használhat egyszerre 1 órán belül. Ha egy alkalmazás túllépi a jogkivonat-korlátot óránként, a rendszer megtagadja a hitelesítési kérést, és a következő hibaüzenetet kapja: "Túllépte az engedélyezett erőforrás-jogkivonat 100-os korlátját, amely egyszerre használható." Nem működik olyan aktív kapcsolatok bezárásához, amelyek adott jogkivonatokat használnak az új tokenekhez tartozó tárolóhelyek felszabadításához. A Azure Cosmos DB Gremlin adatbázismotor a hitelesítési kérelem előtt közvetlenül az óra alatt nyomon követi az egyedi jogkivonatokat.
 
 ## <a name="permission"></a>Engedély
 
-Az általános hibaüzenetek az `"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header."`erőforrás-jogkivonatok használatakor jönnek át. Ezt a hibát akkor adja vissza a rendszer, amikor a Gremlin bejárási kísérlet egy Edge vagy egy `Read` csúcspont írására, de az erőforrás-jogkivonat csak engedélyt ad. Vizsgálja meg a bejárást, hogy az a következő lépések bármelyikét tartalmazza `.drop()`-e `.property()`: `.addV()`, `.addE()`,, vagy.
+Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()* , *. addE ()* , *. drop ()* , vagy *. Property ()* .
 
 ## <a name="next-steps"></a>További lépések
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control.md) a Azure Cosmos DBban

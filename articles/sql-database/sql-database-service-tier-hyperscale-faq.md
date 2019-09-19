@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515354"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128705"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású-adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -54,7 +54,7 @@ A virtuális mag-alapú szolgáltatási rétegek elsődlegesen a rendelkezésre 
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **IO-átviteli sebesség** | Önálló adatbázis * * | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
 | | Felügyelt példány | A fájl méretétől függ | – | Felügyelt példány: A fájl méretétől függ|
-|**Rendelkezésre állás**|Összes|1 replika, nincs olvasási méretezés, nincs helyi gyorsítótár | Több replika, legfeljebb 15 olvasási léptékű, részleges helyi gyorsítótár | 3 replika, 1 olvasási méretezés, zóna – redundáns HA, teljes helyi gyorsítótár |
+|**Rendelkezésre állás**|Összes|1 replika, nincs olvasási méretezés, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási méretezés, részleges helyi gyorsítótár | 3 replika, 1 olvasási méretezés, zóna – redundáns HA, teljes helyi gyorsítótár |
 |**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
 
 \*A nagy kapacitású szolgáltatási szintje nem támogatja a rugalmas készleteket
@@ -76,7 +76,7 @@ A Azure SQL Database nagy kapacitású szintje jelenleg a [Azure SQL Database na
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Létrehozhatok több nagy kapacitású-adatbázist egy logikai kiszolgálón
 
-Igen. A logikai kiszolgálók nagy kapacitású-adatbázisainak számával kapcsolatos további információkért és korlátokért tekintse meg a [logikai kiszolgálókon található önálló és készletezett adatbázisok SQL Database erőforrás](sql-database-resource-limits-logical-server.md)-korlátozásait.
+Igen. A logikai kiszolgálók nagy kapacitású-adatbázisainak számával kapcsolatos további információkért és korlátokért tekintse meg a [logikai kiszolgálókon található önálló és készletezett adatbázisok SQL Database erőforrás-korlátozásait](sql-database-resource-limits-logical-server.md).
 
 ### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>A nagy kapacitású-adatbázisok teljesítményének jellemzői
 
@@ -232,7 +232,7 @@ A nagy kapacitású képes az új/módosított adatmennyiség 100 MB/s sebesség
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Beolvasható az adatok a blob Storage-ból, és gyors betöltés (például a Base és a SQL Data Warehouse)
 
-Beolvashatja az Azure Storage-ból származó adatait, és betöltheti az adatterhelést egy nagy kapacitású-adatbázisba (ugyanúgy, mint egy normál önálló adatbázis esetében). A (z) Azure SQL Database jelenleg nem támogatja a következőt: Base. Az [SQL-hez készült Spark](sql-database-spark-connector.md)-összekötővel [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) vagy Spark-feladatot futtathat a [Azure Databricksban](https://docs.microsoft.com/azure/azure-databricks/) . A Spark-összekötő az SQL-hez támogatja a tömeges beszúrást.
+Beolvashatja az Azure Storage-ból származó adatait, és betöltheti az adatterhelést egy nagy kapacitású-adatbázisba (ugyanúgy, mint egy normál önálló adatbázis esetében). A (z) Azure SQL Database jelenleg nem támogatja a következőt: Base. Az [SQL-hez készült Spark-összekötővel](sql-database-spark-connector.md) [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) vagy Spark-feladatot futtathat a [Azure Databricksban](https://docs.microsoft.com/azure/azure-databricks/) . A Spark-összekötő az SQL-hez támogatja a tömeges beszúrást.
 
 Az egyszerű helyreállítás vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A magas rendelkezésre állás biztosításához teljes helyreállítási modell szükséges. A nagy kapacitású azonban az új naplózási architektúra miatt egy adott Azure SQL Database-adatbázishoz képest jobb adatfeldolgozási sebességet biztosít.
 
@@ -242,7 +242,7 @@ Nem. SQL Database nagy kapacitású egy SMP architektúra, és nem aszimmetrikus
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>A legrégebbi SQL Server verziója SQL Database nagy kapacitású-támogatás áttelepítését
 
-SQL Server 2005. További információ: [áttelepítés önálló adatbázisra vagy készletezett adatbázisra](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). Kompatibilitási problémák esetén tekintse meg az adatbázis-áttelepítési [kompatibilitási problémák megoldását](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)ismertető témakört.
+SQL Server 2005. További információ: [áttelepítés önálló adatbázisra vagy készletezett adatbázisra](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). Kompatibilitási problémák esetén tekintse meg az [adatbázis-áttelepítési kompatibilitási problémák megoldását](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)ismertető témakört.
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>A SQL Database nagy kapacitású támogatja az áttelepítést más adatforrásokból, például az Aurora, a MySQL, az Oracle, a DB2 és más adatbázis-platformokból
 

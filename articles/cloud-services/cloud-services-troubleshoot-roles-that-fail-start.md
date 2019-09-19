@@ -4,7 +4,7 @@ description: Íme néhány gyakori ok, amiért előfordulhat, hogy a felhőalap�
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 9e1ae9ca6106a6a55e0cfc933ad47a5944ed5abb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945395"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122731"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Nem indítható Cloud Service-szerepkörök – problémamegoldás
 Íme néhány gyakori probléma és megoldás az Azure Cloud Services-szerepkörökkel kapcsolatban, amelyek nem indulnak el.
@@ -63,7 +63,7 @@ A Távoli asztal használatával elérheti a szerepkört, és távolról is megt
 
 1. Győződjön meg arról, hogy az Azure SDK 1,3-as vagy újabb verziója telepítve van.
 2. A megoldás a Visual Studióval való üzembe helyezése során engedélyezze a Távoli asztal. További információkért lásd: [Távoli asztali kapcsolat engedélyezése az Azure-ban Cloud Services szerepkörhöz a Visual Studióval](cloud-services-role-enable-remote-desktop-visual-studio.md).
-3. A Microsoft Azure Portalban, miután a példány **kész**állapotba került, a távoli a példányba. A távoli asztal Cloud Services használatával történő használatáról további információt a következő témakörben talál: [távoli szerepkör](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)-példányok.
+3. A Microsoft Azure Portalban, miután a példány **kész**állapotba került, a távoli a példányba. A távoli asztal Cloud Services használatával történő használatáról további információt a következő témakörben talál: [távoli szerepkör-példányok](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Jelentkezzen be a virtuális gépre a Távoli asztal konfigurálása során megadott hitelesítő adatok használatával.
 6. Nyissa meg a parancsablakot.
 7. Gépelje be: `IPconfig`.
@@ -75,7 +75,7 @@ A webhelyre való navigálás ekkor több explicit hibaüzenetet ad vissza:
 
 * Kiszolgálóhiba a következő alkalmazásban: "/".
 * Leírás: Kezeletlen kivétel történt az aktuális webes kérelem végrehajtása során. A hibával kapcsolatos további információkért tekintse át a verem nyomkövetését, és hogy honnan származik a kód.
-* Kivétel részletei: System.IO.FIleNotFoundException: Nem tölthető be a következő fájl vagy szerelvény: "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = semleges, PublicKeyToken = 31bf856ad364e35" vagy annak valamelyik függősége. A rendszer nem találja a megadott fájlt.
+* Kivétel részletei: System.IO.FIleNotFoundException: Nem tölthető be a következő fájl vagy szerelvény: "Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = semleges, PublicKeyToken = 31bf856ad364e35" vagy annak valamelyik függősége. A számítógép nem találja a megadott fájlt.
 
 Példa:
 
@@ -100,7 +100,7 @@ A .NET-keretrendszer 4-es verzióit használó feldolgozó és webes szerepkör�
 Az alábbi lépéseket követve telepítheti a szolgáltatást a IntelliTrace engedélyezésével:
 
 1. Ellenőrizze, hogy telepítve van-e az Azure SDK 1,3-as vagy újabb verziója.
-2. A megoldás üzembe helyezése a Visual Studio használatával. Az üzembe helyezés során jelölje be a **IntelliTrace engedélyezése a .net 4** -szerepkörökhöz jelölőnégyzetet.
+2. A megoldás üzembe helyezése a Visual Studio használatával. Az üzembe helyezés során jelölje be a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzetet.
 3. A példány elindítása után nyissa meg a **Server Explorert**.
 4. Bontsa ki az **Azure\\Cloud Services** csomópontot, és keresse meg a központi telepítést.
 5. Bontsa ki a központi telepítést, amíg meg nem jelenik a szerepkör példányai. Kattintson a jobb gombbal az egyik példányra.
@@ -119,7 +119,7 @@ A DLL-fájl hiányzó és szerelvény-hibáinak elhárításához kövesse az al
 4. A **Tulajdonságok** ablaktáblán keresse meg a **Másolás helyi tulajdonságot** , és állítsa az értéket **igaz**értékre.
 5. Telepítse újra a Cloud Service-t.
 
-Miután meggyőződött róla, hogy az összes hibát kijavította, a szolgáltatás központi telepítését a **IntelliTrace engedélyezése a .net 4** -szerepkörökhöz jelölőnégyzet bejelölése nélkül végezheti el.
+Miután meggyőződött róla, hogy az összes hibát kijavította, a szolgáltatás központi telepítését a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzet bejelölése nélkül végezheti el.
 
 ## <a name="next-steps"></a>További lépések
 További [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a Cloud Services szolgáltatáshoz.

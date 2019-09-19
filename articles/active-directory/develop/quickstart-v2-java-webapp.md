@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/11/2019
+ms.date: 09/18/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086995"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120510"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -34,8 +34,8 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához a következőkre lesz szüksége: 
-- A Java Development Kit (JDK) 8 vagy újabb, illetve Maven.
+A minta futtatásához a következőkre lesz szüksége:
+- A [Java Development Kit (JDK)](https://openjdk.java.net/) 8 vagy újabb, valamint a [Maven](https://maven.apache.org/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése

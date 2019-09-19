@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873870"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101681"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure SQL Database felügyelt példány létrehozása
 
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az Azure SQL nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
-2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Azure SQL Database felügyelt példányra vonatkozó további információkat a felügyelt példányok csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
+2. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Azure SQL Database felügyelt példányra vonatkozó további információkat a **felügyelt példányok** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
 3. Válassza a **Létrehozás**lehetőséget:
 
    ![Felügyelt példány létrehozása](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
@@ -49,7 +49,7 @@ A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
    |**Felügyelt példány neve**|Bármely érvényes név.|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
    |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármilyen érvényes Felhasználónév.|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.|
    |**Jelszó**|Bármilyen érvényes jelszó.|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
-   |**Időzóna**|A felügyelt példány által megfigyelt időzóna.|További információ: időzóna [](sql-database-managed-instance-timezone.md).|
+   |**Időzóna**|A felügyelt példány által megfigyelt időzóna.|További információ: [időzóna](sql-database-managed-instance-timezone.md).|
    |**Egybevetés**|A felügyelt példányhoz használni kívánt rendezés.|Ha SQL Serverból telepít át adatbázisokat, ellenőrizze a forrás rendezését a `SELECT SERVERPROPERTY(N'Collation')` használatával, és használja ezt az értéket. További információ a rendezésekről: [a kiszolgáló rendezésének beállítása vagy módosítása](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Location**|A hely, amelyben létre kívánja hozni a felügyelt példányt.|További információ a régiókkal kapcsolatban: [Azure-régiók](https://azure.microsoft.com/regions/).|
    |**Virtuális hálózat**|Válassza az **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózat és alhálózat lehetőséget.| Ha egy hálózat vagy alhálózat nem érhető el, akkor azt módosítani kell, [hogy megfeleljen a hálózati követelményeknek](sql-database-managed-instance-configure-vnet-subnet.md) , mielőtt kiválasztja az új felügyelt példány célhelyének. A felügyelt példányok hálózati környezetének konfigurálásával kapcsolatos tudnivalókat lásd: [virtuális hálózat konfigurálása felügyelt példányhoz](sql-database-managed-instance-connectivity-architecture.md). |
@@ -60,7 +60,7 @@ A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
 
    ![Felügyelt példány űrlapja](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Ha a felügyelt példányt másodlagos feladatátvételi csoportként szeretné használni, válassza ki a kivételt, és adja meg a DnsAzurePartner felügyelt példányát. Ez a funkció előzetes verzióban érhető el, és nem jelenik meg a következő képernyőképen.
+5. Ha a felügyelt példányt másodlagos feladatátvételi csoportként szeretné használni, válassza ki a kivételt, és adja meg a DnsAzurePartner felügyelt példányát. 
 6. Válassza ki az **árképzési szintet** a számítási és tárolási erőforrások méretének kiválasztásához, valamint az árképzési szintek beállításainak áttekintéséhez. Az alapértelmezett érték az általános célú tarifacsomag, amely 32 GB memóriával és 16 virtuális maggal rendelkezik.
 7. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát.
 8. Ha elkészült, kattintson az **alkalmaz** gombra a kijelölés mentéséhez. 
@@ -115,6 +115,6 @@ Az üzembe helyezés sikerességét követően tekintse át a létrehozott erőf
   - A felügyelt példányok Azure-beli virtuális gépekről történő csatlakoztatását bemutató rövid útmutató: Azure-beli virtuálisgép- [kapcsolat konfigurálása](sql-database-managed-instance-configure-vm.md).
   - A pont – hely kapcsolat [konfigurálásával](sql-database-managed-instance-configure-p2s.md)megtudhatja, hogyan csatlakozhat egy felügyelt példányhoz egy helyszíni ügyfélszámítógépről pont – hely kapcsolat használatával.
 - Meglévő SQL Server-adatbázis visszaállítása a helyszínről a felügyelt példányra: 
-    - Az áttelepítéshez használja a [Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) az adatbázis biztonságimásolat-fájljából való visszaállításhoz. 
+    - Az [áttelepítéshez használja a Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) az adatbázis biztonságimásolat-fájljából való visszaállításhoz. 
     - Az adatbázis-biztonságimásolat-fájlból történő visszaállításhoz használja a [T-SQL Restore parancsot](sql-database-managed-instance-get-started-restore.md) .
 - A felügyelt példányok adatbázisának teljesítményének speciális figyelése a beépített hibaelhárítási intelligenciával: [Azure SQL Database figyelése Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).

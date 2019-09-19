@@ -1,19 +1,19 @@
 ---
 title: Apache Kafka-Azure-HDInsight Azure Monitor naplófájljai
 description: Megtudhatja, hogyan elemezheti Azure Monitor naplókat az Azure HDInsight lévő Apache Kafka-fürtök naplófájljainak elemzéséhez.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960113"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122599"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka naplók elemzése a HDInsight
 
@@ -43,7 +43,7 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 * Lemezhasználat:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -82,17 +82,17 @@ A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lép
 
     > [!IMPORTANT]  
     > Cserélje le a lekérdezési értékeket a fürtre vonatkozó információkkal. A nevet például `ClusterName_s` a fürt nevére kell beállítani. `HostName_s`a fürt munkavégző csomópontjának tartománynevére kell beállítani.
-    
+
     Megadhatja `*` az összes naplózott típus keresését is. Jelenleg a következő naplók érhetők el a lekérdezésekhez:
-    
+
     | Napló típusa | Leírás |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker Server. log |
     | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
     | mérőszámok\_KafkaCL\_ | Kafka JMX metrics |
-    
-    ![A CPU-használat keresésének képe](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![Apache Kafka log Analytics CPU-használat](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>További lépések
 
 További információ a Azure Monitorről: [Azure monitor áttekintés](../../log-analytics/log-analytics-get-started.md)és [Azure monitor naplók lekérdezése a HDInsight-fürtök figyeléséhez](../hdinsight-hadoop-oms-log-analytics-use-queries.md).

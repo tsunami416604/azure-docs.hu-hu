@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018182"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129331"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
@@ -122,9 +122,9 @@ Törlés után a folytatási művelet ismét védi az erőforrást. A folytatás
 
 Recovery Services tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek véglegesen törlődnek a törlési művelet 14 napja után. A tárolót csak akkor törölheti, ha az összes helyreállított elemet törölte.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Hogyan törölhetem a 14 napnál régebbi adattörlési időszakot a törlés után?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Törölhetem a 14 napnál régebbi adattörlési időszakot a törlés után?
 
-A törlést követő 14 nap előtt nincs lehetőség az adattörlésre. Ha blokkoló vagy megfelelőségi probléma merül fel, forduljon a Microsoft ügyfélszolgálatához.
+Nem. Nem kényszerítheti a nem törölt elemek törlését, ezeket a rendszer 14 nap elteltével automatikusan törli. Ez a biztonsági funkció lehetővé teszi az adatok véletlen vagy rosszindulatú törlésből való védelmét.  A virtuális gépen bármilyen más művelet végrehajtása előtt várjon 14 napot.  A helyreállított elemek nem lesznek felszámítva.  Ha újra kell védenie az ideiglenes törlésre kijelölt virtuális gépeket 14 napon belül egy új tárba, forduljon a Microsoft ügyfélszolgálatához.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Végrehajthatók a helyreállítható törlési műveletek a PowerShellben vagy a parancssori felületen?
 

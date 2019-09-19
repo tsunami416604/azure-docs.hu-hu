@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997008"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128981"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen
 
@@ -130,4 +130,4 @@ Ezeket a modelleket és központi telepítéseket a munkaterület kezdőlapjána
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre, helyezhet üzembe és vehet fel gépi tanulási modellt a vizualizációs felületen. Ha többet szeretne megtudni arról, hogyan használhatja a vizuális felületet más típusú problémák megoldására, tekintse meg az egyéb példákat.
 
 > [!div class="nextstepaction"]
-> [Hitelkockázat besorolási minta](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [Hitelkockázat besorolási minta](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

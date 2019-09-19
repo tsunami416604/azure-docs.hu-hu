@@ -1,34 +1,33 @@
 ---
-title: Infrastruktúra Azure tűzfal teljes Tartományneve
-description: Ismerje meg az infrastruktúra teljes tartománynevek az Azure-tűzfal
+title: Infrastruktúra teljes tartományneve Azure Firewall
+description: Tudnivalók a Azure Firewall infrastruktúra teljes tartománynevéről
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61066323"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130206"
 ---
 # <a name="infrastructure-fqdns"></a>Infrastruktúra FQDN-jei
 
 Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről. Ezek a teljes tartománynevek csak az adott platformra vonatkoznak, egyéb célra nem használhatók. 
 
-A beépített szabálygyűjtemény a következő szolgáltatásokat tartalmazza:
+A beépített szabály gyűjtemény a következő szolgáltatásokat tartalmazza:
 
-- Számítási Platform kép tárház (PIR) storage-hozzáférés
-- Felügyelt lemezek állapot storage-hozzáférés
-- Az Azure diagnosztikai és naplózási (MDS)
-- Azure Active Directory
+- A Storage platform rendszerkép-tárházának (PIR) számítási hozzáférése
+- Felügyelt lemezek állapotának tárolási hozzáférése
+- Azure Diagnostics és naplózás (MDS)
 
 ## <a name="overriding"></a>Felülbírálása 
 
-A beépített infrastruktúra szabálygyűjtemény megtagadási létrehozásával legutóbb feldolgozott összes alkalmazás szabályok gyűjteményéhez felül lehet bírálni. Ez mindig az infrastruktúra szabálygyűjteménye előtt lesz feldolgozva. Az infrastruktúra szabálygyűjteményében nem szereplő elemeket a rendszer alapértelmezés szerint elutasítja.
+A beépített infrastruktúra-szabálygyűjtemény felülbírálásához hozzon létre egy megtagadva az összes feldolgozott alkalmazás-szabály gyűjteményt. Ez mindig az infrastruktúra szabálygyűjteménye előtt lesz feldolgozva. Az infrastruktúra szabálygyűjteményében nem szereplő elemeket a rendszer alapértelmezés szerint elutasítja.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [üzembe helyezése és konfigurálása az Azure-tűzfalak](tutorial-firewall-deploy-portal.md).
+- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

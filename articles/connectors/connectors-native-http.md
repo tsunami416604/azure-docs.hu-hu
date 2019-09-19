@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás HTTP-vagy HTTPS-végpontokhoz Azure Logic Apps
-description: HTTP-vagy HTTPS-végpontok figyelése automatizált feladatokban, folyamatokban és munkafolyamatokban Azure Logic Apps használatával
+title: HTTP-és HTTPS-végpontok hívása – Azure Logic Apps
+description: Kimenő kérelmek küldése HTTP-és HTTPS-végpontoknak Azure Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,18 +10,20 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234384"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122699"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>HTTP-vagy HTTPS-végpontok hívása Azure Logic Apps használatával
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Kimenő hívások küldése HTTP-vagy HTTPS-végpontoknak Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-összekötő segítségével automatizálhatja a logikai alkalmazások létrehozásával a http-vagy https-végpontokat rendszeresen meghívó munkafolyamatokat. A webhely szolgáltatási végpontját figyelheti például úgy, hogy ellenőrzi, hogy a végpont egy adott időpontban van-e megadva. Ha egy adott esemény történik a végponton, például a webhelyén, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja a megadott műveleteket.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek rendszeresen küldenek kéréseket bármely http-vagy https-végpontnak. Ha ehelyett a bejövő HTTP-vagy HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert vagy a válasz műveletet](../connectors/connectors-native-reqres.md).
 
-Ha rendszeres időközönként  szeretné megtekinteni vagy lekérdezni egy végpontot, használhatja a http-triggert a munkafolyamat első lépéseként. Az trigger minden egyes vizsgálatkor hívást vagy kérést  küld a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger a logikai alkalmazás műveleteire adott válasz tartalmával együtt halad át.
+A webhely szolgáltatási végpontját figyelheti például úgy, hogy ellenőrzi, hogy a végpont egy adott időpontban van-e megadva. Ha egy adott esemény történik a végponton, például a webhelyén, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja a megadott műveleteket.
+
+Ha rendszeres időközönként szeretné megtekinteni vagy lekérdezni egy végpontot, használhatja a http-triggert a munkafolyamat első lépéseként. Az trigger minden egyes vizsgálatkor hívást vagy kérést küld a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger a logikai alkalmazás műveleteire adott válasz tartalmával együtt halad át.
 
 A HTTP-műveletet használhatja a munkafolyamat bármely más lépéseként a végpont meghívásához. A végpont válasza határozza meg, hogyan futnak a munkafolyamat hátralévő műveletei.
 
@@ -149,14 +151,14 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 | Tulajdonság neve | Type | Leírás |
 |---------------|------|-------------|
 | fejlécek | object | A kérelemben szereplő fejlécek |
-| törzse | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| törzs | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | Állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
 | Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Elfogadott |
+| 202 | Elfogadva |
 | 400 | Hibás kérés |
 | 401 | Nem engedélyezett |
 | 403 | Tiltott |

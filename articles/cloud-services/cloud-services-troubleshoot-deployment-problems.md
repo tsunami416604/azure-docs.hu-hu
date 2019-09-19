@@ -4,7 +4,7 @@ description: A felhőalapú szolgáltatások Azure-ba történő telepítésekor
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: e8ed7066025dd60f0c157a4ce4caec925fe08792
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945373"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122753"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása
 Ha felhőalapú szolgáltatásalkalmazás-csomagot telepít az Azure-ba, a Azure Portal **Tulajdonságok** paneljén szerezheti be az üzembe helyezésre vonatkozó információkat. Az ezen a panelen található részletek segítségével elháríthatja a felhőalapú szolgáltatással kapcsolatos problémákat, és az új támogatási kérelem megnyitásakor megadhatja ezeket az információkat az Azure-támogatáshoz.
@@ -49,7 +49,7 @@ A szolgáltatás-gyógyulás automatikusan megtörténik, amikor az Azure észle
 2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse át az információkat, és állapítsa meg, hogy a szolgáltatás-gyógyulás a szerepkörök újrahasznosításának ideje alatt történt-e.
 
 A szerepkörök a gazdagép-operációs rendszer és a vendég-operációsrendszer-frissítések során körülbelül havonta egyszer újra újraindulnak.  
-További információkért lásd a blogbejegyzések az [operációs rendszer frissítései miatti](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) újraindítását ismertető témakört.
+További információkért lásd a blogbejegyzések az [operációs rendszer frissítései miatti újraindítását](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) ismertető témakört.
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Probléma Nem tudok VIP-swap-cserét végezni, és hibaüzenetet kapok
 A virtuális IP-címek cseréje nem engedélyezett, ha a központi telepítés frissítése folyamatban van. A központi telepítés frissítései automatikusan megjelenhetnek a következő esetekben:
