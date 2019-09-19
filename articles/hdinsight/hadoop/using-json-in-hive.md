@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883397"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077213"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok feldolgozása és elemzése Apache Hive használatával az Azure HDInsight
 
@@ -91,7 +91,7 @@ A **Select** utasítás csak egy sort ad vissza.
 
 Itt látható a **Select** utasítás kimenete:
 
-![A JSON-dokumentum összeolvasztása](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![A JSON-dokumentum HDInsight összeolvasztása](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>JSON-dokumentumok elemzése a kaptárban
 A kaptár három különböző mechanizmust biztosít a lekérdezések JSON-dokumentumokon való futtatásához, vagy saját maga is írhat:
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 A következő kimenet jelenik meg, amikor futtatja ezt a lekérdezést a konzol ablakban:
 
-![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive JSON-objektum beolvasása UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 A get_json_object UDF korlátai vannak:
 
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 A szkript kimenete a kaptár-konzolon:
 
-![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive JSON-lekérdezés eredményei](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 Az json_tuple UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely\_lehetővé teszi, hogy a JSON-rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet**ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
 

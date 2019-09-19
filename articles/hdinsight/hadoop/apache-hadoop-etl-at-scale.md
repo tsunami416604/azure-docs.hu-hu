@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810761"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066936"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
-A kinyerési, átalakítási és betöltési (ETL) folyamat során a rendszer a különböző forrásokból származó adatokat gyűjti össze, amelyeket standard helyen, megtisztítva és feldolgozva végez, és végső soron egy olyan adattárba tölt be, amelyről lekérdezhető. Az örökölt ETL-folyamatok importálják az adatimportálást, megtisztítják a helyet, majd egy rokon adatkezelőben tárolják őket. A HDInsight számos Apache Hadoop ökoszisztéma-összetevő támogatja az ETL méretezését. 
+A kinyerési, átalakítási és betöltési (ETL) folyamat során a rendszer a különböző forrásokból származó adatokat gyűjti össze, amelyeket standard helyen, megtisztítva és feldolgozva végez, és végső soron egy olyan adattárba tölt be, amelyről lekérdezhető. Az örökölt ETL-folyamatok importálják az adatimportálást, megtisztítják a helyet, majd egy rokon adatkezelőben tárolják őket. A HDInsight számos Apache Hadoop ökoszisztéma-összetevő támogatja az ETL méretezését.
 
 A HDInsight az ETL-folyamatban való használatát a következő folyamat összegzi:
 
@@ -35,11 +35,11 @@ A megfelelő feladatok a megfelelő időben történő futtatásához szüksége
 
 Az Apache Oozie egy munkafolyamat-koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie egy HDInsight-fürtön belül fut, és integrálva van a Hadoop-verembe. A Oozie támogatja a Apache Hadoop MapReduce, az Apache Pig, az Apache Hive és az Apache Sqoop Hadoop-feladatait. A Oozie a rendszerre jellemző feladatok, például a Java-programok vagy a rendszerhéj-parancsfájlok számára is ütemezhetők.
 
-További információkért lásd: az [Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához a HDInsight](../hdinsight-use-oozie-linux-mac.md) -ben, amely bemutatja, hogyan használható a Oozie a végpontok közötti folyamat továbbítására, lásd: [az adatfolyamatok működővé tenni](../hdinsight-operationalize-data-pipeline.md). 
+További információkért lásd: az [Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához a HDInsight](../hdinsight-use-oozie-linux-mac.md) -ben, amely bemutatja, hogyan használható a Oozie a végpontok közötti folyamat továbbítására, lásd: [az adatfolyamatok működővé tenni](../hdinsight-operationalize-data-pipeline.md).
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory a szolgáltatásként nyújtott platformon alapuló funkciókat biztosít. Ez egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre a felhőben az adatáthelyezés és az adatátalakítás előkészítéséhez és automatizálásához. 
+Azure Data Factory a szolgáltatásként nyújtott platformon alapuló funkciókat biztosít. Ez egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre a felhőben az adatáthelyezés és az adatátalakítás előkészítéséhez és automatizálásához.
 
 A Azure Data Factory használatával a következőket teheti:
 

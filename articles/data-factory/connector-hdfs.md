@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d8773b330349356410589cf66e8f50636d92b601
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009174"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092096"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása a HDFS a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -30,7 +30,7 @@ Ez a cikk az adatok HDFS-kiszolgálóról történő másolását ismerteti. Azu
 
 Ez a HDFS-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-mátrixtal](copy-activity-overview.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
 Ez a HDFS-összekötő a következőket támogatja:
@@ -343,7 +343,7 @@ Lásd: DistCp kapcsolódó konfigurációk és példák a [HDFS forrás](#hdfs-a
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Kerberos-hitelesítés használata a HDFS-összekötőhöz
 
 Két lehetőség áll rendelkezésre a helyszíni környezet beállítására úgy, hogy a Kerberos-hitelesítést használják a HDFS-összekötőben. Kiválaszthatja, hogy melyik illik jobban az esethez.
-* 1\. lehetőség: [Saját üzemeltetésű Integration Runtime gép csatlakoztatása Kerberos-tartományban](#kerberos-join-realm)
+* 1\. módszer: [Saját üzemeltetésű Integration Runtime gép csatlakoztatása Kerberos-tartományban](#kerberos-join-realm)
 * 2\. lehetőség: [Kölcsönös megbízhatóság engedélyezése a Windows-tartomány és a Kerberos tartomány között](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>1. lehetőség: Saját üzemeltetésű Integration Runtime gép csatlakoztatása Kerberos-tartományban

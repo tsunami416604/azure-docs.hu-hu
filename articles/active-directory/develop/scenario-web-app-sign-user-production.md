@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás, hogy jelentkezik be felhasználókat (Váltás az éles környezetben) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást, amely képes bejelentkeztetni a felhasználókat (Váltás az éles környezetben)
+title: Webes alkalmazás, amely bejelentkezik a felhasználók számára (éles környezetbe kerül) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely aláírja a felhasználókat (éles környezetbe helyezi)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,38 +11,42 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074710"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086553"
 ---
-# <a name="web-app-that-signs-in-users---move-to-production"></a>Webes alkalmazás, amely a felhasználók – bejelentkezik átállni éles üzemre
+# <a name="web-app-that-signs-in-users---move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás – áttérés éles környezetbe
 
-Most, hogy tudja, hogyan webes API-k hívása a tokenek beszerzésére, megtudhatja, hogyan helyezze át az éles környezetbe.
+Most, hogy már tudja, hogyan lehet jogkivonatot beszerezni webes API-k hívásához, megtudhatja, hogyan helyezheti át az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="calling-web-apis-scenario"></a>Hívása a webes API-k forgatókönyv
+### <a name="calling-web-apis-scenario"></a>Webes API-k meghívása forgatókönyv
 
-Miután meghívhatja a webes alkalmazás jelentkezik be felhasználókat, webes API-k a bejelentkezett felhasználó nevében. Hívása webes API-k és a webes alkalmazás közötti olyan objektum, a következő forgatókönyv:
+Ha a webalkalmazás bejelentkezik a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma:
 
 > [!div class="nextstepaction"]
 > [Webes API-kat hívó webalkalmazás](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---web-app-tutorial"></a>Deep dive - alapú webappokról szóló oktatóanyagunkat
+### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>Deep Dive – ASP.NET Core webalkalmazás-oktatóanyag
 
-Jelentkezzen be az ASP.NET Core-oktatóanyag felhasználók egyéb módjaival kapcsolatos további tudnivalók: [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Ez az éles kész kód egy webalkalmazás, beleértve a hozzáadásáról bejelentkezési fokozatos oktatóanyaga.
+Ismerje meg a bejelentkezési felhasználók egyéb módszereit az ASP.NET Core oktatóanyaggal: [MS-Identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial). Ez a példa egy olyan progresszív oktatóanyag, amely éles használatra kész kóddal rendelkezik egy webalkalmazáshoz, beleértve a bejelentkezés fiókkal való hozzáadását a következőben:
 
-<!--- Removed the diagram as it's already shown in the above link to GitHub
+- szervezete,
+- több szervezet,
+- munkahelyi vagy iskolai fiókok vagy személyes Microsoft-fiók,
+- [Azure ad B2C](https://aka.ms/aadb2c),
+- vagy az országos felhőkben.
 
-![Tutorial overview](media/scenarios/aspnetcore-webapp-tutorial.svg)
+### <a name="sample-code---java-web-app"></a>Mintakód – Java-webalkalmazás
 
---->
+További információ a Java-webalkalmazásról a GitHubon található minta alapján: [Egy Java-webalkalmazás, amely a Microsoft Identity platformmal és a hívások Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
