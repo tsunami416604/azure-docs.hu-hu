@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: A Python használata
               href: sdk-python-quickstart.md
+            - name: A Java használata
+              href: sdk-java-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: Custom Search-webhely létrehozása

@@ -92,6 +92,10 @@
           href: create-certificate-scenarios.md
 - name: Útmutatók
   items:
+    - name: Biztonság
+      items:
+        - name: Javaslatok
+          href: security-recommendations.md
     - name: App Service által felügyelt identitás használata
       href: managed-identity.md
     - name: Az Azure Key Vault naplózása
