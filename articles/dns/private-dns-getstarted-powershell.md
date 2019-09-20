@@ -1,20 +1,20 @@
 ---
-title: Azure DNS saját zóna létrehozása Azure PowerShell használatával
+title: Rövid útmutató – Azure privát DNS-zóna létrehozása Azure PowerShell használatával
 description: Ebben a cikkben egy privát DNS-zónát és-rekordot hoz létre és tesztel a Azure DNSban. Ez egy lépésenkénti útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854122"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162123"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Azure DNS saját zóna létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Gyors útmutató: Azure Private DNS-zóna létrehozása Azure PowerShell használatával
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -27,7 +27,7 @@ Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban tö
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Saját DNS-zóna létrehozása
+> * Privát DNS-zóna létrehozása
 > * Tesztelési célú virtuális gépek létrehozása
 > * További DNS-rekord létrehozása
 > * A saját zóna tesztelése
@@ -36,7 +36,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ha szeretné, ezt az eljárást az [Azure CLI](private-dns-getstarted-cli.md)használatával végezheti el.
+Ha szeretné, elvégezheti ezt a rövid útmutatót az [Azure CLI](private-dns-getstarted-cli.md)használatával.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -46,7 +46,7 @@ Először hozzon létre egy erőforráscsoportot, amely a DNS-zónát tartalmazz
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Saját DNS-zóna létrehozása
+## <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
 A DNS-zóna az `New-AzPrivateDnsZone` parancsmag használatával hozható létre.
 
@@ -209,7 +209,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben üzembe helyezett egy magánhálózati DNS-zónát, létrehozott egy DNS-rekordot, és tesztelte a zónát.
-Ezután behatóbban megismerheti a DNS-zónákat.
-
-* [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)

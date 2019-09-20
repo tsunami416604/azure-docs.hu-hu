@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105267"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155153"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -24,6 +24,8 @@ Ebből a cikkből megtudhatja, hogyan tehet közzé egy nyilvános vagy privát 
 > Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, Azure Resource Manager-sablonok használatával manuálisan is bevezetheti az ügyfeleket. További információ: az ügyfél beléptetése [Az Azure által delegált erőforrás-felügyeletbe](onboard-customer.md).
 
 A felügyelt szolgáltatások ajánlatának közzététele hasonló az Azure Marketplace-en bármilyen más típusú ajánlat közzétételéhez. Ennek a folyamatnak a megismeréséhez tekintse meg az [Azure Marketplace és a AppSource közzétételi útmutatóját](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) , és [kezelje az Azure és a AppSource Marketplace ajánlatait](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Tekintse át a [kereskedelmi piactérre vonatkozó minősítési szabályzatokat](https://docs.microsoft.com/legal/marketplace/certification-policies), különösen a [felügyelt szolgáltatások](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) szakaszt.
+
+Ha egy ügyfél felveszi az ajánlatot, egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat, amelyek ezután bekerülnek [Az Azure-beli delegált erőforrás-kezelésbe](#the-customer-onboarding-process). Vegye figyelembe, hogy az előfizetés (vagy az előfizetésen belüli erőforráscsoportok) bevezetése előtt a **Microsoft. ManagedServices** erőforrás-szolgáltató manuális regisztrálásával jóvá kell hagynia az előfizetést a bevezetéshez.
 
 > [!IMPORTANT]
 > A felügyelt szolgáltatások ajánlatának minden csomagja tartalmaz egy **jegyzékfájl részleteit** tartalmazó szakaszt, ahol megadhatja a bérlőben a Azure Active Directory (Azure ad) azon entitásait, amelyek hozzáférhetnek a delegált erőforráscsoportok és/vagy előfizetésekhez azon ügyfelek számára, akik a csomag megvásárlása. Fontos megjegyezni, hogy az itt foglalt bármely csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkához, egy külön privát csomagot kell közzétennie, amely kizárólag az egyes ügyfelekre vonatkozik.

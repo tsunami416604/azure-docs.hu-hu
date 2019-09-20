@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088424"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162202"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -33,6 +33,9 @@ Nem törölhet olyan Recovery Services-tárolót, amelynek függőségei, péld�
 
   ![A védett kiszolgáló hibájának törlése.](./media/backup-azure-delete-vault/error-message.jpg)
 
+- Ha a biztonsági másolati elemek törlésre kész állapotban vannak, a figyelmeztető üzenet jelenik meg, és meg kell várnia, amíg véglegesen törölve lesznek. További információt ebben a [cikkben](https://aka.ms/SoftDeleteCloudWorkloads) talál.
+
+   ![Törölje a tár hibáját.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 A tár törléséhez válassza ki a beállításnak megfelelő forgatókönyvet, és kövesse az ajánlott lépéseket:
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564871"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146623"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -35,7 +35,7 @@ Az Application Gateway támogatja az SSL/TLS-lezárást az átjárón, amely ut�
 
 ## <a name="autoscaling"></a>Automatikus skálázás
 
-A Standard_v2 vagy a WAF_v2 SKU alatt üzemelő vagy WAF üzemelő példányok támogatják az automatikus skálázást, és vertikális fel-és leskálázást végeznek a forgalmi terhelési minták módosítása alapján. Application Gateway Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. További információ a Application Gateway standard_v2 és WAF_v2 funkcióiról: automatikus [skálázás v2 SKU](application-gateway-autoscaling-zone-redundant.md).
+A Standard_v2 vagy a WAF_v2 SKU alatt üzemelő vagy WAF üzemelő példányok támogatják az automatikus skálázást, és vertikális fel-és leskálázást végeznek a forgalmi terhelési minták módosítása alapján. Application Gateway Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. További információ a Application Gateway Standard_v2 és WAF_v2 funkcióiról: automatikus [skálázás v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Zóna redundancia
 
@@ -47,11 +47,11 @@ Az Application Gateway VIP on Standard_v2 vagy WAF_v2 SKU kizárólag a statikus
 
 ## <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 
-A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központi védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések ellen. A WAF az [alapvető OWASP- (Open Web Application Security Project-) szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik. 
+A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központi védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések ellen. A WAF a [OWASP (webalkalmazás-biztonsági projekt megnyitása) alapszabálya](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) , a 3,1 (csak WAF_v2), a 3,0 és a 2.2.9 szabályokon alapul. 
 
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának számos rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
-További információ: webalkalmazási [tűzfal (WAF) Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview)).
+További információ: [webalkalmazási tűzfal (WAF) Application Gatewayban](https://docs.microsoft.com/azure/application-gateway/waf-overview).
 
 ## <a name="url-based-routing"></a>URL-alapú útválasztás
 
@@ -63,13 +63,13 @@ További információ: [URL-alapú útválasztás Application Gatewaysal](https:
 
 ## <a name="multiple-site-hosting"></a>Több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
+A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi az üzemelő példányok hatékonyabb topológiájának konfigurálását azáltal, hogy 100 webhelyeket ad hozzá egy Application Gateway vagy 40 a WAF (az optimális teljesítmény érdekében). Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
 Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon Application Gateway-telepítésről üzemeltetheti. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett `http://blog.contoso.com` és `http://app.contoso.com`.
 
-További információ: többhelyes [üzemeltetés Application Gatewaysal](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+További információ: [többhelyes üzemeltetés Application Gatewaysal](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
 
 ## <a name="redirection"></a>Átirányítás
 
@@ -83,9 +83,9 @@ Az Application Gateway átirányítási támogatása a következő funkciókat n
 - Útvonalalapú átirányítás. Ez a fajta átirányítás csak a megadott webhelyrészen engedélyezi a HTTP–HTTPS átirányítást, például egy `/cart/*` kifejezéssel jelzett bevásárlókosár részen.
 - Átirányítás külső helyre.
 
-További információ: a [forgalom](https://docs.microsoft.com/azure/application-gateway/redirect-overview) átirányítása a Application Gatewaysal.
+További információ: a [forgalom átirányítása](https://docs.microsoft.com/azure/application-gateway/redirect-overview) a Application Gatewaysal.
 
-## <a name="session-affinity"></a>Munkamenet-affinitás
+## <a name="session-affinity"></a>Munkamenetaffinitás
 
 A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munkamenetet egy adott kiszolgálón szeretne tartani. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a kiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a kiszolgálón.
 
@@ -95,7 +95,7 @@ Az Application Gateway natív támogatást nyújt a Websocket- és HTTP/2-protok
 
 A WebSocket és a HTTP/2 protokollok teljes körű duplex kommunikációt tesznek lehetővé egy kiszolgáló és egy ügyfél között egy hosszú ideig futó TCP-kapcsolaton. Ez interaktívabb kommunikációt eredményez a webkiszolgáló és az ügyél között, amely anélkül marad kétirányú, hogy a HTTP-alapú implementációkban kötelező lekérdezésekre lenne szükség. Ezek a protokollok alacsony terheléssel rendelkeznek, ellentétben a HTTP-vel, és több kérelem/válasz esetében is felhasználhatják ugyanazt a TCP-kapcsolatokat, ami hatékonyabb erőforrás-kihasználtságot eredményez. Ezek a protokollok a hagyományos, 80-as és 443-as HTTP-portokon működnek.
 
-További információ: WebSocket- [támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [http/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
+További információ: [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [http/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
 ## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Az Azure Kubernetes Service (AKS) bejövőforgalom-vezérlője (előzetes verzió) 
 
@@ -106,6 +106,8 @@ További információt az [Azure Application Gateway bejövőforgalom-vezérlőj
 ## <a name="connection-draining"></a>Kapcsolatkiürítés
 
 A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Ha engedélyezve van, Application Gateway biztosítja, hogy a háttér-készletek összes példánya ne kapjon új kérést, miközben a meglévő kérések a beállított időkorláton belül befejeződik. Ez mind a háttérbeli példányokra vonatkozik, amelyeket a rendszer egy API-hívással kifejezetten eltávolít a háttérbeli készletből, és a háttérbeli példányokat, amelyeket az állapot-mintavételek határoznak meg.
+
+További információkért tekintse meg a [Application Gateway konfiguráció áttekintése](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)című szakaszt.
 
 ## <a name="custom-error-pages"></a>Egyéni hibalapok
 
@@ -123,17 +125,17 @@ A HTTP-fejlécek lehetővé teszik az ügyfél és a kiszolgáló számára, hog
 
 Application Gateway támogatja a HTTP-kérelem és-válasz fejlécek hozzáadását, eltávolítását vagy frissítését, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. Emellett lehetőséget biztosít olyan feltételek hozzáadására, amelyekkel biztosítható, hogy a megadott fejlécek csak akkor legyenek újraírva, ha bizonyos feltételek teljesülnek.
 
-További információt a HTTP- [fejlécek](rewrite-http-headers.md)újraírása című témakörben talál.
+További információt a HTTP- [fejlécek újraírása](rewrite-http-headers.md)című témakörben talál.
 
 ## <a name="sizing"></a>Méretezés
 
-Application Gateway Standard_v2 és a WAF_v2 SKU konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ezek a SKU-ket nem biztosítanak különböző méretű példányok.
+Application Gateway Standard_v2 és a WAF_v2 SKU konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ezek a SKU-ket nem biztosítanak különböző méretű példányok. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd: automatikus [skálázás v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
 A Application Gateway standard és WAF SKU jelenleg három méretben érhető el: **Kis**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alkalmazásátjárókhoz tartozó átlagos átviteli sebességek szerepelnek:
+Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos teljesítmény-átviteli sebességét mutatja be, amelyeken engedélyezve van az SSL-kiszervezés:
 
 | Az átlagos háttér-oldal válaszának mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |

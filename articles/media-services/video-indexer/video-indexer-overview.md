@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123510"
+ms.locfileid: "71146469"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -54,10 +54,13 @@ Az alábbi lista azokat az elemzéseket tartalmazza, amelyeket Video Indexer vid
 * **Fekete keret észlelése**: A videóban bemutatott fekete képkockákat azonosítja.
 * **Kulcsképek kibontása**: Egy videóban található stabil kulcsképek észlelése.
 * **Működés közbeni kreditek**: a TV-műsorok és-filmek végén található működés közbeni kreditek kezdetét és végét határozza meg.
+* **Animált karakterek észlelése** (előzetes verzió): az animált tartalomban lévő karakterek észlelése, csoportosítása és felismerése [Cognitive Services egyéni jövőképtel](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)való integráció révén. További információ: [animált karakterek észlelése](animated-characters-recognition.md).
+* **Szerkesztői shot típusú észlelés**: a felvételek a típusuk alapján vannak megjelölve (pl.: Wide shot, Medium shot, közelkép, Extreme közelkép, két lövés, több személy, kültéri és beltéri stb.). További információ: [szerkesztési shot típusú észlelés](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ### <a name="audio-insights"></a>Audio-elemzések
 
 * **Automatikus nyelvfelismerés**: Automatikusan azonosítja a domináns beszéd nyelvét. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, orosz és brazíliai portugál. Ha a nyelv nem azonosítható bizalommal, Video Indexer feltételezi, hogy a beszélt nyelv angol. További információ: [Language Identification Model](language-identification-model.md).
+* **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): A automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból, elküldve a médiafájl minden szegmensét, és összekapcsolja az átírást egy egységes átírással. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
 * **Hang átírása**: 12 nyelven alakítja át a beszédet szöveggé, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (egyszerűsített), Japán, Arab, Orosz, brazíliai portugál, hindi és koreai.
 * **Kódolt feliratok**: Három formátumban hozza létre a kódolt feliratozást: VTT, TTML, SRT.
 * **Két csatorna feldolgozása**: Automatikus észlelés, külön átirat és egyesítés egyetlen idővonalra.
@@ -75,6 +78,7 @@ Az alábbi lista azokat az elemzéseket tartalmazza, amelyeket Video Indexer vid
 Ha az egyik csatorna részleges eredménye alapján indexeli az adott modelleket, elérhető lesz
 
 * **Kulcsszavak kinyerése**: Kulcsszavak kinyerése a beszéd és a vizualizáció szövege alapján.
+* **Elnevezett entitások kibontása**: Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.
 * **Márkák kinyerése**: Kinyeri a márkákat a beszéd és a vizualizáció szövege alapján.
 * **Témakör következtetése**: A fő témakörök következtetéseit az átiratokból hozza. A rendszer az első szintű IPTC-besorolást is tartalmazza.
 * Összetevők: Az egyes modellekhez tartozó "következő részletességű" összetevők részletes készletének kibontása.

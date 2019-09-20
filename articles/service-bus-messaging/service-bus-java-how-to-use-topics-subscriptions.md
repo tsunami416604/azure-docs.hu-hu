@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967835"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155588"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>A Java használatával Service Bus témaköröket és előfizetéseket használhat
 
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küld
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
 A minta létrehozása előtt győződjön meg arról, hogy telepítette a [Javához készült Azure SDK][Azure SDK for Java] -t. Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **javához Microsoft Azure kódtárakat** a projekthez:
 
-![Az Eclipse Build elérési útjának könyvtárai](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 Emellett hozzá kell adnia a következő tégelyeket a Java Build elérési útjához:
 

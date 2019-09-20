@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067077"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146593"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -26,7 +26,7 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 
 ## <a name="ssltls-errors"></a>SSL/TLS-hibák
 
-|Tünet/hibaüzenet| A lehetséges okok|
+|Tünet/hibaüzenet| Lehetséges okok|
 |--------|------|
 |Nem hozható létre SSL/TLS biztonságos csatorna  | Az SSL verziója. Csak a TLS 1,0, 1,1 és 1,2 támogatottak. **A SSLv3 nem támogatott.**
 |TLS 1.2 rekord réteg: Riasztás (szint: Végzetes, leírás: Rossz rekord MAC)| [További információért](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)lásd a StackExchange szálat.
@@ -38,7 +38,7 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 
 ## <a name="test-fails-only-from-certain-locations"></a>A teszt csak bizonyos helyekről sikertelen
 
-|Tünet/hibaüzenet| A lehetséges okok|
+|Tünet/hibaüzenet| Lehetséges okok|
 |----|---------|
 |A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél egy adott idő elteltével nem válaszolt megfelelően.  | Bizonyos helyszíneken lévő tesztelési ügynököket tűzfal blokkolja.|
 |    |Bizonyos IP-címek átirányítása a (terheléselosztó, Geo Traffic Manager, Azure Express Route) használatával történik. 
@@ -46,10 +46,9 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Időszakos tesztelési hiba a protokoll megsértése miatt
 
-|Tünet/hibaüzenet| A lehetséges okok|
-|----|---------|
-a protokoll-megsértési CR után az LF utasításnak kell szerepelnie | Ez akkor fordul elő, ha a rendszer hibásan formázott fejléceket észlel. Előfordulhat, hogy egyes fejlécek nem használják a CRLF-t a sor végére, ami megsérti a HTTP-specifikációt, ezért a .NET webkérelem szintjén sikertelen lesz az ellenőrzés.
- || Ezt a terheléselosztó vagy a CDNs is okozhatja.
+|Tünet/hibaüzenet| Lehetséges okok| Lehetséges megoldások |
+|----|---------|-----|
+|A kiszolgáló protokoll megsértését véglegesítette. Szakasz = ResponseHeader details = CR után az LF utasításnak kell lennie | Ez akkor fordul elő, ha a rendszer hibásan formázott fejléceket észlel. Előfordulhat, hogy egyes fejlécek nem használják a CRLF a sor végére, ami sérti a HTTP-specifikációt. Application Insights érvényesíti ezt a HTTP-specifikációt, és a helytelen formátumú fejlécekkel nem tud válaszokat.| a. A hibás kiszolgálók kijavításához vegye fel a kapcsolatot a webhely gazdagépének szolgáltatójával/CDN-szolgáltatóval. <br> b. Ha a sikertelen kérelmek erőforrások (például a stíluslapok, a képek, a parancsfájlok), akkor érdemes lehet letiltani a függő kérelmek elemzését. Ne feledje, hogy ha ezt megteszi, elveszíti a fájlok rendelkezésre állásának figyelését).
 
 > [!NOTE]
 > Előfordulhat, hogy az URL-cím nem sikerül a HTTP-fejlécek nyugodt érvényesítését biztosító böngészőkön. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274825"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147340"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Az IPv6 használatának áttekintése Azure Load Balancer
 
@@ -27,7 +27,7 @@ ms.locfileid: "68274825"
 >[!NOTE] 
 >Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md).
 
-Az internetre irányuló terheléselosztó IPv6-cím használatával telepíthető. Az IPv4-kapcsolaton kívül ez a következő képességeket teszi lehetővé:
+Az alapszintű SKU internetkapcsolattal rendelkező terheléselosztó IPv6-cím használatával telepíthető. Az IPv4-kapcsolaton kívül ez a következő képességeket teszi lehetővé:
 
 * Natív, végpontok közötti IPv6-kapcsolat a nyilvános internetes ügyfelek és az Azure-Virtual Machines (VM-EK) között a terheléselosztó használatával.
 * Natív, végpontok közötti IPv6 kimenő kapcsolat a virtuális gépek és a nyilvános internet IPv6-kompatibilis ügyfelek között.
@@ -79,6 +79,7 @@ Korlátozások
 * Az IPv6 loadDistributionMethod-paraméterének módosítása **jelenleg nem támogatott**.
 * A fenntartott IPv6 IP-címek (ahol a IP = statikus) **jelenleg nem támogatottak**.
 * A NAT64 (IPv6-ról IPv4-re való fordítás) nem támogatott.
+* A standard SKU Load Balancer jelenleg nem támogatja az IPv6-címeket.
 
 ## <a name="next-steps"></a>További lépések
 

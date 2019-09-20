@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876695"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147294"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
 Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
@@ -24,15 +24,17 @@ Ezek a tanácsadás – a szolgáltatási ajánlatok az ügyfél-specifikus bevo
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Tanácsadási szolgáltatások az Azure Marketplace-en és a AppSource kirakatban
 A piactér kirakatai a célközönségek és a Microsoft Cloud Products szolgáltatással vannak összehangolva, hogy az ügyfelek megtalálják a szükséges igényeket. Minden kirakat speciális közzétételi lehetőségeket kínál a közzétételi befektetések maximalizálása érdekében. A következő táblázat összefoglalja ezeket a lehetőségeket:
 
-|         |Azure Piactér  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**Célközönség**   |**INFORMATIKAI szakemberek és felhőalapú fejlesztők**|**Üzleti felhasználók/üzletági döntéshozók**|
 |Megoldás relevanciája     |Az Azure-ra épülő vagy az Azure-ra épülő technikai alkalmazások|Üzleti alkalmazások, amelyek a D365, a Power BI, a O365 és az Azure-t használják/bővítik. (Bővítmény vagy bővítmény kész alkalmazások)|
-|Közzétételi beállítások     |Kapcsolatfelvétel, próbaverzió, Transact vagy Consulting Services|Kapcsolatfelvétel a velem, próbaverzióval vagy tanácsadási szolgáltatásokkal|
+|Közzétételi beállítások     |Kapcsolatfelvétel az Azure-ba, próbaverzióra, Transact-re vagy szolgáltatásokra|Kapcsolatfelvétel, próbaverzió vagy szolgáltatások a Dynamics 365 és Power BI|
 |A termék tapasztalatai      |Azure felügyeleti portál|Dynamics 365, Office 365, Office ügyfélalkalmazások| 
-|Egyéb      |Helyszíni közzététel Azure Stackon keresztül|A Dynamics és a Power BI tanácsadói szolgáltatásai|
+|Egyéb      |Helyszíni közzététel Azure Stack, Azure-beli tanácsadási szolgáltatások, Azure-beli felügyelt szolgáltatások révén|A Dynamics és a Power BI tanácsadói szolgáltatásai|
 
-A Microsoft Dynamics 365, az Office 365 és a Power BI alapján elérhető szolgáltatási ajánlatok a AppSource webhelyen is szerepelhetnek. További információ: [Microsoft AppSource Consulting Services listázási irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+A Microsoft Dynamics 365-es és Power BI-alapú tanácsadói szolgáltatásai jogosultak a Microsoft AppSource való listázásra. További információ: [Microsoft AppSource Consulting Services listázási irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+A Microsoft Azureon alapuló tanácsadói szolgáltatások és felügyelt szolgáltatások az Azure Marketplace-en is szerepelhetnek. További információkért lásd: [Az Azure Consulting Service közzétételére](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) és [a felügyelt szolgáltatások Azure Marketplace-re való közzétételére](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)vonatkozó cikkek.
 
 > [!Note]
 > Az Azure Marketplace-en futó tanácsadói szolgáltatásoknak olyan ajánlatokat kell kihasználnia, amelyek a * * technikai közönség felé irányulnak, és az *Azure technikai megoldásaira és szolgáltatásaira* koncentrálnak. \* * A AppSource tanácsadó szolgálatának olyan ajánlatokat kell kihasználnia, amelyek a Dynamics 365-, Power BI-vagy PowerApps-alapú minőségi megoldások nyújtásával kapcsolatos ismereteiket használják a AppSource
@@ -151,7 +153,7 @@ Az ajánlatok leírásának és az ajánlatok összegzésének áttekintésekor 
 
 |Csomag típusa  |Szükséges |Ajánlott  |
 |---------|---------|---------|
-|**Assessment**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen kihasználható      |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
+|**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen kihasználható      |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
 |**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. A tájékoztatót személyesen kell megadnia. Ha virtuális szolgáltatást biztosít, válasszon másik ajánlatot.    |  Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal       |
 |**Végrehajtása**    |  Részletes menetrendet tartalmaz a többnapos vagy a többhetes implementációk számára, és megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára       |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
 |**A koncepció igazolása**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően     | Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal        |

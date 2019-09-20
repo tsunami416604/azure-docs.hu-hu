@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883666"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155239"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -39,7 +39,7 @@ A személyre szabott gépi tanulási modellekkel megismerheti, hogy milyen műve
 1. Hozza létre és konfigurálja a megszemélyesítési szolgáltatás egy példányát a Azure Portal. Minden példány egy személyre szabott hurok.
 1. Az SDK használatával meghívhatja a személyre szabott információkat (_szolgáltatásokat_) a felhasználókkal és a tartalommal (_műveletekkel_). A személyre szabás előtt nem kell megadnia tiszta, címkézett adattípust. 
 1. Az ügyfélalkalmazás megjeleníti a felhasználó által a személyre szabott művelet által kiválasztott műveletet.
-1. Az SDK használatával visszajelzést adhat a személyre szabott személynek, amely jelzi, hogy a felhasználó kiválasztotta-e a személyre szabási műveletet. Ez egy _jutalom pontszám_, jellemzően-1 és 1 között.
+1. Az SDK használatával visszajelzést küldhet a személyre szabott személynek, amely azt jelzi, hogy a felhasználó kiválasztotta-e a testreszabott műveletet. Ez egy _[jutalom pontszám](concept-rewards.md)_ .
 1. Megtekintheti az elemzéseket a Azure Portalban annak kiértékeléséhez, hogy a rendszer hogyan működik, és hogyan segíti az adatai személyre szabását.
 
 ## <a name="where-can-i-use-personalizer"></a>Hol használhatom a személyre szabott szolgáltatást?
@@ -60,7 +60,7 @@ A személyre szabott szolgáltatás nem a felhasználói profil adatainak megőr
 A személyre szabott szolgáltatás két API-val rendelkezik:
 
 * Információ (_szolgáltatások_) küldése a felhasználókról és a tartalom (_műveletek_) személyre szabásához. A személyre szabás a legfelső szintű művelettel válaszol.
-* Visszajelzés küldése a személyre, hogy a rangsor mennyire jól működik, mint egy 0 és 1 közötti szám (az előző szakasz azt mondta – 1 és 1). 
+* Visszajelzés küldése a személyre, hogy a rangsor milyen jól működött a [jutalom pontszáma](concept-rewards.md)alapján. 
 
 ![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
 

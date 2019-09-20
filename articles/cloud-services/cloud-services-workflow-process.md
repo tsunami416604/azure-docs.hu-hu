@@ -4,7 +4,7 @@ description: Ez a cikk a szolgáltatás központi telepítésekor a munkafolyama
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945327"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162146"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>A klasszikus Windows Azure VM-architektúra munkafolyamata 
 Ez a cikk áttekintést nyújt az Azure-erőforrások, például virtuális gépek üzembe helyezése vagy frissítése során felmerülő munkafolyamat-folyamatokról. 
@@ -37,15 +37,16 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
 **B**. A háló vezérlő felelős az adatközpontban lévő összes erőforrás karbantartásához és figyeléséhez. A Fabric Host-ügynökökkel kommunikál a háló operációs rendszeren, például a vendég operációs rendszer verziója, a szervizcsomag, a szolgáltatás konfigurációja és a szolgáltatás állapota.
 
-**C**. A gazdagép ügynöke a gazdagép OSsystem él, és felelős a vendég operációs rendszer beállításához és a vendég ügynökkel való kommunikációhoz (WindowsAzureGuestAgent), hogy frissítse a szerepkört a kívánt cél állapot felé, és a szívverés-ellenőrzéseket a vendég ügynökkel. Ha a gazda ügynök 10 percig nem kap szívverési választ, a gazdagép ügynöke újraindítja a vendég operációs rendszert.
+**C**. A gazdagép ügynöke a gazdagép operációs rendszerében él, és felelős a vendég operációs rendszer beállításához és a vendég ügynökkel (WindowsAzureGuestAgent) való kommunikációhoz, hogy a szerepkört a kívánt cél állapot irányába frissítse, és a szívverés-ellenőrzéseket a vendég ügynökkel. Ha a gazda ügynök 10 percig nem kap szívverési választ, a gazdagép ügynöke újraindítja a vendég operációs rendszert.
 
 **C2**. A WaAppAgent felelős a WindowsAzureGuestAgent. exe telepítéséhez, konfigurálásához és frissítéséhez.
 
 **D**.  A WindowsAzureGuestAgent felelős a következőkért:
 
-1. A vendég operációs rendszer konfigurálása, beleértve a tűzfalat, az ACL-eket, a LocalStorage erőforrásokat, a szervizcsomagot, a konfigurációt és a tanúsítványokat Annak a felhasználói fióknak a biztonsági azonosítójának beállítása, amelyet a szerepkör fog futni.
-2. A szerepkör állapotának kommunikálása a hálóval.
-3. A WaHostBootstrapper elindítása és figyelése annak biztosításához, hogy a szerepkör a cél állapotban legyen.
+1. A vendég operációs rendszer konfigurálása, beleértve a tűzfalat, az ACL-eket, a LocalStorage erőforrásokat, a szervizcsomagot, a konfigurációt és a tanúsítványokat
+2. Annak a felhasználói fióknak a biztonsági azonosítójának beállítása, amelyet a szerepkör fog futni.
+3. A szerepkör állapotának kommunikálása a hálóval.
+4. A WaHostBootstrapper elindítása és figyelése annak biztosításához, hogy a szerepkör a cél állapotban legyen.
 
 **E**. A WaHostBootstrapper felelős a következőkért:
 
@@ -76,7 +77,7 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
 ## <a name="workflow-processes"></a>Munkafolyamat-folyamatok
 
-1. A felhasználók kéréseket tesznek elérhetővé, például a. cspkg és a. cscfg fájlok feltöltését, illetve egy adott konfiguráció leállításának vagy konfigurálásának megtételét, és így tovább. Ezt a Azure Portalon vagy a Service Management APIt használó eszközön, például a Visual Studio közzétételi funkcióján keresztül teheti meg. Ez a kérelem a RDFE, hogy elvégezze az összes előfizetéshez kapcsolódó munkát, majd továbbítja a kérést a FFE. A munkafolyamat további lépései egy új csomag üzembe helyezése és elindítása.
+1. A felhasználók egy kérést tesznek lehetővé, például ". cspkg" és ". cscfg" fájlokat töltenek fel, egy erőforrást a konfiguráció leállítására vagy a konfigurációs változások elvégzésére, és így tovább. Ezt a Azure Portalon vagy a Service Management APIt használó eszközön, például a Visual Studio közzétételi funkcióján keresztül teheti meg. Ez a kérelem a RDFE, hogy elvégezze az összes előfizetéshez kapcsolódó munkát, majd továbbítja a kérést a FFE. A munkafolyamat további lépései egy új csomag üzembe helyezése és elindítása.
 2. A FFE megkeresi a megfelelő számítógép-készletet (az ügyfél bemenete, például az affinitási csoport vagy a földrajzi hely, valamint a hálóból való bevitel, például a gép rendelkezésre állása), és kommunikál az adott gépcsoport Master Fabric-vezérlőjével.
 3. A Fabric-vezérlő olyan gazdagépet talál, amely rendelkezik elérhető CPU-magokkal (vagy új gazdagépet indít el). A rendszer átmásolja a szervizcsomagot és a konfigurációt a gazdagépre, és a háló vezérlő kommunikál a gazdagép operációs rendszerének gazdagép-ügynökével a csomag üzembe helyezéséhez (a DIPs, a ports, a vendég operációs rendszer stb. beállítása).
 4. A gazdagép ügynöke elindítja a vendég operációs rendszert, és kommunikál a vendég ügynökkel (WindowsAzureGuestAgent). A gazdagép szívveréseket küld a vendégnek, hogy megbizonyosodjon róla, hogy a szerepkör a cél állapotára törekszik.

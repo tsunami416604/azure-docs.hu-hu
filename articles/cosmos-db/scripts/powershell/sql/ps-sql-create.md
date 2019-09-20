@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell-példaszkript – az Azure Cosmos DB API (mag) SQL-adatbázis és a tároló létrehozása
-description: Azure PowerShell-példaszkript – az Azure Cosmos DB API (mag) SQL-adatbázis és a tároló létrehozása
+title: Azure PowerShell script-Azure Cosmos DB SQL-(Core-) API-adatbázis és-tároló létrehozása
+description: Azure PowerShell script-Azure Cosmos DB SQL-(Core-) API-adatbázis és-tároló létrehozása
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b8b30f178ba068bc800103f16adde43cf5dcb1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 29b0e81dd6eac62a18307788bb023ac3d802f11a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602221"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154855"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Hozzon létre egy adatbázist és egy tárolót az Azure Cosmos DB - SQL (fő) API
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Adatbázis és tároló létrehozása a Azure Cosmos DB-SQL (Core) API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,9 @@ ms.locfileid: "67602221"
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create a database and container for SQL (Core) API")]
+Ez a szkript létrehoz egy Cosmos-fiókot az SQL (Core) API-hoz két régióban a munkamenet-szintű konzisztencia, egy megosztott átviteli sebességgel rendelkező adatbázis és egy partíciós kulccsal rendelkező tároló, egyéni indexelési házirend, egyedi kulcs házirend, TTL, dedikált átviteli sebesség és a legutóbbi író WINS használatával. ütközés-feloldási házirend egy egyéni ütközés-feloldási útvonallal, amelyet `multipleWriteLocations=true`a rendszer akkor használ, amikor.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 

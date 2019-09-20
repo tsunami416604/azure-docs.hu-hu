@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: f8d6e5de7f907ae78958b8c239649f55257bf7f2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a6807cc204a5f8a6957bb03cf4dcbaf3611c17c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467517"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148428"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
@@ -24,7 +24,7 @@ A következő fejezetekben a Azure Cloud Shell vagy az Azure CLI használatával
 
 Első lépésként hozzon létre egy egyéni altartományt.
 
-1. Először nyissa meg a Azure Cloud Shell. Ezután [válasszon ki egy](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description)előfizetést:
+1. Először nyissa meg a Azure Cloud Shell. Ezután [válasszon ki egy előfizetést](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
    ```azurecli-interactive
    Select-AzureSubscription -SubscriptionName <YOUR_SUBCRIPTION>
@@ -36,7 +36,7 @@ Első lépésként hozzon létre egy egyéni altartományt.
    New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
    ```
 
-3. Ha a művelet sikeres  , a végpontnak az erőforrás egyedi altartománynevét kell megjelenítenie.
+3. Ha a művelet sikeres, a **végpontnak** az erőforrás egyedi altartománynevét kell megjelenítenie.
 
 
 ### <a name="assign-a-role-to-a-service-principal"></a>Szerepkör kiosztása egy egyszerű szolgáltatáshoz
@@ -56,7 +56,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
 
    A következő lépésben szüksége lesz a **ApplicationId** .
 
-2. Ezután létre kell hoznia [egy szolgáltatásnevet](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) a HRE alkalmazáshoz.
+2. Ezután [létre kell hoznia egy szolgáltatásnevet](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) a HRE alkalmazáshoz.
 
    ```azurecli-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -68,6 +68,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
 3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
    >[!NOTE]
    > Az egyszerű szolgáltatásnév ObjectId van használatban, nem az alkalmazás ObjectId.
+   > A ACCOUNT_ID lesz a létrehozott Cognitive Services fiók Azure-erőforrás-azonosítója. Az Azure Resource id-t a Azure Portal erőforrás "tulajdonságok" területén találja.
 
    ```azurecli-interactive
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"
@@ -86,7 +87,8 @@ Ebben a példában egy jelszót használunk az egyszerű szolgáltatás hiteles�
 2. Token beszerzése:
    ```azurecli-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
-   $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, $password
+   $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
+   $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, $secureSecretObject
    $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
    $token
    ```

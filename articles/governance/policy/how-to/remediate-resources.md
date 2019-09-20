@@ -1,22 +1,22 @@
 ---
 title: Nem megfelelő erőforrások szervizelése
-description: Ez az útmutató végigvezeti a szervizelés, amely nem felel meg a házirendek az Azure Policy-erőforrások.
+description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésén, amelyek nem felelnek meg a Azure Policy szabályzatának.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241141"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147047"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
-Erőforrások, amelyek nem megfelelő, egy **deployIfNotExists** házirend elhelyezheti keresztül megfelelő állapotba **szervizelési**. A szervizelést a rendszer arra utasítja, Azure Policy hogy futtassa a hozzárendelt házirend **deployIfNotExists** hatását a meglévő erőforrásokra. Ez a cikk azokat a lépéseket mutatja be, amelyekkel megismerheti és elvégezheti a szervizelést Azure Policy.
+Azok az erőforrások, amelyek nem felelnek meg a **deployIfNotExists** vagy a házirend- **módosítási** szabályzatoknak, **szervizeléssel**kompatibilis állapotba helyezhetők. A szervizelést a rendszer arra utasítja, Azure Policy hogy futtassa a **deployIfNotExists** hatást vagy a hozzárendelt szabályzat címkézési **műveleteit** a meglévő erőforrásokon. Ez a cikk azokat a lépéseket mutatja be, amelyekkel megismerheti és elvégezheti a szervizelést Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>Szervizelési biztonsági működése
 
@@ -26,11 +26,11 @@ Azure Policy létrehoz egy felügyelt identitást az egyes hozzárendelésekhez,
 ![Felügyelt identitás – hiányzó szerepkör](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Ha egy erőforrás módosította **deployIfNotExists** terjed ki a szabályzat-hozzárendelést vagy a sablon tulajdonságainak hozzáfér a szabályzat-hozzárendelés hatókörén kívüli erőforrások, a hozzárendelés-felügyelt identitásnak kell lennie [manuálisan hozzáférést](#manually-configure-the-managed-identity) vagy a szervizelési központi telepítés sikertelen lesz.
+> Ha egy **deployIfNotExists** vagy **módosítás** által módosított erőforrás kívül esik a házirend-hozzárendelés hatókörén, vagy a sablon a szabályzat-hozzárendelés hatókörén kívüli erőforrásokhoz fér hozzá, akkor a hozzárendelés felügyelt identitásának a következőnek kell lennie [: a hozzáférés manuális megadása](#manually-configure-the-managed-identity) vagy a szervizelés üzembe helyezése sikertelen lesz.
 
 ## <a name="configure-policy-definition"></a>Szabályzat-definíció konfigurálása
 
-Az első lépés az, hogy a Szerepkörök definiálása, amely **deployIfNotExists** szabályzatdefinícióban sikeres üzembe helyezéséhez a tartalom a csomagban foglalt sablon van szüksége. Alatt a **részletek** tulajdonság, adjon hozzá egy **roleDefinitionIds** tulajdonság. Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepkört a környezetben. Egy teljes példa: a [deployIfNotExists példa](../concepts/effects.md#deployifnotexists-example).
+Első lépésként meg kell határozni azokat a szerepköröket, amelyek **deployIfNotExists** és **módosítása** szükséges a házirend-definícióban a tartalmazott sablon tartalmának sikeres telepítéséhez. Alatt a **részletek** tulajdonság, adjon hozzá egy **roleDefinitionIds** tulajdonság. Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepkört a környezetben. Teljes példaként tekintse meg a [deployIfNotExists példát](../concepts/effects.md#deployifnotexists-example) vagy a [példák módosításait](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -42,7 +42,7 @@ Az első lépés az, hogy a Szerepkörök definiálása, amely **deployIfNotExis
 }
 ```
 
-**roleDefinitionIds** a teljes erőforrás-azonosítóját használja, és nem használ a rövid **roleName** szerepkör. A "Közreműködő" szerepkört a környezetben az azonosító lekéréséhez használja a következő kódot:
+A **roleDefinitionIds** tulajdonság a teljes erőforrás-azonosítót használja, és nem veszi igénybe a szerepkör rövid **roleName** . A "Közreműködő" szerepkört a környezetben az azonosító lekéréséhez használja a következő kódot:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +126,7 @@ A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse a
 
 ### <a name="create-a-remediation-task-through-portal"></a>Szervizelési feladat létrehozása a portálon keresztül
 
-Kiértékelés, a szabályzat-hozzárendelés során **deployIfNotExists** érvénybe határozza meg, hogy vannak-e a nem megfelelő erőforrások. Ha a nem megfelelő erőforrások találhatók, a részletek a biztosított a **szervizelési** lapot. A nem megfelelő tároló erőforrásait tartalmazó szabályzatok listáján, valamint a aktiválásához lehetőség egy **javítási feladat**. Ez a beállítás akkor mit hoz létre a központi telepítés a **deployIfNotExists** sablont.
+Az értékelés során a szabályzat-hozzárendelés **deployIfNotExists** vagy a hatások **módosítása** meghatározza, hogy vannak-e nem megfelelő erőforrások. Ha a nem megfelelő erőforrások találhatók, a részletek a biztosított a **szervizelési** lapot. A nem megfelelő tároló erőforrásait tartalmazó szabályzatok listáján, valamint a aktiválásához lehetőség egy **javítási feladat**. Ez a beállítás azt eredményezi, hogy a központi telepítést a **deployIfNotExists** sablonból vagy a **módosítási** műveletekkel hozza létre.
 
 Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
@@ -138,7 +138,7 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
    ![Szervizelés kiválasztása a szabályzat lapon](../media/remediate-resources/select-remediation.png)
 
-1. Az összes **deployIfNotExists** a szabályzat-hozzárendelést a nem megfelelő erőforrások tartalmazzák a **javítása házirendek** lapra, és az adatok table. Kattintson az erőforrások, amelyek nem megfelelő házirendet. A **új javítási feladat** lap megnyitásakor.
+1. A nem megfelelő erőforrásokkal rendelkező szabályzat-hozzárendelések minden **deployIfNotExists** és **módosítása** a lap és az adattábla **szervizeléséhez** szükséges. Kattintson az erőforrások, amelyek nem megfelelő házirendet. A **új javítási feladat** lap megnyitásakor.
 
    > [!NOTE]
    > Nyisson meg egy másik módszere a **javítási feladat** lapot, hogy keresse meg és kattintson a szabályzatra, a **megfelelőségi** lapon, majd kattintson a **javítási feladat létrehozása** gombra.
@@ -161,7 +161,7 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Szervizelési feladat létrehozása az Azure CLI-n keresztül
 
-Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, `az policy remediation` használja a parancsokat. Cserélje `{subscriptionId}` le az előfizetési azonosítót `{myAssignmentId}` és a **deployIfNotExists** szabályzat-hozzárendelési azonosítóját.
+Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, `az policy remediation` használja a parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +174,7 @@ További szervizelési parancsokért és példákért tekintse meg az az [Policy
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Szervizelési feladat létrehozása Azure PowerShell használatával
 
-Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje `{subscriptionId}` le az előfizetési azonosítót `{myAssignmentId}` és a **deployIfNotExists** szabályzat-hozzárendelési azonosítóját.
+Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -190,6 +190,6 @@ Más szervizelési parancsmagok és példák esetében tekintse meg az az [. Pol
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
-- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott](programmatically-create.md)módon házirendeket.
+- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](getting-compliance-data.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

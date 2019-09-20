@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878802"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147153"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 
@@ -38,6 +38,9 @@ Az Media Services eseményeket kezelő alkalmazásoknak néhány ajánlott gyako
 * Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
 * Figyelmen kívül hagyhatja a nem értelmezhető mezőket.  Ez a gyakorlat segít megőrizni a jövőben esetlegesen hozzáadott új funkciókkal való ellenálló képességet.
 * Az események adott eseményre való korlátozásához használja a "tárgy" előtagot és utótagot.
+
+> [!NOTE]
+> Az események a Event Grid [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)hatálya alá esnek. Ha API-kat használó esemény-értesítéseket szeretne kapni, tekintse meg a példákat az események használatáról a [.net SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) -val vagy a [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey)-val.
 
 ## <a name="next-steps"></a>További lépések
 

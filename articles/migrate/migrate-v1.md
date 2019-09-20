@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142082"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162458"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -78,7 +78,7 @@ Az értékelésben az Azure használatához szükséges állapotnézet az egyes 
 
 **Készenlét** | **Állapot** | **Részletek**
 --- | --- | ---
-Azure-beli használatra kész | Nincsenek kompatibilitási problémák. A gép áttelepíthető az Azure-ba, és az Azure-ban teljes körű Azure-támogatást fog betölteni. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
+Azure-beli használatra kész | Nincsenek kompatibilitási problémák. A gép telepíthető át az Azure-ba, és az Azure-ban teljes körű Azure-támogatással indul el. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
 Feltételesen készen áll az Azure-beli használatra | Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például egy olyan gép, amelyen az Azure nem támogatja a Windows Server régebbi verzióját. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 Nem áll készen az Azure-beli használatra |  A virtuális gép nem indul el az Azure-ban. Ha például egy virtuális gépen 4 TB-nál több lemez található, az nem üzemeltethető az Azure-ban. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
 A kompatibilitás ismeretlen | Azure Migrate nem tudja azonosítani az Azure-felkészültséget, általában azért, mert az adatforrások nem érhetők el.
@@ -91,7 +91,7 @@ A készültség számos virtuálisgép-tulajdonságot figyelembe vesz, hogy megt
 **Tulajdonság** | **Részletek** | **Készenlét**
 --- | --- | ---
 **Rendszerindítás típusa** | A BIOS támogatott. Az UEFI nem támogatott. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
-**Mag** | A Machines Core < = az Azure-beli virtuális gépek számára támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate figyelembe veszi a felhasznált magokat.<br/>Ha a <br/>az értékelési beállításokban meg van adva a komfort tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat használja a komfort tényező alkalmazása nélkül. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
+**Mag** | A Machines Core < = az Azure-beli virtuális gépek számára támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate figyelembe veszi a felhasznált magokat.<br/>Ha az értékelési beállításokban meg van adva egy kényelmi tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat használja a komfort tényező alkalmazása nélkül. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
 **Memória** | A számítógép memóriájának mérete < = a maximális memória (3892 GB az Azure M Series&nbsp;Standard_M128m<sup>2</sup>) egy Azure-beli virtuális gépen. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
 **Storage-lemez** | A lemez lefoglalt méretének 4 TB (4096 GB) vagy kevesebbnek kell lennie.<br/><br/> A géphez csatolt lemezek számának 65 vagy annál kisebbnek kell lennie, beleértve az operációsrendszer-lemezt is. | A határértékeken belül készen áll.
 **Hálózat** | A számítógépnek 32 vagy annál kevesebb hálózati adapterrel kell rendelkeznie. | A határértékeken belül készen áll.
@@ -142,7 +142,7 @@ A költségbecslés a virtuális gépek Azure-ban való futtatásának teljes sz
 
 Minden teljesítmény-alapú értékelés megbízhatósági minősítéssel van társítva.
 
-- A megbízhatósági minősítés az egyik csillagtól az öt csillagig terjed (az első a legalacsonyabb és az ötödik – a legmagasabb).
+- A megbízhatósági minősítés az egyik csillagtól az öt csillagig terjed (az egyik csillag a legalacsonyabb és az ötcsillagos a legmagasabb).
 - A megbízhatósági minősítés egy értékeléshez van rendelve, az értékelés kiszámításához szükséges adatpontok rendelkezésre állása alapján.
 - Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
 - A megbízhatósági minősítés nem érhető el a helyszíni értékelésekhez.
@@ -216,7 +216,7 @@ A munkaterület konfigurálása után le kell töltenie és telepítenie kell az
 4. Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre akkor van szükség, amikor telepíti az MMA-t a helyszíni gépre.
 
 > [!NOTE]
-> Az ügynökök telepítésének automatizálásához használhat olyan üzembe helyezési eszközt, mint például a System Center Configuration Manager vagy egy olyan partneri eszköz, amely egy olyan [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely Azure Migrate számára az ügynök-telepítési megoldást orovides.
+> Az ügynökök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy olyan partneri eszköz, amely egy olyan [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely ügynök-telepítési megoldást biztosít a Azure Migrate számára.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Az MMA-ügynök telepítése Windows rendszerű gépre
@@ -253,7 +253,7 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- További információ a Windows [](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) és Linux operációs rendszerek függőségi ügynökének támogatásáról.
+- További információ a Windows és Linux operációs rendszerek [függőségi ügynökének támogatásáról](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 - [További](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
 
 >[!NOTE]

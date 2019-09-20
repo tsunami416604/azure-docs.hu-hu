@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 92ec03e20fb6e681a0afd14048449ad004ebca0c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991487"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154764"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
@@ -23,57 +23,50 @@ Ez a cikk segít megérteni a ExpressRoute-monitorozás, mérőszámok és riasz
 >Használatával **klasszikus metrikák** nem ajánlott.
 >
 
-## <a name="circuit-metrics"></a>Kapcsolatcsoport metrikák
+## <a name="expressroute-metrics"></a>ExpressRoute metrikák
 
-Keresse meg a **metrikák**, az ExpressRoute lapon a kapcsolatcsoporthoz, amelyet figyelni szeretne. A **figyelés**, megtekintheti a **metrikák**. Válasszon az alább felsorolt mérőszámokból. Az alapértelmezett összesítés lesz alkalmazva. Igény szerint a felosztást is alkalmazhatja, amely a különböző Dimenziókkal rendelkező metrikákat jeleníti meg.
+A **metrikák**megtekintéséhez navigáljon a *Azure monitor* lapra, és kattintson a *metrikák*elemre. Az **ExpressRoute** -metrikák megtekintéséhez a *ExpressRoute típusú áramköröket*. **Global REACH** mérőszámok megtekintéséhez válassza az erőforrás típusa ExpressRoute- *áramkörök* lehetőséget, és válasszon ki egy Global REACH engedélyezett ExpressRoute-áramköri erőforrást. A **közvetlen ExpressRoute** -metrikák megtekintéséhez *ExpressRoute-portok*alapján szűrheti az erőforrás típusát. 
 
-### <a name="metrics-available"></a>Elérhető metrikák: 
-* **Rendelkezésre állás** 
-    * ARP rendelkezésre állása
-      * Elérhető méretek:
-        * Társ (elsődleges/másodlagos ExpressRoute útválasztó)
-        * Egyenrangú típus (privát/nyilvános/Microsoft)
-    * BGP rendelkezésre állása
-      * Elérhető méretek:
-        * Társ (elsődleges/másodlagos ExpressRoute útválasztó)
-        * Egyenrangú típus (privát/nyilvános/Microsoft)
-* **Forgalom**
-    * BitsInPerSecond
-      * Elérhető méretek:
-        * Egyenrangú típus (privát/nyilvános/Microsoft)
-    * BitsOutPerSecond
-      * Elérhető méretek:
-        * Egyenrangú típus (privát/nyilvános/Microsoft)
-    * GlobalReachBitsInPerSecond
-      * Elérhető méretek:
-        * Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)
-    * GlobalReachBitsOutPerSecond
-      * Elérhető méretek:
-        * Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)
+Ha kijelöl egy mérőszámot, a rendszer az alapértelmezett összesítést alkalmazza. Igény szerint a felosztást is alkalmazhatja, amely a metrikát különböző dimenziókkal jeleníti meg.
 
+### <a name="available-metrics"></a>Elérhető metrikák
+|**Metrika**|**Kategória**|**Dimenzió (k)**|**Szolgáltatás (ok)**|
+| --- | --- | --- | --- |
+|ARP rendelkezésre állása|Rendelkezésre állás|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus (privát/nyilvános/Microsoft)</ui></li>|ExpressRoute|
+|BGP rendelkezésre állása|Rendelkezésre állás|<ui><li> Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus</ui></li>|ExpressRoute|
+|BitsInPerSecond|Forgalom|<ui><li> Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Forgalom| <ui><li>Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
+|GlobalReachBitsInPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|GlobalReachBitsOutPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|AdminState|Fizikai kapcsolat|Összekapcsolás|ExpressRoute Direct|
+|LineProtocol|Fizikai kapcsolat|Összekapcsolás|ExpressRoute Direct|
+|RxLightLevel|Fizikai kapcsolat|<ui><li>Hivatkozás</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fizikai kapcsolat|<ui><li>Hivatkozás</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >A *GlobalGlobalReachBitsInPerSecond* és a *GlobalGlobalReachBitsOutPerSecond* használata csak akkor látható, ha legalább egy Global REACH-kapcsolatok létrejöttek.
 >
 
-## <a name="bits-in-and-out---metrics-across-all-peerings"></a>BITS be-és kifelé – mérőszámok az összes társon belül
+## <a name="circuits-metrics"></a>Áramkörök metrikái
+
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>BITS be-és kifelé – mérőszámok az összes társon belül
 
 A mérőszámokat megtekintheti egy adott ExpressRoute-áramkörön található összes társon.
 
 ![Kapcsolatcsoport metrikák](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-## <a name="bits-in-and-out---metrics-per-peering"></a>BITS be-és kimenő metrikák
+### <a name="bits-in-and-out---metrics-per-peering"></a>BITS be-és kimenő metrikák
 
 Magánhálózati, nyilvános és a Microsoft a társviszony-létesítés bit/másodperc metrikáinak megtekintéséhez.
 
 ![Társviszony-létesítés metrika](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-## <a name="bgp-availability---split-by-peer"></a>BGP rendelkezésre állása – megosztás társ szerint  
+### <a name="bgp-availability---split-by-peer"></a>BGP rendelkezésre állása – megosztás társ szerint  
 
 Megtekintheti közel valós idejű rendelkezésre állását a BGP és a társai között (elsődleges és másodlagos ExpressRoute útválasztók). Ez az irányítópult az elsődleges BGP-munkamenetet jeleníti meg a privát partnereknél, a második BGP-munkamenetet pedig a privát társak számára. 
 
 ![BGP rendelkezésre állása csoportonként](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-## <a name="arp-availability---split-by-peering"></a>ARP rendelkezésre állása – megosztás társítás szerint  
+### <a name="arp-availability---split-by-peering"></a>ARP rendelkezésre állása – megosztás társítás szerint  
 
 Megtekintheti a közel valós idejű rendelkezésre állást az [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) -ben a különböző társítások és társaik (elsődleges és másodlagos ExpressRoute útválasztók) között. Ez az irányítópult a privát társ-összevonási ARP-munkamenetet jeleníti meg mindkét társon, de a Microsoft társközi szolgáltatásban való kitöltését. A rendszer az alapértelmezett összesítést (átlag) használta mindkét társban.  
 

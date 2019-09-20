@@ -1,6 +1,6 @@
 ---
-title: Azure Functions hiba a kezelési útmutatóban | Microsoft Docs
-description: Általános útmutatást nyújt a függvények végrehajtásakor előforduló hibák kezeléséhez, valamint a kötési hibákra vonatkozó témakörökre mutató hivatkozásokat.
+title: Azure Functions hibakezelés – útmutató
+description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functionsban, és meghatározott kötési hibákra mutató hivatkozásokat.
 services: functions
 cloud: ''
 documentationcenter: ''
@@ -9,26 +9,28 @@ manager: gwallace
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: fdfee3442986322f242da730bb9ceccbc9f9e250
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097487"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155284"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions hibakezelés
 
-Ez a témakör általános útmutatást nyújt a függvények végrehajtásakor előforduló hibák kezelésére. Emellett az esetlegesen előforduló kötési hibákat leíró témakörökre mutató hivatkozásokat is tartalmaz. 
+A Azure Functions hibák elhárítása fontos az elveszett adat, a kihagyott események és az alkalmazás állapotának figyelése érdekében.
 
-## <a name="handling-errors-in-functions"></a>Hibák feldolgozása a functions szolgáltatásban
+Ez a cikk a hibák kezelésére vonatkozó általános stratégiákat, valamint a kötésekre vonatkozó hibákra mutató hivatkozásokat ismerteti.
+
+## <a name="handling-errors"></a>Kezelési hibák
+
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
- 
 ## <a name="binding-error-codes"></a>Kötési hibakódok
 
-Az Azure-szolgáltatásokkal való integráció során hibák merülhetnek fel, amelyek az alapul szolgáló szolgáltatások API-jai felől származnak. Az ezen szolgáltatások hibakód-dokumentációjának hivatkozásait a következő trigger-és kötési referenciákkal foglalkozó témakör **kivételek és visszatérési kódok** szakaszában találja:
+Az Azure-szolgáltatásokkal való integráció során a hibák a mögöttes szolgáltatások API-jai alapján származhatnak. A kötési hibákkal kapcsolatos információk a következő cikkek **kivételek és visszatérési kódok** szakaszában érhetők el:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

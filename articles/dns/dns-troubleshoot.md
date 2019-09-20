@@ -1,65 +1,56 @@
 ---
-title: Az Azure DNS – hibaelhárítási útmutató |} A Microsoft Docs
-description: Az Azure DNS használata gyakori hibáinak elhárítása
+title: Azure DNS hibaelhárítási útmutató
+description: Gyakori hibák elhárítása Azure DNS
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
+ms.date: 09/20/2019
 ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823895"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162070"
 ---
-# <a name="azure-dns-troubleshooting-guide"></a>Az Azure DNS – hibaelhárítási útmutató
+# <a name="azure-dns-troubleshooting-guide"></a>Azure DNS hibaelhárítási útmutató
 
-Ez az oldal nyújt információkat talál az Azure DNS gyakori kérdésekre.
+Ez a cikk a gyakori Azure DNS kérdésekre vonatkozó hibaelhárítási információkat tartalmaz.
 
-Ha ezek a lépések nem oldják meg a problémát, keresse meg vagy is a probléma megoldásához tegye a a [MSDN található közösségi támogatási fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Azt is megteheti nyissa meg az Azure-támogatáskérést.
+Ha ezek a lépések nem oldják meg a problémát, megkeresheti vagy közzéteheti a problémát a [közösségi támogatási fórumon az MSDN webhelyen](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Vagy egy Azure-támogatási kérést is megnyithat.
 
 
-## <a name="i-cant-create-a-dns-zone"></a>Nem tudok létrehozni egy DNS-zóna
+## <a name="i-cant-create-a-dns-zone"></a>Nem tudok DNS-zónát létrehozni
 
 A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 
-1.  Tekintse át az Azure DNS-naplók, a hiba okának megállapításához.
-2.  Minden DNS-zónanévnek egyedinek kell lennie a saját erőforráscsoportján belül. Ugyanazzal a névvel rendelkező két DNS-zóna nem használhatja közösen az erőforráscsoportot. Próbáljon meg eltérő zónanevet vagy erőforráscsoportot használni.
+1.  A hiba okának megállapításához tekintse át a Azure DNS naplókat.
+2.  Minden DNS-zónanévnek egyedinek kell lennie a saját erőforráscsoportján belül. Ez azt is megteheti, hogy két azonos nevű DNS-zóna nem tud megosztani egy erőforráscsoportot. Próbáljon meg eltérő zónanevet vagy erőforráscsoportot használni.
 3.  Előfordulhat, hogy megjelenik az „Elérte vagy túllépte a zónák maximális számát az előfizetésben ({előfizetés azonosítója})” hibaüzenet. Használjon másik Azure-előfizetést, töröljön néhány zónát, vagy vegye fel a kapcsolatot az Azure ügyfélszolgálatával az előfizetésre vonatkozó korlát megemeléséhez.
-4.  „A(z) {zónanév} zóna nem érhető el” hibaüzenet is megjelenhet. Ez a hiba azt jelzi, hogy az Azure DNS nem tudott névkiszolgálót lefoglalni ehhez a DNS-zónához. Próbáljon meg egy másik zónanevet használni. Ha Ön a tartománynév tulajdonosa, felveheti a kapcsolatot az Azure ügyfélszolgálatával, ahol le tudnak foglalni egy névkiszolgálót az Ön számára.
+4.  „A(z) {zónanév} zóna nem érhető el” hibaüzenet is megjelenhet. Ez a hiba azt jelzi, hogy az Azure DNS nem tudott névkiszolgálót lefoglalni ehhez a DNS-zónához. Próbáljon meg egy másik zónanevet használni. Vagy ha Ön a tartománynév tulajdonosa, vegye fel a kapcsolatot az Azure ügyfélszolgálatával a névkiszolgálók lefoglalásához.
 
 
-### <a name="recommended-documents"></a>**Ajánlott dokumentumok**
+### <a name="recommended-articles"></a>Ajánlott cikkek
 
-[DNS-zónák és -rekordok](dns-zones-records.md)
-<br>
-[DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zónák és -rekordok](dns-zones-records.md)
+* [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>Nem tudok létrehozni egy DNS-rekordot
 
 A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 
-1.  Tekintse át az Azure DNS-naplók, a hiba okának megállapításához.
+1.  A hiba okának megállapításához tekintse át a Azure DNS naplókat.
 2.  A rekordhalmaz már létezik?  Az Azure DNS a rekordokat *rekordhalmazok* használatával kezeli, amelyek ugyanazzal a névvel és típussal rendelkező rekordok gyűjteményei. Ha egy ugyanolyan nevű és típusú rekord már létezik, akkor egy másik ugyanilyen rekord hozzáadásához szerkesztenie kell a meglévő rekordhalmazt.
-3.  A DNS-zóna legfelső pontján (a zóna „gyökerén”) próbál rekordot létrehozni? Ha igen, az általános egyezmény a DNS rendszerben a „@” karakter használata a rekord neveként. Vegye figyelembe, hogy a DNS-szabványok nem engedélyeznek CNAME-rekordokat a zóna legfelső pontján.
-4.  CNAME-ütközést tapasztal?  A DNS-szabványok nem engedélyeznek bármilyen más típusú rekorddal megegyező nevű CNAME-rekordokat. Ha rendelkezik egy meglévő CNAME-mel, nem tud egy másik típusú, de ugyanolyan nevű rekordot létrehozni.  A CNAME létrehozása szintén sikertelen lesz, ha a neve megegyezik egy más típusú, már létező rekord nevével. Szüntesse meg az ütközést a másik rekord eltávolításával vagy egy eltérő rekordnév beállításával.
-5.  Elérte a DNS-zónában engedélyezett rekordhalmazok számának korlátját? A rekordhalmazok aktuális száma és legfelső korlátja az Azure Portalon látható, a zóna „Tulajdonságainál”. Ha elérte ezt a korlátot, töröljön néhány rekordhalmazt, vagy vegye fel a kapcsolatot az Azure ügyfélszolgálatával a zónához tartozó korlát emeléséhez, majd próbálkozzon újra. 
+3.  A DNS-zóna legfelső pontján (a zóna „gyökerén”) próbál rekordot létrehozni? Ha igen, az általános egyezmény a DNS rendszerben a „@” karakter használata a rekord neveként. Azt is vegye figyelembe, hogy a DNS-szabványok nem engedélyezik a CNAME-rekordokat a zóna csúcsán.
+4.  CNAME-ütközést tapasztal?  A DNS-szabványok nem engedélyezik, hogy a CNAME rekord ugyanazzal a névvel legyen ellátva, mint bármely más típusú rekord. Ha rendelkezik egy meglévő CNAME-mel, nem tud egy másik típusú, de ugyanolyan nevű rekordot létrehozni.  A CNAME létrehozása szintén sikertelen lesz, ha a neve megegyezik egy más típusú, már létező rekord nevével. Szüntesse meg az ütközést a másik rekord eltávolításával vagy egy eltérő rekordnév beállításával.
+5.  Elérte a DNS-zónában engedélyezett rekordhalmazok számának korlátját? A rekordhalmazok aktuális száma és legfelső korlátja az Azure Portalon látható, a zóna „Tulajdonságainál”. Ha elérte ezt a korlátot, töröljön néhány rekordhalmazt, vagy vegye fel a kapcsolatot az Azure támogatási szolgálatával, hogy növelje a rekord beállított korlátját ehhez a zónához, és próbálkozzon újra. 
 
 
-### <a name="recommended-documents"></a>**Ajánlott dokumentumok**
+### <a name="recommended-articles"></a>Ajánlott cikkek
 
-[DNS-zónák és -rekordok](dns-zones-records.md)
-<br>
-[DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zónák és -rekordok](dns-zones-records.md)
+* [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ A DNS-névfeloldás egy többlépéses folyamat, amely több okból is meghiúsu
 4.  A fentiek elvégzése után meg kell történnie a DNS-rekord feloldásának. Az ellenőrzéshez ismét használható a [digwebinterface](https://digwebinterface.com), ezúttal az alapértelmezett névkiszolgáló-beállításokkal.
 
 
-### <a name="recommended-documents"></a>**Ajánlott dokumentumok**
+### <a name="recommended-articles"></a>Ajánlott cikkek
 
-[Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
+* [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
 
 
 
@@ -91,18 +82,16 @@ Példák az SRV-rekordnevekre („sip” szolgáltatásnév, „tcp” protokoll
 - \_sip.\_tcp (egy rekordhalmazt hoz létre a zóna legfelső pontján)
 - \_sip.\_tcp.sipservice (egy „sipservice” nevű rekordhalmazt hoz létre)
 
-### <a name="recommended-documents"></a>**Ajánlott dokumentumok**
+### <a name="recommended-articles"></a>Ajánlott cikkek
 
-[DNS-zónák és -rekordok](dns-zones-records.md)
-<br>
-[DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV rekordtípus (Wikipédia)](https://en.wikipedia.org/wiki/SRV_record)
+* [DNS-zónák és -rekordok](dns-zones-records.md)
+* [DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](dns-getstarted-create-recordset-portal.md)
+* [SRV rekordtípus (Wikipédia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [Azure DNS-zónák és rekordok](dns-zones-records.md)
-* Az Azure DNS használatának megkezdéséhez, megtudhatja, hogyan [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md) és [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md).
-* Át egy meglévő DNS-zónát, megtudhatja, hogyan [importálása és exportálása a DNS-zónafájl](dns-import-export.md).
+* Tudnivalók [Azure DNS zónákról és rekordokról](dns-zones-records.md)
+* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS](dns-getstarted-create-dnszone-portal.md) -zónát, és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
+* Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.
 

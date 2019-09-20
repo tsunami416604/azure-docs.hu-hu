@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999649"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155236"
 ---
 # <a name="where-can-you-use-personalizer"></a>Hol használhatja a Personalizert?
 
@@ -33,7 +33,7 @@ A személyre szabás olyan helyzetekben is alkalmazható, ahol:
 * A legjobb választás a kollektív felhasználói viselkedésből és az összes jutalom pontszámból is elsajátítható.
 * A gépi tanulás használata személyre szabáshoz az Ön által választott [felelős használati irányelvek](ethics-responsible-use.md) és döntések követik.
 * A kontextusra vonatkozó döntés a lehető legjobb lehetőség (művelet) rangsorolásával állítható be a választható lehetőségek közül.
-* Az alkalmazáshoz tartozó rangsorolt választék meghatározása a felhasználói viselkedés bizonyos aspektusának mérésével, valamint a _jutalom pontszámának_kifejezésével határozható meg. Ez egy-1 és 1 közötti szám.
+* Az alkalmazáshoz tartozó rangsorolt választék meghatározása a felhasználói viselkedés bizonyos aspektusának mérésével, valamint a _[jutalom pontszámának](concept-rewards.md)_ kifejezésével határozható meg.
 * A jutalom pontszáma nem túl sok összetételt vagy külső tényezőt eredményez. A kísérlet időtartama elég alacsony ahhoz, hogy a jutalom pontszám kiszámítható legyen, miközben továbbra is releváns.
 * A rangsorhoz tartozó kontextust úgy fejezheti be, hogy legalább 5 olyan [funkciót](concepts-features.md) tartalmaz, amelyet úgy gondol, hogy kihasználja a megfelelő választást, és nem tartalmaz személyazonosításra alkalmas adatokat. (PII).
 * Minden egyes tartalomra vonatkozó döntésről, _műveletről_, legalább 5 olyan [szolgáltatásról](concepts-features.md) van szó, amelyről úgy gondolja, hogy a megfelelő választást fogja segíteni személyre szabni.

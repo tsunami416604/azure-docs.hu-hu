@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883051"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162308"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Gyors útmutató: Kiszolgáló szintű tűzfalszabály létrehozása az önálló és a készletezett adatbázisokhoz a Azure Portal használatával
 
@@ -41,7 +41,7 @@ A SQL Database szolgáltatás egy tűzfalat hoz létre az adatbázis-kiszolgál�
 
 Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály létrehozásához az ügyfél IP-címéhez, és engedélyezze a külső kapcsolatot a SQL Database tűzfalon keresztül csak az IP-címéhez.
 
-1. Az [Azure SQL Database](#prerequisites) üzembe helyezésének előfeltétele után válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **mySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások.
+1. Az [Azure SQL Database üzembe helyezésének előfeltétele](#prerequisites) után válassza ki az SQL- **adatbázisok** elemet a bal oldali menüben, majd válassza a **mySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások.
 
 2. Másolja ezt a teljes kiszolgálónevet, amelyet a kiszolgálóhoz és az adatbázisaihoz való csatlakozáskor használni szeretne más gyors útmutatókban.
 
@@ -54,7 +54,7 @@ Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály lé
 4. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá az aktuális IP-címet egy új kiszolgálói szintű IP-tűzfalszabály eléréséhez. A kiszolgálói szintű IP-tűzfalszabály egyetlen IP-cím vagy egy IP-címtartomány 1433-as portját nyithatja meg.
 
    > [!IMPORTANT]
-   > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Válassza **ki** ezen a lapon az összes Azure-szolgáltatás letiltásához.
+   > Alapértelmezés szerint a SQL Database tűzfalon keresztüli hozzáférés le van tiltva az összes Azure-szolgáltatás esetében. Ha engedélyezni szeretné az összes Azure-szolgáltatás elérését, válassza az ezen **a** lapon lehetőséget.
    >
 
 5. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877190"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147363"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -25,13 +25,17 @@ Az üzenet-útválasztás lehetővé teszi, hogy automatizált, méretezhető é
 
 * **Adatszűrés a különböző végpontokra való átirányításuk előtt** , Rich lekérdezések alkalmazásával. Az üzenet-útválasztás lehetővé teszi, hogy lekérdezze az üzenet tulajdonságait és az üzenet törzsét, valamint az eszköz Twin címkéit és az eszköz Twin tulajdonságait. További információ az [üzenet-útválasztásban található lekérdezések](iot-hub-devguide-routing-query-syntax.md)használatáról.
 
-IoT Hub írási hozzáféréssel kell rendelkeznie ezekhez a szolgáltatási végpontokhoz az üzenet-útválasztás működéséhez. Ha a végpontokat a Azure Portalon keresztül konfigurálja, a rendszer hozzáadja a szükséges engedélyeket. Győződjön meg róla, hogy konfigurálja a szolgáltatásokat a várt átviteli sebesség támogatásához. Előfordulhat, hogy a IoT-megoldás első beállításakor figyelnie kell a további végpontokat, és el kell végeznie a szükséges módosításokat a tényleges terheléshez.
+IoT Hub írási hozzáféréssel kell rendelkeznie ezekhez a szolgáltatási végpontokhoz az üzenet-útválasztás működéséhez. Ha a végpontokat a Azure Portalon keresztül konfigurálja, a rendszer hozzáadja a szükséges engedélyeket. Győződjön meg róla, hogy konfigurálja a szolgáltatásokat a várt átviteli sebesség támogatásához. Ha például egyéni végpontként használja a Event Hubst, akkor az adott Event hub **átviteli egységeit** úgy kell konfigurálnia, hogy az IoT hub üzenet-útválasztás segítségével elküldheti az elküldött események bejövő eseményeit. Hasonlóképpen, ha egy Service Bus üzenetsor végpontként való használatakor, a **maximális méretet** úgy kell konfigurálni, hogy a várólista az összes adatmennyiséget ingressed, amíg a felhasználók nem egressed. Előfordulhat, hogy a IoT-megoldás első beállításakor figyelnie kell a további végpontokat, és el kell végeznie a szükséges módosításokat a tényleges terheléshez.
 
-A IoT Hub a protokollok közötti együttműködés [általános formátumát](iot-hub-devguide-messages-construct.md) határozza meg az összes eszközről a felhőbe irányuló üzenetkezeléshez. Ha egy üzenet több olyan útvonalnak felel meg, amely ugyanarra a végpontra mutat, IoT Hub csak egyszer továbbítja az üzenetet erre a végpontra. Ezért nincs szükség a deduplikálás konfigurálására a Service Bus-várólistán vagy a témakörben. A particionált várólistákban a partíciós affinitás garantálja az üzenetek rendezését. Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja az [üzenet](tutorial-routing.md)-útválasztást.
+A IoT Hub a protokollok közötti együttműködés [általános formátumát](iot-hub-devguide-messages-construct.md) határozza meg az összes eszközről a felhőbe irányuló üzenetkezeléshez. Ha egy üzenet több olyan útvonalnak felel meg, amely ugyanarra a végpontra mutat, IoT Hub csak egyszer továbbítja az üzenetet erre a végpontra. Ezért nincs szükség a deduplikálás konfigurálására a Service Bus-várólistán vagy a témakörben. A particionált várólistákban a partíciós affinitás garantálja az üzenetek rendezését. Ebből az oktatóanyagból megtudhatja, hogyan [konfigurálhatja az üzenet-útválasztást](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Útválasztási végpontok
 
-Az IoT hub alapértelmezett beépített végpontja (**üzenetek/események**), amely kompatibilis a Event Hubsokkal. Létrehozhat [Egyéni végpontokat](iot-hub-devguide-endpoints.md#custom-endpoints) az üzenetek átirányításához az előfizetésben lévő egyéb szolgáltatások összekapcsolásával a IoT hub. A IoT Hub jelenleg a következő szolgáltatásokat támogatja egyéni végpontként:
+Az IoT hub alapértelmezett beépített végpontja (**üzenetek/események**), amely kompatibilis a Event Hubsokkal. Létrehozhat [Egyéni végpontokat](iot-hub-devguide-endpoints.md#custom-endpoints) az üzenetek átirányításához az előfizetésben lévő egyéb szolgáltatások összekapcsolásával a IoT hub. 
+
+Minden üzenet az összes olyan végponthoz van irányítva, amelynek útválasztási lekérdezése megfelel. Más szóval egy üzenet több végponthoz is átirányítható.
+
+A IoT Hub jelenleg a következő szolgáltatásokat támogatja egyéni végpontként:
 
 ### <a name="built-in-endpoint"></a>Beépített végpont
 
@@ -43,9 +47,9 @@ IoT Hub támogatja az Azure Blob Storageba való adatírást az [Apache Avro](ht
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-A IoT Hub támogatja az útválasztási üzeneteket ADLS Gen2 fiókoknak is, amelyek a blob Storage-ra épülő [hierarchikus névtereket](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)használó Storage-fiókok. Ez a funkció nyilvános előzetes verzióban érhető el, és az USA 2. nyugati régiójában és az USA nyugati középső régiójában található új ADLS Gen2 fiókok számára elérhető. Ezt a képességet hamarosan minden Felhőbeli régióra kivezetjük.
+A IoT Hub támogatja a [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2-fiókok útválasztási üzeneteit is, amelyek a blob Storage-ra épülő [hierarchikus névtereket](../storage/blobs/data-lake-storage-namespace.md)használó Storage-fiókok. Ez a funkció nyilvános előzetes verzióban érhető el, és az USA 2. nyugati régiójában és az USA nyugati középső régiójában található új ADLS Gen2 fiókok számára elérhető. Kérjük, [regisztráljon](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) az előzetes verzióra. Ezt a képességet hamarosan minden Felhőbeli régióra kivezetjük. 
 
-IoT Hub a kötegek üzeneteit, és az adatot egy blobba írja, amikor a köteg elér egy adott méretet, vagy egy adott időtartam eltelt. IoT Hub alapértelmezett értéke a következő fájl elnevezési konvenció:
+IoT Hub a kötegek üzeneteit, és az adatot egy blobba írja, amikor a köteg elér egy adott méretet, vagy egy adott időtartam eltelt. IoT Hub alapértelmezett értéke a következő fájl elnevezési konvenció: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -53,7 +57,7 @@ IoT Hub a kötegek üzeneteit, és az adatot egy blobba írja, amikor a köteg e
 
 Bármilyen fájl elnevezési konvenciót használhat, azonban az összes felsorolt tokent kell használnia. A IoT Hub egy üres blobba ír, ha nincs írási adatként.
 
-A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A Blobok listájának enumerálásához használhatja a Blobok listázása [API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -t. Tekintse át a következő mintát útmutatásként.
+A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A Blobok [listájának](https://docs.microsoft.com/rest/api/storageservices/list-blobs) enumerálásához használhatja a Blobok listázása API-t. Tekintse át a következő mintát útmutatásként.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -73,7 +77,7 @@ A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolás
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus várólisták és Service Bus témakörök
 
-Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett munkamenetekkel vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
+Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett **munkamenetekkel** vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -81,7 +85,7 @@ A beépített Event Hubs kompatibilis végponton kívül az adatok átirányít�
 
 ## <a name="reading-data-that-has-been-routed"></a>Az átirányított adatolvasás
 
-Ezt az oktatóanyagot követve egy útvonalat [](tutorial-routing.md)is beállíthat.
+Ezt az [oktatóanyagot](tutorial-routing.md)követve egy útvonalat is beállíthat.
 
 Az alábbi oktatóanyagok segítségével megtudhatja, hogyan olvashatja el a végpontok üzeneteit.
 
@@ -105,7 +109,7 @@ Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal-> üzenet
 
 Az eszköz telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését (nyilvános előzetes verzióban). Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végül, a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és a digitális Twin [tulajdonság](../iot-pnp/iot-plug-and-play-glossary.md) beállításakor vagy módosításakor IoT hub üzeneteket küld. [ ](../iot-pnp/iot-plug-and-play-glossary.md)lecserélve, vagy ha változási esemény történik az alapul szolgáló eszköznél.
 
-A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti](iot-hub-event-grid-routing-comparison.md) fő különbségeket, amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
+A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti fő különbségeket](iot-hub-event-grid-routing-comparison.md) , amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
 
 ## <a name="testing-routes"></a>Útvonalak tesztelése
 
@@ -115,15 +119,15 @@ A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az 
 
 Ha a beépített végpontok használatával irányítja az eszközről a felhőbe irányuló telemetria üzeneteket, az első útvonal létrehozása után kis mértékben megnő a végpontok közötti késés.
 
-A legtöbb esetben a késés átlagos növekedése kevesebb, mint 500 MS. A késést a következő útválasztással figyelheti **: üzenetek/események** vagy **D2C. endpoints. látencia. beépített. events** IoT hub metrika. Az egyik útvonal létrehozása vagy törlése az első után nem befolyásolja a végpontok közötti késést.
+A legtöbb esetben a késés átlagos növekedése kevesebb, mint 500 MS. A késést a **következő útválasztással figyelheti: üzenetek/események** vagy **D2C. endpoints. látencia. beépített. events** IoT hub metrika. Az egyik útvonal létrehozása vagy törlése az első után nem befolyásolja a végpontok közötti késést.
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
 IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. Használja például a metrika- **útválasztást: telemetria-üzenetek eldobott** vagy **D2C. telemetria. kimenő. eldobott** üzenet, amely meghatározza, hogy az egyes útvonalakon és a tartalék útvonalon lévő lekérdezések nem felelnek meg a letiltott üzenetek számának. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára.
 
-A végpontok állapotának beolvasásához használja a [](iot-hub-devguide-endpoints.md#custom-endpoints) REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub metrikák](iot-hub-metrics.md) használatával azonosítsa és hibakeresési hibákat, ha a végpont állapota meghalt vagy nem megfelelő. A végpont típusa Event Hubs esetében például figyelheti a **D2C. endpoints. késés. eventHubs**. A nem kifogástalan állapotú végpont állapota akkor frissül, ha a IoT Hub végül konzisztens állapotba került.
+A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub metrikák](iot-hub-metrics.md) használatával azonosítsa és hibakeresési hibákat, ha a végpont állapota meghalt vagy nem megfelelő. A végpont típusa Event Hubs esetében például figyelheti a **D2C. endpoints. késés. eventHubs**. A nem kifogástalan állapotú végpont állapota akkor frissül, ha a IoT Hub végül konzisztens állapotba került.
 
-Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti az útválasztási lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub, például ha egy végpont meghalt. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra.
+Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub, például ha egy végpont meghalt. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra.
 
 ## <a name="next-steps"></a>További lépések
 

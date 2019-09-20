@@ -11,18 +11,18 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 457ee34daf368150a8703ea32a39b2350d654523
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569421"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162344"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatikus hangolás engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 
 A Azure SQL Database egy automatikusan felügyelt adatszolgáltatás, amely folyamatosan figyeli a lekérdezéseket, és azonosítja a munkaterhelések teljesítményének növeléséhez végrehajtható műveletet. Áttekintheti az ajánlásokat, és manuálisan alkalmazhatja őket, vagy engedélyezheti Azure SQL Database a javítási műveletek automatikus alkalmazását – ezt az **Automatikus hangolási módot**nevezzük.
 
-Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélyezhető a Azure Portalon [](sql-database-automatic-tuning-enable.md#azure-portal), [REST API](sql-database-automatic-tuning-enable.md#rest-api) hívásokon és a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) parancsokon keresztül.
+Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélyezhető a [Azure Portalon](sql-database-automatic-tuning-enable.md#azure-portal), [REST API](sql-database-automatic-tuning-enable.md#rest-api) hívásokon és a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) parancsokon keresztül.
 
 > [!NOTE]
 > Felügyelt példány esetén a FORCE_LAST_GOOD_PLAN támogatott beállítás csak a [T-SQL-](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) en keresztül konfigurálható. A jelen cikkben ismertetett, a portálon alapuló konfiguráció és az automatikus Indexelési beállítások nem vonatkoznak a felügyelt példányokra.
@@ -41,7 +41,7 @@ Ha engedélyezni szeretné az automatikus hangolást Azure SQL Database logikai 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni.
+> Vegye figyelembe, hogy a **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken.
 >
 
 Válassza ki az engedélyezni kívánt Automatikus hangolási beállításokat, és kattintson az **alkalmaz**gombra.
@@ -50,7 +50,7 @@ A kiszolgálón az Automatikus hangolási beállítások a kiszolgálón lévő 
 
 ### <a name="rest-api"></a>REST API
 
-További információ a kiszolgálók automatikus hangolásának engedélyezéséről REST API használatáról SQL Server: az [automatikus Finomhangolás frissítése és a http](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)-metódusok beolvasása.
+További információ a kiszolgálók automatikus hangolásának engedélyezéséről REST API használatáról SQL Server: az [automatikus Finomhangolás frissítése és a http-metódusok BEolvasása](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Automatikus hangolás engedélyezése egy adott adatbázison
 
@@ -74,7 +74,7 @@ Miután kiválasztotta a kívánt konfigurációt, kattintson az **alkalmaz**gom
 
 ### <a name="rest-api"></a>REST API
 
-További információ a REST API használatáról egyetlen adatbázis automatikus finomhangolásának engedélyezéséhez: [SQL Database Automatikus hangolási frissítés és http-metódusok](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)beolvasása.
+További információ a REST API használatáról egyetlen adatbázis automatikus finomhangolásának engedélyezéséhez: [SQL Database Automatikus hangolási frissítés és http-metódusok BEolvasása](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 
 ### <a name="t-sql"></a>T-SQL
 

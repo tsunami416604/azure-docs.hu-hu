@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914780"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146465"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
 
@@ -88,14 +88,11 @@ A tartománynév tulajdonjogának ellenőrzésekor az Azure AD eltávolítja a t
 ### <a name="support-for-external-admin-takeover"></a>Külső rendszergazdai átvétel támogatása
 A külső rendszergazdai átvételt a következő online szolgáltatások támogatja:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 A támogatott szolgáltatási csomagok a következők:
 
-- Power BI ingyenes
-- Power BI Pro
 - Ingyenes PowerApps
 - Ingyenes PowerFlow
 - RMS egyéni felhasználók számára
@@ -113,10 +110,6 @@ Az [RMS egyéni felhasználók](/azure/information-protection/rms-for-individual
 A kulcs és a sablonok nem lesznek áthelyezve, amikor a nem felügyelt bérlő egy másik régióban található. Ha például a nem felügyelt bérlő Európában található, és a saját szervezete Észak-Amerika van.
 
 Bár az RMS egyéni felhasználók számára készült, hogy támogassa az Azure AD-hitelesítést a védett tartalom megnyitásához, nem akadályozza meg, hogy a felhasználók is megóvják a tartalmat. Ha a felhasználók védik a tartalmat az RMS egyéni felhasználók számára előfizetéssel, és a kulcs és a sablonok nem lettek áthelyezve, akkor ez a tartalom nem érhető el a tartomány átvétele után.
-
-#### <a name="more-information-about-power-bi"></a>További információ a Power BI
-
-Ha külső átvételt hajt végre, Power BI az átvétel előtt létrehozott tartalmat egy [Power bi archivált munkaterületre](/power-bi/service-admin-power-bi-archived-workspace)helyezi. Az új bérlőben használni kívánt tartalmakat manuálisan kell áttelepítenie.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD PowerShell-parancsmagok a ForceTakeover beállításhoz
 Ezeket a parancsmagokat a [PowerShell-példában](#powershell-example)is láthatja.

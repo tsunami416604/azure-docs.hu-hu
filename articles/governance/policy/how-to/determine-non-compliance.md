@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194665"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161978"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -20,7 +20,7 @@ Ha egy Azure-erőforrás úgy van meghatározva, hogy nem felel meg egy háziren
 
 > [!div class="checklist"]
 > - [Megfelelőség részletei](#compliance-details)
-> - [Változási előzmények (előzetes verzió)](#change-history-preview)
+> - [Változási előzmények (előzetes verzió)](#change-history)
 
 ## <a name="compliance-details"></a>Megfelelőségi részletek
 
@@ -28,7 +28,7 @@ Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi adatai a
 
 - Erőforrás részletei, például név, típus, hely és erőforrás-azonosító
 - Az aktuális szabályzat-hozzárendelés utolsó kiértékelésének megfelelőségi állapota és időbélyege
-- Az erőforrás nem megfelelőségi okainak listája
+- Az erőforrás nem megfelelőségi _okainak_ listája
 
 > [!IMPORTANT]
 > Mivel a _nem megfelelő_ erőforrások megfelelőségi adatai az adott erőforrás tulajdonságainak aktuális értékét jelenítik meg, a felhasználónak **olvasási** művelettel kell rendelkeznie az erőforrás **típusához** . Ha például a _nem megfelelő_ erőforrás a **Microsoft. számítás/virtualMachines** , akkor a felhasználónak rendelkeznie kell a **Microsoft. számítási/virtualMachines/olvasási** művelettel. Ha a felhasználó nem rendelkezik a szükséges művelettel, a rendszer hozzáférési hibaüzenetet jelenít meg.
@@ -79,11 +79,11 @@ A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 > [!NOTE]
 > Az adatvédelemhez, ha egy tulajdonság értéke _titkos_ , a jelenlegi érték csillagokat jelenít meg.
 
-Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, de ne jelenjen meg, ha az erőforrás változása miatt nem megfelelővé vált. Ebben az esetben tekintse meg az alábbi [változások előzményeit (előzetes verzió)](#change-history-preview) .
+Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, de ne jelenjen meg, ha az erőforrás változása miatt nem megfelelővé vált. Ebben az esetben tekintse meg az alábbi [változások előzményeit (előzetes verzió)](#change-history) .
 
 ### <a name="compliance-reasons"></a>Megfelelőségi okok
 
-A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős feltételre: [](../concepts/definition-structure.md#conditions)
+A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős [feltételre](../concepts/definition-structure.md#conditions) :
 
 |Reason | Állapot |
 |-|-|
@@ -94,7 +94,7 @@ A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definíci
 |A jelenlegi értéknek nagyobbnak vagy egyenlőnek kell lennie a célként megadott értékkel. |greaterOrEquals vagy **nem** kevesebb |
 |A jelenlegi értéknek nagyobbnak kell lennie a célként megadott értéknél. |nagyobb vagy **nem** lessOrEquals |
 |A jelenlegi érték nem lehet kisebb a célként megadott értéknél. |lessOrEquals vagy **nem** nagyobb |
-|A jelenlegi értéknek léteznie kell. |létezik |
+|A jelenlegi értéknek léteznie kell. |Létezik |
 |A jelenlegi értéknek a célként megadott értéknek kell lennie. |vagy **nem** notIn |
 |A jelenlegi értéknek a célként megadott értéknek kell lennie. |hasonló vagy **nem** notLike |
 |A jelenlegi értéknek a kis-és nagybetűk megkülönböztetésével egyezőnek kell lennie. |egyezés vagy **nem** notMatch |
@@ -206,13 +206,13 @@ Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változás
 
    ![Az erőforrás-megfelelőség lap Azure Policy módosítási előzmények lapja](../media/determine-non-compliance/change-history-tab.png)
 
-1. Válassza ki az észlelt módosítások egyikét. Az erőforráshoz tartozó _vizualizációs diff_ a változási **Előzmények** lapon jelenik meg.
+1. Válassza ki az észlelt módosítások egyikét. Az erőforráshoz tartozó _vizualizációs diff_ a **változási előzmények** lapon jelenik meg.
 
    ![Azure Policy változási előzmények Visual diff a változási előzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
 
 A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításához. Előfordulhat, hogy az észlelt változások nem kapcsolódnak az erőforrás aktuális megfelelőségi állapotához.
 
-Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások](../../resource-graph/how-to/get-resource-changes.md)beolvasása.
+Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások beolvasása](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>További lépések
 

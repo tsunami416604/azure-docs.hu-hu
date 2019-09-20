@@ -6,19 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092260"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147166"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Az adatbázis-tevékenységek naplózása Azure Database for PostgreSQL – az egyes kiszolgálók a PostgreSQL-naplózási bővítményen keresztül érhetők el: [pgAudit](https://www.pgaudit.org/). a pgAudit részletes munkamenet-és/vagy objektum-naplózási naplózást biztosít.
 
 > [!NOTE]
-> a pgAudit csak általános célú és a memóriára optimalizált kiszolgálókon engedélyezhető.
+> a pgAudit előzetes verzióban érhető el Azure Database for PostgreSQL.
+> A bővítmény csak általános célú és a memóriára optimalizált kiszolgálókon engedélyezhető.
 
 ## <a name="usage-considerations"></a>Használati megfontolások
 Alapértelmezés szerint a rendszer a pgAudit-napló utasításait az postgres szabványos naplózási létesítményének használatával, a normál naplós utasításokkal együtt bocsátja ki. A Azure Database for PostgreSQL a. log fájlokat a Azure Portal vagy a parancssori felületről töltheti le. A fájlok gyűjteményének maximális tárterülete 1 GB, és minden fájl legfeljebb hét napig érhető el (az alapértelmezett érték három nap). Ez a szolgáltatás egy rövid távú tárolási lehetőség.

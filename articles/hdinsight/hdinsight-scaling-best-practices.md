@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: dad796c8a7a34a782a4f78260ac38bd966eddde9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105399"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161958"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -42,7 +42,7 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 A módszerek bármelyikével akár percek alatt is méretezheti a HDInsight-fürtöt.
 
 > [!IMPORTANT]  
-> * A aure klasszikus CLI elavult, és csak a klasszikus üzembehelyezési modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-t.  
+> * A klasszikus Azure CLI elavult, és csak a klasszikus üzembe helyezési modellel használható. Az összes többi központi telepítéshez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-t.  
 > * A PowerShell-AzureRM modul elavult.  Ha lehetséges, használja az az [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) .
 
 ## <a name="impact-of-scaling-operations"></a>A skálázási műveletek hatása

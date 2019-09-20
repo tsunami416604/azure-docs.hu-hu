@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995207"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162409"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása 
 
@@ -110,7 +110,7 @@ További hibaelhárításhoz folytassa a következő lépésekkel.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában.
+Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
 A "hiba fázis" mező azt jelzi, hogy az illesztési hiba fázisa az "ügyfél ErrorCode" alatt az illesztési művelet hibakódját jelöli.
 
 ```
@@ -181,7 +181,7 @@ A felderítési hibakód alhibakódjának megkereséséhez használja az alábbi
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg a "DRS Discovery test" részt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában.
+Keresse meg a "DRS Discovery test" részt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Keresse meg a regisztrációs típust, és keresse meg a hibakódot az alábbi l
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 és újabb verziók
 
-Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában.
+Keresse meg a "korábbi regisztráció" alszakaszt az illesztési állapot kimenetének "diagnosztikai adatokat" tartalmazó szakaszában. Ez a szakasz csak akkor jelenik meg, ha az eszköz tartományhoz csatlakozik, és nem tud hibrid Azure AD-csatlakozást létesíteni.
 A "regisztráció típusa" mező azt jelzi, hogy milyen típusú csatlakozást hajtottak végre.
 
 ```

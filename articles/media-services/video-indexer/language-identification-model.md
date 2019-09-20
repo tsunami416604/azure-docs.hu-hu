@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 843b92d3fe34d592b39cd86ece447fef2ff9af67
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931116"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147191"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása nyelvi azonosító modellel
 
@@ -53,7 +53,7 @@ A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attr
 * Ha a hang a fenti támogatott listán kívül más nyelveket is tartalmaz, az eredmény nem várt.
 * Ha video Indexer nem tudja azonosítani a nyelvet elég magas megbízhatósággal (`>0.6`), a tartalék nyelv angol.
 * A vegyes nyelvi hanggal rendelkező fájlok jelenleg nem támogatottak. Ha a hang vegyes nyelveket tartalmaz, az eredmény nem várt. 
-* Az alacsony minőségű hangmaró hatással lehet a modell eredményeire.
+* Az alacsony minőségű hang befolyásolhatja a modell eredményeit.
 * A modellhez legalább egy perces beszéd szükséges a hanganyagban.
 * A modell úgy lett kialakítva, hogy felismerje a spontán társalgási beszédeket (nem hangparancsokat, éneklést stb.).
 

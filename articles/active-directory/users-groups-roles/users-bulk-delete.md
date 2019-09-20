@@ -13,23 +13,26 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2204c572ca1f74f8060d0b6176df69359fe69a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901710"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146433"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Felhasználók tömeges törlése (előzetes verzió) Azure Active Directory
 
-Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehozási és törlési műveleteket, a csoportos meghívást a vendégek számára, és támogatja a felhasználók, csoportok és csoporttagok letöltési listáját.
+A Azure Active Directory (Azure AD) portál használatával számos tagot eltávolíthat egy csoportba egy vesszővel tagolt (CSV) fájl használatával a felhasználók tömeges törléséhez.
 
 ## <a name="to-bulk-delete-users"></a>Felhasználók tömeges törlése
 
 1. Jelentkezzen be az Azure AD-szervezetbe egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
 1. Az Azure ad-ben válassza a **felhasználók** > **tömeges törlés**lehetőséget.
 1. A **felhasználó tömeges törlése** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes CSV-fájljának fogadásához, majd adja hozzá a törölni kívánt felhasználókat.
-1. Amikor befejezte a CSV-fájl szerkesztését, vagy ha valamelyik saját feltöltésre kész, válassza ki a fájlt a **CSV-fájl feltöltéséhez** .
+
+   ![A CSV-fájl a törölni kívánt felhasználók nevét és azonosítóit tartalmazza](./media/users-bulk-delete/delete-csv-file.png)
+
+1. Amikor befejezte a CSV-fájl szerkesztését, válassza ki a fájlt az érvényesíteni kívánt **CSV-fájl feltöltéséhez** .
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben meg szeretné jeleníteni a törölni kívánt felhasználókat](./media/users-bulk-delete/bulk-delete.png)
 

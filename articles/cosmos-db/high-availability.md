@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688283"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146659"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás a Azure Cosmos DB
 
@@ -50,8 +50,8 @@ A regionális kimaradások nem ritkák, az Azure Cosmos DB azonban gondoskodik a
 
 - **Többrégiós fiókok egyetlen írási régióval (írási régió kimaradása):** 
   * Az írási régió meghibásodása esetén ezek a fiókok a beolvasáshoz is elérhetők maradnak. Ahhoz, hogy az írási kérelmek sikeresek legyenek, be kell kapcsolni az **automatikus feladatátvétel engedélyezése** beállítást az Azure Cosmos-fiókban. Ha engedélyezi ezt a beállítást, az átveszi az érintett régiót egy másik régióba az adott régió prioritásának sorrendjében. 
-  * Ha a korábban érintett régió újra online állapotba került, az ütközések csatornán keresztül elérhetővé tett összes olyan írási adattal, amelyet a [](how-to-manage-conflicts.md#read-from-conflict-feed)régió meghiúsult, nem replikáltak. Az alkalmazások elolvashatják az ütközések csatornáját, elhárítják az alkalmazás-specifikus logikán alapuló ütközéseket, és szükség szerint visszaírják a frissített információt az Azure Cosmos-tárolóba. 
-  * A korábban érintett írási régió helyreállítása után a rendszer automatikusan elérhetővé válik olvasási régióként. Az írási régióként visszaválthat a visszaállított régióra. A régiókat az [Azure CLI vagy a Azure Portal](how-to-manage-database-account.md#manual-failover)használatával válthat. Az írási régió és az alkalmazás továbbra is rendelkezésre áll, amíg az adatvesztés és a **rendelkezésre állás még nem** érhető el. 
+  * Ha a korábban érintett régió újra online állapotba került, az [ütközések csatornán](how-to-manage-conflicts.md#read-from-conflict-feed)keresztül elérhetővé tett összes olyan írási adattal, amelyet a régió meghiúsult, nem replikáltak. Az alkalmazások elolvashatják az ütközések csatornáját, elhárítják az alkalmazás-specifikus logikán alapuló ütközéseket, és szükség szerint visszaírják a frissített információt az Azure Cosmos-tárolóba. 
+  * A korábban érintett írási régió helyreállítása után a rendszer automatikusan elérhetővé válik olvasási régióként. Az írási régióként visszaválthat a visszaállított régióra. A régiókat az [Azure CLI vagy a Azure Portal](how-to-manage-database-account.md#manual-failover)használatával válthat. Az írási régió és az alkalmazás továbbra is rendelkezésre áll, amíg az **adatvesztés és a rendelkezésre állás még nem** érhető el. 
 
 - **Többrégiós fiókok egyetlen írási régióval (olvasási régió kimaradása):** 
   * Az olvasási régió meghibásodása esetén ezek a fiókok az olvasáshoz és íráshoz is elérhetők maradnak. 
@@ -70,9 +70,9 @@ A Azure Cosmos DB egy globálisan elosztott, több főkiszolgálós adatbázis-s
 
 A rendelkezésre állási zónák támogatásával Azure Cosmos DB biztosítja, hogy a replikák egy adott régióban több zónába kerüljenek, hogy magas rendelkezésre állást és rugalmasságot biztosítson a zónákon belüli meghibásodások során. Ebben a konfigurációban nem változnak a késés és a többi SLA. Egyetlen zóna meghibásodása esetén a Zone redundancia teljes körű adattartósságot biztosít a RPO = 0 és a rendelkezésre állás RTO = 0 segítségével való elérhetősége esetén. 
 
-A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.md) funkciójának *kiegészítő funkciója* . A zónák redundancia önmagában nem lehet a regionális rugalmasság elérésére támaszkodni. Ha például regionális kimaradások vagy kis késleltetésű hozzáférés van a régiók között, azt javasoljuk, hogy több írási régióval is rendelkezzen a zóna redundancia mellett. 
+A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.md) funkciójának *kiegészítő funkciója* . A zónaredundancia önmagában nem megbízható megoldás a regionális rugalmassághoz. Ha például regionális kimaradások vagy kis késleltetésű hozzáférés van a régiók között, azt javasoljuk, hogy több írási régióval is rendelkezzen a zóna redundancia mellett. 
 
-Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
+Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiókjában egy meglévő régióra a zónaredundanciát úgy engedélyezheti, ha eltávolítja a régiót, és újra hozzáadja azt a zónaredundancia engedélyezésével.
 
 Ez a funkció a következő Azure-régiókban érhető el:
 
@@ -106,13 +106,26 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 > Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy többrégiós Azure Cosmos-fiókhoz, a fióknak engedélyezve kell lennie a több főkiszolgálós írásoknak
 
 
-A zóna redundancia engedélyezhető, ha új vagy meglévő Azure Cosmos-fiókokhoz ad hozzá régiót. Jelenleg a Azure Portal, a PowerShell és a Azure Resource Manager sablonok használatával engedélyezhető a zóna-redundancia. Ha engedélyezni szeretné a zóna redundanciát az Azure Cosmos-fiókjában, állítsa `isZoneRedundant` be a `true` jelölőt egy adott helyre. Ezt a jelzőt a Locations (helyszínek) tulajdonságon belül állíthatja be. A következő PowerShell-kódrészlet például lehetővé teszi a zóna redundanciát a "Délkelet-ázsiai" régióban:
+A zóna redundancia engedélyezhető, ha új vagy meglévő Azure Cosmos-fiókokhoz ad hozzá régiót. Ha engedélyezni szeretné a zóna redundanciát az Azure Cosmos-fiókjában, állítsa `isZoneRedundant` be a `true` jelölőt egy adott helyre. Ezt a jelzőt a Locations (helyszínek) tulajdonságon belül állíthatja be. A következő PowerShell-kódrészlet például lehetővé teszi a zóna redundanciát a "Délkelet-ázsiai" régióban:
 
 ```powershell
 $locations = @( 
     @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" }, 
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
+```
+
+A következő parancs bemutatja, hogyan engedélyezhető a zóna redundancia a "EastUS" és a "WestUS2" régiók számára:
+
+```azurecli-interactive
+az cosmosdb create \
+  --name mycosmosdbaccount \
+  --resource-group myResourceGroup \
+  --kind GlobalDocumentDB \
+  --default-consistency-level Session \
+  --locations regionName=EastUS failoverPriority=0 isZoneRedundant=True \
+  --locations regionName=WestUS2 failoverPriority=1 isZoneRedundant=True \
+  --enable-multiple-write-locations
 ```
 
 Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezheti Availability Zones. Fiók létrehozásakor ügyeljen arra, hogy engedélyezze a **geo-redundancia**, a többrégiós **írások**használatát, és válasszon egy régiót, ahol a Availability Zones támogatott: 

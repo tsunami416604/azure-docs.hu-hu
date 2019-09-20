@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104040"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145660"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -31,7 +31,7 @@ Ha most ismerkedik az első lépésekkel, tekintse meg a [Microsoft Identity pla
 
 Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/).
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapadatok
 
 |   |   |
 |---|---|
@@ -78,6 +78,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) |  A Mobile apps esetében minden platformot az alkalmazás regisztrációs felületének használatával konfigurálhat. Ahhoz, hogy az alkalmazás kihasználja az egyszeri bejelentkezés Microsoft Authenticator vagy a Microsoft Céges portál előnyeit, az alkalmazásnak "közvetítő átirányítási URI-t" kell beállítania. Ez lehetővé teszi a Microsoft számára, hogy a hitelesítés után visszaadja a vezérlést az alkalmazásnak. Az egyes platformok konfigurálásakor az alkalmazás regisztrációs felülete végigvezeti Önt a folyamaton. Egy működő példa letöltéséhez használja a rövid útmutatót. IOS rendszeren használja a Brokers és a System Webview lehetőséget, amikor csak lehetséges.|
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) |  A Web Apps vagy a webes API-k esetében fiókon belül egy jogkivonat-gyorsítótárat kell megőrizni.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiók AZONOSÍTÓjának kell megadnia.  Webes API-k esetében a fióknak az API meghívásához használt jogkivonat kivonatával kell megjelennie. A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a .NET-keretrendszer és a .NET Core alplatformok számára. A biztonság és a teljesítmény érdekében javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljon. További információ: a jogkivonat- [gyorsítótár szerializálásának](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)áttekintése.|
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha az alkalmazás által igényelt adatai [Microsoft Graphon](https://developer.microsoft.com/graph)keresztül érhetők el, akkor az egyes API-k helyett az Microsoft Graph-végponton kell megadnia az ehhez az adatkezeléshez szükséges engedélyeket. |
+| ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) |Ne tekintse meg a hozzáférési jogkivonat értékét, vagy próbálja meg ügyfélként elemezni.  Megváltoztathatják az értékeket, a formátumokat, vagy a figyelmeztetés nélkül is titkosítva lesznek – mindig használja a id_token, ha az ügyfélnek meg kell tanulnia valamit a felhasználóval kapcsolatban, vagy meg kell hívnia Microsoft Graph.  Csak a webes API-knak kell elemezni a hozzáférési jogkivonatokat (mivel ezek a formátum és a titkosítási kulcsok beállítása). |
 
 ## <a name="end-user-experience"></a>Végfelhasználói élmény
 

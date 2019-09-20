@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984819"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147043"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Database-be való adatolvasásra és-írásra
 
@@ -38,7 +38,7 @@ Kezdje a Spark-fürthöz társított [Jupyter notebook](https://jupyter.org/) l�
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a fürtöt.
 1. A jobb oldalon válassza a **Jupyter notebook** alatt a **fürt irányítópultok** elemet.  Ha nem látja a **fürt irányítópultját**, válassza az **Áttekintés** lehetőséget a bal oldali menüben. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-    ![Jupyter notebook a Sparkban](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook a Sparkban")
+    ![Jupyter notebook on Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook a Sparkban")
    
    > [!NOTE]  
    > A Jupyter-jegyzetfüzetet a Spark-fürtön is elérheti, ha megnyitja a következő URL-címet a böngészőben. Cserélje le a **CLUSTERNAME** elemet a fürt nevére:
@@ -182,7 +182,7 @@ Ebben a szakaszban az előző szakaszban az Azure SQL Database-ben már létreho
 
 1. A kimenet a **HVAC. csv**sémáját jeleníti meg. A **hvactable** ugyanazzal a sémával is rendelkezik. A kimenet listázza a tábla oszlopait.
 
-    ![Tábla sémája](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tábla sémája")
+    ![hdinsight Apache Spark séma tábla](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tábla sémája")
 
 1. Végül használja az alábbi kódrészletet az adatok beolvasásához a HVAC. csv fájlból, és továbbítsa azt a **hvactable** az Azure SQL Database-ben. Illessze be a kódrészletet egy kód cellájába, cserélje le a helyőrző értékeket az Azure SQL Database-adatbázis értékeire, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a futtatáshoz.
 

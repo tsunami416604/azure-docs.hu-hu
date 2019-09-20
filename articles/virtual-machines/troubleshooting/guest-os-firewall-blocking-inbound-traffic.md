@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711571"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154022"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure virtuális gép vendég operációs rendszer tűzfal blokkolja a bejövő forgalom
 
@@ -112,8 +112,8 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
     > [!Note]
     > A tűzfal-házirendet, attól függően, hogyan állítsa be a következőkre vonatkoznak:
-    >    * *BlockInbound*: Minden bejövő forgalom le lesz tiltva, kivéve, ha egy szabály érvényben, amely lehetővé teszi, hogy a forgalmat.
-    >    * *BlockInboundAlways*: Figyelmen kívül az összes tűzfalszabályt, és minden forgalom le lesz tiltva.
+    >    * *BlockInbound*: Minden bejövő forgalom le lesz tiltva, ha nincs érvényben a forgalom engedélyezésére szolgáló szabály.
+    >    * *BlockInboundAlways*: Minden tűzfalszabály figyelmen kívül lesz hagyva, és az összes forgalom le lesz tiltva.
 
 2.  Szerkessze a *DefaultInboundAction* , ha szeretné ezeket a profilokat **engedélyezése** forgalmat. Ehhez futtassa a következő parancsot:
 
@@ -142,7 +142,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 #### <a name="mitigation-1"></a>1\. megoldás
 
-Lásd: [hogyan engedélyezzen vagy tiltson le egy tűzfal, a vendég operációs rendszeren szabály](enable-disable-firewall-rule-guest-os.md).
+Lásd: a [Tűzfalszabály letiltása egy vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>2\. megoldás
 

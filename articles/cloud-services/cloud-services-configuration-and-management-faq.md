@@ -4,7 +4,7 @@ description: Ez a cikk a Microsoft Azure Cloud Services konfigurálásával és 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 480ca33f02242499bdf9fff3fa35695e7d4841a0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945472"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154720"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: Gyakori kérdések (GYIK)
 
@@ -207,7 +207,7 @@ Ezek a lépések egy indítási feladaton keresztül automatizálható, így ami
 Ha ez megtörtént, ellenőrizheti, hogy a HTTP/2 engedélyezve van-e, vagy sem a következő módszerek egyikének használatával:
 
 - Engedélyezze a protokoll verzióját az IIS-naplókban, és tekintse meg az IIS-naplókat. A naplókban megjelenik a HTTP/2. 
-- Engedélyezze az F12 fejlesztői eszközt az Internet Explorerben/a Microsoft Edge-ben, és váltson a hálózat lapra a protokoll ellenőrzéséhez. 
+- Engedélyezze az F12 fejlesztői eszközt az Internet Explorerben vagy a Microsoft Edge-ben, és váltson a hálózat lapra a protokoll ellenőrzéséhez. 
 
 További információ: [http/2 az IIS](https://blogs.iis.net/davidso/http2)-ben.
 

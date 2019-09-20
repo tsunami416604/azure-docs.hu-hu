@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162294"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145685"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>A kombinált biztonsági információk regisztrálásának engedélyezése (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az új felület engedélyezése előtt tekintse át a [kombinált biztonsági in
 |     |
 
 > [!NOTE]
-> Azoknak a szervezeteknek, akik engedélyezték az előző előzetes verziót a biztonsági adatok regisztrálásához és kezeléséhez, az alábbi lépéseket kell elvégezniük a bővített előzetes verzió használatának engedélyezéséhez. Azon szervezetek esetében, akik nem teszik a kapcsolót, a Microsoft 2019. szeptember 25-én átváltja az előző előzetes verzió felhasználóit a biztonsági adatok továbbfejlesztett felhasználói felületre való regisztrálásához és kezeléséhez. 
+> Azoknak a szervezeteknek, akik engedélyezték az előző előzetes verziót a biztonsági adatok regisztrálásához és kezeléséhez, az alábbi lépéseket kell elvégezniük a bővített előzetes verzió használatának engedélyezéséhez. Azon szervezetek esetében, akik nem teszik meg a kapcsolót, az 2019. október 8-án a Microsoft átváltja az előző előzetes verzió felhasználóit a biztonsági adatok továbbfejlesztett felhasználói felületre való regisztrálásához és kezeléséhez. 
 > 
 > Ha nem engedélyezte az előzetes verzió bármely verzióját, a szervezet nem lesz hatással.
 
@@ -39,8 +39,8 @@ Az új felület engedélyezése előtt tekintse át a [kombinált biztonsági in
 A következő lépések végrehajtásával engedélyezheti a kombinált regisztrációt:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként vagy globális rendszergazdaként.
-2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **kezelése beállítások a hozzáférési panel előzetes**verziójának funkcióit.
-3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez használható előzetes funkciókat használhatják – a frissítés**lehetőséget választva engedélyezheti a felhasználók vagy az **összes** felhasználó csoportját.
+2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **kezelése beállítások a hozzáférési panel előzetes verziójának funkcióit**.
+3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez használható előzetes funkciókat használhatják – a frissítés**lehetőséget választva engedélyezheti **a felhasználók** vagy az **összes** felhasználó csoportját.
 
    ![A kombinált biztonsági információk előzetes verziójának használatának engedélyezése az összes felhasználó számára](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
@@ -84,7 +84,7 @@ A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a 
 1. A **hozzáférés-vezérlés** > **megadása** területen
    1. Kattintson a **hozzáférés letiltása** elemre.
    1. Ezután kattintson a **kiválasztás** elemre.
-1. **Házirend engedélyezése** bekapcsolva értékre
+1. **Házirend engedélyezése** **bekapcsolva** értékre
 1. Ezután kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>További lépések

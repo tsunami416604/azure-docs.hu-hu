@@ -1,29 +1,30 @@
 ---
-title: Az Azure PowerShell-minták az Azure Cosmos DB - Cassandra API-hoz
-description: Az Azure PowerShell-minták az Azure Cosmos DB - Cassandra API-hoz
+title: Azure Cosmos DB-Cassandra API Azure PowerShell minták
+description: Azure Cosmos DB-Cassandra API Azure PowerShell minták
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 670fac2e7eadaa8273c309fee56f164512398d78
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 31997143aa688c2eb74d180a2811496e53bc672c
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565482"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155433"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Az Azure PowerShell-minták az Azure Cosmos DB - Cassandra API-hoz
+# <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB-Cassandra API Azure PowerShell minták
 
-A következő táblázat Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz az Azure Cosmos DB Cassandra API-hoz.
+A következő táblázat hivatkozásokat tartalmaz a Cassandra API Azure Cosmos DBhoz tartozó Azure PowerShell parancsfájlokra.
 
 | | |
 |---|---|
-|[Egy fiók, kulcstér és tábla létrehozása](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókra, kulcstér és tábla. |
-|[Listázás vagy beolvasás keyspaces vagy táblák](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Listát vagy keyspaces vagy a táblák lekérése. |
-|[Első RU/s](scripts/powershell/cassandra/ps-cassandra-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kulcstér és tábla beolvasása az RU/s. |
-|[Frissítés RU/s](scripts/powershell/cassandra/ps-cassandra-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Frissítse az RU/s kulcstér és tábla. |
-|[A régió hozzáadása](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy Azure Cosmos-fiók létrehozása, és adjon hozzá egy régiót a helyek listáját. |
-|[Feladatátvétel prioritásának módosítása](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy Azure Cosmos-fiók egy manuális feladatátvétel eseményindítóval feladatátvétel prioritásának módosításához. |
-|[Fiók kulcsokat és kapcsolati karakterlánc feladatok](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A kapcsolati karakterláncok beolvasása egy Azure Cosmos-fiók. Egy Azure Cosmos-fiók elsődleges és másodlagos kulcsainak lekérése. Egy fiók kulcsának újragenerálásával. |
+|[Fiók, szóköz és tábla létrehozása](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, a térközt és a táblát. |
+|[Szóközök vagy táblázatok listázása és lekérése](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kilistázhatja vagy beolvashatja a tárhelyeket vagy a táblákat. |
+|[RU/s beolvasása](scripts/powershell/cassandra/ps-cassandra-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A szóköz vagy a tábla beolvasása RU/s. |
+|[RU/s frissítése](scripts/powershell/cassandra/ps-cassandra-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az RU/s frissítése egy szóköz vagy egy tábla számára. |
+|[Fiók frissítése vagy régió hozzáadása](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Régió hozzáadása Cosmos-fiókhoz. A más fiók tulajdonságainak módosítására is használható, de a régiókban lévő módosításoktól el kell különíteni őket. |
+|[Feladatátvételi prioritás módosítása vagy feladatátvételi trigger](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy Azure Cosmos-fiók regionális feladatátvételi prioritásának módosítása vagy manuális feladatátvétel indítása. |
+|[Fiók kulcsai vagy a kapcsolatok karakterláncai](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Elsődleges és másodlagos kulcsok, a kapcsolatok karakterláncának beolvasása vagy egy Azure Cosmos-fiókhoz tartozó fiók kulcsának újragenerálása. |
+|[Cosmos-fiók létrehozása IP-tűzfallal](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos-fiókot, amelyen engedélyezve van az IP-tűzfal. |
 |||

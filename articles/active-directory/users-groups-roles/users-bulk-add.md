@@ -1,5 +1,5 @@
 ---
-title: Tömeges importálás a felhasználók (előzetes verzió) hozzáadásához a Azure Active Directory portálon | Microsoft Docs
+title: Felhasználók tömeges létrehozása (előzetes verzió) a Azure Active Directory portálon | Microsoft Docs
 description: Felhasználók tömeges hozzáadása az Azure AD felügyeleti központban Azure Active Directory
 services: active-directory
 author: curtand
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a22052117448cdb71bbc16e1df7899e6d3eb764e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901489"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146310"
 ---
-# <a name="bulk-import-users-preview-in-azure-active-directory"></a>Felhasználók tömeges importálása (előzetes verzió) Azure Active Directory
+# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Felhasználók tömeges létrehozása (előzetes verzió) Azure Active Directory
 
 Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehozási és törlési műveleteket, a csoportos meghívást a vendégek számára, és támogatja a felhasználók, csoportok és csoporttagok letöltési listáját.
 
@@ -37,6 +37,9 @@ A felhasználók tömeges létrehozásához a felügyeleti portálon globális r
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
 1. Az Azure ad-ben válassza a**tömegesen létrehozott** **felhasználók** > elemet.
 1. A felhasználó **tömeges létrehozása** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes, VESSZŐVEL tagolt (CSV) fájljának megjelenítéséhez, majd adja hozzá az új felhasználókat.
+
+   ![A CSV-fájl a létrehozandó felhasználók nevét és azonosítóit tartalmazza](./media/users-bulk-add/add-csv-file.png)
+
 1. Amikor befejezte a CSV-fájl szerkesztését, vagy ha valamelyik saját feltöltésre kész, válassza ki a fájlt a **CSV-fájl feltöltéséhez** .
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-add/upload-button.png)

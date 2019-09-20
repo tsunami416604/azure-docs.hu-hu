@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128705"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162257"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású-adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -361,6 +361,11 @@ Alapértelmezés szerint 2 replikát hozunk létre a nagy kapacitású-adatbázi
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Hogyan kapcsolódás ezekhez a másodlagos számítási csomópontokhoz
 
 Ehhez a további írásvédett számítási csomópontokhoz is csatlakozhat, ha a `ApplicationIntent` kapcsolati `readonly`karakterlánc argumentumát a értékre állítja. A rendszer automatikusan átirányítja a (val `readonly` ) jelölésű kapcsolatokat a további írásvédett számítási csomópontok egyikére.  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Hogyan ellenőrizni, hogy sikerült-e csatlakozni a másodlagos számítási csomóponthoz a SSMS/más ügyféleszközök használatával?
+
+A következő T-SQL-lekérdezést hajthatja végre a SSMS/other Client Tools `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`használatával:.
+Az eredmény az `READ_ONLY` , ha a Kapcsolódás a csak olvasási jogosultsággal rendelkező másodlagos csomópontra mutat `READ_WRITE` , vagy ha a Kapcsolódás az elsődleges csomópontra mutat.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Létrehozhatok egy dedikált végpontot az olvasási léptékű replikához
 

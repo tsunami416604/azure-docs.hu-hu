@@ -4,7 +4,7 @@ description: Ez a cikk a Microsoft Azure Cloud Services kapcsolatával és hál�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941738"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154871"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolati és hálózatkezelési problémái: Gyakori kérdések (GYIK)
 
@@ -103,7 +103,7 @@ Annak érdekében, hogy a felhőalapú szolgáltatás (más néven VIP) nyilván
 - [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Ha több példánya van a szerepkörökhöz, a RIP és a felhőalapú szolgáltatás társítása nem okozhat állásidőt. Azt is megteheti, hogy engedélyezte az Azure-adatközpont IP-tartományát. Az összes Azure IP-tartomány megtalálható a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Ha több példánya van a szerepkörökhöz, a RIP és a felhőalapú szolgáltatás társítása nem okozhat állásidőt. Azt is megteheti, hogy hozzáadja az Azure-adatközpont IP-tartományát az engedélyezési listához. Az összes Azure IP-tartomány megtalálható a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Ez a fájl tartalmazza az Azure-adatközpontokban használt IP-címtartományt (beleértve a számítási, az SQL-és a tárolási tartományokat). A rendszer hetente közzétesz egy frissített fájlt, amely a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban. Töltse le hetente az új. xml fájlt, és végezze el a szükséges módosításokat a webhelyen, hogy megfelelően azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute felhasználói láthatják, hogy ez a fájl az Azure Space BGP-hirdetményének minden hónap első hetében való frissítésére szolgál.
 

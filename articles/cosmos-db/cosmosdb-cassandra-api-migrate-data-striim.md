@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 39427ac12dc6214630d6c3e5ace62692b1ea30b6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ad690fa78f794b26b6cf496ea4485599486752b0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003081"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146978"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB Cassandra API-fiókba a Striim használatával
 
@@ -160,6 +160,8 @@ Ebben a szakaszban a Azure Cosmos DB Cassandra API fiókot fogja konfigurálni a
 1. Adja meg a cél Azure Cosmos DB példány konfigurációs tulajdonságait, és a folytatáshoz válassza a **Mentés** lehetőséget. A következő fontos paramétereket érdemes megjegyezni:
 
    * **Adapter** – **DatabaseWriter**használata. Azure Cosmos DB Cassandra API írásakor a DatabaseWriter megadása kötelező. A Cassandra-illesztőprogram 3.6.0 a Striim-mel van ellátva. Ha a DatabaseWriter túllépi az Azure Cosmos-tárolón kiépített RUs számát, az alkalmazás összeomlik.
+
+   * **Kapcsolatok URL-címe** – adja meg a Azure Cosmos db JDBC-kapcsolatok URL-címét. Az URL-cím formátuma`jdbc:cassandra://<contactpoint>:10350/<databaseName>?SSL=true`
 
    * **Felhasználónév** – adja meg az Azure Cosmos-fiók nevét.
    

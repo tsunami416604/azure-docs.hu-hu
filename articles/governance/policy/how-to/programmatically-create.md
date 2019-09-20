@@ -1,5 +1,5 @@
 ---
-title: Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
+title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése az Azure Policyvel.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1039073aaaf9d1a6b7bd9ac21a95c73871ce3ba3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239029"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155572"
 ---
-# <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
+# <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
 Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése. Azure Policy definíciók különböző szabályokat és hatásokat alkalmaznak az erőforrásokra. Kényszerítési gondoskodik arról, hogy az erőforrások maradjon felelnek meg a vállalati szabványoknak és szolgáltatói szerződéseknek.
 
@@ -92,7 +92,7 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
    A **hatókör** -paraméter `New-AzPolicyAssignment` a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}`
-   `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
    - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -220,7 +220,7 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás **erőforrástípus,** például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
 
    - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216316249197071bdd7a175dfc5339caeddee50a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086831"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162419"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory feltételes hozzáférési beállítások ismertetése
 
@@ -91,7 +91,7 @@ A feltételes hozzáférési szabályzatban konfigurálhatja az eszköz platform
 
 - Android
 - iOS
-- Windows Phone
+- Windows Phone-telefon
 - Windows
 - macOS
 
@@ -123,7 +123,7 @@ Ez a beállítás minden böngészővel működik. Ahhoz azonban, hogy kielégí
 | Windows 7              | Internet Explorer, Chrome                       |
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
-| Windows Phone          | Microsoft Edge, Internet Explorer               |
+| Windows Phone-telefon          | Microsoft Edge, Internet Explorer               |
 | A Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
@@ -246,7 +246,6 @@ A feltételes hozzáférési házirendben megkövetelheti, hogy az alkalmazás v
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 - Microsoft-Cortana
-- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
 - A Microsoft Planner

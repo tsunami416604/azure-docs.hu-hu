@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179514"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148427"
 ---
 A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgáltatási szintjeihez társított korlátokat. További információ az egyes *egységek* költségéről: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -38,6 +38,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 | A felhőből egy eszközre irányuló üzenet maximális mérete |64 KB |
 | A felhőből egy eszközre irányuló üzenetek maximális élettartama |2 nap |
 | A felhőből egy eszközre történő kézbesítések maximális száma <br/> üzenet |100 |
+| A felhőből az eszközre irányuló üzenetsor maximális mélysége eszközönként |50 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
 | [Az eszközök maximális mérete (Twin)](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |

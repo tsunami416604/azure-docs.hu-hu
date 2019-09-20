@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679126"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161495"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag az alapvető Azure-szolgáltatások, az AK, az ACR, az Azure 
 
 * [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.43 vagy újabb verzió.
 
-* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgálóval, [](https://aka.ms/jenkins-on-azure) az ebben a rövid útmutatóban ismertetett lépéseket követve telepítse a Jenkinst az Azure- [ban.](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template) 
+* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgálóval, az [ebben a rövid](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)útmutatóban ismertetett lépéseket követve telepítse a [Jenkinst](https://aka.ms/jenkins-on-azure) az Azure-ban. 
 
 * A Jenkins-kiszolgálónak mind a Helm, mind a kubectl telepítve kell lennie, és elérhetőnek kell lennie a Jenkins-fiók számára az oktatóanyag későbbi részében ismertetett módon.
 
@@ -84,9 +84,9 @@ Ebben a szakaszban az Azure-erőforrásokat hozza létre:
 
 ## <a name="deploy-sample-apps-to-the-aks-cluster"></a>Minta alkalmazások üzembe helyezése az AK-fürtön
 
-Ebben a szakaszban egy fejlesztői területet állít be, és üzembe helyez egy minta alkalmazást az utolsó szakaszban létrehozott AK-fürtön. Az alkalmazás két részből áll: a webfrontendből és a *mywebapi*. Mindkét összetevő egy fejlesztői térben van üzembe helyezve. Az oktatóanyag későbbi részében egy lekéréses kérelmet küld a mywebapi-től a CI-folyamat elindításához a Jenkins-ben.
+Ebben a szakaszban egy fejlesztői területet állít be, és üzembe helyez egy minta alkalmazást az utolsó szakaszban létrehozott AK-fürtön. Az alkalmazás két részből áll: a *webfrontendből* és a *mywebapi*. Mindkét összetevő egy fejlesztői térben van üzembe helyezve. Az oktatóanyag későbbi részében egy lekéréses kérelmet küld a mywebapi-től a CI-folyamat elindításához a Jenkins-ben.
 
-Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces használatával történő használatáról további információért lásd: az [Azure dev Spaces használatának első lépései](https://docs.microsoft.com/azure/dev-spaces/get-started-java)a Javával és [Az Azure dev Spaces szolgáltatással](https://docs.microsoft.com/azure/dev-spaces/multi-service-java)történő többfunkciós fejlesztés. Ezek az oktatóanyagok további háttér-információkat is biztosítanak itt.
+Az Azure dev Spaces és a többszolgáltatásos fejlesztés Azure dev Spaces használatával történő használatáról további információért lásd: az [Azure dev Spaces használatának első lépései a Javával](https://docs.microsoft.com/azure/dev-spaces/get-started-java)és [Az Azure dev Spaces szolgáltatással történő többfunkciós fejlesztés](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Ezek az oktatóanyagok további háttér-információkat is biztosítanak itt.
 
 1. Töltse le https://github.com/Azure/dev-spaces a tárházat a githubról.
 
@@ -349,7 +349,7 @@ A jelen szakasz 3. lépésének végrehajtásához meg kell adnia a Jenkinsfile 
 
 2. Jelentkezzen be a Jenkins-be, válassza ki a folyamat nevét, majd válassza a **Build most**lehetőséget. 
 
-    Beállíthat egy webhookot is a Jenkins-folyamat automatikus elindításához. A lekéréses kérelem megadásakor a GitHub a Jenkins-be KÜLDi a folyamatot, és elindítja a folyamatot. A webhook beállításával kapcsolatos további információkért lásd: a [Jenkins és a GitHub](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github)összekapcsolása.
+    Beállíthat egy *webhookot* is a Jenkins-folyamat automatikus elindításához. A lekéréses kérelem megadásakor a GitHub a Jenkins-be KÜLDi a folyamatot, és elindítja a folyamatot. A webhook beállításával kapcsolatos további információkért lásd: a [Jenkins és a GitHub összekapcsolása](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service.md#connect-jenkins-to-github).
 
 3. A jelenlegi megosztott verzió változásainak összehasonlítása:
 

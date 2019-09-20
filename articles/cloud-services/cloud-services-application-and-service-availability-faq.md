@@ -4,7 +4,7 @@ description: Ez a cikk az alkalmazással és a szolgáltatás rendelkezésre ál
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0d70e52b77c7f34444ce12f84f17a5ed2d1afe46
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d229291793334964569f6c35eaec68a94ca6b69f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941781"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154887"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos problémák: Gyakori kérdések (GYIK)
 
@@ -32,7 +32,7 @@ A Microsoft körülbelül havonta egyszer kibocsátja a vendég operációs rend
 
 A legújabb vendég operációs rendszer frissítéseivel kapcsolatos részletes információkért lásd: az [Azure vendég operációs rendszer kiadásai és az SDK kompatibilitási mátrixa](cloud-services-guestos-update-matrix.md).
 
-A vendég és a gazdagép operációsrendszer-frissítéseinek technikai részleteit ismertető, az újraindítással és a mutatókkal kapcsolatos hasznos információkért tekintse meg az MSDN blog post szerepkör-példányának újraindítását az [operációs rendszer frissítései miatt](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+A vendég és a gazdagép operációsrendszer-frissítéseinek technikai részleteit ismertető, az újraindítással és a mutatókkal kapcsolatos hasznos információkért tekintse meg az MSDN blog post [szerepkör-példányának újraindítását az operációs rendszer frissítései miatt](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Miért nem a szokásosnál hosszabb ideig tart a Felhőbeli szolgáltatásra irányuló első kérés a szolgáltatás tétlensége után?
 Amikor a webkiszolgáló megkapja az első kérést, először újrafordítja a kódot, majd feldolgozza a kérést. Ezért az első kérelem hosszabb időt vesz igénybe, mint a többi. Alapértelmezés szerint az alkalmazáskészlet felhasználói tétlenség esetén leáll. Az alkalmazáskészlet alapértelmezés szerint 1 740 percenként is újraindul (29 óra).

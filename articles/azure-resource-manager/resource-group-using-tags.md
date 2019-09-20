@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312124"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146842"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -23,7 +23,7 @@ Ahhoz, hogy címkéket lehessen alkalmazni az erőforrásokra, a felhasználóna
 
 ## <a name="policies"></a>Házirendek
 
-A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A következő szakasz példákat mutat be a címkékre.
+A [Azure Policy](../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez üzembe helyezett erőforrások milyen helyzetben legyenek, és nem felelnek meg a szervezete számára várt címkéknek. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett létrehozhat egy olyan szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -399,7 +399,7 @@ Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, h
 
 ## <a name="rest-api"></a>REST API
 
-A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító  lekérése lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
+A Azure Portal és a PowerShell egyaránt a [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/) használja a jelenetek mögött. Ha a címkézést egy másik környezetbe kell integrálnia, az erőforrás-azonosító lekérése lehetőséggel beolvashatja a címkéket, és frissítheti a címkék készletét egy **javítási** hívás használatával.
 
 ## <a name="tags-and-billing"></a>Címkék és számlázás
 

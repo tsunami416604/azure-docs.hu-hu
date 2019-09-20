@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194621"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161934"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -54,15 +54,53 @@ A vendég konfigurációja a **GuestConfiguration** erőforrás-modult használj
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Egyéni vendég konfiguráció konfigurációjának létrehozása
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Egyéni vendég konfigurációs konfiguráció és erőforrások létrehozása
 
 A vendég konfigurációhoz tartozó egyéni szabályzat létrehozásának első lépése a DSC-konfiguráció létrehozása. A DSC-fogalmak és a terminológia áttekintését lásd: a [POWERSHELL DSC áttekintése](/powershell/dsc/overview/overview).
+
+Ha a konfigurációban csak a vendég konfigurációs ügynök telepítésével rendelkező erőforrások szükségesek, akkor csak egy konfigurációs MOF-fájlt kell létrehoznia. Ha további parancsfájlt kell futtatnia, létre kell hoznia egy egyéni erőforrás-modult.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>A vendég-konfiguráció egyéni erőforrásaira vonatkozó követelmények
+
+Amikor a vendég konfigurációja naplóz egy gépet, először a futtatásával `Test-TargetResource` megállapítja, hogy a megfelelő állapotban van-e.  A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager állapotának megfelelőnek vagy nem megfelelőnek kell lennie.  Ha a logikai érték `$false` a konfiguráció egyik erőforrása, akkor a szolgáltató fog futni. `Get-TargetResource`
+Ha a logikai értéket `$true` `Get-TargetResource` a rendszer nem hívja meg.
+
+A függvény `Get-TargetResource` speciális követelményekkel rendelkezik a Windows kívánt állapotának konfigurálásához nem szükséges vendég-konfigurációhoz.
+
+- A visszaadott szórótábla tartalmaznia kell **egy nevű**tulajdonságot.
+- A Reason tulajdonságnak tömbnek kell lennie.
+- A tömb minden elemének olyan szórótábla kell lennie, amelynek **kóddal** és **kifejezéssel**ellátott kulcsokkal kell rendelkeznie.
+
+A szolgáltatás az okok tulajdonságát arra használja, hogy egységesítse, hogyan jelennek meg az információk, amikor egy gép nem felel meg az előírásoknak.
+Az egyes elemek oka az lehet, hogy az erőforrás nem megfelelő. A tulajdonság egy tömb, mert egy erőforrás több okból nem felel meg a megfelelőségnek.
+
+A szolgáltatás a tulajdonságok **kódját** és a **kifejezést** is elvárta. Egyéni erőforrás létrehozásakor állítsa be azt a szöveget (jellemzően StdOut), amelyet az erőforrás nem felel meg a **kifejezés**értékének.  A **kód** meghatározott formázási követelményekkel rendelkezik, így a jelentéskészítés egyértelműen megjeleníti a naplózás végrehajtásához használt erőforrás adatait. Ez a megoldás a vendég konfigurációját bővíthetővé teszi. Bármely parancs futtatható a gép naplózásához, ha a kimenet rögzíthető, és karakterlánc-értékként lesz visszaadva a **kifejezés** tulajdonsághoz.
+
+- **Kód** (karakterlánc): Az erőforrás neve, ismétlődő, majd egy rövid név, amely nem tartalmazhat szóközt azonosítóként az OK értékhez.  Ez a három érték csak kettősponttal tagolható szóközök nélkül.
+    - Ilyen például a "Registry: Registry: keynotpresent".
+- **Kifejezés** (karakterlánc): Ember által olvasható szöveg, amelyből megtudhatja, hogy a beállítás miért nem megfelelő.
+    - Erre példa: "a beállításkulcs $key nem szerepel a gépen."
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Vendég konfigurációs projekt állványzata
+
+Azoknak a fejlesztőknek, akik szeretnék felgyorsítani az első lépések és a mintakód használatának folyamatát, egy **vendég konfigurációs projekt** nevű közösségi projekt létezik sablonként a [vakolat](https://github.com/powershell/plaster) PowerShell-modulhoz.  Ezzel az eszközzel a projekt beépíthető, beleértve a munkakonfigurációt és a minta erőforrást, valamint a projekt ellenőrzéséhez szükséges, a tevékenység ellenőrzésére szolgáló feldolgozatlan [teszteket](https://github.com/pester/pester) .  A sablon a Visual Studio Code feladatait is tartalmazza, amelyekkel automatizálható a vendég-konfigurációs csomag kiépítése és érvényesítése. További információ: GitHub Project [Guest Configuration Project](https://github.com/microsoft/guestconfigurationproject).
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Egyéni vendég konfigurációs konfiguráció Linuxon
 
 A Linuxon futó vendég-konfiguráció DSC-konfigurációja `ChefInSpecResource` az erőforrást használja, hogy a motor a [Chef inspec](https://www.chef.io/inspec/) definíciójának nevét adja meg. A **név** az egyetlen szükséges erőforrás-tulajdonság.
 
-Az alábbi példa létrehoz egy alapkonfigurációt, importálja a **GuestConfiguration** erőforrás-modult, `ChefInSpecResource` és az erőforrást az inspec definíciójának neve alapján állítja be a **Linux-patch-alapterv**értékre:
+Az alábbi példa létrehoz egy alapkonfigurációt, importálja a **GuestConfiguration** erőforrás-modult, `ChefInSpecResource` **és**az erőforrást az inspec definíciójának neve alapján állítja be a **Linux-patch-alapterv**értékre:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -133,7 +171,7 @@ A `New-GuestConfigurationPackage` parancsmag paraméterei:
 - **Elérési út**: Kimeneti mappa elérési útja Ez a paraméter nem kötelező. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
 - **ChefProfilePath**: Az inspec-profil teljes elérési útja. Ez a paraméter csak akkor támogatott, ha tartalmat hoz létre a Linux rendszerű naplózáshoz.
 
-A befejezett csomagot a felügyelt virtuális gépek által elérhető helyen kell tárolni. Ilyenek például a GitHub-adattárak, az Azure-Tárházak vagy az Azure Storage. Ha nem szeretné, hogy a csomag nyilvános legyen, az URL-címben egy [sas](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) -tokent is hozzáadhat. A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) is alkalmazhat, bár ez a konfiguráció csak a csomag elérésére és a szolgáltatással való kommunikációra vonatkozik.
+A befejezett csomagot a felügyelt virtuális gépek által elérhető helyen kell tárolni. Ilyenek például a GitHub-adattárak, az Azure-Tárházak vagy az Azure Storage. Ha nem szeretné, hogy a csomag nyilvános legyen, az URL-címben egy [sas-tokent](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) is hozzáadhat. A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) is alkalmazhat, bár ez a konfiguráció csak a csomag elérésére és a szolgáltatással való kommunikációra vonatkozik.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>A titkok használata a vendég konfigurációs csomagjaiban
 
@@ -141,11 +179,11 @@ Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelés�
 
 Először hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az Azure-ban. Az identitást a gépek használják a Key Vaultban tárolt titkos kódok elérésére. A részletes lépésekért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure PowerShell használatával](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Ezután hozzon létre egy Key Vault példányt. Részletes lépések: [titkos PowerShell beállítása és](../../../key-vault/quick-create-powershell.md)beolvasása.
-Rendeljen engedélyeket a példányhoz, hogy a felhasználó által hozzárendelt identitás hozzáférést biztosítson a Key Vaultban tárolt titkos kulcsokhoz. Részletes lépések: [Secret-.net beállítása és](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)beolvasása.
+Hozzon létre egy Key Vault példányt. Részletes lépések: [titkos PowerShell beállítása és beolvasása](../../../key-vault/quick-create-powershell.md).
+Rendeljen engedélyeket a példányhoz, hogy a felhasználó által hozzárendelt identitás hozzáférést biztosítson a Key Vaultban tárolt titkos kulcsokhoz. Részletes lépések: [Secret-.net beállítása és beolvasása](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Ezután rendelje hozzá a felhasználó által hozzárendelt identitást a számítógéphez. A részletes lépésekért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken [a PowerShell használatával](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-A skálán ezt az identitást a Azure Resource Manager segítségével Azure Policy használatával rendelheti hozzá. A részletes lépésekért lásd: felügyelt identitások konfigurálása Azure-beli virtuális gépeken [sablon használatával](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+Rendelje hozzá a felhasználó által hozzárendelt identitást a számítógéphez. A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)Azure-beli virtuális gépeken a PowerShell használatával.
+A skálán ezt az identitást a Azure Resource Manager segítségével Azure Policy használatával rendelheti hozzá. A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)Azure-beli virtuális gépeken sablon használatával.
 
 Végül az egyéni erőforráson belül a fentiekben generált ügyfél-azonosítót használva férhet hozzá Key Vault a számítógépről elérhető token használatával. A Key Vault példányának [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) ésURL-címénekértékekéntadhatókátazerőforrásnak,ígyazerőforrástnemkelltöbbkörnyezetesetébenfrissíteni,vagyhaazértékeketmódosítani`client_id` kell.
 
@@ -318,7 +356,7 @@ Az Azure-ban létrehozott házirend-és kezdeményezési definíciókkal az utol
 
 Miután közzétett egy egyéni Azure Policy az egyéni tartalomkezelő csomag használatával, két mezőt kell frissíteni, ha új kiadást szeretne közzétenni.
 
-- **Verzió**: A `New-GuestConfigurationPolicy` parancsmag futtatásakor meg kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.  A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját az új házirend-fájlban, így a bővítmény felismeri, hogy a csomag frissítve lett.
+- **Verzió**: A `New-GuestConfigurationPolicy` parancsmag futtatásakor meg kell adnia egy verziószámot, amely nagyobb a jelenleg közzétettnél.  A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját az új házirend-fájlban, így a bővítmény felismeri, hogy a csomag frissítve lett.
 - **contentHash**: Ezt a tulajdonságot a `New-GuestConfigurationPolicy` parancsmag automatikusan frissíti.  Ez a csomag által `New-GuestConfigurationPackage`létrehozott kivonatoló érték.  A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz.  Ha csak a `contentUri` tulajdonság frissül, például abban az esetben, ha valaki manuálisan módosítani tudja a házirend-definíciót a portálról, a bővítmény nem fogadja el a tartalmi csomagot.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot.
@@ -334,7 +372,7 @@ A tartalom konvertálása után a fenti lépéseket követve hozzon létre egy c
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VÁLASZTHATÓ Vendég konfigurációs csomagjainak aláírása
 
-A vendég konfigurációja egyéni szabályzatok alapértelmezés szerint a SHA256-kivonattal ellenőrzik, hogy a házirend-csomag nem módosult-e a közzétételkor, amikor a naplózott kiszolgáló beolvassa.
+A vendég konfigurációja egyéni szabályzatok alapértelmezés szerint a SHA256-kivonattal ellenőrzik, hogy a házirend-csomag nem módosult-e, amikor közzé lett téve, amikor a naplózott kiszolgáló beolvassa.
 Igény szerint az ügyfelek is használhatnak tanúsítványokat a csomagok aláírására és a vendég konfigurációs bővítmény kényszerítésére, hogy csak az aláírt tartalmat engedélyezzék.
 
 Ennek a forgatókönyvnek az engedélyezéséhez két lépést kell végrehajtania. Futtassa a parancsmagot a tartalomindex aláírásához, és fűzze hozzá a címkét azokhoz a gépekhez, amelyeknek az aláírásához kód szükséges.

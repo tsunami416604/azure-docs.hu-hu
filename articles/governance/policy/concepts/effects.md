@@ -1,18 +1,18 @@
 ---
 title: A hatások működésének megismerése
-description: Azure szabályzat-definíció rendelkezik, amelyek meghatározzák, hogyan megfelelőségét, és jelentett különböző hatásokkal.
+description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231527"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147006"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
 
@@ -27,13 +27,14 @@ Ezek a hatások jelenleg a szabályzatok definíciójában támogatottak:
 - [DeployIfNotExists](#deployifnotexists)
 - [Letiltva](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) előnézet
+- [Módosítása](#modify)
 
 ## <a name="order-of-evaluation"></a>Kiértékelési sorrend
 
 Az erőforrásoknak a Azure Resource Manager alapján történő létrehozására vagy frissítésére vonatkozó kérelmeket először Azure Policy kiértékeli. Azure Policy létrehoz egy listát az erőforrásra vonatkozó összes hozzárendelésről, majd kiértékeli az erőforrást az egyes definíciók alapján. Azure Policy dolgozza fel a hatásokat, mielőtt átadná a kérést a megfelelő erőforrás-szolgáltatónak. Ez megakadályozza az erőforrás-szolgáltató általi szükségtelen feldolgozást, ha az erőforrás nem teljesíti a Azure Policy tervezett irányítási vezérlőit.
 
 - **Letiltott** határozza meg, ha a szabály kell kiértékelni, először be van jelölve.
-- **Hozzáfűzés** Ezután kiértékeli. Azóta hozzáfűzése módosíthatta a kérést, módosítását, a hozzáfűző megelőzhetik a naplózási vagy a hatás megtagadása elindítása.
+- Ezután kiértékeli a **hozzáfűzést** és a **módosítást** . Mivel bármelyik megváltoztathatja a kérést, a módosítás miatt előfordulhat, hogy egy naplózási vagy megtagadási hatás megakadályozza az indítást.
 - **Megtagadási** Ezután kiértékeli. Kiértékelésével megtagadása naplózás, mielőtt egy nemkívánatos erőforrás dupla naplózása a rendszer letiltja.
 - **Naplózási** Ezután kiértékeli a kérést az erőforrás-szolgáltató fog előtt.
 
@@ -47,7 +48,10 @@ Ez a hatás tesztelési helyzetek, vagy ha a szabályzatdefiníció rendelkezik 
 
 ## <a name="append"></a>Hozzáfűzés
 
-Hozzáfűzés további mezőket hozzáadni a kért erőforrás létrehozása vagy módosítása során használatos. Gyakori például címkék hozzáadása erőforrások, például a costCenter, vagy egy tárolási erőforrás IP-címek megadása engedélyezett.
+Hozzáfűzés további mezőket hozzáadni a kért erőforrás létrehozása vagy módosítása során használatos. Gyakori példa egy tárolási erőforrás engedélyezett IP-címeinek megadására.
+
+> [!IMPORTANT]
+> A Hozzáfűzés a nem címkével ellátott tulajdonságokkal való használatra készült. Míg a hozzáfűzéssel hozzáadhat címkéket egy erőforráshoz egy létrehozási vagy frissítési kérelem során, azt javasoljuk, hogy használja inkább a címkék [módosítási](#modify) effektusát.
 
 ### <a name="append-evaluation"></a>Értékelés hozzáfűzése
 
@@ -61,36 +65,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 
 ### <a name="append-examples"></a>Példák hozzáfűzése
 
-1\. példa: Egy **mező/érték** pár egy címke hozzáfűzéséhez.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-2\. példa Két **mező/érték** pár, amely egy kódelem hozzáfűzését adja meg.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-3\. példa: Egyetlen **mező/érték** pár, amely egy nem **[\*]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** a Storage-fiók IP-szabályainak beállításához. Ha a nem **\*[]** alias egy tömb, a hatás a teljes tömbként hozzáfűzi az **értéket** . Ha a tömb már létezik, megtagadási esemény következik be az ütközésből.
+1\. példa: Egyetlen **mező/érték** pár, amely egy nem **[\*]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** a Storage-fiók IP-szabályainak beállításához. Ha a nem **\*[]** alias egy tömb, a hatás a teljes tömbként hozzáfűzi az **értéket** . Ha a tömb már létezik, megtagadási esemény következik be az ütközésből.
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-4\. példa: Egyetlen **mező/érték** pár, amely **egy\*[]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** a Storage-fiók IP-szabályainak beállításához. A **\*[]** alias használatával a hatás hozzáfűzi az **értéket** egy potenciálisan előre meglévő tömbhöz. Ha a tömb még nem létezik, a rendszer létrehozza.
+2\. példa Egyetlen **mező/érték** pár, amely **egy\*[]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** a Storage-fiók IP-szabályainak beállításához. A **\*[]** alias használatával a hatás hozzáfűzi az **értéket** egy potenciálisan előre meglévő tömbhöz. Ha a tömb még nem létezik, a rendszer létrehozza.
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Módosítás
+
+A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási szabályzatnak mindig `mode` _indexelt_értékre kell állítania. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható.
+Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+
+> [!IMPORTANT]
+> A módosítás jelenleg csak címkékkel használható. Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni.
+
+### <a name="modify-evaluation"></a>Értékelés módosítása
+
+A módosítja a kiértékeléseket, mielőtt az erőforrás-szolgáltató feldolgozza a kérést az erőforrás létrehozása vagy frissítése során. Ha a házirend- **szabály feltételei** teljesülnek, módosítja a hozzáadási vagy frissítési címkéket az erőforráson.
+
+Ha a módosítási hatást használó házirend-definíció egy értékelési ciklus részeként fut, akkor nem módosítja a már létező erőforrásokat. Ehelyett jelöli meg minden olyan erőforrást, amely megfelel a **Ha** feltétel nem megfelelő.
+
+### <a name="modify-properties"></a>Tulajdonságok módosítása
+
+A Modify Effect **details** tulajdonsága minden olyan altulajdonsággal rendelkezik, amely meghatározza a szervizeléshez szükséges engedélyeket, valamint a címkék hozzáadásához, frissítéséhez vagy eltávolításához használt **műveleteket** .
+
+- **roleDefinitionIds** [kötelező]
+  - Ez a tulajdonság karakterláncok, amelyek megfelelnek a szerepköralapú hozzáférés-vezérlési szerepkör azonosítója elérhető-e az előfizetés-tartalmaznia kell. További információkért lásd: [szervizelési – konfigurálja a szabályzat-definíció](../how-to/remediate-resources.md#configure-policy-definition).
+  - A definiált szerepkörnek tartalmaznia kell a [közreműködő](../../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz megadott összes műveletet.
+- **műveletek** szükséges
+  - Az összes címkéző művelet tömbje, amely a megfelelő erőforrásokon fejeződik be.
+  - Tulajdonságok
+    - **művelet** szükséges
+      - Meghatározza, hogy milyen műveletet kell végrehajtani a megfelelő erőforráson. A lehetőségek a következők: _addOrReplace_, _Hozzáadás_, _Eltávolítás_. A _Hozzáadás_ a [hozzáfűzési](#append) effektushoz hasonló.
+    - **mező** szükséges
+      - A hozzáadni, cserélni vagy eltávolítani kívánt címke. A címkék nevének meg kell felelnie a többi [mezőhöz](./definition-structure.md#fields)tartozó elnevezési konvenciónak.
+    - **érték** választható
+      - Az az érték, amellyel a címkét be kell állítani.
+      - Ez a tulajdonság kötelező, ha a **művelet** _addOrReplace_ vagy _hozzáadása_.
+
+### <a name="modify-operations"></a>Műveletek módosítása
+
+Az **Operations** Property Array lehetővé teszi több címke különböző módon történő módosítását egyetlen házirend-definícióból. Minden művelet **művelet**, **mező**és **érték** tulajdonságaiból tevődik fel. A művelet meghatározza, hogy a Szervizelési feladat mit tesz a címkék területen, a mező határozza meg, hogy melyik címke módosult, és az érték határozza meg az adott címke új beállítását. Az alábbi példa a következő címke-módosításokat végzi el:
+
+- A `environment` címkét "teszt" értékre állítja, még akkor is, ha már létezik egy másik érték.
+- Eltávolítja a címkét `TempResource`.
+- Beállítja a címkét a szabályzat-hozzárendelésen konfigurált DeptName házirend-paraméterhez. `Dept`
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+A **Operation** tulajdonság a következő beállításokkal rendelkezik:
+
+|Művelet |Leírás |
+|-|-|
+|addOrReplace |Hozzáadja a definiált címkét és értéket az erőforráshoz, még akkor is, ha a címke már létezik egy másik értékkel. |
+|Hozzáadás |Hozzáadja a definiált címkét és értéket az erőforráshoz. |
+|Eltávolítás |Eltávolítja a definiált címkét az erőforrásból. |
+
+### <a name="modify-examples"></a>Példák módosítása
+
+1\. példa: Adja hozzá `environment` a címkét, `environment` és cserélje le a meglévő címkéket a "test" kifejezésre:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+2\. példa Távolítsa `env` el a címkét `environment` , és adja hozzá `environment` a címkét, vagy cserélje le a meglévő címkéket paraméteres értékre:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -180,7 +271,7 @@ A **részletek** a altulajdonságokat, amelyek meghatározzák a kapcsolódó er
 
 - **Típus** [kötelező]
   - Határozza meg a megfelelő kapcsolódó erőforrás.
-  - Ha a details **. Type** egy erőforrástípus az **IF** feltétel erőforrása alatt, a szabályzat a kiértékelt erőforrás hatókörén belül lekérdezi az ilyen **típusú** erőforrásokat. Ellenkező esetben a házirend-lekérdezések a kiértékelt erőforrással megegyező erőforráscsoport alatt vannak.
+  - Ha a **details. Type** egy erőforrástípus az **IF** feltétel erőforrása alatt, a szabályzat a kiértékelt erőforrás hatókörén belül lekérdezi az ilyen **típusú** erőforrásokat. Ellenkező esetben a házirend-lekérdezések a kiértékelt erőforrással megegyező erőforráscsoport alatt vannak.
 - **Név** (nem kötelező)
   - A megfelelő erőforrás pontos nevét adja meg, és a egy adott erőforrás helyett a megadott típusú összes erőforrást beolvasni a szabályzat okoz.
   - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _megadása kötelező_ , `[field('name')]`és a következőnek kell lennie:. A naplózási [](#audit) hatást azonban figyelembe kell venni.
@@ -234,7 +325,7 @@ Példa: Kiértékeli a Virtual Machines annak megállapításához, hogy a kárt
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-AuditIfNotExists hasonlóan DeployIfNotExists végrehajt egy sablon telepítése a feltétel teljesülése esetén.
+A AuditIfNotExists hasonlóan a DeployIfNotExists házirend-definíciója is végrehajtja a sablon telepítését a feltétel teljesülése esetén.
 
 > [!NOTE]
 > [Beágyazott sablonok](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) támogatottak **deployIfNotExists**, de [kapcsolódó sablonok](../../../azure-resource-manager/resource-group-linked-templates.md) jelenleg nem támogatottak.
@@ -247,7 +338,7 @@ Egy értékelési ciklus során a szabályzatdefiníciók egy DeployIfNotExists 
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists tulajdonságai
 
-A **részletek** a DeployIfNotExists hatást tulajdonsága egyezik a kapcsolódó erőforrásokat határoz meg az összes altulajdonságot és a sablon telepítésének végrehajtásához.
+A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altulajdonsággal rendelkezik, amely meghatározza a kapcsolódó erőforrásokat, valamint a sablon központi telepítését.
 
 - **Típus** [kötelező]
   - Határozza meg a megfelelő kapcsolódó erőforrás.
@@ -341,19 +432,19 @@ Példa: Kiértékeli SQL Server adatbázisokat annak megállapításához, hogy 
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Ez a hatás a szabályzat-definíciós *móddal* `Microsoft.ContainerService.Data`együtt használható. A [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) által meghatározott belépésvezérlés-szabályok átadására szolgálnak [](https://www.openpolicyagent.org/) az [Azure Kubernetes Service](../../../aks/intro-kubernetes.md)-ben.
+Ez a hatás a szabályzat-definíciós *móddal* `Microsoft.ContainerService.Data`együtt használható. A [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) által meghatározott belépésvezérlés-szabályok átadására szolgálnak [az](https://www.openpolicyagent.org/) [Azure Kubernetes Service](../../../aks/intro-kubernetes.md)-ben.
 
 > [!NOTE]
 > A [Kubernetes Azure Policy](rego-for-aks.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzat-definíciókat támogatja.
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy kiértékelése
 
-A nyílt házirend-ügynök beléptetési vezérlője valós időben értékeli ki az új kéréseket a fürtön.
+A nyílt házirend-ügynök beléptetési vezérlője valós időben értékeli ki a fürtön lévő új kéréseket.
 5 percenként a fürt teljes vizsgálata befejeződött, és az eredmények Azure Policynak.
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy tulajdonságai
 
-A EnforceRegoPolicy-effektus details tulajdonsága a Rego belépésvezérlés szabályát leíró altulajdonságokkal rendelkezik.
+A EnforceRegoPolicy-effektus **details** tulajdonsága a Rego belépésvezérlés szabályát leíró altulajdonságokkal rendelkezik.
 
 - **policyId** szükséges
   - Egy egyedi név, amelyet paraméterként adott át a Rego belépésvezérlési szabálynak.

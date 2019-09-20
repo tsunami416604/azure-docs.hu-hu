@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779156"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146645"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -28,7 +28,6 @@ Amikor létrehoz egy Automation-fiókot a Azure Portalban, a rendszer automatiku
   * Egyszerű szolgáltatásnevet hoz létre Azure Active Directoryban (Azure AD).
   * Létrehoz egy tanúsítványt.
   * Hozzárendeli a közreműködői szerepkör-alapú Access Control (RBAC), amely a runbookok használatával kezeli Azure Resource Manager erőforrásait.
-* **Klasszikus futtató fiók**. Ez a fiók feltölt egy felügyeleti tanúsítványt. A tanúsítvány a klasszikus erőforrásokat a runbookok használatával kezeli.
 
 Az Ön által létrehozott fiókokkal gyorsan megkezdheti a runbookok létrehozását és üzembe helyezését az automatizálási igények támogatásához.
 
@@ -76,7 +75,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
 1. Az Azure-beli **futtató fiók létrehozása** beállításnál győződjön meg arról, hogy az **Igen** lehetőség van kiválasztva, majd válassza a **Létrehozás**lehetőséget.
 
    > [!NOTE]
-   > Ha úgy dönt, hogy nem hozza létre a futtató fiókot az Azure-beli **futtató fiók létrehozása**nem lehetőség kiválasztásával, egy üzenet jelenik meg az **Automation-fiók hozzáadása** panelen. Bár a fiók létrejön a Azure Portalban, a fiók nem rendelkezik a megfelelő hitelesítési identitással a klasszikus üzemi modell előfizetésében vagy a Azure Resource Manager előfizetés-címtárszolgáltatás szolgáltatásban. Ezért az Automation-fióknak nincs hozzáférése az előfizetéséhez tartozó erőforrásokhoz. Ez megakadályozza, hogy az erre a fiókra hivatkozó runbookok az adott üzemi modell erőforrásaihoz tartozó erőforrások hitelesítéséhez és végrehajtásához is hozzáférjenek.
+   > Ha úgy dönt, hogy nem hozza létre a futtató fiókot az Azure-beli **futtató fiók létrehozása** **nem lehetőség kiválasztásával** , egy üzenet jelenik meg az **Automation-fiók hozzáadása** panelen. Bár a fiók létrejön a Azure Portalban, a fiók nem rendelkezik a megfelelő hitelesítési identitással a klasszikus üzemi modell előfizetésében vagy a Azure Resource Manager előfizetés-címtárszolgáltatás szolgáltatásban. Ezért az Automation-fióknak nincs hozzáférése az előfizetéséhez tartozó erőforrásokhoz. Ez megakadályozza, hogy az erre a fiókra hivatkozó runbookok az adott üzemi modell erőforrásaihoz tartozó erőforrások hitelesítéséhez és végrehajtásához is hozzáférjenek.
    >
    > ![Automation-fiókra vonatkozó figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
@@ -97,14 +96,13 @@ Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automat
 | AzureRunAsCertificate |Az Automation-fiók létrehozásakor automatikusan létrehozott tanúsítvány, vagy egy meglévő fiókhoz tartozó PowerShell-parancsfájl használatával. A tanúsítvány az Azure-ban hitelesíthető, így Azure Resource Manager erőforrásokat felügyelheti a runbookok. Ennek a tanúsítványnak egy éves időtartama van. |
 | AzureRunAsConnection |Az Automation-fiók létrehozásakor automatikusan létrehozott, vagy egy meglévő fiókhoz tartozó PowerShell-szkriptet használó kapcsolódási eszköz. |
 
-Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
+## <a name="classic-run-as-accounts"></a>Klasszikus futtató fiókok
 
-| Resource | Leírás |
-| --- | --- |
-| AzureClassicAutomationTutorial forgatókönyv |Példa grafikus runbook. A runbook a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetésben lévő összes klasszikus virtuális gépet. Ezután megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicAutomationTutorial parancsprogram-forgatókönyv |Példa PowerShell-runbook. A runbook a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetésben lévő összes klasszikus virtuális gépet. Ezután megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicRunAsCertificate |Egy automatikusan létrehozott tanúsítvány-eszköz. A tanúsítvány az Azure-ban hitelesítve van, így a klasszikus Azure-erőforrásokat kezelheti a runbookok. Ennek a tanúsítványnak egy éves időtartama van. |
-| AzureClassicRunAsConnection |Egy automatikusan létrehozott összekötő-eszköz. Az eszköz hitelesíti magát az Azure-ban, így a klasszikus Azure-erőforrásokat kezelheti a runbookok. |
+A klasszikus futtató fiókok már nem jönnek létre, alapértelmezés szerint Azure Automation fiók létrehozásakor. Ha továbbra is klasszikus futtató fiókra van szüksége, hajtsa végre a következő lépéseket.
+
+1. Az **Automation-fiók** lapon válassza a **fiók beállításai**alatt a **futtató fiókok** lehetőséget.
+2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
+3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
 ## <a name="next-steps"></a>További lépések
 

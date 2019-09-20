@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell-példaszkript – fiókkulcsra és a kapcsolati karakterlánc-műveleteket egy Azure Cosmos-fiók
-description: Az Azure PowerShell-példaszkript – fiók kulcs és a kapcsolati karakterlánc műveletekhez, egy Azure Cosmos-fiók
+title: Parancsfájl-fiók kulcsának és a kapcsolatok karakterláncának Azure PowerShella Azure Cosmos-fiókhoz
+description: Azure PowerShell parancsfájl-minta-fiók kulcs és a kapcsolatok karakterláncának műveletei Azure Cosmos-fiókhoz
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1eb9cc4c35584b94d3d16654b1bec253e21a91ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602511"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154746"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>A kapcsolati karakterláncot, és a fiók kulcsának műveletek egy olyan PowerShell-lel az Azure Cosmos-fiók
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>Az Azure Cosmos-fiókhoz tartozó, a PowerShellt használó kapcsolatok sztringje és a fiók kulcsa
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,8 @@ ms.locfileid: "67602511"
 
 ## <a name="sample-script"></a>Példaszkript
 
-A minták van szükség, az erőforráscsoportot és a fiók létezik. Használja egy meglévő PowerShell minta egy fiók kiépítése először hozzon létre.
+> [!NOTE]
+> Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -40,7 +41,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Meghív egy műveletet az erőforrás. |
+| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Műveletet hív meg egy erőforráson. |
 |**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||

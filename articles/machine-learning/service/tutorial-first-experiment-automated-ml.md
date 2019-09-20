@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092009"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162547"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -65,93 +65,93 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
 
 1. Válassza a **kísérlet létrehozása**lehetőséget. 
 
-1. A kísérlet neveként adja meg **a My-1st-automl-Experiment** értéket.
+1. Adja meg a kísérlet nevét:`my-1st-automl-experiment`
 
-1. Válassza **az új számítás létrehozása**lehetőséget. A számítási módszer egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ehhez a kísérlethez felhőalapú számítást használunk. 
+1. Válassza az **új számítás létrehozása** és a számítási cél konfigurálása lehetőséget. A számítási cél egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ehhez a kísérlethez felhőalapú számítást használunk. 
 
-    1. A számítási környezet konfigurálása ehhez a kísérlethez.
-        
-        Mező | Value
-        ----|---
-        A számítás neve |  Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet. Ebben a példában a **automl-számítást**használjuk.
-        Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz. Használja az alapértelmezett **Standard_DS12_V2**.
-        További beállítások| *Minimális csomópont*: 1. Az adatprofilkészítés engedélyezéséhez legalább egy csomóponttal kell rendelkeznie. <br> *Csomópont maximális*száma: 6.
- 
-    1. Az új számítási számítás létrehozásához válassza a **Létrehozás**lehetőséget. Ez eltarthat néhány percet. 
+   Mező | Leírás | Az oktatóanyag értéke
+   ----|---|---
+   A számítás neve |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
+   Virtuális&nbsp;gép&nbsp;mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
+   Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
 
-    1. A létrehozás befejeződése után válassza ki az új számítást a legördülő listából, majd kattintson a **tovább**gombra.
+   >[!NOTE]
+   >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót fogja használni. Ezek automatikusan feltöltve lesznek az űrlapon.
+    
+1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
+   **Ez eltarthat néhány percet.** 
 
-    >[!NOTE]
-    >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót fogja használni. Ezek automatikusan feltöltve lesznek az űrlapon.
+1. A létrehozás után válassza ki az új számítási célt a legördülő listából, és kattintson a **tovább**gombra.
 
-1. Válassza **a feltöltés helyi fájlból**lehetőséget. Innen létrehoz egy új adatkészletet az oktatóanyaghoz korábban letöltött **bankmarketing_train. csv** fájllal. 
+1. Új adatkészlet létrehozásának megkezdéséhez válassza **a feltöltés helyi fájlból** lehetőséget. 
 
-    1. Válassza a **Tallózás** lehetőséget, majd válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépen. 
+    1. Válassza a **Tallózás** lehetőséget.
+    
+    1. Válassza ki a **bankmarketing_train. csv** fájlt a helyi számítógépen. Ez az [előfeltételként](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)letöltött fájl.
 
     1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
-    1. Válassza a **tovább** lehetőséget a munkaterület létrehozása során automatikusan beállított alapértelmezett tárolóba való feltöltéshez. A nyilvános előzetes verzió csak a helyi fájlok feltöltését támogatja. 
+    1. A bal alsó sarokban kattintson a **tovább** gombra, hogy feltöltse azt az alapértelmezett tárolóba, amelyet a rendszer automatikusan beállított a munkaterület létrehozása során. A nyilvános előzetes verzió csak a helyi fájlok feltöltését támogatja. 
 
     1. A feltöltés befejezésekor a rendszer a fájltípus alapján intelligens módon tölti ki a **beállításokat és az előnézet** űrlapot. Győződjön meg arról, hogy az űrlap a következőképpen van feltöltve.
         
         Mező|Value
         ---|---
-        Fájl formátuma| Tagolt
+        Fájlformátum| Elválasztott
         Elválasztó karakter| Vessző
         Encoding| UTF-8
-        Oszlopfejlécek| Minden fájlnak azonos fejléce van
+        Oszlopfejlécek| Minden fájl azonos fejléccel rendelkezik
         Sorok kihagyása | Nincsenek
-
-        >[!NOTE]
-        > Ha az űrlap bármelyik beállítása frissül, az előzetes verzió frissítése ennek megfelelően történik.
 
         Kattintson a **Tovább** gombra.
     
-
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Válassza a **kész**lehetőséget, hogy elvégezze a fájl feltöltését és a kísérlethez tartozó adatkészlet létrehozását.
 
         ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
-        
 1. Előrejelzési feladatként válassza a **besorolás** lehetőséget.
 
 1. Válassza az **y** elemet a cél oszlopként, amit meg szeretne jósolni. Ebben az oszlopban látható, hogy az ügyfél előfizetett-e egy lejárati időszakra.
 
 1. Bontsa ki a **Speciális beállítások** elemet, és töltse fel a mezőket az alábbiak szerint.
 
-    Speciális beállítások|Value
-    ------|------
-    Elsődleges metrika| AUC_weighted 
-    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok a teljes befejezés előtt véget ér: <br> *Tanítási feladatok időpontja (perc)* : 5  <br> *Ismétlések maximális száma*: 10 
-    Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.
-    Érvényesítés| Válassza a K-fold kereszt-érvényesítés lehetőséget, és a **2** értéket a kereszthivatkozások számához. 
-    Egyidejűség| Az egyidejű ismétlések maximális számának kiválasztásához válassza az **5** értéket.
-
    >[!NOTE]
-   > Ebben a kísérletben nem állítanak be mérőszámok vagy Max magok másodpercenkénti küszöbértékét. Nem blokkolja az algoritmusok tesztelését is.
+   > Ebben a kísérletben nem állít be mérőszámok küszöbértékét vagy a maximális magok számát. Nem blokkolja az algoritmusok tesztelését is.
+   
+    Speciális&nbsp;beállítások|Leírás|&nbsp;Az&nbsp;oktatóanyag értéke
+    ------|---------|---
+    Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|**AUC_weighted** 
+    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok akkor is lejárnak, ha nem teljesen teljesek. |&nbsp;Tanítási&nbsp;feladatokidőpontja&nbsp;(perc): **5**  <br> <br> &nbsp;Iterációk&#58; maximális#száma&nbsp;10&nbsp; 
+    Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+    Érvényesítés| Az érvényesítés típusa és a tesztek száma. | **K-szeres** keresztek ellenőrzése<br><br>  több érvényesítés: **2** 
+    Egyidejűség| Az egyidejű ismétlések maximális száma.|**5**
 
-1. A kísérlet futtatásához kattintson a **Start** gombra.
+1. A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítésének megkezdéséhez egy képernyő jelenik meg egy állapotjelző üzenettel.
 
-   A kísérlet elindulásakor egy üres képernyő jelenik meg, amelyen az állapotjelző üzenet jelenik meg felül.
+>[!IMPORTANT]
+> Az előkészítés **10-15 percet** vesz igénybe a kísérlet futtatásának előkészítése érdekében. A futása után **az egyes iterációk esetében 2-3 percet**vesz igénybe.  
+>
+> Éles környezetben valószínűleg egy kicsit. Ebben az oktatóanyagban azonban javasoljuk, hogy kezdje el megvizsgálni az iteráció eredményét, miközben a többiek még futnak. 
 
-A kísérlet előkészítési folyamata több percet is igénybe vehet. Ha ez a folyamat befejeződik, a rendszer futtatja az állapotjelző üzenet **futtatását**.
+##  <a name="explore-iteration-results"></a>Iteráció eredményeinek megismerése
 
-##  <a name="view-experiment-details"></a>Kísérlet részleteinek megtekintése
+A kísérlet előrehaladása esetén a képernyő frissíti az **iterációs diagramot** és az **iterációs listát** a befejezésük során létrehozott különböző iterációkkal (modellekkel), és metrikai pontszám szerint rendeli azokat. Alapértelmezés szerint a kiválasztott **AUC_weighted** mérőszám alapján a legmagasabb pontszám a lista tetején található.
 
-A kísérlet előrehaladásakor a képernyő frissíti az **iterációs diagramot** és az **iterációs listát** a futtatott különböző iterációkkal (modellekkel). Az iterációk listája metrikai pontszám szerint van megrendezve. Alapértelmezés szerint a **AUC_weighted** metrika alapján a legmagasabb pontszám a lista tetején található.
+Amíg az összes kísérleti iteráció befejeződik, a teljesítmény részleteinek megismeréséhez válassza ki a befejezett iteráció **nevét** . 
+   
+A következő táblázat a diagramokat és a futtatási mérőszámokat mutatja be az egyes ismétlésekhez, például a pontosság-visszahívási görbe, a zavart mátrix, a súlyozott pontossági pontszámok stb. 
 
->[!WARNING]
-> A betanítási feladatok elvégzése több percet is igénybe vehet, hogy minden folyamat fusson.
-
-[![Futtatás részletei irányítópult](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
+![Iteráció részleteinek futtatása](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-Az automatizált gépi tanulás a munkaterület kezdőlapján a legjobb modellt webszolgáltatásként helyezheti üzembe néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
+Az automatizált gépi tanulás a munkaterület kezdőlapján lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
+
+A Futtatás befejezése után térjen vissza az **iterációs diagram** és az **Ismétlések listája** részletei lapra. 
 
 Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika alapján a legjobb modellnek számít.  Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés körülbelül 20 percet vesz igénybe. Az üzembe helyezési folyamat több lépést is magában foglal, beleértve a modell regisztrálását, az erőforrások létrehozását és a webszolgáltatás konfigurálását.
 
-1. A **Futtatás részletei** lapon válassza a **legjobb modell üzembe helyezése** gombot a jobb felső sarokban.
+1. Válassza a **legjobb modell telepítése** gombot a jobb felső sarokban.
 
 1. Töltse fel a **legjobb modell üzembe helyezése** panelt az alábbiak szerint:
 

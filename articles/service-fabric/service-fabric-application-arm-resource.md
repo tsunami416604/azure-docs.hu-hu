@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 3810afa7ad00aa731751aa1f0bfe38d503de5850
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953222"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153586"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként
 
@@ -272,7 +272,7 @@ Ha egyszerűen eltávolítja a Microsoft. ServiceFabric/Clusters/Application alk
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Meglévő alkalmazás kezelése a Resource Manager használatával
 
-Ha a fürt már használatban van, és néhány olyan alkalmazás, amelyet Resource Manager-erőforrásként szeretne felügyelni, az alkalmazások eltávolítása és újbóli üzembe helyezése helyett egy PUT hívást is használhat ugyanazzal az API-kkal, hogy az alkalmazások megkapják a a program Resource Manager-erőforrásként ismeri fel. 
+Ha a fürt már használatban van, és néhány olyan alkalmazás, amelyet Resource Manager-erőforrásként szeretne felügyelni, az alkalmazások eltávolítása és újbóli üzembe helyezése helyett egy PUT hívást is használhat ugyanazzal az API-kkal, hogy az alkalmazások megkapják a a program Resource Manager-erőforrásként ismeri fel. További információkért lásd: Mi az [a Service Fabric Application Resource Model?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
 > Annak engedélyezése, hogy a fürt a nem kifogástalan állapotú alkalmazásokat figyelmen kívül hagyja, az ügyfél megadhatja a "maxPercentUnhealthyApplications: 100 "a" upgradeDescription/healthPolicy "szakaszban; az összes beállítás részletes leírása a [Service fabric REST API a fürt frissítési házirendjének dokumentációjában](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)található.
