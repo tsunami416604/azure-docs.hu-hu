@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9cf15595270e0a0040e565be8319c13e3f5da306
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092221"
+ms.locfileid: "71105288"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Az Azure külső Load Balancer áthelyezése másik régióba a Azure Portal használatával
 
@@ -179,7 +179,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
 
     ```
 
-6.  A fentiekben áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie a **Paraméterek adatfolyamának. JSON** fájlba.  Az azonosító beszerzése:
+6.  A fentiekben áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie a **Parameters. JSON** fájlba. Az azonosító beszerzése:
     
     1. Jelentkezzen be a [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz** egy másik böngésző lapon vagy ablakban.
     2. Keresse meg azt a célként megadott erőforráscsoportot, amely az áthelyezett nyilvános IP-címet tartalmazza a fenti lépésekből, majd kattintson rá.
@@ -187,19 +187,19 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
     4. A jobb oldali panelen jelölje ki az erőforrás- **azonosítót** , és másolja a vágólapra.  Azt is megteheti, hogy a **Másolás a vágólapra** gombra kattint az **erőforrás-azonosító** elérési útjának jobb oldalán.
     5. Illessze be az erőforrás-azonosítót a **Value (érték** ) tulajdonságba a **Paraméterek szerkesztése** szerkesztőben a másik böngészőablakban vagy lapon:
 
-    ```json
-       ```json
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-          "loadBalancers_myLoadbalancer_ext_name": {
-          "value": "<target-external-lb-name>"
-    },
-          "publicIPAddresses_myPubIP_in_externalid": {
-          "value": "<target-publicIP-resource-ID>"
-    },
+        ```json
+           ```json
+           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+           "contentVersion": "1.0.0.0",
+           "parameters": {
+              "loadBalancers_myLoadbalancer_ext_name": {
+              "value": "<target-external-lb-name>"
+        },
+              "publicIPAddresses_myPubIP_in_externalid": {
+              "value": "<target-publicIP-resource-ID>"
+        },
 
-    ```
+        ```
     6. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
    
 
