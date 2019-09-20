@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: Apache Spark-alkalmazás létrehozása IntelliJ-ben
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: Alapelvek
+      items:
+        - name: Ajánlott Spark-eljárások a HDInsightban
+          href: ./spark/spark-best-practices.md
+        - name: Az Apache Spark beállításainak konfigurálása
+          href: ./spark/apache-spark-settings.md
+        - name: Az Apache Spark-feladatok optimalizálása
+          href: ./spark/apache-spark-perf.md
     - name: Útmutató
       items:
         - name: Eszközök használata
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: Apache Spark-alkalmazások kezelése kiterjesztett előzménykiszolgálóval
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Az Apache Spark beállításainak konfigurálása
-              href: ./spark/apache-spark-settings.md
-            - name: Az Apache Spark-feladatok optimalizálása
-              href: ./spark/apache-spark-perf.md
             - name: Gyorsítótárazás engedélyezése I/O gyorsítótárral
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Notebookok használata az Apache Sparkban

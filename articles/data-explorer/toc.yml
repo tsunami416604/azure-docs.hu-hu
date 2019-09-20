@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: Figyelés
       items:
+        - name: Diagnosztikai naplók használata a betöltés monitorozásához
+          href: using-diagnostic-logs.md
         - name: Metrikák használata a fürtállapot monitorozásához
           href: using-metrics.md
     - name: Integráció más eszközökkel
       items:
-        - name: Adatok tömeges másolása Azure Data Factory-sablonnal
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Adatok tömeges másolása Azure Data Factory-sablonnal
+              href: data-factory-template.md
+            - name: Vezérlési parancsok futtatása az Azure Data Factoryvel
+              href: data-factory-command-activity.md
         - name: Apache Spark-összekötő
           href: spark-connector.md
         - name: Csatlakozás Databricksből Python használatával

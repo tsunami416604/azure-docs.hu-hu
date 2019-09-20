@@ -102,6 +102,8 @@
         - name: Előző generációk
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Izolált méretek
+          href: isolation.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
         - name: Teljesítményteszt pontszámai

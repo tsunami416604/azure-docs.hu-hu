@@ -151,7 +151,7 @@
           href: howto-data-in-replication.md
         - name: Olvasási replikák létrehozása az Azure Portalon
           href: howto-read-replicas-portal.md
-        - name: Olvasási replikák létrehozása az Azure CLI felületen
+        - name: Olvasási replikák létrehozása – Azure CLI és REST API
           href: howto-read-replicas-cli.md
     - name: Hibaelhárítás
       items:

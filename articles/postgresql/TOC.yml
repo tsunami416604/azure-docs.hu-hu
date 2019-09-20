@@ -232,7 +232,7 @@
       items:
         - name: Olvasási replikák kezelése az Azure Portalon
           href: howto-read-replicas-portal.md
-        - name: Olvasási replikák kezelése az Azure CLI-n
+        - name: Olvasási replikák kezelése – Azure CLI és REST API
           href: howto-read-replicas-cli.md
 - name: Referencia
   items:

@@ -5,6 +5,8 @@
     - name: Tudnivalók az Azure AD B2C-ről
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: Műszaki jellemzők és funkciók áttekintése
+      href: technical-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:

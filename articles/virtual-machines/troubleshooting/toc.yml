@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: Távoli hibaelhárítási eszközök
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: Virtuális gép javítása
+  items:
+    - name: Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

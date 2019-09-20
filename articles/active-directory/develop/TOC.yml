@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Hitelesítési folyamatok és alkalmazás-forgatókönyvek
           href: authentication-flows-app-scenarios.md
+        - name: Ajánlott eljárások az Identitásplatformhoz
+          href: identity-platform-integration-checklist.md
         - name: Alkalmazáshasználati helyzetek
           items:
             - name: Bejelentkezési közönség
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Átállás éles üzemre
                   href: scenario-mobile-production.md
-            - name: Integrációs ellenőrzési lista
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Áttekintés

@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Dokumentációs hivatkozások
           href: cognitive-search-resources-documentation.md
-    - name: Tudástár (előzetes verzió)
-      items:
-        - name: Tudástár létrehozása az Azure Portalon
-          href: knowledge-store-create-portal.md
-        - name: Létrehozás a REST és a Postman használatával
-          href: knowledge-store-howto.md
-        - name: Megtekintés a Storage Explorerrel
-          href: knowledge-store-view-storage-explorer.md
-        - name: Kapcsolódás Power BI-jal
-          href: knowledge-store-connect-power-bi.md
-    - name: Adatok lekérdezése
+        - name: Tudástár (előzetes verzió)
+          items:
+            - name: Tudástár létrehozása az Azure Portalon
+              href: knowledge-store-create-portal.md
+            - name: Létrehozás a REST és a Postman használatával
+              href: knowledge-store-howto.md
+            - name: Megtekintés a Storage Explorerrel
+              href: knowledge-store-view-storage-explorer.md
+            - name: Kapcsolódás Power BI-jal
+              href: knowledge-store-connect-power-bi.md
+    - name: Dokumentumok lekérdezése
       items:
         - name: Alapszintű lekérdezés létrehozása
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (előzetes verzió)
           href: search-more-like-this.md
-    - name: Szűrők használata
+    - name: Szűrők alkalmazása
       items:
         - name: A szűrők áttekintése
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: Oldalhoz kapcsolódó szolgáltatások
           href: search-pagination-page-layout.md
-    - name: Relevanciahangolás
-      items:
-        - name: Pontozási profilok hozzáadása
+        - name: Relevanciahangolás (relevanciaprofilok)
           href: index-add-scoring-profiles.md
-    - name: Adminisztráció
+    - name: Kezelés és monitorozás
       items:
         - name: Portál adminisztrációja
           href: search-manage.md
         - name: PowerShell adminisztrációja
           href: search-manage-powershell.md
-    - name: Figyelés
-      items:
         - name: Tevékenység és naplózás monitorozása
           href: search-monitor-usage.md
         - name: Forgalmi elemzések keresése

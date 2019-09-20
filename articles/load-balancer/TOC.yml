@@ -129,6 +129,8 @@
           href: move-across-regions-external-load-balancer-portal.md
         - name: Külső terheléselosztó – PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
+        - name: Belső terheléselosztó – Portal
+          href: move-across-regions-internal-load-balancer-portal.md
         - name: Belső terheléselosztó – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Hibaelhárítás

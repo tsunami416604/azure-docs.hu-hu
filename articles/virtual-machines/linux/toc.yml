@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: Előző generációk
           href: sizes-previous-gen.md
+        - name: Izolált méretek
+          href: isolation.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
         - name: vCPU-kvóták
