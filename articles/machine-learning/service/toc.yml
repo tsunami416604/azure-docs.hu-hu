@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: A vizuális felület kísérletei
-      items:
-        - name: Ár előrejelzése
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: Ár előrejelzése (speciális)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: Hitelkockázat előrejelzése
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: Hitelkockázat előrejelzése (speciális)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: Forgalom előrejelzése
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: Repülőjáratok késéseinek előrejelzése
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Alapelvek
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: A Chainer használata
               href: how-to-train-chainer.md
+        - name: Vizuális felület használata
+          displayName: sample visual interface experiments
+          items:
+            - name: Ár előrejelzése
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: Ár előrejelzése (speciális)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: Hitelkockázat előrejelzése
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: Hitelkockázat előrejelzése (speciális)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: Forgalom előrejelzése
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: Repülőjáratok késéseinek előrejelzése
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: Hiperparaméterek hangolása
           displayName: parameter
           href: how-to-tune-hyperparameters.md
