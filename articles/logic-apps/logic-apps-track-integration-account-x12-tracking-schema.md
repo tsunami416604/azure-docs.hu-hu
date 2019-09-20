@@ -76,7 +76,7 @@ Segítséget nyújtanak a figyelő sikeres, hibák és -vállalatközi (B2B) tra
 | isTechnicalAcknowledgmentExpected | Boolean | A technikai nyugtázása a X12 beállított e szerződés. (Kötelező) |
 | isFunctionalAcknowledgmentExpected | Boolean | A működési nyugtázása a X12 beállított e szerződés. (Kötelező) |
 | needAk2LoopForValidMessages | Boolean | E a: AK2 hurok kötelező megadni egy érvényes üzenetet. (Kötelező) |
-| segmentsCount | Egész szám | A X12 a szegmensek száma tranzakciókészlet. (Választható lehetőség) |
+| segmentsCount | Integer | A X12 a szegmensek száma tranzakciókészlet. (Választható lehetőség) |
 ||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 tranzakciókészlet nyugtázása követési séma
