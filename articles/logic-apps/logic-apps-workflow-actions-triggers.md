@@ -52,10 +52,10 @@ Az eseményindítók ezekkel a legfelső szintű elemekkel rendelkeznek, bár eg
 
 | Value | Type | Leírás | 
 |-------|------|-------------| 
-| <*trigger – név*> | Sztring | Az trigger neve | 
-| <*trigger-type*> | Sztring | Az trigger típusa (például "http" vagy "ApiConnection") | 
+| <*trigger – név*> | String | Az trigger neve | 
+| <*trigger-type*> | String | Az trigger típusa (például "http" vagy "ApiConnection") | 
 | <*trigger – bemenetek*> | JSON-objektum | Az trigger viselkedését meghatározó bemenetek | 
-| <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran: "Second", "minute", "Hour", "Day", "Week", "Month" | 
+| <*időegység*> | String | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran: "Second", "minute", "Hour", "Day", "Week", "Month" | 
 | <*number-of-time-units*> | Integer | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>Hónap 1-16 hónap </br>Nap 1-500 nap </br>Óra 1 – 12000 óra </br>Percenként 1 – 72000 perc </br>Második 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
 |||| 
 
