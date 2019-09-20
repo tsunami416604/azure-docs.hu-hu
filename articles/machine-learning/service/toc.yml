@@ -31,7 +31,7 @@
             - name: Automatizált gépi tanulási modellek betanítása
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: Kötegelt kiértékelés folyamatokkal (speciális)
+        - name: Machine Learning-folyamatok (speciális)
           items:
             - name: Besorolási modell kötegelt kiértékelése
               displayName: pipelines
