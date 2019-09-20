@@ -181,7 +181,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 
 | Matematikai függvény | Tevékenység |
 | ------------- | ---- |
-| [hozzáadása](../logic-apps/workflow-definition-language-functions-reference.md#add) | Az eredmény visszaadása két szám hozzáadásával. |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Az eredmény visszaadása két szám hozzáadásával. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Az eredmény visszaadása két szám elosztásával. |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | A legmagasabb értéket adja vissza számokból vagy tömbből. |
 | [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | A legkisebb értéket adja vissza számokból vagy tömbből. |
