@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960239"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123244"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a HDInsight-beli Kafka-vel kapcsolatos témakörök Apache Kafka replikálásához
 
@@ -84,7 +84,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     1. Kattintson a **Hozzáadás**lehetőségre.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
-        ![vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP-hirdetés konfigurálása:
     1. Nyissa meg az elsődleges fürt Ambari-irányítópultját `https://PRIMARYCLUSTERNAME.azurehdinsight.net`:.
@@ -104,7 +104,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     1. Kattintson az **OK** gombra a **konfiguráció módosításainak mentése**elemre.
     1. Az újraindítás **szükséges** értesítésben kattintson az**összes érintett** újraindítás újraindítása elemre. >  Kattintson **az összes újraindításának megerősítése**gombra.
 
-        ![Kafka-csomópontok újraindítása](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. A Kafka beállítása az összes hálózati adapter figyelésére.
     1. Maradjon a **konfigurációk** lapon a**Kafka**- **szolgáltatások** > területen. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`a következőre:.
@@ -115,7 +115,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     1. A Ambari Irányítópultján kattintson a **gazdagépek** elemre.
     1. Jegyezze fel a közvetítők és a Zookeeperek IP-címeit. A közvetítő csomópontok az állomásnév első két betűje szerint **lefelé** , a Zookeeper-csomópontok pedig az **ZK** első két betűjét jelölik.
 
-        ![IP-címek megtekintése](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Apache Ambari-nézet csomópontjának IP-címei](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Ismételje meg az előző három lépést a második, **Kafka-másodlagos fürthöz**: konfigurálja az IP-hirdetéseket, állítson be figyelőket, és jegyezze fel a közvetítő és a Zookeeper IP-címét.
 
@@ -251,7 +251,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
         6. Módosítsa az értéket True `auto.create.topics.enable` értékre, majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
         7. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
 
-        ![témakör automatikus létrehozásának konfigurálása](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![a Kafka automatikus létrehozási témaköreinek engedélyezése](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>MirrorMaker elindítása
 

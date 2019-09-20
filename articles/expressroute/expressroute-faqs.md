@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592055"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123432"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -55,11 +55,23 @@ További információ: a [ExpressRoute SLA](https://azure.microsoft.com/support/
 
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 
-Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-circuit-peerings.md) különféle típusú szolgáltatások.
+A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peerings.md) támogat a különböző típusú szolgáltatások esetében: privát társak, Microsoft-társítás és nyilvános társak.
 
 ### <a name="private-peering"></a>Magánhálózati társviszony-létesítés
 
 * Virtuális hálózatok, beleértve az összes virtuális gép és a cloud services
+
+### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
+* Azure Active Directory
+* [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
+* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
+    * Tartalomkézbesítési hálózat (CDN)
+    * Azure Front Door
+    * Multi-Factor Authentication
+    * Traffic Manager
 
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 
@@ -68,26 +80,17 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 >
 
 * Power BI
-* Dynamics 365 for Finance and Operations (korábbi nevén Dynamics AX Online-hoz)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>
   **A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
-    * Azure bejárati ajtó
+    * Azure Front Door
     * Multi-Factor Authentication
     * Traffic Manager
 
-### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+### <a name="is-dynamics-365-supported-on-expressroute"></a>Támogatott-e a Dynamics 365 a ExpressRoute-on?
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 
-* Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját. 
-* Azure Active Directory
-* [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
-* Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
-    * Tartalomkézbesítési hálózat (CDN)
-    * Azure bejárati ajtó
-    * Multi-Factor Authentication
-    * Traffic Manager
+A Dynamics 365-és Common Data Service-(CDS-) környezetek az Azure-ban futnak, ezért az ügyfelek az Azure-erőforrások mögöttes ExpressRoute-támogatás előnyeit élvezik. Ha az útválasztó szűrője tartalmazza azokat az Azure-régiókat, amelyeken a Dynamics 365/CDS-környezetek futnak, csatlakozhat a szolgáltatási végpontokhoz.
+
 
 ## <a name="data-and-connections"></a>Adatok és kapcsolatok
 
@@ -262,7 +265,7 @@ Az ExpressRoute prémium szintű gyűjteménye, a következő funkciókat:
 
 * Nagyobb 10 000 útvonalak privát társviszony-létesítéshez a 4000 útvonalakat útválasztási táblázat korlátozva.
 * Virtuális hálózatok és az ExpressRoute globális elérhetőségű is engedélyezhetők az ExpressRoute-Kapcsolatcsoportok kapcsolatok számának növelése (az alapértelmezett érték 10-es). További információkért lásd: a [ExpressRoute korlátok](#limits) tábla.
-* Kapcsolódás az Office 365 és Dynamics 365.
+* Csatlakozás az Office 365-hoz
 * Globális kapcsolódás a Microsoft core hálózaton keresztül. Most már kapcsolat egy geopolitikai régióban található virtuális hálózat az ExpressRoute-kapcsolatcsoport egy másik régióban.<br>
     **Példák:**
 
@@ -332,7 +335,7 @@ A ExpressRoute local (helyi) lehetőség azon a társítási helyeken érhető e
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>A meglévő ExpressRoute-Kapcsolatcsoportok támogathatja a csatlakozást az Office 365-szolgáltatások és a Dynamics 365?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Támogathatja a meglévő ExpressRoute-áramkörök az Office 365-szolgáltatásokhoz való kapcsolódást?
 
 Igen. A meglévő ExpressRoute-kapcsolatcsoport beállítható úgy, hogy támogatja az Office 365-szolgáltatásokhoz való kapcsolódás. Győződjön meg arról, hogy rendelkezik-e elegendő kapacitással az Office 365-szolgáltatásokhoz és, hogy engedélyezte a premium bővítményt. [Hálózattervezés és teljesítményhangolás az Office 365](https://aka.ms/tune/) kell azt tervezi, hogy a kapcsolat segítségével. Lásd még [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md).
 
@@ -369,13 +372,9 @@ Nem láthatja az összes olyan esetleges útvonalat. Hogy egy útvonalszűrőhö
 
 Útvonalszűrők használatakor minden ügyfél bekapcsolhatja a Microsoft társviszony-létesítés. Azonban az Office 365-szolgáltatások felhasználásához, továbbra is szeretné az Office 365 által engedélyezett beolvasása.
 
-### <a name="do-i-need-to-get-authorization-for-turning-on-dynamics-365-over-microsoft-peering"></a>Kell ne tudják bekapcsolni a Dynamics 365 a Microsoft társviszony-létesítésen keresztül engedélyezésének első?
-
-Nem, nem kell engedélyezési a Dynamics 365. Hozzon létre egy szabályt, és válassza ki a Dynamics 365 Közösség engedély nélkül.
-
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>A Microsoft társviszony-létesítés 2017. augusztus 1., hogyan használhatom az útvonalszűrők engedélyezve
 
-A meglévő expressroute-kapcsolatcsoporttal továbbra is az előtagokat hirdet Office 365 és Dynamics 365. Ha azt szeretné, az Azure nyilvános előtagok hirdetmények hozzáadása az ugyanazon a Microsoft társviszony-létesítésen keresztül is létrehoz egy útvonalszűrőhöz, válassza ki a szükséges szolgáltatásokkal meghirdetett (például az Office 365-ra van szüksége, és a Dynamics 365), és csatolja a szűrőt a Microsoft társviszony-létesítés. Útmutatásért lásd: [útvonalszűrőket konfigurálása Microsoft társviszony-létesítés](how-to-routefilter-powershell.md).
+A meglévő áramkör továbbra is meghirdeti az Office 365 előtagjait. Ha az Azure-beli nyilvános előtagok hirdetményeit ugyanazon Microsoft-társon szeretné felvenni, akkor létrehozhat egy útvonal-szűrőt, kiválaszthatja a meghirdetett szolgáltatásokat (beleértve az Office 365 szolgáltatás (oka) t), és csatolja a szűrőt a Microsoft-partneri kapcsolathoz. Útmutatásért lásd: [útvonalszűrőket konfigurálása Microsoft társviszony-létesítés](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>A Microsoft társviszony-létesítés egy helyen van, most már a tapasztalataimat szeretném az engedélyezéshez egy másik helyen, és nem látok bármely előtagok.
 

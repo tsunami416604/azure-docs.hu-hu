@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928014"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123056"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 ##  <a name="introduction"></a>Bevezetés
@@ -54,7 +54,7 @@ Felhőalapú munkahelyek esetén a bérlő olyan ügyfelet vagy szervezetet jele
 Mindegyik Azure AD-címtár önálló, és el van választva a többi Azure AD-címtártól. Ahogy a vállalat irodaépülete is egy vállalatspecifikus biztonsági vagyontárgynak tekinthető, az Azure AD-címtár is egy, kizárólag az adott szervezet általi használatra kialakított biztonságos eszköz. Az Azure AD architektúrájával megakadályozható az ügyfél- és identitásadatok keveredése. Ez azt jelenti, hogy az adott Azure AD-címtár felhasználói és rendszergazdái véletlenül vagy kártételi szándékkal nem férhetnek hozzá más címtárak adataihoz.
 
 ### <a name="azure-tenancy"></a>Azure-bérlet
-Az Azure-beli bérlet (Azure-előfizetés) egy "ügyfél/számlázási" kapcsolatra [](../../active-directory/develop/quickstart-create-new-tenant.md) és egy [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)egyedi bérlőre utal. A Microsoft Azure bérlői szintjének elkülönítése az általa kínált Azure Active Directory és [szerepköralapú vezérlők](../../role-based-access-control/overview.md) használatával érhető el. Minden Azure-előfizetés egy Azure Active Directory (AD) címtárral van társítva.
+Az Azure-beli bérlet (Azure-előfizetés) egy "ügyfél/számlázási" kapcsolatra és egy [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)egyedi [bérlőre](../../active-directory/develop/quickstart-create-new-tenant.md) utal. A Microsoft Azure bérlői szintjének elkülönítése az általa kínált Azure Active Directory és [szerepköralapú vezérlők](../../role-based-access-control/overview.md) használatával érhető el. Minden Azure-előfizetés egy Azure Active Directory (AD) címtárral van társítva.
 
 A címtárban lévő felhasználók, csoportok és alkalmazások kezelhetik az Azure-előfizetés erőforrásait. Ezeket a hozzáférési jogosultságokat a Azure Portal, az Azure parancssori eszközök és az Azure felügyeleti API-k használatával rendelheti hozzá. Az Azure AD-bérlők logikailag el vannak különítve a biztonsági határok használatával, így egyetlen ügyfél sem férhet hozzá vagy nem veszélyeztetheti a közös bérlőket, akár rosszindulatúan, akár véletlenül. Az Azure AD olyan "operációs rendszer nélküli" kiszolgálókon fut, amelyek elkülönített hálózati szegmensen vannak elkülönítve, ahol a gazdagép szintű csomagszűrés és a Windows tűzfal blokkolja a nemkívánatos kapcsolatokat és a forgalmat.
 
@@ -99,13 +99,13 @@ Az Azure további RBAC szerepkörei lehetővé teszik bizonyos Azure-erőforrás
 A [RBAC beépített szerepkörei](../../role-based-access-control/built-in-roles.md) az Azure-ban elérhető szerepköröket sorolja fel. Meghatározza azokat a műveleteket és hatókört, amelyeket az egyes beépített szerepkörök a felhasználók számára biztosítanak. Ha a saját szerepköröket is meg szeretné határozni még több szabályozáshoz, tekintse meg az [Egyéni szerepkörök létrehozása az Azure RBAC](../../role-based-access-control/custom-roles.md)című témakört.
 
 A Azure Active Directory további képességei a következők:
-- Az Azure AD lehetővé teszi az egyszeri bejelentkezést az SaaS-alkalmazásokhoz, függetlenül attól, hogy hol futnak. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Az összevont alkalmazások támogatják a felhasználók üzembe helyezését [](https://www.techopedia.com/definition/31415/password-vault)és a jelszavas tárat is.
+- Az Azure AD lehetővé teszi az egyszeri bejelentkezést az SaaS-alkalmazásokhoz, függetlenül attól, hogy hol futnak. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Az összevont alkalmazások támogatják a felhasználók üzembe helyezését és a [jelszavas](https://www.techopedia.com/definition/31415/password-vault)tárat is.
 
 - Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Mindegyik Storage-fiókhoz tartozik egy elsődleges kulcs (a[Storage-fiók kulcsa](../../storage/common/storage-create-storage-account.md)vagy a sak), valamint egy másodlagos titkos kulcs (a közös hozzáférési aláírás vagy SAS).
 
 - Az Azure AD a helyszíni címtárakkal [Active Directory összevonási szolgáltatások (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), szinkronizálást és replikációt biztosító szolgáltatáson keresztül biztosítja az identitást.
 
-- Az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli, hogy a felhasználók egy mobil alkalmazás, telefonhívás vagy szöveges üzenet használatával ellenőrizzék a bejelentkezéseket. Az Azure AD-vel az Azure multi-Factor Authentication-kiszolgálóval, valamint az SDK használatával egyéni alkalmazásokkal és címtárakkal biztonságossá teheti a helyszíni erőforrásokat.
+- Az [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli, hogy a felhasználók a bejelentkezéseket a Mobile App, a telefonhívás vagy a szöveges üzenet használatával ellenőrizzék. Az Azure AD segítségével az Azure Multi-Factor Authentication-kiszolgálóval biztonságossá teheti a helyszíni erőforrásokat, valamint egyéni alkalmazásokat és címtárakat is használhat az SDK használatával.
 
 - A [Azure ad Domain Services](https://azure.microsoft.com/services/active-directory-ds/) tartományvezérlők üzembe helyezése nélkül csatlakoztathatja az Azure-beli virtuális gépeket egy Active Directory tartományhoz. A vállalati Active Directory hitelesítő adataival bejelentkezhet ezekre a virtuális gépekre, és a Csoportházirend használatával felügyelheti a tartományhoz csatlakoztatott virtuális gépeket az összes Azure-beli virtuális gép biztonsági alapkonfigurációjának érvényesítéséhez.
 
@@ -122,25 +122,14 @@ Az auditált minősítésekkel rendelkező üzleti szolgáltatásokat, például
 
 Ha bármilyen adattörlést töröl, Microsoft Azure törli az adatfájlokat, beleértve a gyorsítótárazott vagy a biztonsági másolatokat is. A hatókörön belüli szolgáltatások esetében a törlés a megőrzési időszak végét követő 90 napon belül megtörténik. (A hatókörön belüli szolgáltatások az [online szolgáltatások használati feltételeinek](https://aka.ms/Online-Services-Terms)adatfeldolgozási feltételek szakaszában vannak meghatározva.)
 
-Ha a tárterülethez használt lemezmeghajtó hardverhiba miatt meghibásodik, a rendszer biztonságosan [törli vagy](https://microsoft.com/trustcenter/privacy/you-own-your-data) megsemmisíti azt, mielőtt a Microsoft visszaadja azt a gyártónak a pótláshoz vagy a javításhoz. A meghajtón lévő adatbevitel felül van írva, így biztosítható, hogy az egyes eszközök nem állíthatók helyre.
+Ha a tárterülethez használt lemezmeghajtó hardverhiba miatt meghibásodik, a rendszer biztonságosan [törli vagy megsemmisíti](https://microsoft.com/trustcenter/privacy/you-own-your-data) azt, mielőtt a Microsoft visszaadja azt a gyártónak a pótláshoz vagy a javításhoz. A meghajtón lévő adatbevitel felül van írva, így biztosítható, hogy az egyes eszközök nem állíthatók helyre.
 
 ## <a name="compute-isolation"></a>Számítási elkülönítés
 A Microsoft Azure különböző felhőalapú számítástechnikai szolgáltatásokat kínál, amelyek számos számítási példányt tartalmaznak & olyan szolgáltatásokkal, amelyek automatikusan fel-és leskálázást tesznek lehetővé az alkalmazás vagy a vállalat igényeinek megfelelően. Ezeknek a számítási példányoknak és szolgáltatásoknak több szinten kell elkülöníteniük az adatok védelmét anélkül, hogy az ügyfelek által igényelt konfiguráció rugalmasságát kellene feláldozni.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Elkülönített virtuálisgép-méretek
-Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)-támogatásának használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
 
-Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az adott kiszolgálópéldány esetében csak egy fut.  A jelenlegi elkülönített virtuálisgép-ajánlatok a következők:
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard m128ms
-* Standard_GS5
-* Standard G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-Az [itt](../../virtual-machines/windows/sizes-memory.md)elérhető elkülönített méretekről további információt talál.
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & root VM & vendég virtuális gépek között
 Az Azure számítási platformja a gép virtualizálása alapján történik – ami azt jelenti, hogy minden ügyfél kódja egy Hyper-V virtuális gépen fut. Minden egyes Azure-csomóponton (vagy hálózati végponton) található egy olyan hypervisor, amely közvetlenül a hardveren fut, és a csomópontot egy változó számú vendég Virtual Machines (VM) értékre osztja.
@@ -215,7 +204,7 @@ Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az
 
 ![Elkülönítés a Storage hozzáférés-vezérlésével](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Az Azure Storage** -beli adattárolók (beleértve a táblákat is) hozzáférését egy [sas (közös hozzáférési aláírás)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) jogkivonattal szabályozhatja, amely hatókörön belüli hozzáférést biztosít. Az SAS egy lekérdezési sablon (URL) használatával jön létre, amely a [sak (a Storage-fiók kulcsával)](https://msdn.microsoft.com/library/azure/ee460785.aspx)van aláírva. Az [aláírt URL-cím](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) megadható egy másik folyamatnak (azaz delegált), amely kitöltheti a lekérdezés részleteit, és elvégezheti a tárolási szolgáltatás kérését. Az SAS lehetővé teszi, hogy időalapú hozzáférést biztosítson az ügyfelek számára a Storage-fiók titkos kulcsának felfedése nélkül.
+**Az Azure Storage-beli adattárolók (beleértve a táblákat is) hozzáférését** egy [sas (közös hozzáférési aláírás)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) jogkivonattal szabályozhatja, amely hatókörön belüli hozzáférést biztosít. Az SAS egy lekérdezési sablon (URL) használatával jön létre, amely a [sak (a Storage-fiók kulcsával)](https://msdn.microsoft.com/library/azure/ee460785.aspx)van aláírva. Az [aláírt URL-cím](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) megadható egy másik folyamatnak (azaz delegált), amely kitöltheti a lekérdezés részleteit, és elvégezheti a tárolási szolgáltatás kérését. Az SAS lehetővé teszi, hogy időalapú hozzáférést biztosítson az ügyfelek számára a Storage-fiók titkos kulcsának felfedése nélkül.
 
 Az SAS azt jelenti, hogy az ügyfél korlátozott engedélyeket biztosíthat a Storage-fiókban lévő objektumoknak egy adott időtartamra és egy megadott engedélyekkel. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül biztosíthatjuk.
 

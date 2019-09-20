@@ -1,19 +1,19 @@
 ---
 title: Kapcsolódás a Kafka-hoz Virtual Networks használatával – Azure HDInsight
 description: Ismerje meg, hogyan kapcsolódhat közvetlenül a Kafka on HDInsight egy Azure-Virtual Networkon keresztül. Ismerje meg, hogyan csatlakozhat a Kafka-hez a fejlesztői ügyfelektől egy VPN-átjáróval vagy a helyszíni hálózatban lévő ügyfelekkel a VPN Gateway eszköz használatával.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960429"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122611"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Kapcsolódás Apache Kafka HDInsight az Azure-on keresztül Virtual Network
 
@@ -252,7 +252,7 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
 3. A Kafka-konfiguráció megtekintéséhez válassza a __konfigurációk__ lehetőséget a felső középső listából.
 
-    ![A Kafka-hez készült konfigurációk hivatkozásai](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari Services-konfiguráció](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
 
@@ -274,7 +274,7 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
-    ![Konfiguráció mentése gomb](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 

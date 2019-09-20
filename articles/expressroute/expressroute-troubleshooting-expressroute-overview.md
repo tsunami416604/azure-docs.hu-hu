@@ -1,6 +1,6 @@
 ---
-title: 'Ellenőrizze a kapcsolatot – ExpressRoute-hibaelhárítási útmutató: Azure| Microsoft Docs'
-description: Ezen a lapon útmutatás hibaelhárítás és a egy ExpressRoute-kapcsolatcsoport a teljes körű kapcsolódás ellenőrzése.
+title: 'Kapcsolat ellenőrzése – ExpressRoute hibaelhárítási útmutatója: Azure| Microsoft Docs'
+description: Ez az oldal útmutatást nyújt a ExpressRoute-áramkör végpontok közötti kapcsolatának hibaelhárításához és ellenőrzéséhez.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,100 +8,100 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66117906"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123441"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
-Ez a cikk segítséget nyújt a ellenőrizze-e, és az ExpressRoute-kapcsolat hibaelhárítása. Az ExpressRoute, amely kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe, hogy a kapcsolatszolgáltató megkönnyíthető privát kapcsolaton keresztül, a következő három különböző hálózati zónák foglalja magában:
+Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute, amely a helyszíni hálózatot kiterjeszti a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet egy kapcsolat szolgáltatója tesz lehetővé, a következő három különálló hálózati zónát foglalja magában:
 
 -   Ügyfélhálózat
--   Hálózati szolgáltató
+-   Szolgáltatói hálózat
 -   Microsoft Datacenter
 
-Ez a dokumentum célja, hogy segítséget nyújtson a felhasználót, hogy határozza meg, hol (vagy még akkor is, ha) kapcsolódási probléma létezik, és melyik zónába, és ezáltal megfelelő csapat a probléma megoldásához segítségért belül. Ha a Microsoft támogatási van szüksége a probléma megoldásához szükséges, nyisson meg egy támogatási jegyet a [Support][Support].
+A jelen dokumentum célja, hogy segítse a felhasználót annak azonosításában, hogy a probléma hol található (vagy még ha) fennáll a kapcsolódási probléma, és hogy melyik zónában van a megfelelő csapat segítségének megkeresése a probléma megoldásához. Ha a probléma megoldásához Microsoft-támogatásra van szükség, nyisson meg egy támogatási jegyet [Microsoft ügyfélszolgálata][Support].
 
 > [!IMPORTANT]
-> Ez a dokumentum célja felderítésére és egyszerű problémák elhárítására. Nem célja a helyettesítheti a Microsoft ügyfélszolgálatához. Nyisson meg egy támogatási jegyet a [Support] [ Support] Ha nem tudja megoldani a problémát, útmutatása.
+> A dokumentum célja, hogy segítséget nyújtson az egyszerű problémák diagnosztizálásában és javításában. Nem helyettesíti a Microsoft támogatási szolgálatát. Nyisson meg egy támogatási jegyet [Microsoft ügyfélszolgálata][Support] ha nem tudja megoldani a problémát a megadott útmutatás használatával.
 >
 >
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
-Az alábbi ábrán a logikai egy ExpressRoute-tal a Microsoft hálózati ügyfél hálózati kapcsolatát.
+Az alábbi ábrán egy ügyfél hálózatának logikai kapcsolata látható a Microsoft Network ExpressRoute használatával.
 [![1]][1]
 
-A fenti ábrán a számok jelölik a főbb hálózati pontokat. A hálózati pontokat gyakran ez a cikk keresztül által hivatkozott a hozzájuk társított számokat.
+Az előző ábrán a számok a legfontosabb hálózati pontokat jelölik. A hálózati pontokra gyakran hivatkoznak a cikk a hozzájuk társított szám alapján.
 
-Az ExpressRoute-kapcsolat modell (Cloud Exchange közös elhelyezés, pontok közötti Ethernet-kapcsolat vagy -bármely (IPVPN-)) a hálózati pontokat, 3. és 4 kapcsolók (2. rétegbeli eszközök) is lehet. A főbb hálózati pontokat szemléltetett a következők:
+A ExpressRoute kapcsolati modelljétől (a felhőalapú Exchange közös elhelyezésének, pont-pont típusú Ethernet-kapcsolatnak vagy bármely-a-minden (IPVPN)) függően a 3. és 4. hálózati pont lehet kapcsolók (2. rétegbeli eszközök). A legfontosabb hálózati pontok a következők:
 
-1.  Ügyfél számítási eszköz (például egy kiszolgáló vagy számítógép)
-2.  CEs: Ügyfél peremhálózati útválasztók 
-3.  PEs (CE kapcsolódó): Szolgáltató peremhálózati útválasztók/kapcsolók, amelyek az ügyfél peremhálózati útválasztók fennálló. Néven PE-CEs ebben a dokumentumban.
-4.  PEs (MSEE kapcsolódó): Szolgáltató peremhálózati útválasztók/kapcsolók, amelyek fennálló Msee. Néven PE-Msee ebben a dokumentumban.
-5.  Msee: A Microsoft vállalati peremhálózati (MSEE) az ExpressRoute-útválasztók
-6.  Virtuális hálózat (VNet) átjáró
-7.  Az Azure-beli virtuális eszközön COMPUTE
+1.  Ügyfél-számítási eszköz (például kiszolgáló vagy számítógép)
+2.  CEs Ügyfél peremhálózati útválasztói 
+3.  PEs (CE-vel szemben): A szolgáltató peremhálózati útválasztói/kapcsolói, amelyek az ügyfél peremhálózati útválasztói felé néznek. Ez a dokumentum PE-CEs néven szerepel.
+4.  PEs (MSEE szembenézve): A Msee felé irányuló szolgáltatói peremhálózati útválasztók/kapcsolók. Ez a dokumentum PE-Msee néven szerepel.
+5.  Msee Microsoft Enterprise Edge (MSEE) ExpressRoute útválasztók
+6.  Virtual Network (VNet) átjáró
+7.  Számítási eszköz az Azure VNet
 
-A Cloud Exchange közös elhelyezés vagy a pontok közötti Ethernet-kapcsolat kapcsolati modellek használata esetén az ügyfél peremhálózati útválasztója (2) a BGP társviszony-létesítés (5) Msee-hozzák létre. 3\. és 4 hálózati pontokat szeretne továbbra is létezik, de lehet némileg átlátszó, 2. rétegbeli eszközök.
+Ha a felhőalapú Exchange közös elhelyezésű vagy pont-pont típusú Ethernet-kapcsolati modelljeit használják, az ügyfél peremhálózati útválasztója (2) a BGP-társat a Msee (5) használatával hozza létre. A 3. és a 4. hálózati pontok továbbra is léteznek, de némileg transzparensek a 2. rétegbeli eszközöknél.
 
-A-bármely (IPVPN) kapcsolat modellt használja, ha a PEs (MSEE kapcsolódó) (4) szeretné létrehozni a BGP-társviszonyt az Msee (5). Útvonalak majd térjen vissza az ügyfél hálózati az IPVPN szolgáltatás szolgáltató hálózaton keresztül továbbítja.
+Ha a bármely-a-bármelyik (IPVPN) kapcsolati modellt használja, a PEs (MSEE szembenéző) (4) a BGP-társat a Msee (5) használatával hozza létre. Az útvonalak ezután a IPVPN-szolgáltató hálózatán keresztül propagálják az ügyfél hálózatát.
 
 > [!NOTE]
->ExpressRoute magas rendelkezésre állás érdekében a Microsoft a redundáns BGP-munkamenetek között msee-k (5) és (4) PE-Msee-pár igényel. Hálózati elérési utak redundáns párjai is javasolt ügyfél hálózatán és PE-CEs között. Azonban – bármely (IPVPN) kapcsolat modellben egyetlen CE eszköz (2) csatlakozhat egy vagy több PEs (3).
+>A ExpressRoute magas rendelkezésre állása érdekében a Microsoft a Msee (5) és a PE-Msee (4) közötti BGP-munkamenetek redundáns pár követelményét igényli. A hálózati elérési utak redundáns párosítása is javasolt a Customer Network és a PE-CEs között. A bármely-a-any (IPVPN) kapcsolati modellben azonban egyetlen CE-eszköz (2) kapcsolódhat egy vagy több PEs-hoz (3).
 >
 >
 
-ExpressRoute-kapcsolatcsoport ellenőrzéséhez a következő lépéseket (a a hálózati pont, a hozzájuk társított számokat által jelzett) terjed ki:
-1. [Ellenőrizze a Kapcsolatcsoportok kiépítésével és állapotát (5)](#validate-circuit-provisioning-and-state)
-2. [Ellenőrizze a legalább egy ExpressRoute társviszony-létesítés konfigurálva (5)](#validate-peering-configuration)
-3. [Ellenőrizze a Microsoft és a szolgáltatás közötti ARP szolgáltató (4. és 5 közötti kapcsolat)](#validate-arp-between-microsoft-and-the-service-provider)
-4. [Ellenőrizze a BGP és az MSEE-(BGP-4 – 5 és 5 és 6 Ha csatlakoztatva van a virtuális hálózat között) az útvonalak](#validate-bgp-and-routes-on-the-msee)
-5. [Ellenőrizze a forgalom statisztika (5 áthaladó forgalom)](#check-the-traffic-statistics)
+Egy ExpressRoute áramkör érvényesítéséhez a következő lépéseket kell megadnia (a társított szám által jelzett hálózati ponttal):
+1. [Az áramkör üzembe helyezésének és állapotának ellenőrzése (5)](#validate-circuit-provisioning-and-state)
+2. [Ellenőrizze, hogy legalább egy ExpressRoute-társítás konfigurálva van-e (5)](#validate-peering-configuration)
+3. [Az ARP ellenőrzése a Microsoft és a szolgáltató között (4 és 5 közötti kapcsolat)](#validate-arp-between-microsoft-and-the-service-provider)
+4. [Érvényesítse a BGP-t és az útvonalakat a MSEE (BGP 4 – 5 között, és 5 – 6, ha egy VNet csatlakoztatva van)](#validate-bgp-and-routes-on-the-msee)
+5. [A forgalmi statisztika (5-öt áthaladó forgalom) keresése](#check-the-traffic-statistics)
 
-További ellenőrzések és ellenőrzések megjelenik a jövőbeli, ellenőrzés havonta!
+A későbbiekben további érvényesítéseket és ellenőrzéseket is felveszünk, és visszatekintjük a havi rendszerességgel.
 
-## <a name="validate-circuit-provisioning-and-state"></a>Ellenőrizze a Kapcsolatcsoportok kiépítésével és állapota
-Függetlenül a kapcsolat modell egy ExpressRoute-kapcsolatcsoporttal rendelkezik hozhatók létre, és az így létrehozott Szolgáltatáskulcs kapcsolatcsoport-kiépítési. Az ExpressRoute-Kapcsolatcsoportok kiépítési létesít egy redundáns 2. rétegbeli kapcsolatokat PE-Msee (4) és Msee (5) között. Létrehozására, üzembe helyezése, és ellenőrizze a ExpressRoute-kapcsolatcsoport módjáról további információkért tekintse meg a cikket [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport][CreateCircuit].
+## <a name="validate-circuit-provisioning-and-state"></a>Az áramkör üzembe helyezésének és állapotának ellenőrzése
+A kapcsolati modelltől függetlenül létre kell hozni egy ExpressRoute áramkört, és így az áramkör kiépítés során generált szolgáltatási kulcsot. Az ExpressRoute áramkör üzembe helyezése egy redundáns 2. rétegbeli kapcsolatot létesít a PE-Msee (4) és a Msee (5) között. A ExpressRoute-áramkör létrehozásával, módosításával, kiépítésével és ellenőrzésével kapcsolatos további információkért tekintse meg a [ExpressRoute-áramkör létrehozása és módosítása][CreateCircuit]című cikket.
 
 >[!TIP]
->Szolgáltatáskulcs egyedileg azonosítja az ExpressRoute-kapcsolatcsoport. Ez a kulcs megadása kötelező a ebben a dokumentumban említett powershell-parancsok legtöbbje esetén. Ezenkívül kell segítségre van szüksége a Microsoft vagy a ExpressRoute-partnerré ExpressRoute a problémákat, adja meg a kulcs könnyen azonosíthatja a kapcsolatcsoportot.
+>A szolgáltatási kulcs egyedileg azonosít egy ExpressRoute-áramkört. Ez a kulcs szükséges a dokumentumban említett PowerShell-parancsok többségéhez. Ha a Microsofttól vagy egy ExpressRoute-partnertől segítségre van szüksége a ExpressRoute kapcsolatos problémák megoldásához, adja meg a szolgáltatás kulcsát, hogy az áramkör könnyen azonosítható legyen.
 >
 >
 
-### <a name="verification-via-the-azure-portal"></a>Az Azure Portalon keresztül ellenőrzése
-Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota ellenőrizhető kiválasztásával ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" részen az ExpressRoute-kapcsolatcsoport panel megnyílik. Az a ![3][3] részében, az ExpressRoute essentials láthatók, az alábbi képernyőképen látható módon:
+### <a name="verification-via-the-azure-portal"></a>Ellenőrzés a Azure Portal használatával
+A Azure Portal egy ExpressRoute áramkör állapotát a bal oldali menüsoron, majd a ExpressRoute áramkör ![kiválasztásával][2] lehet ellenőrizni. A "minden erőforrás" alatt felsorolt ExpressRoute kör kiválasztásával megnyílik az ExpressRoute-áramkör panel. A panel ![3][3] szakaszában a ExpressRoute Essentials a következő képernyőképen látható módon jelenik meg:
 
 ![4][4]    
 
-Az ExpressRoute essentialsben *kapcsolatcsoport állapota* Microsoft oldalán a kapcsolatcsoport állapotát jelzi. *Szolgáltató állapota* azt jelzi, ha a kapcsolatcsoport *kiépített/nem kiépített* -szolgáltató oldalán. 
+A ExpressRoute Essentialsben az áramkör *állapota* az áramkör állapotát jelzi a Microsoft oldalon. A *szolgáltató állapota* azt jelzi, hogy az áramkör üzembe helyezése */kiépítés nem* történt-e meg a szolgáltatói oldalon. 
 
-ExpressRoute-kapcsolatcsoport működik, hogy a *kapcsolatcsoport állapota* kell *engedélyezve* és a *szolgáltató állapota* kell lennie *kiépített*.
+Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* kell az *áramköri állapotot* , és a szolgáltatói *állapotot* kell kiépíteni.
 
 > [!NOTE]
-> Ha a *kapcsolatcsoport állapota* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *szolgáltató állapota* van nincs kiépítve, forduljon a szolgáltatójához.
+> Ha az *áramkör állapota* nincs engedélyezve, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha a *szolgáltató állapota* nincs kiépítve, forduljon a szolgáltatóhoz.
 >
 >
 
-### <a name="verification-via-powershell"></a>Ellenőrzési PowerShell-lel
-Egy erőforráscsoport ExpressRoute-Kapcsolatcsoportok listájában, használja a következő parancsot:
+### <a name="verification-via-powershell"></a>Ellenőrzés a PowerShell használatával
+Egy erőforráscsoport összes ExpressRoute-áramkörének listázásához használja a következő parancsot:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Az Azure-on keresztül kérheti le az erőforráscsoport nevét. Tekintse meg az előző ebben a dokumentumban, és vegye figyelembe, hogy az erőforráscsoport neve szerepel-e a példaként szolgáló képernyőképen.
+>Az erőforráscsoport nevét az Azure-on keresztül érheti el. Tekintse meg a dokumentum előző alszakaszát, és vegye figyelembe, hogy az erőforráscsoport neve szerepel a példa képernyőképén.
 >
 >
 
-Egy adott ExpressRoute-kapcsolatcsoport ki egy erőforráscsoportot, használja a következő parancsot:
+Egy adott ExpressRoute-áramkör kiválasztásához használja az alábbi parancsot:
 
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
-Van egy mintaválasz:
+A minta válasza:
 
     Name                             : Test-ER-Ckt
     ResourceGroupName                : Test-ER-RG
@@ -126,26 +126,26 @@ Van egy mintaválasz:
     Peerings                         : []
     Authorizations                   : []
 
-Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket:
+Annak ellenőrzéséhez, hogy a ExpressRoute áramkör működik-e, különös figyelmet fordít a következő mezőkre:
 
     CircuitProvisioningState         : Enabled
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> Ha a *CircuitProvisioningState* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
+> Ha a *CircuitProvisioningState* nincs engedélyezve, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha a *ServiceProviderProvisioningState* nincs kiépítve, forduljon a szolgáltatóhoz.
 >
 >
 
-### <a name="verification-via-powershell-classic"></a>Ellenőrzési PowerShell-lel (klasszikus)
-Egy előfizetéshez tartozó ExpressRoute-Kapcsolatcsoportok listájában, használja a következő parancsot:
+### <a name="verification-via-powershell-classic"></a>Ellenőrzés a PowerShell (klasszikus) használatával
+Az előfizetéshez tartozó összes ExpressRoute-áramkör listázásához használja az alábbi parancsot:
 
     Get-AzureDedicatedCircuit
 
-Egy adott ExpressRoute-kapcsolatcsoport kijelöléséhez használja a következő parancsot:
+Egy adott ExpressRoute-kör kiválasztásához használja a következő parancsot:
 
     Get-AzureDedicatedCircuit -ServiceKey **************************************
 
-Van egy mintaválasz:
+A minta válasza:
 
     andwidth                         : 100
     BillingType                      : UnlimitedData
@@ -157,41 +157,41 @@ Van egy mintaválasz:
     Sku                              : Standard
     Status                           : Enabled
 
-Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState : Üzembe helyezett állapot: Enabled
+Annak ellenőrzéséhez, hogy a ExpressRoute áramkör működik-e, különös figyelmet fordít a következő mezőkre: ServiceProviderProvisioningState : Kiépített állapot: Enabled
 
 > [!NOTE]
-> Ha a *állapot* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
+> Ha az *állapot* nincs engedélyezve, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha a *ServiceProviderProvisioningState* nincs kiépítve, forduljon a szolgáltatóhoz.
 >
 >
 
-## <a name="validate-peering-configuration"></a>Társviszony-létesítési konfigurációjának ellenőrzése
-A szolgáltatót az ExpressRoute-kapcsolatcsoport kiépítési befejezését követően egy útválasztási konfigurációja MSEE-lekéréses kérelmek (4) és Msee (5) között ExpressRoute-kapcsolatcsoporton keresztül hozható létre. Egyes ExpressRoute-kapcsolatcsoport engedélyezve van egy, kettő vagy három útválasztási környezetek veheti fel: Az Azure privát társviszony-létesítés (forgalom az Azure-beli virtuális magánhálózatok), az Azure nyilvános társviszony-létesítés (forgalom nyilvános IP-címek az Azure-ban) és Microsoft társviszony-létesítés (forgalom Office 365 és Dynamics 365). Útválasztási konfiguráció létrehozása és módosítása módjáról további információkért tekintse meg a cikket [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
+## <a name="validate-peering-configuration"></a>Egyenrangú konfiguráció ellenőrzése
+Miután a szolgáltató befejezte a ExpressRoute áramkör kiépítési folyamatát, a MSEE-PRs (4) és a Msee (5) közötti ExpressRoute áramkörön létrehozhat útválasztási konfigurációt. Minden ExpressRoute-áramkörhöz engedélyezve van egy, kettő vagy három útválasztási környezet: Azure Private-peering (az Azure-beli privát virtuális hálózatok felé irányuló forgalom), az Azure nyilvános társítása (a nyilvános IP-címekre irányuló forgalom az Azure-ban) és Microsoft-partnerek (az Office 365-es adatforgalom). Az útválasztási konfiguráció létrehozásával és módosításával kapcsolatos további információkért tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című cikket.
 
-### <a name="verification-via-the-azure-portal"></a>Az Azure Portalon keresztül ellenőrzése
+### <a name="verification-via-the-azure-portal"></a>Ellenőrzés a Azure Portal használatával
 
 > [!NOTE]
-> Ha 3. rétegbeli a szolgáltató által biztosított, és a társviszony-létesítések üresek a portálon, frissítse a kapcsolatcsoport konfigurációját, a frissítés gomb segítségével a portálon. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
+> Ha a 3. réteg a szolgáltató által biztosított, és a társítások üresek a portálon, frissítse az áramköri konfigurációt a portál frissítés gombjával. Ez a művelet a megfelelő útválasztási konfigurációt alkalmazza az áramkörön. 
 >
 >
 
-Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota kiválasztásával ellenőrizhetők ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" alatt felsorolt nyitna az ExpressRoute-kapcsolatcsoport panelen. Az a ![3][3] részében, az ExpressRoute essentials kellene szerepelnie, az alábbi képernyőképen látható módon:
+A Azure Portal egy ExpressRoute áramkör állapota ellenőrizhető a bal oldali menüsorban található ![2][2] lehetőség kiválasztásával, majd a ExpressRoute áramkör kiválasztásával. A "minden erőforrás" alatt felsorolt ExpressRoute kör kiválasztásával megnyílik az ExpressRoute-áramkör panelje. A panel ![3][3] szakaszában a ExpressRoute Essentials a következő képernyőképen látható módon jelenik meg:
 
 ![5][5]
 
-Az előző példában feljegyzett Azure privát társviszony-létesítési útválasztási környezet engedélyezve van, mivel az Azure nyilvános és Microsoft társviszony-létesítési útválasztási környezetek nem engedélyezett. Társviszony-létesítési környezet sikeresen engedélyezve a felsorolt (BGP szükséges) az elsődleges és másodlagos point-to-point alhálózatokat is rendelkezik. A/30 alhálózatot az adapter IP-címe az Msee és PE-Msee szolgálnak. 
+Az előző példában látható módon, ahogy az Azure Private peering útválasztási környezete engedélyezve van, az Azure nyilvános és a Microsoft egyenrangú útválasztási környezetek nem engedélyezettek. Egy sikeresen engedélyezett társítási környezet esetében az elsődleges és a másodlagos pont – pont (BGP) alhálózatok is elérhetők. A/30 alhálózatot a Msee és a PE-Msee kapcsolati IP-címéhez használja a rendszer. 
 
 > [!NOTE]
-> A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e PE-Msee a konfigurációt. Ha nem, akkor módosítsa a MSEE útválasztók, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering]
+> Ha nincs engedélyezve a társítás, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a PE-Msee konfigurációjának. Ha nem, a MSEE-útválasztók konfigurációjának módosításához tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering] című témakört.
 >
 >
 
-### <a name="verification-via-powershell"></a>Ellenőrzési PowerShell-lel
-Az Azure privát társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
+### <a name="verification-via-powershell"></a>Ellenőrzés a PowerShell használatával
+Az Azure Private peering konfigurációs adatainak beszerzéséhez használja a következő parancsokat:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
-Egy mintaválasz egy konfigurálása sikerült privát társviszony-létesítéshez, a következő:
+A sikeres konfiguráláshoz a következő a válasz:
 
     Name                       : AzurePrivatePeering
     Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
@@ -208,19 +208,19 @@ Egy mintaválasz egy konfigurálása sikerült privát társviszony-létesítés
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- Társviszony-létesítési környezet sikeresen engedélyezve a felsorolt elsődleges és másodlagos címelőtagokat kellene. A/30 alhálózatot az adapter IP-címe az Msee és PE-Msee szolgálnak.
+ A sikeresen engedélyezett társítási környezet a felsorolt elsődleges és másodlagos címek előtagjai lennének. A/30 alhálózatot a Msee és a PE-Msee kapcsolati IP-címéhez használja a rendszer.
 
-Az Azure nyilvános társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
+Az Azure nyilvános társ-összevonási konfiguráció részleteit az alábbi parancsokkal szerezheti be:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
     Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
-A Microsoft társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
+A Microsoft társközi konfigurációs adatainak beszerzéséhez használja a következő parancsokat:
 
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
      Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
-Ha a társviszony nincs konfigurálva, egy hibaüzenet lenne. Mintaválasz, ha a megadott társviszony-létesítés (Azure-beli nyilvános társviszony-létesítés ebben a példában) nincs konfigurálva a kapcsolatcsoport belül:
+Ha nincs konfigurálva egy társítás, hibaüzenet jelenik meg. Egy példa válaszra, ha a megadott (Azure-beli nyilvános) kapcsolat nem az áramkörön belül van konfigurálva:
 
     Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
@@ -231,16 +231,16 @@ Ha a társviszony nincs konfigurálva, egy hibaüzenet lenne. Mintaválasz, ha a
 
 
 > [!NOTE]
-> Ha a társviszony-létesítés nem engedélyezett, ellenőrizze a Ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureASN*, és *PeerASN* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].  
+> Ha nincs engedélyezve a társítás, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureASN*és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított PE-MSEE-ben használt értékekre vannak leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak azonosnak kell lennie a MSEE és a PE-MSEE párban. A MSEE-útválasztók konfigurációjának módosításához tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című témakört.  
 >
 >
 
-### <a name="verification-via-powershell-classic"></a>Ellenőrzési PowerShell-lel (klasszikus)
-Az Azure privát társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsot:
+### <a name="verification-via-powershell-classic"></a>Ellenőrzés a PowerShell (klasszikus) használatával
+Az Azure Private peering konfigurációs adatainak beszerzéséhez használja a következő parancsot:
 
     Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 
-A következő mintát választ, egy konfigurálása sikerült privát társviszony-létesítéshez:
+A sikeres konfiguráláshoz a következő példa a válasz:
 
     AdvertisedPublicPrefixes       : 
     AdvertisedPublicPrefixesState  : Configured
@@ -255,39 +255,39 @@ A következő mintát választ, egy konfigurálása sikerült privát társviszo
     State                          : Enabled
     VlanId                         : 100
 
-Sikeresen engedélyezve A társviszony-létesítési környezetben kell az elsődleges és másodlagos társ alhálózatok szerepel. A/30 alhálózatot az adapter IP-címe az Msee és PE-Msee szolgálnak.
+Egy sikeres, engedélyezett társítási kontextusban az elsődleges és a másodlagos társ-alhálózatok vannak felsorolva. A/30 alhálózatot a Msee és a PE-Msee kapcsolati IP-címéhez használja a rendszer.
 
-Az Azure nyilvános társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
+Az Azure nyilvános társ-összevonási konfiguráció részleteit az alábbi parancsokkal szerezheti be:
 
     Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 
-A Microsoft társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
+A Microsoft társközi konfigurációs adatainak beszerzéséhez használja a következő parancsokat:
 
     Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
 > [!IMPORTANT]
-> 3\. rétegbeli társviszonyok a szolgáltató által beállított, ha a portálon vagy a PowerShell segítségével az ExpressRoute-társviszony beállítása felülírja a szolgáltatás-szolgáltató beállításait. A szolgáltató oldalán társviszony-létesítési beállítások alaphelyzetbe állítását igényli a támogatása a service provider. Az ExpressRoute-társviszony csak akkor módosítsa, ha biztos, hogy a szolgáltató biztosítja a csak a 2. rétegbeli szolgáltatásokat!
+> Ha a szolgáltató a 3. rétegbeli társításokat állította be, a ExpressRoute-társítások a portálon vagy a PowerShellen keresztül történő beállítása felülírja a szolgáltatói beállításokat. A szolgáltatói oldali társítás beállításainak alaphelyzetbe állításához a szolgáltató támogatására van szükség. Csak akkor módosítsa a ExpressRoute-társításokat, ha biztos abban, hogy a szolgáltató csak a 2. rétegbeli szolgáltatásokat biztosítja!
 >
 >
 
 > [!NOTE]
-> A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
+> Ha nincs engedélyezve a társítás, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos egyenrangú alhálózatok megfelelnek-e a társított PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureAsn*és *PeerAsn* használják-e a msee, és hogy ezek az értékek a társított PE-MSEE-ben használt értékekre vannak leképezve. A MSEE-útválasztók konfigurációjának módosításához tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című témakört.
 >
 >
 
-## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>A Microsoft és a szolgáltató közötti ARP ellenőrzése
-Ez a szakasz a (klasszikus) PowerShell-parancsokat használja. Ha már használja az Azure-Resource Manager PowerShell-parancsokat, győződjön meg arról, hogy a rendszergazda/társadminisztrátor hozzáférést az előfizetéshez. Hibaelhárítás az Azure Resource Manager használatával a parancsok tekintse meg a [első ARP-táblák a Resource Manager-alapú üzemi modellben] [ ARP] dokumentumot.
+## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>Az ARP ellenőrzése a Microsoft és a szolgáltató között
+Ez a szakasz a PowerShell (klasszikus) parancsokat használja. Ha a PowerShell Azure Resource Manager parancsait használta, ellenőrizze, hogy rendelkezik-e rendszergazdai/társ-rendszergazdai hozzáféréssel az előfizetéshez. Azure Resource Manager parancsok használatával kapcsolatos hibaelhárításhoz tekintse meg a [Resource Manager-alapú üzemi modell dokumentumának beszerzése ARP-táblákat][ARP] .
 
 > [!NOTE]
->ARP lekéréséhez az Azure portal és az Azure Resource Manager PowerShell-parancsokkal is használható. Ha hiba történik, az Azure Resource Manager PowerShell-parancsokkal, klasszikus PowerShell-parancsok is használhatók az Azure Resource Manager az ExpressRoute-Kapcsolatcsoportok klasszikus PowerShell-parancsokkal használható.
+>Az ARP beszerzéséhez a Azure Portal és az Azure Resource Manager PowerShell-parancsokat is használhatja. Ha a Azure Resource Manager PowerShell-parancsokkal kapcsolatos hibák léptek fel, a klasszikus PowerShell-parancsok ugyanúgy működnek, mint a klasszikus PowerShell-parancsok, Azure Resource Manager ExpressRoute áramkörök is működnek.
 >
 >
 
-A privát társviszony-létesítés kérhet le az elsődleges MSEE-útválasztó ARP-táblázat, használja a következő parancsot:
+A következő paranccsal kérheti le az ARP-táblázatot az elsődleges MSEE útválasztóról a privát társak számára:
 
     Get-AzureDedicatedCircuitPeeringArpInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-A parancs sikeres forgatókönyvben példaválasz:
+A parancsra adott válasz például a sikeres forgatókönyvben:
 
     ARP Info:
 
@@ -295,55 +295,55 @@ A parancs sikeres forgatókönyvben példaválasz:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Ehhez hasonlóan az MSEE az ARP táblázat ellenőrizheti a *elsődleges*/*másodlagos* elérési utat, a *privát*/*nyilvános*  / *Microsoft* társviszony-létesítéseket.
+Hasonlóképpen, az *elsődleges*/*másodlagos elérési* úton lévő MSEE is megtekintheti az ARP-táblázatot a*nyilvános*/*Microsoft* -partnerek számára./
 
-Az alábbi példa bemutatja, hogy a válasz egy társviszony-létesítéshez a parancs nem létezik.
+Az alábbi példa azt szemlélteti, hogy a parancs válasza nem létezik a társításhoz.
 
     ARP Info:
        
 > [!NOTE]
-> Ha ARP-táblázat nem rendelkezik a MAC-címek hozzárendelve felületek IP-címeket, tekintse át a következő információkat:
->1. Ha az első IP-cím / 30 alhálózat hozzárendelt MSEE-közösségbeli adapterén használja az MSEE-PR és MSEE közötti kapcsolat Azure mindig Msee a második IP-címet használ.
->2. Győződjön meg arról, ha az ügyfél (C-címke) és a VLAN címkéket (S-címke) szolgáltatás megfelelő mindkét MSEE-PR-MSEE párt.
+> Ha az ARP-tábla nem rendelkezik a MAC-címekhez hozzárendelt adapterek IP-címeivel, tekintse át a következő információkat:
+>1. Ha a MSEE-PR és a MSEE közötti kapcsolathoz hozzárendelt/30 alhálózat első IP-címe a MSEE-PR felületén van használatban. Az Azure mindig a második IP-címet használja a Msee.
+>2. Ellenőrizze, hogy az ügyfél (C-tag) és a szolgáltatás (S-tag) VLAN-címkék egyeznek-e mind a MSEE, mind a MSEE párban.
 >
 >
 
-## <a name="validate-bgp-and-routes-on-the-msee"></a>Ellenőrizze a BGP és az MSEE útvonalak
-Ez a szakasz a (klasszikus) PowerShell-parancsokat használja. Ha már használja az Azure-Resource Manager PowerShell-parancsokat, győződjön meg arról, hogy a rendszergazda/társadminisztrátor hozzáférést az előfizetéshez.
+## <a name="validate-bgp-and-routes-on-the-msee"></a>A BGP és az útvonalak ellenőrzése a MSEE
+Ez a szakasz a PowerShell (klasszikus) parancsokat használja. Ha a PowerShell Azure Resource Manager parancsait használta, ellenőrizze, hogy rendelkezik-e rendszergazdai/társ-rendszergazdai hozzáféréssel az előfizetéshez.
 
 > [!NOTE]
->A BGP lekérése az Azure portal és az Azure Resource Manager PowerShell-parancsokkal is használható. Ha hiba történik, az Azure Resource Manager PowerShell-parancsokkal, klasszikus PowerShell-parancsok is használhatók az Azure Resource Manager az ExpressRoute-Kapcsolatcsoportok klasszikus PowerShell-parancsokkal használható.
+>A BGP-információk beszerzéséhez a Azure Portal és az Azure Resource Manager PowerShell-parancsok is használhatók. Ha a Azure Resource Manager PowerShell-parancsokkal kapcsolatos hibák léptek fel, a klasszikus PowerShell-parancsok ugyanúgy működnek, mint a klasszikus PowerShell-parancsok, Azure Resource Manager ExpressRoute áramkörök is működnek.
 >
 >
 
-Az útvonaltábla (BGP-szomszéd) összefoglalójának lekérése egy adott útválasztási környezet, használja a következő parancsot:
+Egy adott útválasztási környezet útválasztási táblázatának (BGP szomszéd) összefoglalásának lekéréséhez használja a következő parancsot:
 
     Get-AzureDedicatedCircuitPeeringRouteTableSummary -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-A következő példa választ:
+Példa erre a válaszra:
 
     Route Table Summary:
 
             Neighbor                   V                  AS              UpDown         StatePfxRcd
             10.0.0.1                   4                ####                8w4d                  50
 
-Ahogy az az előző példában is látható, a parancs hasznos határozza meg, mennyi az útválasztási környezet létrehozását követően. Azt is jelzi, a társviszony-létesítési útválasztó által hirdetett útvonal előtagok száma.
+Ahogy az előző példában is látható, a parancs hasznos lehet meghatározni, hogy mennyi ideig lett létrehozva az útválasztási környezet. Azt is jelzi, hogy hány útvonal-előtagokat hirdettek meg a társ-útválasztó.
 
 > [!NOTE]
-> Ha az állapot az aktív vagy inaktív, ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
+> Ha az állapot aktív vagy üresjáratban van, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos egyenrangú alhálózatok megfelelnek-e a társított PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureAsn*és *PeerAsn* használják-e a msee, és hogy ezek az értékek a társított PE-MSEE-ben használt értékekre vannak leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak azonosnak kell lennie a MSEE és a PE-MSEE párban. A MSEE-útválasztók konfigurációjának módosításához tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című témakört.
 >
 >
 
 > [!NOTE]
-> Ha bizonyos célok nem érhetők el egy adott társviszony-létesítésen keresztül, ellenőrizze az útvonaltáblát az msee-k az adott társviszony-létesítési környezethez tartozó. Ha egy megfelelő előtagot (Ez lehet gelt IP) megtalálható az útválasztási táblázatban, majd ellenőrizze Ha tűzfalak és NSG-t és hozzáférés-vezérlési listák az elérési úton, és ha azok lehetővé teszik, hogy a forgalom.
+> Ha bizonyos célhelyek nem érhetők el egy adott társon keresztül, ellenőrizze az adott társi környezethez tartozó Msee útválasztási táblázatát. Ha az útválasztási táblázatban szerepel az egyező előtag (amely lehet a lefoglalt IP-cím), akkor ellenőrizze, hogy vannak-e tűzfalak/NSG/ACL-ek az elérési úton, és hogy engedélyezik-e a forgalmat.
 >
 >
 
-A teljes útválasztási táblázat MSEE beszerezni a *elsődleges* elérési útját, az adott *privát* útválasztási környezet, használja a következő parancsot:
+A következő paranccsal kérheti le a teljes útválasztási táblázatot a MSEE az adott *privát* útválasztási környezet *elsődleges* elérési útjáról:
 
     Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 
-Egy példa a sikeres a parancs eredménye:
+A parancs sikeres kimenetele például a következő:
 
     Route Table Info:
 
@@ -352,24 +352,24 @@ Egy példa a sikeres a parancs eredménye:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Ehhez hasonlóan az útválasztási táblázatban az MSEE a származó ellenőrizheti a *elsődleges*/*másodlagos* elérési utat, a *privát* /  *Nyilvános*/*Microsoft* egy társviszony-létesítési környezetet.
+Hasonlóképpen, az *elsődleges*/*másodlagos elérési* úton található MSEE is megtekintheti az útválasztási táblázatot,/ anyilvánosMicrosoftatársikörnyezethez/.
 
-Az alábbi példa bemutatja, hogy a válasz egy társviszony-létesítéshez a parancs nem létezik:
+Az alábbi példa azt szemlélteti, hogy a parancs válasza nem létezik a társításhoz:
 
     Route Table Info:
 
-## <a name="check-the-traffic-statistics"></a>A forgalom statisztikai adatainak ellenőrzése
-A kombinált elsődleges és másodlagos elérési út forgalom statisztikájának beolvasása – bájt be és ki – társviszony-létesítési környezet, használja a következő parancsot:
+## <a name="check-the-traffic-statistics"></a>Forgalmi statisztika keresése
+A kombinált elsődleges és másodlagos elérési út forgalmi statisztikájának lekéréséhez a következő parancsot használhatja:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
 
-A minta a parancs kimenete:
+A parancs mintájának kimenete:
 
     PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
     -------------- --------------- ---------------- -----------------
          240780020       239863857        240565035         239628474
 
-A minta egy nem létező társviszony-létesítéshez a parancs kimenete:
+A nem létező társításhoz tartozó parancs mintájának kimenete a következő:
 
     Get-AzureDedicatedCircuitStats : ResourceNotFound: Can not find any subinterface for peering type 'Public' for circuit '97f85950-01dd-4d30-a73c-bf683b3a6e5c' .
     At line:1 char:1
@@ -381,16 +381,16 @@ A minta egy nem létező társviszony-létesítéshez a parancs kimenete:
 ## <a name="next-steps"></a>További lépések
 További információ vagy a Súgó tekintse meg az alábbi hivatkozásokat:
 
-- [A Microsoft ügyfélszolgálatához][Support]
-- [Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal][CreateCircuit]
-- [Útválasztás az ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása][CreatePeering]
+- [Microsoft ügyfélszolgálata][Support]
+- [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]
+- [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "logikai Express Route-kapcsolat"
-[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Az összes erőforrásaihoz ikon"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Logikai expressz útvonal kapcsolata"
+[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Minden erőforrás ikon"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Áttekintés ikon"
-[4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "Az ExpressRoute Essentials minta képernyőképe"
-[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "Az ExpressRoute Essentials minta képernyőképe"
+[4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "A ExpressRoute Essentials minta képernyőképe"
+[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "A ExpressRoute Essentials minta képernyőképe"
 
 <!--Link References-->
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade

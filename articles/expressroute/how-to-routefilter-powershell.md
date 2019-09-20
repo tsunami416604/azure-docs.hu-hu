@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: PowerShell: Azure | Microsoft Docs'
+title: 'Útválasztási szűrők konfigurálása a Microsoft társ-ExpressRoute számára: PowerShell: Azure | Microsoft Docs'
 description: Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonalszűrők konfigurálása
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e5d94fad5ddcfd0b34e36cb96727cff48b62ea0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5a5ca4949ca223e9123d59c9578a2628dacd351
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730212"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123405"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: PowerShell
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "66730212"
 
 Az útvonalszűrők lehetővé teszik a támogatott szolgáltatások egy részének felhasználását Microsoft-társviszony-létesítésen keresztül. A jelen cikkben ismertetett lépések segítségével konfigurálhatja és kezelheti az ExpressRoute-Kapcsolatcsoportok útvonalszűrőinek.
 
-Dynamics 365-szolgáltatások és az Office 365-szolgáltatások például az Exchange Online, SharePoint Online és Skype vállalati és a nyilvános Azure-szolgáltatások, például a storage és SQL DB a Microsoft társviszony-létesítésen keresztül érhetők el. Nyilvános Azure-szolgáltatások régió per alapon választható és nyilvános szolgáltatásonként nem definiálható.
+Az Office 365-szolgáltatások, például az Exchange Online, a SharePoint Online és a Skype vállalati verzió, valamint az Azure nyilvános szolgáltatásai, például a Storage és az SQL Database, a Microsoft-partneri kapcsolaton keresztül érhetők el. Nyilvános Azure-szolgáltatások régió per alapon választható és nyilvános szolgáltatásonként nem definiálható.
 
 Az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésre van konfigurálva, és a egy útvonalszűrőhöz van csatolva, amikor ezen szolgáltatások kiválasztott összes előtag keresztül létesített BGP-munkamenetek hirdesse meg. Minden előtaghoz egy BGP-közösségérték van csatolva, amely azonosítja az előtag keretében nyújtott szolgáltatást. A BGP-Közösség értékét, és a szolgáltatások leképezik a listáját lásd: [BGP-Közösségek](expressroute-routing.md#bgp).
 
@@ -40,7 +40,7 @@ Ha az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítés van konf
 
 Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez tulajdonképpen az összes BGP-közösségérték engedélyezési listája. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
 
-Rendeljen hozzá útvonalszűrőket az Office 365-szolgáltatások rajtuk legyen, engedélyezési felhasználásához az Office 365 szolgáltatás expressroute-on keresztül kell rendelkeznie. Ha nem jogosult az Office 365 szolgáltatás expressroute-on keresztül felhasználásához, rendeljen hozzá útvonalszűrőket a művelet sikertelen lesz. Az engedélyezési folyamat kapcsolatos további információkért lásd: [Office 365-höz készült Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Dynamics 365-szolgáltatásokhoz való kapcsolódás nem igényel előzetes engedélyek.
+Rendeljen hozzá útvonalszűrőket az Office 365-szolgáltatások rajtuk legyen, engedélyezési felhasználásához az Office 365 szolgáltatás expressroute-on keresztül kell rendelkeznie. Ha nem jogosult az Office 365 szolgáltatás expressroute-on keresztül felhasználásához, rendeljen hozzá útvonalszűrőket a művelet sikertelen lesz. Az engedélyezési folyamat kapcsolatos további információkért lásd: [Office 365-höz készült Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > Microsoft társviszony-létesítés voltak beállítva a 2017. augusztus 1. ExpressRoute-Kapcsolatcsoportok az összes szolgáltatás előtagkészletet hirdeti meg a Microsoft társviszony-létesítéshez, akkor is, ha nincsenek meghatározva útvonalszűrők fog rendelkezni. Microsoft társviszony-létesítésre vannak konfigurálva, vagy 2017. augusztus 1. után az ExpressRoute-Kapcsolatcsoportok, nem rendelkezik minden olyan előtagok mindaddig, amíg egy útvonalszűrőhöz csatolva van a kapcsolatcsoport hirdetve.
@@ -101,7 +101,7 @@ Válassza ki a használni kívánt előfizetést.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>1. lépés: Előtagok és BGP-Közösség értékét listájának lekérése
+## <a name="prefixes"></a>1. lépés: Az előtagok és a BGP közösségi értékek listájának beolvasása
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
 
@@ -112,15 +112,15 @@ Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Győződjön meg a használni kívánt értékek listáját
 
-Ellenőrizze a BGP-Közösség értékét az útvonalszűrőt használni kívánt listáját. Tegyük fel a Dynamics 365-szolgáltatásokhoz a BGP-közösségérték 12076:5040.
+Ellenőrizze a BGP-Közösség értékét az útvonalszűrőt használni kívánt listáját.
 
-## <a name="filter"></a>2. lépés: Egy útvonalszűrőhöz és a egy Állapotszűrő szabály létrehozása
+## <a name="filter"></a>2. lépés: Útvonal-szűrő és egy szűrési szabály létrehozása
 
 Egy útvonalszűrőhöz lehet csak egy szabályt, és a szabály "Engedélyezés" típusúnak kell lennie. Ez a szabály is van egy listája azokról a BGP-Közösség értékét társítva.
 
 ### <a name="1-create-a-route-filter"></a>1. Hozzon létre egy útvonalszűrőhöz
 
-Először hozza létre az útvonalszűrőt. A parancs a "New-AzRouteFilter" csak létrehoz egy útvonal-szűrő erőforrás. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
+Először hozza létre az útvonalszűrőt. A "New-AzRouteFilter" parancs csak útvonal-szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
 
 ```azurepowershell-interactive
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
@@ -144,7 +144,7 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>3. lépés: Az útvonalszűrőt csatlakoztatása egy ExpressRoute-kapcsolatcsoporttal
+## <a name="attach"></a>3. lépés: Az útvonal-szűrő csatolása ExpressRoute-áramkörhöz
 
 Futtassa a következő parancsot az útvonalszűrőt csatolása az ExpressRoute-kapcsolatcsoporthoz, feltéve, hogy csak a Microsoft társviszony-létesítés rendelkezik:
 

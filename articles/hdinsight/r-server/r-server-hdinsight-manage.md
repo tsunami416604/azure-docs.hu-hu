@@ -1,19 +1,19 @@
 ---
 title: A ML Services-fürt kezelése a HDInsight-ben – Azure
 description: Ismerje meg, hogyan kezelheti az Azure HDInsight különböző feladatait a ML Services-fürtökön.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967768"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123553"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>A ML Services-fürt kezelése az Azure HDInsight
 
@@ -23,22 +23,20 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure HDInsight meglévő ML-
 
 * Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
 
-
 * Egy Secure Shell-(SSH-) ügyfél: Az SSH-ügyfél használatával távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: az [SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="enable-multiple-concurrent-users"></a>Több párhuzamos felhasználó engedélyezése
 
 Engedélyezheti több egyidejű felhasználó számára a HDInsight ML-szolgáltatások fürtjét azáltal, hogy további felhasználókat ad hozzá a peremhálózati csomóponthoz, amelyen a RStudio közösségi verziója fut. HDInsight-fürt létrehozásakor két felhasználót kell megadnia, egy HTTP-felhasználót és egy SSH-felhasználót:
 
-![1\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+![HDI Azure Portal bejelentkezési paraméterek](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó fér hozzá az Apache Ambari felhasználói felületéhez, Apache Hadoop a fonal felhasználói felületéhez, valamint az egyéb felhasználói felületi összetevőkhöz.
 - **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
 
 A HDInsight ML Services-fürtben használt R Studio Server Community verziója csak a Linux-felhasználónevet és-jelszót fogadja bejelentkezési mechanizmusként. Nem támogatja a jogkivonatok átadását. Ha tehát az R Studio első alkalommal próbál hozzáférni egy ML Services-fürtön, kétszer kell bejelentkeznie.
 
-- Először jelentkezzen be a HTTP-felhasználó hitelesítő adataival a HDInsight-átjárón keresztül. 
+- Először jelentkezzen be a HTTP-felhasználó hitelesítő adataival a HDInsight-átjárón keresztül.
 
 - Ezután használja az SSH-felhasználó hitelesítő adatait a RStudio való bejelentkezéshez.
   
@@ -66,7 +64,7 @@ Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsoka
 
 Az alábbi képernyőfelvételen a kimenetek láthatók.
 
-![3\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+![képernyőkép-kimenet egyidejű felhasználók számára](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 Ha a rendszer az "aktuális Kerberos-jelszó:" üzenetet kéri, csak nyomja meg az **ENTER** billentyűt a mellőzéséhez. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
 
@@ -205,11 +203,9 @@ Ha az R-csomagokat a fürt munkavégző csomópontjain szeretné telepíteni, pa
    > [!NOTE]
    > 1. Alapértelmezés szerint a rendszer az összes R-csomagot a Microsoft MRAN adattárának pillanatképéről telepíti, amely megfelel a telepített ML Server verziójának. Ha a csomagok újabb verzióját szeretné telepíteni, akkor van némi inkompatibilitási kockázat. Ez a fajta telepítés azonban lehetséges, ha a `useCRAN` parancsot adja meg a csomaglista első elemeként, például: `useCRAN bitops, stringr, arules`.  
    > 2. Néhány R csomag további Linux rendszerű könyvtárakat igényel. A kényelmes használat érdekében a HDInsight ML-szolgáltatások előre telepítve vannak az első 100 legnépszerűbb R-csomaghoz szükséges függőségekkel. Ha azonban a telepített R csomag(ok) további könyvtárakat telepítését igényli(k), akkor le kell töltenie az itt használt alapvető szkriptet, és lépéseket kell hozzáadnia a rendszerkönyvtárak telepítéséhez. Ezután fel kell töltenie a módosított szkriptet egy nyilvános blob-tárolóba az Azure Storage-ben, és a módosított szkripttel kell telepítenie a csomagokat.
-   >    A szkriptműveletek fejlesztésével kapcsolatos további információért lásd: [Szkriptművelet fejlesztése](../hdinsight-hadoop-script-actions-linux.md).  
-   >
-   >
+   >    A szkriptműveletek fejlesztésével kapcsolatos további információért lásd: [Szkriptművelet fejlesztése](../hdinsight-hadoop-script-actions-linux.md).
 
-   ![Szkriptműveletek hozzáadása](./media/r-server-hdinsight-manage/submit-script-action.png)
+   ![Parancsfájl-Azure Portal küldése művelet](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. Válassza a **Létrehozás** lehetőséget a szkript futtatásához. A szkript befejezése után az R csomagok elérhetők az összes munkavégző csomóponton.
 

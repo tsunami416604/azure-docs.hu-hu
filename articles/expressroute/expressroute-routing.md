@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308324"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123257"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -84,7 +84,7 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e használni a magánhálózati társviszony-létesítéshez. Mi biztosítjuk a forgalom végpontok közötti elkülönítését, így elkerülhető, hogy a címek átfedésben legyenek más ügyfelekkel magánhálózati társviszony-létesítés esetén. Ezek a címek nincsenek meghirdetve az interneten. 
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
-A Microsoft társviszony-létesítési útvonal lehetővé teszi a Microsoft-felhőszolgáltatáshoz történő csatlakozást. A szolgáltatások listája olyan Office 365-szolgáltatásokat tartalmaz, mint például az Exchange Online, a SharePoint Online, a Skype vállalati verzió, a Microsoft Teams és a Dynamics 365. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
+A Microsoft társviszony-létesítési útvonal lehetővé teszi a Microsoft-felhőszolgáltatáshoz történő csatlakozást. A szolgáltatások listája magában foglalja az Office 365-szolgáltatásokat, például az Exchange Online, a SharePoint Online, a Skype vállalati verzió és a Microsoft Teams szolgáltatást. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében:
 
@@ -218,7 +218,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype Vállalati online verzió | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Az Azure globális szolgáltatások * | 12076:5050 |
 | Egyéb Office 365-szolgáltatások | 12076:5100 |
 
@@ -249,7 +248,6 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Vállalati online verzió |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
 ## <a name="next-steps"></a>További lépések

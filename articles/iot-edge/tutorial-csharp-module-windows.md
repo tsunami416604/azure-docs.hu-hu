@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eb2a6933b711804f957056353d7d609dbdbbe5d5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036464"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122910"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -34,7 +34,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet modult a **C#** **Visual Studio 2019**használatával, és hogyan telepítheti azt egy **Windows**-eszközre. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon a [ C# IoT Edge modul fejlesztése linuxos eszközökhöz](tutorial-csharp-module.md) című lépésre. 
+Ez az oktatóanyag bemutatja, hogyan fejleszthet modult a **C#** **Visual Studio 2019**használatával, és hogyan telepítheti azt egy **Windows-eszközre**. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon a [ C# IoT Edge modul fejlesztése linuxos eszközökhöz](tutorial-csharp-module.md) című lépésre. 
 
 A következő táblázat segítségével megismerheti a C modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeit: 
 
@@ -45,7 +45,7 @@ A következő táblázat segítségével megismerheti a C modulok Windows-eszkö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt el kellett volna haladnia az előző oktatóanyagon, hogy beállítsa a fejlesztési környezetet, [IoT Edge modult fejlesszen ki egy Windows](tutorial-develop-for-windows.md)-eszközhöz. Az oktatóanyag elvégzése után már a következő előfeltételek szükségesek: 
+Az oktatóanyag megkezdése előtt el kellett volna haladnia az előző oktatóanyagon, hogy beállítsa a fejlesztési környezetet, [IoT Edge modult fejlesszen ki egy Windows-eszközhöz](tutorial-develop-for-windows.md). Az oktatóanyag elvégzése után már a következő előfeltételek szükségesek: 
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Windows-eszköz](quickstart.md).
@@ -78,7 +78,7 @@ A Azure IoT Edge Tools a Visual Studióban támogatott IoT Edge modul összes ny
 
    | Mező | Value |
    | ----- | ----- |
-   | Sablonválasztás | Válassza **C#** ki a modult. | 
+   | Sablonválasztás | Válassza ki  **C# a modult**. | 
    | Modul projekt neve | A modulnak adja a **CSharpModule** nevet. | 
    | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/csharpmodule. |
 
@@ -231,14 +231,16 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
             {
                 Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
                     $"exceeds threshold {temperatureThreshold}");
-                var filteredMessage = new Message(messageBytes);
-                foreach (KeyValuePair<string, string> prop in message.Properties)
+                using(var filteredMessage = new Message(messageBytes))
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    foreach (KeyValuePair<string, string> prop in message.Properties)
+                    {
+                        filteredMessage.Properties.Add(prop.Key, prop.Value);
+                    }
 
-                filteredMessage.Properties.Add("MessageType", "Alert");
-                await moduleClient.SendEventAsync("output1", filteredMessage);
+                    filteredMessage.Properties.Add("MessageType", "Alert");
+                    await moduleClient.SendEventAsync("output1", filteredMessage);
+                }
             }
 
             // Indicate that the message treatment is completed.

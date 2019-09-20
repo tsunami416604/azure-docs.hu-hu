@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993462"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123083"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -160,6 +160,12 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
    |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
    |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
    |GP_S_Gen5_4|Általános rendeltetés|Gen5|4|
+   |GP_S_Gen5_6|Általános rendeltetés|Gen5|6|
+   |GP_S_Gen5_8|Általános rendeltetés|Gen5|8|
+   |GP_S_Gen5_10|Általános rendeltetés|Gen5|10|
+   |GP_S_Gen5_12|Általános rendeltetés|Gen5|12|
+   |GP_S_Gen5_14|Általános rendeltetés|Gen5|14|
+   |GP_S_Gen5_16|Általános rendeltetés|Gen5|16|
 
 2. Szükség esetén megadhatja a minimális virtuális mag és az automatikus szüneteltetés késleltetését is, ha módosítani szeretné az alapértelmezett értékeket. A következő táblázat a paraméterek elérhető értékeit tartalmazza.
 

@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074354"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122976"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -28,12 +28,7 @@ Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (
 
 A Storage-fiók létrehozásakor a következő redundancia-lehetőségek közül választhat:
 
-- [Helyileg redundáns tárolás (LRS)](storage-redundancy-lrs.md)
-- [Zónaredundáns tárolás (ZRS)](storage-redundancy-zrs.md)
-- [Georedundáns tárolás (GRS)](storage-redundancy-grs.md)
-- [Írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Geo-Zone-redundáns tárolás (GZRS)](storage-redundancy-gzrs.md)
-- [Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 Az alábbi táblázat gyors áttekintést nyújt a tartósság és a rendelkezésre állás hatóköréről, amelyet az egyes replikációs stratégiák egy adott típusú esemény (vagy hasonló hatás esetén) számára biztosítanak.
 
@@ -55,7 +50,7 @@ Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszab�
 További információ az Azure Storage szolgáltatás tartósságáról és rendelkezésre állásáról: az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)-ja.
 
 > [!NOTE]
-> Az Azure Premium Storage csak a helyileg redundáns tárolást (LRS) támogatja.
+> Az Azure Premium Storage jelenleg csak a helyileg redundáns tárolást (LRS) támogatja.
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégia módosítása
 
