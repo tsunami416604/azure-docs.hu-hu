@@ -3,7 +3,7 @@ title: Egyéni parancsfájlok futtatása Linux rendszerű virtuális gépeken az
 description: A Linux rendszerű virtuális gépek konfigurációs feladatainak automatizálása az egyéni parancsfájl-bővítmény V2 használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: roiyz
-ms.openlocfilehash: 23354ce310ad4916c8fa2eb9cb99c5e4521b4a62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084740"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174038"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
@@ -45,7 +45,7 @@ A Linux rendszerhez készült egyéni szkript a bővítmény támogatott bővít
 A bővítmény használatával az Azure Blob Storage hitelesítő adatait használhatja az Azure Blob Storage eléréséhez. Azt is megteheti, hogy a parancsfájl helye bármilyen lehet, ha a virtuális gép átirányítható erre a végpontra, mint például a GitHub, a belső fájlkiszolgáló stb.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
-Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubot vagy az Azure Storage-t, akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. Ha például a parancsfájl az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a [](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)hozzáférést a tároláshoz.
+Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubot vagy az Azure Storage-t, akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. Ha például a parancsfájl az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal/hálózati biztonsági csoport portjainak megnyitására.
 
@@ -56,7 +56,7 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * A szkript futtatásához 90 perc van engedélyezve, ami továbbra is a bővítmény sikertelen kiépítését eredményezi.
 * Ne helyezzen újraindítást a parancsfájlba, ezért a rendszer a telepített többi bővítménnyel kapcsolatos problémákat okoz, és az újraindítás után a bővítmény nem fog folytatódni az újraindítás után. 
 * Ha egy szkript újraindítást vált ki, telepítenie kell az alkalmazásokat, futtatnia kell a szkripteket stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
-* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) , és használhat [parancsfájlokat](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) rendszerindítási modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
+* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
 * Ha egy parancsfájl futását szeretné ütemezni, a bővítmény használatával hozzon létre egy cron-feladatot. 
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha egy futó parancsfájl gyakoribb frissítési állapotát szeretné használni, létre kell hoznia a saját megoldását.
 * Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálók használatát, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*-t. 
@@ -141,7 +141,7 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 
 #### <a name="property-skipdos2unix"></a>Tulajdonság: skipDos2Unix
 
-Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a dos2unix konverziót hajt végre.
+Az alapértelmezett érték false (hamis), ami azt jelenti **, hogy a dos2unix konverziót** hajt végre.
 
 A CustomScript (Microsoft. OSTCExtensions. CustomScriptForLinux) előző verziója automatikusan átalakítja a DOS-fájlokat a UNIX-fájlokba a `\r\n` következőre való `\n`fordítással:. Ez a fordítás továbbra is létezik, és alapértelmezés szerint be van kapcsolva. Ez a konverzió a fileUris-ből letöltött összes fájlra vagy a parancsfájl-beállításra vonatkozik a következő feltételek bármelyike alapján.
 
@@ -195,7 +195,7 @@ A CustomScript a következő algoritmust használja a parancsfájlok végrehajt�
 
  1. a parancsfájl értékének hossza nem haladja meg a 256 KB-ot.
  1. a parancsfájl értékének Base64 dekódolása
- 1. a Base64 dekódolású érték gunzip kísérlete
+ 1. a Base64 dekódolású érték gunzip _kísérlete_
  1. a dekódolású (és opcionálisan kibontott) érték írása a lemezre (/var/lib/waagent/Custom-script/#/script.sh)
  1. a szkript végrehajtása _/bin/sh-c/var/lib/waagent/Custom-script/#/script.sh. használatával
 

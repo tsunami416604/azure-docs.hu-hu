@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744085"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172062"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -90,7 +90,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
     >[!IMPORTANT]
     >Mivel a local. Settings. JSON fájl tartalmazhat titkos kódokat, ki kell zárnia azt a projekt forrásának vezérlőjéből.
 
-Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [function. JSON fájl módosításával](#javascript-2) vagy egy, a [ C# Class Library függvényhez tartozó paraméter hozzáadásával](#c-class-library-2).
+Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [function. JSON fájl módosításával](#add-a-function-to-your-project) vagy egy, a [ C# Class Library függvényhez tartozó paraméter hozzáadásával](#add-a-function-to-your-project).
 
 [Új függvényt is hozzáadhat a projekthez](#add-a-function-to-your-project).
 
@@ -98,11 +98,11 @@ Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>C\# osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -110,19 +110,23 @@ A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>Függvény hozzáadása a projekthez
 
 Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározott függvények trigger-sablonjainak használatával. Új függvény-trigger hozzáadásához válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a **parancsot Azure functions: Függvény**létrehozása. Az utasításokat követve válassza ki az trigger típusát, és határozza meg az trigger szükséges attribútumait. Ha az triggerhez hozzáférési kulcs vagy kapcsolati karakterlánc szükséges a szolgáltatáshoz való kapcsolódáshoz, a függvény trigger létrehozása előtt készüljön fel.
 
 A művelet eredménye a projekt nyelvétől függ:
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Egy új mappa jön létre a projektben. A mappa egy új function. JSON fájlt és az új JavaScript-kódrészletet tartalmaz.
 
-### <a name="c-class-library"></a>C\# osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A projekthez új C# Class Library (. cs) fájl van hozzáadva.
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>Bemeneti és kimeneti kötések hozzáadása
 
@@ -130,7 +134,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű `outqueue`tárolási sorhoz csatlakoznak, ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local. Settings. JSON alkalmazásban van beállítva.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 A Visual Studio Code lehetővé teszi kötések hozzáadását a function. JSON fájlhoz a promptok kényelmes készletének követésével. Kötés létrehozásához kattintson a jobb gombbal (CTRL + kattintás macOS rendszeren) a Function **. JSON** fájlt a Function mappában, és válassza a **kötés hozzáadása**elemet:
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue.md#output---javascript-example) referenciáját.
 
-### <a name="c-class-library"></a>C\# osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert `Run` a metódus-definícióhoz:
 
@@ -181,6 +185,8 @@ Ehhez a kódhoz hozzá kell adnia a következő `using` utasítást:
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Egy vagy több üzenetet ad hozzá a gyűjteményhez. Ezeket az üzeneteket a rendszer a függvény befejeződése után elküldi a várólistára.
 
@@ -208,7 +214,7 @@ A következő lépésekkel teheti közzé a projektjét a speciális létrehozá
 
 1. Az **Azure-ban: Függvények** területen válassza a **központi telepítés függvényalkalmazás** ikont.
 
-    ![Függvényalkalmazás beállításai](./media/functions-develop-vs-code/function-app-publish-project.png)
+    ![A függvényalkalmazás beállításai](./media/functions-develop-vs-code/function-app-publish-project.png)
 
 1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy **Jelentkezzen be az Azure-** ba. **Létrehozhat egy ingyenes Azure-fiókot**is. A böngészőből való bejelentkezés után lépjen vissza a Visual Studio Code-ba.
 

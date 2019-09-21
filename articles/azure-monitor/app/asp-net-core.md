@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058279"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169547"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -29,14 +29,14 @@ Az itt használt példa egy [MVC-alkalmazás](https://docs.microsoft.com/aspnet/
 
 A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) -val a futtatásuk helyétől függetlenül nyomon követheti az alkalmazásait. Ha az alkalmazás fut, és hálózati kapcsolattal rendelkezik az Azure-hoz, a telemetria gyűjthet. A Application Insights figyelése mindenhol támogatott a .NET Core-ban. Támogatás kiterjed a következőkre:
 * **Operációs rendszer**: Windows, Linux vagy Mac.
-* **Üzemeltetési módszer**: Folyamatban vagy folyamatban. 
+* **Üzemeltetési módszer**: Folyamatban vagy folyamatban.
 * **Üzembe helyezési módszer**: A keretrendszer függő vagy önálló.
-* **Webkiszolgáló**: IIS (Internet Information Server) vagy vércse. 
+* **Webkiszolgáló**: IIS (Internet Information Server) vagy vércse.
 * **Üzemeltetési platform**: A Azure App Service, az Azure VM, a Docker, az Azure Kubernetes szolgáltatás (ak) Web Apps funkciója stb.
 * **IDE**: A Visual Studio, a VS Code vagy a Command line.
 
 > [!NOTE]
-> Ha a ASP.NET Core 3,0 – előzetes verzióval együtt használja a Application Insights, használja a [2.8.0-Beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) vagy újabb verziót. Ez az egyetlen ismert verzió, amely a ASP.NET Core 3,0-es verziójával jól működik. A Visual Studio-alapú bevezetést a ASP.NET Core 3,0-es alkalmazások esetében még nem támogatja.
+> Ha a ASP.NET Core 3,0 – előzetes verzióval együtt használja a Application Insights, használja a [2.8.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3) vagy újabb verziót. Ez az egyetlen ismert verzió, amely a ASP.NET Core 3,0-es verziójával jól működik. A Visual Studio-alapú bevezetést a ASP.NET Core 3,0-es alkalmazások esetében még nem támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -122,7 +122,7 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
     > [!NOTE]
     > A kód WINS-ben megadott rendszerállapot-kulcs a környezeti `APPINSIGHTS_INSTRUMENTATIONKEY`változón keresztül, amely más beállításokon keresztül nyerhető.
 
-## <a name="run-your-application"></a>Alkalmazás futtatása
+## <a name="run-your-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást, és tegye a kérelmeket. A telemetria-nek most Application Insightsre kell irányulnia. A Application Insights SDK automatikusan összegyűjti a következő telemetria.
 
@@ -241,7 +241,7 @@ A beállítások teljes listája`ApplicationInsightsServiceOptions`
 |AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
 |RequestCollectionOptions.TrackExceptions | Engedélyezheti vagy letilthatja a nem kezelt kivételek nyomon követését a kérelmek gyűjtési modulja által. | hamis a NETSTANDARD 2.0-ban (mivel a kivételeket a ApplicationInsightsLoggerProvider követte nyomon), ellenkező esetben igaz.
 
-A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a konfigurálható beállításokat](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs) .
+A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a konfigurálható beállításokat](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
 ### <a name="sampling"></a>Mintavételezés
 

@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171208"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171490"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
 Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létrehozásának, konfigurálásának, üzembe helyezésének és méretezésének folyamatán. Ha elkészült, egy [Spring boot](https://projects.spring.io/spring-boot/) -alkalmazással fog rendelkezni, amely az [Azure app Service Linux](/azure/app-service/containers)rendszeren futó [Azure Cosmos DBban](/azure/cosmos-db) tárolja az adattárolást.
 
-![Az Azure App Service-ben futó Java-alkalmazás](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 Az alkalmazás elindítása után az alábbi hivatkozással érheti el helyileg a Spring TODO alkalmazást: [http://localhost:8080/](http://localhost:8080/).
 
- ![Az Azure App Service-ben futó Java-alkalmazás](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![A Spring TODO-alkalmazás helyi elérése](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Ha a "Started TodoApplication" üzenet helyett kivételek jelennek meg, ellenőrizze, `bash` hogy az előző lépésben szereplő parancsfájl megfelelően exportálta-e a környezeti változókat, és hogy helyesek-e a létrehozott Azure Cosmos db adatbázishoz tartozó értékek.
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 A címsorban a távoli URL-címmel futó alkalmazást kell látnia:
 
- ![Az Azure App Service-ben futó Java-alkalmazás](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Távoli URL-címmel futó Spring boot-alkalmazás](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900673"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173606"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Oktatóanyag: Hozzon létre egy alkalmazást egy Java API előtér-szolgáltatással és egy állapot-visszaállítási szolgáltatással az Azure Service Fabric
 
 Ez az oktatóanyag egy sorozat első része. Ha elkészült, egy, a Java webes kezelőfelülettel rendelkező szavazati alkalmazás, amely a szavazás eredményét az Azure Service Fabric állapot-visszaállítási szolgáltatásában tárolja. Az oktatóanyag elvégzésének egyik feltétele, hogy rendelkezzen egy működő Mac OSX vagy Linux fejlesztői géppel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot a kész alkalmazáshoz](https://github.com/Azure-Samples/service-fabric-java-quickstart), és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Azt is vegye figyelembe, [hogy a Java megbízható szolgáltatások](service-fabric-quickstart-java-reliable-services.md)rövid útmutatóját követte.
 
-![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Service Fabric szavazási minta](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -60,15 +60,15 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét. A Angular
 
 2. Hozzon létre egy projektet a **File (Fájl)**  > **New (Új)**  > **Other (Egyéb)**  > **Service Fabric (Service Fabric)**  > **Service Fabric Project (Service Fabric-project)** használatával.
 
-    ![Az Eclipse Új projekt párbeszédpanelje](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Új Service Fabric-projekt az Eclipse-ben](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
 3. A **ServiceFabric-projekt varázsló** párbeszédpanelen nevezze el a projekt **szavazását** , és válassza a **tovább**lehetőséget.
 
-    ![Az állapotmentes Java-szolgáltatás kiválasztása az Új szolgáltatás párbeszédpanelen](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![Az állapotmentes Java-szolgáltatás kiválasztása az Új szolgáltatás párbeszédpanelen](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
 4. A **szolgáltatás hozzáadása** lapon válassza az **állapot nélküli szolgáltatás**lehetőséget, és nevezze el a szolgáltatás **VotingWeb**. Válassza a **Befejezés** lehetőséget a projekt létrehozásához.
 
-    ![Állapotmentes szolgáltatás létrehozása]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Állapot nélküli szolgáltatás létrehozása a Service Fabric projekthez]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Az Eclipse létrehoz egy alkalmazás- és egy szolgáltatásprojektet, és megjeleníti őket a Package Explorerben.
 
@@ -416,7 +416,7 @@ A Service Fabric megbízható gyűjtemények használatával konzisztens módon 
 
 3. Az Eclipse létrehoz egy szolgáltatásprojektet, és megjeleníti a Package Explorerben.
 
-    ![Megoldáskezelő](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Eclipse Project Explorer](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>A VotingDataService.java fájl hozzáadása
 
@@ -557,7 +557,7 @@ Elkészült a kezelőfelületi állapotmentes szolgáltatás és a háttérszolg
 
 1. Kattintson a jobb gombbal a csomag Explorerben a **szavazási** projektre, és válassza az **új** > **mappa**lehetőséget. A mappának adja a **VotingRPC/src/rpcmethods** nevet.
 
-    ![VotingRPC csomag létrehozása](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![VotingRPC-csomag létrehozása az Eclipse Package Explorerben](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. Hozzon létre egy fájlt a *Voting/VotingRPC/src/rpcmethods* területen *VotingRPC.java* néven, és illessze be az alábbiakat a **VotingRPC.java** fájlba. 
 
@@ -720,7 +720,7 @@ A szavazóalkalmazás két szolgáltatásból áll:
 - Webes kezelőfelületi szolgáltatás (VotingWeb) – Olyan webes kezelőfelületi Java-szolgáltatás, amely kiszolgálja a weboldalt, és API-kat biztosít a háttérszolgáltatással folytatott kommunikációhoz.
 - Háttérszolgáltatás (VotingDataService) – Olyan webes Java-szolgáltatás, amely meghatározza a távoli eljáráshívások (RPC) révén a szavazatok megőrzésére meghívott metódusokat.
 
-![Alkalmazásdiagram](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![Szavazási minta diagram](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 Amikor végrehajt egy műveletet az alkalmazásban (elem hozzáadása, szavazás, elem eltávolítása), az alábbi események történnek:
 1. A JavaScript HTTP-kérésként elküldi a megfelelő kérést a webes API-nak a webes kezelőfelületi szolgáltatásban.

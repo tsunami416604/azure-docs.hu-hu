@@ -3,7 +3,7 @@ title: Fájlok áthelyezése Azure-beli Linux rendszerű virtuális gépekről �
 description: A fájlokat biztonságosan helyezheti át az Azure-ban lévő Linux rendszerű virtuális gépekre az SCP és egy SSH-kulcspár használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
-ms.author: danlep
+ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 594ce696245cdd688583f8565487844197cd0b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 56b264b61976607a3afdaa7a6ec7dc5da2091aba
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083772"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173935"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Fájlok áthelyezése Linux rendszerű virtuális gépről SCP használatával
 
@@ -56,7 +56,7 @@ A nyilvános és a `~/.ssh/config` titkos ssh-kulcsok konfigurálásával kapcso
 
 Az első példában egy Azure konfigurációs fájlt másolunk egy olyan linuxos virtuális gépre, amely az automatizálás üzembe helyezésére szolgál. Mivel ez a fájl tartalmazza az Azure API hitelesítő adatait, köztük a titkokat is, fontos a biztonság. Az SSH által biztosított titkosított alagút védi a fájl tartalmát.
 
-A következő parancs átmásolja a helyi *. Azure/config* fájlt egy FQDN- *MyServer.eastus.cloudapp.Azure.com*rendelkező Azure-beli virtuális gépre. A rendszergazdai Felhasználónév az Azure-beli virtuális gépenaz azureuser. A fájl a */Home/azureuser/* könyvtárra irányul. Helyettesítse be a saját értékeit ebben a parancsban.
+A következő parancs átmásolja a helyi *. Azure/config* fájlt egy FQDN- *MyServer.eastus.cloudapp.Azure.com*rendelkező Azure-beli virtuális gépre. A rendszergazdai Felhasználónév az Azure-beli virtuális gépen az *azureuser*. A fájl a */Home/azureuser/* könyvtárra irányul. Helyettesítse be a saját értékeit ebben a parancsban.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config

@@ -1,58 +1,55 @@
 ---
-title: Jelentésszerkesztő egy RESTful-végpont egyéni szolgáltatók számára
-description: Ez az oktatóanyag ismerteti, hogyan hozhat létre egy RESTful-végpont egyéni szolgáltatók kerül. Részletes, akkor lépnek, a kérelmek és válaszok a támogatott RESTful HTTP-metódusok kezelése.
+title: REST-végpont létrehozása egyéni szolgáltatók számára
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy REST-végpontot az egyéni szolgáltatók számára. Részletesen ismerteti, hogyan kezelheti a kérelmeket és a válaszokat a támogatott REST-alapú HTTP-módszerekhez.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 176e3b02cbda7577e306d86363cfe5b41335fb6e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ae821f07034b038f49a400de8c00e4ace6787192
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800035"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172859"
 ---
-# <a name="authoring-a-restful-endpoint-for-custom-providers"></a>Jelentésszerkesztő egy RESTful-végpont egyéni szolgáltatók számára
+# <a name="author-a-restful-endpoint-for-custom-providers"></a>REST-végpont létrehozása egyéni szolgáltatók számára
 
-Egyéni szolgáltatók lehetővé teszik az Azure-ban a munkafolyamatok testreszabása. Egy egyéni szolgáltató az Azure között létrejött szerződés és a egy `endpoint`. Ebben az oktatóanyagban a folyamat a szerzői egyéni szolgáltatót RESTful fog áthaladni `endpoint`. Ha ismeri az Azure egyéni szolgáltatókat, [az Áttekintés az egyéni erőforrás-szolgáltatók](./custom-providers-overview.md).
-
-Ebben az oktatóanyagban meg van osztva az alábbi lépéseket:
-
-- Az egyéni műveletek és az egyéni erőforrások
-- Egyéni erőforrások partíció storage-ban
-- Egyéni szolgáltató RESTful-metódusok
-- Integrálása a REST-alapú műveletek
-
-Ebben az oktatóanyagban az alábbi oktatóanyagok hoz létre:
-
-- [Az Azure Functions beállítása az Azure egyéni szolgáltatók](./tutorial-custom-providers-function-setup.md)
+Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyéni szolgáltatók használatával testreszabhatja az Azure-beli munkafolyamatokat. Ez az oktatóanyag bemutatja, hogyan hozhat létre egyéni szolgáltatói REST-végpontot. Ha nem ismeri az egyéni Azure-szolgáltatókat, tekintse [meg az egyéni erőforrás-szolgáltatók áttekintését](./custom-providers-overview.md)ismertető cikket.
 
 > [!NOTE]
-> Ebben az oktatóanyagban épít ki az előző oktatóanyagban. Az oktatóanyagban a lépések csak akkor fog működni, ha egy Azure-függvényt az egyéni szolgáltatók dolgozhat telepítése befejeződött.
+> Ez az oktatóanyag az [Egyéni Azure-szolgáltatók Azure functions beállítására szolgáló](./tutorial-custom-providers-function-setup.md)oktatóanyagra épül. Az oktatóanyag néhány lépése csak akkor működik, ha egy Azure Function-alkalmazás be van állítva az egyéni szolgáltatókkal való együttműködésre.
 
-## <a name="working-with-custom-actions-and-custom-resources"></a>Az egyéni műveletek és az egyéni erőforrások
+## <a name="work-with-custom-actions-and-custom-resources"></a>Egyéni műveletek és egyéni erőforrások használata
 
-Ebben az oktatóanyagban a funkció működjön, egy RESTful végpontot az egyéni szolgáltató frissítjük. Az Azure-beli erőforráshoz és művelethez mintájára készültek az alapszintű RESTful-specifikáció: PUT – egy új erőforrást hoz létre (példányok) GET - kérdezi le a meglévő erőforrást, DELETE – eltávolítja a meglévő erőforrást, a POST - eseményindító, és az (gyűjtemény) – felsorolja az összes létező erőforráson. A jelen oktatóanyag esetében fogjuk használni az Azure-táblák a tárolóként, de bármilyen adatbázis vagy tárolócsoport szolgáltatást használhatják.
+Ebben az oktatóanyagban frissíti a Function alkalmazást, hogy REST-végpontként működjön az egyéni szolgáltatónál. Az Azure-beli erőforrások és műveletek a következő alapvető REST-specifikációk szerint vannak modellezve:
 
-## <a name="how-to-partition-custom-resources-in-storage"></a>Egyéni erőforrások partíció storage-ban
+- **PUT**: Új erőforrás létrehozása
+- **Get (példány)** : Meglévő erőforrás beolvasása
+- **TÖRLÉS**: Meglévő erőforrás eltávolítása
+- **POST**: Művelet indítása
+- **Get (gyűjtemény)** : Az összes meglévő erőforrás listázása
 
-Egy RESTful szolgáltatás hozunk létre, mert a létrehozott erőforrásokat tárolása a storage kell. Az Azure Table storage igazolnia kell a partíció- és sorkulcsot kulcsok számára az adatok létrehozásához. Egyéni szolgáltatók számára az adatokat az egyéni szolgáltató kell particionálni. Egy bejövő kérésnek az egyéni szolgáltató küld, ha az egyéni szolgáltató felveszi a `x-ms-customproviders-requestpath` irányuló kimenő kérelem fejlécet a `endpoint`.
+ Ebben az oktatóanyagban az Azure Table Storage-t használjuk. Azonban bármilyen adatbázis vagy tárolási szolgáltatás működhet.
 
-minta `x-ms-customproviders-requestpath` egy egyéni erőforrás fejléce:
+## <a name="partition-custom-resources-in-storage"></a>Egyéni erőforrások particionálása a Storage-ban
+
+Mivel REST-szolgáltatást hoz létre, a létrehozott erőforrásokat kell tárolnia. Az Azure Table Storage esetében partíciót és sorokat kell létrehoznia az adataihoz. Az egyéni szolgáltatók esetében az adattárolást az egyéni szolgáltatóra kell particionálni. Amikor egy bejövő kérelmet küld az egyéni szolgáltatónak, az egyéni szolgáltató hozzáadja a `x-ms-customproviders-requestpath` fejlécet a kimenő kérelmekhez a végponthoz.
+
+Az alábbi példa egy egyéni `x-ms-customproviders-requestpath` erőforrás fejlécét jeleníti meg:
 
 ```
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-A fenti példa alapján `x-ms-customproviders-requestpath` fejléc, létrehozhatjuk a partitionKey és rowkey tulajdonságok esetén a tárolás, tegye a következőket:
+A példa `x-ms-customproviders-requestpath` fejléce alapján az alábbi táblázatban látható módon hozhatja létre a *partitionKey* és a *rowKey* paramétereket a tárolóhoz:
 
 Paraméter | Sablon | Leírás
----|---
-partitionKey | '{subscriptionId}:{resourceGroupName}:{resourceProviderName}' | A partitionKey, hogy az adatok particionálása. A legtöbb esetben az adatok kell particionálni az egyéni szolgáltató példánya.
-Rowkey tulajdonságok esetén | a(z) {myResourceType}: {myResourceName}' | A rowkey tulajdonságok esetén a az adatok egyedi azonosítója. A legtöbbször az erőforrás neve.
+---|---|---
+*partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | A *partitionKey* paraméter határozza meg az adatparticionálás módját. Általában az egyéni szolgáltatói példány particionálja az adathalmazt.
+*rowKey* | `{myResourceType}:{myResourceName}` | A *rowKey* paraméter az adat egyedi azonosítóját adja meg. Általában az azonosító az erőforrás neve.
 
-Emellett azt is kell hozzon létre egy új osztályt az egyéni erőforrás modellezésére. Ebben az oktatóanyagban hozzáadunk a `CustomResource` a függvény, amely egy általános osztály, amely bármelyik képkockák adatok osztályt:
+Új osztályt is létre kell hoznia az egyéni erőforrás modellezéséhez. Ebben az oktatóanyagban a következő **CustomResource** osztályt adja hozzá a Function alkalmazáshoz:
 
 ```csharp
 // Custom Resource Table Entity
@@ -61,26 +58,27 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
+A **CustomResource** egy egyszerű, általános osztály, amely a bemeneti adatokat is elfogadja. Ez a **TableEntity**alapul, amely az adattárolásra szolgál. A **CustomResource** osztály a következő két tulajdonságot örökli: **TableEntity**: **partitionKey** és **rowKey**.
 
-Ez létrehoz egy alapszintű osztály alapján `TableEntity`, amely adatok tárolására szolgál. A `CustomResource` osztály örökli a két tulajdonság `TableEntity`: partitionKey és rowkey tulajdonságok esetén.
-
-## <a name="support-custom-provider-restful-methods"></a>Egyéni szolgáltató RESTful-metódusok
+## <a name="support-custom-provider-restful-methods"></a>Egyéni szolgáltatói REST-módszerek támogatása
 
 > [!NOTE]
-> A kódot közvetlenül az oktatóanyag a nem másol, ha a válasz tartalma legyen érvényes JSON, és beállítja a `Content-Type` , fejléc `application/json`.
+> Ha nem másolja a kódot közvetlenül ebből az oktatóanyagból, a válasz tartalmának érvényes JSON-nek kell lennie, `application/json`amely beállítja a `Content-Type` fejlécet a következőre:.
 
-Most, hogy a telepítő adatparticionálási, nézzük elnevezéssel az alapszintű CRUD-MŰVELETEKKEL és az eseményindító módszerek az egyéni erőforrások és az egyéni műveletek. Egyéni szolgáltatók proxyként, mivel a kérések és válaszok kell modellezése és kezeli a RESTful `endpoint`. Kövesse az alábbi kódrészletek az alapvető RESTful műveleteit:
+Most, hogy beállította az adatparticionálást, hozzon létre egy alapszintű szifilisz-és trigger-metódust az egyéni erőforrásokhoz és az egyéni műveletekhez. Mivel az egyéni szolgáltatók proxyként működnek, a REST-végpontnak a kérést és a választ kell modellezni és kezelni. A következő kódrészletek bemutatják, hogyan kezelheti az alapvető REST-műveleteket.
 
-### <a name="trigger-custom-action"></a>Egyéni művelet kiváltása
+### <a name="trigger-a-custom-action"></a>Egyéni művelet elindítása
 
-Egyéni szolgáltatók, az egyéni művelet indított el `POST` kérelmeket. Egyéni művelet igény szerint elfogadhatja a kérés törzse, amely tartalmazza a szükséges bemeneti paramétereket. A művelet kell, majd lépjen vissza a válasz signally művelet eredménye vissza, valamint azt a sikeres vagy sikertelen-e. Ebben az oktatóanyagban hozzáadunk a metódus `TriggerCustomAction` a függvényt:
+Egyéni szolgáltatók esetében az egyéni művelet a POST kéréseken keresztül aktiválódik. Egy egyéni művelet opcionálisan elfogadhat egy olyan kérés törzsét, amely bemeneti paramétereket tartalmaz. A művelet ezután egy választ ad vissza, amely jelzi a művelet eredményét, és azt, hogy sikeres vagy sikertelen volt-e.
+
+Adja hozzá a következő **TriggerCustomAction** metódust a Function alkalmazáshoz:
 
 ```csharp
 /// <summary>
-/// Triggers a custom action with some side effect.
+/// Triggers a custom action with some side effects.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <returns>The http response result of the custom action.</returns>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <returns>The HTTP response result of the custom action.</returns>
 public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMessage requestMessage)
 {
     var myCustomActionRequest = await requestMessage.Content.ReadAsStringAsync();
@@ -93,22 +91,24 @@ public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMes
 }
 ```
 
-A `TriggerCustomAction` metódus fogad egy bejövő kérésnek, és egyszerűen majd továbbítja a válasz egy sikeres állapotkód biztonsági másolatot. 
+A **TriggerCustomAction** metódus fogad egy bejövő kérelmet, és egyszerűen visszaismétli a választ egy állapotkód alapján.
 
-### <a name="create-custom-resource"></a>Hozzon létre egyéni erőforrás
+### <a name="create-a-custom-resource"></a>Egyéni erőforrás létrehozása
 
-Egyéni szolgáltatók, egy egyéni erőforrás jön létre keresztül `PUT` kérelmeket. Az egyéni szolgáltató fogad el egy JSON-kérés törzsének, amely az egyéni erőforrás tulajdonságai készletét tartalmazza. Erőforrások az Azure-ban, hajtsa végre a REST-alapú modell. Kell, hogy ugyanazon kérelem URL-cím erőforrás létrehozásához használt is képes lekérni, és törölje az erőforrást. Ebben az oktatóanyagban hozzáadunk a metódus `CreateCustomResource` új erőforrásokat hozhatnak létre:
+Egyéni szolgáltatók esetében egyéni erőforrás jön létre PUT kérések használatával. Az egyéni szolgáltató egy JSON-kérés törzsét fogadja el, amely az egyéni erőforráshoz tartozó tulajdonságokat tartalmazza. Az Azure-beli erőforrások REST-modellt követnek. Ugyanezt a kérési URL-címet használhatja erőforrás létrehozására, lekérésére vagy törlésére.
+
+Adja hozzá a következő **CreateCustomResource** metódust új erőforrások létrehozásához:
 
 ```csharp
 /// <summary>
 /// Creates a custom resource and saves it to table storage.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="azureResourceId">The parsed Azure resource Id.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="azureResourceId">The parsed Azure resource ID.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the created custom resource.</returns>
+/// <returns>The HTTP response containing the created custom resource.</returns>
 public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, ResourceId azureResourceId, string partitionKey, string rowKey)
 {
     // Adds the Azure top-level properties.
@@ -133,29 +133,31 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-A `CreateCustomResource` módszer frissíti a bejövő kéréseket az Azure egyedi mezőket: `id`, `name`, és `type`. Ezek a legfelső szintű Azure-ban szolgáltatások által használt tulajdonságokat. Lehetővé teszi azok az egyéni szolgáltató integrálhatja más szolgáltatásokkal, például az Azure Policy, az Azure Resource Manager-sablonokkal és az Azure-Tevékenységnaplók.
+A **CreateCustomResource** metódus frissíti a bejövő kérelmet, hogy tartalmazza az Azure-specifikus mezők **azonosítóját**, **nevét**és **típusát**. Ezek a mezők az Azure-szolgáltatások által használt legfelső szintű tulajdonságok. Lehetővé teszik, hogy az egyéni szolgáltató együttműködik más szolgáltatásokkal, például Azure Policyokkal, Azure Resource Manager sablonokkal és az Azure-tevékenység naplóval.
 
-Tulajdonság | Sample | Leírás
+Tulajdonság | Példa | Leírás
 ---|---|---
-name | '{myCustomResourceName}' | Az egyéni erőforrás neve.
-type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | Az erőforrás-típus névtere.
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName}' | Az erőforrás-azonosítója.
+**name** | {myCustomResourceName} | Az egyéni erőforrás neve
+**type** | Microsoft. CustomProviders/resourceProviders/{resourceTypeName} | Az erőforrás típusú névtér
+**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | Az erőforrás-azonosító
 
-A Tulajdonságok hozzáadásán azt is mentse a dokumentumot az Azure Table Storage. 
+A tulajdonságok hozzáadása mellett a JSON-dokumentumot is mentette az Azure Table Storage-ba.
 
-### <a name="retrieve-custom-resource"></a>Egyéni erőforrás lekérése
+### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás lekérése
 
-Egyéni szolgáltatók, egy egyéni erőforrás használatával beolvasott `GET` kérelmeket. Az egyéni szolgáltató fog *nem* fogadja el a JSON-kérelem törzse. Abban az esetben, `GET` kérelmek, a **végpont** kell használnia a `x-ms-customproviders-requestpath` fejléc vissza a már létrehozott erőforrást. Ebben az oktatóanyagban hozzáadunk a metódus `RetrieveCustomResource` beolvasni a meglévő erőforrások:
+Egyéni szolgáltatók esetében az egyéni erőforrás lekérése a GET kérelmek használatával történik. Egy egyéni szolgáltató *nem* fogad el JSON-kérés törzsét. A Get kérelmek esetében a végpont a `x-ms-customproviders-requestpath` fejlécet használja a már létrehozott erőforrás visszaküldéséhez.
+
+Adja hozzá a következő **RetrieveCustomResource** metódust a meglévő erőforrások lekéréséhez:
 
 ```csharp
 /// <summary>
 /// Retrieves a custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the existing custom resource.</returns>
+/// <returns>The HTTP response containing the existing custom resource.</returns>
 public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -172,21 +174,23 @@ public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequest
 }
 ```
 
-Az Azure-ban erőforrásokat egy REST-alapú modellt érdemes követnie. A kérelem URL-CÍMÉT, amely a létrehozott erőforrás is kell visszaadnia az erőforrást, ha egy `GET` kérések.
+Az Azure-ban az erőforrások REST-modellt követnek. Az erőforrást létrehozó kérelem URL-címe szintén visszaadja az erőforrást, ha a GET-kérést elvégezték.
 
-### <a name="remove-custom-resource"></a>Egyéni erőforrás eltávolítása
+### <a name="remove-a-custom-resource"></a>Egyéni erőforrás eltávolítása
 
-Egyéni szolgáltatók, egy egyéni erőforrást eltávolítanak keresztül `DELETE` kérelmeket. Az egyéni szolgáltató fog *nem* fogadja el a JSON-kérelem törzse. Abban az esetben, `DELETE` kérelmek, a **végpont** kell használnia a `x-ms-customproviders-requestpath` fejléc törli a már létrehozott erőforrást. Ebben az oktatóanyagban hozzáadunk a metódus `RemoveCustomResource` meglévő erőforrások eltávolítására:
+Egyéni szolgáltatók esetén a rendszer eltávolítja az egyéni erőforrásokat a TÖRLÉSi kérelmek használatával. Egy egyéni szolgáltató *nem* fogad el JSON-kérés törzsét. Törlési kérelem esetén a végpont `x-ms-customproviders-requestpath` a fejléc használatával törli a már létrehozott erőforrást.
+
+Adja hozzá a következő **RemoveCustomResource** metódust a meglévő erőforrások eltávolításához:
 
 ```csharp
 /// <summary>
 /// Removes an existing custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure storage account table.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the result of the delete.</returns>
+/// <returns>The HTTP response containing the result of the deletion.</returns>
 public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -203,21 +207,23 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-Az Azure-ban erőforrásokat egy REST-alapú modellt érdemes követnie. A kérelem URL-CÍMÉT, amely a létrehozott erőforrás is kell törölni az erőforrást, ha egy `DELETE` kérések.
+Az Azure-ban az erőforrások REST-modellt követnek. Az erőforrást létrehozó kérelem URL-címe is törli az erőforrást, ha TÖRLÉSi kérelmet végeznek.
 
-### <a name="list-all-custom-resources"></a>Minden egyéni erőforrások listázása
+### <a name="list-all-custom-resources"></a>Az összes egyéni erőforrás listázása
 
-Egyéni szolgáltatók, a meglévő egyéni erőforrások listájának keresztül gyűjtemény számba vehetők `GET` kérelmeket. Az egyéni szolgáltató fog *nem* fogadja el a JSON-kérelem törzse. Gyűjtemény esetén `GET` kérelmek, a `endpoint` kell használnia a `x-ms-customproviders-requestpath` fejléc a létrehozott erőforrások számbavétele. Ebben az oktatóanyagban hozzáadunk a metódus `EnumerateAllCustomResources` a meglévő erőforrások számbavétele.
+Az egyéni szolgáltatók esetében a gyűjtemény GET kérések használatával enumerálhatja a meglévő egyéni erőforrások listáját. Egy egyéni szolgáltató *nem* fogad el JSON-kérés törzsét. A Get-kérelmek gyűjteménye esetében a végpont a már `x-ms-customproviders-requestpath` létrehozott erőforrások enumerálásához a fejlécet használja.
+
+Adja hozzá a következő **EnumerateAllCustomResources** metódust a meglévő erőforrások számbavételéhez:
 
 ```csharp
 /// <summary>
 /// Enumerates all the stored custom resources for a given type.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="resourceType">The resource type of the enumeration.</param>
-/// <returns>The http response containing a list of resources stored under 'value'.</returns>
+/// <returns>The HTTP response containing a list of resources stored under 'value'.</returns>
 public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string resourceType)
 {
     // Generate upper bound of the query.
@@ -244,22 +250,22 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 ```
 
 > [!NOTE]
-> A sorkulcs nagyobb, mint és kevesebb, mint az Azure Table szintaxis "startswith" lekérdezés végrehajtása a karakterláncokat. 
+> A RowKey QueryComparisons. GreaterThan és QueryComparisons. LessThan az Azure Table Storage szintaxisa a karakterláncok "startswith" lekérdezésének végrehajtásához.
 
-Az összes meglévő erőforrások listázása, hogy létrehozhat egy Azure Table lekérdezést, amely biztosítja, hogy az erőforrások találhatók az egyéni szolgáltató partíció. A lekérdezést, majd ellenőrzi, hogy ugyanazzal a elindítja a sorkulcs `{myResourceType}`.
+Az összes meglévő erőforrás listázásához olyan Azure Table Storage-lekérdezést kell létrehoznia, amely biztosítja az erőforrások létezését az egyéni szolgáltatói partíció alatt. A lekérdezés ezután ellenőrzi, hogy a sor kulcsa ugyanazzal `{myResourceType}` az értékkel kezdődik-e.
 
-## <a name="integrate-restful-operations"></a>Integrálása a REST-alapú műveletek
+## <a name="integrate-restful-operations"></a>REST-műveletek integrálása
 
-A REST-alapú módszerek hozzá vannak adva a funkciót, ha a fő is frissítjük `Run` metódust kell meghívni a funkciók különböző többi kezelésére kéri:
+Miután az összes REST-metódus hozzá lett adva a Function alkalmazáshoz, frissítse a fő **futtatási** módszert, amely meghívja a függvényeket a különböző REST-kérelmek kezelésére:
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure Function webhook and acts as the service behind a custom provider.
+/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <returns>The http response for the custom Azure API.</returns>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <returns>The HTTP response for the custom Azure API.</returns>
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log, CloudTable tableStorage)
 {
     // Get the unique Azure request path from request headers.
@@ -288,7 +294,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 
     switch (req.Method)
     {
-        // Action request for an custom action.
+        // Action request for a custom action.
         case HttpMethod m when m == HttpMethod.Post && !isResourceRequest:
             return await TriggerCustomAction(
                 requestMessage: req);
@@ -331,11 +337,13 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
             return req.CreateResponse(HttpStatusCode.BadRequest);
     }
 }
-``` 
+```
 
-A frissített `Run` mód mostantól tartalmazza a `tableStorage` bemeneti kötést, amely hozzá lett adva a az Azure Table storage. Most már a metódus első részét olvassa a `x-ms-customproviders-requestpath` fejlécére, és használja a `Microsoft.Azure.Management.ResourceManager.Fluent` könyvtár az erőforrás-azonosító néven érték értelmezése A `x-ms-customproviders-requestpath` fejléc az egyéni szolgáltató által küldött, és a bejövő kérelem elérési útját jelöli meg. Elemzett erőforrás-Azonosítóját használja, azt most generálhat a partitionKey és rowkey tulajdonságok esetén az adatok található, vagy egyéni erőforrásokat tárolja.
+A frissített **futtatási** módszer mostantól tartalmazza az Azure Table Storage-hoz hozzáadott *tableStorage* bemeneti kötést. A metódus első része beolvassa a `x-ms-customproviders-requestpath` fejlécet, és `Microsoft.Azure.Management.ResourceManager.Fluent` a könyvtár használatával elemzi az értéket erőforrás-azonosítóként. A `x-ms-customproviders-requestpath` fejlécet az egyéni szolgáltató küldi el, és megadja a bejövő kérelem elérési útját.
 
-A metódusok és osztályok hozzáadásán kell frissíteni, a használatával a függvény módszerek. A fájl elejéhez adja hozzá a következőket:
+Az elemzett erőforrás-azonosító használatával létrehozhatja a **partitionKey** és a **rowKey** értékeket az adatok kereséséhez, illetve az egyéni erőforrások tárolásához.
+
+A módszerek és osztályok hozzáadása után frissítenie kell a **using** metódusokat a Function alkalmazáshoz. Adja hozzá a következő kódot a C# fájl elejéhez:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -359,10 +367,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Ha kapott elveszett adott Ez az oktatóanyag során, a befejezett kódminta található a [egyéni szolgáltató C# RESTful-végpont referencia](./reference-custom-providers-csharp-endpoint.md). A függvény végrehajtása után mentse a függvény URL-CÍMÉT, amely segítségével aktiválja a függvényt, mivel a későbbi oktatóanyagokban fogja használni.
+Ha az oktatóanyag bármely pontján elvész, megtalálhatja a teljes kódrészletet az [egyéni szolgáltató C# Rest-végponti referenciájában](./reference-custom-providers-csharp-endpoint.md). A Function alkalmazás befejezése után mentse a Function app URL-címét. A függvény alkalmazás a későbbi oktatóanyagokban aktiválható.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben azt készített egy RESTful-végpont használata az Azure egyéni szolgáltató `endpoint`. Nyissa meg a következő cikkben megtudhatja, hogyan hozhat létre egy egyéni szolgáltatót.
-
-- [Oktatóanyag: Egy egyéni szolgáltató létrehozása](./tutorial-custom-providers-create.md)
+Ebben a cikkben egy REST-végpontot készített egy Azure-beli egyéni szolgáltatói végponttal való együttműködéshez. Ha meg szeretné tudni, hogyan hozhat létre egyéni szolgáltatót, olvassa [el a cikk oktatóanyagát: Egyéni szolgáltató](./tutorial-custom-providers-create.md)létrehozása.

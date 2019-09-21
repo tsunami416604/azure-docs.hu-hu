@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b909918ff4f9abc1dd64d4c7e5ccb35954b233f7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935793"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171127"
 ---
 # <a name="http-features"></a>HTTP-funkciók
 
@@ -205,7 +205,7 @@ A HTTP API-k meghívására szolgáló beépített támogatás egy kényelmi fun
 Ha a korlátozások bármelyike hatással lehet a használati esetre, érdemes inkább a tevékenység-és nyelvspecifikus HTTP-ügyféloldali kódtárakat használni a kimenő HTTP-hívások elvégzéséhez.
 
 > [!NOTE]
-> Ha Ön .net-fejlesztő, akkor lehet, hogy kíváncsi, hogy miért használja `DurableHttpRequest` `DurableHttpResponse` a szolgáltatás a beépített .net `HttpRequestMessage` -és `HttpResponseMessage`a-típusokat. Ez a tervezési lehetőség szándékos volt. Az elsődleges ok az, hogy az egyéni típusok segítségével biztosítható, hogy a felhasználók ne tegyenek helytelen feltételezéseket a belső HTTP-ügyfél által támogatott viselkedések tekintetében. A tartós-specifikus típusok révén egyszerűbbé válik az API-kialakítás, és könnyebben megoldhatók a speciális funkciók, például a [felügyelt identitások integrálása](#managed-identities) és a [lekérdezési fogyasztói minta](#http-202-handling).
+> Ha Ön .net-fejlesztő, akkor lehet, hogy kíváncsi, hogy miért használja `DurableHttpRequest` `DurableHttpResponse` a szolgáltatás a beépített .net `HttpRequestMessage` -és `HttpResponseMessage`a-típusokat. Ez a tervezési lehetőség szándékos volt. Az elsődleges ok az, hogy az egyéni típusok segítenek biztosítani, hogy a felhasználók ne tegyenek helytelen feltételezéseket a belső HTTP-ügyfél támogatott viselkedésére. A tartós-specifikus típusok révén egyszerűbbé válik az API-kialakítás, és könnyebben megoldhatók a speciális funkciók, például a [felügyelt identitások integrálása](#managed-identities) és a [lekérdezési fogyasztói minta](#http-202-handling).
 
 ## <a name="next-steps"></a>További lépések
 

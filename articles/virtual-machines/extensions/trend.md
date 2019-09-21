@@ -3,7 +3,7 @@ title: A Trend Micro Deep Security telepítése virtuális gépen | Microsoft Do
 description: Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Security szolgáltatást a klasszikus üzembe helyezési modellel létrehozott virtuális gépeken az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: roiyz
-ms.openlocfilehash: ffbae90d60cb2dbc7a62b9e9745ed1c4020386ff
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 14ef0a94cb8b2b735b3dc02cf5ccdcc65a6c1beb
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092206"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168799"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -33,13 +33,13 @@ Ha a Trend Micro egy aktuális előfizetéssel rendelkezik egy helyszíni megold
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>A mély biztonsági ügynök telepítése új virtuális gépre
 
-A [Azure Portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, ha a piactéren rendszerkép használatával hozza létre a virtuális gépet. Ha egyetlen virtuális gépet hoz létre, a portál használatával egyszerűen adhat hozzá védelmet a Trend Micro-ből.
+A [Azure Portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, ha a **piactéren** rendszerkép használatával hozza létre a virtuális gépet. Ha egyetlen virtuális gépet hoz létre, a portál használatával egyszerűen adhat hozzá védelmet a Trend Micro-ből.
 
-A piactéren egy bejegyzés használatával megnyílik egy varázsló, amely segít a virtuális gép beállításában. A Trend Micro biztonsági bővítmény telepítéséhez a varázsló harmadik paneljén a **Beállítások** panelt kell használni.  Általános útmutatásért lásd: [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../windows/classic/tutorial.md).
+A **piactéren** egy bejegyzés használatával megnyílik egy varázsló, amely segít a virtuális gép beállításában. A Trend Micro biztonsági bővítmény telepítéséhez a varázsló harmadik paneljén a **Beállítások** panelt kell használni.  Általános útmutatásért lásd: [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../windows/classic/tutorial.md).
 
 A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseket:
 
-1. Kattintsona bővítmények, majd a bővítmény **hozzáadása** elemre a következő ablaktáblán.
+1. Kattintson a **bővítmények**, majd a bővítmény **hozzáadása** elemre a következő ablaktáblán.
 
    ![A bővítmény hozzáadásának megkezdése][1]
 
@@ -79,7 +79,7 @@ Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt k
 
 * A trendről szóló cikk a megoldásról, [az azonnali Felhőbeli biztonságról Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
 * Egy [minta Windows PowerShell-parancsfájl](https://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálásához
-* [](https://go.microsoft.com/fwlink/?LinkId=404099) A minta utasításai
+* A minta [utasításai](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>További források
 [Bejelentkezés Windows Servert futtató virtuális gépre]

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984864"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173581"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -121,7 +121,7 @@ Az Event hubokból kimenetként kell konfigurálnia az adatfolyamokat.
 | Encoding | A fürt megosztott kötetei szolgáltatás és a JSON az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | Elválasztó karakter | Csak a CSV-szerializáláshoz alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei a következők: vesszővel, pontosvesszővel válassza el, lemezterület, lapon és függőleges sávra. |
 | Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor** elválasztva érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva. A tömb le van zárva, csak akkor, ha a feladat leáll vagy a Stream Analytics át lett helyezve a következő alkalommal időszakban. Általánosságban elmondható, hogy a rendszer inkább a sortöréses JSON-t használja, mert nem igényel semmilyen speciális kezelést, amíg a kimeneti fájl továbbra is írásra kerül. |
-| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai](#custom-metadata-properties-for-output)a kimenethez. |
+| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
 
@@ -176,7 +176,7 @@ Dupla | Dupla | Karakterlánc | Karakterlánc | Dupla
 Karakterlánc | String | String | String | Karakterlánc 
 Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | Sztring
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Táblatároló
 
 Az [Azure Table Storage](../storage/common/storage-introduction.md) kiválóan elérhető, nagy mértékben méretezhető tárhelyet kínál, így az alkalmazások automatikusan méretezhetők a felhasználói igények kielégítése érdekében. A Table Storage a Microsoft NoSQL kulcs-és attribútum-tárolója, amelyet a séma kevesebb korlátozásával rendelkező strukturált adatkészletekhez használhat. Az Azure Table storage segítségével tárolja az adatok megőrzését és a hatékony lekéréséhez.
 
@@ -192,7 +192,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kim
 | Sorkulcs |A sor kulcsot tartalmazó kimeneti oszlop neve. A sor kulcsa a partíción belüli entitás egyedi azonosítója. Egy entitás elsődleges kulcsának második részét képezi. A sor kulcsa egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Köteg mérete |A kötegelt műveleti rekordok száma. Az alapértelmezett (100) érték elegendők a legtöbb feladatot. A beállítás módosításával kapcsolatos további információkért tekintse meg a [tábla batch műveletének specifikációját](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) . |
 
-## <a name="service-bus-queues"></a>Service Bus üzenetsorok
+## <a name="service-bus-queues"></a>Service Bus-üzenetsorok
 
 [Service Bus várólisták](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) egy vagy több versengő fogyasztó számára biztosítanak egy FIFO-üzenet kézbesítését. Az üzeneteket általában a fogadók a várólistához való felvételének időbeli sorrendjében fogadják és dolgozzák fel. Minden üzenet fogadása és feldolgozása csak egy üzenet felhasználója által történik.
 
@@ -209,7 +209,8 @@ A következő táblázat felsorolja a tulajdonságok nevét és a várólista ki
 | Encoding |A fürt megosztott kötetei szolgáltatás és a JSON az UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | Elválasztó karakter |Csak a CSV-szerializáláshoz alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei a következők: vesszővel, pontosvesszővel válassza el, lemezterület, lapon és függőleges sávra. |
 | Formátum |Csak JSON-típus esetén alkalmazható. A **sor** elválasztva érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva. |
-| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai](#custom-metadata-properties-for-output)a kimenethez. |
+| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
+| Rendszertulajdonságok oszlopai | Nem kötelező. A Rendszertulajdonságok és a hozzájuk tartozó oszlopnevek neve, amelyeket az adattartalom helyett a kimenő üzenethez kell csatolni. További információ erről a szolgáltatásról: [Service Bus üzenetsor rendszertulajdonságai és témakör kimenetei](#system-properties-for-service-bus-queue-and-topic-outputs)  |
 
 A partíciók száma [a Service Bus-Termékváltozat és a mérete alapján](../service-bus-messaging/service-bus-partitioning.md). Partíciókulcs egyedi egész szám érték minden egyes partícióhoz.
 
@@ -228,7 +229,8 @@ A következő táblázat a tulajdonságok nevét és leírásait sorolja fel Ser
 | Eseményszerializációs formátum |A kimeneti adatmennyiség szerializálási formátuma. JSON, a fürt megosztott kötetei szolgáltatás és az avro-hoz támogatott. |
 | Encoding |Ha CSV-vagy JSON-formátumot használ, meg kell adni egy kódolást. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó karakter |Csak a CSV-szerializáláshoz alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei a következők: vesszővel, pontosvesszővel válassza el, lemezterület, lapon és függőleges sávra. |
-| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai](#custom-metadata-properties-for-output)a kimenethez. |
+| Tulajdonságoszlopok | Nem kötelező. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
+| Rendszertulajdonságok oszlopai | Nem kötelező. A Rendszertulajdonságok és a hozzájuk tartozó oszlopnevek neve, amelyeket az adattartalom helyett a kimenő üzenethez kell csatolni. További információ erről a szolgáltatásról: [Service Bus üzenetsor rendszertulajdonságai és témakör kimenetei](#system-properties-for-service-bus-queue-and-topic-outputs) |
 
 A partíciók száma [a Service Bus-Termékváltozat és a mérete alapján](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.
 
@@ -294,6 +296,25 @@ A következő példában a két mezőt `DeviceId` és `DeviceStatus` a metaadato
 A következő képernyőfelvételen a EventHub megtekintett kimeneti üzenetek tulajdonságai láthatók [Service Bus Explorerben](https://github.com/paolosalvatori/ServiceBusExplorer).
 
 ![Egyéni esemény tulajdonságai](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Service Bus üzenetsor és a témakör kimenetének rendszertulajdonságai 
+A lekérdezési oszlopokat [rendszertulajdonságként](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez. Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) a lekérdezési oszlop értékeivel töltik fel.
+Ezek a Rendszertulajdonságok támogatottak – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Ezeknek az oszlopoknak a karakterlánc-értékeit a rendszer a megfelelő rendszertulajdonság-érték típusként értelmezi, és az elemzési hibák adathibákként lesznek kezelve.
+Ez a mező JSON-objektum formátumként van megadva. A formátum részletei a következők:
+* Kapcsos zárójelek {}között.
+* Kulcs/érték párokba írva.
+* A kulcsoknak és az értékeknek sztringeknek kell lenniük.
+* A kulcs a rendszer tulajdonságának neve és értéke a lekérdezési oszlop neve.
+* A kulcsok és az értékek kettősponttal vannak elválasztva.
+* A kulcs/érték párok vesszővel vannak elválasztva.
+
+Ez a tulajdonság használatát mutatja be –
+
+* Lekérdezés`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Rendszertulajdonság oszlopai:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+Ezzel beállítja a `MessageId` Service Bus üzenetsor `column1`üzeneteinek értékeit `column2`és a PartitionKey értékeit.
 
 ## <a name="partitioning"></a>Particionálás
 

@@ -1,54 +1,50 @@
 ---
-title: Egyéni műveletek és az erőforrások létrehozása az Azure-ban
-description: Ez az oktatóanyag az egyéni műveletek és az erőforrások létrehozása az Azure Resource Manager és az hogyan integrálhatók őket egyéni munkafolyamatokat az Azure Resource Manager-sablonok, az Azure CLI, Azure Policy és tevékenységnapló kerül.
+title: Egyéni műveletek és erőforrások létrehozása az Azure-ban
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni műveleteket és erőforrásokat a Azure Resource Managerban. Azt is bemutatja, hogyan működnek együtt az egyéni munkafolyamatok a Azure Resource Manager sablonokkal, az Azure CLI-vel, az Azure Policy és az Azure-beli tevékenységekkel.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 4bbfcf070611e3df5c0fe47070f2ab6961111e07
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: dc1601e344c371a5f0feaadd272a2c6ff40af031
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800042"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172937"
 ---
-# <a name="create-custom-actions-and-resources-in-azure"></a>Egyéni műveletek és az erőforrások létrehozása az Azure-ban
+# <a name="create-custom-actions-and-resources-in-azure"></a>Egyéni műveletek és erőforrások létrehozása az Azure-ban
 
-Egyéni szolgáltatók lehetővé teszik az Azure-ban a munkafolyamatok testreszabása. Egy egyéni szolgáltató az Azure között létrejött szerződés és a egy `endpoint`. Lehetővé teszi új egyéni API-k hozzáadását az az Azure Resource Manager új üzembe helyezési és felügyeleti funkciók engedélyezéséhez. Ebben az oktatóanyagban egy egyszerű példa az új műveletek és az erőforrások hozzáadása az Azure-ba, és hogyan integrálhatja azokat fog áthaladni.
+Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyéni szolgáltatók segítségével az Azure-ban új API-k hozzáadásával Azure Resource Managerba is módosíthatja a munkafolyamatokat. Ezekkel az egyéni API-kkal a Resource Manager új üzembe helyezési és felügyeleti képességeket tud használni.
 
-Ebben az oktatóanyagban meg van osztva az alábbi lépéseket:
+Ez az oktatóanyag egy egyszerű példát mutat be, hogyan adhat hozzá új műveleteket és erőforrásokat az Azure-hoz, és hogyan integrálhatja őket.
 
-- Az Azure Functions beállítása az Azure egyéni szolgáltatók
-- Jelentésszerkesztő egy RESTful-végpont egyéni szolgáltatók számára
-- Létrehozás és a egyéni Provider
+## <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions beállítása egyéni Azure-szolgáltatók számára
 
-## <a name="setup-azure-functions-for-azure-custom-providers"></a>Az Azure Functions beállítása az Azure egyéni szolgáltatók
+Az oktatóanyag első része azt ismerteti, hogyan állítható be egy Azure Function-alkalmazás az egyéni szolgáltatókkal való együttműködéshez:
 
-Az oktatóanyag ezen részében egy Azure-függvényt az egyéni szolgáltatók telepítés részleteinek kerül. Egyéni szolgáltatók képes együttműködni minden olyan nyilvános URL-CÍMÉT.
+- [Azure Functions beállítása egyéni Azure-szolgáltatók számára](./tutorial-custom-providers-function-setup.md)
 
-- [Az Azure Functions beállítása az Azure egyéni szolgáltatók](./tutorial-custom-providers-function-setup.md)
+Az egyéni szolgáltatók bármilyen nyilvános URL-címmel működhetnek.
 
-## <a name="authoring-a-restful-endpoint-for-custom-providers"></a>Jelentésszerkesztő egy RESTful-végpont egyéni szolgáltatók számára
+## <a name="author-a-restful-endpoint-for-custom-providers"></a>REST-végpont létrehozása egyéni szolgáltatók számára
 
-Az oktatóanyag ezen részében részletes információk a létrehozásról egy RESTful-végpont egyéni szolgáltatók lépnek.
+Az oktatóanyag második része azt ismerteti, hogyan hozhat létre REST-végpontot az egyéni szolgáltatók számára:
 
-- [Jelentésszerkesztő egy RESTful-végpont egyéni szolgáltatók számára](./tutorial-custom-providers-function-authoring.md)
+- [REST-végpont létrehozása egyéni szolgáltatók számára](./tutorial-custom-providers-function-authoring.md)
 
-## <a name="creating-and-utilizing-the-custom-provider"></a>Létrehozás és a egyéni Provider
+## <a name="create-and-use-a-custom-provider"></a>Egyéni szolgáltató létrehozása és használata
 
-Az oktatóanyag ezen részében hozzon létre egy egyéni szolgáltatót, és az egyéni műveletek és az erőforrások használata részletesen kerül.
+Az oktatóanyag harmadik része azt ismerteti, hogyan hozhat létre egyéni szolgáltatót, és hogyan használhatja az egyéni műveleteit és erőforrásait:
 
-- [Hozzon létre, és felhasználja az Azure egyéni szolgáltató](./tutorial-custom-providers-create.md)
+- [Egyéni szolgáltató létrehozása és használata](./tutorial-custom-providers-create.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megismerhette egyéni szolgáltatókat, és hogyan hozzon létre egyet. Az a következő lépés az oktatóanyag folytatása:
+Ebben az oktatóanyagban megismerte az egyéni szolgáltatókat, és hogyan hozhat létre egyet. A következő oktatóanyag folytatásához tekintse [meg az oktatóanyagot: Azure Functions beállítása Azure-beli egyéni szolgáltatók](./tutorial-custom-providers-function-setup.md)számára.
 
-- [Oktatóanyag: Az Azure Functions beállítása az Azure egyéni szolgáltatók](./tutorial-custom-providers-function-setup.md)
+Ha referenciákat vagy rövid útmutatót keres, íme néhány hasznos hivatkozás:
 
-Ha a keresett hivatkozásokat vagy egy rövid, az alábbiakban néhány hasznos hivatkozás:
-
-- [Rövid útmutató: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
-- [Útmutató: Az egyéni műveletek hozzáadása az Azure REST API-val](./custom-providers-action-endpoint-how-to.md)
-- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-val](./custom-providers-resources-endpoint-how-to.md)
+- [Rövid útmutató: Egyéni Azure-erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
+- [Útmutató: Egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
+- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST APIhoz](./custom-providers-resources-endpoint-how-to.md)

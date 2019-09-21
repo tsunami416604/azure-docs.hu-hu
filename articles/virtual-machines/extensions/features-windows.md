@@ -3,7 +3,7 @@ title: Azure virtuálisgép-bővítmények és-szolgáltatások a Windows rendsz
 description: Ismerje meg, hogy mely bővítmények érhetők el az Azure Virtual Machines szolgáltatásban, az általuk biztosított vagy a fejlesztésük szerint csoportosítva.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a7f204245e59cbda11c663a80828a20a79c9923
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084563"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174075"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -40,7 +40,7 @@ Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelye
 - Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
-A folyamat-specifikus bővítmények mellett egyéni szkriptek is elérhetők a Windows-és Linux-alapú virtuális gépekhez. A Windowshoz készült egyéni szkriptek lehetővé teszik a PowerShell-parancsfájlok futtatását egy virtuális gépen. Az egyéni parancsfájlok olyan Azure-beli központi telepítések tervezésekor hasznosak, amelyek a natív Azure-eszközök által biztosított konfigurációt igénylik. További információ: a [Windows virtuális gép egyéni parancsfájl](custom-script-windows.md)-bővítménye.
+A folyamat-specifikus bővítmények mellett egyéni szkriptek is elérhetők a Windows-és Linux-alapú virtuális gépekhez. A Windowshoz készült egyéni szkriptek lehetővé teszik a PowerShell-parancsfájlok futtatását egy virtuális gépen. Az egyéni parancsfájlok olyan Azure-beli központi telepítések tervezésekor hasznosak, amelyek a natív Azure-eszközök által biztosított konfigurációt igénylik. További információ: a [Windows virtuális gép egyéni parancsfájl-bővítménye](custom-script-windows.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +70,7 @@ A bővítmények letöltése az Azure Storage bővítmény-tárházból történ
 > [!IMPORTANT]
 > Ha letiltotta a *168.63.129.16* való hozzáférést a vendég tűzfal használatával, akkor a bővítmények a fentiektől függetlenül meghiúsulnak.
 
-Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service- [](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)címkék használatával a tároláshoz.
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service-címkék használatával a [tároláshoz](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 A Windows Guest Agent ügynök nem rendelkezik a proxykiszolgáló támogatásával az ügynök forgalmi kéréseinek átirányításához.
 
@@ -142,7 +142,7 @@ A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmé
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a bővítmények, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
+A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
 Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be a Azure Portalról:
 
@@ -184,7 +184,7 @@ További információ: [teljes Resource Manager-sablon](https://github.com/Micro
 }
 ```
 
-A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése Windowsos VM](../windows/template-description.md#extensions)-bővítményekkel.
+A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése Windowsos VM-bővítményekkel](../windows/template-description.md#extensions).
 
 ## <a name="secure-vm-extension-data"></a>Virtuálisgép-bővítmények védelme
 
@@ -220,7 +220,7 @@ Az alábbi példa a Windowshoz készült egyéni parancsfájl-bővítmény egy p
 }
 ```
 
-Ha a **parancs** áthelyezésével végrehajtja a tulajdonságot a **védett** konfigurációra, a a következő példában látható módon védi a végrehajtási karakterláncot:
+Ha a **parancs áthelyezésével végrehajtja** a tulajdonságot a **védett** konfigurációra, a a következő példában látható módon védi a végrehajtási karakterláncot:
 
 ```json
 {
@@ -367,7 +367,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-A virtuálisgép-bővítmény virtuális gépen való futtatása után a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) használatával adja vissza a bővítmény állapotát. Az alállapotok *[0]* érték azt jelzi, hogy a bővítmény kiépítése sikeres volt, ami azt jelenti, hogy a virtuális gép üzembe helyezése sikeresen megtörtént, de a virtuális gépen belüli bővítmény végrehajtása nem sikerült, alállapotok *[1]* .
+A virtuálisgép-bővítmény virtuális gépen való futtatása után a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) használatával adja vissza a bővítmény állapotát. Az *alállapotok [0]* érték azt jelzi, hogy a bővítmény kiépítése sikeres volt, ami azt jelenti, hogy a virtuális gép üzembe helyezése sikeresen megtörtént, de a virtuális gépen belüli bővítmény végrehajtása nem sikerült, *alállapotok [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -412,12 +412,12 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 1. Válasszon ki egy virtuális gépet.
-2. Válasszaa bővítmények lehetőséget.
+2. Válassza a **bővítmények**lehetőséget.
 3. Válassza ki a kívánt kiterjesztést.
 4. Válassza az **Eltávolítás**lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Bővítmény neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-bővítmény a Windowshoz](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

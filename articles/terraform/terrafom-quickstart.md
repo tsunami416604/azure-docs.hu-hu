@@ -5,16 +5,16 @@ services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699086"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173520"
 ---
-# <a name="create-a-terraform-configuration-for-azure"></a>Terraform-konfiguráció létrehozása az Azure-hoz
+# <a name="create-a-terraform-configuration-for-azure"></a>Terraform-konfiguráció létrehozása Azure-hoz
 
 Ebben a példában a Terraform-konfiguráció létrehozásával és a konfiguráció Azure-ba történő üzembe helyezésével kapcsolatos tapasztalatokat szerezhet. Ha elkészült, üzembe kell helyeznie egy Azure Cosmos DB példányt, egy Azure Container-példányt és egy alkalmazást, amely ezen a két erőforráson működik. Ez a dokumentum azt feltételezi, hogy a Azure Cloud Shell összes munkája befejeződött, és a Terraform-eszközök előre telepítve vannak. Ha a példát a saját rendszerén szeretné használni, a Terraform az [itt](../virtual-machines/linux/terraform-install-configure.md)található utasításokat követve telepítheti.
 
@@ -24,17 +24,17 @@ Ebben a szakaszban egy Azure Cosmos DB-példány konfigurációját fogja létre
 
 Válassza a **kipróbálás most** lehetőséget az Azure Cloud Shell megnyitásához. A Megnyitás után írja be `code .` a be lehetőséget a Cloud Shell Kódszerkesztő megnyitásához.
 
-```azurecli-interactive
+```bash
 code .
 ```
 
 Másolja és illessze be a következő Terraform-konfigurációt.
 
-Ez a konfiguráció egy Azure-erőforráscsoportot, egy véletlenszerű egész számot és egy Azure Cosmos DB példányt modellez. A véletlenszerű egész számot Cosmos DB-példány nevében kell használni. Számos Cosmos DB beállítás is be van állítva. Cosmos DB Terraform-konfigurációk teljes listájáért tekintse meg a [Cosmos db Terraform](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html)-referenciát.
+Ez a konfiguráció egy Azure-erőforráscsoportot, egy véletlenszerű egész számot és egy Azure Cosmos DB példányt modellez. A véletlenszerű egész számot Cosmos DB-példány nevében kell használni. Számos Cosmos DB beállítás is be van állítva. Cosmos DB Terraform-konfigurációk teljes listájáért tekintse meg a [Cosmos db Terraform-referenciát](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
 Mentse a fájlt `main.tf` a kész gombra. Ez a művelet a Kódszerkesztő jobb felső részében található ellipszisekkel végezhető el.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
   location = "westus"
@@ -67,7 +67,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 
 A [Terraform init](https://www.terraform.io/docs/commands/init.html) parancs inicializálja a munkakönyvtárat. Az `terraform init` új konfiguráció üzembe helyezésének előkészítéséhez futtassa a parancsot a Cloud Shell terminalban.
 
-```azurecli-interactive
+```bash
 terraform init
 ```
 
@@ -75,13 +75,13 @@ A [Terraform terv](https://www.terraform.io/docs/commands/plan.html) parancs seg
 
 Az `terraform plan` új Terraform-konfiguráció teszteléséhez futtassa a parancsot.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Alkalmazza a konfigurációt a [Terraform](https://www.terraform.io/docs/commands/apply.html) alkalmazással, és adja meg a csomag nevét. Ez a parancs üzembe helyezi az Azure-előfizetésében lévő erőforrásokat.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -93,12 +93,12 @@ Frissítse a konfigurációt, hogy tartalmazza az Azure Container Instancet. A t
 
 Másolja a következő konfigurációt a `main.tf` fájl aljára. Ha elkészült, mentse a fájlt.
 
-Két környezeti változó van beállítva `COSMOS_DB_ENDPOINT` és. `COSMOS_DB_MASTERKEY` Ezek a változók megtartják az adatbázis elérésének helyét és kulcsát. A változók értékei az utolsó lépésben létrehozott adatbázis-példányból szerezhetők be. Ezt a folyamatot interpolációnak nevezzük. További információ az Terraform interpolációról: interpolációs [szintaxis](https://www.terraform.io/docs/configuration/interpolation.html).
+Két környezeti változó van beállítva `COSMOS_DB_ENDPOINT` és. `COSMOS_DB_MASTERKEY` Ezek a változók megtartják az adatbázis elérésének helyét és kulcsát. A változók értékei az utolsó lépésben létrehozott adatbázis-példányból szerezhetők be. Ezt a folyamatot interpolációnak nevezzük. További információ az Terraform interpolációról: [interpolációs szintaxis](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
 A konfiguráció tartalmaz egy kimeneti blokkot is, amely a Container példány teljes tartománynevét (FQDN) adja vissza.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
   location            = "${azurerm_resource_group.vote-resource-group.location}"
@@ -134,13 +134,13 @@ output "dns" {
 
 Futtassa `terraform plan` a parancsot a frissített terv létrehozásához és a végrehajtott módosítások megjelenítéséhez. Látnia kell, hogy az Azure Container instance-erőforrás hozzá lett adva a konfigurációhoz.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Végül futtassa a `terraform apply` parancsot a konfiguráció alkalmazásához.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -156,7 +156,7 @@ Navigáljon a Container-példány teljes tartománynevéhez. Ha minden megfelel�
 
 Ha elkészült, az Azure-erőforrások és-erőforráscsoportok a [Terraform Destroy](https://www.terraform.io/docs/commands/destroy.html) paranccsal távolíthatók el.
 
-```azurecli-interactive
+```bash
 terraform destroy -auto-approve
 ```
 

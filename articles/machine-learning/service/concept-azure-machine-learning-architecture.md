@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035594"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170431"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning működése: Architektúra és fogalmak
 
@@ -63,10 +63,10 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 + <a href="#compute-targets">Számítási célok</a>
 + <a href="#training-scripts">Betanítási szkript</a>
 + <a href="#runs">Futtatás</a>
++ <a href="#environments">Környezetben</a>
 + <a href="#github-tracking-and-integration">Git-követés</a>
 + <a href="#snapshots">Snapshot</a>
 + <a href="#activities">Tevékenység</a>
-+ <a href="#images">Rendszerkép</a>
 + <a href="#deployment">Üzembe helyezés</a>
 + <a href="#web-service-deployments">Webszolgáltatások</a>
 + <a href="#iot-module-deployments">IoT modulok</a>
@@ -180,28 +180,15 @@ Egy tevékenység egy hosszú ideig futó művelet jelöli. A következő művel
 
 A tevékenységek az SDK-n vagy a webes felületen keresztül nyújthatnak értesítéseket, így könnyen nyomon követheti a műveletek előrehaladását.
 
-### <a name="images"></a>Képek
+### <a name="environments"></a>Környezetek
 
-A lemezképek lehetővé teszik a modell megbízható üzembe helyezését, valamint a modell használatához szükséges összes összetevőt. Kép a következő elemeket tartalmazza:
+Az Azure ML-környezetek a reprodukálható környezet létrehozásához használt konfiguráció (Docker/Python/Spark/etc) megadására szolgálnak az adatelőkészítés, a modell betanítása és a modell kiszolgálása céljából. Ezek a Azure Machine Learning munkaterületen található felügyelt és verzióval rendelkező entitások, amelyek lehetővé teszik a reprodukálható, naplózható és hordozható gépi tanulási munkafolyamatokat a különböző számítási célok között.
 
-* A modell.
-* A pontozó szkript vagy alkalmazás. A szkript segítségével adja át a modell bemenetét, és adja vissza a modell kimenetét.
-* A modell vagy pontozási parancsfájl vagy alkalmazás által igényelt függőségek. Például előfordulhat, hogy közé tartozik egy Conda környezet fájlt, amely felsorolja a Python csomagfüggőségek.
+A helyi számítási feladatokhoz környezeti objektumokat is használhat, hogy kifejlessze a betanítási parancsfájlt, újrahasznosítsa ugyanezt a környezetet Azure Machine Learning számítási modelleken a Modelles képzések esetében, és még a modellt is üzembe helyezheti ugyanazzal a környezettel. 
 
-Azure Machine Learning kétféle rendszerképet hozhat létre:
+Megtudhatja, [hogyan hozhat létre és kezelhet újrahasznosítható ml-környezetet](how-to-use-environments.md) a képzéshez és a következtetésekhez.
 
-* **FPGA-rendszerkép**: Az Azure-ban egy mezőre programozható Gate tömbbe való üzembe helyezéskor használatos.
-* **Docker-rendszerkép**: Akkor használatos, ha a FPGA-től eltérő számítási célokat kíván üzembe helyezni. Ilyenek például a Azure Container Instances és az Azure Kubernetes szolgáltatás.
 
-Azure Machine Learning biztosít egy alapszintű rendszerképet, amelyet alapértelmezés szerint használ a rendszer. Egyéni lemezképeket is megadhat.
-
-### <a name="image-registry"></a>Regisztrációs adatbázisba
-
-A rendszerképeket a munkaterületen a **rendszerkép beállításjegyzékében** kell katalogizálni. A rendszerkép létrehozásakor további metaadatokat is megadhat, így lekérdezheti őket, hogy később is megtalálják a rendszerképet.
-
-A lemezképek létrehozásával kapcsolatos példa: [lemezkép besorolási modell telepítése Azure Container Instancesban](tutorial-deploy-models-with-aml.md).
-
-Példa egy modell egyéni rendszerkép használatával történő üzembe helyezésére: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
 ### <a name="deployment"></a>Környezet
 

@@ -1,68 +1,58 @@
 ---
-title: Az Azure Functions beállítása az Azure egyéni szolgáltatók
-description: Ez az oktatóanyag ismerteti, hogyan hozhat létre egy Azure-függvényt, és állítsa be az Azure egyéni szolgáltatók a kerül
+title: Azure Functions beállítása egyéni Azure-szolgáltatók számára
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Azure Function-alkalmazást, és hogyan állíthatja be az egyéni Azure-szolgáltatókkal való együttműködésre
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: d7e4de43659db88bfd9aad40cc3b9f1753189bba
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6b5ab6948d382a9925c9ced91e04f360ecf51a0e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799993"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173026"
 ---
-# <a name="setup-azure-functions-for-azure-custom-providers"></a>Az Azure Functions beállítása az Azure egyéni szolgáltatók
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions beállítása egyéni Azure-szolgáltatók számára
 
-Egyéni szolgáltatók lehetővé teszik az Azure-ban a munkafolyamatok testreszabása. Egy egyéni szolgáltató az Azure között létrejött szerződés és a egy `endpoint`. Ebben az oktatóanyagban a folyamat az Azure-függvény beállítása egy egyéni szolgáltató használatára fog áthaladni `endpoint`.
+Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyéni szolgáltatók használatával megváltoztathatja a munkafolyamatokat az Azure-ban. Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy Azure Function-alkalmazást egyéni szolgáltatói végpontként való működéshez.
 
-Ebben az oktatóanyagban meg van osztva az alábbi lépéseket:
-
-- Az Azure-függvény létrehozása
-- Telepítse az Azure Table-kötések
-- Frissítse a RESTful HTTP-metódusok
-- Az Azure Resource Manager NuGet-csomagok hozzáadása
-
-Ebben az oktatóanyagban az alábbi oktatóanyagok hoz létre:
-
-- [Az Azure Portalon az első Azure-függvény létrehozása](../azure-functions/functions-create-first-azure-function.md)
-
-## <a name="creating-the-azure-function"></a>Az Azure-függvény létrehozása
+## <a name="create-the-azure-function-app"></a>Az Azure Function-alkalmazás létrehozása
 
 > [!NOTE]
-> Ebben az oktatóanyagban hozunk létre egy Azure-függvény használatával egy egyszerű service-végpont, azonban egy egyéni szolgáltató használhat bármilyen nyilvánosan elérhető `endpoint`. Az Azure Logic Apps, az Azure API Management és az Azure Web Apps alternatívával néhány nagyszerű.
+> Ebben az oktatóanyagban egy egyszerű szolgáltatási végpontot hoz létre, amely egy Azure Function alkalmazást használ. Az egyéni szolgáltatók azonban bármilyen nyilvánosan elérhető végpontot használhatnak. Az alternatívák közé tartozik az Azure Logic Apps, az Azure API Management és a Azure App Service Web Apps funkciója.
 
-Ez az oktatóanyag elindításához kövesse az oktatóanyag [az első Azure-függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md). Az oktatóanyagban létrehoz egy .NET core-webhook függvény módosítható az Azure Portalon.
+Az oktatóanyag elindításához először kövesse az [első Azure Function-alkalmazás létrehozása a Azure Portalon](../azure-functions/functions-create-first-azure-function.md)című oktatóanyagot. Ez az oktatóanyag létrehoz egy .NET Core webhook-függvényt, amely módosítható a Azure Portal. Emellett az aktuális oktatóanyag alapja is.
 
-## <a name="install-azure-table-bindings"></a>Telepítse az Azure Table-kötések
+## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage-kötések telepítése
 
-Ebben a szakaszban fog áthaladni gyors lépések az Azure Table storage-kötések telepítéséhez.
+Az Azure Table Storage-kötések telepítése:
 
-1. Keresse meg a `Integrate` a HttpTrigger lapján.
-2. Kattintson a `+ New Input`.
-3. Válassza a(z) `Azure Table Storage` lehetőséget.
-4. Telepítse a `Microsoft.Azure.WebJobs.Extensions.Storage` Ha nem telepítette.
-5. Frissítés a `Table parameter name` "tableStorage", és a `Table name` a "myCustomResources".
-6. Mentse a frissített bemeneti paraméter.
+1. Nyissa meg a HttpTrigger **integráció** lapját.
+1. Válassza az **+ új bevitel**lehetőséget.
+1. Válassza az **Azure Table Storage**lehetőséget.
+1. Telepítse a Microsoft. Azure. webjobs. Extensions. Storage bővítményt, ha még nincs telepítve.
+1. A **Table paraméter neve** mezőbe írja be a **tableStorage**nevet.
+1. A **tábla neve** mezőbe írja be a **myCustomResources**nevet.
+1. A frissített bemeneti paraméter mentéséhez válassza a **Mentés** lehetőséget.
 
-![Egyéni szolgáltatók áttekintése](./media/create-custom-providers/azure-functions-table-bindings.png)
+![Az egyéni szolgáltatók áttekintése táblázatos kötéseket mutat](./media/create-custom-providers/azure-functions-table-bindings.png)
 
-## <a name="update-restful-http-methods"></a>Frissítse a RESTful HTTP-metódusok
+## <a name="update-restful-http-methods"></a>REST-alapú HTTP-metódusok frissítése
 
-Ebben a szakaszban fog áthaladni az egyéni szolgáltató RESTful kérési metódusainak tartalmazza az Azure-függvény beállításának gyors lépéseit.
+Az Azure-függvény beállításával adja meg az egyéni szolgáltató REST-kérelmi módszereit:
 
-1. Keresse meg a `Integrate` a HttpTrigger lapján.
-2. Frissítés a `Selected HTTP methods` való: GET, PUT, POST és DELETE.
+1. Nyissa meg a HttpTrigger **integráció** lapját.
+1. A **kiválasztott http-metódusok**területen válassza a **beolvasás**, **Közzététel**, **Törlés**és **put**lehetőséget.
 
-![Egyéni szolgáltatók áttekintése](./media/create-custom-providers/azure-functions-http-methods.png)
+![Az egyéni szolgáltató áttekintése HTTP-metódusok megjelenítésével](./media/create-custom-providers/azure-functions-http-methods.png)
 
-## <a name="modifying-the-csproj"></a>A csproj módosítása
+## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Resource Manager NuGet-csomagok hozzáadása
 
 > [!NOTE]
-> A csproj hiányzik a könyvtárból, manuálisan hozzáadni, vagy egyszer meg fog jelenni a `Microsoft.Azure.WebJobs.Extensions.Storage` bővítmény telepítve van a függvényt.
+> Ha a C# projektfájl hiányzik a projekt könyvtárából, manuálisan is hozzáadhatja. Vagy ekkor megjelenik a Microsoft. Azure. webjobs. Extensions. Storage bővítmény a Function alkalmazásban.
 
-Ezután a Microsoft frissíti a csproj-fájl hasznos NuGet-kódtárak együttese könnyebben egyéni szolgáltatóktól származó bejövő kérelmek elemzése. Kövesse a lépéseket [-kiterjesztések hozzáadása a portálról](../azure-functions/install-update-binding-extensions-manual.md) és frissíti a csproj a következő csomag mutató hivatkozásokat:
+Ezután frissítse a C# projektfájlt, hogy tartalmazza a hasznos NuGet-kódtárakat. Ezek a kódtárak megkönnyítik az egyéni szolgáltatóktól érkező kérések elemzését. Kövesse a [bővítmények a portálról való hozzáadásának](../azure-functions/install-update-binding-extensions-manual.md) lépéseit C# , és frissítse a projektfájlt, hogy tartalmazza a következő csomagok hivatkozásait:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -70,7 +60,7 @@ Ezután a Microsoft frissíti a csproj-fájl hasznos NuGet-kódtárak együttese
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-Minta csproj-fájl:
+A következő XML-elem egy példa C# nevű projektfájl:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -88,6 +78,7 @@ Minta csproj-fájl:
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk egy Azure-függvényt Azure egyéni szolgáltatóként beállítottuk `endpoint`. Nyissa meg a következő cikkben megtudhatja, hogyan hozzon létre egy egyéni REST-alapú szolgáltató `endpoint`.
+Ebben az oktatóanyagban egy Azure Function-alkalmazást állít be, amely Azure-beli egyéni szolgáltatói végpontként működik.
 
-- [Oktatóanyag: Jelentésszerkesztő egy REST-alapú egyéni szolgáltatói végpont](./tutorial-custom-providers-function-authoring.md)
+Ha szeretné megtudni, hogyan hozhat létre egy Rest-beli egyéni szolgáltatói végpontot, tekintse [meg az oktatóanyagot: REST-beli egyéni szolgáltatói végpont](./tutorial-custom-providers-function-authoring.md)létrehozása.
+

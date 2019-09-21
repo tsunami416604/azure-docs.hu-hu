@@ -1,45 +1,45 @@
 ---
-title: Az Azure-ban a terraform egy küllős hálózati ellenőrzése
-description: Küllős hálózati topológiák virtuális hálózatokkal ellenőrzése az oktatóanyagban egy másik csatlakozik.
+title: Hub-és küllős hálózat ellenőrzése az Azure-beli Terraform
+description: Oktatóanyag a hub és a küllős hálózati topológia ellenőrzéséhez az összes, egymáshoz csatlakoztatott virtuális hálózattal.
 services: terraform
 ms.service: azure
-keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure,  vnet peering,
+keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, vnet-társítás,
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128267"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169712"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Oktatóanyag: Az Azure-ban a terraform egy küllős hálózati ellenőrzése
+# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Oktatóanyag: Hub-és küllős hálózat ellenőrzése az Azure-beli Terraform
 
-Ebben a cikkben hajtsa végre az oktatóanyag-sorozatban az előző cikkben létrehozott terraform fájlokat. Ez a bemutató virtuális hálózatok közötti kapcsolat egy érvényesítése.
+Ebben a cikkben a sorozat előző cikkében létrehozott Terraform-fájlokat hajtja végre. Ennek eredményeképpen a bemutató virtuális hálózatok közötti kapcsolat érvényesítése történik.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Küllős topológia implementálása az agyi virtuális hálózat HCL (HashiCorp Language) használata
-> * Ellenőrizze az erőforrások üzembe helyezni a Terraform csomag használatával
-> * Használja a Terraform alkalmazni az erőforrások létrehozása az Azure-ban
+> * A HCL (HashiCorp Language) használata a hub-VNet megvalósításához küllős topológiában
+> * Terraform-csomag használata a telepítendő erőforrások ellenőrzéséhez
+> * Erőforrások létrehozása az Azure-ban a Terraform alkalmazással
 > * A különböző hálózatok közötti kapcsolat ellenőrzése
-> * Szüntesse meg az összes erőforrást a Terraform használata
+> * Az összes erőforrás megsemmisítése a Terraform használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák az Azure-beli terraform](./terraform-hub-spoke-introduction.md).
-1. [A helyszíni virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-on-prem.md).
-1. [Hub virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-hub-network.md).
-1. [A hub virtuális hálózati berendezés létrehozása terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md).
-1. [A terraform használatával Azure-beli virtuális hálózatok létrehozásához egy adott küllőre](./terraform-hub-spoke-spoke-network.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
+1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
+1. [Hozzon létre egy hub virtuális hálózatot a Terraform az Azure-ban](./terraform-hub-spoke-hub-network.md).
+1. [Hozzon létre egy hub virtuális hálózati készüléket a Terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md).
+1. [Hozzon létre egy küllős virtuális hálózatot a Terraform az Azure-ban](./terraform-hub-spoke-spoke-network.md).
 
-## <a name="verify-your-configuration"></a>A konfiguráció ellenőrzése
+## <a name="verify-your-configuration"></a>Konfiguráció ellenőrzése
 
-Befejezése után a [Előfeltételek](#prerequisites), győződjön meg arról, hogy jelen-e a megfelelő konfigurációs fájlok.
+Az [Előfeltételek](#prerequisites)teljesítése után ellenőrizze, hogy a megfelelő konfigurációs fájlok találhatók-e.
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
@@ -59,90 +59,90 @@ Befejezése után a [Előfeltételek](#prerequisites), győződjön meg arról, 
     cd hub-spoke
     ```
 
-1. Futtassa a `ls` paranccsal ellenőrizheti, hogy a `.tf` az előző oktatóanyagok létrehozott konfigurációs fájlok találhatók:
+1. A parancs futtatásával ellenőrizze, hogy `.tf` az előző oktatóanyagokban létrehozott konfigurációs fájlok szerepelnek-e a listáján: `ls`
 
-    ![A Terraform bemutató konfigurációs fájlok](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
+    ![Terraform bemutató konfigurációs fájljai](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
 ## <a name="deploy-the-resources"></a>Az erőforrások üzembe helyezése
 
-1. A Terraform szolgáltató inicializálása:
+1. A Terraform-szolgáltató inicializálása:
     
     ```bash
     terraform init
     ```
     
-    ![Példa eredmények "terraform init" parancs](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
+    ![Példa a "Terraform init" parancs eredményeire](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Futtassa a `terraform plan` paranccsal tekintheti meg az üzembe helyezés végrehajtása előtt a hatás:
+1. A következő `terraform plan` parancs futtatásával tekintheti meg a telepítés hatását a végrehajtás előtt:
 
     ```bash
     terraform plan
     ```
     
-    ![Példa eredmények "terraform csomag" parancs](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
+    ![Példa a "Terraform Plan" parancs eredményeire](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-plan.png)
 
-1. A megoldás üzembe helyezéséhez:
+1. A megoldás üzembe helyezése:
 
     ```bash
     terraform apply
     ```
     
-    Adja meg `yes` az üzembe helyezés megerősítéséhez.
+    `yes` Ha a rendszer kéri, hogy erősítse meg a telepítést.
 
-    ![Példa eredmények "terraform alkalmazás" parancs](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
+    ![Példa a "Terraform Apply" parancs eredményeire](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
-## <a name="test-the-hub-vnet-and-spoke-vnets"></a>Tesztelje az agyi virtuális hálózat és a küllő virtuális hálózatok
+## <a name="test-the-hub-vnet-and-spoke-vnets"></a>A hub VNet és küllős virtuális hálózatok tesztelése
 
-Ez a szakasz bemutatja, hogyan tesztelheti a kapcsolat a szimulált helyszíni környezet és az agyi virtuális hálózat.
+Ez a szakasz bemutatja, hogyan tesztelheti a kapcsolatot a szimulált helyszíni környezet és a hub VNet között.
 
-1. Az Azure Portalon keresse meg a **rendszert-vnet-rg** erőforráscsoportot.
+1. A Azure Portal keresse meg a **helyszíni-vnet-RG** erőforráscsoportot.
 
-1. Az a **rendszert-vnet-rg** lapra, válassza ki a virtuális gép nevű **rendszert virtuális**.
+1. Az **helyszíni-vnet-RG** lapon válassza ki a **helyszíni-VM**nevű virtuális gépet.
 
 1. Kattintson a **Csatlakozás** gombra.
 
-1. Szövege mellett **bejelentkezés a virtuális gép helyi fiókjával**, másolatot a **ssh** parancsot a vágólapra.
+1. A **virtuális gép helyi fiókja használatával**történő szövegbevitel mellett másolja az **SSH** -parancsot a vágólapra.
 
-1. A Linux. Ehhez futtassa `ssh` csatlakozhat a szimulált helyszíni környezetet. A megadott jelszó használata a `on-prem.tf` alkalmazásparaméter-fájlt.
+1. A Linux. Ehhez futtassa `ssh` csatlakozhat a szimulált helyszíni környezetet. Használja a `on-prem.tf` paraméter fájlban megadott jelszót.
 
-1. Futtassa a `ping` parancsot az agyi virtuális hálózat a jumpbox virtuális Géphez való kapcsolódás tesztelése:
+1. Futtassa a `ping` parancsot a Jumpbox virtuális géphez való kapcsolat teszteléséhez a hub VNet:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Futtassa a `ping` parancsot minden egyes küllőben a jumpbox virtuális gépek kapcsolatának teszteléséhez:
+1. Futtassa a `ping` parancsot a Jumpbox virtuális gépekkel való kapcsolat teszteléséhez minden egyes küllőn:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Kilép az ssh-munkamenetet a a **rendszert virtuális** virtuális gépet, adja meg `exit` nyomja le az ENTER &lt;Enter >.
+1. Az SSH-munkamenetből a **helyszíni-VM** virtuális gépen való kilépéshez írja &lt;be `exit` a parancsot, majd nyomja le az ENTER billentyűt >.
 
-## <a name="troubleshoot-vpn-issues"></a>VPN-hibák elhárítása
+## <a name="troubleshoot-vpn-issues"></a>VPN-problémák elhárítása
 
-VPN-hibák megoldása kapcsolatos információkért lásd: a cikk [egy hibrid VPN-kapcsolat hibaelhárítása](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn).
+A VPN-hibák megoldásával kapcsolatos további információkért tekintse meg a [hibrid VPN-kapcsolat hibaelhárítása](/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn)című cikket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az oktatóanyag-sorozatban létrehozott erőforrásokat.
 
-1. A csomag deklarálva az erőforrások eltávolítása:
+1. Távolítsa el a tervben deklarált erőforrásokat:
 
     ```bash
     terraform destroy
     ```
 
-    Adja meg `yes` az erőforrások az eltávolítás megerősítéséhez.
+    Ha `yes` a rendszer felszólítja az erőforrások eltávolításának megerősítésére, írja be a következőt:.
 
-1. Módosítsa a könyvtárakat a szülő könyvtár:
+1. Könyvtárak módosítása a szülő könyvtárba:
 
     ```bash
     cd ..
     ```
 
-1. Törölje a `hub-scope` könyvtárat (például az összes ahhoz tartozó fájlokat):
+1. Törölje a `hub-scope` könyvtárat (beleértve az összes fájlját):
 
     ```bash
     rm -r hub-spoke
@@ -151,4 +151,4 @@ Ha már nincs rá szükség, törölje az oktatóanyag-sorozatban létrehozott e
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Tudjon meg többet az Azure-ban a Terraform használatával](/azure/terraform)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

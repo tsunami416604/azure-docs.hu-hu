@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985349"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172789"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-Finomhangolás a jelentős nézetekkel 
 A Azure SQL Data Warehouseban található anyagbeli nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
@@ -34,7 +34,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 
 | Összehasonlítás                     | Nézet                                         | Materialized View             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|Definíció megtekintése                 | Az Azure-adattárházban tárolva.              | Az Azure-adattárházban tárolva.    
+|Meghatározás megtekintése                 | Az Azure-adattárházban tárolva.              | Az Azure-adattárházban tárolva.    
 |Tartalom megtekintése                    | A rendszer minden alkalommal létrehozta a nézetet, amikor a nézet használatban van.   | Az Azure-adattárházban előre feldolgozva és tárolva a nézet létrehozása során. Frissítve, mert a rendszer az adatokat hozzáadja az alapul szolgáló táblákhoz.                                             
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve                          
 |Az összetett lekérdezések adatainak megtekintési sebessége     | lassú                                         | Gyors  
@@ -59,7 +59,7 @@ Más adattárház-szolgáltatókkal való összehasonlítás esetén a Azure SQL
 - Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).
 - A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Gyakori alkalmazási helyzetek  
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket: 
 
@@ -84,19 +84,21 @@ A lekérdezési teljesítmény javítása érdekében az alábbi általános út
 
 **Számítási feladatok tervezése**
 
-- Mielőtt megkezdené az alapvető nézetek létrehozását, fontos, hogy alapos ismeretekkel rendelkezzen a számítási feladatokról a lekérdezési minták, a fontosság, a gyakoriság és az eredményül kapott adatok mérete tekintetében.  
+Mielőtt megkezdené az alapvető nézetek létrehozását, fontos, hogy alapos ismeretekkel rendelkezzen a számítási feladatokról a lekérdezési minták, a fontosság, a gyakoriság és az eredményül kapott adatok mérete tekintetében.  
 
-- A felhasználók elolvashatják a WITH_RECOMMENDATIONS < SQL_statement > a lekérdezés-optimalizáló által javasolt, anyagilag megtekinthető nézetekhez.  Mivel ezek a javaslatok lekérdezés-specifikusak, az egyetlen lekérdezés előnyeit kihasználó, egy adott számítási feladathoz tartozó más lekérdezések esetében nem lehet optimális.  Értékelje ki ezeket az ajánlásokat a számítási feladatokhoz szükséges szem előtt tartva.  Az ideális, lényeges nézetek a számítási feladatok teljesítményének kihasználása.  
+A felhasználók elolvashatják a WITH_RECOMMENDATIONS < SQL_statement > a lekérdezés-optimalizáló által javasolt, anyagilag megtekinthető nézetekhez.  Mivel ezek a javaslatok lekérdezés-specifikusak, az egyetlen lekérdezés előnyeit kihasználó, egy adott számítási feladathoz tartozó más lekérdezések esetében nem lehet optimális.  Értékelje ki ezeket az ajánlásokat a számítási feladatokhoz szükséges szem előtt tartva.  Az ideális, lényeges nézetek a számítási feladatok teljesítményének kihasználása.  
 
 **Vegye figyelembe a gyorsabb lekérdezések és a díjak közötti kompromisszumot.** 
 
-- Minden jelentős nézet esetében a tárolási díj és a megtekintési díj a rekordos küldéssel. Azure SQL Data Warehouse Server-példányon egyetlen rekord található.  Ha túl sok a nagy mennyiségű nézet, a rekordokat kezelő munkaterhelése növekedni fog, és a jelentős méretű nézeteket kihasználó lekérdezések teljesítménye csökkenhet, ha a rekordos megjelenítés nem képes elég gyorsan áthelyezni az adatok indexelési szegmenseit  A felhasználóknak ellenőriznie kell, hogy az összes jelentős nézetből felmerült költségek ellensúlyozzák-e a lekérdezési teljesítmény nyereségét.  Futtassa ezt a lekérdezést a következő adatbázisban található, anyagként szolgáló nézet listájához: 
+Minden egyes anyag nézet esetében az adattárolási költségeket és a nézet fenntartásának költségeit kell megfizetni.  Az alaptáblákban megjelenő adatváltozások esetén az anyagilag megjelenő nézet mérete megnő, és a fizikai szerkezete is megváltozik.  A lekérdezési teljesítmény romlásának elkerülése érdekében a rendszer az adatraktár-motortól külön kezeli az egyes összes típusú nézeteket, beleértve a sorok áthelyezését a különbözeti tárolóból a oszlopcentrikus index szegmensbe, és összevonja az adatok változásait.  A karbantartási munkaterhelés magasabb lesz, ha az anyagilag megjelenő nézetek és az alaptábla változásai növekednek.   A felhasználóknak ellenőriznie kell, hogy az összes jelentős nézetből felmerült költségek ellensúlyozzák-e a lekérdezési teljesítmény nyereségét.  
+
+Ezt a lekérdezést futtathatja a következő adatbázisban található, anyagként szolgáló nézet listájára: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 A kimutatott nézetek számának csökkentésére szolgáló beállítások: 
 

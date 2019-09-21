@@ -1,21 +1,18 @@
 ---
-title: 'Gyors útmutató: Geo mesterséges intelligencia beállítása'
-titleSuffix: Azure Data Science Virtual Machine
-description: Ismerje meg, hogyan hozhat létre, és a földrajzi mesterséges Intelligencia adatelemző virtuális gép konfigurálása. A földrajzi mesterséges Intelligencia adatelemzési virtuális gépet használó földrajzi mesterséges Intelligencia és gépi Tanulási megoldások létrehozásához szükséges eszközöket biztosít.
-keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
-services: machine-learning
+title: 'Gyors útmutató: Geo AI DSVM létrehozása'
+description: Geo AI-Data Science Virtual Machine konfigurálása és létrehozása az Azure-ban térinformatikai elemzésekhez és gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208060"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170725"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Gyors útmutató: Az Azure-beli geo mesterséges intelligencia-beli virtuális gép beállítása 
 

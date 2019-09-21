@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208294"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170683"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
@@ -30,7 +30,7 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
-* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
 * Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` `about:config`jelölőt. [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). `mousewheel.enable_pixel_scrolling` A`False`beállítást is érdemes megfontolni. [További információk](https://support.mozilla.org/questions/981140).
 * **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://studio.azureml.net/). Kipróbálhatja ingyenesen, hogy segítsen az első lépésekben.
 
@@ -58,8 +58,8 @@ Ezután fűzze össze a két fájlt:
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **Word\_freq\_* Word*** az e-mailben szereplő szavakszázalékos arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%-a.
-* Oszlopok, például a **char\_freq\_* karakter*** az e-mailben szereplő összes karakter százalékos arányát jelzi.
+* Az olyan oszlopok, mint a **Word\_freq\_* Word*** az e-mailben *szereplő szavak százalékos*arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például a **char\_freq\_* karakter*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
 * **tőke\_futtatása\_hossza\_leghosszabb** a leghosszabb hosszúsága nagybetűk sorozata.
 * **tőke\_futtatása\_hossza\_átlagos** átlagos hosszúsága nagybetűk összes sorrendje.
 * **tőke\_futtatása\_hossza\_teljes** teljes hosszúsága nagybetűk összes sorrendje.
@@ -182,7 +182,7 @@ Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentke
 
    ![A Azure Machine Learning Studio munkaterület azonosítója](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-1. Válassza ki az **engedélyezési** jogkivonatok lapot. Jegyezze fel az **elsődleges engedélyezési jogkivonat**értékét.
+1. Válassza ki az **engedélyezési jogkivonatok** lapot. Jegyezze fel az **elsődleges engedélyezési jogkivonat**értékét.
 
    ![A Azure Machine Learning Studio elsődleges engedélyezési jogkivonat](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Töltse be a **AzureML** csomagot, majd állítsa be a változók értékeit a token és a munkaterület azonosítójával az R-munkamenetben a DSVM:
@@ -233,7 +233,7 @@ A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. 
 
 - [Útmutató a képeken belüli termékek észlelésére szolgáló teljes körű megoldás](https://github.com/Azure/cortana-intelligence-product-detection-from-images)létrehozásához: A képészlelés olyan módszer, amellyel objektumokat lehet megkeresni és osztályozni a képeken belül. A technológiának lehetősége van arra, hogy hatalmas előnyökkel jutalmazza a sok valós üzleti tartományát. A kiskereskedők például használhatja ezt a módszert meghatározni, melyik terméket olyan rendelkezik felülettől a kereskedelmi. Ez az információ viszonzásul segíti a Termékleltár kezelése tárolók. 
 
-- [Mély tanulási hang](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Ebből az oktatóanyagból megtudhatja, hogyan taníthat mély tanulási modellt a [városi hangok](https://urbansounddataset.weebly.com/)adatkészletében a Hangesemények észlelésére. Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
+- [Mély tanulási hang](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Ebből az oktatóanyagból megtudhatja, hogyan taníthat mély tanulási modellt a [városi hangok adatkészletében](https://urbansounddataset.weebly.com/)a Hangesemények észlelésére. Az oktatóanyag áttekintést nyújt a hangadatokkal való munkavégzésről.
 
 - [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez az útmutató bemutatja, hogyan hozhat létre és taníthat két különböző neurális hálózati architektúrát: Hierarchikus figyelmet igényel a hálózat és a hosszú rövid távú memória (LSTM). Ezeket a Neurális hálózatokat a deep learninghez a Keras API használatával szöveges dokumentumok besorolását. A kerasz a legelterjedtebb mély tanulási keretrendszerek közül három: Microsoft Cognitive Toolkit, TensorFlow és theano.
 
@@ -367,7 +367,7 @@ Rattle egy lapon-alapú felületet használja. A lapok többsége megfelel a [cs
 
 Betölteni, és az adatkészlet konfigurálása:
 
-1. A fájl betöltéséhez válassza az adatlapot.
+1. A fájl betöltéséhez válassza az **adatlapot.**
 1. Válassza ki a **fájlnév**melletti választót, majd válassza az **spambaseHeaders.** -adatelemet.
 1. A fájl betöltése. Válassza a **végrehajtás**lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
 1. Rattle tartozik helyesen azonosítani a **levélszemét** oszlop célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric**értékre.
@@ -382,7 +382,7 @@ A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adatok hisztogr
 
 1. Válassza ki **Disztribúciók**.
 1. A **word_freq_remove** és a **word_freq_you**beállításnál válassza a **hisztogram**lehetőséget.
-1. Válassza a **Végrehajtás** lehetőséget. Mindkét sűrűséget egyetlen Graph-ablakban kell látnia, ahol egyértelmű, hogy a szó sokkal gyakrabban jelenik meg az e-mailekben, mint az _Eltávolítás_.
+1. Válassza a **Végrehajtás** lehetőséget. Mindkét sűrűséget egyetlen Graph-ablakban kell látnia, ahol egyértelmű, hogy _a szó sokkal gyakrabban jelenik meg az_ e-mailekben, mint az _Eltávolítás_.
 
 A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozásához:
 
@@ -390,7 +390,7 @@ A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozá
 1. Válassza a **Végrehajtás** lehetőséget.
 1. Rattle figyelmeztetést jelenít meg, hogy azt javasolja, legfeljebb 40 változókat. Válassza ki **Igen** megtekintéséhez az ábrázolást.
 
-Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel ésa laborokkal, például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
+Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_, például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
 
 A szavak közötti korrelációk numerikus értékei a **Tallózás** ablakban érhetők el. Fontos megjegyezni, hogy például a _technológia_ negatívan összefügg a _saját és a_ _pénzével_.
 
@@ -548,6 +548,6 @@ A mókus SQL használatával is lekérdezheti. Kövesse a PostgreSQL-hez hasonl�
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos cikkek áttekintését itt találja: csoportos adatelemzési [folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos cikkek áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
-A csoportos adatelemzési folyamat lépéseit bemutató, részletes útmutatót a [csoportos](../team-data-science-process/walkthroughs.md)adatelemzési folyamatról szóló útmutatóban talál. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.
+A csoportos adatelemzési folyamat lépéseit bemutató, részletes útmutatót a csoportos adatelemzési [folyamatról szóló útmutatóban](../team-data-science-process/walkthroughs.md)talál. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.

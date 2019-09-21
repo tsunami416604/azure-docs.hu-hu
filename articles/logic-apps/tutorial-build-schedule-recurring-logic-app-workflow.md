@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931565"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172177"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: Automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -93,7 +93,7 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    ![Változás időköze és gyakorisága](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Tulajdonság | Kötelező | Value | Leírás |
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
    | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
@@ -142,7 +142,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![Bing Maps-kapcsolatok létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Tulajdonság | Kötelező | Value | Leírás |
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
    | **API-kulcs** | Igen | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -162,7 +162,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    ![Az "útvonal lekérése" művelet részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Tulajdonság | Kötelező | Value | Leírás |
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | **1. útvonalpont** | Igen | <*kiindulási-hely*> | Az útvonal kiindulópontja |
    | **2. útvonalpont** | Igen | <*érkezési-hely*> | Az útvonal célállomása |
@@ -193,7 +193,7 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
 1. Adja meg a változó részleteit az itt leírt módon:
 
-   | Tulajdonság | Kötelező | Value | Leírás |
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | **Name** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
    | **Típus** | Igen | Integer | A változó adattípusa |
@@ -235,7 +235,7 @@ Ezután adjon hozzá egy feltételt, amely ellenőrzi, hogy a jelenlegi utazás 
 
 1. Az előző művelet alatt válassza az **új lépés**lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**elemet, majd keressen rá a "feltétel" kifejezésre, és válassza ki a **feltétel** műveletet.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be szűrőként a "feltétel" kifejezést. A műveletek listából válassza ki a **feltétel** műveletet.
 
    ![A "feltétel" művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -243,19 +243,19 @@ Ezután adjon hozzá egy feltételt, amely ellenőrzi, hogy a jelenlegi utazás 
 
 1. Hozzon létre egy olyan feltételt, amely ellenőrzi, hogy a **travelTime** tulajdonság értéke meghaladja-e a megadott korlátot az itt leírt módon:
 
-   1. A feltételen belül kattintson a feltétel bal oldalán található **érték választása** mezőre.
+   1. A feltételben kattintson a feltétel bal oldalán található **érték választása** mezőre.
 
-   1. Amikor megjelenik a dinamikus tartalom lista, a **változók**területen válassza a **travelTime** tulajdonságot.
+   1. A megjelenő dinamikus tartalom listából válassza ki a **travelTime** tulajdonságot a **változók**alatt.
 
       ![Feltétel kiépítése bal oldalon](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. Az összehasonlítás mezőben válassza ki a következő operátort: **nagyobb, mint**
+   1. A középső összehasonlítás mezőben válassza a **nagyobb, mint** operátor elemet.
 
    1. A feltétel jobb oldalán található **érték választása** mezőben adja meg a következő korlátot:`15`
 
       Ha elkészült, a feltétel a következő példához hasonlóan néz ki:
 
-      ![Feltétel létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Befejezett feltétel](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Mentse a logikai alkalmazást.
 

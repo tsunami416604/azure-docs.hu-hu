@@ -1,40 +1,40 @@
 ---
-title: A hub virtuális hálózati berendezés létrehozása terraform az Azure-ban
-description: Az oktatóanyag valósítja meg, amely a más hálózatok közötti közös kapcsolódási pontként viselkedik agyi virtuális hálózat létrehozása
+title: Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban
+description: Az oktatóanyag olyan hub-VNet létrehozását valósítja meg, amely az összes többi hálózat között közös kapcsolódási pontként működik
 services: terraform
 ms.service: azure
-keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure, VNet peering, hub-spoke, hub.
+keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, VNet peering, hub küllős, hub.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 4155a67f70ccc238c6046c07dded7f0214689617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886826"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173413"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Oktatóanyag: A hub virtuális hálózati berendezés létrehozása terraform az Azure-ban
+# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban
 
-A **VPN-eszköz** olyan eszköz, amely egy helyszíni hálózat számára külső kapcsolatot tartalmaz. A VPN-eszköz lehet hardvereszköz vagy valamilyen szoftvermegoldás. Egy példa a megoldás az Útválasztás és távelérés szolgáltatás (RRAS) a Windows Server 2012-ben. További információ a VPN-berendezések: [tudnivalók a VPN-eszközök a Site-to-Site VPN Gateway kapcsolatokhoz](/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+A **VPN-eszköz** olyan eszköz, amely külső kapcsolatot biztosít a helyszíni hálózattal. A VPN-eszköz lehet hardveres eszköz vagy szoftveres megoldás. Egy szoftveres megoldás például az Útválasztás és távelérés szolgáltatás (RRAS) a Windows Server 2012 rendszerben. A VPN-készülékekről további információt a [helyek közötti VPN Gateway kapcsolatok VPN-eszközeinek ismertetése](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)című témakörben talál.
 
-Az Azure széles, amelyből válassza ki a hálózati virtuális berendezések támogatja. Ebben az oktatóanyagban egy Ubuntu-rendszerkép szolgál. Az Azure-ban támogatott eszköz megoldások széles körű számos kapcsolatos további információkért tekintse meg a [hálózati berendezések kezdőlap](https://azure.microsoft.com/solutions/network-appliances/).
+Az Azure olyan hálózati virtuális berendezések széles választékát támogatja, amelyekből ki kell választania. Ebben az oktatóanyagban egy Ubuntu-rendszerképet használunk. Ha többet szeretne megtudni az Azure-ban támogatott eszközök széles választékáról, tekintse meg a [hálózati berendezések kezdőlapját](https://azure.microsoft.com/solutions/network-appliances/).
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Küllős topológia implementálása az agyi virtuális hálózat HCL (HashiCorp Language) használata
-> * A Terraform használata Hub hálózati virtuális gép témán berendezés létrehozása
-> * A Terraform használata útvonalakat használ a CustomScript bővítmény engedélyezése
-> * Küllős topológiájú átjáró útválasztási táblázatokat létrehozása Terraform használata
+> * A HCL (HashiCorp Language) használata a hub-VNet megvalósításához küllős topológiában
+> * A Terraform használata olyan központi hálózati virtuális gép létrehozásához, amely készülékként működik
+> * Útvonalak engedélyezése a Terraform használatával CustomScript-bővítményekkel
+> * A Terraform használata a sugaras átjáró útválasztási tábláinak létrehozásához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák az Azure-beli terraform](./terraform-hub-spoke-introduction.md).
-1. [A helyszíni virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-on-prem.md).
-1. [Hub virtuális hálózat létrehozása az Azure-beli terraform](./terraform-hub-spoke-hub-network.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
+1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
+1. [Hozzon létre egy hub virtuális hálózatot a Terraform az Azure-ban](./terraform-hub-spoke-hub-network.md).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -56,11 +56,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-network-appliance"></a>Deklarálja a hub hálózati berendezés
+## <a name="declare-the-hub-network-appliance"></a>A hub hálózati berendezés deklarálása
 
-A Terraform konfigurációs fájlt, amely deklarálja a helyszíni virtuális hálózat létrehozása.
+Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform konfigurációs fájlt.
 
-1. A Cloud Shellben hozzon létre egy új fájlt `hub-nva.tf`.
+1. A Cloud Shellban hozzon létre egy nevű `hub-nva.tf`új fájlt.
 
     ```bash
     code hub-nva.tf
@@ -68,7 +68,7 @@ A Terraform konfigurációs fájlt, amely deklarálja a helyszíni virtuális h�
 
 1. Másolja az alábbi kódot a szerkesztőbe:
     
-    ```JSON
+    ```hcl
     locals {
       prefix-hub-nva         = "hub-nva"
       hub-nva-location       = "CentralUS"
@@ -277,4 +277,4 @@ A Terraform konfigurációs fájlt, amely deklarálja a helyszíni virtuális h�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A küllő virtuális hálózatok létrehozása terraform az Azure-ban](./terraform-hub-spoke-spoke-network.md)
+> [Küllős virtuális hálózatok létrehozása a Terraform az Azure-ban](./terraform-hub-spoke-spoke-network.md)

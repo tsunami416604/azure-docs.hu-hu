@@ -3,7 +3,7 @@ title: Chef-bővítmény Azure-beli virtuális gépekhez | Microsoft Docs
 description: Telepítse a Chef-ügyfelet egy virtuális gépre a Chef VM bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: roiyz
-ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092557"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169150"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
@@ -28,7 +28,7 @@ A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizál�
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Chef virtuálisgép-bővítmény támogatott az Azure-ban [támogatott operációs rendszerek](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) összes bővítményében.
+A Chef virtuálisgép-bővítmény támogatott az Azure-ban [támogatott operációs rendszerek összes bővítményében](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) .
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 

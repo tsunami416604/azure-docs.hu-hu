@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172968"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172796"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a GitHubról Azure App Service a Jenkins folyamatos integrációja és üzembe helyezése révén
 
 Ez az oktatóanyag egy minta Java-webalkalmazást helyez üzembe a GitHubról a Linuxon való [Azure app Service a](/azure/app-service/containers/app-service-linux-intro) folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) a Jenkins-ben való létrehozásával. Ha a véglegesítések a GitHubba való küldésével frissíti az alkalmazást, a Jenkins automatikusan létrehozza és újból közzéteszi az alkalmazást Azure App Service. Az oktatóanyagban szereplő minta alkalmazás a [Spring boot](https://projects.spring.io/spring-boot/) Framework használatával lett kifejlesztve. 
 
-![Áttekintés](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![A GitHub és a Azure App Service üzembe helyezés áttekintése](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
@@ -97,21 +97,21 @@ Ahhoz, hogy a Jenkins figyelje a GitHubot, és válaszoljon arra, amikor új vé
 
 1. A **Jenkins kezelése** lapon válassza a **rendszer konfigurálása**lehetőséget. 
 
-   ![A System konfigurálása](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![A System beállítása a Jenkins-ben](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. A **GitHub** szakaszban adja meg a GitHub-kiszolgáló adatait. A **GitHub-kiszolgáló hozzáadása** listában válassza a **GitHub-kiszolgáló**lehetőséget. 
 
-   ![GitHub-kiszolgáló hozzáadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![GitHub-kiszolgáló hozzáadása a Jenkins-ben](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Ha nincs kiválasztva a **hookok kezelése** tulajdonság, válassza ki ezt a tulajdonságot. Válassza a **speciális** lehetőséget, így további beállításokat is megadhat. 
 
-   ![További beállításokért válassza a "speciális" lehetőséget.](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![A GitHub-kiszolgáló speciális Jenkins-beállításainak megadása](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. A **további GitHub-műveletek kezelése** listából válassza a **Bejelentkezés és jelszó konvertálása**a tokenbe lehetőséget.
 
-   ![Válassza a "további GitHub-műveletek kezelése" lehetőséget.](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![A bejelentkezési azonosító és a jelszó konvertálása a GitHub-tokenre](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
-1. Válassza ki **a bejelentkezési azonosítót és a jelszót** , így megadhatja a GitHub felhasználónevét és jelszavát. Ha elkészült, válassza a jogkivonathoz tartozó **hitelesítő adatok létrehozása**lehetőséget, amely létrehoz egy [GitHub személyes hozzáférési jogkivonatot (Pat)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
+1. Válassza ki **a bejelentkezési azonosítót és a jelszót** , így megadhatja a GitHub felhasználónevét és jelszavát. Ha elkészült, válassza a **jogkivonathoz tartozó hitelesítő adatok létrehozása**lehetőséget, amely létrehoz egy [GitHub személyes hozzáférési jogkivonatot (Pat)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).   
 
    ![GitHub PAT létrehozása a bejelentkezés és a jelszó alapján](media/tutorial-jenkins-deploy-web-app-azure-app-service/create-github-token-credentials.png)
 
@@ -181,11 +181,11 @@ A Jenkins-ben hozza létre az alkalmazás felépítéséhez és üzembe helyezé
 
 1. Térjen vissza a Jenkins kezdőlapjára, és válassza az **új elem**lehetőséget. 
 
-   ![Válassza ki az "Új elemet"](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Jenkins-folyamat létrehozása](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. Adja meg a folyamat feladatainak nevét, például: "My-Java-Web-App", és válassza a **folyamat**lehetőséget. Az alján kattintson az **OK gombra**.  
 
-   ![Válassza a "folyamat" lehetőséget](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![A Jenkins-folyamat feladatainak neve](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. A Jenkins és a szolgáltatás egyszerű beállítása, hogy a Jenkins a saját hitelesítő adatai használata nélkül is üzembe helyezhető az Azure-ban.
 
@@ -199,7 +199,7 @@ A Jenkins-ben hozza létre az alkalmazás felépítéséhez és üzembe helyezé
       WEB_APP=yourWebAppName
       ```
 
-      ![Válassza a "környezet előkészítése a futtatáshoz" és a környezeti változók beállítása lehetőséget.](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Környezet előkészítése a futtatáshoz és a környezeti változók beállítása](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
@@ -254,7 +254,7 @@ Most adja meg azt a létrehozási és üzembe helyezési parancsfájlt, amelyet 
 
 1. A Jenkins területen válassza ki a korábban létrehozott folyamat feladatot. 
 
-   ![A webalkalmazáshoz tartozó folyamat-feladatok kiválasztása](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Válassza ki a Jenkins-feldolgozási feladatot a webalkalmazáshoz](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. A bal oldali menüben válassza a **Konfigurálás**lehetőséget.
 
@@ -272,7 +272,7 @@ Most adja meg azt a létrehozási és üzembe helyezési parancsfájlt, amelyet 
 
    Ha elkészült, a folyamat definíciója a következő példához hasonlóan néz ki: 
 
-   ![Pont folyamata parancsfájlban](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![A Jenkins-folyamat mutatása a parancsfájlban](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 

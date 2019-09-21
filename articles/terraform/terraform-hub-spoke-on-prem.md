@@ -1,40 +1,40 @@
 ---
-title: A helyszíni virtuális hálózat létrehozása terraform az Azure-ban
-description: Az oktatóanyagban egy helyszíni virtuális hálózat megvalósítása az Azure-környezetet tároló helyi erőforrások ábrázoló
+title: Helyszíni virtuális hálózat létrehozása az Azure-beli Terraform
+description: Oktatóanyag, amely bemutatja, hogyan valósítható meg egy helyszíni VNet az Azure-ban, amely helyi erőforrásokat ad
 services: terraform
 ms.service: azure
-keywords: a terraform, küllős topológiájú, hálózatok, a hibrid hálózatok, devops, virtuális gép, azure, virtuális hálózatok közötti társviszony, a helyszíni
+keywords: Terraform, hub és küllő, hálózatok, hibrid hálózatok, devops, virtuális gépek, Azure, VNet-alapú peering, helyszíni
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888686"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169781"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: A helyszíni virtuális hálózat létrehozása terraform az Azure-ban
+# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Helyszíni virtuális hálózat létrehozása az Azure-beli Terraform
 
-Ebben az oktatóanyagban egy helyszíni hálózat egy Azure-beli virtuális hálózaton (VNet) használatával hajtja végre. Egy Azure virtuális hálózat sikerült helyébe a saját privát virtuális hálózatot. Ehhez képezze le a megfelelő IP-címek az alhálózatokon.
+Ebben az oktatóanyagban egy helyszíni hálózatot valósít meg egy Azure Virtual Network (VNet) használatával. Az Azure-VNet saját privát virtuális hálózata is lecserélhető. Ehhez rendelje hozzá a megfelelő IP-címeket az alhálózatokban.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Egy a helyszíni virtuális hálózat megvalósítása küllős topológia az HCL (HashiCorp Language) használata
-> * Use Terraform to create hub network appliance resources
-> * A helyszíni virtuális gép létrehozása Terraform használatával
-> * A Terraform használata a helyszíni virtuális magánhálózati átjáró létrehozása
+> * A HCL (HashiCorp Language) használata helyszíni VNet megvalósításához sugaras topológiában
+> * A Terraform használata a hub hálózati berendezés erőforrásainak létrehozásához
+> * Helyszíni virtuális gép létrehozása a Terraform használatával
+> * Helyszíni virtuális magánhálózati átjáró létrehozása a Terraform használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák az Azure-beli terraform](./terraform-hub-spoke-introduction.md).
+1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-Egy helyszíni hálózat a szimulálásához hozzon létre egy Azure virtuális hálózatra. A bemutató a virtuális hálózat egy tényleges privát a helyszíni hálózat történik. Ehhez a meglévő helyszíni hálózattal, képezze le a megfelelő IP-címek az alhálózatokon.
+Helyszíni hálózat szimulálásához hozzon létre egy Azure-beli virtuális hálózatot. A bemutató VNet egy tényleges helyszíni hálózat helyét veszi igénybe. Ha ugyanezt a meglévő helyszíni hálózattal szeretné elvégezni, képezze le a megfelelő IP-címeket az alhálózatokban.
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
@@ -54,11 +54,11 @@ Egy helyszíni hálózat a szimulálásához hozzon létre egy Azure virtuális 
     cd hub-spoke
     ```
 
-## <a name="declare-the-on-premises-vnet"></a>Deklarálja a helyi virtuális hálózaton
+## <a name="declare-the-on-premises-vnet"></a>A helyszíni VNet deklarálása
 
-Hozzon létre egy a helyszíni virtuális hálózat deklarálja a Terraform konfigurációs fájlját.
+Hozza létre a helyszíni VNet deklaráló Terraform-konfigurációs fájlt.
 
-1. A Cloud Shellben, nyisson meg egy új fájlt `on-prem.tf`.
+1. A Cloud Shellban nyisson meg egy nevű `on-prem.tf`új fájlt.
 
     ```bash
     code on-prem.tf
@@ -66,7 +66,7 @@ Hozzon létre egy a helyszíni virtuális hálózat deklarálja a Terraform konf
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"
@@ -228,4 +228,4 @@ Hozzon létre egy a helyszíni virtuális hálózat deklarálja a Terraform konf
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hub virtuális hálózat létrehozása terraform az Azure-ban](./terraform-hub-spoke-hub-network.md)
+> [Hub virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-hub-network.md)
