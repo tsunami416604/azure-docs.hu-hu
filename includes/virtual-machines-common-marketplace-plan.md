@@ -2,28 +2,28 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179111"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174958"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Rendszerkép üzembe helyezése a Marketplace használati feltételei
+## <a name="deploy-an-image-with-marketplace-terms"></a>Rendszerkép üzembe helyezése Piactéri feltételekkel
 
-Egyes Virtuálisgép-rendszerképek az Azure Marketplace-en további licenccel rendelkezik, és beszerzési feltételeit, hogy el kell fogadnia programozott módon központi telepítésük előtt.  
+Az Azure Marketplace-en néhány virtuálisgép-rendszerkép további licenccel és vásárlási feltételekkel rendelkezik, amelyeket el kell fogadnia, mielőtt programozott módon telepítené őket.  
 
-Virtuális gép üzembe helyezése egy rendszerképből, kell fogadniuk a feltételeket a lemezkép és a programozott telepítés engedélyezése is. Csak egyszer előfizetésenként ehhez szüksége. Ezután minden alkalommal, amikor telepít egy virtuális Gépet is kell adnia a kép a programozott módon *megvásárlása* paramétereket.
+Egy virtuális gép lemezképből való üzembe helyezéséhez mindkét esetben el kell fogadnia a lemezkép feltételeit, és engedélyeznie kell a programozott telepítést. Ezt csak egyszer kell megtennie egy előfizetésnél. Ezt követően minden alkalommal, amikor programozottan telepít egy virtuális gépet a lemezképből, meg kell adnia a *vásárlási terv* paramétereit is.
 
-A következő szakaszok show hogyan:
+Az alábbi fejezetek a következőket szemléltetik:
 
-* Ismerje meg, hogy rendelkezik-e Piactéri lemezképet további licencfeltételek 
-* Fogadja el a használati programozott módon
-* Adja meg a beszerzési terv paramétereket, virtuális gépek programozott módon üzembe
+* Annak megállapítása, hogy a Piactéri rendszerképnek van-e további licencfeltételek 
+* A használati feltételek elfogadása programozott módon
+* Beszerzési terv paramétereinek megadása a virtuális gépek programozott üzembe helyezése esetén
 

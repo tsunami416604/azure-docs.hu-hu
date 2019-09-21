@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138346"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173479"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal egy egyéni Packer-rendszerképből
 
@@ -42,9 +42,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hozzon létre három új fájlt egy üres könyvtárban a következő nevekkel:
 
-- ```variables.tf``` Ez a fájl tartalmazza a sablonban használt változók értékeit.
-- ```output.tf``` Ez a fájl írja le az üzembe helyezés után megjelenő beállításokat.
-- ```vmss.tf```Ez a fájl tartalmazza a telepítendő infrastruktúra kódját.
+- `variables.tf`: Ez a fájl tárolja a sablonban használt változók értékeit.
+- `output.tf`: Ez a fájl az üzembe helyezés után megjelenő beállításokat ismerteti.
+- `vmss.tf`: Ez a fájl tartalmazza a telepítendő infrastruktúra kódját.
 
 ##  <a name="create-the-variables"></a>A változók létrehozása 
 
@@ -52,7 +52,7 @@ Ebben a lépésben a Terraform által létrehozott erőforrások beállításár
 
 Szerkessze a `variables.tf` fájlt, másolja ki a következő kódot, majd mentse a módosításokat.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Mentse a fájlt.
 
-A Terraform-sablon üzembe helyezésekor az alkalmazás eléréséhez használt teljes tartománynevet szeretné lekérni. A Terraform ```output``` erőforrástípusát használja, és kérje le az erőforrás ```fqdn``` tulajdonságát. 
+A Terraform-sablon üzembe helyezésekor az alkalmazás eléréséhez használt teljes tartománynevet szeretné lekérni. A Terraform `output` erőforrástípusát használja, és kérje le az erőforrás `fqdn` tulajdonságát. 
 
 Szerkessze az `output.tf` fájlt, és másolja ki az alábbi kódot, hogy megkapja a virtuális gépek teljes tartománynevét. 
 
@@ -89,9 +89,9 @@ Ebben a lépésben az alábbi hálózati infrastruktúrát hozza létre egy új 
 
 Egy erőforráscsoportra is szüksége van, ahol az összes erőforrás létrejön. 
 
-Szerkessze és másolja be az alábbi kódot a ```vmss.tf``` fájlba: 
+Szerkessze és másolja be az alábbi kódot a `vmss.tf` fájlba: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ A Terraform-környezet inicializálásához futtassa a következő parancsot a `
 terraform init 
 ```
  
-A szolgáltató beépülő moduljait a rendszer a Terraform-beállításjegyzékből abban a könyvtárban lévő ```.terraform``` mappába tölti le, ahol futtatta a parancsot.
+A szolgáltató beépülő moduljait a rendszer a Terraform-beállításjegyzékből abban a könyvtárban lévő `.terraform` mappába tölti le, ahol futtatta a parancsot.
 
 Futtassa az alábbi parancsot az infrastruktúra az Azure-ban történő üzembe helyezéséhez.
 
@@ -185,8 +185,7 @@ Ebben a lépésben a következő erőforrásokat hozza létre a korábban üzemb
 
 Adja hozzá az alábbi kódot a `vmss.tf` fájl végéhez.
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 A következő kód a `variables.tf` fájlhoz adásával testreszabhatja az üzemelő példányt:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

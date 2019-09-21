@@ -1,6 +1,6 @@
 ---
 title: A Azure NetApp Files erőforrás-korlátai | Microsoft Docs
-description: A Azure NetApp Files erőforrások korlátozásait ismerteti, beleértve a NetApp-fiókok, a kapacitás-készletek, a kötetek, a pillanatképek és a delegált alhálózat korlátait.
+description: Leírja a Azure NetApp Files erőforrásainak korlátait, valamint az erőforrás-korlát növelését.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 15d0a584d88045f6020162a88124cd9d6a4735bf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984002"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170020"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -40,10 +40,27 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    Nem  |
 |  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   Nem   |
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
-|  Egyetlen kötet maximális mérete     |    100 TiB    |    Nem       |
-|  Fájlok maximális száma (inode)/kötet     |    50 000 000    |    Nem    |    
+|  Egyetlen kötet maximális mérete     |    100 TiB    |    Nem    |
+|  Fájlok maximális száma ([maxfiles](#maxfiles))/kötet     |    100 000 000    |    Igen    |    
+|  Egyetlen fájl maximális mérete     |    16 TiB    |    Nem    |    
 
-## <a name="request-limit-increase"></a>Kérelmek korlátjának növekedése 
+## Maxfiles korlátok<a name="maxfiles"></a> 
+
+Azure NetApp Files kötetek *maxfiles*nevű korláttal rendelkeznek. A maxfiles korlátja a kötet által tartalmazott fájlok száma. Egy Azure NetApp Files kötethez tartozó maxfiles-korlát indexelése a kötet mérete (kvóta) alapján történik. A kötetek maxfiles korlátja növekszik vagy csökken a kiosztott kötet méretének 20 000 000-os fájlja alapján. 
+
+A szolgáltatás dinamikusan módosítja a kötet maxfiles korlátját a kiosztott méret alapján. Például egy 1 TiB-os mérettel konfigurált kötethez maxfiles korlát 20 000 000. A kötet méretének későbbi módosításai a következő szabályok alapján automatikusan újramódosíthatják a maxfiles-korlátot: 
+
+|    Kötet mérete (kvóta)     |  A maxfiles-korlát automatikus módosítása    |
+|----------------------------|-------------------|
+|    < 1 TiB                 |    20 000 000     |
+|    > = 1 TiB, de < 2 TiB    |    40 000 000     |
+|    > = 2 TiB, de < 3 TiB    |    60 000 000     |
+|    > = 3 TiB, de < 4 TiB    |    80 000 000     |
+|    > = 4 TiB                |    100 000 000    |
+
+A kötetek méretének növeléséhez [támogatási kérést](#limit_increase) indíthat, amely a maxfiles-korlátot 100 000 000-nál nagyobb mértékben növelheti.
+
+## Kérelmek korlátjának növekedése<a name="limit_increase"></a> 
 
 Létrehozhat egy Azure-támogatási kérelmet, amellyel növelheti az állítható korlátokat a fenti táblázatból. 
 
@@ -64,6 +81,7 @@ Azure Portal navigációs síkon:
         |  Fiók |  *Előfizetés azonosítója*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
         |  Készlet    |  *Előfizetés azonosítója, fiók URI azonosítója*  |  *Kért új **készlet** maximális száma*   |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
         |  Kötet  |  *Előfizetés azonosítója, fiók URI azonosítója, készlet URI azonosítója*   |  *Kért új maximális **kötet** száma*     |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
+        |  Maxfiles  |  *Előfizetés azonosítója, fiók URI azonosítója, készlet URI azonosítója, kötet URI*   |  *Kért új maximális **maxfiles** -szám*     |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |    
 
     2. Adja meg a megfelelő támogatási módszert, és adja meg a szerződésre vonatkozó információkat.
 

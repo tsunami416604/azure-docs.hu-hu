@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: fd794662ef41112cb04bdfde087253c8abdb6983
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079386"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173782"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>2\. generációs virtuális gépek (előzetes verzió) támogatása az Azure-ban
 
@@ -38,14 +38,18 @@ A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási archit
 Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban. Az Azure mostantól 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
 
 * [B sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [DC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
 * [Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
+* [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * [NCv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) és [NCv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [ND sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
+* [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>2\. generációs VM-lemezképek az Azure Marketplace-en
 
@@ -55,6 +59,8 @@ A 2. generációs virtuális gépek a következő Piactéri rendszerképeket tá
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
 
@@ -82,12 +88,13 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 | Képesség | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
-| OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                        | :heavy_check_mark: |
-| Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark:         | :heavy_check_mark: |
-| Virtuálisgép-méretezési csoport támogatása | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/biztonsági mentés                        | :heavy_check_mark:         | x                |
-| Megosztott lemezképkatalógus              | :heavy_check_mark:         | x                |
-| Azure Disk Encryption             | :heavy_check_mark:         | x                |
+| OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
+| Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
+| Virtuálisgép-méretezési csoport támogatása | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | x                |
+| Biztonsági mentés/visszaállítás                    | :heavy_check_mark: | :heavy_check_mark: |
+| Megosztott lemezkép-katalógus              | :heavy_check_mark: | x                |
+| Azure Disk Encryption             | :heavy_check_mark: | x                |
 
 ## <a name="creating-a-generation-2-vm"></a>2\. generációs virtuális gép létrehozása
 
@@ -95,14 +102,37 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 A Azure Portal vagy az Azure CLI-ben létrehozhat 2. generációs virtuális gépeket az UEFI rendszerindítást támogató piactér-rendszerképből.
 
-Az `windowsserver-gen2preview` ajánlat csak a Windows 2. generációs lemezképeit tartalmazza. Ez a csomagolás elkerüli az 1. generáció és a 2. generációs képek összekeveredését. A 2. generációs virtuális gépek létrehozásához válassza az ajánlat **képei** lehetőséget, majd a normál eljárást követve hozza létre a virtuális gépet.
+#### <a name="azure-portal"></a>Azure Portal
 
-A piactér jelenleg a következő Windows 2. generációs rendszerképeket kínálja:
+A 2. generációs rendszerképek a Windows-és a SLES a Gen1-lemezképekkel megegyező kiszolgálói ajánlatban szerepelnek. A folyamat szempontjából ez azt jelenti, hogy az ajánlatot és az SKU-t a virtuális gép portálján kell kiválasztani. Ha az SKU az 1. és a 2. generációs rendszerképeket is támogatja, kiválaszthatja, hogy létrehoz egy 2. generációs virtuális gépet a virtuális gép létrehozási folyamatának *speciális* lapján.
 
-* 2019-datacenter-gen2
-* 2016 – Datacenter – Gen2
-* 2012-r2-datacenter-gen2
-* 2012-datacenter-gen2
+Jelenleg a következő SKU-támogatás az 1. és a 2. generációs rendszerképeket támogatja:
+
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows Server 2016
+* A Windows Server 2019
+
+Ha a Windows Server SKU-t ajánlatként választja, a **speciális** lapon lehetőség van egy **Gen 1** (BIOS) vagy **Gen 2** (UEFI) virtuális gép létrehozására. Ha a **2**. generációs lehetőséget választja, győződjön meg arról, hogy a 2. [generációs virtuális gépeknél](#generation-2-vm-sizes)az **alapok** lapon kiválasztott virtuálisgép-méret támogatott.
+
+![Válassza ki az 1. generációs vagy a 2. generációs virtuális gépet](./media/generation-2/gen1-gen2-select.png)
+
+#### <a name="powershell"></a>PowerShell
+
+A PowerShell használatával is létrehozhatja a virtuális gépet úgy, hogy közvetlenül az 1. generációs vagy 2. generációs SKU-ra hivatkozik.
+
+Például a következő PowerShell-parancsmaggal kérheti le az `WindowsServer` ajánlatban szereplő SKU-ket.
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Ha operációs rendszert futtató virtuális gépet hoz létre a Windows Server 2012-es verziójával, akkor az 1. generáció (BIOS) vagy a 2. generációs (UEFI) VM SKU lesz kiválasztva, amely a következőképpen néz ki:
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
 
 A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások és képességek](#features-and-capabilities) című szakaszban találja.
 
@@ -110,7 +140,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 A 2. generációs virtuális gépeket ugyanúgy hozhatja létre felügyelt lemezképből vagy felügyelt lemezről, mint az 1. generációs virtuális gépeket.
 
-### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
+### <a name="virtual-machine-scale-sets"></a>virtuálisgép-méretezési csoportok
 
 A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok használatával is létrehozhatja. Az Azure CLI-ben a 2. generációs virtuális gépek létrehozásához használja az Azure-méretezési csoportokat.
 
@@ -122,8 +152,23 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **Van-e árkülönbség az 1. és 2. generációs virtuális gépek között?**  
    Nem.
 
+* **Van egy. vhd-fájlom a helyszíni 2. generációs virtuális gépről. Használhatom ezt a. vhd-fájlt egy 2. generációs virtuális gép létrehozásához az Azure-ban?**
+  Igen, a 2. vhd-fájlt átviheti az Azure-ba, és ezzel létrehozhatja a 2. generációs virtuális gépeket. A következő lépések végrehajtásával teheti meg:
+    1. Töltse fel a. vhd fájlt egy olyan Storage-fiókba, amely ugyanabban a régióban található, ahol létre szeretné hozni a virtuális gépet.
+    1. Hozzon létre egy felügyelt lemezt a. VHD fájlból. Állítsa a Hyper-V Generation tulajdonságot v2-re. A következő PowerShell-parancsok a Hyper-V Generation tulajdonságot a felügyelt lemez létrehozásakor határozzák meg.
+
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
+
+    1. Ha a lemez elérhetővé válik, hozzon létre egy virtuális gépet a lemez csatolásával. A létrehozott virtuális gép egy 2. generációs virtuális gép lesz.
+    Ha létrehozta a 2. generációs virtuális gépet, lehetősége van a virtuális gép rendszerképének általánosítására. A rendszerkép általánosítása használatával több virtuális gépet is létrehozhat.
+
 * **Hogyan az operációsrendszer-lemez méretének növelését?**  
-  A 2 TB-nál nagyobb operációsrendszer-lemezek újak a 2. generációs virtuális gépekhez. Alapértelmezés szerint az operációsrendszer-lemezek 2 TB-nál kisebbek a 2. generációs virtuális gépeknél. A lemez mérete legfeljebb 4 TB ajánlott lehet. Az operációsrendszer-lemez méretének növeléséhez használja az Azure CLI-t vagy a Azure Portal. További információ a lemezek programozott kibontásáról: [lemez](expand-os-disk.md)átméretezése.
+  A 2 TB-nál nagyobb operációsrendszer-lemezek újak a 2. generációs virtuális gépekhez. Alapértelmezés szerint az operációsrendszer-lemezek 2 TB-nál kisebbek a 2. generációs virtuális gépeknél. A lemez mérete legfeljebb 4 TB ajánlott lehet. Az operációsrendszer-lemez méretének növeléséhez használja az Azure CLI-t vagy a Azure Portal. További információ a lemezek programozott kibontásáról: [lemez átméretezése](expand-os-disk.md).
 
   Az operációsrendszer-lemez méretének növeléséhez a Azure Portal:
 

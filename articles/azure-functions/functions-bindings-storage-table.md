@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086245"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171182"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions Azure Table Storage-kötések
 
@@ -529,7 +529,7 @@ A Table Storage bemeneti kötése a következő forgatókönyveket támogatja:
 
 * **Egy vagy több sor olvasása a JavaScriptben**
 
-  Adja meg `filter` a `take` és a tulajdonságokat. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) elérése `context.bindings.<name>`a használatával. A deszerializált objektumok rendelkeznek `RowKey` és `PartitionKey` tulajdonságokkal rendelkeznek.
+  Adja meg `filter` a `take` és a tulajdonságokat. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) elérése `context.bindings.<BINDING_NAME>`a használatával. A deszerializált objektumok rendelkeznek `RowKey` és `PartitionKey` tulajdonságokkal rendelkeznek.
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ A tábla tárolási kimenetének kötése a következő forgatókönyveket támo
 
 * **Egy vagy több sor írása a JavaScriptben**
 
-  A JavaScript-függvényekben a táblázat kimenetét `context.bindings.<name>`a paranccsal érheti el.
+  A JavaScript-függvényekben a táblázat kimenetét `context.bindings.<BINDING_NAME>`a paranccsal érheti el.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141290"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170046"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: A képfeldolgozó alkalmazás megismeréseC#
 
@@ -78,9 +78,9 @@ A minta alkalmazást futtatva megtekintheti, hogyan működik együtt Önnel és
 1. A Build befejezése után nyomja le az **F5** billentyűt, vagy a menüszalag menüjében válassza a **hibakeresés** lehetőséget, majd válassza a **hibakeresés elindítása** lehetőséget a minta alkalmazás futtatásához.
 1. Amikor megjelenik a minta alkalmazás, válassza az **előfizetés-kulcskezelő** lehetőséget a navigációs ablaktáblán az előfizetés-kulcs kezelése lap megjelenítéséhez.
    ![Előfizetés-kulcs kezelése lap](../Images/Vision_UI_Subscription.PNG)  
-1. Adja meg az előfizetésikulcsot az előfizetési kulcsban.
-1. Adja meg a végpont URL-címét a végpontban.  
-   Ha például az Computer Vision ingyenes próbaverziójában használja az előfizetési kulcsot, adja meg a következő végpont URL-címét:`https://westcentralus.api.cognitive.microsoft.com`
+1. Adja meg az előfizetési kulcsot az **előfizetési kulcsban**.
+1. Adja meg a végpont URL-címét a **végpontban**.  
+   Ha például az Computer Vision ingyenes próbaverziójában használja az előfizetési kulcsot, adja meg a következő végpont URL-címét:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Ha nem szeretné megadni az előfizetési kulcsot és a végponti URL-címet a minta alkalmazás következő futtatásakor, válassza a **beállítás mentése** lehetőséget, hogy az előfizetési kulcs és a végpont URL-címét mentse a számítógépre. Ha törölni szeretné a korábban mentett előfizetési kulcsot és a végpont URL-címét, válassza a **beállítás törlése**lehetőséget.
 
@@ -93,11 +93,11 @@ A minta alkalmazást futtatva megtekintheti, hogyan működik együtt Önnel és
    |----------|-------------|
    |Rendszerkép elemzése | A [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) művelettel elemzi a helyi vagy a távoli rendszerképeket. Kiválaszthatja az elemzés vizuális funkcióit és nyelvét, és megtekintheti a képet és az eredményeket is.  |
    |Rendszerkép elemzése a tartományi modellel | A [tartománynév-specifikus modellek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) művelettel sorolja fel azokat a tartományi modelleket, amelyekről kiválaszthatja a tartományt, valamint a [tartomány-specifikus tartalom felismerése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) műveletet egy helyi vagy távoli rendszerkép elemzéséhez a kiválasztott tartományi modell használatával. Megadhatja az elemzés nyelvét is. |
-   |Rendszerkép leírása | A képleírási művelettel létrehoz egy helyi vagy távoli rendszerkép olvasható leírását. [](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fe) Megadhatja a Leírás nyelvét is. |
+   |Rendszerkép leírása | A [képleírási](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fe) művelettel létrehoz egy helyi vagy távoli rendszerkép olvasható leírását. Megadhatja a Leírás nyelvét is. |
    |Címkék készítése | A [kép címkézése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1ff) műveletet használja a helyi vagy távoli rendszerkép vizualizációs funkcióinak címkézéséhez. Megadhatja a címkékhez használt nyelvet is. |
    |Szövegfelismerés (OCR) | Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) művelettel azonosítja és Kinyeri a nyomtatott szöveget egy képből. Kiválaszthatja a használni kívánt nyelvet, vagy engedélyezheti Computer Vision a nyelv automatikus észlelését. |
-   |Szövegfelismerés v2 (angol) | A [szövegfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) használja, és lekérdezi a [szövegfelismerés műveleti eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) műveleteit a nyomtatott vagy kézzel írt szöveg aszinkron felismeréséhez és kinyeréséhez. |
-   |Miniatűr beolvasása | A [miniatűr](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) beolvasása művelettel egy helyi vagy távoli rendszerkép miniatűrjét állítja elő. |
+   |Szövegfelismerés v2 (angol) | A [szövegfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) használja, és [lekérdezi a szövegfelismerés műveleti eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) műveleteit a nyomtatott vagy kézzel írt szöveg aszinkron felismeréséhez és kinyeréséhez. |
+   |Miniatűr beolvasása | A [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) művelettel egy helyi vagy távoli rendszerkép miniatűrjét állítja elő. |
 
    Az alábbi képernyőfelvételen a képelemzési forgatókönyvhöz megadott oldal látható, a minta-rendszerkép elemzése után.
    ![Képernyőkép a rendszerkép elemzése lapról](../Images/Analyze_Image_Example.PNG)

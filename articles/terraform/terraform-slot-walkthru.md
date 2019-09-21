@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889218"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169822"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>A Terraform használata infrastruktúra kiépítésére az Azure üzembehelyezési pontjaival
 
@@ -26,7 +26,7 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 
-- **GitHub-fiók**: Kell egy [GitHub](https://www.github.com) fiók elágaztatását, és a teszt GitHub-adattárban.
+- **GitHub-fiók**: Egy [GitHub](https://www.github.com) -fiókra van szüksége az elágazáshoz, és használja a GitHub-adattárat.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>A Terraform-terv létrehozása és alkalmazása
 
@@ -74,7 +74,7 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -266,7 +266,7 @@ A kér üzembehelyezési pont közti váltás teszteléséhez hajtsa végre a k�
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 

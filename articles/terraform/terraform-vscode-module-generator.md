@@ -1,6 +1,6 @@
 ---
-title: A Terraform alap sablon létrehozása az Azure-ban Yeoman használatával
-description: Megtudhatja, hogyan Terraform alap sablon létrehozása az Azure-ban Yeoman használatával.
+title: Terraform-alapú alapsablon létrehozása az Azure-ban a Yeoman használatával
+description: Megtudhatja, hogyan hozhat létre Terraform alapszintű sablont az Azure-ban a Yeoman használatával.
 services: terraform
 ms.service: azure
 keywords: terraform, devops, virtuális gép, azure, yeoman
@@ -8,34 +8,34 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128188"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173383"
 ---
-# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>A Terraform alap sablon létrehozása az Azure-ban Yeoman használatával
+# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Terraform-alapú alapsablon létrehozása az Azure-ban a Yeoman használatával
 
 A [Terraform](https://docs.microsoft.com/azure/terraform/
 ) egyszerű módot kínál infrastruktúra létrehozásához az Azure-ban. A [Yeoman](https://yeoman.io/) nagyban megkönnyíti a Terraform-modulokat készítő modulfejlesztő feladatát, ugyanakkor *ajánlott eljárások* kitűnő keretrendszerét is nyújtja.
 
-Ebben a cikkben a Yeoman modulgenerátor alapszintű Terraform-sablon létrehozásához való használatával ismerkedhet meg. Ezután megtudhatja, hogyan tesztelheti az új Terraform-sablonnak két különböző módszerekkel:
+Ebben a cikkben a Yeoman modulgenerátor alapszintű Terraform-sablon létrehozásához való használatával ismerkedhet meg. Ezután megtudhatja, hogyan tesztelheti az új Terraform-sablont két különböző módszer használatával:
 
-- Futtassa a Terraform modul, amely ebben a cikkben létrehoz egy Docker-fájlt.
-- A Terraform modul fut natív módon az Azure Cloud Shellben.
+- Futtassa a Terraform modult egy, a cikkben létrehozott Docker-fájl használatával.
+- A Terraform modult natív módon futtathatja Azure Cloud Shellban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- **A Visual Studio Code**: Fogjuk használni [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) hozta létre a Yeoman generátor fájlok vizsgálatát. Ön használhatja a saját maga által választott kódszerkesztőt is.
-- **A Terraform**: Szüksége lesz egy telepített [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) a Yeoman által létrehozott modul futtatásához.
-- **Docker**: Fogjuk használni [Docker](https://www.docker.com/get-started) futtatásához a modul által létrehozott a Yeoman generátor. (Ha úgy kívánja, a Docker helyett a Rubyt is használhatja a mintamodul futtatásához.)
-- **Go programozási nyelv**: Szüksége lesz egy telepített [lépjen](https://golang.org/) mert, lépjen a Yeoman által létrehozott esetek készültek.
+- **Visual Studio Code**: A Yeoman-generátor által létrehozott fájlokat a [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) használatával vizsgáljuk meg. Ön használhatja a saját maga által választott kódszerkesztőt is.
+- **Terraform**: A Yeoman által létrehozott modul futtatásához szüksége lesz a [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) telepítésére.
+- **Docker**: A Yeoman-generátor [](https://www.docker.com/get-started) által létrehozott modul futtatásához a Docker-t fogjuk használni. (Ha úgy kívánja, a Docker helyett a Rubyt is használhatja a mintamodul futtatásához.)
+- **Go programozási nyelv**: Telepítenie kell a [Go](https://golang.org/) -t, mert a Yeoman által generált tesztelési esetek a Go-ban íródnak.
 
 >[!NOTE]
->Ebben az oktatóanyagban az eljárások többsége parancssori bevitelt is igényel. Az itt leírt lépések minden operációs rendszerre és parancssori eszközre érvényesek. A példákban azt választotta, a helyi környezet és a Git Bash használandó PowerShell cloud shell-környezet.
+>Ebben az oktatóanyagban az eljárások többsége parancssori bevitelt is igényel. Az itt leírt lépések minden operációs rendszerre és parancssori eszközre érvényesek. A példákban a PowerShell használatát választotta a helyi környezetekhez és a git bash for Cloud Shell-környezethez.
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -74,7 +74,7 @@ Egy parancssorban hajtsa végre az alábbiakat:
 1. Írja be a `mkdir <new-directory-name>` (igen) kifejezést.
 
     > [!NOTE]
-    > Cserélje le `<new-directory-name>` az új címtár nevét. Ebben a példában az új könyvtárnak a `GeneratorDocSample` nevet adtuk.
+    > Cserélje `<new-directory-name>` le az nevet az új könyvtár nevére. Ebben a példában az új könyvtárnak a `GeneratorDocSample` nevet adtuk.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -105,7 +105,7 @@ Egy parancssorban hajtsa végre az alábbiakat:
         ![Docker-lemezképfájl belefoglalása?](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
         >[!NOTE]
-        >Írja be a `y` (igen) kifejezést. Ha **n**, a modul generált kódot támogatja-e a natív módban futó.
+        >Írja be a `y` (igen) kifejezést. Ha az **n**lehetőséget választja, a generált modul kódja csak a natív módban történő futtatást fogja támogatni.
 
 3. Az eredményként keletkezett fájlok listáját az `ls` paranccsal tekintheti meg.
 
@@ -140,18 +140,18 @@ A modul kimenetének tartalmát definiálja. Itt ez a beépített **random_shuff
 
 A fordítási lépéseket határozza meg. Ilyen lépések többek között:
 
-- **Build**: Ellenőrzi, hogy a main.tf fájl formázását.
-- **Egység**: A modul létrehozott vázat nem tartalmazza a kódot egység teszteléséhez. Ha egységtesztet is meg kíván adni, akkor ahhoz itt írhatja be a kódot.
-- **e2e**: A modul egy teljes körű tesztet futtatja.
+- **Build**: Ellenőrzi a main.tf fájl formátumát.
+- **egység**: A generált modul csontváza nem tartalmaz kódot az egység teszteléséhez. Ha egységtesztet is meg kíván adni, akkor ahhoz itt írhatja be a kódot.
+- **E2E**: A modul végpontok közötti tesztelését futtatja.
 
 ### <a name="test"></a>test
 
 - A tesztesetek Go nyelven vannak megírva.
 - A tesztkódok mindegyike teljes körű teszt.
 - A teljes körű tesztek a **fixture** alatt definiált összes elemet megkísérlik létrehozni a Terraform használatával, majd összehasonlítják a **template_output.go** fájlban lévő kimenetet az előre megadott, elvárt értékekkel.
-- **Gopkg.LOCK** és **Gopkg.toml**: A függőségek meghatározása. 
+- **Gopkg. Lock** és **Gopkg. toml**: Határozza meg a függőségeket. 
 
-## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Tesztelje az új Terraform modul Docker-fájl használatával
+## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Az új Terraform-modul tesztelése Docker-fájl használatával
 
 >[!NOTE]
 >Példánkban a modult helyi modulként, az Azure tényleges érintése nélkül futtatjuk.
@@ -160,7 +160,7 @@ A fordítási lépéseket határozza meg. Ilyen lépések többek között:
 
 Egy parancssorba írja be a következőt: `docker version`.
 
-![docker version](media/terraform-vscode-module-generator/ymg-docker-version.png)
+![Docker-verzió](media/terraform-vscode-module-generator/ymg-docker-version.png)
 
 A keletkező kimenet igazolja, hogy a Docker telepítve van.
 
@@ -193,7 +193,7 @@ Arról, hogy a Docker valóban fut, a `docker info` paranccsal győződhet meg.
 
     ![Docker-fájllista](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
-### <a name="build-the-module"></a>A modul létrehozása
+### <a name="build-the-module"></a>A modul felépítése
 
 1. Írja be a `bundle install` (igen) kifejezést.
 
@@ -203,33 +203,33 @@ Arról, hogy a Docker valóban fut, a `docker info` paranccsal győződhet meg.
 
     ![Rake build](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-### <a name="run-the-end-to-end-test"></a>A teljes körű teszt futtatása
+### <a name="run-the-end-to-end-test"></a>A végpontok közötti teszt futtatása
 
 1. Írja be a `rake e2e` (igen) kifejezést.
 
 1. Rövid idő múlva megjelenik a **PASS** üzenet.
 
-    ![PASS](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![SIKERES](media/terraform-vscode-module-generator/ymg-pass.png)
 
-1. Adja meg `exit` a teljes körű vizsgálat befejeződik, majd lépjen ki a Docker-környezetben.
+1. A `exit` végpontok közötti teszt befejezéséhez és a Docker-környezetből való kilépéshez írja be a parancsot.
 
-## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Használat Yeoman generátor hozhat létre, és a egy modul tesztelése a Cloud Shellben
+## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Modul létrehozása és tesztelése a Yeoman Generator használatával Cloud Shell
 
-Az előző szakaszban útmutatóból megtudhatta, hogyan tesztelheti a Terraform modul egy Docker-fájlt. Ebben a szakaszban be fogja használni a Yeoman generátor hozhat létre, és a egy modul tesztelése a Cloud Shellben.
+Az előző szakaszban megtanulta, hogyan tesztelheti a Terraform modult egy Docker-fájl használatával. Ebben a szakaszban a Yeoman generátort fogja használni a Cloud Shell-modul létrehozásához és teszteléséhez.
 
-Ahelyett, hogy a Cloud Shell egy Docker-fájl használatával jelentősen leegyszerűsíti a folyamatot. A Cloud Shell használatával:
+A Docker-fájl használata helyett a Cloud Shell használata jelentősen leegyszerűsíti a folyamatot. Cloud Shell használata:
 
-- Nem kell a Node.js telepítéséhez
-- Nem kell a Yeoman telepítése
-- Nem kell a Terraform telepítése
+- Nem kell telepítenie a Node. js-t
+- Nem kell telepítenie a Yeoman
+- Nem kell telepítenie a Terraform
 
-Ezek az elemek összes előre telepített, a Cloud Shellben.
+Ezen elemek mindegyike előre telepítve van Cloud Shellban.
 
-### <a name="start-a-cloud-shell-session"></a>Indítsa el a Cloud Shell-munkamenetek
+### <a name="start-a-cloud-shell-session"></a>Cloud Shell-munkamenet elindítása
 
-1. Indítson el egy Azure Cloud Shell-munkamenetet keresztül vagy a [az Azure portal](https://portal.azure.com/), [shell.azure.com](https://shell.azure.com), vagy a [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+1. Azure Cloud Shell munkamenet elindítása a [Azure Portal](https://portal.azure.com/), a [shell.azure.com](https://shell.azure.com)vagy a [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)használatával.
 
-1. **Üdvözli az Azure Cloud Shell** lap megnyitásakor. Válassza ki **(Linux) Bash**. (PowerShell nem támogatott.)
+1. Megnyílik **az üdvözli Azure Cloud Shell** lap. Válassza a **bash (Linux)** lehetőséget. (A Power shell nem támogatott.)
 
     ![Az Azure Cloud Shell üdvözlőképernyője](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
 
@@ -244,43 +244,43 @@ Ezek az elemek összes előre telepített, a Cloud Shellben.
 
     ![A felhőalapú meghajtó létrejött](media/terraform-vscode-module-generator/ymg-your-cloud-drive-has-been-created-in.png)
 
-### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Egy mappa, amely tárolja a Terraform modul előkészítése
+### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Készítse elő a Terraform modult tároló mappát
 
-1. Ezen a ponton a Cloud Shell fog már konfigurált GOPATH a környezeti változók az Ön számára. Adja meg az elérési út megtekintéséhez `go env`.
+1. Ezen a ponton a Cloud Shell már konfigurálta az GOPATH a környezeti változókban. Az elérési út megtekintéséhez írja `go env`be a következőt:.
 
-1. Ha egy nem létezik, hozzon létre a $GOPATH mappa: Írja be a `mkdir ~/go` (igen) kifejezést.
+1. Hozzon létre egy $GOPATH mappát, ha még nem létezik: Írja be a `mkdir ~/go` (igen) kifejezést.
 
-1. Hozzon létre egy mappát a $GOPATH mappában található: Írja be a `mkdir ~/go/src` (igen) kifejezést. Ez a mappa használható, amely tárolja, és más projekthez mappákat is létrehozhat, például rendezheti a `<your-module-name>` mappában a következő lépésben hozunk létre.
+1. Hozzon létre egy mappát a $GOPATH mappában: Írja be a `mkdir ~/go/src` (igen) kifejezést. Ezt a mappát fogja használni a rendszer a különböző létrehozott Project-mappák tárolására és rendszerezésére, például `<your-module-name>` a következő lépésben létrehozandó mappára.
 
-1. Hozzon létre egy mappát, amely tárolja a Terraform modul: Írja be a `mkdir ~/go/src/<your-module-name>` (igen) kifejezést.
-
-    >[!NOTE]
-    >Ebben a példában választottuk `my-module-name` a mappa neve.
-
-1. Keresse meg a modul mappában: Adja meg `cd ~/go/src/<your-module-name>`
-
-### <a name="create-and-test-your-terraform-module"></a>Hozhat létre és tesztelhet a Terraform modul
-
-1. Adja meg `yo az-terra-module` , és kövesse a varázsló utasításait.
+1. Hozzon létre egy mappát a Terraform modul tárolásához: Írja be a `mkdir ~/go/src/<your-module-name>` (igen) kifejezést.
 
     >[!NOTE]
-    >Ha a rendszer kéri, ha azt szeretné, a Docker-fájlok létrehozása, megadhat `N`.
+    >Ebben a példában a Mappanév nevet `my-module-name` választottuk.
 
-1. Adja meg `bundle install` függőségek telepítéséhez.
+1. Navigáljon a modul mappájába: Be`cd ~/go/src/<your-module-name>`
+
+### <a name="create-and-test-your-terraform-module"></a>Terraform-modul létrehozása és tesztelése
+
+1. Adja `yo az-terra-module` meg a varázslót, és kövesse a varázsló utasításait.
+
+    >[!NOTE]
+    >Ha a rendszer megkérdezi, hogy szeretné-e létrehozni a Docker `N`-fájlokat, megadhatja a következőt:.
+
+1. A `bundle install` függőségek telepítéséhez adja meg a következőt:.
 
     Várja meg a **Bundle complete** üzenetet, majd térjen rá a következő lépésre.
 
-1. Adja meg `rake build` hozni a modult.
+1. A `rake build` modul létrehozásához adja meg a következőt:.
 
     ![Rake build](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-1. Adja meg `rake e2e` a teljes körű teszt futtatásához.
+1. A `rake e2e` végpontok közötti teszt futtatásához írja be a parancsot.
 
 1. Rövid idő múlva megjelenik a **PASS** üzenet.
 
-    ![PASS](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![SIKERES](media/terraform-vscode-module-generator/ymg-pass.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Telepítheti és használhatja az Azure Terraform Visual Studio Code-bővítménnyel.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)
+> [Telepítse és használja az Azure Terraform Visual Studio Code bővítményt.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

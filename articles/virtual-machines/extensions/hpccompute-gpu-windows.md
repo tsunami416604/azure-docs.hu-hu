@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: roiyz
-ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084465"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173987"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogram-bővítmény a Windowshoz
 
@@ -161,7 +161,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Hibakód | Jelentés | A művelet lehetséges |
 | :---: | --- | --- |
-| 0 | A művelet sikeres |
+| 0 | Sikeres művelet |
 | 1 | A művelet sikeresen befejeződött. Újraindítás szükséges. |
 | 100 | A művelet nem támogatott, vagy nem hajtható végre. | Lehetséges okok: A PowerShell-verzió nem támogatott, a virtuális gép mérete nem N sorozatú virtuális gép, az adatletöltés meghiúsult. A hibák okának megállapításához ellenőrizze a naplófájlokat. |
 | 240, 840 | Művelet időtúllépése. | Újrapróbálkozás művelet. |

@@ -7,13 +7,13 @@ keywords: terraform, devops, virtuális gép, Azure, méretezési csoport, hál�
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2018
-ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885141"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169873"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal
 
@@ -29,15 +29,15 @@ Ebben az oktatóanyagban megismerheti, hogyan használható az [Azure Cloud Shel
 > * Jumpbox létrehozása és üzembe helyezése, amely SSH-n keresztül csatlakozik a virtuális géphez
 
 > [!NOTE]
-> A Terraform ebben a cikkben használt konfigurációs fájlok a legújabb verziójában a [Soft Terraform tárházban a Githubon](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Az ebben a cikkben használt Terraform-konfigurációs fájlok legújabb verziója a [githubon a félelmetes Terraform-tárházban](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 
-- **A Terraform telepítése**: A cikk utasításait követve [Terraform hozzáférési szabályzatokat az Azure-bA](/azure/virtual-machines/linux/terraform-install-configure)
+- A **Terraform telepítése**: Kövesse a cikk utasításait, [Terraform és konfigurálja az Azure-hoz való hozzáférést](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Hozzon létre SSH-kulcspárok**: Ha még nem rendelkezik egy SSH kulcspárok, kövesse a cikk a [létrehozása és a nyilvános és titkos ssh-kulcs használata Linux rendszerű virtuális gépekhez az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **SSH kulcspár létrehozása**: Ha még nem rendelkezik SSH-kulcspárt, kövesse a cikk utasításait, [hogyan hozhat létre és használhat nyilvános és titkos SSH-kulcspárt Linux rendszerű virtuális gépekhez az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -80,7 +80,7 @@ Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-   ```JSON
+   ```hcl
    variable "location" {
     description = "The location where resources will be created"
    }
@@ -124,7 +124,7 @@ Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 1. Másolja az alábbi kódot a szerkesztőbe, hogy közzétegye a virtuális gépek teljes tartománynevét (FQDN).
    :
 
-   ```JSON
+   ```hcl
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
@@ -157,7 +157,7 @@ Hajtsa végre a következő lépéseket az Azure Cloud Shellben:
 
 1. Másolja az alábbi kódot a fájl végére, hogy közzétegye a virtuális gépek teljes tartománynevét (FQDN).
 
-   ```JSON
+   ```hcl
    resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
@@ -252,7 +252,7 @@ Hajtsa végre a következő lépéseket a Cloud Shellben:
 
 1. Illessze be az alábbi kódot a fájl végére:
 
-   ```JSON
+   ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
@@ -369,7 +369,7 @@ Hajtsa végre a következő lépéseket a Cloud Shellben:
 
 1. Másolja az alábbi kódot a szerkesztőbe:
 
-   ```JSON
+   ```hcl
    #cloud-config
    packages:
     - nginx
@@ -393,7 +393,7 @@ Hajtsa végre a következő lépéseket a Cloud Shellben:
 
 1. Testreszabhatja az üzemelő példányt, ha az alábbi kódot beilleszti a fájl végére:
 
-    ```JSON
+    ```hcl
     variable "application_port" {
        description = "The port that you want to expose to the external load balancer"
        default     = 80
@@ -458,7 +458,7 @@ Az SSH-*jumpbox* egy olyan kiszolgáló, amelyet „átugrik” a hálózaton ta
 
 1. Illessze be az alábbi kódot a fájl végére:
 
-   ```JSON
+   ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
@@ -528,7 +528,7 @@ Az SSH-*jumpbox* egy olyan kiszolgáló, amelyet „átugrik” a hálózaton ta
 
 1. Illessze be az alábbi kódot a fájl végére a jumpbox gazdanevének megjelenítéséhez, miután az üzembe helyezés befejeződött:
 
-   ```
+   ```hcl
    output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
    }
@@ -568,7 +568,7 @@ Az eltávolítási folyamat több percig is eltarthat.
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megismerte az Azure virtuálisgép-méretezési csoport Terraformmal történő létrehozását. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról:
 
-[A Terraform Hub a Microsoft.com](https://docs.microsoft.com/azure/terraform/)
-[Terraform Azure konfigurációszolgáltató dokumentációját](https://aka.ms/terraform)
-[Terraform az Azure szolgáltatói forrás](https://aka.ms/tfgit) 
- [Terraform az Azure-modulok](https://aka.ms/tfmodules)
+[Terraform hub a Microsoft.com](https://docs.microsoft.com/azure/terraform/)
+[Terraform Azure Provider dokumentáció](https://aka.ms/terraform)
+[Terraform Azure-szolgáltató forrás](https://aka.ms/tfgit)
+[Terraform Azure-modulok](https://aka.ms/tfmodules)
