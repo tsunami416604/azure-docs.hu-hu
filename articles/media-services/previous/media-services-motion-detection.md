@@ -42,7 +42,7 @@ A következő paramétereket használhatja:
 
 | Name (Név) | Beállítások | Leírás | Alapértelmezett |
 | --- | --- | --- | --- |
-| sensitivityLevel |Karakterlánc: "Low", "medium", "High" |Meghatározza a mozgások jelentésének érzékenységi szintjét. Módosítsa a hamis pozitív számok számának módosítását. |közepes |
+| sensitivityLevel |String: "Low", "medium", "High" |Meghatározza a mozgások jelentésének érzékenységi szintjét. Módosítsa a hamis pozitív számok számának módosítását. |közepes |
 | frameSamplingValue |Pozitív egész szám |Meghatározza az algoritmus futtatásának gyakoriságát. 1 egyenlő minden kerettel, 2 azt jelenti, hogy minden második keret és így tovább. |1 |
 | detectLightChange |Boolean: "true", "false" |Beállítja, hogy az eredményekben megjelenjenek-e a világos változások |Hamis |
 | mergeTimeThreshold |Xs-time: Óó: PP: mm<br/>Példa: 00:00:03 |Meghatározza az időablakot a mozgási események között, ahol 2 eseményt egyesíteni és 1-ként kell jelenteni. |00:00:00 |
