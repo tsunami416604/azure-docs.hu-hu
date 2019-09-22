@@ -28,7 +28,7 @@ Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelé
 |Parancs|Leírás|
 | --- | --- |
 | create | Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával. |
-| törlés | Töröl egy meglévő Service Fabric alkalmazást. |
+| delete | Töröl egy meglévő Service Fabric alkalmazást. |
 | deployed | Egy Service Fabric csomóponton telepített alkalmazás információinak beolvasása. |
 | deployed-health | Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása. |
 | deployed-list | A Service Fabric csomóponton telepített alkalmazások listájának beolvasása. |
@@ -41,7 +41,7 @@ Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelé
 | report-health | Állapotjelentést küld a Service Fabric alkalmazásról. |
 | type | Beolvassa a Service Fabric-fürtben található, pontosan a megadott névvel egyező típusú alkalmazások listáját. |
 | type-list | Beolvassa a Service Fabric-fürtben található Alkalmazásbeállítások listáját. |
-| leépítése | Egy Service Fabric alkalmazás típusának eltávolítása vagy törlése a fürtből. |
+| unprovision | Egy Service Fabric alkalmazás típusának eltávolítása vagy törlése a fürtből. |
 | upgrade | Egy alkalmazás frissítésének megkezdése a Service Fabric fürtön. |
 | upgrade-resume | Folytatja az alkalmazások frissítését a Service Fabric-fürtön. |
 | upgrade-rollback | Elindítja a Service Fabric fürtön futó alkalmazás jelenleg folyamatban lévő frissítését. |
