@@ -224,11 +224,11 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 | --- | --- | --- |
 | message-id |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
-| to |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[Címzett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| to |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Alkalmazás által meghatározott tartalom-kódolás mutató nem értelmezi a Service Bus, a szervezet számára. |Nem a Service Bus API-n keresztül érhető el. |
 | absolute-expiry-time |Deklarálja, mely abszolút azonnali üzenet lejár. A bemeneti (fejléc meg TTL), figyelmen kívül hagyja a kimenetet mérvadó. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | creation-time |Kijelenti, hogy mely az üzenet létrehozásának. A Service Bus által nem használt |Nem a Service Bus API-n keresztül érhető el. |
