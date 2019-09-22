@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s (fő) API SQL
-description: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s (fő) API SQL
+title: Azure PowerShell script-Azure Cosmos DB Update RU/s az SQL (Core) API-hoz
+description: Azure PowerShell script-Azure Cosmos DB Update RU/s az SQL (Core) API-hoz
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: fae1e7946905a96fbbf00909c96dd3aa99d766d5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6b54b6021baf7a91c79309f8fa69b4df67d3887e
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603840"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178749"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Egy adatbázis vagy a tároló az Azure Cosmos DB - (mag) API-t az SQL frissítési RU/s
+# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>A Azure Cosmos DB-SQL (Core) API-hoz tartozó adatbázishoz vagy tárolóhoz tartozó RU/s frissítése
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

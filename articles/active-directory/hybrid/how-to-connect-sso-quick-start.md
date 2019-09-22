@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965218"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176837"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyors üzembe helyezés
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyors kezdés
 
 ## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés üzembe helyezése
 
@@ -35,7 +35,7 @@ A zökkenőmentes egyszeri bejelentkezés telepítéséhez kövesse az alábbi l
 
 Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
 
-* **A Azure ad Connect-kiszolgáló beállítása**: Ha a bejelentkezési módszerként [áteresztő hitelesítést](how-to-connect-pta.md) használ, nincs szükség további előfeltételek ellenőrzésére. Ha a bejelentkezési módszerként [jelszó](how-to-connect-password-hash-synchronization.md) -kivonatolási szinkronizálást használ, és ha tűzfal van Azure ad Connect és az Azure ad között, ügyeljen a következőkre:
+* **A Azure ad Connect-kiszolgáló beállítása**: Ha a bejelentkezési módszerként [áteresztő hitelesítést](how-to-connect-pta.md) használ, nincs szükség további előfeltételek ellenőrzésére. Ha a bejelentkezési módszerként [jelszó-kivonatolási szinkronizálást](how-to-connect-password-hash-synchronization.md) használ, és ha tűzfal van Azure ad Connect és az Azure ad között, ügyeljen a következőkre:
    - A Azure AD Connect 1.1.644.0 vagy újabb verzióját használja. 
    - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezést, akkor az a  **\*. msappproxy.net** URL-címekkel létesített kapcsolatokat a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
 
@@ -85,7 +85,7 @@ A varázsló befejezése után a zökkenőmentes egyszeri bejelentkezés engedé
 
 Kövesse ezeket az utasításokat annak ellenőrzéséhez, hogy megfelelően engedélyezte-e a zökkenőmentes egyszeri bejelentkezést:
 
-1. Jelentkezzen be a [Azure Active Directory felügyeleti](https://aad.portal.azure.com) központba a bérlő globális rendszergazdai hitelesítő adataival.
+1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 3. Válassza a **Azure ad Connect**lehetőséget.
 4. Győződjön meg arról, hogy a **zökkenőmentes egyszeri bejelentkezés** funkció **engedélyezve van**.
@@ -144,7 +144,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Tallózás a **felhasználói konfigurációs** > **házirend** > **Felügyeleti sablonok** **Windows-összetevők** **Internet**ExplorerInternet >  >  >  **A Vezérlőpult** **biztonsági oldalának** > intranetes zónája. >  Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
+6. Tallózás a **felhasználói konfigurációs** > **házirend** > **Felügyeleti sablonok** **Windows-összetevők** **Internet**ExplorerInternet >  >  >  **A Vezérlőpult** **biztonsági oldalának** > **intranetes zónája.**  >  Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -221,7 +221,7 @@ A 2. lépésben Azure AD Connect az összes olyan Active Directory erdőben hoz 
 >[!IMPORTANT]
 >Egy számítógépfiók Kerberos-visszafejtési kulcsa, ha kiszivárgott, felhasználható Kerberos-jegyek létrehozásához bármely, az AD-erdőben lévő felhasználó számára. A rosszindulatú szereplők ezután megszemélyesítheti az Azure AD-bejelentkezéseket a feltört felhasználók számára. Javasoljuk, hogy rendszeres időközönként áttekintse ezeket a Kerberos-visszafejtési kulcsokat – legalább 30 naponta egyszer.
 
-A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyakran ismételt kérdések](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Dolgozunk a kulcsok automatizált átadásának bevezetésében.
+A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyakran ismételt kérdések](how-to-connect-sso-faq.md). Dolgozunk a kulcsok automatizált átadásának bevezetésében.
 
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.

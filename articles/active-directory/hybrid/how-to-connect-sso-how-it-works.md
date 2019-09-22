@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Közvetlen egyszeri bejelentkezés – hogyan működik |} A Microsoft Docs'
-description: Ez a cikk ismerteti az Azure Active Directory zökkenőmentes egyszeri bejelentkezés funkció működése.
+title: 'Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – hogyan működik | Microsoft Docs'
+description: Ez a cikk azt ismerteti, hogyan működik a Azure Active Directory zökkenőmentes egyszeri bejelentkezés funkció.
 services: active-directory
-keywords: Mi az Azure AD Connect, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
+keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -16,86 +16,86 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907abe3b09f9999b30703281f7e4ff286e2bae14
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242356"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176672"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai bemutatása
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Technikai Deep Dive
 
-Ez a cikk biztosít technikai részletek be az Azure Active Directory zökkenőmentes egyszeri bejelentkezés (zökkenőmentes SSO) funkció működése.
+Ez a cikk technikai részleteket tartalmaz a Azure Active Directory zökkenőmentes egyszeri bejelentkezés (SSO) funkció működésének módjáról.
 
-## <a name="how-does-seamless-sso-work"></a>Közvetlen egyszeri bejelentkezés működése
+## <a name="how-does-seamless-sso-work"></a>Hogyan működik a zökkenőmentes egyszeri bejelentkezés?
 
-Ez a szakasz a következő három részből hozzá:
+Ez a szakasz három részből áll:
 
-1. A közvetlen egyszeri bejelentkezés funkció beállítását.
-2. Egy tranzakció egyetlen felhasználó jelentkezzen be a webböngésző működése a közvetlen egyszeri bejelentkezés.
-3. Egy tranzakció egyetlen felhasználó jelentkezzen be egy natív ügyfél működése a közvetlen egyszeri bejelentkezés.
+1. A zökkenőmentes egyszeri bejelentkezés funkciójának beállítása.
+2. Egy felhasználói bejelentkezési tranzakció egy webböngészőben zökkenőmentes egyszeri bejelentkezéssel működik.
+3. Egy felhasználói bejelentkezési tranzakció egy natív ügyfélen zökkenőmentes egyszeri bejelentkezéssel működik.
 
-### <a name="how-does-set-up-work"></a>Hogyan állítsa be a munkahelyi?
+### <a name="how-does-set-up-work"></a>Hogyan működik a beállítás?
 
-Közvetlen egyszeri bejelentkezés engedélyezve van az Azure AD Connect használatával, ahogy [Itt](how-to-connect-sso-quick-start.md). A funkció engedélyezése közben a következő lépések történnek:
+A zökkenőmentes egyszeri bejelentkezés a Azure AD Connect használatával engedélyezhető az [itt](how-to-connect-sso-quick-start.md)látható módon. A szolgáltatás engedélyezése közben a következő lépések történnek:
 
-- Egy számítógép-fiók (`AZUREADSSOACC`) jön létre a helyszíni Active Directory (AD) szinkronizált Azure ad-hez (Azure AD Connect használatával) minden AD-erdőben.
-- Ezenkívül számos Kerberos egyszerű szolgáltatásnevek (SPN) az Azure AD bejelentkezési folyamat során használandó jönnek létre.
-- A számítógépfiók Kerberos visszafejtési kulcs biztonságosan megosztott Azure AD-val. Ha több AD-erdőkkel, minden egyes számítógépfiók lesz a saját egyedi Kerberos visszafejtési kulcsot.
+- A rendszer létrehoz egy`AZUREADSSOACC`számítógépfiókot () a helyszíni Active Directoryban (ad) az Azure ad-vel szinkronizált összes ad-erdőben (Azure ad Connect használatával).
+- Emellett számos Kerberos egyszerű szolgáltatásnevet (SPN-t) hoz létre az Azure AD bejelentkezési folyamata során.
+- A számítógépfiók Kerberos-visszafejtési kulcsa biztonságosan van megosztva az Azure AD-vel. Ha több AD-erdő van, minden számítógépfiók saját, egyedi Kerberos-visszafejtési kulccsal fog rendelkezni.
 
 >[!IMPORTANT]
-> A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva, és az Active Directoryban nincs más fiók rendelkezik a delegálási engedélyeit a `AZUREADSSOACC` számítógépfiók... Store a számítógépfiókot a egy szervezeti egység (OU), ha azok véletlen törlések biztonságáról, és csak tartományi rendszergazdák hozzáférhetnek. A Kerberos visszafejtési kulcs a számítógépfiók is olyan érzékeny kell kezelni. Kifejezetten ajánljuk, hogy Ön [vihetők át a Kerberos-visszafejtési kulcs](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) , a `AZUREADSSOACC` számítógépfiók legalább 30 nap.
+> Biztonsági `AZUREADSSOACC` okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg `AZUREADSSOACC` arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és nincs más fiók a Active Directory delegálási engedélyekkel rendelkezik a számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá. A számítógép fiókjában a Kerberos-visszafejtési kulcsot is bizalmasként kell kezelni. Javasoljuk, hogy legalább 30 naponként átadja a `AZUREADSSOACC` számítógépfiók Kerberos- [visszafejtési kulcsát](how-to-connect-sso-faq.md) .
 
-A beállítás befejezése után a közvetlen egyszeri bejelentkezés működik ugyanúgy, mint bármely más jelentkezzen be, amely integrált Windows-hitelesítés (IWA) használja.
+A beállítás befejezése után a zökkenőmentes SSO ugyanúgy működik, mint bármely más, integrált Windows-hitelesítést (IWA) használó bejelentkezés.
 
-### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Hogyan jelentkezzen be a közvetlen egyszeri bejelentkezés munkahelyi böngészőben?
+### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Hogyan történik a bejelentkezés zökkenőmentes egyszeri bejelentkezést igénylő webböngészőn?
 
-A böngészőben a bejelentkezési folyamat a következőképpen történik:
+A bejelentkezés a böngészőben a következőképpen történik:
 
-1. A felhasználó megpróbál hozzáférni egy webes alkalmazás (például az Outlook Web App - https://outlook.office365.com/owa/) tartományhoz csatlakoztatott vállalati eszköz a vállalati hálózaton belül.
-2. Ha a felhasználó még nem jelentkezett be, a rendszer átirányítja a felhasználót az Azure AD bejelentkezési oldal.
-3. A felhasználó begépeli a felhasználó neve, az Azure AD bejelentkezési oldal.
+1. A felhasználó egy webalkalmazáshoz (például az Outlook Web https://outlook.office365.com/owa/) alkalmazáshoz) próbál hozzáférni egy, a vállalati hálózaton belüli, tartományhoz csatlakoztatott vállalati eszközről.
+2. Ha a felhasználó még nincs bejelentkezve, a rendszer átirányítja a felhasználót az Azure AD bejelentkezési oldalára.
+3. A felhasználó felhasználónevét az Azure AD bejelentkezési oldalára írja be.
 
    >[!NOTE]
-   >A [bizonyos alkalmazások](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso), 2 & 3. lépéseket a rendszer kihagyja.
+   >[Bizonyos alkalmazások](./how-to-connect-sso-faq.md)esetén a 2. & 3. lépés kimarad.
 
-4. A JavaScript használatával a háttérben, az Azure AD kihívást a böngészőben a 401-es jogosulatlan választ, adja meg a Kerberos-jegy-n keresztül.
-5. A böngészőben a jegyet, az Active Directory kér a `AZUREADSSOACC` számítógépfiók (amely az Azure AD).
-6. Az Active Directory megkeresi a számítógépfiók, és adja vissza egy Kerberos-jegyet a böngészőnek a számítógépfiók titkos kulcs titkosított.
-7. A böngészőben a Kerberos-jegyet, akkor megszerezte az Active Directoryból az Azure AD továbbítja.
-8. Az Azure AD visszafejti a Kerberos-jegy, amely tartalmazza a felhasználó a vállalati eszköz be van jelentkezve a korábban megosztott kulcs használatával.
-9. Értékelés után az Azure AD az alkalmazásnak egy tokent ad vissza, vagy arra kéri a felhasználót a kiegészítő igazolásokat, például a többtényezős hitelesítés végrehajtásához.
-10. Ha a felhasználói bejelentkezés sikeres, a felhasználó nem tudja elérni az alkalmazást.
+4. A JavaScript használata a háttérben az Azure AD egy 401 jogosulatlan válaszon keresztül vitatja meg a böngészőt a Kerberos-jegy biztosításához.
+5. A böngészőben viszont egy jegyet kér Active Directorytól a számítógépfiók számára (amely `AZUREADSSOACC` az Azure ad-t jelöli).
+6. Active Directory megkeresi a számítógépfiókot, és a számítógép fiókjának titkával titkosított Kerberos-jegyet ad vissza a böngészőnek.
+7. A böngésző továbbítja a Active Directory által az Azure AD-be beszerzett Kerberos-jegyet.
+8. Az Azure AD visszafejti a Kerberos-jegyet, amely magában foglalja a vállalati eszközre bejelentkezett felhasználó identitását a korábban megosztott kulccsal.
+9. Az értékelés után az Azure AD visszaadja a tokent az alkalmazásnak, vagy megkéri a felhasználót, hogy végezzen további bizonyítékokat, például a Multi-Factor Authentication.
+10. Ha a felhasználói bejelentkezés sikeres, a felhasználó hozzáférhet az alkalmazáshoz.
 
-A következő ábra szemlélteti az összes összetevő és a folyamat lépéseit.
+A következő ábra az összes összetevőt és a benne foglalt lépéseket mutatja be.
 
-![Zökkenőmentes egyszeri bejelentkezést a – webes alkalmazás folyamat](./media/how-to-connect-sso-how-it-works/sso2.png)
+![Zökkenőmentes egyszeri bejelentkezés – webalkalmazás-folyamat](./media/how-to-connect-sso-how-it-works/sso2.png)
 
-Közvetlen egyszeri bejelentkezés az alkalmi, ami azt jelenti, ha sikertelen, a bejelentkezési felület áll vissza a normál viselkedési – azaz, a felhasználó adja meg a jelszavát, hogy jelentkezzen be kell.
+A zökkenőmentes egyszeri bejelentkezés az opportunista, ami azt jelenti, hogy ha nem sikerül, a bejelentkezési folyamat visszatér a szokásos viselkedésére – azaz a felhasználónak be kell írnia a jelszavát a bejelentkezéshez.
 
-### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Hogyan jelentkezzen be egy natív ügyfél közvetlen egyszeri bejelentkezés munkahelyi?
+### <a name="how-does-sign-in-on-a-native-client-with-seamless-sso-work"></a>Hogyan működik a bejelentkezett natív ügyfélen a zökkenőmentes egyszeri bejelentkezés?
 
-Egy natív ügyfél bejelentkezési folyamata a következőképpen történik:
+A natív ügyfél bejelentkezési folyamata a következő:
 
-1. A felhasználó megpróbál hozzáférni egy natív alkalmazást (például az Outlook ügyfélprogram) tartományhoz csatlakoztatott vállalati eszköz a vállalati hálózaton belül.
-2. Ha a felhasználó még nem jelentkezett be, a natív alkalmazás az eszköz Windows-munkamenetből kérdezi le a felhasználó felhasználóneve.
-3. Az alkalmazás a felhasználónév küld az Azure ad-hez, és kéri le a bérlője WS-Trust MEX végpont. A WS-Trust végpont kizárólag a közvetlen egyszeri bejelentkezés szolgáltatás használja, és nem a WS-Trust protokollal általános megvalósítását az Azure ad-ben.
-4. Az alkalmazás ezután lekérdezi a WS-Trust MEX végpontot annak ellenőrzéséhez, hogy integrált hitelesítés végpont érhető el. Az integrált hitelesítési végpontja kizárólag a közvetlen egyszeri bejelentkezés funkció használják.
-5. Ha a 4. lépés sikeres, a Kerberos kihívást jelenik meg.
-6. Ha az alkalmazás nem sikerült beolvasni a Kerberos-jegy, továbbítja, akár az Azure AD integrált hitelesítési végpontja.
-7. Azure ad-ben a Kerberos-jegy visszafejti, majd érvényesíti azt.
-8. Azure ad-ben a felhasználó bejelentkezik, és egy SAML-jogkivonat problémák az alkalmazáshoz.
-9. Az alkalmazás ezután elküldi az OAuth2 jogkivonat végpontra az Azure AD SAML-jogkivonat.
-10. Azure ad-ben az SAML-jogkivonat ellenőrzi, és problémák az alkalmazáshoz egy hozzáférési jogkivonatot és a egy frissítési jogkivonatot a megadott erőforrás és a egy azonosító jogkivonat.
-11. A felhasználó élvezheti a hozzáférést az alkalmazás-erőforrást.
+1. A felhasználó egy natív alkalmazást (például az Outlook-ügyfelet) próbál hozzáférni egy tartományhoz csatlakoztatott vállalati eszközről a vállalati hálózaton belül.
+2. Ha a felhasználó még nem jelentkezett be, a natív alkalmazás lekéri a felhasználó felhasználónevét az eszköz Windows-munkamenetében.
+3. Az alkalmazás elküldi a felhasználónevet az Azure AD-nek, és lekéri a bérlő WS-Trust MEX-végpontját. Ezt a WS-Trust végpontot kizárólag a zökkenőmentes SSO szolgáltatás használja, és nem a WS-Trust protokoll általános megvalósítása az Azure AD-ben.
+4. Az alkalmazás ezután lekérdezi a WS-Trust MEX-végpontot, hogy ellenőrizze, hogy elérhető-e az integrált hitelesítési végpont. Az integrált hitelesítési végpontot kizárólag a zökkenőmentes egyszeri bejelentkezés funkció használja.
+5. Ha a 4. lépés sikeres, a rendszer Kerberos-kihívást állít ki.
+6. Ha az alkalmazás képes a Kerberos-jegy beolvasására, azt az Azure AD integrált hitelesítési végpontja továbbítja.
+7. Az Azure AD visszafejti a Kerberos-jegyet, és érvényesíti azt.
+8. Az Azure AD aláírja a felhasználót a alkalmazásban, és SAML-jogkivonatot bocsát ki az alkalmazásnak.
+9. Az alkalmazás ezután elküldi az SAML-tokent az Azure AD OAuth2 token-végpontjának.
+10. Az Azure AD érvényesíti az SAML-jogkivonatot, valamint a megadott erőforráshoz tartozó hozzáférési jogkivonatot és frissítési jogkivonatot, valamint egy azonosító jogkivonatot.
+11. A felhasználó hozzáférést kap az alkalmazás erőforrásához.
 
-A következő ábra szemlélteti az összes összetevő és a folyamat lépéseit.
+A következő ábra az összes összetevőt és a benne foglalt lépéseket mutatja be.
 
-![Zökkenőmentes egyszeri bejelentkezés – natív alkalmazások](./media/how-to-connect-sso-how-it-works/sso14.png)
+![Zökkenőmentes egyszeri bejelentkezés – natív alkalmazás folyamata](./media/how-to-connect-sso-how-it-works/sso14.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [**Gyors üzembe helyezési** ](how-to-connect-sso-quick-start.md) – és az Azure AD közvetlen egyszeri bejelentkezés futtatása.
-- [**Gyakran ismételt kérdések** ](how-to-connect-sso-faq.md) – a gyakran feltett kérdésekre adott válaszok.
-- [**Hibaelhárítás** ](tshoot-connect-sso.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.
+- [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
+- [**Gyakori kérdések**](how-to-connect-sso-faq.md) – válaszok a gyakori kérdésekre.
+- [**Hibaelhárítás**](tshoot-connect-sso.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új szolgáltatásokra vonatkozó kérelmek bejelentése.

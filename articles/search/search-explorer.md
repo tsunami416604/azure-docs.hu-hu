@@ -1,33 +1,30 @@
 ---
-title: Keresési Explorer eszköz az Azure Portal-Azure Searchban lévő adatlekérdezéshez
-description: Azure Portal eszközök, például a Search Explorer használata az indexek lekérdezéséhez Azure Searchokban. Adjon meg keresési kifejezéseket vagy teljes mértékben minősített keresési karakterláncokat speciális szintaxissal.
+title: A Search Explorer eszköz használata az Azure Portal-Azure Searchban tárolt adatlekérdezéshez
+description: A Search Explorer a Azure Portalbe van építve, amely hasznos lehet a tartalom feltárásához és a lekérdezések érvényesítéséhez Azure Searchokban. Karakterláncokat adhat meg a kifejezés vagy kifejezés kereséséhez, vagy a speciális szintaxissal rendelkező teljes keresési kifejezésekhez.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649971"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178132"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Keresési tallózó a Azure Search lévő adatlekérdezéshez 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>A Azure Portal keresési ablakának használata dokumentumok lekérdezéséhez Azure Search 
 
-Ez a cikk bemutatja, hogyan lehet lekérdezni egy meglévő Azure Search indexet a Azure Portal a **Search Explorerben** . A keresési ablak használatával egyszerű vagy teljes Lucene lekérdezési karakterláncokat küldhet a szolgáltatás meglévő indexéhez. 
+Ez a cikk bemutatja, hogyan lehet lekérdezni egy meglévő Azure Search indexet a Azure Portal a **Search Explorerben** . A keresési tallózót elindíthatja a parancssorból egyszerű vagy teljes Lucene lekérdezési kifejezések küldéséhez a szolgáltatás bármely meglévő indexéhez. 
 
    ![Keresési Explorer parancs a portálon](./media/search-explorer/search-explorer-cmd2.png "Keresési Explorer parancs a portálon")
 
-
-Segítség az első lépésekhez: [Start Search Explorer](#start-search-explorer).
-
 ## <a name="basic-search-strings"></a>Alapszintű keresési karakterláncok
 
-A következő példák feltételezik a beépített Realestate-minta indexét. Az index létrehozásával kapcsolatos segítségért [lásd: gyors útmutató: Importálás, indexelés és lekérdezés Azure Portalban](search-get-started-portal.md).
+Az alábbi példák feltételezik a beépített ingatlan-minta indexét. Ezt az indexet az adatimportálás varázsló segítségével hozhatja létre a portálon, és kiválaszthatja az adatforrásként szolgáló **mintákat** .
 
 ### <a name="example-1---empty-search"></a>1\. példa – üres keresés
 

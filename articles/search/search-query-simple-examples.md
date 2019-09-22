@@ -1,37 +1,39 @@
 ---
-title: Példák lekérdezésére az "egyszerű" keresési szintaxis használatával – Azure Search
-description: Egyszerű lekérdezési példák a teljes szöveges kereséshez, a szűrési kereséshez, a Geo-kereséshez, a sokoldalú kereséshez és más lekérdezési karakterláncokhoz, amelyek egy Azure Search index lekérdezéséhez használatosak.
+title: Egyszerű lekérdezés létrehozása – Azure Search
+description: 'Példa: lekérdezések futtatásával a teljes szöveges keresés egyszerű szintaxisa, a szűrési keresés, a Geo-keresés, a részletes keresés egy Azure Search index alapján.'
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647620"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179193"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Példák lekérdezésére a "Simple" keresési szintaxis használatával Azure Search
+# <a name="create-a-simple-query-in-azure-search"></a>Egyszerű lekérdezés létrehozása Azure Search
 
-Az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) meghívja az alapértelmezett lekérdezési elemzőt a teljes szöveges keresési lekérdezések végrehajtásához egy Azure Search indexen. Az egyszerű lekérdezési elemző gyors, és a Azure Search gyakori forgatókönyveit kezeli, beleértve a teljes szöveges keresést, a szűrt és a sokoldalú keresést, valamint a Geo-keresést. Ebben a cikkben az egyszerű szintaxis használatakor elérhető lekérdezési műveleteket bemutató példákat ismertetünk.
+Azure Search az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) meghívja az alapértelmezett lekérdezési elemzőt a teljes szöveges keresési lekérdezések indexre való végrehajtásához. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, például a teljes szöveges keresést, a szűrt és a sokoldalú keresést, valamint a Geo-keresést. 
 
-Az alternatív lekérdezési szintaxis [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), ami összetettebb lekérdezési struktúrákat támogat, például a fuzzy és a helyettesítő karakterek keresését, ami további időt vehet igénybe. További információt és példákat a teljes szintaxissal kapcsolatban a [Lucene szintaxis lekérdezési példákban](search-query-lucene-examples.md)talál.
+Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére.
+
+Egy alternatív lekérdezési szintaxis [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), amely összetettebb lekérdezési struktúrákat támogat, például a fuzzy és a helyettesítő karakterek keresését, ami további időt vehet igénybe. További információt és példákat a teljes szintaxissal kapcsolatban [a teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
 
 ## <a name="formulate-requests-in-postman"></a>Kérelmek összeállítása a Poster-ban
 
 Az alábbi példákban a [New York OpenData Initiative City](https://nycopendata.socrata.com/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy nincs szükség Azure-előfizetésre vagy Azure Search a lekérdezések kipróbálásához.
 
-A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST](search-get-started-postman.md)-ügyfelekkel.
+A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: gyors útmutató [: Ismerkedjen meg Azure Search REST API a](search-get-started-postman.md)Poster használatával.
 
 ### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
-1. A kérelem fejlécében állítsa be a **Content-Type értéket** a következőre `application/json`:.
+1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** `application/json`:.
 
 2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB`. Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
 
@@ -141,7 +143,7 @@ Ha szeretné kipróbálni a Poster használatával a GET paranccsal, illessze be
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Egy másik hatékony módszer a szűrő és a keresés **`search.ismatch*()`** összekapcsolására egy szűrési kifejezésben, ahol keresési lekérdezést használhat a szűrőn belül. Ez a szűrési kifejezés egy helyettesítő karaktert használ a business_title kiválasztásához, beleértve a tervezési tervet, a Plannert, a tervezést és így tovább.
+Egy másik hatékony módszer a szűrő és a keresés **`search.ismatch*()`** összekapcsolására egy szűrési kifejezésben, ahol keresési lekérdezést használhat a szűrőn belül. Ez a szűrési kifejezés egy helyettesítő karaktert *használ a business_title* kiválasztásához, beleértve a tervezési tervet, a Plannert, a tervezést és így tovább.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
@@ -267,7 +269,7 @@ Számos paraméter határozza meg, hogy mely mezők szerepelnek a keresési ered
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Az előző példához hozzáfűzve megadhatja a title (cím) sorrendet. Ez a rendezés azért működik, mert a civil_service_title rendezhető az indexben.
+Az előző példához hozzáfűzve megadhatja a title (cím) sorrendet. Ez a rendezés azért működik, mert a civil_service_title *rendezhető* az indexben.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title

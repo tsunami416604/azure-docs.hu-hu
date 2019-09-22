@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s a Table API-hoz
-description: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s a Table API-hoz
+title: Azure PowerShell parancsfájl-Azure Cosmos DB RU/s frissítése a Table API
+description: Azure PowerShell parancsfájl-Azure Cosmos DB RU/s frissítése a Table API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2c4aab4fa6d4ddf1a99ae86f4fc10c5e84757d30
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603780"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178690"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Frissítés az Azure Cosmos DB - Table API tábla RU/s
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Az RU/s frissítése Azure Cosmos DB-Table API táblához
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

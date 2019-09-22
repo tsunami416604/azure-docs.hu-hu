@@ -7,73 +7,57 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 30c3b233a1454d04fb281e049376b2b3aafe1879
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/20/2019
+ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647971"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178013"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Lekérdezés összeállítása Azure Search
+# <a name="query-types-and-composition-in-azure-search"></a>Lekérdezések típusai és összetétele Azure Search
 
-A Azure Searchban a lekérdezés egy kerekítési művelet teljes specifikációja. A kérelemben szereplő paraméterek egyeztetési feltételeket biztosítanak a dokumentumok indexben való kereséséhez, a motor végrehajtási utasításait, valamint a válasz alakításához szükséges irányelveket. 
+A Azure Searchban a lekérdezés egy kerekítési művelet teljes specifikációja. A kérelemben szereplő paraméterek egyeztetési feltételeket biztosítanak a dokumentumok indexben való kereséséhez, a belefoglalni vagy kizárni kívánt mezőket, a motornak átadott végrehajtási utasításokat, valamint a válasz alakításához szükséges irányelveket. Meghatározatlan (`search=*`), a lekérdezés teljes szöveges keresési műveletként futtatja az összes kereshető mezőt, és tetszőleges sorrendben adja vissza a pontszám nélküli eredményt.
 
-A lekérdezési kérelem egy gazdag szerkezet, amely meghatározza, hogy mely mezők tartoznak a hatókörhöz, hogyan keresheti meg, mely mezőket kell visszaadni, legyen szó a rendezésről vagy a szűrésről, és így tovább. Meghatározatlan, a lekérdezés teljes szöveges keresési műveletként futtatja az összes kereshető mezőt, és tetszőleges sorrendben adja vissza a pontszám nélküli eredményhalmaz értékét.
-
-## <a name="apis-and-tools-for-testing"></a>API-k és eszközök teszteléshez
-
-A következő táblázat a lekérdezések elküldéséhez szükséges API-kat és eszköz-alapú megközelítéseket sorolja fel.
-
-| Módszer | Leírás |
-|-------------|-------------|
-| [Keresési tallózó (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. <br/>[Részletek](search-get-started-portal.md#query-index) | 
-| [Poster vagy Hegedűs](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API a Azure Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérelmek fejlécét és törzsét a kérelmek Azure Search való küldéséhez.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search index lekérdezésére használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
-
-## <a name="a-first-look-at-query-requests"></a>A lekérdezési kérelmek első pillantása
-
-A példák az új fogalmak bevezetéséhez hasznosak. A REST APIban létrehozott reprezentatív lekérdezésként [](https://docs.microsoft.com/rest/api/searchservice/search-documents)ez a példa az ingatlan- [bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz.
+Az alábbi példa egy, a [Rest APIban](https://docs.microsoft.com/rest/api/searchservice/search-documents)létrehozott reprezentatív lekérdezés. Ez a példa a [Hotels bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz.
 
 ```
 {
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"",
-    "searchFields": "description, city",
-    "count": "true",
-    "select": "listingId, street, status, daysOnMarket, description",
+    "search": "+New York +restaurant",
+    "searchFields": "Description, Address/City, Tags",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
-    "orderby": "daysOnMarket"
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-+ **`queryType`** Beállítja az elemzőt, amely Azure Search lehet az [alapértelmezett egyszerű lekérdezési elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési szerkezetekhez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például reguláris kifejezés, közelségi keresés, fuzzy és helyettesítő karakter keressen rá, hogy csak néhányat említsünk.
++ **`queryType`** Beállítja azt az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakteres keresés az a névre néhány.
 
 + **`search`** Megadja az egyeztetési feltételeket, általában szöveget, de gyakran logikai operátorok kísérik. Az önálló különálló kifejezések *kifejezéses* lekérdezések. Az idézőjelek közé zárt, több részből álló lekérdezések *kulcsfontosságú kifejezéssel* rendelkező lekérdezések. A keresés nem definiálható, például a alkalmazásban **`search=*`** , de valószínűbb kifejezéseket, kifejezéseket és operátorokat, amelyek a példában láthatóhoz hasonlóak.
 
-+ **`searchFields`** nem kötelező, a lekérdezés végrehajtásának korlátozására szolgál bizonyos mezőkre.
++ **`searchFields`** a lekérdezés végrehajtásának korlátozása adott mezőkre. Az index sémában *kereshetőként* megadott bármely mező erre a paraméterre van jelölt.
 
-A válaszokat a lekérdezésben foglalt paraméterek is megformázzák. A példában az eredményhalmaz az **`select`** utasításban felsorolt mezőkből áll. Ebben a lekérdezésben csak az első 10 találatot adja vissza, **`count`** de megtudhatja, hogy hány dokumentum felel meg a teljesnek. Ebben a lekérdezésben a sorok rendezése daysOnMarket szerint történik.
+A válaszokat a lekérdezésben foglalt paraméterek is megformázzák. A példában az eredményhalmaz az **`select`** utasításban felsorolt mezőkből áll. Egy $select utasításban csak lekérhető *mezők használhatók* . Ezen felül csak a **`top`** 10 találatot adja vissza a rendszer, miközben **`count`** azt jelzi, hogy hány dokumentum felel meg a teljesnek, ami a visszaadott értéknél több is lehet. Ebben a lekérdezésben a sorok rendezése csökkenő sorrendben történik.
 
 Azure Search a lekérdezés végrehajtása mindig egy indexre van levezetve, a kérelemben megadott API-kulccsal hitelesítve. A REST szolgáltatásban mindkettő a kérelem fejlécében van megadva.
 
 ### <a name="how-to-run-this-query"></a>A lekérdezés futtatása
 
-A lekérdezés végrehajtásához használja [a keresési Explorert és az](search-get-started-portal.md)ingatlan-bemutató indexét. 
+A lekérdezés végrehajtásához használja [a keresési Explorert és a Hotels bemutató indexét](search-get-started-portal.md). 
 
-Ezt a lekérdezési karakterláncot beillesztheti az Explorer keresősávba:`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+Ezt a lekérdezési karakterláncot beillesztheti az Explorer keresősávba:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>A lekérdezési műveletek engedélyezése az index alapján
 
 Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható a Azure Searchban. Fontos, hogy tudd elölről, hogy az *index séma*, amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
 
-Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az eredmények között, *rendezhető*, *szűrhető*és így tovább. A példában a lekérdezési karakterláncban csak a működik, `"$orderby": "daysOnMarket"` mert a daysOnMarket mező az index sémában *rendezhető* van megjelölve. 
+Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető*, *szűrhető*és így tovább. A példában a lekérdezési karakterláncban csak a működik, `"$orderby": "Rating"` mert a minősítés mező az index sémában *rendezhető* van megjelölve. 
 
-![Az ingatlan-minta index] -definíciója (./media/search-query-overview/realestate-sample-index-definition.png "Az ingatlan-minta index") -definíciója
+![A szállodai minta index-definíciója](./media/search-query-overview/hotel-sample-index-definition.png "A szállodai minta index-definíciója")
 
-A fenti képernyőkép a Real Estate-minta index-attribútumainak részleges listája. A teljes index séma a portálon tekinthető meg. További információ az index attribútumairól: [create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
+A fenti képernyőkép a Hotels-minta index-attribútumainak részleges listája. A teljes index séma a portálon tekinthető meg. További információ az index attribútumairól: [create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
 > Egyes lekérdezési funkciók esetében a teljes indexre van engedélyezve, nem pedig a mező alapján. Ezek a képességek többek között a következők: [szinonimák térképek](search-synonyms.md), [Egyéni elemzők](index-add-custom-analyzers.md), [javaslati szerkezetek (automatikus kiegészítés és javasolt lekérdezések esetén)](index-add-suggesters.md), [a rangsorolási eredmények pontozási logikája](index-add-scoring-profiles.md).
@@ -92,22 +76,33 @@ A lekérdezési kérelemhez szükséges elemek a következő összetevőket tart
 
 Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés a Azure Searchban](search-lucene-query-architecture.md).
 
+## <a name="choose-apis-and-tools"></a>API-k és eszközök kiválasztása
+
+A következő táblázat a lekérdezések elküldéséhez szükséges API-kat és eszköz-alapú megközelítéseket sorolja fel.
+
+| Módszer | Leírás |
+|-------------|-------------|
+| [Keresési tallózó (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
+| [Poster vagy más REST-eszközök](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API a Azure Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérelmek fejlécét és törzsét a kérelmek Azure Search való küldéséhez.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search index lekérdezésére használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
+
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
 
 Azure Search az Apache Lucene, és két lekérdezési elemző közül választhat a tipikus és speciális lekérdezések kezeléséhez. Az egyszerű elemzőt használó kérelmeket az [egyszerű lekérdezési szintaxissal](query-simple-syntax.md)kell kijelölni, amely a sebességet és a hatékonyságot az ingyenes szöveges lekérdezésekben válassza. Ez a szintaxis számos gyakori keresési operátort támogat, többek között a következőt: és, vagy, nem, kifejezés, utótag és elsőbbségi operátor.
 
 A [teljes Lucene lekérdezési szintaxis](query-Lucene-syntax.md#bkmk_syntax), amely a kérelemhez való hozzáadáskor `queryType=full` engedélyezve van, az [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)részeként kifejlesztett, széles körben elfogadott és kifejező lekérdezési nyelvet jeleníti meg. A teljes szintaxis kibővíti az egyszerű szintaxist. Az egyszerű szintaxishoz írt összes lekérdezés a teljes Lucene-elemző alatt fut. 
 
-Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző queryType-beállításokkal eltérő eredményeket eredményez. Az első lekérdezésben a a `^3` keresési kifejezés részeként lesz kezelve.
+Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző queryType-beállításokkal eltérő eredményeket eredményez. Az első lekérdezésben a `^3` `historic` rendszer a keresési kifejezés részeként kezeli a következőt:. A lekérdezés legfelső szintű eredménye a "Marquis Plaza & Suites", amelynek a leírása a következő: *Ocean* .
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-Ugyanez a lekérdezés a teljes Lucene-elemző használatával értelmezi a "Ranch" helyszíni lendületét, amely növeli az adott kifejezést tartalmazó találatok rangsorolását.
+Ugyanaz a lekérdezés, amely a teljes Lucene elemzőt használja `^3` , az értelmezést a mezőre való emlékeztetőként. A váltási elemzők a rangot módosítják, és az olyan eredmények, amelyek a korábbi, a *régire* való áttérés kifejezését tartalmazzák.
 
 ```
-queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
 <a name="types-of-queries"></a>

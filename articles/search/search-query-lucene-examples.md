@@ -1,5 +1,5 @@
 ---
-title: Lucene-lekérdezési példák – Azure Search
+title: Teljes Lucene lekérdezési szintaxis használata – Azure Search
 description: A Lucene lekérdezési szintaxisa a fuzzy kereséshez, a közelségi kereséshez, a kifejezés fokozásához, a reguláris kifejezéses kereséshez és a helyettesítő karakteres keresésekhez egy Azure Search szolgáltatásban.
 author: HeidiSteen
 manager: nitinme
@@ -7,19 +7,19 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648240"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178159"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Példák lekérdezésére a "teljes" Lucene keresési szintaxis használatával (Azure Search speciális lekérdezései)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Használja a "teljes" Lucene keresési szintaxist (speciális lekérdezések Azure Search)
 
-Azure Search-lekérdezések létrehozásakor lecserélheti az alapértelmezett [egyszerű lekérdezés](query-simple-syntax.md) -elemzőt a több expanzív [Lucene lekérdezés-elemzővel](query-lucene-syntax.md) a speciális és speciális lekérdezési definíciók kidolgozásához Azure Search. 
+Azure Search-lekérdezések létrehozásakor lecserélheti az alapértelmezett [egyszerű lekérdezés-elemzőt](query-simple-syntax.md) a több expanzív [Lucene lekérdezés-elemzővel](query-lucene-syntax.md) a speciális és speciális lekérdezési definíciók kidolgozásához Azure Search. 
 
 A Lucene-elemző összetett lekérdezési szerkezeteket támogat, például a mezők hatókörű lekérdezéseket, a fuzzy és az előtag helyettesítő karakteres keresését, a közelségi keresést, a kifejezés növelését és a reguláris kifejezések keresését. További feldolgozási követelmények is elérhetők, ezért érdemes lehet valamivel több végrehajtási időt várnia. Ebben a cikkben áttekintheti a teljes szintaxis használatakor elérhető lekérdezési műveleteket bemutató példákat.
 
@@ -31,11 +31,11 @@ A Lucene-elemző összetett lekérdezési szerkezeteket támogat, például a me
 
 Az alábbi példákban a [New York OpenData Initiative City](https://opendata.cityofnewyork.us/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy nincs szükség Azure-előfizetésre vagy Azure Search a lekérdezések kipróbálásához.
 
-A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST](search-get-started-postman.md)-ügyfelekkel.
+A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST-ügyfelekkel](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
 
-1. A kérelem fejlécében állítsa be a **Content-Type értéket** a következőre `application/json`:.
+1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** `application/json`:.
 
 2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB`. Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
 

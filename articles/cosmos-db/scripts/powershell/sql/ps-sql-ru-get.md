@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB SQL (fő) API beszerzése a kiosztott átviteli kapacitás (RU/s)
-description: Azure PowerShell-példaszkript – Azure Cosmos DB SQL (fő) API beszerzése a kiosztott átviteli kapacitás (RU/s)
+title: Azure PowerShell script-Azure Cosmos DB kiépített átviteli sebesség (RU/s) az SQL (Core) API-hoz
+description: Azure PowerShell script-Azure Cosmos DB kiépített átviteli sebesség (RU/s) az SQL (Core) API-hoz
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 75a8ebbb04fd3cbad9f0a1a3f302b40439adbbcc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c7d7f295589d4e3b152016c2b55cfe07355d1cb0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602138"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178761"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>A kiosztott átviteli sebesség (RU/s) beolvasása egy adatbázis vagy a tároló az Azure Cosmos DB - SQL (fő) API
+# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>A kiosztott átviteli sebesség (RU/s) beszerzése egy adatbázishoz vagy tárolóhoz Azure Cosmos DB-SQL (Core) API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

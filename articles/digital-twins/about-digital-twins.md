@@ -3,18 +3,18 @@ title: Az Azure Digital Twins áttekintése | Microsoft Docs
 description: További információ a térbeli intelligenciát megvalósító Azure IoT-megoldásról, az Azure Digital Twinsről.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736969"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178290"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
@@ -33,7 +33,7 @@ Az Azure Digital Twins minden típusú környezetre vonatkozik, például a rakt
 - Egy összeállítás kihasználtsági szintjeinek elemzése.
 - Keresse meg az áruházban a legforgalmasabb pénztárgép-regisztrációt.
 
-A valós üzleti helyzettől függetlenül nagyon valószínű, hogy a megfelelő digitális példányok az Azure digitális Twins szolgáltatásban is üzembe helyezhetők.
+A valós üzleti helyzettől függetlenül valószínű, hogy egy megfelelő digitális példány is kiépíthető az Azure digitális Twins használatával.
 
 Az alábbi videó alaposabban megtekinti az Azure digitális ikreket.
 
@@ -45,13 +45,13 @@ Az Azure Digital Twins a következő főbb képességekkel rendelkezik.
 
 ### <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 
-A [*térbeli intelligencia gráf*](./concepts-objectmodel-spatialgraph.md#graph)vagy a *térbeli gráf*a fizikai környezet virtuális ábrázolása. A segítségével modellezheti a személyek, a helyek és az eszközök közötti kapcsolatokat.
+A [*térbeli intelligencia gráf*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)vagy a *térbeli gráf*a fizikai környezet virtuális ábrázolása. A segítségével modellezheti a személyek, a helyek és az eszközök közötti kapcsolatokat.
 
 Vegyünk egy olyan intelligens segédprogram-alkalmazást, amely több, a környékén összekapcsolt villamosenergia-használati mérőszámot is magában foglal. Az intelligens segédprogram vállalatának pontosan figyelnie kell és meg kell jósolnia a villamosenergia-használatot és a számlázást. Minden eszközt és érzékelőt a hely és a számlázásra kerülő ügyfél kontextusával kell modellezni. A térbeli intelligencia gráf használatával modellezheti az ilyen típusú összetett kapcsolatokat.
 
 ### <a name="digital-twin-object-models"></a>Digitális ikerobjektum-modellek
 
-A [digitális kettős objektumok modelljei](./concepts-objectmodel-spatialgraph.md#model) előre definiált eszköz-protokollok és adatsémák. Összehangolják a megoldás tartomány-specifikus igényeit a fejlesztés felgyorsításához és egyszerűsítéséhez.
+A [digitális kettős objektumok modelljei](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) előre definiált eszköz-protokollok és adatsémák. Összehangolják a megoldás tartomány-specifikus igényeit a fejlesztés felgyorsításához és egyszerűsítéséhez.
 
 Előfordulhat például, hogy egy szoba használati alkalmazása előre definiált tárolóhelyeket használ, például az egyetemet, az épületet, a padlót és a termet.
 
@@ -93,9 +93,9 @@ Az Azure digitális Twins hasznos a fizikai világ és a sok kapcsolat ábrázol
 
 Az Azure Digital Twins az Azure IoT Hub segítségével csatlakozik az IoT-eszközökhöz és -érzékelőkhöz, amelyek naprakész adatokat szolgáltatnak a fizikai világról. Az alábbi ábra bemutatja, hogyan kapcsolódik az Azure digitális Twins más Azure IoT-szolgáltatásokhoz.
 
-![Az Azure Digital Twins egy, az Azure IoT Hubra épülő szolgáltatás][1]
+[![Az Azure Digital Twins egy Azure IoT Hub-ra épülő szolgáltatás](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-További információ a IoT: [Azure IoT-technológiák és-megoldások](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+További információ a IoT: [Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -113,6 +113,3 @@ Az Azure Digital Twins alapvető fogalmainak ismertetése:
 
 >[!div class="nextstepaction"]
 >[A digitális Twins objektummodell és a térbeli intelligencia gráf megismerése](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

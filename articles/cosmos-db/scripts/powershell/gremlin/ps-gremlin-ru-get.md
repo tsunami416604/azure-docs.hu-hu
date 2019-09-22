@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB első átviteli sebesség (RU/s) a Gremlin API-hoz
-description: Azure PowerShell-példaszkript – Azure Cosmos DB első átviteli sebesség (RU/s) a Gremlin API-hoz
+title: Azure PowerShell script-Azure Cosmos DB Gremlin API-hoz tartozó átviteli sebesség (RU/s)
+description: Azure PowerShell script-Azure Cosmos DB Gremlin API-hoz tartozó átviteli sebesség (RU/s)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 81dbe0731bd3390ff3777dc21f78c86f535e5bb7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1da7559d67be94013ea829a533a09db6c8abcad4
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602440"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178939"
 ---
-# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Első átviteli sebesség (RU/s) adatbázis vagy graph az Azure Cosmos DB - Gremlin API
+# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Teljesítmény (RU/s) beszerzése egy adatbázishoz vagy gráfhoz Azure Cosmos DB-Gremlin API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

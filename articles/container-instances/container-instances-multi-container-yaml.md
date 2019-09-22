@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325814"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178570"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: Többtárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325814"
 
 Azure Container Instances támogatja több tároló üzembe helyezését egyetlen gazdagépre egy [tároló csoport](container-instances-container-groups.md)használatával. A Container Group akkor hasznos, ha az oldalkocsit olyan naplózási, figyelési vagy egyéb konfigurációra készíti, ahol a szolgáltatásnak második csatolt folyamatra van szüksége.
 
-Ebben az oktatóanyagban egy egyszerű, kéttárolós oldalkocsis konfiguráció futtatását hajtja végre egy YAML-fájl Azure CLI-vel történő üzembe helyezésével. A YAML-fájlok tömör formátumot biztosítanak a példányok beállításainak megadásához. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben az oktatóanyagban egy egyszerű, kéttárolós oldalkocsis konfiguráció futtatását hajtja végre egy [YAML-fájl](container-instances-reference-yaml.md) Azure CLI-vel történő üzembe helyezésével. A YAML-fájlok tömör formátumot biztosítanak a példányok beállításainak megadásához. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * YAML-fájl konfigurálása
@@ -126,7 +126,7 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Tárolónaplók megtekintése
+## <a name="view-container-logs"></a>Tároló naplóinak megtekintése
 
 A tárolók naplózási kimenetét az az [Container logs][az-container-logs] paranccsal tekintheti meg. Az `--container-name` argumentum megadja azt a tárolót, amelyből a naplófájlokat le szeretné húzni. Ebben a példában a `aci-tutorial-app` tároló meg van adva.
 

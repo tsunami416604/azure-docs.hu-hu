@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB listázása és a Cassandra API műveletek beolvasása
-description: Azure PowerShell-példaszkript – Azure Cosmos DB listázása és a Cassandra API műveletek beolvasása
+title: Azure PowerShell parancsfájl-Azure Cosmos DB lista és műveletek lekérése Cassandra API
+description: Azure PowerShell parancsfájl-Azure Cosmos DB lista és műveletek lekérése Cassandra API
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: f426afee2ab5635cf29ee5a48a6e11e1f6d10f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 185ad9d01e6f4909c0adad7f2b587a17e652dfd4
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603996"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179017"
 ---
-# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Listában, és az Azure Cosmos DB - Cassandra API keyspaces és táblák lekérése
+# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB-Cassandra APIhoz tartozó alapterületek és táblák listázása és lekérése
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

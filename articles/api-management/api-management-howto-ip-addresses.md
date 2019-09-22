@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861251"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178195"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Az Azure API Management IP-címei
 
@@ -61,7 +61,7 @@ A [többrégiós](api-management-howto-deploy-multi-region.md)környezetekben mi
 
 Ha a API Management szolgáltatás egy virtuális hálózaton belül van, akkor két típusú IP-címmel rendelkezik – nyilvános és privát.
 
-A nyilvános IP-címek a porton `3443` belüli belső kommunikációhoz használatosak – a konfiguráció kezeléséhez (például Azure Resource Manageron keresztül). Emellett, ha API Management küld egy nyilvános (internetes) háttérre irányuló kérést, a rendszer a kérelem forrásaként egy nyilvános IP-címet fog látni.
+A nyilvános IP-címek a porton `3443` belüli belső kommunikációhoz használatosak – a konfiguráció kezeléséhez (például Azure Resource Manageron keresztül). A külső VNET konfigurációjában a futtatókörnyezet API-forgalmára is használhatók. Ha API Management küld egy nyilvános (internetes) háttérre irányuló kérést, a rendszer a kérelem forrásaként egy nyilvános IP-címet fog látni.
 
 A magánhálózati virtuális IP-címek a hálózaton belülről API Management végpontokra, a fejlesztői portálra és a közvetlen API-hozzáférés felügyeleti síkjával való kapcsolódásra szolgálnak. Használhatja őket a DNS-rekordok hálózaton belüli beállításához.
 

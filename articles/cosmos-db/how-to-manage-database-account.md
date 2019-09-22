@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 95e3ee31ea6a700253e372d183944c17c85e327c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093388"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178321"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -80,7 +80,7 @@ Ez a Azure Resource Manager sablon létrehoz egy Azure Cosmos-fiókot minden oly
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
-1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az adatreplikálás **globális** menüjét.
+1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
 1. Régiók hozzáadásához válassza ki a térképen **+** a hatszögeket a kívánt régió (k) nek megfelelő címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
 
@@ -166,10 +166,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-Nyissa meg az adatreplikálás globálisan lapot, és válassza az **Engedélyezés** lehetőséget a többrégiós írások engedélyezéséhez. Miután engedélyezte a többrégiós írást, az összes olyan olvasási régió, amelyre jelenleg a fiók tartozik, olvasási és írási régiók lesznek. 
-
-> [!NOTE]
-> A többrégiós írások engedélyezése után nem lehet letiltani. 
+Nyissa meg az **adatreplikálás globálisan** lapot, és válassza az **Engedélyezés** lehetőséget a többrégiós írások engedélyezéséhez. Miután engedélyezte a többrégiós írást, az összes olyan olvasási régió, amelyre jelenleg a fiók tartozik, olvasási és írási régiók lesznek. Szükség esetén le is tilthatja a többrégiós írásokat.
 
 ![Az Azure Cosmos-fiók több főkiszolgálós képernyőképet konfigurál](./media/how-to-manage-database-account/single-to-multi-master.png)
 
@@ -182,6 +179,8 @@ $resourceGroupName = 'myResourceGroup'
 $accountName = 'myaccountname'
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
 ```
+
+Ha többrégiós írások nélkül szeretne létrehozni egy Azure Cosmos-fiókot, a `--enable-multiple-write-locations` paramétert hamis értékre állíthatja.
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
@@ -269,7 +268,7 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
    ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Az **automatikus feladatátvétel** ablaktáblán győződjön meg arról, hogy az **automatikus feladatátvétel engedélyezése** beállításbe értékre van állítva. 
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
 4. Kattintson a **Mentés** gombra.
 
@@ -318,7 +317,7 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
    ![Adatok globális replikálása menü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Az **automatikus feladatátvétel** ablaktáblán győződjön meg arról, hogy az **automatikus feladatátvétel engedélyezése** beállításbe értékre van állítva.
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
 4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
@@ -366,7 +365,7 @@ A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fi
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az adatreplikálás **globális** menüjét.
+1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
 2. A menü tetején válassza a **manuális feladatátvétel**lehetőséget.
 

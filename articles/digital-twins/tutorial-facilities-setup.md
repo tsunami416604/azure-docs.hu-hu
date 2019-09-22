@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622970"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177199"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
 
@@ -43,15 +43,11 @@ Ezek az oktatóanyagok ugyanazokat a mintákat használják és módosítják, m
 
 - [Visual Studio Code](https://code.visualstudio.com/) a mintakód vizsgálatához. 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>A Digital Twins üzembe helyezése
 
 Ebben a szakaszban a lépések segítségével hozzon létre egy új példányát az Azure digitális Twins szolgáltatás. Előfizetésenként csak egy példányban lehet létrehozni. Ha már rendelkezik egy futó, ugorjon a következő szakaszra. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Engedélyek megadása az alkalmazásnak
 
@@ -76,7 +72,7 @@ Ha már letöltötte a [szabad helyiségek keresésére szolgáló rövid útmut
 
 A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\digital-twins-samples.code-workspace** Visual Studio Code-ban. Ez két projektet tartalmaz:
 
-* Használhatja az eszközkiépítési minta **foglaltsága-quickstart** konfigurálására és kiosztására egy [térbeli intelligencia graph](concepts-objectmodel-spatialgraph.md#graph). Ez a diagram a fizikai szóközöket és azokat az erőforrásokat a digitális képe. Használja az [hálózatiobjektum-modellt](concepts-objectmodel-spatialgraph.md#model), amely megadja, hogy egy intelligens épület-objektumokat. Digitális Twins objektumok és a REST API-k teljes listáját a Microsoft [a REST API-dokumentáció](https://docs.westcentralus.azuresmartspaces.net/management/swagger) vagy a felügyeleti API URL-címe, amelyhez létrehozták [a példány](#deploy).
+* Használhatja az eszközkiépítési minta **foglaltsága-quickstart** konfigurálására és kiosztására egy [térbeli intelligencia graph](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Ez a diagram a fizikai szóközöket és azokat az erőforrásokat a digitális képe. Használja az [hálózatiobjektum-modellt](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), amely megadja, hogy egy intelligens épület-objektumokat. Digitális Twins objektumok és a REST API-k teljes listáját a Microsoft [a REST API-dokumentáció](https://docs.westcentralus.azuresmartspaces.net/management/swagger) vagy a felügyeleti API URL-címe, amelyhez létrehozták [a példány](#deploy-digital-twins).
 
    Részletesebben is áttekinti a megtekintéséhez, hogyan kommunikál a digitális Twins-példány, hogy kezdhet az **src\actions** mappát. Ebben a mappában lévő fájlok ezekben az oktatóanyagokban használt parancsok végrehajtására:
     - A **provisionSample.cs** fájl bemutatja, hogyan építheti ki a térbeli grafikon.
@@ -101,17 +97,15 @@ A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\d
     ```
 
 1. A Visual Studio Code-ban nyissa meg a [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) fájlt a **foglaltsága-quickstart** projekt. Frissítse a következő értékeket:
-   * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás-AZONOSÍTÓját. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#permissions).
-   * **Bérlő**: Adja meg az [Azure ad-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)CÍMTÁR-azonosítóját. Ezt az Azonosítót az szakaszban is feljegyzett ahol, [Alkalmazásengedélyek beállítása](#permissions).
-   * **BaseUrl**: Adja meg a digitális Twins-példány URL-címét. Az URL-cím lekéréséhez cserélje le az URL-cím helyőrzőit a példányának `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`értékeire:. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy). Cserélje le **swagger /** a **api/v1.0/** .
+   * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás-AZONOSÍTÓját. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#grant-permissions-to-your-app).
+   * **Bérlő**: Adja meg az [Azure ad-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)CÍMTÁR-azonosítóját. Ezt az Azonosítót az szakaszban is feljegyzett ahol, [Alkalmazásengedélyek beállítása](#grant-permissions-to-your-app).
+   * **BaseUrl**: Adja meg a digitális Twins-példány URL-címét. Az URL-cím lekéréséhez cserélje le az URL-cím helyőrzőit a példányának `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`értékeire:. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy-digital-twins). Cserélje le **swagger /** a **api/v1.0/** .
 
 1. Minta használatával megvizsgálhatja digitális Twins szolgáltatások listájának megtekintéséhez. Futtassa az alábbi parancsot:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>A kiépítési folyamat ismertetése
 

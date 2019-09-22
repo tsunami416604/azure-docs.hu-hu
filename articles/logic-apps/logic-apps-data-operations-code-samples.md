@@ -1,33 +1,33 @@
 ---
-title: Adatok a művelet-minták – Azure Logic Apps |} A Microsoft Docs
-description: Kódminták adatok művelet művelet definíciók az Azure Logic Appsben
+title: Adatműveleti minták – Azure Logic Apps
+description: Példák a Azure Logic Apps adatműveleti műveleteinek kódjára
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 07/25/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.topic: reference
+ms.date: 09/01/2019
+ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203115"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179147"
 ---
-# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatok művelet kódja minták az Azure Logic Apps
+# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatműveleti kód mintái Azure Logic Apps
 
-A Kódminták a adatok művelet művelet definíciókat a cikkben, az alábbiakban [végezhetnek adatműveleteket](../logic-apps/logic-apps-perform-data-operations.md). Ezek a minták esetében is használhatja, ha ki szeretné próbálni a példák az alapul szolgáló a saját logikai alkalmazás munkafolyamat-definíció, Azure-előfizetés és API-kapcsolatok. Ugyanúgy másolásához, és ezek művelet definíciók illessze be a logikai alkalmazás munkafolyamat-definíció a Kódszerkesztő nézet, majd módosítsa a definíciókat, az adott munkafolyamat. 
+Az alábbi kódrészletek a cikkben szereplő adatművelet-definíciók esetében az adatműveletek [elvégzésére](../logic-apps/logic-apps-perform-data-operations.md)szolgálnak. Ezeket a mintákat akkor használhatja, ha a saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját, Azure-előfizetését és API-kapcsolatait szeretné kipróbálni. Csak másolja és illessze be ezeket a műveleti definíciókat a logikai alkalmazás munkafolyamat-definíciójának kód nézet szerkesztőjébe, majd módosítsa az adott munkafolyamathoz tartozó definíciókat. 
 
-A JavaScript Object Notation (JSON) szabványokon alapuló, ezen művelet definíciók betűrendben jelennek meg. Azonban a Logic App Designerben egyes definíció jelenik meg a megfelelő sorrendben a munkafolyamaton belül mivel mindegyik művelet definíciója `runAfter` tulajdonsága azt adja meg a futtatási sorrendben. 
+A JavaScript Object Notation-(JSON-) szabványok alapján ezek a műveleti definíciók betűrendben jelennek meg. A Logic app Designerben azonban minden definíció a munkafolyamat megfelelő sorában jelenik meg, mert minden műveleti definíció `runAfter` tulajdonsága megadja a futtatási sorrendet.
 
 <a name="compose-action-example"></a>
 
 ## <a name="compose"></a>Összeállítás
 
-Szeretné kipróbálni a [ **összeállítás** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#compose-action), az alábbiakban a művelet-definíciók is használhatja:
+Az [ **összeállítási** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#compose-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -95,9 +95,9 @@ Szeretné kipróbálni a [ **összeállítás** művelet példa](../logic-apps/l
 
 <a name="create-csv-table-action-example"></a>
 
-## <a name="create-csv-table"></a>CSV-táblázat létrehozása
+## <a name="create-csv-table"></a>CSV-tábla létrehozása
 
-Szeretné kipróbálni a [ **CSV-táblázat létrehozása** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), az alábbiakban a művelet-definíciók is használhatja:
+A CSV- [ **táblázat létrehozása** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -140,9 +140,9 @@ Szeretné kipróbálni a [ **CSV-táblázat létrehozása** művelet példa](../
 
 <a name="create-html-table-action-example"></a>
 
-## <a name="create-html-table"></a>HTML-táblázat létrehozása
+## <a name="create-html-table"></a>HTML-tábla létrehozása
 
-Szeretné kipróbálni a [ **HTML-táblázat létrehozása** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), az alábbiakban a művelet-definíciók is használhatja:
+A HTML- [ **táblázat létrehozása** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -187,7 +187,7 @@ Szeretné kipróbálni a [ **HTML-táblázat létrehozása** művelet példa](..
 
 ## <a name="filter-array"></a>Tömb szűrése
 
-Szeretné kipróbálni a [ **tömb szűrése** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), az alábbiakban a művelet-definíciók is használhatja:
+A [ **tömb szűrése** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -228,7 +228,7 @@ Szeretné kipróbálni a [ **tömb szűrése** művelet példa](../logic-apps/lo
 
 ## <a name="join"></a>Csatlakozás
 
-Szeretné kipróbálni a [ **csatlakozzon** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#join-action), a művelet segítségül használhatja az alábbiakban:
+Az [ **illesztési** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#join-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -267,9 +267,9 @@ Szeretné kipróbálni a [ **csatlakozzon** művelet példa](../logic-apps/logic
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>JSON elemzése
+## <a name="parse-json"></a>JSON-elemzés
 
-Szeretné kipróbálni a [ **JSON elemzése** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), az alábbiakban a művelet-definíciók is használhatja:
+A [ **JSON elemzési** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)kipróbálásához a következő művelet-definíciók használhatók:
 
 ```json
 "actions": {
@@ -326,9 +326,9 @@ Szeretné kipróbálni a [ **JSON elemzése** művelet példa](../logic-apps/log
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Válassza ezt:
+## <a name="select"></a>Kiválasztás
 
-Szeretné kipróbálni a [ **kiválasztása** művelet példa](../logic-apps/logic-apps-perform-data-operations.md#select-action), a művelet segítségül használhatja az alábbiakban:
+A [ **Select** Action példa](../logic-apps/logic-apps-perform-data-operations.md#select-action)kipróbálásához a következő művelet-definíciókat használhatja:
 
 ```json
 "actions": {
@@ -367,11 +367,6 @@ Szeretné kipróbálni a [ **kiválasztása** művelet példa](../logic-apps/log
 },
 ```
 
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
-
 ## <a name="next-steps"></a>További lépések
 
-* [Műveletek végrehajtása](../logic-apps/logic-apps-perform-data-operations.md)
+* [Adatműveletek végrehajtása](../logic-apps/logic-apps-perform-data-operations.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142336"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178625"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Ismétlődő fejlesztés és hibakeresés Azure Data Factory
 
@@ -51,6 +51,10 @@ Egy helyen megjelenítheti az összes folyamatban lévő hibakeresési futtatás
 ![Válassza az aktív hibakeresési futtatások megtekintése ikont.](media/iterative-development-debugging/view-debug-runs-image1.png)
 
 ![Az aktív hibakeresési futtatások mintáinak listája](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+Ha aktív adatfolyam-hibakeresési munkamenetek vannak, akkor ezek a munkamenetek az aktív hibakeresési ablak alsó részén jelennek meg. Választhat aktív adatfolyam-munkamenetet, és leállíthatja a megfelelő fürtöt.
+
+![Az aktív adatfolyam-hibakeresési futtatások mintáinak listája](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>Hibakeresési hibák figyelése
 

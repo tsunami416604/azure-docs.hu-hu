@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638460"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178256"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -23,7 +23,7 @@ Az Azure Digital Twins speciális számítási funkciókat kínál. A fejlesztő
 
 Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba, a fejlesztők négy fázisban dolgozhatnak fel adatokkal: *Érvényesítés*, *egyezés*, *számítás*és *Küldés*.
 
-![Azure digitális ikrek adatfeldolgozási folyamata][1]
+[![Azure digitális ikrek adatfeldolgozási folyamata](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Az érvényesítési fázis átalakítja a bejövő telemetria üzenetet egy gyakran értelmezhető [adatátviteli objektum](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátumára. Ez a fázis az eszköz-és érzékelő érvényesítését is végrehajtja.
 1. Az egyeztetési fázis megkeresi a megfelelő, felhasználó által definiált függvényeket a futtatáshoz. Az előre definiált egyeztetések a felhasználó által definiált függvényeket a bejövő telemetria üzenetből származó eszköz, az érzékelő és a lemezterület adatai alapján megtalálják.
@@ -32,11 +32,9 @@ Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba,
 
 ## <a name="data-processing-objects"></a>Adatfeldolgozási objektumok
 
-Az Azure Digital Twins adatfeldolgozása három objektumot határoz meg:a megfeleltetéseket, a *felhasználó által definiált függvényeket*és a *szerepkör*-hozzárendeléseket.
+Az Azure Digital Twins adatfeldolgozása három objektumot határoz meg: a *megfeleltetéseket*, a *felhasználó által definiált függvényeket*és a *szerepkör-hozzárendeléseket*.
 
-![Azure digitális Twins adatfeldolgozási objektumok][2]
-
-<div id="matcher"></div>
+[![Azure digitális Twins adatfeldolgozási objektumok](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Egyezők
 
@@ -92,7 +90,7 @@ Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hog
 
 ### <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények
 
-A felhasználó által definiált függvény egy elszigetelt Azure digitális Twins-környezetben végrehajtott egyéni függvény. A felhasználó által definiált függvények hozzáférhetnek a nyers érzékelő telemetria-üzeneteihez, amint az beérkezett. A felhasználó által definiált függvények hozzáférhetnek a térbeli gráfhoz és a diszpécser szolgáltatáshoz is. A felhasználó által definiált függvény egy gráfon belüli regisztrálása után létre kell hozni egy Matcher ( [fent](#matcher)részletezett), hogy meg lehessen adni a függvény végrehajtásának időpontját. Ha például az Azure Digital Twins új telemetria kap egy adott érzékelőből, az egyeztetett felhasználó által definiált függvény az utolsó néhány érzékelő beolvasásának mozgóátlagát is kiszámíthatja.
+A felhasználó által definiált függvény egy elszigetelt Azure digitális Twins-környezetben végrehajtott egyéni függvény. A felhasználó által definiált függvények hozzáférhetnek a nyers érzékelő telemetria-üzeneteihez, amint az beérkezett. A felhasználó által definiált függvények hozzáférhetnek a térbeli gráfhoz és a diszpécser szolgáltatáshoz is. A felhasználó által definiált függvény egy gráfon belüli regisztrálása után létre kell hozni egy Matcher ( [fent](#matchers)részletezett), hogy meg lehessen adni a függvény végrehajtásának időpontját. Ha például az Azure Digital Twins új telemetria kap egy adott érzékelőből, az egyeztetett felhasználó által definiált függvény az utolsó néhány érzékelő beolvasásának mozgóátlagát is kiszámíthatja.
 
 A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák erre vonatkozóan:
 
@@ -103,14 +101,11 @@ A felhasználó által definiált függvények a JavaScriptben is megírhatók. 
 
 További információ: [a felhasználó által definiált függvények használata](./how-to-user-defined-functions.md).
 
-
 #### <a name="examples"></a>Példák
 
 A [digitális Twins C# minta GitHub](https://github.com/Azure-Samples/digital-twins-samples-csharp/) -tárháza néhány példát tartalmaz a felhasználó által definiált függvényekre:
 - [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) a szén-dioxid, a mozgás és a hőmérséklet értékeit keresi annak megállapítására, hogy a helyiség elérhető-e a tartományon belül ezekkel az értékekkel. A [digitális ikrek számára készült oktatóanyagok](tutorial-facilities-udf.md) részletesebben ismertetik ezt a funkciót. 
-- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásérzékelőből származó adatra keres, és meghatározza, hogy a szabad terület elérhető-e, ha egyik sem észleli a mozgást. Egyszerűen lecserélheti a gyors útmutatóban vagy az [oktatóanyagokban](tutorial-facilities-setup.md)használt [](quickstart-view-occupancy-dotnet.md)felhasználó által definiált függvényt, ha a fájl megjegyzések szakaszában megemlített módosításokat végez. 
-
-
+- [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásérzékelőből származó adatra keres, és meghatározza, hogy a szabad terület elérhető-e, ha egyik sem észleli a mozgást. Egyszerűen lecserélheti a gyors útmutatóban [vagy az](quickstart-view-occupancy-dotnet.md) [oktatóanyagokban](tutorial-facilities-setup.md)használt felhasználó által definiált függvényt, ha a fájl megjegyzések szakaszában megemlített módosításokat végez. 
 
 ### <a name="role-assignment"></a>Szerepkör-hozzárendelés
 
@@ -124,8 +119,4 @@ Lehetséges, hogy egy Matcher olyan felhasználó által definiált függvényt 
 
 - Ha szeretne többet megtudni a megfeleltetések, a felhasználó által definiált függvények és a szerepkör-hozzárendelések létrehozásáról, olvassa el a következő témakört [: útmutató a felhasználó által definiált függvények használatához](./how-to-user-defined-functions.md).
 
-- Tekintse át a [felhasználó által definiált ügyféloldali függvénytár](./reference-user-defined-functions-client-library.md)-referenciát ismertető dokumentációt.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png
+- Tekintse át a [felhasználó által definiált ügyféloldali függvénytár-referenciát ismertető dokumentációt](./reference-user-defined-functions-client-library.md).

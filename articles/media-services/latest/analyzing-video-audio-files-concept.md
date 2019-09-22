@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376189"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177993"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Videó-és hangfájlok elemzése
 
-A Azure Media Services v3 lehetővé teszi a videó-és hangfájlok elemzésének kinyerését a Video Indexer az AMS v3 Analyzer-előkészletekkel (ebben a cikkben leírtak szerint). Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+A Azure Media Services v3 lehetővé teszi a videó-és hangfájlok elemzésének kinyerését Video Indexer a Media Services v3 Analyzer-előkészletekkel (ebben a cikkben leírtak szerint). Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
 Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmakat, hozzon létre egy **átalakítást** , és küldjön el egy **feladatot** , amely az alábbi beállításkészletek egyikét használja: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) vagy **AudioAnalyzerPreset**. A következő cikk bemutatja, hogyan használható a **VideoAnalyzerPreset**: [Oktatóanyag Videók elemzése Azure Media Servicesokkal](analyze-videos-tutorial-with-api.md).
 
@@ -254,7 +254,7 @@ Példa:
 |SpeakerTalkToListenRatio|A számítás a beszélő monologot töltött idő (a között a csend nélkül) alapján történik, a videó teljes időpontjára bontva. Az idő a harmadik tizedes pontra van kerekítve.|
 
 
-### <a name="sentiments"></a>érzelmeket
+### <a name="sentiments"></a>hangulati elemek
 
 Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 

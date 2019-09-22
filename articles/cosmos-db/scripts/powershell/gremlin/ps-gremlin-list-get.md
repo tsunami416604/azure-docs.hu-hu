@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell-példaszkript – Azure Cosmos DB listázása és a Gremlin API műveletek beolvasása
-description: Azure PowerShell-példaszkript – Azure Cosmos DB listázása és a Gremlin API műveletek beolvasása
+title: Azure PowerShell script-Azure Cosmos DB-lista és-lekérési műveletek a Gremlin API-hoz
+description: Azure PowerShell script-Azure Cosmos DB-lista és-lekérési műveletek a Gremlin API-hoz
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: ab13b867efc073b8dffc7d9eb33ce4596bdf4099
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 532d28e5d10177e25ff700e35c9c2387690d4609
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603937"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178955"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Listán, és az adatbázisok és a gráfok lekérése az Azure Cosmos DB - Gremlin API
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Adatbázisok és diagramok listázása és lekérése a Azure Cosmos DB-Gremlin API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

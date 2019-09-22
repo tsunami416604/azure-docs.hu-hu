@@ -1,19 +1,20 @@
 ---
-title: Az Azure PowerShell parancsfájl - tároló indexelése ki van kapcsolva egy Azure Cosmos-fiók létrehozása
-description: Azure PowerShell-példaszkript – egy tároló indexelése ki van kapcsolva egy Azure Cosmos-fiók létrehozása
+title: Azure PowerShell szkript – egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása
+description: Azure PowerShell parancsfájl-minta – egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d216aa7eaa25ee18c7b5e962309e2a08f11df284
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603869"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178837"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Egy tároló indexelése ki van kapcsolva egy PowerShell-lel az Azure Cosmos-fiók létrehozása
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

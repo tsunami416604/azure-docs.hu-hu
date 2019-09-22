@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091736"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179088"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight gyorsított írások az Apache HBase
 
@@ -54,6 +54,12 @@ flush 'mytable'
 ```
 disable 'mytable'
 ```
+
+Hajtsa végre a hasonló lépéseket a fürt skálázásakor: Ürítse ki a táblákat, és tiltsa le a táblákat a bejövő adatértékek leállításához. A fürt nem méretezhető le kevesebb mint három csomópontra.
+
+Az alábbi lépések végrehajtásával biztosítható, hogy a rendszer sikeres legyen, és elkerülje a namenode, ha a replikált vagy ideiglenes fájlok miatt a biztonságos módba kerül.
+
+Ha a namenode egy vertikális leskálázás után is a safemode-ba kerül, a hdfs-parancsok használatával végezze el újra a replikált blokkokat, és a hdfs-t biztonságos módból válassza. Ez az újrareplikálás lehetővé teszi a HBase sikeres újraindítását.
 
 ## <a name="next-steps"></a>További lépések
 

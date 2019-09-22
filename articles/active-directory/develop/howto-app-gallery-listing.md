@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033756"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176842"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -80,7 +80,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához először a köv
     ![Az OpenID Connect-alkalmazás katalógusba helyezésének idővonala](./media/howto-app-gallery-listing/openid.png)
 
     * Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katalógusban szereplő listára, válassza az **OpenID connect & OAuth 2,0** lehetőséget a fentiekben leírtak szerint.
-    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 - **SAML 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, azt közvetlenül integrálhatja egy Azure AD-Bérlővel az [egyéni alkalmazások hozzáadására szolgáló utasítások](../active-directory-saas-custom-apps.md)segítségével.
 
@@ -98,6 +98,12 @@ Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési olda
 * Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó-SSO használatával, válassza a fenti **jelszó egyszeri bejelentkezés** lehetőséget.
 * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
+## <a name="requesting-for-user-provisioning"></a>Felhasználói kiépítés kérelmezése
+
+A felhasználók üzembe helyezéséhez kövesse az alábbi eljárást:
+
+   ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Meglévő lista frissítése/eltávolítása
 
 Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy eltávolításához először el kell küldenie a kérést az [Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt (például az Outlookot vagy a Hotmailt) a bejelentkezéshez.
@@ -106,9 +112,9 @@ Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy elt
 
     ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Ha egy meglévő alkalmazást szeretne frissíteni, válassza a **meglévő alkalmazás-lista frissítése**elemet.
-    * Ha el szeretne távolítani egy meglévő alkalmazást az Azure AD-katalógusból, válassza a **meglévő alkalmazások listájának eltávolítása**lehetőséget.
-    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Ha egy meglévő alkalmazást szeretne frissíteni, válassza a megfelelő lehetőséget a követelménynek megfelelően.
+    * Ha el szeretne távolítani egy meglévő alkalmazást az Azure AD-katalógusból, válassza az **alkalmazás listázása elemet a gyűjteményből**lehetőséget.
+    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="listing-requests-by-customers"></a>Ügyfelek kéréseinek listázása
 
@@ -120,15 +126,15 @@ Alább látható az ügyfél által kért alkalmazások folyamata –
 
 ![Az ügyfél által kért alkalmazások folyamatát jeleníti meg](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Idősorok
+## <a name="timelines"></a>Ütemtervek
 
 Az SAML 2,0 vagy a WS-fed alkalmazás a katalógusban való listázásának ütemterve 7-10 munkanap.
 
-   ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline.png)
+  ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline.png)
 
 A katalógusban található OpenID Connect-alkalmazás listázási folyamatának idővonala 2-5 munkanap.
 
-   ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline2.png)
+  ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Azok következményeinek
 
