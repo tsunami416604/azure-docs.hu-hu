@@ -77,19 +77,19 @@ A tulajdonságok leírása a következő:
 
 | **Name** | **Megengedett értékek** | ** --- ** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-| name | Karakterlánc | --- | kiterjesztés egyedi neve |
+| name | string | --- | kiterjesztés egyedi neve |
 | type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode | --- | Meghatározza, hogy az operációs rendszer Service Fabric |
-| autoUpgradeMinorVersion | igaz vagy hamis | --- | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
+| autoUpgradeMinorVersion | true vagy false | --- | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
 | publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric-kiterjedési közzétevő neve |
 | clusterEndpont | Karakterlánc | --- | URI: PORT – felügyeleti végpont |
-| nodeTypeRef | sztring | --- | nodeType neve |
-| durabilityLevel | bronz, ezüst, arany, platina | --- | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
-| enableParallelJobs | igaz vagy hamis | --- | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
-| nicPrefixOverride | Karakterlánc | --- | Alhálózat-előtag, például "10.0.0.0/24" |
-| commonNames | karakterlánc [] | --- | Telepített fürtözött tanúsítványok köznapi nevei |
-| x509StoreName | sztring | --- | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
+| nodeTypeRef | string | --- | nodeType neve |
+| durabilityLevel | bronze, silver, gold, platinum | --- | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
+| enableParallelJobs | true vagy false | --- | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
+| nicPrefixOverride | string | --- | Alhálózat-előtag, például "10.0.0.0/24" |
+| commonNames | string[] | --- | Telepített fürtözött tanúsítványok köznapi nevei |
+| x509StoreName | string | --- | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
 | typeHandlerVersion | 1.1 | --- | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
-| dataPath | Karakterlánc | --- | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja. 
+| dataPath | string | --- | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja. 
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a ["bárhonnan üzembe helyezhető" funkció áttekintését, valamint az Azure által felügyelt fürtökkel való összehasonlítást](service-fabric-deploy-anywhere.md).
