@@ -47,6 +47,7 @@
     - name: SSIS-csomagok migrálása az Azure SQL Database felügyelt példányára
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: További források
+  expanded: true
   items:
     - name: Adatbázis migrációs forgatókönyvének állapota
       href: resource-scenario-status.md
