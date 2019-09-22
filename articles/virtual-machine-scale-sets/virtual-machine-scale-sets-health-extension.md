@@ -66,17 +66,17 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | Karakterlánc |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | Karakterlánc |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Beállítások
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
-| protocol | `http` vagy `tcp` | Karakterlánc |
+| protocol | `http` vagy `tcp` | string |
 | port | A protokoll `http`megadása esetén kötelező megadni, ha a protokoll`tcp` | int |
-| requestPath | Kötelező, ha a `http`protokoll értéke nem engedélyezett, ha a protokoll`tcp` | Karakterlánc |
+| requestPath | Kötelező, ha a `http`protokoll értéke nem engedélyezett, ha a protokoll`tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapot-kiterjesztésének üzembe helyezése
 Az alábbi példákban több módon is üzembe helyezheti az alkalmazás állapotának kiterjesztését a méretezési csoportokban.
