@@ -51,9 +51,9 @@ Az alábbi táblázat az egyes naplókban található tudnivalókat ismerteti. A
 | TimeGenerated [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
 | Type | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
-| Erőforráscsoport | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
+| ResourceGroup | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
-| Erőforrástípus | `Servers` |
+| ResourceType | `Servers` |
 | ResourceId | Erőforrás URI-ja |
 | Resource | A kiszolgáló neve |
 | Category | `PostgreSQLLogs` |
