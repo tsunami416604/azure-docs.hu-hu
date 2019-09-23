@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163302"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174129"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -26,9 +26,9 @@ Jelenleg nem veszünk fel támogatási eseteket, amíg a Windows rendszerű virt
 
 Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépek tartományhoz való csatlakoztatásakor.
 
-- Csatlakoztassa manuálisan a virtuális gépet a [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) vagy a tartományhoz való csatlakozás [sablonjának](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)használatával.
+- Csatlakoztassa manuálisan a virtuális gépet a [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) vagy a [tartományhoz való csatlakozás sablonjának](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)használatával.
 - Próbálja pingelni a tartománynevet a parancssorból a virtuális gépen.
-- Tekintse át a tartományhoz való [Csatlakozás hibaüzeneteit](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)a következő témakörben: tartományi csatlakozási hibaüzenetek.
+- Tekintse át a tartományhoz való [Csatlakozás hibaüzeneteit a következő témakörben](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx): tartományi csatlakozási hibaüzenetek.
 
 ### <a name="error-incorrect-credentials"></a>Hiba: Helytelen hitelesítő adatok
 
@@ -62,7 +62,7 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 
 **1. ok:** A virtuális gépek olyan virtuális hálózaton vannak, amely nincs társítva a virtuális hálózathoz (VNET), ahol a tartomány található.
 
-**1. javítás:** Hozzon létre VNET-társítást a virtuális gépek kiépített VNET és a tartományvezérlőt (DC) futtató VNET között. Lásd: [virtuális hálózati társ-erőforrás-kezelő létrehozása, különböző](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)előfizetések.
+**1. javítás:** Hozzon létre VNET-társítást a virtuális gépek kiépített VNET és a tartományvezérlőt (DC) futtató VNET között. Lásd: [virtuális hálózati társ-erőforrás-kezelő létrehozása, különböző előfizetések](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
 **2. ok:** Azure Active Directory Domain Services (Azure AD DS) használata esetén a virtuális hálózat nem frissült a DNS-kiszolgáló beállításaival, hogy azok a felügyelt tartományvezérlőkre mutassanak.
 
@@ -80,7 +80,7 @@ A virtuális gépek üzembe helyezésének ajánlott módja a **Windows rendszer
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
-1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult** > **programok** > **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök** rendszerindító betöltőprogramja nem látható, akkor azok nincsenek telepítve a virtuális gépen.
+1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult** > **programok** > **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
 2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\scriptlogs.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
 3. Ha a fájl **C:\Windows\Temp\scriptlogs.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
@@ -208,7 +208,7 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 **Javítsa ki** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
-2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) -modult, amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
+2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
     
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -296,17 +296,76 @@ Ha az operációs rendszer Microsoft Windows 10, folytassa az alábbi utasítás
 
 16. Ha a parancsmagok futása befejeződött, indítsa újra a virtuális gépet a meghibásodott párhuzamos verem használatával.
 
-## <a name="remote-licensing-model-is-not-configured"></a>A távoli licencelési modell nincs konfigurálva
+## <a name="remote-licensing-model-isnt-configured"></a>A távoli licencelési modell nincs konfigurálva
 
-Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkamenetbe, előfordulhat, hogy a "Távoli asztal licencelési mód nincs konfigurálva, Távoli asztali szolgáltatások X nap múlva nem fog működni. A Csatlakozáskezelő kiszolgálón a Kiszolgálókezelő használatával adhatja meg a Távoli asztal licencelési módot. " Ha ezt az üzenetet látja, az azt jelenti, hogy a licencelési módot manuálisan kellkonfigurálnia felhasználónként.
+Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkamenetbe, előfordulhat, hogy a "Távoli asztal licencelési mód nincs konfigurálva, Távoli asztali szolgáltatások X nap múlva nem fog működni. A Csatlakozáskezelő kiszolgálón a Kiszolgálókezelő használatával adhatja meg a Távoli asztal licencelési módot. "
 
-A licencelési mód manuális konfigurálása:  
+Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal ügyfél-hozzáférési licenc ehhez a számítógéphez."
 
-1. Lépjen a **Start menü** keresőmezőbe, majd keresse meg és nyissa meg a **gpedit. msc fájlt** a helyi csoportházirend-szerkesztő eléréséhez. 
-2. Ugrás a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > távoli asztali szolgáltatásokTávoliasztal > **munkamenet-gazdagép**  >  **Licencelés**. 
-3. Válassza **a távoli asztal licencelési mód beállítása** lehetőséget, ésmódosítsa felhasználónként értékre.
+Ha ezek közül bármelyik üzenet látható, akkor meg kell nyitnia a Csoportházirend-szerkesztőt, és manuálisan kell konfigurálnia a licencelési módot **felhasználónként**. A manuális konfigurációs folyamat eltér attól függően, hogy a Windows 10 Enterprise több munkamenetének melyik verzióját használja. A következő szakaszokban megtudhatja, hogyan ellenőrizhető a verziószám, és mi a teendő.
 
-Jelenleg tekintjük meg az értesítési és türelmi idő időtúllépésével kapcsolatos problémákat, és megtervezjük, hogy egy jövőbeli frissítéssel foglalkozzon velük. 
+>[!NOTE]
+>A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)című témakört.
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Annak meghatározása, hogy a Windows 10 Enterprise több munkamenet melyik verzióját használja
+
+Ha szeretné megtekinteni, hogy a Windows 10 Enterprise több munkamenetének melyik verziója van:
+
+1. Jelentkezzen be a rendszergazdai fiókjával.
+2. Adja meg a "Névjegy" kifejezést a Start menü melletti keresési sávon.
+3. Válassza **a számítógép névjegye**elemet.
+4. A "version" felirat melletti szám bejelölése A számnak "1809" vagy "1903" értékűnek kell lennie, ahogy az alábbi képen is látható.
+   
+    ![A Windows-specifikációk ablak képernyőképe. A verziószám kék színnel van kiemelve.](media/windows-specifications.png)
+
+Most, hogy már ismeri a verziószámát, ugorjon a megfelelő szakaszra.
+
+### <a name="version-1809"></a>1809-es verzió
+
+Ha a verziószáma a "1809" értéket adja meg, frissítsen a Windows 10 Enterprise multi-session, a 1903 verzióra, vagy telepítse újra a gazdagépet a legújabb képpel.
+
+A Windows 10 1903-es verzióra való frissítéshez:
+
+1. Ha még nem tette meg, töltse le és telepítse a [Windows 10 május 2019 frissítését](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
+2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
+3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
+4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
+6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
+    
+    ![A "Távoli asztal licencelési mód beállítása" ablak képernyőképe a 6. lépésben megadott utasítások szerint.](media/group-policy-editor-per-user.png)
+
+7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **OK** gombra.
+9.  Indítsa újra a gépet.
+
+A gazdagép-készlet újbóli üzembe helyezése a legújabb képpel:
+
+1. Kövesse a [gazdagép létrehozása az Azure Marketplace](create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg meg nem kérdezi, hogy kiválassza-e a rendszerkép operációs rendszerének verzióját. Az Office 365 ProPlus vagy anélkül is választhat Windows 10 Enterprise-alapú több munkamenetet.
+2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
+3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
+4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
+6. A megnyíló ablakban először válassza az **engedélyezve**lehetőséget, majd a beállítások alatt adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**.
+7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **OK** gombra.
+9.  Indítsa újra a gépet.
+
+### <a name="version-1903"></a>1903-es verzió
+
+Ha a verziószáma "1903" értéket ad meg, kövesse az alábbi utasításokat:
+
+1. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
+2. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
+3. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+4. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
+6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
+    
+    ![A "Távoli asztal licencelési mód beállítása" ablak képernyőképe a 6. lépésben megadott utasítások szerint.](media/group-policy-editor-per-user.png)
+
+7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **OK** gombra.
+9.  Indítsa újra a gépet.
 
 ## <a name="next-steps"></a>További lépések
 
