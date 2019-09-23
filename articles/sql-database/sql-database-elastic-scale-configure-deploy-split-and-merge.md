@@ -142,7 +142,7 @@ Ha a feldolgozói szerepkör nem tud online állapotba jutni, de a webes szerepk
    ```
 
 * Győződjön meg arról, hogy a kiszolgálónév nem a **https://** kezdődik.
-* Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. Ehhez nyissa meg az adatbázist a portálon, és győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás a * * * * * értékre van állítva.
+* Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. Ehhez nyissa meg az adatbázist a portálon, és győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás a **On** ** értékre van állítva.
 
 ## <a name="test-the-service-deployment"></a>A szolgáltatás központi telepítésének tesztelése
 ### <a name="connect-with-a-web-browser"></a>Webböngészővel való kapcsolat

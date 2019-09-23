@@ -481,7 +481,7 @@ actions('Get_user').outputs.body.status
 
 <a name="add"></a>
 
-### <a name="add"></a>hozzáadás
+### <a name="add"></a>add
 
 Az eredmény visszaadása két szám hozzáadásával.
 
