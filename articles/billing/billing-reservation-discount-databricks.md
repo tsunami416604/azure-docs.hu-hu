@@ -1,6 +1,6 @@
 ---
-title: Hogyan kell alkalmazni az Azure Databricks előre történő megvásárlása kedvezmény
-description: Ismerje meg, hogyan a használat egy Azure Databricks előre történő megvásárlása kedvezmény érvényes.
+title: Az előzetes Azure Databricks-vásárlásért járó kedvezmény alkalmazásának módja
+description: Megtudhatja, hogyan vonatkozik az előzetes Azure Databricks-vásárlásért járó kedvezmény az Ön használatára.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 7c1855b587ab1d603e9c6ac24a67b0f50065361f
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67827641"
 ---
-# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Az Azure Databricks hogyan vásárolhat kedvezmény alkalmazása
+# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Az előzetes Azure Databricks-vásárlásért járó kedvezmény alkalmazásának módja
 
-A vásárlás során bármikor előre megvásárolt Azure Databricks végrehajtási egységek (DBCU) is használhatja. Bármely Azure Databricks használata az előre megvásárolt DBCUs a levonja az automatikusan.
+Az előre megvásárolt kötött Azure Databricks-egységeket (DBCU) a vásárlási időtartam során bármikor felhasználhatja. Az előre megvásárolt DBCU-kból való levonás automatikusan megtörténik az Azure Databricks használata esetén.
 
-Virtuális gépek, eltérően előre megvásárolt egységek óránként nem lejár. A vásárlás során bármikor használhatja őket. Az előre történő megvásárlása engedmények lekéréséhez nem kell újból üzembe helyeznie vagy egy előre megvásárolt csomag hozzárendelése az Azure Databricks-munkaterületek a használatra.
+A virtuális gépektől eltérően az előre megvásárolt egységek nem járnak le óránként. Az egységek a vásárlási időtartam során bármikor felhasználhatók. Az előzetes vásárlásért járó kedvezmények igénybevételéhez nem szükséges újból üzembe helyeznie vagy hozzárendelnie egy előzetesen vásárolt csomagot az Azure Databricks-munkaterületeihez a használathoz.
 
-Az előre történő megvásárlása engedményt csak az Azure Databricks-egységek (DBU) használati vonatkozik. Egyéb, például számítási, tárolási és hálózati díjak külön-külön számítjuk fel.
+Az előzetes vásárlásért járó kedvezmény csak az Azure Databricks-egységek (DBU) használatára vonatkozik. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 
-## <a name="pre-purchase-discount-application"></a>Előre történő megvásárlása vonatkozó kedvezmény alkalmazása
+## <a name="pre-purchase-discount-application"></a>Az előzetes vásárlásért járó kedvezmény alkalmazása
 
-Előre történő megvásárlása Databricks a Databricks számítási feladatok és a szint vonatkozik. Előre fizetett Databricks végrehajtási egységek készletét, mint a előre történő megvásárlása is felfoghatók. Használati függetlenül a számítási feladat vagy a csomag, a készletbe vonni. Használati levonásra kerül a következő arány:
+Az előzetesen vásárolt Databricks-egységek minden Databricks-számításifeladathoz és -szinthez felhasználhatók. Az előzetes vásárlást előre kifizetett kötött Databricks-egységek készletének lehet tekinteni. A rendszer a készletből vonja le a használatot, a számítási feladattól és a szinttől függetlenül. A használat levonása a következő arányban történik:
 
-| **Számítási feladat** | **DBU-alkalmazás arány – Standard csomag** | **DBU-alkalmazás arány – prémium szint** |
+| **Számítási feladat** | **DBU-alkalmazási arány – Standard szint** | **DBU-alkalmazási arány – Prémium szint** |
 | --- | --- | --- |
-| Adatelemzés | 0.4 | 0.55 |
-| Adatfeldolgozás | 0.15 | 0,30 |
-| Adatfeldolgozás (egyszerű) | 0.07 | 0.22 |
+| Adatelemzés | 0,4 | 0,55 |
+| Adatfeldolgozás | 0,15 | 0,30 |
+| Adatfeldolgozás (egyszerű) | 0,07 | 0,22 |
 
-Ha például Data Analytics – Standard szintű mennyiséget használja fel, ha a Databricks-véglegesítési előre megvásárolt egységek levonása 0,4 egységek által. Adatok mérnöki világos – mennyiségű Standard csomagot használja, a Databricks-véglegesítési előre megvásárolt egység levonása 0.07 egységek
+Ha például bizonyos mennyiségű Standard szintű Adatelemzést használ fel, az előzetesen vásárolt kötött Databricks-egységekből 0,4 egység lesz levonva. Ha bizonyos mennyiségű Standard szintű Egyszerű adatelemzést használ fel, az előzetesen vásárolt kötött Databricks-egységekből 0,07 egység lesz levonva.
 
-## <a name="determine-plan-use"></a>Határozza meg a terv használata
+## <a name="determine-plan-use"></a>A csomaghasználat meghatározása
 
-Annak megállapításához, a DBCU tervet használja, nyissa meg az Azure portal > **foglalások** , és kattintson a megvásárolt Databricks tervet. A kihasználtság elejétől számított összes többi egység mellett látható. További információt, amely meghatározza, hogy a Foglalás használja, tekintse meg a [foglalás használati](billing-reservation-apis.md#see-reservation-usage) cikk.
+A DBCU-csomaghasználat meghatározásához lépjen az Azure Portal > **Foglalások** elemre, majd kattintson a megvásárolt Databricks-csomagra. Itt jelenik meg az eddigi kihasználtság, a fennmaradó egységekkel együtt. A foglalás használatának meghatározásával kapcsolatos további információkért tekintse meg a [foglalás használatát](billing-reservation-apis.md#see-reservation-usage) ismertető cikket.
 
-## <a name="how-discount-application-shows-in-usage-data"></a>Hogyan vonatkozó kedvezmény alkalmazása jeleníti meg, a használati adatok
+## <a name="how-discount-application-shows-in-usage-data"></a>A kedvezmény alkalmazásának megjelenése a használati adatokban
 
-Az előre történő megvásárlása engedmény a Databricks-használat vonatkozik, ha igény szerinti költségek a használati adatok nullaként jelennek meg. A fenntartási költségeket, és használatával kapcsolatos további információkért lásd: [első nagyvállalati szerződés fenntartási költségeket és a használatot](billing-understand-reserved-instance-usage-ea.md).
+Ha előzetes vásárlási kedvezmény vonatkozik a Databricks-használatra, a használati adatokban az igénybevétel szerinti költségek nullaként jelennek meg. A foglalási költségekkel és használati adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati szerződés foglalási költségeinek és kihasználtságának lekérése](billing-understand-reserved-instance-usage-ea.md) szakaszt.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
-- Pénzt takaríthat meg az Azure Databricks előzetes megvásárlásával kapcsolatos további tudnivalókért lásd: [előre történő megvásárlása költségek optimalizálása az Azure Databricks](billing-prepay-databricks-reserved-capacity.md).
-- Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-  - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
-  - [Az Azure-ban foglalások kezelése](billing-manage-reserved-vm-instance.md)
-  - [Foglalás utólagos elszámolású díjszabás szerint az előfizetés használati adatai](billing-understand-reserved-instance-usage.md)
-  - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
+- A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md) szakaszt.
+- Az Azure Databricks-egységek előzetes vásárlásával történő megtakarításra vonatkozó információkért tekintse meg az [Azure Databricks-költségek előzetes vásárlással történő optimalizálását](billing-prepay-databricks-reserved-capacity.md) ismertető szakaszt.
+- Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
+  - [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
+  - [A Reservations kezelése az Azure-ban](billing-manage-reserved-vm-instance.md)
+  - [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](billing-understand-reserved-instance-usage.md)
+  - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)

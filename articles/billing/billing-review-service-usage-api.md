@@ -1,6 +1,6 @@
 ---
-title: Az Azure-szolgáltatások erőforrás-használatának áttekintése a REST API használatával | Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure REST API-kat az Azure-szolgáltatások erőforrás-használatának áttekintéséhez.
+title: Azure-szolgáltatások erőforrás-használatának áttekintése REST API-val | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti át az Azure-szolgáltatások erőforrás-használatát Azure REST API-kkal.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -14,24 +14,24 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: banders
 ms.openlocfilehash: 47e19fae26d6e3bc465799980c587d7bb7ed5e92
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443066"
 ---
-# <a name="review-azure-resource-usage-using-the-rest-api"></a>Az Azure-erőforrások használatának áttekintése a REST API használatával
+# <a name="review-azure-resource-usage-using-the-rest-api"></a>Azure-erőforráshasználat áttekintése a REST API-val
 
-A Azure Cost Management API-k segítségével áttekintheti és kezelheti az Azure-erőforrások felhasználását.
+Az Azure Cost Management API-k az Azure-erőforrások használatának áttekintésében és kezelésében segítenek.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre napi jelentést, amely egy vesszővel tagolt értéket tartalmazó dokumentumot készít az óránkénti használati adataival, majd hogyan használhatja a szűrőket a jelentés testreszabásához, hogy lekérdezze a virtuális gépek, adatbázisok és címkézett adatok használatát. Azure-erőforráscsoport erőforrásai.
+Ebből a cikkből megtudhatja, hogyan hozhat létre napi jelentést, amely egy vesszővel tagolt értéket tartalmazó dokumentumot készít az óránkénti használat adatairól, majd hogyan szabhatja testre a jelentést szűrőkkel, hogy lekérdezhesse a virtuális gépek, adatbázisok és címkézett adatok Azure-erőforráscsoportokban való használatát.
 
 >[!NOTE]
 > A Cost Management API jelenleg privát előzetes verzióban érhető el.
 
-## <a name="create-a-basic-cost-management-report"></a>Alapszintű Cost Management-jelentés létrehozása
+## <a name="create-a-basic-cost-management-report"></a>Alapszintű költségkezelési jelentés létrehozása
 
-A Cost Management API-val végzett művelettelmeghatározhatja,hogyarendszerhogyanhozzalétreaköltségeket,éshogyajelentésekhollesznekközzétéve.`reports`
+A Cost Management API `reports` műveletével határozhatja meg, hogyan jöjjenek létre a költségjelentések, és hol legyenek közzétéve a jelentések.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
@@ -39,16 +39,16 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-A `{subscriptionGuid}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosítót, amely az API-jogkivonatban megadott hitelesítő adatok használatával olvasható. A`{reportName}`
+A `{subscriptionGuid}` paraméter megadása kötelező, és tartalmaznia kell egy előfizetés-azonosítót, amely az API-jogkivonatban megadott hitelesítő adatok használatával olvasható be. A `{reportName}`
 
-A következő fejlécek szükségesek: 
+A következő fejlécek megadása kötelező: 
 
 |Kérelem fejléce|Leírás|  
 |--------------------|-----------------|  
-|*Content-Type:*| Kötelező. Állítsa a `application/json`következőre:. |  
-|*Authorization:*| Kötelező. Érvényes `Bearer` tokenre van állítva. |
+|*Content-Type* (Tartalomtípus):| Kötelező. Állítsa `application/json` értékre. |  
+|*Authorization* (Engedélyezés):| Kötelező. Állítsa egy érvényes `Bearer` jogkivonatra. |
 
-Konfigurálja a jelentés paramétereit a HTTP-kérelem törzsében. Az alábbi példában a jelentés úgy van beállítva, hogy minden nap, amikor az aktív, egy Azure Storage blob-tárolóba írt CSV-fájl, amely óradíj-információkat tartalmaz az erőforráscsoport `westus`összes erőforrásához.
+Konfigurálja a jelentés paramétereit a HTTP-kérelem törzsében. Az alábbi példában a jelentés úgy van beállítva, hogy minden aktív napon létrejöjjön egy CSV-fájl az Azure Storage-blobtárolóban, amely a `westus` erőforráscsoportban lévő összes erőforrás óránkénti költséginformációit tartalmazza.
 
 ```json
 {
@@ -93,11 +93,11 @@ A(z)
 
 ## <a name="filtering-reports"></a>Jelentések szűrése
 
-A `filter` jelentés `dimensions` létrehozásakor a kérés törzsének és szakaszának meghatározása lehetővé teszi, hogy az adott erőforrástípusok költségeire koncentráljon. Az előző kérelem törzse azt mutatja be, hogyan szűrheti a régió összes erőforrását. 
+Jelentés létrehozásakor a kérelem törzsének `filter` és `dimensions` szakaszában összpontosíthat az adott erőforrástípusok költségeire. Az előző kérelemtörzsben láthatja, hogyan szűrhet egy régió összes erőforrása alapján. 
 
-### <a name="get-all-compute-usage"></a>Az összes számítási használat beolvasása
+### <a name="get-all-compute-usage"></a>Az összes számítási használat lekérése
 
-A `ResourceType` dimenzió használatával jelentheti be az Azure-beli virtuális gépek költségeit az előfizetésben az összes régióban.
+A `ResourceType` dimenzióval készíthet jelentést az Azure-beli virtuális gép költségeiről az előfizetés összes régiójában.
 
 ```json
 "filter": {
@@ -112,9 +112,9 @@ A `ResourceType` dimenzió használatával jelentheti be az Azure-beli virtuáli
 }
 ```
 
-### <a name="get-all-database-usage"></a>Az összes adatbázis-használat beolvasása
+### <a name="get-all-database-usage"></a>Az összes adatbázis használatának lekérése
 
-Használja a `ResourceType` dimenziót az előfizetéshez tartozó Azure SQL Database költségek jelentésére minden régióban.
+A `ResourceType` dimenzióval készíthet jelentést az Azure SQL Database költségeiről az előfizetés összes régiójában.
 
 ```json
 "filter": {
@@ -128,9 +128,9 @@ Használja a `ResourceType` dimenziót az előfizetéshez tartozó Azure SQL Dat
 }
 ```
 
-### <a name="report-on-specific-instances"></a>Jelentés adott példányokról
+### <a name="report-on-specific-instances"></a>Jelentéskészítés adott példányokról
 
-A `Resource` dimenzió lehetővé teszi, hogy adott erőforrásokra vonatkozó költségeket jelentsen.
+A `Resource` dimenzióval adott erőforrások költségeiről készíthet jelentést.
 
 ```json
 "filter": {
@@ -146,7 +146,7 @@ A `Resource` dimenzió lehetővé teszi, hogy adott erőforrásokra vonatkozó k
 
 ### <a name="changing-timeframes"></a>Időkeretek módosítása
 
-Állítsa be `timeframe` a definíciót úgy `Custom` , hogy egy időkeretet állítson be a héten kívüli időpontra a dátum és a hónap között a beépített lehetőségek közül.
+Állítsa a `timeframe` definíciót `Custom` értékre, ha a jelenlegi hét és a jelenlegi hónap beépített lehetőségén kívüli időkeretet szeretne beállítani.
 
 ```json
 "timeframe": "Custom",
@@ -157,4 +157,4 @@ A `Resource` dimenzió lehetővé teszi, hogy adott erőforrásokra vonatkozó k
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [Ismerkedés az Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
+- [Bevezetés az Azure REST API használatába](https://docs.microsoft.com/rest/api/azure/)   

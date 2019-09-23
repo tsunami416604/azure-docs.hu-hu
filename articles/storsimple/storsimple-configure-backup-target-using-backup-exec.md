@@ -233,7 +233,7 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 -   A StorSimple támogatja a Backup Exec teljes és növekményes biztonsági mentését. Azt javasoljuk, hogy ne használjon szintetikus és különbözeti biztonsági mentést.
 -   A biztonsági mentési adatfájloknak csak egy adott feladatokhoz kell tartalmazniuk. Például a különböző feladatokhoz tartozó adathordozók nem adhatók hozzá.
 -   A feladatok ellenőrzésének letiltása. Ha szükséges, az ellenőrzést a legutóbbi biztonsági mentési feladatot követően kell ütemezni. Fontos tisztában lenni azzal, hogy ez a művelet hatással van a biztonsági mentés ablakára.
--   **Válassza a** **lemez** **** **adatai**tulajdonságok lehetőséget. >  >  >  Kikapcsolhatja a **lemezterület előzetes**lefoglalását.
+-   **Válassza a** **lemez** **adatai**tulajdonságok lehetőséget. >  >  >  Kikapcsolhatja a **lemezterület előzetes**lefoglalását.
 
 A legújabb Backup Exec-beállításokkal és a követelmények végrehajtásának ajánlott eljárásaival kapcsolatban tekintse meg [a Veritas](https://www.veritas.com)webhelyét.
 

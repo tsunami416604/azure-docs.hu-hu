@@ -1,6 +1,6 @@
 ---
-title: Optimalizálhatók a költségek az Azure Databricks egy előre történő megvásárlása
-description: Ismerje meg, hogyan, is fizessen elő az Azure Databricks-díjak a lefoglalt kapacitás pénzt takaríthat meg.
+title: Azure Databricks-költségek optimalizálása előzetes vásárlással
+description: Megtudhatja, hogyan fizetheti előre az Azure Databricks költségeit fenntartott kapacitással, így pénzt takarítva meg.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 99eb4de86aa227d558bec54d011a0b1548d27cf0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67811257"
 ---
-# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimalizálhatók a költségek az Azure Databricks egy előre történő megvásárlása
+# <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Azure Databricks-költségek optimalizálása előzetes vásárlással
 
-Az Azure Databricks is mentheti egységek (DBU) költségeit, ha előre megvásárolja az Azure Databricks véglegesítése egységek (DBCU) egy vagy három évig. Használhatja az előre megvásárolt DBCUs bármikor a vásárlás során. Ellentétben a virtuális gépek az előre megvásárolt egységek óránként nem jár le, és azokat a vásárlás során bármikor használhatja.
+Pénzt takaríthat meg az Azure Databricks-egységeinek (DBU) költségein, ha kötött Azure Databricks-egységeket (DBCU) vásárol előzetesen egy vagy három évre. Az előre megvásárolt DBCU-kat a vásárlási időtartam során bármikor felhasználhatja. A virtuális gépektől eltérően az előre megvásárolt egységek nem járnak le óránként, és a vásárlási időtartam alatt bármikor felhasználhatók.
 
-Az Azure Databricks használata az előre kell megvásárolni a Dbu levonja az automatikusan. Nem kell újból üzembe helyeznie vagy egy előre megvásárolt csomag hozzárendelése az Azure Databricks-munkaterületek, az előre történő megvásárlása kedvezmények DBU használatra.
+Az előre megvásárolt DBU-kból való levonás automatikusan megtörténik az Azure Databricks használata esetén. Az előzetes vásárlásért járó kedvezmények igénybevételéhez nem szükséges újból üzembe helyeznie vagy hozzárendelnie egy előzetesen vásárolt csomagot az Azure Databricks-munkaterületeihez a DBU-használathoz.
 
-Az előre történő megvásárlása engedményt csak a DBU használati vonatkozik. Egyéb, például számítási, tárolási és hálózati díjak külön-külön számítjuk fel.
+Az előzetes vásárlásért járó kedvezmény csak a DBU-használatra vonatkozik. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 
-## <a name="determine-the-right-size-to-buy"></a>Határozza meg a megfelelő méretű megvásárlása
+## <a name="determine-the-right-size-to-buy"></a>A vásárolni kívánt megfelelő méret meghatározása
 
-Előre történő megvásárlása Databricks a Databricks számítási feladatok és a szint vonatkozik. Előre fizetett Databricks végrehajtási egységek készletét, mint a előre történő megvásárlása is felfoghatók. Használati függetlenül a számítási feladat vagy a csomag, a készletbe vonni. Használati levonásra kerül a következő arány:
+Az előzetesen vásárolt Databricks-egységek minden Databricks-számításifeladathoz és -szinthez felhasználhatók. Az előzetes vásárlást előre kifizetett kötött Databricks-egységek készletének lehet tekinteni. A rendszer a készletből vonja le a használatot, a számítási feladattól és a szinttől függetlenül. A használat levonása a következő arányban történik:
 
-| **Számítási feladat** | **DBU alkalmazás arány – Standard csomag** | **DBU-alkalmazás arány – prémium szint** |
+| **Számítási feladat** | **DBU-alkalmazási arány – Standard szint** | **DBU-alkalmazási arány – Prémium szint** |
 | --- | --- | --- |
-| Adatelemzés | 0.4 | 0.55 |
-| Adatfeldolgozás | 0.15 | 0,30 |
-| Adatfeldolgozás (egyszerű) | 0.07 | 0.22 |
+| Adatelemzés | 0,4 | 0,55 |
+| Adatfeldolgozás | 0,15 | 0,30 |
+| Adatfeldolgozás (egyszerű) | 0,07 | 0,22 |
 
-Például Data Analytics – mennyiségű Standard szintű használja fel, a Databricks-véglegesítési előre megvásárolt egységek levonása 0,4 egységek.
+Ha például bizonyos mennyiségű Standard szintű Adatelemzést használ fel, az előzetesen vásárolt kötött Databricks-egységekből 0,4 egység lesz levonva.
 
-Vásárlás, előtt kiszámítása az összes DBU-mennyiség, a különböző számítási feladatok és csomagok felhasznált. Az előző arányok használatával való DBCU normalizálása, és futtassa a teljes felhasználás vetülete ezután egy vagy három év során.
+A vásárlás előtt számítsa ki a különböző számítási feladatokhoz és szintekhez felhasznált teljes DBU-mennyiséget. Használja ezeket az arányokat a DBCU-ra való normalizáláshoz, majd futtassa le a teljes használat következő egy vagy három évre szóló előrejelzését.
 
-## <a name="purchase-databricks-commit-units"></a>Databricks-végrehajtási egység megvásárlása
+## <a name="purchase-databricks-commit-units"></a>Kötött Databricks-egységek vásárlása
 
-Databricks-csomagokat is elérhetőek a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Lefoglalt kapacitás vásárlásához ki legalább egy vállalati előfizetés a tulajdonosi szerepkörrel kell rendelkeznie.
+Databricks-csomagokat az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) vásárolhat. Lefoglalt kapacitás vásárlásához legalább egy nagyvállalati előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 
-- Jelenleg előre történő kifizetését csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el.
-- A vállalati legalább egy előfizetés-tulajdonosi szerepkör kell lennie.
-- Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com/). Vagy, ha a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
+- Az előzetes vásárlás jelenleg csak a Nagyvállalati Szerződéssel rendelkező ügyfelek számára érhető el.
+- Legalább egy nagyvállalati előfizetés tulajdonosi szerepkörével kell rendelkeznie.
+- Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 
-**Beszerzés:**
+**A vásárláshoz:**
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Válasszon egy előfizetést. Használja a **előfizetés** listát használva jelölje ki az előfizetést, amellyel a lefoglalt kapacitás kell fizetnie. A fizetési módot, az előfizetés az előzetes költségek, a szolgáltatás számára fenntartott kapacitás után kell fizetni. Díjak a regisztráció pénzügyi kötelezettségvállalási egyenleg kell vonni vagy számlázva.
-1. Válassza ki a hatókört. Használja a **hatókör** lista segítségével válassza ki egy előfizetési hatókört:
-    - **Erőforrás-csoport hatóköre egyetlen** – vonatkozik a foglalási kedvezményt a megfelelő erőforrások csak a kiválasztott erőforráscsoportban.
-    - **Egyetlen előfizetéses hatókört** – alkalmazza a foglalási kedvezményt a megfelelő erőforrások a kijelölt előfizetésben.
-    - **A megosztott hatókör** – alkalmazza a foglalási kedvezményt támogatásra jogosult előfizetések, a számlázási környezetben lévő erőforrások megfelelő. Nagyvállalati szerződéssel rendelkező ügyfeleknek a számlázási környezetben a regisztrációt.
-1. Válassza ki az Azure Databricks véglegesítési hány egység megvásárlása és véglegesítse a vásárlást.
+1. Válasszon egy előfizetést. Az **Előfizetés** lista használatával válassza ki a lefoglalt kapacitás kifizetéséhez használt előfizetést. Az előfizetés fizetési módjának használatával megtörténik a lefoglalt kapacitás után fizetett előzetes költségek levonása. A díjak a regisztrációhoz tartozó pénzügyi keretek egyenlegeiből lesznek levonva, illetve kerettúllépésként lesznek számlázva.
+1. Válassza ki a hatókört. A **Hatókör** lista használatával válassza ki az előfizetés hatókörét.
+    - **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
+    - **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.
+    - **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció.
+1. Válassza ki a megvásárolni kívánt kötött Azure Databricks-egységek számát, és véglegesítse a vásárlást.
 
 
-![Az Azure Portalon az Azure Databricks-beszerzési bemutató példa](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
+![Azure Databricks-egységek Azure Portalon történő vásárlását bemutató példa](./media/billing-prepay-databricks-reserved-capacity/data-bricks-pre-purchase.png)
 
-## <a name="change-scope-and-ownership"></a>Hatókör módosítása és tulajdonosi viszonyainak
+## <a name="change-scope-and-ownership"></a>A hatókör és a tulajdonjog módosítása
 
-Egy foglalás megvásárlása után a következő típusú módosításokat végezhet:
+A vásárlás után a következő típusú módosításokat hajthatja végre a foglalásokon:
 
-- Frissítse a Foglalás hatóköre
+- Foglalás hatókörének frissítése
 - Szerepköralapú hozzáférés
 
-Nem felosztása és egyesítése a Databricks véglegesítési egység előre történő megvásárlása. Foglalások kezelésével kapcsolatos további információkért lásd: [foglalások kezelése a vásárlás után](billing-manage-reserved-vm-instance.md).
+Előzetes vásárlás esetén nem oszthat fel vagy egyesíthet kötött Databricks-egységeket. A foglalások kezelésével kapcsolatos további információkért olvassa el [a foglalások vásárlás utáni kezelését](billing-manage-reserved-vm-instance.md) ismertető cikket.
 
-## <a name="cancellations-and-exchanges"></a>Lemondás és cseréje
+## <a name="cancellations-and-exchanges"></a>Lemondások és cserék
 
-Megszakítás és az exchange Databricks előre történő megvásárlása tervek esetében nem támogatott. Minden vásárláshoz végső.
+A lemondás és a csere az előzetesen vásárolt Databricks-csomagok esetében nem támogatott. Minden vásárlás végleges.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
-- Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-  - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
-  - [Megismerheti, hogyan kell alkalmazni az Azure Databricks előre történő megvásárlása DBCU kedvezmény](billing-reservation-discount-databricks.md)
-  - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
+- Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
+  - [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
+  - [Az előzetes Azure Databricks-vásárlásért járó DBCU-kedvezmény alkalmazásának ismertetése](billing-reservation-discount-databricks.md)
+  - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)

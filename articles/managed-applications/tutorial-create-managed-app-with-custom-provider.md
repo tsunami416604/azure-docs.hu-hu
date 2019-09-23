@@ -131,8 +131,8 @@ A teljes *mainTemplate. JSON* minta a következő címen [érhető el: Telepít�
 A felügyelt alkalmazásban egyéni műveleteket és egyéni erőforrásokat tartalmazó felhasználói felület definiálásához **viewDefinition. JSON** -összetevőt kell létrehoznia. A definíciós összetevők megtekintésével kapcsolatos további információkért lásd: definíciós összetevő [megtekintése Azure Managed Applicationsban](concepts-view-definition.md).
 
 Ebben az oktatóanyagban az alábbiakat határozza meg:
-* Az ** alapszintű szövegbevitelt használó egyéni műveletet `TestAction` jelképező eszköztár gombbal rendelkező áttekintő lap.
-* Egy ** egyéni erőforrástípust `users`képviselő felhasználók lap.
+* Az alapszintű szövegbevitelt használó egyéni műveletet `TestAction` jelképező eszköztár gombbal rendelkező *áttekintő* lap.
+* Egy egyéni erőforrástípust `users`képviselő *felhasználók* lap.
 * Egyéni erőforrás-művelet `users/contextAction` a *felhasználók* lapon, amelyet a rendszer a típusú `users`egyéni erőforrás kontextusában hajt végre.
 
 Az alábbi példa egy "áttekintés" oldal konfigurációjának megtekintését szemlélteti:
@@ -256,7 +256,7 @@ az managedapp definition create \
 3. Adja meg a Service Catalog-definíciók létrehozásához szükséges értékeket:
 
     * Adja meg a szolgáltatás-katalógus definíciójának egyedi **nevét** , a **megjelenítendő nevet** és a *leírást*(nem kötelező).
-    * Válassza ki **** azt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
+    * Válassza kiazt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
     * A **Package file URI**esetében adja meg az előző lépésben létrehozott zip-fájl elérési útját.
 
     ![Értékek megadása](./media/managed-application-with-custom-providers/add-service-catalog-managed-application.png)
@@ -315,7 +315,7 @@ az managedapp create \
 
 4. Adja meg a felügyelt alkalmazás példányának a Service Catalog-definícióból való létrehozásához szükséges értékeket:
 
-    * Válassza ki **** azt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
+    * Válassza kiazt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
     * Adjon meg egy egyedi Azure-függvény nevét és az Azure Storage-fiók nevét.
 
     ![Alkalmazásbeállítások](./media/managed-application-with-custom-providers/application-settings.png)

@@ -1,6 +1,6 @@
 ---
-title: Azure-foglalások vásárlása előzetes vagy havi fizetéssel
-description: Ismerje meg, hogyan vásárolhat Azure-foglalásokat előzetes vagy havi fizetéssel.
+title: Azure-foglalások vásárlása előre fizetéssel vagy havi kifizetésekkel
+description: Ismerje meg, hogyan vásárolhat Azure-foglalásokat előre fizetéssel vagy havi kifizetésekkel.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: banders
 ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806947"
 ---
-# <a name="purchase-reservations-with-monthly-payments"></a>Vásárlási foglalások havi fizetéssel
+# <a name="purchase-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
 
-Eddig az Azure-foglalások kötelező befizetést igényelnek. Mostantól a havi kifizetéssel rendelkező foglalásokat is kifizetheti. Az előzetes vásárlástól eltérően, ahol a teljes összeget kifizeti, a havi fizetési lehetőség a foglalás teljes költségét egyenlően osztja el a kifejezés minden hónapjában. A kezdeti és a havi foglalások teljes költsége megegyezik, és a havi fizetés után nem számítunk fel további díjakat.
+Eddig csak előre fizetéssel lehetett Azure-foglalásokat vásárolni. Mostantól havi kifizetésekkel is fizethet a foglalásokért. Az előre fizetéses vásárlástól eltérően, amikor kifizeti a teljes összeget, a havi fizetéses lehetőség egyenlően osztja el a foglalás teljes költségét az időszak minden hónapjára. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie.
 
-A havi fizetési összeg az aktuális havi piaci árfolyamtól függően változhat a helyi pénznemben.
+A havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes átváltási árfolyamától függően változhat.
 
-A következő havi fizetések érhetők el:
+A havi kifizetések az alábbiak esetében érhetőek el:
 
 - Virtual machines (Virtuális gépek)
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
-- App Service Stamp díja
+- App Service-bélyeg díja
 
-Foglalások vásárlása a [Azure Portal](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Foglalások vásárlása az [Azure Portalon](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
 
-![A foglalások vásárlását bemutató példa](./media/billing-monthly-payments-reservations/purchase-reservation.png)
+![Példa a foglalásvásárlásra](./media/billing-monthly-payments-reservations/purchase-reservation.png)
 
-A foglalás megvásárlásakor megtekintheti a fizetési ütemtervet. Kattintson a **teljes fizetési ütemterv megtekintése**elemre.
+A foglalás megvásárlásakor megtekintheti a fizetési ütemezést. Kattintson a **Teljes kifizetési ütemezés megtekintése** lehetőségre.
 
-![A foglalási fizetési ütemtervet bemutató példa](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
+![Példa a foglalás fizetési ütemezésére](./media/billing-monthly-payments-reservations/prepurchase-schedule.png)
 
-Ha a vásárlás után szeretné megtekinteni a fizetési ütemtervet, válasszon ki egy foglalást, kattintson a **foglalási rendelés azonosítóra**, majd kattintson a **fizetések** fülre.
+A fizetési ütemezés vásárlás utáni megtekintéséhez válasszon ki egy foglalást, kattintson a **Foglalás rendelési azonosítója** lehetőségre, majd a **Kifizetések** lapra.
 
-## <a name="view-payments-made"></a>Kifizetések megtekintése
+## <a name="view-payments-made"></a>A megtörtént kifizetések megtekintése
 
-Megtekintheti az API-k, a használati adatok és a Cost Analysis szolgáltatásban végrehajtott kifizetéseket. A havonta fizetett foglalások esetében a gyakoriság értéke **ismétlődőként** jelenik meg a használati adatok és a foglalási díjak API-ban. Az előre befizetett foglalások esetében az érték az **egyszeri**módon jelenik meg.
+A megtörtént kifizetéseket az API-k és a használati adatok használatával, valamint a költségelemzésben tekintheti meg. A havonta kifizetett foglalások esetében a gyakoriság értéke **ismétlődőként** jelenik meg a használati adatokban és a Reservation Charges API-ban. Az előre kifizetett foglalások esetében az érték **egyszeriként** jelenik meg.
 
-A Cost Analysis az alapértelmezett nézetben mutatja be a havi vásárlásokat. Az összes vásárlás megjelenítéséhez alkalmazza a **beszerzési** szűrőt a **Charge Type** és az **ismétlődő** **értékekre** . Csak a foglalások megtekintéséhez alkalmazzon szűrőt a **foglaláshoz**.
+A költségelemzés az alapértelmezett nézetben jeleníti meg a havi vásárlásokat. A vásárlások megtekintéséhez alkalmazza a **vásárlás** szűrőt a **Költségtípus** esetében és az **ismétlődő** szűrőt a **Gyakoriság** esetében. Ha csak a foglalásokat szeretné megtekinteni, a **Foglalások** esetében alkalmazzon szűrőt.
 
-![Példa a foglalások vásárlásának költségeire a Cost Analysis szolgáltatásban](./media/billing-monthly-payments-reservations/cost-analysis.png)
+![Példa a foglalásvásárlási költségekre a költségelemzésben](./media/billing-monthly-payments-reservations/cost-analysis.png)
 
-## <a name="switch-to-monthly-payments-at-renewal"></a>Váltás a havi fizetésekre a Megújításkor
+## <a name="switch-to-monthly-payments-at-renewal"></a>Váltás havi kifizetésekre megújításkor
 
-A foglalás megújításakor a számlázási gyakoriságot havi értékre állíthatja.
+A foglalás megújításakor lehetősége van a számlázás gyakoriságát havira módosítani.
 
-## <a name="exchange-and-refunds"></a>Exchange-és visszatérítések
+## <a name="exchange-and-refunds"></a>Csere és visszatérítés
 
-A többi foglaláshoz hasonlóan a havi számlázással megvásárolt visszatérítési vagy Exchange-foglalások is megvásárolhatók. A havi számlázással megvásárolt foglalások esetében jelenleg egy támogatási kérelmet is benyújthat, amely lehetővé teszi az Exchange vagy a visszatérítés elindítását.
+A többi foglaláshoz hasonlóan a havi számlázással vásárolt foglalások esetében is lehetőség van visszatérítésre és cserére. Jelenleg egy támogatási kérés küldésével indíthatja el a havi számlázással vásárolt foglalás cseréjét vagy visszatérítését.
 
-Ha havonta fizetett foglalást cserél ki, akkor az új vásárlás teljes élettartama nagyobbnak kell lennie, mint a visszaadott foglalásnál megszakított fizetési díj. Nincs más korlátozás vagy díj a cseréhez. Az előfizetéshez fizetős foglalásokat a havonta számlázott új foglalás megvásárlása céljából lehet cserélni. Az új foglalás élettartamának azonban nagyobbnak kell lennie, mint a visszaadott foglalás arányos értéke.
+Ha egy havi kifizetéses foglalást cserél le, akkor az új vásárlás teljes élettartamra vetített költségének nagyobbnak kell lennie, mint a lecserélni kívánt foglalás lemondott, fennmaradó kifizetései. Csere esetén nincsenek más korlátozások vagy díjak. Cserére akkor van lehetősége, ha egy előre kifizetett foglalás helyett vásárol egy havi számlázású, új foglalást. Az új foglalás élettartamra vetített értékének azonban nagyobbnak kell lennie, mint a lecserélni kívánt foglalás időarányos értéke.
 
-Ha a havonta fizetett foglalást szakítja meg, a Microsoft lemondási díjat alkalmazhat a megszakított jövőbeli befizetésekre. A fennmaradó véglegesített kifizetések a $50 000 USD-os visszatérítési korláttal szemben esedékesek.
+Ha egy havi kifizetéses foglalást mond le, a Microsoft jogosult lemondási díjat alkalmazni a lemondott jövőbeli kifizetésekért, amelyekért kötelezettséget vállalt. A fennmaradó kifizetések, amelyekért kötelezettséget vállalt, le lesznek vonva az 50 000 USD értékű visszatérítési korlátból.
 
-További információ az Exchange-ről és a visszatérítésekről: [önkiszolgáló cserék és visszatérítések Azure Reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
+A cserével és a visszatérítéssel kapcsolatos további információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="faq"></a>GYIK
 
-K. Az Azure felajánlja a "részleges kezdeti foglalásokat?"<br>
-A. Nem. Mivel az előzetes és a havi foglalás költségei megegyeznek, a Microsoft nem támogatja a részleges kezdeti befizetéseket.
+K. Van lehetőség az Azure-ban a foglalások részleges előre fizetésére?<br>
+A. Nem. Mivel az előre fizetett és a havi kifizetéses foglalások költségei megegyeznek, a Microsoft nem támogatja a részleges előre fizetést.
 
-K. Elérhetőek-e a Microsoft Cloud Solution Provider (CSP) program havi kifizetései?<br>
-A. Igen, a partnerek a Azure Portal vásárolhatják meg a CSP-ügyfelek foglalását. A foglalások havi számlázással történő megvásárlásának lehetősége nem érhető el a partner Centerben.
+K. Elérhető a havi fizetés a Microsoft felhőszolgáltatói (CSP-) programja esetében?<br>
+A. Igen, a partnerek jelenleg az Azure Portalon vásárolhatnak foglalásokat CSP-ügyfeleik számára. Havi számlázású foglalások vásárlására nincs lehetőség a Partnerközpontban.
 
-K. Azure Government ügyfél vagyok, fizethetek havonta a foglalások vásárlására?<br>
-A. Jelenleg nem.
+K. Egyesült államokbeli Azure Government-ügyfélként van lehetőségem a foglalásvásárlások havi kifizetésére?<br>
+A. Jelenleg nincs.
 
-K. Mikor lehet a támogatási jegy létrehozása helyett saját magamat cserélni vagy visszatéríteni a Azure Portal?<br>
-A. Jelenleg nem. Az Exchange-re és a visszatérítésre vonatkozó kérelmeket az Azure-támogatás kezeli.
+K. Támogatási jegy létrehozása helyett mikor tudok cserét vagy visszatérítést önállóan végrehajtani az Azure Portalon?<br>
+A. Jelenleg nincs. A havi kifizetéses foglalások cserére és visszatérítésre vonatkozó kéréseit az Azure ügyfélszolgálata kezeli.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a foglalásokról: [Mi a Azure Reservations?](billing-save-compute-costs-reservations.md)
-- Ha szeretne többet megtudni a foglalás megvásárlása előtt elvégzendő feladatokról, olvassa el [a virtuális gép megfelelő méretének meghatározása a vásárlás előtt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy) című témakört.
+- A foglalásokkal kapcsolatos további információkért tekintse meg a [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md) című cikket.
+- A foglalásvásárlás előtt elvégzendő feladatok megismeréséhez tekintse meg [a megfelelő virtuálisgép-méret vásárlási előtti megállapítását](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy) ismertető cikket

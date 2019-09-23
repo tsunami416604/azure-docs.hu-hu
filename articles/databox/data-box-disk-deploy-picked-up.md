@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910120"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128682"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 3. Ragassza a címkét a dobozra. 
 4. A hivatkozásra kattintva https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference foglaljon egy csomagfelvételt az interneten. 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[Japánban és Koreában](#tab/in-japan-korea)
-
-Itt láthatók a Japánban és Koreában érvényes csomagfelvételi utasítások.
-
-#### <a name="pick-up-in-japan"></a>Csomagfelvétel Japánban
+### <a name="in-japantabin-japan"></a>[Japánban](#tab/in-japan)
 
 1. A küldő információiként írja a vállalat nevét és címét a fuvarlevélre.
 2. Küldjön e-mailt a Quantium Solutionsnek az alábbi e-mail-sablonnal.
@@ -120,7 +116,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 - E-mail: Customerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Csomagfelvétel Koreában
+### <a name="in-koreatabin-korea"></a>[Koreában](#tab/in-korea)
 
 1. Mindenképpen adja meg a visszaküldési fuvarlevelet.
 2. Csomagfelvétel kérése, ha van fuvarlevél:

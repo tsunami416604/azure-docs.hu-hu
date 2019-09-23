@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: Tárolócsoport üzembe helyezése – Resource Manager
           href: container-instances-multi-container-group.md
+    - name: Integráció az Azure-szolgáltatásokkal
+      items:
+        - name: Aktiválás az Azure Functions szolgáltatással
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: Példák
   items:
     - name: Kódminták
@@ -121,6 +125,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
     - name: Összekötő
       href: /connectors/aci
 - name: További források

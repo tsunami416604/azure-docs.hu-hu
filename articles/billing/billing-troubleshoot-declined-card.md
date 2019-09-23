@@ -1,6 +1,6 @@
 ---
-title: Elutasított kártya hibáinak megoldása az Azure-regisztráció során
-description: Az elutasított hitelkártya feloldása az Azure-regisztrációban az Azure Portal vagy a fiók központban.
+title: Az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítása
+description: Az Azure Portalon vagy a Fiókközpontban az Azure-regisztráció során elutasított hitelkártyával kapcsolatos probléma megoldása.
 author: v-miegge
 manager: adpick
 editor: v-jesits
@@ -13,73 +13,73 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: banders
 ms.openlocfilehash: 730238d62e4ee4aad1807a4461c9b26ee1c8485d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657059"
 ---
-# <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Elutasított kártya hibáinak megoldása az Azure-regisztráció során
+# <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítása
 
-Ez a cikk segít feloldani azokat a problémákat, amelyekben a Azure Portal vagy az Azure Account Center szolgáltatásban az Azure-regisztráció során a hitelkártyát elutasították. A probléma megoldásának megkezdése előtt tekintse át a következő szempontokat:
+Ez a cikk segít megoldani azt a problémát, amikor a rendszer elutasít egy hitelkártyát az Azure-regisztráció során az Azure Portalon vagy az Azure Fiókközpontban. Mielőtt megkezdi a hiba elhárítását, ellenőrizze a következőket:
 
-- Győződjön meg arról, hogy az Azure-fiók profiljához megadott információ, például a kapcsolattartási e-mail, a cím és a telefonszám helyes.
+- Győződjön meg arról, hogy az Azure-fiók profiljában megadott adatok, például a kapcsolattartási e-mail-cím, a cím és a telefonszám helyesek.
 - Győződjön meg arról, hogy a hitelkártyaadatok helyesek.
 - Győződjön meg arról, hogy ugyanezekkel az adatokkal még nem hozott létre Microsoft-fiókot.
-- Bankkártyák nem fogadhatók el
+- A bankkártyát nem fogadja el a rendszer
 
-## <a name="issues"></a>Problémák
+## <a name="issues"></a>Hibák
 
-Az alábbi gyakori problémák a hitelkártyák az Azure-regisztrációban való elutasításához vezethetnek.
+Az alábbiakban ismertetünk néhány gyakori problémát, amelyek a hitelkártya elutasításához vezethetnek az Azure-regisztráció során.
 
-### <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Az Ön országa nem fogadja el a hitelkártya-szolgáltatót
+### <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Nem elfogadott a hitelkártya-kibocsátó az adott ország esetében
 
-Ha kártyát választ, az Azure megjeleníti a kiválasztott országban érvényes kártya beállításait. Lépjen kapcsolatba a bank vagy kártya kiállítóval annak ellenőrzéséhez, hogy a bankkártya engedélyezve van-e a nemzetközi tranzakciókhoz. A támogatott országokkal és pénznemekkel kapcsolatos további információkért tekintse meg az [Azure vásárlásával kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/pricing/faq/).
+A kártya kiválasztásakor az Azure megjeleníti a választott országban elfogadott kártyatípusokat. Lépjen kapcsolatba bankjával vagy a kártya kibocsátójával, és ellenőrizze, hogy a hitelkártya esetében engedélyezettek-e a nemzetközi tranzakciók. További információ a támogatott országokról és pénznemekről: [Azure-vásárlással kapcsolatos gyakori kérdések](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
->Az American Express hitelkártyák jelenleg nem támogatottak az indiai fizetési eszközként. Nem rendelkezünk időkerettel, hogy mikor lehet elfogadható fizetési forma.
+>Az American Express hitelkártyák jelenleg nem minősülnek elfogadott fizetőeszköznek Indiában. Nem áll módunkban tudni, mikor válnak elfogadott fizetőeszközzé.
 
-### <a name="youre-using-a-virtual-or-prepaid-card"></a>Virtuális vagy előre fizetett kártyát használ 
+### <a name="youre-using-a-virtual-or-prepaid-card"></a>Virtuális kártya vagy feltöltőkártya használata 
 
-Az Azure-előfizetések esetében a virtuális vagy előre fizetett kreditet vagy bankkártyát nem fogadjuk el fizetőeszközként.
+A virtuális hitelkártyák vagy bankkártyák és a feltöltőkártyák nem használhatók fizetőeszközként Azure-előfizetésekhez.
 
-### <a name="your-credit-information-is-inaccurate-or-incomplete"></a>A kredit adatai pontatlanok vagy hiányosak 
+### <a name="your-credit-information-is-inaccurate-or-incomplete"></a>Pontatlan vagy hiányos hitelkártyaadatok 
 
-A beírt névnek, címnek és CVV-kódnak pontosan meg kell egyeznie a kártyán kinyomtatott névvel.
+A névnek, címnek és a CVV-kódnak pontosan meg kell egyeznie a kártyán szereplő adatokkal.
 
-### <a name="the-card-is-inactive-or-blocked"></a>A kártya inaktív vagy le van tiltva 
+### <a name="the-card-is-inactive-or-blocked"></a>A kártya nincs aktiválva vagy le van tiltva 
 
-Lépjen kapcsolatba a bankkal, és ellenőrizze, hogy a kártya aktív-e.
+Lépjen kapcsolatba a bankkal, és ellenőrizze, hogy a kártyája aktiválva van-e.
 
-Előfordulhat, hogy más regisztrációs problémák léptek fel 
+Egyéb problémák is jelentkezhetnek a regisztrációval kapcsolatban. 
 
-Az Azure regisztrációs problémák elhárításával kapcsolatos további információkért tekintse meg a Tudásbázis következő cikkét: 
+További információt az Azure-ba történő regisztráció során adódó problémák hibaelhárításával kapcsolatban a következő tudásbázisbeli cikkben talál: 
 
-[Az Azure-ra nem regisztrálhat a Azure Portal vagy az Azure Account Center webhelyen](billing-troubleshoot-azure-sign-up.md)
+[Nem tud regisztrálni az Azure-ba az Azure Portalon vagy az Azure Fiókközpontban](billing-troubleshoot-azure-sign-up.md)
 
-### <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Olyan vállalatot képvisel, amely nem szeretne kártyán fizetni 
+### <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Olyan vállalkozást képvisel, amely nem kíván kártyával fizetni 
 
-Ha Ön vállalatot képvisel, fizetési módokat, például csekkeket, egynapos ellenőrzéseket vagy átutalásokat használhat az Azure-előfizetése kifizetéséhez. Miután beállította a fiókot a számla számlázására, nem válthat másik fizetési lehetőségre, hacsak nem rendelkezik Microsoft-ügyféli szerződéssel, és az Azure-on keresztül regisztrált az Azure-ra.
+Egy vállalkozás képviselőjeként más fizetési módok használatával, például csekken és banki átutalással is kiegyenlítheti az Azure-előfizetés díját. Ha a számlás fizetést választotta a fiók létrehozásakor, később nem válthat másik fizetési módra, kivéve, ha rendelkezik Microsoft-ügyfélszerződéssel, és az Azure webhelyén regisztrált az Azure-ba.
 
-További információ a számla fizetéséről: [kérelem beküldése az Azure-előfizetés számlázására](billing-how-to-pay-by-invoice.md).
+További információ a számlás fizetésről: [Az Azure-előfizetés számlás kifizetésére vonatkozó kérés elküldése](billing-how-to-pay-by-invoice.md).
 
-### <a name="your-credit-card-information-is-outdated"></a>A bankkártya adatai elavultak 
+### <a name="your-credit-card-information-is-outdated"></a>A hitelkártyaadatok lejártak 
 
-A kártya adatainak kezelésével, például a kártyák módosításával vagy eltávolításával kapcsolatos további információkért lásd: [kreditek hozzáadása, frissítése vagy eltávolítása az Azure](billing-how-to-change-credit-card.md)-hoz.
+További információ a kártyaadatok kezelésével kapcsolatban, beleértve a kártyák módosítását vagy eltávolítását: [Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban](billing-how-to-change-credit-card.md).
 
-## <a name="additional-help-resources"></a>További Súgó-erőforrások
+## <a name="additional-help-resources"></a>További támogatási forrásanyagok
 
-Egyéb hibaelhárítási cikkek az Azure-számlázáshoz és-előfizetésekhez
+Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhárítási cikkek
 
 - [Regisztrálással kapcsolatos problémák](billing-troubleshoot-azure-sign-up.md)
-- [Előfizetés-bejelentkezési problémák](billing-troubleshoot-sign-in-issue.md)
+- [Bejelentkezéssel kapcsolatos problémák az előfizetésben](billing-troubleshoot-sign-in-issue.md)
 - [Nem található előfizetés](billing-no-subscriptions-found.md)
 - [Vállalati költségek nézet letiltva](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Segítségért forduljon hozzánk
+## <a name="contact-us-for-help"></a>Ha segítségre van szüksége, vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure számlázási dokumentációja](index.md)
+- [Az Azure-számlázás dokumentációja](index.md)

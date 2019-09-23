@@ -183,8 +183,8 @@
       href: /rest/api/mariadb
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Beérkező adatokra épülő replikáció tárolt eljárásai
-      href: reference-data-in-stored-procedures.md
+    - name: Azure-beli tárolt eljárások
+      href: reference-stored-procedures.md
 - name: További források
   items:
     - name: Üzembehelyezési sablonok

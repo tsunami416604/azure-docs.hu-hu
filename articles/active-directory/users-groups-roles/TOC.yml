@@ -36,26 +36,24 @@
   items:
     - name: Felhasználók kezelése
       items:
-        - name: Új felhasználók hozzáadása az Azure AD-hez
+        - name: Felhasználók létrehozása
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges létrehozása (előzetes verzió)
+          href: users-bulk-add.md
         - name: Felhasználói profilok kezelése
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Tömeges műveletek (előzetes verzió)
-          items:
-            - name: Felhasználók letöltése (előzetes verzió)
-              href: users-bulk-download.md
-            - name: Felhasználók tömeges importálása (előzetes verzió)
-              href: users-bulk-add.md
-            - name: Felhasználók tömeges törlése (előzetes verzió)
-              href: users-bulk-delete.md
-            - name: Felhasználók tömeges visszaállítása (előzetes verzió)
-              href: users-bulk-restore.md
+        - name: Felhasználóinformációk letöltése (előzetes verzió)
+          href: users-bulk-download.md
         - name: Felhasználói fiókok megosztása
           href: users-sharing-accounts.md
         - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges törlése (előzetes verzió)
+          href: users-bulk-delete.md
         - name: Törölt felhasználó visszaállítása
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Felhasználók tömeges visszaállítása (előzetes verzió)
+          href: users-bulk-restore.md
         - name: Nem felügyelt könyvtárban található fiók bezárása
           href: users-close-account.md
         - name: B2B-felhasználók hozzáadása
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoportok és tagok listáinak keresése (előzetes verzió)
           href: groups-members-owners-search.md
+        - name: Csoport létrehozása (Azure Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoportok kezelése a PowerShell for Graph (v2) modullal
           href: groups-settings-v2-cmdlets.md
         - name: Csoportok kezelése a PowerShell MSOnline modullal
           href: groups-settings-cmdlets.md
-        - name: Csoporttagok kezelése
+        - name: Csoporttagok hozzáadása és eltávolítása
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Tagok tömeges hozzáadása (előzetes verzió)
+          href: groups-bulk-import-members.md
+        - name: Tagok tömeges eltávolítása (előzetes verzió)
+          href: groups-bulk-remove-members.md
+        - name: Taglista tömeges letöltése (előzetes verzió)
+          href: groups-bulk-download-members.md
         - name: Csoporttulajdonosok kezelése
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Tömeges műveletek (előzetes verzió)
-          items:
-            - name: Tagok tömeges importálása (előzetes verzió)
-              href: groups-bulk-import-members.md
-            - name: Tagok tömeges letöltése (előzetes verzió)
-              href: groups-bulk-download-members.md
-            - name: Tagok tömeges eltávolítása (előzetes verzió)
-              href: groups-bulk-remove-members.md
-            - name: Csoportok listájának tömeges letöltése (előzetes verzió)
-              href: groups-bulk-download.md
+        - name: Csoportok listájának tömeges letöltése (előzetes verzió)
+          href: groups-bulk-download.md
         - name: Csoportokon belüli csoportok kezelése
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Csoport létrehozása (Azure Portal)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz
           href: groups-saasapps.md
         - name: Csoportelnevezési referencia

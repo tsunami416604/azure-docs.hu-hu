@@ -1,6 +1,6 @@
 ---
-title: Az Azure fizetési problémáinak elhárítása
-description: Probléma megoldása a fizetési adatok fiókjának a Microsoft Azure Portal vagy a fiók központban való frissítésekor.
+title: Fizetéssel kapcsolatos problémák elhárítása az Azure-ban
+description: A fizetési adatok Microsoft Azure Portalon vagy a Fiókközpontban történő frissítése során felmerülő problémák elhárítása.
 author: v-miegge
 manager: na
 editor: v-jesits
@@ -13,93 +13,93 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 45f6f181ddbf7e76662f76c433d8ff68c18f0de1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657085"
 ---
-# <a name="troubleshoot-azure-payment-issues"></a>Az Azure fizetési problémáinak elhárítása
+# <a name="troubleshoot-azure-payment-issues"></a>Fizetéssel kapcsolatos problémák elhárítása az Azure-ban
 
-Problémát tapasztalhat, ha a Microsoft Azure Portal vagy az Azure Account Centerben lévő fizetési adatok fiókját próbálja meg frissíteni. A probléma megoldása előtt vegye figyelembe a következő irányelveket:
+Előfordulhat, hogy problémába ütközik fizetési adatai frissítése során a Microsoft Azure Portalon vagy az Azure Fiókközpontban. A probléma elhárítása előtt fontolja meg az alábbi irányelveket:
 
-- Győződjön meg arról, hogy az Azure-fiók profiljához megadott információ (beleértve a kapcsolattartási e-mail címet, az utca címét és a telefonszámot) helyes.
+- Győződjön meg arról, hogy az Azure-fiók profiljában megadott adatok (például a kapcsolattartási e-mail-cím, a postai cím és a telefonszám) helyesek.
 - Győződjön meg arról, hogy a hitelkártyaadatok helyesek.
 - Győződjön meg arról, hogy ugyanezekkel az adatokkal még nem hozott létre Microsoft-fiókot.
 
-## <a name="issues"></a>Problémák
+## <a name="issues"></a>Hibák
 
-A hibák elhárításához válassza ki azt a problémát, amely az Azure-ba való regisztráció során jelentkezik.
+A probléma megoldásához válassza ki a problémát, amely az Azure-ba való regisztráció során jelentkezik.
 
-### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Nem lehet hitelkártyát eltávolítani egy mentett Számlázási fizetési módszerből
+### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Nem sikerült eltávolítani a hitelkártyát egy mentett számlázásos fizetési módból
 
-A terv szerint nem távolíthat el bankkártyát az aktív előfizetésből.
+A rendszer úgy van kialakítva, hogy az aktív előfizetéshez kapcsolt hitelkártyát ne lehessen eltávolítani.
 
-Ha egy meglévő kártyát törölni kell, vagy új kártyát kell hozzáadni az előfizetéshez, hogy a régi fizetési eszköz sikeresen törölhető legyen, vagy le kell mondania az előfizetést. Ezzel véglegesen törli az előfizetést, és eltávolítja a kártyát.
+Ha törölni szeretne egy meglévő kártyát, hozzá kell adnia egy új kártyát az előfizetéshez, és csak azt követően távolíthatja el a korábbi fizetőeszközt, vagy le kell mondania az előfizetést. Ez véglegesen törli az előfizetést, és eltávolítja a kártyát.
 
-### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Új fizetési mód hozzáadása után nem lehet törölni a régi fizetési módot
+### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Nem lehet törölni a régi fizetési módot egy új hozzáadása után
 
-Előfordulhat, hogy az új fizetési eszköz nincs az előfizetéshez társítva. A fizetési eszköz az előfizetéssel való összerendeléséhez lásd: [kredit vagy bankkártya hozzáadása, frissítése vagy eltávolítása az Azure](billing-how-to-change-credit-card.md)-hoz.
+Előfordulhat, hogy az új fizetési eszköz nincs az előfizetéshez társítva. Segítség a fizetőeszköz előfizetéshez való hozzárendeléséhez: [Hitelkártya vagy bankkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban](billing-how-to-change-credit-card.md).
 
-Az elutasított kártyával kapcsolatos problémák elhárításáról lásd: [elutasított kártya hibaelhárítása Az Azure-regisztráció](billing-troubleshoot-declined-card.md)során.
+Elutasított kártyával kapcsolatos hibák elhárításáért tekintse meg [az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítását](billing-troubleshoot-declined-card.md) ismertető cikket.
 
-### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Nem lehet törölni a fizetési módot, mert *nem lehet törölni a fizetési mód* hibáját.
+### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>A fizetési mód törlése meghiúsul a *Nem lehet törölni a fizetési módot* hiba miatt
 
-Ez egy függőben lévő egyenleg miatt fordul elő. Törölje a fennmaradó egyenlegeket a fizetési mód törlése előtt.
+Ennek oka egy fennálló tartozás. A fizetési mód törlése előtt egyenlítse ki tartozását.
 
-### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Nem láthatók a fiókomban lévő előfizetések a fizetési mód frissítéséhez
+### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>A fiókhoz tartozó előfizetések nem láthatók a fizetési mód frissítése során
 
-Lehet, hogy olyan e-mail-azonosítót használ, amely eltér az előfizetésekhez használttól.
+Előfordulhat, hogy az előfizetésekhez használttól eltérő e-mail-azonosítót használ.
 
-A probléma megoldásához tekintse meg az [Azure Portal vagy az Azure Account Center bejelentkezési hibáját](billing-no-subscriptions-found.md).
+A hiba elhárításához tekintse meg a [Nem található előfizetés bejelentkezési hiba az Azure Portalon vagy az Azure Fiókközpontban](billing-no-subscriptions-found.md) című témakört.
 
-### <a name="unable-to-make-payment-for-a-subscription"></a>Nem lehet előfizetést fizetni
+### <a name="unable-to-make-payment-for-a-subscription"></a>Az előfizetés díjának befizetése meghiúsul
 
-Ha a következő hibaüzenet jelenik meg: *A fizetési határidő lejárt. Probléma merült fel a fizetési móddal* kapcsolatban, vagy *Sajnáljuk, az adatok nem menthetők. Zárjuk be a böngészőt, és próbálkozzon újra.* , akkor a kártyán függőben lévő fizetés történik, mivel a kártyát a pénzügyi intézmény megtagadta.
+Előfordulhat, hogy a következő hibaüzeneteket kapja: *Lejárt a kifizetés esedékessége. Probléma van a fizetési móddal* vagy *Az információ nem menthető. Zárja be a böngészőt, majd próbálkozzon újra.* Ez azt jelenti, hogy a kártyán függőben lévő fizetési kérelem van, mert a kifizetést a pénzintézet megtagadta.
 
-Győződjön meg arról, hogy a hitelkártyának megfelelő egyenlege van a fizetéshez. Ha nem, használjon egy másik kártyát a fizetés elvégzéséhez, vagy forduljon a pénzügyi intézményhez a probléma megoldásához.
+Győződjön meg arról, hogy az egyenlege elegendő a kifizetéshez. Ha nem, használjon egy másik kártyát a fizetéshez, vagy lépjen kapcsolatba a pénzintézettel a probléma megoldása érdekében.
 
-A következő problémákkal kapcsolatban érdeklődjön a bankkal:
+A következő problémákról érdeklődjön bankjánál:
 
-- A nemzetközi tranzakciók nincsenek engedélyezve.
-- A kártyának van hitelkerete, és az egyenleget rendezni kell.
-- Az ismétlődő fizetés engedélyezve van a kártyán.
+- Nincsenek engedélyezve a nemzetközi tranzakciók.
+- A kártyáján beállított hitelkeret nem elegendő a kifizetéshez.
+- Egy rendszeres fizetési megbízás van engedélyezve a kártyán.
 
-### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>Nem lehet módosítani a fizetési módot a böngészőalapú problémák miatt (a böngésző nem válaszol, nem töltődik be, és így tovább)
+### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>A fizetési mód böngészőproblémák miatt nem módosítható (a böngésző nem reagál, nem töltődik be stb.)
 
-Jelentkezzen ki az összes aktív Azure-munkamenetből, majd kövesse a [InPrivate böngészés a Microsoft Edge-ben című cikkben](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) ismertetett lépéseket a Microsoft Edge vagy az Internet Explorer alkalmazáson belüli InPrivate-munkamenet elindításához.
+Jelentkezzen ki az összes aktív Azure munkamenetből, majd [a Microsoft Edge-ben való InPrivate-böngészéssel kapcsolatos cikk](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) lépéseit követve indítson egy InPrivate-munkamenetet Microsoft Edge-ben vagy Internet Explorerben.
 
-A privát munkamenetben kövesse a hitelkártyák [módosítása](billing-how-to-change-credit-card.md) vagy a bankkártya adatainak módosítása című témakör lépéseit.
+A privát munkamenetben kövesse a [hitelkártya módosításával](billing-how-to-change-credit-card.md) kapcsolatos témakör utasításait a hitelkártyaadatok frissítéséhez vagy módosításához.
 
-A következő műveleteket is elvégezheti:
+Ezenkívül a következőket is kipróbálhatja:
 
 - A böngésző frissítése
 - Másik böngésző használata
-- Gyorsítótárazott cookie-k törlése
+- A gyorsítótárazott cookie-k törlése
 
-### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>A fizetési mód frissítése után a saját előfizetés továbbra is le van tiltva.
+### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Az előfizetésem továbbra is le van tiltva a fizetési mód frissítése után.
 
-Ez a probléma a fennmaradó egyenleg miatt fordul elő. Törölje a fennmaradó egyenlegeket a fizetési mód törlése előtt.
+A probléma oka egy fennálló tartozás. A fizetési mód törlése előtt egyenlítse ki tartozását.
 
-### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>A fizetési mód nem módosítható egy XML-hibaüzenetet tartalmazó oldal miatt
+### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>A fizetési módot nem lehet módosítani egy XML-hiba válaszlapja miatt
 
-Ez az üzenet akkor jelenik meg, ha [a Azure Portal](https://portal.azure.com/) használatával új bankkártyát ad hozzá.
+Akkor jelenik meg ez az üzenet, ha az [Azure Portalon](https://portal.azure.com/) próbál új hitelkártyát megadni.
 
-A kártya adatainak hozzáadásához jelentkezzen be az Azure-fiók portálra a fiók rendszergazdája e-mail-címének használatával.
+A kártyaadatok megadásához jelentkezzen be az Azure-fiókportálra a fiókadminisztrátor e-mail-címével.
 
-## <a name="additional-help-resources"></a>További Súgó-erőforrások
+## <a name="additional-help-resources"></a>További támogatási forrásanyagok
 
-Egyéb hibaelhárítási cikkek az Azure-számlázáshoz és-előfizetésekhez
+Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhárítási cikkek
 
 - [Elutasított bankkártya](billing-troubleshoot-declined-card.md)
-- [Előfizetés-bejelentkezési problémák](billing-troubleshoot-sign-in-issue.md)
+- [Bejelentkezéssel kapcsolatos problémák az előfizetésben](billing-troubleshoot-sign-in-issue.md)
 - [Nem található előfizetés](billing-no-subscriptions-found.md)
 - [Vállalati költségek nézet letiltva](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Segítségért forduljon hozzánk
+## <a name="contact-us-for-help"></a>Ha segítségre van szüksége, vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure számlázási dokumentációja](index.md)
+- [Az Azure-számlázás dokumentációja](index.md)

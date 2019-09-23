@@ -1,6 +1,6 @@
 ---
-title: Az Azure foglalások használatának ismertetése nagyvállalati szerződésekben
-description: Megtudhatja, hogyan olvashatja el a használatát, hogy megtudja, hogyan alkalmazza a rendszer a vállalati regisztrációhoz szükséges Azure-foglalást.
+title: Az Azure-foglalások használatának megértése Nagyvállalati Szerződések esetén
+description: Megtanulhatja értelmezni a használati adatokat annak megismeréséhez, hogyan lesz alkalmazva az Azure-foglalás a nagyvállalati regisztrációra.
 author: bandersmsft
 manager: yashar
 tags: billing
@@ -12,154 +12,154 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68598100"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Nagyvállalati Szerződés foglalási költségek és használat beszerzése
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
 
-A foglalási költségek és a használati adatok a Azure Portal és a REST API-k Nagyvállalati Szerződés ügyfelei számára érhetők el. Ez a cikk a következőket segíti elő:
+A Nagyvállalati Szerződéssel rendelkező ügyfelek megtekinthetik a foglalási költség- és használati adatokat az Azure Portalon és a REST API-kban. Ez a cikk a következőkben nyújt segítséget:
 
-- Foglalási vásárlási adatlekérdezés
-- A foglalást használó előfizetés, erőforráscsoport vagy erőforrás ismerete
-- Foglalás kihasználtsága
-- Foglalások megtakarításának kiszámítása
-- Foglalási szolgáltatás lekérése a kihasználtsági adatai alapján
-- Foglalási költségek törlesztése
+- Lekérheti a foglalás megvásárlására vonatkozó adatokat
+- Megtudhatja, melyik előfizetés, erőforráscsoport vagy erőforrás használta a foglalást
+- Jóváírást kérhet a foglalási kihasználtság alapján
+- Kiszámíthatja a foglalási megtakarításokat
+- Lekérheti a foglalás kihasználatlansági adatait
+- Amortizálhatja a foglalási költségeket
 
-A Piactéri díjak a használati adatokban vannak összesítve. Megtekintheti az első féltől származó használat, a piactér és a vásárlások díját egyetlen adatforrásból.
+A Marketplace díjai a használati adatokban vannak összevonva. A díjakat megtekintheti belső használat, Marketplace-használat és egyetlen adatforrásból való vásárlások szerint.
 
-## <a name="reservation-charges-in-azure-usage-data"></a>Foglalási díjak az Azure használati adatokban
+## <a name="reservation-charges-in-azure-usage-data"></a>Az Azure használati adatainak foglalási díjai
 
-Az adat két külön adatkészletre oszlik: A _tényleges költségeket_ és az _amortizációs költségeket_. A két adathalmaz különbsége:
+Az adatok két különböző adathalmazra vannak felosztva: _Tényleges költség_ és _Amortizált költség_. A két adathalmaz különbségei a következők:
 
-**Tényleges költség** – adatokat biztosít a havi számlával való összeegyeztetéshez. Ezen adatok foglalási vásárlási költségei és a foglalási alkalmazás részletei. Ezekből az adatokból megtudhatja, hogy melyik előfizetés vagy erőforráscsoport vagy erőforrás fogadta a foglalási kedvezményt egy adott napon belül. A foglalási kedvezményt fogadó használat EffectivePrice nulla.
+**Tényleges költség** – Olyan adatokat szolgáltat, amelyeket összevethet a havi számlájával. Ezek az adatok tartalmazzák a foglalás vételárát és a foglalás alkalmazásának részleteit. Az adatokból megtudhatja, hogy egy adott napon mely előfizetés, erőforráscsoport vagy erőforrás részesült foglalási kedvezményben. A foglalási kedvezményben részesülő használat tényleges ára (EffectivePrice) nulla.
 
-**Amortizációs díj** – ez az adatkészlet hasonló a tényleges Cost-adatkészlethez, kivéve azt, hogy a foglalási kedvezményt tartalmazó használat EffectivePrice a foglalás arányosan fizetendő díja (nulla helyett). Ez segít megismerni a foglalások felhasználásának pénzügyi értékét előfizetés, erőforráscsoport vagy erőforrás alapján, és segít a foglalás kihasználtságának belső feltöltésében. Az adatkészlet nem használt foglalási órát is tartalmaz. Az adatkészlet nem rendelkezik foglalási vásárlási rekordokkal. 
+**Amortizált költség** – Ez az adathalmaz hasonlít a Tényleges költség adathalmazra, leszámítva, hogy foglalási kedvezményben részesülő tényleges ár (EffectivePrice) a foglalás arányosított költségével egyezik meg (nulla helyett). Ezzel megtudhatja a foglalási fogyasztás előfizetésenkénti, erőforráscsoportonkénti, vagy erőforrásonkénti pénzben kifejezett értékét, és segít abban, hogy a foglalási használatot belsőleg számolja el költséghelyi elszámolással. Az adathalmaz tartalmaz továbbá fel nem használt foglalási órákat. Az adathalmaz nem tartalmaz foglalásvásárlási adatokat. 
 
-Két adathalmaz összehasonlítása:
+A két adathalmaz összehasonlítása:
 
-| Data | Tényleges költségadatok készlete | Amortizációs költségadatok készlete |
+| Adatok | Tényleges költség adathalmaz | Amortizált költség adathalmaz |
 | --- | --- | --- |
-| Foglalások vásárlása | Ebben a nézetben érhető el.<br><br>  Az adatszűrő beszerzése a ChargeType &quot;=&quot;vásárlás elemnél. <br><br> Tekintse meg a ReservationID vagy a ReservationName, hogy megtudja, melyik foglalásra vonatkozik a díj.  | Erre a nézetre nem alkalmazható. <br><br> Az elszámolt értékekben nem szerepelnek a vásárlási költségek. |
-| EffectivePrice | Az érték nulla a foglalási kedvezményt bekerülő használathoz. | A foglalási kedvezménysel rendelkező használat esetén az érték óránkénti arányban történik. |
-| Nem használt foglalás (azon órák számát adja meg, amelyet a foglalás nem használ egy nap alatt és a hulladék pénzügyi értékét) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben érhető el.<br><br> Az adatlekérdezéshez szűrje a ChargeType = &quot;UnusedReservation.&quot;<br><br>  Tekintse meg a ReservationID vagy a ReservationName, hogy megtudja, melyik foglalást használta ki. A foglalások mennyisége a nap folyamán elvész.  |
-| Egységár (az erőforrás díja a díjszabási lapon) | Elérhető | Elérhető |
+| Foglalásvásárlások | Ebben a nézetben elérhető.<br><br>  Az adatok lekéréséhez szűrjön ChargeType = &quot;Purchase&quot; (díjtípus = vásárlás) szerint. <br><br> Tekintse meg a ReservationID vagy a ReservationName változót annak eldöntéséhez, hogy a díj melyik foglalásra vonatkozik.  | Ennél a nézetnél nem alkalmazható. <br><br> A vásárlási költségek nincsenek feltüntetve az amortizált adatok között. |
+| EffectivePrice | Az érték foglalási kedvezményben részesülő használat esetén nulla. | Az érték a foglalás óránkénti költségét jelzi kedvezményben részesülő használat esetén. |
+| Fel nem használt foglalás (A nap során fel nem használt foglalás órában kifejezett időtartamát és a veszteség pénzben kifejezett értékét adja meg) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben elérhető.<br><br> Az adatok lekéréséhez szűrjön ChargeType = &quot;UnusedReservation&quot; (díjtípus = fel nem használt foglalás) szerint.<br><br>  Ha meg szeretné tudni, hogy mely foglalás volt alulhasználva, tekintse meg a ReservationID vagy a ReservationName változót. Ez megmutatja, a foglalás mekkora része maradt kihasználatlanul a nap során.  |
+| UnitPrice (az árlistában szereplő erőforrás ára) | Elérhető | Elérhető |
 
-Az Azure-használati adatokban elérhető egyéb információk megváltoztak:
+Az Azure használati adataiban elérhető egyéb információk módosultak:
 
-- Termék-és mérőszám-információk – az Azure nem cseréli le az eredetileg felhasznált mérőszámot a ReservationId és a ReservationName, ahogy korábban volt.
-- ReservationId és ReservationName – ezek a saját mezői az adatban. Korábban csak a AdditionalInfo alatt volt elérhető.
-- ProductOrderId – a foglalási rendelés azonosítója, amely a saját mezőként lett hozzáadva.
-- ProductOrderName – a megvásárolt foglalás terméknév.
+- Termék- és mérőinformációk – az Azure nem cseréli le az eredetileg fogyasztott mérőt a ReservationId (Foglalásazonosító) és a ReservationName (Foglalásnév) változókkal, ahogyan azt korábban tette.
+- ReservationId (Foglalásazonosító) és ReservationName (Foglalásnév) – ezek saját mezőként szerepelnek az adatokban. Korábban ez csak az AdditionalInfo (További információk) alatt volt elérhető.
+- ProductOrderId – A foglalás rendelési azonosítója, saját mezőként hozzáadva.
+- ProductOrderName – A megvásárolt foglalás termékneve.
 - Időtartam – 12 hónap vagy 36 hónap.
-- RINormalizationRatio – elérhető a AdditionalInfo alatt. Ez az arány, ahol a foglalás a használati rekordra vonatkozik. Ha a példány méretének rugalmassága engedélyezve van a foglalásnál, akkor más méretekre is alkalmazható. Az érték azt az arányt jeleníti meg, amelyet a foglalás a használati rekordra vonatkozóan alkalmazott.
+- RINormalizationRatio – Elérhető az AdditionalInfo (További információk) alatt. Azt az arányt fejezi ki, hogy a foglalás milyen arányban jelenik meg a használati adatokban. Ha a példány méretrugalmassága engedélyezve van a foglalásban, akkor más méretekre is alkalmazható. Az érték azt az arányt mutatja, hogy a foglalás milyen arányban jelent meg a használati adatokban.
 
-## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Azure-beli felhasználás és foglalás használati adatok beszerzése API használatával
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Azure fogyasztási és foglalási használati adatok lekérése API használatával
 
-Az adatok az API használatával szerezhetők be, vagy letölthetők a Azure Portalról.
+Az adatokat lekérheti az API használatával, vagy letöltheti azokat az Azure Portalról.
 
-Az új adatok beszerzéséhez hívja meg a &quot; [használati adatok API](/rest/api/consumption/usagedetails/list) -t az 2019-04-01-es API-&quot; verzióval. A terminológia részleteit a [használati feltételek](billing-understand-your-usage.md)című részben tekintheti meg. A hívónak a nagyvállalati szerződéshez tartozó vállalati rendszergazdának kell lennie az [EA Portal](https://ea.azure.com)használatával. A csak olvasási jogosultsággal rendelkező vállalati rendszergazdák is lekérhetik az adatgyűjtést.
+Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list) a &quot;2019-04-01-preview&quot; API-verzióval. A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](billing-understand-your-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
 
-Az adatok nem érhetők el a [Reporting API-k vállalati ügyfelek számára – használati](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)adatok.
+Az adatok nem érhetők el az [Enterprise-ügyfelek számára a jelentéskészítő API-kban található használati adatok alatt](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Íme egy példa az API-ra:
+Íme, egy példahívás az API-hoz:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
-További információ a {enrollmentId} és a {billingPeriodId} szolgáltatásról: [használati adatok – lista API-](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) cikk.
+Ha többet szeretne tudni az {enrollmentId} és {billingPeriodId} változókról, tekintse meg a [Használati adatok – lista](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API-cikket.
 
-A metrika és a szűrő a következő táblázatban található információk segíthetnek a gyakori foglalási problémák megoldásában.
+A mérőket és szűrőket tartalmazó következő táblázat segítséget nyújt a gyakori foglalási problémák megoldásához.
 
-| **API-adattípusok** | API-Hívási művelet |
+| **Az API-adatok típusa** | API-hívásművelet |
 | --- | --- |
-| **Minden díj (használat és vásárlás)** | {Metrikus} cseréje a ActualCost |
-| **Foglalási kedvezménnyel kapott használat** | {Metrikus} cseréje a ActualCost<br><br>{Filter} cseréje a (z): Properties/reservationId% 20ne% 20 |
-| **A foglalási kedvezményt nem tartalmazó használat** | {Metrikus} cseréje a ActualCost<br><br>{Filter} cseréje a (z): Properties/reservationId% 20eq% 20 |
-| **Amortizációs díjak (használat és vásárlás)** | {Metrikus} cseréje a AmortizedCost |
-| **Nem használt foglalási jelentés** | {Metrikus} cseréje a AmortizedCost<br><br>A (z) {Filter} cseréje a következővel: Properties/ChargeType% 20eq% 20 ' UnusedReservation ' |
-| **Foglalások vásárlása** | {Metrikus} cseréje a ActualCost<br><br>{Filter} cseréje a következővel: tulajdonságok/ChargeType% 20eq% 20 ' vásárlás '  |
-| **Befizetett összegeket** | {Metrikus} cseréje a ActualCost<br><br>A (z) {Filter} cseréje a következővel: Properties/ChargeType% 20eq% 20 ' visszatérítés ' |
+| **Összes díj (használat és vásárlások)** | a {metric} kicserélése ActualCostra |
+| **Foglalási kedvezményben részesült használat** | a {metric} kicserélése ActualCostra<br><br>a {filter} kicserélése a következőre: properties/reservationId%20ne%20 |
+| **Foglalási kedvezményben nem részesült használat** | a {metric} kicserélése ActualCostra<br><br>a {filter} kicserélése a következőre: properties/reservationId%20eq%20 |
+| **Amortizált díjak (használat és vásárlások)** | a {metric} kicserélése AmortizedCostra |
+| **Jelentés a nem használt foglalásokról** | a {metric} kicserélése AmortizedCostra<br><br>a {filter} kicserélése a következőre: properties/ChargeType%20eq%20'UnusedReservation' |
+| **Foglalásvásárlások** | a {metric} kicserélése ActualCostra<br><br>a {filter} kicserélése a következőre: properties/ChargeType%20eq%20'Purchase'  |
+| **Visszatérítések** | a {metric} kicserélése ActualCostra<br><br>a {filter} kicserélése a következőre: properties/ChargeType%20eq%20'Refund' |
 
-## <a name="download-the-usage-csv-file-with-new-data"></a>A használati CSV-fájl letöltése új adatokkal
+## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön egy nagyvállalati rendszergazda, akkor letöltheti az új használati adatokat tartalmazó CSV-fájlt Azure Portalról. Ezek az adatok nem érhetők el az [EA portálról](https://ea.azure.com).
+Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az [EA Portalról](https://ea.azure.com).
 
-A Azure Portal navigáljon a [Cost Management + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)elemre.
+Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 
 1. Válassza ki a számlázási fiókot.
-2. Kattintson a **használat + díjak**elemre.
+2. Kattintson a **Felhasználás + díjak** lehetőségre.
 3. Kattintson a **Letöltés** gombra.  
-![Példa a CSV-használati adatok fájljának letöltésére a Azure Portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. A **használati adatok letöltése és díjai** területen a **használati részletek 2** . verziójában válassza a **minden díj (használat és vásárlás)** elemet, majd kattintson a letöltés gombra. Ismétlődő **díjak (használat és vásárlások)**
+![Példa a használati adatokat tartalmazó CSV-fájl letöltési helyére az Azure Portalról](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. A **Felhasználás + díjak letöltése** lehetőségben az **Adatforgalom részletei 2. verzió** területen válassza ki az **Összes díj (használat és vásárlások)** lehetőséget, majd kattintson a Letöltés lehetőségre. Ismételje meg ezt az **Amortizált díjakkal (használat és vásárlások)** .
 
-A letöltött CSV-fájlok tényleges költségeket és amortizációs költségeket tartalmaznak.
+A letölteni kívánt CSV-fájlok a tényleges költségeket és az amortizált költségeket is tartalmazzák.
 
-## <a name="common-cost-and-usage-tasks"></a>Általános Cost-és használati feladatok
+## <a name="common-cost-and-usage-tasks"></a>A költségekkel és a használattal kapcsolatos gyakori feladatok
 
-A következő fejezetek olyan gyakori feladatok, amelyeket a legtöbb felhasználó a foglalási és használati adatok megtekintésére használ.
+A következő szakaszokban gyakori feladatok láthatók, amelyeket a legtöbben a foglalási költségeik és használati adataik megtekintésére használnak.
 
-### <a name="get-reservation-purchase-costs"></a>Foglalási költségek beszerzése
+### <a name="get-reservation-purchase-costs"></a>Foglalásvásárlási költségek lekérése
 
-A foglalások vásárlásának költségei a tényleges költségadatok szerint érhetők el. Szűrő a _ChargeType = vásárláshoz_. Tekintse meg a ProductOrderID, és határozza meg, hogy a vásárlás melyik foglalási sorrendben történik.
+A foglalásvásárlási költségek elérhetők a Tényleges költségadatokban. Szűrjön _ChargeType = Purchase_ (díjtípus = vásárlás) szerint. A ProductOrderID (Termékrendelési azonosító) alapján állapítható meg, hogy melyik foglalási rendeléshez tartozik a vásárlás.
 
-### <a name="get-underutilized-reservation-quantity-and-costs"></a>Kihasználatlan foglalási mennyiség és költség
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Az alulhasznált foglalások mennyiségének és költségeinek lekérése
 
-A _ChargeType_ _= UnusedReservation_esetében az elszámolt költségadatok és szűrők beolvasása. A napi fel nem használt foglalási mennyiséget és a költségeket kapja meg. A foglalási és foglalási sorrendek adatai a _ReservationId_ és a _ProductOrderId_ mezők használatával szűrhetők. Ha a foglalás 100%-ban lett kihasználva, a rekord értéke 0.
+Kérje le az amortizált költségeket, és szűrjön _ChargeType_ _= UnusedReservation_ (díjtípus = fel nem használt foglalás) szerint. Megkapja a napi fel nem használt foglalások mennyiségét és költségeit. Az adatokat szűrheti foglalás vagy foglalási rendelés szerint a _ReservationId_ (Foglalásazonosító), illetve a _ProductOrderId_ (Termékrendelési azonosító) mezők használatával. Ha egy foglalás kihasználtsága 100%-os, az érték mennyisége 0.
 
-### <a name="amortize-reservation-costs"></a>Foglalási költségek törlesztése
+### <a name="amortize-reservation-costs"></a>Amortizálhatja a foglalási költségeket
 
-Az elszámolt költségadatok beszerzése és szűrése a _ProductOrderID_ használatával a foglalás napi törlesztési költségeinek beszerzése érdekében.
+Kérje le az amortizált költségadatokat, és szűrjön a foglalási rendelésre a _ProductOrderID_ (Termékrendelési azonosító) használatával a foglalás napi amortizációs költségeinek lekéréséhez.
 
-### <a name="chargeback-for-a-reservation"></a>Foglalás jóváírása
+### <a name="chargeback-for-a-reservation"></a>Költséghelyi elszámolás a foglaláshoz
 
-Az előfizetés, az erőforráscsoportok vagy a címkék alapján lefoglalhatja a foglalást más szervezeteknek. Az elszámolt költségadatok a foglalás kihasználtságának pénzügyi értékét biztosítják a következő adattípusok esetén:
+A foglalási használatot költséghelyi elszámolással más szervezetekhez számolhatja el előfizetés, erőforráscsoport vagy címke alapján. Az amortizált költségadatok a foglalás kihasználtságának pénzben kifejezett értékét adják meg a következő adattípusoknál:
 
 - Erőforrások (például virtuális gépek)
-- Resource group
-- Tags
-- Subscription
+- Erőforráscsoport
+- Címkék
+- Előfizetés
 
-### <a name="get-the-blended-rate-for-chargeback"></a>A jóváíráshoz tartozó kevert díj beolvasása
+### <a name="get-the-blended-rate-for-chargeback"></a>Kevert összeg lekérése a költséghelyi elszámoláshoz
 
-A kevert arány meghatározásához szerezze be az elszámolási költségeket, és összesítse a teljes költséget. Virtuális gépek esetében a MeterName vagy a ServiceType adatokat is használhatja a AdditionalInfo JSON-adatokból. A teljes díj felosztása a kevert arány beszerzéséhez használt mennyiség alapján.
+A kevert összeg meghatározásához kérje le az amortizált költségadatokat, és összesítse a teljes költséget. A virtuális gépeknél használhatja a MeterName (Mérő neve) vagy a ServiceType (Szolgáltatástípus) információkat az AdditionalInfo (További információk) JSON-adatokból. A kevert összeg meghatározásához ossza el a teljes költséget a felhasznált mennyiséggel.
 
-### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Az optimális foglalások használatának naplózása a példányok méretének rugalmassága érdekében
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Az optimális foglalási használat naplózása a virtuálisgép-példányok méretrugalmassága érdekében
 
-Több a mennyiség a _RINormalizationRatio_, a AdditionalInfo. Az eredmények azt jelzik, hogy a használati rekordban hány órányi foglalást alkalmaztak.
+Szorozza össze a kapott értéket az AdditionalInfo alatt található _RINormalizationRatio_ értékkel. Az eredmények jelzik, hogy hány órányi foglalási használat jelent meg a használati adatokban.
 
-### <a name="determine-reservation-savings"></a>Foglalások megtakarításának meghatározása
+### <a name="determine-reservation-savings"></a>Foglalási megtakarítások meghatározása
 
-Lekérheti az elszámolt költségekkel kapcsolatos adatgyűjtést, és szűrheti egy fenntartott példányra vonatkozó adatszűrési Majd
+Kérje le az amortizált költségadatokat, majd a fenntartott példány szerint szűrje az adatokat. Ezután:
 
-1. A becsült utólagos elszámolású költségek beszerzése. Szorozza meg az _Egységár_ értéket a _mennyiségi_ értékekkel a becsült utólagos elszámolású költségek beszerzéséhez, ha a foglalási kedvezmény nem vonatkozik a használatra.
-2. A foglalási költségek beszerzése. Adja meg a _költségadatok_ összegét, hogy megkapja a fenntartott példányhoz fizetett összeg értékét. Magában foglalja a foglalás felhasznált és fel nem használt költségeit.
-3. Foglalási költségek kivonása a becsült utólagos elszámolású költségekből a becsült megtakarítások beszerzéséhez.
+1. Kérje le a becsült használatalapú fizetéses költségeket. Szorozza össze a _UnitPrice_ (egységár) értéket a _Quantity_ (Mennyiség) értékkel a becsült használatalapú fizetéses költségek meghatározásához, ha nem vonatkozott foglalási kedvezmény a használatra.
+2. Kérje le a foglalási költségeket. Összesítse a _Költség_ értékeket a fenntartott példányért fizetett, pénzben kifejezett érték kiszámításához. Ez tartalmazza a foglalás használt és nem használt költségeit.
+3. Vonja ki a foglalási költségeket a becsült használatalapú fizetéses költségekből a becsült megtakarítások kiszámításához.
 
-## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Foglalások beszerzése és amortizációja a Cost Analysis szolgáltatásban
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Foglalásvásárlások és amortizációs költségek a költségelemzésben
 
-A foglalási költségek a [Cost Analysis](https://aka.ms/costanalysis)szolgáltatásban érhetők el. Alapértelmezés szerint a Cost Analysis megjeleníti a **tényleges költségeket**, ami azt mutatja, hogy a költségek hogyan jelennek meg a számlán. Ha szeretné megtekinteni a foglalások lebontását és a juttatást használó erőforrásokhoz társított erőforrásokat, váltson a következőre: **amortizációs Cost**:
+A foglalási költségek elérhetők a [költségelemzésben](https://aka.ms/costanalysis). Alapértelmezés szerint a költségelemzés a **Tényleges költséget** jeleníti meg, amely a számlán is meg fog jelenni. Azon foglalásvásárlások lebontásának megtekintéséhez, amelyek a kedvezményt felhasználó erőforrásokhoz társulnak, váltson az **Amortizált költségre**:
 
-![Példa arra, hogy hol válassza ki az elszámolt költségeket a Cost Analysis szolgáltatásban](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+![Példa, hogy hol választható ki az amortizált költség a költségelemzésen belül](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Csoportosítási díj típusa szerint a használat, a beszerzések és a visszatérítések lebontása; vagy fenntartással a foglalás lebontására és igény szerinti költségekre. Ne feledje, hogy a vásárlások tényleges költségeinek megvizsgálása esetén csak a foglalás költségeit kell megtekinteni, a költségek azonban a benfit használt egyes erőforrásokhoz lesznek lefoglalva, az elszámolt költségek megvizsgálása esetén. Az elszámolt költségek kiszámításakor egy új **UnusedReservation** -díjat is látni fog.
+Csoportosítás díjtípus szerint a használat, a vásárlások és a visszatérítések, illetve foglalás szerint a foglalás és az igény szerinti díjak lebontásának megtekintéséhez. Ne feledje, hogy a tényleges költségeknél csak a vásárlások vannak feltüntetve foglalási költségként, az amortizált költségeknél azonban a költségek azokhoz az erőforrásokhoz vannak elosztva, amelyek kedvezményben részesültek. Az amortizált költségeknél egy új díjtípus is megjelenik **UnusedReservation** (Fel nem használt foglalás) néven.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következő cikkeket:
+Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mi a Azure Reservations?](billing-save-compute-costs-reservations.md)
+- [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
 - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
-- [A foglalási kedvezmény alkalmazási módjának megismerése](billing-understand-vm-reservation-charges.md)
-- [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](billing-understand-reserved-instance-usage.md)
-- [A Windows-szoftverek nem tartalmazzák a foglalásokat](billing-reserved-instance-windows-software-costs.md)
+- [A foglalási kedvezmény alkalmazásának ismertetése](billing-understand-vm-reservation-charges.md)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](billing-understand-reserved-instance-usage.md)
+- [A Reservations díjában nem szereplő Windows-szoftverköltségek](billing-reserved-instance-windows-software-costs.md)

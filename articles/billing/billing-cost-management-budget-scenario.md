@@ -1,6 +1,6 @@
 ---
-title: Azure számlázási és Cost Management – költségvetési forgatókönyv | Microsoft Docs
-description: Ismerje meg, hogyan állíthatja le a virtuális gépeket meghatározott költségvetési küszöbértékek alapján az Azure Automation használatával.
+title: Az Azure-számlázási és költségkezelési költségvetés forgatókönyve | Microsoft Docs
+description: Azure Automation használata a virtuális gépek költségvetési küszöbértékektől függő leállítására.
 services: billing
 documentationcenter: ''
 author: bandersmsft
@@ -16,319 +16,319 @@ ms.workload: billing
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443474"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
-A Cost Control egy kritikus összetevő, amellyel maximalizálható a Felhőbeli befektetés értéke. A folyamatos üzleti műveleteknek számos forgatókönyve van, ahol a költséghatékonyság, a jelentéskészítés és a Cost-alapú előkészítés kritikus fontosságú. [Azure Cost Management API](https://docs.microsoft.com/rest/api/consumption/) -k az egyes forgatókönyvek támogatásához API-kat biztosítanak. Az API-k használati adatokat biztosítanak, így megtekintheti a részletes példányok szintjének költségeit.
+A költségek kézben tartása egy kritikus eleme annak, hogy a felhővel kapcsolatos befektetéseiből a lehető legtöbbet tudja kihozni. Számos forgatókönyv esetében a folyamatos üzleti tevékenységhez kritikus fontosságú a költségek láthatósága, a jelentéskészítés és a költségalapú előkészítés. [Azure Cost Management API](https://docs.microsoft.com/rest/api/consumption/)-k egy sor API-t biztosítanak ezen forgatókönyvek mindegyikéhez. Az API-k használati adatokat biztosítanak, így lehetővé teszik a példányszintű költségek részletes megtekintését.
 
-A költségkereteket általában a Cost Control részeként használják. A költségkeretek az Azure-ban is felhasználhatók. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a költségvetés API használatával e-mailben értesítjük a költségvetési küszöbérték elérésekor, [Azure monitor műveleti csoportokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) is elindíthatják a tevékenységek koordinált készletét egy költségvetési esemény eredményeként.
+A költségvetések általában a költségszabályozás részeként használatosak. A költségvetések hatóköre beállítható az Azure-ban. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a Budgets API használatával e-mailben értesülhet a költségvetési küszöbértékek elérésekor, az [Azure Monitor-műveletcsoportokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) vezényelt műveleteket is elindíthat a költségvetési események eredményeként.
 
-A nem kritikus fontosságú munkaterhelést futtató ügyfelek közös költségvetési forgatókönyve akkor fordulhat elő, ha egy költségvetést szeretne felügyelni, és a havi számla megvizsgálása után kiszámítható költséggel is jár. Ehhez a forgatókönyvhöz az Azure-környezet részét képező erőforrásokra vonatkozó, Cost-alapú előkészítés szükséges. Ebben az esetben az előfizetés $1000-es havi költségkerete van beállítva. Emellett az értesítési küszöbértékek úgy vannak beállítva, hogy elindítsák a néhány összeszerelést. Ez a forgatókönyv 80%-os küszöbértéket vesz igénybe, így az erőforráscsoport összes virtuális gépe nem **választható**. Ezután a 100%-os költségbecslés után minden virtuálisgép-példány le lesz állítva.
-A forgatókönyv konfigurálásához hajtsa végre az alábbi műveleteket az oktatóanyag egyes szakaszaiban ismertetett lépéseket követve.
+A nem kritikus fontosságú munkaterhelést futtató ügyfelek egyik gyakori költségvetési forgatókönyve a költségvetés havonta előrelátható, kiszámítható költségek melletti felügyelete. Ehhez a forgatókönyvhöz az Azure-környezet részét képező erőforrások költségalapú vezénylése szükséges. Ebben a forgatókönyvben az előfizetésre 1000 dolláros havi költségvetés van beállítva. Emellett az értesítési küszöbértékek úgy vannak beállítva, hogy elindítsanak néhány vezénylést. Ez a forgatókönyv 80%-os költségküszöbértékkel indul, ami leállítja az összes virtuális gépet a **Választható** erőforráscsoportban. Ezután a 100%-os költség-küszöbértéknél minden virtuálisgép-példány le lesz állítva.
+Ennek a forgatókönyvnek a beállításához az oktatóanyag szakaszaiban található lépések követésével következő műveleteket fogja elvégezni.
 
-Az oktatóanyagban szereplő műveletek a következőket teszik lehetővé:
+Az oktatóanyagban bemutatott műveletekkel lehetséges:
 
-- Hozzon létre egy Azure Automation Runbook a virtuális gépek webhookok használatával történő leállításához.
-- Hozzon létre egy Azure Logic app-alkalmazást, amely a költségvetési küszöbérték alapján aktiválódik, és hívja meg a runbook a megfelelő paraméterekkel.
-- Hozzon létre egy Azure Monitor műveleti csoportot, amely úgy lesz konfigurálva, hogy a rendszer a költségvetési küszöbérték teljesülése esetén aktiválja az Azure logikai alkalmazást.
-- Hozza létre az Azure-költségvetést a kívánt küszöbértékekkel, és továbbítsa azt a műveleti csoportnak.
+- Létrehozni egy Azure Automation-runbookot egy virtuális gép webhookokkal való leállításához.
+- Létrehozni egy Azure Logic App-alkalmazást, amely a költségvetési küszöbérték alapján aktiválódik, és a runbookot a megfelelő paraméterekkel hívja.
+- Létrehozni egy Azure Monitor-műveletcsoportot, amely úgy lesz konfigurálva, hogy a költségvetési küszöbérték teljesülése esetén aktiválja az Azure Logic Appot.
+- Létrehozni az Azure-költségvetést a kívánt küszöbértékekkel, és hozzáfűzni azt a műveletcsoporthoz.
 
-## <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook létrehozása
+## <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) egy olyan szolgáltatás, amely lehetővé teszi az erőforrás-kezelési feladatok nagy részét, és a feladatok ütemezett vagy igény szerinti futtatását. Ennek a forgatókönyvnek a részeként létre fog hozni egy [Azure Automation runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) , amely a virtuális gépek leállítására szolgál. Ezt a forgatókönyvet az [Azure v2 virtuális gépek](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafikus Runbook leállítása [a](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) katalógusból című témakörben fogja használni. Ha importálja ezt a runbook az Azure-fiókjába, és közzéteszi, akkor leállíthatja a virtuális gépeket, ha eléri a költségvetési küszöbértéket.
+Az [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) egy olyan szolgáltatás, amely lehetővé teszi az erőforrás-kezelési feladatok nagy részének parancsfájllal történő végrehajtását és a feladatok ütemezett vagy igény szerinti futtatását. Ennek a forgatókönyvnek a részeként létre fog hozni egy [Azure Automation-runbookot](https://docs.microsoft.com/azure/automation/automation-runbook-types) a virtuális gépek leállításához. A [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot fogja használni a [katalógusból](https://docs.microsoft.com/azure/automation/automation-runbook-gallery) a forgatókönyv létrehozásához. Ha ezt a runbookot importálja az Azure-fiókjába, majd közzéteszi, akkor a költségvetési küszöbérték elérésekor leállíthatja a virtuális gépeket.
 
 ### <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókja hitelesítő adataival.
-2. Kattintson az Azure bal felső sarkában található **erőforrás létrehozása** gombra.
-3. Válassza a **felügyeleti eszközök** > **automatizálása**lehetőséget.
+2. Kattintson az Azure bal felső sarkában található **Erőforrás létrehozása** gombra.
+3. Válassza a **Felügyeleti eszközök** > **Automation** lehetőséget.
    > [!NOTE]
-   > Ha nem rendelkezik Azure-fiókkal, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-4. Adja meg a fiók adatait. Az **Azure-beli futtató fiók létrehozásához**az **Igen gombot** választva automatikusan engedélyezheti az Azure-ba történő hitelesítés egyszerűbbé tételéhez szükséges beállításokat.
+   > Ha még nem rendelkezik Azure-fiókkal, akár most is létrehozhat [egy ingyenes fiókot](https://azure.microsoft.com/free/).
+4. Írja be fiókadatait. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő beállítások automatikus engedélyezéséhez.
 5. Amikor végzett, kattintson a **Létrehozás** gombra az Automation-fiók üzembe helyezésének megkezdéséhez.
 
-### <a name="import-the-stop-azure-v2-vms-runbook"></a>Az Azure v2 virtuális gépek runbook leállítása
+### <a name="import-the-stop-azure-v2-vms-runbook"></a>A Stop Azure V2 VMs (Azure V2-beli virtuális gépek leállítása) runbook importálása
 
-[Azure Automation runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)használatával importálja az [Azure v2 virtuális gépek](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) leállítása grafikus runbook a gyűjteményből.
+Az [Azure Automation-runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) használatával importálja a [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikus runbookot a katalógusból.
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókja hitelesítő adataival.
-2.  Nyissa meg az Automation-fiókját az **összes szolgáltatás** > **Automation-fiók**kiválasztásával. Ezután válassza ki az Automation-fiókját.
-3.  Kattintson a **folyamat-automatizálás** szakasz **runbookok** -katalógus elemére.
-4.  Állítsa a  katalógus forrását a **Script Center** elemre, majd kattintson **az OK gombra**.
-5.  Keresse meg és jelölje be az [Azure v2 virtuális gépek](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) gyűjteményének leállítása a Azure Portalon belül elemet.
-6.  Kattintson az **Importálás** gombra az **Importálás** panel megjelenítéséhez, majd válassza az **OK**gombot. Ekkor megjelenik az runbook áttekintés panel.
-7.  Miután a runbook végrehajtotta az importálási folyamatot, válassza a **Szerkesztés** lehetőséget a grafikus runbook-szerkesztő és a közzétételi lehetőség megjelenítéséhez.
+2.  Nyissa meg az Automation-fiókját a **Minden szolgáltatás**, majd az  > **Automation-fiókok** lehetőség kiválasztásával. Ezután válassza ki az Automation-fiókját.
+3.  Kattintson a **Folyamatok automatizálása** területen lévő **Runbook-katalógus** lehetőségre.
+4.  Állítsa a **Katalógusforrást** a **Script Center** elemre, majd kattintson az **OK** gombra.
+5.  Keresse meg és jelölje ki a [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) katalóguselemet az Azure portalon.
+6.  Kattintson az **Importálás** gombra az **Importálás** panel megjelenítéséhez, és kattintson az **OK** gombra. Megjelenik a runbook áttekintő panele.
+7.  Miután a runbook végrehajtotta az importálási folyamatot, válassza a **Szerkesztés** lehetőséget a grafikus runbook szerkesztése és közzététele lehetőség megjelenítéséhez.
 
-    ![Azure – grafikus runbook szerkesztése](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
-8.  Kattintson a **Közzététel** gombra a runbook közzétételéhez, majd válassza az **Igen** lehetőséget, ha a rendszer kéri. Runbook közzétételekor minden meglévő közzétett verziót felülbírál a Piszkozat verziójával. Ebben az esetben nincs közzétett verziója, mert létrehozta a runbook.
+    ![Azure – Grafikus runbook szerkesztése](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
+8.  A runbook közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra. Amikor közzétesz egy runbookot, felülírja a közzétett verziót a piszkozattal. Ebben az esetben még nincs közzétett verzió, mivel még csak most hozta létre a runbookot.
 
-    A runbook közzétételével kapcsolatos további információkért tekintse meg [a grafikus Runbook létrehozása](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical)című témakört.
+    A runbook közzétételével kapcsolatos további információkért lásd a [Grafikus runbook létrehozása](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical) című témakört.
 
-## <a name="create-webhooks-for-the-runbook"></a>Webhookok létrehozása a runbook
+## <a name="create-webhooks-for-the-runbook"></a>Webhookok létrehozása a runbookhoz
 
-Az [Azure v2 virtuális gépek](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) grafikus runbook leállításakor két webhookot fog létrehozni a runbook Azure Automation elindításához egyetlen HTTP-kérelem használatával. Az első webhook a runbook-t egy 80%-os költségvetési küszöbértékben hívja meg az erőforráscsoport nevével, amely lehetővé teszi a választható virtuális gépek leállítását. Ezután a második webhook meghívja a runbook paraméter nélkül (100%), amely leállítja az összes többi VM-példányt.
+A [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) (Azure V2-beli virtuális gépek leállítása) grafikai runbook használatával egyetlen HTTP-kérésen keresztül két webhookot hoz létre a runbook elindításához az Azure Automationben. Az első webhook a runbookot a 80%-os költségvetési küszöbértéken hívja meg, paraméterként az erőforráscsoport nevével, lehetővé téve a választható virtuális gépek leállítását. Ezután (100%-nál) a második webhook meghívja a runbookot paraméter nélkül, amely leállítja az összes fennmaradó VM-példányt.
 
-1. A Azure Portal **runbookok** lapján kattintson a [](https://portal.azure.com/)runbook áttekintés paneljén látható **StopAzureV2Vm** -runbook.
-2. Kattintson  a webhook elemre az oldal tetején a Webhook **hozzáadása** panel megnyitásához.
-3. Kattintson az **új webhook létrehozása** elemre az **új webhook létrehozása** panel megnyitásához.
-4. Állítsa be a webhook **nevét** a **választható**értékre. Az **enabled** tulajdonságnak **Igen értékűnek**kell lennie. A **lejárat** értékét nem kell módosítani. A webhook tulajdonságaival kapcsolatos további információkért tekintse meg [a webhook részleteit](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook).
-5. Az URL-cím értéke mellett kattintson a másolás ikonra a webhook URL-címének másolásához.
+1. Az [Azure Portal](https://portal.azure.com/) **Runbookok** oldalán kattintson a **StopAzureV2Vm** runbookra, ami megjeleníti a runbook áttekintő panelét.
+2. Kattintson az oldal tetején található **Webhook** lehetőségre a **Webhook hozzáadása** panel megnyitásához.
+3. Ezután az **Új webhook létrehozása** elemre kattintva nyissa meg az **Új webhook létrehozása** panelt.
+4. Írja be a webhooknál a **Név** lehetőséghez, hogy **Választható**. Az **Engedélyezve** tulajdonságnál **Igen** legyen beállítva. A **Lejárat** értéken nem kell változtatni. A webhookra vonatkozó további információért lásd a [Webhook részletei](https://docs.microsoft.com/azure/automation/automation-webhooks#details-of-a-webhook) szakaszt.
+5. A webhook URL-címének másolásához az URL-érték mellett kattintson a másolás ikonra.
    > [!IMPORTANT]
-   > Mentse a nem **kötelező** nevű webhook URL-címét egy biztonságos helyen. Az oktatóanyag későbbi részében az URL-címet fogjuk használni. Biztonsági okokból a webhook létrehozása után nem tekintheti meg és nem kérheti le újra az URL-címet.
-6. Az új webhook létrehozásához kattintson **az OK** gombra.
-7. Kattintson a **Paraméterek konfigurálása és a beállítások futtatása** elemre a runbook paramétereinek megtekintéséhez.
+   > Mentse a **Választható** elnevezésű webhook URL-címét egy biztonságos helyre. Ezt az URL-t az oktatóanyag későbbi szakaszában használni fogja. Biztonsági okokból a webhook létrehozása után nem tekintheti meg és nem kérheti le újra az URL-címet.
+6. A webhook létrehozásához kattintson az **OK** gombra.
+7. A runbook paraméterértékeinek megtekintéséhez kattintson a **Paraméterek és futtatási beállítások konfigurálása** elemre.
    > [!NOTE]
-   > Ha a runbook kötelező paraméterekkel rendelkezik, akkor nem tudja létrehozni a webhookot, ha nincsenek megadva értékek.
-8. Az **OK** gombra kattintva fogadja el a webhook paraméter értékeit.
-9. A webhook létrehozásához kattintson a **Létrehozás** gombra.
-10. Ezután a fenti lépéseket követve hozzon létre egy **kész**nevű második webhookot.
+   > Kötelező paraméterekkel rendelkező runbook esetén csak akkor lehet a webhookot létrehozni, ha az értékeket is megadja.
+8. Kattintson az **OK** gombra a webhook paraméterértékek elfogadásához.
+9. A webhook létrehozásához kattintson a **Létrehozás** elemre.
+10. Kövesse az alábbi lépéseket egy második, **Teljes** nevű webhook létrehozásához.
     > [!IMPORTANT]
-    > Ügyeljen arra, hogy a webhook URL-címeit is mentse az oktatóanyag későbbi részében való használatra. Biztonsági okokból a webhook létrehozása után nem tekintheti meg és nem kérheti le újra az URL-címet.
+    > Ne felejtse menteni mindkét URL-t, hogy oktatóanyag későbbi szakaszában használhassa őket. Biztonsági okokból a webhook létrehozása után nem tekintheti meg és nem kérheti le újra az URL-címet.
 
-Most két konfigurált webhookot kell használnia, amelyek mindegyike elérhető a mentett URL-címekkel.
+Most már két konfigurált webhookkal rendelkezik, amelyek a mentett URL-címekkel érhetők el.
 
-![Webhookok – nem kötelező és kész](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-02.png)
+![Webhookok – Választható és Teljes](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-02.png)
 
-Ezzel elkészült a Azure Automation telepítővel. A webhookokat egy egyszerű Poster-teszttel tesztelve ellenőrizheti, hogy a webhook működik-e. Ezután létre kell hoznia a logikai alkalmazást a létrehozáshoz.
+Ezzel elvégezte az Azure Automation beállításait. Egy egyszerű Postman-teszttel ellenőrizheti, hogy a webhookok működnek-e. Következő lépésként létre kell hoznia a Logic Appot a vezényléshez.
 
-## <a name="create-an-azure-logic-app-for-orchestration"></a>Azure logikai alkalmazás létrehozása az előkészítéshez
+## <a name="create-an-azure-logic-app-for-orchestration"></a>Azure Logic App létrehozása vezényléshez
 
-Logic Apps segítségével munkafolyamatként hozhat létre, ütemezhet és automatizálhat folyamatokat, így integrálhatja az alkalmazásokat, az adategységeket, a rendszereket és a szolgáltatásokat vállalatok és szervezetek között. Ebben a forgatókönyvben a létrehozott [logikai alkalmazás](https://docs.microsoft.com/azure/logic-apps/) valamivel többet fog tenni, mint az Ön által létrehozott Automation-webhook.
+A Logic Apps segítségével munkafolyamatként hozhat létre, ütemezhet és automatizálhat folyamatokat, lehetővé téve az alkalmazások, adatok, rendszerek és szolgáltatások integrációját egy adott vállalaton vagy intézményen belül. Ebben a forgatókönyvben a létrehozott [logikai alkalmazás](https://docs.microsoft.com/azure/logic-apps/) valamivel többet fog tenni, mint csak létrehozott Automation-webhook meghívása.
 
-A költségvetés beállítható úgy, hogy egy adott küszöbérték teljesülése esetén értesítést indítson. Több küszöbértéket is megadhat, amelyekről értesítést kaphat, és a logikai alkalmazás bemutathatja, hogy a teljesített küszöbérték alapján hogyan végezhet el különböző műveleteket. Ebben a példában egy olyan forgatókönyvet állítunk be, amelyben néhány értesítés jelenik meg, az első értesítés a költségvetés 80%-ában érhető el, a második értesítés pedig akkor, ha a költségvetés 100%-a elérte a költségvetést. A rendszer az erőforráscsoport összes virtuális gépe leállítására használja a logikai alkalmazást. Első lépésként a **választható** küszöbérték 80%-os lesz, majd a második küszöbérték lesz elérhető, ahol az előfizetésben lévő összes virtuális gép le lesz állítva.
+A költségvetés beállítható úgy, hogy egy adott küszöbérték teljesülése esetén értesítést indítson. Több küszöbértéket is megadhat, amelyekről értesítést kaphat, és a logikai alkalmazás a teljesített küszöbértéktől függően képes különböző műveleteket elvégezni. Ebben a példában egy olyan forgatókönyvet állíthat be, amely két értesítést küld. Az első értesítés a költségvetés 80%-ának elérésénél, a második pedig a költségvetés 100%-ának elérésénél érkezik. Az erőforráscsoport virtuális gépei a logikai alkalmazás használatával lesznek leállítva. Első lépésként a **Választható** küszöbérték 80%-os lesz, majd a második küszöbérték elérésénél az előfizetésben lévő összes virtuális gép le lesz állítva.
 
-A Logic apps lehetővé teszi, hogy egy minta sémát biztosítson a HTTP-triggerhez, de a **Content-Type** fejlécet is be kell állítania. Mivel a műveleti csoport nem rendelkezik egyéni fejlécekkel a webhookhoz, a hasznos adatokat külön lépésben kell elemezni. Az **elemzési** műveletet fogja használni, és egy minta hasznos adattartalommal lássa el.
+A logikai alkalmazások lehetővé teszik egy mintaséma biztosítását a HTTP-eseményindítóhoz, de ehhez be kell állítania a **Content-Type** fejlécet. Mivel a műveletcsoport nem rendelkezik egyéni fejlécekkel a webhookhoz, a hasznos adatokat külön lépésben kell elemezni. Az **Elemzés** műveletet fogja használni, és megad neki egy hasznosadat-mintát.
 
 ### <a name="create-the-logic-app"></a>A logikai alkalmazás létrehozása
 
-A logikai alkalmazás több műveletet is végrehajt. Az alábbi lista a logikai alkalmazás által elvégezhető műveletek magas szintű műveleteit tartalmazza:
-- Felismeri, ha HTTP-kérés érkezik
-- Az átadott JSON-adatelemzések elemzése az elért küszöbérték megállapításához
-- Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte-e a költségvetési tartomány 80%-át, de nem nagyobb vagy egyenlő, mint 100%.
-    - Ha elérte ezt a küszöbértéket, küldjön egy HTTP-BEJEGYZÉST a nem **kötelező**nevű webhook használatával. Ez a művelet leállítja a virtuális gépeket a "nem kötelező" csoportban.
-- Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte vagy túllépte a költségvetési érték 100%-át.
-    - Ha elérte a küszöbértéket, küldjön egy HTTP-BEJEGYZÉST **a nevű**webhook használatával. Ez a művelet leállítja az összes többi virtuális gépet.
+A logikai alkalmazás több művelet fog végrehajtani. A következő lista tartalmazza a logikai alkalmazás által végrehajtott magas szintű műveleteket:
+- HTTP-kérés fogadásának felismerése
+- Az átadott JSON-adatok elemzése az elért küszöbérték megállapításához
+- Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte-e a költségvetési tartomány legalább 80%-át, de nem nagyobb vagy egyenlő, mint 100%.
+    - Ha elérte a küszöbértéket, küldjön egy HTTP POST-ot a **Választható** nevű webhook használatával. Ez a művelet leállítja a „Választható” csoportban lévő virtuális gépeket.
+- Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte vagy túllépte-e a költségvetési érték 100%-át.
+    - Ha elérte a küszöbértéket, küldjön egy HTTP POST-ot a **Teljes** nevű webhook használatával. Ez a művelet leállítja az összes hátralévő virtuális gépet.
 
-A fenti lépéseket elvégző logikai alkalmazás létrehozásához a következő lépések szükségesek:
+A fenti lépéseket kivitelező logikai alkalmazás létrehozásához az alábbi lépéseket kell elvégezni:
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
+1.  Az [Azure Portalon](https://portal.azure.com/) válassza az **Erőforrás létrehozása** > **Integráció** > **Logikai alkalmazás** lehetőséget.
 
-    ![Azure – a logikai alkalmazás erőforrásának kiválasztása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  A **logikai alkalmazás létrehozása** panelen adja meg a logikai alkalmazás létrehozásához szükséges adatokat, válassza a **rögzítés az irányítópulton**lehetőséget, majd kattintson a **Létrehozás**gombra.
+    ![Azure – A logikai alkalmazás erőforrás kiválasztása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
+2.  A **Logikai alkalmazás létrehozása** panelen adja meg a logikai alkalmazás létrehozásához szükséges paramétereket, majd válassza a **Rögzítés az irányítópulton** lehetőséget, és kattintson a **Létrehozás** elemre.
 
-    ![Azure – logikai alkalmazás létrehozása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
+    ![Azure – Logikai alkalmazás létrehozása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
-Miután az Azure üzembe helyezte a logikai alkalmazást, megnyílik a **Logic apps Designer** , és egy bemutató videót és gyakran használt eseményindítókat tartalmazó panelt jelenít meg.
+Miután az Azure üzembe helyezte a logikai alkalmazást, megnyílik a **Logic Apps Designer** panel, és egy bemutató videót és a gyakran használt eseményindítókat tartalmazó oldalt jelenít meg.
 
-### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+### <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
-Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek az indítás után megjelenő lépések.
+Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek mindazon lépések, amelyek az eseményindító aktiválása után végbemennek.
 
-1.  A **Logic apps Designer** panel **sablonok** területén válassza az **üres logikai alkalmazás**lehetőséget.
-2.  Egy [trigger](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) hozzáadásához írja be a "http-kérelem" kifejezést a **Logic apps Designer** keresőmezőbe, ahol megkeresheti és kiválaszthatja a Request nevű TRIGGERt, **Ha HTTP-kérés érkezik**.
+1.  A **Logic Apps Designer** panel **Sablonok** területén válassza az **Üres logikai alkalmazás** elemet.
+2.  Adjon hozzá egy új [eseményindítót](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) úgy, hogy a **Logic Apps Designer** keresőmezőjébe beírja a „http kérés” kulcsszavakat, és kiválasztja a **Kérés – HTTP-kérés fogadásakor** nevű eseményindítót.
 
-    ![Azure-Logic app – http-trigger](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
-3.  Válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+    ![Azure – Logic App – HTTP-eseményindító](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
+3.  Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.
 
-    ![Azure – új lépés – művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Keressen rá a "JSON elemzése" kifejezésre a **Logic apps Designer** keresőmezőbe, ahol megkeresheti és kiválaszthatja az adatműveletek **– JSON-elemzés** [műveletet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).
+    ![Azure – Új lépés – Művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
+4.  A **Logic Apps Designer** keresőmezőjébe írja be a „JSON elemzése” kulcsszavakat, és válassza ki **Adatműveletek – JSON elemzése** [műveletet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts).
 
-    ![Azure-Logic app – elemzési JSON-művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
-5.  Adja meg a "hasznos adatok" nevet a JSON-adatelemzéshez használt **tartalom** neveként, vagy használja a "Body" címkét a dinamikus tartalomból.
-6.  Válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget az **elemzés JSON** -ban mezőben.
+    ![Azure – Logic App – JSON elemzése művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
+5.  Nevezze el „hasznos adat”-nak a **Tartalom** mezőben a JSON hasznos adat elemzéshez használt tartalmat, vagy használja a „Szövegtörzs” címkét a dinamikus tartalomból.
+6.  Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget a **JSON elemzése** mezőben.
 
-    ![Azure-Logic app – JSON-alapú példák használata séma létrehozásához](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
-7.  Illessze be a következő JSON-minta adattartalmat a szövegmezőbe:`{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
+    ![Azure – Logic App – Séma létrehozása hasznosadat-minta használatával](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png)
+7.  A következő JSON hasznos adat mintát illessze be a szövegmezőbe: `{"schemaId":"AIP Budget Notification","data":{"SubscriptionName":"CCM - Microsoft Azure Enterprise - 1","SubscriptionId":"<GUID>","SpendingAmount":"100","BudgetStartDate":"6/1/2018","Budget":"50","Unit":"USD","BudgetCreator":"email@contoso.com","BudgetName":"BudgetName","BudgetType":"Cost","ResourceGroup":"","NotificationThresholdAmount":"0.8"}}`
 
-    A szövegmező a következőként fog megjelenni:
+    A szövegmező a következőképp fog kinézni:
 
-    ![Azure-Logic app – a minta JSON-adattartalom](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
+    ![Azure – Logic App – JSON hasznos adat minta](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png)
 8.  Kattintson a **Done** (Kész) gombra.
 
 ### <a name="add-the-first-conditional-action"></a>Az első feltételes művelet hozzáadása
 
-Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte-e a költségvetési tartomány 80%-át, de nem nagyobb vagy egyenlő, mint 100%. Ha elérte ezt a küszöbértéket, küldjön egy HTTP-BEJEGYZÉST a nem **kötelező**nevű webhook használatával. Ez a művelet leállítja a virtuális gépeket a **választható** csoportban.
+Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte-e a költségvetési tartomány legalább 80%-át, de nem nagyobb vagy egyenlő, mint 100%. Ha elérte a küszöbértéket, küldjön egy HTTP POST-ot a **Választható** nevű webhook használatával. Ez a művelet leállítja a **Választható** csoportban lévő virtuális gépeket.
 
-1.  Válassza az **új lépés** > **feltétel hozzáadása**lehetőséget.
+1.  Válassza az **Új lépés** > **Feltétel hozzáadása** lehetőséget.
 
-    ![Azure-Logic app – feltétel hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
-2.  Az elérhető értékek listájának megjelenítéséhez kattintson a **feltétel** mezőben a **Válasszon értéket** tartalmazó szövegmezőre.
+    ![Azure – Logic App – Feltétel hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
+2.  A **Feltétel** mezőben kattintson a **Válasszon egy értéket** szövegmezőre az elérhető értékek megjelenítéséhez.
 
-    ![Azure-Logic app – Condition Box](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
+    ![Azure – Logic App – Feltétel mező](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-10.png)
 
-3.  Kattintson a lista tetején a **kifejezés** elemre, és írja be a következő kifejezést a kifejezés-szerkesztőbe:`float()`
+3.  Kattintson a **Kifejezés** lehetőségre a lista tetején, és írja be a következő kifejezést a kifejezésszerkesztőbe: `float()`
 
-    ![Azure-Logic app-float kifejezés](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
+    ![Azure – Logic App – Lebegőpontos kifejezés](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-11.png)
 
-4.  Válassza a **dinamikus tartalom**lehetőséget, vigye a kurzort a zárójelen belül (), és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
+4.  Válassza a **Dinamikus tartalom** lehetőséget, vigye a kurzort a () zárójelek közé, és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
 
-    A kifejezés a következő lesz:<br>
+    A kifejezés az alábbi lesz:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  A kifejezés beállításához kattintson **az OK gombra** .
-6.  A **feltétel**legördülő listájában válassza a **nagyobb vagy egyenlő** elemet.
-7.  A feltétel **értékének kiválasztása** mezőben adja meg `.8`a feltételt.
+5.  A kifejezés beállításához kattintson az **OK** gombra.
+6.  A **Feltétel** legördülő listából válassza a **nagyobb vagy egyenlő, mint** lehetőséget.
+7.  Az **Érték választása** mezőbe írja be a következő feltételt: `.8`.
 
-    ![Azure-Logic app – lebegőpontos kifejezés értékkel](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Azure – Logic App – Lebegőpontos kifejezés értékkel](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 
-8.  Kattintson a feltétel mezőben a**Hozzáadás sor** hozzáadása lehetőségre a feltétel további részének hozzáadásához.  > 
-9.  A **feltétel** mezőben kattintson a **Válasszon értéket**tartalmazó szövegmezőre.
-10. Kattintson a lista tetején a **kifejezés** elemre, és írja be a következő kifejezést a kifejezés-szerkesztőbe:`float()`
-11. Válassza a **dinamikus tartalom**lehetőséget, vigye a kurzort a zárójelen belül (), és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
-12. A kifejezés beállításához kattintson **az OK gombra** .
-13. A Select **érték kisebb, mint** a **feltétel**legördülő listájában.
-14. A feltétel **értékének kiválasztása** mezőben adja meg `1`a feltételt.
+8.  Kattintson a Feltétel mezőben a **Hozzáadás** > **Sor hozzáadása** lehetőségre a feltétel további részének hozzáadásához.
+9.  A **Feltétel** mezőben kattintson a **Válasszon egy értéket** szövegmezőre.
+10. Kattintson a **Kifejezés** lehetőségre a lista tetején, és írja be a következő kifejezést a kifejezésszerkesztőbe: `float()`
+11. Válassza a **Dinamikus tartalom** lehetőséget, vigye a kurzort a () zárójelek közé, és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
+12. A kifejezés beállításához kattintson az **OK** gombra.
+13. A **Feltétel** legördülő listából válassza a **Kevesebb, mint** lehetőséget.
+14. Az **Érték választása** mezőbe írja be a következő feltételt: `1`.
 
-    ![Azure-Logic app – lebegőpontos kifejezés értékkel](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Azure – Logic App – Lebegőpontos kifejezés értékkel](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 
-15. A **Ha TRUE (igaz** ) mezőben válassza a **művelet hozzáadása**lehetőséget. Egy HTTP POST műveletet fog hozzáadni, amely nem kötelezően kikapcsolja a választható virtuális gépeket.
+15. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy HTTP POST műveletet fog hozzáadni, amely kikapcsolja a választható virtuális gépeket.
 
-    ![Azure-Logic app – művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
+    ![Azure – Logic App – Művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 
-16. Adja **meg a** http-t a http-művelet megkereséséhez, majd válassza a **http – http** műveletet.
+16. A HTTP-művelet megkereséséhez adja meg a **HTTP** kulcsszót, majd válassza a **HTTP – HTTP** műveletet.
 
-    ![Azure-Logic app – HTTP-művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
+    ![Azure – Logic App – HTTP művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
 
-17. Válassza a **post** lehetőséget a **metódus** értékeként.
-18. Adja meg az oktatóanyag korábbi részében létrehozott  webhook URL-címét **URI** -értékként.
+17. A **Metódus** beállításhoz válassza a **Bejegyzés** értéket.
+18. **Uri** értékként írja be az oktatóanyag korábbi szakaszában létrehozott **Választható** nevű webhook URL-címét.
 
-    ![Azure-Logic app – HTTP-művelet URI-ja](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
+    ![Azure – Logic App – HTTP művelet URI](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
 
-19. Válassza a **művelet hozzáadása** lehetőséget a **Ha igaz** mezőben. Hozzá fog adni egy e-mail-műveletet, amely értesíti a címzettet arról, hogy a választható virtuális gépek le lettek állítva.
-20. Keressen rá az "e-mail küldése" kifejezésre, és válassza ki az *e-mail küldése* műveletet a használt e-mail szolgáltatás alapján.
+19. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Hozzá fog adni egy e-mail-műveletet, amely e-mailben értesíti a címzettet arról, hogy a választható virtuális gépek le lettek állítva.
+20. Keressen rá az „e-mail küldése” kifejezésre, és válassza az Ön e-mail-szolgáltatásához tartozó *e-mail küldése* műveletet.
 
-    ![Azure-Logic app – e-mail küldése művelet](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
+    ![Azure – Logic App – e-mail küldése művelet](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
 
     Személyes Microsoft-fiókok esetében válassza az **Outlook.com** lehetőséget. Munkahelyi vagy iskolai Azure-fiókok esetében válassza az **Office 365 Outlook** lehetőséget. Ha még nem rendelkezik kapcsolattal, a rendszer arra kéri, hogy jelentkezzen be az e-mail-fiókjába. A Logic Apps létrehoz egy kapcsolatot az e-mail-fiókjával.
 
-    Engedélyeznie kell a logikai alkalmazásnak az e-mail-információk elérését.
+    A Logic App számára engedélyeznie kell az e-mail információkhoz való hozzáférést.
 
-    ![Azure-Logic app – hozzáférési nyilatkozat](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
+    ![Azure – Logic App – Hozzáférés értesítés](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
 
-21. Adja hozzá az e-mailhez a **címzett,** **Tárgy**és **szövegtörzs** szövegét, amely értesíti a címzettet arról, hogy a választható virtuális gépek le vannak állítva. A **BudgetName** és a **NotificationThresholdAmount** dinamikus tartalmat használva töltse fel a tárgy és a törzs mezőket.
+21. Adja hozzá az e-mailhez a **Címzett**, a **Tárgy** és a **Szövegtörzs** szövegét, amely értesíti a címzettet arról, hogy a választható virtuális gépek le lettek állítva. A **BudgetName** és a **NotificationThresholdAmount** dinamikus tartalmat használva töltse fel a tárgy és a szövegtörzs mezőket.
 
-    ![Azure-Logic app-e-mail-részletek](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
+    ![Azure – Logic App – E-mail részletei](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
 
-### <a name="add-the-second-conditional-action"></a>A második feltételes művelet hozzáadása
+### <a name="add-the-second-conditional-action"></a>Adja hozzá a második feltételes műveletet
 
-Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte vagy túllépte a költségvetési érték 100%-át. Ha elérte a küszöbértéket, küldjön egy HTTP-BEJEGYZÉST **a nevű**webhook használatával. Ez a művelet leállítja az összes többi virtuális gépet.
+Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte vagy túllépte-e a költségvetési érték 100%-át. Ha elérte a küszöbértéket, küldjön egy HTTP POST-ot a **Teljes** nevű webhook használatával. Ez a művelet leállítja az összes hátralévő virtuális gépet.
 
-1.  Válassza az **új lépés** > **feltétel hozzáadása**lehetőséget.
+1.  Válassza az **Új lépés** > **Feltétel hozzáadása** lehetőséget.
 
-    ![Azure-Logic app – művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Azure – Logic App – Művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 
-2.  Az elérhető értékek listájának megjelenítéséhez kattintson a **feltétel** mezőben a **Válasszon értéket** tartalmazó szövegmezőre.
-3.  Kattintson a lista tetején a **kifejezés** elemre, és írja be a következő kifejezést a kifejezés-szerkesztőbe:`float()`
-4.  Válassza a **dinamikus tartalom**lehetőséget, vigye a kurzort a zárójelen belül (), és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
+2.  A **Feltétel** mezőben kattintson a **Válasszon egy értéket** szövegmezőre az elérhető értékek megjelenítéséhez.
+3.  Kattintson a **Kifejezés** lehetőségre a lista tetején, és írja be a következő kifejezést a kifejezésszerkesztőbe: `float()`
+4.  Válassza a **Dinamikus tartalom** lehetőséget, vigye a kurzort a () zárójelek közé, és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
 
-    A kifejezés a következő lesz:<br>
+    A kifejezés az alábbi lesz:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  A kifejezés beállításához kattintson **az OK gombra** .
-6.  A **feltétel**legördülő listájában válassza a **nagyobb vagy egyenlő** elemet.
-7.  A feltétel **értékének kiválasztása mezőben** adja meg `1`a feltételt.
+5.  A kifejezés beállításához kattintson az **OK** gombra.
+6.  A **Feltétel** legördülő listából válassza a **nagyobb vagy egyenlő, mint** lehetőséget.
+7.  Az **Érték választása** mezőbe írja be a következő feltételt: `1`.
 
-    ![Azure-Logic app-set feltétel értéke](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
+    ![Azure – Logic App – Feltétel beállítása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 
-8.  A **Ha TRUE (igaz** ) mezőben válassza a **művelet hozzáadása**lehetőséget. Egy HTTP POST műveletet fog hozzáadni, amely leállítja az összes többi virtuális gépet.
+8.  A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy HTTP POST műveletet fog hozzáadni, amely leállítja az összes hátralévő virtuális gépet.
 
-    ![Azure-Logic app – művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Azure – Logic App – Művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 
-9.  Adja **meg a** http-t a http-művelet megkereséséhez, majd válassza a **http – http** műveletet.
-10. Válassza a **post** lehetőséget a **metódus** értékeként.
-11. Adja meg az oktatóanyag korábbi részében létrehozott  webhook URL-címét **URI** -értékként.
+9.  A HTTP-művelet megkereséséhez adja meg a **HTTP** kulcsszót, majd válassza a **HTTP – HTTP** műveletet.
+10. A **Metódus** beállításhoz válassza a **Bejegyzés** értéket.
+11. **Uri** értékként írja be az oktatóanyag korábbi szakaszában létrehozott **Teljes** elnevezésű webhook URL-címét.
 
-    ![Azure-Logic app – művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Azure – Logic App – Művelet hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 
-12. Válassza a **művelet hozzáadása** lehetőséget a **Ha igaz** mezőben. Egy e-mail-műveletet fog hozzáadni, amely értesíti a címzettet arról, hogy a fennmaradó virtuális gépek le lettek állítva.
-13. Keressen rá az "e-mail küldése" kifejezésre, és válassza ki az *e-mail küldése* műveletet a használt e-mail szolgáltatás alapján.
-14. Adja hozzá az e-mailhez a **címzett,** **Tárgy**és **szövegtörzs** szövegét, amely értesíti a címzettet arról, hogy a választható virtuális gépek le vannak állítva. A **BudgetName** és a **NotificationThresholdAmount** dinamikus tartalmat használva töltse fel a tárgy és a törzs mezőket.
+12. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy e-mail-műveletet fog hozzáadni, amely értesíti a címzettet arról, hogy a fennmaradó virtuális gépek le lettek állítva.
+13. Keressen rá az „e-mail küldése” kifejezésre, és válassza az Ön e-mail-szolgáltatásához tartozó *e-mail küldése* műveletet.
+14. Adja hozzá az e-mailhez a **Címzett**, a **Tárgy** és a **Szövegtörzs** szövegét, amely értesíti a címzettet arról, hogy a választható virtuális gépek le lettek állítva. A **BudgetName** és a **NotificationThresholdAmount** dinamikus tartalmat használva töltse fel a tárgy és a szövegtörzs mezőket.
 
-    ![Azure-Logic app – e-mail küldése – részletek](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
+    ![Azure – Logic App – E-mail küldésének részletei](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
 
-15. Kattintson a **Save (Mentés** ) gombra a **Logic app Designer** panel tetején.
+15. Kattintson a **Logikaialkalmazás-tervező** panel tetején a **Mentés** gombra.
 
-### <a name="logic-app-summary"></a>Logikai alkalmazás összegzése
+### <a name="logic-app-summary"></a>Logic App összefoglalása
 
-A logikai alkalmazás a következőképpen néz ki: Ha elkészült. A legfontosabb forgatókönyvekben, ahol nincs szükség küszöbérték-alapú előkészítésre, közvetlenül meghívhatja az Automation-parancsfájlt a **figyelőből** , és kihagyhatja a **logikai alkalmazás** lépéseit.
+Amikor elkészült, a logikai alkalmazás így néz ki. A legalapvetőbb forgatókönyvekben, ahol nincs szükség küszöbérték-alapú vezénylésre, közvetlenül meghívhatja az Automation-szkriptet a **Monitorból**, és kihagyhatja a **logikai alkalmazás** lépését.
 
-   ![Azure-Logic app – teljes nézet](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
+   ![Azure – Logic App – Teljes áttekintés](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-25.png)
 
-A logikai alkalmazás mentésekor a rendszer létrehoz egy URL-címet, amelyet meg tud hívni. Ezt az URL-címet az oktatóanyag következő szakaszában fogja használni.
+A logikai alkalmazás mentésekor létrejött egy URL, amelyet meghívhat. Ezt az URL-címet fogja használni az oktatóanyag következő szakaszában.
 
-## <a name="create-an-azure-monitor-action-group"></a>Azure Monitor műveleti csoport létrehozása
+## <a name="create-an-azure-monitor-action-group"></a>Azure Monitor-műveletcsoport létrehozása
 
-A műveleti csoport a megadott értesítési beállítások gyűjteménye. Riasztás aktiválásakor egy adott műveleti csoport értesítést kap a riasztásról. Az Azure-riasztások proaktív módon, meghatározott feltételek alapján emelnek fel egy értesítést, és lehetőséget biztosítanak a beavatkozásra. A riasztások több forrásból származó adatokat is használhatnak, beleértve a metrikákat és a naplókat is.
+Egy műveletcsoport az Ön által meghatározott értesítési preferenciák gyűjteménye. Egy riasztás aktiválásakor egy adott műveletcsoport értesítést kaphat a riasztásról. Az Azure-riasztás proaktív módon, meghatározott feltételek alapján küld egy értesítést, és lehetőséget biztosít a beavatkozásra. A riasztási szabályok több forrásból, például metrikákból és naplókból származó adatokat használnak.
 
-A műveleti csoportok az egyetlen végpont, amelybe integrálni fogja a költségvetést. Több csatornán is beállíthat értesítéseket, de ebben a forgatókönyvben az oktatóanyag korábbi részében létrehozott logikai alkalmazásra fog összpontosítani.
+A műveletcsoportok az egyetlen végpont, amelyet integrálni fogja a költségvetéssel. Több csatornán is beállíthat értesítéseket, de ebben a forgatókönyvben az oktatóanyag korábbi szakaszában létrehozott logikai alkalmazásra fog összpontosítani.
 
-### <a name="create-an-action-group-in-azure-monitor"></a>Műveleti csoport létrehozása Azure Monitor
+### <a name="create-an-action-group-in-azure-monitor"></a>Műveletcsoport létrehozása az Azure Monitorban
 
-A műveleti csoport létrehozásakor az oktatóanyag korábbi részében létrehozott logikai alkalmazásra mutat.
+Amikor létrehozza a műveletcsoportot, arra a logikai alkalmazásra fog mutatni, amelyet az oktatóanyag korábbi szakaszában létrehozott.
 
-1.  Ha még nem jelentkezett be a [Azure Portalba](https://portal.azure.com/), jelentkezzen be, és válassza a **minden szolgáltatás** > **figyelője**lehetőséget.
-2.  Válassza a **műveleti csoportok** lehetőséget a **beállítás** szakaszban.
-3.  A **műveleti csoportok** panelen válassza a **műveleti csoport hozzáadása** lehetőséget.
+1.  Ha még nem tette meg, jelentkezzen be az [Azure Portalon](https://portal.azure.com/), és válassza a **Minden szolgáltatás** > **Monitor** elemet.
+2.  A **Beállítások** szakaszban válassza a **Műveletcsoportok** lehetőséget.
+3.  A **Műveletcsoportok** panelen válassza a **Műveletcsoport hozzáadása** pontot.
 4.  Adja hozzá és ellenőrizze a következő elemeket:
     - Műveletcsoport neve
     - Rövid név
-    - Subscription
-    - Resource group
+    - Előfizetés
+    - Erőforráscsoport
 
-    ![Azure-Logic app – műveleti csoport hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
+    ![Azure – Logic App – Műveletcsoport hozzáadása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 
-5.  A **műveleti csoport hozzáadása** panelen adjon hozzá egy LogicApp műveletet. Nevezze el a műveleti **költségvetést – BudgetLA**. A **logikai alkalmazás** ablaktáblán válassza ki az  előfizetést és az **erőforráscsoportot**. Ezután válassza ki az oktatóanyag során korábban létrehozott **logikai alkalmazást** .
-6.  A logikai alkalmazás beállításához kattintson **az OK** gombra. Ezután kattintson az **OK gombra** a **műveleti csoport hozzáadása** panelen a műveleti csoport létrehozásához.
+5.  A **Műveletcsoport hozzáadása** panelen adjon hozzá egy LogicApp-műveletet. A művelet neve legyen **Budget-BudgetLA**. A **Logikai alkalmazás** panelen válassza ki az **Előfizetés**, majd az **Erőforráscsoport** elemet. Ezután válassza ki azt a **logikai alkalmazást**, amelyet az oktatóanyag korábbi szakaszában létrehozott.
+6.  A logikai alkalmazás beállításához kattintson az **OK** gombra. Ezután a **Műveletcsoport hozzáadása** panelen kattintson az **OK** gombra a műveletcsoport létrehozásához.
 
-A költségkeret hatékony előkészítéséhez szükséges összes támogató összetevővel elkészült. Most mindössze annyit kell tennie, hogy létrehozza a költségvetést, és konfigurálja a létrehozott műveleti csoport használatára.
+A költségvetés hatékony vezényléséhez szükséges összes támogató összetevőt beállította. Nincs más tennivalója, mint létrehozni, és a létrehozott műveletcsoport használatára beállítani a költségvetést.
 
-## <a name="create-the-azure-budget"></a>Az Azure-költségvetés létrehozása
+## <a name="create-the-azure-budget"></a>Azure-költségvetés létrehozása
 
-A Azure Portal a Cost Management [költségvetési funkciójának](../cost-management/tutorial-acm-create-budgets.md) használatával hozhat létre költségvetést. Emellett a REST API-k, a PowerShell-parancsmagok vagy a parancssori felület használatával is létrehozhat költségvetést. Az alábbi eljárás a REST API használja. A REST API meghívása előtt szüksége lesz egy engedélyezési jogkivonatra. Engedélyezési jogkivonat létrehozásához használhatja a [ARMClient](https://github.com/projectkudu/ARMClient) projektet. A **ARMClient** lehetővé teszi, hogy hitelesítse magát a Azure Resource Manageron, és megkapja az API-k meghívásához szükséges tokent.
+Az Azure Portalon a [Költségvetés funkció](../cost-management/tutorial-acm-create-budgets.md) használatával hozhat létre költségvetést a Cost Managementben. Vagy REST API-k, Powershell-parancsmagok vagy CLI használatával is létrehozhat költségvetést. A következő eljárás a tartományi REST API-t használja. A REST API meghívásához szüksége lesz egy engedélyezési jogkivonatra. Engedélyezési jogkivonat létrehozásához használhatja az [ARMClient](https://github.com/projectkudu/ARMClient) projektet. Az **ARMClient** lehetővé teszi, hogy hitelesítse magát az Azure Resource Manageren, és megkapja az API-k meghívásához szükséges jogkivonatot.
 
-### <a name="create-an-authentication-token"></a>Hitelesítési jogkivonat létrehozása
+### <a name="create-an-authentication-token"></a>Engedélyezési jogkivonat létrehozása
 
-1.  Navigáljon a [ARMClient](https://github.com/projectkudu/ARMClient) projekthez a githubon.
-2.  A tárház klónozásával helyi másolatot kaphat.
-3.  Nyissa meg a projektet a Visual Studióban, és hozza létre.
-4.  A létrehozás sikerességét követően a végrehajtható fájlnak a *\Bin\Debug* mappában kell lennie.
-5.  Futtassa a ARMClient. Nyisson meg egy parancssort, és navigáljon a *\Bin\Debug* mappához a projekt gyökeréből.
-6.  A bejelentkezéshez és a hitelesítéshez írja be a következő parancsot a parancssorba:<br>
+1.  A GitHubon lépjen az [ARMClient](https://github.com/projectkudu/ARMClient) projekthez.
+2.  Saját példány létrehozásához klónozza az adattárat.
+3.  Nyissa meg és buildelje a projektet a Visual Studióban.
+4.  Sikeres buildelés után a végrehajtható fájlnak a *\bin\debug* mappában kell lennie.
+5.  Futtassa az ARMClientet. Nyisson meg egy parancssort, és a projekt gyökérkönyvtárából lépjen a *\bin\debug* mappához.
+6.  A bejelentkezéshez és a hitelesítéshez írja be az alábbi parancsot a parancssorba:<br>
     `ARMClient login prod`
-7.  Másolja az **előfizetés GUID azonosítóját** a kimenetből.
-8.  Ha egy engedélyezési tokent szeretne másolni a vágólapra, írja be a következő parancsot a parancssorba, de ügyeljen arra, hogy a fenti lépésből a másolt előfizetés AZONOSÍTÓját használja: <br>
+7.  Másolja ki az **előfizetés GUID-azonosítóját** a kimenetből.
+8.  Az engedélyezési jogkivonat vágólapra másolásához írja be az alábbi parancsokat a parancssorba, de győződjön meg arról, hogy a fenti lépés során kimásolt előfizetés-azonosítót adja meg: <br>
     `ARMClient token <subscription GUID from previous step>`
 
-    A fenti lépés elvégzése után a következő jelenik meg:<br>
-    **A jogkivonat sikeresen átmásolva a vágólapra.**
-9.  Mentse az oktatóanyag következő szakaszában található lépésekhez használni kívánt jogkivonatot.
+    A fenti lépés befejezése után az alábbiakat fogja látni:<br>
+    **Sikeresen a vágólapra másolta a jogkivonatot.**
+9.  Mentse a jogkivonatot, mert az oktatóanyag következő szakaszában szükség lesz rá.
 
 ### <a name="create-the-budget"></a>A költségvetés létrehozása
 
-Ezután konfigurálja a Poster  -t, és hozzon létre egy költségvetést az Azure-használati REST API-k meghívásával. A Poster egy API-fejlesztési környezet. A környezet és a gyűjtemény fájljait postán kell importálnia. A gyűjtemény az Azure-használati REST API-kat meghívó HTTP-kérelmek csoportosított definícióit tartalmazza. A környezeti fájl a gyűjtemény által használt változókat tartalmazza.
+A következő lépésként konfigurálni fogja a **Postmant**, hogy az Azure Consumption REST API-k meghívásával létrehozza a költségvetést. A Postman egy API-fejlesztési környezet. Környezeti és gyűjteményfájlokat fog importálni a Postmanbe. A gyűjtemény az Azure-használati REST API-kat meghívó HTTP-kérelmek csoportosított definícióit tartalmazza. A környezeti fájl azokat a változókat tartalmazza, amelyeket a gyűjtemény használ.
 
-1.  Töltse le és nyissa meg a [Poster Rest](https://www.getpostman.com/) -ügyfelet a REST API-k végrehajtásához.
-2.  A Poster-ben hozzon létre egy új kérelmet.
+1.  A REST API-k végrehajtásához töltse le és nyissa meg a [Postman REST-ügyfelet](https://www.getpostman.com/).
+2.  Hozzon létre egy új kérelmet a Postmanben.
 
-    ![Poster – új kérelem létrehozása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
+    ![Postman – új kérelem létrehozása](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-27.png)
 
-3.  Mentse az új kérést gyűjteményként, hogy az új kérelemhez ne legyen rá semmi.
+3.  Mentse az új kérelmet gyűjteményként, hogy az új kérelmen ne legyen semmi.
 
-    ![Poster – az új kérés mentése](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
+    ![Postman – új kérelem mentése](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-28.png)
 
-4.  Módosítsa a kérést egy `Get` `Put` műveletre.
-5.  Módosítsa a következő URL-címet `{subscriptionId}` úgy, hogy lecseréli az oktatóanyag előző szakaszában használt **előfizetés** -azonosítóra. Módosítsa az URL-címet is, hogy a "SampleBudget" értéket adja `{budgetName}`meg a következő értékként:`https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31`
-6.  Válassza a **headers** (fejlécek) fület a Poster alatt.
-7.  Adjon hozzá egy "Authorization" nevű új **kulcsot** .
-8.  Állítsa be az **értéket** az utolsó szakasz végén található ArmClient használatával létrehozott jogkivonatra.
-9.  Válassza a **törzs** fület a Poster területen.
-10. Válassza a **RAW** gomb lehetőséget.
-11. A szövegmezőbe illessze be az alábbi minta költségvetési definíciót, azonban a **subscriptionid**, a **budgetname**és a **ACTIONGROUPNAME** paramétereket az előfizetés-azonosítójával, a költségvetés egyedi nevével és a műveleti csoport nevével kell helyettesítenie. az URL-címben és a kérelem törzsében is létrehozva:
+4.  A kérelmet módosítsa `Get` műveletről `Put` műveletre.
+5.  Az URL-t módosítsa a `{subscriptionId}` kicserélésével az oktatóanyag előző szakaszában használt **előfizetés-azonosítóra**. Továbbá módosítsa az URL-t úgy, hogy a `{budgetName}`: `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2018-03-31` értéke „SampleBudget” legyen
+6.  A Postmanben válassza a **Fejlécek** lapot.
+7.  „Engedélyezés” néven adjon hozzá egy új **Kulcsot**.
+8.  Az **Értéket** állítsa az előző szakasz végén az ArmClient használatával létrehozott jogkivonatra.
+9.  Válassza a **Szövegtörzs** fület a Postmanben.
+10. Válassza ki a **formázatlan** gomb lehetőséget.
+11. A szövegmezőbe illessze be az alábbi minta költségvetés-definíciót, azonban a **subscriptionid**, a **budgetname** és az **actiongroupname** paramétereket ki kell cserélnie a saját előfizetés-azonosítójára, költségvetésének egyedi nevére, valamint az URL-címben és a kérelem törzsében létrehozott műveletcsoport nevére:
 
     ```
         {
@@ -365,25 +365,25 @@ Ezután konfigurálja a Poster  -t, és hozzon létre egy költségvetést az Az
             }
         }
     ```
-12. A kérelem elküldéséhez kattintson a **Küldés** gombra.
+12. Küldje el a kérelmet a **Küldés** gomb lenyomásával.
 
-Most már rendelkezik a [költségvetés API](https://docs.microsoft.com/rest/api/consumption/budgets)meghívásához szükséges összes darabtal. A költségvetés API-referenciája további részleteket tartalmaz az adott kérelmekkel kapcsolatban, beleértve az alábbiakat:
-    - **budgetName** – több költségvetés is támogatott.  A költségvetés nevének egyedinek kell lennie.
-    - **Kategória** – a **Cost** vagy a **használati**értéknek kell lennie. Az API mind a költség-, mind a használati költségvetést támogatja.
-    - **timeGrain** – havonta, negyedévente vagy évenkénti költségvetés. Az összeg az időszak végén alaphelyzetbe áll.
-    - **szűrők** – a szűrők lehetővé teszik, hogy a költségvetést a kijelölt hatókörön belüli erőforrások egy adott készletére szűkítse. Egy szűrő például az előfizetési szint költségvetéséhez tartozó erőforráscsoportok gyűjteménye lehet.
-    - **értesítések** – meghatározza az értesítés részleteit és a küszöbértékeket. Beállíthat több küszöbértéket, és megadhat egy e-mail-címet vagy egy műveleti csoportot, amely értesítést kap.
+Most már a [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) meghívásához szükséges összes elemmel rendelkezik. A Budgets API referenciája további részleteket tartalmaz az adott kérelmekkel kapcsolatban, beleértve az alábbiakat:
+    - **budgetName** – Több költségvetés is támogatott.  A költségvetés nevének egyedinek kell lennie.
+    - **category** – **Cost** vagy **Usage** kell, hogy legyen. Az API a költség és a használat kategóriájú költségvetéseket is támogatja.
+    - **timeGrain** – Havi, negyedéves vagy éves költségvetés. Az időszak végén a mennyiség visszaáll az alaphelyzetre.
+    - **filters** – A szűrők lehetővé teszik, hogy a költségvetést a kijelölt hatókörön belüli erőforrások egy adott készletére szűkítse. Egy szűrő lehet például az előfizetési szint költségvetéséhez tartozó erőforráscsoportok gyűjteménye.
+    - **Értesítések** – Meghatározza az értesítés részleteit és küszöbértékeit. Több küszöbértéket is beállíthat, és megadhat egy e-mail-címet vagy egy műveletcsoportot az értesítés fogadásához.
 
 ## <a name="summary"></a>Összegzés
 
-Ezt az oktatóanyagot követve megtanulta a következőket:
-- Azure Automation Runbook létrehozása a virtuális gépek leállításához.
-- Egy olyan Azure logikai alkalmazás létrehozása, amely a költségvetési küszöbértékek alapján aktiválódik, és a megfelelő paraméterekkel hívja meg a kapcsolódó runbook.
-- Azure Monitor műveleti csoport létrehozása, amely úgy lett konfigurálva, hogy kiváltsa az Azure Logic apps alkalmazást a költségvetési küszöbérték teljesülése esetén.
-- Hogyan hozhatja létre az Azure-költségvetést a kívánt küszöbértékekkel, és hogyan továbbíthatja azt a műveleti csoportba.
+Ez az oktatóanyag bemutatta az alábbiakat:
+- Hogyan hozhat létre Azure Automation-runbookokat a virtuális gépek leállítására.
+- Hogyan hozhat létre olyan Azure Logic app-alkalmazást, amely a költségvetési küszöbértékek alapján aktiválódik, és hogyan hívhatja meg a kapcsolódó, megfelelő paraméterekkel rendelkező runbookot.
+- Hogyan hozhat létre olyan Azure Monitor-műveletcsoportot, amely úgy lesz konfigurálva, hogy a költségvetési küszöbérték teljesülése esetén aktiválja az Azure Logic Appot.
+- Hogyan hozhatja az Azure-költségvetést a kívánt küszöbértékekkel, és fűzheti hozzá azt a műveletcsoporthoz.
 
-Most már rendelkezik egy teljes körű működési költségkerettel az előfizetéséhez, amely leállítja a virtuális gépeket, amikor eléri a beállított költségvetési küszöbértékeket.
+Most már rendelkezik egy teljesen működőképes költségvetéssel az előfizetéshez, amely leállítja a virtuális gépeket, amikor eléri a beállított költségvetési küszöbértékeket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure számlázási forgatókönyvekkel kapcsolatos további információkért lásd: [számlázási és Cost Management Automation-forgatókönyvek](billing-cost-management-automation-scenarios.md).
+- További információkért az Azure számlázási forgatókönyvekről lásd: [A számlázás és költségkezelés automatizálási forgatókönyvei](billing-cost-management-automation-scenarios.md).

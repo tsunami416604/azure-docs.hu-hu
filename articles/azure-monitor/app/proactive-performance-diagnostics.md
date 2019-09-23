@@ -62,7 +62,7 @@ Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve
   
   ![Intelligens észlelési beállítások](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * Az e-mail **** -értesítések fogadásának leállításához használhatja az intelligens észlelési e-mailben található leiratkozási hivatkozást.
+  * Az e-mail -értesítések fogadásának leállításához használhatja az intelligens észlelési e-mailben található **leiratkozási** hivatkozást.
 
 Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights erőforráson naponta egy e-mailre korlátozódik. Az e-mail csak akkor lesz elküldve, ha van legalább egy új, az adott napon észlelt probléma. Egyetlen üzenet sem jelenik meg. 
 
@@ -169,7 +169,7 @@ Nem kell megadnia a küszöbértékeket, és nem kell konfigurálnia a szabályo
 ![Az e-mail riasztásban kattintson a hivatkozásra a diagnosztikai jelentés megnyitásához az Azure-ban](./media/proactive-performance-diagnostics/03.png)
 
 * **Mikor** jelenik meg a probléma észlelésének időpontja.
-* **** A leírása:
+* **A** leírása:
 
   * A észlelt probléma;
   * Az események azon készletének jellemzői, amelyek a probléma viselkedését jelenítik meg.

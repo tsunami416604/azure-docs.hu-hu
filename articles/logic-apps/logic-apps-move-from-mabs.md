@@ -94,7 +94,7 @@ BizTalk Services a bejövő üzenetek vagy az adatküldés továbbítására szo
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-BizTalk Services esetén, ha csak két lehetőség van, egy feltételt használva a legjobb módszer az útválasztási szűrők BizTalk Servicesban történő átalakítására. ** Ha kettőnél több van, akkor használjon egy **kapcsolót**.
+BizTalk Services esetén, ha csak két lehetőség van, egy *feltételt* használva a legjobb módszer az útválasztási szűrők BizTalk Servicesban történő átalakítására. Ha kettőnél több van, akkor használjon egy **kapcsolót**.
 
 A Logic Apps kifinomult logikai képességeket, valamint speciális vezérlési folyamatot és útválasztást biztosít [feltételes utasításokkal](../logic-apps/logic-apps-control-flow-conditional-statement.md) és [switch utasításokkal](../logic-apps/logic-apps-control-flow-switch-statement.md).
 

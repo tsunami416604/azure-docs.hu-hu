@@ -100,7 +100,7 @@ A .NET Core, az önálló üzemelő példányok és a ASP.NET Core 3,0 közötti
 
 Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése:
 
-* **Beállítások** kiválasztása > * * * * alkalmazás beállításai * * * *
+* **Beállítások** kiválasztása > ** **alkalmazás beállításai** **
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
      név:`APPINSIGHTS_JAVASCRIPT_ENABLED`

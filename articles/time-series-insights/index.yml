@@ -1,61 +1,129 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Time Series Insights dokumentációja
+summary: Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.
 metadata:
-  title: 'Az Azure Time Series Insights dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia | Microsoft Docs'
-  description: 'Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.'
+  title: Az Azure Time Series Insights dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia | Microsoft Docs
+  description: Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.
   services: time-series-insights
-  author: deepakpalled
-  manager: cshankar
   ms.service: time-series-insights
+  ms.subservice: time-series-insights
   ms.topic: landing-page
-  ms.date: 06/03/2019
-  ms.author: dpalled
-abstract:
-  description: 'Üdvözli az Azure Time Series Insights! Az Azure Time Series Insights hatékony adatfeltárási és telemetriai eszközöket biztosít a működési elemzések hatékonyabbá tételéhez. A dokumentáció ismerteti a szolgáltatást, az első lépéseket a szolgáltatás számos funkciójának használatához, az ügyféloldali SDK-t, valamint a hatékony Time Series Insights API-kat. Két verzióhoz érhetők el információk, a már általánosan elérhető verzióhoz (a Time Series Insights általánosan elérhető verziója) és egy előzetes verziójú nagyobb szolgáltatásfrissítéshez (Time Series Insights előzetes verzió).'
-  aside:
-    image:
-      alt: Az Azure IoT Time Series Insights funkcióit bemutató videó.
-      height: 110
-      src: media/index/new-tsi-intro.png
-      width: 250
-    title: 'Time Series Insights IoT-alkalmazásokhoz. (13:31)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'A rövid minták megtekintésével megismerkedhet az Azure Time Series Insightsszal, és percek alatt megkezdheti a használatát.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
-            text: Ismerkedés az Azure Time Series Insights általánosan elérhető verziójával
-            href: /azure/time-series-insights/time-series-quickstart
-      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Ismerkedés az Azure Time Series Insights előzetes verziójával</a></p>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'A részletes példákból megtudhatja, hogyan hozhat létre Azure Time Series Insights-környezeteket, egyoldalas webalkalmazásokat és még sok mást.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Az Azure Time Series Insights általánosan elérhető verziója
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Azure Time Series Insights-környezet létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Egyoldalas webalkalmazás létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Ismerkedés a JavaScript ügyfélkódtárral</a></p>
-          - title: Az Azure Time Series Insights előzetes verziója
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Környezet létrehozása az Azure Time Series Insights előzetes verziójával</a></p>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: A Time Series Insights általánosan elérhető verziójának API-jai
-            html: <p><a href="/rest/api/time-series-insights/ga">Adathozzáférés</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Lekérdezési szintaxis</a></p>
-          - title: A Time Series Insights előzetes verziójának API-jai
-            html: <p><a href="/rest/api/time-series-insights/preview-query">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Model API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Environment API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series Expression API</a></p>
-          - title: Ügyféloldali SDK
-            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript ügyféloldali SDK</a></p>'
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/04/2019
+  ms.openlocfilehash: 46d97b411971b7dbd844a6f5aa23d97d1c59d30c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71145560"
+landingContent:
+- title: Az Azure Time Series Insights ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Time Series Insights előzetes verziója?
+      url: time-series-insights-update-overview.md
+    - text: Az Azure Time Series Insights GA ismertetése
+      url: time-series-insights-overview.md
+  - linkListType: video
+    links:
+    - text: Time Series Insights IoT-alkalmazásokhoz. (13:31)
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+- title: Bevezetés az előzetes verzió használatába
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ismerkedés az Azure Time Series Insights előzetes verziójával
+      url: time-series-insights-update-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Oktatóanyag az Azure Time Series Insights előzetes verziójához
+      url: time-series-insights-update-create-environment.md
+    - text: Egyoldalas webalkalmazás létrehozása
+      url: tutorial-create-tsi-sample-spa.md
+    - text: A Time Series Insights JavaScript ügyfélkódtár
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kiépítés és kezelés
+      url: time-series-insights-update-how-to-manage.md
+  - linkListType: concept
+    links:
+    - text: Adatvizualizáció a Time Series Insights Explorer előzetes verziójával
+      url: time-series-insights-update-explorer.md
+- title: Tervezés és előkészítés az előzetes verzióval
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Csatlakozás az Event Hubshoz
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Csatlakozás az IoT Hubhoz
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: Adattárolás és bejövő adatforgalom
+      url: time-series-insights-update-storage-ingress.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adathozzáférés biztosítása
+      url: time-series-insights-data-access.md
+    - text: A JSON testreszabása lekérdezésekhez
+      url: time-series-insights-update-how-to-shape-events.md
+  - linkListType: concept
+    links:
+    - text: Time Series-modell
+      url: time-series-insights-update-tsm.md
+- title: Bevezetés a GA használatába
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ismerkedés az Azure Time Series Insights általánosan elérhető verziójával
+      url: time-series-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Time Series Insights-környezet létrehozása
+      url: tutorial-create-populate-tsi-environment.md
+    - text: Egyoldalas webalkalmazás létrehozása
+      url: tutorial-create-tsi-sample-spa.md
+    - text: A Time Series Insights JavaScript ügyfélkódtár
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: Környezet létrehozása
+      url: time-series-insights-get-started.md
+  - linkListType: concept
+    links:
+    - text: Adatvizualizáció a Time Series Insights Explorer segítségével
+      url: time-series-insights-explorer.md
+- title: Tervezés és előkészítés a GA segítségével
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Csatlakozás az Event Hubshoz
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: Csatlakozás az IoT Hubhoz
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: A környezet megtervezése
+      url: time-series-insights-environment-planning.md
+    - text: A környezet skálázása
+      url: time-series-insights-how-to-scale-your-environment.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adathozzáférés biztosítása
+      url: time-series-insights-data-access.md
+    - text: A JSON testreszabása lekérdezésekhez
+      url: how-to-shape-query-json.md
+    - text: Események küldése
+      url: time-series-insights-send-events.md
+- title: API-hivatkozás
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Time Series Insights
+      url: /rest/api/time-series-insights/
+    - text: Az Azure Time Series Insights előzetes verziója
+      url: /rest/api/time-series-insights/preview
+    - text: Az Azure Time Series Insights általánosan elérhető verziója
+      url: /rest/api/time-series-insights/ga
+    - text: JavaScript ügyféloldali SDK
+      url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

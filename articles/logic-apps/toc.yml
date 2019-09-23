@@ -17,9 +17,9 @@
   items:
     - name: Ütemezésalapú munkafolyamatok létrehozása
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: Levelezési listára vonatkozó kérelmek kezelése
+    - name: Jóváhagyás-alapú munkafolyamatok létrehozása
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: E-mail-mellékletek feldolgozása
+    - name: Azure Storage- és Azure Functions-munkafolyamat létrehozása
       href: tutorial-process-email-attachments-workflow.md
 - name: Példák
   items:
@@ -31,7 +31,7 @@
   items:
     - name: Összekötők a Logic Apps számára
       href: ../connectors/apis-list.md
-    - name: Ismétlődő automatizált munkafolyamatok ütemezése
+    - name: Ismétlődő munkafolyamatok ütemezése
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Kiszolgáló nélküli használat az Azure-ral
       href: logic-apps-serverless-overview.md
@@ -111,6 +111,12 @@
           href: logic-apps-enterprise-integration-partners.md
         - name: Egyezmények
           href: logic-apps-enterprise-integration-agreements.md
+        - name: Sémák XML-érvényesítéshez
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: Leképezések XML-átalakításhoz
+          href: logic-apps-enterprise-integration-maps.md
+        - name: Tanúsítványok
+          href: logic-apps-enterprise-integration-certificates.md
         - name: Összetevő metaadatai
           href: logic-apps-enterprise-integration-metadata.md
         - name: B2B-üzenetek fogadása
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: Egybesimított fájlok feldolgozása
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: XML-átalakítás
+          href: logic-apps-enterprise-integration-transform.md
         - name: XML feldolgozása
           href: logic-apps-enterprise-integration-xml.md
         - name: XML érvényességének ellenőrzése
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: Sémák hozzáadása XML-érvényesítéshez
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML-átalakítás
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Leképezések hozzáadása XML-átalakításhoz
-          href: logic-apps-enterprise-integration-maps.md
         - name: JSON-átalakítás
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: Biztonsági tanúsítványok hozzáadása
-          href: logic-apps-enterprise-integration-certificates.md
         - name: B2B-hibák elhárítása
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Vészhelyreállítási terv létrehozása

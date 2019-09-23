@@ -140,7 +140,11 @@
             - name: Teljesítmény-finomhangolási útmutató
               href: performance-tuning-ordered-CCI.md
         - name: Eredményhalmaz gyorsítótárazása
-          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+          items:
+            - name: Beállítás adatbázishoz
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: Beállítás munkamenethez
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Táblák
           items:
             - name: Áttekintés

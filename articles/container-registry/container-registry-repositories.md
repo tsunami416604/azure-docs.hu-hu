@@ -41,7 +41,7 @@ Adattár megtekintése:
 
 1. Jelentkezzen be az [Azure Portalra][portal]
 1. Válassza ki azt a **Azure Container Registry** , amelyhez az Nginx-rendszerképet leküldte
-1. Válassza **** ki a Tárházak elemet a beállításjegyzékben található lemezképeket tartalmazó adattárak listájának megtekintéséhez.
+1. Válassza ki a **Tárházak** elemet a beállításjegyzékben található lemezképeket tartalmazó adattárak listájának megtekintéséhez.
 1. Válasszon ki egy tárházat az adott tárházban található képcímkék megtekintéséhez.
 
 Ha például leküldte az Nginx-rendszerképet a leküldéses [és](container-registry-get-started-docker-cli.md)lekéréses rendszerképben, a következőhöz hasonlónak kell megjelennie:

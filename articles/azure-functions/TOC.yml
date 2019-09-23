@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Létrehozás és üzembe helyezés az Azure Pipelines használatával
           href: functions-how-to-azure-devops.md
+        - name: Létrehozás és üzembe helyezés GitHub-műveletekkel
+          href: functions-how-to-github-actions.md
         - name: Üzembe helyezés zip-fájlokkal
           href: deployment-zip-push.md
         - name: Futtatás csomagból

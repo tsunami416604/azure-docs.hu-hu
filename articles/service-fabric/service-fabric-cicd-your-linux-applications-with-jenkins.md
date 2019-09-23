@@ -124,7 +124,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
    sfctl cluster select --endpoint https://PublicIPorFQDN:19080  --pem [Pem] --no-verify # cluster connect command
    bash Scripts/install.sh
    ```
-   Az előző parancs PEM formátumban veszi át a tanúsítványt. Ha a tanúsítvány PFX formátumú, a következő parancs használatával alakíthatja át. Ha a PFX-fájl jelszava nem védett, adja **** meg a passin `-passin pass:`paramétert.
+   Az előző parancs PEM formátumban veszi át a tanúsítványt. Ha a tanúsítvány PFX formátumú, a következő parancs használatával alakíthatja át. Ha a PFX-fájl jelszava nem védett, adja meg a **passin** `-passin pass:`paramétert.
    ```sh
    openssl pkcs12 -in cert.pfx -out cert.pem -nodes -passin pass:MyPassword1234!
    ``` 

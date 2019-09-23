@@ -1,6 +1,6 @@
 ---
-title: A vállalati rendszergazdai szerepkörök megismerése az Azure-ban | Microsoft Docs
-description: Ismerje meg az Azure vállalati rendszergazdai szerepköreit.
+title: A vállalati rendszergazdai szerepkörök az Azure-ban | Microsoft Docs
+description: Megismerheti a vállalati rendszergazdai szerepköröket az Azure-ban.
 services: billing
 documentationcenter: ''
 author: adpick
@@ -14,95 +14,95 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70034528"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Az Azure Nagyvállalati Szerződés felügyeleti szerepköreinek megismerése az Azure-ban
+# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Az Azure Nagyvállalati Szerződés rendszergazdai szerepkörei az Azure-ban
 
-A szervezet használatának és a költségeknek a kezeléséhez az Azure-ügyfelek egy Nagyvállalati Szerződés (EA) segítségével öt különböző felügyeleti szerepkört rendelhetnek:
+A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállalati Szerződéssel (EA) rendelkező Azure-ügyfelek öt különféle rendszergazdai szerepkört rendelhetnek felhasználóikhoz:
 
 - Vállalati rendszergazda
-- Vállalati rendszergazda (csak olvasható)
-- Részleg adminisztrátora
-- Részleg rendszergazdája (csak olvasható)
+- Vállalati rendszergazda (csak olvasási)
+- Részlegszintű rendszergazda
+- Részlegszintű rendszergazda (csak olvasási)
 - Fióktulajdonos
  
-Ezek a szerepkörök az Azure nagyvállalati szerződések kezelésére vonatkoznak, és a beépített szerepkörökön kívül az Azure-nak is meg kell határoznia az erőforrásokhoz való hozzáférést. További információ: [beépített szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md).
+Ezek a szerepkörök kifejezetten az Azure Nagyvállalati Szerződések kezelésére szolgálnak, és kiegészítik az Azure beépített szerepköreit, amelyek az erőforrásokhoz való hozzáférést szabályozzák. További információkért lásd az [Azure-erőforrások beépített szerepköreit](../role-based-access-control/built-in-roles.md).
 
-A következő szakaszok ismertetik az egyes szerepkörök korlátozásait és képességeit.
+A következő szakaszok az egyes szerepkörök korlátait és képességeit mutatják be.
 
-## <a name="user-limit-for-admin-roles"></a>Felhasználói korlát rendszergazdai szerepkörökhöz
+## <a name="user-limit-for-admin-roles"></a>A rendszergazdai szerepkörök felhasználói korlátai
 
-|Role| Felhasználói korlát|
+|Szerepkör| Felhasználói korlát|
 |---|---|
 |Vállalati rendszergazda|Korlátlan|
-|Vállalati rendszergazda (csak olvasható)|Korlátlan|
-|Részleg adminisztrátora|Korlátlan|
-|Részleg rendszergazdája (csak olvasható)|Korlátlan|
-|Fióktulajdonos|1 fiók 1<sup></sup>|
+|Vállalati rendszergazda (csak olvasási)|Korlátlan|
+|Részlegszintű rendszergazda|Korlátlan|
+|Részlegszintű rendszergazda (csak olvasási)|Korlátlan|
+|Fióktulajdonos|Fiókonként 1<sup>1</sup>|
 
-<sup>1</sup> minden fiókhoz egyedi Microsoft-fiók vagy munkahelyi vagy iskolai fiók szükséges.
+<sup>1</sup>Mindegyik fiókhoz szükség van egyedi Microsoft-fiókra, illetve munkahelyi vagy iskolai fiókra.
 
-## <a name="organization-structure-and-permissions-by-role"></a>Szervezeti felépítés és engedélyek szerepkör szerint
+## <a name="organization-structure-and-permissions-by-role"></a>Szervezeti felépítés és engedélyek szerepkörönként
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasható)|Részleg adminisztrátora|Részleg rendszergazdája (csak olvasható)|Fióktulajdonos|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási)|Fióktulajdonos|
 |---|---|---|---|---|---|
 |Vállalati rendszergazdák megtekintése|✔|✔|✘|✘|✘|
 |Vállalati rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✘|✘|
-|Értesítési névjegyek<sup>2</sup> megtekintése |✔|✔|✘|✘|✘|
-|Értesítési névjegyek hozzáadása vagy eltávolítása<sup>2</sup> |✔|✘|✘|✘|✘|
-|Részlegek létrehozása és kezelése |✔|✘|✘|✘|✘|
-|Részleg rendszergazdáinak megtekintése|✔|✔|✔|✔|✘|
-|Részleg rendszergazdáinak hozzáadása vagy eltávolítása|✔|✘|✔|✘|✘|
-|Fiókok megtekintése a beléptetés során |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|Fiókok hozzáadása a regisztrációhoz és a fiók tulajdonosának módosítása|✔|✘|✔<sup>3</sup>|✘|✘|
+|Értesítési kapcsolattartók megtekintése<sup>2</sup> |✔|✔|✘|✘|✘|
+|Értesítési kapcsolattartók hozzáadása vagy eltávolítása<sup>2</sup> |✔|✘|✘|✘|✘|
+|Részlegek létrehozására és kezelésére |✔|✘|✘|✘|✘|
+|Részlegszintű rendszergazdák megtekintése|✔|✔|✔|✔|✘|
+|Részlegszintű rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✔|✘|✘|
+|A regisztrációhoz tartozó fiókok megtekintése |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
+|Fiókok hozzáadása a regisztrációhoz és a fióktulajdonos módosítása|✔|✘|✔<sup>3</sup>|✘|✘|
 |Előfizetések és előfizetési engedélyek létrehozása és kezelése|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> az értesítési kapcsolattartók e-mailes kommunikációt küldenek az Azure nagyvállalati Szerződésról.
-- <sup>3</sup> a feladat a részleg fiókjaira korlátozódik.
+- <sup>2</sup>A kapcsolattartók kapják meg az Azure Nagyvállalati Szerződésre vonatkozó tájékoztató e-maileket.
+- <sup>3</sup>A feladat a részlegen belüli fiókokra korlátozódik.
 
 
-## <a name="usage-and-costs-access-by-role"></a>A használat és a költségek hozzáférése szerepkör szerint
+## <a name="usage-and-costs-access-by-role"></a>Szerepkörök szerint hozzáférés a használati adatokhoz és a költségekhez
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasható)|Részleg adminisztrátora|Részleg rendszergazdája (csak olvasható) |Fióktulajdonos|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási) |Fióktulajdonos|
 |---|---|---|---|---|---|
-|Egyenleg megtekintése, beleértve a pénzügyi kötelezettségvállalást|✔|✔|✘|✘|✘|
-|Részleg költségkeretének megtekintése|✔|✔|✘|✘|✘|
-|Részleg költségkeretének beállítása|✔|✘|✘|✘|✘|
-|Szervezet EA árlista megtekintése|✔|✔|✘|✘|✘|
-|Használat és a Cost részleteinek megtekintése|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
-|Erőforrások kezelése a Azure Portalban|✘|✘|✘|✘|✔|
+|Kreditegyenleg megtekintése, beleértve a pénzügyi keretet|✔|✔|✘|✘|✘|
+|Részleg költségkvótáinak megtekintése|✔|✔|✘|✘|✘|
+|Részleg költségkvótáinak beállítása|✔|✘|✘|✘|✘|
+|Szervezet EA-árlistájának megtekintése|✔|✔|✘|✘|✘|
+|Használati adatok és költségek megtekintése|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|Erőforrások kezelése az Azure Portalon|✘|✘|✘|✘|✔|
 
-- a <sup>4</sup> megköveteli, hogy a vállalati rendszergazda engedélyezze a **da View díjakra** vonatkozó szabályzatot az Enterprise Portalon. A részleg rendszergazdája Ekkor megtekintheti a részleg költségeit.
-- <sup>5</sup> megköveteli, hogy a vállalati rendszergazda engedélyezze az **Ao View díjakra** vonatkozó szabályzatot az Enterprise Portalon. A fiók tulajdonosa Ekkor megtekintheti a fiókhoz tartozó költségadatok részleteit.
+- <sup>4</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a részlegszintű rendszergazda számára** az Enterprise Portalon. A részlegszintű rendszergazda ezután megtekintheti a részleg költségeire vonatkozó adatokat.
+- <sup>5</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a fióktulajdonos számára** az Enterprise Portalon. A fióktulajdonos ezután megtekintheti a fiók költségeire vonatkozó adatokat.
 
 
-## <a name="pricing-in-azure-portal"></a>Díjszabás a Azure Portal
+## <a name="pricing-in-azure-portal"></a>Az Azure Portal díjszabása
 
-A felügyeleti szerepkörtől függően különböző díjszabást láthat a Azure Portal, valamint azt, hogy a vállalati rendszergazda hogyan adja meg a megtekintési szabályzatokat. Az Enterprise Portal két olyan szabályzata, amely hatással van a Azure Portalban látható díjszabásra:
+Azt, hogy az Azure Portalon milyen díjszabás jelenik meg befolyásolja az Ön rendszergazdai szerepköre, valamint az, hogy a vállalati rendszergazda milyen díjtétel-megtekintési szabályzatokat állított be. Az Enterprise Portalon beállítható két szabályzat, amely befolyásolja az Azure Portalon megjelenő díjat:
 
-- DA megtekintési díjak
-- AO megtekintési díjak
+- Díjtételek megtekintése a részlegszintű rendszergazda számára
+- Díjtételek megtekintése a fióktulajdonos számára
 
-A szabályzatok beállításával kapcsolatos további információkért lásd: a [Számlázási adatokhoz való hozzáférés kezelése az Azure](billing-manage-access.md)-ban.
+A szabályzatok beállításával kapcsolatban tekintse meg [az Azure-beli számlázási információkhoz való hozzáférés kezelését](billing-manage-access.md) ismertető témakört.
 
-Az alábbi táblázat a Nagyvállalati Szerződés rendszergazdai szerepkörök, a View charges Policy, a szerepköralapú hozzáférés-vezérlés (RBAC) szerepkört mutatja be a Azure Portal, valamint a Azure Portalban látható díjszabást. A vállalati rendszergazda mindig a szervezet nagyvállalati szerződésének díjszabása alapján látja el a használati adatokat. A részleg rendszergazdája és a fiók tulajdonosa azonban a díjszabási szabályzat és a RBAC szerepkör alapján eltérő árképzési nézeteket lát. Az alábbi táblázatban felsorolt részleg-rendszergazdai szerepkör a részleg és a Department admin (csak olvasható) szerepkörökre vonatkozik.
+A következő táblázat bemutatja a Nagyvállalati Szerződés rendszergazdai szerepkörei, a beállított díjtétel-megtekintési szabályzat, az Azure Portal szerepköralapú hozzáférés-vezérlési (RBAC-) szerepköre, valamint az Azure Portalon megjelenő díjak közötti összefüggéseket. A vállalati rendszergazda mindig a szervezet EA-díjszabása szerinti használati adatokat látja. A részlegszintű rendszergazdák és a fióktulajdonosok ugyanakkor eltérő díjakat láthatnak a díjtétel-megtekintési szabályzattól és a saját RBAC-szerepkörüktől függően. A következő táblázatban szereplő részlegszintű rendszergazda szerepkör magában foglalja a Részlegszintű rendszergazda és a Részlegszintű rendszergazda (csak olvasási) szerepkört is.
 
-|Rendszergazdai szerepkör Nagyvállalati Szerződés|Szerepkörre vonatkozó díjak szabályzatának megtekintése|RBAC szerepkör|Díjszabási nézet|
+|Nagyvállalati Szerződés rendszergazdai szerepköre|A szerepkörhöz beállított díjtétel-megtekintési szabályzat|RBAC-szerepkör|Megjelenő díjszabás|
 |---|---|---|---|
-|Fiók tulajdonosának vagy részlegének rendszergazdája|✔ Engedélyezve|Tulajdonos|A szervezet EA díjszabása|
-|Fiók tulajdonosának vagy részlegének rendszergazdája|✘ Letiltva|Tulajdonos|Kiskereskedelmi díjszabás|
-|Fiók tulajdonosának vagy részlegének rendszergazdája|✔ Engedélyezve |nincs|Nincs díjszabás|
-|Fiók tulajdonosának vagy részlegének rendszergazdája|✘ Letiltva |nincs|Nincs díjszabás|
-|Nincsenek|Nem alkalmazható |Tulajdonos|Kiskereskedelmi díjszabás|
+|Fióktulajdonos VAGY részlegszintű rendszergazda|✔ Engedélyezve|Tulajdonos|Szervezet EA-díjszabása|
+|Fióktulajdonos VAGY részlegszintű rendszergazda|✘ Letiltva|Tulajdonos|Kiskereskedelmi díjszabás|
+|Fióktulajdonos VAGY részlegszintű rendszergazda|✔ Engedélyezve |Nincs|Nincs díjszabás|
+|Fióktulajdonos VAGY részlegszintű rendszergazda|✘ Letiltva |Nincs|Nincs díjszabás|
+|None|Nem alkalmazható |Tulajdonos|Kiskereskedelmi díjszabás|
 
-Megadhatja a vállalati rendszergazda szerepkört, és megtekintheti a díjak szabályzatait az Enterprise Portalon. A RBAC szerepkört a Azure Portal lehet frissíteni. További információ: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az RBAC-szerepkört az Azure Portalon lehet frissíteni. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Számlázási adatokat az Azure-hoz való hozzáférés kezelése](billing-manage-access.md)
+- [Az Azure-beli számlázási információkhoz való hozzáférés kezelése](billing-manage-access.md)
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 - [Beépített szerepkörök Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md)

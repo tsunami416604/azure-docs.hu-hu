@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzemb
 
 1. Jelentkezzen be az [](https://portal.azure.com)Azure Portalra.
 2. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
-3. Adja ** meg az előfizetéseket a **szűrő** mezőben. Ha **** az előfizetések megjelennek a keresési eredmények között, válassza ki.
+3. Adja  meg az *előfizetéseket* a **szűrő** mezőben. Ha az **előfizetések** megjelennek a keresési eredmények között, válassza ki.
 4. Válassza ki annak az előfizetésnek a nevét, amelyre vonatkozóan meg szeretné tekinteni a használati adatokat.
 5. A **Beállítások**területen válassza a **használat + kvóta**elemet.
 6. A következő lehetőségek közül választhat:

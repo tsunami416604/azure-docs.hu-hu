@@ -1,7 +1,7 @@
 ---
 title: Letiltott Azure-előfizetés újraaktiválása
-description: Leírja, hogy mikor lehet letiltani az Azure-előfizetést, és hogyan lehet újraaktiválni.
-keywords: Azure-előfizetés letiltva
+description: Leírja, miért lehet letiltva egy Azure-előfizetése, és hogyan aktiválhatja újra.
+keywords: letiltott Azure-előfizetés
 author: bandersmsft
 manager: amberb
 tags: billing
@@ -13,53 +13,53 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 484a7344185efa17731f5c35c7c4dec109608b67
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68933082"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Letiltott Azure-előfizetés újraaktiválása
 
-Az Azure-előfizetése letiltható, mert a kredit lejárt, elérte a költségkeretet, lejárt a számlája, a bankkártya korlátja, illetve azért, mert a fiók rendszergazdája megszakította az előfizetést. Tekintse meg, hogy milyen probléma vonatkozik Önre, és kövesse a cikk lépéseit az előfizetés újraaktiválásának megkezdéséhez.
+Előfordulhat, hogy egy Azure-előfizetése le lesz tiltva, ha lejárt a hitelkártyája, elérte a költségkeretét, van egy lejárt esedékességű számlája, elérte a hitelkártyakeretét, vagy az előfizetést a fiókadminisztrátor törölte. Derítse ki, melyik eset vonatkozik Önre, és kövesse a cikk lépéseit, melyekkel újraaktiválhatja előfizetését.
 
 ## <a name="your-credit-is-expired"></a>A kredit lejárt
 
-Ha regisztrál egy ingyenes Azure-fiókra, ingyenes próbaverziós előfizetést kap, amely az Azure-kreditek 30 napos és 12 hónapig ingyenesen használható $200-es kiadását teszi lehetővé. Az Azure 30 nap elteltével letiltja az előfizetését. Az előfizetése le van tiltva, így biztosítva, hogy az előfizetés során felmerülő kreditek és ingyenes szolgáltatások esetében ne kelljen véletlenül felszámolni a használati díjakat. Az Azure-szolgáltatások használatának folytatásához frissítenie kell [az](billing-upgrade-azure-subscription.md)előfizetését. A frissítés után az előfizetés 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Az ingyenes szolgáltatásokon és a mennyiségeken felül csak a használatért kell fizetnie.
+Amikor regisztrál egy ingyenes Azure-fiókot, kap egy ingyenes próba-előfizetést, amelyhez 200 dollár értékű, 30 napig felhasználható Azure-kredit jár, valamint 12 hónapos ingyenes hozzáférés a szolgáltatásokhoz. A 30 nap letelte után az Azure letiltja az előfizetést. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek és ingyenes szolgáltatások keretein túlmenően. Az Azure-szolgáltatások további használatához [frissítenie kell az előfizetést](billing-upgrade-azure-subscription.md). A frissítést követően 12 hónapig továbbra is hozzáférhet az ingyenes szolgáltatásokhoz. Csak az ingyenes szolgáltatásokon és mennyiségeken felüli használatért kell fizetnie.
 
-## <a name="you-reached-your-spending-limit"></a>Elérte a költségkeretet
+## <a name="you-reached-your-spending-limit"></a>Elérte a költségkeretét
 
-Az Azure-előfizetések, mint például az ingyenes próbaverzió és a Visual Studio Enterprise, a kreditek korlátozásával rendelkeznek. Ez azt jelenti, hogy a szolgáltatások csak a benne foglalt kreditekhez használhatók fel. Ha a használat eléri a költségkeretet, az Azure letiltja az előfizetést a számlázási időszak hátralévő részében. Az előfizetése le van tiltva, hogy megvédje az előfizetésében foglalt Kredittel járó, véletlenül felmerülő használati díjakat. A költségkeret eltávolításához lásd: [a költségkeret eltávolítása a Account Center](billing-spending-limit.md#remove)szolgáltatásban.
+A kreditekkel rendelkező Azure-előfizetések, például az ingyenes próba és a Visual Studio Enterprise költségkeretekkel rendelkeznek. Ez azt jelenti, hogy a szolgáltatásokat csak az előfizetésben foglalt kreditek erejéig használhatja. Ha a használat eléri a költségkeretet, az Azure letiltja az előfizetést az adott számlázási időszak hátralévő részére. Az előfizetés letiltására azért van szükség, hogy Ön ne halmozzon fel véletlenül használati díjakat az előfizetéshez járó kreditek keretén túlmenően. A költségkeret eltávolítása: [Költségkeret eltávolítása a Fiókközpontban](billing-spending-limit.md#remove).
 
 > [!NOTE]
-> Ha ingyenes próbaverziós előfizetéssel rendelkezik, és eltávolítja a költségkeretet, az előfizetés az ingyenes próbaverzió végén az utólagos elszámolású díjszabású egyéni előfizetésre alakítja át a költségeket. Az előfizetés létrehozása után 30 nappal továbbra is megmaradnak a fennmaradó kreditek. Az ingyenes szolgáltatásokhoz emellett további 12 hónapig lesz hozzáférése.
+> Ha ingyenes próba-előfizetéssel rendelkezik, és eltávolítja a költségkeretet, az előfizetés az ingyenes próbaidőszak végeztével átalakul egyéni, használatalapú fizetéses előfizetéssé. Az előfizetés létrehozása után a fennmaradó kreditek még 30 teljes napig megmaradnak. Az ingyenes szolgáltatásokhoz emellett további 12 hónapig lesz hozzáférése.
 
-Az Azure számlázási tevékenységének figyelése és kezelése: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](billing-getting-started.md).
+Az Azure számlázási tevékenységeinek monitorozása és kezelése: [Az Azure-számlázással és -költségkezeléssel kapcsolatos váratlan költségek megelőzése](billing-getting-started.md).
 
 
-## <a name="your-bill-is-past-due"></a>A számla lejárt
+## <a name="your-bill-is-past-due"></a>Lejárt a számla esedékessége
 
-A késedelmes egyenleg megoldásához tekintse [meg az Azure-előfizetés lejárt esedékes egyenlegének feloldása az Azure-beli e-mailek lekérése után](billing-azure-subscription-past-due-balance.md)című cikk
+A lejárt esedékességű tartozások kiegyenlítése: [Az Azure-előfizetés lejárt esedékességű tartozásának kezelése az Azure-tól kapott e-mail után](billing-azure-subscription-past-due-balance.md).
 
-## <a name="the-bill-exceeds-your-credit-card-limit"></a>A számla meghaladja a bankkártya korlátját
+## <a name="the-bill-exceeds-your-credit-card-limit"></a>A számla összege meghaladja a hitelkártyakeretét
 
-A probléma megoldásához [váltson át egy másik hitelkártyára](billing-how-to-change-credit-card.md). Ha pedig vállalatot képvisel, átválthat a [számlás fizetésre](billing-how-to-pay-by-invoice.md).
+A probléma megoldásához [váltson át egy másik hitelkártyára](billing-how-to-change-credit-card.md). Vagy ha egy vállalkozást képvisel, [átválthat számlás fizetésre](billing-how-to-pay-by-invoice.md).
 
-## <a name="the-subscription-was-accidentally-canceled"></a>Az előfizetés véletlenül meg lett szakítva
+## <a name="the-subscription-was-accidentally-canceled"></a>Az előfizetés véletlenül törölve lett
 
-Ha Ön a fiók rendszergazdája, és véletlenül megszakította az egyes előfizetéseket utólagos elszámolású díjszabással, akkor újra aktiválhatja azt a Account Centerben.
+Ha Ön a fiókadminisztrátor, és véletlenül lemond egy egyéni, használatalapú fizetéses előfizetés, a Fiókközpontban újraaktiválhatja azt.
 
-1. Jelentkezzen be a [fiók](https://account.windowsazure.com/Subscriptions)központjába.
-1. Válassza ki a megszakított előfizetést.
-1. Kattintsonaz újraaktiválás gombra.
+1. Jelentkezzen be a [Fiókközpontba](https://account.windowsazure.com/Subscriptions).
+1. Válassza ki a lemondott előfizetést.
+1. Kattintson az **Újraaktiválás** lehetőségre.
 
-    ![A jobb oldali ablaktáblán található hivatkozások újraaktiválását bemutató képernyőkép](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+    ![Képernyőkép a jobb oldali panelen látható újraaktiválási hivatkozásokról](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
 
-Egyéb előfizetési típusok esetén [forduljon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) az ügyfélszolgálathoz, és kérje újra az előfizetés újraaktiválását.
+Más típusú előfizetések újraaktiválásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [figyelheti és kezelheti az Azure számlázási tevékenységeit](billing-getting-started.md).
+- Ismerje meg, hogyan [monitorozhatja és kezelheti az Azure számlázási tevékenységeit](billing-getting-started.md).

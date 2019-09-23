@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Dokumentumok lekérdezése
       items:
-        - name: Alapszintű lekérdezés létrehozása
+        - name: Lekérdezéstípusok és összeállítás
           href: search-query-overview.md
-        - name: Keresési ablak (portál)
+        - name: Egyszerű lekérdezés létrehozása
+          href: search-query-simple-examples.md
+        - name: Teljes Lucene-szintaxis használata
+          href: search-query-lucene-examples.md
+        - name: Keresési ablak (portál) használata
           href: search-explorer.md
         - name: Egyszerű lekérdezési szintaxis
           href: query-simple-syntax.md
         - name: Teljes Lucene lekérdezési szintaxis
           href: query-lucene-syntax.md
-        - name: Példák (egyszerű szintaxis)
-          href: search-query-simple-examples.md
-        - name: Példák (teljes Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (előzetes verzió)
           href: search-more-like-this.md
     - name: Szűrők alkalmazása

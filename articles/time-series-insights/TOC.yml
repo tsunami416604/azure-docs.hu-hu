@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Az Azure Time Series Insights előzetes verziója
       items:
-        - name: Oktatóanyag az Azure Time Series Insights előzetes verziójához
+        - name: Előzetes verziójú környezet beállítása
           href: time-series-insights-update-create-environment.md
 - name: Alapelvek
   items:

@@ -1,6 +1,6 @@
 ---
-title: Azure-foglalások automatikus megújítása
-description: Ismerje meg, hogyan újíthatja meg automatikusan az Azure-foglalásokat a foglalási kedvezmények beszerzésének folytatásához.
+title: Az Azure-foglalások automatikus megújítása
+description: Ismerje meg, hogyan újíthatja meg automatikusan az Azure-foglalásokat, hogy továbbra is jogosult legyen a foglalási kedvezményekre.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,87 +9,87 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: banders
 ms.openlocfilehash: c19c6af68bcde753ec9bed990e08aa81eabdd37d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68679457"
 ---
-# <a name="automatically-renew-reservations"></a>Foglalások automatikus megújítása
+# <a name="automatically-renew-reservations"></a>A foglalások automatikus megújítása
 
-A foglalások megújításával automatikusan megvásárolhatja a cserét, ha egy meglévő foglalás lejár. Az automatikus megújítás egyszerű módszert kínál a foglalási kedvezmények folytatására. Emellett a foglalás lejáratának alapos figyelését is elvégezheti. Az automatikus megújítás miatt a megtakarítási előnyök elvesztését nem kell manuálisan megújítani. Alapértelmezés szerint a megújítási beállítás ki van kapcsolva. Engedélyezheti vagy letilthatja a megújítási beállítást bármikor, a meglévő foglalás lejáratával.
+A foglalások megújításával automatikusan megvásárolhatja a cserét, ha egy meglévő foglalása lejár. Az automatikus megújítás egyszerű módja a foglalási kedvezmények további igénybevételének. Ezenkívül nem kell részletesen monitoroznia, hogy mikor jár egy foglalása. Az automatikus megújítással elkerülheti a megtakarítási előnyök elvesztését, ami a manuális megújítással járna. A megújítási beállítás alapértelmezés szerint ki van kapcsolva. A megújítási beállítást bármikor engedélyezheti vagy letilthatja egészen a meglévő foglalás lejáratáig.
 
-A foglalás megújítása egy új foglalást hoz létre, ha a meglévő foglalás lejár. Nem terjeszti ki a meglévő foglalás időtartamát.
+A foglalás megújítása a meglévő foglalás lejártakor egy új foglalást hoz létre. Nem a meglévő foglalás időtartamát hosszabbítja meg.
 
-Az automatikus megújítás bármikor letiltható. A megújítási díj a meglévő foglalás lejárta előtt 30 nappal elérhető. Ha a megújítást több mint 30 nappal a foglalás lejárata előtt engedélyezi, a megújítást elküldő e-mailt a lejárat előtt 30 nappal megújítjuk. A foglalási ár változhat a megújítási ár és a megújítási idő zárolása között. Ha igen, a megújítási költség a két költség alacsonyabb. Módosíthatja a foglalások mennyiségét. Ha így tesz, a megújítást a rendszer a mennyiségi változás időpontjában beállított piaci árak használatára frissíti.
+Az automatikus megújítást bármikor engedélyezheti. A megújítási díj a meglévő foglalás lejárta előtt 30 nappal válik elérhetővé. Ha a megújítást több mint 30 nappal a foglalás lejárata előtt engedélyezi, a lejárat előtt 30 nappal egy e-mailt küldünk Önnek a megújítási költségek részleteiről. A foglalási ár változhat a megújítási ár és a megújítási idő zárolása között eltelt idő alatt. Ha ez történik, a megújítási költség az alacsonyabb érték lesz a két költség közül. Módosíthatja a foglalási mennyiséget. Ha így tesz, a megújított előfizetés úgy lesz frissítve, hogy a mennyiségi változás időpontjában beállított piaci árakat használja.
 
-Nincs szükség a megújításra, és a meglévő foglalás lejárta előtt bármikor letilthatja a megújítást.
+A megújítás nem kötelező, és a meglévő előfizetés lejárta előtt bármikor dönthet úgy, hogy nem szeretné megújítani előfizetését.
 
 ## <a name="set-up-renewal"></a>Megújítás beállítása
 
-Ugrás Azure Portal > **foglalások**.
+Lépjen az Azure Portal > **Reservations** menüponthoz.
 
 1. Válassza ki a foglalást.
-2. Kattintson a **megújítás**elemre.
-3. **A lejárat után válassza az új foglalás automatikus vásárlása**lehetőséget.  
+2. Kattintson a **Megújítás** lehetőségre.
+3. Válassza az **Új foglalás automatikus megvásárlása lejáratkor** lehetőséget.  
   ![A foglalás megújítását bemutató példa](./media/billing-reservation-renew/reservation-renewal.png)
 
-## <a name="if-you-dont-renew"></a>Ha nem újítja meg
+## <a name="if-you-dont-renew"></a>Ha nem újít meg
 
-A szolgáltatások általában továbbra is futnak. Az utólagos elszámolású díjszabás díját a foglalás lejárta után számítjuk fel.
+Szolgáltatásai tovább működnek a megszokott módon. A foglalás lejárta után a díjak felszámítása a használatalapú fizetéses díjszabás szerint történik.
 
 ## <a name="required-renewal-permissions"></a>Szükséges megújítási engedélyek
 
-A foglalás megújításához a következő feltételek szükségesek:
+A következő feltételek szükségesek a foglalás megújításához:
 
 - A meglévő foglalás tulajdonosának kell lennie.
-- Az előfizetés tulajdonosának kell lennie, ha a foglalás egy adott előfizetéshez vagy erőforráscsoporthoz tartozik.
-- Ha megosztott hatókörrel rendelkezik, az előfizetés tulajdonosának kell lennie.
+- Az előfizetés tulajdonosának kell lenni, ha a foglalás hatóköre egyetlen előfizetésre vagy erőforráscsoportra terjed ki.
+- Közös hatókör esetén az előfizetés tulajdonosának kell lennie.
 
 ## <a name="default-renewal-settings"></a>Alapértelmezett megújítási beállítások
 
-Alapértelmezés szerint a megújítás a lejáró foglalásból örökli az összes tulajdonságot. A foglalás megújítása esetén az SKU, a régió, a Scope, a számlázási előfizetés, a kifejezés és a mennyiség szerepel.
+Alapértelmezés szerint a megújított foglalás a lejáró foglalás összes tulajdonságát örökli. A megújított foglalás azonos termékváltozattal, régióval, hatókörrel, számlázási előfizetéssel, időtartammal és mennyiséggel fog rendelkezni.
 
-Azonban a megújítási foglalások vásárlási mennyiségét frissítheti a megtakarítások optimalizálása érdekében.
+A megtakarítások optimalizálása érdekében azonban frissítheti a megújított foglalásvásárlási mennyiségét.
 
-## <a name="when-the-new-reservation-is-purchased"></a>Az új foglalás megvásárlásakor
+## <a name="when-the-new-reservation-is-purchased"></a>Mikor lesz az új foglalás megvásárolva?
 
-Ha a meglévő foglalás lejár, új foglalást kell megvásárolnia. Megpróbáljuk elkerülni a két foglalás közötti késleltetést. A folytonosság biztosítja, hogy a költségek kiszámíthatóak, és továbbra is kedvezményt kap.
+Az új foglalás megvásárlása akkor történik, amikor a meglévő foglalás lejár. Megpróbáljuk elkerülni a két foglalás közötti késést. A folytonosság biztosítja, hogy költségei kiszámíthatóak legyenek, és továbbra is megkapja a kedvezményeket.
 
-## <a name="changing-parent-reservation-after-setting-renewal"></a>Szülői foglalás módosítása a megújítás beállítása után
+## <a name="changing-parent-reservation-after-setting-renewal"></a>Szülő foglalás módosítása a megújítás beállítása után
 
-Ha a következő módosítások valamelyikét hajtja végre a lejáró foglalásban, a foglalás megújítása megszakad:
+Ha a lejáró foglaláson a következő módosítások bármelyikét végrehajtja, a foglalás megújítása vissza lesz vonva:
 
-- Megosztott
+- Felosztás
 - Egyesítés
-- A foglalás áthelyezése egyik fiókból a másikba
-- A foglalás átadása egy webdirect-előfizetésből egy nagyvállalati szerződés (EA) előfizetésre vagy bármely más vásárlási módszerre
+- A foglalás másik fióknak való átadása
+- A foglalás átadása egy WebDirect-előfizetésből egy Nagyvállalati Szerződéssel (EA) rendelkező előfizetésre vagy bármely más vásárlási módszerre
 - A regisztráció megújítása
 
-Az új foglalás a Megújításkor örökli a hatókör és a példány méretének rugalmassági beállítását a lejárati foglalás során.
+A megújításkor az új foglalás örökli a lejáró foglalás hatókörét és a példány méretrugalmassági beállítását.
 
 ## <a name="new-reservation-permissions"></a>Új foglalási engedélyek
 
-Az Azure a lejárati foglalásból az új foglalásba másolja az engedélyeket. Emellett a foglalási vásárláshoz tartozó előfizetés-fiók rendszergazdája hozzáférhet az új foglaláshoz.
+Az Azure a lejáró foglalás engedélyeit átmásolja az új foglalásba. Ezenkívül, a foglalásvásárlási előfizetés fiókadminisztrátora hozzáfér az új foglaláshoz.
 
 ## <a name="potential-renewal-problems"></a>Lehetséges megújítási problémák
 
-Az Azure nem dolgozza fel a megújítást, ha:
+Elképzelhető, hogy az Azure nem dolgozza fel a műveletet, ha:
 
-- A fizetés nem gyűjthető
-- Rendszerhiba történik A megújítás során
-- A lejáró SKU nem aktív a megújítás során
-- Az EA-t egy másik nagyvállalati szerződéssel újítják meg
+- A fizetés nem szedhető be
+- A megújítás során rendszerhiba lép fel
+- A lejáró termékváltozat a megújítás során nem aktív
+- A Nagyvállalati Szerződést egy másik Nagyvállalati Szerződéssel újítják meg
 
-E-mailben értesítést kap, ha az előző feltételek bármelyike bekövetkezik, és a megújítás inaktiválva van.
+E-mailben értesítést kap, ha az előző feltételek bármelyike bekövetkezik, és a megújítás inaktiválódik.
 
 ## <a name="renewal-notification"></a>Megújítási értesítés
 
 Az e-maileket a rendszer a vásárlási módszertől függően különböző személyeknek küldi el:
 
-- Nagyvállalati szerződéssel rendelkező ügyfelek – a rendszer elküldi az e-maileket az EA portálon beállított értesítési partnereknek.
-- Egyéni előfizetéssel rendelkező ügyfelek – utólagos elszámolású díjszabás – e-maileket a rendszer a fiók rendszergazdájaként beállított felhasználóknak küldi el.
-- Felhőalapú megoldás-szolgáltatói ügyfelek – a rendszer e-maileket küld a partner értesítési kapcsolattartójának.
+- Nagyvállalati Szerződéssel rendelkező ügyfelek – Az e-maileket a rendszer az EA Portalon beállított értesítési kapcsolattartóknak küldi el.
+- Egyéni előfizetéssel rendelkező, használatalapú fizetéses ügyfelek – Az e-maileket a rendszer a fiókadminisztrátorként beállított felhasználóknak küldi.
+- Felhőszolgáltató-ügyfelek – Az e-maileket a rendszer a partner értesítési kapcsolattartójának küldi.
 
 ## <a name="next-steps"></a>További lépések
-- További információ a Azure Reservationsről: [Mi a Azure Reservations?](billing-save-compute-costs-reservations.md)
+- Ha többet szeretne tudni az Azure Reservationsről, tekintse meg a [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md) szakaszt.

@@ -1,6 +1,6 @@
 ---
-title: Azure Reservations kezelése
-description: Ismerje meg, hogyan kezelheti Azure Reservationseit.
+title: Az Azure Reservations kezelése
+description: Ismerje meg, hogyan kezelhető az Azure Reservations.
 ms.service: billing
 author: bandersmsft
 manager: yashesvi
@@ -11,176 +11,176 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: b161fc7cd4faa75dd87613c297c12f1edd862510
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68840043"
 ---
-# <a name="manage-reservations-for-azure-resources"></a>Azure-erőforrások foglalásának kezelése
+# <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
-Az Azure-foglalás megvásárlása után előfordulhat, hogy a foglalást egy másik előfizetésre kell alkalmaznia, módosítania kell, hogy ki kezelheti a foglalást, vagy módosíthatja a foglalás hatókörét. A foglalásokat két foglalásra is feloszthatja, hogy egy másik előfizetésbe felvásárolt példányokat alkalmazzon.
+Egy Azure-foglalás megvásárlása után előfordulhat, hogy a foglalást egy másik előfizetésre szeretné alkalmazni, módosítani szeretné, ki kezelheti a foglalást, vagy módosítaná a foglalás hatókörét. Egy foglalást ketté is oszthat annak érdekében, hogy egy másik előfizetéshez vásárolt példányokat alkalmazhasson.
 
-Ha Azure Reserved Virtual Machine Instances vásárolta, akkor módosíthatja a foglalás optimalizálási beállítását. A foglalási kedvezmény ugyanarra a adatsorozatú virtuális gépekre vonatkozhat, vagy egy adott virtuálisgép-mérethez fenntarthatja az adatközpont kapacitását is. Emellett érdemes a fenntartásokat optimalizálni, hogy azok teljes mértékben használatban legyenek.
+Ha Azure Reserved Virtual Machine Instances-példányokat vásárolt, módosíthatja a foglalás optimalizálási beállítását. A foglalási kedvezmény vonatkozhat az ugyanahhoz a sorozathoz tartozó virtuális gépekre, vagy fenntartható az adatközpont kapacitása egy adott virtuálisgép-mérethez. Emellett érdemes úgy optimalizálni a foglalásokat, hogy teljesen ki legyenek használva.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reservation-order-and-reservation"></a>Foglalási sorrend és foglalás
+## <a name="reservation-order-and-reservation"></a>A foglalási rendelés és a foglalás
 
-Foglalás megvásárlásakor két objektum jön létre: **Foglalási sorrend** és **foglalás**.
+Egy foglalás megvásárlásakor két objektum jön létre: A **foglalási rendelés** és a **foglalás**.
 
-A vásárlás időpontjában egy foglalási rendeléshez tartozik egy foglalás. Az olyan műveletek, mint például a felosztás, az egyesítés, a részleges visszatérítés vagy az Exchange új foglalásokat hoznak létre a **foglalási sorrendben**.
+A vásárláskor a foglalási rendelés alá egy foglalás tartozik. Az olyan műveletek, mint például a felosztás, az egyesítés, a részleges visszatérítés vagy a csere, új foglalásokat hoznak létre a **foglalási rendelés** alatt.
 
-A foglalási sorrend megtekintéséhez lépjen a foglalások > Válassza ki a foglalást, majd kattintson a **foglalási rendelés azonosítóra**.
+Egy foglalási rendelés megtekintéséhez lépjen a **Foglalás** elemre > válassza ki a foglalást, majd kattintson a **foglalási rendelés azonosítójára**.
 
-![A foglalási rendelés részleteinek példája a foglalási sorrend AZONOSÍTÓjának megjelenítése ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+![Példa egy foglalási rendelés részleteire, köztük a foglalási rendelés azonosítójával ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
 
-A foglalás az engedélyeket a foglalási sorrendjétől örökli.
+A foglalások az engedélyeket a foglalási rendelésektől öröklik.
 
-## <a name="change-the-reservation-scope"></a>A foglalás hatókörének módosítása
+## <a name="change-the-reservation-scope"></a>Foglalás hatókörének módosítása
 
- A foglalási kedvezmény a virtuális gépekre, az SQL-adatbázisokra, a Azure Cosmos DBekre és a foglalási hatókörben futtatott egyéb erőforrásokra vonatkozik. A számlázási környezet a foglalás megvásárlásához használt előfizetéstől függ.
+ A foglalási kedvezmény vonatkozhat virtuális gépekre, SQL-adatbázisokra, Azure Cosmos DB-adatbázisokra és egyéb erőforrásokra, amelyek megfelelnek a foglalásnak, és a foglalás hatókörében futnak. A számlázási környezet a foglalás megvásárlásához használt előfizetéstől függ.
 
-Foglalás hatókörének frissítése:
+Egy foglalás hatókörének frissítése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza **a minden szolgáltatás** > **foglalás**lehetőséget.
+2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza ki a foglalást.
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
 5. Módosítsa a hatókört.
 
-Ha a megosztottról az önálló hatókörre vált, csak azokat az előfizetéseket választhatja ki, amelyeken Ön a tulajdonos. Csak a foglalással megegyező számlázási környezetben található előfizetések választhatók ki.
+Ha a közös hatókört módosítja egyetlen hatókörre, akkor csak egy olyan előfizetést választhat ki, amelyben Ön a tulajdonos. Csak a foglalással megegyező számlázási környezetben található előfizetések választhatók ki.
 
-A hatókör csak az utólagos elszámolású díjszabású egyéni előfizetésekre vonatkozik (ajánlatok MS-AZR-0003P vagy MS-AZR-0023P), Enterprise ajánlat MS-AZR-0017P vagy MS-AZR-0148P vagy CSP előfizetési típusok.
+A hatókör csak a használatalapú fizetéses díjszabású különálló előfizetésekre (MS-AZR-0003P vagy MS-AZR-0023P ajánlatok), az MS-AZR-0017P vagy az MS-AZR-0148P vállalati ajánlatra, illetve a CSP előfizetési típusokra vonatkozik.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>A foglalást kezelő felhasználók hozzáadása vagy módosítása
 
-A foglalások felügyeletét delegálhatja úgy, hogy a foglalási sorrendben vagy a foglalásban személyeket ad hozzá a szerepkörökhöz. Alapértelmezés szerint az a személy, aki elhelyezi a foglalási sorrendet, és a fiók rendszergazdája tulajdonosi szerepkörrel rendelkezik a foglalási rendelésben és a foglalásban.
+Delegálhatja a foglalás kezelését, ha személyeket ad hozzá szerepkörökhöz a foglalási rendelésben vagy a foglalásban. Alapértelmezés szerint a foglalási rendelést leadó személy és a fiókadminisztrátor rendelkezik a tulajdonosi szerepkörrel a foglalás rendelés és a foglalás tekintetében.
 
-A foglalási kedvezményekhez tartozó előfizetések függetlenül kezelheti a fenntartási rendelésekhez és a foglalásokhoz való hozzáférést. Ha valaki engedélyt ad a foglalási rendelés vagy a foglalás kezelésére, nem ad nekik engedélyt az előfizetés kezeléséhez. Hasonlóképpen, ha engedélyt ad valakinek a foglalás hatókörébe tartozó előfizetés kezelésére, nem biztosít számukra jogosultságot a foglalási sorrend vagy a foglalás kezeléséhez.
+A foglalási rendelések és foglalások hozzáférései a foglalási kedvezményben részesülő előfizetésektől függetlenül kezelhetők. Ha valakinek engedélyt ad egy foglalási rendelés vagy a foglalás kezelésére, az a személy ettől még nem lesz jogosult az előfizetés kezelésére. Hasonlóképpen, ha engedélyt ad valakinek egy, a foglalás hatókörébe tartozó előfizetés kezelésére, az még nem lesz jogosult a foglalási rendelés vagy a foglalás kezelésére.
 
-Exchange vagy visszatérítés végrehajtásához a felhasználónak hozzáféréssel kell rendelkeznie a foglalási rendeléshez. Ha valaki engedélyeket ad meg, a legjobb megoldás a foglalási rendeléshez való hozzáférés, nem pedig a foglalás.
+A csere vagy a visszatérítés végrehajtásához a felhasználónak hozzáféréssel kell rendelkeznie a foglalás megrendeléséhez. Az engedélyek megadásakor érdemes a foglalási rendeléséhez engedélyt biztosítani, nem pedig a foglaláshoz.
 
 
-A hozzáférés-kezelés delegálása egy foglaláshoz:
+Egy foglalás hozzáférés-kezelésének delegálása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** > **foglalás** lehetőséget a foglalások listázásához, amelyekhez hozzáfér.
-3. Válassza ki azt a foglalást, amelynek a hozzáférését delegálni szeretné más felhasználók számára.
-4. Válassza ki **hozzáférés-vezérlés (IAM)** .
-5. Válassza a **szerepkör-hozzárendelési** > **szerepkör** > **tulajdonosának**hozzáadása lehetőséget. Ha korlátozott hozzáférést szeretne biztosítani, válasszon egy másik szerepkört.
-6. Adja meg a tulajdonosként hozzáadni kívánt felhasználó e-mail-címét.
+2. Válassza a **Minden szolgáltatás** > **Foglalások** lehetőséget azoknak a foglalásoknak a megtekintéséhez, amelyekhez hozzáféréssel rendelkezik.
+3. Válassza ki azt a foglalást, amelyhez való hozzáférést delegálni szeretné más felhasználóknak.
+4. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+5. Válassza a **Szerepkör-hozzárendelés hozzáadása** > **Szerepkör** > **Tulajdonos** lehetőséget. Ha korlátozott hozzáférést szeretne biztosítani, válasszon egy másik szerepkört.
+6. Írja be annak a felhasználónak az e-mail-címét, akit tulajdonosként kíván hozzáadni.
 7. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 
-## <a name="split-a-single-reservation-into-two-reservations"></a>Egyetlen foglalás felosztása két foglalásra
+## <a name="split-a-single-reservation-into-two-reservations"></a>Egy foglalás felosztása két foglalásba
 
- Miután egy foglalásban egynél több erőforrás-példányt vásárolt, érdemes lehet a foglalásban lévő példányokat hozzárendelni a különböző előfizetésekhez. Alapértelmezés szerint minden példánynak van egy hatóköre – vagy egyetlen előfizetés vagy megosztott. Megvásárolt például 10 foglalási példányt, és megadta a hatókört az A előfizetéshez. Most már módosítani szeretné a hét fenntartások hatókörét az A-előfizetésre, a fennmaradó háromat pedig a B előfizetésre. a foglalás felosztása lehetővé teszi a példányok terjesztését a részletes hatókör-kezeléshez. A megosztott hatókör lehetőség kiválasztásával leegyszerűsítheti az előfizetések kiosztását. A költségek kezeléséhez és a költségvetéshez azonban adott előfizetésekhez is rendelhet mennyiségeket.
+ Miután egy foglalásban egynél több erőforrás-példányt vásárol, érdemes lehet a foglalásban lévő példányokat különböző előfizetésekhez hozzárendelni. Alapértelmezés szerint minden példánynak egy hatóköre van – vagy egyetlen előfizetés, vagy közös. Például megvásárolt 10 foglalási példányt, és megadta, hogy a foglalási hatókör legyen az A előfizetés, most pedig módosítani szeretné a foglalások hatókörét, hogy hét foglalásnak az A előfizetés, a maradék háromnak pedig a B előfizetés legyen a hatóköre. A foglalás felosztása lehetővé teszi a példányok elosztását a részletes hatókör-kezelés érdekében. A közös hatókör kiválasztásával leegyszerűsítheti az előfizetések közötti elosztást. Azonban költségkezelési vagy költséghatékonysági okokból konkrét mennyiségeket is hozzárendelhet az egyes előfizetésekhez.
 
- A foglalásokat a PowerShell, a CLI vagy az API használatával feloszthatja két fenntartásra.
+ A foglalások kettéosztásához használhatja a PowerShellt, a parancssori felületet, vagy az API-t.
 
-### <a name="split-a-reservation-by-using-powershell"></a>Foglalás felosztása a PowerShell használatával
+### <a name="split-a-reservation-by-using-powershell"></a>Foglalások felosztása a PowerShell használatával
 
-1. A foglalási rendelés AZONOSÍTÓjának lekéréséhez futtassa a következő parancsot:
+1. Kérje le a foglalási rendelés azonosítóját a következő parancs futtatásával:
 
     ```powershell
     # Get the reservation orders you have access to
     Get-AzReservationOrder
     ```
 
-2. A foglalás részleteinek beolvasása:
+2. Kérje le a foglalás részleteit:
 
     ```powershell
     Get-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a
     ```
 
-3. A foglalás felosztása kettőre, és a példányok terjesztése:
+3. Ossza ketté a foglalást, és ossza el a példányokat:
 
     ```powershell
     # Split the reservation. The sum of the reservations, the quantity, must equal the total number of instances in the reservation that you're splitting.
     Split-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
-4. A hatókört a következő parancs futtatásával frissítheti:
+4. A hatókört az alábbi parancs futtatásával frissítheti:
 
     ```powershell
     Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Megszakítási, Exchange-vagy visszatérítési foglalások
+## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal megszakíthatja, átválthatja vagy visszaállíthatja a foglalásokat. További információ: önkiszolgáló [cserék és visszatérítések Azure Reservations számára](billing-azure-reservations-self-service-exchange-and-refund.md).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Fenntartott VM-példányok optimalizálási beállításának módosítása
+## <a name="change-optimize-setting-for-reserved-vm-instances"></a>A Reserved VM Instances optimalizálási beállításának módosítása
 
- A fenntartott VM-példányok vásárlásakor a példány méretének rugalmassága vagy a kapacitás prioritása közül választhat. A példányok méretének rugalmassága a foglalási kedvezményt a virtuálisgép-méretezési csoportba tartozó többi virtuális [gépre](https://aka.ms/RIVMGroups)alkalmazza. A kapacitás prioritása az üzemelő példányok adatközpont-kapacitását rangsorolja. Ez a lehetőség további megbízhatóságot biztosít a virtuálisgép-példányok elindításához, amikor szüksége van rájuk.
+ Amikor megvásárol egy fenntartott virtuálisgép-példányt, kiválaszthatja, hogy a példány méretének rugalmassága vagy a példány kapacitása legyen-e a prioritás. A rugalmas példányméret a foglalás kedvezményét az ugyanabban a [virtuálisgép-méretcsoportban](https://aka.ms/RIVMGroups) található egyéb virtuális gépekre is alkalmazza. A kapacitás prioritása kiemelt fontosságúként kezeli az adatközpont kapacitását az üzemelő példányok számára. Ezzel a lehetőséggel biztos lehet benne, hogy szükség esetén nem lesz akadálya újabb virtuálisgép-példányok indításának.
 
-Alapértelmezés szerint a foglalás hatókörének megosztásakor a példány méretének rugalmassága be van kapcsolva. Az adatközpont kapacitása nem rangsorolja a virtuális gépek központi telepítését.
+Alapértelmezés szerint ha a foglalás hatóköre közös, a példány méretének rugalmassága be van kapcsolva. Az adatközpont kapacitása nincs priorizálva az üzemelő virtuálisgép-példányok számára.
 
-Azon foglalások esetében, amelyeknél a hatókör egyetlen, a virtuálisgép-példányok méretének rugalmassága helyett optimalizálhatja a kapacitás prioritásának foglalását.
+Az egyszeres hatókörű foglalások a kapacitás priorizálására is optimalizálhatók a virtuálisgép-példányok méretének rugalmassága helyett.
 
 A foglalás optimalizálási beállításának frissítése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza **a minden szolgáltatás** > **foglalás**lehetőséget.
+2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
 3. Válassza ki a foglalást.
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
-5. Módosítsa a beállítás optimalizálását.
+5. Módosítsa az **Optimalizálás** beállítást.
 
-## <a name="optimize-reservation-use"></a>Foglalási használat optimalizálása
+## <a name="optimize-reservation-use"></a>Foglalás kihasználtságának optimalizálása
 
-Az Azure foglalási megtakarítások csak a tartós erőforrás-használatból származnak. A foglalások megvásárlásakor a kezdeti díjat a 100%-os lehetséges erőforrás-használatért kell fizetnie egy-vagy hároméves időszakra. Próbálja ki, hogy maximalizálja a foglalást, hogy minél nagyobb mennyiségű használatot és megtakarítást érhet el. A következő szakaszokban megtudhatja, hogyan figyelheti a foglalásokat, és hogyan optimalizálhatja annak használatát.
+Az Azure-foglalások használatából eredő megtakarítások kizárólag a tartós erőforrás-használatból származnak. Ha megvásárol egy foglalást, akkor előre fizet azért, ami tulajdonképpen a 100%-ig lehetséges erőforrás-használat egy egy- vagy hároméves időszak alatt. Igyekezzen maximálisan kihasználni a foglalást, hogy ezzel minél több megtakarítást érhessen el. Az alábbi szakaszok leírják, hogyan érdemes monitorozni a foglalásokat, és optimalizálni a használatukat.
 
-### <a name="view-reservation-use-in-the-azure-portal"></a>Foglalási használat megtekintése a Azure Portalban
+### <a name="view-reservation-use-in-the-azure-portal"></a>Foglalás kihasználtságának megtekintése az Azure Portalon
 
-A foglalások használatának egyik módja a Azure Portal.
+A foglalás kihasználtságának megtekintésére az egyik mód az Azure Portal használata.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza a **minden szolgáltatás** > [**foglalás**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) lehetőséget, és jegyezze fel a foglalás **kihasználtságát (%)** .  
-  ![A foglalások listáját bemutató kép](./media/billing-manage-reserved-vm-instance/reservation-list.png)
-3. Válasszon egy foglalást.
-4. Tekintse át a foglalás használati trendjét az idő múlásával.  
-  ![A foglalási használatot ábrázoló kép ](./media/billing-manage-reserved-vm-instance/reservation-utilization-trend.png)
+2. Válassza a **Minden szolgáltatás** > [**Reservations**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) lehetőséget, és figyelje meg egy adott foglalás **Kihasználtság (%)** mutatóját.  
+  ![Kép a foglalások listájáról](./media/billing-manage-reserved-vm-instance/reservation-list.png)
+3. Válasszon ki egy foglalást.
+4. Tekintse át a foglalás kihasználtságának időre vetített trendjét.  
+  ![Kép egy foglalás kihasználtságáról ](./media/billing-manage-reserved-vm-instance/reservation-utilization-trend.png)
 
-### <a name="view-reservation-use-with-api"></a>Fenntartási használat megtekintése API-val
+### <a name="view-reservation-use-with-api"></a>Foglalás kihasználtságának megtekintése egy API-val
 
-Ha Ön Nagyvállalati Szerződés (EA) ügyfél, programozott módon megtekintheti, hogyan használják a szervezeten belüli foglalásokat. A nem használt foglalásokat a használati adatokon keresztül érheti el. Ha áttekinti a foglalási díjakat, vegye figyelembe, hogy az adatok a tényleges költségek és az amortizációs költségek között oszlanak meg. A tényleges költség biztosítja az adatok összeegyeztetését a havi számlán. Emellett a foglalási vételár és a foglalási alkalmazás részletei is szerepelnek. Az elszámolási költség olyan, mint a tényleges költség, azzal a különbséggel, hogy a foglalások használatának érvényes díjait arányosan számítjuk fel. A nem használt foglalási órák az elszámolt költségadatok szerint jelennek meg. A nagyvállalati szerződéssel rendelkező ügyfelek használati adataival kapcsolatos további információkért lásd: [nagyvállalati szerződés foglalási költségek és használat](billing-understand-reserved-instance-usage-ea.md)beszerzése.
+Ha Ön Nagyvállalati Szerződéssel rendelkező (EA-) ügyfél, programozott módon megtekintheti, hogyan vannak kihasználva a szervezeten belüli foglalások. A nem használt foglalásokról a használati adatokon keresztül értesülhet. A foglalási díjak áttekintésekor vegye figyelembe, hogy az adatok fel vannak osztva a tényleges költségekre és az amortizációs költségekre. A tényleges költség olyan adatokat szolgáltat, amelyeket összevethet a havi számlájával. Emellett tartalmazza a foglalás vételárát és a foglalás alkalmazásának részleteit is. Az amortizált költség hasonló a tényleges költséghez, azzal a különbséggel, hogy a foglalások használatának érvényben levő díjait időarányosan jeleníti meg. Az amortizált költség adataiban az is megjelenik, hogy a foglalás mennyi ideig nem volt kihasználva. A nagyvállalati ügyfeleknek szánt használati adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati Szerződés foglalási költségeinek és kihasználtságának lekérése](billing-understand-reserved-instance-usage-ea.md) szakaszt.
 
-Más előfizetések esetén használja az API [-foglalások összegzése-listát foglalási sorrend és foglalás alapján](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation).
+Egyéb előfizetéstípusok esetén használja a [Foglalások összegzése – Felsorolás foglalási rendelés és foglalás szerint](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation) API-t.
 
-### <a name="optimize-your-reservation"></a>A foglalás optimalizálása
+### <a name="optimize-your-reservation"></a>Foglalás optimalizálása
 
-Ha azt tapasztalja, hogy a szervezete foglalásait használják fel:
+Ha azt tapasztalja, hogy a szervezet foglalásai nincsenek kihasználva:
 
-- Győződjön meg arról, hogy a szervezet által létrehozott virtuális gépek egyeznek a foglaláshoz használt virtuálisgép-mérettel.
-- Győződjön meg arról, hogy a példány méretének rugalmassága be van kapcsolva. További információ: fenntartások [kezelése – a fenntartott VM-példányok optimalizálási beállításainak módosítása](#change-optimize-setting-for-reserved-vm-instances).
-- Módosítsa a foglalás hatókörét úgy, hogy az szélesebb körben is érvénybe lépjen. További információ: [a foglalás hatókörének módosítása](#change-the-reservation-scope).
-- Vegye fontolóra a fel nem használt mennyiség cseréjét. További információ: megszakítások [és cserék](#cancel-exchange-or-refund-reservations).
+- Ellenőrizze, hogy a szervezet által létrehozott virtuális gépek megfelelnek-e a foglalásban szereplő virtuálisgép-méretnek.
+- Ellenőrizze, hogy a példányméret rugalmassága be van-e kapcsolva. További információk: [Foglalások kezelése – A Reserved VM Instances optimalizálási beállításának módosítása](#change-optimize-setting-for-reserved-vm-instances).
+- Módosítsa a foglalás hatókörét _közösre_, hogy az szélesebb körre vonatkozzon. További információk: [Foglalás hatókörének módosítása](#change-the-reservation-scope).
+- Fontolja meg, hogy becseréli a nem használt mennyiséget. További információk: [Lemondások és cserék](#cancel-exchange-or-refund-reservations).
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következő cikkeket:
+Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalások?](billing-save-compute-costs-reservations.md)
+- [Mik azok a foglalások az Azure-ban?](billing-save-compute-costs-reservations.md)
 
-Szolgáltatási csomag vásárlása:
+Szolgáltatáscsomag vásárlása:
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
-- [Előre Azure Cosmos DB erőforrásokhoz Azure Cosmos DB fenntartott kapacitással](../cosmos-db/cosmos-db-reserved-capacity.md)
+- [Előre fizetés fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrásokért](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 Szoftvercsomag vásárlása:
-- [A Red Hat-szoftvercsomagok előre fizetése Azure Reservations](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Előre fizetés Azure Reservations-beli Red Hat-szoftvercsomagokért](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Előre fizetés Azure Reservations-beli SUSE-szoftvercsomagokért](../virtual-machines/linux/prepay-suse-software-charges.md)
 
-A kedvezmény és a használat megismerése:
-- [A virtuális gépek foglalási kedvezményének ismertetése](billing-understand-vm-reservation-charges.md)
-- [A Red Hat Enterprise Linux szoftvercsomag-kedvezmény alkalmazásának ismertetése](../billing/billing-understand-rhel-reservation-charges.md)
-- [A SUSE Linux Enterprise szoftvercsomag-kedvezmény alkalmazásának ismertetése](../billing/billing-understand-suse-reservation-charges.md)
+A kedvezmények és a kihasználtság ismertetése:
+- [A virtuális gépek foglalására vonatkozó kedvezmény alkalmazásának ismertetése](billing-understand-vm-reservation-charges.md)
+- [A Red Hat Enterprise Linux szoftvercsomag kedvezményei alkalmazásának ismertetése](../billing/billing-understand-rhel-reservation-charges.md)
+- [A SUSE Linux Enterprise szoftvercsomag kedvezményei alkalmazásának ismertetése](../billing/billing-understand-suse-reservation-charges.md)
 - [Az egyéb foglalási kedvezmények alkalmazásának ismertetése](billing-understand-reservation-charges.md)
-- [Az utólagos elszámolású előfizetés foglalási használatának ismertetése](billing-understand-reserved-instance-usage.md)
-- [A nagyvállalati beléptetés foglalási használatának ismertetése](billing-understand-reserved-instance-usage-ea.md)
-- [A Windows-szoftverek nem tartalmazzák a foglalásokat](billing-reserved-instance-windows-software-costs.md)
+- [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](billing-understand-reserved-instance-usage.md)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)
+- [A Reservations díjában nem szereplő Windows-szoftverköltségek](billing-reserved-instance-windows-software-costs.md)

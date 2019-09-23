@@ -441,7 +441,7 @@ Válassza ki azt a gyakoriságot, amellyel az ügyfeleknek meg kell fizetniük a
 - **Ár**: USD/hó vagy USD/év
 
 A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. A jelen díjszabás és a saját beállítások ellenőrzése a felelős.
-**Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.*
+* *Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.*
 
 A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos korlátozások vonatkoznak a csomag közzététele után megjelenő változásokra:
 

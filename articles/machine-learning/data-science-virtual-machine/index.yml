@@ -1,29 +1,28 @@
 ### YamlMime:Landing
 title: Az Azure Data Science Virtual Machine dokumentációja
-summary: Az Azure Data Science Virtual Machine (DSVM) egy személyre szabott virtuálisgép-lemezkép adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre.
+summary: Az Azure Data Science Virtual Machine (DSVM) egy virtuálisgép-lemezkép előre betöltött adatelemzési és gépi tanulási eszközökkel. Ezzel a virtuális géppel intelligens, fejlett analitikai alkalmazásokat hozhat létre.
 metadata:
   title: A Data Science Virtual Machine dokumentációja – Azure
-  description: A Data Science Virtual Machine egy adatelemzésre szolgáló kísérleti környezet az Azure-felhőben. A környezetben előre telepítve vannak a népszerű adatelemzési és gépi tanulási eszközök.
-  services: machine-learning
+  description: Az Azure Data Science Virtual Machine (DSVM) egy virtuálisgép-lemezkép előre betöltött adatelemzési és gépi tanulási eszközökkel.
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308797"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170705"
 landingContent:
 - title: Bevezetés a DSVM használatába
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure DSVM?
+    - text: Mi az a DSVM?
       url: overview.md
     - text: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
       url: geo-ai-dsvm-overview.md
@@ -39,6 +38,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: A DSVM kezelése
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: Vállalati biztonság és útmutatás
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: Automatikus skálázású DSVM-készletek létrehozása
@@ -49,7 +52,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: További Azure Machine Learning-technológiák
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Azure Machine Learning szolgáltatás
       url: /azure/machine-learning/

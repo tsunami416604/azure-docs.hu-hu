@@ -9,12 +9,22 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Névfeloldás – portál
-      href: dns-getstarted-portal.md
-    - name: Névfeloldás – PowerShell
-      href: dns-getstarted-powershell.md
-    - name: Névfeloldás – parancssori felület
-      href: dns-getstarted-cli.md
+    - name: Nyilvános DNS
+      items:
+        - name: Nyilvános zóna létrehozása – portál
+          href: dns-getstarted-portal.md
+        - name: Nyilvános zóna létrehozása – PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Nyilvános zóna létrehozása – parancssori felület
+          href: dns-getstarted-cli.md
+    - name: Private DNS
+      items:
+        - name: Magánzóna létrehozása – portál
+          href: private-dns-getstarted-portal.md
+        - name: Magánzóna létrehozása – parancssori felület
+          href: private-dns-getstarted-cli.md
+        - name: Magánzóna létrehozása – PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Oktatóanyagok
   items:
     - name: Nyilvános DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Zónarekordok aliasrekordjai
           href: tutorial-alias-rr.md
-    - name: Private DNS
-      items:
-        - name: Privát DNS-zónák és -rekordok létrehozása
-          href: private-dns-portal.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Útmutató
   items:
-    - name: Private DNS
-      items:
-        - name: Magánzóna létrehozása – parancssori felület
-          href: private-dns-getstarted-cli.md
-        - name: Magánzóna létrehozása – PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: Nyilvános DNS
       items:
         - name: Elosztott terhelésű webalkalmazások aliasrekordjai

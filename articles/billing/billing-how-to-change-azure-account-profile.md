@@ -1,6 +1,6 @@
 ---
-title: Az Azure-fiók profiljára vonatkozó információk módosítása | Microsoft Docs
-description: Útmutató az Azure-beli rendszergazdai fiók profiljának módosításához és a kapcsolattartási e-mail cím megadásához.
+title: Az Azure-fiók profilinformációinak módosítsa | Microsoft Docs
+description: Ez a cikk ismerteti, hogyan módosítható az Azure adminisztratív fiók profilja és kapcsolattartási e-mail-címe.
 author: genlin
 manager: alherz
 tags: billing
@@ -14,91 +14,91 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dea54f2e692174e12cb2dc1f0e0e0ed9fca127bc
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68516571"
 ---
-# <a name="change-the-profile-information-for-your-azure-account"></a>Az Azure-fiókhoz tartozó profil adatainak módosítása
+# <a name="change-the-profile-information-for-your-azure-account"></a>Az Azure-fiók profilinformációinak módosítsa
 
-A Microsoft a fiók rendszergazdája profiljában szereplő e-mail-címet használja az Azure-fiókkal kapcsolatos fontos számlázási, szolgáltatási és ajánlási értesítések küldéséhez. Javasoljuk, hogy a rendszeresen ellenőrzött e-mail-címet határozza meg. A fiók rendszergazdája a fiókhoz tartozó levelezési cím és telefonszám módosításához is frissítheti a profilt.
+A Microsoft a fiókadminisztrátor profiljában szereplő e-mail-címet használja az Azure-fiókkal kapcsolatos fontos számlázási, szolgáltatási és ajánlási értesítések küldéséhez. Javasoljuk, hogy olyan e-mail-címet adjon meg, amelyet rendszeresen ellenőriz. A fiók rendszergazdájaként frissítheti adatait, módosíthatja a fiókhoz tartozó levelezési címet és telefonszámot.
 
-A Microsoft az e-mail-címet egy felhasználói profilban, egy olyan felhasználói fiókban használja, aki nem a fiók rendszergazdája, a szolgáltatással kapcsolatos értesítések és a fiókokra vonatkozó javaslatok küldéséhez. A rendszer minden számlázási értesítést elküld a fiók rendszergazdájának. A profilt úgy is frissítheti, hogy megváltoztassa a levelezési címeit és telefonszámát, de nem módosítja a fiók levelezési címeit vagy telefonszámát.
+A szolgáltatással kapcsolatos értesítések és a fiókra vonatkozó javaslatok küldéséhez a Microsoft a nem fiókadminisztrátori felhasználók profiljában szereplő e-mail-címeket használja. Minden számlázási értesítést a fiókadminisztrátornak küld. Profilját úgy is frissítheti, hogy megváltoztatja saját levelezési címét és telefonszámát, de nem módosítja a fiók levelezési címét vagy telefonszámát.
 
-## <a name="change-your-profile-information"></a>Profil adatainak módosítása
+## <a name="change-your-profile-information"></a>Profilinformációk módosítása
 
 1. Jelentkezzen be az [Azure Fiókközpontba](https://account.azure.com/subscriptions).
 1. Válassza a **Részletek szerkesztése** gombot, majd frissítse a **Profil** információit.
 
-   ![Azure-profil adatainak példája](./media/billing-how-to-change-azure-account-profile/profile.png)
+   ![Példa az Azure-beli profilinformációk frissítésére](./media/billing-how-to-change-azure-account-profile/profile.png)
 
-### <a name="send-notifications-to-an-additional-email-address"></a>Értesítések küldése egy további e-mail-címre
+### <a name="send-notifications-to-an-additional-email-address"></a>Értesítések küldése további e-mail-címekre
 
-A fiók rendszergazdája által használt e-mail-címén kívül elküldheti a szolgáltatáshoz tartozó értesítéseket és a fiókra vonatkozó ajánlásokat is. A fiók rendszergazdája e-mail-címe fontos értesítéseket kap a fiókban lévő összes előfizetésről, beleértve a számlázással kapcsolatos frissítéseket is.
+Szolgáltatási értesítések és a fiókkal kapcsolatos javaslatok a fiókadminisztrátor e-mail-címén kívül további, a fiókhoz társított e-mail-címekre is küldhetők. A fiók összes előfizetésével kapcsolatos fontos értesítések, beleértve a számlázással kapcsolatos információkat is, a fiókadminisztrátor e-mail-címére érkeznek.
 
-### <a name="change-the-account-administrators-email-address-in-your-profile"></a>A fiók rendszergazdája e-mail-címének módosítása a profilban
+### <a name="change-the-account-administrators-email-address-in-your-profile"></a>A fiókadminisztrátori e-mail-cím módosítása a profilban
 
 A fiókadminisztrátor az a személy, aki az Azure-előfizetést regisztrálta és fontos e-mail-értesítéseket kap a fiók összes előfizetésével kapcsolatban. Javasoljuk, hogy olyan e-mail-címet adjon meg, amelyet a fiókadminisztrátor rendszeresen ellenőriz.
 
 ### <a name="update-your-sign-in-email-address"></a>A bejelentkezési e-mail-cím frissítése
 
-A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét. A bejelentkezési e-mail-cím módosításához át kell vennie a fiók tulajdonjogát.
+A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet. A bejelentkezési e-mail-cím módosításához át kell adnia a fiók tulajdonjogát.
 
-### <a name="update-the-billing-address-for-your-credit-card"></a>A bankkártya számlázási cím frissítése
+### <a name="update-the-billing-address-for-your-credit-card"></a>A hitelkártyához tartozó számlázási cím frissítése
 
-A számlázási adatok frissítésével kapcsolatos további információkért lásd: [Az Azure-előfizetés fizetéséhez használt hitelkártya módosítása](billing-how-to-change-credit-card.md).
+A számlázási információk frissítésével kapcsolatban lásd az [Azure-előfizetés kifizetéséhez használt hitelkártya módosításáról](billing-how-to-change-credit-card.md) szóló részt.
 
 ### <a name="update-your-countryregion"></a>Ország/régió frissítése
 
-Technikai korlátozások miatt nem lehet módosítani egy meglévő fiók országát/régióját. Azonban létrehozhat egy fiókot a kívánt országban vagy régióban, majd az Azure támogatási szolgálatával áttelepítheti szolgáltatásait a fiókba.
+Technikai korlátok miatt a meglévő fiókok országa/régiója nem módosítható. Azonban létrehozhat egy új fiókot a kívánt országban/régióban, majd vegye fel a kapcsolatot az Azure-támogatással, és migrálja szolgáltatásait az új fiókra.
 
-## <a name="service-and-marketing-emails"></a>Szolgáltatás-és marketing-e-mailek
+## <a name="service-and-marketing-emails"></a>Szolgáltatás és marketing e-mailek
 
-A rendszer felszólítja a [Azure Portal](https://portal.azure.com) az e-mail-cím 90 naponkénti ellenőrzéséhez vagy frissítéséhez. A Microsoft e-maileket küld a profil e-mail-címére az Azure-fiókkal kapcsolatos információkkal a következőhöz:
+Az [Azure Portal](https://portal.azure.com) 90 naponként kéri, hogy igazolja, vagy frissítse e-mail-címét. A Microsoft e-maileket küld a profil e-mail-címére az Azure-fiókkal kapcsolatos információkkal a következőkről:
 
 - Szolgáltatási értesítések
 - Biztonsági riasztások
 - Számlázási célok
 - Támogatás
-- Marketing-kommunikáció
-- Ajánlott eljárások az Azure-használat alapján
+- Marketingkommunikáció
+- Az Ön Azure-használatától függő ajánlott eljárások
 
-Adja meg azt az e-mail-címet, ahol a fiókjával kapcsolatos kommunikációt szeretne kapni. Egy e-mail-cím megadásával megadhatja, hogy a Microsofttól kapjon kommunikációt.
+Adja meg azt az e-mail-címet, amelyen a fiókjához kapcsolódó e-maileket fogadni kívánja. Az e-mail-cím megadásával Ön hozzájárul ahhoz, hogy a Microsoft e-maileket küldjön Önnek.
 
-![A kapcsolattartási adatok frissítésére vonatkozó kérdés példája](./media/billing-how-to-change-azure-account-profile/update-contact-information.png)
+![Példa a kapcsolattartási adatok frissítésére való felhívásra](./media/billing-how-to-change-azure-account-profile/update-contact-information.png)
 
-### <a name="change-your-contact-email-address"></a>Kapcsolattartási e-mail cím módosítása
+### <a name="change-your-contact-email-address"></a>A kapcsolattartási e-mail-cím módosítása
 
-A kapcsolattartási e-mail-címét az alábbi módszerek egyikével módosíthatja:
+A következő módszerek egyikével megváltoztathatja kapcsolattartási e-mail-címét:
 
-* Jelentkezzen be az [Azure Fiókközpontba](https://account.azure.com/subscriptions). Válassza a **részletek szerkesztése** lehetőséget, majd frissítse a profil e-mail-címét. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
+* Jelentkezzen be az [Azure Fiókközpontba](https://account.azure.com/subscriptions). Válassza a **Részletek szerkesztése** gombot, majd frissítse a profil e-mail-címét. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
 
-* Lépjen a Azure Portal [kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területén, és adjon meg egy e-mail-címet. Az Ön által megadott címek szolgáltatás-és marketing-kommunikációt kapnak. Az Azure Fiókközpont profilban szereplő e-mail-cím automatikusan illeszkedik. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
+* Az Azure Portalon lépjen a [Kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területre, és írjon be egy e-mail-címet. Az Ön által megadott címre szolgáltatási és marketingkommunikációt érkezik. Az Azure fiókközpontbeli profilban lévő e-mail-cím automatikusan frissül. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
 
-* A [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)válassza ki az ikont a monogrammal vagy a képpel. Ezután válassza a helyi menüt ( **..** .). Ezután válassza a **saját kapcsolattartási adatok** lehetőséget a menüből, és adjon meg egy e-mail-címet. Az Ön által megadott címek szolgáltatás-és marketing-kommunikációt kapnak. A Azure Fiókközpont profiljában lévő e-mail-cím automatikusan illeszkedik. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét.
+* Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassz **Kapcsolattartási adataim** lehetőséget a menüből, és írja be az e-mail-címet. Az Ön által megadott címre szolgáltatási és marketingkommunikációt érkezik. Az Azure fiókközpontbeli profiljában lévő e-mail-cím automatikusan frissül. A profil e-mail-címének frissítése nem módosítja a bejelentkezési e-mail-címet.
 
-![Példa e-mail-cím frissítésére az Azure-ban](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
+![Példa az Azure-beli e-mail cím frissítésére](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 
-### <a name="opt-out-of-marketing-emails"></a>Feliratkozás a marketing-e-mailekre
+### <a name="opt-out-of-marketing-emails"></a>Szolgáltatási és marketing e-mailek lemondása
 
-A marketing-e-mailek fogadásának letiltásához:
+Szolgáltatási és marketing e-mailek lemondása:
 
-1. A kérelem [űrlapján](https://account.microsoft.com/profile/permissions-link-request) küldje el a kérést a profil e-mail-címének használatával. A beállítások frissítéséhez e-mailben kap egy hivatkozást.
-2. Válassza ki a hivatkozást a **kommunikációs engedélyek kezelése** lap megnyitásához. Ezen a lapon láthatók azok a marketing-kommunikációs típusok, amelyekhez az e-mail cím be van jelölve. Törölje a letiltani kívánt témaköröket, majd kattintson a **Mentés**gombra.
+1. A [kérelem űrlapon](https://account.microsoft.com/profile/permissions-link-request) küldje el a kérést a profil e-mail-címének használatával. E-mailen kapni fog egy hivatkozást a beállítások frissítéséhez.
+2. Kattintson a hivatkozásra a **Kommunikációs engedélyek kezelése** lap megnyitásához. Ez az oldal megjeleníti a marketingkommunikáció azon típusait, amelyek az e-mail-címen engedélyezettek. Töröljön minden lemondani kívánt témakört, majd válassza a **Mentés** lehetőséget.
 
-![A kommunikációs engedélyek kezelésére szolgáló lap – példa](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
+![Példa a kommunikációs engedélyek kezelési oldalára](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
-Ha kikapcsolja a marketing-kommunikációt, a fiókja alapján továbbra is megkapja a szolgáltatási értesítéseket.
+Ha kikapcsolja a marketingkommunikációt, a fiókja alapján továbbra is megkapja majd a szolgáltatási értesítéseket.
 
-## <a name="change-the-subscription-name"></a>Előfizetés nevének módosítása
+## <a name="change-the-subscription-name"></a>Előfizetés nevének megváltoztatása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza a bal oldali ablaktábla **előfizetés** elemét, majd válassza ki az átnevezni kívánt előfizetést.
-1. Válassza az **Áttekintés**lehetőséget, majd válassza a parancssáv **Átnevezés** elemét.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Előfizetés** lehetőséget a bal oldali panelen, majd válassza ki azt az előfizetést, amelyet át kíván nevezni.
+1. Válassza az **Áttekintés** lehetőséget, majd a parancssávon válassza az **Átnevezés** elemet.
     ![Példa az Azure-előfizetés átnevezésére](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
-1. A név módosítása után válassza a **Mentés**lehetőséget.
+1. Miután megváltoztatta a nevet, kattintson a **Mentés** lehetőségre.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -13,7 +13,7 @@ metadata:
   ms.service: dms
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
+  ms.date: 09/22/2019
 abstract:
   description: 'Az Azure Database Migration Service az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást tesz lehetővé minimális állásidővel. A szolgáltatás a Data Migration Assistant használatával felmérési jelentéseket biztosít, amelyek a migrálás előtt szükséges módosításokra vonatkozó ajánlásokat tartalmaznak. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést.'
   aside:
@@ -40,19 +40,36 @@ sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Információk az adatbázisok a Database Migration Service használatával való migrálásáról:'
+        text: 'Információ az adatbázisok Azure Database Migration Service-szel való migrálásáról:'
       - type: list
-        style: ordered
+        style: unordered
         items:
-          - html: '<a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával</a>'
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online migrálása az Azure SQL Database-be a DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server migrálása felügyelt offline Azure SQL Database-példányra a DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">RDS SQL Server online migrálása az Azure SQL Database-be vagy egy felügyelt Azure SQL Database-példányra a DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migrálása az Azure Database for MySQL-be a DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">MongoDB migrálása az Azure Cosmos DB Mongo API offline verziójára DMS használatával</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">MongoDB migrálása az Azure Cosmos DB Mongo API online verziójára DMS használatával</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server offline migrálása Azure SQL Database-re</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online migrálása Azure SQL Database-re</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server offline migrálása felügyelt Azure SQL Database-példányra</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online migrálása felügyelt Azure SQL Database-példányra</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">RDS SQL Server online migrálása az Azure SQL Database-re vagy egy felügyelt Azure SQL Database-példányra</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migrálása az Azure Database for MySQL-re</a>
+          - html: <a href="/azure/dms/tutorial-rds-mysql-server-azure-db-for-mysql-online">RDS MySQL online migrálása az Azure Database for MySQL-re</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migrálása az Azure Database for PostgreSQL-re</a>
+          - html: <a href="/azure/dms/tutorial-rds-postgresql-server-azure-db-for-postgresql-online">RDS PostgreSQL online migrálása az Azure Database for PostgreSQL-re</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">MongoDB migrálása az Azure Cosmos DB Mongo API offline verziójára</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">MongoDB migrálása az Azure Cosmos DB Mongo API online verziójára</a>
+          - html: <a href="/azure/dms/tutorial-oracle-azure-postgresql-online">Oracle online migrálása Azure Database for PostgreSQL-re</a>
+  - title: Videók
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/">Az adatbázis-migrálási útmutató használata</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/">A migrálási folyamat és a javasolt eszközök/szolgáltatások</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/">Gondoskodás az előfeltételekről és egy DMS-példány létrehozása</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/">SQL Server 2008 migrálása felügyelt Azure SQL Database-példányra</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/">PostgreSQL migrálása az Azure Database for PostgreSQL-re</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/">Egy online migrálás figyelése és átállás végrehajtása</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/">Oracle migrálása az Azure SQL Database-be</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/">MongoDB migrálása az Azure Cosmos DB-re</a>'
   - title: Példák
     items:
       - type: list

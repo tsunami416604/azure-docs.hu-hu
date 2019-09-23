@@ -1,6 +1,6 @@
 ---
-title: Az Azure felhasználási API áttekintése | Microsoft Docs
-description: Ismerje meg, hogy az Azure-beli felhasználási API-k programozott hozzáférést biztosítanak az Azure-erőforrások díjszabási és használati adataihoz.
+title: Azure-használati API áttekintése | Microsoft Docs
+description: Megtudhatja, hogyan biztosítanak az Azure-használati API-k programozott hozzáférést az Azure-erőforrások költség- és használati adataihoz.
 services: billing
 documentationcenter: ''
 author: bandersmsft
@@ -16,19 +16,19 @@ ms.workload: billing
 ms.date: 6/07/2018
 ms.author: banders
 ms.openlocfilehash: 2a2922daef5e75af41252119f9a467fae976bcda
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443275"
 ---
-# <a name="azure-consumption-api-overview"></a>Az Azure felhasználási API áttekintése 
+# <a name="azure-consumption-api-overview"></a>Az Azure-használati API áttekintése 
 
-Az Azure használati API-k programozott hozzáférést biztosítanak az Azure-erőforrások költség- és használati adataihoz. Ezek az API-k jelenleg csak a vállalati regisztrációkat és a web Direct-előfizetéseket támogatják (néhány kivétellel). Az API-k folyamatosan frissülnek, és más típusú Azure-előfizetéseket is támogatnak.
+Az Azure használati API-k programozott hozzáférést biztosítanak az Azure-erőforrások költség- és használati adataihoz. Ezek az API-k jelenleg csak a nagyvállalati regisztrációkkal és a Web Direct-előfizetésekkel használhatók (néhány kivétellel). Az API-k folyamatosan frissülnek, hogy más típusú Azure-előfizetéseket is támogassanak.
 
 Az Azure használati API-k a következőkhöz biztosítanak hozzáférést:
 - Vállalati és Web Direct-ügyfelek 
-    - Használat részletei 
+    - Használati adatok 
     - A Marketplace díjai 
     - Foglalási javaslatok 
     - Foglalási adatok 
@@ -38,134 +38,134 @@ Az Azure használati API-k a következőkhöz biztosítanak hozzáférést:
     - Költségvetések 
     - Egyenlegek 
 
-## <a name="usage-details-api"></a>Használati adatok API
+## <a name="usage-details-api"></a>Usage Details API
 
-Használja a használati adatok API-t az összes Azure-beli fél erőforrásának felszámított díjainak és használati adatainak megszerzéséhez. Az információk a használati adatokból álló rekordok formájában jelennek meg, amelyek napi egységenként, óránként, óránként vannak kibocsátva. Az információk használatával felveheti a költségeket az összes erőforrásra, illetve megvizsgálhatja az adott erőforrás (ok) költségeinek/használatának vizsgálatát. 
+A Usage Details API-val lekérheti az összes saját Azure-erőforrás díj- és használati adatait. Az információk használati adatokra vonatkozó rekordok formájában jelennek meg, amelyek jelenleg naponta erőforrásonként és mérőnként egyszer vannak kibocsátva. Az adatokkal összeadhatja az összes erőforrás költségét, vagy megvizsgálhatja az adott erőforrás(ok) költségeit/használati adatait. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Mérési szint használati adatok** – Itt láthatja az adatokat, beleértve a használati költségeket, a díjat kibocsátó mérőszámot, valamint azt, hogy milyen Azure-erőforrásra vonatkozik a díj. Az összes használati részlet rekord a napi gyűjtőre mutat.
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Szűrés** – az API-eredmény levágása a használati részletességi rekordok kisebb készletére a következő szűrőkkel:
+-   **Mérési szint használati adatai** – Itt láthatja az adatokat, beleértve a használati költségeket, a díjat kibocsátó mérőt, valamint azt, hogy milyen Azure-erőforrásra vonatkozik a díj. Az összes használati adatrekord egy napi gyűjtőre van leképezve.
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Szűrés** – Az API-eredményhalmazt a használati adatrekordok kisebb halmazára csökkentheti a következő szűrőkkel:
     - Használat vége/használat kezdete
     - Erőforráscsoport
     - Erőforrás neve
--   **Adatösszesítés** – a OData használatával kifejezéseket alkalmazhat a használati adatok összesítésére címkék vagy szűrési tulajdonságok alapján
--   **Különböző ajánlati típusok használata** – jelenleg a vállalati és a webes Direct-ügyfelek számára érhető el a használati adatokra vonatkozó információ.
+-   **Adatösszesítés** – OData használatával kifejezéseket alkalmazhat a használati adatok címkék vagy szűrési tulajdonságok alapján történő összesítéséhez
+-   **Használati adatok különböző ajánlattípusokhoz** – A használati adatok információi jelenleg csak nagyvállalati és Web Direct-ügyfelek számára érhetők el.
 
-További információ: technikai specifikáció a [használati adatok API](https://docs.microsoft.com/rest/api/consumption/usagedetails)-hoz.
+További információt a [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails) műszaki specifikációjában talál.
 
-## <a name="marketplace-charges-api"></a>Marketplace-díjak API
+## <a name="marketplace-charges-api"></a>Marketplace Charges API
 
-A Piactéri díjak API-val megtekintheti az összes Piactéri erőforrás díját és használati adatait (az Azure harmadik féltől származó ajánlatai). Ezek az adatok felhasználhatók az összes Piactéri erőforrással kapcsolatos költségek hozzáadására, illetve az adott erőforrás (ok) költségeinek és használatának kivizsgálására. 
+A Marketplace Charges API-val lekérheti az összes piactéri erőforrásra (az Azure harmadik féltől származó ajánlataira) vonatkozó díj- és használati adatokat. Ezekkel az adatokkal összeadhatja az összes piactéri erőforrás költségét, vagy megvizsgálhatja az adott erőforrás(ok) költségeit/használati adatait. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Mérési szint használati adatok** – lásd: az adatok, beleértve a piactér használatának költségeit, a díjat kibocsátó mérőszámot, valamint azt az erőforrást, amelyre a díj vonatkozik. Az összes használati részlet rekord a napi gyűjtőre mutat.
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Szűrés** – az API-eredmény beállítása a Piactéri rekordok egy kisebb készletére van beállítva a következő szűrők használatával:
-    - Használat kezdő/használati vége
+-   **Mérési szint használati adatai** – Itt láthatja az adatokat, beleértve a piactéri használati költségeket, a díjat kibocsátó mérőt, valamint azt, hogy milyen erőforrásra vonatkozik a díj. Az összes használati adatrekord egy napi gyűjtőre van leképezve.
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Szűrés** – Az API-eredményhalmazt a piactéri rekordok kisebb halmazává csökkentheti a következő szűrőkkel:
+    - Használat kezdete/használat vége
     - Erőforráscsoport
     - Erőforrás neve
--   **Különböző ajánlati típusok használata** – a piactérsel kapcsolatos információk jelenleg a vállalati és a webes közvetlen ügyfelek számára érhetők el.
+-   **Használati adatok különböző ajánlattípusokhoz** – A piactéri információk jelenleg csak nagyvállalati és Web Direct-ügyfelek számára érhetők el.
 
-További információkért lásd a [Piactéri díjak API](https://docs.microsoft.com/rest/api/consumption/marketplaces)technikai specifikációját.
+További információt a [Marketplace Charges API](https://docs.microsoft.com/rest/api/consumption/marketplaces) műszaki specifikációjában talál.
 
-## <a name="balances-api"></a>Egyenlegek API
+## <a name="balances-api"></a>Balances API
 
-A nagyvállalati ügyfelek az egyenlegek API használatával havi összefoglaló információkat kaphatnak a egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a beállításokról és a túlterhelésről. Ezt az információt az aktuális számlázási időszakra vagy a múltbeli időszakra vonatkozóan szerezheti be. A vállalatok ezekkel az adatokkal összehasonlítást végezhetnek manuálisan számított összefoglaló díjakkal. Ez az API nem biztosít erőforrás-specifikus információkat és összesített nézetet a költségekről. 
+A nagyvállalati ügyfelek a Balances API-val havi összefoglaló információkat kérhetnek le az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről. Ezeket az adatokat az aktuális számlázási időszakra vagy bármely múltbéli időszakra lekérheti. A nagyvállalatok ezeket az adatokat összehasonlíthatják a manuálisan kiszámított összegző díjakkal. Ez az API nem biztosít erőforrás-specifikus adatokat és a költségek összesített nézetét. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Csak vállalati ügyfelek** Ez az API csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el. 
-    - A felhasználóknak vállalati rendszergazdai engedélyekkel kell rendelkezniük az API meghívásához 
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Csak nagyvállalati ügyfelek számára** Ez az API csak EA-ügyfelek számára érhető el. 
+    - Az ügyfeleknek vállalati rendszergazdai engedélyekkel kell rendelkezniük az API meghívásához 
 
-További információkért tekintse meg az [egyenlegek API](https://docs.microsoft.com/rest/api/consumption/balances)technikai specifikációját.
+További információt a [Balances API](https://docs.microsoft.com/rest/api/consumption/balances) műszaki specifikációjában talál.
 
-## <a name="budgets-api"></a>Költségvetési API
+## <a name="budgets-api"></a>Budgets API
 
-A nagyvállalati ügyfelek ezt az API-t használhatják az erőforrások, erőforráscsoportok vagy számlázási mérőszámok költség-és használati költségvetésének létrehozásához. Miután megtörtént az információ meghatározása, a riasztás beállítható úgy, hogy értesítést kapjon a felhasználó által meghatározott költségvetési küszöbértékek túllépése esetén. 
+A nagyvállalati ügyfelek ezzel az API-val költségalapú vagy használati költségvetéseket hozhatnak létre erőforrások, erőforráscsoportok vagy számlázási mérőszámok részére. Az információk meghatározása után riasztás állítható be, hogy értesítést kapjon a felhasználó által megadható költségvetési küszöbértékek túllépése esetén. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Csak vállalati ügyfelek** – ez az API csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el.
--   **Konfigurálható értesítések** – Itt adhatja meg, hogy a rendszer mely felhasználó (ka) t kapja meg, ha a költségvetést megoldják.
--   **Használati vagy Cost-alapú költségkeret** – a saját költségkerete alapján hozhatja létre a költségvetést.
--   **Szűrés** – a költségvetést a következő konfigurálható szűrőket használó erőforrások kisebb részhalmazára szűrheti
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Csak nagyvállalati ügyfelek számára** – Ez az API csak EA-ügyfelek számára érhető el.
+-   **Konfigurálható értesítések** – Itt adhatja meg a költségvetés túllépésekor értesítendő felhasználó(ka)t.
+-   **Használat- vagy költségalapú költségvetések** – A forgatókönyvnek megfelelően fogyasztás vagy költség alapján hozhatja létre a költségvetést.
+-   **Szűrés** – A költségvetést az erőforrások kisebb halmazára szűrheti a következő konfigurálható szűrőkkel
     - Erőforráscsoport
     - Erőforrás neve
     - Mérő
 -   **Konfigurálható költségvetési időszakok** – Itt adhatja meg, hogy milyen gyakran kell alaphelyzetbe állítani a költségvetést, és hogy mennyi ideig érvényes a költségvetés.
 
-További információ: a [költségvetési API](https://docs.microsoft.com/rest/api/consumption/budgets)technikai specifikációja.
+További információt a [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) műszaki specifikációjában talál.
 
-## <a name="reservation-recommendations-api"></a>Foglalás Recommendations API
+## <a name="reservation-recommendations-api"></a>Reservation Recommendations API
 
-Ezzel az API-val javaslatokat kaphat a fenntartott VM-példányok vásárlásához. A javaslatok célja, hogy lehetővé tegye az ügyfeleknek a várható költségmegtakarítás és a vásárlási összegek elemzését. 
+Ezzel az API-val javaslatokat kaphat a Reserved VM Instances megvásárlásához. A javaslatokkal az ügyfelek könnyebben elemezhetik a várható költségmegtakarításokat és a vásárlási összegeket. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Szűrés** – a javaslatok eredményeit a következő szűrőkkel szabhatja testre:
-    - Scope
-    - Lookback időszak
--   **A különböző ajánlati típusok foglalási** adatai – a foglalási információk jelenleg a vállalati és a webes közvetlen ügyfelek számára érhetők el.
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Szűrés** – Az alábbi szűrőkkel szabhatja testre a javaslatok eredményeit:
+    - Hatókör
+    - Visszatekintési időszak
+-   **Foglalások különböző ajánlattípusokhoz** – A foglalások információi jelenleg csak nagyvállalati és Web Direct-ügyfelek számára érhetők el.
 
-További információkért tekintse meg a [foglalás Recommendations API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)technikai specifikációját.
+További információt a [Reservation Recommendations API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations) műszaki specifikációjában talál.
 
-## <a name="reservation-details-api"></a>Foglalás részletei API
+## <a name="reservation-details-api"></a>Reservation Details API
 
-A foglalás részletei API-val megtekintheti a korábban megvásárolt virtuális gépek foglalásának adatait, például azt, hogy mekkora mennyiségű felhasználás van fenntartva, és milyen mértékben van ténylegesen használatban. A virtuális gép szintjének részletes adataiban láthatja az adatokat. 
+A Reservation Details API-val megtekintheti a korábban megvásárolt virtuális gépek foglalásával kapcsolatos információkat, például a lefoglalt felhasználás mértékét, illetve a ténylegesen felhasznált mennyiséget. Az adatokat virtuális gépenkénti részletességgel tekintheti meg. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Szűrés** – az API-eredmény beállítása kisebb foglalások esetén a következő szűrővel:
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Szűrés** – Az API-eredményhalmazt a foglalások kisebb halmazává csökkentheti a következő szűrővel:
     - Dátumtartomány
--   **A különböző ajánlati típusok foglalási** adatai – a foglalási információk jelenleg a vállalati és a webes közvetlen ügyfelek számára érhetők el.
+-   **Foglalások különböző ajánlattípusokhoz** – A foglalások információi jelenleg csak nagyvállalati és Web Direct-ügyfelek számára érhetők el.
 
-További információkért lásd a [foglalás részletei API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails)technikai specifikációját.
+További információt a [Reservation Details API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails) műszaki specifikációjában talál.
 
-## <a name="reservation-summaries-api"></a>Foglalási összefoglalók API
+## <a name="reservation-summaries-api"></a>Reservation Summaries API
 
-Ezzel az API-val megtekintheti a korábban megvásárolt virtuális gépek foglalásának összesített információit, például a lefoglalt felhasználás mennyiségét, valamint azt, hogy mennyit használják ténylegesen az összesítésben. 
+Ezzel az API-val megtekintheti a korábban megvásárolt virtuális gépek foglalásával kapcsolatos összesített információkat, például a lefoglalt felhasználás mértékét, illetve az összesítésben ténylegesen felhasznált mennyiséget. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Szűrés** – az eredmények személyre szabása a napi gabona a következő szűrővel való használata esetén:
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Szűrés** – Az alábbi szűrővel szabhatja testre az eredményeket napi részletességi szint használata esetén:
     - Usage Date (Használat dátuma)
--   **A különböző ajánlati típusok foglalási** adatai – a foglalási információk jelenleg a vállalati és a webes közvetlen ügyfelek számára érhetők el.
--   **Napi vagy havi összesítések** – a hívók megadhatják, hogy a foglalási összesítő adatokat a napi vagy a havi gabonában szeretné-e használni.
+-   **Foglalások különböző ajánlattípusokhoz** – A foglalások információi jelenleg csak nagyvállalati és Web Direct-ügyfelek számára érhetők el.
+-   **Napi vagy havi összesítések** – A hívók meghatározhatják, hogy napi vagy havi részletességi szinten szeretnék-e látni a foglalásuk összegzését.
 
-További információkért lásd a [foglalási összefoglalók API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries)technikai specifikációját.
+További információt a [Reservation Summaries API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries) műszaki specifikációjában talál.
 
-## <a name="price-sheet-api"></a>Árlista API
-A nagyvállalati ügyfelek ezt az API-t használhatják az egyéni díjszabás beolvasására az összes mérőszám esetében. A vállalatok ezt a használati adatokkal és a piactér használati adataival együtt használva a használati és a Piactéri adatokkal is elvégezhetik a kalkulációt. 
+## <a name="price-sheet-api"></a>Price Sheet API
+A nagyvállalati ügyfelek ezzel az API-val kérhetik le az összes mérő egyéni díjszabását. A vállalatok ezekkel az adatokkal, valamint a használati adatokkal és a piactér használati adataival végezhetnek költségszámításokat. 
 
-Az API-t tartalmazza:
+Az API a következőket tartalmazza:
 
--   **Azure szerepköralapú Access Control** – hozzáférési szabályzatok konfigurálása a [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy a [Azure PowerShell parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével megadhatja, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adatokhoz. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel. 
--   **Csak vállalati ügyfelek** – ez az API csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el. A web Direct-ügyfeleknek a RateCard API-t kell használniuk a díjszabás beszerzéséhez. 
+-   **Azure-beli szerepköralapú hozzáférés-vezérlés** – Hozzáférési szabályzatokat konfigurálhat az [Azure Portal](https://portal.azure.com), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) vagy az [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz. 
+-   **Csak nagyvállalati ügyfelek számára** – Ez az API csak EA-ügyfelek számára érhető el. A Web Direct-ügyfeleknek a RateCard API-t kell használniuk a díjszabás lekéréséhez. 
 
-További információkért tekintse meg az [árlista API](https://docs.microsoft.com/rest/api/consumption/pricesheet)technikai specifikációját.
+További információt a [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) műszaki specifikációjában talál.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Íme néhány példa a felhasználási API-k használatával:
+Néhány forgatókönyv, amelyek a használati API-kkal válnak lehetségessé:
 
--   **Számla egyeztetése** – a Microsoft a megfelelő összeget terhelte nekem?  Mi a számla, és tudom kiszámítani magam?
--   **Több költség** – most, hogy tudom, mennyit kell fizetnem?
--   **Költség optimalizálása** – tudom, hogy mennyit töltöttem fel... Hogyan tudhatok meg többet a pénzért az Azure-ban?
--   **Cost Tracking** – szeretném megtekinteni, hogy mennyit töltöttem és használom az Azure-t az idő múlásával. Mik azok a trendek? Hogyan lehetne jobban csinálni?
--   **Az Azure-t a hónap folyamán költi** – Mennyibe kerül az aktuális hónap napja? Szükség van-e bármilyen módosításra az Azure-beli kiadások és/vagy az Azure-használat tekintetében? Ha a hónapban használom az Azure-t?
--   **Riasztások beállítása** – erőforrás-alapú vagy pénzügyi alapú riasztást szeretne beállítani egy költségkeret alapján.
+-   **Számla egyeztetése** – A Microsoft a megfelelő összeget számította fel?  Mennyi a számlám, és ki tudom számítani magamnak?
+-   **Keresztköltségek** – Most, hogy tudom, mennyit számítottak fel, kinek kell kifizetnie a számlát a szervezetben?
+-   **Költségoptimalizálás** – Tudom, hogy mennyit számítottak fel… Hogyan használhatom ki jobban az Azure-ra költött összeget?
+-   **Költségkövetés** – Szeretném látni, hogy az idő függvényében mennyit költök az Azure-ra, és mennyit használom. Mik a trendek? Hogyan tudnék jobb eredményt elérni?
+-   **Azure-költségek a hónap során** – Eddig mennyit költöttem az aktuális hónapban? Változtatnom kell azon, mennyit költök az Azure-ra és/vagy hogyan használom? A hónap során mikor használom a legtöbbet az Azure-t?
+-   **Riasztások beállítása** – Szeretnék erőforrás-alapú használatot vagy pénzügyi alapú riasztásokat beállítani a költségvetés alapján.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a Azure-számlázási API-k használatáról az Azure-beli használatra való programozott betekintéshez: az [Azure számlázási API áttekintése](billing-usage-rate-card-overview.md).
+- Az Azure használatára vonatkozó programozott elemzések beszerzéséhez szükséges az Azure Billing API-k használatával kapcsolatban lásd [az Azure Billing API áttekintését](billing-usage-rate-card-overview.md).
 
 
 

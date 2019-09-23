@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Reservations?
-description: Ismerkedjen meg Azure Reservations és díjszabással a virtuális gépekre, az SQL-adatbázisokra, a Azure Cosmos DB és az egyéb erőforrás-költségekre való mentéshez.
+description: Megismerheti az Azure Reservationst és annak díjszabását a virtuális gépek, az SQL Database-adatbázisok, az Azure Cosmos DB és más erőforrások költségeinek csökkentéséhez.
 author: yashesvi
 manager: yashar
 ms.service: billing
@@ -8,93 +8,93 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806343"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Azure Reservations segítségével pénzt takaríthat meg egy-vagy hároméves virtuális gépek elutasításával, SQL Database számítási kapacitással, Azure Cosmos DB átviteli sebességgel vagy más Azure-erőforrásokkal. A véglegesítés lehetővé teszi, hogy kedvezményt kapjon a használt erőforrásokhoz. A foglalások jelentősen csökkenthetik a virtuális gépeket, az SQL Database számítási, Azure Cosmos DB-és egyéb erőforrás-költségeit, akár 72%-ot az utólagos elszámolású árakon. A foglalások számlázási kedvezményt biztosítanak, és nem érintik az erőforrások futtatókörnyezeti állapotát.
+Az Azure Reservationsszel csökkentheti költségeit, ha egy vagy három évre előre kötelezettséget vállal a virtuális gépekre, az SQL Database számítási kapacitására, az Azure Cosmos DB átviteli sebességére vagy más Azure-erőforrásokra. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti a virtuális gép, az SQL Database-számítások, az Azure Cosmos DB és más erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára.
 
-A foglalást előre vagy havonta is megfizetheti. A kezdeti és a havi foglalások teljes költsége megegyezik, és a havi fizetés után nem számítunk fel további díjakat. A havi fizetést az Azure-foglalások, harmadik féltől származó termékek nem vehetik igénybe.
+A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
-Foglalást a [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)vásárolhat.
+Foglalásokat az [Azure Portalon](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat.
 
-## <a name="why-buy-a-reservation"></a>Miért érdemes foglalást vásárolni?
+## <a name="why-buy-a-reservation"></a>Miért érdemes foglalást vásárolnia?
 
-Ha olyan virtuális gépekkel, Azure Cosmos DBekkel vagy SQL-adatbázisokkal rendelkezik, amelyek hosszú időn keresztül futnak, a foglalás megvásárlásával a leghatékonyabb megoldást nyújtja. Ha például egy szolgáltatás négy példányát folyamatosan, foglalás nélkül futtatja, az utólagos elszámolású díjszabás szerint számítunk fel díjat. Ha ezen erőforrások foglalását vásárolja meg, azonnal megkapja a foglalási kedvezményt. Az erőforrásokra az utólagos elszámolású díjszabásban már nem számítunk fel díjat.
+Ha hosszú ideig futó virtuális gépekkel, Azure Cosmos DB-vel vagy SQL Database-adatbázisokkal rendelkezik, egy foglalás vásárlása a legköltséghatékonyabb lehetőség. Ha például egy szolgáltatás négy példányát futtatja folyamatosan foglalás nélkül, akkor használatalapú fizetéses díjakat fizet. Ha ezen erőforrásokhoz vásárol egy foglalást, azonnal megkapja a foglalási kedvezményt. Az erőforrásokért ezután nem használatalapú fizetéses díjakat kell fizetnie.
 
-## <a name="charges-covered-by-reservation"></a>A foglalás által lefedett díjak
+## <a name="charges-covered-by-reservation"></a>A foglalás által fedezett költségek
 
-Szolgáltatási csomagok:
+Szolgáltatáscsomagok:
 
-- **Fenntartott virtuálisgép-példány** – a foglalás csak a virtuális gépek számítási költségeire vonatkozik. Nem fedi le a további szoftver-, hálózatkezelési és tárolási díjakat.
-- **Azure Cosmos db fenntartott kapacitás** – a foglalás az erőforrások számára kiépített átviteli sebességre vonatkozik. Nem fedi le a tárolási és hálózati költségeket.
-- **SQL Database fenntartott virtuális mag** – csak a számítási költségek szerepelnek a foglalásban. A licenc számlázása külön történik.
-- **SQL Data Warehouse** – A foglalás kiterjed A cDWU használatára. Nem fedi le a SQL Data Warehouse-használattal kapcsolatos tárolási vagy hálózati költségeket.
-- **App Service Stamp díja** – A foglalás A bélyegzők használatára vonatkozik. Nem vonatkozik a feldolgozókra, így a bélyegzőhöz kapcsolódó egyéb erőforrásokra külön díjat számítunk fel.
+- **Fenntartott virtuálisgép-példány** – A foglalás csak a virtuális gép számítási költségeit fedezi. Nem fedezi azonban a további szoftverek, a hálózatkezelés és a tárolás költségeit.
+- **Fenntartott Azure Cosmos DB-kapacitás** – A foglalás az erőforrások számára kiosztott átviteli sebességet fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit.
+- **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. A licenc számlázása külön történik.
+- **SQL Data Warehouse** – A foglalás a cDWU-használatot fedezi. Nem fedezi azonban az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
+- **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.
 
-A Windows rendszerű virtuális gépek és a SQL Database esetében a licencelési költségeket a [Azure Hybrid Benefitával](https://azure.microsoft.com/pricing/hybrid-benefit/)is lefedi.
+A Windows rendszerű virtuális gépek és az SQL Database esetében a licencelési költségek fedezéséhez használhatja az [Azure Hybrid Benefitet](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-## <a name="whos-eligible-to-purchase-a-reservation"></a>Ki jogosult a foglalás megvásárlására?
+## <a name="whos-eligible-to-purchase-a-reservation"></a>Ki jogosult foglalás vásárlására?
 
-A csomagok megvásárlásához előfizetés-tulajdonosi szerepkörrel kell rendelkeznie egy vállalatnál (MS-AZR-0017P vagy MS-AZR-0148P) vagy utólagos elszámolású előfizetésben (MS-AZR-0003P vagy MS-AZR-0023P). A felhőalapú megoldások szolgáltatói a Azure Portal vagy a [partner központ](/partner-center/azure-reservations) használatával vásárolhatják meg Azure Reservations.
+Egy csomag megvásárlásához rendelkeznie kell egy előfizetés-tulajdonosi szerepkörrel egy nagyvállalati (MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses előfizetésben (MS-AZR-0003P vagy MS-AZR-0023P). A felhőszolgáltatók az Azure Portalt vagy a  [Partnerközpontot](/partner-center/azure-reservations)  használhatják az Azure Reservations megvásárlásához.
 
-A Nagyvállalati Szerződés (EA) ügyfelek az EA-portálon a **fenntartott példányok hozzáadása** lehetőség letiltásával KORLÁTOZHATJÁK az EA rendszergazdáknak beérkező vásárlásokat. Egy foglalás megvásárlásához a nagyvállalati szerződéssel rendelkező rendszergazdának legalább egy EA-előfizetéshez előfizetés-tulajdonosnak kell lennie. Ez a lehetőség olyan vállalatok számára hasznos, akik egy központi csapatot szeretnének vásárolni a különböző költséghely-foglalások megvásárlásához. A vásárlást követően a központosított csapatok felvehetik a Cost Center-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután a foglalást a saját előfizetésük körébe helyezhetik. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás megvásárlásához.
+A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek az EA-rendszergazdákra korlátozhatják a vásárlásokat a **Fenntartott példányok hozzáadása** beállítás EA Portalon történő letiltásával. Foglalás vásárlásához az EA-rendszergazdáknak legalább egy EA-előfizetésben előfizetés-tulajdonosnak kell lenniük. Ez a beállítás olyan vállalatok számára hasznos, amelyek azt szeretnék, hogy egy központi csapat vásárolja meg a foglalásokat különböző költséghelyek számára. A vásárlás után a központi csapatok hozzáadhatják a költséghely-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután beállíthatják a foglalás hatókörét az előfizetéseikre. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás vásárlási helyén.
 
-A foglalási kedvezmény csak a nagyvállalati, a felhőalapú megoldás-szolgáltató (CSP) és az utólagos elszámolású csomagok keretében vásárolt előfizetésekhez kapcsolódó erőforrásokra vonatkozik.
+A foglalási kedvezmény csak olyan erőforrásokra érvényes, amelyek nagyvállalati, felhőszolgáltatói (CSP) vagy egyéni, használatalapú díjas csomagokkal lettek megvásárolva.
 
-## <a name="scope-reservations"></a>Hatókör-foglalások
+## <a name="scope-reservations"></a>A foglalások hatókörének beállítása
 
-A foglalás hatóköre egy előfizetéshez vagy erőforráscsoporthoz is felhasználható. A foglalás hatókörének beállítása kiválasztja a foglalás megtakarításának helyét. Amikor a foglalást egy erőforráscsoporthoz alkalmazza, a foglalási kedvezmények csak az erőforráscsoporthoz vonatkoznak – nem a teljes előfizetésre.
+A foglalásokhoz egy előfizetést vagy erőforráscsoportokat állíthat be hatókörként. A foglalás hatókörének beállítása megadja a foglalási kedvezmények alkalmazásának helyét. Ha egy erőforráscsoportot állít be a foglalás hatóköreként, akkor a foglalási kedvezmények csak az erőforráscsoportra érvényesek, nem a teljes előfizetésre.
 
-### <a name="reservation-scoping-options"></a>Foglalási hatókör beállításai
+### <a name="reservation-scoping-options"></a>A foglalás hatókörkezelési lehetőségei
 
-Az erőforráscsoport hatókörében három lehetőség közül választhat a foglalás hatóköréhez, igény szerint:
+Ha egy erőforráscsoportot állít be hatókörként, akkor az igényeitől függően három lehetősége van a foglalás hatókörének beállítására:
 
-- **Egy erőforráscsoport hatóköre** – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.
-- **Egyszeri előfizetés hatóköre** – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.
-- **Megosztott hatókör** – a foglalási kedvezményt a számlázási környezetben található jogosult előfizetésekben lévő erőforrások egyeztetésére alkalmazza. Nagyvállalati Szerződés ügyfelek esetében a számlázási környezet a beléptetés. Az utólagos elszámolású előfizetések esetében a számlázási hatókör a fiók rendszergazdája által létrehozott összes jogosult előfizetés.
+- **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
+- **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.
+- **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
 
-A foglalási kedvezmények a használatra való alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
+A foglalási kedvezmények a használatra történő alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
 
-1. Egy erőforráscsoport hatókörén belüli foglalások
-2. Önálló hatókörű foglalások
-3. Megosztott hatókörű foglalások
+1. Erőforráscsoport hatókörű foglalások
+2. Egyetlen hatókörrel rendelkező foglalások
+3. Megosztott hatókörrel rendelkező foglalások
 
-Egy erőforráscsoport több foglalásból is kaphat foglalási kedvezményeket, attól függően, hogy a foglalások hogyan terjednek ki.
+A foglalások hatókörének beállításától függően egy erőforráscsoport több foglalásból is kaphat foglalási kedvezményeket.
 
-### <a name="scope-a-reservation-to-a-resource-group"></a>Egy erőforráscsoport foglalásának hatóköre
+### <a name="scope-a-reservation-to-a-resource-group"></a>Erőforráscsoport beállítása foglalási hatókörként
 
-A foglalást a foglalás megvásárlásakor, illetve a hatókör megvásárlása után is beállíthatja egy erőforráscsoport hatókörére. A foglalás egy erőforráscsoporthoz való hozzárendeléséhez előfizetés-tulajdonosnak kell tartoznia.
+Az erőforráscsoportot beállíthatja a foglalás hatóköreként a foglalás megvásárlásakor, illetve utána is. Egy erőforráscsoport foglalási hatókörként történő beállításához előfizetés-tulajdonosnak kell lennie.
 
-A hatókör beállításához nyissa meg a Azure Portal [vásárlási foglalás](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) lapját. Válassza ki a megvásárolni kívánt foglalási típust. A válassza ki azt a terméket, amely számára meg **szeretné vásárolni** a kiválasztási űrlapot, módosítsa a hatókör értékét egy erőforráscsoport értékre. Ezután válasszon ki egy erőforráscsoportot.
+A hatókör beállításához lépjen az Azure Portal [Foglalás vásárlása](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) lapjára. Válassza ki a megvásárolni kívánt foglalási típust. A **Megvásárolni kívánt termék kiválasztása** kiválasztási űrlapon módosítsa a Hatókör beállítását Egyetlen erőforráscsoport értékre. Ezután válasszon ki egy erőforráscsoportot.
 
-![Példa a virtuális gép foglalásának megvásárlására](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
+![A virtuálisgép-foglalás vásárlásának kiválasztását bemutató példa](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
 
-A virtuális gépi foglalásban található erőforráscsoport esetében a vásárlási javaslatok jelennek meg. A javaslatok kiszámítása az elmúlt 30 napban történő használat elemzésével történik. Ha a fenntartott példányokkal rendelkező erőforrások futtatásának költségei olcsóbbak, mint az erőforrások az utólagos elszámolású díjszabással való futtatásának költségei. A foglalások vásárlási javaslataival kapcsolatos további információkért lásd [a használati minta alapján fenntartott példányok vásárlására vonatkozó javaslatok](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations)beszerzése című témakört.
+Megjelennek az erőforráscsoportra vonatkozó vásárlási javaslatok a virtuálisgép-foglaláshoz. A javaslatok az elmúlt 30 nap használati adatainak elemzésén alapulnak. A rendszer akkor javasol egy adott vásárlást, ha a fenntartott példányokkal az erőforrások futtatási költsége alacsonyabb, mint a használatalapú fizetéses díjakkal. A foglalásvásárlási javaslatokkal kapcsolatos további információkért tekintse meg [a fenntartott példányok vásárlási javaslatait a használati mintázat alapján](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations) bemutató cikket.
 
-A hatókört bármikor frissítheti a foglalás megvásárlása után. Ehhez nyissa meg a foglalást, kattintson a **konfiguráció**lehetőségre, és a foglalás újrahatóköre elemre. A foglalás Rescoping nem kereskedelmi tranzakció. A foglalási időszak nem módosul. A hatókör frissítésével kapcsolatos további információkért lásd: [a hatókör frissítése a foglalás megvásárlása után](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lépjen a foglalásra, kattintson a **Konfigurálás** lehetőségre, és állítsa be újból a foglalás hatókörét. A foglalás hatókörének újbóli beállítása nem számít kereskedelmi tranzakciónak. A foglalási időszak nem módosul. A hatókör frissítésével kapcsolatos további információkért lásd [a foglalás megvásárlása utáni hatókörfrissítést](billing-manage-reserved-vm-instance.md#change-the-reservation-scope) bemutató cikket.
 
-![A foglalás hatókörének módosítását bemutató példa](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
+![A foglalási hatókör módosítását bemutató példa](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
 
-### <a name="monitor-and-optimize-reservation-usage"></a>A foglalások használatának monitorozása és optimalizálása
+### <a name="monitor-and-optimize-reservation-usage"></a>A foglaláshasználat monitorozása és optimalizálása
 
-A foglalási használatot többféleképpen is nyomon követheti – Azure Portalon, API-kon vagy a használati adatokon keresztül. Ha szeretné megtekinteni az összes olyan foglalást, amelyhez hozzáféréssel rendelkezik, lépjen a Azure Portal **foglalások** pontra. A foglalások rács a foglalás utolsó rögzített kihasználtságának százalékos arányát jeleníti meg. Kattintson a foglalásra a foglalás hosszú távú kihasználtságának megtekintéséhez.
+A foglalás használatát többféleképpen monitorozhatja: az Azure Portalon, API-kkal vagy a használati adatok alapján. Azoknak a foglalásoknak a megtekintéséhez, amelyekhez hozzáféréssel rendelkezik, lépjen az Azure Portal **Foglalások** területére. A foglalásokat megjelenítő rács a foglalás legutóbb rögzített százalékos kihasználtságát mutatja. A foglalás hosszú távú kihasználtságának megtekintéséhez kattintson a foglalásra.
 
-A foglalás kihasználtságát [API](billing-reservation-apis.md#see-reservation-usage) -k és a [használati adatok](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) alapján is lekérheti, ha Ön nagyvállalati szerződéssel rendelkező ügyfél.
+Ha Ön Nagyvállalati Szerződéssel rendelkező ügyfél, a foglalás kihasználtságát [API-kkal](billing-reservation-apis.md#see-reservation-usage) és a [használati adatok](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) alapján is lekérheti.
 
-Ha azt tapasztalja, hogy az erőforráscsoport hatókörben lévő foglalásának kihasználtsága alacsony, akkor a foglalási hatókört egyetlen előfizetésre frissítheti, vagy megoszthatja azt a számlázási környezetben. Megoszthatja a foglalást, és alkalmazhatja az eredményül kapott foglalásokat a különböző erőforráscsoportok esetében is.
+Ha azt tapasztalja, hogy az erőforráscsoport hatókörű foglalás kihasználtsága alacsony, akkor frissítheti a foglalás hatókörét egyetlen előfizetésre, vagy megoszthatja a számlázási környezetben. A foglalást fel is oszthatja, és a kapott foglalásokat különböző erőforráscsoportokra alkalmazhatja.
 
 ### <a name="other-considerations"></a>Egyéb szempontok
 
-Ha nem rendelkezik a megfelelő erőforrásokkal egy erőforráscsoporthoz, akkor a foglalás kihasználatlan lesz. A foglalás nem vonatkozik automatikusan egy másik erőforrás-csoportra vagy-előfizetésre, ahol alacsony a kihasználtsága.
+Ha nem rendelkezik egyező erőforrásokkal az erőforráscsoportban, akkor a foglalás kihasználatlan lesz. Ha alacsony a kihasználtság, a rendszer nem alkalmazza automatikusan a foglalást egy másik erőforráscsoportra vagy előfizetésre.
 
-A foglalási hatókör nem frissül automatikusan, ha az erőforráscsoportot egyik előfizetésből egy másikba helyezi át. Ha törli az erőforráscsoportot, a hatókör nem frissül. [A foglalást](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)újra fel kell vennie. Ellenkező esetben a foglalás kihasználatlan lesz.
+Ha az erőforráscsoportot áthelyezi egy másik előfizetésbe, a foglalás hatóköre nem frissül automatikusan. Ha törli az erőforráscsoportot, a hatókör nem frissül. [A foglalás hatókörét újból be kell állítania.](billing-manage-reserved-vm-instance.md#change-the-reservation-scope) Ellenkező esetben a foglalás kihasználatlan lesz.
 
-## <a name="discounted-subscription-and-offer-types"></a>Kedvezményes előfizetés és ajánlati típusok
+## <a name="discounted-subscription-and-offer-types"></a>Kedvezményes előfizetés- és ajánlattípusok
 
 A foglalási kedvezmények a következő jogosult előfizetésekre és ajánlattípusokra vonatkoznak.
 
@@ -104,76 +104,76 @@ A foglalási kedvezmények a következő jogosult előfizetésekre és ajánlatt
 
 A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
 
-## <a name="how-is-a-reservation-billed"></a>Hogyan történik a foglalás számlázása?
+## <a name="how-is-a-reservation-billed"></a>Hogy történik a foglalás számlázása?
 
-A foglalás díját az előfizetéshez kötött fizetési mód alapján számítjuk fel. Ha nagyvállalati előfizetéssel rendelkezik, a foglalási költségek a pénzügyi kötelezettségvállalás egyenlegét vonják le. Ha a pénzügyi kötelezettségvállalás egyenlege nem fedi le a foglalás költségeit, a felszámított összegért kell fizetnie. Ha előfizetéssel rendelkezik az utólagos elszámolású csomaggal, akkor a fiókjához tartozó bankkártyát azonnal felszámítjuk a kezdeti vásárlások után. A számlán a havi fizetések jelennek meg, és a hitelkártyát havonta számoljuk el. A számla számlázása után a következő számlán megjelenő díjak láthatók.
+A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha nagyvállalati előfizetéssel rendelkezik, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg.
 
 ## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
-A foglalási kedvezmény a foglalás megvásárlásakor kiválasztott attribútumoknak megfelelő erőforrás-használatra vonatkozik. Az attribútumok közé tartozik az a hatókör, amelyben a megfelelő virtuális gépek, SQL-adatbázisok, Azure Cosmos DB vagy más erőforrások futnak. Ha például az USA nyugati régiójában négy standard D2 virtuális gépre vonatkozó foglalási kedvezményt szeretne használni, válassza ki azt az előfizetést, amelyben a virtuális gépek futnak.
+A foglalási kedvezmény a foglalás megvásárlásakor kiválasztott jellemzőkkel egyező erőforrás-használatra érvényes. Ebbe beletartozik az a hatókör, amelyben az egyező virtuális gépek, SQL Database-adatbázisok, Azure Cosmos DB és más erőforrások futnak. Ha például az USA nyugati régiójában szeretne foglalási kedvezményt négy Standard D2 virtuális gépre, akkor azt az előfizetést válassza ki, amelyben a virtuális gépek futnak.
 
-A foglalási kedvezmény "*use-this-or-Lose-it*". Ha nem rendelkezik a megfelelő erőforrásokkal, akkor az adott órára vonatkozó foglalási mennyiség elvész. Nem lehet továbbítani a használaton kívüli órákat.
+A foglalási kedvezmény csak akkor érvényes, ha *folyamatosan igénybe veszi*. Ha egy bizonyos órában nem rendelkezik egyező erőforrásokkal, akkor arra az órára elveszíti a foglalási mennyiséget. A lefoglalt, de fel nem használt órák nem vihetők tovább.
 
-Egy erőforrás leállításakor a foglalási kedvezmény automatikusan a megadott hatókörben lévő másik egyező erőforrásra vonatkozik. Ha nem található egyező erőforrás a megadott hatókörben, akkor a lefoglalt órák *elvesznek*.
+Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem találhatók egyező erőforrások a megadott hatókörben, akkor a lefoglalt órák *elvesznek*.
 
-Előfordulhat például, hogy később létrehoz egy erőforrást, és egy hozzá tartozó foglalást használ. A foglalási kedvezmény automatikusan az új egyező erőforrásra vonatkozik.
+Előfordulhat például, hogy később létrehoz egy erőforrást, és rendelkezni fog egy egyező, kihasználatlan erőforrással. A rendszer automatikusan az új egyező erőforrásra alkalmazza a foglalási kedvezményt.
 
-Ha a virtuális gépek különböző előfizetésekben futnak a regisztráció/fiókon belül, válassza ki a hatókört megosztottként. A megosztott hatókör lehetővé teszi, hogy a foglalási kedvezmény alkalmazható legyen az előfizetések között. A hatókört a foglalás megvásárlása után is módosíthatja. További információ: [Manage Azure Reservations](billing-manage-reserved-vm-instance.md).
+Ha a virtuális gépek eltérő előfizetésben futnak a regisztráción vagy fiókon belül, akkor a hatókört megosztottként állítsa be. A megosztott hatókör lehetővé teszi a foglalási kedvezmény több előfizetésre történő alkalmazását. Foglalásvásárlás után módosíthatja a hatókört. További információkért tekintse meg [az Azure-foglalások kezelését](billing-manage-reserved-vm-instance.md) ismertető cikket.
 
-A foglalási kedvezmény csak a nagyvállalati, CSP-vagy előfizetésekhez kapcsolódó erőforrásokra vonatkozik, az utólagos elszámolású díjszabással. A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
+A foglalási kedvezmény csak nagyvállalati, CSP- vagy használatalapú díjas csomagokhoz társított erőforrásokra érvényes. A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
 
-## <a name="when-the-reservation-term-expires"></a>A foglalás érvényességének lejárta után
+## <a name="when-the-reservation-term-expires"></a>A foglalási időszak lejárata
 
-A foglalási időszak végén a számlázási engedmény lejár. A virtuális gépet, az SQL Database-t, a Azure Cosmos DBt vagy más erőforrást az utólagos elszámolású díjszabás szerint számoljuk el. Azure Reservations ne újítsa meg automatikusan. A számlázási engedmény beszerzésének folytatásához új foglalást kell vásárolnia a jogosult szolgáltatásokhoz és szoftverekhez.
+A foglalási időszak végén a számlázási kedvezmény lejár. A virtuális gépért, az SQL Database-adatbázisért, az Azure Cosmos DB-ért és más erőforrásokért használatalapú díjakat számlázunk. Az Azure-foglalások nem újulnak meg automatikusan. Ahhoz, hogy továbbra is megkapja a számlázási kedvezményt, vásárolnia kell egy új foglalást egy jogosult szolgáltatáshoz vagy szoftverhez.
 
-## <a name="discount-applies-to-different-sizes"></a>A kedvezmény különböző méretekre vonatkozik
+## <a name="discount-applies-to-different-sizes"></a>A kedvezmény különböző méretekre érvényes
 
-A foglalás megvásárlásakor a kedvezmény az azonos méretű csoportba tartozó attribútumokkal rendelkező más példányokra is érvényes. Ez a szolgáltatás a példányok méretének rugalmassága. A kedvezményes lefedettség rugalmassága a foglalás típusától és a foglalás megvásárlásakor kiválasztott attribútumoktól függ.
+Foglalás vásárlásakor a foglalás alkalmazható az ugyanabban a méretcsoportban található attribútumokkal rendelkező más példányokra. Ezt a jellemzőt példányméret-rugalmasságnak nevezik. A kedvezmény általi lefedettség rugalmassága a foglalás típusától és a foglalás megvásárlásakor kiválasztott attribútumoktól függ.
 
-Szolgáltatási csomagok:
+Szolgáltatáscsomagok:
 
-- Fenntartott VM-példányok: Ha megvásárolja a foglalást, és kiválasztja a **példány méretének rugalmasságát**, a kedvezményes lefedettség a kiválasztott VM-mérettől függ. A foglalás a virtuális gépek (VM-EK) méretére is vonatkozhat ugyanabban a méretű adatsorozat-csoportban. További információ: [virtuális gépek méretének rugalmassága fenntartott VM-példányokkal](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SQL Database fenntartott kapacitás: A kedvezményes lefedettség a választott teljesítmény szintjétől függ. További információ: az [Azure foglalási kedvezmény alkalmazásának megismerése](billing-understand-reservation-charges.md).
-- Azure Cosmos DB fenntartott kapacitás: A kedvezményes lefedettség a kiosztott átviteli sebességtől függ. További információ: [Azure Cosmos db foglalási kedvezmény alkalmazásának megismerése](billing-understand-cosmosdb-reservation-charges.md).
+- Reserved VM Instances: Ha a foglalás megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a kiválasztott virtuálisgép-mérettől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+- Fenntartott SQL Database-kapacitás: A kedvezmény általi lefedettség a kiválasztott teljesítményszinttől függ. További információkért lásd [az Azure-beli foglalási kedvezmény alkalmazását](billing-understand-reservation-charges.md) ismertető cikket.
+- Fenntartott Azure Cosmos DB-kapacitás: A kedvezmény általi lefedettség a kiosztott átviteli sebességtől függ. További információkért lásd [az Azure Cosmos DB-beli foglalási kedvezmény alkalmazását](billing-understand-cosmosdb-reservation-charges.md) ismertető cikket.
 
 ## <a name="reservation-notifications"></a>Foglalási értesítések
 
-Az Azure-előfizetésért való fizetéstől függően e-mailben foglalási értesítéseket küldünk a szervezet következő felhasználói számára. Az értesítések küldése különböző eseményekre történik, beleértve a következőket:
+Az Azure-előfizetésért történő fizetés módjától függően e-mailes foglalási értesítést küldünk a szervezet alábbi felhasználóinak. Számos különféle eseményről küldünk értesítést, ilyenek például:
 
 - Vásárlás
-- Közelgő foglalás lejárata
-- Expiry
-- Megújítási
+- Foglalás közelgő lejárata
+- Lejárat
+- Megújítás
 - Lemondás
 - Hatókör módosítása
 
-Az EA-előfizetésekkel rendelkező ügyfelek esetében:
-- A rendszer egy vásárlási értesítést küld a vásárlónak és az EA értesítési partnereinek.
-- Az egyéb foglalási életciklusokra vonatkozó értesítéseket csak az EA értesítési névjegyek kapják meg.
-- A RBAC (IAM) engedéllyel egy foglaláshoz hozzáadott felhasználók nem kapnak e-mail-értesítéseket.
+Nagyvállalati előfizetéssel rendelkező ügyfelek esetében:
+- Vásárlási értesítést a vásárlónak és az EA-értesítési kapcsolattartóknak küldünk.
+- A foglalási életciklus egyéb értesítéseit csak az EA-értesítési kapcsolattartóknak küldjük el.
+- A foglaláshoz RBAC- (IAM-) engedéllyel hozzáadott felhasználók nem kapnak semmilyen e-mailes értesítést.
 
-Egyéni előfizetéssel rendelkező ügyfelek esetén:
-- A vásárló vásárlási értesítést kap.
-- A vásárlás időpontjában az előfizetés számlázási fiókjának tulajdonosa egy vásárlási értesítést kap.
-- A fiók tulajdonosa megkapja az összes többi értesítést.
+Az egyéni előfizetéssel rendelkező ügyfelek esetében:
+- A vásárló kap egy vásárlási értesítést.
+- A vásárlás időpontjában az előfizetéshez tartozó számlázási fiók tulajdonosa kap egy vásárlási értesítést.
+- A fióktulajdonos kapja meg az összes többi értesítést.
 
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a Azure Reservationsról a következő cikkekkel:
+- Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
     - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
-    - [Az előfizetéshez tartozó foglalások használatának ismertetése az utólagos elszámolású díjszabással](billing-understand-reserved-instance-usage.md)
+    - [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](billing-understand-reserved-instance-usage.md)
     - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](billing-understand-reserved-instance-usage-ea.md)
-    - [A Windows-szoftverek nem tartalmazzák a foglalásokat](billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations a partner Center Cloud Solution Provider (CSP) programban](/partner-center/azure-reservations)
+    - [A Reservations díjában nem szereplő Windows-szoftverköltségek](billing-reserved-instance-windows-software-costs.md)
+    - [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)
 
-- További információ a szolgáltatási csomagok foglalásáról:
-    - [Virtual Machines a Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-    - [Azure Cosmos DB fenntartott kapacitással rendelkező erőforrások Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Azure SQL Database fenntartott kapacitással rendelkező számítási erőforrások SQL Database](../sql-database/sql-database-reserved-capacity.md) További információ a szoftvercsomagok foglalásáról:
-    - [A Red Hat szoftvercsomag Azure Reservations](../virtual-machines/linux/prepay-rhel-software-charges.md)
-    - [SUSE-szoftvercsomagok Azure Reservations](../virtual-machines/linux/prepay-suse-software-charges.md)
+- További információk a szolgáltatáscsomagok foglalásaival kapcsolatban:
+    - [Azure Reserved VM Instancesszel rendelkező virtuális gépek](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrások](../cosmos-db/cosmos-db-reserved-capacity.md)
+    - [Fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrások](../sql-database/sql-database-reserved-capacity.md) További információk a szoftvercsomagok foglalásaival kapcsolatban:
+    - [Azure Reservations-beli Red Hat-szoftvercsomagok](../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Azure Reservations-beli SUSE-szoftvercsomagok](../virtual-machines/linux/prepay-suse-software-charges.md)
