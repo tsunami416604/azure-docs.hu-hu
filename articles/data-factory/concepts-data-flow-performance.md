@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992355"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180857"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -90,6 +90,13 @@ Erre az ikonra kattintva megjelenik az adatfolyam végrehajtási terve és az az
 * Az adatáramlás-tervezőn belül az átalakítások adatelőnézet lapján megtekintheti az átalakítási logika eredményét.
 * Az egység tesztelése az adatfolyamatokat a folyamat-tervezőből egy adatfolyamati tevékenységnek a folyamat tervezési vásznon való elhelyezésével, és a "hibakeresés" gomb használatával tesztelheti.
 * A hibakeresési módban végzett tesztelés egy élő, melegen futó fürt környezetében fog működni, anélkül, hogy meg kellene várnia egy igény szerinti fürt üzembe helyezését.
+* Az adatelemzési folyamaton belüli hibakeresés során az adatforgalom tervezői felületén belül korlátozhatja az egyes forrásokhoz tartozó adatok mennyiségét, ha beállítja az adatáramlás-tervező felhasználói felületének hibakeresési beállítások hivatkozásán a sor korlátját. Vegye figyelembe, hogy először be kell kapcsolnia a hibakeresési módot.
+
+![Hibakeresési beállítások](media/data-flow/debug-settings.png "Hibakeresési beállítások")
+
+* Amikor az adatfolyamatokat egy folyamat hibakeresésének végrehajtásával teszteli, korlátozhatja a teszteléshez használt sorok számát, ha beállítja a mintavételezési méretet az egyes forrásokon. Ügyeljen arra, hogy letiltsa a mintavételezést, amikor rendszeres működésű ütemezés szerint ütemezi a folyamatokat.
+
+![Sorok mintavételezése](media/data-flow/source1.png "Sorok mintavételezése")
 
 ### <a name="disable-indexes-on-write"></a>Indexek letiltása íráskor
 * Használjon egy ADF-feldolgozási folyamat tárolt eljárási tevékenységét az adatfolyam tevékenysége előtt, amely letiltja a fogadón lévő, a fogadó táblán írt indexeket.
@@ -140,6 +147,10 @@ Ha például az 2019-es számú adatfájlok listáját szeretném feldolgozni eg
 ```DateFiles/*_201907*.txt```
 
 Ez jobb teljesítményt nyújt, mint a blob Store-ban egy olyan folyamat, amely az összes egyező fájlon megismétli az összes megfeleltetett fájlt egy olyan ForEach használatával, amelyen belül végrehajtja az adatfolyam-tevékenységet.
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>A hibakeresési fürt méretének növeléséhez
+
+Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure Integration runtimet fogja használni, amely minden egyes adatfeldolgozó esetében automatikusan létrejön. Ez az alapértelmezett Azure IR 8 mag, 4 az illesztőprogram-csomóponthoz, a 4 pedig egy feldolgozó csomópont esetében, általános számítási tulajdonságok használatával. Ha nagyobb mennyiségű adattesztet használ, a hibakeresési fürt méretének növeléséhez hozzon létre egy új Azure IR nagyobb konfigurációkkal, és válassza ezt az új Azure IR a hibakeresési lehetőség bekapcsolásakor. Ennek hatására az ADF ezt a Azure IR használja az adatelemzési és folyamat-hibakereséshez az adatfolyamatokkal.
 
 ## <a name="next-steps"></a>További lépések
 

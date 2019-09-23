@@ -1,19 +1,19 @@
 ---
-title: Az Azure HPC cache áttekintése
+title: Az Azure HPC cache előzetes verziójának áttekintése
 description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyorsító megoldás a nagy teljesítményű számítástechnika számára
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036886"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180684"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
+# <a name="what-is-azure-hpc-cache-preview"></a>Mi az az Azure HPC Cache? (Előzetes verzió)
 
 Az Azure HPC cache nagy teljesítményű számítástechnikai (HPC) feladatokhoz biztosít hozzáférést az adatokhoz. Az Azure-ban gyorsítótárazott fájlok lehetővé teszik a felhőalapú számítástechnika méretezhetőségét még azon munkafolyamatok esetében is, amelyekben az adatait WAN-kapcsolatokon keresztül tárolják, például a helyi Datacenter hálózati tároló (NAS) környezetében.
 
@@ -57,6 +57,10 @@ Az Azure HPC cache a következő Azure-régiókban érhető el:
 * USA nyugati régiója, 2.
 
 A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache) .
+
+## <a name="preview-availability"></a>Előzetes verzió elérhetősége
+
+Az Azure HPC cache nyilvános előzetes verziója korlátozott a szolgáltatás minőségének biztosítása érdekében. Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat tesztelési gyorsítótárat.
 
 ## <a name="next-steps"></a>További lépések
 

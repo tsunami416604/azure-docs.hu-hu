@@ -1,22 +1,21 @@
 ---
-title: Azure HPC-gyorsítótár létrehozása
+title: Azure HPC-gyorsítótár létrehozása (előzetes verzió)
 description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036843"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180971"
 ---
-# <a name="configure-aggregated-namespace"></a>Összesített névtér konfigurálása
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>Az összesített névtér megtervezése
 
-Az Azure HPC cache lehetővé teszi, hogy az ügyfelek különböző tárolási rendszerekhez férhessenek hozzá egy virtuális névtéren keresztül, amely elrejti a háttérrendszer részletes adatait.
+Az Azure HPC cache (előzetes verzió) lehetővé teszi, hogy az ügyfelek különböző tárolási rendszerekhez férhessenek hozzá egy virtuális névtéren keresztül, amely elrejti a háttér-tárolási rendszer részleteit.
 
 Tárolási cél hozzáadásakor beállíthatja az ügyfél felé irányuló filepath. Az ügyfélszámítógépek csatlakoztatják ezt a filepath. Módosíthatja az ehhez az elérési úthoz társított tárolási célt. Például lecserélheti a hardveres tárolót a felhőalapú tárolóra anélkül, hogy újra kellene írnia az ügyfelekre irányuló eljárásokat.
 
@@ -31,7 +30,7 @@ A sablon adatai egy adatközpontban tárolódnak, és a feladathoz szükséges i
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-Az adatközpont tárolási rendszere a következő exportálásokat teszi elérhetővé: 
+Az adatközpont tárolási rendszere a következő exportálásokat teszi elérhetővé:
 
     /
     /goldline
@@ -49,7 +48,7 @@ A gyorsítótáron keresztüli egyszerű hozzáférés engedélyezéséhez érde
 
 Mivel az NFS-forrás elérési útjai azonos exportálási alkönyvtárak, meg kell határoznia több névtér elérési útját is ugyanabból a tárolási céltól. 
 
-| Tárolási cél állomásneve  | NFS-exportálási útvonal      | Alkönyvtár elérési útja | Névtér elérési útja    |
+| Tárolási cél állomásneve  | NFS-exportálási elérési út      | Alkönyvtár elérési útja | Névtér elérési útja    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |

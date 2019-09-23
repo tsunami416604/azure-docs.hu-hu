@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441996"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181109"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -32,13 +32,13 @@ A jelen dokumentumban ismertetett lépések többsége a következő segédprogr
 
 Ha nincs [tartományhoz csatlakoztatva](./domain-joined/hdinsight-security-overview.md), a HDInsight **egyetlen felhasználói** rendszernek kell tekinteni. Egyetlen SSH-felhasználói fiók jön létre a fürttel, rendszergazdai szintű engedélyekkel. További SSH-fiókok is létrehozhatók, de rendszergazdai hozzáféréssel is rendelkeznek a fürthöz.
 
-A tartományhoz csatlakoztatott HDInsight több felhasználót és részletesebb jogosultságokat és szerepkör-beállításokat is támogat. További információ: tartományhoz [csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md).
+A tartományhoz csatlakoztatott HDInsight több felhasználót és részletesebb jogosultságokat és szerepkör-beállításokat is támogat. További információ: [tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md).
 
 ## <a name="domain-names"></a>Tartománynevek
 
 Az internetről `CLUSTERNAME.azurehdinsight.net` a fürthöz való csatlakozáskor használandó teljes tartománynév (FQDN) vagy `CLUSTERNAME-ssh.azurehdinsight.net` (csak ssh esetén).
 
-Belsőleg a fürt minden csomópontja rendelkezik egy, a fürt konfigurálása során hozzárendelt névvel. A fürt nevének megkereséséhez tekintse  meg a gazdagépek lapot a Ambari webes felhasználói felületén. A következő paranccsal is visszaállíthatja a gazdagépek listáját a Ambari REST API:
+Belsőleg a fürt minden csomópontja rendelkezik egy, a fürt konfigurálása során hozzárendelt névvel. A fürt nevének megkereséséhez tekintse meg a **gazdagépek** lapot a Ambari webes felhasználói felületén. A következő paranccsal is visszaállíthatja a gazdagépek listáját a Ambari REST API:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -103,7 +103,7 @@ A HDInsight használatakor az adatfájlok skálázható és rugalmas módon tár
 * A külső szolgáltatásokból, például webhelyekről, fájlfeltöltés/letöltési segédprogramokból, különböző nyelvi SDK-kből és webböngészőkből való kisegítés.
 * Nagyméretű fájlok kapacitása és nagyméretű méretezhető tárolás.
 
-További információ: a blobok és a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) [ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) .
+További információ: a [Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)ismertetése.
 
 Az Azure Storage vagy a Data Lake Storage használatakor nem kell semmit HDInsight az adatok eléréséhez. Például a következő parancs felsorolja a `/example/data` mappában található fájlokat, függetlenül attól, hogy az Azure Storage-ban vagy a Data Lake Storageon van-e tárolva:
 
@@ -124,11 +124,9 @@ Az __Azure Storage__használatakor használja a következő URI-sémák egyikét
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Nem alapértelmezett Storage-fiókkal való kommunikációhoz használatos. Ha például egy további Storage-fiókkal vagy egy nyilvánosan elérhető Storage-fiókban tárolt adatokhoz fér hozzá.
 
-__Azure Data Lake Storage Gen2__használatakor használja a következő URI-sémák egyikét:
+__Azure Data Lake Storage Gen2__használatakor használja a következő URI-sémát:
 
-* `abfs:///`: Az alapértelmezett tárterületet titkosítatlan kommunikációval érheti el.
-
-* `abfss:///`: Az alapértelmezett tároló elérése titkosított kommunikáció használatával.  A abfss séma csak a HDInsight 3,6-es verziójától támogatott.
+* `abfs://`: Az alapértelmezett tároló elérése titkosított kommunikáció használatával.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Nem alapértelmezett Storage-fiókkal való kommunikációhoz használatos. Ha például egy további Storage-fiókkal vagy egy nyilvánosan elérhető Storage-fiókban tárolt adatokhoz fér hozzá.
 

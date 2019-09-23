@@ -168,7 +168,7 @@ Most hozzon létre egy vagy több olyan logikai alkalmazást, amely üzeneteket 
 
       ![A "batch receiver" logikai alkalmazás kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Válassza ki ezt a műveletet: **Batch_messages –*a Batch-fogadó* <>**
+   4. Válassza ki ezt a műveletet: **Batch_messages –<*a Batch-fogadó*>**
 
       ![A "Batch_messages" művelet kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

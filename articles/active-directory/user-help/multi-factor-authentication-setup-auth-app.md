@@ -30,7 +30,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Az Microsoft Authenticator alkalmazás beállítása értesítések küldéséhez
 
-1. A **további biztonsági ellenőrzés** lapon válassza a  ****Mobile App** (1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
+1. A **további biztonsági ellenőrzés** lapon válassza a **Mobile App** **(1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
 
 2. Válassza az **értesítések fogadása** az ellenőrzéshez lehetőséget, **hogy a hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 
@@ -70,7 +70,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Az Microsoft Authenticator alkalmazás beállítása az ellenőrző kódok használatára
 
-1. A **további biztonsági ellenőrzés** lapon válassza a  ****Mobile App** (1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
+1. A **további biztonsági ellenőrzés** lapon válassza a **Mobile App** **(1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
 
 2. Válassza az **ellenőrző kód használata** lehetőséget, hogy a **hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 

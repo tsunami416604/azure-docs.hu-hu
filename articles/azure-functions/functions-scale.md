@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874940"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180103"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -63,6 +63,8 @@ A felhasználási terv az alapértelmezett üzemeltetési csomag, amely a követ
 
 Az azonos régióban található Function apps ugyanahhoz a használati tervhez is hozzárendelhető. Nincs hátránya, hogy több alkalmazás is fut ugyanabban a használati csomagban. Ha több alkalmazást rendel ugyanahhoz a használati tervhez, az egyes alkalmazások rugalmasságát, méretezhetőségét és megbízhatóságát nem befolyásolja.
 
+Ha többet szeretne megtudni arról, hogyan becsülheti fel a költségeket a használati tervekben, tekintse meg a [felhasználási terv költségeinek megismerése](functions-consumption-costs.md)című témakört.
+
 ## <a name="premium-plan"></a>Prémium csomag (előzetes verzió)
 
 A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példányait a beérkező események száma alapján adja hozzá és távolítja el, a használati tervhez hasonlóan.  A Prémium csomag a következő funkciókat támogatja:
@@ -85,7 +87,7 @@ Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben:
 * A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben [engedélyezett maximális végrehajtási idő](#timeout) .
 * Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például VNET/VPN-kapcsolaton érhetők el.
 
-A JavaScript-függvények prémium csomagon való futtatásakor olyan példányt válasszon, amelynek kevesebb vCPU van. További információ: az egymagos [prémium csomagok kiválasztása](functions-reference-node.md#considerations-for-javascript-functions).  
+A JavaScript-függvények prémium csomagon való futtatásakor olyan példányt válasszon, amelynek kevesebb vCPU van. További információ: az [egymagos prémium csomagok kiválasztása](functions-reference-node.md#considerations-for-javascript-functions).  
 
 ## <a name="app-service-plan"></a>Dedikált (App Service) csomag
 
@@ -96,11 +98,11 @@ A következő helyzetekben vegye fontolóra App Service tervet:
 * Vannak olyan meglévő, nem használt virtuális gépek, amelyek már futtatnak más App Service-példányokat.
 * Egyéni rendszerképet szeretne megadni a függvények futtatásához.
 
-Ugyanezt a funkciót a App Service csomagban lévő Function apps esetében is megfizeti, mint más App Service-erőforrásokhoz, például a webalkalmazásokhoz. Az App Service-csomag működésével kapcsolatos részletekért tekintse [meg a Azure app Service tervek](../app-service/overview-hosting-plans.md)részletes áttekintését.
+Ugyanezt a funkciót a App Service csomagban lévő Function apps esetében is megfizeti, mint más App Service-erőforrásokhoz, például a webalkalmazásokhoz. Az App Service-csomag működésével kapcsolatos részletekért tekintse [meg a Azure app Service tervek részletes áttekintését](../app-service/overview-hosting-plans.md).
 
 App Service csomaggal a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Az autoscale is engedélyezhető. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
 
-Ha a JavaScript-függvényeket App Service csomagon futtatja, olyan csomagot válasszon, amelynek kevesebb vCPU van. További információ: Choose [Single-core app Service Plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+Ha a JavaScript-függvényeket App Service csomagon futtatja, olyan csomagot válasszon, amelynek kevesebb vCPU van. További információ: [Choose Single-core app Service Plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
 ### <a name="always-on"></a>Always on
@@ -129,7 +131,9 @@ Ha a parancs `dynamic`kimenete a, a Function alkalmazás a használati tervben v
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-Bármely csomag esetében a Function alkalmazáshoz egy általános Azure Storage-fiók szükséges, amely támogatja az Azure Blob, a üzenetsor, a fájlok és a Table Storage szolgáltatást. Ennek az az oka, hogy a függvények az Azure Storage-ban működnek olyan műveletekhez, mint az eseményindítók és a naplózási függvények végrehajtása, de egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezeket a fiókokat, amelyek csak a blob Storage-fiókokat (beleértve a Premium Storage-t) és az általános célú Storage-fiókokat, amelyek zóna-redundáns tárolási replikációval rendelkeznek, a rendszer kiszűri a meglévő **Storage-fiókok** kiválasztásával, amikor létrehoz egy function alkalmazás.
+Bármely csomag esetében a Function alkalmazáshoz egy általános Azure Storage-fiók szükséges, amely támogatja az Azure Blob, a üzenetsor, a fájlok és a Table Storage szolgáltatást. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint az eseményindítók és a naplózási függvények végrehajtása, de egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezeket a fiókokat, amelyek csak a blob Storage-fiókokat (beleértve a Premium Storage-t) és az általános célú Storage-fiókokat, amelyek zóna-redundáns tárolási replikációval rendelkeznek, a rendszer kiszűri a meglévő **Storage-fiókok** kiválasztásával, amikor létrehoz egy function alkalmazás.
+
+A Function alkalmazás által használt Storage-fiókot az eseményindítók és kötések is felhasználhatják az alkalmazásadatok tárolásához. A tárolási igényű műveletek esetében azonban külön Storage-fiókot kell használnia.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 

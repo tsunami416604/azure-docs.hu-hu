@@ -116,8 +116,8 @@ Ha további modulokat szeretne hozzáadni a megoldáshoz, futtassa **a következ
 
 A megoldás alapértelmezett moduljának kódja a következő helyen található:
 
-- Azure Function (C#): **modulok >  *&lt;&gt;*  > amodulneve. cs *&lt;&gt;*
-- C#: **modulok > *&lt;a modul neve&gt;* > program.cs
+- Azure Function (C#): **modulok >  *&lt;&gt;*  > amodulneve. cs *&lt;&gt;***
+- C#: **modulok > *&lt;a modul neve&gt;* > program.cs**
 - Python: **modulok > *&lt;a modul neve&gt;* > Main.py**
 - Node. js: **modulok > *&lt;a modul neve&gt;* > app. js**
 - Java: **modulok > *&lt;a modul neve&gt;* > src > Main > Java > com > edgemodulemodules > app. Java**

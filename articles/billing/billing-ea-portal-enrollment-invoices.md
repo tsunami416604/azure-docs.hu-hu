@@ -8,12 +8,12 @@ ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: dccc9462c6c20f3bce239e3b61cafa3d61e3d383
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5e3a6249f19df7d16c7051c43eec4275ec6f4131
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901185"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090711"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -43,7 +43,7 @@ Ha aláírt egy M503-as módosítást, bármely szerződés gyakoriságát módo
 
 ## <a name="credits-and-adjustments"></a>Jóváírások és helyesbítések
 
-A regisztrációra alkalmazott jóváírások vagy helyesbítések a [https://www.ea.azure.com](https://www.ea.azure.com) webhely **Jelentések** területén láthatók. Ha konkrét kérdése van egy jóváírás tényleges összegével kapcsolatban, forduljon az [Azure EA Portal-támogatáshoz](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c).
+A regisztrációra alkalmazott jóváírások vagy helyesbítések a [https://ea.azure.com](https://ea.azure.com) webhely **Jelentések** területén láthatók. Ha konkrét kérdése van egy jóváírás tényleges összegével kapcsolatban, forduljon az [Azure EA Portal-támogatáshoz](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c).
 
 ## <a name="request-an-invoice-copy"></a>Számlamásolat kérése
 

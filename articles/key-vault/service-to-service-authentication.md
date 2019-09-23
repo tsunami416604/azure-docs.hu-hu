@@ -75,7 +75,7 @@ Hitelesítés a Visual Studio használatával:
 
 Ha problémákba ütközik a Visual Studióval, például a jogkivonat-szolgáltatói fájlt érintő hibákkal, gondosan tekintse át az előző lépéseket.
 
-Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;> **&nbsp;&nbsp;beállításailehetőséget**, majd válassza az Azure szolgáltatás-hitelesítés lehetőséget.&nbsp; Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
+Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;>&nbsp;**beállításailehetőség** et, majd válassza az **Azure&nbsp;szolgáltatás&nbsp;hitelesítés lehetőséget**. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
 
 #### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 

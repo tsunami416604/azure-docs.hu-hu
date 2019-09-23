@@ -53,7 +53,7 @@ Hozzon létre egy Event hub-névteret, majd adjon hozzá egy Event hub-t a névt
  
 4. Ha a névtér befejezte a telepítést, keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
 
-5. Kattintson az új névtérre, majd a névtér panelen kattintson az  **+Event hub &nbsp;** elemre. 
+5. Kattintson az új névtérre, majd a névtér panelen kattintson az **+&nbsp;Event hub**elemre. 
 
     ![Az Event hub hozzáadása gomb új Event hub létrehozásához](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
@@ -70,7 +70,7 @@ Ahhoz, hogy egy folyamat hozzáférhessen az adatközponthoz, az Event hub-nak r
 
 1.  Az esemény-névtér panelen kattintson a **Event Hubs** elemre, majd kattintson az új Event hub nevére.
 
-2.  Az Event hub panelen kattintson a **megosztott elérési házirendek** elemre, majd a  **+Hozzáadás &nbsp;** gombra.
+2.  Az Event hub panelen kattintson a **megosztott elérési házirendek** elemre, majd a **+&nbsp;Hozzáadás**gombra.
 
     >[!NOTE]
     >Győződjön meg arról, hogy az Event hub-t használja, nem az Event hub-névteret.
@@ -208,7 +208,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
 1. A Stream Analytics-feladatban a feladatok panel közepén található **feladatok topológiája** alatt kattintson a **bemenetek**elemre. 
 
-2. A **bemenetek** panelen kattintson a  **+Hozzáadás &nbsp;** elemre, majd töltse ki a panelt a következő értékekkel:
+2. A **bemenetek** panelen kattintson a **+&nbsp;Hozzáadás** elemre, majd töltse ki a panelt a következő értékekkel:
 
    * **Bemeneti alias**: Használja a nevet `TwitterStream`. Ha más nevet használ, jegyezze fel, mert később szüksége lesz rá.
    * **Forrás típusa**: Válassza **az adatfolyam**lehetőséget.
@@ -291,7 +291,7 @@ Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Az
 
 1. A **feladatok topológiája** szakaszban kattintson a **kimenet** mezőre. 
 
-2. A **kimenetek** panelen kattintson a  **+Hozzáadás &nbsp;** elemre, majd töltse ki a panelt a következő értékekkel:
+2. A **kimenetek** panelen kattintson a **+&nbsp;Hozzáadás** elemre, majd töltse ki a panelt a következő értékekkel:
 
    * **Kimeneti alias**: Használja a nevet `TwitterStream-Output`. 
    * Fogadó: Válassza a **Blob Storage** lehetőséget.

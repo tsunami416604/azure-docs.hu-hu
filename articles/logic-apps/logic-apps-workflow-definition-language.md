@@ -120,8 +120,8 @@ Az `staticResults` attribútumban Definiáljon egy művelet modelljét `outputs`
 | <*static-result-definition-name*> | Igen | Sztring | A statikus eredmény definíciójának neve, amelyet a műveleti definíció hivatkozhat egy `runtimeConfiguration.staticResult` objektumon keresztül. További információ: [futásidejű konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármilyen egyedi nevet használhat. Alapértelmezés szerint ez az egyedi név egy számmal van hozzáfűzve, amely szükség szerint növekszik. |
 | <*output-attributes-and-values-returned*> | Igen | Változó | Az attribútumokra vonatkozó követelmények eltérő feltételek alapján változnak. Ha például a `status` értéke `Succeeded`, az `outputs` attribútum a művelet által az ál-kimenetként visszaadott attribútumokat és értékeket tartalmazza. Ha a `status` értéke `Failed`, az `outputs` attribútum tartalmazza az `errors`attribútumot , amely egy vagy több hibásinformációttartalmazótömb.`message` |
 | <*fejléc – értékek*> | Nem | JSON | A művelet által visszaadott fejléc-értékek |
-| <*status-code-returned*> | Igen | Karakterlánc | A művelet által visszaadott állapotkód |
-| <*művelet – állapot*> | Igen | Karakterlánc | A művelet állapota, például `Succeeded` vagy`Failed` |
+| <*status-code-returned*> | Igen | String | A művelet által visszaadott állapotkód |
+| <*művelet – állapot*> | Igen | String | A művelet állapota, például `Succeeded` vagy`Failed` |
 |||||
 
 Ebben a http-művelet definíciójában például az `runtimeConfiguration.staticResult.name` attribútum azon `staticResults` attribútumon belül hivatkozik `HTTP0` , ahol a művelethez tartozó modell-kimenetek definiálva vannak. Az `runtimeConfiguration.staticResult.staticResultOptions` attribútum azt adja meg, hogy a statikus `Enabled` eredmény beállítás a http-műveleten van.
@@ -181,7 +181,7 @@ A JSON használatával olyan literál értékekkel rendelkezhet, amelyek a terve
 "rainbowColorsCount": 7
 ```
 
-Olyan értékekkel is rendelkezhet, amelyek nem léteznek futási időben. Az értékek megjelenítéséhez használhat kifejezéseket, amelyeket a rendszer futási időben értékel ki. A kifejezés olyan sorozatot mutat be, amely egy vagy több [függvényt](#functions), [operátort](#operators), változót, explicit értéket vagy állandót tartalmazhat. A munkafolyamat-definícióban egy JSON-karakterlánc értékében bárhol használhatja a kifejezést a (z) jellel (\@). Egy JSON-értéket jelölő kifejezés kiértékelése során a kifejezés törzsét Kinyeri a \@ karakter eltávolításával, és mindig egy másik JSON-értéket ad eredményként.
+Olyan értékekkel is rendelkezhet, amelyek nem léteznek futási időben. Az értékek megjelenítéséhez használhat kifejezéseket,amelyeket a rendszer futási időben értékel ki. A kifejezés olyan sorozatot mutat be, amely egy vagy több [függvényt](#functions), [operátort](#operators), változót, explicit értéket vagy állandót tartalmazhat. A munkafolyamat-definícióban egy JSON-karakterlánc értékében bárhol használhatja a kifejezést a (z) jellel (\@). Egy JSON-értéket jelölő kifejezés kiértékelése során a kifejezés törzsét Kinyeri a \@ karakter eltávolításával, és mindig egy másik JSON-értéket ad eredményként.
 
 Például a korábban definiált `customerName` tulajdonság esetében a tulajdonság értékét egy kifejezés [Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) függvényének használatával szerezheti be, és hozzárendelheti az értéket a `accountName` tulajdonsághoz:
 

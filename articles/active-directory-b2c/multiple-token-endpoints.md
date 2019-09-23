@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállítói végpontok is érvényesek-e.
 
 1. A **B2C-WebAPI-DotNet. SLN** megoldás megnyitása a Visual Studióban
-1. A **TaskService** projektben nyissa meg *a\\TaskService\\App_Start * * Startup.auth.cs** * fájlt a szerkesztőben
+1. A **TaskService** projektben nyissa meg *a\\TaskService\\App_Start **Startup.auth.cs*** fájlt a szerkesztőben
 1. Adja hozzá a `using` következő direktívát a fájl elejéhez:
 
     `using System.Collections.Generic;`
@@ -122,7 +122,7 @@ Ahogy azt korábban említettük, a többi OWIN-tár általában hasonló lehet�
 
 A webes API mostantól támogatja mindkét URI-t, most frissítenie kell a webalkalmazást, hogy lekérje a jogkivonatokat a b2clogin.com-végpontról.
 
-Beállíthatja például a minta-webalkalmazást úgy, hogy az új végpontot használja a `ida:AadInstance` **TaskWebApp** projekt *TaskWebApp\\* * web. config** fájljának értékének módosításával.
+Beállíthatja például a minta-webalkalmazást úgy, hogy az új végpontot használja a `ida:AadInstance` **TaskWebApp** projekt *TaskWebApp\\**web. config*** fájljának értékének módosításával.
 
 Módosítsa a `ida:AadInstance` TaskWebApp *web. config fájljának* értékét úgy, hogy az a `{your-b2c-tenant-name}.b2clogin.com` helyett `login.microsoftonline.com`a következőre hivatkozik.
 

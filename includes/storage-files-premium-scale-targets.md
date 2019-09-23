@@ -4,30 +4,30 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 368f08272173b019873dfe20e1164d6baf72ff5e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542661"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180052"
 ---
-#### <a name="additional-premium-file-share-level-limits"></a>További prémium szintű fájl megosztási szint korlátok
+#### <a name="additional-premium-file-share-level-limits"></a>A prémium szintű fájlmegosztás további korlátai
 
 |Terület  |Target  |
 |---------|---------|
-|Minimális méret növelése vagy csökkentése    |1 GiB      |
-|Alap IOPS-érték    |1 GB, legfeljebb 100 000 IOPS|
-|Tartalékkapacitás IOPS    |/ GB, legfeljebb 100 000 3 x IOPS|
-|Kilépő üzenetek gyakorisága         |60 MiB/s + 0,06 * kiosztott GiB        |
-|Bejövő forgalom| 40 MiB/s + 0,04 * kiosztott GiB |
+|Minimális méret növelése/csökkentése    |1 GiB      |
+|Alap IOPS-érték    |1 IOPS/GiB, legfeljebb 100 000|
+|IOPS-kitörés    |3x IOPS/GiB, akár 100 000|
+|Kimenő forgalom aránya         |60 MiB/s + 0,06 * kiépített GiB        |
+|Bejövő forgalom aránya| 40 MiB/s + 0,04 * kiépített GiB |
 
 #### <a name="file-level-limits"></a>Fájl szintű korlátok
 
-|Terület  |Prémium szintű fájl  |Standard szintű fájl |
+|Terület  |Prémium fájl  |Standard fájl |
 |---------|---------|---------|
 |Size                  |1 TiB         |1 TiB|
-|Fájlonkénti maximális iops-érték     |5,000         |1,000|
-|Egyidejű kezeli    |2,000         |2,000|
-|Bejövő forgalom  |300 MiB/sec|      Standard szintű fájl átviteli értékek|
-|Kimenő forgalom   |200 Mib/mp| Standard szintű fájl átviteli értékek|
-|Teljesítmény| Prémium szintű fájl bejövő/kimenő forgalom értékek| Akár 60 MiB/mp|
+|IOPS maximális száma     |5,000         |1,000|
+|Egyidejű kezelők    |2,000         |2,000|
+|Kimenő forgalom  |300 MiB/mp|      Lásd a szabványos fájl átviteli sebességének értékeit|
+|Bejövő forgalom  |200 MiB/mp| Lásd a szabványos fájl átviteli sebességének értékeit|
+|Teljesítmény| Lásd a prémium szintű fájlok bejövő/kimenő értékeit| Akár 60 MiB/mp|

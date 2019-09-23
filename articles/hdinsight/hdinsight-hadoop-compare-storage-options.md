@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104541"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180767"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
 
@@ -42,17 +42,17 @@ Az Azure Storage hozzáférési szintjeivel kapcsolatos további információké
 
 Létrehozhat egy fürtöt az elsődleges és választható másodlagos tárolók különböző szolgáltatásainak kombinációi használatával. A következő táblázat összefoglalja a HDInsight által jelenleg támogatott fürtök tárolási konfigurációit:
 
-| HDInsight Version (HDInsight-verzió) | Elsődleges tároló | Másodlagos tároló | Támogatott |
+| HDInsight Version (HDInsight-verzió) | Elsődleges tárterület | Másodlagos tároló | Támogatott |
 |---|---|---|---|
 | 3,6 & 4,0 | Általános célú v1, általános célú v2 | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | Általános célú v1, általános célú v2 | 2\. generációs Data Lake Storage | Nem |
+| 3,6 & 4,0 | Általános célú v1, általános célú v2 | Data Lake Storage Gen2 | Nem |
 | 3,6 & 4,0 | Általános célú v1, általános célú v2 | 1\. generációs Data Lake Storage | Igen |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | 2\. generációs Data Lake Storage | Igen |
+| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Igen |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | 2\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Nem |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | 1\. generációs Data Lake Storage | Nem |
 | 3.6 | 1\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Igen |
 | 3.6 | 1\. generációs Data Lake Storage | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3.6 | 1\. generációs Data Lake Storage | 2\. generációs Data Lake Storage | Nem |
+| 3.6 | 1\. generációs Data Lake Storage | Data Lake Storage Gen2 | Nem |
 | 4.0 | 1\. generációs Data Lake Storage | Any | Nem |
 
 \* = Ez lehet egy vagy több Data Lake Storage Gen2 fiók is, feltéve, hogy mindegyik telepítő ugyanazt a felügyelt identitást használja a fürt eléréséhez.
@@ -95,9 +95,9 @@ További információkért lásd [az Azure Blob fájlrendszer-illesztőprogramot
 
 Azure Data Lake Storage Gen2 egy új URI-sémát használ az Azure Storage-ban lévő fájlok eléréséhez a HDInsight-ből:
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Az URI-séma SSL-titkosítású hozzáférést`abfss://` (előtag) és titkosítatlan hozzáférést`abfs://` (előtag) biztosít. Lehetőleg `abfss` akkor is használja, ha az Azure-ban ugyanabban a régióban található adatokhoz fér hozzá.
+Az URI-séma SSL-titkosítású hozzáférést biztosít.
 
 `<FILE_SYSTEM_NAME>`a fájlrendszer Data Lake Storage Gen2ének elérési útját azonosítja.
 
@@ -108,8 +108,8 @@ Az URI-séma SSL-titkosítású hozzáférést`abfss://` (előtag) és titkosít
 Ha a és `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` a nem értéket adja meg, a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszer fájljaihoz használjon relatív elérési útvonalat vagy abszolút elérési utat. Például a `hadoop-mapreduce-examples.jar` HDInsight-fürtökhöz tartozó fájl a következő elérési utak egyikének használatával hívható meg:
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]

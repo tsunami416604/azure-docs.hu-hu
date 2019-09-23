@@ -1,19 +1,19 @@
 ---
-title: Azure HPC cache-adatfeldolgozás – manuális másolás
+title: Az Azure HPC cache előzetes adatgyűjtése – manuális másolás
 description: A CP-parancsok használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 2d89a74d4b79e74c2bc6667a5f76c2348ca3c274
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775233"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180986"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC cache-adatfeldolgozás – manuális másolási módszer
+# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (előzetes verzió) adatfeldolgozás – manuális másolási módszer
 
 Ez a cikk részletes útmutatást nyújt az adatok blob Storage-tárolóba történő manuális másolásához az Azure HPC cache használatával. Több szálon futó párhuzamos műveleteket használ a másolás sebességének optimalizálása érdekében.
 

@@ -51,7 +51,7 @@ Az elérhető SKU-típusok közötti fő eltéréseket az alábbi táblázat ism
 |---|---|---
 |**Kisméretű SKU-i**|A minimális méret D11 két maggal|A minimális méret L4 négy maggal |
 |**Rendelkezésre állás**|Minden régióban elérhető (a DS + PS verziója korlátozottabb rendelkezésre állással rendelkezik)|Néhány régióban elérhető |
-|**&nbsp;GB-os gyorsítótár/mag**|Magas a D SKU-val, alacsony a DS + PS-verzióval|A legalacsonyabb az utólagos elszámolású lehetőséggel |
+|**GB-os&nbsp; gyorsítótár/mag**|Magas a D SKU-val, alacsony a DS + PS-verzióval|A legalacsonyabb az utólagos elszámolású lehetőséggel |
 |**Fenntartott példányok (RI) díjszabása**|Magas árengedmény (a hároméves&nbsp;kötelezettségvállalás több mint 55%-ában)|Alacsonyabb árengedmény (20&nbsp;százalék a hároméves kötelezettségvállalás esetében) |  
 
 ## <a name="select-your-cluster-vm"></a>Válassza ki a fürthöz tartozó virtuális gépet 

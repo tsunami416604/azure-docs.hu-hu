@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813975"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180729"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin notebookok használata Apache Spark-fürttel az Azure HDInsight
 
@@ -23,7 +23,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* A fürtök elsődleges tárolójának URI-sémája. Ez az Azure `wasb://` `abfs://` blob Storage esetében Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetében lenne. Ha a biztonságos átvitel engedélyezve van blob Storage vagy Data Lake Storage Gen2, az URI a következő `wasbs://` lesz `abfss://`: vagy.  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
+* A fürtök elsődleges tárolójának URI-sémája. Ez az Azure `wasb://` `abfs://` blob Storage esetében Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1 esetében lenne. Ha a biztonságos átvitel engedélyezve van a Blob Storage számára, akkor az `wasbs://`URI a következő lesz:.  További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin-jegyzetfüzet elindítása
 
@@ -101,7 +101,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Illessze be ezt a kódrészletet egy új bekezdésbe, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt. Ezután válassza a **65** elemet a **temp** legördülő menüből. 
+    Illessze be ezt a kódrészletet egy új bekezdésbe, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt. Ezután válassza a **65** elemet a **temp** legördülő listából. 
 
 8. Válassza a **oszlopdiagram** ikont a Megjelenítés módosításához.  Ezután válassza a **Beállítások** lehetőséget, és végezze el a következő módosításokat:
 
@@ -118,7 +118,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
 10. Görgessen a **Livy**, majd válassza az **Újraindítás**lehetőséget.  Válassza az **OK gombot** a parancssorban.
 
-    ![A Livy-intepreter újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin intepreter újraindítása")
+    ![A Livy-értelmező újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin-tolmács újraindítása")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>A Hogyan külső csomagokat használ a jegyzetfüzettel?
 A HDInsight Apache Spark-fürtben lévő Zeppelin notebookot úgy is konfigurálhatja, hogy olyan külső, Közösség által biztosított csomagokat használjon, amelyek nem szerepelnek a fürtben. A [Maven-tárházban](https://search.maven.org/) megkeresheti a rendelkezésre álló csomagok teljes listáját. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. A közösségi hozzájárulású csomagok teljes listája például a [Spark-csomagokban](https://spark-packages.org/)érhető el.
@@ -169,7 +169,7 @@ Ilyen esetben az alábbi lépéseket kell elvégeznie, mielőtt elkezdené a fel
 
 2. Görgessen a **Livy**, majd válassza az **Újraindítás**lehetőséget.
 
-    ![A Livy-intepreter újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin intepreter újraindítása")
+    ![A Livy-értelmező újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin-tolmács újraindítása")
 
 3. Kód cellájának futtatása meglévő Zeppelin-jegyzetfüzetből. Ez létrehoz egy új Livy-munkamenetet a HDInsight-fürtben.
 

@@ -32,7 +32,7 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
 
 1. Először hozzon létre egy labort Azure DevTest Labsban az alábbi cikk utasításait követve: [Hozzon létre egy labort](devtest-lab-create-lab.md). Figyelje meg, hogy a **nyilvános környezetek** beállítás alapértelmezés szerint **be van kapcsolva** . 
 2. Az alábbi lépéseket követve ellenőrizze, hogy a Service Fabric szolgáltató regisztrálva van-e az előfizetéséhez:
-    1. Válassza **** az előfizetések lehetőséget a bal oldali navigációs menüben, és válassza ki az előfizetését ****
+    1. Válassza az **előfizetések** lehetőséget a bal oldali navigációs menüben, és válassza ki az **előfizetését**
     2. Az **előfizetés** lapon válassza az **erőforrás-szolgáltatók** lehetőséget a bal oldali menü **Beállítások** szakaszában. 
     3. Ha a **Microsoft. ServiecFabric** nincs regisztrálva, válassza a **regisztráció**lehetőséget. 
 3. A labor **DevTest labor** lapján válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
@@ -42,7 +42,7 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
 
     ![Válassza ki Service Fabric labor-fürtöt a listában](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. A **beállítások konfigurálása** lapon hajtsa végre a következő lépéseket: 
-    1. Adja meg a fürt környezetének **** **nevét** . Ez az Azure-beli erőforráscsoport neve, amelyben a Service Fabric-fürtöt létre kívánja hozni. 
+    1. Adja meg a **fürt** környezetének **nevét** . Ez az Azure-beli erőforráscsoport neve, amelyben a Service Fabric-fürtöt létre kívánja hozni. 
     2. Válassza ki a fürt virtuális gépei **operációs rendszerét (os)** . Az alapértelmezett érték: **Windows**.
     3. Adja meg a fürt **rendszergazdájának** nevét. 
     4. **Jelszó** megadása a rendszergazdának. 
@@ -51,11 +51,11 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
         2. Indítsa el a **PowerShellt**. 
         3. Futtassa a **ps1** -fájlt a parancs `.\Create-ClusterCertificate.ps1`használatával. Megjelenik egy, a Jegyzettömbben megnyitott szövegfájl, amely az oldalon található tanúsítványokkal kapcsolatos mezők kitöltéséhez szükséges információkat tartalmazza. . 
     6. Adja meg a tanúsítványhoz tartozó **jelszót**.
-    7. Adja meg **** a tanúsítvány ujjlenyomatát.
+    7. Adja meg a tanúsítvány **ujjlenyomatát**.
     8. A **beállítások konfigurálása** lapon válassza a **Hozzáadás** lehetőséget. 
 
         ![Fürtkonfiguráció konfigurálása](./media/create-environment-service-fabric-cluster/configure-settings.png)
-5. A fürt létrehozása után egy erőforráscsoport jelenik meg az előző lépésben megadott környezet nevével. A kibontáskor megjelenik a Service Fabric-fürt. Ha az erőforráscsoport állapota megakad a létrehozáskor **** , válassza a **frissítés** lehetőséget az eszköztáron. A **Service Fabric-fürt** környezete egy 5 csomópontos 1 NodeType-fürtöt hoz létre Linux vagy Windows rendszeren.
+5. A fürt létrehozása után egy erőforráscsoport jelenik meg az előző lépésben megadott környezet nevével. A kibontáskor megjelenik a Service Fabric-fürt. Ha az erőforráscsoport állapota megakad a **létrehozáskor**, válassza a **frissítés** lehetőséget az eszköztáron. A **Service Fabric-fürt** környezete egy 5 csomópontos 1 NodeType-fürtöt hoz létre Linux vagy Windows rendszeren.
 
     A következő példában a **mysfabricclusterrg** a kifejezetten a Service Fabric-fürthöz létrehozott erőforráscsoport neve. Fontos megjegyezni, hogy a labor-környezetek a létrehozás alatt álló erőforráscsoporthoz tartoznak. Ez azt jelenti, hogy a környezetet definiáló sablon, amely csak az újonnan létrehozott erőforráscsoport vagy [a labor általi használatra konfigurált virtuális hálózatok](devtest-lab-configure-vnet.md)erőforrásaihoz fér hozzá. A fenti minta az összes szükséges erőforrást létrehozza ugyanabban az erőforráscsoporthoz.
 
@@ -71,7 +71,7 @@ A DevTest labor oldalán elindíthatja vagy leállíthatja a fürtöt a laborban
 
     ![A fürt indítási és leállítási parancsai](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
 
-2. A fürt elindításához és leállításához **** a helyi **** menüben két parancs jelenik meg. A Start parancs elindítja a fürt összes csomópontját. A leállítás parancs leállítja a fürt összes csomópontját. A fürt leállítása után a Service Fabric-fürt maga is üzemkész állapotban marad, de nem érhetők el csomópontok, amíg a tesztkörnyezet nem állítja vissza a Start parancsot a fürtön.
+2. A fürt **elindításához** és **leállításához** a helyi menüben két parancs jelenik meg. A Start parancs elindítja a fürt összes csomópontját. A leállítás parancs leállítja a fürt összes csomópontját. A fürt leállítása után a Service Fabric-fürt maga is üzemkész állapotban marad, de nem érhetők el csomópontok, amíg a tesztkörnyezet nem állítja vissza a Start parancsot a fürtön.
 
     A Service Fabric-fürtök tesztkörnyezetben való használatakor figyelembe kell venni néhány megfontolandó szempontot. A csomópontok újraindítása után eltarthat egy ideig, hogy a Service Fabric-fürt teljes mértékben kiszáradjon. Az adatok leállításról indításra való megőrzéséhez a virtuális géphez csatolt felügyelt lemezre kell menteni az adatait. A csatlakoztatott felügyelt lemezek használata teljesítménybeli következményekkel jár, ezért csak tesztelési környezetekben ajánlott. Ha az adattároláshoz használt lemez nincs támogatva, az adatvesztést követően a rendszer kiállítja a Leállítás parancsot a fürtön.
 
@@ -106,8 +106,8 @@ A Leállítás beállításainak módosításához hajtsa végre a következő l
 1. Válassza az **automatikus leállítás** lehetőséget a bal oldali menüben. 
 2. Ezen az oldalon engedélyezheti az automatikus leállítást, ha az **engedélyezve** **lehetőséget választja** . 
 3. Ha **engedélyezve**van **a** beállítás, kövesse az alábbi lépéseket:
-    1. A Leállítás **** időpontjának megadása.
-    2. Itt adhatja **** meg az időzónát. 
+    1. A Leállítás **időpontjának** megadása.
+    2. Itt adhatja meg az **időzónát**. 
     3. Itt adhatja meg, hogy szeretné-e, ha a DevTest Labs **értesítést** küldjön az automatikus leállítás előtt. 
     4. Ha az **Igen** lehetőséget választotta az értesítési beállításhoz, a **webhook URL** -címét és/vagy **e-mail-címét** az értesítések küldéséhez válassza. 
     5. Válassza az eszköztár **Save** (Mentés) elemét.

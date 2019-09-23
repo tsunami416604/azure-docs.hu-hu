@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171321"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180791"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és kezelése a Azure Logic Apps változók használatával
 
@@ -99,6 +99,9 @@ Ha a tervezőből a kód nézet szerkesztőjére vált, a **változó inicializ�
    }
 },
 ```
+
+> [!NOTE]
+> Bár az **inicializálási változó** művelet egy tömbként strukturált `variables` szakaszt tartalmaz, a művelet egyszerre csak egy változót tud létrehozni. Minden új változóhoz egyéni **inicializálási változó** szükséges.
 
 Néhány példa más változó típusokra:
 
@@ -200,7 +203,7 @@ Egy változó állandó értékkel *való növeléséhez vagy* növeléséhez ad
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a kapcsolódási nyíl fölé, hogy a pluszjel (+) megjelenjen. Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként a "változó növekménye" kifejezést. A műveletek listában válassza a **változók – növekmény változó**elemet.
+1. A keresőmezőbe írja be szűrőként a "változó növekménye" kifejezést. A műveletek listában válassza a **növekmény változó**lehetőséget.
 
    ![Válassza a "változó növekménye" műveletet.](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 

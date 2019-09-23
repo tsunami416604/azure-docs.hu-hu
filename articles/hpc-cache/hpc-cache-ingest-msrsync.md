@@ -1,19 +1,19 @@
 ---
-title: Azure HPC cache-adatfeldolgozás – msrsync
+title: Az Azure HPC cache előzetes adatgyűjtése – msrsync
 description: Az msrsync használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: d49c2ba45b125f8e42ea5d10dcf3dcd68558a52c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775636"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180938"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache-adatfeldolgozás – msrsync metódus
+# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC cache (előzetes verzió) adatfeldolgozás – msrsync metódus
 
 Ez a cikk részletes útmutatást nyújt a ``msrsync`` segédprogram használatával az Azure-beli blob Storage-tárolóba való adatmásoláshoz az Azure HPC cache szolgáltatással való használathoz.
 

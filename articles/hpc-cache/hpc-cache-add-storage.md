@@ -1,19 +1,19 @@
 ---
-title: Tároló hozzáadása egy Azure HPC-gyorsítótárhoz
+title: Tárterület hozzáadása egy Azure HPC-gyorsítótárhoz (előzetes verzió)
 description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsítótára használhassa a helyszíni NFS-rendszert vagy az Azure Blob-tárolókat a hosszú távú fájlok tárolásához
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037215"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181006"
 ---
-# <a name="add-storage"></a>Tároló hozzáadása
+# <a name="add-storage-targets"></a>Tárolási célok hozzáadása
 
 A *tárolási célok* az Azure HPC cache-példányon keresztül elért fájlok háttérbeli tárolói. Hozzáadhat NFS-tárhelyet, például egy helyszíni hardvereszközt, vagy tárolhatja az Azure-blobban tárolt adattárakat.
 
@@ -112,8 +112,8 @@ Az egyes exportálásokhoz adja meg a következő értékeket:
 
 Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
-### <a name="choose-a-usage-model"></a>Használati modell kiválasztása 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Használati modell kiválasztása
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Amikor egy NFS Storage rendszerre mutató tárolási célt hoz létre, ki kell választania az adott cél *használati modelljét* . Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
 

@@ -274,7 +274,7 @@ Az értékelés a következőket írja le:
 
 ### <a name="view-an-assessment"></a>Értékelés megtekintése
 
-1. Az **áttelepítési célok** >  **kiszolgálóin**kattintson az  ****értékelések** elemre Azure Migrateban: Kiszolgáló értékelése**.
+1. Az **áttelepítési célok** >  **kiszolgálóin**kattintson az**értékelések** elemre **Azure Migrateban: Kiszolgáló értékelése**.
 2. Az **értékelésekben**kattintson egy értékelésre a megnyitásához.
 
     ![Értékelés összegzése](./media/tutorial-assess-vmware/assessment-summary.png)

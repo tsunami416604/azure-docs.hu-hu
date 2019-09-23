@@ -81,7 +81,7 @@ A tulajdonságok leírása a következő:
 | type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode | --- | Meghatározza, hogy az operációs rendszer Service Fabric |
 | autoUpgradeMinorVersion | true vagy false | --- | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
 | publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric-kiterjedési közzétevő neve |
-| clusterEndpont | Karakterlánc | --- | URI: PORT – felügyeleti végpont |
+| clusterEndpont | string | --- | URI: PORT – felügyeleti végpont |
 | nodeTypeRef | string | --- | nodeType neve |
 | durabilityLevel | bronze, silver, gold, platinum | --- | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
 | enableParallelJobs | true vagy false | --- | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |

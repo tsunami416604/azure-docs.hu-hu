@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354960"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180753"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben
 
@@ -29,14 +29,14 @@ A HDInsight a Jython is tartalmazza, amely egy Java-ban írt python-implementác
 
 * **Hadoop-fürt a HDInsight-on**. Lásd: Ismerkedés [a HDInsight Linux rendszeren](apache-hadoop-linux-tutorial-get-started.md).
 * **Egy SSH-ügyfél**. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* A fürtök elsődleges tárolójának [URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) -sémája. Ez az Azure Storage-hoz készült wasb://, a Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 vagy adl://esetében abfs://. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz vagy a Data Lake Storage Gen2hoz, az URI-t wasbs://vagy abfss://, illetve a [biztonságos átvitelt](../../storage/common/storage-require-secure-transfer.md)is megtekintheti.
+* A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az Azure `abfs://` Storage esetében Azure Data Lake Storage Gen2 vagy ADL://esetében Azure Data Lake Storage Gen1. `wasb://` Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI wasbs://lesz.  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 * **A tárolási konfiguráció lehetséges módosítása.**  A Storage-fiók `BlobStorage`használata esetén lásd: [tárolási konfiguráció](#storage-configuration) .
-* Választható.  Ha a PowerShell használatát tervezi, az az modult [](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kell telepítenie.
+* Nem kötelező.  Ha a PowerShell használatát tervezi, az az [modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kell telepítenie.
 
 > [!NOTE]  
-> A cikkben használt Storage-fiók az Azure Storage [szolgáltatás engedélyezve van](../../storage/common/storage-require-secure-transfer.md) , és így `wasbs` a cikk egészében használatos.
+> A cikkben használt Storage-fiók az Azure Storage [szolgáltatás engedélyezve van, és](../../storage/common/storage-require-secure-transfer.md) így `wasbs` a cikk egészében használatos.
 
-## <a name="storage-configuration"></a>Tároló konfigurálása
+## <a name="storage-configuration"></a>Tárolókonfiguráció
 Nincs szükség beavatkozásra, ha a használt Storage-fiók típusa `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikkben szereplő folyamat legalább `/tezstaging`a kimenetet fogja eredményezni.  Az alapértelmezett Hadoop-konfiguráció a `/tezstaging` szolgáltatásban `fs.azure.page.blob.dir` `HDFS`található konfigurációs változóban `core-site.xml` fog szerepelni.  Ez a konfiguráció azt eredményezi, hogy a könyvtár Blobok lesznek, amelyek nem támogatottak a Storage- `BlobStorage`fiókok esetében.  Ennek a `BlobStorage` cikknek a használatához távolítsa el `fs.azure.page.blob.dir` `/tezstaging` a konfigurációs változót.  A konfiguráció a [Ambari felhasználói felületéről](../hdinsight-hadoop-manage-ambari.md)érhető el.  Ellenkező esetben a következő hibaüzenet jelenik meg:`Page blob is not supported for this account type.`
 
 > [!WARNING]  
@@ -334,7 +334,7 @@ def create_structure(input):
 
 A Pig Latin példában a `LINE` bemenet chararray van definiálva, mert nincs konzisztens séma a bemenethez. A Python-szkript átalakítja az adatokat egy konzisztens sémára a kimenethez.
 
-1. Az `@outputSchema` utasítás a Pig számára visszaadott adatok formátumát határozza meg. Ebben az esetben ez egy adattáska , amely egy Pig-adattípus. A táska a következő mezőket tartalmazza, amelyek mindegyike chararray (karakterlánc):
+1. Az `@outputSchema` utasítás a Pig számára visszaadott adatok formátumát határozza meg. Ebben az esetben ez egy **adattáska**, amely egy Pig-adattípus. A táska a következő mezőket tartalmazza, amelyek mindegyike chararray (karakterlánc):
 
    * dátum – a naplóbejegyzés létrehozásának dátuma
    * idő – a naplóbejegyzés létrehozásának időpontja

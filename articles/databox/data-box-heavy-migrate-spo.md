@@ -54,7 +54,7 @@ A következő lépések kapcsolódnak a SharePoint Online-hoz.
 
 6. Hozzon létre egy virtuális gépet a Azure Portalban, és csatlakoztassa az Azure-fájlmegosztást.
 7. Telepítse a SPMT eszközt az Azure-beli virtuális gépre.
-8. Futtassa a SPMT eszközt az Azure-fájlmegosztás használatával forrásként ** .
+8. Futtassa a SPMT eszközt az Azure-fájlmegosztás használatával *forrásként *.
 9. Fejezze be az eszköz utolsó lépéseit.
 10. Ellenőrizze és erősítse meg az adatait.
 

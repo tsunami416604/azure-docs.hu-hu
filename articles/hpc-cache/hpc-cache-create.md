@@ -1,21 +1,21 @@
 ---
-title: Azure HPC-gyorsítótár létrehozása
+title: Azure HPC-gyorsítótár létrehozása (előzetes verzió)
 description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037090"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181044"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
+# <a name="create-an-azure-hpc-cache-preview"></a>Azure HPC-gyorsítótár létrehozása (előzetes verzió)
 
-A gyorsítótár létrehozásához használja a Azure Portal.
+A gyorsítótár létrehozásához használja a Azure Portal. 
 
 ![képernyőkép a gyorsítótár áttekintéséről Azure Portalban, a létrehozás gombbal alul](media/hpc-cache-home-page.png)
 
@@ -32,7 +32,7 @@ A **szolgáltatás részletei**területen adja meg a gyorsítótár nevét és a
 * Alhálózat – válasszon ki vagy hozzon létre legalább 64 IP-címmel rendelkező alhálózatot (/24), amelyet csak az Azure HPC-gyorsítótárhoz fog használni.
 
 ## <a name="set-cache-capacity"></a>Gyorsítótár kapacitásának beállítása
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
 A **gyorsítótár** lapon be kell állítania az Azure HPC-gyorsítótár kapacitását. Ez az érték határozza meg, hogy mekkora adatmennyiséget tárolhat a gyorsítótár, és milyen gyorsan képes az ügyfelek kéréseinek kiszolgálására. A nyilvános előzetes verzió időszaka után a kapacitás a gyorsítótár költségeit is érinteni fogja.
 
@@ -61,7 +61,7 @@ Kattintson a **tárolási cél hozzáadása hivatkozásra** a háttérbeli táro
 
 Akár tíz különböző tárolási célt is meghatározhat.
 
-A Storage-tároló hozzáadásának részletes utasításait a [tár hozzáadása](hpc-cache-add-storage.md)témakör tartalmazza. Az eljárás eltérő a blob Storage-ban vagy az NFS-exportálásokban.
+A tárolási célok hozzáadásával kapcsolatos részletes útmutatást a tárolók [hozzáadása](hpc-cache-add-storage.md)című témakör tartalmazza. Az eljárás eltérő a blob Storage-ban vagy az NFS-exportálásokban.
 
 Íme néhány tipp: 
 

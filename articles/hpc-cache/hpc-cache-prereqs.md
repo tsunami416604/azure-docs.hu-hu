@@ -1,19 +1,19 @@
 ---
-title: Az Azure HPC gyorsítótárának előfeltételei
+title: Az Azure HPC cache (előzetes verzió) előfeltételei
 description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036867"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180910"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
+# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Az Azure HPC cache használatának előfeltételei (előzetes verzió)
 
 Mielőtt a Azure Portal használatával új Azure HPC-gyorsítótárat hozzon létre, győződjön meg arról, hogy a környezet megfelel a követelményeknek.
 
@@ -59,7 +59,7 @@ A gyorsítótár létrehozásának megkezdése előtt olvassa el ezeket az enged
 * Az Azure HPC-gyorsítótárnak képesnek kell lennie virtuális hálózati adapterek (NIC-EK) létrehozására. A gyorsítótárat létrehozó felhasználónak elegendő jogosultsággal kell rendelkeznie az előfizetésben a hálózati adapterek létrehozásához.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* BLOB Storage használata esetén az Azure HPC cache-példánynak engedélyre van szüksége a Storage-fiók eléréséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosíthatja a gyorsítótár elérését a blob-tárolóhoz. Két szerepkörre van szükség: Storage-fiók közreműködői és tárolási blob adatközreműködői. Kövesse a [tárterület hozzáadása a gyorsítótárhoz](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)című témakör utasításait.
+* BLOB Storage használata esetén az Azure HPC cache-példánynak engedélyre van szüksége a Storage-fiók eléréséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosíthatja a gyorsítótár elérését a blob-tárolóhoz. Két szerepkörre van szükség: Storage-fiók közreműködői és tárolási blob adatközreműködői. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)című témakör utasításait.
 
 ## <a name="storage-infrastructure"></a>Tárolási infrastruktúra
 
@@ -86,7 +86,7 @@ Kompatibilis Storage-fiók létrehozásához használja az alábbi beállításo
 
 Célszerű a Storage-fiókot a gyorsítótárral megegyező helyen használni.
 
-Az Azure Storage-fiókhoz is meg kell adnia a gyorsítótár-alkalmazáshoz való hozzáférést. A [tároló hozzáadása a gyorsítótárhoz](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör leírását követve adja meg a gyorsítótárat a hozzáférési szerepkörök Storage-fiók közreműködői és Storage blob adatközreműködői számára. Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
+Az Azure Storage-fiókhoz is meg kell adnia a gyorsítótár-alkalmazáshoz való hozzáférést. Kövesse a Storage-tárolók [hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör leírását, és adja meg a gyorsítótárhoz a hozzáférési szerepkörök Storage-fiók közreműködőjét és a Storage blob adatközreműködőjét. Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
 
 ## <a name="next-steps"></a>További lépések
 

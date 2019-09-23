@@ -1,19 +1,19 @@
 ---
-title: Azure HPC-gyorsítótár csatlakoztatása
+title: Azure HPC-gyorsítótár csatlakoztatása (előzetes verzió)
 description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b7a59afa0dea300e200b953d045d38218e99b22
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036953"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180925"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár csatlakoztatása
+# <a name="mount-the-azure-hpc-cache-preview"></a>Az Azure HPC cache csatlakoztatása (előzetes verzió)
 
 A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű csatlakoztatási paranccsal férhetnek hozzá.
 
@@ -54,7 +54,7 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 
 | Javasolt csatlakoztatási parancs beállításai | |
 --- | --- 
-``hard`` | A vFXT-fürthöz való Soft-csatlakoztatások az alkalmazás hibáival és az esetleges adatvesztéssel vannak társítva. 
+``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár. 
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
 ``retry=n`` | Állítsa ``retry=30`` be az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
