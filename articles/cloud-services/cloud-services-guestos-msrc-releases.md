@@ -10,17 +10,56 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/4/2019
+ms.date: 9/20/2019
 ms.author: raiye
-ms.openlocfilehash: 71febe6544a4f53215ec4dbee2bcef86bda23386
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275509"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169366"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+## <a name="september-2019-guest-os"></a>Szeptember 2019 vendég operációs rendszer
+
+>[!NOTE]
+>A szeptemberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások szerepelnek a szeptemberi vendég operációs rendszerben. A lista módosítása változhat.
+
+| Termék kategóriája | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  2,90, 3,77, 4,70  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4516115]  |  Flash   |  2,90, 3,77, 4,70, 5,35, 6,11  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4512578]  |  Legújabb összesítő frissítés   |  6,11  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4514366]  |  .NET-keretrendszer 3,5 és 4.7.2   |  6,11  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4516044]  |  Legújabb összesítő frissítés   |  5,35  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4516064]  |  Windows-Biztonság   |  4,7  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET-keretrendszer 3,5   |  4,7  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4514341]  |  .NET-keretrendszer 4.5.2   |  4,7  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4516062]  |  Windows-Biztonság   |  3,77  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET-keretrendszer 3,5   |  3,77  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4514342]  |  .NET-keretrendszer 4.5.2   |  3,77  |  Szeptember 10., 2019  |
+|  Rel 19-09   |  [4516033]  |  Windows-Biztonság   |  2.9  |  Szeptember 12., 2019  |
+|  Rel 19-09   |  [4512488]  |  Nem biztonsági   |  4,7  |  Augusztus 13., 2019  |
+|  Rel 19-09   |  [4512518]  |  Nem biztonsági   |  3,77  |  Augusztus 13., 2019  |
+|  Rel 19-09   |  [4512506]  |  Nem biztonsági   |  2.9  |  Augusztus 13., 2019  |
+
+[4516046]: https://support.microsoft.com/kb/4516046
+[4516115]: https://support.microsoft.com/kb/4516115
+[4512578]: https://support.microsoft.com/kb/4512578
+[4514366]: https://support.microsoft.com/kb/4514366
+[4516044]: https://support.microsoft.com/kb/4516044
+[4516064]: https://support.microsoft.com/kb/4516064
+[4514350]: https://support.microsoft.com/kb/4514350
+[4514341]: https://support.microsoft.com/kb/4514341
+[4516062]: https://support.microsoft.com/kb/4516062
+[4514349]: https://support.microsoft.com/kb/4514349
+[4514342]: https://support.microsoft.com/kb/4514342
+[4516033]: https://support.microsoft.com/kb/4516033
+[4512488]: https://support.microsoft.com/kb/4512488
+[4512518]: https://support.microsoft.com/kb/4512518
+[4512506]: https://support.microsoft.com/kb/4512506
 
 
 ## <a name="august-2019-guest-os"></a>Augusztus 2019 vendég operációs rendszer
@@ -951,7 +990,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Biztonsági frissítés a .NET-keretrendszerhez a biztonsági szolgáltatások megkerülésének megkerülő megoldásához |4.33, 3.40, 2.52 |2016. június 14-én |
-| Tanácsadó |[3155527] |Frissítés a FalseStart titkosítási csomagjaira |4.33, 3.40 |2016. június 14-én |
+| Tanácsadás |[3155527] |Frissítés a FalseStart titkosítási csomagjaira |4.33, 3.40 |2016. június 14-én |
 | MS16-063 |[3163649] |Az Internet Explorer összegző biztonsági frissítése |4.33, 3.40, 2.52 |2016. június 14-én |
 | MS16-069 |[3163640] |A JScript és a VBScript összesítő biztonsági frissítése |2.52 |2016. június 14-én |
 | MS16-071 |[3164065] |Biztonsági frissítés a Microsoft Windows DNS-kiszolgálóhoz |4.33, 3.40 |2016. június 14-én |
