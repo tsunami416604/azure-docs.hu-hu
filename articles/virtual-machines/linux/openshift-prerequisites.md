@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ab8814f1620cc019a0bee872c7b8f42cbb427365
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dae521902d0568f2d79725bad792d4df64daa1c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091740"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204005"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>A OpenShift Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -70,7 +70,7 @@ az group create --name keyvaultrg --location eastus
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 Hozzon létre egy kulcstartót, amely a fürthöz tartozó SSH-kulcsokat az az kulcstartó [create](/cli/azure/keyvault) paranccsal tárolja. A kulcstároló nevének globálisan egyedinek kell lennie, és engedélyezni kell a sablon központi telepítéséhez, vagy a központi telepítés "KeyVaultParameterReferenceSecretRetrieveFailed" hibaüzenettel fog működni.
 
-A következő példa egy kulcstartó nevű kulcstárolót hoz létre a *keyvaultrg* erőforráscsoporthoz:
+A következő példa egy kulcstartó nevű kulcstárolót hoz *létre a* *keyvaultrg* erőforráscsoporthoz:
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -116,7 +116,7 @@ Egyszerű szolgáltatásnév létrehozása:
 scope=`az group show --name openshiftrg --query id`
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --password {Strong Password} \
-      --scopes $scope
+      --scopes $scope \
 ```
 Ha Windows rendszert használ, hajtsa ```az group show --name openshiftrg --query id``` végre és használja a kimenetet $scope helyett.
 
@@ -147,7 +147,7 @@ Alapértelmezés szerint a sablon a OpenShift webkonzol és az útválasztási t
 
 Ezeket a fájlokat Key Vault titokban kell tárolnia.  Ugyanazt a Key Vault használja, mint a titkos kulcshoz használt.  Ahelyett, hogy 6 további bemenetet követel meg a titkos kódokhoz, a sablon nem módosítható, hogy az egyes SSL-tanúsítványfájl-fájlokhoz egyedi titkos neveket használjon.  Tárolja a tanúsítvány adatait az alábbi táblázat információi alapján.
 
-| Titok neve      | Tanúsítványfájl   |
+| Titkos kód neve      | Tanúsítványfájl   |
 |------------------|--------------------|
 | mastercafile     | fő HITELESÍTÉSSZOLGÁLTATÓI fájl     |
 | mastercertfile   | fő tanúsítvány fájlja   |

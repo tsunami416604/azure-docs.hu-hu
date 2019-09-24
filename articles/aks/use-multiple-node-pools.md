@@ -9,7 +9,7 @@ ms.date: 08/9/2019
 ms.author: mlearned
 ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
 ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/23/2019
 ms.locfileid: "71202961"

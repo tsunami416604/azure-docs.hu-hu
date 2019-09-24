@@ -1,5 +1,5 @@
 ---
-title: 'Leírások: Ubuntu-DSVM'
+title: 'Leírások: Ubuntu DSVM'
 description: Az Ubuntu Data Science Virtual Machineban található eszközök részletei
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 20fe027ddf47ba98cef41cdc40a1b2e0d387c2a5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0c48b8ba28f67ac7f38d6f636728abe7c5a6bd4e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174707"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204033"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Leírások: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -342,3 +342,6 @@ Ekkor megnyílik egy grafikus felület, amely fülekből áll. A következő rö
 
 Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdőknek, így gyorsan elvégezheti az elemzést és a gépi tanulást egy egyszerű grafikus felületen, az R-ben pedig automatikusan generálhat kódot a módosításhoz vagy a megismeréshez.
 
+## <a name="next-steps"></a>További lépések
+
+További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

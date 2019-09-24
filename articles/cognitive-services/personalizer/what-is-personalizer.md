@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155239"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203788"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -53,7 +53,7 @@ Az ügyfélalkalmazás például a következőhöz adhat hozzá személyre szabo
 * Válassza ki a csevegési bot válaszát a felhasználó szándékának tisztázására, vagy tegyen javaslatot egy műveletre.
 * A felhasználók által az üzleti folyamat következő lépéseként megjelenő javaslatok rangsorolása.
 
-A személyre szabott szolgáltatás nem a felhasználói profil adatainak megőrzésére és kezelésére, illetve az egyes felhasználók preferenciáinak vagy előzményeinek naplózására szolgál. A személyre szabott információ az egyes interakciók funkcióinak megismerése a művelet egy olyan modellje, amelyik a hasonló funkciók esetén maximális jutalmakat érhet el. 
+A személyre szabott szolgáltatás nem a felhasználói profil adatainak megőrzésére és kezelésére, illetve az egyes felhasználók preferenciáinak vagy előzményeinek naplózására szolgál. A személyre szabott információk az egyes interakciók minden funkcióját megismerik egyetlen modell kontextusában, amely a hasonló funkciók esetében maximális jutalmakat érhet el. 
 
 ## <a name="personalization-for-developers"></a>Személyre szabás a fejlesztők számára
 
