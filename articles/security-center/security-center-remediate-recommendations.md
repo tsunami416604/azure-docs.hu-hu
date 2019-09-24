@@ -3,9 +3,8 @@ title: Javaslatok szervizelése Azure Security Centerban | Microsoft Docs
 description: Ez a dokumentum ismerteti, hogyan javíthatja a javaslatait a Azure Security Centerban, hogy segítsen az Azure-erőforrások védelmében és a biztonsági szabályzatoknak való megfelelésben.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a32e344ffe33f411bae85763ae3b919040c1109b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: memildin
+ms.openlocfilehash: 9bd1586193d2e36c370217e37b77409298821a67
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575611"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200997"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Javaslatok szervizelése Azure Security Center
 
@@ -56,7 +55,7 @@ Egy kattintásos szervizelés megvalósítása:
    ![Egy kattintással történő javítás](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > A következmények a javítás után megnyíló **erőforrások szervizelése** ablak szürke mezőjében jelennek meg. Kilistázzak, hogy milyen változások történnek az 1 kattintásos szervizeléssel való továbblépés során.
+    > A következmények a javítás után megnyíló **erőforrások szervizelése** ablak szürke mezőjében jelennek **meg.** Kilistázzak, hogy milyen változások történnek az 1 kattintásos szervizeléssel való továbblépés során.
 
 4. Szükség esetén szúrja be a megfelelő paramétereket, majd hagyja jóvá a szervizelést.
 

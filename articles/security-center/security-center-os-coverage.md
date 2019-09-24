@@ -3,23 +3,22 @@ title: A Azure Security Center által támogatott platformok | Microsoft Docs
 description: Ez a dokumentum a Azure Security Center által támogatott platformok listáját tartalmazza.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c094ef5f3e7c7bfa96f95264e137fd8938296bb4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 08/29/2019
+ms.author: memildin
+ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232205"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201633"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -35,7 +34,7 @@ A Security Center különböző típusú hibrid környezetekben támogatja a vir
 Azure-előfizetésben aktivált Azure-környezet esetén a Azure Security Center automatikusan felderíti az előfizetésen belül üzembe helyezett IaaS-erőforrásokat.
 
 > [!NOTE]
-> A biztonsági funkciók teljes készletének fogadásához rendelkeznie kell a [log Analytics ügynökkel](../azure-monitor/platform/agents-overview.md#log-analytics-agent), amelyet a Azure Security Center használ, a telepítés és [megfelelően konfigurálva, hogy](security-center-enable-data-collection.md#manual-agent)az adatküldés Azure Security Center.
+> A biztonsági funkciók teljes készletének fogadásához rendelkeznie kell a [log Analytics ügynökkel](../azure-monitor/platform/agents-overview.md#log-analytics-agent), amelyet a Azure Security Center használ, a telepítés és [megfelelően konfigurálva, hogy az adatküldés Azure Security Center](security-center-enable-data-collection.md#manual-agent).
 
 
 A következő részekben azok a támogatott kiszolgálói operációs rendszerek találhatók, amelyeken a Azure Security Center által használt [log Analytics-ügynök](../azure-monitor/platform/agents-overview.md#log-analytics-agent)futtatható.

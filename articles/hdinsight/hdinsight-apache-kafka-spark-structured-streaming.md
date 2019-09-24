@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bcf1b967cf8eeab7aae4b720683785309689858e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077001"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204229"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Apache Spark strukturált streaming használata a HDInsight Apache Kafka használatával
 
@@ -186,12 +186,15 @@ Ez a példa bemutatja, hogyan használható a Spark strukturált Stream és a Ka
 
 4. A notebook által használt csomagok betöltéséhez írja be az alábbi adatokat egy jegyzetfüzet-cellába. Futtassa a parancsot a **CTRL + ENTER billentyűkombinációval**.
 
+A Spark streaming rendelkezik a batchs szolgáltatással, ami azt jelenti, hogy az adatkötegek és a végrehajtók az adatkötegeken futnak. Ha a végrehajtó üresjárati időkorlátja kisebb, mint a köteg feldolgozásához szükséges idő, akkor a végrehajtókat folyamatosan hozzá kell adni és el kell távolítani. Ha a végrehajtók üresjárati időkorlátja nagyobb, mint a köteg időtartama, a végrehajtó soha nem lesz eltávolítva. Ezért **javasoljuk, hogy a Spark. dynamicAllocation. enabled beállítással tiltsa le a dinamikus foglalást a streaming-alkalmazások futtatásakor.**
+
     ```
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146469"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203559"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -79,7 +79,6 @@ Ha az egyik csatorna részleges eredménye alapján indexeli az adott modelleket
 
 * **Kulcsszavak kinyerése**: Kulcsszavak kinyerése a beszéd és a vizualizáció szövege alapján.
 * **Elnevezett entitások kibontása**: Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.
-* **Márkák kinyerése**: Kinyeri a márkákat a beszéd és a vizualizáció szövege alapján.
 * **Témakör következtetése**: A fő témakörök következtetéseit az átiratokból hozza. A rendszer az első szintű IPTC-besorolást is tartalmazza.
 * Összetevők: Az egyes modellekhez tartozó "következő részletességű" összetevők részletes készletének kibontása.
 * **Hangulat elemzése**: Pozitív, negatív és semleges érzelmeket azonosít a beszéd és a vizualizáció szövege alapján.

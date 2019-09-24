@@ -1,6 +1,6 @@
 ---
 title: Az OPC Vault Certificate Management szolgáltatás biztonságos futtatása – Azure | Microsoft Docs
-description: Útmutatás az OPC-tár tanúsítványkezelő szolgáltatásának biztonságos futtatásához az Azure-ban és egyéb biztonsági irányelvek a megfontoláshoz.
+description: Útmutatás az OPC-tár tanúsítványkezelő szolgáltatásának biztonságos futtatásához az Azure-ban, valamint a további megfontolandó biztonsági irányelvek felülvizsgálata.
 author: mregen
 ms.author: mregen
 ms.date: 8/16/2019
@@ -8,27 +8,25 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997664"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200084"
 ---
-# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault Certificate Management szolgáltatás biztonságos futtatása
+# <a name="run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault tanúsítványkezelő szolgáltatás biztonságos futtatása
 
-Ez a cikk azt ismerteti, hogyan futtathatja biztonságosan az OPC-tár tanúsítványkezelő szolgáltatását az Azure-ban, és más biztonsági irányelveket is figyelembe kell vennie.
+Ez a cikk azt ismerteti, hogyan futtatható az OPC-tár tanúsítványkezelő szolgáltatás az Azure-ban, és hogyan tekintheti át az egyéb biztonsági irányelveket.
 
 ## <a name="roles"></a>Szerepkörök
 
 ### <a name="trusted-and-authorized-roles"></a>Megbízható és meghatalmazott szerepkörök
 
-Az OPC-tár szolgáltatás úgy van konfigurálva, hogy a különböző szerepkörök számára engedélyezze a szolgáltatás különböző részeinek elérését.
+Az OPC-tár szolgáltatás lehetővé teszi, hogy a különböző szerepkörök hozzáférjenek a szolgáltatás különböző részeihez.
 
 > [!IMPORTANT]
-> Az üzembe helyezés során a parancsfájl csak azt a felhasználót adja meg, aki az üzembe helyezési parancsfájlt felhasználóként futtatja az összes szerepkörhöz.
-> A szerepkör-hozzárendelést át kell tekinteni az éles üzembe helyezéshez, és megfelelően újra kell konfigurálni az alábbi irányelveket követve.
-> Ehhez a feladathoz a szerepkörök és szolgáltatások manuális hozzárendelése szükséges az Azure AD Enterprise Applications portálon.
+> Az üzembe helyezés során a parancsfájl csak azt a felhasználót adja meg, aki az üzembe helyezési parancsfájlt felhasználóként futtatja az összes szerepkörhöz. Éles környezetben tekintse át ezt a szerepkör-hozzárendelést, és végezze el újra a megfelelő konfigurálást az alábbi irányelveket követve. Ehhez a feladathoz a szerepkörök és szolgáltatások manuális hozzárendelése szükséges a Azure Active Directory (Azure AD) Enterprise Applications portálon.
 
 ### <a name="certificate-management-service-roles"></a>Tanúsítványkezelő szolgáltatás szerepkörei
 
@@ -39,14 +37,14 @@ Az OPC-tár webszolgáltatás a következő szerepköröket határozza meg:
 - **Író**: Az író szerepkör hozzá van rendelve egy felhasználóhoz az írási engedélyek bizonyos feladatokhoz való hozzáadásához. 
   - Olvasási/írási hozzáférés az alkalmazásokhoz és a tanúsítványokhoz. Regisztrálhatja, frissítheti és törölheti az alkalmazásokat. Létrehozhat tanúsítvány-kérelmeket, és megszerezheti a jóváhagyott titkos kulcsokat és tanúsítványokat. A titkos kulcsokat is törölhet.
 - **Jóváhagyó**: A jóváhagyó szerepkört egy felhasználó rendeli hozzá a tanúsítványkérelmek jóváhagyásához vagy elutasításához. A szerepkör nem tartalmaz más szerepkört.
-  - Az OPC-tár Service API-hoz való hozzáférés jóváhagyói szerepkörén kívül a felhasználónak is rendelkeznie kell a kulcs aláírási engedéllyel a Key Vault a tanúsítványok aláírásához.
+  - Az OPC-tár Service API-hoz való hozzáférés jóváhagyói szerepkörén kívül a felhasználónak is rendelkeznie kell a kulcs aláírási engedéllyel a Azure Key Vault, hogy képes legyen aláírni a tanúsítványokat.
   - Az író és a jóváhagyó szerepkört különböző felhasználókhoz kell rendelni.
   - A jóváhagyó fő szerepe a tanúsítványkérelmek létrehozásának és elutasításának jóváhagyása.
 - **Rendszergazda**: A rendszergazdai szerepkör egy felhasználóhoz van rendelve a Tanúsítványsablonok kezeléséhez. A szerepkör nem támogatja a jóváhagyó szerepkört, de magában foglalja az író szerepkört is.
-  - A rendszergazda felügyelheti a tanúsítvány-csoportokat, módosíthatja a konfigurációt, és visszavonhatja az alkalmazás tanúsítványait egy új CRL kiadásával.
-  - Ideális esetben a Writer, a jóváhagyó és a rendszergazdai szerepkörök különböző felhasználókhoz vannak rendelve. A további biztonság érdekében a jóváhagyó vagy a rendszergazdai szerepkörrel rendelkező felhasználónak a kulcstartóban a tanúsítványok kiállításához és a kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megújításához is rendelkeznie kell a kulcs aláírása engedéllyel.
-  - A Service-felügyeleti szerepkörön kívül a szerepkör magában foglalja a következőket is:
-    - A HITELESÍTÉSSZOLGÁLTATÓ biztonsági eljárásai megvalósításának felügyeletéért felelős.
+  - A rendszergazda felügyelheti a tanúsítvány-csoportokat, módosíthatja a konfigurációt, és visszavonhatja az alkalmazás tanúsítványait egy új visszavont tanúsítványok listájának (CRL) kiállításával.
+  - Ideális esetben az író, a jóváhagyó és a rendszergazdai szerepkörök különböző felhasználókhoz vannak rendelve. A további biztonság érdekében a jóváhagyó vagy a rendszergazdai szerepkörrel rendelkező felhasználónak kulcs-aláírási engedéllyel kell rendelkeznie a Key Vaultban, a tanúsítványok kiállításához vagy egy kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megújításához.
+  - A Service-felügyeleti szerepkörön kívül a szerepkör magában foglalja a következőt:
+    - A HITELESÍTÉSSZOLGÁLTATÓ biztonsági eljárásai megvalósításának kezeléséért.
     - A tanúsítványok létrehozásának, visszavonásának és felfüggesztésének kezelése. 
     - Titkosítási kulcs életciklus-kezelése (például a kiállító HITELESÍTÉSSZOLGÁLTATÓI kulcsok megújítása).
     - A HITELESÍTÉSSZOLGÁLTATÓT működtető szolgáltatások telepítése, konfigurálása és karbantartása.
@@ -55,28 +53,28 @@ Az OPC-tár webszolgáltatás a következő szerepköröket határozza meg:
 
 ### <a name="other-role-assignments"></a>Egyéb szerepkör-hozzárendelések
 
-A következő szerepköröket is figyelembe kell venni és hozzá kell rendelni a szolgáltatás futtatásakor:
+A szolgáltatás futtatásakor vegye figyelembe a következő szerepköröket is:
 
-- A tanúsítvány-beszerzési szerződés üzleti tulajdonosa a külső legfelső szintű hitelesítésszolgáltatóval (abban az esetben, ha a tulajdonos külső hitelesítésszolgáltatótól vásárol tanúsítványokat, vagy egy külső HITELESÍTÉSSZOLGÁLTATÓhoz alárendelt HITELESÍTÉSSZOLGÁLTATÓT üzemeltet).
+- A tanúsítvány-beszerzési szerződés üzleti tulajdonosa a külső legfelső szintű hitelesítésszolgáltatóval (például ha a tulajdonos tanúsítványokat vásárol egy külső HITELESÍTÉSSZOLGÁLTATÓTÓL, vagy olyan HITELESÍTÉSSZOLGÁLTATÓT üzemeltet, amely egy külső HITELESÍTÉSSZOLGÁLTATÓhoz van rendelve).
 - A hitelesítésszolgáltató fejlesztése és érvényesítése.
 - A naplózási rekordok áttekintése.
-- A HITELESÍTÉSSZOLGÁLTATÓ támogatását, illetve a fizikai és a Felhőbeli létesítmények felügyeletét segítő személyzet, de a HITELESÍTÉSSZOLGÁLTATÓ műveleteinek elvégzéséhez közvetlenül nem megbízható szerepkört kell megadni. A jogosult szerepkörrel rendelkező személyek készletét is dokumentálni kell.
+- A HITELESÍTÉSSZOLGÁLTATÓ támogatását vagy a fizikai és a Felhőbeli létesítmények kezelését segítő személyzet, de nem közvetlenül megbízható a HITELESÍTÉSSZOLGÁLTATÓI műveletek elvégzéséhez, a *jogosult* szerepkörben vannak. A jogosult szerepkörrel rendelkező személyek készletét is dokumentálni kell.
 
-### <a name="memberships-of-trusted-and-authorized-roles-must-be-reviewed-annually"></a>A megbízható és a meghatalmazott szerepkörök tagságát évente felül kell vizsgálni
+### <a name="review-memberships-of-trusted-and-authorized-roles-quarterly"></a>Tekintse át a megbízható és a jogosultsággal rendelkező szerepkörök negyedéves tagságát
 
-A megbízható és a meghatalmazott szerepkörök tagságát legalább negyedévente felül kell vizsgálni ahhoz, hogy az egyes szerepkörökben lévő személyek (manuális folyamatokhoz) vagy szolgáltatás-identitások (automatizált folyamatok esetében) a minimumra legyenek beállítva.
+Legalább negyedévente tekintse át a megbízható és meghatalmazott szerepkörök tagságát. Győződjön meg arról, hogy az egyes szerepkörökben lévő személyek (manuális folyamatok esetében) vagy szolgáltatás-identitások (automatizált folyamatok esetében) minimálisan megmaradnak.
 
-### <a name="certificate-issuance-process-must-enforce-role-separation-between-certificate-requester-and-approver"></a>A tanúsítvány-kiállítási folyamatnak ki kell kényszeríteni a szerepkör elkülönítését a tanúsítvány kérelmezője és a jóváhagyó között
+### <a name="role-separation-between-certificate-requester-and-approver"></a>Szerepkör elkülönítése a tanúsítvány kérelmezője és a jóváhagyó között
 
 A tanúsítvány-kiállítási folyamatnak ki kell kényszeríteni a szerepkör elkülönítését a tanúsítvány kérelmezője és a tanúsítvány-jóváhagyó szerepkörök (személyek vagy automatizált rendszerek) között. A tanúsítvány kiállítását jóvá kell hagynia egy tanúsítvány-jóváhagyó szerepkörrel, amely ellenőrzi, hogy a tanúsítvány kérelmezője jogosult-e tanúsítványok beszerzésére. A tanúsítvány-jóváhagyó szerepkörrel rendelkező személyeknek formálisan jogosult személynek kell lenniük.
 
-### <a name="privileged-role-management-must-restrict-access-and-be-reviewed-quarterly"></a>A Kiemelt szerepkörök felügyeletének korlátoznia kell a hozzáférést, és negyedévente felül kell vizsgálnia azokat
+### <a name="restrict-assignment-of-privileged-roles"></a>Kiemelt szerepkörök hozzárendelésének korlátozása
 
-A Kiemelt szerepkörök hozzárendelését, például a rendszergazdák és a jóváhagyó csoport tagságának engedélyezését, korlátozott számú jogosult személyre kell korlátozni. Az emelt szintű szerepkör módosításainak 24 órán belül vissza kell vonnia a hozzáférést. Végül a Kiemelt szerepkör-hozzárendeléseket negyedévente felül kell vizsgálni, és a szükségtelen vagy lejárt hozzárendeléseket el kell távolítani.
+Korlátozni kell a Kiemelt szerepkörök hozzárendelését, például a rendszergazdák és a jóváhagyó csoportok tagságának engedélyezését a jogosult személyek korlátozott csoportjára. Az emelt szintű szerepkör módosításainak 24 órán belül vissza kell vonnia a hozzáférést. Végül pedig negyedévente tekintse át a Kiemelt szerepkör-hozzárendeléseket, és távolítsa el a szükségtelen vagy lejárt hozzárendeléseket.
 
 ### <a name="privileged-roles-should-use-two-factor-authentication"></a>A Kiemelt szerepköröknek kétfaktoros hitelesítést kell használniuk
 
-A többtényezős hitelesítést (kétfaktoros hitelesítés, MFA vagy TFA) a jóváhagyó és a rendszergazdák interaktív bejelentkezésére kell használni a szolgáltatásban.
+A többtényezős hitelesítést (más néven kétfaktoros hitelesítést) a jóváhagyó és a rendszergazdák interaktív bejelentkezéséhez használhatja a szolgáltatásnak.
 
 ## <a name="certificate-service-operation-guidelines"></a>A Certificate Service üzemeltetési iránymutatásai
 
@@ -86,165 +84,162 @@ A Certificate Service-nek naprakész biztonsági válaszszabály szükséges a f
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 
-Minden rendszert folyamatosan figyelni és frissíteni kell a legújabb biztonsági frissítések/javítások megfelelőségével.
+Minden rendszert folyamatosan figyelni és frissíteni kell a legújabb biztonsági frissítésekkel.
 
 > [!IMPORTANT]
-> Az OPC-tároló szolgáltatás GitHub-tárháza folyamatosan frissül a biztonsági javításokkal. A GitHubon lévő frissítéseket figyelni kell, és a frissítéseket rendszeres időközönként alkalmazni kell a szolgáltatásra.
+> Az OPC-tároló szolgáltatás GitHub-tárháza folyamatosan frissül a biztonsági javításokkal. Figyelje ezeket a frissítéseket, és rendszeres időközönként alkalmazza őket a szolgáltatásra.
 
 ### <a name="security-monitoring"></a>A biztonság monitorozása
 
-Feliratkozás a megfelelő biztonsági figyelésre, például egy központi figyelési megoldásra való feliratkozással (például Azure Security Center, O365-figyelési megoldás), és megfelelően konfigurálja, hogy a biztonsági események továbbítva legyenek a figyelési megoldás.
+Előfizetés a megfelelő biztonsági figyelésre vagy megvalósításra. Tegyük fel például, hogy előfizet egy központi figyelési megoldásra (például Azure Security Center vagy Office 365 monitoring megoldásra), és konfigurálja megfelelően annak biztosítására, hogy a biztonsági események továbbítva legyenek a figyelési megoldásnak.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint az OPC-tár szolgáltatás üzembe helyezése az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) figyelési megoldásként történik. A Azure Security Centerhoz hasonló biztonsági [](https://azure.microsoft.com/services/security-center/) megoldás hozzáadása kifejezetten ajánlott.
+> Alapértelmezés szerint az OPC Vault szolgáltatás üzembe helyezése az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) figyelési megoldásként történik. A [Azure Security Centerhoz](https://azure.microsoft.com/services/security-center/) hasonló biztonsági megoldás hozzáadása kifejezetten ajánlott.
 
-### <a name="assess-security-of-open-source-software-components"></a>A nyílt forráskódú szoftverek összetevőinek biztonságának felmérése
+### <a name="assess-the-security-of-open-source-software-components"></a>A nyílt forráskódú szoftverek összetevőinek biztonságának felmérése
 
 A terméken vagy szolgáltatáson belül használt összes nyílt forráskódú összetevőnek szabadnak kell lennie a mérsékelt vagy nagyobb biztonsági sebezhetőségtől.
 
 > [!IMPORTANT]
-> Az OPC-tároló szolgáltatás GitHub-tárháza ellenőrzi az összes összetevőt a biztonsági rések folyamatos integrációja során. A GitHubon lévő frissítéseket figyelni kell, és a frissítéseket rendszeres időközönként alkalmazni kell a szolgáltatásra.
+> A folyamatos integrációs buildek során az OPC-tár szolgáltatás GitHub-tárháza megvizsgálja a biztonsági rések összes összetevőjét. Figyelje ezeket a frissítéseket a GitHubon, és rendszeres időközönként alkalmazza őket a szolgáltatásra.
 
 ### <a name="maintain-an-inventory"></a>Leltár karbantartása
 
-Az eszközök leltározását minden üzemi gazdagép (beleértve az állandó virtuális gépeket is), az eszközök, az összes belső IP-címtartomány, a VIP-cím és a nyilvános DNS-tartománynevek számára kell fenntartani. A leltárt a rendszer, az eszköz IP-címe, a VIP vagy a nyilvános DNS-tartomány hozzáadásával vagy eltávolításával 30 napon belül frissíteni kell.
+Az összes üzemi gazdagép (beleértve az állandó virtuális gépeket is), az eszközök, az összes belső IP-címtartomány, a VIP-cím és a nyilvános DNS-tartománynevek készletének karbantartása. Amikor rendszer-, eszköz-IP-címet, VIP-t vagy nyilvános DNS-tartományt ad hozzá vagy távolít el, 30 napon belül frissítenie kell a leltárt.
 
-#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Az Azure OPC-tároló alapértelmezett üzemi üzembe helyezésének leltára: 
+#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Az Azure OPC-tároló alapértelmezett üzemi telepítésének leltára 
 
-Az **Azure**-ban:
+Az Azure-ban:
 - **App Service terv**: App Service-csomag a Service hosts szolgáltatáshoz. Alapértelmezett S1.
 - **App Service** a Service-hez: Az OPC Vault Service-gazdagép.
 - **App Service** a minta alkalmazáshoz: Az OPC-tár minta alkalmazás-gazdagépe.
-- Kulcstartó **standard**: A webszolgáltatások titkainak és Cosmos DB kulcsainak tárolásához.
-- Kulcstartó **Premium**: A kiállító HITELESÍTÉSSZOLGÁLTATÓ kulcsainak üzemeltetése az aláírási szolgáltatáshoz a tár konfigurációja és az alkalmazás titkos kulcsainak tárolása érdekében.
-- **Cosmos db**: Az alkalmazás-és tanúsítványkérelmek adatbázisa. 
+- **Key Vault standard**: A webszolgáltatások titkainak és Azure Cosmos DB kulcsainak tárolásához.
+- **Key Vault Premium**: A kiállító HITELESÍTÉSSZOLGÁLTATÓI kulcsok, az aláírási szolgáltatás, valamint az alkalmazás titkos kulcsainak tároló-konfigurációja és tárolása.
+- **Azure Cosmos db**: Az alkalmazás-és tanúsítványkérelmek adatbázisa. 
 - **Application Insights**: (nem kötelező) figyelési megoldás webszolgáltatásokhoz és alkalmazásokhoz.
-- **AzureAD-alkalmazás regisztrálása**: A minta alkalmazás, a szolgáltatás és a peremhálózati modul regisztrálása.
+- **Azure ad-alkalmazás regisztrálása**: A minta alkalmazás, a szolgáltatás és a peremhálózati modul regisztrálása.
 
-A Cloud Services esetében dokumentálni kell a szolgáltatás üzembe helyezéséhez használt összes állomásnevet, erőforráscsoportot, erőforrás-nevet, előfizetés-azonosítót és TenantId. 
+A Cloud Services esetében dokumentálni kell a szolgáltatás üzembe helyezéséhez használt összes állomásnevet, erőforráscsoportot, erőforrás-nevet, előfizetési azonosítót és bérlői azonosítót. 
 
-**IoT Edge** vagy helyi IoT Edge- **kiszolgálón**:
-- **OPC**-tár IoT Edge modulja: A gyári hálózati OPC UA globális felderítési kiszolgáló támogatásához. 
+Azure IoT Edge vagy helyi IoT Edge-kiszolgálón:
+- **OPC-tár IoT Edge modulja**: A gyári hálózati OPC UA globális felderítési kiszolgáló támogatásához. 
 
-A IoT Edge eszközökön a gazdagépeket és az IP-címeket dokumentálni kell. 
+A IoT Edge eszközök esetében dokumentálni kell a gazdagépeket és az IP-címeket. 
 
 ### <a name="document-the-certification-authorities-cas"></a>A hitelesítésszolgáltatók dokumentálása (CAs)
 
-A HITELESÍTÉSSZOLGÁLTATÓI hierarchia dokumentációjának tartalmaznia kell minden olyan működő hitelesítésszolgáltatót, amely tartalmazza az összes kapcsolódó alárendelt hitelesítésszolgáltatót, a szülő hitelesítésszolgáltatót és a legfelső szintű hitelesítésszolgáltatót, még akkor is, ha azokat nem a szolgáltatás kezeli. A formális dokumentáció helyett az összes nem lejárt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány teljes készletét lehet megadni.
+A HITELESÍTÉSSZOLGÁLTATÓI hierarchia dokumentációjában az összes működő hitelesítésszolgáltatónak szerepelnie kell. Ebbe beletartozik az összes kapcsolódó alárendelt hitelesítésszolgáltató, szülő hitelesítésszolgáltató és legfelső szintű hitelesítésszolgáltató is, még akkor is, ha azokat nem a szolgáltatás kezeli. A formális dokumentáció helyett megadhatja az összes nem lejárt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány teljes készletét.
 
 > [!NOTE]
-> Az OPC-tár minta alkalmazása a szolgáltatásban felhasznált és a szolgáltatásban előállított összes tanúsítvány letöltését teszi lehetővé a dokumentációban.
+> Az OPC-tár minta alkalmazása támogatja a szolgáltatásban a dokumentációban felhasznált és előállított összes tanúsítvány letöltését.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>A kiállított tanúsítványok dokumentálása minden hitelesítésszolgáltató (CAs) szerint
 
-Az elmúlt 12 hónapban kiállított összes tanúsítvány teljes készletét meg kell adni a dokumentációhoz.
+Adja meg az elmúlt 12 hónapban kiállított összes tanúsítvány teljes készletét.
 
 > [!NOTE]
-> Az OPC-tár minta alkalmazása a szolgáltatásban felhasznált és a szolgáltatásban előállított összes tanúsítvány letöltését teszi lehetővé a dokumentációban.
+> Az OPC-tár minta alkalmazása támogatja a szolgáltatásban a dokumentációban felhasznált és előállított összes tanúsítvány letöltését.
 
-### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>Az SOP dokumentálása a titkosítási kulcsok biztonságos törléséhez
+### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>A titkosítási kulcsok biztonságos törlésére szolgáló szabványos működési eljárás dokumentálása
 
-A kulcs törlése csak ritkán történhet a HITELESÍTÉSSZOLGÁLTATÓ élettartama során, ezért a felhasználó nem rendelkezik a kulcstároló tanúsítványának törléséhez szükséges jogosultsággal, és miért nincsenek elérhető API-k egy kiállítói HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törléséhez. A hitelesítésszolgáltató titkosítási kulcsainak biztonságos törléséhez használt kézi szabványos működési eljárás csak a kulcstartó Azure Portal való közvetlen elérésével és a kulcstartóban lévő tanúsítvány törlésével érhető el. Ha biztosítani szeretné, hogy az azonnali törlést lehetővé kell tennie, hogy a rendszer [törölje](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) a letiltást.
+A HITELESÍTÉSSZOLGÁLTATÓ élettartama során a kulcsok törlése csak ritkán történhet meg. Ezért nincs olyan felhasználó, akinek nincs Key Vault tanúsítvány-törlési jogosultsága, és miért nincsenek elérhető API-k egy kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törléséhez. A hitelesítésszolgáltató titkosítási kulcsainak biztonságos törléséhez szükséges manuális szabványos működési eljárás csak a Azure Portal Key Vault közvetlen elérésével érhető el. Key Vault is törölheti a tanúsítványt. Az azonnali törlés érdekében tiltsa le a [Key Vault Soft delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) funkciót.
 
 ## <a name="certificates"></a>Tanúsítványok
 
 ### <a name="certificates-must-comply-with-minimum-certificate-profile"></a>A tanúsítványoknak meg kell felelniük a minimális tanúsítvány-profilnak
 
-Az OPC-tár szolgáltatás olyan online hitelesítésszolgáltatók (CA-k), amelyek végfelhasználói tanúsítványokat bocsátanak ki az előfizetőknek.
-Az OPC-tár webszolgáltatás az alapértelmezett implementációban követi ezeket az irányelveket.
+Az OPC-tár szolgáltatás egy online HITELESÍTÉSSZOLGÁLTATÓ, amely a végfelhasználói tanúsítványokat ad ki az előfizetőknek. Az OPC-tár webszolgáltatás az alapértelmezett implementációban követi ezeket az irányelveket.
 
-- Az összes tanúsítványnak a következő X. 509 mezőket kell tartalmaznia az alább megadott módon:
+- Az összes tanúsítványnak tartalmaznia kell a következő X. 509 mezőket az alább megadott módon:
   - A Version mező tartalmának v3-nek kell lennie. 
   - A serialNumber mező tartalmának legalább 8 bájtnak kell lennie, amely egy FIPS (Federal Information Processing Standards) 140 jóváhagyott véletlenszám-generátort tartalmaz.<br>
     > [!IMPORTANT]
-    > Az OPC-tároló sorozatszáma alapértelmezés szerint 20 bájt, és az operációs rendszer titkosítási véletlenszám-generátora alapján érhető el. A véletlenszám-generátor a Windows-eszközökön jóváhagyott FIPS 140, de nem Linux-alapú. Ezt a tényt figyelembe kell venni, amikor olyan szolgáltatás-telepítést választ, amely linuxos virtuális gépeket vagy linuxos Docker-tárolókat használ, amelyeken a mögöttes technológia OpenSSL-je nem engedélyezett a FIPS 140-ben.
+    > Az OPC-tároló sorozatszáma alapértelmezés szerint 20 bájt, és az operációs rendszer kriptográfiai véletlenszám-létrehozója alapján lesz beszerezve. A véletlenszám-generátor a Windows-eszközökön jóváhagyott FIPS 140, de nem Linux rendszeren. Ezt a Linux virtuális gépeket vagy linuxos Docker-tárolókat használó szolgáltatások központi telepítésének kiválasztásakor érdemes figyelembe venni, amelyeken a mögöttes technológiai OpenSSL nem engedélyezett az FIPS 140-ben.
   - A issuerUniqueID és a subjectUniqueID mező nem lehet jelen.
   - A végfelhasználói tanúsítványokat az IETF RFC 5280-es verziójának megfelelően meg kell határozni az alapszintű megkötések bővítménnyel.
   - A kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz a pathLenConstraint mezőt 0-ra kell állítani. 
-  - A kibővített kulcshasználat bővítménynek jelen kell lennie, és tartalmaznia kell a kibővített kulcshasználati objektumazonosítók (OID) minimális készletét. Nem adható meg az anyExtendedKeyUsage OID (2.5.29.37.0). 
+  - A kibővített kulcshasználat bővítménynek jelen kell lennie, és tartalmaznia kell a kibővített kulcshasználat objektum-azonosítók (OID) minimális készletét. Nem adható meg az anyExtendedKeyUsage OID (2.5.29.37.0). 
   - A CRL terjesztési pont (CDP) bővítménynek jelen kell lennie a kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványban.<br>
     > [!IMPORTANT]
-    > A CRL terjesztési pont (CDP) bővítménye megtalálható az OPC-tároló HITELESÍTÉSSZOLGÁLTATÓI tanúsítványainak területén, az OPC UA-eszközök azonban egyéni metódusokat használnak a CRL-ek terjesztésére.
+    > A CDP-bővítmény megtalálható az OPC-tároló HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokban. Az OPC UA-eszközök azonban egyéni metódusokat használnak a visszavonási listák terjesztésére.
   - A szolgáltatói információ-hozzáférési bővítménynek szerepelnie kell az előfizetői tanúsítványokban.<br>
     > [!IMPORTANT]
-    > A szolgáltatói információ-hozzáférési bővítmény az OPC-tároló előfizetői tanúsítványában található, az OPC UA-eszközök azonban egyéni metódusokat használnak a kiállító HITELESÍTÉSSZOLGÁLTATÓ adatainak terjesztésére.
+    > A szolgáltatói információ-hozzáférési bővítmény az OPC-tároló előfizetői tanúsítványokban van jelen. Az OPC UA-eszközök azonban egyéni módszereket használnak a kiállító HITELESÍTÉSSZOLGÁLTATÓ adatainak terjesztésére.
 - A jóváhagyott aszimmetrikus algoritmusokat, a kulcs hosszát, a kivonatoló függvényeket és a kitöltési módot kell használni.
-  - Az **RSA** és az **SHA-2** az egyetlen támogatott algoritmus (*).
+  - Az RSA és az SHA-2 az egyetlen támogatott algoritmus.
   - Az RSA használható titkosításhoz, kulcscserehez és aláíráshoz.
   - Az RSA-titkosításnak csak a OAEP, az RSA-KEM vagy az RSA-PSS kitöltési módot kell használnia.
-  - A kulcsok hossza > = 2048 bit szükséges.
+  - A 2048 bitenél nagyobb vagy azzal egyenlő kulcs hosszúsága kötelező.
   - Használja az SHA-2 kivonatoló algoritmust (SHA256, SHA384 és SHA512).
-  - Az RSA legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI kulcsainak átlagos élettartama > = 20 év 4096 bit vagy nagyobb kell legyen.
-  - Az RSA kiállító CA kulcsainak legalább 2048 bit értékűnek kell lenniük; Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
+  - A 20 évnél nagyobb vagy azzal megegyező élettartamú RSA legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI kulcsok esetében 4096 bit vagy nagyobb értéknek kell lennie.
+  - Az RSA kiállító CA kulcsainak legalább 2048 bitenek kell lenniük. Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
 - Tanúsítvány élettartama
   - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: A legfelső szintű hitelesítésszolgáltatók esetében a tanúsítvány maximális érvényességi időtartama nem haladhatja meg a 25 évet.
-  - Alárendelt HITELESÍTÉSSZOLGÁLTATÓ vagy online kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a hat évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható három évnél hosszabb ideig az új tanúsítványok kiállításához.<br>
+  - Alárendelt HITELESÍTÉSSZOLGÁLTATÓ vagy online kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.<br>
     > [!IMPORTANT]
-    > A kiállítói tanúsítvány, ahogy az az alapértelmezett OPC-tárolóban, a külső legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ nélkül lett létrehozva, úgy van kezelve, mint egy online alhitelesítésszolgáltató, amely megfelel a vonatkozó követelményeknek és élettartamoknak. A rendszer az alapértelmezett élettartamot öt évre állítja be > = 2048-es kulcs hosszával.
-  - Minden aszimmetrikus kulcsnak legfeljebb ötéves élettartammal kell rendelkeznie, az ajánlott egy éves élettartammal.<br>
+    > A kiállítói tanúsítvány, ahogy az alapértelmezett OPC-tárolóban a külső legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ nélkül lett létrehozva, a rendszer úgy kezeli, mint egy online alhálózatot, a megfelelő követelményekkel és élettartamokkal. A rendszer az alapértelmezett élettartamot 5 évre állítja be, amelynek a kulcsa a 2048-nál nagyobb vagy azzal egyenlő.
+  - Minden aszimmetrikus kulcsnak legfeljebb 5 éves élettartammal kell rendelkeznie, és ajánlott 1 éves élettartama.<br>
     > [!IMPORTANT]
-    > Alapértelmezés szerint az OPC-tárolóban kiadott alkalmazás-tanúsítványok élettartama két év, és minden évben le kell cserélni. 
+    > Alapértelmezés szerint az OPC-tárolóban kiadott alkalmazás-tanúsítványok élettartama 2 év, és minden évben le kell cserélni. 
   - A tanúsítvány megújításakor a rendszer új kulccsal újítja meg.
 - OPC UA-specifikus bővítmények az Application instance-tanúsítványokban
-  - Az subjectAltName bővítmény magában foglalja az alkalmazás URI-ját és a gazdagépeket is, amelyek teljes tartománynevet, IPv4-és IPv6-címeket is tartalmazhatnak.
+  - Az subjectAltName bővítmény tartalmazza az alkalmazás URI-ját és a gazdagépeket. Ilyenek lehetnek a teljes tartománynevek, az IPv4-és az IPv6-címek is.
   - A kulcshasználat magában foglalja a digitalSignature, a letagadhatatlanság, a keyEncipherment és a dataEncipherment.
-  - A extendedKeyUsage tartalmazza a serverAuth és/vagy a clientAuth.
+  - A extendedKeyUsage tartalmazza a serverAuth és a clientAuth.
   - Az authorityKeyIdentifier az aláírt tanúsítványokban van megadva.
 
-### <a name="certificate-authority-ca-keys-and-certificates-must-meet-minimum-requirements"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsoknak és tanúsítványoknak meg kell felelniük a minimális követelményeknek
+### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsoknak és tanúsítványoknak meg kell felelniük a minimális követelményeknek
 
-- **Titkos kulcsok**: Az **RSA** -kulcsoknak legalább 2048 bit értékűnek kell lenniük; Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
-- **Élettartam**: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a hat évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható három évnél hosszabb ideig az új tanúsítványok kiállításához.
+- **Titkos kulcsok**: Az RSA-kulcsoknak legalább 2048 bitenek kell lenniük. Ha a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány lejárati dátuma 2030, akkor a CA-kulcsnak 4096 bit vagy nagyobbnak kell lennie.
+- **Élettartam**: A tanúsítvány maximális érvényességi időtartama az online hitelesítésszolgáltatók számára, és csak az előfizetői tanúsítványok kiadása nem haladhatja meg a 6 évet. Ezen hitelesítésszolgáltatók esetében a kapcsolódó privát aláírási kulcs nem használható 3 évnél hosszabb ideig az új tanúsítványok kiállításához.
 
-### <a name="ca-keys-are-protected-using-hardware-security-modules-hsm"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsokat hardveres biztonsági modulok (HSM) védik
+### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcsokat hardveres biztonsági modulok védik
 
-- A OpcVault az Azure kulcstartó prémium és kulcsait az FIPS 140-2 2. szintű hardveres biztonsági modulok (HSM) védik. 
+A OpcVault Azure Key Vault Premiumot használ, és a kulcsokat a FIPS 140-2 2. szintű hardveres biztonsági modul (HSM) védi. 
 
-A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a FIPS (szövetségi adatfeldolgozási szabványok) hitelesítése.<br>
-A HSM által védettként létrehozott vagy importált kulcsok a HSM-ben lesznek feldolgozva, amely a 2. szintű FIPS 140-2-es szintre van érvényesítve.<br>
-A szoftver által védettként létrehozott vagy importált kulcsok feldolgozása az 1. szintű FIPS 140-2-es szintre ellenőrzött titkosítási modulokon belül történik.
+A Key Vault által használt kriptográfiai modulok (HSM vagy szoftverek) FIPS-hitelesítéssel rendelkeznek. A HSM által védettként létrehozott vagy importált kulcsok a HSM-ben lesznek feldolgozva, amely a 2. szintű FIPS 140-2-es szintre van érvényesítve. A szoftveresen védettként létrehozott vagy importált kulcsok feldolgozása az 1. szintű FIPS 140-2-es szintre ellenőrzött titkosítási modulokon belül történik.
 
 ## <a name="operational-practices"></a>Működési eljárások
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-enrollment"></a>A tanúsítványigénylés szabványos működési PKI-eljárásainak dokumentálása és karbantartása
 
 Dokumentálja és karbantartsa a hitelesítésszolgáltatók tanúsítványait, például a következőket: 
-- Az előfizető azonosítása és hitelesítése 
+- Az előfizető azonosítása és hitelesítése. 
 - A tanúsítványkérelem feldolgozásának és ellenőrzésének módja (ha van ilyen) a tanúsítvány-megújítási és-újragenerálási kérelmek feldolgozásának módját is beleértve. 
-- A kiállított tanúsítványok kiosztása az előfizetők számára 
+- A kiállított tanúsítványok az előfizetők számára való terjesztése. 
 
-Az OPC-tár Service SOP-t az [Áttekintés](overview-opc-vault-architecture.md) és a dokumentumok [kezelése](howto-opc-vault-manage.md) című témakör ismerteti. Az alábbi eljárások az OPC Unified Architecture Specification 12. részében olvashatók: Felderítési és globális szolgáltatások.
+Az OPC-tár Service SOP-t az [OPC-tároló architektúrájában](overview-opc-vault-architecture.md) és [az OPC-tár tanúsítvány-szolgáltatásának kezelésében](howto-opc-vault-manage.md)ismertetjük. A gyakorlat a "OPC Unified Architecture Specification 12. rész: Felderítési és globális szolgáltatások. "
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>A tanúsítványok visszavonására szolgáló szabványos PKI-eljárások dokumentálása és karbantartása
 
-A tanúsítvány-visszavonási folyamatot az [Áttekintés](overview-opc-vault-architecture.md) és a dokumentumok [kezelése](howto-opc-vault-manage.md) című témakör ismerteti.
+A tanúsítvány-visszavonási folyamat az [OPC-tároló architektúrájában](overview-opc-vault-architecture.md) és [az OPC-tár tanúsítvány-szolgáltatásának kezelése](howto-opc-vault-manage.md)című témakörben található.
     
-### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Dokumentum hitelesítésszolgáltató (CA) kulcsának generálási ünnepsége 
+### <a name="document-ca-key-generation-ceremony"></a>A HITELESÍTÉSSZOLGÁLTATÓI kulcs létrehozási ünnepségének dokumentálása 
 
-Az OPC-tárolóban a kiállító HITELESÍTÉSSZOLGÁLTATÓ kulcsának generálását az Azure kulcstartó biztonságos tárterülete okozza, amelyet a dokumentáció [kezelése](howto-opc-vault-manage.md) című témakörben talál.
+A kiállító HITELESÍTÉSSZOLGÁLTATÓ kulcsának létrehozása az OPC-tárolói szolgáltatásban egyszerűsített, a Azure Key Vault biztonságos tárterülete miatt. További információ: [az OPC-tár tanúsítvány-szolgáltatásának kezelése](howto-opc-vault-manage.md).
 
-Ha azonban egy külső legfelső szintű hitelesítésszolgáltatót használ, a hitelesítésszolgáltató (CA) kulcsának generálási ünnepségének meg kell felelnie a következő követelményeknek:
+Ha azonban külső legfelső szintű hitelesítésszolgáltatót használ, a HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségének meg kell felelnie az alábbi követelményeknek.
 
 A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségét olyan dokumentált parancsfájlon kell végrehajtani, amely legalább a következő elemeket tartalmazza: 
-1. A szerepkörök és a résztvevői felelősségek meghatározása
-2. A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségének végrehajtásának jóváhagyása
-3. Az ünnepséghez szükséges titkosítási hardverek és aktiválási anyagok
-4. Hardver-előkészítés (beleértve az eszköz/konfigurációs adatok frissítését és kijelentkezését)
-5. Operációs rendszer telepítése
-6. A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepsége során végrehajtott konkrét lépések, például: 
-7. HITELESÍTÉSSZOLGÁLTATÓI alkalmazás telepítése és konfigurálása
-8. HITELESÍTÉSSZOLGÁLTATÓI kulcs létrehozása
-9. HITELESÍTÉSSZOLGÁLTATÓI kulcs biztonsági mentése
-10. HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány aláírása
-9. Aláírt kulcsok importálása a szolgáltatás védett HSM-ben.
-11. HITELESÍTÉSSZOLGÁLTATÓ rendszerleállása
-12. Anyagok előkészítése a tároláshoz
+- A szerepkörök és a résztvevői felelősségek meghatározása.
+- Jóváhagyás a HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségének végrehajtásához.
+- Az ünnepséghez szükséges titkosítási hardverek és aktiválási anyagok.
+- Hardver-előkészítés (beleértve az eszköz/konfigurációs adatok frissítését és kijelentkezését).
+- Operációs rendszer telepítése.
+- A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepsége során végrehajtott konkrét lépések, például: 
+  - HITELESÍTÉSSZOLGÁLTATÓI alkalmazások telepítése és konfigurálása.
+  - HITELESÍTÉSSZOLGÁLTATÓI kulcs létrehozása.
+  - HITELESÍTÉSSZOLGÁLTATÓI kulcs biztonsági mentése.
+  - HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány aláírása.
+  - Aláírt kulcsok importálása a szolgáltatás védett HSM-ben.
+  - HITELESÍTÉSSZOLGÁLTATÓ rendszerleállása.
+  - A tároláshoz szükséges anyagok előkészítése.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az OPC-tároló biztonságos kezelését, itt látható a következő lépés:
+Most, hogy megismerte az OPC-tároló biztonságos kezelését, a következőket teheti:
 
 > [!div class="nextstepaction"]
 > [Az OPC UA-eszközök biztonságossá tétele az OPC-tárolóval](howto-opc-vault-secure.md)

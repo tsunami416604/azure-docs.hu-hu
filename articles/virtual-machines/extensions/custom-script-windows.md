@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774587"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204203"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéni parancsfájl-bővítmény a Windowshoz
 
@@ -38,7 +38,7 @@ Beállíthatja, hogy a bővítmény az Azure Blob Storage hitelesítő adatait h
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, akkor további tűzfal-és hálózati biztonsági csoportok portjait kell megnyitnia. Ha például a szkript az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést [](../../virtual-network/security-overview.md#service-tags)a tároláshoz.
+Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, akkor további tűzfal-és hálózati biztonsági csoportok portjait kell megnyitnia. Ha például a szkript az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](../../virtual-network/security-overview.md#service-tags).
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal-és hálózati biztonsági csoport portjainak megnyitására.
 
@@ -69,7 +69,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -101,13 +101,16 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 > [!NOTE]
 > Egy adott időpontban csak egy bővítmény telepíthető egy virtuális gépre, így az azonos virtuális géphez tartozó Resource Manager-sablonban kétszer is megadható az egyéni parancsfájl.
 
+> [!NOTE]
+> Ezt a sémát a VirtualMachine-erőforráson belül vagy önálló erőforrásként is használhatja. Az erőforrás nevének "virtualMachineName/extensionName" formátumúnak kell lennie, ha ez a bővítmény önálló erőforrásként van használatban az ARM-sablonban. 
+
 ### <a name="property-values"></a>Tulajdonságok értékei
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | sztring |
-| type | CustomScriptExtension | sztring |
+| publisher | Microsoft.Compute | Karakterlánc |
+| type | CustomScriptExtension | Karakterlánc |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
@@ -212,7 +215,7 @@ Azt is megteheti, hogy a [ForceUpdateTag](/dotnet/api/microsoft.azure.management
 
 ### <a name="using-invoke-webrequest"></a>A meghívás-webkérés használata
 
-Ha a szkriptben a [meghívás-](/powershell/module/microsoft.powershell.utility/invoke-webrequest) webkérést használja, meg kell adnia a paramétert `-UseBasicParsing` , különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
+Ha a szkriptben a [meghívás-webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert `-UseBasicParsing` , különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -224,7 +227,7 @@ Az egyéni szkriptek klasszikus virtuális gépeken való üzembe helyezéséhez
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Navigáljon a klasszikus VM-erőforráshoz. Válassza a bővítmények lehetőséget a **Beállítások**területen.
+Navigáljon a klasszikus VM-erőforráshoz. Válassza a **bővítmények** lehetőséget a **Beállítások**területen.
 
 Kattintson a **+ Hozzáadás** elemre, majd az erőforrások listájában válassza az **Egyéni szkriptek bővítmény**lehetőséget.
 

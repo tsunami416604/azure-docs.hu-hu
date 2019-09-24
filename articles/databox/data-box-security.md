@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799230"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203822"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -34,7 +34,7 @@ A következő ábra az adatok áramlását mutatja az Azure Data Box megoldásba
 
 ![A Data Box biztonsága](media/data-box-security/data-box-security-2.png)
 
-Az adatáramlás a megoldáson keresztül, mert eseményeket naplózza, és a naplók jönnek létre. További információért ugorjon [Tracking és az eseménynaplózás az Azure Data Box](data-box-logs.md).
+Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza az eseményeket, és létrehozza a naplókat. További információért lépjen a [Azure Data Box nyomon követéséhez és az eseménynaplóhoz](data-box-logs.md).
 
 ## <a name="security-features"></a>Biztonsági funkciók
 
@@ -50,7 +50,7 @@ A Data Box-eszköz védelmét az alábbi funkciók biztosítják:
 - Csak Data Box-kompatibilis szoftvert futtat.
 - A rendszerindítás zárolt állapotban történik.
 - Az eszközhöz való hozzáférés védelmét zárolásfeloldási jelszó biztosítja.
-- Az adatok külső helyre és helyről történő másolásához hozzáférési hitelesítő adatokat kell megadni. Az összes hozzáférést a **hitelesítő adatai** oldal az Azure portal van bejelentkezve a [tevékenységeket tartalmazó naplók](data-box-logs.md#query-activity-logs-during-setup).
+- Az adatok külső helyre és helyről történő másolásához hozzáférési hitelesítő adatokat kell megadni. Azure Portal a rendszer az **eszköz hitelesítő adatai** lap összes hozzáférését naplózza a [tevékenység naplófájljaiban](data-box-logs.md#query-activity-logs-during-setup).
 
 ### <a name="data-box-data-protection"></a>A Data Box-adatok védelme
 
@@ -58,7 +58,7 @@ A Data Box szolgáltatás bejövő és kimenő adatainak biztonságát az alább
 
 - Az inaktív adatok 256 bites AES-titkosítással védettek.
 - A titkosított protokollok átvitel közben is biztosítják az adatok védelmét.
-- Az adatokat biztonságosan törölheti az eszközről, miután az Azure-ba való feltöltés befejeződött. Az adatok törlése a NIST 800-88r1 szabványoknak megfelelően történik. Az adatok törlését esemény rögzíti a [rendelési előzmények](data-box-logs.md#download-order-history).
+- Az adatokat biztonságosan törölheti az eszközről, miután az Azure-ba való feltöltés befejeződött. Az adattörlés összhangban van a " [a" függelékben szereplő, a NIST 800-88r1 szabványokban található ATA merevlemez-meghajtókra](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)vonatkozó útmutatásokkal. Az adattörlési eseményt a rendszer rögzíti a [megrendelési előzményekben](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>A Data Box szolgáltatás védelme
 
@@ -66,7 +66,7 @@ A Data Box szolgáltatás biztonságát az alábbi funkciók biztosítják.
 
 - A Data Box szolgáltatáshoz való hozzáféréshez a cégnek olyan Azure-előfizetéssel kell rendelkeznie, amely tartalmazza a Data Boxot. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el.
 - A Data Box szolgáltatás az Azure-ban üzemel, így az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://www.microsoft.com/TrustCenter/Security/default.aspx) talál további információt.
-- A Data Box-rendelés hozzáférést keresztül szerepköreit, szerepköralapú hozzáférés-vezérlés (RBAC) szabályozható. További információkért lásd: [hozzáférés-vezérlés a Data Box-rendelését beállítása](data-box-logs.md#set-up-access-control-on-the-order)
+- A Data Box rendeléshez való hozzáférés a szerepköralapú Access Control (RBAC) szerepkörök használatával vezérelhető. További információ: Data Box- [sorrend hozzáférés-vezérlésének beállítása](data-box-logs.md#set-up-access-control-on-the-order)
 - A Data Box szolgáltatás tárolja a zárolásfeloldási jelszót, amellyel az eszköz zárolása a szolgáltatásban feloldható.
 - A Data Box szolgáltatás tárolja a megrendelések adatait és állapotát a szolgáltatásban. A megrendelés törlésekor ezek az információk is törlődnek.
 
@@ -80,13 +80,13 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
 
   - Kapcsolattartó neve
   - Telefonszám
-  - E-mail-cím
+  - Email
   - Utca, házszám
   - Város
   - Irányítószám
-  - Állapot
+  - State
   - Ország/tartomány/régió
-  - Szállítmányozó fiókszáma
+  - Szállítmányozó számlaszáma
   - Szállítmány nyomkövetési száma
 
     A Data Box a feladat befejezésekor vagy törlésekor törli a rendelés részleteit.
@@ -106,7 +106,7 @@ A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Ellenállás a kedvezőtlen szállítási körülményeknek          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Biztonságos belsővezérlőprogram-frissítés         |
 |[2. szintű FIPS 140-2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Adatvédelem         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
+|A függelék, ATA-meghajtók esetében a [NIST SP 800 – 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
 
 ## <a name="next-steps"></a>További lépések
 

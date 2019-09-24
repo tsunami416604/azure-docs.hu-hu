@@ -3,23 +3,19 @@ title: Veszélyforrások észlelése az Azure szolgáltatási rétegéhez Azure 
 description: Ez a témakör a Azure Security Centerban elérhető Azure szolgáltatási rétegbeli riasztásokat mutatja be.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/25/2019
-ms.author: v-mohabe
-ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/25/2019
+ms.author: memildin
+ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018167"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202444"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Veszélyforrások észlelése az Azure szolgáltatási rétegében Azure Security Center
 
@@ -65,7 +61,7 @@ A Security Center egy további védelmi réteget biztosít Azure Resource Manage
 
 |Riasztás|Leírás|
 |---|---|
-|**A burst eszközkészlet futtatása**|A rendszer a környezetében egy ismert felhőalapú felderítő eszközkészletet észlelt. Az eszközt [](https://github.com/NetSPI/MicroBurst) a támadók (vagy a behatolási tesztelők) használhatják az előfizetések erőforrásainak leképezhetők, a nem biztonságos konfigurációk azonosítására és a bizalmas információk szivárgására.|
+|**A burst eszközkészlet futtatása**|A rendszer a környezetében egy ismert felhőalapú felderítő eszközkészletet észlelt. Az eszközt a támadók (vagy a behatolási tesztelők [) használhatják az](https://github.com/NetSPI/MicroBurst) előfizetések erőforrásainak leképezhetők, a nem biztonságos konfigurációk azonosítására és a bizalmas információk szivárgására.|
 |**Azurite Toolkit futtatása**|A rendszer a környezetében egy ismert felhőalapú felderítő eszközkészletet észlelt. Az eszköz [Azurite](https://github.com/mwrlabs/Azurite) a támadók (vagy a behatolási tesztelők) használhatják az előfizetések erőforrásainak leképezésére és a nem biztonságos konfigurációk azonosítására.|
 |**Gyanús felügyeleti munkamenet inaktív fiók használatával**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. A hosszú ideig nem használt rendszerbiztonsági tag mostantól olyan műveleteket hajt végre, amelyek biztonságos adatmegőrzést biztosítanak a támadók számára.|
 |**Gyanús felügyeleti munkamenet a PowerShell használatával**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. Egy olyan rendszerbiztonsági tag, amely nem használja rendszeresen a PowerShellt az előfizetési környezet kezeléséhez, most már a PowerShellt használja, és olyan műveleteket hajt végre, amelyek biztonságban lehetnek a támadók számára.|
@@ -78,7 +74,7 @@ A Security Center egy további védelmi réteget biztosít Azure Resource Manage
 > Az előző elemzések közül több Microsoft Cloud App Security van. Ezen elemzések kihasználása érdekében aktiválni kell egy Cloud App Security licencet. Ha Cloud App Security licenccel rendelkezik, ezek a riasztások alapértelmezés szerint engedélyezve vannak. A letiltása:
 >
 > 1. A **Security Center** panelen válassza a **biztonsági házirend**elemet. A módosítani kívánt előfizetés esetében válassza a **beállítások szerkesztése**lehetőséget.
-> 2. Válasszaa veszélyforrások észlelése lehetőséget.
+> 2. Válassza a **veszélyforrások észlelése**lehetőséget.
 > 3. Az **integráció engedélyezése**területen törölje a jelet a **Microsoft Cloud app Security az adatai elérésének engedélyezése**jelölőnégyzetből, majd válassza a **Mentés**lehetőséget.
 
 >[!NOTE]

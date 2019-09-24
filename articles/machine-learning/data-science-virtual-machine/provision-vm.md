@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: f543db0240d59cf99f3bd793e059b7985f1ffe22
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170665"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204072"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Gyors útmutató: A Windows Data Science Virtual Machine beállítása
 
@@ -28,10 +28,12 @@ DSVM-példány létrehozása:
 
 1. Ha még nem jelentkezett be, lépjen a [Azure Portalba](https://portal.azure.com) , ahol a rendszer kérni fogja, hogy jelentkezzen be az Azure-fiókjába.
 1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Windows 2016" lehetőséget.
+
     ![Windows rendszerű virtuális gépek listája](./media/provision-vm/search-windows.png)
+
 1. Válassza a **Létrehozás** gombot alul.
 
-   ![Virtuális gépek listázása a Azure Portal a létrehozás gombbal](./media/provision-vm/create-windows.png)
+    [![](media/provision-vm/create-windows.png "Windows rendszerű gép létrehozásához szükséges gomb")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
    ![A Windows rendszerű virtuális géphez tartozó alapismeretek lap](./media/provision-vm/review-create-windows.png)

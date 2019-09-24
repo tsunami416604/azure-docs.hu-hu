@@ -3,9 +3,8 @@ title: Adaptív hálózati megerősítés a Azure Security Centerban | Microsoft
 description: " Megtudhatja, hogyan engedélyezheti az adaptív hálózatok megerősítését Azure Security Centerban. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295892"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202763"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
 Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
@@ -66,7 +65,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
    > [!NOTE]
    > [Törölhet](#delete-rule) vagy [hozzáadhat](#add-rule) egy szabályt is.
 
-3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a kikényszerítés gombra.
+3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a kikényszerítésgombra.
 
       > [!NOTE]
       > A kényszerített szabályok hozzáadódnak a virtuális gépet védő NSG (ok) hoz. (A virtuális gépet egy hálózati adapterhez társított NSG, vagy a virtuális gépet tartalmazó alhálózattal, vagy mindkettővel védeni lehet.)
@@ -103,7 +102,7 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 
    ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson a kikényszerítés gombra.
+3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson akikényszerítés gombra.
 
     ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
@@ -125,7 +124,7 @@ Hozzáadhat egy "Allow" szabályt, amelyet a Security Center nem ajánlott.
    > [!NOTE]
    > A **Hozzáadás**gombra kattintva sikeresen felvette a szabályt, és az szerepel a többi javasolt szabályban. Azonban nem alkalmazta azt a NSG. Az aktiváláshoz ki kell választania a szabályt a listában, majd a **kényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
 
-3. Az új szabály alkalmazásához a listából válassza ki az új szabályt, majd kattintson a kikényszerítés gombra.
+3. Az új szabály alkalmazásához a listából válassza ki az új szabályt, majd kattintson akikényszerítés gombra.
 
     ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 

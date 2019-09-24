@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910609"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202020"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -38,7 +38,7 @@ A találgatásos támadásoknak való kitettség csökkentése az egyik lehetős
 
 Ha engedélyezve van az igény szerinti idő, Security Center az Azure-beli virtuális gépek felé irányuló bejövő forgalmat egy NSG-szabály létrehozásával zárolja. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat az igény szerinti megoldás vezérli.
 
-Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik-e olyan [szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) engedélyekkel, amelyek lehetővé teszik, hogy a felhasználók sikeresen kérjenek hozzáférést a virtuális géphez. Ha a kérést jóváhagyják, Security Center automatikusan konfigurálja a hálózati biztonsági csoportokat (NSG), és Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra és a kért forrás IP-címekre vagy tartományokra vonatkozóan a megadott időtartamig. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok azonban nem szakadnak meg.
+Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Center ellenőrzi, hogy a felhasználó rendelkezik [-e szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) engedélyekkel az adott virtuális géphez. Ha a kérést jóváhagyják, Security Center automatikusan konfigurálja a hálózati biztonsági csoportokat (NSG), és Azure Firewall, hogy engedélyezze a bejövő forgalmat a kiválasztott portokra és a kért forrás IP-címekre vagy tartományokra vonatkozóan a megadott időtartamig. Az idő lejárta után Security Center visszaállítja a NSG az előző állapotokra. A már létrehozott kapcsolatok azonban nem szakadnak meg.
 
  > [!NOTE]
  > Ha egy Azure Firewall mögötti virtuális géphez jóváhagy egy JIT hozzáférési kérelmet, akkor Security Center automatikusan módosítja a NSG és a tűzfal házirend-szabályait is. A megadott időtartamra vonatkozóan a szabályok engedélyezik a bejövő forgalmat a kiválasztott portokra és a kért forrás IP-címekre vagy tartományokra. Az idő elteltével Security Center visszaállítja a tűzfal és a NSG szabályait az előző állapotba.

@@ -4,19 +4,19 @@ summary: Az Azure HDInsight egy felügyelt Apache Hadoop-szolgáltatás, amellye
 metadata:
   title: Azure HDInsight
   description: Az Azure HDInsight egy felügyelt Apache Hadoop-felhőszolgáltatás, amellyel az Apache Spark, az Apache Hive, az Apache Kafka, az Apache HBase és még sok más futtatható.
-  services: service
+  services: hdinsight
   ms.service: hdinsight
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: 51c9e1b662cd82811ee43afa34c20dfef8e2fb90
-  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.openlocfilehash: e4504bbfc84dbafcd1efa45c9536a63569230a8a
+  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/14/2019
-  ms.locfileid: "70995698"
+  ms.lasthandoff: 09/23/2019
+  ms.locfileid: "71204114"
 landingContent:
 - title: A HDInsight bemutatása
   linkLists:

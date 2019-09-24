@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44eb25be12b908c8f951cb20948068da3bfc2928
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170884"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203124"
 ---
-## <a name="test"></a>A függvény tesztelése az Azure-ban
+## <a name="test"></a>A függvény ellenőrzése az Azure-ban
 
-A cURL használatával tesztelheti az üzembe helyezett függvényt. Az előző lépésben átmásolt URL-cím (például a Function Key) használatával fűzze hozzá a lekérdezési `&name=<yourname>` karakterláncot az URL-címhez.
+A cURL használatával ellenőrizze az üzembe helyezett függvényt. Az előző lépésben átmásolt URL-cím (például a Function Key) használatával fűzze hozzá a lekérdezési `&name=<yourname>` karakterláncot az URL-címhez.
 
 ![a cURL használatával hívja meg a függvényt az Azure-ban.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-A vágólapra másolt URL-címet, beleértve a funkcióbillentyű, a webböngészője címét is beillesztheti. A kérés végrehajtása előtt fűzze hozzá `&name=<yourname>` a lekérdezési karakterláncot az URL-címhez.
+A vágólapra másolt URL-címet, beleértve a funkcióbillentyű is, a webböngésző címsorába is beillesztheti. A kérés végrehajtása előtt fűzze hozzá `&name=<yourname>` a lekérdezési karakterláncot az URL-címhez.
 
 ![A függvény meghívásához egy webböngészőt használjon.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

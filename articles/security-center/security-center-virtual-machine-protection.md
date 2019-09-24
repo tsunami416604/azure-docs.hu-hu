@@ -3,9 +3,8 @@ title: A gépek és az alkalmazások az Azure Security Center védelme |} A Micr
 description: Ez a dokumentum a Security Center javaslatait, segítő tárgyalja a virtuális gépek és számítógépek és a webalkalmazások és App Service Environment-környezetek védelmét.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910560"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200785"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Azure Security Center elemzi az Azure-erőforrások, a nem Azure-kiszolgálók és a virtuális gépek biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -85,7 +84,7 @@ A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés ne
 
 
 > [!NOTE]
-> Itt a biztonsági javaslatok láthatók, ugyanazok, mint a a **javaslatok** csempére. Lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md) javaslatok alkalmazásával kapcsolatban további információt.
+> Itt a biztonsági javaslatok láthatók, ugyanazok, mint a a **javaslatok** csempére. A javaslatok megoldásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 >
 >
 
@@ -108,6 +107,7 @@ A listában szereplő ikon négy típusa van:
 Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. A szűrőket használhatja **Erőforrás típusa** és **Súlyosság**szerint is a listában való kereséshez.
 
 Az egyes virtuális gépek biztonsági javaslatainak részletezéséhez kattintson a virtuális gépre.
+Itt láthatja a biztonsági adatok a virtuális gép vagy a számítógépen. Alul a javasolt művelet és az egyes problémák súlyossága látható.
 ![Felhőszolgáltatások](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
@@ -159,7 +159,7 @@ A listában szereplő ikon három típusa van:
 
      ![Szervizelés App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
+## <a name="virtual-machine-scale-sets"></a>virtuálisgép-méretezési csoportok
 Security Center automatikusan felfedi, hogy vannak-e méretezési készletek, és javasolja, hogy telepítse a Microsoft monitoring agentet ezekre a méretezési csoportokra. 
 
 A Microsoft monitoring Agent telepítése: 

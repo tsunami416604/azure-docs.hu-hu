@@ -1,11 +1,10 @@
 ---
-title: Azure Security Center használata a szabályozási megfelelőség javítása |} A Microsoft Docs
-description: 'Oktatóanyag: Ismerje meg, hogyan javíthatja a szabályozásoknak való megfelelőséget, az Azure Security Center használatával.'
+title: A szabályozás megfelelőségének javítása a Azure Security Center használatával | Microsoft Docs
+description: 'Oktatóanyag: Ismerje meg, hogyan javíthatja a szabályozás megfelelőségét Azure Security Center használatával.'
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
@@ -13,95 +12,95 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e1544b0c9bf280c8d097d2fa25f7fc652450b87e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968572"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202428"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: Előírásoknak való megfelelés javítása
 ---
 
-Az Azure Security Center leegyszerűsíti a folyamatot jogszabályi követelményeknek, az előírásoknak való megfelelés irányítópulttal. Az irányítópulton a Security Center a megfelelőségi állapotáról, folyamatos értékelésekkel, az Azure-környezet alapján betekintést biztosít. A Security Center által végzett értékelések kockázati tényezők alapján, a hibrid felhőalapú környezetben ajánlott biztonsági eljárások megfelelően elemezheti. Ezek az értékelések szabványok támogatott bizonyos megfelelőségi vezérlők vannak leképezve. A szabályozásoknak való megfelelőséget irányítópultján láthassa az összes értékelés állapotát egy adott standard vagy a rendelet a környezetében a környezeten belül van. Az ajánlásoknak és kockázati tényezők alapján csökkentse a környezetben, megtekintheti a megfelelőségi állapotáról, javíthatja.
+Azure Security Center megkönnyíti a szabályozási megfelelőségi követelmények teljesítésének folyamatát a szabályozási megfelelőségi irányítópult használatával. Az irányítópulton a Security Center az Azure-környezet folyamatos felmérése alapján betekintést nyújt a megfelelőségi helyzetbe. A Security Center által elvégzett értékelések az ajánlott biztonsági eljárásoknak megfelelően elemzik a hibrid felhőalapú környezet kockázati tényezőit. Ezek az értékelések a megfelelőségi vezérlőkre vannak leképezve a szabványok támogatott készletében. A szabályozási megfelelőségi irányítópulton egy adott szabvány vagy szabályozás kontextusában világosan áttekintheti a környezetében található összes értékelés állapotát. A javaslatok és a kockázati tényezők csökkentése érdekében a környezetében megtekintheti a megfelelőségi testhelyzetet.
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
--   Az előírásoknak való megfelelés a szabályozásoknak való megfelelőséget irányítópulttal kiértékelése
+-   A szabályozás megfelelőségének kiértékelése a szabályzatoknak való megfelelőségi irányítópult használatával
 
--   Javíthatja a megfelelőségi helyzetét művelet végrehajtásával vonatkozó javaslatok
+-   A megfelelőségi helyzet javítása a javaslatok alapján
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban tárgyalt funkciók elvégezhető, rendelkeznie kell a Security Center Standard tarifacsomagot. Megpróbálhatja Security Center Standard költségek nélkül.
+Az oktatóanyagban szereplő funkciók átlépéséhez Security Center Standard díjszabási szinttel kell rendelkeznie. Security Center Standard díjmentesen is kipróbálható.
 További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](https://docs.microsoft.com/azure/security-center/security-center-get-started) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
-##  <a name="assess-your-regulatory-compliance"></a>A szabályozásoknak való megfelelés
+##  <a name="assess-your-regulatory-compliance"></a>A szabályozás megfelelőségének felmérése
 
-A Security Center folyamatosan értékeli a konfiguráció az erőforrások biztonsági problémák és biztonsági rések azonosítása. Ezek az értékelések javaslatok, amelyek a biztonsági higiéniai fejlesztésére koncentrálhat, jelennek meg. A szabályozásoknak való megfelelőséget irányítópultján megtekintheti az összes rájuk vonatkozó követelményeket, a megfelelőségi követelményeknek készletét ahol alkalmazható a biztonság állapotát támogatott követelményei vannak leképezve. Ez lehetővé teszi, hogy megtekintheti a megfelelőségi állapotáról, a standard szintű csomagja értékelésről állapota alapján.
+Security Center folyamatosan elemzi az erőforrások konfigurációját a biztonsági problémák és a biztonsági rések azonosítása érdekében. Ezeket az értékeléseket javaslatokként mutatjuk be, amelyek a biztonsági higiénia javítására összpontosítanak. A szabályozási megfelelőségi irányítópulton megtekintheti a megfelelőségi szabványokat az összes követelményével együtt, ahol a támogatott követelmények a megfelelő biztonsági értékelésekre vannak leképezve. Ez lehetővé teszi, hogy megtekintse a megfelelőségi helyzetet a standardra vonatkozóan, az értékelések állapota alapján.
 
-A szabályozásoknak való megfelelőséget irányítópult nézet segítségével a figyelmet a hiányosságok pótlásában megfelel egy standard vagy a rendelet, amely az Ön számára fontos. A fókuszban lévő nézet segítségével folyamatosan figyelheti a megfelelőségi pontszám idővel belül a dinamikus felhőbeli és hibrid környezetekben is.
+A megfelelőségi irányítópult nézete segítséget nyújt az Ön számára fontos standard vagy rendeleti hiányosságok betartásában. Ez a célzott nézet azt is lehetővé teszi, hogy a dinamikus Felhőbeli és hibrid környezetekben is folyamatosan figyelje a megfelelőségi pontokat.
 
 >[!NOTE]
-> Jelenleg támogatott szabályozási normák terén a következők: Az Azure CIS, PCI DSS 3.2-es, az ISO 27001 és SOC TSP. További szabványoknak megfelelően megjelennek az irányítópulton.
-1.  A a Security Center főmenüjében alatt **szabályzat és megfelelőség** kiválasztása **szabályozásoknak való megfelelőséget**. <br>
-A képernyő tetején megjelenik a megfelelőségi állapotának áttekintése az támogatott megfelelőségi szabályozásokhoz együtt egy irányítópulton. Láthatja, hogy az összesített megfelelőségi pontszám és megadásának és a sikertelen társított minden egyes standard értékelések számát.
+> A jelenleg támogatott szabályozási szabványok a következők: Azure CIS, PCI DSS 3,2, ISO 27001 és SOC TSP. A fejlesztésekkel érkező további szabványok az irányítópulton fognak megjelenni.
+1.  A Security Center főmenüben, a **házirend &AMP; megfelelőség** területen válassza a **jogszabályi megfelelőség**lehetőséget. <br>
+A képernyő felső részén megjelenik egy irányítópult, amely áttekintést nyújt a megfelelőségi állapotáról a támogatott megfelelőségi szabályozások készletével együtt. Megtekintheti a teljes megfelelőségi pontszámot, valamint az egyes standardokhoz kapcsolódó elvégzési és sikertelen értékelések számát.
 
-    ![Leírás megbízható számítógép](./media/security-center-compliance-dashboard/compliance-dashboard.png)
+    ![számítógép leírása – magas megbízhatóság](./media/security-center-compliance-dashboard/compliance-dashboard.png)
 
 
-2.  Válassza ki a lapon egy megfelelőségi szabvány, amely az Ön számára. Látni fogja, hogy standard összes vezérlők listájából. A alkalmazni vezérlők megtekintheti átadásával, valamint a vezérlőhöz társított értékelések sikertelen. Egyes vezérlőelemeket szürkén jelennek meg. Ezek a vezérlők nincs társítva a Security Center értékeléseknek. Ezek a követelmények elemzése, és felmérheti a saját környezetében kell. Ezek közül néhányat a folyamattal kapcsolatos és nem technikai lehetnek.
+2.  Válassza ki az Önnek megfelelő megfelelési szabványhoz tartozó fület. Ekkor megjelenik az adott szabvány összes vezérlőjét tartalmazó lista. Az alkalmazható vezérlőknél megnézheti a hozzájuk kapcsolódó korábbi és sikertelen felméréseket. Egyes vezérlők kiszürkítve jelennek meg. Ezeknek a vezérlőknek nincs kapcsolódó Security Center-felmérése. Elemezni kell ezeket a követelményeket, és a saját környezetében kell értékelni őket. Ezek némelyike feldolgozható és nem technikai jellegű lehet.
 
-    ![megfelelőségi lap](./media/security-center-compliance-dashboard/compliance-pci.png)
+    ![megfelelőség lap](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3. Válassza ki a **összes** a nézet az összes releváns Security Center javaslatait és azok kapcsolódó szabványok fülre. Ez a nézet egy adott javaslat által érintett összes különböző szabványok azonosítására szolgáló hasznos lehet. <br> Ez a nézet segítségével potenciálisan rangsorolhatja a javaslatok, el kell hárítania. Például ha látni, hogy a javaslat **MFA engedélyezése az előfizetésben tulajdonosi engedélyekkel rendelkező fiókok esetében** sikertelen a több erőforrást és a társított többféle szabvány, majd a Ez az ajánlás feloldása lesz az általános megfelelőségi pontszám a nagy hatással van.
+3. A **minden** lapra kattintva megtekintheti az összes releváns Security Center javaslatot és a hozzájuk kapcsolódó szabványokat. Ez a nézet hasznos lehet az adott javaslat által érintett különböző szabványok azonosításához. <br> Ezt a nézetet használhatja a megoldáshoz szükséges javaslatok rangsorolására. Ha például azt látja, hogy az adott **előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókok esetében az MFA engedélyezése** nem több erőforrásra vonatkozik, és több szabványhoz van társítva, akkor a javaslat feloldása nagy hatással lesz a következőre: a teljes megfelelőségi pontszám.
 
-    ![megfelelőségi pontszám gyakorolt hatás](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
+    ![megfelelőségi pontszám hatása](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-1. Hozzon létre és töltse le a PDF-jelentés az aktuális megfelelőségi állapot adott standard összefoglalójához kattintson **jelentés letöltése**.
+1. Egy adott szabvány aktuális megfelelőségi állapotát összefoglaló PDF-jelentés létrehozásához és letöltéséhez kattintson a **jelentés letöltése**elemre.
 
-    A jelentés a megfelelőségi állapot magas szintű összegzését tartalmazza a kijelölt standard, a Security Center értékelések adatok alapján, és a vezérlőket, hogy adott szabvány szerint van rendezve. A jelentés megoszthatók a fontos résztvevőkkel, és a belső és külső auditáló igazolni is kiszolgálhat.
+    A jelentés magas szintű összefoglalást biztosít a kiválasztott standard megfelelőségi állapotáról Security Center felmérési adatok alapján, és az adott szabvány vezérlőelemeinek megfelelően van rendszerezve. A jelentés megosztható az érintett felekkel, és a belső és külső könyvvizsgálók számára is biztosíthatja a bizonyítékokat.
 
-    ![letöltés](./media/security-center-compliance-dashboard/download-report.png)
+    ![Letöltés](./media/security-center-compliance-dashboard/download-report.png)
 
-## <a name="improve-your-compliance-posture"></a>Javíthatja a megfelelőségi helyzetét
+## <a name="improve-your-compliance-posture"></a>A megfelelőségi testhelyzet javítása
 
-Adja meg az adatokat a szabályozásoknak való megfelelőséget irányítópultján, javíthatja a megfelelőségi állapotáról feloldása ajánlások közvetlenül az irányítópulton belül.
+A szabályozás megfelelőségi irányítópultján található információk alapján a megfelelőségi állapotot a közvetlenül az irányítópulton belüli javaslatok megoldásával javíthatja.
 
-1.  Kattintson végig bármelyik az adott javaslat részletes adatainak megtekintése az irányítópulton megjelenő sikertelen értékeléseket. Javaslatot tartalmaz a szükséges javítási lépések kell követni a probléma megoldásához.
+1.  Az adott javaslat részleteinek megtekintéséhez kattintson az irányítópulton megjelenő sikertelen értékelések bármelyikére. Mindegyik javaslat olyan szervizelési lépéseket tartalmaz, amelyeket követni kell a probléma megoldásához.
 
-2.  Kiválaszthatja, hogy egy adott erőforrás további részleteket, és végrehajthatja a javaslatokat az adott erőforráshoz. <br>Például a **Azure CIS standard** lapon, rákattinthat a javasolt **tárfiókba biztonságos átvitel megkövetelése**.
+2.  Kiválaszthat egy adott erőforrást a további részletek megtekintéséhez és az adott erőforráshoz tartozó javaslat megoldásához. <br>Az **Azure CIS standard** lapon például a javaslatra kattintva **biztonságos átvitelt igényelhet a Storage-fiókra**.
 
-    ![Megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-3. Kattintson végig a javaslat információkat és a egy nem megfelelő állapotú erőforrás kiválasztása vezet, közvetlenül a felhasználói élményt, hogy a **biztonságos tárolási átvitelre** az Azure Portalon.<br>Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
+3. Amikor rákattint az ajánlási információkra, és kijelöl egy nem megfelelő állapotú erőforrást, közvetlenül a Azure Portalon belül a **Biztonságos tár-átvitel** engedélyezésének élményét eredményezi.<br>Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
 
-    ![Megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![megfelelőségi javaslat](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
-4.  Miután javaslatok alkalmazásával, mert növeli a megfelelőségi pontszám látni fogja a gyakorolt hatás az eszközmegfelelőségi irányítópult jelentés.
+4.  Miután lépéseket tett a javaslatok megoldására, látni fogja a megfelelőségi irányítópult jelentésének hatását, mivel a megfelelőségi pontszám javul.
 
     > [!NOTE]
-    > Vizsgálat fut körülbelül 12 óránként, így láthatja a hatás a megfelelőségi adatok csak az értékelések futtatása után.
+    > A felmérések körülbelül 12 óránként futnak le, tehát a megfelelési adatai csak a felmérések futtatása után tükrözik majd a változásokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerhette a Security Center a jogszabályoknak való megfelelőség irányítópulttal:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a Security Center szabályozási megfelelőségi irányítópultját a következőre:
 
--   Megtekintheti és figyelheti a megfelelőségi állapotáról, a szabványoknak és előírásoknak, amely fontos viszonyítva.
+-   Megtekintheti és figyelheti a megfelelőségi testtartást az Ön számára fontos szabványokhoz és előírásokhoz képest.
 
--   Javítása a megfelelőségi állapot feloldására vonatkozó javaslatok és a megfelelőségi pontszám javítása figyelése.
+-   Javítsa a megfelelőségi állapotot a kapcsolódó javaslatok feloldásával és a megfelelőségi pontszám javításával.
 
-A szabályozásoknak való megfelelőséget irányítópult jelentősen leegyszerűsítik a megfelelőségi folyamat, és jelentősen kivágása az Azure-ban és a hibrid környezet megfelelőségi bizonyíték összegyűjtéséhez szükséges időt.
+A szabályozási megfelelőségi irányítópult nagy mértékben leegyszerűsítheti a megfelelőségi folyamatot, és jelentős mértékben csökkentheti az Azure-és hibrid környezetek megfelelőségi igazolásának begyűjtéséhez szükséges időt.
 
-A Security Centerrel kapcsolatos további tudnivalókért lásd:
+A Security Centerról további információt a következő témakörben talál:
 
 -   [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) –Tanulja meg az Azure-erőforrások állapotfigyelésének módját.
 
--   [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md)– ismerje meg, hogyan használható a javaslatok az Azure Security Centerben az Azure-erőforrások védelme érdekében.
+-   [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md)– megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
 
--   [Az Azure Security Centerben a biztonságos pontszám javítása](security-center-secure-score.md)– ismerje meg, hogyan biztonsági réseket és a biztonsági javaslatok a legtöbb javíthatja biztonsági helyzetét.
+-   [Javítsa a biztonságos pontszámát Azure Security Centerban](security-center-secure-score.md)– megtudhatja, hogyan rangsorolhatja a biztonsági réseket és a biztonsági javaslatokat a lehető leghatékonyabban.
 
 -   [Azure Security Center: gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

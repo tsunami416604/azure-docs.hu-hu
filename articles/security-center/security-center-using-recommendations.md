@@ -3,23 +3,22 @@ title: Azure Security Center javaslatok használata a biztonság növelése érd
 description: " Megtudhatja, hogyan használhatók a biztonsági szabályzatok és javaslatok a Azure Security Centerban a biztonsági támadások enyhítése érdekében. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 08/22/2019
+ms.author: memildin
+ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990542"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200697"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center javaslatok használata a biztonság növelése érdekében
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
@@ -60,7 +59,7 @@ A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba
 
 3. Jeffnek el kell döntenie, hogy mely ajánlásokat kell először kezelni. Így Jeff a biztonságos pontszámra kattint, és megkezdi a javaslatok kezelését annak alapján, hogy mennyire javítja a [biztonságos pontszám hatását](security-center-secure-score.md).
 
-4. Mivel Jeff számos csatlakoztatott virtuális géppel és kiszolgálóval rendelkezik, Jeff úgy dönt, hogy a **számítási és**az alkalmazásokra koncentrál.
+4. Mivel Jeff számos csatlakoztatott virtuális géppel és kiszolgálóval rendelkezik, Jeff úgy dönt, hogy a **számítási és az alkalmazásokra**koncentrál.
 
 5. Amikor Jeff a **számítás és az alkalmazások**elemre kattint, megtekinti a javaslatok listáját, és a biztonságos pontszám hatásának megfelelően kezeli őket.
 

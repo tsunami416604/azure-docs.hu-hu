@@ -2,18 +2,18 @@
 title: 'Azure Toolkit for Eclipse: Scala-alkalmazások létrehozása a HDInsight Sparkhoz '
 description: Az Azure Toolkit for Eclipse HDInsight eszközeivel fejlesztheti a Scalaban írt Spark-alkalmazásokat, és beküldheti azokat egy HDInsight Spark-fürtbe közvetlenül az Eclipse IDE-ből.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.author: hrasheed
-ms.openlocfilehash: b027ef911b65931f7c96ad45fae66656b3586730
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ebea83d87cd169f61c91a93f092fa277f5017a7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994628"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203800"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -50,11 +50,12 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 1. Indítsa el az Eclipse IDE-t, és nyissa meg az Azure Explorert. Az **ablak** menüben válassza a **nézet megjelenítése**lehetőséget, majd válassza az **egyéb**lehetőséget. A megnyíló párbeszédpanelen bontsa ki az **Azure**elemet, válassza az **Azure Explorer**lehetőséget, majd kattintson **az OK gombra**.
 
-   ![Nézet megjelenítése párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+   ![Apache Spark Eclispse nézet megjelenítése](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
 1. Kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Bejelentkezés**lehetőséget.
 1. Az **Azure bejelentkezési** párbeszédpanelen válassza ki a hitelesítési módszert, válassza a **Bejelentkezés**lehetőséget, és adja meg az Azure-beli hitelesítő adatait.
 
-   ![Azure-bejelentkezés párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+   ![Apache Spark Eclispse Azure-bejelentkezés](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
 1. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja a hitelesítő adatokhoz társított összes Azure-előfizetést. A párbeszédpanel bezárásához kattintson a **kiválasztás** gombra.
 
@@ -183,7 +184,7 @@ A HDInsight-eszközök használatával különböző műveleteket hajthat végre
 
    * Vigye a kurzort a feladatok gráfra. A futó feladatra vonatkozó alapszintű információkat jeleníti meg. Válassza ki a feladathoz tartozó gráfot, és tekintse meg az egyes feladatok által generált szakaszokat és információkat.
 
-     ![A feladatok szakaszának részletei](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Apache Spark a feladatok gráf szakaszának adatai](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * A **napló** lapon megtekintheti a gyakran használt naplókat, beleértve az **illesztőprogram-stderr**, az **illesztőprogram StdOut**-ját és a **címtár-információkat**.
 
@@ -238,7 +239,7 @@ A hiba megoldásához [le kell töltenie a végrehajtható fájlt](https://publi
    * A bal oldali panelen válassza ki a **HDInsight** elemet.
    * A jobb oldali ablaktáblában válassza a **Spark lehetőséget a HDInsight helyi futtatási minta (Scala)** elemnél.
 
-   ![A New Project (Új projekt) párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
+   ![Új projekt varázsló kiválasztása párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. A projekt részleteinek megadásához kövesse a [HDInsight Spark-fürthöz tartozó Spark Scala-projekt beállítása](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)a korábbi szakasz 3 – 6. lépését.
 

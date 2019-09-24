@@ -1,56 +1,55 @@
 ---
-title: Az Azure Security Center beállítások |} A Microsoft Docs
-description: Az Azure Security Center beállításainak konfigurálása.
+title: Azure Security Center beállítások | Microsoft Docs
+description: Azure Security Center beállítások konfigurálása.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703523"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201608"
 ---
 # <a name="security-center-settings"></a>A Security Center beállításai
-Ez a cikk áttekintést a Security Center beállításait.
+Ez a cikk áttekintést nyújt a Security Center beállításairól.
 
-A biztonsági házirend érhető el a következő beállításokat:
+A következő beállítások érhetők el a biztonsági házirendben:
 
-- **Az adatgyűjtés**: Meghatározza az ügynökkiépítés és [adatgyűjtés](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) beállításait.
-- **Biztonsági házirend**: Azt határozza meg, amely szabályozza a Security Center figyeli, és javasolja. Szerkesztheti a [biztonsági házirend](tutorial-security-policy.md) a Security Centerben. Is [Azure Policy](tutorial-security-policy.md) létrehozhat új meghatározásokat, meghatározhat további szabályzatokat, és hozzárendelhet szabályzatokat a felügyeleti csoportok. 
-- **E-mail-értesítések**: Meghatározza, hogy a biztonsági felelősök kapcsolati adatait, és [e-mailes értesítés](security-center-provide-security-contact-details.md) beállításait.
-- **A tarifacsomag**: Határozza meg az ingyenes vagy standard [díjszabás kiválasztása](security-center-pricing.md). A kiválasztott csomag határozza meg, hogy a Security Center mely szolgáltatásai érhetők el a hatókörbe eső erőforrásokhoz. Megadhat egy előfizetések és munkaterületek szintet.
+- **Adatgyűjtés**: Meghatározza az ügynök üzembe helyezési [](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) és adatgyűjtési beállításait.
+- **Biztonsági házirend**: Meghatározza, hogy mely vezérlők Security Center figyeli és javasolja. Security Centerban szerkesztheti a [biztonsági házirendet](tutorial-security-policy.md) . A [Azure Policy](tutorial-security-policy.md) használatával új definíciókat is létrehozhat, további házirendeket határozhat meg, és szabályzatokat rendelhet hozzá a felügyeleti csoportokhoz. 
+- **E-mail-értesítések**: Meghatározza a biztonsági névjegyeket és az [e-mailek értesítési](security-center-provide-security-contact-details.md) beállításait.
+- **Árképzési szintek**: Meghatározza az ingyenes vagy a normál [díjszabási beállítást](security-center-pricing.md). A kiválasztott csomag határozza meg, hogy a Security Center mely szolgáltatásai érhetők el a hatókörbe eső erőforrásokhoz. Megadhatja az előfizetések és a munkaterületek szintjét is.
 
 > [!NOTE]
-> Mindegyik említett előfizetésenként állíthatja be. A munkaterületek beállíthatja a csak az adatok gyűjtése és a tarifacsomag.
+> Ezen előfizetések mindegyikét beállíthatja. A munkaterületek esetében csak az adatgyűjtés és az árképzési szintet állíthatja be.
 >
 
 
-## <a name="who-can-edit-security-policies"></a>Ki szerkeszthet biztonsági szabályzatok?
-A Security Center szerepköralapú hozzáférés-vezérlés (RBAC), amely biztosít beépített szerepkörök, felhasználók, csoportok és Azure-szolgáltatások rendelhető használ. A Security Center megnyitásakor látnak csak ők is hozzáférhetnek az erőforrásokhoz kapcsolódó információkat. Ami azt jelenti, hogy a felhasználók vannak hozzárendelve a szerepköre *tulajdonosa*, *közreműködői*, vagy *olvasó* az előfizetéshez az erőforrás tartozik. Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
+## <a name="who-can-edit-security-policies"></a>Kik módosíthatják a biztonsági házirendeket?
+A Security Center szerepköralapú Access Control (RBAC) használ, amely beépített szerepköröket biztosít a felhasználókhoz, csoportokhoz és szolgáltatásokhoz az Azure-ban. Security Center megnyitásakor a felhasználók csak azokat az adatokat látják, amelyekhez hozzáféréssel rendelkeznek. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkörhöz vannak rendelve ahhoz az előfizetéshez, amelyhez az erőforrás tartozik. Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
-- **Biztonsági olvasó**: Jogosultságok megtekintése a Security Centernek, amely tartalmazza a javaslatok, riasztások, a házirend és egészségügyi, rendelkezik, de azok nem végezhet módosításokat.
-- **Biztonsági rendszergazda**: Megegyező nézet jogokkal rendelkezik *biztonsági olvasó*, és azok is a biztonsági házirend módosítása és javaslatok és riasztások bezárása.
+- **Biztonsági olvasó**: Megtekintheti a Security Centerra vonatkozó jogosultságokat, amelyekben javaslatok, riasztások, szabályzatok és állapotok szerepelnek, de nem módosíthatók.
+- **Biztonsági rendszergazda**: Ugyanazok a megtekintési jogosultságok, mint a *biztonsági olvasó*, továbbá frissíthetik a biztonsági házirendet, és eltekinthetik az ajánlásokat és a riasztásokat.
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedett az Azure Security Centerben a biztonsági szabályzatokat. Azure Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta Azure Security Center biztonsági szabályzatait. Ha többet szeretne megtudni a Azure Security Centerről, tekintse meg a következő cikkeket:
 
-* [Biztonsági szabályzatok beállítása az Azure Security Center](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetést.
-* [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md): Megtudhatja, hogyan Security Center javaslatait az Azure-erőforrások védelme.
-* [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
-* [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
-* [Partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
-* [Az Azure Security Center által nyújtott adatbiztonság](security-center-data-security.md): Útmutató a Security Center felügyeli, és gondoskodik az adatok.
-* [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/): A legújabb Azure biztonsági hírek és információ beolvasása.
+* [Biztonsági szabályzatok beállítása a Azure Security Centerban](tutorial-security-policy.md): Megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetésekhez.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md): Megtudhatja, hogyan segíti a Security Center javaslatok az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md): Az Azure-erőforrások állapotának figyelését ismertető útmutató.
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
+* [Partneri megoldások monitorozása Azure Security Centerekkel](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
+* [Azure Security Center adatbiztonság](security-center-data-security.md): Megtudhatja, hogyan kezeli és védi a Security Center az információkat.
+* [Azure Security Center gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
+* [Azure biztonsági blog](https://blogs.msdn.com/b/azuresecurity/): Szerezze be a legújabb Azure biztonsági híreket és információkat.

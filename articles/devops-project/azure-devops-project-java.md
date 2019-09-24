@@ -6,23 +6,22 @@ ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: a3b57fd7acba4d45b0bd519a21ae74f91291fd77
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873239"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203731"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Gyors útmutató: CI/CD-folyamat beállítása Java-alkalmazáshoz Azure DevOps Projects
 
@@ -40,7 +39,7 @@ Ha még nem rendelkezik Azure-előfizetéssel, a [Visual Studio dev Essentials](
 
 2. Kattintson a **Létrehozás** gombra.
 
-    ![Folyamatos kézbesítés konfigurálásának indítása](_img/azure-devops-project-java/fullbrowser.png)
+    ![Azure-erőforrás létrehozása DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Mintaalkalmazás és Azure-szolgáltatás kiválasztása
 
@@ -63,7 +62,7 @@ A Java-minták esetén több alkalmazási keretrendszer közül választhat.
 
 2. A futó alkalmazás megtekintéséhez válassza a **Tallózás** lehetőséget.
 
-    ![Irányítópult nézet](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Alkalmazás-irányítópult megtekintése Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    DevOps Projects automatikusan konfigurálta a CI-Build és a kiadási triggert.  Most már készen áll, hogy egy csapattal közösen dolgozzon a Java-alkalmazáson egy olyan CI-/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkáját a webhelyen.
 

@@ -1,67 +1,66 @@
 ---
-title: Riasztás (EICAR tesztfájlt) érvényesítése az Azure Security Centerben |} A Microsoft Docs
+title: Riasztás érvényesítése (EICAR-teszt fájl) a Azure Security Centerban | Microsoft Docs
 description: Ez a dokumentum az Azure Security Center biztonsági riasztásainak érvényesítését ismerteti.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
-ms.author: rkarlin
-ms.openlocfilehash: f65b4b74a1a91fa081bd9c0d8146d055cebb0de6
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 32f67fb94b207735e77583a6db62f7c8703dd991
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626297"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202745"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztások érvényesítése (EICAR tesztfájlt) az Azure Security Centerben
+# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztás érvényesítése (EICAR-teszt fájl) Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
-Riasztások az értesítéseket, amelyek a Security Center állít elő, amikor a rendszer a fenyegetéseket az erőforrások. Rangsorolja és a szükséges, hogy a probléma gyors vizsgálatára vonatkozó információk a riasztások listája. A Security Center is a támadás elhárításával hogyan vonatkozó javaslatokkal szolgál.
-További információkért lásd: [az Azure Security Center biztonsági riasztásainak](security-center-alerts-overview.md) és [kezelése és válaszadás a biztonsági riasztások az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
+A riasztások a Security Center által generált értesítések, amikor észlelik a fenyegetéseket az erőforrásokon. Rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is tartalmaz a támadások megoldásához.
+További információkért tekintse meg a biztonsági [riasztások a Azure Security Center](security-center-alerts-overview.md) és a [biztonsági riasztások kezelése és válaszadás a Azure Security Center](security-center-managing-and-responding-alerts.md)
 
 ## <a name="alert-validation"></a>Riasztások érvényesítése
 
 * [Windows](#validate-windows)
 * [Linux](#validate-linux)
 
-## Riasztási Windows virtuális gépen <a name="validate-windows"></a>
+## Riasztás ellenőrzése Windows rendszerű virtuális gépen<a name="validate-windows"></a>
 
-Után a Security Center az ügynök telepítve van a számítógépen kövesse az alábbi lépéseket a számítógépen kívánja a riasztás a jelentett megtámadott erőforrás:
+Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
-1. Másoljon egy végrehajtható fájlt (például **calc.exe**) a számítógép asztalára vagy más könyvtárba, és nevezze át, **ASC_AlertTest_662jfi039N.exe**.
-1. Nyissa meg a parancssort, és hajtsa végre a fájlt egy argumentummal (csak egy hamis argumentum nevét), például: ```ASC_AlertTest_662jfi039N.exe -foo```
-1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Hasonló riasztást a [példa](#alert-validate) alábbi üzenetnek kell megjelennie:
+1. Másoljon egy végrehajtható fájlt (például a **Calc. exe**fájlt) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N. exe**néven.
+1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például:```ASC_AlertTest_662jfi039N.exe -foo```
+1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Az alábbi [példához](#alert-validate) hasonló riasztást kell megjeleníteni:
 
 > [!NOTE]
-> Ha a teszt a riasztás áttekintése Windows, ellenőrizze, hogy a mező **argumentumok naplózása beállítás** van **igaz**. Ha **hamis**, majd engedélyezze a parancssori argumentumok naplózását. Annak engedélyezéséhez használja a következő parancsot:
+> A Windows rendszerhez készült teszt-riasztások megtekintésekor ellenőrizze, hogy az **argumentumok naplózása engedélyezve** van-e **igaz**. Ha **hamis**, akkor engedélyeznie kell a parancssori argumentumok naplózását. Az engedélyezéshez használja a következő parancssort:
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Riasztási Linux rendszerű virtuális gépen <a name="validate-linux"></a>
+## Riasztás ellenőrzése Linux rendszerű virtuális gépen<a name="validate-linux"></a>
 
-Után a Security Center az ügynök telepítve van a számítógépen kövesse az alábbi lépéseket a számítógépen kívánja a riasztás a jelentett megtámadott erőforrás:
-1. Másoljon egy végrehajtható fájlt egy tetszés szerinti helyre, és nevezze át, hogy **. / asc_alerttest_662jfi039n**, például:
+Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
+1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a **./asc_alerttest_662jfi039n**névre, például:
 
     ```cp /bin/echo ./asc_alerttest_662jfi039n```
 
-1. Nyissa meg a parancssort, és hajtsa végre ezt a fájlt:
+1. Nyissa meg a parancssort, és hajtsa végre a következő fájlt:
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Hasonló riasztást a [példa](#alert-validate) alábbi üzenetnek kell megjelennie:
+1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Az alábbi [példához](#alert-validate) hasonló riasztást kell megjeleníteni:
 
-### Riasztási példa <a name="alert-validate"></a>
+### Riasztási példa<a name="alert-validate"></a>
 
-![Riasztások érvényesítése példa](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+![Példa riasztás érvényesítésére](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
 
 ## <a name="see-also"></a>Lásd még
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:

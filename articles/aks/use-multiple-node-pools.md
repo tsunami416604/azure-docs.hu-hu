@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171502"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202961"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -35,7 +35,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfig
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
-Több Node-készlet használatához szüksége lesz az *AK-előnézeti CLI-* bővítmény 0.4.12 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
+Több Node-készlet használatához szüksége lesz az *AK-előnézeti CLI-* bővítmény 0.4.16 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -178,7 +178,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Fürtön vagy csomóponton található műveletek frissítése és méretezése nem végezhető el egyszerre, ha a rendszer hibaüzenetet küld. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
 
-Ha az AK-fürt eredetileg az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ez a Kubernetes-verziót adja meg a vezérlési síkon és az alapértelmezett csomópont-készlet esetében is. Az ebben a szakaszban szereplő parancsok azt ismertetik, hogyan lehet frissíteni egy adott csomópont-készletet. A vezérlési sík és a Kubernetes verziójának frissítése közötti kapcsolatot az [alábbi szakasz](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismerteti.
+Ha az AK-fürt eredetileg az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ez a Kubernetes-verziót adja meg a vezérlési síkon és az alapértelmezett csomópont-készlet esetében is. Az ebben a szakaszban szereplő parancsok azt ismertetik, hogyan lehet frissíteni egy adott csomópont-készletet.
+
+A vezérlési sík és a Kubernetes verziójának frissítése közötti kapcsolatot az [alábbi szakasz](#upgrade-a-cluster-control-plane-with-multiple-node-pools)ismerteti.
 
 > [!NOTE]
 > A Node Pool operációsrendszer-rendszerkép verziója a fürt Kubernetes-verziójához van kötve. A fürt frissítését követően csak az operációs rendszer rendszerképének frissítését fogja kérni.
@@ -193,9 +195,6 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.10 \
     --no-wait
 ```
-
-> [!Tip]
-> A vezérlő síkja *1.14.6*való frissítéséhez futtassa a `az aks upgrade -k 1.14.6`parancsot. További információ a [több Node-készlettel rendelkező, több csomópontot tartalmazó vezérlőről](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. A következő példa azt mutatja, hogy a *mynodepool* a *1.13.10* *Verziófrissítési* állapotban van:
 
@@ -232,7 +231,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 A csomópontok a megadott verzióra való frissítése néhány percet vesz igénybe.
 
-Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a Kubernetes-verzióra kell frissíteni. Az egyes csomópont-készletek verziófrissítése lehetővé teszi a működés közbeni frissítés végrehajtását és a csomópontok közötti ütemezést, hogy a fent említett korlátozásokon belül fenntartsa az alkalmazás üzemidőét.
+Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a Kubernetes-verzióra kell frissíteni. Az alapértelmezett viselkedése `az aks upgrade` az, ha az összes csomópont-készletet a vezérlési síkkal együtt frissíti az igazítás eléréséhez. Az egyes csomópont-készletek verziófrissítése lehetővé teszi a működés közbeni frissítés végrehajtását és a csomópontok közötti ütemezést, hogy a fent említett korlátozásokon belül fenntartsa az alkalmazás üzemidőét.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Fürt vezérlőelem síkja több Node-készlettel
 
@@ -243,11 +242,12 @@ Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a
 > * A csomópont-készlet verziója lehet kisebb, mint a vezérlő síkja verziója.
 > * A csomópont-készlet verziója lehet bármilyen javítási verzió, ha a másik két korlátozást követik.
 
-Egy AK-fürt két fürterőforrás-objektummal rendelkezik. Az első egy vezérlő síkja Kubernetes verziója. A második egy Kubernetes-verziót tartalmazó ügynök készlet. A vezérlő síkja egy vagy több csomópontot képez le, és mindegyiknek saját Kubernetes-verziója van. A frissítési művelet viselkedése attól függ, hogy melyik erőforrást célozza meg, és hogy az alapul szolgáló API melyik verzióját hívja meg.
+Az AK-fürtök két fürterőforrás-objektummal rendelkeznek, amelyek Kubernetes-verzióval vannak társítva. Az első egy vezérlő síkja Kubernetes verziója. A második egy Kubernetes-verziót tartalmazó ügynök készlet. A vezérlő síkja egy vagy több csomópont-készletet képez le. A frissítési művelet viselkedése attól függ, hogy melyik Azure CLI-parancsot használja a rendszer.
 
 1. A vezérlési sík frissítéséhez a-t kell használnia`az aks upgrade`
-   * Ezzel a beállítással a fürt összes csomópont-készlete is frissülni fog.
-1. Verziófrissítés`az aks nodepool upgrade`
+   * Ezzel a beállítással frissítheti a vezérlő síkja és a fürt összes csomópont-készletét.
+   * A `az aks upgrade` `--control-plane-only` jelzővel való átadás esetén a rendszer csak a fürt vezérlőjét frissíti, a hozzá tartozó csomópontok egyikét sem. * a jelző elérhető az AK-ban – előzetes bővítmény v 0.4.16 vagy magasabb `--control-plane-only`
+1. Az egyes csomópont-készletek frissítéséhez a szükséges`az aks nodepool upgrade`
    * Ez csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval.
 
 A csomópont-készletekben tárolt Kubernetes-verziók közötti kapcsolatnak a szabályokat is követnie kell.

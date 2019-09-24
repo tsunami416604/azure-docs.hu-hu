@@ -6,20 +6,20 @@ documentationcenter: na
 author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
-ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2cce369f6a0670790ede7367609f87c18672ddd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5d740224adb15dc2d772689d77ab1c510532c901
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100614"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203998"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban
 Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
@@ -46,7 +46,7 @@ A SQL Server licencének típusa a virtuális gép üzembe helyezésekor van be�
 Az SQL virtuális gép erőforrás-szolgáltatójának használatához a SQL Server IaaS bővítmény szükséges. Ennek megfelelően a következőkre lesz szüksége:
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Frissítési [garancia](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
-- Az [SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatónál regisztrált [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
+- Az [SQL VM erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md)regisztrált [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál már regisztrált virtuális gépek licencének módosítása 
@@ -57,7 +57,7 @@ Az SQL virtuális gép erőforrás-szolgáltatójának használatához a SQL Ser
 
 A licencelési modellt közvetlenül a portálról is módosíthatja: 
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és nyissa meg az [SQL Virtual Machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) -erőforrást a SQL Server VMhoz. 
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és nyissa meg az [SQL Virtual Machines-erőforrást](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) a SQL Server VMhoz. 
 1. Válassza a **Konfigurálás** lehetőséget a **Beállítások**területen. 
 1. Válassza a **Azure Hybrid Benefit** lehetőséget, majd jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy rendelkezik-e a frissítési garanciával rendelkező SQL Server licenccel. 
 1. Válassza az **alkalmaz** lehetőséget a configure ( **Konfigurálás** ) lap alján. 
@@ -123,7 +123,7 @@ $SqlVm | Set-AzResource -Force
 
 Ha kiépített egy SQL Server VM az utólagos elszámolású Azure Marketplace-rendszerképekből, akkor a SQL Server licenc típusa utólagos elszámolású lesz. Ha az Azure Marketplace-en keresztül létrehozott egy saját licenctel ellátott rendszerképet használó SQL Server VM-t, a licenc típusa AHUB lesz. Az alapértelmezett (utólagos elszámolású) vagy a saját licencű Azure Marketplace-lemezképek által kiépített SQL Server virtuális gépek automatikusan regisztrálva lesznek az SQL VM erőforrás-szolgáltatóban, így megváltoztathatják a [licenc típusát](#change-the-license-for-vms-already-registered-with-the-resource-provider).
 
-Csak az Azure-beli virtuális gépeken Azure Hybrid Benefit-n keresztül telepíthet SQL Server. Ezeket a [virtuális gépeket az SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md) -szolgáltatóval kell regisztrálnia, ha a SQL Server-licencet Azure Hybrid Benefitként állítja be, hogy jelezze a Azure Hybrid Benefit használatát a Microsoft termék feltételeinek megfelelően.
+Csak az Azure-beli virtuális gépeken Azure Hybrid Benefit-n keresztül telepíthet SQL Server. Ezeket a [virtuális gépeket az SQL VM erőforrás-szolgáltatóval kell regisztrálnia](virtual-machines-windows-sql-register-with-resource-provider.md) , ha a SQL Server-licencet Azure Hybrid Benefitként állítja be, hogy jelezze a Azure Hybrid Benefit használatát a Microsoft termék feltételeinek megfelelően.
 
 A SQL Server VM licencének típusa csak akkor módosítható, ha a SQL Server VM regisztrálva van az SQL VM erőforrás Azure Hybrid Benefit-szolgáltatóban. Minden SQL Server virtuális gépet regisztrálni kell az erőforrás-szolgáltatónál a licencek megfelelősége érdekében.
 
@@ -154,7 +154,7 @@ Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítan
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében, majd regisztrálnia kell a [SQL Server VM az erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md)-szolgáltatóval. [](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription) 
+Regisztrálnia kell az erőforrás-szolgáltatót az [előfizetésében](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription), majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Az "SKU" paraméter argumentuma nem ellenőrizhető
 Ez a hiba akkor fordulhat elő, amikor a 4,0-nál újabb Azure PowerShell-verziókkal próbálja meg módosítani a SQL Server VM licenc modelljét:

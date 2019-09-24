@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 34aaae23b834ec1fb9e071f31c6d8e94c9c7dd0a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170816"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204178"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Gyors útmutató: CentOS (Linux) Data Science Virtual Machine beállítása az Azure-ban
 
@@ -33,7 +33,7 @@ A CentOS Data Science Virtual Machine példányának létrehozásának lépései
 
 1. A következő ablakban válassza a **Létrehozás**lehetőséget.
 
-    ![Varázsló virtuális gép létrehozásához](./media/linux-dsvm-intro/create-centos.png)
+    [![](media/linux-dsvm-intro/create-centos.png "CentOS-gép létrehozásához szükséges gomb")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
    

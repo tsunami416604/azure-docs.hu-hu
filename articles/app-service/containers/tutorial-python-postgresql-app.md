@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020188"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203266"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Python-(Django-) Webalkalmazás létrehozása a PostgreSQL-sel Azure App Service
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Azure Database for PostgreSQL létrehozása előtt ellenőrizze, hogy az [adott régióban elérhető-e a számítási generáció](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores).
 
-A cikk lépései macOS rendszerre vonatkoznak. Linux és Windows rendszeren a legtöbb esetben ugyanezek az utasítások érvényesek, az oktatóanyag azonban nem tér ki az eltérésekkel kapcsolatos részletekre.
+A jelen cikkben ismertetett lépéseket követve macOS, Linux és Windows rendszerű utasítások is megegyeznek a legtöbb esetben, de a különbségek nem részletesek ebben az oktatóanyagban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +65,7 @@ psql postgres
 
 Ha a kapcsolat létrejött, a PostgreSQL-adatbázis fut. Ha nem, mindenképp a [Letöltések – PostgreSQL központi kiadással](https://www.postgresql.org/download/) foglalkozó szakaszban ismertetett, az operációs rendszerére vonatkozó utasításokat követve indítsa el a helyi PostgreSQL-adatbázist.
 
-Hozzon létre egy *pollsdb* nevű adatbázist, és állítson be egy külön adatbázis-felhasználót, amelynek neve Password *supersecretpass*.
+Hozzon létre egy *pollsdb* nevű adatbázist, és állítson be egy külön adatbázis-felhasználót *, amelynek neve* Password *supersecretpass*.
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -114,7 +114,7 @@ A *env.sh* és a *env. ps1* definiált környezeti változók a _azuresite/Setti
 
 ### <a name="run-app-locally"></a>Az alkalmazás futtatása helyileg
 
-Telepítse a szükséges csomagokat, [futtassa a Django](https://docs.djangoproject.com/en/2.1/topics/migrations/) -áttelepítést, és [hozzon létre egy rendszergazdai felhasználót](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
+Telepítse a szükséges csomagokat, [futtassa a Django-áttelepítést](https://docs.djangoproject.com/en/2.1/topics/migrations/) , és [hozzon létre egy rendszergazdai felhasználót](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user).
 
 ```bash
 pip install -r requirements.txt
@@ -207,7 +207,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Ez a beállítás lehetővé teszi a hálózati kapcsolatok létesítését az Azure hálózatán belül található minden IP-címről. Éles környezetben próbálja meg a lehető legszigorúbb tűzfalszabályokat konfigurálni úgy, hogy [kizárólag az alkalmazása által használt kimenő IP-címeket használja](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-A Cloud Shell futtassa újra a parancsot, hogy engedélyezze a hozzáférést a helyi számítógépről úgy, hogy lecseréli  *\<az-IP-cím >* a [helyi IPv4 IP](https://www.whatsmyip.org/)-címére.
+A Cloud Shell futtassa újra a parancsot, hogy engedélyezze a hozzáférést a helyi számítógépről úgy, hogy lecseréli  *\<az-IP-cím >* a [helyi IPv4 IP-címére](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -289,7 +289,7 @@ A Django ellenőrzi a `HTTP_HOST` bejövő kérelmek fejlécét. Ahhoz, hogy a D
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-Ezután a Django nem támogatja [a statikus fájlok éles](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)környezetben való kiszolgálását, ezért ezt manuálisan kell engedélyeznie. Ebben az oktatóanyagban a [WhiteNoise](https://whitenoise.evans.io/en/stable/)-t használja. A WhiteNoise csomag már szerepel a _követelmények. txt fájlban_. Csak konfigurálnia kell a Django a használatára. 
+Ezután a Django nem támogatja [a statikus fájlok éles környezetben való kiszolgálását](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), ezért ezt manuálisan kell engedélyeznie. Ebben az oktatóanyagban a [WhiteNoise](https://whitenoise.evans.io/en/stable/)-t használja. A WhiteNoise csomag már szerepel a _követelmények. txt fájlban_. Csak konfigurálnia kell a Django a használatára. 
 
 A _azuresite/Settings. a._ a `MIDDLEWARE` -ben keresse meg a `whitenoise.middleware.WhiteNoiseMiddleware` beállítást, és adja hozzá a middleware- `django.middleware.security.SecurityMiddleware` t a listához közvetlenül a middleware alá. A `MIDDLEWARE` beállításnak így kell kinéznie:
 

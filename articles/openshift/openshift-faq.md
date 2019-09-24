@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991646"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203543"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -25,7 +25,7 @@ Az Azure Red Hat OpenShift használatához legalább 4 Azure Red Hat OpenShift f
 
 Ha Ön Azure-ügyfél, akkor az[Azure Red Hat OpenShift fenntartott példányait](https://aka.ms/openshift/buy) az Azure Portalon keresztül vásárolhatja meg. A vásárlást követően az előfizetés 24 órán belül aktiválva lesz, amely után a fürtöket kiépítheti.
 
-Ha Ön nem Azure-ügyfél, [forduljon](https://aka.ms/openshift/contact-sales) az értékesítésekhez, és töltse ki az oldal alján található Sales (értékesítés) űrlapot a folyamat elindításához.
+Ha Ön nem Azure-ügyfél, [forduljon az értékesítésekhez](https://aka.ms/openshift/contact-sales) , és töltse ki az oldal alján található Sales (értékesítés) űrlapot a folyamat elindításához.
 
 További információkért tekintse meg az [Azure Red Hat OpenShift díjszabását ismertető oldalt](https://aka.ms/openshift/pricing) .
 
@@ -135,9 +135,9 @@ A syslog, a Docker-naplók, a Journal és a dmesg kezelése a felügyelt szolgá
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Mi az az alapértelmezett Pod Scheduler-konfiguráció az ARO-hoz?
 
-Az ARO a OpenShift lévő alapértelmezett ütemező szolgáltatást használja. Az ARO-ban nem támogatott néhány további mechanizmus. További részletekért tekintse meg az [alapértelmezett Scheduler](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) -dokumentációt és a [fő Scheduler dokumentációját](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) .
+Az ARO a OpenShift lévő alapértelmezett ütemező szolgáltatást használja. Az ARO-ban nem támogatott néhány további mechanizmus. További részletekért tekintse meg az [alapértelmezett Scheduler-dokumentációt](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) és a [fő Scheduler dokumentációját](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) .
 
-A speciális/egyéni ütemezés jelenleg nem támogatott. További részletekért [](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) tekintse meg az ütemezési dokumentációt.
+A speciális/egyéni ütemezés jelenleg nem támogatott. További részletekért tekintse meg az [ütemezési dokumentációt](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) .
 
 ## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Ha felskálázást végez az üzembe helyezés során, hogyan képezhetők le az Azure-beli tartalék tartományok a pod-elhelyezésbe, hogy a szolgáltatáshoz tartozó összes hüvely ne legyen kiütéssel egyetlen tartalék tartomány meghibásodása esetén?
 
@@ -164,3 +164,45 @@ További részletekért tekintse meg a [felsőbb rétegbeli OpenShift dokumentá
 Az Azure Red Hat OpenShift támogatja a VNET-társítást, és lehetővé teszi az ügyfél számára, hogy VNET biztosítson a társának és egy olyan VNET-CIDR, amelyben a OpenShift-hálózat működni fog.
 
 Az ARO által létrehozott VNET védettek lesznek, és nem fogadják el a konfigurációs módosításokat. A VNET az ügyfél vezérli, és az előfizetésében található.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>A fürt egy ügyfél-előfizetésben található? 
+
+Az Azure által felügyelt alkalmazás egy zárolt erőforráscsoport és az ügyfél-előfizetés között él. Az ügyfél megtekintheti az adott RG objektumait, de nem módosítható.
+
+## <a name="is-the-sdn-module-configurable"></a>Konfigurálható az SDN-modul?
+
+Az SDN a openshift-OVS-networkpolicy, és nem konfigurálható.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Mely UNIX-jogosultságok érhetők el a Masters/infra/app-csomópontok számára a IaaS-ben?
+
+Nem alkalmazható erre az ajánlatra. A csomópont-hozzáférés tiltott.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Milyen OCP-jogosultságokkal rendelkezik? Fürt – rendszergazda? Projekt – rendszergazda?
+
+Részletekért tekintse meg az Azure Red Hat OpenShift- [fürt felügyeletének áttekintése](https://docs.openshift.com/aro/admin_guide/index.html)című témakört.
+
+## <a name="which-kind-of-federation-with-ldap"></a>Milyen típusú összevonás van az LDAP-sel?
+
+Ez az Azure AD-integráción keresztül érhető el. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Van olyan elem az ARO-ban, amelyet más ügyfelek is megosztanak? Vagy minden független?
+
+Minden egyes Azure Red Hat OpenShift-fürt egy adott ügyfélhez van hozzárendelve, és az ügyfél előfizetésén belül él. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Kiválasztható bármilyen állandó tárolási megoldás is. OCS? 
+
+Két tárolási osztály közül választhat: Azure-lemez és Azure-fájl.
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hogyan frissül a fürt (beleértve a főbb és a kiskorúakat a sebezhetőségek miatt)?
+
+Lásd: [Mi az általános frissítési folyamat?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Milyen Azure Load balancert használ az ARO?  Standard vagy alapszintű, és ez konfigurálható?
+
+Az ARO szabványos Azure Load Balancer használ, és nem konfigurálható.
+
+## <a name="can-aro-use-netapp-based-storage"></a>Az ARO a NetApp-alapú tárolást is használhatja?
+
+Jelenleg az egyetlen támogatott tárolási lehetőség az Azure Disk és az Azure file Storage-osztályok. 
+
+

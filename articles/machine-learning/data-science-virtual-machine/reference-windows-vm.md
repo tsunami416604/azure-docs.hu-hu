@@ -1,5 +1,5 @@
 ---
-title: 'Leírások: Windows DSVM'
+title: 'Leírások: Windowsos DSVM'
 description: A Windows Data Science VMban található eszközök részletei
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 8ed083ad39c3ace3a0f66a61936974b462ed418f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: be4397de477891f2a698c9f7dcb131da79479529
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174694"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200009"
 ---
 # <a name="reference-windows-data-science-virtual-machine"></a>Leírások: Windows Data Science Virtual Machine
 
@@ -132,4 +132,6 @@ A Microsoft [webplatform-telepítővel](https://www.microsoft.com/web/downloads/
 > [!NOTE]
 > A DSVM Windows Server 2012 kiadásában és a Windows Server 2016 kiadásban a 2018. március előtt az alapértelmezett anaconda-környezet a Python 2,7. A másodlagos környezet a Python 3,5, amely a következő helyen található: C:\Anaconda\envs\py35.
 
+## <a name="next-steps"></a>További lépések
 
+További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

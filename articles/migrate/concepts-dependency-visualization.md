@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142904"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202914"
 ---
 # <a name="dependency-visualization"></a>Függőségek képi megjelenítése
 
@@ -44,11 +44,14 @@ A Azure Migrate a [Service Map](../operations-management-suite/operations-manage
     ![Munkaterület hozzáadása](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - A munkaterület társítása során új munkaterületet kell létrehoznia, vagy egy meglévőt csatlakoztatni:
-  - Amikor új munkaterületet hoz létre, meg kell adnia a munkaterület nevét. A munkaterület ezután egy, az áttelepítési projekttel megegyező [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -földrajzbeli régióban jön létre.
+  - Amikor új munkaterületet hoz létre, meg kell adnia a munkaterület nevét. Kiválaszthatja azt a [régiót](https://azure.microsoft.com/global-infrastructure/regions/) , amelyben a munkaterület létre lesz hozva.
   - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Vegye figyelembe, hogy csak azok a munkaterületek vannak felsorolva, amelyek olyan régióban lettek létrehozva, ahol a [Service Map támogatott](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). A munkaterület csatolásához győződjön meg arról, hogy van "olvasó" hozzáférése a munkaterülethez.
 
   > [!NOTE]
   > Miután csatolt egy munkaterületet egy projekthez, később nem módosítható.
+
+  > [!NOTE]
+  > Azure Migrate jelenleg támogatja a OMS-munkaterület létrehozását az USA keleti régiójában, Délkelet-Ázsiában és Nyugat-Európában. Ha a munkaterületet a Azure Migrateon kívül más régióban hozza létre, akkor jelenleg nem rendelhető hozzá Azure Migrate projekthez. 
 
 - A társított munkaterület a kulcs áttelepítési **projektje**és az érték **projekt neve**alapján van címkézve, amely a Azure Portal való kereséshez használható.
 - A projekthez társított munkaterületre való belépéshez nyissa meg a projekt áttekintő oldalának **Essentials (alapvető** ) szakaszát, és nyissa meg a munkaterületet

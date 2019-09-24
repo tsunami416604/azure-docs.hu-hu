@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906373"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200200"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Függőségi vizualizáció beállítása az értékeléshez
 
@@ -61,7 +61,7 @@ Csatoljon egy munkaterületet az alábbiak szerint:
 
     ![Munkaterület hozzáadása](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - Miután megadta az új munkaterülethez tartozó nevet, a rendszer ugyanabban a földrajzi régióban jön létre, mint a Azure Migrate-projekt.
+    - Miután megadta az új munkaterület nevét, kiválaszthatja azt a [régiót](https://azure.microsoft.com/global-infrastructure/regions/) , amelyben a munkaterület létre lesz hozva.
     - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja.
     - A munkaterülethez olvasói hozzáféréssel kell rendelkeznie ahhoz, hogy csatolni lehessen.
     - A projekthez társított munkaterület nem módosítható a csatolása után.

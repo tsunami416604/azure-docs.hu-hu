@@ -3,9 +3,8 @@ title: Azure Security Center rövid útmutató – Windows rendszerű számító
 description: Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,15 +13,15 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: memildin
+ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706791"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202795"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Gyors útmutató: Az Azure Security Center Windows számítógépek felvétele
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Gyors útmutató: Windows rendszerű számítógépek előkészítése Azure Security Center
 Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
@@ -30,7 +29,7 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Age
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. A Security Center Standard díjmentesen próbálhatja ki. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Új, Windows rendszerű számítógép hozzáadása
 
@@ -64,7 +63,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
 4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
 5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez, majd kattintson a **Tovább** gombra.
-6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)**.
+6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)** .
 7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
 8. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.
 

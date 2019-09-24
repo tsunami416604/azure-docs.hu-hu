@@ -3,9 +3,8 @@ title: Speciális adatbiztonság a IaaS-ben a Azure Security Centerban | Microso
 description: " Megtudhatja, hogyan engedélyezheti a speciális adatbiztonságot a IaaS a Azure Security Centerban. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295755"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202174"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (nyilvános előzetes verzió)
 Az Azure Virtual Machines-beli SQL serverek speciális adatbiztonsága egy egységes csomag a fejlett SQL-alapú biztonsági funkciókhoz. Jelenleg (nyilvános előzetes verzióban) magában foglalja a felszínre és a lehetséges adatbázis-sebezhetőségek enyhítésére szolgáló funkciókat, valamint a rendellenes tevékenységek észlelését, amelyek fenyegetést jelenthetnek az adatbázisra. 
@@ -72,7 +71,7 @@ Az aktuális biztonsági riasztásokat megtekintheti és kezelheti.
 
 1. Ha meg szeretné tekinteni a riasztás részleteit és a jelenlegi fenyegetés kivizsgálására és a jövőbeli fenyegetések kezelésére vonatkozó műveleteket, görgessen le az **általános információk** oldalra, és a javítási **lépések** szakaszban kattintson a **vizsgálat lépései** hivatkozásra.
 
-    ![Szervizelési lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Eltávolítási lépések](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. A riasztás indításával társított naplók megtekintéséhez lépjen a **log Analytics** -munkaterületek elemre, és hajtsa végre a következő lépéseket:
 
@@ -102,7 +101,7 @@ Megadhatja a címzettek listáját, amely e-mailben értesítést kap az ASC-ria
 1. A **Beállítások** menüben kattintson az **e-mail-értesítések**lehetőségre. 
 1. Az **e-mail cím** szövegmezőbe írja be az e-mail-címeket az értesítések fogadásához. Több e-mail-címet is megadhat az e-mail-címek vesszővel (,) való elválasztásával.  admin1@mycompany.comPéldáuladmin2@mycompany.com:,admin3@mycompany.com
 
-      ![E-mail-beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
+      ![E-mail beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. Az **e-mail értesítések** beállításainál adja meg a következő beállításokat:
   
@@ -121,7 +120,7 @@ A sebezhetőségi felmérés irányítópultja áttekintést nyújt az összes a
 A sebezhetőségi felmérés eredményeit és jelentéseit közvetlenül a Log Analytics tekintheti meg.
 
 1. Navigáljon a Log Analytics munkaterületére a speciális adatbiztonsági megoldással.
-1. Navigáljon  a megoldásokhoz, és válassza ki az **SQL sebezhetőség** -felmérési megoldást.
+1. Navigáljon a megoldásokhoz, és válassza ki az **SQL sebezhetőség** -felmérési megoldást.
 1. Az **Összefoglalás** ablaktáblán kattintson az **Összefoglalás megtekintése** elemre, és válassza ki az **SQL sebezhetőség-értékelő jelentést**.
 
     ![SQL Assessment jelentés](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)

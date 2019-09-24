@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d0ef228f9f019b6f975ba32cf6a579f328226ae2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966993"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203458"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Gyors útmutató: A Javához készült ügyféloldali kódtár Computer Vision
 
@@ -24,6 +24,7 @@ Ismerkedjen meg a Javához készült Computer Vision-ügyfél függvénytáráva
 A Javához készült Computer Vision ügyféloldali kódtár a következőre használható:
 
 * Elemezheti a címkéket, a szöveges leírást, az arcokat, a felnőtt tartalmakat és egyebeket.
+* A nyomtatott és a kézírásos szöveg felismerése a Batch olvasási API-val.
 
 [Dokumentációs](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | anyagok[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [mintái](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -115,6 +116,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Kép elemzése](#analyze-an-image)
+* [Nyomtatott és kézzel írt szöveg olvasása](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -132,7 +134,7 @@ Ezután adja hozzá a következő kódot egy [ComputerVisionClient](https://docs
 > [!NOTE]
 > Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
 
-## <a name="analyze-an-image"></a>Kép elemzése
+## <a name="analyze-an-image"></a>Rendszerkép elemzése
 
 A következő kód egy metódust határoz `AnalyzeLocalImage`meg, amely az ügyfél-objektumot használja egy helyi rendszerkép elemzéséhez és az eredmények kinyomtatásához. A metódus a szöveges leírást, a kategorizálást, a címkék listáját, az észlelt arcokat, a felnőtt tartalom jelzőit, a fő színeket és a képtípust adja vissza.
 
@@ -211,6 +213,29 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 A következő kód a képtípussal&mdash;kapcsolatos információkat jeleníti meg, legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
+
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba.
+
+> [!NOTE]
+> Az URL-cím használatával egy távoli rendszerképben is olvashat szöveget. A távoli rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) találhatók.
+
+### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
+
+Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket `localTextImagePath` a helyi rendszerkép elérési útjára kell cserélnie. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+### <a name="print-recognize-results"></a>Felismerési eredmények nyomtatása
+
+A következő kódrészlet dolgozza fel a visszaadott szöveget, és elemzi, hogy kinyomtassa az első szót az egyes sorokban. A kód segítségével gyorsan megismerheti egy **OcrResult** -példány struktúráját.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_print)]
+
+Végül zárjuk le a try/catch blokkot és a metódus definícióját.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 

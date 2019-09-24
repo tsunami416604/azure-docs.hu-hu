@@ -12,16 +12,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: e58b01c6a01a22ef2dd45dc49d741f0287d603a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 759bec280b40973cf651dec3741a71d67c01fe04
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100379"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200161"
 ---
 # <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server kibocsátási megjegyzései Virtual Machines
 
 Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépített lemezképével végezheti el. Ez a cikk az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)közelmúltbeli kiadásaiban ismertetett új funkciókat és fejlesztéseket foglalja össze. A cikk felsorolja azokat a jelentős tartalmi frissítéseket is, amelyek nem kapcsolódnak közvetlenül a kiadáshoz, hanem ugyanabban az időkeretben vannak közzétéve. Az egyéb Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [szolgáltatások frissítései](https://azure.microsoft.com/updates).
+
+## <a name="august-2019"></a>Augusztus 2019
+
+### <a name="service-improvements"></a>Szolgáltatások fejlesztése
+
+| Szolgáltatások fejlesztése | Részletek |
+| --- | --- |
+| **Dedikált Azure-gazdagép** | A SQL Server VM a [dedikált Azure-gazdagépen](virtual-machines-windows-sql-dedicated-host.md)is futtathatja. |
+| &nbsp; | &nbsp; |
+
 
 ## <a name="july-2019"></a>Július 2019
 
@@ -29,7 +39,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 | Dokumentáció | Részletek |
 | --- | --- |
-| **SQL virtuális gép áthelyezése másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból](virtual-machines-windows-sql-move-different-region.md)a másikba. |
+| **SQL virtuális gép áthelyezése másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból a másikba](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>Június 2019
@@ -40,8 +50,8 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | --- | --- |
 | **Új SQL-IaaS telepítési módjai** | A SQL Server szolgáltatás újraindításának elkerülése érdekében mostantól a SQL Server IaaS-bővítményt [egyszerűsített módban](virtual-machines-windows-sql-server-agent-extension.md) is telepítheti.  |
 | **SQL Server kiadás módosítása** | Most már módosíthatja a SQL Server VM [kiadás tulajdonságát](virtual-machines-windows-sql-change-edition.md) . |
-| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás](virtual-machines-windows-sql-register-with-resource-provider.md) -szolgáltatóban regisztrálhatja az új SQL IaaS módok használatával. Ez a funkció [Windows 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)rendszerképeket tartalmaz.|
-| **Saját licencű lemezképek a Azure Hybrid Benefit használatával** | Az Azure Marketplace-ről üzembe helyezett saját licencű lemezképek mostantól az [utólagos](virtual-machines-windows-sql-ahb.md#remarks)elszámolású licencre válthatnak.| 
+| **Az SQL virtuális gép erőforrás-szolgáltatójának módosításai** | A [SQL Server VM az SQL VM erőforrás-szolgáltatóban regisztrálhatja](virtual-machines-windows-sql-register-with-resource-provider.md) az új SQL IaaS módok használatával. Ez a funkció [Windows 2008 rendszerképeket](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)tartalmaz.|
+| **Saját licencű lemezképek a Azure Hybrid Benefit használatával** | Az Azure Marketplace-ről üzembe helyezett saját licencű lemezképek mostantól az utólagos elszámolású [licencre](virtual-machines-windows-sql-ahb.md#remarks)válthatnak.| 
 | &nbsp; | &nbsp; |
 
 
@@ -70,7 +80,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
-| **Kiterjesztett támogatás a SQL Server 2008/2008 R2 rendszerhez** | Az Azure-beli virtuális gépekre való áttelepítéssel bővítheti SQL Server 2008 és SQL Server 2008 R2 [támogatását](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
+| **Kiterjesztett támogatás a SQL Server 2008/2008 R2 rendszerhez** | *Az Azure* -beli virtuális gépekre való áttelepítéssel bővítheti SQL Server 2008 és SQL Server 2008 R2 [támogatását](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
 | &nbsp; | &nbsp; |
 
 
@@ -80,7 +90,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | --- | --- |
 | **Egyéni rendszerkép-támogatás** | Most már telepítheti a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) az egyéni operációs rendszerre és az SQL-lemezképekre, amely a [rugalmas licencelés](virtual-machines-windows-sql-ahb.md)korlátozott funkcionalitását kínálja. Ha az egyéni rendszerképét az SQL-erőforrás-szolgáltatóval regisztrálja, adja meg a licenc típusát "AHUB" néven. Ellenkező esetben a regisztráció sikertelen lesz. | 
 | **Megnevezett példányok támogatása** | Mostantól a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) megnevezett példánnyal is használhatja, ha az alapértelmezett példány eltávolítása megfelelő volt. | 
-| **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg a rövid [](quickstart-sql-vm-create-portal.md) útmutatót, valamint a SQL Server VM üzembe helyezésének részletes [leírását](virtual-machines-windows-portal-sql-server-provision.md) .|
+| **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg [a rövid útmutatót, valamint](quickstart-sql-vm-create-portal.md) a SQL Server VM üzembe helyezésének részletes [leírását](virtual-machines-windows-portal-sql-server-provision.md) .|
 | &nbsp; | &nbsp; |
 
 

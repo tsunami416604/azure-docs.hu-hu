@@ -3,9 +3,8 @@ title: Az Azure-beli adatkezelési és-tárolási szolgáltatások védelme Azur
 description: Ez a dokumentum olyan Azure Security Center javaslatokat tartalmaz, amelyek segítségével megvédheti adatait és az Azure SQL-szolgáltatást, és a biztonsági szabályzatoknak megfelelően maradhat.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: memildin
+ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100942"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201040"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Az Azure-beli adatkezelési és-tárolási szolgáltatások védelme Azure Security Center
 Ebből a témakörből megtudhatja, hogyan tekintheti meg és implementálhatja az adatkezelési és a tárolási erőforrások biztonsági javaslatait. A Azure Security Center az Azure-erőforrások biztonsági állapotának elemzésekor találta meg ezeket az ajánlásokat.
@@ -40,7 +39,7 @@ Ezen a lapon a következőket teheti:
 * Kattintson az egyes lapokra, és tekintse meg az adott erőforrás típusa szerinti javaslatokat.
 
     > [!NOTE]
-    > A tárolás titkosításával kapcsolatos további információkért lásd: [Az Azure Storage titkosítása](../storage/common/storage-service-encryption.md)inaktív adatokhoz.
+    > A tárolás titkosításával kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>Javaslat szervizelése egy adaterőforráson

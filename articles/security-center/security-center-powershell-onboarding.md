@@ -1,97 +1,96 @@
 ---
-title: A PowerShell használatával előkészítése az Azure Security Center és a hálózat védelme |} A Microsoft Docs
-description: Ez a dokumentum végigvezeti a bevezetése az Azure Security Center PowerShell-parancsmagok használatával folyamatán.
+title: A PowerShell használata a Azure Security Center bevezetéséhez és a hálózat biztonságához | Microsoft Docs
+description: Ez a dokumentum végigvezeti a Azure Security Center PowerShell-parancsmagokkal történő bevezetésének folyamatán.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/2/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9bf2704fbbaa2c7a469dcefa3dc3f3cd7e4d5504
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 10/02/2018
+ms.author: memildin
+ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626265"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201217"
 ---
-# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Előkészítés a PowerShell-lel az Azure Security Center automatizálása
+# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Azure Security Center bevezetésének automatizálása a PowerShell használatával
 
-Gondoskodhat az Azure-beli számítási programozott módon, az Azure Security Center PowerShell modullal.
-PowerShell-lel lehetővé teszi, hogy a feladatok automatizálásához és a manuális feladatok járó az emberi hibák elkerülése érdekében. Ez különösen hasznos a nagyméretű telepítésekkel több tucat, több száz és több ezer erőforrások – amelyek mindegyike az elejétől kell védeni az előfizetést érintő.
+Az Azure számítási feladatait programozott módon, a Azure Security Center PowerShell-modul használatával biztosíthatja.
+A PowerShell használatával automatizálhatja a feladatokat, és elkerülheti a manuális feladatokban rejlő emberi hibákat. Ez különösen hasznos a nagy léptékű központi telepítések esetében, amelyek több tucat előfizetést foglalnak magukban több száz vagy több ezer erőforrással – mindezt az elejétől védeni kell.
 
-Bevezetési PowerShell-lel az Azure Security Center lehetővé teszi, hogy programozott módon regisztrációs és az Azure-erőforrások felügyeletének automatizálására, és adja hozzá a szükséges biztonsági ellenőrzések.
+A PowerShell használatával történő bevezetési Azure Security Center lehetővé teszi az Azure-erőforrások bevezetését és felügyeletét, valamint a szükséges biztonsági vezérlők hozzáadását.
 
-Ez a cikk egy minta PowerShell-parancsfájlt, hogy módosítani kell, és az előfizetések között a Security Center bevezetése a környezetben használt. 
+Ez a cikk egy minta PowerShell-parancsfájlt tartalmaz, amely módosítható és használható a környezetben az előfizetések Security Centerének kiszámításához. 
 
-Ebben a példában azt engedélyezi a Security Center egy adott előfizetés-azonosító: d07c0080-170c-4c24-861d-9c817742786c, és alkalmazza az ajánlott beállításokat, amelyek egy magas szintű védelemmel, a Standard szintű Security Centernek, amely biztosítja az életbe léptetésével a komplex veszélyforrások elleni védelmi és észlelési funkcióihoz:
+Ebben a példában a következő AZONOSÍTÓval rendelkező előfizetések esetében engedélyezzük a Security Centert: d07c0080-170c-4c24-861d-9c817742786c és a magas szintű védelmet biztosító ajánlott beállítások alkalmazása a Security Center Standard szintjének megvalósításával, amely a következőket biztosítja: komplex veszélyforrások elleni védelem és észlelési képességek:
 
-1. Állítsa be a [ASC standard szintű védelmet](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Állítsa be az [Asc standard szintű védelmet](https://azure.microsoft.com/pricing/details/security-center/). 
  
-2. Állítsa be a Log Analytics-munkaterületet, amelyhez a Microsoft Monitoring Agent fog küldeni az előfizetéshez – ebben a példában egy meglévő felhasználó által definiált munkaterületet (myWorkspace) tartozó az adatokat gyűjt a virtuális gépeken.
+2. Állítsa be azt a Log Analytics munkaterületet, amelyhez a Microsoft monitoring Agent az előfizetéshez társított virtuális gépeken gyűjtött adatokat küldi el – ebben a példában egy meglévő felhasználó által definiált munkaterületet (Sajátmunkaterület).
 
-3. A Security Center automatikus ügynökének üzembe helyezési, amely aktiválja [telepíti a Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma).
+3. Aktiválja Security Center automatikus ügynökének [üzembe helyezését, amely telepíti a Microsoft monitoring Agent ügynököt](security-center-enable-data-collection.md#auto-provision-mma).
 
-5. Állítsa be a szervezet [CISO, mint a biztonsági kapcsolattartó ASC riasztások és a jelentős események](security-center-provide-security-contact-details.md).
+5. A szervezet CISO adja meg [Az ASC-riasztások és a jelentős események biztonsági kapcsolattartójának](security-center-provide-security-contact-details.md).
 
-6. Rendelje hozzá a Security Center [alapértelmezett biztonsági házirendek](tutorial-security-policy.md).
+6. Security Center [alapértelmezett biztonsági házirendjeinek](tutorial-security-policy.md)kiosztása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása előtt:
+Ezeket a lépéseket az Security Center-parancsmagok futtatása előtt kell végrehajtani:
 
-1.  PowerShell futtatása rendszergazdaként
-2.  A PowerShellben futtassa a következő parancsokat:
+1.  Futtassa a PowerShellt rendszergazdaként.
+2.  Futtassa a következő parancsokat a PowerShellben:
       
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Install-Module -Name Az.Security -Force
 
-## <a name="onboard-security-center-using-powershell"></a>Felvétele a Security Center PowerShell-lel
+## <a name="onboard-security-center-using-powershell"></a>Security Center a PowerShell használatával
 
-1.  Az előfizetés a Security Center erőforrás-szolgáltató regisztrálása:
+1.  Regisztrálja előfizetéseit a Security Center erőforrás-szolgáltatónál:
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Nem kötelező: Az előfizetések lefedettség szintet (tarifacsomag) (Ha nincs megadva, a tarifacsomag értéke ingyenes):
+2.  Nem kötelező: Az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint értéke ingyenes):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 
-3.  Az ügynökök jelentést, amelyhez a Log Analytics-munkaterület konfigurálása. Log Analytics-munkaterület már létrehozott, hogy az előfizetéshez tartozó virtuális gépek jelenteni fognak az kell rendelkeznie. Megadhatja, hogy több előfizetést, hogy ugyanazon a munkaterületen. Ha nincs megadva, használja az alapértelmezett munkaterületre.
+3.  Konfiguráljon egy Log Analytics munkaterületet, amelyre az ügynökök jelentést küldenek. Rendelkeznie kell egy már létrehozott Log Analytics-munkaterülettel, amelyet az előfizetés virtuális gépei fognak jelenteni. Több előfizetést is megadhat ugyanahhoz a munkaterülethez. Ha nincs meghatározva, a rendszer az alapértelmezett munkaterületet fogja használni.
 
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  A Microsoft Monitoring Agent szolgáltatást az Azure-beli virtuális gépek automatikus üzembe telepítését:
+4.  A Microsoft monitoring Agent Automatikus üzembe helyezése az Azure-beli virtuális gépeken:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
     > [!NOTE]
-    > Azt Javasoltjuk, győződjön meg arról, hogy az Azure-beli virtuális gépek az Azure Security Center által automatikusan védett, az Automatikus kiépítés engedélyezése.
+    > Javasoljuk, hogy az automatikus kiépítés engedélyezésével győződjön meg arról, hogy az Azure-beli virtuális gépeket a Azure Security Center automatikusan védi.
     >
 
-5.  Nem kötelező: Azt javasoljuk, hogy a biztonsági kapcsolattartói adatok esetében az előfizetések felvétele, mint a riasztások és értesítések címzettjeinek fogja használni létrehozott határoz meg a Security Center által:
+5.  Nem kötelező: Erősen ajánlott megadnia a beépített előfizetések biztonsági kapcsolattartási adatait, amelyeket a Security Center által generált riasztások és értesítések címzettjeiként fog használni:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
-6.  Az alapértelmezett a Security Center házirend kezdeményezés hozzárendelése:
+6.  Az alapértelmezett Security Center házirend-kezdeményezés kiosztása:
 
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
         New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
-Akkor most sikerült előkészíteni az Azure Security Center a PowerShell használatával!
+Sikeresen bevezetést Azure Security Center a PowerShell-lel!
 
-Mostantól használhatja a PowerShell-parancsmagok az automatizálási szkriptek között előfizetésekre és erőforrásokra programozott módon újrafuttathatja. Ezzel időt takaríthat meg, és csökkenti az emberi hibák valószínűségét. Ezzel [mintaparancsfájl](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) hivatkozásként van listázva.
+Ezeket a PowerShell-parancsmagokat az Automation-parancsfájlok segítségével programozott módon is megismételheti az előfizetések és az erőforrások között. Ezzel időt takaríthat meg, és csökkentheti az emberi hiba valószínűségét. A [minta parancsfájl](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) hivatkozásként használható.
 
 
 
@@ -99,11 +98,11 @@ Mostantól használhatja a PowerShell-parancsmagok az automatizálási szkriptek
 
 
 ## <a name="see-also"></a>Lásd még
-Hogyan automatizálhatja a Security Center bevezetése használhatja PowerShell kapcsolatos további információkért tekintse meg a következő cikket:
+Ha többet szeretne megtudni arról, hogy a PowerShell Hogyan automatizálható a Security Center bevezetésének automatizálásához, tekintse meg a következő cikket:
 
-* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
+* [Az. Security](https://docs.microsoft.com/powershell/module/az.security).
 
-A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikket:
+Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő cikket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

@@ -1,11 +1,10 @@
 ---
-title: Tároló javaslatok az Azure Security Centerben |} A Microsoft Docs
-description: Ez a dokumentum azt ismerteti, hogyan védheti meg a tárolókat az Azure Security Center javaslatok.
+title: A Container ajánlásai a Azure Security Centerban | Microsoft Docs
+description: Ez a dokumentum ismerteti a Azure Security Center javaslatokat a tárolók védelmének biztosításához.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2e76c7f7-a3dd-4d9f-add9-7e0e10e9324d
 ms.service: security-center
 ms.devlang: na
@@ -13,39 +12,39 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60705273"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202392"
 ---
-# <a name="understand-azure-security-center-container-recommendations"></a>Az Azure Security Center tároló kapcsolatos javaslatok megértése
+# <a name="understand-azure-security-center-container-recommendations"></a>A Azure Security Center-tárolóra vonatkozó javaslatok ismertetése
 
-A migrálás az monolit alkalmazások futtatása az alapvető fontosságú, tárolóalapú natív alkalmazások éles környezetben kihasználhatja a tárolók, beleértve az egyszerű és gyors üzembe helyezés és frissítés funkcióit. Üzembe helyezett tárolók száma továbbra is nő, ahogy biztonsági megoldásokat nyújt betekintést a tárolókat biztonsági állapotát, és azokat fenyegetésekkel szembeni hatékony védelmét biztosítani kell, kell.
+Ha a Monolith-alkalmazásait úgy telepíti át, hogy üzleti szempontból kritikus, tároló Felhőbeli natív alkalmazásokat futtasson, kihasználhatja a tárolók funkcióit, beleértve az egyszerű és gyors üzembe helyezést és a frissítést is. Ahogy az üzembe helyezett tárolók száma továbbra is növekszik, a biztonsági megoldásokat biztosítani kell a tárolók biztonsági állapotának áttekintéséhez, és a fenyegetések elleni védelemhez.
 
-Az Azure Security Center segítségével biztosíthatja a tárolókat az alábbi képességeket biztosítja:
+A Azure Security Center a következő képességeket biztosítja a tárolók biztonságossá tételéhez:
 
-- **IaaS-on üzemeltetett tárolók betekintést Linux rendszerű gépeken**<br>Az Azure Security Centerben a tárolók megjeleníti a docker használatával telepített összes virtuális gép. Ha a biztonsági problémák feltárása a virtuális gépen, a Security Center a gépet, mint például a Docker verziója és a gazdagépen futó képek száma a tárolókkal kapcsolatos további információkat biztosít.
+- **IaaS Linux rendszerű gépeken üzemeltetett tárolók láthatósága**<br>Azure Security Center a containers (tárolók) lap megjeleníti a Docker-vel üzembe helyezett összes virtuális gépet. A virtuális gépek biztonsági problémáinak feltárásakor Security Center a gépen lévő tárolókkal kapcsolatos további információkat nyújt, például a Docker-verziót és a gazdagépen futó rendszerképek számát.
 
     ![tároló lap](./media/security-center-container-recommendations/docker-recommendation.png)
 
 
-- **Biztonsági javaslatok alapján CIS referenciaalap dockerhez**<br>A Security Center megvizsgálja a Docker-konfigurációkat, és egy listát készít az összes átvizsgált hibás szabályról, így láthatóvá teszi a konfigurációs hibákat. A Security Center segít a problémák gyors megoldásához, és ezzel időt takaríthat vonatkozó útmutatást tartalmazza. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és tájékoztatja a legfrissebb állapotukról.
+- **Biztonsági javaslatok a Docker-hez készült CIS-teljesítményteszt alapján**<br>A Security Center megvizsgálja a Docker-konfigurációkat, és egy listát készít az összes átvizsgált hibás szabályról, így láthatóvá teszi a konfigurációs hibákat. Security Center útmutatást nyújt a problémák gyors megoldásához és az idő megtakarításához. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és tájékoztatja a legfrissebb állapotukról.
 
     ![tároló lap](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Valós idejű tároló fenyegetésészlelés**<br> A Security Center AuditD összetevővel Linuxos gépeken a tárolókhoz a valós idejű fenyegetésészlelés biztosít. A riasztások azonosítják a Docker gyanús tevékenységek például a gazdagépen, arra utalhat, hogy a Secure Shell (SSH) kiszolgáló belüli egy Docker-tárolót, vagy a titkosítási használja használatát egy emelt szintű tároló létrehozása. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
+- **Valós idejű tároló fenyegetésének észlelése**<br> Security Center valós idejű veszélyforrások észlelését teszi lehetővé az auditált összetevővel rendelkező Linux rendszerű gépeken tárolt tárolók esetében. A riasztások számos gyanús Docker-tevékenységet azonosítanak, például egy emelt szintű tároló létrehozását a gazdagépen, a Docker-tárolóban futó Secure Shell-(SSH-) kiszolgáló, illetve a kriptográfiai bányászok használatának jeleként. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
     ![tároló lap](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Javaslatok
-Használja az alábbi táblázatokban referenciaként segítenek megérteni a rendelkezésre álló tárolók üzemeltetett IaaS Linuxos gépeken és a biztonsági értékelése a Docker-konfigurációját.
+Az alábbi táblázatokat hivatkozásként használva megismerheti a IaaS Linux rendszerű gépeken tárolt elérhető tárolókat, valamint a Docker-konfigurációk biztonsági értékelését.
 
 | Ajánlás | Leírás | Szervizelés |
 | --- | --- | --- |
-|A biztonsági rések tároló biztonsági konfigurációk |A biztonsági rések tároló biztonsági konfigurációk alapján konfigurálási eljárásoknak megfelelő beállításában.| A biztonsági rések a tároló biztonsági konfigurációk:<br>1. Tekintse át a nem teljesített szabályok listáját.<br>2. Javítsa ki a szabályban megadott utasítások szerint.|
+|Biztonsági rések szervizelése a tároló biztonsági beállításaiban |A biztonsági rések javítása a tároló biztonsági konfigurációjában az ajánlott eljárások alapján.| A biztonsági rések szervizelése a tároló biztonsági konfigurációjában:<br>1. Tekintse át a sikertelen szabályok listáját.<br>2. Javítsa ki az egyes szabályokat a megadott utasítások szerint.|
 
 
 ## <a name="next-steps"></a>További lépések

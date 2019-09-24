@@ -1,11 +1,10 @@
 ---
 title: Rendszerfrissítések alkalmazása a Azure Security Centerban | Microsoft Docs
-description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatokat a rendszerfrissítések **alkalmazása** és a rendszerfrissítések **újraindítása után**.
+description: Ebből a dokumentumból megtudhatja, hogyan implementálhatja a Azure Security Center javaslatokat a rendszerfrissítések **alkalmazása** és a **rendszerfrissítések újraindítása után**.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 7f9c5b702c0da8de4476508114be911a9d74f78a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.author: memildin
+ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531449"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202464"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Rendszerfrissítések alkalmazása Azure Security Center
 Azure Security Center a napi Windows és Linux rendszerű virtuális gépeket (VM) és számítógépeket figyeli az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű számítógépen. A Security Center a Linux rendszerekben a legújabb frissítéseket is ellenőrzi. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, Security Center javasolja, hogy alkalmazza a rendszerfrissítéseket.
 
 ## <a name="implement-the-recommendation"></a>A javaslat implementálása
-A rendszerfrissítések alkalmazása a Security Center javaslata. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, akkor ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg.  Az ajánlás kiválasztásával megnyílik a rendszerfrissítések **alkalmazása** irányítópult.
+A rendszerfrissítések alkalmazása a Security Center javaslata. Ha a virtuális gép vagy számítógép nem rendelkezik rendszerfrissítéssel, akkor ez a javaslat a **javaslatok** és a **számítás**területen jelenik meg.  Az ajánlás kiválasztásával megnyílik a **rendszerfrissítések alkalmazása** irányítópult.
 
 Ebben a példában a **számítást**fogjuk használni.
 
@@ -33,7 +32,7 @@ Ebben a példában a **számítást**fogjuk használni.
 
    ![Számítás kiválasztása][1]
 
-2. A **számítás**területen válassza a **hiányzó**rendszerfrissítések elemet. Megnyílik a rendszerfrissítések **alkalmazása** irányítópult.
+2. A **számítás**területen válassza a **hiányzó rendszerfrissítések**elemet. Megnyílik a **rendszerfrissítések alkalmazása** irányítópult.
 
    ![Rendszerfrissítések irányítópultjának alkalmazása][2]
 

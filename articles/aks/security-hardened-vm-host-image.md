@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099459"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202971"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Biztonság megerősítése az AK-beli virtuális gépek gazdagépei számára 
 
@@ -76,8 +76,6 @@ Az AK-motor jelenleg nem támogatja vagy nem tartja be a konkrét biztonsági sz
 |5.4.1.4 |Inaktív jelszó zárolásának biztosítása 30 nap vagy kevesebb |
 |5.4.4 |Győződjön meg arról, hogy az alapértelmezett felhasználói umask 027 vagy szigorúbb |
 |5.6 |Győződjön meg arról, hogy a su parancshoz való hozzáférés korlátozott|
-
-(*) Engedélyezve kell lennie. Tekintse meg a fürt definíciójának [dokumentációját](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
 
 ## <a name="additional-notes"></a>További megjegyzések
  
