@@ -163,21 +163,21 @@ Példa JSON-adattartalomra:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | egység |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_-ADATSOROK | EU | Áramlási sebesség | FT3/s |
-   | FXXX | oilPressure | LINE\_-ADATSOROK | EU | Motor olajnyomás | psi |
-   | FYYY | pumpRate | LINE\_-ADATSOROK | USA | Áramlási sebesség | FT3/s |
-   | FYYY | oilPressure | LINE\_-ADATSOROK | USA | Motor olajnyomás | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi |
+   | FYYY | pumpRate | LINE\_DATA | US | Áramlási sebesség | FT3/s |
+   | FYYY | oilPressure | LINE\_DATA | US | Motor olajnyomás | psi |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | egység | timestamp | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_-ADATSOROK | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LINE\_-ADATSOROK | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | LINE\_-ADATSOROK | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE\_-ADATSOROK | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | LINE\_-ADATSOROK | USA | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_-ADATSOROK | USA | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | pumpRate | LINE\_DATA | US | Áramlási sebesség | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | US | Motor olajnyomás | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Megjegyzések a következő két táblázathoz:
 

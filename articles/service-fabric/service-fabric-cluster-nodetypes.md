@@ -89,7 +89,7 @@ A tulajdonságok leírása a következő:
 | commonNames | string[] | --- | Telepített fürtözött tanúsítványok köznapi nevei |
 | x509StoreName | string | --- | Azon áruház neve, ahol a telepített fürt tanúsítványa található |
 | typeHandlerVersion | 1.1 | --- | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
-| DataPath | string | --- | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja. 
+| dataPath | string | --- | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja. 
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a ["bárhonnan üzembe helyezhető" funkció áttekintését, valamint az Azure által felügyelt fürtökkel való összehasonlítást](service-fabric-deploy-anywhere.md).
