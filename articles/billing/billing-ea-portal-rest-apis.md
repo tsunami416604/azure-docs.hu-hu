@@ -4,16 +4,16 @@ description: Ez a cikk az Azure nagyvállalati regisztrációhoz használható R
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900862"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105442"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API-k
 
@@ -31,7 +31,7 @@ A Microsoft Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek a REST API
 
 **Marketplace-díjak** – A [Marketplace Store Charge API](billing-enterprise-api-marketplace-storecharge.md) a megadott számlázási időszakra, illetve a kezdési és befejezési dátumokra vonatkozóan napi bontásban adja vissza a használaton alapuló Marketplace-díjakat. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Marketplace-díjak](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) rész tartalmaz.
 
-**Árlista** – A [Price Sheet API](/billing-enterprise-api-pricesheet.md) a regisztrációs és számlázási időszakokra vonatkozóan az egyes mérők esetében érvényes díjszabást biztosítja. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Árlista](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) rész tartalmaz.
+**Árlista** – A [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) a regisztrációs és számlázási időszakokra vonatkozóan az egyes mérők esetében érvényes díjszabást biztosítja. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Árlista](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) rész tartalmaz.
 
 **Számlázási időszakok** – A [Billing Periods API](billing-enterprise-api-billing-periods.md) olyan számlázási időszakok listáját adja vissza, amelyekben egy regisztráció használati adatai szerepelnek fordított időrendi sorrendben. Minden időszak tartalmazza a négy következő adathalmaz API-útvonalára mutató egyik tulajdonságot: BalanceSummary, UsageDetails, Marketplace Charges és Price Sheet. További információt a [Nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k – Számlázási időszakok](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) rész tartalmaz.
 
