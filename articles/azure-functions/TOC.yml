@@ -54,7 +54,7 @@
     - name: A Functions és a Logic Apps
       href: functions-twitter-email.md
     - name: Python-függvények fejlesztése VS Code-dal
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: OpenAPI-definíció kiszolgáló nélküli API-khoz
       href: functions-openapi-definition.md
     - name: Csatlakozás virtuális hálózathoz

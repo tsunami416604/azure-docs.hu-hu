@@ -2,24 +2,17 @@
 title: 'Helyszínek és kapcsolódási szolgáltatók: Azure ExpressRoute | Microsoft Docs'
 description: A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról. Hely alapján rendezve.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 09/23/2019
 ms.author: cherylmc
-ms.openlocfilehash: 192bafc0b53483c21e52602b4de8c57f66fdee3c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 61ac896d2135790ca2e757ec56303fdb783d2865
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172568"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219666"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -74,9 +67,11 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 
 ## <a name="partners"></a>ExpressRoute-kapcsolatszolgáltatók
 
-Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md). 
+Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md).
 
-A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expressroute-faqs.md) helyeken is hozzáférhetnek. az **n/a** azt jelzi, hogy a ExpressRoute helyi helye nem érhető el az adott egyenrangú helyen.
+* A **helyi Azure-régiók** olyanok, amelyek az egyes [ExpressRoute helyi](expressroute-faqs.md) helyeken is hozzáférhetnek. az **n/a** azt jelzi, hogy a ExpressRoute helyi helye nem érhető el az adott egyenrangú helyen.
+
+* A **zóna** a [díjszabásra](https://azure.microsoft.com/pricing/details/expressroute/)vonatkozik.
 
 
 ### <a name="production-azure"></a>Termelési Azure

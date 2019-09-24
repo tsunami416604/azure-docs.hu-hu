@@ -1,5 +1,5 @@
 ---
-title: Azure AD Identity Protection-adatkapcsolatok csatlakoztatása az Azure Sentinel előzetes verziójához | Microsoft Docs
+title: Azure AD Identity Protection-adatkapcsolatok csatlakoztatása az Azure Sentinelhez | Microsoft Docs
 description: Megtudhatja, hogyan csatlakoztatható Azure AD Identity Protection-adatkapcsolat az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7478e5a5ec2260760bb6ddb1a90a66e3acdf2201
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129258"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240801"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Adatok összekapcsolásának Azure AD Identity Protection
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 A naplók a Azure AD Identity Protectionból [](https://docs.microsoft.com/azure/information-protection/reports-aip) az Azure sentinelbe továbbítva továbbítják a riasztásokat az Azure Sentinel szolgáltatásba az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. A Azure Active Directory Identity Protection összevont nézetet biztosít a veszélyeztetett felhasználók, a kockázati észlelések és a sebezhetőségek számára, és lehetővé teszi a kockázatok azonnali javítását, és szabályzatok beállítását a jövőbeli események automatikus szervizeléséhez. A szolgáltatás a Microsoft által a fogyasztói identitások védelmét szolgáló tapasztalatra épül, és egy nap alatt több mint 13 000 000 000-es bejelentkezésből származó, hatalmas pontosságot nyer. 
 
@@ -43,7 +41,7 @@ Ha már rendelkezik Azure AD Identity Protection, győződjön meg arról, hogy 
 Ha Azure AD Identity Protection üzembe helyezése és az adatolvasás, a riasztási adatátviteli szolgáltatás könnyen továbbítható az Azure Sentinelbe.
 
 
-1. Az Azure Sentinelben válassza az adatösszekötők lehetőséget, majd kattintson a **Azure ad Identity Protection** csempére.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson a **Azure ad Identity Protection** csempére.
 
 2. A **Kapcsolódás** lehetőségre kattintva megkezdheti a streaming Azure ad Identity Protection események beküldését az Azure sentinelbe.
 
@@ -53,4 +51,4 @@ Ha Azure AD Identity Protection üzembe helyezése és az adatolvasás, a riaszt
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure AD Identity Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

@@ -3,9 +3,9 @@ title: Leküldéses értesítések küldése adott Android-eszközökre az Azure
 description: Megtanulhatja, hogyan küldhet leküldéses értesítéseket adott Android-eszközökre az Azure Notification Hubs és a Google Cloud Messaging használatával.
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,18 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233110"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212818"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítések küldése adott Android-eszközök Azure Notification Hubs és a Google Cloud Messaging (elavult)
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítések adott Android-eszközökhöz Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
 > [!WARNING]
-> 2018. április 10. a Google Google Cloud Messaging (GCM) már elavult. A GCM-kiszolgáló és az ügyfél API-k elavultak, és törlődni fog, amint 2019. május 29. További információkért lásd: [GCM és az FCM gyakran ismételt kérdések](https://developers.google.com/cloud-messaging/faq).
+> 2018. április 10-ig a Google elavult Google Cloud Messaging (GCM). A GCM-kiszolgáló és az ügyféloldali API-k elavultak, és a 2019. május 29-én lesznek eltávolítva. További információ: [GCM és FCM – gyakori kérdések](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -39,19 +41,19 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > * Kategóriaválasztást ad a mobilalkalmazáshoz.
-> * Az értesítések címkékkel regisztrálva.
+> * Címkékkel rendelkező értesítések regisztrálva.
 > * Címkés értesítéseket küld.
 > * Az alkalmazás tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban épül, amely a létrehozott alkalmazás [oktatóanyag: Leküldéses értesítések küldése Android-eszközök Azure Notification Hubs és a Google Cloud Messaging használatával][get-started]. Az oktatóanyag elindítása előtt végezze el a [oktatóanyag: Leküldéses értesítések küldése Android-eszközök Azure Notification Hubs és a Google Cloud Messaging használatával][get-started].
+Ez az oktatóanyag az [oktatóanyagban létrehozott alkalmazásra épül. Leküldéses értesítések Android-eszközökre az Azure Notification Hubs][get-started]és Google Cloud Messaging használatával. Az oktatóanyag megkezdése előtt végezze el az [oktatóanyagot: Leküldéses értesítések Android-eszközökre az Azure Notification Hubs][get-started]és Google Cloud Messaging használatával.
 
 ## <a name="add-category-selection-to-the-app"></a>Kategóriaválasztó hozzáadása az alkalmazáshoz
 
 Az első lépésben hozzá kell adni a felhasználói felületi elemeket a meglévő fő tevékenységhez, amelyekkel a felhasználó kiválaszthatja a regisztrálni kívánt kategóriákat. A felhasználó által kiválasztott kategóriákat az eszköz tárolja. Az alkalmazás indításakor egy eszközregisztráció jön létre az értesítési központban, amely címkeként tartalmazza a választott kategóriákat.
 
-1. Nyissa meg a `res/layout/activity_main.xml file`, és cserélje le a tartalmat a következőkkel:
+1. Nyissa `res/layout/activity_main.xml file`meg a t, és cserélje le a tartalmat a következőre:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -104,7 +106,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
             />
     </LinearLayout>
     ```
-2. Nyissa meg a `res/values/strings.xml` fájlt, és adja hozzá a következő sorokat:
+2. Nyissa `res/values/strings.xml` meg a fájlt, és adja hozzá a következő sorokat:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -116,10 +118,10 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     <string name="label_sports">Sports</string>
     ```
 
-    A `main_activity.xml` grafikus elrendezése az alábbi képen hasonlóan kell kinéznie:
+    A `main_activity.xml` grafikus elrendezésnek az alábbi képen láthatóhoz hasonlóan kell kinéznie:
 
     ![][A1]
-3. Hozzon létre egy osztályt `Notifications` ugyanazon csomagban található a `MainActivity` osztály.
+3. Hozzon létre `Notifications` egy osztályt ugyanabban a csomagban `MainActivity` , mint az osztály.
 
     ```java
     import java.util.HashSet;
@@ -194,14 +196,14 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     ```
 
     Ez az osztály a helyi tárolóban tárolja a hírkategóriákat, amelyeket ennek az eszköznek meg kell kapnia. Ezenkívül olyan metódusokat is tartalmaz, amelyek az adott kategóriákra való regisztrációra szolgálnak.
-4. Az a `MainActivity` osztály távolítsa el a privát mezőket `NotificationHub` és `GoogleCloudMessaging`, és adjon hozzá egy mezőt a `Notifications`:
+4. Az osztályban távolítsa el a `NotificationHub` és `GoogleCloudMessaging`a privát mezőit, és adjon hozzá egy mezőt a következőhöz `Notifications`: `MainActivity`
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Ezt követően a a `onCreate` metódus, távolítsa el a inicializálása a `hub` mezőt és a `registerWithNotificationHubs` metódus. Majd adja hozzá a következő sorokat, amelyek inicializálása egy példányát a `Notifications` osztály.
+5. Ezután a `onCreate` metódusban távolítsa el a `hub` mező és a `registerWithNotificationHubs` metódus inicializálását. Ezután adja hozzá a következő sorokat, amelyek inicializálják az `Notifications` osztály egy példányát.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -259,7 +261,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     }
     ```
 
-    Ez a módszer létrehoz egy listát a kategóriák és használja a `Notifications` osztály a helyi tároló tárolja a listában, és regisztrálnia kell a megfelelő címkéket az értesítési központban. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
+    Ez a módszer kategóriákat hoz létre, és a `Notifications` osztály használatával tárolja a listát a helyi tárolóban, és regisztrálja a megfelelő címkéket az értesítési központban. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
 
 Az alkalmazás most már képes egy kategóriakészlet tárolására az eszköz helyi tárterületén, és az értesítési központban is regisztrálhat, ha a felhasználó módosítja a kiválasztott kategóriákat.
 
@@ -270,7 +272,7 @@ Ezek a lépések végzik az értesítési központban való regisztrációt az i
 > [!NOTE]
 > Mivel a Google Cloud Messaging (GCM) által hozzárendelt regisztrációs azonosító bármikor megváltozhat, érdemes rendszeresen regisztrálni az értesítésekre, hogy elkerülhesse az értesítési hibákat. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
 
-1. Adja meg a következő kódot a végén a `onCreate` metódus az a `MainActivity` osztály:
+1. Adja hozzá a következő kódot a `onCreate` metódus `MainActivity` végén a osztályban:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

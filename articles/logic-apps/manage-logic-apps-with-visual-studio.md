@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801272"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212597"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások kezelése a Visual Studióval
 
@@ -30,19 +30,17 @@ Habár logikai alkalmazásokat hozhat létre, szerkeszthet, kezelhet és helyezh
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket: 
+* Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket:
 
-  * [Visual Studio 2019, 2017 vagy 2015 – Community Edition vagy újabb](https://aka.ms/download-visual-studio). 
-  Ez a rövid útmutató a Visual Studio Community 2017 kiadást használja, amely ingyenes.
+  * [Visual Studio 2019, 2017 vagy 2015 – Community Edition vagy újabb](https://aka.ms/download-visual-studio). Ez a rövid útmutató a Visual Studio Community 2017 kiadást használja, amely ingyenes.
 
     > [!IMPORTANT]
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
     > További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
-    A Cloud Explorer for Visual Studio 2015 telepítéséhez [töltse le a Cloud Explorer alkalmazást a Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-    További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    A Cloud Explorer for Visual Studio 2015 telepítéséhez [töltse le a Cloud Explorer alkalmazást a Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
-  * [Azure SDK (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/) 
+  * [Azure SDK (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/)
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -54,13 +52,11 @@ Habár logikai alkalmazásokat hozhat létre, szerkeszthet, kezelhet és helyezh
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
-    Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
+    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
 * Hozzáférés a világhálóhoz a Embedded Logic Apps Designer használatával
 
-  A tervezőnek internetkapcsolatra van szüksége, hogy létre tudja hozni az erőforrásokat az Azure-ban, és be tudja olvasni a tulajdonságokat és adatokat a logikai alkalmazásban lévő összekötőkből. 
-  Ha például a Dynamics CRM Online-összekötőt használja, a tervező elérhető alapértelmezett és egyéni tulajdonságokat keres a CRM-példányon.
+  A tervezőnek internetkapcsolatra van szüksége, hogy létre tudja hozni az erőforrásokat az Azure-ban, és be tudja olvasni a tulajdonságokat és adatokat a logikai alkalmazásban lévő összekötőkből. Ha például a Dynamics CRM Online-összekötőt használja, a tervező elérhető alapértelmezett és egyéni tulajdonságokat keres a CRM-példányon.
 
 <a name="find-logic-apps-vs"></a>
 
@@ -72,22 +68,21 @@ A Visual Studióban megtalálhatja az Azure-előfizetéshez társított összes 
 
 1. A Cloud Explorerben válassza a **fiókok kezelése**lehetőséget. Válassza ki a logikai alkalmazásokhoz társított Azure-előfizetést, majd válassza az **alkalmaz**lehetőséget. Példa:
 
-   ![A "Fiókkezelés" kiválasztása](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
+   !["Fiókkezelés" kiválasztása](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
 1. Attól függően, hogy **erőforráscsoportok** vagy **erőforrástípusok**alapján keres, kövesse az alábbi lépéseket:
 
-   * **Erőforráscsoportok**: Az Azure-előfizetése alatt a Cloud Explorer megjeleníti az adott előfizetéshez társított összes erőforráscsoportot. 
-   Bontsa ki a logikai alkalmazást tartalmazó erőforráscsoportot, majd válassza ki a logikai alkalmazást.
+   * **Erőforráscsoportok**: Az Azure-előfizetése alatt a Cloud Explorer megjeleníti az adott előfizetéshez társított összes erőforráscsoportot. Bontsa ki a logikai alkalmazást tartalmazó erőforráscsoportot, majd válassza ki a logikai alkalmazást.
 
    * **Erőforrástípusok**: Az Azure-előfizetése alatt bontsa ki a **Logic apps**elemet. Miután a Cloud Explorer megjeleníti az előfizetéshez társított összes telepített logikai alkalmazást, válassza ki a logikai alkalmazást.
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Megnyitás Visual Studio-ban
+## <a name="open-in-visual-studio"></a>Megnyitás Visual Studióban
 
 A Visual Studióban megnyithatja a korábban létrehozott és üzembe helyezett Logic apps-alkalmazásokat közvetlenül a Azure Portal vagy Azure Resource Group-projektekkel a Visual Studióval.
 
-1. Nyissa meg a Cloud Explorert, és keresse meg a logikai alkalmazást. 
+1. Nyissa meg a Cloud Explorert, és keresse meg a logikai alkalmazást.
 
 1. A logikai alkalmazás helyi menüjében válassza a **Megnyitás a Logic app Editor**használatával lehetőséget.
 
@@ -98,32 +93,30 @@ A Visual Studióban megnyithatja a korábban létrehozott és üzembe helyezett 
 
    ![Üzembe helyezett logikai alkalmazás megnyitása Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Miután a logikai alkalmazás megnyílik Logic Apps Designerben, a tervező alján kiválaszthatja a **kód nézetet** , hogy áttekintse az alapul szolgáló logikai alkalmazás definíciós struktúráját. 
-   Ha a logikai alkalmazáshoz központi telepítési sablont szeretne létrehozni, Ismerje meg, [hogyan tölthet le egy Azure Resource Manager sablont](#download-logic-app) a logikai alkalmazáshoz. További információ a [Resource Manager-sablonokról](../azure-resource-manager/template-deployment-overview.md).
+   Miután a logikai alkalmazás megnyílik Logic Apps Designerben, a tervező alján kiválaszthatja a **kód nézetet** , hogy áttekintse az alapul szolgáló logikai alkalmazás definíciós struktúráját. Ha a logikai alkalmazáshoz központi telepítési sablont szeretne létrehozni, Ismerje meg, [hogyan tölthet le egy Azure Resource Manager sablont](#download-logic-app) a logikai alkalmazáshoz. További információ a [Resource Manager-sablonokról](../azure-resource-manager/template-deployment-overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Letöltés az Azure-ból
 
-A logikai alkalmazásokat letöltheti a [Azure Portalból](https://portal.azure.com) , és mentheti őket [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sablonként. Ezután helyileg szerkesztheti a sablonokat a Visual Studióval, és testreszabhatja a logikai alkalmazásokat a különböző üzembe helyezési környezetekhez. A Logic apps letöltése automatikusan *felparaméterezi* a definíciókat a [Resource Manager-sablonokban](../azure-resource-manager/template-deployment-overview.md), amely a JavaScript Object Notation (JSON) is használja.
+A logikai alkalmazásokat letöltheti a [Azure Portalból](https://portal.azure.com) , és mentheti őket [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sablonként. Ezután helyileg szerkesztheti a sablonokat a Visual Studióval, és testreszabhatja a logikai alkalmazásokat a különböző üzembe helyezési környezetekhez.  A Logic apps letöltése automatikusan *felparaméterezi* a definíciókat a [Resource Manager-sablonokban](../azure-resource-manager/template-deployment-overview.md), amely a JavaScript Object Notation (JSON) is használja.
 
-1. A Visual Studióban nyissa meg a Cloud Explorer alkalmazást, majd keresse meg és válassza ki az Azure-ból letölteni kívánt logikai alkalmazást.
+1. A Visual Studióban nyissa meg a Cloud Explorert. Keresse meg és válassza ki az Azure-ból letölteni kívánt logikai alkalmazást.
 
-2. Az alkalmazás helyi menüjében válassza **a Megnyitás a Logic app Editor**használatával lehetőséget.
+1. Az alkalmazás helyi menüjében válassza **a Megnyitás a Logic app Editor**használatával lehetőséget.
 
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
 
-   Megnyílik a Logic app Designer, és megjeleníti a logikai alkalmazást. 
-   A logikai alkalmazás alapjául szolgáló definíció és struktúra áttekintéséhez kattintson a tervező alján található **kód nézet**elemre. 
+   Megnyílik a Logic app Designer, és megjeleníti a logikai alkalmazást. A logikai alkalmazás alapjául szolgáló definíció és struktúra áttekintéséhez kattintson a tervező alján található **kód nézet**elemre.
 
-3. A tervező eszköztárán válassza a **Letöltés**lehetőséget.
+1. A tervező eszköztárán válassza a **Letöltés**lehetőséget.
 
    ![Válassza a "Letöltés" lehetőséget.](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. Amikor a rendszer megkéri a helyet, keresse meg a helyet, és mentse a logikai alkalmazás definíciójának Resource Manager-sablonját JSON-formátumban (. JSON). 
+1. Amikor a rendszer megkéri a helyet, keresse meg a helyet, és mentse a logikai alkalmazás definíciójának Resource Manager-sablonját JSON-formátumban (. JSON).
 
-A logikai alkalmazás definíciója a Resource `resources` Manager-sablon alszakaszában jelenik meg. Most már szerkesztheti a Logic app-definíciót és a Resource Manager-sablont a Visual Studióval. A sablont [Azure erőforráscsoport-projektként](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) is hozzáadhatja egy Visual Studio-megoldáshoz. Ismerkedjen meg a [Visual Studióban található Logic apps-projektekkel kapcsolatos Azure Resource Group-projektekkel](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+   A logikai alkalmazás definíciója a Resource `resources` Manager-sablon alszakaszában jelenik meg. Most már szerkesztheti a Logic app-definíciót és a Resource Manager-sablont a Visual Studióval. A sablont [Azure erőforráscsoport-projektként](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) is hozzáadhatja egy Visual Studio-megoldáshoz. Ismerkedjen meg a [Visual Studióban található Logic apps-projektekkel kapcsolatos Azure Resource Group-projektekkel](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
@@ -156,7 +149,7 @@ Ha az **integrációs fiók** tulajdonságot a Visual Studióban állítja be, �
 
 ## <a name="refresh-from-azure"></a>Frissítés az Azure-ból
 
-Ha a Azure Portal módosítja a logikai alkalmazást, és szeretné megtartani ezeket a módosításokat, akkor győződjön meg arról, hogy a módosításokkal frissíti az alkalmazás verzióját a Visual Studióban. 
+Ha a Azure Portal módosítja a logikai alkalmazást, és szeretné megtartani ezeket a módosításokat, akkor győződjön meg arról, hogy a módosításokkal frissíti az alkalmazás verzióját a Visual Studióban.
 
 * A Visual Studióban, a Logic app Designer eszköztárán válassza a **frissítés**lehetőséget.
 
@@ -191,23 +184,22 @@ A Logic app-futtatások állapotának ellenőrzéséhez és a problémák diagno
    ![Részletes futtatási előzmények](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > A tábla tulajdonság szerinti rendezéséhez válassza ki az oszlop fejlécét az adott tulajdonsághoz. 
+   > A tábla tulajdonság szerinti rendezéséhez válassza ki az oszlop fejlécét az adott tulajdonsághoz.
 
-1. Bontsa ki azokat a lépéseket, amelyek bemeneteit és kimeneteit szeretné áttekinteni. Példa:
+1. Bontsa ki azokat a lépéseket, amelyek bemeneteit és kimeneteit szeretné áttekinteni, például:
 
    ![Az egyes lépésekhez tartozó bemenetek és kimenetek megtekintése](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>Logikai alkalmazás letiltása vagy engedélyezése
 
-A logikai alkalmazás törlése nélkül leállíthatja az indítást a következő alkalommal, amikor a trigger feltétele teljesül. A logikai alkalmazás letiltásával megakadályozható, hogy a Logic Apps motor a logikai alkalmazás jövőbeli munkafolyamat-példányait hozza létre és futtassa.
-A Cloud Explorerben nyissa meg a logikai alkalmazás helyi menüjét, és válassza a **Letiltás**lehetőséget.
+A logikai alkalmazás törlése nélkül leállíthatja az indítást a következő alkalommal, amikor a trigger feltétele teljesül. A logikai alkalmazás letiltásával megakadályozható, hogy a Logic Apps motor a logikai alkalmazás jövőbeli munkafolyamat-példányait hozza létre és futtassa. A Cloud Explorerben nyissa meg a logikai alkalmazás helyi menüjét, és válassza a **Letiltás**lehetőséget.
 
 ![Logikai alkalmazás letiltása](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> Ha letilt egy logikai alkalmazást, a rendszer nem hoz létre új futtatásokat. Az összes folyamatban lévő és függőben lévő Futtatás a befejezésig folytatódni fog, ami hosszabb időt is igénybe vehet. 
+> Ha letilt egy logikai alkalmazást, a rendszer nem hoz létre új futtatásokat. Az összes folyamatban lévő és függőben lévő Futtatás a befejezésig folytatódni fog, ami hosszabb időt is igénybe vehet.
 
-Ha készen áll arra, hogy a logikai alkalmazás folytassa a műveletet, aktiválja újra a logikai alkalmazást. A Cloud Explorerben nyissa meg a logikai alkalmazás helyi menüjét, és válassza az **Engedélyezés**lehetőséget.
+A logikai alkalmazás újraaktiválásához a Cloud Explorerben nyissa meg a logikai alkalmazás helyi menüjét, és válassza az **Engedélyezés**lehetőséget.
 
 ![Logikai alkalmazás engedélyezése](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 

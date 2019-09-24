@@ -2,9 +2,9 @@
 title: Azure Notification Hubs biztonságos leküldés
 description: Ismerje meg, hogyan küldhet biztonságos leküldéses értesítéseket az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával.
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 2f18b4793d205cfa019f501549dedfcd62f501e7
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348592"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212047"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Biztonságos leküldéses értesítések az Azure Notification Hubs
 
@@ -158,12 +160,12 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
     using Windows.Data.Xml.Dom;
     ```
 11. Megoldáskezelő a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása..** . elemre. A Reference Manager párbeszédpanelen jelölje be a **PushBackgroundComponent**melletti jelölőnégyzetet, majd kattintson az **OK**gombra.
-12. A Megoldáskezelő kattintson duplán a **Package. appxmanifest** elemre a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben. Az **értesítések**területen állítsa  a pirítóst **Igen**értékre.
+12. A Megoldáskezelő kattintson duplán a **Package. appxmanifest** elemre a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben. Az **értesítések**területen állítsa a pirítóst **Igen**értékre.
 
     ![][3]
-13. Továbbra is a **Package. appxmanifest**,  kattintson a felül található deklarációk menüre. Az **elérhető deklarációk** legördülő menüben kattintson a **háttér-feladatok**elemre, majd a **Hozzáadás**gombra.
-14. A **Package. appxmanifest**területen a **Tulajdonságok**alatt keresse le a leküldéses **értesítést**.
-15. A **Package. Appxmanifest**alkalmazásban az **Alkalmazásbeállítások**területen írja be a **PushBackgroundComponent. PushBackgroundTask** értéket a **belépési pont** mezőbe.
+13. Továbbra is a **Package. appxmanifest**, kattintson a felül található deklarációk menüre. Az **elérhető deklarációk** legördülő menüben kattintson a **háttér-feladatok**elemre, majd a **Hozzáadás**gombra.
+14. A **Package. appxmanifest**területen a **Tulajdonságok**alatt keresse le a **leküldéses értesítést**.
+15. A **Package. Appxmanifest** **alkalmazásban az Alkalmazásbeállítások**területen írja be a **PushBackgroundComponent. PushBackgroundTask** értéket a **belépési pont** mezőbe.
 
     ![][13]
 16. Kattintson a **File** (Fájl) menü **Save All** (Összes mentése) elemére.
@@ -175,7 +177,7 @@ Az alkalmazás futtatásához tegye a következőket:
 1. A Visual Studióban futtassa a **AppBackend** web API alkalmazást. Megjelenik egy ASP.NET weblap.
 2. A Visual Studióban futtassa a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** Windows Phone-telefon alkalmazást. Az Windows Phone-telefon-emulátor futtatja és automatikusan betölti az alkalmazást.
 3. A **NotifyUserWindowsPhone** alkalmazás felhasználói felületén adja meg a felhasználónevet és a jelszót. Ezek bármilyen sztringek lehetnek, de az értékeknek is szerepelniük kell.
-4. A **NotifyUserWindowsPhone** alkalmazás felhasználói felületén kattintson a **Bejelentkezés és regisztráció**elemre. Ezután kattintson a leküldés **küldése**gombra.
+4. A **NotifyUserWindowsPhone** alkalmazás felhasználói felületén kattintson a **Bejelentkezés és regisztráció**elemre. Ezután kattintson a **leküldés küldése**gombra.
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

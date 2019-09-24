@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178355"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212006"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -215,7 +215,7 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |East US        |LRS     |Nem    |még nem|
 |Közép-Franciaország |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
 |Dél-Franciaország   |LRS     |Nem    |Igen|
-|Észak-Európa   |LRS     |Nem    |Igen|
+|Észak-Európa   |LRS     |Nem    |még nem|
 |Dél-India    |LRS     |Nem    |még nem|
 |Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
 |USA nyugati középső régiója|LRS     |Nem    |még nem|

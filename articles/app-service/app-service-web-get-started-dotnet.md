@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e8c6c21efd1ea406c8293819a2889e198e8455bd
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242133"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240940"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -88,7 +88,7 @@ Hozzon létre egy ASP.NET Core webalkalmazást a következő lépések végrehaj
 
    [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. A **csomag üzemeltetéséhez**válassza az **új**lehetőséget.
+1. A **üzemeltetési csomag**esetében válassza az **új**lehetőséget.
 
 1. A **üzemeltetési terv konfigurálása** párbeszédpanelen adja meg a következő táblázat értékeit, majd kattintson az **OK gombra**.
 

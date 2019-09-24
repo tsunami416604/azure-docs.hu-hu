@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "69018924"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)
@@ -26,7 +26,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Ön h
 
 A további oktatóanyagokban az alkalmazás méretezése és frissítése megtörtént.
 
-A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes][kubernetes-concepts]alapfogalmai.
+A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
 ## <a name="before-you-begin"></a>Előkészületek
 

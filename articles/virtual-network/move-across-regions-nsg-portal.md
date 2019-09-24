@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059319"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219183"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Az Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba a Azure Portal használatával
 
@@ -27,7 +27,7 @@ Az Azure biztonsági csoportjai nem helyezhetők át egyik régióból a másikb
 - Az Azure-beli hálózati biztonsági csoportok nem helyezhetők át régiók között.  Az új NSG hozzá kell rendelnie a cél régió erőforrásaihoz.
 
 - NSG-konfiguráció exportálásához és sablon üzembe helyezéséhez egy másik régióban lévő NSG létrehozásához szüksége lesz a hálózati közreműködő szerepkörre vagy magasabbra.
-   
+
 - Azonosítsa a forrás hálózatkezelési elrendezést és az összes éppen használt erőforrást. Ez az elrendezés tartalmaz, de nem korlátozódik a terheléselosztó, a nyilvános IP-címek és a virtuális hálózatok számára.
 
 - Győződjön meg arról, hogy az Azure-előfizetése lehetővé teszi, hogy NSG hozzon létre a használt célcsoportban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
@@ -41,7 +41,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>A sablon exportálása és üzembe helyezése a portálról
 
-1. Jelentkezzen be az [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
 2. Keresse meg a forrás NSG tartalmazó erőforráscsoportot, és kattintson rá.
 3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
@@ -77,19 +77,19 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
+
 11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
-    
+
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
     * **Biztonsági szabályok** – a **sablon. JSON** fájljának **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 14. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél NSG telepíteni fogja. > 
 
-15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél NSG telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél NSG.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forrásoldali erőforráscsoport. 
+15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél NSG telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél NSG.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forrásoldali erőforráscsoport.
 
 16. Győződjön meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a NSG telepíteni kívánja. > 
 
@@ -165,7 +165,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 19. Kattintson a **vásárlás** gombra a célként megadott hálózati biztonsági csoport telepítéséhez.
 
-## <a name="discard"></a>Elvetés 
+## <a name="discard"></a>Elvetés
 
 Ha el szeretné vetni a cél NSG, törölje a cél NSG tartalmazó erőforráscsoportot.  Ehhez válassza ki az erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az Áttekintés oldal tetején.
 

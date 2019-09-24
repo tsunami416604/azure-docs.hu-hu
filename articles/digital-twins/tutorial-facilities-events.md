@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827813"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219301"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása Azure digitális Twins-tárhelyekről Logic Apps használatával
 
@@ -39,9 +39,12 @@ Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-s
 - A minta futtatásához [.net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen. A `dotnet --version` futtatásával ellenőrizze, hogy a megfelelő verzió van-e telepítve.
 - Office 365-fiók értesítési e-mailek küldéséhez.
 
+> [!TIP]
+> Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
+
 ## <a name="integrate-events-with-event-grid"></a>Események integrálása az Event Griddel
 
-Ebben a szakaszban be kell állítania [Event Grid](../event-grid/overview.md) az Azure Digital Twins-példány eseményeinek gyűjtésére, és átirányíthatja őket [](../event-grid/event-handlers.md) egy eseménykezelőre, például a Logic Appsra.
+Ebben a szakaszban be kell állítania [Event Grid](../event-grid/overview.md) az Azure Digital Twins-példány eseményeinek gyűjtésére, és átirányíthatja őket egy [eseménykezelőre](../event-grid/event-handlers.md) , például a Logic Appsra.
 
 ### <a name="create-an-event-grid-topic"></a>Event Grid-témakör létrehozása
 
@@ -108,7 +111,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 1. Keressen és válasszon ki egy új **Logic Apps**-erőforrást. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a logikai alkalmazás erőforrásának **nevét** , majd válassza ki azelőfizetését, az **erőforráscsoportot**és a **helyet**. Kattintson a **Létrehozás** gombra.
+1. Adja meg a logikai alkalmazás erőforrásának **nevét** , majd válassza ki az **előfizetését**, az **erőforráscsoportot**és a **helyet**. Kattintson a **Létrehozás** gombra.
 
     ![Logic Apps erőforrás létrehozása](./media/tutorial-facilities-events/create-logic-app.png)
 
@@ -118,7 +121,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 1. Az **erőforrás-esemény bekövetkezésekor (előzetes verzió)** ablakban: 
    
-   a. Válassza ki az Event Grid-témakör létrehozásához használt előfizetést.
+   a. Válassza ki az Event Grid-témakör létrehozásához használt **előfizetést** .
 
    b. Válassza ki a **Microsoft. EventGrid.** **Resource típusú**témákat.
 

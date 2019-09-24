@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101435"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240998"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja (előzetes verzió)
 
@@ -28,7 +28,7 @@ A Microsoft és az Oracle partneri kapcsolatban állt a kis késleltetésű, nag
 Ezzel a Felhőbeli kapcsolattal particionálhat többrétegű alkalmazást az adatbázis rétegének az Oracle Cloud Infrastructure (OCI) szolgáltatásban való futtatásához, valamint az alkalmazáshoz és a Microsoft Azure egyéb szintjeihez is. Az élmény hasonló a teljes megoldási verem egyetlen felhőben való futtatásához. 
 
 > [!IMPORTANT]
-> Ez a Felhőbeli funkció jelenleg előzetes verzióban érhető el, és a [korlátozások érvényesek](#preview-limitations). Az Azure és a OCI közötti alacsony késésű kapcsolat engedélyezéséhez az Azure-előfizetésnek először fehérnek kell lennie a funkcióhoz. Az előzetes verzióban regisztrálnia kell ezt a rövid [kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. A Microsoft képviselőjének is felveheti a kapcsolatot az előzetes verzióra. Az előzetes verzióhoz való hozzáférés a rendelkezésre állástól függ, és a Microsoft saját belátása szerint korlátozva van. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részletekért tekintse meg a Microsoft Azure előzetes [verziójának kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) feltételeit. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a Felhőbeli funkció jelenleg előzetes verzióban érhető el, és a [korlátozások érvényesek](#preview-limitations). Az Azure és a OCI közötti alacsony késésű kapcsolat engedélyezéséhez az Azure-előfizetésnek először fehérnek kell lennie a funkcióhoz. Az előzetes verzióban regisztrálnia kell ezt a rövid [kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem használhatja a funkciót, amíg meg nem kap egy megerősítő e-mailt. A Microsoft képviselőjének is felveheti a kapcsolatot az előzetes verzióra. Az előzetes verzióhoz való hozzáférés a rendelkezésre állástól függ, és a Microsoft saját belátása szerint korlátozva van. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részletekért tekintse meg a Microsoft Azure előzetes [verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzembe helyezését érdekli, tekintse meg az [Oracle virtuálisgép-rendszerképek és azok üzembe helyezése Microsoft Azure](oracle-vm-solutions.md).
 
@@ -50,7 +50,7 @@ A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mu
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Az előzetes verzióban a Felhőbeli kapcsolatok az USA keleti régiójában (eastus) és a OCI Ashburn (US-Ashburn-1) régióra korlátozódnak.
+* Az előzetes verzióban elérhető Felhőbeli kapcsolatok az Azure East US (eastus) & Egyesült Királyság déli régiója (uksouth) régióira és a OCI Ashburn (USA keleti régió) & London (Egyesült Királyság déli régiója) régiókra korlátozódnak. Egyesült Királyság déli régiója esetén használja az 1. rendelkezésre állási tartományt (AD 1) a OCI-ben a kapcsolat közötti kapcsolat létrehozásakor az alacsonyabb késés érdekében.
 
 ## <a name="networking"></a>Hálózat
 
@@ -74,6 +74,6 @@ Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen kez
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg az [](configure-azure-oci-networking.md) Azure és a OCI közötti Felhőbeli hálózattal. 
+Ismerkedjen meg az Azure és a OCI közötti [Felhőbeli hálózattal](configure-azure-oci-networking.md) . 
 
 A OCI kapcsolatos további információkért és tanulmányokhoz tekintse meg az [Oracle Cloud](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentációját.

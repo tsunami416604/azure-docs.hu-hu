@@ -1,5 +1,5 @@
 ---
-title: Hasznos erőforrások az Azure Sentinel előzetes verziójának használatakor | Microsoft Docs
+title: Hasznos erőforrások az Azure Sentinel használata esetén | Microsoft Docs
 description: Ez a dokumentum az Azure Sentinel használatakor hasznos erőforrások listáját tartalmazza.
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036237"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239982"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Hasznos források az Azure Sentinel előzetes verziójával való használathoz
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Ez a cikk azokat az erőforrásokat sorolja fel, amelyek segítségével további információkhoz juthat az Azure Sentinel használatáról.
 
 Azure Logic Apps összekötők:<https://docs.microsoft.com/connectors/>
 
-## <a name="vendor-documentation"></a>Szállítói dokumentáció
 
+## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
+Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/platform/activity-logs-overview.md)tartják karban.
+
+
+## <a name="vendor-documentation"></a>Szállítói dokumentáció
 
 | **Szállító**  | **Incidens használata az Azure Sentinelben** | **Hivatkozás**|
 |----|----|----|
@@ -43,7 +45,7 @@ Azure Logic Apps összekötők:<https://docs.microsoft.com/connectors/>
 
 ## <a name="blogs-and-forums"></a>Blogok és fórumok
 
-Tegye fel kérdéseit az Azure Sentinel [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) -területére.
+Tegye fel kérdéseit az Azure Sentinel [TechCommunity-területére](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) .
 
 Tekintse meg az Azure Sentinel blogbejegyzéseit a [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) és a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
 

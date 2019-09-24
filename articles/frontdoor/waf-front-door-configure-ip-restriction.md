@@ -12,19 +12,21 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: adca1bdd0cf525627cc284b1c0d3509beddef131
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534984"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219386"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>IP-korlátozási szabály konfigurálása a webalkalmazási tűzfallal az Azure bejárati ajtó szolgáltatáshoz
 Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalban (WAF) az Azure bejárati ajtó szolgáltatásához az Azure CLI, Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
 
 Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek listáját vagy az IP-címtartományok osztály nélküli Inter-domain Routing (CIDR) formátumban van megadva.
 
-Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha szeretné korlátozni az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájáról, létrehozhat egy olyan IP-megfeleltetési szabályt, amely az IP-címek listáját tartalmazza egyező értékként, és beállítja az operátort a "not" (tagadás igaz) ésa blokkolt művelet számára. Az IP-korlátozási szabály alkalmazása után az ezen az engedélyezett listán kívüli címekről származó kérelmek 403-es tiltott választ kapnak.  
+Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha szeretné korlátozni az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájáról, létrehozhat egy olyan IP-megfeleltetési szabályt, amely az IP-címek listáját tartalmazza egyező értékként, és beállítja az operátort a "not" (tagadás igaz) és a **blokkolt**művelet számára. Az IP-korlátozási szabály alkalmazása után az ezen az engedélyezett listán kívüli címekről származó kérelmek 403-es tiltott választ kapnak.  
+
+Az ügyfél IP-címe különbözik az IP-WAF, például akkor, amikor egy ügyfél egy proxyn keresztül fér hozzá a WAF-hez. IP-korlátozási szabályokat a WAF (SocketAddr) által látott ügyfél IP-címek (RemoteAddr-EK) vagy szoftvercsatorna IP-címek alapján is létrehozhat. 
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>WAF szabályzat konfigurálása az Azure CLI-vel
 
@@ -38,7 +40,7 @@ Mielőtt megkezdené az IP-korlátozási szabályzat konfigurálását, állíts
 #### <a name="create-an-azure-front-door-service-profile"></a>Azure-beli előtérben lévő szolgáltatás profiljának létrehozása
 Hozzon létre egy Azure- [beli bejárati profilt a gyors üzembe helyezési útmutatóban ismertetett utasításokat követve: Hozzon létre egy bejárati ajtót egy magasan elérhető](quickstart-create-front-door.md)globális webalkalmazáshoz.
 
-### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
+### <a name="create-a-waf-policy"></a>WAF-szabályzat létrehozása
 
 Hozzon létre egy WAF szabályzatot az az [Network elsőfékes-Door WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) parancs használatával. Az alábbi példában cserélje le a szabályzat neve *IPAllowPolicyExampleCLI* egyedi házirend-névre.
 
@@ -56,7 +58,7 @@ Az alábbi példákban:
 -  Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
 -  Cserélje le az *IP-cím-Range-1*, *IP-cím-Range-2* tartományt a saját tartományára.
 
-Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. Megjegyzés **–** a késleltetést kötelező megadni, mert egy szabálynak tartalmaznia kell legalább egy egyezési feltételt. 
+Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. Megjegyzés **– a késleltetést** kötelező megadni, mert egy szabálynak tartalmaznia kell legalább egy egyezési feltételt. 
 
 ```azurecli
 az network front-door waf-policy rule create \
@@ -67,7 +69,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-Ezután adja hozzá az egyeztetési feltételt a szabályhoz:
+Következő lépésként adja hozzá az ügyfél IP-egyeztetési feltételét a szabályhoz:
 
 ```azurecli
 az network front-door waf-policy rule match-condition add\
@@ -79,9 +81,19 @@ az network front-door waf-policy rule match-condition add\
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>WAF szabályzat AZONOSÍTÓjának megkeresése 
-A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network elsőfékes-Door WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) parancsot. Cserélje le a *IPAllowPolicyExampleCLI* a következő példában a korábban létrehozott egyedi szabályzatra.
+A szoftvercsatorna IP-címének (SocketAddr) egyeztetési feltétele:
+  ```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable SocketAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI                                                  
+
+### Find the ID of a WAF policy 
+Find a WAF policy's ID by using the [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) command. Replace *IPAllowPolicyExampleCLI* in the following example with your unique policy that you created earlier.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -141,7 +153,17 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
+A szoftvercsatorna IP-címének (SocketAddr) egyeztetési feltétele:   
+```powershell
+$IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
+-MatchVariable  SocketAddr `
+-OperatorProperty IPMatch `
+-MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
+```
+
+
 ### <a name="create-a-custom-ip-allow-rule"></a>Egyéni IP-engedélyezési szabály létrehozása
 
 A [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) parancs használatával Definiáljon egy műveletet, és állítsa be a prioritást. A következő példában a listán nem szereplő ügyfelek IP-címeitől érkező kérések le lesznek tiltva.

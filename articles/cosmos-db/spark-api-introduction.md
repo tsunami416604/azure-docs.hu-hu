@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717567"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212577"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Beépített operatív Analitika Azure Cosmos DBban Apache Spark (előzetes verzió) 
 
@@ -28,7 +28,7 @@ A Azure Cosmos DB Apache Spark támogatása a következő előnyöket kínálja:
 
 * Egyszerűbbé teheti a megoldás architektúráját, és csökkentheti a [teljes tulajdonlási költséget](total-cost-ownership.md) (TCO). A rendszer a legkevesebb adatfeldolgozási összetevőt fogja tartalmazni, és elkerüli a szükségtelen adatáthelyezést.
 
-* [Biztonsági](secure-access-to-data.md), megfelelőségi [](compliance.md)és naplózási határt hoz létre, amely magában foglalja a felügyelet alatt lévő összes adat körét.
+* [Biztonsági](secure-access-to-data.md), [megfelelőségi](compliance.md)és naplózási határt hoz létre, amely magában foglalja a felügyelet alatt lévő összes adat körét.
 
 * A "always on" vagy a [magasan elérhető](high-availability.md) végfelhasználói elemzéseket biztosít, amelyeket a szigorú SLA-kat támogat.
 
@@ -57,7 +57,7 @@ A globálisan elosztott Azure Cosmos-adatbázis Apache Sparkával mostantól gyo
 
 A többmodelles adatbázisok esetében a Azure Cosmos DB mostantól kiterjeszti az OSS API-k támogatását azáltal, hogy **egységes kiszolgáló nélküli felhasználói élményt biztosít az Apache Spark** számára a kulcs-érték, a dokumentum, a gráf és az oszlop család adatmodelljeivel. A MongoDB, Cassandra, Gremlin, Etcd és SQL API-k használatával különböző adatmodellek támogatottak – mindez ugyanazon alapul szolgáló adaton működik. 
 
-A Azure Cosmos DB Apache Spark támogatásával natív módon támogathatja a Scala, a Python, a Java, és számos szorosan integrált kódtárat használhat az SQL-hez. Ezek a kódtárak ([Spark SQL](https://spark.apache.org/sql/)), gépi tanulás (Spark [MLlib](https://spark.apache.org/mllib/)), Stream Processing ([Spark Structured streaming](https://spark.apache.org/streaming/)) és Graph Processing (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Ezek az eszközök megkönnyítik a Apache Spark használatát különféle használati esetekben. Nem kell foglalkoznia a Spark-vagy Spark-fürtök kezelésével. Használhatja az ismerős Apache Spark API-kat és a **Jupyter** -jegyzetfüzeteket az elemzéshez és az SQL API-hoz, vagy bármely olyan OSS NoSQL API-hoz, mint a Cassandra a tranzakciós feldolgozáshoz ugyanazon a mögöttes adaton.
+A Azure Cosmos DB Apache Spark támogatásával natív módon támogathatja a Scala, a Python, a Java, és számos szorosan integrált kódtárat használhat az SQL-hez. Ezek a kódtárak ([Spark SQL](https://spark.apache.org/sql/)), gépi tanulás (Spark [MLlib](https://spark.apache.org/mllib/)), Stream Processing ([Spark Structured streaming](https://spark.apache.org/streaming/)) és Graph Processing (Spark [GraphFrames]( https://docs.databricks.com/spark/latest/graph-analysis/graphframes/user-guide-python.html)). Ezek az eszközök megkönnyítik a Apache Spark használatát különféle használati esetekben. Nem kell foglalkoznia a Spark-vagy Spark-fürtök kezelésével. Használhatja az ismerős Apache Spark API-kat és a **Jupyter-jegyzetfüzeteket** az elemzéshez és az SQL API-hoz, vagy bármely olyan OSS NoSQL API-hoz, mint a Cassandra a tranzakciós feldolgozáshoz ugyanazon a mögöttes adaton.
 
 ### <a name="no-schema-or-index-management"></a>Nincs séma-vagy indexelési felügyelet
 
@@ -136,12 +136,6 @@ Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támog
 Az alábbi képen látható, hogyan használják a Azure Cosmos DB Spark-támogatását a Gaming Analyticsben:
 
 ![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/spark-api-introduction/gaming-analytics.png)
-
-## <a name="built-in-jupyter-notebooks-support"></a>Beépített Jupyter notebookok támogatása
-
-Azure Cosmos DB támogatja a beépített Jupyter jegyzetfüzeteket minden olyan API-hoz, mint például a Cassandra, a MongoDB, az SQL, a Gremlin és a table. A Jupyter notebookok az Azure Cosmos-fiókokon belül futnak, és javítják a fejlesztői élményt. Az összes Azure Cosmos DB API-k és adatmodellek beépített notebook-támogatása lehetővé teszi a lekérdezések interaktív futtatását. Emellett gépi tanulási modelleket is végrehajthat, és elemezheti az Azure Cosmos-adatbázisokban tárolt adatait. A Jupyter notebook felületének használatával elemezheti a tárolt adatok elemzését, kiépítheti és betaníthatja a gépi tanulási modelleket, és elvégezheti a Azure Portal lévő adatokon való következtetést az alábbi képen látható módon:
-
-![A Jupyter notebookok támogatása Azure Cosmos DB](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>További lépések
 

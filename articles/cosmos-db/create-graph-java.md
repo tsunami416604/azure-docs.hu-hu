@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172525"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212638"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Gyors útmutató: Hozzon létre egy Graph-adatbázist a Java SDK-val és a Azure Cosmos DB Table API
 
@@ -110,7 +110,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     Másolja az URI érték első részét.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-java/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. Nyissa meg az src/remote.yaml fájlt, és illessze be az egyedi azonosító értéket a `$name$` helyére a következőben: `hosts: [$name$.graphs.azure.com]`.
 
     A remote.yaml első sorának ekkor a következőhöz hasonlóan kell kinéznie: 
@@ -219,15 +219,15 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az ![ **eredmények** listájában, majd jelölje be a csúcspontok céljainak módosítása egy gráfban](./media/create-graph-java/edit-pencil-button.png) a jobb alsó sarokban lévő **célok** mellett. Előfordulhat, hogy szélesebbre kell állítania az ablakot a gomb megjelenítéséhez.
 
-    ![Gráfcsúcspont céljának módosítása](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Csúcspont céljának módosítása egy gráfban – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. A **cél** mezőbe írja be a *Böjthe*értéket, és az **Edge felirat** mezőjébe írja be a *Knows*elemet, majd jelölje be a jelölőnégyzetet.
 
-    ![ashley és rakesh közötti kapcsolat hozzáadása az Adatkezelőben](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Adatkezelő-Azure CosmosDB-beli kapcsolatok hozzáadása](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Ezután válassza ki a **rakesh** elemet a találatok listájából. Láthatja, hogy az ashley és a rakesh elem össze van kapcsolva. 
 
-    ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Két csúcspont csatlakozik Adatkezelő-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
 

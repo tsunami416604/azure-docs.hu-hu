@@ -1,11 +1,11 @@
 ---
-title: Leküldéses értesítések az Azure Notification Hubs használatára a Swift iOS-alkalmazások |} A Microsoft Docs
-description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az Azure Notification Hubs használatára a Swift iOS-alkalmazásokat.
+title: Leküldéses értesítések az Azure Notification Hubst használó Swift iOS-alkalmazásokhoz | Microsoft Docs
+description: Ismerje meg, hogyan küldhet értesítéseket az Azure Notification Hubst használó Swift iOS-alkalmazásokba.
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
-manager: patniko
-editor: spelluru
+manager: femila
+editor: jwargo
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,111 +14,113 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340391"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211950"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Oktatóanyag: Leküldéses értesítések küldése a Notification Hubs – REST API használata a Swift iOS-alkalmazások
+# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Oktatóanyag: Leküldéses értesítések küldése a Notification Hubst használó Swift iOS-alkalmazásoknak REST API
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-Ebben az oktatóanyagban használhatja az Azure Notification Hubs leküldéses értesítések küldéséhez egy iOS Swift-alapú alkalmazás segítségével a [REST API-val](/rest/api/notificationhubs/). Egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad használatával is létrehozhat a [Apple Push Notification service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
+Ebben az oktatóanyagban az Azure Notification Hubs használatával leküldheti az értesítéseket egy Swift-alapú iOS-alkalmazásba a [REST API](/rest/api/notificationhubs/)használatával. Létrehoz egy üres iOS-alkalmazást is, amely leküldéses értesítéseket fogad az [Apple push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)használatával.
 
-Ez az oktatóanyag végigvezeti az alábbi lépéseket:
+Ez az oktatóanyag végigvezeti a következő lépéseken:
 
 > [!div class="checklist"]
-> * Hozzon létre a tanúsítvány-aláírási kérelem fájlját.
-> * Kérje az alkalmazást a leküldéses értesítésekre.
-> * Hozzon létre egy olyan kiépítési profil az alkalmazáshoz.
+> * A tanúsítvány-aláírási kérelem fájljának előállítása.
+> * Kérje le az alkalmazást leküldéses értesítésekre.
+> * Hozzon létre egy létesítési profilt az alkalmazáshoz.
 > * Értesítési központ létrehozása.
-> * Az értesítési központ konfigurálása az APNs-adatait.
+> * Konfigurálja az értesítési központot APNs-információkkal.
 > * Az iOS-alkalmazás csatlakoztatása egy értesítési központhoz.
-> * A megoldás teszteléséhez.
+> * Tesztelje a megoldást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lépések követéséhez le lesz szüksége:
+A lépések végrehajtásához a következőkre lesz szüksége:
 
-- Haladhat végig [Azure Notification Hubs – áttekintés](notification-hubs-push-notification-overview.md) Ha nem ismeri a szolgáltatást.
-- További információ [regisztrációk és telepítési](notification-hubs-push-notification-registration-management.md).
-- Az aktív [Apple Developer-fiók](https://developer.apple.com).
-- Xcode-ban futó és a egy érvényes fejlesztői tanúsítvány a kulcskarikában telepített Mac.
-- Futtathat, és a hibakereséshez, leküldéses értesítéseket a szimulátor nem tesztelése, fizikai iPhone eszköz.
-- A fizikai iPhone eszköz regisztrálva a [Apple-portál](https://developer.apple.com) és a tanúsítványhoz.
-- Egy [Azure-előfizetés](https://portal.azure.com) ahol létrehozni és -erőforrások kezeléséhez.
+- Ha nem ismeri a szolgáltatást, folytassa az [Azure Notification Hubs áttekintésével](notification-hubs-push-notification-overview.md) .
+- További információ a [regisztrációról és a telepítésről](notification-hubs-push-notification-registration-management.md).
+- Aktív [Apple fejlesztői fiók](https://developer.apple.com).
+- Egy Xcode-t futtató Mac, valamint egy érvényes, a kulcstartóba telepített fejlesztői tanúsítvány.
+- Egy fizikai iPhone-eszköz, amelyen futtathat és hibakeresést végezhet, mivel nem tud leküldéses értesítéseket tesztelni a szimulátorral.
+- A fizikai iPhone-eszköz regisztrálva van az [Apple Portalon](https://developer.apple.com) , és a tanúsítványhoz van társítva.
+- [Azure-előfizetés](https://portal.azure.com) , ahol erőforrásokat hozhat létre és kezelhet.
 
-Ha már rendelkezik, hogy nincs korábbi tapasztalata az iOS-fejlesztések, tudja, hogy követni tudja a lépéseket ebben a példában először – alapelvek létrehozásához kell lennie. Azonban veheti az a következő fogalmak való ismerkedés során bizonyulhat:
+Ha még nem rendelkezik az iOS-fejlesztéssel kapcsolatos korábbi tapasztalatokkal, kövesse az első alapelvek létrehozásához szükséges lépéseket. A következő fogalmakkal azonban élvezheti a megismerését:
 
-- Az xcode-ban és a Swift iOS-alkalmazások készítéséhez.
-- Konfigurálása egy [Azure Notification hub](notification-hubs-ios-apple-push-notification-apns-get-started.md) iOS-hez.
-- A [Apple fejlesztői portál](https://developer.apple.com) és a [az Azure portal](https://portal.azure.com).
+- IOS-alkalmazások fejlesztése a Xcode és a Swift szolgáltatással.
+- [Azure Notification hub](notification-hubs-ios-apple-push-notification-apns-get-started.md) konfigurálása iOS rendszerhez.
+- Az [Apple fejlesztői portál](https://developer.apple.com) és a [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]
-> Az értesítési központ használatára lesz konfigurálva a **védőfal** csak a hitelesítési módot. Ez a hitelesítési módszer ne használjon a termelési számítási feladatokhoz.
+> Az értesítési központ csak a **sandbox** hitelesítési mód használatára lesz konfigurálva. Az éles számítási feladatokhoz ne használja ezt a hitelesítési módot.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-## <a name="connect-your-ios-app-to-a-notification-hub"></a>Az iOS-alkalmazás csatlakoztatása egy értesítési központhoz
+## <a name="connect-your-ios-app-to-a-notification-hub"></a>IOS-alkalmazás összekötése egy értesítési központtal
 
-Ebben a szakaszban az iOS-alkalmazás, amely csatlakozni fog az értesítési központ fog létrehozni.  
+Ebben a szakaszban az értesítési központhoz csatlakozó iOS-alkalmazást fogja létrehozni.  
 
-### <a name="create-an-ios-project"></a>Egy iOS-projekt létrehozása
+### <a name="create-an-ios-project"></a>IOS-projekt létrehozása
 
 1. Az Xcode-ban hozzon létre egy új iOS-projektet, és válassza az **Single View Application** (Egynézetes alkalmazás) sablont.
 
-1. Ha az új projekt beállításait:
+1. Az új projekt beállításainak megadásakor:
 
-   1. Adja meg a **Terméknév** (PushDemo) és **Organization Identifier** (`com.<organization>`) beállításakor használt **Bundle Identifier** az Apple fejlesztői portálján.
+   1. Adja meg a **termék nevét** (PushDemo) és a **szervezet azonosítóját** (`com.<organization>`), amelyet az Apple fejlesztői portálon a **Bundle azonosító** beállításakor használt.
 
-   1. Válassza ki a **csapat** , amely a **Alkalmazásazonosító** lett beállítva a.
+   1. Válassza ki azt a **csoportot** , amelyhez be lett állítva az **alkalmazás azonosítója** .
 
-   1. Állítsa be a **nyelvi** való **Swift**.
+   1. Állítsa a **nyelvet** a **Swift**értékre.
 
    1. Kattintson a **Tovább** gombra.
 
-1. Hozzon létre egy új nevű **SupportingFiles**.
+1. Hozzon létre egy új, **SupportingFiles**nevű mappát.
 
-1. Hozzon létre egy új p-lista fájlt nevű **devsettings.plist** a a **SupportingFiles** mappát. Adja hozzá ezt a mappát a **gitignore** fájlt, ezért nem véglegesített egy git-adattárral való munka során. Az éles alkalmazások esetén, akkor valószínűleg kell feltételesen beállítás titkos adatokat egy automatizált összeállítási folyamatból részeként. Ilyen beállítások Ez az útmutató nem tárgyalja.
+1. Hozzon létre egy **devsettings. plist** nevű új p-list fájlt a **SupportingFiles** mappában. Ügyeljen arra, hogy ezt a mappát hozzáadja a **gitignore** -fájlhoz, így a git-tárház használatakor nem véglegesíti a rendszer. Éles alkalmazásokban valószínűleg feltételesen állítja be ezeket a titkokat egy automatizált fordítási folyamat részeként. Az ilyen beállítások nem szerepelnek ebben az útmutatóban.
 
-1. Frissítés **devsettings.plist** , hogy tartalmazzák az Ön által üzembe helyezett az értesítési központot a saját értékeit használja a következő konfigurációs bejegyzéseket:
+1. Frissítse a **devsettings. plist** fájlt, hogy a következő konfigurációs bejegyzéseket használja az Ön által kiépített értesítési központ saját értékeivel:
 
-   | Kulcs                            | Type                     | Érték                     |
+   | Kulcs                            | Type                     | Value                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | String                   | \<hubKey>                  |
-   | notificationHubKeyName         | String                   | \<hubKeyName>              |
-   | notificationHubName            | String                   | \<hubName>                 |
-   | notificationHubNamespace       | String                   | \<hubNamespace>            |
+   | notificationHubKey             | Sztring                   | \<hubKey >                  |
+   | notificationHubKeyName         | Sztring                   | \<hubKeyName>              |
+   | notificationHubName            | Sztring                   | \<hubName>                 |
+   | notificationHubNamespace       | Sztring                   | \<hubNamespace >            |
 
-   Az értesítésiközpont-erőforrás az Azure Portalon lépjen a szükséges értékeket is megtalálhatja. Különösen a **notificationHubName** és **notificationHubNamespace** értékei a jobb felső sarkában a **Essentials** összefoglaló belül a **Áttekintése** lapot.
+   A szükséges értékeket megkeresheti az értesítési központ erőforrásának Azure Portalban való navigálásával. Különösen a **notificationHubName** és a **NotificationHubNamespace** értékek az **alapvető** erőforrások összegzésének jobb felső sarkában találhatók az **Áttekintés** oldalon.
 
-   ![Notification Hubs alapvető szolgáltatások összegzése](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
+   ![Notification Hubs Essentials Összefoglaló](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Is megkeresheti a **notificationHubKeyName** és **notificationHubKey** az értékek **hozzáférési szabályzatok** , és válassza a megfelelő  **Hozzáférési szabályzat**, mint például `DefaultFullSharedAccessSignature`. Ezt követően másolja át a **elsődleges kapcsolati karakterlánc** előtaggal van ellátva a érték `SharedAccessKeyName=` a `notificationHubKeyName` és az érték előtaggal `SharedAccessKey=` a a `notificationHubKey`.
+   A **notificationHubKeyName** és a **notificationHubKey** értékeket úgy is megtalálhatja, hogy megkeresi a hozzáférési házirendeket, és kiválasztja a `DefaultFullSharedAccessSignature`megfelelő **hozzáférési** **szabályzatot** , például:. Ezt követően másolja az értéket az **elsődleges** `SharedAccessKeyName=` `notificationHubKeyName` és a értékhez előtaggal, a esetében pedig `notificationHubKey`az előtaggal ellátott `SharedAccessKey=` értéket.
 
-   A kapcsolati karakterláncot a következő formátumban kell megadni:
+   A következő formátumúnak kell lennie a kapcsolatok karakterláncának:
 
    ```xml
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Legyen egyszerű, adja meg a `DefaultFullSharedAccessSignature` így használhatja a token értesítések küldéséhez. A gyakorlatban a `DefaultListenSharedAccessSignature` lehet jobb választás olyan helyzetben, amikor csak ha értesítéseket szeretne kapni.
+   Az egyszerű használat érdekében megadhatja `DefaultFullSharedAccessSignature` , hogy a token használatával küldjön értesítéseket. A gyakorlatban a `DefaultListenSharedAccessSignature` jobb választás olyan helyzetekben, amikor csak az értesítéseket szeretné kapni.
 
-1. Alatt **Project Navigator**, jelölje be a **projektnév** majd válassza ki a **általános** fülre.
+1. A **Project Navigator**alatt válassza ki a **projekt nevét** , majd válassza az **általános** lapot.
 
-1. Keresse meg **identitás** majd állítsa be a **Bundle Identifier** értékét, hogy az megfeleljen `com.<organization>.PushDemo`, az érték használt a **Alkalmazásazonosító** az előző lépésben.
+1. Keresse meg az **identitást** , majd állítsa be a **köteg azonosító** értékét `com.<organization>.PushDemo`úgy, hogy az megfeleljen az előző lépésben az **alkalmazás-azonosítóhoz** használt értéknek.
 
-1. Keresse meg **aláírás**, és válassza ki a megfelelő **csapat** számára a **Apple Developer-fiók**. A **csapat** értéknek meg kell egyeznie az alapján, amelyek a tanúsítványokat és a profilok létrehozott.
+1. Keresse meg az **aláírást**, majd válassza ki a megfelelő **csapatot** az **Apple Developer-fiókjához**. A **csapat** értékének meg kell egyeznie azzal, amelynek alapján létrehozta a tanúsítványokat és a profilokat.
 
-1. Xcode automatikusan lekéri a megfelelő **létesítési profil** érték alapján az **Bundle Identifier**. Ha nem látja az új **létesítési profil** értéket, próbálja meg frissíteni a profilok a **aláíró identitása** kiválasztásával **Xcode**  >  **Beállítások** > **fiók** > **részleteinek megtekintéséhez**. Válassza ki **aláíró identitása**, majd válassza ki a **frissítése** letöltéséhez a profilok jobb alsó gomb.
+1. A Xcode automatikusan le kell húznia a megfelelő **létesítési profil** értékét a **köteg azonosítója**alapján. Ha nem látja az új **létesítési profil** értékét, próbálja meg frissíteni a profilokat az **aláíró identitáshoz** a **Xcode** > **Beállítások** > **fiók** > nézetének kiválasztásával. **Részletek**. Válassza a **személyazonosság aláírása**lehetőséget, majd a profilok letöltéséhez kattintson a jobb alsó sarokban található **frissítés** gombra.
 
-1. Válassza ki a **képességek** lapon és ellenőrizze, hogy **leküldéses értesítések** engedélyezve vannak.
+1. Válassza a **képességek** fület, és győződjön meg arról, hogy a **leküldéses értesítések** engedélyezve vannak.
 
-1. Nyissa meg a **AppDelegate.swift** fájlt, végrehajtására a **UNUserNotificationCenterDelegate** protokollt, és adja hozzá a következő kódot az osztály elejéhez:
+1. Nyissa meg a **AppDelegate. Swift** fájlt a **UNUserNotificationCenterDelegate** protokoll megvalósításához, és adja hozzá a következő kódot az osztály tetejéhez:
 
     ```swift
     @UIApplicationMain
@@ -138,9 +140,9 @@ Ebben a szakaszban az iOS-alkalmazás, amely csatlakozni fog az értesítési k�
     }
     ```
 
-    Ezekről a tagokról később fogja használni. Pontosabban szeretné használni a **címkék** és **genericTemplate** tagokat a regisztráció részeként. A címkék további információkért lásd: [regisztrációs címkék](notification-hubs-tags-segment-push-message.md) és [sablonregisztrációk](notification-hubs-templates-cross-platform-push-messages.md).
+    Ezeket a tagokat később fogja használni. Pontosabban a **címkék** és a **genericTemplate** tagjait fogja használni a regisztráció részeként. A címkékkel kapcsolatos további információkért lásd: [címkék a regisztrációhoz](notification-hubs-tags-segment-push-message.md) és a [sablonok regisztrálásához](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. Ugyanebben a fájlban adja hozzá a következő kódot a **didFinishLaunchingWithOptions** függvény:
+1. Ugyanebben a fájlban adja hozzá a következő kódot a **didFinishLaunchingWithOptions** függvényhez:
 
     ```swift
     if let path = Bundle.main.path(forResource: "devsettings", ofType: "plist") {
@@ -169,11 +171,11 @@ Ebben a szakaszban az iOS-alkalmazás, amely csatlakozni fog az értesítési k�
     return true
     ```
 
-    Ez a kód lekéri a beállítás értékét **devsettings.plist**, beállítja a **AppDelegate** osztály a **UNUserNotificationCenter** delegálása, a kérések engedélyezése leküldéses értesítések, majd a hívások **registerForRemoteNotifications**.
+    Ez a kód a **devsettings. plist**fájlból kéri le a beállítási értékeket, beállítja a **AppDelegate** osztályt **UNUserNotificationCenter** delegált, leküldéses értesítések engedélyezését kéri, majd meghívja **a registerForRemoteNotifications**.
 
-    Legyen egyszerű, hogy a kód támogatja *iOS 10-es és annál újabb verzióknál érhető*. Előző operációsrendszer-verziók támogatását a megfelelő API-k és megközelítések feltételesen használatával, mint a szokásos módon adhat hozzá.
+    Az egyszerű megtartáshoz a kód *csak az iOS 10 és újabb verziókat*támogatja. A korábbi operációsrendszer-verziókkal kapcsolatos támogatást feltételesen a megfelelő API-k és megközelítések használatával veheti igénybe, ahogyan azt a szokásos módon tenné.
 
-1. Ugyanebben a fájlban adja hozzá a következő funkciókat:
+1. Ugyanebben a fájlban adja hozzá a következő függvényeket:
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -188,9 +190,9 @@ Ebben a szakaszban az iOS-alkalmazás, amely csatlakozni fog az értesítési k�
     }
     ```
 
-    A kód a **installationId** és **pushChannel** értékek regisztrálna az értesítési központban. Ebben az esetben használ **UIDevice.current.identifierForVendor** , adjon meg egy egyedi értéket, az eszköz és a majd formázása a **deviceToken** , adja meg a kívánt  **pushChannel** értéket. A **showAlert** függvény létezik néhány üzenet szövege bemutatási célokra egyszerűen megjeleníthető.
+    A kód a **telepítésazonosító** és a **pushChannel** értékeket használja az értesítési központban való regisztráláshoz. Ebben az esetben a **UIDevice. Current. identifierForVendor** használatával egyedi értéket kell megadnia az eszköz azonosításához, majd formáznia kell a **DeviceToken** a kívánt **pushChannel** érték megadásához. A **showAlert** függvény csak egy szöveges üzenet szövegének megjelenítésére szolgál.
 
-1. Még mindig a **AppDelegate.swift** fájlt, adja hozzá a **willPresent** és **didReceive** látja el **UNUserNotificationCenterDelegate**. Ezek a függvények riasztás megjelenítése, amikor azok a rendszer értesíti arról, hogy egy alkalmazás fut-e az előtérben vagy háttérben jelölik.
+1. Továbbra is a **AppDelegate. Swift** fájlban adja hozzá a **WillPresent** és a **didReceive** függvényt a **UNUserNotificationCenterDelegate**. Ezek a függvények riasztást jelenítenek meg, ha értesítést kapnak arról, hogy az alkalmazás az előtérben vagy a háttérben fut.
 
     ```swift
     @available(iOS 10.0, *)
@@ -208,17 +210,17 @@ Ebben a szakaszban az iOS-alkalmazás, amely csatlakozni fog az értesítési k�
     }
     ```
 
-1. Adja hozzá a nyomtatási utasításokat alján a **didRegisterForRemoteNotificationsWithDeviceToken** függvényt, hogy ellenőrizze, hogy **installationId** és **pushChannel** folyamatban van hozzárendelt értékek.
+1. Vegyen fel nyomtatási utasításokat a **didRegisterForRemoteNotificationsWithDeviceToken** függvény aljára annak ellenőrzéséhez, hogy a **telepítésazonosító** és a **pushChannel** vannak-e hozzárendelve.
 
-1. Hozzon létre a **modellek**, **szolgáltatások**, és **segédprogramok** alaprendszeri összetevőkön mappáit, adunk hozzá a projekthez később.
+1. Hozza létre a **modelleket**, **szolgáltatásokat**és **segédprogramokat** a projekthez később felvenni kívánt alapvető összetevőkhöz.
 
-1. Ellenőrizze, hogy a projekt épít, és a fizikai eszközön fut. Leküldéses értesítések nem tesztelhető a szimulátor használatával.
+1. Ellenőrizze, hogy a projekt egy fizikai eszközön épít és fut-e. A leküldéses értesítések nem vizsgálhatók a szimulátor használatával.
 
 ### <a name="create-models"></a>Modellek létrehozása
 
-Ebben a lépésben létrehozhat egy csoportot, a modellek, amelyek a [Notification Hubs – REST API](/rest/api/notificationhubs/) is észleltünk adattartalmakat és tárolja a szükséges közös hozzáférésű jogosultságkód (SAS) jogkivonat-adatokat.
+Ebben a lépésben létrehoz egy modellt, amely a [Notification Hubs REST API](/rest/api/notificationhubs/) hasznos adatokat jelöli, és tárolja a szükséges megosztott hozzáférési aláírási (SAS-) token adatait.
 
-1. Adjon hozzá egy új Swift fájlt nevű **PushTemplate.swift** , a **modellek** mappát. Ez a modell biztosít egy struct jelölő a **törzs** egy egyéni sablon részeként a **DeviceInstallation** adattartalom.
+1. Vegyen fel egy **PushTemplate. Swift** nevű új Swift-fájlt a **models** mappába. Ez a modell egy egyedi sablon **törzsét** jelképező struct-t biztosít a **DeviceInstallation** hasznos adattartalom részeként.
 
     ```swift
     import Foundation
@@ -232,7 +234,7 @@ Ebben a lépésben létrehozhat egy csoportot, a modellek, amelyek a [Notificati
     }
     ```
 
-1. Adjon hozzá egy új Swift fájlt nevű **DeviceInstallation.swift** , a **modellek** mappát. Ez a fájl egy jelölő a tartalom létrehozása vagy frissítése struktura meghatározása egy **eszköz telepítése**. Adja hozzá a következő kódot a fájlhoz:
+1. Vegyen fel egy **DeviceInstallation. Swift** nevű új Swift-fájlt a **models** mappába. Ez a fájl egy olyan struct-t határoz meg, amely az **eszköz telepítésének**létrehozására vagy frissítésére szolgáló adattartalmat jelképezi. Adja hozzá a következő kódot a fájlhoz:
 
     ```swift
     import Foundation
@@ -253,7 +255,7 @@ Ebben a lépésben létrehozhat egy csoportot, a modellek, amelyek a [Notificati
     }
     ```
 
-1. Adjon hozzá egy új Swift fájlt nevű **TokenData.swift** , a **modellek** mappát. Ez a modell egy SAS-token, a lejárat és tárolására használható.
+1. Vegyen fel egy **TokenData. Swift** nevű új Swift-fájlt a **models** mappába. Ez a modell egy SAS-token tárolására szolgál majd a lejáratával együtt.
 
     ```swift
     import Foundation
@@ -270,34 +272,34 @@ Ebben a lépésben létrehozhat egy csoportot, a modellek, amelyek a [Notificati
     }
     ```
 
-### <a name="generate-a-sas-token"></a>Hozzon létre egy SAS-token
+### <a name="generate-a-sas-token"></a>SAS-token létrehozása
 
-A Notification Hubs az Azure Service Bus ugyanazt a biztonsági-infrastruktúrát használja. A REST API hívása, kell [programozott módon az SAS-token létrehozásához](/rest/api/eventhub/generate-sas-token) , amely a használható a **engedélyezési** a kérelem fejlécében.  
+Notification Hubs ugyanazt a biztonsági infrastruktúrát használja, mint Azure Service Bus. A REST API meghívásához programozott módon kell [létrehoznia egy sas-tokent](/rest/api/eventhub/generate-sas-token) , amelyet a kérelem **engedélyezési** fejlécében használhat.  
 
-Az így létrejövő jogkivonatot az alábbi formátumban lesz:
+Az eredményül kapott token a következő formátumban fog megjelenni:
 
 ```xml
 SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&sr=<UrlEncodedResourceUri>
 ```
 
-Maga a folyamat az azonos hat fő lépésből áll:  
+Maga a folyamat hat kulcsfontosságú lépést is magában foglal:  
 
-1. Lejártakor a számítástechnika [UNIX alapidőpont](https://en.wikipedia.org/wiki/Unix_time) formátum, ami azt jelenti, hogy hány másodpercig az éjfél óta eltelt egyezményes világidő, 1970. január 1.
-1. Formázás a **ResourceUrl** , amely képviseli az erőforráshoz próbál hozzáférni, ezért létfontosságú a kódolt- és nagybetűk. A **ResourceUrl** formában van `'https://<namespace>.servicebus.windows.net/<hubName>'`.
-1. Felkészülés a **StringToSign**, amely vannak formázva, `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
-1. Számítási és a Base64-kódolást a **aláírás** HMAC-SHA256-kivonatát használatával a **StringToSign** értéket. A kivonat értékével rendelkező szolgál a **kulcs** része a **kapcsolati karakterlánc** számára a megfelelő **engedélyezési szabály**.
-1. A Base64-kódolású formázás **aláírás** , hogy legyen %-os kódolva.
-1. Hozhat létre, a tokent az a várt formátum használatával az **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**, és **UrlEncodedResourceUrl** értékeket.
+1. A lejárati [idő a UNIX-kor](https://en.wikipedia.org/wiki/Unix_time) időformátumában történik, ami azt jelenti, hogy az éjfél óta eltelt másodpercek száma a 1970. január 1-től érvényes.
+1. Formázza azt a **ResourceUrl** , amely az elérni kívánt erőforrást jelképezi, ezért a kódolás és a kisbetűs. A **ResourceUrl** rendelkezik az űrlappal `'https://<namespace>.servicebus.windows.net/<hubName>'`.
+1. A **StringToSign**előkészítése, amely a következőképpen `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`van formázva:.
+1. Számítástechnika és Base64 – a **StringToSign** érték HMAC-sha256 kivonatának használatával kódolja az **aláírást** . A kivonat értékét a rendszer a megfelelő **engedélyezési szabály** **kapcsolati karakterláncának** **kulcs** részeként használja.
+1. A Base64 kódolású **aláírás** formázása úgy, hogy a kódolás százalékosan történjen.
+1. A token létrehozása a várt formátumban a **UrlEncodedSignature**, a **ExpiryEpoch**, a **Kulcsnév**és a **UrlEncodedResourceUrl** értékek használatával.
 
-Tekintse meg a [Azure Service Bus dokumentációja](../service-bus-messaging/service-bus-sas.md) alaposabb közös hozzáférésű jogosultságkód és Azure Service Bus és a Notification Hubs használatának áttekintése.
+Tekintse meg a [Azure Service Bus dokumentációját](../service-bus-messaging/service-bus-sas.md) a közös hozzáférési aláírás részletesebb áttekintéséhez, valamint a Azure Service Bus és a Notification Hubs használatáról.
 
-Ebben a példában a Swift az alkalmazásában fog használni az Apple nyílt forráskódú **CommonCrypto** könyvtár az aláírás-kivonatoló kiküszöbölni. A C-kódtár, mert nem érhető el a Swift beépített. Elérhetővé teheti a kódtár használatával egy áthidalási fejlécet.
+Ebben a Swift-példában az Apple nyílt forráskódú **CommonCrypto** könyvtárát fogja használni az aláírás kivonatának támogatásához. Mivel ez egy C könyvtár, nem érhető el a Swift-ben. A függvénytárat áthidaló fejléc használatával is elérhetővé teheti.
 
-Adja hozzá, és a áthidalási fejléc konfigurálása:
+Az áthidaló fejléc hozzáadása és konfigurálása:
 
-1. Válassza ki az xcode-ban **fájl** > **új** > **fájl** > **Fejlécfájlt**. A fejléc-fájl neve **BridgingHeader.h**.
+1. A Xcode területen válassza **a fájl** > **új** >  fájlfejlécfájlelemet.>  Nevezze el a fejlécet a **BridgingHeader. h**fájlban.
 
-1. Az importálandó fájl szerkesztése **CommonHMAC.h**:
+1. Szerkessze a fájlt a **CommonHMAC. h**fájl importálásához:
 
     ```swift
     #import <CommonCrypto/CommonHMAC.h>
@@ -309,19 +311,19 @@ Adja hozzá, és a áthidalási fejléc konfigurálása:
     #endif /* BridgingHeader_h */
     ```
 
-1. Frissítse a céloldali **Build Settings** az áthidalási fejléc hivatkozni:
+1. Frissítse a cél **Build-beállításait** az áthidaló fejlécre való hivatkozáshoz:
 
-   1. Nyissa meg a **épület beállítások** lapra, és görgessen le a **Swift fordítóprogram** szakaszban.
+   1. Nyissa meg az **építési beállítások** lapot, és görgessen le a **Swift Compiler**szakaszhoz.
 
-   1. Ügyeljen arra, hogy a **telepítése Objective-C kompatibilitási fejléc** beállítás **Igen**.
+   1. Győződjön meg arról, hogy az **Objective-C kompatibilitási fejléc** telepítése beállítás **Igen**értékre van állítva.
 
-   1. Adja meg a fájl elérési útja `'<ProjectName>/BridgingHeader.h'` be a **Objective-C bridging fejléc** lehetőséget. Ez a fájl elérési útját az áthidalási fejlécet.
+   1. Adja meg a fájl `'<ProjectName>/BridgingHeader.h'` elérési útját a **Objective-C áthidaló fejléc** beállításban. Ez az áthidaló fejléc fájljának elérési útja.
 
-   Ha ezek a beállítások nem találja, gondoskodjon arról, hogy a **összes** kijelölt nézet helyett **alapszintű** vagy **testre szabott**.
+   Ha nem találja ezeket a beállításokat, győződjön meg arról, hogy az **összes** nézet ki van választva az **alapszintű** vagy a **testreszabott**beállítás helyett.
 
-   Nincsenek számos külső nyílt forráskódú burkoló kódtár érhető el, amelyek segítségével tehetik **CommonCrypto** könnyebb. Azonban ez a cikk nem foglalkozik, ilyen kódtárak veszik górcső alá.
+   Számos olyan, harmadik féltől származó nyílt forráskódú burkoló könyvtár érhető el, amely a **CommonCrypto** egyszerűbb használatát teszi elérhetővé. Az ilyen kódtárak megvitatása azonban a jelen cikk hatókörén kívül esik.
 
-1. Adjon hozzá egy új Swift fájlt nevű **TokenUtility.swift** belül a **segédprogramok** mappát, és adja hozzá a következő kódot:
+1. Vegyen fel egy **TokenUtility. Swift** nevű új Swift-fájlt a **Utilities** mappában, és adja hozzá a következő kódot:
 
    ```swift
    import Foundation
@@ -382,39 +384,39 @@ Adja hozzá, és a áthidalási fejléc konfigurálása:
     }
    ```
 
-   Ez a segédeszköz a SAS-jogkivonat létrehozásáért felelős logikai magában foglalja.
+   Ez a segédprogram beágyazza az SAS-token generálásához felelős logikát.
 
-   Ahogyan korábban, a **getSasToken** funkció, amellyel előkészíthető a magas szintű lépéseket a token előkészítéséhez szükséges. A függvény neve lesz a telepítés szolgáltatás által az oktatóanyag későbbi részében.
+   Az előzőekben leírtaknak megfelelően a **getSasToken** függvény a token előkészítéséhez szükséges magas szintű lépéseket hangolja össze. Ezt a funkciót a telepítési szolgáltatás fogja meghívni az oktatóanyag későbbi részében.
 
-   A többi két funkció által meghívott a **getSasToken** függvény: **sha256HMac** számítástechnikához az aláírás és **urlEncodedString** Encoding, a társított URL-címe karakterlánc. A **urlEncodedString** függvény szükség, mivel már nem érhető el a szükséges kimeneti a beépített használatával **addingPercentEncoding** függvény.
+   A másik két függvényt a **getSasToken** függvény hívja meg: **sha256HMac** az aláírás és a **urlEncodedString** a társított URL-karakterlánc kódolásához. A **urlEncodedString** függvényt kötelező megadni, mert nem lehet elérni a szükséges kimenetet a beépített **addingPercentEncoding** függvénnyel.
 
-   A [Azure Storage iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) kiváló példa bemutatja, hogyan készíthető elő ezeket a műveleteket az Objective-c-hez További információ az Azure Service Bus SAS-tokeneket megtalálható a [Azure Service Bus dokumentációja](../service-bus-messaging/service-bus-sas.md).
+   Az [Azure Storage iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) kiváló példa arra, Hogyan közelítheti meg ezeket a műveleteket az Objective-C-ben. Azure Service Bus SAS-jogkivonatokkal kapcsolatos további információkért tekintse meg a [Azure Service Bus dokumentációját](../service-bus-messaging/service-bus-sas.md).
 
-### <a name="verify-the-sas-token"></a>A SAS-token ellenőrzése
+### <a name="verify-the-sas-token"></a>Az SAS-jogkivonat ellenőrzése
 
-Az ügyfél a telepítési szolgáltatás megvalósítása, előtt ellenőrizze, hogy az alkalmazás megfelelően létrehozza az SAS-token a választott HTTP-segédprogram használatával. Ez az oktatóanyag az alkalmazásában, a kívánt eszközben dolgozhat lesz **Postman**.
+Mielőtt implementálja a telepítési szolgáltatást az ügyfélen, győződjön meg arról, hogy az alkalmazás helyesen hozza létre az SAS-tokent a választott HTTP-segédprogram használatával. Ebben az oktatóanyagban a választott eszköze lesz **Poster**.
 
-Használhat egy megfelelően elhelyezett nyomtatási utasítás vagy töréspontot vegye figyelembe a **installationId** és a **token** értékeket az alkalmazás által generált.
+Egy megfelelően elhelyezett Print utasítás vagy töréspont használatával jegyezze fel a **telepítésazonosító** és az alkalmazás által generált **jogkivonat** -értékeket.
 
-Kövesse az alábbi lépéseket hívja a **telepítések** API:
+A **telepítési** API meghívásához kövesse az alábbi lépéseket:
 
-1. A **Postman**, nyisson meg egy új lapot.
+1. Nyisson meg egy új lapot a **Poster**-ben.
 
-1. A kérelem beállítása **első** , és adja meg a következő címre:
+1. Állítsa be a kérést a **beolvasáshoz** , és adja meg a következő címeket:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/installations/<installationId>?api-version=2015-01
     ```
 
-1. A kérelem fejlécében a következőképpen konfigurálja:
+1. Konfigurálja a kérelmek fejléceit az alábbiak szerint:
 
-   | Kulcs           | Érték            |
+   | Kulcs           | Value            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Engedélyezés | \<sasToken >       |
+   | Authorization | \<sasToken >       |
    | x-ms-version  | 2015-01          |
 
-1. Válassza ki a **kód** a jobb felső sarokban alatt megjelenő gomb a **mentése** gombra. A kérelem a következő példához hasonlóan kell kinéznie:
+1. Kattintson a **Save (Mentés** ) gombra a jobb felső sarokban megjelenő **kód** gombra. A kérelemnek az alábbi példához hasonlóan kell kinéznie:
 
     ```html
     GET /<hubName>/installations/<installationId>?api-version=2015-01 HTTP/1.1
@@ -426,15 +428,15 @@ Kövesse az alábbi lépéseket hívja a **telepítések** API:
     Postman-Token: <postmanToken>
     ```
 
-1. Válassza ki a **küldése** gombra.
+1. Kattintson a **Küldés** gombra.
 
-Regisztráció nem létezik a megadott **installationId** ezen a ponton. Az ellenőrzés "401-es nem engedélyezett" válasz helyett a "404 nem található" válasz kell eredményeznie. Ezt az eredményt kell győződjön meg arról, hogy a SAS-jogkivonat elfogadták.
+Ezen a ponton nem létezik regisztráció a megadott **telepítésazonosító** . Az ellenőrzés "404 nem található" választ eredményez, nem pedig "401 jogosulatlan" választ. Ennek az eredménynek meg kell győződnie arról, hogy a SAS-jogkivonat el lett fogadva.
 
-### <a name="implement-the-installation-service-class"></a>A telepítés szolgáltatásosztály megvalósítása
+### <a name="implement-the-installation-service-class"></a>A telepítési szolgáltatás osztályának implementálása
 
-Ezután az alapszintű burkolója implementálása a [telepítések REST API-val](/rest/api/notificationhubs/create-overwrite-installation).  
+A következő lépésben az alapszintű burkolót fogjuk megvalósítani a [telepítések REST API](/rest/api/notificationhubs/create-overwrite-installation).  
 
-Adjon hozzá egy új Swift fájlt nevű **NotificationRegistrationService.swift** alatt a **szolgáltatások** mappát, majd adja hozzá a következő kódot a fájl:
+Adjon hozzá egy **NotificationRegistrationService. Swift** nevű új Swift-fájlt a **szolgáltatások** mappában, majd adja hozzá a következő kódot a fájlhoz:
 
 ```swift
 import Foundation
@@ -536,27 +538,27 @@ class NotificationRegistrationService {
 }
 ```
 
-Az előfeltételként szükséges részletei is szerepelnek az inicializálás során. Címkékkel és sablonokkal igény szerint átadott a **regisztrálása** részét képező függvény a **eszköz telepítése** JSON-adattartalmat.  
+A szükséges részleteket az inicializálás részeként kell megadnia. A címkék és a sablonok opcionálisan átadhatók a **Register** függvénynek az **eszköz telepítésére** szolgáló JSON-adattartalom részét képezve.  
 
-A **regisztrálása** függvény meghívja a más titkos függvények a kérelem előkészítése. Válasz fogadását követően a befejezési nevezik, és azt jelzi, hogy a regisztráció sikeres volt-e.  
+A **Register** függvény meghívja a többi privát függvényt a kérelem előkészítéséhez. A válasz fogadása után a rendszer meghívja a befejezést, és jelzi, hogy a regisztráció sikeres volt-e.  
 
-A kérelem-végpont alapján áll össze a **getBaseAddress** függvény. A konstrukció a notification hub paramétereket használja *névtér* és *neve* , amely az inicializálás során lett megadva.  
+A kérelem végpontját a **getBaseAddress** függvény építi ki. Az építés az értesítési központ paraméterek *névterét* és *nevét* használja az inicializálás során.  
 
-A **getSasToken** függvény ellenőrzi, hogy a jelenleg tárolt token érvényes. Ha a jogkivonat nem érvényes, a függvény meghívja **TokenUtility** , egy új jogkivonatot, majd tárolja azt megelőzően érték visszaadása.
+A **getSasToken** függvény ellenőrzi, hogy a jelenleg tárolt jogkivonat érvényes-e. Ha a jogkivonat érvénytelen, a függvény meghívja a **TokenUtility** -t új jogkivonat létrehozásához, majd egy érték visszaadása előtt tárolja azt.
 
-Végül **encodeToJson** JSON használatra a kérelem törzsének részeként a megfelelő modellt objektumok alakítja.
+Végül a **encodeToJson** a megfelelő objektummodell-OBJEKTUMOKAT a JSON-ba konvertálja a kérelem törzsének részeként való használatra.
 
-### <a name="invoke-the-notification-hubs-rest-api"></a>A Notification Hubs – REST API meghívása
+### <a name="invoke-the-notification-hubs-rest-api"></a>A Notification Hubs meghívása REST API
 
-Az utolsó lépés frissítése folyamatban van **AppDelegate** használandó **NotificationRegistrationService** szeretne regisztrálni a **Értesítésiközpont**.
+Az utolsó lépés a **AppDelegate** frissítése a **NotificationRegistrationService** használatára a **NotificationHub**való regisztráláshoz.
 
-1. Nyissa meg **AppDelegate.swift** , és adja hozzá a osztályszintű változót tárolják való hivatkozást a **NotificationRegistrationService**:
+1. Nyissa meg a **AppDelegate. Swift** programot, és adjon hozzá egy Class szintű változót, amely a **NotificationRegistrationService**mutató hivatkozást tárolja:
 
     ```swift
     var registrationService : NotificationRegistrationService?
     ```
 
-1. Ugyanebben a fájlban frissítse a **didRegisterForRemoteNotificationsWithDeviceToken** függvény inicializálása a **NotificationRegistrationService** az előfeltételként szükséges paramétereket, majd hívást a **regisztrálása** függvény.
+1. Ugyanebben a fájlban frissítse a **didRegisterForRemoteNotificationsWithDeviceToken** függvényt a **NotificationRegistrationService** inicializálásához a szükséges paraméterekkel, majd hívja meg a **Register** függvényt.
 
     ```swift
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -583,17 +585,17 @@ Az utolsó lépés frissítése folyamatban van **AppDelegate** használandó **
     }
     ```
 
-    Nyomtatási utasításokat néhány használatával frissítse a kimeneti ablakban eredményét fog tartani a egyszerű, a **regisztrálása** műveletet.
+    Annak érdekében, hogy egyszerű legyen, néhány nyomtatási utasítást fog használni a kimeneti ablak frissítéséhez a **regisztrálási** művelet eredményével.
 
-1. Most már lefordíthatja, és futtassa az alkalmazást egy fizikai eszköz. A kimeneti ablakban "regisztrálva" kell megjelennie.
+1. Most hozza létre és futtassa az alkalmazást egy fizikai eszközön. A kimeneti ablakban a "Registered" kifejezés látható.
 
-## <a name="test-the-solution"></a>A megoldás teszteléséhez
+## <a name="test-the-solution"></a>A megoldás tesztelése
 
-Ezen a ponton az alkalmazás regisztrálva van a **Értesítésiközpont** és leküldéses értesítést kapjanak. Az xcode-ban a hibakereső leállítása, és ha éppen fut, zárja be az alkalmazást. Ezután ellenőrizze, hogy a **eszköz telepítése** részletek elvárt módon vannak, és az alkalmazások mostantól fogadni tudják leküldéses értesítéseket.  
+Az alkalmazás ezen a ponton regisztrálva van a **NotificationHub** -ben, és leküldéses értesítéseket kaphat. A Xcode-ben állítsa le a hibakeresőt, és ha éppen fut, akkor az alkalmazás bezárásához. Ezután győződjön meg arról, hogy az **eszköz telepítésének** részletei a várt módon történtek, és hogy az alkalmazás most már fogadhat leküldéses értesítéseket.  
 
 ### <a name="verify-the-device-installation"></a>Az eszköz telepítésének ellenőrzése
 
-Hajtsa végre a kérésben ahogy korábban használatával **Postman** a [az SAS-token ellenőrzése](#verify-the-sas-token). Feltételezve, hogy a SAS-jogkivonatát még nem járt le, a válaszban most már tartalmazza a megadott, például a sablonokat és címkék telepítési adatok.
+Mostantól megteheti ugyanazt a kérést, mint korábban a **Poster** használatával [ellenőrizheti az SAS-tokent](#verify-the-sas-token). Feltételezve, hogy az SAS-jogkivonat nem járt le, a válasznak tartalmaznia kell a megadott telepítési adatokat, például a sablonokat és a címkéket.
 
 ```json
 {
@@ -616,54 +618,54 @@ Hajtsa végre a kérésben ahogy korábban használatával **Postman** a [az SAS
 }
 ```
 
-### <a name="send-a-test-notification-azure-portal"></a>(Az Azure portal) tesztértesítés küldése
+### <a name="send-a-test-notification-azure-portal"></a>Teszt értesítés küldése (Azure Portal)
 
-A leggyorsabb mód a tesztelje, hogy Ön már fogadhat értesítéseket, hogy tallózással keresse meg az értesítési központban az Azure Portalon:
+A leggyorsabban tesztelhető, hogy most már fogadhat értesítéseket az értesítési központ tallózásával a Azure Portalban:
 
-1. Az Azure Portalon keresse meg a **áttekintése** az értesítési központ lapján.
+1. A Azure Portal keresse meg az értesítési központ **Áttekintés** lapját.
 
-1. Válassza ki **Tesztküldés**, amely fölött van a **Essentials** a bal felső sarokban a portál ablakának összegzése:
+1. Válassza a **küldési teszt**lehetőséget, amely meghaladja a portál ablakának bal felső részén található **Essentials** összefoglalót:
 
-    ![Notification Hubs alapvető erőforrások összefoglaló Tesztküldés gomb](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
+    ![Notification Hubs Essentials összefoglaló teszt küldése gomb](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials-test-send.png)
 
-1. Válasszon **egyéni sablon** származó a **platformok** listája.
+1. Válassza az **egyéni sablon** lehetőséget a **platformok** listából.
 
-1. Adja meg **12345** számára a **küldés címkét alkotó kifejezésbe**. Ez a címke a telepítés volt korábban megadott.
+1. Adja meg a **12345** értéket a **Send to tag kifejezéshez**. Korábban már megadta ezt a címkét a telepítésben.
 
-1. Szükség esetén szerkessze a **üzenet** a JSON hasznos adatok:
+1. Opcionálisan szerkesztheti az **üzenetet** a JSON-adattartalomban:
 
-    ![Notification Hubs küldés tesztelése](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
+    ![Notification Hubs teszt küldése](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send.png)
 
-1. Kattintson a **Küldés** gombra. A portálon azt kell jeleznie, hogy az értesítés elküldése sikerült az eszközön:
+1. Kattintson a **Küldés** gombra. A portálnak jeleznie kell, hogy az értesítés sikeresen elküldve az eszközre:
 
-    ![Eredmények küldése a Notification Hubs teszt](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
+    ![Notification Hubs eredmények küldésének tesztelése](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-test-send-result.png)
 
-    Feltételezve, hogy az alkalmazás nem az előtérben futó, megjelenik egy értesítés is a **értesítési központ** az eszközön. Az értesítésre való koppintással kell nyissa meg az alkalmazást, és a riasztás megjelenítéséhez.
+    Feltételezve, hogy az alkalmazás nem az előtérben fut, az értesítési **központban** is megjelenik egy értesítés az eszközön. Az értesítésre koppintva nyissa meg az alkalmazást, és jelenítse meg a riasztást.
 
-    ![Értesítés fogadása példa](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
+    ![Értesítés érkezett példa](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/test-send-notification-received.png)
 
-### <a name="send-a-test-notification-mail-carrier"></a>(Mail-szolgáltatója) tesztértesítés küldése
+### <a name="send-a-test-notification-mail-carrier"></a>Teszt értesítés küldése (levelezési szolgáltató)
 
-Keresztül értesítéseket küldhet a [REST API-val](/rest/api/notificationhubs/) használatával **Postman**, amely lehet több kényelmesen teszteléséhez.
+Értesítéseket küldhet a [REST API](/rest/api/notificationhubs/) a **Poster**használatával, ami kényelmesebb módszer lehet a teszteléshez.
 
-1. Nyisson meg egy új lapon **Postman**.
+1. Nyisson meg egy új lapot a **Poster**-ben.
 
-1. A kérelem beállítása **POST**, és adja meg a következő címre:
+1. Állítsa be a **post**értékre a kérést, és adja meg a következő címeket:
 
     ```xml
     https://<namespace>.servicebus.windows.net/<hubName>/messages/?api-version=2015-01
     ```
 
-1. A kérelem fejlécében a következőképpen konfigurálja:
+1. Konfigurálja a kérelmek fejléceit az alábbiak szerint:
 
-   | Kulcs                            | Érték                          |
+   | Kulcs                            | Value                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
-   | Engedélyezés                  | \<sasToken >                     |
+   | Authorization                  | \<sasToken >                     |
    | ServiceBusNotification-Format  | sablon                       |
    | Tags                           | "12345"                        |
 
-1. A kérelmek **törzs** használandó **RAW - JSON (application.json)** a következő JSON-adattartalom:
+1. Konfigurálja a kérelem **törzsét** a **RAW-JSON (Application. JSON)** használatára a következő JSON-adattartalommal:
 
     ```json
     {
@@ -671,7 +673,7 @@ Keresztül értesítéseket küldhet a [REST API-val](/rest/api/notificationhubs
     }
     ```
 
-1. Válassza ki a **kód** gombra, amely alatt a **mentése** gombra a jobb felső sarokban az ablak. A kérelem a következő példához hasonlóan kell kinéznie:
+1. Kattintson a **kód** gombra, amely az ablak jobb felső sarkában található **Mentés** gombra kattint. A kérelemnek az alábbi példához hasonlóan kell kinéznie:
 
     ```html
     POST /<hubName>/messages/?api-version=2015-01 HTTP/1.1
@@ -688,23 +690,23 @@ Keresztül értesítéseket küldhet a [REST API-val](/rest/api/notificationhubs
     }
     ```
 
-1. Válassza ki a **küldése** gombra.
+1. Kattintson a **Küldés** gombra.
 
-Első sikeres állapotkódot kell, és megkapja az értesítést az ügyféleszközön.
+Szerezze be a sikeres állapotkódot, és fogadja az értesítést az ügyfélszámítógépen.
 
 ## <a name="next-steps"></a>További lépések
-Most már rendelkezik egy Swift alapszintű iOS-alkalmazást, egy értesítési központ keresztül csatlakozik a [REST API-val](/rest/api/notificationhubs/) és küldhet és fogadhat értesítéseket. További információkért tekintse át a következő cikkeket:
+Most már rendelkezik egy, az értesítési központhoz csatlakoztatott alapszintű iOS Swift-alkalmazással a [Rest APIon](/rest/api/notificationhubs/) keresztül, és küldhet és fogadhat értesítéseket. További információkért tekintse át a következő cikkeket:
 
-- [Az Azure Notification Hubs – áttekintés](notification-hubs-push-notification-overview.md)
-- [A Notification Hubs – REST API-k](/rest/api/notificationhubs/)
-- [Notification Hubs SDK háttér-műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
-- [A Notification Hubs SDK a Githubon](https://github.com/Azure/azure-notificationhubs)
-- [Az alkalmazás háttérrendszere regisztrálása](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
-- [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md)
+- [Az Azure Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)
+- [Notification Hubs REST API-k](/rest/api/notificationhubs/)
+- [Notification Hubs SDK a háttérbeli műveletekhez](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
+- [Notification Hubs SDK a GitHubon](https://github.com/Azure/azure-notificationhubs)
+- [Regisztrálás az alkalmazás háttérben](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+- [Regisztráció kezelése](notification-hubs-push-notification-registration-management.md)
 - [Címkék használata](notification-hubs-tags-segment-push-message.md) 
 - [Egyéni sablonok használata](notification-hubs-templates-cross-platform-push-messages.md)
-- [A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódok használata](../service-bus-messaging/service-bus-sas.md)
-- [Programozott módon a SAS-jogkivonatokat hoz létre](/rest/api/eventhub/generate-sas-token)
-- [Apple biztonsági: általános kriptográfiai](https://developer.apple.com/security/)
-- [UNIX alapidőpont szerint](https://en.wikipedia.org/wiki/Unix_time)
+- [Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal](../service-bus-messaging/service-bus-sas.md)
+- [SAS-tokenek programozott módon történő előállítása](/rest/api/eventhub/generate-sas-token)
+- [Apple Security: általános kriptográfia](https://developer.apple.com/security/)
+- [UNIX-kor időpontja](https://en.wikipedia.org/wiki/Unix_time)
 - [HMAC](https://en.wikipedia.org/wiki/HMAC)

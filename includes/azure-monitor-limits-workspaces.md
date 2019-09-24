@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392897"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210237"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -64,6 +64,19 @@ ms.locfileid: "70392897"
 | Oszlop nevének maximális száma | 500 | |
 | Kapacitású régiók | USA nyugati középső régiója | Ebben a régióban jelenleg nem hozhat létre új munkaterületet, mert az átmeneti kapacitási korláttal rendelkezik. Ez a korlát 2019 október végére tervezett. |
 | Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
+
+**Adatfeldolgozási sebesség**
+
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **500 MB/perc/** munkaterületre van állítva. Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
+ 
+Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >Attól függően, hogy mennyi ideig használta a Log Analytics, lehet, hogy hozzáfér a régi díjszabási csomagokhoz. További információ a [log Analytics korábbi díjszabási szintjeiről](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

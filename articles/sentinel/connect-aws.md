@@ -1,5 +1,5 @@
 ---
-title: A Symantec AWS-beli adatszolgáltatások összekötése az Azure Sentinel előzetes verziójával Microsoft Docs
+title: Symantec AWS-beli adatkapcsolatok összekötése az Azure Sentinel szolgáltatással Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztatható a Symantec AWS-beli adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295621"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240868"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
@@ -35,7 +35,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 ## <a name="connect-aws"></a>Az AWS csatlakoztatása 
 
 
-1. Az Azure Sentinelben válassza  az adatösszekötők lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
+1. Az Azure Sentinelben válassza az adatösszekötők lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
 
 1. A következő lépések végrehajtásával kövesse a **konfiguráció** szakasz utasításait.
  
@@ -82,5 +82,5 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

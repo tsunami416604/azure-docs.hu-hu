@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 372851686b43e6d2caf4695b988789990077e8fe
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090858"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219452"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -320,9 +320,9 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 > Az az PS Version 1.6.0-től kezdve az egyik frissítéssel frissítheti az azonnali visszaállítás pillanatképének megőrzési időszakát a szabályzatban a PowerShell használatával
 
 ````powershell
-$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
 $bkpPol.SnapshotRetentionInDays=7
-Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
+Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
 Az alapértelmezett érték 2, a felhasználó beállíthatja az értéket 1 és legfeljebb 5 közötti értékre. A heti biztonsági mentési házirendek esetében az időszak értéke 5, és nem módosítható.
@@ -380,7 +380,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
+#### <a name="delete-backup-data"></a>Biztonsági másolat adatainak törlése
 
 Ahhoz, hogy teljesen el lehessen távolítani a tárolt biztonsági mentési fájlokat a tárolóban, egyszerűen adja hozzá a "-RemoveRecoveryPoints" jelzőt, vagy váltson a ["letiltás" védelmi parancsra](#retain-data).
 

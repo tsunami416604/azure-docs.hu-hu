@@ -8,12 +8,12 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: b025315391ceb15fc1ae76f0365898f02882dd0b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: b729881d30248bb4c3a717d70009cd68da91cf94
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563441"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211838"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Gyors útmutató: A Java használata az Azure Database for PostgreSQL-alapú kiszolgálókon való kapcsolódáshoz és adatlekérdezéshez
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
@@ -34,7 +34,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
 3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-java/1-connection-string.png)
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-java/azure-database-postgresql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kóddal csatlakozhat és töltheti be adatokat az adatbázisba a függvény és egy **INSERT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a tábla eltávolítására és létrehozására szolgál. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 

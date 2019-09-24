@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034735"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212000"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
 
@@ -36,6 +36,8 @@ A Log Analytics munkaterület A következőket biztosítja:
 
 Ez a cikk részletes áttekintést nyújt a tervezési és áttelepítési megfontolásokról, a hozzáférés-vezérlés áttekintéséről, valamint az informatikai szervezet számára ajánlott tervezési megvalósítások megismeréséről.
 
+
+
 ## <a name="important-considerations-for-an-access-control-strategy"></a>A hozzáférés-vezérlési stratégia fontos szempontjai
 
 A szükséges munkaterületek számának azonosításához az alábbi követelmények közül egyet vagy többet kell megadnia:
@@ -52,13 +54,13 @@ Az informatikai szervezetek jelenleg a következő modelleken alapulnak: közpon
 
 Ha a Log Analytics ügynököket használja az adatok gyűjtésére, az ügynök üzembe helyezésének megtervezéséhez a következőket kell megismernie:
 
-* A Windows-ügynököktől származó adatok összegyűjtéséhez beállíthatja, hogy az [egyes ügynökök egy vagy több](../../azure-monitor/platform/agent-windows.md)munkaterületnek jelentsenek, még akkor is, ha System Center Operations Manager felügyeleti csoportnak jelentenek jelentést. A Windows-ügynök legfeljebb négy munkaterületet tud jelenteni.
+* A Windows-ügynököktől származó adatok összegyűjtéséhez beállíthatja, hogy az [egyes ügynökök egy vagy több munkaterületnek jelentsenek](../../azure-monitor/platform/agent-windows.md), még akkor is, ha System Center Operations Manager felügyeleti csoportnak jelentenek jelentést. A Windows-ügynök legfeljebb négy munkaterületet tud jelenteni.
 * A Linux-ügynök nem támogatja a többsoros vezérlést, és csak egyetlen munkaterületre tud jelentést készíteni.
 
 Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
-* Az egyes Operations Manager felügyeleti csoportok [csak egy](../platform/om-agents.md)munkaterülethez csatlakoztathatók. 
-* A felügyeleti csoportnak jelentést küldő linuxos számítógépeket úgy kell konfigurálni, hogy közvetlenül egy Log Analytics munkaterületre jelentsenek. Ha a Linux rendszerű számítógépek már közvetlenül egy munkaterületre vannak bejelentve, és Operations Manager szeretné figyelni őket, kövesse az alábbi lépéseket [egy Operations Manager felügyeleti csoportnak](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)való jelentéskészítéshez. 
+* Az egyes Operations Manager felügyeleti csoportok [csak egy munkaterülethez csatlakoztathatók](../platform/om-agents.md). 
+* A felügyeleti csoportnak jelentést küldő linuxos számítógépeket úgy kell konfigurálni, hogy közvetlenül egy Log Analytics munkaterületre jelentsenek. Ha a Linux rendszerű számítógépek már közvetlenül egy munkaterületre vannak bejelentve, és Operations Manager szeretné figyelni őket, kövesse az alábbi lépéseket [egy Operations Manager felügyeleti csoportnak való jelentéskészítéshez](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Telepítheti a Log Analytics Windows-ügynököt a Windows rendszerű számítógépre, és jelentést készíthet mind a munkaterülettel integrált Operations Manager, mind pedig egy másik munkaterületről.
 
 ## <a name="access-control-overview"></a>Hozzáférés-vezérlés áttekintése
@@ -105,9 +107,9 @@ A következő táblázat összefoglalja a hozzáférési módokat:
 | | Munkaterület – környezet | Erőforrás-környezet |
 |:---|:---|:---|
 | Kik az egyes modellek? | Központi felügyelet. Azok a rendszergazdák, akiknek olyan adatgyűjtést és felhasználókat kell konfigurálniuk, akiknek számos erőforráshoz kell hozzáféréssel rendelkezniük. Jelenleg olyan felhasználók számára is szükséges, akiknek az Azure-on kívüli erőforrásokhoz is hozzá kell férniük. | Alkalmazás-csapatok. A figyelt Azure-erőforrások rendszergazdái. |
-| Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure](manage-access.md#manage-access-using-azure-permissions)-engedélyekkel. Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
+| Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
 | Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók a munkaterületen lévő összes naplót le tudják kérdezni azokról a táblákról, amelyekhez engedéllyel rendelkeznek. Lásd: [Table Access Control](manage-access.md#table-level-rbac) | Azure-erőforrás. A felhasználó bármely munkaterületről lekérdezheti az egyes erőforrások, erőforráscsoportok vagy előfizetések naplóit, de más erőforrásokhoz nem tud naplókat lekérdezni. |
-| Hogyan férhet hozzá a felhasználói naplókhoz? | <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics**munkaterületekről.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> | <ul><li>**Naplók** indítása az Azure-erőforrás menüjéből</li></ul> <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics**munkaterületekről.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> |
+| Hogyan férhet hozzá a felhasználói naplókhoz? | <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> | <ul><li>**Naplók** indítása az Azure-erőforrás menüjéből</li></ul> <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Hozzáférés-vezérlési mód
 
@@ -129,6 +131,19 @@ A *hozzáférés-vezérlési mód* az egyes munkaterületeken olyan beállítás
     > Ha egy felhasználó csak erőforrás-jogosultságokkal rendelkezik a munkaterülethez, csak az erőforrás-környezet mód használatával férhetnek hozzá a munkaterülethez, feltételezve, hogy a munkaterület-hozzáférési mód **erőforrás-vagy munkaterület-engedélyek használatára**van beállítva.
 
 A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource Manager-sablonok használatával történő módosításáról további információt a [hozzáférés-vezérlési mód konfigurálása](manage-access.md#configure-access-control-mode)című témakörben talál.
+
+## <a name="ingestion-volume-rate-limit"></a>Betöltési mennyiség maximális száma
+
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **500 MB/perc/** munkaterületre van állítva. Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
+ 
+Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 ## <a name="recommendations"></a>Javaslatok
 

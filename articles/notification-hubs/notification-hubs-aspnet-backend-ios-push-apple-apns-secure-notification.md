@@ -1,10 +1,10 @@
 ---
-title: Azure Notification Hubs Secure Push
-description: Ismerje meg, hogyan biztonságos leküldéses értesítések küldése iOS-alkalmazásokba az Azure-ból. Objective-C és C# nyelven írt kódmintákat.
+title: Azure Notification Hubs biztonságos leküldés
+description: Ismerje meg, hogyan küldhet biztonságos leküldéses értesítéseket egy iOS-alkalmazásba az Azure-ból. A Objective-C és C#a kódban írt példák
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458492"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212147"
 ---
-# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure Push
+# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs biztonságos leküldés
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -30,47 +32,47 @@ ms.locfileid: "61458492"
 
 ## <a name="overview"></a>Áttekintés
 
-Leküldéses értesítés támogatása a Microsoft Azure segítségével elérheti egy könnyen használható, többplatformos, kibővített leküldéses infrastruktúra, amely jelentősen egyszerűsíti a leküldéses értesítések a mobile fogyasztói és a vállalati alkalmazások számára Platform.
+A leküldéses értesítések támogatása Microsoft Azure lehetővé teszi egy könnyen használható, többplatformos, kibővített leküldéses infrastruktúra elérését, ami nagy mértékben leegyszerűsíti a leküldéses értesítések megvalósítását mind a fogyasztói, mind a nagyvállalati alkalmazások számára. platformok.
 
-Szabályozási miatt, vagy biztonsági okokból, néha egy alkalmazás előfordulhat, hogy szeretne foglalni valamit a értesítést, amelyet nem lehet megadni a standard szintű leküldéses értesítési infrastruktúrát keresztül. Ebben az oktatóanyagban értékre a bizalmas adatokat az ügyféleszköz- és az alkalmazási háttérrendszer között biztonságos, hitelesített kapcsolaton keresztül küldésével ugyanazt a felhasználói élményt ismerteti.
+A szabályozási vagy biztonsági korlátozások miatt előfordulhat, hogy egy alkalmazás az értesítésben olyan dolgot is tartalmaz, amely nem továbbítható a szabványos leküldéses értesítési infrastruktúrán keresztül. Ez az oktatóanyag leírja, hogyan érheti el ugyanezt a élményt úgy, hogy bizalmas adatokat küld biztonságos, hitelesített kapcsolaton keresztül az ügyfél és az alkalmazás háttere között.
 
-Magas szinten a folyamat a következőképpen történik:
+Magas szinten a folyamat a következő:
 
-1. A háttér:
-   * Háttér-adatbázisban tárolja biztonságos adattartalma.
-   * Ez az értesítés azonosítója elküldi az eszköznek (nem biztonságos küld adatokat).
-2. Az alkalmazás az eszközön, az értesítés fogadásakor:
-   * Az eszköz kapcsolatba lép a háttéralkalmazás a biztonságos hasznos adatokat kér.
-   * Az alkalmazás az eszközön értesítést, a hasznos adatokat jeleníti meg.
+1. Az alkalmazás háttérrendszer:
+   * Biztonságos adattartalmat tárol a háttér-adatbázisban.
+   * Elküldi az értesítés AZONOSÍTÓját az eszköznek (nincs biztonságos információ elküldve).
+2. Az alkalmazás az eszközön az értesítés fogadásakor:
+   * Az eszköz kapcsolatba lép a biztonságos adattartalmat kérő háttérrel.
+   * Az alkalmazás értesítésként jeleníti meg a hasznos adatokat az eszközön.
 
-Fontos megjegyezni, hogy az előző folyamat (és ebben az oktatóanyagban) feltételezzük, hogy az eszköz tárolja a egy hitelesítési tokent a helyi tárban, miután a felhasználó bejelentkezik. Ez garantálja a zökkenőmentes élményt,, az eszköz kérheti le az értesítési e-jogkivonat használatával biztonságos hasznos. Ha az alkalmazás nem tárolja a hitelesítési tokenek az eszközön, vagy ha ezek a jogkivonatok is járhatott, az eszköz alkalmazást, az értesítés fogadásakor indítsa el az alkalmazást a felhasználó megkérdezése általános értesítést kell megjelenítenie. Az alkalmazás ezután hitelesíti a felhasználót, és az értesítési tartalom látható.
+Fontos megjegyezni, hogy az előző folyamat során (és ebben az oktatóanyagban) feltételezzük, hogy az eszköz helyi tárolóban tárolja a hitelesítési jogkivonatot, miután a felhasználó bejelentkezik. Ez zökkenőmentes élményt garantál, mivel az eszköz a token használatával lekérheti az értesítés biztonságos hasznos adatait. Ha az alkalmazás nem tárolja a hitelesítési jogkivonatokat az eszközön, vagy ha ezek a jogkivonatok elévülnek, akkor az értesítés fogadásakor a felhasználónak az alkalmazás elindítását kérő általános értesítésnek kell megjelennie. Az alkalmazás ezután hitelesíti a felhasználót, és megjeleníti az értesítési adattartalmat.
 
-Biztonságos leküldéses oktatóanyag bemutatja, hogyan biztonságosan küldhet leküldéses értesítéseket. Az oktatóanyag épül, amely a [– felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) így, hajtsa végre a lépéseket, hogy az oktatóanyagban először az oktatóanyagban.
+Ez a biztonságos leküldéses oktatóanyag a leküldéses értesítések biztonságos küldését mutatja be. Az oktatóanyag a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagra épül, ezért először végre kell hajtania az oktatóanyag lépéseit.
 
 > [!NOTE]
-> Ez az oktatóanyag feltételezi, hogy létrehozta és leírtak szerint konfigurálta az értesítési központ [Ismerkedés a Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+> Ez az oktatóanyag feltételezi, hogy létrehozta és konfigurálta az értesítési központot a [Első lépések Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)című cikkben leírtak szerint.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
-Most, hogy módosította, a háttér küldése csak a *azonosító* egy értesítés, módosítania kell az iOS-alkalmazás az értesítések kezelésére, és a háttérbeli letölteni a megjeleníteni kívánt biztonságos üzenetet a visszahívási.
+Most, hogy úgy módosította az alkalmazást, hogy csak az adott értesítés azonosítóját küldje el, módosítania kell az iOS-alkalmazást az értesítés kezelésére, és vissza kell hívnia a háttérben a megjelenítendő biztonságos üzenet lekéréséhez.
 
-E cél eléréséhez rendelkezünk a tartalmak biztonságos lekérése a háttér logikai írni.
+A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat lekérje az alkalmazás háttérből.
 
-1. A `AppDelegate.m`, ellenőrizze, hogy a háttérrendszer által küldött az alkalmazás regisztrál a beavatkozás nélküli értesítésekhez úgy feldolgozza az értesítés azonosítója. Adja hozzá a `UIRemoteNotificationTypeNewsstandContentAvailability` didFinishLaunchingWithOptions lehetőség:
+1. A `AppDelegate.m`-ben ellenőrizze, hogy az alkalmazás regisztrálja-e a csendes értesítéseket, hogy feldolgozza a háttérből küldött értesítési azonosítót. Adja hozzá `UIRemoteNotificationTypeNewsstandContentAvailability` a kapcsolót a didFinishLaunchingWithOptions-ben:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. Az a `AppDelegate.m` adjon hozzá egy megvalósítási szakaszban elejéhez, az alábbi nyilatkozatot:
+2. `AppDelegate.m` A felül lévő implementáció szakaszban a következő deklarációval:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Majd adja hozzá a megvalósítási szakaszban a következő kódra, és cserélje le a helyőrző `{back-end endpoint}` a végponthoz tartozó a háttérszolgáltatáshoz korábban beszerzett:
+3. Ezután adja hozzá a megvalósítás szakaszhoz a következő kódot, és a helyőrzőt `{back-end endpoint}` a háttérbe való helyettesítéssel, korábban beszerzett végpontra:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -117,14 +119,14 @@ E cél eléréséhez rendelkezünk a tartalmak biztonságos lekérése a hátté
     }
     ```
 
-    Ez a metódus meghívja a háttér beolvasni az értesítések tartalmát, a közös beállításokat tárolt hitelesítő adatok használatával.
+    Ez a metódus a megosztott beállításokban tárolt hitelesítő adatok használatával hívja meg az alkalmazás háttér-visszaállítását.
 
-4. Most már van a bejövő értesítések kezelésére, és a fenti metódus lekérni a tartalmat megjelenítéséhez. Először is van az iOS-alkalmazás futtatását a háttérben, amikor a leküldéses értesítések engedélyezéséhez. A **XCode**, válassza a bal oldali panelen projektre, majd kattintson az alkalmazás fő cél az az **célok** szakaszban a középső ablaktáblán.
-5. Kattintson a **képességek** a középső ablaktábla felső részén látható, és ellenőrizze a **távoli értesítések** jelölőnégyzetet.
+4. Most meg kell kezelnie a beérkező értesítést, és a fenti módszer használatával le kell kérni a megjelenítendő tartalmat. Először is engedélyezni kell, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode**válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
+5. Ezután kattintson a **funkciók** fülre a központi ablaktábla tetején, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![][IOS1]
 
-6. A `AppDelegate.m` adja hozzá a következő metódust a leküldéses értesítések kezeléséhez:
+6. A következő módszer hozzáadása a leküldéses értesítések kezeléséhez: `AppDelegate.m`
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -149,14 +151,14 @@ E cél eléréséhez rendelkezünk a tartalmak biztonságos lekérése a hátté
     }
     ```
 
-    Fontos megjegyezni, hogy az esetek hiányzó hitelesítési fejléc tulajdonság vagy elutasítási kezeléséhez által a háttér-előnyösebb. Ezekben az esetekben az adott kezelését leginkább a célként megadott felhasználói élményét függ. Az egyik lehetőség, hogy értesítést kérek, és általános kéri a felhasználó hitelesítésére lekérni a tényleges értesítést.
+    Vegye figyelembe, hogy a hiányzó hitelesítési fejlécek tulajdonságának vagy a háttér általi elutasításnak a kezelése ajánlott. Ezeknek az eseteknek a konkrét feldolgozása főleg a célzott felhasználói élménytől függ. Az egyik lehetőség egy általános rákérdező értesítés megjelenítése a felhasználó hitelesítéséhez a tényleges értesítés lekéréséhez.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához tegye a következőket:
 
-1. Az xcode-ban az alkalmazás futtatása egy fizikai iOS-eszközön (leküldéses értesítések nem fog működni a szimulátor).
-2. Az iOS-alkalmazás felhasználói felületén adja meg egy felhasználónevet és jelszót. Ezek bármilyen karakterlánc lehet, de ugyanazt az értéket kell lenniük.
-3. Az IOS-es alkalmazás felhasználói felületén kattintson **bejelentkezés**. Kattintson a **küldjön leküldéses**. A biztonságos értesítést az értesítési központ által megjelenített kell megjelennie.
+1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem fognak működni a szimulátorban).
+2. Az iOS-alkalmazás felhasználói felületén adja meg a felhasználónevet és a jelszót. Ezek bármilyen sztringek lehetnek, de az értékeknek is szerepelniük kell.
+3. Az iOS-alkalmazás felhasználói felületén kattintson a **Bejelentkezés**elemre. Ezután kattintson a **leküldés küldése**gombra. Az értesítési központban megjelenik a biztonságos értesítés.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

@@ -1,54 +1,56 @@
 ---
-title: Regisztrációkezelés
-description: Ez a témakör ismerteti az eszközök regisztrálása a notification hubs használatával leküldéses értesítések fogadásához.
+title: Regisztráció kezelése
+description: Ez a témakör azt ismerteti, hogyan regisztrálhat eszközöket értesítési központokkal a leküldéses értesítések fogadásához.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/08/2019
+ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488631"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213092"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a témakör ismerteti az eszközök regisztrálása a notification hubs használatával leküldéses értesítések fogadásához. A témakör ismerteti a regisztrációk magas szinten, majd vezet be az eszközök regisztrálásához a két fő minták: közvetlenül az értesítési központban regisztrálása az eszközről, és regisztrálnia kell az alkalmazás háttérrendszerével keresztül.
+Ez a témakör azt ismerteti, hogyan regisztrálhat eszközöket értesítési központokkal a leküldéses értesítések fogadásához. A témakör a regisztrációkat magas szinten mutatja be, majd az eszközök regisztrálásának két fő mintáját mutatja be: regisztrálja az eszközről közvetlenül az értesítési központba, és regisztrálja az alkalmazási háttérrendszer használatával.
 
-## <a name="what-is-device-registration"></a>Mi az az eszköz regisztrálása
+## <a name="what-is-device-registration"></a>Mi az az eszköz regisztrálása?
 
-Eszközregisztráció az egy értesítési központ használatával valósítható meg a **regisztrációs** vagy **telepítési**.
+Az eszköz regisztrációja az értesítési központtal **regisztráció** vagy **telepítés**használatával történik.
 
 ### <a name="registrations"></a>Regisztrációk
 
-Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszközhöz társítja, címkék, és esetleg egy sablont. A PNS-leíró egy amiatt, eszköztoken vagy FCM-regisztrációs azonosító lehet. Címkék segítségével értesítések átirányítása az eszközleírók megfelelő készletét. További információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md). Sablonok regisztrációs átalakítás végrehajtásához használnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
+A regisztráció társítja a platform Notification Service (PNS) leíróját egy olyan eszközhöz, amely címkével és valószínűleg sablonnal rendelkezik. A PNS-leíró lehet regisztrációban szereplő URI, eszköz-jogkivonat vagy FCM regisztrációs azonosító. A címkék segítségével az értesítéseket az eszközök megfelelő készletére irányíthatja. További információ: [útválasztási és címkézési kifejezések](notification-hubs-tags-segment-push-message.md). A sablonok a regisztrációs átalakítás megvalósítására szolgálnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
 
 > [!NOTE]
-> Az Azure Notification Hubs 60 címkék eszközönként legfeljebb támogat.
+> Az Azure Notification Hubs legfeljebb 60 címkét támogat eszközönként.
 
-### <a name="installations"></a>Telepítések
+### <a name="installations"></a>Létesítmények
 
-Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdonságcsomagjait regisztrációs kapcsolódó tulajdonságok. Az eszközök regisztrálása a legújabb és legjobb módja. Azonban nem támogatott az ügyféloldali .NET SDK-ban ([Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) kezdődően még.  Ez azt jelenti, ha regisztrál a magáról az ügyféleszközről, meg kellene használnia a [Notification Hubs – REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) megközelítés telepítések támogatásához. Háttérszolgáltatás használatakor kell tudni használni [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+A telepítés olyan továbbfejlesztett regisztráció, amely a leküldéses kapcsolódó tulajdonságokat tartalmazza. Az eszközök regisztrálásának legújabb és legjobb megközelítése. Azonban az ügyféloldali .NET SDK (az[értesítési központ SDK for háttér-műveletek esetében](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) nem támogatott.  Ez azt jelenti, hogy ha magáról az eszközről regisztrálja magát, az [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) megközelítést kell használnia a telepítések támogatásához. Ha háttér-szolgáltatást használ, akkor [az Notification hub SDK-t használhatja a háttérbeli műveletekhez](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Fő előnye, hogy telepítések az alábbiak:
+A következő alapvető előnyökkel jár a telepítések használata:
 
-- Teljes körűen idempotensnek létrehozása vagy frissítése egy telepítés. Ezért is újraindítható bármely duplikált regisztrációk aggodalmak nélkül.
-- A telepítési modell egy speciális címkével formátumot támogatja (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy közvetlenül az adott eszköz küld értesítést. Például, ha az alkalmazás beállítása a telepítési Azonosítót `joe93developer` az adott eszköz a fejlesztők célként az eszköz egy értesítés küldéséhez a `$InstallationId:{joe93developer}` címke. Ez lehetővé teszi, hogy egy adott eszköz célként ehhez további kódírás nélkül.
-- Telepítés használatával is lehetővé teszi, hogy részleges regisztrációfrissítés. A részleges frissítési telepítés kérése történik a PATCH módszer használatával a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902). Ez akkor hasznos, ha frissíti a címkéket a regisztrációt. Nem kell kérje le a teljes regisztrációját, és küldje el újra a korábbi címkéket.
+- A telepítés létrehozása vagy frissítése teljesen idempotens. Így újra megpróbálkozhat az ismétlődő regisztrációkkal kapcsolatos probléma nélkül is.
+- A telepítési modell olyan speciális címke formátumot támogat (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy az értesítéseket közvetlenül az adott eszközre küldje. Ha például az alkalmazás kódja az adott eszközhöz `joe93developer` tartozó telepítési azonosítót állítja be, akkor a fejlesztők megcélozhatja ezt az eszközt, amikor értesítést küld a `$InstallationId:{joe93developer}` címkének. Ez lehetővé teszi egy adott eszköz célzását anélkül, hogy további kódolásra lenne szükség.
+- A telepítések lehetővé teszik a részleges regisztrációs frissítések elvégzését is. A telepítés részleges frissítését egy PATCH metódussal kell kérni a [JSON-patch szabvány](https://tools.ietf.org/html/rfc6902)használatával. Ez akkor hasznos, ha frissíteni szeretné a címkéket a regisztrációban. Nem kell lekérnie a teljes regisztrációt, majd újra el kell küldenie az összes korábbi címkét.
 
-Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságok](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
+A telepítés a következő tulajdonságokat tartalmazza. A telepítési tulajdonságok teljes listáját lásd: [telepítés létrehozása vagy felülírása REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságokkal](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -87,45 +89,45 @@ Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdo
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint a regisztrációk és a telepítés ne járjanak le.
+> Alapértelmezés szerint a regisztrációk és a telepítések nem járnak le.
 
-Regisztráció és a telepítés minden egyes eszköz vagy csatorna érvénytelen PNS-leíró kell tartalmaznia. Egy ügyfélalkalmazás az eszközön a PNS-leírók regisztrálásáért csak szerezhető be, mert egy egyik közvetlenül az adott eszközön az ügyféloldali alkalmazás regisztrálásához. Másrészt biztonsági megfontolásokra, illetve a címkék kapcsolódó üzleti logika szükség lehet, hogy az alkalmazás háttér az eszközregisztráció kezelése.
+A regisztrációknak és a telepítéseknek érvényes PNS-leírót kell tartalmazniuk minden eszközhöz/csatornához. Mivel a PNS-kezelők csak az eszközön lévő ügyfélalkalmazások szerezhetők be, az egyik minta az, hogy közvetlenül az adott eszközön regisztrálja az alkalmazást. Másfelől a címkékhez kapcsolódó biztonsági megfontolások és üzleti logika esetében szükség lehet az eszközök regisztrációjának felügyeletére az alkalmazás hátterében.
 
 > [!NOTE]
-> A telepítések API nem támogatja a Baidu-szolgáltatás (bár a regisztrációk API hasonlóan). 
+> A telepítési API nem támogatja a Baidu szolgáltatást (bár a regisztrációk API-t). 
 
 ### <a name="templates"></a>Sablonok
 
-Ha a használni kívánt [sablonok](notification-hubs-templates-cross-platform-push-messages.md), az eszköz telepítése is tartalmazza az összes sablon egy JSON-eszköz társított formázása (lásd a fenti példában). A nevek segítségével a cél különböző sablonok ugyanazon az eszközön.
+Ha [sablonokat](notification-hubs-templates-cross-platform-push-messages.md)szeretne használni, az eszköz telepítése az adott eszközhöz társított összes sablont JSON formátumban is tartalmazza (lásd a fenti mintát). A sablon neve segít megcélozni a különböző sablonokat ugyanahhoz az eszközhöz.
 
-Minden sablon neve leképez egy sablon törzsét és címkék nem kötelező megadni. Ezen felül a platformonként további sablontulajdonságok rendelkezhet. Windows Store (WNS használatával) és a Windows Phone 8 (MPNS használatával) egy további készletet a fejlécek a sablon része lehet. Esetén APNs beállíthat egy lejárati tulajdonságot egy konstans, vagy egy kifejezés. Teljes listáját a telepítési tulajdonságok lásd [létrehozása vagy a telepítés felülírja a REST segítségével](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) témakör.
+Minden sablon neve egy sablon törzsére és egy opcionális címkére van leképezve. Emellett minden platformhoz további sablon-tulajdonságok is tartozhatnak. A Windows áruházban (WNS használatával) és Windows Phone-telefon 8 (a MPNS használatával) további fejlécek is lehetnek a sablon részei. APNs esetén a lejárati tulajdonságot állandó vagy sablon típusú kifejezésre állíthatja be. A telepítési tulajdonságok teljes listájáért tekintse meg, hogyan [hozhat létre vagy írhat felül egy telepítést a REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) témakörben.
 
-### <a name="secondary-tiles-for-windows-store-apps"></a>A Windows Store Apps másodlagos Csempék
+### <a name="secondary-tiles-for-windows-store-apps"></a>Másodlagos csempék a Windows áruházbeli alkalmazásokhoz
 
-Az ügyfélalkalmazások Windows Store értesítések küldése a másodlagos csempék megegyezik a elküldi azokat a közül. A telepítések is támogatják. Másodlagos csempénél van egy másik amiatt, és az SDK az ügyfélalkalmazás az átlátható módon kezeli.
+A Windows áruházbeli ügyfélalkalmazások esetében az értesítések másodlagos csempévé való küldése ugyanaz, mint az elsődlegesnek. Ez a telepítésekben is támogatott. A másodlagos csempék eltérő regisztrációban szereplő URI rendelkeznek, amelyeket az ügyfélalkalmazás transzparens módon kezel.
 
-A SecondaryTiles szótárban az azonos TileId, amellyel a SecondaryTiles objektum létrehozása a Windows Store App használ. Csakúgy, mint az elsődleges amiatt, a másodlagos csempék ChannelUris bármikor módosíthatja. Annak érdekében, hogy ne a telepítések az értesítési központ frissítése, az eszköz frissítenie kell azokat a az aktuális ChannelUris a másodlagos csempék.
+A SecondaryTiles szótár ugyanazt a TileId használja, amely a SecondaryTiles objektum létrehozásához használható a Windows áruházbeli alkalmazásban. Ahogy az elsődleges regisztrációban szereplő URI is, a másodlagos csempék ChannelUris bármikor megváltozhatnak. Ahhoz, hogy az értesítési központban lévő telepítések naprakészek maradjanak, az eszköznek frissítenie kell azokat a másodlagos csempék aktuális ChannelUris.
 
-## <a name="registration-management-from-the-device"></a>Az eszközről regisztrációkezelés
+## <a name="registration-management-from-the-device"></a>Regisztrációs felügyelet az eszközről
 
-Az eszköz regisztrálása az ügyfélalkalmazások kezelésekor a háttérrendszer feladata csak az értesítések küldéséhez. Ügyfélalkalmazások tartsa naprakészen a PNS-leírók regisztrálásáért, és regisztrálja a címkéket. A következő kép szemlélteti ezt a mintát.
+Ha az ügyfél alkalmazásaiból végzi az eszközök regisztrálását, a háttérrendszer csak az értesítések elküldéséhez felelős. Az ügyfélalkalmazások folyamatosan kezelik a PNS, és regisztrálják a címkéket. A következő kép szemlélteti ezt a mintát.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Az eszköz először a PNS-leíró lekéri a pns-sel, majd közvetlenül regisztrál az értesítési központban. Miután a regisztráció sikeres, az alkalmazási háttérrendszer a regisztrációs célzó értesítést küldhet. Értesítések küldése kapcsolatos további információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md).
+Az eszköz először lekéri a PNS leírót a PNS, majd közvetlenül regisztrálja az értesítési központot. A regisztráció sikerességét követően az alkalmazás-háttérrendszer értesítést küldhet a regisztrációról. További információ az értesítések küldéséről: [útválasztási és címkézési kifejezések](notification-hubs-tags-segment-push-message.md).
 
-Ebben az esetben, segítségével csak jogosultággal hozzáférhet a notification hubs használatával az eszközről. További információkért lásd: [biztonsági](notification-hubs-push-notification-security.md).
+Ebben az esetben csak a figyelési jogosultságokat használja az értesítési központok eléréséhez az eszközről. További információ: [Biztonság](notification-hubs-push-notification-security.md).
 
-Az eszköz regisztrálása a legegyszerűbb módszer, de azt hátrányokkal jár:
+Az eszközről való regisztráció a legegyszerűbb módszer, de néhány hátránya van:
 
-- Egy ügyfélalkalmazás csak frissítheti a címkéket, ha az alkalmazás aktív. Például ha egy felhasználó két eszközök, amelyeket regisztrálni kapcsolatos sport csapatok, amikor az első eszköz regisztrálja magát egy további címke (például a Seahawks) címkéket, a második eszköz nem kap az értesítések a Seahawks mindaddig, amíg az alkalmazás a második eszközön a második alkalommal hajtott végre. Általában a címkék vannak hatással a több eszközre, amikor a háttérrendszerből címkék kezelése beállítás kívánatos.
-- Alkalmazások is el lesznek, mivel biztonságossá tétele a meghatározott címkék regisztráció igényel körültekintően, a "címke szintű biztonsági." szakaszban leírtak szerint
+- Az ügyfélalkalmazások csak akkor frissíthetik a címkéket, ha az alkalmazás aktív. Ha például egy felhasználó két olyan eszközzel rendelkezik, amelyek a sport csapatával kapcsolatos címkéket regisztrálnak, amikor az első eszköz regisztrálja egy további címkét (például Seahawks), a második eszköz nem kapja meg a Seahawks vonatkozó értesítéseket, amíg a második eszközön lévő alkalmazás nem lesz egy második alkalommal hajtja végre. Általánosságban elmondható, hogy ha a címkéket több eszköz is érinti, a címkék a háttérből való kezelése kívánatos lehetőség.
+- Mivel az alkalmazások feltölthetők, a regisztráció adott címkékre való biztonságossá tételéhez extra gondossággal kell gondoskodni, ahogy azt a "címke szintű biztonság" szakasz ismerteti.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Regisztrálhat az egy értesítési központ segítségével telepítve eszközről kódpéldákat
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Példa kód egy értesítési központból a telepítéssel való regisztráláshoz
 
-Jelenleg ez csak támogatott használatával a [Notification Hubs – REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
+Jelenleg ez csak a [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)használatával támogatott.
 
-A PATCH módszer használatával is használhatja a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902) frissítheti a telepítést.
+A PATCH metódust a [JSON-patch standard](https://tools.ietf.org/html/rfc6902) használatával is használhatja a telepítés frissítéséhez.
 
 ```
 class DeviceInstallation
@@ -204,9 +206,9 @@ else
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Regisztrálhat az egy értesítési központ használatával egy regisztrációs eszközről kódpéldákat
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Példa kód egy értesítési központból regisztrációt használó eszközről való regisztrálásra
 
-Ezek a metódusok létrehozása vagy frissítése a neve, amelyen az eszköz regisztrálását. Ez azt jelenti, hogy annak érdekében, hogy a leíró vagy címkék frissítése, hogy felül kell írnia a teljes regisztráció. Ne feledje, hogy a regisztrációk átmeneti, így mindig rendelkeznie kell egy megbízható tárolóban, a jelenlegi címkékkel, amely egy adott eszköznek ahhoz van szüksége.
+Ezek a módszerek létrehoznak vagy frissítenek egy regisztrációs eszközt arra az eszközre, amelyen meghívja őket. Ez azt jelenti, hogy a leíró vagy a címkék frissítéséhez felül kell írnia a teljes regisztrációt. Ne feledje, hogy a regisztrációk átmenetiek, ezért mindig megbízható tárolóval kell rendelkeznie az adott eszközhöz szükséges aktuális címkékkel.
 
 ```
 // Initialize the Notification Hub
@@ -259,19 +261,19 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 }
 ```
 
-## <a name="registration-management-from-a-backend"></a>Regisztrációkezelés a háttérrendszerből
+## <a name="registration-management-from-a-backend"></a>Regisztráció a háttérrendszer-kezelőből
 
-Regisztrációk kezelése – a háttéralkalmazás további kód írása szükséges. Az alkalmazást az eszközről, a háttérkiszolgáló kezeli a frissített PNS minden alkalommal, amikor az alkalmazás elindul (valamint a címkékkel és sablonokkal), és a háttérrendszer frissítenie kell az értesítési központ ezt az azonosítót kell megadnia. A következő kép azt mutatja be, ezzel a kialakítással.
+A háttérbeli regisztrációk kezeléséhez további kódokat kell írni. Az eszközön lévő alkalmazásnak meg kell adnia a frissített PNS-leírót a háttérnek minden alkalommal, amikor az alkalmazás elindul (címkékkel és sablonokkal együtt), és a háttérrendszer frissítenie kell ezt a leírót az értesítési központban. A következő kép szemlélteti ezt a kialakítást.
 
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-A regisztrációk kezelése – a háttéralkalmazás előnyei közé tartozik a képes regisztrációk címkéket módosíthatja, még akkor is, ha a megfelelő alkalmazást az eszközön nem aktív, és a címke hozzáadása a regisztráció előtt az ügyfélalkalmazás hitelesítéséhez.
+A háttérbeli regisztrációk kezelésének előnyei közé tartozik a címkék módosításának lehetősége, még akkor is, ha az eszközön található megfelelő alkalmazás inaktív, valamint az ügyfélalkalmazás hitelesítéséhez, mielőtt hozzáad egy címkét a regisztrációhoz.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Példakód szeretne regisztrálni egy értesítési központ segítségével telepítve a háttérrendszerből
+### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Példa kód egy értesítési központból egy telepítéssel való regisztrációhoz
 
-Az ügyfél továbbra is lekéri a PNS-leíró és a megfelelő telepítési tulajdonságokat a előtt, és meghívja az egyéni API-k a háttérkiszolgálón is hajtsa végre a regisztráció, és engedélyezze a címkék stb. A háttérrendszer kihasználhatják a [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Az eszköz továbbra is megkapja a PNS leíróját és a kapcsolódó telepítési tulajdonságokat, mint korábban, és meghívja a háttérbeli egyéni API-t, amely elvégzi a regisztrációt, és engedélyezi a címkéket stb. A háttérrendszer-kezelők az [értesítési központ SDK-t használhatják a háttérbeli műveletekhez](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-A PATCH módszer használatával is használhatja a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902) frissítheti a telepítést.
+A PATCH metódust a [JSON-patch standard](https://tools.ietf.org/html/rfc6902) használatával is használhatja a telepítés frissítéséhez.
 
 ```
 // Initialize the Notification Hub
@@ -315,9 +317,9 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Regisztrálhat az egy értesítési központ egy eszközről egy regisztrációs Azonosítót használó kódpéldákat
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Példa kód egy értesítési központból egy regisztrációs AZONOSÍTÓval rendelkező eszközről való regisztráláshoz
 
-Az alkalmazás háttérrendszeréből alapszintű CRUDS műveleteket végezhet a regisztrációk. Példa:
+Az alkalmazás-háttérrendszer segítségével alapszintű szifilisz-műveleteket hajthat végre a regisztráció során. Példa:
 
 ```
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
@@ -341,4 +343,4 @@ await hub.UpdateRegistrationAsync(r);
 await hub.DeleteRegistrationAsync(r);
 ```
 
-A háttérrendszer között regisztrációfrissítés egyidejűségi kell kezelnie. A Service Bus regisztrációkezelés az optimista egyidejűséget lehetővé teszi. A HTTP-szinten ez az valósítja meg a regisztrációs ETag használatát. Ez a funkció transzparens módon használja a Microsoft-SDKs, ami kivételt jelenít meg, ha egy frissítés párhuzamosság miatt elutasítva. A háttéralkalmazás felelős az ilyen kivételek kezelése, és újra próbálkozik a frissítés, ha szükséges.
+A háttérnek a regisztrációs frissítések közötti párhuzamosságot kell kezelnie. A Service Bus optimista Egyidejűség-vezérlést biztosít a regisztrációk kezeléséhez. A HTTP-szinten ez a ETag használatával történik a regisztrálási felügyeleti műveletekben. Ezt a szolgáltatást a Microsoft SDK-k transzparens módon használják, amelyek kivételt képeznek, ha egy frissítést a Egyidejűség miatt elutasítanak. Az alkalmazás-háttérrendszer feladata a kivételek kezelése, és szükség esetén a frissítés újbóli kipróbálása.

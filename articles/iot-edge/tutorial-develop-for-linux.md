@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030986"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240950"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: IoT Edge-modulok létrehozása Linux-eszközökhöz
 
@@ -22,7 +22,7 @@ A Visual Studio Code használatával a IoT Edge rendszert futtató Linux rendsze
 
 A rövid útmutató cikkeiben létrehozott egy IoT Edge eszközt egy linuxos virtuális géppel, és üzembe helyezett egy előre elkészített modult az Azure piactéren. Ez az oktatóanyag végigvezeti a saját programkódjának IoT Edge eszközön való fejlesztéséhez és üzembe helyezéséhez szükséges lépéseken. Ez az oktatóanyag hasznos előfeltételként szolgál az összes többi oktatóanyaghoz, amely részletesen ismerteti az egyes programozási nyelveket és az Azure-szolgáltatásokat. 
 
-Ez az oktatóanyag a  **C# modul Linux**rendszerű eszközre történő üzembe helyezésének példáját használja. Ez a példa azért lett kiválasztva, mert ez a leggyakoribb fejlesztői forgatókönyv IoT Edge megoldásokhoz. Az oktatóanyag még akkor is hasznos, ha más nyelvet használ, vagy egy Azure-szolgáltatást helyez üzembe. Ez az oktatóanyag továbbra is hasznos a fejlesztői eszközök és fogalmak megismeréséhez. A fejlesztési folyamat bevezetésének befejezése után kiválaszthatja az előnyben részesített nyelvet vagy Azure-szolgáltatást. 
+Ez az oktatóanyag a  **C# modul Linux rendszerű eszközre**történő üzembe helyezésének példáját használja. Ez a példa azért lett kiválasztva, mert ez a leggyakoribb fejlesztői forgatókönyv IoT Edge megoldásokhoz. Az oktatóanyag még akkor is hasznos, ha más nyelvet használ, vagy egy Azure-szolgáltatást helyez üzembe. Ez az oktatóanyag továbbra is hasznos a fejlesztői eszközök és fogalmak megismeréséhez. A fejlesztési folyamat bevezetésének befejezése után kiválaszthatja az előnyben részesített nyelvet vagy Azure-szolgáltatást. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -44,7 +44,7 @@ IoT Edge modulok fejlesztésekor fontos megérteni a fejlesztési gép és a cé
 
 Ez az oktatóanyag a IoT Edge rendszert futtató linuxos eszközöket célozza meg. Használhatja a kívánt operációs rendszert, ha a fejlesztői gépen Linux-tárolókat is futtathat. Javasoljuk, hogy a Visual Studio Code használatával fejlesszen a Linux-eszközökhöz, hogy ezt az oktatóanyagot fogjuk használni. Használhatja a Visual studiót is, de a két eszköz között eltérések vannak.
 
-A következő táblázat a **Linux** -tárolók támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
+A következő táblázat a **Linux-tárolók** támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
@@ -56,13 +56,14 @@ A következő táblázat a **Linux** -tárolók támogatott fejlesztési forgat�
 >[!NOTE]
 >A Linux ARM64-eszközök támogatása [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. További információ: [ARM64 IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio Code-ban (előzetes verzió)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-Ez az oktatóanyag a Visual Studio Code-hoz készült fejlesztési lépéseket ismerteti. Ha inkább a Visual studiót szeretné használni, tekintse meg a [Visual studio 2019](how-to-visual-studio-develop-module.md)használati utasításait a modulok fejlesztéséhez és hibakereséséhez a Azure IoT Edgehoz.
+Ez az oktatóanyag a Visual Studio Code-hoz készült fejlesztési lépéseket ismerteti. Ha inkább a Visual studiót szeretné használni, tekintse meg a [Visual studio 2019 használati utasításait a modulok fejlesztéséhez és hibakereséséhez a Azure IoT Edgehoz](how-to-visual-studio-develop-module.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Egy fejlesztői gép:
 
 * A fejlesztési beállításoktól függően saját számítógépet vagy virtuális gépet is használhat.
+  * Győződjön meg arról, hogy a fejlesztői számítógép támogatja a beágyazott virtualizálás szolgáltatást. Ez a funkció a következő szakaszban telepítendő tároló-motor futtatásához szükséges.
 * A tároló motort futtató legtöbb operációs rendszer használható IoT Edge modulok Linux-eszközökhöz való fejlesztéséhez. Ez az oktatóanyag egy Windows rendszerű számítógépet használ, de a MacOS vagy Linux rendszeren ismert eltéréseket mutat. 
 * Telepítse a [git](https://git-scm.com/)-t, hogy lekérje a modul sablonjának csomagjait az oktatóanyag későbbi részében.  
 * [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
@@ -97,7 +98,7 @@ A Visual Studio Code-hoz készült IoT Extensions használatával IoT Edge modul
 
 1. Telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot a fejlesztői gépére. 
 
-2. A telepítés befejezése után válassza a bővítmények **megtekintése** > lehetőséget. 
+2. A telepítés befejezése után válassza a**bővítmények** **megtekintése** > lehetőséget. 
 
 3. Keressen olyan **Azure IoT-eszközöket**, amelyek tulajdonképpen olyan bővítmények gyűjteményei, amelyek segítséget nyújtanak a IoT hub és a IoT eszközök használatához, valamint IoT Edge modulok fejlesztéséhez. 
 
@@ -154,7 +155,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 A IoT Edge bővítmény megpróbálja lekérni a tároló beállításjegyzékbeli hitelesítő adatait az Azure-ból, és feltölti azokat a környezeti fájlban. Ellenőrizze, hogy a hitelesítő adatok már szerepelnek-e. Ha nem, adja hozzá őket most:
 
 1. Nyissa meg a **. env** fájlt a modul-megoldásban. 
-2. Adja meg az Azure Container registryből másolt felhasználónevet és a **jelszó** értékeit.
+2. Adja meg az Azure Container registryből másolt **felhasználónevet** és a **jelszó** értékeit.
 3. Mentse a módosításokat a. env fájlba. 
 
 ### <a name="select-your-target-architecture"></a>Válassza ki a cél architektúrát

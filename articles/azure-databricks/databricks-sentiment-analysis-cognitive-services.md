@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68619570"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
@@ -42,7 +42,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) a feladatok megkezdése előtt.
 
 > [!Note]
-> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós**előfizetésével.
+> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
 > Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -105,7 +105,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
    * Ehhez a cikkhez hozzon létre egy **5,2** futtatókörnyezettel rendelkező fürtöt.
    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-   Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok [](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)méretét a technikai feltételekhez és a költségvetéshez.
+   Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok méretét a technikai feltételekhez és a [költségvetéshez](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
 
      Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
@@ -216,7 +216,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőket a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 > [!NOTE]
-> A Twitter API bizonyos kérelmekre vonatkozó [](https://developer.twitter.com/en/docs/basics/rate-limiting.html)korlátozásokat és kvótákat tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó adatforrást `test` a helyett `twitter` , és töltse fel a listához az előnyben részesített **testSource** .
+> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **adatforrást** `test` a helyett `twitter` , és töltse fel a listához az előnyben részesített **testSource** .
 
 ```scala
     import scala.collection.JavaConverters._

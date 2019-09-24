@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203559"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219857"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
-A Azure Media Services Video Indexer az Azure Cognitive Services-ra épülő AI-megoldás. A Video Indexer lehetővé teszi a részletes elemzések kinyerését (az adatok elemzése és a kódolási képességek nélkül) a gépi tanulási modellek használatával több csatornán (hang, vokál, vizualizáció). Tovább testreszabhatja és betaníthatja a modelleket. A szolgáltatás lehetővé teszi a mélyreható keresést, csökkenti a működési költségeket, lehetővé teszi az új bevételi lehetőségeket, új felhasználói élményt nyújtva a videók nagy archívumában (alacsony belépési korlátokkal). 
+Video Indexer (VI) a Azure Media Services AI-megoldás és a Microsoft Cognitive Services márka része. A Video Indexer lehetővé teszi a részletes elemzések kinyerését (az adatok elemzése és a kódolási képességek nélkül) a gépi tanulási modellek használatával több csatornán (hang, vokál, vizualizáció). Tovább testreszabhatja és betaníthatja a modelleket. A szolgáltatás lehetővé teszi a mélyreható keresést, csökkenti a működési költségeket, lehetővé teszi az új bevételi lehetőségeket, új felhasználói élményt nyújtva a videók nagy archívumában (alacsony belépési korlátokkal). 
 
 Az Video Indexerekkel való kinyerésének megkezdéséhez létre kell hoznia egy fiókot, és fel kell töltenie a videókat. A videók Video Indexer való feltöltésekor a vizualizációkat és a hanganyagokat különböző AI-modellek futtatásával elemezze. Ahogy Video Indexer elemzi a videót, a modellek által kinyert elemzéseket.
+
+A következő ábra egy illusztráció, nem pedig technikai magyarázat arról, hogy a Video Indexer hogyan működik a háttérben.
 
 ![Folyamatábra](./media/video-indexer-overview/model-chart.png)
 

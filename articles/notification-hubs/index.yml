@@ -5,14 +5,14 @@ metadata:
   title: Az Azure Notification Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: 'Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.'
   services: notification-hubs
-  author: spelluru
-  manager: null
+  author: sethmanheim
+  manager: femila
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/01/2017
-  ms.author: spelluru
+  ms.author: sethm
 abstract:
   description: 'Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető, leküldéses értesítési motor használatával különböző típusú eszközökön (Android, iOS, Windows, Windows Phone) futó alkalmazásoknak. <p>Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre.</p>'
   aside:

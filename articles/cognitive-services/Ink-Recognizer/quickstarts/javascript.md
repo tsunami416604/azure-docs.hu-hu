@@ -1,45 +1,45 @@
 ---
-title: 'Gyors útmutató: Ismeri fel a digitális ink a szabadkézi felismerő REST API-t és a Node.js'
+title: 'Gyors útmutató: Digitális tinta felismerése a tinta-felismerő REST API és a Node. js-sel'
 titleSuffix: Azure Cognitive Services
-description: A tinta felismerő API használatával indítsa el a digitális tollvonások felismerve.
+description: A tinta-felismerő API használatával megkezdheti a digitális tollvonások felismerését.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 7e158b0ae27780eeecb1ee7948087bf59b1502e1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5e3b97faaed84f2c07ea70ddb73bd8e8c9efa71d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721268"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212643"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Ismeri fel a digitális ink a szabadkézi felismerő REST API-t és a JavaScript
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és a JavaScripttel
 
-Ez a rövid útmutató segítségével a digitális tollvonások a szabadkézi felismerő API használatának megkezdéséhez. A JavaScript-alkalmazását egy JSON-formátumú ink körvonal adatokat tartalmazó API-kérést küld, és a válasz megjeleníti.
+Ezzel a rövid útmutatóval megkezdheti a tinta-felismerő API használatát a digitális tollvonásokon. Ez a JavaScript-alkalmazás egy, a JSON-formátumú szabadkézi adatokat tartalmazó API-kérést küld, és megjeleníti a választ.
 
-Ezt az alkalmazást a webböngészőben fut, és a Javascript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Habár ez az alkalmazás JavaScript nyelven íródott, és a böngészőben fut, az API egy REST-alapú webszolgáltatás, amely a legtöbb programozási nyelvvel kompatibilis.
 
-Általában az API-t kellene hívása egy digitális szabadkézi alkalmazásból. Ez a rövid útmutató a következő kézzel írt mintát ink körvonal adatokat küld a JSON-fájlból.
+Általában az API-t egy Digital unking-alkalmazásból hívja meg. Ez a rövid útmutató egy JSON-fájlból a következő kézírásos minta adatait küldi el: tollvonási adatok.
 
-![írt szöveg felismerése képekből képe](../media/handwriting-sample.jpg)
+![egy kézzel írott szöveg képe](../media/handwriting-sample.jpg)
 
-Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
+Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.com/fwlink/?linkid=2089905)érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy webes böngésző
-- Ez a rövid útmutató példa ink körvonal adatai találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
+- Egy webböngésző
+- Ebben a rövid útmutatóban a jelen rövid útmutatóban szereplő tollvonási adatsorok a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)találhatók.
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 
-1. A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, hozzon létre egy új `.html` fájlt. Ezután hozzá alapszintű HTML, az újabb adunk hozzá kódot.
+1. A kedvenc ide vagy szerkesztőben hozzon létre egy `.html` új fájlt. Ezután adja hozzá az alapszintű HTML-kódot a kódhoz, amelyet később fogunk hozzáadni.
     
     ```html
     <!DOCTYPE html>
@@ -56,9 +56,9 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
     </html>
     ```
 
-2. Belül a `<body>` címkével, adja hozzá a következő HTML-kódot:
-    1. Két szöveges területre a JSON-kérések és válaszok megjelenítése.
-    2. Hívása gomb a `recognizeInk()` -függvény, amely később létrejön.
+2. A `<body>` címkén belül adja hozzá a következő HTML-kódot:
+    1. Két szöveges terület a JSON-kérelem és-válasz megjelenítéséhez.
+    2. A később létrehozandó `recognizeInk()` függvény meghívására szolgáló gomb.
     
     ```HTML
     <!-- <body>-->
@@ -72,13 +72,13 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
     <!--</body>-->
     ```
 
-## <a name="load-the-example-json-data"></a>A példa JSON-adatok betöltése
+## <a name="load-the-example-json-data"></a>A példa JSON-adatbázis betöltése
 
-1. Belül a `<script>` címkével, hozzon létre egy változót az sampleJson. Ezután hozzon létre egy JavaScript-függvény nevű `openFile()` , amely megnyitja a Fájlkezelőben, ezért kiválaszthatja, hogy a JSON-fájlt. Ha a `Recognize ink` gombra kattint, ez a függvény meghívása, és a fájl olvasását kezdeni.
-2. Használja a `FileReader` objektum `onload()` függvényt, hogy a fájl műveletek aszinkron feldolgozásához. 
-    1. Cserélje le az összes `\n` vagy `\r` a fájl üres karakterlánc-karakter. 
-    2. Használat `JSON.parse()` szöveg átalakítása érvényes JSON
-    3. Frissítés a `request` szövegmezőbe az alkalmazásban. Használat `JSON.stringify()` formázhatja a JSON-karakterláncot. 
+1. A `<script>` címkén belül hozzon létre egy változót a sampleJson. Ezután hozzon létre egy nevű `openFile()` JavaScript-függvényt, amely megnyitja a fájlkezelőt, ahol kiválaszthatja a JSON-fájlt. Ha a `Recognize ink` gombra kattint, meghívja ezt a függvényt, és megkezdi a fájl olvasását.
+2. A fájl aszinkron feldolgozásához használja az `onload()` objektumfüggvényét.`FileReader` 
+    1. Cserélje le `\n` a `\r` fájlban lévő bármelyik vagy karaktert üres karakterlánccal. 
+    2. `JSON.parse()` A szöveg konvertálása érvényes JSON formátumra
+    3. Frissítse a `request` szövegmezőt az alkalmazásban. A `JSON.stringify()` használatával formázhatja a JSON-karakterláncot. 
     
     ```javascript
     var sampleJson = "";
@@ -95,9 +95,9 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>A tinta felismerő API-kérés küldése
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Kérelem küldése a tinta-felismerő API-nak
 
-1. Belül a `<script>` címkével, hozzon létre egy függvényt, nevű `recognizeInk()`. Ez a függvény később az API-t, és frissítse a lapot a választ. Adja hozzá a kódot, a következő lépéseket a függvényen belül. 
+1. Hozzon `<script>` létre egy nevű `recognizeInk()`függvényt a címkén belül. Ez a függvény később meghívja az API-t, és frissíti a választ tartalmazó lapot. Adja hozzá a kódot az alábbi lépésekkel a függvényen belül. 
         
     ```javascript
     function recognizeInk() {
@@ -105,18 +105,18 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
     }
     ```
 
-    1. Változók létrehozása a végponti URL-cím, az előfizetési kulcs és a JSON-mintának. Ezután hozzon létre egy `XMLHttpRequest` objektum az API-kérelem küldése. 
+    1. Hozzon létre változókat a végpont URL-címéhez, az előfizetési kulcshoz és a JSON-mintahoz. Ezután hozzon `XMLHttpRequest` létre egy objektumot az API-kérelem elküldéséhez. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
-        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
+        // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
         var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
         // Replace the subscriptionKey string value with your valid subscription key.
         var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
         var xhttp = new XMLHttpRequest();
         ```
-    2. Az a függvény létrehozása a `XMLHttpRequest` objektum. Ez a funkció a kérelem sikeres, az API-válasz elemzése, és megjeleníthetik azt az alkalmazást. 
+    2. Hozza létre a Return függvényt `XMLHttpRequest` az objektumhoz. Ez a függvény elemzi egy sikeres kérelem API-válaszát, és megjeleníti azt az alkalmazásban. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -125,7 +125,7 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. A hiba függvény a kérelem-objektum létrehozása. Ez a funkció a konzolon naplózza a hibát. 
+    3. Hozza létre a Request objektum Error függvényét. Ez a függvény naplózza a hibát a konzolon. 
             
         ```javascript
         function errorFunction() {
@@ -133,7 +133,7 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
         }
         ```
 
-    4. Hozzon létre egy függvényt a kérelem objektum `onreadystatechange` tulajdonság. A kérelem objektum készültségi állapot megváltozik, a fenti lépjen vissza, és hiba funkciók lépnek érvénybe.
+    4. Hozzon létre egy függvényt a kérelem `onreadystatechange` objektum tulajdonságához. A kérési objektum készültségi állapotának megváltozásakor a rendszer alkalmazza a fenti visszatérési és Error függvényeket.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
         };
         ```
     
-    5. Az API-kérelem küldése. Az előfizetési kulcs hozzáadása a `Ocp-Apim-Subscription-Key` fejléc, és állítsa be a `content-type` , `application/json`
+    5. Küldje el az API-kérést. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, és `content-type` állítsa be a következőre`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -159,14 +159,14 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
 
 ## <a name="run-the-application-and-view-the-response"></a>Futtassa az alkalmazást, és tekintse meg a választ
 
-Ez az alkalmazás a böngészőben futtatható. A sikeres válasz JSON formátumban. A JSON-válasz is megtalálhatja a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Ez az alkalmazás a böngészőben is futtatható. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-válasz a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json)is megtalálható:
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [REST API – referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-A tinta Recognition API működését egy digitális szabadkézi alkalmazás megtekintéséhez tekintse meg a következő minta alkalmazásokat a Githubon:
+Ha szeretné megtudni, hogyan működik a Ink-felismerési API egy digitális, a GitHubon futó alkalmazásban, tekintse meg az alábbi példákat a GitHubon:
 * [C# és Univerzális Windows-platform (Universal Windows Platform, UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# és Windows megjelenítési alaprendszer (Windows Presentation Foundation, WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript-webböngészőalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       

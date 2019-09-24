@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036407"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212425"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>Üzleti szempontból kritikus fontosságú adattárolás tárolása az Azure Blob Storage-ban
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Üzleti szempontból kritikus fontosságú adattárolás tárolása az Azure Blob Storage-immutably 
 
 Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a felhasználók üzleti szempontból kritikus fontosságú adatobjektumokat tároljanak egy FÉREGben (egyszer írható, olvasható) állapot. Ez az állapot a felhasználó által megadott intervallumban nem törölhető és nem módosítható adatvesztést tesz lehetővé. A blob-objektumok a megőrzési időtartam időtartama alatt létrehozhatók és olvashatók, de nem módosíthatók és nem törölhetők. A nem módosítható tárterület minden Azure-régióban általános célú v2 és Blob Storage fiókok esetében engedélyezett.
 
@@ -93,7 +93,7 @@ A következő táblázat a különböző változtathatatlan forgatókönyvek ese
 - Tároló esetén a zárolt időalapú megváltoztathatatlan házirendek megőrzési időtartamának meghosszabbítására szolgáló szerkesztési adatok maximális száma 5.
 - Tároló esetén a zárolt szabályzatok számára legfeljebb 7 időalapú adatmegőrzési szabály van megtartva.
 
-### <a name="legal-hold"></a>Jogi megtartás
+### <a name="legal-hold"></a>Jogi célú visszatartás
 - A Storage-fiók esetében a jogszabályi megtartási beállítással rendelkező tárolók maximális száma 1 000.
 - A tárolók esetében a jogi megtartó címkék maximális száma 10.
 - A jogi megtartási címke minimális hossza 3 alfanumerikus karakter. A maximális hossz 23 alfanumerikus karakter.

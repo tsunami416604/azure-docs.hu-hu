@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077671"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219996"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Az Azure Virtual Network áthelyezése másik régióba a Azure Portal használatával
 
@@ -27,7 +27,7 @@ A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manag
 - Virtuális hálózat exportálásához és sablon üzembe helyezéséhez egy másik régióban lévő virtuális hálózat létrehozásához szüksége lesz a hálózati közreműködő szerepkörre vagy magasabbra.
 
 - A virtuális hálózati társítások nem lesznek újra létrehozva, és sikertelenek lesznek, ha még jelen vannak a sablonban.  A sablon exportálása előtt el kell távolítania minden virtuális hálózati társat, majd újra létre kell hoznia a társait a virtuális hálózat áthelyezése után.
-    
+
 - Azonosítsa a forrás hálózatkezelési elrendezést és az összes éppen használt erőforrást. Ez az elrendezés tartalmaz, de nem korlátozódik a terheléselosztó, a hálózati biztonsági csoportok (NSG) és a nyilvános IP-címek számára.
 
 - Győződjön meg arról, hogy az Azure-előfizetése lehetővé teszi, hogy virtuális hálózatokat hozzon létre a használt célként megadott régióban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
@@ -40,13 +40,13 @@ A következő lépések bemutatják, hogyan készítse elő a virtuális hálóz
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>A sablon exportálása és üzembe helyezése a portálról
 
-1. Jelentkezzen be az [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
 2. Keresse meg a forrás virtuális hálózatot tartalmazó erőforráscsoportot, és kattintson rá.
 3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
 5. Kattintson a **sablon** > **szerkesztése paraméterek** lehetőségre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
 6. A virtuális hálózat nevének paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan készítse elő a virtuális hálóz
 
 8.  Kattintson a **Mentés** gombra a szerkesztőben.
 
-9.  Kattintson a sablon**szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben. >  
+9.  Kattintson a sablon**szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben. > 
 
 10. Ha módosítani szeretné a VNET áthelyezni kívánt célpontot, módosítsa a **Location (hely** ) tulajdonságot az online szerkesztő **erőforrásai** alatt:
 
@@ -83,11 +83,11 @@ A következő lépések bemutatják, hogyan készítse elő a virtuális hálóz
                         },
 
     ```
- 
+
 11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
- 
+
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
-    
+
     * **Címterület** – a VNET a Mentés előtt módosítható, ha módosítja az **erőforrások** > **addressSpace** szakaszt, és megváltoztatja a **addressPrefixes** tulajdonságot a **template. JSON** fájlban:
 
         ```json
@@ -179,7 +179,7 @@ A következő lépések bemutatják, hogyan készítse elő a virtuális hálóz
 
 14. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél VNET telepíteni fogja. > 
 
-15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport. 
+15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport.
 
 16. Győződjön meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a VNET telepíteni kívánja. > 
 
@@ -189,7 +189,7 @@ A következő lépések bemutatják, hogyan készítse elő a virtuális hálóz
 
 19. A cél virtuális hálózat üzembe helyezéséhez kattintson a **vásárlás** gombra.
 
-## <a name="discard"></a>Elvetés 
+## <a name="discard"></a>Elvetés
 
 Ha el szeretné vetni a cél virtuális hálózatot, törölje a célként szolgáló virtuális hálózatot tartalmazó erőforráscsoportot.  Ehhez válassza ki az erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az Áttekintés oldal tetején.
 

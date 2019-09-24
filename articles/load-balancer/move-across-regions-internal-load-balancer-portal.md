@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: 2e8f1cd32bc0b57faf7b2365e100064be78a37a2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 88aedb97f659725887026d0c83be88cbde27ae4f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106254"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219676"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Az Azure belső Load Balancer áthelyezése másik régióba a Azure Portal használatával
 
@@ -27,7 +27,7 @@ Az Azure belső terheléselosztó nem helyezhető át egyik régióból a másik
 - Az Azure belső terheléselosztó nem helyezhetők át a régiók között.  Az új Load balancert a célként megadott régióban lévő erőforrásokhoz kell rendelnie.
 
 - A belső terheléselosztó konfigurációjának exportálásához és egy olyan sablon üzembe helyezéséhez, amely egy belső terheléselosztó egy másik régióban való létrehozásához szükséges, szüksége lesz a hálózati közreműködő szerepkörre vagy magasabbra.
-   
+
 - Azonosítsa a forrás hálózatkezelési elrendezést és az összes éppen használt erőforrást. Ez az elrendezés magában foglalja, de nem korlátozódik a terheléselosztó, a hálózati biztonsági csoportok, a virtuális gépek és a virtuális hálózatok számára.
 
 - Ellenőrizze, hogy az Azure-előfizetése lehetővé teszi-e belső terheléselosztó létrehozását a használt célcsoportban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
@@ -43,13 +43,13 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>A virtuális hálózati sablon exportálása és üzembe helyezése a Azure Portal
 
-1. Jelentkezzen be az [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
 2. Keresse meg a forrás virtuális hálózatot tartalmazó erőforráscsoportot, és kattintson rá.
 3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
 5. Kattintson a **sablon** > **szerkesztése paraméterek** lehetőségre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
 6. A virtuális hálózat nevének paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -65,8 +65,8 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 8. Kattintson a **Mentés** gombra a szerkesztőben.
 
-9. Kattintson a sablon**szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben. >  
-    
+9. Kattintson a sablon**szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben. > 
+
 10. Ha módosítani szeretné a VNET áthelyezni kívánt célpontot, módosítsa a **Location (hely** ) tulajdonságot az erőforrások területen.
 
     ```json
@@ -86,9 +86,9 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
                         },
 
     ```
-  
+
 11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
-    
+
 12. A **sablon. JSON** fájl egyéb paramétereit is módosíthatja, ha a lehetőséget választja, és a követelményektől függően választható:
 
     * **Címterület** – a VNET a Mentés előtt módosítható, ha módosítja az **erőforrások** > **addressSpace** szakaszt, és megváltoztatja a **addressPrefixes** tulajdonságot a **template. JSON** fájlban:
@@ -182,7 +182,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 14. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél VNET telepíteni fogja. > 
 
-15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport. 
+15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport.
 
 16. Győződjön meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a VNET telepíteni kívánja. > 
 
@@ -194,7 +194,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>A belső terheléselosztó sablon exportálása és üzembe helyezése Azure PowerShell
 
-1. Jelentkezzen be az [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
 2. Keresse meg a forrás belső Load balancert tartalmazó erőforráscsoportot, és kattintson rá.
 3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
@@ -215,15 +215,15 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
              "type": "String"
              }
     ```
- 
+
 6. A fentiekben áthelyezett cél virtuális hálózat értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie a **Parameters. JSON** fájlba. Az azonosító beszerzése:
-    
-    1. Jelentkezzen be a [Azure Portal](http://portal.azure.com) > **erőforráscsoporthoz** egy másik böngésző lapon vagy ablakban.
+
+    1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz** egy másik böngésző lapon vagy ablakban.
     2. Keresse meg azt a célként megadott erőforráscsoportot, amely az áthelyezett virtuális hálózatot tartalmazza a fenti lépések alapján, majd kattintson rá.
     3. Válassza a > **Beállítások** > **Tulajdonságok**lehetőséget.
     4. A jobb oldali panelen jelölje ki az erőforrás- **azonosítót** , és másolja a vágólapra.  Azt is megteheti, hogy a **Másolás a vágólapra** gombra kattint az **erőforrás-azonosító** elérési útjának jobb oldalán.
     5. Illessze be az erőforrás-azonosítót a **defaultValue** tulajdonságba a más böngészőablakban vagy lapon megnyitott **Paraméterek szerkesztése** szerkesztőben:
-   
+
         ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
          "contentVersion": "1.0.0.0",
@@ -256,9 +256,9 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
     ```
 
 9.  A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
-    
+
 10. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
-    
+
     * **SKU** – módosíthatja a belső terheléselosztó SKU-jának konfigurációját a standard értékről az alapszintű vagy az alapszintű értékre úgy, hogy megváltoztatja az **SKU** > **Name** tulajdonságát a **template. JSON** fájlban:
 
         ```json
@@ -374,12 +374,12 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
         }
         ```
         További információ a bejövő NAT-szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-    
+
 12. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
-    
+
 13. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél belső terheléselosztó üzembe lesz helyezve. > 
 
-15. Az alapszintű**erőforráscsoport** elemre kattintva kiválaszthatja azt az erőforráscsoportot, amelyben a cél terheléselosztó telepítve lesz. >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél belső terheléselosztó számára, vagy kiválaszthatja a virtuális hálózat felett létrehozott meglévő erőforráscsoportot.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás belső terheléselosztó forrás-erőforráscsoport. 
+15. Az alapszintű**erőforráscsoport** elemre kattintva kiválaszthatja azt az erőforráscsoportot, amelyben a cél terheléselosztó telepítve lesz. >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél belső terheléselosztó számára, vagy kiválaszthatja a virtuális hálózat felett létrehozott meglévő erőforráscsoportot.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás belső terheléselosztó forrás-erőforráscsoport.
 
 16. Győződjön meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a belső terheléselosztó üzembe helyezését szeretné. > 
 
@@ -389,7 +389,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 19. A cél virtuális hálózat üzembe helyezéséhez kattintson a **vásárlás** gombra.
 
-## <a name="discard"></a>Elvetés 
+## <a name="discard"></a>Elvetés
 
 Ha el szeretné vetni a cél virtuális hálózatot és a belső terheléselosztó-t, törölje a célként szolgáló virtuális hálózatot és a belső Load balancert tartalmazó erőforráscsoportot.  Ehhez válassza ki az erőforráscsoportot az irányítópulton a portálon, és válassza a **Törlés** lehetőséget az Áttekintés oldal tetején.
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172055"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229522"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Oktatóanyag: Azure Active Directory Domain Services-példány létrehozása és konfigurálása
 
@@ -39,17 +39,17 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
 * Az Azure-előfizetésben *közreműködő* jogosultságokkal kell rendelkeznie a szükséges Azure AD DS-erőforrások létrehozásához.
-* Az Azure AD-bérlőt [konfigurálni kell az önkiszolgáló jelszó][configure-sspr]-visszaállításhoz.
+* Az Azure AD-bérlőt [konfigurálni kell az önkiszolgáló jelszó-visszaállításhoz][configure-sspr].
 
 > [!IMPORTANT]
 > Miután létrehozta az Azure AD DS felügyelt tartományt, nem helyezheti át a példányt másik erőforráscsoporthoz, virtuális hálózatba, előfizetésbe stb. Ügyeljen arra, hogy a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki az Azure AD DS-példány telepítésekor.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban az Azure Portal használatával hozza létre és konfigurálja az Azure AD DS-példányt. Első lépésként jelentkezzen be a Azure Portalba [](https://portal.azure.com).
+Ebben az oktatóanyagban az Azure Portal használatával hozza létre és konfigurálja az Azure AD DS-példányt. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="create-an-instance-and-configure-basic-settings"></a>Példány létrehozása és alapszintű beállítások konfigurálása
 
@@ -65,6 +65,15 @@ Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 * **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában az egyik, amelyet már birtokol, és irányítható. Ha irányítható, egyéni tartományt használ, a forgalom az alkalmazások támogatásához szükséges módon képes megfelelően átáramlani.
 * **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
+> [!TIP]
+> Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Javasoljuk, hogy adjon meg egy egyedi előtagot a tartománynévhez. Ha például a DNS-gyökér neve *contoso.com*, hozzon létre egy Azure AD DS felügyelt tartományt a *corp.contoso.com* vagy a *DS.contoso.com*egyéni tartománynevével. A helyszíni AD DS környezettel rendelkező hibrid környezetekben ezek az előtagok már használatban vannak. Használjon egyedi előtagot az Azure AD DShoz.
+>
+> Használhatja az Azure AD DS felügyelt tartományának legfelső szintű DNS-nevét, de előfordulhat, hogy további DNS-rekordokat kell létrehoznia a környezetében lévő más szolgáltatásokhoz. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
+>
+> Ezekben az oktatóanyagokban és útmutatókban a *contoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét, amely tartalmazhat egy egyedi előtagot.
+>
+> További információ: [válasszon egy elnevezési előtagot a tartományhoz][naming-prefix].
+
 A DNS-név következő korlátozásai is érvényesek:
 
 * **Tartományi előtagra vonatkozó korlátozások:** Nem hozhat létre 15 karakternél hosszabb előtaggal rendelkező felügyelt tartományt. A megadott tartománynév előtagja (például a *contoso* a *contoso.com* tartománynévben) legfeljebb 15 karaktert tartalmazhat.
@@ -73,7 +82,7 @@ A DNS-név következő korlátozásai is érvényesek:
     * Ha a virtuális hálózat, amelyen engedélyezni szeretné a felügyelt tartományt, VPN-kapcsolattal rendelkezik a helyszíni hálózattal. Ebben az esetben győződjön meg arról, hogy nem rendelkezik ugyanazzal a DNS-tartománynévvel rendelkező tartománnyal a helyszíni hálózaton.
     * Ha az Azure-beli virtuális hálózaton már van ilyen nevű Azure Cloud Service-szolgáltatás.
 
-Az Azure AD DS-példány létrehozásához a Azure Portal alapismeretek ablakában végezze el a következő mezőket:
+Az Azure AD DS-példány létrehozásához a Azure Portal *alapismeretek* ablakában végezze el a következő mezőket:
 
 1. Adja meg a felügyelt tartományhoz tartozó **DNS-tartománynevet** , figyelembe véve az előző pontokat.
 1. Válassza ki azt az Azure-előfizetést, amelyben létre szeretné hozni a felügyelt tartományt.
@@ -108,7 +117,7 @@ A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
     Ügyeljen arra, hogy olyan címtartományt válasszon, amely a magánhálózati IP-címtartomány része. Azok az IP-címtartományok, amelyek nem a nyilvános címtartomány alá tartoznak, hibákat okozhatnak az Azure AD DSon belül.
 
     > [!TIP]
-    > A **virtuális hálózat választása** lapon a meglévő virtuális hálózatok jelennek meg, amelyek a korábban kiválasztott erőforráscsoporthoz és Azure-helyhez tartoznak. Az Azure AD DS üzembe helyezése előtt [létre kell hoznia egy dedikált][create-dedicated-subnet] alhálózatot.
+    > A **virtuális hálózat választása** lapon a meglévő virtuális hálózatok jelennek meg, amelyek a korábban kiválasztott erőforráscsoporthoz és Azure-helyhez tartoznak. Az Azure AD DS üzembe helyezése előtt [létre kell hoznia egy dedikált alhálózatot][create-dedicated-subnet] .
 
 1. Ha a virtuális hálózatot és az alhálózatot létrehozta, a rendszer automatikusan kijelöli az alhálózatot, például a *DomainServices*. Ehelyett kiválaszthat egy másik meglévő alhálózatot is, amely a kiválasztott virtuális hálózat része:
 
@@ -182,14 +191,14 @@ A felügyelt tartományon lévő felhasználók hitelesítéséhez az Azure AD D
 > [!NOTE]
 > A megfelelő konfigurálást követően a rendszer a használható jelszavak kivonatait az Azure AD DS felügyelt tartományában tárolja. Ha törli az Azure AD DS felügyelt tartományt, az adott ponton tárolt jelszó-kivonatok is törlődnek. Az Azure AD-ben szinkronizált hitelesítő adatok nem használhatók újra, ha később Azure AD DS felügyelt tartományt hoz létre – újra kell konfigurálnia a jelszó-kivonatolási szinkronizálást, hogy a jelszó-kivonatok újra tárolva legyenek. Korábban a tartományhoz csatlakoztatott virtuális gépek vagy felhasználók nem tudják azonnal hitelesíteni magukat – az Azure AD-nek az új Azure AD DS felügyelt tartományban kell megadnia és tárolnia a jelszó-kivonatokat. További információ: jelszó- [kivonatolási szinkronizálási folyamat az Azure AD DS és Azure ad Connect][password-hash-sync-process].
 
-A jelszó-kivonatok létrehozásához és tárolásához szükséges lépések eltérnek az Azure AD-ben létrehozott kizárólag felhőalapú felhasználói fiókok és a helyszíni címtárból a Azure AD Connect használatával szinkronizált felhasználói fiókok esetében. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Ezek a felhasználói fiókok nem szinkronizálhatók a helyszíni címtárból. Ebben az oktatóanyagban egy egyszerű, csak felhőalapú felhasználói fiókkal dolgozunk. További információ a Azure AD Connect használatához szükséges további lépésekről: jelszó-kivonatolások szinkronizálása a helyszíni [ad-ből a felügyelt tartományba szinkronizált felhasználói fiókokhoz][on-prem-sync].
+A jelszó-kivonatok létrehozásához és tárolásához szükséges lépések eltérnek az Azure AD-ben létrehozott kizárólag felhőalapú felhasználói fiókok és a helyszíni címtárból a Azure AD Connect használatával szinkronizált felhasználói fiókok esetében. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Ezek a felhasználói fiókok nem szinkronizálhatók a helyszíni címtárból. Ebben az oktatóanyagban egy egyszerű, csak felhőalapú felhasználói fiókkal dolgozunk. További információ a Azure AD Connect használatához szükséges további lépésekről: [jelszó-kivonatolások szinkronizálása a helyszíni ad-ből a felügyelt tartományba szinkronizált felhasználói fiókokhoz][on-prem-sync].
 
 > [!TIP]
 > Ha az Azure AD-bérlő csak felhőalapú felhasználókat és felhasználókat tartalmaz a helyszíni AD-ből, mindkét lépést végre kell hajtania.
 
 A csak felhőalapú felhasználói fiókok esetében a felhasználóknak meg kell változtatniuk a jelszavukat, mielőtt használniuk tudják az Azure AD DS-t. Ez a jelszó-módosítási folyamat okozza a Kerberos és az NTLM hitelesítés jelszavas kivonatait az Azure AD-ben való létrehozásához és tárolásához. A bérlő minden olyan felhasználójának jelszavait lemondhatja, akinek az Azure AD DSt kell használnia, amely a következő bejelentkezéskor a jelszó megváltoztatását kényszeríti, vagy arra utasítja őket, hogy manuálisan módosítsa a jelszavukat. Ebben az oktatóanyagban manuálisan módosítunk egy felhasználói jelszót.
 
-Mielőtt egy felhasználó visszaállíthatja a jelszavát, az Azure AD-bérlőt [konfigurálni kell az önkiszolgáló jelszó][configure-sspr]-visszaállításhoz.
+Mielőtt egy felhasználó visszaállíthatja a jelszavát, az Azure AD-bérlőt [konfigurálni kell az önkiszolgáló jelszó-visszaállításhoz][configure-sspr].
 
 A csak felhőalapú felhasználók jelszavának módosításához a felhasználónak a következő lépéseket kell elvégeznie:
 
@@ -228,3 +237,6 @@ A felügyelt tartomány működés közbeni megtekintéséhez hozzon létre egy 
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

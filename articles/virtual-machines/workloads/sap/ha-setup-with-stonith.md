@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d97130251f7ca56adaf77c5e70d6f08bd5cf514
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101512"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212532"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával
 Ez a dokumentum részletes útmutatást nyújt a SUSE operációs rendszer magas rendelkezésre állásának beállításához a STONITH eszköz használatával.
@@ -125,7 +125,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3.   A fürt konfigurálása
 Ez a szakasz a SUSE HEKTÁRos fürt beállításának lépéseit ismerteti.
 ### <a name="31-package-installation"></a>3,1 csomag telepítése
-3.1.1 Ellenőrizze, hogy telepítve vannak-e a ha_sles és az SAPHanaSR-doc mintázatok. Ha nincs telepítve, telepítse őket. Telepítse a csomópontokra.
+3.1.1 Ellenőrizze, hogy telepítve vannak-e a ha_sles és az SAPHanaSR-doc mintázatok. Ha nincs telepítve, telepítse őket. Telepítse **a** csomópontokra.
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -199,7 +199,7 @@ lsmod | grep dog
 ```
 ![sbd-sh-start.png](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
-4,6 tesztelje a SBD démont **mindkét** csomóponton. Két bejegyzést lát, miután konfigurálta a csomópontokon
+4,6 tesztelje a SBD démont **mindkét** csomóponton. Két bejegyzést lát, miután konfigurálta **a** csomópontokon
 ```
 sbd -d <SBD Device Name> list
 ```
@@ -253,7 +253,7 @@ systemctl start pacemaker
 ```
 ![systemctl-status-pacemaker.png](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6,2 az állapot figyelése
-A *crm_mon* parancs futtatásával győződjön meg arról, hogy a csomópontok online állapotban vannak. A fürt **bármelyik csomópontján** futtathatja.
+A *crm_mon* parancs futtatásával győződjön **meg** arról, hogy a csomópontok online állapotban vannak. A fürt **bármelyik csomópontján** futtathatja.
 ```
 crm_mon
 ```
@@ -333,11 +333,12 @@ Service pacemaker stop
 ```
 Most állítsa le a pacemaker szolgáltatást a **Csomópont2** -on, és az erőforrások feladatátvételét a **csomópont1**
 
-**Mielőtt**
-Before-Failover. png![![
-feladatátvételtAfter-Failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-CRM-Mon-After-Failover.![png után](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**Feladatátvétel előtt**  
+![Before-Failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**Feladatátvétel után**  
+![After-Failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![CRM-Mon-After-Failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. Hibaelhárítás

@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: laurenhughes
 ms.author: lahugh
-ms.date: 09/10/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b0a132c156cc12d317bf51488625191bb8091fc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 30a365b36645dfe79f35b4bb889c0a06535a4c73
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881466"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212722"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Előre telepített alkalmazások a virtuálisgép-lemezképek megjelenítéséhez
 
@@ -39,6 +39,37 @@ A következő lista a CentOS 7,6-es verziójú 1.1.6-renderelési lemezképekre 
 
 ## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>A legújabb Windows Server 2016-es renderelési rendszerképeket használó alkalmazások
 
+A következő lista a Windows Server 2016-es verziójának 1.3.8-megjelenítési lemezképeit érinti.
+
+* Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
+* Autodesk Maya I/O 2018 6. frissítés (18.4.0.7622 verzió)
+* Autodesk Maya I/O 2019
+* Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió)
+* Autodesk 3ds Max I/O 2019 1. frissítés (21.2.0.2219 verzió)
+* Autodesk 3ds Max I/O 2020 2. frissítés
+* Autodesk Arnold Maya 2017 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2017
+* Autodesk Arnold Maya 2018 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2018
+* Autodesk Arnold Maya 2019 (Arnold Version 5.3.0.2) MtoA-3.2.0.2-2019
+* Autodesk Arnold 3ds Max 2018 (Arnold Version 5.3.0.2) (1.2.926 verzió)
+* Autodesk Arnold 3ds Max 2019 (Arnold Version 5.3.0.2) (1.2.926 verzió)
+* Autodesk Arnold 3ds Max 2020 (Arnold Version 5.3.0.2) (1.2.926 verzió)
+* Chaos Group V-Ray a Maya 2017 (4.12.01 verzió)
+* Chaos Group V-Ray a Maya 2018 (4.12.01 verzió)
+* Chaos Group V-Ray a Maya 2019 (4.04.03 verzió)
+* Chaos Group V-Ray a 3ds Max 2018 (4.20.01 verzió)
+* Chaos Group V-Ray a 3ds Max 2019 (4.20.01 verzió)
+* Chaos Group V-Ray a 3ds Max 2020 (4.20.01 verzió)
+* Blender (2.79)
+* Turmixgép (2,80)
+* AZ 10
+
+> [!IMPORTANT]
+> A V-Ray és a Maya [Azure batch-bővítmény sablonjain](https://github.com/Azure/batch-extension-templates)kívüli futtatásához kezdje `vrayses.exe` a renderelés futtatása előtt. A vrayses. exe sablonon kívüli elindításához használhatja a következő parancsot `%MAYA_2017%\vray\bin\vrayses.exe"`.
+>
+> Példaként tekintse meg a [Maya és a V-Ray sablon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) indítási feladatát a githubon.
+
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Alkalmazások a korábbi Windows Server 2016 képmegjelenítési lemezképeken
+
 A következő lista a Windows Server 2016-es verziójának 1.3.7-megjelenítési lemezképeit érinti.
 
 * Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
@@ -55,24 +86,8 @@ A következő lista a Windows Server 2016-es verziójának 1.3.7-megjelenítési
 * Chaos Group V-Ray a 3ds Max 2019 (4.10.01 verzió)
 * Blender (2.79)
 
-
 > [!NOTE]
 > A Chaos-csoport V-Ray for 3ds Max 2019 (4.10.01 verzió) bevezeti a V-Ray változásait. Az előző verzió (3.60.02-verzió) használatához használja a Windows Server 2016-es verzióját, a 1.3.2 renderelési csomópontokat.
-
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Alkalmazások a korábbi Windows Server 2016 képmegjelenítési lemezképeken
-
-A következő lista a Windows Server 2016-es verziójának 1.3.2-es verziójú renderelési rendszerképeire vonatkozik.
-
-* Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió)
-* Autodesk Maya I/O 2018 4. frissítés (18.4.0.7622 verzió)  
-* Autodesk 3ds Max I/O 2019 1. frissítés (21.2.0.2219 verzió)
-* Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió)
-* Autodesk Arnold Maya 2017 (Arnold Version 5.2.0.1) MtoA-3.1.0.1-2017
-* Autodesk Arnold Maya 2018 (Arnold Version 5.2.0.1) MtoA-3.1.0.1-2018
-* Autodesk Arnold a 3ds Max-hoz (Arnold Version 5.0.2.4) (verzió: 1.2.926)
-* Chaos Group V-Ray a Maya 2019 (3.52.03 verzió)
-* Chaos Group V-Ray a 3ds Max 2018 (3.60.02 verzió)
-* Blender (2.79)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827832"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219284"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Az Azure digitális Twins-tárhelyek eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -38,6 +38,9 @@ Ez az oktatóanyag feltételezi, hogy már [konfigurálta](tutorial-facilities-s
 - A munkavégzéshez használt gépre letöltött és kicsomagolt [Digital Twins C#-minták](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - A minta futtatásához [.net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen. A `dotnet --version` futtatásával ellenőrizze, hogy a megfelelő verzió van-e telepítve.
 
+> [!TIP]
+> Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
+
 ## <a name="stream-data-by-using-event-hubs"></a>Adatfolyam-adatátvitel Event Hubs használatával
 
 Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatokat hozhat létre az adatstreamek továbbításához. Ebből a szakaszból megtudhatja, hogyan hozhatja létre az Event hub-összekötőt az Azure digitális ikrek és a Time Series Insights példányok között.
@@ -50,7 +53,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. Keressen rá és válassza ki az **Event Hubs** elemet. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a Event Hubs névtér **nevét** . Válassza **a standard** lehetőséget az **árképzési szint**, az **előfizetés**, a digitális Twins-példányhoz használt **erőforráscsoport** , valamint a **hely**számára. Kattintson a **Létrehozás** gombra.
+1. Adja meg a Event Hubs névtér **nevét** . Válassza a **standard** lehetőséget az **árképzési szint**, az **előfizetés**, a digitális Twins-példányhoz használt **erőforráscsoport** , valamint a **hely**számára. Kattintson a **Létrehozás** gombra.
 
 1. A Event Hubs névtér üzembe helyezése lapon válassza az **Áttekintés** panelt, majd válassza az **Ugrás az erőforráshoz**lehetőséget.
 
@@ -99,13 +102,13 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
       path: Name_of_your_Event_Hub
     ```
 
-1. Cserélje le a helyőrzőket `Primary_connection_string_for_your_event_hub` az Event hub kapcsolati karakterláncának értékére **– elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
+1. Cserélje le a helyőrzőket `Primary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értékére – elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` a kapcsolati **sztring – másodlagos kulcs** értékére az Event hub esetében. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
+1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` a **kapcsolati sztring – másodlagos kulcs** értékére az Event hub esetében. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -130,7 +133,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza az **erőforrás létrehozása**lehetőséget. 
 
-1. Keressen a **Time Series Insights** kifejezésre, és válasszon ki egy új Time Series Insights-erőforrást. Kattintson a **Létrehozás** gombra.
+1. Keresse meg és válassza ki a **Time Series Insights** általánosan elérhető (GA) erőforrást. Kattintson a **Létrehozás** gombra.
 
 1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a digitális Twins-példányhoz használt **erőforráscsoportot** , valamint a **helyét**. Válassza **a Next (tovább) lehetőséget: Eseményforrás gomb vagy az eseményforrás lap.**
 
@@ -144,7 +147,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. A központi telepítés ablaktáblán válassza ki az imént létrehozott Time Series Insights erőforrást. Ekkor megnyílik a Time Series Insights környezet **Áttekintés** panelje.
 
-1. Válassza az **Ugrás a környezetre** gombra a felső részen. Ha adatelérési figyelmeztetés jelenik meg, nyissa meg az adatelérési **házirendek** panelt Time Series Insights példányához, válassza a **Hozzáadás**lehetőséget, válassza a **közreműködő** szerepkört, és válassza ki a megfelelő felhasználót.
+1. Válassza az **Ugrás a környezetre** gombra a felső részen. Ha adatelérési figyelmeztetés jelenik meg, nyissa meg az **adatelérési házirendek** panelt Time Series Insights példányához, válassza a **Hozzáadás**lehetőséget, válassza a **közreműködő** szerepkört, és válassza ki a megfelelő felhasználót.
 
 1. A **Ugrás a környezetre** gombra kattintva megnyílik a [Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md). Ha nem jelennek meg események, az eszköz eseményeinek szimulálása a digitális Twins **-minta eszköz-kapcsolati** projektjeinek tallózásával és `dotnet run`a futtatásával.
 

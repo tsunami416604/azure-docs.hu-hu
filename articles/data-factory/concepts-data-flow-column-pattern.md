@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775208"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219761"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Adatfolyamatok oszlopos mintáinak leképezése
 
@@ -57,5 +57,5 @@ Hozza létre a szabályokat a Kifejezésszerkesztő használatával. A kifejezé
 * `position`az adatfolyamat oszlopainak sorszáma
 
 ## <a name="next-steps"></a>További lépések
-* További információ az ADF-leképezés adatáramlási [kifejezésének nyelvéről](http://aka.ms/dataflowexpressions) adatátalakítások esetén
-* Oszlopok mintáinak használata a [](data-flow-sink.md) fogadó átalakításban és az [átalakítás](data-flow-select.md) kiválasztása szabály alapú leképezéssel
+* További információ az ADF-leképezés adatáramlási [kifejezésének nyelvéről](https://aka.ms/dataflowexpressions) adatátalakítások esetén
+* Oszlopok mintáinak használata a fogadó [átalakításban](data-flow-sink.md) és az [átalakítás kiválasztása](data-flow-select.md) szabály alapú leképezéssel

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098965"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219333"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok esetében az "offline" attribútum és az FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is be van állítva az NTFS-ben, hogy a külső alkalmazások biztonságosan tudják azonosítani a többrétegű fájlokat.
@@ -102,8 +102,17 @@ A PowerShell használatával is kényszerítheti a fájlok visszahívását. Ez 
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+
+A megadásával a rendszer visszahívja a legutóbb módosított fájlokat. `-Order CloudTieringPolicy`
+Egyéb választható paraméterek:
+* `-ThreadCount`meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
+* `-PerFileRetryCount`meghatározza, hogy a rendszer milyen gyakran próbálkozzon a visszahívással egy jelenleg blokkolt fájlon.
+* `-PerFileRetryDelaySeconds`meghatározza azt az időtartamot másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
+
+> [!Note]  
+> Ha a kiszolgálót üzemeltető helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, a `Invoke-StorageSyncFileRecall` parancsmag meghiúsul.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Miért nem egyezik *meg* a fájl mérete a *méret tulajdonsággal* a Azure file Sync használata után? 

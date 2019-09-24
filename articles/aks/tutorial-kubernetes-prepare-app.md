@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68740954"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes Service (ak) szolgáltatáshoz
@@ -58,7 +58,7 @@ A könyvtárán belül található meg az alkalmazás forráskódja, egy előre 
 
 ## <a name="create-container-images"></a>Tárolórendszerképek létrehozása
 
-[][docker-compose] A Docker-összeállítással automatizálható a tárolók lemezképének létrehozása és a többtárolós alkalmazások üzembe helyezése.
+A [Docker-összeállítással][docker-compose] automatizálható a tárolók lemezképének létrehozása és a többtárolós alkalmazások üzembe helyezése.
 
 A mintául szolgáló `docker-compose.yaml` fájl használatával hozza létre a tárolórendszerképet, töltse le a Redis-rendszerképet, és indítsa el az alkalmazást:
 

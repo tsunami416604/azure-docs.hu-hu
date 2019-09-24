@@ -1,37 +1,42 @@
 ---
-title: Baidu felhőalapú leküldéses konfigurálása az Azure Notification Hubs |} A Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja az Azure notification hub Baidu beállításait.
+title: A Baidu Cloud push konfigurálása az Azure Notification Hubsban | Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure Notification hub Baidu-beállításait.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234267"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212518"
 ---
-# <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Baidu felhőalapú leküldéses értesítési beállításainak konfigurálása az Azure Portalon
-Ez a cikk bemutatja, hogyan az Azure notification hub Baidu felhőalapú leküldéses beállításainak konfigurálása az Azure portal használatával. 
+# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Elavult Egy értesítési központ Baidu Cloud push-beállításainak konfigurálása a Azure Portal
+
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Notification hub Baidu Cloud push-beállításait a Azure Portal használatával.
+
+> [!IMPORTANT]
+> Ez az oktatóanyag elavult. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem hozott létre egy értesítési központ, hozzon létre egyet. További információkért lásd: [Azure notification hub létrehozása az Azure Portalon](create-notification-hub-portal.md). 
+Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md). 
 
 ## <a name="configure-baidu-cloud-push"></a>A felhőalapú Baidu-értesítés konfigurálása
-Az alábbi eljárás biztosít Baidu felhőalapú leküldéses értesítési beállításainak konfigurálásáról:
+Az alábbi eljárás egy értesítési központ Baidu Cloud push-beállításainak konfigurálásához nyújt útmutatást:
 
-1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Baidu (Android China)** a bal oldali menüben. 
-2. Adja meg a **Api-kulcs** a Baidu felhőalapú leküldéses projekt Baidu-konzoljában beszerzett. 
-3. Adja meg a **titkos kulcs** a Baidu felhőalapú leküldéses projekt Baidu-konzoljában beszerzett. 
+1. A Azure Portal az **értesítési központ** lapon válassza a **Baidu (Android China)** lehetőséget a bal oldali menüben. 
+2. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **API-kulcsot** . 
+3. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **titkos kulcsot** . 
 4. Kattintson a **Mentés** gombra. 
 
-    ![Képernyőkép a Notification hubs használatával, amely megjeleníti a Baidu (Android China) konfigurációját, a leküldéses értesítések](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![A leküldéses értesítések Baidu (Android China) konfigurációját bemutató Notification Hubs képernyőképe](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
 ## <a name="next-steps"></a>További lépések
-A részletes oktatóanyag az Azure Notification Hubs és a Baidu felhőalapú leküldéses értesítések leküldése Baidu, lásd: [első lépésként az Notification Hubs baiduval való használatával](notification-hubs-baidu-china-android-notifications-get-started.md).
+A Baidu által az Azure Notification Hubs és a Baidu Cloud push használatával folytatott értesítések küldésének lépésenkénti utasításait lásd: a [Notification Hubs használatának első lépései Baidu használatával](notification-hubs-baidu-china-android-notifications-get-started.md).

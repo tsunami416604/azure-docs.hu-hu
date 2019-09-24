@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203574"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219368"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépeket egy virtuális hálózaton, egy SQL Database-kiszolgálót az Azure CLI használatával. Ezután elérheti a virtuális gépet, és biztonságosan hozzáférhet a privát kapcsolati erőforráshoz (ebben a példában egy privát Azure SQL Database-kiszolgáló). 
@@ -144,7 +144,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
 
-## <a name="access-dql-database-server-privately-from-the-vm"></a>A DQL adatbázis-kiszolgáló magánhálózati elérése a virtuális gépről
+## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
 
 Ebben a szakaszban a virtuális gépről a magánhálózati végpont használatával fog csatlakozni a SQL Database-kiszolgálóhoz.
 

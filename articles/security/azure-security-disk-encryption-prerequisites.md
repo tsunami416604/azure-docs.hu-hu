@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845877"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224512"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -21,18 +21,18 @@ Ez a cikk az Azure Disk Encryption titkosítási előfeltétel, biztosítani kel
 A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára az Azure IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése előtt a [Azure Disk Encryption áttekintése](azure-security-disk-encryption-overview.md) című cikket, ellenőrizze, hogy rendelkezik az előfeltételek teljesülnek. 
 
 > [!WARNING]
-> - Ha korábban már használta [Azure Disk Encryption az Azure ad](azure-security-disk-encryption-prerequisites-aad.md) -alkalmazással a virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Ezen a titkosított virtuális gépen nem használható [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , mivel ez nem támogatott forgatókönyv, ami azt jelenti, hogy a titkosított virtuális gép esetében a HRE alkalmazásból való átállás még nem támogatott.
+> - Ha korábban már használta [Azure Disk Encryption az Azure ad-alkalmazással](azure-security-disk-encryption-prerequisites-aad.md) a virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Ezen a titkosított virtuális gépen nem használható [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , mivel ez nem támogatott forgatókönyv, ami azt jelenti, hogy a titkosított virtuális gép esetében a HRE alkalmazásból való átállás még nem támogatott.
 > - Bizonyos ajánlások növelheti az adatok, hálózati vagy számítási erőforrás-használat, ami további licencek vagy előfizetések költségeit. Érvényes aktív Azure-előfizetést hozhat létre erőforrásokat az Azure-ban támogatott régiókban kell rendelkeznie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
 
-Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú virtuális gépeken](/pricing/details/virtual-machines/series/). Azure Disk Encryption a minimális memória követelményeinek megfelelő más virtuális gépeken érhető el:
+Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú virtuális gépeken](https://azure.microsoft.com/pricing/details/virtual-machines/series/). Azure Disk Encryption a minimális memória követelményeinek megfelelő más virtuális gépeken érhető el:
 
 | Virtuális gép | Minimális memória követelménye |
 |--|--|
-| Windows VMs | 2 GB |
+| Windows rendszerű virtuális gépek | 2 GB |
 | Linux rendszerű virtuális gépek, ha csak az adatkötetek titkosítását| 2 GB |
 | Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosításakor, valamint a gyökér (/) fájlrendszer használatának helye 4 GB vagy kevesebb | 8 GB |
 | Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosítása esetén, valamint a gyökér (/) fájlrendszer használatának helye meghaladja a 4GB-ot | A rendszerindító fájlrendszer használata * 2. Például egy 16 GB-os rendszerszintű fájlrendszer-használat legalább 32GB RAM memóriát igényel |

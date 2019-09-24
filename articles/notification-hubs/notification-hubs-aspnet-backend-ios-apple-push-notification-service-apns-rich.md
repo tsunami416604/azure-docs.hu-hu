@@ -3,9 +3,9 @@ title: Azure Notification Hubs Rich push
 description: Ismerje meg, hogyan küldhet részletes leküldéses értesítéseket egy iOS-alkalmazásba az Azure-ból. A Objective-C és C#a kódban írt példák
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348473"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212190"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -101,7 +103,7 @@ Magas szinten:
     ```
 
    > [!NOTE]
-   > választható A Project-erőforrások hozzáadásával és beszerzésével kapcsolatos további információkért tekintse meg az [erőforrások beágyazásának és elérésének C# módját a vizualizáció segítségével](https://support.microsoft.com/kb/319292) .
+   > választható A Project-erőforrások hozzáadásával és beszerzésével kapcsolatos további információkért tekintse meg az [erőforrások beágyazásának és elérésének módját a vizualizáció C# segítségével](https://support.microsoft.com/kb/319292) .
 
 7. A `NotificationsController.cs`alkalmazásban a NotificationsController az alábbi kódrészletekkel definiálja újra. Ez egy kezdeti csendesen gazdag értesítési azonosítót küld az eszköznek, és lehetővé teszi a rendszerkép ügyféloldali lekérését:
 
@@ -139,18 +141,18 @@ Magas szinten:
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
-Most, hogy módosította az alkalmazás-hátteret, hogy  csak az értesítés azonosítóját küldje el, az iOS-alkalmazást fogja használni az azonosító kezeléséhez és a háttérből származó gazdag üzenet lekéréséhez.
+Most, hogy módosította az alkalmazás-hátteret, hogy csak az értesítés azonosítóját küldje el, az iOS-alkalmazást fogja használni az azonosító kezeléséhez és a háttérből származó gazdag üzenet lekéréséhez.
 
 1. Nyissa meg az iOS-projektet, és engedélyezze a távoli értesítéseket a **célok** szakaszának fő alkalmazási céljával.
 2. Kattintson a **képességek lehetőségre**, kapcsolja be a **háttér üzemmódot**, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![][IOS3]
 3. Nyissa meg `Main.storyboard`a következőt:, és győződjön meg róla, hogy rendelkezik egy nézet-vezérlővel (a jelen oktatóanyag Kezdőlap nézet vezérlője) az [értesítési felhasználói](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagban.
-4. Vegyen fel egy **navigációs vezérlőt** a storyboardba, és a vezérlőre húzással húzza a Kezdőlap nézet vezérlőt, hogy a legfelső **szintű nézetet** adja meg a navigáláshoz. Győződjön meg arról, hogy a csak a navigációs vezérlőhöz van kiválasztva a **kezdeti nézet vezérlő** az attributes Inspector-ben.
+4. Vegyen fel egy **navigációs vezérlőt** a storyboardba, és a vezérlőre húzással húzza a Kezdőlap nézet vezérlőt, hogy a **legfelső szintű nézetet** adja meg a navigáláshoz. Győződjön meg arról, hogy a csak a navigációs vezérlőhöz van kiválasztva a **kezdeti nézet vezérlő** az attributes Inspector-ben.
 5. Adjon hozzá egy **nézet vezérlőt** a storyboardhoz, és adjon hozzá egy képnézetet. Ez az oldal a felhasználók számára jelenik meg, ha úgy dönt, hogy további információkat szeretne megtudni az értesítésre kattintva. A történetnek a következőképpen kell kinéznie:
 
     ![][IOS4]
-6. Kattintson a storyboard **Kezdőlap nézet vezérlőre** , és győződjön meg róla, hogy a **homeViewController** az Identity Inspector alatt **Egyéni OSZTÁLYként** és storyboard- **azonosítóként** rendelkezik.
+6. Kattintson a storyboard **Kezdőlap nézet vezérlőre** , és győződjön meg róla, hogy a **homeViewController** az Identity Inspector alatt **Egyéni OSZTÁLYként** és **storyboard-azonosítóként** rendelkezik.
 7. Tegye ugyanezt a Képnézet vezérlőre **imageViewController**.
 8. Ezután hozzon létre egy új, a **imageViewController** nevű View Controller osztályt az imént létrehozott felhasználói felület kezeléséhez.
 9. A **imageViewController. h**-ben adja hozzá a következőt a vezérlő Interface deklarációjában. Ügyeljen rá, hogy a két hely összekapcsolásához húzza a storyboard képnézetből a következő tulajdonságokat:
@@ -373,8 +375,8 @@ Most, hogy módosította az alkalmazás-hátteret, hogy  csak az értesítés az
 
 1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem fognak működni a szimulátorban).
 2. Az iOS-alkalmazás felhasználói felületén adja meg a hitelesítéshez tartozó felhasználónevet és jelszót, majd kattintson a **Bejelentkezés**elemre.
-3. Kattintson a leküldéses **Küldés** lehetőségre, és megjelenik az alkalmazáson belüli riasztás. Ha a **további**gombra kattint, a rendszer az alkalmazás-háttérbe felvenni kívánt képet fogja elhelyezni.
-4. Kattintson a leküldés **küldése** gombra, és azonnal nyomja meg az eszköz Home (Kezdőlap) gombját. Néhány pillanat múlva leküldéses értesítést fog kapni. Ha rákoppint, vagy kattintson a továbbiak lehetőségre, a rendszer az alkalmazást és a gazdag képtartalmat fogja megtekinteni.
+3. Kattintson a **leküldéses küldés** lehetőségre, és megjelenik az alkalmazáson belüli riasztás. Ha a **további**gombra kattint, a rendszer az alkalmazás-háttérbe felvenni kívánt képet fogja elhelyezni.
+4. Kattintson a **leküldés küldése** gombra, és azonnal nyomja meg az eszköz Home (Kezdőlap) gombját. Néhány pillanat múlva leküldéses értesítést fog kapni. Ha rákoppint, vagy kattintson a továbbiak lehetőségre, a rendszer az alkalmazást és a gazdag képtartalmat fogja megtekinteni.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

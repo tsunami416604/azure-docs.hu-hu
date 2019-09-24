@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999287"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219689"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Metrikák nyomon követése és modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 
@@ -146,6 +146,7 @@ A MLflow követése Azure Machine Learning lehetővé teszi, hogy a naplózott m
 Ha a Mlflow-kísérleteket Azure Databricks segítségével szeretné futtatni, először létre kell hoznia egy [Azure Databricks-munkaterületet és-fürtöt](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
 
 A fürtben ügyeljen arra, hogy a *azureml-mlflow* függvénytárat a PyPi-ből telepítse, hogy a fürt hozzáférhessen a szükséges függvényekhez és osztályokhoz.
+Innen importálja a kísérleti jegyzetfüzetet, csatolja hozzá a fürtöt, és futtassa a kísérletet. 
 
 ### <a name="install-libraries"></a>Tárak telepítése
 
@@ -184,10 +185,17 @@ workspace_name = 'workspace_name'
 ws = Workspace.get(name=workspace_name,
                    subscription_id=subscription_id,
                    resource_group=resource_group)
-
 ```
+
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks és Azure Machine Learning munkaterületek összekötése
+
+A [Azure Portal](https://ms.portal.azure.com)a Azure DATABRICKS (ADB) munkaterületet egy új vagy egy meglévő Azure Machine learning munkaterülethez csatolhatja. Ehhez navigáljon az ADB munkaterületére, és válassza a jobb alsó sarokban található **Azure Machine learning munkaterület csatolása** gombot. A munkaterületek összekapcsolása lehetővé teszi, hogy nyomon kövesse a kísérlet adatait a Azure Machine Learning munkaterületen. 
+
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>A MLflow követésének összekapcsolása a munkaterülettel
+
 Miután létrehozta a munkaterületet, állítsa be a MLflow követési URI-t. Ezzel összekapcsolja a MLflow nyomon követését Azure Machine Learning munkaterületre. Ezt követően minden kísérlet a felügyelt Azure Machine Learning követési szolgáltatásban fog megjelenni.
+
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Közvetlenül a MLflow-követés beállítása a jegyzetfüzetben
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
@@ -200,6 +208,12 @@ A betanítási szkriptben importálja a mlflow-t a MLflow-naplózási API-k hasz
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
+
+#### <a name="automate-setting-mlflow-tracking"></a>MLflow-követési beállítások automatizálása
+
+Ahelyett, hogy manuálisan állítja be a nyomkövetési URI-t a fürtökön lévő minden további kísérlet jegyzetfüzet-munkamenetben, ezt a [Azure Machine learning a fürt inicializálási parancsfájljának](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)használatával automatikusan végrehajtja.
+
+Ha helyesen van konfigurálva, a MLflow nyomon követheti a Azure Machine Learning REST API és az összes ügyfelet, illetve Azure Databricks a MLflow felhasználói felületén vagy a MLflow-ügyfél használatával.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrikák és összetevők megtekintése a munkaterületen
 

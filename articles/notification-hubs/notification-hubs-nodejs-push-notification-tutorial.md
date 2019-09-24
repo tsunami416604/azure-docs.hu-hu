@@ -4,9 +4,9 @@ description: Megtudhatja, hogyan küldhet leküldéses értesítéseket a Node. 
 keywords: leküldéses értesítés, leküldéses értesítések, Node. js leküldéses, iOS Leküldéses
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 129127a2a43cd9a86e0a1e1cf538358b62381257
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67706233"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213192"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a Node. js-sel
 
@@ -29,7 +31,7 @@ ms.locfileid: "67706233"
 ## <a name="overview"></a>Áttekintés
 
 > [!IMPORTANT]
-> Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nem rendelkezik fiókkal, hozzon létre egy ingyenes próbaverziós fiókot néhány percen belül az [ingyenes Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)-próbaidőszakon keresztül.
+> Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nem rendelkezik fiókkal, hozzon létre egy ingyenes próbaverziós fiókot néhány percen belül az [ingyenes Azure-próbaidőszakon](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)keresztül.
 
 Ez az útmutató bemutatja, hogyan küldhet leküldéses értesítéseket az Azure Notification Hubs segítségével közvetlenül egy [Node. js](https://nodejs.org) -alkalmazásból.
 
@@ -38,7 +40,7 @@ A tárgyalt forgatókönyvek között leküldéses értesítések küldése az a
 - Android
 - iOS
 - Univerzális Windows-platform
-- Windows Phone
+- Windows Phone-telefon
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
@@ -46,7 +48,7 @@ Az Azure Notification Hubs egy könnyen használható, többplatformos, méretez
 
 ## <a name="create-a-nodejs-application"></a>Node. js-alkalmazás létrehozása
 
-Az oktatóanyag első lépése egy új, üres Node. js-alkalmazás létrehozása. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-alkalmazás létrehozása és üzembe helyezése az Azure][nodejswebsite]-webhelyhez, [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy webhelyről [a WebMatrix][webmatrix].
+Az oktatóanyag első lépése egy új, üres Node. js-alkalmazás létrehozása. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-alkalmazás létrehozása és üzembe helyezése az Azure-webhelyhez][nodejswebsite], [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy [webhelyről a WebMatrix][webmatrix].
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Az alkalmazás konfigurálása Notification Hubs használatára
 
@@ -98,7 +100,7 @@ Az `NotificationHubService` objektum a következő objektum-példányokat teszi 
 - **Windows Phone-telefon** – használja a `MpnsService` következő helyen elérhető objektumot:`notificationHubService.mpns`
 - **Univerzális Windows-platform** – használja a `WnsService` következő helyen elérhető objektumot:`notificationHubService.wns`
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Útmutató: Leküldéses értesítések küldése Android-alkalmazásokba
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Útmutató: Leküldéses értesítések küldése Android-alkalmazásoknak
 
 Az `GcmService` objektum egy `send` metódust biztosít, amellyel leküldéses értesítések küldhetők az Android-alkalmazásokba. A `send` metódus a következő paramétereket fogadja el:
 
@@ -106,7 +108,7 @@ Az `GcmService` objektum egy `send` metódust biztosít, amellyel leküldéses �
 - **Hasznos** adat – az üzenet JSON-vagy nyers karakterlánc-adattartalma.
 - **Visszahívás** – a visszahívási függvény.
 
-A hasznos adatok formátumával kapcsolatos további információkért tekintse meg a [hasznos](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)adatokat ismertető dokumentációt.
+A hasznos adatok formátumával kapcsolatos további információkért tekintse meg a hasznos adatokat ismertető [dokumentációt](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
 
 A következő kód a `GcmService` `NotificationHubService` által közzétett példányt használja a leküldéses értesítés küldésére az összes regisztrált ügyfélnek.
 
@@ -153,11 +155,11 @@ Az `MpnsService` objektum olyan `send` metódust biztosít, amellyel leküldése
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet XML-adattartalma.
 - **TargetName a bejelentési értesítésekhez**  -  `toast` . `token`csempe értesítéseihez.
-- **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói](https://msdn.microsoft.com/library/hh221551.aspx) dokumentum leküldéses értesítéseinek **http-fejléc elemei** című szakaszát.
+- **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](https://msdn.microsoft.com/library/hh221551.aspx) **fejléc elemei** című szakaszát.
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.
 
-Az érvényes `TargetName` `NotificationClass` és a fejléc beállítások listájáért tekintse meg a kiszolgálói lapról leküldéses [értesítéseket](https://msdn.microsoft.com/library/hh221551.aspx) .
+Az érvényes `TargetName` `NotificationClass` és a fejléc beállítások listájáért tekintse meg a [kiszolgálói lapról leküldéses értesítéseket](https://msdn.microsoft.com/library/hh221551.aspx) .
 
 A következő mintakód a `MpnsService` által a `NotificationHubService` által elérhetővé tett példányt használja a (z) által a Toast leküldéses értesítés küldéséhez:
 
@@ -180,7 +182,7 @@ Az `WnsService` objektum olyan `send` metódust biztosít, amellyel leküldéses
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.
 
-Az érvényes típusok és a kérelmek fejlécek listáját a leküldéses [értesítési szolgáltatás kérése és a válasz fejlécei](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)című témakörben tekintheti meg.
+Az érvényes típusok és a kérelmek fejlécek listáját a [leküldéses értesítési szolgáltatás kérése és a válasz fejlécei](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)című témakörben tekintheti meg.
 
 A következő kód a `WnsService` `NotificationHubService` által elérhetővé tett példányt használja a UWP-alkalmazáshoz való leküldéses értesítés küldéséhez:
 

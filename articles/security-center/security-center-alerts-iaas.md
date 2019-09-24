@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0070ab94196dfe752e048e97dd40a8f69cf98373
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202608"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219621"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Veszélyforrások észlelése virtuális gépek és kiszolgálók esetében Azure Security Center
 
@@ -35,7 +35,7 @@ A Security Center a felhőalapú munkaterhelés-védelmi platformokat a Windows 
 > [!NOTE]
 > A Windows Server Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
-Ha a Windows Server Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Windows Defender ATP-konzolt, és részletes vizsgálatot hajthat végre a támadás hatókörének felderítése érdekében. A Windows Server Defender ATP szolgáltatással kapcsolatos további információkért lásd: [a Windows DEFENDER ATP szolgáltatást futtató kiszolgálók](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Ha a Windows Server Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Windows Server Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Összeomlási memóriakép elemzése<a nanme="windows-dump"></a>
 

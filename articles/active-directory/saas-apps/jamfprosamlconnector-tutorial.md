@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c8a2fb278515306848f46206db67b7f37ea2ac
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034243"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212378"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory SSO-integráció a JAMF Pro-val
 
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 1. Válassza a **további URL-címek beállítása**lehetőséget. Ha az alkalmazást **SP-kezdeményezésű** módban szeretné konfigurálni, a **bejelentkezési URL-cím** szövegmezőbe írja be a következő képletet használó URL-címet:`https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A tényleges azonosító értékét a JAMF Pro portál **egyszeri bejelentkezés** szakasza tartalmazza, amelyet az oktatóanyag későbbi részében ismertetünk. Kibonthatja a tényleges altartomány értéket az azonosító értékből, és a bejelentkezési URL-cím és a válasz URL-címének használatával kinyerheti az altartomány adatait. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható képleteket is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A tényleges azonosító értékét a JAMF Pro portál **egyszeri bejelentkezés** szakaszában találja, amelyet az oktatóanyag későbbi részében talál. Kibonthatja a tényleges altartomány értéket az azonosító értékből, és a bejelentkezési URL-cím és a válasz URL-címének használatával kinyerheti az altartomány adatait. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható képleteket is megtekintheti.
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon lépjen az **SAML aláíró tanúsítvány** szakaszra, válassza a **Másolás** gombot az **alkalmazás-összevonási metaadatok URL-címének**másolásához, majd mentse a számítógépre.
 

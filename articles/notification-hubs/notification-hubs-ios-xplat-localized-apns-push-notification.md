@@ -1,11 +1,11 @@
 ---
-title: Leküldéses honosított értesítések küldése iOS-eszközök Azure Notification Hubs használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a honosított leküldéses értesítések küldése iOS-eszközök Azure Notification Hubs használatával.
+title: Honosított értesítések leküldése iOS-eszközökre az Azure Notification Hubs használatával | Microsoft Docs
+description: Megtudhatja, hogyan használhat leküldéses honosított értesítéseket iOS-eszközökre az Azure Notification Hubs használatával.
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 484914b5-e081-4a05-a84a-798bbd89d428
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,43 +13,45 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: a293f0b656c075ae3b21ccf98e602e43ed761958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428458"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211898"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Honosított leküldéses értesítések küldése iOS-eszközök Azure Notification Hubs használatával
+# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Honosított értesítések leküldése iOS-eszközökre az Azure Notification Hubs használatával
 
 > [!div class="op_single_selector"]
 > * [Windows Áruház C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-Az oktatóanyag bemutatja, hogyan használható a [sablonok](notification-hubs-templates-cross-platform-push-messages.md) honosított nyelvét és az eszköz által legfrissebb hírekről szóló értesítések küldhetők az Azure Notification hubs szolgáltatás. Ebben az oktatóanyagban először az iOS-alkalmazás létrehozott [A legfrissebb hírek elküldése a Notification Hubs használatával]. Amikor végzett, regisztráljon az Önt érdeklő kategóriák, adja meg a nyelvet, amelyen az értesítések fogadásához és a kiválasztott kategóriákra csak leküldéses értesítések fogadása az adott nyelveken.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Notification Hubs [sablonok](notification-hubs-templates-cross-platform-push-messages.md) szolgáltatását a nyelv és az eszköz által honosított feltörési Hírek küldéséhez. Ebben az oktatóanyagban először a use Notification Hubs használatával létrehozott iOS-alkalmazást kell elindítania a [A legfrissebb hírek elküldése a Notification Hubs használatával]. Ha elkészült, regisztrálhatja a kívánt kategóriákat, megadhatja, hogy milyen nyelven kapja meg az értesítéseket, és csak leküldéses értesítéseket kapjon a kiválasztott kategóriákhoz az adott nyelven.
 
-Ebben a forgatókönyvben két részből áll:
+A forgatókönyv két részből áll:
 
-* iOS-alkalmazást tesz lehetővé az válassza ki a nyelvet, és különböző breaking news kategóriák; előfizetés
-* A háttér-közzéteszi az értesítéseket, használja a **címke** és **sablon** Azure Notification Hubs funkcióit.
+* az iOS-alkalmazás lehetővé teszi, hogy az ügyféleszközök megadják a nyelvet, és előfizessenek a különböző Breaking News-kategóriákra;
+* A háttér az Azure Notification Hubs **címke** -és **sablon** -funkcióit használva közvetíti az értesítéseket.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Az alkalmazás felhasználói felület frissítéséhez
-> * Az iOS-alkalmazás készítése
-> * A sablon honosított értesítések küldése a .NET-Konzolalkalmazás
-> * A sablon honosított értesítések küldése az eszközről
+> * Az alkalmazás felhasználói felületének frissítése
+> * Az iOS-alkalmazás létrehozása
+> * Honosított sablon értesítéseinek küldése a .NET-konzol alkalmazásból
+> * Honosított sablon értesítéseinek küldése az eszközről
 
 ## <a name="overview"></a>Áttekintés
 
-A [A legfrissebb hírek elküldése a Notification Hubs használatával], egy alkalmazást, amelyet használni létrehozott **címkék** előfizetés az értesítésekre, a másik hírkategóriák. Számos alkalmazás, azonban több piacok cél és honosítási igényelnek. Ez azt jelenti, hogy a tartalom értesítést maguknak kell honosított és az eszközök a megfelelő csoporthoz-i. Az oktatóanyag bemutatja, hogyan használható a **sablon** könnyen biztosításához honosított legfrissebb hírekről szóló értesítések a Notification hubs szolgáltatás.
+[A legfrissebb hírek elküldése a Notification Hubs használatával]létrehozott egy alkalmazást, amely **címkéket** használt a különböző híreket tartalmazó értesítésekre való előfizetéshez. Számos alkalmazás azonban több piac megcélzása és honosítás megkövetelése. Ez azt jelenti, hogy az értesítések tartalmának honosítva kell lenniük, és a megfelelő eszközökre kell továbbítani őket. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Notification Hubs **sablon** funkcióját a honosított Breaking News-értesítések egyszerű kézbesítéséhez.
 
 > [!NOTE]
-> Honosított értesítések küldése az egyik lehetőség, hogy minden címke több verzióját. Például angol, francia és Mandarin támogatásához kell három különböző címkék a globális hírekkel: "world_en", "world_fr", és a "world_ch". Majd kell a globális hírekkel honosított változatát el egyes ezekkel a címkékkel. Ez a témakör a sablonok címkék elterjedése és több üzenetet küld az megkövetelését elkerülése érdekében használhatja.
+> A honosított értesítések küldésének egyik módja az, hogy az egyes címkék több verzióját hozza létre. Például az angol, a francia és a mandarin támogatásához három különböző címkét kell megadnia a világ híreihez: "world_en", "world_fr" és "world_ch". Ezután el kell küldenie a világ Hírek honosított verzióját az egyes címkékre. Ebben a témakörben a sablonok segítségével elkerülheti a címkék elterjedését és a több üzenet küldésének követelményét.
 
-Sablonok módon adja meg, hogy egy adott eszközhöz egy értesítést kell kapnia. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Abban az esetben amely tartalmazza az összes támogatott nyelvet területibeállítás-agnosztikus üzenet küldése:
+A sablonok segítségével megtudhatja, hogy egy adott eszköz hogyan kapjon értesítést. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Ebben az esetben az összes támogatott nyelvet tartalmazó locale-agnosztikus üzenetet küld:
 
 ```json
 {
@@ -59,7 +61,7 @@ Sablonok módon adja meg, hogy egy adott eszközhöz egy értesítést kell kapn
 }
 ```
 
-Ezután, győződjön meg arról, hogy az eszközök regisztrálás egy sablont, amely a megfelelő tulajdonságra hivatkozik. Például az iOS-alkalmazás, amely regisztrálni szeretne a francia hírek regisztrálja a következő szintaxis használatával:
+Ezután gondoskodjon arról, hogy az eszközök a megfelelő tulajdonságra hivatkozó sablonnal regisztráljanak. Például egy iOS-alkalmazás, amely a francia Hírek regisztrálásához szeretne regisztrálni, a következő szintaxissal:
 
 ```json
 {
@@ -69,28 +71,28 @@ Ezután, győződjön meg arról, hogy az eszközök regisztrálás egy sablont,
 }
 ```
 
-A sablonok további információkért lásd: [sablonok](notification-hubs-templates-cross-platform-push-messages.md) cikk.
+A sablonokkal kapcsolatos további információkért lásd: [sablonok](notification-hubs-templates-cross-platform-push-messages.md) című cikk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Végezze el a [leküldéses értesítések küldése az adott iOS-eszközök](notification-hubs-ios-xplat-segmented-apns-push-notification.md) oktatóanyag és van elérhető, a kódot, mert ebben az oktatóanyagban közvetlenül épít, hogy a kódot.
+* Töltse le a [leküldéses értesítéseket adott iOS-eszközök](notification-hubs-ios-xplat-segmented-apns-push-notification.md) oktatóanyagára, és álljon rendelkezésre a kód, mert ez az oktatóanyag közvetlenül erre a kódra épül.
 * A Visual Studio 2019 nem kötelező.
 
-## <a name="update-the-app-user-interface"></a>Az alkalmazás felhasználói felület frissítéséhez
+## <a name="update-the-app-user-interface"></a>Az alkalmazás felhasználói felületének frissítése
 
-Ebben a szakaszban módosítsa a témakörben létrehozott híreket használhatatlanná tévő alkalmazást [A legfrissebb hírek elküldése a Notification Hubs használatával] honosított sablonok használatával a legfrissebb hírek elküldése.
+Ebben a szakaszban a következő témakörben létrehozott Breaking News-alkalmazást módosítja, amely a honosított híreket a sablonok használatával küldi el a honosított Hírek küldéséhez [A legfrissebb hírek elküldése a Notification Hubs használatával] .
 
-Az a `MainStoryboard_iPhone.storyboard`, a három nyelvekkel szegmentált vezérlőelem felvétele: Angol, francia és Mandarin.
+`MainStoryboard_iPhone.storyboard`A alkalmazásban adjon hozzá egy szegmentált vezérlőelemet a három nyelvhez: Angol, francia és mandarin.
 
-![Az iOS felhasználói felület storyboard létrehozása][13]
+![Az iOS felhasználói felület létrehozása – történet][13]
 
-Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen látható módon:
+Ezután vegyen fel egy IBOutlet a ViewController. h fájlba az alábbi képen látható módon:
 
-![Értékesítési lehetőségek, a kapcsolók létrehozása][14]
+![Kivezetések létrehozása a kapcsolókhoz][14]
 
-## <a name="build-the-ios-app"></a>Az iOS-alkalmazás készítése
+## <a name="build-the-ios-app"></a>Az iOS-alkalmazás létrehozása
 
-1. Az a `Notification.h`, adja hozzá a `retrieveLocale` metódust, és a tároló módosítása, és feliratkozhat a módszereket, az alábbi kódban látható módon:
+1. A alkalmazásban adja hozzá `retrieveLocale` a metódust, és módosítsa az áruház és az előfizetés metódusait az alábbi kódban látható módon: `Notification.h`
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -101,7 +103,7 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
 
     - (int) retrieveLocale;
     ```
-    Az a `Notification.m`, módosítsa a `storeCategoriesAndSubscribe` metódus hozzáadásával a `locale` paramétert, és menti a felhasználók alapértelmezett beállításait:
+    A alkalmazásban módosítsa a `storeCategoriesAndSubscribe` metódust úgy, hogy `locale` hozzáadja a paramétert, és a felhasználói alapértelmezésekben tárolja azt: `Notification.m`
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -114,7 +116,7 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
     }
     ```
 
-    Majd módosíthatja a *előfizetés* metódus a területi kódot tartalmazza:
+    Ezután módosítsa az *előfizetés* metódust a területi beállítás belefoglalásához:
 
     ```objc
     - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
@@ -139,9 +141,9 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
     }
     ```
 
-    A módszer használatát `registerTemplateWithDeviceToken`, hanem `registerNativeWithDeviceToken`. Amikor regisztrál egy sablont, meg kell adnia a json-sablont, és a sablon nevét (Előfordulhat, hogy az alkalmazás szeretne regisztrálni, eltérő sablonokban). Ügyeljen arra, hogy címkéket, mint a kategóriák regisztrálni, ügyeljen arra, hogy ezeket a hírek értesítéseket fogadni szeretné.
+    A metódust `registerTemplateWithDeviceToken`használja a `registerNativeWithDeviceToken`helyett. Ha regisztrál egy sablont, meg kell adnia a JSON-sablont és a sablon nevét is (mivel az alkalmazásnak más sablonokat is regisztrálnia kell). Ügyeljen arra, hogy a kategóriákat címkékként regisztrálja, mivel szeretné megkapni az adott híreket érintő értesítéseket.
 
-    Adjon meg egy metódust a területi beállítások lekérése a felhasználói alapértelmezett beállításokat:
+    Adjon hozzá egy metódust a területi beállítás lekéréséhez a felhasználói alapértelmezett beállítások közül:
 
     ```objc
     - (int) retrieveLocale {
@@ -153,13 +155,13 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
     }
     ```
 
-2. Most, hogy módosította a `Notifications` osztály rendelkezik, győződjön meg arról, hogy a `ViewController` alkalmazza az új `UISegmentControl`. Adja hozzá a következő sort a a `viewDidLoad` metódust, hogy a jelenleg kiválasztott területi beállítás megjelenítéséhez:
+2. Most, hogy módosította `Notifications` az osztályt, meg kell győződnie arról `ViewController` , hogy az új `UISegmentControl`használatot tesz lehetővé. Adja hozzá a következő sort `viewDidLoad` a metódushoz, és győződjön meg arról, hogy az aktuálisan kiválasztott területi beállítás látható:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Ezt követően a a `subscribe` metódus, a hívás a módosítása a `storeCategoriesAndSubscribe` a következő kódot:
+    Ezután a `storeCategoriesAndSubscribe` metódusban módosítsa a hívást a következő kódra: `subscribe`
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -174,7 +176,7 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
     }];
     ```
 
-3. Végül, frissítenie kell a `didRegisterForRemoteNotificationsWithDeviceToken` metódus az AppDelegate.m az, hogy megfelelően frissítse a regisztrációt az alkalmazás indításakor. A hívás a módosítása a `subscribe` metódus az értesítések a következő kóddal:
+3. Végül frissítenie kell a `didRegisterForRemoteNotificationsWithDeviceToken` metódust a AppDelegate. m-ben, hogy megfelelően frissítse a regisztrációt az alkalmazás indításakor. Változtassa meg az értesítések `subscribe` metódusának hívását a következő kóddal:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -186,13 +188,13 @@ Végezze el a ViewController.h adjon hozzá egy IBOutlet, az alábbi képen lát
     }];
     ```
 
-## <a name="optional-send-localized-template-notifications-from-net-console-app"></a>(nem kötelező) A sablon honosított értesítések küldése a .NET-Konzolalkalmazás
+## <a name="optional-send-localized-template-notifications-from-net-console-app"></a>választható Honosított sablon értesítéseinek küldése a .NET-konzol alkalmazásból
 
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
-## <a name="optional-send-localized-template-notifications-from-the-device"></a>(nem kötelező) A sablon honosított értesítések küldése az eszközről
+## <a name="optional-send-localized-template-notifications-from-the-device"></a>választható Honosított sablon értesítéseinek küldése az eszközről
 
-Ha nem fér hozzá a Visual Studióban, vagy csak szeretné tesztelni a sablon honosított értesítések küldése közvetlenül az alkalmazásból az eszközön. A honosított sablon paramétereihez is hozzáadhat a `SendNotificationRESTAPI` metódus az előző oktatóanyagban meghatározott.
+Ha nincs hozzáférése a Visual studióhoz, vagy csak tesztelni szeretné a honosított sablon értesítéseinek küldését közvetlenül az eszközről az alkalmazásból. A honosított sablon paramétereit `SendNotificationRESTAPI` hozzáadhatja az előző oktatóanyagban megadott metódushoz.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag
@@ -261,7 +263,7 @@ Ha nem fér hozzá a Visual Studióban, vagy csak szeretné tesztelni a sablon h
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban elküldött honosított értesítések iOS-eszközökön. Megtudhatja, hogyan küldhet leküldéses értesítéseket az iOS-alkalmazások meghatározott felhasználókra, folytassa a következő oktatóanyaggal:
+Ebben az oktatóanyagban honosított értesítéseket küldött iOS-eszközökre. Ha szeretné megtudni, hogyan küldhet le értesítéseket az iOS-alkalmazások adott felhasználói számára, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 >[Leküldéses értesítések küldése adott felhasználóknak](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)

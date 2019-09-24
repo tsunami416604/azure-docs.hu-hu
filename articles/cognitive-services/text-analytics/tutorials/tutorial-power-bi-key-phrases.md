@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697343"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241017"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics kognitív szolgáltatással
 
@@ -114,13 +114,14 @@ Az új lekérdezés eredetileg `Query1` névvel megjelenik a Lekérdezések list
 Most a **Kezdőlap** menüszalag **Lekérdezés** csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
 
 > [!NOTE]
-> Az alábbi példák azt feltételezik, hogy a Text Analytics API végpont kezdete: `https://westus.api.cognitive.microsoft.com`. A Text Analytics az előfizetések létrehozását 13 különböző régióban támogatja. Ha egy ezektől eltérő régióban regisztrált a szolgáltatásra, mindenképp a kiválasztott régió végpontját használja. A végpont megkereséséhez jelentkezzen be az [Azure portálra](https://azure.microsoft.com/features/azure-portal/) és a Text Analytics előfizetésének kijelölése után válassza az Áttekintés lapot.
+> Cserélje le az alábbi példás végpontot (amely tartalmazza `<your-custom-subdomain>`) a Text Analytics erőforráshoz generált végponttal. Ezt a végpontot megkeresheti a [Azure Portalba](https://azure.microsoft.com/features/azure-portal/)való bejelentkezéssel, a Text Analytics-előfizetés kiválasztásával, majd a lehetőség kiválasztásával `Quick start`.
+
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -164,7 +165,8 @@ Kattintson a **Hitelesítő adatok szerkesztése** gombra, majd ellenőrizze, ho
 > [!NOTE]
 > Válassza az `Anonymous` elemet, mert a Text Analytics szolgáltatás a hozzáférési kulcs használatával hitelesíti Önt, ezért a Power BI-nak nem kell hitelesítő adatokat megadnia magához a HTTP-kéréshez.
 
-![[a névtelen hitelesítés beállítása]](../media/tutorials/power-bi/access-web-content.png)
+> [!div class="mx-imgBorder"]
+> ![[névtelen hitelesítés beállítása]](../media/tutorials/power-bi/access-web-content.png)
 
 Ha a Hitelesítő adatok szerkesztése értesítés a névtelen hozzáférés beállítása után is látható, elképzelhető, hogy elfelejtette bemásolni a Text Analytics hozzáférési kulcsot az `KeyPhrases` [egyéni függvény](#CreateCustomFunction) kódba.
 
@@ -223,7 +225,7 @@ Az alábbi hangulatelemzési függvény egy pontszámot ad vissza, amely a szöv
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +242,7 @@ in  sentiment
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +276,7 @@ Végezetül íme a korábban bemutatott Key Phrases-függvény egy olyan változ
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),

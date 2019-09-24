@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097598"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212324"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -46,7 +46,13 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Korábban a helyszíni AD-hez csatlakoztatott Windows Down-szintű számítógépek helytelenül lettek szinkronizálva a felhőbe bizonyos körülmények között. Például a userCertificate attribútum értéke a Windows Down-szintű eszközökhöz az AD-ben feltöltve. Az Azure AD-beli eszközök azonban mindig "függő" állapotban maradnak, mivel ezek az operációsrendszer-verziók nem az Azure AD-ben való regisztrálásra lettek kialakítva AAD-szinkronizálóon keresztül. A Azure AD Connect jelen verziójában AAD-szinkronizáló leállítja a Windows Down-szintű számítógépeinek Azure AD-be való szinkronizálását, és eltávolítja a korábban helytelenül szinkronizált Windows rendszerű, régebbi verziójú eszközöket az Azure AD-ből. Vegye figyelembe, hogy ez a változás nem törli az Azure AD-ben az MSI-csomag használatával megfelelően regisztrált Windows Down-szintű eszközöket. Ezek az eszközök továbbra is a várt módon fognak működni az eszköz alapú feltételes hozzáférés szempontjából. Egyes ügyfelek láthatják, hogy a Windows Down-szintű eszközeinek némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel ezek az eszközök identitásait soha nem használták az Azure AD a feltételes hozzáférés engedélyezésekor. Előfordulhat, hogy az ilyen ügyfeleknek https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan újra kell megkeresniük és a Windows rendszerbeli régebbi eszközöket kell regisztrálniuk ahhoz, hogy az ilyen eszközök teljes mértékben részt vehessenek az eszközön alapuló feltételes hozzáférésben. Vegye figyelembe, hogy ha az Azure AD-ben ezek a törlési hibák meghaladják az Exportálás törlésére vonatkozó küszöbértéket, akkor azt javasoljuk, hogy az ügyfél az alábbi törlési lépésekkel engedélyezze ezeket a törléseket:.
+>A hibrid Azure AD-hez regisztrált Windows-számítógépek az Azure AD-ben, az eszköz objektumaiként jelennek meg. Ezeket az eszközöket feltételes hozzáféréshez használhatja. A Windows 10 rendszerű számítógépek a felhőbe vannak szinkronizálva Azure AD Connect, a Down szintű Windows rendszerű számítógépek közvetlenül a AD FS vagy a zökkenőmentes egyszeri bejelentkezés használatával vannak regisztrálva.
+>
+>Csak a hibrid Azure AD JOIN által konfigurált, megadott userCertificate attribútum értékkel rendelkező Windows 10 rendszerű számítógépeket kell szinkronizálni a felhőbe Azure AD Connect.  Azure AD Connect korábbi verzióiban ez a követelmény nem lett szigorúan kikényszerítve, ami az Azure AD-ben szükségtelen eszköz-objektumokat eredményezett. Az Azure AD-beli eszközök mindig "függő" állapotban maradnak, mivel ezek a számítógépek nem lettek regisztrálva az Azure AD-ben.
+>
+>A Azure AD Connect ezen verziója csak a hibrid Azure AD-hez csatlakoztatott Windows 10 rendszerű számítógépeket szinkronizálja. Azure AD Connect soha ne legyenek szinkronizálva a [Windows rendszerű eszközök](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices).  Az Azure AD-ben korábban szinkronizált eszközök már nem megfelelően lesznek törölve az Azure AD-ből.  Ez a módosítás azonban nem törli azokat a Windows-eszközöket, amelyek megfelelően regisztrálva lettek az Azure AD-ben a hibrid Azure AD-csatlakozáshoz. 
+>
+>Egyes ügyfelek láthatják, hogy a Windows-eszközeik némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel az eszköz identitásait a feltételes hozzáférés engedélyezésekor. Előfordulhat, hogy néhány ügyfélnek újra [kell látogatnia a következőket: Tervezze meg a hibrid Azure Active Directory](../../active-directory/devices/hybrid-azuread-join-plan.md) csatlakoztatását, hogy a Windows rendszerű számítógépek megfelelően legyenek regisztrálva, és gondoskodjon arról, hogy az ilyen eszközök teljes mértékben részt vegyenek az eszköz alapú feltételes hozzáférésben Ha Azure AD Connect a [régebbi Windows-eszközök](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) törlését kísérli meg, akkor az eszköz nem a [Microsoft Workplace JOIN által a nem Windows 10 rendszerű számítógépek MSI-hez](https://www.microsoft.com/download/details.aspx?id=53554) készült, és a többi Azure ad-szolgáltatás nem tudja használni.  Ha az Azure AD-ban az Exportálás törlésére vonatkozó küszöbértéket meghaladó számítógép/eszköz objektumok törlését látja, akkor azt javasoljuk, hogy az ügyfél engedélyezze ezeket a törléseket.
 
 ### <a name="release-status"></a>Kiadás állapota
 9/10/2019: Csak automatikus frissítésre van kiadva
@@ -360,7 +366,7 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 >"Az autoupgrade funkció nem volt megfelelően letiltva néhány olyan bérlőnél, akik üzembe helyezettek a 1.1.524.0-nél később. A következő PowerShell-parancsmag futtatásával biztosíthatja, hogy a Azure AD Connect-példány továbbra is jogosult legyen az autoupgrade-re: "Set-ADSyncAutoUpgrade-AutoupGradeState enabled"
 
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
 
 * A set-ADSyncAutoUpgrade parancsmag előzőleg blokkolta az automatikus frissítést, ha a frissítés állapota felfüggesztve állapotra van állítva. Ez a funkció már megváltozott, így nem blokkolja a jövőbeli buildek újrafrissítését.
@@ -372,7 +378,7 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 >[!NOTE]
 >Ha az új verzióra való frissítés befejeződik, a automatikusan teljes szinkronizálást és teljes importálást indít el az Azure AD-összekötőhöz, és teljes szinkronizálást végez az AD-összekötőhöz. Mivel ez eltarthat egy ideig a Azure AD Connect-környezet méretétől függően, győződjön meg arról, hogy elvégezte a szükséges lépéseket, hogy támogassa ezt, vagy a frissítés után is elvégezze a frissítést, amíg meg nem találja a megfelelő pillanatot.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
 * Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
 
@@ -434,7 +440,7 @@ A segédprogram nem szükséges a jelszó módosítása. A (z) Azure AD Connect 
 >[!NOTE]
 >Ez a kiadás a Azure AD Connect biztonsággal kapcsolatos gyorsjavítása
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 Javítás lett hozzáadva a Azure AD Connect 1.1.654.0-verzióhoz (és után), hogy a rendszer automatikusan alkalmazza a AD DS- [fiókhoz való hozzáférés zárolása](#lock) című szakaszban ismertetett javasolt módosításokat, amikor a Azure ad Connect létrehozza a AD DS fiók. 
 
 - A Azure AD Connect beállításakor a rendszergazda megadhat egy meglévő AD DS fiókot, vagy engedélyezheti Azure AD Connect automatikusan létrehozni a fiókot. Az engedélyek módosításait a rendszer automatikusan alkalmazza a Azure AD Connect által a telepítés során létrehozott AD DS fiókra. Ezeket nem alkalmazza a telepítő rendszergazdája által biztosított meglévő AD DS fiókra.
@@ -501,7 +507,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 >[!NOTE]
 >Ez a Build nem érhető el az ügyfelek számára a Azure AD Connect automatikus frissítési funkcióján keresztül.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 #### <a name="fixed-issue"></a>Kijavítva a probléma
 * Javítottuk a kompatibilitási problémát Azure AD Connect és Azure AD Connect Health ügynök között (szinkronizáláshoz). Ez a probléma azokat az ügyfeleket érinti, akik Azure AD Connect helyszíni frissítést végeznek a verzió 1.1.647.0, de jelenleg az állapotfigyelő 3.0.127.0 verziója van telepítve. A frissítés után az állapotfigyelő ügynök többé nem küldhet egészségügyi információkat Azure AD Connect szinkronizálási szolgáltatásról az Azure AD-Állapotfigyelő szolgáltatásba. Ezzel a javítással az állapotfigyelő ügynök verziója 3.0.129.0 van telepítve Azure AD Connect helyben történő frissítés során. Az állapotfigyelő ügynök 3.0.129.0 verziója nem rendelkezik kompatibilitási problémával a Azure AD Connect verzió 1.1.649.0.
 
@@ -514,7 +520,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 >
 >
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
 * A Azure AD Connect varázsló *felhasználói bejelentkezés módosítása* feladatának hibája javítva:
 
@@ -571,7 +577,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 ## <a name="116140"></a>1.1.614.0
 Állapota Szeptember 05 2017
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 
 #### <a name="known-issues"></a>Ismert problémák
 * Létezik egy ismert probléma, amely miatt Azure AD Connect frissítés sikertelen a következő hiba miatt: "*nem sikerült frissíteni a szinkronizációs szolgáltatást*". A szinkronizálási szolgáltatás többé nem kezdődhet "a szolgáltatás nem indítható el" hibaüzenettel,*mert az adatbázis verziója újabb, mint a telepített bináris fájlok verziója*. A probléma akkor fordul elő, ha a frissítést végrehajtó rendszergazda nem rendelkezik rendszergazdai jogosultsággal az Azure AD Connect által használt SQL-kiszolgálóhoz. A dbo engedélyei nem elegendőek.
@@ -621,7 +627,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 ## <a name="115610"></a>1.1.561.0
 Állapota Július 23 2017
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 
 #### <a name="fixed-issue"></a>Kijavítva a probléma
 
@@ -661,7 +667,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 ## <a name="115580"></a>1.1.558.0
 Állapota Nem jelenik meg. A Build módosításait a 1.1.561.0 verzió tartalmazza.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 
 #### <a name="fixed-issue"></a>Kijavítva a probléma
 
@@ -692,7 +698,7 @@ További információ: [Microsoft biztonsági tanácsadó 4056318](https://techn
 >[!NOTE]
 >Ez a Build nem érhető el az ügyfelek számára a Azure AD Connect automatikus frissítési funkcióján keresztül.
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>Azure Active Directory Connect
 
 #### <a name="fixed-issue"></a>Kijavítva a probléma
 * Az inicializálási ADSyncDomainJoinedComputerSync parancsmaggal kapcsolatos probléma kijavítva, amely miatt a meglévő Service-kapcsolódási pont objektumon konfigurált ellenőrzött tartomány még akkor is módosítható, ha még mindig érvényes tartomány. Ez a probléma akkor fordul elő, ha az Azure AD-bérlő több ellenőrzött tartománnyal rendelkezik, amelyek a szolgáltatás kapcsolódási pontjának konfigurálására használhatók.

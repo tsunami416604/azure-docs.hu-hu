@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: HT
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202961"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212270"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Előzetes verzió – több Node-készlet létrehozása és kezelése az Azure Kubernetes Service-ben (ak)
 
@@ -176,7 +176,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>Csomópont-készlet frissítése
  
 > [!NOTE]
-> Fürtön vagy csomóponton található műveletek frissítése és méretezése nem végezhető el egyszerre, ha a rendszer hibaüzenetet küld. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
+> Fürtön vagy csomóponton található műveletek frissítése és méretezése nem végezhető el egyszerre, ha a rendszer hibát adott vissza. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Erről a [hibaelhárítási útmutatóban](https://aka.ms/aks-pending-upgrade)olvashat bővebben.
 
 Ha az AK-fürt eredetileg az első lépésben lett létrehozva, `--kubernetes-version` a rendszer egy *1.13.10* adott meg. Ez a Kubernetes-verziót adja meg a vezérlési síkon és az alapértelmezett csomópont-készlet esetében is. Az ebben a szakaszban szereplő parancsok azt ismertetik, hogyan lehet frissíteni egy adott csomópont-készletet.
 
@@ -245,15 +245,15 @@ Ajánlott eljárásként egy AK-fürt összes csomópont-készletét ugyanarra a
 Az AK-fürtök két fürterőforrás-objektummal rendelkeznek, amelyek Kubernetes-verzióval vannak társítva. Az első egy vezérlő síkja Kubernetes verziója. A második egy Kubernetes-verziót tartalmazó ügynök készlet. A vezérlő síkja egy vagy több csomópont-készletet képez le. A frissítési művelet viselkedése attól függ, hogy melyik Azure CLI-parancsot használja a rendszer.
 
 1. A vezérlési sík frissítéséhez a-t kell használnia`az aks upgrade`
-   * Ezzel a beállítással frissítheti a vezérlő síkja és a fürt összes csomópont-készletét.
-   * A `az aks upgrade` `--control-plane-only` jelzővel való átadás esetén a rendszer csak a fürt vezérlőjét frissíti, a hozzá tartozó csomópontok egyikét sem. * a jelző elérhető az AK-ban – előzetes bővítmény v 0.4.16 vagy magasabb `--control-plane-only`
+   * Ezzel frissíti a vezérlő síkja és a fürt összes csomópont-készletét.
+   * `az aks upgrade` Ha a`--control-plane-only` jelzővel csak a fürt vezérlőelem síkja frissül, és a társított csomópont-készletek egyike sincs módosítva. A `--control-plane-only` jelző elérhető az **AK-ban – előzetes bővítmény v 0.4.16** vagy újabb verzióban.
 1. Az egyes csomópont-készletek frissítéséhez a szükséges`az aks nodepool upgrade`
-   * Ez csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval.
+   * Ez csak a cél csomópont-készletet frissíti a megadott Kubernetes-verzióval
 
 A csomópont-készletekben tárolt Kubernetes-verziók közötti kapcsolatnak a szabályokat is követnie kell.
 
 1. A vezérlési sík és a Node Pool Kubernetes-verzió nem állítható vissza.
-1. Ha nincs megadva a csomópont-készlet Kubernetes verziója, a rendszer az alapértelmezett használatot a vezérlő síkja verzióra vált.
+1. Ha nincs megadva a csomópont-készlet Kubernetes verziója, a viselkedés a használt ügyféltől függ. Az ARM-sablon deklarációjában a rendszer a csomópont-készlethez definiált meglévő verziót használja, ha nincs beállítva a vezérlő síkja verziójának használata.
 1. Egy adott időpontban frissítheti vagy méretezheti a vezérlési síkot vagy a csomópont-készletet, de egyszerre nem küldheti el mindkét műveletet.
 1. A csomópont-készlet Kubernetes verziószámának meg kell egyeznie a vezérlő síkja főverziójával.
 1. A csomópont-készlet Kubernetes verziója legfeljebb két (2) alverzió lehet a vezérlő síkjanál kisebb, soha nem nagyobb.
@@ -593,7 +593,7 @@ Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikáci
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a következő Boolean Value tulajdonságot a agentPoolProfiles: "enableNodePublicIP". Állítsa be úgy `true` , hogy az alapértelmezett értékre legyen `false` állítva, ha nincs megadva. Ez egy csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
+A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a következő Boolean Value tulajdonságot a agentPoolProfiles: "enableNodePublicIP". Állítsa be úgy `true` , hogy alapértelmezés szerint `false` be legyen állítva, ha nincs megadva. Ez egy csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
 
 ```
 "agentPoolProfiles":[  

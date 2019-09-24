@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967619"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219425"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>A Java használata események küldésére és fogadására az Azure-ból Event Hubs
 
@@ -181,11 +181,11 @@ A EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiókk
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza az **erőforrás létrehozása** lehetőséget a képernyő bal oldalán.
 2. Válassza a **tárolás**, majd a **Storage-fiók**lehetőséget. Az a **storage-fiók létrehozása** ablakban írja be a tárfiók nevét. Fejezze be a többi mezőt, válassza ki a kívánt régiót, majd válassza a **Létrehozás**lehetőséget.
    
-    ![Storage-fiók létrehozása](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Hozzon létre egy Storage-fiókot Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Válassza ki az újonnan létrehozott Storage-fiókot, majd válassza a **hozzáférési kulcsok**elemet:
    
-    ![Hozzáférési kulcsok lekérése](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Hozzáférési kulcsainak beolvasása Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     1\. kulcs értékét egy ideiglenes helyre másolja. Az oktatóanyag későbbi részében használni fogja.
 

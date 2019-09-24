@@ -50,6 +50,16 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: A MARS-ügynök támogatási mátrixa
           href: backup-support-matrix-mars-agent.md
+    - name: Biztonság
+      items:
+        - name: Szerepköralapú hozzáférés-vezérlés
+          href: backup-rbac-rs-vault.md
+        - name: A felhőalapú számítási feladatok biztonsága
+          href: backup-azure-security-feature-cloud.md
+        - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez
+          href: backup-azure-security-feature.md
+        - name: Beépített biztonsági vezérlők
+          href: backup-security-controls.md
     - name: Gyakori kérdések (GYIK)
       items:
         - name: GYIK – Recovery Services-tárak
@@ -68,20 +78,12 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Biztonsági mentési architektúra
       href: backup-architecture.md
-    - name: Szerepköralapú hozzáférés-vezérlés
-      href: backup-rbac-rs-vault.md
-    - name: A felhőalapú számítási feladatok biztonsága
-      href: backup-azure-security-feature-cloud.md
-    - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez
-      href: backup-azure-security-feature.md
     - name: Offline biztonsági mentés konfigurálása
       href: backup-azure-backup-import-export.md
     - name: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
       href: backup-azure-backup-server-import-export-.md
     - name: A szalagtár lecserélése
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Beépített biztonsági vezérlők
-      href: backup-security-controls.md
 - name: Útmutató
   items:
     - name: Azure Backup Server

@@ -3,9 +3,9 @@ title: Notification Hubs biztonság
 description: Ez a témakör az Azure Notification hubok biztonságát ismerteti.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: jowargo
-ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/31/2019
+ms.openlocfilehash: 753493100bbdb34255574656a47217560e2d321a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891576"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213054"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
 
@@ -29,13 +31,13 @@ Ez a témakör az Azure Notification Hubs biztonsági modelljét ismerteti.
 
 ## <a name="shared-access-signature-security-sas"></a>Közös hozzáférésű aláírás biztonsága (SAS)
 
-Notification Hubs megvalósítja a SAS (közös hozzáférési aláírás) nevű entitás szintű biztonsági sémát. Minden szabály tartalmaz egy nevet, egy kulcs értéket (közös titkos kulcsot) és egy jogosultsági készletet, a [biztonsági](#security-claims)jogcímek szerint. Az értesítési központ létrehozásakor a rendszer automatikusan két szabályt hoz létre: egyet a figyelési jogokkal (az ügyfélalkalmazás által használt), egyet pedig **minden** jogosultsággal (az alkalmazás hátterében).
+Notification Hubs megvalósítja a SAS (közös hozzáférési aláírás) nevű entitás szintű biztonsági sémát. Minden szabály tartalmaz egy nevet, egy kulcs értéket (közös titkos kulcsot) és egy jogosultsági készletet, a [biztonsági jogcímek](#security-claims)szerint. Az értesítési központ létrehozásakor a rendszer automatikusan két szabályt hoz létre: egyet a **figyelési** jogokkal (az ügyfélalkalmazás által használt), egyet pedig **minden** jogosultsággal (az alkalmazás hátterében).
 
 Ha az ügyfélalkalmazások regisztrációs felügyeletet végeznek, ha az értesítéseken keresztül küldött információk nem érzékenyek (például időjárás-frissítések), az értesítési központ elérésének közös módja, ha a szabály kulcsfontosságú értékét figyeli, hogy csak az ügyfélalkalmazás férhessen hozzá. a szabály kulcsfontosságú értékeként pedig teljes hozzáférést biztosíthat az alkalmazási háttérhez.
 
 Az alkalmazások nem ágyazzák be a kulcs értékét a Windows áruházbeli ügyfélalkalmazásokba, hanem az alkalmazás-háttérből az indításkor lekérik az alkalmazást.
 
-A figyelési hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ügyfélalkalmazás bármely címkére regisztrálhat. Ha az alkalmazásnak meghatározott felhasználóknak kell korlátoznia a regisztrációkat adott címkékre (például ha a címkék felhasználói azonosítókat jelölnek), az alkalmazás-háttérnek el kell végeznie a regisztrációt. További információ: [regisztráció kezelése](notification-hubs-push-notification-registration-management.md). Vegye figyelembe, hogy az ügyfélalkalmazás így nem lesz közvetlen hozzáférése Notification Hubshoz.
+A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ügyfélalkalmazás bármely címkére regisztrálhat. Ha az alkalmazásnak meghatározott felhasználóknak kell korlátoznia a regisztrációkat adott címkékre (például ha a címkék felhasználói azonosítókat jelölnek), az alkalmazás-háttérnek el kell végeznie a regisztrációt. További információ: [regisztráció kezelése](notification-hubs-push-notification-registration-management.md). Vegye figyelembe, hogy az ügyfélalkalmazás így nem lesz közvetlen hozzáférése Notification Hubshoz.
 
 ## <a name="security-claims"></a>Biztonsági jogcímek
 

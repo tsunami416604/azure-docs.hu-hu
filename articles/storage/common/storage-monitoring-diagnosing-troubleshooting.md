@@ -4,16 +4,16 @@ description: Az Azure Storage szolgáltatással kapcsolatos problémák azonosí
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855354"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212835"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -91,7 +91,7 @@ A "[A tárolási szolgáltatás figyelése]" szakasz azt ismerteti, hogyan figye
 
 A "[tárolási problémák diagnosztizálása]" szakasz azt ismerteti, hogyan diagnosztizálhatja a problémákat Azure Storage Analytics naplózás (Storage-naplózás) használatával. Azt is leírja, hogyan engedélyezhető az ügyféloldali naplózás az egyik ügyfél-függvénytárban, például a .NET-hez készült Storage ügyféloldali kódtára vagy a Javához készült Azure SDK használatával.
 
-A "végpontok közötti[Végpontok közötti nyomkövetés]" szakasz azt ismerteti, hogyan lehet összekapcsolni a különböző naplófájlokban és mérőszámokban tárolt adatokat.
+A "[végpontok közötti nyomkövetés]" szakasz azt ismerteti, hogyan lehet összekapcsolni a különböző naplófájlokban és mérőszámokban tárolt adatokat.
 
 A "[hibaelhárítási útmutató]" című szakasz hibaelhárítási útmutatást nyújt az esetlegesen felmerülő gyakori, a tárterülettel kapcsolatos problémákhoz.
 
@@ -100,7 +100,9 @@ A "[függelékek]" az egyéb eszközök, például a Wireshark és a netmon hasz
 ## <a name="monitoring-your-storage-service"></a>A tárolási szolgáltatás figyelése
 Ha ismeri a Windows teljesítményfigyelőjét, a tárolási metrikákat úgy tekintheti meg, hogy a Windows teljesítményfigyelő számlálóinak megfelelő Azure Storage-kompatibilis. A tárolási Mérőszámokban átfogó mérőszámokat (számlálókat a Windows Teljesítményfigyelő terminológiájában) talál, például a szolgáltatás elérhetőségét, a szolgáltatásra irányuló kérelmek teljes számát vagy a sikeres kérelmek százalékos arányát. Az elérhető metrikák teljes listáját itt tekintheti meg: [Storage Analytics mérőszámok tábla sémája](https://msdn.microsoft.com/library/azure/hh343264.aspx). Megadhatja, hogy a tárolási szolgáltatás óránként, vagy percenként összesítse-e a metrikákat. A metrikák engedélyezésével és a tárolási fiókok figyelésével kapcsolatos további információkért lásd: [a tárolási mérőszámok engedélyezése és a metrikák adatainak megtekintése](https://go.microsoft.com/fwlink/?LinkId=510865).
 
-Kiválaszthatja, hogy mely óradíjak jelenjenek meg a Azure Portalban, [](https://portal.azure.com) és hogyan konfigurálhat olyan szabályokat, amelyek e-mailben értesítik a rendszergazdát, amikor egy óradíj meghaladja az adott küszöbértéket. További információt a riasztási [értesítések fogadása](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)című témakörben talál.
+Kiválaszthatja, hogy mely óradíjak jelenjenek meg a [Azure Portalban](https://portal.azure.com) , és hogyan konfigurálhat olyan szabályokat, amelyek e-mailben értesítik a rendszergazdát, amikor egy óradíj meghaladja az adott küszöbértéket. További információt a [Riasztási értesítések fogadása](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)című témakörben talál.
+
+Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../azure-monitor/insights/storage-insights-overview.md) (előzetes verzió). Ez az Azure Monitor szolgáltatása, amely átfogóan figyeli az Azure Storage-fiókokat az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes áttekintésével. Nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, és azonnal megtekintheti ezeket a metrikákat az előre definiált interaktív diagramokon és egyéb vizualizációkban is.
 
 A tárolási szolgáltatás a legjobb erőfeszítéssel gyűjt metrikákat, de nem rögzíti az összes tárolási műveletet.
 
@@ -157,7 +159,7 @@ Az ilyen értékek bármelyikének váratlan változásait általában a vizsgá
 
 A [Azure Portal](https://portal.azure.com)riasztási szabályokat adhat hozzá, amelyek értesítik, ha a szolgáltatás bármelyik teljesítmény-mérőszáma alá esik, vagy meghaladja a megadott küszöbértéket.
 
-A jelen[]útmutató "hibaelhárítási útmutatója" című szakasza a teljesítménygel kapcsolatos gyakori tárolási szolgáltatásokkal kapcsolatos problémákat ismerteti.
+A jelen útmutató "[Hibaelhárítási útmutató]" című szakasza a teljesítménygel kapcsolatos gyakori tárolási szolgáltatásokkal kapcsolatos problémákat ismerteti.
 
 ## <a name="diagnosing-storage-issues"></a>Tárolási problémák diagnosztizálása
 Több módon is megismerheti az alkalmazás hibáját vagy problémáját, többek között a következőket:
@@ -357,7 +359,7 @@ A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency**
 #### <a name="investigating-client-performance-issues"></a>Az ügyfél teljesítményével kapcsolatos problémák kivizsgálása
 Az ügyfélnek a lassú válaszadás lehetséges okai a következők lehetnek: korlátozott számú elérhető kapcsolat vagy szál, illetve kevés erőforrás, például CPU-, memória-vagy hálózati sávszélesség. Előfordulhat, hogy a probléma megoldásához módosítania kell az ügyfél kódját, hogy hatékonyabb legyen (például aszinkron hívásokat használ a tárolási szolgáltatáshoz), vagy egy nagyobb virtuális gép (több maggal és több memóriával) használatával.
 
-A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a nyár utáni algoritmust, [amely nem csupán a kis kérések elérésére szolgál](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkörben található **Application_Start** metódusból származik.
+A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkörben található **Application_Start** metódusból származik.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -394,11 +396,11 @@ A hálózati problémák Wireshark használatával kapcsolatos további informá
 A hálózati problémák megoldásához a Microsoft Message Analyzer használatával kapcsolatos további információkért lásd[3. függelék: Hálózati forgalom rögzítése a Microsoft Message Analyzer használatával]hálózati forgalmat. "
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>A metrikák magas Averageserverlatency értéket mutatnak mutatnak
-A blob letöltési kéréseinek magas **averageserverlatency értéket mutatnak** esetén a tárolási naplózási naplók segítségével ellenőrizze, hogy vannak-e ismétlődő kérelmek ugyanahhoz a blobhoz (vagy Blobok készletéhez). A Blobok feltöltésére vonatkozó kérelmek esetében meg kell vizsgálni, hogy az ügyfél által használt blokkolási méret (például az 64 K-nál kevesebb blokk) csak akkor járhat, ha az olvasások kisebbek, mint 64 K-es tömbökben találhatók, és ha több ügyfél is feltölti a blokkokat ugyanarra a blobra. llel. Azt is ellenőriznie kell, hogy a másodpercenkénti kérések száma a másodpercenkénti méretezhetőségi célok meghaladása esetén hány percenkénti várakozási arányt eredményez.[]
+A blob letöltési kéréseinek magas **averageserverlatency értéket mutatnak** esetén a tárolási naplózási naplók segítségével ellenőrizze, hogy vannak-e ismétlődő kérelmek ugyanahhoz a blobhoz (vagy Blobok készletéhez). A Blobok feltöltésére vonatkozó kérelmek esetében meg kell vizsgálni, hogy az ügyfél által használt blokkolási méret (például az 64 K-nál kevesebb blokk) csak akkor járhat, ha az olvasások kisebbek, mint 64 K-es tömbökben találhatók, és ha több ügyfél is feltölti a blokkokat ugyanarra a blobra. llel. Azt is ellenőriznie kell, hogy a másodpercenkénti kérések száma a másodpercenkénti méretezhetőségi célok meghaladása esetén hány percenkénti várakozási[A mérőszámok emelkedő PercentTimeoutError értéket mutatnak]
 
 Ha a Blobok letöltési kéréseinek nagy **averageserverlatency értéket mutatnak** jelenik meg, ha ismétlődő kérelmek ugyanazt a blobot vagy blobot használják, érdemes megfontolnia a Blobok gyorsítótárazását az Azure cache vagy az Azure Content DELIVERY Network (CDN) használatával. A feltöltési kérelmek esetében nagyobb méretű blokk használatával javítható az átviteli sebesség. A táblákra irányuló lekérdezések esetében az ügyféloldali gyorsítótárazás is megvalósítható az ugyanazon lekérdezési műveleteket végző ügyfeleken, és az adatok nem változnak gyakran.
 
-A magas **averageserverlatency értéket mutatnak** értékek olyan, rosszul tervezett táblák vagy lekérdezések tünetét is okozhatják, amelyek vizsgálati műveleteket eredményeznek, vagy amelyek a Hozzáfűzés/előtag ellenes mintát követik. További információ: "a mérőszámok a[A mérőszámok emelkedő PercentThrottlingError értéket mutatnak]".
+A magas **averageserverlatency értéket mutatnak** értékek olyan, rosszul tervezett táblák vagy lekérdezések tünetét is okozhatják, amelyek vizsgálati műveleteket eredményeznek, vagy amelyek a Hozzáfűzés/előtag ellenes mintát követik. További információ: "a[A mérőszámok emelkedő PercentThrottlingError értéket mutatnak]".
 
 > [!NOTE]
 > Az átfogó ellenőrzőlista teljesítményére vonatkozó ellenőrzőlista itt található: [Microsoft Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlista](storage-performance-checklist.md).
@@ -461,12 +463,12 @@ A kiszolgáló időtúllépései a további vizsgálatot igénylő tárolási sz
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>A metrikák a Percentnetworkerror értéket mutatnak növekedését mutatják
 A metrikák az egyik tárolási szolgáltatás **percentnetworkerror értéket mutatnak** növekedését mutatják be. A **percentnetworkerror értéket mutatnak** metrika a következő metrikák összesítése: **NetworkError**, **AnonymousNetworkError**és **SASNetworkError**. Ezek akkor fordulnak elő, ha a tárolási szolgáltatás hálózati hibát észlel, amikor az ügyfél tárolási kérelmet készít.
 
-Ennek a hibának a leggyakoribb oka az ügyfél leválasztása, mielőtt lejár az időkorlát a Storage szolgáltatásban. Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással. A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával megvizsgálhatja az ügyfél hálózati kapcsolati problémáit. Ezek az eszközök a függelékekben []olvashatók.
+Ennek a hibának a leggyakoribb oka az ügyfél leválasztása, mielőtt lejár az időkorlát a Storage szolgáltatásban. Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással. A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával megvizsgálhatja az ügyfél hálózati kapcsolati problémáit. Ezek az eszközök a [Függelékek]olvashatók.
 
 ### <a name="the-client-is-receiving-403-messages"></a>Az ügyfél HTTP 403 (tiltott) üzeneteket kap
 Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valószínű oka lehet, hogy az ügyfél egy lejárt közös hozzáférésű jogosultságkódot (SAS-t) használ, amikor tárolási kérelmet küld (egyéb lehetséges okok lehetnek még az óraeltérés, az érvénytelen kulcsok és az üres fejlécek). Ha egy lejárt SAS-kulcs a hiba oka, akkor nem fog bejegyzéseket látni a kiszolgálóoldali Storage naplózási szolgáltatásának naplóadataiban. Az alábbi táblázat a Storage ügyféloldali kódtár által létrehozott ügyféloldali naplóból származó mintát mutatja be, amely a problémát szemlélteti:
 
-| Source | Részletesség | Részletesség | Ügyfélkérelem azonosítója | Művelet szövege |
+| Source | Részletességi | Részletességi | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |Information |3 |85d077ab-… |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |Szinkron kérelem indítása<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
@@ -520,14 +522,14 @@ Naplóbejegyzések:
 | 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETAG = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
-| 07b26a5d-... |A művelet sikerült. |
+| 07b26a5d-... |A művelet sikeresen befejeződött. |
 | 07b26a5d-... |Szinkron kérelem indítása a https://domemaildist.blob.core.windows.net/azuremmblobcontainer következőhöz:. |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |Várakozás a válaszra. |
 | 07b26a5d-... |Válasz érkezett. Állapotkód = 202, kérelem azonosítója = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
-| 07b26a5d-... |A művelet sikerült. |
+| 07b26a5d-... |A művelet sikeresen befejeződött. |
 | e2d06d78-... |Aszinkron kérelem indítása a https://domemaildist.blob.core.windows.net/azuremmblobcontainer következőhöz:.</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Várakozás a válaszra. |
@@ -538,7 +540,7 @@ Naplóbejegyzések:
 | e2d06d78-... |Válasz érkezett. Állapotkód = 404, kérelem azonosítója = 353ae3bc-..., Content-MD5 =, ETag =. |
 | e2d06d78-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | e2d06d78-... |Válasz törzsének letöltése. |
-| e2d06d78-... |A művelet sikerült. |
+| e2d06d78-... |A művelet sikeresen befejeződött. |
 | e2d06d78-... |Aszinkron kérelem indítása a https://domemaildist.blob.core.windows.net/azuremmblobcontainer következőhöz:. |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Várakozás a válaszra. |
@@ -745,7 +747,7 @@ A WireShark kiemel minden, a **packetlist** ablakban található hibát. A hibá
 
 ![][7]
 
-Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási réteg úgy látja, hogy a jobb gombbal a TCP-adatforrásra kattint, és kiválasztja a **TCP stream** Ez akkor hasznos, ha rögzítési szűrő nélkül rögzítette a memóriaképet. További információért lásd a [következő TCP](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)-streameket.
+Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási réteg úgy látja, hogy a jobb gombbal a TCP-adatforrásra kattint, és kiválasztja a **TCP stream** Ez akkor hasznos, ha rögzítési szűrő nélkül rögzítette a memóriaképet. További információért lásd a [következő TCP-streameket](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![][8]
 
@@ -758,7 +760,7 @@ Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási rét
 A Microsoft Message Analyzer használatával a HTTP-és HTTPS-forgalmat a Hegedűs hasonló módon rögzítheti, és a hálózati forgalmat a Wireshark hasonló módon rögzítheti.
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Webes nyomkövetési munkamenet konfigurálása a Microsoft Message Analyzer használatával
-Ha webes nyomkövetési munkamenetet szeretne konfigurálni a HTTP-és HTTPS-forgalomhoz a Microsoft Message Analyzer használatával, futtassa a Microsoft Message Analyzer alkalmazást, majd a **fájl** menüben kattintson a **rögzítés/nyomkövetés**elemre. Az elérhető nyomkövetési forgatókönyvek listájában válasszaa webproxy lehetőséget. Ezután a **nyomkövetési forgatókönyv konfigurációs** paneljének **HostnameFilter** szövegmezőbe írja be a tárolási végpontok nevét (ezeket a neveket megkeresheti a [Azure Portal](https://portal.azure.com)). Ha például az Azure Storage-fiók neve **contosodata**, adja hozzá a következőt a **HostnameFilter** szövegmezőhöz:
+Ha webes nyomkövetési munkamenetet szeretne konfigurálni a HTTP-és HTTPS-forgalomhoz a Microsoft Message Analyzer használatával, futtassa a Microsoft Message Analyzer alkalmazást, majd a **fájl** menüben kattintson a **rögzítés/nyomkövetés**elemre. Az elérhető nyomkövetési forgatókönyvek listájában válassza a **webproxy**lehetőséget. Ezután a **nyomkövetési forgatókönyv konfigurációs** paneljének **HostnameFilter** szövegmezőbe írja be a tárolási végpontok nevét (ezeket a neveket megkeresheti a [Azure Portal](https://portal.azure.com)). Ha például az Azure Storage-fiók neve **contosodata**, adja hozzá a következőt a **HostnameFilter** szövegmezőhöz:
 
 ```
 contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
@@ -771,9 +773,9 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 Amikor készen áll a nyomkövetési adatok gyűjtésének megkezdésére, kattintson a **Start with (Kezdés** ) gombra.
 
-További információ a Microsoft Message Analyzer webproxy nyomkövetéséről: [Microsoft-PEF-webproxy Provider](https://technet.microsoft.com/library/jj674814.aspx).
+További információ a Microsoft Message Analyzer **webproxy** nyomkövetéséről: [Microsoft-PEF-webproxy Provider](https://technet.microsoft.com/library/jj674814.aspx).
 
-A Microsoft Message Analyzer beépített webproxy-nyomkövetése a hegedűsen alapul; képes az ügyféloldali HTTPS-forgalom rögzítésére és a titkosítatlan HTTPS-üzenetek megjelenítésére. A **webproxy** -nyomkövetés úgy működik, hogy egy helyi proxyt konfigurál minden olyan http-és HTTPS-forgalomhoz, amely hozzáférést biztosít a titkosítatlan üzenetekhez.
+A Microsoft Message Analyzer beépített **webproxy** -nyomkövetése a hegedűsen alapul; képes az ügyféloldali HTTPS-forgalom rögzítésére és a titkosítatlan HTTPS-üzenetek megjelenítésére. A **webproxy** -nyomkövetés úgy működik, hogy egy helyi proxyt konfigurál minden olyan http-és HTTPS-forgalomhoz, amely hozzáférést biztosít a titkosítatlan üzenetekhez.
 
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Hálózati problémák diagnosztizálása a Microsoft Message Analyzer használatával
 Amellett, hogy a Microsoft Message Analyzer **webproxy** nyomkövetését használja az ügyfélalkalmazás és a Storage szolgáltatás közötti HTTP/HTTPS-forgalom részleteinek rögzítéséhez, a hálózat rögzítéséhez használhatja a beépített **helyi kapcsolati réteg** nyomkövetését is. csomag adatai. Ez lehetővé teszi az olyanhoz hasonló adatrögzítést, amely a Wireshark rögzíthető, és olyan hálózati problémák diagnosztizálására szolgál, mint például az eldobott csomagok.
@@ -811,7 +813,7 @@ További információ: [Mi a Application Insights](../../azure-monitor/app/app-i
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
-* [Storage-fiók figyelése a Azure Portal](storage-monitor-storage-account.md)
+* [Tárfiók monitorozása az Azure Portalon](storage-monitor-storage-account.md)
 * [Storage Analytics](storage-analytics.md)
 * [Storage Analytics-metrikák](storage-analytics-metrics.md)
 * [Storage Analytics mérőszámok táblázatának sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema)

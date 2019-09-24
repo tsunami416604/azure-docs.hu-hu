@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898686"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219442"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -60,7 +60,7 @@ Jelentkezzen be egy munkahelyi fiókkal, hogy a vállalati munkahelyi e-mail-fi�
 
 ### <a name="agree-to-terms-and-conditions"></a>A feltételek és Kikötések elfogadása
 
-Meg kell egyeznie a [Microsoft Marketplace kiadói szerződésben](http://go.microsoft.com/fwlink/?LinkID=699560)foglalt feltételekkel.
+Meg kell egyeznie a [Microsoft Marketplace kiadói szerződésben](https://go.microsoft.com/fwlink/?LinkID=699560)foglalt feltételekkel.
 
 ### <a name="provide-your-publisher-profile"></a>Adja meg a közzétevői profilját
 
@@ -103,7 +103,7 @@ A bejelentkezést követően az ebben a szakaszban ismertetett lépéseket köve
 
 1. A partner Centerben válassza a **Beállítások** > **partner beállítások** > **programok** > első**lépések**lehetőséget.
 2. Microsoft Partner Network észleli az előfizetését, és megjeleníti a közzétevői profil oldalt, ahol megadhatja a vállalat nevét és MPN-AZONOSÍTÓját.
-3. Olvassa el a [Microsoft Marketplace kiadói szerződés](http://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
+3. Olvassa el a [Microsoft Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
 A regisztrációt követően a kereskedelmi piactér – áttekintés oldalon olvashat. A **kereskedelmi piactér** a bal oldali navigációs sávon jelenik meg. Ha a **Beállítások** > **partner beállításai** > **programok**lehetőséget választja, látni fogja, hogy a kereskedelmi piactér regisztrálva van-e.
 

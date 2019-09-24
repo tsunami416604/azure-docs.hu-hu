@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615668"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219890"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 
@@ -42,7 +42,7 @@ Ez a funkció jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SD
 
 ## <a name="change-feed-and-different-operations"></a>Csatorna módosítása és a különböző műveletek
 
-Még ma tekintse meg a csatorna módosítása az összes műveletet. A funkciót, ahol megadhatja a módosítási hírcsatornáról, adott műveletek esetében, például csak a frissítéseket, és nem Beszúrások még nem érhető el. Egy "helyreállítható jelölő" a cikk a frissítések és az alapján, vagy a módosítási hírcsatorna elemeinek feldolgozásakor szűrőt is hozzáadhat. Jelenleg a módosítási hírcsatorna jelentkezzen nem törli. Az előző példához hasonló, hozzáadhat egy helyreállítható jelölő az éppen törölt elemek, például adhat hozzá egy attribútumot az elem "törölt" nevű és "true" értékűre, és Élettartamot meg az elem, hogy automatikusan törli. A módosítási hírcsatorna történelmi elemek, például öt évvel ezelőtt hozzáadott cikkeket olvashat. Ha az elem nincs törölve áttekintheti, hogy a módosítás adatcsatorna lehetőség a tároló forrása.
+Még ma tekintse meg a csatorna módosítása az összes műveletet. A funkciót, ahol megadhatja a módosítási hírcsatornáról, adott műveletek esetében, például csak a frissítéseket, és nem Beszúrások még nem érhető el. Egy "helyreállítható jelölő" a cikk a frissítések és az alapján, vagy a módosítási hírcsatorna elemeinek feldolgozásakor szűrőt is hozzáadhat. Jelenleg a módosítási hírcsatorna jelentkezzen nem törli. Az előző példához hasonló, hozzáadhat egy helyreállítható jelölő az éppen törölt elemek, például adhat hozzá egy attribútumot az elem "törölt" nevű és "true" értékűre, és Élettartamot meg az elem, hogy automatikusan törli. Elolvashatja a változási csatornát a korábbi elemek esetében (az elemnek megfelelő legutóbbi módosítást, nem tartalmazza a köztes változásokat), például az öt évvel ezelőtt hozzáadott elemeket. Ha az elem nincs törölve áttekintheti, hogy a módosítás adatcsatorna lehetőség a tároló forrása.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Rendezési sorrend a módosítási hírcsatorna-elem
 

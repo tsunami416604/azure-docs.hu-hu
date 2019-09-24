@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177199"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219740"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
 
@@ -80,7 +80,7 @@ A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\d
     - A **getAvailableAndFreshSpaces.cs** fájl lekérdezi egy felhasználó által definiált függvény nevű egyéni függvény eredménye.
     - A **createEndpoints.cs** fájl más szolgáltatásokkal interakcióba végpontokat hoz létre.
 
-* A szimuláció minta **eszközkapcsolattal** szimulálja az adatokat, és elküldi azt az IoT hubnak, amely ki van építve a digitális Twins példány. Ez a példa a használni kívánt [a következő oktatóanyaggal, miután a térbeli graph üzembe](tutorial-facilities-udf.md#simulate). Ez a minta konfigurálásához érzékelő- és azonosítók lehet ugyanaz, mint a gráfhoz kiépítése fogja használni.
+* A szimuláció minta **eszközkapcsolattal** szimulálja az adatokat, és elküldi azt az IoT hubnak, amely ki van építve a digitális Twins példány. Ez a példa a használni kívánt [a következő oktatóanyaggal, miután a térbeli graph üzembe](tutorial-facilities-udf.md#simulate-sensor-data). Ez a minta konfigurálásához érzékelő- és azonosítók lehet ugyanaz, mint a gráfhoz kiépítése fogja használni.
 
 ### <a name="configure-the-provisioning-sample"></a>A kiépítési minta konfigurálása
 

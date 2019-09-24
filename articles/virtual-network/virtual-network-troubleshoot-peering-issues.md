@@ -14,115 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091100"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219237"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
 Ez a hibaelhárítási útmutató a legtöbb [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) társítási probléma megoldásához nyújt segítséget.
 
-![LEMEZKÉP](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
+![Virtuális hálózat társításának ábrája](./media/virtual-network-troubleshoot-peering-issues/4489538_en_1.png)
 
-## <a name="scenario-1-configure-virtual-network-peering-between-two-virtual-networks"></a>forgatókönyv 1: Virtuális hálózati társítás konfigurálása két virtuális hálózat között
+## <a name="configure-virtual-network-peering-between-two-virtual-networks"></a>Virtuális hálózati társítás konfigurálása két virtuális hálózat között
 
 Azonos előfizetésben vagy eltérő előfizetésben található virtuális hálózatok?
 
-### <a name="connection-type-1-the-virtual-networks-are-in-the-same-subscription"></a>1\. kapcsolattípus: A virtuális hálózatok ugyanahhoz az előfizetéshez tartoznak.
+### <a name="the-virtual-networks-are-in-the-same-subscription"></a>A virtuális hálózatok ugyanahhoz az előfizetéshez tartoznak.
 
-Az azonos előfizetésben található virtuális hálózatok virtuális hálózati társításának konfigurálásához használja a következő cikkekben megadott módszereket a megfelelő módon:
+Az azonos előfizetésben található virtuális hálózatok virtuális hálózati társításának konfigurálásához használja az alábbi cikkekben ismertetett módszereket:
 
-* Ha a virtuális hálózatok **ugyanabban a régióban**találhatók, kövesse az [azonos előfizetésben található virtuális hálózatokhoz való társítás létrehozásához](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)szükséges lépéseket.
-* Ha a virtuális hálózatok a **különböző régiókban**találhatók, kövesse a [globális virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)társítás beállításának lépéseit.  
+* Ha a virtuális hálózatok *ugyanabban a régióban*találhatók, tekintse meg a társítás [létrehozása](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)című témakört.
+* Ha a virtuális hálózatok a *különböző régiókban*találhatók, tekintse meg a [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)társítása című témakört. 
 
 > [!Note]
-> A kapcsolat nem fog működni a globális VNet-társítással a következő erőforrásokhoz: 
+> A kapcsolat nem működik a globális virtuális hálózati kapcsolatok esetében a következő erőforrásokhoz: 
 >
-> * Alapszintű ILB SKU mögötti virtuális gépek
-> * Redis Cache (alapszintű ILB SKU-t használ)
+> * Virtuális gépek (VM) az alapszintű belső terheléselosztó (ILB) SKU mögött
+> * Redis cache (alapszintű ILB SKU-t használ)
 > * Application Gateway (alapszintű ILB SKU-t használ)
-> * Méretezési csoportok (alapszintű ILB SKU-t használ)
-> * Service Fabric-fürtök (alapszintű ILB SKU-t használ)
-> * SQL always-on (alapszintű ILB SKU-t használ)
-> * App Service környezetek (bemutató) (alapszintű ILB SKU-t használ)
-> * API Management (alapszintű ILB SKU-t használ)
-> * Azure Active Directory tartományi szolgáltatás (Hozzáadás) (alapszintű ILB SKU-t használ)
+> * Virtuálisgép-méretezési csoportok (alapszintű ILB SKU-t használ)
+> * Azure Service Fabric-fürtök (alapszintű ILB SKU-t használ)
+> * SQL Server always on (alapszintű ILB SKU-t használ)
+> * PowerApps-Azure App Service Environment (alapszintű ILB SKU-t használ)
+> * Azure API Management (alapszintű ILB SKU-t használ)
+> * Azure Active Directory Domain Services (Azure AD DS) (alapszintű ILB SKU-t használ)
 
 További információért lásd a globális társítás [követelményeit és korlátozásait](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
 
-### <a name="connection-type-2-the-virtual-networks-are-in-different-subscriptions-or-ad-tenants"></a>2\. kapcsolattípus: A virtuális hálózatok különböző előfizetésekben vagy AD-bérlőben találhatók
+### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>A virtuális hálózatok különböző előfizetésekben vagy Active Directory-bérlőben találhatók
 
-Ha a virtuális hálózatokat különböző előfizetésekben vagy Active Directory-bérlőben lévő virtuális hálózatokhoz szeretné konfigurálni, kövesse a társítás [létrehozása az Azure CLI-hez különböző előfizetésekben](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakör lépéseit.
+Ha a virtuális hálózatokat különböző előfizetésekben vagy Active Directory-bérlőben lévő virtuális hálózatokhoz szeretné konfigurálni, tekintse meg a következő témakört: társítás [létrehozása különböző előfizetésekben az Azure CLI-hez](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
 > [!Note]
 > A hálózati társítás konfigurálásához a hálózat **közreműködői** engedélyekkel kell rendelkeznie mindkét előfizetésben. További információ: [egyenrangú engedélyek](virtual-network-manage-peering.md#permissions).
 
-## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>2\. forgatókönyv: A virtuális hálózati topológia konfigurálása a helyi erőforrásokat használó sugaras topológiával
+## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>A virtuális hálózati topológia konfigurálása a helyi erőforrásokat használó sugaras topológiával
 
-![LEMEZKÉP](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1a.png)
+![A helyszíni küllős virtuális hálózatok összevonásának ábrája](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1a.png)
 
-### <a name="connection-type-1-for-site-to-site-connection-or-expressroute-connection"></a>1\. kapcsolattípus: Helyek közötti kapcsolathoz vagy ExpressRoute-kapcsolathoz
+### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Helyek közötti kapcsolathoz vagy ExpressRoute-kapcsolathoz
 
 Kövesse a következő témakörben ismertetett lépéseket: [Konfigurálja a VPN Gateway-átvitelt a virtuális hálózati](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)társításokhoz.
 
-### <a name="connection-type-2-for-point-to-site-connections"></a>2\. kapcsolattípus: Pont – hely kapcsolatok esetén
+### <a name="for-point-to-site-connections"></a>Pont – hely kapcsolatok esetén
 
 1. Kövesse a következő témakörben ismertetett lépéseket: [Konfigurálja a VPN Gateway-átvitelt a virtuális hálózati](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)társításokhoz.
-2. A virtuális hálózati társítás létrehozása vagy módosítása után a pont-hely típusú ügyfeleknek le kell tölteni és újra kell telepíteni, hogy a pont – hely ügyfelek megkapják a frissített útvonalakat a küllős virtuális hálózathoz.
+2. A virtuális hálózati társítás létrehozása vagy módosítása után töltse le és telepítse újra a pont – hely típusú csomagokat, hogy a pont – hely ügyfelek megkapják a frissített útvonalakat a küllős virtuális hálózatnak.
 
-## <a name="scenario-3-configure-virtual-network-peering-with-hub-spoke-topology-for-azure-virtual-network"></a>3\. forgatókönyv: Virtuális hálózati társítás konfigurálása az Azure-Virtual Network küllős topológiával
+## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Virtuális hálózati társítás konfigurálása sugaras topológiai virtuális hálózattal
 
-![LEMEZKÉP](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1b.png)
+![A virtuális hálózatok egymással való társításának ábrája küllős](./media/virtual-network-troubleshoot-peering-issues/4488712_en_1b.png)
 
-### <a name="connection-type-1-the-virtual-networks-are-in-the-same-region"></a>1\. kapcsolattípus: A virtuális hálózatok ugyanabban a régióban találhatók
+### <a name="the-virtual-networks-are-in-the-same-region"></a>A virtuális hálózatok ugyanabban a régióban találhatók
 
-Konfigurálnia kell egy hálózati virtuális berendezést (NVA) a hub virtuális hálózatban, és felhasználói útvonalakat kell használnia a küllős virtuális hálózatokon alkalmazott következő ugrású "hálózati virtuális berendezéssel". További információ: [Service láncolása](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
+
+1. A hub virtuális hálózatban állítson be egy hálózati virtuális berendezést (NVA).
+1. A küllős virtuális hálózatokban a felhasználó által megadott útvonalakat a következő ugrás típusú "hálózati virtuális berendezés" alkalmazta.
+
+További információ: [Service láncolása](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
 
 > [!Note]
 > Ha segítségre van szüksége egy NVA beállításához, [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 A NVA-eszközök beállításával és útválasztásával kapcsolatos segítségért lásd: a [hálózati virtuális berendezések problémái az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
 
-### <a name="connection-type-2-the-virtual-networks-are-in-different-regions"></a>2\. kapcsolattípus: A virtuális hálózatok különböző régiókban találhatók
+### <a name="the-virtual-networks-are-in-different-regions"></a>A virtuális hálózatok különböző régiókban találhatók
 
-A globális VNet-társítás továbbítása mostantól támogatott. A kapcsolat nem működik globális VNet-társítás esetén a következő erőforrásokhoz:
+A globális virtuális hálózati kapcsolaton keresztüli átvitel mostantól támogatott. A kapcsolódás nem működik a globális virtuális hálózati kapcsolaton keresztül a következő erőforrásokhoz:
 
 * Alapszintű ILB SKU mögötti virtuális gépek
-* Redis Cache (alapszintű ILB SKU-t használ)
+* Redis cache (alapszintű ILB SKU-t használ)
 * Application Gateway (alapszintű ILB SKU-t használ)
 * Méretezési csoportok (alapszintű ILB SKU-t használ)
 * Service Fabric-fürtök (alapszintű ILB SKU-t használ)
-* SQL always-on (alapszintű ILB SKU-t használ)
-* App Service környezetek (bemutató) (alapszintű ILB SKU-t használ)
+* SQL Server always on (alapszintű ILB SKU-t használ)
+* App Service Environment (alapszintű ILB SKU-t használ)
 * API Management (alapszintű ILB SKU-t használ)
-* Azure Active Directory tartományi szolgáltatás (Hozzáadás) (alapszintű ILB SKU-t használ)
+* Azure AD DS (alapszintű ILB SKU-t használ)
 
 Ha többet szeretne megtudni a globálisan megjelenő követelményekről és a korlátozásokról, tekintse meg a [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)társítása című témakört.
 
-## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>4\. forgatókönyv: Kapcsolati probléma van két, egymástól független virtuális hálózat között
+## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>Két egymással összekapcsolt virtuális hálózat közötti csatlakozási probléma megoldása
 
 Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely rendelkezik a szükséges [szerepkörökkel és engedélyekkel](virtual-network-manage-peering.md#permissions). Válassza ki a virtuális hálózatot, válassza a **társítás lehetőséget,** majd jelölje be az **állapot** mezőt. Mi az az állapot?
 
-### <a name="connection-type-1-the-peering-status-shows-connected"></a>1\. kapcsolattípus: Az egyenrangú állapot a "Connected"
+### <a name="the-peering-status-is-connected"></a>Az egyenrangú állapot "Connected"
 
-A probléma megoldásához kövesse az alábbi lépéseket:
+A probléma megoldásához:
 
 1. A hálózati forgalom forgalmának ellenõrzése:
 
    [Kapcsolódási hibák](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview) és [IP-forgalom ellenőrzése](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) a forrás virtuális gépről a cél virtuális gépre annak megállapításához, hogy van-e olyan NSG vagy UDR, amely interferenciát okoz a forgalmi folyamatokban.
 
-   Ha tűzfalat vagy NVA készüléket használ, kövesse az alábbi lépéseket: 
+   Ha tűzfalat vagy NVA használ: 
    1. Dokumentálja a UDR paramétereket, hogy a lépés befejezése után vissza tudja állítani őket.
-   2. Távolítsa el a UDR a forrás virtuálisgép-alhálózatról vagy hálózati adapterről, amely a NVA mutat a következő ugrásként. Győződjön meg arról, hogy a forrás virtuális gép kapcsolata közvetlenül a NVA megkerülő célhelyre mutat. Ha ez a lépés működik, tekintse meg a [NVA-hibakeresőt](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
+   2. Távolítsa el a UDR a forrás virtuálisgép-alhálózatról vagy hálózati adapterről, amely a NVA mutat a következő ugrásként. Győződjön meg arról, hogy a forrás virtuális gép kapcsolata közvetlenül a célhelyre kerül, amely megkerüli a NVA. Ha ez a lépés nem működik, tekintse meg a [NVA-hibakeresőt](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
 
 2. Hálózati nyomkövetés készítése: 
    1. Indítsa el a hálózati nyomkövetést a cél virtuális gépen. A Windows rendszerben a **netsh**használható. Linux esetén használja a **TCPDump**-t.
    2. Futtassa a **TcpPing** vagy a **PsPing** a FORRÁSRÓL a cél IP-címhez.
 
-   * Ez egy példa egy **TcpPing** -parancsra:`tcping64.exe -t <destination VM address> 3389`
+      Ez egy példa egy **TcpPing** -parancsra:`tcping64.exe -t <destination VM address> 3389`
 
    3. A **TcpPing** befejezése után állítsa le a hálózati nyomkövetést a célhelyen.
    4. Ha a csomagok érkeznek a forrásból, nincs hálózati probléma. Vizsgálja meg a virtuálisgép-tűzfalat és a portot figyelő alkalmazást a konfigurációs probléma megkereséséhez.
@@ -131,103 +135,104 @@ A probléma megoldásához kövesse az alábbi lépéseket:
    > Nem lehet csatlakozni a következő típusú erőforrásokhoz a globális virtuális hálózati kapcsolaton keresztül (a különböző régiókban található virtuális hálózatok esetében):
    >
    > * Alapszintű ILB SKU mögötti virtuális gépek
-   > * Redis Cache (alapszintű ILB SKU-t használ)
+   > * Redis cache (alapszintű ILB SKU-t használ)
    > * Application Gateway (alapszintű ILB SKU-t használ)
    > * Méretezési csoportok (alapszintű ILB SKU-t használ)
    > * Service Fabric-fürtök (alapszintű ILB SKU-t használ)
-   > * SQL always-on (alapszintű ILB SKU-t használ)
-   > * App Service környezetek (bemutató) (alapszintű ILB SKU-t használ)
+   > * SQL Server always on (alapszintű ILB SKU-t használ)
+   > * App Service Environment (alapszintű ILB SKU-t használ)
    > * API Management (alapszintű ILB SKU-t használ)
-   > * Azure Active Directory tartományi szolgáltatás (Hozzáadás) (alapszintű ILB SKU-t használ)
+   > * Azure AD DS (alapszintű ILB SKU-t használ)
 
 További információért lásd a globális társítás [követelményeit és korlátozásait](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
 
-### <a name="connection-type-2-the-peering-status-shows-disconnected"></a>2\. kapcsolattípus: A társítás állapota a "leválasztott" állapotot jeleníti meg
+### <a name="the-peering-status-is-disconnected"></a>A társítás állapota "leválasztva"
 
-Mindkét virtuális hálózatok törölni kell a társításokat, és újból létre kell őket hozni.
+A probléma megoldásához törölje a társítást mindkét virtuális hálózatról, majd hozza létre újra.
 
-## <a name="scenario-5-i-have-a-connectivity-issue-between-a-hub-spoke-virtual-network-and-on-premises-resource"></a>5\. forgatókönyv: Kapcsolati probléma van egy sugaras virtuális hálózat és egy helyszíni erőforrás között
+## <a name="troubleshoot-a-connectivity-issue-between-a-hub-spoke-virtual-network-and-an-on-premises-resource"></a>Egy sugaras virtuális hálózat és egy helyszíni erőforrás közötti csatlakozási probléma megoldása
 
-Külső gyártótól származó NVA-vagy VPN-átjárót használ?
+A hálózata harmadik féltől származó NVA vagy VPN-átjárót használ?
 
-### <a name="connection-type-1-my-network-uses-a-third-party-nva-or-vpn-gateway"></a>1\. kapcsolattípus: A hálózat egy harmadik féltől származó NVA-vagy VPN-átjárót használ
+### <a name="my-network-uses-a-third-party-nva-or-vpn-gateway"></a>A hálózat egy harmadik féltől származó NVA-vagy VPN-átjárót használ
 
 A harmadik féltől származó NVA vagy VPN-átjárót érintő csatlakozási problémák elhárításához tekintse meg a következő cikkeket:
 
 * [NVA-hibakereső](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
 * [Szolgáltatások láncolása](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
 
-### <a name="connection-type-2-my-network-does-not-a-third-party-nva-or-vpn-gateway"></a>2\. kapcsolattípus: A hálózatom nem harmadik féltől származó NVA vagy VPN-átjáró
+### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>A saját hálózat nem használ külső gyártótól származó NVA-vagy VPN-átjárót
 
-A hub és a küllős virtuális hálózatok egyaránt rendelkeznek VPN-átjáróval?
+A hub virtuális hálózatának és a küllős virtuális hálózatnak van VPN-átjárója?
 
-#### <a name="both-the-hub-and-spoke-virtual-networks-have-a-vpn-gateway"></a>A hub és a küllő virtuális hálózatok is rendelkeznek VPN-átjáróval
+#### <a name="both-the-hub-virtual-network-and-the-spoke-virtual-network-have-a-vpn-gateway"></a>A hub virtuális hálózatnak és a küllős virtuális hálózatnak is van VPN-átjárója
 
 Távoli átjáró használata nem támogatott.
 
-A VNet-társítási korlátozás miatt a **távoli átjáró használata** nem támogatott a küllős VNet, ha a küllő VNet már rendelkezik egy VPN-átjáróval.
+Ha a küllő virtuális hálózat már rendelkezik egy VPN-átjáróval, a küllős virtuális hálózat nem támogatja a **távoli átjáró használata** lehetőséget. Ennek oka egy virtuális hálózati társítási korlátozás.
 
-#### <a name="both-the-hub-and-spoke-virtual-networks-dont-have-a-vpn-gateway"></a>A hub és a küllős virtuális hálózatok nem rendelkeznek VPN-átjáróval
+#### <a name="both-the-hub-virtual-network-and-the-spoke-virtual-network-do-not-have-a-vpn-gateway"></a>A hub virtuális hálózatának és a küllős virtuális hálózatnak sem van VPN-átjárója.
 
-Helyek közötti vagy ExpressRoute kapcsolatok esetén a kapcsolódási problémák elsődleges okait a távoli virtuális hálózathoz a helyszíni környezetből ellenőrizheti.
+Helyek közötti vagy Azure ExpressRoute-kapcsolatok esetén a helyi kapcsolati problémák alábbi elsődleges okait ellenőrizheti a távoli virtuális hálózattal:
 
-* Ellenőrizze, hogy a **továbbított forgalom engedélyezése** jelölőnégyzet be van-e jelölve azon a virtuális hálózaton, amelyen átjáró található.
-* Ellenőrizze, hogy a **távoli átjáró használata** jelölőnégyzet be van-e jelölve azon a virtuális hálózaton, amely nem rendelkezik átjáróval.
+* Az átjáróval rendelkező virtuális hálózaton ellenőrizze, hogy be van-e jelölve a **továbbított forgalom engedélyezése** jelölőnégyzet.
+* Győződjön meg arról, hogy az átjárót nem tartalmazó virtuális hálózaton be van jelölve a **távoli átjáró használata** jelölőnégyzet.
 * Győződjön meg arról, hogy a hálózati rendszergazda ellenőrzi a helyszíni eszközöket annak ellenőrzéséhez, hogy az összes virtuális hálózati címtartomány hozzá lett-e adva.
 
 Pont – hely kapcsolatok esetén:
 
-* Ellenőrizze, hogy a **továbbított forgalom engedélyezése** jelölőnégyzet be van-e jelölve azon a virtuális hálózaton, amelyen átjáró található.
-* Ellenőrizze, hogy a **távoli átjáró használata** jelölőnégyzet be van-e jelölve azon a virtuális hálózaton, amely nem rendelkezik átjáróval.
-* Töltse le és telepítse újra a pont – hely ügyfélszoftvert. Az újonnan létrehozott virtuális hálózati útvonalak nem vesznek fel automatikusan útvonalakat a pont – hely ügyfelekhez.
+* Az átjáróval rendelkező virtuális hálózaton ellenőrizze, hogy be van-e jelölve a **továbbított forgalom engedélyezése** jelölőnégyzet.
+* Győződjön meg arról, hogy az átjárót nem tartalmazó virtuális hálózaton be van jelölve a **távoli átjáró használata** jelölőnégyzet.
+* Töltse le és telepítse újra a pont – hely ügyfél-csomagot. Az újonnan létrehozott virtuális hálózati útvonalak nem vesznek fel automatikusan útvonalakat a pont – hely ügyfelekhez.
 
-## <a name="scenario-6-i-have-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-the-same-region"></a>6\. forgatókönyv: Sugaras hálózati kapcsolattal rendelkezem a küllős virtuális hálózatok között ugyanabban a régióban
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-the-same-region"></a>Küllős hálózati kapcsolat problémáinak megoldása az azonos régióban található küllős virtuális hálózatok között
 
-Egy NVA kell rendelkeznie a hub-hálózatban, konfigurálnia kell a UDR olyan küllőket, amelyek a következő ugrásként beállított NVA rendelkeznek, és engedélyezik a **továbbított forgalom** engedélyezését a hub virtuális hálózatban.
+A hub-hálózatnak tartalmaznia kell egy NVA. Konfigurálja a UDR olyan küllőit, amelyek NVA vannak beállítva a következő ugrásként, és engedélyezze a **továbbított forgalom** engedélyezését a hub virtuális hálózaton.
 
 További információ: a [szolgáltatás láncolása](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining), és a követelmények megvitatása a választott [NVA-gyártóval](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) .
 
-## <a name="scenario-7-i-have-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>7\. forgatókönyv: Sugaras hálózati kapcsolati probléma van a küllős virtuális hálózatok között különböző régiókban
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Sugaras hálózati kapcsolat problémáinak megoldása különböző régiókban található küllős virtuális hálózatok között
 
-A globális VNet-társítás továbbítása mostantól támogatott. A kapcsolat nem fog működni a globális VNet-társítással a következő erőforrásokhoz:
+A globális virtuális hálózati kapcsolaton keresztüli átvitel mostantól támogatott. A kapcsolat nem működik a globális virtuális hálózati kapcsolatok esetében a következő erőforrásokhoz:
 
 * Alapszintű ILB SKU mögötti virtuális gépek
-* Redis Cache (alapszintű ILB SKU-t használ)
+* Redis cache (alapszintű ILB SKU-t használ)
 * Application Gateway (alapszintű ILB SKU-t használ)
 * Méretezési csoportok (alapszintű ILB SKU-t használ)
 * Service Fabric-fürtök (alapszintű ILB SKU-t használ)
-* SQL always-on (alapszintű ILB SKU-t használ)
-* App Service környezetek (bemutató) (alapszintű ILB SKU-t használ)
+* SQL Server always on (alapszintű ILB SKU-t használ)
+* App Service Environment (alapszintű ILB SKU-t használ)
 * API Management (alapszintű ILB SKU-t használ)
-* Azure Active Directory tartományi szolgáltatás (Hozzáadás) (alapszintű ILB SKU-t használ)
+* Azure AD DS (alapszintű ILB SKU-t használ)
 
 További információért lásd a globális és a [különböző VPN-topológiák](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/) [követelményeit és korlátozásait](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
 
-## <a name="scenario-8-i-have-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>8\. forgatókönyv: Sugaras hálózati kapcsolattal kapcsolatos probléma van a webalkalmazás és a küllős virtuális hálózat között
+## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Egy webalkalmazás és a küllős virtuális hálózat közötti, sugaras hálózati kapcsolattal kapcsolatos probléma megoldása
 
-A probléma megoldásához kövesse az alábbi lépéseket:
+A probléma megoldásához:
 
-1. Jelentkezzen be a Azure Portalba. Nyissa meg a webalkalmazást, válassza a **hálózatkezelés**, majd a **VNet-integráció**elemet.
-2. Ellenőrizze, hogy látható-e a távoli virtuális hálózat. Adja meg manuálisan a távoli virtuális hálózati címtartomány (**szinkronizált hálózat** és **útvonalak hozzáadása**).
+1. Jelentkezzen be az Azure portálra. 
+1. A webalkalmazásban válassza a **hálózatkezelés**, majd a **VNet-integráció**elemet.
+1. Ellenőrizze, hogy látható-e a távoli virtuális hálózat. Adja meg manuálisan a távoli virtuális hálózati címtartomány (**szinkronizált hálózat** és **útvonalak hozzáadása**).
 
 További információkért tekintse át a következő cikkeket:
 
-* [Az alkalmazás integrálása Azure-Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Alkalmazás integrálása Azure-beli virtuális hálózattal](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Tudnivalók a pont – hely VPN-útválasztásról](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
-## <a name="scenario-9-i-receive-an-error-when-configuring-virtual-network-peering"></a>9\. forgatókönyv: Hibaüzenetet kapok a virtuális hálózati társak konfigurálásakor
+## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Virtuális hálózati társ-beállítási konfigurációs hibaüzenet hibáinak megoldása 
 
-### <a name="error-1-current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>1\. hiba: A jelenlegi `<TENANT ID>` bérlő nem jogosult a csatolt előfizetés elérésére
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>A jelenlegi `<TENANT ID>` bérlő nem jogosult a csatolt előfizetés elérésére
 
-A probléma megoldásához kövesse a társítás [létrehozása – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakör lépéseit.
+A probléma megoldásához tekintse meg a [peering-Azure CLI létrehozása](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakört.
 
-### <a name="error-2-not-connected"></a>2\. hiba: Nincs csatlakozva
+### <a name="not-connected"></a>Nincs csatlakoztatva
 
-Mindkét virtuális hálózatok törölni kell a társait, és újból létre kell hozni őket.
+A probléma megoldásához törölje a társítást mindkét virtuális hálózatról, majd hozza létre újra.
 
-### <a name="error-3-failed-to-peer-a-databricks-virtual-network"></a>3\. hiba: Nem sikerült a Databricks virtuális hálózat társítása
+### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nem sikerült a Databricks virtuális hálózat társítása
 
-A probléma megoldásához konfigurálja a virtuális hálózat társítását a **Azure Databricks** panelről, majd adja meg a cél virtuális hálózatot az erőforrás- **azonosító**használatával. További információ: [Databricks virtuális hálózat létrehozása távoli virtuális hálózathoz](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+A probléma megoldásához konfigurálja a **Azure Databricks**alatt a virtuális hálózat társítását, majd adja meg a cél virtuális hálózatot az **erőforrás-azonosító**használatával. További információ: [Databricks virtuális hálózat létrehozása távoli virtuális hálózathoz](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
 
 ## <a name="next-steps"></a>További lépések
 

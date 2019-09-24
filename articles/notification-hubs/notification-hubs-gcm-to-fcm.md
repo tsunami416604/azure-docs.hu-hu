@@ -1,62 +1,64 @@
 ---
-title: Az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) áttelepítése
-description: Ismerteti, hogyan Azure Notification hubs használatával szünteti meg a Google GCM-be való migrálás FCM.
+title: Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) migrálása
+description: Leírja, hogyan kezeli az Azure Notification Hubs a Google GCM az FCM áttelepítésére.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: jowargo
-ms.openlocfilehash: 4cbfc67bc66e84b4743f3326db40872241e5d474
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458297"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212317"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) áttelepítése
+# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) migrálása
 
-## <a name="current-state"></a>Jelenlegi állapota
+## <a name="current-state"></a>Aktuális állapot
 
-Ha Google jelentettük be az áttelepítést a Google Cloud Messaging (GCM) a Firebase Cloud Messaging (FCM), leküldéses szolgáltatásokat nyújt, mint a miénk kellett állítsa be, hogyan elküldtük az értesítések az Android-eszközök befogadására a módosítást.
+Amikor a Google bejelentette a Google Cloud Messaging (GCM) rendszerből való áttelepítését a Cloud Messaging (FCM) szolgáltatásba, a leküldéses szolgáltatások (például a miénk) azt is elvégezték, hogy az Android-eszközökre küldött értesítések hogyan férjenek hozzá
 
-Azt a service háttérrendszer frissítve, majd a közzétett frissítéseket az API-hoz és az SDK-k, igény szerint. Az implementáció azt a döntést meglévő GCM értesítési sémák ügyfél gyakorolt hatás minimalizálása érdekében való kompatibilitás megőrzése érdekében. Ez azt jelenti, hogy azt jelenleg értesítések küldése Android-eszközök használatával FCM FCM örökölt módban. Végső soron szeretnénk FCM, beleértve az új funkciók és adattartalom formátuma igaz támogatása. A hosszabb távú változás történik, és az aktuális migrálás arra összpontosít, hogy a meglévő alkalmazások és az SDK-kkal való kompatibilitás megőrzése. A GCM vagy az FCM SDK-k is használható (együtt az SDK-t) az alkalmazásban, és biztosítjuk, hogy az értesítés hibásan küldi el.
+Frissítettük a szolgáltatási hátteret, majd igény szerint közzétettük az API-k és SDK-k frissítéseit. A megvalósítással a meglévő GCM-értesítési sémákkal való kompatibilitás fenntartása mellett döntöttünk, hogy az ügyfelek milyen hatással lesznek a felhasználókra. Ez azt jelenti, hogy jelenleg az FCM-et használó Android-eszközökre küldünk értesítéseket az FCM örökölt módban. Végső soron az FCM-hez valódi támogatást szeretnénk adni, beleértve az új funkciókat és a hasznos adatokat is. Ez egy hosszú távú változás, és a jelenlegi áttelepítés a meglévő alkalmazásokkal és SDK-k kompatibilitásának fenntartására koncentrál. Használhatja az GCM vagy az FCM SDK-t az alkalmazásban (az SDK-val együtt), és gondoskodunk róla, hogy az értesítés megfelelően legyen elküldve.
 
-Egyes ügyfelek kapcsolatos értesítéseket a GCM-végpont használatával alkalmazásokat a Google figyelmeztetés legutóbb kapott e-mailt. Ez volt, csak figyelmeztetés, és semmi nem működik – az alkalmazás Android-értesítések továbbra is érkeznek a Google feldolgozásra, és a Google továbbra is feldolgozza őket. Egyes ügyfelek, akik a GCM-végpont a szolgáltatás konfigurációjában explicit módon megadott továbbra is használja az elavult endpoint. Azt már korábban azonosított a gap, és dolgozott az e-mail elküldésekor a Google kompatibilitását.
+Néhány ügyfél nemrég kapott egy e-mailt a Google figyelmeztetéssel kapcsolatban a GCM-végpontot használó alkalmazásokról az értesítésekhez. Ez csak egy figyelmeztetés volt, és semmi nem sérült – az alkalmazás androidos értesítései továbbra is a Google-ba kerülnek feldolgozásra, és a Google továbbra is feldolgozza azokat. Azok az ügyfelek, akik explicit módon adtak meg a GCM-végpontot a szolgáltatás konfigurációjában, továbbra is az elavult végpontot használják. Már azonosította ezt a rést, és dolgoztam a probléma kijavításán, amikor a Google elküldte az e-mailt.
 
-Tudjuk, hogy az elavult endpoint lecseréli a javítást, és telepítve van.
+Lecseréljük az elavult végpontot, és telepítettük a javítást.
 
-## <a name="going-forward"></a>A jövőben
+## <a name="going-forward"></a>Továbbítás folyamatban
 
-A Google FCM – gyakori kérdések szerint, nem kell tennie semmit. Az a [FCM – gyakori kérdések](https://developers.google.com/cloud-messaging/faq), Google mondta "ügyféloldali SDK-k és a GCM-jogkivonatokat továbbra is működni fog határozatlan időre. Azonban hogy nem célozhat meg az Android-alkalmazást a Google Play-szolgáltatások legújabb verzióját, kivéve, ha áttelepíti a FCM."
+A Google FCM gyakori kérdései szerint nem kell semmit tennie. Az [FCM GYIK](https://developers.google.com/cloud-messaging/faq)-ban a Google azt mondta, hogy "az ügyfél SDK-k és a GCM-tokenek továbbra is határozatlan ideig fognak működni. Azonban nem fogja tudni megcélozni a Google Play-szolgáltatások legújabb verzióját az Android-alkalmazásban, hacsak nem telepít át az FCM-re. "
 
-Ha az alkalmazás a GCM-kódtárat használja, lépjen tovább, és kövesse az utasításokat a Google frissítése az alkalmazásban a FCM-erőforrástárhoz. Az SDK, sem, kompatibilis, így nem kell frissíteni, semmit a mi oldalunkon jelentkező az alkalmazásban (feltéve, mindig naprakészek lehetnek az SDK-verzió az Ön).
+Ha az alkalmazás a GCM könyvtárat használja, folytassa a Google utasításait, és frissítsen az FCM-tárba az alkalmazásában. Az SDK kompatibilis az egyikével sem, így nem kell semmit frissítenie az alkalmazásában a saját oldalunkon (feltéve, hogy az SDK verziójával naprakész).
 
 ## <a name="questions-and-answers"></a>Kérdések és válaszok
 
-Íme néhány gyakori kérdéseket hallottuk az ügyfelektől származó válasz:
+Íme néhány válasz az ügyfelektől meghallott gyakori kérdésekre:
 
-**K:** Mit kell tennie a Megszakítás dátuma szerint kompatibilis legyen (Google aktuális a Megszakítás dátuma május 29, előfordulhat, hogy módosítani az)?
+**K:** Mit kell tennem ahhoz, hogy kompatibilisek legyenek a kivágási dátummal (a Google jelenlegi levágási dátuma május 29-én és változhat)?
 
-**V:** Nincs érték. Működik minden meglévő GCM értesítési séma való kompatibilitás érdekében. A GCM-kulcs továbbra is működik, ahogyan bármely GCM SDK-k és tárak az alkalmazása által használt szokásos módon.
+**V:** Nincs. A meglévő GCM-értesítési sémával való kompatibilitás fenntartása megmarad. A GCM-kulcs továbbra is a megszokott módon fog működni, mint az alkalmazás által használt GCM SDK-k és kódtárak.
 
-Ha úgy dönt, hogy frissítsen az új szolgáltatások előnyeinek FCM SDK-k és tárak, a GCM-kulcs továbbra is működni fognak. Előfordulhat, hogy váltson az FCM-kulcs használatával, ha kívánja, de győződjön meg arról, hozzáadandó Firebase a meglévő GCM-projektet az új Firebase-projekt létrehozásakor. Ez garantálja a visszamenőleges kompatibilitás érdekében az ügyfelekkel, amely futtatja az alkalmazás régebbi verzióinak GCM SDK-k és tárak továbbra is használhatja.
+Ha/ha úgy dönt, hogy az FCM SDK-kat és a kódtárakat használja az új funkciók kihasználásához, a GCM-kulcs továbbra is működni fog. Ha szeretné, átválthat az FCM-es kulcs használatára, de győződjön meg arról, hogy a meglévő GCM-projekthez Firebase ad hozzá az új Firebase-projekt létrehozásakor. Ez biztosítja a visszamenőleges kompatibilitást az alkalmazás régebbi verzióit futtató ügyfelekkel, akik továbbra is GCM SDK-kat és kódtárakat használnak.
 
-Ha létrehoz egy új FCM-projektet, és nem a meglévő GCM-projekt csatlakoztatása Notification hubs szolgáltatás az FCM új titkos kulcsot a frissítés után lehetővé teszi leküldéses értesítések való elveszíti az aktuális alkalmazások telepítésére, mivel az új FCM-kulcsot a régi GCM kapcsolódás a projekt.
+Ha új FCM-projektet hoz létre, és nem csatlakozik a meglévő GCM-projekthez, az új FCM-titokkal való Notification Hubs frissítése után elveszíti az értesítések küldését a jelenlegi alkalmazás-telepítésekre, mivel az új FCM-kulcs nem tartalmaz hivatkozást a régi GCM projekt.
 
-**K:** Miért jelenik meg ez az e-mail használt régi GCM végpontok kapcsolatos? Mit kell tennie?
+**K:** Miért kapok ezt az e-mailt a használatban lévő régi GCM-végpontokról? Mit kell tennem?
 
-**V:** Nincs érték. A Microsoft rendelkezik lett áttelepítése az új végpontjaira, és hamarosan kész, így nincs módosítás nem szükséges. Semmi nem működik, az egyik kihagyott végpont egyszerűen okozott figyelmeztető üzenetek a Google.
+**V:** Nincs. Migráljuk az új végpontokra, és hamarosan elkészült, így nincs szükség módosításra. Semmi nem sérült, az egyik kihagyott végpont egyszerűen a Google figyelmeztető üzeneteit okozta.
 
-**K:** Hogyan tudok váltáshoz új FCM SDK-k és tárak a meglévő felhasználók megszakítása nélkül?
+**K:** Hogyan válthatok az új FCM SDK-k és könyvtárak számára a meglévő felhasználók megszakítása nélkül?
 
-V: Frissítse a tetszőleges időpontban. Google még nem jelentette be minden olyan meglévő GCM SDK-k és tárak elavulása. Annak érdekében, ne felosztása a leküldéses értesítések a meglévő felhasználók számára, győződjön meg arról, mikor az új Firebase-projektet, amelyeket társít meglévő GCM-projekt létrehozása. Ez biztosítja a titkos kulcsokat fog működni a felhasználók az alkalmazás régebbi verzióit futtató GCM SDK-k és tárak, valamint az új felhasználók az alkalmazás FCM SDK-k és tárak az új Firebase.
+V: Bármikor frissítheti. A Google még nem jelentett elavultat meglévő GCM SDK-k és kódtárak esetében. Annak biztosítása érdekében, hogy a leküldéses értesítések ne legyenek megszakítva a meglévő felhasználók számára, ellenőrizze, hogy az új Firebase-projekt létrehozásakor a meglévő GCM-projekthez társítva van-e. Ezzel biztosíthatja, hogy az új Firebase-titkok az alkalmazás régebbi verzióit futtató felhasználók számára GCM SDK-k és könyvtárak, valamint az alkalmazás új felhasználói számára az FCM SDK-k és a kódtárak révén működjenek.
 
-**K:** Mikor használhatok új FCM-szolgáltatások és -sémákat az értesítéseket?
+**K:** Mikor használhatom az új FCM-funkciókat és-sémákat az értesítések esetében?
 
-**V:** Miután a frissítés közzétesszük az API-hoz és az SDK-k kínálatot. kövessen bennünket – várhatóan, hogy az Ön számára az elkövetkező hónapokban.
+**V:** Miután közzétettük az API-k és SDK-k frissítését, maradjunk velünk, hogy az elkövetkező hónapokban van valami.

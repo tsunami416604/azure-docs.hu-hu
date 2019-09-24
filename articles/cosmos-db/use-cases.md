@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614227"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219880"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   
@@ -40,7 +40,7 @@ Az alábbiakban néhány attribútum az Azure Cosmos DB, győződjön meg arról
 Ezek az attribútumok előnyösek, webes, mobil-, játék és IoT-alkalmazások, amelyek válaszidőt kell, és nagy mennyiségű olvasási és írási kezeléséhez szükséges.
 
 ## <a name="iot-and-telematics"></a>IoT és telematika
-IoT használatieset-forgatókönyveit általában néhány mintákat hogyan azok videorögzítést, folyamat, megoszthatja és adatok tárolására.  Ezek a rendszerek elsőként kell adatlöketekkel különböző területi beállításokat eszköz érzékelőktől származó adatok betöltését. Ezután ezek a rendszerek adatainak feldolgozására és elemzésére streamelési a valós idejű elemzéseket. Az adatok ezután a batch-elemzés a ritka elérésű tárolási archiválja a rendszer. A Microsoft Azure biztosít, amelyek alkalmazhatók az IoT sokoldalú szolgáltatásai többek között az Azure Cosmos DB, az Azure Event Hubs, az Azure Stream Analytics, Azure Notification Hub, az Azure Machine Learning, Azure HDInsight és a Power bi használja. 
+IoT használatieset-forgatókönyveit általában néhány mintákat hogyan azok videorögzítést, folyamat, megoszthatja és adatok tárolására.  Ezek a rendszerek elsőként kell adatlöketekkel különböző területi beállításokat eszköz érzékelőktől származó adatok betöltését. Ezután ezek a rendszerek adatainak feldolgozására és elemzésére streamelési a valós idejű elemzéseket. Az adatok ezután a batch-elemzés a ritka elérésű tárolási archiválja a rendszer. A Microsoft Azure számos olyan szolgáltatást kínál, amely IoT-használati esetekre alkalmazható, például Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification hub, Azure Machine Learning, Azure HDInsight és Power BI. 
 
 ![Az Azure Cosmos DB IoT-referenciaarchitektúra](./media/use-cases/iot.png)
 
@@ -98,32 +98,7 @@ JSON-t, Cosmos DB által támogatott formátum egy hatékony formátuma felhaszn
 ![Az Azure Cosmos DB webes alkalmazás referenciaarchitektúra](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>További lépések
-Ismerkedés az Azure Cosmos DB használatával, kövesse a [rövid útmutatók](create-sql-api-dotnet.md), amelyek végigvezetik egy fiókot és a Cosmos DB – első lépések. 
 
-Vagy, ha többet szeretne azokról az ügyfelekről a Cosmos DB használatával, a következő ügyfelek beszámolói érhetők el:
+* Ismerkedés az Azure Cosmos DB használatával, kövesse a [rövid útmutatók](create-sql-api-dotnet.md), amelyek végigvezetik egy fiókot és a Cosmos DB – első lépések.
 
-* [Jet.com adatfeldolgozási főigazgatója](https://jet.com). E-kereskedelmi úttörő élre a felső helyszíni eyes, a Microsoft cloud futtat, kihasználja a Cosmos DB globális méretű.
-* [Asos.com](https://www.asos.com/). Asos.com egy brit online módon és hatalmas áruházban. Célja a fiatal felnőttek, Asos Mit árul, több mint 850 márkákat, valamint a saját tartományán ruházat és kellékek.
-* [Toyota](https://www.toyota.com/). Toyota Motor Corporation japán autógyártás gyártó. Toyota Cosmos DB globális IoT-alkalmazás használja.
-* [A Citrix](https://customers.microsoft.com/story/citrix). A Citrix fejlesztett single-sign-on megoldás az Azure Service Fabric és Azure Cosmos DB használatával
-* [TEXA](https://customers.microsoft.com/story/texaspa) TEXA a Forradalmi IoT-megoldás jármű-tulajdonosok segít időt, költséget takaríthat meg, gáz mentés – és esetleg helyén.
-* [A Domino Kétpizzás](https://www.dominos.com). A Domino Kétpizzás Inc.-amerikai kétpizzás étteremlánc.
-* [Azt szabályozza, Johnson](https://www.johnsoncontrols.com). A Johnson Controls egy globálisan diverzifikált technológia és több iparági vezető, amely több, mint 150 országban/régióban található ügyfelet szolgál ki.
-* [A Microsoft Windows, univerzális Store, az Azure IoT Hub, az Xbox Live és más szolgáltatások](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). A Microsoft hogyan hoz létre az Azure Cosmos DB használatával nagy mértékben méretezhető szolgáltatásokkal.
-* [A Microsoft Data- és elemzési csoport](https://customers.microsoft.com/story/microsoftdataandanalytics). A Microsoft Data- és elemzési csoport éri el az Azure Cosmos DB globális big-data gyűjtemény
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha az Azure Cosmos DB ügyfeleket és a cégeket összekapcsolásához India.
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit az Azure Cosmos DB repülési vesz igénybe.
-* [Az Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Az affinio az AWS az Azure Cosmos DB, nagy mennyiségű közösségi adatot.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). A Walking Dead: A Azure Cosmos DB által támogatott #1 nem a Man 's Land játék szárnyal.
-* [A Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Hogyan Halo 5 miként valósította meg a Azure Cosmos DB használatával közösségi játékfunkciókat.
-* [Cortana Analytics katalógusban](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics katalógusban – egy Azure Cosmos DB épülő méretezhető közösségi webhelyére.
-* [Pofonegyszerű](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Rendszerintegrátor vezető betekintést enged multinacionális cégek globális percek alatt, a rugalmas felhőalapú technológiák terén.
-* [Hírek Köztársaság](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639). Intelligencia hozzáadása a hírek tájékoztatási céllal szerepet játszanak állampolgár számára. 
-* [Az SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653). Egységes színe szerte a világon jelentős márkái SGS kapcsolja be. És az SGS bekapcsolja az Azure-bA.
-* [A Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608). Globális vezető Telenor a felhőben használja a tempójával mozog. 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667). A tároló a jövő gyors keresés és az adatok egyszerű folyamatot futtat.
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet). Azure-alapú szoftver platform felszámolja korlátozást cégeknek és ügyfelei között
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases). Weka Smart-Fridge javítja a vakcinák kezelési, így több ember is védhetők betegségek ellen
-* [Narancssárga Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth). Nincs több élelmiszer alkalmazáshoz a szemet, vagy a szájához beszéd megfelel-e, mint.
-* [A Real Madrid](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f). A Real Madrid világszerte, a Microsoft Cloud használatával 450 millió szurkolóhoz viszi közelebb a stadiont biztosít.
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services). TUKU lehetővé teszi az autó szórakoztató segítségével Azure-szolgáltatások vásárlása
+* Ha többet szeretne megtudni a Azure Cosmos DBt használó ügyfelekről, tekintse meg az [ügyfél](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db) -esettanulmányok lapot.

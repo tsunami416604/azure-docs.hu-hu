@@ -4,9 +4,9 @@ description: Ebből az oktatóanyagból elsajátíthatja, hogy miként használh
 services: notification-hubs
 documentationcenter: ios
 keywords: leküldéses értesítés,leküldéses értesítések,ios leküldéses értesítések
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988212"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211946"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése iOS-alkalmazások Azure Notification Hubs használatával
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések iOS-alkalmazásokba az Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -47,7 +49,7 @@ Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív Azure-fiók. Ha nincs fiókja, akkor az [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free) mindössze néhány perc alatt.
+* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free) .
 * [Microsoft Azure üzenetkezelési keretrendszer]
 * Az [Xcode] legújabb verziója
 * Az iOS 10-zel (vagy újabb verzióval) kompatibilis eszköz
@@ -80,42 +82,42 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 
     ![Xcode – leküldési képességek][12]
 
-5. Az Azure Notification Hubs SDK-modulok hozzáadása.
+5. Adja hozzá az Azure Notification Hubs SDK-modulokat.
 
-   Integrálható az Azure Notification Hubs SDK az alkalmazás használatával [Cocoapods](https://cocoapods.org) vagy manuálisan adja hozzá a bináris fájlokat a projekthez.
+   Az Azure Notification Hubs SDK-t integrálhatja az alkalmazásba a [Cocoapods](https://cocoapods.org) használatával, vagy manuálisan is hozzáadhatja a bináris fájlokat a projekthez.
 
-   - Integráció a Cocoapods segítségével
+   - Integráció a Cocoapods-on keresztül
 
-     Adja hozzá a következő függőségeket a `podfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+     Adja hozzá az alábbi függőségeket `podfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Futtatás `pod install` az újonnan definiált pod telepítéséhez, és nyissa meg a `.xcworkspace`.
+     Futtassa `pod install` az parancsot az újonnan definiált Pod telepítéséhez, `.xcworkspace`és nyissa meg a következőt:.
 
      > [!NOTE]
-     > Ha például a hibaüzenet jelenik meg ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` futtatása során `pod install`, futtassa a `pod repo update` a legújabb podok a Cocoapods adattárból, és futtassa `pod install`.
+     > Ha ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` a futás `pod install`közben hiba jelenik meg, futtassa a parancsot `pod repo update` a Cocoapods-adattár legújabb hüvelyének lekéréséhez, majd `pod install`futtassa a parancsot.
 
-   - Integráció Carthage keresztül
+   - Integráció a Carthage használatával
 
-     Adja hozzá a következő függőségeket a `Cartfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+     Adja hozzá az alábbi függőségeket `Cartfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Ezután frissítse, és a build-függőségeket:
+     Következő, frissítési és létrehozási függőségek:
 
      ```shell
      $ carthage update
      ```
 
-     Carthage használatával kapcsolatos további információkért lásd: a [Carthage GitHub-adattár](https://github.com/Carthage/Carthage).
+     A Carthage használatával kapcsolatos további információkért tekintse meg a [Carthage GitHub-tárházat](https://github.com/Carthage/Carthage).
 
-   - Integráció a bináris fájlok másolása a projektbe
+   - Integráció a bináris fájlok a projektbe való másolásával
 
-     1. Töltse le a [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) keretrendszer megadott zip-fájlként, és bontsa ki azt.
+     1. Töltse le a zip-fájlként megadott [Azure Notification HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) -keretrendszert, és csomagolja ki.
 
      2. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
 
@@ -140,7 +142,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. Az a `AppDelegate.m` fájlt, adja hozzá a következő kódot a `didFinishLaunchingWithOptions` metódus az IOS-es verziójától függően. Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
+8. A fájlban adja hozzá a következő kódot `didFinishLaunchingWithOptions` a metódushoz az iOS-verzió alapján. `AppDelegate.m` Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |

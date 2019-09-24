@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073395"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219469"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](api-management-howto-policies.md).  
@@ -30,10 +30,10 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
   
 -   [Hozzáférés-korlátozási házirendek](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [Http](api-management-access-restriction-policies.md#CheckHTTPHeader) -fejléc keresése – egy HTTP-fejléc létezésének és/vagy értékének betartatása.  
-    -   A [hívások sebességének korlátozása](api-management-access-restriction-policies.md#LimitCallRate) előfizetéssel – MEGAKADÁLYOZZA az API-használat csúcsait a hívások sebességének korlátozásával, előfizetések alapján.  
+    -   A [hívások sebességének korlátozása előfizetéssel](api-management-access-restriction-policies.md#LimitCallRate) – MEGAKADÁLYOZZA az API-használat csúcsait a hívások sebességének korlátozásával, előfizetések alapján.  
     -   A [hívások gyakoriságának korlátozása kulcs szerint](api-management-access-restriction-policies.md#LimitCallRateByKey) – MEGAKADÁLYOZZA az API-használat csúcsait a hívások sebességének korlátozásával, kulcs alapján.  
     -   A [hívó IP](api-management-access-restriction-policies.md#RestrictCallerIPs) -címeinek korlátozása (engedélyezi vagy megtagadja) a HÍVÁSOKAT adott IP-címekről és/vagy címtartományból.  
-    -   [Használati kvóta beállítása](api-management-access-restriction-policies.md#SetUsageQuota) előfizetéssel – lehetővé teszi, hogy előfizetések alapján kikényszerítse a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélesség-kvótáját.  
+    -   [Használati kvóta beállítása előfizetéssel](api-management-access-restriction-policies.md#SetUsageQuota) – lehetővé teszi, hogy előfizetések alapján kikényszerítse a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélesség-kvótáját.  
     -   [Használati kvóta beállítása kulccsal](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – lehetővé teszi a megújítható vagy élettartamos hívások mennyiségi és/vagy sávszélesség-kvótájának kikényszeríthető kulcs alapján.  
     -   [JWT ellenőrzése](api-management-access-restriction-policies.md#ValidateJWT) – egy adott http-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.  
 -   [Speciális házirendek](api-management-advanced-policies.md#AdvancedPolicies)  
@@ -50,18 +50,18 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
     -   [Változó beállítása](api-management-advanced-policies.md#set-variable) – megtarthat egy értéket egy nevesített környezeti változóban a későbbi hozzáférés érdekében.  
     -   [Kérelem módszerének beállítása](api-management-advanced-policies.md#SetRequestMethod) – lehetővé teszi a kérések http-metódusának módosítását.  
     -   [Állapotkód beállítása](api-management-advanced-policies.md#SetStatus) – a HTTP-állapotkódot a megadott értékre módosítja.  
-    -   [Trace](api-management-advanced-policies.md#Trace) – karakterláncot ad az [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimenetéhez.  
-    -   [Várakozás](api-management-advanced-policies.md#Wait) a befoglalt küldési [kérelemre](api-management-advanced-policies.md#SendRequest), az [érték beolvasása a gyorsítótárból](api-management-caching-policies.md#GetFromCacheByKey), vagy a folytatás előtt a flow-szabályzatok [ellenőrzése](api-management-advanced-policies.md#choose) .  
+    -   [Trace](api-management-advanced-policies.md#Trace) – egyéni nyomkövetéseket ad az [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimenetéhez, Application Insights Telemetriáiról és a diagnosztikai naplókhoz.  
+    -   [Várakozás](api-management-advanced-policies.md#Wait) a befoglalt [küldési kérelemre](api-management-advanced-policies.md#SendRequest), az [érték beolvasása a gyorsítótárból](api-management-caching-policies.md#GetFromCacheByKey), vagy a folytatás előtt a flow-szabályzatok [ellenőrzése](api-management-advanced-policies.md#choose) .  
 -   [Hitelesítési házirendek](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [](api-management-authentication-policies.md#Basic) Egyszerű hitelesítéssel hitelesítheti alapszintű hitelesítést a háttér-szolgáltatással.  
     -   [Hitelesítés az ügyféltanúsítvány](api-management-authentication-policies.md#ClientCertificate) használatával – az Ügyféltanúsítványok segítségével végezzen hitelesítést egy háttér-szolgáltatással.  
-    -   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) – felügyelt identitás használatával végezzen hitelesítést egy háttér [](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)-szolgáltatással.  
+    -   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) [– felügyelt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)identitás használatával végezzen hitelesítést egy háttér-szolgáltatással.  
 -   [Gyorsítótárazási házirendek](api-management-caching-policies.md#CachingPolicies)  
     -   [](api-management-caching-policies.md#GetFromCache) Beolvasás gyorsítótárból – a gyorsítótár végrehajtása megkeresi és érvényes gyorsítótárazott választ ad vissza, ha elérhető.  
     -   [Tárolás gyorsítótárba](api-management-caching-policies.md#StoreToCache) – a gyorsítótárak válasza a megadott gyorsítótár-vezérlési konfiguráció alapján történik.  
     -   [Érték lekérése a gyorsítótárból](api-management-caching-policies.md#GetFromCacheByKey) – a gyorsítótárazott elemek kulcs szerinti beolvasása.  
     -   [Tárolási érték](api-management-caching-policies.md#StoreToCacheByKey) a gyorsítótárban – a gyorsítótárban lévő elemek tárolása kulcs alapján.  
-    -   [Érték eltávolítása](api-management-caching-policies.md#RemoveCacheByKey) a gyorsítótárból – a kulcsban lévő elem eltávolítása a gyorsítótárból.  
+    -   [Érték eltávolítása a gyorsítótárból](api-management-caching-policies.md#RemoveCacheByKey) – a kulcsban lévő elem eltávolítása a gyorsítótárból.  
 -   [Tartományközi házirendek](api-management-cross-domain-policies.md#CrossDomainPolicies)  
     -   Tartományok [közötti hívások engedélyezése](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – elérhetővé teszi az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.  
     -   [CORS](api-management-cross-domain-policies.md#CORS) – a több eredetű erőforrás-megosztási (CORS) támogatás egy művelethez vagy API-hoz, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.  
@@ -69,13 +69,13 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
 -   [Átalakítási házirendek](api-management-transformation-policies.md#TransformationPolicies)  
     -   [A JSON konvertálása XML](api-management-transformation-policies.md#ConvertJSONtoXML) formátumba – átalakítja a kérelem vagy a válasz törzsét a JSON-ből az XML-be.  
     -   [XML konvertálása JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) formátumba – átalakítja a kérelem vagy válasz törzsét az XML-ből a JSON-ra.  
-    -   [Karakterlánc keresése és cseréje](api-management-transformation-policies.md#Findandreplacestringinbody) a törzsben – megkeresi a kérelem vagy válasz alkarakterláncot, és egy másik alkarakterlánccal helyettesíti azt.  
+    -   [Karakterlánc keresése és cseréje a törzsben](api-management-transformation-policies.md#Findandreplacestringinbody) – megkeresi a kérelem vagy válasz alkarakterláncot, és egy másik alkarakterlánccal helyettesíti azt.  
     -   Az [URL-címek maszkolása](api-management-transformation-policies.md#MaskURLSContent) a válasz törzsében lévő tartalom-újraírások (maszkok) alapján, hogy az átjárón keresztül az egyenértékű hivatkozásra mutassanak.  
     -   [Háttérbeli szolgáltatás beállítása](api-management-transformation-policies.md#SetBackendService) – a háttérrendszer módosítása egy bejövő kérelemnél.  
     -   [Törzs beállítása](api-management-transformation-policies.md#SetBody) – az üzenettörzs beállítása a bejövő és kimenő kérésekhez.  
     -   [Http-fejléc beállítása](api-management-transformation-policies.md#SetHTTPheader) – egy érték kiosztása egy meglévő válaszhoz és/vagy kérelem fejhez, vagy új válasz és/vagy kérelem fejlécének megadása.  
     -   [Lekérdezési karakterlánc paraméterének beállítása](api-management-transformation-policies.md#SetQueryStringParameter) – lekérdezési karakterlánc paraméterének megadása, cseréje vagy törlése.  
-    -   [URL-cím](api-management-transformation-policies.md#RewriteURL) újraírása – a kérés URL-címét a nyilvános űrlapról a webszolgáltatás által várt űrlapra konvertálja.  
+    -   [URL-cím újraírása](api-management-transformation-policies.md#RewriteURL) – a kérés URL-címét a nyilvános űrlapról a webszolgáltatás által várt űrlapra konvertálja.  
     -   [XML átalakítása XSLT használatával](api-management-transformation-policies.md#XSLTransform) – XSL-transzformációt alkalmaz a kérelem vagy válasz törzsében lévő XML formátumra.  
 
 
