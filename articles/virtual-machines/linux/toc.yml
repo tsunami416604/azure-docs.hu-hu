@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
+        - name: Növekményes pillanatkép létrehozása
+          href: disks-incremental-snapshots.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
         - name: Migrálás és átalakítás

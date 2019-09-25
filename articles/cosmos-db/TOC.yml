@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Lambda architektúra
           href: lambda-architecture.md
+    - name: Beépített elemzések Jupyter-notebookokkal
+      items:
+        - name: A Jupyter-notebookok áttekintése
+          href: cosmosdb-jupyter-notebooks.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
@@ -675,6 +679,10 @@
         - name: Streamelés az Apache Kafkával és a Cosmos DB-vel
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: Beépített Jupyter-notebookok
+      items:
+        - name: Notebookok engedélyezése
+          href: enable-notebooks.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, triggerek és felhasználói függvények írása'

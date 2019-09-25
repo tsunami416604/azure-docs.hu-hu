@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Sentinel előzetes verziójának dokumentációja
+title: Az Azure Sentinel dokumentációja
 metadata:
-  title: 'Az Azure Sentinel előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Docs'
+  title: 'Az Azure Sentinel dokumentációja – oktatóanyagok, gyorsútmutatók | Microsoft Doc'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: 'Az Azure Sentinel előzetes verziója egy natív felhőbeli SIEM-megoldás, amely intelligens biztonsági elemzési szolgáltatásokat biztosít a teljes vállalat számára felhőszinten. Korlátlan sebességet és skálázhatóságot biztosít a felhőben, így Ön az igazán fontos dolgokra összpontosíthat. Könnyen gyűjthet adatokat a felhőbeli és a helyszíni objektumokból, az Office 365-ből, az Azure-erőforrásokból és más felhőkből. A Microsoft biztonsági elemzési szakemberei által fejlesztett beépített gépi tanulási algoritmusokkal hatékonyan észlelheti a fenyegetéseket. A beépített vezénylési és automatizálási forgatókönyvekkel automatizálhatja a fenyegetésekre adott választ.'
+  description: 'Az Azure Sentinel egy natív felhőbeli SIEM-megoldás, amely felhőszinten biztosít intelligens biztonsági elemzési szolgáltatásokat a teljes vállalat számára. Korlátlan sebességet és skálázhatóságot biztosít a felhőben, így Ön az igazán fontos dolgokra összpontosíthat. Könnyen gyűjthet adatokat a felhőbeli és a helyszíni objektumokból, az Office 365-ből, az Azure-erőforrásokból és más felhőkből. A Microsoft biztonsági elemzési szakemberei által fejlesztett beépített gépi tanulási algoritmusokkal hatékonyan észlelheti a fenyegetéseket. A beépített vezénylési és automatizálási forgatókönyvekkel automatizálhatja a fenyegetésekre adott választ.'
 sections:
   - title: 5 perces gyors útmutatók
     items:

@@ -110,6 +110,17 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, Payment Card Industry Data Security Standard'
           href: ./samples/pci-dss-3.2.1/deploy.md
+    - name: SWIFT CSP v2020
+      items:
+        - name: Áttekintés
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/index.md
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/deploy.md
     - name: UK OFFICIAL és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
       items:
         - name: Áttekintés

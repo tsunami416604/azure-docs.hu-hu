@@ -57,6 +57,8 @@
           href: security-center-alerts-integration.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md
+        - name: Biztonsági riasztások térképe és fenyegetések felderítése
+          href: security-center-threat-intel.md
         - name: Riasztások érvényesítése (EICAR-tesztfájl)
           href: security-center-alert-validation.md
 - name: Útmutatók
@@ -65,7 +67,7 @@
       href: security-center-secure-score.md
     - name: Frissítés speciális biztonsági megoldásra
       href: security-center-onboarding.md
-    - name: Kiszolgálóvédelem a Windows Defender ATP-vel
+    - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
       href: security-center-wdatp.md
     - name: Advanced Data Security SQL Azure-beli virtuális gépeken (nyilvános előzetes verzió)
       href: security-center-iaas-advanced-data.md

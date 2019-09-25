@@ -46,10 +46,96 @@
       href: tutorial-secure-web-server.md
 - name: Példák
   items:
-    - name: PowerShell
+    - name: PowerShell-index
       href: powershell-samples.md
-    - name: Azure CLI
+    - name: PowerShell
+      items:
+        - name: Létrehozás
+          items:
+            - name: Gyors
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
+            - name: Teljesen konfigurált virtuális gép
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
+            - name: Magas rendelkezésre állású virtuális gép
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
+            - name: Példa egyéni szkriptre
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
+            - name: DSC használata
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
+            - name: Virtuális gép VHD-feltöltésből
+              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
+            - name: Operációsrendszer-lemez csatolása
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+            - name: Virtuális gép pillanatképből
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
+        - name: Tárhely kezelése
+          items:
+            - name: Felügyelt lemez létrehozása VHD-ből
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+            - name: Felügyelt lemez létrehozása pillanatképből
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+            - name: Felügyelt lemez másolása
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+            - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+            - name: Pillanatkép létrehozása VHD-ből
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+            - name: Pillanatkép másolása
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Biztonságos
+          items:
+            - name: Virtuális gép és adatlemezeinek titkosítása
+              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
+        - name: Figyelés
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
+            - name: Az előfizetésben található összes virtuális gép adatainak összegyűjtése
+              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
+    - name: Azure CLI-index
       href: cli-samples.md
+    - name: parancssori felület
+      items:
+        - name: Létrehozás
+          items:
+            - name: Gyors
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
+            - name: Teljesen konfigurált virtuális gép
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
+            - name: Magas rendelkezésre állású virtuális gép
+              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
+            - name: Példa egyéni szkriptre
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
+            - name: A DSC-konfiguráció használata
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
+        - name: Tárhely kezelése
+          items:
+            - name: Felügyelt lemez létrehozása VHD-ből
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+            - name: Felügyelt lemez létrehozása pillanatképből
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+            - name: Felügyelt lemez másolása
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+            - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+            - name: Pillanatkép másolása
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Network (Hálózat)
+          items:
+            - name: Virtuális gépek közötti hálózati adatforgalom védelme
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
+        - name: Biztonságos
+          items:
+            - name: Virtuális gép és adatlemezeinek titkosítása
+              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
+            - name: Figyelés
+              items:
+                - name: Azure Monitor
+                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Alapelvek
   items:
     - name: Azure Resource Manager
@@ -388,6 +474,8 @@
           href: expand-os-disk.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
+        - name: Növekményes pillanatkép létrehozása
+          href: disks-incremental-snapshots.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
         - name: Migrálás és átalakítás
