@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097574"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268639"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Helyszíni Azure AD jelszavas védelem – gyakori kérdések
 
@@ -100,6 +100,8 @@ Nem. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rend
 **K: Rendben van az Azure AD-beli jelszavas védelem proxy szolgáltatásának üzembe helyezése más szolgáltatásokkal, például Azure AD Connectokkal?**
 
 Igen. Az Azure AD jelszavas védelmi proxy szolgáltatás és Azure AD Connect soha nem ütköznek közvetlenül egymással.
+
+Sajnos a rendszer inkompatibilitást észlelt az Azure AD jelszavas védelmi proxy szoftverrel és az Azure Active által telepített szolgáltatás által telepített Microsoft Azure AD összekapcsoló ügynök-frissítési szolgáltatás verziója között. [ Alkalmazásspecifikus alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) szoftver. Ez a kompatibilitási megoldás azt eredményezheti, hogy az ügynök-frissítési szolgáltatás nem tud kapcsolódni az Azure-hoz a szoftverfrissítésekért. Az Azure AD jelszavas védelmi proxy és a Azure Active Directory Application Proxy ugyanarra a gépre való telepítése nem ajánlott.
 
 **K: Milyen sorrendben kell telepíteni és regisztrálni a DC-ügynököket és-proxykat?**
 

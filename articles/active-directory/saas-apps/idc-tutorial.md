@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642eb15c62c895e85add55b725318b150b51658e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179966"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273590"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az IDC-vel
 
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://cas.idc.com/saml-welcome/AzureAppDirectory`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot az [IDC ügyfélszolgálati csapatával](mailto:webchanneldev@idc.com) az értékek beszerzéséhez. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -139,7 +139,7 @@ Az egyszeri bejelentkezés az **IDC** -oldalon való konfigurálásához el kell
 
 ### <a name="create-idc-test-user"></a>IDC tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű, IDC-beli felhasználót hoz létre. A felhasználók az IDC platformon való hozzáadásához az [IDC támogatási csapatával](mailto:webchanneldev@idc.com) dolgozhat. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+A felhasználókat nem kell előzetesen létrehozni az IDC-ben. A felhasználó automatikusan létrejön, ha első alkalommal használja az egyszeri bejelentkezést.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

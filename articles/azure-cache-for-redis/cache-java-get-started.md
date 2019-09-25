@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019
-ms.openlocfilehash: 230bd4c0d53404ca5ac8d7e1385e8b0533880ca7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 019defe782f8258acfd508745d36a0a6599d2e61
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881135"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273902"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: Az Azure cache használata a Redis Javával
 
@@ -135,7 +135,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyorsítótárazott értéke volt, amely az Azure Portalon, a Redis Console használatával lett beállítva. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
-![Kész gyorsítótár-alkalmazás](./media/cache-java-get-started/cache-app-complete.png)
+![Befejeződött az Azure cache a Redis alkalmazáshoz](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -151,7 +151,7 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 1. A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
 
-   ![Törlés](./media/cache-java-get-started/cache-delete-resource-group.png)
+   ![Azure-erőforráscsoport törölve](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
 1. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 

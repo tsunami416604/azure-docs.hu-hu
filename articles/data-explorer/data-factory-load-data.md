@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5eb05df7ed97839ef80798a752565234d180f0e2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803980"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268822"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatmásolás az Azure Adatkezelőba Azure Data Factory használatával 
 
@@ -96,6 +96,9 @@ Az Azure-Adatkezelő kétféleképpen tölthetők be a Azure Data Factory haszn�
     * A **titkos hozzáférési kulcs** értékének megadása.
     * Válassza a **kapcsolat tesztelése** lehetőséget a létrehozott társított szolgáltatás kapcsolatának teszteléséhez.
     * Válassza a **Finish** (Befejezés) elemet.
+    
+    > [!NOTE]
+    > Az Amazon S3-ban válassza ki az Amazon-felhasználónevet a navigációs sávon, majd válassza a **saját biztonsági hitelesítő adatok** lehetőséget a **hozzáférési kulcs**megkereséséhez. 
 
 1. A **forrás adattár** lapon láthatja az új AmazonS31-kapcsolatokat. Kattintson a **Tovább** gombra.
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 88bca1a799d55ba59c8f5d2263f3219cfb66700e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 83d368e419550f38c173a7a1dca42c84db7d542f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946716"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259840"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure Security and Compliance Blueprint-IaaS Web Application for NIST SP 800-171
 
@@ -139,12 +139,12 @@ Security Center különböző észlelési képességekkel figyelmezteti az ügyf
 
 A Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosít. Security Center megkönnyíti az ügyfelek számára a potenciális biztonsági problémák felderítését és megoldását. Minden észlelt fenyegetéshez létrejön egy [fenyegetési intelligencia jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Az incidensek válaszait használó csapatok a jelentéseket a fenyegetések kivizsgálására és szervizelésére használhatják.
 
-Ez a hivatkozási architektúra a [sebezhetőség](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) -felmérési funkciót használja Security Centerban. A konfigurálását követően a partner ügynök (például a Qualys) biztonsági réseket küld a partner felügyeleti platformjának. Ezután a partner felügyeleti platformja a biztonsági résekre vonatkozó és állapotmonitorozási adatokat küld vissza a Security Centernek. Az ügyfelek ezeket az információkat a sebezhető virtuális gépek gyors azonosítására használhatják.
+Ez a hivatkozási architektúra a [sebezhetőség-felmérési](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) funkciót használja Security Centerban. A konfigurálását követően a partner ügynök (például a Qualys) biztonsági réseket küld a partner felügyeleti platformjának. Ezután a partner felügyeleti platformja a biztonsági résekre vonatkozó és állapotmonitorozási adatokat küld vissza a Security Centernek. Az ügyfelek ezeket az információkat a sebezhető virtuális gépek gyors azonosítására használhatják.
 
 **Azure Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát, ha olyan Application Gateway-t használ, amely konfigurálva van egy webalkalmazási tűzfallal, és a OWASP szabálykészlet engedélyezve van. A további funkciók a következők:
 
 - [End-to-end-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-- Engedélyezze az [SSL](../../application-gateway/create-ssl-portal.md)-kiszervezést.
+- Engedélyezze az [SSL-kiszervezést](../../application-gateway/create-ssl-portal.md).
 - Tiltsa le [a TLS 1.0-s és 1.1-es verzióit](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 - [Webalkalmazási tűzfal](../../application-gateway/waf-overview.md) (megelőzési mód).
 - [Megelőzési mód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) a OWASP 3,0 szabálykészlet beállításával.
@@ -158,13 +158,13 @@ Ez a hivatkozási architektúra a [sebezhetőség](https://docs.microsoft.com/az
 
 **Recovery Services**tároló: Az [Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) -tároló a biztonsági mentési és az Azure-Virtual Machines összes konfigurációját védi ebben az architektúrában. Recovery Services-tárolóval az ügyfelek a teljes virtuális gép visszaállítása nélkül állíthatják vissza a fájlokat és mappákat egy IaaS virtuális gépről. Ez a folyamat felgyorsítja a visszaállítási időt.
 
-**Felhőbeli tanúsító**: [](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) A Felhőbeli tanúsító a feladatátvevő fürt Kvórumának tanúsító típusa a Windows Server 2016 rendszerben, amely az Azure-t használja a választottbírósági pontként. A Felhőbeli tanú, mint bármely más kvórum, szavaz, és részt vehet a kvórum számításaiban. A szabványos nyilvánosan elérhető Azure Blob Storage-tárolót használja. Ez a megoldás megszünteti a nyilvános felhőben üzemeltetett virtuális gépek extra karbantartási terhelését.
+**Felhőbeli tanúsító**: A [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt Kvórumának tanúsító típusa a Windows Server 2016 rendszerben, amely az Azure-t használja a választottbírósági pontként. A Felhőbeli tanú, mint bármely más kvórum, szavaz, és részt vehet a kvórum számításaiban. A szabványos nyilvánosan elérhető Azure Blob Storage-tárolót használja. Ez a megoldás megszünteti a nyilvános felhőben üzemeltetett virtuális gépek extra karbantartási terhelését.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit, a tárolási naplókat, a Key Vault a naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit, a tárolási naplókat, a Key Vault a naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
 
 **Naplók Azure monitor**: Ezeket a naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi az adattípusokat Log Analytics munkaterületeken belül. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
@@ -198,7 +198,7 @@ A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat 
 
 Mivel a VPN-alagúton belüli forgalom helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft még egy biztonságosabb kapcsolódási lehetőséget kínál. A ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. A ExpressRoute-kapcsolatok közvetlenül az ügyfél távközlési szolgáltatójának csatlakoznak. Ennek eredményeképpen az adat nem utazik az interneten keresztül, és nem teszi elérhetővé. Ezek a kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot nyújtanak, mint a szokásos kapcsolatok. 
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra.
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 

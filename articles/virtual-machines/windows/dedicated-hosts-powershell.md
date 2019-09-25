@@ -12,21 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725627"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261700"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Előzetes verzió: Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy [dedikált](dedicated-hosts.md) Azure-gazdagépet a virtuális gépek (VM-EK) üzemeltetéséhez. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
 Győződjön meg arról, hogy telepítette a Azure PowerShell 2.4.2-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a szolgáltatásban `Connect-AzAccount`. A 2.4.2-es verzió telepítéséhez nyisson meg egy PowerShell-parancssort, és írja be a következőt:
 
 ```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
 ```
 
 Az előnézeti modul funkcióinak a PowerShellben való engedélyezéséhez a PowerShellGet modul legalább 1.6.0 kell lennie. A PowerShell Core legújabb verziói automatikusan beépítettek, de a PowerShell régebbi verzióihoz a következő parancsot is futtathatja a legújabb verzióra való frissítéshez:

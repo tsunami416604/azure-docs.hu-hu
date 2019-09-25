@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 33f3b03ba76a0c3fd33e057d0f15b2ab7a0f44e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089500"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273862"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban
 
@@ -34,9 +34,9 @@ A Sysprep eltávolítja az összes személyes fiókot és biztonsági informáci
 Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) és a nem [támogatott forgatókönyvekhez](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
 
 > [!IMPORTANT]
-> Miután futtatta a sysprept egy virtuális gépen, a virtuális gép általánosított minősül, és nem indítható újra. A virtuális gép általánosítása nem vonható vissza. Ha meg kell őriznie az eredeti virtuális gép működését, hozzon létre egy [másolatot a virtuális](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) gépről, és általánosítsa a másolatát. 
+> Miután futtatta a sysprept egy virtuális gépen, a virtuális gép *általánosított* minősül, és nem indítható újra. A virtuális gép általánosítása nem vonható vissza. Ha meg kell őriznie az eredeti virtuális gép működését, hozzon létre egy [másolatot a virtuális](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) gépről, és általánosítsa a másolatát. 
 >
-> Ha a virtuális merevlemez (VHD) első alkalommal történő feltöltése előtt tervezi a Sysprep futtatását, győződjön meg arról, hogy előkészítette [a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+> Ha a virtuális merevlemez (VHD) első alkalommal történő feltöltése előtt tervezi a Sysprep futtatását, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
 > 
 > 
 
@@ -46,9 +46,9 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
    
 2. Nyisson meg egy parancssori ablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd `sysprep.exe`futtassa a parancsot.
    
-3. A rendszerelőkészítő **eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és jelölje be az **általánosítás** jelölőnégyzetet.
+3. A **rendszerelőkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és jelölje be az **általánosítás** jelölőnégyzetet.
    
-4. A leállítási beállításoknál válassza a **Leállítás** **lehetőséget**.
+4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
    
 5. Kattintson az **OK** gombra.
    
@@ -77,7 +77,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 8. A rendszerkép létrehozásához válassza a **Létrehozás** lehetőséget.
 
-9. A rendszerkép létrehozása után képerőforrásként megkeresheti az erőforráscsoport erőforrásainak listáját.
+9. A rendszerkép létrehozása után **képerőforrásként** megkeresheti az erőforráscsoport erőforrásainak listáját.
 
 
 
@@ -205,9 +205,9 @@ A következő lépések végrehajtásával hozhat létre felügyelt rendszerkép
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Rendszerkép létrehozása egy virtuális merevlemezről egy Storage-fiókban
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Rendszerkép létrehozása a Storage-fiókot használó virtuális gépről
 
-Felügyelt rendszerkép létrehozása egy általános operációsrendszer-VHD-fájlból egy Storage-fiókban. Szüksége lesz a virtuális merevlemez URI-azonosítójához a Storage-fiókban, amely a következő formátumban van: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer*/*vhdfilename. vhd*. Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
+Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, amely nem felügyelt lemezeket használ, a Storage-fiókban a következő formátumban kell megadnia az operációs rendszer virtuális merevlemezének URI-JÁT: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* /  *vhdfilename. vhd*. Ebben a példában a VHD a *mystorageaccount*, egy *vhdcontainer*nevű TÁROLÓban, a VHD-fájl pedig *vhdfilename. vhd*.
 
 
 1.  Hozzon létre néhány változót.

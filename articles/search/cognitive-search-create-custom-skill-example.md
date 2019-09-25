@@ -5,20 +5,19 @@ manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d77b4e3a002757bcf6c91b6611876e732273fcf9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183523"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266333"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: Egyéni képesség létrehozása a Bing Entity Search API használatával
 
-Ebből a példából megtudhatja, hogyan hozhat létre egyéni webes API-képességet. Ez a képesség elfogadja a helyszíneket, a nyilvános adatokat és a szervezeteket, valamint a hozzájuk tartozó leírásokat. A példa egy [Azure](https://azure.microsoft.com/services/functions/) -függvényt használ a [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) becsomagolásához, hogy az megvalósítsa az egyéni ügyességi felületet.
+Ebből a példából megtudhatja, hogyan hozhat létre egyéni webes API-képességet. Ez a képesség elfogadja a helyszíneket, a nyilvános adatokat és a szervezeteket, valamint a hozzájuk tartozó leírásokat. A példa egy [Azure-függvényt](https://azure.microsoft.com/services/functions/) használ a [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) becsomagolásához, hogy az megvalósítsa az egyéni ügyességi felületet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -447,7 +446,7 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-Itt számítjuk fel a beépített entitás-felismerési [képességet](cognitive-search-skill-entity-recognition.md) , hogy a készségkészlet jelen legyen, és hogy a dokumentumot a szervezetek listájával gazdagítsa. Az alábbiakban egy olyan entitás-kinyerési képesség-konfiguráció látható, amely elegendő lenne a szükséges adatlétrehozáshoz:
+Itt számítjuk fel a beépített [entitás-felismerési képességet](cognitive-search-skill-entity-recognition.md) , hogy a készségkészlet jelen legyen, és hogy a dokumentumot a szervezetek listájával gazdagítsa. Az alábbiakban egy olyan entitás-kinyerési képesség-konfiguráció látható, amely elegendő lenne a szükséges adatlétrehozáshoz:
 
 ```json
 {

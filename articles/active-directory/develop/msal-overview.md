@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 09/4/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d686fad8471064f127e75f10f42f34350c764837
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a53de919960902fcc89a53293f31a07baa88cf32
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532543"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268549"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
-A Microsoft Authentication Library (MSAL) lehetővé teszi a [](developer-glossary.md#security-token) fejlesztők számára a tokenek beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL olyan .NET-, JavaScript-, Android-és iOS-eszközökhöz érhető el, amelyek számos különböző alkalmazás-architektúrát és platformot támogatnak.
+A Microsoft Authentication Library (MSAL) lehetővé teszi a fejlesztők számára a [tokenek](developer-glossary.md#security-token) beszerzését a Microsoft Identity platform-végpontból a biztonságos webes API-k eléréséhez. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, harmadik féltől származó webes API-k vagy a saját webes API-jai. A MSAL olyan .NET-, JavaScript-, Android-és iOS-eszközökhöz érhető el, amelyek számos különböző alkalmazás-architektúrát és platformot támogatnak.
 
 A MSAL számos lehetőséget kínál a jogkivonatok lekérésére, egy egységes API-val számos platformon. A MSAL használata a következő előnyöket biztosítja:
 
@@ -54,15 +54,14 @@ A MSAL számos alkalmazási helyzetben használható, többek között az alább
 
 | Erőforrástár | Támogatott platformok és keretrendszerek|
 | --- | --- | 
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, mint például a AngularJS, az ember. js vagy a Durante. js|
-| ![MSAL Android rendszerhez](media/sample-v2-code/logo_Android.png) <br/>[MSAL for Android (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
-| ![MSAL iOS rendszerhez](media/sample-v2-code/logo_iOS.png) <br/>[MSAL. Objective-C (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
-| ![MSAL4J](media/sample-v2-code/logo_java.png) <br/>[MSAL4J előzetes verzió](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, mint például a AngularJS, az ember. js vagy a Durante. js|
+| [MSAL for Android (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL iOS és macOS rendszerhez](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS és macOS|
+| [MSAL4J előzetes verzió](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL és MSAL közötti különbségek
+
 Active Directory-hitelesítési tár (ADAL) integrálható az Azure AD for Developers (v 1.0) végponttal, ahol a MSAL a Microsoft Identity platform (v 2.0) végponttal integrálódik. A v 1.0 végpont támogatja a munkahelyi fiókokat, a személyes fiókokat azonban nem. A 2.0-s végpont a személyes Microsoft-fiókok és-munkahelyi fiókok egységesítése egyetlen hitelesítési rendszerbe. Emellett a MSAL-mel is beszerezhetők a Azure AD B2C hitelesítései.
 
 További információért olvassa el az áttelepítés a [MSAL.net-ről a ADAL.net](msal-net-migration.md) -ről és a [MSAL. js-re való Migrálás a ADAL. js-ből](msal-compare-msal-js-and-adal-js.md)című témakört.
-
-            

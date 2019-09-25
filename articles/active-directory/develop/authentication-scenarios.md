@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 09/23/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 76c5214fc26d299c6abb72ed6cd448728903e78f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622706"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272542"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -60,6 +60,25 @@ A fenti példaforgatókönyvben az alkalmazásokat az alábbi két szerepkör sz
 * Olyan alkalmazások, amelyeknek biztonságosan kell hozzáférniük az erőforrásokhoz
 * Olyan alkalmazások, amelyek az erőforrások szerepét töltik be
 
+### <a name="how-each-flow-emits-tokens-and-codes"></a>Az egyes folyamatok tokeneket és kódokat bocsátanak ki
+
+Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket hozhatnak létre (id_tokens, frissítési tokeneket, hozzáférési jogkivonatokat), valamint engedélyezési kódokat, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram egy áttekintést nyújt:
+
+|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hibrid OIDC folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Jogkivonat-beváltások frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | jogkivonat frissítése | x | x | x| |
+|[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
+|[Eszköz kódjának folyamata](v2-oauth2-device-code.md) | | x| x| x| |
+|[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
+
+**Megjegyzések**:
+
+Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol `response_mode` `query` a vagy `fragment`a) a böngészőbe kerül vissza.  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek. 
+
+
 Most, hogy áttekinti az alapismereteket, olvassa el a következőt: az Identity app Model és az API megismerése, a kiépítés működése a Microsoft Identity platformon, valamint a Microsoft Identity platform által támogatott általános forgatókönyvekre mutató hivatkozások.
 
 ## <a name="application-model"></a>Alkalmazásmodell
@@ -72,12 +91,12 @@ A Microsoft Identity platform a következő két fő funkció megvalósításár
     * Tárolja a szükséges adatokat annak eldöntéséhez, hogy az alkalmazásoknak milyen erőforrásokat kellhet elérniük, és az adott kéréseket teljesíteni kell-e, illetve milyen körülmények között kell teljesíteni.
     * Biztosítja az infrastruktúrát az alkalmazásregisztráció megvalósításához az alkalmazásfejlesztő bérlőjén és a többi Azure AD-bérlőn.
 
-* **Kezelheti a felhasználói hozzájárulásukat a jogkivonat-kérelmek ideje alatt, és megkönnyítheti az alkalmazások dinamikus** kihelyezését a bérlők között – itt, a Microsoft Identity platformon:
+* **Kezelheti a felhasználói hozzájárulásukat a jogkivonat-kérelmek ideje alatt, és megkönnyítheti az alkalmazások dinamikus kihelyezését a bérlők között** – itt, a Microsoft Identity platformon:
 
     * Lehetővé teszi, hogy a felhasználó vagy a rendszergazda dinamikusan megadhassa vagy megtagadhassa a hozzájárulást, hogy az alkalmazás a nevében elérhesse az erőforrásokat.
     * Lehetővé teszi, hogy a rendszergazda alapvetően meghatározhassa, hogy az alkalmazások mely tevékenységei engedélyezettek, mely felhasználók mely alkalmazásokat használhatják, és hogy a címtárerőforrások hogyan érhetők el.
 
-A Microsoft Identity platformban az **Application Object** egy alkalmazást ír le absztrakt entitásként. A fejlesztők alkalmazásokkal dolgoznak. A központi telepítés ideje alatt a Microsoft Identity platform egy adott alkalmazás-objektumot használ tervrajzként egy **egyszerű szolgáltatásnév**létrehozásához, amely egy alkalmazás konkrét példányát jelöli a címtárban vagy a bérlőn belül. Ez a szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen milyen tevékenységeket hajthat végre az adott célcímtárban, mely erőforrásokat érheti el, és így tovább. A Microsoft Identity platform egy egyszerű szolgáltatásnevet hoz létre egy alkalmazás-objektumból a beleegyező módon.
+A Microsoft Identity platformban az **Application Object** egy alkalmazást ír le absztrakt entitásként. A fejlesztők alkalmazásokkal dolgoznak. A központi telepítés ideje alatt a Microsoft Identity platform egy adott alkalmazás-objektumot használ tervrajzként egy **egyszerű szolgáltatásnév**létrehozásához, amely egy alkalmazás konkrét példányát jelöli a címtárban vagy a bérlőn belül. Ez a szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen milyen tevékenységeket hajthat végre az adott célcímtárban, mely erőforrásokat érheti el, és így tovább. A Microsoft Identity platform egy egyszerű szolgáltatásnevet hoz létre egy alkalmazás-objektumból a **beleegyező**módon.
 
 Az alábbi ábrán egy egyszerűsített Microsoft Identity platform kiépítési folyamata látható.  Ebben az esetben két bérlő létezik (A és B), ahol a bérlő az alkalmazás tulajdonosa, a B bérlő pedig az alkalmazást egy egyszerű szolgáltatásnév használatával hozza létre.  
 
@@ -104,7 +123,7 @@ A Microsoft Identity platform által kiadott biztonsági jogkivonatok (hozzáfé
 
 Az egyes biztonsági jogkivonatokban lévő jogcímek a jogkivonat típusától, a felhasználó hitelesítéséhez használt hitelesítő adatoktól és az alkalmazás konfigurációjától függenek.
 
-A Microsoft Identity platform által kibocsátott egyes típusú jogcímek rövid leírását az alábbi táblázat tartalmazza. Részletesebb információkért tekintse meg a Microsoft Identity platform által kiadott [hozzáférési](access-tokens.md) jogkivonatokat és [azonosító](id-tokens.md) jogkivonatokat.
+A Microsoft Identity platform által kibocsátott egyes típusú jogcímek rövid leírását az alábbi táblázat tartalmazza. Részletesebb információkért tekintse meg a Microsoft Identity platform által kiadott [hozzáférési jogkivonatokat](access-tokens.md) és [azonosító jogkivonatokat](id-tokens.md) .
 
 | Igénylés | Leírás |
 | --- | --- |

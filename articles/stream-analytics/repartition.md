@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101509"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266445"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Az újraparticionálással optimalizálja a feldolgozást Azure Stream Analytics
 
@@ -56,7 +56,7 @@ Kísérletezzen és figyelje meg a feladatok erőforrás-használatát a szüks�
 
 Ha a feladata SQL Database-t használ a kimenethez, az átviteli sebesség maximalizálása érdekében használjon explicit újraparticionálást az optimális partíciók számának megfelelően. Mivel az SQL nyolc író használatával működik a legjobban, a folyamat átparticionálása a kiürítés előtt nyolcra, vagy valahol további upstream, a feladatok teljesítményére is felhasználható. 
 
-Ha több mint 8 bemeneti partíció van, akkor előfordulhat, hogy a bemeneti particionálási séma öröklése nem megfelelő választás. Vegye fontolóra [a-ben való](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) használatát a lekérdezésben, hogy explicit módon adja meg a kimeneti írók számát. 
+Ha több mint 8 bemeneti partíció van, akkor előfordulhat, hogy a bemeneti particionálási séma öröklése nem megfelelő választás. Vegye fontolóra [a-ben való](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) használatát a lekérdezésben, hogy explicit módon adja meg a kimeneti írók számát. 
 
 A következő példa beolvassa a bevitelt, függetlenül attól, hogy a rendszer természetesen particionálja, és újraparticionálja a stream tízszeresére a DeviceID dimenzió alapján, és kiüríti az adatokat a kimenetre. 
 

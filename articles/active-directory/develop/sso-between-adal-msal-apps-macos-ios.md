@@ -1,0 +1,292 @@
+---
+title: SSO ADAL és MSAL alkalmazások között iOS és macOS rendszeren – Microsoft Identity platform
+description: ''
+services: active-directory
+documentationcenter: dev-center-name
+author: TylerMSFT
+manager: CelesteDG
+editor: ''
+ms.service: active-directory
+ms.subservice: develop
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/28/2019
+ms.author: twhitney
+ms.reviewer: ''
+ms.custom: aaddev
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 218e659452779b6372541c3abec908878493f5d2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268920"
+---
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Útmutató: SSO ADAL és MSAL alkalmazások között macOS és iOS rendszeren
+
+Az iOS rendszerhez készült Microsoft Authentication Library (MSAL) az alkalmazások közötti [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) használatával megoszthatja az SSO-állapotot. Saját tempójában is áttelepítheti alkalmazásait MSAL, így biztosítva, hogy a felhasználók továbbra is kihasználhassák az alkalmazások közötti egyszeri bejelentkezést – akár ADAL, akár MSAL-alapú alkalmazásokkal is.
+
+Ha a MSAL SDK-val az alkalmazások közötti egyszeri bejelentkezés beállításával kapcsolatos útmutatást keres, tekintse meg a [több alkalmazás közötti insso](single-sign-on-macos-ios.md#silent-sso-between-apps)szolgáltatást. Ez a cikk a ADAL és a MSAL közötti egyszeri bejelentkezésre összpontosít.
+
+Az egyszeri bejelentkezést végrehajtó sajátosságok az Ön által használt ADAL-verziótól függenek.
+
+## <a name="adal-27x"></a>ADAL 2.7. x
+
+Ez a szakasz a MSAL és a ADAL 2.7. x közötti SSO-különbségeket ismerteti
+
+### <a name="cache-format"></a>Gyorsítótár formátuma
+
+A ADAL 2.7. x megtekintheti a MSAL cache formátumát. A ADAL 2.7. x verziójával nem kell külön foglalkoznia a többalkalmazásos egyszeri bejelentkezéshez. Azonban tisztában kell lennie a két függvénytár által támogatott fiókazonosító-különbségekkel.
+
+### <a name="account-identifier-differences"></a>Fiókazonosító-különbségek
+
+A MSAL és a ADAL eltérő fiókazonosító használatát teszik ki. A ADAL az UPN-t használja elsődleges fiókazonosítóként. A MSAL egy nem megjeleníthető fiókot használ, amely egy objektumazonosító és egy HRE-fiókhoz tartozó bérlői azonosító, valamint más típusú fiókok `sub` esetében egy jogcím alapján működik.
+
+Ha a MSAL eredményben egy `MSALAccount` objektumot kap, akkor a `identifier` tulajdonságban egy fiókazonosító szerepel. Az alkalmazásnak ezt az azonosítót kell használnia az ezt követő csendes kérelmekhez.
+
+Az `MSALAccount` objektumon `identifier`kívül a nevű `username`kitalálható azonosító is szerepel. A ADAL `userId` -ben lefordítva. `username`nem tekinthető egyedi azonosítónak, és bármikor megváltozhat, így csak a ADAL-vel való visszamenőleges kompatibilitási forgatókönyvekhez használható. A MSAL támogatja a gyorsítótárazási `username` lekérdezéseket a vagy `identifier`a használatával `identifier` , ahol a lekérdezés a alapján javasolt.
+
+A következő táblázat összefoglalja a ADAL és a MSAL közötti fiókazonosító-különbségeket:
+
+| Fiókazonosító                | MSAL                                                         | ADAL 2.7. x      | Régebbi ADAL (az ADAL 2.7. x előtt) |
+| --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
+| nem játszható azonosító            | `username`                                                   | `userId`        | `userId`                       |
+| egyedi, nem játszható azonosító | `identifier`                                                 | `homeAccountId` | –                            |
+| Nem ismert fiókazonosító               | Az összes fiók lekérdezése az API-n keresztül `allAccounts:``MSALPublicClientApplication` | –             | –                            |
+
+Ez az `MSALAccount` azonosítókat biztosító interfész:
+
+```objc
+@protocol MSALAccount <NSObject>
+
+/*!
+ Displayable user identifier. Can be used for UI and backward compatibility with ADAL.
+ */
+@property (readonly, nullable) NSString *username;
+
+/*!
+ Unique identifier for the account.
+ Save this for account lookups from cache at a later point.
+ */
+@property (readonly, nullable) NSString *identifier;
+
+/*!
+ Host part of the authority string used for authentication based on the issuer identifier.
+ */
+@property (readonly, nonnull) NSString *environment;
+
+/*!
+ ID token claims for the account.
+ Can be used to read additional information about the account, e.g. name
+ Will only be returned if there has been an id token issued for the client Id for the account's source tenant.
+ */
+@property (readonly, nullable) NSDictionary<NSString *, NSString *> *accountClaims;
+
+@end
+```
+
+### <a name="sso-from-msal-to-adal"></a>Egyszeri bejelentkezés a MSAL-ből a ADAL-be
+
+Ha rendelkezik egy MSAL-alkalmazással és egy ADAL-alkalmazással, és a felhasználó először bejelentkezik a MSAL-alapú alkalmazásba, akkor a ADAL-alkalmazásban `username` `MSALAccount` lévő egyszeri bejelentkezést az objektumból mentheti, majd átadja a `userId`ADAL-alapú alkalmazásnak. A ADAL a fiók adatait csendesen megtalálhatja az `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API-val.
+
+### <a name="sso-from-adal-to-msal"></a>Egyszeri bejelentkezés a ADAL-ből a MSAL-be
+
+Ha rendelkezik egy MSAL-alkalmazással és egy ADAL-alkalmazással, és a felhasználó először bejelentkezik a ADAL-alapú alkalmazásba, akkor a MSAL ADAL felhasználói azonosítóit használhatja a fiókok kereséséhez. Ez akkor is érvényes, ha a ADAL-ről MSAL-re végez áttelepítést.
+
+#### <a name="adals-homeaccountid"></a>ADAL homeAccountId
+
+A ADAL 2.7. x a `homeAccountId` következő tulajdonságon keresztül adja vissza `ADUserInformation` az objektumot az eredményben:
+
+```objc
+/*! Unique AAD account identifier across tenants based on user's home OID/home tenantId. */
+@property (readonly) NSString *homeAccountId;
+```
+
+`homeAccountId`a ADAL a MSAL `identifier` -ben egyenértékű. Ezt az azonosítót mentheti a MSAL-ben való használatra az `accountForIdentifier:error:` API-val való fiókok keresésekor.
+
+#### <a name="adals-userid"></a>ADAL`userId`
+
+Ha `homeAccountId` a nem érhető el, vagy csak a megtekinthető azonosítóval rendelkezik, a `userId` ADAL segítségével megkeresheti a fiókot a MSAL-ben.
+
+A MSAL-ben először keressen egy fiókot a `username` vagy `identifier`a használatával. Mindig a `identifier` lekérdezéshez használja, ha van, és csak tartalékként használja `username` . Ha a fiók található, használja a fiókot a acquireTokenSilent-hívásokban.
+
+Objective-C:
+
+```objc
+NSString *msalIdentifier = @"previously.saved.msal.account.id";
+MSALAccount *account = nil;
+    
+if (msalIdentifier)
+{
+    // If you have MSAL account id returned either from MSAL as identifier or ADAL as homeAccountId, use it
+    account = [application accountForIdentifier:@"my.account.id.here" error:nil];
+}
+else
+{
+    // Fallback to ADAL userId for migration
+    account = [application accountForUsername:@"adal.user.id" error:nil];
+}
+    
+if (!account)
+{
+  // Account not found.
+  return;
+}
+
+MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc] initWithScopes:@[@"user.read"] account:account];
+[application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
+```
+
+Swift
+
+```swift
+        
+let msalIdentifier: String?
+var account: MSALAccount
+        
+do {
+  if let msalIdentifier = msalIdentifier {
+    account = try application.account(forIdentifier: msalIdentifier)
+  }
+  else {
+    account = try application.account(forUsername: "adal.user.id") 
+  }
+             
+  let silentParameters = MSALSilentTokenParameters(scopes: ["user.read"], account: account)          
+  application.acquireTokenSilent(with: silentParameters) {
+    (result: MSALResult?, error: Error?) in
+    // handle result
+  }  
+} catch let error as NSError {
+  // handle error or account not found
+}
+```
+
+
+
+MSAL támogatott fiókok keresési API-jai:
+
+```objc
+/*!
+ Returns account for the given account identifier (received from an account object returned in a previous acquireToken call)
+ 
+ @param  error      The error that occured trying to get the accounts, if any, if you're
+                    not interested in the specific error pass in nil.
+ */
+- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier
+                                         error:(NSError * _Nullable __autoreleasing * _Nullable)error;
+    
+/*!
+Returns account for for the given username (received from an account object returned in a previous acquireToken call or ADAL)
+    
+@param  username    The displayable value in UserPrincipleName(UPN) format
+@param  error       The error that occured trying to get the accounts, if any, if you're
+                    not interested in the specific error pass in nil.
+*/
+- (MSALAccount *)accountForUsername:(NSString *)username
+                              error:(NSError * __autoreleasing *)error;
+```
+
+## <a name="adal-2x-266"></a>ADAL 2. x – 2.6.6
+
+Ez a szakasz a MSAL és a ADAL 2. x-2.6.6 közötti SSO-különbségeket ismerteti.
+
+A régebbi ADAL-verziók nem támogatják natív módon a MSAL-gyorsítótár formátumát. A ADAL-ről a MSAL-re történő zökkenőmentes áttelepítés biztosítása érdekében azonban a MSAL a korábbi ADAL-gyorsítótár formátumát is beolvashatja anélkül, hogy újra kellene kérnie a felhasználói hitelesítő adatokat.
+
+Mivel `homeAccountId` a nem érhető el a régebbi ADAL-verziókban, a következő paranccsal kell megkeresnie a `username`fiókokat:
+
+```objc
+/*!
+ Returns account for for the given username (received from an account object returned in a previous acquireToken call or ADAL)
+
+ @param  username    The displayable value in UserPrincipleName(UPN) format
+ @param  error       The error that occurred trying to get the accounts, if any.  If you're not interested in the specific error pass in nil.
+ */
+- (MSALAccount *)accountForUsername:(NSString *)username
+                              error:(NSError * __autoreleasing *)error;
+```
+
+Példa:
+
+Objective-C:
+
+
+```objc
+MSALAccount *account = [application accountForUsername:@"adal.user.id" error:nil];;
+MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc] initWithScopes:@[@"user.read"] account:account];
+[application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
+```
+
+Swift
+
+```swift
+do {
+  let account = try application.account(forUsername: "adal.user.id")          
+  let silentParameters = MSALSilentTokenParameters(scopes: ["user.read"], account: account)
+  application.acquireTokenSilent(with: silentParameters) { 
+    (result: MSALResult?, error: Error?) in
+    // handle result
+  }   
+} catch let error as NSError { 
+  // handle error or account not found
+}
+```
+
+
+
+Azt is megteheti, hogy beolvassa az összes fiókot, amely a ADAL is beolvassa a fiók adatait:
+
+Objective-C:
+
+```objc
+NSArray *accounts = [application allAccounts:nil];
+    
+if ([accounts count] == 0)
+{
+  // No account found.
+  return; 
+}
+if ([accounts count] > 1)
+{
+  // You might want to display an account picker to user in actual application
+  // For this sample we assume there's only ever one account in cache
+  return;
+}
+    ``
+MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc] initWithScopes:@[@"user.read"] account:accounts[0]];
+[application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
+```
+
+Swift
+
+```swift
+      
+do {
+  let accounts = try application.allAccounts()
+  if accounts.count == 0 {
+    // No account found.
+    return
+  }
+  if accounts.count > 1 {
+    // You might want to display an account picker to user in actual application
+    // For this sample we assume there's only ever one account in cache
+    return
+  }
+  
+  let silentParameters = MSALSilentTokenParameters(scopes: ["user.read"], account: accounts[0])
+  application.acquireTokenSilent(with: silentParameters) {
+    (result: MSALResult?, error: Error?) in
+    // handle result or error  
+  }  
+} catch let error as NSError { 
+  // handle error
+}
+```
+
+
+
+## <a name="next-steps"></a>További lépések
+
+További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

@@ -14,17 +14,17 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5f5e023d8014a780fa21e2c3ba18050c4e1a5771
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095249"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261673"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
  
-Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-platform-metrics.md) és [diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-overview.md) így értesítést kapjon a metrika eléri a megadott értéket. 
+Ez a cikk azt ismerteti, hogyan szolgáltatását használja, amely a Batch-fiók figyelése [Azure Monitor](../azure-monitor/overview.md). Az Azure Monitor gyűjt [metrikák](../azure-monitor/platform/data-platform-metrics.md) és [diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md) az erőforrásokat a Batch-fiókban. Összegyűjtheti, és számos módon figyelheti a Batch-fiókhoz, és diagnosztizálhatja a problémákat a feldolgozásukhoz. Beállíthatja úgy is [metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-overview.md) így értesítést kapjon a metrika eléri a megadott értéket. 
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
@@ -109,7 +109,7 @@ A diagnosztikai naplók számára más választható célok:
 
     ![Batch-diagnosztika](media/batch-diagnostics/diagnostics-portal.png)
 
-Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../azure-monitor/platform/diagnostic-logs-stream-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md).
+Az Erőforrásnapló-gyűjtés engedélyezése más lehetőségek a következők: a portálon az Azure Monitor használatával diagnosztikai beállítások konfigurálása, használja a [Resource Manager-sablon](../azure-monitor/platform/diagnostic-settings-template.md), vagy az Azure PowerShell vagy az Azure parancssori felület. Lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/resource-logs-overview.md).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Hozzáférés diagnosztikai naplók storage-ban
@@ -138,7 +138,7 @@ Az alábbi példa `PoolResizeCompleteEvent` egy `PT1H.json` naplófájlban lév�
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-További információ a tárfiókot a diagnosztikai naplók a séma: [archiválása az Azure diagnosztikai naplók](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account). A Storage API-k használatával programozott módon hozzáférni az a tárfiókban lévő naplókat. 
+További információ a tárfiókot a diagnosztikai naplók a séma: [archiválása az Azure diagnosztikai naplók](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account). A Storage API-k használatával programozott módon hozzáférni az a tárfiókban lévő naplókat. 
 
 ### <a name="service-log-events"></a>Szolgáltatás bejelentkezési események
 Az Azure szolgáltatási naplók a Batchben, ha a gyűjtött, a Batch-készlettel vagy feladattal például egyedi erőforrásokat élettartama során az Azure Batch szolgáltatás által kibocsátott események tartalmaznak. Minden egyes köteg által kibocsátott naplóz JSON formátumban. Például ez a minta törzse **készlet létrehozása esemény**:

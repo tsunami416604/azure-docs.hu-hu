@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0bd4b1d969de0b54a1836048b5cb5910470f1ffa
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034878"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269223"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -36,7 +36,7 @@ Ez a cikk további használati tippeket is tartalmaz a következő eszközökhö
 
 * [Jupyter jegyzetfüzetek](#jupyter): Ha már használja a Jupyter Notebook, az SDK-nak van néhány extrája, amelyet telepítenie kell.
 
-* [Visual Studio Code](#vscode): Ha Visual Studio Code-ot használ, néhány hasznos bővítményt is telepíthet.
+* [Visual Studio Code](#vscode): Ha Visual Studio Code-ot használ, a [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) széles körű nyelvi támogatást nyújt a Pythonhoz, valamint olyan funkciókat is kínál, amelyek sokkal kényelmesebb és hatékonyabban használják a Azure Machine learning szolgáltatást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,7 +76,7 @@ A notebook virtuális gép:
 
 + **Testreszabható**. A felügyelt és biztonságos virtuálisgép-ajánlat során teljes hozzáférést biztosít a hardver képességeihez, és testre szabhatja a szíved iránti vágyát. Például gyorsan létrehozhatja a legújabb NVidia V100-alapú virtuális gépet az új neurális hálózati architektúra lépésenkénti hibakeresésének végrehajtásához.
 
-A notebook virtuális gépekkel kapcsolatos költségek leállításához [állítsa le a notebook virtuális gépet](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
+A notebook virtuális gépekkel kapcsolatos költségek leállításához [állítsa le a notebook virtuális gépet](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 
@@ -90,7 +90,7 @@ A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési 
 
 A Azure Machine Learning SDK a DSVM Ubuntu-vagy Windows-verziójával működik. Ha azonban azt tervezi, hogy a DSVM számítási célként is használja, akkor csak az Ubuntu támogatott.
 
-A DSVM fejlesztési környezetként való használatához tegye a következőket:
+A DSVM használata fejlesztési környezetként:
 
 1. Hozzon létre egy DSVM az alábbi környezetek egyikében:
 
@@ -151,9 +151,9 @@ További információ: adatelemzési [Virtual Machines](https://azure.microsoft.
 
 ## <a id="local"></a>Helyi számítógép
 
-Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t a következő módon:
+Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Például:
 
-1. Ha még nincs [](https://www.anaconda.com/distribution/#download-section) telepítve, töltse le és telepítse az anacondat (Python 3,7 verzió).
+1. Ha még nincs telepítve, töltse le és telepítse az [anacondat](https://www.anaconda.com/distribution/#download-section) (Python 3,7 verzió).
 
 1. Nyisson meg egy Anaconda-parancssort, és hozzon létre egy környezetet a következő parancsokkal:
 
@@ -185,10 +185,10 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
 1. A csomagok telepítéséhez használja az alábbi parancsokat:
 
-    Ezzel a paranccsal a notebook-és automl-extrákkal telepítheti a Base Azure Machine Learning SDK-t. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-előkészítési SDK-t is tartalmazza alapértelmezett függőségként.
+    Ez a parancs telepíti az alap Azure Machine learning SDK-t `automl` a jegyzetfüzettel és az extrákkal. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-előkészítési SDK-t is tartalmazza alapértelmezett függőségként.
 
     ```shell
-    pip install azureml-sdk[notebooks,automl]
+    pip install azureml-sdk[notebooks, automl]
     ```
 
    > [!NOTE]
@@ -221,14 +221,16 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
 A Jupyter Notebooks részét képezik a [Jupyter projekt](https://jupyter.org/). Ahol létrehozhatja az élő kód kombinálhatók a leíró szöveg és képek, dokumentumok interaktív kódolási élményt nyújtanak. A Jupyter notebookok szintén nagyszerű megoldást nyújtanak az eredmények másokkal való megosztására, mivel a dokumentumban lévő kódrészletek kimenetét mentheti el. A Jupyter Notebooks kiszállítására különböző platformokon is telepítheti.
 
-A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges összetevőket a Jupyter-jegyzetfüzetek anaconda-környezetben való futtatásához. Ezeknek az összetevőknek a Jupyter Notebook-környezetben való engedélyezéséhez tegye a következőket:
+A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges összetevőket a Jupyter-jegyzetfüzetek anaconda-környezetben való futtatásához.
+
+Az összetevők engedélyezése a Jupyter Notebook környezetben:
 
 1. Nyisson meg egy Anaconda-parancssort, és aktiválja a környezetet.
 
     ```shell
     conda activate myenv
     ```
-    
+
 1. [A GitHub-tárház](https://aka.ms/aml-notebooks) klónozása minta típusú jegyzetfüzetek készletében.
 
     ```CLI
@@ -254,34 +256,35 @@ A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges öss
     import sys
     sys.path
     ```
-    
+
 1. A Jupyter Notebook a Azure Machine Learning munkaterület használatára való konfigurálásához lépjen a munkaterület- [konfigurációs fájl létrehozása](#workspace) szakaszra.
 
 
 ### <a id="vscode"></a>A Visual Studio Code
 
-A Visual Studio Code egy platformfüggetlen Kódszerkesztő. Python-támogatás a helyi Python 3 és Conda telepítési támaszkodik, de további eszközöket biztosít a mesterséges Intelligencia való munkához. Azt is támogatást nyújt a Kódszerkesztő belül a Conda-környezet kiválasztása.
+A Visual Studio Code egy rendkívül népszerű platformfüggetlen Kódszerkesztő, amely a [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode)-en keresztül elérhető bővítmények széles körét támogatja a programozási nyelveken és eszközökön. A [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) telepíti a [Python-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Python-környezetek (virtuális, anaconda stb.) összes típusának kódolásához. Emellett kényelmi funkciókat biztosít a Azure Machine Learning erőforrásokkal való munkához és a Azure Machine Learning kísérletek futtatásához anélkül, hogy a Visual Studio Code-ot el kellene hagyni.
 
-Ha a Visual Studio Code-ot szeretné használni a fejlesztéshez, tegye a következőket:
+A Visual Studio Code használata a fejlesztéshez:
 
-1. Ha szeretné megtudni, hogyan használható a Visual Studio Code a Python fejlesztéséhez, tekintse meg a következő témakört: a [Python használatának első lépései a VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
-
-1. A Conda-környezet kiválasztásához nyissa meg a VS Code parancsot, majd válassza a CTRL + SHIFT + P (Linux és Windows) vagy a Command + Shift + P (Mac) lehetőséget.
-    Megnyílik a __parancs-raklap__ .
-
-1. Adja __meg a Pythont: Válassza a tolmács__lehetőséget, majd válassza ki a Conda-környezetet.
-
-1. Annak ellenőrzéséhez, hogy használhatja-e az SDK-t, hozzon létre, majd futtasson egy új Python-fájlt (...), amely a következő kódot tartalmazza:
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. A Visual Studio Code-hoz készült Azure Machine Learning-bővítmény telepítéséhez lásd: [eszközök a mesterséges intelligenciához](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
+1. Telepítse a Azure Machine Learning-bővítményt a Visual Studio Code-hoz, lásd: [Azure Machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
     További információ: [Azure Machine learning használata a Visual Studio Code](how-to-vscode-tools.md)-hoz.
 
+1. Ismerje meg, hogyan használható a Visual Studio Code bármilyen típusú Python-fejlesztéshez: [Bevezetés a Python használatába a VSCode-ben](https://code.visualstudio.com/docs/python/python-tutorial).
+
+    - Az SDK-t tartalmazó SDK Python-környezet kiválasztásához nyissa meg a VS Code parancsot, majd válassza a CTRL + SHIFT + P (Linux és Windows) vagy a Command + Shift + P (Mac) lehetőséget.
+        - Megnyílik a __parancs paletta__ .
+
+    - Adja __meg a Pythont: Válassza a tolmács__lehetőséget, majd válassza ki a megfelelő környezetet
+
+1. Annak ellenőrzéséhez, hogy használhatja-e az SDK-t, hozzon létre egy új Python-fájlt (...), amely a következő kódot tartalmazza:
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    Futtassa ezt a kódot a "cella futtatása" Codelensben kattintva, vagy egyszerűen nyomja le a SHIFT-ENTER billentyűkombinációt.
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -302,7 +305,7 @@ Használja ezeket a beállításokat:
 | Beállítás |A következőkre vonatkozik:| Value |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
-| A Databricks futtatókörnyezete |mindig| A nem ML-es futtatókörnyezet (nem ML 4. x, 5. x) |
+| A Databricks futtatókörnyezete |mindig| Bármilyen nem ML futtatókörnyezet (nem ML 4. x, 5. x) |
 | Python-verzió |mindig| 3 |
 | Feldolgozók |mindig| 2 vagy magasabb |
 | Munkavégző csomópont virtuálisgép-típusai <br>(meghatározza az egyidejű ismétlések maximális számát) |Automatizált ML<br>csak| A memóriára optimalizált virtuális gép előnyben részesített |
@@ -326,7 +329,7 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
    * Ne válassza **az Automatikus csatolás az összes fürthöz**lehetőséget.
    * Válassza a **csatolás** elemet a fürt neve mellett.
 
-1. A hibák figyelése, amíg az állapot a **csatolt**értékre módosul, ami több percet is igénybe vehet.  Ha ez a lépés sikertelen, ellenőrizze a következőket:
+1. A hibák figyelése, amíg az állapot a **csatolt**értékre módosul, ami több percet is igénybe vehet.  Ha ez a lépés meghiúsul:
 
    Próbálja meg újraindítani a fürtöt a alábbiak szerint:
    1. A bal oldali ablaktáblán válassza a **fürtök**lehetőséget.

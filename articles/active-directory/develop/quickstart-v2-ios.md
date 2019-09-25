@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform – iOS gyors üzembe helyezési útmutató | Azure
-description: Megtudhatja, hogyan jelentkezhet be a felhasználók és a lekérdezési Microsoft Graph iOS-alkalmazásokban.
+title: IOS-és macOS-alapú Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan jelentkezhet be a felhasználók és a lekérdezési Microsoft Graph egy iOS-vagy macOS-alkalmazásba.
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6a9dab8a2a37d7fa312b525453683fe789269b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ce22b7e873cff57e4bf65bd706217e3d4635b8e6
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852933"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268480"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-alkalmazásból
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
+Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogyan jelentkezhet be a natív iOS-vagy macOS-alkalmazás személyes, munkahelyi és iskolai fiókba, hogyan szerezhet be hozzáférési tokent, és hogyan hívhatja meg a Microsoft Graph API-t.
 
-A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud egy natív iOS-alkalmazás bejelentkezni személyes, munkahelyi vagy iskolai fiókokba, lekérni egy hozzáférési jogkivonatot, és meghívni a Microsoft Graph API-t.
+Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány lépésre csak az iOS-alkalmazások esetében van szükség. Ezek a lépések meghívja, hogy csak az iOS rendszerhez készültek.
 
 ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-ios/ios-intro.svg)
 
@@ -36,14 +36,15 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > **Előfeltételek**
 > * XCode 10 +
 > * iOS 10 + 
+> * macOS 10.12 +
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
 > * Kézi [2. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>1\. módszer: Regisztrálja és állítsa be automatikusan az alkalmazást, majd töltse le a mintakód
 > #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálása
 > 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) ablaktáblát.
@@ -58,41 +59,72 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://aka.ms/MobileAppReg) oldalára.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
->      - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, amikor bejelentkeznek vagy beleegyeznek az alkalmazásba, például `iOSQuickstart`:.
->      - Egyéb konfigurációk kihagyása ezen a lapon. 
->      - Nyomja meg `Register` a gombot.
-> 1. Kattintson az új alkalmazásra > Ugrás a `Authentication`  >   >  `Add Platform` `iOS`következőre:.    
->      - Adja meg az alkalmazáshoz tartozó ***köteg azonosítóját*** . 
-> 1. Válassza `Configure` ki és mentse a ***MSAL-konfiguráció*** részleteit később. 
-
+>      - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, amikor bejelentkeznek vagy beleegyeznek az alkalmazásba.
+>      - Egyéb konfigurációk kihagyása ezen a lapon.
+>      - Válassza a(z) `Register` lehetőséget.
+> 1. A **kezelés** szakaszban válassza a elemet `Authentication`  >  `Add Platform`.  >  `iOS`
+>      - Adja meg az alkalmazáshoz tartozó ***köteg azonosítóját*** . A köteg azonosítója csak egy egyedi karakterlánc, amely egyedileg azonosítja az alkalmazást, például `com.<yourname>.identitysample.MSALMacOS`:. Jegyezze fel a használt értéket.
+>      - Vegye figyelembe, hogy az iOS-konfiguráció a macOS-alkalmazásokra is érvényes.
+> 1. A `Configure` rövid útmutató későbbi részében válassza ki és mentse a ***MSAL-konfiguráció*** részleteit.
 > [!div renderon="portal" class="sxs-lookup"]
 >
-> #### <a name="step-1-configure-your-application"></a>1\. lépés: Az alkalmazás konfigurálása
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI-t, amely kompatibilis a hitelesítési közvetítővel. 
+> #### <a name="step-1-configure-your-application"></a>1\. lépés: Alkalmazás konfigurálása
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI-t, amely kompatibilis a hitelesítési közvetítővel.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
 
-#### <a name="step-2-download-your-web-server-or-project"></a>2\. lépés: Webkiszolgáló vagy projekt letöltése
+#### <a name="step-2-download-the-sample-project"></a>2\. lépés: A minta projekt letöltése
 
-- [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Az iOS-hez készült kód mintájának letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Töltse le a macOS rendszerhez készült kód mintáját](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>3\. lépés: A projekt konfigurálása
+#### <a name="step-3-install-dependencies"></a>3\. lépés: Függőségek telepítése
+
+A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és futtassa a `pod install` parancsot a legújabb MSAL-könyvtár telepítéséhez.
+
+#### <a name="step-4-configure-your-project"></a>4\. lépés: A projekt konfigurálása
 
 > [!div renderon="docs"]
 > Ha a fenti 1. lehetőséget választotta, akkor kihagyhatja ezeket a lépéseket. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
-> 1. Szerkessze a **ViewController.swift** fájlt, és cserélje le a „let kClientID” kezdetű sort a következő kódrészletre:
+> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazásnak a portálon korábban a portálon való regisztrálása során mentett ügyfél-azonosítóval:
 >    ```swift
->    let kClientID = "Enter_the_Application_Id_here"
->    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
->    ``` 
-> 1. Kattintson a jobb gombbal az **info. plist** elemre, és válassza **a** > Megnyitás**forrásként kód**lehetőséget.
-> 1. A dict-gyökér csomópont alatt cserélje le a (z) ***csomagot a köteg azonosítójával***:
+>    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    ```
+> 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
+> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a > Megnyitás**forrásként kód**lehetőséget.
+> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `Enter_the_bundle_Id_Here`a-t a portálon megadott csomag- ***azonosítóra*** .
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.Enter_the_Bundle_Id_Here</string>
+>          </array>
+>       </dict>
+>    </array>
+>    ```
+> 1. Build & az alkalmazás futtatása!
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
+> [!div renderon="docs"]
+>
+> 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
+> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazás a portálon korábban a portálon való regisztrálása során mentett clientID:
+>    ```swift
+>    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    ```
+> 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
+> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a > Megnyitás**forrásként kód**lehetőséget.
+> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `Enter_the_bundle_Id_Here`a-t a portálon használt csomag- ***azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -108,41 +140,11 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 >    ```
 > 1. Build & az alkalmazás futtatása! 
 
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > Ez a rövid útmutató támogatja a Enter_the_Supported_Account_Info_Here.
-
-> [!div renderon="docs"]
->
-> 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészletre:
->
->    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
-> 
->    ```
-> 1. Kattintson a jobb gombbal az **info. plist** elemre, és válassza **a** > Megnyitás**forrásként kód**lehetőséget.
-> 1. A dict-gyökér csomópont alatt cserélje le a (z) ***csomagot a köteg azonosítójával***:
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.<ENTER_YOUR_BUNDLE_ID></string>
->          </array>
->       </dict>
->    </array>
->
->    ```
-> 1. Build & az alkalmazás futtatása! 
-
 ## <a name="more-information"></a>További információ
 
 Az erre a rövid útmutatóra vonatkozó további információért tekintse meg ezeket a szakaszokat.
 
-### <a name="getting-msal"></a>MSAL beolvasása
+### <a name="get-msal"></a>MSAL beolvasása
 
 A MSAL ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Az MSAL-t az alábbi eljárással adhatja hozzá az alkalmazáshoz:
 
@@ -156,12 +158,16 @@ Adja hozzá a következőt ehhez a cocoapods (a projekt céljával):
 use_frameworks!
 
 target 'MSALiOS' do
-   pod 'MSAL', '~> 0.4.0'
+   pod 'MSAL'
 end
 
 ```
 
-### <a name="msal-initialization"></a>Az MSAL inicializálása
+CocoaPods-telepítési parancs futtatása:
+
+```pod install```
+
+### <a name="initialize-msal"></a>Initialize MSAL
 
 Az MSAL-re mutató hivatkozás hozzáadásához adja hozzá az alábbi kódot:
 
@@ -176,7 +182,6 @@ let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
             
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
-
 ```
 
 > |Az elemek magyarázata: ||
@@ -185,9 +190,9 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > | `authority` | A Microsoft Identity platform végpontja. Ez a legtöbb esetben *https<span/>://login.microsoftonline.com/common* |
 > | `redirectUri` | Az alkalmazás átirányítási URI-ja. Az alapértelmezett értéket vagy az egyéni átirányítási URI-t a "Nil" értékre lehet átadni. |
 
-### <a name="additional-app-requirements"></a>További alkalmazásokra vonatkozó követelmények  
+### <a name="for-ios-only-additional-app-requirements"></a>Csak iOS esetén, további alkalmazásokra vonatkozó követelmények
 
-Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a következővel:. Ez lehetővé teszi, hogy a MSAL SDK kezelje a jogkivonat-választ az Auth Broker alkalmazástól a hitelesítés végrehajtásakor.
+Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a következővel:. Ez lehetővé teszi, hogy a MSAL SDK kezelje a jogkivonat választ az Auth Broker alkalmazástól a hitelesítés során.
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -198,15 +203,33 @@ Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a követke
          return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
      }
 
-```
+ ```
 
-Végül az alkalmazásnak szerepelnie kell `LSApplicationQueriesSchemes` egy, az `CFBundleURLTypes`info. plist fájlban található bejegyzés. Ehhez a mintához tartozik. 
+> [!NOTE]
+> Ha a `UISceneDelegate` `scene:openURLContexts:` helyett az iOS 13 + verziót alkalmazza, helyezze el ezt a kódot a visszahívás helyett (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). `UIApplicationDelegate`
+> Ha mind a UISceneDelegate, mind a UIApplicationDelegate támogatja a régebbi iOS-kompatibilitást, a MSAL visszahívást mindkét helyre kell helyezni.
+
+ ```swift
+ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        
+        guard let urlContext = URLContexts.first else {
+            return
+        }
+        
+        let url = urlContext.url
+        let sourceApp = urlContext.options.sourceApplication
+        
+        MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
+    }
+ ```
+
+Végezetül az alkalmazásnak tartalmaznia kell egy `LSApplicationQueriesSchemes` bejegyzést az `CFBundleURLTypes` ***info. plist*** fájl mellett. Ehhez a mintához tartozik. 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>
    <array>
-      <string>msauth</string>
       <string>msauthv2</string>
+      <string>msauthv3</string>
    </array>
    ```
 
@@ -214,7 +237,7 @@ Végül az alkalmazásnak szerepelnie kell `LSApplicationQueriesSchemes` egy, az
 
 Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: `acquireToken` és `acquireTokenSilent`
 
-#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Jogkivonat interaktív beolvasása
+#### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: Token interaktív beszerzése
 
 Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Például: 
 
@@ -224,21 +247,23 @@ Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
 
 ```swift
-let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
-applicationContext.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
+let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: self.webViewParamaters!)
+self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Az elemek magyarázata:||
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (`api://<Application ID>/access_as_user`) |
 
-#### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent: Hozzáférési jogkivonat csendes lekérése
+#### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: Hozzáférési jogkivonat csendes beszerzése
 
 Az alkalmazásoknak nem kell minden alkalommal bejelentkezniük a felhasználóktól, amikor jogkivonatot kérnek. Ha a felhasználó már bejelentkezett, ez a módszer lehetővé teszi, hogy az alkalmazások csendesen igényeljenek jogkivonatokat. 
 
 ```swift
-let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
-applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* Add your handling logic */}
+guard let account = try self.applicationContext!.allAccounts().first else { return }
+        
+let silentParams = MSALSilentTokenParameters(scopes: kScopes, account: account)
+self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 ```
 
 > |Az elemek magyarázata: ||
@@ -250,7 +275,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 
 Próbálja ki az iOS-oktatóanyagot, amely részletes útmutatót nyújt az alkalmazások létrehozásához, beleértve a gyors útmutató részletes ismertetését is.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Ismerje meg, hogyan hozhatja létre az ebben a rövid útmutatóban használt alkalmazást
 
 > [!div class="nextstepaction"]
 > [A Graph API meghívása – iOS-oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018169"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268776"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hiba hibaelhárítása: Az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -110,7 +110,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorUnsupportedDiskSize <br>
 **Hibaüzenet**: Az Azure Backup jelenleg nem támogatja a konfigurált lemezes méretet (ka) t. <br>
 
-A biztonsági mentési művelet sikertelen lehet, ha a virtuális gépet a 30 TB-nál nagyobb méretű lemezre készíti. Emellett a 4TB-nál nagyobb méretű titkosított lemezek biztonsági mentése jelenleg nem támogatott. A lemez (ek) felosztásával győződjön meg arról, hogy a lemez mérete (i) kisebb vagy egyenlő, mint a támogatott korlát.
+A biztonsági mentési művelet sikertelen lehet, ha a virtuális gépet a 30 TB-nál nagyobb méretű lemezre készíti. Emellett a 4 TB-nál nagyobb méretű titkosított lemezek biztonsági mentése jelenleg nem támogatott. A lemez (ek) felosztásával győződjön meg arról, hogy a lemez mérete (i) kisebb vagy egyenlő, mint a támogatott korlát.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem sikerült elindítani a biztonsági mentést, mert folyamatban van egy másik biztonsági mentési művelet végrehajtása.
 
@@ -233,7 +233,11 @@ Ezeknek a lépéseknek a végrehajtásával a bővítmény újratelepíthető a 
 
 ### <a name="clean_up_restore_point_collection"></a>Visszaállítási pont gyűjtésének törlése
 
-A zárolás eltávolítását követően a visszaállítási pontokat törölni kell. A visszaállítási pontok tisztításához kövesse az alábbi módszereket:<br>
+A zárolás eltávolítását követően a visszaállítási pontokat törölni kell.
+
+Ha törli a virtuális gép erőforráscsoportot, vagy maga a virtuális gép, a felügyelt lemezek azonnali visszaállítási pillanatképei aktívak maradnak, és a megőrzési csoportnak megfelelően lejárnak. Az azonnali visszaállítási Pillanatképek törléséhez (ha nincs szüksége rájuk) a visszaállítási pont gyűjteményében tároltak, törölje a visszaállítási pontok gyűjteményét az alábbi lépések szerint.
+
+A visszaállítási pontok tisztításához kövesse az alábbi módszereket:<br>
 
 - [A visszaállítási pontok gyűjtésének törlése alkalmi biztonsági mentés futtatásával](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Visszaállítási pont gyűjtésének törlése Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>

@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202274"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268862"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés figyelése Azure Security Centerban (előzetes verzió)
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
-
-> [!NOTE]
-> A " *klasszikus* Identity &-hozzáférés megtekintése" hivatkozás kimarad a 2019. július 31-ig. Kattintson [ide](security-center-features-retirement-july2019.md#menu_classicidentity) az alternatív szolgáltatások megismeréséhez.
 
 > [!NOTE]
 > Az identitás és a hozzáférés figyelése előzetes verzióban érhető el, és csak a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
@@ -67,7 +64,7 @@ Az **identitás & hozzáférés**alatt két lap található:
 ### <a name="overview-section"></a>Áttekintés szakasz
 Az **Áttekintés**területen a javaslatok listája szerepel. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett előfizetések teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
 
-1. Válasszon egy javaslatot. Megnyílik az ajánlás ablaka, amely a következőket jeleníti meg:
+1. Válasszon egy javaslatot. Megnyílik a javaslatok ablak, amely a következőket jeleníti meg:
 
    - A javaslat leírása
    - Sérült és kifogástalan állapotú előfizetések listája
@@ -80,7 +77,7 @@ Az **Áttekintés**területen a javaslatok listája szerepel. Az első oszlop a 
 ### <a name="subscriptions-section"></a>Előfizetések szakasz
 Azelőfizetések alatt található az előfizetések listája. Az első oszlop felsorolja az előfizetéseket. A második oszlop az egyes előfizetésekhez tartozó javaslatok teljes számát jeleníti meg. A harmadik oszlop a problémák súlyosságát mutatja.
 
-![Előfizetés lapja][4]
+![Előfizetések lap][4]
 
 1. Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
 
@@ -125,13 +122,13 @@ Az alábbi táblázat hivatkozásként használható, amely segít megérteni az
 > Ha olyan feltételes hozzáférési szabályzatot hozott létre, amely MFA-t igényel, de kizárások vannak beállítva, akkor a Security Center MFA ajánlási felmérése nem megfelelőnek tekinti a szabályzatot, mivel lehetővé teszi egyes felhasználók számára, hogy MFA nélkül jelentkezzenek be az Azure-ba.
 
 ## <a name="next-steps"></a>További lépések
-Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
+Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:
 
 - [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 - [Az Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md)
 
-A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a Security Center használatával kapcsolatos gyakori kérdésekre.

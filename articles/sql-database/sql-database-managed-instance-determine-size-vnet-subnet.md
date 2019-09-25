@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567500"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273558"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány VNet-alhálózati méretének meghatározása
 
@@ -29,7 +29,7 @@ Felügyelt példány létrehozásakor az Azure számos virtuális gépet foglal 
 Kialakítás szerint a felügyelt példányoknak legalább 16 IP-címnek kell lenniük egy alhálózatban, és akár 256 IP-címet is használhatnak. Ennek eredményeképpen az alhálózati IP-címtartományok definiálásakor a/28 és/24 alhálózati maszkok is használhatók. A hálózati maszk bit/28 (14 gazdagép/hálózat) jó méret egyetlen általános célú vagy üzleti szempontból kritikus fontosságú üzembe helyezéshez. A Mask bit of/27 (hálózatonként 30 gazdagép) ideális a több felügyelt példányok ugyanazon VNet belüli üzembe helyezéséhez. A/26 (62-es gazdagépek) és/24 (254 gazdagépek) bit-beállításai lehetővé teszik a további felügyelt példányok támogatását a VNet.
 
 > [!IMPORTANT]
-> Az alhálózati méret 16 IP-címmel, amely a további felügyelt példányok vertikális felskálázásának korlátozott lehetősége. Az alhálózat kiválasztása a következő előtaggal:/27 vagy alacsonyabb.
+> A 16 IP-címmel rendelkező alhálózati méret a minimálisan korlátozott, ha a skálázási művelet, például a virtuális mag-méret változása nem támogatott. A prefix/27 vagy leghosszabb előtaggal rendelkező alhálózat kiválasztása kifejezetten ajánlott.
 
 ## <a name="determine-subnet-size"></a>Alhálózat méretének meghatározása
 

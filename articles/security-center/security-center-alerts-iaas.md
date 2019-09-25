@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219621"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273888"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Veszélyforrások észlelése virtuális gépek és kiszolgálók esetében Azure Security Center
 
@@ -28,14 +28,14 @@ Ez a témakör bemutatja a különböző típusú észlelési módszereket és r
 
 A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-alapú gépek monitorozásához és védeleméhez. Security Center az összes szolgáltatás riasztásait és szervizelési javaslatait egyszerűen használható formátumban jeleníti meg.
 
-### Windows Server Defender ATP<a nanme="windows-atp"></a>
+### Microsoft Defender ATP<a nanme="windows-atp"></a>
 
-A Security Center a felhőalapú munkaterhelés-védelmi platformokat a Windows Server Defender komplex veszélyforrások elleni védelem (ATP) integrálásával bővíti. Ez átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosít.
+A Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Ez átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosít.
 
 > [!NOTE]
-> A Windows Server Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
+> A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
-Ha a Windows Server Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Windows Server Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 ### Összeomlási memóriakép elemzése<a nanme="windows-dump"></a>
 

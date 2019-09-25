@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035322"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269215"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -87,7 +87,7 @@ Több módon is létrehozhat egy munkaterületet.
 * A pont-és kattintási felület [Azure Portal](how-to-manage-workspace.md) az egyes lépések lépésein végezhető el.
 * A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) használatával létrehozhat egy munkaterületet a Python-parancsfájlok vagy a Jupiter-jegyzetfüzetek segítségével
 * Ha automatizálni vagy testre szeretné szabni a vállalati biztonsági szabványokkal való létrehozást, használjon [Azure Resource Manager sablont](how-to-create-workspace-template.md) vagy a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) -t.
-* Ha a Visual Studio Code-ban dolgozik, használja a [vs Code bővítményt](how-to-vscode-tools.md#get-started-with-azure-machine-learning).
+* Ha a Visual Studio Code-ban dolgozik, használja a [vs Code bővítményt](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
 ## <a name="resources"></a>Társított erőforrások
 

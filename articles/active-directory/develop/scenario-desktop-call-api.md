@@ -1,6 +1,6 @@
 ---
-title: Asztali alkalmazás, hogy a hívások webes API-k (webes API hívása) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy asztali alkalmazás, amely meghívja a webes API-k (webes API hívása)
+title: Webes API-kat meghívó asztali alkalmazás (webes API-k hívása) – Microsoft Identity platform
+description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg (webes API-t hív meg)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abaf234d3b216e0f67501e5d2f2f5c3f874c5d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56d3d01e39adfeb6bf2ef5e7e7d595f49c90f5a5
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111248"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268279"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Asztali alkalmazás, amely meghívja a webes API-k – webes API-hívás
+# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás – webes API meghívása
 
-Most, hogy megkapta a jogkivonatot, meghívhatja egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
 
-## <a name="calling-a-web-api-from-net"></a>Webes API-k hívása a .NET használatával
+## <a name="calling-a-web-api-from-net"></a>Webes API meghívása a .NET-ről
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
@@ -34,9 +34,39 @@ Most, hogy megkapta a jogkivonatot, meghívhatja egy védett webes API-t.
 More includes will come later for Python and Java
 -->
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Több API-k hívásával - növekményes beleegyezése és a feltételes hozzáférés
+## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Webes API meghívása iOS és macOS rendszerű MSAL
 
-Több API-t hívja meg a ugyanahhoz a felhasználóhoz, miután az első API-hoz egy tokent kapott van szüksége, ha csak hívása `AcquireTokenSilent`, és megkapja a jogkivonat a más API-k csendes legtöbb esetben.
+A jogkivonatok beszerzésének módszerei `MSALResult` egy objektumot adnak vissza. `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A hozzáférési jogkivonatot fel kell venni a HTTP-engedélyezési fejlécbe, mielőtt a rendszer meghívja a védett webes API-hoz való hozzáférést.
+
+Objective-C:
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
+
+Swift
+
+```swift
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
+```
+
+## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Több API meghívása – növekményes hozzájárulás és feltételes hozzáférés
+
+Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor az első API-hoz kapott token után meghívhatja `AcquireTokenSilent`a többi API-tokent, és a legtöbb időt csendesen lekérdezheti.
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -46,10 +76,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Az olyan esetekben, ahol beavatkozásra szükség a következő esetekben:
+A beavatkozást igénylő esetek a következőket jelentik:
 
-- A felhasználó hagyta jóvá az első API-hoz, de most van szükség több hatókört (növekményes hozzájárulás) vonatkozó beleegyezés
-- Az első API több többtényezős hitelesítés nem szükséges, de a következő nem.
+- A felhasználó jóváhagyta az első API-t, de most hozzá kell járulnia további hatókörökhöz (növekményes hozzájárulás)
+- Az első API-nak nem volt szükség többtényezős hitelesítésre, de a következő lépés.
 
 ```CSharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -71,4 +101,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Helyezze át az éles környezetbe](scenario-desktop-production.md)
+> [Áthelyezés éles környezetbe](scenario-desktop-production.md)

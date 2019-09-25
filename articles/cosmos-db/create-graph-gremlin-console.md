@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 0a6ddfe1337575f4f61f4bba4638a16e54b0cde6
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: cb365517c581ebf83026046f385496afd3e28d7f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735270"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261586"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "68735270"
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) -konzolját használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-KONZOLját](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -60,7 +60,7 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
     felhasználónév|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
     kapcsolatkészlet|{enableSsl: true}|A kapcsolatkészletre vonatkozó beállítás az SSL-hez.
-    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
+    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
     A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
 

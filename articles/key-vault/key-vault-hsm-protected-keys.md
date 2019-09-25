@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4ebb31a839a645bcb1312405ee0222f39dbbcd1e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71000769"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261282"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>HSM-védelemmel ellátott kulcsok generálása és átvitele Azure Key Vault
 
@@ -41,7 +41,7 @@ További információ a HSM-védelemmel ellátott kulcsok interneten keresztül 
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>További információ a nCipher HSM és a Microsoft szolgáltatásairól
 
-a nCipher Security az adattitkosítási és a számítógépes biztonsági megoldások vezető globális szolgáltatója a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok számára. A vállalati és kormányzati információk védelme 40 éves nCipher a biztonsági titkosítási megoldásokat az öt legnagyobb energia-és repülőgépipari vállalat használja. A megoldásaikat 22 NATO-ország/-régió is használja, és a világszerte több mint 80%-os fizetési tranzakciót biztosít.
+a nCipher biztonság, amely egy Entrust Datacard cég, piacvezető az általános célú HSM-piacon, és a világ vezető szervezetei számára teszi lehetővé, hogy megbízhatóságot, integritást és irányítást biztosítson az üzleti szempontból kritikus fontosságú információkhoz és alkalmazásokhoz. a nCipher kriptográfiai megoldásai biztonságos feltörekvő technológiákat – Felhőbeli, IoT, blockchain, digitális kifizetéseket – biztosítanak, és segítenek az új megfelelőségi mandátumok teljesítésében, ugyanazzal a bevált technológiával, amelyet a globális szervezetek a mai naptól függően a fenyegetések elleni védelemre használnak bizalmas adatok, hálózati kommunikáció és vállalati infrastruktúra. a nCipher megbízhatónak tartja az üzleti szempontból kritikus fontosságú alkalmazásokat, így biztosítva az adatok integritását, és teljes körű vezérléssel – napjainkban, holnapig – bármikor üzembe helyezheti az ügyfeleket.
 
 A Microsoft a nCipher biztonsággal együttműködve fejleszti a HSM. Ezek a fejlesztések lehetővé teszik az üzemeltetett szolgáltatások tipikus előnyeinek beszerzését anélkül, hogy a kulcsok feletti irányítást kellene lemondani. Pontosabban ezek a fejlesztések lehetővé teszik a Microsoft számára a HSM kezelését, hogy ne kelljen. Felhőalapú szolgáltatásként a Azure Key Vault rövid időn belül átméretezi a szervezet használati feladatainak teljesítését. Ugyanakkor a kulcsot a Microsoft HSM védi: Megtarthatja a kulcs életciklusának szabályozását, mivel létrehozza a kulcsot, és továbbítja azt a Microsoft HSM.
 
@@ -287,6 +287,10 @@ Ez a program létrehoz egy **biztonsági globális** fájlt a%NFAST_KMDATA%\loca
 
 > [!NOTE]
 > Ha a HSM nem támogatja az újabb Cypher Suite-DLf3072s256mRijndael, cserélje le a--Cipher-Suite = DLf3072s256mRijndael with--Cipher-Suite = DLf1024s160mRijndael
+> 
+> A New-World. exe fájllal létrehozott biztonsági világ, amely a nCipher szoftver 12,50-es verziójával rendelkezik, nem kompatibilis ezzel a BYOK eljárással. Két lehetőség érhető el:
+> 1) Az új biztonsági világ létrehozásához a nCipher a 12.40.2 verzióra.
+> 2) Forduljon a nCipher támogatási szolgálatához, és kérje meg őket, hogy adjon meg egy gyorsjavítást 12,50 szoftververzió számára, amely lehetővé teszi a New-World. exe 12.40.2-verziójának használatát, amely kompatibilis ezzel a BYOK eljárással.
 
 Ezután tegye a következőket:
 

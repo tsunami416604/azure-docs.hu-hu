@@ -1,27 +1,27 @@
 ---
 title: Apache Spark számítási feladatok teljesítménye az Azure HDInsight IO cache-sel (előzetes verzió)
 description: Ismerje meg az Azure HDInsight IO cache-t, és hogyan használhatja a Apache Spark teljesítményének javítására.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091071"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266182"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával 
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával
 
 Az IO cache egy adatgyorsítótárazási szolgáltatás az Azure HDInsight, amely javítja Apache Spark feladatok teljesítményét. Az IO cache az [Apache TEZ](https://tez.apache.org/) és a [Apache Hive](https://hive.apache.org/) számítási feladatokhoz is használható, amelyek [Apache Spark](https://spark.apache.org/) fürtökön futtathatók. Az i/o-gyorsítótár egy RubiX nevű nyílt forráskódú gyorsítótárazási összetevőt használ. A RubiX egy helyi lemezes gyorsítótár, amely olyan big data elemzési motorokkal használható, amelyek a felhőalapú tárolási rendszerekből származó adatokhoz férnek hozzá. A RubiX egyediek a gyorsítótárazási rendszerek között, mivel SSD-meghajtókat használnak, és nem foglalják le az operációs memóriát gyorsítótárazási célokra. Az IO cache szolgáltatás elindítja és kezeli a RubiX metaadat-kiszolgálókat a fürt minden munkavégző csomópontján. Emellett a fürt összes szolgáltatását a RubiX cache transzparens használatára konfigurálja.
 
 A legtöbb SSD több mint 1 GByte-t biztosít a sávszélesség másodpercenként. Ez a sávszélesség, amelyet az operációs rendszer memóriában tárolt fájljának gyorsítótára egészít ki, elegendő sávszélességet biztosít a big data számítási feldolgozó motorok, például a Apache Spark betöltéséhez. Az operációs memória elérhető marad a Apache Spark számára, hogy nagy mennyiségű memóriát lehessen feldolgozni, például a Shuffle-t. Az operációs memória kizárólagos használata lehetővé teszi, hogy a Apache Spark optimális erőforrás-használatot érjenek el.  
 
->[!Note]  
->Az IO cache jelenleg a RubiX-t használja gyorsítótárazási összetevőként, de ez a szolgáltatás jövőbeli verzióiban változhat. Használjon IO cache-interfészeket, és ne vegyen fel függőségeket közvetlenül a RubiX implementációján.
+> [!Note]  
+> Az IO cache jelenleg a RubiX-t használja gyorsítótárazási összetevőként, de ez a szolgáltatás jövőbeli verzióiban változhat. Használjon IO cache-interfészeket, és ne vegyen fel függőségeket közvetlenül a RubiX implementációján.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Az Azure HDInsight IO cache előnyei
 
@@ -70,7 +70,7 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Válassza az újraindítási**újraindítás minden érintett**elemet. > 
 
-    ![Az összes érintett újraindítása](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
+    ![Az Apache Ambari újraindítása minden érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
 
 1. Válassza **az összes újraindításának megerősítése**lehetőséget.
 

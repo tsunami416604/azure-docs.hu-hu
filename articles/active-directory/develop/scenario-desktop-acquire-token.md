@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5409b5619f8be16ef92f517b4b598e2a8e5e2b7
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 3e8d46e873d48de5f7e507566b5af6095b9c4e1c
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872820"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268386"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás – jogkivonat beszerzése
 
@@ -32,6 +32,8 @@ A webes API-t a saját `scopes`maga határozza meg. Függetlenül attól, hogy m
 
 - Szisztematikus kísérlet a jogkivonat-gyorsítótárból való beolvasására a következő hívásával:`AcquireTokenSilent`
 - Ha a hívás sikertelen, használja a `AcquireToken` használni kívánt folyamatot (itt a `AcquireTokenXX`jelképezi)
+
+### <a name="in-msalnet"></a>A MSAL.NET
 
 ```CSharp
 AuthenticationResult result;
@@ -50,12 +52,52 @@ catch(MsalUiRequiredException ex)
                     .ExecuteAsync();
 }
 ```
+### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
+
+Objective-C:
+
+```objc
+MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
+    
+MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
+[application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
+    
+    // Check the error
+    if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
+    {
+        // Interactive auth will be required, call acquireTokenWithParameters:error:
+    }
+}];
+```
+Swift
+
+```swift
+guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
+let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
+application.acquireTokenSilent(with: silentParameters) { (result, error) in
+            
+    guard let authResult = result, error == nil else {
+                
+    let nsError = error! as NSError
+                
+        if (nsError.domain == MSALErrorDomain &&
+            nsError.code == MSALError.interactionRequired.rawValue) {
+                    
+            // Interactive auth will be required, call acquireToken()
+            return
+        }
+        return
+    }
+}
+```
 
 Itt láthatja a jogkivonatok asztali alkalmazásokban való beszerzésének különböző módszereit.
 
 ## <a name="acquiring-a-token-interactively"></a>Token interaktív beszerzése
 
 Az alábbi példa azt mutatja be, hogy a jogkivonat interaktív beolvasása a felhasználó profiljának Microsoft Graph használatával történő olvasásához szükséges minimális kód.
+
+### <a name="in-msalnet"></a>A MSAL.NET
 
 ```CSharp
 string[] scopes = new string[] {"user.read"};
@@ -74,13 +116,47 @@ catch(MsalUiRequiredException)
 }
 ```
 
+### <a name="in-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL
+
+Objective-C:
+
+```objc
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error) 
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+            
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+Swift
+
+```swift
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+                
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+                
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+
 ### <a name="mandatory-parameters"></a>Kötelező paraméterek
 
 `AcquireTokenInteractive`csak egy kötelező paramétert ``scopes``tartalmaz, amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, a szükséges hatókörök az "engedélyek" szakaszban található minden Microsoft Graph API API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. Lásd még [Microsoft Graph engedélyek referenciáját](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 Androidon meg kell adnia a szülő tevékenységet is (a használatával `.WithParentActivityOrWindow`, lásd alább), hogy a token a beavatkozás után visszakerüljön a fölérendelt tevékenységbe. Ha nem ad meg, kivételt fog a rendszer a hívásakor `.ExecuteAsync()`.
 
-### <a name="specific-optional-parameters"></a>Megadott választható paraméterek
+### <a name="specific-optional-parameters-in-msalnet"></a>Speciális választható paraméterek a MSAL.NET
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 

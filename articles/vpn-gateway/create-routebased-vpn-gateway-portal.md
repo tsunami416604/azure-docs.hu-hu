@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2a04c0fa2d92514103377c2aef420290d1bdd057
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781174"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266515"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Route-alapú VPN-átjáró létrehozása a Azure Portal használatával
 
@@ -24,16 +24,18 @@ A cikkben szereplő lépések egy VNet, egy alhálózatot, egy átjáró-alhál�
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-## <a name="gwsubnet"></a>Átjáró-alhálózat hozzáadása
-
-[!INCLUDE [gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
-
 ## <a name="gwvalues"></a>Az átjáró konfigurálása és létrehozása
+
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
 >Az alapszintű átjáró SKU nem támogatja a IKEv2 vagy a RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac-ügyfelek csatlakoznak a virtuális hálózathoz, ne használja az alapszintű SKU-t.
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="viewgw"></a>A VPN-átjáró megtekintése
 

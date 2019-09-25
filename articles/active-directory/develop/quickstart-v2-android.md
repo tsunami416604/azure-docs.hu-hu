@@ -17,16 +17,14 @@ ms.date: 07/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25d4dba67bcf38049939ac40437c3668ee988235
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853045"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268495"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud egy Android-alkalmazás bejelentkezni személyes, munkahelyi vagy iskolai fiókokba, lekérni egy hozzáférési jogkivonatot, és meghívni a Microsoft Graph API-t.
 
@@ -44,7 +42,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * Kézi [2. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. módszer: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
 > #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálása
 > 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) ablaktáblát.
@@ -68,7 +66,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > 1. Válassza `Configure` ki és mentse a ***MSAL-konfiguráció*** JSON-t későbbi verzióra. 
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>1\. lépés: Az alkalmazás konfigurálása
+> #### <a name="step-1-configure-your-application"></a>1\. lépés: Alkalmazás konfigurálása
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI-t, amely kompatibilis a hitelesítési közvetítővel. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()

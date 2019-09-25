@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321658"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272340"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenet megjelenítése Azure Batch 
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-A kimeneti fájlok a tárolóba való írásához a Batchnek a közös hozzáférésű jogosultságkód- (SAS-) jogkivonatot kell használnia. A jogkivonatot az [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) paranccsal hozhatja létre. Ez a példa egy olyan jogkivonatot hoz létre, amellyel a fiókban lévő bármely blobtároló írható, és amely 2018. november 15-ig érvényes:
+A kimeneti fájlok a tárolóba való írásához a Batchnek a közös hozzáférésű jogosultságkód- (SAS-) jogkivonatot kell használnia. A jogkivonatot az [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) paranccsal hozhatja létre. Ez a példa létrehoz egy jogkivonatot, amely a fiókban található bármelyik blob-tárolóba ír, a jogkivonat pedig 2020 november 15-én lejár:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 Jegyezze fel a parancs által visszaadott, a következőhöz hasonló jogkivonatot. A jogkivonatot egy későbbi lépésben fogja használni.
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>egyetlen képkockából álló jelenet renderelése;
@@ -217,7 +217,7 @@ Módosítsa a JSON-fájl `blobSource` és `containerURL` elemeit, hogy tartalmaz
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000798"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268847"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault fejlesztői útmutató
 
@@ -29,26 +29,6 @@ További általános információk a Azure Key Vaultről: [Mi az Key Vault](key-
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
 Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, hogy mit gondol azurekeyvault@microsoft.coma szolgáltatáson keresztül, a visszajelzési e-mail-címünk alapján.
-
-### <a name="storage-account-keys---july-10-2017"></a>Storage-fiókok kulcsai – július 10., 2017
-
->[!NOTE]
->Ennél a frissítésnél a Azure Key Vault csak a **Storage Account Keys** szolgáltatás előzetes verzióban érhető el.
-
-Ez az előzetes verzió tartalmazza az új Storage-fiók kulcsainak funkcióját, amely ezen interfészeken keresztül érhető el; [.Net/C#](/dotnet/api/microsoft.azure.keyvault/), [Rest](/rest/api/keyvault/) és [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-További információ az új Storage-fiók kulcsainak szolgáltatásról: [Azure Key Vault Storage-fiók kulcsainak áttekintése](key-vault-ovw-storage-keys.md).
-
-## <a name="videos"></a>Videók
-
-Ebből a videóból megtudhatja, hogyan hozhat létre saját kulcstartót, és hogyan használhatja azt a "Hello Key Vault" minta alkalmazásból.
-
-- [Key Vault fejlesztő – gyors üzembe helyezési útmutató](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-A fenti videóban említett erőforrások:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Mintakód Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Kulcstartók létrehozása és kezelése
 
@@ -148,7 +128,7 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 - [Key Vault a Storage-fiók kulcsainak áttekintése](key-vault-ovw-storage-keys.md) az Azure Storage-fiókokhoz tartozó Key Vault-integrációs fiókok kulcsait ismerteti.
 - [Key Vault biztonsági világok](key-vault-ovw-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 
-## <a name="social"></a>Közösség
+## <a name="social"></a>Közösségi
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault fórum](https://aka.ms/kvforum)

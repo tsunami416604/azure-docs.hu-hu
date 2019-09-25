@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7394a9e1b1fa90741bc26fc0e9b6b7e6284d75e0
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104685"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266369"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -30,7 +30,7 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-k
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
 |A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a magánhálózati végpontok automatikusan is jóváhagyva lesznek. Ha RBAC nélküli privát kapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
 |Kérelem üzenete     |  Megadhat egy üzenetet, hogy a kért kapcsolatok manuálisan legyenek jóváhagyva. Ez az üzenet egy adott kérelem azonosítására szolgál.        |
-|Kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**Jóváhagyva**: A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.</br><br>-**Függőben**: A kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**Elutasítva**: A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.</br><br>-**Leválasztva**: A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
+|Kapcsolati állapot   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**Jóváhagyva**: A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.</br><br>-**Függőben**: A kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**Elutasítva**: A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.</br><br>-**Leválasztva**: A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
 
 Íme néhány fontos adat a privát végpontokról: 
 - A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
@@ -43,7 +43,7 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-k
  
 - Több privát végpont is létrehozható ugyanazzal a privát kapcsolati erőforrással. Egy közös DNS-kiszolgáló konfigurációját használó egyetlen hálózat esetében az ajánlott eljárás egyetlen magánhálózati végpont használata egy adott privát kapcsolati erőforráshoz a duplikált bejegyzések vagy a DNS-feloldási ütközések elkerülése érdekében. 
  
-- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits.md#networking-limits).
+- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  

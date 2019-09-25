@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 965714fc4b02430653d3670ddec69fcd77cc7920
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 2b10866adb1615b31446388fa0e9d0dabffd13da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075638"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268697"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CentOS Linux rendszerű virtuális gép csatlakoztatása Azure AD Domain Services felügyelt tartományhoz
 
@@ -69,7 +69,7 @@ A *gazdagépek* fájlban frissítse a *localhost* -címeket. A következő péld
 Frissítse ezeket a neveket a saját értékeivel:
 
 ```console
-127.0.0.1 centos centos.contoso.com
+127.0.0.1 centos.contoso.com centos
 ```
 
 Ha elkészült, mentse és zárja be a *hosts* fájlt `:wq` a szerkesztő parancs használatával.

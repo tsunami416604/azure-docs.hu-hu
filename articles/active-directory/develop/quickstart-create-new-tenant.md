@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853141"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268610"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>Gyors útmutató: Fejlesztési környezet beállítása
+# <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: Bérlő beállítása
 
 A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104257"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266908"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -43,15 +43,21 @@ A regionális katasztrófák elleni védelem érdekében [Azure Backup](../artic
 
 Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles/role-based-access-control/overview.md) használatával konkrét engedélyeket rendelhet egy felügyelt lemezhez egy vagy több felhasználó számára. A felügyelt lemezek számos műveletet tesznek elérhetővé, beleértve az olvasást, az írást (létrehozás/frissítés), a törlést és a lemez [megosztott hozzáférési aláírása (SAS) URI azonosítójának](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) beolvasását. Csak azokhoz a műveletekhez adhat hozzáférést, amelyeket egy személynek el kell végeznie a feladatának elvégzéséhez. Ha például nem szeretné, hogy egy személy átmásolja a felügyelt lemezt egy Storage-fiókba, dönthet úgy, hogy nem engedélyez hozzáférést az adott felügyelt lemez exportálási műveletéhez. Hasonlóképpen, ha nem szeretné, hogy egy személy SAS URI-t használjon egy felügyelt lemez másolásához, akkor dönthet úgy, hogy nem adja meg ezt az engedélyt a felügyelt lemez számára.
 
+### <a name="upload-your-vhd"></a>Töltse fel a VHD-t
+
+ A közvetlen feltöltéssel könnyedén átviheti a virtuális merevlemezt egy Azure-beli felügyelt lemezre. Korábban egy olyan folyamatot kellett követnie, amely a Storage-fiókban tárolt adatait tartalmazza. Most kevesebb lépést kell megtennie. Könnyebb feltölteni a helyszíni virtuális gépeket az Azure-ba, feltöltve a nagyméretű felügyelt lemezekre, és a biztonsági mentési és visszaállítási folyamat egyszerűbbé válik. Emellett csökkenti a költségeket azzal, hogy lehetővé teszi az adatok feltöltését a felügyelt lemezekre közvetlenül anélkül, hogy a virtuális gépekhez csatlakoztatná őket. A közvetlen feltöltéssel akár 32 TiB méretig is feltöltheti a virtuális merevlemezeket.
+
+ A VHD-k Azure-ba történő átviteléről a [parancssori](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) felület vagy a [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) cikkeiben talál további információt.
+
 ## <a name="encryption"></a>Encryption
 
-A felügyelt lemezek két különböző típusú titkosítást kínálnak. Az első Storage Service Encryption (SSE), amelyet a Storage szolgáltatás hajt végre. A második Azure Disk Encryption, amelyet engedélyezheti a virtuális gépek operációsrendszer-és adatlemezei számára.
+A felügyelt lemezek két különböző típusú titkosítást kínálnak. Az első Storage Service Encryption (SSE), amelyet a Storage szolgáltatás hajt végre. A második Azure Disk Encryption (ADE), amelyet engedélyezheti a virtuális gépek operációsrendszer-és adatlemezei számára.
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
 Az [Azure Storage Service encryption](../articles/storage/common/storage-service-encryption.md) titkosítást biztosít, és gondoskodik az adatok védelméről a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. Az SSE alapértelmezés szerint engedélyezve van minden felügyelt lemez, pillanatkép és rendszerkép számára az összes olyan régióban, ahol a felügyelt lemezek elérhetők. További részletekért látogasson el a [Managed Disks GYIK oldalára](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption IaaS virtuális gépekhez](../articles/security/azure-security-disk-encryption-overview.md).
 

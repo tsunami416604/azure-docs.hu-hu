@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: cb46acf3f54b5955ba8542adf73b7ca896f20c28
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910440"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266411"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -45,7 +45,7 @@ A konfigurációs kiszolgáló egy helyszíni számítógép, amely Site Recover
 
 **Összetevő** | **Követelmények**
 --- |---
-Processzormagok | 8
+CPU-magok | 8
 RAM | 16 GB
 Lemezek száma | 3 lemez<br/><br/> A lemezek közé tartozik az operációsrendszer-lemez, a Process Server cache lemez és a visszatartási meghajtó a feladat-visszavételhez.
 Lemez szabad területe | 600 GB lemezterület a folyamat kiszolgálói gyorsítótárához.
@@ -193,6 +193,7 @@ Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | Nem
 Vendég/kiszolgáló – lemez kizárása | Igen
 Vendég/kiszolgáló többutas (MPIO) | Nem
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban csak négyet támogatott.
+ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
 Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A mobilitási szolgáltatás 9,13-es vagy újabb verziójának futtatása esetén támogatott.<br/> – A Windows Server 2012 vagy újabb rendszert futtató, VMware virtuális gépek vagy fizikai kiszolgálók áttelepítésekor támogatott az Azure-ban.<br/> – A virtuális gépeket csak áttelepítésre lehet replikálni. A helyszíni feladat-visszavétel nem támogatott.<br/> -Csak NTFS támogatott <br/> – A Secure UEFI rendszerindítási típus nem támogatott. <br/> – A lemezes szektor méretének 512 bájtnak kell lennie a fizikai szektorban.
 
 ## <a name="replication-channels"></a>Replikációs csatornák
