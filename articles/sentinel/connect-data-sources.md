@@ -1,12 +1,11 @@
 ---
-title: Adatforrások összekötése az Azure Sentinel előzetes verziójával? | Microsoft Docs
+title: Adatforrások összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók az adatforrások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: rkarlin
+manager: angrobe
 editor: ''
-ms.assetid: a3b63cfa-b5fe-4aff-b105-b22b424c418a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,26 +13,24 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/04/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4928657aa9052b50faf1f326cc09797c5aaf69bb
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d8d3e52882a5cde9b00bf07ded933ae4d45b454b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780517"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240168"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 
 
 Az Azure Sentinelhez először csatlakoznia kell az adatforrásokhoz. Az Azure Sentinel számos, a Microsoft-megoldások számára elérhető összekötővel rendelkezik, és valós idejű integrációt biztosít, beleértve a Microsoft veszélyforrások elleni védelmi megoldásait és Microsoft 365 forrásait, beleértve az Office 365, az Azure AD, az Azure ATP és a Microsoft Cloud App Security és így tovább. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
 
-1. A menüben válassza az adatösszekötők lehetőséget. Ezen a lapon megtekintheti az Azure Sentinel által biztosított összekötők teljes listáját, valamint azok állapotát. Válassza ki a csatlakoztatni kívánt összekötőt, és válassza az **összekötő lap megnyitása**lehetőséget. 
+1. A menüben válassza az **adatösszekötők**lehetőséget. Ezen a lapon megtekintheti az Azure Sentinel által biztosított összekötők teljes listáját, valamint azok állapotát. Válassza ki a csatlakoztatni kívánt összekötőt, és válassza az **összekötő lap megnyitása**lehetőséget. 
 
    ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
 
@@ -65,7 +62,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 - **Külső megoldások API-n keresztül**: Egyes adatforrások a csatlakoztatott adatforrás által biztosított API-kkal vannak összekapcsolva. A legtöbb biztonsági technológia jellemzően olyan API-kat biztosít, amelyeken keresztül az eseménynaplók kérhetők le. Az API-k az Azure Sentinelhez csatlakoznak, és konkrét adattípusokat gyűjtenek, és elküldhetik azokat az Azure Log Analyticsba. Az API-n keresztül csatlakoztatott berendezések a következők:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Külső megoldások ügynökön keresztül**: Az Azure Sentinel minden más olyan adatforráshoz csatlakoztatható, amely valós idejű naplózást végez a syslog protokoll használatával egy ügynökön keresztül. <br>A legtöbb készülék a syslog protokollt használja az olyan események küldésére, amelyek magukban foglalják a naplót és a naplóval kapcsolatos információkat. A naplók formátuma változó, de a legtöbb készülék támogatja a Common Event Format (CEF) szabványt. <br>A Microsoft monitoring Agenten alapuló Azure Sentinel-ügynök átalakítja a CEF formázott naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynököt közvetlenül a készülékre vagy egy dedikált Linux-kiszolgálóra telepíti. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
+- **Külső megoldások ügynökön keresztül**: Az Azure Sentinel minden más olyan adatforráshoz csatlakoztatható, amely valós idejű naplózást végez a syslog protokoll használatával egy ügynökön keresztül. <br>A legtöbb készülék a syslog protokollt használja az olyan események küldésére, amelyek magukban foglalják a naplót és a naplóval kapcsolatos információkat. A naplók formátuma változó, de a legtöbb készülék támogatja a Common Event Format (CEF) szabványt. <br>Az Log Analytics ügynökön alapuló Azure Sentinel-ügynök átalakítja a CEF formázott naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynököt közvetlenül a készülékre vagy egy dedikált Linux-kiszolgálóra telepíti. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
     - Tűzfalak, proxyk és végpontok:
         - [F5 BILLENTYŰT](connect-f5.md)
         - [Ellenőrzési pont](connect-checkpoint.md)
@@ -90,6 +87,42 @@ Ahhoz, hogy a külső berendezést az Azure Sentinelhez lehessen kapcsolni, az �
 Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azure-beli virtuális gépre, egy másik felhőben lévő virtuális gépre vagy egy helyszíni gépre.
 
 ![CEF a helyszínen](./media/connect-cef/cef-syslog-onprem.png)
+
+## <a name="map-data-types-with-azure-sentinel-connection-options"></a>Adattípusok leképezése az Azure Sentinel-kapcsolatok beállításaival
+
+
+| **Adattípus** | **Kapcsolódás** | **Adatösszekötő?** | **Megjegyzések** |
+|------|---------|-------------|------|
+| AWSCloudTrail | [Az AWS összekötése](connect-aws.md) | V | |
+| AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/activity-logs-overview.md)| V | |
+| Naplók | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
+| SigninLogs | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
+| AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
+| InformationProtectionLogs_CL  | [Jelentések Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection összekötése](connect-azure-information-protection.md)  | V | Ez általában az adattípuson kívül a **InformationProtectionEvents** függvényt használja. További információ: [a jelentések módosítása és egyéni lekérdezések létrehozása](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
+| AzureNetworkAnalytics_CL  | [Traffic analitikai séma](../network-watcher/traffic-analytics.md) [Traffic Analytics](../network-watcher/traffic-analytics.md)  | | |
+| CommonSecurityLog  | [CEF összekötése](connect-common-event-format.md)  | V | |
+| OfficeActivity | [Az Office 365 összekötése](connect-office-365.md) | V | |
+| SecurityEvents | [Windows biztonsági események összekötése](connect-windows-security-events.md)  | V | A nem biztonságos protokollok-munkafüzetek esetében lásd: nem [biztonságos protokollok beállítása](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| Rendszernapló | [A syslog összekötése](connect-syslog.md) | V | |
+| Microsoft webalkalmazási tűzfal (WAF) – (AzureDiagnostics) |[A Microsoft webalkalmazási tűzfal összekapcsolása](connect-microsoft-waf.md) | V | |
+| SymantecICDx_CL | [A Symantec összekötése](connect-symantec.md) | V | |
+| ThreatIntelligenceIndicator  | [A fenyegetés intelligenciának összekapcsolása](connect-threat-intelligence.md)  | V | |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor szolgáltatás térképe](../azure-monitor/insights/service-map.md)<br>[Azure Monitor a virtuális gépek bevezetését](../azure-monitor/insights/vminsights-onboard.md) <br> [Azure Monitor VM-alapú adatfelismerés engedélyezése](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Egyetlen virtuális gép használata a fedélzeten](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [A szabályzaton keresztüli beszállás használata](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| X | VM-alapú adatáttekintési munkafüzet  |
+| DnsEvents | [DNS összekötése](connect-dns.md) | V | |
+| W3CIISLog | [IIS-naplók összekötése](../azure-monitor/platform/data-sources-iis-logs.md)  | X | |
+| WireData | [Vezetékes adatkapcsolatok](../azure-monitor/insights/wire-data.md) | X | |
+| WindowsFirewall | [A Windows tűzfal összekapcsolása](connect-windows-firewall.md) | V | |
+| AADIP SecurityAlert  | [Az Azure AD Identity Protection csatlakoztatása](connect-azure-ad-identity-protection.md)  | V | |
+| AATP SecurityAlert  | [Az Azure ATP összekötése](connect-azure-atp.md) | V | |
+| ASC SecurityAlert  | [Azure Security Center összekötése](connect-azure-security-center.md)  | V | |
+| MCAS SecurityAlert  | [Microsoft Cloud App Security összekötése](connect-cloud-app-security.md)  | V | |
+| SecurityAlert | | | |
+| Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
+| ConfigurationData  | [VM-leltár automatizálása](../automation/automation-vm-inventory.md)| X | |
+| ConfigurationChange  | [VIRTUÁLIS gépek követésének automatizálása](../automation/change-tracking.md) | X | |
+| F5 BIG-IP | [Az F5 BIG-IP összekötése](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
+| McasShadowItReporting  |  | X | |
+| Barracuda_CL | [Barracuda-kapcsolat](connect-barracuda.md) | V | |
 
 
 ## <a name="next-steps"></a>További lépések

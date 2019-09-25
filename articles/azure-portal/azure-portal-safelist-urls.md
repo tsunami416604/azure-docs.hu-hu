@@ -9,12 +9,12 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 78c752423d20d183c561d5bcf0bb95246b84ab49
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076678"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218038"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
 
@@ -80,8 +80,8 @@ A Azure Portal safelist URL-végpontok kifejezetten az Azure-felhőre vonatkozna
 IP-címeket kell safelist? Töltse le Microsoft Azure Datacenter IP-címtartományok listáját a felhőhöz:
 
 * [Világszerte](https://www.microsoft.com/download/details.aspx?id=56519)
-* [EGYESÜLT ÁLLAMOK Kormány](http://www.microsoft.com/download/details.aspx?id=57063)
-* [Németország](http://www.microsoft.com/download/details.aspx?id=57064)
-* [Kína](http://www.microsoft.com/download/details.aspx?id=57062)
+* [EGYESÜLT ÁLLAMOK Kormány](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Németország](https://www.microsoft.com/download/details.aspx?id=57064)
+* [Kína](https://www.microsoft.com/download/details.aspx?id=57062)
 
 Más Microsoft-szolgáltatások további URL-címeket és IP-címeket használnak a kapcsolódáshoz. A Microsoft 365-szolgáltatások hálózati kapcsolatának optimalizálásához tekintse meg [a hálózat beállítása az Office 365](/office365/enterprise/set-up-network-for-office-365)-hoz című témakört.

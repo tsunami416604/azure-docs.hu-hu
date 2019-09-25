@@ -1,32 +1,29 @@
 ---
-title: Az Office 365-beli Azure Sentinel előzetes verziójának összekötése | Microsoft Docs
+title: Office 365-adatkapcsolatok összekapcsolhatók az Azure Sentinel-vel | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók az Office 365-es adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019000"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240665"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Adatok összekötése az Office 365-naplókból
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) -naplókat az Azure sentinelbe. A naplókat több bérlőről is továbbíthatja egyetlen munkaterületre az Azure Sentinelben. Az Office 365 Activity log-összekötő betekintést nyújt a folyamatban lévő felhasználói tevékenységekre. Az Office 365 különböző felhasználói, rendszergazdai, rendszer-és házirend-műveleteivel és eseményeivel kapcsolatos információkat talál. Az Office 365-naplók Azure Sentinelbe való csatlakoztatásával ezek az adatai megtekinthetik az irányítópultokat, létrehozhatnak egyéni riasztásokat, és javíthatják a vizsgálat folyamatát.
 
@@ -36,8 +33,8 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A bérlő globális rendszergazdájának vagy biztonsági rendszergazdájának kell lennie
-- A számítógépen, amelyről bejelentkezett az Azure Sentinelbe a kapcsolat létrehozásához, ellenőrizze, hogy a 4433-es port nyitva van-e a webes forgalom számára.
-- Ha a bérlő nem rendelkezik Office 365 E3 vagy Office 365 E5 licenccel, engedélyeznie kell az egyesített naplózást a sátoron a következő folyamatok egyikének használatával:
+- A számítógépen, amelyről bejelentkezett az Azure Sentinelbe a kapcsolat létrehozásához, ellenőrizze, hogy a 4433-es port nyitva van-e a webes forgalom számára. A csatlakozás sikeres elvégzése után a portot újra be lehet zárni.
+- Ha a bérlő nem rendelkezik Office 365 E3 vagy Office 365 E5 licenccel, engedélyeznie kell az egyesített naplózást a bérlőn a következő folyamatok egyikének használatával:
     - [Használja a set-AdminAuditLogConfig parancsmagot](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) , és engedélyezze a "UnifiedAuditLogIngestionEnabled" paramétert.
     - [Vagy használja a biztonsági és megfelelőségi központ felhasználói felületét](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
@@ -58,5 +55,5 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Office 365 az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

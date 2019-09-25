@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035301"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218240"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 
@@ -147,7 +147,8 @@ A `target_path` paraméter annak a helyi könyvtárnak a helye, ahová le szeret
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Az adatai elérése a betanítás során
 
-Az adatok betanítás közbeni eléréséhez letöltheti vagy csatlakoztathatja az adatait az Azure Storage-szolgáltatásokból a számítási célhoz az adattárakon keresztül.
+> [!IMPORTANT]
+> A [Azure Machine learning adatkészletek (előzetes verzió)](how-to-create-register-datasets.md) használata az új ajánlott módszer az adathoz való hozzáféréshez a képzésben. Az adatkészletek olyan függvényeket biztosítanak, amelyek a táblázatos adatokat a pandák vagy a Spark DataFrame töltik be, valamint lehetővé teszik bármilyen formátumú fájlok letöltését vagy csatlakoztatását az Azure Blobból, az Azure file-ból, a Azure Data Lake 1., Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL További információ az [adatkészletek betanításáról](how-to-train-with-datasets.md).
 
 A következő táblázat felsorolja azokat a módszereket, amelyekkel a számítási cél az adattárolók futtatás közbeni használatának módját ismerteti. 
 

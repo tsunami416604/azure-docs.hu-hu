@@ -1,5 +1,5 @@
 ---
-title: A vadászati képességek az Azure Sentinel Preview-ban | Microsoft Docs
+title: A vadászat lehetőségei az Azure Sentinelben | Microsoft Docs
 description: Ez a cikk az Azure Sentinel-vadászati képességeinek használatát ismerteti.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780464"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240613"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>A fenyegetések vadászata az Azure Sentinel előzetes verziójával
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Fenyegetések vadászata az Azure Sentinelben
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Ha Ön olyan nyomozó, aki proaktívan szeretné megkeresni a biztonsági fenyegetéseket, az Azure Sentinel hatékony vadászati és lekérdezési eszközöket kínál a szervezet adatforrásaiban felhasználható biztonsági fenyegetések felderítéséhez. A rendszerek és a biztonsági berendezések azonban olyan adathegyeket hoznak, amelyek nehezen elemezhetők és szűrhetők az értelmes események alapján. Ahhoz, hogy a biztonsági elemzők proaktív módon megnézzék a biztonsági alkalmazások által nem észlelt új rendellenességeket, az Azure Sentinel beépített vadászati lekérdezései segítséget nyújtanak a hálózatban már meglévő adataival kapcsolatos problémák megtalálásában. 
 
@@ -41,8 +39,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
 - Hatékony lekérdezési nyelv IntelliSense-vel: Egy olyan lekérdezési nyelvre épül, amely a következő szintre való vadászathoz szükséges rugalmasságot biztosítja.
 
-- Saját könyvjelzők létrehozása: A vadászati folyamat során előfordulhat, hogy a találatok, az irányítópultok vagy a szokatlan vagy gyanús tevékenységek között találkozhatnak. Ha meg szeretné jelölni ezeket az elemeket, hogy később vissza lehessen őket használni, használja a könyvjelző funkciót. A könyvjelzők lehetővé teszik, hogy később mentse az elemeket, hogy egy incidenst hozzon létre a vizsgálathoz. A könyvjelzők használatával kapcsolatos további információkért lásd: [könyvjelzők használata a vadászatban].
-
+- Saját könyvjelzők létrehozása: A vadászati folyamat során előfordulhat, hogy a találatok, az irányítópultok vagy a szokatlan vagy gyanús tevékenységek között találkozhatnak. Ha meg szeretné jelölni ezeket az elemeket, hogy később vissza lehessen őket használni, használja a könyvjelző funkciót. A könyvjelzők lehetővé teszik, hogy később mentse az elemeket, hogy egy incidenst hozzon létre a vizsgálathoz. A könyvjelzők használatával kapcsolatos további információkért lásd: a [könyvjelzők használata a vadászatban](hunting.md).
 - Jegyzetfüzetek használata a vizsgálat automatizálásához: A jegyzetfüzetek olyan lépésről lépésre haladó forgatókönyvek, amelyeket a vizsgálat és a vadászat lépésein hozhat létre.  A jegyzetfüzetek egy újrafelhasználható forgatókönyvben lévő összes vadászati lépést bemutatnak, amelyek megoszthatók másokkal a szervezeten belül. 
 - A tárolt adatértékek lekérdezése: Az adattábla a lekérdezéshez érhető el. Lekérdezheti például a folyamat létrehozását, a DNS-eseményeket és számos más eseménytípus lekérdezését.
 

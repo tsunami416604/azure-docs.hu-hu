@@ -1,34 +1,31 @@
 ---
-title: A ellenőrzési ponthoz tartozó adatkapcsolatok és az Azure Sentinel előzetes verziója Microsoft Docs
+title: Ellenőrzési ponthoz tartozó adatkapcsolatok összekötése az Azure Sentinel szolgáltatással Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók a ellenőrzési pontok az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ea9cb7997f86c10bb09c01dfc345aaeeef46708a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1bfa59e92ce2cde45b448174260396f4e93a6282
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679341"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240139"
 ---
 # <a name="connect-your-check-point-appliance"></a>A ellenőrzési pont berendezésének összekötése
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel bármely ellenőrzési pont készülékhez csatlakoztatható a naplófájlok syslog CEF való mentésével. Az Azure Sentinelrel való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a naplófájlokban lévő adatok között a következő jelölőnégyzetekből:. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek](connect-common-event-format.md)összekapcsolása.
+
+Az Azure Sentinel bármely ellenőrzési pont készülékhez csatlakoztatható a naplófájlok syslog CEF való mentésével. Az Azure Sentinelrel való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a naplófájlokban lévő adatok között a következő jelölőnégyzetekből:. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek összekapcsolása](connect-common-event-format.md).
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
@@ -45,7 +42,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data-sources.md)tekintse meg az adatforrások összekapcsolását ismertető témakört.
 
 ### <a name="deploy-the-agent"></a>Az ügynök üzembe helyezése
-1. Az Azure Sentinel-portálon kattintson az adatösszekötők elemre, és válassza a **jelölőnégyzetet** , majd az **összekötő lap megnyitása lapot**. 
+1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, és válassza a **jelölőnégyzetet** , majd az **összekötő lap megnyitása lapot**. 
 
 1. **A syslog-ügynök letöltése és telepítése**alatt válassza ki a gép típusát, akár az Azure-t, akár a helyszínen. 
 1. A megnyíló **virtuális gépek** képernyőn válassza ki a használni kívánt gépet, és kattintson a **Kapcsolódás**gombra.
@@ -77,11 +74,11 @@ Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data
 Konfigurálja a ellenőrzési pont készülékét, hogy a syslog-ügynökön keresztül továbbítsa a syslog-üzeneteket CEF formátumban az Azure-munkaterületre.
 
 1. Ugrás a következőre: [ellenőrzési pont naplójának exportálása](https://aka.ms/asi-syslog-checkpoint-forwarding).
-2. Görgessen le az alapszintű **üzembe helyezéshez** , és kövesse az utasításokat a kapcsolódás beállításához az alábbi irányelvek alapján:
+2. Görgessen le az **alapszintű üzembe helyezéshez** , és kövesse az utasításokat a kapcsolódás beállításához az alábbi irányelvek alapján:
    - Állítsa a **syslog portot** **514** -re vagy az ügynökön beállított portra.
      - Cserélje le a **név** és a **cél-kiszolgáló IP-címet** a parancssori felületre a syslog-ügynök nevével és IP-címével.
      - Állítsa a formátumot **CEF**értékre.
-3. Ha R 77.30 vagy R 80.10 verziót használ, görgessen a telepítésekhez , és kövesse az utasításokat, és telepítsen egy log exportőrt a verzióra.
+3. Ha R 77.30 vagy R 80.10 verziót használ, görgessen a **telepítésekhez** , és kövesse az utasításokat, és telepítsen egy log exportőrt a verzióra.
  
 ## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
 
@@ -143,5 +140,5 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a ellenőrzési pontok berendezései az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

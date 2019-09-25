@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035028"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213521"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -202,7 +202,7 @@ Néhány példa:
         n_cross_validations=5)
     ```
 
-A három különböző `task` paraméter értéke határozza meg az alkalmazandó algoritmusok listáját.  A vagy `whitelist` `blacklist` a paraméterrel további módosításokat is módosíthat az elérhető algoritmusok használatával a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedAlgorithms osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)található.
+A három különböző `task` paraméter értéke határozza meg az alkalmazandó modellek listáját.  Az `whitelist` vagy`blacklist` a paraméterrel további módosításokat is végrehajthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika; ahogy az a fenti példákban is látható, az optimalizálásra szolgáló modell képzése során használandó mérőszámot határozza meg. A kiválasztható elsődleges metrikát a választott feladattípus határozza meg. Alább látható az elérhető metrikák listája.

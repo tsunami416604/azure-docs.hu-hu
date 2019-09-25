@@ -8,26 +8,26 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: heidist
-ms.openlocfilehash: 44a8136c4e02d4eceb5b11231bbbfed010159e75
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e3240ca40b9dcf866c5e4a5cf570b5575b7586d8
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172882"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240353"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Nagyméretű adatkészletek indexelése Azure Search
 
-Mivel az adatmennyiség növekedése vagy feldolgozása szükségessé vált, előfordulhat, hogy az egyszerű vagy az alapértelmezett indexelési stratégiák már nem hatékonyak. Azure Search esetében több módszer áll rendelkezésre a nagyobb adatkészletek elhelyezésére, az adatfeltöltési kérelem szerkezetének módjától kezdve az ütemezett és elosztott számítási feladatokhoz forrás-specifikus indexelő használatával.
+Mivel az adatmennyiség növekedése vagy feldolgozása szükségessé vált, előfordulhat, hogy az egyszerű vagy az alapértelmezett indexelési stratégiák már nem praktikusak. Azure Search esetében több módszer áll rendelkezésre a nagyobb adatkészletek elhelyezésére, az adatfeltöltési kérelem szerkezetének módjától kezdve az ütemezett és elosztott számítási feladatokhoz forrás-specifikus indexelő használatával.
 
-Ugyanezek a technikák a nagy adatmennyiségek esetében is érvényesek a hosszan futó folyamatokra. A [párhuzamos indexelésben](#parallel-indexing) leírt lépések különösen hasznosak a számítási igényű indexeléshez, mint például a képelemzés vagy a természetes nyelvi feldolgozás a [kognitív keresési folyamatokban](cognitive-search-concept-intro.md).
+Ugyanezek a technikák a hosszan futó folyamatokra is érvényesek. A [párhuzamos indexelésben](#parallel-indexing) leírt lépések különösen hasznosak a számítási igényű indexeléshez, mint például a képelemzés vagy a természetes nyelvi feldolgozás a [kognitív keresési folyamatokban](cognitive-search-concept-intro.md).
 
 A következő részekben a nagy mennyiségű adatindexeléshez három módszer található.
 
 ## <a name="option-1-pass-multiple-documents"></a>1\. módszer: Több dokumentum továbbítása
 
-A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a .NET SDK-ban [REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vagy [IndexBatch](https://docs.microsoft.com/otnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) használ. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
+A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek attól függetlenül, hogy a .NET SDK-ban a [dokumentumok hozzáadása (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vagy az [index osztályt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) használja. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
 
-A Batch-indexelés a REST vagy a .NET használatával, vagy az indexelő segítségével valósítható meg az egyes kérelmek esetében. Néhány indexelő több különböző korlátozás alatt működik. Pontosabban, az Azure Blob indexelése a köteg méretét 10 dokumentumra állítja be a nagyobb méretű dokumentumok méretének elismeréseként. Az indexelő [REST API létrehozásán](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer )alapuló indexek esetében beállíthatja az `BatchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
+A Batch-indexelés a REST vagy a .NET használatával, vagy az indexelő segítségével valósítható meg az egyes kérelmek esetében. Néhány indexelő több különböző korlátozás alatt működik. Pontosabban, az Azure Blob indexelése a köteg méretét 10 dokumentumra állítja be a nagyobb méretű dokumentumok méretének elismeréseként. Az indexelő [(REST)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer )alapján indexelő elemek esetében beállíthatja az `BatchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
 
 > [!NOTE]
 > A dokumentumok méretének megőrzéséhez ne adjon hozzá nem lekérdezhető adatmennyiséget egy indexhez. A képek és más bináris adatfájlok nem kereshetők közvetlenül, és nem tárolhatók az indexben. A nem lekérdezhető adatmennyiség keresési eredményekbe való integrálásához meg kell adnia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.
@@ -40,11 +40,11 @@ A megnövelt replikák és partíciók olyan számlázható események, amelyek 
 
 ## <a name="option-3-use-indexers"></a>3\. lehetőség: Indexelő használata
 
-Az [Indexelő](search-indexer-overview.md) segítségével külső adatforrásokat lehet feltérképezni a támogatott Azure-adatplatformokon a kereshető tartalomhoz. Míg a nem kifejezetten a nagyméretű indexeléshez készült, több indexelő képesség különösen hasznos a nagyobb adatkészletek fogadásához:
+Az [Indexelő](search-indexer-overview.md) a támogatott Azure-adatforrások bejárására szolgál a kereshető tartalomhoz. Míg a nem kifejezetten a nagyméretű indexeléshez készült, több indexelő képesség különösen hasznos a nagyobb adatkészletek fogadásához:
 
 + Az ütemező segítségével rendszeres időközönként kioszthatja az indexelést, így az idő múlásával kiterjesztheti.
 + Az ütemezett indexelés az utolsó ismert leállítási ponton is folytatódhat. Ha egy adatforrást nem teljes egészében bemászott egy 24 órás időszakon belül, az indexelő a második napon folytatja az indexelést, bárhol marad.
-+ Az adatmennyiség kisebb különálló adatforrásokra való particionálásával párhuzamos feldolgozást tesz lehetővé. A nagyméretű adathalmazok kioszthatók kisebb adatkészletekre, és létrehozhatók több indexelő adatforrás-definíciók is, amelyek párhuzamosan indexelhető.
++ Az adatmennyiség kisebb különálló adatforrásokra való particionálásával párhuzamos feldolgozást tesz lehetővé. A nagyméretű adatkészleteket a forrás-adatplatformon (például az Azure Blob Storage-ban vagy a Azure SQL Database-ban) is megszakíthatja, majd több [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) is létrehozhat a Azure Search, amely párhuzamosan indexelhető.
 
 > [!NOTE]
 > Az indexelő az adatforrás-specifikus, ezért az indexelő megközelítés használata csak az Azure-beli kiválasztott adatforrások esetén használható: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos db](search-howto-index-cosmosdb.md).

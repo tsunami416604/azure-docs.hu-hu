@@ -3,16 +3,16 @@ title: Blobok feltöltése, letöltése, listázása és törlése a JavaScripth
 description: Blobok és tárolók létrehozása, feltöltése és törlése a Node.js-ben az Azure Storage használatával
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2018
+ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 9d709d19f179dc29b5e290a141d446f3353f4971
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306026"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240439"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Gyors útmutató: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage v10 SDK-val
 
@@ -51,6 +51,7 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>Minta futtatása
+
 A függőségek telepítését követően a következő paranccsal futtathatja a mintát:
 
 ```bash
@@ -60,10 +61,11 @@ npm start
 Az alkalmazás kimenete az alábbi példához hasonló lesz:
 
 ```bash
+Container "demo" is created
 Containers:
  - container-one
  - container-two
-Container "demo" is created
+ - demo
 Blob "quickstart.txt" is uploaded
 Local file "./readme.md" is uploaded
 Blobs in "demo" container:
@@ -75,9 +77,11 @@ Blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
-Ha ehhez a rövid útmutatóhoz egy új tárfiókot használ, előfordulhat, hogy nem látszanak tárolónevek a „*Tárolók*” címke alatt.
+
+Ha ehhez a rövid útmutatóhoz új Storage-fiókot használ, akkor előfordulhat, hogy csak a "*tárolók:* " felirat alatt látható *bemutató* tárolót fogja látni.
 
 ## <a name="understanding-the-code"></a>A kód értelmezése
+
 A minta első része osztályokat és függvényeket importál az Azure Blob Storage-névtérből. Az egyes importált elemek a mintában való használatukkor részletesen is be lesznek mutatva.
 
 ```javascript
@@ -123,14 +127,18 @@ const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
 const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 ```
 A következő konstansok segítenek feltárni a fájlméretszámítás célját a feltöltési műveletek során.
+
 ```javascript
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
+
 Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
+
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
+
 ### <a name="calling-code"></a>Hívó kód
 
 A JavaScript *async/await* szintaxisának támogatása érdekében a teljes hívókód egy *execute* nevű függvénybe van csomagolva. Tehát a rendszer az *execute* függvényt fogja hívni, amelyet egy ígéretként kezel.
@@ -142,6 +150,7 @@ async function execute() {
 
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
+
 A teljes alábbi kód az execute függvényen belül fut, amelybe a `// commands...` megjegyzés kerül.
 
 Első lépésként a releváns változókat deklaráljuk a nevek és mintatartalmak hozzárendeléséhez, valamint a Blob Storage-be feltölteni kívánt helyi fájl kijelöléséhez.
@@ -160,6 +169,7 @@ const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS
 const pipeline = StorageURL.newPipeline(credentials);
 const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
 ```
+
 Ebben a kódblokkban a következő osztályokat használjuk:
 
 - A [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) osztály a tárfiókok hitelesítő adatainak beburkolását végzi a kérelemfolyamatoknak való átadás érdekében.
@@ -174,6 +184,7 @@ A *ServiceURL*-példányt a [ContainerURL](/javascript/api/%40azure/storage-blob
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 ```
+
 A *containerURL* és a *blockBlobURL* változók végig használatban maradnak a mintában a tárfiókon végrehajtott műveletekben. 
 
 Ezen a ponton a tároló nem létezik a tárfiókban. A *ContainerURL*-példány jelöli azt az URL-címet, amelyet használhat. A példány használatával hozhatja létre és törölheti a tárolót. A tároló helye megfelel egy, a következőhöz hasonló helynek felel meg:
@@ -187,6 +198,7 @@ A *blockBlobURL* az egyes blobok kezelésére szolgál, és a blobok tartalmána
 ```bash
 https://<ACCOUNT_NAME>.blob.core.windows.net/demo/quickstart.txt
 ```
+
 Ahogy a tároló, úgy még a blokkblob sem létezik. A *blockBlobURL* változót később használjuk majd a blob tartalmak feltöltésével való létrehozásához.
 
 ### <a name="using-the-aborter-class"></a>Az Aborter osztály használata
@@ -196,37 +208,13 @@ Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépés
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);
 ```
+
 Az Aborterek (megszakítók) lehetővé teszik a kérelmek szabályzását, mivel a segítségükkel:
 
 - kijelölhető egy adott kérelemköteg számára rendelkezésre álló idő,
 - kijelölhető, hogy egy adott egyéni kérelem milyen hosszan futhat a kötegben,
 - visszavonhatók a kérelmek,
 - az *Aborter.none* statikus tag használatával megakadályozható, hogy a kérelmek egyáltalán időtúllépésbe kerüljenek
-
-### <a name="show-container-names"></a>Tárolónevek megjelenítése
-A fiókok rengeteg tárolót tartalmazhatnak. A következő kód bemutatja, hogyan lehet a tárolókat szegmentált módon listázni, aminek segítségével nagy számú tárolót tekinthet át. A *showContainerNames* függvénynek *ServiceURL*- és *Aborter*-példányokat adunk át.
-
-```javascript
-console.log("Containers:");
-await showContainerNames(serviceURL, aborter);
-```
-A *showContainerNames* függvény a *listContainersSegment* metódus használatával tárolónevek kötegeit kéri le a tárfiókról.
-```javascript
-async function showContainerNames(aborter, serviceURL) {
-
-    let response;
-    let marker;
-
-    do {
-        response = await serviceURL.listContainersSegment(aborter, marker);
-        marker = response.marker;
-        for(let container of response.containerItems) {
-            console.log(` - ${ container.name }`);
-        }
-    } while (marker);
-}
-```
-A válasz visszaérkezésekor a *containerItems* többszöri végrehajtásával adható át a név a konzolnak. 
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
@@ -236,22 +224,58 @@ A tárolók létrehozásához a *ContainerURL* osztály *create* metódusa haszn
 await containerURL.create(aborter);
 console.log(`Container: "${containerName}" is created`);
 ```
+
 Mivel a tároló neve a *ContainerURL.fromServiceURL(serviceURL, containerName)* meghívásakor definiálva lesz, a tároló létrehozásához elegendő a *create* metódust meghívni.
 
+### <a name="show-container-names"></a>Tárolónevek megjelenítése
+
+A fiókok rengeteg tárolót tartalmazhatnak. A következő kód bemutatja, hogyan lehet a tárolókat szegmentált módon listázni, aminek segítségével nagy számú tárolót tekinthet át. A *showContainerNames* függvénynek *ServiceURL*- és *Aborter*-példányokat adunk át.
+
+```javascript
+console.log("Containers:");
+await showContainerNames(serviceURL, aborter);
+```
+
+A *showContainerNames* függvény a *listContainersSegment* metódus használatával tárolónevek kötegeit kéri le a tárfiókról.
+
+```javascript
+async function showContainerNames(aborter, serviceURL) {
+    let marker = undefined;
+
+    do {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
+            console.log(` - ${ container.name }`);
+        }
+    } while (marker);
+}
+```
+
+A válasz visszaérkezésekor a *containerItems* többszöri végrehajtásával adható át a név a konzolnak. 
+
 ### <a name="upload-text"></a>Szöveg feltöltése
+
 A szövegek feltöltéséhez a blobba használja az *upload* metódust.
+
 ```javascript
 await blockBlobURL.upload(aborter, content, content.length);
 console.log(`Blob "${blobName}" is uploaded`);
 ```
+
 Itt a szöveget és annak hosszát adjuk át a metódusnak.
+
 ### <a name="upload-a-local-file"></a>Helyi fájl feltöltése
+
 A helyi fájlok a tárolóba való feltöltéséhez a tároló URL-címére és a fájl elérési útjára van szükség.
+
 ```javascript
 await uploadLocalFile(aborter, containerURL, localFilePath);
 console.log(`Local file "${localFilePath}" is uploaded`);
 ```
+
 Az *uploadLocalFile* függvény meghívja az *uploadFileToBlockBlob* függvényt, amely a fájl elérési útját és a blokkblob céljának egy példányát veszi fel argumentumként.
+
 ```javascript
 async function uploadLocalFile(aborter, containerURL, filePath) {
 
@@ -263,16 +287,20 @@ async function uploadLocalFile(aborter, containerURL, filePath) {
     return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
 }
 ```
+
 ### <a name="upload-a-stream"></a>Stream feltöltése
+
 A streamek feltöltése is támogatott. A minta egy helyi fájlt streamként megnyit és átad az upload metódusnak.
+
 ```javascript
 await uploadStream(containerURL, localFilePath, aborter);
 console.log(`Local file "${localFilePath}" is uploaded as a stream`);
 ```
+
 Az *uploadStream* függvény az *uploadStreamToBlockBlob* meghívásával tölti fel a streamet a tárolóba.
+
 ```javascript
 async function uploadStream(aborter, containerURL, filePath) {
-
     filePath = path.resolve(filePath);
 
     const fileName = path.basename(filePath).replace('.md', '-stream.md');
@@ -295,51 +323,82 @@ async function uploadStream(aborter, containerURL, filePath) {
                     uploadOptions.maxBuffers);
 }
 ```
+
 A feltöltés során az *uploadStreamToBlockBlob* pufferek lefoglalásával biztosítja a stream adatainak gyorsítótárazását, amennyiben újra kellene próbálkozni. A *maxBuffers* érték jelzi, hogy legfeljebb hány puffer használható, mivel mindegyik puffer külön fájlfeltöltési kérelmet hoz létre. Ideális esetben a több puffer nagyobb sebességet eredményez, azonban így nő a memóriahasználat. A pufferek kellően magas száma esetén a feltöltési sebesség elér egy korlátot, és már a hálózat vagy a meghajtó jelenti a szűk keresztmetszetet az ügyfél helyett.
 
 ### <a name="show-blob-names"></a>Blobnevek megjelenítése
-Ahogy az egyes fiókok több tárolót is tartalmazhatnak, az egyes tárolók maguk is potenciálisan hatalmas mennyiségű blobot tartalmazhatnak. A tárolóban lévő egyes blobok a *ContainerURL* osztály egy példányán keresztül érhetők el. 
+
+Ahogy az egyes fiókok több tárolót is tartalmazhatnak, az egyes tárolók maguk is potenciálisan hatalmas mennyiségű blobot tartalmazhatnak. A tárolóban lévő egyes blobok a *ContainerURL* osztály egy példányán keresztül érhetők el.
+
 ```javascript
 console.log(`Blobs in "${containerName}" container:`);
 await showBlobNames(aborter, containerURL);
 ```
+
 A *showBlobNames* függvény a *listBlobFlatSegment* meghívásával kéri le a blobkötegeket a tárolókból.
+
 ```javascript
 async function showBlobNames(aborter, containerURL) {
-
-    let response;
-    let marker;
+    let marker = undefined;
 
     do {
-        response = await containerURL.listBlobFlatSegment(aborter);
-        marker = response.marker;
-        for(let blob of response.segment.blobItems) {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
             console.log(` - ${ blob.name }`);
         }
     } while (marker);
 }
 ```
+
 ### <a name="download-a-blob"></a>Blob letöltése
+
 A létrehozását követően a blob tartalma a *download* metódussal tölthető le.
+
 ```javascript
 const downloadResponse = await blockBlobURL.download(aborter, 0);
-const downloadedContent = downloadResponse.readableStreamBody.read(content.length).toString();
+const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
 console.log(`Downloaded blob content: "${downloadedContent}"`);
 ```
-A rendszer a választ streamként adja vissza. Ebben a példában a streamet egy sztringgé alakítjuk a konzolba való megadáshoz.
+
+A rendszer a választ streamként adja vissza. Ebben a példában az adatfolyamot a rendszer a következő *streamToString* segítő függvény használatával konvertálja karakterlánccá.
+
+```javascript
+// A helper method used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+}
+```
+
 ### <a name="delete-a-blob"></a>Blob törlése
+
 A blobok a *BlockBlobURL*-példányok *delete* metódusával törölhetők a tárolóból.
+
 ```javascript
 await blockBlobURL.delete(aborter)
 console.log(`Block blob "${blobName}" is deleted`);
 ```
+
 ### <a name="delete-a-container"></a>Tároló törlése
+
 A tárolók a *ContainerURL*-példányok *delete* metódusával törölhetők a tárfiókból.
+
 ```javascript
 await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 A kódminta végén a tárfiókba írt összes adat automatikusan törölve lesz. 
 
 ## <a name="next-steps"></a>További lépések

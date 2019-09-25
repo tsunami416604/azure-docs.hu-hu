@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816031"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240369"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight-fürtök figyelése Azure Monitor naplók használatával
 
@@ -109,6 +109,15 @@ Mivel a fürt egy teljesen új fürt, a jelentés nem jelenik meg semmilyen tev�
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
 
 Az Azure monitor a fürt csomópontjaihoz tartozó teljesítménymutatók összegyűjtését és elemzését is támogatja. A szolgáltatás engedélyezésével és konfigurálásával kapcsolatos további információkért tekintse meg a [Linux teljesítmény adatforrásait Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Fürt naplózása
+
+A HDInsight a következő típusú naplók importálásával támogatja a fürt naplózását Azure Monitor naplókkal:
+
+* `log_gateway_audit_CL`– Ez a táblázat a fürt átjárójának csomópontjairól nyújt naplókat, amelyek sikeres és sikertelen bejelentkezési kísérleteket mutatnak.
+* `log_auth_CL`– Ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
+* `log_ambari_audit_CL`– Ez a tábla naplókat biztosít a Ambari.
+* `log_ranger_audti_CL`– Ez a táblázat az Apache Ranger és az ESP-fürtök naplóit tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 

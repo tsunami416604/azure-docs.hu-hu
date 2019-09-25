@@ -1,5 +1,5 @@
 ---
-title: A Palo Alto Networks-adatkapcsolatok és az Azure Sentinel előzetes verziója Microsoft Docs
+title: A Palo Alto Networks-adatkapcsolatok és az Azure Sentinel összekötése | Microsoft Docs
 description: Megtudhatja, hogyan csatlakoztathatók a Palo Alto-hálózatok az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679228"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240239"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>A Palo Alto Networks-berendezés összekötése
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel bármely Palo Alto Network-készülékhez csatlakoztatható, ha a naplófájlokat syslog Common Error Format (CEF) formátumban menti. Az Azure Sentinel szolgáltatással való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a Palo Alto hálózatokból származó naplófájlokban tárolt adatok között. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek](connect-common-event-format.md)összekapcsolása.
+
+Az Azure Sentinel bármely Palo Alto Network-készülékhez csatlakoztatható, ha a naplófájlokat syslog Common Error Format (CEF) formátumban menti. Az Azure Sentinel szolgáltatással való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a Palo Alto hálózatokból származó naplófájlokban tárolt adatok között. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek összekapcsolása](connect-common-event-format.md).
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
@@ -47,7 +45,7 @@ Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data
 
 ### <a name="deploy-the-agent"></a>Az ügynök üzembe helyezése 
 
-1. Az Azure Sentinel-portálon kattintson az adatösszekötők lehetőségre, válassza a **Palo Alto Networks** elemet, majd **nyissa meg az összekötő lapot**. 
+1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** lehetőségre, válassza a **Palo Alto Networks** elemet, majd **nyissa meg az összekötő lapot**. 
 
 1. **A syslog-ügynök letöltése és telepítése**alatt válassza ki a gép típusát, akár az Azure-t, akár a helyszínen. 
 1. A megnyíló **virtuális gépek** képernyőn válassza ki a használni kívánt gépet, és kattintson a **Kapcsolódás**gombra.
@@ -141,5 +139,5 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Palo Alto hálózati berendezések az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

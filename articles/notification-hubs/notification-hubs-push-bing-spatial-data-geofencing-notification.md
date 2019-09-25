@@ -4,9 +4,9 @@ description: Ebben az oktatóanyagban elsajátíthatja, hogyan küldhet helyalap
 services: notification-hubs
 documentationcenter: windows
 keywords: leküldéses értesítés,leküldéses értesítés
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: f41beea1-0d62-4418-9ffc-c9d70607a1b7
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460117"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213245"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Leküldéses értesítések helyalapú az Azure Notification Hubs és a Bing térbeli adatainak
+# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Helymeghatározó értesítések leküldése az Azure Notification Hubs és a Bing térbeli adatainak alapján
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan küldhet helyalapú leküldéses értesítéseket az Azure Notification Hubs és a Bing térbeli adatainak használatával.
 
@@ -37,7 +39,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/) megkezdése előtt.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
 * [Visual Studio 2015 1. frissítés](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) vagy újabb ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409).
 * Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziója.
 * [Fiók a Bing Térképek fejlesztői központjához](https://www.bingmapsportal.com/) (ingyenesen létrehozható, és hozzárendelhető a Microsoft-fiókjához).
@@ -51,7 +53,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 3. Ha még nincs adatforrása, akkor látni fog egy hivatkozást, amellyel létrehozhat egyet. Válassza az **Upload data as a data source** (Adatok feltöltése adatforrásként) lehetőséget. Használhatja a **Data sources** (Adatforrások)  > **Upload data** (Adatok feltöltése) menüt is.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Hozzon létre egy fájlt `NotificationHubsGeofence.pipe` a merevlemezen a következő tartalommal: Ebben az oktatóanyagban egy mintául szolgáló, függőleges vonal-alapú fájlkiszolgálókon, a San Francisco-i partszakasz egy területét használja:
+4. Hozzon létre `NotificationHubsGeofence.pipe` egy fájlt a merevlemezen a következő tartalommal: Ebben az oktatóanyagban egy minta pipe-alapú fájlt használ, amely a San Francisco Waterfront területét képkockán:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -64,7 +66,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Az **Upload data as a data source** (Adat feltöltése adatforrásként) oldalon tegye a következőket:
    1. Válassza ki a **pipe** (folyamat) elemet a **Data format** (Adatformátum) beállításnál.
-   2. Keresse meg és válassza a `NotificationHubGeofence.pipe` az előző lépésben létrehozott fájlt.
+   2. Tallózással keresse meg `NotificationHubGeofence.pipe` és válassza ki az előző lépésben létrehozott fájlt.
    3. Válassza az **Upload** (Feltöltés) gombot.
 
       > [!NOTE]

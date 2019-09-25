@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200814"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218260"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -41,7 +41,7 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 ||**Virtuális gép**|**Virtuálisgép-méretezési csoport**||**Virtuális gép**|**Virtuálisgép-méretezési csoport**|
 |VMBA-fenyegetések észlelésével kapcsolatos riasztások|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |Hálózati veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|X|✔|✔|X|Standard|
-|A Windows Defender ATP-integráció|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
+|Microsoft Defender ATP-integráció|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
 |Hiányzó javítások|✔|✔|✔|✔|✔|✔|Free|
 |Biztonsági konfigurációk|✔|✔|✔|✔|✔|✔|Free|
 |Endpoint Protection-Értékelés|✔|✔|✔|X|X|X|Free|

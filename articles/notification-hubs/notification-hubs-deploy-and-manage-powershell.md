@@ -3,9 +3,9 @@ title: A Notification Hubs telepítése és kezelése a PowerShell-lel
 description: Notification Hubs létrehozása és kezelése a PowerShell használatával automatizáláshoz
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 2cff6ef25d0fe812cc6df26bf946daff29d37f84
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 5af920249000cabbc63f0c9ab453738450875172
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102845"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213416"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Értesítési központok üzembe helyezése és kezelése a PowerShell-lel
 
@@ -88,14 +90,14 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 ## <a name="provisioning-a-new-notification-hub"></a>Új értesítési központ kiépítés
 
-Új értesítési központ létrehozásához használja a [.NET API a Notification Hubshoz]-t a Notification Hubshoz.
+Új értesítési központ létrehozásához használja a .NET API-t a [.NET API a Notification Hubshoz].
 
 A szkript ezen részében négy helyi változót kell beállítania.
 
 1. `$Namespace`: Adja meg annak a névtérnek a nevét, amelyen az értesítési központot létre kívánja hozni.
 2. `$Path`: Ezt az elérési utat állítsa az új értesítési központ nevére.  Például: "MyHub".
-3. `$WnsPackageSid`: Állítsa be ezt a Windows-alkalmazáshoz tartozó SID-csomagra a [Windows fejlesztői](https://developer.microsoft.com/en-us/windows)központból.
-4. `$WnsSecretkey`: Állítsa be a Windows-alkalmazás titkos kulcsát a [Windows fejlesztői](https://developer.microsoft.com/en-us/windows)központból.
+3. `$WnsPackageSid`: Állítsa be ezt a Windows-alkalmazáshoz tartozó SID-csomagra a [Windows fejlesztői központból](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Állítsa be a Windows-alkalmazás titkos kulcsát a [Windows fejlesztői központból](https://developer.microsoft.com/en-us/windows).
 
 Ezek a változók a névtérhez való kapcsolódáshoz és egy új értesítési központ létrehozásához vannak konfigurálva, amely a Windows Notification Services (WNS) WNS hitelesítő adataival rendelkező Windows-alkalmazások kezelésére szolgál. További információ a csomag biztonsági azonosítójának és titkos kulcsának beszerzéséről: [Első lépések Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyaggal.
 

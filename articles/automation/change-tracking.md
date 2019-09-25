@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952997"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240279"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezet változásainak követése a Change Tracking megoldással
 
@@ -24,7 +24,7 @@ Ez a cikk segítséget nyújt a Change Tracking megoldás használatában a kör
 A felügyelt kiszolgálókon a telepített szoftverek, a Windows-szolgáltatások, a Windows-beállításjegyzék és a fájlok, valamint a Linux-démonok módosításai a felhőben a Azure Monitor szolgáltatásba kerülnek feldolgozásra. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópulton található információk használatával egyszerűen megtekintheti a kiszolgálói infrastruktúrában végrehajtott módosításokat.
 
 > [!NOTE]
-> Azure Automation Change Tracking nyomon követi a virtuális gépek változásait. A Azure Resource Manager tulajdonságok változásainak nyomon követéséhez tekintse meg [](../governance/resource-graph/how-to/get-resource-changes.md)az Azure Resource Graph változási előzményeit.
+> Azure Automation Change Tracking nyomon követi a virtuális gépek változásait. A Azure Resource Manager tulajdonságok változásainak nyomon követéséhez tekintse meg az Azure Resource Graph [változási előzményeit](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 
@@ -100,7 +100,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
 |Enabled     | Meghatározza, hogy a beállítás alkalmazva van-e.        |
 |Elem neve     | A nyomon követett fájl rövid neve.        |
 |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
-|Adja meg az elérési utat     | A fájl keresésének elérési útja. Például: "/etc/*. conf"       |
+|Elérési út megadása     | A fájl keresésének elérési útja. Például: "/etc/*. conf"       |
 |Elérési út típusa     | A nyomon követett elem típusa, a lehetséges értékek: fájl és könyvtár.        |
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
@@ -123,7 +123,7 @@ A fájlok nyomon követését a Windows rendszerű számítógépeken a követke
 |Enabled     | Meghatározza, hogy a beállítás alkalmazva van-e.        |
 |Elem neve     | A nyomon követett fájl rövid neve.        |
 |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
-|Adja meg az elérési utat     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”       |
+|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”       |
 |Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
 |Fájltartalom feltöltése minden beállításhoz| Be- vagy kikapcsolja a fájltartalom feltöltését a változáskövetés használata esetén. Elérhető lehetőségek: **Igaz** vagy **hamis**.|
 
@@ -187,7 +187,7 @@ A következő táblázat a változások típusának adatgyűjtési gyakoriságá
 | Windows beállításjegyzék | 50 perc |
 | Windows-fájl | 30 perc |
 | Linux-fájl | 15 perc |
-| Windows-szolgáltatások | 10 másodperc és 30 perc között</br> Alapértelmezett: 30 perc |
+| Windows-szolgáltatások | 10 másodperc és 30 perc között</br> Alapértelmezett 30 perc |
 | Linux-démonok | 5 perc |
 | Windows-szoftver | 30 perc |
 | Linuxos szoftverek | 5 perc |
@@ -198,7 +198,7 @@ A következő táblázat a nyomon követett elemek korlátait mutatja Change Tra
 |---|---|---|
 |Fájl|500||
 |Beállításjegyzék|250||
-|Windows-szoftver|250|Nem tartalmazza a szoftverfrissítéseket|
+|Windows-szoftver|250|Nem tartalmazza a szoftver gyorsjavításait|
 |Linux-csomagok|1250||
 |Szolgáltatások|250||
 |Démon|250||
@@ -271,9 +271,9 @@ A következő címek megadása kifejezetten a Change Tracking. Az ezekkel a cím
 
 ## <a name="use-change-tracking"></a>Change Tracking használata
 
-A megoldás engedélyezése után megtekintheti a figyelt számítógépek változásainak összefoglalását, ha az Automation-fiókban az **change Tracking** lehetőségre kattint.
+A megoldás engedélyezése után megtekintheti a figyelt számítógépek változásainak összefoglalását, ha az **Automation-fiókban az** **change Tracking** lehetőségre kattint.
 
-Megtekintheti a számítógépek módosításait, majd részletezheti az egyes események részletes adatait. A diagram tetején található legördülő lista a típus és az időtartományok alapján korlátozza a diagramot és a részletes információkat. A diagramra kattintva és húzásával egyéni időtartományt is kijelölhet. A **változás típusa** a következő értékek egyike lesz **: események**, **démonok**, **fájlok**, **beállításjegyzék**, **szoftver**, Windows- **szolgáltatások**. A kategória azt mutatja, hogy milyen típusú változást adhat **hozzá**, **módosíthat**vagy **távolíthat el**.
+Megtekintheti a számítógépek módosításait, majd részletezheti az egyes események részletes adatait. A diagram tetején található legördülő lista a típus és az időtartományok alapján korlátozza a diagramot és a részletes információkat. A diagramra kattintva és húzásával egyéni időtartományt is kijelölhet. **A változás típusa** a következő értékek egyike lesz **: események**, **démonok**, **fájlok**, **beállításjegyzék**, **szoftver**, **Windows-szolgáltatások**. A kategória azt mutatja, hogy milyen típusú változást adhat **hozzá**, **módosíthat**vagy **távolíthat el**.
 
 ![Change Tracking irányítópult képe](./media/change-tracking/change-tracking-dash01.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Fortinet-adatkapcsolatok összekötése az Azure Sentinel előzetes verziójával | Microsoft Docs
+title: Fortinet-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat a Fortinet-adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679285"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240695"
 ---
 # <a name="connect-your-fortinet-appliance"></a>A Fortinet-berendezés összekötése
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk. Nem ajánlott éles környezetben üzemelő számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel bármely Fortinet-készülékhez csatlakoztatható, ha a naplófájlokat syslog Common Event Format (CEF) formátumban menti. Az Azure Sentinel szolgáltatással való integráció révén könnyedén futtathatja az elemzéseket és a lekérdezéseket a naplófájlokban tárolt adatok között a Fortinet. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek](connect-common-event-format.md)összekapcsolása.
+
+Az Azure Sentinel bármely Fortinet-készülékhez csatlakoztatható, ha a naplófájlokat syslog Common Event Format (CEF) formátumban menti. Az Azure Sentinel szolgáltatással való integráció révén könnyedén futtathatja az elemzéseket és a lekérdezéseket a naplófájlokban tárolt adatok között a Fortinet. További információ arról, hogy az Azure Sentinel hogyan tölt be CEF-adatokat, lásd: [CEF-készülékek összekapcsolása](connect-common-event-format.md).
 
 > [!NOTE]
 > Az adattárolást annak a munkaterületnek a földrajzi helye tárolja, amelyen az Azure Sentinel alkalmazást futtatja.
@@ -46,7 +44,7 @@ Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data
 
 ### <a name="deploy-the-agent"></a>Az ügynök üzembe helyezése
 
-1. Az Azure Sentinel portálon kattintson az adatösszekötők elemre, és válassza a **Fortinet** , majd az **összekötő lap megnyitása**lehetőséget. 
+1. Az Azure Sentinel portálon kattintson az **adatösszekötők** elemre, és válassza a **Fortinet** , majd az **összekötő lap megnyitása**lehetőséget. 
 
 1. **A syslog-ügynök letöltése és telepítése**alatt válassza ki a gép típusát, akár az Azure-t, akár a helyszínen. 
 1. A megnyíló **virtuális gépek** képernyőn válassza ki a használni kívánt gépet, és kattintson a **Kapcsolódás**gombra.
@@ -86,7 +84,7 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
     - Cserélje le a kiszolgáló **IP-címét** az ügynök IP-címére.
     - Állítsa be a **facility_name** az ügynökben konfigurált létesítmény használatára. Alapértelmezés szerint az ügynök beállítja ezt a local4.
     - Állítsa a **syslog portot** **514** -re vagy az ügynökön beállított portra.
-    - Ha a CEF formátumot szeretné engedélyezni a korai FortiOS-verziókban, előfordulhat, hogy futtatnia kell a **CSV**-letiltási parancsot.
+    - Ha a CEF formátumot szeretné engedélyezni a korai FortiOS-verziókban, előfordulhat, hogy futtatnia kell a **CSV-letiltási**parancsot.
  
    > [!NOTE] 
    > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását**.
@@ -147,5 +145,5 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem jelennek a Log Analyt
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan csatlakoztathatók a Fortinet-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 

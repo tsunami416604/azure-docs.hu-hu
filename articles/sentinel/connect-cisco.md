@@ -1,5 +1,5 @@
 ---
-title: Cisco-adatkapcsolatok az Azure Sentinel előzetes verziójával | Microsoft Docs
+title: Cisco-adatkapcsolatok az Azure Sentinel-be | Microsoft Docs
 description: Ismerje meg, hogyan kapcsolódhat a Cisco-beli adatbázisokhoz az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e4df594128a119f38c66796d7b00a30420a2a0bd
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6218d3a53df38e938b7d7805c45facd30f850105
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679328"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240146"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>A Cisco ASA-berendezés összekötése 
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Az Azure Sentinel bármely Cisco ASA-készülékhez csatlakoztatható. A Cisco ASA natív módon integrálva van az Azure Sentinel szolgáltatással az adatfeldolgozáshoz, így annak ellenére, hogy a Cisco-készülék nem menti a naplókat CEF, az Azure Sentinel ugyanúgy tölti le őket, mint a CEF-naplók kezelését. Az Azure Sentinelrel való integráció lehetővé teszi, hogy könnyedén futtasson elemzéseket és lekérdezéseket a Cisco ASA-ből származó naplófájlok adatainak használatával. 
 
@@ -46,7 +44,7 @@ Ha mindkét lehetőséghez hálózati diagramot szeretne látni, [](connect-data
 
 ### <a name="deploy-the-agent-on-your-machine"></a>Az ügynök üzembe helyezése a gépen
 
-1. Az Azure Sentinel-portálon kattintson az adatösszekötők elemre, válassza a **Cisco ASA** elemet, majd **nyissa meg az összekötő lapot**. 
+1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, válassza a **Cisco ASA** elemet, majd **nyissa meg az összekötő lapot**. 
 
 1. **A syslog-ügynök letöltése és telepítése**alatt válassza ki a gép típusát, akár az Azure-t, akár a helyszínen. 
 1. A megnyíló **virtuális gépek** képernyőn válassza ki a használni kívánt gépet, és kattintson a **Kapcsolódás**gombra.
@@ -79,7 +77,7 @@ A Cisco ASA nem támogatja a CEF, ezért a rendszer syslog-ként küldi el a nap
 Válassza a [syslog-üzenetek küldése egy külső syslog-kiszolgálónak lehetőséget](https://aka.ms/asi-syslog-cisco-forwarding), majd kövesse az utasításokat a kapcsolódás beállításához. Ha a rendszer kéri, használja ezeket a paramétereket:
 - Állítsa a **portot** 514-re vagy az ügynökben beállított portra.
 - Állítsa be az **syslog_ip** az ügynök IP-címére.
-- Állítsa be a naplózási létesítményt az ügynökben beállított létesítménybe. Alapértelmezés szerint az ügynök 4 értékre állítja be a létesítményt.
+- Állítsa be a **naplózási létesítményt** az ügynökben beállított létesítménybe. Alapértelmezés szerint az ügynök 4 értékre állítja be a létesítményt.
 
 A Cisco-események Log Analytics vonatkozó sémájának használatához keresse a következőt `CommonSecurityLog`:.
 
@@ -131,5 +129,5 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a Cisco ASA-készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 
