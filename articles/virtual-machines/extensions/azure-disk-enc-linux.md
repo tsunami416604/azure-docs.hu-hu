@@ -140,20 +140,20 @@ Használat `AADClientCertificate`:
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | Karakterlánc |
-| type | AzureDiskEncryptionForLinux | Karakterlánc |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
 | (0,1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (0,1 séma) AADClientSecret | password | Karakterlánc |
-| (0,1 séma) AADClientCertificate | thumbprint | Karakterlánc |
+| (0,1 séma) AADClientSecret | password | string |
+| (0,1 séma) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótár |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | Karakterlánc | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | Karakterlánc |
-| KeyEncryptionKeyURL | url | Karakterlánc |
-| választható KeyVaultURL | url | Karakterlánc |
-| Passphrase | password | Karakterlánc | 
-| SequenceVersion | uniqueidentifier | Karakterlánc |
-| VolumeType | Operációs rendszer, az összes | Karakterlánc |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| választható KeyVaultURL | url | string |
+| Passphrase | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Operációs rendszer, az összes | string |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
