@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845342"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211767"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Példa: Érzelmek észlelése Text Analytics
 
@@ -139,7 +139,7 @@ A [Hangulatelemzés következő verziója](https://westcentralus.dev.cognitive.m
 > [!NOTE]
 > * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
 > * Most Hangulatelemzés v3:
->    * Jelenleg az angol, az egyszerűsített kínai és a japán nyelveket támogatja.
+>    * Jelenleg az angol, francia, olasz, Japán, egyszerűsített és hagyományos kínai nyelveket támogatja.
 >    * A következő régiókban érhető el: `Australia East` `Central US`, `Central Canada` `East Asia` `East US` `East US 2` ,,`West US 2` ,,,,,,, és `North Europe` `Southeast Asia` `South Central US` `UK South` `West Europe` .
 
 |Funkció |Leírás  |

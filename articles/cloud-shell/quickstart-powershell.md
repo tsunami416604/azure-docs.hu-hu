@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 36683d04b6f087f1d326458a07b043a0932191f1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742001"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224554"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>A PowerShell rövid útmutatója Azure Cloud Shell
 
@@ -181,19 +181,20 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 #### <a name="invoke-powershell-script-across-remote-vms"></a>PowerShell-parancsfájl meghívása távoli virtuális gépek között
 
  > [!WARNING]
- > Tekintse meg az Azure-beli [virtuális gépek távoli felügyeletének hibaelhárítását](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)ismertető témakört.
+ > Tekintse meg az Azure-beli [virtuális gépek távoli felügyeletének hibaelhárítását ismertető témakört](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
   Feltételezve, `Invoke-AzVMCommand` hogy rendelkezik egy virtuális géppel, a MyVM1 a távoli gépen egy PowerShell-szkriptet is meghívhat.
 
   ```azurepowershell-interactive
-  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
   A VirtualMachines címtárat először is megnyithatja, és `Invoke-AzVMCommand` a következőképpen futtathatja.
 
   ```azurepowershell-interactive
-  PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
+  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
 
   # You will see output similar to the following:
 
@@ -215,13 +216,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 `Enter-AzVM` Az használatával interaktív módon bejelentkezhet az Azure-ban futó virtuális gépekre.
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
 A könyvtárat a `VirtualMachines` következőképpen is megnyithatja és futtathatja `Enter-AzVM`
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
 ### <a name="discover-webapps"></a>WebApps felderítése
@@ -334,11 +335,11 @@ Amikor legközelebb a PowerShellt használja Cloud Shellban `helloworld.ps1` , a
 A PowerShell-környezet testreszabható a PowerShell- `profile.ps1` profil (ok) létrehozásával (vagy `Microsoft.PowerShell_profile.ps1`).
 Mentse azt a `$profile.CurrentUserAllHosts` (vagy `$profile.CurrentUserAllHosts`) alatt, hogy az Cloud Shell-munkamenetben lévő összes PowerShellben betölthető legyen.
 
-A profilok létrehozásával kapcsolatban tekintse meg a [About Profiles][profile]című témakört.
+A profilok létrehozásával kapcsolatban tekintse meg a [About Profiles című témakört][profile].
 
 ## <a name="use-git"></a>A git használata
 
-Git-tárház klónozásához a Cloud Shell létre kell hoznia egy [személyes hozzáférési][githubtoken] jogkivonatot, és azt felhasználónévként kell használni. Ha rendelkezik a jogkivonattal, a következő módon klónozott a tárházat:
+Git-tárház klónozásához a Cloud Shell létre kell hoznia egy [személyes hozzáférési jogkivonatot][githubtoken] , és azt felhasználónévként kell használni. Ha rendelkezik a jogkivonattal, a következő módon klónozott a tárházat:
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git
