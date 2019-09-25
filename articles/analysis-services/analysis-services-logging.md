@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6b311135832e1ec861cf6e14e5ad7e82574294bf
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959069"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259430"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
-Fontos része annak az Analysis Services megoldással figyel, hogyan a kiszolgálók végzik. Az [Azure erőforrás-diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)segítségével figyelheti és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Azure monitor naplókba](../azure-monitor/azure-monitor-log-hub.md).
+Fontos része annak az Analysis Services megoldással figyel, hogyan a kiszolgálók végzik. Az [Azure erőforrás-diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md)segítségével figyelheti és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Azure monitor naplókba](../azure-monitor/azure-monitor-log-hub.md).
 
 ![Diagnosztikai naplózás a tárolási, Event Hubs vagy Azure Monitor naplókba](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -141,7 +141,7 @@ Ismerje meg, hogyan [diagnosztikai beállítások módosítása az Azure Monitor
 
 ### <a name="resource-manager-template"></a>Resource Manager-sablon
 
-Ismerje meg, hogyan [erőforrás létrehozásakor a diagnosztikai beállítások engedélyezése Resource Manager-sablon használatával](../azure-monitor/platform/diagnostic-logs-stream-template.md). 
+Ismerje meg, hogyan [erőforrás létrehozásakor a diagnosztikai beállítások engedélyezése Resource Manager-sablon használatával](../azure-monitor/platform/diagnostic-settings-template.md). 
 
 ## <a name="manage-your-logs"></a>A naplók kezelése
 
@@ -327,6 +327,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [Azure-erőforrás diagnosztikai naplózás](../azure-monitor/platform/diagnostic-logs-overview.md).
+Tudjon meg többet [Azure-erőforrás diagnosztikai naplózás](../azure-monitor/platform/resource-logs-overview.md).
 
 Lásd: [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) a PowerShell súgójában.

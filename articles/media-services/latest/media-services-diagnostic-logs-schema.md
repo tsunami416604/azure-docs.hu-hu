@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services diagnosztikai naplók sémák – Azure
-description: Ez a cikk bemutatja az Azure Media Services-diagnosztikai naplók sémák.
+title: Azure Media Services diagnosztikai naplók sémái – Azure
+description: Ez a cikk a Azure Media Services diagnosztikai naplók sémáit mutatja be.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322250"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261088"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
-[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan az alkalmazások hajt végre. Figyelheti a Media Services diagnosztikai naplók és riasztások és értesítések a gyűjtött metrikák és naplók létrehozása. A naplókat elküldheti [Azure Storage](https://azure.microsoft.com/services/storage/), azokat a stream [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Log Analytics](https://azure.microsoft.com/services/log-analytics/), vagy használja a 3. fél által nyújtott szolgáltatások.
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokhoz is használhatja őket.
 
-Részletes információkért lásd: [Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md) és [Azure Monitor-diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md).
+Részletes információ: [Azure monitor metrikák](../../azure-monitor/platform/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md).
 
-Ez a cikk bemutatja a Media Services diagnosztikai naplók sémák.
+Ez a cikk Media Services diagnosztikai naplók sémáit ismerteti.
 
-## <a name="top-level-diagnostic-logs-schema"></a>Legfelső szintű diagnosztikai naplók séma
+## <a name="top-level-diagnostic-logs-schema"></a>Legfelső szintű diagnosztikai naplók sémája
 
-A legfelső szintű diagnosztikai naplók séma részletes ismertetését lásd: [támogatott szolgáltatások, sémákat és kategóriák az Azure diagnosztikai naplók](../../azure-monitor/platform/tutorial-dashboards.md).
+A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../azure-monitor/platform/tutorial-dashboards.md).
 
-## <a name="key-delivery-log-schema"></a>Kulcskézbesítési séma
+## <a name="key-delivery-log-schema"></a>Kulcs kézbesítési naplójának sémája
 
-### <a name="properties"></a>Tulajdonságok
+### <a name="properties"></a>properties
 
-Ezek a tulajdonságok csak a kulcskézbesítési séma vonatkoznak.
+Ezek a tulajdonságok a Key Delivery log sémára vonatkoznak.
 
 |Name (Név)|Leírás|
 |---|---|
 |keyId|A kért kulcs azonosítója.|
-|keyType|A következő értékek egyike lehet: "Törlés" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
-|PolicyName|Az Azure Resource Manager a szabályzat neve.|
+|keyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
+|PolicyName|A házirend Azure Resource Manager neve.|
 |tokenType|A jogkivonat típusa.|
-|statusMessage|Az állapotüzenet tartalmazza.|
+|statusMessage|Az állapotjelző üzenet.|
 
 ### <a name="examples"></a>Példák
 
-A kulcskézbesítési kérelmek séma tulajdonságai.
+A kulcs kézbesítési kérések sémájának tulajdonságai.
 
 ```json
 {
@@ -110,4 +110,4 @@ A kulcskézbesítési kérelmek séma tulajdonságai.
 
 ## <a name="next-steps"></a>További lépések
 
-[A Media Services-metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md)
+[Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md)

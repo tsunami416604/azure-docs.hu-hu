@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736178"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264505"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
@@ -94,4 +94,4 @@ Ez az ábrán az Time Series Insights Explorerben megtekintett idősorozat-elemz
 ## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a Azure Time Series Insights általánosan elérhető [ingyenes bemutató környezettel](./time-series-quickstart.md).
-- További információ a [Time Series Insights](time-series-insights-environment-planning.md) környezet megtervezéséről.
+- További információ a Time Series Insights környezet [megtervezéséről](time-series-insights-environment-planning.md) .

@@ -4,17 +4,17 @@ description: Hogyan hitelesítheti az alárendelt eszközöket vagy a levélben 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003625"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266128"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -32,7 +32,7 @@ A cikkben ismertetett lépések bemutatják a manuális eszközök kiépítés n
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el az [IoT Edge-eszköz konfigurálásának lépéseit transzparens átjáróként való](how-to-create-transparent-gateway.md)művelethez.
+Végezze el az [IoT Edge-eszköz konfigurálásának lépéseit transzparens átjáróként való](how-to-create-transparent-gateway.md)művelethez. Ha X. 509 hitelesítést használ az alsóbb rétegbeli eszközhöz, ugyanazt a tanúsítvány-létrehozási parancsfájlt kell használnia, amelyet az átlátszó átjáró című cikkben állított be. 
 
 Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Ez a cikk a tanúsítványok létrehozásához használatos, és az alsóbb rétegbeli eszközök kapcsolódási karakterláncában hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy gazdagépet tartalmazó bejegyzést kell használnia.
 

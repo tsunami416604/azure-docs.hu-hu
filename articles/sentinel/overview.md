@@ -14,18 +14,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240603"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261867"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az az Azure Sentinel?
-
-
 
 A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, **biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM)** és biztonsági előkészítési **(felszárnyaló)** megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra. 
 
@@ -73,10 +71,9 @@ Ha például a ServiceNow jegyrendszer használatát használja, a Azure Logic A
 ![Forgatókönyvek](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
+## <a name="investigation"></a>Vizsgálat
 
-## <a name="investigation-preview"></a>Vizsgálat (előzetes verzió)
-
-Az Azure Sentinel [Deep vizsgálati](tutorial-investigate-cases.md) eszközei segítenek megérteni a hatókört, és megkeresni az esetleges biztonsági fenyegetések gyökerét. Kiválaszthat egy entitást az interaktív gráfon, amely egy adott entitás érdekes kérdéseit kérdezi le, és részletezi az entitást és annak kapcsolatait, hogy a fenyegetés kiváltó okát is megszerezze. 
+A jelenleg előzetes verzióban elérhető Azure Sentinel [Deep vizsgálati](tutorial-investigate-cases.md) eszközei segítenek megérteni a hatókört és megkeresni a kiváltó okot, amely potenciális biztonsági fenyegetést jelent. Kiválaszthat egy entitást az interaktív gráfon, amely egy adott entitás érdekes kérdéseit kérdezi le, és részletezi az entitást és annak kapcsolatait, hogy a fenyegetés kiváltó okát is megszerezze. 
 
 ![Vizsgálat](./media/tutorial-investigate-cases/map-timeline.png)
 

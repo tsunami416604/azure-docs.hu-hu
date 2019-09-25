@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d881ffff81119167f54b5ef8f0c5e2c1ad1e4791
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075136"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264180"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (ak) fürt frissítése
 
@@ -62,7 +62,10 @@ A következő példa egy fürtöt frissít a *1.13.10*verzióra:
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
-A fürt frissítése néhány percet vesz igénybe, attól függően, hogy hány csomóponttal rendelkezik.
+A fürt frissítése néhány percet vesz igénybe, attól függően, hogy hány csomóponttal rendelkezik. 
+
+> [!NOTE]
+> A fürt frissítésének befejezéséhez teljes megengedett idő szükséges. Ezt az időt a termékének `10 minutes * total number of nodes in the cluster`kiszámításával számítjuk ki. Egy 20 csomópontos fürtben például a frissítési műveleteknek 200 percen belül sikeresnek kell lenniük, vagy az AK-ban sikertelen lesz a művelet, hogy elkerülje a nem helyreállítható fürt állapotát. A frissítési hiba helyreállításához próbálkozzon újra a frissítési művelettel az időkorlát lejárta után.
 
 A frissítés sikerességének ellenőrzéséhez használja az az [AK show][az-aks-show] parancsot:
 

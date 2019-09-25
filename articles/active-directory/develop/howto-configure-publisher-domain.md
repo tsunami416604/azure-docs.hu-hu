@@ -17,16 +17,16 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835155"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257934"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: Alkalmazás közzétevő tartományának konfigurálása (előzetes verzió)
 
-Az alkalmazás közzétevői tartománya megjelenik a felhasználók számára az [alkalmazás jóváhagyására](application-consent-experience.md) vonatkozó kérésben, hogy a felhasználók tudják, hol küldik el az adataikat. A több-bérlős alkalmazások, amelyek a 2019. május 21. után vannak regisztrálva, amelyek nemrendelkeznek közzétevő tartománnyal, nem ellenőrzöttként jelennek meg. A több-bérlős alkalmazások olyan alkalmazások, amelyek egyetlen szervezeti címtáron kívül is támogatják a fiókokat. például támogassa az összes Azure AD-fiókot, vagy támogassa az összes Azure AD-fiókot és a személyes Microsoft-fiókokat.
+Az alkalmazás közzétevői tartománya megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md) , hogy a felhasználók tudják, hol küldik el az adataikat. A több-bérlős alkalmazások, amelyek a 2019. május 21. után vannak regisztrálva, amelyek nem rendelkeznek közzétevő tartománnyal, nem **ellenőrzöttként**jelennek meg. A több-bérlős alkalmazások olyan alkalmazások, amelyek egyetlen szervezeti címtáron kívül is támogatják a fiókokat. például támogassa az összes Azure AD-fiókot, vagy támogassa az összes Azure AD-fiókot és a személyes Microsoft-fiókokat.
 
 ## <a name="new-applications"></a>Új alkalmazások
 
@@ -42,11 +42,11 @@ A következő táblázat összefoglalja a közzétevő tartomány értékének a
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com (elsődleges) | domain2.com |
 
-Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem ellenőrzöttként jelenik meg a közzétevő tartománya helyett.
+Ha a több-bérlős alkalmazás közzétevő tartománya nincs beállítva, vagy ha egy olyan tartományra van beállítva, amely a. onmicrosoft.com-ben ér véget, akkor az alkalmazás hozzájárulási kérése nem **ellenőrzöttként** jelenik meg a közzétevő tartománya helyett.
 
 ## <a name="grandfathered-applications"></a>Nagyszülő alkalmazások
 
-Ha az alkalmazás regisztrálása a 2019. május 21. előtt történt meg, az alkalmazás jóváhagyására vonatkozó kérés nem jelenik meg, ha nem állított be közzétevő tartományt. Azt javasoljuk, hogy állítsa be a közzétevői tartomány értékét, hogy a felhasználók láthassák ezeket az információkat az alkalmazás jóváhagyására vonatkozó kérdésben.
+Ha az alkalmazás regisztrálása a 2019. május 21. előtt történt meg, az alkalmazás jóváhagyására vonatkozó kérés **nem jelenik meg, ha nem** állított be közzétevő tartományt. Azt javasoljuk, hogy állítsa be a közzétevői tartomány értékét, hogy a felhasználók láthassák ezeket az információkat az alkalmazás jóváhagyására vonatkozó kérdésben.
 
 ## <a name="configure-publisher-domain-using-the-azure-portal"></a>A közzétevő tartomány konfigurálása a Azure Portal használatával
 
@@ -55,14 +55,14 @@ Az alkalmazás közzétevő tartományának beállításához kövesse az alább
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 
 1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
-   1. Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át**a könyvtárra.
+   1. Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
    1. Módosítsa a munkamenetet arra az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
 
 1. Keresse meg [Azure Active Directory > Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) a konfigurálni kívánt alkalmazás megkereséséhez és kiválasztásához.
 
    Miután kiválasztotta az alkalmazást, látni fogja az alkalmazás **Áttekintés** lapját.
 
-1. Az alkalmazás **Áttekintés** lapján válassza a branding ( **védjegyezés** ) szakaszt.
+1. Az alkalmazás **Áttekintés** lapján válassza a **branding (védjegyezés** ) szakaszt.
 
 1. Keresse meg a **közzétevő tartomány** mezőt, és válasszon egyet a következő lehetőségek közül:
 
@@ -96,6 +96,12 @@ Ha az alkalmazás nincs a bérlőben regisztrálva, akkor csak az új tartomány
 ### <a name="to-select-a-verified-domain"></a>Ellenőrzött tartomány kiválasztása
 
 - Ha a bérlő ellenőrizte a tartományokat, válassza ki az egyik tartományt a **Select an ellenőrzött tartomány** legördülő listából.
+
+>[!Note]
+> A várt "Content-Type" fejlécnek `application/json`kell szerepelnie. Előfordulhat, hogy az alábbihoz hasonló hibaüzenetet kap, ha mást szeretne használni`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Az alkalmazás jóváhagyására vonatkozó kérdés következményei
 

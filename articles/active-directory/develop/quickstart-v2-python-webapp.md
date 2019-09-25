@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 682582c8c695550f7dfdfcc079e1d0bf04828180
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997375"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257890"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: Bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -37,7 +37,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 A minta futtatásához a következőkre lesz szüksége:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) vagy [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Lombik](http://flask.pocoo.org/), [lombik-munkamenet](https:/pythonhosted.org/Flask-Session/), [kérelmek](https://2.python-requests.org/en/master/)
+- [Lombik](http://flask.pocoo.org/), [lombik-munkamenet](https://pythonhosted.org/Flask-Session/), [kérelmek](https://2.python-requests.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Egy Azure Active Directory (Azure AD) bérlő. Az Azure AD-bérlő beszerzésével kapcsolatos további információkért lásd: [Azure ad-bérlő beszerzése.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 
@@ -47,7 +47,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > A gyors üzembe helyezési alkalmazás elindításához két lehetőség közül választhat: Express (1. lehetőség) és manuális (2. lehetőség)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. módszer: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját
 >
 > 1. Nyissa meg a [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Válassza az **új regisztráció**lehetőséget.

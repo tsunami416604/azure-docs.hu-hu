@@ -12,21 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: cithomas
-ms.openlocfilehash: 8cd76a67715898972aac8fc24707085883da8618
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 653710d2f57385fa6d608a501f72b0dde2f3bb46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174668"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258487"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
 A Application Insights egy új SDK `Microsoft.ApplicationInsights.WorkerService`-t szabadít fel, amely a legalkalmasabb a nem HTTP-alapú számítási feladatokhoz, például az üzenetküldéshez, a háttérbeli feladatokhoz, a konzol alkalmazásaihoz stb. Az ilyen típusú alkalmazások nem rendelkeznek olyan bejövő HTTP-kérések fogalmával, mint a hagyományos ASP.NET/ASP.NET Core-webalkalmazások, és így Application Insights csomagok használata [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) alkalmazásokhoz nem támogatott.
 
 Az új SDK önmagában nem végez telemetria-gyűjteményt. Ehelyett más jól ismert Application Insights automatikus gyűjtők, például a [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), a [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), a [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) stb. Ez az SDK a telemetria-gyűjtés `IServiceCollection` engedélyezéséhez és konfigurálásához a bővítmények metódusait teszi elérhetővé.
-
-> [!NOTE]
-> Ez a cikk a Application Insights SDK for Worker szolgáltatásokból származó új csomagra mutat. Ez a csomag jelenleg béta csomagként érhető el. Ez a dokumentum akkor frissül, ha egy stabil csomag elérhető.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -43,7 +40,7 @@ Az [Application INSIGHTS SDK for Worker szolgáltatás](https://www.nuget.org/pa
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0-beta3" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
     </ItemGroup>
 ```
 
@@ -299,7 +296,7 @@ Az alábbi listában a Application Insights által automatikusan összegyűjtöt
 
 ### <a name="live-metrics"></a>Élő metrikák
 
-Az [élő metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) használatával gyorsan ellenőrizheti, hogy a Application Insights megfelelően van-e beállítva. Habár néhány percet is igénybe vehet, amíg a telemetria elindul a Portálon és az elemzésekben, az élő metrikák közel valós időben mutatják be a futó folyamat CPU-használatát. Más telemetria is megjeleníthet, például a kérelmeket, a függőségeket, a Nyomkövetéseket stb.
+Az [élő metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) segítségével gyorsan ellenőrizheti, hogy a Application Insights figyelése megfelelően van-e konfigurálva. Habár néhány percet is igénybe vehet, amíg a telemetria elindul a Portálon és az elemzésekben, az élő metrikák közel valós időben mutatják be a futó folyamat CPU-használatát. Más telemetria is megjeleníthet, például a kérelmeket, a függőségeket, a Nyomkövetéseket stb.
 
 ### <a name="ilogger-logs"></a>ILogger-naplók
 
@@ -311,31 +308,7 @@ A függőségi gyűjtemény alapértelmezés szerint engedélyezve van. [Ez](asp
 
 ### <a name="eventcounter"></a>EventCounter
 
-A [EventCounter](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)egy platformfüggetlen módszer a .NET/.net Core-ban lévő számlálók közzétételére és felhasználására. Bár ez a szolgáltatás korábban is létezett, nem voltak olyan beépített szolgáltatók, akik közzétették ezeket a számlálókat. A .NET Core 3,0-as verziótól kezdődően számos számláló ki van téve a CLR-számlálók, a processzor stb.
-
-Alapértelmezés szerint az SDK a következő számlálókat gyűjti (csak a .NET Core 3,0-as vagy újabb verziókban érhető el), és ezek a számlálók Metrikaböngésző vagy egy, a PerformanceCounter táblát célzó elemzési lekérdezés használatával kérhetők le. A számlálók neve "Category |" formában jelenik meg. Számláló ".
-
-|Category | Számláló|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
+`EventCounterCollectionModule`Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3,0-alkalmazásokból gyűjti össze a számlálók alapértelmezett készletét. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
 
 ### <a name="manually-tracking-additional-telemetry"></a>További telemetria manuális követése
 

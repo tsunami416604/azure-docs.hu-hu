@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ad690fa78f794b26b6cf496ea4485599486752b0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146978"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266045"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB Cassandra API-fiókba a Striim használatával
 
@@ -155,7 +155,7 @@ Ebben a szakaszban a Azure Cosmos DB Cassandra API fiókot fogja konfigurálni a
 
    ![Kapcsolódás a célhoz](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. A cél konfigurálása előtt győződjön meg róla, hogy hozzáadta a [Baltimore főtanúsítványt a Striim Java-környezetéhez](/java/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store).
+1. A cél konfigurálása előtt győződjön meg róla, hogy hozzáadta a [Baltimore főtanúsítványt a Striim Java-környezetéhez](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store).
 
 1. Adja meg a cél Azure Cosmos DB példány konfigurációs tulajdonságait, és a folytatáshoz válassza a **Mentés** lehetőséget. A következő fontos paramétereket érdemes megjegyezni:
 

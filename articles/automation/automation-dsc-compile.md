@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850666"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265132"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -67,7 +67,7 @@ $CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
 
 ###  <a name="basic-parameters"></a>Alapszintű paraméterek
 
-A DSC-konfigurációk paramétereinek deklarációja, beleértve a paramétereket és a tulajdonságokat, ugyanúgy működik, mint a Azure Automation runbookok. A runbook paraméterekkel kapcsolatos további tudnivalókért tekintse meg a [runbook](automation-starting-a-runbook.md) megkezdése Azure Automationban című témakört.
+A DSC-konfigurációk paramétereinek deklarációja, beleértve a paramétereket és a tulajdonságokat, ugyanúgy működik, mint a Azure Automation runbookok. A runbook paraméterekkel kapcsolatos további tudnivalókért tekintse meg a [runbook Megkezdése Azure Automationban](automation-starting-a-runbook.md) című témakört.
 
 Az alábbi példa két, **FeatureName** és **IsPresent**nevű paramétert használ a tulajdonságok értékeinek meghatározásához a **ParametersExample.** a fordítás során generált minta csomópont-konfigurációban.
 
@@ -259,7 +259,7 @@ Az aláírt csomópontok konfigurációját helyileg ellenőrzik a DSC-ügynök 
 > [!NOTE]
 > A csomópont-konfigurációs fájlok nem lehetnek nagyobbak 1 MB-nál, hogy azt Azure Automationba lehessen importálni.
 
-A csomópont-konfigurációk aláírásával kapcsolatos további információkért lásd: [a WMF 5,1-es verziójának fejlesztése – a konfiguráció és a modul aláírása](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+A csomópont-konfigurációk aláírásával kapcsolatos további információkért lásd: [a WMF 5,1-es verziójának fejlesztése – a konfiguráció és a modul aláírása](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Konfiguráció fordítása a Windows PowerShellben
 

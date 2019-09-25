@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: d77557f6d5d6a7bb741b9ff6caa4ea8f76db19c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567870"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262164"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez
 
@@ -44,13 +44,13 @@ Ha a teljesítmény romlása problémát észlelt több megfigyelt metrika alapj
 
 ![Adatbázis-teljesítmény elemzésének munkafolyamata](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-Az adatbázis-teljesítménnyel kapcsolatos problémák méréséhez és észleléséhez használt mérőszámok lekérdezési időtartamon, időtúllépési kérelmeken, túlzott várakozási időpontokon és hibás kérelmeken alapulnak. A metrikákkal kapcsolatos további információkért tekintse meg [](sql-database-intelligent-insights.md#detection-metrics) a jelen dokumentum észlelési mérőszámok című szakaszát.
+Az adatbázis-teljesítménnyel kapcsolatos problémák méréséhez és észleléséhez használt mérőszámok lekérdezési időtartamon, időtúllépési kérelmeken, túlzott várakozási időpontokon és hibás kérelmeken alapulnak. A metrikákkal kapcsolatos további információkért tekintse meg a jelen dokumentum [észlelési mérőszámok](sql-database-intelligent-insights.md#detection-metrics) című szakaszát.
 
 Azonosított SQL Database a teljesítmény romlását a diagnosztikai naplóban a következő tulajdonságokkal rendelkező intelligens bejegyzésekből kell rögzíteni:
 
 | Tulajdonság             | Részletek              |
 | :------------------- | ------------------- |
-| Adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
+| adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
 | Megfigyelt időtartam tartománya | Az észlelt elemzés időszakának kezdési és befejezési időpontja. |
 | Érintett mérőszámok | A betekintést kiváltó mérőszámok: <ul><li>A lekérdezés időtartama növekszik [másodperc].</li><li>Túlzott várakozás [másodperc].</li><li>Időtúllépési kérelmek [százalék].</li><li>Hiba miatti kérelmek [százalék].</li></ul>|
 | Hatás értéke | A mért metrika értéke. |
@@ -96,7 +96,7 @@ Az alábbi példa egy Azure SQL Analyticson keresztül megtekintett Intelligent 
 
 ### <a name="set-up-with-event-hubs"></a>Beállítás a Event Hubs
 
-Ha Intelligent Insightst szeretne használni a Event Hubs, konfigurálja Intelligent Insights naplózási adatait, hogy a rendszer továbbítsa a Event Hubsba, lásd: [stream Azure Diagnostics-naplók a Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Ha Intelligent Insightst szeretne használni a Event Hubs, konfigurálja Intelligent Insights naplózási adatait, hogy a rendszer továbbítsa a Event Hubsba, lásd: [stream Azure Diagnostics-naplók a Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Ha Event Hubst szeretne használni az egyéni figyelés és a riasztások beállításához, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)témakört Event Hubs.
 
@@ -176,7 +176,7 @@ Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt a
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan lehet elhárítani a Intelligent Insightsokkal kapcsolatos [teljesítményproblémák SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Használja a [Intelligent Insights SQL Database Performance Diagnostics](sql-database-intelligent-insights-use-diagnostics-log.md)-naplót.
+- Ismerje meg, hogyan lehet [elhárítani a Intelligent Insightsokkal kapcsolatos teljesítményproblémák SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Használja a [Intelligent Insights SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Megtudhatja, hogyan [figyelheti SQL Database az SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/resource-logs-overview.md).

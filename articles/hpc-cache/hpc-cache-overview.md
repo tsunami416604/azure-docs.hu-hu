@@ -4,18 +4,18 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180684"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257016"
 ---
 # <a name="what-is-azure-hpc-cache-preview"></a>Mi az az Azure HPC Cache? (Előzetes verzió)
 
-Az Azure HPC cache nagy teljesítményű számítástechnikai (HPC) feladatokhoz biztosít hozzáférést az adatokhoz. Az Azure-ban gyorsítótárazott fájlok lehetővé teszik a felhőalapú számítástechnika méretezhetőségét még azon munkafolyamatok esetében is, amelyekben az adatait WAN-kapcsolatokon keresztül tárolják, például a helyi Datacenter hálózati tároló (NAS) környezetében.
+Az Azure HPC cache nagy teljesítményű számítástechnikai (HPC) feladatokhoz biztosít hozzáférést az adatokhoz. Az Azure-ban tárolt fájlok gyorsítótárazásával az Azure HPC cache a Felhőbeli számítástechnika méretezhetőségét a meglévő munkafolyamatba helyezi. Ez a szolgáltatás még olyan munkafolyamatok esetében is használható, ahol az adatait WAN-kapcsolatokon keresztül tárolják, például a helyi Datacenter hálózati tároló (NAS) környezetében.
 
 Az Azure HPC cache könnyen indítható és figyelhető a Azure Portal. A meglévő NFS-tárolók vagy új blob-tárolók az összesített névtér részévé válhatnak, ami egyszerűvé teszi az ügyfelek hozzáférését, még akkor is, ha megváltoztatja a háttérbeli tároló célját.
 
@@ -37,13 +37,13 @@ A Media és a Entertainment szolgáltatásban az Azure HPC cache felgyorsíthatj
 
 Számos élettudományok munkafolyamata kihasználhatja a kibővíthető fájl gyorsítótárazását.
 
-Egy Kutatóintézet, amely a genomikai elemzési munkafolyamatokat az Azure-ba szeretné irányítani, egyszerűen átválthatja őket az Azure HPC cache használatával. Mivel a gyorsítótár a POSIX-fájlok elérését biztosítja, a meglévő ügyféloldali munkafolyamatot a felhőben is futtathatja módosítások nélkül.
+Egy Kutatóintézet, amely a genomikai elemzési munkafolyamatokat az Azure-ba szeretné irányítani, egyszerűen átválthatja őket az Azure HPC cache használatával. Mivel a gyorsítótár a POSIX-fájlok elérését biztosítja, nincs szükség ügyféloldali módosításra a meglévő ügyfél-munkafolyamat felhőben való futtatásához.
 
 Az Azure HPC cache emellett kihasználható az olyan feladatok hatékonyságának javításához is, mint a másodlagos elemzés, a farmakológiai szimuláció vagy az AI-vezérelt rendszerképek elemzése.
 
 ### <a name="financial-services-analytics"></a>Pénzügyi szolgáltatások elemzése
 
-Az Azure HPC cache segítségével felgyorsíthatja a mennyiségi elemzési számításokat, a kockázatelemzési munkaterheléseket és a Monte Carlo szimulációkat, hogy a pénzügyi szolgáltatások vállalatai jobban betekintést nyerjenek a stratégiai döntések elvégzéséhez.
+Az Azure HPC cache üzembe helyezésével felgyorsíthatja a mennyiségi elemzési számításokat, a kockázatelemzési munkaterheléseket és a Monte Carlo szimulációkat, hogy a pénzügyi szolgáltatások vállalatai jobban betekintést nyerjenek a stratégiai döntések elvégzésére.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 

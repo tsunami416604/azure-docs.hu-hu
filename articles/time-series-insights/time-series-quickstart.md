@@ -10,13 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/29/2019
-ms.openlocfilehash: 04bd4378a0820444ab31c9c696e58fccf3026d14
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 09/23/2019
+ms.openlocfilehash: b5fb0c4de82d5ff5f5290127ec529787cabad64a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720887"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258359"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insightsszal
 
@@ -53,7 +53,7 @@ Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető
 
    A Time Series Insights megjelenít egy diagramot a megadott időkerethez. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
 
-   Az időkijelölési **panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
+   Az **időkijelölési panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
 
    [![Diagram](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
@@ -86,7 +86,7 @@ A rövid útmutató befejezése után a mintaadatokkal kísérletezve különbö
 Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
-1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások törlését vagy eltávolítását.
+1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
 ## <a name="next-steps"></a>További lépések
 

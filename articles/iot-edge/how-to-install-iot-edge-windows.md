@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877237"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266081"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>A Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren
 
@@ -42,6 +42,14 @@ Ebből a szakaszból megtekintheti, hogy a Windows-eszköz támogatja-e a IoT Ed
 
 Fejlesztési és tesztelési forgatókönyvek esetén a Windows-tárolók Azure IoT Edge a Windows 10 vagy a Windows Server 2019 (Build 17763) bármely olyan verziójára telepíthető, amely támogatja a containers szolgáltatást. Az éles környezetekben jelenleg támogatott operációs rendszerekről a [Azure IoT Edge támogatott rendszerek](support.md#operating-systems)című témakörben olvashat bővebben. 
 
+A IoT Core-eszközöknek tartalmaznia kell a IoT Core-Windows-tárolók választható funkcióját a IoT Edge futtatókörnyezet támogatásához. A következő parancs [távoli PowerShell-munkamenetben](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) való használatával ellenőrizhető, hogy a Windows-tárolók támogatottak-e az eszközön: 
+
+```powershell
+Get-Service vmcompute
+```
+
+Ha a szolgáltatás jelen van, akkor sikeres választ kaphat a **Futtatás**alatt felsorolt szolgáltatás állapotáról. Ha a vmcompute szolgáltatás nem található, az eszköz nem felel meg a IoT Edge követelményeinek. Forduljon a hardver szolgáltatóhoz, és kérje a funkció támogatását. 
+
 ### <a name="prepare-for-a-container-engine"></a>A Container Engine előkészítése 
 
 A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tároló motorra támaszkodik. Éles környezetekben a telepítési parancsfájlban található Moby Engine használatával Windows-tárolókat futtathat a Windows-eszközön. 
@@ -60,7 +68,7 @@ Amikor első alkalommal telepíti a IoT Edge futtatókörnyezetet az eszközön,
 
 A következő szakaszok ismertetik az új eszközön a IoT Edge telepítési parancsfájl általános használati eseteit és paramétereit. 
 
-### <a name="option-1-install-and-manually-provision"></a>1\. lehetőség: Telepítés és manuális üzembe helyezése
+### <a name="option-1-install-and-manually-provision"></a>1\. módszer: Telepítés és manuális üzembe helyezése
 
 Ebben az első lehetőségben egy IoT Hub által generált **eszköz-kapcsolódási karakterláncot** biztosít az eszköz kiépítéséhez. 
 

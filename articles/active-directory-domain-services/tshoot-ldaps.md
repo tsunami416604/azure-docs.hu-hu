@@ -1,50 +1,51 @@
 ---
-title: A (z) Azure AD Domain Services Secure LDAP (LDAPs) hibáinak megoldása | Microsoft Docs
-description: Azure AD Domain Services felügyelt tartomány Secure LDAP (LDAPs) hibáinak megoldása
+title: A Secure LDAP hibáinak megoldása a Azure AD Domain Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani egy Azure Active Directory Domain Services felügyelt tartomány biztonságos LDAP (LDAPs) megoldását
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: troubleshooting
+ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 96aa463441c9e0f21e2ef1aa27c566b94e1e5f4f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617052"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257875"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartomány Secure LDAP (LDAPs) hibáinak megoldása
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>A Azure Active Directory Domain Services felügyelt tartományhoz való biztonságos LDAP-kapcsolati problémák elhárítása
 
-## <a name="connection-issues"></a>Kapcsolódási problémák
-Ha a biztonságos LDAP használatával nem sikerül csatlakozni a felügyelt tartományhoz:
+A Lightweight Directory Access Protocol (LDAP) protokollt használó alkalmazások és szolgáltatások, amelyekkel a Azure Active Directory Domain Services (Azure AD DS) kommunikálnak, [a biztonságos LDAP használatára konfigurálhatók](tutorial-configure-ldaps.md). A biztonságos LDAP működéséhez meg kell nyitni egy megfelelő tanúsítványt és szükséges hálózati portot.
 
-* A biztonságos LDAP-tanúsítvány kiállítói láncának megbízhatónak kell lennie az ügyfélen. Dönthet úgy, hogy hozzáadja a legfelső szintű hitelesítésszolgáltatót a megbízható főtanúsítvány-tárolóhoz az ügyfélen a megbízhatósági kapcsolat létrehozásához.
-* Győződjön meg arról, hogy az LDAP-ügyfél (például az Ldp. exe) a biztonságos LDAP-végponthoz csatlakozik a DNS-név használatával, nem az IP-címmel.
-* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. A felügyelt tartományon a biztonságos LDAP-t a nyilvános IP-címen kell feloldani.
-* Ellenőrizze, hogy a felügyelt tartományhoz tartozó biztonságos LDAP-tanúsítvány rendelkezik-e a DNS-névvel a tulajdonos vagy a tulajdonos alternatív nevek attribútumában.
-* A virtuális hálózathoz tartozó NSG-beállításoknak engedélyeznie kell a forgalmat az internetről a 636-es portra. Ez a lépés csak akkor érvényes, ha az interneten keresztül engedélyezte a biztonságos LDAP-hozzáférést.
+Ez a cikk segítséget nyújt a biztonságos LDAP-hozzáférésekkel kapcsolatos hibák elhárításához az Azure AD DSban.
 
+## <a name="common-connection-issues"></a>Gyakori kapcsolatok problémái
 
-## <a name="need-help"></a>Segítség
-Ha továbbra sem sikerül csatlakozni a felügyelt tartományhoz biztonságos LDAP használatával, [forduljon a termék csapatához](contact-us.md) segítségért. A probléma diagnosztizálásához vegye fel a következő információkat:
-* Az Ldp. exe képernyőképe, amely a kapcsolatokat és a feladatátvételt hajtja végre.
-* Az Azure AD-bérlő azonosítója és a felügyelt tartomány DNS-tartományneve.
-* Annak a felhasználónévnek a pontos felhasználóneve, amelyet szeretne kötni.
+Ha nem sikerül az Azure AD DS felügyelt tartományhoz való kapcsolódás biztonságos LDAP használatával, tekintse át a következő hibaelhárítási lépéseket. Az egyes hibaelhárítási lépések után próbálkozzon újra az Azure AD DS felügyelt tartományhoz való kapcsolódással:
 
+* A biztonságos LDAP-tanúsítvány kiállítói láncának megbízhatónak kell lennie az ügyfélen. A megbízhatóság létrehozásához hozzáadhatja a legfelső szintű hitelesítésszolgáltatót (CA) a megbízható főtanúsítvány-tárolóhoz az ügyfélen.
+    * Győződjön meg róla, hogy [exportálja és alkalmazza a tanúsítványt az ügyfélszámítógépekre][client-cert].
+* Ellenőrizze, hogy a felügyelt tartományhoz tartozó biztonságos LDAP-tanúsítvány rendelkezik-e a DNS-névvel a *tulajdonos* vagy a *tulajdonos alternatív nevek* attribútumában.
+    * Tekintse át a [biztonságos LDAP-tanúsítványokra vonatkozó követelményeket][certs-prereqs] , és szükség esetén hozzon létre egy helyettesítő tanúsítványt.
+* Győződjön meg arról, hogy az LDAP-ügyfél, például az *Ldp. exe* csatlakozik a biztonságos LDAP-végponthoz egy DNS-név használatával, nem az IP-címmel.
+    * Az Azure AD DS felügyelt tartományra alkalmazott tanúsítvány nem tartalmazza a szolgáltatás IP-címeit, csak a DNS-neveket.
+* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. Az Azure AD DS felügyelt tartomány biztonságos LDAP-szolgáltatásának nyilvános IP-címére kell feloldania.
+    * Ha a DNS-név a belső IP-címhez lett feloldva, frissítse a DNS-rekordot a külső IP-cím feloldásához.
+* A külső kapcsolatok esetében a hálózati biztonsági csoportnak tartalmaznia kell egy olyan szabályt, amely engedélyezi az internetről a 636-as TCP-portra irányuló forgalmat.
+    * Ha az Azure AD DS felügyelt tartományhoz közvetlenül a virtuális hálózathoz csatlakoztatott erőforrások biztonságos LDAP szolgáltatásával tud csatlakozni, de külső kapcsolatok nélkül, akkor győződjön meg arról, hogy [létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a biztonságos LDAP-forgalom engedélyezéséhez][ldaps-nsg].
 
-## <a name="related-content"></a>Kapcsolódó tartalom
-* [Azure AD Domain Services – Első lépések útmutató](tutorial-create-instance.md)
-* [Azure AD Domain Services tartomány kezelése](tutorial-create-management-vm.md)
-* [Az LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
-* [Azure AD Domain Services Csoportházirend kezelése](manage-group-policy.md)
-* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
-* [Hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)
+## <a name="next-steps"></a>További lépések
+
+Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-ldaps]: tutorial-configure-ldaps.md
+[certs-prereqs]: tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap
+[client-cert]: tutorial-configure-ldaps.md#export-a-certificate-for-client-computers
+[ldaps-nsg]: tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet

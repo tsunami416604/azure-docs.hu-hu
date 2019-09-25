@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: 7584a884d41451c5a248b84a40eb45815bfb6bdf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240725"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261821"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Adatok összekapcsolásának Azure Information Protection
+
+> [!IMPORTANT]
+> Az Azure Sentinel Azure Information Protection adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Information Protection adatösszekötő konfigurálásával továbbíthatja a naplózási adatokat [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) az Azure sentinelbe. A Azure Information Protection segítségével szabályozhatja és biztonságossá teheti a bizalmas adatokat, függetlenül attól, hogy a felhőben vagy a helyszínen van tárolva.
 
@@ -54,10 +58,6 @@ Ha azonban a Azure Information Protection naplózási adatai egy másik Log Anal
 - Azure Information Protection hozzá lett adva a Azure Portalhoz. Ha segítségre van szüksége ezzel a lépéssel kapcsolatban, olvassa el [a Azure Information Protection hozzáadása a Azure Portalhoz](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)című témakört.
 
 ## <a name="connect-to-azure-information-protection"></a>Kapcsolódás Azure Information Protectionhoz
-
-> [!IMPORTANT]
-> Az Azure Sentinel Azure Information Protection adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha nem konfigurált Log Analytics munkaterületet Azure Information Protectionhoz, akkor kövesse az alábbi utasításokat, vagy módosítania kell az Azure Information Protection naplózási adatait tároló munkaterületet.
 

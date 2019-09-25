@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1262d34f93ecbcdb71586fd551d28fde477f92a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0a776c793bab9aee76cf338bc19c560ab700e787
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063945"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258194"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -73,7 +73,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 ## <a name="metadata"></a>Metaadatok
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
 | IdTokenAudience | Nem | A id_token célközönsége. Ha meg van adva, Azure AD B2C ellenőrzi, hogy a jogkivonat az identitás-szolgáltató által visszaadott jogcímben van-e, és megegyezik-e a megadott értékkel. |
@@ -84,7 +84,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | scope | Nem | Az OpenID Connect Core 1,0 specifikáció alapján meghatározott kérelem hatóköre. Például: `profile` `email`,,és. `openid` |
 | HttpBinding | Nem | A hozzáférési jogkivonat és a jogcímek jogkivonat-végpontjának várt HTTP-kötése. Lehetséges értékek: `GET` vagy `POST`.  |
 | ValidTokenIssuerPrefixes | Nem | Olyan kulcs, amely az egyes bérlők számára való bejelentkezéshez használható több-bérlős identitás-szolgáltató, például Azure Active Directory használata esetén. |
-| UsePolicyInRedirectUri | Nem | Azt jelzi, hogy az átirányítási URI létrehozásakor szabályzatot kell-e használni. Ha az alkalmazást az identitás-szolgáltatóban konfigurálja, meg kell adnia az átirányítási URI-t. Az átirányítási URI Azure ad B2Cre mutat `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` , (a login.microsoftonline.com változhat a Your-Tenant-Name.b2clogin.com használatával).  Ha megadja `false`, minden használt szabályzathoz hozzá kell adnia egy átirányítási URI-t. Például: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | Nem | Azt jelzi, hogy az átirányítási URI létrehozásakor szabályzatot kell-e használni. Ha az alkalmazást az identitás-szolgáltatóban konfigurálja, meg kell adnia az átirányítási URI-t. Az átirányítási URI a következőre `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`mutat: Azure ad B2C.  Ha megadja `false`, minden használt szabályzathoz hozzá kell adnia egy átirányítási URI-t. Például: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nem | Azt jelzi, hogy egy külső szolgáltatásra irányuló kérést hibaként kell-e megjelölni, ha a http-állapotkód a 5xx tartományban van. A mező alapértelmezett értéke: `false`. |
 | DiscoverMetadataByTokenIssuer | Nem | Azt jelzi, hogy a OIDC metaadatait fel kell-e deríteni a JWT jogkivonat kiállítójának használatával. |
 
@@ -92,34 +92,16 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka. A titkosítási kulcs csak akkor szükséges, ha a **response_types** - `code`metaadatok értéke. Ebben az esetben Azure AD B2C egy másik hívást kezdeményez a hozzáférési token engedélyezési kódjának cseréjéhez. Ha a metaadatok `id_token` értéke, akkor kihagyhatja a titkosítási kulcsot.  |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be `https://login.microsoftonline.com/te/tenant/oauth2/authresp`a (z) értéket. Ne felejtse el **lecserélni a bérlő nevét** (például contosob2c.onmicrosoft.com) vagy a bérlő azonosítóját. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
-
-Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** helyett, ügyeljen arra, hogy a login.microsoftonline.com helyett a b2clogin.com használja.
+Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`a (z) értéket. Ne felejtse el `{your-tenant-name}` lecserélni a bérlő nevét. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
 
 Példák:
 
 - [Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával](active-directory-b2c-custom-setup-msa-idp.md)
 - [Bejelentkezés Azure AD-fiókok használatával](active-directory-b2c-setup-aad-custom.md)
 - [Lehetővé teszi, hogy a felhasználók egyéni szabályzatok használatával jelentkezzenek be egy több-bérlős Azure AD-identitás-szolgáltatóba](active-directory-b2c-setup-commonaad-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

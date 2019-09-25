@@ -4,18 +4,18 @@ description: Az Azure-erőforrások és az Azure AD-hitelesítés felügyelt ide
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/19/2019
+ms.date: 09/24/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37eba245933bc94e9fb631abd3b4ff495f8c6d67
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f4a5ae01376358ca78cd804cc853489ca007217
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087603"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264232"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -63,7 +63,7 @@ Tekintse át az alábbi listát az Azure Virtual Machine Scale Sets felügyelt i
 | Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Rendszerhez rendelt | Elérhető | Elérhető | Elérhető | Elérhető |
-| Felhasználóhoz rendelt | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Felhasználóhoz rendelt | Elérhető | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure App Service (a régiókban, ahol elérhető):
 
@@ -76,8 +76,8 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 |Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Elérhető | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| Felhasználóhoz rendelt | Elérhető | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Elérhető | Elérhető | Nem ismert | Nem ismert |
+| Felhasználóhoz rendelt | Elérhető | Elérhető | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás [Azure](../../governance/blueprints/overview.md)-tervezetekkel való használatához:
 
@@ -89,7 +89,7 @@ Tekintse át az alábbi listát a felügyelt identitás [Azure](../../governance
 Felügyelt identitás típusa |Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | Rendszerhez rendelt | Elérhető | Elérhető | Elérhető | Elérhető |
-| Felhasználóhoz rendelt | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Felhasználóhoz rendelt | Elérhető | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Functions (a régiókban, ahol elérhető):
 
@@ -102,8 +102,8 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Előzetes verzió | Előzetes verzió | Nem állnak rendelkezésre adatok | Előzetes verzió |
-| Felhasználóhoz rendelt | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Előzetes verzió | Előzetes verzió | Nem ismert | Előzetes verzió |
+| Felhasználóhoz rendelt | Nem ismert | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Logic Apps (a régiókban, ahol elérhető):
 
@@ -114,8 +114,8 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| Felhasználóhoz rendelt | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Elérhető | Nem ismert | Nem ismert | Nem ismert |
+| Felhasználóhoz rendelt | Nem ismert | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Data Factory v2 (a régiókban, ahol elérhető):
 
@@ -128,8 +128,8 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Elérhető | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| Felhasználóhoz rendelt | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Elérhető | Elérhető | Nem ismert | Nem ismert |
+| Felhasználóhoz rendelt | Nem ismert | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát az Azure API Management felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
@@ -139,8 +139,8 @@ Tekintse át az alábbi listát az Azure API Management felügyelt identitásán
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Linux: Előzetes verzió<br>Windows: Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| Felhasználóhoz rendelt | Linux: Előzetes verzió<br>Windows: Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Linux: Előzetes verzió<br>Windows: Nem ismert | Nem ismert | Nem ismert | Nem ismert |
+| Felhasználóhoz rendelt | Linux: Előzetes verzió<br>Windows: Nem ismert | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Container Instances (a régiókban, ahol elérhető):
 
@@ -152,8 +152,8 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Rendszerhez rendelt | Elérhető | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
-| Felhasználóhoz rendelt | Előzetes verzió | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| Rendszerhez rendelt | Elérhető | Nem ismert | Nem ismert | Nem ismert |
+| Felhasználóhoz rendelt | Előzetes verzió | Nem ismert | Nem ismert | Nem ismert |
 
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Container Registry feladatokhoz (a régiókban, ahol elérhető):
 
@@ -224,14 +224,31 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 | Azure Germany |   | Nem érhető el |
 | Azure China 21Vianet |  | Nem érhető el |
 
+
+
+
+
+
+
+
+
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage-blobok és-várólisták
 
 | Felhő | Erőforrás-azonosító | State |
 |--------|------------|--------|
 | Azure globális | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Elérhető |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Elérhető |
-| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Elérhető |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Elérhető |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | Elérhető |
+| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | Elérhető |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | Elérhető |
+
+
+
+
+
+
+
+
+
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 

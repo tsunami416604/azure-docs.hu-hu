@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a25c5fed4fd88866f46a9ca254213cae5db893a4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063590"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258146"
 ---
 # <a name="social-accounts-claims-transformations"></a>A közösségi fiókok jogcímei átalakítások
 
@@ -43,7 +43,7 @@ A felhasználó alternativeSecurityId tulajdonságának JSON-ábrázolását hoz
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | key | Karakterlánc | A ClaimType, amely a közösségi identitás szolgáltatója által használt egyedi felhasználói azonosítót határozza meg. |
-| InputClaim | identitásszolgáltató | Karakterlánc | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
+| InputClaim | identityProvider | Karakterlánc | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
 | outputClaim | alternativeSecurityId | Karakterlánc | A ClaimsTransformation meghívása után létrehozott ClaimType. A közösségi fiók felhasználójának identitásával kapcsolatos információkat tartalmaz. A **kiállító** a `identityProvider` jogcím értéke. A **issuerUserId** a `key` jogcím értéke Base64 formátumban. |
 
 A jogcímek átalakítása `alternativeSecurityId` claimType létrehozásához. Ezt a közösségi identitás-szolgáltató technikai profiljai használják, például `Facebook-OAUTH`:. A következő jogcím-átalakítás fogadja a felhasználó közösségi fiókjának AZONOSÍTÓját és az identitás-szolgáltató nevét. A technikai profil kimenete egy JSON-karakterlánc-formátum, amely az Azure AD-címtár szolgáltatásaiban használható.
@@ -51,7 +51,7 @@ A jogcímek átalakítása `alternativeSecurityId` claimType létrehozásához. 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="socialIdpUserId" TransformationClaimType="key" />
+    <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
     <InputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="identityProvider" />
   </InputClaims>
   <OutputClaims>
@@ -138,7 +138,7 @@ Eltávolít egy **AlternativeSecurityId** egy **alternativeSecurityIdCollection*
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identitásszolgáltató | Karakterlánc | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
+| InputClaim | identityProvider | Karakterlánc | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
 | InputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes. A jogcím-átalakítás eltávolítja a identityProvider a gyűjteményből. |
 | outputClaim | gyűjtemény | alternativeSecurityIdCollection | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az új gyűjteményt, miután a identityProvider eltávolította a gyűjteményből. |
 

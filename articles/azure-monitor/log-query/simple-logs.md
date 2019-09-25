@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963446"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262171"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Egyszerű naplók a Azure Monitorban (előzetes verzió)
 A Azure Monitor a KQL nyelv használatával [gazdag felhasználói élményt](get-started-portal.md) nyújt a [naplók](log-query-overview.md) létrehozásához. Előfordulhat, hogy nincs szükség a KQL teljes teljesítményére, és az alapszintű lekérdezési követelményekhez inkább egyszerűsített felhasználói élményt szeretne. Az egyszerű naplók felülete lehetővé teszi, hogy alapszintű lekérdezéseket hozzon létre anélkül, hogy közvetlenül interakciót KQL. Az egyszerű naplókat KQL tanulási eszközként is használhatja, mivel kifinomultabb lekérdezésekre van szükség.
@@ -31,7 +31,7 @@ A Azure Monitor a KQL nyelv használatával [gazdag felhasználói élményt](ge
 Az egyszerű naplók a kiválasztott erőforráshoz tartozó *AzureDiagnostics*, *AzureMetrics*és *AzureActivity* táblából származó adatok lekérését végzik. 
 
 ## <a name="using-simple-logs"></a>Egyszerű naplók használata
-Navigáljon az Azure-előfizetésében található bármely Cosmos DB vagy Key Vaulthoz a [naplók log Analytics munkaterületen való összegyűjtéséhez konfigurált diagnosztikai beállításokkal](../platform/diagnostic-logs-stream-log-store.md). Az egyszerű naplók felületének megnyitásához kattintson a **figyelés** menü **naplók** elemére.
+Navigáljon az Azure-előfizetésében található bármely Cosmos DB vagy Key Vaulthoz a [naplók log Analytics munkaterületen való összegyűjtéséhez konfigurált diagnosztikai beállításokkal](../platform/resource-logs-collect-storage.md). Az egyszerű naplók felületének megnyitásához kattintson a **figyelés** menü **naplók** elemére.
 
 ![Menü](media/simple-logs/menu.png)
 
@@ -44,7 +44,7 @@ A lekérdezés eredményeinek megtekintéséhez kattintson a **Futtatás** gombr
 ## <a name="view-and-edit-kql"></a>KQL megtekintése és szerkesztése
 Válassza a **lekérdezéstervező** lehetőséget az egyszerű naplók lekérdezés által generált KQL megnyitásához a teljes log Analytics felületén. 
 
-![Lekérdezés-szerkesztő](media/simple-logs/query-editor.png)
+![Lekérdezésszerkesztő](media/simple-logs/query-editor.png)
 
 Közvetlenül szerkesztheti a KQL, és más funkciókat is használhat Log Analytics például szűrőket az eredmények pontosításához.
 

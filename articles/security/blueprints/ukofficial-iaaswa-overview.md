@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899947"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262797"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint-háromrétegű IaaS-webalkalmazás az Egyesült Királyság hivatalos tisztviselőjének
 
@@ -21,7 +21,7 @@ ms.locfileid: "69899947"
 
  Ez a cikk útmutatást és automatizálási parancsfájlokat tartalmaz egy olyan Microsoft Azure háromrétegű webes architektúra biztosításához, amely az Egyesült királyságbeli TISZTVISELŐként besorolt számos munkaterhelés kezeléséhez szükséges.
 
- Az infrastruktúra kódként való használatával a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok készlete olyan környezetet helyez üzembe, amely igazodik az Egyesült Királyság nemzeti Cyber Security Center (NCSC) 14 [Cloud biztonsági](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) alapelveihez és az Internet Security (CIS) központhoz. [ Kritikus biztonsági vezérlők](https://www.cisecurity.org/critical-controls.cfm).
+ Az infrastruktúra kódként való használatával a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok készlete olyan környezetet helyez üzembe, amely igazodik az Egyesült Királyság nemzeti Cyber Security Center (NCSC) 14 [Cloud biztonsági alapelveihez](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) és az Internet Security (CIS) központhoz. [ Kritikus biztonsági vezérlők](https://www.cisecurity.org/critical-controls.cfm).
 
  A NCSC javasoljuk, hogy az ügyfelek a Felhőbeli biztonsági alapelveit használják a szolgáltatás biztonsági tulajdonságainak kiértékelésére, valamint az ügyfél és a szállító közötti felelősség megosztásának megismerésére. Ezeknek az elveknek a segítségével megértettük a felelősségek felosztásának megértéséhez szükséges információkat.
 
@@ -172,7 +172,7 @@ Ezeket a virtuális hálózatok a rendszer továbbra is külön erőforrásként
 
 **Tevékenységek naplói**: Konfigurálja az [Azure-tevékenység naplóit](../../azure-monitor/platform/activity-logs-overview.md) , hogy betekintést nyújtson az előfizetése erőforrásaiban végrehajtott műveletekre.
 
-**Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az adott erőforrás által kibocsátott naplók. Ezek a naplók lehetnek például a Windows-események rendszernaplói, a blob-, a tábla-és a várólista-naplók.
+**Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az adott erőforrás által kibocsátott naplók. Ezek a naplók lehetnek például a Windows-események rendszernaplói, a blob-, a tábla-és a várólista-naplók.
 
 **Tűzfal naplófájljai**: A Application Gateway teljes körű diagnosztikai és hozzáférési naplókat biztosít. A tűzfalnaplók olyan Application Gateway-erőforrásokhoz érhetők el, amelyekhez engedélyezve van a WAF.
 
@@ -192,7 +192,7 @@ Ezeket a virtuális hálózatok a rendszer továbbra is külön erőforrásként
 
 **Felügyeleti biztonság**: Ez a terv lehetővé teszi, hogy a rendszergazdák megbízható forrásból származó RDP használatával csatlakozzanak a felügyeleti VNet és Jumpbox. A felügyeleti VNet hálózati forgalma a NSG használatával vezérelhető. Az 3389-es porthoz való hozzáférés olyan megbízható IP-címtartományból érkező forgalomra korlátozódik, amely hozzáfér a Jumpbox tartalmazó alhálózathoz.
 
-Az ügyfelek a felügyelet VNet és Jumpbox való csatlakozáskor is fontolóra vehetik a [fokozott biztonsági felügyeleti modell](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) használatát a környezet biztonságossá tételéhez. Azt javasoljuk, hogy a fokozott biztonságú ügyfelek esetében használjon egy emelt [szintű hozzáférési](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) munkaállomást és RDGateway-konfigurációt. A hálózati virtuális berendezések és a nyilvános/privát DMZ használata további biztonsági fejlesztéseket is biztosít.
+Az ügyfelek a felügyelet VNet és Jumpbox való csatlakozáskor is fontolóra vehetik a [fokozott biztonsági felügyeleti modell](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access) használatát a környezet biztonságossá tételéhez. Azt javasoljuk, hogy a fokozott biztonságú ügyfelek esetében használjon egy emelt [szintű hozzáférési munkaállomást](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw) és RDGateway-konfigurációt. A hálózati virtuális berendezések és a nyilvános/privát DMZ használata további biztonsági fejlesztéseket is biztosít.
 
 **A hálózat biztonságossá tétele**: [Hálózati biztonsági csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md) A (NSG) minden alhálózat esetében ajánlott, hogy második szintű védelmet biztosítson a bejövő forgalomnak a helytelenül konfigurált vagy letiltott átjárók megkerülése érdekében. Példa – [Resource Manager-sablon egy NSG üzembe helyezéséhez](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups).
 

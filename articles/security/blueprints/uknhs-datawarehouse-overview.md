@@ -8,24 +8,24 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 3519b3f2c13349c3764e95bcc6898eeb73a79a81
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 937573155c79447d554c60ccc2cba449b4c1028d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946626"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259530"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-uk-nhs"></a>Azure Security and Compliance Blueprint: Adattárház az Egyesült királyságbeli NHS számára
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a Azure Security and Compliance Blueprint egy olyan adattárház-megoldásra vonatkozó hivatkozási architektúrát és útmutatást biztosít, amely alkalmas a bizalmas egészségügyi adatok biztonságos betöltésére, előkészítésére, tárolására és interakcióra. Ez a megoldás azt mutatja be, hogy az ügyfelek milyen módon tudnak megfelelni az [NHS Digital](https://digital.nhs.uk/)által közzétett, a [Cloud Security bevált gyakorlatának útmutatójában](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) ismertetett útmutatásoknak, amely az Egyesült Királyság (Egyesült Királyság) egészségügyi Minisztériumának és szociális ellátásának (DHSC) partnere. A Cloud Security helyes gyakorlatának útmutatója az Egyesült Királyság nemzeti Cyber Security Center (NCSC) által közzétett 14 [Felhőbeli biztonsági](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) alapelveken alapul.
+Ez a Azure Security and Compliance Blueprint egy olyan adattárház-megoldásra vonatkozó hivatkozási architektúrát és útmutatást biztosít, amely alkalmas a bizalmas egészségügyi adatok biztonságos betöltésére, előkészítésére, tárolására és interakcióra. Ez a megoldás azt mutatja be, hogy az ügyfelek milyen módon tudnak megfelelni az [NHS Digital](https://digital.nhs.uk/)által közzétett, a [Cloud Security bevált gyakorlatának útmutatójában](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) ismertetett útmutatásoknak, amely az Egyesült Királyság (Egyesült Királyság) egészségügyi Minisztériumának és szociális ellátásának (DHSC) partnere. A Cloud Security helyes gyakorlatának útmutatója az Egyesült Királyság nemzeti Cyber Security Center (NCSC) által közzétett 14 [Felhőbeli biztonsági alapelveken](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) alapul.
 
 Ez a hivatkozási architektúra, a megvalósítási útmutató és a veszélyforrás-modell arra szolgál, hogy az ügyfelek számára alapvető fontosságúak legyenek az adott követelményekhez való alkalmazkodáshoz, és nem használhatók éles környezetben, további konfiguráció nélkül. Az ügyfelek felelősek az architektúrával létrehozott megoldások megfelelő biztonsági és megfelelőségi felmérésének elvégzéséért, mivel a követelmények az egyes ügyfelek implementációjának sajátosságai alapján változhatnak.
 
 ## <a name="architecture-diagram-and-components"></a>Architektúra ábrája és összetevői
 
-Ez a megoldás egy olyan hivatkozási architektúrát biztosít, amely nagy teljesítményű és biztonságos felhőalapú adattárházat valósít meg. Ebben az architektúrában két különálló adatréteg található: az egyik, hogy az adatok importálása, tárolása és előkészítése fürtözött SQL-környezetben történik, és egy másik a Azure SQL Data Warehouse, ahol az adatok betöltésére egy kinyerési, átalakítási és betöltési eszköz (például a nyersanyag) használatával kerül be. [ ](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase)T-SQL-lekérdezések) feldolgozásra. Ha az adattárolást Azure SQL Data Warehouse tárolja, az elemzések nagy léptékben futhatnak.
+Ez a megoldás egy olyan hivatkozási architektúrát biztosít, amely nagy teljesítményű és biztonságos felhőalapú adattárházat valósít meg. Ebben az architektúrában két különálló adatréteg található: az egyik, hogy az adatok importálása, tárolása és előkészítése fürtözött SQL-környezetben történik, és egy másik a Azure SQL Data Warehouse, ahol az adatok betöltésére egy kinyerési, átalakítási és betöltési eszköz (például a [nyersanyag) használatával kerül be. ](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase)T-SQL-lekérdezések) feldolgozásra. Ha az adattárolást Azure SQL Data Warehouse tárolja, az elemzések nagy léptékben futhatnak.
 
 Az Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás SQL Server Reporting Servicest tartalmaz a jelentések gyors létrehozásához a Azure SQL Data Warehouse. Az összes SQL-forgalom SSL-titkosítással rendelkezik az önaláírt tanúsítványok belefoglalásával. Az ajánlott eljárás az, hogy az Azure megbízható hitelesítésszolgáltató használatát javasolja a fokozott biztonság érdekében.
 
@@ -64,7 +64,7 @@ Ez a megoldás az alábbi Azure-szolgáltatásokat használja. Az üzembe helyez
     - (1)/16 hálózat
     - (4)/24 hálózat
     - (4) hálózati biztonsági csoportok
-- Recovery Services-tároló
+- Helyreállítási tár
 - SQL Data Warehouse
 - SQL Server Reporting Services
 
@@ -119,9 +119,9 @@ Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel 
 
 - [Active Directory a hitelesítés és az engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az adatbázis-felhasználók és más Microsoft-szolgáltatások Identitáskezelés kezelését egy központi helyen.
 - Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
-- Azure SQL Database úgy van konfigurálva, hogy [transzparens](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)adattitkosítást használjon, amely valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
+- Azure SQL Database úgy van konfigurálva, hogy [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használjon, amely valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
 - A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
-- Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
+- Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
 - A [titkosított oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg az adatbázis-rendszeren belüli egyszerű szövegként. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 - [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) korlátozza a bizalmas adatok megjelenítését azáltal, hogy az adatokat nem Kiemelt felhasználók vagy alkalmazások számára fedi le. A dinamikus adatmaszkolás automatikusan képes észlelni a potenciálisan bizalmas adatokat, és javaslatot tesz a megfelelő maszkok alkalmazására. Ez segít az adathozzáférés azonosításában és csökkentésében, hogy ne lépjen ki az adatbázisból jogosulatlan hozzáférés útján. Az ügyfelek feladata a dinamikus adatmaszkolási beállítások módosítása az adatbázis-sémájuk betartásához.
 
@@ -157,7 +157,7 @@ Azure Security Center különböző észlelési képességekkel figyelmezteti az
 
 A Azure Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosít, így egyszerűbbé válik az ügyfelek számára a potenciális biztonsági problémák felderítése és kezelése. Az egyes észlelt fenyegetésekkel kapcsolatos [fenyegetési intelligenciáról szóló jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) jön létre, amely segít az incidensek megválaszolásában a fenyegetések kivizsgálásában és szervizelését.
 
-Ez a hivatkozási architektúra emellett a sebezhetőségi [felmérést](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) is felhasználja Azure Security Centerban. A konfigurálást követően a partner ügynök (például a Qualys) biztonsági réseket küld a partner felügyeleti platformjának. A partner felügyeleti platformja pedig visszaigazolja a biztonsági réseket és az állapot-figyelési adatvédelmet Azure Security Center, így az ügyfelek gyorsan azonosíthatják a sebezhető virtuális gépeket.
+Ez a hivatkozási architektúra emellett a [sebezhetőségi felmérést](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) is felhasználja Azure Security Centerban. A konfigurálást követően a partner ügynök (például a Qualys) biztonsági réseket küld a partner felügyeleti platformjának. A partner felügyeleti platformja pedig visszaigazolja a biztonsági réseket és az állapot-figyelési adatvédelmet Azure Security Center, így az ügyfelek gyorsan azonosíthatják a sebezhető virtuális gépeket.
 
 ### <a name="business-continuity"></a>Az üzletmenet folytonossága
 
@@ -165,11 +165,11 @@ Ez a hivatkozási architektúra emellett a sebezhetőségi [felmérést](https:/
 
 **Recovery Services**tároló: Az [Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) -tároló a biztonsági mentési és az Azure-beli virtuális gépek összes konfigurációját védi ebben az architektúrában. A Recovery Services-tárolóval az ügyfelek a teljes virtuális gép visszaállítása nélkül állíthatják vissza a fájlokat és mappákat egy IaaS virtuális gépről.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A megőrzés a felhasználó által konfigurálható, akár 730 nap, hogy megfeleljen a szervezetre vonatkozó megőrzési követelményeknek.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A megőrzés a felhasználó által konfigurálható, akár 730 nap, hogy megfeleljen a szervezetre vonatkozó megőrzési követelményeknek.
 
 **Naplók Azure monitor**: Ezeket a naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer adattípusonként külön táblába rendezi az adatokat, ez az eredeti forrástól függetlenül lehetővé teszi az adatok együttes elemzését. Emellett a Azure Security Center integrálható Azure Monitor naplókkal, így az ügyfelek Kusto-lekérdezéseket használhatnak a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
@@ -205,11 +205,11 @@ A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat 
 
 Mivel a VPN-alagúton belüli forgalom egy helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft egy másik, még biztonságosabb kapcsolódási lehetőséget kínál. Az Azure ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak, kisebb késések és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok az interneten keresztül. Továbbá, mivel ez az ügyfél&#39;-távközlési szolgáltató közvetlen kapcsolata, az adatforgalom nem az interneten keresztül történik, ezért nem teszi elérhetővé.
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra.
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ### <a name="extract-transform-load-process"></a>Kinyerés – átalakítás – betöltési folyamat
 
-[](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) A kinyert adatok betölthetők Azure SQL Data Warehouseba anélkül, hogy külön kinyerési, átalakítási, betöltési vagy importálási eszközt kellene létrehoznia. A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft üzleti intelligenciával és elemzésével foglalkozó verem, valamint a SQL Server rendszerrel kompatibilis, külső gyártótól származó eszközök is használhatók.
+A kinyert adatok betölthetők Azure SQL Data Warehouseba anélkül, hogy külön kinyerési, átalakítási, betöltési vagy importálási eszközt kellene [létrehoznia](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) . A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft üzleti intelligenciával és elemzésével foglalkozó verem, valamint a SQL Server rendszerrel kompatibilis, külső gyártótól származó eszközök is használhatók.
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory telepítő
 

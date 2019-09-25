@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 626a6a5e0449d267b67653c2f63303226dd0c99d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699751"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260398"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Gyors útmutató: Azure Files megosztás létrehozása és kezelése Windows rendszerű virtuális gépekkel
 
@@ -46,11 +46,11 @@ Utána a fájlmegosztás létrehozása következik.
 
     ![Fájlok kiválasztása](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. Válassza a **+ fájlmegosztás**lehetőséget.
+1. Válassza a **fájlmegosztás**lehetőséget.
 
     ![Válassza a fájlmegosztás hozzáadása gombot](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. Nevezze el az új fájlmegosztás *qsfileshare* > adja meg az "1" értéket a kvótához > válassza a **Létrehozás**lehetőséget. A kvóta legfeljebb 5 TiB lehet, de ehhez a rövid útmutatóhoz csak 1 GiB szükséges.
+1. Nevezze el az új fájlmegosztás *qsfileshare* > adja meg az "1" értéket a **kvótához** > válassza a **Létrehozás**lehetőséget. A kvóta legfeljebb 5 TiB lehet, de ehhez a rövid útmutatóhoz csak 1 GiB szükséges.
 1. Hozzon létre egy új, *qsTestFile* nevű txt-fájlt a helyi gépen.
 1. Válassza ki az új fájlmegosztást, majd a fájlmegosztás helyén válassza a **feltöltés**lehetőséget.
 
@@ -64,7 +64,7 @@ Eddig létrehozott egy Azure Storage-fiókot és egy fájlmegosztást egyetlen f
 
 1. Ezután bontsa ki a menüt a portál bal oldalán, és válassza ki az **Erőforrás létrehozása** lehetőséget az Azure portál bal felső sarkában.
 1. Az **Azure Marketplace**-erőforrások fölött lévő keresési mezőben keressen a **Windows Server 2016 Datacenter** elemre, majd válassza a **Létrehozás** lehetőséget.
-1. Az **alapvető beállítások** lap **projekt részletei**területén válassza ki az ehhez a rövid útmutatóhoz létrehozott erőforráscsoportot.
+1. Az **alapvető beállítások** lap projekt részletei területén válassza ki az ehhez a rövid **útmutatóhoz**létrehozott erőforráscsoportot.
 
    ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
@@ -85,7 +85,7 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
 
    ![Csatlakozás az Azure-beli virtuális gépekhez a portálról](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat, hogy az **IP-cím** használatával csatlakozzon az *3389* portszámon keresztül, és válassza az **RDP-fájl letöltése**lehetőséget.
+1. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat, hogy az **IP-cím** használatával csatlakozzon az *3389* **portszámon** keresztül, és válassza az **RDP-fájl letöltése**lehetőséget.
 1. Nyissa meg a letöltött RDP-fájlt, és válassza a **Kapcsolódás** lehetőséget, amikor a rendszer kéri.
 1. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet *localhost\username*- &lt;ként&gt; , ahol a Felhasználónév a virtuális géphez létrehozott virtuális gép rendszergazdai felhasználóneve. Adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK gombra**.
 
@@ -100,7 +100,7 @@ Ezen a ponton már létrehozta az új virtuális gépet és csatolt egy adatleme
 
    ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
-1. A virtuális gépen nyissa meg a fájlkezelőt, és válassza ki **ezt a számítógépet** az ablakban. Ez a kijelölés megváltoztatja a menüszalagon elérhető menüket. A **számítógép** menüben válassza a **hálózati meghajtó csatlakoztatása**lehetőséget.
+1. A virtuális gépen nyissa meg a **fájlkezelőt** , és válassza ki **ezt a számítógépet** az ablakban. Ez a kijelölés megváltoztatja a menüszalagon elérhető menüket. A **számítógép** menüben válassza a **hálózati meghajtó csatlakoztatása**lehetőséget.
 1. Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat. Ha követte az ebben a rövid útmutatóban szereplő elnevezési javaslatokat, másolja  *\\a qsstorageacct. file. Core. Windows. net\qsfileshare fájlt* a **Jegyzettömbből**.
 
    Győződjön meg arról, hogy mindkét jelölőnégyzet be van jelölve.
@@ -129,7 +129,7 @@ Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 ## <a name="browse-a-share-snapshot"></a>Megosztási pillanatkép tallózása
 
 1. A fájlmegosztás lapon válassza a **Pillanatképek megtekintése**elemet.
-1. A **fájlmegosztás** -Pillanatképek panelen válassza ki az első pillanatképet a listában.
+1. A **fájlmegosztás-Pillanatképek** panelen válassza ki az első pillanatképet a listában.
 
    ![Az időbélyegek listájában kiválasztott pillanatkép](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
@@ -147,7 +147,7 @@ Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 ## <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
 
 1. A fájlmegosztás lapon válassza a **Pillanatképek megtekintése**elemet.
-1. A **fájlmegosztás** -Pillanatképek panelen válassza ki a listában az utolsó pillanatképet, majd kattintson a **Törlés**gombra.
+1. A **fájlmegosztás-Pillanatképek** panelen válassza ki a listában az utolsó pillanatképet, majd kattintson a **Törlés**gombra.
 
    ![Törlés gomb](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 

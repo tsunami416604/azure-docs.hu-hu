@@ -3,8 +3,7 @@ title: Azure PowerShell-példaszkript – Blobok migrálása tárfiókok közöt
 description: Egy Azure Storage-fiókban található blobok másolása egy másik fiókba az AzCopy használatával.
 services: storage
 documentationcenter: na
-author: roygara
-manager: jeconnoc
+author: normesta
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
-ms.author: rogarana
-ms.openlocfilehash: 88eb97a206bc75bc9635da90eb9d48818ceef0f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: normesta
+ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61365558"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260626"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 
@@ -26,7 +25,7 @@ Ez a példaszkript minden blobobjektumot átmásol a felhasználó által megado
 
 Ehhez a `Get-AzStorageContainer` parancsot használja, amely felsorolja egy adott tárfiók összes tárolóját. A példa ezután AzCopy-parancsokat ad ki, amelyek minden tárolót átmásolnak a forrástárfiókból a céltárfiókba. Bármilyen hiba esetén a példa újrapróbálkozik $retryTimes alkalommal (az alapértelmezett érték 3, ami a `-RetryTimes` paraméterrel módosítható). Ha minden újrapróbálkozáskor hiba történik, a felhasználó újrafuttathatja a szkriptet úgy, hogy a `-LastSuccessContainerName` paraméterrel megadja a példa számára az utolsó sikeresen átmásolt tárolót. A példa ekkor ettől a ponttól folytatja a tárolók másolását.
 
-Ez a minta Azure PowerShell Storage moduljának verzióját igényli **0,7** vagy újabb. A saját telepített verzióját a `Get-Module -ListAvailable Az.storage` paranccsal ellenőrizheti. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. 
+Ehhez a mintához a Azure PowerShell Storage modul **0,7** -es vagy újabb verziójára van szükség. A saját telepített verzióját a `Get-Module -ListAvailable Az.storage` paranccsal ellenőrizheti. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

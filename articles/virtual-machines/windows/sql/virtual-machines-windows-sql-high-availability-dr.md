@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100603"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262893"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -78,7 +78,11 @@ A rendelkezésre állási csoportokkal, adatbázis-tükrözéssel, naplózással
 Az Azure-beli virtuális gépek, a tárolók és a hálózatkezelés eltérő működési jellemzőkkel rendelkeznek, mint a helyszíni, nem virtualizált informatikai infrastruktúra. Az Azure HADR SQL Server megoldásának sikeres megvalósítása megköveteli, hogy Ismerje meg ezeket a különbségeket, és tervezze meg a megoldását.
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Magas rendelkezésre állású csomópontok rendelkezésre állási csoportokban
-Az Azure-beli rendelkezésre állási csoportok lehetővé teszik a magas rendelkezésre állású csomópontok különálló tartalék tartományokra (tartalék) és frissítési tartományokra (frissítési) történő elhelyezését. Ahhoz, hogy az Azure-beli virtuális gépek ugyanarra a rendelkezésre állási csoportba kerüljenek, ugyanabban a felhőalapú szolgáltatásban kell őket telepíteni. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
+Az Azure-beli rendelkezésre állási csoportok lehetővé teszik a magas rendelkezésre állású csomópontok különálló tartalék tartományokra (tartalék) és frissítési tartományokra (frissítési) történő elhelyezését. A rendelkezésre állási csoport minden virtuális gépe egy frissítési tartományt és egy tartalék tartományt rendel hozzá a mögöttes Azure platformhoz. Ez az adatközponton belüli konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os Azure SLA-nak. A magas rendelkezésre állás beállításának konfigurálásához helyezze az összes részt vevő SQL Virtual Machines ugyanabban a rendelkezésre állási csoportba, hogy elkerülje az alkalmazás vagy az adatvesztést a karbantartási események során. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>Magas rendelkezésre állású csomópontok egy rendelkezésre állási zónában
+A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodási adatait azáltal, hogy legalább egy virtuális gépet elérhetővé tesz, és megfelel a 99,99%-os Azure SLA-nak. A magas rendelkezésre állás konfigurálásához helyezze a részt vevő SQL Virtual Machines a régióban elérhető Availability Zonesek között. A virtuális gépek és a virtuális gépek közötti adatátviteli díjak további rendelkezésre állási zónában lesznek. További információ: [rendelkezésre állási zónák](/azure/availability-zones/az-overview). 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>A feladatátvevő fürt működése az Azure hálózatkezelésében
 A nem RFC-kompatibilis DHCP szolgáltatás az Azure-ban azt eredményezheti, hogy a feladatátvevő fürt egyes konfigurációi sikertelenek lettek, mert a fürt hálózati neve ismétlődő IP-címet rendel hozzá, például ugyanazt az IP-címet, mint az egyik fürtcsomópont. Ez egy probléma a rendelkezésre állási csoportok megvalósításakor, amely a Windows feladatátvevő fürt szolgáltatástól függ.

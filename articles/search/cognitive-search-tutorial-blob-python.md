@@ -5,17 +5,16 @@ manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: c21b4d525e395dfb032a89631eb34156fe3e5b23
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 606194e28ca4f058a647aeb5224de19e754de078
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744716"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265723"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-oktatóanyag: Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 
@@ -35,7 +34,7 @@ A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásb
 Ez az oktatóanyag az ingyenes szolgáltatáson fut, de az ingyenes tranzakciók száma napi 20 dokumentumra korlátozódik. Ha az oktatóanyagot többször is futtatni szeretné ugyanazon a napon, használjon kisebb fájlméretet, hogy több futtatással is elfér.
 
 > [!NOTE]
-> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
+> Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
 >
 > A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását a [Azure Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
 
@@ -71,7 +70,7 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
+1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
 1. A tároló létrehozása után nyissa meg, és válassza a parancssáv **feltöltés** elemét az előző lépésben letöltött mintaképek feltöltéséhez.
 
@@ -154,7 +153,7 @@ print(r.status_code)
 
 A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-A Azure Portal keresési szolgáltatás irányítópultján ellenőrizze, hogy az **adatforrások** listában megjelenik-e az cogsrch-adatforrás. A lap frissítéséhez kattintson a **frissítés** gombra.
+A Azure Portal keresési szolgáltatás irányítópultján ellenőrizze, hogy az adatforrások listában megjelenik-e az cogsrch-adatforrás. A lap frissítéséhez kattintson a **frissítés** gombra.
 
 ![Adatforrások csempe a portálon](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Adatforrások csempe a portálon")
 
@@ -468,7 +467,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-![A szervezetek tartalmának lekérdezési indexe](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Az index lekérdezése a szervezetek tartalmának visszaküldéséhez")
+![A szervezetek tartalmának lekérdezési indexe](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Az index lekérdezése a szervezetek tartalmának") visszaküldéséhez
 
 Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 

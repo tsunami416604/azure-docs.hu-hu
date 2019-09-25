@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844829"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257101"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -25,15 +25,15 @@ A Azure Monitor egységes felhasználói felületet biztosít a különböző Az
 
 Az Azure Monitor hozzáférés metrikák több módot is biztosít. A [Azure Portal](https://portal.azure.com), a Azure monitor API-k (REST és .net) és az Analysis Solutions, például a Event Hubs használatával férhet hozzájuk. További információ: [Azure monitor mérőszámok](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-A metrikák alapértelmezés szerint engedélyezve vannak, és az elmúlt 93 nap adatait is elérheti. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md) az Azure monitorban.
+A metrikák alapértelmezés szerint engedélyezve vannak, és az elmúlt 93 nap adatait is elérheti. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../../azure-monitor/platform/resource-logs-overview.md) az Azure monitorban.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Hozzáférési metrikák a Azure Portal
 
-A metrikák a Azure Portalban is megfigyelhetők. Az alábbi példa azt szemlélteti, hogyan lehet megtekinteni a tranzakciókat a fiók szintjén.
+A metrikák a Azure Portalban is megfigyelhetők. Az alábbi példa azt szemlélteti, hogyan lehet megtekinteni a **tranzakciókat** a fiók szintjén.
 
 ![képernyőfelvétel a metrikák eléréséről a Azure Portal](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-A dimenziókat támogató mérőszámok esetében a mérőszámot a kívánt dimenzió értékkel szűrheti. Az alábbi példa azt szemlélteti, hogyan lehet megtekinteni egy adott művelethez tartozó tranzakciókat a fiók szintjén az **API-név** dimenzió értékének kiválasztásával.
+A dimenziókat támogató mérőszámok esetében a mérőszámot a kívánt dimenzió értékkel szűrheti. Az alábbi példa azt szemlélteti, hogyan lehet megtekinteni egy adott művelethez tartozó **tranzakciókat** a fiók szintjén az **API-név** dimenzió értékének kiválasztásával.
 
 ![képernyőfelvétel a Azure Portal dimenzióval rendelkező metrikák eléréséről](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -302,19 +302,19 @@ A következő ábrán egy Storage-fiók erőforrás-AZONOSÍTÓjának megadásá
 
 A következő ábrán az egyes tárolási szolgáltatások erőforrás-AZONOSÍTÓjának megadására szolgáló formátum látható.
 
-* Erőforrás-azonosító Blob service
+* Blob service-erőforrás azonosítója
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Erőforrás-azonosító Table service
+* Table service-erőforrás azonosítója
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Erőforrás-azonosító Queue szolgáltatás
+* Queue szolgáltatási erőforrás azonosítója
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Fájlszolgáltatások erőforrás-azonosítója
+* Fájlszolgáltatási erőforrás azonosítója
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -393,7 +393,7 @@ Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja
 | Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobot a BlockBlob tartalmazza. |
-| **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob](../blobs/storage-blob-storage-tiers.md)-szintjéről. A támogatott értékek a következők: <br/> <li>**Gyors**: Gyors elérési szint</li> <li>**Cool**: Hűvös szint</li> <li>**Archiválás**: Archiválási szint</li> <li>**Prémium**: Prémium szint a blokkos blobhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: A prémium szintű lap blob-típusai</li> <li>**Standard**: A standard oldal blobjának típusa</li> <li>Nem **Lépcsőzetes**: Az általános célú v1-es Storage-fiókhoz tartozó rétegek típusa</li> |
+| **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: Gyors elérési szint</li> <li>**Cool**: Hűvös szint</li> <li>**Archiválás**: Archiválási szint</li> <li>**Prémium**: Prémium szint a blokkos blobhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: A prémium szintű lap blob-típusai</li> <li>**Standard**: A standard oldal blobjának típusa</li> <li>Nem **Lépcsőzetes**: Az általános célú v1-es Storage-fiókhoz tartozó rétegek típusa</li> |
 | **GeoType** | Az elsődleges vagy a másodlagos fürtből származó tranzakció. Az elérhető értékek közé tartozik az **elsődleges** és a **másodlagos**. Az olvasási hozzáférés földrajzi redundáns tárolási (RA-GRS) szolgáltatásra vonatkozik, amikor objektumokat olvas a másodlagos bérlőről. |
 | **ResponseType** | Tranzakció válaszának típusa Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: Ügyféloldali szabályozási hiba. </li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérelem</li> <li> **SuccessWithThrottling**: Sikeres kérés, ha az SMB-ügyfél az első kísérlet (ek) során leszabályozza a szabályozást, de az újrapróbálkozások után sikeres lesz.</li> |
 | **ApiName** | A művelet neve. Példa: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Az összes művelet neve: [Document](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
@@ -417,7 +417,7 @@ Nem, az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 
 **Hogyan lehet új metrikákkal feltérképezni és áttelepíteni a klasszikus metrikákat?**
 
-Részletes leképezést talál a klasszikus metrikák és az [Azure Storage](./storage-metrics-migration.md)-metrikák áttelepítése során felhasználható új metrikák között.
+Részletes leképezést talál a klasszikus metrikák és az [Azure Storage-metrikák áttelepítése](./storage-metrics-migration.md)során felhasználható új metrikák között.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Mik a szolgáltatásfüggőségek az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
-description: Ismerje meg, hogyan feltételek használatával az Azure Active Directory feltételes hozzáférési szabályzat aktiválása.
+title: Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? | Microsoft Docs
+description: Megtudhatja, hogyan használhatók a feltételek a Azure Active Directory feltételes hozzáférésben a szabályzat kiváltásához.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,53 +11,56 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9aca2e4ea5e107358ff72e83562057830ece2cc
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509352"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257914"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mik a szolgáltatásfüggőségek az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
-Feltételes hozzáférési szabályzatok megadhatja a hozzáférési követelmények webhelyek és-szolgáltatások. A hozzáférési követelmények lehet például a többtényezős hitelesítés (MFA) megkövetelésével vagy [felügyelt eszközök](require-managed-devices.md). 
+A feltételes hozzáférési szabályzatok segítségével megadhatja a webhelyekhez és a szolgáltatásokhoz való hozzáférési követelményeket. A hozzáférési követelmények például többek között a többtényezős hitelesítés (MFA) vagy a [felügyelt eszközök](require-managed-devices.md)megkövetelését is tartalmazhatják. 
 
-Amikor közvetlenül hozzáférni egy webhelyre vagy szolgáltatásba, kapcsolódó szabályzat hatásának felmérése általában könnyebbé vált. Például ha egy szabályzatot, amely többtényezős Hitelesítést követel meg a SharePoint online-hoz konfigurált, MFA kényszerítése az egyes jelentkezzen be a SharePoint webes portálján. Ez viszont nem mindig a szabályzat hatásának értékelése, mert van más függőségekkel rendelkező felhőalapú alkalmazások lépünk. Például a Microsoft Teams biztosíthatnak a SharePoint online-ban az erőforrásokhoz való hozzáférés. Ezért ha az aktuális helyzethez éri el a Microsoft Teams, Önre is SharePoint többtényezős hitelesítési szabályzat.   
+Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely az MFA-t igényli a SharePoint Online-hoz, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes.   
 
-## <a name="policy-enforcement"></a>Szabályzatbetartatás 
+## <a name="policy-enforcement"></a>Szabályzat érvénybe léptetése 
 
-Ha egy szolgáltatásfüggőség konfigurálva van, a szabályzat alkalmazható korai kötésű vagy késői kötéssel használatával. 
+Ha a szolgáltatás függősége konfigurálva van, a szabályzatot a rendszer a korai vagy késői kötésű kényszerítéssel is alkalmazhatja. 
 
-- **Korai kötésű házirend betartatása** azt jelenti, hogy a felhasználó a hívó alkalmazás megnyitása előtt meg kell felelniük a függő szolgáltatások házirend. Például az a felhasználó meg kell felelniük az SharePoint-szabályzat az MS Teams szolgáltatásba aláírása előtt. 
-- **Késői kötéssel házirend betartatása** után a felhasználó jelentkezik be a hívó alkalmazás kerül sor. Kényszerítési van halasztva alkalmazás kérések, egy tokent az alárendelt szolgáltatás hívása során. Ilyenek például az MS Teams Planner és a SharePoint elérése Office.com eléréséhez. 
+- A **korai kötésű szabályzatok kényszerítése** azt jelenti, hogy a felhasználónak meg kell felelnie a függő szolgáltatási házirendnek a hívó alkalmazás elérése előtt. A felhasználóknak például meg kell felelniük a SharePoint-házirendnek, mielőtt bejelentkeznek az MS Teams szolgáltatásba. 
+- A **késői kötésű szabályzat kényszerítése** akkor következik be, amikor a felhasználó bejelentkezik a hívó alkalmazásba. Az alkalmazásra vonatkozó kérelmek meghívásakor a kényszerítés az alárendelt szolgáltatáshoz tartozó jogkivonat. Ilyenek például azok az MS-csapatok, akik a Plannerhez és a Office.com hozzáférnek a SharePointhoz. 
 
-Az alábbi ábra szemlélteti az MS Teams függőségei. Szilárd nyilak jelzik korai kötésű kényszerítési szaggatott nyílra, a Planner azt jelzi, hogy késői kötéssel kényszerítési. 
+Az alábbi ábra az MS Teams szolgáltatás függőségeit mutatja be. A folytonos nyilak jelzik a korai kötésű kényszerítést a Planner szaggatott nyila jelzi a késői kötések kényszerítését. 
 
-![Az MS Teams függőségei](./media/service-dependencies/01.png)
+![MS Teams szolgáltatás függőségei](./media/service-dependencies/01.png)
 
-Ajánlott eljárásként kell beállítani, gyakran használt szabályzatok különböző kapcsolódó alkalmazásokat és szolgáltatásokat, amikor csak lehetséges. Egy egységes biztonsági állapotáról kellene biztosítja a legjobb felhasználói élmény. Például egy gyakori házirend beállítása az Exchange Online, SharePoint online-hoz, Microsoft Teams és a Skype vállalati jelentősen csökkenti a váratlan utasításokat, amelyet a különböző szabályzatok alárendelt szolgáltatásokkal. 
+Ajánlott eljárásként a kapcsolódó alkalmazásokban és szolgáltatásokban közös házirendeket kell beállítania, amikor csak lehetséges. A konzisztens biztonsági testhelyzet a legjobb felhasználói élményt nyújtja. Például az Exchange Online, a SharePoint Online, a Microsoft Teams és a Skype for Business közös házirendjének beállítása jelentősen csökkenti az alárendelt szolgáltatásokra alkalmazott különböző házirendektől esetlegesen felmerülő váratlan kéréseket. 
 
-Az alábbi táblázat felsorolja a további függőségei, ahol meg kell felelniük az ügyfélalkalmazások  
+Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amelyeknek meg kell felelniük az ügyfélalkalmazások számára  
 
 | Ügyfélalkalmazások         | Alsóbb rétegbeli szolgáltatás                          | Kényszerítési |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | A Microsoft Azure Management (portál és API-t) | Korai kötésű |
-| A Microsoft tantermet | Exchange                                    | Korai kötésű |
-|                     | SharePoint                                  | Korai kötésű  |
+| Azure Data Lake     | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
+| Microsoft tanterem | Exchange                                    | Korai kötésű |
+|                     | SharePoint                                  | Korai kötésű |
 | Microsoft Teams     | Exchange                                    | Korai kötésű |
-|                     | MS Planner                                  | Késői kötéssel  |
+|                     | MS Planner                                  | Késői kötés  |
 |                     | SharePoint                                  | Korai kötésű |
 |                     | Skype Vállalati online verzió                   | Korai kötésű |
-| Office-portálon       | Exchange                                    | Késői kötéssel  |
-|                     | SharePoint                                  | Késői kötéssel  |
+| Office-portál       | Exchange                                    | Késői kötés  |
+|                     | SharePoint                                  | Késői kötés  |
 | Outlook-csoportok      | Exchange                                    | Korai kötésű |
 |                     | SharePoint                                  | Korai kötésű |
-| PowerApps           | A Microsoft Azure Management (portál és API-t) | Korai kötésű |
+| PowerApps           | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
 |                     | Windows Azure Active Directory              | Korai kötésű |
-| Project             | Dynamics CRM                                | Korai kötésű |
+| Projekt             | Dynamics CRM                                | Korai kötésű |
 | Skype Vállalati verzió  | Exchange                                    | Korai kötésű |
-| Visual Studio       | A Microsoft Azure Management (portál és API-t) | Korai kötésű |
+| Visual Studio       | Microsoft Azure-felügyelet (portál és API) | Korai kötésű |
+| Microsoft Forms     | Exchange                                    | Korai kötésű |
+|                     | SharePoint                                  | Korai kötésű |
+| Microsoft To-Do     | Exchange                                    | Korai kötésű |
 
 ## <a name="next-steps"></a>További lépések
 
-Feltételes hozzáférés alkalmazása a környezetben, lásd: [az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md).
+Ha meg szeretné tudni, hogyan valósítható meg a feltételes hozzáférés a környezetben, tekintse meg [a feltételes hozzáférés Megtervezése Azure Active Directoryban](plan-conditional-access.md)című témakört.

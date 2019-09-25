@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259152"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265869"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Információk feldolgozása és kinyerése a rendszerképekből a kognitív keresési helyzetekben
 
@@ -44,7 +43,7 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 
 A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 
-A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
+A imageAction az alábbi módon adhatja [](https://docs.microsoft.com/rest/api/searchservice/create-indexer) meg az indexelő definíciójában:
 
 ```json
 {
@@ -65,8 +64,8 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 | Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
 | data               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
-| szélessége              | A normalizált képek szélessége képpontban megadva |
-| magasság             | A normalizált képek magassága képpontban megadva |
+| Szélessége              | A normalizált képek szélessége képpontban megadva |
+| Magasság             | A normalizált képek magassága képpontban megadva |
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
 | originalHeight      | A rendszerkép eredeti magassága a normalizálás előtt. |
 | rotationFromOriginal |  A normalizált rendszerkép létrehozásához szükséges fokban lévő óramutató járása. 0 fok és 360 fok közötti érték. Ez a lépés beolvassa a metaadatokat a kamera vagy képolvasó által generált rendszerképből. Általában a 90 fok többszöröse. |

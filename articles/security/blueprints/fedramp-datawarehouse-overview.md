@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 79ed2b6e5d7bb600a79e12d19268035491f3fe08
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7fe5b45d7719b34fff8c09d08f510dc465f50104
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946865"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257407"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Azure Security and Compliance Blueprint: Adattárház a FedRAMP Automation szolgáltatáshoz
 
@@ -27,7 +27,7 @@ Ez a hivatkozási architektúra, a társított vezérlés megvalósítási útmu
 
 ## <a name="architecture-diagram-and-components"></a>Architektúra ábrája és összetevői
 
-Ez a megoldás egy adattárház-hivatkozási architektúrát biztosít, amely nagy teljesítményű és biztonságos felhőalapú adattárházat valósít meg. Ebben az architektúrában két különálló adatréteg található: az egyik, hogy az adatok importálása, tárolása és előkészítése fürtözött SQL-környezetben történik, és egy másik a Azure SQL Data Warehouse, ahol az adatok egy ETL eszközzel töltődnek be (például albase T [](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) -SQL-lekérdezések) feldolgozásra. Ha az adattárolást Azure SQL Data Warehouse tárolja, az elemzések nagy léptékben futhatnak.
+Ez a megoldás egy adattárház-hivatkozási architektúrát biztosít, amely nagy teljesítményű és biztonságos felhőalapú adattárházat valósít meg. Ebben az architektúrában két különálló adatréteg található: az egyik, hogy az adatok importálása, tárolása és előkészítése fürtözött SQL-környezetben történik, és egy másik a Azure SQL Data Warehouse, ahol az adatok egy ETL eszközzel töltődnek be (például [albase](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) T-SQL-lekérdezések) feldolgozásra. Ha az adattárolást Azure SQL Data Warehouse tárolja, az elemzések nagy léptékben futhatnak.
 
 Microsoft Azure számos jelentéskészítési és elemzési szolgáltatást kínál az ügyfelek számára. Ez a megoldás SQL Server Reporting Services (SSRS) szolgáltatást tartalmaz a jelentések gyors létrehozásához a Azure SQL Data Warehouse. Az összes SQL-forgalom SSL-titkosítással rendelkezik az önaláírt tanúsítványok belefoglalásával. Az ajánlott eljárás az, hogy az Azure megbízható hitelesítésszolgáltató használatát javasolja a fokozott biztonság érdekében.
 
@@ -65,7 +65,7 @@ Azure SQL Load Balancer
 
 Azure Active Directory
 
-Recovery Services-tároló
+Helyreállítási tár
 
 Azure Key Vault
 
@@ -117,7 +117,7 @@ AzureDiskEncryption
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva, amely az adatok és naplófájlok valós idejű titkosítását és visszafejtését hajtja végre a további információk védelme érdekében. A TDE biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
 -   [Always encrypted oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 -   [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) a hivatkozási architektúra telepítése után végezhető el. Az ügyfeleknek módosítaniuk kell a dinamikus adatmaszkolási beállításokat az adatbázis-sémájuk betartásához.
 
@@ -129,7 +129,7 @@ AzureDiskEncryption
 ### <a name="logging-and-audit"></a>Naplózás és naplózás
 [Azure monitor naplók](../azure-security-disk-encryption-overview.md) széles körű naplózást biztosítanak a rendszer és a felhasználók tevékenységéről, valamint a rendszer állapotáról. A [Azure monitor naplók](https://azure.microsoft.com/services/log-analytics/) megoldás az Azure-ban és a helyszíni környezetekben található erőforrások által generált adatokat gyűjti és elemzi.
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
 - **Tűzfal naplófájljai**: A Application Gateway teljes körű diagnosztikai és hozzáférési naplókat biztosít. A WAF-kompatibilis Application Gateway erőforrásai számára elérhetők a tűzfalak.
 - **Napló archiválása**: Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást, amely a megadott megőrzési időtartam 2 nap. Ezek a naplók Azure Monitor naplókat csatlakoznak a feldolgozáshoz, tároláshoz és irányítópult-jelentéskészítéshez.
 
@@ -166,7 +166,7 @@ Ha többet szeretne megtudni a Azure SQL Database biztonsági funkcióinak haszn
 A [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a biztonságos VPN-alagutat úgy kell konfigurálni, hogy biztonságosan létesítsen kapcsolatot az adattárház-hivatkozási architektúra részeként üzembe helyezett erőforrásokkal. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak, kisebb késések és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok az interneten keresztül. A ExpressRoute vagy a VPN megfelelő beállításával az ügyfelek hozzáadhatnak egy védelmi réteget az átvitelhez.
 
 ### <a name="extract-transform-load-etl-process"></a>Kinyerés-átalakítás-betöltési (ETL) folyamat
-[](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) A program az adatok Azure SQL Data Warehouseba való betöltését külön ETL vagy importálási eszköz nélkül tudja betölteni. A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft üzleti intelligenciával és elemzésével foglalkozó verem, valamint a SQL Server rendszerrel kompatibilis, külső gyártótól származó eszközök is használhatók.
+A program az adatok Azure SQL Data Warehouseba való betöltését külön ETL vagy importálási eszköz [nélkül tudja betölteni](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) . A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft üzleti intelligenciával és elemzésével foglalkozó verem, valamint a SQL Server rendszerrel kompatibilis, külső gyártótól származó eszközök is használhatók.
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory telepítő
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) elengedhetetlen az üzembe helyezés kezeléséhez és a környezettel kommunikáló személyzethez való hozzáféréshez. Egy meglévő Windows Server-Active Directory [négy kattintással](../../active-directory/hybrid/how-to-connect-install-express.md)integrálható a HRE. Az ügyfelek az üzembe helyezett Active Directory infrastruktúrát (tartományvezérlőket) egy meglévő HRE is összeállíthatják azáltal, hogy az üzembe helyezett Active Directory-infrastruktúrát egy HRE-erdő altartományának teszi.

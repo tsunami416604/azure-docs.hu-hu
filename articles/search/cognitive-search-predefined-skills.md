@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 8d367f7588feb892f667522a515ad4411bf96624
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 061d969269eb526b8f02f14de58e2da20c459a38
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183433"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265495"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Tartalom-gazdagítás előre definiált képességei (Azure Search)
 
@@ -46,7 +45,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Lehetővé teszi a kognitív keresési folyamat bővíthetőségét azáltal, hogy HTTP-hívást végez egy egyéni webes API-n |
 
 
-Az [egyéni képességek](cognitive-search-custom-skill-web-api.md)létrehozásával kapcsolatos útmutatásért tekintse meg az [Egyéni felület](cognitive-search-custom-skill-interface.md) definiálása [és példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
+Az [egyéni képességek](cognitive-search-custom-skill-web-api.md)létrehozásával kapcsolatos útmutatásért tekintse meg az [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md) és [példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
 
 ## <a name="see-also"></a>Lásd még
 

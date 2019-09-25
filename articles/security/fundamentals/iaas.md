@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061917"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262742"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -45,7 +45,7 @@ A virtuális gépek védelmének első lépése annak biztosítása, hogy csak a
 >
 
 **Ajánlott eljárás**: A virtuális gép hozzáférésének szabályozása.   
-**Részletek**: Az [Azure](/azure/azure-policy/azure-policy-introduction) -szabályzatok segítségével hozhat létre konvenciókat a szervezet erőforrásaihoz, és létrehozhat testreszabott házirendeket. Alkalmazza ezeket a házirendeket erőforrásokra, például [erőforráscsoportok](/azure/azure-resource-manager/resource-group-overview). Az erőforráscsoporthoz tartozó virtuális gépek öröklik a szabályzatokat.
+**Részletek**: Az [Azure-szabályzatok](/azure/azure-policy/azure-policy-introduction) segítségével hozhat létre konvenciókat a szervezet erőforrásaihoz, és létrehozhat testreszabott házirendeket. Alkalmazza ezeket a házirendeket erőforrásokra, például [erőforráscsoportok](/azure/azure-resource-manager/resource-group-overview). Az erőforráscsoporthoz tartozó virtuális gépek öröklik a szabályzatokat.
 
 Ha a szervezete számos előfizetéssel rendelkezik, akkor előfordulhat, hogy az előfizetések hozzáférésének, házirendjének és megfelelőségének hatékony kezelésére van szüksége. Az [Azure felügyeleti csoportjai](/azure/azure-resource-manager/management-groups-overview) az előfizetések feletti szintű hatókört biztosítanak. Az előfizetéseket felügyeleti csoportokba (tárolókban) rendszerezheti, és alkalmazhatja az Ön irányítási feltételeit ezekre a csoportokra. Egy felügyeleti csoportban lévő összes előfizetés automatikusan örökli a csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 
@@ -126,7 +126,7 @@ Szoftver – a hagyományos adatközpontok és az Azure-IaaS ajánlott eljárás
 ## <a name="manage-your-vm-security-posture"></a>A virtuális gép biztonsági helyzetének kezelése
 A előforduló kiberfenyegetésekkel kapcsolatban fejlődik. A virtuális gépek védelméhez olyan figyelési képességre van szükség, amely gyorsan képes észlelni a fenyegetéseket, megakadályozhatja az erőforrásokhoz való jogosulatlan hozzáférést, riasztásokat indíthat, és csökkentheti a téves pozitív állapotot
 
-A [Windows](../../security-center/security-center-virtual-machine.md) és a Linux rendszerű [virtuális gépek](../../security-center/security-center-linux-virtual-machine.md)biztonsági helyzetének figyeléséhez használja a [Azure Security Center](../../security-center/security-center-intro.md). Security Center a virtuális gépek védelmét a következő lehetőségek kihasználása révén biztosíthatja:
+A Windows és a Linux [rendszerű](../../security-center/security-center-virtual-machine.md) [virtuális gépek](../../security-center/security-center-linux-virtual-machine.md)biztonsági helyzetének figyeléséhez használja a [Azure Security Center](../../security-center/security-center-intro.md). Security Center a virtuális gépek védelmét a következő lehetőségek kihasználása révén biztosíthatja:
 
 - Operációs rendszer biztonsági beállításainak alkalmazása ajánlott konfigurációs szabályokkal.
 - Azonosíthatja és letöltheti a rendszerbiztonsági és a kritikus fontosságú, esetlegesen hiányzó frissítéseket.
@@ -137,7 +137,7 @@ A [Windows](../../security-center/security-center-virtual-machine.md) és a Linu
 
 A Security Center aktívan nyomon követheti a fenyegetéseket, és a potenciális fenyegetések a biztonsági riasztásokban vannak kitéve. A korrelált fenyegetéseket egyetlen, biztonsági incidensnek nevezett nézetben összesítjük.
 
-A Security Center [Azure monitor naplókban](/azure/log-analytics/log-analytics-overview)tárolja az adattárakat. Azure Monitor a naplók egy lekérdezési nyelvet és elemzési motort biztosítanak, amely betekintést nyújt az alkalmazások és erőforrások működésére. A rendszer az adatokat a [](../../batch/monitoring-overview.md)felhőben vagy a helyszínen lévő virtuális gépekre telepített Azure monitorokból, felügyeleti megoldásokból és ügynökökből is gyűjti. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
+A Security Center [Azure monitor naplókban](/azure/log-analytics/log-analytics-overview)tárolja az adattárakat. Azure Monitor a naplók egy lekérdezési nyelvet és elemzési motort biztosítanak, amely betekintést nyújt az alkalmazások és erőforrások működésére. A rendszer az adatokat a felhőben vagy a helyszínen lévő virtuális gépekre telepített [Azure monitorokból](../../batch/monitoring-overview.md), felügyeleti megoldásokból és ügynökökből is gyűjti. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
 
 Azok a szervezetek, amelyek nem kényszerítik ki az erős biztonságot a virtuális gépek számára, továbbra is tudatában vannak a jogosulatlan felhasználók lehetséges kísérleteinek a biztonsági ellenőrzések megkerülése érdekében
 
@@ -146,7 +146,7 @@ Az erőforrás-visszaélés akkor lehet probléma, ha a virtuális gép folyamat
 
 Javasoljuk, hogy a [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) használatával betekintést nyerjen az erőforrás állapotára. Azure Monitor funkciók:
 
-- [Erőforrás-diagnosztikai naplófájlok](../../azure-monitor/platform/diagnostic-logs-overview.md): Figyeli a virtuális gépek erőforrásait, és azonosítja a teljesítményt és a rendelkezésre állást befolyásoló lehetséges problémákat.
+- [Erőforrás-diagnosztikai naplófájlok](../../azure-monitor/platform/resource-logs-overview.md): Figyeli a virtuális gépek erőforrásait, és azonosítja a teljesítményt és a rendelkezésre állást befolyásoló lehetséges problémákat.
 - [Azure Diagnostics bővítmény](/azure/azure-monitor/platform/diagnostics-extension-overview): Figyelési és diagnosztikai képességeket biztosít a Windows rendszerű virtuális gépeken. Ezeket a képességeket engedélyezheti, ha a bővítményt a [Azure Resource Manager sablon](/azure/virtual-machines/windows/extensions-diagnostics-template)részeként is engedélyezi.
 
 Azok a szervezetek, amelyek nem figyelik a virtuális gépek teljesítményét, nem tudják megállapítani, hogy a teljesítménybeli minták bizonyos változásai normál vagy rendellenesek. Egy virtuális gép, amely a megszokottnál több erőforrást használ, a külső erőforrás vagy a virtuális gépen futó sérült folyamat támadását jelezhetik.
@@ -188,7 +188,7 @@ A virtuális gép közvetlen internetkapcsolatának figyelése és korlátozása
 **Részletek**: Az igény szerinti [(JIT)](../../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, ami csökkenti a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges. Ha a JIT engedélyezve van, Security Center a hálózati biztonsági csoport szabályának létrehozásával zárolja az Azure-beli virtuális gépek felé irányuló bejövő forgalmat. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat a JIT-megoldás vezérli.
 
 ## <a name="next-steps"></a>További lépések
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági](best-practices-and-patterns.md) eljárásaival és modelljeivel foglalkozó témakörben talál.
+Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:
 * Az [Azure Security csapatának blogja](https://blogs.msdn.microsoft.com/azuresecurity/) – naprakész információk az Azure Security legújabb frissítéseiről

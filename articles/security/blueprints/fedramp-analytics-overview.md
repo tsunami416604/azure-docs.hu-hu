@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946874"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257587"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure Security and Compliance Blueprint: FedRAMP-elemzés
 
@@ -41,7 +41,7 @@ A fokozott biztonság érdekében ez az architektúra Azure Active Directoryokka
 
 Azure SQL Database általában SQL Server Management Studio (SSMS) használatával történik, amely egy olyan helyi gépről fut, amely a Azure SQL Database biztonságos VPN-vagy ExpressRoute-kapcsolaton keresztüli elérésére van konfigurálva. **Az Azure javasolja a VPN-vagy Azure ExpressRoute-kapcsolat konfigurálását a felügyeleti és adatimportálási szolgáltatásokhoz a hivatkozási architektúra erőforráscsoporthoz.**
 
-![A FedRAMP] -referenciák architektúrájának diagramja (images/fedramp-analytics-reference-architecture.png?raw=true "A FedRAMP") -referenciák architektúrájának diagramja
+![A FedRAMP-referenciák architektúrájának diagramja](images/fedramp-analytics-reference-architecture.png?raw=true "A FedRAMP-referenciák architektúrájának diagramja")
 
 ### <a name="roles"></a>Szerepkörök
 Az elemzési terv három általános felhasználói típussal rendelkező forgatókönyvet vázol fel: az operatív felhasználót, az SQL/adatkezelőt és a rendszermérnöket. Az Azure szerepköralapú Access Control (RBAC) lehetővé teszi a pontos hozzáférés-kezelés megvalósítását a beépített egyéni szerepkörök használatával. A [szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md) konfigurálásához és az [előre definiált szerepkörök](../../role-based-access-control/built-in-roles.md)megvalósításához és végrehajtásához rendelkezésre álló erőforrások.
@@ -89,11 +89,11 @@ Mindegyik NSG meg van nyitva bizonyos portok és protokollok, hogy a megoldás b
 ### <a name="data-at-rest"></a>Inaktív adat
 Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel védi a nyugalmi állapotban lévő adatok védelmét.
 
-**Adatreplikálás** Azure Government két lehetőséget kínál az [](https://docs.microsoft.com/azure/storage/common/storage-redundancy)adatreplikálásra:
+**Adatreplikálás** Azure Government két lehetőséget kínál az [adatreplikálásra](https://docs.microsoft.com/azure/storage/common/storage-redundancy):
  - Az adatreplikálás alapértelmezett beállítása a **geo-redundáns tárolás (GRS)** , amely aszinkron módon tárolja az ügyféladatokat az elsődleges régión kívüli különálló adatközpontban. Ez biztosítja az adathelyreállítást az elsődleges adatközponthoz tartozó összes veszteségi esemény során.
  - A **helyileg redundáns tárolást (LRS)** az Azure Storage-fiók használatával is konfigurálhatja. A LRS olyan tárolási méretezési egységen belül replikálja az adatmennyiséget, amely ugyanabban a régióban található, mint amelyben az ügyfél létrehozza a fiókját. Az összes adattal párhuzamosan replikálódik, így biztosítva, hogy a rendszer ne veszítse el a biztonsági mentési adatmennyiséget az elsődleges tárolási skálázási egység meghibásodásakor.
 
-**Azure Storage** A titkosított adatoknak a nyugalmi követelmények kielégítése érdekében az ebben a viszonyítási architektúrában üzembe helyezett összes szolgáltatás kihasználja az [Azure Storage](https://azure.microsoft.com/services/storage/)-t, amely az adatok [Storage Service Encryptionekkel](../../storage/common/storage-service-encryption.md)való tárolását
+**Azure Storage** A titkosított adatoknak a nyugalmi követelmények kielégítése érdekében az ebben a viszonyítási architektúrában üzembe helyezett összes szolgáltatás kihasználja az Azure Storage-t, amely az adatok [Storage Service Encryptionekkel](../../storage/common/storage-service-encryption.md)való [tárolását](https://azure.microsoft.com/services/storage/)
 
 AzureDiskEncryption
 [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) a Windows BitLocker szolgáltatásával biztosítja a kötetek titkosítását az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vaultekkel a lemezes titkosítási kulcsok szabályozása és kezelése érdekében.
@@ -103,7 +103,7 @@ AzureDiskEncryption
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva, amely az adatok és naplófájlok valós idejű titkosítását és visszafejtését hajtja végre a további információk védelme érdekében. A TDE biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
 -   [Always encrypted oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 -   [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) a hivatkozási architektúra telepítése után végezhető el. Az ügyfeleknek módosítaniuk kell a dinamikus adatmaszkolási beállításokat az adatbázis-sémájuk betartásához.
 
@@ -111,7 +111,7 @@ AzureDiskEncryption
 A [Azure monitor](../../azure-monitor/overview.md) a figyelési adatok (például a tevékenységek naplói, metrikák és diagnosztikai adatok) teljes megjelenítését állítja elő, így az ügyfelek teljes rendszerállapot-képet hozhatnak létre.  
 [Azure monitor naplók](../azure-security-disk-encryption-overview.md) széles körű naplózást biztosítanak a rendszer és a felhasználók tevékenységéről, valamint a rendszer állapotáról. Az Azure-ban és a helyszíni környezetekben található erőforrások által generált adatokat gyűjti és elemzi.
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit és az Azure Blob Storage, Tables és üzenetsor-naplókat tartalmazzák.
 - **Tűzfal naplófájljai**: A Application Gateway teljes körű diagnosztikai és hozzáférési naplókat biztosít. A WAF-kompatibilis Application Gateway erőforrásai számára elérhetők a tűzfalak.
 - **Napló archiválása**: Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást, amely a megadott megőrzési időtartam 2 nap. Ezek a naplók Azure Monitor naplókat csatlakoznak a feldolgozáshoz, tároláshoz és irányítópult-jelentéskészítéshez.
 

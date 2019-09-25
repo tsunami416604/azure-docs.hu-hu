@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a9992fbaa20b0137fd503992fc9efba11c2dfd3b
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213493"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260744"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -58,7 +58,7 @@ Az ebben a szakaszban található információk azt feltételezik, hogy Azure Co
     Ha a __munkaterülethez tartozó tároló beállításjegyzékében__tárolt rendszerképeket használ, nem kell hitelesítenie magát a beállításjegyzékben. A hitelesítést a munkaterület kezeli.
 
     > [!WARNING]
-    > A munkaterülethez tartozó Azure Container Rzegistry akkor jön létre, amikor a munkaterülettel __először betanít vagy üzembe helyez egy modellt__ . Ha létrehozott egy új munkaterületet, de nem képzett vagy nem hozott létre modellt, akkor a munkaterülethez nem tartozik Azure Container Registry.
+    > A munkaterülethez tartozó Azure Container Registry akkor jön létre, amikor a munkaterületen __először betanít vagy telepít egy modellt__ . Ha létrehozott egy új munkaterületet, de nem képzett vagy nem hozott létre modellt, akkor a munkaterülethez nem tartozik Azure Container Registry.
 
     A munkaterület Azure Container Registry nevének beolvasásával kapcsolatos információkért tekintse meg a jelen cikk [tároló beállításjegyzékének beolvasása](#getname) című szakaszát.
 

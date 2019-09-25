@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai naplók a Media Services az Azure monitoron keresztül figyelése |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan irányíthatja, és megtekintheti a diagnosztikai naplók az Azure monitoron keresztül.
+title: Media Services diagnosztikai naplók figyelése Azure Monitor használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan irányíthatja és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,38 +13,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 233b043ffdc295fe94ed2e3ba837d4229848df22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795843"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261104"
 ---
-# <a name="monitor-media-services-diagnostic-logs"></a>A Media Services diagnosztikai naplók figyelése
+# <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
-[Az Azure Monitor](../../azure-monitor/overview.md) lehetővé teszi, hogy a figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan az alkalmazások hajt végre. Ez a részletes ismertetését a funkciót, és miért érdemes az Azure Media Services-metrikák és diagnosztikai naplók megtekintéséhez lásd: [figyelő Media Services-metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
 
-Ez a cikk bemutatja, hogyan adatainak átirányítása a tárfiókba, és nézze meg az adatokat. 
+Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage-fiókba, majd megtekintheti azokat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
-- Felülvizsgálat [figyelő Media Services-metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md).
+- Tekintse át [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
 
-## <a name="route-data-to-the-storage-account-using-the-portal"></a>Útvonal-adatok a storage-fiókba, a portál használatával
+## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
-1. Keresse meg a Media Services-fiókba, és kattintson a **diagnosztikai beállítások** alatt **figyelő**. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. 
+1. Navigáljon a Media Services fiókjához, és kattintson a **figyelés**lehetőségre a **diagnosztikai beállítások** elemre. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül. 
 
     ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs01.png)
 
-1. Kattintson a **diagnosztikai beállítás hozzáadása**.
+1. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
    Az erőforrások diagnosztikai beállítása annak definíciója, hogy *milyen* monitorozási adatokat kell átirányítani egy adott erőforrásból, és *hová* kell kerülniük ezeknek a monitorozási adatoknak.
 
 1. A megjelenő szakaszban adjon egy **nevet** a beállításnak, és jelölje be az **Archiválás tárfiókba** jelölőnégyzetet.
 
-    Válassza ki a tárfiókot, amelyhez hozzá szeretne küldeni a naplókat, és nyomja le **OK**.
+    Válassza ki azt a Storage-fiókot, amelyhez naplókat szeretne küldeni, majd nyomja meg **az OK**gombot.
 1. Jelölje be a **Napló** és a **Metrika** alatti jelölőnégyzeteket. Az erőforrás típusától függően előfordulhat, hogy csak az egyik lehetőség jelenik meg. Ezek a jelölőnégyzetek szabályozzák, hogy a napló- és metrikaadatok milyen, az erőforrástípushoz elérhető kategóriái kerülnek a kiválasztott célra, amely ebben az esetben a tárfiók.
 
    ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs02.png)
@@ -53,9 +53,9 @@ Ez a cikk bemutatja, hogyan adatainak átirányítása a tárfiókba, és nézze
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Útvonal-adatok a tárfiókba, a parancssori felületről
+## <a name="route-data-to-the-storage-account-using-the-cli"></a>Az adatútvonal továbbítása a Storage-fiókhoz a parancssori felület használatával
 
-Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, a következőt futtatná `az monitor diagnostic-settings` parancssori felületi parancsot: 
+A diagnosztikai naplók tárolási fiókban való tárolásának engedélyezéséhez futtassa a következő `az monitor diagnostic-settings` CLI-parancsot: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -83,7 +83,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
     --logs '[{"category": "KeyDeliveryRequests",  "enabled": true, "retentionPolicy": {"days": 3, "enabled": true }}]'
 ```
 
-## <a name="view-data-in-the-storage-account-using-the-portal"></a>A portál használatával a tárfiókban lévő adatok megtekintése
+## <a name="view-data-in-the-storage-account-using-the-portal"></a>A Storage-fiókban tárolt adatmegjelenítés a portál használatával
 
 Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
@@ -91,14 +91,14 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 1. A portálban navigáljon a bal oldali navigációs sávon található **Tárfiókok** szakaszhoz.
 1. Azonosítsa az előző szakaszban létrehozott tárfiókot, és kattintson rá.
-1. Kattintson a **Blobok**, majd a címkéjű tárolóra **insights-logs-keydeliveryrequests**. Ez az a tároló, amely tartalmaz, a naplók. Monitorozási adatok van vannak tárolókba osztva erőforrás-azonosítója, majd dátum és idő alapján.
+1. Kattintson a **Blobok**elemre, majd a tároló címkézett elemzések **– naplók – keydeliveryrequests**elemre. Ez az a tároló, amelyben a naplók szerepelnek. A figyelési adatok az erőforrás-azonosító alapján, majd dátum és idő szerint vannak kiosztva a tárolókban.
 1. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra.
 
  Most megtekintheti a tárfiókban tárolt JSON-eseményt.
 
-### <a name="examples-of-pt1hjson"></a>Példák a PT1H.json
+### <a name="examples-of-pt1hjson"></a>Példák a PT1H. JSON fájlra
 
-#### <a name="clear-key-delivery-log"></a>Kulcsok kézbesítési napló
+#### <a name="clear-key-delivery-log"></a>Kulcs kézbesítési naplójának törlése
 
 ```json
 {
@@ -136,7 +136,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 }
 ```
 
-#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine titkosított kulcskézbesítési napló
+#### <a name="widevine-encrypted-key-delivery-log"></a>Widevine titkosított kulcs kézbesítési naplója
 
 ```json
 {
@@ -176,9 +176,9 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md)
-* [Az Azure Monitor diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md)
-* [Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
+* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
+* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/resource-logs-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 

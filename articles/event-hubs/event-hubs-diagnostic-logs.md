@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822354"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260839"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Állítsa be az Azure event hub diagnosztikai naplók
 
 Az Azure Event hubs két típusú naplók tekintheti meg:
 
-* **[A Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md)** : Ezek a naplók rendelkezik egy feladat végrehajtott műveletekkel kapcsolatos információk. A naplók mindig engedélyezve van.
-* **[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md)** : A feladat minden, a egy részletesebb nézet, amely akkor fordul elő, a diagnosztikai naplók segítségével konfigurálhat. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
+* **[Tevékenységek naplói](../azure-monitor/platform/activity-logs-overview.md)** : Ezek a naplók a feladatokon végrehajtott műveletekkel kapcsolatos információkat tartalmaz. A naplók mindig engedélyezve van.
+* **[Diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md)** : A diagnosztikai naplókat úgy is konfigurálhatja, hogy a feladatokhoz tartozó összes elem részletes nézete legyen. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 
@@ -48,13 +48,13 @@ Alapértelmezés szerint le vannak tiltva a diagnosztikai naplók. Diagnosztikai
 
     ![Diagnosztikai naplók állapotának módosítása](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Állítsa be a kívánt; archívum cél Ha például egy storage-fiókot, egy event hubot vagy az Azure Monitor naplózza.
+5.  Állítsa be a kívánt archiválási célt; például egy Storage-fiók, egy Event hub vagy egy Azure Monitor napló.
 
 6.  Az új diagnosztikai beállítások mentéséhez.
 
 Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően naplók jelennek meg a beállított archiválási célzott, a **diagnosztikai naplók** ablaktáblán.
 
-Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md).
+Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnosztikai naplók kategóriák
 

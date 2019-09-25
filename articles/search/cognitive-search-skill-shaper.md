@@ -9,24 +9,23 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 22a8f891eaf72dbec9c1ec103508c81effb14b08
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186316"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265358"
 ---
 #   <a name="shaper-cognitive-skill"></a>Formáló kognitív képesség
 
 A **formáló** képesség több bemenetet egyesít egy [összetett típusba](search-howto-complex-data-types.md) , amelyet később a dúsítási folyamat során lehet hivatkozni. A **formáló** képességgel lényegében létrehozhat egy struktúrát, megadhatja a struktúra tagjainak nevét, és értékeket rendelhet hozzájuk az egyes tagokhoz. Példák a keresési forgatókönyvekben hasznos konszolidált mezőkre: az első és az utolsó név egyetlen struktúrába, városba és állapotba való egyesítése egyetlen struktúrába, vagy név és születésnap egyetlen struktúrában egyedi identitás létrehozásához.
 
-Emellett a [3](#nested-complex-types) . forgatókönyvben bemutatott **formáló** képesség egy opcionális *sourceContext* tulajdonságot is feltesz a bemenetbe. A *forrás* -és *sourceContext* tulajdonságok kölcsönösen kizárják egymást. Ha a bemenet a szakértelem kontextusában van, egyszerűen használja a *forrást*. Ha a bemenet a szakértelem kontextusa szerint *eltérő* kontextusban van, használja a *sourceContext*. A *sourceContext* meg kell adnia egy beágyazott bemenetet a forrásként kezelendő adott elemmel. 
+Emellett a [3. forgatókönyvben](#nested-complex-types) bemutatott **formáló** képesség egy opcionális *sourceContext* tulajdonságot is feltesz a bemenetbe. A *forrás* -és *sourceContext* tulajdonságok kölcsönösen kizárják egymást. Ha a bemenet a szakértelem kontextusában van, egyszerűen használja a *forrást*. Ha a bemenet a szakértelem kontextusa szerint *eltérő* kontextusban van, használja a *sourceContext*. A *sourceContext* meg kell adnia egy beágyazott bemenetet a forrásként kezelendő adott elemmel. 
 
-A kimeneti név mindig "output". Belsőleg a folyamat egy másik nevet (például a "analyzedText") is leképezheti az alábbi példákban látható módon, de a shapeer-képesség maga "output" értéket ad vissza a válaszban. Ez akkor lehet fontos, ha a dúsított dokumentumokat észleli, és az elnevezési eltérést észleli, vagy ha egyéni képességet hoz létre, és saját maga strukturálja a választ.
+A kimeneti név mindig "output". Belsőleg a folyamat egy másik nevet (például a "analyzedText") is leképezheti az alábbi példákban látható módon, de a **shapeer** -képesség maga "output" értéket ad vissza a válaszban. Ez akkor lehet fontos, ha a dúsított dokumentumokat észleli, és az elnevezési eltérést észleli, vagy ha egyéni képességet hoz létre, és saját maga strukturálja a választ.
 
 > [!NOTE]
-> A **formáló** képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services](cognitive-search-attach-cognitive-services.md)-erőforrást, hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
+> A **formáló** képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
@@ -35,7 +34,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 Vegyünk egy olyan forgatókönyvet, amelyben létre szeretne hozni egy *analyzedText* nevű struktúrát, amelynek két tagja van: *szöveg* és *hangulat*. Egy Azure Search indexben egy többrészes kereshető mező *összetett típusú* , és gyakran jön létre, ha a forrásadatok olyan összetett szerkezettel rendelkeznek, amely leképezi azt.
 
-Az összetett típusok létrehozásának másik megközelítése azonban a Shapeer -képességen keresztül történik. Ennek a képességnek a készségkészlet való belefoglalásával a készségkészlet-feldolgozás során a memóriában lévő műveletek az adatalakzatokat beágyazott struktúrákkal is kihasználhatják, amelyek ezután az index összetett típusára képezhetők le. 
+Az összetett típusok létrehozásának másik megközelítése azonban a **shapeer** -képességen keresztül történik. Ennek a képességnek a készségkészlet való belefoglalásával a készségkészlet-feldolgozás során a memóriában lévő műveletek az adatalakzatokat beágyazott struktúrákkal is kihasználhatják, amelyek ezután az index összetett típusára képezhetők le. 
 
 A következő példa a szaktudás megadása bemenetként adja meg a tagok nevét. 
 

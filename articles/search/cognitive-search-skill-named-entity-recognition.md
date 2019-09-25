@@ -9,17 +9,16 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: f91d0b17cfc984ccf56ad4a25ef2ece651dcbed5
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b152d5a48d49e78818602e7f66574937bebce2ac
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183337"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265765"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Elnevezett entitások felismerése – kognitív képesség
 
-Az **elnevezett entitás** -felismerési képességek nevű entitások szövegből való kibontása. Az elérhető entitások közé `person`tartoznak `location` a `organization`típusok és a.
+Az **elnevezett entitás-felismerési** képességek nevű entitások szövegből való kibontása. Az elérhető entitások közé `person`tartoznak `location` a `organization`típusok és a.
 
 > [!IMPORTANT]
 > Az elnevezett entitás-felismerési képesség már megszűnt a [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)helyett. A támogatás 2019. február 15-én megszűnt, és az API-t a 2019. május 2-án eltávolították a termékből. Kövesse az [elavult kognitív keresési ismeretekben](cognitive-search-skill-deprecated.md) szereplő javaslatokat a támogatott szaktudásra való áttéréshez.
@@ -40,7 +39,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Len
 
 A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | categories    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak:`de, en, es, fr, it`|
@@ -60,7 +59,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | locations  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
 | organizations  | Karakterláncok tömbje, amelyben minden sztring egy szervezetet jelöl. |
-| entitás | Összetett típusok tömbje. Minden összetett típus a következő mezőket tartalmazza: <ul><li>Kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (0 és 1 közötti érték, amely azt jelzi, hogy az érték tényleges entitás)</li></ul> |
+| Szervezetek | Összetett típusok tömbje. Minden összetett típus a következő mezőket tartalmazza: <ul><li>Kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (0 és 1 közötti érték, amely azt jelzi, hogy az érték tényleges entitás)</li></ul> |
 
 ##  <a name="sample-definition"></a>Minta definíciója
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989170"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262206"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
-Azure Monitor maximalizálja az alkalmazások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
+Az Azure Monitor az alkalmazások rendelkezésre állását és teljesítményét növeli a lehető legnagyobbra egy olyan átfogó megoldás biztosításával, amely a felhőből és a helyszíni környezetből származó telemetriaadatokat gyűjt, elemez, valamint műveleteket hajt végre az adatok alapján. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -57,7 +57,7 @@ A Azure Monitor különböző forrásokból származó adatokat gyűjthet. Úgy 
 
 Amint létrehoz egy Azure-előfizetést, és megkezdi az erőforrások, például a virtuális gépek és a webalkalmazások hozzáadását, Azure Monitor megkezdi az adatok gyűjtését.  A [Tevékenységnaplók](platform/activity-logs-overview.md) rögzítik az erőforrások létrehozását vagy módosítását. [](platform/data-platform.md) A metrikák megmutatják, hogyan végezheti el az erőforrást, és milyen erőforrásokat fogyaszt. 
 
-Kiterjesztheti az erőforrások tényleges működéséhez gyűjtött adatokat a [diagnosztika engedélyezésével](platform/diagnostic-logs-overview.md) és az [ügynökök](platform/agent-windows.md) számítási erőforrásokhoz való hozzáadásával. Ez összegyűjti az erőforrás belső műveletének telemetria, és lehetővé teszi különböző adatforrások konfigurálását a naplók és a metrikák összegyűjtéséhez a Windows és a Linux vendég operációs rendszerből. [](platform/agent-data-sources.md) 
+Kiterjesztheti az erőforrások tényleges működéséhez gyűjtött adatokat a [diagnosztika engedélyezésével](platform/resource-logs-overview.md) és az [ügynökök](platform/agent-windows.md) számítási erőforrásokhoz való hozzáadásával. Ez összegyűjti az erőforrás belső műveletének telemetria, és lehetővé teszi különböző adatforrások konfigurálását a naplók és a metrikák összegyűjtéséhez a Windows és a Linux vendég operációs rendszerből. [](platform/agent-data-sources.md) 
 
 A [app Services alkalmazás](app/azure-web-apps.md) vagy [a virtuális gép és a virtuálisgép-méretezési csoport alkalmazás](app/azure-vm-vmss-apps.md)figyelésének engedélyezésével engedélyezheti a Application Insights számára, hogy részletes információkat gyűjtsön az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és kivételek. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
@@ -79,7 +79,7 @@ A [tárolók Azure monitor](insights/container-insights-overview.md) a szolgált
 
 ![Tároló állapota](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>Virtuális gépekhez készült Azure Monitor
+### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
 [Azure monitor for VMS](insights/vminsights-overview.md) az Azure-beli virtuális gépeket (VM) a Windows-és Linux-alapú virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatokat és a más erőforrásokkal és külső folyamatok. A megoldás támogatja a helyszíni vagy más felhőalapú szolgáltató által üzemeltetett virtuális gépek teljesítményének és alkalmazási függőségeinek figyelését.  
 
 

@@ -8,17 +8,16 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 0e422d2453fe12280da9e9b0b5dc7aa391f97b9f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186401"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265510"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>A dúsított mezők leképezése kereshető indexre
 
-Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután meghatározta [a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. A bővített dokumentumokból az indexbe való áthelyezéshez mező-hozzárendelés szükséges.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. A bővített dokumentumokból az indexbe való áthelyezéshez mező-hozzárendelés szükséges.
 
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata

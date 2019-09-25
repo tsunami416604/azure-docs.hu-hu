@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850255"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259174"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 
@@ -32,7 +32,7 @@ Ha a konfigurációk az Azure állapot-konfigurációban való fordításával v
    - **Szintaktikai hibák**
    - **Logikai hibák**
 
-2. **A csomóponton található DSC-naplók megtekintése:** Ha a konfiguráció sikeresen lefordítva, de a csomópontra való alkalmazása meghiúsul, részletes információkat talál a naplókban. További információ a DSC-naplók kereséséről: [Hol találhatók a DSC](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)-eseménynaplók.
+2. **A csomóponton található DSC-naplók megtekintése:** Ha a konfiguráció sikeresen lefordítva, de a csomópontra való alkalmazása meghiúsul, részletes információkat talál a naplókban. További információ a DSC-naplók kereséséről: [Hol találhatók a DSC-eseménynaplók](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
    Emellett a [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) segíthet a DSC-naplók részletes adatainak elemzésében. Ha felveszi a kapcsolatot a támogatási szolgálattal, a rendszer ezeket a naplókat igényli a probléma diagnosztizálásához.
 
@@ -40,7 +40,7 @@ Ha a konfigurációk az Azure állapot-konfigurációban való fordításával v
 
    A **XDscDiagnostics** Azure-beli gépen való telepítéséhez használja az [az VM Run-Command](/cli/azure/vm/run-command) vagy a [meghívás-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). A portálon a **parancs futtatása** lehetőséget is használhatja a [Windows rendszerű virtuális gépen futtatott PowerShell-parancsfájlok futtatása](../../virtual-machines/windows/run-command.md)című cikkben ismertetett lépéseket követve.
 
-   További információ a **xDscDiagnostics**használatáról: a [XDSCDIAGNOSTICS használata a DSC-naplók elemzéséhez](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), valamint a xDscDiagnostics- [parancsmagok](https://github.com/PowerShell/xDscDiagnostics#cmdlets)létrehozásához.
+   További információ a **xDscDiagnostics**használatáról: a [XDSCDIAGNOSTICS használata a DSC-naplók elemzéséhez](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), valamint a [xDscDiagnostics-parancsmagok](https://github.com/PowerShell/xDscDiagnostics#cmdlets)létrehozásához.
 3. **Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület rendelkezik a szükséges modulokkal:** A kívánt állapot-konfiguráció a csomópontra telepített moduloktól függ.  Azure Automation állapot konfigurációjának használatakor importálja az Automation-fiókba a szükséges modulokat az [importálási modulok](../shared-resources/modules.md#import-modules)részben ismertetett lépések segítségével. A konfigurációk a modulok adott verzióihoz is tartozhatnak.  További információ: [modulok hibakeresése](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) használatakor előforduló gyakori hibák
@@ -109,7 +109,7 @@ Ez a hiba általában akkor fordul elő, ha a csomópontot egy konfiguráció ne
 * Győződjön meg arról, hogy a csomópontot a "csomópont-konfiguráció neve" értékkel rendeli hozzá, nem pedig a "konfiguráció nevét".
 * Csomópont-konfigurációt Azure Portal vagy PowerShell-parancsmaggal hozzárendelhet egy csomóponthoz.
 
-  * Ha Azure Portal használatával szeretne csomópont-konfigurációt hozzárendelni egy csomóponthoz, nyissa meg a **DSC** -csomópontok lapot, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció** kiosztása gombra.
+  * Ha Azure Portal használatával szeretne csomópont-konfigurációt hozzárendelni egy csomóponthoz, nyissa meg a **DSC-csomópontok** lapot, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció kiosztása** gombra.
   * Csomópont-konfiguráció PowerShell-parancsmaggal való hozzárendeléséhez használja a **set-AzureRmAutomationDscNode** parancsmagot.
 
 ### <a name="no-mof-files"></a>Forgatókönyv Egy konfiguráció lefordításakor a rendszer nem állított fel csomópont-konfigurációkat (MOF-fájlokat)
@@ -149,7 +149,7 @@ Frissítette a WMF-verziót, és sérült a WMI.
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma megoldásához kövesse a [DSC ismert problémák és korlátozások](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) című cikk utasításait.
+A probléma megoldásához kövesse a [DSC ismert problémák és korlátozások](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) című cikk utasításait.
 
 ### <a name="issue-using-credential"></a>Forgatókönyv Nem lehet hitelesítő adatot használni a DSC-konfigurációban
 
@@ -228,4 +228,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Az [Azure fórumain](https://azure.microsoft.com/support/forums/) Azure-szakértőktől kaphat válaszokat.
 * Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.
+* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999210"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262757"
 ---
 # <a name="introduction-to-azure-security"></a>Az Azure Security bemutatása
 ## <a name="overview"></a>Áttekintés
@@ -93,7 +93,7 @@ A Application Insights diagramokat és táblákat hoz létre, amelyek megmutatj�
 Ha összeomlik, hiba vagy teljesítménnyel kapcsolatos probléma merül fel, részletesen megkeresheti a telemetria adatokat az OK diagnosztizálásához. A szolgáltatás pedig e-maileket küld, ha az alkalmazás rendelkezésre állása és teljesítménye megváltozik. Az alkalmazás betekintése így értékes biztonsági eszközvé válik, mivel segít a titkosság, integritás és rendelkezésre állási biztonság hármasban való rendelkezésre állásában.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-A [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást kínál az Azure-infrastruktúrából ([műveletnapló](../../azure-monitor/platform/activity-logs-overview.md)) és minden egyes Azure-erőforrásból ([diagnosztikai naplókból](../../azure-monitor/platform/diagnostic-logs-overview.md)) származó adatokhoz. A Azure Monitor használatával riasztást kaphat az Azure-naplókban létrehozott biztonsággal kapcsolatos eseményekről.
+A [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást kínál az Azure-infrastruktúrából ([műveletnapló](../../azure-monitor/platform/activity-logs-overview.md)) és minden egyes Azure-erőforrásból ([diagnosztikai naplókból](../../azure-monitor/platform/resource-logs-overview.md)) származó adatokhoz. A Azure Monitor használatával riasztást kaphat az Azure-naplókban létrehozott biztonsággal kapcsolatos eseményekről.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 [Azure monitor naplók](https://azure.microsoft.com/documentation/services/log-analytics/) – az Azure-erőforrások mellett helyszíni és harmadik féltől származó felhőalapú infrastruktúra (például AWS) számára biztosít informatikai felügyeleti megoldást. Azure Monitorból származó adatok közvetlenül átirányíthatók Azure Monitor naplókba, így egy helyen láthatja a teljes környezet mérőszámait és naplóit.
@@ -141,7 +141,7 @@ Engedélyezheti vagy letilthatja a következő típusú naplókat:
 
 -   Webkiszolgáló-naplózás – a W3C bővített naplófájl formátumával HTTP-tranzakciókra vonatkozó információk. Ez akkor hasznos, ha meghatározza a helyek általános metrikáit, például a kezelt kérelmek számát vagy egy adott IP-címről érkező kéréseket.
 
-#### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
+#### <a name="application-diagnostics"></a>Application Diagnostics
 Az [Application Diagnostics](../../app-service/troubleshoot-diagnostic-logs.md) lehetővé teszi egy webalkalmazás által létrehozott információk rögzítését. A ASP.NET-alkalmazások a [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) osztály használatával naplózzák az adatokat az Application Diagnostics-naplóba. Application Diagnostics két fő típusú esemény létezik, amelyek az alkalmazások teljesítményével és az alkalmazás hibáival és hibáival kapcsolatosak. A hibák és hibák a kapcsolati, a biztonsági és a meghibásodási problémákra is kioszthatók. A hibákkal kapcsolatos hibák általában az alkalmazás kódjával kapcsolatos problémákhoz kapcsolódnak.
 
 Application Diagnostics a következő módokon tekintheti meg az eseményeket:
@@ -156,7 +156,7 @@ A szakasz további információkat tartalmaz az Azure Storage biztonságának f�
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC-szerepköröket](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/common/storage-security-guide.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
 
-### <a name="shared-access-signature"></a>Közös hozzáférési aláírás
+### <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 A [közös hozzáférésű jogosultságkód (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS azt jelenti, hogy a megadott időszakra és meghatározott engedélyekkel engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül is megadhatja.
 
 ### <a name="encryption-in-transit"></a>Titkosítás átvitel közben

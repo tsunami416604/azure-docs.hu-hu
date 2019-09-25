@@ -8,13 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 457157b93e6fb6be8ed734ae6f58c3b8717fc83d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183477"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265516"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Készségkészlet létrehozása a dúsítási folyamatban
 
@@ -37,7 +36,7 @@ Az ajánlott kezdeti lépés azt határozza meg, hogy mely adatok legyenek kinye
 
 Tegyük fel, hogy több pénzügyi elemzői Megjegyzés feldolgozását érdekli. Minden fájlhoz ki kell bontania a vállalatok nevét és a megjegyzések általános hangulatát. Érdemes lehet olyan egyéni dúsítást is írni, amely a Bing Entity Search szolgáltatást használja a vállalattal kapcsolatos további információk megkereséséhez, például arról, hogy a vállalat milyen üzleti tevékenységet folytat. Lényegében a következőhöz hasonló adatokat szeretne kinyerni az egyes dokumentumok indexeléséhez:
 
-| record-text | vállalatok | hangulatelemzés | a cég leírása |
+| record-text | vállalatok | Hangulatelemzés | a cég leírása |
 |--------|-----|-----|-----|
 |sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
 
@@ -278,4 +277,4 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet](cognitive-search-concept-annotations-syntax.md) való hivatkozását, illetve a kimeneteknek az [index mezőire](cognitive-search-output-field-mapping.md)való leképezését. 
+Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 

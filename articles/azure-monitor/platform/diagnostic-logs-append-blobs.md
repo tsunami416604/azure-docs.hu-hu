@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor-diagnosztikai naplók formátum módosítás előkészítése
-description: Az Azure diagnosztikai naplók használata kerül hozzáfűző blobok 2018. November 1.
+title: Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplókra
+description: Az Azure diagnosztikai naplók a hozzáfűzési Blobok a 2018. november 1-jén való használatára lesznek áthelyezve.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237670"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258389"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Az Azure Monitor diagnosztikai naplók tárfiókba archivált formátum módosítás előkészítése
+# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Felkészülés a formátum módosítására Azure Monitor diagnosztikai naplók archiválása egy Storage-fiókba
 
 > [!WARNING]
-> Ha küld [Azure erőforrás-diagnosztikai naplók vagy a storage-fiók erőforrás diagnosztikai beállításait mérőszámok](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy [Tevékenységnaplók az a tárfiók tárfiókkulcsait naplóprofilok](./../../azure-monitor/platform/archive-activity-log.md), az adatok formátumát a tárfiók 2018. november 1. a JSON-sorok változik. Az alábbi utasítások írja le, a hatás és az eszközök kezeléséhez az új formátum frissítése. 
+> Ha [Azure Resource diagnosztikai naplókat vagy metrikákat küld egy Storage-fiókba az erőforrás-diagnosztikai beállítások](./../../azure-monitor/platform/archive-diagnostic-logs.md) vagy a tevékenység naplófájlok használatával a [Storage](./../../azure-monitor/platform/archive-activity-log.md)-fiókba, akkor a Storage-fiókban lévő adatok formátuma a JSON-sorokra változik November 1., 2018. Az alábbi utasítások ismertetik a hatását, és azt, hogy miként lehet frissíteni az eszközöket az új formátum kezelésére. 
 >
 > 
 
-## <a name="what-is-changing"></a>Mi változik
+## <a name="what-is-changing"></a>Ami változik
 
-Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az erőforrás diagnosztikai adatok és a tevékenységnapló adatainak Azure storage-fiók, az Event Hubs-névteret, vagy a Log Analytics-munkaterületet az Azure monitorban kínál. A rendszer teljesítményprobléma megoldása a **2018. November 1. 12:00 éjfélkor (UTC)** adatokat küldeni a blob storage-naplófájl formátumát változik. Ha eszközkészlet, amely blob tárolóból az adatok olvasása, tudni, hogy az új adatformátum a azokat az eszközöket frissíteni szeretné.
+Azure Monitor olyan képességgel rendelkezik, amely lehetővé teszi az erőforrás-diagnosztikai és a műveletnapló-adatküldés Azure Storage-fiókba, Event Hubs névtérbe vagy egy Log Analytics munkaterületre való küldését Azure Monitor. A rendszerteljesítményi probléma megoldásához **november 1-jén, 2018-kor, 12:00 éjfélkor** a rendszer a blob Storage-ba küldött naplófájlok formátumát fogja megváltoztatni. Ha olyan eszközzel rendelkezik, amely a blob Storage-ból olvas be adatolvasást, frissítenie kell az eszközt az új adatformátum megismeréséhez.
 
-* Csütörtök. November 1, 2018. 12:00 éjfélkor (UTC), a blob formátumát kell változik [JSON sorok](http://jsonlines.org/). Ez azt jelenti, hogy minden rekord egy új sor nem külső rekordok tömb és JSON-bejegyzések között nincs vesszővel kell elválasztani.
-* A blob formátuma változásokat a egyszerre az összes előfizetés összes diagnosztikai beállításait. Az első PT1H.json fájlt. November 1 bocsátja ki fogja használni az új formátum. A blob és a tároló neve nem változik.
-* Diagnosztikai beállítás módosítása és November 1 továbbra is az aktuális formátumú adatokat küldik. November 1-ig.
-* Ez a változás az összes nyilvános régióban egyszerre történik. A módosítás nem történik az Azure China, az Azure Germany és az Azure Government még.
-* Ez a módosítás hatással van a következő adattípusokat:
-  * [Az Azure erőforrás-diagnosztikai naplók](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([itt erőforrások listájának megtekintéséhez](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [Az Azure erőforrás-metrikák diagnosztikai beállítások exportálása folyamatban](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [Naplóprofilok által exportált Azure tevékenységnapló adatainak](./../../azure-monitor/platform/archive-activity-log.md)
-* Ez a változás nem érinti:
-  * Hálózati forgalmi naplók
-  * Az Azure naplói nem még a Azure Monitor érhetők el (például a diagnosztikai naplók az Azure App Service-ben, a storage analytics naplók)
-  * Az Azure diagnosztikai naplók és Tevékenységnaplók más célhelyre irányított (az Event Hubs, a Log Analytics) útválasztás
+* Csütörtökön, november 1., 2018., 12:00 éjfélkor UTC, a blob formátuma [JSON-sorokként](http://jsonlines.org/)lesz módosítva. Ez azt jelenti, hogy az egyes rekordok egy sortöréssel lesznek elválasztva, a külső rekordok tömbje és a JSON-rekordok közötti vesszők nélkül.
+* A blob formátuma az összes előfizetés összes diagnosztikai beállítását egyszerre módosítja. A november 1-től kibocsátott első PT1H. JSON fájl ezt az új formátumot fogja használni. A blob és a tároló nevei változatlanok maradnak.
+* Ha a Now és november 1 közötti diagnosztikai beállítást állítja be, az az aktuális formátumban, november 1-től lesz elérhető.
+* Ez a változás az összes nyilvános felhő-régióban egyszerre fog történni. A módosítás nem következik be Microsoft Azure 21Vianet, Azure Germany vagy Azure Government felhők által üzemeltetett.
+* Ez a változás a következő adattípusokra van hatással:
+  * [Azure-erőforrás diagnosztikai naplói](archive-diagnostic-logs.md) ([itt találja az erőforrások listáját](diagnostic-logs-schema.md))
+  * [A diagnosztikai beállítások által exportált Azure-erőforrás-metrikák](diagnostic-settings.md)
+  * [A log-profilok által exportált Azure-tevékenység naplófájljai](archive-activity-log.md)
+* Ez a változás nem befolyásolja a következőket:
+  * Hálózati folyamatok naplói
+  * Az Azure-szolgáltatási naplók még nem érhetők el Azure Monitoron keresztül (például Azure App Service diagnosztikai naplók, Storage Analytics-naplók)
+  * Az Azure diagnosztikai naplók és a tevékenységek naplófájljainak továbbítása más célhelyekre (Event Hubs, Log Analytics)
 
-### <a name="how-to-see-if-you-are-impacted"></a>Ha, Ön érintett megtekintése
+### <a name="how-to-see-if-you-are-impacted"></a>Hogyan lehet megtekinteni, hogy hatással van-e
 
-Ön csak érinti a változás Ha Ön:
-1. Naplóadatok erőforrás diagnosztikai beállításának használata az Azure storage-fiókba küldi, és
-2. Vannak olyan eszközök, amelyek ezeket a naplókat tároló a JSON szerkezete függ.
+Ezt a változást csak akkor befolyásolja, ha:
+1. A naplózási adatokat egy Azure Storage-fiókba küldi, és erőforrás-diagnosztikai beállítást használ, és
+2. A tárolóban található naplók JSON-struktúrájától függnek az eszközök.
  
-Ha erőforrás diagnosztikai beállításait, amelyek adatokat küldenek az Azure storage-fiók azonosításához navigálhat a **figyelő** szakaszban a portál, kattintson a **diagnosztikai beállítások**, és azonosítása minden olyan erőforrásokat, **diagnosztikai állapot** beállítása **engedélyezve**:
+Annak megállapításához, hogy rendelkezik-e olyan erőforrás-diagnosztikai beállításokkal, amelyek adatokat küldenek egy Azure Storage-fiókba, navigáljon a **figyelés** szakaszhoz a portálon, kattintson a **diagnosztikai beállítások**elemre, és azonosítsa a diagnosztikai erőforrásokkal rendelkező erőforrásokat  **Az állapot** beállítása **engedélyezve**:
 
-![Az Azure Monitor diagnosztikai beállítások panel](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Azure Monitor diagnosztikai beállítások panel](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
-Diagnosztikai beállítás van engedélyezve, ha azok aktív diagnosztikai beállítást az erőforráson. Kattintson az erőforrás megtekintéséhez, ha a diagnosztikai beállítások adatot küldenek egy storage-fiókhoz:
+Ha a diagnosztikai állapot engedélyezve értékre van állítva, akkor az adott erőforráson aktív diagnosztikai beállítás van érvényben. Az erőforrásra kattintva megtekintheti, hogy a diagnosztikai beállítások egy Storage-fiókba küldenek-e adatokat:
 
-![Storage-fiókban engedélyezve](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
+![Storage-fiók engedélyezve](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
-Ha rendelkezik ezekkel a beállításokkal erőforrás diagnosztikai tárfiók történő adatküldés erőforrásokat, a storage-fiókban lévő adatok formátumát a változás által érintett. A formátumának módosítása nem érinti, kivéve, ha egyéni azokat az eszközöket, amelyek ki ezeket a storage-fiókok nem működik.
+Ha olyan erőforrásokkal rendelkezik, amelyek ezen erőforrás-diagnosztikai beállítások használatával küldenek adatokat egy Storage-fióknak, az adott tárolási fiókban lévő adatok formátuma hatással lesz a változásra. Ha nem rendelkezik olyan egyéni eszközzel, amely nem működik ezekből a Storage-fiókokból, a formátum módosítása nem befolyásolja Önt.
 
-### <a name="details-of-the-format-change"></a>A formátum változás részletei
+### <a name="details-of-the-format-change"></a>A formátum változásának részletei
 
-A jelenlegi formátumát a PT1H.json fájlt az Azure blob storage-ban a rekordok egy JSON-tömböt használ. Itt látható egy példa a KeyVault naplófájlok most:
+A PT1H. JSON fájl aktuális formátuma az Azure Blob Storage-ban a rekordok JSON-tömbjét használja. Íme egy példa egy kulcstartó-naplófájlra:
 
 ```json
 {
@@ -118,23 +118,23 @@ A jelenlegi formátumát a PT1H.json fájlt az Azure blob storage-ban a rekordok
 }
 ```
 
-Az új formátumot használ [JSON sorok](http://jsonlines.org/), ahol minden egyes esemény egy olyan sor, és a soremelés karaktert azt jelzi, hogy egy új esemény. Itt látható a fenti példa fog kinézni a PT1H.json fájlhoz fűzve a váltás után:
+Az új formátum [JSON-vonalakat](http://jsonlines.org/)használ, ahol minden esemény egy sor, a sortörés karakter pedig új eseményt jelez. A fenti minta a változás után a PT1H. JSON fájlban fog kinézni:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Az új formátum lehetővé teszi, hogy az Azure Monitor használatával leküldéses naplófájlok [hozzáfűző blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs), ami még hatékonyabbak folyamatosan lehetőséggel új eseményadatokat.
+Ez az új formátum lehetővé teszi, hogy Azure Monitor a [](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)naplófájlok leküldését a hozzáfűzési Blobok használatával, amelyek hatékonyabban használják az új események folyamatos hozzáfűzését.
 
-## <a name="how-to-update"></a>Frissítése
+## <a name="how-to-update"></a>Frissítés
 
-Csak kell, hogy a frissítések, ha egyéni azokat az eszközöket, amelyek fogadnak ezek a naplófájlok további feldolgozás céljából. Ha egy külső a log analytics vagy az SIEM-eszközével használja, javasoljuk, hogy [event hubs használatával, hogy ezeket az adatokat inkább](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Event hubs-integráción, könnyebben feldolgozása a naplókat számos szolgáltatásból és a könyvjelzőkezelési funkció egy adott napló helyét.
+Csak akkor kell frissítéseket létrehoznia, ha olyan egyéni eszközzel rendelkezik, amely további feldolgozás céljából betölti ezeket a naplófájlokat. Ha külső log Analytics vagy SIEM eszközt használ, javasoljuk, [hogy az Event hubok használatával végezze el ezeket az adatmennyiséget](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). Az Event hubok integrációja egyszerűbb a számos szolgáltatásból származó naplók feldolgozásához és egy adott naplóban található könyvjelzők helyéhez.
 
-Egyéni eszközök kezeléséhez az aktuális és a JSON-sorok formátumú a fent leírt is frissíteni kell. Ez biztosítja, hogy amikor adatok jelennek meg az új formátum kezd, az eszközök nem hibásodik.
+Az egyéni eszközöket úgy kell frissíteni, hogy az aktuális és a JSON-vonalak formátumát is kezelni lehessen a fent ismertetett módon. Ezzel biztosíthatja, hogy amikor az új formátumban kezdi meg az adatmegjelenítést, az eszközök nem törnek.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [archiválás tárfiókba erőforrás-diagnosztikai naplók](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* Ismerje meg [archiválás tárfiókba tevékenységnapló adatainak](./../../azure-monitor/platform/archive-activity-log.md)
+* Tudnivalók az [erőforrás-diagnosztikai naplók Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Tudnivalók a [műveletnapló adatainak a Storage-fiókba való archiválásáról](./../../azure-monitor/platform/archive-activity-log.md)
 

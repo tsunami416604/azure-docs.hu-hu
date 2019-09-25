@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385528"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261368"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Figyelő állapota, diagnosztikai naplózás beállítása és riasztások bekapcsolása Azure Logic Apps
 
@@ -158,7 +158,7 @@ Ha egy szűrő hozzáadásával szeretné pontosítani a lekérdezést, válassz
 A Azure Monitor naplókkal együtt kiterjesztheti a logikai alkalmazás diagnosztikai adatait más Azure-szolgáltatásokkal, például a következő módon: 
 
 * [Azure Diagnostics naplók archiválása az Azure Storage-ban](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Stream Azure Diagnostics naplók az Azure-ba Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Stream Azure Diagnostics naplók az Azure-ba Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 Ezt követően valós idejű monitorozást érhet el a telemetria és az Analytics használatával más szolgáltatásokból, például a [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) és az [Power bi](../azure-monitor/platform/powerbi.md). Példa:
 
@@ -188,8 +188,8 @@ A logikai alkalmazáshoz tartozó konkrét metrikák vagy túllépte küszöbér
 
    1. Az **erőforrás**területen válassza ki a logikai alkalmazást, ha még nincs kiválasztva. 
    2. Adja meg a riasztás nevét és leírását.
-   3. Válasszon ki  egy mérőszámot vagy eseményt, amelyet nyomon szeretne követni.
-   4. Válasszon ki egy feltételt, adjon meg egy **küszöbértéket** a metrika számára, és válassza ki a mérőszám figyelésének **időszakát** .
+   3. Válasszon ki egy mérőszámot vagy eseményt, amelyet nyomon szeretne követni.
+   4. Válasszon kiegy feltételt, adjon meg egy **küszöbértéket** a metrika számára, és válassza ki a mérőszám figyelésének **időszakát** .
    5. Válassza ki, hogy szeretne-e e-mailt küldeni a riasztásnak. 
    6. Más e-mail-címek megadása a riasztás elküldéséhez. 
    Megadhat egy webhook URL-címét is, ahová el szeretné küldeni a riasztást.

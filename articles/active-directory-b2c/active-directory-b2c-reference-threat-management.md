@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065422"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256904"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C erőforrásaira és adatforrásaira vonatkozó fenyegetések kezelése
 
@@ -37,10 +37,10 @@ Az első 10 zárolási időszak egy percig tart. A következő 10 zárolási id�
 
 A jelszavas védelem beállításainak kezelése, beleértve a zárolási küszöbértéket:
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a portál jobb felső menüjében, majd válassza ki a Azure ad B2C bérlőt.
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget (vagy válassza a **minden szolgáltatás** lehetőséget a portál bal felső részén, majd keresse meg és válassza ki a *Azure Active Directory*).
-1. A **Biztonság**területen válassza a **hitelesítési módszerek**, majd a **jelszavas védelem**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A **Biztonság**területen válassza a **hitelesítési módszerek (előzetes verzió)** lehetőséget, majd válassza a **jelszavas védelem**lehetőséget.
 1. Adja meg a kívánt jelszavas védelmi beállításokat, majd válassza a **Mentés**lehetőséget.
 
     ![Azure Portal jelszavas védelem lap az Azure AD-beállításokban](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7568742c4a01903eddf7681da71e4f243cac1e56
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648823"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265629"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Ismerkedés a Knowledge Store szolgáltatással a Azure Search
 
@@ -23,13 +22,13 @@ ms.locfileid: "69648823"
 >
 A [Knowledge Store](knowledge-store-concept-intro.md) a más alkalmazásokban az Azure Storage-fiókba való adatbányászat során létrehozott AI-gazdagított dokumentumokat menti az indexelés során. A mentett bővítéseket is használhatja a Azure Search indexelési folyamat megértéséhez és pontosításához. 
 
-A tudásbázist egy *készségkészlet* határozza meg, és egy indexelőhozza létre. A rendszer a tárolóban lévő adatstruktúrákat meghatározó kivetítéseken keresztül adja meg a Tudásbázis fizikai kifejezését. A bemutató befejezése után létrehozta az összes objektumot, és tudni fogja, hogyan illeszkednek egymáshoz. 
+A tudásbázist egy *készségkészlet* határozza meg, és egy *Indexelő*hozza létre. A rendszer a tárolóban lévő adatstruktúrákat meghatározó *kivetítéseken* keresztül adja meg a Tudásbázis fizikai kifejezését. A bemutató befejezése után létrehozta az összes objektumot, és tudni fogja, hogyan illeszkednek egymáshoz. 
 
 Ebben a gyakorlatban a mintaadatok, szolgáltatások és eszközök használatával megismerheti az első készségkészlet-definíciók létrehozásához és használatához szükséges alapvető munkafolyamatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Knowledge Store több szolgáltatás központjában található, az Azure Blob Storage és az Azure Table Storage fizikai tárolást biztosít, valamint Azure Search és Cognitive Services az objektumok létrehozásához és frissítéséhez. Az alapszintű [architektúra](knowledge-store-concept-intro.md) ismerete az útmutató előfeltétele.
+A Knowledge Store több szolgáltatás központjában található, az Azure Blob Storage és az Azure Table Storage fizikai tárolást biztosít, valamint Azure Search és Cognitive Services az objektumok létrehozásához és frissítéséhez. Az [alapszintű architektúra](knowledge-store-concept-intro.md) ismerete az útmutató előfeltétele.
 
 Ebben a rövid útmutatóban a következő szolgáltatásokat és eszközöket használjuk. 
 
@@ -65,11 +64,11 @@ Ez a gyakorlat a [Caselaw Access Project](https://case.law/bulk/download/) nyilv
 
 Ebben a feladatban létrehoz egy Azure BLOB-tárolót, amellyel a dokumentumok bemenetként használhatók a folyamathoz. 
 
-1. Töltse le és csomagolja ki a [Azure Search minta](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) adattárházat a [Caselaw](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)-adatkészlet beszerzéséhez. 
+1. Töltse le és csomagolja ki a [Azure Search minta](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) adattárházat a [Caselaw-adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)beszerzéséhez. 
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolására: 
+1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolására: 
 
    1. Nevezze el a `caselaw-test`tárolót. 
    
@@ -99,13 +98,13 @@ Az összes JSON-dokumentum és-kérelem teljes körű elérhetővé tételéhez 
 
 1. Indítsa el a Poster-t, és importálja a Caselaw Poster-gyűjteményt:
 
-   1. Kattintson azimportfájl > importálása fájlok elemre. >  
+   1. **Kattintson az**importfájlimportálása > fájlok elemre. >  
 
    1. Navigáljon a \azure-search-postman-samples-master\azure-search-postman-samples-master\Caselaw mappára.
 
    1. Válassza ki a **Caselaw. postman_collection_v2. JSON**fájlt. A gyűjteményben négy **post** kérelemnek kell megjelennie.
 
-   ![Poster-gyűjtemény a Caselaw] -bemutatóhoz (media/knowledge-store-howto/postman-collection.png "Poster-gyűjtemény a Caselaw") -bemutatóhoz
+   ![Poster-gyűjtemény a Caselaw-bemutatóhoz](media/knowledge-store-howto/postman-collection.png "Poster-gyűjtemény a Caselaw-bemutatóhoz")
    
 
 ## <a name="create-an-index"></a>Index létrehozása

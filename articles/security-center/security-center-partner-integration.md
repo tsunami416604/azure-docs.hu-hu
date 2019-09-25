@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 25e7262842de2bcf3823a51dfe6d97b5558b16fe
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ce8aa0229d9a9b873a489209065ada588adbffff
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201743"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257749"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -133,7 +133,7 @@ Tekintse át a következő cikk [stream-tevékenység naplóját Event Hubs](../
 
 A monitorozási adatait az Azure Monitor segítségével könnyedén integrálhatja a partner SIEM-és figyelési eszközeivel.
 
-A [támogatott Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub) -lista megtekintéséhez tekintse meg a következő hivatkozást:
+A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub) -lista megtekintéséhez tekintse meg a következő hivatkozást:
 
 ### <a name="example-for-querying-data"></a>Példa az adatlekérdezésre 
 

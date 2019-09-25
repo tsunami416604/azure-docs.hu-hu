@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 795f18365c4b4846d18eddf3212059040bf9e319
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699580"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260217"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Prémium szintű Azure-fájlmegosztás létrehozása
 A prémium szintű fájlmegosztás a SSD-tárolóeszközökön érhető el, és hasznos az IO-igényes számítási feladatokhoz, beleértve az üzemeltetési adatbázisokat és a nagy teljesítményű számítástechnikai (HPC) szolgáltatásokat. A prémium szintű fájlmegosztás a FileStorage-fióknak nevezett, speciális célú Storage-fiókban van tárolva. A prémium fájlmegosztás nagy teljesítményű és nagyvállalati szintű alkalmazásokhoz lett tervezve, amelyek konzisztens, alacsony késésű, magas IOPS és nagy átviteli sebességű megosztásokat biztosítanak.
@@ -47,7 +47,7 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
 1. A **teljesítmény** beállításnál válassza a **prémium**lehetőséget.
 1. Válassza a **Fiók típusa** lehetőséget, és válassza a **FileStorage**lehetőséget.
-1. Hagyja meg a replikálást a **helyileg REDUNDÁNS tárolás (LRS)** alapértelmezett értékére.
+1. Hagyja meg a **replikálást** a **helyileg REDUNDÁNS tárolás (LRS)** alapértelmezett értékére.
 
     ![Storage-fiók létrehozása prémium fájlmegosztás esetén](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
@@ -59,7 +59,7 @@ A Storage-fiók erőforrásának létrehozása után navigáljon hozzá.
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
 1. A Storage-fiók bal oldali menüjében görgessen a **Fájlszolgáltatások** szakaszhoz, majd válassza a **fájlok**lehetőséget.
-1. Prémium fájlmegosztás létrehozásához válassza a **+ fájlmegosztás** lehetőséget.
+1. Prémium fájlmegosztás létrehozásához válassza a **fájlmegosztás** lehetőséget.
 1. Adjon meg egy nevet és egy kívánt kvótát a fájlmegosztás számára, majd válassza a **Létrehozás**lehetőséget.
 
 > [!NOTE]
@@ -142,7 +142,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-a-premium-file-share-using-azure-cli"></a>Prémium fájlmegosztás létrehozása az Azure CLI-vel
 
-Azure Cloud Shell indításához jelentkezzen be a Azure Portalba [](https://portal.azure.com).
+Azure Cloud Shell indításához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 Ha be szeretné jelentkezni a CLI helyi telepítésére, először győződjön meg arról, hogy rendelkezik a legújabb verzióval, majd futtassa a login parancsot:
 

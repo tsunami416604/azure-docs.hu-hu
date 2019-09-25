@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232376"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261389"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -108,7 +108,7 @@ A következő lépésekkel engedélyezheti a diagnosztikai naplózást a Azure P
        { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
        ```
 
-      * **Metrikai kérelmek**: Válassza ezt a lehetőséget, ha részletes adatokat szeretne tárolni az [Azure](../azure-monitor/platform/metrics-supported.md)-mérőszámokban. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
+      * **Metrikai kérelmek**: Válassza ezt a lehetőséget, ha részletes adatokat szeretne tárolni az [Azure-mérőszámokban](../azure-monitor/platform/metrics-supported.md). Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók automatikusan törli a megőrzési időszak lejárta után is.
 
 3. Kattintson a **Mentés** gombra.
 
@@ -375,7 +375,7 @@ Diagnosztikai naplók is elérhetők a fiók, amely az Azure Cosmos DB művelet 
 
 Ha a **küldés log Analytics** lehetőséget választotta a diagnosztikai naplózás bekapcsolásakor, a tárolóból származó diagnosztikai adatok két órán belül át lesznek továbbítva Azure monitor naplókba. Ha a naplózás bekapcsolását követően azonnal megtekinti Azure Monitor naplókat, akkor nem fog semmilyen információt látni. Mindössze két órás várakozási, és próbálkozzon újra. 
 
-A naplók megtekintése előtt ellenőrizze, hogy a Log Analytics-munkaterület frissítve lett-e az új Kusto lekérdezési nyelv használatára. Az ellenõrzéshez nyissa meg a [Azure Portal](https://portal.azure.com), válassza a bal szélen **log Analytics** munkaterületek lehetőséget, majd válassza ki a munkaterület nevét a következő képen látható módon. A **Log Analytics-munkaterület** lap jelenik meg:
+A naplók megtekintése előtt ellenőrizze, hogy a Log Analytics-munkaterület frissítve lett-e az új Kusto lekérdezési nyelv használatára. Az ellenõrzéshez nyissa meg a [Azure Portal](https://portal.azure.com), válassza a bal szélen **log Analytics munkaterületek** lehetőséget, majd válassza ki a munkaterület nevét a következő képen látható módon. A **Log Analytics-munkaterület** lap jelenik meg:
 
 ![Naplók Azure Monitor a Azure Portal](./media/logging/azure-portal.png)
 
@@ -397,7 +397,7 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson le a következő naplóbel
 <a id="#queries"></a>
 ### <a name="queries"></a>Lekérdezések
 
-Az alábbiakban néhány további lekérdezést is megadhat, amelyek segítségével figyelheti az Azure Cosmos-tárolókat. Ezek a lekérdezések használata a [új nyelv](../log-analytics/log-analytics-log-search-upgrade.md). 
+Az alábbiakban néhány további lekérdezést is megadhat, amelyek segítségével **figyelheti az Azure** Cosmos-tárolókat. Ezek a lekérdezések használata a [új nyelv](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 Az egyes naplóbeli keresés által visszaadott adatok jelentését kapcsolatos további információkért lásd: [az Azure Cosmos DB naplóinak értelmezése](#interpret).
 
@@ -481,7 +481,7 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan engedélyezze a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokban és naplófájlokban kategóriák, olvassa el mind a [Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [áttekintése az Azure diagnosztikai naplók ](../azure-monitor/platform/diagnostic-logs-overview.md) cikkeket.
+- Megtudhatja, hogyan engedélyezze a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokban és naplófájlokban kategóriák, olvassa el mind a [Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md) és [áttekintése az Azure diagnosztikai naplók ](../azure-monitor/platform/resource-logs-overview.md) cikkeket.
 - Olvassa el ezeket a cikkeket az event hubs ismertetése:
    - [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

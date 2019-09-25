@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0fe174f309656011a1d05762927e254ff210b1e7
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68370677"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262014"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor naplók standard tulajdonságai
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../log-query/logs-structure.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi tulajdonságokkal rendelkezik. Számos adattípushoz általános tulajdonságok tartoznak, amelyek több típusra is jellemzőek. Ez a cikk ismerteti ezeket a tulajdonságokat, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -52,7 +52,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-A TimeReceived tulajdonság azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett.  **\_** Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Erre példa lenne egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
+A TimeReceived tulajdonság azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett.  **\_** Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Ilyen például egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
 
 Az alábbi lekérdezés átlagos késést biztosít egy ügynöktől származó esemény-rekordok esetében óránként. Ez magában foglalja az ügynök és a felhő közötti időt, valamint azt, hogy a rekord teljes ideje elérhető legyen a naplók lekérdezéséhez.
 
@@ -215,4 +215,4 @@ union withsource = tt *
 
 - További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
 - Vegyen fel egy leckét a [naplók írásához](../../azure-monitor/log-query/get-started-queries.md).
-- Bemutatjuk, hogyan csatlakozhatnak táblákhoz a [naplók lekérdezésében](../../azure-monitor/log-query/joins.md).
+- Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](../../azure-monitor/log-query/joins.md).

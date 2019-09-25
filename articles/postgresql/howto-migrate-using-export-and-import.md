@@ -1,49 +1,49 @@
 ---
-title: Importálás segítségével adatbázis áttelepítése és az Azure Database for PostgreSQL - kiszolgáló egyetlen exportálása
-description: Ismerteti, hogyan bontsa ki a PostgreSQL-adatbázis egy szkript fájlba, és a céladatbázis fájlból, hogy az adatok importálása.
+title: Adatbázis migrálása Importálás és exportálás használatával Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Leírja, hogyan bontsa ki a PostgreSQL-adatbázist egy parancsfájlba, és importálja azokat a fájlból a céladatbázisbe.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 785e9ec77dea749546e3f1d59007706eac14f2ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/24/2019
+ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067026"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260359"
 ---
-# <a name="migrate-your-postgresql-database-using-export-and-import"></a>Exportálás a PostgreSQL-adatbázis migrálása és importálása
-Használható [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kibontani a PostgreSQL-adatbázis egy szkript fájlba és [psql](https://www.postgresql.org/docs/current/static/app-psql.html) a céladatbázis fájlból, hogy az adatok importálásához.
+# <a name="migrate-your-postgresql-database-using-export-and-import"></a>A PostgreSQL-adatbázis migrálása exportálással és importálással
+A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy parancsfájlba, és [psql](https://www.postgresql.org/docs/current/static/app-psql.html) importálhatja azokat a fájlból a céladatbázisba.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató lépéseinek, az alábbiak szükségesek:
-- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , hogy a hozzáférés és az alatta database tűzfalszabályokkal.
-- [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) telepített parancssori segédprogram
-- [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) telepített parancssori segédprogram
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , amely tűzfalszabályok használatával engedélyezi a hozzáférést és az adatbázist.
+- telepített [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) parancssori segédprogram
+- telepített [psql](https://www.postgresql.org/docs/current/static/app-psql.html) parancssori segédprogram
 
-Kövesse az alábbi lépéseket exportálásáról és importálásáról a PostgreSQL-adatbázishoz.
+A PostgreSQL-adatbázis exportálásához és importálásához kövesse az alábbi lépéseket.
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>Használatával pg_dump kell betölteni az adatokat tartalmazó parancsfájl létrehozása
-A meglévő PostgreSQL adatbázis helyi exportálhatók, és a egy sql-parancsfájlt a virtuális gépen, futtassa a következő parancsot a meglévő környezetben:
+## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Hozzon létre egy parancsfájlt az pg_dump használatával, amely tartalmazza a betölteni kívánt adatfájlokat
+Ha a meglévő PostgreSQL-adatbázist helyileg vagy egy virtuális gépen szeretné exportálni egy SQL-parancsfájlba, futtassa a következő parancsot a meglévő környezetében:
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
-Ha például van egy helyi kiszolgálón és a egy nevű adatbázist **testdb** benne:
+Ha például van egy helyi kiszolgálója és egy **testdb** nevű adatbázisa:
 ```bash
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
 
-## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>Importálhatja az adatokat, a célon, Azure Database for postgresql-hez
-A psql parancssor és a--dbname paramétert (-d), az adatok importálása az Azure Database for PostgreSQL kiszolgáló és az adatok betöltése az sql-fájlból.
+## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>A cél Azure Database for PostgreSQL vonatkozó adatimportálás
+A psql parancssor és a--dbname paraméter (-d) használatával importálja az adatait a Azure Database for PostgreSQL-kiszolgálóra, és betöltheti az adatait az SQL-fájlból.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```
-Ez a példa psql segédprogram és a egy parancsfájl-fájlt használ **testdb.sql** adatokat importálni az adatbázis előző lépésben **mypgsqldb** a célkiszolgálón  **mydemoserver.postgres.Database.Azure.com**.
+Ez a példa a psql segédprogramot és egy **testdb. SQL** nevű parancsfájlt használ az előző lépésben az adatok importálásához a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** .
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis áttelepítéséhez lásd: [memóriakép és visszaállítás használatával a PostgreSQL-adatbázis áttelepítése](howto-migrate-using-dump-and-restore.md).
-- További információ az adatbázisok az Azure Database for postgresql-hez, lásd: a [adatbázis-Migrálási útmutató](https://aka.ms/datamigration). 
+- A PostgreSQL-adatbázisok memóriakép és visszaállítás használatával történő áttelepítéséhez lásd: [a PostgreSQL-adatbázis migrálása a dump és a Restore paranccsal](howto-migrate-using-dump-and-restore.md).
+- Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration). 

@@ -9,17 +9,16 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: eb196b9ff72201358982764f227ab7935489f05d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ad2fef96491c2d1a15ad9ff5f57d2911dfecaa36
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183402"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265792"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
-Az **entitás** -felismerési képesség Kinyeri a szövegből származó különböző típusú entitásokat. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
+Az **entitás-felismerési** képesség Kinyeri a szövegből származó különböző típusú entitásokat. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -37,7 +36,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Len
 
 A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kötelező.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | categories    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"` `"Location"` `"Organization"`, `"Quantity"` ,,`"URL"`,, ,`"Email"`. `"Datetime"` Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak:`de, en, es, fr, it`|
@@ -68,7 +67,7 @@ Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támog
 | URLs | Karakterláncok tömbje, amelyben minden sztring URL-címet jelöl |
 | e-mailek | Karakterláncok tömbje, amelyben minden karakterlánc egy e-mailt jelöl |
 | namedEntities | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (jelenleg nem használatos. A-1 értékre lesz állítva</li></ul> |
-| entitás | Összetett típusok tömbje, amely részletes információkat tartalmaz a szövegből kinyert entitásokról a következő mezőkkel <ul><li> név (a tényleges entitás neve. Ez a "normalizált" formát jelenti.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (az entitáshoz tartozó wikipedia oldalára mutató hivatkozás)</li><li>bingId</li><li>típus (az elismert entitás kategóriája)</li><li>altípus (csak bizonyos kategóriák esetében érhető el, ez az entitás típusának részletesebb megjelenítését teszi lehetővé)</li><li> egyezések (egy összetett gyűjtemény, amely tartalmazza)<ul><li>szöveg (az entitás nyers szövege)</li><li>eltolás (a hely hol található)</li><li>Hossz (a nyers entitás hosszának hossza)</li></ul></li></ul> |
+| Szervezetek | Összetett típusok tömbje, amely részletes információkat tartalmaz a szövegből kinyert entitásokról a következő mezőkkel <ul><li> név (a tényleges entitás neve. Ez a "normalizált" formát jelenti.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (az entitáshoz tartozó wikipedia oldalára mutató hivatkozás)</li><li>bingId</li><li>típus (az elismert entitás kategóriája)</li><li>altípus (csak bizonyos kategóriák esetében érhető el, ez az entitás típusának részletesebb megjelenítését teszi lehetővé)</li><li> egyezések (egy összetett gyűjtemény, amely tartalmazza)<ul><li>szöveg (az entitás nyers szövege)</li><li>eltolás (a hely hol található)</li><li>Hossz (a nyers entitás hosszának hossza)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Minta definíciója
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81cda4648b97562e0ee557af0f28515d98a734b6
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240910"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259540"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -225,7 +225,7 @@ Az olyan modern adatáttekintési és vizualizációs eszközök, mint például
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-Az Azure Analysis Services integrálva van az Azure-metrikákkal, így számos erőforrás-specifikus metrikát biztosít a kiszolgálók teljesítményének és állapotának monitorozásához. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Végezze el a metrikák rögzítését az [Azure erőforrás-diagnosztikai naplóinak](../azure-monitor/platform/diagnostic-logs-overview.md) használatával. Naplózhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket az [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/). További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
+Az Azure Analysis Services integrálva van az Azure-metrikákkal, így számos erőforrás-specifikus metrikát biztosít a kiszolgálók teljesítményének és állapotának monitorozásához. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Végezze el a metrikák rögzítését az [Azure erőforrás-diagnosztikai naplóinak](../azure-monitor/platform/resource-logs-overview.md) használatával. Naplózhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket az [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/). További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
 
 Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) használatát is. A DMV-k az SQL-szintaxis alapján kapcsolódnak azokhoz a sémasorkészletekhez, amelyek a kiszolgálópéldány metaadatait és monitorozási információit adják vissza.
 

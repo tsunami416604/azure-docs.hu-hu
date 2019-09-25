@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 12119097f08fbb221f644fa2d86bade78b054269
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2bd2510b3b7aa72ac5e66ac9910f1c941f276564
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946736"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259898"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure Security and Compliance Blueprint – adatelemzés a NIST SP 800-171-hez
 
@@ -101,7 +101,7 @@ Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel 
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva. A szolgáltatás valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok között, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem vonatkoznak a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a válaszadást a lehetséges fenyegetésekkel szemben. Biztonsági riasztásokat biztosít a gyanús adatbázis-tevékenységekről, a lehetséges sebezhetőségekről, az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról.
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a válaszadást a lehetséges fenyegetésekkel szemben. Biztonsági riasztásokat biztosít a gyanús adatbázis-tevékenységekről, a lehetséges sebezhetőségekről, az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról.
 -   A [titkosított oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha nem egyszerű szövegként jelenjenek meg az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak a kulcsokhoz hozzáféréssel rendelkező ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adatértékekhez.
 - [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) korlátozza a bizalmas adatok megjelenítését azáltal, hogy az adatokat nem Kiemelt felhasználók vagy alkalmazások számára fedi le. A szolgáltatás automatikusan képes felderíteni a potenciálisan bizalmas adatokat, és javaslatot tesz a megfelelő maszkok alkalmazására. A dinamikus adatmaszkolás segít csökkenteni a hozzáférést, hogy a bizalmas adatok jogosulatlan hozzáférés nélkül ne lépjenek ki az adatbázisból. *Az ügyfelek felelősek a beállítások módosításához az adatbázis-sémájuk betartásához.*
 
@@ -129,11 +129,11 @@ Az alábbi technológiák az Azure-környezetben tárolt adathozzáférések kez
 
  A Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosít. Security Center megkönnyíti az ügyfelek számára a potenciális biztonsági problémák felderítését és megoldását. Minden észlelt fenyegetéshez létrejön egy [fenyegetési intelligencia jelentés](https://docs.microsoft.com/azure/security-center/security-center-threat-report) . Az incidensek válaszait használó csapatok a jelentéseket a fenyegetések kivizsgálására és szervizelésére használhatják.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, a tárolási naplókat, a Key Vault a naplókat, valamint az Azure Application Gateway hozzáférés-és tűzfal-naplókat tartalmazzák. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, a tárolási naplókat, a Key Vault a naplókat, valamint az Azure Application Gateway hozzáférés-és tűzfal-naplókat tartalmazzák. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
 
 **Naplók Azure monitor**: A naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi az adattípusokat Log Analytics munkaterületeken belül. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
@@ -169,10 +169,10 @@ A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat 
 
 Mivel a VPN-alagúton belüli forgalom helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft még egy biztonságosabb kapcsolódási lehetőséget kínál. A ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. A ExpressRoute-kapcsolatok közvetlenül az ügyfél távközlési szolgáltatójának csatlakoznak. Ennek eredményeképpen az adat nem utazik az interneten keresztül, és nem teszi elérhetővé. Ezek a kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot nyújtanak, mint a szokásos kapcsolatok. 
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra.
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ### <a name="extract-transform-load-process"></a>Kinyerés – átalakítás – betöltési folyamat
-[](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) A kinyert adatok betölthetők SQL Databaseba anélkül, hogy külön kinyerési, átalakítási vagy importálási eszközt kellene használnia. A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft Business Intelligence and Analysis stack és a külső gyártótól származó eszközök, amelyek kompatibilisek a SQL Serverekkel, a Base használatával használhatók.
+A kinyert adatok betölthetők SQL Databaseba anélkül, hogy külön kinyerési, átalakítási vagy importálási eszközt [kellene használnia](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) . A Base lehetővé teszi, hogy a T-SQL-lekérdezéseken keresztül hozzáférjen az adatokhoz. A Microsoft Business Intelligence and Analysis stack és a külső gyártótól származó eszközök, amelyek kompatibilisek a SQL Serverekkel, a Base használatával használhatók.
 
 ### <a name="azure-ad-setup"></a>Azure AD-telepítés
 Az [Azure ad](../../active-directory/fundamentals/active-directory-whatis.md) elengedhetetlen az üzembe helyezés kezeléséhez és a környezettel kommunikáló személyzethez való hozzáféréshez. A helyszíni Active Directory [négy kattintással](../../active-directory/hybrid/how-to-connect-install-express.md)integrálható az Azure ad-vel. Az ügyfelek az üzembe helyezett Active Directory infrastruktúrát (tartományvezérlőket) az Azure AD-be is tudják kötni. Ehhez a központilag telepített Active Directory infrastruktúra egy Azure AD-erdő altartománya legyen.

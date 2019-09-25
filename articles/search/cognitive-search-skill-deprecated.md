@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: e149edbf89ae68364439876ee59dd0605d33b882
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183432"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265439"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Elavult kognitív keresési képességek
 
@@ -40,7 +39,7 @@ Február 15., 2019
 
 Használja helyette a [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . A NamedEntityRecognitionSkill legtöbb funkciója magasabb színvonalú. Emellett a komplex kimeneti mezőiben is gazdagabb információk szerepelnek.
 
-Az [entitás](cognitive-search-skill-entity-recognition.md)-felismerési szakértelemre való áttelepítéshez az alábbi módosítások közül egyet vagy többet kell végrehajtania a szaktudás definíciójában. A skill definition [Update KÉSZSÉGKÉSZLET API](https://docs.microsoft.com/rest/api/searchservice/update-skillset)használatával frissítheti.
+Az [entitás-felismerési szakértelemre](cognitive-search-skill-entity-recognition.md)való áttelepítéshez az alábbi módosítások közül egyet vagy többet kell végrehajtania a szaktudás definíciójában. A skill definition [Update KÉSZSÉGKÉSZLET API](https://docs.microsoft.com/rest/api/searchservice/update-skillset)használatával frissítheti.
 
 > [!NOTE]
 > A megbízhatósági pontszám jelenleg nem támogatott. A `minimumPrecision` paraméter a későbbi használatra `EntityRecognitionSkill` és a visszamenőleges kompatibilitás érdekében létezik.

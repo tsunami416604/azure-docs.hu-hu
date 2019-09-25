@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 61e210d1b41966c493099e0619e969cf5ce30c50
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ac852b1d69c0e9fa224b449d6261eba6abaff32
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093998"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260957"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -33,7 +33,7 @@ Az események a tevékenység naplóból való beolvasásának egyik módja a Az
 
 ## <a name="batch-account-level-monitoring"></a>Batch-fiók szintű figyelés
 
-Az egyes batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)funkcióival figyelheti. Azure Monitor a Batch [](../azure-monitor/platform/data-platform-metrics.md) -fiók szintjén (például készletekben, feladatokban és feladatokban) lévő erőforrások mérőszámait és opcionálisan [diagnosztikai naplóit](../azure-monitor/platform/diagnostic-logs-overview.md) gyűjti. Az adatok gyűjtése és felhasználása manuálisan vagy programozott módon a Batch-fiókban lévő tevékenységek figyeléséhez és a problémák diagnosztizálásához. Részletekért lásd: [Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
+Az egyes batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)funkcióival figyelheti. Azure Monitor a Batch [](../azure-monitor/platform/data-platform-metrics.md) -fiók szintjén (például készletekben, feladatokban és feladatokban) lévő erőforrások mérőszámait és opcionálisan [diagnosztikai naplóit](../azure-monitor/platform/resource-logs-overview.md) gyűjti. Az adatok gyűjtése és felhasználása manuálisan vagy programozott módon a Batch-fiókban lévő tevékenységek figyeléséhez és a problémák diagnosztizálásához. Részletekért lásd: [Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
  
 > [!NOTE]
 > A metrikák alapértelmezés szerint a Batch-fiókban, további konfiguráció nélkül érhetők el, és 30 napos múlttal rendelkeznek. Engedélyeznie kell a diagnosztikai naplózást egy batch-fiókhoz, és további költségek merülhetnek fel a diagnosztikai naplózási információk tárolásához vagy feldolgozásához. 

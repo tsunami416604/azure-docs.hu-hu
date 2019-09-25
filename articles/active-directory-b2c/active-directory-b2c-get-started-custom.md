@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7eb004dbeba499e6f67f98165b72d7ec8615f1b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065849"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264362"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -25,44 +25,45 @@ Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigur
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem rendelkezik ilyennel, létre kell hoznia [egy Azure ad B2C bérlőt](tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
+- Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure ad B2C bérlőt](tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 - [Regisztrálja az alkalmazást](tutorial-register-applications.md) a létrehozott bérlőn, hogy kommunikálni tudjon a Azure ad B2Cával.
+- A Facebook-alkalmazás konfigurálásához hajtsa végre a [regisztráció és bejelentkezés Facebook-fiókkal](active-directory-b2c-setup-fb-app.md) való beállításának lépéseit.
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 
 ### <a name="create-the-signing-key"></a>Az aláíró kulcs létrehozása
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-2. A **Beállítások**területen válassza `Generate`a lehetőséget.
-3. A **név**mezőben adja `TokenSigningKeyContainer`meg a nevet. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
-4. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
-5. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-6. Kattintson a **Create** (Létrehozás) gombra.
+1. A **Beállítások**területen válassza `Generate`a lehetőséget.
+1. A **név**mezőben adja `TokenSigningKeyContainer`meg a nevet. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
+1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
+1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-the-encryption-key"></a>A titkosítási kulcs létrehozása
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-2. A **Beállítások**területen válassza `Generate`a lehetőséget.
-3. A **név**mezőben adja `TokenEncryptionKeyContainer`meg a nevet. Lehetséges, `B2C_1A`hogy az _ előtag automatikusan hozzá van adva.
-4. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
-5. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
-6. Kattintson a **Create** (Létrehozás) gombra.
+1. A **Beállítások**területen válassza `Generate`a lehetőséget.
+1. A **név**mezőben adja `TokenEncryptionKeyContainer`meg a nevet. Lehetséges, `B2C_1A`hogy az _ előtag automatikusan hozzá van adva.
+1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
+1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-the-facebook-key"></a>A Facebook-kulcs létrehozása
 
-Ha már rendelkezik Facebook- [alkalmazási titokkal](active-directory-b2c-setup-fb-app.md), vegye fel a bérlőhöz tartozó szabályzati kulcsként. Ellenkező esetben helyőrző értékkel kell létrehoznia a kulcsot, hogy a szabályzatok át legyenek érvényesítve.
+Adja hozzá a Facebook-alkalmazás [titkos](active-directory-b2c-setup-fb-app.md) kulcsát a szabályzat kulcsaként. Használhatja a cikk előfeltételeinek részeként létrehozott alkalmazás titkos kulcsát.
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-2. A **Beállítások**területen válassza `Manual`a lehetőséget.
-3. A **név**mezőbe írja `FacebookSecret`be a következőt:. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
-4. A **Secret (titkos**kód) mezőben adja meg a `0` Facebook-titkot a Developers.Facebook.com vagy helyőrzőként. Ez az érték a titok, nem az alkalmazás azonosítója.
-5. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
-6. Kattintson a **Create** (Létrehozás) gombra.
+1. A **Beállítások**területen válassza `Manual`a lehetőséget.
+1. A **név**mezőbe írja `FacebookSecret`be a következőt:. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
+1. A **Secret (titkos**kód) mezőben adja meg a Facebook-alkalmazás *titkos* kódját a Developers.Facebook.com. Ez az érték a titok, nem az alkalmazás azonosítója.
+1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework-alkalmazások regisztrálása
 
@@ -78,19 +79,19 @@ Azure AD B2C a regisztrációhoz és a bejelentkezéshez használt két alkalmaz
 1. A **név**mezőbe írja `IdentityExperienceFramework`be a következőt:.
 1. Az **alkalmazás típusa mezőben**válassza a **Web App/API**lehetőséget.
 1. A **bejelentkezési URL-cím**mezőbe írja `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`be a `your-tenant-name` (z) nevet, ahol a a Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
-1. Kattintson a **Create** (Létrehozás) gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
+1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás regisztrálása
 
 1. **Alkalmazásregisztrációk (örökölt)** területen válassza az **új alkalmazás regisztrálása**lehetőséget.
-2. A **név**mezőbe írja `ProxyIdentityExperienceFramework`be a következőt:.
-3. Az **alkalmazás típusa mezőben**válassza a **natív**lehetőséget.
-4. Az **átirányítási URI**esetében `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`adja meg `your-tenant-name` , hogy hol található a Azure ad B2C bérlője.
-5. Kattintson a **Create** (Létrehozás) gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
-6. A beállítások lapon válassza a **szükséges engedélyek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-7. Válassza **az API kiválasztása**lehetőséget, keresse meg és válassza ki a **IdentityExperienceFramework**, majd kattintson a **kiválasztás**gombra.
-9. Jelölje be a **hozzáférés IdentityExperienceFramework**melletti jelölőnégyzetet, kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.
-10. Válassza az **engedélyek megadása**lehetőséget, majd erősítse meg az **Igen**lehetőséget.
+1. A **név**mezőbe írja `ProxyIdentityExperienceFramework`be a következőt:.
+1. Az **alkalmazás típusa mezőben**válassza a **natív**lehetőséget.
+1. Az **átirányítási URI**esetében `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`adja meg `your-tenant-name` , hogy hol található a Azure ad B2C bérlője.
+1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
+1. Válassza a **Beállítások**, majd a **szükséges engedélyek**elemet, majd kattintson a **Hozzáadás**gombra.
+1. Válassza **az API kiválasztása**lehetőséget, keresse meg és válassza ki a **IdentityExperienceFramework**, majd kattintson a **kiválasztás**gombra.
+1. Jelölje be a **hozzáférés IdentityExperienceFramework**melletti jelölőnégyzetet, kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.
+1. Válassza az **engedélyek megadása**lehetőséget, majd erősítse meg az **Igen**lehetőséget.
 
 ## <a name="custom-policy-starter-pack"></a>Egyéni házirend alapszintű csomagja
 
@@ -160,7 +161,6 @@ A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhe
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook hozzáadása identitás-szolgáltatóként
 
-1. A Facebook-alkalmazás konfigurálásához hajtsa végre a [regisztráció és bejelentkezés Facebook-fiókkal](active-directory-b2c-setup-fb-app.md) való beállításának lépéseit.
 1. A fájlban cserélje le a Facebook-alkalmazás azonosítóját a (z) értékre `client_id`: `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`**
 
    ```xml
@@ -172,7 +172,7 @@ A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhe
 
 1. Töltse fel a *TrustFrameworkExtensions. XML* fájlt a bérlőbe.
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
-1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez. Vagy hívja meg közvetlenül a regisztrált alkalmazásból a szabályzatot.
+1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
 
 ## <a name="next-steps"></a>További lépések
 

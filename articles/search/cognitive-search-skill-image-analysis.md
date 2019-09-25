@@ -9,17 +9,16 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 07969a92286837f8f72b533173ac8d170378d0ea
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183386"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265453"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
-A képelemzési képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. 
+A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. 
 
 > [!NOTE]
 > A kis méretű kötetek (20 tranzakció alatt) ingyenesen végrehajthatók Azure Searchban, de a nagyobb munkaterhelésekhez [számlázható Cognitive Services erőforrást kell csatolni](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -34,7 +33,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | defaultLanguageCode   |  A visszaadni kívánt nyelvet jelző sztring. A szolgáltatás egy megadott nyelven adja vissza az elismerés eredményét. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/><br/>A támogatott nyelvek a következők: <br/>*hu* – angol (alapértelmezett) <br/> *zh* -egyszerűsített kínai|
 |visualFeatures |   Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li> *Kategóriák* – a rendszerképek tartalmának kategorizálása a Cognitive Services [Computer Vision dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)meghatározott besorolásnak megfelelően. </li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li><li>*Leírás* – a rendszerkép tartalmának teljes angol mondattal történő leírása.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li>    *imageType* – észleli, ha a kép ClipArt vagy vonalas rajz.</li><li>  *Color (szín* ) – meghatározza az ékezetes színeket, a domináns színeket, valamint azt, hogy a képek fekete & fehérek-e.</li><li>*felnőtt* – észleli, ha a rendszerkép a természetben található (a meztelenség vagy a szexuális cselekedet ábrázolása). A rendszer a szexuálisan szuggesztív tartalmat is észleli.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket.|

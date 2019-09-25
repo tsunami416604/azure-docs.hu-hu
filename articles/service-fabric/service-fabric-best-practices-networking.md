@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66237329"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262248"
 ---
 # <a name="networking"></a>Hálózat
 
@@ -46,15 +46,15 @@ Maximalizálja a virtuális gép teljesítményét a gyorsított hálózatkezel�
   }
 ]
 ```
-A Service Fabric-fürt [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)rendszeren is kiépíthető gyorsított hálózatkezeléssel, a [Windows pedig gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
+A Service Fabric-fürt Linux rendszeren is kiépíthető [gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), a [Windows pedig gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
 A gyorsított hálózatkezelés támogatott az Azure-beli virtuális gépek Series SKU-ban: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 és MS/MMS. A gyorsított hálózatkezelést sikeresen teszteltük a Standard_DS8_v3 SKU 1/23/2019-on való használatával egy Service Fabric Windows-fürthöz, és a 01/29/2019-es Standard_DS12_v2-t használja egy Service Fabric Linux-fürthöz.
 
-Ha egy meglévő Service Fabric fürtön szeretné engedélyezni a gyorsított hálózatkezelést, először [egy virtuálisgép-méretezési csoport hozzáadásával kell kialakítania egy Service Fabric](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)-fürtöt a következők elvégzéséhez:
+Ha egy meglévő Service Fabric fürtön szeretné engedélyezni a gyorsított hálózatkezelést, először [egy virtuálisgép-méretezési csoport hozzáadásával kell kialakítania egy Service Fabric-fürtöt](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)a következők elvégzéséhez:
 1. NodeType kiépítése a gyorsított hálózatkezelés engedélyezésével
 2. A szolgáltatások és az állapotuk áttelepítése a kiépített NodeType a gyorsított hálózatkezelés engedélyezésével
 
-Az infrastruktúra horizontális felskálázása szükséges a gyorsított hálózatkezelés engedélyezéséhez egy meglévő fürtön, mert a gyorsított hálózatkezelés engedélyezése az állásidőt okozhatja, mivel a rendelkezésre állási csoportokban lévő összes virtuális gép leállítása és felszabadítása szükséges. [ a gyorsított hálózatkezelés engedélyezése bármely meglévő hálózati adapteren](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Az infrastruktúra horizontális felskálázása szükséges a gyorsított hálózatkezelés engedélyezéséhez egy meglévő fürtön, mert a gyorsított hálózatkezelés engedélyezése az állásidőt okozhatja, mivel a rendelkezésre állási csoportokban lévő összes virtuális gép [leállítása és felszabadítása szükséges. a gyorsított hálózatkezelés engedélyezése bármely meglévő hálózati adapteren](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
 
 ## <a name="cluster-networking"></a>Fürt hálózatkezelése
 
@@ -70,7 +70,7 @@ Az infrastruktúra horizontális felskálázása szükséges a gyorsított hál�
 
 * A Windows-tárolók számítási feladatainak futtatásához használja a [nyílt hálózati módot](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) a szolgáltatások közötti kommunikáció megkönnyítéséhez.
 
-* Használjon fordított proxyt, például [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) vagy a [Service Fabric fordított proxyt](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) a gyakori alkalmazás-portok (például 80 vagy 443) elérhetővé tétele érdekében.
+* Használjon fordított proxyt, például [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) vagy a [Service Fabric fordított proxyt](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) a gyakori alkalmazás-portok (például 80 vagy 443) elérhetővé tétele érdekében.
 
 * Azon gapped gépeken üzemeltetett Windows-tárolók esetében, amelyek nem tudnak lekérni alaprétegeket az Azure Cloud Storage-ból, felülbírálják a külső réteg viselkedését a [--Allow-nem terjeszthető összetevők](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) jelző használatával a Docker-démonban.
 

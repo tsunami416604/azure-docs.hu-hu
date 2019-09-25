@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 8375d41e3ece3bdd97b218925a8b1b6d45fc327d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: fe21477865b5bbad65f5e4639e8df253f12dc1b6
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186364"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265420"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
 
@@ -23,7 +22,7 @@ A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egy
 
 Ez a képesség különösen akkor hasznos, ha meg kell adnia a szöveg nyelvét más képességeknek (például a [Hangulatelemzés skill](cognitive-search-skill-sentiment.md) vagy a [text Split skill](cognitive-search-skill-textsplit.md)).
 
-A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, kipróbálhatja [a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető `unknown`nyelvek válasza a következő:.
+A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető `unknown`nyelvek válasza a következő:.
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md)kell csatolnia. Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedési szakaszának részeként Azure Search. A dokumentumokból való szöveg kinyerése díjmentes.

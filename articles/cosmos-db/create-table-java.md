@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ede3d863ed47b16b12f516d8af778fdb2576d27
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14742984fb993679abc87e279f3ad9882ec77ce3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70391037"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266026"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Table API-alapú adatkezeléshez
 
@@ -87,7 +87,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget. 
 
-   ![Tekintse meg a kapcsolati sztring szükséges adatait a Kapcsolati sztring ablaktáblán, és másolja őket](./media/create-table-java/connection-string.png)
+   ![A kapcsolatok karakterlánc-információinak megtekintése a kapcsolatok karakterlánca panelen](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. Másolja az ELSŐDLEGES KAPCSOLATI SZTRINGET a jobb oldalon található Másolás gombbal.
 

@@ -7,15 +7,7 @@
 - name: Virtuálisgép-bővítmények dokumentációja
   href: extensions/overview.md
 - name: Számítási feladatok
-  items:
-    - name: Oracle
-      href: workloads/oracle/oracle-considerations.md
-    - name: SAP
-      href: workloads/sap/get-started.md
-    - name: Nagy teljesítményű feldolgozás
-      href: workloads/hpc/overview.md
-    - name: Nagyszámítógépes áthelyezés
-      href: workloads/mainframe-rehosting/overview.md
+  href: ./workloads/workloads.md
 - name: Klasszikus üzembe helyezések
   items:
     - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel

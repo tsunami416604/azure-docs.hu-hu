@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 6463a578d514a7bcc9fb703e34f94381e1e9cf65
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 5b1eacb1d0121f2dd0d97807f07042e828fe7932
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981768"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266021"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API-alapú adatkezeléshez
 
@@ -152,9 +152,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget. 
 
-    ![Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról](./media/create-cassandra-java/keys.png)
+    ![Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
-2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-java/copy.png) a CONTACT POINT érték másolásához.
+2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-java/copy-button-azure-portal.png) a CONTACT POINT érték másolásához.
 
 3. Nyissa meg a `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources` mappában lévő `config.properties` fájlt. 
 
@@ -208,7 +208,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
-    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-java/data-explorer.png)
+    ![Adatkezelő-Azure Cosmos DBban lévő adatmegjelenítés](./media/create-cassandra-java/view-data-explorer-java-app.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

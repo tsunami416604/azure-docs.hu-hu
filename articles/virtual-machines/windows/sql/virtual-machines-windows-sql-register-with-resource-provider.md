@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743914"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262884"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -27,11 +27,21 @@ Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek
 
 SQL Server VM Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal használatával automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. Ha úgy dönt, hogy egy Azure-beli virtuális gépen telepíti SQL Server önálló telepítését ahelyett, hogy kiválaszt egy rendszerképet az Azure Marketplace-ről, vagy ha egy egyéni virtuális merevlemezről SQL Server használatával telepít egy Azure-beli virtuális gépet, akkor regisztrálnia kell a SQL Server VM a következő erőforrás-szolgáltatóval: :
 
-- **Megfelelőség**: A Microsoft-termékek használati feltételeinek megfelelően a felhasználóknak meg kell tudniuk adni a Microsoftnak, ha a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használják. Ehhez regisztrálnia kell az SQL VM erőforrás-szolgáltatóval. 
+- **Egyszerűsítse a licencek kezelését**: A Microsoft-termékek használati feltételeinek megfelelően a felhasználóknak meg kell tudniuk adni a Microsoftnak, ha a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használják. Az SQL VM erőforrás-szolgáltatóval való regisztráció leegyszerűsíti SQL Server a licencek kezelését, és lehetővé teszi SQL Server virtuális gépek gyors azonosítását a [portálon](virtual-machines-windows-sql-manage-portal.md) vagy az a CLI-ben Azure Hybrid Benefit használatával. 
+
+   ```azurecli-interactive
+   $vms = az sql vm list | ConvertFrom-Json
+   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
+   ```
 
 - A **szolgáltatás előnyei**: A SQL Server VM erőforrás-szolgáltatóval való regisztrálása feloldja az [automatizált javításokat](virtual-machines-windows-sql-automated-patching.md), az [automatizált biztonsági mentést](virtual-machines-windows-sql-automated-backup-v2.md), valamint a figyelési és kezelhetőségi képességeket. Emellett feloldja a [licencelési](virtual-machines-windows-sql-ahb.md) és a [kiadási](virtual-machines-windows-sql-change-edition.md) rugalmasságot is. Korábban ezek a funkciók csak az Azure Marketplace-en SQL Server VM lemezképek számára voltak elérhetők.
 
+- **Ingyenes felügyelet**:  Az SQL VM erőforrás-szolgáltatóval való regisztráció és az összes kezelhetőségi mód teljesen ingyenes. Az erőforrás-szolgáltatóval kapcsolatban nem áll rendelkezésre további díj, vagy a felügyeleti módokat módosítani kell. 
+
 Az SQL-alapú virtuális gép erőforrás-szolgáltatójának használatához regisztrálnia kell az SQL VM erőforrás-szolgáltatót az előfizetésében is. Ezt a Azure Portal, az Azure CLI vagy a PowerShell használatával végezheti el. 
+
+  > [!NOTE]
+  > Nincsenek további licencelési követelmények társítva az erőforrás-szolgáltatóval való regisztrációhoz. Az SQL VM erőforrás-szolgáltatóval való regisztráció egyszerűsített módszert kínál a Microsoft értesítési követelményeinek teljesítésére, hogy az Azure Hybrid Benefit engedélyezve lett az egyes erőforrások licencelési regisztrációs űrlapjainak kezelése helyett. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -172,13 +182,13 @@ A hiba azt jelzi, hogy a SQL Server VM nincs regisztrálva az erőforrás-szolg�
 
 ## <a name="change-management-modes"></a>Felügyeleti üzemmódok módosítása
 
-A SQL Server IaaS bővítmény három kezelhetőségi módot biztosít: 
+A SQL Server IaaS bővítménynek három szabad kezelhetőségi módja van: 
 
-- A **teljes** mód biztosítja az összes funkciót, de a SQL Server és a rendszergazdai engedélyek újraindítását igényli. Ez a beállítás alapértelmezés szerint telepítve van. A SQL Server VM egyetlen példánnyal való felügyeletére használható. 
+- A **teljes** mód biztosítja az összes funkciót, de a SQL Server és a rendszergazdai engedélyek újraindítását igényli. Ez a beállítás alapértelmezés szerint telepítve van. A SQL Server VM egyetlen példánnyal való felügyeletére használható. A teljes mód két Windows-szolgáltatást telepít, amelyek minimális hatással vannak a memóriára és a CPU-ra – ezeket a Feladatkezelő segítségével figyelheti. A teljes kezelhetőségi mód használata nem jár együtt. 
 
-- A **Lightweight** nem igényli SQL Server újraindítását, de csak az SQL Server licenc típusának és kiadásának módosítását támogatja. Ezzel a beállítással SQL Server virtuális gépek több példánnyal, vagy a feladatátvevő fürt példányaiban való részvételre. 
+- A **Lightweight** nem igényli SQL Server újraindítását, de csak az SQL Server licenc típusának és kiadásának módosítását támogatja. Ezzel a beállítással SQL Server virtuális gépek több példánnyal, vagy a feladatátvevő fürt példányaiban való részvételre. A könnyű mód használata esetén nincs hatással a memóriára vagy a CPU-ra. A könnyű kezelhetőségi mód használata nem jár együtt. 
 
-- A nem **ügynök** a Windows Server 2008 rendszerre SQL Server 2008-es és SQL Server 2008 R2-es verzióra van kijelölve. 
+- A nem **ügynök** a Windows Server 2008 rendszerre SQL Server 2008-es és SQL Server 2008 R2-es verzióra van kijelölve. A nem befolyásolja a memóriát vagy a CPU-t a nem ügynök mód használata esetén. A nem ügynöki kezelhetőségi mód használata nem jár együtt. 
 
 A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinthető meg: 
 
@@ -359,6 +369,12 @@ Igen. Az Azure-beli virtuális gépeken SQL Server feladatátvevő fürt példá
 **Regisztrálhatom a virtuális gépet az SQL VM erőforrás-szolgáltatóval, ha az Always On rendelkezésre állási csoport konfigurálva van?**
 
 Igen. Az SQL VM erőforrás-szolgáltatóval nem lehet SQL Server példányt regisztrálni egy Azure-beli virtuális gépen, ha részt vesz egy always on rendelkezésre állási csoport konfigurációjában.
+
+**Mennyibe kerül az SQL VM erőforrás-szolgáltatóval való regisztráció, vagy a teljes körű kezelhetőségi módra való frissítés?**
+Nincs. Az SQL VM erőforrás-szolgáltatóval való regisztrációhoz és a három kezelhetőségi mód bármelyikéhez nem tartozik díj. A SQL Server VM erőforrás-szolgáltatóval való kezelése teljesen ingyenes. 
+
+**Milyen hatással van a teljesítmény a különböző kezelhetőségi módok használatával?**
+A nem befolyásolható a nem- *ügynök* és a *könnyű* kezelhetőségi mód használata. Az operációs rendszerre telepített két szolgáltatás *teljes* kezelhetőségi módjának használata minimális hatással van. Ezek a Feladatkezelő segítségével figyelhetők. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d1857d0cb1b45be5b6ce4e1dd34e8398786f54fb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6d1b84894439010e5297ce010b2ece6dea8f3e56
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946906"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257604"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure Security and Compliance Blueprint – Péter webalkalmazása védett Ausztráliában
 
@@ -65,7 +65,7 @@ Ez a megoldás az alábbi Azure-szolgáltatásokat használja. További részlet
     - (4)/24 hálózat
     - Network security groups (Hálózati biztonsági csoportok)
 - Network security groups (Hálózati biztonsági csoportok)
-- Recovery Services-tároló
+- Helyreállítási tár
 - Azure Web App
 
 Ez a terv olyan Azure-szolgáltatásokat tartalmaz, amelyek nem lettek hitelesítve az ausztrál Cyber Security Center (ASCS) által védett besorolásban való használatra. A Microsoft azt javasolja, hogy az ügyfelek az ezen Azure-szolgáltatásokhoz kapcsolódó közzétett biztonsági és auditálási jelentéseket tekintsék át, és használják a kockázatkezelési keretrendszert annak megállapítására, hogy az Azure-szolgáltatás alkalmas-e a belső akkreditálásra, és hogy a Védett besorolás.
@@ -139,9 +139,9 @@ Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel 
 **Azure SQL Database**: A Azure SQL Database példány a következő adatbázis-biztonsági mértékeket használja:
 -   [Active Directory a hitelesítés és az engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication) lehetővé teszi az adatbázis-felhasználók és más Microsoft-szolgáltatások Identitáskezelés kezelését egy központi helyen.
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
--   Azure SQL Database úgy van konfigurálva, hogy [transzparens](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)adattitkosítást használjon, amely valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
+-   Azure SQL Database úgy van konfigurálva, hogy [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használjon, amely valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok számára, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem érvényesek a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében Az SQL Threat Detection Azure Security Centerokkal [](https://azure.microsoft.com/services/security-center/)integrálja a riasztásokat, beleértve a gyanús tevékenységek részleteit, valamint a fenyegetés kivizsgálásával és enyhítésével kapcsolatos javasolt lépéseket.
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében Az SQL Threat Detection [Azure Security Centerokkal](https://azure.microsoft.com/services/security-center/)integrálja a riasztásokat, beleértve a gyanús tevékenységek részleteit, valamint a fenyegetés kivizsgálásával és enyhítésével kapcsolatos javasolt lépéseket.
 -   [Always encrypted oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 - [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) korlátozza a bizalmas adatok megjelenítését azáltal, hogy az adatokat nem Kiemelt felhasználók vagy alkalmazások számára fedi le. A dinamikus adatmaszkolás automatikusan képes észlelni a potenciálisan bizalmas adatokat, és javaslatot tesz a megfelelő maszkok alkalmazására. Ez segít a hozzáférés csökkentésében, hogy a bizalmas adatok ne lépjék ki az adatbázist jogosulatlan hozzáférés útján. Az ügyfeleknek módosítaniuk kell a dinamikus adatmaszkolási beállításokat az adatbázis-sémájuk betartásához.
 
@@ -154,7 +154,7 @@ Emellett a következő Azure Active Directory képességek segítenek az Azure-k
 - [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) lehetővé teszi, hogy az ügyfelek csökkentsék azon felhasználók számát, akik hozzáféréssel rendelkeznek bizonyos adatokhoz. A rendszergazdák Azure Active Directory Privileged Identity Management használhatják az emelt szintű identitások felderítését, korlátozását és figyelését, valamint az erőforrásokhoz való hozzáférésüket. Ez a funkció az igény szerinti, igény szerinti rendszergazdai hozzáférés biztosítására is használható, ha szükséges.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a szervezetek identitásait érintő lehetséges biztonsági réseket, automatikusan választ állít be a szervezet identitásával kapcsolatos gyanús műveletekre, és megvizsgálja a gyanús incidensek, hogy megtegye a megfelelő lépéseket a megoldásához.
 
-**Azure multi-Factor Authentication**: Az identitások elleni védelem érdekében meg kell valósítani a többtényezős hitelesítést. Az [Azure multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) egy könnyen használható, méretezhető és megbízható megoldás, amely második hitelesítési módszert biztosít a felhasználók számára. Az Azure multi-Factor Authentication a felhő hatékonyságát használja, és integrálható a helyszíni Active Directory és az egyéni alkalmazásokkal. Ez a védelem nagy mennyiségű, kritikus fontosságú forgatókönyvekre terjed ki.
+**Azure multi-Factor Authentication**: Az identitások elleni védelem érdekében meg kell valósítani a többtényezős hitelesítést. Az [Azure multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) egy könnyen használható, méretezhető és megbízható megoldás, amely második hitelesítési módszert biztosít a felhasználók számára. Az Azure Multi-Factor Authentication a felhő hatékonyságát használja, és integrálható a helyszíni Active Directory és az egyéni alkalmazásokkal. Ez a védelem nagy mennyiségű, kritikus fontosságú forgatókönyvekre terjed ki.
 
 ### <a name="security"></a>Biztonság
 **Titkok kezelése**: A megoldás a kulcsok és titkok kezeléséhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) használ. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az alábbi Azure Key Vault-képességek segítenek az ügyfeleknek az adatvédelemben:
@@ -175,7 +175,7 @@ A Azure Security Center rangsorolt biztonsági riasztásokat és incidenseket bi
 **Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát, ha egy webalkalmazási tűzfallal rendelkező Application Gatewayt használ, és engedélyezve van a OWASP-alapú szabályrendszert. A további funkciók a következők:
 
 - [End-to-end-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- [SSL](../../application-gateway/create-ssl-portal.md) -kiszervezés engedélyezése
+- [SSL-kiszervezés](../../application-gateway/create-ssl-portal.md) engedélyezése
 - [A TLS 1.0-s és 1.1-es verziójának](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell) letiltása
 - [Webalkalmazási tűzfal](../../application-gateway/waf-overview.md) (megelőzési mód)
 - [Megelőzési mód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) OWASP 3,0-es szabályrendszert
@@ -183,11 +183,11 @@ A Azure Security Center rangsorolt biztonsági riasztásokat és incidenseket bi
 - [Egyéni állapot-mintavételek](../../application-gateway/quick-create-portal.md)
 - A [Azure Security Center](https://azure.microsoft.com/services/security-center) és [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) további védelmet és értesítéseket biztosítanak. A Azure Security Center a hírnév rendszerét is biztosítja.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A megőrzés a felhasználó által konfigurálható, akár 730 nap, hogy megfeleljen a szervezetre vonatkozó megőrzési követelményeknek.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A megőrzés a felhasználó által konfigurálható, akár 730 nap, hogy megfeleljen a szervezetre vonatkozó megőrzési követelményeknek.
 
 **Naplók Azure monitor**: Ezeket a naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer adattípusonként külön táblába rendezi az adatokat, ez az eredeti forrástól függetlenül lehetővé teszi az adatok együttes elemzését. Emellett a Azure Security Center integrálható Azure Monitor naplókkal, így az ügyfelek Kusto-lekérdezéseket használhatnak a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
@@ -225,7 +225,7 @@ A biztonságos IPSec VPN-alagút Azure-nal való megvalósításával létrehozh
 
 Mivel a VPN-alagúton belüli forgalom egy helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft privát kapcsolódási lehetőséget kínál. Az Azure ExpressRoute egy dedikált kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között, és privát hálózatnak számít. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak és kevesebb késéssel rendelkeznek, mint az interneten keresztüli szokásos kapcsolatok. Továbbá, mivel ez az ügyfél távközlési szolgáltatójának közvetlen kapcsolata, az adat nem az interneten keresztül történik, ezért nem lesz elérhető.
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra. 
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid) 
 
 Az Internet vagy az Azure ExpressRoute védelme érdekében az ügyfeleknek az alábbi beállítások alkalmazásával kell konfigurálniuk az IPSec VPN-t:
 
@@ -234,7 +234,7 @@ Az Internet vagy az Azure ExpressRoute védelme érdekében az ügyfeleknek az a
 • Az ügyfél VPN-kezdeményezője számára a tökéletes továbbítási titoktartást kell konfigurálni.
 • A Customer VPN-kezdeményezőnek konfigurálnia kell a HMAC-SHA256 vagy újabb használatát.
 
-A VPN-eszközök és az IPSec/IKE-paraméterek [](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) konfigurációs beállításai elérhetők véleményezésre.
+A VPN-eszközök és az IPSec/IKE-paraméterek konfigurációs beállításai [elérhetők](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) véleményezésre.
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory telepítő
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) elengedhetetlen az üzembe helyezés kezeléséhez és a környezettel kommunikáló személyzethez való hozzáféréshez. Egy meglévő Windows Server-Active Directory [négy kattintással](../../active-directory/hybrid/how-to-connect-install-express.md)integrálható Azure Active Directoryba.
@@ -247,7 +247,7 @@ Ha meg szeretné akadályozni, hogy a besorolt adatok szinkronizálva legyenek A
 - [Jelszó-kivonat szinkronizálásának letiltása](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
 -   [Jelszó visszaírási letiltása](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 -   [Eszköz visszaírási letiltása](../../active-directory/hybrid/how-to-connect-device-writeback.md)
--   Hagyja meg az alapértelmezett beállításokat a [véletlen törlés](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [automatikus frissítés](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md) megakadályozása érdekében
+-   Hagyja meg az alapértelmezett beállításokat a véletlen törlés és az [automatikus frissítés](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md) [megakadályozása érdekében](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat

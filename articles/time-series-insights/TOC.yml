@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: Time Series-modell
           href: time-series-insights-update-tsm.md
-        - name: Adatok lekérdezése
+        - name: Time Series-lekérdezés
           href: time-series-insights-update-tsq.md
         - name: Adatok vizualizációja az Explorer előzetes verziójában
           href: time-series-insights-update-explorer.md

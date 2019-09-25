@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e1d481c6019feebf3d62f0e23480f5572363869c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bcce4dcac35b783efefe81abc2090506502e9931
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946845"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257282"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure Security and Compliance Blueprint: IaaS-webalkalmazás a FedRAMP
 
 ## <a name="overview"></a>Áttekintés
 
-A [Federal Risk and Authorization Management program (FedRAMP)](https://www.fedramp.gov) egy Egyesült államokbeli kormányzati program, amely szabványosított megközelítést biztosít a biztonság értékeléséhez, engedélyezéséhez és a felhőalapú termékek és szolgáltatások folyamatos monitorozásához. Ez a Azure Security and Compliance Blueprint Automation útmutatást nyújt a FedRAMP-kompatibilis infrastruktúra-szolgáltatás (IaaS) környezetének üzembe helyezéséhez, amely alkalmas egy egyszerű, internetes webalkalmazáshoz. Ez a megoldás automatizálja az Azure-erőforrások üzembe helyezését és konfigurálását egy közös hivatkozási architektúrához, amely megmutatja, hogy az ügyfelek milyen módon tudják kielégíteni a konkrét biztonsági és megfelelőségi követelményeket, és alapként szolgálnak az ügyfelek számára saját megoldások konfigurálása az Azure-ban. A megoldás a FedRAMP magas alapkonfigurációjának egy részhalmazát valósítja meg a NIST SP 800-53 alapján. A FedRAMP-követelményekkel és a megoldással kapcsolatos további információkért [](#compliance-documentation)tekintse meg a megfelelőségi dokumentációt.
+A [Federal Risk and Authorization Management program (FedRAMP)](https://www.fedramp.gov) egy Egyesült államokbeli kormányzati program, amely szabványosított megközelítést biztosít a biztonság értékeléséhez, engedélyezéséhez és a felhőalapú termékek és szolgáltatások folyamatos monitorozásához. Ez a Azure Security and Compliance Blueprint Automation útmutatást nyújt a FedRAMP-kompatibilis infrastruktúra-szolgáltatás (IaaS) környezetének üzembe helyezéséhez, amely alkalmas egy egyszerű, internetes webalkalmazáshoz. Ez a megoldás automatizálja az Azure-erőforrások üzembe helyezését és konfigurálását egy közös hivatkozási architektúrához, amely megmutatja, hogy az ügyfelek milyen módon tudják kielégíteni a konkrét biztonsági és megfelelőségi követelményeket, és alapként szolgálnak az ügyfelek számára saját megoldások konfigurálása az Azure-ban. A megoldás a FedRAMP magas alapkonfigurációjának egy részhalmazát valósítja meg a NIST SP 800-53 alapján. A FedRAMP-követelményekkel és a megoldással kapcsolatos további információkért tekintse meg a [megfelelőségi dokumentációt](#compliance-documentation).
 > [!NOTE]
 > Ez a megoldás központilag telepíti Azure Government.
 
@@ -62,9 +62,9 @@ Ez a megoldás az alábbi Azure-szolgáltatásokat használja. Az üzembe helyez
 - Azure Load Balancer
 - Azure Application Gateway
     - (1) WAF Application Gateway engedélyezve
-        - tűzfal mód: megelőzés
-        - szabály beállítása: OWASP 3,0
-        - figyelő: 443-es port
+        - Tűzfal mód: megelőzés
+        - Szabály beállítása: OWASP 3,0
+        - Figyelő: 443-es port
 - Azure Storage
     - (7) geo-redundáns Storage-fiókok
 - Azure-beli Felhőbeli tanúsító
@@ -108,7 +108,7 @@ Az ügyfelek az alábbi SQL Server biztonsági mértékeket is konfigurálhatjá
 -   Az [AD-hitelesítés és-engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásának kezelését egy központi helyen.
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a reagálást a potenciális fenyegetésekre, mivel ezek a hibák a gyanús adatbázis-tevékenységek, a potenciális sebezhetőségek, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférési minták esetében
 -   [Always encrypted oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha ne jelenjenek meg egyszerű szövegként az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak az ügyfélalkalmazások vagy az alkalmazások férhetnek hozzá a kulcsokhoz.
 -   [SQL Database a dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) a hivatkozási architektúra telepítése után végezhető el. Az ügyfeleknek módosítaniuk kell a dinamikus adatmaszkolási beállításokat az adatbázis-sémájuk betartásához.
 
@@ -132,7 +132,7 @@ Az alábbi technológiák az Azure-környezet Identitáskezelés-kezelési funkc
 **Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát a webalkalmazási tűzfallal (WAF) rendelkező Application Gateway és az engedélyezett OWASP-alapú szabályrendszert használatával. A további funkciók a következők:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- [SSL](../../application-gateway/create-ssl-portal.md) -kiszervezés engedélyezése
+- [SSL-kiszervezés](../../application-gateway/create-ssl-portal.md) engedélyezése
 - [A TLS 1.0-s és 1.1-es verziójának](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell) letiltása
 - [Webalkalmazási tűzfal](../../application-gateway/waf-overview.md) (WAF mód)
 - [Megelőzési mód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) OWASP 3,0-es szabályrendszert
@@ -143,14 +143,14 @@ Az alábbi technológiák az Azure-környezet Identitáskezelés-kezelési funkc
 
 **Recovery Services**tároló: Az [Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) -tároló a biztonsági mentési és az Azure-Virtual Machines összes konfigurációját védi ebben az architektúrában. Recovery Services-tárolóval az ügyfelek a teljes virtuális gép visszaállítása nélkül állíthatják vissza a fájlokat és mappákat egy IaaS virtuális gépről, így a gyorsabb visszaállítási idő is megadható.
 
-**Felhőbeli tanúsító**: [](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) A Felhőbeli tanúsító a feladatátvevő fürt Kvórumának tanúsító típusa a Windows Server 2016-ben, amely az Azure-t használja választottbírósági pontként. A felhő tanúsító, mint bármely más kvórum, szavaz, és részt vehet a kvórum számításaiban, de a szabványos nyilvánosan elérhető Azure-Blob Storage használja. Ez kiküszöböli a nyilvános felhőben üzemeltetett virtuális gépek extra karbantartási terhelését.
+**Felhőbeli tanúsító**: A [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt Kvórumának tanúsító típusa a Windows Server 2016-ben, amely az Azure-t használja választottbírósági pontként. A felhő tanúsító, mint bármely más kvórum, szavaz, és részt vehet a kvórum számításaiban, de a szabványos nyilvánosan elérhető Azure-Blob Storage használja. Ez kiküszöböli a nyilvános felhőben üzemeltetett virtuális gépek extra karbantartási terhelését.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Azure Monitor naplók széles körű naplózást biztosítanak a rendszer és a felhasználók tevékenységéről, valamint a rendszer állapotáról. A [Azure monitor naplók](../azure-security-disk-encryption-overview.md) megoldás az Azure-ban és a helyszíni környezetekben található erőforrások által generált adatokat gyűjti és elemzi.
 
 - **Tevékenységek naplói:**  A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók:**  A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) minden erőforrás által kibocsátott naplók. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak.
+- **Diagnosztikai naplók:**  A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) minden erőforrás által kibocsátott naplók. Ezek a naplók a Windows-eseménynaplókat, az Azure Storage-naplókat, a Key Vault naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak.
 - **Napló archiválása:**  Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A megőrzés a felhasználó által konfigurálható, akár 730 nap, hogy megfeleljen a szervezetre vonatkozó megőrzési követelményeknek. Ezek a naplók Azure Monitor naplókat csatlakoznak a feldolgozáshoz, tároláshoz és irányítópult-jelentéskészítéshez.
 
 Emellett az alábbi figyelési megoldások is települnek ennek az architektúrának a részeként. Vegye figyelembe, hogy az ügyfél felelőssége, hogy konfigurálja ezeket a megoldásokat a FedRAMP biztonsági vezérlőkkel való összehangoláshoz:
@@ -184,8 +184,8 @@ Ez az Azure Security and Compliance Blueprint-automatizálás olyan JSON-konfigu
 > [!NOTE]
 > Ez a megoldás központilag telepíti Azure Government.
 
-#### <a name="quickstart"></a>Gyors üzembe helyezés
-1. A GitHub- [](https://aka.ms/fedrampblueprintrepo) tárház klónozása vagy letöltése a helyi munkaállomásra.
+#### <a name="quickstart"></a>Gyorsútmutató
+1. [A GitHub-](https://aka.ms/fedrampblueprintrepo) tárház klónozása vagy letöltése a helyi munkaállomásra.
 
 2. Futtassa az üzembe helyezés előtti PowerShell-parancsfájlt: Azure-Blueprint/előtelepítés/Orchestration_InitialSetup. ps1.
 
@@ -201,7 +201,7 @@ A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat 
 
 Mivel a VPN-alagúton belüli forgalom egy helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft egy másik, még biztonságosabb kapcsolódási lehetőséget kínál. Az Azure ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. Mivel a ExpressRoute-kapcsolatok nem az interneten keresztül haladnak át, ezek a kapcsolatok megbízhatóbbak, gyorsabbak, kisebb késések és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok az interneten keresztül. Továbbá, mivel ez az ügyfél távközlési szolgáltatójának közvetlen kapcsolata, az adat nem az interneten keresztül történik, ezért nem lesz elérhető.
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra.
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 

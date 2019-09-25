@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 3cf816a07b61fd5c398dba376276ef1e9f28e985
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186340"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265264"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
 
 A **szöveges egyesítési** képesség a mezők gyűjteményében lévő szöveget egyetlen mezőben összesíti. 
 
 > [!NOTE]
-> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services](cognitive-search-attach-cognitive-services.md)-erőforrást, hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
+> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. Skills. Text. MergeSkill
@@ -31,7 +30,7 @@ Microsoft. Skills. Text. MergeSkill
 
 A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | insertPreTag  | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |
 | insertPostTag | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket `""`a következőre:.  |

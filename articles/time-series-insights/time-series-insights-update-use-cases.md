@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736160"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264516"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
@@ -40,15 +40,19 @@ Több milliárd eseményt vizsgálhat meg és elemezhet azonnal, és feltárhatj
 
 [![Adatkezelő](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-A legtöbb ügyfél egyetért azzal, hogy a betekintési idő a Time Series Insights legerősebb eszközei közé tartozik. Az Time Series Insights nem igényel előzetes adatelőkészítést. Az Azure-IoT Hub vagy az Azure-Event Hubs percek alatt csatlakozhat több milliárd eseményhez. A csatlakozást követően több milliárd eseményt jeleníthet meg és elemezheti a rendellenességek észlelése és az adatai rejtett trendjeinek felderítése érdekében.
+A legtöbb ügyfél egyetért azzal, hogy az információk beszerzéséhez szükséges minimális idő az Time Series Insights egyik kiemelkedő funkciója:
 
-A Time Series Insights intuitív és könnyen használható. Az adataival egyetlen sor kód írása nélkül is dolgozhat. Még nincs új nyelv a tanuláshoz. A Time Series Insights részletes szöveges lekérdezéseket biztosít az SQL-t ismerő haladó felhasználók számára. Emellett a kezdők számára kiválasztható és kattintásos feltárást is biztosít.
+* Az Time Series Insights nem igényel előzetes adatelőkészítést. 
+* Az Azure-IoT Hub vagy az Azure-Event Hubs percek alatt csatlakozhat több milliárd eseményhez. 
+* A csatlakozást követően több milliárd eseményt jeleníthet meg és elemezheti a rendellenességek észlelése és az adatai rejtett trendjeinek felderítése érdekében.
 
-Az ügyfelek gyorsan kihasználhatják az eszközökhöz kapcsolódó problémák gyors diagnosztizálására szolgáló sebességet. Elvégezhetik a DevOps, hogy egy IoT-megoldásban fellépő hiba okát felhasználják. Emellett az adatelemzési kezdeményezések kivizsgálásához szükséges területeket is meghatározhatják.  
+A Time Series Insights intuitív és könnyen használható. Az adataival egyetlen sor kód írása nélkül is dolgozhat. Még nincs szükség új nyelvre, de a Time Series Insights részletes szöveges lekérdezési nyelvet biztosít az SQL-t ismerő haladó felhasználók számára. Emellett a kezdők számára kiválasztható és kattintásos feltárást is biztosít.
+
+Az ügyfelek gyorsan kihasználhatják az eszközökhöz kapcsolódó problémák gyors diagnosztizálásához szükséges előnyöket. DevOps-elemzést végezhetnek a IoT-megoldásban fellépő hibák kiváltó okának eléréséhez. Emellett az adatelemzési kezdeményezéseik részeként is meghatározhatják a további vizsgálathoz szükséges területeket.  
 
 A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
-- Első és legegyszerűbb módja a Time Series Insights Preview Explorer. A segítségével gyorsan megjelenítheti az összes IoT-adatait egy helyen. Olyan eszközöket biztosít, mint például a hő, amely segít az adatrendellenességek kiépítésében. Emellett perspektivikus nézetet is biztosít. Ezzel a beállítással akár négy nézetet is összehasonlíthat egy vagy több Time Series Insights környezetből egyetlen irányítópulton. Az irányítópulton megtekintheti az idősoros adatait az összes helyen. További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md). Time Series Insights környezetének megtervezéséhez olvassa el [Time Series Insights](./time-series-insights-update-plan.md)megtervezését.
+- Első és legegyszerűbb módja a Time Series Insights Preview Explorer. A segítségével gyorsan megjelenítheti az összes IoT-adatait egy helyen. Olyan eszközöket biztosít, mint például a hő, amely segít az adatrendellenességek kiépítésében. Emellett perspektivikus nézetet is biztosít. Ezzel a beállítással akár négy nézetet is összehasonlíthat egy vagy több Time Series Insights környezetből egyetlen irányítópulton. Az irányítópulton megtekintheti az idősoros adatait az összes helyen. További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md). Time Series Insights környezetének megtervezéséhez olvassa el [Time Series Insights megtervezését](./time-series-insights-update-plan.md).
 
 - A második módszer a JavaScript SDK használata a hatékony diagramok és diagramok gyors beágyazásához a webalkalmazásban. A kód mindössze néhány sornyi kódot használhat a hatékony lekérdezések létrehozásához. A táblázatok, a tortadiagramok, a sávdiagramok, a intenzitástérképei és az adatrácsok feltöltésére használhatók. Ezen elemek mindegyike az SDK használatával létezik. Az SDK emellett absztrakt Time Series Insights lekérdezési API-kat is. Az SQL-hez hasonló predikátumok létrehozásához használhatja őket az irányítópulton megjeleníteni kívánt adatlekérdezéshez. Hibrid megjelenítési rétegbeli megoldások esetén a Time Series Insights paraméteres URL-címeket is kínál. Zökkenőmentes csatlakozást biztosítanak a Time Series Insights betekintő Explorerrel az adatelemzéshez.
 
@@ -97,5 +101,5 @@ Time Series Insights áthidalja a IoT és a fejlett Analitika közötti szakadé
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md).
-- A környezet megtervezéséhez olvassa el [Time Series Insights előzetes](./time-series-insights-update-plan.md) verziójának tervezését.
+- A környezet megtervezéséhez olvassa el [Time Series Insights előzetes verziójának tervezését](./time-series-insights-update-plan.md) .
 - Olvassa el a [Time Series Insights-ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.

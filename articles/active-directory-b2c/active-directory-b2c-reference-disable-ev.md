@@ -1,38 +1,40 @@
 ---
-title: E-mail-ellenőrzés letiltása a felhasználói regisztráció során Azure Active Directory B2Cban | Microsoft Docs
-description: Egy témakör, amely bemutatja, hogyan tilthatja le az e-mailek ellenőrzését a Azure Active Directory B2C a fogyasztói regisztráció során.
+title: Az e-mail-ellenőrzés letiltása az ügyfél-regisztráció során Azure Active Directory B2C
+description: Megtudhatja, hogyan tilthatja le az e-mailek ellenőrzését a Azure Active Directory B2C az ügyfelek regisztrációja során.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 09/25/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d827843bdbaff1ad95dce3318f39867abe8b2d0f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9a7adc04991dd4a472bdaf1aa47aacaf6cdeb190
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065627"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256929"
 ---
-# <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>E-mail-ellenőrzés letiltása a felhasználói regisztráció során Azure Active Directory B2C
-Ha engedélyezve van, a Azure Active Directory B2C (Azure AD B2C) lehetővé teszi a fogyasztó számára, hogy e-mail-cím megadásával és helyi fiók létrehozásával regisztráljon az alkalmazásokra. Azure AD B2C az érvényes e-mail-címeket biztosítja, hogy a felhasználóknak meg kell győződniük a regisztrációs folyamat során. Emellett megakadályozza, hogy egy rosszindulatú automatizált folyamat hamis fiókokat generáljon az alkalmazásokhoz.
+# <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Az e-mail-ellenőrzés letiltása az ügyfél-regisztráció során Azure Active Directory B2C
 
-Egyes alkalmazás-fejlesztők szívesebben szeretnék kihagyni az e-mailek ellenőrzését a regisztrációs folyamat során, így a felhasználók később is ellenőrizhetik az e-mail-címet. Ennek támogatásához Azure AD B2C konfigurálható az e-mail ellenőrzésének letiltására. Ez létrehoz egy simább regisztrációs folyamatot, és lehetővé teszi a fejlesztők számára a rugalmasságot, hogy megkülönböztessék azokat a felhasználókat, akik az e-mail-címüket ellenőrizték azoktól a fogyasztóktól, akik nem.
+Alapértelmezés szerint a Azure Active Directory B2C (Azure AD B2C) ellenőrzi az ügyfél e-mail-címét a helyi fiókok számára (fiókok azon felhasználók számára, akik e-mail-címmel vagy felhasználónévvel jelentkeznek be). Azure AD B2C az érvényes e-mail-címeket biztosítja, hogy az ügyfeleknek meg kell győződniük a regisztrációs folyamat során. Emellett megakadályozza, hogy a rosszindulatú szereplők automatizált folyamatokat használjanak az alkalmazásokban lévő csalárd fiókok létrehozásához.
 
-Alapértelmezés szerint a regisztrációs felhasználói folyamatok e-mail-ellenőrzése be van kapcsolva. A következő lépésekkel kapcsolhatja ki:
+Egyes alkalmazás-fejlesztők szívesebben szeretnék kihagyni az e-mailek ellenőrzését a regisztrálási folyamat során, hanem az ügyfelek az e-mail-címüket később is ellenőrzik. Ennek támogatásához Azure AD B2C konfigurálható az e-mail ellenőrzésének letiltására. Ez létrehoz egy simább regisztrációs folyamatot, és lehetővé teszi a fejlesztők számára a rugalmasságot, hogy megkülönböztessék azokat az ügyfeleket, akik nem rendelkeznek az e-mail-címükkel.
 
-1. Kattintson a **felhasználói folyamatok**elemre.
-2. Kattintson a felhasználói folyamatra (például "B2C_1_SiUp") a megnyitásához.
-3. Kattintsona lapelrendezések elemre.
-4. Kattintson a **helyi fiók regisztrálása lapra**.
-5. Kattintson az **e-mail-cím** elemre a **felhasználói attribútumok** szakaszban található **Name (név** ) oszlopban.
-6. A **szükséges ellenőrzés**területen válassza a **nem**lehetőséget.
-7. Kattintson a panel tetején lévő **Mentés** elemre. Készen van!
+Az e-mail-ellenőrzés letiltásához kövesse az alábbi lépéseket:
 
-> [!NOTE]
-> Ha letiltja az e-mailek ellenőrzését a regisztrációs folyamatban, a levélszemét is vezethet. Ha letiltja az alapértelmezettet, javasoljuk, hogy adja hozzá a saját ellenőrzési rendszerét.
->
->
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **felhasználói folyamatok**lehetőséget.
+1. Válassza ki azt a felhasználói folyamatot, amelynek le szeretné tiltani az e-mail-ellenőrzését. Például: *B2C_1_signinsignup*.
+1. Válassza **ki a lapelrendezések elemet**.
+1. Válassza a **helyi fiók regisztrálása lapot**.
+1. A **felhasználói attribútumok**területen válassza az **e-mail-cím**elemet.
+1. A **szükséges ellenőrzés** legördülő menüben válassza a **nem**lehetőséget.
+1. Kattintson a **Mentés** gombra. Az e-mailek ellenőrzése mostantól le van tiltva ennél a felhasználói folyamatnál.
+
+> [!WARNING]
+> Ha letiltja az e-mailek ellenőrzését a regisztrációs folyamatban, a levélszemét is vezethet. Ha letiltja az alapértelmezett Azure AD B2C által biztosított e-mail-ellenőrzést, javasoljuk, hogy hozzon létre egy helyettesítő ellenőrzési rendszerét.

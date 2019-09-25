@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: d2b3cdac72d47afb804763c521aae0b1d5936567
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186353"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265328"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
@@ -43,7 +42,7 @@ Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott fo
 
 A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | detectOrientation | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
 |defaultLanguageCode | <p>  A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |

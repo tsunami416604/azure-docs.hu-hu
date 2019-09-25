@@ -4,17 +4,17 @@ description: Az alsóbb rétegbeli vagy a levélben lévő eszközök konfigurá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 41039d148e0aae7303dbc95c832bed842acdcc90
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999399"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266124"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Egy alárendelt eszköz csatlakoztatása az Azure IoT Edge-átjáró
 
@@ -33,6 +33,10 @@ Ez a cikk azonosítja az alsóbb rétegbeli eszközkapcsolatok szolgáltatással
 * Ajánljuk figyelmébe az Azure IoT elindult a minták több nyelven is nyújtanak segítséget. 
 
 Ez a cikk a használati *átjáró* és *IoT Edge-átjáró* transzparens átjáróként konfigurált IoT Edge-eszköz hivatkoznak. 
+
+## <a name="prerequisites"></a>Előfeltételek 
+
+A **Azure-IOT-test-only. root. ca. CERT. PEM** tanúsítványfájl lett létrehozva, amely [egy IoT Edge eszköz konfigurálása](how-to-create-transparent-gateway.md) , amely az alsóbb rétegbeli eszközön elérhető transzparens átjáróként működik. Az alsóbb rétegbeli eszköz ezt a tanúsítványt használja az átjáró-eszköz identitásának ellenőrzéséhez. 
 
 ## <a name="prepare-a-downstream-device"></a>Alsóbb rétegbeli eszközök előkészítése
 
@@ -89,6 +93,14 @@ Megjelenik egy üzenet, amely szerint a "a tanúsítványok frissítése az /etc
 ### <a name="windows"></a>Windows
 
 A következő lépéseket kell egy példát egy Hitelesítésszolgáltatói tanúsítvány telepítése a Windows-gazdagépen. Ez a példa azt feltételezi, hogy a **Azure-IOT-test-only. root. ca. CERT. PEM** tanúsítványt használja az előfeltételek cikkeiből, és a tanúsítványt egy helyre másolta az alsóbb rétegbeli eszközön.
+
+A tanúsítványokat a PowerShell [importálási tanúsítványával](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) rendszergazdaként telepítheti:
+
+```powershell
+import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
+```
+
+A tanúsítványokat a **certlm** segédprogrammal is telepítheti: 
 
 1. A Start menüben keresse meg és válassza **számítógép-tanúsítványok kezelése**. A segédprogram nevű **certlm** nyílik meg.
 2. Navigáljon a **tanúsítványok – helyi számítógép** > **megbízható legfelső szintű hitelesítésszolgáltatók**.

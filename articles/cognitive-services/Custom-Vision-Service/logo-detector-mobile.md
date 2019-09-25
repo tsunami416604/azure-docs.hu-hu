@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564213"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261973"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: Azure-szolgáltatás emblémáinak felismerése kamera-képekben
 
@@ -43,13 +43,13 @@ Ha a megadott webalkalmazást szeretné használni, akkor a GitHubon a [mesters�
 
 ## <a name="create-an-object-detector"></a>Objektum-detektor létrehozása
 
-Jelentkezzen be a [Custom Vision](https://customvision.ai/) webhelyére, és hozzon létre egy új projektet. Egy objektum-észlelési projektet kell megadni, és az embléma tartományt kell használnia; Ez lehetővé teszi, hogy a szolgáltatás az embléma észlelésére optimalizált algoritmust használjon. 
+Jelentkezzen be a [Custom Vision webhelyére](https://customvision.ai/) , és hozzon létre egy új projektet. Egy objektum-észlelési projektet kell megadni, és az embléma tartományt kell használnia; Ez lehetővé teszi, hogy a szolgáltatás az embléma észlelésére optimalizált algoritmust használjon. 
 
 ![Új – projekt ablak a Chrome böngésző Custom Vision webhelyén](media/azure-logo-tutorial/new-project.png)
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ezután a logo észlelési algoritmust betaníthatja az Azure-szolgáltatás emblémáinak képeinek feltöltésével, és manuálisan is megcímkézheti őket. A AIVisualProvision-tárház a használható betanítási lemezképek készletét tartalmazza. A webhelyen válassza a **képek hozzáadása** gombot a betanítási **lemezképek** lapon. Ezután lépjen az adattár **Documents/images/Training_DataSet** mappájába. Az emblémákat manuálisan kell címkéznie az egyes képekben, így ha csak a projekt tesztelését végzi, érdemes lehet csak a képek egy részhalmazát feltölteni. Töltsön fel legalább 15 példányt a használni kívánt címkék közül.
+Ezután a logo észlelési algoritmust betaníthatja az Azure-szolgáltatás emblémáinak képeinek feltöltésével, és manuálisan is megcímkézheti őket. A AIVisualProvision-tárház a használható betanítási lemezképek készletét tartalmazza. A webhelyen válassza a **képek hozzáadása** gombot a **betanítási lemezképek** lapon. Ezután lépjen az adattár **Documents/images/Training_DataSet** mappájába. Az emblémákat manuálisan kell címkéznie az egyes képekben, így ha csak a projekt tesztelését végzi, érdemes lehet csak a képek egy részhalmazát feltölteni. Töltsön fel legalább 15 példányt a használni kívánt címkék közül.
 
 A betanítási lemezképek feltöltése után válassza ki az elsőt a kijelzőn. Ekkor megjelenik a címkézési ablak. Mezők rajzolása és címkék társítása minden egyes képhez. 
 
@@ -57,7 +57,7 @@ A betanítási lemezképek feltöltése után válassza ki az elsőt a kijelzőn
 
 Az alkalmazás úgy van konfigurálva, hogy az adott címkével rendelkező karakterláncokkal működjön. A definíciók a *Source\VisualProvision\Services\Recognition\RecognitionService.cs* fájlban találhatók:
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 A képek címkézése után lépjen a jobb oldalon a következőre. A befejezéskor a címkézés ablak bezárásához.
 
@@ -69,23 +69,23 @@ A bal oldali ablaktáblában állítsa a **címkéket** a **címkézve** érték
 
 ## <a name="get-the-prediction-url"></a>Az előrejelzési URL-cím lekérése
 
-A modell képzése után készen áll az alkalmazásba való integrálásra. Be kell szereznie a végpont URL-címét (az alkalmazás által lekérdezett modell címét) és az előrejelzési kulcsot (az alkalmazásnak az előrejelzési kérelmekhez való hozzáférésének biztosításához). A **teljesítmény** lapon kattintson az előrejelzési **URL** gombra az oldal tetején.
+A modell képzése után készen áll az alkalmazásba való integrálásra. Be kell szereznie a végpont URL-címét (az alkalmazás által lekérdezett modell címét) és az előrejelzési kulcsot (az alkalmazásnak az előrejelzési kérelmekhez való hozzáférésének biztosításához). A **teljesítmény** lapon kattintson az **előrejelzési URL** gombra az oldal tetején.
 
 ![Az URL-címet és API-kulcsot megjelenítő előrejelzési API-ablakot bemutató Custom Vision webhely](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Másolja a képfájl URL-címét és az **előrejelzési kulcs** értékét a *Source\VisualProvision\AppSettings.cs* fájl megfelelő mezőibe:
+Másolja a végponti URL-címet és az **előrejelzési kulcs** értékét a *Source\VisualProvision\AppSettings.cs* fájl megfelelő mezőibe:
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>Custom Vision használatának vizsgálata
 
 Nyissa meg a *Source/VisualProvision/Services/Recognition/CustomVisionService. cs* fájlt, és tekintse meg, hogyan használja az alkalmazás a Custom Vision kulcsot és a végpont URL-címét. A **PredictImageContentsAsync** metódus a képfájlok egy bájtos streamjét veszi fel, és egy lemondási tokent (aszinkron Feladatkezelő esetén), meghívja a Custom Vision ELŐREJELZÉSi API-t, és visszaadja az előrejelzés eredményét. 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
-Ez az eredmény egy **PredictionResult** -példány formáját ölti, amely magában foglalja az előrejelzési  példányok listáját. Az **Előrejelzés** tartalmaz egy észlelt címkét és a hozzá tartozó határolókeret helyét a képen.
+Ez az eredmény egy **PredictionResult** -példány formáját ölti, amely magában foglalja az **előrejelzési** példányok listáját. Az **Előrejelzés** tartalmaz egy észlelt címkét és a hozzá tartozó határolókeret helyét a képen.
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 Ha többet szeretne megtudni arról, hogy az alkalmazás hogyan kezeli ezeket az információkat, kezdje a **GetResourcesAsync** metódussal. Ez a metódus a *Source/VisualProvision/Services/Recognition/RecognitionService. cs* fájlban van definiálva.  
 
@@ -93,17 +93,17 @@ Ha többet szeretne megtudni arról, hogy az alkalmazás hogyan kezeli ezeket az
 
 Az oktatóanyag Custom Vision része befejeződött. Ha futtatni szeretné az alkalmazást, a Computer Vision szolgáltatást is integrálnia kell. Az alkalmazás a Computer Vision Text felismerése funkciót használja az embléma észlelési folyamatának kiegészítéséhez. Az Azure-emblémák a megjelenésük alapján *vagy* a közelében kinyomtatott szöveg alapján felismerhetők. A Custom Vision-modellekkel ellentétben a rendszer bizonyos műveleteket hajt végre a képeken vagy videókon, Computer Vision.
 
-Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címének lekéréséhez. A lépéssel kapcsolatos segítségért lásd: [előfizetés-kulcsok](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)beszerzése.
+Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címének lekéréséhez. A lépéssel kapcsolatos segítségért lásd: [előfizetés-kulcsok beszerzése](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
 
 ![A Azure Portal Computer Vision szolgáltatása a kiválasztott rövid útmutató menüjével. A kulcsok hivatkozását a rendszer az API-végpont URL-címének megfelelően ismerteti](media/azure-logo-tutorial/comvis-keys.png)
 
 Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse `ComputerVisionEndpoint` ki `ComputerVisionKey` a és a változókat a megfelelő értékekkel.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Az alkalmazáshoz egy Azure egyszerű szolgáltatás fiókra van szükség a szolgáltatások Azure-előfizetéshez való telepítéséhez. Az egyszerű szolgáltatás lehetővé teszi, hogy a szerepköralapú hozzáférés-vezérlés használatával meghatározott engedélyeket delegáljon egy alkalmazáshoz. További tudnivalókat az [egyszerű szolgáltatásokról](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)szóló útmutatóban talál.
+Az alkalmazáshoz egy Azure egyszerű szolgáltatás fiókra van szükség a szolgáltatások Azure-előfizetéshez való telepítéséhez. Az egyszerű szolgáltatás lehetővé teszi, hogy a szerepköralapú hozzáférés-vezérlés használatával meghatározott engedélyeket delegáljon egy alkalmazáshoz. További tudnivalókat az [egyszerű szolgáltatásokról szóló útmutatóban](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)talál.
 
 Az itt látható módon létrehozhat egy egyszerű szolgáltatásnevet Azure Cloud Shell vagy az Azure CLI használatával. A kezdéshez jelentkezzen be, és válassza ki a használni kívánt előfizetést.
 
@@ -133,7 +133,7 @@ A sikeres befejezést követően a következő JSON-kimenetnek kell megjelennie,
 
 Jegyezze fel a és `clientId` `tenantId` az értékeket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 

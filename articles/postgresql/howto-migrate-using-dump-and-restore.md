@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 43e6fe301cf28b7a342ba2e802c9fce19bfeec4d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/24/2019
+ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815855"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261909"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis migrálása a dump és a Restore használatával
-A [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) visszaállíthatja a PostgreSQL-adatbázist egy pg_dump által létrehozott archív fájlból.
+A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) visszaállíthatja a PostgreSQL-adatbázist egy pg_dump által létrehozott archív fájlból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - Egy [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) , amely tűzfalszabályok használatával engedélyezi a hozzáférést és az adatbázist.
-- telepített [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) parancssori segédprogramok
+- telepített [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) parancssori segédprogramok
 
 A PostgreSQL-adatbázis kiírásához és visszaállításához kövesse az alábbi lépéseket:
 
 ## <a name="create-a-dump-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>Memóriaképfájl létrehozása a betölteni kívánt pg_dump tartalmazó memóriakép használatával
 Ha egy meglévő PostgreSQL-adatbázist szeretne biztonsági másolatot készíteni a helyszínen vagy egy virtuális gépen, futtassa a következő parancsot:
 ```bash
-pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
+pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
 Ha például van egy helyi kiszolgálója és egy **testdb** nevű adatbázis
 ```bash
-pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
+pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
 
 
@@ -57,14 +57,14 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba való áttelepítése az egyik módszer, ha biztonsági másolatot készít az adatbázisról a forrásról, és visszaállítja azt az Azure-ban. Az áttelepítés befejezéséhez szükséges idő minimalizálásához érdemes a következő paramétereket használni a biztonsági mentési és visszaállítási parancsokkal.
 
 > [!NOTE]
-> A szintaxis részletes ismertetését lásd: [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+> A szintaxis részletes ismertetését lásd: [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html).
 >
 
 ### <a name="for-the-backup"></a>A biztonsági mentéshez
 - A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Példa:
 
     ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
     ```
 
 ### <a name="for-the-restore"></a>A visszaállításhoz
@@ -91,4 +91,4 @@ Az éles környezetben való használat előtt ne felejtse el tesztelni és érv
 
 ## <a name="next-steps"></a>További lépések
 - A PostgreSQL-adatbázis exportálással és importálással történő áttelepítésével kapcsolatban lásd: [a PostgreSQL-adatbázis migrálása az Exportálás és az importálás használatával](howto-migrate-using-export-and-import.md).
-- Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az adatbázis-áttelepítési [útmutatót](https://aka.ms/datamigration).
+- Az adatbázisok Azure Database for PostgreSQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

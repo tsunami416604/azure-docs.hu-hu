@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051820"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259141"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -145,11 +145,11 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |connectedclients|Csatlakoztatott ügyfélrendszerek|Count|Maximum||ShardId|
-|totalcommandsprocessed|Műveletek összesen|Count|Összes||ShardId|
-|cachehits|Gyorsítótárbeli találatok|Count|Összes||ShardId|
-|cachemisses|Gyorsítótárbeli tévesztések|Count|Összes||ShardId|
-|getcommands|Lekérdezések|Count|Összes||ShardId|
-|setcommands|Beállítások|Count|Összes||ShardId|
+|totalcommandsprocessed|Összes művelet|Count|Összes||ShardId|
+|cachehits|Gyorsítótár-találatok|Count|Összes||ShardId|
+|cachemisses|Gyorsítótár-lemaradás|Count|Összes||ShardId|
+|getcommands|Kap|Count|Összes||ShardId|
+|setcommands|Beállítja|Count|Összes||ShardId|
 |operationsPerSecond|Műveletek száma másodpercenként|Count|Maximum||ShardId|
 |evictedkeys|Kizárt kulcsok|Count|Összes||ShardId|
 |totalkeys|Kulcsok összesen|Count|Maximum||ShardId|
@@ -157,8 +157,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |usedmemory|Felhasznált memória|Bájt|Maximum||ShardId|
 |usedmemorypercentage|Felhasznált memória százalékos aránya|Percent|Maximum||ShardId|
 |usedmemoryRss|Felhasznált memória RSS-címe|Bájt|Maximum||ShardId|
-|serverLoad|Kiszolgáló-terhelés|Percent|Maximum||ShardId|
-|cacheWrite|Gyorsítótár-írás|BytesPerSecond|Maximum||ShardId|
+|serverLoad|Kiszolgáló terhelése|Percent|Maximum||ShardId|
+|cacheWrite|Gyorsítótár írása|BytesPerSecond|Maximum||ShardId|
 |cacheRead|Gyorsítótár-olvasás|BytesPerSecond|Maximum||ShardId|
 |percentProcessorTime|CPU|Percent|Maximum||ShardId|
 |cacheLatency|Gyorsítótár késési másodpercek (előzetes verzió)|Count|Average||ShardId, SampleType|
@@ -352,7 +352,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|TotalCalls|Összes hívás|Count|Összes|A hívások száma összesen|ApiName, OperationName, régió|
+|TotalCalls|Hívások összesen|Count|Összes|A hívások száma összesen|ApiName, OperationName, régió|
 |SuccessfulCalls|Sikeres hívások|Count|Összes|A sikeres hívások száma.|ApiName, OperationName, régió|
 |TotalErrors|Összes hiba|Count|Összes|A hibaüzenettel rendelkező hívások teljes száma (HTTP-válasz kódja 4xx vagy 5xx).|ApiName, OperationName, régió|
 |BlockedCalls|Blokkolt hívások|Count|Összes|Azon hívások száma, amelyek túllépték a sebességet vagy a kvóta korlátját.|ApiName, OperationName, régió|
@@ -364,22 +364,22 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |CharactersTranslated|Lefordított karakterek|Count|Összes|A bejövő szöveges kérelemben szereplő karakterek teljes száma.|ApiName, OperationName, régió|
 |CharactersTrained|Betanított karakterek|Count|Összes|A betanított karakterek teljes száma.|ApiName, OperationName, régió|
 |SpeechSessionDuration|Beszédfelismerési munkamenet időtartama|Másodperc|Összes|A beszédfelismerési munkamenet teljes időtartama másodpercben.|ApiName, OperationName, régió|
-|TotalTransactions|Tranzakciók száma|Count|Összes|A tranzakciók száma összesen|Nincs dimenzió|
-|TotalTokenCalls|Jogkivonathívások száma|Count|Összes|A jogkivonat-hívások teljes száma.|ApiName, OperationName, régió|
+|TotalTransactions|Tranzakciók összesen|Count|Összes|A tranzakciók száma összesen|Nincs dimenzió|
+|TotalTokenCalls|Jogkivonat-hívások összesen|Count|Összes|A jogkivonat-hívások teljes száma.|ApiName, OperationName, régió|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép(ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|Nincs dimenzió|
-|Hálózat bejövő adatforgalma|Számlázható bejövő hálózati forgalom|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázható bájtok száma (bejövő forgalom)|Nincs dimenzió|
-|Hálózat kimenő adatforgalma|Számlázható kimenő hálózati forgalom|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren kimenő számlázható bájtok száma (kimenő forgalom)|Nincs dimenzió|
+|Hálózat bejövő adatforgalma|Számlázandó hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázható bájtok száma (bejövő forgalom)|Nincs dimenzió|
+|Hálózat kimenő adatforgalma|Hálózati kimenő számlázandó|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren kimenő számlázható bájtok száma (kimenő forgalom)|Nincs dimenzió|
 |Lemezről beolvasott bájtok|Lemezről beolvasott bájtok|Bájt|Összes|A figyelési időszak során lemezről beolvasott bájtok száma|Nincs dimenzió|
 |Lemezre írt bájtok|Lemezre írt bájtok|Bájt|Összes|A megfigyelési időszak során lemezre írt bájtok|Nincs dimenzió|
-|Lemez olvasási művelete/mp|Lemez olvasási művelete/mp|Egység/s|Average|Lemezolvasási I/O-műveletek|Nincs dimenzió|
-|Lemez írási műveletei/mp|Lemez írási műveletei/mp|Egység/s|Average|Lemezre írási I/O-műveletek|Nincs dimenzió|
-|Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Count|Average|A feltört kreditek teljes száma|Nincs dimenzió|
-|Felhasznált processzorkreditek|Felhasznált processzorkreditek|Count|Average|A virtuális gép által felhasznált kreditek teljes száma|Nincs dimenzió|
+|Lemez olvasási művelete/mp|Lemez olvasási művelete/mp|Egység/s|Average|Lemez olvasása IOPS|Nincs dimenzió|
+|Lemez írási műveletei/mp|Lemez írási műveletei/mp|Egység/s|Average|Lemez írása IOPS|Nincs dimenzió|
+|Fennmaradó CPU-kreditek|Fennmaradó CPU-kreditek|Count|Average|A feltört kreditek teljes száma|Nincs dimenzió|
+|Felhasznált CPU-kreditek|Felhasznált CPU-kreditek|Count|Average|A virtuális gép által felhasznált kreditek teljes száma|Nincs dimenzió|
 |/Lemez olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (elavult)|Egység/s|Average|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|Tárolóhely azonosítója|
 |/Lemez írási sebessége (bájt/s)|Adatlemez-írási sebesség (bájt/s) (elavult)|Egység/s|Average|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|Tárolóhely azonosítója|
 |/Lemez olvasási művelet/mp|Adatlemez olvasási műveletei (művelet/mp) (elavult)|Egység/s|Average|IOPS beolvasása egyetlen lemezről a figyelési időszakban|Tárolóhely azonosítója|
@@ -394,7 +394,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|Egység/s|Average|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LOGIKAI EGYSÉG|
 |Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|Egység/s|Average|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
 |Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|Egység/s|Average|IOPS írása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
-|Adatlemez várólistájának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Count|Average|Adatlemez várólistájának mélysége (vagy várólista hossza)|LOGIKAI EGYSÉG|
+|Adatlemez várakozási sorának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Count|Average|Adatlemez várólistájának mélysége (vagy várólista hossza)|LOGIKAI EGYSÉG|
 |OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)|Egység/s|Average|Az operációs rendszer lemezének figyelési időtartama alatt egyetlen lemezről beolvasott bájtok másodpercenkénti száma|Nincs dimenzió|
 |OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)|Egység/s|Average|Az operációsrendszer-lemez figyelési időszaka során egy lemezre írt bájtok másodpercenkénti száma|Nincs dimenzió|
 |OPERÁCIÓSRENDSZER-lemez olvasási művelete/s|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)|Egység/s|Average|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|Nincs dimenzió|
@@ -416,14 +416,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép(ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|VMName|
-|Hálózat bejövő adatforgalma|Számlázható bejövő hálózati forgalom|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázható bájtok száma (bejövő forgalom)|VMName|
-|Hálózat kimenő adatforgalma|Számlázható kimenő hálózati forgalom|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren kimenő számlázható bájtok száma (kimenő forgalom)|VMName|
+|Hálózat bejövő adatforgalma|Számlázandó hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázható bájtok száma (bejövő forgalom)|VMName|
+|Hálózat kimenő adatforgalma|Hálózati kimenő számlázandó|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren kimenő számlázható bájtok száma (kimenő forgalom)|VMName|
 |Lemezről beolvasott bájtok|Lemezről beolvasott bájtok|Bájt|Összes|A figyelési időszak során lemezről beolvasott bájtok száma|VMName|
 |Lemezre írt bájtok|Lemezre írt bájtok|Bájt|Összes|A megfigyelési időszak során lemezre írt bájtok|VMName|
-|Lemez olvasási művelete/mp|Lemez olvasási művelete/mp|Egység/s|Average|Lemezolvasási I/O-műveletek|VMName|
-|Lemez írási műveletei/mp|Lemez írási műveletei/mp|Egység/s|Average|Lemezre írási I/O-műveletek|VMName|
-|Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Count|Average|A feltört kreditek teljes száma|Nincs dimenzió|
-|Felhasznált processzorkreditek|Felhasznált processzorkreditek|Count|Average|A virtuális gép által felhasznált kreditek teljes száma|Nincs dimenzió|
+|Lemez olvasási művelete/mp|Lemez olvasási művelete/mp|Egység/s|Average|Lemez olvasása IOPS|VMName|
+|Lemez írási műveletei/mp|Lemez írási műveletei/mp|Egység/s|Average|Lemez írása IOPS|VMName|
+|Fennmaradó CPU-kreditek|Fennmaradó CPU-kreditek|Count|Average|A feltört kreditek teljes száma|Nincs dimenzió|
+|Felhasznált CPU-kreditek|Felhasznált CPU-kreditek|Count|Average|A virtuális gép által felhasznált kreditek teljes száma|Nincs dimenzió|
 |/Lemez olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (elavult)|Egység/s|Average|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|Tárolóhely azonosítója|
 |/Lemez írási sebessége (bájt/s)|Adatlemez-írási sebesség (bájt/s) (elavult)|Egység/s|Average|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|Tárolóhely azonosítója|
 |/Lemez olvasási művelet/mp|Adatlemez olvasási műveletei (művelet/mp) (elavult)|Egység/s|Average|IOPS beolvasása egyetlen lemezről a figyelési időszakban|Tárolóhely azonosítója|
@@ -438,7 +438,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|Egység/s|Average|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LUN, VMName|
 |Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|Egység/s|Average|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LUN, VMName|
 |Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|Egység/s|Average|IOPS írása egyetlen lemezről a figyelési időszakban|LUN, VMName|
-|Adatlemez várólistájának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Count|Average|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN, VMName|
+|Adatlemez várakozási sorának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Count|Average|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN, VMName|
 |OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)|Egység/s|Average|Az operációs rendszer lemezének figyelési időtartama alatt egyetlen lemezről beolvasott bájtok másodpercenkénti száma|VMName|
 |OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)|Egység/s|Average|Az operációsrendszer-lemez figyelési időszaka során egy lemezre írt bájtok másodpercenkénti száma|VMName|
 |OPERÁCIÓSRENDSZER-lemez olvasási művelete/s|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)|Egység/s|Average|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|VMName|
@@ -531,7 +531,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |TotalCapacity|Teljes kapacitás|Bájt|Average|Teljes kapacitás|Nincs dimenzió|
 |Availablecapacity;)|Használható kapacitás|Bájt|Average|A rendelkezésre álló kapacitás bájtban a jelentési időszak alatt.|Nincs dimenzió|
 |CloudUploadThroughput|Felhő feltöltési átviteli sebessége|BytesPerSecond|Average|A Felhőbeli feltöltési sebesség az Azure-ba a jelentési időszak alatt.|Nincs dimenzió|
-|CloudReadThroughput|Felhőbeli letöltési sebesség|BytesPerSecond|Average|A felhő letöltési sebessége az Azure-ba a jelentési időszak alatt.|Nincs dimenzió|
+|CloudReadThroughput|Felhő letöltési átviteli sebessége|BytesPerSecond|Average|A felhő letöltési sebessége az Azure-ba a jelentési időszak alatt.|Nincs dimenzió|
 |BytesUploadedToCloud|Feltöltött Felhőbeli bájtok (eszköz)|Bájt|Average|Az Azure-ba az eszközről a jelentési időszakban feltöltött bájtok teljes száma.|Nincs dimenzió|
 |HyperVVirtualProcessorUtilization|Edge-számítás – százalékos CPU|Percent|Average|Processzorhasználat (%)|InstanceName|
 |HyperVMemoryUtilization|Edge-számítás – memóriahasználat|Percent|Average|Felhasznált memória mennyisége|InstanceName|
@@ -589,7 +589,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |memory_percent|Memória százaléka|Percent|Average|Memória százaléka|Nincs dimenzió|
 |io_consumption_percent|IO-százalék|Percent|Average|IO-százalék|Nincs dimenzió|
 |storage_percent|Tárolási százalék|Percent|Average|Tárolási százalék|Nincs dimenzió|
-|storage_used|Felhasznált tároló|Bájt|Average|Felhasznált tároló|Nincs dimenzió|
+|storage_used|Felhasznált tárterület|Bájt|Average|Felhasznált tárterület|Nincs dimenzió|
 |storage_limit|Tárolási korlát|Bájt|Average|Tárolási korlát|Nincs dimenzió|
 |serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Percent|Average|Kiszolgáló naplójának tárolási százaléka|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|Average|Kiszolgáló naplójának tárolója|Nincs dimenzió|
@@ -609,7 +609,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |memory_percent|Memória százaléka|Percent|Average|Memória százaléka|Nincs dimenzió|
 |io_consumption_percent|IO-százalék|Percent|Average|IO-százalék|Nincs dimenzió|
 |storage_percent|Tárolási százalék|Percent|Average|Tárolási százalék|Nincs dimenzió|
-|storage_used|Felhasznált tároló|Bájt|Average|Felhasznált tároló|Nincs dimenzió|
+|storage_used|Felhasznált tárterület|Bájt|Average|Felhasznált tárterület|Nincs dimenzió|
 |storage_limit|Tárolási korlát|Bájt|Average|Tárolási korlát|Nincs dimenzió|
 |serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Percent|Average|Kiszolgáló naplójának tárolási százaléka|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|Average|Kiszolgáló naplójának tárolója|Nincs dimenzió|
@@ -629,7 +629,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |memory_percent|Memória százaléka|Percent|Average|Memória százaléka|Nincs dimenzió|
 |io_consumption_percent|IO-százalék|Percent|Average|IO-százalék|Nincs dimenzió|
 |storage_percent|Tárolási százalék|Percent|Average|Tárolási százalék|Nincs dimenzió|
-|storage_used|Felhasznált tároló|Bájt|Average|Felhasznált tároló|Nincs dimenzió|
+|storage_used|Felhasznált tárterület|Bájt|Average|Felhasznált tárterület|Nincs dimenzió|
 |storage_limit|Tárolási korlát|Bájt|Average|Tárolási korlát|Nincs dimenzió|
 |serverlog_storage_percent|Kiszolgáló naplójának tárolási százaléka|Percent|Average|Kiszolgáló naplójának tárolási százaléka|Nincs dimenzió|
 |serverlog_storage_usage|Kiszolgáló naplójának tárolója|Bájt|Average|Kiszolgáló naplójának tárolója|Nincs dimenzió|
@@ -650,7 +650,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |memory_percent|Memória százaléka|Percent|Average|Memória százaléka|Nincs dimenzió|
 |IOPS|IOPS|Count|Average|I/o-műveletek másodpercenként|Nincs dimenzió|
 |storage_percent|Tárolási százalék|Percent|Average|Tárolási százalék|Nincs dimenzió|
-|storage_used|Felhasznált tároló|Bájt|Average|Felhasznált tároló|Nincs dimenzió|
+|storage_used|Felhasznált tárterület|Bájt|Average|Felhasznált tárterület|Nincs dimenzió|
 |active_connections|Aktív kapcsolatok|Count|Average|Aktív kapcsolatok|Nincs dimenzió|
 |network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Összes|Hálózati kapcsolat az aktív kapcsolatok között|Nincs dimenzió|
 |network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Összes|Hálózati kapcsolat az aktív kapcsolatok között|Nincs dimenzió|
@@ -743,10 +743,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |DocumentCount|Dokumentumok száma|Count|Összes|5 perces részletességgel jelentett dokumentumok száma összesen|CollectionName, DatabaseName, régió|
 |DocumentQuota|Dokumentum kvótája|Bájt|Összes|Összesen 5 perces részletességgel jelentett tárolási kvóta|CollectionName, DatabaseName, régió|
 |IndexUsage|Indexelés használata|Bájt|Összes|Az indexelés teljes használata 5 perces részletességgel jelentett|CollectionName, DatabaseName, régió|
-|MetadataRequests|Metaadat-kérelmek|Count|Count|A metaadat-kérelmek száma. Cosmos DB az egyes fiókok rendszermetaadat-gyűjteményét kezeli, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen.|DatabaseName, CollectionName, régió, StatusCode, |
+|MetadataRequests|Metaadat-kérelmek|Count|Count|A metaadat-kérelmek száma. Cosmos DB az egyes fiókokhoz rendszermetaadat-gyűjteményt tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen.|DatabaseName, CollectionName, régió, StatusCode, |
 |MongoRequestCharge|Mongo-kérelem díja|Count|Összes|Felhasznált Mongo-kérelmek egységei|DatabaseName, CollectionName, régió, CommandName, ErrorCode|
 |MongoRequests|Mongo kérelmek|Count|Count|A Mongo kérelmek száma|DatabaseName, CollectionName, régió, CommandName, ErrorCode|
-|ProvisionedThroughput|Kiosztott átviteli kapacitás|Count|Maximum|Kiosztott átviteli kapacitás|DatabaseName, CollectionName|
+|ProvisionedThroughput|Kiosztott átviteli sebesség|Count|Maximum|Kiosztott átviteli sebesség|DatabaseName, CollectionName|
 |ReplicationLatency|P99 replikáció késése|Ezredmásodpercben|Average|P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz|SourceRegion, TargetRegion|
 |ServiceAvailability|Szolgáltatás rendelkezésre állása|Percent|Average|A fiók a rendelkezésre állást egy óra, nap vagy hónap részletességgel kéri|Nincs dimenzió|
 |TotalRequestUnits|Kérelmek összes egysége|Count|Összes|Felhasználható kérési egységek|DatabaseName, CollectionName, régió, StatusCode, OperationType|
@@ -785,7 +785,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Sikeres kérések|Count|Összes|A Microsoft. EventHub sikeres kérelmeinek száma.|EntityName |
+|SuccessfulRequests|Sikeres kérelmek|Count|Összes|A Microsoft. EventHub sikeres kérelmeinek száma.|EntityName |
 |Kiszolgálóhibái|Kiszolgálói hibák.|Count|Összes|Kiszolgálói hibák a Microsoft. EventHub esetében.|EntityName |
 |UserErrors|Felhasználói hibák.|Count|Összes|A Microsoft. EventHub felhasználói hibái.|EntityName |
 |QuotaExceededErrors|A kvóta túllépte a hibákat.|Count|Összes|A kvóta túllépte a Microsoft. EventHub hibáit.|EntityName |
@@ -855,7 +855,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Megfigyelt metrikaérték|Count|Average|Az az érték, amelyet az autoscale kiszámít a végrehajtáskor|MetricTriggerSource|
+|ObservedMetricValue|Megfigyelt metrika értéke|Count|Average|Az az érték, amelyet az autoscale kiszámít a végrehajtáskor|MetricTriggerSource|
 |MetricThreshold|Metrika küszöbértéke|Count|Average|A konfigurált autoskálázási küszöbérték az autoscale futtatásakor.|MetricTriggerRule|
 |ObservedCapacity|Megfigyelt kapacitás|Count|Average|Az a kapacitás, amelyet a program a végrehajtáskor az autoskálázáshoz jelentett.|Nincs dimenzió|
 |ScaleActionsInitiated|Elindított skálázási műveletek|Count|Összes|A skálázási művelet iránya.|ScaleDirection|
@@ -875,7 +875,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |browserTimings/sendDuration|Kérelem küldési ideje|Ezredmásodpercben|Average|A hálózati kapcsolat és az első bájt fogadása közötti idő.|Nincs dimenzió|
 |browserTimings/totalDuration|Böngésző lapbetöltési ideje|Ezredmásodpercben|Average|A felhasználói kérések ideje, amíg a DOM, a stíluslapok, a parancsfájlok és a lemezképek be nem töltődik.|Nincs dimenzió|
 |függőségek/darabszám|Függőségi hívások|Count|Count|Az alkalmazás által külső erőforrások felé indított hívások száma.|dependency/type, dependency/performanceBucket, dependency/success, operation/synthetic, cloud/roleInstance, cloud/roleName|
-|függőségek/időtartam|Függőségi időtartam|Ezredmásodpercben|Average|Az alkalmazás által külső erőforrások felé indított hívások időtartama.|dependency/type, dependency/performanceBucket, dependency/success, operation/synthetic, cloud/roleInstance, cloud/roleName|
+|függőségek/időtartam|Függőség időtartama|Ezredmásodpercben|Average|Az alkalmazás által külső erőforrások felé indított hívások időtartama.|dependency/type, dependency/performanceBucket, dependency/success, operation/synthetic, cloud/roleInstance, cloud/roleName|
 |függőségek/sikertelen|Függőségi hívások hibái|Count|Count|Az alkalmazás által külső erőforrások felé indított sikertelen függőségi hívások száma.|dependency/type, dependency/performanceBucket, operation/synthetic, cloud/roleInstance, cloud/roleName|
 |Oldalmegtekintések/darabszám|Lapmegtekintések|Count|Count|Lapok nézeteinek száma.|művelet/szintetikus|
 |pageViews/duration|Lapmegtekintés betöltési ideje|Ezredmásodpercben|Average|Lapmegtekintés betöltési ideje|művelet/szintetikus|
@@ -886,12 +886,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |performanceCounters/processIOBytesPerSecond|Folyamat átviteli sebessége|BytesPerSecond|Average|A fájlok, a hálózat és az eszközök számára másodpercenként olvasott és írt bájtok másodpercenkénti száma.|cloud/roleInstance|
 |performanceCounters/processCpuPercentage|Folyamat CPU|Percent|Average|Az eltelt idő százalékos aránya, amelyet az összes feldolgozási szál használ a processzor által az utasítások végrehajtásához. Ez 0 és 100 között változhat. Ez a metrika a W3wp-folyamat teljesítményét mutatja.|cloud/roleInstance|
 |performanceCounters/processorCpuPercentage|Processzoridő|Percent|Average|Az az időtartam, ameddig a processzor a nem üresjárati szálakban költ.|cloud/roleInstance|
-|performanceCounters/memoryAvailableBytes|Elérhető memória|Bájt|Average|A fizikai memória azonnal elérhető egy folyamathoz vagy a rendszer általi használatra.|cloud/roleInstance|
+|performanceCounters/memoryAvailableBytes|Rendelkezésre álló memória|Bájt|Average|A fizikai memória azonnal elérhető egy folyamathoz vagy a rendszer általi használatra.|cloud/roleInstance|
 |performanceCounters/processPrivateBytes|Folyamat saját bájtjai|Bájt|Average|A memória kizárólag a figyelt alkalmazás folyamataihoz van rendelve.|cloud/roleInstance|
 |kérelmek/időtartam|Kiszolgáló válaszideje|Ezredmásodpercben|Average|HTTP-kérelem fogadása és a válasz küldésének befejezése közötti idő.|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
 |kérelmek/darabszám|Kiszolgálói kérelmek|Count|Count|A befejezett HTTP-kérelmek száma.|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
 |kérelmek/sikertelen|Sikertelen kérelmek|Count|Count|A sikertelenként megjelölt HTTP-kérelmek száma. A legtöbb esetben ezek a kérések > = 400, és nem egyenlő a 401-es válasz kóddal.|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, felhő/roleName|
-|kérelmek/díjszabás|Kiszolgálói kérelmek gyakorisága|Egység/s|Average|A kiszolgálói kérelmek másodpercenkénti száma|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
+|kérelmek/díjszabás|Kiszolgálói kérelmek száma|Egység/s|Average|A kiszolgálói kérelmek másodpercenkénti száma|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
 |kivételek/darabszám|Kivételek|Count|Count|Az összes nem kezelt kivétel összesített száma.|cloud/roleName, cloud/roleInstance, client/type|
 |kivételek/böngésző|Böngészőkivételek|Count|Count|A böngészőben fellépő nem kezelt kivételek száma.|Nincs dimenzió|
 |kivételek/kiszolgáló|Kiszolgálókivételek|Count|Count|A kiszolgálói alkalmazásban fellépő nem kezelt kivételek száma.|felhő/roleName, felhő/roleInstance|
@@ -938,31 +938,31 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |RunsSucceeded|Sikeres futtatások|Count|Összes|A sikeres munkafolyamat-futtatások száma.|Nincs dimenzió|
 |RunsFailed|Sikertelen futtatások|Count|Összes|Sikertelen munkafolyamat-futtatások száma.|Nincs dimenzió|
 |RunsCancelled|Megszakított futtatások|Count|Összes|A megszakított munkafolyamat-futtatások száma.|Nincs dimenzió|
-|RunLatency|Futtatások késése|Másodperc|Average|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
-|RunSuccessLatency|Sikeres futtatások késése|Másodperc|Average|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
-|RunThrottledEvents|Futtatások által elindított események|Count|Összes|A munkafolyamat-műveletek vagy az elindított események száma.|Nincs dimenzió|
-|RunFailurePercentage|Futtatási hibák százalékos értéke|Percent|Összes|A munkafolyamat-futtatások százalékos aránya meghiúsult.|Nincs dimenzió|
+|RunLatency|Késés futtatása|Másodperc|Average|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
+|RunSuccessLatency|Sikeres Futtatás késése|Másodperc|Average|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
+|RunThrottledEvents|Szabályozott események futtatása|Count|Összes|A munkafolyamat-műveletek vagy az elindított események száma.|Nincs dimenzió|
+|RunFailurePercentage|Sikertelen futtatások százalékos aránya|Percent|Összes|A munkafolyamat-futtatások százalékos aránya meghiúsult.|Nincs dimenzió|
 |ActionsStarted|Elindított műveletek |Count|Összes|Az elindított munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsCompleted|Befejezett műveletek |Count|Összes|A befejezett munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSucceeded|Sikeres műveletek |Count|Összes|A sikeres munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsFailed|Sikertelen műveletek|Count|Összes|Nem sikerült a munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSkipped|Kihagyott műveletek |Count|Összes|A kihagyott munkafolyamat-műveletek száma.|Nincs dimenzió|
-|ActionLatency|Műveletek késése |Másodperc|Average|A befejezett munkafolyamat-műveletek késése.|Nincs dimenzió|
-|ActionSuccessLatency|Sikeres műveletek késése |Másodperc|Average|A sikeres munkafolyamat-műveletek késése.|Nincs dimenzió|
-|ActionThrottledEvents|Műveletek által elindított események|Count|Összes|A munkafolyamat-műveletek által szabályozott események száma..|Nincs dimenzió|
-|TriggersStarted|Elindított triggerek |Count|Összes|Az elindított munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersCompleted|Befejezett triggerek |Count|Összes|A befejezett munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSucceeded|Sikeres triggerek |Count|Összes|A sikeres munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersFailed|Sikertelen triggerek |Count|Összes|Sikertelen munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSkipped|Kihagyott triggerek|Count|Összes|A kihagyott munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersFired|Aktivált triggerek |Count|Összes|A kilőtt munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggerLatency|Triggerek késése |Másodperc|Average|A befejezett munkafolyamat-eseményindítók késése.|Nincs dimenzió|
-|TriggerFireLatency|Triggerek aktiválásának késése |Másodperc|Average|Az aktivált munkafolyamat-eseményindítók késése.|Nincs dimenzió|
+|ActionLatency|Művelet késése |Másodperc|Average|A befejezett munkafolyamat-műveletek késése.|Nincs dimenzió|
+|ActionSuccessLatency|Művelet sikerességi késése |Másodperc|Average|A sikeres munkafolyamat-műveletek késése.|Nincs dimenzió|
+|ActionThrottledEvents|Művelet által szabályozott események|Count|Összes|A munkafolyamat-műveletek által szabályozott események száma..|Nincs dimenzió|
+|TriggersStarted|Elindított eseményindítók |Count|Összes|Az elindított munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersCompleted|Befejezett eseményindítók |Count|Összes|A befejezett munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersSucceeded|Sikeres eseményindítók |Count|Összes|A sikeres munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersFailed|Sikertelen eseményindítók |Count|Összes|Sikertelen munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersSkipped|Kihagyott eseményindítók|Count|Összes|A kihagyott munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersFired|Kilőtt eseményindítók |Count|Összes|A kilőtt munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggerLatency|Trigger késése |Másodperc|Average|A befejezett munkafolyamat-eseményindítók késése.|Nincs dimenzió|
+|TriggerFireLatency|Kiváltó tűz késése |Másodperc|Average|Az aktivált munkafolyamat-eseményindítók késése.|Nincs dimenzió|
 |TriggerSuccessLatency|Sikeres triggerek késése |Másodperc|Average|A sikeres munkafolyamat-eseményindítók késése.|Nincs dimenzió|
-|TriggerThrottledEvents|Triggerek által elindított események|Count|Összes|A beállított munkafolyamat-triggerek száma.|Nincs dimenzió|
-|BillableActionExecutions|Számlázható műveleti végrehajtások|Count|Összes|A számlázott munkafolyamat-műveletek végrehajtásának száma.|Nincs dimenzió|
-|BillableTriggerExecutions|Számlázható triggerek végrehajtásai|Count|Összes|A számlázott munkafolyamat-trigger-végrehajtások száma.|Nincs dimenzió|
-|TotalBillableExecutions|Összes számlázható végrehajtás|Count|Összes|A számlázandó munkafolyamat-végrehajtások száma.|Nincs dimenzió|
+|TriggerThrottledEvents|Kiváltott események indítása|Count|Összes|A beállított munkafolyamat-triggerek száma.|Nincs dimenzió|
+|BillableActionExecutions|Számlázható műveletek végrehajtása|Count|Összes|A számlázott munkafolyamat-műveletek végrehajtásának száma.|Nincs dimenzió|
+|BillableTriggerExecutions|Számlázható trigger-végrehajtások|Count|Összes|A számlázott munkafolyamat-trigger-végrehajtások száma.|Nincs dimenzió|
+|TotalBillableExecutions|Számlázandó végrehajtások összesen|Count|Összes|A számlázandó munkafolyamat-végrehajtások száma.|Nincs dimenzió|
 |BillingUsageNativeOperation|A natív művelet végrehajtásához használt számlázási használat|Count|Összes|A számlázott natív művelet-végrehajtások száma.|Nincs dimenzió|
 |BillingUsageStandardConnector|A standard szintű összekötők végrehajtásának számlázási használata|Count|Összes|A számlázott szabványos összekötő-végrehajtások száma.|Nincs dimenzió|
 |BillingUsageStorageConsumption|Számlázási használat a tárolási felhasználás végrehajtásához|Count|Összes|A számlázható tárterület-használat végrehajtásának száma.|Nincs dimenzió|
@@ -979,29 +979,29 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |RunsSucceeded|Sikeres futtatások|Count|Összes|A sikeres munkafolyamat-futtatások száma.|Nincs dimenzió|
 |RunsFailed|Sikertelen futtatások|Count|Összes|Sikertelen munkafolyamat-futtatások száma.|Nincs dimenzió|
 |RunsCancelled|Megszakított futtatások|Count|Összes|A megszakított munkafolyamat-futtatások száma.|Nincs dimenzió|
-|RunLatency|Futtatások késése|Másodperc|Average|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
-|RunSuccessLatency|Sikeres futtatások késése|Másodperc|Average|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
-|RunThrottledEvents|Futtatások által elindított események|Count|Összes|A munkafolyamat-műveletek vagy az elindított események száma.|Nincs dimenzió|
+|RunLatency|Késés futtatása|Másodperc|Average|A befejezett munkafolyamat-futtatások késése.|Nincs dimenzió|
+|RunSuccessLatency|Sikeres Futtatás késése|Másodperc|Average|A sikeres munkafolyamat-futtatások késése.|Nincs dimenzió|
+|RunThrottledEvents|Szabályozott események futtatása|Count|Összes|A munkafolyamat-műveletek vagy az elindított események száma.|Nincs dimenzió|
 |RunStartThrottledEvents|Futtatás indítása által szabályozott események|Count|Összes|A munkafolyamat futtatásának megkezdéséhez beállított események száma.|Nincs dimenzió|
-|RunFailurePercentage|Futtatási hibák százalékos értéke|Percent|Összes|A munkafolyamat-futtatások százalékos aránya meghiúsult.|Nincs dimenzió|
+|RunFailurePercentage|Sikertelen futtatások százalékos aránya|Percent|Összes|A munkafolyamat-futtatások százalékos aránya meghiúsult.|Nincs dimenzió|
 |ActionsStarted|Elindított műveletek |Count|Összes|Az elindított munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsCompleted|Befejezett műveletek |Count|Összes|A befejezett munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSucceeded|Sikeres műveletek |Count|Összes|A sikeres munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsFailed|Sikertelen műveletek |Count|Összes|Nem sikerült a munkafolyamat-műveletek száma.|Nincs dimenzió|
 |ActionsSkipped|Kihagyott műveletek |Count|Összes|A kihagyott munkafolyamat-műveletek száma.|Nincs dimenzió|
-|ActionLatency|Műveletek késése |Másodperc|Average|A befejezett munkafolyamat-műveletek késése.|Nincs dimenzió|
-|ActionSuccessLatency|Sikeres műveletek késése |Másodperc|Average|A sikeres munkafolyamat-műveletek késése.|Nincs dimenzió|
-|ActionThrottledEvents|Műveletek által elindított események|Count|Összes|A munkafolyamat-műveletek által szabályozott események száma..|Nincs dimenzió|
-|TriggersStarted|Elindított triggerek |Count|Összes|Az elindított munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersCompleted|Befejezett triggerek |Count|Összes|A befejezett munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSucceeded|Sikeres triggerek |Count|Összes|A sikeres munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersFailed|Sikertelen triggerek |Count|Összes|Sikertelen munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersSkipped|Kihagyott triggerek|Count|Összes|A kihagyott munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggersFired|Aktivált triggerek |Count|Összes|A kilőtt munkafolyamat-eseményindítók száma.|Nincs dimenzió|
-|TriggerLatency|Triggerek késése |Másodperc|Average|A befejezett munkafolyamat-eseményindítók késése.|Nincs dimenzió|
-|TriggerFireLatency|Triggerek aktiválásának késése |Másodperc|Average|Az aktivált munkafolyamat-eseményindítók késése.|Nincs dimenzió|
+|ActionLatency|Művelet késése |Másodperc|Average|A befejezett munkafolyamat-műveletek késése.|Nincs dimenzió|
+|ActionSuccessLatency|Művelet sikerességi késése |Másodperc|Average|A sikeres munkafolyamat-műveletek késése.|Nincs dimenzió|
+|ActionThrottledEvents|Művelet által szabályozott események|Count|Összes|A munkafolyamat-műveletek által szabályozott események száma..|Nincs dimenzió|
+|TriggersStarted|Elindított eseményindítók |Count|Összes|Az elindított munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersCompleted|Befejezett eseményindítók |Count|Összes|A befejezett munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersSucceeded|Sikeres eseményindítók |Count|Összes|A sikeres munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersFailed|Sikertelen eseményindítók |Count|Összes|Sikertelen munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersSkipped|Kihagyott eseményindítók|Count|Összes|A kihagyott munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggersFired|Kilőtt eseményindítók |Count|Összes|A kilőtt munkafolyamat-eseményindítók száma.|Nincs dimenzió|
+|TriggerLatency|Trigger késése |Másodperc|Average|A befejezett munkafolyamat-eseményindítók késése.|Nincs dimenzió|
+|TriggerFireLatency|Kiváltó tűz késése |Másodperc|Average|Az aktivált munkafolyamat-eseményindítók késése.|Nincs dimenzió|
 |TriggerSuccessLatency|Sikeres triggerek késése |Másodperc|Average|A sikeres munkafolyamat-eseményindítók késése.|Nincs dimenzió|
-|TriggerThrottledEvents|Triggerek által elindított események|Count|Összes|A beállított munkafolyamat-triggerek száma.|Nincs dimenzió|
+|TriggerThrottledEvents|Kiváltott események indítása|Count|Összes|A beállított munkafolyamat-triggerek száma.|Nincs dimenzió|
 |IntegrationServiceEnvironmentWorkflowProcessorUsage|A integrációs szolgáltatási környezet munkafolyamat-processzorának használata|Percent|Average|Az integrációs szolgáltatási környezet munkafolyamat-processzorának használata.|Nincs dimenzió|
 |IntegrationServiceEnvironmentWorkflowMemoryUsage|integrációs szolgáltatási környezet munkafolyamat-memóriahasználat|Percent|Average|Az integrációs szolgáltatási környezet munkafolyamati memóriahasználat.|Nincs dimenzió|
 |IntegrationServiceEnvironmentConnectorProcessorUsage|integrációs szolgáltatási környezet összekötő-processzorának használata|Percent|Average|Az integrációs szolgáltatási környezet összekötő-processzorának használata.|Nincs dimenzió|
@@ -1039,16 +1039,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |IoBytesPerTotalOps|IO-bájt/op az összes műveletnél|bájt/op|Average|Az összes/kimenő bájtok műveletének összege|Nincs dimenzió|
 |IoBytesPerWriteOps|IO bájt/írási műveleti egység|bájt/op|Average|Bejövő/kimenő bájtok száma írási művelettel|Nincs dimenzió|
 |OtherIops|Egyéb IOPS|művelet/másodperc|Average|Egyéb/kimenő műveletek másodpercenként|Nincs dimenzió|
-|OtherThroughput|Egyéb átviteli sebesség|MBps|Average|Egyéb átviteli sebesség (amely nem írható vagy írható) megabájt/másodpercben|Nincs dimenzió|
+|OtherThroughput|Egyéb átviteli sebesség|MB/s|Average|Egyéb átviteli sebesség (amely nem írható vagy írható) megabájt/másodpercben|Nincs dimenzió|
 |ReadIops|IOPS olvasása|művelet/másodperc|Average|Olvasási/kimenő műveletek másodpercenként|Nincs dimenzió|
-|ReadThroughput|Olvasási sebesség|MBps|Average|Olvasási sebesség (MB/s) másodpercenként|Nincs dimenzió|
+|ReadThroughput|Olvasási sebesség|MB/s|Average|Olvasási sebesség (MB/s) másodpercenként|Nincs dimenzió|
 |TotalIops|Összes IOPS|művelet/másodperc|Average|Az összes/kimenő művelet másodpercenkénti összege|Nincs dimenzió|
-|TotalThroughput|Teljes átvitel|MBps|Average|Az összes átviteli sebesség (MB/s) összege másodpercenként|Nincs dimenzió|
+|TotalThroughput|Teljes átvitel|MB/s|Average|Az összes átviteli sebesség (MB/s) összege másodpercenként|Nincs dimenzió|
 |VolumeAllocatedSize|Kötet lefoglalt mérete|bájt|Average|A kötet lefoglalt mérete (nem a tényleges felhasznált bájtok)|Nincs dimenzió|
 |VolumeLogicalSize|Kötet logikai mérete|bájt|Average|A kötet logikai mérete (felhasznált bájtok)|Nincs dimenzió|
 |VolumeSnapshotSize|Kötet pillanatképének mérete|bájt|Average|A köteten található összes pillanatkép mérete|Nincs dimenzió|
 |WriteIops|IOPS írása|művelet/másodperc|Average|Írási/kimenő műveletek másodpercenként|Nincs dimenzió|
-|WriteThroughput|Írási sebesség|MBps|Average|Írási sebesség megabájtban (MB/s)|Nincs dimenzió|
+|WriteThroughput|Írási sebesség|MB/s|Average|Írási sebesség megabájtban (MB/s)|Nincs dimenzió|
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
@@ -1207,68 +1207,68 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|regisztráció. All|Regisztrálási műveletek|Count|Összes|Az összes sikeres regisztrációs művelet (létrehozás, frissítések lekérdezése és törlése) száma. |Nincs dimenzió|
+|regisztráció. All|Regisztrációs műveletek|Count|Összes|Az összes sikeres regisztrációs művelet (létrehozás, frissítések lekérdezése és törlése) száma. |Nincs dimenzió|
 |registration.create|Regisztráció-létrehozási műveletek|Count|Összes|Az összes sikeres regisztrációs létrehozás száma.|Nincs dimenzió|
-|registration.update|Regisztráció-frissítési műveletek|Count|Összes|A sikeres regisztrációs frissítések száma.|Nincs dimenzió|
-|registration.get|Regisztráció-olvasási műveletek|Count|Összes|A sikeres regisztrációs lekérdezések száma.|Nincs dimenzió|
-|registration.delete|Regisztráció-törlési műveletek|Count|Összes|A regisztráció sikeres törléseinak száma.|Nincs dimenzió|
-|bejövő|Bejövő üzenetek|Count|Összes|A sikeres küldési API-hívások száma. |Nincs dimenzió|
-|bejövő. ütemezett|Elküldött ütemezett leküldéses értesítések|Count|Összes|Ütemezett leküldéses értesítések megszakítva|Nincs dimenzió|
+|registration.update|Regisztrációs frissítési műveletek|Count|Összes|A sikeres regisztrációs frissítések száma.|Nincs dimenzió|
+|registration.get|Regisztrálási olvasási műveletek|Count|Összes|A sikeres regisztrációs lekérdezések száma.|Nincs dimenzió|
+|registration.delete|Regisztrációs törlési műveletek|Count|Összes|A regisztráció sikeres törléseinak száma.|Nincs dimenzió|
+|Bejövő|Bejövő üzenetek|Count|Összes|A sikeres küldési API-hívások száma. |Nincs dimenzió|
+|bejövő. ütemezett|Ütemezett leküldéses értesítések elküldve|Count|Összes|Ütemezett leküldéses értesítések megszakítva|Nincs dimenzió|
 |bejövő. ütemezett. Mégse|Ütemezett leküldéses értesítések megszakítva|Count|Összes|Ütemezett leküldéses értesítések megszakítva|Nincs dimenzió|
 |ütemezett. függőben|Függőben lévő ütemezett értesítések|Count|Összes|Függőben lévő ütemezett értesítések|Nincs dimenzió|
-|a telepítés. All|Telepítéskezelési műveletek|Count|Összes|Telepítéskezelési műveletek|Nincs dimenzió|
-|telepítés. Get|Telepítéslekérdezési műveletek|Count|Összes|Telepítéslekérdezési műveletek|Nincs dimenzió|
-|telepítési. upsert|Telepítés-létrehozási és -frissítési műveletek|Count|Összes|Telepítés-létrehozási és -frissítési műveletek|Nincs dimenzió|
-|Installation. patch|Telepítésjavítási műveletek|Count|Összes|Telepítésjavítási műveletek|Nincs dimenzió|
-|installation.delete|Telepítéstörlési műveletek|Count|Összes|Telepítéstörlési műveletek|Nincs dimenzió|
+|a telepítés. All|Telepítési felügyeleti műveletek|Count|Összes|Telepítési felügyeleti műveletek|Nincs dimenzió|
+|telepítés. Get|Telepítési műveletek beolvasása|Count|Összes|Telepítési műveletek beolvasása|Nincs dimenzió|
+|telepítési. upsert|Telepítési műveletek létrehozása vagy frissítése|Count|Összes|Telepítési műveletek létrehozása vagy frissítése|Nincs dimenzió|
+|Installation. patch|Javítások telepítési műveletei|Count|Összes|Javítások telepítési műveletei|Nincs dimenzió|
+|installation.delete|Telepítési műveletek törlése|Count|Összes|Telepítési műveletek törlése|Nincs dimenzió|
 |outgoing.allpns.success|Sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
-|kimenő. allpns. invalidpayload|Terhelési hibák|Count|Összes|A sikertelen leküldések száma, mert a PNS hibás adattartalom-hibát adott vissza.|Nincs dimenzió|
-|outgoing.allpns.pnserror|Külső értesítési rendszer hibái|Count|Összes|A sikertelen leküldések száma, mert hiba történt a PNS való kommunikáció során (a hitelesítési problémák kizárása).|Nincs dimenzió|
-|outgoing.allpns.channelerror|Csatornahibák|Count|Összes|A sikertelen leküldések száma, mert a csatorna érvénytelen, és nem lett hozzárendelve a megfelelő alkalmazáshoz (szabályozott vagy lejárt).|Nincs dimenzió|
-|outgoing.allpns.badorexpiredchannel|Rossz vagy lejárt csatorna által okozott hibák|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő csatorna/jogkivonat/regisztrációban lejárt vagy érvénytelen.|Nincs dimenzió|
-|outgoing.wns.success|WNS – sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
+|kimenő. allpns. invalidpayload|Hasznos adatok|Count|Összes|A sikertelen leküldések száma, mert a PNS hibás adattartalom-hibát adott vissza.|Nincs dimenzió|
+|outgoing.allpns.pnserror|Külső értesítési rendszerhibák|Count|Összes|A sikertelen leküldések száma, mert hiba történt a PNS való kommunikáció során (a hitelesítési problémák kizárása).|Nincs dimenzió|
+|outgoing.allpns.channelerror|Csatorna hibái|Count|Összes|A sikertelen leküldések száma, mert a csatorna érvénytelen, és nem lett hozzárendelve a megfelelő alkalmazáshoz (szabályozott vagy lejárt).|Nincs dimenzió|
+|outgoing.allpns.badorexpiredchannel|Rossz vagy lejárt csatorna-hibák|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő csatorna/jogkivonat/regisztrációban lejárt vagy érvénytelen.|Nincs dimenzió|
+|outgoing.wns.success|WNS sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.wns.invalidcredentials|WNS-hitelesítési hibák (érvénytelen hitelesítő adatok)|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva. (A Windows Live nem ismeri fel a hitelesítő adatokat).|Nincs dimenzió|
-|outgoing.wns.badchannel|WNS – rossz csatorna által okozott hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő URI a regisztráció során nem ismerhető fel (WNS állapot: 404 nem található).|Nincs dimenzió|
-|outgoing.wns.expiredchannel|WNS – lejárt csatorna által okozott hiba|Count|Összes|Az regisztrációban szereplő URI érvényességének lejárta miatt sikertelen leküldések száma (WNS állapot: 410 eltűnt).|Nincs dimenzió|
-|kimenő. wns. szabályozva|WNS – szabályozott értesítések|Count|Összes|A sikertelen leküldések száma, mert a WNS szabályozza az alkalmazást (WNS állapot: 406 nem elfogadható).|Nincs dimenzió|
+|outgoing.wns.badchannel|WNS hibás csatorna hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő URI a regisztráció során nem ismerhető fel (WNS állapot: 404 nem található).|Nincs dimenzió|
+|outgoing.wns.expiredchannel|WNS lejárt csatorna hibája|Count|Összes|Az regisztrációban szereplő URI érvényességének lejárta miatt sikertelen leküldések száma (WNS állapot: 410 eltűnt).|Nincs dimenzió|
+|kimenő. wns. szabályozva|WNS-szabályozású értesítések|Count|Összes|A sikertelen leküldések száma, mert a WNS szabályozza az alkalmazást (WNS állapot: 406 nem elfogadható).|Nincs dimenzió|
 |outgoing.wns.tokenproviderunreachable|WNS-hitelesítési hibák (nem érhető el)|Count|Összes|A Windows Live nem érhető el.|Nincs dimenzió|
 |kimenő. wns. invalidtoken|WNS-hitelesítési hibák (érvénytelen token)|Count|Összes|A WNS számára megadott jogkivonat érvénytelen (WNS állapot: 401 nem engedélyezett).|Nincs dimenzió|
 |outgoing.wns.wrongtoken|WNS-hitelesítési hibák (hibás token)|Count|Összes|A WNS számára megadott jogkivonat érvényes, de egy másik alkalmazáshoz (WNS állapot: 403 Tiltott). Ez akkor fordulhat elő, ha a regisztráció regisztrációban szereplő URI egy másik alkalmazáshoz van társítva. Győződjön meg arról, hogy az ügyfélalkalmazás ugyanahhoz az alkalmazáshoz van társítva, amelynek a hitelesítő adatai az értesítési központban vannak.|Nincs dimenzió|
 |kimenő. wns. invalidnotificationformat|WNS – érvénytelen értesítési formátum|Count|Összes|Az értesítés formátuma érvénytelen (WNS állapot: 400). Vegye figyelembe, hogy a WNS nem utasítja el az összes érvénytelen hasznos adatot.|Nincs dimenzió|
-|kimenő. wns. invalidnotificationsize|WNS – érvénytelen értesítésméret által okozott hiba|Count|Összes|Az értesítési tartalom túl nagy (WNS állapot: 413).|Nincs dimenzió|
-|outgoing.wns.channelthrottled|WNS – csatorna szabályozva|Count|Összes|Az értesítés el lett dobva, mert a regisztrációban szereplő URI a regisztráció során szabályozott (WNS válasz fejléce: X-WNS-NotificationStatus:channelThrottled).|Nincs dimenzió|
-|outgoing.wns.channeldisconnected|WNS – nincs kapcsolat a csatornával|Count|Összes|Az értesítés el lett dobva, mert a regisztrációban szereplő URI a regisztráció során szabályozott (WNS válasz fejléce: X-WNS-DeviceConnectionStatus: leválasztva.|Nincs dimenzió|
-|kimenő. wns. Dropped|WNS – elvetett értesítések|Count|Összes|Az értesítés el lett dobva, mert a regisztráció regisztrációban szereplő URI szabályozva van (X-WNS-NotificationStatus: kihagyva, de nem X-WNS-DeviceConnectionStatus: leválasztva).|Nincs dimenzió|
-|outgoing.wns.pnserror|WNS-hibák|Count|Összes|A WNS-vel folytatott kommunikáció hibája miatt nem érkezik értesítés.|Nincs dimenzió|
-|outgoing.wns.authenticationerror|WNS – hitelesítési hibák|Count|Összes|Nem érkezik értesítés a Windows Live érvénytelen hitelesítő adatokkal vagy helytelen jogkivonattal kommunikáló hibák miatt.|Nincs dimenzió|
-|outgoing.apns.success|APNS – sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
+|kimenő. wns. invalidnotificationsize|A WNS érvénytelen értesítési méretet észlelt|Count|Összes|Az értesítési tartalom túl nagy (WNS állapot: 413).|Nincs dimenzió|
+|outgoing.wns.channelthrottled|WNS csatorna szabályozása|Count|Összes|Az értesítés el lett dobva, mert a regisztrációban szereplő URI a regisztráció során szabályozott (WNS válasz fejléce: X-WNS-NotificationStatus:channelThrottled).|Nincs dimenzió|
+|outgoing.wns.channeldisconnected|WNS csatorna leválasztva|Count|Összes|Az értesítés el lett dobva, mert a regisztrációban szereplő URI a regisztráció során szabályozott (WNS válasz fejléce: X-WNS-DeviceConnectionStatus: leválasztva.|Nincs dimenzió|
+|kimenő. wns. Dropped|WNS eldobott értesítések|Count|Összes|Az értesítés el lett dobva, mert a regisztráció regisztrációban szereplő URI szabályozva van (X-WNS-NotificationStatus: kihagyva, de nem X-WNS-DeviceConnectionStatus: leválasztva).|Nincs dimenzió|
+|outgoing.wns.pnserror|WNS hibák|Count|Összes|A WNS-vel folytatott kommunikáció hibája miatt nem érkezik értesítés.|Nincs dimenzió|
+|outgoing.wns.authenticationerror|WNS-hitelesítési hibák|Count|Összes|Nem érkezik értesítés a Windows Live érvénytelen hitelesítő adatokkal vagy helytelen jogkivonattal kommunikáló hibák miatt.|Nincs dimenzió|
+|outgoing.apns.success|APNS sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.apns.invalidcredentials|APNS-hitelesítési hibák|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|outgoing.apns.badchannel|APNS – rossz csatorna által okozott hiba|Count|Összes|Azon leküldések száma, amelyek sikertelenek voltak, mert a jogkivonat érvénytelen (APNS bináris protokoll állapotkód: 8. APNS HTTP protokoll állapotkód: 400 a következővel: "BadDeviceToken").|Nincs dimenzió|
+|outgoing.apns.badchannel|APNS hibás csatorna hiba|Count|Összes|Azon leküldések száma, amelyek sikertelenek voltak, mert a jogkivonat érvénytelen (APNS bináris protokoll állapotkód: 8. APNS HTTP protokoll állapotkód: 400 a következővel: "BadDeviceToken").|Nincs dimenzió|
 |outgoing.apns.expiredchannel|APNS Expired Channel Error|Count|Összes|A APNS visszajelzési csatornája által érvénytelenített jogkivonat száma.|Nincs dimenzió|
-|outgoing.apns.invalidnotificationsize|APNS – érvénytelen értesítésméret által okozott hiba|Count|Összes|Azon leküldések száma, amelyek sikertelenek voltak, mert túl nagy a hasznos adat (APNS bináris protokoll állapotkód: 7).|Nincs dimenzió|
-|outgoing.apns.pnserror|APNS-hibák|Count|Összes|A APNS szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
-|outgoing.gcm.success|GCM – sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
+|outgoing.apns.invalidnotificationsize|A APNS érvénytelen értesítési méretet észlelt|Count|Összes|Azon leküldések száma, amelyek sikertelenek voltak, mert túl nagy a hasznos adat (APNS bináris protokoll állapotkód: 7).|Nincs dimenzió|
+|outgoing.apns.pnserror|APNS hibák|Count|Összes|A APNS szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
+|outgoing.gcm.success|GCM sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.gcm.invalidcredentials|GCM-hitelesítési hibák (érvénytelen hitelesítő adatok)|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|kimenő. GCM. badchannel|GCM – rossz csatorna által okozott hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban a regisztráció során nem ismerhető fel (GCM eredmény: Érvénytelen regisztráció).|Nincs dimenzió|
-|outgoing.gcm.expiredchannel|GCM – lejárt csatorna által okozott hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban lejárt (GCM eredmény: NotRegistered).|Nincs dimenzió|
-|kimenő. GCM. szabályozva|GCM – szabályozott értesítések|Count|Összes|A sikertelen leküldések száma, mert a GCM leszabályozza az alkalmazást (GCM-állapotkód: 501-599 vagy eredmény: nem érhető el).|Nincs dimenzió|
+|kimenő. GCM. badchannel|GCM hibás csatorna hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban a regisztráció során nem ismerhető fel (GCM eredmény: Érvénytelen regisztráció).|Nincs dimenzió|
+|outgoing.gcm.expiredchannel|GCM lejárt csatorna hibája|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban lejárt (GCM eredmény: NotRegistered).|Nincs dimenzió|
+|kimenő. GCM. szabályozva|GCM-szabályozású értesítések|Count|Összes|A sikertelen leküldések száma, mert a GCM leszabályozza az alkalmazást (GCM-állapotkód: 501-599 vagy eredmény: nem érhető el).|Nincs dimenzió|
 |kimenő. GCM. invalidnotificationformat|GCM – érvénytelen értesítési formátum|Count|Összes|Az adattartalom helytelen formázása miatt sikertelen leküldések száma (GCM eredmény: InvalidDataKey vagy InvalidTtl).|Nincs dimenzió|
-|kimenő. GCM. invalidnotificationsize|GCM – érvénytelen értesítésméret által okozott hiba|Count|Összes|Az adattartalom túl nagy mérete miatt sikertelen leküldések száma (GCM eredmény: MessageTooBig).|Nincs dimenzió|
-|kimenő. GCM. wrongchannel|GCM – nem megfelelő csatorna által okozott hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban nincs társítva a jelenlegi alkalmazáshoz (GCM eredmény: InvalidPackageName).|Nincs dimenzió|
-|outgoing.gcm.pnserror|GCM-hibák|Count|Összes|A GCM szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
+|kimenő. GCM. invalidnotificationsize|A GCM érvénytelen értesítési méretet észlelt|Count|Összes|Az adattartalom túl nagy mérete miatt sikertelen leküldések száma (GCM eredmény: MessageTooBig).|Nincs dimenzió|
+|kimenő. GCM. wrongchannel|GCM rossz csatorna hibája|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban nincs társítva a jelenlegi alkalmazáshoz (GCM eredmény: InvalidPackageName).|Nincs dimenzió|
+|outgoing.gcm.pnserror|GCM hibák|Count|Összes|A GCM szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
 |outgoing.gcm.authenticationerror|GCM-hitelesítési hibák|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, a hitelesítő adatok le vannak tiltva, vagy a SenderId nincs megfelelően konfigurálva az alkalmazásban (GCM eredmény: MismatchedSenderId).|Nincs dimenzió|
-|outgoing.mpns.success|MPNS – sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
+|outgoing.mpns.success|MPNS sikeres értesítések|Count|Összes|Az összes sikeres értesítés száma.|Nincs dimenzió|
 |outgoing.mpns.invalidcredentials|MPNS – érvénytelen hitelesítő adatok|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
-|outgoing.mpns.badchannel|MPNS – rossz csatorna által okozott hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő URI a regisztráció során nem ismerhető fel (MPNS állapot: 404 nem található).|Nincs dimenzió|
-|outgoing.mpns.throttled|MPNS – szabályozott értesítések|Count|Összes|A sikertelen leküldések száma, mert a MPNS szabályozza az alkalmazást (WNS MPNS: 406 nem elfogadható).|Nincs dimenzió|
+|outgoing.mpns.badchannel|MPNS hibás csatorna hiba|Count|Összes|A sikertelen leküldések száma, mert a regisztrációban szereplő URI a regisztráció során nem ismerhető fel (MPNS állapot: 404 nem található).|Nincs dimenzió|
+|outgoing.mpns.throttled|MPNS-szabályozású értesítések|Count|Összes|A sikertelen leküldések száma, mert a MPNS szabályozza az alkalmazást (WNS MPNS: 406 nem elfogadható).|Nincs dimenzió|
 |outgoing.mpns.invalidnotificationformat|MPNS – érvénytelen értesítési formátum|Count|Összes|Azon leküldések száma, amelyek sikertelenek voltak, mert az értesítés adattartalma túl nagy.|Nincs dimenzió|
-|outgoing.mpns.channeldisconnected|MPNS – nincs kapcsolat a csatornával|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban szereplő URI megszakadt (a MPNS állapota: 412 nem található).|Nincs dimenzió|
-|kimenő. mpns. Dropped|MPNS – elvetett értesítések|Count|Összes|A MPNS által eldobott leküldések száma (MPNS-válasz fejléce: X – NotificationStatus: QueueFull vagy letiltva).|Nincs dimenzió|
-|outgoing.mpns.pnserror|MPNS-hibák|Count|Összes|A MPNS szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
-|outgoing.mpns.authenticationerror|MPNS – hitelesítési hibák|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
+|outgoing.mpns.channeldisconnected|MPNS csatorna leválasztva|Count|Összes|A sikertelen leküldések száma, mert a regisztráció regisztrációban szereplő URI megszakadt (a MPNS állapota: 412 nem található).|Nincs dimenzió|
+|kimenő. mpns. Dropped|MPNS eldobott értesítések|Count|Összes|A MPNS által eldobott leküldések száma (MPNS-válasz fejléce: X – NotificationStatus: QueueFull vagy letiltva).|Nincs dimenzió|
+|outgoing.mpns.pnserror|MPNS hibák|Count|Összes|A MPNS szolgáltatással kommunikáló hibák miatt sikertelen leküldések száma.|Nincs dimenzió|
+|outgoing.mpns.authenticationerror|MPNS-hitelesítési hibák|Count|Összes|A sikertelen leküldések száma, mert a PNS nem fogadta el a megadott hitelesítő adatokat, vagy a hitelesítő adatok le vannak tiltva.|Nincs dimenzió|
 |notificationhub. leküldések|Minden kimenő értesítés|Count|Összes|Az értesítési központ összes kimenő értesítése|Nincs dimenzió|
 |incoming.all.requests|Minden bejövő kérelem|Count|Összes|Értesítési központ összes bejövő kérelme|Nincs dimenzió|
-|bejövő. ALL. failedrequests|Minden sikertelen bejövő kérelem|Count|Összes|Értesítési központ bejövő sikertelen kéréseinek száma|Nincs dimenzió|
+|bejövő. ALL. failedrequests|Minden bejövő sikertelen kérelem|Count|Összes|Értesítési központ bejövő sikertelen kéréseinek száma|Nincs dimenzió|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
@@ -1369,10 +1369,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Összes|A Microsoft. Relay Figyelőkapcsolatokra összesen.|EntityName|
 |SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Összes|A Microsoft. Relay összes feladói kapcsolatokra-kérelme.|EntityName|
 |ActiveConnections|ActiveConnections|Count|Összes|A Microsoft. Relay aktív kapcsolatai összesen.|EntityName|
-|AktívFigyelők|AktívFigyelők|Count|Összes|A Microsoft. Relay ActiveListeners összesen.|EntityName|
-|ÁtvittBájtok|ÁtvittBájtok|Count|Összes|A Microsoft. Relay BytesTransferred összesen.|EntityName|
-|Figyelőkapcsolat-bontások|Figyelőkapcsolat-bontások|Count|Összes|A Microsoft. Relay bontásai összesen.|EntityName|
-|Feladóikapcsolat-bontások|Feladóikapcsolat-bontások|Count|Összes|A Microsoft. Relay SenderDisconnects összesen.|EntityName|
+|ActiveListeners|ActiveListeners|Count|Összes|A Microsoft. Relay ActiveListeners összesen.|EntityName|
+|BytesTransferred|BytesTransferred|Count|Összes|A Microsoft. Relay BytesTransferred összesen.|EntityName|
+|Bontásai|Bontásai|Count|Összes|A Microsoft. Relay bontásai összesen.|EntityName|
+|SenderDisconnects|SenderDisconnects|Count|Összes|A Microsoft. Relay SenderDisconnects összesen.|EntityName|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -1399,8 +1399,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ActiveMessages|Üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|Count|Average|Üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|EntityName|
 |DeadletteredMessages|Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma. (Előzetes verzió)|Count|Average|Egy várólistában vagy témakörben lévő kézbesítetlen üzenetek száma. (Előzetes verzió)|EntityName|
 |ScheduledMessages|Az üzenetsor/témakör ütemezett üzeneteinek száma. (Előzetes verzió)|Count|Average|Az üzenetsor/témakör ütemezett üzeneteinek száma. (Előzetes verzió)|EntityName|
-|CPUXNS|Processzorhasználat névterenként|Percent|Maximum|A Service Bus Premium névtér CPU-használati metrikája|Nincs dimenzió|
-|WSXNS|Felhasznál memória mérete névterenként|Percent|Maximum|A Service Bus Premium névtér memóriahasználat mérőszáma|Nincs dimenzió|
+|CPUXNS|CPU-használat/névtér|Percent|Maximum|A Service Bus Premium névtér CPU-használati metrikája|Nincs dimenzió|
+|WSXNS|Memória méretének használata névtérben|Percent|Maximum|A Service Bus Premium névtér memóriahasználat mérőszáma|Nincs dimenzió|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1441,10 +1441,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |connection_successful|Sikeres kapcsolatok|Count|Összes|Sikeres kapcsolatok|Nincs dimenzió|
 |connection_failed|Sikertelen kapcsolatok|Count|Összes|Sikertelen kapcsolatok|Nincs dimenzió|
 |blocked_by_firewall|Tűzfal blokkolja|Count|Összes|Tűzfal blokkolja|Nincs dimenzió|
-|holtpont|Holtpontok|Count|Összes|Holtpontok. Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
+|Holtpont|Holtpontok|Count|Összes|Holtpontok. Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
 |storage_percent|Felhasznált adatterület százalékos aránya|Percent|Maximum|Az adatbázis mérete százalékban megadva. Nem alkalmazható adattárházak vagy nagy kapacitású-adatbázisokra.|Nincs dimenzió|
 |xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Percent|Average|Memóriában tárolt OLTP-tárolási százalék. Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
-|workers_percent|Munkavégzők százalékos aránya|Percent|Average|Munkavégzők százalékos aránya. Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
+|workers_percent|Feldolgozók százalékos aránya|Percent|Average|Munkavégzők százalékos aránya. Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
 |sessions_percent|Munkamenetek százalékos aránya|Percent|Average|Munkamenetek százalékos aránya Az adattárházak esetében nem alkalmazható.|Nincs dimenzió|
 |dtu_limit|DTU korlátja|Count|Average|DTU korlátja. A DTU-alapú adatbázisokra vonatkozik.|Nincs dimenzió|
 |dtu_used|Használt DTU|Count|Average|DTU használatban. A DTU-alapú adatbázisokra vonatkozik.|Nincs dimenzió|
@@ -1472,12 +1472,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |log_write_percent|Naplózási IO százalékos aránya|Percent|Average|Naplózási IO százalékos aránya|Nincs dimenzió|
 |dtu_consumption_percent|DTU százalékos értéke|Percent|Average|DTU százalék. A DTU-alapú rugalmas készletekre vonatkozik.|Nincs dimenzió|
 |storage_percent|Felhasznált adatterület százalékos aránya||Percent|Average|Tárolási százalék|Nincs dimenzió|
-|workers_percent|Munkavégzők százalékos aránya|Percent|Average|Munkavégzők százalékos aránya|Nincs dimenzió|
+|workers_percent|Feldolgozók százalékos aránya|Percent|Average|Feldolgozók százalékos aránya|Nincs dimenzió|
 |sessions_percent|Munkamenetek százalékos aránya|Percent|Average|Munkamenetek százalékos aránya|Nincs dimenzió|
 |eDTU_limit|eDTU korlátja|Count|Average|eDTU korlátja. A DTU-alapú rugalmas készletekre vonatkozik.|Nincs dimenzió|
 |storage_limit|Adatok maximális mérete|Bájt|Average|Tárolási korlát|Nincs dimenzió|
 |eDTU_used|használt eDTU|Count|Average|eDTU használatban. A DTU-alapú rugalmas készletekre vonatkozik.|Nincs dimenzió|
-|storage_used|Használatban lévő adatterület|Bájt|Average|Felhasznált tároló|Nincs dimenzió|
+|storage_used|Használatban lévő adatterület|Bájt|Average|Felhasznált tárterület|Nincs dimenzió|
 |xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Percent|Average|Memóriában tárolt OLTP tárolási százaléka|Nincs dimenzió|
 |cpu_limit|CPU-korlát|Count|Average|CPU-korlát. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincs dimenzió|
 |cpu_used|Felhasznált CPU|Count|Average|A processzor használatban van. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincs dimenzió|
@@ -1681,7 +1681,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Average|Átlagos memória-munkakészlet|Példány|
 |AverageResponseTime|Átlagos válaszidő|Másodperc|Average|Átlagos válaszidő|Példány|
 |AppConnections|Kapcsolatok|Count|Average|Kapcsolatok|Példány|
-|Leírók|Leírók száma|Count|Average|Leírók száma|Példány|
+|Kezeli|Leírók száma|Count|Average|Leírók száma|Példány|
 |Szálak|Szálak száma|Count|Average|Szálak száma|Példány|
 |PrivateBytes|Saját [nem megosztható] memória (bájt)|Bájt|Average|Saját [nem megosztható] memória (bájt)|Példány|
 |IoReadBytesPerSecond|I/O – olvasás (bájt/másodperc)|BytesPerSecond|Összes|I/O – olvasás (bájt/másodperc)|Példány|
@@ -1747,7 +1747,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |FunctionExecutionUnits|Függvény-végrehajtási egység|Count|Összes|Függvény-végrehajtási egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Count|Összes|Függvény végrehajtásainak száma|Példány|
 |AppConnections|Kapcsolatok|Count|Average|Kapcsolatok|Példány|
-|Leírók|Leírók száma|Count|Average|Leírók száma|Példány|
+|Kezeli|Leírók száma|Count|Average|Leírók száma|Példány|
 |Szálak|Szálak száma|Count|Average|Szálak száma|Példány|
 |PrivateBytes|Saját [nem megosztható] memória (bájt)|Bájt|Average|Saját [nem megosztható] memória (bájt)|Példány|
 |IoReadBytesPerSecond|I/O – olvasás (bájt/másodperc)|BytesPerSecond|Összes|I/O – olvasás (bájt/másodperc)|Példány|
@@ -1804,4 +1804,4 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 ## <a name="next-steps"></a>További lépések
 * [Tudnivalók a Azure Monitor mérőszámokról](data-platform.md)
 * [Riasztások létrehozása mérőszámokon](alerts-overview.md)
-* [Metrikák exportálása a Storage-ba, az Event hub-ba vagy a Log Analyticsba](diagnostic-logs-overview.md)
+* [Metrikák exportálása a Storage-ba, az Event hub-ba vagy a Log Analyticsba](resource-logs-overview.md)

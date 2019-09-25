@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 4d635d04c5207b3668bd179cec4f21e26dd59452
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 22b18988406beb5bed491d7101f376340d35f623
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946687"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259783"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure Security and Compliance Blueprint-Pásti Web Application for NIST Special kiadvány 800-171
 
@@ -94,9 +94,9 @@ A App Service Environment használata ehhez az architektúrához a következő v
 - Önaláírt belső terheléselosztó tanúsítványa HTTPS-kommunikációhoz. Ajánlott eljárásként a Microsoft egy megbízható hitelesítésszolgáltató használatát javasolja a fokozott biztonság érdekében.
 - [Belső terheléselosztási mód](../../app-service/environment/app-service-environment-with-internal-load-balancer.md) (3. mód).
 - A [TLS 1,0](../../app-service/environment/app-service-app-service-environment-custom-settings.md)letiltása.
-- Módosítsa a [TLS](../../app-service/environment/app-service-app-service-environment-custom-settings.md)-titkosítást.
-- Bejövő adatforgalom vezérlése [N/W portokon](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
-- [Webalkalmazási tűzfal – korlátozza az](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md)adatvédelmet.
+- Módosítsa a [TLS-titkosítást](../../app-service/environment/app-service-app-service-environment-custom-settings.md).
+- [Bejövő adatforgalom vezérlése N/W portokon](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+- [Webalkalmazási tűzfal – korlátozza az adatvédelmet](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 - [Azure SQL Database forgalom](../../app-service/environment/app-service-app-service-environment-network-architecture-overview.md)engedélyezése.
 
 ### <a name="virtual-network"></a>Virtuális hálózat
@@ -134,7 +134,7 @@ Az architektúra titkosítva, adatbázis-naplózással és egyéb mértékekkel 
 -   Az [SQL Database naplózása](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban lévő naplóba írja azokat.
 -   A SQL Database [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatára van konfigurálva. A szolgáltatás valós idejű titkosítást és visszafejtést végez az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok között, hogy megvédje az adatokat a nyugalmi állapotban. Az transzparens adattitkosítás biztosítja, hogy a tárolt adataik nem vonatkoznak a jogosulatlan hozzáférésre.
 -   A [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák az adatbázis-kiszolgálók hozzáférését a megfelelő engedélyek megadása előtt. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   Az [SQL](../../sql-database/sql-database-threat-detection.md) -veszélyforrások észlelése lehetővé teszi az észlelést és a válaszadást a lehetséges fenyegetésekkel szemben. Biztonsági riasztásokat biztosít a gyanús adatbázis-tevékenységekről, a lehetséges sebezhetőségekről, az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról.
+-   Az [SQL-veszélyforrások észlelése](../../sql-database/sql-database-threat-detection.md) lehetővé teszi az észlelést és a válaszadást a lehetséges fenyegetésekkel szemben. Biztonsági riasztásokat biztosít a gyanús adatbázis-tevékenységekről, a lehetséges sebezhetőségekről, az SQL-injektálási támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról.
 -   A [titkosított oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) biztosítják, hogy a bizalmas adatok soha nem egyszerű szövegként jelenjenek meg az adatbázis-rendszeren belül. Az adattitkosítás engedélyezése után csak a kulcsokhoz hozzáféréssel rendelkező ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adatértékekhez.
 - A [dinamikus adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) korlátozza a bizalmas adatokra való adatvédelmet azáltal, hogy az adatokat nem Kiemelt felhasználók vagy alkalmazások számára fedi le. A szolgáltatás automatikusan képes felderíteni a potenciálisan bizalmas adatokat, és javaslatot tesz a megfelelő maszkok alkalmazására. A dinamikus adatmaszkolás segít csökkenteni a hozzáférést, hogy a bizalmas adatok jogosulatlan hozzáférés nélkül ne lépjenek ki az adatbázisból. *Az ügyfelek felelősek a beállítások módosításához az adatbázis-sémájuk betartásához.*
 
@@ -165,7 +165,7 @@ A Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosí
 **Azure Application Gateway**: Az architektúra csökkenti a biztonsági rések kockázatát, ha olyan Application Gateway-t használ, amely konfigurálva van egy webalkalmazási tűzfallal, és a OWASP szabálykészlet engedélyezve van. A további funkciók a következők:
 
 - [End-to-end-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-- Engedélyezze az [SSL](../../application-gateway/create-ssl-portal.md)-kiszervezést.
+- Engedélyezze az [SSL-kiszervezést](../../application-gateway/create-ssl-portal.md).
 - Tiltsa le [a TLS 1.0-s és 1.1-es verzióit](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 - [Webalkalmazási tűzfal](../../application-gateway/waf-overview.md) (megelőzési mód).
 - [Megelőzési mód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) a OWASP 3,0 szabálykészlet beállításával.
@@ -173,11 +173,11 @@ A Security Center rangsorolt biztonsági riasztásokat és incidenseket biztosí
 - [Egyéni állapot](../../application-gateway/quick-create-portal.md)-mintavételek.
 - A [Security Center](https://azure.microsoft.com/services/security-center) és [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) további védelmet és értesítéseket biztosítanak. A Security Center a hírnév rendszerét is biztosítja.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás
 
 Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhasználó tevékenységét, valamint a rendszer állapotát:
 - **Tevékenységek naplói**: A [tevékenységek naplói](../../azure-monitor/platform/activity-logs-overview.md) betekintést nyújtanak az előfizetésben lévő erőforrásokon végrehajtott műveletekre. A Tevékenységnaplók segítenek meghatározni a művelet kezdeményezőjét, az előfordulás időpontját és az állapotot.
-- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit, a tárolási naplókat, a Key Vault a naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
+- **Diagnosztikai naplók**: A [diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) az összes erőforrás által kibocsátott összes naplót tartalmazzák. Ezek a naplók a Windows-események rendszernaplóit, a tárolási naplókat, a Key Vault a naplókat, valamint Application Gateway hozzáférési és tűzfal-naplókat tartalmaznak. Az összes diagnosztikai napló egy központi és titkosított Azure Storage-fiókba írja az archiválást. A felhasználók a megőrzési időtartamot akár 730 napig is konfigurálhatják, hogy megfeleljenek a rájuk vonatkozó követelményeknek.
 
 **Naplók Azure monitor**: A naplókat a rendszer a feldolgozás, tárolás és irányítópult-jelentéskészítés [Azure monitor naplófájljaiban](https://azure.microsoft.com/services/log-analytics/) összesíti. Az adatgyűjtés után a rendszer külön táblákba rendezi a Log Analytics munkaterületeken belüli adattípusokat. Így az összes adatforrás együtt is elemezhető, az eredeti forrásától függetlenül. A Security Center Azure Monitor-naplókkal integrálódik. Az ügyfelek használhatnak Kusto-lekérdezéseket a biztonsági események adatainak eléréséhez és más szolgáltatásokból származó adatokkal való összekapcsolásához.
 
@@ -212,7 +212,7 @@ A biztonságos VPN-alagút az Azure-nal való megvalósításával létrehozhat 
 
 Mivel a VPN-alagúton belüli forgalom helyek közötti VPN-kapcsolaton keresztül halad át az interneten, a Microsoft még egy biztonságosabb kapcsolódási lehetőséget kínál. A ExpressRoute egy dedikált WAN-kapcsolat az Azure és egy helyszíni hely vagy egy Exchange-szolgáltató között. A ExpressRoute-kapcsolatok közvetlenül az ügyfél távközlési szolgáltatójának csatlakoznak. Ennek eredményeképpen az adat nem utazik az interneten keresztül, és nem teszi elérhetővé. Ezek a kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot nyújtanak, mint a szokásos kapcsolatok.
 
-Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)ra.
+Ajánlott eljárások egy biztonságos hibrid hálózat megvalósításához, amely kiterjeszti a helyszíni hálózatot az Azure- [ra.](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 

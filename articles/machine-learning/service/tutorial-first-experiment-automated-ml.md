@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162547"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259314"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -58,10 +58,11 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 
 1. Válassza az első **lépések**lehetőséget.
 
-1.  A bal oldali ablaktábla **authoring (szerzői műveletek** ) szakaszában válassza az **automatikus ml** lehetőséget.
-Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérlet az automatizált Machine learning.
+1. A bal oldali panelen válassza az **automatikus ml** lehetőséget a **szerzői műveletek** szakaszban.
 
-    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Mivel ez az első automatizált ML-kísérlet, megjelenik a kezdeti lépések képernyő.
+
+   ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. Válassza a **kísérlet létrehozása**lehetőséget. 
 
@@ -79,6 +80,7 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
    >Ebben az oktatóanyagban az új számítási feladatokkal létrehozott alapértelmezett Storage-fiókot és-tárolót fogja használni. Ezek automatikusan feltöltve lesznek az űrlapon.
     
 1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
+
    **Ez eltarthat néhány percet.** 
 
 1. A létrehozás után válassza ki az új számítási célt a legördülő listából, és kattintson a **tovább**gombra.
@@ -92,18 +94,18 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
     1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
     1. A bal alsó sarokban kattintson a **tovább** gombra, hogy feltöltse azt az alapértelmezett tárolóba, amelyet a rendszer automatikusan beállított a munkaterület létrehozása során. A nyilvános előzetes verzió csak a helyi fájlok feltöltését támogatja. 
-
-    1. A feltöltés befejezésekor a rendszer a fájltípus alapján intelligens módon tölti ki a **beállításokat és az előnézet** űrlapot. Győződjön meg arról, hogy az űrlap a következőképpen van feltöltve.
+    
+       A feltöltés befejezésekor a beállítások és az előnézet űrlap előre fel van töltve a fájl típusa alapján. 
+       
+    1. Győződjön meg arról, hogy a **beállítások és az előnézet** űrlap a következőképpen van feltöltve, majd válassza a **tovább**lehetőséget.
         
-        Mező|Value
+        Mező|Az oktatóanyag értéke
         ---|---
         Fájlformátum| Elválasztott
         Elválasztó karakter| Vessző
         Encoding| UTF-8
         Oszlopfejlécek| Minden fájl azonos fejléccel rendelkezik
         Sorok kihagyása | Nincsenek
-
-        Kattintson a **Tovább** gombra.
     
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Válassza a **kész**lehetőséget, hogy elvégezze a fájl feltöltését és a kísérlethez tartozó adatkészlet létrehozását.
 
@@ -116,16 +118,17 @@ Ekkor megjelenik a **kezdeti lépések** képernyő, mivel ez az első kísérle
 1. Bontsa ki a **Speciális beállítások** elemet, és töltse fel a mezőket az alábbiak szerint.
 
    >[!NOTE]
-   > Ebben a kísérletben nem állít be mérőszámok küszöbértékét vagy a maximális magok számát. Nem blokkolja az algoritmusok tesztelését is.
+   > Ebben az oktatóanyagban nem fog mérőszám-pontszámot vagy maximális magot megadni iterációs küszöbértékként. És nem fogja letiltani az algoritmusok tesztelését.
    
-    Speciális&nbsp;beállítások|Leírás|&nbsp;Az&nbsp;oktatóanyag értéke
-    ------|---------|---
-    Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|**AUC_weighted** 
-    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok akkor is lejárnak, ha nem teljesen teljesek. |&nbsp;Tanítási&nbsp;feladatokidőpontja&nbsp;(perc): **5**  <br> <br> &nbsp;Iterációk&#58; maximális#száma&nbsp;10&nbsp; 
-    Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
-    Érvényesítés| Az érvényesítés típusa és a tesztek száma. | **K-szeres** keresztek ellenőrzése<br><br>  több érvényesítés: **2** 
-    Egyidejűség| Az egyidejű ismétlések maximális száma.|**5**
-
+   Speciális&nbsp;beállítások|Leírás|&nbsp;Az&nbsp;oktatóanyag értéke
+   ------|---------|---
+   Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
+   Kilépési feltételek| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Képzési&nbsp;feladatok&nbsp;időpontja: 5 <br> <br> Iterációk maximális&nbsp;#száma10&nbsp;&nbsp;&#58;
+   Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+   Érvényesítés típusa | Válasszon egy több ellenőrzési típust.|K-szeres keresztek ellenőrzése
+   Érvényességek száma | Tesztek száma. | 2 érvényességi értékek 
+   Egyidejűség| Az egyidejű ismétlések maximális száma.|5
+   
 1. A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítésének megkezdéséhez egy képernyő jelenik meg egy állapotjelző üzenettel.
 
 >[!IMPORTANT]

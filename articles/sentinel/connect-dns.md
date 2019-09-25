@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240713"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262733"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>A tartománynév-kiszolgáló összekötése – előzetes verzió
+# <a name="connect-your-domain-name-server"></a>Connect your domain name server
 
-
+> [!IMPORTANT]
+> A DNS-adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Windows rendszeren futó összes DNS-kiszolgálót összekapcsolhatja az Azure Sentinel szolgáltatással. Ezt úgy teheti meg, hogy egy ügynököt telepít a DNS-gépre. A DNS-naplók használatával biztonsági, teljesítménybeli és működés közbeni elemzéseket nyerhet a szervezet DNS-infrastruktúrájában azáltal, hogy összegyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos elemzési és naplózási naplókat és egyéb kapcsolódó adatait.
 
@@ -53,7 +55,7 @@ A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kis
 
 ## <a name="connect-your-dns-appliance"></a>A DNS-berendezés összekötése
 
-1. Az Azure Sentinel portálon válassza az **adatösszekötők** lehetőséget, és válassza a **DNS-** csempét.
+1. Az Azure Sentinel portálon válassza az **adatösszekötők** lehetőséget, és válassza a **DNS (előzetes verzió)** csempét.
 1. Ha a DNS-gépek az Azure-ban vannak:
     1. Kattintson **az ügynök telepítése az Azure Windows rendszerű virtuális gépen**elemre.
     1. A **virtuális gépek** listájában válassza ki azt a DNS-gépet, amelyet az Azure sentinelbe szeretne továbbítani. Győződjön meg arról, hogy ez egy Windows rendszerű virtuális gép.

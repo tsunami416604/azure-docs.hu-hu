@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213521"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259983"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -69,8 +69,10 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>Adatforrás és a formátum
+
 Automatizált machine learning található adatok támogatja, a helyi számítógépére vagy a felhőben, például az Azure Blob Storage. Az adatok olvashatók be a scikit-ismerje meg a támogatott formátumok. Áttekintheti az adatokat:
-* Numpy tömbök X (szolgáltatások) és az y (célváltozó vagy más néven címke)
+
+* NumPy-tömbök X (szolgáltatások) és y (TARGET változó, más néven label)
 * Pandas dataframe
 
 >[!Important]
@@ -93,55 +95,25 @@ Példák:
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Kísérlet futtatása távoli számítási adatlehívást
 
-Távoli végrehajtáshoz a távoli számításból elérhetővé kell tennie az adatok elérését. Ezt az adattárolóba való feltöltéssel teheti meg.
+Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az SDK [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztálya a következő funkciókat teszi elérhetővé:
 
-Íme egy példa a használatára `datastore`:
+* adatok egyszerű átvitele statikus fájlokból vagy URL-forrásokból a munkaterületre
+* az adatok elérhetővé tétele a Felhőbeli számítási erőforrásokon futó parancsfájlok betanításához
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>Dprep-hivatkozások definiálása
-
-Az X és az y meghatározása dprep-hivatkozásként, amelyet az alábbihoz hasonló `AutoMLConfig` automatizált Machine learning-objektumnak továbbít a rendszer:
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+A következő témakörben talál példát arra, [Hogyan](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) csatlakoztathatók `Dataset` az adatok a számítási célra a osztály használatával.
 
 ## <a name="train-and-validation-data"></a>Adatok train és érvényesítése
 
-A metódusban közvetlenül is megadhatja a `AutoMLConfig` külön betanítási és érvényesítési készletet.
+A `AutoMLConfig` konstruktorban külön betanítási és érvényesítési készletek is megadhatók.
 
 ### <a name="k-folds-cross-validation"></a>K – Modellrész keresztellenőrzés
 
@@ -175,7 +147,7 @@ Többféle módon használhatja az automatikus machine learning-kísérlet konfi
 
 Néhány példa:
 
-1.  Besorolási kísérlet az elsődleges metrika és a maximális száma az iteráció és a Befejezés után 50 ismétlési és 2 keresztellenőrzési modellrész kísérletet 12 000 másodperc idő szerint súlyozott AUC használatával.
+1.  A besorolási kísérlet a AUC súlyozott elsődleges metrikaként, legfeljebb 12 000 másodperces időtartammal, a kísérlet végén pedig az 50-es ismétlések és a 2 kereszt-ellenőrzési hajtogatás után fejeződik be.
 
     ```python
     automl_classifier = AutoMLConfig(
@@ -202,12 +174,10 @@ Néhány példa:
         n_cross_validations=5)
     ```
 
-A három különböző `task` paraméter értéke határozza meg az alkalmazandó modellek listáját.  Az `whitelist` vagy`blacklist` a paraméterrel további módosításokat is végrehajthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
+A három különböző `task` paraméter értéke (a harmadik feladattípus, amely `forecasting` `regression` a feladatokhoz használt algoritmus-készletet használja) határozza meg az alkalmazandó modellek listáját. Az `whitelist` vagy`blacklist` a paraméterrel további módosításokat is végrehajthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
-Az elsődleges metrika; ahogy az a fenti példákban is látható, az optimalizálásra szolgáló modell képzése során használandó mérőszámot határozza meg. A kiválasztható elsődleges metrikát a választott feladattípus határozza meg. Alább látható az elérhető metrikák listája.
-
-Ismerje meg ezeket a definíciókat a [gépi tanulási eredmények megismeréséhez](how-to-understand-automated-ml.md).
+Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
 |Besorolás | Regresszió | Idősorozat-előrejelzés
 |-- |-- |--
@@ -217,9 +187,11 @@ Ismerje meg ezeket a definíciókat a [gépi tanulási eredmények megismerésé
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+Ismerje meg ezeket a definíciókat a [gépi tanulási eredmények megismeréséhez](how-to-understand-automated-ml.md).
+
 ### <a name="data-preprocessing--featurization"></a>Adatfeldolgozási & featurization
 
-Az automatizált gépi tanulási kísérletek során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy az algoritmusok jól elvégezhetők legyenek.  Ugyanakkor további előfeldolgozási/featurization is engedélyezheti, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
+Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további előfeldolgozási/featurization is engedélyezheti, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
 
 A featurization engedélyezéséhez határozza meg `"preprocess": True` az [ `AutoMLConfig` osztályt](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -227,12 +199,13 @@ A featurization engedélyezéséhez határozza meg `"preprocess": True` az [ `Au
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
 
 ### <a name="time-series-forecasting"></a>Idősorozat-előrejelzés
-Az idősorozat-előrejelzési feladattípushoz további paramétereket kell megadni.
-1. time_column_name – ez egy kötelező paraméter, amely meghatározza a dátum/idő adatsorozatot tartalmazó betanítási adatok oszlopának nevét.
-1. max_horizon – ez határozza meg, hogy mennyi idő elteltével kívánja előre jelezni a betanítási adatmennyiséget. Ha például napi időkeretekkel rendelkező betanítási információkkal rendelkezik, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
-1. grain_column_names – ez határozza meg az oszlopok nevét, amelyekben a betanítási adataiban az egyes idősorozatok adatai szerepelnek. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tároló és a márka oszlopokat a gabona oszlopaiban definiálhatja.
+A Time Series `forecasting` feladat további paramétereket igényel a konfigurációs objektumban:
 
-Tekintse meg az alább használt beállítások példáját, a jegyzetfüzet példája [itt](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)érhető el.
+1. `time_column_name`: Kötelező paraméter, amely meghatározza a betanítási adataiban szereplő, érvényes idősorozatot tartalmazó oszlop nevét.
+1. `max_horizon`: Meghatározza azt az időtartamot, amelyet a betanítási adatmennyiség gyakorisága alapján szeretne előre jelezni. Ha például napi időkeretekkel rendelkező betanítási információkkal rendelkezik, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
+1. `grain_column_names`: Meghatározza a betanítási adataiban az egyes idősorozat-adatsorokat tartalmazó oszlopok nevét. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tároló és a márka oszlopokat a gabona oszlopaiban definiálhatja. Minden egyes gabona/csoportosítás esetében külön idősorozatok és előrejelzések jönnek létre. 
+
+Az alább használt beállításokra vonatkozó példákért tekintse meg a [minta notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -342,10 +315,10 @@ run = experiment.submit(automl_config, show_output=True)
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 A kísérlet befejezéséhez több lehetőség is megadható.
-1. Nincs feltétel – ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
-1. Ismétlések száma – megadhatja a kísérlet futtatásához szükséges iterációk számát. A iteration_timeout_minutes hozzáadása opcionálisan percek alatt meghatározható az egyes iterációk időkorlátja.
-1. Kilépés hosszú idő elteltével – a beállításokban megadott experiment_timeout_minutes használatával meghatározhatja, hogy a rendszer hány perc elteltével folytassa a kísérlet futtatását.
-1. Kilépés egy pontszám elérésekor – a experiment_exit_score használatával elvégezheti a kísérlet befejezését, miután az elsődleges metrika alapján elérte a pontszám értékét.
+1. Nincsenek feltételek: Ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
+1. Ismétlések száma: Megadhatja a kísérlet futtatásához szükséges iterációk számát. Megadhatja `iteration_timeout_minutes` , hogy az egyes iterációk időkorlátja percben legyen megadva.
+1. Kilépés hosszú idő után: A `experiment_timeout_minutes` alkalmazásban való használata lehetővé teszi annak meghatározását, hogy mennyi ideig kell futtatni a kísérletet.
+1. Kilépés egy pontszám elérésekor: A `experiment_exit_score` használatával a rendszer elvégzi a kísérletet, miután elérte az elsődleges metrikai pontszám értékét.
 
 ### <a name="explore-model-metrics"></a>Modell metrikák böngészése
 

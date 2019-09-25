@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 29e50a3d978338eaa46566574e6a20685a14bda4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186392"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265819"
 ---
 #   <a name="conditional-skill"></a>Feltételes szaktudás
 
@@ -31,7 +30,7 @@ else
 ```
 
 > [!NOTE]
-> Ez a képesség nem egy Azure Cognitive Services API-hoz van kötve, és nem számítunk fel díjat a használatára. Azonban továbbra is csatolnia kell [egy Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md) az "ingyenes" erőforrás-beállítás felülbírálásához, amely korlátozza a naponta kis mennyiségű dúsítást.
+> Ez a képesség nem egy Azure Cognitive Services API-hoz van kötve, és nem számítunk fel díjat a használatára. Azonban továbbra is [csatolnia kell egy Cognitive Services erőforrást](cognitive-search-attach-cognitive-services.md) az "ingyenes" erőforrás-beállítás felülbírálásához, amely korlátozza a naponta kis mennyiségű dúsítást.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
@@ -154,7 +153,7 @@ Ebben a példában néhány mondatnak van egy *frenchSentiment* tulajdonsága. H
 ## <a name="transformation-example"></a>Transzformációs példa
 ### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Példa a 4. szakértelem-definícióra: Adatátalakítás egyetlen mezőben
 
-Ebben a példában egy 0 és 1 közötti érzést kapunk. Azt szeretnénk, hogy az-1 és 1 közötti értékre alakítsa át. Ezt a kisebb átalakítást a feltételes képesség használatával teheti meg.
+Ebben a példában egy 0 és 1 közötti *érzést* kapunk. Azt szeretnénk, hogy az-1 és 1 közötti értékre alakítsa át. Ezt a kisebb átalakítást a feltételes képesség használatával teheti meg.
 
 Ebben a példában nem használjuk a szakértelem feltételes aspektusát, mert a feltétel mindig *igaz*.
 

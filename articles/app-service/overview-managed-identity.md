@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098475"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260140"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -170,7 +170,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 4. Válassza a **felügyelt identitás**elemet.
 
-5. A **felhasználó** által hozzárendelt lapon kattintson a **Hozzáadás**gombra.
+5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
 
 6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás**lehetőségre.
 
@@ -304,12 +304,15 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> |Paraméternév|A|Leírás|
+> |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
 > |resource|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
 > |api-version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |secret|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.|
-> |ClientID|Lekérdezés|Választható A használni kívánt felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer hozzárendelt identitást használja.|
+> |ClientID|Lekérdezés|(Nem kötelező, kivéve, ha felhasználó által hozzárendelt) A használni kívánt felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer hozzárendelt identitást használja.|
+
+> [!IMPORTANT]
+> Ha a felhasználó által hozzárendelt identitásokhoz próbál jogkivonatokat beszerezni, a `clientid` tulajdonságot is meg kell adnia. Ellenkező esetben a jogkivonat-szolgáltatás megkísérli beolvasni a rendszerhez rendelt identitás tokenjét, amely esetleg nem létezik.
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 

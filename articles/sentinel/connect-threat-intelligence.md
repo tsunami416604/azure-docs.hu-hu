@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbdf05c714971db5a618ca2a8bb35fe286d6804c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240673"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262720"
 ---
-# <a name="connect-data-from-threat-intelligence-providers---preview"></a>Adatok összekapcsolhatók a veszélyforrások felderítésével – előzetes verzió
+# <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
 > [!IMPORTANT]
-> A fenyegetések felderítése az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> A Threat Intelligence Platforms adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Sentinel lehetővé teszi a szervezet által használt veszélyforrás-mutatók importálását, ami növelheti a biztonsági elemzők számára az ismert fenyegetések észlelésének és rangsorolásának képességét. Az Azure Sentinel számos funkciója elérhetővé válik vagy bővül:

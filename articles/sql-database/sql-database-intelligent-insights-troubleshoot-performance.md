@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f6b20806f75cc28b5f4f740ffb67faae491ae84
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567915"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262190"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
 
-Ez a lap a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis-teljesítmény diagnosztikai naplójában észlelt Azure SQL Database és felügyelt példányok teljesítményével kapcsolatos problémákat ismerteti. A diagnosztikai napló telemetria továbbítható [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps riasztási és jelentéskészítési képességeinek kihasználásához.
+Ez a lap a [Intelligent Insights](sql-database-intelligent-insights.md) adatbázis-teljesítmény diagnosztikai naplójában észlelt Azure SQL Database és felügyelt példányok teljesítményével kapcsolatos problémákat ismerteti. A diagnosztikai napló telemetria továbbítható [Azure monitor naplókba](../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps riasztási és jelentéskészítési képességeinek kihasználásához.
 
 > [!NOTE]
 > A Intelligent Insights használatával kapcsolatos gyors SQL Database teljesítmény-hibaelhárítási útmutatóért tekintse meg a jelen dokumentum [javasolt hibaelhárítási folyamat](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábráját.
@@ -208,7 +208,7 @@ Vegye fontolóra [Azure SQL Database lekérdezési terheléselemző](sql-databas
 
 Ez a észlelhető teljesítmény azt jelzi, hogy a munkaterhelés teljesítményének romlása, amelyben a rendszer a gyenge teljesítményű lekérdezéseket azonosítja az elmúlt hét napos számítási feladathoz képest.
 
-Ebben az esetben a rendszer nem tudja osztályozni a gyenge teljesítményt nyújtó lekérdezéseket bármely más szabványos észlelhető teljesítmény-kategóriába, de a regresszióért felelős várakozási statisztikát észlelte. Ezért a megnövelt *várakozási statisztikának*minősülő lekérdezéseknek tekinti őket, ahol a regresszióért felelős várakozási statisztika is elérhetővé válik. 
+Ebben az esetben a rendszer nem tudja osztályozni a gyenge teljesítményt nyújtó lekérdezéseket bármely más szabványos észlelhető teljesítmény-kategóriába, de a regresszióért felelős várakozási statisztikát észlelte. Ezért a *megnövelt várakozási statisztikának*minősülő lekérdezéseknek tekinti őket, ahol a regresszióért felelős várakozási statisztika is elérhetővé válik. 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -236,7 +236,7 @@ További információ: [Bevezetés a memóriába optimalizált táblákba](https
 
 Ez a észlelhető teljesítményi minta az aktuális adatbázis-munkaterhelés teljesítményének csökkenését jelzi az elmúlt hét napos alaptervhez képest. Ez az előfizetése rugalmas készletében rendelkezésre álló DTU hiánya miatt. 
 
-Az SQL Database erőforrásait általában [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)-erőforrásoknak nevezzük, amelyek a CPU és az IO (adat-és tranzakciónapló-i/o-erőforrások) kevert mértékét tartalmazzák. Az [Azure rugalmas készlet erőforrásai](sql-database-elastic-pool.md) a rendelkezésre álló eDTU-erőforrások készletét használják, amelyek több adatbázis között vannak elosztva méretezési célokra. Ha a rugalmas készletben rendelkezésre álló eDTU-erőforrások nem elég nagyok a készletben lévő összes adatbázis támogatásához, a rendszer a rugalmas készlet DTU-hiányát észleli.
+Az SQL Database erőforrásait általában [DTU-erőforrásoknak](sql-database-purchase-models.md#dtu-based-purchasing-model)nevezzük, amelyek a CPU és az IO (adat-és tranzakciónapló-i/o-erőforrások) kevert mértékét tartalmazzák. Az [Azure rugalmas készlet erőforrásai](sql-database-elastic-pool.md) a rendelkezésre álló eDTU-erőforrások készletét használják, amelyek több adatbázis között vannak elosztva méretezési célokra. Ha a rugalmas készletben rendelkezésre álló eDTU-erőforrások nem elég nagyok a készletben lévő összes adatbázis támogatásához, a rendszer a rugalmas készlet DTU-hiányát észleli.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -266,7 +266,7 @@ A diagnosztikai napló a lekérdezési kivonatokat, a jó csomag AZONOSÍTÓját
 
 Elemezheti, hogy melyik terv jobban teljesíti az adott lekérdezéseket, amelyeket azonosíthat a megadott lekérdezési kivonatok használatával. Miután eldöntötte, hogy melyik csomag jobban működik a lekérdezéseknél, manuálisan kényszerítheti azt. 
 
-További információ: [how SQL Server](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)meggátolja a terv-regressziók megtervezését.
+További információ: [how SQL Server meggátolja a terv-regressziók megtervezését](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Tudta, hogy SQL Database beépített intelligenciával automatikusan kezelheti az adatbázisaihoz legjobban teljesítő lekérdezés-végrehajtási terveket?
@@ -329,6 +329,6 @@ Intelligent Insights általában egy órányi időt kell igénybe vennie a telje
 
 ## <a name="next-steps"></a>További lépések
 - Ismerkedjen meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakkal.
-- Használja a [Intelligent Insights Azure SQL Database Performance Diagnostics](sql-database-intelligent-insights-use-diagnostics-log.md)-naplót.
+- Használja a [Intelligent Insights Azure SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Azure SQL Database figyelése [Azure SQL Analytics használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/resource-logs-overview.md).

@@ -17,25 +17,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835016"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264274"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
-A .NET-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL.NET használatával most a Microsoft Identity platform végpontján keresztül hitelesítheti a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét. 
+A .NET-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
 
-Ez a cikk a .NET-hez készült Microsoft Authentication Library (MSAL.NET) és a .NET-hez készült Azure AD Authentication Library (ADAL.NET) közötti választást ismerteti, és összehasonlítja a két kódtárat.  
+- a Microsoft Identity platform végpontjának használatával a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét hitelesítheti.
+- a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
+- az alkalmazás lehetővé teszi a növekményes hozzáférés engedélyezését, és egyszerűbben támogatja a feltételes hozzáférést.
+- élvezheti az innováció előnyeit.
+
+A **MSAL.net mostantól a Microsoft Identity platformmal való használatra javasolt hitelesítési függvénytár**. A ADAL.NET-on nem lesznek új funkciók implementálva. Az erőfeszítések a MSAL javítására összpontosítanak.
+
+Ez a cikk a .NET-hez készült Microsoft Authentication Library (MSAL.NET) és a .NET-hez készült Azure AD Authentication Library (ADAL.NET) közötti különbségeket ismerteti, és segítséget nyújt a MSAL-re való Migrálás során.  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>A ADAL és a MSAL alkalmazások közötti különbségek
+
 A legtöbb esetben a MSAL.NET és a Microsoft Identity platform végpontját kívánja használni, amely a Microsoft hitelesítési kódtárainak legújabb generációja. Az MSAL.NET használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft-fiókokkal (MSA) és a Azure AD B2Cekkel bejelentkezett felhasználók jogkivonatait is beszerezheti az alkalmazásba. 
 
 Ha már ismeri az Azure AD for Developers (v 1.0) végpontot (és a ADAL.NET), érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](active-directory-v2-compare.md).
 
-Azonban továbbra is szükség van a ADAL.NET használatára, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba. További részletek: ADFS- [támogatás](https://aka.ms/msal-net-adfs-support).
+Azonban továbbra is szükség van a ADAL.NET használatára, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba. További információ: ADFS- [támogatás](https://aka.ms/msal-net-adfs-support).
 
 Az alábbi kép összegzi a ADAL.net és a MSAL.net ![egymás melletti kódja közötti különbségeket.](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
@@ -129,7 +137,7 @@ Alkalmazás típusa | Hozzáférés | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webalkalmazás, webes API, démon | Ügyfél hitelesítő adatai | [Ügyfél-hitelesítő adatok a ADAL.NET-ben](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Ügyfél-hitelesítő adatok a MSAL.net-ben](msal-authentication-flows.md#client-credentials)
 Webes API | Meghatalmazó: | [A szolgáltatás és a szolgáltatás közötti hívások a felhasználó nevében a ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [A MSAL.NET nevében](msal-authentication-flows.md#on-behalf-of)
-Web App | Hitelesítési kód | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps és a ADAL.NET között](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps MSAL.NET](msal-authentication-flows.md#authorization-code)
+Webalkalmazás | Hitelesítési kód | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps és a ADAL.NET között](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Jogkivonatok beszerzése engedélyezési kódokkal a Web Apps MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Gyorsítótár-megőrzés
 
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Ügyfél-hitelesítési folyamat/Daemon-alkalmazás esetében kérelmekre vonatkozó hatókörök
 
-Az ügyfél-hitelesítési folyamat esetében az átadandó hatókör is a következő lesz `/.default`:. Ez azt jelzi, hogy az Azure AD: "minden olyan alkalmazás-szintű engedély, amelyet a rendszergazda beleegyezett az alkalmazás regisztrálására.
+Az ügyfél-hitelesítési folyamat esetében az átadandó hatókör is a következő lesz `/.default`:. Ez a hatókör közli az Azure AD-vel: "minden olyan alkalmazás-szintű engedély, amelyet a rendszergazda beleegyezett az alkalmazás regisztrálásához.
 
 ## <a name="adal-to-msal-migration"></a>ADAL a MSAL áttelepítéséhez
 
@@ -214,9 +222,9 @@ A ADAL.NET v2-ben. X-ben a frissítési tokenek lehetővé tették, hogy megold�
 * Hosszan futó szolgáltatások, amelyek olyan műveleteket végeznek, mint például az irányítópultok frissítése a felhasználók nevében, míg a felhasználók már nem csatlakoznak. 
 * Webfarm-forgatókönyvek, amelyek lehetővé teszik az ügyfél számára, hogy az RT-t a webszolgáltatásnak engedélyezze (a gyorsítótárazás az ügyféloldali, a titkosított cookie-t, és nem a kiszolgálóoldali helyet)
 
-Ez nem igaz a MSAL.NET, azonban a frissítési tokenek biztonsági okokból való kihasználása már nem ajánlott. Így nehéz lenne áttérni a MSAL 3. x verzióra, mivel az API nem teszi lehetővé a korábban beszerzett frissítési tokenek továbbítását. 
+A MSAL.NET biztonsági okokból nem teszi elérhetővé a frissítési jogkivonatokat: A MSAL kezeli az Ön számára a frissítő tokeneket. 
 
-Szerencsére a MSAL.NET már rendelkezik egy olyan API-val, amely lehetővé teszi korábbi frissítési jogkivonatok átadását a`IConfidentialClientApplication` 
+Szerencsére a MSAL.NET mostantól egy olyan API-val rendelkezik, amely lehetővé teszi az előző frissítési tokenek (ADAL-ben `IConfidentialClientApplication`szerzett) áttelepíthetők a következőre:
 
 ```CSharp
 /// <summary>

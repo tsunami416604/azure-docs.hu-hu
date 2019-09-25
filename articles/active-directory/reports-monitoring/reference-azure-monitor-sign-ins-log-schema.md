@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c3a05a531fd03cbd77bf3460ec45300692764565
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127051"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259161"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Az Azure AD bejelentkezési naplók sémájának értelmezése Azure Monitor
 
@@ -170,4 +170,4 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 ## <a name="next-steps"></a>További lépések
 
 * [Az auditnaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
-* [További információ az Azure diagnosztikai naplóiról](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [További információ az Azure diagnosztikai naplóiról](../../azure-monitor/platform/resource-logs-overview.md)

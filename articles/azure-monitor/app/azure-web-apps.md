@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875204"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258573"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service teljesítményének figyelése
 
-Az [Azure app Services](https://docs.microsoft.com/azure/app-service/) -on futó .net-és .net Core-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
+Az [Azure app Services](https://docs.microsoft.com/azure/app-service/) -on futó ASP.NET és ASP.net Core-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
 
 > [!NOTE]
 > Application Insights hely bővítményének manuális hozzáadása a **fejlesztői eszközök** > **bővítményein** keresztül elavult. Ez a bővítmény-telepítési módszer az egyes új verziók manuális frissítéseitől függ. A bővítmény legújabb stabil kiadása mostantól a App Service [](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) rendszerkép részeként van előtelepítve. A fájlok a ben `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` találhatók, és automatikusan frissülnek az egyes stabil kiadásokkal. Ha követi az ügynök-alapú utasításokat az alábbi figyelés engedélyezéséhez, az automatikusan eltávolítja az elavult bővítményt.
@@ -325,6 +325,9 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
 > [!NOTE]
 > A Java-és Node. js-alkalmazások csak az Azure App Serviceson, manuális SDK-alapú rendszerállapot-használaton keresztül támogatottak, ezért az alábbi lépések nem vonatkoznak ezekre a forgatókönyvekre.
+
+> [!NOTE]
+> A ASP.NET Core 3,0 alkalmazások nem támogatottak. A ASP.NET Core 3,0-es alkalmazások kódján keresztül kövesse a [manuális](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) rendszerállapot-vezérlést.
 
 1. Ellenőrizze, hogy az alkalmazást a használatával `ApplicationInsightsAgent`figyeli-e.
     * Győződjön meg `ApplicationInsightsAgent_EXTENSION_VERSION` arról, hogy az alkalmazás beállítása "~ 2" értékre van állítva.

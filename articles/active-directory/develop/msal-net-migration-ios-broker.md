@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fdfb2d7d33111f1adf998cd75446576d2010a365
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103959"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257780"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -36,7 +36,7 @@ Ez a cikk azt feltételezi, hogy már rendelkezik egy IOS-közvetítővel integr
 
 ### <a name="what-are-brokers"></a>Mik azok a brókerek?
 
-A brókerek a Microsoft által az Android és az iOS rendszerhez biztosított alkalmazások. (Lásd a [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) alkalmazást iOS és Android rendszeren, valamint a Intune céges portál alkalmazást Androidon.) 
+A brókerek a Microsoft által az Android és az iOS rendszerhez biztosított alkalmazások. (Lásd a [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) alkalmazást iOS és Android rendszeren, valamint a Intune céges portál alkalmazást Androidon.) 
 
 Ezek a következőket teszik lehetővé:
 

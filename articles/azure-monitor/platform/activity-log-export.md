@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034851"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258470"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
 Az [Azure-tevékenység naplója](activity-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Amellett, hogy megtekinti a tevékenység naplóját a Azure Portal, vagy átmásolja egy Log Analytics-munkaterületre, ahol az a Azure Monitor által gyűjtött egyéb adatokkal is elemezhető, létrehozhat egy log-profilt, amely archiválja a műveletnapló egy Azure Storage-fiókba, vagy továbbíthatja azt egy  Event hub.
@@ -29,14 +29,14 @@ Az [Azure Event Hubs](/azure/event-hubs/) egy adatstreaming platform-és esemén
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="storage-account"></a>Tárfiók
-Ha archiválja a tevékenység naplóját, létre kell hoznia [egy Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a diagnosztikai naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
+Ha archiválja a tevékenység naplóját, [létre kell hoznia egy Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a diagnosztikai naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
 
 A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfizetéshez tartozó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
 > [!NOTE]
 >  Jelenleg nem archiválhatja az adatok egy biztonságos virtuális hálózat mögött található Storage-fiókba.
 
 ### <a name="event-hubs"></a>Event Hubs
-Ha egy Event hubhoz küldi a tevékenység naplóját, akkor létre kell hoznia [egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. Ha korábban naplózta a tevékenység naplózási eseményeit erre a Event Hubs névtérre, az Event hub újra fel lesz használva.
+Ha egy Event hubhoz küldi a tevékenység naplóját, akkor [létre kell hoznia egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. Ha korábban naplózta a tevékenység naplózási eseményeit erre a Event Hubs névtérre, az Event hub újra fel lesz használva.
 
 A megosztott hozzáférési házirend határozza meg a folyamatos átviteli mechanizmus által biztosított engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. A Event Hubs névtérhez tartozó megosztott hozzáférési házirendeket Azure Portal a Event Hubs névtér configure (Konfigurálás) lapján lehet létrehozni vagy módosítani.
 
@@ -51,7 +51,7 @@ A napló profilja a következőket határozza meg.
 
 **Hová kell elküldeni a tevékenység naplóját.** Jelenleg az elérhető lehetőségek a Storage-fiók vagy a Event Hubs.
 
-**Mely esemény-kategóriákat kell elküldeni.** A naplózási profilok és a műveletnapló eseményeinek jelentése eltérő. A log profilban a *Kategória* a művelet típusát jelöli (írás, törlés, művelet). Egy tevékenység naplójában a (z) "* tulajdonság az esemény forrását vagy típusát jelöli (például adminisztráció, ServiceHealth és riasztás).
+**Mely esemény-kategóriákat kell elküldeni.** A naplózási profilok *és a műveletnapló* eseményeinek jelentése eltérő. A log profilban a *Kategória* a művelet típusát jelöli (írás, törlés, művelet). Egy tevékenység naplójában a (z *) "* tulajdonság az esemény*forrását vagy típusát jelöli (például adminisztráció, ServiceHealth és riasztás).
 
 **Az exportálandó régiókat (helyszíneket) exportálni kell.** Minden helyet fel kell vennie, mivel a tevékenység naplójában számos esemény globális esemény.
 
@@ -60,13 +60,9 @@ A napló profilja a következőket határozza meg.
 Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy Storage-fiókban le van tiltva, akkor a megőrzési szabályzatok nem lépnek érvénybe. Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
 
-
-> [!WARNING]
-> A Storage-fiókban lévő naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](diagnostic-logs-append-blobs.md)
-
-
 > [!IMPORTANT]
 > Ha a Microsoft. ininsights erőforrás-szolgáltató nincs regisztrálva, hibaüzenetet kaphat a log-profil létrehozásakor. A szolgáltató regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/resource-manager-supported-services.md) .
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Log-profil létrehozása a Azure Portal használatával
 
@@ -111,7 +107,7 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Tulajdonság | Kötelező | Leírás |
+    | Tulajdonság | Szükséges | Leírás |
     | --- | --- | --- |
     | Name (Név) |Igen |A napló profiljának neve. |
     | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
@@ -154,7 +150,7 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Tulajdonság | Kötelező | Leírás |
+    | Tulajdonság | Szükséges | Leírás |
     | --- | --- | --- |
     | name |Igen |A napló profiljának neve. |
     | storage-account-id |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
@@ -167,6 +163,9 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
 
 ## <a name="activity-log-schema"></a>Tevékenységi napló sémája
 Függetlenül attól, hogy az Azure Storage-ba vagy az Event hub-ba küldi a rendszer, a műveletnapló-adatnaplóba a következő formátumot fogja írni.
+
+
+> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum módosításának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor diagnosztikai naplók archiválása egy Storage-fiókba](diagnostic-logs-append-blobs.md) .
 
 ``` JSON
 {

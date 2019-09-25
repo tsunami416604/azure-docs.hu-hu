@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876570"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260855"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények hibakeresése az Azure Digital Ikrekben
 
@@ -35,7 +35,7 @@ Az Azure digitális Twins támogatja a robusztus naplózást, monitorozást és 
 
 * Az Azure Digital Twins-specifikus naplózási konfigurációhoz olvassa el a [figyelés és naplózás konfigurálását](./how-to-configure-monitoring.md)ismertető témakört.
 * Tekintse át a [Azure monitor](../azure-monitor/overview.md) áttekintését, és ismerkedjen meg a Azure monitor használatával engedélyezett hatékony naplózási beállításokkal.
-* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/diagnostic-logs-overview.md) az Azure-beli digitális ikrek diagnosztikai napló beállításainak az Azure Portalon, az Azure CLI-n vagy a powershellen keresztül történő konfigurálásához.
+* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/resource-logs-overview.md) az Azure-beli digitális ikrek diagnosztikai napló beállításainak az Azure Portalon, az Azure CLI-n vagy a powershellen keresztül történő konfigurálásához.
 
 A konfigurálást követően kiválaszthatja az összes naplózási kategóriát, metrikákat, és hatékony Azure Monitor log Analytics-munkaterületeket használhat a hibakeresési erőfeszítések támogatásához.
 

@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309023"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259958"
 ---
 # <a name="marketplace-faqs"></a>Marketplace – gyakori kérdések
 
@@ -49,7 +49,7 @@ Az Azure piactéren SaaS-alkalmazások, Virtual Machines, megoldások sablonjai,
 
 **Hogyan első lépések az Azure piactéren?**
 
-Az Azure [piactéren](https://azuremarketplace.microsoft.com/marketplace/apps)megtekintheti az Azure-on való futtatásra hitelesített és optimalizált nagyvállalati alkalmazásokat és megoldásokat. Az Azure Marketplace a [Azure Portal] keresztül is elérhető, amikor [**létrehoz egy erőforrást**](https://portal.azure.com/#create/hub).
+Az Azure piactéren megtekintheti az Azure-on való futtatásra hitelesített és optimalizált nagyvállalati alkalmazásokat és megoldásokat [](https://azuremarketplace.microsoft.com/marketplace/apps). Az Azure Marketplace a Azure Portalon keresztül is elérhető [] , amikor [**létrehoz egy erőforrást**](https://portal.azure.com/#create/hub).
 
 **Mik az Azure Marketplace legfőbb előnyei?**
 
@@ -64,13 +64,13 @@ Az Azure Marketplace-ajánlatok a következőket vehetik fel:
 * [Az Azure parancssori felülete (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Az előre fizetett kreditek és a pénzügyi kötelezettségvállalás egyéb formái nem használhatók a szoftverlicenc-díjak fizetésére, de felhasználhatók a kapcsolódó Azure-használati díjak megfizetésére is. A kivételek az [Azure-beli pénzügyi kötelezettségvállalásban](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)szerepelnek.
+>Az előre fizetett kreditek és a pénzügyi kötelezettségvállalás egyéb formái nem használhatók a szoftverlicenc-díjak fizetésére, de felhasználhatók a kapcsolódó Azure-használati díjak megfizetésére is. A kivételek az [Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)-beli pénzügyi kötelezettségvállalásban szerepelnek.
 
 **Kiválaszthatom, hogy mely Azure-régió (k) telepíthetők az Azure Marketplace-beli vásárlásra?**
 
 Az ügyfél bármely olyan Azure-beli adatközpont-régióban üzembe helyezhető, amelyet engedélyeznek. Javasoljuk, hogy a teljesítmény és a szabályozás költségvetésének optimalizálása érdekében a szolgáltatásokhoz legközelebb eső adatközpont-helyet válassza ki.
 
-**Ha véletlenül törölek egy Azure Marketplace-beli vásárlást, *visszavonhatja* a műveletet?**
+**Ha véletlenül törölek egy Azure Marketplace-beli vásárlást , visszavonhatja a műveletet?**
 
 Nem, a törlés végérvényes. Ha egy előfizetést véletlenül törölnek, akkor a rendszer visszavásárolhatja. A fel nem használt funkciók vagy előre fizetett szolgáltatások elvesznek.
 
@@ -88,7 +88,7 @@ Ha a közzétevő úgy konfigurálta az ajánlatát, hogy az elérhető legyen a
 
 **Milyen országok/régiók támogatottak az Azure piactéren eladott/kiépített alkalmazások és szolgáltatások megvásárlásához?**
 
-Az Azure Marketplace az Azure-ügyfelek számára érhető el a [részvételi szabályzatokban](/legal/marketplace/participation-policy)felsorolt országokban és régiókban.
+Az Azure Marketplace az Azure-ügyfelek számára érhető el a részvételi szabályzatokban [](/legal/marketplace/participation-policy)felsorolt országokban és régiókban.
 
 **Milyen pénznemeket támogat az Azure Marketplace?**
 
@@ -159,7 +159,7 @@ Az ingyenes próbaverziós ajánlatok a próbaverziót kezdeményező műveletre
 
 **Szükség van-e egy fizetési eszközre (például bankkártya) a fájlon az ingyenes csomag üzembe helyezéséhez vagy a saját licencek (BYOL) ajánlatokhoz?**
 
-Nem. Az ingyenes csomag vagy BYOL-ajánlatok üzembe helyezéséhez nincs szükség fizetési eszközre. Az ingyenes próbaajánlatokhoz azonban fizetési eszköz szükséges. A **beolvasás most** vagy **ingyenes próbaverziós** gombokat tartalmazó listák a kiválasztott Azure-előfizetésbe vannak telepítve.  A lista számlázása a kiválasztott fiók regisztrált fizetési mód használatával történik. Az Azure-használati díjak számlázása a szoftverlicenc-díjaktól függetlenül történik.
+Nem. Az ingyenes csomag vagy BYOL-ajánlatok üzembe helyezéséhez nincs szükség fizetési eszközre. Az ingyenes próbaajánlatokhoz azonban fizetési eszköz szükséges. A beolvasás **most** vagy **ingyenes próbaverziós** gombokat tartalmazó listák a kiválasztott Azure-előfizetésbe vannak telepítve.  A lista számlázása a kiválasztott fiók regisztrált fizetési mód használatával történik. Az Azure-használati díjak számlázása a szoftverlicenc-díjaktól függetlenül történik.
 
 **Ha kérdése van az Azure piactéren eladott ajánlatok díjszabásával kapcsolatban, kinek van egy Nagyvállalati Szerződés (EA) közvetett vásárlói kapcsolata?**
 
@@ -245,6 +245,14 @@ Az [Azure piactéren](https://azuremarketplace.microsoft.com/) lebonyolított v�
 
 Az ügyfeleknek közvetlenül kapcsolatba kell lépniük a közzétevővel a Piactéri szolgáltatással vagy a vásárlással kapcsolatos technikai problémákkal kapcsolatban. A közzétevő kapcsolattartási adatai és/vagy a támogatási webhelyre mutató hivatkozás az Azure Marketplace-en elérhető megoldás részletei oldalon található.
 
+**Hogyan történik a licencek kiegészítéseinek kezelése a megnövekedett középtávú időszakokban?**
+
+A meglévő előfizetéshez hozzáadott licencek az előfizetés hátralévő időtartamára érvényesek.
+
+**Hogyan történik a licencek eltávolítása a félidőben?**
+
+A megszakított licencek a jelen GYIK-ban található visszatérítési szabályzat hatálya alá esnek.  Az összes megszakított licenc azonnal törlődik a fiókból, és többé nem lesz használható.
+
 ## <a name="faq-for-publishers"></a>A kiadókkal kapcsolatos gyakori kérdések
 
 ### <a name="what-you-need-to-know-about-azure-marketplace"></a>Amit tudni kell az Azure Marketplace-ről
@@ -301,11 +309,11 @@ A Microsoft szabványos szerződési feltételeket kínál, amelyekkel a kiadó 
 
 A Microsoft hitelesíti az összes piactér-felhasználót a HRE.  A próbaverzióhoz közvetlenül is kiépíthető, ha további bejelentkezési lépésre van szüksége.  Egy hitelesített felhasználó például a piactéren lévő próbaverzióra kattint, és átirányítja a próbaverziós környezetbe.
 
-További információért és a próbaverzió HRE való engedélyezésének megkezdéséhez látogasson el a [Azure Active Directory szakaszra a közzétevői útmutatóban](enable-appsource-marketplace-using-azure-ad.md).
+További információért és a próbaverzió HRE való engedélyezésének megkezdéséhez látogasson el a [Azure Active Directory szakaszra](enable-appsource-marketplace-using-azure-ad.md)a közzétevői útmutatóban.
 
 **Hogyan Ismerkedés a Fejlesztői központ regisztrálásával?**
 
-Első lépésként a közzétevőnek ellenőriznie kell, hogy nincs-e már regisztrálva a [fejlesztői központ fiókja](deprecated/register-dev-center.md) (az ismétlődés megakadályozása érdekében). A megerősítést követően a következő lépésben regisztrálnia kell egy Microsoft-fiókval való [bejelentkezéssel](https://account.microsoft.com/account/) , amely a fejlesztői fiókhoz lesz társítva.
+Első lépésként a közzétevőnek ellenőriznie kell, hogy nincs-e már regisztrálva a [fejlesztői központ fiókja](deprecated/register-dev-center.md) (az ismétlődés megakadályozása érdekében). A megerősítést követően a következő lépésben regisztrálnia kell [](https://account.microsoft.com/account/) egy Microsoft-fiókval való bejelentkezéssel, amely a fejlesztői fiókhoz lesz társítva.
 
 Ha még nem rendelkezik Microsoft-fiók, [létrehozhat egy fiókot](https://signup.live.com/) (például: contoso_marketplace@live.com).
 
@@ -323,7 +331,7 @@ Ha többet szeretne megtudni a [Cloud Partner Portal-ügyfél-érdeklődők](./c
 
 **Meg kell-e adni egy érdeklődői célhelyet egy ajánlat közzétételéhez a piactéren?**
 
-Igen, ha a velem, az **SaaS-alkalmazással**vagy a **tanácsadási szolgáltatásokkal** **kapcsolatban**tesz közzé egy érdeklődői célhelyet.
+Igen, ha a velem, az **SaaS**-alkalmazással vagy a **tanácsadási szolgáltatásokkal** **kapcsolatban**tesz közzé egy érdeklődői célhelyet.
 
 **Hogyan ellenőrizhető, hogy helyes-e az érdeklődő konfigurációja?**
 
@@ -339,7 +347,7 @@ A következő országokban/régiókban található közzétevők jelenleg az Azu
 
 1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
 1. Válassza ki az ajánlatot a **minden ajánlat** lapon.
-1. A képernyő bal oldalán lévő ablaktáblán válassza a **SKUs** fület.
+1. A képernyő bal oldalán lévő ablaktáblán válassza a SKUs fület .
 1. Válassza ki a törölni kívánt SKU-t, és kattintson az adott SKU **Törlés** gombjára.
 1. [Tegye közzé](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) újra az ajánlatot az Azure Marketplace-en.
 
@@ -372,7 +380,7 @@ Kapcsolat [Sompur (szlalom Consulting LLC)](mailto:v-ansomp@microsoft.com).
 
 Az Azure Marketplace a Microsofttal közös piaci részesedéssel rendelkező tevékenységek kiindulási pontja, és az átjáró egy közös értékesítésre kész partnerséghez. Az Azure Marketplace-en az összes új lista automatikusan [nem költséghatékony piaci előnyökkel jár](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , így segítve a Microsoft ügyfeleinek nyújtotta lehetőségeket. Az ajánlat közzétételekor a Microsoft GTM csapata felveszi Önnel a kapcsolatot, és megkezdi a juttatások nyújtását.
 
-Látogasson el a [Microsoft GTM Services webhelyére](https://partner.microsoft.com/reach-customers/gtm) , ahol további információkat tudhat meg a GTM előnyeiről és lehetőségeiről a piactéren.
+Látogasson el a [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) webhelyére, ahol további információkat tudhat meg a GTM előnyeiről és lehetőségeiről a piactéren.
 
 **Hol támogatják a Microsoft Web Properties szolgáltatásban elérhető Azure Marketplace-megoldásokat?**
 

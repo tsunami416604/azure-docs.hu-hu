@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: fcc5c4008c0fdef3b77e436761d8958fe31458d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212425"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257376"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Üzleti szempontból kritikus fontosságú adattárolás tárolása az Azure Blob Storage-immutably 
 
@@ -42,7 +42,7 @@ A nem változtatható tároló a következőket támogatja:
 
 - **Tároló szintű konfiguráció**: A felhasználók időalapú adatmegőrzési szabályzatokat és jogi megtartási címkéket állíthatnak be a tároló szintjén. Az egyszerű tárolók szintjének használatával a felhasználók időalapú adatmegőrzési szabályzatokat hozhatnak létre és zárolnak, megtarthatja a megőrzési időközöket, beállíthatja és törölheti a jogcímeket, és így tovább Ezek a házirendek a tároló összes blobján érvényesek, a meglévő és az új is.
 
-- **Naplózási naplózás támogatása**: Minden tároló tartalmaz egy házirend-naplózási naplót. Legfeljebb hét időalapú adatmegőrzési parancsot jelenít meg a zárolt időalapú adatmegőrzési házirendek esetében, és tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegzőket és a megőrzési időt. A jogcímek esetében a napló tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi megtartási címkéket. Ezt a naplót a házirend élettartama érdekében a SEC 17a-4 (f) szabályozási irányelveknek megfelelően megőrzi a rendszer. Az [Azure-tevékenység naplója](../../azure-monitor/platform/activity-logs-overview.md) az összes vezérlő síkja tevékenységének átfogóbb naplóját jeleníti meg; az [Azure diagnosztikai naplók](../../azure-monitor/platform/diagnostic-logs-overview.md) engedélyezése és az adatsík-műveletek megtartása és megjelenítése. A felhasználók felelőssége, hogy ezeket a naplókat tartósan tárolják, mivel ezek a szabályok vagy egyéb célokra szükségesek.
+- **Naplózási naplózás támogatása**: Minden tároló tartalmaz egy házirend-naplózási naplót. Legfeljebb hét időalapú adatmegőrzési parancsot jelenít meg a zárolt időalapú adatmegőrzési házirendek esetében, és tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegzőket és a megőrzési időt. A jogcímek esetében a napló tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi megtartási címkéket. Ezt a naplót a házirend élettartama érdekében a SEC 17a-4 (f) szabályozási irányelveknek megfelelően megőrzi a rendszer. Az [Azure-tevékenység naplója](../../azure-monitor/platform/activity-logs-overview.md) az összes vezérlő síkja tevékenységének átfogóbb naplóját jeleníti meg; az [Azure diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) engedélyezése és az adatsík-műveletek megtartása és megjelenítése. A felhasználók felelőssége, hogy ezeket a naplókat tartósan tárolják, mivel ezek a szabályok vagy egyéb célokra szükségesek.
 
 ## <a name="how-it-works"></a>Működés
 

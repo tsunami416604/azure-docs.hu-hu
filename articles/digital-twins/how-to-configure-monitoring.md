@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950128"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261041"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban
 
@@ -57,7 +57,7 @@ A speciális tevékenységek naplózása:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Az ügyfél diagnosztikai naplóinak engedélyezése
 
-Az Azure [diagnosztikai beállításai](../azure-monitor/platform/diagnostic-logs-overview.md) mindegyik Azure-példányhoz megadhatók a tevékenységek naplózásának kiegészítéséhez. Míg a tevékenység naplói előfizetési szintű eseményekre vonatkoznak, a diagnosztikai naplózási szolgáltatás betekintést nyújt az erőforrások működési előzményeibe.
+Az Azure [diagnosztikai beállításai](../azure-monitor/platform/resource-logs-overview.md) mindegyik Azure-példányhoz megadhatók a tevékenységek naplózásának kiegészítéséhez. Míg a tevékenység naplói előfizetési szintű eseményekre vonatkoznak, a diagnosztikai naplózási szolgáltatás betekintést nyújt az erőforrások működési előzményeibe.
 
 A diagnosztikai naplózás példái például a következők:
 
@@ -72,7 +72,7 @@ Diagnosztikai naplók engedélyezése egy példányhoz:
 
     [![Diagnosztikai beállítások – egy](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Jelölje be **a diagnosztika** bekapcsolása az adatok gyűjtéséhez (ha korábban nem engedélyezett) lehetőséget.
+1. Jelölje be **a diagnosztika bekapcsolása** az adatok gyűjtéséhez (ha korábban nem engedélyezett) lehetőséget.
 1. Adja meg a kért mezőket, és válassza ki, hogyan és hol lesznek mentve az adat:
 
     [![Diagnosztikai beállítások – kettő](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -112,7 +112,7 @@ A **log Analytics munkaterület** -példány üzembe helyezése után hatékony 
 A hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Bevezetés a lekérdezések](../azure-monitor/log-query/get-started-queries.md)használatába.
 
 > [!NOTE]
-> Egy 5 perces késleltetést tapasztalhat, amikor első alkalommal küld eseményeket **log Analytics** munkaterületre.
+> Egy 5 perces késleltetést tapasztalhat, amikor első alkalommal küld eseményeket **log Analytics munkaterületre** .
 
 Azure Monitor a naplók hatékony és riasztási értesítési szolgáltatásokat is biztosítanak, amelyek megtekinthetők a **problémák diagnosztizálásával és megoldásával**:
 
@@ -129,6 +129,6 @@ Az Azure Digital Twins az alkalmazásspecifikus naplózást és a biztonsági na
 
 - További információ az Azure- [tevékenységek naplóiról](../azure-monitor/platform/activity-logs-overview.md).
 
-- A [diagnosztikai naplók áttekintésével](../azure-monitor/platform/diagnostic-logs-overview.md)mélyebben megismerheti az Azure diagnosztikai beállításait.
+- A [diagnosztikai naplók áttekintésével](../azure-monitor/platform/resource-logs-overview.md)mélyebben megismerheti az Azure diagnosztikai beállításait.
 
 - További információ a [Azure monitor naplókról](../azure-monitor/log-query/get-started-portal.md).

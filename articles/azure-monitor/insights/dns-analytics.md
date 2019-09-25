@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982589"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265170"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -179,6 +179,12 @@ A naplók keresése oldalát létrehozhat egy lekérdezést. A keresési eredmé
 1. Az a **lekérdezés keresőmezőbe**, típus `DnsInventory` összes DNS leltárhoz kapcsolódó adatok megtekintéséhez a megoldás által felügyelt DNS-kiszolgálók esetén. Az eredményeket a naplóadatok a DNS-kiszolgálók, DNS-zónák és rekordok listája.
 
     ![DnsInventory naplók keresése](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Hibaelhárítás
+
+Commopn hibaelhárítási lépései:
+
+1. Hiányzó DNS-keresési információ – a probléma megoldásához próbálja meg alaphelyzetbe állítani a konfigurációt, vagy csak egyszer töltse be a konfigurációs oldalt a portálon. Az alaphelyzetbe állításhoz egyszerűen módosítsa a beállítást egy másik értékre, majd állítsa vissza az eredeti értékre, és mentse a konfigurációt.
 
 ## <a name="feedback"></a>Visszajelzés
 

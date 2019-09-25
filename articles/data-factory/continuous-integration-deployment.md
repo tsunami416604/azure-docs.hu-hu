@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002407"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265979"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és szállítás (CI/CD) Azure Data Factory
 
@@ -669,7 +669,7 @@ Ha nem rendelkezik a git-konfigurációval, a csatolt sablonok az **exportálás
 
 ## <a name="hot-fix-production-branch"></a>Éles üzemen kívüli ág javítása
 
-Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal, amelyet azonnal meg kell oldani, de nem tudja telepíteni az aktuális együttműködési ágat, előfordulhat, hogy egy gyors javítást kell telepítenie.
+Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal, amelyet azonnal meg kell oldani, de nem tudja telepíteni az aktuális együttműködési ágat, előfordulhat, hogy egy gyors javítást kell telepítenie. Ez a megközelítés a Quick-Fix Engineering vagy a QFE. 
 
 1.  Az Azure DevOps nyissa meg az éles környezetben üzembe helyezett kiadást, és keresse meg a legutóbb telepített véglegesítet.
 
@@ -705,8 +705,11 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 
 ## <a name="unsupported-features"></a>Nem támogatott szolgáltatások
 
--   Az egyes erőforrások nem tehetők közzé. A adat-előállítói entitások egymástól függnek, és a függőségek változásának nyomon követése nehéz lehet, és nem várt viselkedést eredményezhet. Az eseményindítók például a folyamatoktól függenek, a folyamatok pedig az adatkészlettől és más folyamattól függenek. Ha a teljes módosítási készlet csak egy részhalmazát teheti közzé, bizonyos váratlan hibák merülhetnek fel.
+- A tervezés szerint az ADF _nem_ engedélyezi a Cherry-picking vagy az erőforrások szelektív közzétételét. A közzététel magában foglalja az adatelőállítóban végrehajtott **összes** változást.
 
--   Privát ágakból nem lehet közzétenni.
+    - A adat-előállító entitások egymástól függenek, például az eseményindítók függnek a folyamattól, a folyamatok pedig az adatkészlettől és más folyamattól függenek. Az erőforrások egy részhalmazának szelektív közzététele _nem_ várt viselkedést és hibákat eredményezhet
+    - Ritka esetekben, amikor szelektív közzétételre van szükség, érdemes lehet egy gyors javítást megfontolni. További információ: [gyors üzemi ág](#hot-fix-production-branch)
 
--   A bitbucket nem futtathat projekteket.
+-   Nem tehet közzé privát ágakból
+
+-   Mostantól nem futtathat projekteket a bitbucket-on

@@ -5,23 +5,22 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: e4b94e7a6e41a5c6beaf94069c0fb6bed795ca6d
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183515"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265532"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Megjegyzések áttekintése egy kognitív keresési készségkészlet
 
 Ebből a cikkből megtudhatja, hogyan hivatkozhat a megjegyzésekre a szaktudás-definíciókban, példákkal illusztrálva a különböző forgatókönyveket. Mivel a dokumentumok tartalma szaktudáson keresztül áramlik, a jegyzetek használatával gazdagítva lesz. A jegyzetek használhatók bemenetként a további alsóbb rétegbeli dúsításhoz, vagy egy index kimeneti mezőjéhez is hozzárendelve. 
  
-A cikkben szereplő példák az [Azure Blob](search-howto-indexing-azure-blob-storage.md) -indexek által automatikusan generált *tartalom* mező alapján jelennek meg a dokumentum repedési fázisának részeként. Ha blob-tárolóból származó dokumentumokra hivatkozik, használjon például `"/document/content"`egy olyan formátumot, amelyben a *Content (tartalom* ) mező a *dokumentum*részét képezi. 
+A cikkben szereplő példák az [Azure Blob-indexek](search-howto-indexing-azure-blob-storage.md) által automatikusan generált *tartalom* mező alapján jelennek meg a dokumentum repedési fázisának részeként. Ha blob-tárolóból származó dokumentumokra hivatkozik, használjon például `"/document/content"`egy olyan formátumot, amelyben a *Content (tartalom* ) mező a *dokumentum*részét képezi. 
 
 ## <a name="background-concepts"></a>Háttérbeli fogalmak
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 49fa2cd53ebefa811673ea25a1851081f8cfa415
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958920"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265958"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Gyors útmutató: Ügyféloldali kódtár testreszabása a Node. js-hez
 
@@ -143,6 +143,11 @@ A következő hurkos kód hurkokat mutat egy ciklusban, amellyel a felhasználó
 [!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
 
 Tekintse meg alaposabban az alábbi részekben ismertetett rangot és jutalmazási hívásokat.
+
+Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választási lehetőségeit](#get-content-choices-represented-as-actions)a kódlap futtatása előtt:
+
+* getActionsList
+* getContextFeaturesList
 
 ## <a name="request-a-rank"></a>Rangsor igénylése
 

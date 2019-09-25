@@ -4,16 +4,15 @@ description: Hozzon létre egy Azure Search tudásbázist a kognitív keresési 
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 14996d0ac9ee4e086a5dccd9275ef694adca06ca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963021"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265201"
 ---
 # <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Hozzon létre egy Azure Search Knowledge Store-t a Azure Portal
 
@@ -78,7 +77,7 @@ A varázsló lépésében létre fog hozni egy adatforrást az Azure-Blobból a 
 1. **Elemzési mód**esetén válassza a **tagolt szöveg**lehetőséget, majd jelölje be az **első sor fejléce** jelölőnégyzetet. Győződjön meg arról, hogy az elválasztó **karakter** egy vessző (,).
 1. Adja meg az előző lépésben mentett Storage szolgáltatásbeli **kapcsolatok sztringjét** .
 1. A **tároló neve**mezőbe írja `hotel-reviews`be a következőt:.
-1. Kattintson **a Tovább gombra: Kognitív keresés hozzáadása (nem kötelező**).
+1. Kattintson a **Tovább: Kognitív keresés hozzáadása (nem kötelező**).
 
       ![Adatforrás-objektum létrehozása](media/knowledge-store-create-portal/hotel-reviews-ds.png "Adatforrás-objektum létrehozása")
 
@@ -107,7 +106,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 
     A ![Knowledge Store konfigurálása] A (media/knowledge-store-create-portal/hotel-reviews-ks.png "Knowledge Store konfigurálása")
 
-1. Kattintson **a Tovább gombra: A célként megadott**index testreszabása
+1. Kattintson a **Tovább: A célként megadott**index testreszabása
 
 ### <a name="import-data-import-data-wizard"></a>Adatimportálás (az adatimportálás varázsló)
 
@@ -123,7 +122,7 @@ Ebben a varázslóban a választható teljes szöveges keresési lekérdezések 
 
     ![Index konfigurálása](media/knowledge-store-create-portal/hotel-reviews-idx.png "Index konfigurálása")
 
-1. Kattintson **a Tovább gombra: Hozzon létre egy**indexelő.
+1. Kattintson a **Tovább: Hozzon létre egy**indexelő.
 
 ### <a name="create-an-indexer"></a>Indexelő létrehozása
 

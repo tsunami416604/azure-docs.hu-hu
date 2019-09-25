@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638274"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266153"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (node. js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ebben az oktatóanyagban elkezdi megtanulni a Raspbian-t futtató málna-PI-k használatának alapjait. Ezután megtudhatja, hogyan csatlakoztathatók zökkenőmentesen az eszközök a felhőhöz az [Azure IoT hub](about-iot-hub.md)használatával. A Windows 10 IoT Core-minták esetében nyissa meg a [Windows fejlesztői](https://www.windowsondevices.com/)központot.
+Ebben az oktatóanyagban elkezdi megtanulni a Raspbian-t futtató málna-PI-k használatának alapjait. Ezután megtudhatja, hogyan csatlakoztathatók zökkenőmentesen az eszközök a felhőhöz az [Azure IoT hub](about-iot-hub.md)használatával. A Windows 10 IoT Core-minták esetében nyissa meg a [Windows fejlesztői központot](https://www.windowsondevices.com/).
 
 Még nem rendelkezik csomaggal? Próbálja ki a [málna PI online szimulátort](iot-hub-raspberry-pi-web-simulator-get-started.md). Vagy vásároljon [itt](https://azure.microsoft.com/develop/iot/starter-kits)egy új csomagot.
 
@@ -135,7 +135,7 @@ A kenyérvágódeszka és a jumper huzalok segítségével a következő módon 
 
 ![A málna PI és az érzékelő közötti kapcsolatok](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-A BME280 érzékelő képes a hőmérséklet és a páratartalom adatainak gyűjtésére. A LED villog, amikor az eszköz üzenetet küld a felhőnek. 
+A BME280 érzékelő képes a hőmérséklet és a páratartalom adatainak gyűjtésére. A LED villog, amikor az eszköz üzenetet küld a felhőnek.
 
 Az érzékelő PIN-kódokhoz használja a következő huzalozást:
 
@@ -170,8 +170,8 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 1. Csatlakozzon a málna PI-hez az alábbi SSH-ügyfelek egyikével a gazdagép számítógépről:
 
    **Windows-felhasználók**
-  
-   a. Töltse le és telepítse a Windows [Putty](https://www.putty.org/) -t. 
+
+   a. Töltse le és telepítse a Windows [Putty](https://www.putty.org/) -t.
 
    b. Másolja a PI IP-címét az állomásnév (vagy IP-cím) szakaszba, és válassza az SSH lehetőséget a kapcsolattípus mezőben.
 
@@ -192,10 +192,10 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
    node -v
    ```
 
-   Ha a verziószáma 11. x-nél kisebb, vagy ha nincs Node. js a PI-ben, telepítse a legújabb verziót.
+   Ha a verzió alacsonyabb, mint 10. x, vagy ha nincs Node. js a PI-ben, telepítse a legújabb verziót.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
    A fájlban két elem is konfigurálható. Az első `interval`a, amely meghatározza a felhőbe küldött üzenetek közötti időtartamot (ezredmásodpercben). A második `simulatedData`a, amely egy logikai érték, amely azt jelzi, hogy szimulált érzékelőt használ-e, vagy sem.
 
    Ha **nem rendelkezik az érzékelővel**, állítsa be `simulatedData` úgy `true` az értéket, hogy a minta alkalmazás szimulált szenzor-adattípust hozzon létre és használjon.
+
+   *Megjegyzés: Az oktatóanyagban használt I2C-címnek alapértelmezés szerint 0x77. A konfigurációtól függően előfordulhat, hogy 0x76: Ha I2C hibába ütközik, próbálja meg módosítani az értéket 118-re, és ellenőrizze, hogy az jobban működik-e. Ha szeretné megtekinteni, hogy az érzékelő milyen címeket `sudo i2cdetect -y 1` használ, futtassa a t a málna PI-ben lévő rendszerhéjban.*
 
 2. Mentse és zárja be a Control-O > írja be a > Control-X szöveget.
 

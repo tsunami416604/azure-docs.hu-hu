@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984883"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260285"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Gyors útmutató: Azure-fájlmegosztás létrehozása és kezelése a Azure Portal 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások [Azure Portallal](https://portal.azure.com/) való használatának alapvető lépéseit mutatja be.
@@ -29,7 +29,7 @@ Azure-fájlmegosztás létrehozása:
 2. A tárfiók oldalának **Szolgáltatások** szakaszában válassza a **Fájlok** elemet.
     ![A tárfiók szolgáltatások szakaszának képernyőképe; válassza a Fájlok szolgáltatást](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. A **Fájlszolgáltatás** tetején lévő menüben kattintson a **+ Fájlmegosztás** elemre. Lenyílik az **Új fájlmegosztás** oldal.
+3. A **Fájlszolgáltatások** oldal tetején található menüben kattintson a **fájlmegosztás**elemre. Lenyílik az **Új fájlmegosztás** oldal.
 4. A **Név** mezőbe írja be a *myshare* karakterláncot.
 5. Az Azure-fájlmegosztás létrehozásához kattintson az **OK** gombra.
 

@@ -5,20 +5,19 @@ manager: nitinme
 author: LuisCabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
-ms.openlocfilehash: dcdef8df25bdf6a7a60b1221d1463e6be5486875
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639452"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265927"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Cognitive Services-erőforrás csatolása egy készségkészlet a Azure Search 
 
-Az AI-algoritmusok a dokumentumok dúsításához használt [kognitív indexelési folyamatokat](cognitive-search-concept-intro.md) hajtják Azure Search. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) többek között a képelemzéshez és az optikai karakterfelismeréshez (OCR) és [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és egyéb dúsításokhoz. . A dokumentum-dúsítási célokra Azure Search által használt algoritmusokat a rendszer egy *készségkészlet*helyeziel, és egy indexelő az indexelés során hivatkozik rá.
+Az AI-algoritmusok a dokumentumok dúsításához használt [kognitív indexelési folyamatokat](cognitive-search-concept-intro.md) hajtják Azure Search. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) többek között a képelemzéshez és az optikai karakterfelismeréshez (OCR) és [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és egyéb dúsításokhoz. . A dokumentum-dúsítási célokra Azure Search által használt algoritmusokat a rendszer egy *készségkészlet*helyezi *el,* és *egy indexelő az indexelés során* hivatkozik rá.
 
 A korlátozott számú dokumentumot ingyenesen bővítheti. Az is előfordulhat, hogy számlázható Cognitive Services erőforrást is csatolhat egy *készségkészlet* nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan csatolhat számlázható Cognitive Services-erőforrásokat a dokumentumok gazdagítása érdekében Azure Search [indexelés](search-what-is-an-index.md)során.
 
@@ -52,7 +51,7 @@ Az ingyenes (korlátozott dúsítású) erőforrások napi 20 dokumentumra korl�
 
    ![Kibontott csatolás Cognitive Services szakasz](./media/cognitive-search-attach-cognitive-services/attach1.png "Kibontott csatolás Cognitive Services szakasz")
 
-1. Folytassa a következő lépéssel, **bővítse**a bővítéseket. A portálon elérhető képességek leírását lásd [: 2. lépés: Kognitív ismeretek](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hozzáadása a kognitív keresési útmutatóban.
+1. Folytassa a következő lépéssel, **bővítse a bővítéseket**. A portálon elérhető képességek leírását lásd [: 2. lépés: Kognitív ismeretek](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hozzáadása a kognitív keresési útmutatóban.
 
 ## <a name="use-billable-resources"></a>Számlázható erőforrások használata
 

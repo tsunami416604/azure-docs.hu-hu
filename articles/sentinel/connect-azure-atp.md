@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ebb727055296ba7886a9307ada113ab5a6e0c9e0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240190"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261847"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp---preview"></a>Adatok összekapcsolása az Azure komplex veszélyforrások elleni védelemből (ATP) – előzetes verzió
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Adatok összekapcsolása az Azure komplex veszélyforrások elleni védelemből (ATP)
 
-
-
+> [!IMPORTANT]
+> Az Azure-beli Advanced Threat Protection adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Egyetlen kattintással továbbíthatja a naplókat az Azure-beli komplex [veszélyforrások elleni védelemből](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) az Azure sentinelbe.
 
@@ -41,7 +42,7 @@ Ha az Azure ATP üzembe helyezése és az adatai betöltése történik, a gyan�
 
 1. Az Azure ATP és az Azure Sentinel összekapcsolásához először engedélyeznie kell az Azure ATP és a Microsoft Cloud App Security közötti integrációt. Ennek módjáról az [Azure komplex veszélyforrások elleni védelem integrációja](https://docs.microsoft.com/cloud-app-security/aatp-integration)című témakörben olvashat bővebben.
 
-1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd kattintson az **Azure ATP** csempére.
+1. Az Azure Sentinel **szolgáltatásban válassza az adatösszekötők** lehetőséget, majd kattintson az **Azure Advanced Threat Protection (előzetes verzió)** csempére.
 
 1. Kiválaszthatja, hogy az Azure ATP-riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett analitikus szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok**területen módosíthatja.
 

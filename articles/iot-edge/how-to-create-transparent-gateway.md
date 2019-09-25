@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 467ec25bb9e41180da36f118094324e4fea48cf8
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982960"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266103"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -34,7 +34,7 @@ A sikeres transzparens átjáró-kapcsolatok létrehozásához három általáno
 
 Ahhoz, hogy egy eszköz átjáróként működjön, az informatikai részlegnek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Az Azure IoT Edge lehetővé teszi, hogy a nyilvános kulcsokra épülő infrastruktúrájú (PKI) eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie az átjáró-eszköz identitását. Ez az identitás-ellenőrzési szolgáltatás megakadályozza, hogy az eszközök esetlegesen rosszindulatú átjáróhoz csatlakozzanak.
 
-Lehet, hogy egy alsóbb rétegbeli eszköz bármilyen alkalmazás vagy a platform, amely rendelkezik egy létrehozott identitás a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) felhőalapú szolgáltatás. Sok esetben ezek az alkalmazások használni a [Azure IoT eszközoldali SDK-t](../iot-hub/iot-hub-devguide-sdks.md). Gyakorlati okokból azonban egy alsóbb rétegbeli eszközök az IoT Edge-átjáróeszköz magát a futó alkalmazás még akkor is lehet. 
+Egy transzparens átjáró-forgatókönyvben lévő alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub) Cloud Service szolgáltatással létrehozott identitással. Sok esetben ezek az alkalmazások használni a [Azure IoT eszközoldali SDK-t](../iot-hub/iot-hub-devguide-sdks.md). Gyakorlati okokból azonban egy alsóbb rétegbeli eszközök az IoT Edge-átjáróeszköz magát a futó alkalmazás még akkor is lehet. Egy IoT Edge eszköz azonban nem lehet egy IoT Edge átjárón. 
 
 Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk azt feltételezi, hogy ugyanazt a tanúsítványt használja, amelyet az [x. 509 hitelesítésszolgáltatói biztonság](../iot-hub/iot-hub-x509ca-overview.md) engedélyezéséhez használ IoT Hubban, amely egy adott IoT hub (az IoT hub legfelső szintű hitelesítésszolgáltatója) egy x. 509 hitelesítésszolgáltatói tanúsítványát is magában foglalja, amely egy adott hitelesítésszolgáltatóval aláírt tanúsítványok sorozata. és a IoT Edge eszköz HITELESÍTÉSSZOLGÁLTATÓja.
 
@@ -49,7 +49,8 @@ A következő lépések végigvezetik a tanúsítványok létrehozásának és t
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure IoT Edge-eszköz konfigurálásához átjáróként. A következő operációs rendszerek egyikének IoT Edge telepítési lépéseit használhatja:
+* Egy fejlesztési gép, amely tanúsítványokat hoz létre. 
+* Az Azure IoT Edge-eszköz konfigurálásához átjáróként. A következő operációs rendszerek egyikének IoT Edge telepítési lépéseit használhatja:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
 
@@ -63,7 +64,7 @@ Ebben a szakaszban létrehozott tanúsítványokat csak tesztelési célokra szo
 
 OpenSSL for Windows telepítése a gépen, amely a tanúsítványok létrehozásához használ. Ha már telepítve van az OpenSSL a Windows-eszközön, kihagyhatja ezt a lépést, de gondoskodhat arról, hogy az OpenSSL. exe elérhető legyen a PATH környezeti változóban. 
 
-OpenSSL telepítése számos módja van:
+Az OpenSSL több módon is telepíthető, beleértve a következőket:
 
 * **Könnyebben** Töltse le és telepítse a [harmadik féltől származó OpenSSL bináris fájlokat](https://wiki.openssl.org/index.php/Binaries), például az [OpenSSL-ből a SourceForge-on](https://sourceforge.net/projects/openssl/). Adja hozzá a teljes elérési útját a PATH környezeti változóba openssl.exe. 
    
@@ -321,4 +322,4 @@ A kibővített offline képességek engedélyezéséhez létre kell hoznia egy s
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy IoT Edge-eszköz transzparens átjáróként működik, az átjáró megbízhatósági és üzenetek küldése az alsóbb rétegbeli eszközök konfigurálásához szüksége. További információkért lásd: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge](how-to-connect-downstream-device.md) -átjáróhoz és [egy alsóbb rétegbeli eszköz hitelesítése az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
+Most, hogy IoT Edge-eszköz transzparens átjáróként működik, az átjáró megbízhatósági és üzenetek küldése az alsóbb rétegbeli eszközök konfigurálásához szüksége. Folytassa a következő lépéssel, hogy [hitelesítse egy alsóbb rétegbeli eszközt az Azure IoT Hubban](how-to-authenticate-downstream-device.md) az átlátszó átjáró beállításának további lépéseihez. 

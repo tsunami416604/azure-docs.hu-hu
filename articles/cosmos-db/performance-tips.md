@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 9a758ce56356da21fc94f426d575a55f7dc762a0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200323"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261311"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>A Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -47,7 +47,6 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      |Csatlakoztatási mód  |Támogatott protokoll  |Támogatott SDK-k  |API/szolgáltatás portja  |
      |---------|---------|---------|---------|
      |Átjáró  |   HTTPS    |  Minden SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Közvetlen    |    HTTPS     |  .NET és Java SDK    |   10 000 000 tartományon belüli portok    |
      |Közvetlen    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
 
      Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A közvetlen TCP és a HTTPS egyaránt SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
@@ -60,8 +59,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct,
-        ConnectionProtocol = Protocol.Tcp
+        ConnectionMode = ConnectionMode.Direct
      });
      ```
 
@@ -130,13 +128,13 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
      Az SQL .NET SDK 1.9.0 és újabb verziója támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik A párhuzamos lekérdezések két olyan paramétert biztosítanak, amelyeket a felhasználók az egyéni igényeknek megfelelően módosíthatnak (a) Maxanalyticsunits: a partíciók maximális számának szabályozása érdekében párhuzamosan lekérdezhető, és (b) MaxBufferedItemCount: a (z) számának szabályozása előre lehívott eredmények.
 
-    (a) a ***maxanalyticsunits\:***  párhuzamos lekérdezés finomhangolása több partíció párhuzamos lekérdezésével működik. Az egyedi particionált gyűjtésből származó adatokat azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Így ha a Maxanalyticsunits a partíciók számára állítja, akkor a legtöbb teljesítménybeli lekérdezés nem érhető el, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, beállíthatja a Maxanalyticsunits magas értékre, és a rendszer a minimális (partíciók száma, a felhasználó által megadott bemenet) értéket választja a Maxanalyticsunits.
+    (a) a párhuzamos lekérdezés ***hangolási\: foka*** több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Ha az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) -ben `MaxConcurrency` vagy az [SDK v3](sql-api-sdk-dotnet-standard.md) -ben állítja be a partíciók számát, akkor a legtöbb teljesítménybeli lekérdezés nem érhető el, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas értékre, és a rendszer a minimális (partíciók száma, felhasználó által megadott bemenet) szintet választja a párhuzamosság fokaként.
 
     Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
     (b) az ***MaxBufferedItemCount\:***  párhuzamos lekérdezés finomhangolása az eredmények előzetes beolvasására szolgál, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. Az MaxBufferedItemCount az a paraméter, amellyel korlátozható az előre lehívott eredmények száma. A MaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy nagyobb szám) lehetővé teszi, hogy a lekérdezés a lehető legtöbb előnyt fogadja az előzetes lekéréstől.
 
-    Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.  
+    Az előzetes lekérés ugyanúgy működik, mint a párhuzamosság foka, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 6. **Kiszolgálóoldali GC bekapcsolása**
 
     Bizonyos esetekben a Garbage-gyűjtemények gyakoriságának csökkentése segíthet. A .NET-ben állítsa a [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) igaz értékre.

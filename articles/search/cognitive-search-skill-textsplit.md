@@ -9,20 +9,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: fcde448c664ad85b78d275304dd01a1eedaca006
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183300"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265669"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
 A **szöveg felosztása** készséggel szövegrészek szövegét bontja. Megadhatja, hogy a szöveget mondatokra vagy adott hosszúságú lapokra kívánja-e bontani. Ez a képesség különösen akkor hasznos, ha az egyéb szakismeretekben legfeljebb egy szöveges hosszra vonatkozó követelmény van. 
 
 > [!NOTE]
-> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services](cognitive-search-attach-cognitive-services.md)-erőforrást, hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
+> Ez a képesség nem kötődik Cognitive Services API-hoz, és nem kell fizetnie a használatért. Továbbra is [csatlakoztatnia kell egy Cognitive Services-erőforrást](cognitive-search-attach-cognitive-services.md), hogy felülírja az **ingyenes** erőforrás-beállítást, amely naponta csak kis mennyiségű napi dúsítást korlátozza.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -31,7 +30,7 @@ Microsoft.Skills.Text.SplitSkill
 
 A paraméterek megkülönböztetik a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | Vagy "Pages" vagy "mondatok" | 
 | maximumPageLength | Ha a textSplitMode "Pages" (lapok `String.Length`) értékre van állítva, ez az oldal maximális hosszára vonatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
@@ -40,14 +39,14 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Paraméternév       | Leírás      |
+| Paraméter neve       | Leírás      |
 |----------------------|------------------|
 | text  | Az alsztringbe feldarabolt szöveg |
 | languageCode  | Választható A dokumentumhoz tartozó nyelvi kód.  |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei 
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textItems | A kinyert alsztringek tömbje. |
 

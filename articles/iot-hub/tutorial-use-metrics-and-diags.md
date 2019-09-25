@@ -1,6 +1,6 @@
 ---
-title: Állítsa be, és a metrikák és diagnosztikai naplók használata az Azure IoT hub |} A Microsoft Docs
-description: Beállítása és az Azure IoT hub-metrikák és diagnosztikai naplók használata
+title: Metrikák és diagnosztikai naplók beállítása és használata az Azure IoT hub használatával | Microsoft Docs
+description: Metrikák és diagnosztikai naplók beállítása és használata Azure IoT hub használatával
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,31 +9,31 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162284"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262320"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: Beállítása és IoT hub-metrikák és diagnosztikai naplók használata
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: Metrikák és diagnosztikai naplók beállítása és használata IoT hub használatával
 
-Van egy IoT Hub-megoldás az éles környezetben futó, szeretné-e bizonyos metrikák és diagnosztikai naplók engedélyezése. Majd ha probléma merül fel, és tekintse meg segít diagnosztizálni a problémát, és gyorsabban javítást adatokkal rendelkezik. Ebből a cikkből látni fogja a diagnosztikai naplók engedélyezése, és hogyan hibáinak kereséséhez. Is megtekinteni és riasztások, amely értesíti, ha a metrikák nyomja le az egyes határ bizonyos metrikák is ki kell beállítani. Lehet például egy e-mailt küldeni, vagy amikor telemetriai üzenetek száma meghaladja az egy adott határt, vagy ha a használt üzenetek számának beolvasása közeli üzeneteket az IoT Hub engedélyezett napi kvótáját. 
+Ha éles környezetben futó IoT Hub-megoldással rendelkezik, állítson be néhány mérőszámot, és engedélyezze a diagnosztikai naplókat. Ha probléma merül fel, a megjelenő információkkal megtekintheti, hogy a probléma diagnosztizálása és gyorsabb javítása érdekében. Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplókat, és hogyan végezheti el a hibák ellenőrzését. Emellett néhány mérőszámot is beállíthat a figyeléshez, és riasztást küld, ha a mérőszámok egy bizonyos határt érintenek. Előfordulhat például, hogy egy e-mailt küld Önnek, ha az elküldött telemetria-üzenetek száma meghaladja az adott határt, vagy ha a felhasznált üzenetek száma a IoT Hub naponta engedélyezett üzenetek kvótája mellett van. 
 
-Egy példa használati esetekhez egy benzinkutat, hol találhatók a pedig előre felkészülhet az IoT hub IoT-eszközök által küldött kommunikációhoz. Ellenőrzi a hitelkártyáját, és a egy adattárba írt a végső tranzakció. Ha az IoT-eszközök, állítsa le a hubhoz csatlakozó és küld üzeneteket, ez sokkal több nehéz javításához, ha nincs láthatósága, mi történik.
+Egy példa a használati esetre egy olyan benzinkútnál, ahol a szivattyúk olyan IoT, amelyek az IoT hub használatával kommunikálnak. A rendszer ellenőrzi a hitelkártyákat, és a végső tranzakciót egy adattárba írja. Ha a IoT-eszközök nem csatlakoznak a központhoz, és üzeneteket küldenek, sokkal nehezebb kijavítani, ha nem láthatók a mi folyik.
 
-Ebben az oktatóanyagban az Azure-minta a [IoT Hub útválasztás](tutorial-routing.md) üzeneteket küldeni az IoT hubon.
+Ez az oktatóanyag az Azure-mintát használja az [IoT hub Routing](tutorial-routing.md) -ből, hogy üzeneteket küldjön az IoT hubhoz.
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Azure CLI-vel, hozzon létre egy IoT hubot, a szimulált eszköz és a egy tárfiókot.  
-> * Diagnosztikai naplók engedélyezése.
-> * Engedélyezze a mérőszámok.
-> * Állítsa be ezeket a metrikákhoz riasztásokat. 
-> * Töltse le és futtathat egy alkalmazást, amely szimulálja az üzenetek küldése a hub az IoT-eszközökön. 
-> * Futtassa az alkalmazást, amíg a riasztások üzenetszám megkezdése. 
-> * Az eredmények megtekintése a metrikákat, és tekintse meg a diagnosztikai naplókat. 
+> * Az Azure CLI használatával hozzon létre egy IoT hubot, egy szimulált eszközt és egy Storage-fiókot.  
+> * Engedélyezze a diagnosztikai naplókat.
+> * Metrikák engedélyezése
+> * Riasztások beállítása ezekhez a metrikához. 
+> * Töltsön le és futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az elosztónak. 
+> * Futtassa az alkalmazást, amíg a riasztások elkezdenek tüzet. 
+> * Tekintse meg a metrikák eredményeit, és tekintse meg a diagnosztikai naplókat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,15 +41,15 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
-- E-mail-fiók e-mail fogadni képes.
+- E-mail fiók, amely képes e-mailek fogadására.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>Erőforrások beállítása
 
-Ebben az oktatóanyagban szüksége az IoT hub, a storage-fiók és a szimulált IoT-eszköz. Ezek az erőforrások létrehozhatók az Azure CLI vagy az Azure PowerShell használatával. Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Így mindent egyetlen lépésben távolíthat el az erőforráscsoport törlésével.
+Ebben az oktatóanyagban szüksége lesz egy IoT hub-ra, egy Storage-fiókra és egy szimulált IoT-eszközre. Ezek az erőforrások létrehozhatók az Azure CLI vagy az Azure PowerShell használatával. Ugyanazt az erőforráscsoportot és helyet használja minden erőforráshoz. Így mindent egyetlen lépésben távolíthat el az erőforráscsoport törlésével.
 
-Ezek azok a szükséges lépéseket.
+Ezek a szükséges lépések.
 
 1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). 
 
@@ -59,9 +59,9 @@ Ezek azok a szükséges lépéseket.
 
 4. Hozzon létre egy eszközidentitást ahhoz a szimulált eszközhöz, amely üzeneteket küld a központnak. Mentse a kulcsot a tesztelési fázishoz.
 
-### <a name="set-up-resources-using-azure-cli"></a>Azure CLI-vel erőforrások beállítása
+### <a name="set-up-resources-using-azure-cli"></a>Erőforrások beállítása az Azure CLI-vel
 
-Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. Az erőforráscsoport ContosoResources az új erőforrások jönnek létre.
+Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. Az új erőforrások az erőforráscsoport ContosoResources jönnek létre.
 
 Azokhoz a változókhoz, amelyeknek globálisan egyedinek kell lenniük, a következő van hozzáfűzve: `$RANDOM`. Ha a szkript fut, és a változók be vannak állítva, a rendszer létrehoz egy véletlenszerű numerikus sztringet, és hozzáfűzi a rögzített sztring végéhez, hogy a sztring egyedi legyen.
 
@@ -116,165 +116,165 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Amikor az eszközidentitást hoz létre, a következő hiba jelenhet meg: *Nincsenek kulcsok az IoT Hub ContosoTestHub házirend iothubowner található*. Ez a hiba javításához az Azure CLI IoT-bővítmény frissítése, majd futtassa a az utolsó két parancsot a szkript újra. 
+>Az eszköz identitásának létrehozásakor a következő hibaüzenetet kaphatja: *Nem található kulcs a IoT hub ContosoTestHub házirend iothubowner*. A hiba elhárításához frissítse az Azure CLI IoT bővítményét, majd futtassa újra a parancsfájl utolsó két parancsát. 
 >
->Ez a parancs a bővítmény frissítése. Futtassa ezt a Cloud Shell-példányában.
+>Itt látható a bővítmény frissítésére szolgáló parancs. Futtassa ezt a Cloud Shell-példányban.
 >
 >```cli
 >az extension update --name azure-cli-iot-ext
 >```
 
-## <a name="enable-the-diagnostic-logs"></a>A diagnosztikai naplók engedélyezése 
+## <a name="enable-the-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése 
 
-[Diagnosztikai naplók](../azure-monitor/platform/diagnostic-logs-overview.md) alapértelmezés szerint le vannak tiltva, ha létrehoz egy új IoT hubot. Ebben a szakaszban engedélyezze a diagnosztikai naplók a hub.
+Új IoT hub létrehozásakor a [diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md) alapértelmezés szerint le vannak tiltva. Ebben a szakaszban engedélyezheti a központ diagnosztikai naplóit.
 
-1. Először, ha még nem tette az hubon a portál, kattintson **erőforráscsoportok** kattintson arra az erőforráscsoportra Contoso-erőforrásokat. Válassza ki a hub-erőforrások jelenik meg a listából. 
+1. Először is, ha a portálon még nem szerepel a központban, kattintson az **erőforráscsoportok** elemre, és kattintson az erőforráscsoport contoso – erőforrások elemre. Válassza ki a hubot a megjelenő erőforrások listájából. 
 
-2. Keresse meg a **figyelés** szakasz az IoT Hub panel. Kattintson a **Diagnosztikai beállítások** elemre. 
+2. Keresse meg a **figyelés** szakaszt a IoT hub panelen. Kattintson a **Diagnosztikai beállítások** elemre. 
 
-   ![Képernyőfelvétel: az IoT Hub panel diagnosztikai beállítások részeként.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
-
-
-3. Ellenőrizze, hogy helyes-e az előfizetésben és erőforráscsoportban. Alatt **erőforrástípus**, törölje a jelet **válassza ki az összes**, majd keresse meg és ellenőrzése **az IoT Hub**. (Mellett helyezi el a pipa jelre *válassza ki az összes* újra, egyszerűen figyelmen kívül hagyáshoz.) A **erőforrás**, válassza ki a hub nevét. A képernyőnek a képhez hasonlóan kell kinéznie: 
-
-   ![Képernyőfelvétel: az IoT Hub panel diagnosztikai beállítások részeként.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
-
-4. Most kattintson **diagnosztika bekapcsolása**. A diagnosztikai beállítások panel jelenik meg. Adja meg a diagnosztikai naplók beállítások neve "diagnosztika-hub".
-
-5. Ellenőrizze **archiválás tárfiókba**. 
-
-   ![Képernyőfelvétel: a diagnosztikai beállítás, a storage-tárfiókba archiválhatja.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
-
-    Kattintson a **konfigurálása** megtekintéséhez a **válassza ki a tárfiókot** képernyő, válassza ki a megfelelő (*contosostoragemon*), és kattintson a **OK** , térjen vissza a diagnosztikai beállítások panel. 
-
-   ![Képernyőfelvétel: beállítása a diagnosztikai naplók archiválása a tárfiókhoz.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
-
-6. Alatt **LOG**, ellenőrizze **kapcsolatok** és **eszköz Telemetriai**, és állítsa be a **megőrzése (nap)** 7 nappal minden. A diagnosztikai beállítások képernyő most következő képhez hasonlóan kell kinéznie:
-
-   ![Képernyőfelvétel: a végső diagnosztikai napló beállításokat.](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
-
-7. Kattintson a **Mentés** gombra a beállítások mentéséhez. Zárja be a diagnosztikai beállítások panelt.
-
-Később ha megnézi a diagnosztikai naplók, lesz a connect láthat, és válassza le a naplózást az eszközhöz. 
-
-## <a name="set-up-metrics"></a>Állítsa be a metrikák 
-
-Most már készen bizonyos metrikák figyelheti a hubnak küldött üzeneteket. 
-
-1. Az IoT hub a beállítások panelen kattintson a a **metrikák** beállítást a **figyelés** szakaszban.
-
-2. Kattintson a képernyő tetején **(automatikus) az elmúlt 24 órából**. Megjelenő legördülő listában válassza ki a **utolsó 4 óra** a **időtartomány**, és állítsa be **idő részletessége** való **1 perces**, helyi idő. Kattintson a **alkalmaz** ezek a beállítások mentéséhez. 
-
-   ![Képernyőfelvétel: a metrikák beállításai.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
-
-3. Alapértelmezés szerint van egy metrika bejegyzés. Hagyja meg az erőforráscsoport, az alapértelmezett, valamint a metrika névtérben. Az a **metrika** legördülő listában válassza **küldött Telemetriai üzeneteket**. Állítsa be **összesítési** való **Sum**.
-
-   ![Képernyőfelvétel: a telemetriai üzeneteket metrika hozzáadása.](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
+   ![A IoT Hub panel diagnosztikai beállítások részét ábrázoló képernyőkép.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-4. Most kattintson **metrika hozzáadása** , adjon hozzá egy másik metrikát a diagramhoz. Jelölje ki az erőforráscsoportot (**ContosoTestHub**). A **metrika**válassza **használt üzenetek teljes száma**. A **összesítési**válassza **átlagos**. 
+3. Győződjön meg arról, hogy az előfizetés és az erőforráscsoport helyes. Az **Erőforrás típusa**területen törölje az **összes kijelölése elemet**, majd keresse meg és jelölje be a **IoT hub**. (A jelölőnégyzet *bejelölésével jelölje ki az összes lehetőséget* , csak hagyja figyelmen kívül.) Az **erőforrás**területen válassza ki a hub nevét. A képernyőnek a következő képhez hasonlóan kell kinéznie: 
 
-   Most a képernyőn látható kis méretben metrikáját *küldött Telemetriai üzeneteket*, plusz az új metrikát *használt üzenetek teljes száma*.
+   ![A IoT Hub panel diagnosztikai beállítások részét ábrázoló képernyőkép.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
-   ![Képernyőfelvétel: a telemetriai üzeneteket metrika hozzáadása.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+4. Most kattintson **a diagnosztika bekapcsolása**elemre. Megjelenik a diagnosztika beállításai panel. Adja meg a diagnosztikai naplók beállításait "diags-hub" néven.
 
-   Kattintson a **rögzítés az irányítópulton**. Ez lesz rögzítheti az az Azure portal irányítópultján újra tud elérni. Nem rögzítés az irányítópulton, ha a beállítások nem maradnak meg.
+5. Keresse **meg az archívumot egy Storage-fiókban**. 
+
+   ![Képernyőfelvétel: a diagnosztika beállítása a Storage-fiókba való archiválásra.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
+
+    Kattintson a **Konfigurálás** elemre a **Storage-fiók kiválasztása** képernyő megjelenítéséhez, válassza ki a megfelelőt (*contosostoragemon*), majd kattintson az **OK** gombra a diagnosztikai beállítások panelre való visszatéréshez. 
+
+   ![Képernyőfelvétel: a diagnosztikai naplók beállítása a Storage-fiókba való archiválásra.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
+
+6. A **napló**területen győződjön meg a **kapcsolatok** és az **eszközök telemetria**, és állítsa be az **adatmegőrzés (nap)** és a 7 nap értékeit. A diagnosztikai beállítások képernyőjének ekkor az alábbi képhez hasonlóan kell kinéznie:
+
+   ![A diagnosztikai napló utolsó beállításait bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
+
+7. Kattintson a **Mentés** gombra a beállítások mentéséhez. A diagnosztikai beállítások panel bezárásához.
+
+Később, amikor megtekinti a diagnosztikai naplókat, megtekintheti az eszköz csatlakoztatási és leválasztási naplózását. 
+
+## <a name="set-up-metrics"></a>Mérőszámok beállítása 
+
+Most állítson be néhány mérőszámot, amelyből megnézheti, hogy mikor küldik el az üzeneteket az adott hubhoz. 
+
+1. Az IoT hub Beállítások paneljén kattintson a **figyelés** szakaszban található **mérőszámok** lehetőségre.
+
+2. A képernyő felső részén kattintson az **elmúlt 24 óra (automatikus)** elemre. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az időtartományra lehetőséget, és állítsa be az **időbeli részletességet** **1 percre**, helyi időre. A beállítások mentéséhez kattintson az **alkalmaz** gombra. 
+
+   ![A metrikák időbeállítását bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
+
+3. Alapértelmezés szerint egy metrikai bejegyzés van. Hagyja meg az erőforráscsoportot alapértelmezettként, a metrika névterét. A **metrika** legördülő listában válassza ki az **elküldött telemetria-üzeneteket**. **Összesítés** beállítása a **Sum**értékre.
+
+   ![Az elküldött telemetria-üzenetek metrikájának hozzáadását bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
+
+
+4. Most kattintson a **metrika hozzáadása** lehetőségre egy újabb metrika a diagramhoz való hozzáadásához. Válassza ki az erőforráscsoportot (**ContosoTestHub**). A **metrika**területen válassza ki **a felhasznált üzenetek teljes számát**. **Összesítéshez**válassza az **AVG**elemet. 
+
+   Mostantól a képernyőn látható az *elküldött telemetria-üzenetek*kisméretű mérőszáma, valamint a *felhasznált üzenetek teljes számának*új mérőszáma.
+
+   ![Az elküldött telemetria-üzenetek metrikájának hozzáadását bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+
+   Kattintson **a rögzítés az irányítópulton**elemre. A rendszer a Azure Portal irányítópultján rögzíti, hogy újra hozzá lehessen férni. Ha nem rögzíti az irányítópulton, a beállítások nem őrződnek meg.
 
 ## <a name="set-up-alerts"></a>Riasztások beállítása
 
-Nyissa meg a hubhoz a portálon. Kattintson a **erőforráscsoportok**válassza *ContosoResources*, majd válassza ki az IoT Hub *ContosoTestHub*. 
+Nyissa meg a hubot a portálon. Kattintson az **erőforráscsoportok**elemre, válassza a *ContosoResources*lehetőséget, majd válassza a IoT hub *ContosoTestHub*elemet. 
 
-Az IoT Hub nem lett migrálva az a [metrikák az Azure monitorban](/azure/azure-monitor/platform/data-collection#metrics) még; kell használnia [klasszikus riasztások](/azure/azure-monitor/platform/alerts-classic.overview).
+A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure-monitor/platform/data-collection#metrics) ; [klasszikus riasztásokat](/azure/azure-monitor/platform/alerts-classic.overview)kell használnia.
 
-1. A **figyelés**, kattintson a **riasztások** látható, a fő figyelmeztetési képernyő. 
+1. A **figyelés**területen kattintson a riasztások elemre, amely a fő riasztási képernyőt jeleníti meg. 
 
-   ![Képernyőfelvétel: hogyan találhatja meg a klasszikus riasztások.](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
+   ![A klasszikus riasztások keresését bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
 
-2. A klasszikus riasztások itt, kattintson a hivatkozásra **klasszikus riasztások**. 
+2. A klasszikus riasztások innen való beszerzéséhez kattintson a **klasszikus riasztások megtekintése**elemre. 
 
-    ![Képernyőfelvétel: a klasszikus riasztások képernyő.](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
+    ![Képernyőfelvétel a klasszikus riasztások képernyőjéről.](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
 
     Töltse ki a mezőket: 
 
-    **Előfizetés**: Hagyja a mezőt állítsa a jelenlegi előfizetésében.
+    **Előfizetés**: Hagyja meg ezt a mezőt a jelenlegi előfizetésében.
 
-    **forrás**: Adja meg a mezőben *metrikák*.
+    **Forrás**: A mező értékekéntadja meg a metrikákat.
 
-    **Erőforráscsoport**: Adja meg a mezőben az aktuális erőforráscsoporton *ContosoResources*. 
+    **Erőforráscsoport**: Állítsa be ezt a mezőt az aktuális erőforráscsoporthoz, a *ContosoResources*. 
 
-    **Erőforrástípus**: Adja meg a mezőben az IoT hubnak. 
+    **Erőforrás típusa**: A mező értéke legyen IoT Hub. 
 
-    **Erőforrás**: Válassza ki az IoT hub *ContosoTestHub*.
+    **Erőforrás**: Válassza ki az IoT hubot, a *ContosoTestHub*-t.
 
-3. Kattintson a **metrikariasztás hozzáadása (klasszikus)** állíthat be egy új riasztás.
+3. Új riasztás beállításához kattintson a **metrikus riasztás hozzáadása (klasszikus)** lehetőségre.
 
     Töltse ki a mezőket:
 
-    **Név**: Adja meg például a riasztási szabály nevét *telemetria-üzenetek*.
+    **Név**: Adja meg a riasztási szabály nevét (például *telemetria-üzenetek*).
 
-    **Leírás**: Adja meg például a riasztás leírása *riasztás, ha 1000 telemetriai üzeneteket küldi*. 
+    **Leírás**: Adja meg a riasztás leírását, például a *riasztást, ha 1000 telemetria üzenet van elküldve*. 
 
-    **forrás**: Állítsa a bestattempt értékre *metrikák*.
+    **Forrás**: Adja meg ezta metrikákat.
 
-    **Előfizetés**, **erőforráscsoport**, és **erőforrás** kiválasztott értékre kell állítani a **klasszikus riasztások megtekintése** képernyő. 
+    Az előfizetést, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
 
-    Állítsa be **metrika** való *küldött Telemetriai üzeneteket*.
+    **Metrika** beállítása a *telemetria küldött üzenetekhez*.
 
-    ![Képernyőfelvétel: a telemetriai üzeneteket küldött egy klasszikus riasztás beállítását.](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
+    ![Képernyőfelvétel: klasszikus riasztás beállítása a telemetria küldött üzenetekhez.](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
 
 4. A diagram után állítsa be a következő mezőket:
 
-   **A feltétel**: Állítsa be *nagyobb, mint*.
+   **Feltétel**: Értéke *nagyobb, mint*.
 
-   **Küszöbérték**: Állítsa be beállításé pedig 1000.
+   **Küszöbérték**: 1000 értékre van állítva.
 
-   **Időszak**: Állítsa be *az utolsó 5 percben*.
+   **Időszak**: Állítsa az *utolsó 5 percre*.
 
-   **Értesítés e-mailek címzettjeinek**: Itt adja meg e-mail címét. 
+   **Értesítő e-mailek címzettjei**: Itt helyezheti el az e-mail címét. 
 
-   ![Képernyőfelvétel: alsó riasztások képernyő felét.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
+   ![Képernyőfelvétel a riasztások alsó felének megjelenítéséről](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
-   Kattintson a **OK** menteni a riasztást. 
+   A riasztás mentéséhez kattintson **az OK** gombra. 
 
-5. Most már egy másik riasztás beállítása a *használt üzenetek teljes száma*. Ez a metrika akkor hasznos, ha azt szeretné, küldjön egy riasztást, ha a használt üzenetek száma majdnem elérte a kvótát, az IoT hub – lehetővé teszi, hogy a hubot hamarosan megkezdi üzenetek elutasítása.
+5. Most állítson be egy újabb riasztást a *felhasznált üzenetek teljes számára*vonatkozóan. Ez a metrika akkor lehet hasznos, ha riasztást szeretne küldeni, ha a felhasznált üzenetek száma megközelíti az IoT hub kvótáját – hogy tudd, hogy a központ hamarosan elindítja az üzenetek elutasítását.
 
-   Az a **klasszikus riasztások megtekintése** kattintson **metrikariasztás hozzáadása (klasszikus)** , majd adja meg ezeket a mezőket a a **szabály felvétele** ablaktáblán.
+   A **klasszikus riasztások megtekintése** képernyőn kattintson a **metrikus riasztás hozzáadása (klasszikus)** elemre, majd töltse ki ezeket a mezőket a **szabály hozzáadása** panelen.
 
-   **Név**: Adja meg például a riasztási szabály nevét *szám,-üzenetek-használt*.
+   **Név**: Adja meg a riasztási szabály nevét, például az *üzenetek számát*.
 
-   **Leírás**: Adja meg például a riasztás leírása *riasztás, ha közeli kvóta első*.
+   **Leírás**: Adja meg a riasztás leírását, például a *riasztást a kvóta lezárásakor*.
 
-   **forrás**: Adja meg a mezőben *metrikák*.
+   **Forrás**: A mező értékekéntadja meg a metrikákat.
 
-    **Előfizetés**, **erőforráscsoport**, és **erőforrás** kiválasztott értékre kell állítani a **klasszikus riasztások megtekintése** képernyő. 
+    Az előfizetést, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
 
-    Állítsa be **metrika** való *használt üzenetek teljes száma*.
+    A **metrika** beállítása a *felhasznált üzenetek teljes számára*.
 
-6. Az ábra alatt töltse ki a következő mezőket:
+6. A diagram alatt adja meg a következő mezőket:
 
-   **A feltétel**: Állítsa be *nagyobb, mint*.
+   **Feltétel**: Értéke *nagyobb, mint*.
 
-   **Küszöbérték**: Állítsa be beállításé pedig 1000.
+   **Küszöbérték**: 1000 értékre van állítva.
 
-   **Időszak**: Adja meg a mezőben *az utolsó 5 percben*. 
+   **Időszak**: Adja meg a mezőt *az elmúlt 5 percben*. 
 
-   **Értesítés e-mailek címzettjeinek**: Itt adja meg e-mail címét. 
+   **Értesítő e-mailek címzettjei**: Itt helyezheti el az e-mail címét. 
 
-   Kattintson a **OK** a szabály mentéséhez. 
+   A szabály mentéséhez kattintson **az OK** gombra. 
 
-5. Meg kell jelennie a klasszikus riasztások panelen két riasztások: 
+5. Ekkor két riasztás jelenik meg a klasszikus riasztások ablaktáblán: 
 
-   ![Képernyőkép ábrázoló klasszikus riasztások képernyő és az Új riasztási szabályok.](./media/tutorial-use-metrics-and-diags/12-alerts-done.png)
+   ![Képernyőfelvétel: klasszikus riasztások képernyő, amely az új riasztási szabályokat tartalmazza.](./media/tutorial-use-metrics-and-diags/12-alerts-done.png)
 
-6. Zárja be a riasztások panelen. 
+6. A riasztások panel bezárásához. 
     
-    Ezekkel a beállításokkal riasztást fog kapni, amikor üzenetek száma nagyobb, mint 400-as, és ha a használt üzenetek teljes száma meghaladja.
+    Ezekkel a beállításokkal riasztást kap, ha az elküldött üzenetek száma nagyobb, mint 400, és ha a felhasznált üzenetek teljes száma meghaladja a számot.
 
 ## <a name="run-simulated-device-app"></a>Szimulálteszköz-alkalmazás futtatása
 
 Korábban, a szkript telepítési szakaszában beállított egy eszközt az IoT-eszköz használatának szimulálására. Ebben a szakaszban egy .NET-konzolalkalmazást tölt le, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.  
 
-Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás letölti olyan adattárat, amelynek a; több alkalmazás a keresett megoldást az iot-hub/oktatóprogramok/útválasztás /.
+Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez a hivatkozás egy tárházat tölt le több alkalmazással; a keresett megoldás az IOT-hub/oktatóanyagok/Routing/.
 
 Kattintson duplán a megoldásfájlra (SimulatedDevice.sln), a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs fájlt. Az `{iot hub hostname}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
 
@@ -288,39 +288,39 @@ Kattintson duplán a megoldásfájlra (SimulatedDevice.sln), a kód megnyitásá
 
 ## <a name="run-and-test"></a>Futtatás és tesztelés 
 
-A program.cs fájlban módosítsa a `Task.Delay` 10 1000, ami csökkenti az üzenetek küldését 1 másodperc.01 másodperc között eltelt idő. Ez a késleltetés lecsökkentik növeli a küldött üzenetek számát.
+A program.cs-ben módosítsa `Task.Delay` a 1000 – 10 értéket, amely csökkenti az üzenetek 1 másodpercről. 01 másodpercre való küldésének időtartamát. A késleltetés lerövidítése növeli az elküldött üzenetek számát.
 
 ```csharp
 await Task.Delay(10);
 ```
 
-Futtassa a konzolalkalmazást. Várjon néhány percet (10 – 15). Láthatja, hogy az a konzol képernyőn az alkalmazás elosztóhoz a szimulált eszközről küldött üzeneteket.
+Futtassa a konzolalkalmazást. Várjon néhány percet (10-15). A szimulált eszközről az alkalmazás konzol képernyőjén a központba küldött üzeneteket láthatja.
 
-### <a name="see-the-metrics-in-the-portal"></a>A metrikák a portálon
+### <a name="see-the-metrics-in-the-portal"></a>A mérőszámok megtekintése a portálon
 
-Nyissa meg a metrikákat az irányítópultról. Az idő értékek módosításához *elmúlt 30 percben* idő részletességét a *1 perces*. A telemetriai üzeneteket küldi, és használja a diagramra, a diagram alján a legutóbbi számokkal üzenetek teljes száma látható.
+Nyissa meg a metrikákat az irányítópulton. Módosítsa az időértékeket az *elmúlt 30 percben* egy *1 perces*időrészletességgel. Megjeleníti a telemetria küldött üzeneteket, valamint a diagramon használt üzenetek teljes számát a diagram alján található legfrissebb számokkal.
 
-   ![Képernyőfelvétel: a metrikákat.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
+   ![A metrikákat bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
-### <a name="see-the-alerts"></a>A riasztások megtekintéséhez
+### <a name="see-the-alerts"></a>Riasztások megtekintése
 
-Vissza a riasztásokat. Kattintson a **erőforráscsoportok**válassza *ContosoResources*, majd válassza ki a hub *ContosoTestHub*. Megjelenik a hub tulajdonságlapján válassza **riasztások**, majd **klasszikus riasztások**. 
+Térjen vissza a riasztásokhoz. Kattintson az **erőforráscsoportok**elemre, válassza a *ContosoResources*lehetőséget, majd válassza ki a hub *ContosoTestHub*. A hub számára megjelenített tulajdonságok lapon válassza a **riasztások**, majd a **klasszikus riasztások megtekintése**lehetőséget. 
 
-A küldött üzenetek száma meghaladja a korlátot, amikor először e-mail-riasztásokat. Ha vannak aktív riasztások megtekintéséhez nyissa meg az eseményközpont, és válassza **riasztások**. Ebben bemutatjuk, a riasztásokat, amelyek aktív, és nincsenek a figyelmeztetéseket. 
+Ha az elküldött üzenetek száma meghaladja a korlátot, elindítja az értesítő e-maileket. Ha szeretné megtekinteni, hogy vannak-e aktív riasztások, nyissa meg a hubot, és válassza a **riasztások**lehetőséget. Ekkor megjelenik az aktív riasztások, és ha vannak figyelmeztetések. 
 
-   ![Képernyőfelvétel: a riasztások történt.](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
+   ![A riasztásokat bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
 
-Kattintson a riasztásra vonatkozó telemetriai üzeneteket. A metrika eredményt és az eredményeket a diagram mutatja. Figyelmeztet a riasztást kiváltó küldött e-mailben is, ez a rendszerkép hasonlóan néz ki:
+Kattintson a riasztásra a telemetria üzeneteihez. Megjeleníti a metrika eredményét és egy diagramot az eredményekkel. A riasztások égetését elküldő e-mail a következő képhez hasonlóan néz ki:
 
-   ![Az e-mailt a riasztások történt megjelenítő képernyőkép.](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
+   ![A riasztásokat bemutató e-mail képernyőképe.](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
 
-### <a name="see-the-diagnostic-logs"></a>Diagnosztikai naplók
+### <a name="see-the-diagnostic-logs"></a>A diagnosztikai naplók megtekintése
 
-A diagnosztikai naplók beállítása a blob storage-bA exportálva. Nyissa meg az erőforráscsoportot, és válassza ki a tárfiókját *contosostoragemon*. Válassza ki a blobokat, majd nyissa meg a tároló *insights-logs-kapcsolatok*. Részletes elemzést, amíg juthat el az aktuális dátumot, és válassza ki a legutóbbi fájlt. 
+Be kell állítania a diagnosztikai naplókat a blob Storage-ba való exportáláshoz. Nyissa meg az erőforráscsoportot, és válassza ki a Storage-fiók *contosostoragemon*. Válassza a Blobok lehetőséget, majd nyissa meg a tároló-elemzések *-naplók-kapcsolatok*elemet. Nyomja le az aktuális dátumot, és válassza ki a legfrissebb fájlt. 
 
-   ![Képernyőkép a storage-tárolóba kapott tekintse meg a diagnosztikai naplókat.](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
+   ![Képernyőkép a tárolók lefúrásáról a diagnosztikai naplók megtekintéséhez.](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
 
-Kattintson a **letöltése** töltse le és nyissa meg. A naplók és megszakításának üzeneteket küld a hubon, az eszköz látja. Itt egy példa:
+Kattintson a **Letöltés** gombra a letöltéshez és a megnyitásához. Ekkor megjelennek az eszközhöz csatlakozó és leválasztott naplófájlok, ahogy üzeneteket küldenek a hubhoz. Példa:
 
 ``` json
 { 
@@ -361,7 +361,7 @@ Kattintson a **letöltése** töltse le és nyissa meg. A naplók és megszakít
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-Az összes ebben az oktatóanyagban létrehozott erőforrások eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben azt eltávolítja, az IoT hub, a tárfiókot és magát az erőforráscsoportot. Ha metrikák az irányítópultra van rögzítve, akkor távolítsa el manuálisan, az egyes jobb felső sarokban lévő három pontra kattint, és kiválasztja azokat a **eltávolítása**.
+Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT hubot, a Storage-fiókot és magát az erőforráscsoportot. Ha az irányítópulthoz rögzített mérőszámok vannak, akkor azokat manuálisan kell eltávolítania a jobb felső sarokban lévő három pontra, majd az **Eltávolítás**lehetőségre kattintva.
 
 Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
 
@@ -371,16 +371,16 @@ az group delete --name $resourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan használható a metrikák és diagnosztikai naplók a következő feladatok végrehajtásával:
+Ebben az oktatóanyagban megtanulta, hogyan használhatók a metrikák és a diagnosztikai naplók a következő feladatok végrehajtásával:
 
 > [!div class="checklist"]
-> * Azure CLI-vel, hozzon létre egy IoT hubot, a szimulált eszköz és a egy tárfiókot.  
-> * Diagnosztikai naplók engedélyezése. 
-> * Engedélyezze a mérőszámok.
-> * Állítsa be ezeket a metrikákhoz riasztásokat. 
-> * Töltse le és futtathat egy alkalmazást, amely szimulálja az üzenetek küldése a hub az IoT-eszközökön. 
-> * Futtassa az alkalmazást, amíg a riasztások üzenetszám megkezdése. 
-> * Az eredmények megtekintése a metrikákat, és tekintse meg a diagnosztikai naplókat. 
+> * Az Azure CLI használatával hozzon létre egy IoT hubot, egy szimulált eszközt és egy Storage-fiókot.  
+> * Engedélyezze a diagnosztikai naplókat. 
+> * Metrikák engedélyezése
+> * Riasztások beállítása ezekhez a metrikához. 
+> * Töltsön le és futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az elosztónak. 
+> * Futtassa az alkalmazást, amíg a riasztások elkezdenek tüzet. 
+> * Tekintse meg a metrikák eredményeit, és tekintse meg a diagnosztikai naplókat. 
 
 A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja be. 
 
