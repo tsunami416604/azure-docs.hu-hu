@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414592"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299845"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
 
@@ -100,11 +100,14 @@ Amikor létrehoz egy regisztrációs a DPS Szolgáltatásban, lehetősége van d
 
    1. Kattintson a **Mentés** gombra.
 
-Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Ügyeljen arra, hogy az eszköz kulcsának létrehozásakor a regisztráció **elsődleges kulcsának** értékét másolja.
+Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Ügyeljen arra, hogy a beléptetés **elsődleges kulcsának** értékét a IoT Edge futtatókörnyezet telepítésekor használja, vagy ha az eszköz kulcsait a csoportos regisztrációval való használatra kívánja létrehozni.
 
 ## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása
 
-Az eszköz a származtatott eszköz kulcsát használja az egyedi regisztrációs AZONOSÍTÓval a szimmetrikus kulcs igazolásának végrehajtásához a regisztráció során. Az eszköz kulcsának létrehozásához használja a DPS-regisztrációból másolt kulcsot, hogy kiszámítsa az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC-sha256](https://wikipedia.org/wiki/HMAC) , és az eredményt Base64 formátumra konvertálja.
+> [!NOTE]
+> Ez a szakasz csak akkor szükséges, ha csoportos regisztrációt használ.
+
+Minden eszköz a származtatott eszköz kulcsát használja az egyedi regisztrációs AZONOSÍTÓval a szimmetrikus kulcs igazolásának végrehajtásához a regisztráció során. Az eszköz kulcsának létrehozásához használja a DPS-regisztrációból másolt kulcsot, hogy kiszámítsa az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC-sha256](https://wikipedia.org/wiki/HMAC) , és az eredményt Base64 formátumra konvertálja.
 
 Ne foglalja bele a regisztráció elsődleges vagy másodlagos kulcsát az eszköz kódjába.
 
@@ -159,7 +162,10 @@ Az eszköz kiépítés során a következő információkra lesz szüksége:
 
 * A DPS- **azonosító hatókörének** értéke
 * A létrehozott eszköz **regisztrációs azonosítója**
-* Az eszköz származtatott eszközének kulcsa a szimmetrikus kulcs igazolásához
+* A DPS-regisztrációból másolt **elsődleges kulcs**
+
+> [!TIP]
+> Csoportos regisztráció esetén az eszköz [származtatott kulcsára](#derive-a-device-key) van szükség a DPS regisztrációs kulcs helyett.
 
 ### <a name="linux-device"></a>Linuxos eszköz
 

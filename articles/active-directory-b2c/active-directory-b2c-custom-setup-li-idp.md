@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41caa5807ce837e1ff00ceadd3fe5aef958d01b6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066055"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315175"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása LinkedIn-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a LinkedIn-fiók f
 
 Ha a LinkedIn-t identitás-szolgáltatóként szeretné használni Azure AD B2Cban, létre kell hoznia egy LinkedIn-alkalmazást.
 
-### <a name="create-app"></a>App létrehozása
+### <a name="create-app"></a>Alkalmazás létrehozása
 
 1. Jelentkezzen be a [LinkedIn Application Management](https://www.linkedin.com/secure/developer?newapp=) webhelyre a LinkedIn-fiókja hitelesítő adataival.
 1. Válassza az **alkalmazás létrehozása**lehetőséget.
@@ -217,15 +217,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
 
-A Azure AD B2C folytatott kommunikáció egy, a bérlőben létrehozott alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-5. Adja meg az alkalmazás nevét, például *testapp1*.
-6. A **Web App/web API**esetében válassza `Yes`a elemet, majd `https://jwt.ms` adja meg a **Válasz URL-címét**.
-7. Kattintson a **Create** (Létrehozás) gombra.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
 

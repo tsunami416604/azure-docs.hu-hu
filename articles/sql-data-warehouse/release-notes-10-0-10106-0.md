@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b9058313886484e84000b2b27986280eb1ff30eb
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145623"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300836"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse kibocsátási megjegyzések
 
@@ -38,6 +38,7 @@ Az azonosított dátum használatával erősítse meg, hogy melyik kiadás lett 
 |**Azure Private-hivatkozás (előzetes verzió)**|Az [Azure Private link](https://azure.microsoft.com/blog/announcing-azure-private-link/)használatával létrehozhat egy privát végpontot a Virtual Networkban (VNet), és leképezheti az Azure SQL DW-be. Ezek az erőforrások ezután a VNet privát IP-címein keresztül érhetők el, amelyek lehetővé teszik a helyszíni kapcsolódást az Azure ExpressRoute privát és/vagy VPN-átjárón keresztül. Összességében ez leegyszerűsíti a hálózati konfigurációt úgy, hogy nem igényli a nyilvános IP-címekre való megnyitását. Ez lehetővé teszi az adatkiszűrése kockázatok elleni védelmet is. További részleteket az [Áttekintés](/azure/private-link/private-link-overview) és az [SQL DW dokumentációjában](/azure/sql-database/sql-database-private-endpoint-overview)talál.|
 |**Adatfelderítési & besorolása (GA)**|Mostantól általánosan elérhető [az adatfelderítési és besorolási](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json) funkció. Ez a funkció fejlett képességeket biztosít a bizalmas adatoknak az adatbázisokban való **felfedéséhez, besorolásához, címkézéséhez &ához** .|
 |**Azure Advisor egy kattintással történő integráció**|A SQL Data Warehouse mostantól közvetlenül integrálható az áttekintő panel Azure Advisor javaslataival, és egyetlen kattintással elérhető élményt nyújt. Mostantól az Azure Advisor panelre való navigálás helyett az Áttekintés panelen is megismerheti az ajánlásokat. A javaslatokról [itt](sql-data-warehouse-concept-recommendations.md)talál további információt.|
+|**Véglegesített pillanatkép-elkülönítés olvasása (előzetes verzió)**|Az ALTER DATABASE használatával engedélyezheti vagy letilthatja a felhasználói adatbázis pillanatkép-elkülönítését.  Ha el szeretné kerülni az aktuális munkaterhelés hatását, érdemes lehet ezt a beállítást az adatbázis-karbantartási időszakban beállítani, vagy várni, amíg nincs más aktív kapcsolódás az adatbázishoz. További információkért lásd: az [adatbázis-beállítási beállítások módosítása](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).|
 |**VÉGREHAJTÁS másként (Transact-SQL)**| [végrehajtás másként](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) A T-SQL-támogatás mostantól elérhető SQL Data Warehouse lehetővé teszi, hogy az ügyfelek egy munkamenet végrehajtási környezetét a megadott felhasználóhoz állítsanak be.|
 |**További T-SQL-támogatás**|A SQL Data Warehouse a T-SQL nyelvi felületét kiterjesztették a következők támogatására: </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys. user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 

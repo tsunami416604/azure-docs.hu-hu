@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262807"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316776"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
 
@@ -178,7 +178,7 @@ Az adatok titkosítása vagy visszafejtése során használt kulcs beszerzéséh
 - Az ügyfél teljes felelősséggel rendelkezik a fő életciklus-felügyelethez
 - További beállítás & konfiguráció terhelése
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Kiszolgálóoldali titkosítás a szolgáltatás által felügyelt kulcsokkal az ügyfél által vezérelt hardverben
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsokkal az ügyfél által vezérelt hardverben
 
 Egyes Azure-szolgáltatások lehetővé teszik a saját kulcsú (HYOK) kulcskezelő modell üzemeltetését. Ez a felügyeleti mód olyan forgatókönyvekben hasznos, ahol szükség van az inaktív adatok titkosítására és a Microsoft vezérlőn kívüli védett adattárban található kulcsok kezelésére. Ebben a modellben a szolgáltatásnak egy külső helyről kell lekérnie a kulcsot. A teljesítményre és a rendelkezésre állásra vonatkozó garanciák hatással vannak, és a konfiguráció összetettebb. Továbbá, mivel a szolgáltatás a titkosítási és a visszafejtési műveletek során is hozzáfér a ADATTITKOSÍTÁSI kulcsot, a modell általános biztonsági garanciái hasonlóak ahhoz, amikor a kulcsokat ügyfél által felügyelik Azure Key Vaultban.  Ennek eredményeképpen ez a modell nem felel meg a legtöbb szervezet számára, kivéve, ha meghatározott kulcskezelő követelményekkel rendelkeznek. A korlátozások miatt a legtöbb Azure-szolgáltatás nem támogatja a kiszolgálóoldali titkosítást a kiszolgáló által felügyelt kulcsok használatával az ügyfél által vezérelt hardverben.
 
@@ -273,7 +273,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure Data Catalog               | Igen                | -                  | -                  |
 | Apache Kafka az Azure HDInsight  | Igen                | Az összes RSA-hossz.   | -                  |
 | Azure Data Explorer              | Igen                | -                  | -                  |
-| Azure Data Factory               | Igen                | -                  | -                  |
+| Azure Data Factory               | Igen                | Igen                | -                  |
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Igen                | -                  | -                  |

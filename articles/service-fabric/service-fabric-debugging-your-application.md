@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás hibakeresése a Visual Studióban |} A Microsoft Docs
-description: A megbízhatóság és a szolgáltatások teljesítményét javíthatja a fejlesztés és a egy helyi fejlesztési fürtön a Visual Studio hibakereső őket.
+title: Az alkalmazás hibakeresése a Visual Studióban | Microsoft Docs
+description: A szolgáltatások megbízhatóságának és teljesítményének javítása a Visual Studióban a helyi fejlesztési fürtön való fejlesztéssel és hibakereséssel.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428208"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300685"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -29,122 +29,129 @@ ms.locfileid: "66428208"
 >
 
 
-## <a name="debug-a-local-service-fabric-application"></a>Egy helyi Service Fabric-alkalmazás hibakeresése
-Időt és pénzt takaríthat üzembe helyezése és hibakeresése egy helyi számítógép fejlesztési fürtöt az Azure Service Fabric-alkalmazásokat. A Visual Studio 2019 vagy 2015 helyezze üzembe az alkalmazást a helyi fürthöz, és automatikusan csatlakoznak a hibakeresőt az alkalmazás összes példányáról. A Visual Studio csatlakozni a hibakeresőt rendszergazdaként kell futtatni.
+## <a name="debug-a-local-service-fabric-application"></a>Helyi Service Fabric-alkalmazás hibakeresése
+Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe helyezésével és hibakeresésével egy helyi számítógép-fejlesztési fürtben. A Visual Studio 2019 vagy a 2015 képes telepíteni az alkalmazást a helyi fürtre, és automatikusan összekapcsolja a hibakeresőt az alkalmazás összes példányával. A hibakeresőhöz a Visual studiót rendszergazdaként kell futtatni.
 
-1. A lépéseket követve indítsa el a helyi fejlesztési fürt [a Service Fabric fejlesztési környezet beállítása](service-fabric-get-started.md).
-2. Nyomja meg **F5** , vagy kattintson **Debug** > **Start Debugging**.
+1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
+2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés** > **indítása**gombra.
    
-    ![Az alkalmazás hibakeresésének indításához][startdebugging]
-3. Állítson be töréspontokat a kódot, és lépegessen végig az alkalmazás a parancsok kattintva a **Debug** menü.
+    ![Alkalmazás hibakeresésének megkezdése][startdebugging]
+3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
    
    > [!NOTE]
-   > A Visual Studio csatolja az alkalmazás összes példányáról. Bár Ön ke krokování-kódon keresztül, töréspontokat a kiválasztott ütközhet első egyidejű munkamenetek eredményez több folyamat. Próbálja ki a töréspontok letiltása után azokat Ön találat, azáltal, hogy minden egyes töréspontot feltétele, hogy a hozzászóláslánc azonosítója vagy diagnosztikai események használatával.
+   > A Visual Studio az alkalmazás összes példányához csatlakozik. A kód megismétlése közben a töréspontokat több folyamat is elérheti, ami az egyidejű munkameneteket eredményezi. Próbálja meg letiltani a töréspontokat a találatok után, hogy az egyes töréspontok feltételesek legyenek a szál azonosítójával vagy diagnosztikai események használatával.
    > 
    > 
-4. A **diagnosztikai események** ablak profilnál automatikusan megnyílik, hogy meg tudja tekinteni diagnosztikai események valós időben.
+4. A **diagnosztikai események** ablak automatikusan megnyílik, így valós időben megtekintheti a diagnosztikai eseményeket.
    
-    ![Valós idejű diagnosztikai események megtekintése][diagnosticevents]
-5. Megnyithatja a **diagnosztikai események** Cloud Explorer ablak.  A **Service Fabric**, kattintson a jobb gombbal bármelyik csomópont, és válassza a **View Streaming nyomkövetések**.
+    ![Diagnosztikai események megtekintése valós időben][diagnosticevents]
+5. A **diagnosztikai események** ablak a Cloud Explorerben is megnyitható.  A **Service Fabric**alatt kattintson a jobb gombbal bármelyik csomópontra, és válassza a **folyamatos átviteli Nyomkövetések megtekintése**lehetőséget.
    
     ![A diagnosztikai események ablak megnyitása][viewdiagnosticevents]
    
-    Ha meg szeretné szűrni a nyomokra kattintva egy adott szolgáltatás vagy alkalmazás, engedélyezze az adott szolgáltatás vagy alkalmazás trasy streamování.
-6. A diagnosztikai események láthatja az automatikusan létrehozott **ServiceEventSource.cs** fájlt, és lehet meghívni a alkalmazáskód.
+    Ha egy adott szolgáltatásra vagy alkalmazásra kívánja szűrni a nyomkövetést, engedélyezze a folyamatos átviteli nyomkövetést az adott szolgáltatáson vagy alkalmazáson.
+6. A diagnosztikai események az automatikusan generált **ServiceEventSource.cs** fájlban láthatók, és az alkalmazás kódjából lesznek meghívva.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. A **diagnosztikai események** ablak támogatja a szűrést, a felfüggesztetéssel és a valós idejű események vizsgálatával.  A szűrő egy egyszerű keresés az esemény-üzenet, beleértve annak tartalmát.
+7. A **diagnosztikai események** ablak valós időben támogatja az események szűrését, szüneteltetését és vizsgálatát.  A szűrő egy egyszerű karakterlánc-keresés az esemény üzenetében, beleértve annak tartalmát is.
    
-    ![Szűrés, szüneteltetése és folytatása vagy a valós idejű események vizsgálata][diagnosticeventsactions]
-8. Szolgáltatások hibakeresésében olyan, mint bármely más alkalmazás hibakeresését. Könnyű Hibakeresés Visual studióval töréspontok általában értékre állítjuk. Annak ellenére, hogy a Reliable Collections több csomóponton replikálja, azok továbbra is valósítania az IEnumerable illesztőfelületet. Ezt a megvalósítást azt jelenti, hogy használhatja az eredmények megtekintése a Visual Studióban megtekintheti a belül keresztült tárolt hibakeresése közben. Ehhez állítson be egy töréspontot bárhol a kódban.
+    ![Események szűrése, szüneteltetése és folytatása, illetve valós idejű vizsgálat][diagnosticeventsactions]
+8. A hibakeresési szolgáltatások olyanok, mint bármely más alkalmazás hibakeresése. Az egyszerű hibakereséshez általában a Visual studión keresztül kell beállítani a töréspontokat. Annak ellenére, hogy a megbízható gyűjtemények több csomóponton replikálódnak, továbbra is implementálják a IEnumerable. Ez a megvalósítás azt jelenti, hogy a Visual Studióban a Results nézetet használhatja, miközben a hibakeresés során megtekintheti, hogy mit tárol a szolgáltatáson belül. Ehhez állítson be egy töréspontot bárhol a kódban.
    
-    ![Az alkalmazás hibakeresésének indításához][breakpoint]
+    ![Alkalmazás hibakeresésének megkezdése][breakpoint]
+
+
+### <a name="running-a-script-as-part-of-debugging"></a>Parancsfájl futtatása hibakeresés részeként
+Bizonyos esetekben előfordulhat, hogy parancsfájlt kell futtatnia egy hibakeresési munkamenet elindításának részeként (például ha nem használja az alapértelmezett szolgáltatásokat).
+
+A Visual Studióban hozzáadhat egy **Start-Service. ps1** nevű fájlt a Service Fabric Application Project (. Sfproj) **Scripts** mappájában. Ezt a szkriptet az alkalmazás helyi fürtben való létrehozása után hívja meg a rendszer.
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>Távoli Service Fabric-alkalmazás hibakeresése
-Ha a Service Fabric-alkalmazások a Service Fabric-fürtön az Azure-ban futtatja, a ezeket az alkalmazásokat, közvetlenül a Visual Studióban távolról is hibakeresési.
+Ha a Service Fabric-alkalmazások egy Azure-beli Service Fabric-fürtön futnak, ezeket az alkalmazásokat távolról, közvetlenül a Visual studióból is felhasználhatja.
 
 > [!NOTE]
-> A szolgáltatás használatához [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) és [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).    
+> A szolgáltatáshoz [Service FABRIC SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) és [Az Azure sdk for .NET 2,9](https://azure.microsoft.com/downloads/)szükséges.    
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Távoli hibakeresés az adott fejlesztési és tesztelési célra, és nem használható éles környezetben, a futó alkalmazások gyakorolt hatás miatt.
+> A távoli hibakeresés fejlesztési és tesztelési forgatókönyvekhez készült, és nem használható éles környezetben, a futó alkalmazásokra gyakorolt hatás miatt.
 > 
 > 
 
-1. Keresse meg a fürt **Cloud Explorer**. Kattintson a jobb gombbal, és válassza a **hibakeresés engedélyezése**
+1. Navigáljon a fürthöz a **Cloud Explorerben**. Kattintson a jobb gombbal, és válassza a **hibakeresés engedélyezése** lehetőséget.
    
     ![Távoli hibakeresés engedélyezése][enableremotedebugging]
    
-    Ez a művelet elindít folyamata a távoli hibakeresési futtatására szolgáló bővítmény a fürtcsomópontok és a szükséges hálózati konfigurációk.
-2. Kattintson a jobb gombbal a fürt csomópontja **Cloud Explorer**, és válassza a **Hibakereső csatlakoztatása**
+    Ez a művelet lekéri a Távoli hibakeresési bővítmény engedélyezésének folyamatát a fürtcsomópontok és a szükséges hálózati konfigurációk számára.
+2. Kattintson a jobb gombbal a fürt csomópontjára a **Cloud Explorerben**, és válassza a **hibakereső csatolása** elemet.
    
-    ![Hibakereső csatlakoztatása][attachdebugger]
-3. Az a **folyamat csatolása** párbeszédpanelen válassza ki a folyamatot, hibakeresés, és kattintson a kívánt **csatolása**
+    ![Hibakereső csatolása][attachdebugger]
+3. A **csatolás folyamathoz** párbeszédpanelen válassza ki a hibakereséshez használni kívánt folyamatot, majd kattintson a **csatolás** gombra.
    
     ![Folyamat kiválasztása][chooseprocess]
    
-    Szeretné csatlakoztatni, a folyamat neve megegyezik a szolgáltatási projekt szerelvény neve.
+    Annak a folyamatnak a neve, amelyhez csatolni szeretné, megegyezik a szolgáltatási projekt szerelvényének nevével.
    
-    A hibakereső, az összes csomóponton, a folyamat futtatása fogja csatolni.
+    A hibakereső a folyamatot futtató összes csomóponthoz csatolva lesz.
    
-   * Abban az esetben, ahol egy állapotmentes szolgáltatás hibakeresése az összes csomóponton a szolgáltatás minden példányát a a hibakeresési munkamenet részét képezik.
-   * Ha egy állapotalapú szolgáltatás hibakeresése, minden partíció csak az elsődleges replika nem aktív, és ezért kivétel történt a hibakeresőt szerint. Ha az elsődleges replikán a hibakeresési munkamenet során, az adott replika feldolgozása továbbra is része lesz a hibakeresési munkamenet.
-   * Csak a tényleges megfelelő partíciók vagy egy adott szolgáltatás példányainak, feltételes töréspontok használhatja egy adott partíció vagy a példány csak érvényteleníteni.
+   * Ha állapot nélküli szolgáltatást futtat, a szolgáltatás minden példánya a hibakeresési munkamenet részét képezi.
+   * Ha állapot-nyilvántartó szolgáltatást használ, akkor csak a partíciók elsődleges replikája lesz aktív, ezért a hibakereső fogja észlelni. Ha az elsődleges replika a hibakeresési munkamenet során mozog, akkor a replika feldolgozása továbbra is a hibakeresési munkamenet részét képezi.
+   * Ha csak az adott szolgáltatáshoz tartozó partíciókat vagy példányokat szeretné kifogni, a feltételes töréspontok segítségével csak egy adott partíciót vagy példányt lehet megszüntetni.
      
-     ![Feltételes töréspontot][conditionalbreakpoint]
+     ![Feltételes töréspont][conditionalbreakpoint]
      
      > [!NOTE]
-     > Szolgáltatás végrehajtható névvel több példánya a Service Fabric-fürt hibakeresés jelenleg nem támogatjuk.
+     > Jelenleg nem támogatott egy Service Fabric-fürt hibakeresése ugyanazzal a szolgáltatás-végrehajtható névvel rendelkező több példánykal.
      > 
      > 
-4. Ha befejezte az alkalmazás hibakeresése, letilthatja a távoli hibakeresési bővítmény a kattintson a jobb gombbal a fürt **Cloud Explorer** válassza **-hibakeresés letiltása**
+4. Miután befejezte az alkalmazás hibakeresését, letilthatja a Távoli hibakeresési bővítményt, ha a jobb gombbal a fürtre kattint a **Cloud Explorerben** , és kiválasztja a **hibakeresés letiltása** lehetőséget.
    
-    ![Tiltsa le a távoli hibakeresés][disableremotedebugging]
+    ![Távoli hibakeresés letiltása][disableremotedebugging]
 
-## <a name="streaming-traces-from-a-remote-cluster-node"></a>Egy távoli fürtön csomópontról trasy streamování
-Ön is képes adatfolyam-nyomkövetéseket, közvetlenül a Visual Studio távoli fürtcsomópontra. Ez a funkció lehetővé teszi a stream ETW-nyomkövetési események, a Service Fabric-fürtcsomópont előállítása.
+## <a name="streaming-traces-from-a-remote-cluster-node"></a>Adatfolyam-nyomkövetés távoli fürtcsomópont-csomópontból
+A nyomkövetéseket közvetlenül egy távoli fürtcsomóponton is képes továbbítani a Visual studióba. Ez a funkció lehetővé teszi, hogy egy Service Fabric fürtcsomóponton előállított ETW nyomkövetési eseményeket továbbítsa.
 
 > [!NOTE]
-> A szolgáltatás használatához [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) és [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).
-> Ez a funkció csak az Azure-ban futó fürtök támogatja.
+> Ehhez a szolgáltatáshoz [Service FABRIC SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) és [Az Azure sdk for .NET 2,9](https://azure.microsoft.com/downloads/)szükséges.
+> Ez a funkció csak az Azure-ban futó fürtöket támogatja.
 > 
 > 
 
 <!-- -->
 > [!WARNING]
-> Adatfolyam-nyomkövetések hivatott fejlesztési és tesztelési célra, és nem használható éles környezetben, a futó alkalmazások gyakorolt hatás miatt.
-> Éles forgatókönyvekben a szoftverlicenceknek való használata az Azure Diagnostics eseménye továbbítását.
+> A folyamatos átviteli Nyomkövetések fejlesztési és tesztelési célokra szolgálnak, és nem használhatók éles környezetekben a futó alkalmazásokra gyakorolt hatás miatt.
+> Éles környezetben érdemes a Azure Diagnostics használatával továbbítani az eseményeket.
 > 
 > 
 
-1. Keresse meg a fürt **Cloud Explorer**. Kattintson a jobb gombbal, és válassza a **adatfolyam-nyomkövetés engedélyezése**
+1. Navigáljon a fürthöz a **Cloud Explorerben**. Kattintson a jobb gombbal, és válassza a **folyamatos átviteli nyomkövetés engedélyezése** lehetőséget.
    
-    ![Engedélyezze a távoli trasy streamování][enablestreamingtraces]
+    ![Távoli adatfolyam-nyomkövetés engedélyezése][enablestreamingtraces]
    
-    Ez a művelet elindít a streamelési nyomkövetések futtatására szolgáló bővítmény a fürtcsomópontokat, valamint a szükséges hálózati konfigurációk folyamata.
-2. Bontsa ki a **csomópontok** elemében **Cloud Explorer**, kattintson a jobb gombbal a kívánt adatfolyam hívásláncait, és válassza a csomópontot **Streamelési nyomok megtekintése**
+    Ez a művelet lekéri a folyamatos átviteli nyomkövetési bővítmény engedélyezésének folyamatát a fürtcsomópontokon, valamint a szükséges hálózati konfigurációkat.
+2. Bontsa ki a **csomópontok** elemet a **Cloud Explorerben**, kattintson a jobb gombbal arra a csomópontra, amelyen nyomon szeretné követni a nyomkövetéseket, és válassza a **stream-Nyomkövetések megtekintése** lehetőséget.
    
-    ![Távoli streamelési nyomok megtekintése][viewremotestreamingtraces]
+    ![Távoli adatfolyam-Nyomkövetések megtekintése][viewremotestreamingtraces]
    
-    Ismételje meg a 2. a nyomkövetések megtekintéséhez csomópont. Egyes csomópontok stream egy dedikált ablakban jelennek meg.
+    Ismételje meg a 2. lépést annyi csomópont esetében, mint a nyomkövetést. Az egyes csomópontok stream egy dedikált ablakban jelenik meg.
    
-    Most már érvényesülnek a Service Fabric és a szolgáltatások által kibocsátott nyomainak megtekintéséhez. Ha azt szeretné, hogy csak az adott alkalmazást jeleníti meg az események szűréséhez állítsa, egyszerűen írja be az alkalmazás a szűrő nevét.
+    Mostantól megtekintheti Service Fabric és a szolgáltatásai által kibocsátott nyomkövetéseket. Ha úgy szeretné szűrni az eseményeket, hogy csak egy adott alkalmazást mutassanak, egyszerűen írja be az alkalmazás nevét a szűrőbe.
    
-    ![Streamelési nyomok megtekintése][viewingstreamingtraces]
-3. Trasy streamování befejezte a fürtről, letilthatja a távoli trasy streamování, kattintson a jobb gombbal a fürt **Cloud Explorer** válassza **adatfolyam-nyomkövetések letiltása**
+    ![Adatfolyam-Nyomkövetések megtekintése][viewingstreamingtraces]
+3. Ha befejezte a folyamatos átvitel nyomkövetését a fürtről, letilthatja a távoli adatfolyam-nyomkövetést, ha a jobb gombbal a fürtre kattint a **Cloud Explorerben** , és kiválasztja a **streaming nyomkövetés letiltása** lehetőséget.
    
-    ![Tiltsa le a távoli trasy streamování][disablestreamingtraces]
+    ![Távoli folyamatos átvitel nyomkövetésének letiltása][disablestreamingtraces]
 
 ## <a name="next-steps"></a>További lépések
-* [Service Fabric-szolgáltatás tesztelése](service-fabric-testability-overview.md).
-* [A Visual Studióban a Service Fabric-alkalmazások kezelése](service-fabric-manage-application-in-visual-studio.md).
+* [Service Fabric szolgáltatás tesztelése](service-fabric-testability-overview.md).
+* [Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307437"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316352"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -34,18 +34,18 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| holland |`nl-NL` |-|  -   |-|✔|
-| francia (Franciaország) |`fr-FR` |-| ✔ |✔ |✔|
+| holland |`nl-NL` |✔|  -   |-|✔|
+| francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
 | francia (Kanada) |`fr-CA` |-|   -   |-|✔|
-| német |`de-DE` |-| ✔ |✔ |✔|
+| német |`de-DE` |✔| ✔ |✔ |✔|
 | hindi | `hi-IN`|-|-|-|-|
-| olasz |`it-IT` |-| ✔ |✔|✔|
-| *[japán](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Csak a kulcsfontosságú kifejezések|
-| koreai |`ko-KR` |-|   -   |-|Csak a kulcsfontosságú kifejezések|
-| portugál (brazíliai) |`pt-BR` |-| ✔ |✔ |nem minden alárendelt kulturális környezetek|
-| spanyol (spanyolországi) |`es-ES` |-| ✔ |✔|✔|
+| olasz |`it-IT` |✔| ✔ |✔|✔|
+| *[japán](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Csak a kulcsfontosságú kifejezések|
+| koreai |`ko-KR` |✔|   -   |-|Csak a kulcsfontosságú kifejezések|
+| portugál (brazíliai) |`pt-BR` |✔| ✔ |✔ |nem minden alárendelt kulturális környezetek|
+| spanyol (spanyolországi) |`es-ES` |✔| ✔ |✔|✔|
 | spanyol (Mexikó)|`es-MX` |-|  -   |✔|✔|
-| török | `tr-TR` |-|-|-|Csak hangulat|
+| török | `tr-TR` |✔|-|-|Csak hangulat|
 
 
 Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-reference-prebuilt-entities.md) és [előre összeállított tartományok](luis-reference-prebuilt-domains.md).

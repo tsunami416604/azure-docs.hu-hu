@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 86ad892f514513840ff33e46921607221896db84
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176650"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315738"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>A távoli asztal használatának engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Services tesztkörnyezetben
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -37,6 +37,7 @@ A **Távoli asztali kapcsolati üzenet engedélyezése** párbeszédpanelen vál
 
 > [!IMPORTANT] 
 > A **Távoli asztali kapcsolat** engedélyezése csak a Linux rendszerű gépeken futó **RDP** -portot nyitja meg. Ha az RDP már telepítve van és konfigurálva van a virtuális gép rendszerképén (például: Ubuntu Data Science Virtual Machine-rendszerkép) a tanulók a virtuális gépeket RDP-kapcsolaton keresztül is csatlakozhatnak a további lépések követése nélkül.
+> 
 > Ha a virtuálisgép-rendszerképben nincs telepítve és konfigurálva az RDP, először az SSH-val kell csatlakoznia a Linux rendszerű géphez, és telepítenie kell az RDP-és GUI-csomagokat, hogy a tanulók később is csatlakozhassanak a Linux-számítógéphez. Ezt követően közzéteheti a képet, hogy a tanulók RDP-be tudják állítani a tanulói Linux virtuális gépeket.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek

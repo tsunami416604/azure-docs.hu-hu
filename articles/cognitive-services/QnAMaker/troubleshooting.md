@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277486"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300240"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -42,13 +42,15 @@ QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A QnA Maker portál Súgó robotjának használata
 
-A **QnA Maker segítséget nyújt** a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
+A QnA Maker segítséget nyújt a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
 
 ![! [QnA Maker egy * * Súgó * * robotot biztosít a QnA Maker portálon, hogy segítsen.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>A Tudásbázis kezelése
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>A QnA Maker egy részét véletlenül törölt, Mit tegyek? 
+
+Ne törölje a létrehozott Azure-szolgáltatásokat a QnA Maker erőforrással, például a Search vagy a Web App szolgáltatással együtt. Ezek a QnA Maker működéséhez szükségesek, ha törli az egyiket, QnA Maker nem fog megfelelően működni.
 
 Összes törlése végleges, beleértve a kérdés és válasz párt, fájlok, URL-címek, egyéni kérdéseket és válaszokat, tudásbázisok vagy Azure-erőforrások. Ellenőrizze, hogy a Tudásbázis a exportálja a **beállítások** oldalhoz, mielőtt bármelyik részét a Tudásbázis törlése. 
 

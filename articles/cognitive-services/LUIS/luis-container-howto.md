@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: b15ab7be5467d35b774dce643d6bb3910560ae01
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7de529c9478b78ff9dd042df90a061f0a96f5427
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172322"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316403"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
  
@@ -309,7 +309,9 @@ A tároló leállításához a parancssori környezetben, ahol a tároló fut, n
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót egy kimeneti csatlakoztatással [](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához. 
+Ha a tárolót egy kimeneti csatlakoztatással [](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Számlázás
 

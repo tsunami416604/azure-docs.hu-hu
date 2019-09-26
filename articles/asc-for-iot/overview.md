@@ -13,30 +13,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: fdccf486cacabda4f363f4629a4d6daa4a00c8e4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597169"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315915"
 ---
-# <a name="introducing-azure-security-center-for-iot"></a>A IoT Azure Security Center bemutatása
+# <a name="introducing-azure-security-center-for-iot"></a>Az Azure Security Center for IoT bemutatása
 
 Egyesítheti a biztonsági felügyeletet, és engedélyezheti a teljes körű fenyegetések észlelését és elemzését a hibrid Felhőbeli számítási feladatokban és az Azure IoT-megoldásban. 
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>A IoT és a hibrid Felhőbeli számítási feladatok elleni védelem a fejlődő számítógépes támadásokkal szemben
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>A teljes IoT-megoldás védelme a IoT-eszközökről az Azure-felhőbe.
 
-A eszközök internetes hálózata gyorsan átalakítja a világot. A csatlakoztatott eszközökről és a háttérrendszer-rendszerekről való betekintési képességgel most már átalakíthatja ezeket az eredményeket a hatékony alkalmazások és szolgáltatások segítségével, hogy a szervezet a működés és az üzleti teljesítmény páratlan szintjein legyen elérhető. Mivel azonban a több milliárd új eszköz csatlakozik az internethez, és integrálva van a mindennapi életünkbe és a vállalkozásaiba. a biztonsági operatív csapatoknak biztosítaniuk kell, hogy a biztonsági stratégiák elég gyorsan fejlődnek az új támadási felületek kihasználása érdekében. Mint bármely más rendszeren, a IoT-megoldás biztonságossá tételéhez a megvalósítás minden fázisában védelmet kell biztosítani. 
+Válassza ki a zökkenőmentes ügynök nélküli megoldást, vagy használja ki az ügynök-alapú átfogó biztonságot, a IoT Azure Security Center a fenyegetések megelőzését és elemzését minden eszközről, IoT Edge és IoT Hubről a IoT eszközein keresztül.
+
+A több milliárd új eszköz csatlakozik az internethez, és integrálva van a mindennapi életünkbe és a vállalkozásaiba. a biztonsági operatív csapatoknak biztosítaniuk kell, hogy a biztonsági stratégiák elég gyorsan fejlődnek az új támadási felületek kihasználása érdekében. Mint bármely más rendszeren, a IoT-megoldás biztonságossá tételéhez a megvalósítás minden fázisában védelmet kell biztosítani. 
 
 Azure Security Center for IoT leegyszerűsíti a hibrid munkaterhelések védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások elleni védelmet, valamint intelligens veszélyforrások észlelését és reagálást tesz elérhetővé a peremen, a helyszínen, az Azure-ban és más felhők. 
 
-![Azure Security Center a IoT architektúrához](./media/architecture/azure-iot-security-architecture.png)
+![Az Azure Security Center for IoT architektúrája](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>Egységes láthatóság és vezérlés
 
-Egyesített képet kaphat az összes helyszíni és felhőbeli számítási feladat biztonságáról, többek között az Azure IoT-megoldásokról is. Új eszközök beléptetése és biztonsági szabályzatok alkalmazása a számítási feladatokban (Leaf-eszközök, Microsoft Edge-eszközök, IoT Hub) a biztonsági szabványok és a jobb biztonsági helyzetek megfelelőségének biztosítása érdekében.
+Egyesített képet kaphat az összes helyszíni és felhőbeli számítási feladat biztonságáról, többek között az Azure IoT-megoldásokról is. Új eszközök beléptetése és biztonsági szabályzatok alkalmazása a számítási feladatokban (Leaf-eszközök, Microsoft Edge-eszközök, IoT Hub) a biztonsági szabványok és a jobb biztonsági helyzetek megfelelőségének biztosítása érdekében. 
 
 ### <a name="adaptive-threat-prevention"></a>Adaptív veszélyforrások megelőzése
 

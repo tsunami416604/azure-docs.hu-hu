@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036340"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300644"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
-A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. További részletekért és kivételekhez tekintse [](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)meg a dokumentációt.
+A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. További részletekért és kivételekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
 
@@ -29,7 +29,11 @@ Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZR
 
 A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő régiókban:
 
+- Észak-Európa
+- Nyugat-Európa
 - USA keleti régiója
+- USA 2. keleti régiója
+- USA középső régiója
 
 A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 
@@ -97,7 +101,7 @@ A GZRS vagy RA-GZRS két lehetőség közül választhat a LRS, GRS vagy RA-GRS 
 
 #### <a name="perform-a-manual-migration"></a>Manuális áttelepítés végrehajtása
 
-Ha az áttelepítést egy adott dátummal kell végrehajtania, érdemes lehet manuális áttelepítést végeznie. A manuális áttelepítés nagyobb rugalmasságot biztosít, mint az élő áttelepítés. A manuális áttelepítéssel szabályozhatja az időzítést.
+Ha az áttelepítést egy adott dátummal kell végrehajtania, érdemes lehet manuális áttelepítést végeznie. A manuális migrálás az élő migrálásnál nagyobb rugalmasságot biztosít. A manuális migrálás során Ön szabja meg az időzítést.
 
 Ha egy meglévő fiókból manuálisan szeretné áttelepíteni az adatait egy GZRS vagy RA-GZRS-fiókba, használjon olyan eszközt, amely képes az adatok hatékony másolására. Néhány példa:
 
@@ -107,7 +111,7 @@ Ha egy meglévő fiókból manuálisan szeretné áttelepíteni az adatait egy G
 
 #### <a name="perform-a-live-migration"></a>Élő áttelepítés végrehajtása
 
-A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő áttelepítési lehetőséget is biztosít. Az élő áttelepítés egy helyben történő áttelepítés állásidő nélkül.
+A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő migrálási lehetőséget is biztosít. Az élő migrálás egy állásidő nélküli, helyszíni migrálás.
 
 Az élő áttelepítés során használhatja a Storage-fiókot, miközben az adatait áttelepíti a forrás-és a cél Storage-fiókok között. Az élő áttelepítési folyamat során a fiókja továbbra is teljesíti az SLA-t a tartósság és a rendelkezésre állás érdekében. Az élő áttelepítés nem okoz állásidőt vagy adatvesztést.
 
@@ -131,14 +135,14 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
 
 1. Válassza az **új támogatási kérelem**lehetőséget.
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** lehetőséget, és adja meg az áttelepíteni kívánt fiókot.
-3. Válassza a **tovább**lehetőséget.
+3. Kattintson a  **Tovább** gombra.
 4. A **probléma** szakasz a következő értékeket határozza meg:
     - **Súlyosság**: Hagyja meg az alapértelmezett értéket.
     - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
     - **Kategória**: Válassza az **áttelepítés (ra-) GZRS egy régión belül**lehetőséget.
     - **Cím**: Írjon be egy leíró címet, például: **(ra-) GZRS fiók áttelepítése**.
     - **Részletek**: Írja be a további részleteket a **részletek** mezőbe, például: "szeretnék áttérni a GZRS a (z) [LRS, GRS] \_ helyről a \_ régióban." vagy "szeretnék migrálni az ra-GZRS-re a \_ \_ (z) [LRS, ra-GRS] régióban."
-5. Válassza a **tovább**lehetőséget.
+5. Kattintson a  **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Válassza a **Létrehozás**lehetőséget.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7f209ef8bb8c492245b59374c33187dbbe763aa5
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240478"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316817"
 ---
 # <a name="on-board-azure-sentinel"></a>A fedélzeti Azure Sentinel
 
@@ -37,7 +37,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
 
 - Aktív Azure-előfizetés, ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
 
-- Log Analytics munkaterület. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../log-analytics/log-analytics-quick-create-workspace.md)
+- Log Analytics munkaterület. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../log-analytics/log-analytics-quick-create-workspace.md). További információ az Log Analytics munkaterületekről: [a Azure monitor naplók telepítésének megtervezése](../azure-monitor/platform/design-logs-deployment.md).
 
 -  Az Azure Sentinel engedélyezéséhez közreműködői engedélyekkel kell rendelkeznie ahhoz az előfizetéshez, amelyben az Azure Sentinel-munkaterület található. 
 - Az Azure Sentinel használatához közreműködői vagy olvasói engedélyekre van szükség ahhoz az erőforráscsoporthoz, amelyhez a munkaterület tartozik.

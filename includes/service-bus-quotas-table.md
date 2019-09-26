@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d6c5d881c5ca6eee14835ab0ec10bff2749299dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b0c6d80bfa7a7ae27e5dc6565b0d15b94eb7cdd3
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68502295"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310599"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Kvóta neve | Scope | Megjegyzések | Value |
 | --- | --- | --- | --- |
 | Egy Azure-előfizetéshez tartozó alapszintű vagy standard névterek maximális száma |Névtér |A Azure Portal a további alapszintű vagy standard szintű névterek további kérelmeit a rendszer elutasítja. |100|
-| Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. |50 |
+| Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. |100 |
 | Üzenetsor vagy témakör mérete |Entitás |A várólista vagy a témakör létrehozásakor van meghatározva. <br/><br/> A rendszer elutasítja a következő bejövő üzeneteket, és kivételt kap a hívó kód. |1, 2, 3, 4 GB vagy 5 GB.<br /><br />A prémium SKU-ban és a [particionálást](/azure/service-bus-messaging/service-bus-partitioning) engedélyező standard SKU esetében a maximális várólista vagy a témakör mérete 80 GB. |
 | Névtér egyidejű kapcsolatainak száma |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. A REST-műveletek nem számítanak bele az egyidejű TCP-kapcsolatok irányába. |NetMessaging: 1 000.<br /><br />AMQP 5 000. |
 | Egyidejű fogadási kérelmek száma egy üzenetsor, témakör vagy előfizetési entitás esetében |Entitás |A rendszer elutasítja a további fogadási kérelmeket, és a hívási kód kivételt kap. Ez a kvóta az egyidejű fogadási műveletek együttes számára vonatkozik a témakör összes előfizetésében. |5,000 |

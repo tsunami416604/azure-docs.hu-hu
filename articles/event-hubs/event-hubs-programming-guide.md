@@ -1,5 +1,5 @@
 ---
-title: Programozási útmutató – Azure Event Hubs |} A Microsoft Docs
+title: .NET programozási útmutató – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk információt nyújt az írási kódot az Azure Event hubs az Azure .NET SDK használatával.
 services: event-hubs
 documentationcenter: na
@@ -7,16 +7,16 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913977"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309818"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
+# <a name="net-programming-guide-for-azure-event-hubs"></a>.NET programozási útmutató az Azure Event Hubs
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Esemény-közzétevők

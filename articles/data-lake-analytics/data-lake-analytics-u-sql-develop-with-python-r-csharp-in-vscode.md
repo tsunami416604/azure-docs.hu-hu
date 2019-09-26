@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés Python, R és a C# nyelv, a Visual Studio Code-ban az Azure Data Lake Analytics U-SQL
-description: Ismerje meg a háttérkód használatát a Python, R és a C# elküldeni a feladatot az Azure Data Lake.
+title: U-SQL-feladatok futtatása a Pythonban, az C# R-ben és a-Azure Data Lake Analytics
+description: Megtudhatja, hogyan használhatja a Python, az R C# és a feladatainak elküldéséhez szükséges kódot a Azure Data Lakeban.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jejiang
@@ -8,36 +8,36 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814064"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309707"
 ---
-# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Fejlesztés Python, R és a C# nyelv, a Visual Studio Code-ban az Azure Data Lake Analytics U-SQL
-Írhat a Python használata a Visual Studio Code (VSCode), az R- és C# code mögött az U-SQL és a feladatok az Azure Data Lake-szolgáltatásokba való elküldéséhez. VSCode-Azure Data Lake Tools kapcsolatos további információkért lásd: [használata az Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>A U-SQL fejlesztése a Python, az R C# és a Azure Data Lake Analytics a Visual Studio Code-ban
+Ismerje meg, hogy a Visual Studio Code (VSCode) használatával hogyan írhat Pythont C# , R-t és kódot a U-SQL segítségével, és hogyan küldhet feladatokat Azure Data Lake szolgáltatásnak. A VSCode Azure Data Lake eszközeivel kapcsolatos további információkért lásd: [a Azure Data Lake Tools for Visual Studio Code használata](data-lake-analytics-data-lake-tools-for-vscode.md).
 
-Mielőtt háttérkód egyéni kód írása, meg kell nyitnia egy mappa vagy a munkaterület a vscode-ban.
+A kód az egyéni kód mögé írása előtt meg kell nyitnia egy mappát vagy egy munkaterületet a VSCode.
 
 
-## <a name="prerequisites-for-python-and-r"></a>Python- és R előfeltételei
-Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása. 
-1. Nyissa meg a fiók portálon.
+## <a name="prerequisites-for-python-and-r"></a>A Python és az R előfeltételei
+Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához. 
+1. Nyissa meg a fiókját a portálon.
    - Válassza az **Áttekintés** lehetőséget. 
-   - Kattintson a **mintaparancsfájl**.
-2. Kattintson a **további**.
-3. Válassza ki **U-SQL-bővítmények telepítése**. 
-4. Megerősítő üzenet jelenik meg a U-SQL-bővítmények telepítése után. 
+   - Kattintson a **minta parancsfájl**elemre.
+2. Kattintsona továbbiak gombra.
+3. Válassza az **U-SQL-bővítmények telepítése**lehetőséget. 
+4. Az U-SQL-bővítmények telepítése után megerősítő üzenet jelenik meg. 
 
-   ![A python és az R környezet beállítása](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![A környezet beállítása a Pythonhoz és az R-hez](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
    > [!Note]
-   > A Python és az R nyelv szolgáltatás a lehető legjobb élményt telepítse a VSCode Python- és R-bővítményt. 
+   > A Python és az R Language Service szolgáltatással kapcsolatos legjobb tapasztalatokért telepítse a VSCode Python és az R bővítményt. 
 
-## <a name="develop-python-file"></a>Fejlesztés Python-fájlt
-1. Kattintson a **új fájl** a munkaterületén.
-2. A kód írása az U-SQL-ben. Az alábbiakban látható mintakódot.
+## <a name="develop-python-file"></a>Python-fájl fejlesztése
+1. Kattintson az **új fájlra** a munkaterületen.
+2. Írja be a kódot a U-SQL-ben. A következő egy mintakód.
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
     @t  = 
@@ -58,8 +58,8 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
         USING Outputters.Csv();
     ```
     
-3. Kattintson a jobb gombbal egy olyan parancsfájlt, és válassza **ADL: Készítése a Python fájl mögötti kódban**. 
-4. A **xxx.usql.py** fájl jön létre a munkamappában. A kód írása a Python-fájlt. Az alábbiakban látható mintakódot.
+3. Kattintson a jobb gombbal egy parancsfájlra, majd válassza **az ADL: Python-kód készítése fájl**mögött. 
+4. A rendszer létrehozza a **xxx.usql.py** fájlt a munkamappában. Írja be a kódot a Python-fájlba. A következő egy mintakód.
 
     ```Python
     def get_mentions(tweet):
@@ -72,11 +72,11 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
         del df['tweet']
         return df
     ```
-5. Kattintson a jobb gombbal a **USQL** fájlt, kattintson **összeállítása parancsfájl** vagy **feladat elküldése** futó feladat.
+5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
 ## <a name="develop-r-file"></a>R-fájl fejlesztése
-1. Kattintson a **új fájl** a munkaterületén.
-2. A kód írása a U-SQL-fájlban. Az alábbiakban látható mintakódot.
+1. Kattintson az **új fájlra** a munkaterületen.
+2. Írja be a kódot az U-SQL-fájlba. A következő egy mintakód.
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
     DECLARE @IrisData string = @"/usqlext/samples/R/iris.csv";
@@ -115,20 +115,20 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: Fájl mögötti R-kód előállítása**. 
-4. A **xxx.usql.r** fájl jön létre a munkamappában. A kód írása az R-fájlban. Az alábbiakban látható mintakódot.
+3. Kattintson a jobb gombbal a **USQL** fájl elemre, **majd válassza az ADL elemet: Fájl**mögötti R-kód előállítása. 
+4. A rendszer a munkahelyi mappában hozza létre a **xxx. usql. r** fájlt. Írja be a kódot az R-fájlba. A következő egy mintakód.
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. Kattintson a jobb gombbal a **USQL** fájlt, kattintson **összeállítása parancsfájl** vagy **feladat elküldése** futó feladat.
+5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
-## <a name="develop-c-file"></a>Fejlesztés C# fájlban
-A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált parancsfájl UDO, UDA, UDT és UDF-ben a háttérkód-fájlban definiálhat. A UDO, UDA, UDT és UDF-ben használható közvetlenül a szkriptben a szerelvény először regisztrálása nélkül. A háttérkód fájlt helyezni, a társviszony-létesítési U-SQL parancsfájl ugyanabban a mappában. Ha a parancsfájl xxx.usql neve, a háttérkód xxx.usql.cs, neve. Ha manuálisan törli a háttérkód-fájlt, a háttérkód funkció le van tiltva a társított U-SQL parancsfájl. További információ az ügyfél kódot a U-SQL-szkript: [írása és a U-SQL egyéni kód használatával: Felhasználó által definiált függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+## <a name="develop-c-file"></a>Fájl C# fejlesztése
+A kód mögötti fájl egy egyetlen C# U-SQL-parancsfájllal társított fájl. A kód mögött található UDO, UDA, UDT és UDF dedikált parancsfájlt is meghatározhat. A UDO, a UDA, a UDT és az UDF közvetlenül a szkriptben használható, anélkül, hogy először regisztrálja a szerelvényt. A kód mögötti fájl ugyanabba a mappába kerül, mint a társ U-SQL-parancsfájl. Ha a parancsfájl neve xxx. usql, a kód mögött a xxx.usql.cs lesz elnevezve. Ha manuálisan törli a kód mögötti fájlt, a kód mögötti funkció le van tiltva a társított U-SQL-parancsfájlhoz. További információ az u-SQL-szkriptek [vásárlói kódjának írásáról: egyéni kód írása és használata az u-SQL-ben: Felhasználó által definiált]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)függvények.
 
-1. Kattintson a **új fájl** a munkaterületén.
-2. A kód írása a U-SQL-fájlban. Az alábbiakban látható mintakódot.
+1. Kattintson az **új fájlra** a munkaterületen.
+2. Írja be a kódot az U-SQL-fájlba. A következő egy mintakód.
     ```U-SQL
     @a = 
         EXTRACT 
@@ -157,8 +157,8 @@ A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált p
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: Hozzon létre a fájl mögötti kódban CS**. 
-4. A **xxx.usql.cs** fájl jön létre a munkamappában. A kód írása a CS-fájlban. Az alábbiakban látható mintakódot.
+3. Kattintson a jobb gombbal a **USQL** fájl elemre, **majd válassza az ADL elemet: Fájl**mögötti CS-kód előállítása. 
+4. A rendszer létrehozza a **xxx.usql.cs** fájlt a munkamappában. Írja be a kódot a CS-fájlba. A következő egy mintakód.
 
     ```CS
     namespace USQLApplication_codebehind
@@ -176,12 +176,12 @@ A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált p
         }
     }
     ```
-5. Kattintson a jobb gombbal a **USQL** fájlt, kattintson **összeállítása parancsfájl** vagy **feladat elküldése** futó feladat.
+5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
-* [U-SQL helyi futtatása és a hibakeresés a Visual Studio Code-dal](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [PowerShell-lel a Data Lake Analytics használatának első lépései](data-lake-analytics-get-started-powershell.md)
-* [Ismerkedés a Data Lake Analytics az Azure portal használatával](data-lake-analytics-get-started-portal.md)
-* [A Data Lake Tools for Visual Studio használata a U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake használata Analytics(U-SQL) katalógus](data-lake-analytics-use-u-sql-catalog.md)
+* [U-SQL helyi Futtatás és helyi hibakeresés a Visual Studio Code-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
+* [Ismerkedés a Data Lake Analytics a PowerShell használatával](data-lake-analytics-get-started-powershell.md)
+* [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)
+* [A Visual studióhoz készült Data Lake Tools használata az U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Analytics (U-SQL) katalógus használata](data-lake-analytics-use-u-sql-catalog.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e39f294f7902eabef401d4c8145f4f19a07f267f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224578"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310128"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Növekményes pillanatkép (előzetes verzió) létrehozása a felügyelt lemezekhez
 
@@ -23,10 +23,11 @@ A növekményes pillanatfelvétel és a rendszeres Pillanatképek között néh�
 
 A növekményes Pillanatképek egy különbözeti képességet is biztosítanak, amely egyedi módon elérhető a felügyelt lemezeken. Lehetővé teszik az azonos felügyelt lemezek két növekményes pillanatképének változását a blokk szintjére. Ezzel a képességgel csökkentheti az adatlábnyomot a pillanatképek régiók közötti másolásakor.
 
-Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldjön e AzureDisks@microsoft.com -mailt a következő címre a nyilvános előzetes verzióhoz való hozzáféréshez.
+Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldjön AzureDisks@microsoft.com e-mailt a szolgáltatásnak, hogy hozzáférjen a nyilvános előzetes verzióhoz.
 
 ## <a name="restrictions"></a>Korlátozások
 
+- A növekményes Pillanatképek jelenleg csak az USA nyugati középső régiójában érhetők el.
 - A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
@@ -36,7 +37,7 @@ Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növ
 
 ## <a name="powershell"></a>PowerShell
 
-Növekményes pillanatkép létrehozásához használhatja a Azure PowerShellt is. A PowerShell legújabb verzióját helyileg is telepítheti. A Azure PowerShell legújabb verziójára lesz szüksége, a következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
+Növekményes pillanatkép létrehozásához használhatja a Azure PowerShellt is. A Azure PowerShell legújabb verziójára lesz szüksége, a következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -44,22 +45,24 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 A telepítését követően jelentkezzen be a PowerShell-munkamenetbe `az login`a következővel:.
 
+Ha Azure PowerShell használatával szeretne növekményes pillanatképet létrehozni, állítsa a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) `-Incremental` paraméterrel, majd adja át az értékét a `-Snapshot` [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) paraméterrel.
+
 Cserélje le `<yourDiskNameHere>`a, `<yourDesiredSnapShotNameHere>` a és az értékeket a következő parancsfájl használatával növekményes pillanatkép létrehozására: `<yourResourceGroupNameHere>`
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
 $yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
 
-# Create an incremental snapshot by setting:
-# 1. Incremental property
-# 2. SourceUri property with the value of the Id property of the disk
+# Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+```
 
-# You can identify incremental snapshots of the same disk by using the SourceResourceId and SourceUniqueId properties of snapshots. 
-# SourceResourceId is the Azure Resource Manager resource ID of the parent disk. 
-# SourceUniqueId is the value inherited from the UniqueId property of the disk. If you delete a disk and then create a disk with the same name, the value of the UniqueId property will change. 
-# Following script shows how to get all the incremental snapshots in a resource group of same disk
+Az azonos lemezről `SourceResourceId` származó növekményes pillanatképeket a `SourceUniqueId` és a pillanatképek tulajdonságaival is azonosíthatja. `SourceResourceId`a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`az érték a lemez `UniqueId` tulajdonságában örökölt. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, a `UniqueId` tulajdonság módosul.
+
+`SourceResourceId` A és `SourceUniqueId` az használatával létrehozhat egy adott lemezhez társított összes pillanatkép listáját. Cserélje `<yourResourceGroupNameHere>` le az értéket az értékre, majd a következő példa használatával sorolja fel a meglévő növekményes pillanatképeket:
+
+```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
@@ -73,6 +76,46 @@ foreach ($snapshot in $snapshots)
 }
 
 $incrementalSnapshots
+```
+
+## <a name="cli"></a>parancssori felület
+
+Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. A következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
+
+```PowerShell
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+```
+
+Növekményes pillanatkép létrehozásához használja `--incremental` az [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) paramétert.
+
+A következő példa egy növekményes pillanatképet hoz `<yourDesiredSnapShotNameHere>`létre `<yourResourceGroupNameHere>`,`<exampleDiskName>`és `<exampleLocation>` lecseréli a saját értékeit, majd futtatja a példát:
+
+```bash
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot create -g <yourResourceGroupNameHere> \
+-n <yourDesiredSnapShotNameHere> \
+-l <exampleLocation> \
+--source "$sourceResourceId" \
+--incremental
+```
+
+Az azonos lemezről `SourceResourceId` származó növekményes pillanatképeket a `SourceUniqueId` és a pillanatképek tulajdonságaival is azonosíthatja. `SourceResourceId`a szülő lemez Azure Resource Manager erőforrás-azonosítója. `SourceUniqueId`az érték a lemez `UniqueId` tulajdonságában örökölt. Ha töröl egy lemezt, majd létrehoz egy azonos nevű új lemezt, a `UniqueId` tulajdonság módosul.
+
+`SourceResourceId` A és `SourceUniqueId` az használatával létrehozhat egy adott lemezhez társított összes pillanatkép listáját. Az alábbi példa felsorolja az adott lemezzel kapcsolatos összes növekményes pillanatképet, de szükség van rá néhány beállításra.
+
+Ez a példa jQ használ az adatlekérdezéshez. A példa futtatásához [telepítenie](https://stedolan.github.io/jq/download/)kell a jQ.
+
+Cserélje `<yourResourceGroupNameHere>` le `<exampleDiskName>` az értékeket, és az értékeit használva a következő példával listázhatja a meglévő növekményes pillanatképeket, feltéve, hogy a jQ is telepítette:
+
+```bash
+sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
+
+ 
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot list -g <yourResourceGroupNameHere> -o json \
+| jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
@@ -111,32 +154,6 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 }
 ```
 
-## <a name="cli"></a>parancssori felület
-
-Növekményes pillanatképet az az [Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create)paranccsal hozhat létre az Azure CLI-vel. Egy példaként szolgáló parancs a következőhöz hasonlóan néz ki:
-
-```bash
-az snapshot create -g <exampleResourceGroup> \
--n <exampleSnapshotName> \
--l <exampleLocation> \
---source <exampleVMId> \
---incremental
-```
-
-Azt is megtudhatja, hogy mely Pillanatképek növekményes Pillanatképek a CLI `--query` -ben a használatával az az [Snapshot show](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-show)parancsban található paraméterrel. Ezt a paramétert használhatja a pillanatképek **sourceresourceid azonosítónak** és **SourceUniqueId** közvetlen lekérdezéséhez. A Sourceresourceid azonosítónak a szülő lemez Azure Resource Manager erőforrás-azonosítója. A **SourceUniqueId** a lemez **UniqueID** tulajdonságában örökölt érték. Ha töröl egy lemezt, majd létrehoz egy azonos nevű lemezt, akkor a **UniqueID** tulajdonság értéke módosul.
-
-A lekérdezések egyik példája a következőhöz hasonló:
-
-```bash
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceResourceId] -o tsv
-
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceUniqueId] -o tsv
-```
-
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldjön e AzureDisks@microsoft.com -mailt a következő címre a nyilvános előzetes verzióhoz való hozzáféréshez.
+Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldjön AzureDisks@microsoft.com e-mailt a szolgáltatásnak, hogy hozzáférjen a nyilvános előzetes verzióhoz.

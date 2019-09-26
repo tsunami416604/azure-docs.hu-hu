@@ -1,19 +1,20 @@
 ---
 title: Azure HDInsight – gyakori kérdések
-description: Áttekintést nyújt az Azure HDInsight
+description: Gyakori kérdések a HDInsight
+keywords: gyakori kérdések, GYIK
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212749"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308068"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
 
@@ -27,7 +28,9 @@ A rendelkezésre álló HDInsight-fürtök és a létesítési módszerek áttek
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Hogyan törölni egy meglévő HDInsight-fürtöt?
 
-Ha többet szeretne megtudni a fürt törléséről, ha már nincs használatban, tekintse meg a [HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster)című részt. Javasoljuk, hogy a létrehozás és törlés művelet között legalább 30 – 60 percet válasszon egyetlen fürtön. Ellenkező esetben előfordulhat, hogy a művelet meghiúsul, és a következő hibaüzenetet adja vissza:
+Ha többet szeretne megtudni a fürt törléséről, ha már nincs használatban, tekintse meg a [HDInsight-fürt törlése](hdinsight-delete-cluster.md)című részt.
+
+A létrehozási és törlési műveletek között hagyjon legalább 30 – 60 percet. Ellenkező esetben a művelet sikertelen lehet a következő hibaüzenettel:
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ Lehetséges, hogy az előfizetés úgy van konfigurálva, hogy korlátozza a ré
 
 A kvóta növelésének kéréséhez kövesse az alábbi lépéseket:
 
-1. Lépjen a Azure Portalra, és válassza a Súgó + támogatás lehetőséget.
-2. Válassza az új támogatási kérelem lehetőséget.
-3. Az új támogatási kérelem lapon válassza ki az alábbi beállításokat az alapok lapon:
+1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Súgó + támogatás**lehetőséget.
+   
+1. Válassza az **Új támogatási kérelem** lehetőséget.
+   
+1. Az **új támogatási kérés** lap **alapok** lapján adja meg a következő információkat:
+   
+   - **Probléma típusa:** Válassza **a szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+   - **Előfizetés** Válassza ki a módosítani kívánt előfizetést.
+   - **Kvóta típusa:** Válassza a **HDInsight**lehetőséget.
 
-   * Probléma típusa: Szolgáltatási és előfizetési korlátok (kvóták)
-   * Előfizetés: A módosítani kívánt előfizetés
-   * Kvóta típusa: HDInsight
-
-További információ: [támogatási jegy létrehozása a magok növelésére](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas).
+További információ: [Támogatási jegy létrehozása a magok számának növeléséhez](hdinsight-capacity-planning.md#quotas).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Milyen típusú csomópontok vannak egy HDInsight-fürtben?
 
 Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomópont-típus a rendszer működésében játszik szerepet.
 
-További információ: [erőforrástípusok az Azure HDInsight-fürtökben](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters).
+További információ: [erőforrástípusok az Azure HDInsight-fürtökben](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
 ## <a name="individual-components"></a>Egyedi összetevők
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Telepíthetek további összetevőket a fürtön?
 
-Igen, a következő módszerek bármelyikével telepítheti a további összetevőket, vagy testreszabhatja a fürt konfigurációját:
+Igen. További összetevők telepítéséhez vagy a fürtkonfiguráció testreszabásához használja a következőt:
 
-* Parancsfájlok használata a létrehozás során vagy után. Ezeket a parancsfájlokat egy parancsfájl- [művelet](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)hívja meg. Ezt a konfigurációs lehetőséget a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDInsight .NET SDK használatával lehet használni. 
-* A sudo vagy más metódusok használata a fürt kiépítés után.
-* Az [HDInsight alkalmazás platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) használata az ökoszisztéma-alkalmazások telepítéséhez.
+- Parancsfájlok létrehozása a létrehozás során vagy után. A szkripteket parancsfájl- [művelettel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)hívja meg a rendszer, amely a Azure Portal, HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. Ezt a konfigurációs lehetőséget a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDInsight .NET SDK használatával lehet használni.
+
+- `sudo`vagy más módszerek a fürt kiépítése után.
+  
+- [HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) az ökoszisztéma-alkalmazások telepítéséhez.
 
 Microsoft ügyfélszolgálata csapatok azonban csak a következő helyzetekben nyújthatnak támogatást:
 
-* A parancsfájl betöltésekor előforduló problémák vagy hibák. Az egyéni parancsfájlok végrehajtása során felmerülő hibák a támogatási jegy hatókörén kívül esnek. 
-* A fürt létrehozási folyamatának részét képező további alkalmazások. 
+- A parancsfájl betöltésekor előforduló problémák vagy hibák. Az egyéni parancsfájlok végrehajtása során felmerülő hibák a támogatási jegy hatókörén kívül esnek.
+
+- A fürt létrehozási folyamatának részét képező további alkalmazások. 
 
 A támogatott összetevők listáját lásd: [Mik a Apache Hadoop összetevők és verziók érhetők el a HDInsight-ben?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
 
 Az egyes összetevők támogatása fürttípustól függően is változhat. Például a Spark nem támogatott egy Kafka-fürtön, és fordítva.
 
-A fürt létrehozási folyamatán kívüli alkalmazásokhoz vagy szolgáltatásokhoz forduljon a megfelelő gyártóhoz vagy szolgáltatóhoz a támogatáshoz. Ezen műveletek támogatásához a közösségi helyeket is használhatja. Számos közösségi webhely elérhető. Ilyenek például [az MSDN-fórum a HDInsight és a](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight) [stack overflow](https://stackoverflow.com/questions/tagged/hdinsight). Az Apache-projektek az [Apache webhelyén](https://apache.org/)is rendelkeznek Project-webhelyekkel. Az egyik példa a [Hadoop](https://hadoop.apache.org/).
+A fürt létrehozási folyamatán kívüli alkalmazásokhoz és szolgáltatásokhoz a támogatásért forduljon a szállítóhoz vagy a szolgáltatóhoz. Számos közösségi támogatási helyet is használhat. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com/) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) . Az Apache-projektek az [Apache webhelyén](https://apache.org/)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/). 
 
- Az Azure-támogatással kapcsolatos további kérdésekért tekintse át az [Azure-támogatással kapcsolatos gyakori](https://azure.microsoft.com/en-us/support/faq/)kérdéseket.
+Az Azure-támogatással kapcsolatos további információkért tekintse meg az [Azure-támogatási gyakori kérdések](https://azure.microsoft.com/support/faq/)című témakört.
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Frissíthetem a fürtön előre telepített egyes összetevőket?
 
@@ -102,7 +110,7 @@ Például a struktúra frissítése önálló összetevőként nem támogatott. 
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>A Spark és a Kafka ugyanazon a HDInsight-fürtön fut?
 
-Nem, nem lehet futtatni Apache Kafka és Apache Spark ugyanazon a HDInsight-fürtön. A felhasználóknak külön fürtöket kell létrehozniuk, hogy elkerülje az erőforrás-tartalommal kapcsolatos problémákat.
+Nem, nem lehet futtatni Apache Kafka és Apache Spark ugyanazon a HDInsight-fürtön. Hozzon létre külön fürtöket a Kafka és a Spark számára az erőforrás-tartalommal kapcsolatos problémák elkerülése érdekében.
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hogyan változás időzónája a Ambari-ben?
 
@@ -119,7 +127,7 @@ Nem, nem lehet futtatni Apache Kafka és Apache Spark ugyanazon a HDInsight-für
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Hogyan telepíthetek át a meglévő metaadattár az Azure SQL Serverba? 
 
-Az SQL Serverról az Azure SQL Serverba való áttelepítéshez lásd [: oktatóanyag: SQL Server migrálása önálló adatbázisba vagy készletezett adatbázisba Azure SQL Database offline módban a DMS](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)használatával.
+Az SQL Serverról az Azure SQL Serverba való áttelepítéshez lásd [: oktatóanyag: SQL Server migrálása önálló adatbázisba vagy készletezett adatbázisba Azure SQL Database offline módban a DMS](../dms/tutorial-sql-server-to-azure-sql.md)használatával.
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Törlődik a Hive-metaadattár a fürt törlésekor?
 
@@ -129,11 +137,11 @@ Alapértelmezett metaadattár: Az alapértelmezett metaadattár a fürt életcik
 
 Egyéni metaadattár esetén: A metaadattár életciklusa nem kötődik a fürt életciklusához. Ezért a fürtöket a metaadatok elvesztése nélkül hozhatja létre és törölheti. Az olyan metaadatok, mint például a struktúra sémái a HDInsight-fürt törlése és újbóli létrehozása után is megmaradnak.
 
-További információ: [külső metaadat-tárolók használata az Azure HDInsight-ben](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+További információ: [külső metaadat-tárolók használata az Azure HDInsight-ben](hdinsight-use-external-metadata-stores.md).
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Áttelepíti a Hive-metaadattár a Ranger-adatbázis alapértelmezett házirendjeit is?
 
-Nem, a házirend-definíció a Ranger-adatbázisban található. Ezért a Ranger-adatbázis áttelepítése nem telepíti át a szabályzatot.
+Nem, a házirend-definíció a Ranger-adatbázisban található, így a Ranger-adatbázis migrálása áttelepíti a szabályzatot.
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Áttelepíthet Hive-metaadattár egy Enterprise Security Package (ESP) fürtről egy nem ESP-fürtre, és fordítva?
 
@@ -141,7 +149,7 @@ Igen, áttelepíthet egy Hive-metaadattár ESP-ről egy nem ESP-fürtre.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hogyan lehet megbecsülni egy Hive-metaadattár adatbázis méretét?
 
-Hive-metaadattár a rendszer a kaptár-kiszolgáló által használt adatforrások metaadatainak tárolására szolgál. Ezért a méretre vonatkozó követelményeket a Kaptárhoz használni kívánt adatforrások száma, valamint az adatforrások összetettsége befolyásolja. Ezért a méret nem becsülhető meg előre. Az [Hive-metaadattár ajánlott eljárások](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices)szerint az S2-es szinten kezdődően 50 DTU és 250 GB tárterületet biztosít. Szűk keresztmetszet esetén az adatbázis vertikális felskálázását is elvégezheti.
+Hive-metaadattár a rendszer a kaptár-kiszolgáló által használt adatforrások metaadatainak tárolására szolgál. A méretre vonatkozó követelmények a struktúra-adatforrások számától és összetettségtől függenek, és nem lehet előre megbecsülni. Az [Hive-metaadattár ajánlott eljárásokban](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)leírtaknak megfelelően egy S2-es szintű, 50 DTU és 250 GB tárhelyet biztosító, és ha szűk keresztmetszetet tapasztal, az adatbázis vertikális felskálázását is lehetővé teszi.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Más adatbázisokat is támogat, mint a külső metaadattár Azure SQL Database?
 
@@ -159,53 +167,55 @@ Ha letiltja a 22-es és a 23-as portot, nem fog SSH-hozzáféréssel rendelkezni
 
 További információ a következő dokumentumokban található:
 
-* [Hálózati forgalom szabályozása](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
-* [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [Hálózati forgalom szabályozása](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+
+- [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Telepíthetek egy további virtuális gépet ugyanazon az alhálózaton belül, mint HDInsight-fürtöt?
 
 Igen, egy további virtuális gépet is telepíthet a HDInsight-fürttel azonos alhálózaton belül. A következő konfigurációk lehetségesek:
 
-* Peremhálózati csomópontok: Egy másik peremhálózati csomópontot is hozzáadhat a fürthöz, a következő témakörben leírtak szerint: az [üres peremhálózati csomópontok használata Apache Hadoop fürtökön a HDInsight-ben](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node). 
-* Önálló csomópontok:  Hozzáadhat egy önálló virtuális gépet ugyanahhoz az alhálózathoz, és elérheti a fürtöt a virtuális gépről a privát végpont `https://<CLUSTERNAME>-int.azurehdinsight.net`használatával. További információ: a [hálózati forgalom szabályozása](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic).
+- Peremhálózati csomópontok: Egy másik peremhálózati csomópontot is hozzáadhat a fürthöz, a következő témakörben leírtak szerint: az [üres peremhálózati csomópontok használata Apache Hadoop fürtökön a HDInsight-ben](hdinsight-apps-use-edge-node.md).
+
+- Önálló csomópontok:  Hozzáadhat egy önálló virtuális gépet ugyanahhoz az alhálózathoz, és elérheti a fürtöt a virtuális gépről a privát végpont `https://<CLUSTERNAME>-int.azurehdinsight.net`használatával. További információ: a [hálózati forgalom szabályozása](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Hozzáadhatok egy meglévő HDInsight-fürtöt egy másik virtuális hálózathoz?
 
-Nem, meglévő HDInsight-fürtöt nem adhat hozzá másik virtuális hálózathoz. A virtuális hálózatot a kiépítés időpontjában kell megadni. Ha a kiépítés során nincs megadva virtuális hálózat, a központi telepítés olyan belső hálózatot hoz létre, amely kívülről nem érhető el. További információ: [HDInsight hozzáadása meglévő virtuális hálózathoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet).
+Nem. A virtuális hálózatot a kiépítés időpontjában kell megadni. Ha nincs megadva virtuális hálózat a kiépítés során, a központi telepítés olyan belső hálózatot hoz létre, amely kívülről nem érhető el. További információ: [HDInsight hozzáadása meglévő virtuális hálózathoz](hdinsight-plan-virtual-network-deployment.md#existingvnet).
 
 ## <a name="security-and-certificates"></a>Biztonság és tanúsítványok
 
-Mik azok a Microsoft-javaslatok a kártevők elleni védelemhez az Azure HD Insight-fürtökön?
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Mik a kártevők elleni védelemre vonatkozó javaslatok az Azure HDInsight-fürtökön?
 
-További információ a kártevők elleni védelemről: a [Microsoft antimalware for Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+További információ a kártevők elleni védelemről: a [Microsoft antimalware for Azure Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md).
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>Hogyan hozzon létre egy keytab kiterjesztésű egy HDInsight ESP-fürthöz?
 
-A tartomány felhasználónevéhez létrehozhat egy Kerberos-keytab kiterjesztésű. Ezt a keytab kiterjesztésű később is használhatja a távoli tartományhoz csatlakoztatott fürtök hitelesítéséhez jelszó megadása nélkül. Figyelje meg a tartománynév nagybetűs karaktereit:
+Hozzon létre egy Kerberos-keytab kiterjesztésű a tartomány felhasználónevéhez. Ezt a keytab kiterjesztésű később is használhatja a távoli tartományhoz csatlakoztatott fürtök hitelesítéséhez jelszó megadása nélkül. Vegye figyelembe, hogy a tartománynév nagybetűvel van elnevezve:
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>Használhatok meglévő Azure Active Directory bérlőt egy ESP-vel rendelkező HDInsight-fürt létrehozásához?
 
-A Azure Active Directory Domain Services (HRE-DS) engedélyezése az előfeltétele, mielőtt olyan HDInsight-fürtöt hozna létre, amely ESP-t tartalmaz. A nyílt forráskódú Hadoop a Kerberos hitelesítésre támaszkodik (a OAuth szemben).
+Az ESP-vel rendelkező HDInsight-fürt létrehozása előtt engedélyeznie kell a Azure Active Directory Domain Services (Azure AD DS). A nyílt forráskódú Hadoop a Kerberos hitelesítésre támaszkodik (a OAuth szemben).
 
-A virtuális gépek tartományhoz való csatlakoztatásához tartományvezérlőre van szükség. A HRE – DS a felügyelt tartományvezérlő. Ez a HRE kiterjesztését képezi, amely biztosítja az összes Kerberos-követelményt, hogy felügyelt módon hozzon létre egy biztonságos Hadoop-fürtöt. A HDInsight felügyelt szolgáltatás a HRE-DS-vel integrálható a teljes körű biztonság biztosításához.
+A virtuális gépek tartományhoz való csatlakoztatásához tartományvezérlő szükséges. Az Azure AD DS a felügyelt tartományvezérlő, és a Azure Active Directory bővítménye, amely az összes Kerberos-követelményt biztosítja a biztonságos Hadoop-fürt felügyelt módon történő létrehozásához. A HDInsight felügyelt szolgáltatásként integrálható az Azure AD DS a végpontok közötti biztonság biztosításához.
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Használhatok önaláírt tanúsítványt egy HRE-DS Secure LDAP-beállításban, és kiépíteni egy ESP-fürtöt?
 
-Bár a hitelesítésszolgáltató (CA) által kiállított tanúsítvány használata ajánlott, az ESP-ben az önaláírt tanúsítvány használata is támogatott.
+A hitelesítésszolgáltató által kiállított tanúsítvány használata ajánlott, de önaláírt tanúsítvány használata is támogatott az ESP-ben. További információkért lásd:
 
-További információkért lásd:
+- [Azure Active Directory Domain Services engedélyezése](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Az Azure AD-DS engedélyezése](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds)
-* [Oktatóanyag: Biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [Oktatóanyag: Biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Hogyan hívhatom le a Rangerben látható bejelentkezési tevékenységet?
 
@@ -220,12 +230,12 @@ Ez a folyamat nem zavarja vagy nem hajtja végre a többi folyamattól eltérő 
 Olyan helyzetekben, amelyekben meg kell határoznia az ütemtervet, a következő lépéseket hajthatja végre:
 
 1. Tiltsa le az automatikus végrehajtást a következő parancs használatával:
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. Hozzon létre egy cron-feladatot, amely root-ként futtatja ezt a parancsot:
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. Adjon hozzá egy cron-feladatot, amely a következő parancsot futtatja root-ként:
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 A cron-feladatok beállításával és futtatásával kapcsolatos további információkért lásd: [Hogyan cron-feladatok beállítása](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)?
 
@@ -233,33 +243,34 @@ A cron-feladatok beállításával és futtatásával kapcsolatos további infor
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Hozzáadhatok Azure Data Lake Storage Gen2 egy meglévő HDInsight-fürthöz további Storage-fiókként?
 
-Nem. Jelenleg nem adhat hozzá Azure Data Lake Storage Gen2t egy meglévő HDInsight-fürthöz, amely a blob Storage-ot használja elsődleges tárolóként. További információ: a [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options). 
+Nem, jelenleg nem lehet Azure Data Lake Storage Gen2 Storage-fiókot hozzáadni egy olyan fürthöz, amely elsődleges tárolóként rendelkezik blob Storage-tárolóval. További információ: a [tárolási lehetőségek összehasonlítása](hdinsight-hadoop-compare-storage-options.md).
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Hogyan találhatom meg a jelenleg társított egyszerű szolgáltatást egy Data Lake Storage-fiókhoz?
 
-A beállítások ellenőrzéséhez tekintse át Data Lake Storage Gen1 hozzáférését a fürt tulajdonságai között a portálon. További információ: a [fürt beállításának ellenőrzése](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up).
+A beállításokat a fürt tulajdonságai között, a Azure Portalban találhatja meg **Data Lake Storage Gen1 hozzáférés** lehetőségnél. További információ: a [fürt beállításának ellenőrzése](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
  
-Hogyan számítható ki a Storage-fiókok és a blob-tárolók használata a HDInsight-fürtökhöz?
-Az alábbi eljárások egyikét használhatja:
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Hogyan számítható ki a Storage-fiókok és a blob-tárolók használata a HDInsight-fürtökhöz?
 
-* [A PowerShell használata](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* A/User/Hive/. méretét is megtalálhatja A következő parancs használatával a HDI-fürtökön található Kuka/mappa:
+Tegye a következők valamelyikét:
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [A PowerShell használata](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- A/User/Hive/. méretének megkereséseA HDInsight-fürt Kuka/mappája a következő parancssor használatával:
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Hogyan állíthatok be naplózást a blob Storage-fiókomhoz?
 
-A blob Storage-fiókok naplózásához konfigurálnia kell a blob Storage-fiók figyelését a [Azure Portal Storage-fiók figyelése](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)című témakörben ismertetett eljárással. Egy HDFS-naplózási napló csak a helyi HDFS fájlrendszer (hdfs://mycluster) naplózási információit tartalmazza.  Nem tartalmazza a távoli tárolón végzett műveleteket.
+A blob Storage-fiókok naplózásához a [Azure Portal a Storage-fiók figyelése](../storage/common/storage-monitor-storage-account.md)című eljárással konfigurálhatja a figyelést. Egy HDFS-naplózási napló csak a helyi HDFS fájlrendszer (hdfs://mycluster) naplózási információit tartalmazza.  Nem tartalmazza a távoli tárolón végzett műveleteket.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Hogyan vihetők át fájlok egy blob-tároló és egy HDInsight-csomópont között?
 
-A blob-tárolók és a HDInsight közötti fájlokat átviheti egy rendszerhéj-parancsfájl futtatásával a fő csomóponton, az alábbi példához hasonlóan:
+Futtasson egy, az alábbi rendszerhéj-parancsfájlhoz hasonló parancsfájlt a fő csomóponton:
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Vannak-e a Storage-beli Ranger-beépülő modulok?
 
-Jelenleg nem létezik Ranger beépülő modul a blob Storage-hoz, Azure Data Lake Storage (ADLS) Gen1 vagy Azure Data Lake Storage Gen2hoz. Az ESP-fürtök esetében ajánlott eljárásként használja a ADLS-t, és a HDFS-eszközök használatával manuálisan állítsa be a részletes kiőrlési engedélyeket a fájlrendszer szintjén. Az ESP-fürtök emellett a fájlrendszer-hozzáférés-vezérlést is elvégzik a HRE használatával a ADLS használatakor. 
+Jelenleg nem létezik Ranger beépülő modul a blob Storage-hoz és Azure Data Lake Storage Gen1 vagy Gen2. Az ESP-fürtök esetében Azure Data Lake Storaget kell használnia, mert a fájlrendszer szintjén legalább a HDFS-eszközök használatával manuálisan is beállíthatja a részletes kiőrlési engedélyeket. Emellett a Azure Data Lake Storage használatakor az ESP-fürtök a fájlrendszer-hozzáférés-vezérlést Azure Active Directory használatával hajtják végre a fürt szintjén. 
 
-Az alábbi cikkekben ismertetett eljárásokkal az Adathozzáférési házirendek biztonsági csoportokhoz való hozzárendeléséhez használhatja a Azure Storage Explorer.
+Az adathozzáférési szabályzatokat a Azure Storage Explorer használatával rendelheti hozzá a felhasználók biztonsági csoportjaihoz. További információkért lásd:
 
-* [Hogyan az Azure AD-felhasználók számára a kaptár vagy más szolgáltatások használatával történő adatlekérdezésre vonatkozó engedélyeket Data Lake Storage Gen2.](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Hogyan az Azure AD-felhasználók számára a kaptár vagy más szolgáltatások használatával történő adatlekérdezésre vonatkozó engedélyeket Data Lake Storage Gen2.](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Megnövelhető a fürt HDFS-tárolója a munkavégző csomópontok lemezének méretének növelése nélkül?
 
-Nem, a munkavégző csomópontok lemezének mérete nem növelhető. A lemez méretének növelésének egyetlen módja a fürt eldobása, majd újbóli létrehozása a nagyobb munkavégző virtuális gépeken.
-
-A Microsoft nem javasolja, hogy a HDFS használatával tárolja a HDInsight tárolt adatait, mert az adatai törlődnek a fürt törlésekor. Ehelyett azt javasoljuk, hogy az adatait az Azure-ban tárolja. A fürt vertikális felskálázása további kapacitást is hozzáadhat a HDInsight-fürthöz.
+Nem, a munkavégző csomópontok lemezének mérete nem növelhető, így a lemez méretének növeléséhez az egyetlen lehetőség a fürt eldobása és a nagyobb feldolgozó virtuális gépekkel való újbóli létrehozás. Ne használja a HDFS-t a HDInsight-adatai tárolásához, mert a fürt törlése után az adatai törlődnek. Ehelyett tárolja adatait az Azure-ban. A fürt méretezése további kapacitást is hozzáadhat a HDInsight-fürthöz.
 
 ## <a name="edge-nodes"></a>Határcsomópontok
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Hozzá lehet adni egy Edge-csomópontot a fürt létrehozása után?
 
-Igen, hozzáadhat egy üres peremhálózati csomópontot egy meglévő HDInsight-fürthöz vagy egy új fürthöz a fürt létrehozásakor.
-
-További információt az [üres határcsomópontok a HDInsightban az Apache Hadoop-fürtökön való használatát](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node) ismertető útmutatóban talál.
+HDInsight-fürtöt vagy egy új fürtöt a fürt létrehozásakor. További információt az [üres határcsomópontok a HDInsightban az Apache Hadoop-fürtökön való használatát](hdinsight-apps-use-edge-node.md) ismertető útmutatóban talál.
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Hogyan lehet csatlakozni egy peremhálózati csomóponthoz?
 
-Az Edge-csomópont létrehozása után az SSH-val a 22-es porton keresztül kapcsolódhat a peremhálózati csomóponthoz. A peremhálózati csomópont nevét a fürt portálon találja (a nevek általában "-ED" végződéssel vannak kiválasztva).
+Az Edge-csomópont létrehozása után az SSH használatával csatlakozhat a 22-es porthoz. A peremhálózati csomópont nevét a fürt portálján találja. A nevek általában *-ED*végződéssel rendelkeznek.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Miért nem futnak automatikusan az újonnan létrehozott Edge-csomópontokon a megőrzött parancsfájlok?
 
-A megőrzött parancsfájlok segítségével testre szabhatók a fürthöz hozzáadott új munkavégző csomópontok a skálázási műveletek révén, és nem alkalmazhatók az Edge-csomópontokra.
+A megőrzött parancsfájlok segítségével testre szabhatja a fürthöz a skálázási műveletek révén hozzáadott új munkavégző csomópontokat. A megőrzött parancsfájlok nem vonatkoznak az Edge-csomópontokra.
 
 ## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Mik a REST API hívások a TEZ lekérdezési nézetének lekéréséhez a fürtből?
 
-A következő REST-végpontok segítségével lekérheti a szükséges információkat, ahol a válasz JSON formátumú lesz. Ezeket a kérelmeket az alapszintű hitelesítési fejlécek segítségével teheti meg.
+A szükséges információk JSON formátumban való lekéréséhez a következő REST-végpontok használhatók. A kérések létrehozásához használja az alapszintű hitelesítési fejléceket.
 
-* "TEZ lekérdezés" nézet – https://`<cluster name>`. azurehdinsight.net/ws/v1/Timeline/HIVE_QUERY_ID/
-
-* "TEZ Dag" nézet – https://`<cluster name>`. azurehdinsight.net/ws/v1/Timeline/TEZ_DAG_ID/
+- Tez lekérdezés nézete: *https\/:/\<fürt neve >. azurehdinsight. net/ws/v1/Timeline/HIVE_QUERY_ID/*
+- Tez Dag nézet: *https:\//\<fürt neve >. azurehdinsight. net/ws/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hogyan lekérni a konfigurációs adatokat a HDI-fürtből egy Azure Active Directory felhasználó használatával?
 
@@ -315,15 +321,28 @@ Ha a HRE-felhasználóval egyeztetni szeretné a megfelelő hitelesítési jogki
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hogyan a Ambari REST-API-t használja a fonal teljesítményének figyeléséhez?
 
-Ha a curl parancs ugyanabban a VNet vagy egyenrangú VNet van meghívva, használja a következő parancsot:
+Ha a cURL parancsot ugyanabban a virtuális hálózatban vagy egy társ virtuális hálózaton hívja meg, a parancs a következőket teszi:
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-Ha a parancs hívása a VNet kívülről vagy nem társ VNet történik, a parancs formátuma a következő:
- 
-* Nem ESP-fürt esetén:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* ESP-fürt esetén:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+Ha a parancsot a virtuális hálózaton kívülről vagy egy nem társ virtuális hálózatról hívja meg, a parancs formátuma a következő:
+
+- Nem ESP-fürt esetén:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- ESP-fürt esetén:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > A curl kérni fogja a jelszó megadását. Érvényes jelszót kell megadnia a fürt bejelentkezési felhasználónevéhez.
@@ -340,7 +359,7 @@ További információ az előfizetés lemondásáról: [Az Azure-előfizetés me
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Az utólagos elszámolású előfizetések esetén mi történik az előfizetés megszakítása után?
 
-Az előfizetéssel kapcsolatos további információkért lásd: [Mi történik az előfizetés megszakítása után?](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription)
+Az előfizetéssel kapcsolatos további információkért lásd: [Mi történik az előfizetés megszakítása után?](/azure/billing/billing-how-to-cancel-azure-subscription)
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +371,8 @@ Bár a Ambari felhasználói felületén csak 1,2 jelenik meg, a HDInsight 3,6 a
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>Mit kínál a HDInsight ajánlat a valós idejű stream-feldolgozási képességek tekintetében?
 
-További információ a stream feldolgozásának az Azure HDInsight való kezelésének integrálási lehetőségeiről: [stream Processing Technology kiválasztása az Azure-ban](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing).
+További információ a stream feldolgozásának az Azure HDInsight való kezelésének integrálási lehetőségeiről: [stream Processing Technology kiválasztása az Azure-ban](/azure/architecture/data-guide/technology-choices/stream-processing).
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Van mód a fürt fő csomópontjának dinamikus leállítására, ha a fürt egy adott időszakban tétlen?
 
-Nem, nem lehet dinamikusan megszakítani a fürt fő csomópontját. Ehhez a forgatókönyvhöz Azure Data Factory is használhatja.
+Ez a HDInsight-fürtökkel nem hajtható végre. Ezeket a forgatókönyveket Azure Data Factory is használhatja.

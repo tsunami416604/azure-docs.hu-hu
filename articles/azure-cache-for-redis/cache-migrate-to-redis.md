@@ -1,6 +1,6 @@
 ---
-title: Managed Cache Service-alkalmazások a Redis - Azure-bA |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át a Managed Cache Service és a szerepköralapú gyorsítótár alkalmazások az Azure Cache redis
+title: Managed Cache Service alkalmazások migrálása a Redis-ba – Azure | Microsoft Docs
+description: Megtudhatja, hogyan telepíthet át Managed Cache Service és szerepköralapú gyorsítótár alkalmazásokat az Azure cache Redis
 services: cache
 documentationcenter: na
 author: yegu-ms
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60830271"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315959"
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service szolgáltatásból át az Azure Cache redis
-Az alkalmazások, amelyek használják az Azure Managed Cache Service az Azure Cache redis migrálása az alkalmazását, az gyorsítótárazási alkalmazása által használt Managed Cache Service funkcióktól függően legfeljebb minimális változtatásokra is elvégezhető. Míg a API-k nem pontosan ugyanaz hasonló, és legfeljebb minimális változtatásokra nagy része a meglévő kódot, amely a gyorsítótár elérésére használja a Managed Cache Service szolgáltatáshoz felhasználhatók. Ez a cikk bemutatja, hogyan javíthatja a szükséges konfigurációs és alkalmazások áttelepítése a Managed Cache Service-alkalmazások Azure Cache a Redis használata módosítja, és bemutatja, hogyan Azure Cache redis funkcióit használható működésének megvalósítása a Managed Cache Service gyorsítótár.
+# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Áttelepítés Managed Cache Serviceról az Azure cache-be a Redis-hez
+Az Azure Managed Cache Servicet az Azure cache-t használó alkalmazások áttelepítése a Redis az alkalmazás minimális változásaival, a gyorsítótárazási alkalmazás által használt Managed Cache Service-funkcióktól függően valósítható meg. Habár az API-k nem pontosan ugyanazok, mint a hasonlók, és a meglévő kódok nagy része, amely a Managed Cache Servicet használja a gyorsítótár eléréséhez, a minimális módosításokkal újra felhasználhatók. Ez a cikk bemutatja, hogyan módosíthatja a szükséges konfigurációs és alkalmazás-módosításokat a Managed Cache Service-alkalmazások áttelepítéséhez az Azure cache Redis való használatához, és bemutatja, hogyan használhatók az Azure cache egyes funkciói a Redis funkcióinak megvalósításához egy Managed Cache Service gyorsítótár.
 
 >[!NOTE]
->Managed Cache Service és a szerepköralapú gyorsítótár is [elavult](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) 2016. November 30. Ha a szerepköralapú gyorsítótár telepítések Azure Cache redis áttelepíteni kívánt, követheti a jelen cikkben ismertetett lépések.
+>Managed Cache Service és szerepköralapú gyorsítótár 2016 [. november 30](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) -án megszűnt. Ha olyan szerepköralapú gyorsítótár üzemelő példányokkal rendelkezik, amelyeket át szeretne telepíteni az Azure cache-be a Redis-hez, kövesse a cikkben ismertetett lépéseket.
 
-## <a name="migration-steps"></a>Áttelepítés lépései
-Azure Cache a Redis használata Managed Cache Service-alkalmazások áttelepítése a következő lépések szükségesek.
+## <a name="migration-steps"></a>Áttelepítési lépések
+A következő lépések szükségesek ahhoz, hogy áttelepítsen egy Managed Cache Service alkalmazást az Azure cache Redis való használatához.
 
-* Azure Cache redis Managed Cache Service szolgáltatások leképezése
-* Válasszon egy Cache-ajánlatot
+* Az Azure cache Managed Cache Service funkcióinak leképezése a Redis
+* Gyorsítótár-ajánlat kiválasztása
 * Gyorsítótár létrehozása
-* A Gyorsítótárügyfelek konfigurálása
-  * A Managed Cache szolgáltatás konfigurációjának eltávolítása
-  * A StackExchange.Redis NuGet-csomag használatával egy gyorsítótár-ügyfél konfigurálása
-* Managed Cache Service kód áttelepítése
-  * Csatlakozás a gyorsítótárhoz, a ConnectionMultiplexer osztály használatával
-  * Hozzáférés primitív adattípusokat a gyorsítótárban
+* A gyorsítótár-ügyfelek konfigurálása
+  * A Managed Cache Service konfigurációjának eltávolítása
+  * Gyorsítótár-ügyfél konfigurálása a StackExchange. Redis NuGet-csomag használatával
+* Managed Cache Service-kód migrálása
+  * Kapcsolódás a gyorsítótárhoz a ConnectionMultiplexer osztály használatával
+  * A primitív adattípusok elérése a gyorsítótárban
   * .NET-objektumok használata a gyorsítótárban
-* Telepítse át az ASP.NET munkamenet-állapot, és a kimeneti gyorsítótárazása az Azure Cache redis 
+* A ASP.NET munkamenet-állapotának áttelepítése és a kimeneti gyorsítótárazás az Azure cache-be a Redis-ben 
 
-## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Azure Cache redis Managed Cache Service szolgáltatások leképezése
-Az Azure Managed Cache Service és a Redis gyorsítótár hasonlóak, de egyes hozzájuk tartozó funkciók többféle végrehajtása. Ez a szakasz néhány különbségeket mutatja be, és útmutatást nyújt az a funkciók a Managed Cache Service megvalósítása az Azure Cache redis.
+## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Az Azure cache Managed Cache Service funkcióinak leképezése a Redis
+Az Azure Managed Cache Service és az Azure cache for Redis hasonlóak, de különböző módokon implementálják a szolgáltatásaikat. Ez a szakasz néhány különbséget ismertet, és útmutatást nyújt a Managed Cache Service funkcióinak megvalósításához a Redis készült Azure cache-ben.
 
-| A felügyelt gyorsítótár-szolgáltatás a szolgáltatás | A felügyelt gyorsítótár szolgáltatás támogatása | Az Azure Cache Redis-támogatás |
+| Managed Cache Service funkció | Managed Cache Service támogatás | Azure cache Redis-támogatáshoz |
 | --- | --- | --- |
-| Nevesített gyorsítótárat foglal magában |Alapértelmezett gyorsítótár van konfigurálva, és a Standard és prémium szintű gyorsítótár az ajánlatok, legfeljebb kilenc további gyorsítótárakat nevű konfigurálható legyen szükség. |Az Azure Cache redis számos konfigurálható az adatbázisok (alapértelmezés szerint 16), amelyek segítségével megvalósítani egy hasonló funkciókat nevesített gyorsítótárat foglal magában. További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration). |
-| Magas rendelkezésre állás |Magas rendelkezésre állást biztosít a Standard és prémium szintű gyorsítótár-ajánlatok a gyorsítótár elemeinek. Ha elemeket egy hiba miatt megszakadt, a gyorsítótár elemeinek biztonsági másolatok továbbra is elérhetők. A másodlagos gyorsítótárba ír a szinkron módon történik. |A Standard és prémium szintű gyorsítótár ajánlatokat, amely egy két csomópontos elsődleges/replika configuration (a prémium szintű gyorsítótár minden egyes szegmens rendelkezik elsődleges/replika párban) rendelkeznie magas rendelkezésre állás érhető el. A replika írási műveletek aszinkron módon történik. További információkért lásd: [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/). |
-| Értesítések |Lehetővé teszi az ügyfelek gyorsítótárfürt gyorsítótár-műveleteiről egy nevesített gyorsítótárat a tájékoztató aszinkron üzenetek fogadását. |Ügyfélalkalmazások használhatja a Redis közzétevői/előfizetői vagy [kulcstérértesítések](cache-configure.md#keyspace-notifications-advanced-settings) elérése érdekében a hasonló funkciókat az értesítésekre. |
-| Helyi gyorsítótár |Tárolja a gyorsítótárazott objektumok helyileg extra gyors hozzáférés az ügyfélen. |Ügyfélalkalmazások megvalósítása a funkció használatával egy szótárt és hasonló adatszerkezetből kellene. |
-| Kiürítési szabályzat |Nincs vagy LRU. Az alapértelmezett szabályzat az LRU. |Az Azure Cache a redis támogatja a következő kiürítési szabályzat: ideiglenes-lru, allkeys-lru, ideiglenes véletlenszerű, allkeys-véletlen ideiglenes ttl, noeviction. Az alapértelmezett házirend ideiglenes-lru. További információkért lásd: [kiszolgálókonfiguráció Redis alapértelmezett](cache-configure.md#default-redis-server-configuration). |
-| Elévülési szabályzatot |Az alapértelmezett elévülési szabályzatot abszolút pedig az alapértelmezett lejárati időközét 10 perc. Késleltetett, és soha házirendek is elérhetők. |Alapértelmezés szerint a gyorsítótárban lévő elemek nem járnak le, de egy lejárati konfigurálható a gyorsítótár beállított túlterheléssel használatával / írási történik. |
-| Régiók és címkézése |Régiók csak az alcsoportok gyorsítótárazott elemek. Régió is támogatja a gyorsítótárazott elemek jegyzet címkéket további leíró karakterláncot tartalmazó. Régió támogatja a keresési műveletek végrehajtása a bármilyen címkével ellátott elemek az adott régióban. Egy adott régión belül minden elem a gyorsítótár-fürt egyetlen csomóponton belül találhatók. |az Azure Cache redis áll egyetlen csomópont (kivéve, ha engedélyezve van a Redis-fürttel), a Managed Cache Service régiók fogalma nem vonatkozik. Kulcsok beolvasása közben, így leíró címkéket a kulcsnevek beágyazva, és később lekérheti az elemeket a redis támogatja a keresést és helyettesítő karakterekre vonatkozó műveletek. Egy példa egy címkézési megoldást a Redis használatával végrehajtási: [címkézés a Redis gyorsítótár megvalósítása](https://stackify.com/implementing-cache-tagging-redis/). |
-| Szerializálási |Managed Cache NetDataContractSerializer BinaryFormatter és egyéni objektumszerializáló használatát támogatja. Az alapértelmezett érték NetDataContractSerializer. |A feladata az ügyfélalkalmazás, mielőtt azokat a gyorsítótárba, akár az ügyféloldali alkalmazás fejlesztője a szerializáló kiválasztása a .NET-objektumokká szerializálásához. További információk és mintakód: [.NET-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
-| Gyorsítótár-emulátor |Managed Cache biztosít a helyi gyorsítótár-emulátoron. |Az Azure Redis gyorsítótár nem rendelkezik az emulátor, de Ön is [helyileg történő futtatása a redis-server.exe MSOpenTech build](cache-faq.md#cache-emulator) emulátor biztosít. |
+| Nevesített gyorsítótárak |Az alapértelmezett gyorsítótár konfigurálva van, a standard és a prémium szintű gyorsítótár-ajánlatokban pedig akár kilenc további megnevezett gyorsítótár is konfigurálható, ha szükséges. |A Redis-hez készült Azure cache egy konfigurálható (alapértelmezett 16) adatbázist tartalmaz, amelyek segítségével hasonló funkciók hozhatók létre a nevesített gyorsítótárak számára. További információ: [Mik azok a Redis-adatbázisok?](cache-faq.md#what-are-redis-databases) és [A Redis-kiszolgáló alapértelmezett konfigurációja](cache-configure.md#default-redis-server-configuration). |
+| Magas rendelkezésre állás |Magas rendelkezésre állást biztosít a gyorsítótárban lévő elemek számára a standard és a prémium szintű gyorsítótár-ajánlatokban. Ha egy hiba miatt elvesznek az elemek, a gyorsítótárban lévő elemek biztonsági másolatai továbbra is elérhetők. A másodlagos gyorsítótárba való írás szinkron módon történik. |A magas rendelkezésre állás a standard és a prémium szintű gyorsítótár-ajánlatokban érhető el, amelyek két csomópontos elsődleges/replika konfigurációval rendelkeznek (a prémium szintű gyorsítótárban található minden szegmens elsődleges/replika párral rendelkezik). A replikába való írás aszinkron módon történik. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál. |
+| Értesítések |Lehetővé teszi, hogy az ügyfelek aszinkron értesítéseket kapjanak, amikor elnevezett gyorsítótárban végeznek különféle gyorsítótárazási műveleteket. |Az ügyfélalkalmazások a Redis pub/sub vagy a [Space értesítéseket](cache-configure.md#keyspace-notifications-advanced-settings) is használhatják az értesítések hasonló funkcióinak eléréséhez. |
+| Helyi gyorsítótár |A gyorsítótárazott objektumok egy példányát helyileg tárolja az ügyfélen a extra gyors hozzáféréshez. |Az ügyfélalkalmazások egy szótárral vagy hasonló adatstruktúrával kell implementálni ezt a funkciót. |
+| Kiürítési szabályzat |Nincs vagy LRU. Az alapértelmezett szabályzat a LRU. |A Redis készült Azure cache a következő kizárási házirendeket támogatja: felejtő-LRU, allkeys-LRU, illékony-random, allkeys-random, illékony-TTL, kizárás. Az alapértelmezett házirend a felejtő-LRU. További információ: az [alapértelmezett Redis-kiszolgáló konfigurációja](cache-configure.md#default-redis-server-configuration). |
+| Elévülési szabályzat |Az alapértelmezett elévülési szabályzat abszolút, és az alapértelmezett lejárati idő 10 perc. A csúszó és soha nem házirendek is elérhetők. |A gyorsítótárban lévő alapértelmezett elemek nem járnak le, de a lejáratot írási alapon is konfigurálhatja a gyorsítótár-készlet túlterhelések használatával. |
+| Régiók és címkézés |A régiók a gyorsítótárazott elemek alcsoportja. A régiók a gyorsítótárazott elemek megjegyzéseit is támogatják, a címkék nevű további leíró sztringekkel együtt. A régiók támogatják a keresési műveletek végrehajtását a régió bármely címkézett elemén. Egy adott régióban lévő összes elem a gyorsítótár-fürt egyetlen csomópontján belül található. |a Redis-hez készült Azure cache egyetlen csomópontból áll (kivéve, ha a Redis-fürt engedélyezve van), így a Managed Cache Service régiók fogalma nem érvényes. A Redis támogatja a kereséseket és a helyettesítő karaktereket a kulcsok beolvasása során, így a leíró címkék beágyazása a kulcsok neveibe, és a későbbiekben az elemek lekéréséhez használható. A címkézési megoldás Redis használatával történő megvalósítására példát a [gyorsítótár címkézésének implementálása a Redis](https://stackify.com/implementing-cache-tagging-redis/)segítségével című témakörben talál. |
+| Szerializálási |A Managed cache támogatja a NetDataContractSerializer, a BinaryFormatter és az egyéni szerializálók használatát. Az alapértelmezett érték a NetDataContractSerializer. |Az ügyfélalkalmazás feladata, hogy szerializálja a .NET-objektumokat, mielőtt azokat a gyorsítótárba helyezi, és a szerializáló az ügyfélalkalmazás fejlesztői számára is választható. További információ és mintakód: [.net-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
+| Gyorsítótár-emulátor |A Managed cache egy helyi gyorsítótár-emulátort biztosít. |Az Azure cache for Redis nem rendelkezik emulátorral, de [a Redis-Server. exe MSOpenTech-buildjét helyileg is futtathatja](cache-faq.md#cache-emulator) , hogy az emulátort biztosítson. |
 
-## <a name="choose-a-cache-offering"></a>Válasszon egy Cache-ajánlatot
-A Microsoft Azure redis Cache az alábbi szinteken érhető el:
+## <a name="choose-a-cache-offering"></a>Gyorsítótár-ajánlat kiválasztása
+A Redis Microsoft Azure gyorsítótára a következő szinteknél érhető el:
 
 * **Alapszintű** – Egyetlen csomópont. Többféle méret legfeljebb 53 GB-ig.
 * **Standard** – Két csomópontból álló elsődleges/replika. Többféle méret legfeljebb 53 GB-ig. 99,9%-os SLA.
-* **Prémium** – Két csomópontból álló elsődleges/replika, legfeljebb 10 szegmenssel. Többféle méret 6 GB és 530 GB között. Tartalmazza a Standard szint összes szolgáltatását és továbbiakat, beleértve a [Redis-fürtök](cache-how-to-premium-clustering.md), a [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) és az [Azure Virtual Network](cache-how-to-premium-vnet.md) támogatását. 99,9%-os SLA.
+* **Prémium** – Két csomópontból álló elsődleges/replika, legfeljebb 10 szegmenssel. Több méret 6 GB-ról 1,2 TB-ra. Tartalmazza a Standard szint összes szolgáltatását és továbbiakat, beleértve a [Redis-fürtök](cache-how-to-premium-clustering.md), a [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) és az [Azure Virtual Network](cache-how-to-premium-vnet.md) támogatását. 99,9%-os SLA.
 
-Az egyes szintek szolgáltatási feltételei és díjszabása eltérő. A funkciókra terjed ki, és a díjszabásról további információt az útmutató későbbi részében, lásd: [díjszabás – redis Cache](https://azure.microsoft.com/pricing/details/cache/).
+Az egyes szintek szolgáltatási feltételei és díjszabása eltérő. A funkciók az útmutató későbbi részében jelennek meg, és a díjszabással kapcsolatos további információkért lásd a [gyorsítótár-díjszabás részleteit](https://azure.microsoft.com/pricing/details/cache/).
 
-Áttelepítés a kiindulási pont, hogy válassza ki a méretet, amely megegyezik az előző Managed Cache Service gyorsítótár méretét, és majd méretezzen az alkalmazás követelményeitől függően. A Redis-ajánlatra a megfelelő Azure Cache kiválasztásáról további információkért lásd: [milyen az Azure Cache a Redis-ajánlatot és -méretet használjam](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Az áttelepítés kiindulási pontja a korábbi Managed Cache Service gyorsítótár méretének megfelelő méret kiválasztása, majd az alkalmazás követelményeitől függően vertikális fel-vagy leskálázás. A Redis-ajánlathoz megfelelő Azure cache kiválasztásával kapcsolatos további információkért tekintse meg az [Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)ismertető témakört.
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="configure-the-cache-clients"></a>A Gyorsítótárügyfelek konfigurálása
-A gyorsítótár létrehozása és konfigurálása után a következő lépés, hogy távolítsa el a Managed Cache Service-konfigurációt, és adja hozzá az Azure Cache Redis-konfiguráció, és úgy, hogy a gyorsítótár-ügyfelek hozzáférhetnek a gyorsítótárban hivatkozik.
+## <a name="configure-the-cache-clients"></a>A gyorsítótár-ügyfelek konfigurálása
+A gyorsítótár létrehozása és konfigurálása után a következő lépés az Managed Cache Service konfigurációjának eltávolítása, és az Azure cache hozzáadása a Redis-konfigurációhoz és-hivatkozásokhoz, hogy a gyorsítótár-ügyfelek hozzáférhessenek a gyorsítótárhoz.
 
-* A Managed Cache szolgáltatás konfigurációjának eltávolítása
-* A StackExchange.Redis NuGet-csomag használatával egy gyorsítótár-ügyfél konfigurálása
+* A Managed Cache Service konfigurációjának eltávolítása
+* Gyorsítótár-ügyfél konfigurálása a StackExchange. Redis NuGet-csomag használatával
 
-### <a name="remove-the-managed-cache-service-configuration"></a>A Managed Cache szolgáltatás konfigurációjának eltávolítása
-Mielőtt Azure Cache for az ügyfélalkalmazások konfigurálhatók a Redis-, a meglévő Managed Cache Service konfigurációs és szerelvényre hivatkozik el kell távolítani a Managed Cache Service NuGet-csomag eltávolításával.
+### <a name="remove-the-managed-cache-service-configuration"></a>A Managed Cache Service konfigurációjának eltávolítása
+Mielőtt az ügyfélalkalmazások konfigurálhatók az Azure cache-hez a Redis-hez, el kell távolítani a meglévő Managed Cache Service konfigurációt és szerelvény-hivatkozásokat a Managed Cache Service NuGet csomag eltávolításával.
 
-A Managed Cache Service NuGet-csomag eltávolításához kattintson a jobb gombbal a projektre a **Megoldáskezelőben** válassza **NuGet-csomagok kezelése**. Válassza ki a **telepített csomagokat** csomópontot, és írja be a W**indowsAzure.Caching** szöveget a keresőmezőbe telepített csomagokat. Válassza ki **Windows** **Azure Cache** (vagy **Windows** **Azure gyorsítótárazás** a NuGet-csomag verziójától függően), kattintson **Eltávolítás**, és kattintson a **Bezárás**.
+A Managed Cache Service NuGet-csomag eltávolításához kattintson a jobb gombbal a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. Válassza ki a **telepített csomagok** csomópontot, és írja be a W**IndowsAzure. caching** kifejezést a keresés telepített csomagokba mezőbe. Válassza a **Windows** **Azure cache** (vagy a **Windows** **Azure gyorsítótárazása** a NuGet-csomag verziójától függően) lehetőséget, és kattintson az **Eltávolítás**gombra, majd a **Bezárás**gombra.
 
-![Távolítsa el az Azure Managed Cache Service NuGet-csomag](./media/cache-migrate-to-redis/IC757666.jpg)
+![Az Azure Managed Cache Service NuGet csomag eltávolítása](./media/cache-migrate-to-redis/IC757666.jpg)
 
-A Managed Cache Service NuGet-csomag eltávolítása a Managed Cache Service szerelvényeket és a Managed Cache Service bejegyzéseket az app.config vagy az ügyfélalkalmazás web.config. Egyes testre szabott beállítások nem távolítható el, ha a NuGet-csomag eltávolítása, mert nyissa meg a web.config vagy az App.config fájlt, és győződjön meg arról, hogy a következő elemek törlődnek.
+A Managed Cache Service NuGet-csomag eltávolítása eltávolítja a Managed Cache Service szerelvényeket és a Managed Cache Service bejegyzéseket az ügyfélalkalmazás app. config vagy web. config fájljában. Mivel előfordulhat, hogy egyes testreszabott beállítások nem távolíthatók el a NuGet-csomag eltávolításakor, nyissa meg a web. config vagy az app. config fájlt, és győződjön meg arról, hogy a következő elemek el lesznek távolítva.
 
-Ügyeljen arra, hogy a `dataCacheClients` bejegyzés törlődik a `configSections` elemet. Ne távolítsa el a teljes `configSections` elem; csak távolítsa el a `dataCacheClients` bejegyzést, ha létezik.
+Győződjön meg arról `dataCacheClients` , hogy a bejegyzés el `configSections` lett távolítva a elemből. Ne távolítsa el a `configSections` teljes elemet; csak akkor `dataCacheClients` távolítsa el a bejegyzést, ha az megtalálható.
 
 ```xml
 <configSections>
@@ -95,7 +95,7 @@ A Managed Cache Service NuGet-csomag eltávolítása a Managed Cache Service sze
 </configSections>
 ```
 
-Ügyeljen arra, hogy a `dataCacheClients` szakaszban a rendszer eltávolítja. A `dataCacheClients` szakasz az alábbi példához hasonló lesz.
+Győződjön meg arról `dataCacheClients` , hogy a szakasz el van távolítva. A `dataCacheClients` szakasz az alábbi példához hasonló lesz.
 
 ```xml
 <dataCacheClients>
@@ -113,31 +113,31 @@ A Managed Cache Service NuGet-csomag eltávolítása a Managed Cache Service sze
 </dataCacheClients>
 ```
 
-A Managed Cache Service konfigurációs van az Eltávolítás beállíthatja a gyorsítótár-ügyfél, a következő szakaszban leírtak szerint.
+A Managed Cache Service konfigurációjának eltávolítása után a gyorsítótár-ügyfelet a következő szakaszban leírtak szerint állíthatja be.
 
-### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>A StackExchange.Redis NuGet-csomag használatával egy gyorsítótár-ügyfél konfigurálása
+### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>Gyorsítótár-ügyfél konfigurálása a StackExchange. Redis NuGet-csomag használatával
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
-## <a name="migrate-managed-cache-service-code"></a>Managed Cache Service kód áttelepítése
-Az API a Redis-kliensével StackExchange.Azure Cache-hez hasonlít a Managed Cache Service szolgáltatáshoz. Ez a szakasz áttekintést a különbségeket.
+## <a name="migrate-managed-cache-service-code"></a>Managed Cache Service-kód migrálása
+A StackExchange. Azure cache for Redis-ügyfél API-je hasonló a Managed Cache Servicehoz. Ez a szakasz áttekintést nyújt a különbségekről.
 
-### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Csatlakozás a gyorsítótárhoz, a ConnectionMultiplexer osztály használatával
-A Managed Cache Service által kezelt kapcsolatok a gyorsítótárhoz az `DataCacheFactory` és `DataCache` osztályokat. Az Azure redis Cache által kezelt kapcsolatok az `ConnectionMultiplexer` osztály.
+### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Kapcsolódás a gyorsítótárhoz a ConnectionMultiplexer osztály használatával
+Managed cache Service a gyorsítótárral létesített kapcsolatokat a `DataCacheFactory` és `DataCache` osztályok kezelik. A Redis készült Azure cache-ben ezeket a kapcsolatokat a `ConnectionMultiplexer` osztály kezeli.
 
-Adja hozzá a következő using utasítást a lista tetejére minden fájlhoz, amelyből el szeretne érni a gyorsítótárban.
+Adja hozzá a következő using utasítást bármely olyan fájl elejéhez, amelyről el szeretné érni a gyorsítótárat.
 
 ```csharp
 using StackExchange.Redis
 ```
 
-Ha ez a névtér nem oldja meg, győződjön meg, hogy a StackExchange.Redis NuGet-csomagot hozzáadta, leírtak szerint [a rövid útmutató: Azure Cache a Redis használata .NET-alkalmazás](cache-dotnet-how-to-use-azure-redis-cache.md).
+Ha ez a névtér nem oldható fel, győződjön meg róla, hogy hozzáadta a StackExchange. Redis NuGet- [csomagot a gyors útmutató: Az Azure cache használata Redis .NET-alkalmazással](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
-> Vegye figyelembe, hogy a StackExchange.Redis ügyfél igényel-e a .NET-keretrendszer 4 vagy újabb verzió.
+> Vegye figyelembe, hogy a StackExchange. Redis ügyfélhez a .NET-keretrendszer 4-es vagy újabb verziójára van szükség.
 > 
 > 
 
-Szeretne csatlakozni egy Azure Cache a Redis-példányt, hívja meg a statikus `ConnectionMultiplexer.Connect` metódust, és adja meg a végpont és a kulcsot. Az alkalmazásban egy `ConnectionMultiplexer` példány megosztására egy lehetséges módszer, ha létrehoz egy statikus tulajdonságot, amely egy csatlakoztatott példányt ad vissza, a következő példához hasonlóan. Ez a megközelítés egy szálbiztos módszert egyetlen csatlakoztatott inicializálása biztosít `ConnectionMultiplexer` példány. Ebben a példában `abortConnect` értéke false, ami azt jelenti, hogy a hívás sikeres lesz, még akkor is, ha a gyorsítótár kapcsolat nem jön létre. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
+Ha csatlakozni szeretne egy Azure cache-hez a Redis-példányhoz `ConnectionMultiplexer.Connect` , hívja meg a statikus metódust, és adja meg a végpontot és a kulcsot. Az alkalmazásban egy `ConnectionMultiplexer` példány megosztására egy lehetséges módszer, ha létrehoz egy statikus tulajdonságot, amely egy csatlakoztatott példányt ad vissza, a következő példához hasonlóan. Ez a módszer egy adott csatlakoztatott `ConnectionMultiplexer` példány inicializálását teszi lehetővé. Ebben a példában `abortConnect` a hamis értékre van állítva, ami azt jelenti, hogy a hívás akkor is sikeres lesz, ha nem jön létre a gyorsítótárhoz való kapcsolódás. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -154,9 +154,9 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-A gyorsítótár végpontját, a kulcsok és a portok szerezhető be a **Azure Cache redis** a gyorsítótárpéldány panelen. További információkért lásd: [Azure Cache Redis tulajdonságok](cache-configure.md#properties).
+A gyorsítótár-végpont, a kulcsok és a portok a gyorsítótár-példány Redis paneljének **Azure cache** -ről szerezhetők be. További információkért lásd: [Az Azure cache a Redis tulajdonságaihoz](cache-configure.md#properties).
 
-Ha a kapcsolat létrejött, küldhet vissza egy hivatkozást a Redis-adatbázishoz az Azure Cache meghívásával a `ConnectionMultiplexer.GetDatabase` metódust. A `GetDatabase` metódussal visszaadott objektum egy egyszerűsített továbbított objektum, amelyet nem kell tárolni.
+A kapcsolódás után a `ConnectionMultiplexer.GetDatabase` metódus meghívásával visszaállíthatja az Azure cache Redis-adatbázisra mutató hivatkozást. A `GetDatabase` metódussal visszaadott objektum egy egyszerűsített továbbított objektum, amelyet nem kell tárolni.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -171,11 +171,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-A StackExchange.Redis ügyfél használja a `RedisKey` és `RedisValue` típusok elérésére és elemek tárolása a gyorsítótárban. Ezek a típusok gyakran nem használja közvetlenül, és a legtöbb nyelvi típusokban, beleértve a karakterlánc, az alakzatot térkép. Redis Cache karakterláncok a legalapvetőbb típusú Redis értéket, és az adatok, például szerializált bináris adatfolyamok, több adattípust is tartalmazhatnak, és a típus közvetlenül nem használhatók, amíg használandó tartalmazó metódusokat `String` a nevében. A legtöbb primitív adattípusokat, tárolja és a gyorsítótár az elemek lekéréséhez a `StringSet` és `StringGet` módszer, kivéve, ha a gyűjtemények vagy más Redis-adattípusok vannak tárolása a gyorsítótárban. 
+A StackExchange. Redis ügyfél a és `RedisKey` `RedisValue` a típust használja a gyorsítótárban lévő elemek eléréséhez és tárolásához. Ezek a típusok a legkezdetlegesebb nyelvi típusokra mutatnak, beleértve a sztringet, és gyakran nem közvetlenül használják. A Redis karakterláncok a legalapvetőbb Redis-értékek, és számos adattípust tartalmazhatnak, beleértve a szerializált bináris adatfolyamokat, és nem közvetlenül a típust használja, hanem a nevet tartalmazó `String` metódusokat is használni fogjuk. A legkezdetlegesebb adattípusok esetében a `StringSet` és `StringGet` metódusok használatával tárolhatja és lekérheti az elemeket a gyorsítótárból, kivéve, ha gyűjtemények vagy más Redis-adattípusok tárolását tárolja a gyorsítótárban. 
 
-`StringSet` és `StringGet` hasonlóak a Managed Cache Service `Put` és `Get` módszerekkel egyik fő különbség az, hogy beállítása és lekérése a .NET-objektumokat a gyorsítótárba előtt meg kell szerializálni, először. 
+`StringSet`és `StringGet` hasonlóak a Managed cache Servicehoz `Put` és `Get` a metódusokhoz, és az egyik legnagyobb különbség az, hogy mielőtt beállította a .net-objektumokat a gyorsítótárba, először szerializálnia kell. 
 
-Hívásakor `StringGet`, ha az objektum létezik, akkor ad vissza, és nem jelenik meg, ha null adja vissza. Ebben az esetben az értéket lekérheti a kívánt adatforrásból, és a későbbi használatra a gyorsítótárban tárolhatja. Ez a minta az úgynevezett gyorsítótár-feltöltő.
+Ha a `StringGet`híváskor az objektum létezik, a rendszer visszaadja, és ha nem, akkor null értéket ad vissza. Ebben az esetben az értéket lekérheti a kívánt adatforrásból, és a gyorsítótárban tárolhatja későbbi használatra. Ezt a mintát a gyorsítótár-feltöltési mintának nevezzük.
 
 Egy elem lejáratának megadásához a gyorsítótárban használja a `TimeSpan` `StringSet` paraméterét.
 
@@ -183,11 +183,11 @@ Egy elem lejáratának megadásához a gyorsítótárban használja a `TimeSpan`
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Az Azure Redis gyorsítótár .NET-objektumokat, valamint a primitív adattípusokat is együttműködik, de a .NET-objektumokat a gyorsítótárazásuk előtt kell szerializálni. A szerializálás feladata, az alkalmazás fejlesztője, és a fejlesztői rugalmasságot biztosít, hogy a szerializáló. További információk és mintakód: [.NET-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+A Redis készült Azure cache .NET-objektumokat és primitív adattípusokat is képes működni, de a .NET-objektumok gyorsítótárazása előtt szerializálni kell. Ez a szerializálás az alkalmazás-fejlesztő feladata, és a fejlesztői rugalmasságot biztosít a szerializáló választásában. További információ és mintakód: [.net-objektumok használata a gyorsítótárban](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>Telepítse át az ASP.NET munkamenet-állapot, és a kimeneti gyorsítótárazása az Azure Cache redis
-Az Azure Cache redis tartozik az ASP.NET munkamenet-állapot és a lap kimeneti gyorsítótár-szolgáltatók. Ezek a szolgáltatók a Managed Cache Service verziókat használó alkalmazását át, először távolítsa el a meglévő szakaszokat a web.config, és konfigurálja az Azure Cache Redis verziója, a szolgáltatók. A redis Cache ASP.NET-szolgáltatók az Azure Cache használatával kapcsolatos utasításokért lásd: [ASP.NET munkamenetállapot-szolgáltatóját Azure Cache redis](cache-aspnet-session-state-provider.md) és [ASP.NET kimenetigyorsítótár-szolgáltatója az Azure Cache redis](cache-aspnet-output-cache-provider.md).
+## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>A ASP.NET munkamenet-állapotának áttelepítése és a kimeneti gyorsítótárazás az Azure cache-be a Redis-ben
+A Redis-hez készült Azure cache a ASP.NET munkamenet-állapotához és az oldal kimeneti gyorsítótárazásához is rendelkezik szolgáltatókkal. Ha a szolgáltatók Managed Cache Service verzióját használó alkalmazást szeretné áttelepíteni, először távolítsa el a meglévő szakaszt a web. config fájlból, majd konfigurálja az Azure cache-t a szolgáltatók Redis verzióihoz. Az Azure cache Redis ASP.NET-szolgáltatókhoz való használatáról további útmutatásért lásd: [ASP.NET munkamenet-szolgáltató az Azure cache-hez a Redis](cache-aspnet-session-state-provider.md) és a [ASP.NET kimeneti gyorsítótár-szolgáltatója az Azure cache for Redis](cache-aspnet-output-cache-provider.md).
 
 ## <a name="next-steps"></a>További lépések
-Fedezze fel a [Azure Cache Redis dokumentációt](https://azure.microsoft.com/documentation/services/cache/) oktatóanyagok, minták, videók és más rendszerekhez.
+Ismerje meg az Azure cache-t az oktatóanyagok, minták, videók és egyéb [Redis dokumentációjában](https://azure.microsoft.com/documentation/services/cache/) .
 

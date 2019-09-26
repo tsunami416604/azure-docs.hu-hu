@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840106"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299870"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: Egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -27,13 +27,13 @@ IoT Edge hub megkönnyíti a modul kommunikációját. Az IoT Edge hub használa
 Azt szeretnénk, hogy a IoT Edge eszköz négy dolgot hajtson végre nekünk:
 
 * Adatok fogadása a Leaf-eszközökről
-* Az adatküldő eszköz RUL előrejelzése
+* Az adatküldő eszköz hátralévő hasznos élettartamának (RUL) előrejelzése
 * Üzenet küldése csak az eszköz RUL IoT Hub (ez a függvény módosítható úgy, hogy csak akkor küldjön adatküldést, ha a RUL egy bizonyos szint alá csökken)
 * Mentse a levélben tárolt eszközöket a IoT Edge eszköz helyi fájljába. Ezt az adatfájlt a rendszer rendszeresen feltölti IoT Hubre a gépi tanulási modell képzésének pontosításához. A fájlok feltöltése a folyamatos üzenetküldés helyett költséghatékony.
 
 Ezeknek a feladatoknak a végrehajtásához három egyéni modult használunk:
 
-* **RUL osztályozó:** A turboFanRulClassifier modul, amelyet a betanításban hoztunk létre, [és üzembe helyezünk egy Azure Machine learning modellt](tutorial-machine-learning-edge-04-train-model.md) egy standard Machine learning modul, amely egy "amlInput" nevű bemenetet és egy "amlOutput" nevű kimenetet tesz elérhetővé. A "amlInput" azt várja, hogy a bemenet pontosan ugyanúgy nézzen ki, mint az ACI-alapú webszolgáltatásnak továbbított bemenet. Hasonlóképpen, a "amlOutput" ugyanazokat az adatokkal adja vissza, mint a webszolgáltatás.
+* **RUL osztályozó:** A turboFanRulClassifier modul, amelyet a [Betanításban hoztunk létre, és üzembe helyezünk egy Azure Machine learning modellt](tutorial-machine-learning-edge-04-train-model.md) egy standard Machine learning modul, amely egy "amlInput" nevű bemenetet és egy "amlOutput" nevű kimenetet tesz elérhetővé. A "amlInput" azt várja, hogy a bemenet pontosan ugyanúgy nézzen ki, mint az ACI-alapú webszolgáltatásnak továbbított bemenet. Hasonlóképpen, a "amlOutput" ugyanazokat az adatokkal adja vissza, mint a webszolgáltatás.
 
 * **Avro-író:** Ez a modul fogadja az üzeneteket a "avroModuleInput" bemeneten, és Avro formátumban megőrzi az üzenetet a lemezre a későbbi feltöltéshez IoT Hub.
 
@@ -56,7 +56,7 @@ A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja
 
 ## <a name="create-a-new-iot-edge-solution"></a>Új IoT Edge-megoldás létrehozása
 
-Két Azure Notebooks második végrehajtása során létrehoztunk és közzétettünk egy RUL modellt tartalmazó tároló-rendszerképet. Azure Machine Learning a lemezkép létrehozási folyamatának részeként, amely úgy van felépítve, hogy a lemezkép Azure IoT Edge modulként legyen üzembe helyezhető. Ebben a lépésben létrehozunk egy Azure IoT Edge megoldást az "Azure Machine Learning" modul használatával, és a modult a Azure Notebooks használatával közzétett rendszerképre irányítjuk.
+Két Azure Notebooks második végrehajtása során létrehoztunk és közzétettünk egy RUL modellt tartalmazó tároló-rendszerképet. Azure Machine Learning a lemezkép létrehozási folyamatának részeként csomagolta a modellt úgy, hogy a lemezkép Azure IoT Edge modulként legyen telepítve. Ebben a lépésben létrehozunk egy Azure IoT Edge megoldást az "Azure Machine Learning" modul használatával, és a modult a Azure Notebooks használatával közzétett rendszerképre irányítjuk.
 
 1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői számítógépén.
 
@@ -221,7 +221,7 @@ Ezután hozzáadjuk az útválasztó modult a megoldáshoz. Az útválasztó mod
 
 5. Mentse és zárjuk be a Tasks. JSON fájlt.
 
-6. Futtasson Build `Ctrl + Shift + B` -t vagy **terminál** > -futtatási felépítési**feladatot**.
+6. Futtasson Build `Ctrl + Shift + B` -t vagy **terminál** > -**futtatási felépítési feladatot**.
 
 ### <a name="set-up-module-routes"></a>Modulok útvonalának beállítása
 
@@ -322,7 +322,7 @@ A Avro-író modul két feladattal rendelkezik a megoldásban, az üzenetek tár
 
 1. Ha a rendszer kéri, válassza a **parancssor**lehetőséget.
 
-1. Nyisson meg egy új, > terminál**új**terminálját.
+1. Nyisson meg egy **új,**  > terminál**új**terminálját.
 
 1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása**lehetőséget.
 
@@ -716,7 +716,7 @@ Most, hogy elvégezte a konfigurációs módosításokat, készen állunk a rend
 
 * **Központi telepítési késés:** mivel a IoT Edge futtatókörnyezetnek fel kell ismernie a kívánt tulajdonságok módosítását az újrakonfigurálás megkezdése előtt, igénybe vehet némi időt a modulok üzembe helyezése után, amíg a futtatókörnyezet fel nem veszi őket, és nem kezdi frissíteni a IoT Edge eszköz.
 
-* **Modulok verziói:** ha egy modul tárolójának új verzióját közzéteszi a tároló-beállításjegyzékben az előző modullal megegyező verziójú címkék használatával, a futtatókörnyezet nem fogja letölteni a modul új verzióját. Összehasonlítja a helyi rendszerkép verziószámát és a kívánt rendszerképet az üzembe helyezési jegyzékből. Ha ezek a verziók egyeznek, a futtatókörnyezet nem hajt végre műveletet. Ezért fontos, hogy minden alkalommal növelje a modul verzióját, amikor új módosításokat kíván üzembe helyezni. Növelje meg a verziószámot úgy, hogy a Module . JSON fájlban lévő **Version** tulajdonságot a módosítani kívánt modulhoz módosítja. Ezután hozza létre és tegye közzé a modult.
+* **Modulok verziói:** ha egy modul tárolójának új verzióját közzéteszi a tároló-beállításjegyzékben az előző modullal megegyező verziójú címkék használatával, a futtatókörnyezet nem fogja letölteni a modul új verzióját. Összehasonlítja a helyi rendszerkép verziószámát és a kívánt rendszerképet az üzembe helyezési jegyzékből. Ha ezek a verziók egyeznek, a futtatókörnyezet nem hajt végre műveletet. Ezért fontos, hogy minden alkalommal növelje a modul verzióját, amikor új módosításokat kíván üzembe helyezni. Növelje meg a verziószámot úgy, hogy a Module. JSON fájlban lévő **Version** **tulajdonságot** a módosítani kívánt modulhoz módosítja. Ezután hozza létre és tegye közzé a modult.
 
     ```json
     {
@@ -827,7 +827,7 @@ Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban 
 
 További információt a következő lapokon talál:
 
-* [Ismerje meg, hogyan telepíthet modulokat és hogyan hozhat létre útvonalakat IoT Edge](module-composition.md)
+* [Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben](module-composition.md)
 * [IoT Hub üzenet-útválasztási lekérdezés szintaxisa](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub üzenet-útválasztás: most az üzenet törzsének útválasztása](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Fájlok feltöltése az IoT Hubbal](../iot-hub/iot-hub-devguide-file-upload.md)

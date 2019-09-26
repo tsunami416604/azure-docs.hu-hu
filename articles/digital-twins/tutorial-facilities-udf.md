@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alinast
-ms.openlocfilehash: e483ac8e56ce39cbb05c5d00634c6327b497bab5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219910"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300055"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: Az Azure Digital Twins előzetes verziójának kiépítése és a munkafeltételek monitorozása
 
@@ -184,7 +184,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület r
 
 1. A parancs ablakában lévő kimenetből másolja a `ConnectionString`következőt a vágólapra a `Devices` szakasz alatt:. Erre az értékre szüksége lesz az eszköz kapcsolódásának szimulálása érdekében a következő szakaszban.
 
-    ![Minta üzembe helyezése](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![Minta kiépítése](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Ha a kiépítés során egy szál kilépése vagy egy alkalmazásra vonatkozó kérelem miatt megszakadt az I/O-művelethez hasonló hibaüzenet, próbálkozzon újra a parancs futtatásával. Ez akkor fordulhat elő, ha a HTTP-ügyfél hálózati hiba esetén időtúllépést okoz.
@@ -245,7 +245,7 @@ A felhasználó által meghatározott függvény mindig fut, amikor a példány 
 
 A kimenet ablakban látható, hogy a felhasználó által definiált függvény hogyan fut, és az eszköz szimulációjában eseményeket észlel. 
 
-   ![Az UDF kimenete](./media/tutorial-facilities-udf/udf-running.png)
+   [![Az UDF kimenete](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Ha a figyelt feltétel teljesül, a felhasználó által definiált függvény megadja a terület értékét a megfelelő üzenettel, ahogy [korábban](#create-a-user-defined-function)láttuk. A `GetAvailableAndFreshSpaces` függvény kiírja az üzenetet a-konzolon.
 

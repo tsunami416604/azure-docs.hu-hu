@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Tools for Visual Studio használatával U-SQL-adatbázis exportálása
-description: Útmutató U-SQL-adatbázisok exportálását, és automatikusan importálni kell egy helyi fiók az Azure Data Lake Tools for Visual Studio használatával.
+title: U-SQL-adatbázis exportálása – Azure Data Lake eszközök a Visual studióhoz
+description: Ismerje meg, hogyan exportálhat egy U-SQL-adatbázist a Visual studióhoz készült Azure Data Lake Tools használatával, és hogyan importálhatja automatikusan egy helyi fiókba.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -9,82 +9,82 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628540"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315793"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
-Ebből a cikkből megtudhatja, hogyan használható [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) U-SQL-adatbázisok exportálását egy U-SQL parancsfájl és a letöltött erőforrásokhoz. Importálhatja az exportált adatbázis egy helyi fiók ugyanabban a folyamatban.
+Ebből a cikkből megtudhatja, hogyan használhatja a [Visual studióhoz készült Azure Data Lake Tools eszközt](https://aka.ms/adltoolsvs) egy u-SQL-adatbázis egyetlen u-SQL-parancsfájlként való exportálásához és a letöltött erőforrásokhoz. Az exportált adatbázist egy helyi fiókba is importálhatja ugyanabban a folyamatban.
 
-Ügyfelek általában több fejlesztési, tesztelési és éles környezetek karbantartása. Ezekben a környezetekben egyaránt egy helyi fiók, egy fejlesztői helyi számítógépen, és a egy Azure Data Lake Analytics-fiókban, az Azure-ban üzemel. 
+Az ügyfelek általában több környezetet tartanak fenn fejlesztési, tesztelési és éles környezetekben. Ezek a környezetek helyi fiókon, fejlesztői helyi számítógépen, valamint az Azure Azure Data Lake Analytics-fiókjában is futnak. 
 
-Fejlesztésekor és fejlesztési-tesztelési környezetet az U-SQL-lekérdezések hangolása, fejlesztőknek gyakran kell újra létre kell hoznia egy éles adatbázist a munkájukat. Adatbázis exportálása varázsló segítségével felgyorsíthatja az ezt a folyamatot. A varázsló segítségével a fejlesztők számára a meglévő adatbázis-környezet és más Data Lake Analytics-fiókokba mintaadatok klónozhat.
+A fejlesztési és tesztelési környezetekben a U-SQL-lekérdezések fejlesztésekor és finomhangolásakor a fejlesztőknek gyakran újra létre kell hozniuk a munkájukat egy éles adatbázisban. Az adatbázis-Exportálás varázsló segít felgyorsítani ezt a folyamatot. A varázsló segítségével a fejlesztők a meglévő adatbázis-környezetet és más Data Lake Analytics-fiókokat is megadhatják.
 
-## <a name="export-steps"></a>Az exportálási lépéseket
+## <a name="export-steps"></a>Exportálási lépések
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>1\. lépés: A Server Explorerben adatbázis exportálása
+### <a name="step-1-export-the-database-in-server-explorer"></a>1\. lépés: Az adatbázis exportálása a Server Explorerben
 
-Minden Data Lake Analytics-fiók, amely rendelkezik engedélyekkel a Server Explorer szerepelnek. Az adatbázis exportálása:
+Az összes olyan Data Lake Analytics fiók, amelyhez jogosultsága van, megjelenik a Server Explorerben. Az adatbázis exportálása:
 
-1. A Server Explorerben bontsa ki a fiókot, amely tartalmazza az exportálni kívánt adatbázist.
-2. Kattintson a jobb gombbal az adatbázist, és válassza **exportálása**. 
+1. A Server Explorerben bontsa ki az exportálni kívánt adatbázist tartalmazó fiókot.
+2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Exportálás**lehetőséget. 
    
-    ![Server Explorer - adatbázis exportálása](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
+    ![Server Explorer – adatbázis exportálása](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Ha a **exportálása** menüpont nem érhető el, újra kell [frissítse az eszközt a legfrissebb kiadás](https://aka.ms/adltoolsvs).
+     Ha az **exportálási** menü nem érhető el, [frissítenie kell az eszközt az utolsó kiadásra](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2\. lépés: Az exportálandó objektumok konfigurálása
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2\. lépés: Az exportálni kívánt objektumok konfigurálása
 
-Ha nagy méretű adatbázisok csak kis részét kell, konfigurálhatja úgy, hogy az exportálási varázslóban exportálandó objektumok egy részét. 
+Ha csak kis méretű adatbázisra van szüksége, az exportálás varázslóban az exportálni kívánt objektumok egy részhalmazát is konfigurálhatja. 
 
-Az exportálási művelet befejeződött, egy U-SQL-feladat futtatásával. Ezért az Azure-fiók exportálása költségekkel jár.
+Az exportálási művelet a U-SQL-feladatok futtatásával fejeződik be. Ezért az Azure-fiókból való exportálás némi költségekkel jár.
 
-![Adatbázis exportálása varázsló – objektumok exportálása kiválasztása](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
+![Adatbázis-exportálási varázsló – objektumok exportálásának kiválasztása](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>3\. lépés: Ellenőrizze az objektumok és más konfigurációk
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>3\. lépés: Az objektumok listájának és egyéb konfigurációinak megtekintése
 
-Ebben a lépésben ellenőrizheti a kiválasztott objektumok a **exportálási objektumlistához** mezőbe. Ha nincsenek hibák, válassza ki a **előző** visszaléphet, és megfelelően konfigurálja az exportálandó objektumokat.
+Ebben a lépésben ellenőrizheti a kijelölt objektumokat az **objektum exportálása listában** . Ha bármilyen hiba merül fel, az **előző** gombra kattintva visszatérhet, és helyesen állíthatja be az exportálni kívánt objektumokat.
 
-Az Exportálás cél egyéb beállításai is konfigurálhatók. Konfiguráció leírása az alábbi táblázatban láthatók:
+Az exportálási cél egyéb beállításait is megadhatja. A konfigurációs leírások az alábbi táblázatban láthatók:
 
 |Konfiguráció|Leírás|
 |-------------|-----------|
-|Cél neve|Ez a név azt jelzi, ahol az exportált adatbázis-erőforrások menteni szeretné. Példák szerelvények, további fájlok és a mintaadatokat. Egy ilyen nevű mappa a helyi adatok legfelső szintű gyermekmappát hoz létre.|
-|Projektkönyvtár|Ezt az elérési utat határozza meg, ahová az exportált U-SQL parancsfájl menteni szeretné. Az összes adatbázis objektumdefiníciók ezen a helyen lesznek mentve.|
-|Csak a séma|Ha ezt a lehetőséget választja, csak adatbázis-definíciók és erőforrások (például a szerelvények és további fájlokat) exportálja.|
-|Séma és adatok|Ezt a beállítást, ha az adatbázis-definíciók, erőforrások és adatok exportálva. A felső N sorát a táblák exportálja.|
-|A helyi adatbázis automatikus importálása|Ezt a beállítást, ha az exportált adatbázist a rendszer automatikusan importálja a helyi adatbázis exportálásakor befejeződött.|
+|Cél neve|Ez a név jelzi, hogy hová szeretné menteni az exportált adatbázis erőforrásait. Ilyenek például a szerelvények, a további fájlok és a mintaadatok. A rendszer létrehoz egy ilyen nevű mappát a helyi adatgyökér mappában.|
+|Projekt könyvtára|Ez az elérési út határozza meg, hogy hová szeretné menteni az exportált U-SQL-szkriptet. Ezen a helyen minden adatbázis-objektum definíciója mentve lesz.|
+|Csak séma|Ha ezt a beállítást választja, a rendszer csak az adatbázis-definíciókat és erőforrásokat (például szerelvényeket és további fájlokat) exportálja.|
+|Séma és adatértékek|Ha ezt a beállítást választja, a rendszer az adatbázis-definíciókat, erőforrásokat és az adatforrásokat exportálja. A táblázat első N sorát exportálja a rendszer.|
+|Importálás a helyi adatbázisba automatikusan|Ha ezt a beállítást választja, az Exportálás befejezése után a rendszer automatikusan importálja az exportált adatbázist a helyi adatbázisba.|
 
-![Adatbázis exportálása varázsló – objektumok lista exportálása és egyéb konfigurációk](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
+![Adatbázis-exportálás varázsló – objektumok listájának exportálása és egyéb konfigurációk](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>4\. lépés: Az exportálási eredmények ellenőrzése
+### <a name="step-4-check-the-export-results"></a>4\. lépés: Az Exportálás eredményeinek megtekintése
 
-Ha exportálása befejeződött, megtekintheti az exportált eredmények a napló ablak a varázslóban. Az alábbi példa bemutatja, hogyan találhatja meg az exportált U-SQL parancsfájl és adatbázis-erőforrásokat, szerelvényeket, további fájlok és a mintaadatok többek között:
+Ha elkészült az exportálással, az exportált eredményeket a varázsló napló ablakában tekintheti meg. Az alábbi példa bemutatja, hogyan találhatja meg az exportált U-SQL-parancsfájlokat és az adatbázis-erőforrásokat, beleértve a szerelvényeket, a további fájlokat és a mintaadatok:
 
-![Adatbázis exportálása varázslóban - exportálási eredmények](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
+![Adatbázis-exportálási varázsló – eredmények exportálása](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
 
-## <a name="import-the-exported-database-to-a-local-account"></a>Importálja az exportált adatbázist egy helyi fiók
+## <a name="import-the-exported-database-to-a-local-account"></a>Az exportált adatbázis importálása helyi fiókba
 
-Importálja az exportált adatbázist a legmegfelelőbb módszer az, hogy válassza ki a **importálása a helyi adatbázis automatikusan** jelölőnégyzetet a 3. lépésben a exportálása során. Ha Ön nem ezt a jelölőnégyzetet, először az exportált U-SQL-szkriptet a exportálási naplóban található. Ezután futtassa helyileg a U-SQL parancsfájl importálja az adatbázist a helyi fiók.
+Az exportált adatbázis importálásának legalkalmasabb módja az Exportálás **helyi adatbázisba automatikus** jelölőnégyzet bejelölése a 3. lépésben szereplő exportálási folyamat során. Ha nem jelölte be ezt a jelölőnégyzetet, először keresse meg az exportált U-SQL-parancsfájlt az exportálási naplóban. Ezután futtassa helyileg az U-SQL-szkriptet az adatbázis helyi fiókba történő importálásához.
 
-## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Importálja az exportált adatbázist Data Lake Analytics-fiók
+## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Az exportált adatbázis importálása Data Lake Analytics-fiókba
 
-Az adatbázis importálása másik Data Lake Analytics-fiókhoz:
+Az adatbázis importálása a különböző Data Lake Analytics fiókba:
 
-1. Töltse fel az exportált erőforrások, beleértve a szerelvényeket, további fájlok és a mintaadatokat, a Data Lake Analytics-fiók, amely az importálni kívánt alapértelmezett Azure Data Lake Store-fiókba. Az exportált resource mappát a helyi adatok gyökérmappájában található. Töltse fel a teljes mappát az alapértelmezett Data Lake Store-fiók gyökérmappájában.
-2. Ha befejeződött a feltöltés, küldje el az exportált U-SQL parancsfájl importálja az adatbázist, hogy a Data Lake Analytics-fiókhoz.
+1. Töltse fel az exportált erőforrásokat, beleértve a szerelvényeket, a további fájlokat és a mintaadatok a Data Lake Analytics fiók alapértelmezett Azure Data Lake Store fiókjában, amelyet importálni szeretne. Az exportált erőforrás mappát a helyi adatgyökér mappában találja. Töltse fel a teljes mappát az alapértelmezett Data Lake Store fiók gyökerébe.
+2. A feltöltés befejezésekor küldje el az exportált U-SQL-parancsfájlt arra a Data Lake Analytics-fiókra, amelyre importálni kívánja az adatbázist.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-Jelenleg Ha a **séma és adatok** futtat egy U-SQL-feladatot, amely a táblákban tárolt adatok exportálása a 3. lépés: az eszköz. Emiatt előfordulhat, hogy az adatok exportálása folyamat lassú, és, előfordulhat, hogy a személy költségei. 
+Ha a 3. lépésben a **séma és az adatok** lehetőséget választja, az eszköz egy U-SQL-feladatot futtat a táblákban tárolt adatok exportálásához. Emiatt az adatexportálási folyamat lassú lehet, és felmerülhet a költségek. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a U-SQL-adatbázisok](/u-sql/data-definition-language-ddl-statements) 
+* [Az U-SQL-adatbázisok megismerése](/u-sql/data-definition-language-ddl-statements) 
 * [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)
 
 

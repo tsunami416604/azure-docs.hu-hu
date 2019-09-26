@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163224"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316756"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: Jelentkezzen be egy Linux rendszerű virtuális gépre az Azure-ban Azure Active Directory hitelesítés használatával
 
@@ -68,7 +68,7 @@ A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók t
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Linux rendszerű virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal, majd hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create) használatával egy támogatott disztribúcióval és egy támogatott régióban. A következő példa egy *myVM* nevű virtuális gépet telepít, amely *Ubuntu 16,04 LTS* -et használ egy *myResourceGroup* nevű erőforráscsoporthoz a *southcentralus* régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
 
@@ -86,6 +86,9 @@ az vm create \
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési virtuálisgép-bővítményének telepítése
+
+> [!NOTE]
+> Ha a exention egy korábban létrehozott virtuális gépre helyezi üzembe, győződjön meg arról, hogy a gép legalább 1 GB memóriát foglalt le, és a bővítmény telepítése sikertelen lesz.
 
 Ha Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni egy Linux rendszerű virtuális gépre, telepítse a Azure Active Directory login VM-bővítményt. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal telepítse a *AADLoginForLinux* -bővítményt a *MyVM* nevű virtuális gépre a *myResourceGroup* erőforráscsoporthoz:
 
@@ -126,7 +129,7 @@ az role assignment create \
 
 Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
 
-Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)a felhőben.
+Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication a felhőben](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Bejelentkezés a Linux rendszerű virtuális gépre
 
@@ -187,7 +190,7 @@ Access denied
 
 Ha sikeresen elvégezte a hitelesítési lépést egy webböngészőben, akkor előfordulhat, hogy a rendszer azonnal felszólítja, hogy új kóddal jelentkezzen be. Ezt a hibát általában az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-nal bejelentkezett fiók közötti eltérés okozza. A probléma megoldásához:
 
-- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer\@contoso.onmicrosoft.com* -et adta meg az *azureuser\@contoso.onmicrosoft.com*helyett.
+- Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési név helyes. A bejelentkezési név elírása eltérést okozhat az SSH-parancssorban megadott bejelentkezési név és az Azure AD-be a-ban bejelentkezett fiók között. Tegyük fel például, hogy a *azuresuer\@contoso.onmicrosoft.com* -et adta meg az *\@azureuser contoso.onmicrosoft.com*helyett.
 - Ha több felhasználói fiókkal rendelkezik, ügyeljen arra, hogy a böngészőablakban ne adjon meg másik felhasználói fiókot az Azure AD-ba való bejelentkezéskor.
 - A Linux egy kis-és nagybetűket megkülönböztető operációs rendszer. Különbség van a (z)Azureuser@contoso.onmicrosoft.comazureuser@contoso.onmicrosoft.comés a (z) között, ami eltérő lehet. Győződjön meg arról, hogy az UPN-t a megfelelő kis-és nagybetűkkel határozza meg az SSH-parancssorban.
 

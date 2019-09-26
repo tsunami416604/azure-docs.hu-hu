@@ -4,14 +4,14 @@ description: Ismerteti, hogyan használhatók Azure Resource Manager sablonok az
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d0d162f0f6f3024f6b4b63b8df1df9fd413afc8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965297"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300152"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
@@ -47,9 +47,11 @@ Ha a Resource Manager-sablonok és az egyik másik infrastruktúra kód-szolgál
 
 * **Üzembe helyezési tervezetek**: Kihasználhatja a Microsoft által biztosított [tervrajzok](../governance/blueprints/overview.md) előnyeit a szabályozási és megfelelőségi követelmények teljesítése érdekében. Ezek a tervrajzok előre elkészített sablonokat is tartalmaznak a különböző architektúrák esetében.
 
+* **CI/CD-integráció**: Integrálhatja a sablonokat a folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) eszközökbe, amelyekkel automatizálhatja a kiadási folyamatokat a gyors és megbízható alkalmazás-és infrastruktúra-frissítésekhez. Az Azure DevOps és a Resource Manager-sablon feladatának használatával Azure-folyamatokat használhat Azure Resource Manager sablonok projektjeinek folyamatos létrehozásához és üzembe helyezéséhez. További információért lásd: [a vs projekt a folyamatokkal](./vs-resource-groups-project-devops-pipelines.md) és a [folyamatos integráció az Azure-folyamatokkal](./resource-manager-tutorial-use-azure-pipelines.md).
+
 * **Exportálható kód**: Egy meglévő erőforráscsoport sablonjának lekéréséhez exportálhatja az erőforráscsoport aktuális állapotát, vagy megtekintheti az adott központi telepítéshez használt sablont. Az [exportált sablon](export-template-portal.md) megtekintése hasznos információkat nyújt a sablon szintaxisáról.
 
-* **Szerzői eszközök**: A sablonok a [Visual Studio Code](resource-manager-tools-vs-code.md) és a Template Tool bővítménnyel hozhatók létre. Az IntelliSense, a szintaxis kiemelése, a beágyazott Súgó és számos más nyelvi funkció is elérhető.
+* **Szerzői eszközök**: A sablonok a [Visual Studio Code](resource-manager-tools-vs-code.md) és a Template Tool bővítménnyel hozhatók létre. Az IntelliSense, a szintaxis kiemelése, a beágyazott Súgó és számos más nyelvi funkció is elérhető. A Visual Studio Code mellett a [Visual studiót](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)is használhatja.
 
 ## <a name="template-file"></a>Sablonfájl
 
@@ -124,7 +126,4 @@ A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsol
 ## <a name="next-steps"></a>További lépések
 
 * További információ a sablonfájlok tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](resource-group-authoring-templates.md).
-* Ha explicit módon be szeretné állítani a függőségeket, hogy egy erőforrást még egy másik erőforrás előtt telepítsen, tekintse meg a [függőségek meghatározása Azure Resource Manager-sablonokban](resource-group-define-dependencies.md)
-* Hozzáadhat egy erőforrást a sablonhoz, és igény szerint telepítheti is. További információ: [feltételes üzembe helyezés a Resource Manager-sablonokban](conditional-resource-deployment.md).
-* Ahelyett, hogy többször is megismétli a JSON-blokkokat a sablonban, megadhat egy változó, tulajdonság vagy erőforrás egynél több példányát. További információ: [erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban](resource-group-create-multiple.md).
 * A sablonok exportálásával kapcsolatos további tudnivalókért [lásd: gyors útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése a](./resource-manager-quickstart-create-templates-use-the-portal.md)Azure Portal használatával.

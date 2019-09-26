@@ -1,5 +1,5 @@
 ---
-title: Korlátok és konfiguráció – Azure Logic Apps | Microsoft Docs
+title: Korlátok és konfiguráció – Azure Logic Apps
 description: A Azure Logic Apps szolgáltatási korlátai és konfigurációs értékei
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1479c6665b5d68e0fa16ece7e37f4e2a2457c69a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242365"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309788"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -80,7 +80,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 | Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Ha a Egyidejűség-vezérlő be van kapcsolva, a várakozási idő minimális száma 10, az egyidejű futtatások száma (Egyidejűség). A maximális számot akár 100-ig is megváltoztathatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát írja le, amelyek csak akkor tudnak futni, ha a logikai alkalmazás már futtatja az egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
 | Foreach | 100,000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
-| Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes " [egyidejűségek korlátait](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtatását](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" részben tekintse meg egymás után. |
+| Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes [](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) "egyidejűségek korlátait vagy futtatását" részben tekintse meg egymás [után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | SplitOn elemek | 100,000 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. |
 | Iterációig | 5,000 | |
 ||||
@@ -119,6 +119,12 @@ Ha a határértékeket a normál feldolgozás során szeretné megtenni, vagy ol
 > [!NOTE]
 > A [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) nem rendelkezik közzétett korlátozásokkal, mivel ez az SKU nem rendelkezik szolgáltatói szerződéssel (SLA) vagy a vertikális Felskálázási képességekkel. Ezt az SKU-t csak kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben, sem pedig a teljesítmény teszteléséhez.
 
+<a name="gateway-limits"></a>
+
+## <a name="gateway-limits"></a>Átjáró korlátai
+
+Azure Logic Apps támogatja az írási műveleteket, beleértve a lapkákat és a frissítéseket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+
 <a name="request-limits"></a>
 
 ## <a name="http-limits"></a>HTTP-korlátok
@@ -144,13 +150,13 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 | Kifejezés kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()` ,`@base64()`a kifejezésnemlehethosszabbennélakorlátnál.`@string()` |
 |||||
 
-#### <a name="retry-policy"></a>Újrapróbálkozási házirend
+#### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Újrapróbálkozások száma | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Újrapróbálkozás minimális késleltetéssel | 5 másodperc | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozások száma | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozás maximális késleltetése | 1 nap | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Újrapróbálkozás minimális késleltetéssel | 5 másodperc | Az alapértelmezett érték módosításához használja az újrapróbálkozási [házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -211,7 +217,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 | Sémák | 25 | 500 | 1,000 |
 | Szerelvények | 10 | 25 | 1,000 |
 | Tanúsítványok | 25 | 2 | 1,000 |
-| Kötegkonfigurációk | 5 | 1 | 50 |
+| Batch-konfigurációk | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -220,9 +226,9 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 
 | Összetevő | Korlát | Megjegyzések |
 | -------- | ----- | ----- |
-| Szerelvény | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy BLOB-tárolót](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
+| Szerelvény | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy blob](../logic-apps/logic-apps-enterprise-integration-schemas.md)-tárolót. |
 | Térkép (XSLT-fájl) | 8 MB | A 2 MB-nál nagyobb fájlok feltöltéséhez használja a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)szolgáltatást. |
-| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy BLOB-tárolót](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
+| Séma | 8 MB | 2 MB-nál nagyobb fájlok feltöltéséhez használjon egy [Azure Storage-fiókot és egy blob](../logic-apps/logic-apps-enterprise-integration-schemas.md)-tárolót. |
 ||||
 
 | Futásidejű végpont | Korlát | Megjegyzések |
@@ -266,7 +272,7 @@ Egyéni összekötők, [Azure Government](../azure-government/documentation-gove
 
 > [!IMPORTANT]
 >
-> Ha rendelkezik meglévő konfigurációkkal, a **lehető leghamarabb frissítse őket a 2018. szeptember 1. előtt** , így azok beletartoznak és egyeznek a listában szereplő IP-címekkel azokon a régiókban, ahol a logikai alkalmazások léteznek.
+> Ha rendelkezik meglévő konfigurációkkal, a lehető leghamarabb frissítse őket a **2018. szeptember 1. előtt** , így azok beletartoznak és egyeznek a listában szereplő IP-címekkel azokon a régiókban, ahol a logikai alkalmazások léteznek.
 
 Logic Apps nem támogatja közvetlenül az Azure Storage-fiókokhoz való csatlakozást a tűzfalakon keresztül. A Storage-fiókok eléréséhez használja az alábbi lehetőségek egyikét:
 

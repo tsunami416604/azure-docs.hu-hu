@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910185"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300561"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Az adatüzemek riasztása és monitorozása Azure Monitor használatával
 
@@ -404,7 +404,7 @@ A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
     | Azure Monitor oszlop | Log Analytics oszlop | Type |
     | --- | --- | --- |
     | $. properties. UserProperties | UserProperties | Dinamikus |
-    | $. properties. Széljegyzetek | Széljegyzetek | Dinamikus |
+    | $. properties. Széljegyzetek | Jegyzetek | Dinamikus |
     | $. properties. Bemeneti | Input (Bemenet) | Dinamikus |
     | $. properties. Kimeneti | Output | Dinamikus |
     | $. properties. Hiba. errorCode | Hibakód | int |
@@ -504,8 +504,6 @@ A Azure Data Factory Analytics telepítése a nézetek alapértelmezett készlet
 - ADF-statisztika – 3) a folyamat maximális futási időtartama
 
 ![A "munkafüzetek (előzetes verzió)" és a "AzureDataFactoryAnalytics" nevű ablak kiemelve](media/data-factory-monitor-oms/monitor-oms-image6.png)
-
-![Futtatások és hibák grafikus ábrázolása](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
 Megjelenítheti az előző mérőszámokat, megtekintheti a mérőszámok mögötti lekérdezéseket, szerkesztheti a lekérdezéseket, riasztásokat hozhat létre, és egyéb műveleteket is végrehajthat.
 

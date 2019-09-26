@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: fe2eb357ef89d70512e85db24d22f95cac1bd0ac
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219301"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300090"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Értesítések fogadása Azure digitális Twins-tárhelyekről Logic Apps használatával
 
@@ -58,13 +58,13 @@ Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet bizto
 
 1. Adja meg az Event Grid-témakör **nevét**, és válassza ki az **előfizetést**. Válassza ki a digitális Twins-példányhoz használt vagy létrehozott **erőforráscsoportot** , valamint a **helyet**. Kattintson a **Létrehozás** gombra. 
 
-    ![Event Grid-témakör létrehozása](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    [![Event Grid-témakör létrehozása](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
 1. Tallózással keresse meg az Event Grid-témakört az erőforráscsoporthoz, válassza az **Áttekintés**lehetőséget, és másolja a **témakör-végpont** értékét egy ideiglenes fájlba. Ezt az URL-címet a következő szakaszban kell megadnia. 
 
 1. Válassza a **hozzáférési kulcsok**lehetőséget, és másolja a **YOUR_KEY_1** és a **YOUR_KEY_2** egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz a végpont létrehozásához a következő szakaszban.
 
-    ![Kulcsok Event Grid](./media/tutorial-facilities-events/event-grid-keys.png)
+    [![Kulcsok Event Grid](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Végpont létrehozása az Event Grid-témakörhöz
 
@@ -101,7 +101,7 @@ Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet bizto
 
    Ez a parancs létrehozza a végpontot a Event Grid számára. 
 
-   ![Az Event Grid végpontjai](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
+   [![Event Grid végpontok](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="notify-events-with-logic-apps"></a>Események értesítése Logic Apps
 
@@ -113,7 +113,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 1. Adja meg a logikai alkalmazás erőforrásának **nevét** , majd válassza ki az **előfizetését**, az **erőforráscsoportot**és a **helyet**. Kattintson a **Létrehozás** gombra.
 
-    ![Logic Apps erőforrás létrehozása](./media/tutorial-facilities-events/create-logic-app.png)
+    [![Logic Apps erőforrás létrehozása](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. Az üzembe helyezéskor nyissa meg Logic Apps erőforrását, majd nyissa meg a **Logic app Designer** panelt. 
 
@@ -127,7 +127,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    c. Válassza ki a Event Grid erőforrást az **Erőforrás neve**legördülő listából.
 
-   ![Logic app Designer panel](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   [![Logic app Designer panel](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. Kattintson az **új lépés** gombra.
 
@@ -159,7 +159,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
     Ebben a hasznos adatban fiktív értékek szerepelnek. Logic Apps ezt a mintát használja a *séma*létrehozásához.
 
-    ![Logic Apps JSON-ablak elemzése a Event Grid](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    [![Logic Apps JSON-ablak elemzése a Event Grid](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
 
 1. Kattintson az **új lépés** gombra.
 
@@ -171,7 +171,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    c. A második **válasszon egy értéket** szövegmezőbe írja be `UdfCustom`a parancsot.
 
-   ![Kiválasztott feltételek](./media/tutorial-facilities-events/logic-app-condition.png)
+   [![Kiválasztott feltételek](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
 
 1. A **Ha igaz** ablakban:
 
@@ -183,7 +183,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    d. Ugyanebben az ablakban a **törzs** alatt írja be a következőhöz hasonló szöveget: **Egy helyiségben gyenge levegőminőség észlelhető, a hőmérsékletet pedig módosítani**kell. A **dinamikus tartalmak** listájából származó elemek használatával dolgozhat.
 
-   ![Logic Apps "e-mail küldése" választás](./media/tutorial-facilities-events/logic-app-send-email.png)
+   [![Logic Apps "e-mail küldése" választás](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
 1. Kattintson a **Save (Mentés** ) gombra a **Logic app Designer** panel tetején.
 
@@ -191,7 +191,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 Néhány percen belül el kell indítania az e-mailes értesítéseket ebből a Logic Apps erőforrásból. 
 
-   ![Értesítő e-mail](./media/tutorial-facilities-events/logic-app-notification.png)
+   [![Értesítő e-mail](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
 Az e-mailek fogadásának leállításához nyissa meg az Logic Apps erőforrást a portálon, és válassza az **Áttekintés** ablaktáblát. Válassza ki **letiltása**.
 

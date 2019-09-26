@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873197"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300193"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure Container Registry tároló lemezképének törlése az Azure CLI használatával
 
@@ -259,9 +259,12 @@ if ($enableDelete) {
 }
 ```
 
+
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
 
 Az Azure parancssori felület parancsainak alternatívájaként egy igény szerinti vagy ütemezett ACR-feladat futtatásával törölheti az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. További információ: [lemezképek automatikus törlése az Azure Container registryből](container-registry-auto-purge.md).
+
+Opcionálisan beállíthat egy [adatmegőrzési szabályt](container-registry-retention-policy.md) minden beállításjegyzékhez a címkézetlen jegyzékfájlok kezeléséhez. Ha engedélyez egy adatmegőrzési szabályzatot, a rendszer a beállításjegyzékben olyan rendszerképeket tartalmaz, amelyek nem rendelkeznek társított címkékkel, és az alapul szolgáló réteg adatai automatikusan törlődnek egy meghatározott időszak után.
 
 ## <a name="next-steps"></a>További lépések
 

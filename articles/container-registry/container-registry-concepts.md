@@ -1,54 +1,54 @@
 ---
-title: Adattárak és rendszerképek az Azure Container Registry
-description: Bevezetés az Azure container registryk, adattárak és rendszerképek kapcsolatos főbb fogalmakat.
+title: Adattárak és-lemezképek Azure Container Registry
+description: Bevezetés az Azure Container-nyilvántartások,-adattárak és-tárolók főbb fogalmi alapjaiba.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: danlep
-ms.openlocfilehash: a14f0a2a86c5e4922fcddf3c92d48c6dfb1497a3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 9a3d4a7d9c3fd4a0465d4e780024559a71372d9d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800327"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300202"
 ---
-# <a name="about-registries-repositories-and-images"></a>Beállításjegyzékek, adattárak és rendszerképek
+# <a name="about-registries-repositories-and-images"></a>A jegyzékek, adattárak és lemezképek
 
-Ez a cikk bemutatja a tároló-beállításjegyzékek, az adattárak és a tárolórendszerképek és a kapcsolódó összetevők felhasználásával kapcsolatos főbb fogalmakat. 
+Ez a cikk bemutatja a tároló-beállításjegyzékek,-adattárak és-tárolók, valamint a kapcsolódó összetevők főbb fogalmait. 
 
 ## <a name="registry"></a>Beállításjegyzék
 
-Egy tároló *beállításjegyzék* egy szolgáltatás, amely tárolja, és elosztja a tárolórendszerképeket. A docker Hub egy nyilvános tároló-beállításjegyzék, amely támogatja a nyílt forráskódú fejlesztői Közösség és a egy általános katalógus rendszerképek szolgál. Az Azure Container Registry biztosít a közvetlen befolyása alatt képek, beépített hitelesítéssel rendelkező felhasználók [georeplikációs](container-registry-geo-replication.md) hálózatközeli központi telepítése esetén a globális terjesztés és a megbízhatóság támogató [ virtuális hálózat és tűzfal konfigurációját](container-registry-vnet.md), [címke a zárolása](container-registry-image-lock.md), és sok egyéb funkciókat. 
+A tároló- *beállításjegyzék* egy olyan szolgáltatás, amely tárolói lemezképeket tárol és terjeszt. A Docker hub egy nyilvános tároló-nyilvántartó, amely támogatja a nyílt forráskódú közösségét, és általános katalógusként szolgál a lemezképek számára. Azure Container Registry lehetővé teszi a felhasználók számára, hogy a rendszerképek közvetlen vezérlésével, integrált hitelesítéssel, a globális terjesztést és megbízhatóságot támogató [földrajzi replikálással](container-registry-geo-replication.md) a hálózattal szoros üzembe helyezéseket, a [virtuális hálózatot és a tűzfalat konfiguráció](container-registry-vnet.md), [címke zárolása](container-registry-image-lock.md)és számos más továbbfejlesztett funkció. 
 
-Docker-tárolórendszerképekhez mellett az Azure Container Registry támogatja a kapcsolódó [összetevők tartalom](container-registry-image-formats.md) Open Container kezdeményezés (OCI) képformátum többek között.
+A Docker-tárolók rendszerképein kívül a Azure Container Registry támogatja a kapcsolódó [tartalmi](container-registry-image-formats.md) összetevőket, beleértve a Open Container INITIATIVE (OCI) képformátumokat is.
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Egy tartalom címezhető elemei
+## <a name="content-addressable-elements-of-an-artifact"></a>Egy összetevő tartalom címezhető elemei
 
-Az Azure container registry-összetevő címét az alábbi elemeket tartalmazza. 
+Az Azure Container registryben található összetevők címe a következő elemeket tartalmazza. 
 
 ```
 [loginUrl]/[namespace]/[artifact:][tag]
 ```
 
-* **loginUrl** – a teljes nevet, a beállításjegyzék-gazdagép. A beállításjegyzék-gazdagép az Azure container registry a következő formátumban kell *myregistry*. azurecr.io (csak kisbetűvel). Meg kell adnia a loginUrl, Docker vagy más ügyfél eszközöket lekéréses vagy leküldéses összetevők használata egy Azure container registrybe. 
-* **névtér** - perjellel elválasztva a logikai jellegű csoportosítását kapcsolódó képeket és az összetevők – például egy munkacsoportban vagy egy alkalmazás esetében
-* **összetevő** – egy adott rendszerképet vagy összetevő egy adattár nevét
-* **címke** – képet vagy az adattárakban tárolt összetevő egy adott verzióját
+* **loginUrl** – a beállításjegyzék-gazdagép teljes neve. Az Azure Container registryben található beállításjegyzék-gazdagép formátuma *myregistry*. azurecr.IO (minden kisbetűs). A loginUrl a Docker vagy más ügyféleszközök használatával kell megadnia az összetevők Azure Container registrybe való lekéréséhez vagy leküldéséhez. 
+* **névtér** – perjel – kapcsolódó képek vagy összetevők tagolt logikai csoportosítása – például munkacsoporthoz vagy alkalmazáshoz
+* összetevő **– egy** adott rendszerkép vagy összetevő adattárának neve
+* **címke** – az adattárban tárolt rendszerkép vagy összetevő adott verziója
 
 
-Ha például egy Azure container registry egy kép a teljes név hasonló lehet:
+Az Azure Container registryben található rendszerképek teljes neve például az alábbihoz hasonló lehet:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
 ```
 
-Ezek az elemek részleteit a következő szakaszokban talál.
+Ezekről az elemekről az alábbi részekben talál további információkat.
 
 ## <a name="repository-name"></a>Adattár neve
 
-Tároló-beállításjegyzékek kezelése *tárházak*, gyűjtemények tárolórendszerképek vagy más összetevők ugyanazzal a névvel, de eltérő címkéket. Az alábbi három lemezképek például a "acr-helloworld" tárház szerepelnek:
+A tároló-beállításjegyzékek *adattárakat*, tároló-lemezképek gyűjteményeit vagy más, azonos nevű, de eltérő címkéket tartalmazó összetevőket kezelhetnek. Például a következő három kép szerepel az "ACR-HelloWorld" adattárban:
 
 ```
 acr-helloworld:latest
@@ -56,7 +56,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-Adattár neve is tartalmazhatnak [névterek](container-registry-best-practices.md#repository-namespaces). Névterek lehetővé teszi a csoport lemezképek nevekkel előre perjellel elválasztva adattár, például:
+A tárház neve tartalmazhat [névtereket](container-registry-best-practices.md#repository-namespaces)is. A névterek lehetővé teszik a képek csoportosítását a továbbítási perjelek által tagolt nevek használatával, például:
 
 ```
 marketing/campaign10-18/web:v2
@@ -68,33 +68,33 @@ product-returns/legacy-integrator:20180715
 
 ## <a name="image"></a>Image
 
-Egy tárolórendszerkép- vagy más összetevő belül beállításjegyzék társított egy vagy több címkét, egy vagy több réteget rendelkezik, és a jegyzék azonosítja. Megértéséhez, hogy ezek az összetevők egymáshoz segíthet a registry hatékony kezeléséhez.
+A beállításjegyzékben található tároló-rendszerkép vagy más összetevő egy vagy több címkével van társítva, egy vagy több réteget tartalmaz, és egy jegyzékfájl azonosítja. Az összetevők egymáshoz való viszonyának megértése segíthet a beállításjegyzék hatékony kezelésében.
 
 ### <a name="tag"></a>Címke
 
-A *címke* kép vagy más összetevő határozza meg az a verzió esetében. Egy egyetlen összetevő belül egy tárház egy vagy több címke lehet hozzárendelni, és is lehet "címkézetlen." Azt jelenti törölheti az összes címke-lemezképről, a rendszerkép-adatok (réteg) továbbra is a beállításjegyzékben.
+A rendszerkép vagy más összetevő *címkéje* a verziószámát adja meg. A tárházon belüli egyetlen összetevőhöz egy vagy több címke rendelhető, és az is lehet, hogy "címkézetlen". Ez azt eredményezheti, hogy az összes címkét törölheti egy képből, míg a rendszerképben lévő adatok (a rétegek) a beállításjegyzékben maradnak.
 
-A tárház (vagy a tárházat és a névtér) és a egy címkét a rendszerkép nevének határozza meg. Leküldéses és a egy rendszerkép lekérése a leküldéses és lekéréses műveletet a neve megadásával.
+A tárház (vagy a tárház és a névtér), valamint a címke határozza meg a rendszerkép nevét. A képek leküldéséhez és lekéréséhez adja meg a nevét a leküldéses vagy a lekérési műveletben.
 
-Tárolórendszerképek címkézése hogyan hozhat létre és telepíthet a forgatókönyvek vezérli. Az alaplemezképek és lemezképek telepítése egyedi címkék megőrzése mellett például stabil címkék használata javasolt. További információkért lásd: [tárolórendszerképek címkézése és verziókezelését javaslatok](container-registry-image-tag-version.md).
+A tároló-lemezképek címkézésének módját a forgatókönyvek segítségével fejlesztheti vagy helyezheti üzembe. A stabil címkék például az alaplemezképek fenntartásához, valamint a rendszerképek telepítéséhez szükséges egyedi címkékhez ajánlottak. További információ: [a címkézéssel kapcsolatos javaslatok és a tárolók verziószámozása](container-registry-image-tag-version.md).
 
 ### <a name="layer"></a>Réteg
 
-Tárolórendszerképek épülnek fel, egy vagy több *rétegek*, minden egyes egy sort a docker-fájlban, amely meghatározza a kép megfelelő. A regisztrációs adatbázisban található rendszerképek ossza meg közös rétegek, a tárolási hatékonyság növelése mellett. Például számos olyan rendszerkép található különböző tárházakban megoszthatják az Alpine Linux azonos rétegben, de a réteg csak egy példányát tárolja a beállításjegyzékben.
+A tárolók képei egy vagy több *rétegből*állnak, amelyek mindegyike a képet definiáló Docker egyik sorához tartozik. A beállításjegyzékben található rendszerképek közös rétegekből állnak, és növelik a tárolási hatékonyságot. Például a különböző adattárakban több rendszerkép is megoszthatja ugyanazt az alpesi Linux alapréteget, de az adott rétegnek csak egy példányát tárolja a beállításjegyzékben.
 
-Közös rétegek megosztása több képekkel is réteg megosztása optimalizálja a réteg terjesztési csomópontokra. Ha már a csomóponton lévő kép alapja az Alpine Linux réteget tartalmaz, ugyanazt a rétegre hivatkozó egy másik képet, a későbbi lekéréses nem vigye át például a réteg a csomópontra. Ehelyett azt a réteget, a csomóponton már meglévő hivatkozik.
+A réteg megosztása a rétegek eloszlását is optimalizálja a több, közös rétegekkel rendelkező lemezképekkel rendelkező csomópontokra. Ha például egy csomóponton már van egy olyan rendszerkép, amely az alpesi linuxos réteget tartalmazza, akkor egy másik, ugyanarra a rétegre hivatkozó rendszerkép lekérése nem továbbítja a réteget a csomópontra. Ehelyett a csomóponton már meglévő rétegre hivatkozik.
 
-Biztonságos elkülönítésre, és lehetséges réteg adatkezelési védelmet biztosít, a rétegek nem közösek beállításjegyzékek.
+A lehetséges rétegbeli manipulációk biztonságos elkülönítésének és védelmének biztosításához a rétegek nem oszthatók meg a kibocsátásiegység-forgalmi jegyzékek között.
 
-### <a name="manifest"></a>Jegyzék
+### <a name="manifest"></a>Jegyzékfájl
 
-Minden tárolórendszerképet vagy leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba összetevő társítva van egy *manifest*. A jegyzékfájlban, a beállításjegyzék által generált, amikor a lemezkép leküldéssel, egyedileg azonosítja a kép, és megadja a réteg. A jegyzékek tárházhoz az Azure CLI-paranccsal listázhatja [az acr tárház show-jegyzékfájlokká][az-acr-repository-show-manifests]:
+A tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép vagy-összetevő egy *jegyzékfájlhoz*van társítva. A beállításjegyzék által a rendszerkép leküldésekor generált jegyzékfájl, amely egyedileg azonosítja a rendszerképet, és meghatározza annak rétegeit. A tárházhoz tartozó jegyzékfájlok listáját az Azure CLI parancs az [ACR repository show-Manifests][az-acr-repository-show-manifests]paranccsal listázhatja:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-Ha például listája a jegyzékfájl digests "acr-helloworld" adattár:
+Sorolja fel például az "ACR-HelloWorld" adattár jegyzékfájlit:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -124,25 +124,24 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-### <a name="manifest-digest"></a>A kivonatoló manifest
+### <a name="manifest-digest"></a>Jegyzékfájl-kivonat
 
-Jegyzékek azonosítja egy egyedi SHA-256 kivonatoló vagy *jegyzékfájl kivonatoló*. Minden rendszerkép vagy összetevő – e vagy sem – címkézett azonosítja a kivonatoló. Kivonat értéke egyedi akkor is, ha a kép rendszerképréteg-adatot megegyezik-e egy másik lemezképet. Ez a mechanizmus nem teszi lehetővé a ismételten azonos módon címkézett rendszerképek leküldése a beállításjegyzék. Például ismételten küldhet `myimage:latest` hiba nélkül a regisztrációs adatbázisba, mert az egyedi kivonatoló egyes rendszerképek azonosítása.
+A jegyzékfájlokat egy egyedi SHA-256 kivonat, vagy egy *manifest Digest*azonosítja. Minden rendszerkép vagy összetevő – akár címkézett, akár nem – azonosítja a kivonatát. A kivonatoló érték akkor is egyedi, ha a képrétegbeli adatok megegyeznek egy másik rendszerkép nevével. Ez a mechanizmus lehetővé teszi, hogy az azonos módon címkézett képeket ismételten leküldse egy beállításjegyzékbe. Előfordulhat például, hogy többször is leküldi `myimage:latest` a beállításjegyzéket, mert hiba történt, mivel az egyes rendszerképeket az egyedi kivonata azonosítja.
 
-A kivonatoló megadásával a pull művelet is hívhatók elő onnan a beállításjegyzékben. Egyes rendszerek kivonatos lekérni, mivel ez garantálja a rendszerkép verziószámát lekért folyamatban van, még akkor is, ha azonos módon megcímkézett képet ezt követően a rendszer továbbítja a beállításjegyzék konfigurálhatók.
+A rendszerképeket egy beállításjegyzékből is lekérheti, ha megadta a kivonatot a lekéréses műveletben. Előfordulhat, hogy néhány rendszer úgy van konfigurálva, hogy a kivonatoló lekérése miatt lekérje a rendszerkép verziószámát, még akkor is, ha egy azonos címkével ellátott képet küld a beállításjegyzékbe.
 
-Például egy rendszerkép lekéréshez a "acr-helloworld" tárház jegyzékfájl kivonatos:
+Tegyük fel például, hogy egy képet az "ACR-HelloWorld" adattárból a manifest Digest:
 
 ```console
 $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
 ```
 
 > [!IMPORTANT]
-> Ha ismételten leküldéses azonos címkékkel módosított képeket, létrehozhat árva lemezképek – címkézetlen, de továbbra is használnak a terület a tárolójegyzékben található rendszerképek. Címkézetlen képek nem jelennek az Azure CLI-ben vagy az Azure Portalon, ha a listában, vagy képeket tekinthetnek címke alapján. A rétegek azonban továbbra is létezik, és a regisztrációs adatbázis terület felhasználását. További információ a rendszerképek címkézetlen által használt területet szabadítson fel: [törlése az Azure Container Registry a tárolólemezképek](container-registry-delete.md).
-
+> Ha a módosított képeket többször is leküldi azonos címkékkel, létrehozhat árva képeket – a nem címkézett képeket, de továbbra is felhasználhat helyet a beállításjegyzékben. A címkézetlen lemezképek nem jelennek meg az Azure CLI-ben vagy a Azure Portalban, ha a képek címkével vannak listázva vagy megtekintve. Azonban a rétegek továbbra is léteznek, és helyet foglalnak el a beállításjegyzékben. Ha töröl egy címkézetlen rendszerképet, a rendszer törli a beállításjegyzék területét, ha a jegyzékfájl az egyetlen, vagy az utolsó, amely egy adott rétegre mutat. A címkézetlen lemezképek által használt lemezterület felszabadításával kapcsolatos további információkért lásd: [tároló lemezképek törlése Azure Container Registryban](container-registry-delete.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [képtárolás](container-registry-storage.md) és [támogatott tartalom formátumok](container-registry-image-formats.md) az Azure Container Registryben.
+További információ a [rendszerkép-tárolásról](container-registry-storage.md) és a Azure Container Registry [támogatott fájlformátumairól](container-registry-image-formats.md) .
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

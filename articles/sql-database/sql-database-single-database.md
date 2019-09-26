@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566529"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316662"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az a Azure SQL Database önálló adatbázisa?
 
@@ -59,6 +59,6 @@ SQL Database számos [beépített biztonsági és megfelelőségi](sql-database-
 
 ## <a name="next-steps"></a>További lépések
 
-- Egyetlen adatbázis gyors megkezdéséhez kezdje az [egyetlen adatbázis](sql-database-single-database-quickstart-guide.md)rövid útmutató Guide.MD.
+- Egyetlen adatbázis gyors megkezdéséhez kezdje az [egyetlen adatbázis rövid útmutatóját](sql-database-single-database-quickstart-guide.md).
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

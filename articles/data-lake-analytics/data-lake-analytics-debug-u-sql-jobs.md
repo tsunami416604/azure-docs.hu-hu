@@ -1,6 +1,6 @@
 ---
-title: Felhasználó által definiált C#-kód nem sikerült az Azure Data Lake U-SQL-feladatok hibakereséséhez
-description: Ez a cikk ismerteti az Azure Data Lake Tools for Visual Studio használatával U-SQL sikertelen csúcs hibakeresése.
+title: Hibakeresési C# kód Azure Data Lake U-SQL-feladatokhoz
+description: Ez a cikk azt ismerteti, hogyan lehet hibakeresést végezni a U-SQL-ben a Azure Data Lake Tools for Visual Studio használatával.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanancai
@@ -9,105 +9,105 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615355"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315815"
 ---
-# <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C#-kód hibaelhárítása U-SQL-feladatok sikertelen
+# <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
-U-SQL C# használatával bővíthetőségi modell biztosít. A U-SQL-parancsfájlok könnyebbé vált a C#-függvényeket, és végezze el az analitikai függvények, amely nem támogatja a deklaratív SQL-szerű nyelven. A U-SQL-bővítést további tudnivalókért lásd: [U-SQL programozhatósági útmutató](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
+Az U-SQL bővíthetőségi modellt biztosít C#a használatával. A U-SQL-parancsfájlok egyszerűen hívhatják C# a függvényeket, és olyan analitikai funkciókat hajtanak végre, amelyeket az SQL-szerű deklaratív nyelv nem támogat. Ha többet szeretne megtudni az U-SQL bővíthetőségéről, tekintse meg a [u-SQL programozható útmutatóját](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-A gyakorlatban kód szükség lehet a hibakeresés, de nehéz a felhő egyéni kóddal elosztott feladat korlátozott naplófájlokat a hibakereséshez. [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) nevű szolgáltatást nyújt **csúcspont Debug sikertelen**, amely segít, könnyebben hibakeresést a bekövetkező hibák az egyéni kódot. U-SQL-feladat meghiúsul, ha a szolgáltatás tartja a sikertelen állapota, és az eszköz segítségével, hogy töltse le a felhőkörnyezet hiba a helyi gépen a hibakereséshez. A helyi letöltése a teljes felhőalapú környezetben, beleértve a bemeneti adatokat és a felhasználói kód rögzíti.
+A gyakorlatban előfordulhat, hogy bármely kód hibakeresést igényel, de a felhőben lévő, korlátozott naplófájlokkal rendelkező elosztott feladatok nem végezhetők el egyéni kóddal. A [Visual studióhoz készült Azure Data Lake Tools](https://aka.ms/adltoolsvs) egy **sikertelen csúcspont-hibakereső**nevű szolgáltatást biztosít, amely megkönnyíti az Egyéni kódban előforduló hibák hibakeresését. Ha a U-SQL-feladatok sikertelenek, a szolgáltatás megtartja a meghibásodási állapotot, és az eszköz segítségével letöltheti a Felhőbeli meghibásodási környezetet a helyi gépre a hibakereséshez. A helyi Letöltés rögzíti a teljes felhőalapú környezetet, beleértve a bemeneti adatokat és a felhasználói kódokat is.
 
-A következő videó bemutatja a csúcspont Debug nem sikerült az Azure Data Lake Tools for Visual Studio.
+Az alábbi videó azt mutatja be, hogy a Visual studióhoz készült Azure Data Lake-eszközök nem felelnek meg a vertex hibakeresésének.
 
 > [!VIDEO https://www.youtube.com/embed/3enkNvprfm4]
 >
 
 > [!IMPORTANT]
-> A Visual Studio a szolgáltatást a következő két frissítések szükségesek: [A Microsoft Visual C++ újraterjeszthető csomag 2015 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) és a [for Windows Universal C futásidejű](https://www.microsoft.com/download/details.aspx?id=50410).
+> A Visual Studio a következő két frissítést igényli a szolgáltatás használatához: [Microsoft Visual C++ 2015 újraterjeszthető frissítés 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) és a [Windows rendszerhez készült univerzális C futtatókörnyezet](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
-## <a name="download-failed-vertex-to-local-machine"></a>Nem sikerült letölteni a csúcspont helyi számítógépre
+## <a name="download-failed-vertex-to-local-machine"></a>A sikertelen csúcspont letöltése a helyi gépre
 
-Amikor egy sikertelen feladat az Azure Data Lake Tools for Visual Studio nyit meg, egy sárga figyelmeztető sáv a részletes hibaüzeneteket a hiba lapon láthatja.
+Ha egy sikertelen feladatot nyit meg Azure Data Lake Tools for Visual Studio alkalmazásban, a hiba lapon egy sárga riasztási sáv jelenik meg, amely részletes hibaüzeneteket jelenít meg.
 
-1. Kattintson a **letöltése** letölteni a szükséges erőforrásokat és a bemeneti streamekhez. Kattintson a letöltés nem fejeződik be, ha **újra**.
+1. Kattintson a **Letöltés** gombra az összes szükséges erőforrás és bemeneti adatfolyam letöltéséhez. Ha a letöltés nem fejeződött be, kattintson az **újra**gombra.
 
-2. Kattintson a **nyílt** létrehozni egy helyi hibakeresési környezetben a letöltés befejezése után. Egy új hibakeresési megoldás nyílnak meg, és ha rendelkezik meglévő megoldás megnyitása a Visual Studióban ellenőrizze, hogy mentse és zárja be, mielőtt hibakeresés.
+2. A letöltés befejezése után kattintson az **Open (Megnyitás** ) gombra a helyi hibakeresési környezet létrehozásához. Új hibakeresési megoldás lesz megnyitva, és ha meglévő megoldás van megnyitva a Visual Studióban, győződjön meg róla, hogy a hibakeresés előtt menti és zárja be azt.
 
-![Az Azure Data Lake Analytics U-SQL hibakeresése a visual studio letöltési csúcspont](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
+![A Visual Studio letöltési csúcspontjának Azure Data Lake Analytics U-SQL hibakeresése](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
 ## <a name="configure-the-debugging-environment"></a>A hibakeresési környezet konfigurálása
 
 > [!NOTE]
-> Előtti, hibakeresés, mindenképp nézze **közös nyelvi futtatókörnyezet kivételek** a kivétel beállítások ablakban (**Ctrl + Alt + E**).
+> A hibakeresés előtt győződjön meg arról, hogy a kivétel-beállítások ablakban a **gyakori nyelvi futtatókörnyezeti kivételeket** szeretné ellenőrizni (**CTRL + ALT + E**).
 
-![Az Azure Data Lake Analytics U-SQL hibakeresése a visual studio beállítás](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
+![Azure Data Lake Analytics U-SQL hibakeresési Visual Studio-beállítás](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-Új megjelent a Visual Studio-példányon előfordulhat, hogy, vagy előfordulhat, hogy nem található a felhasználó által definiált C#-forráskódot:
+Az újonnan indított Visual Studio-példányban előfordulhat, hogy nem találja a felhasználó által definiált C# forráskódot:
 
-1. [A megoldásban a forráskód is található](#source-code-is-included-in-debugging-solution)
+1. [A forráskódom megtalálható a megoldásban](#source-code-is-included-in-debugging-solution)
 
-2. [A megoldásban a forráskód nem található](#source-code-is-not-included-in-debugging-solution)
+2. [Nem találom a forráskódot a megoldásban](#source-code-is-not-included-in-debugging-solution)
 
-### <a name="source-code-is-included-in-debugging-solution"></a>Hibakeresés megoldás forráskódját tartalmazza
+### <a name="source-code-is-included-in-debugging-solution"></a>A forráskód a hibakeresési megoldás része.
 
-Van, hogy a C#-forráskódot rögzített két esetet:
+A forráskódot két esetben rögzíti C# a rendszer:
 
-1. A felhasználói kód a háttérkód fájlban van definiálva (általában Master elnevezésű `Script.usql.cs` a U-SQL-projektben).
+1. A felhasználói kód a kód mögötti fájlban van definiálva (általában `Script.usql.cs` U-SQL-projektben szerepel).
 
-2. A felhasználói kód definiált C# hordozhatóosztálytár-projektjének U-SQL-alkalmazáshoz, és a szerelvény regisztrálva **hibakeresési információ**.
+2. A felhasználói kód a U- C# SQL-alkalmazáshoz tartozó Class Library-projektben van definiálva, és **hibakeresési információval**rendelkező szerelvényként van regisztrálva.
 
-A forráskód importálva lett-e a megoldás, ha a Visual Studio hibakereső eszközöket (tekintse meg, változókat, stb.) a probléma elhárításához is használhatja:
+Ha a forráskódot importálja a megoldásba, a probléma elhárításához használhatja a Visual Studio hibakereső eszközeit (megtekintés, változók stb.):
 
-1. Nyomja le az **F5** billentyűt a hibakeresés megkezdéséhez. A kód lefut, amíg egy kivétel által le van állítva.
+1. Nyomja le az **F5** billentyűt a hibakeresés megkezdéséhez. A kód addig fut, amíg a kivétel nem szűnik meg.
 
-2. Nyissa meg a forráskód fájlja, és állítson be töréspontokat, majd nyomja le az **F5** hibakeresése a kód lépésről lépésre.
+2. Nyissa meg a forráskód-fájlt, és állítsa be a töréspontokat, majd nyomja le az **F5** billentyűt a kód lépésről lépésre történő hibakereséséhez.
 
-    ![Azure Data Lake Analytics U-SQL debug exception](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
+    ![Azure Data Lake Analytics U-SQL hibakeresési kivétel](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
-### <a name="source-code-is-not-included-in-debugging-solution"></a>Forráskód nem érhető el a megoldás hibakeresés
+### <a name="source-code-is-not-included-in-debugging-solution"></a>A forráskód nem szerepel a hibakeresési megoldásban
 
-Ha a felhasználói kód nem szerepel a háttérkód-fájl, vagy fürtszerepkörnév nem regisztrált a szerelvényt **hibakeresési információ**, majd a forráskód nem érhető el automatikusan a hibakeresési megoldásban. Ebben az esetben további lépések hozzáadása a forráskódja lesz szüksége:
+Ha a felhasználói kód nem szerepel a kód mögötti fájlban, vagy nem regisztrálta a szerelvényt a **hibakeresési adatokkal**, akkor a rendszer nem tartalmazza automatikusan a forráskódot a hibakeresési megoldásban. Ebben az esetben további lépések szükségesek a forráskód hozzáadásához:
 
-1. Kattintson a jobb gombbal **megoldás 'VertexDebug' > hozzáadása > meglévő projekt...**  a szerelvény található a forráskódban, és adja hozzá a projektet a hibakeresési megoldás.
+1. Kattintson a jobb gombbal a **"VertexDebug" megoldásra, > adjon hozzá > meglévő projektet...** a szerelvény forráskódjának megkereséséhez és a projekt hozzáadásához a hibakeresési megoldáshoz.
 
-    ![Az Azure Data Lake Analytics U-SQL-hibakeresési projekt hozzáadása](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
+    ![Azure Data Lake Analytics U-SQL-hibakeresési projekt hozzáadása](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
-2. A projekt mappa elérési útját **FailedVertexDebugHost** projekt. 
+2. A **FailedVertexDebugHost** projekthez tartozó Project mappa elérési útjának beolvasása. 
 
-3. Kattintson a jobb gombbal **a szerelvény hozzáadása forráskód Projekt > Tulajdonságok**, jelölje be a **hozhat létre** lapra a bal oldalon, és illessze be a másolt elérési útja, \bin\debug végződő **kimeneti > kimeneti elérési út**. A végső kimenet elérési útja például `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
+3. Kattintson a jobb gombbal **a hozzáadott szerelvény forráskódjának projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
 
-    ![Azure Data Lake Analytics U-SQL debug set pdb path](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
+    ![Az U-SQL hibakeresési készletének Azure Data Lake Analytics az PDB elérési útja](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
-Ezek a beállítások után a hibakeresés indítása **F5** és töréspontokat a kiválasztott. A Visual Studio hibakereső eszközöket, (tekintse meg, változókat, stb.) a probléma elhárításához is használhatja.
+Ezeket a beállításokat az **F5** és a töréspontok hibakeresésével indíthatja el. A probléma elhárításához használhatja a Visual Studio hibakereső eszközeit (megtekintés, változók stb.) is.
 
 > [!NOTE]
-> Építse újra a szerelvény forráskód projekt minden alkalommal, amikor frissített .pdb fájlok létrehozásához a kód módosítása után.
+> Minden alkalommal újra létre kell hoznia a szerelvény forráskódjának projektjét, miután módosította a kódot a frissített. pdb fájlok létrehozásához.
 
-## <a name="resubmit-the-job"></a>Küldje el újra a feladatot
+## <a name="resubmit-the-job"></a>A feladatoknak a újraküldése
 
-Hibakereséshez után a projekt sikeresen befejeződik a kimeneti ablakban látható a következő üzenetet:
+A hibakeresést követően, ha a projekt sikeresen befejeződik, a kimeneti ablak a következő üzenetet jeleníti meg:
 
     The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 
-![Az Azure Data Lake Analytics U-SQL-hibakeresési sikeres](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
+![Azure Data Lake Analytics U-SQL-hibakeresés sikeres](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
-Újraküldeni a sikertelen feladat:
+A sikertelen feladatok újraküldése:
 
-1. Feladatok háttérkód-megoldásokkal, másolja a C#-kódot a háttérkód forrásfájl (általában `Script.usql.cs`).
+1. A kód mögötti megoldásokkal rendelkező feladatok esetében másolja C# a kódot a forráskód mögötti forrásfájl (általában `Script.usql.cs`) helyére.
 
-2. Szerelvények a feladatok kattintson a jobb gombbal a szerelvény forráskód projekt hibakeresési megoldásban, és regisztrálja a frissített .dll szerelvényeket, az Azure Data Lake-katalógusba.
+2. A szerelvényekkel rendelkező feladatok esetében kattintson a jobb gombbal a szerelvény forráskódjának projektre a hibakeresési megoldásban, és regisztrálja a frissített. dll szerelvényeket a Azure Data Lake-katalógusban.
 
-3. Küldje el újra a U-SQL-feladatot.
+3. Küldje el újra az U-SQL-feladatot.
 
 ## <a name="next-steps"></a>További lépések
 
-- [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
-- [U-SQL-felhasználó által definiált operátorok az Azure Data Lake Analytics-feladatok fejlesztése](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+- [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
+- [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 - [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)
-- [Rendellenes ismétlődő feladat hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+- [Rendellenes ismétlődő feladatok hibáinak megoldása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

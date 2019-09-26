@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141146"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300661"
 ---
 # <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
-A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, alapszintű, **standard**vagy **Storage optimalizált** árképzési szinteken van-e kiépítve. [](search-create-service-portal.md)
+A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
 
 + Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik.
 
-+ Az alapszintű megoldás dedikált számítástechnikai erőforrásokat biztosít az éles számítási feladatokhoz kisebb méretekben.
++ Az **alapszintű** megoldás dedikált számítástechnikai erőforrásokat biztosít az éles számítási feladatokhoz kisebb méretekben.
 
 + A **standard** szintű dedikált gépeken fut, és minden szinten nagyobb a tárterület és a feldolgozási kapacitás. A standard szint négy szinten érhető el: S1, S2, S3 és S3 HD.
 
@@ -62,11 +62,13 @@ A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb o
 
 ## <a name="document-limits"></a>Dokumentumok korlátai 
 
-Október 2018-én már nem jelennek meg minden olyan új szolgáltatásra vonatkozó dokumentum, amely bármely más számlázandó szinten (alapszintű, S1, S2, S3, S3 HD) létrehozott, bármely régióban. Míg a legtöbb régióban a 2017 november/december óta korlátlan számú dokumentum szerepelt, a rendszer öt régióban folytatta a dokumentumok korlátozását. Attól függően, hogy mikor és hol hozott létre keresési szolgáltatást, lehet, hogy olyan szolgáltatást futtat, amely továbbra is a dokumentum korlátai alá esik.
+Október 2018-én már nem minden olyan dokumentum korlátozza az<sup>1</sup> . korlátozást, amely bármely számlázandó szinten (alapszintű, S1, S2, S3, S3 HD) létrehozott új szolgáltatás bármely régióban. Míg a legtöbb régióban a 2017 november/december óta korlátlan számú dokumentum szerepelt, a rendszer öt régióban folytatta a dokumentumok korlátozását. Attól függően, hogy mikor és hol hozott létre keresési szolgáltatást, lehet, hogy olyan szolgáltatást futtat, amely továbbra is a dokumentum korlátai alá esik.
 
 Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korlátozásokkal, tekintse meg a szolgáltatás áttekintés lapján a használat csempét. A dokumentumok száma korlátlan, vagy a küszöbértéken alapuló korlátra vonatkozik.
 
   ![Használat csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> annak ellenére, hogy nincs SKU-specifikus dokumentumra vonatkozó korlátozás, minden indexre továbbra is a maximális biztonságos korlát vonatkozik a szolgáltatás stabilitásának biztosítása érdekében. Ez a korlát a Lucene származik. Minden Azure Search dokumentum belsőleg indexelve van egy vagy több Lucene-dokumentumként. Az Azure Search-dokumentumok Lucene száma az összetett gyűjtemények mezőiben szereplő elemek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Egy összetett gyűjtemény mezőben 3 elemet tartalmazó dokumentum például 4 Lucene-dokumentumként lesz indexelve – 1 a dokumentumhoz, és 3 az elemekhez. Az Lucene dokumentumok maximális száma nagyjából 25 000 000 000.
 
 ### <a name="regions-previously-having-document-limits"></a>Korábban dokumentum-korlátokkal rendelkező régiók
 
@@ -144,7 +146,7 @@ A tárterületre optimalizált csomagok esetében az alacsonyabb lekérdezési s
 
 ## <a name="data-limits-cognitive-search"></a>Adatkorlátok (kognitív keresés)
 
-Egy [olyan kognitív keresési folyamat](cognitive-search-concept-intro.md) , amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés](cognitive-search-skill-keyphrases.md)kinyeréséhez, a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+Egy olyan [kognitív keresési folyamat](cognitive-search-concept-intro.md) , amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
 
 ## <a name="api-request-limits"></a>API-kérelmek korlátai
 * Legfeljebb 16 MB/kérelem <sup>1</sup>
@@ -153,7 +155,7 @@ Egy [olyan kognitív keresési folyamat](cognitive-search-concept-intro.md) , am
 * Maximális 32 mező a $orderby záradékban
 * A maximális keresési kifejezés mérete 32 766 bájt (32 KB mínusz 2 bájt) UTF-8 kódolású szöveg esetén
 
-<sup>1</sup> Azure Searchban a kérelem törzse 16 MB-os felső korláttal rendelkezik, és az egyes mezők vagy gyűjtemények esetében gyakorlati korlátozást ír elő, amely nem korlátozza az elméleti korlátokat (lásd: [támogatott](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) adattípusok a mezők összeállításával és korlátozásával kapcsolatos információk.
+<sup>1</sup> Azure Searchban a kérelem törzse 16 MB-os felső korláttal rendelkezik, és az egyes mezők vagy gyűjtemények esetében gyakorlati korlátozást ír elő, amely nem korlátozza az elméleti korlátokat (lásd: [támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezők összeállításával és korlátozásával kapcsolatos információk.
 
 ## <a name="api-response-limits"></a>API-válaszok korlátai
 * A keresési eredmények által visszaadott maximális 1000-dokumentumok száma

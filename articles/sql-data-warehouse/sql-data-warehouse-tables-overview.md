@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476753"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310098"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Táblázatok tervezése Azure SQL Data Warehouseban
 
@@ -65,7 +65,7 @@ Egy ideiglenes tábla csak a munkamenet időtartama alatt létezik. Egy ideiglen
 A külső tábla az Azure Storage-blobban vagy Azure Data Lake Storeban található adatterületre mutat. Ha a CREATE TABLE AS SELECT utasítással együtt használja, a külső táblából való kijelöléskor a rendszer beolvassa az adatok SQL Data Warehouseba való importálását. A külső táblák ezért hasznosak az betöltéshez. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Adattípusok
-SQL Data Warehouse a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) adattípusai című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért [](sql-data-warehouse-tables-data-types.md)lásd az adattípusokat.
+SQL Data Warehouse a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért [](sql-data-warehouse-tables-data-types.md)lásd az adattípusokat.
 
 ## <a name="distributed-tables"></a>Elosztott táblák
 A SQL Data Warehouse alapvető funkciója, hogy képes a táblázatok tárolására és üzemeltetésére a különböző [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions).  A SQL Data Warehouse három módszert támogat az adatterjesztéshez, a ciklikus multiplexelés (alapértelmezett), a kivonatoló és a replikált adatokat.
@@ -95,7 +95,7 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 | Fájlok másolása folyamatban        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
-A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: particionálási [útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet a TRUNCATE_TARGET beállítást használni az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasításban, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal. 
+A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet a TRUNCATE_TARGET beállítást használni az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasításban, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -108,6 +108,9 @@ A oszlopcentrikus-funkciók listáját a [oszlopcentrikus indexek újdonságai](
 
 ## <a name="statistics"></a>Statisztika
 A lekérdezés-optimalizáló oszlop szintű statisztikát használ, amikor létrehoz egy lekérdezést végrehajtó tervet. A lekérdezési teljesítmény javítása érdekében fontos, hogy az egyes oszlopokra vonatkozó statisztikát, különösen a lekérdezési illesztésekben használt oszlopokat használja. A [statisztikák létrehozása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) automatikusan megtörténik.  A statisztikák frissítése azonban nem történik meg automatikusan. A statisztikák frissítése jelentős számú sor hozzáadása vagy módosítása után. Például egy terhelés után frissítse a statisztikát. További információ: [statisztikai útmutató](sql-data-warehouse-tables-statistics.md).
+
+## <a name="primary-key-and-unique-key"></a>Elsődleges kulcs és egyedi kulcs
+Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.  Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.  [SQL Data Warehouse táblázat megkötésének](sql-data-warehouse-table-constraints.md)ellenőrzését.
 
 ## <a name="commands-for-creating-tables"></a>Táblázatok létrehozásához szükséges parancsok
 Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
@@ -128,8 +131,7 @@ Ha az adatok több adattárból származnak, az adatok az adatraktárba helyezhe
 ## <a name="unsupported-table-features"></a>Nem támogatott táblázat-funkciók
 SQL Data Warehouse támogatja a más adatbázisok által kínált tábla-funkciók számos, de nem teljes használatát.  A következő lista a SQL Data Warehouse által nem támogatott táblázat-funkciókat mutatja be.
 
-- Elsődleges kulcs, külső kulcsok, egyedi, [tábla korlátozásai](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- Külső kulcs, ellenőrzési [táblázat megkötései](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [Számított oszlopok](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Indexelt nézetek](/sql/relational-databases/views/create-indexed-views)
 - [Sorozat](/sql/t-sql/statements/create-sequence-transact-sql)

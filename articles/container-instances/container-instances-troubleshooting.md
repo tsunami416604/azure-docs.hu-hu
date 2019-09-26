@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325588"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300461"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances gyakori problémáinak elhárítása
 
-Ez a cikk bemutatja, hogyan lehet a tárolók Azure Container Instances való felügyeletére vagy üzembe helyezésére vonatkozó gyakori hibákat elhárítani. Lásd még: [Gyakori kérdések](container-instances-faq.md).
+Ez a cikk bemutatja, hogyan lehet a tárolók Azure Container Instances való felügyeletére vagy üzembe helyezésére vonatkozó gyakori hibákat elhárítani. Lásd még: [Gyakori kérdések](container-instances-faq.md). 
+
+Ha további támogatásra van szüksége, tekintse meg a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)elérhető **Súgó + támogatási** lehetőségeket.
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
@@ -27,8 +29,8 @@ A tároló specifikációjának meghatározásakor bizonyos paramétereknek meg 
 | Scope | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
 | --- | --- | --- | --- | --- | --- |
 | Tároló csoportjának neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tároló portjai | 1 és 65535 között |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
+| Tároló neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Tároló portjai | 1 és 65535 között |Integer |1 és 65535 közötti egész szám |`<port-number>` |`443` |
 | DNS name label | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>` |`frontend-site1` |
 | Környezeti változó | 1-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és aláhúzás (_) bárhol az első vagy az utolsó karakter kivételével |`<name>` |`MY_VARIABLE` |
 | Kötet neve | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűk, számok és kötőjelek bárhol, az első vagy az utolsó karakter kivételével. Két egymást követő kötőjel nem szerepelhet. |`<name>` |`batch-output-volume` |
@@ -200,9 +202,28 @@ Ez a hiba azt jelzi, hogy nagy terhelés miatt abban a régióban, amelyben a k�
 
 A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a tároló-csoportokat működtető mögöttes infrastruktúrához. Ez magában foglalja a tároló gazdagépén futó Docker API hozzáférését és a Kiemelt tárolók futtatását. Ha a Docker-interakcióra van szüksége, tekintse meg a [Rest](https://aka.ms/aci/rest) -dokumentációt, ahol megtekintheti az ACI API által támogatott műveleteket. Ha hiányzik valami, küldjön egy kérelmet az [ACI visszajelzési fórumokra](https://aka.ms/aci/feedback).
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Előfordulhat, hogy az IP-címek nem érhetők el, mert nem egyeznek a portok
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Előfordulhat, hogy a tároló csoport IP-címe nem érhető el, mert nem egyeznek a portok
 
-A Azure Container Instances jelenleg nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt, de ez a javítás az ütemterven van. Ha úgy találja, hogy az IP-címek nem érhetők el, akkor győződjön meg róla, hogy úgy konfigurálta a tároló-rendszerképet, hogy a tároló csoportjába `ports` tartozó, a tulajdonsággal közzétett portokat figyelje.
+A Azure Container Instances még nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt. Ha úgy találja, hogy a tároló csoport IP-címe nem érhető el, akkor győződjön meg róla, hogy úgy konfigurálta a tároló-rendszerképet, hogy a tároló csoportjában `ports` a tulajdonsággal elérhető portokat figyelje.
+
+Ha szeretné ellenőrizni, hogy Azure Container instances tud-e figyelni a tároló rendszerképében konfigurált porton, tesztelje a portot közzétevő `aci-helloworld` rendszerkép központi telepítését. Futtassa az `aci-helloworld` alkalmazást is, hogy az figyelje a portot. `aci-helloworld`egy opcionális környezeti változót `PORT` fogad, amely felülbírálja az alapértelmezett 80-es portot, amely figyeli a szolgáltatást. Például a 9000-es port teszteléséhez:
+
+1. Állítsa be a tároló csoportot a 9000-es port megjelenítéséhez, és adja át a portszámot a környezeti változó értékeként:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Keresse meg a tároló csoport IP-címét a parancs kimenetében `az container create`. Keresse meg az **IP**értékét. 
+1. A tároló sikeres kiépítés után keresse meg a böngészőben a tároló alkalmazás IP-címét és portját, például: `192.0.2.0:9000`. 
+
+    Megjelenik az "Üdvözöljük Azure Container Instances!" a webalkalmazás által megjelenített üzenet.
+1. Ha elkészült a tárolóval, távolítsa el a parancsot a `az container delete` parancs használatával:
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

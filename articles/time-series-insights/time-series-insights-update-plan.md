@@ -8,21 +8,21 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72d98e0ca4f75835e7dcc2e7a14b037ccf0d6d7f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840561"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300694"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
 Ez a cikk azt ismerteti, hogyan lehet gyorsan megtervezni és megkezdeni az első lépéseket a Azure Time Series Insights előzetes verziójának használatával.
 
 > [!NOTE]
-> Az általánosan elérhető Time Series Insights-példány megtervezéséhez ajánlott eljárásokat a [Azure Time Series Insights általános elérhetőségi környezet](time-series-insights-environment-planning.md)megtervezése című témakörben talál.
+> Az általánosan elérhető Time Series Insights-példány megtervezéséhez ajánlott eljárásokat a [Azure Time Series Insights általános elérhetőségi környezet megtervezése](time-series-insights-environment-planning.md)című témakörben talál.
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Ajánlott eljárások a tervezéshez és előkészítéshez
 
@@ -30,7 +30,7 @@ A Time Series Insights első lépéseihez érdemes megismernie a következőket:
 
 * Mit kap, ha [kiépít egy Time Series Insights előnézeti környezetet](#the-preview-environment).
 * Az [idősorozat-azonosítók és az időbélyeg tulajdonságai](#configure-time-series-ids-and-timestamp-properties).
-* Az új idősorozat- [modell](#understand-the-time-series-model), valamint a saját létrehozása.
+* Az új [Idősorozat-modell](#understand-the-time-series-model), valamint a saját létrehozása.
 * [Események hatékony küldése a JSON-ban](#shape-your-events).
 * Time Series Insights [üzleti katasztrófák helyreállítási lehetőségei](#business-disaster-recovery).
 
@@ -67,7 +67,7 @@ Ha üresen hagyja, az esemény időbélyegzője az sorba helyezni időpontját h
 
 ## <a name="understand-the-time-series-model"></a>Az idősorozat-modell ismertetése
 
-Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat](./time-series-insights-update-tsm.md)-modellről.
+Mostantól konfigurálhatja Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információ az új [Idősorozat-modellről](./time-series-insights-update-tsm.md).
 
 A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Time Series Insightsba való kitolása előtt. A modell létrehozásához tekintse meg [az idősorozat-modell használatát](./time-series-insights-update-how-to-tsm.md)ismertető témakört.
 
@@ -92,4 +92,4 @@ További információ: [Shape Events](./time-series-insights-send-events.md#json
 
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról a Time Series Insights előzetes verziójában.
 
-- Tudnivalók az [](./time-series-insights-update-tsm.md) adatmodellezésről a Time Series Insights előzetes verziójában.
+- Tudnivalók az [adatmodellezésről](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziójában.

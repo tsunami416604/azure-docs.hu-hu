@@ -1,5 +1,5 @@
 ---
-title: Üzenetkezelési kivételek – Azure Event Hubs |} A Microsoft Docs
+title: Üzenetküldési kivételek a .NET-Azure Event Hubshoz | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs üzenetküldési kivételei és a javasolt műveletek listáját tartalmazza.
 services: event-hubs
 documentationcenter: na
@@ -11,27 +11,27 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6680902180a1d4a3c75080e232569cf760ba078
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001766"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309845"
 ---
-# <a name="event-hubs-messaging-exceptions"></a>Az Event Hubs üzenetküldési kivételei
+# <a name="event-hubs-messaging-exceptions---net"></a>Üzenetkezelési kivételek Event Hubs – .NET
 
-Ez a cikk az Azure Service Bus üzenetkezelési API szalagtárban, tartalmazza a .NET Framework Event Hubs API-k által előállított kivételeket mutatja be. Ez a hivatkozás változhatnak, ezért vissza frissítések keresése.
+Ez a cikk a .NET-keretrendszer Event Hubs API-kat tartalmazó Azure Service Bus Messaging .NET API-függvénytár által létrehozott néhány .NET-kivételt sorolja fel. Ez a hivatkozás változhatnak, ezért vissza frissítések keresése.
 
 ## <a name="exception-categories"></a>Kivétel kategóriák
 
-Az Event Hubs API-k készítése a kivételeket, amelyek együtt őket megoldása érdekében a kapcsolódó művelet a következő kategóriákba esnek is.
+A Event Hubs .NET API-k olyan kivételeket hoznak elő, amelyek a következő kategóriákba sorolhatók, valamint a hozzájuk tartozó műveletekkel.
 
-1. A felhasználó kódolási hiba: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Általános művelet: megpróbálja kijavítani a kódot, a folytatás előtt.
-2. A telepítő/konfigurációs hiba: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Általános művelet: tekintse át a konfigurációt, és szükség esetén módosítsa.
-3. Átmeneti kivételeket: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception), [Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception), [ Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Általános művelet: értesítse a felhasználókat, vagy próbálja megismételni a műveletet.
-4. Kivételek: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](#timeoutexception), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [ Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Általános művelet: kivétel típusának; Tekintse meg a tábla a következő szakaszban. 
+1. Felhasználói kódolási hiba: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Általános művelet: megpróbálja kijavítani a kódot, a folytatás előtt.
+2. Telepítési/konfigurációs hiba: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Általános művelet: tekintse át a konfigurációt, és szükség esetén módosítsa.
+3. Átmeneti kivételek: [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. ServerBusyException](#serverbusyexception), [Microsoft. Azure. EventHubs. ServerBusyException](#serverbusyexception), [ Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Általános művelet: értesítse a felhasználókat, vagy próbálja megismételni a műveletet.
+4. Egyéb kivételek: [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. timeoutexception osztályról](#timeoutexception), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Általános művelet: kivétel típusának; Tekintse meg a tábla a következő szakaszban. 
 
 ## <a name="exception-types"></a>Kivételtípusok
 A következő táblázat felsorolja az üzenetkezelési kivételtípusok, és azok okok, és a megjegyzések javasolt művelet is igénybe vehet.
@@ -46,11 +46,11 @@ A következő táblázat felsorolja az üzenetkezelési kivételtípusok, és az
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | A művelethez társított entitás nem létezik, vagy törölve lett. | Győződjön meg arról, hogy az entitás létezik. | Újrapróbálkozás nem segít. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Ügyfél nem sikerül egy Eseményközpont kapcsolatot létesíteni. |Ellenőrizze, hogy a megadott állomásnév helyességéről, valamint a gazdagép érhető el. | Újrapróbálkozási segíthetnek a nem állandó hálózati kapcsolat merül fel. |
 | [Microsoft.ServiceBus.Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Szolgáltatás nem tudja feldolgozni a kérelmet jelenleg. | Ügyfél Várjon egy ideig, majd próbálja megismételni a műveletet. <br /> Lásd: [ServerBusyException](#serverbusyexception). | Ügyfél bizonyos idő után újrapróbálkozik. Ha egy újra egy másik kivételt eredményez, ellenőrizze az újrapróbálkozási viselkedését, hogy a kivétel. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Általános üzenetkezelés, amely a következő esetekben előfordulhat, hogy hibajelzést kivétel: Létrehozására tett kísérlet egy [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) neve vagy elérési útját, amelyhez tartozik egy másik entitás típusa (például egy témakör) segítségével. Kísérlet az 1 MB-nál nagyobb méretű üzenet küldése. A kiszolgáló vagy a szolgáltatás hibába ütközött a kérés feldolgozása közben. Tekintse meg a részleteket a kivétel üzenetét. Ez a kivétel általában átmeneti kivételként. | Ellenőrizze a kódot elemre, és győződjön meg arról, hogy csak a szerializálható objektumok használhatók az üzenettörzs (vagy egy egyéni szerializáló használata). Ellenőrizze a dokumentációban a Tulajdonságok támogatott érték típusú, és csak a támogatott használati típusok. Ellenőrizze a [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) tulajdonság. Ha **igaz**, megismételheti a műveletet. | Újrapróbálkozási viselkedés nincs meghatározva, és nem segíthetnek. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Általános üzenetküldési kivétel, amely a következő esetekben fordulhat elő: Kísérlet történt olyan [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) létrehozására, amely egy másik entitás típusához (például egy témakörhöz) tartozó névvel vagy elérési úttal rendelkezik. 1 MB-nál nagyobb üzenet küldésére történt kísérlet. A kiszolgáló vagy a szolgáltatás hibába ütközött a kérés feldolgozása közben. Tekintse meg a részleteket a kivétel üzenetét. Ez a kivétel általában átmeneti kivételként. | Ellenőrizze a kódot elemre, és győződjön meg arról, hogy csak a szerializálható objektumok használhatók az üzenettörzs (vagy egy egyéni szerializáló használata). Ellenőrizze a dokumentációban a Tulajdonságok támogatott érték típusú, és csak a támogatott használati típusok. Ellenőrizze a [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) tulajdonság. Ha **igaz**, megismételheti a műveletet. | Újrapróbálkozási viselkedés nincs meghatározva, és nem segíthetnek. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Próbálja meg egy entitás létrehozása egy nevet, amely a szolgáltatás névtéren egy másik entitás már használatban van. | Törölje a létező entitásba, vagy válasszon másik nevet az entitás létrehozását. | Újrapróbálkozás nem segít. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Az üzenetkezelési entitás elérte a maximális megengedett méretét. Ehhez a kivételhez akkor fordulhat elő, ha a fogadók maximális számát (ez 5) már meg van nyitva egy fogyasztó-csoport szintjén. | Üzenetek fogadása az entitást vagy a alvárólista létrehozásához az entitásban lévő terület. <br /> Lásd: [QuotaExceededException](#quotaexceededexception) | Újrapróbálkozási segíthet, ha üzenetek időközben eltávolították. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Kérés letiltva entitás futásidejű művelet. |Az entitás aktiválása. | Újrapróbálkozási segíthetnek, ha az entitás addig aktiválva lett. |
-| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Üzenet hasznos adattartalmából meghaladja az 1 MB-os korlátot. A 1 Megabájtos korlátot van a teljes üzenet, amely Rendszertulajdonságok és minden olyan .NET-terhelést is tartalmazhat. | Az üzenet hasznos adattartalmából méretének csökkentése, majd próbálja megismételni a műveletet. |Újrapróbálkozás nem segít. |
+| [Microsoft.ServiceBus.Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft.Azure.EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Az üzenet tartalma meghaladja az 1 MB-os korlátot. Ez az 1 MB-os korlát az összes üzenet, amely tartalmazhatja a rendszer tulajdonságait és a .NET-terhelést. | Az üzenet hasznos adattartalmából méretének csökkentése, majd próbálja megismételni a műveletet. |Újrapróbálkozás nem segít. |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) azt jelzi, hogy egy adott entitáshoz tartozó kvóta túl lett lépve.
@@ -81,18 +81,18 @@ Ez a hiba akkor fordulhat elő, egy vagy két oka:
 
 1. A terhelés nem egyenlően oszlik el az eseményközpont összes partíciójára, és a egy partíciót eléri a helyi átviteli egység korlátozás.
     
-    Megoldás: A partíció terjesztési stratégia indítják, vagy próbálja meg elérni [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) segíthetnek.
+    Megoldás: A partíció-terjesztési stratégia felülvizsgálata vagy a [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) kipróbálása segíthet.
 
 2. Az Event Hubs-névtér nem rendelkezik elegendő átviteli egységek (ellenőrizheti a **metrikák** képernyőn az eseménynaplóban a Hubs-névtér ablakában a [az Azure portal](https://portal.azure.com) megerősítéséhez). A portál összesített (1 perces) információkat jelenít meg, de a valós idejű – az átviteli sebességet, hogy csak egy becsült legyen mérjük.
 
-    Megoldás: Növelje a névtéren az átviteli egységek segítségével. A teheti ezt a műveletet a portálon a **méretezési** ablak az Event Hubs-névtér képernyőn. Vagy használhat [automatikus feltöltésről](event-hubs-auto-inflate.md).
+    Megoldás: A névtérben található átviteli egységek növelése segíthet. A teheti ezt a műveletet a portálon a **méretezési** ablak az Event Hubs-névtér képernyőn. Vagy használhat [automatikus feltöltésről](event-hubs-auto-inflate.md).
 
 ### <a name="error-code-50001"></a>50001-es hibakód:
 
 Ez a hiba a kell ritkán fordul elő. Ez történik, ha a tároló futtatását névteréhez kód processzor alacsony – az Event Hubs terheléselosztó nem több, mint néhány másodpercet kezdődik.
 
-### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>A GetRuntimeInformation metódus hívása a korlátot
-Azure Event hubs szolgáltatás támogatja a GetRuntimeInfo másodpercenként legfeljebb 50 hívások / másodperc. A korlát elérésekor a következőhöz hasonló kivételhiba jelenhet meg:
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>A GetRuntimeInformation metódus hívásának korlátozása
+Az Azure Event Hubs másodpercenként legfeljebb 50 hívást támogat a GetRuntimeInfo másodpercenként. A korlát elérésekor a következőhöz hasonló kivétel jelenhet meg:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

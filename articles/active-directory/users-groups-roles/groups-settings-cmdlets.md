@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882997"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315696"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmazza. Ez a tartalom csak az Office 365-csoportokra vonatkozik (más néven Unified groups). 
@@ -123,7 +123,7 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Logikai<li>Alapértelmezett False (Hamis) | Logikai érték, amely azt jelzi, hogy a vendég felhasználó lehet-e a csoportok tulajdonosa. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Típus: Logikai<li>Alapértelmezett True | Logikai érték, amely azt jelzi, hogy a vendég felhasználó tud-e hozzáférni az Office 365-csoportok tartalmához.  Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" | A vendég használati irányelvekre mutató hivatkozás URL-címe. |
-|  <ul><li>AllowToAddGuests<li>Típus: Logikai<li>Alapértelmezett True | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz.|
+|  <ul><li>AllowAddGuests<li>Típus: Logikai<li>Alapértelmezett True | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz.|
 |  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" |Az Office 365-csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Példa: A csoportokra vonatkozó vendégfiók konfigurálása a címtár szintjén
@@ -140,9 +140,9 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Ezután frissítse a AllowToAddGuests-beállítást
+4. Ezután frissítse a AllowAddGuests-beállítást
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. Ezután alkalmazza a beállítást:
   
@@ -196,7 +196,7 @@ Ezek a lépések a címtár szintjén olvassák el a beállításokat, amelyek a
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
 
 4. Állítsa a beállítást a szükséges értékre:
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. Szerezze be annak a csoportnak az AZONOSÍTÓját, amelyre alkalmazni kívánja ezt a beállítást:
    ```powershell
@@ -259,7 +259,7 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
    ```
 3. Frissítse a csoport beállítását, mint amennyire szüksége van, például:
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. Ezután kérje le az adott csoport beállításának AZONOSÍTÓját:
    ```powershell

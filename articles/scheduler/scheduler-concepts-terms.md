@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530944"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300949"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
 > [!IMPORTANT]
-> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
 ## <a name="entity-hierarchy"></a>Entitáshierarchia
 
@@ -39,7 +39,7 @@ A magasabb szinteken a Scheduler REST API ezeket a műveleteket teszi elérhető
 
 ### <a name="job-management"></a>Feladatkezelés
 
-Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A következő műveletek elvégzéséhez URI-cím:
+Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A következő műveletek URI-címe:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -47,7 +47,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>A feladatgyűjtemény kezelése
 
-Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). A következő műveletek elvégzéséhez URI-cím:
+Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). A következő műveletek URI-címe:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -55,7 +55,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Feladatelőzmények kezelése
 
-A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A következő URI-cím a művelethez:
+A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A művelet URI-címe a következő:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -75,13 +75,13 @@ Az Azure Scheduler több feladattípust támogat:
 Magasabb szinteken a Scheduler-feladatok az alábbi alapszintű összetevőkből állnak:
 
 * A feladat időzítőjének indításakor futó művelet
-* Nem kötelező: Az idő a feladat futtatása
-* Nem kötelező: Mikor és hogyan a feladat megismétlésének
-* Nem kötelező: Egy hiba műveletet, amely akkor fut, ha az elsődleges művelet sikertelen
+* Nem kötelező: A feladatok futtatásának ideje
+* Nem kötelező: Mikor és milyen gyakran kell megismételni a feladatot
+* Nem kötelező: Hiba történt, amely akkor fut le, ha az elsődleges művelet meghiúsul
 
 A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a következő ütemezett futás időpontja. A feladat kóddefiníciója egy JavaScript Object Notation (JSON) formátumú objektum, amely a következő elemeket tartalmazza:
 
-| Elem | Kötelező | Leírás | 
+| Elem | Szükséges | Leírás | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
@@ -227,7 +227,7 @@ Az elsődleges **action** művelethez hasonlóan a hibakezelési művelet is leh
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>recurrence
+## <a name="recurrence"></a>ismétlődés
 
 Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recurrence** objektumot, például:
 
@@ -251,7 +251,7 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
 | **schedule** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
 | **hours** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
-| **minutes** | Nem | 0 és 59 | A feladat futtatásának időpontját meghatározó percjelek | 
+| **minutes** | Nem | 0 – 59 | A feladat futtatásának időpontját meghatározó percjelek | 
 | **months** | Nem | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
 | **monthDays** | Nem | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
 | **weekDays** | Nem | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 

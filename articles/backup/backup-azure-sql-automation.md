@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650340"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309757"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -46,8 +46,6 @@ Az objektum-hierarchiát a következő ábra összegzi.
 Tekintse át az az **. recoveryservices szolgáltatónál** [parancsmag](/powershell/module/az.recoveryservices) -referenciát az Azure Library-ben.
 
 ### <a name="set-up-and-install"></a>Beállítás és telepítés
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A PowerShell beállítása a következőképpen történik:
 
@@ -109,7 +107,7 @@ A Recovery Services-tároló Resource Manager-erőforrás, ezért egy erőforrá
 
 3. Adja meg a tároló tárolásához használni kívánt redundancia típusát.
 
-    * [Helyileg redundáns tárolást](../storage/common/storage-redundancy-lrs.md) vagy földrajzilag [redundáns tárolást](../storage/common/storage-redundancy-grs.md)használhat.
+    * [Helyileg redundáns tárolást](../storage/common/storage-redundancy-lrs.md) vagy [földrajzilag redundáns tárolást](../storage/common/storage-redundancy-grs.md)használhat.
     * A következő példa beállítja a **-BackupStorageRedundancy** beállítást a[set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd számára a **testvault** beállításnál a **GeoRedundant**értékre.
 
     ```powershell
@@ -200,7 +198,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>Az SQL-alapú virtuális gép regisztrálása
 
-Az Azure-beli virtuális gépek biztonsági mentései és Azure-fájlmegosztás esetén a Backup szolgáltatás képes csatlakozni ezekhez a Azure Resource Manager erőforrásokhoz, és beolvasni a vonatkozó adatokat. Mivel az SQL egy Azure-beli virtuális gépen belüli alkalmazás, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához. Ehhez regisztrálnia kell az Azure-beli virtuális gépet, amely a Recovery Services-tárolóval rendelkező SQL-alkalmazást tartalmazza. Miután regisztrált egy SQL virtuális gépet egy tárolóval, csak az adott tárolóhoz biztosíthatja az SQL-adatbázisok védettségét. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
+Az Azure-beli virtuális gépek biztonsági mentései és Azure-fájlmegosztás esetén a Backup szolgáltatás képes csatlakozni ezekhez a Azure Resource Manager erőforrásokhoz, és beolvasni a vonatkozó adatokat. Mivel az SQL egy Azure-beli virtuális gépen belüli alkalmazás, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához. Ehhez *regisztrálnia* kell az Azure-beli virtuális gépet, amely a Recovery Services-tárolóval rendelkező SQL-alkalmazást tartalmazza. Miután regisztrált egy SQL virtuális gépet egy tárolóval, csak az adott tárolóhoz biztosíthatja az SQL-adatbázisok védettségét. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
 
 ````powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -364,7 +362,7 @@ $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -Po
 > [!IMPORTANT]
 > Egy biztonsági másolattal rendelkező SQL-adatbázis visszaállítható új ADATBÁZISként egy másik SQLInstance, amely egy Azure-beli virtuális gépen van regisztrálva erre a tárba.
 
-A fentiekben leírtak szerint, ha a cél SQLInstance egy másik Azure-beli virtuális gépen belül [](#registering-the-sql-vm) található, győződjön meg róla, hogy regisztrálva van a tárolóban, és a kapcsolódó SQLInstance védhető elemként jelenik meg.
+A fentiekben leírtak szerint, ha a cél SQLInstance egy másik Azure-beli virtuális gépen belül található, győződjön meg róla, hogy [regisztrálva](#registering-the-sql-vm) van a tárolóban, és a kapcsolódó SQLInstance védhető elemként jelenik meg.
 
 ````powershell
 $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
@@ -512,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
+#### <a name="delete-backup-data"></a>Biztonsági másolat adatainak törlése
 
 Ahhoz, hogy teljesen el lehessen távolítani a tárolt biztonsági mentési fájlokat a tárolóban, egyszerűen adja hozzá a "-RemoveRecoveryPoints" jelzőt, vagy váltson a ["letiltás" védelmi parancsra](#retain-data).
 
@@ -531,7 +529,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>SQL-alapú virtuális gép regisztrációjának törlése
 
-Ha az SQL Server összes adatbázisa már [nem védett, és nem áll rendelkezésre biztonsági másolat](#delete-backup-data), a felhasználó megszüntetheti az SQL virtuális gép regisztrációját ebből a tárból. Csak ezután a felhasználó védetté teheti az adatbázisok egy másik tárba való ellátását. Az SQL virtuális gép regisztrációjának megszüntetéséhez használja a [Regisztráció törlése – AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
+Ha az SQL Server összes [adatbázisa már nem védett, és nem áll rendelkezésre biztonsági másolat](#delete-backup-data), a felhasználó megszüntetheti az SQL virtuális gép regisztrációját ebből a tárból. Csak ezután a felhasználó védetté teheti az adatbázisok egy másik tárba való ellátását. Az SQL virtuális gép regisztrációjának megszüntetéséhez használja a [Regisztráció törlése – AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS parancsmagot.
 
 ````powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -542,7 +540,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Fontos megjegyezni, hogy Azure Backup csak a felhasználó által aktivált feladatokat követi nyomon az SQL Backup szolgáltatásban. Az ütemezett biztonsági mentések (beleértve a naplók biztonsági mentését) nem láthatók a portálon/PowerShellben. Ha azonban bármelyik ütemezett feladat meghiúsul, [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és megjelenik a portálon. A [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md) nyomon követheti az összes ütemezett feladatot és egyéb releváns információt.
 
-A felhasználók nyomon követhetik az alkalmi/felhasználó által aktivált műveleteket az aszinkron feladatok (például [](#on-demand-backup) biztonsági mentés) kimenetében visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS parancsmag használatával nyomon követheti a feladatot és annak részleteit.
+A felhasználók nyomon követhetik az alkalmi/felhasználó által aktivált műveleteket az aszinkron feladatok (például biztonsági mentés) [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS parancsmag használatával nyomon követheti a feladatot és annak részleteit.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
@@ -571,4 +569,4 @@ Tegyük fel például, hogy egy SQL AG két csomóponttal rendelkezik: "SQL-Serv
 
 az SQL-Server-0, SQL-Server-1 az "AzureVMAppContainer" néven jelenik meg a [biztonsági mentési tárolók listáján](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Csak a megfelelő SQL-adatbázist olvassa be a [biztonsági mentés engedélyezéséhez](#configuring-backup) , és az ad [hoc biztonsági mentési](#on-demand-backup) és [visszaállítási PS](#restore-sql-dbs) -parancsmagok megegyeznek.
+Csak a megfelelő SQL-adatbázist olvassa be a [biztonsági mentés engedélyezéséhez](#configuring-backup) , és az ad [hoc biztonsági mentési](#on-demand-backup) és [visszaállítási PS-parancsmagok](#restore-sql-dbs) megegyeznek.

@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170478"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315270"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
@@ -88,7 +88,6 @@ Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja
 Jelölje be a **jelenlegi állapot törlése és a szinkronizálás újraindítása** jelölőnégyzetet, és válassza a **Mentés** a következőre:
 
 * A kiépítési szolgáltatás leállítása
-* Az Azure AD által kezelt fiókok gyorsítótárazott adatainak kiírása
 * Indítsa újra a szolgáltatásokat, és futtassa újra a kezdeti ciklust
 
 Ez a beállítás lehetővé teszi, hogy a rendszergazdák újra elindítsák a kiépítési telepítési folyamatot.
