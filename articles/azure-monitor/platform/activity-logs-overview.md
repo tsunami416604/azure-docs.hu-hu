@@ -5,38 +5,38 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170621"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262126"
 ---
 # <a name="overview-of-azure-activity-log"></a>Az Azure Activity log áttekintése
 
-Az **Azure-tevékenység naplója** betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez számos adattartományt tartalmaz, Azure Resource Manager operatív adatokból Service Health események frissítéseire. A műveletnapló korábbi nevén naplózási _naplók_ vagy _operatív naplók_voltak, mivel a felügyeleti kategória az előfizetésekhez tartozó vezérlési sík eseményeket jelenti. 
+Az **Azure-tevékenység naplója** betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez számos adattartományt tartalmaz, Azure Resource Manager operatív adatokból Service Health események frissítéseire. A műveletnapló korábbi nevén _naplózási naplók_ vagy _operatív naplók_voltak, mivel a felügyeleti kategória az előfizetésekhez tartozó vezérlési sík eseményeket jelenti. 
 
 A tevékenység naplójának használatával meghatározhatja a _mi_, _ki_és _Mikor_ az előfizetésben lévő erőforrásokra vonatkozó írási műveletek (Put, post, DELETE) esetében. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is. 
 
 A műveletnapló nem tartalmaz olvasási (GET) műveleteket vagy műveleteket a klasszikus/RDFE modellt használó erőforrásokhoz.
 
-## <a name="comparison-to-diagnostic-logs"></a>Összehasonlítás a diagnosztikai naplókkal
-Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van. Adatokkal szolgál az erőforráson kívülről (a "vezérlési síkon") végzett műveletekről. A [diagnosztikai naplókat](diagnostic-logs-overview.md) egy erőforrás bocsátja ki, és információt nyújt az adott erőforrás működéséről (az "adatsíkon"). Minden erőforráshoz engedélyeznie kell a diagnosztikai beállításokat.
+## <a name="comparison-to-resource-logs"></a>Erőforrás-naplók összehasonlítása
+Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van. Adatokkal szolgál az erőforráson kívülről (a "vezérlési síkon") végzett műveletekről. Az erőforrás- [naplókat](resource-logs-overview.md) egy erőforrás bocsátja ki, és információt nyújt az adott erőforrás működéséről (az "adatsíkon"). Az erőforrás-naplók összegyűjtéséhez létre kell hoznia egy diagnosztikai beállítást az egyes erőforrásokhoz.
 
-![Tevékenységek naplói a diagnosztikai naplókhoz képest](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Tevékenységek naplói az erőforrás-naplókhoz képest](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]
 > Az Azure-tevékenység naplója elsősorban a Azure Resource Managerban bekövetkező tevékenységek esetében fordul elő. A klasszikus/RDFE modellt használó erőforrásokat nem követi nyomon. Néhány klasszikus erőforrástípus rendelkezik egy proxy erőforrás-szolgáltatóval Azure Resource Managerban (például: Microsoft. ClassicCompute). Ha egy klasszikus erőforrástípust használ a Azure Resource Manager ezen proxy erőforrás-szolgáltatók használatával, a műveletek megjelennek a tevékenység naplójában. Ha a Azure Resource Manager proxyn kívüli klasszikus erőforrástípus is működik, a műveletek csak a műveleti naplóban lesznek rögzítve. A műveleti naplót a portál egy külön szakasza is megkeresheti.
 
 ## <a name="activity-log-retention"></a>Tevékenység naplójának megőrzése
-A létrehozást követően a rendszer nem módosítja vagy törli a tevékenység naplójának bejegyzéseit. Emellett a felületen vagy programozott módon nem módosítható. A műveletnapló eseményei 90 napig tárolódnak. Ha hosszabb ideig szeretné tárolni az adatokat, [gyűjtsön Azure monitor](activity-log-collect.md) vagy exportálja a [tárolóba vagy Event Hubsba](activity-log-export.md).
+A létrehozást követően a rendszer nem módosítja vagy törli a tevékenység naplójának bejegyzéseit. Emellett a felületen vagy programozott módon nem módosítható. A műveletnapló eseményei 90 napig tárolódnak. Ha hosszabb ideig szeretné tárolni az adatokat, [gyűjtsön Azure monitor](activity-log-collect.md) vagy [exportálja a tárolóba vagy Event Hubsba](activity-log-export.md).
 
 ## <a name="view-the-activity-log"></a>A műveletnapló megtekintése
-A Azure Portal **figyelő** menüjében tekintse meg a tevékenység naplóját az összes erőforráshoz. Egy adott erőforráshoz tartozó tevékenység naplójának megtekintése az erőforrás menüjének **tevékenység napló** lehetőségével. A műveletnapló rekordjait a PowerShell, a CLI vagy a REST API is beolvashatja.  Lásd: [Azure-Tevékenységnaplók eseményeinek megtekintése és](activity-log-view.md)beolvasása.
+A Azure Portal **figyelő** menüjében tekintse meg a tevékenység naplóját az összes erőforráshoz. Egy adott erőforráshoz tartozó tevékenység naplójának megtekintése az erőforrás menüjének **tevékenység napló** lehetőségével. A műveletnapló rekordjait a PowerShell, a CLI vagy a REST API is beolvashatja.  Lásd: [Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása](activity-log-view.md).
 
 ![Műveletnapló megtekintése](./media/activity-logs-overview/view-activity-log.png)
 
@@ -57,10 +57,10 @@ A tevékenység naplójának minden eseménye egy adott kategóriával rendelkez
 | Category | Leírás |
 |:---|:---|
 | Rendszergazdai | A Resource Manageren keresztül végrehajtott összes létrehozási, frissítési, törlési és műveleti művelet rekordját tartalmazza. Ilyenek például a _virtuális gépek létrehozása_ és a _hálózati biztonsági csoport törlése_.<br><br>Egy felhasználó vagy alkalmazás által a Resource Managerrel végrehajtott összes művelet egy adott erőforrástípus műveletének megfelelően van modellezve. Ha a művelet típusa _írás_, _Törlés_vagy _művelet_, akkor a művelet kezdési és sikerességi rekordjait is rögzíti a rendszer a felügyeleti kategóriában. A rendszergazdai események az előfizetés szerepköralapú hozzáférés-vezérlésének változásait is tartalmazzák. |
-| Service Health | Az Azure-ban történt összes szolgáltatás-egészségügyi incidens rekordját tartalmazza. Az _USA keleti régiójában SQL Azure_Service Health eseménynek például állásidőt tapasztalhat. <br><br>Az események Service Health hat fajta: _Beavatkozás szükséges_, _segítség_a helyreállításhoz, incidenshez, _karbantartáshoz_, _információhoz_vagy _biztonsághoz_. Ezek az események csak akkor jönnek létre, ha van olyan erőforrása az előfizetésben, amelyet az esemény érint.
-| Resource Health | Az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Resource Health eseményre például a _virtuális gép állapota nem érhető_el értékre módosult.<br><br>Resource Health események a négy állapot egyikét jelenthetik: _Elérhető_, nem _elérhető_, _csökkentett teljesítményű_és _ismeretlen_. Emellett Resource Health eseményeket úgy is kategorizálhatja, hogy _platform kezdeményezett_ vagy _felhasználó_által kezdeményezett. |
+| Service Health | Az Azure-ban történt összes szolgáltatás-egészségügyi incidens rekordját tartalmazza. Az _USA keleti régiójában SQL Azure Service Health eseménynek például állásidőt tapasztalhat_. <br><br>Az események Service Health hat fajta: _Beavatkozás szükséges_, _segítség a helyreállításhoz_, _incidenshez_, _karbantartáshoz_, _információhoz_vagy _biztonsághoz_. Ezek az események csak akkor jönnek létre, ha van olyan erőforrása az előfizetésben, amelyet az esemény érint.
+| Resource Health | Az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Resource Health eseményre például a _virtuális gép állapota nem érhető el értékre módosult_.<br><br>Resource Health események a négy állapot egyikét jelenthetik: _Elérhető_, nem _elérhető_, _csökkentett teljesítményű_és _ismeretlen_. Emellett Resource Health eseményeket úgy is kategorizálhatja, hogy _platform kezdeményezett_ vagy _felhasználó által kezdeményezett_. |
 | Riasztás | Az Azure-riasztások aktiválási rekordját tartalmazza. Egy riasztási esemény például a _MyVM CPU%-a az elmúlt 5 percben 80_.|
-| Automatikus méretezés | Az adott előfizetésben definiált bármely, az autoskálázási motor működésével kapcsolatos események rekordját tartalmazza. Az autoskálázási eseményre például _nem sikerült_a vertikális Felskálázási művelet. |
+| Automatikus méretezés | Az adott előfizetésben definiált bármely, az autoskálázási motor működésével kapcsolatos események rekordját tartalmazza. Az autoskálázási eseményre például _nem sikerült a vertikális Felskálázási művelet_. |
 | Ajánlás | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
 | Biztonság | A Azure Security Center által generált riasztások rekordját tartalmazza. A biztonsági eseményekre példaként a rendszer _gyanús kettős kiterjesztésű fájlt futtat_. |
 | Szabályzat | A Azure Policy által végrehajtott összes hatás művelet műveleteit tartalmazza. Példák a házirendi eseményekre: _naplózás_ és _Megtagadás_. A házirend által végrehajtott összes művelet az erőforráson végzett műveletként van modellezve. |

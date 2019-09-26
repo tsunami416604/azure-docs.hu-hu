@@ -5,7 +5,7 @@ keywords: számla,számla letöltése,azure számla,azure használat
 services: billing
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 45f4a45828501afea52f0ad522c3f3f6777f7ccd
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c65696a37e33cd6ced93639677659e110a1db6d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057691"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121797"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése
 
@@ -48,7 +48,7 @@ A legtöbb előfizetés esetében a számláját letöltheti az Azure Portalról
 
 3. A PDF formátumú számla letöltéséhez kattintson a Letöltés gombra, majd válassza a **Számla letöltése** lehetőséget. Ha a számla **Nem érhető el**, derítse ki, [miért nem látja a legutóbbi számlázási időszakra vonatkozó számlát](#noinvoice).
 
-    ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
+    ![A számlázási időszakokat, a letöltési lehetőséget és az egyes számlázási időszakok teljes díját ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
 4. A **CSV letöltése** gombra kattintva letöltheti a felhasznált mennyiségek és a becsült költségek napi részletezését.
 
@@ -88,7 +88,7 @@ További címzetteket is engedélyezhet és konfigurálhat, akik e-mailben megka
 
 1. Válassza ki az előfizetését az [Előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Hagyja jóvá az összes előfizetését. Kattintson a **Számlák**, majd a **Számla küldése e-mailben** parancsra.
 
-    ![A jóváhagyási folyamatot megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
+    ![A jóváhagyási folyamatot ábrázoló képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
 2. Kattintson a **jóváhagyási** lehetőségre, és fogadja el a feltételeket.
 
@@ -173,7 +173,7 @@ Letöltheti a jelenlegi számlázási időszak aktuális hónapjának használat
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -182,7 +182,7 @@ A számlájával és a díjakkal kapcsolatos további információkért lásd:
 - [Microsoft Azure-elszámolások értelmezése](billing-understand-your-bill.md)
 - [Az Azure-számla feltételeinek értelmezése](billing-understand-your-invoice.md)
 - [A Microsoft Azure részletes használati feltételeinek értelmezése](billing-understand-your-usage.md)
-- [A szervezet Azure-díjszabásának megtekintése](billing-ea-pricing.md)
+- [A szervezet Azure-díjszabásásnak megtekintése](billing-ea-pricing.md)
 
 Ha Microsoft-ügyfélszerződéssel rendelkezik, tekintse meg a következő cikkeket:
 
@@ -190,4 +190,4 @@ Ha Microsoft-ügyfélszerződéssel rendelkezik, tekintse meg a következő cikk
 - [A számlázási profilhoz tartozó számla feltételeinek ismertetése](billing-mca-understand-your-invoice.md)
 - [A számlázási profiljához tartozó, az Azure használati adatait és díjait tartalmazó fájl ismertetése](billing-mca-understand-your-usage.md)
 - [A számlázási profil adózási dokumentumainak megtekintése és letöltése](billing-mca-download-tax-document.md)
-- [A szervezet Azure-díjszabásának megtekintése](billing-ea-pricing.md)
+- [A szervezet Azure-díjszabásásnak megtekintése](billing-ea-pricing.md)

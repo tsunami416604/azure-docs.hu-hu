@@ -1,6 +1,6 @@
 ---
 title: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása egy Android-alkalmazásból | Microsoft Docs
-description: Ismerje meg, hogyan jelentkeztethet be felhasználókat és hívhatja meg a Microsoft Graph API-t saját Android-alkalmazásából.
+description: Megtudhatja, hogyan jelentkezhet be a felhasználókba, és hogyan hívhatja meg a Microsoft Graph API-t Android-alkalmazásból.
 services: active-directory
 documentationcenter: android
 author: rwike77
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ac4007cc9379aa98d88099df13ba303063f9831f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592247"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268526"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
 
@@ -51,7 +51,7 @@ Az alkalmazást minden Azure AD-fiókhoz használhatja. Az egybérlős és a tö
 
 ## <a name="sample-code"></a>Mintakód
 
-A teljes mintakód megtalálható a GitHubon [](https://github.com/Azure-Samples/active-directory-android).
+A teljes mintakód megtalálható a [githubon](https://github.com/Azure-Samples/active-directory-android).
 
 ```Java
 // Initialize your app with MSAL
