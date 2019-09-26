@@ -18,7 +18,7 @@
       items:
         - name: Céltárak hozzáadása
           href: hpc-cache-add-storage.md
-        - name: Adatok áthelyezése a gyorsítótárba
+        - name: Adatok áthelyezése céltárakba (ha szükséges)
           items:
             - name: Az új blobtároló előzetes betöltése
               href: hpc-cache-ingest.md

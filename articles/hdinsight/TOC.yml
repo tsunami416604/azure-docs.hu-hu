@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: Példák
       items:
+        - name: Azure CLI-minták
+          href: ./azure-cli-samples.md
         - name: .NET-minták
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Java-példák
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: Hibaelhárítás
           items:
+            - name: Az Apache HBase teljesítményproblémáinak elhárítása
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: a hbase hbck következetlenségeket ad vissza
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: Tárolási kivétel a kapcsolat alaphelyzetbe állítása után

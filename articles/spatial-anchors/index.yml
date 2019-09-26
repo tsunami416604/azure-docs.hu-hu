@@ -16,6 +16,17 @@ metadata:
 abstract:
   description: 'A Spatial Anchors egy platformfüggetlen fejlesztői szolgáltatás, amely lehetővé teszi vegyesvalóság-élmények létrehozását olyan objektumok használatával, amelyek hosszabb időn keresztül és több eszközön is megőrzik a helyüket.'
 sections:
+  - title: Alapelvek
+    items:
+      - type: paragraph
+        text: 'Megismerkedhet az Azure Spatial Anchors alapvető fogalmaival:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/spatial-anchors/concepts/authentication">Hitelesítés</a>.
+          - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Horgonyzási kapcsolatok és útkeresés.</a>
+          - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Útmutatók.</a>
+          - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Naplózás és diagnosztika.</a>
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
@@ -24,35 +35,35 @@ sections:
         style: icon48
         items:
           - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Android
-            href: quickstarts/get-started-android.md
-          - image:
               src: /media/logos/logo_Windows.svg
               alt: null
-            text: HoloLens
-            href: quickstarts/get-started-hololens.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: iOS
-            href: quickstarts/get-started-ios.md
+            text: Unity HoloLens
+            href: quickstarts/get-started-unity-hololens.md
           - image:
               src: /media/logos/logo_android.svg
               alt: null
             text: Unity Android
             href: quickstarts/get-started-unity-android.md
           - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: Unity HoloLens
-            href: quickstarts/get-started-unity-hololens.md
-          - image:
               src: /media/logos/logo_ios.svg
               alt: null
             text: Unity iOS
             href: quickstarts/get-started-unity-ios.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
           - image:
               src: /media/logos/logo_xamarin.svg
               alt: null
@@ -66,9 +77,11 @@ sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan állíthat be, kezelhet, állíthat össze és helyezhet üzembe egy alkalmazást az Azure Spatial Anchors segítségével.'
+        text: 'Tudnivalók alkalmazások beállításáról, kezeléséről, buildeléséről és üzembe helyezéséről az Azure Spatial Anchors segítségével:'
       - type: list
         style: unordered
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Megosztás a Unityben.</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Megosztás a Unityben az Azure Cosmos DB-vel.</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Új Unity HoloLens-alkalmazás indítása.</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Új androidos alkalmazás indítása.</a>

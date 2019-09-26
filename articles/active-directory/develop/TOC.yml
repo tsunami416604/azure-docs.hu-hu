@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: Gyors útmutatók
       items:
-        - name: Fejlesztési környezet beállítása
+        - name: Bérlő beállítása
           href: quickstart-create-new-tenant.md
         - name: Alkalmazás konfigurálása
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS és macOS
               href: quickstart-v2-ios.md
             - name: Univerzális Windows-platform
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS és macOS
               href: tutorial-v2-ios.md
             - name: Univerzális Windows-platform
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: Áttekintés
               href: msal-overview.md
-            - name: Migrálás
+            - name: Migrálás ADAL-ről
               items:
                 - name: Migrálás MSAL.NET-re
                   href: msal-net-migration.md
                 - name: Migrálás MSAL.js-re
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migrálás MSAL-re iOS és macOS rendszer esetén
+                  href: migrate-objc-adal-msal.md
                 - name: Xamarin-alkalmazások migrálása az ADAL.NET és az MSAL.NET közötti közvetítők használatával
                   href: msal-net-migration-ios-broker.md
             - name: Támogatott hitelesítési folyamatok
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: 1.0-s verziójú alkalmazások hatókörei
                   href: msal-v1-app-scopes.md
-                - name: Jogkivonat-gyorsítótár szerializálása (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: Ügyfélalkalmazások
               items:
                 - name: Ügyfélalkalmazások
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: Naplózás
               href: msal-logging.md
-            - name: Egyszeri bejelentkezés (JS)
-              href: msal-js-sso.md
-            - name: Kérési viselkedés (JS)
-              href: msal-js-prompt-behavior.md
-            - name: ADFS-támogatás (.NET)
-              href: msal-net-adfs-support.md
+            - name: Egyszeri bejelentkezés
+              items:
+                - name: Egyszeri bejelentkezés az MSAL.js-sel
+                  href: msal-js-sso.md
+                - name: Egyszeri bejelentkezés az MSAL-lel iOS és macOS rendszer esetén
+                  items:
+                    - name: Egyszeri bejelentkezés MSAL-alkalmazások között
+                      href: single-sign-on-macos-ios.md
+                    - name: Egyszeri bejelentkezés ADAL- és MSAL-alkalmazások között
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Integrálás az ADFS-sel
+              items:
+                - name: ADFS-támogatás az MSAL.NET-ben
+                  href: msal-net-adfs-support.md
             - name: Integrálás az Azure AD B2C szolgáltatással
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS és macOS
+                  href: 'config-authority.md#b2c'
             - name: Megfontolandó szempontok és ismert problémák
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Ismert problémák – Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: MSAL iOS és macOS rendszerekre
+                  items:
+                    - name: SSL-hibák
+                      href: ssl-issues.md
         - name: Hitelesítési protokoll
           items:
             - name: Alkalmazástípusok és az OAuth2.0
@@ -378,6 +392,8 @@
               items:
                 - name: Jogkivonat beszerzése a gyorsítótárból
                   href: msal-net-acquire-token-silently.md
+                - name: Jogkivonat-gyorsítótár szerializálása
+                  href: msal-net-token-cache-serialization.md
                 - name: A jogkivonat-gyorsítótár törlése
                   href: msal-net-clear-token-cache.md
                 - name: Nyilvános ügyfélalkalmazás példányosítása beállításokkal
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: Egyéni állapot átadása hitelesítésé kérelmekben
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: Kérési viselkedés
+                  href: msal-js-prompt-behavior.md
+            - name: MSAL iOS és macOS rendszerekre
+              items:
+                - name: Microsoft Authentication Library iOS és macOS rendszerekre
+                  href: msal-differences-ios-macos.md
+                - name: Kulcskarika konfigurálása
+                  href: howto-v2-keychain-objc.md
+                - name: Böngészők és WebView objektumok testreszabása
+                  href: customize-webviews.md
+                - name: Egyéni jogcímek igénylése
+                  href: request-custom-claims.md
+                - name: Átirányítási URI konfigurálása
+                  href: redirect-uris-ios.md
         - name: A Visual Studio használata
           items:
             - name: Az Active Directory csatlakoztatott szolgáltatás használata
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: Gyors útmutatók
       items:
-        - name: Fejlesztési környezet beállítása
+        - name: Bérlő beállítása
           href: quickstart-create-new-tenant.md
         - name: Alkalmazás konfigurálása
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS és macOS
               href: quickstart-v1-ios.md
             - name: Windows asztali .NET
               href: quickstart-v1-dotnet.md

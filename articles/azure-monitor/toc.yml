@@ -431,6 +431,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Teljesítményszámlálók
                   href: app/performance-counters.md
+                - name: Eseményszámlálók
+                  href: app/eventcounters.md
                 - name: Függőségek
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +521,8 @@
                   items:
                     - name: Áttekintés
                       href: platform/diagnostics-extension-overview.md
+                    - name: Naplók gyűjtése
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Verzióelőzmények
@@ -644,22 +648,20 @@
               href: insights/service-map.md
             - name: Számítógépcsoportok
               href: platform/computer-groups.md
-        - name: Azure-erőforrások
+        - name: Azure-platform
           items:
-            - name: Diagnosztikai naplók
+            - name: Platformnaplók áttekintése
+              href: platform/platform-logs-overview.md
+            - name: Erőforrásnaplók
               items:
                 - name: Áttekintés
-                  href: platform/diagnostic-logs-overview.md
-                - name: Gyűjtés naplókban
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Gyűjtés az Azure Storage-ból
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Gyűjtés Azure Monitor-naplókban
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Archiválás a tárolóba
-                  href: platform/archive-diagnostic-logs.md
-                - name: Engedélyezés Resource Manager-sablonokkal
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure-előfizetés
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Streamelés az Event Hubsra
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Tevékenységnapló
               items:
                 - name: Áttekintés
@@ -674,6 +676,14 @@
                   href: platform/activity-log-export.md
                 - name: Séma
                   href: platform/activity-log-schema.md
+            - name: Diagnosztikai beállítások
+              items:
+                - name: Diagnosztikai beállítások létrehozása
+                  href: platform/diagnostic-settings.md
+                - name: Diagnosztikai beállítások létrehozása Resource Managerrel
+                  href: platform/diagnostic-settings-template.md
+                - name: Exportálás Blob Storage formátumba
+                  href: platform/resource-logs-blob-format.md
             - name: Adatok streamelése az Event Hubsra
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-elemzés
@@ -685,6 +695,7 @@
         - name: Storage
           items:
             - name: Azure Monitor a Storage-hoz
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Adatbázisok
           items:
@@ -747,7 +758,7 @@
             - name: A Configuration Manager csatlakoztatása
               href: platform/collect-sccm.md
         - name: Adatok streamelése az Event Hubsra
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Adatok elemzése
       items:
         - name: Mérőszámok

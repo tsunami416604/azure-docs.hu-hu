@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: e4504bbfc84dbafcd1efa45c9536a63569230a8a
-  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+  ms.openlocfilehash: 2e6a0bcc654bbf94bec5c562815aa7591cfabd60
+  ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/23/2019
-  ms.locfileid: "71204114"
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71272237"
 landingContent:
 - title: A HDInsight bemutatása
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     links:
     - text: A HDInsight összetevői és verziói
       url: ./hdinsight-component-versioning.md
-    - text: A HDInsight támogatott csomópont-konfigurációi
+    - text: A HDInsight által támogatott virtuálisgép-típusok
       url: ./hdinsight-supported-node-configuration.md
     - text: Tárolási lehetőségek összehasonlítása
       url: ./hdinsight-hadoop-compare-storage-options.md
@@ -38,6 +38,14 @@ landingContent:
       url: ./hdinsight-hadoop-provision-linux-clusters.md
     - text: Fürtök létrehozása a Data Lake Store Gen2 használatával
       url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
+  - linkListType: whats-new
+    links:
+    - text: 'Automatikus skálázás: Hadoop-fürtök automatikus skálázása'
+      url: ./hdinsight-autoscale-clusters.md
+    - text: Monitorozás a HDInsighttal
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Apache Hive-táblák migrálása HDInsight 4.0-ra
+      url: ./interactive-query/apache-hive-migrate-workloads.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview

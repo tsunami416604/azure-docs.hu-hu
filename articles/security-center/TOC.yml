@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: Virtuális gépek és kiszolgálók fenyegetéseinek észlelése
           href: security-center-alerts-iaas.md
-        - name: Natív felhőalapú számítások fenyegetéseinek észlelése
+        - name: Felhőalapú alkalmazások és tárolók fenyegetéseinek észlelése
           href: security-center-alerts-compute.md
         - name: Adatszolgáltatások fenyegetéseinek észlelése
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Advanced Data Security SQL Azure-beli virtuális gépeken (nyilvános előzetes verzió)
       href: security-center-iaas-advanced-data.md
-    - name: Az App Service védelme
+    - name: Az alkalmazások védelme az App Service-szel
       href: security-center-app-services.md
     - name: Biztonsági szabályzatok használata
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: E-mail-értesítések
       href: security-center-provide-security-contact-details.md
-    - name: Tarifacsomag
+    - name: Díjszabás
       href: security-center-pricing.md
     - name: Bérlőszintű láthatóság
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: REST API-k
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Funkciók és API kivezetése (2019. július)
       href: security-center-features-retirement-july2019.md
     - name: Végpontvédelmi értékelés és javaslatok
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: Felhasználói adatok kezelése
       href: security-center-privacy.md
-    - name: Az IoT felügyelete
+    - name: Azure Security Center for IoT – dokumentáció
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: GYIK
       href: security-center-faq.md
-    - name: Azure Security
+    - name: Az Azure biztonsági dokumentációja
       href: /azure/security/
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Készültségi ütemterv
       href: security-center-readiness-roadmap.md
     - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Az Azure Security Center a Stack Overflow-n
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Videók
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Hibaelhárítás
+    - name: Hibaelhárítási útmutató
       href: security-center-troubleshooting-guide.md

@@ -472,6 +472,8 @@
         - name: Lemezek üzembe helyezése sablonnal
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: VHD feltöltése lemezre – CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Lemez átméretezése
           href: expand-disks.md
         - name: Lemez pillanatképének elkészítése
