@@ -333,7 +333,7 @@ A C# -ben és más .net nyelveken a kötelező [kötési mintát](https://en.wik
 
 A következő módon adjon meg egy kötelező kötést:
 
-- **** Ne tartalmazzon attribútumot a függvény aláírásában a kívánt kényszerített kötésekhez.
+- Ne tartalmazzon attribútumot a függvény aláírásában a kívánt kényszerített kötésekhez.
 - Adjon meg egy bemeneti [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) paramétert [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)vagy.
 - Az adatkötés C# végrehajtásához használja a következő mintát.
 

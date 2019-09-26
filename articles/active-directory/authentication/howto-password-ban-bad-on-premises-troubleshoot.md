@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952806"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314937"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD jelszavas védelem – hibaelhárítás
 
@@ -42,7 +42,7 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
    Az Azure AD jelszavas védelmi proxy telepítője automatikusan létrehoz egy Windows tűzfal bejövő szabályt, amely lehetővé teszi az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portok elérését. Ha ezt a szabályt később törli vagy letiltja, a DC-ügynökök nem tudnak kommunikálni a proxy szolgáltatással. Ha a beépített Windows tűzfal egy másik tűzfal-termék helyett le van tiltva, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a hozzáférést az Azure AD jelszavas védelmi proxy szolgáltatás által figyelt bejövő portokhoz. Ez a konfiguráció konkrétabb lehet, ha a proxy szolgáltatás úgy van konfigurálva, hogy egy adott statikus RPC-portot figyeljen (a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmag használatával).
 
-1. A proxykiszolgáló nem engedélyezi, hogy a tartományvezérlők képesek legyenek bejelentkezni a gépre. Ezt a viselkedést a "számítógép elérése a hálózatról" felhasználói jogosultságok kiosztása vezérli. Ezt a jogosultságot az erdő összes tartományának összes tartományvezérlőjén meg kell adni. Ezt a beállítást gyakran egy nagyobb hálózati megerősítési tevékenység részeként korlátozzák.
+1. A proxykiszolgáló nem engedélyezi, hogy a tartományvezérlők be tudják jelentkezni a gépre. Ezt a viselkedést a "számítógép elérése a hálózatról" felhasználói jogosultságok kiosztása vezérli. Ezt a jogosultságot az erdő összes tartományának összes tartományvezérlőjén meg kell adni. Ezt a beállítást gyakran egy nagyobb hálózati megerősítési tevékenység részeként korlátozzák.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>A proxy szolgáltatás nem tud kommunikálni az Azure-ban
 
@@ -56,17 +56,23 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>A tartományvezérlő ügynöke nem tudja titkosítani vagy visszafejteni a jelszóházirend fájljait
 
-Ez a probléma számos tünettel rendelkezhet, de általában gyakori a kiváltó oka.
+Az Azure AD jelszavas védelme kritikus függőséggel rendelkezik a Microsoft Key Distribution szolgáltatás által biztosított titkosítási és visszafejtési funkcióktól. A titkosítási és a visszafejtési hibák számos tünettel rendelkezhetnek, és számos lehetséges oka lehet.
 
-Az Azure AD jelszavas védelme kritikus függőséggel rendelkezik a Microsoft Key Distribution szolgáltatás által biztosított titkosítási és visszafejtési funkcióktól, amely a Windows Server 2012-es és újabb rendszerű tartományvezérlőkön érhető el. A KDS szolgáltatásnak engedélyezve és működőképesnek kell lennie minden Windows Server 2012-es és újabb tartományvezérlőn egy tartományban.
+1. Győződjön meg arról, hogy a KDS szolgáltatás engedélyezve van és működőképes a tartomány minden Windows Server 2012-es és újabb tartományvezérlőjén.
 
-Alapértelmezés szerint a KDS szolgáltatás szolgáltatás indítási módja manuálisan (trigger Start) van konfigurálva. Ez a konfiguráció azt jelenti, hogy az ügyfél első alkalommal próbálja meg használni a szolgáltatást, igény szerint elindítva. Ez az alapértelmezett szolgáltatás indítási módja elfogadható az Azure AD jelszavas védelem működéséhez.
+   Alapértelmezés szerint a KDS szolgáltatás szolgáltatás indítási módja manuálisan (trigger Start) van konfigurálva. Ez a konfiguráció azt jelenti, hogy az ügyfél első alkalommal próbálja meg használni a szolgáltatást, igény szerint elindítva. Ez az alapértelmezett szolgáltatás indítási módja elfogadható az Azure AD jelszavas védelem működéséhez.
 
-Ha a KDS szolgáltatás indítási módja le van tiltva, akkor ezt a konfigurációt meg kell oldani az Azure AD jelszavas védelem megfelelő működéséhez.
+   Ha a KDS szolgáltatás indítási módja le van tiltva, akkor ezt a konfigurációt meg kell oldani az Azure AD jelszavas védelem megfelelő működéséhez.
 
-A probléma egyszerű tesztelése a KDS szolgáltatás manuális elindítása a Service Management MMC konzolon vagy más felügyeleti eszközök használatával (például "net start kdssvc" futtatása egy parancssori konzolról). A KDS szolgáltatás várhatóan sikeresen elindul és fut.
+   A probléma egyszerű tesztelése a KDS szolgáltatás manuális elindítása a Service Management MMC konzolon vagy más felügyeleti eszközök használatával (például "net start kdssvc" futtatása egy parancssori konzolról). A KDS szolgáltatás várhatóan sikeresen elindul és fut.
 
-A KDS szolgáltatás nem indítható el a leggyakoribb alapvető oka az, hogy az Active Directory tartományvezérlő objektum az alapértelmezett tartományvezérlők szervezeti egységén kívül található. Ezt a konfigurációt a KDS szolgáltatás nem támogatja, és az Azure AD jelszavas védelme nem kényszeríti. Ennek a feltételnek a kijavítása a tartományvezérlő objektum áthelyezése egy helyre az alapértelmezett tartományvezérlők szervezeti egységben.
+   A KDS szolgáltatás nem indítható el a leggyakoribb alapvető oka az, hogy az Active Directory tartományvezérlő objektum az alapértelmezett tartományvezérlők szervezeti egységén kívül található. Ezt a konfigurációt a KDS szolgáltatás nem támogatja, és az Azure AD jelszavas védelme nem kényszeríti. Ennek a feltételnek a kijavítása a tartományvezérlő objektum áthelyezése egy helyre az alapértelmezett tartományvezérlők szervezeti egységben.
+
+1. Inkompatibilis KDS – a titkosított puffer formátuma a Windows Server 2012 R2-ről Windows Server 2016-re módosult
+
+   A Windows Server 2016 olyan KDS-biztonsági javítást vezetett be, amely módosítja a KDS titkosított pufferek formátumát; Ezek a pufferek néha nem lesznek visszafejtve a Windows Server 2012 és a Windows Server 2012 R2 rendszeren. A fordított irány rendben van – a Windows Server 2012-es és a Windows Server 2012 R2-KDS titkosított pufferek a Windows Server 2016-es és újabb verzióiban mindig sikeresen visszafejtik. Ha a Active Directory tartományban lévő tartományvezérlők ezen operációs rendszerek kombinációját futtatják, akkor előfordulhat, hogy az Azure AD jelszavas védelemének esetleges visszafejtési hibáit is jelenteni kell. A biztonsági javítás jellegéből adódóan nem lehet pontosan megjósolni a hibák időzítését vagy tüneteit, és mivel nem determinisztikus, hogy melyik Azure AD jelszavas védelmet biztosító tartományvezérlő ügynöke fogja titkosítani az adatait egy adott időpontban.
+
+   A Microsoft a probléma javítását vizsgálja, de még nem érhető el az ETA. Addig is ezt a problémát nem lehet megkerülő megoldás, mint hogy nem futtatja a nem kompatibilis operációs rendszerek kombinációját a Active Directory tartomány (ok) ban. Ez azt jelenti, hogy csak Windows Server 2012 és Windows Server 2012 R2 rendszerű tartományvezérlőket kell futtatnia, vagy csak Windows Server 2016 vagy újabb rendszerű tartományvezérlőket kell futtatnia.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A rendszer nem fogadja el a gyenge jelszavakat, de nem feltétlenül kell
 
@@ -80,13 +86,13 @@ A probléma több oka is lehet.
 
 1. A jelszó-házirend le van tiltva. Ha ez a konfiguráció van érvényben, konfigurálja újra a beállítást az Azure AD jelszavas védelem portál használatával. Lásd a [jelszavas védelem engedélyezése](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)című témakört.
 
-1. Nem telepítette a tartományvezérlő-ügynök szoftverét a tartomány összes tartományvezérlőjén. Ebben az esetben nehéz biztosítani, hogy a távoli Windows-ügyfelek egy adott tartományvezérlőt célozzanak meg a jelszó-módosítási művelet során. Ha úgy gondolja, hogy sikeresen megcélozta azt a TARTOMÁNYVEZÉRLŐt, ahol a DC-ügynök szoftvere telepítve van, akkor a tartományvezérlő ügynök rendszergazdai eseménynaplójának dupla ellenőrzésével ellenőrizheti: az eredménytől függetlenül legalább egy esemény lesz a jelszó eredményének dokumentálása. érvényesítés. Ha nincs olyan esemény a felhasználó számára, akinek a jelszava megváltozik, a jelszó módosítását valószínűleg egy másik tartományvezérlő dolgozza fel.
+1. Nem telepítette a tartományvezérlő-ügynök szoftverét a tartomány összes tartományvezérlőjén. Ebben az esetben nehéz biztosítani, hogy a távoli Windows-ügyfelek egy adott tartományvezérlőt célozzanak meg a jelszó-módosítási művelet során. Ha úgy gondolja, hogy sikeresen megcélozta azt a TARTOMÁNYVEZÉRLŐt, ahol a DC-ügynök szoftvere telepítve van, akkor a tartományvezérlő ügynök rendszergazdai eseménynaplójának dupla ellenőrzésével ellenőrizheti, hogy az eredménytől függetlenül van-e legalább egy esemény a jelszó eredményének dokumentálására. érvényesítés. Ha nincs olyan esemény a felhasználó számára, akinek a jelszava megváltozik, a jelszó módosítását valószínűleg egy másik tartományvezérlő dolgozza fel.
 
    Alternatív tesztként próbálja meg setting\changing a jelszavakat, miközben közvetlenül egy olyan TARTOMÁNYVEZÉRLŐre jelentkezett be, amelyen telepítve van a DC Agent szoftver. Ez a technika éles Active Directory-tartományokhoz nem ajánlott.
 
    A DC-ügynök szoftverének növekményes üzembe helyezése a korlátozások hatálya alá esik, a Microsoft határozottan azt javasolja, hogy a tartományvezérlő ügynök szoftverét a lehető leghamarabb telepítse a tartomány összes tartományvezérlőjén.
 
-1. Előfordulhat, hogy a jelszó-ellenőrzési algoritmus ténylegesen a várt módon működik. Tekintse meg [, hogyan történik a jelszavak](concept-password-ban-bad.md#how-are-passwords-evaluated)kiértékelése.
+1. Előfordulhat, hogy a jelszó-ellenőrzési algoritmus ténylegesen a várt módon működik. Tekintse meg [, hogyan történik a jelszavak kiértékelése](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Az Ntdsutil. exe nem tudja beállítani a gyenge címtárszolgáltatások helyreállító módjának jelszavát
 
@@ -189,7 +195,7 @@ Az adott frissítési eljárásokkal kapcsolatos további részletekért tekints
 
 Ha olyan helyzet történik, ahol a tartományvezérlő ügynöke problémát okoz, előfordulhat, hogy a tartományvezérlő ügynök szolgáltatása azonnal leáll. A DC Agent jelszó-szűrő DLL-fájlja továbbra is megkísérli hívni a nem futó szolgáltatást, és naplózza a figyelmeztetési eseményeket (10012, 10013), de az összes bejövő jelszót elfogadja a rendszer. A DC Agent szolgáltatás ezután a Windows szolgáltatásvezérlő kezelőjén keresztül is konfigurálható a "Letiltva" indítási típussal, igény szerint.
 
-Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: érvényesítési [mód](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Egy másik szervizelési mérték az engedélyezés mód beállítása a nem értékre az Azure AD jelszavas védelem portálon. Miután letöltötte a frissített szabályzatot, minden egyes tartományvezérlő ügynök-szolgáltatás nyugalmi módba kerül, ahol az összes jelszó elfogadva van. További információ: [érvényesítési mód](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
 ## <a name="removal"></a>Eltávolítás
 

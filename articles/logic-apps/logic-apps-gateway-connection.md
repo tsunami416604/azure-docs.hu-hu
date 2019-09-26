@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036657"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309356"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
-Ha a logikai alkalmazásokból szeretné elérni a helyszíni adatforrásokat, hozzon létre egy helyszíni adatátjáró-erőforrást a Azure Portal. A logikai alkalmazások ezután használhatják a helyszíni [összekötőket](../connectors/apis-list.md#on-premises-connectors). Ez a cikk bemutatja, hogyan hozhatja létre az Azure Gateway-erőforrást, *miután* [letöltötte és telepítette az átjárót egy helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). Az átjáróval kapcsolatos további információkért tekintse meg [az átjáró működését](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)ismertető témakört.
+Ha a logikai alkalmazásokból szeretné elérni a helyszíni adatforrásokat, hozzon létre egy helyszíni adatátjáró-erőforrást a Azure Portal. A logikai alkalmazások ezután használhatják a helyszíni [összekötőket](../connectors/apis-list.md#on-premises-connectors). Azure Logic Apps támogatja az írási műveleteket, beleértve a lapkákat és a frissítéseket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+
+Ez a cikk bemutatja, hogyan hozhatja létre az Azure Gateway-erőforrást, *miután* [letöltötte és telepítette az átjárót egy helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). Az átjáróval kapcsolatos további információkért tekintse meg [az átjáró működését](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)ismertető témakört. 
 
 > [!TIP]
 > Az Azure-beli virtuális hálózatokhoz való csatlakozáshoz érdemes inkább [*integrációs szolgáltatási környezetet*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) létrehozni. 
@@ -121,7 +123,7 @@ Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizet
 
 Az átjáró-kapcsolatok most már készen állnak a logikai alkalmazás használatára.
 
-## <a name="edit-connection"></a>Kapcsolatok szerkesztése
+## <a name="edit-connection"></a>Kapcsolat szerkesztése
 
 Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapcsolatokat.
 

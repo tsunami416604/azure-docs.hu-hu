@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012696"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299577"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
 
 ## <a name="using-spring-boot-15x"></a>Spring boot 1.5 x használata
 Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz: 
-* [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-Beta vagy újabb verzió
+* [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
 * A [mikrométer rugó örökölt](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-es vagy újabb (ez a backports az automatikus konfigurációs kód a Spring Framework-ben).
 * [ApplicationInsights erőforrás](../../azure-monitor/app/create-new-resource.md )
@@ -37,7 +37,7 @@ Lépések
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
-        <version>1.1.0-BETA</version>
+        <version>2.5.0</version>
     </dependency>
 
     <dependency>
@@ -64,7 +64,7 @@ Lépések
 Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
 
 * Application Insights Spring-boot-Starter 2.1.2 vagy újabb verzió
-* Azure-Spring-boot-metrikák – 2.1.5 vagy újabb verzió  
+* Azure-Spring-boot-metrikák-kezdő 2.0.7 vagy újabb
 * [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
 
 Lépések:
@@ -75,21 +75,21 @@ Lépések:
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.1.6</version>
+          <version>2.0.7</version>
     </dependency>
     ```
 1. Frissítse az Application. properties vagy a YML fájlt a Application Insights rendszerállapot-kulcs használatával a következő tulajdonsággal:
 
-     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
+     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 3. Az alkalmazás létrehozása és futtatása
 4. A fentiekben a Azure Monitorba automatikusan összegyűjtött, előre összevont metrikákkal kell futnia. A Application Insights Spring boot Starter finomhangolásával kapcsolatos részletekért tekintse meg a [githubon található Readme](https://github.com/Microsoft/azure-spring-boot/releases/latest)című témakört.
 
 Alapértelmezett mérőszámok:
 
 *    A rendszer automatikusan konfigurálta a Tomcat, a JVM, a Logback metrikák, a Log4J metrikák, a üzemidő Metrikái, a processzor Metrikái és a FileDescriptorMetrics metrikáit.
-*    Ha például a Netflix Hystrix jelen van az osztály elérési útján, akkor ezeket a mérőszámokat is megkapjuk. 
+*    Ha például a Netflix Hystrix megtalálható az osztály elérési úton, akkor a mérőszámokat is megkapjuk. 
 *    A következő mérőszámok elérhetők a megfelelő bab hozzáadásával. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -121,10 +121,8 @@ Az automatikus metrikák gyűjtésének kikapcsolása:
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>A Mikrométer használata nem rugós rendszerindító webalkalmazásokkal
 
 Adja hozzá a következő függőségeket a Pom. XML vagy Build. gradle fájlhoz:
- 
-* [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) vagy újabb
-* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) vagy újabb
-* [Webes szűrő regisztrálása](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+
+* Application Insights web Auto 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
 * [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
 
@@ -141,14 +139,41 @@ Lépések:
         
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-web</artifactId>
-            <version>2.2.0</version>
-        </dependency
+            <artifactId>applicationinsights-web-auto</artifactId>
+            <version>2.5.0</version>
+        </dependency>
      ```
 
-2. Helyezze a Application Insights. xml fájlt az erőforrások mappába.
+2. Fájl `ApplicationInsights.xml` elhelyezése a Resources mappában:
 
-    Példa servlet-osztályra (időzítő metrikát bocsát ki):
+    ```XML
+    <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    
+       <!-- The key from the portal: -->
+       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+    
+       <!-- HTTP request component (not required for bare API) -->
+       <TelemetryModules>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+       </TelemetryModules>
+    
+       <!-- Events correlation (not required for bare API) -->
+       <!-- These initializers add context data to each event -->
+       <TelemetryInitializers>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+       </TelemetryInitializers>
+    
+    </ApplicationInsights>
+    ```
+
+3. Példa servlet-osztályra (időzítő metrikát bocsát ki):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +212,7 @@ Lépések:
     
     ```
 
-      Minta konfigurációs osztály:
+4. Minta konfigurációs osztály:
 
     ```Java
          @WebListener
@@ -252,5 +277,5 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni a mikrométerről, tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
-* Ha szeretne többet megtudni az Azure-ról, tekintse meg az [Azure hivatalos tavaszi dokumentációját](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
+* A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.

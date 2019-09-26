@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170549"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299393"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
 A Azure Functions futtatókörnyezet támogatja a [Java SE 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)használatát. Ez az útmutató a Java-Azure Functions írásának bonyolult adatait tartalmazza.
 
-A Java-függvények `public` a `@FunctionName`jegyzetekkel díszített metódusok. Ez a metódus definiálja a Java-függvények bejegyzését, és egyedinek kell lennie egy adott csomagban. 
+Ahogy más nyelveken is előfordul, egy függvényalkalmazás lehet, hogy egy vagy több függvényt tartalmaz. A Java-függvények `public` a `@FunctionName`jegyzetekkel díszített metódusok. Ez a metódus definiálja a Java-függvények bejegyzését, és egyedinek kell lennie egy adott csomagban. A Java-ban írt függvényalkalmazás több olyan osztállyal rendelkezhet, amelyekben több nyilvános metódus `@FunctionName`is szerepel.
 
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) vagy a [Maven](functions-create-first-java-maven.md)használatával is végre kell hajtania a functions rövid útmutatót.
 
 ## <a name="programming-model"></a>A programozási modell 
 
-Az eseményindítók [és kötések](functions-triggers-bindings.md) fogalmai alapvető fontosságúak a Azure functions. Elindítja a kód végrehajtását. A kötések lehetővé teszik a függvények adatainak átadását és az adatok visszaküldését anélkül, hogy egyéni adatelérési kódot kellene írnia.
+Az [Eseményindítók és kötések](functions-triggers-bindings.md) fogalmai alapvető fontosságúak a Azure functions. Elindítja a kód végrehajtását. A kötések lehetővé teszik a függvények adatainak átadását és az adatok visszaküldését anélkül, hogy egyéni adatelérési kódot kellene írnia.
+
+## <a name="project-scaffolding"></a>Projekt – Állványzat
+
+Egy Java-alapú Azure Function-projekt bevezető legegyszerűbb módja az archetípusok `Apache Maven` használata. A Project generálási varázslók a Visual Studio Code-ban, valamint az Eclipse-hez és a IntelliJ készült Azure-eszközkészleteket is megtalálják.
+
+Jelenleg két Azure Functions archetípus a Maven számára:
+
+### <a name="java-archetype"></a>Java-archetípus
+
+Ez a archetípus a következő groupId és artifactId ( [com. microsoft. Azure) címen érhető el: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin archetípus (előzetes verzió)
+
+Ez a archetípus a következő groupId és artifactId ( [com. microsoft. Azure) címen érhető el: Azure-functions-Kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/).
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Ezen archetípusok forráskódját az [Azure Maven archetípusok GitHub-tárházában](https://github.com/microsoft/azure-maven-archetypes)találja.
 
 ## <a name="folder-structure"></a>Mappa szerkezete
 
@@ -56,6 +84,8 @@ FunctionsProject
  | - pom.xml
 ```
 
+_* A Kotlin-projekt nagyon hasonlónak tűnik, mivel még Maven_
+
 A Function alkalmazást a Shared [Host. JSON](functions-host-json.md) fájl használatával konfigurálhatja. Mindegyik függvényhez saját kódlap (. Java) és kötési konfigurációs fájl (function. JSON) tartozik.
 
 Egy projektben több függvény is elhelyezhető. Kerülje a függvények különálló tégelybe való elhelyezését. A `FunctionApp` cél könyvtárban az Azure-beli Function alkalmazás üzembe helyezése történik.
@@ -64,7 +94,7 @@ Egy projektben több függvény is elhelyezhető. Kerülje a függvények külö
 
  A függvényeket egy eseményindító hívja meg, például egy HTTP-kérelem, egy időzítő vagy egy frissítés az adatokhoz. A függvénynek fel kell dolgoznia az triggert és minden más bemenetet, hogy egy vagy több kimenetet hozzon létre.
 
-Használja a [com. microsoft. Azure. functions. Megjegyzés. *](/java/api/com.microsoft.azure.functions.annotation) csomagban található Java-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez. További információ: [Java](/java/api/com.microsoft.azure.functions.annotation)-referenciák dokumentációja.
+Használja a [com. microsoft. Azure. functions. Megjegyzés. *](/java/api/com.microsoft.azure.functions.annotation) csomagban található Java-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez. További információ: [Java-referenciák dokumentációja](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
 > Konfigurálnia kell egy Azure Storage-fiókot a [Local. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) fájlban az Azure Blob Storage, az Azure üzenetsor-tároló vagy az Azure Table Storage-eseményindítók helyi futtatásához.
@@ -305,7 +335,7 @@ Ezt a függvényt egy HttpRequest hívja meg. Több értéket ír a várólista-
 
 ## <a name="metadata"></a>Metaadatok
 
-Néhány eseményindító elküldi az [eseményindító](/azure/azure-functions/functions-triggers-bindings) -metaadatokat a bemeneti adatokkal együtt. A megjegyzésekkel `@BindingName` kötést használhat a trigger metaadataihoz.
+Néhány eseményindító elküldi az [eseményindító-metaadatokat](/azure/azure-functions/functions-triggers-bindings) a bemeneti adatokkal együtt. A megjegyzésekkel `@BindingName` kötést használhat a trigger metaadataihoz.
 
 
 ```Java

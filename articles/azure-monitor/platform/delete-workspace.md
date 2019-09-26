@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics-munkaterület törlése |} A Microsoft Docs
-description: Ismerje meg a Log Analytics-munkaterület törlése, ha van ilyen egy személyes előfizetésben, vagy átalakíthatja a munkaterület-modell.
+title: Az Azure Log Analytics munkaterület törlése és visszaállítása | Microsoft Docs
+description: Megtudhatja, hogyan törölheti Log Analytics munkaterületét, ha létrehozott egy személyes előfizetést, vagy átalakította a munkaterület modelljét.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -13,33 +13,52 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.openlocfilehash: a6542838acba3143123dc90d96746179a2b4469b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8dcab1a7a46d518b752e48f9886b60a37d8ec4c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236140"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299546"
 ---
-# <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Az Azure Portalon az Azure Log Analytics-munkaterület törlése
-Ez a cikk bemutatja, hogyan használhatja az Azure Portalon, előfordulhat, hogy már nincs szüksége a Log Analytics-munkaterület törlése. 
+# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
+Ez a cikk ismerteti az Azure Log Analytics Workspace Soft-delete fogalmát, valamint a törölt munkaterület helyreállításának módját. 
 
-## <a name="to-delete-a-workspace"></a>Munkaterület törlése 
-Ha töröl egy Log Analytics-munkaterületet, a munkaterülethez kapcsolódó összes adat törlődik a szolgáltatás 30 napon belül.  Munkaterület törlése, mivel néhány fontos adatok és a konfigurációt, amely negatív hatással lehet a szolgáltatási műveletek körültekintően szeretné. Vegye figyelembe a többi Azure-szolgáltatások és adatforrások, amely tárolja az adatokat a Log Analyticsben, mint például:
+## <a name="considerations-when-deleting-a-workspace"></a>Munkaterületek törlésekor megfontolandó szempontok
+Ha töröl egy Log Analytics munkaterületet, a rendszer egy törlési műveletet hajt végre, amely lehetővé teszi a munkaterület helyreállítását 14 napon belül, beleértve az adatmennyiséget és a csatlakoztatott ügynököket is, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A Soft-delete időszak után a munkaterület és az azokhoz tartozó adattárolók nem állíthatók vissza, és 30 napon belül állandó törlésre vannak várólistán.
 
-* Application Insights
-* Azure Security Center
+Fontos, hogy körültekintően járjon el, amikor töröl egy munkaterületet, mert olyan fontos adat és konfiguráció lehet, amely negatív hatással lehet a szolgáltatási műveletre. Tekintse át, hogy milyen ügynökök, megoldások és más Azure-szolgáltatások és-források tárolják az adataikat Log Analyticsban, például:
+* Felügyeleti megoldások
 * Azure Automation
-* Windows és Linux rendszerű virtuális gépeken futó ügynökök
-* A Windows és Linux rendszerű számítógépek a környezetben futó ügynökök
+* Windows-és Linux-alapú virtuális gépeken futó ügynökök
+* A környezetben található Windows és Linux rendszerű számítógépeken futó ügynökök
 * System Center Operations Manager
-* Felügyeleti megoldások 
 
-Ügynököket és a munkaterület elküldjék a System Center Operations Manager felügyeleti csoportok továbbra is árva állapotban.  A készlet milyen ügynökök, a megoldásokat, és más Azure-szolgáltatásokkal integrálva van a munkaterület folytatás előtt.   
- 
-Ha Ön rendszergazda, és több felhasználó van társítva a munkaterülethez, a felhasználók és a munkaterület közötti társítás megszűnik. Ha a felhasználók más munkaterületekkel is társítva vannak, továbbra is használhatják a Log Analyticset azokkal a munkaterületekkel. Azonban ha azok nem más munkaterületekhez társítva majd szükségük hozzon létre egy munkaterületet a Log Analytics használatához. 
+A törlési művelet törli a munkaterület-erőforrást, és a társított felhasználók engedélyei megszakadnak. Ha a felhasználók más munkaterületekhez vannak társítva, akkor továbbra is használhatják a Log Analyticst ezekkel a munkaterületekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Log Analytics-munkaterületek**.
-3. A Log Analytics-előfizetések ablaktábláján válasszon ki egy munkaterületet, és kattintson a **törlése** a középső ablaktábla tetején.<br><br> ![A munkaterület tulajdonságait tartalmazó ablaktáblán a Törlés elemet](media/delete-workspace/log-analytics-delete-workspace.png)<br>  
-4. Rákérdez arra, hogy a munkaterület törlésének megerősítéséhez, majd a megerősítési üzenet ablak megjelenésekor **Igen**.<br><br> ![Munkaterület törlésének megerősítése](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+## <a name="soft-delete-behavior"></a>Helyreállítható törlési viselkedés
+A munkaterület-törlési művelet eltávolítja a munkaterület Resource Manager-erőforrását, de a konfigurációját és az adatait 14 napig őrzi meg a rendszer, miközben megadja a munkaterület törlésének a megjelenését. A munkaterületre való jelentésre konfigurált ügynökök és System Center Operations Manager-felügyeleti csoportok árva állapotban maradnak a törlési időszak alatt. A szolgáltatás továbbra is lehetővé teszi a törölt munkaterület helyreállítását, beleértve az adatforrásokat és a csatlakoztatott erőforrásokat, lényegében a törlést.
 
+> [!NOTE] 
+> A telepített megoldások és a társított szolgáltatások (például az Automation-fiók) véglegesen törlődnek a munkaterületről a törlés időpontjában, és nem állíthatók helyre. Ezeket újra kell konfigurálni a helyreállítási művelet után, hogy a munkaterületet a korábbi funkciókhoz vigye. 
+
+A munkaterületeket a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), az [API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)vagy a [Azure Portal](https://portal.azure.com)használatával törölheti.
+
+### <a name="delete-workspace-in-azure-portal"></a>Munkaterület törlése Azure Portal
+1. A bejelentkezéshez nyissa meg a [Azure Portal](https://portal.azure.com). 
+2. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+3. A Log Analytics munkaterületek listájában válasszon ki egy munkaterületet, majd kattintson a középső ablaktábla tetején található **Törlés** elemre.
+   ![Lehetőség törlése a munkaterület tulajdonságai panelről](media/delete-workspace/log-analytics-delete-workspace.png)
+4. Amikor megjelenik a megerősítő üzenet ablak, amely a munkaterület törlésének megerősítését kéri, kattintson az **Igen**gombra.
+   ![Munkaterület törlésének megerősítése](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+## <a name="recover-workspace"></a>Munkaterület helyreállítása
+Ha közreműködői engedélyekkel rendelkezik ahhoz az előfizetéshez és erőforráscsoporthoz, ahová a munkaterület hozzá lett rendelve a törlési művelet előtt, akkor helyreállíthatja azt a puha törlési időszakban, beleértve az adatokat, a konfigurációt és a csatlakoztatott ügynököket. A törlési időtartam után a munkaterület nem helyreállítható és végleges törléshez van rendelve.
+
+A munkaterület helyreállításához hozza létre újra a munkaterületet a támogatott létrehozási módszerek bármelyikének használatával: A PowerShell, az Azure CLI vagy a Azure Portal, feltéve, hogy ezek a tulajdonságok a törölt munkaterület részleteivel vannak feltöltve, beleértve a következőket:
+1.  Előfizetés azonosítója
+2.  Erőforráscsoport neve
+3.  Munkaterület neve
+4.  Régió
+
+> [!NOTE]
+> A törölt munkaterületek nevei megőrizve maradnak a törlési időszakra vonatkozóan, és nem használhatók új munkaterület létrehozásakor. A munkaterületek nevei fel lesznek *szabadítva* , és elérhetők az új munkaterületek létrehozásához, miután a Soft-delete időszak lejárt.

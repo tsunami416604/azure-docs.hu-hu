@@ -4,14 +4,14 @@ description: Súgó kérésének megnyitása az Azure HPC cache-hez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29750ab19f74ef1ceab8c69792d12b9f9ca2a297
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 630af5322483782c1e26cd792bf7d7957e555d84
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180884"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299946"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Támogatási jegy megnyitása az Azure HPC cache-hez (előzetes verzió)
 
@@ -24,6 +24,8 @@ Válassza ki az előfizetését a listából.
 Az Azure HPC cache előzetes verziójának megkereséséhez kattintson a **minden szolgáltatás** gombra, és keressen rá a HPC kifejezésre.
 
 ![Képernyőkép a támogatási kérelemről – alapismeretek lap, részben kitöltve a leírtak szerint](media/hpc-cache-support-request.png)
+
+<!-- update screenshot after preview to update product name -->
 
 Töltse ki a többi mezőt az adataival és beállításaival, majd küldje el a jegyet, ha elkészült.
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186297"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290966"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -48,10 +48,15 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 
 - **SQL SA-fiók (nem kötelező)** : a AdSync-adatbázis létrehozásához használatos az SQL Server teljes verziójának használatakor.  Ez a SQL Server lehet helyi vagy távoli a Azure AD Connect telepítéshez.  Ez a fiók lehet a vállalati rendszergazda fiókja.  Az adatbázis üzembe helyezése mostantól az SQL-rendszergazda sávon kívül is elvégezhető, majd a Azure AD Connect rendszergazdája telepítheti az adatbázis-tulajdonosi jogosultságokkal.  További információ: [Install Azure ad Connect az SQL meghatalmazott rendszergazdai engedélyeivel](how-to-connect-install-sql-delegation.md)
 
+<<<<<<< HEAD
+>[!IMPORTANT]
+> A build 1.4. # # #. # alapján már nem támogatott vállalati rendszergazda vagy tartományi rendszergazdai fiók használata AD DS-összekötő fiókként.  Ha olyan fiókot próbál meg megadni, amely vállalati rendszergazda vagy tartományi rendszergazda a **meglévő fiók használatakor**, hibaüzenetet fog kapni.
+=======
 > [!NOTE]
 > A ESAE felügyeleti erdőben Azure AD Connect használt rendszergazdai fiókok felügyelete (más néven "vörös erdő") támogatott.
 > A dedikált felügyeleti erdők lehetővé teszik a szervezetek számára a rendszergazdai fiókok, munkaállomások és csoportok üzemeltetését olyan környezetben, amely erősebb biztonsági szabályozással rendelkezik, mint az éles környezet.
 > A dedikált adminisztratív erdőkkel kapcsolatos további tudnivalókért tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect telepítése
 A Azure AD Connect telepítővarázsló két különböző elérési utat biztosít:
@@ -80,7 +85,7 @@ Az AD DS-összekötő fiók a Windows Server AD-hoz való olvasásra és írásr
 
 | Engedély | Alkalmazási cél |
 | --- | --- |
-| <li>Címtárbeli módosítások replikálása</li><li>A címtár összes módosításának replikálása |Jelszó kivonatának szinkronizálása |
+| <li>Címtárbeli módosítások replikálása</li><li>A címtár összes módosításának replikálása |Jelszókivonat szinkronizálása |
 | Az összes tulajdonság olvasása/írása felhasználó |Importálás és Exchange hibrid |
 | Az összes tulajdonság olvasása/írása iNetOrgPerson |Importálás és Exchange hibrid |
 | Az összes tulajdonság csoport olvasása/írása |Importálás és Exchange hibrid |
@@ -128,7 +133,7 @@ A következő összefoglalja az egyéni telepítővarázsló oldalait, a gyűjt�
 >
 >További információ [: Azure ad Connect: AD DS-összekötő fiók engedélyének konfigurálása](how-to-connect-configure-ad-ds-connector-account.md)
 
-A telepítés előtt a **címtár** összekapcsolása lapon megadott fióknak jelen kell lennie Active Directoryban.  Azure AD Connect verzió 1.1.524.0 és újabb verziója lehetővé teszi, hogy a Azure AD Connect varázsló létrehozza a Active Directoryhoz való kapcsolódáshoz használt **AD DS-összekötő fiókját** .  
+A telepítés előtt a **címtár összekapcsolása** lapon megadott fióknak jelen kell lennie Active Directoryban.  Azure AD Connect verzió 1.1.524.0 és újabb verziója lehetővé teszi, hogy a Azure AD Connect varázsló létrehozza a Active Directoryhoz való kapcsolódáshoz használt **AD DS-összekötő fiókját** .  
 
 Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló nem ellenőrzi, hogy az engedélyek és a problémák csak a szinkronizálás során találhatók-e.
 
@@ -137,10 +142,10 @@ A szükséges engedélyek a választható funkcióktól függenek. Ha több tart
 | Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
+| Jelszókivonat szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
 | Hibrid Exchange-telepítés |Írási engedélyek a felhasználók, csoportok és névjegyek [Exchange hibrid visszaírási](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) dokumentált attribútumokhoz. |
 | Exchange-levelezés nyilvános mappája |Olvasási engedélyek a nyilvános mappák Exchange- [levelezés nyilvános mappájában](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dokumentált attribútumokhoz. | 
-| Jelszóvisszaírás |Írási engedélyek a felhasználók [jelszavas kezelésének](../authentication/howto-sspr-writeback.md) megkezdése című dokumentumban ismertetett attribútumokhoz. |
+| Jelszóvisszaírás |Írási engedélyek a felhasználók [jelszavas kezelésének megkezdése](../authentication/howto-sspr-writeback.md) című dokumentumban ismertetett attribútumokhoz. |
 | Eszközvisszaírás |A PowerShell-parancsfájllal megadott engedélyek a [Device visszaírási](how-to-connect-device-writeback.md)című cikkben leírtak szerint. |
 | Csoportvisszaírás |Lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange.  További információ: [Group visszaírási](how-to-connect-preview.md#group-writeback).|
 
@@ -209,7 +214,7 @@ A VSA olyan forgatókönyvekkel használható, amelyekben a Szinkronizáló moto
 Ehhez a szolgáltatáshoz Windows Server 2008 R2 vagy újabb rendszer szükséges. Ha a Azure AD Connect telepítését a Windows Server 2008-es verzióra telepíti, akkor a telepítés helyett egy [felhasználói fiók](#user-account) használatára kerül vissza.
 
 #### <a name="group-managed-service-account"></a>Csoportosan felügyelt szolgáltatásfiók
-Ha távoli SQL Servert használ, azt javasoljuk, hogy egy csoportosan **felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: csoportosan [felügyelt szolgáltatásfiókok áttekintése](https://technet.microsoft.com/library/hh831782.aspx).
+Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](https://technet.microsoft.com/library/hh831782.aspx).
 
 Ha ezt a beállítást szeretné használni, a [szükséges összetevők telepítése](how-to-connect-install-custom.md#install-required-components) lapon jelölje be a **meglévő szolgáltatásfiók használata**jelölőnégyzetet, és válassza a **felügyelt szolgáltatásfiók**lehetőséget.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
@@ -251,7 +256,7 @@ A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a k�
 Az Azure AD Connector-fiók jelszavának kezelésével és alaphelyzetbe állításával kapcsolatos további információkért lásd: [a Azure ad Connect fiók kezelése](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>Kapcsolódó dokumentáció
-Ha nem olvassa be a helyszíni identitások [Azure Active Directory](whatis-hybrid-identity.md)használatával történő integrálásához szükséges dokumentációt, a következő táblázat a kapcsolódó témakörökre mutató hivatkozásokat tartalmaz.
+Ha nem olvassa be a helyszíni [identitások Azure Active Directory használatával történő integrálásához](whatis-hybrid-identity.md)szükséges dokumentációt, a következő táblázat a kapcsolódó témakörökre mutató hivatkozásokat tartalmaz.
 
 |Témakör |Összekapcsolás|  
 | --- | --- |

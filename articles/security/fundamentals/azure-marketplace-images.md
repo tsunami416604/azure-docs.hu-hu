@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727586"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300790"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképekhez
 
@@ -56,7 +56,7 @@ Ezek a javaslatok olyan szervezetek számára is hasznosak lehetnek, amelyek nem
 | Biztonság                                                         | Használjon biztonságos operációsrendszer-alapképet. A Windows Serveren alapuló lemezképek forrásához használt virtuális merevlemeznek a Microsoft Azure által biztosított Windows Server operációsrendszer-lemezképből kell származnia. |
 | Biztonság                                                         | Telepítse a legújabb biztonsági frissítéseket.                                                                                                                                     |
 | Biztonság                                                         | Az alkalmazásoknak nem lehet a korlátozott felhasználónevek, például a rendszergazda, a gyökér és a rendszergazda függősége.                                                                |
-| Biztonság                                                         | A BitLocker meghajtótitkosítás nem támogatott az operációs rendszer merevlemezén. A BitLocker adatlemezeken is használható.                                                            |
+| Biztonság                                                         | BitLocker meghajtótitkosítás engedélyezve van az operációs rendszer merevlemez-meghajtója és az adatmerevlemez-meghajtók esetében is.                                                             |
 | Biztonság                                                         | Korlátozza a támadási felületet úgy, hogy minimális helyigényt biztosít, csak a szükséges Windows Server-szerepköröket, szolgáltatásokat, szolgáltatásokat és hálózati portokat engedélyezte.                         |
 | Biztonság                                                         | A forráskód és a létrejövő virtuálisgép-rendszerkép vizsgálata a kártevő szoftverhez.                                                                                                                     |
 | Biztonság                                                         | A Windows Server-lemezképek biztonsági frissítésének beállítása az automatikus frissítéshez.                                                                                                                |

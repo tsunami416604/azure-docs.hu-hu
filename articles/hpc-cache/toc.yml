@@ -23,12 +23,15 @@
             - name: Az új blobtároló előzetes betöltése
               href: hpc-cache-ingest.md
             - name: Egyéb adatfeldolgozási módszerek
-            - name: A gyorsítótár feltöltése párhuzamos másolással
-              href: hpc-cache-ingest-parallelcp.md
-            - name: A gyorsítótár feltöltése msrsync használatával
-              href: hpc-cache-ingest-msrsync.md
-            - name: A gyorsítótár feltöltése manuális fájlmásolással
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: A gyorsítótár feltöltése párhuzamos másolással
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: A gyorsítótár feltöltése msrsync használatával
+                  href: hpc-cache-ingest-msrsync.md
+                - name: A gyorsítótár feltöltése manuális fájlmásolással
+                  href: hpc-cache-ingest-manual.md
+    - name: Csatlakozás a gyorsítótárhoz
+      href: hpc-cache-mount.md
 - name: További források
   items:
     - name: Támogatási jegy megnyitása

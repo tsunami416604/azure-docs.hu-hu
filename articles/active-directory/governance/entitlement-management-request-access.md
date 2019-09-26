@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562186"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290889"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -40,9 +40,9 @@ Első lépésként jelentkezzen be a saját hozzáférési portálra, ahol hozz�
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás a következőket fogja kezdeni:
-
-    `https://myaccess.microsoft.com`
+1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtárat, és a következőhöz hasonló hozzáférési csomag-azonosítóval végződik:
+ 
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
 1. Nyissa meg a hivatkozást.
 
@@ -81,13 +81,13 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 
 ## <a name="cancel-a-request"></a>Kérelem megszakítása
 
-Ha hozzáférési kérelmet küld be, és a kérés még mindig a függőben lévő **jóváhagyási** állapotban van, megszakíthatja a kérelmet.
+Ha hozzáférési kérelmet küld be, és a kérés még mindig a **függőben lévő jóváhagyási** állapotban van, megszakíthatja a kérelmet.
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
 1. A saját hozzáférési portál bal oldalán kattintson a kérelmek **előzményei** elemre a kérések és az állapot megjelenítéséhez.
 
-1. Kattintson a megszakítani kívánt kérelem megtekintési hivatkozására.
+1. Kattintson a megszakítani kívánt kérelem **megtekintési** hivatkozására.
 
 1. Ha a kérelem továbbra is a **függőben lévő jóváhagyási** állapotban van, a kérelem megszakításához kattintson a **kérelem megszakítása** lehetőségre.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876758"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300717"
 ---
 # <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
 
@@ -152,6 +152,11 @@ Kövesse az alábbi általános hibaelhárítási útmutatót az ügyfélkapcsol
 **Okozhat** Azok a virtuális gépek, amelyekhez a felhasználó megpróbál csatlakozni, nincs tartományhoz csatlakoztatva.
 
 **Javítsa ki** Csatlakoztassa a gazdagép részét képező összes virtuális gépet a tartományvezérlőhöz.
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Hiba: ConnectionFailedUserSIDInformationMismatch
+**Okozhat** A felhasználó Azure Active Directory (AD) jogkivonatának SID-je nem egyezik meg a tartományvezérlő által visszaadott SID-vel, amikor engedélyezi a felhasználó számára a távoli bejelentkezést. Ez a hiba általában akkor fordul elő, amikor egy Azure Active Directory Domain Services (Azure AD DS) környezetben próbál bejelentkezni egy, a Windows Server AD-ből eredetileg bejelentkezett felhasználóval.
+
+**Javítsa ki** Ez a forgatókönyv jelenleg nem támogatott. Csak az Azure Active Directorytól származó felhasználók jelentkezhetnek be az Azure AD DShoz csatlakozó Windows rendszerű virtuális asztali gépekre.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>A felhasználó csatlakozik, de semmi nem jelenik meg (nincs hírcsatorna)
 

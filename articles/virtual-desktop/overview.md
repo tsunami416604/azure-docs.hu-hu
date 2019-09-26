@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876780"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300998"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows rendszerű virtuális asztali előnézet? 
 
@@ -74,8 +74,10 @@ Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszer�
 
 * Egy [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következő módon engedélyezheti:
-  * Azure AD Connect
+  * Azure Active Directory Connect
   * Azure AD Domain Services
+  >[!NOTE]
+  >A Windows rendszerű virtuális asztali szolgáltatás csak a Azure Active Directory forrásból származó Azure AD Domain Services-felhasználókat támogatja. A Windows Server AD-ből származó felhasználók jelenleg nem támogatottak.
 * Egy Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
   
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:

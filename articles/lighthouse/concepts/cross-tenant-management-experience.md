@@ -4,19 +4,19 @@ description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a tö
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6468e62e9969aa87d51e25ed220bf7d4bed989e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971569"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309651"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
-Ez a cikk azokat a forgatókönyveket ismerteti, amelyeket Ön a szolgáltatóként használhat az [Azure](../concepts/azure-delegated-resource-management.md) -beli delegált erőforrás-kezeléssel, amellyel több ügyfél számára felügyelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)saját bérlőn belülről.
+Ez a cikk azokat a forgatókönyveket ismerteti, amelyeket Ön a szolgáltatóként használhat az [Azure-beli delegált erőforrás-kezeléssel](../concepts/azure-delegated-resource-management.md) , amellyel több ügyfél számára felügyelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com)saját bérlőn belülről.
 
 > [!NOTE]
 > Az Azure-beli delegált erőforrás-kezelés egy olyan vállalaton belül is felhasználható, amely a saját több Bérlővel rendelkezik a több-bérlős felügyelet egyszerűsítése érdekében.
@@ -88,6 +88,10 @@ A több-bérlős felügyeleti felület jelenleg a következő forgatókönyveket
   - Győződjön meg arról, hogy a kiszolgálók csak azokat az alkalmazásokat és folyamatokat futtatják, amelyeknek adaptív alkalmazás-vezérlőkkel kell rendelkezniük
   - Fontos fájlok és beállításjegyzék-bejegyzések változásainak figyelése a fájlok integritásának figyelésével (FIM)
 
+[Azure Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+
+- Azure Sentinel-erőforrások kezelése az ügyfelek bérlői számára
+
 [Azure Service Health](https://docs.microsoft.com/azure/service-health/):
 
 - Az ügyfelek erőforrásainak állapotának figyelése Azure Resource Health
@@ -128,5 +132,5 @@ Vannak olyan API-k is, amelyek az Azure-beli delegált erőforrás-kezelési fel
 
 ## <a name="next-steps"></a>További lépések
 
-- Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace](../how-to/publish-managed-services-offers.md)-re való közzétételével teheti közzé.
-- [Megtekintheti és kezelheti](../how-to/view-manage-customers.md) az ügyfeleket a Azure Portalban lévő **ügyfelekkel** .
+- Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
+- [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

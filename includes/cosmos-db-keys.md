@@ -4,14 +4,13 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
-ms.openlocfilehash: 25ac3da36727c33cc916a208f1e7974a35c545ad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26aab287c6bf216129bdf372f7dee4d22f12f7bd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67178873"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299353"
 ---
-  Lépjen az Azure Cosmos DB-fiók oldalára, majd kattintson a **Kulcsok** elemre, mivel ezeket az értékeket fogjuk használni a következőkben létrehozott webalkalmazásban.
+  Lépjen a Azure Cosmos DB fiók lapra, és válassza a **kulcsok**lehetőséget. Másolja a következőként létrehozott webalkalmazásban használni kívánt értékeket.
 
-![Képernyőkép a Azure Portalról a Azure Cosmos DB-fiók lapon Kiemelt kulcsok gombbal](./media/cosmos-db-keys/keys.png)
-
+![Képernyőkép a Azure Portalról a Azure Cosmos DB-fiók lapon Kiemelt kulcsok gombbal](./media/cosmos-db-keys/copy-keys.png)

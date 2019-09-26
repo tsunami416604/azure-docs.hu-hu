@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be69f18f30b796e7401ef68aa5088153e07f14f5
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127887"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909982"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és területi támogatása
 
@@ -229,6 +229,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | magyar      | `hu`          |
 | izlandi | `is` |
 | indonéz|   `id`    |
+| ír | `ga`  |
 | olasz      | `it`          |
 | japán      | `ja`          |
 |szuahéli| `sw`    |

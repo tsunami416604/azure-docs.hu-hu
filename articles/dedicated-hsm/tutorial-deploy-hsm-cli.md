@@ -3,8 +3,8 @@ title: Az oktatóanyag egy meglévő virtuális hálózatot az Azure CLI - Azure
 description: 'Oktatóanyag: hogyan kell telepíteni a parancssori felület használatával a meglévő virtuális hálózatban egy dedikált HSM'
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mbaldwin
+ms.openlocfilehash: 1d8649fc271801748723f484515f5fd2f708f95e
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688414"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881043"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM-ek üzembe helyezése meglévő virtuális hálózaton a parancssori felülettel
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban a HSM-EK párjai összpontosít, és a szükséges Expr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon. A szolgáltatás való minden interakció parancssori vagy a Powershellen keresztül lesz. Ebben az oktatóanyagban a parancssori felület (CLI) az Azure Cloud Shell fogja használni. Ha most ismerkedik az Azure CLI, kövesse az első lépések az itt leírt utasításokat: [Ismerkedés az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Az Azure, a dedikált HSM jelenleg nem áll rendelkezésre az Azure Portalon. A szolgáltatás való minden interakció parancssori vagy a Powershellen keresztül lesz. Ebben az oktatóanyagban a parancssori felület (CLI) az Azure Cloud Shell fogja használni. Ha most ismerkedik az Azure CLI-vel, kövesse az első lépéseket ismertető útmutatót itt: [Azure CLI 2,0 – első lépések](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
 Előfeltételek:
 
@@ -177,7 +177,7 @@ A telepítés körülbelül 25 – 30 percet az adott idő alatt a hardveres biz
 
 ![kiépítési állapot](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-Amikor befejeződik az üzembe helyezés sikerült "provisioningState": "Sikeres" jelenik meg. Csatlakozás a meglévő virtuális géphez, és az SSH használata a HSM eszközt rendelkezésre állásának biztosításához.
+Ha az üzembe helyezés sikeresen befejeződött, "provisioningState": "Sikeres" üzenet jelenik meg. Csatlakozás a meglévő virtuális géphez, és az SSH használata a HSM eszközt rendelkezésre állásának biztosításához.
 
 ## <a name="verifying-the-deployment"></a>A telepítés ellenőrzése
 

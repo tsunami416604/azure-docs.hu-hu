@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779086"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290765"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -41,11 +41,10 @@ Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában é
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) átmenő hitelesítéssel?
 
-Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure multi-Factor Authenticationt, az átmenő hitelesítés használata.
+Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Az áteresztő hitelesítés támogatja a "másodlagos azonosító" nevet a "userPrincipalName" helyett?
-
-Igen, az áteresztő hitelesítés a `Alternate ID` Azure ad Connect-ben konfigurált felhasználónévként támogatja. Előfeltételként Azure ad Connect kell szinkronizálnia a helyszíni Active Directory `UserPrincipalName` attribútumot az Azure ad-vel. További információkért lásd: [az Azure AD Connect egyéni telepítési](how-to-connect-install-custom.md). Nem minden Office 365-alkalmazás `Alternate ID`támogatja. Tekintse meg az adott alkalmazás dokumentációs támogatási nyilatkozatát.
+Az átmenő hitelesítés korlátozott mértékben támogatja a helyettesítő azonosító használatát, ha Azure AD Connect konfigurálja a felhasználónevet. Előfeltételként Azure ad Connect kell szinkronizálnia a helyszíni Active Directory `UserPrincipalName` attribútumot az Azure ad-vel. `UserPrincipalName` Így a helyszíni ad és az Azure ad azonos lesz. Ha egy másik attribútummal szeretne szinkronizálni a helyszíni AD-ből az Azure AD-beli egyszerű felhasználónévként, akkor a jelszó-kivonatoló szinkronizálást vagy a AD FSt kell használnia. További információkért lásd: [az Azure AD Connect egyéni telepítési](how-to-connect-install-custom.md). Nem minden Office 365-alkalmazás `Alternate ID`támogatja. Tekintse meg az adott alkalmazás dokumentációs támogatási nyilatkozatát.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>A jelszó-kivonatolási szinkronizálás tartalékként viselkedik az átmenő hitelesítéshez?
 
@@ -86,7 +85,7 @@ Ha nem konfigurálta a jelszó-visszaírási egy adott felhasználóhoz, vagy ha
 Igen. Ha a webproxy automatikus felderítése (WPAD) engedélyezve van a helyszíni környezetben, a hitelesítési ügynökök automatikusan megpróbálnak megkeresni és használni egy webproxy-kiszolgálót a hálózaton.
 
 Ha nem rendelkezik WPAD-környezettel a környezetben, akkor az áteresztő hitelesítési ügynök az Azure AD-vel való kommunikáció engedélyezéséhez (az alább látható módon) adhat hozzá proxy-információkat:
-- Konfigurálja a proxybeállításokat az Internet Explorerben, mielőtt telepítené a továbbítási hitelesítési ügynököt a kiszolgálón. Ez lehetővé teszi a hitelesítési ügynök telepítésének befejezését, de továbbra is inaktívként jelenik meg a felügyeleti portálon.
+- Konfigurálja a proxybeállításokat az Internet Explorerben, mielőtt telepítené a továbbítási hitelesítési ügynököt a kiszolgálón. Ez lehetővé teszi a hitelesítési ügynök telepítésének befejezését, de továbbra is **inaktívként** jelenik meg a felügyeleti portálon.
 - A kiszolgálón navigáljon a "C:\Program Files\Microsoft Azure AD Connect Authentication Agent" elemre.
 - Szerkessze a "AzureADConnectAuthenticationAgentService" konfigurációs fájlt, és adja hozzá a következő sorokat (\:cserélje le a "http//contosoproxy.com:8080" kifejezést a tényleges proxy-címmé):
 
@@ -108,13 +107,13 @@ Nem, csak egy átmenő hitelesítési ügynököt telepíthet egyetlen kiszolgá
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Kell-e manuálisan megújítani a továbbított hitelesítési ügynökök által használt tanúsítványokat?
 
-Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommunikáció tanúsítványalapú hitelesítéssel védett. Ezeket a [tanúsítványokat az Azure ad minden hónapban automatikusan](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents)megújítja. Ezeket a tanúsítványokat nem kell manuálisan megújítani. Szükség szerint törölheti a régebbi lejárt tanúsítványokat.
+Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommunikáció tanúsítványalapú hitelesítéssel védett. Ezeket a [tanúsítványokat az Azure ad minden hónapban automatikusan megújítja](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Ezeket a tanúsítványokat nem kell manuálisan megújítani. Szükség szerint törölheti a régebbi lejárt tanúsítványokat.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan egy átmenő hitelesítési ügynököt?
 
 Amíg egy átmenő hitelesítési ügynök fut, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmeket. Ha el kívánja távolítani a hitelesítési ügynököt, lépjen a **Vezérlőpult – > programok > programok és szolgáltatások elemre** , és távolítsa el mind a **Microsoft Azure ad csatlakozási hitelesítési ügynököt** , mind a **Microsoft Azure ad összekötő ügynök frissítését** . programok.
 
-Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök inaktívkéntjelenik meg. Ez a _várt_érték. A hitelesítési ügynök néhány nap múlva automatikusan el lesz dobva a listából.
+Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként**jelenik meg. Ez a _várt_érték. A hitelesítési ügynök néhány nap múlva automatikusan el lesz dobva a listából.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Már használom a AD FS az Azure AD-be való bejelentkezéshez. Hogyan váltani átmenő hitelesítésre?
 

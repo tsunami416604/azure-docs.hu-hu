@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180910"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299920"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Az Azure HPC cache használatának előfeltételei (előzetes verzió)
 
@@ -26,7 +26,7 @@ Díjköteles előfizetés ajánlott.
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
 
-A gyorsítótár használata előtt két hálózattal kapcsolatos beállítást kell beállítani:
+A gyorsítótár használata előtt két hálózattal kapcsolatos előfeltételt kell beállítani:
 
 * Dedikált alhálózat az Azure HPC cache-példányhoz
 * DNS-támogatás, hogy a gyorsítótár hozzáférhessen a tárolóhoz és egyéb erőforrásokhoz
@@ -37,13 +37,13 @@ Az Azure HPC cache-nek dedikált alhálózatra van szüksége a következő tula
 
 * Az alhálózatnak elérhetőnek kell lennie legalább 64 IP-címmel.
 * Az alhálózat nem tud más virtuális gépeket üzemeltetni, még a kapcsolódó szolgáltatások, például az ügyfélszámítógépek esetében is.
-* Ha több gyorsítótár-példányt használ, mindegyiknek saját alhálózatra van szüksége.
+* Ha több Azure HPC cache-példányt használ, mindegyiknek saját alhálózatra van szüksége.
 
-Az ajánlott eljárás egy új alhálózat létrehozása a gyorsítótárhoz. Létrehozhat egy új virtuális hálózatot és alhálózatot a gyorsítótár létrehozásának részeként.
+Az ajánlott eljárás az, ha új alhálózatot hoz létre minden gyorsítótárhoz. Létrehozhat egy új virtuális hálózatot és alhálózatot a gyorsítótár létrehozásának részeként.
 
 ### <a name="dns-access"></a>DNS-hozzáférés
 
-Az Azure HPC gyorsítótárának DNS-re van szüksége a virtuális hálózaton kívüli erőforrásokhoz való hozzáféréshez. Attól függően, hogy melyik erőforrást használja, lehet, hogy be kell állítania egy testreszabott DNS-kiszolgálót, és konfigurálnia kell a továbbítást a kiszolgáló és a Azure DNS kiszolgálók között: 
+A gyorsítótárnak szüksége van a DNS-re a virtuális hálózatán kívüli erőforrásokhoz való hozzáféréshez. Attól függően, hogy melyik erőforrást használja, lehet, hogy be kell állítania egy testreszabott DNS-kiszolgálót, és konfigurálnia kell a továbbítást a kiszolgáló és a Azure DNS kiszolgálók között:
 
 * Az Azure Blob Storage-végpontok és egyéb belső erőforrások eléréséhez az Azure-alapú DNS-kiszolgálóra van szükség.
 * A helyszíni tároló eléréséhez konfigurálnia kell egy egyéni DNS-kiszolgálót, amely képes megoldani a tárolási gazdagépeket.
@@ -56,14 +56,16 @@ További információ az Azure Virtual Networks és a DNS-kiszolgáló konfigur�
 
 A gyorsítótár létrehozásának megkezdése előtt olvassa el ezeket az engedélyeket érintő előfeltételeket.
 
-* Az Azure HPC-gyorsítótárnak képesnek kell lennie virtuális hálózati adapterek (NIC-EK) létrehozására. A gyorsítótárat létrehozó felhasználónak elegendő jogosultsággal kell rendelkeznie az előfizetésben a hálózati adapterek létrehozásához.
+* A gyorsítótár-példánynak képesnek kell lennie virtuális hálózati adapterek (NIC-EK) létrehozására. A gyorsítótárat létrehozó felhasználónak elegendő jogosultsággal kell rendelkeznie az előfizetésben a hálózati adapterek létrehozásához.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* BLOB Storage használata esetén az Azure HPC cache-példánynak engedélyre van szüksége a Storage-fiók eléréséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosíthatja a gyorsítótár elérését a blob-tárolóhoz. Két szerepkörre van szükség: Storage-fiók közreműködői és tárolási blob adatközreműködői. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)című témakör utasításait.
+* Ha blob Storage-t használ, az Azure HPC cache-nek engedélyre van szüksége a Storage-fiók eléréséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosíthatja a gyorsítótár elérését a blob-tárolóhoz. Két szerepkörre van szükség: Storage-fiók közreműködői és tárolási blob adatközreműködői. A szerepkörök hozzáadásához kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör utasításait.
 
 ## <a name="storage-infrastructure"></a>Tárolási infrastruktúra
 
-A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tárolók exportálását. A tárolási célokat a gyorsítótár létrehozásakor is meghatározhatja, de később is hozzáadhatja őket. 
+A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tárolók exportálását. A tárolási célokat a gyorsítótár létrehozásakor is meghatározhatja, de később is hozzáadhat tárhelyet.
+
+Mindegyik tárolási típushoz konkrét előfeltételek vonatkoznak. 
 
 ### <a name="nfs-storage-requirements"></a>NFS-tárolási követelmények
 
@@ -73,7 +75,7 @@ Az NFS-háttérbeli tárterületnek kompatibilis hardver/szoftver platformnak ke
 
 ### <a name="blob-storage-requirements"></a>BLOB Storage-követelmények
 
-Ha az Azure-Blob Storage-t az Azure HPC-gyorsítótárral szeretné használni, akkor egy kompatibilis Storage-fiókra és egy üres blob-tárolóra vagy egy olyan tárolóra van szükség, amely az [adatok áthelyezése az Azure Blob Storage](hpc-cache-ingest.md)-ba című témakörben leírtak szerint feltölti az Azure HPC gyorsítótárral formázott adatokat
+Ha az Azure Blob Storage-t a gyorsítótárral szeretné használni, egy kompatibilis Storage-fiókra és egy üres blob-tárolóra vagy egy olyan tárolóra van szükség, amely az [adatok áthelyezése az Azure Blob Storage](hpc-cache-ingest.md)-ba című témakörben leírtak szerint feltölti az Azure HPC gyorsítótárral formázott adatokat.
 
 Hozza létre a fiókot és a tárolót, mielőtt felveszi a tárolási célként.
 
@@ -85,6 +87,7 @@ Kompatibilis Storage-fiók létrehozásához használja az alábbi beállításo
 * Hozzáférési szintek (alapértelmezett): **gyakori elérésű**
 
 Célszerű a Storage-fiókot a gyorsítótárral megegyező helyen használni.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
 Az Azure Storage-fiókhoz is meg kell adnia a gyorsítótár-alkalmazáshoz való hozzáférést. Kövesse a Storage-tárolók [hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör leírását, és adja meg a gyorsítótárhoz a hozzáférési szerepkörök Storage-fiók közreműködőjét és a Storage blob adatközreműködőjét. Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
 

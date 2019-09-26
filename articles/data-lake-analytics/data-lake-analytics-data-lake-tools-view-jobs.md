@@ -1,174 +1,172 @@
 ---
-title: A Feladatböngésző és a feladat nézet használata Azure Data Lake Analytics-feladatok
-description: Ez a cikk ismerteti a Feladatböngésző és a feladat nézet használata Azure Data Lake Analytics-feladatokhoz.
-services: data-lake-analytics
+title: A böngésző & Job View-Azure Data Lake Analytics használata
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Data Lake Analytics feladatokhoz tartozó feladat-tallózó és feladat nézet.
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.reviewer: jasonwhowell
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
-ms.openlocfilehash: 905100f8a1444f6f6ee18d3bf9e9eab2ede8c805
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616230"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309940"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Használja a Feladatböngésző és a feladat nézet számára az Azure Data Lake Analytics
-Az Azure Data Lake Analytics szolgáltatás archiválja a query store az elküldött feladatot. Ebből a cikkből elsajátíthatja a Feladatböngésző és a feladat nézet használata Azure Data Lake Tools for Visual Studio korábbi feladat információ megtalálását. 
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analyticshoz tartozó Job Browser és Job nézet használata
+A Azure Data Lake Analytics szolgáltatás archivált feladatokat küld egy lekérdezési tárolóban. Ebből a cikkből megtudhatja, hogyan használhatja a feladatok böngészőjét és a feladatok nézetét a Visual studióhoz készült Azure Data Lake-eszközökben a korábbi feladatok adatainak megkereséséhez. 
 
-Alapértelmezés szerint a Data Lake Analytics szolgáltatást a feladatok archívumok 30 napig. A lejárati idő a testre szabott elévülési szabályzatának konfigurálásával konfigurálható az Azure Portalról. Nem lehet tudni hozzáférni a lejárat után az adatok. 
+Alapértelmezés szerint a Data Lake Analytics szolgáltatás 30 napig archiválja a feladatokat. A lejárati időszak a Azure Portal konfigurálható a testreszabott elévülési szabályzat konfigurálásával. A lejárati idő lejárta után nem fog tudni hozzáférni a feladathoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Lásd: [Data Lake Tools for Visual Studio Előfeltételek](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
+Lásd: [Data Lake Tools for Visual Studio előfeltételek](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
-## <a name="open-the-job-browser"></a>Nyissa meg a feladat böngészőben
-A Feladatböngésző keresztül eléréséhez **Server Explorer > Azure > a Data Lake Analytics > feladatok** a Visual Studióban.  A feladat böngészővel a lekérdezéstár egy Data Lake Analytics-fiók eléréséhez. A Feladatböngésző megjeleníti Query Store a bal oldali alapszintű feladatinformációkat, valamint a megfelelő bemutató. Ez a feladat nézet részletes feladatinformációkat.
+## <a name="open-the-job-browser"></a>A feladatokhoz tartozó böngésző megnyitása
+A **> Azure > Data Lake Analytics > feladatok** a Visual Studióban való eléréséhez nyissa meg a feladatot a böngészőn keresztül.  A böngésző használatával elérheti egy Data Lake Analytics fiók lekérdezési tárolóját. A feladat böngészője a bal oldalon jeleníti meg a lekérdezési tárolót, amely az alapszintű feladatok adatait és a feladat nézetét mutatja be a részletes feladatra vonatkozó információk
 
-## <a name="job-view"></a>Feladat megtekintése
-Feladat megtekintése egy feladat részletes információit jeleníti meg. Nyissa meg a feladatot, kattintson duplán egy feladatot a feladat böngészőben, vagy nyissa meg a Data Lake menüből feladat megtekintése gombra kattintva. Megjelenik egy párbeszédpanel, a feladat URL-cím használatával.
+## <a name="job-view"></a>Feladatok nézet
+A feladatok nézet a feladatok részletes információit jeleníti meg. A feladatok megnyitásához kattintson duplán a feladatokra a böngészőben, vagy nyissa meg a Data Lake menüből a feladatok nézet elemre kattintva. Ekkor megjelenik egy párbeszédpanel, amely a feladatok URL-címével van feltöltve.
 
-![Data Lake Tools Visual Studio Job Browser](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
+![Data Lake Tools Visual Studio-feladatok böngészője](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
 
-Feladat-nézet tartalmazza:
+A feladatok nézete a következőket tartalmazza:
 
 * Feladat összegzése
   
-    A feladat nézet frissítése a legújabb információkat a futó feladatok.
+    Frissítse a feladat nézetet a futó feladatok újabb információinak megtekintéséhez.
   
-  * Feladat állapota (gráf):
+  * Feladatok állapota (gráf):
     
-      Feladat állapota a feladat fázisból ismerteti:
+      A feladatok állapota a feladatok fázisait ismerteti:
     
-      ![Az Azure Data Lake Analytics-feladat fázisból állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Azure Data Lake Analytics a feladatok fázisainak állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
-    * Előkészítés: A szkript feltöltése a felhőbe, a kódja lefordításának és optimalizálás a parancsfájl a fordítási szolgáltatás segítségével.
-    * Várólistán: Feladatok várólistára kerülnek, amikor elegendő erőforrást várnak, vagy a feladatok meghaladja a maximális párhuzamos feladatok száma fiók korlátozás. A prioritás beállítása határozza meg a várakozási sorban lévő feladatok - sorozata a kisebb a szám, annál magasabb a prioritás.
-    * Fut: A feladat ténylegesen fut a Data Lake Analytics-fiókban.
-    * Véglegesítése: A feladat befejeződik (például a fájl véglegesítése).
+    * Előkészítése Töltse fel a szkriptet a felhőbe, a szkript fordításával és optimalizálásával a fordítási szolgáltatás használatával.
+    * Aszinkron A feladatok várólistára kerülnek, amikor elegendő erőforrásra várnak, vagy ha a feladatok túllépik az egyidejű feladatok maximális számát. A prioritási beállítás határozza meg a várólistán lévő feladatok sorrendjét – minél kisebb számot, annál magasabb prioritást.
+    * Fut A feladatok valójában a Data Lake Analytics-fiókban futnak.
+    * Véglegesítése A feladatot befejezi (például véglegesíti a fájlt).
       
-      A feladat minden fázisban meghiúsulhat. Ha például fordítási hibát jelez a Preparing fázis, a várólistán fázisban időtúllépési hibákat, és végrehajtási hibák a futó fázis stb.
+      A feladat minden fázisban sikertelen lehet. Például fordítási hibák az előkészítési fázisban, időtúllépési hibák a várólistán lévő fázisban, illetve végrehajtási hibák a futó fázisban stb.
   * Alapvető adatok
     
-      A feladat alapvető információ a feladat összegzése panel alsó részén jelenik meg.
+      Az alapszintű feladat adatai a feladat összegzése panel alsó részén láthatók.
     
-      ![Az Azure Data Lake Analytics-feladat fázisból állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![Azure Data Lake Analytics a feladatok fázisainak állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
-    * Feladat eredménye: Sikeres vagy sikertelen volt. A feladat minden fázisban meghiúsulhat.
-    * Teljes időtartam: Valós idő (időtartam) elküldése időt és befejezési időpont között.
-    * Összes számítási idő: Minden csúcspont Futtatás végrehajtási idejének összege, érdemes lehet azt, hogy a feladat végrehajtása a csak egy-egy csúcsának idő. Tekintse meg a teljes csúcspontok csúcspont további információkat találhat.
-    * Küldje el/kezdő/záró idő: Az az időpont, amikor a Data Lake Analytics szolgáltatás fogad-e feladat beküldése/elindul, és a feladat/véget ér a feladat futtatása sikeresen lezajlott -e.
-    * Compilation/Queued/Running: Valós idő töltött a Preparing/várólistán/futó fázis során.
-    * Fiók: A feladat futtatásához használt Data Lake Analytics-fiók.
-    * Szerző: A felhasználó, aki a feladat elküldése egy valódi személy vagy a system fiók lehet.
-    * Prioritás: A feladat prioritása. Az alacsonyabb a szám, annál magasabb a prioritás. Csak a várólistában a feladatok sorozatát van hatással. Egy magasabb prioritású beállítása nem futó feladatok megelőzik az.
-    * Parallelism: Egyidejű Azure Data Lake Analytics egységek (ADLAUs), más néven csúcspontok kért maximális száma. Jelenleg egy-egy csúcsának megegyezik egy virtuális Gépet, a két virtuális mag, és 6 GB RAM, bár ez sikerült frissíteni a jövőben a Data Lake Analytics frissíti.
-    * Balra bájtok: Bájtok száma, amelyek kell feldolgozni, amíg a feladat befejeződik.
-    * Írt vagy olvasott bájtok: Bájtok száma, amelyeket írt vagy olvasott a feladat indulása óta.
-    * Teljes csúcsok: A feladat hány darab munka van osztva, minden egyes munkákat a csúcspont neve. Ez az érték áll a feladat hány darab munka ismerteti. Csúcs érdemes lehet egy alapvető folyamat egységként, más néven Azure Data Lake elemzési egység (ADLAU), és a csúcspontok párhuzamosság környezetben is futtatható. 
-    * Befejezett/futó/nem sikerült: Befejezett/futó/nem sikerült a csúcspontok száma. Csúcspontok mindkét felhasználói kód és a rendszer hibák miatt sikertelen lehet, de a rendszer próbálkozások csúcspontok automatikusan néhány alkalommal sem sikerült. A csúcspont még mindig nem sikerült, újrapróbálkozás után, ha a teljes feladat sikertelen lesz.
-* A Feladatgrafikon
+    * A feladatok eredménye: Sikeres vagy sikertelen. Előfordulhat, hogy a feladat minden fázisban meghiúsul.
+    * Teljes időtartam: A fal órája (időtartam) az idő beküldése és a Befejezés időpontja között.
+    * Számítási idő összesen: A csúcspontok végrehajtási idejének összege, ha a feladatot csak egy csúcsponton hajtja végre, azt az időpontot is megtekintheti. A csúcspontokkal kapcsolatos további információkért tekintse meg a teljes csúcspontokat.
+    * Küldés/indítás/Befejezés időpontja: Az az idő, amikor a Data Lake Analytics-szolgáltatás beküldi a feladatot, vagy elindítja a feladatot, vagy a feladatot sikeresen befejezi.
+    * Fordítás/üzenetsor-kezelési/Futtatás: Az előkészítési/várólistán lévő/futó fázisban töltött falióra ideje.
+    * Fiók A feladatok futtatásához használt Data Lake Analytics fiók.
+    * Szerző Az a felhasználó, aki elküldte a feladatot, valós személy fiókja vagy rendszerfiók lehet.
+    * Fontosság: A feladat prioritása. Minél kisebb a szám, annál magasabb a prioritás. Ez csak a várólistán lévő feladatok sorrendjére van hatással. A magasabb prioritású beállítás nem megelőzik futó feladatokat.
+    * Párhuzamosság Az egyidejű Azure Data Lake Analytics egységek (ADLAUs-EK) kért maximális száma (más néven csúcsok). Jelenleg az egyik csúcspont a két virtuális mag és a hat GB RAM-mal rendelkező virtuális gépekkel egyenlő, bár ez a későbbi Data Lake Analytics frissítésekben is frissíthető.
+    * Bal oldali bájtok: A feladatok befejezéséig feldolgozandó bájtok.
+    * Olvasott/írt bájtok: A művelet elindítása óta olvasott/írt bájtok száma.
+    * Összes csúcspont: A feladatnak sok munkadarabja van, és minden egyes munkafolyamatot csúcspontnak nevezzük. Ez az érték azt írja le, hogy a feladatból hány darab működik. A csúcspontokat alapszintű feldolgozási egységként, más néven Azure Data Lake Analytics egységként (ADLAU) is megtekintheti, és a csúcspontokat párhuzamosan is futtathatja. 
+    * Befejezett/futó/sikertelen: A befejezett/futó/sikertelen csúcspontok száma. A csúcspontok a felhasználói kód és a rendszerhibák miatt sikertelenek lehetnek, de a rendszer néhányszor újrapróbálkozik a sikertelen csúcspontok újrapróbálkozásával. Ha az Újrapróbálkozás után is sikertelen volt a csúcspont, a teljes feladat sikertelen lesz.
+* Feladatok gráfja
   
-    A U-SQL parancsfájl logikájának átalakítja a bemeneti adatokat kimeneti adatokat jelöli. A parancsfájl lefordított, és a egy fizikai végrehajtási terv a Preparing fázisában optimalizált. A Feladatgrafikon, hogy a fizikai végrehajtási terv megjelenítése.  Az alábbi ábra illusztrálja a folyamatot:
+    A U-SQL-szkript a bemeneti adatok kimeneti adatokra alakításának logikáját jelöli. A szkript fordítása és optimalizálása az előkészítési fázisban található fizikai végrehajtási tervre történik. A feladatok gráfja a fizikai végrehajtási terv megjelenítése.  Az alábbi ábra a folyamatot szemlélteti:
   
-    ![Az Azure Data Lake Analytics-feladat fázisból állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
+    ![Azure Data Lake Analytics a feladatok fázisainak állapota](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Egy feladat hány darab munka van osztva. Minden egyes munkákat a csúcspont neve. A csúcspontok Super csúcspont (más néven fázis) szerint csoportosítva, és mint Feladatgrafikon vizualizálja. A zöld fázis felirat a feladat grafikon megjelenítése a szakaszokat.
+    A feladatok sok munkára vannak bontva. Minden egyes munkadarabot Csúcspontnak nevezünk. A csúcspontokat a rendszer a Super Vertex (más néven szakasz) szerint csoportosítja, és a feladatok Gráfként való megjelenítését. A feladatütemezés zöld szakasza megjeleníti a szakaszokat.
   
-    Minden csúcspont egy lépésben hajtaná különböző részei ugyanazokat az adatokat a használata ugyanolyan típusú állapotát. Például ha egy fájl egy TB adatokkal rendelkezik, és a csúcspontok olvasásakor, több száz, azok van olvasásakor a rendszer. Ezek a csúcspontok szerint vannak csoportosítva, azonos fázisban és ezzel azonos működik különböző részein ugyanazt a bemeneti fájlt.
+    Egy adott szakasz minden csúcspontja ugyanolyan jellegű munkát végez, mint az azonos adatok különböző darabjai. Ha például van egy TB-adatokkal rendelkező fájlja, és több száz csúcspontja van, akkor mindegyik egy adatrészletet olvas. Ezek a csúcspontok ugyanabba a szakaszba vannak csoportosítva, és ugyanazon a bemeneti fájl különböző részein működnek.
   
-  * <a name="state-information"></a>Szakasz információkat
+  * <a name="state-information"></a>Szakasz adatai
     
-      Bizonyos számok egy adott szakaszban, a metaadattábla láthatók.
+      Egy adott szakaszban néhány szám jelenik meg a plakáton.
     
-      ![Az Azure Data Lake Analytics-feladat graph fázis](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
+      ![Azure Data Lake Analytics a feladatok gráfjának fázisa](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
     
-    * SV1 kivonat: Egy-egy számot, és a műveleti metódus nevű szakaszban neve.
-    * 84 csúcsok: Az ebben a szakaszban a csúcspontok száma. Az ábra azt jelzi, hogy hány darab munka ennek a szakasznak van osztva.
-    * 12.90 s csúcspont: Ebben a szakaszban átlagos a vertex végrehajtási idejét. Ez az ábra számítja ki a SUM (minden a vertex végrehajtási idő) / (teljes csúcspont száma). Ami azt jelenti, hogy a párhuzamosság végrehajtott összes csúcspontjának hozzárendelhet, ha a teljes szakaszban 12.90 befejezett s. Azt is, hogy ebben a szakaszban az összes munkahelyi a Feladattervek történik, ha a díj a következő lesz #vertices * átlagos idő.
-    * a sorok írásának 850,895: Ebben a szakaszban írt sorok teljes számát.
-    * R/W: Adatmennyiség bájtban ebben a szakaszban olvasható/Written.
-    * Színek: Színek szakaszában használják, amely különböző csúcspont állapotát jelzi.
+    * SV1-kivonat: Egy szám és a művelet metódusa által elnevezett szakasz neve.
+    * 84 csúcspontok: A csúcspontok teljes száma ebben a szakaszban. Az ábra azt jelzi, hogy a rendszer hány munkadarabot oszt szét ebben a fázisban.
+    * 12,90 s/csúcspont: A szakasz átlagos csúcspont-végrehajtási ideje. Ezt az értéket a SUM (minden csúcspont végrehajtási idő)/(teljes csúcspontok száma) alapján számítjuk ki. Ez azt jelenti, hogy ha a párhuzamosan végrehajtott összes csúcspontot hozzárendelheti, a teljes szakasz 12,90 s-ban fejeződik be. Ez azt is jelenti, hogy az ebben a szakaszban található összes munka sorosan van-e, a díj #vertices * átlagos idő.
+    * 850 895 sor írva: Ebben a szakaszban írt teljes sorok száma.
+    * R/W: Az ebben a szakaszban olvasott/írt adatmennyiség bájtban megadva.
+    * Színek A fázisban a színek a különböző csúcspontok állapotának jelzésére használatosak.
       
-      * Zöld jelzi a csúcspont van sikeres volt.
-      * Narancssárga azt jelzi, hogy a csúcspont rendszer. A rendszer csúcspont sikertelen volt, de a rendszer automatikusan, és sikeresen rendszer, és az általános szakasz sikeresen befejeződött. Ha a rendszer megpróbálja újból végrehajtani a csúcspont, de továbbra is sikertelen, a színt kikapcsolja a piros és a teljes feladat sikertelen volt.
-      * Piros szín jelzi a sikertelen, ami azt jelenti, hogy egy bizonyos csúcspont volt lett a rendszer újra megpróbálja a néhányszor, de továbbra is sikertelen volt. Ebben a forgatókönyvben sikertelen lesz a teljes feladat hatására.
-      * Kék azt jelenti, hogy egy bizonyos csúcspont fut-e.
-      * Fehér azt jelzi, hogy a csúcspont vár. A csúcspont vár ütemezni, miután egy ADLAU elérhetővé válik, vagy azt is lehet vár, mivel a bemeneti adatait nem áll készen.
+      * A zöld érték azt jelzi, hogy a csúcspont sikeres.
+      * A narancssárga érték azt jelzi, hogy a csúcspont újból próbálkozik. Az újrapróbált csúcspont meghiúsult, de a rendszer automatikusan újrapróbálkozik, és a teljes szakasz sikeresen befejeződött. Ha a csúcspont újrapróbálkozik, de a hiba továbbra is sikertelen, a szín pirosra vált, és az egész feladatot nem sikerült végrehajtani.
+      * A piros jelzi a hibát, ami azt jelenti, hogy egy bizonyos csúcspont többször is próbálkozott a rendszeren, de még sikertelen volt. Ez a forgatókönyv azt eredményezi, hogy a teljes feladat meghiúsul.
+      * A kék érték azt jelenti, hogy egy adott csúcspont fut.
+      * A fehér érték azt jelzi, hogy a csúcspont várakozik. Előfordulhat, hogy a csúcspont a ADLAU elérhetővé válását követően ütemezhető, vagy a bemenetre vár, mert a bemeneti adatok esetleg nem állnak készen.
       
-      További részleteket a szakasz a viszi az egérmutatót egy állam szerint található:
+      A fázissal kapcsolatban további részleteket talál, ha az egérmutatót az egyik állam fölé helyezi:
       
-      ![Az Azure Data Lake Analytics-feladat graph fázis részletei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
-  * Csúcsok: Ismerteti a csúcspontok részleteit, például teljes, hány csúcspontok befejeződött, hogy hány csúcspontok, sikertelen, vagy továbbra is fut/Várakozás stb.
-  * Határokon/belüli pod olvasott adatok: Fájlok és adatok vannak tárolva több podok elosztott fájlrendszerben. Az itt szereplő érték ismerteti, hogy mennyi adatot olvasott a azonos podot vagy közötti pod.
-  * Összes számítási idő: Minden a vertex végrehajtási idő a fázisban a sum, érdemes lehet azt az időt vesz igénybe, ha minden működik, a szakaszban a csak egy-egy csúcsának hajtja végre.
-  * Adatok és a sorok írhatók/olvashatók: Azt jelzi, hogy mennyi adatokat vagy a sorok olvasása/írása történt, vagy szeretné olvasni.
-  * Csúcspont olvassa el a hibák: Ismerteti, hogy hány csúcspontok vannak sikertelen volt az adatok olvasása közben.
-  * Ismétlődő csúcs elvetése: Ha egy csúcspont fut túl lassú, a rendszer az azonos munkákat futtatása több csúcspontok előfordulhat, hogy ütemezése. Reductant csúcsokat a rendszer elveti, a rendszer egyik sikeres befejeződése után. Csúcspont ismétlődő elvetések rögzíti, amelyek a fázisban adatismétlődések, elvesznek a csúcspontok száma.
-  * Csúcspont által okozott hibával találkozzanak: A csúcspont sikeres volt, de később első Újrafuttatás valamilyen oknál. Például alárendelt csúcspont elveszti a köztes bemeneti adatokat, ha rendszer rákérdez, a felsőbb rétegbeli csúcspont ismételt futtatásához használható.
-  * Csúcspont ütemezés végrehajtás: A rendszer ütemezett teljes ideje.
-  * Olvassa el a minimális és átlagos és maximális csúcspontok hibakeresésére vonatkozó adatok: A minimális és átlagos és maximális minden csúcspont adatokat olvasni.
-  * Időtartam: A valós idő fázist vesz igénybe, be kell tölteni a profil, tekintse meg ezt az értéket.
+      ![Azure Data Lake Analytics a feladatok gráf szakaszának részletei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
+  * Csúcspontok Ismerteti a csúcspontok részleteit, például azt, hogy hány csúcspontot, hány csúcspontot töltöttek le, vagy amelyek végrehajtása sikertelen volt, vagy továbbra is fut/várakozik stb.
+  * Adatolvasási kereszt/belső pod: A fájlok és az adatfájlok tárolása több hüvelyben történik az elosztott fájlrendszerben. Az itt megadott érték azt írja le, hogy az adott Pod-vagy Cross Pod-ban mennyi információ van beolvasva.
+  * Számítási idő összesen: A fázisban a csúcspontok végrehajtási idejének összege azt veszi figyelembe, hogy a szakasz minden munkafolyamata csak egy csúcsponton fut.
+  * Írás/olvasás: Azt jelzi, hogy az adatmennyiség és a sorok olvasása/írása megtörtént-e.
+  * Vertex olvasási hibák: Azt írja le, hogy az adatolvasás során hány csúcspontra volt sikertelen.
+  * Töréspontok ismétlődő elvetései: Ha egy csúcspont túl lassan fut, a rendszer több csúcspontot ütemezhet úgy, hogy ugyanazt a munkát futtassa. Ha a csúcspontok egyike sikeresen befejeződött, a rendszer elveti a visszavonási csúcspontokat. A töréspontok ismétlődő elvetései rögzítik a fázisban ismétlődésként elvetett csúcspontok számát.
+  * Csúcspont-visszavonások: A csúcspont sikeresen megtörtént, de néhány ok miatt később újra kell futtatni. Ha például az alsóbb szintű csúcspont elveszti a köztes bemeneti adatokat, a rendszer a felsőbb rétegbeli csúcspontot kéri újra.
+  * Csúcspont-ütemezett végrehajtások: A csúcspontok ütemezett teljes ideje.
+  * Minimális/átlagos/maximális csúcspont-adatolvasás: A csúcspontok összes olvasási értékének minimális/átlagos/maximális száma.
+  * Időtartama A fal órájának megkezdési ideje, be kell töltenie a profilt, hogy láthassa ezt az értéket.
   * Feladat visszajátszása
     
-      A Data Lake Analytics feladatokat futtat, és archiválja az információ a feladatok, például a futó csúcspontok a csúcspontok indítása, leállítása, sikertelen volt, és hogyan azokat a rendszer újra próbálkozik, stb. Az adatok automatikusan bejelentkezve a lekérdezéstár és a feladat profilja tárolja. Letöltheti a feladat profil keresztül "Profil betöltése" feladat nézetben, és a feladat profil letöltése után megtekintheti a feladat visszajátszása.
+      Data Lake Analytics futtatja a feladatokat, és archiválja a feladatok információit futtató csúcspontokat, például a csúcspontok elindítását, leállítását, leállását és azok újrapróbálkozását stb. Az összes információ automatikusan bekerül a lekérdezési tárolóba, és a profiljában tárolódik. A feladattípust letöltheti a "betöltési profil" használatával a feladatok nézetben, és a feladattípus letöltése után megtekintheti a feladatok lejátszását.
     
-      Feladat visszajátszása egy epitome képi megjelenítés, a fürt kimenetelét. Ez segít feladat végrehajtási folyamatának megtekintése és vizuálisan észlelheti a teljesítményanomáliákat és a szűk keresztmetszeteket nagyon rövid időn belül (kevesebb mint 30s általában).
-  * Feladat Heat Map megjelenítése 
+      A feladatok lejátszási listája a fürtben történtek megtestesülését ábrázolja. Segít megtekinteni a feladatok végrehajtási folyamatát, és a teljesítménybeli rendellenességek és szűk keresztmetszetek vizuális észlelése nagyon rövid idő alatt (kevesebb, mint 30-as általában).
+  * Feladatokhoz tartozó hő Térkép megjelenítése 
     
-      Feladat Hőtérkép segítségével lehet kiválasztani a Feladatgrafikon megjelenített legördülő menüt. 
+      A feladatokhoz tartozó Heat Map a feladatütemezés megjelenítési legördülő menüjéből választható ki. 
     
-      ![Az Azure Data Lake Analytics feladat graph halommemória térkép megjelenítése](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
+      ![Azure Data Lake Analytics a feladatok diagramjának heap térképének megjelenítése](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
     
-      Megmutatja az i/o-, idő- és átviteli sebesség hőtérkép egy feladat, amelyen keresztül található, ahol a feladat futtatásával töltött a legtöbbször, vagy a feladat egy i/o-határ feladat, és így tovább.
+      Megjeleníti egy adott feladathoz tartozó I/O-, idő-és átviteli hőmérsékleti térképet, amelyen megtalálhatja, hogy a feladatnak mennyi idő telik el, vagy hogy a feladatnak van-e egy I/O-határa, és így tovább.
     
-      ![Az Azure Data Lake Analytics feladat graph halommemória térkép példa](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
+      ![Példa a Azure Data Lake Analytics Job Graph heap térképre](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
     
-    * Folyamatban van: A feladat-végrehajtási halad, információkat lásd a szakasz információkat.
-    * Írt vagy olvasott adatok: Összes írt vagy olvasott adatok az egyes fázisokban hőtérképe.
-    * Számítási idő: A hőtérkép egy SUM (minden a vertex végrehajtási idő), érdemes lehet ezt, hogy hogyan hosszú időbe Ha minden munkahelyi szakaszában csak 1 csúcspont az.
-    * Csomópontonkénti átlagos végrehajtási idő: A hőtérkép egy SUM (minden a vertex végrehajtási idő) / (csúcspont szám). Ami azt jelenti, hogy a rendszer a párhuzamosság végrehajtása sikerült hozzárendelni, ha a teljes szakaszában végezheti el ezen az időn.
-    * Bemeneti/kimeneti átviteli sebesség: A bemeneti és kimeneti átviteli sebesség és az egyes szintek hőtérkép, ellenőrizheti a Ha a feladat nem egy i/o kötött ezen feladat.
+    * Haladás A feladatok végrehajtásának folyamata a szakasz információi szakaszban olvasható.
+    * Olvasott/írt adatbevitel: Az egyes fázisokban beolvasott/írt teljes adatmennyiség.
+    * Számítási idő: A SUM (minden csúcspont-végrehajtási idő) Heat térképével megtekintheti, hogy mennyi ideig tart, ha a fázisban lévő összes munkát csak 1 csúcsponttal hajtja végre.
+    * Átlagos végrehajtási idő/csomópont: A SUM (minden csúcspont végrehajtási idő)/(csúcspont-szám) típusú hő térképe Ez azt jelenti, hogy ha az összes csomópontot párhuzamosan hajtja végre, a teljes szakasz ebben az időkeretben lesz végrehajtva.
+    * Bemeneti/kimeneti átviteli sebesség: Az egyes fázisok bemeneti/kimeneti teljesítményének leképezése esetén megerősítheti, hogy a feladata egy I/O-kötésű feladatot használ-e.
 * Metaadat-műveletek
   
-    Hajtsa végre a U-SQL-szkript néhány metaadat-műveletek, például hozzon létre egy adatbázist, dobja el a táblát stb. Ezek a műveletek fordítás után a metaadat-művelet látható. Előfordulhat, hogy keresse meg a helyességi feltételek, hozza létre entitásokat, húzza ide a entitásokat.
+    Az U-SQL-parancsfájlban bizonyos metaadatokat is végrehajthat, például adatbázis létrehozását, tábla eldobását stb. Ezek a műveletek a metaadatokkal kapcsolatos műveletekben jelennek meg a fordítás után. Itt megtalálhatja az állításokat, entitásokat hozhat létre, és eldobni az entitásokat.
   
-    ![Az Azure Data Lake Analytics Feladatnézetben metaadat-műveletek](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
+    ![Azure Data Lake Analytics feladatok nézet metaadat-műveletei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * Állapotelőzmények
   
-    Az állapot előzményeket is webalkalmazásban jelennek meg a feladat összegzése, de további részleteit itt kérheti le. Megtalálhatja a részletes információkat, mint például a feladat kész, queued elindított fut le. A projekt lefordítása hány alkalommal is talál (a CcsAttempts: 1.), amikor a feladat elküldése a fürthöz ténylegesen (részletek: Fürt feladat elküldése), stb.
+    A korábbi állapotok is megjeleníthetők a feladatok összegzésében, de itt további részleteket is megtudhat. Megtalálhatja azokat a részletes információkat, mint a feladatok előkészítése, várólistára helyezése, elindítva, befejezve. Azt is megtudhatja, hogy hányszor állították le a feladatot (a CcsAttempts: 1.) Ha a feladatot ténylegesen a fürtnek küldi el (a részletek: Feladatok elküldése a fürtbe) stb.
   
-    ![Az Azure Data Lake Analytics Feladatnézetben csomópontállapotok előzményei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
+    ![Azure Data Lake Analytics Job View állapot előzményei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * Diagnosztika
   
-    Az eszköz automatikusan diagnosztizálja a feladat végrehajtása. Értesítést fog kapni, amikor bizonyos hibák vagy teljesítményproblémák a feladatok. Vegye figyelembe, hogy le kell töltenie a profilt az első teljes körű információkat itt. 
+    Az eszköz automatikusan diagnosztizálja a feladatok végrehajtását. A rendszer riasztást küld, amikor valamilyen hiba vagy teljesítménnyel kapcsolatos probléma merül fel a feladatokban. Vegye figyelembe, hogy a profil letöltéséhez le kell töltenie a teljes körű információkat. 
   
-    ![Az Azure Data Lake Analytics Feladatnézetben diagnostics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
+    ![Azure Data Lake Analytics Job View diagnosztika](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
   
-  * Figyelmeztetés: Egy riasztás jelenik meg itt a figyelmeztetéssel. Részletesebb információkat tartalmaz, a riasztás megjelenése után az "x hiba/hibák meghatározásához" hivatkozásra is kattinthat.
-  * A csúcspont futtatása túl hosszú: Ha minden csúcspont elfogy az idő (például: 5 óra), problémák itt található.
-  * Erőforrás-használat: Ha mint kell lefoglalni további vagy nem elég párhuzamosság problémákat itt található. Is kattinthat a további részleteket, és végezze el a Lehetőségelemzési forgatókönyvek jobb erőforrás-elosztás található erőforrás-használat (További részletekért lásd a jelen útmutató).
-  * Memória-ellenőrzés: Ha minden csúcspont 5 GB-nál több memóriát használ, akkor problémák itt található. Feladat végrehajtása előfordulhat, hogy első leállított rendszer, ha rendszerre vonatkozó korlátozás több memóriát használ.
+  * Figyelmeztetések A fordító figyelmeztetést jelenít meg itt. Ha a riasztás megjelenik, kattintson a "x probléma (ok)" hivatkozásra.
+  * A csúcspont futtatása túl hosszú: Ha bármelyik csúcsponton elfogynak az idő (mondjuk 5 óra), a problémák itt jelennek meg.
+  * Erőforrás-használat: Ha a szükségesnél több vagy nem elég párhuzamosságot foglalt le, a probléma itt található. Emellett az erőforrás-használat lehetőségre kattintva további részleteket tekinthet meg, és elvégezheti, hogy milyen helyzetekben érdemes jobb erőforrás-kiosztást találni (további részletekért lásd az útmutatót).
+  * Memória-ellenőrzési: Ha bármelyik csúcspont több mint 5 GB memóriát használ, itt talál problémát. A feladat végrehajtása a rendszeren is megszakadhat, ha a rendszer több memóriát használ, mint a rendszerkorlátozás.
 
-## <a name="job-detail"></a>Feladat részletei
-Feladat részletei a feladat, beleértve a parancsfájl, erőforrások és a Vertex végrehajtási nézet részletes információit jeleníti meg.
+## <a name="job-detail"></a>Feladatok részletei
+A feladatok részletei a feladatok részletes adatait jelenítik meg, beleértve a parancsfájlt, az erőforrásokat és a csúcspontok végrehajtási nézetét.
 
-![Az Azure Data Lake Analytics-feladat részletei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
+![Azure Data Lake Analytics feladatok részletei](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
 
-* Szkript
+* Parancsfájl
   
-    A U-SQL parancsfájl a feladat a lekérdezéstár tárolja. Az eredeti U-SQL parancsfájl megtekintheti és újra elküldeni, ha szükséges.
+    A feladatok U-SQL-szkriptjét a rendszer a lekérdezési tárolóban tárolja. Megtekintheti az eredeti U-SQL-parancsfájlt, és szükség esetén újra elküldheti.
 * További források
   
-    Megtalálhatja a fordítási feladatkimenetek-erőforrások használatával a lekérdezésben tárolja. Például "algebra.xml" a Feladatgrafikon megjelenítéséhez használt, a regisztrált szerelvényeket, stb. Itt is megtalálhatja.
-* A vertex végrehajtási nézet
+    A lekérdezési tárolóban tárolt feladatok fordítási kimeneteit erőforrásokon keresztül érheti el. Például megkeresheti az "algebra. xml" fájlt, amely a feladatok Gráfjának, a regisztrált szerelvényeknek stb. megjelenítésére szolgál.
+* Csúcspont-végrehajtási nézet
   
-    Csúcspontok végrehajtási részleteit mutatja. A feladat profil archívumok minden a vertex végrehajtási napló, például a teljes írt vagy olvasott adatok, futásidejű, állam stb. Ebben a nézetben keresztül kaphat további részleteket hogyan egy feladatot futtatott. További információkért lásd: [a Vertex végrehajtási nézet használata a Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+    A csúcspontok végrehajtásának részleteit jeleníti meg. A feladatok profilja archivál minden csúcspont-végrehajtási naplót, például a teljes adatolvasási/írási, futtatókörnyezeti, állami stb. Ebben a nézetben további részleteket tudhat meg arról, hogyan futottak a feladatok. További információ: [Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
 
 ## <a name="next-steps"></a>További lépések
 * A diagnosztikai információk naplózása: [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](data-lake-analytics-diagnostic-logs.md).
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).
-* A vertex végrehajtási nézet használatához lásd: [a Vertex végrehajtási nézet használata a Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* A csúcspont-végrehajtási nézet használatához tekintse meg [a Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md) című témakört.
 

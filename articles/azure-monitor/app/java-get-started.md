@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967817"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299591"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -29,10 +29,8 @@ Az Application Insights a Linux, Unix vagy Windows rendszeren futó Java alkalma
 
 A következők szükségesek:
 
-* A JRE 1.7-es vagy 1.8-as verziója
+* Java 7 vagy újabb verzió
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
-
-Ha a Spring keretrendszert részesíti előnyben, tekintse meg a [Spring Boot inicializáló alkalmazás konfigurálása az Application Insights használatához](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights) című útmutatót.
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights-kialakítási kulcs beszerzése
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
@@ -51,27 +49,16 @@ Ha a projekt már úgy van beállítva, hogy Mavent használ buildként, egyesí
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
 
 ```XML
-
-    <repositories>
-       <repository>
-          <id>central</id>
-          <name>Central</name>
-          <url>http://repo1.maven.org/maven2</url>
-       </repository>
-    </repositories>
-
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>applicationinsights-web</artifactId>
+        <artifactId>applicationinsights-web-auto</artifactId>
+        <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>[2.0,)</version>
+        <version>2.5.0</version>
       </dependency>
     </dependencies>
 ```
-
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `<version>2.0.n</version>`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
-* *Új SDK-ra kell frissítenie?* Frissítse a projekt függőségeit.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Ha Gradle-t használ... <a name="gradle-setup" />
 Ha a projekt már úgy van beállítva, hogy Gradle-t használ buildként, egyesítse a következő kódot a build.gradle fájllal.
@@ -79,34 +66,25 @@ Ha a projekt már úgy van beállítva, hogy Gradle-t használ buildként, egyes
 Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat.
 
 ```gradle
-
-    repositories {
-      mavenCentral()
-    }
-
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Ha az Eclipse-t használja dinamikus webes projekt létrehozásához...
-Használja a Application Insights SDK for Java beépülő modult. Megjegyzés: Annak ellenére, hogy ezzel a beépülő modullal gyorsabban kezdheti el az Application Insights használatát (feltéve, hogy nem használ Mavent/Gradle-t), ez nem függőségkezelési rendszer. A beépülő modul frissítése ezért nem frissíti automatikusan a projektben lévő Application Insights-kódtárakat.
-
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `version:'2.0.n'`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
-* *Frissítés új SDK-ra* A projekt függőségeinek frissítése.
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Egyéb esetben, ha manuálisan kezeli a függőségeket...
 Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és a korábbi verziókat felülírva másolja a szükséges fájlokat a projektbe.
 
 ### <a name="questions"></a>Kérdések...
-* *Mi a kapcsolat a `-core` és a `-web` összetevő között?*
-  * `applicationinsights-core`– csak az API-t biztosítja. Erre az összetevőre mindig szüksége van.
-  * `applicationinsights-web`– olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP-kérések számát és a válaszidőket. Ezt az összetevőt kihagyhatja, ha nem szeretné automatikusan gyűjteni ezt a telemetriát. hanem például sajátot szeretne írni.
+* *Mi a kapcsolat a `-web-auto` `-web` és `-core` az összetevők között?*
+  * `applicationinsights-web-auto`olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, ha automatikusan regisztrálja a Application Insights servlet szűrőt futásidőben.
+  * `applicationinsights-web`olyan metrikákat is biztosít, amelyek nyomon követik a HTTP servlet-kérelmek számát és a válaszadási időpontokat, de az alkalmazásban manuálisan kell regisztrálni az Application Insights servlet-szűrőt.
+  * `applicationinsights-core`csak az operációs rendszer nélküli API-t biztosítja, például ha az alkalmazás nem servlet-alapú.
   
 * *Hogyan frissíthetek az SDK legújabb verziójára?*
   * Ha Gradle-t vagy Mavent használ...
-    * Frissítse a buildfájlt, hogy a legújabb verziót mutassa, vagy a Gradle/Maven helyettesítő szintaxisa segítségével vegye fel automatikusan a legfrissebb verziót. Ezután frissítse a projekt függőségeit. A fenti példákban láthatja a [Gradle](#gradle-setup) és a [Maven](#maven-setup) helyettesítő szintaxisát.
+    * Frissítse a Build-fájlt, és adja meg a legújabb verziót.
   * Ha manuálisan kezeli a függőségeket...
     * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket. A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
 
@@ -116,34 +94,30 @@ Adja az ApplicationInsights.xml fájlt a projekt erőforrások mappájához, vag
 Helyettesítse be az Azure Portalról kapott kialakítási kulcsot.
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <!-- The key from the portal: -->
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
+   <!-- HTTP request component (not required for bare API) -->
+   <TelemetryModules>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+   </TelemetryModules>
 
-      <!-- The key from the portal: -->
-      <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <!-- Events correlation (not required for bare API) -->
+   <!-- These initializers add context data to each event -->
+   <TelemetryInitializers>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+   </TelemetryInitializers>
 
-
-      <!-- HTTP request component (not required for bare API) -->
-      <TelemetryModules>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
-      </TelemetryModules>
-
-      <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data to each event -->
-
-      <TelemetryInitializers>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
-
-      </TelemetryInitializers>
-    </ApplicationInsights>
+</ApplicationInsights>
 ```
 
 A konfigurációs fájlt bármely, az alkalmazás számára elérhető helyen tárolhatja.  A `-Dapplicationinsights.configurationDirectory` rendszertulajdonság határozza meg, hogy melyik tár tartalmazza az ApplicationInsights.xml fájlt. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
@@ -155,8 +129,8 @@ A konfigurációs fájlt bármely, az alkalmazás számára elérhető helyen t�
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>A kialakítási kulcs beállításának egyéb módjai
 Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
 
-1. Rendszertulajdonság: -DAPPLICATION_INSIGHTS_IKEY=saját_kialakítási_kulcs
-2. Környezeti változó: APPLICATION_INSIGHTS_IKEY
+1. Rendszertulajdonság:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
+2. Környezeti változó: ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY
 3. Konfigurációs fájl: ApplicationInsights.xml
 
 [Beállíthatja a programkódban](../../azure-monitor/app/api-custom-events-metrics.md#ikey) is:
@@ -170,133 +144,9 @@ Az Application Insights SDK ebben a sorrendben keresi a kulcsot:
     }
 ```
 
-Vegye figyelembe, hogy az [élő metrikák](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) nem támogatják a rendszerállapot-kulcs kód alapján történő olvasását.
+## <a name="4-add-agent"></a>4. Ügynök hozzáadása
 
-## <a name="4-add-an-http-filter"></a>4. HTTP-szűrő hozzáadása
-Az utolsó konfigurációs lépéssel a HTTP-kérelemösszetevő mindegyik webes kérelmet naplózhatja. (Nem szükséges, ha csak az API-ra van szüksége.)
-
-### <a name="spring-boot-applications"></a>Spring Boot-alkalmazások
-Regisztrálja az Application Insights `WebRequestTrackingFilter` szűrőt a konfigurációs osztályban:
-
-```Java
-package <yourpackagename>.configurations;
-
-import javax.servlet.Filter;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import com.microsoft.applicationinsights.TelemetryConfiguration;
-import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
-
-@Configuration
-public class AppInsightsConfig {
-
-    @Bean
-    public String telemetryConfig() {
-        String telemetryKey = System.getenv("<instrumentation key>");
-        if (telemetryKey != null) {
-            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-        }
-        return telemetryKey;
-    }
-
-    /**
-     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
-     * @param webRequestTrackingFilter
-     * @return Bean of type {@link FilterRegistrationBean}
-     */
-    @Bean
-    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(webRequestTrackingFilter);
-        registration.addUrlPatterns("/*");
-        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-        return registration;
-    }
-
-
-    /**
-     * Creates bean of type WebRequestTrackingFilter for request tracking
-     * @param applicationName Name of the application to bind filter to
-     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
-     */
-    @Bean
-    @ConditionalOnMissingBean
-
-    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-        return new WebRequestTrackingFilter(applicationName);
-    }
-
-
-}
-```
-
-> [!NOTE]
-> Ha a Spring Boot 1.3.8-as vagy régebbi verzióját használja, a FilterRegistrationBean helyére írja be az alábbi sort
-
-```Java
-    import org.springframework.boot.context.embedded.FilterRegistrationBean;
-```
-
-Ez az osztály úgy konfigurálja a `WebRequestTrackingFilter` szűrőt, hogy ez legyen a HTTP-szűrőlánc első szűrője. Emellett a kialakítási kulcsot is lekéri az operációsrendszer-változóból, ha elérhető.
-
-> A Spring MVC-konfiguráció helyett a webes HTTP-szűrőkonfigurációt használjuk, mert ez egy Spring Boot-alkalmazás, és saját Spring MVC-konfigurációval rendelkezik. Az alábbi szakaszokban találja a Spring MVC-re jellemző konfigurációt.
-
-### <a name="applications-using-webxml"></a>Web.xml fájlt használó alkalmazások
-Keresse meg és nyissa meg a web.xml fájlt a projektben, és egyesítse a következő kódot azon webalkalmazás-csomópont alatt, ahol az alkalmazás szűrői konfigurálva vannak.
-
-A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes többi szűrő előtt.
-
-```XML
-
-    <filter>
-      <filter-name>ApplicationInsightsWebFilter</filter-name>
-      <filter-class>
-        com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter
-      </filter-class>
-    </filter>
-    <filter-mapping>
-       <filter-name>ApplicationInsightsWebFilter</filter-name>
-       <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
-    <listener>
-      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
-    </listener>
-```
-
-#### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Ha a Spring Web MVC 3.1-es vagy újabb verzióját használja
-Szerkessze úgy ezeket az elemeket a *-servlet.xml fájlban, hogy tartalmazzák az Application Insights-csomagot:
-
-```XML
-
-    <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
-
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
-        </mvc:interceptor>
-    </mvc:interceptors>
-```
-
-#### <a name="if-youre-using-struts-2"></a>Ha Struts 2-t használ
-Adja ezt az elemet a Struts konfigurációs fájlhoz (általában struts.xml vagy struts-default.xml a neve):
-
-```XML
-
-     <interceptors>
-       <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
-     </interceptors>
-     <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
-
-Ha egy alapértelmezett veremben elfogók vannak meghatározva, az elfogó a veremhez adható.
+[Telepítse a Java](java-agent.md) -ügynököt a kimenő HTTP-hívások, a JDBC-lekérdezések, az alkalmazások naplózása és a jobb működés elnevezésének rögzítéséhez.
 
 ## <a name="5-run-your-application"></a>5. Az alkalmazás futtatása
 Futtassa hibakeresés módban a fejlesztési számítógépén, vagy tegye közzé a kiszolgálóján.
@@ -314,9 +164,9 @@ Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
 ![Application Insights hibák panel diagramokkal](./media/java-get-started/006-barcharts.png)
 
-> Az Application Insights feltételezi, hogy az MVC alkalmazások HTTP-kérelmeinek formátuma a következő: `VERB controller/action`. Például a `GET Home/Product/f9anuh81`, a `GET Home/Product/2dffwrf5` és a `GET Home/Product/sdf96vws` a következőbe van csoportosítva: `GET Home/Product`. Ez a csoportosítás lehetővé teszi a kérelmek fontos információkat biztosító összesítéseit, például a kérelmek számának és a kérelmek átlagos végrehajtási idejének meghatározását.
->
->
+<!--
+[TODO update image with 2.5.0 operation naming provided by agent]
+-->
 
 ### <a name="instance-data"></a>Példányadatok
 Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.
@@ -362,15 +212,14 @@ A Windows rendszeren futó Spring boot-alkalmazások további konfigurálást ig
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
-A kezeletlen kivételek gyűjtése automatikusan történik.
+A nem kezelt kivételeket és a kérelmekkel kapcsolatos hibákat a Application Insights webes szűrő automatikusan gyűjti.
 
-Adatok és más kivételek gyűjtésére két lehetősége van:
-
-* [Szúrjon be hívásokat a trackException () a kódban][apiexceptions].
-* [Telepítse a Java ügynököt a kiszolgálón](java-agent.md). Válassza ki a megtekinteni kívánt metódusokat.
+Ha más kivételekkel szeretne adatokat gyűjteni, a [kódban trackException () hívásokat is beszúrhat][apiexceptions].
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Metódushívások és külső függőségek megfigyelése
 [Telepítse a Java ügynököt](java-agent.md) a megadott belső módszerek és a JDBC-n keresztül végzett hívások naplózásához, időzítési adatokkal.
+
+És automatikus művelet-elnevezéssel.
 
 ## <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetés
 
@@ -441,9 +290,6 @@ Telemetriát küld a webkiszolgálóról. Az alkalmazás teljes körű megfigyel
 
 * Az telemetria és a felhasználói mérőszámok figyeléséhez [vegyen fel][usage] weblapokat.
 * [Állítson be][availability] webteszteket annak biztosítására, hogy az alkalmazás élő és rugalmas maradjon.
-
-## <a name="capture-log-traces"></a>Naplónyomkövetések rögzítése
-Az Application Insights segítségével naplókat szeletelhet a Log4J, a Logback vagy más naplózási keretrendszerekből. HTTP-kérelmekkel és más telemetriával kapcsolhatja össze a naplókat. [További tudnivalókat itt talál][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Saját telemetria küldése
 Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.

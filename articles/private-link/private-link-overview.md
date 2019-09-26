@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104656"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300751"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
@@ -40,11 +40,11 @@ Az Azure Private link a következő előnyöket biztosítja:
 
 |Forgatókönyv  |Támogatott szolgáltatások   |Elérhető régiók | State   |
 |---------|---------|---------|---------|
-|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások |USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi régiója  |  Előzetes verzió  |
+|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások |USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója  |  Előzetes verzió  |
 |Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  USA keleti régiója, USA nyugati régiója, USA nyugati középső régiója       | Előzetes verzió         |
 |  | Azure Data Lake Storage Gen2        |  USA keleti régiója, USA nyugati régiója, USA nyugati középső régiója       | Előzetes verzió         |
-|  |  Azure SQL Database         | USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi régiója       |   Előzetes verzió      |
-||Azure SQL Data Warehouse| USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi régiója |Előzetes verzió|
+|  |  Azure SQL Database         | USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója      |   Előzetes verzió      |
+||Azure SQL Data Warehouse| USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója |Előzetes verzió|
 
 A legfrissebb értesítésekért keresse fel az [Azure Virtual Network Updates oldalt](https://azure.microsoft.com/updates/?product=virtual-network). 
 

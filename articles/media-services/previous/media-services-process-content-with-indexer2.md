@@ -11,35 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015016"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309250"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval
-## <a name="overview"></a>Áttekintés
-A **Azure Media Indexer 2** előnézeti adathordozó-feldolgozó (mp) lehetővé teszi a médiafájlok és a tartalmak kereshetővé tételét, valamint a kódolt feliratozási sávok létrehozását. A [Azure Media Indexer](media-services-index-content.md)korábbi verziójához képest **Azure Media Indexer 2 előzetes** verzió gyorsabb indexelést végez, és szélesebb körű nyelvi támogatást nyújt. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (mandarin, egyszerűsített), portugál, Arab, orosz és Japán.
+
+> [!NOTE]
+> A [2. Azure Media Indexer](media-services-process-content-with-indexer2.md) adathordozó-processzor 2020. január 1-től megszűnik. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt adathordozó-processzort. További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+
+A **Azure Media Indexer 2 előnézeti** adathordozó-feldolgozó (mp) lehetővé teszi a médiafájlok és a tartalmak kereshetővé tételét, valamint a kódolt feliratozási sávok létrehozását. A [Azure Media Indexer](media-services-index-content.md)korábbi verziójához képest **Azure Media Indexer 2 előzetes** verzió gyorsabb indexelést végez, és szélesebb körű nyelvi támogatást nyújt. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, Kínai (mandarin, egyszerűsített), portugál, Arab, orosz és Japán.
 
 A **Azure Media Indexer 2 előzetes** verziójú mp jelenleg előzetes verzióban érhető el.
 
 Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat **Azure Media Indexer 2 előzetes**verzióval.
 
-> [!NOTE]
-> A következő szempontokat kell figyelembe venni:
-> 
-> Az indexelő 2 nem támogatott az Azure China-ban és a Azure Governmentban.
-> 
-> A tartalom indexelése során ügyeljen arra, hogy a nagyon egyértelmű beszédtel (háttérzene, zaj, effektusok vagy mikrofon nélkül sziszegve) adathordozó-fájlokat használjon. Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy bemutatók. Előfordulhat, hogy az alábbi tartalmak nem alkalmasak indexelésre: filmek, TV-műsorok, bármilyen kevert hang-és hanghatások, a rosszul rögzített tartalom (sziszegés).
-> 
-> 
+## <a name="considerations"></a>Megfontolandó szempontok
 
-Ez a cikk részletesen ismerteti **Azure Media Indexer 2 előzetes** verzióját, és bemutatja, hogyan használható a Media Services SDK for .net
-
+A következő szempontokat kell figyelembe venni:
+ 
+* Az indexelő 2 nem támogatott az Azure China 21Vianet és Azure Governmentban.
+* A tartalom indexelése során ügyeljen arra, hogy a nagyon egyértelmű beszédtel (háttérzene, zaj, effektusok vagy mikrofon nélkül sziszegve) adathordozó-fájlokat használjon. Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy bemutatók. Előfordulhat, hogy az alábbi tartalmak nem alkalmasak indexelésre: filmek, TV-műsorok, bármilyen kevert hang-és hanghatások, a rosszul rögzített tartalom (sziszegés).
+ 
 ## <a name="input-and-output-files"></a>Bemeneti és kimeneti fájlok
 ### <a name="input-files"></a>Bemeneti fájlok
 Hang-és videofájlok

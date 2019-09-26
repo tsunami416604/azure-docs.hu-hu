@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180986"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299986"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (előzetes verzió) adatfeldolgozás – manuális másolási módszer
 
@@ -23,7 +23,7 @@ Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan he
 
 Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
 
-A Linux/Unix ``cp`` parancs tartalmazza a tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot. ``-p`` Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyfél és a cél fájlrendszer közötti, a metaadatok módosítására irányuló hívások számát.)
+A Linux/Unix ``cp`` parancs tartalmazza a tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot. ``-p`` Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
 
 Ez az egyszerű példa két fájlt másol át párhuzamosan:
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>Csatlakoztatási pontok hozzáadása
 
-Ha elegendő párhuzamos szálat használ egy adott cél fájlrendszer csatlakoztatási pontján, akkor a több szál hozzáadására szolgáló pont nem ad nagyobb átviteli sebességet. (Az adatátviteli sebességet a rendszer a megadott adattípustól függően a fájl/másodperc vagy a bájt/másodperc értékben méri.) Vagy ami még rosszabb, az átviteli sebesség romlása időnként okozhatja a teljesítményt.  
+Ha már van elég párhuzamos szála egy adott célfájl-rendszer csatlakoztatási pontján, akkor a több szál hozzáadására szolgáló pont nem ad nagyobb átviteli sebességet. (Az adatátviteli sebességet a rendszer a megadott adattípustól függően a fájl/másodperc vagy a bájt/másodperc értékben méri.) Vagy ami még rosszabb, az átviteli sebesség romlása időnként okozhatja a teljesítményt.  
 
-Ebben az esetben az ügyféloldali csatlakoztatási pontokat hozzáadhatja más Azure HPC gyorsítótár-csatlakoztatási címekhez ugyanazzal a távoli fájlrendszer-csatlakozási útvonallal:
+Ha ez történik, az ügyféloldali csatlakoztatási pontokat hozzáadhatja más Azure HPC gyorsítótár-csatlakoztatási címekhez ugyanazzal a távoli fájlrendszer-csatlakozási útvonallal:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Fájl-jegyzékfájlok létrehozása
 
-Miután megértette a fenti megközelítéseket (több másolási szál, célként több célhely, ügyfél, hálózat által elérhető forrás fájlrendszer), vegye figyelembe a következő javaslatot: Hozzon létre fájl-jegyzékfájlokat, majd használja őket a másolási parancsokkal több ügyfélen.
+Miután megértette a fenti megközelítéseket (több másolási szál a célhelyen, több célhely/ügyfél, a hálózaton keresztül elérhető forrásfájl több ügyfele), vegye figyelembe ezt a javaslatot: Hozzon létre fájl-jegyzékfájlokat, majd használja őket a másolási parancsokkal több ügyfélen.
 
 Ez a forgatókönyv a UNIX ``find`` parancs használatával hozza létre a fájlok vagy könyvtárak jegyzékeit:
 

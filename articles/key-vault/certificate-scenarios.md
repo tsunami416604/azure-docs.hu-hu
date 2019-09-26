@@ -3,18 +3,18 @@ title: Ismerkedés a Key Vault-tanúsítványok használatába
 description: A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0c2581106466f7d84cc694cd47d4ba02e40bf60b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815757"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879309"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -45,7 +45,7 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
 
 **3. lépés** – a contoso rendszergazdája, valamint a tanúsítványokat birtokló contoso-alkalmazott (Key Vault felhasználó) a hitelesítésszolgáltatótól függően beszerezhet egy tanúsítványt a rendszergazdától, vagy közvetlenül a fiókból a hitelesítésszolgáltatótól.  
 
-- A [tanúsítvány kiállítói](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) erőforrásának beállításával kezdjen hozzá egy hitelesítő adat hozzáadása a kulcstartóhoz. A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.
+- A [tanúsítvány kiállítói erőforrásának beállításával](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) kezdjen hozzá egy hitelesítő adat hozzáadása a kulcstartóhoz. A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.
   - Pl. MyDigiCertIssuer  
     -   Szolgáltató  
     -   Hitelesítő adatok – HITELESÍTÉSSZOLGÁLTATÓI fiók hitelesítő adatai. Minden HITELESÍTÉSSZOLGÁLTATÓ saját konkrét adattal rendelkezik.  

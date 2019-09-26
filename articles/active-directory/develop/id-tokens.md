@@ -17,12 +17,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cb279441e8ed0c0110a5b18d32609ed5b01bd7e2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074262"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291046"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -63,7 +63,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
 
-Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alapértelmezésben vannak (kivéve, ha van ilyen).  Az alkalmazás azonban [választható](active-directory-optional-claims.md) jogcímeket is használhat további jogcímek igénylésére a id_token.  Ezek a `groups` jogcím alapján a felhasználó nevével kapcsolatos információkra terjedhetnek.
+Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alapértelmezésben vannak (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat további jogcímek igénylésére a id_token.  Ezek a `groups` jogcím alapján a felhasználó nevével kapcsolatos információkra terjedhetnek.
 
 |Igénylés | Formátum | Leírás |
 |-----|--------|-------------|
@@ -80,7 +80,7 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 |`email` | Sztring | A `email` jogcímek alapértelmezés szerint az e-mail-címmel rendelkező vendég fiókok esetében jelennek meg.  Az alkalmazás kérheti az e-mail-jogcímet a felügyelt felhasználók számára (az erőforrással megegyező bérlőtől) a `email` [választható jogcím](active-directory-optional-claims.md)használatával.  A v 2.0-s végponton az alkalmazás az `email` OpenID Connect hatókörét is kérheti – nem kell megadnia mind a választható jogcímet, mind a hatókört a jogcím beszerzéséhez.  Az e-mail-jogcím csak a felhasználó profiljának adataiból származó címezhető leveleket támogatja. |
 |`name` | Sztring | A `name` jogcím egy ember által olvasható értéket biztosít, amely azonosítja a jogkivonat tárgyát. Az érték nem garantált, hogy egyedi, megváltoztathatatlan, és csak megjelenítési célokra használható. Ennek `profile` a jogcímnek a fogadásához a hatókörre van szükség. |
 |`nonce`| Sztring | Az egyszeres érték megegyezik az eredeti/Authorize-kérelemben szereplő paraméterrel a IDENTITÁSSZOLGÁLTATÓ. Ha nem egyezik, az alkalmazásnak el kell utasítania a jogkivonatot. |
-|`oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity Systemben, ebben az esetben egy felhasználói fiók. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat `oid` az értékeket kapja meg a jogcímben. A Microsoft Graph egy adott felhasználói fiókhoz tartozó `id` tulajdonságként adja vissza ezt az azonosítót. Mivel a `oid` lehetővé teszi, hogy több alkalmazás is összekapcsolja a felhasználókat, a `profile` hatókörnek meg kell kapnia a jogcímet. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is különböző fiókoknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. |
+|`oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity Systemben, ebben az esetben egy felhasználói fiók. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat `oid` az értékeket kapja meg a jogcímben. A Microsoft Graph egy adott felhasználói fiókhoz tartozó `id` tulajdonságként adja vissza ezt az azonosítót. Mivel a `oid` lehetővé teszi, hogy több alkalmazás is összekapcsolja a felhasználókat, a `profile` hatókörnek meg kell kapnia a jogcímet. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is különböző fiókoknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. A `oid` jogcím egy GUID azonosító, és nem használható fel újra. |
 |`roles`| karakterláncok tömbje | A bejelentkezett felhasználóhoz hozzárendelt szerepkörök összessége. |
 |`rh` | Átlátszatlan karakterlánc |Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`sub` | Karakterlánc, GUID | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. A tulajdonos egy páros-azonosító – egyedi egy adott alkalmazás-AZONOSÍTÓhoz. Ha egyetlen felhasználó két különböző alkalmazásba jelentkezik be két különböző ügyfél-azonosítóval, akkor ezek az alkalmazások két különböző értéket kapnak a tulajdonos jogcímek számára. Az architektúra-és adatvédelmi követelményektől függően ez lehet vagy nem kívánatos. |
@@ -102,4 +102,4 @@ A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési toke
 ## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
-* A id_token lévő jogcímeket a [választható](active-directory-optional-claims.md)jogcímek használatával szabhatja testre.
+* A id_token lévő jogcímeket a [választható jogcímek](active-directory-optional-claims.md)használatával szabhatja testre.

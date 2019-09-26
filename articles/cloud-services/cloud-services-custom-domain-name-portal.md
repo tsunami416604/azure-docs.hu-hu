@@ -70,7 +70,7 @@ CNAME rekord létrehozásához hozzá kell adnia egy új bejegyzést a DNS-tábl
        ```
 
      Mentse az egyik metódus által visszaadott URL-címben használt tartománynevet, mivel CNAME rekord létrehozásakor szüksége lesz rá.
-2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagy névkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
+2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagynévkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
 3. Itt megtalálhatja a CNAME elem kiválasztásának vagy megadásának helyét. Előfordulhat, hogy ki kell választania a bejegyzéstípust a legördülő listából, vagy a speciális beállítások lapra kell lépnie. A következő szavakat kell megkeresnie: **CNAME**, **alias**vagy altartomány.
 4. A CNAME tartomány vagy altartomány aliasnevét is meg kell adnia, például a **www** -t, ha létre szeretne hozni egy aliast a **www\.-customdomain.com**. Ha létre szeretne hozni egy aliast a gyökértartomány számára, akkor előfordulhat, hogy a " **\@** " szimbólum jelenik meg a regisztrátor DNS-eszközeiben.
 5. Ezt követően meg kell adnia egy kanonikus állomásnév nevét, amely ebben az esetben az alkalmazás **cloudapp.net** tartománya.
@@ -103,7 +103,7 @@ Rekord létrehozásához először meg kell keresnie a felhőalapú szolgáltat�
        ```
 
      Mentse az IP-címet, mert egy rekord létrehozásakor szüksége lesz rá.
-2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagy névkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
+2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagynévkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
 3. Itt megtalálhatja A rekordok kiválasztásának vagy megadásának helyét. Előfordulhat, hogy ki kell választania a bejegyzéstípust a legördülő listából, vagy a speciális beállítások lapra kell lépnie.
 4. Válassza ki vagy adja meg azt a tartományt vagy altartományt, amely ezt A rekordot fogja használni. Válassza például a **www** lehetőséget, ha létre szeretne hozni egy aliast **a\.www customdomain.com**. Ha helyettesítő karaktert szeretne létrehozni az összes altartományhoz, írja be a "* * * * *" értéket. Ez minden olyan altartományt magában foglal, mint például a **mail.customdomain.com**, a **login.customdomain.com**és a **www\.customdomain.com**.
 

@@ -4,18 +4,18 @@ description: Az Azure Blob Storage feltöltése az Azure HPC cache használatáv
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 103470861383ff411cfaa670d70412086045a418
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180717"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299996"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache-preview"></a>Adatáthelyezés az Azure Blob Storage-ba az Azure HPC cache (előzetes verzió) szolgáltatásban
+# <a name="move-data-to-azure-blob-storage"></a>Az Azure Blob Storage-ba irányuló adatáthelyezés
 
-Ha a munkafolyamat az Azure Blob Storage-ba helyezi át az adatáthelyezést, győződjön meg arról, hogy hatékony stratégiát használ az adatmásoláshoz az Azure HPC cache használatával.
+Ha a munkafolyamat magában foglalja az Azure Blob Storage-ba való áthelyezést, győződjön meg arról, hogy hatékony stratégiát használ. Egy új blob-tárolóban megadhatja az adatait, mielőtt azt tárolási célként definiálja, vagy hozzáadja a tárolót, majd az Azure HPC cache használatával másolja az adatait.
 
 Ez a cikk azt ismerteti, hogyan helyezhetők át a blob Storage-ba az Azure HPC cache szolgáltatással.
 
@@ -23,7 +23,7 @@ Tartsa szem előtt ezeket a tényeket:
 
 * Az Azure HPC cache egy speciális tárolási formátumot használ a blob Storage-ban tárolt adatrendszerezéshez. Ezért a blob Storage-tárolónak egy új, üres tárolónak vagy egy korábban az Azure HPC gyorsítótár-adateléréséhez használt BLOB-tárolónak kell lennie. ([A avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) ezt a felhőalapú fájlrendszert is használja.)
 
-* Az adatok az Azure HPC cache használatával történő másolása a legjobb, ha több ügyfelet és párhuzamos műveletet használ. Az egyik ügyfél egyszerű másolási parancsa lassan áthelyezi az adatátvitelt.
+* Ha több ügyfelet és párhuzamos műveletet használ, az adatok másolása az Azure HPC-gyorsítótárból a háttérbeli tárolási célra hatékonyabb. Az egyik ügyfél egyszerű másolási parancsa lassan áthelyezi az adatátvitelt.
 
 Egy Python-alapú segédprogram használható a tartalom blob Storage-tárolóba való betöltésére. További információért olvassa el [a blob Storage-beli előzetes betöltését](#pre-load-data-in-blob-storage-with-clfsload) ismertető témakört.
 
@@ -41,7 +41,7 @@ A részletes információkat a avere CLFSLoad-eloszlás tartalmazza, amely az Az
 
 A folyamat általános áttekintése:
 
-1. Készítse elő a linuxos rendszert (VM vagy fizikai) a Python 3,6-es vagy újabb verziójával. (A Python 3,7 ajánlott a jobb teljesítmény érdekében.)
+1. Készítse elő a linuxos rendszert (VM vagy fizikai) a Python 3,6-es vagy újabb verziójával. A Python 3,7 ajánlott a jobb teljesítmény érdekében.
 1. Telepítse a avere-CLFSLoad szoftvert a Linux rendszerre.
 1. Hajtsa végre az átvitelt a Linux parancssorból.
 
@@ -50,7 +50,7 @@ A avere CLFSLoad segédprogramnak a következő információkra van szüksége:
 * A blob Storage-tárolót tartalmazó Storage-fiók azonosítója
 * Az üres blob Storage-tároló neve
 * Közös hozzáférésű aláírási (SAS) token, amely lehetővé teszi a segédprogram számára a tárolóba való írást
-* Az adatforrás helyi elérési útja – vagy egy helyi könyvtár, amely a másolni kívánt adatforrást vagy egy csatlakoztatott távoli rendszer helyi elérési útját tartalmazza.
+* Az adatforrás helyi elérési útja – vagy egy helyi könyvtár, amely a másolandó adatmásolási vagy helyi elérési utat tartalmazza egy csatlakoztatott távoli rendszer számára az adattal
 
 <!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 

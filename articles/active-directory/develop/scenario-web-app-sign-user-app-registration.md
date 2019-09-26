@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bdf04014d7b0382913c0a4094f7474686658441
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7ab7c3699abdd5c094b1b14cd53f76023fa8c1ac
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086704"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309601"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Felhasználók számára bejelentkező webalkalmazás – alkalmazás regisztrálása
 
@@ -39,25 +39,66 @@ Ha megnyitja ezt a hivatkozást, létrehozhat rendszerindítást a webalkalmazá
 - [ASP.NET Core](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)
 - [ASP.NET](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
 
-### <a name="register-an-app-using-azure-portal"></a>Alkalmazás regisztrálása a Azure Portal használatával
+## <a name="register-an-app-using-azure-portal"></a>Alkalmazás regisztrálása a Azure Portal használatával
 
 > [!NOTE]
 > a használni kívánt portál eltérő lehet attól függően, hogy az alkalmazás a Microsoft Azure nyilvános felhőben, vagy egy nemzeti vagy szuverén felhőben fut-e. További információ: [National felhők](./authentication-national-cloud.md#app-registration-endpoints)
 
+
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com). Másik lehetőségként jelentkezzen be a nemzeti felhőbe Azure Portal.
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
 1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
-1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+4. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
    1. Válassza ki az alkalmazás támogatott fiókjának típusát (lásd a [támogatott fióktípus](./v2-supported-account-types.md))
    1. A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-WebApp`).
    1. Az **átirányítási URI**-ban adja meg az alkalmazás típusát és az URI célhelyet, amely a sikeres hitelesítés után fogadja a visszaadott jogkivonat-válaszokat. Például: `https://localhost:44321/`.  Kattintson a **Register** (Regisztrálás) elemre.
 1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
-   1. A **Válasz URL**-címe `https://localhost:44321/signin-oidc`mezőben adja hozzá a címet.
+   1. A **Válasz URL**-címe `https://localhost:44321/signin-oidc` mezőben adja hozzá a "web" típusú kifejezést.
    1. A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `https://localhost:44321/signout-oidc`következőre:.
    1. Az **implicit támogatás szakaszban adja**meg az **azonosító jogkivonatokat**.
    1. Kattintson a **Mentés** gombra.
 
-### <a name="register-an-app-using-powershell"></a>Alkalmazás regisztrálása a PowerShell-lel
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+4. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait:
+   1. Válassza ki az alkalmazás támogatott fiókjának típusát (lásd a [támogatott fióktípus](./v2-supported-account-types.md))
+   - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `MailApp-openidconnect-v2`).
+   - Az átirányítási URI (nem kötelező) szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-ket: `https://localhost:44326/`.
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
+1. Válassza a **hitelesítés** menüt, majd adja hozzá a következő adatokat:
+   - A **Speciális beállítások** | **implicit engedélyezése** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+1. Kattintson a **Mentés** gombra.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+4. Amikor megjelenik az **alkalmazás regisztrálása lap** , adjon meg egy felhasználóbarát nevet az alkalmazásnak, például "Java-WebApp", válassza a "fiókok bármely szervezeti címtárban és személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)" lehetőséget, és válassza a "webalkalmazás /API-t az *alkalmazás típusaként*.
+1. Az alkalmazás regisztrálásához kattintson a **regisztráció** gombra.
+1. A bal oldali menüben kattintson a **hitelesítés**elemre, majd az *átirányítási URI*-k területen válassza a "web" lehetőséget. Két különböző átirányítási URI-t kell megadnia: egyet a bejelentkezési laphoz, egyet pedig a Graph Users oldalhoz. Mindkettő esetében ugyanazt a gazdagépet és portszámot kell használnia, majd a bejelentkezési oldalon és a "msal4jsample/Graph/Users" (felhasználók) lapon a "/msal4jsample/Secure/aad" értéket kell követnie.
+ Alapértelmezés szerint a minta a következőket használja: 
+
+    - `http://localhost:8080/msal4jsample/secure/aad`. 
+    - `http://localhost:8080/msal4jsample/graph/users`
+
+Kattintson a **Save (Mentés**) gombra.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+4. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait:
+   - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `python-webapp`).
+   - A **támogatott fióktípus** módosítása **bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)** .
+   - Az átirányítási URI (nem kötelező) szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-ket: `http://localhost:5000/getAToken`.
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
+1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
+1. Az alkalmazás áttekintés lapján válassza a **hitelesítés** szakaszt.
+   - A **Speciális beállítások** szakaszban a **KIJELENTKEZÉSI URL-cím** beállítása`http://localhost:5000/logout`
+1. Kattintson a **Mentés** gombra.
+
+---
+
+## <a name="register-an-app-using-powershell"></a>Alkalmazás regisztrálása a PowerShell-lel
 
 > [!NOTE]
 > Az Azure AD PowerShell jelenleg csak a következő támogatott fióktípus-típusokat hozza létre:

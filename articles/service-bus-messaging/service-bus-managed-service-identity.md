@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273676"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299648"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 [Felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) több Azure-funkció, amely lehetővé teszi, hogy a központi telepítést, amely alatt az alkalmazás kódja fut társított biztonságos identitás létrehozása. Ezután társíthatja az identitásukat hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adott, az alkalmazásnak szüksége van az Azure erőforrások eléréséhez.
@@ -57,7 +57,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforr
 
 - **Üzenetsor**, **témakör**vagy **előfizetés**: A szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. Jelenleg a Azure Portal nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten lévő Service Bus RBAC-szerepkörökhöz. Íme egy példa az Azure CLI-parancs használatára: [az-role-hozzárendelés-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) , hogy identitást rendeljen egy Service Bus RBAC szerepkörhöz: 
 
-    ```powershell
+    ```azurecli
     az role assignment create \
         --role $service_bus_role \
         --assignee $assignee_id \

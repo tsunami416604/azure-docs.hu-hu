@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051056"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309587"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storage-ban Azure Logic Apps
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan érheti el és kezelheti a blobként tárolt fájlok
 Tegyük fel, hogy rendelkezik egy olyan eszközzel, amely frissítve lesz egy Azure-webhelyen. Ez a logikai alkalmazás triggerként működik. Ha ez az esemény történik, a logikai alkalmazás a blob Storage-tárolóban is frissítheti a fájlt, amely egy művelet a logikai alkalmazásban.
 
 > [!NOTE]
-> Logic Apps nem támogatja közvetlenül az Azure Storage-fiókokhoz való csatlakozást a tűzfalakon keresztül. A Storage-fiókok eléréséhez használja az alábbi lehetőségek egyikét:
+> A Logic apps nem tud közvetlenül hozzáférni olyan Azure Storage-fiókokhoz, amelyek [Tűzfalszabályok](../storage/common/storage-network-security.md) és ugyanabban a régióban vannak. A Logic apps azonban olyan Azure Storage-fiókokhoz is hozzáférhet, amelyek egy másik régióban találhatók, mert egy nyilvános IP-cím van használatban a régiók közötti kommunikációhoz. Vagy használhatja az alábbi lehetőségek egyikét is:
 >
 > * Hozzon létre egy [integrációs szolgáltatási környezetet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy Azure-beli virtuális hálózat erőforrásaihoz tud csatlakozni.
 >
@@ -35,13 +35,13 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 ## <a name="limits"></a>Korlátok
 
-* Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom** beolvasása művelet implicit módon adatdarabolást használ.
+* Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom beolvasása** művelet implicit módon adatdarabolást használ.
 
 * Az Azure Blob Storage-eseményindítók nem támogatják a darabolást. Fájl tartalmának kérésekor a triggerek csak 50 MB vagy annál kisebb fájlokat választanak ki. A 50 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
 
   * Használjon olyan Azure Blob Storage triggert, amely a fájl tulajdonságait adja vissza, például **egy blob hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
-  * Kövesse a triggert az Azure Blob Storage **blob-tartalom** lekérése művelettel, amely beolvassa a teljes fájlt, és implicit módon használja a darabolást.
+  * Kövesse a triggert az Azure Blob Storage **blob-tartalom lekérése** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja a darabolást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -67,7 +67,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
    ![Trigger kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
-3. Ha a rendszer megkérdezi a kapcsolat részleteit, [hozza létre most a blob Storage](#create-connection)-kapcsolatát. Ha már létezik a kapcsolatai, adja meg a szükséges információkat az triggerhez.
+3. Ha a rendszer megkérdezi a kapcsolat részleteit, [hozza létre most a blob Storage-kapcsolatát](#create-connection). Ha már létezik a kapcsolatai, adja meg a szükséges információkat az triggerhez.
 
    Ebben a példában válassza ki a figyelni kívánt tárolót és mappát.
 
@@ -103,7 +103,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Művelet kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. Ha a rendszer kéri a kapcsolat részleteit, [hozza létre most az Azure Blob Storage](#create-connection)-kapcsolatát.
+4. Ha a rendszer kéri a kapcsolat részleteit, [hozza létre most az Azure Blob Storage-kapcsolatát](#create-connection).
 Ha a kapcsolat már létezik, adja meg a szükséges információkat a művelethez.
 
    Ebben a példában válassza ki a kívánt fájlt.
@@ -112,7 +112,7 @@ Ha a kapcsolat már létezik, adja meg a szükséges információkat a műveleth
   
       ![Select folder (Mappa kiválasztása)](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. Keresse meg és válassza ki a kívánt fájlt a blob azonosítójának száma alapján. Ezt az **azonosítót** a blob metaadatokban találja, amelyeket a korábban leírt blob Storage-trigger ad vissza.
+   2. Keresse meg és válassza ki a kívánt fájlt a blob **azonosítójának** száma alapján. Ezt az **azonosítót** a blob metaadatokban találja, amelyeket a korábban leírt blob Storage-trigger ad vissza.
 
 5. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 A logikai alkalmazás teszteléséhez győződjön meg arról, hogy a kiválasztott mappa blobot tartalmaz.

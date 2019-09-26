@@ -238,9 +238,7 @@
 - name: Referenciaarchitektúra
   items:
     - name: Áttekintés
-      href: iot-accelerators-architecture-overview.md
-    - name: Letöltés
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: Partnerimplementációk
       items:
         - name: Intel Connected Logistics Platform

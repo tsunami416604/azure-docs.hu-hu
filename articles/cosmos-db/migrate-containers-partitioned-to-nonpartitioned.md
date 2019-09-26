@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan telepítheti át az összes meglévő nem parti
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615027"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300115"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -19,12 +19,12 @@ Azure Cosmos DB támogatja a tárolók partíciós kulcs nélküli létrehozás�
 
 A nem particionált tárolók örököltek, és a tárolók és az átviteli sebesség méretezéséhez át kell telepítenie a meglévő nem particionált tárolókat a particionált tárolók között. A Azure Cosmos DB rendszer által meghatározott mechanizmust biztosít a nem particionált tárolók particionált tárolóba való átadásához. Ez a dokumentum azt ismerteti, hogy a meglévő, nem particionált tárolók hogyan lesznek automatikusan áttelepítve a particionált tárolókban. Az automatikus áttelepítési funkciót csak akkor használhatja ki, ha az SDK-k v3-as verzióját használja az összes nyelven.
 
-> [!NOTE] 
-> Jelenleg nem telepíthet át Azure Cosmos DB MongoDB és Gremlin API-fiókokat a jelen dokumentumban ismertetett lépések segítségével. 
+> [!NOTE]
+> Jelenleg nem telepíthet át Azure Cosmos DB MongoDB és Gremlin API-fiókokat a jelen dokumentumban ismertetett lépések segítségével.
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Tároló átmigrálása a rendszer által definiált partíciós kulccsal
 
-Az áttelepítés támogatásához Azure Cosmos db definiál egy nevű `/_partitionkey` rendszerpartíció-kulcsot az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz: 
+Az áttelepítés támogatásához a Azure Cosmos db egy nevű `/_partitionkey` rendszerpartíció-kulcsot biztosít az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
 
 ```json
 {
@@ -37,10 +37,10 @@ Az áttelepítés támogatásához Azure Cosmos db definiál egy nevű `/_partit
   },
 }
 ```
- 
-A tároló migrálása után létrehozhat dokumentumokat úgy, hogy kitölti `_partitionKey` a tulajdonságot a dokumentum többi tulajdonságával együtt. A `_partitionKey` tulajdonság a dokumentumok partíciós kulcsát jelöli. 
 
-A megfelelő partíciós kulcs kiválasztása fontos a kiépített átviteli sebesség optimális kihasználásához. További információ: [How to Choo an Partition Key](partitioning-overview.md) article. 
+A tároló migrálása után létrehozhat dokumentumokat úgy, hogy kitölti `_partitionKey` a tulajdonságot a dokumentum többi tulajdonságával együtt. A `_partitionKey` tulajdonság a dokumentumok partíciós kulcsát jelöli.
+
+A megfelelő partíciós kulcs kiválasztása fontos a kiépített átviteli sebesség optimális kihasználásához. További információ: [How to Choo an Partition Key](partitioning-overview.md) article.
 
 > [!NOTE]
 > Csak akkor használhatja a rendszerszintű partíciós kulcs előnyeit, ha az SDK-k legújabb vagy v3-as verzióját használja az összes nyelven.
@@ -65,37 +65,37 @@ public class DeviceInformationItem
     [JsonProperty(PropertyName = "deviceId")]
     public string DeviceId { get; set; }
 
-    [JsonProperty(PropertyName = "_partitionKey")]
+    [JsonProperty(PropertyName = "_partitionKey", NullValueHandling = NullValueHandling.Ignore)]
     public string PartitionKey {get {return this.DeviceId; set; }
 }
 
 CosmosContainer migratedContainer = database.Containers["testContainer"];
 
 DeviceInformationItem deviceItem = new DeviceInformationItem() {
-  Id = "1234", 
+  Id = "1234",
   DeviceId = "3cf4c52d-cc67-4bb8-b02f-f6185007a808"
-} 
+}
 
-CosmosItemResponse<DeviceInformationItem > response = 
-  await migratedContainer.Items.CreateItemAsync(
+ItemResponse<DeviceInformationItem > response = 
+  await migratedContainer.CreateItemAsync<DeviceInformationItem>(
     deviceItem.PartitionKey, 
     deviceItem
   );
 
 // Read back the document providing the same partition key
-CosmosItemResponse<DeviceInformationItem> readResponse = 
-  await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
+ItemResponse<DeviceInformationItem> readResponse = 
+  await migratedContainer.ReadItemAsync<DeviceInformationItem>( 
     partitionKey:deviceItem.PartitionKey, 
     id: device.Id
-  ); 
+  );
 
 ```
 
-A teljes minta esetében tekintse meg a [.net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-tárházát. 
+A teljes minta esetében tekintse meg a [.net-minták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-tárházát.
                       
 ## <a name="migrate-the-documents"></a>A dokumentumok migrálása
 
-Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíciós kulcs tulajdonságának `/_partitionKey` elérési útja nincs automatikusan hozzáadva a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak `_partitionKey` létre, és visszaírják őket a dokumentumokban szereplő tulajdonsággal. 
+Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíciós kulcs tulajdonságának `/_partitionKey` elérési útja nincs automatikusan hozzáadva a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak `_partitionKey` létre, és visszaírják őket a dokumentumokban szereplő tulajdonsággal.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>A partíciós kulccsal nem rendelkező dokumentumok elérése
 
@@ -104,7 +104,7 @@ Az alkalmazások a "CosmosContainerSettings. NonePartitionKeyValue" nevű speci�
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
 await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
-  partitionKey: CosmosContainerSettings.NonePartitionKeyValue, 
+  partitionKey: PartitionKey.None, 
   id: device.Id
 ); 
 

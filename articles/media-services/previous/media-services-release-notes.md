@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860351"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309228"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -45,6 +45,14 @@ Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák me
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API korábbi verziók
 A Media Services REST API korábbi verzióival kapcsolatos információkért tekintse meg a [Azure Media Services REST API-hivatkozás].
+
+## <a name="september-2019"></a>Szeptember 2019
+
+### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
+
+Bejelentjük *Azure Media Indexer* és a *Azure Media Indexer 2*. A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 (előzetes verzió) adathordozó-](media-services-process-content-with-indexer2.md) processzorok 2020 január 1-től megszűnnek. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+
+További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Augusztus 2019
 

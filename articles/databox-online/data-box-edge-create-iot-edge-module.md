@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900632"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315822"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>C# IoT Edge modul fejlesztése a fájlok áthelyezéséhez Data Box Edge
 
@@ -111,7 +111,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
         ![3\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
-4. Nyissa **meg a fájl > Megnyitás mappát**.
+4. **Nyissa meg a fájl > Megnyitás mappát**.
 
     ![4\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
@@ -180,7 +180,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-6. Távolítsa el a **pipe Message metódus** kódját, és a helyére írja be a **FileCopy**kódját.
+6. Távolítsa el a **PipeMessage metódus** kódját, és helyezze be a helyére a **FileCopy**kódot.
 
     ```
         /// <summary>
@@ -263,7 +263,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
     A rendszer kérni fogja a modul platformjának kiválasztását. Válassza ki a Linux rendszernek megfelelő *amd64* elemet.
 
-    ![Válasszon platformot](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+    ![Platform kiválasztása](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
     > Csak a Linux-modulok támogatottak.

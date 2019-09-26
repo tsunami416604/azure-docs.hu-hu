@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596962"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299489"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
 
@@ -36,32 +36,19 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a IoT szolgáltatás Azure Secu
   - A Log Analytics munkaterület alapértelmezés szerint két típusú információt tárol a IoT számára Azure Security Center alapján. **biztonsági riasztások** és **javaslatok**. 
   - Dönthet úgy is, hogy hozzáad egy további adattípust, **nyers eseményeket**. Vegye figyelembe, hogy a Log Analytics **nyers események** tárolása további tárolási költségekkel jár. 
 - IoT Hub (standard szint)
-- Az összes [szolgáltatás](service-prerequisites.md) előfeltételeinek teljesítése 
-
-|Támogatott Azure-szolgáltatási régiók | ||
-|---|---|---|
-| USA középső régiója |East US |USA 2. keleti régiója |
-| USA nyugati középső régiója |USA nyugati régiója |USA 2. nyugati régiója |
-| USA déli középső régiója|USA északi középső régiója | Közép-Kanada|
-| Kelet-Kanada| Észak-Európa|Dél-Brazília|
-| Közép-Franciaország| Az Egyesült Királyság nyugati régiója|Az Egyesült Királyság déli régiója|
-|Nyugat-Európa|Észak-Európa| Nyugat-Japán|
-|Kelet-Japán | Délkelet-Ausztrália|Kelet-Ausztrália|
-|Kelet-Ázsia| Délkelet-Ázsia| Korea középső régiója|
-|Korea déli régiója| Közép-India| Dél-India|
-|
+- Az összes [szolgáltatás előfeltételeinek](service-prerequisites.md) teljesítése 
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Azure Security Center engedélyezése a IoT a IoT Hub 
 
 A IoT Hub biztonságának engedélyezéséhez tegye a következőket: 
 
-1. Nyissa  meg a IoT Hubt Azure Portal. 
+1. Nyissa meg a **IoT Hubt** Azure Portal. 
 1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre.
 1. Hagyja bejelölve az **Engedélyezés** beállítást alapértelmezettként. 
 1. Válassza ki a log Analytics-munkaterületet.
 1. Adja meg a Log Analytics-munkaterület részleteit. 
-   - Úgy dönt, hogy engedélyezi a **Twin Collectiont** a **Twin Collection** bekapcsolásának bekapcsolása mellett.
-   - Úgy dönt, hogy a **nyers eseményeket** a tároló alapértelmezett adattípusain kívül tárolja, ha kiválasztja a **nyers eszköz biztonsági eseményeinek tárolása** log Analyticsban. Hagyja bekapcsolni a  **nyers esemény** bekapcsolását. 
+   - Úgy dönt, hogy engedélyezi a **Twin Collectiont** a **Twin Collection** **bekapcsolásának**bekapcsolása mellett.
+   - Úgy dönt, hogy a **nyers eseményeket** a tároló alapértelmezett adattípusain kívül tárolja, ha kiválasztja a **nyers eszköz biztonsági eseményeinek tárolása** log Analyticsban. Hagyja bekapcsolni a **nyers esemény** **bekapcsolását**. 
     
 1. Kattintson a **Save** (Mentés) gombra. 
 

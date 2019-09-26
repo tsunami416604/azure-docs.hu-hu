@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212324"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314960"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -46,13 +46,8 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->A hibrid Azure AD-hez regisztrált Windows-számítógépek az Azure AD-ben, az eszköz objektumaiként jelennek meg. Ezeket az eszközöket feltételes hozzáféréshez használhatja. A Windows 10 rendszerű számítógépek a felhőbe vannak szinkronizálva Azure AD Connect, a Down szintű Windows rendszerű számítógépek közvetlenül a AD FS vagy a zökkenőmentes egyszeri bejelentkezés használatával vannak regisztrálva.
->
->Csak a hibrid Azure AD JOIN által konfigurált, megadott userCertificate attribútum értékkel rendelkező Windows 10 rendszerű számítógépeket kell szinkronizálni a felhőbe Azure AD Connect.  Azure AD Connect korábbi verzióiban ez a követelmény nem lett szigorúan kikényszerítve, ami az Azure AD-ben szükségtelen eszköz-objektumokat eredményezett. Az Azure AD-beli eszközök mindig "függő" állapotban maradnak, mivel ezek a számítógépek nem lettek regisztrálva az Azure AD-ben.
->
->A Azure AD Connect ezen verziója csak a hibrid Azure AD-hez csatlakoztatott Windows 10 rendszerű számítógépeket szinkronizálja. Azure AD Connect soha ne legyenek szinkronizálva a [Windows rendszerű eszközök](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices).  Az Azure AD-ben korábban szinkronizált eszközök már nem megfelelően lesznek törölve az Azure AD-ből.  Ez a módosítás azonban nem törli azokat a Windows-eszközöket, amelyek megfelelően regisztrálva lettek az Azure AD-ben a hibrid Azure AD-csatlakozáshoz. 
->
->Egyes ügyfelek láthatják, hogy a Windows-eszközeik némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel az eszköz identitásait a feltételes hozzáférés engedélyezésekor. Előfordulhat, hogy néhány ügyfélnek újra [kell látogatnia a következőket: Tervezze meg a hibrid Azure Active Directory](../../active-directory/devices/hybrid-azuread-join-plan.md) csatlakoztatását, hogy a Windows rendszerű számítógépek megfelelően legyenek regisztrálva, és gondoskodjon arról, hogy az ilyen eszközök teljes mértékben részt vegyenek az eszköz alapú feltételes hozzáférésben Ha Azure AD Connect a [régebbi Windows-eszközök](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) törlését kísérli meg, akkor az eszköz nem a [Microsoft Workplace JOIN által a nem Windows 10 rendszerű számítógépek MSI-hez](https://www.microsoft.com/download/details.aspx?id=53554) készült, és a többi Azure ad-szolgáltatás nem tudja használni.  Ha az Azure AD-ban az Exportálás törlésére vonatkozó küszöbértéket meghaladó számítógép/eszköz objektumok törlését látja, akkor azt javasoljuk, hogy az ügyfél engedélyezze ezeket a törléseket.
+>A Azure AD Connect ezen verzióját néhány ügyfél láthatja, hogy a Windows-eszközeik némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel az eszköz identitásait a feltételes hozzáférés engedélyezésekor. További információ: [Azure ad Connect 1.4. xx. x disappearnce-eszköz ismertetése](reference-connect-device-disappearance.md)
+
 
 ### <a name="release-status"></a>Kiadás állapota
 9/10/2019: Csak automatikus frissítésre van kiadva
@@ -63,7 +58,7 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 - Az ügyfeleket tájékoztatni kell arról, hogy a MIIS_Service elavult WMI-végpontjai már el lettek távolítva. A WMI-műveleteket most PS-parancsmagok használatával kell elvégezni.
 - Biztonsági fejlesztés a korlátozott delegálás alaphelyzetbe állításával a AZUREADSSOACC objektumon
 - Szinkronizálási szabály hozzáadásakor/szerkesztésekor, ha az összekötő sémában található, de az összekötőhöz nem hozzáadott attribútumok vannak, akkor az attribútumok automatikusan hozzáadódnak az összekötőhöz. Ugyanez vonatkozik a szabály által érintett objektum típusára is. Ha bármilyen adat hozzá lett adva az összekötőhöz, az összekötő a következő szinkronizálási ciklusban teljes importálásra lesz megjelölve.
-- Ha egy vállalati vagy tartományi rendszergazdát használ, az összekötő fiók már nem támogatott.
+- Ha egy vállalati vagy tartományi rendszergazdát használ összekötő fiókként, a rendszer már nem támogatja az új HRE kapcsolódási példányokat. A jelenlegi HRE vállalati vagy tartományi rendszergazda használatával csatlakoztatják az üzemelő példányokat, mivel az összekötő fiók nem lesz hatással a kiadásra.
 - A szinkronizálási kezelőben teljes szinkronizálás fut a szabály létrehozása/szerkesztése/törlése során. Egy előugró ablak jelenik meg minden olyan szabály változásakor, amely értesíti a felhasználót, ha teljes Importálás vagy teljes szinkronizálás fut.
 - Az "összekötők > Tulajdonságok > kapcsolat" oldal jelszavával kapcsolatos hibák elhárításának további lépései
 - A szinkronizálási szolgáltatás kezelőjének elavult figyelmeztetést adott az összekötő tulajdonságlapján. Ez a figyelmeztetés értesíti a felhasználót, hogy a módosítások a AADC varázslón keresztül történnek.

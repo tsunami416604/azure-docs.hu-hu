@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086582"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314992"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure AD Domain Services konfigurációs beállításai
 
@@ -46,7 +46,7 @@ Egy Azure AD DS felügyelt tartomány egy Azure-beli virtuális hálózatban lé
 * Az Azure AD DS a saját alhálózatán kell telepíteni. Ne használjon meglévő alhálózatot vagy átjáró-alhálózatot.
 * Egy hálózati biztonsági csoport jön létre egy Azure AD DS felügyelt tartomány központi telepítése során. Ez a hálózati biztonsági csoport a megfelelő szolgáltatási kommunikációhoz szükséges szabályokat tartalmazza.
     * Ne hozzon létre vagy használjon meglévő hálózati biztonsági csoportot a saját egyéni szabályaival.
-* Az Azure AD DShoz öt és hét IP-cím szükséges. Győződjön meg arról, hogy az alhálózat IP-címtartomány megadhatja a címek számát.
+* Az Azure AD DS 3-5 IP-címet igényel. Győződjön meg arról, hogy az alhálózat IP-címtartomány megadhatja a címek számát.
     * Az elérhető IP-címek korlátozása megakadályozza Azure AD Domain Services két tartományvezérlő fenntartását.
 
 Az alábbi ábrán egy olyan érvényes kialakítás szerepel, amelyben az Azure AD DS saját alhálózattal rendelkezik, és a külső kapcsolathoz tartozik egy átjáró-alhálózat, és az alkalmazás munkaterhelései a virtuális hálózatban lévő csatlakoztatott alhálózaton találhatók:
@@ -105,7 +105,7 @@ A [hálózati biztonsági csoport (NSG)](https://docs.microsoft.com/azure/virtua
 
 A következő hálózati biztonsági csoportokra vonatkozó szabályok szükségesek az Azure AD DS számára a hitelesítési és felügyeleti szolgáltatások biztosításához. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportokra vonatkozó szabályokat azon virtuális hálózati alhálózaton, amelyhez az Azure AD DS felügyelt tartománya telepítve van.
 
-| Portszám | Protocol | Forrás                             | Destination | Action | Kötelező | Cél |
+| Portszám | Protocol | Forrás                             | Destination | Action | Szükséges | Cél |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Igen      | A tartomány kezelése. |

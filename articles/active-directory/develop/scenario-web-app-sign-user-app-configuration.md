@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a746b0f6d85e3f012cdd2e78fff8cd10a586950
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1453821561ab7bb361fbb3e5d57634cf23a7be2c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086750"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310059"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Felhasználói bejelentkezést használó webalkalmazás – kód konfigurálása
 
@@ -34,17 +34,36 @@ A webalkalmazások (és a webes API-k) elleni védelemhez használt kódtárak a
 | Platform | Erőforrástár | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Extensions for .NET azt javasolja, hogy a .NET-keretrendszer és a .NET Core rendszerű DLL-eket is használják. Egy ASP.NET/ASP.NET Core-webalkalmazásból a jogkivonat-érvényesítés a **TokenValidationParameters** osztály használatával szabályozható (különösen bizonyos ISV-forgatókönyvekben). |
-| ![Java](media/sample-v2-code/logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-MSAL – jelenleg nyilvános előzetes verzióban érhető el |
-| ![Python](media/sample-v2-code/logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL for Python – jelenleg nyilvános előzetes verzióban érhető el |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-MSAL – jelenleg nyilvános előzetes verzióban érhető el |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL for Python – jelenleg nyilvános előzetes verzióban érhető el |
 
-A cikkben szereplő kódrészletek és a következőkből kinyert adatok:
+Válassza ki az Önt érdeklő platformhoz tartozó fület:
 
-- a [ASP.net Core Web App növekményes oktatóanyaga, 1. fejezet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg).
-- a [ASP.net Web App minta](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)
-- a [Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp) msal4j Web App Sample-t meghívó Java-webalkalmazás
-- a [Microsoft Graph MSAL hívó Python-webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-webapp) . Python Web App-minta
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Előfordulhat, hogy ezeket az oktatóanyagokat és példákat is érdemes megtekinteni a teljes megvalósítás részleteinek megtekintéséhez.
+A cikkben szereplő kódrészletek és a következők a [ASP.net Core Web App növekményes oktatóanyagból, 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). fejezetből származnak.
+
+Ebben az oktatóanyagban érdemes megtekinteni a teljes megvalósítás részleteit.
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+A cikkben szereplő kódrészletek és a következők a [ASP.net Web App Sample](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) -ből származnak
+
+Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A cikkben szereplő kódrészletek és a következők a [Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) származnak, amely a Microsoft Graph msal4j Web App-mintát hívja meg
+
+Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A cikkben szereplő kódrészletek és a következők a [Microsoft Graph MSAL meghívó Python-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-python-webapp) származnak. Python Web App-minta
+
+Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
+
+---
 
 ## <a name="configuration-files"></a>Konfigurációs fájlok
 
@@ -58,7 +77,7 @@ Előfordulhat, hogy az alkalmazásokat a `authority`parametrized, amely a `insta
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.net Core ezek a beállítások a `appsettings.json` fájl "AzureAD" szakaszában találhatók.
+ASP.NET Core ezek a beállítások a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) fájlban találhatók, a "AzureAD" szakaszban.
 
 ```Json
 {
@@ -85,7 +104,7 @@ ASP.net Core ezek a beállítások a `appsettings.json` fájl "AzureAD" szakasz�
 }
 ```
 
-ASP.net Core egy másik fájl (`properties\launchSettings.json`) található, amely tartalmazza az alkalmazáshoz és a különböző profilokhoz tartozó`applicationUrl`URL`sslPort`-címet () és SSL-portot ().
+ASP.net Core egy másik [properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7) , amely tartalmazza az URL-címet (`applicationUrl`) és az SSL-portot (`sslPort`) az alkalmazáshoz és a különböző profilokhoz.
 
 ```Json
 {
@@ -123,7 +142,7 @@ Ugyanígy a kijelentkezési URI is a következőre lesz beállítva `https://loc
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.net-ben az alkalmazás a `Web.Config` fájlon keresztül van konfigurálva.
+A ASP.NET-ben az alkalmazás az 12-15 [web. config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) fájlon keresztül lesz konfigurálva.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -149,7 +168,7 @@ A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt 
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-ban a konfiguráció `application.properties` a alatt található fájlban található.`src/main/resources`
+A Java-ban a konfiguráció az [alkalmazás. properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) fájljában található.`src/main/resources`
 
 ```Java
 aad.clientId=Enter_the_Application_Id_here
@@ -163,15 +182,25 @@ A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt 
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Itt látható a Python konfigurációs fájlja a [app_config.](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/web_app_sample/app_config.py) fileban.
+Itt látható a Python konfigurációs fájlja a [app_config.](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py) fileban.
 
 ```Python
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-CLIENT_ID = "Enter_the_Application_Id_here"
 CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-SCOPE = ["https://graph.microsoft.com/User.Read"]
-REDIRECT_URI = "http://localhost:5000/getAToken"
+AUTHORITY = "https://login.microsoftonline.com/common""
+CLIENT_ID = "Enter_the_Application_Id_here"
+ENDPOINT = 'https://graph.microsoft.com/v1.0/users'
+SCOPE = ["User.ReadBasic.All"]
+SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side session
 ```
+
+> [!NOTE]
+> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát. Az éles alkalmazásban más módszerekkel is elvégezheti a titkos kulcs (például a kulcstartó vagy egy környezeti változó) tárolását a lombik dokumentációjában leírtak szerint: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+>
+> ```python
+> CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+> if not CLIENT_SECRET:
+>     raise ValueError("Need to define CLIENT_SECRET environment variable")
+> ```
 
 ---
 
@@ -284,11 +313,11 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
   ...
 ```
 
-Az `AadIssuerValidator` osztály lehetővé teszi, hogy a jogkivonat kiállítója sok esetben (v 1.0 vagy v 2.0 token, egybérlős vagy több-bérlős alkalmazás vagy alkalmazás) legyen érvényesítve a felhasználók személyes Microsoft-fiókjaival, az Azure nyilvános felhőben vagy a nemzeti felhők). A [Microsoft. Identity. Web/Resource/AadIssuerValidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) fájlból érhető el
+Az `AadIssuerValidator` osztály lehetővé teszi, hogy a jogkivonat kiállítója sok esetben (v 1.0 vagy v 2.0 token, egybérlős vagy több-bérlős alkalmazás vagy alkalmazás) legyen érvényesítve a felhasználók személyes Microsoft-fiókjaival, az Azure nyilvános felhőben, vagy nemzeti felhők). A [Microsoft. Identity. Web/Resource/AadIssuerValidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) fájlból érhető el
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.net Web App/web API-k hitelesítéséhez kapcsolódó kód a `App_Start/Startup.Auth.cs` fájlban található.
+A ASP.NET Web App/web API-k hitelesítéséhez kapcsolódó kód a [App_Start/Startup. auth. cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) fájlban található.
 
 ```CSharp
  public void ConfigureAuth(IAppBuilder app)
@@ -314,7 +343,7 @@ A ASP.net Web App/web API-k hitelesítéséhez kapcsolódó kód a `App_Start/St
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert az a `Filter`-t implementálja, amely minden http-választ kap. A Java-webalkalmazás rövid útmutatójában ez `AuthFilter` a `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`következő:. A szűrő dolgozza fel a OAuth 2,0 engedélyezési kód folyamatát, így:
+A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy olyan `Filter`alkalmazást valósít meg, amely elfogja az egyes http-válaszokat. A Java-webalkalmazás rövid útmutatójában ez a `AuthFilter` szűrő `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`található. A szűrő dolgozza fel a OAuth 2,0 engedélyezési kód folyamatát, így:
 
 - ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e (`isAuthenticated()` metódus)
 - Ha a felhasználó nincs hitelesítve, kiszámítja az Azure AD engedélyezési végpontok URL-címét, és átirányítja a böngészőt erre az URI-ra.
@@ -326,45 +355,24 @@ A részletekért lásd `doFilter()` a [AuthFilter. Java](https://github.com/Azur
 > [!NOTE]
 > A kódja `doFilter()` némileg eltérő sorrendben van megírva, de a folyamat az egyik leírása.
 
-A metódus által aktivált engedélyezési kód folyamatával kapcsolatos részletekért lásd: a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kódjának folyamata](v2-oauth2-auth-code-flow.md) .
+Lásd: a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) az engedélyezési kód folyamatával kapcsolatos részletekért, amelyet ez a módszer aktivál.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A Python-minta a lombikot használja. A lombik és a MSAL inicializálása. A Python elkészült az [alkalmazásban. a # L1 – L17](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e1199b4c3cdcb637cf0d8306832efbd85492e123/app.py#L1-L17)
+A Python-minta a lombikot használja. A lombik és a MSAL inicializálása. A Python elkészült az [alkalmazásban. a # L1 – L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28)
 
 ```Python
 import uuid
-import flask
 import requests
-from flask import Flask, render_template, session, request
-from flask_session import Session
+from flask import Flask, render_template, session, request, redirect, url_for
+from flask_session import Session  # https://pythonhosted.org/Flask-Session
 import msal
 import app_config
 
-sess = Session()
+
 app = Flask(__name__)
-app.config.from_object('config.Config')
-sess.init_app(app)
-cache = msal.SerializableTokenCache()
-application = msal.ConfidentialClientApplication(
-    app_config.CLIENT_ID, authority=app_config.AUTHORITY,
-    client_credential=app_config.CLIENT_SECRET,
-    token_cache=cache)
-```
-
-Ez a MSAL. Python, amely gondoskodik a felhasználói bejelentkezés elvégzéséről. Lásd: [app. a # L74-84](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e1199b4c3cdcb637cf0d8306832efbd85492e123/app.py#L74-84)
-
-```Python
-@app.route('/authenticate')
-def authenticate():
-    # Call to the authorize endpoint
-    auth_state = str(uuid.uuid4())
-    session[(request.cookies.get("session")+'state')] = auth_state
-    authorization_url = application.get_authorization_request_url(app_config.SCOPE, state=auth_state,
-                                                                  redirect_uri=app_config.REDIRECT_URI)
-    resp = flask.Response(status=307)
-    resp.headers['location'] = authorization_url
-    return resp
+app.config.from_object(app_config)
+Session(app)
 ```
 
 ---

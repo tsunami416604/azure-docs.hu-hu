@@ -15,22 +15,22 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801371"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289607"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos beépített szerepkörrel rendelkezik az Azure-erőforrásokhoz, amelyeket hozzárendelhet a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket az Azure-erőforrásokhoz](custom-roles.md).
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos beépített szerepkörrel rendelkezik az Azure-erőforrásokhoz, amelyeket hozzárendelhet a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket az Azure](custom-roles.md)-erőforrásokhoz.
 
 Ez a cikk az Azure-erőforrások beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha a Azure Active Directory rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="built-in-role-descriptions"></a>Beépített szerepkör-leírások
 
-A következő táblázat az egyes beépített szerepkörök rövid leírását tartalmazza. Az egyes szerepkörök listájának `Actions` `NotActions` `DataActions` megtekintéséhezkattintsonaszerepkörnevére`NotDataActions` . További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md).
+A következő táblázat az egyes beépített szerepkörök rövid leírását tartalmazza. Az egyes szerepkörök listájának `Actions` `NotActions` `DataActions` megtekintéséhezkattintsonaszerepkörnevére`NotDataActions` . További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör](role-definitions.md)-definícióinak megismerése.
 
 
 | Beépített szerepkör | Leírás |
@@ -38,7 +38,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Tulajdonos](#owner) | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. |
 | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. |
 | [Olvasó](#reader) | Lehetővé teszi, hogy mindent megtekintse, de ne végezzen módosításokat. |
-| [AcrDelete](#acrdelete) | ACR törlése |
+| [AcrDelete](#acrdelete) | acr delete |
 | [AcrImageSigner](#acrimagesigner) | ACR-lemezképaláíró |
 | [AcrPull](#acrpull) | ACR-lekérés |
 | [AcrPush](#acrpush) | ACR-leküldés |
@@ -183,8 +183,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **Műveletek** |  |
 > | * | Minden típusú erőforrás létrehozása és kezelése |
 > | **Nincs tapintat** |  |
-> | Microsoft.Authorization/*/Delete | Szerepkörök és szerepkör-hozzárendelések törlése |
-> | Microsoft.Authorization/*/Write | Szerepkörök és szerepkör-hozzárendelések létrehozása |
+> | Microsoft.Authorization/*/Delete | Szerepkörök, szabályzat-hozzárendelések, házirend-definíciók és szabályzat-készlet definícióinak törlése |
+> | Microsoft.Authorization/*/Write | Szerepkörök, szerepkör-hozzárendelések, szabályzat-hozzárendelések, házirend-definíciók és szabályzat-készlet definíciók létrehozása |
 > | Microsoft.Authorization/elevateAccess/Action | A hívó felhasználói hozzáférés rendszergazdai hozzáférésének engedélyezése a bérlői hatókörben |
 > | Microsoft. Blueprint/blueprintAssignments/Write | Tervrajzok létrehozása vagy frissítése |
 > | Microsoft. Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
@@ -212,7 +212,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | ACR törlése |
+> | **Leírás** | acr delete |
 > | **Azonosító** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/artifacts/delete | Összetevő törlése egy tároló-beállításjegyzékben. |
@@ -496,7 +496,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="avere-contributor"></a>Avere közreműködője
+## <a name="avere-contributor"></a>Avere-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -531,7 +531,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="avere-operator"></a>Avere operátor
+## <a name="avere-operator"></a>Avere-operátor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -547,7 +547,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Network/networkSecurityGroups/join/action | Csatlakozik egy hálózati biztonsági csoporthoz. Nem Riasztásos. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Egy tároló törlésének eredményét adja vissza. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | A tárolók listájának visszaadása |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Tárolók listájának visszaadása |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | A blob-tároló Put eredményét adja vissza. |
 > | **Nincs tapintat** |  |
 > | *none* |  |
@@ -726,7 +726,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | A művelet eredményeinek kezelése a biztonsági mentési felügyeletben |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Biztonsági mentési tárolók létrehozása és kezelése Recovery Services-tár biztonsági mentési hálójában |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Frissíti a tárolók listáját |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | A tárolólista frissítése |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Biztonsági mentési feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | A biztonsági mentési felügyelettel kapcsolatos Meta-adat létrehozása és kezelése |
@@ -749,7 +749,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Storage/storageAccounts/read | A Storage-fiókok listáját adja vissza, vagy lekéri a megadott Storage-fiók tulajdonságait. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | A művelet érvényesítése védett elemen |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Védett elemen végrehajtott művelet ellenőrzése |
 > | Microsoft.RecoveryServices/Vaults/write | A tárlétrehozási művelettel vault típusú Azure-erőforrás hozható létre |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tárolóban regisztrált biztonsági másolatokat kezelő kiszolgálókat adja vissza. |
@@ -761,7 +761,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | A riasztás feloldása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Operations/READ | A művelet egy erőforrás-szolgáltató műveleteinek listáját adja vissza. |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Egy adott művelet műveleti állapotának beolvasása |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Az összes biztonsági mentési védelmi leképezés listázása |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | A biztonsági másolatok összes védelmi leképezésének listázása |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
 > | **Nincs tapintat** |  |
 > | *none* |  |
@@ -789,9 +789,9 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Védett elemek helyreállítási pontjainak beolvasása. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Védett elemek helyreállítási pontjainak visszaállítása. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | A védett elemek azonnali elemek helyreállításának visszavonása |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Egy védett elem biztonsági másolatának létrehozása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Az összes regisztrált tároló visszaadása |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Frissíti a tárolók listáját |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | A tárolólista frissítése |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Biztonsági mentési feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
@@ -816,14 +816,14 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | Microsoft.Storage/storageAccounts/read | A Storage-fiókok listáját adja vissza, vagy lekéri a megadott Storage-fiók tulajdonságait. |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | A művelet érvényesítése védett elemen |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | Védett elemen végrehajtott művelet ellenőrzése |
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Házirend-művelet állapotának beolvasása. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | Létrehoz egy regisztrált tárolót |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | Egy regisztrált tároló létrehozása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | A tárolóban lévő számítási feladatok lekérdezése |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tárolóban regisztrált biztonsági másolatokat kezelő kiszolgálókat adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Biztonsági másolat védelmi leképezésének létrehozása |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Biztonsági másolat védelmi szándékának beolvasása |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Egy biztonsági másolat védelmi leképezésének beolvasása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | Az összes védhető tároló beolvasása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Tároló összes elemének beolvasása |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
@@ -832,7 +832,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | A riasztás feloldása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Operations/READ | A művelet egy erőforrás-szolgáltató műveleteinek listáját adja vissza. |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Egy adott művelet műveleti állapotának beolvasása |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Az összes biztonsági mentési védelmi leképezés listázása |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | A biztonsági másolatok összes védelmi leképezésének listázása |
 > | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
 > | **Nincs tapintat** |  |
 > | *none* |  |
@@ -858,7 +858,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Védett elemek helyreállítási pontjainak beolvasása. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Az összes regisztrált tároló visszaadása |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | A feladatművelet eredményét adja vissza. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Az összes feladatütemezés visszaadása |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Az összes feladatobjektum visszaadása |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | A Recovery Services-tárolóval kapcsolatos biztonsági mentés eredményét adja vissza. |
@@ -877,14 +877,14 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | Házirend-művelet állapotának beolvasása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tárolóban regisztrált biztonsági másolatokat kezelő kiszolgálókat adja vissza. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Biztonsági másolat védelmi szándékának beolvasása |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | Egy biztonsági másolat védelmi leképezésének beolvasása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | Tároló összes elemének beolvasása |
 > | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | A riasztás feloldása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Operations/READ | A művelet egy erőforrás-szolgáltató műveleteinek listáját adja vissza. |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Egy adott művelet műveleti állapotának beolvasása |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Az összes biztonsági mentési védelmi leképezés listázása |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | A biztonsági másolatok összes védelmi leképezésének listázása |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
 > | **Nincs tapintat** |  |
 > | *none* |  |
@@ -1165,7 +1165,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cognitive-services-contributor"></a>Cognitive Services közreműködő
+## <a name="cognitive-services-contributor"></a>Cognitive Services-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1178,7 +1178,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft. features/Providers/features/READ | Egy adott erőforrás-szolgáltatóhoz tartozó előfizetés funkciójának beolvasása. |
 > | Microsoft.Insights/alertRules/* | Az adatáttekintési riasztási szabályok létrehozása és kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Létrehozza, frissíti vagy beolvassa a Analysis Server diagnosztikai beállításait. |
-> | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
+> | Microsoft.Insights/logDefinitions/read | Napló-definíciók olvasása |
 > | Microsoft. bepillantások/metricdefinitions/olvasás | A metrikadefiníciók olvasása |
 > | Microsoft. bepillantások/mérőszámok/olvasás | Metrikák olvasása |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
@@ -1211,7 +1211,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cognitive-services-user"></a>Cognitive Services felhasználó
+## <a name="cognitive-services-user"></a>Cognitive Services-felhasználó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1222,7 +1222,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Kulcsok listázása |
 > | Microsoft.Insights/alertRules/read | Klasszikus metrikaalapú riasztás olvasása |
 > | Microsoft. bepillantások/diagnosticSettings/olvasás | Erőforrás diagnosztikai beállításának olvasása |
-> | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
+> | Microsoft.Insights/logDefinitions/read | Napló-definíciók olvasása |
 > | Microsoft. bepillantások/metricdefinitions/olvasás | A metrikadefiníciók olvasása |
 > | Microsoft. bepillantások/mérőszámok/olvasás | Metrikák olvasása |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
@@ -1259,7 +1259,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cosmos-db-operator"></a>Cosmos DB operátor
+## <a name="cosmos-db-operator"></a>Cosmos DB-operátor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1299,7 +1299,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cost-management-contributor"></a>Cost Management közreműködő
+## <a name="cost-management-contributor"></a>Cost Management-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1322,7 +1322,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="cost-management-reader"></a>Cost Management olvasó
+## <a name="cost-management-reader"></a>Cost Management-olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1345,7 +1345,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="data-box-contributor"></a>Data Box közreműködő
+## <a name="data-box-contributor"></a>Data Box-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1365,7 +1365,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="data-box-reader"></a>Data Box olvasó
+## <a name="data-box-reader"></a>Data Box-olvasó
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1616,7 +1616,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="hdinsight-domain-services-contributor"></a>HDInsight tartományi szolgáltatások közreműködője
+## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2265,19 +2265,19 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/vaults/replicationEvents/read | Események beolvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Konzisztencia-ellenőrzést futtat a hálón |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Bármilyen háló beolvasása |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Átjáró újrahozzárendelése |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Átjáró újbóli társítása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Háló tanúsítványának megújítása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Bármilyen hálózat beolvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | Hálózati leképezések olvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/read | Védelmi tárolók beolvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Bármely védhető elem olvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Helyreállítási pont alkalmazása |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Feladatátvétel véglegesítve |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Feladatátvétel véglegesítése |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Tervezett feladatátvétel |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Védett elemek beolvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Replikációs helyreállítási pontok olvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | Replikáció javítása |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Védett elemek ismételt védelme |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Védett elem ismételt védelme |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Feladatátvételi teszt |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Feladatátvételi teszt karbantartása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Feladatátvétel |
@@ -2290,10 +2290,10 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Bármilyen vCenter beolvasása |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/* | Replikációs feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Bármilyen szabályzat beolvasása |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Feladatátvételi véglegesítés helyreállítási terve |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Feladatátvétel véglegesítésének helyreállítási terve |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Tervezett feladatátvétel helyreállítási terve |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Helyreállítási tervek olvasása |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Helyreállítási terv ismételt védetté |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Ismételt védelem helyreállítási terve |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Feladatátvételi teszt helyreállítási terve |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Feladatátvételi teszt karbantartásának helyreállítási terve |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Feladatátvétel helyreállítási terve |
@@ -2467,7 +2467,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="sql-managed-instance-contributor"></a>SQL felügyelt példány közreműködője
+## <a name="sql-managed-instance-contributor"></a>SQL Managed Instance-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2931,9 +2931,9 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Biztonsági másolat védelmi leképezésének létrehozása |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | A védett tétel objektumának részleteit adja vissza. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Egy védett elem biztonsági másolatának létrehozása |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Az összes védelmi szabályzat visszaadása |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Védelmi szabályzat létrehozása |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Egy védelmi szabályzat létrehozása |
 > | Microsoft.RecoveryServices/Vaults/read | A tár beolvasása művelet lekérdezi a Vault típusú Azure-erőforrást jelképező objektumot. |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy adott Recovery Services-tároló használati adatait adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/write | A tárlétrehozási művelettel vault típusú Azure-erőforrás hozható létre |

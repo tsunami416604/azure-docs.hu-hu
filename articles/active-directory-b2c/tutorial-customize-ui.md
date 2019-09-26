@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063280"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291109"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: A felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 
 1. A menüben válassza a **CORS**lehetőséget.
 2. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
-3. Az **engedélyezett módszerek**esetében válassza a `GET` mindkettő `OPTIONS`és a lehetőséget.
+3. Az **engedélyezett módszerek**esetében válassza `GET`a`PUT`, a `OPTIONS`és a lehetőséget.
 4. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
 5. Aközzétett fejlécek esetében írjon be egy csillagot (*).
 6. A **Max Age**értéknél adja meg a 200 értéket.

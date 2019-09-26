@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618376"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291020"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -34,7 +34,7 @@ Egy hozzáférési csomag lehetővé teszi az erőforrások és házirendek egys
 
 Ez a cikk a meglévő hozzáférési csomagok szerkesztését és kezelését ismerteti.
 
-## <a name="add-resource-roles"></a>Erőforrás-Szerepkörök hozzáadása
+## <a name="add-resource-roles"></a>Erőforrás-szerepkörök hozzáadása
 
 Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
 
@@ -65,7 +65,7 @@ Bármelyik Office 365-csoport vagy Azure AD-biztonsági csoport közül választ
 - Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával, vagy az Exchange Online-ban, terjesztési csoportban létrehozottként.  
 - A dinamikus csoportok tagsága nem frissíthető egy tag hozzáadásával vagy eltávolításával, így a dinamikus csoporttagságok nem alkalmasak a jogosultsági felügyelettel való használatra.
 
-1. Az **erőforrás-szerepkörök felvétele** a csomagba lapon kattintson a **csoportok** elemre a csoportok kiválasztása panel megnyitásához.
+1. Az **erőforrás-szerepkörök felvétele a csomagba** lapon kattintson a **csoportok** elemre a csoportok kiválasztása panel megnyitásához.
 
 1. Válassza ki azokat a csoportokat, amelyeket bele szeretne foglalni a hozzáférési csomagba.
 
@@ -98,7 +98,7 @@ Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelemb
 
 - Az alkalmazások is rendelkezhetnek a szerepkörökhöz hozzárendelt csoportokkal is.  Lehetőség van arra is, hogy egy hozzáférési csomagban vegyen fel egy csoportot egy alkalmazási szerepkör helyett, de az alkalmazás nem lesz látható a felhasználó számára a hozzáférési portál hozzáférési csomagjának részeként.
 
-1. Az **erőforrás-Szerepkörök hozzáadása** a csomaghoz lapon kattintson az **alkalmazások** elemre az alkalmazások kiválasztása panel megnyitásához.
+1. Az **erőforrás-Szerepkörök hozzáadása a csomaghoz** lapon kattintson az **alkalmazások** elemre az alkalmazások kiválasztása panel megnyitásához.
 
 1. Válassza ki a hozzáférési csomagban szerepeltetni kívánt alkalmazásokat.
 
@@ -118,7 +118,7 @@ Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelemb
 
 Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Online-webhelyekhez vagy a SharePoint Online-webhelycsoportok eléréséhez, ha hozzáférési csomagot rendelnek hozzájuk.
 
-1. Az **erőforrás-szerepkörök felvétele** a csomagba lapon kattintson a **SharePoint-helyek** elemre a SharePoint Online-webhelyek kiválasztása panel megnyitásához.
+1. Az **erőforrás-szerepkörök felvétele a csomagba** lapon kattintson a **SharePoint-helyek** elemre a SharePoint Online-webhelyek kiválasztása panel megnyitásához.
 
 1. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
 
@@ -234,7 +234,7 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a hozzárendelések elemre az aktív hozzárendelések listájának megtekintéséhez.
+1. Kattintson a **hozzárendelések** elemre az aktív hozzárendelések listájának megtekintéséhez.
 
 1. A további részletek megtekintéséhez kattintson egy konkrét hozzárendelésre.
 
@@ -294,7 +294,15 @@ Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett l
 
 ## <a name="copy-my-access-portal-link"></a>Hozzáférési portál hivatkozásának másolása
 
-A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési portálra, és automatikusan megtekintheti az általa kérhető hozzáférési csomagok listáját. Ha azonban a külső üzleti partnerek olyan felhasználói, akik még nem szerepelnek a címtárban, el kell küldeni nekik egy hivatkozást, amely a hozzáférési csomag igénylésére használható. Ha a hozzáférési csomag engedélyezve van a külső felhasználók számára, és a külső felhasználó címtárának van szabályzata, a külső felhasználó a saját hozzáférési portál hivatkozásra kattintva kérheti le a hozzáférési csomagot.
+A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési portálra, és automatikusan megtekintheti az általa kérhető hozzáférési csomagok listáját. Ha azonban a külső üzleti partnerek olyan felhasználói, akik még nem szerepelnek a címtárban, el kell küldeni nekik egy hivatkozást, amely a hozzáférési csomag igénylésére használható. 
+
+Fontos, hogy átmásolja a teljes saját hozzáférési portál hivatkozást, amikor egy belső üzleti partnernek küldi el. Ezzel biztosíthatja, hogy a partner hozzáférjen a címtár portálához a kérelem elvégzéséhez. 
+
+A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtári hivatkozást, és befejezi a hozzáférési csomag azonosítóját. Győződjön meg arról, hogy a hivatkozás a következők mindegyikét tartalmazza:
+
+ `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+Ha a hozzáférési csomag engedélyezve van a külső felhasználók számára, és a külső felhasználó címtárának van szabályzata, a külső felhasználó a saját hozzáférési portál hivatkozásra kattintva kérheti le a hozzáférési csomagot.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 

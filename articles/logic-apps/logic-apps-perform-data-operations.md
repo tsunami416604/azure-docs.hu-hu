@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179860"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309392"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -175,55 +175,93 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a példa **CSV-
 
 ### <a name="customize-table-format"></a>Táblázat formátumának testreszabása
 
-Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy a tömb elemei alapján automatikusan létrehozza a tábla oszlopait. 
-
-Egyéni fejlécek és értékek megadásához kövesse az alábbi lépéseket:
+Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy a tömb elemei alapján automatikusan létrehozza a tábla oszlopait. Egyéni fejlécek és értékek megadásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg az **oszlopok** listát, és válassza az **Egyéni**lehetőséget.
 
 1. A **header (fejléc** ) tulajdonságban válassza a használni kívánt egyéni fejléc szövegét.
 
-1. A **Key** tulajdonságban válassza a használni kívánt egyéni értéket.
+1. Az **érték** tulajdonságnál válassza a használni kívánt egyéni értéket.
 
-A tömb értékeinek hivatkozásához és szerkesztéséhez használja `@item()` a CSV- **táblázat létrehozása** művelet JSON-definíciójában található függvényt.
+Ha értékeket szeretne visszaadni a tömbből, a [ `item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) használhatja a **CSV-táblázat létrehozása** művelettel. Egy `For_each` hurokban használhatja a [ `items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
 
-1. A tervező eszköztárán válassza a **kód nézet**lehetőséget. 
-
-1. A szerkesztőprogramban szerkessze a művelet `inputs` szakaszát, hogy testreszabja a táblázat kimenetét a kívánt módon.
-
-Ez a példa csak az oszlop értékeit adja vissza, nem pedig `columns` a tömb fejléceit `header` úgy, hogy a tulajdonságot üres értékre állítja, és az egyes `value` tulajdonságokat visszakeresésének:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-A példa a következő eredményt adja vissza:
+Tegyük fel például, hogy olyan tábla oszlopokat szeretne, amelyeknek csak a tulajdonsága van, és nem a tulajdonságok nevei tömbből. Ha csak ezeket az értékeket szeretné visszaadni, hajtsa végre a következő lépéseket a Tervező nézetben vagy a kód nézetben való munkához. A példa a következő eredményt adja vissza:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-A tervezőben a **CSV-táblázat létrehozása** művelet mostantól a következőképpen jelenik meg:
+#### <a name="work-in-designer-view"></a>Munka tervező nézetben
 
-!["CSV-táblázat létrehozása" oszlop fejléc nélkül](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszlop minden egyes sorában az összes kívánt tömb-tulajdonságot el kell hivatkozni. Az **érték** alatti sorok mindegyike visszaadja a megadott Array tulajdonság összes értékét, és a tábla egyik oszlopa lesz.
+
+1. Az **érték**területen minden egyes kívánt sorban kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája.
+
+1. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
+
+1. A kifejezés-szerkesztőben írja be ezt a kifejezést, amely megadja a tömb tulajdonságérték kívánt értékét, majd kattintson **az OK gombra**.
+
+   `item()?['<array-property-name>']`
+
+   Példa:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![A dereference tulajdonság kifejezése](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. Ismételje meg az előző lépéseket minden kívánt tömb-tulajdonság esetében. Ha elkészült, a művelet a következő példához hasonlóan néz ki:
+
+   ![Befejezett kifejezések](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. Ha több leíró verzióra szeretné feloldani a kifejezéseket, váltson kód nézetre, és vissza a Tervező nézetre, majd nyissa meg újra az összecsukott műveletet:
+
+   A **CSV-táblázat létrehozása** művelet most a következő példához hasonlóan jelenik meg:
+
+   !["CSV-táblázat létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>Munka kód nézetben
+
+A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+
+1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
+
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Példa:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Váltson vissza Tervező nézetre, és nyissa meg újra az összecsukott műveletet.
+
+   A **CSV-táblázat létrehozása** művelet most az alábbi példához hasonlóan jelenik meg, és a kifejezések több leíró verzióra vannak feloldva:
+
+   !["CSV-táblázat létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 További információ erről a műveletről a mögöttes munkafolyamat-definícióban: [tábla művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -288,55 +326,93 @@ Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben
 
 ### <a name="customize-table-format"></a>Táblázat formátumának testreszabása
 
-Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy a tömb elemei alapján automatikusan létrehozza a tábla oszlopait. 
-
-Egyéni fejlécek és értékek megadásához kövesse az alábbi lépéseket:
+Alapértelmezés szerint az **oszlopok** tulajdonság úgy van beállítva, hogy a tömb elemei alapján automatikusan létrehozza a tábla oszlopait. Egyéni fejlécek és értékek megadásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg az **oszlopok** listát, és válassza az **Egyéni**lehetőséget.
 
 1. A **header (fejléc** ) tulajdonságban válassza a használni kívánt egyéni fejléc szövegét.
 
-1. A **Key** tulajdonságban válassza a használni kívánt egyéni értéket.
+1. Az **érték** tulajdonságnál válassza a használni kívánt egyéni értéket.
 
-A tömb értékeinek hivatkozásához és szerkesztéséhez használja `@item()` a HTML- **táblázat létrehozása** művelet JSON-definíciójában található függvényt.
+Ha értékeket szeretne visszaadni a tömbből, használhatja a [ `item()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#item) a **HTML-táblázat létrehozása** művelettel. Egy `For_each` hurokban használhatja a [ `items()` függvényt](../logic-apps/workflow-definition-language-functions-reference.md#items).
 
-1. A tervező eszköztárán válassza a **kód nézet**lehetőséget. 
-
-1. A szerkesztőprogramban szerkessze a művelet `inputs` szakaszát, hogy testreszabja a táblázat kimenetét a kívánt módon.
-
-Ez a példa csak az oszlop értékeit adja vissza, nem pedig `columns` a tömb fejléceit `header` úgy, hogy a tulajdonságot üres értékre állítja, és az egyes `value` tulajdonságokat visszakeresésének:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-A példa a következő eredményt adja vissza:
+Tegyük fel például, hogy olyan tábla oszlopokat szeretne, amelyeknek csak a tulajdonsága van, és nem a tulajdonságok nevei tömbből. Ha csak ezeket az értékeket szeretné visszaadni, hajtsa végre a következő lépéseket a Tervező nézetben vagy a kód nézetben való munkához. A példa a következő eredményt adja vissza:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-A tervezőben a **HTML-táblázat létrehozása** művelet mostantól a következőképpen jelenik meg:
+#### <a name="work-in-designer-view"></a>Munka tervező nézetben
 
-!["HTML-tábla létrehozása" oszlop fejléc nélkül](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+A műveletben hagyja üresen a **fejléc** oszlopot. A **Value (érték** ) oszlop minden egyes sorában az összes kívánt tömb-tulajdonságot el kell hivatkozni. Az **érték** alatti sorok mindegyike visszaadja a megadott tulajdonság összes értékét, és a tábla egyik oszlopa lesz.
+
+1. Az **érték**területen minden egyes kívánt sorban kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája.
+
+1. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
+
+1. A kifejezés-szerkesztőben írja be ezt a kifejezést, amely megadja a tömb tulajdonságérték kívánt értékét, majd kattintson **az OK gombra**.
+
+   `item()?['<array-property-name>']`
+
+   Példa:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![A dereference tulajdonság kifejezése](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. Ismételje meg az előző lépéseket minden kívánt tömb-tulajdonság esetében. Ha elkészült, a művelet a következő példához hasonlóan néz ki:
+
+   ![Befejezett kifejezések](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. Ha több leíró verzióra szeretné feloldani a kifejezéseket, váltson kód nézetre, és vissza a Tervező nézetre, majd nyissa meg újra az összecsukott műveletet:
+
+   A **HTML-táblázat létrehozása** művelet most a következő példához hasonlóan jelenik meg:
+
+   !["HTML-tábla létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>Munka kód nézetben
+
+A művelet JSON-definíciójában a `columns` tömbön belül állítsa a `header` tulajdonságot egy üres karakterláncra. Minden `value` tulajdonság esetében az összes kívánt Array tulajdonságot el kell, hogy hivatkozzon.
+
+1. A tervező eszköztárán válassza a **kód nézet**lehetőséget.
+
+1. A Kódszerkesztőben a művelet `columns` tömbben adja hozzá az üres `header` tulajdonságot és ezt `value` a kifejezést a kívánt tömbképlet minden oszlopához:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Példa:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Váltson vissza Tervező nézetre, és nyissa meg újra az összecsukott műveletet.
+
+   A **HTML-táblázat létrehozása** művelet most a példához hasonlóan jelenik meg, és a kifejezések több leíró verzióra vannak feloldva:
+
+   !["HTML-tábla létrehozása" művelet feloldott kifejezésekkel és nincs fejléc](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 További információ erről a műveletről a mögöttes munkafolyamat-definícióban: [tábla művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 

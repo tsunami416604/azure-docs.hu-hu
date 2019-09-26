@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074314"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291089"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -34,7 +34,7 @@ Ha az alkalmazás olyan erőforrás (webes API), amelyet az ügyfelek igényelhe
 A következő részekben megtudhatja, hogyan ellenőrizheti és használhatja az erőforrás a jogcímeket egy hozzáférési jogkivonatban.
 
 > [!IMPORTANT]
-> A hozzáférési jogkivonatok létrehozása a jogkivonat *célközönsége* alapján történik, ami azt jelenti, hogy a jogkivonatban lévő hatóköröket birtokló alkalmazás.  Az [alkalmazás jegyzékfájljának](reference-app-manifest.md#manifest-reference) egy erőforrás `accessTokenAcceptedVersion` -beállítása lehetővé teszi, `2` hogy az ügyfél a v 1.0 végpontot hívja meg a v 2.0 hozzáférési jogkivonatok fogadására.  Hasonlóképpen, ezért a hozzáférési jogkivonat [választható](active-directory-optional-claims.md) jogcímeinek az ügyfélhez való módosítása nem változtatja meg az MS Graph `user.read`-erőforrás tulajdonában lévő jogkivonat kérése esetén kapott hozzáférési jogkivonatot.  
+> A hozzáférési jogkivonatok létrehozása a jogkivonat *célközönsége* alapján történik, ami azt jelenti, hogy a jogkivonatban lévő hatóköröket birtokló alkalmazás.  Az [alkalmazás jegyzékfájljának](reference-app-manifest.md#manifest-reference) egy erőforrás `accessTokenAcceptedVersion` -beállítása lehetővé teszi, `2` hogy az ügyfél a v 1.0 végpontot hívja meg a v 2.0 hozzáférési jogkivonatok fogadására.  Hasonlóképpen, ezért a hozzáférési jogkivonat [választható jogcímeinek](active-directory-optional-claims.md) az ügyfélhez való módosítása nem változtatja meg az MS Graph `user.read`-erőforrás tulajdonában lévő jogkivonat kérése esetén kapott hozzáférési jogkivonatot.  
 > Ugyanezen okból az ügyfélalkalmazás személyes fiókkal (például hotmail.com vagy outlook.com) történő tesztelésekor előfordulhat, hogy az ügyfél által fogadott hozzáférési jogkivonat átlátszatlan karakterlánc. Ennek az az oka, hogy az elérni kívánt erőforrás örökölt MSA (Microsoft-fiók), és az ügyfél által nem értelmezhető jegyeket kért.
 
 ## <a name="sample-tokens"></a>Mintául szolgáló tokenek
@@ -101,8 +101,8 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 | `azpacr` | "0", "1" vagy "2" | Csak a v 2.0-tokenekben jelennek meg, `appidacr`a helyett. Azt jelzi, hogy az ügyfél hogyan lett hitelesítve. Nyilvános ügyfél esetén az érték "0". Ha az ügyfél-azonosító és az ügyfél titkos kulcsa van használatban, az érték "1". Ha ügyféltanúsítvány lett használva a hitelesítéshez, az érték a következő: "2". |
 | `preferred_username` | Sztring | A felhasználót jelölő elsődleges Felhasználónév. Ez lehet egy e-mail-cím, telefonszám vagy egy általános Felhasználónév megadott formátum nélkül. Az értéke változtatható, és idővel változhat. Mivel ez az érték változhat, nem használható az engedélyezési döntések elvégzéséhez.  Ez a Felhasználónév-útmutatók esetében is használható. A `profile` hatókör a jogcím megszerzéséhez szükséges. |
 | `name` | Sztring | Egy ember által olvasható értéket biztosít, amely azonosítja a jogkivonat tárgyát. Az érték nem garantált, hogy egyedi, megváltoztathatatlan, és kizárólag megjelenítési célokra való használatra készült. A `profile` hatókör a jogcím megszerzéséhez szükséges. |
-| `scp` | Karakterlánc, a hatókörök szóközzel tagolt listája | Annak az alkalmazásnak a hatóköre, amelyhez az ügyfélalkalmazás kérelmezte (és fogadta) a hozzájárulásukat. Az alkalmazásnak ellenőriznie kell, hogy ezek a hatókörök érvényesek-e az alkalmazás számára, és a hatókörök értéke alapján kell-e engedélyezési döntéseket hoznia. Csak a [felhasználói](#user-and-application-tokens)jogkivonatok részeként. |
-| `roles` | Karakterláncok tömbje, engedélyek listája | Az alkalmazás által a kérelmező alkalmazásnak vagy felhasználónak megadott engedélyekkel rendelkező engedélyek készlete. Az [alkalmazás](#user-and-application-tokens)-jogkivonatok esetében ez az [ügyfél-hitelesítő adatok](v1-oauth2-client-creds-grant-flow.md) folyamata során használatos a felhasználói hatókörök helyett.  [Felhasználói](#user-and-application-tokens) jogkivonatok esetén ez a felhasználó által a célalkalmazás számára hozzárendelt szerepkörökkel van feltöltve. |
+| `scp` | Karakterlánc, a hatókörök szóközzel tagolt listája | Annak az alkalmazásnak a hatóköre, amelyhez az ügyfélalkalmazás kérelmezte (és fogadta) a hozzájárulásukat. Az alkalmazásnak ellenőriznie kell, hogy ezek a hatókörök érvényesek-e az alkalmazás számára, és a hatókörök értéke alapján kell-e engedélyezési döntéseket hoznia. Csak a [felhasználói jogkivonatok](#user-and-application-tokens)részeként. |
+| `roles` | Karakterláncok tömbje, engedélyek listája | Az alkalmazás által a kérelmező alkalmazásnak vagy felhasználónak megadott engedélyekkel rendelkező engedélyek készlete. Az [alkalmazás-jogkivonatok](#user-and-application-tokens)esetében ez az [ügyfél-hitelesítő adatok](v1-oauth2-client-creds-grant-flow.md) folyamata során használatos a felhasználói hatókörök helyett.  [Felhasználói jogkivonatok](#user-and-application-tokens) esetén ez a felhasználó által a célalkalmazás számára hozzárendelt szerepkörökkel van feltöltve. |
 | `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID-azonosítók tömbje | Az ehhez a felhasználóhoz rendelt bérlői szintű szerepköröket jelöli a [rendszergazdai szerepkörök lapon](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)lévő szerepkörök szakasza alapján.  Ez a jogcím az `groupMembershipClaims` [alkalmazás jegyzékfájljának](reference-app-manifest.md)tulajdonságán alapuló, alkalmazáson belüli alapon van konfigurálva.  Az "all" vagy a "DirectoryRole" beállítás megadása kötelező.  Előfordulhat, hogy a jogkivonat-hossz miatti implicit folyamat során beszerzett jogkivonatok nem jelennek meg. |
 | `groups` | GUID-azonosítók JSON-tömbje | A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A groups jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az `groupMembershipClaims` [alkalmazás jegyzékfájljának](reference-app-manifest.md)tulajdonságán keresztül. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoportba tartozó tagságot tartalmaz, az "all" érték pedig a biztonsági csoportokat és az Office 365 terjesztési listáját is tartalmazza. <br><br>Tekintse `hasgroups` meg az alábbi jogcímet a `groups` jogcímek implicit támogatással történő használatával kapcsolatos részletekért. <br>Más folyamatok esetében, ha a felhasználó által birtokolt csoportok száma meghaladja a határértéket (150 az SAML, 200 for JWT esetében), akkor a rendszer felvesz egy túllépési jogcímet a felhasználóhoz tartozó csoportok listáját tartalmazó HRE Graph végpontra. |
 | `hasgroups` | Logikai | Ha van, akkor `true`mindig, ha a felhasználó legalább egy csoportban szerepel. A `groups` JWTs implicit engedélyezési folyamatokban használt jogcímek helyett, ha a teljes csoportok jogcím kiterjeszti az URI-töredéket az URL-cím hosszának korlátain túl (jelenleg 6 vagy több csoport). Azt jelzi, hogy az ügyfélnek a gráf használatával kell meghatároznia a felhasználó`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`csoportjait (). |
@@ -115,9 +115,14 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 | `rh` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Az erőforrások nem használhatják ezt a jogcímet. |
 | `ver` | Karakterlánc, `1.0` vagy`2.0` | Megadja a hozzáférési jogkivonat verzióját. |
 
+
+> [! A groups overs jogcím] annak biztosítására, hogy a jogkivonat mérete ne haladja meg a HTTP-fejlécek méreteit, az Azure AD korlátozza a csoportok jogcímek által foglalt objektumazonosítók számát. Ha a felhasználó több csoport tagja, mint a túlhasználati korlát (SAML-tokenek esetében 150, 200 JWT-token esetében), akkor az Azure AD nem bocsátja ki a groups jogcímet a jogkivonatban. Ehelyett a jogkivonat olyan túlhasználati jogcímet tartalmaz, amely azt jelzi, hogy az alkalmazás lekérdezi a Graph API a felhasználó csoporttagság beolvasásához.
+> { ... "_claim_names": {"csoportok": "src1"}, {"_claim_sources": {"src1": {"végpont": "[Graph URL-cím a felhasználó csoporttagság beszerzéséhez]"}}    
+    ... } Az alkalmazás- [létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) mappában találhatóak segítségével tesztelheti a túlhasználatos forgatókönyveket. `BulkCreateGroups.ps1`
+
 #### <a name="v10-basic-claims"></a>v 1.0 alapszintű jogcímek
 
-A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s verzióját használja, és szüksége van ezekre a jogcímek egyikére, kérje meg őket az [opcionális](active-directory-optional-claims.md)jogcímek használatával.
+A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s verzióját használja, és szüksége van ezekre a jogcímek egyikére, kérje meg őket az [opcionális jogcímek](active-directory-optional-claims.md)használatával.
 
 | Igénylés | Formátum | Leírás |
 |-----|--------|-------------|
@@ -206,7 +211,7 @@ Az alkalmazás üzleti logikája ezt a lépést fogja megállapítani, néhány 
 * Győződjön meg arról `tid` , hogy az megegyezik egy olyan Bérlővel, amely számára engedélyezett az API meghívása.
 * `acr` A jogcím használatával ellenőrizze, hogy a felhasználó végezte-e az MFA-t. Ezt a [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)használatával kell kikényszeríteni.
 * Ha a hozzáférési jogkivonatban `groups` kérte a `roles` vagy jogcímeket, ellenőrizze, hogy a felhasználó jogosult-e a művelet végrehajtására.
-  * Az implicit folyamattal lekért tokenek esetében valószínűleg le kell kérdezni az ilyen adatMicrosoft Grapht, mivel gyakran túl nagy ahhoz, hogy illeszkedjen a tokenhez. [](https://developer.microsoft.com/graph/)
+  * Az implicit folyamattal lekért tokenek esetében valószínűleg le kell kérdezni az ilyen [adatMicrosoft Grapht](https://developer.microsoft.com/graph/) , mivel gyakran túl nagy ahhoz, hogy illeszkedjen a tokenhez.
 
 ## <a name="user-and-application-tokens"></a>Felhasználói és alkalmazási jogkivonatok
 
