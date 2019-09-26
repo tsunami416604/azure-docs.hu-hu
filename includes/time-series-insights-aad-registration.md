@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 08/08/2019
-ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 09/24/2019
+ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935259"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266942"
 ---
 > [!IMPORTANT]
 > * Az új **Azure Active Directory** > **Alkalmazásregisztrációk** panel az örökölt **Azure Active Directory** > **Alkalmazásregisztrációk (örökölt)** panelt váltja fel 2019.
@@ -41,7 +41,7 @@ ms.locfileid: "68935259"
 
 1. A **hitelesítés** panelen a fontos hitelesítési konfigurációs beállítások adhatók meg. 
 
-    1. Az **átirányítási URI** -azonosítóknak meg kell egyezniük a hitelesítési kérelem által megadott címtől:
+    1. Az **átirányítási URI-azonosítóknak** meg kell egyezniük a hitelesítési kérelem által megadott címtől:
 
         * Helyi fejlesztési környezetben üzemeltetett alkalmazásokhoz válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget. Ügyeljen arra, hogy az **alapértelmezett ügyfél típusát** állítsa Igen értékre.
         * Azure App Serviceon üzemeltetett egylapos alkalmazások esetében válassza a **web**lehetőséget.

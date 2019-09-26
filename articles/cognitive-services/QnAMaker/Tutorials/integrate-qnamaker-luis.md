@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053160"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272414"
 ---
-# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A robot használata a QnA Maker és a LUIS terjeszteni a Tudásbázis
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A robot a QnA Maker és a LUIS használatával terjesztheti a tudásbázist
 A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
 
 Bár a QnA Maker több tudásbázisok létrehozása egyszerű, szüksége lesz egy logikai irányíthatja a bejövő kérdést a megfelelő tudásbázisba. Ez a LUIS használatával teheti meg.
@@ -27,7 +27,7 @@ Ez a cikk a Bot Framework v3 SDK-t használja. Tekintse meg a [Bot Framework cik
 
 ## <a name="architecture"></a>Architektúra
 
-![A QnA Maker Language Understanding architektúrával](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![QnA Maker Language Understanding architektúrával](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy LUIS-modellnek, és használja a QnA Maker megfelelő Tudásbázis irányítja.
 
@@ -51,7 +51,7 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
 
 ## <a name="web-app-bot"></a>Web app Bot
 
-1. [Hozzon létre egy "Alapszintű" Web App bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) mely automatikusan tartalmazza a LUIS-alkalmazásokon. Válassza ki a 4.x-es SDK-t és a C# programozási nyelv.
+1. [Hozzon létre egy "alapszintű" webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) , amely automatikusan tartalmazza a Luis alkalmazást. Válassza C# a programozási nyelv lehetőséget.
 
 1. Az Azure Portalon, a web app bot létrehozása után válassza ki a web app bot.
 1. Válassza ki **Alkalmazásbeállítások** Web app bot service navigációs sávján görgessen le a **Alkalmazásbeállítások** rendelkezésre álló beállítások szakaszában.

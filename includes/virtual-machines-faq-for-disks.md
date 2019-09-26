@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541479"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266874"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS VM-lemezekről, valamint a felügyelt és a nem felügyelt prémium szintű lemezekről
 
@@ -183,8 +183,26 @@ Nem, Azure Backup támogatás még nem érhető el.
 **A rendelkezésre állási csoportokban futó virtuális gépekhez is lehet Ultra-lemezt csatlakoztatni?**
 Nem, ez még nem támogatott.
 
-**Engedélyezhető Azure Site Recovery (ASR) a virtuális gépekhez az ultra Disks használatával?**
-Nem, az ASR még nem támogatott az ultra lemezek esetében.
+**Engedélyezhető-e a virtuális gépekhez Azure Site Recovery az ultra Disks használatával?**
+Nem, Azure Site Recovery az ultra-lemezek esetében még nem támogatott.
+
+## <a name="uploading-to-a-managed-disk"></a>Feltöltés felügyelt lemezre
+
+**Tölthetek fel az adatok egy meglévő felügyelt lemezre?**
+
+Nem, a feltöltés csak új, üres lemez **ReadyToUpload** állapotú létrehozásakor használható.
+
+**Hogyan feltölt egy felügyelt lemezre?**
+
+Hozzon létre egy felügyelt lemezt a [CreationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) tulajdonságával "feltöltés" értékre, majd töltse fel az adatok között.
+
+**Lehet lemezeket csatlakoztatni egy virtuális géphez, amíg feltöltési állapotban van?**
+
+Nem.
+
+**Készíthetek pillanatképet a feltöltött lemezekről a feltöltési állapotban?**
+
+Nem.
 
 ## <a name="standard-ssd-disks"></a>standard SSD lemezek
 

@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: b5528d8cd23893248170bdb15588925f3c92c02b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934740"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272443"
 ---
-# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Az aktív tanulás használata a Tudásbázis fejlesztéséhez
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
 Az aktív tanulás lehetővé teszi a Tudásbázis minőségének javítását azáltal, hogy alternatív kérdéseket tesz fel a felhasználói beadványok alapján a kérdés és a válasz párok számára. Ezeket a javaslatokat megtekintheti, vagy hozzáadhatja őket a meglévő kérdésekhez, vagy elutasíthatja őket. 
 
@@ -79,6 +79,8 @@ Az aktív tanulás alapértelmezés szerint ki van kapcsolva. A javasolt kérdé
     Az **aktív tanulás** engedélyezése után a Tudásbázis rendszeres időközönként új kérdéseket javasol a felhasználó által benyújtott kérdések alapján. Az **aktív tanulást** letilthatja a beállítás újbóli bekapcsolásával.
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Aktív tanulási javaslat elfogadása a Tudásbázisban
+
+Az aktív tanulás megváltoztatja a tudásbázist vagy Search Service a javaslat jóváhagyása után, majd a Mentés és a betanítás lehetőségre. Ha jóváhagyja a javaslatot, azt a rendszer alternatív kérdésként adja hozzá.
 
 1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások**, majd az **aktív tanulási javaslatok megjelenítése**lehetőséget. 
 
@@ -387,7 +389,14 @@ Az `SuggestedQuestions` oszlop az implicit, `autosuggested`a és a kifejezett `u
 ]
 ```
 
+Az Alters API letöltése lehetőséggel áttekintheti ezeket a módosításokat a REST vagy a Language-alapú SDK-k használatával:
+* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+
+
 Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az adatokat, és javaslatokat javasol a tudásbázishoz. 
+
+
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

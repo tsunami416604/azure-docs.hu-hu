@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d89feaa5225aea56af86aa7f70d3666994fdaec
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881646"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266891"
 ---
 Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memória arányt biztosítanak. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint az ebben a csoportosításban lévő méretek tárolási sebességével kapcsolatos információkat tartalmaz.
 
@@ -80,13 +80,15 @@ A Dsv3-sorozat méretei az 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processz
 
 <sup>1</sup> a Dsv3 SOROZATú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
 
-## <a name="dasv3-series"></a>Dasv3 sorozat
+## <a name="dasv3-series-preview"></a>Dasv3 sorozat (előzetes verzió)
 
 Prémium szintű Storage: Támogatott
 
 Premium Storage gyorsítótárazás: Támogatott
 
-A Dasv3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452V processzoron alapulnak, amely növelheti a Fmax GHz-es 3.35 és a Premium Storage használatát. A Dasv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+A Dasv3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es Fmax, és prémium szintű tárolást is használhat. A Dasv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
+
+[Kattintson ide az előzetes verzióra való feliratkozáshoz](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 
 <sup>1</sup> a Dv3 SOROZATú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
 
-## <a name="dav3-series"></a>Dav3 sorozat
+## <a name="dav3-series-preview"></a>Dav3 sorozat (előzetes verzió)
 
 Prémium szintű Storage: Nem támogatott
 
 Premium Storage gyorsítótárazás: Nem támogatott
 
-A Dav3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452V processzoron alapulnak, amely a Fmax GHz-es kibővített 3.35 érhető el. A Dav3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A Premium Storage-lemezek használatához használja a Dasv3-méreteket. A Dasv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Dav3 sorozattal.
+A Dav3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely a 3.35 GHz-es kibővített Fmax érhető el. A Dav3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A Premium Storage-lemezek használatához használja a Dasv3-méreteket. A Dasv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Dav3 sorozattal.
+
+[Kattintson ide az előzetes verzióra való feliratkozáshoz](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB |
 |---|---|---|---|

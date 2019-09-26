@@ -8,54 +8,54 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179227"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266823"
 ---
-### <a name="enable-logging-with-diagnostics-settings"></a>Naplózás a diagnosztikai beállítások engedélyezése
+### <a name="enable-logging-with-diagnostics-settings"></a>A naplózás engedélyezése a diagnosztikai beállításokkal
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
 
-2. Válassza ki **diagnosztikai beállítások**.
+2. Válassza a **diagnosztikai beállítások**lehetőséget.
 
 3. Válassza ki **diagnosztika bekapcsolása**.
 
    ![Diagnosztika bekapcsolása](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
-4. Nevezze el a diagnosztikai beállításokat.
+4. Adjon nevet a diagnosztikai beállításoknak.
 
-5. Válassza ki kívánja küldeni a naplókat. A következő három lehetőség közül választhat:
+5. Válassza ki, hová szeretné elküldeni a naplókat. A három lehetőség bármely kombinációját kiválaszthatja:
 
-   * A storage-tárfiókba archiválhatja
-   * Az eseményközpontok felé Stream
-   * Küldés a Log Analyticsnek
+   * Archiválás tárfiókba
+   * Streamelés eseményközpontba
+   * Küldés a Log Analytics szolgáltatásba
 
-6. Válassza ki a figyelni kívánt mely műveletek, és ezekhez a műveletekhez-naplók engedélyezésére. Diagnosztikai beállítások jelenthetik-e a műveletek a következők:
+6. Válassza ki a figyelni kívánt műveleteket, és engedélyezze a naplók számára a műveleteket. A diagnosztikai beállítások által a következő műveleteket lehet jelenteni:
 
    * Kapcsolatok
-   * Eszköztelemetria
+   * Eszköz telemetria
    * Felhőből az eszközre irányuló üzenetek
-   * Eszközművelet identitás
+   * Eszköz-identitási műveletek
    * Fájlfeltöltések
-   * Üzenet-útválasztása
-   * Felhőalapú ikereszköz műveletek
-   * Eszközről a felhőbe – az ikereszköz-műveletek
-   * Ikereszköz-műveletek
-   * Feladat műveletei
+   * Üzenetirányítás
+   * A felhőből az eszközre irányuló kettős műveletek
+   * Az eszközről a felhőbe irányuló kettős művelet
+   * Kettős művelet
+   * Feladatok műveletei
    * Közvetlen metódusok  
-   * Elosztott nyomkövetést (előzetes verzió)
+   * Elosztott nyomkövetés (előzetes verzió)
    * Konfigurációk
-   * Eszköz-adatfolyamok
-   * Eszközmetrikák
+   * Eszköz streamek
+   * Eszköz metrikái
 
-6. Az új beállítások mentéséhez. 
+6. Mentse az új beállításokat. 
 
-Ha kapcsolja be a diagnosztikai beállítások a PowerShell-lel szeretne, használja a következő kódot:
+Ha be szeretné kapcsolni a diagnosztika beállításait a PowerShell használatával, használja a következő kódot:
 
 ```azurepowershell
 Connect-AzAccount
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően naplók jelennek meg a beállított archiválási célzott a **diagnosztikai beállítások** panelen. Konfiguruje se diagnostika kapcsolatos további információkért lásd: [gyűjtése és felhasználása a naplófájlok adatait az azure-erőforrások](../articles/azure-monitor/platform/diagnostic-logs-overview.md).
+Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően a naplók a **diagnosztikai beállítások** panel konfigurált archiválási célpontjában jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../articles/azure-monitor/platform/resource-logs-overview.md).

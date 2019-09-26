@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976622"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266857"
 ---
 ## <a name="benefits"></a>Előnyök 
 
@@ -77,7 +77,7 @@ A dedikált gazdagép kiosztása után az Azure hozzárendeli azt a fizikai kisz
 
 ## <a name="quotas"></a>Kvóták
 
-Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. Az üzembe helyezhető gazdagépek számát azonban a gazdagéphez használt virtuálisgép-mérethez tartozó kvóta is korlátozza. Az utólagos elszámolású előfizetések esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Ebben az esetben a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. Ha szükséges, kattintson a jobb felső sarokban található **kérelem növelés** gombra.
+Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. Az üzembe helyezhető gazdagépek számát azonban a gazdagéphez használt virtuálisgép-mérethez tartozó kvóta is korlátozza. Az utólagos **elszámolású előfizetések** esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Ebben az esetben a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. Ha szükséges, kattintson a jobb felső sarokban található **kérelem növelés** gombra.
 
 ![Képernyőkép a portál használati és kvóták oldaláról](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
@@ -99,7 +99,7 @@ Egy gazdagéphez van definiálva SKU, és a virtuális gép mérete adatsorozato
 
 `types` Ugyanaz a virtuálisgép-sorozat különböző CPU-szállítóktól származik, és a CPU-generációk és a magok száma eltérő lesz.
 
-További információért tekintse meg a gazdagép díjszabását ismertető [oldalt](https://aka.ms/ADHPricing) .
+További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
 Az előzetes verzió során a következő gazdagép-SKU\types fogjuk támogatni:  DSv3_Type1 és ESv3_Type1
 
@@ -113,6 +113,6 @@ Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok 
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |
-| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha `autoHealingOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerülnek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
-| Gazdagép delefoglalt  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
+| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha `autoReplaceOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerülnek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
+| Gazdagép felszabadítva  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
 

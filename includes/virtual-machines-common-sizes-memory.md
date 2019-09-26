@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174625"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266925"
 ---
 A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt kínálnak, amely kiválóan használható a kapcsolódó adatbázis-kiszolgálók, a közepes és a nagy gyorsítótárak, valamint a memóriabeli elemzések számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózati sávszélességgel kapcsolatos információkat tartalmaz ebben a csoportosításban.
 
 * A Ev3 sorozat az E5-2673 v4 2,3 GHz-es (Broadwell) processzorát egy Hyper-threaded konfigurációban tartalmazza, ami jobb értéket biztosít a legtöbb általános célú számítási feladathoz, és a Ev3 a legtöbb más felhőben lévő általános célú virtuális gépekre hangolja.  A memória ki lett bővítve (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszintű módon igazította ki, hogy illeszkedjen a feleznie-re való áttéréshez.  A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
 
-* A Eav3 sorozat és a Easv3 sorozat az AMD 2.35 GHz EPYC<sup>TM</sup> 7452V processzorát egy többszálas konfigurációban, akár 256mb L3 gyorsítótárral, a legtöbb memóriára optimalizált számítási feladatok futtatására szolgáló lehetőségek növelésével teszi elérhetővé.  A Eav3-sorozat és a Easv3-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a Ev3 & Esv3 sorozat.
+* Az Eav3-sorozat és a Easv3-sorozat előnézeti méretei az AMD 2.35 GHz EPYC<sup>TM</sup> 7452 processzorát egy többszálas konfigurációban, akár 256mb L3 gyorsítótárral, a legtöbb memóriára optimalizált számítási feladatok futtatásához szükséges lehetőségek számával használják.  A Eav3-sorozat és a Easv3-sorozat ugyanazokkal a memória-és lemez-konfigurációval rendelkezik, mint a Ev3 & Esv3 sorozat.
 
 * A Mv2 sorozat a legmagasabb vCPU (legfeljebb 208 vCPU) és a legnagyobb (legfeljebb 5,7 TiB) memóriával rendelkezik a felhőben. Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy vCPU-számot és a nagy memóriamennyiséget.
 
@@ -61,13 +61,15 @@ Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pr
 
 <sup>3</sup> a példány egyetlen ügyfél számára dedikált hardveren van elkülönítve.
 
-## <a name="easv3-series"></a>Easv3 sorozat
+## <a name="easv3-series-preview"></a>Easv3 sorozat (előzetes verzió)
 
 Prémium szintű Storage: Támogatott
 
 Premium Storage gyorsítótárazás: Támogatott
 
-A Easv3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452V processzoron alapulnak, amely növelheti a Fmax GHz-es 3.35 és a Premium Storage használatát. A Easv3-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára.
+A Easv3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es Fmax, és prémium szintű tárolást is használhat. A Easv3-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára.
+
+[Kattintson ide az előzetes verzióra való feliratkozáshoz](http://aka.ms/azureamdpreview).
 
 | Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 
 <sup>3</sup> a példány egyetlen ügyfél számára dedikált hardveren van elkülönítve.
 
-## <a name="eav3-series"></a>Eav3 sorozat
+## <a name="eav3-series-preview"></a>Eav3 sorozat (előzetes verzió)
 
 Prémium szintű Storage: Nem támogatott
 
 Premium Storage gyorsítótárazás: Nem támogatott
 
-A Eav3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452V processzoron alapulnak, amely növelheti a Fmax GHz-es 3.35 és a Premium Storage használatát. A Eav3-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A Premium Storage-lemezek használatához használja a Easv3-sorozat méretét. A Easv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Eav3 sorozattal.
+A Eav3-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es Fmax, és prémium szintű tárolást is használhat. A Eav3-sorozat méretei ideálisak a nagy mennyiségű, nagyvállalati alkalmazások számára. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A Premium Storage-lemezek használatához használja a Easv3-sorozat méretét. A Easv3-méretek díjszabása és számlázási mérőszámai megegyeznek a Eav3 sorozattal.
 
-| Size | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[Kattintson ide az előzetes verzióra való feliratkozáshoz](http://aka.ms/azureamdpreview).
+
+| Size             | vCPU | Memória: GiB | Ideiglenes tároló (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Mv2 sorozat
 
