@@ -1,89 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Szövegelemzési API-dokumentáció
+### YamlMime:Landing
+title: A Text Analytics API dokumentációja
+summary: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a megnevezett entitások felismerése és a nyelvfelismerés.'
 metadata:
   title: A Text Analytics API dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
-  description: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a megnevezett entitások felismerése és a nyelvfelismerés.'
+  titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: nitinme
+  description: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a megnevezett entitások felismerése és a nyelvfelismerés. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a tartalomelemzés különböző módjaival.'
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
   ms.date: 07/29/2019
-  ms.author: nitinme
-abstract:
-  description: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a megnevezett entitások felismerése és a nyelvfelismerés. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a tartalomelemzés különböző módjaival.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/text-analytics/overview
-            html: <p>Megismerkedhet a Text Analytics API-val.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Text Analytics?
-          - href: /azure/cognitive-services/cognitive-services-apis-create-account
-            html: <p>Ismerje meg a Text Analytics API-regisztráció folyamatát.</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: A Text Analytics API regisztrálása
-          - href: /azure/cognitive-services/text-analytics/whats-new
-            html: <p>Naprakész maradhat a Text Analytics API legújabb fejlesztéseit illetően.</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: A Text Analytics API újdonságai.
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'A Text Analytics API használatának első lépései a nyelvfelismeréshez, a hangulatelemzéshez, a kulcsszókiemeléshez és az entitásfelismeréshez:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            href: quickstarts/csharp
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: quickstarts/java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: quickstarts/nodejs-sdk
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: quickstarts/python-sdk
-          - image:
-              src: media/index/logo_go.svg
-            text: Indítás
-            href: quickstarts/go-sdk
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Alkalmazások fejlesztése a Text Analytics API-val:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Szövegelemzés a Power BI-jal</a>
-          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Szövegelemzés a PowerAppsben</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">API-referencia</a></p>'
-          - title: SDK-k
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable>Java</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: parancssori felület
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.author: aahi
+  ms.openlocfilehash: 3a95cedb76c25b8e22e0d93c60221015e5836506
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300480"
+landingContent:
+- title: Információk a Text Analytics API-ról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Text Analytics API?
+      url: overview.md
+    - text: Példa felhasználói forgatókönyvek
+      url: text-analytics-user-scenarios.md
+  - linkListType: video
+    links:
+    - text: Szövegek értelmezése a Cognitive Services használatával
+      url: https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player
+  - linkListType: whats-new
+    links:
+    - text: Újdonságok
+      url: whats-new.md
+- title: Hangulatelemzés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A C# használata
+      url: quickstarts/csharp.md#sentiment-analysis
+    - text: A Python használata
+      url: quickstarts/python-sdk.md#sentiment-analysis
+    - text: A Node.js használata
+      url: quickstarts/nodejs-sdk.md#sentiment-analysis
+    - text: A Go használata
+      url: quickstarts/go-sdk.md#sentiment-analysis
+    - text: A Ruby használata
+      url: quickstarts/ruby-sdk.md#sentiment-analysis
+  - linkListType: tutorial
+    links:
+    - text: A Power BI integrálása az ügyfelek véleményének elemzéséhez
+      url: tutorials/tutorial-power-bi-key-phrases.md
+    - text: Szövegfordítás, hangulatelemzés és beszédszintézis a Flask segítségével
+      url: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Hangulatelemzés
+      url: how-tos/text-analytics-how-to-sentiment-analysis.md
+- title: Nyelvfelismerés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A C# használata
+      url: quickstarts/csharp.md#language-detection
+    - text: A Python használata
+      url: quickstarts/python-sdk.md#language-detection
+    - text: A Node.js használata
+      url: quickstarts/nodejs-sdk.md#language-detection
+    - text: A Go használata
+      url: quickstarts/go-sdk.md#language-detection
+    - text: A Ruby használata
+      url: quickstarts/ruby-sdk.md#language-detection
+  - linkListType: how-to-guide
+    links:
+    - text: Nyelvfelismerés
+      url: how-tos/text-analytics-how-to-language-detection.md
+- title: Kulcskifejezések kinyerése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A C# használata
+      url: quickstarts/csharp.md#key-phrase-extraction
+    - text: A Python használata
+      url: quickstarts/python-sdk.md#key-phrase-extraction
+    - text: A Node.js használata
+      url: quickstarts/nodejs-sdk.md#key-phrase-extraction
+    - text: A Go használata
+      url: quickstarts/go-sdk.md#key-phrase-extraction
+    - text: A Ruby használata
+      url: quickstarts/ruby-sdk.md#key-phrase-extraction
+  - linkListType: how-to-guide
+    links:
+    - text: Kulcsszókinyerés
+      url: how-tos/text-analytics-how-to-keyword-extraction.md
+- title: Entitások felismerése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: A C# használata
+      url: quickstarts/csharp.md#entity-recognition
+    - text: A Python használata
+      url: quickstarts/python-sdk.md#entity-recognition
+    - text: A Node.js használata
+      url: quickstarts/nodejs-sdk.md#entity-recognition
+    - text: A Go használata
+      url: quickstarts/go-sdk.md#entity-recognition
+    - text: A Ruby használata
+      url: quickstarts/ruby-sdk.md#entity-recognition
+  - linkListType: how-to-guide
+    links:
+    - text: Entitások felismerése
+      url: how-tos/text-analytics-how-to-entity-linking.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
+    - text: .NET-ügyfélkódtár
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+    - text: Python-ügyfélkódtár
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
+    - text: Node.js-ügyfélkódtár
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest
+    - text: Java-ügyfélkódtár
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
+    - text: Go-ügyfélkódtár
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services"
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Docker-tárolók használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A Text Analytics-tárolók telepítése és futtatása
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: A Text Analytics-tárolók konfigurálása
+      url: text-analytics-resource-container-config.md
+    - text: Tárolópéldány üzembe helyezése az Azure-ba
+      url: how-tos/text-analytics-how-to-use-container-instances.md
+    - text: Tároló üzembe helyezése az Azure Kubernetes Service (AKS) szolgáltatásban
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md

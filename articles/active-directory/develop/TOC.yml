@@ -344,6 +344,8 @@
               href: v2-permissions-and-consent.md
             - name: Jóváhagyási keretrendszer
               href: consent-framework.md
+            - name: Rendszergazdai jóváhagyás
+              href: v2-admin-consent.md
             - name: Alkalmazás-jóváhagyási tapasztalatok
               href: application-consent-experience.md
         - name: Országos felhőkörnyezetek

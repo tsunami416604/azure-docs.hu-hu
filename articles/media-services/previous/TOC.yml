@@ -58,6 +58,8 @@
         - name: Migrálás a Windows Azure Media Encoderből
           href: migrate-windows-azure-media-encoder.md
           displayName: WAME
+        - name: Migrálás az Indexer v1 és v2 verzióiból
+          href: migrate-indexer-v1-v2.md
     - name: Kezelés
       items:
         - name: Fiókok

@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Csatlakozás webböngészőről
           href: connect-web.md
+        - name: Kapcsolódás a macOS-ügyfélhez
+          href: connect-macos.md
+        - name: Kapcsolódás az iOS-ügyfélhez
+          href: connect-ios.md
     - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
       href: create-host-pools-arm-template.md
     - name: Gazdagépcsoport létrehozása a PowerShell-lel

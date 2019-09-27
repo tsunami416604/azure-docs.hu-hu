@@ -474,6 +474,8 @@
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Lemez átméretezése
           href: expand-os-disk.md
+        - name: A Storage Explorer használata lemezek kezelésére
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
         - name: Növekményes pillanatkép létrehozása

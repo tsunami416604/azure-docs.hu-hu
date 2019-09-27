@@ -691,6 +691,8 @@
       items:
         - name: Notebookok engedélyezése
           href: enable-notebooks.md
+        - name: Beépített notebook-parancsok használata
+          href: use-notebook-features-and-commands.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, triggerek és felhasználói függvények írása'

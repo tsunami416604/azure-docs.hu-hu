@@ -21,7 +21,7 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Az Azure Security Center for IoT engedélyezése az IoT Hubban
+    - name: Az Azure Security Center for IoT előkészítése az IoT Hubban
       href: quickstart-onboard-iot-hub.md
     - name: A megoldás konfigurálása
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: Eszköz vizsgálata
       href: how-to-investigate-device.md
+    - name: A megoldás testreszabása
+      href: how-to-customize-solution.md
 - name: További források
   items:
     - name: Gyakori kérdések

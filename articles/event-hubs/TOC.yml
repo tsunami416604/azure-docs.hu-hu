@@ -114,7 +114,7 @@
           href: event-hubs-get-connection-string.md
         - name: Események közvetítése különböző protokollokat használó alkalmazások között
           href: event-hubs-exchange-events-different-protocols.md
-        - name: Programozási útmutató
+        - name: .NET programozási útmutató
           href: event-hubs-programming-guide.md
         - name: 'Események küldése, fogadása és rögzítése a Python használatával'
           href: event-hubs-python.md

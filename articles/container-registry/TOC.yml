@@ -71,6 +71,8 @@
           items:
             - name: Képadatok törlése – parancssori felület
               href: container-registry-delete.md
+            - name: Adatmegőrzési szabályzat címkézetlen jegyzékekhez (előzetes verzió)
+              href: container-registry-retention-policy.md
             - name: Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
               href: container-registry-auto-purge.md
         - name: Klasszikus beállításjegyzék frissítése
