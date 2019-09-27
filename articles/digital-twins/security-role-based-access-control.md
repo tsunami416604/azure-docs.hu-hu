@@ -1,19 +1,19 @@
 ---
-title: Az Azure digitális Twins szerepköralapú hozzáférés-vezérlésének ismertetése | Microsoft Docs
-description: Ismerkedjen meg a digitális Twins-alapú hitelesítéssel a szerepköralapú hozzáférés-vezérléssel.
+title: A szerepköralapú hozzáférés-vezérlés ismertetése – Azure digitális Twins | Microsoft Docs
+description: Ismerje meg a szerepköralapú hozzáférés-vezérlést és az engedélyek kezelését az Azure digitális Twins szolgáltatásban.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815569"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336728"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Szerepköralapú hozzáférés-vezérlés az Azure-beli digitális Ikrekben
 
@@ -49,20 +49,20 @@ A fejlesztők a következő RBAC használhatják:
 
 ### <a name="role-definitions"></a>Szerepkör-definíciók
 
-A szerepkör-definíció az engedélyek és a szerepkört alkotó egyéb attribútumok gyűjteménye. A szerepkör-definíció felsorolja az engedélyezett műveleteket, beleértve az adott szerepkörrel rendelkező objektumok *létrehozását*, *olvasását*, *frissítését*és *törlését* is. Azt is meghatározza, hogy mely objektumtípusok engedélyei érvényesek a alkalmazásra.
+A szerepkör-definíció az engedélyek és a szerepkört alkotó egyéb attribútumok gyűjteménye. A szerepkör-definíció felsorolja az engedélyezett műveleteket, beleértve az adott szerepkörrel rendelkező objektumok *létrehozását*, *olvasását*, *frissítését*és *törlését* is. Azt is meghatározza, hogy az engedélyek mely objektumtípusok esetében érvényesek.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Az előző szerepkörök teljes definíciójának lekéréséhez kérdezze le a System/roles API-t.
-> További információ a [szerepkör-hozzárendelések létrehozásával és kezelésével](./security-create-manage-role-assignments.md#all)kapcsolatban.
+> További információ a [szerepkör-hozzárendelések létrehozásával és kezelésével](./security-create-manage-role-assignments.md#retrieve-all-roles)kapcsolatban.
 
 ### <a name="object-identifier-types"></a>Objektumazonosító típusai
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Megtudhatja, hogyan adhat engedélyeket a szolgáltatás számára a [szerepkör-hozzárendelések létrehozásával és kezelésével](./security-create-manage-role-assignments.md#grant).
+> Megtudhatja, hogyan adhat engedélyeket a szolgáltatás számára a [szerepkör-hozzárendelések létrehozásával és kezelésével](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal).
 
 Az alábbi dokumentációs cikkek a következőket írják le:
 

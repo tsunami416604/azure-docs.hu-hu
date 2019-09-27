@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212006"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327666"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -96,6 +96,8 @@ Jelenleg nem konvertálhatók közvetlenül a standard fájlmegosztás és a pr�
 
 > [!IMPORTANT]
 > A prémium szintű fájlmegosztás a legtöbb régióban LRS érhető el, amelyek a Storage-fiókokat és a ZRS-t a régiók kisebb részhalmazában kínálják. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . Ha szeretné megtudni, hogy mely régiók támogatják a ZRS, tekintse meg a [támogatási lefedettség és a regionális rendelkezésre állás](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)című témakört
+>
+> Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/pfsfeedback)az új régiók és prémium szintű funkciók rangsorolásához.
 
 #### <a name="provisioned-shares"></a>Kiosztott megosztások
 

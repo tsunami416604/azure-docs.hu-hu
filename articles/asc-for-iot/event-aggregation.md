@@ -1,6 +1,6 @@
 ---
-title: A IoT-megoldási esemény összesítésének Azure Security Center ismertetése | Microsoft Docs
-description: Ismerje meg, hogy az események hogyan legyenek összesítve Azure Security Center a IoT szolgáltatásban.
+title: Az IoT-esemény összesítésének Azure Security Center ismertetése | Microsoft Docs
+description: További információ a IoT-események összesítésének Azure Security Center.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933901"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327321"
 ---
-# <a name="security-agent-event-aggregation"></a>Biztonsági ügynök eseményének összesítése
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center a IoT esemény összesítéséhez
 
-A IoT biztonsági ügynökök Azure Security Center a helyi eszközről gyűjtenek adatokat és rendszereseményeket, és ezeket az adatokat az Azure-felhőbe küldik feldolgozásra és elemzésre. A biztonsági ügynök számos típusú eseményt gyűjt, beleértve az új folyamatot és az új kapcsolatok eseményeit. Az új folyamat és az új kapcsolódási események is jogszerűen fordulhatnak elő egy másodpercen belül egy eszközön, és fontos, hogy a robusztus és az átfogó biztonság szempontjából milyen mennyiségű üzenetnek kell megtörténnie, ami kényszeríti az elküldött biztonsági ügynökök gyors elérését vagy túllépését IoT Hub kvóta-és költséghatékonysági korlátok. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez.
+A IoT biztonsági ügynök Azure Security Center adatokat és rendszereseményeket gyűjt a helyi eszközről, és ezeket az adatokat az Azure-felhőbe küldi feldolgozásra és elemzésre. A biztonsági ügynök számos típusú eseményt gyűjt, beleértve az új folyamatot és az új kapcsolatok eseményeit. Az új folyamat és az új kapcsolódási események is felmerülhetnek egy másodpercen belül egy eszközön, és noha fontos a robusztus és a teljes biztonság szempontjából, az üzenetek biztonsági ügynökei számára a küldésre kényszerített mennyiség gyorsan elérheti vagy meghaladhatja a IoT Hub kvóta-és költséghatékonysági korlátok. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez.
 
 Ha csökkenteni szeretné a további kvótákat és költségeket az eszközök védelmének fenntartása mellett, Azure Security Center IoT-ügynökök összesítik az ilyen típusú eseményeket.
 
@@ -44,8 +44,8 @@ Az ügynök memória-lábnyomának csökkentése érdekében, ha az ügynök egy
 
 Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő feltételek: 
 
-* ProcessCreate események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév** és a **userid** megegyezik
-* ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a **protokollt** és a **célport** azonos
+* ProcessCreate-események – ha a **parancssori**, **végrehajtható**, * * Felhasználónév és **felhasználóazonosító** azonos
+* ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a * * protokollt és a **célport** azonos
 * ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
 ### <a name="working-with-aggregated-events"></a>Összesített események használata
@@ -57,9 +57,9 @@ Az összesítés során a rendszer elveti a nem összesített esemény-tulajdons
 ## <a name="event-aggregation-based-alerts"></a>Esemény-összesítési alapú riasztások 
 Az elemzést követően a IoT Azure Security Center biztonsági riasztásokat hoz létre a gyanús összesített eseményekhez. Az összesített eseményekből létrehozott riasztások csak egyszer jelennek meg minden összesített eseménynél.
 
-Az Összesítés kezdési időpontja, a befejezési idő és a találatok száma az egyes eseményekhez Log Analytics az Event **ExtraDetails** mezőben, a vizsgálatok során való használatra. 
+Az egyes események összesítésének kezdési és befejezési időpontja, valamint az egyes eseményekhez tartozó találatok száma a vizsgálatok során való használat érdekében a Log Analytics **ExtraDetails** mezőjében lesz naplózva. 
 
-Minden összesített esemény a begyűjtött riasztások 24 órás időszakát jelenti. Az egyes események bal felső sarkában az Event Options (esemény beállításai) menü használatával **elvetheti** az egyes összesített eseményeket.    
+Minden összesített esemény a begyűjtött riasztások 24 órás időszakát jelöli. Az egyes események bal felső sarkában az Event Options (esemény beállításai) menü használatával **elvetheti** az egyes összesített eseményeket.    
 
 ## <a name="event-aggregation-twin-configuration"></a>Esemény-összesítési kettős konfiguráció
 Módosítsa Azure Security Center konfigurációját az IoT esemény összesítéséhez az **azureiotsecurity** modul modul- [konfigurációs objektumán](how-to-agent-configuration.md) belül.

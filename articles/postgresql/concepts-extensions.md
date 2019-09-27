@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091142"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327130"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -62,6 +62,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Méretezhető lapkákat és összetett lekérdezéseket engedélyez az idősorozat-adatsorokhoz|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
@@ -206,7 +207,7 @@ A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkez
 A pg_stat_statements-bővítmény előre be van töltve minden Azure Database for PostgreSQL-kiszolgálón, így biztosíthatja az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
 A beállítás `pg_stat_statements.track`, amely azt szabályozza, hogy a bővítmény mely utasításokat számítja ki, az `top`alapértelmezett érték, ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint `none` a `all`és a. Ez a beállítás kiszolgálói paraméterként konfigurálható a Azure Portalon [](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)-n keresztül.
 
-A lekérdezés végrehajtási információi pg_stat_statements és a kiszolgáló teljesítményére gyakorolt hatás a különböző SQL-utasítások naplózása között kompromisszumot jelent. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa `pg_stat_statements.track` a `none`következőre:. Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások pg_stat_statements támaszkodhat a lekérdezési teljesítmény megállapítására, ezért győződjön meg arról, hogy ez a helyzet az Ön számára.
+A lekérdezés végrehajtási információi pg_stat_statements és a kiszolgáló teljesítményére gyakorolt hatás a különböző SQL-utasítások naplózása között kompromisszumot jelent. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy a `pg_stat_statements.track` értéket `none` értékre állítsa be. Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások pg_stat_statements támaszkodhat a lekérdezési teljesítmény megállapítására, ezért győződjön meg arról, hogy ez a helyzet az Ön számára.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
 a dblink és a postgres_fdw lehetővé teszi, hogy egy PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezekkel a bővítményekkel csatlakozik Azure Database for PostgreSQL kiszolgálók között, ezt az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítással teheti meg. Erre akkor is szükség van, ha a bővítmények használatával szeretne visszakapcsolni ugyanarra a kiszolgálóra. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás megtalálhatók a postgres-kiszolgáló Azure Portal lapján, a kapcsolat biztonsága lehetőségnél. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás bekapcsolásával az összes Azure-beli IP-címet az engedélyezési listán helyezheti el.
@@ -227,9 +228,6 @@ A TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-bővítményként v
 
 ### <a name="installing-timescaledb"></a>A TimescaleDB telepítése
 A TimescaleDB telepítéséhez fel kell vennie azt a kiszolgáló megosztott előtelepítő könyvtáraiba. A postgres `shared_preload_libraries` paraméterének módosítása a **kiszolgáló újraindítását** igényli. A paramétereket a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával módosíthatja.
-
-> [!NOTE]
-> A TimescaleDB a 9,6-es és a 10-es Azure Database for PostgreSQL-verziókon engedélyezhető
 
 A [Azure Portal](https://portal.azure.com/)használata:
 

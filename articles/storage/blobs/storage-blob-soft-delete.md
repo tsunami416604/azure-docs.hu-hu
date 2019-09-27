@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 95d133e07725f797ea3c1a903e315d5c7232e1de
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360758"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327620"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Az Azure Storage-Blobok Soft delete
 Az Azure Storage mostantól lágy törlést biztosít a blob-objektumokhoz, így könnyebben lehet helyreállítani az adatokat, amikor az alkalmazás vagy más Storage-fiók felhasználója hibásan módosítja vagy törölte azokat.
@@ -37,11 +37,11 @@ Bármikor módosíthatja a helyreállítható törlés megőrzési időtartamát
 ### <a name="saving-deleted-data"></a>Törölt adattárolók mentése
 A helyreállítható törléssel a rendszer sok esetben megőrzi az adatait, ahol a blobokat vagy a blob-pillanatképeket törli vagy felülírja.
 
-Ha a blob a **put blob**használatával van felülírva, a **Letiltás**, a **Letiltás** vagy a **blob másolása** a blob állapotát az írási művelet előtt, automatikusan létrejön egy pillanatkép. Ez a pillanatkép egy Soft Deleted pillanatkép; csak akkor látható, ha a Soft Deleted Objects explicit módon szerepel. A helyreállított objektumok listázásával kapcsolatos információkért tekintse meg a [helyreállítás](#recovery) szakaszt.
+Ha a blob a **put blob**használatával van felülírva, a **Letiltás**, a **Letiltás** vagy a **blob másolása** a blob állapotát az írási művelet előtt, automatikusan létrejön egy pillanatkép. Ez a pillanatkép egy Soft Deleted pillanatkép; csak akkor látható, ha a Soft Deleted Objects explicit módon szerepel. A [helyreállított](#recovery) objektumok listázásával kapcsolatos információkért tekintse meg a helyreállítás szakaszt.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-*A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a B0 felülírja a B1-sel, a rendszer létrehoz egy, a B0 készült, törölt pillanatképet. Ha a B1 felülíródik a B2-mel, a rendszer létrehoz egy, a B1-ről készült, törölt pillanatképet.*
+@no__t – a törölt 0Soft-érték szürke, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a B0 felülírja a B1-sel, a rendszer létrehoz egy, a B0 készült, törölt pillanatképet. Ha a B1 felül van írva a B2-mel, a rendszer létrehoz egy, a B1-ről készült, törölt pillanatképet. *
 
 > [!NOTE]  
 > A helyreállítható törlés csak a másolási műveletek felülírását teszi elérhetővé, ha a cél blob fiókjához be van kapcsolva.
@@ -49,17 +49,17 @@ Ha a blob a **put blob**használatával van felülírva, a **Letiltás**, a **Le
 > [!NOTE]  
 > A helyreállítható törlés nem teszi elérhetővé a Blobok felülírásának védelmét az archív szinten. Ha az archívumban található blobot egy új blobtal felülírják bármely szinten, a felülírt blob véglegesen lejár.
 
-Ha  a törlési blobot pillanatképként hívja meg, akkor a pillanatképet a rendszer nem töröltként jelöli meg. Nem jön létre új pillanatkép.
+Ha a **törlési blobot** pillanatképként hívja meg, akkor a pillanatképet a rendszer nem töröltként jelöli meg. Nem jön létre új pillanatkép.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a **Pillanatkép-blob** hívása megtörténik, a B0 a blob aktív állapota lesz. A B0-pillanatkép törlését követően a rendszer törli a jelölést.*
+@no__t – a törölt 0Soft-érték szürke, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a **Pillanatkép-blob** hívása megtörténik, a B0 a blob aktív állapota lesz. A B0-pillanatkép törlését követően a rendszer a törlésre kijelöltként jelöli meg. *
 
-Ha  a törlési blobot egy alapblobra hívja (bármely olyan blob, amely nem pillanatkép), akkor a blobot a rendszer a töröltként jelöli meg. A korábbi viselkedéssel összhangban  az aktív pillanatképekkel rendelkező Blobok törlésének meghívása hibát jelez. A **blob törlésének** meghívása egy blobon, ha a törölt Pillanatképek nem adnak vissza hibát. A blobokat és az összes pillanatképét egyetlen művelettel törölheti, ha a Soft delete be van kapcsolva. Így az alap blob és a pillanatképek nem törlődnek.
+Ha a **törlési blobot** egy alapblobra hívja (bármely olyan blob, amely nem pillanatkép), akkor a blobot a rendszer a töröltként jelöli meg. A korábbi viselkedéssel összhangban az aktív pillanatképekkel rendelkező Blobok **törlésének** meghívása hibát jelez. A **blob törlésének** meghívása egy blobon, ha a törölt Pillanatképek nem adnak vissza hibát. A blobokat és az összes pillanatképét egyetlen művelettel törölheti, ha a Soft delete be van kapcsolva. Így az alap blob és a pillanatképek nem törlődnek.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt törölheti  a törlési blobot, hogy törölje a B2-et és az összes kapcsolódó pillanatképet. A rendszer az aktív blobot, a B2-et és az összes kapcsolódó pillanatképet törölve jelöli.*
+@no__t – a törölt 0Soft-érték szürke, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt törölheti a **törlési blobot** , hogy törölje a B2-et és az összes kapcsolódó pillanatképet. Az aktív blob, a B2 és az összes kapcsolódó pillanatkép törölve lett. *
 
 > [!NOTE]  
 > Ha a rendszer felülírja a törölt blobokat, a rendszer automatikusan létrehoz egy, a blob állapotára vonatkozó, az írási művelet előtt törölt pillanatképet. Az új blob örökli a felülírt blob szintjét.
@@ -87,11 +87,11 @@ Fontos megjegyezni, hogy a "Put Page" meghívásával felülírhatja vagy törö
 ### <a name="recovery"></a>Helyreállítás
 A törölt adatok helyreállításának egyszerűbbé tétele érdekében bevezetjük a "blob törlésének visszavonása" API-t. Ha a törlési API-t egy puha törölt alapblobon hívja vissza, a rendszer visszaállítja azt, és az összes kapcsolódó, helyreállított törölt pillanatkép aktívként működik. Ha a törlési API-t egy aktív alapszintű blobon hívja meg, az összes társított, törölt pillanatképet aktívként állítja vissza. Ha a pillanatképek aktívként lettek visszaállítva, a felhasználó által létrehozott pillanatképeket hasonlítják, nem írják felül az alap blobot.
 
-Ha egy blobot egy adott helyreállítható törölt pillanatképre szeretne visszaállítani  , akkor a blob törlését az alap blobon is meghívhatja. Ezután átmásolhatja a pillanatképet a most aktív blobon keresztül. A pillanatképet egy új blobba is másolhatja.
+Ha egy blobot egy adott helyreállítható törölt pillanatképre szeretne visszaállítani, akkor a blob **törlését** az alap blobon is meghívhatja. Ezután átmásolhatja a pillanatképet a most aktív blobon keresztül. A pillanatképet egy új blobba is másolhatja.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt a **blob törlésének** visszavonása a B blobon történik, így az alap blobot, a B1-t és az összes kapcsolódó pillanatképet – itt csak B0 – aktívként kell visszaállítani. A második lépésben a B0 a rendszer az alap blobon másolja át. Ez a másolási művelet létrehoz egy, a B1-ről készült, törölt pillanatképet.*
+@no__t – a törölt 0Soft-érték szürke, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt a **blob törlésének** visszavonása a B blobon történik, így az alap blobot, a B1-t és az összes kapcsolódó pillanatképet – itt csak B0 – aktívként kell visszaállítani. A második lépésben a B0 a rendszer az alap blobon másolja át. Ez a másolási művelet egy, a B1-ről készült, törölt pillanatképet hoz létre. *
 
 A törölt blobok és blob-Pillanatképek megtekintéséhez dönthet úgy, hogy a törölt fájlokat is belefoglalja a **List blobba**. Dönthet úgy, hogy csak a nem megfelelően törölt alapblobokat vagy a törölt Blobok pillanatképeit is megtekinti. Az összes nem törölt adattal kapcsolatban megtekintheti az adattörlés időpontját, valamint azt, hogy hány nap elteltével kell véglegesen lejár az adatmennyiség.
 
@@ -133,13 +133,13 @@ A kimenetet előkészítő alkalmazásra mutató hivatkozásról a [következő 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 A rendszer az aktív adatforgalommal megegyező sebességgel számítja fel az összes helyreállított törlési értéket. A beállított megőrzési időtartam után véglegesen törölt adatokért nem számítunk fel díjat. A pillanatképek mélyebb megismeréséhez és a díjak elsajátításához lásd: a [Pillanatképek felmerülésének ismertetése](storage-blob-snapshots.md).
 
-A pillanatképek automatikus generálásával kapcsolatos tranzakciókért nem számítunk fel díjat. A **blob** -tranzakciók törlésének visszavonása a "Write Operations" (írási műveletek) arányban történik.
+A pillanatképek automatikus generálásával kapcsolatos tranzakciókért nem számítunk fel díjat. A blob-tranzakciók **törlésének** visszavonása a "Write Operations" (írási műveletek) arányban történik.
 
 Az Azure Blob Storage díjszabásával kapcsolatos további információkért tekintse meg az [azure blob Storage díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 Amikor először kapcsolja be a Soft delete szolgáltatást, javasoljuk, hogy használjon egy kis megőrzési időtartamot, hogy jobban megértse, hogyan befolyásolja a szolgáltatás a számlát.
 
-## <a name="quickstart"></a>Gyors üzembe helyezés
+## <a name="quickstart"></a>Gyorsútmutató
 ### <a name="azure-portal"></a>Azure Portal
 Ha engedélyezni szeretné a törlést, navigáljon a **Soft delete** lehetőségre a **blob Service**-ben. Ezután kattintson az **engedélyezve** lehetőségre, és adja meg, hogy hány nap elteltével szeretné megőrizni a nem kötelezően törölt adatmennyiséget.
 
@@ -186,7 +186,7 @@ A következő parancs használatával ellenőrizheti, hogy a Soft delete be van-
 $MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
-A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok törlésének visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének**visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
 ```powershell
 # Create a context by specifying storage account name and key
 $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
@@ -250,7 +250,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok törlésének visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének**visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
 
 ```csharp
 // Recover all blobs in a container
@@ -292,7 +292,7 @@ Igen, a Soft delete minden tárolási réteghez elérhető, beleértve a gyakori
 **Használhatom a blob-rétegek API-ját a Blobok a Soft delete-pillanatképekkel való létrehozására?**  
 Igen. A helyreállított törölt Pillanatképek az eredeti szinten maradnak, de az alap blob az új rétegre kerül. 
 
-**A Premium Storage-fiókokhoz a blob pillanatkép-korlátja 100. A rugalmasan törölt Pillanatképek száma a korlát felé?**  
+@no__t – a 0Premium-tároló fiókjainak blob-pillanatkép-korlátja 100. A rugalmasan törölt Pillanatképek száma a korlátnak? **  
 Nem, a nem kötelező törölt Pillanatképek nem számítanak bele a korlátba.
 
 **Be lehet kapcsolni a meglévő Storage-fiókok helyreállítható törlését?**  
@@ -314,7 +314,7 @@ Igen, de először a blob törlését kell meghívnia.
 Igen, a Soft delete elérhető a Blobok letiltásához, a blobok és a Blobok hozzáfűzéséhez.
 
 **Elérhető-e a Soft Delete a virtuális gépek lemezei számára?**  
-A Soft Delete a prémium és a standard szintű nem felügyelt lemezek esetében is elérhető. A Soft delete utasítás csak a **blob törlésével**, a Blobok , a letiltási **listák**és **a** másolási **Blobok**használatával törölt adatok helyreállítását segíti. A **put oldal** hívása által felülírt adathalmaz nem helyreállítható.
+A Soft Delete a prémium és a standard szintű nem felügyelt lemezek esetében is elérhető. A Soft delete utasítás csak a **blob törlésével**, a **Blobok**, a **letiltási listák**és **a** **másolási Blobok**használatával törölt adatok helyreállítását segíti. A **put oldal** hívása által felülírt adathalmaz nem helyreállítható.
 
 **Módosítani kell a meglévő alkalmazásaikat a Soft delete használatára?**  
 A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenül. A Soft Deleted blobok és blob-Pillanatképek listázásához és helyreállításához azonban a [Storage Services](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) 2017-07-29-es verzióját kell használnia REST API vagy annál nagyobb. Általánosságban azt javasoljuk, hogy a legújabb verziót használja, függetlenül attól, hogy használja-e ezt a funkciót.

@@ -151,6 +151,8 @@
           href: azure-files-volume.md
         - name: NFS-kiszolgáló – Statikus
           href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: Hálózatkezelés konfigurálása
       items:
         - name: Meglévő virtuális hálózat létrehozása vagy használata

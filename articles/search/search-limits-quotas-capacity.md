@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300661"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327164"
 ---
 # <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
 A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
 
-+ Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik.
++ Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik. Az indexelési és lekérdezési kérelmek a más bérlők által használt replikák és partíciók esetében futnak.
 
-+ Az **alapszintű** megoldás dedikált számítástechnikai erőforrásokat biztosít az éles számítási feladatokhoz kisebb méretekben.
++ Az **alapszintű** megoldás dedikált számítástechnikai erőforrásokat biztosít az éles számítási feladatokhoz, de bizonyos hálózati infrastruktúrát más bérlők is megosztanak.
 
 + A **standard** szintű dedikált gépeken fut, és minden szinten nagyobb a tárterület és a feldolgozási kapacitás. A standard szint négy szinten érhető el: S1, S2, S3 és S3 HD.
 

@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910124"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326882"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technikai specifikációk Azure Data Box Edge
 
 A Microsoft Azure Data Box Edge eszköz hardveres összetevői megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a tápegységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le. 
+
+## <a name="compute-memory-specifications"></a>Számítási, memória-specifikációk
+
+A Data Box Edge eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
+
+| Specifikáció           | Value                  |
+|-------------------------|----------------------------|
+| CPU    | 2 X 10 mag CPU                     |
+| Memory (Memória)              | 128 GB RAM                  |
+
+
+## <a name="fpga-specifications"></a>FPGA-specifikációk
+
+A rendszer minden Data Box Edge eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát. 
+
+| Specifikáció           | Value                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 

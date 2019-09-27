@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309228"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338549"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -50,9 +50,9 @@ A Media Services REST API korábbi verzióival kapcsolatos információkért tek
 
 ### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük *Azure Media Indexer* és a *Azure Media Indexer 2*. A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 (előzetes verzió) adathordozó-](media-services-process-content-with-indexer2.md) processzorok 2020 január 1-től megszűnnek. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük a *Azure Media Indexer v1* és a *Azure Media Indexer v2 előzetes*verziójának elavult verzióját. A [Azure Media Indexer v1](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. Az [Azure Media Indexer v2 előzetes verziójának](media-services-process-content-with-indexer2.md) adathordozó-processzora 2020 január 1-től megszűnik. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
-További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+További információ: [migrálás Azure Media Indexer v1-ről és Azure Media Indexer v2-ről Azure Media Services video Indexerra](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Augusztus 2019
 

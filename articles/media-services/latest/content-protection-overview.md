@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561469"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338784"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
@@ -35,7 +35,7 @@ Az alábbi ábra a Media Services a tartalomvédelem munkafolyamatát szemlélte
 
 ![Media Services tartalomvédelem munkafolyamata](./media/content-protection/content-protection.svg)
   
-&#42;*A dinamikus titkosítás támogatja az AES-128 Clear Key, CBCS és CENC használatát. Részletekért tekintse meg a [támogatási mátrixot](#streaming-protocols-and-encryption-types).*
+&#42;@no__t – a 1Dynamic titkosítás támogatja az AES-128 Clear Key, CBCS és CENC használatát. Részletekért tekintse meg a [támogatási mátrixot](#streaming-protocols-and-encryption-types). *
 
 Ez a cikk azokat a fogalmakat és terminológiát ismerteti, amelyek segítenek megérteni a tartalomvédelem Media Services.
 
@@ -68,7 +68,7 @@ A példa bemutatja, hogyan:
      ```
 2. Hozzon létre egy [folyamatos átviteli lokátort](streaming-locators-concept.md) , amely a titkosított eszköz továbbítására van konfigurálva. 
   
-   Az adatfolyam-keresőt egy [folyamatos átviteli házirenddel](streaming-policy-concept.md)kell társítani. A példában a "Predefined_MultiDrmCencStreaming" `StreamingLocator.StreamingPolicyName` házirendre van beállítva. 
+   Az adatfolyam-keresőt egy [folyamatos átviteli házirenddel](streaming-policy-concept.md)kell társítani. A példában a `StreamingLocator.StreamingPolicyName` értéket a "Predefined_MultiDrmCencStreaming" házirendre állítjuk be. 
       
    A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha a streamet a CBCS (FairPlay) használatával is titkosítani szeretné, használja a "Predefined_MultiDrmStreaming" házirendet.
 
@@ -78,7 +78,7 @@ A példa bemutatja, hogyan:
    A `GetTokenAsync` metódus azt mutatja be, hogyan lehet létrehozni egy teszt jogkivonatot.
 4. A streamelési URL-cím összeállítását.
 
-   A `GetDASHStreamingUrlAsync` metódus a folyamatos átviteli URL-cím összeállítását mutatja be. Ebben az esetben az URL-cím továbbítja a kötőjel tartalmát.
+   A `GetDASHStreamingUrlAsync` metódus a streaming URL-cím összeállítását mutatja be. Ebben az esetben az URL-cím továbbítja a kötőjel tartalmát.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>AES-vagy DRM-ügyféllel rendelkező lejátszó 
 
@@ -172,7 +172,7 @@ Nyílt hozzáférésű tartalomra vonatkozó szabályzatot akkor lehet használn
 
 A jogkivonat-korlátozott tartalmi kulcs házirendje csak olyan ügyfélnek küldi el a tartalmat, amely érvényes JWT jogkivonatot vagy egyszerű webes jogkivonatot (SWT) biztosít a licenc/kulcs kérelmében. Ezt a tokent egy STS-nek kell kiállítania. 
 
-Az Azure AD-t STS-ként vagy egyéni STS üzembe helyezésével is használhatja. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services licenc/kulcs kézbesítési szolgáltatása visszaadja a kért licencet vagy kulcsot az ügyfélnek, ha mindkét feltétel teljesül:
+Az Azure AD-t STS-ként vagy [Egyéni STS](#using-a-custom-sts)üzembe helyezésével is használhatja. Az STS-re kell állítani a megadott kulcs és a probléma jogcímek jogkivonat korlátozás konfigurációjában megadott aláírt jogkivonat létrehozásához. A Media Services licenc/kulcs kézbesítési szolgáltatása visszaadja a kért licencet vagy kulcsot az ügyfélnek, ha mindkét feltétel teljesül:
 
 * A jogkivonat érvényes. 
 * A jogkivonatban szereplő jogcímek egyeznek a licenccel vagy a kulccsal konfigurált jogcímekkel.
@@ -222,13 +222,13 @@ Ha másik licenc/kulcs kézbesítési szolgáltatást szeretne megadni (nem Medi
 * `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`: Sablon azon egyéni szolgáltatás URL-címéhez, amely kulcsokat biztosít a végfelhasználók számára. A kulcsok kiadásához Azure Media Services használata nem kötelező. 
 
    A sablon támogatja a visszahelyezhető jogkivonatokat, amelyeket a szolgáltatás a kérelemhez megadott értékkel fog frissíteni futásidőben.  A jelenleg támogatott jogkivonat-értékek a következők:
-   * `{AlternativeMediaId}`, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
-   * `{ContentKeyId}`, amely a kért kulcs azonosítójának értékével van lecserélve.
+   * @no__t – 0, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
+   * @no__t – 0, amely a kért kulcs azonosítójának értékével van lecserélve.
 * `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`: Sablon azon egyéni szolgáltatás URL-címéhez, amely licenceket biztosít a végfelhasználók számára. A licencek kiadásához Azure Media Services használata nem kötelező. 
 
    A sablon támogatja a visszahelyezhető jogkivonatokat, amelyeket a szolgáltatás a kérelemhez megadott értékkel fog frissíteni futásidőben. A jelenleg támogatott jogkivonat-értékek a következők:  
-   * `{AlternativeMediaId}`, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
-   * `{ContentKeyId}`, amely a kért kulcs azonosítójának értékével van lecserélve. 
+   * @no__t – 0, amelyet a StreamingLocatorId. AlternativeMediaId értékkel cserél a rendszer.
+   * @no__t – 0, amely a kért kulcs azonosítójának értékével van lecserélve. 
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Ugyanaz, mint az előző sablon, csak a Widevine esetében. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Ugyanaz, mint az előző sablon, csak a FairPlay esetében.  
 
@@ -238,13 +238,13 @@ Példa:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`a kért kulcs értéke. Akkor használhatja `AlternativeMediaId` , ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például `AlternativeMediaId` az engedélyek megkeresésének megkönnyítésére használható.
+@no__t – 0 a kért kulcs értéke. Ha a kérést az Ön oldalán lévő entitásra szeretné leképezni, használhatja a `AlternativeMediaId` értéket. A `AlternativeMediaId` például segítséget nyújt az engedélyek kereséséhez.
 
  Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` hibaüzenet jelenik meg, győződjön meg arról, hogy a megfelelő folyamatos átviteli házirendet adta meg.
+Ha a `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` hibát kapja, győződjön meg arról, hogy a megfelelő folyamatos átviteli házirendet adta meg.
 
 Ha a végén `_NOT_SPECIFIED_IN_URL`hibákat kap, ügyeljen arra, hogy a titkosítási formátumot az URL-címben megadja. Például: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Lásd: [adatfolyam-protokollok és titkosítási típusok](#streaming-protocols-and-encryption-types).
 
@@ -259,4 +259,4 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 * [Többplatformos DRM-védelemmel ellátott tartalomkezelő rendszerek tervezése hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
 * [Tárolási oldal titkosítása](storage-account-concept.md#storage-side-encryption)
 * [Gyakori kérdések](frequently-asked-questions.md)
-
+* [JSON Web Token kezelő](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

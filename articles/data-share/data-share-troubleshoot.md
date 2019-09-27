@@ -3,16 +3,16 @@ title: Az Azure-beli adatmegosztás előzetes verziójának hibáinak megoldása
 description: Útmutató az Azure-beli adatmegosztás előzetes verziójával kapcsolatos hibák elhárításához
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 386a5e34dccafa61859cd13c3e0ad88cd3a7ffac
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421463"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320299"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Az Azure-beli adatmegosztás előzetes verziójának gyakori problémáinak elhárítása
 
@@ -20,13 +20,13 @@ Ez a cikk bemutatja, hogyan lehet elhárítani az Azure-beli adatmegosztás elő
 
 ## <a name="azure-data-share-invitations"></a>Azure-adatmegosztási meghívások 
 
-Bizonyos esetekben, amikor egy új felhasználó az elküldött e-mailes meghívóból kattint a **meghívó** elfogadására, a meghívókat tartalmazó üres lista jelenik meg. 
+Bizonyos esetekben, amikor egy új felhasználó az elküldött e-mailes meghívóból kattint a **meghívó elfogadására** , a meghívókat tartalmazó üres lista jelenik meg. 
 
 ![Nincsenek meghívók](media/no-invites.png)
 
 A fenti hiba a szolgáltatás ismert problémája, és jelenleg zajlik. Áthidaló megoldásként kövesse az alábbi lépéseket. 
 
-1. A Azure Portal navigáljon az előfizetések elemre.
+1. A Azure Portal navigáljon az **előfizetések** elemre.
 1. Válassza ki az Azure-beli adatmegosztáshoz használt előfizetést
 1. Kattintson az **erőforrás-szolgáltatók** elemre
 1. A Microsoft. DataShare keresése

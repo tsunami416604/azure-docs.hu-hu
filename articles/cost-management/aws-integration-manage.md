@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019553"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338895"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Az AWS-költségek és-használat kezelése az Azure-ban
 
@@ -90,7 +90,7 @@ A következő táblázat a csoportok számára elérhető dimenziókat ismerteti
 | Szolgáltatási szint |   |   |   |
 | Előfizetés azonosítója | lineItem/UsageAccountId | Konszolidált fiók és felügyeleti csoport |   |
 | Előfizetés neve | – | Konszolidált fiók és felügyeleti csoport | A rendszer az AWS szervezeti API használatával gyűjti a fiók nevét. |
-| Címke | resourceTags/\* | Összes | A _felhasználó:_ előtagot a rendszer eltávolítja a felhasználó által definiált címkékről a több felhőből származó címkék engedélyezéséhez. Az _AWS:_ előtag érintetlen marad. |
+| Címke | resourceTags/@no__t – 0 | Összes | A _felhasználó:_ előtagot a rendszer eltávolítja a felhasználó által definiált címkékről a több felhőből származó címkék engedélyezéséhez. Az _AWS:_ előtag érintetlen marad. |
 | Számlázási fiók azonosítója | bill/PayerAccountId | Felügyeleti csoport |   |
 | Számlázási fiók neve | – | Felügyeleti csoport | A rendszer az AWS szervezeti API használatával gyűjti a fiók nevét. |
 | Szolgáltató | – | Felügyeleti csoport | AWS vagy Azure. |
@@ -147,8 +147,8 @@ Az összekötő beállításainak ellenőrzéséhez legalább közreműködői s
 Ez a hiba azt jelenti, hogy a Cost Management nem tudja hívni az AWS AssumeRole API-t. Ez a probléma a szerepkör-definícióval kapcsolatos probléma miatt fordulhat elő. Ellenőrizze, hogy a következő feltételek teljesülnek-e:
 
 - A külső azonosító ugyanaz, mint a szerepkör-definícióban és az összekötő definíciójában.
-- A szerepkör típusa egy másik AWS-fiókra van beállítva, amely **az Ön vagy harmadik fél tulajdonában áll.**
-- Az **MFA** megkövetelése beállítás nincs bejelölve.
+- A szerepkör típusa **egy másik AWS-fiókra van beállítva, amely az Ön vagy harmadik fél tulajdonában áll.**
+- Az **MFA megkövetelése** beállítás nincs bejelölve.
 - Az AWS szerepkörben a megbízható AWS-fiók _432263259397_.
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>A gyűjtemény nem sikerült – a hozzáférés megtagadva – a jelentés definíciói
@@ -183,4 +183,4 @@ Ez a hiba az AWS-költségek és-használati jelentés definíciójában szerepe
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem konfigurálta az Azure-környezetet felügyeleti csoportokkal, tekintse meg a [felügyeleti csoportok kezdeti beállítását](../governance/management-groups/index.md#initial-setup-of-management-groups)ismertető témakört.
+- Ha még nem konfigurálta az Azure-környezetet felügyeleti csoportokkal, tekintse meg a [felügyeleti csoportok kezdeti beállítását](../governance/management-groups/overview.md#initial-setup-of-management-groups)ismertető témakört.

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: d4f4cfc005b2d5a63512245baee5230e9a26cb37
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: e4ff157f58a68c68f8610c6c473f5d69897650ad
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309207"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338418"
 ---
 # <a name="azure-media-services-legacy-components"></a>Örökölt összetevők Azure Media Services
 
@@ -31,9 +31,9 @@ Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder
 * [Áttelepítés Windows Azure Media Encoderról Media Encoder Standardre](migrate-windows-azure-media-encoder.md)
 * [Áttelepítés Azure Media Encoderról Media Encoder Standard](migrate-azure-media-encoder.md)
 
-Bejelentjük *Azure Media Indexer* és a *2. Azure Media Indexer*is. A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A[(z) [Azure Media Indexer 2 (előzetes verzió) adathordozó-](media-services-process-content-with-indexer2.md) processzorok 2019 január 1-jén lesznek kivonva.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+A *Azure Media Indexer v1* és a *Azure Media Indexer v2 előzetes*verziójának elavulása is bejelentve. A [Azure Media Indexer v1](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A (z) [[Azure Media Indexer v2 előzetes verziójú](media-services-process-content-with-indexer2.md) adathordozó-processzorok 2019 január 1-jén lesznek kivonva.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
-* [Migrálás Azure Media Indexer és Azure Media Indexer 2 Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+* [Migrálás Azure Media Indexer v1 és Azure Media Indexer v2 rendszerről Azure Media Services video Indexerra](migrate-indexer-v1-v2.md).
 
 ## <a name="next-steps"></a>További lépések
 

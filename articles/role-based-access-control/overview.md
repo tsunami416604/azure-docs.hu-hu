@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e7113508ff7fe5d3471b193bb8dadb7cdab5a7ca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: ff539311139d7e9823a2d7db2f5d8ee56f9231b6
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995289"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338649"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz?
 
@@ -80,7 +80,7 @@ Az Azure olyan adatműveletekkel rendelkezik, amelyek lehetővé teszik az adato
 
 A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
 
-Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../governance/management-groups/index.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
+Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../governance/management-groups/overview.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 

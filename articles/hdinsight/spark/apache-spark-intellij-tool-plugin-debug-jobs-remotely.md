@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 404f96e91db8df0dd4246b7d744e463ce0e457a1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a558c0e767610f1fefdf29ca461a476c7bfcee59
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994085"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327327"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
 
@@ -53,19 +53,19 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. A fő csomópont IP-címének beolvasása. Nyissa meg a Ambari felhasználói felületét a fürthöz. A fürt paneljén válassza az **irányítópult**lehetőséget.
 
-    ![Irányítópult kiválasztása a Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    ![Irányítópult kiválasztása az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
 
 1. A Ambari felhasználói felületén válassza a **gazdagépek**lehetőséget.
 
-    ![Gazdagépek kiválasztása a Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    ![Gazdagépek kiválasztása az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
 1. Ekkor megjelenik a fő csomópontok, a feldolgozó csomópontok és a Zookeeper-csomópontok listája. A fő csomópontok **HN*** előtaggal rendelkeznek. Válassza ki az első fő csomópontot.
 
-    ![A fő csomópont megkeresése a Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    ![A fő csomópont megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
 1. A megnyíló lap alján található **Összefoglalás** ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
 
-    ![Az IP-cím megkeresése a Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    ![Az IP-cím megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
 1. Adja hozzá az IP-címet és a fő csomópont állomásnevét a **gazdagépek** fájljához azon a számítógépen, amelyen futtatni kívánja, majd a Spark-feladatot távolról kell elvégeznie. Ez lehetővé teszi, hogy az IP-cím, valamint az állomásnév használatával kommunikáljon a fő csomóponttal.
 
@@ -117,16 +117,15 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     b. A **projekt szerkezete** **párbeszédpanelen válassza az összetevők elemet a létrehozott** alapértelmezett összetevő megtekintéséhez. Saját összetevőt is létrehozhat a plusz jelre ( **+** ) kattintva.
 
-   ![JAR-fájl létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
-
+   ![IntelliJ IDEA-összetevők létrehozása jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
 
 1. Adja hozzá a kódtárakat a projekthez. Tár hozzáadásához tegye a következőket:
 
-    a. Kattintson a jobb gombbal a projekt nevére a projekt fájában, majd válassza a **modul beállításainak megnyitása**lehetőséget. 
+    a. Kattintson a jobb gombbal a projekt nevére a projekt fájában, majd válassza a **modul beállításainak megnyitása**lehetőséget.
 
     b. A **projekt szerkezete** párbeszédpanelen válassza a **könyvtárak**lehetőséget, válassza ki a ( **+** ) szimbólumot, majd válassza ki **a mavenből**lehetőséget.
 
-    ![Könyvtár hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    ![IntelliJ IDEA letöltési könyvtár](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
     c. A **könyvtár letöltése a Maven adattárból** párbeszédpanelen keresse meg és adja hozzá a következő könyvtárakat:
 
@@ -182,11 +181,11 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. Adja hozzá az alkalmazás fő osztályát. A **Project Explorerben**kattintson a jobb gombbal az **src**elemre, mutasson az **új**elemre, majd válassza a **Scala osztály**elemet.
 
-    ![A Main osztály kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    ![IntelliJ IDEA – válassza ki a Main osztályt](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
 1. Az **új Scala-osztály létrehozása** párbeszédpanelen adjon meg egy nevet, válassza ki **az objektum** elemet a **fajta** mezőben, majd kattintson **az OK gombra**.
 
-    ![Új Scala-osztály létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    ![IntelliJ IDEA új Scala-osztály létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
 1. `MyClusterAppMain.scala` A fájlban illessze be a következő kódot. Ez a kód létrehozza a Spark-környezetet, `executeJob` és egy metódust nyit meg az `SparkSample` objektumból.
 
@@ -258,47 +257,47 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. A`*RemoteClusterDebugging` osztályban kattintson a jobb gombbal a `test` kulcsszóra, majd válassza a **RemoteClusterDebugging-konfiguráció létrehozása**lehetőséget.
 
-    ![Távoli konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    ![IntelliJ IDEA távoli konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
 1. A **RemoteClusterDebugging-konfiguráció létrehozása** párbeszédpanelen adja meg a konfiguráció nevét, **majd válassza a teszt** **neve**lehetőséget. Hagyja meg az összes többi értéket alapértelmezett beállításként. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
 
-    ![A konfigurációs adatok hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    ![RemoteClusterDebugging-konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
 
 1. Ekkor a menüsávban megjelenik a **távoli futtatási** konfiguráció legördülő listája.
 
-    ![A távoli Futtatás legördülő lista](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    ![A távoli Futtatás legördülő lista IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5\. lépés: Az alkalmazás futtatása hibakeresési módban
 
 1. A IntelliJ IDEA projektben nyissa `SparkSample.scala` meg és hozzon létre egy `val rdd1`töréspontot a mellett. A **töréspont létrehozása** az előugró menüben válassza a **sor a függvény executeJob**lehetőséget.
 
-    ![Töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    ![IntelliJ-ötlet – töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
 1. Az alkalmazás futtatásához kattintson a **távoli futtatási** konfiguráció legördülő lista melletti **hibakeresés Futtatás** gombra.
 
-    ![A hibakeresési Futtatás gomb kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    ![IntelliJ-ötlet kiválasztása a hibakeresés futtatása gomb](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
 
 1. Amikor a program végrehajtása eléri a töréspontot, megjelenik egy **hibakereső** lap az alsó ablaktáblán.
 
-    ![A hibakereső lap megtekintése](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    ![IntelliJ IDEA – a hibakereső lap megtekintése](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
 1. Az óra hozzáadásához válassza a ( **+** ) ikont.
 
-    ![Kattintson a + ikonra](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    ![IntelliJ hibakeresése – Add-Watch-változó](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
     Ebben a példában az alkalmazás a változó `rdd1` létrehozása előtt megszakadt. A Watch használatával láthatjuk a változó `rdd`első öt sorát. Nyomja le az **Enter** billentyűt.
 
-    ![A program futtatása hibakeresési módban](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    ![A program hibakeresési módban futtatja a IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 
     Az előző ábrán látható, hogy futásidőben lekérdezheti a terabájt adatmennyiséget, és hibakeresést végezhet az alkalmazás előrehaladásával. Például az előző képen látható kimenetben láthatja, hogy a kimenet első sora egy fejléc. Ennek a kimenetnek a alapján módosíthatja az alkalmazás kódját, hogy szükség esetén kihagyja a fejlécet.
 
 1. Most kiválaszthatja a **program folytatása** ikont az alkalmazás futtatásának folytatásához.
 
-    ![Válassza a program folytatása lehetőséget.](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    ![IntelliJ ötlet válassza a program folytatása lehetőséget](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
 
 1. Ha az alkalmazás sikeresen befejeződik, a következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Konzolkimenet](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    ![IntelliJ IDEA hibakereső konzol kimenete](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
 
 ## <a name="seealso"></a>Következő lépések
 

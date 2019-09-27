@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fbad9624d6b76593ac4e77283f63904e9c006bcd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 3a6ac7ff22c04bff5948193c163a7071cf2c2ff5
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647794"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320392"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonság és adatvédelem a Azure Searchban
 
@@ -43,7 +43,7 @@ A titkosítás a teljes indexelési folyamat során kiterjed: a kapcsolatokból,
 | Biztonsági réteg | Leírás |
 |----------------|-------------|
 | Titkosítás átvitel közben <br>(HTTPS/SSL/TLS) | A Azure Search a 443-es HTTPS-portot figyeli. A platformon az Azure-szolgáltatásokkal létesített kapcsolatok titkosítva vannak. <br/><br/>Minden ügyfél és szolgáltatás közötti Azure Search interakció SSL/TLS 1,2-kompatibilis.  Ügyeljen arra, hogy az TLS 1.2-es verzióját használja az SSL-kapcsolatokhoz a szolgáltatáshoz.|
-| Titkosítás inaktív állapotban <br>Microsoft által felügyelt kulcsok | A titkosítás teljes mértékben az indexelési folyamatba kerül, és nem befolyásolja az indexelési idő – befejezés vagy az index méretének mérését. Automatikusan megtörténik az összes indexelésnél, beleértve az olyan index növekményes frissítését is, amely nem teljesen titkosított (január 2018. előtt jött létre).<br><br>Belsőleg a titkosítás az [Azure Storage Service Encryptionon](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)alapul, és 256 bites AES- [titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ.<br><br> A titkosítás belső, Azure Search, a Microsoft által belsőleg felügyelt tanúsítványokkal és titkosítási kulcsokkal, és általánosan alkalmazva. A titkosítás be-és kikapcsolható, kezelheti vagy helyettesítheti a saját kulcsait, vagy megtekintheti a portál titkosítási beállításait vagy programozott módon.<br><br>A inaktív adatok titkosítása 2018. január 24-én jelent meg, és minden szolgáltatási szinten érvényes, beleértve a közös (ingyenes) szolgáltatásokat is minden régióban. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újból létre kell hozni a titkosítás megkezdése érdekében. Ellenkező esetben csak a január 24 után hozzáadott új adatforgalom titkosítva van.|
+| Titkosítás inaktív állapotban <br>Microsoft által felügyelt kulcsok | A titkosítás teljes mértékben az indexelési folyamatba kerül, és nem befolyásolja az indexelési idő – befejezés vagy az index méretének mérését. Automatikusan megtörténik az összes indexelésnél, beleértve az olyan index növekményes frissítését is, amely nem teljesen titkosított (január 2018. előtt jött létre).<br><br>Belsőleg a titkosítás az [Azure Storage Service Encryptionon](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)alapul, és 256 bites AES- [titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ.<br><br> A titkosítás belső, Azure Search, a Microsoft által belsőleg felügyelt tanúsítványokkal és titkosítási kulcsokkal, és általánosan alkalmazva. A titkosítás be-és kikapcsolható, kezelheti vagy helyettesítheti a saját kulcsait, vagy megtekintheti a portál titkosítási beállításait vagy programozott módon.<br><br>A inaktív adatok titkosítása 2018. január 24-én jelent meg, és minden szolgáltatási szinten érvényes, beleértve az ingyenes szintet is minden régióban. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újból létre kell hozni a titkosítás megkezdése érdekében. Ellenkező esetben csak a január 24 után hozzáadott új adatforgalom titkosítva van.|
 | Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Az ügyfél által felügyelt kulcsokkal történő titkosítás **előzetes** funkció, amely ingyenes szolgáltatásokhoz nem érhető el. A díjköteles szolgáltatások esetében csak a január 2019-on vagy azt követően létrehozott keresési szolgáltatásokhoz érhető el a legújabb előzetes verziójú API-verzió (API-Version = 2019-05 -06-Preview) használatával.<br><br>A Azure Search indexek és a szinonimák leképezései mostantól titkosítva lehetnek a Azure Key Vaultban lévő ügyfél kulcsok által felügyelt kulcsaival. További információ: [titkosítási kulcsok kezelése Azure Searchban](search-security-manage-encryption-keys.md).<br>Ez a funkció nem helyettesíti az alapértelmezett titkosítást a nyugalmi állapotban, hanem az alkalmazáson kívül is alkalmazza.<br>A funkció engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van.
 
 ## <a name="azure-wide-user-access-controls"></a>Azure-szintű felhasználói hozzáférés-vezérlés
@@ -66,7 +66,7 @@ A keresési szolgáltatáshoz két különböző típusú kulcs van engedélyezv
 * Rendszergazdai hozzáférés (a szolgáltatásra vonatkozó bármilyen írási és olvasási művelethez érvényes)
 * Lekérdezési hozzáférés (csak olvasási műveletekhez, például lekérdezésekhez, egy index dokumentumainak gyűjteményéhez érvényes)
 
-Az *adminisztrátori kulcsok* a szolgáltatás kiépített állapotában jönnek létre. Két rendszergazdai kulcs van kijelölve elsődlegesként és *másodlagosként* , hogy azok egyenesek maradjanak, de valójában felcserélhetők. Minden szolgáltatásnak két rendszergazdai kulcsa van, így a szolgáltatáshoz való hozzáférés elvesztése nélkül végezheti el a bevezetést. Az Azure biztonsági eljárásainak rendszeres időközönként újra létrehozhatja az [adminisztrátori kulcsot](search-security-api-keys.md#regenerate-admin-keys) , de a felügyeleti kulcsok teljes számát nem lehet hozzáadni. Keresési szolgáltatásokban legfeljebb két rendszergazdai kulcs lehet.
+Az *adminisztrátori kulcsok* a szolgáltatás kiépített állapotában jönnek létre. Két rendszergazdai kulcs van kijelölve elsődlegesként és *másodlagosként* , hogy azok egyenesek maradjanak, de valójában felcserélhetők. Minden szolgáltatásnak két rendszergazdai kulcsa van, így a szolgáltatáshoz való hozzáférés elvesztése nélkül végezheti el a bevezetést. Az Azure biztonsági eljárásainak rendszeres időközönként újra [létrehozhatja az adminisztrátori kulcsot](search-security-api-keys.md#regenerate-admin-keys) , de a felügyeleti kulcsok teljes számát nem lehet hozzáadni. Keresési szolgáltatásokban legfeljebb két rendszergazdai kulcs lehet.
 
 A *lekérdezési kulcsok* szükség szerint jönnek létre, és a lekérdezéseket kiállító ügyfélalkalmazások számára lettek kialakítva. Akár 50 lekérdezési kulcsot is létrehozhat. Az alkalmazás kódjában megadhatja a keresési URL-címet és egy lekérdezési API-kulcsot, amely lehetővé teszi a csak olvasási hozzáférést egy adott index dokumentum-gyűjteményéhez. Együtt, a végpont, a csak olvasási hozzáféréssel rendelkező API-kulcs és a célként megadott index határozza meg a kapcsolat hatókörét és hozzáférési szintjét az ügyfélalkalmazás alapján.
 
@@ -114,7 +114,7 @@ A következő táblázat összefoglalja az Azure Searchban engedélyezett művel
 
 ## <a name="physical-security"></a>Fizikai biztonság
 
-A Microsoft adatközpontok piacvezető fizikai biztonságot biztosítanak, és a szabványoknak és előírásoknak való széleskörű portfólióval rendelkeznek. További információért nyissa meg a [globális](https://www.microsoft.com/cloud-platform/global-datacenters) adatközpontok lapot, vagy tekintse meg az adatközpont biztonságáról szóló rövid videót.
+A Microsoft adatközpontok piacvezető fizikai biztonságot biztosítanak, és a szabványoknak és előírásoknak való széleskörű portfólióval rendelkeznek. További információért nyissa meg a [globális adatközpontok](https://www.microsoft.com/cloud-platform/global-datacenters) lapot, vagy tekintse meg az adatközpont biztonságáról szóló rövid videót.
 
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 

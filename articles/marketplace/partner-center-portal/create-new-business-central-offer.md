@@ -1,18 +1,18 @@
 ---
 title: Új Dynamics 365 Business Central-ajánlat létrehozása a kereskedelmi piactéren
 description: Új Dynamics 365 Business Central-ajánlat létrehozása az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül a Microsoft partner Center kereskedelmi piactér portálján.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033264"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327643"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -28,7 +28,7 @@ Válassza az **+ új ajánlat** gombot, majd válassza a **Dynamics 365 Business
 
 ### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-- **Ajánlat azonosítója**: A fiókban lévő egyes ajánlatok egyedi azonosítója. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nem tartalmazhat szóközt), legfeljebb 50 karakter hosszúságú lehet, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Ajánlat azonosítója**: A fiókban lévő egyes ajánlatok egyedi azonosítója. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nem tartalmazhat szóközt), legfeljebb 50 karakter hosszúságú lehet, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe a következő lesz: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Ajánlat aliasa**: A partner centeren belüli ajánlatra való hivatkozáshoz használt név. Ez a név nem lesz használatban a piactéren, és nem egyezik meg az ajánlat nevével és más értékekkel, amelyek megjelennek az ügyfeleknek. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
 
@@ -110,7 +110,7 @@ Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyárt�
 
 Az egyéni használati feltételek és kikötések elvégzése helyett dönthet úgy, hogy a standard szintű szerződés keretében kínálja a szoftverét, amelyet csak egyszer kell kiadnia, és csak egyszer kell elfogadni.
 
-A standard szintű szerződés a következő címen érhető el: https://go.microsoft.com/fwlink/?linkid=2041178
+A standard szintű szerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178
 
 A standard szintű szerződés használatához jelölje be a **standard szintű szerződés használata** jelölőnégyzetet.
 
@@ -129,7 +129,7 @@ Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, k�
 
 ### <a name="name"></a>Name (Név)
 
-Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat-aliashoz megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
+Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
 ### <a name="short-description"></a>Rövid leírás
 
@@ -162,7 +162,7 @@ Ha azt szeretné, hogy az alkalmazás az adott termékekkel működjön, adjon m
 
 Ez a szakasz olyan hivatkozásokat tartalmaz, amelyek segítségével az ügyfelek megismerhetik az ajánlatával kapcsolatos további információkat.
 
-#### <a name="help-link"></a>Súgóhivatkozás
+#### <a name="help-link"></a>Súgó hivatkozása
 
 Adja meg azt az URL-címet, ahol az ügyfelek többet tudnak nyújtani az ajánlatról.
 
@@ -194,11 +194,11 @@ A hős képe nem kötelező. Ha megadja az egyiket, a 815 x 290 képpont érték
 
 #### <a name="screenshots"></a>Képernyőképek
 
-Képernyőképeket adhat hozzá, amelyek bemutatják, hogyan működik az ajánlata. Legalább egy képernyőképre van szükség, és legfeljebb öt adható hozzá. Minden képernyőképnek 1280 x 720 képpont-nek kell lennie.
+Képernyőképeket adhat hozzá, amelyek bemutatják, hogyan működik az ajánlata. Legalább három képernyőkép szükséges, és legfeljebb öt adható hozzá. Minden képernyőképnek 1280 x 720 képpont-nek kell lennie.
 
 #### <a name="videos"></a>Videók
 
-Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. Ezeket a videókat a YouTube és/vagy a Vimeo szolgáltatásban kell üzemeltetni. Mindegyiknél írja be a videó nevét, URL-címét és a videó miniatűr képét (1280 x 720 képpont).
+Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezeket a videókat a YouTube és/vagy a Vimeo szolgáltatásban kell üzemeltetni. Mindegyiknél írja be a videó nevét, URL-címét és a videó miniatűr képét (1280 x 720 képpont).
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
@@ -223,7 +223,7 @@ Ne feledje, hogy még akkor is, ha az összes piac, a helyi törvények, valamin
 
 ### <a name="preview-audience"></a>Előnézet célközönsége
 
-Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes**verzió célközönségét. Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
+Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes verzió célközönségét**. Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
 
 Ezután, amikor készen áll az ajánlat elérhetővé tételére és az előzetes verzió korlátozásának eltávolítására, el kell távolítania az **elrejteni kívánt kulcsot** , és újra közzé kell tennie.
 
@@ -252,7 +252,7 @@ Kötelező, ha az ajánlatát egy olyan bővítménnyel együtt kell telepíteni
 
 #### <a name="dependency-package-file"></a>Függőségi csomag fájlja
 
-Kötelező, ha az ajánlatot a piactéren már közzétett másik bővítménnyel együtt kell telepíteni. Ha igen, töltse fel `.app` itt `.zip` a vagy a fájlt.
+Kötelező, ha az ajánlatot a piactéren már közzétett másik bővítménnyel együtt kell telepíteni. Ha igen, töltse fel ide a `.app` vagy `.zip` fájlt.
 
 ### <a name="url-to-app-installation"></a>Az alkalmazás telepítésének URL-címe
 
@@ -295,9 +295,9 @@ A Microsoft el tudja távolítani a tesztelési meghajtó beállításának öss
 
 - **Teszt meghajtójának időtartama** (kötelező): Adja meg azt az időtartamot, ameddig a tesztelési meghajtó aktív marad az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész számú órával állítható be (például "2" óra, a "1,5" nem érvényes).  Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
-- **Példány URL-címe** (kötelező): Az URL-cím, amelyen az ügyfél elkezdi a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást a mintaadatok telepítésével futtatja https://testdrive.crm.dynamics.com) (például:.
+- **Példány URL-címe** (kötelező): Az URL-cím, amelyen az ügyfél elkezdi a tesztelési meghajtót. A Dynamics 365-példány URL-címe, amely az alkalmazást futtatja a mintaadatok telepítésével (például https://testdrive.crm.dynamics.com).
 
-- **Példány webes API URL-címe** (kötelező): A Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **Beállítások** \&gt; **Testreszabás** \&gt; **Fejlesztői erőforrások** \&gt; A **példány webes API-ját (a szolgáltatás gyökerének URL-címe)** másolja az itt https://testdrive.crm.dynamics.com/api/data/v9.0) található URL-címet (például:).
+- **Példány webes API URL-címe** (kötelező): A Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **beállítások** \&gt; **Testreszabási** @no__t – 3gt; **Fejlesztői erőforrások** @no__t – 5gT; A **példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például https://testdrive.crm.dynamics.com/api/data/v9.0) ).
 
 - **Szerepkör neve** (kötelező): Adja meg az egyéni Dynamics 365 Test Drive-ban definiált biztonsági szerepkör nevét, amely a felhasználóhoz lesz hozzárendelve a tesztelési meghajtón (például Test-Drive-role).
 
@@ -327,7 +327,7 @@ Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon l
 
 - **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): Adja meg az előfizetés AZONOSÍTÓját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használati jelentéskészítéshez és a számlázáshoz. Javasoljuk, hogy hozzon [létre egy külön Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) -előfizetést, amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a Azure Portalba való [](https://portal.azure.com/) bejelentkezéssel és a bal oldali menü előfizetések lapján érheti el. A lap kiválasztásával megjelenítheti az előfizetés-AZONOSÍTÓját (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure ad-bérlő azonosítója** (kötelező): Adja meg a Azure Active Directory (AD [](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)) BÉRLŐi azonosítóját. Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a * * tulajdonságok elemet, majd keresse meg a listában szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
+- **Azure ad-bérlő azonosítója** (kötelező): Adja meg a Azure Active Directory (AD [](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)) BÉRLŐi azonosítóját. Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a * * tulajdonságok elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
 
 - **Azure ad-bérlő neve** (a dinamikus 365 szükséges): Adja meg a Azure Active Directory (AD) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
@@ -339,7 +339,7 @@ Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
 ### <a name="test-drive-marketplace-listings"></a>A Marketplace-beli piactér-listák tesztelése
 
-A **piactér lapon található Marketplace** listázási lehetőség megjeleníti azokat a nyelveket, amelyeken a tesztelési meghajtó elérhető. Jelenleg az egyetlen elérhető hely az **angol (Egyesült Államok)** . Válassza ki a nyelv nevét a test Drive-élményt leíró információk megadásához.
+A piactér **lapon található** **Marketplace listázási** lehetőség megjeleníti azokat a nyelveket, amelyeken a tesztelési meghajtó elérhető. Jelenleg az egyetlen elérhető hely az **angol (Egyesült Államok)** . Válassza ki a nyelv nevét a test Drive-élményt leíró információk megadásához.
 
 - **Leírás** (kötelező): Írja le a tesztelési meghajtót, a bemutatott funkciókat, a felhasználó által a kísérletezéshez szükséges célokat, a felderített szolgáltatásokat és a megfelelő információkat, amelyekkel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
 
@@ -366,7 +366,7 @@ Ha az ajánlata a Microsoft Dynamics 365 Business Central Premium kiadását ig�
 
 ### <a name="key-usage-scenario"></a>Kulcshasználat forgatókönyv
 
-Meg kell eltöltése egy `.pdf` olyan fájlt, amely felsorolja az ajánlat kulcsfontosságú használati forgatókönyveit egy dokumentumban (. PDF formátumban). Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
+Meg kell eltöltése egy `.pdf` fájlt, amely felsorolja az ajánlatnak a dokumentumban (. PDF formátumban) felsorolt kulcshasználat forgatókönyveit. Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
 
 ### <a name="app-tests-automation"></a>Alkalmazás-tesztek automatizálása
 
@@ -374,7 +374,7 @@ Igény szerint feltölthet egy **alkalmazás-tesztelési Automation** -fájlt (.
 
 ### <a name="test-accounts"></a>Fiókok tesztelése
 
-Ha tesztelési fiókra van szükség ahhoz, hogy a minősítési csapat megfelelően áttekintse az ajánlatát, töltsön fel egy. pdf,. doc vagy. docx fájlt a tesztelési fiókokkal kapcsolatos információkkal.
+Ha tesztelési fiókra van szükség ahhoz, hogy a minősítési csapat megfelelően áttekintse az ajánlatát, töltsön fel egy. pdf,. doc vagy. docx fájlt a **tesztelési fiókokkal** kapcsolatos információkkal.
 
 ## <a name="publish"></a>Közzététel
 

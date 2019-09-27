@@ -2,18 +2,18 @@
 title: 'Oktatóanyag – Azure Toolkit for IntelliJ: Spark-alkalmazás a HDInsight-fürthöz'
 description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy HDInsight Spark-fürtbe.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: c19d867553290ba956515fddc50c4fd836877860
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: ff08d3ffde958a8e64dce911ace83cec87201117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996037"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327280"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: Apache Spark alkalmazások létrehozása a HDInsight-fürthöz Azure Toolkit for IntelliJ használatával
 
@@ -47,11 +47,11 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 2. Az üdvözlőképernyőn kattintson a**plugins** **konfigurálása** > elemre a **plugins** ablak megnyitásához.
 
-    ![A Scala beépülő modul engedélyezése](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
+    ![IntelliJ IDEA – a Scala beépülő modul engedélyezése](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
 3. Válassza a **telepítés** lehetőséget az új ablakban Kiemelt Scala beépülő modulhoz.  
 
-    ![A Scala beépülő modul telepítése](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
+    ![IntelliJ IDEA – a Scala beépülő modul telepítése](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
 
 4. A beépülő modul sikeres telepítését követően újra kell indítania az IDE-t.
 
@@ -67,7 +67,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
    * **Maven** a Scala projekt-létrehozás varázsló támogatásához.
    * A **SBT** kezelése és a Scala-projekt kiépítése.
 
-     ![A New project (Új projekt) párbeszédablak.](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![IntelliJ IDEA új projekt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. Kattintson a **Tovább** gombra.
 
@@ -80,7 +80,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
     |Projekt SDK| Előfordulhat, hogy az első ÖTLETE üres.  Válassza az **új...** lehetőséget, és navigáljon a JDK-hez.|
     |Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a **Spark 2.3.0 (Scala 2.11.8)** használja.|
 
-    ![A Spark SDK kiválasztása](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
+    ![Az Apache Spark SDK kiválasztása](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
 7. Válassza a **Finish** (Befejezés) elemet.  A projekt elérhetővé válása néhány percet igénybe vehet.
 
@@ -135,27 +135,27 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 1. A menüsávban navigáljon a **Megtekintés** > **eszközre a Windows** > **Azure Explorerben**.
 
-   ![Az Azure Explorer megjelenítése](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
+   ![IntelliJ IDEA – az Azure Explorer megjelenítése](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
 2. Az Azure Explorerben kattintson a jobb gombbal az **Azure** -csomópontra, majd válassza a **Bejelentkezés**lehetőséget.
 
-   ![Explorer jobb gombbal kattintson az Azure elemre](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   ![A IntelliJ IDEA Explorer jobb oldali gombjával kattintson az Azure elemre](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. Az **Azure bejelentkezési** párbeszédpanelen válassza az **eszköz bejelentkezés**lehetőséget, majd válassza a **Bejelentkezés**lehetőséget.
 
-    ![Explorer 2 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
+    ![IntelliJ IDEA Azure bejelentkezési eszköz bejelentkezés](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
 
 4. Az **Azure-eszköz bejelentkezési** párbeszédpanelén kattintson a **Másolás & Megnyitás**elemre.
 
-   ![Explorer 5 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
+   ![IntelliJ IDEA Azure-eszköz bejelentkezés](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
 
 5. A böngésző felületén illessze be a kódot, majd kattintson a **tovább**gombra.
 
-   ![Explorer 6 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
+   ![Microsoft kód megadása a HDI-hoz](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
 
 6. Adja meg az Azure-beli hitelesítő adatait, majd zárjuk be a böngészőt.
 
-   ![Explorer 7 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
+   ![A Microsoft adja meg az e-mail párbeszédpanelt a HDI számára](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
 
 7. Miután bejelentkezett, az **előfizetések kiválasztása** párbeszédpanel felsorolja az összes olyan Azure-előfizetést, amely társítva van a hitelesítő adatokhoz. Válassza ki az előfizetését, majd kattintson a **kiválasztás** gombra.
 
@@ -163,11 +163,11 @@ A felhasználó [bejelentkezhet az Azure-előfizetésbe](#sign-in-to-your-azure-
 
 8. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet, és tekintse meg az előfizetésekben található HDInsight Spark-fürtöket.
 
-    ![Explorer 3 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
+    ![IntelliJ IDEA Azure Explorer – fő nézet](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
 
 9. Ha meg szeretné tekinteni a fürthöz társított erőforrásokat (például Storage-fiókokat), akkor tovább bővítheti a fürt neve csomópontot.
 
-    ![Kibontott fürt – név csomópont](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
+    ![Azure Explorer Storage-fiókok](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
 
 ### <a name="link-a-cluster"></a>Fürt csatolása
 
@@ -177,7 +177,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
 
 1. Az Azure Explorerben kattintson a jobb gombbal a **HDInsight** csomópontra, majd válassza a **fürt csatolása**lehetőséget.
 
-   ![fürt helyi menüjének csatolása](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+   ![Azure Explorer hivatkozás fürt helyi menüje](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
 1. A **fürt csatolása** ablakban elérhető beállítások attól függően változnak, hogy melyik értéket választotta ki az **Erőforrás típusa** legördülő listából.  Adja meg az értékeket, majd kattintson **az OK gombra**.
 
@@ -191,7 +191,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
         |Felhasználónév| Adja meg a fürt felhasználói nevét, az alapértelmezett érték a rendszergazda.|
         |Windows 10| Adja meg a felhasználónévhez tartozó jelszót.|
 
-        ![HDInsight-fürt csatolása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        ![IntelliJ-ötlet csatolása egy fürthöz párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy szolgáltatás**  
   
@@ -205,15 +205,15 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
         |Felhasználónév| Adja meg a fürt felhasználói nevét, az alapértelmezett érték a rendszergazda.|
         |Windows 10| Adja meg a felhasználónévhez tartozó jelszót.|
 
-        ![Livy-fürt csatolása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
+        ![IntelliJ IDEA link Livy-fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
 
 1. A csatolt fürtöt a **HDInsight** csomóponton tekintheti meg.
 
-   ![csatolt fürt](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
+   ![Az Azure Explorer csatolt cluster1](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
 
 1. A fürtöket az **Azure Explorerben**is leválaszthatja.
 
-   ![nem összekapcsolt fürt](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
+   ![Azure Explorer – nem csatolt fürt](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Spark Scala-alkalmazás futtatása HDInsight Spark-fürtön
 
@@ -236,7 +236,7 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Tallózással is tallózhat az Azure-beli virtuális fájlrendszerben, amely jelenleg csak a ADLS Gen 2 fürtöt támogatja. További információk: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Lásd még: [erőforrások feltöltése a fürtbe](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
-    |Tárolási típus|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
+    |Tárolótípus|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
     |Tárfiók|Adja meg a Storage-fiókját.|
     |Tárkulcs|Adja meg a tárolási kulcsot.|
     |Storage-tároló|A Storage- **fiók** és a **Storage-kulcs** megadása után válassza ki a tárolót a legördülő listából.|
@@ -245,9 +245,9 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
 
 4. Válassza a **SparkJobRun** lehetőséget a projektnek a kiválasztott fürthöz való elküldéséhez. A **fürt távoli Spark-feladata** lapon a feladatok végrehajtási folyamata látható alul. Az alkalmazást a vörös gombra kattintva állíthatja le. A feladatok kimenetének eléréséről a jelen cikk későbbi, "a HDInsight Spark-fürtök elérése és kezelése a Azure Toolkit for IntelliJ használatával" című szakaszában talál további információt.  
 
-    ![A Spark beküldési ablaka](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+    ![Apache Spark beküldési ablak](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
-## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Apache Spark alkalmazások hibakeresése helyileg vagy távolról egy HDInsight-fürtön 
+## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Apache Spark alkalmazások hibakeresése helyileg vagy távolról egy HDInsight-fürtön
 
 Azt is javasoljuk, hogy a Spark-alkalmazást a fürtön küldje el. Ehhez állítsa be a paramétereket a **Run/debug konfigurációk** ide. További információkért lásd: [Apache Spark alkalmazások hibakeresése helyileg vagy távolról egy HDInsight-fürtön az SSH-n keresztüli Azure Toolkit for IntelliJ használatával](apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
@@ -259,19 +259,19 @@ Azure Toolkit for IntelliJ használatával különböző műveleteket hajthat v�
 
 1. Az Azure Explorerben navigáljon a fürt > > **feladatok** **HDInsight** > .\<
 
-    ![Nyomtatási nézet csomópontja](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
+    ![IntelliJ az Azure Explorer-feladatok nézet csomópontja](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
 2. A jobb oldali ablaktáblán a **Spark-feladatok nézet** lapon a fürtön futó összes alkalmazás látható. Válassza ki annak az alkalmazásnak a nevét, amelyhez további részleteket szeretne látni.
 
-    ![Alkalmazás adatai](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
+    ![Spark-feladatok nézet alkalmazásának részletei](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
 
 3. Az alapszintű futó feladat adatainak megjelenítéséhez vigye a kurzort a feladat gráf fölé. Ha meg szeretné tekinteni a szakaszok gráfját és az összes feladathoz tartozó információt, válasszon ki egy csomópontot a feladathoz tartozó diagramon.
 
-    ![A feladatok szakaszának részletei](./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
+    ![Spark Job View – feladatütemezés részletei](./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
 
 4. A gyakran használt naplók, például az *illesztőprogram-stderr*, az *illesztőprogram StdOut*és a *könyvtár adatainak*megtekintéséhez válassza a **napló** lapot.
 
-    ![Napló részletei](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
+    ![Spark-feladatok nézet naplójának részletei](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
 
 5. Megtekintheti a Spark előzmények felhasználói felületét és a fonal felhasználói felületét (az alkalmazás szintjén) az ablak tetején található hivatkozásra kattintva.
 
@@ -326,13 +326,13 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
 
 7. Ezután két párbeszédpanel jelenik meg, amely megkérdezi, hogy szeretné-e automatikusan kijavítani a függőségeket. Ha igen, válassza az **Automatikus javítás**lehetőséget.
 
-    ![Spark automatikus Fix1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
+    ![IntelliJ ötlet Spark automatikus javítás dialog1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
 
-    ![Spark automatikus Fix2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
+    ![IntelliJ ötlet Spark automatikus javítás Dialog2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
 8. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja `sc.appName`be a következőt:, majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
 
-    ![Helyi konzol eredménye](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+    ![A IntelliJ IDEA helyi konzoljának eredménye](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy interaktív munkamenet-konzol (Scala)
 
@@ -359,7 +359,7 @@ Csak a 2018,2-es és a 2018,3-es IntelliJ esetén támogatott.
 
 7. A konzolnak az alábbi ábrához hasonlóan kell kinéznie. A konzol ablakában írja `sc.appName`be a következőt:, majd nyomja le a CTRL + ENTER billentyűkombinációt.  Ekkor megjelenik az eredmény. A helyi konzolt a vörös gombra kattintva állíthatja le.
 
-    ![Interaktív konzol eredménye](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+    ![A IntelliJ IDEA interaktív konzoljának eredménye](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>Kijelölés küldése a Spark-konzolra
 
@@ -377,16 +377,16 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 2. Az **Azure Explorerben**bontsa ki a **HDInsight** elemet az előfizetésében található HDInsight-fürtök megtekintéséhez. A **"szerepkör: olvasó"** jelölésű fürtökön csak a csak olvasási jogosultsággal rendelkező szerepkör jogosult.
 
-    ![az Explorer 15 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
+    ![IntelliJ Azure Explorer szerepkör: olvasó](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
 
 3. Kattintson a jobb gombbal a fürtre, csak a csak olvasó szerepkörre vonatkozó engedéllyel. Válassza a **fürt csatolása** a helyi menüből lehetőséget a fürt összekapcsolásához. Adja meg a Ambari felhasználónevét és jelszavát.
 
-    ![Explorer 11 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
+    ![A fürt IntelliJ az Azure Explorerben](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
 
 4. Ha a fürt sikeresen csatolva van, a rendszer frissíti a HDInsight.
    A fürt szakasza csatolva lesz.
   
-    ![Explorer 8 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
+    ![IntelliJ az Azure Explorer csatolt párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>Fürt csatolása a feladatok csomópont kibontásával
 
@@ -394,7 +394,7 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 2. Kattintson **a fürt összekapcsolása** elemre a fürt csatolásához.
 
-    ![Explorer 9 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
+    ![a cluster Job Access deined párbeszédpanelje](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>Fürt csatolása a futtatási/hibakeresési konfigurációk ablakból
 
@@ -402,21 +402,21 @@ Ha a felhasználók a csak olvasási szerepkörrel rendelkező fürthöz külden
 
 2. Válasszon ki egy olyan fürtöt, amely csak a csak a Linux rendszerre vonatkozó szerepkör-engedéllyel rendelkezik a **Spark-fürtökhöz**. Figyelmeztető üzenet jelenik meg. A fürt csatolásához kattintson **a fürt csatolása** lehetőségre.
 
-   ![1\. konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
+   ![IntelliJ ötlet futtatása/hibakeresési konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
 
 ### <a name="view-storage-accounts"></a>Storage-fiókok megtekintése
 
 * A csak olvasási szerepkörrel rendelkező fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a **tárterület-hozzáférés megtagadva** ablakra. A **Azure Storage Explorer** megnyitása lehetőségre kattintva megnyithatja Storage Explorer.
 
-   ![Explorer 14 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
+   ![IntelliJ-ötlet tároló-hozzáférés megtagadva](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
 
-   ![Explorer 10 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
+   ![IntelliJ IDEA tároló hozzáférésének megtagadva gombja](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
 
 * A csatolt fürtök esetében kattintson a **Storage-fiókok** csomópontra, majd a tárterület- **hozzáférés megtagadva** ablak jelenik meg. Az **Azure Storage megnyitása** lehetőségre kattintva megnyithatja Storage Explorer.
 
-   ![Explorer 13 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
+   ![IntelliJ IDEA tároló-hozzáférési Denied2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
 
-   ![Explorer 12 megtekintése](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
+   ![IntelliJ IDEA Storage-hozzáférés Denied2 gombja](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Meglévő IntelliJ IDEA-alkalmazások konvertálása Azure Toolkit for IntelliJ használatára
 
@@ -448,7 +448,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen**lehetőséget.
 
-![HDInsight-fürt törlése](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+![Azure Portal delete HDInsight](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
 ## <a name="next-steps"></a>További lépések
 

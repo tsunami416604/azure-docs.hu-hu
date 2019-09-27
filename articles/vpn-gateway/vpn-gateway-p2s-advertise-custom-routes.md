@@ -5,22 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 18a0effcf5157ec2797707db78f9614ef12a4669
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310242"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336292"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
 
 Érdemes lehet egyéni útvonalakat reklámozni az összes pont – hely VPN-ügyfélre. Ha például engedélyezte a tárolási végpontokat a VNet, és azt szeretné, hogy a távoli felhasználók hozzáférhessenek ezekhez a Storage-fiókokhoz a VPN-kapcsolaton keresztül. Meghirdetheti a tároló végpontjának IP-címét az összes távoli felhasználó számára, hogy a Storage-fiók felé irányuló forgalom a VPN-alagúton, ne pedig a nyilvános interneten legyen.
 
+![Azure VPN Gateway többhelyes kapcsolat – példa](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
+
 ## <a name="to-advertise-custom-routes"></a>Egyéni útvonalak meghirdetése
 
-Egyéni útvonalak meghirdetéséhez használja a `Set-AzVirtualNetworkGateway cmdlet`következőt:. Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [Conotoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
+Egyéni útvonalak meghirdetéséhez használja a `Set-AzVirtualNetworkGateway cmdlet`következőt:. Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
 
 1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Példa:
 
@@ -45,10 +47,10 @@ Egyéni útvonalak meghirdetéséhez használja a `Set-AzVirtualNetworkGateway c
 
 Az alábbi példa az egyéni útvonalak megtekintésére használható:
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
-    $gw.CustomRoutes | Format-List
-    ```
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  $gw.CustomRoutes | Format-List
+  ```
 
 ## <a name="next-steps"></a>További lépések
 

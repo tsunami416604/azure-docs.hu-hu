@@ -1,19 +1,19 @@
 ---
 title: A Jupyter helyi telepítése és kapcsolódás a Sparkhoz az Azure HDInsight
 description: Ismerje meg, hogyan telepítheti helyileg a Jupyter-jegyzetfüzetet a számítógépre, és hogyan csatlakoztatható egy Apache Spark-fürthöz.
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 6ce3ff8e00bc92911a7405de1bb0bb7286fb5c15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993762"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337652"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter notebookot a számítógépre, és kapcsolódjon Apache Spark a HDInsight
 
@@ -146,7 +146,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
 
     a. Hozzon létre új notebookot. A jobb oldali sarokban válassza az **új**lehetőséget. Ekkor meg kell jelennie az alapértelmezett kernel **Python 2** vagy **Python 3** és a telepített kerneleknek. A tényleges értékek a telepítési lehetőségektől függően eltérőek lehetnek.  Válassza a **PySpark**lehetőséget.
 
-    ![Kernelek a Jupyter notebookon](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernelek a Jupyter notebookon")
+    ![Elérhető kernelek a Jupyter notebook](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "kernelekben a Jupyter notebookon")
 
     > [!IMPORTANT]  
     > Miután kiválasztotta az **új** rendszerhéj áttekintését a hibákhoz.  Ha úgy látja a hibát `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , hogy a Tornado bizonyos verzióiban ismert probléma merülhet fel.  Ha igen, állítsa le a kernelt, majd a következő paranccsal minősítse le a tornádó `pip install tornado==4.5.3`telepítését:.

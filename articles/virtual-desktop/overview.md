@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300998"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338590"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows rendszerű virtuális asztali előnézet? 
 
@@ -87,6 +87,17 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 
 >[!NOTE]
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
+
+A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következő URL-címekhez kell rendelkezniük kimenő TCP 443-hozzáféréssel:
+* *. wvd.microsoft.com
+* *.blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
 
 A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. A nyilvános előzetes verzióban az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ilyen virtuális gépekhez tartozó adat a Egyesült Államok (az USA 2. keleti régiójában) található. Ez adatátvitelt eredményezhet a Egyesült Államok a szolgáltatás nyilvános előzetes verzióban történő tesztelése során. Megkezdjük a felügyeleti megoldás és az adathonosítás felskálázását az összes Azure-régióban az általánosan elérhetővé.
 

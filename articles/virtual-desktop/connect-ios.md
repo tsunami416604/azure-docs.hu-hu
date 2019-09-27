@@ -1,20 +1,20 @@
 ---
 title: Kapcsolódás a Windows rendszerű virtuális asztalhoz iOS-Azure-ból
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz iOS-ről.
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az iOS-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310320"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338686"
 ---
-# <a name="connect-from-ios"></a>Kapcsolat iOS-ről
+# <a name="connect-with-the-ios-client"></a>Kapcsolódás az iOS-ügyfélhez
 
 > A következőkre vonatkozik: iOS 8,0 vagy újabb. IPhone-, iPad-és iPod Touch-kompatibilis.
 
@@ -52,6 +52,6 @@ Ezután a Csatlakozáskezelő megjeleníti a távoli erőforrásokat.
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="client-documentation"></a>Ügyfél dokumentációja
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az iOS Beta-ügyfél használatáról, tekintse meg az iOS-ügyfél dokumentációjának használatának [első lépéseit](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .

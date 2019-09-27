@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935140"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71334108"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése Azure SQL Data Warehouse
 A Azure SQL Data Warehouse az adattárház számítási feladatainak kiszámításához a Azure Portalon belül széles körű monitorozási lehetőségeket biztosít. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi az integrációt más Azure-figyelési szolgáltatásokkal, például az Operations Management Suite (OMS) és a Azure Monitor (naplók) használatával, amelyek átfogó figyelési élményt biztosítanak nemcsak az adattárházhoz, hanem a teljes Azure-elemzéshez is platform az integrált monitorozási élményhez. Ez a dokumentáció ismerteti, hogy milyen figyelési képességek érhetők el az elemzési platform SQL Data Warehouse való optimalizálásához és kezeléséhez. 
@@ -28,7 +28,7 @@ A következő metrikák érhetők el SQL Data Warehouse Azure Portalban. Ezek a 
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Processzorhasználat (%)          | CPU-kihasználtság az adatraktár összes csomópontja között      | Maximum          |
 | Adat IO százalékos aránya      | I/o-kihasználtság az adatraktár összes csomópontja között       | Maximum          |
-| Memória százaléka       | Memória kihasználtsága (SQL Server) az adatraktár összes csomópontján | Maximum          |
+| Memóriahasználat (%)       | Memória kihasználtsága (SQL Server) az adatraktár összes csomópontján | Maximum          |
 | Sikeres kapcsolatok  | Az adatkapcsolat sikeres kapcsolatainak száma                 | Összes            |
 | Sikertelen kapcsolatok      | Az adatraktárhoz való sikertelen kapcsolódások száma           | Összes            |
 | Tűzfal blokkolja     | A letiltott adatraktárba való bejelentkezések száma     | Összes            |
@@ -42,6 +42,8 @@ A következő metrikák érhetők el SQL Data Warehouse Azure Portalban. Ezek a 
 > A metrikák megtekintésekor megfontolandó szempontok és riasztások beállítása:
 >
 > - Egy adott adattárház esetében nem sikerült a sikertelen és sikeres kapcsolatok jelentése – nem a logikai kiszolgálóhoz
+> - A memória százalékos aránya a kihasználtságot is tükrözi, még akkor is, ha az adatraktár tétlen állapotban van – nem tükrözi az aktív munkaterhelés-memória használatát. A metrikák használata és nyomon követése másokkal (tempdb, Gen2 cache), hogy átfogó döntést hozzon, ha a további gyorsítótár-kapacitás skálázása növeli a munkaterhelés teljesítményét a követelmények teljesítése érdekében.
+
 
 ## <a name="query-activity"></a>Lekérdezési tevékenység
 A SQL Data Warehouse T-SQL-n keresztül történő figyelésének programozási élményéhez a szolgáltatás a dinamikus felügyeleti nézetek (DMV) készletét biztosítja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárítást végez, és azonosítja a teljesítménnyel kapcsolatos szűk keresztmetszeteket.

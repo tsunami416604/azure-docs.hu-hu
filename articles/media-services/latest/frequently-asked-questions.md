@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501260"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338820"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -65,6 +65,14 @@ A forrás videó átváltásához használhat egy [élő helyszíni kódolót](r
 Ügyfeleink gyakran wonder, hogy használják inkább a AES-titkosítás vagy a DRM-rendszer. A két rendszer közötti elsődleges különbség az, hogy az AES-titkosítás a tartalmi kulcsot TLS-kapcsolaton keresztül továbbítja az ügyfélnek, így a kulcs továbbítása átvitel alatt áll, de további titkosítás nélkül ("Clear"). Ennek eredményeképpen a tartalom visszafejtéséhez használt kulcs elérhető az ügyfél számára, és az ügyfélen lévő hálózati nyomkövetésben is megtekinthető egyszerű szövegként. Az AES-128 Clear Key encryption olyan használati esetekben alkalmas, ahol a megjelenítő megbízható fél (például a vállalaton belül elosztott vállalati videók titkosítása az alkalmazottak számára).
 
 A DRM-rendszerek (például a PlayReady, a Widevine és a FairPlay) minden további titkosítási szintet biztosítanak a tartalom visszafejtéséhez használt kulcshoz képest egy AES-128 tiszta kulccsal szemben. A tartalmi kulcs titkosítása a DRM-futtatókörnyezet által védett kulcshoz történik, a TLS által biztosított átviteli szintű titkosítás további részében. Ezenkívül a visszafejtési az operációs rendszer szintjén, ahol nehezebb a támadásokkal szemben egy rosszindulatú felhasználó biztonságos környezetben történik. DRM ajánlott használati esetek, ahol a megjelenítő lehetséges, hogy nem egy megbízható entitás, és Ön a legmagasabb szintű biztonságot követelhetnek meg.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hogyan jeleníthető meg a videó csak azokra a felhasználókra, akik rendelkeznek az Azure AD-vel való használattal az adott engedéllyel?
+
+Nem kell semmilyen speciális jogkivonat-szolgáltatót (például az Azure AD-t) használni. A saját [JWT](https://jwt.io/) -szolgáltató (ÚN. STS, biztonságos jogkivonat-szolgáltatás) használatával aszimmetrikus kulcsú titkosítást használhat. Az egyéni STS-ben az üzleti logikája alapján adhat hozzá jogcímeket.
+
+Győződjön meg arról, hogy a kibocsátó, a célközönség és a jogcímek pontosan egyeznek a JWT és a ContentKeyPolicy használt ContentKeyPolicyRestriction között.
+
+További információ: [a tartalom Media Services dinamikus titkosítással való védelemmel](content-protection-overview.md)való ellátása.
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hogyan és hol érdemes a JWT jogkivonat beszerzése és a kérés licenc- vagy kulcs?
 

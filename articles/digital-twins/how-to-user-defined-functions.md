@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 6853ebf16c1a9d6b0d363277b22c7dd2583d37e5
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013976"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336910"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
@@ -44,7 +44,7 @@ Az egyeztetések olyan Graph-objektumok, amelyek meghatározzák, hogy a felhasz
   - `SensorDevice`
   - `SensorSpace`
 
-A következő példa a Matcher az összes érzékelő telemetria esemény `"Temperature"` értékét igaz értékre értékeli. A felhasználó által definiált függvényekhez több egyezőt is létrehozhat, ha egy hitelesített HTTP POST-kérelmet küld a következőnek:
+A következő példa a Matcher értékét igaz értékre értékeli a `"Temperature"` adattípusú telemetria eseménynél. A felhasználó által definiált függvényekhez több egyezőt is létrehozhat, ha egy hitelesített HTTP POST-kérelmet küld a következőnek:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -113,18 +113,18 @@ function process(telemetry, executionContext) {
 | YOUR_SPACE_IDENTIFIER | A szóköz azonosítója  |
 | YOUR_MATCHER_IDENTIFIER | A használni kívánt Matcher azonosítója |
 
-1. Ellenőrizze, hogy a fejlécek `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`tartalmazzák-e a következőket:.
+1. Ellenőrizze, hogy a fejlécek tartalmazzák-e a következőket: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
 1. Győződjön meg arról, hogy a törzs egyrészes:
 
    - Az első rész tartalmazza a kötelező felhasználó által definiált függvény metaadatait.
    - A második rész tartalmazza a JavaScript számítási logikát.
 
 1. A **USER_DEFINED_BOUNDARY** szakaszban cserélje le a **spaceId** (`YOUR_SPACE_IDENTIFIER`) és a **matchers** (`YOUR_MATCHER_IDENTIFIER`) értékeket.
-1. Ellenőrizze, hogy a JavaScript felhasználó által definiált függvény van `Content-Type: text/javascript`-e megadva.
+1. Ellenőrizze, hogy a JavaScript felhasználó által definiált függvény a `Content-Type: text/javascript` értékkel van-e megadva.
 
 ### <a name="example-functions"></a>Függvények – példa
 
-Állítsa az érzékelő telemetria közvetlenül az érzékelőre az adattípusok **hőmérsékletével**, amely `sensor.DataType`a következő:
+Állítsa be az érzékelő telemetria közvetlenül az érzékelőre az adattípusok **hőmérséklete**`sensor.DataType` értékre:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -197,15 +197,15 @@ Az összetettebb, felhasználó által definiált függvényekre vonatkozó pél
 
 Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált függvény számára a futtatásához. Ha nem létezik szerepkör-hozzárendelés a felhasználó által definiált függvényhez, akkor nem rendelkezik a megfelelő engedélyekkel a felügyeleti API-val való interakcióhoz, illetve a Graph-objektumokon végzett műveletek végrehajtásához. A felhasználó által definiált függvény által elvégezhető műveletek az Azure digitális Twins felügyeleti API-kon belül szerepköralapú hozzáférés-vezérléssel határozhatók meg és definiálhatók. A felhasználó által definiált függvények például bizonyos szerepkörök vagy bizonyos hozzáférés-vezérlési útvonalak megadásával korlátozhatók a hatókörben. További információt a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációjában talál.
 
-1. A felhasználó által definiált függvényhez hozzárendelni kívánt szerepkör-azonosító lekérése az összes szerepkörhöz tartozó [System API lekérdezésével](./security-create-manage-role-assignments.md#all) . Ezt úgy teheti meg, hogy hitelesített HTTP GET kérelmet küld a következőnek:
+1. A felhasználó által definiált függvényhez hozzárendelni kívánt szerepkör-azonosító lekérése az összes szerepkörhöz tartozó [System API lekérdezésével](./security-create-manage-role-assignments.md#retrieve-all-roles) . Ezt úgy teheti meg, hogy hitelesített HTTP GET kérelmet küld a következőnek:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Tartsa meg a kívánt szerepkör-azonosítót. Az alábbi JSON- **szerepkörazonosítónak** (`YOUR_DESIRED_ROLE_IDENTIFIER`) lesz átadva.
+   Tartsa meg a kívánt szerepkör-azonosítót. Az alábbi JSON-törzs **szerepkörazonosítónak** (`YOUR_DESIRED_ROLE_IDENTIFIER`) lesz átadva.
 
-1. **objectId** a`YOUR_USER_DEFINED_FUNCTION_ID`() a felhasználó által definiált függvény azonosítója lesz, amely korábban lett létrehozva.
-1. Az **elérési út** (`YOUR_ACCESS_CONTROL_PATH`) értékének megkeresése a szóközök `fullpath`lekérdezésével a következővel:.
+1. a **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) a felhasználó által definiált függvény azonosítója lesz, amely korábban lett létrehozva.
+1. Az **elérési út** (`YOUR_ACCESS_CONTROL_PATH`) értékének megkeresése a szóközök lekérdezésével a `fullpath` használatával.
 1. Másolja a visszaadott `spacePaths` értéket. Ezt a következőt fogja használni. Hitelesített HTTP GET-kérés küldése a következőnek:
 
     ```plaintext
@@ -216,7 +216,7 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
     | --- | --- |
     | YOUR_SPACE_NAME | A használni kívánt hely neve |
 
-1. Illessze be a `spacePaths` visszaadott értéket az **elérési útra** a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozásához egy hitelesített http post-kérelem használatával:
+1. Illessze be a visszaadott `spacePaths` **értéket a felhasználó** által definiált függvény szerepkör-hozzárendelés létrehozásához egy hitelesített HTTP POST-kéréssel:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -252,7 +252,7 @@ A térbeli intelligencia gráfban definiált érzékelő telemetria küld. A tel
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [hozhat létre Azure digitális Twins](./how-to-egress-endpoints.md) -végpontokat az események küldéséhez.
+- Megtudhatja, hogyan [hozhat létre Azure digitális Twins-végpontokat](./how-to-egress-endpoints.md) az események küldéséhez.
 
 - Az Azure Digital Twins-útválasztással kapcsolatos további részletekért olvassa el az [útválasztási eseményeket és üzeneteket](./concepts-events-routing.md).
 

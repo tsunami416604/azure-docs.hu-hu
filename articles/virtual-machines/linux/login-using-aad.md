@@ -3,7 +3,7 @@ title: Jelentkezzen be egy Linux rendszerű virtuális gépre Azure Active Direc
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket Azure Active Directory hitelesítéssel való bejelentkezéshez.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316756"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327097"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: Jelentkezzen be egy Linux rendszerű virtuális gépre az Azure-ban Azure Active Directory hitelesítés használatával
 
@@ -88,7 +88,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési virtuálisgép-bővítményének telepítése
 
 > [!NOTE]
-> Ha a exention egy korábban létrehozott virtuális gépre helyezi üzembe, győződjön meg arról, hogy a gép legalább 1 GB memóriát foglalt le, és a bővítmény telepítése sikertelen lesz.
+> Ha a bővítményt egy korábban létrehozott virtuális gépre telepíti, győződjön meg arról, hogy a gép legalább 1 GB memóriát foglalt le, és a bővítmény telepítése sikertelen lesz.
 
 Ha Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni egy Linux rendszerű virtuális gépre, telepítse a Azure Active Directory login VM-bővítményt. A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal telepítse a *AADLoginForLinux* -bővítményt a *MyVM* nevű virtuális gépre a *myResourceGroup* erőforráscsoporthoz:
 

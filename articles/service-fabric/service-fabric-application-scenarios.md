@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6563d6e7c454f44e1a70d725191e56d3f90315c2
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67052599"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327296"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
 Az Azure Service Fabric megbízható és rugalmas platformot kínál, ahol számos különböző típusú üzleti alkalmazást és szolgáltatást írhat és futtathat. Ezek az alkalmazások és a szolgáltatások állapot nélküliek vagy állapot-nyilvántartók lehetnek, és a hatékonyság maximalizálása érdekében erőforrás-kiegyensúlyozottak a virtuális gépek között. 
@@ -42,7 +42,7 @@ Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvass
 
     Azok az ügyfelek, akik üzleti munkafolyamat-szolgáltatásokat készítettek, például a [Zeiss Group](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform), a [kvórum üzleti megoldásai](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)és a [Société General](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric).
 
-* Az adatszámítások: Service Fabric lehetővé teszi az intenzív adatszámítást igénylő állapot-nyilvántartó alkalmazások kiépítését. Service Fabric lehetővé teszi a feldolgozás (számítás) és az alkalmazások alkalmazásokban való elhelyezését. 
+* Az **Adatszámítások**: Service Fabric lehetővé teszi az intenzív adatszámítást igénylő állapot-nyilvántartó alkalmazások kiépítését. Service Fabric lehetővé teszi a feldolgozás (számítás) és az alkalmazások alkalmazásokban való elhelyezését. 
 
    Ha az alkalmazás adatelérést igényel, a külső adatgyorsítótárhoz vagy a tárolási csomaghoz tartozó hálózati késés korlátozza a számítási időt. Az állapot-nyilvántartó Service Fabric szolgáltatások kizárja ezt a késést, és lehetővé teszi az optimalizált olvasási és írási műveleteket. 
    
@@ -68,9 +68,9 @@ Az állapot-nyilvántartó szolgáltatások leegyszerűsítik az alkalmazások k
 
 Az alábbi ábrák az állapot nélküli alkalmazások megtervezése és az egyik állapot közötti különbséget szemléltetik. A [Reliable Services](service-fabric-reliable-services-introduction.md) és [Reliable Actors](service-fabric-reliable-actors-introduction.md) programozási modellek előnyeit kihasználva az állapot-nyilvántartó szolgáltatások csökkentik az alkalmazások összetettségét a nagy átviteli sebesség és az alacsony késés elérése mellett.
 
-Az alábbi példa egy állapot nélküli szolgáltatásokat használó alkalmazást használ: ![Állapot nélküli szolgáltatásokat használó alkalmazás][Image1]
+Az alábbi példa egy állapot nélküli szolgáltatásokat használó alkalmazást használ: ![Application, amely állapot nélküli szolgáltatásokat használ @ no__t-1
 
-Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![Állapot nélküli szolgáltatásokat használó alkalmazás][Image2]
+Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![Application, amely állapot nélküli szolgáltatásokat használ @ no__t-1
 
 ## <a name="next-steps"></a>További lépések
 
@@ -87,5 +87,5 @@ Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alka
   * [Service Fabric szolgáltatások méretezése](service-fabric-concepts-scalability.md)
   * [Service Fabric szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
 
-[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
-[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
+[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
+[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

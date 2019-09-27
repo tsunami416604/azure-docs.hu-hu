@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2019
 ms.author: sagupt
-ms.openlocfilehash: a67034752b4c43533a5735b857186ee83934717a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935637"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326614"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Új javaslatokra vonatkozó Azure Advisor riasztások létrehozása 
 
@@ -33,7 +33,7 @@ Azt is beállíthatja, hogy milyen műveletet hajtson végre a rendszer a riaszt
 * Meglévő műveleti csoport kiválasztása
 * Új műveleti csoport létrehozása
 
-A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése] (.. /azure-monitor/platform/action-groups.md.
+A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 > [!NOTE] 
 > Az Advisor-riasztások jelenleg csak a magas rendelkezésre állás, a teljesítmény és a Cost-javaslatok esetében érhetők el. A biztonsági javaslatok nem támogatottak. 

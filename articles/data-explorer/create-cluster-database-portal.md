@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381791"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326714"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Gyors útmutató: Azure Adatkezelő-fürt és-adatbázis létrehozása
 
@@ -22,7 +22,7 @@ ms.locfileid: "70381791"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [ARM-sablon](create-cluster-database-resource-manager.md)
 
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a rövid útmutatóban egy fürtöt és egy adatbázist hozunk létre.
@@ -123,6 +123,6 @@ Ha más rövid útmutatók és oktatóanyagok követését tervezi, tartsa meg a
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő](ingest-data-event-hub.md)
+> [Rövid útmutató: Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő @ no__t-0
 
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0b04ca5c4bea00221d5a823432b6fc1934badb1a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309316"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320516"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -58,7 +58,10 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
     **Címzési előtag**: 0.0.0.0/0<br>
     **Következő ugrás**: Internet
 
-* Ha egyéni DNS-kiszolgálókat szeretne használni az Azure-beli virtuális hálózathoz, [ezeket a lépéseket követve állítsa be ezeket](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) a kiszolgálókat, mielőtt TELEPÍTENÉ az ISE-t a virtuális hálózatra. Ellenkező esetben minden alkalommal, amikor megváltoztatja a DNS-kiszolgálót, újra kell indítania az ISE-t, amely az ISE nyilvános előzetes verziójával elérhető képesség.
+* Ha egyéni DNS-kiszolgálókat szeretne használni az Azure-beli virtuális hálózathoz, [ezeket a lépéseket követve állítsa be ezeket](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) a kiszolgálókat, mielőtt TELEPÍTENÉ az ISE-t a virtuális hálózatra. Ellenkező esetben minden alkalommal, amikor megváltoztatja a DNS-kiszolgálót, újra kell indítania az ISE-t is.
+
+  > [!IMPORTANT]
+  > Ha az ISE létrehozása után megváltoztatja a DNS-kiszolgáló beállításait, győződjön meg arról, hogy újraindítja az ISE-t. A DNS-kiszolgáló beállításainak kezelésével kapcsolatos további információkért lásd: [virtuális hálózat létrehozása, módosítása vagy törlése](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 <a name="ports"></a>
 

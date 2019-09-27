@@ -1,0 +1,52 @@
+---
+title: Kapcsolódás Windowsos virtuális asztalhoz Androidról – Azure
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-ügyfél használatával.
+services: virtual-desktop
+author: heidilohr
+ms.service: virtual-desktop
+ms.topic: conceptual
+ms.date: 09/26/2019
+ms.author: helohr
+ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71339009"
+---
+# <a name="connect-with-the-android-client"></a>Az Android-ügyféllel való kapcsolat
+
+> A következőkre érvényes: Android 4,1 és újabb verziók, Chromebook ChromeOS 53 vagy újabb verzióval.
+
+>[!NOTE]
+> A Windows rendszerű virtuális asztali erőforrások az Android-ügyfélről való elérésének lehetősége jelenleg előzetes verzióban érhető el.
+
+A Windows rendszerű virtuális asztali erőforrásokat elérhetővé teheti az Android-eszközről a letölthető ügyféllel. Az Android-ügyfelet a Google Play Áruház támogató Chromebook-eszközökön is használhatja. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az Android-ügyfelet.
+
+## <a name="install-the-android-client"></a>Az Android-ügyfél telepítése
+
+Első lépésként [töltse le](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android) és telepítse az ügyfelet az Android-eszközön.
+
+## <a name="subscribe-to-a-feed"></a>Előfizetés hírcsatornára
+
+Fizessen elő a rendszergazda által biztosított hírcsatornára, hogy lekérje az Android-eszközén elérhető felügyelt erőforrások listáját.
+
+Előfizetés a hírcsatornára:
+
+1. A kapcsolatkezelő koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**elemre.
+2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
+   - Ha URL-címet használ, használja a rendszergazda által megadott értéket, amely általában <https://rdweb.wvd.microsoft.com>.
+   - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
+3. Koppintson a **tovább**gombra.
+4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
+   - A **Felhasználónév mezőben**adja meg a felhasználónevet, amely jogosult az erőforrások elérésére.
+   - A **Password (jelszó**) mezőben adja meg a felhasználónévhez tartozó jelszót.
+   - Az is előfordulhat, hogy további tényezőket kell megadnia, ha a rendszergazda úgy konfigurálta a hitelesítést.
+
+A feliratkozást követően a kapcsolatok középpontjában meg kell jelennie a távoli erőforrásoknak.
+
+Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
+
+## <a name="next-steps"></a>További lépések
+
+Ha többet szeretne megtudni az Android-ügyfél használatáról, tekintse meg [az Android-ügyfél használatának első lépéseit](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-android)ismertető témakört.

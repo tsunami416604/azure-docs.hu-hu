@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172789"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338910"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-Finomhangolás a jelentős nézetekkel 
 A Azure SQL Data Warehouseban található anyagbeli nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
@@ -49,7 +49,7 @@ A megfelelő módon kialakított nézet A következő előnyöket nyújtja:
 
 - Az Azure SQL Data Warehouse-optimalizáló a lekérdezés-végrehajtási tervek javítása érdekében automatikusan felhasználja a központilag telepített anyagokat.  Ez a folyamat olyan felhasználók számára transzparens, akik gyorsabb lekérdezési teljesítményt biztosítanak, és nem igénylik a lekérdezések közvetlen hivatkozását a jelentős nézetekre. 
 
-- Kis karbantartás szükséges a nézetekben.  Egy anyagilag megtekinthető nézet két helyen tárolja az adatokból a kezdeti adatokhoz tartozó fürtözött oszlopcentrikus indexet, a növekményes adatváltozások esetében pedig egy különbözeti tárolót.  Az alaptáblákból származó adatváltozásokat a rendszer szinkron módon automatikusan hozzáadja a Delta-tárolóhoz.  A háttérben futó folyamat (a rekord mozgatója) rendszeres időközönként áthelyezi az adatait a különbözeti tárolóból a nézet oszlopcentrikus indexére.  Ez a kialakítás lehetővé teszi a jelentős nézetek lekérdezését, hogy ugyanazokat az adatokkal adják vissza, mint az alaptáblák közvetlen lekérdezése. 
+- Kis karbantartás szükséges a nézetekben.  Az alaptáblákból származó növekményes adatváltozásokat a rendszer a szinkron módon automatikusan hozzáadja az anyagbeli nézetekhez.  Ez a kialakítás lehetővé teszi a jelentős nézetek lekérdezését, hogy ugyanazokat az adatokkal adják vissza, mint az alaptáblák közvetlen lekérdezése. 
 - A rendszer az alaptáblákból eltérő módon oszthatja meg az adatok egy anyagbeli nézetben.  
 - Az anyagilag megtekintett nézetekben lévő adatok ugyanolyan magas rendelkezésre állást és rugalmasságot biztosítanak, mint a hagyományos táblák adatai.  
  
@@ -90,7 +90,7 @@ A felhasználók elolvashatják a WITH_RECOMMENDATIONS < SQL_statement > a leké
 
 **Vegye figyelembe a gyorsabb lekérdezések és a díjak közötti kompromisszumot.** 
 
-Minden egyes anyag nézet esetében az adattárolási költségeket és a nézet fenntartásának költségeit kell megfizetni.  Az alaptáblákban megjelenő adatváltozások esetén az anyagilag megjelenő nézet mérete megnő, és a fizikai szerkezete is megváltozik.  A lekérdezési teljesítmény romlásának elkerülése érdekében a rendszer az adatraktár-motortól külön kezeli az egyes összes típusú nézeteket, beleértve a sorok áthelyezését a különbözeti tárolóból a oszlopcentrikus index szegmensbe, és összevonja az adatok változásait.  A karbantartási munkaterhelés magasabb lesz, ha az anyagilag megjelenő nézetek és az alaptábla változásai növekednek.   A felhasználóknak ellenőriznie kell, hogy az összes jelentős nézetből felmerült költségek ellensúlyozzák-e a lekérdezési teljesítmény nyereségét.  
+Minden egyes anyag nézet esetében az adattárolási költségeket és a nézet fenntartásának költségeit kell megfizetni.  Az alaptáblákban megjelenő adatváltozások esetén az anyagilag megjelenő nézet mérete megnő, és a fizikai szerkezete is megváltozik.  A lekérdezési teljesítmény romlásának elkerülése érdekében az adatraktár-kezelő külön kezeli az egyes anyagokon alapuló nézeteket.  A karbantartási munkaterhelés magasabb lesz, ha az anyagilag megjelenő nézetek és az alaptábla változásai növekednek.   A felhasználóknak ellenőriznie kell, hogy az összes jelentős nézetből felmerült költségek ellensúlyozzák-e a lekérdezési teljesítmény nyereségét.  
 
 Ezt a lekérdezést futtathatja a következő adatbázisban található, anyagként szolgáló nézet listájára: 
 
@@ -136,7 +136,7 @@ Az adatraktár-optimalizáló a lekérdezések teljesítményének növelése é
 
 **A lényeges nézetek figyelése** 
 
-A rendszer az adatraktárban egy, a fürtözött oszlopcentrikus indextel (CCI) rendelkező táblához hasonlóan egy anyagbeli nézetet tárol.  Az adatok egy anyagbeli nézetből történő beolvasása magában foglalja az index vizsgálatát és a változások a különbözeti tárolóból való alkalmazását.  Ha a különbözeti tárolóban lévő sorok száma túl magas, a lekérdezés egy anyagbeli nézetből való feloldása hosszabb időt vehet igénybe, mint az alaptáblák közvetlen lekérdezése.  A lekérdezési teljesítmény romlásának elkerülése érdekében érdemes futtatni a [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) a nézet overhead_ratio (total_rows/base_view_row) figyeléséhez.  Ha a overhead_ratio túl magas, gondolja át, hogy a rendszer újraépítse az anyagbeli nézetet, így a különbözeti tároló összes sora át lesz helyezve a oszlopcentrikus indexbe.  
+A rendszer az adatraktárban egy, a fürtözött oszlopcentrikus indextel (CCI) rendelkező táblához hasonlóan egy anyagbeli nézetet tárol.  Az adatok egy anyagbeli nézetből történő beolvasása magában foglalja a CCI-index szegmensek vizsgálatát és az alaptáblák növekményes változásainak alkalmazását. Ha a növekményes módosítások száma túl magas, a lekérdezés egy anyagbeli nézetből való feloldása hosszabb időt vehet igénybe, mint az alaptáblák közvetlen lekérdezése.  A lekérdezési teljesítmény romlásának elkerülése érdekében érdemes futtatni a [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) a nézet overhead_ratio figyeléséhez (total_rows/Max (1, base_view_row)).  Ha a overhead_ratio túl magas, a felhasználóknak újra kell építeniük az anyagbeli nézetet. 
 
 **Anyagelszámolású nézet és eredményhalmaz gyorsítótárazása**
 

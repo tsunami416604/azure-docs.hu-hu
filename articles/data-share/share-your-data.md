@@ -1,111 +1,111 @@
 ---
-title: Oktatóanyag – a megosztott adatok az ügyfelekkel és partnerekkel az Azure Data megosztás előzetes verzió
-description: Oktatóanyag – a megosztott adatok az ügyfelekkel és partnerekkel az Azure Data megosztás előzetes verzió
+title: 'Oktatóanyag: Megosztás a szervezeten kívül – az Azure-beli adatmegosztás előzetes verziója'
+description: Oktatóanyag – az Azure-beli adatmegosztás előzetes verzióját használó ügyfelekkel és partnerekkel való adatmegosztás
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838422"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327419"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Oktatóanyag: Az Azure Data megosztás előzetes verzió használata esetén az adatok megosztása
+# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Oktatóanyag: Az Azure-beli adatmegosztás előzetes verziójával megoszthatja adatait
 
-Ebben az oktatóanyagban megismerheti, hogyan állíthatja be egy új Azure-adatok megosztása, és az adatok megosztása az ügyfelekkel és az Azure cégen kívüli lesz. 
+Ebből az oktatóanyagból megtudhatja, hogyan állíthat be új Azure-adatmegosztást, és hogyan oszthatja meg adatait az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. 
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy adat-megosztást.
-> * Adja hozzá az adatkészletek az adatok megosztása.
-> * Az ütemezett szinkronizálás engedélyezése esetén az adatok megosztása. 
-> * Az adatok megosztása, adja hozzá a címzetteket. 
+> * Hozzon létre egy adatmegosztást.
+> * Adatkészletek hozzáadása az adatmegosztáshoz.
+> * Szinkronizálási ütemterv engedélyezése az adatmegosztáshoz. 
+> * Adja hozzá a címzetteket az adatmegosztáshoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Azure Storage-fiók: Ha még nem rendelkezik egy, létrehozhat egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Szerepkör-hozzárendelés hozzáadása a storage-fiókhoz, amely szerepel az engedélyt a *Microsoft.Authorization/role hozzárendelések írható* engedéllyel. A tulajdonosi szerepkör létezik ezzel az engedéllyel. 
-* A címzettek az Azure bejelentkezési e-mail címe (nem fog működni a saját e-mail-alias használatával).
+* Egy Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelés/írás* engedélyben. Ez az engedély létezik a tulajdonosi szerepkörben. 
+* A címzettek Azure bejelentkezési e-mail-címe (az e-mail alias használata nem fog működni).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="create-a-data-share-account"></a>Adatok megosztása fiók létrehozása
+## <a name="create-a-data-share-account"></a>Adatmegosztási fiók létrehozása
 
-Hozzon létre egy Azure-adatok megosztása erőforrást az Azure-erőforráscsoportban.
+Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz.
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-1. Keresse meg *az adatok megosztása*.
+1. Keresse meg az *adatmegosztást*.
 
-1. Válassza ki az adatok megosztása (előzetes verzió), és válassza ki **létrehozás**.
+1. Válassza az adatmegosztás (előzetes verzió) lehetőséget, és válassza a **Létrehozás**lehetőséget.
 
-1. Adja meg az adatok megosztása az Azure-erőforrás a következő információkat az alapvető adatokat. 
+1. Töltse ki az Azure-beli adatmegosztási erőforrás alapvető adatait az alábbi információkkal. 
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Name (Név) | *datashareacount* | Adja meg az adatok megosztása fiók nevét. |
-    | Subscription | Az Ön előfizetése | Válassza ki, hogy az adatok megosztása fiókhoz használni kívánt Azure-előfizetést.|
-    | Resource group | *test-resource-group* | Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
-    | Location | *USA keleti RÉGIÓJA 2* | Válassza ki a régiót, a megosztás fiókjához.
+    | Name (Név) | *datashareacount* | Adja meg az adatmegosztási fiók nevét. |
+    | Subscription | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
+    | Resource group | *test-resource-group* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
+    | Location | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
     | | |
 
-1. Válassza ki **létrehozás** megosztás fiókja kiépítéséhez. Az üzembe helyezés új adatok megosztás fiók általában eltarthat körülbelül 2 percet vagy kisebb. 
+1. Válassza a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
 
-1. Az üzembe helyezés befejeződése után válassza ki a **erőforrás megnyitása**.
+1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz**lehetőséget.
 
-## <a name="create-a-data-share"></a>Hozzon létre egy az adatok megosztása
+## <a name="create-a-data-share"></a>Adatmegosztás létrehozása
 
-1. Lépjen az adatok megosztása – áttekintés oldalra.
+1. Navigáljon az adatmegosztás áttekintő oldalára.
 
-    ![Az adatok megosztása](./media/share-receive-data.png "az adatok megosztása") 
+    ![Ossza]meg adatait az(./media/share-receive-data.png "adatai megosztásával") 
 
-1. Válassza ki **az adatok megosztása**.
+1. Válassza **az adatmegosztás megkezdése**lehetőséget.
 
 1. Kattintson a **Létrehozás** gombra.   
 
-1. Adja meg a részleteket az adatok megosztás. Adjon meg egy nevet, a megosztott tartalmat leírását, valamint a használati feltételeket (nem kötelező). 
+1. Adja meg az adatmegosztás részleteit. Adja meg a megosztási tartalmak nevét, leírását és használati feltételeit (opcionális). 
 
-    ![EnterShareDetails](./media/enter-share-details.png "adja meg a megosztás adatai") 
+    ![EnterShareDetails](./media/enter-share-details.png "adja meg a megosztás részleteit") 
 
-1. Válassza ki **folytatása**
+1. Válassza a **Folytatás** lehetőséget.
 
-1. Adatkészletek a Data-megosztás hozzáadásához válassza **hozzáadása adatkészletek**. 
+1. Az adatkészletek adatmegosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
 
-    ![Az adatkészletek](./media/datasets.png "adatkészletek")
+    ![Adatkészletek](./media/datasets.png "adatkészletei")
 
-1. Válassza ki a hozzáadni kívánt adatkészlet típusa. 
+1. Válassza ki a hozzáadni kívánt adatkészlet típusát. 
 
     ![AddDatasets](./media/add-datasets.png "adatkészletek hozzáadása")    
 
-1. Keresse meg az objektum szeretné megosztani, és válassza az adatkészletek hozzáadása. 
+1. Navigáljon a megosztani kívánt objektumhoz, és válassza az "adatkészletek hozzáadása" lehetőséget. 
 
-    ![SelectDatasets](./media/select-datasets.png "adatkészlet kiválasztása")    
+    ![SelectDatasets]-(./media/select-datasets.png "adatkészletek kiválasztása")    
 
-1. A címzettek lap kiválasztásával adja meg az e-mail-címeit az adatfogyasztó "+ címzettjének hozzáadása". 
+1. A címzettek lapon adja meg az adatfogyasztó e-mail-címeit a "+ Címzett hozzáadása" lehetőség kiválasztásával. 
 
-    ![AddRecipients](./media/add-recipient.png "adja hozzá a címzetteket") 
+    ![AddRecipients]-(./media/add-recipient.png "Címzettek hozzáadása") 
 
-1. Válassza ki **folytatása**
+1. Válassza a **Folytatás** lehetőséget.
 
-1. Ha szeretné, hogy az adatfogyasztó lehessen az adatok növekményes frissítéseket, a Pillanatkép ütemezés engedélyezése. 
+1. Ha azt szeretné, hogy az adatokhoz tartozó fogyasztó az adatok növekményes frissítését is lehetővé tegye, engedélyezze a pillanatképek ütemtervét. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "pillanatképek engedélyezése") 
+    ![EnableSnapshots](./media/enable-snapshots.png "engedélyezése Pillanatképek") 
 
-1. Válassza ki a kezdési idővel és ismétlődéssel időköz. 
+1. Válassza ki a kezdési időt és az ismétlődési időközt. 
 
-1. Válassza ki **folytatása**
+1. Válassza a **Folytatás** lehetőséget.
 
-1. A felülvizsgálat + lap létrehozása, a csomag tartalma, a beállítások, a címzettek és a szinkronizálási beállítások áttekintése. Kattintson a **Létrehozás** elemre.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** elemre.
 
-Az Azure az adatok megosztása létrehozása megtörtént, és a címzett, az adatok megosztása, készen áll a meghívó elfogadása. 
+Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban hogyan hozhat létre egy Azure-adatok megosztása, és a címzettek meghívása tanulással. Ha arról, hogyan adatfogyasztó elfogadja és kap egy adatmegosztáshoz, lépjen tovább a [fogadja el, és fogadni az adatokat](subscribe-to-data-share.md) oktatóanyag. 
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha szeretne többet megtudni arról, hogy az adatfogyasztó hogyan fogadhat és fogadhat adatmegosztást, folytassa az [elfogadás és fogadás](subscribe-to-data-share.md) adatgyűjtéssel foglalkozó oktatóanyagot. 

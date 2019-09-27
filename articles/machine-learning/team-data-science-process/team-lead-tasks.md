@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 84cca255d8cf768d44e01c8f3a892e3c9830184e
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316715"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327253"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
 
@@ -140,7 +140,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
    ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https\/:/\<kiszolgálónév >/\<szervezet neve >/_git/\<adattár neve >* . Például: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ @ no__t-2 @ no__t-3server név >/\<organization neve >/_git/\<repository name >* . Például: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Válassza az **Importálás**lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
@@ -230,7 +230,7 @@ git push
 > 
 > `git config --global user.name <your name>`
 > 
-> `git config --global user.email \<your email address>`
+> `git config --global user.email <your email address>`
 > 
 > Ha több git-tárházat követ el, ugyanazt a nevet és e-mail-címet használja mindegyikhez. Ugyanazt a nevet és e-mail-címet érdemes használni Power BI irányítópultok létrehozásakor, hogy több tárházban nyomon kövessék a git-tevékenységeket.
 

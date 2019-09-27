@@ -1,29 +1,32 @@
 ---
-title: Az Azure Digital Twins API-hitelesítés ismertetése | Microsoft Docs
-description: Az Azure digitális ikrek használata az API-khoz való kapcsolódáshoz és hitelesítéshez
+title: Az API-hitelesítés ismertetése az Azure Digital Twins használatával | Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az API-khoz, és hogyan hitelesíthető az Azure Digital Twins szolgáltatással.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815551"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338603"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Kapcsolódás és hitelesítés API-kkal
+# <a name="connect-to-and-authenticate-with-apis"></a>Kapcsolódás és hitelesítés API-kkal
 
 Az Azure Digital Twins Azure Active Directory (Azure AD) használatával hitelesíti a felhasználókat és gondoskodik az alkalmazások biztonságáról. Az Azure AD számos modern architektúrához támogatja a hitelesítést. Ezek mindegyike az iparági szabványnak megfelelő protokollok (OAuth 2,0 vagy OpenID Connect) alapján történik. Emellett a fejlesztők az Azure AD használatával létrehozhatnak egy bérlői és üzletági (LOB) alkalmazásokat. A fejlesztők a több-bérlős alkalmazások fejlesztéséhez is használhatják az Azure AD-t.
 
-Az Azure AD áttekintéséhez tekintse meg a részletes útmutatók, fogalmak és gyors útmutatókat ismertető [oldalt](https://docs.microsoft.com/azure/active-directory/fundamentals/index) .
+Az Azure AD áttekintéséhez tekintse meg a részletes útmutatók, fogalmak és gyors útmutatókat ismertető [oldalt](https://docs.microsoft.com/azure/active-directory/fundamentals/) .
 
-Az alkalmazás vagy szolgáltatás az Azure AD-vel történő integrálásához a fejlesztőnek először regisztrálnia kell az alkalmazást az Azure AD-ben. Részletes útmutatást és képernyőképeket [ebben](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)a rövid útmutatóban talál.
+> [!TIP]
+> Kövesse az [oktatóanyagot](tutorial-facilities-setup.md) egy Azure digitális Twins-minta alkalmazásának beállításához és futtatásához.
 
-Az Azure AD [öt elsődleges alkalmazási forgatókönyvet](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) támogat:
+Az alkalmazás vagy szolgáltatás az Azure AD-vel történő integrálásához a fejlesztőnek először regisztrálnia kell az alkalmazást az Azure AD-ben. Részletes útmutatást és képernyőképeket [ebben](../active-directory/develop/quickstart-register-app.md)a rövid útmutatóban talál.
+
+Az Azure AD [öt elsődleges alkalmazási forgatókönyvet](../active-directory/develop/v2-app-types.md) támogat:
 
 * Egyoldalas alkalmazás (SPA): A felhasználónak be kell jelentkeznie egy egyoldalas alkalmazásba, amelyet az Azure AD biztosít.
 * Webböngészőből webes alkalmazásba: A felhasználónak be kell jelentkeznie egy Azure AD által védett webalkalmazásba.
@@ -31,7 +34,7 @@ Az Azure AD [öt elsődleges alkalmazási forgatókönyvet](https://docs.microso
 * Webalkalmazás webes API-hoz: Egy webalkalmazásnak az Azure AD által védett webes API-val kell lekérnie az erőforrásokat.
 * Daemon vagy Server alkalmazás webes API-hoz: Egy démon alkalmazásnak vagy egy webes felhasználói felület nélküli kiszolgáló alkalmazásnak az Azure AD által védett webes API-val kell lekérnie az erőforrásokat.
 
-A Windows Azure hitelesítési függvénytár számos lehetőséget kínál Active Directory jogkivonatok beszerzésére. A könyvtár-és mintakód-mintákkal kapcsolatos részletekért tekintse meg [ezt a cikket](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+A Windows Azure hitelesítési függvénytár számos lehetőséget kínál Active Directory jogkivonatok beszerzésére. A könyvtár és a kód mintáinak részleteit [a ADAL.net wikiben](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)tekintheti meg.
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Digitális ikrek hívása egy középső rétegbeli webes API-ból
 

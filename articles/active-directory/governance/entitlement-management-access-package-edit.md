@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291020"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326374"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -36,7 +36,7 @@ Ez a cikk a meglévő hozzáférési csomagok szerkesztését és kezelését is
 
 ## <a name="add-resource-roles"></a>Erőforrás-szerepkörök hozzáadása
 
-Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
+Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
@@ -50,38 +50,49 @@ Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjte
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Attól függően, hogy szeretne-e csoportot, alkalmazást vagy SharePoint-webhelyet felvenni, hajtsa végre a következő erőforrás-szerepköri szakaszban található lépéseket.
+1. Attól függően, hogy szeretne-e csoportot, csapatot, alkalmazást vagy SharePoint-webhelyet felvenni, hajtsa végre a következő erőforrás-szerepköri szakaszban található lépéseket.
 
-### <a name="add-a-group-resource-role"></a>Csoport típusú erőforrás-szerepkör hozzáadása
+### <a name="add-a-group-or-team-resource-role"></a>Csoport vagy csoport erőforrás-szerepkör hozzáadása
 
-A jogosultságok kezelése lehetőséggel automatikusan hozzáadhat felhasználókat egy csoporthoz, amikor hozzáférési csomagot rendelnek hozzájuk. 
+A jogosultságok kezelésével automatikusan hozzáadhat felhasználókat egy csoporthoz vagy egy Microsoft-csapathoz, amikor hozzáférési csomagot rendelnek hozzájuk. 
 
-- Ha egy csoport egy hozzáférési csomag részét képezi, és a felhasználó hozzá van rendelve az adott hozzáférési csomaghoz, akkor a felhasználó a csoportba kerül, ha még nincs jelen.
-- Ha egy felhasználó hozzáférési csomagjának hozzárendelése lejár, akkor a rendszer eltávolítja azokat a csoportból, kivéve, ha jelenleg egy másik, ugyanezt a csoportot tartalmazó hozzáférési csomaghoz rendel hozzá hozzárendelést.
+- Ha egy csoport vagy csapat egy hozzáférési csomag része, és egy felhasználó hozzá van rendelve az adott hozzáférési csomaghoz, akkor a felhasználó hozzá lesz adva az adott csoporthoz vagy csapathoz, ha még nem létezik.
+- Ha egy felhasználó hozzáférési csomagjának hozzárendelése lejár, a rendszer eltávolítja azokat a csoportból vagy csapatból, kivéve, ha jelenleg egy másik hozzáférési csomagra van rendelve, amely ugyanazt a csoportot vagy csapatot tartalmazza.
 
-Bármelyik Office 365-csoport vagy Azure AD-biztonsági csoport közül választhat.  A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
+Bármelyik [Azure ad biztonsági csoportot vagy Office 365 csoportot](../fundamentals/active-directory-groups-create-azure-portal.md)kiválaszthatja.  A rendszergazdák hozzáadhatnak bármely csoportot egy katalógushoz; a katalógus tulajdonosai bármelyik csoportot hozzáadhatják a katalógushoz, ha a csoport tulajdonosai. A csoportok kiválasztásakor tartsa szem előtt az alábbi Azure AD-korlátozásokat:
 
-- Ha egy felhasználó, a vendéget is beleértve, a csoport tagjaként van hozzáadva, akkor a csoport többi tagja is megjelenik.
+- Ha egy felhasználó, a vendéget is beleértve, tagként egy csoport vagy csapat tagjaként van hozzáadva, akkor az adott csoport vagy csapat többi tagját is láthatják.
 - Az Azure AD nem tudja módosítani a Windows Server Active Directoryról szinkronizált csoport tagságát Azure AD Connect használatával, vagy az Exchange Online-ban, terjesztési csoportban létrehozottként.  
 - A dinamikus csoportok tagsága nem frissíthető egy tag hozzáadásával vagy eltávolításával, így a dinamikus csoporttagságok nem alkalmasak a jogosultsági felügyelettel való használatra.
 
-1. Az **erőforrás-szerepkörök felvétele a csomagba** lapon kattintson a **csoportok** elemre a csoportok kiválasztása panel megnyitásához.
+További információt a csoportok és az [Office 365-csoportok és a Microsoft Teams](/microsoftteams/office-365-groups) [összevetése](/office365/admin/create-groups/compare-groups) című témakörben talál.
 
-1. Válassza ki azokat a csoportokat, amelyeket bele szeretne foglalni a hozzáférési csomagba.
+1. Az **erőforrás-Szerepkörök hozzáadása a csomaghoz** lapon kattintson a **csoportok és** csoportok elemre a csoportok kiválasztása panel megnyitásához.
+
+1. Válassza ki azokat a csoportokat és csapatokat, amelyeket bele szeretne foglalni a hozzáférési csomagba.
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – csoportok kiválasztása](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Kattintson a **Kiválasztás** gombra.
 
+    Miután kiválasztotta a csoportot vagy a csapatot, az **altípus** oszlopban a következő altípusok egyike jelenik meg:
+
+    |  |  |
+    | --- | --- |
+    | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
+    | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
+    | O365 | Az Office 365-csoport, amely nem engedélyezett csapatok. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
+    | Csapat | Az Office 365-csoport, amelyeken engedélyezve van a csapatok. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
+
 1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag**elemet.
 
     Általában kiválasztja a tag szerepkört. Ha a tulajdonos szerepkört választja, a felhasználók más tagokat vagy tulajdonosokat is hozzáadhatnak vagy eltávolíthatnak.
 
-    ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy csoporthoz](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása csoporthoz vagy csapathoz](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Kattintson a **Hozzáadás**lehetőségre.
 
-    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan ennek a csoportnak a tagjai lesznek, amikor hozzáadják őket.
+    A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan ennek a csoportnak vagy csapatnak a tagjai lesznek, amikor hozzáadják őket.
 
 ### <a name="add-an-application-resource-role"></a>Alkalmazás-erőforrás szerepkör hozzáadása
 

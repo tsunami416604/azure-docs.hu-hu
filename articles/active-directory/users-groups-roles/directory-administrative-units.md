@@ -15,30 +15,32 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4bdced50f806367a53881d5ef0abd0a3710496
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736780"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336925"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (nyilvános előzetes verzió)
+# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (előzetes verzió)
 
-Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti, amelyek olyan erőforrás-tárolók, amelyek a rendszergazdai engedélyek delegálására használhatók a felhasználók alcsoportjain keresztül, valamint házirendek alkalmazása a felhasználók egy részhalmazára. Az Azure AD-ben a felügyeleti egységek lehetővé teszik a központi rendszergazdák számára az engedélyek delegálását a regionális rendszergazdák számára, vagy a szabályzatok részletességi szinten történő beállítását.
+Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti. A felügyeleti egység olyan Azure AD-erőforrás, amely más Azure AD-erőforrások tárolója lehet. Ebben az előzetes kiadásban ezek az erőforrások csak felhasználók lehetnek. Például egy felügyeleti egység – a hatókörrel rendelkező felhasználói fiók rendszergazdája frissítheti a profil adatait, alaphelyzetbe állíthatja a jelszavakat, és hozzárendelheti a licenceket a felhasználók számára a felügyeleti egységben.
 
-Ez olyan szervezetek esetében hasznos, amelyek független részlegekkel rendelkeznek, például egy olyan nagy Egyetemen, amely számos autonóm iskolából (üzleti iskolából, mérnöki iskolából stb.) tevődik össze, amelyek egymástól függetlenek. Ilyenek például a saját rendszergazdák, akik szabályozzák a hozzáférést, kezelhetik a felhasználókat, és szabályzatokat állíthatnak be kifejezetten a saját részlegük számára. A központi rendszergazdák ezeket a központú rendszergazdákat szeretnék biztosítani az adott részleg felhasználói számára. Pontosabban, a példa használatával a központi rendszergazda létrehozhat egy adott iskolához (üzleti iskolához) tartozó felügyeleti egységet, és feltöltheti azt csak az üzleti iskola felhasználóival. Ezt követően a központi rendszergazda felveheti az üzleti iskolát az informatikai munkatársakat egy hatókörrel rendelkező szerepkörbe, vagyis a vállalati iskolai felügyeleti egység informatikai személyzetének csak az üzleti iskola felügyeleti egységét kell megadnia.
+A felügyeleti egységekkel rendszergazdai engedélyeket delegálhat a felhasználók részhalmazán, és házirendeket alkalmazhat a felhasználók egy részhalmazára. A felügyeleti egységekkel engedélyeket delegálhat a regionális rendszergazdáknak, vagy megadhatja a szabályzatot egy részletességi szinten.
 
-> [!IMPORTANT]
-> A felügyeleti egység használatához a felügyeleti egység rendszergazdájának prémium szintű Azure Active Directory licenccel kell rendelkeznie. További információ: [Bevezetés a prémium szintű Azure ad](../fundamentals/active-directory-get-started-premium.md)használatába.
->
+## <a name="deployment-scenario"></a>Üzembe helyezési forgatókönyv
 
-A központi rendszergazda szempontjából a felügyeleti egység egy olyan címtár-objektum, amely erőforrásokkal hozható létre és tölthető fel. **Ebben az előzetes kiadásban ezek az erőforrások csak felhasználók lehetnek.** A létrehozás és a feltöltés után a felügyeleti egység hatókörként használható, amely csak a felügyeleti egységben található erőforrásokra korlátozza a megadott engedélyeket.
+A felügyeleti egységek olyan szervezeteknél lehetnek hasznosak, amelyek független részlegekkel rendelkeznek. Vegyünk például egy olyan nagy egyetemet, amely számos autonóm iskola (üzleti iskola, mérnöki iskola stb.) számára készült, és a saját informatikai rendszergazdái rendelkeznek a hozzáférés szabályozásához, a felhasználók kezeléséhez és a szabályzatok beállításához. A központi rendszergazda létrehozhat egy felügyeleti egységet az üzleti iskola számára, és feltöltheti azt csak az üzleti tanulók és munkatársak számára. Ezután a központi rendszergazda hozzáadhatja az üzleti iskola informatikai részlegét egy hatókörrel rendelkező szerepkörhöz, amely csak az Azure AD-felhasználók számára biztosít rendszergazdai engedélyeket a Business School felügyeleti egységben.
+
+## <a name="license-requirements"></a>Licenckövetelmények
+
+A felügyeleti egységek használatához prémium szintű Azure Active Directory licencre van szükség az egyes felügyeleti egységek rendszergazdái számára. További információ: [Bevezetés a prémium szintű Azure ad](../fundamentals/active-directory-get-started-premium.md)használatába.
 
 ## <a name="managing-administrative-units"></a>Felügyeleti egységek kezelése
 
-Ebben az előzetes kiadásban felügyeleti egységeket hozhat létre és kezelhet a Windows PowerShell-parancsmagok Azure Active Directory moduljának használatával. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [felügyeleti egységek használata](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) című témakört.
+Ebben az előzetes kiadásban a felügyeleti egységek létrehozásához és kezeléséhez az egyetlen lehetőség a Azure Active Directory modul használata a Windows PowerShell-parancsmagokhoz a [felügyeleti egységek](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) használata című témakörben leírtak szerint.
 
-A szoftverre vonatkozó követelményekkel és az Azure AD-modul telepítésével, valamint a felügyeleti egységek kezelésére szolgáló Azure AD modul-parancsmagokkal kapcsolatos további információkért, beleértve a szintaxist, a paraméterek leírását és a példákat, tekintse meg a következőt: [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+További információ a szoftverekre vonatkozó követelményekről és az Azure AD-modul telepítéséről, valamint a felügyeleti egységek kezelésére szolgáló Azure AD modul-parancsmagokról, beleértve a szintaxist, a paraméterek leírását és a példákat lásd: [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 ## <a name="next-steps"></a>További lépések
 

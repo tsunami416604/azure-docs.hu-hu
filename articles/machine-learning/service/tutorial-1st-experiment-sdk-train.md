@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004030"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327226"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -50,6 +50,9 @@ Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter 
    Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage-fiókjában](concept-workspace.md#resources) található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
 
 1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a `.yml` Jupyter-jegyzetfüzetet `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **ne** pedig az azonos nevű fájlt. 
+
+> [!Warning]
+> Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` a jelen oktatóanyaghoz **szükséges összes kóddal és adattal** rendelkezik.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Munkaterület összekötése és kísérlet létrehozása
 

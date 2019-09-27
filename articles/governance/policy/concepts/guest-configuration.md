@@ -7,12 +7,12 @@ ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172478"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338384"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -122,7 +122,7 @@ Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók 
 > [!NOTE]
 > Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A [Preview] nevű *beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows* rendszerű gépeken 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A  *[előzetes verzió] nevű beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows* rendszerű gépeken 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
@@ -185,4 +185,4 @@ A házirend vendég konfigurációjának mintái a következő helyszíneken ér
 - Megtudhatja, hogyan [hozhat létre programozott](../how-to/programmatically-create.md)módon házirendeket.
 - Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](../how-to/getting-compliance-data.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
-- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/index.md).
+- Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

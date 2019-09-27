@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311915"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326581"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -21,9 +21,9 @@ Az Advisor az inaktív és a kihasználatlan erőforrások azonosításával seg
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>A virtuális gépek a kihasználatlan példányok átméretezésével vagy leállításával optimalizálható 
 
-Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor 7 napig figyeli a virtuális gépek használatát, majd azonosítja az alacsony kihasználtságú virtuális gépeket. A virtuális gépek alacsony kihasználtságnak számítanak, ha a processzor kihasználtsága 5% vagy kevesebb, és a hálózati kihasználtsága kevesebb, mint 2%, vagy ha a jelenlegi számítási feladatot kisebb virtuálisgép-mérettel lehet elfogadni.
+Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor 7 napig figyeli a virtuális gépek használatát, majd azonosítja az alacsony kihasználtságú virtuális gépeket.  A virtuális gépek alacsony kihasználtságnak számítanak, ha a CPU-kihasználtsága 5%-os vagy annál kisebb, és a hálózati kihasználtsága kevesebb, mint 2%, és nem rendelkezik a küszöbértékek számával, vagy ha az aktuális munkaterhelés kisebb méretű virtuálisgép-mérettel is rendelkezhet.
 
-Az Advisor megjeleníti a virtuális gép futtatásának becsült költségeit, így dönthet úgy, hogy leállítja vagy átméretezi.
+Az ajánlott műveletek leállnak, és a rendszer a számára ajánlott erőforrásra vonatkozik. Az Advisor a javasolt műveletek becsült költségmegtakarítását jeleníti meg – átméretezheti vagy leállíthatja. Emellett a javasolt művelet átméretezéséhez az Advisor az aktuális és a célként megadott SKU-információkat is biztosítja. 
 
 Ha agresszíven szeretne lenni a kihasználatlan virtuális gépek azonosításához, a CPU-kihasználtsági szabályt előfizetések alapján is módosíthatja.
 

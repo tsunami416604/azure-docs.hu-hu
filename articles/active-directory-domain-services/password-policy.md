@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617134"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320442"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 
@@ -31,7 +31,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Aktív Azure-előfizetés.
   * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-  * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+  * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
   * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
@@ -47,8 +47,8 @@ A következő jelszó-beállítások konfigurálhatók a FGPP használatával:
 * Jelszó minimális hossza
 * Korábbi jelszavak
 * A jelszavaknak meg kell felelniük a bonyolultsági követelményeknek
-* Jelszó minimális kora
-* Jelszó maximális kora
+* Jelszó minimális élettartama
+* Jelszó maximális élettartama
 * Fiókzárolási házirend
   * Fiókzárolás időtartama
   * Sikertelen bejelentkezési kísérletek száma engedélyezett
@@ -90,10 +90,13 @@ A részletes jelszóházirendek létrehozásához a Active Directory felügyelet
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
 1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *contoso.com*.
+1. Nyissa meg a **rendszer** tárolót, majd a **jelszóbeállítás** -tárolót.
+
+    Megjelenik egy beépített FGPP az Azure AD DS felügyelt tartományhoz. Ez a beépített FGPP nem módosítható. Ehelyett hozzon létre egy új egyéni FGPP az alapértelmezett FGPP felülbírálásához.
 1. A jobb oldali **feladatok** panelen válassza az **új > a jelszó beállításai**lehetőséget.
 1. A **jelszó-beállítások létrehozása** párbeszédpanelen adja meg a szabályzat nevét (például *MyCustomFGPP*). Állítsa be a sorrendet megfelelően az alapértelmezett FGPP felülbírálásához ( *200*), például: *1*.
 
-    Módosítsa a többi jelszóházirend-beállítást igény szerint, például a korábbi jelszavak megváltoztatásához, hogy a felhasználó olyan jelszót hozzon létre, amely eltér az előző *24* jelszótól.
+    Módosítsa a többi jelszóházirend-beállítást igény szerint, például a korábbi jelszavak **megváltoztatásához** , hogy a felhasználó olyan jelszót hozzon létre, amely eltér az előző *24* jelszótól.
 
     ![Egyéni részletes jelszóházirendek létrehozása](./media/how-to/custom-fgpp.png)
 
@@ -106,7 +109,7 @@ A részletes jelszóházirendek létrehozásához a Active Directory felügyelet
 
     ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik](./media/how-to/fgpp-container.png)
 
-1. Írja be annak a csoportnak a nevét, amelyre alkalmazni kívánja a szabályzatot , majd válassza a Névellenőrzés lehetőséget annak ellenőrzéséhez, hogy a csoport létezik-e.
+1. Írja be annak a csoportnak a nevét, amelyre alkalmazni kívánja a szabályzatot, majd válassza a **Névellenőrzés lehetőséget annak ellenőrzéséhez** , hogy a csoport létezik-e.
 
     ![Keresse meg és válassza ki a FGPP alkalmazni kívánt csoportot](./media/how-to/fgpp-apply-group.png)
 

@@ -1,20 +1,20 @@
 ---
 title: Kapcsolódás a Windows rendszerű virtuális asztalhoz macOS rendszerről – Azure
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz macOS-ről.
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a macOS-ügyféllel.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: bf6bfb52bd763eabd88f23701c3d1f240cdf4844
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310190"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338708"
 ---
-# <a name="connect-from-macos"></a>Kapcsolat macOS-ből
+# <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
 
 > A következőkre vonatkozik: macOS 10,12 vagy újabb
 
@@ -44,6 +44,6 @@ Miután bejelentkezett, megjelenik az elérhető erőforrások listája.
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="client-documentation"></a>Ügyfél dokumentációja
+## <a name="next-steps"></a>További lépések
 
 A macOS-ügyféllel kapcsolatos további tudnivalókért tekintse meg a macOS-ügyfél dokumentációjának első [lépéseit](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) .

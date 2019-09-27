@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3f6f61523b8509f23ffc98b236daaf0e646a013a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310424"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338536"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
-A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer indexelő 2 (előzetes verzió) adathordozó-](media-services-process-content-with-indexer2.md) processzorok 2020 január 1-jén lesznek kivonva.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+A [Azure Media Indexer v1](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. Az [Azure Media Indexer v2 előzetes verziójának](media-services-process-content-with-indexer2.md) adathordozó-processzora 2020 január 1-től megszűnik.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
 A Azure Media Services Video Indexer Azure Media Analytics, Azure Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260744"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326495"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
@@ -183,15 +183,16 @@ A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető 
 | Image | Leírás |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Alapszintű rendszerkép a Azure Machine Learning számára |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | A ONNX futtatókörnyezetet tartalmazza. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | A ONNX Runtime és a CUDA összetevőket tartalmazza. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | ONNX futtatókörnyezetet és TensorRT tartalmaz. |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | ONNX-futtatókörnyezetet tartalmaz a CPU-inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | A ONNX futtatókörnyezetet és a CUDA-t tartalmazza a GPU-hoz |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | ONNX Runtime és TensorRT for GPU-t tartalmaz |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Az ONNX Runtime és a OpenVINO for<sup> </sup> Intel látási gyorssegéd kialakítását tartalmazza a Movidius<sup>TM</sup> MyriadX VPUs alapján |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Az ONNX Runtime és a OpenVINO for<sup> </sup> Intel Movidius<sup>TM</sup> USB-Sticks szolgáltatását tartalmazza |
+
+A ONNX Runtime alaplemezképekkel kapcsolatos további információkért lásd a GitHub-tárház [ONNX Runtime Docker szakaszát](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) .
 
 > [!TIP]
 > Mivel ezek a lemezképek nyilvánosan elérhetők, nem kell megadnia a szükséges címeket, felhasználónevet vagy jelszót.
-
-> [!IMPORTANT]
-> A CUDA vagy TensorRT használó Microsoft-rendszerképeket csak Microsoft Azure szolgáltatásokban kell használni.
 
 További információ: [Azure Machine learning tárolók](https://github.com/Azure/AzureML-Containers).
 

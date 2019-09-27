@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Databricks-különbözeti tábla frissítése Azure Data Lake Storage Gen2 események használatával | Microsoft Docs'
+title: 'Oktatóanyag: A Azure Databricks különbözeti táblázat frissítése a (z) adattó rögzítési mintájának megvalósításával | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhat egy Event Grid-előfizetést, egy Azure-függvényt és egy Azure Databricks feladatot az adatok sorainak az Azure DataLake Storage Gen2 tárolt táblába való beszúrásához.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904658"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326991"
 ---
-# <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Oktatóanyag: Databricks-különbözeti tábla frissítése Azure Data Lake Storage Gen2 események használatával
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: A Databricks-különbözeti táblázat frissítése a adattó rögzítési mintájának megvalósításával
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az eseményeket egy hierarchikus névteret tartalmazó Storage-fiókban.
 
@@ -34,7 +34,7 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű `contosoorders`Storage-fiókot használ. Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
+* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy `contosoorders` nevű Storage-fiókot használ. Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
 
   Lásd: [Azure Data Lake Storage Gen2 fiók létrehozása](data-lake-storage-quickstart-create-account.md).
 
@@ -53,13 +53,13 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 Először hozzon létre egy CSV-fájlt, amely leírja az értékesítési sorrendet, majd töltse fel a fájlt a Storage-fiókba. Később a fájl adatait használva feltöltheti a Databricks-különbözeti táblázat első sorát.
 
-1. Nyissa meg Azure Storage Explorer. Ezután navigáljon a Storage-fiókjához, és a **blob** -tárolók szakaszban hozzon létre egyúj tárolót.
+1. Nyissa meg Azure Storage Explorer. Ezután navigáljon a Storage-fiókjához, és a **blob-tárolók** szakaszban hozzon létre egy **új tárolót.**
 
-   ![adatmappa](./media/data-lake-storage-events/data-container.png "adatmappa")
+   ![adatmappa](./media/data-lake-storage-events/data-container.png "adatmappája")
 
    További információ a Storage Explorer használatáról: [Azure Storage Explorer használata az adatok Azure Data Lake Storage Gen2 fiókban való kezeléséhez](data-lake-storage-explorer.md).
 
-2. Az adattárolóban hozzon létre egy **bemenet**nevű mappát.
+2. Az **adattárolóban** hozzon létre egy **bemenet**nevű mappát.
 
 3. Illessze be a következő szöveget egy szövegszerkesztőbe.
 
@@ -133,7 +133,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
 1. A létrehozott jegyzetfüzetben másolja és illessze be az alábbi kódrészletet az első cellába, de még ne futtassa ezt a kódot.  
 
-   Cserélje le `appId`a `password`, `tenant` , helyőrző értékeit a kód blokkban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre.
+   Cserélje le az `appId`, `password`, `tenant` helyőrző értékét a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -152,7 +152,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
     Ez a kód létrehoz egy **source_file**nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
 
     > [!NOTE]
-    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, az alábbi kódrészletet fogja használni:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
+    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például ahelyett, hogy a következő kódrészletet használja: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, az alábbi kódrészletet fogja használni: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
 
 2. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -241,9 +241,9 @@ Hozzon létre egy feladatot, amely a korábban létrehozott jegyzetfüzetet futt
 
 2. A **feladatok** lapon kattintson a **feladat létrehozása**elemre.
 
-3. Adjon nevet a feladatoknak, majd válassza ki `upsert-order-data` a munkafüzetet.
+3. Adjon nevet a feladatoknak, majd válassza ki a `upsert-order-data` munkafüzetet.
 
-   ![Feladatok létrehozása](./media/data-lake-storage-events/create-spark-job.png "Feladatok létrehozása")
+   Feladatok ![létrehozása](./media/data-lake-storage-events/create-spark-job.png "feladatok létrehozása")
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
@@ -251,27 +251,27 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
 1. A Databricks munkaterület felső sarkában válassza a személyek ikont, majd válassza a **felhasználói beállítások**lehetőséget.
 
-   ![Fiók kezelése](./media/data-lake-storage-events/generate-token.png "Felhasználói beállítások")
+   ![Fiók](./media/data-lake-storage-events/generate-token.png "felhasználói beállításainak") kezelése
 
-2. Kattintson az **új jogkivonat** előállítása gombra, majd kattintson a **Létrehozás** gombra.
+2. Kattintson az **új jogkivonat előállítása** gombra, majd kattintson a **Létrehozás** gombra.
 
    Ügyeljen arra, hogy a tokent biztonságos helyre másolja. Az Azure-függvénynek szüksége van erre a tokenre a Databricks való hitelesítéshez, hogy az képes legyen futtatni a feladatot.
   
 3. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot, majd válassza a **számítási > függvényalkalmazás**lehetőséget.
 
-   ![Azure-függvény létrehozása](./media/data-lake-storage-events/function-app-create-flow.png "Azure-függvény létrehozása")
+   Azure- ![függvény]létrehozása(./media/data-lake-storage-events/function-app-create-flow.png "Azure-függvény létrehozása")
 
 4. A függvényalkalmazás **Létrehozás** lapján győződjön meg arról, hogy a futásidejű veremhöz a **.net Core** elemet választja, és konfigurálja a Application Insights-példányt.
 
-   ![A Function alkalmazás konfigurálása](./media/data-lake-storage-events/new-function-app.png "A Function alkalmazás konfigurálása")
+   ![A Function alkalmazás]konfigurálása(./media/data-lake-storage-events/new-function-app.png "a Function alkalmazás konfigurálása")
 
 5. A függvényalkalmazás **Áttekintés** lapján kattintson a **konfiguráció**elemre.
 
-   ![A Function alkalmazás konfigurálása](./media/data-lake-storage-events/configure-function-app.png "A Function alkalmazás konfigurálása")
+   ![A Function alkalmazás]konfigurálása(./media/data-lake-storage-events/configure-function-app.png "a Function alkalmazás konfigurálása")
 
 6. Az **Alkalmazásbeállítások** lapon válassza az **új alkalmazás beállítása** gombot az egyes beállítások hozzáadásához.
 
-   ![Konfigurációs beállítás hozzáadása](./media/data-lake-storage-events/add-application-setting.png "Konfigurációs beállítás hozzáadása")
+   Konfigurációs ![beállítás hozzáadása]konfigurációs(./media/data-lake-storage-events/add-application-setting.png "beállítás") hozzáadása
 
    Adja hozzá a következő beállításokat:
 
@@ -279,10 +279,10 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
    |----|----|
    |**DBX_INSTANCE**| A databricks-munkaterület régiója. Például:`westus2.azuredatabricks.net`|
    |**DBX_PAT**| A korábban létrehozott személyes hozzáférési jogkivonat. |
-   |**DBX_JOB_ID**|A futó feladathoz tartozó azonosító. Ebben az esetben ez az érték `1`a következő:.|
+   |**DBX_JOB_ID**|A futó feladathoz tartozó azonosító. Ebben az esetben ez az érték `1`.|
 7. A Function app áttekintés lapján kattintson az **új függvény** gombra.
 
-   ![Új függvény](./media/data-lake-storage-events/new-function.png "Új függvény")
+   ![Új függvény]új(./media/data-lake-storage-events/new-function.png "függvény")
 
 8. Válassza ki **Azure Event Grid triggert**.
 
@@ -344,17 +344,17 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 1. A függvény kódja lapon kattintson az **Event Grid előfizetés hozzáadása** gombra.
 
-   ![Új esemény-előfizetés](./media/data-lake-storage-events/new-event-subscription.png "Új esemény-előfizetés")
+   ![Új esemény-előfizetés]új(./media/data-lake-storage-events/new-event-subscription.png "esemény-előfizetés")
 
 2. Az **esemény-előfizetés létrehozása** lapon nevezze el az előfizetést, majd használja a lapon található mezőket a Storage-fiók kiválasztásához.
 
-   ![Új esemény-előfizetés](./media/data-lake-storage-events/new-event-subscription-2.png "Új esemény-előfizetés")
+   ![Új esemény-előfizetés]új(./media/data-lake-storage-events/new-event-subscription-2.png "esemény-előfizetés")
 
 3. A **szűrő az események típusai** legördülő listából válassza ki a **létrehozott blobot**, és a **blob által törölt** eseményeket, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="test-the-event-grid-subscription"></a>A Event Grid előfizetés tesztelése
 
-1. Hozzon létre egy `customer-order.csv`nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+1. Hozzon létre egy `customer-order.csv` nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -369,11 +369,11 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 4. Válassza ki a feladatot a feladatok oldal megnyitásához.
 
-   ![Spark-feladatok](./media/data-lake-storage-events/spark-job.png "Spark-feladatok")
+   Spark- ![feladatok](./media/data-lake-storage-events/spark-job.png "Spark-feladata")
 
    Amikor a feladatok befejeződik, megjelenik egy befejezési állapot.
 
-   A ![feladatot sikerült befejezni] A (./media/data-lake-storage-events/spark-job-completed.png "feladatot sikerült befejezni")
+   Sikeresen ![befejeződött a feladatok](./media/data-lake-storage-events/spark-job-completed.png "sikeresen befejeződött")
 
 5. Egy új munkafüzet cellában futtassa ezt a lekérdezést egy cellában a frissített különbözeti táblázat megjelenítéséhez.
 
@@ -383,20 +383,20 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    A visszaadott tábla a legújabb rekordot jeleníti meg.
 
-   ![A legfrissebb rekord megjelenik a táblában](./media/data-lake-storage-events/final_query.png "A legfrissebb rekord megjelenik a táblában")
+   A ![legfrissebb rekord jelenik meg a]táblázat(./media/data-lake-storage-events/final_query.png "legutóbbi rekordjában") .
 
-6. A rekord frissítéséhez hozzon létre egy nevű `customer-order-update.csv`fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+6. A rekord frissítéséhez hozzon létre egy `customer-order-update.csv` nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Ez a CSV-fájl majdnem azonos az előzővel, kivéve, hogy a megrendelés mennyisége a- `228` ból `22`értékre módosult.
+   Ez a CSV-fájl majdnem azonos az előzővel, kivéve, hogy a megrendelés mennyisége @no__t – 0 értékről `22` értékre módosul.
 
 7. A Storage Explorerban töltse fel ezt a fájlt a Storage-fiókja **bemeneti** mappájába.
 
-8. Futtassa újra `select` a lekérdezést a frissített különbözeti táblázat megtekintéséhez.
+8. Futtassa újra a `select` lekérdezést a frissített Delta tábla megjelenítéséhez.
 
    ```
    %sql select * from customer_data
@@ -404,7 +404,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    A visszaadott tábla a frissített rekordot jeleníti meg.
 
-   ![A frissített rekord megjelenik a táblában](./media/data-lake-storage-events/final_query-2.png "A frissített rekord megjelenik a táblában")
+   A ![frissített rekord megjelenik a tábla](./media/data-lake-storage-events/final_query-2.png "frissített rekordjában") .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

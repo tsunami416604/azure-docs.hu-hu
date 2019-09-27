@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900068"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336866"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
@@ -42,11 +42,19 @@ A szerepkörök a következők lehetnek:
 
 - Az **R**esponsible a projekt tervének és eredményének megvalósításához 
 
-- Pproval és-eredmény 
+- **Pproval és**-eredmény 
 
 - **C**ontributor a projekt tervéhez és eredményéhez 
 
-- Nformed és végeredmény
+- **Nformed és**végeredmény
+
+
+## <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára
+Egy próba lehetővé teszi egy kis csoport tesztelését, mielőtt mindenki számára bekapcsolja a funkciót. Győződjön meg arról, hogy a tesztelés részeként a szervezeten belül minden használati esetet alaposan teszteltek. A legjobb megoldás, ha a kísérleti felhasználók egy adott csoportját szeretné megcélozni, mielőtt a szervezet egészét bevezeti.
+
+Az első hullámban célozza meg, a használhatóságot és az egyéb megfelelő felhasználókat, akik kipróbálhatják és elküldhetik a visszajelzést. Ezzel a visszajelzéssel tovább fejlesztheti a felhasználóknak küldött kommunikációt és útmutatást, és betekintést nyerhet a támogatási munkatársak által látható problémák típusaiba. 
+
+A bevezetést nagyobb felhasználói csoportokra kell kiterjeszteni a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
 
 
 ## <a name="deploy-authentication"></a>Hitelesítés telepítése

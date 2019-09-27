@@ -16,15 +16,15 @@ ms.date: 04/05/2019
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6ef5dedb0779536cfbc1e6a3440e748ff78524
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862108"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326465"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: Verziókiadások előzményei
-Ez a cikk a kiadott Azure AD Connect kiépítési ügynök verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti a kiépítési ügynököt új funkciókkal és funkciókkal. A kiépítési ügynökök automatikusan frissülnek, amikor megjelent egy új verzió. 
+Ez a cikk a kiadott Azure Active Directory Connect kiépítési ügynök verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti a kiépítési ügynököt új funkciókkal és funkciókkal. A kiépítési ügynök automatikusan frissül, amikor megjelent egy új verzió. 
 
 Javasoljuk, hogy az ügynökök automatikus frissítésének engedélyezésével ellenőrizze, hogy a legújabb funkciókkal és hibajavításokkal rendelkezik-e. A Microsoft közvetlen támogatást biztosít az ügynök legújabb verziójához és egy korábbi verzióhoz.
 
@@ -37,13 +37,13 @@ Javasoljuk, hogy az ügynökök automatikus frissítésének engedélyezésével
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 
 * További nyomkövetési és naplózási beállítások konfigurálása a kiépítési ügynökkel kapcsolatos problémák felderítéséhez
-* Csak a leképezésben konfigurált AD-attribútumok beolvasásának lehetősége a szinkronizálás teljesítményének növelése érdekében
+* Csak azokat az Azure AD-attribútumokat lehet beolvasni, amelyek a leképezésben vannak konfigurálva a szinkronizálás teljesítményének növeléséhez
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
-* Javítva a hiba, ha az ügynök nem válaszoló állapotba került, ha problémák léptek fel az AD-kapcsolatok hibáival kapcsolatban
-* Kijavított egy hibát, amely problémát okozott, amikor a bináris adatok beolvasása Active Directory
-* Kijavítva a hiba, ha az ügynök nem tudta megújítani a bizalmat a Cloud Hybrid Identity Service használatával
+* Kijavítva egy olyan hibát, amelyben az ügynök nem válaszoló állapotba került, ha probléma merült fel az Azure AD-beli kapcsolatok meghibásodása esetén
+* Kijavított egy hibát, amely problémát okozott, amikor a bináris adatok beolvasása Azure Active Directory
+* Kijavítva egy olyan hibát, amelyben az ügynök nem tudta megújítani a bizalmi kapcsolatot a Cloud Hybrid Identity Service használatával
 
 ## <a name="11300"></a>1.1.30.0
 
@@ -53,7 +53,7 @@ Javasoljuk, hogy az ügynökök automatikus frissítésének engedélyezésével
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 
-* Átalakított kiépítési ügynök &-összekötő architektúrája a jobb teljesítmény, stabilitás és megbízhatóság érdekében 
-* Egyszerűsített kiépítési ügynök konfigurálása a felhasználói felületen alapuló telepítővarázsló használatával 
+* Kitatarozta a kiépítési ügynököt és az összekötő architektúráját a jobb teljesítmény, stabilitás és megbízhatóság érdekében 
+* A kiépítési ügynök konfigurációjának egyszerűsítése a felhasználói felületen alapuló telepítővarázsló használatával 
 * Az automatikus ügynök frissítéseinek támogatása
 

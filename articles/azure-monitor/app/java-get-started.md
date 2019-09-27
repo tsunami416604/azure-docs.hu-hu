@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299591"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338115"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -225,7 +225,7 @@ Ha más kivételekkel szeretne adatokat gyűjteni, a [kódban trackException () 
 
 A Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést](https://w3c.github.io/trace-context/).
 
-A bejövő SDK konfigurációját a [korrelációról](correlation.md#w3c-distributed-tracing)szóló cikkben ismertetjük.
+A bejövő SDK konfigurációját a [korrelációról](correlation.md#telemetry-correlation-in-the-java-sdk)szóló cikkben ismertetjük.
 
 A kimenő SDK-konfiguráció a [AI-Agent. XML](java-agent.md) fájlban van definiálva.
 

@@ -8,30 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1a411455e4a6dea22e092cdfc8e70ee23b656435
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854700"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327457"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszéd szintézise a .NET-keretrendszerhez készült Speech SDK (Windows) használatával
 
-A gyors útmutatók a [beszédfelismerés](quickstart-csharp-dotnet-windows.md) és a [beszédfelismerés](quickstart-translate-speech-dotnetframework-windows.md)számára is elérhetők.
+A [beszédfelismerés](quickstart-csharp-dotnet-windows.md) és a [beszéd fordítása](quickstart-translate-speech-dotnetframework-windows.md)is elérhető.
 
 Ez az útmutató egy szöveg-beszédes konzol alkalmazás létrehozására használható a .NET-keretrendszer for Windows és a Speech SDK használatával. Ha elkészült, a beszédet a szövegből is szintetizálhatja, és valós időben hallhatja a beszédet a beszélőn.
 
-Egy gyors bemutatóhoz (a Visual Studio-projekt létrehozása nélkül, az alábbi ábrán látható módon):
-
-Szerezze be a legfrissebb [Cognitive Services SPEECH SDK-mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a githubról.
+Egy gyors bemutatóhoz (a Visual Studio-projekt létrehozása nélkül, a jelen cikkben leírtak szerint) szerezze be a legfrissebb [Cognitive Services SPEECH SDK-mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a githubról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A projekt teljesítéséhez a következők szükségesek:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * A beszédfelismerési szolgáltatáshoz tartozó előfizetési kulcs. [Szerezze be az egyiket ingyenesen](get-started.md).
 * Egy beszélő (vagy fülhallgató) érhető el.
 
@@ -41,29 +39,25 @@ A projekt teljesítéséhez a következők szükségesek:
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg a `Program.cs` fájlt, és cserélje le az automatikusan előállított kódot a következő mintára:
+1. Nyissa meg a **program.cs** , és cserélje le az automatikusan generált kódot a következő mintára:
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Keresse meg és cserélje le `YourSubscriptionKey` a karakterláncot a Speech Services előfizetési kulcsával.
+1. Keresse meg a `YourSubscriptionKey` karakterláncot, és cserélje le a Speech Services előfizetési kulcsára.
 
-1. Keresse meg és cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md). Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
+1. Keresse meg a `YourServiceRegion` karakterláncot, és cserélje le az előfizetéshez társított [régióra](regions.md) . Ha például az ingyenes próbaverziós előfizetést használja, akkor a régió `westus`.
 
-1. Mentse a projekt módosításait.
+1. A menüsávban válassza a **fájl**@no__t – 1**Mentés összes mentése**elemet.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. A menüsávban válassza a **build** > **Build megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-csharp-dotnet-windows-08-build.png "Sikeres létrehozás")
+1. A **HelloWorld** alkalmazás indításához válassza a **hibakeresés @no__t –** 1**Indítás hibakeresése** lehetőséget (vagy válassza az **F5 billentyűt**).
 
-1. Az alkalmazás elindításához a menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** elemet, vagy nyomja le az **F5** billentyűt.
+1. Írjon be egy angol kifejezést vagy mondatot. Az alkalmazás továbbítja a szöveget a beszédfelismerési szolgáltatásoknak, amelyek szintetizált beszédet küldenek az alkalmazásnak a beszélőn való lejátszáshoz.
 
-    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
-
-1. Ekkor megjelenik egy konzolablak, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg továbbítva lesz a Speech Servicesnek, és a beszédbe lett szintetizálva, amely a beszélőn játszik.
-
-    ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "A konzol a sikeres felismerést követően")
+   ![Speech szintézis felhasználói felület](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -72,5 +66,5 @@ A projekt teljesítéséhez a következők szükségesek:
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
-- [Hangminták rögzítése](record-custom-voice-samples.md)
+- [Egyéni hang létrehozása](how-to-custom-voice-create-voice.md)
+- [Egyéni hangminták rögzítése](record-custom-voice-samples.md)

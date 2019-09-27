@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640654"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327176"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Oktatóanyag Azure SQL-adatbázis bejárása Azure Search indexelő használatával
 
@@ -67,7 +67,7 @@ A szükséges szolgáltatásokhoz tartozó kapcsolódási adatok a megoldás **a
 
 1. A Megoldáskezelőban nyissa meg az **appSettings. JSON** fájlt, és töltse fel az egyes beállításokat.  
 
-Az első két bejegyzés a Azure Search szolgáltatás URL-címét és rendszergazdai kulcsait használva azonnal kitölthető. A (z `mydemo`) `https://mydemo.search.windows.net`által megadott szolgáltatásnév a végpontja.
+Az első két bejegyzés a Azure Search szolgáltatás URL-címét és rendszergazdai kulcsait használva azonnal kitölthető. @No__t-0 végpontja miatt a megadható szolgáltatásnév `mydemo`.
 
 ```json
 {
@@ -159,7 +159,7 @@ Ebben az oktatóanyagban az indexelő egyetlen adatforrásból kér le adatokat.
 
 A fő program logikát tartalmaz az ügyfelek, az indexek, az adatforrások és az indexelő létrehozásához. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
 
-Az adatforrás-objektum az Azure SQL Database-erőforrásokra jellemző beállításokkal van konfigurálva, beleértve [](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) a növekményes indexelést az Azure SQL beépített [változások észlelési funkcióinak](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted**nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot a Azure Search indexből.
+Az adatforrás-objektum az Azure SQL Database-erőforrásokra jellemző beállításokkal van konfigurálva, beleértve a [növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) az Azure SQL beépített [változások észlelési funkcióinak](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted**nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot a Azure Search indexből.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -230,7 +230,7 @@ A kód futtatása helyileg történik a Visual Studióban, és csatlakozik azt a
 
 + Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez.
 
-+ Erőforráskorlátok. Ne felejtse el, hogy a megosztott (ingyenes) szolgáltatások 3-3 indexre, indexelőre és adatforrásra vannak korlátozva. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
++ Erőforráskorlátok. Ne felejtse el, hogy az ingyenes szinten 3 index, indexelő és adatforrásra vonatkozó korlát szerepel. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
 
 ## <a name="search-the-index"></a>Keresés az indexben 
 
@@ -254,7 +254,7 @@ Az Azure Portalon, a keresési szolgáltatás Áttekintés oldalán kattintson a
 
 A portálon fel van sorolva az összes indexelő, így az imént programozott módon létrehozott indexelő is. Megnyithatja az indexelő meghatározását, és megtekintheti annak adatforrását, vagy konfigurálhat frissítési ütemezést az új és a módosított sorok érvényesítéséhez.
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon kattintson az indexek,az indexelőés **az**adatforrások hivatkozásaira.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon kattintson az **indexek**, az **Indexelő**és **az adatforrások**hivatkozásaira.
 3. Válassza ki az egyes objektumokat a konfigurációs beállítások megtekintéséhez vagy módosításához.
 
    ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)

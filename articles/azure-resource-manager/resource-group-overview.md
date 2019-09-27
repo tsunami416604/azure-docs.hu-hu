@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f9591b26891ab36ccbfa34126fb1ac1bdb9cf52
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164791"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338208"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -59,7 +59,7 @@ A Resource Managerrel a következőket teheti:
 
 ## <a name="understand-scope"></a>A hatókör megismerése
 
-Az Azure a hatókör négy szintjét biztosítja: [felügyeleti csoportok](../governance/management-groups/index.md), előfizetések, [erőforráscsoportok](#resource-groups)és erőforrások. Az alábbi ábra ezekre a rétegekre mutat egy példát.
+Az Azure a hatókör négy szintjét biztosítja: [felügyeleti csoportok](../governance/management-groups/overview.md), előfizetések, [erőforráscsoportok](#resource-groups)és erőforrások. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
@@ -107,7 +107,7 @@ Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manage
 
 * Az erőforrás-szolgáltatók által kínált összes műveletnél tekintse meg az [Azure REST API-kat](/rest/api/azure/).
 
-* További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy](resource-group-move-resources.md)előfizetésbe.
+* További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](resource-group-move-resources.md).
 
 * Az erőforrások címkézésével kapcsolatos további tudnivalókért lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](resource-group-using-tags.md).
 

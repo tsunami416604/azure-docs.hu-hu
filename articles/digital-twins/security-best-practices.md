@@ -1,19 +1,19 @@
 ---
-title: Az Azure Digital Twins biztonsági eljárásainak ismertetése | Microsoft Docs
-description: Azure Digital Twins – ajánlott biztonsági eljárások.
+title: Az ajánlott biztonsági eljárások ismertetése – Azure digitális Twins | Microsoft Docs
+description: Ismerje meg az Azure Digital Twins és a eszközök internetes hálózata ajánlott biztonsági eljárásait.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 09/17/2019
 ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656525"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336701"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -46,7 +46,7 @@ A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető 
 > [!div class="checklist"]
 > * Mentett, tárolt vagy állandó adattitkosítás.
 > * A jelszavak vagy kulcsok rendszeres módosításának vagy frissítésének megkövetelése.
-> * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Tekintse meg az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#rbac) .
+> * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Tekintse meg az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#role-based-access-control-best-practices) .
 > * Vegye fontolóra egy megosztott hálózati topológiát, hogy az egyes hálózatokon lévő eszközök el legyenek különítve a többitől.
 > * Hatékony titkosítás használata. Hosszú jelszavak megkövetelése és biztonságos protokollok és kétfaktoros hitelesítés használata.
 
@@ -66,8 +66,6 @@ Az Azure Digital Twins Azure Active Directory használatával hitelesíti a felh
 > * Ellenőrizze, hogy a jogkivonat érvényességi ideje érvényes-e, és hogy a jogkivonat érvényes marad-e.
 > * Állítsa be a megfelelő időtartamot, ameddig a tokenek érvényesek.
 > * Lejárt tokenek frissítése.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Szerepköralapú hozzáférés-vezérlés – ajánlott eljárások
 

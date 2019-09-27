@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bd4d3b9b34f951896e838d5f6f50ca204d329568
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266600"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326817"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
 
@@ -40,6 +40,8 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 - ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
 
 Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak `revoke-access` akkor lesz érvényes, ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
+
+Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, bájtban kell megadnia a feltölteni kívánt vhd-fájl méretét. Ehhez használja a `wc -c <yourFileName>.vhd` vagy a `ls -al <yourFileName>.vhd` értéket. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
 
 Hozzon létre egy üres szabványos HDD-t a feltöltéshez a [lemezes létrehozási](/cli/azure/disk#az-disk-create) parancsmagban a **-– for-upload** paraméter és a **--upload-size-byte** paraméter megadásával:
 

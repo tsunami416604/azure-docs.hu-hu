@@ -1,102 +1,102 @@
 ---
-title: Oktatóanyag – fogadja el, és az Azure Data megosztás előzetes verzió használata az adatok fogadása
-description: Oktatóanyag – fogadja el, és az Azure Data megosztás előzetes verzió használata az adatok fogadása
+title: 'Oktatóanyag: Fogadja el az & fogadja az Azure-adatmegosztás előzetes verzióját'
+description: Oktatóanyag – az Azure-adatmegosztás előzetes verziójával fogadja el és fogadja az adatfogadást
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838442"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327394"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Oktatóanyag: Fogadja el, és az Azure Data megosztás előzetes verzió használata az adatok fogadása
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Oktatóanyag: Az Azure-beli adatmegosztás előzetes verziójával fogadhatja és fogadhat
 
-Ebben az oktatóanyagban megtudhatja hogyan fogadja el az Azure-adatok megosztása előzetes verziójával adatok megosztás meghívót. Megtudhatja, hogyan fogadhat adatokat osztanak meg Önnel, valamint annak biztosítása érdekében, hogy mindig legyen az Önnel megosztott adatok legutóbbi pillanatképe rendszeresen frissüljön a engedélyezése. 
+Ebből az oktatóanyagból megtudhatja, hogyan fogadhatja el az adatmegosztási meghívásokat az Azure-beli adatmegosztás előzetes verziójával. Megtudhatja, hogyan fogadhatja Önnel az Önnel megosztott adatmennyiséget, valamint hogyan engedélyezheti a rendszeres frissítési időközt annak biztosítása érdekében, hogy mindig a legfrissebb pillanatképet kapjon az Önnel megosztott adatokról. 
 
 > [!div class="checklist"]
-> * Hogyan lehet Azure Adatelőnézet megosztási meghívás elfogadása
-> * Egy megosztás Adatelőnézet Azure-fiók létrehozása
-> * Adja meg az adatok cél
-> * Az adatok megosztása az ütemezett frissítéshez előfizetés létrehozása
+> * Azure-beli adatmegosztás előzetes meghívásának elfogadása
+> * Azure-beli adatmegosztás előnézeti fiókjának létrehozása
+> * Adja meg az adatai célhelyét
+> * Előfizetés létrehozása az adatmegosztásra ütemezett frissítéshez
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt egy adatok megosztási meghívás elfogadásához egy Azure-erőforrások, az alább felsorolt száma kell kiépítenie. 
+Az adatmegosztási Meghívások elfogadása előtt számos Azure-erőforrást kell kiépíteni, amelyek alább láthatók. 
 
-Győződjön meg arról, hogy teljesüljenek teljes egy adatok megosztási meghívás elfogadása előtt. 
+Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy az összes előfeltétel befejeződik. 
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Azure Storage-fiók: Ha még nem rendelkezik egy, létrehozhat egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
-* Egy Data megosztási meghívót: Egy című témát a Microsoft Azure meghívót "az Azure az adatok megosztása meghívó **<yourdataprovider@domain.com>** ".
-* Szerepkör-hozzárendelés hozzáadása a storage-fiókhoz, amely szerepel az engedélyt a *Microsoft.Authorization/role hozzárendelések írható* engedéllyel. A tulajdonosi szerepkör létezik ezzel az engedéllyel. 
-* Erőforrás-szolgáltatói regisztráció Microsoft.DataShare Tekintse meg a [Azure erőforrás-szolgáltatók](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentációjában, hogyan teheti ezt meg. 
+* Egy Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)is. 
+* Adatmegosztási meghívás: Meghívót Microsoft Azure egy "Azure-adatmegosztási meghívót **<yourdataprovider@domain.com>** " címmel.
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelés/írás* engedélyben. Ez az engedély létezik a tulajdonosi szerepkörben. 
+* A Microsoft. DataShare erőforrás-szolgáltatói regisztrációja. Ennek módjáról az [Azure Resource Providers](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) dokumentációjában talál további információt. 
 
 > [!IMPORTANT]
-> Fogadja el, és a egy Azure-adatok megosztása fogadására, először regisztrálnia kell az Microsoft.DataShare erőforrás-szolgáltató, és fogadja el az adatokat tároló tárfiók tulajdonosának kell lennie. Kövesse az utasításokat, dokumentált [hibaelhárítása Azure-adatok megosztása – előzetes](data-share-troubleshoot.md) az adatok megosztása erőforrás-szolgáltató regisztrálása, valamint a storage-fiók tulajdonosai adja hozzá saját magát. 
+> Az Azure-beli adatmegosztások elfogadásához és fogadásához először regisztrálnia kell a Microsoft. DataShare erőforrás-szolgáltatót, és annak a Storage-fióknak a tulajdonosának kell lennie, amelybe befogadja az adatgyűjtést Az adatmegosztási erőforrás-szolgáltató regisztrálásához és a Storage-fiók tulajdonosként való hozzáadásához kövesse az Azure-beli [Adatmegosztások előzetes verziójának hibakeresése](data-share-troubleshoot.md) című részben leírt utasításokat. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="open-invitation"></a>Nyissa meg a meghívót
+## <a name="open-invitation"></a>Meghívás megnyitása
 
-Nézze meg a postafiókját az adatszolgáltató a meghívót. A meghívó van a Microsoft Azure című **Azure az adatok megosztása felkérését <yourdataprovider@domain.com>** . Jegyezze fel a megosztás neve, annak érdekében, hogy a megfelelő megosztási már fogad, ha több meghívók. 
+Az adatszolgáltatótól érkező meghívót a Beérkezett üzenetek között találja. A meghívó Microsoft Azure származik, és az **Azure-beli adatmegosztási meghívást kapott <yourdataprovider@domain.com>** . Jegyezze fel a megosztás nevét annak biztosításához, hogy a megfelelő megosztást fogadja el, ha több meghívót is használ. 
 
-Válassza ki a **meghívó megtekintése** megtekintéséhez a meghívást, az Azure-ban. Ezzel továbblép a megosztások kapott nézetben.
+Az Azure-beli meghívót a meghívás **megtekintése** lehetőségre kattintva tekintheti meg. Ekkor a kapott megosztások nézetre kerül.
 
-![Meghívók](./media/invitations.png "meghívások listája") 
+![Meghívások](./media/invitations.png "listája") 
 
 Válassza ki a megtekinteni kívánt megosztást. 
 
 ## <a name="accept-invitation"></a>Meghívás elfogadása
-Ellenőrizze, hogy minden mező felül, beleértve a **használati**. Ha elfogadja a használati feltételeket, a lesz szükséges a jelölőnégyzet bejelölésével jelezze, hogy elfogadja. 
+Győződjön meg arról, hogy az összes mezőt felülvizsgálják, beleértve a használati **feltételeket**is. Ha elfogadja a használati feltételeket, a jelölőnégyzet bejelölésével jelezheti, hogy elfogadja. 
 
-![Használati feltételek](./media/terms-of-use.png "használati feltételeket") 
+![Használati feltételek](./media/terms-of-use.png "használati feltételek") 
 
-A *adatok megosztás célfiók*, válassza ki az előfizetést és erőforráscsoportot, amely lesz az adatok megosztása az üzembe. 
+A *cél adatmegosztási fiók*területen válassza ki azt az előfizetést és erőforráscsoportot, amelybe az adatmegosztást telepíteni fogja. 
 
-Az a **Data megosztás fiók** mezőben válassza **új létrehozása** Ha nem rendelkezik meglévő fiókot az adatok megosztása. Ellenkező esetben válassza ki az adatok megosztása egy meglévő fiókot, amely fogadja el az adatok megosztása be szeretné. 
+Az **adatmegosztási fiók** mezőben válassza az **új létrehozása** lehetőséget, ha nem rendelkezik meglévő adatmegosztási fiókkal. Ellenkező esetben válasszon ki egy meglévő adatmegosztási fiókot, amelyet el szeretne fogadni az adatmegosztásban. 
 
-Az a *megosztási név kapott* mezőt, előfordulhat, hogy hagyja meg az adatokat adja meg a megadott alapértelmezett, vagy adjon meg egy új nevet a fogadott megosztás. 
+A *Beérkezett megosztás neve* mezőben hagyhatja az alapértelmezett által megadott értéket, vagy megadhat egy új nevet a fogadott megosztáshoz. 
 
-![Adatok megosztása célfiók](./media/target-data-share.png "cél adatok megosztásához") 
+![Célként megadott adatmegosztási fiók](./media/target-data-share.png "célként megadott adatmegosztási fiókja") 
 
-Miután beleegyezett abba, hogy a használati feltételeket, és egy helyet a megosztást, válassza ki a megadott *elfogadás és konfigurálás*. Ha ezt a lehetőséget választja, olyan megosztás előfizetést hoz létre, és a következő képernyő fog kérni, hogy az adatok másolását a cél tárfiók kiválasztása. 
+Ha jóváhagyta a használati feltételeket, és megadta a megosztás helyét, válassza az *elfogadás és konfigurálás*lehetőséget. Ha ezt a beállítást választja, a rendszer létrehoz egy megosztási előfizetést, és a következő képernyő megkéri, hogy válasszon ki egy célként szolgáló Storage-fiókot, amelybe másolni kívánja az adatait. 
 
-![Fogadja el a beállítások](./media/accept-options.png "fogadja el a beállítások") 
+Az ![Accept Options](./media/accept-options.png "elfogadás beállításai") 
 
-Ha most a meghívás elfogadásához, de a tárolás konfigurálása egy későbbi időpontban, válassza inkább *fogadja el, és a beállítás később*. Ez a beállítás lehetővé teszi, hogy később konfigurálhatja a célként megadott tárfiók. A tárolás konfigurálása a később a folytatáshoz tekintse meg a [konfigurálása a tárfiók](how-to-configure-mapping.md) oldala részletes lépéseit az adatok folytatása oszthatnak meg konfigurációkat. 
+Ha azt szeretné, hogy a meghívót most is elfogadja, de később konfigurálja a tárhelyet, válassza az *elfogadás és konfigurálás később*lehetőséget. Ez a beállítás lehetővé teszi, hogy később konfigurálja a cél Storage-fiókot. A tárterület későbbi konfigurálásának folytatásához tekintse meg a [Storage-fiók konfigurálása](how-to-configure-mapping.md) című oldalt, amely részletesen ismerteti az adatmegosztási konfiguráció folytatásának lépéseit. 
 
-Ha nem szeretné a meghívás elfogadásához válassza *elutasítása*. 
+Ha nem szeretné elfogadni a meghívót, válassza az *elutasítás*lehetőséget. 
 
 ## <a name="configure-storage"></a>A tárolás konfigurálása
-A *cél tárolási beállítások*, válassza ki az előfizetést, erőforráscsoportot és a storage-fiókot, amelyet meg szeretne kapni az adatokat. 
+A tároló *beállításai*területen válassza ki azt az előfizetést, erőforráscsoportot és Storage-fiókot, amelyet az adataihoz szeretne fogadni. 
 
-![Tárolási beállítások cél](./media/target-storage-settings.png "adatméretét") 
+![Cél tárolási beállítások](./media/target-storage-settings.png "célhelyének tárolója") 
 
-Rendszeresen frissíti az adatokat kap, ellenőrizze, hogy engedélyezte a pillanatkép-beállítások. Vegye figyelembe, hogy a pillanatkép-beállítás ütemezés csak akkor jelenik meg, ha az adatszolgáltató beillesztette azt az adatok megosztása. 
+Az adatok rendszeres frissítésének engedélyezéséhez győződjön meg arról, hogy engedélyezi a pillanatkép-beállításokat. Vegye figyelembe, hogy ha az adatszolgáltató belefoglalta az adatmegosztásba, csak egy pillanatkép-beállításra vonatkozó ütemterv jelenik meg. 
 
-![Pillanatkép-beállítások](./media/snapshot-settings.png "pillanatkép-beállítások") 
+![Pillanatkép-beállítások](./media/snapshot-settings.png "Pillanatkép-beállításai") 
 
 Kattintson a *Mentés* gombra. 
 
-## <a name="trigger-a-snapshot"></a>Pillanatkép-trigger
+## <a name="trigger-a-snapshot"></a>Pillanatkép indítása
 
-Is aktiválhatja a kapott megosztások a pillanatkép -> Részletek lap választásával **eseményindító pillanatkép**. Itt az adatok teljes vagy növekményes pillanatképet is indíthat. Ha most először adatokat fogad az adatszolgáltató, válassza ki a teljes másolatát. 
+A kapott megosztások – > Részletek lapon elindíthat egy pillanatképet a **Pillanatkép indítása**lehetőség kiválasztásával. Itt aktiválhatja az adatok teljes vagy növekményes pillanatképét. Ha az első alkalommal fogadja az adatait az adatszolgáltatótól, válassza a teljes másolás lehetőséget. 
 
-![Az eseményindító pillanatkép](./media/trigger-snapshot.png "eseményindító pillanatkép") 
+![Trigger pillanatkép]-(./media/trigger-snapshot.png "trigger pillanatképe") 
 
-Ha a legutóbbi futtatás állapota van *sikeres*, nyissa meg a tárfiók fogadott adatok megtekintéséhez. 
+Ha a legutóbbi futtatási állapot *sikeres*, nyissa meg a Storage-fiókot a kapott adatértékek megtekintéséhez. 
 
-Melyik használt tárfiók ellenőrzéséhez válassza a **adatkészletek**. 
+A használt Storage-fiók megadásához válassza az **adatkészletek**lehetőséget. 
 
-![Fogyasztói adatkészletek](./media/consumer-datasets.png "fogyasztói adatkészlet leképezés") 
+![Fogyasztói adatkészletek](./media/consumer-datasets.png "fogyasztói adatkészletének leképezése") 
 
 ## <a name="view-history"></a>Előzmények megtekintése
-A pillanatképek előzményeinek megtekintéséhez navigáljon a kapott megosztások -> előzményei. Itt találja az elmúlt 60 nap során létrehozott összes pillanatképet előzményeit. 
+A pillanatképek előzményeinek megtekintéséhez navigáljon a fogadott megosztások – > előzmények elemre. Itt megtalálhatja az elmúlt 60 napban létrehozott összes pillanatkép előzményeit. 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban tanulással fogadja el, valamint egy Azure-adatok megosztása fogadása. Az Azure az adatok megosztása fogalmak kapcsolatos további információkért folytassa [fogalmak: Az Azure Data megosztása terminológia](terminology.md).
+Ebben az oktatóanyagban megtanulta, hogyan fogadhat és fogadhat Azure-adatmegosztást. Ha többet szeretne megtudni az Azure-beli adatmegosztási fogalmakról, folytassa a [Concepts: Az Azure adatmegosztási terminológiája @ no__t-0.

@@ -1,5 +1,5 @@
 ---
-title: Élő esemény és felhőalapú DVR Azure Media Services | Microsoft Docs
+title: Azure Media Services időeltolás és Live-to-VOD (videó igény szerint) használata | Microsoft Docs
 description: Ez a cikk ismerteti, hogy mi az élő kimenet, és hogyan használható a felhőalapú DVR.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231221"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338842"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>Cloud Digital Video Recorder (DVR) használata
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>Időeltolás és élő – VOD használata (igény szerinti videó)
 
 A Azure Media Services egy [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom megmarad az [eszköz](https://docs.microsoft.com/rest/api/media/assets) erőforrása által meghatározott tárolóban (a tároló a fiókjához csatolt Azure Storage-fiókban található). Az élő kimenet lehetővé teszi a kimenő élő adatfolyam bizonyos tulajdonságainak szabályozását is, például hogy a stream mekkora részét tárolja az archív rögzítés (például a Felhőbeli DVR kapacitása), és hogy a nézők megkezdhetik-e az élő stream megtekintését. A lemezen lévő archiválás körkörös archív "ablak", amely csak az élő kimenet **archiveWindowLength** tulajdonságában megadott tartalom mennyiségét tárolja. Az ablakon kívül eső tartalmat a rendszer automatikusan elveti a tárolóból, és nem helyreállítható. A archiveWindowLength érték egy ISO-8601 TimeSpan időtartamot jelöl (például PTHH: PP: MM), amely meghatározza a DVR kapacitását, és legalább 3 percen belül legfeljebb 25 óráig állítható be.
 
@@ -54,5 +54,5 @@ További információkért lásd:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Videók](subclip-video-rest-howto.md)kivágása.
+* [Videók kivágása](subclip-video-rest-howto.md).
 * [Az eszközökhöz tartozó szűrők definiálása](filters-dynamic-manifest-rest-howto.md).

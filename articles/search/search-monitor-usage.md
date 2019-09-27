@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640538"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327145"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Az erőforrás-felhasználás és a lekérdezési tevékenységek figyelése Azure Search
 
@@ -30,17 +30,16 @@ Az Áttekintés lapon beépített **használati** és **figyelési** szakaszt az
 
 A **használat** lapon az erőforrások rendelkezésre állása az aktuális [határértékekhez](search-limits-quotas-capacity.md)viszonyítva jelenik meg. Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektumára, illetve 50 MB tárterületre van korlátozva. Egy alapszintű vagy standard szolgáltatás magasabb korláttal rendelkezik, és ha megnöveli a partíciók számát, a maximális tárterület arányosan növekszik.
 
-![A használati állapot a](./media/search-monitor-usage/usage-tab.png
- "hatályos határértékek használati állapotához viszonyítva, a hatályos határértékekhez képest")
+A ![használati állapot a hatályos határértékekhez képest]@no__t 1Usage állapota a hatályos határértékekhez képest @ no__t-2
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Másodpercenkénti lekérdezések (QPS) és egyéb mérőszámok
 
 A **figyelés** lapon a percenként összesített mérőszámok (például keresési *lekérdezések másodpercenkénti száma* (QPS)) mozgóátlagai láthatók. 
-A *keresési késés* azt az időtartamot, ameddig a keresési szolgáltatás a keresési lekérdezések feldolgozásához szükséges, percenként összesítve. *Szabályozott keresési lekérdezések százalékos aránya* (nem látható) a szabályozott keresési lekérdezések százalékos aránya (percenként is összesítve).
+A *keresési késés* azt az időtartamot, ameddig a keresési szolgáltatás a keresési lekérdezések feldolgozásához szükséges, percenként összesítve. A *szabályozott keresési lekérdezések százalékos aránya* (nem látható) a szabályozott keresési lekérdezések százalékos aránya, percenként összesítve.
 
 Ezek a számok közelítve jelennek meg, és arra szolgálnak, hogy a rendszer milyen jól szolgálja ki a karbantartási kérelmeket. A tényleges QPS lehet magasabb vagy alacsonyabb, mint a portálon jelentett szám.
 
-![Lekérdezések másodpercenkénti tevékenysége](./media/search-monitor-usage/monitoring-tab.png "Lekérdezések másodpercenkénti tevékenysége")
+![Lekérdezések]másodpercenkénti tevékenység-(./media/search-monitor-usage/monitoring-tab.png "lekérdezések") másodpercenként
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -59,11 +58,11 @@ A következő táblázat összehasonlítja a naplók tárolásának lehetősége
 | Resource | Alkalmazási cél |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | A naplózott események és a lekérdezési mérőszámok az alábbi sémák alapján korreláltak az alkalmazás felhasználói eseményeivel. Ez az egyetlen olyan megoldás, amely felhasználói műveleteket vagy jeleket vesz igénybe, és a felhasználó által kezdeményezett keresésből származó eseményeket térképezi fel, az alkalmazás kódja által küldött szűrési kérelmek helyett. Ha ezt a módszert szeretné használni, másolja be a rendszerállapot-kódot a forrásfájlokba, hogy átirányítsa a kérés adatait a Application Insightsba. További információ: [Search Traffic Analytics](search-traffic-analytics.md). |
-| [Azure Monitor-naplók](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események naplózása egy Log Analytics munkaterületre történik. Futtathat lekérdezéseket egy munkaterületen, ha részletes információkat ad vissza a naplóból. További információ: Ismerkedés [a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) -naplókkal |
+| [Azure Monitor-naplók](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események naplózása egy Log Analytics munkaterületre történik. Futtathat lekérdezéseket egy munkaterületen, ha részletes információkat ad vissza a naplóból. További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események egy blob-tárolóba kerülnek, és JSON-fájlokban tárolódnak. A fájl tartalmának megtekintéséhez használjon JSON-szerkesztőt.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | A naplózott események és a lekérdezési metrikák a cikkben leírt sémák alapján. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
 
-A Azure Monitor naplók és a blob Storage is ingyenes megosztott szolgáltatásként érhető el, így ingyenesen kipróbálható az Azure-előfizetés élettartama. Application Insights ingyenesen regisztrálhatók és használhatók, amíg az alkalmazás adatainak mérete bizonyos korlátok között van (a részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/monitor/) ).
+A Azure Monitor naplók és a blob Storage is ingyenes szolgáltatásként érhető el, így ingyenesen kipróbálható az Azure-előfizetés élettartama. Application Insights ingyenesen regisztrálhatók és használhatók, amíg az alkalmazás adatainak mérete bizonyos korlátok között van (a részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/monitor/) ).
 
 A következő szakasz végigvezeti az Azure Blob Storage engedélyezésének és használatának lépésein a Azure Search műveletek által létrehozott naplózási adatok gyűjtéséhez és eléréséhez.
 
@@ -79,13 +78,13 @@ Ez a szakasz azt ismerteti, hogyan használható a blob Storage a naplózott ese
 
 2. Nyissa meg a keresési szolgáltatás áttekintés lapját. A bal oldali navigációs panelen görgessen lefelé a **figyelés** elemre, és kattintson a **figyelés engedélyezése**lehetőségre.
 
-   ![Figyelés engedélyezése](./media/search-monitor-usage/enable-monitoring.png "Figyelés engedélyezése")
+   ![](./media/search-monitor-usage/enable-monitoring.png "Figyelés") engedélyezésének engedélyezése
 
 3. Válassza ki az exportálni kívánt adatbevitelt: Naplók, metrikák vagy mindkettő. Átmásolhatja egy Storage-fiókba, elküldheti egy Event hubhoz, vagy exportálhatja Azure Monitor naplókba.
 
    A blob Storage-hoz való archiváláshoz csak a Storage-fióknak kell léteznie. A rendszer a tárolók és Blobok létrehozásához szükség lesz a naplófájlok exportálására.
 
-   ![Blob Storage-Archívum konfigurálása](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-Archívum konfigurálása")
+   ![Blob Storage-Archívum]konfigurálása(./media/search-monitor-usage/configure-blob-storage-archive.png "blob Storage-Archívum konfigurálása")
 
 4. Mentse a profilt.
 
@@ -96,7 +95,7 @@ A naplózás a profil mentésekor van engedélyezve. A tárolók csak akkor jön
 * insights-logs-operationlogs: a keresési forgalmi naplók
 * insights-mérőszámok – pt1m: metrikák
 
-**A tárolók a blob Storage-ban való megjelenítése előtt egy órával tartanak. A tárolók száma óránként egy blob.**
+@no__t – a 0It egy órát vesz igénybe, mielőtt a tárolók megjelenjenek a blob Storage-ban. A tárolók száma óránként egy blob. **
 
 A fájlok megtekintéséhez használhatja a [Visual Studio Code](#download-and-open-in-visual-studio-code) -ot vagy egy másik JSON-szerkesztőt is. 
 
@@ -159,7 +158,7 @@ A naplófájl megtekintéséhez bármely JSON-szerkesztőt használhat. Ha még 
 
 1. Azure Portal nyissa meg a Storage-fiókját. 
 
-2. A bal oldali navigációs panelen kattintson a **Blobok**elemre. Látnia kell az elemzéseket – **naplók – operationlogs** és elemzések – mérőszámok – **pt1m**. Ezeket a tárolókat a Azure Search hozza létre, amikor a rendszer a naplózási adatként a blob Storage-ba exportálja.
+2. A bal oldali navigációs panelen kattintson a **Blobok**elemre. Látnia kell az elemzéseket – **naplók – operationlogs** és elemzések – **mérőszámok – pt1m**. Ezeket a tárolókat a Azure Search hozza létre, amikor a rendszer a naplózási adatként a blob Storage-ba exportálja.
 
 3. Kattintson a mappa-hierarchiára, amíg el nem éri a. JSON fájlt.  A fájl letöltéséhez használja a helyi menüt.
 
@@ -177,4 +176,4 @@ A PowerShell vagy az Azure CLI használatával engedélyezéséhez tekintse a do
 
 ## <a name="next-steps"></a>További lépések
 
-A szolgáltatás felügyeletével és teljesítményével, [valamint](search-performance-optimization.md) a hangolási útmutatóval kapcsolatos további információkért a [Microsoft Azure felügyelheti a Search szolgáltatást](search-manage.md) .
+A szolgáltatás felügyeletével és [teljesítményével, valamint](search-performance-optimization.md) a hangolási útmutatóval kapcsolatos további információkért a [Microsoft Azure felügyelheti a Search szolgáltatást](search-manage.md) .

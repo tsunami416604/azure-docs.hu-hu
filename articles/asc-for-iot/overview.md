@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315915"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326728"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az Azure Security Center for IoT bemutatása
 
@@ -30,7 +30,7 @@ Egyesítheti a biztonsági felügyeletet, és engedélyezheti a teljes körű fe
 
 Válassza ki a zökkenőmentes ügynök nélküli megoldást, vagy használja ki az ügynök-alapú átfogó biztonságot, a IoT Azure Security Center a fenyegetések megelőzését és elemzését minden eszközről, IoT Edge és IoT Hubről a IoT eszközein keresztül.
 
-A több milliárd új eszköz csatlakozik az internethez, és integrálva van a mindennapi életünkbe és a vállalkozásaiba. a biztonsági operatív csapatoknak biztosítaniuk kell, hogy a biztonsági stratégiák elég gyorsan fejlődnek az új támadási felületek kihasználása érdekében. Mint bármely más rendszeren, a IoT-megoldás biztonságossá tételéhez a megvalósítás minden fázisában védelmet kell biztosítani. 
+Mivel a több milliárd új eszköz csatlakozik az internethez, és integrálva van a mindennapi életünkbe és a vállalkozásaiba, a biztonsági operatív csapatoknak biztosítaniuk kell, hogy a biztonsági stratégiák elég gyorsan fejlődnek az új támadási felületek lefedéséhez. Más rendszerekhez hasonlóan a IoT-megoldás teljes körű biztonságossá tételéhez a megvalósítás minden fázisában védelmet kell biztosítani. 
 
 Azure Security Center for IoT leegyszerűsíti a hibrid munkaterhelések védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások elleni védelmet, valamint intelligens veszélyforrások észlelését és reagálást tesz elérhetővé a peremen, a helyszínen, az Azure-ban és más felhők. 
 
