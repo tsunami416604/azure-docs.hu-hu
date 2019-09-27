@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **Az ACR erőforrás-azonosító formátuma a következő:** 
 
-/Subscriptions/< előfizetés-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/<előfizetés-d>/resourceGroups/<Resource-Group-Name>/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Ez a lépés több percet is igénybe vehet.
 

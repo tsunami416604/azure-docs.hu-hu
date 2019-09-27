@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598100"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218073"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
 
@@ -57,18 +57,20 @@ Az Azure használati adataiban elérhető egyéb információk módosultak:
 - Időtartam – 12 hónap vagy 36 hónap.
 - RINormalizationRatio – Elérhető az AdditionalInfo (További információk) alatt. Azt az arányt fejezi ki, hogy a foglalás milyen arányban jelenik meg a használati adatokban. Ha a példány méretrugalmassága engedélyezve van a foglalásban, akkor más méretekre is alkalmazható. Az érték azt az arányt mutatja, hogy a foglalás milyen arányban jelent meg a használati adatokban.
 
+[Lásd a mező definícióját](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Azure fogyasztási és foglalási használati adatok lekérése API használatával
 
 Az adatokat lekérheti az API használatával, vagy letöltheti azokat az Azure Portalról.
 
-Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list) a &quot;2019-04-01-preview&quot; API-verzióval. A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](billing-understand-your-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
+Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list). A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](billing-understand-your-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
 
 Az adatok nem érhetők el az [Enterprise-ügyfelek számára a jelentéskészítő API-kban található használati adatok alatt](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
 Íme, egy példahívás az API-hoz:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 Ha többet szeretne tudni az {enrollmentId} és {billingPeriodId} változókról, tekintse meg a [Használati adatok – lista](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API-cikket.

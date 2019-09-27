@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 8f2dbc84fe09c825d8ef25aabafba7a672220192
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121715"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300282"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Az Azure-előfizetés lejárt esedékességű tartozásának rendezése
+
+Ez a cikk a Microsoft Online Services Program-fiókkal rendelkező ügyfelekre vonatkozik.
 
 Ha a kifizetése nem érkezik meg, vagy azt nem tudjuk feldolgozni, előfordulhat, hogy kap egy e-mailt, vagy megjelenik egy értesítés az Azure Portalon vagy a Fiókközpontban.
 Amennyiben Ön a [Fiókadminisztrátor](billing-subscription-transfer.md#whoisaa), az [Azure Portalon](https://portal.azure.com) rendezheti a kiegyenlítetlen díjakat. Ha Önnek számlás fizetés van beállítva fizetési módként, küldje az utalást a számla alján megadott helyre.
@@ -43,6 +45,13 @@ Amennyiben Ön a [Fiókadminisztrátor](billing-subscription-transfer.md#whoisaa
 1. Ha a kiválasztott fizetési módnak szintén vannak a Microsoft-szolgáltatásokhoz kapcsolódó kiegyenlítetlen díjai, azok megjelennek a teljes kiegyenlítetlen egyenlegben. Ezeket a kiegyenlítetlen díjakat is rendeznie kell.
 1. Kattintson a **Fizetés** parancsra.
 
+## <a name="troubleshoot-declined-credit-card"></a>Elutasított hitelkártya hibáinak elhárítása
+
+Ha a hitelkártyát a pénzügyi intézet elutasította, lépjen kapcsolatba a pénzügyi intézettel a probléma megoldása érdekében. Lépjen kapcsolatba a bankkal, és ellenőrizze a következőket:
+- Engedélyezve vannak a kártyán a nemzetközi tranzakciók?
+- A kártyáján beállított hitelkeret vagy a kártya egyenlege lehetővé teszi az összeg kifizetését?
+- Engedélyezve vannak a kártyán az ismétlődő fizetések?
+
 ## <a name="not-getting-billing-email-notifications"></a>Nem kap számlázással kapcsolatos e-mail-értesítéseket?
 
 Amennyiben Ön a fiókadminisztrátor, [ellenőrizze, hogy melyik e-mail-cím van beállítva az értesítésekhez](billing-how-to-change-azure-account-profile.md). Javasoljuk, hogy olyan e-mail-címet adjon meg, amelyet rendszeresen ellenőriz. Amennyiben az e-mail-cím helyesen van megadva, ellenőrizze a levélszemét-mappát.
@@ -52,6 +61,7 @@ Amennyiben Ön a fiókadminisztrátor, [ellenőrizze, hogy melyik e-mail-cím va
 A szolgáltatás fel lesz függesztve, és az erőforrásai nem lesznek többé elérhetők. Az Azure-adatai a szolgáltatás felfüggesztését követő 90 nap után törölve lesznek. További tudnivalókért lásd a [Microsoft Adatvédelmi központ az adatok kezelését](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) ismertető cikkét.
 
 Ha tudja, hogy a befizetése fel lett dolgozva, de az előfizetése ennek ellenére még mindig le van tiltva, lépjen kapcsolatba az [Azure-támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
