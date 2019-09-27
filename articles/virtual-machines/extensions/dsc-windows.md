@@ -102,7 +102,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | Karakterlánc |
 | type | DSC | Karakterlánc |
-| typeHandlerVersion | 2,77 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Beállítások tulajdonság értékei
 
