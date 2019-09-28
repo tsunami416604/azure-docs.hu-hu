@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262206"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345292"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
-Az Azure Monitor az alkalmazások rendelkezésre állását és teljesítményét növeli a lehető legnagyobbra egy olyan átfogó megoldás biztosításával, amely a felhőből és a helyszíni környezetből származó telemetriaadatokat gyűjt, elemez, valamint műveleteket hajt végre az adatok alapján. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
+Azure Monitor maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Csak néhány példa arra, hogy mit tehet a Azure Monitor a következők:
+
+- Az alkalmazásokkal és függőségekkel kapcsolatos problémák észlelése és diagnosztizálása [Application Insightsokkal](app/app-insights-overview.md).
+- Az infrastruktúrával kapcsolatos problémák korrelálása a [Azure monitor for VMS](insights/vminsights-overview.md) és [Azure monitor a tárolók esetében](insights/container-insights-overview.md).
+- A monitorozási adatait [log Analytics](log-query/log-query-overview.md) a hibaelhárítás és a mélyreható diagnosztika érdekében végezheti el.
+- Az [intelligens riasztásokkal](platform/alerts-smartgroups-overview.md) és az [automatizált műveletekkel](platform/alerts-action-rules.md)nagy léptékű műveletek használhatók.
+- Vizualizációkat hozhat létre az Azure- [irányítópultok](learn/tutorial-logs-dashboards.md) és- [munkafüzetek](app/usage-workbooks.md)létrehozásával.
 
 ## <a name="overview"></a>Áttekintés
 A következő ábra a Azure Monitor magas szintű áttekintését nyújtja. A diagram középpontjában a metrikák és naplók adattárai találhatók, amelyek a Azure Monitor által használt két alapvető adattípus. A bal oldalon az ezeket az adattárakat feltöltő [megfigyelési adatok forrásai](platform/data-sources.md) . [](platform/data-platform.md) A jobb oldalon azokat a különböző függvényeket Azure Monitor hajtja végre, amelyeket az összegyűjtött adatok, például az elemzés, a riasztások és a külső rendszereknek való folyamatos átvitel végez.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Az Azure Monitor áttekintése](media/overview/overview.png)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266254"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345339"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Gyors útmutató: Az ügyféloldali kódtár testreszabása a Pythonhoz
 
@@ -33,9 +33,19 @@ Ismerkedjen meg a Python személyre szabott ügyféloldali kódtáraval. Az alá
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Beállítás
+## <a name="using-this-quickstart"></a>A rövid útmutató használata
 
-### <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
+
+A rövid útmutató használatának számos lépése van:
+
+* A Azure Portal hozzon létre egy személyre szabott erőforrást
+* A Azure Portal a személyre szabott erőforráshoz a **Beállítások** lapon módosítsa a modell frissítési gyakoriságát
+* Egy Kódszerkesztő alkalmazásban hozzon létre egy kódot tartalmazó fájlt, és szerkessze a kódot.
+* A parancssorban vagy a terminálban telepítse az SDK-t a parancssorból.
+* A parancssorban vagy a terminálban futtassa a fájl kódját.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://portal.azure.com/) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További részletekért tekintse meg, [hogyan hozhat létre Cognitive Services-erőforrást a Azure Portal használatával](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . További lehetőségek:
 
@@ -50,7 +60,7 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
 
-### <a name="install-the-python-library-for-personalizer"></a>A Python-könyvtár telepítése személyre szabáshoz
+## <a name="install-the-python-library-for-personalizer"></a>A Python-könyvtár telepítése személyre szabáshoz
 
 Telepítse a Pythonhoz készült személyre szabott ügyféloldali kódtárat a következő paranccsal:
 
@@ -60,9 +70,9 @@ pip install azure-cognitiveservices-personalizer
 
 Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
 
-### <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-A Azure Portal személyre szabott erőforrásában módosítsa a **modell frissítési gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
+A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
 
 ![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,7 +102,7 @@ Hozzon létre egy új Python-alkalmazást az előnyben részesített `sample.py`
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a `using` meglévő kódot a következő `using` irányelvekre:
+A projekt könyvtárában nyissa meg a **sample.py** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következőket:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 

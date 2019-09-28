@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314960"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345519"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -43,14 +43,14 @@ Letöltés | [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?Lin
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) kapcsolatos további információért kövesse ezt a hivatkozást
 
-## <a name="14x0"></a>1.4. X. 0
+## <a name="14180"></a>1.4.18.0
 
 >[!IMPORTANT]
 >A Azure AD Connect ezen verzióját néhány ügyfél láthatja, hogy a Windows-eszközeik némelyike vagy mindegyike eltűnik az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel az eszköz identitásait a feltételes hozzáférés engedélyezésekor. További információ: [Azure ad Connect 1.4. xx. x disappearnce-eszköz ismertetése](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Kiadás állapota
-9/10/2019: Csak automatikus frissítésre van kiadva
+9/25/2019: Kiadva az automatikus frissítéshez és a letöltéshez
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 - Az új hibaelhárítási eszközök segítenek a "felhasználó nem szinkronizált", "csoport nem szinkronizált" vagy "csoporttag nem szinkronizált" forgatókönyvek hibaelhárításában.

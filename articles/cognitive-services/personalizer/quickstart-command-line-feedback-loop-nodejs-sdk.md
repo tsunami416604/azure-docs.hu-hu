@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345245"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Gyors útmutató: Ügyféloldali kódtár testreszabása a Node. js-hez
 
@@ -31,11 +31,21 @@ Ismerkedjen meg a következővel: Node. js-hez készült személyre szabott ügy
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node. js](https://nodejs.org)jelenlegi verziója.
+* A [Node. js](https://nodejs.org) és a NPM jelenlegi verziója.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="using-this-quickstart"></a>A rövid útmutató használata
 
-### <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
+
+A rövid útmutató használatának számos lépése van:
+
+* A Azure Portal hozzon létre egy személyre szabott erőforrást
+* A Azure Portal a személyre szabott erőforráshoz a **Beállítások** lapon módosítsa a modell frissítési gyakoriságát
+* Egy Kódszerkesztő alkalmazásban hozzon létre egy kódot tartalmazó fájlt, és szerkessze a kódot.
+* A parancssorban vagy a terminálban telepítse az SDK-t a parancssorból.
+* A parancssorban vagy a terminálban futtassa a fájl kódját.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
 
@@ -50,7 +60,7 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
 
-### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
+## <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
 Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
@@ -64,7 +74,7 @@ Fájl létrehozásához futtassa a `npm init -y` parancsot. `package.json`
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>A Node. js-függvénytár telepítése személyre szabáshoz
+## <a name="install-the-nodejs-library-for-personalizer"></a>A Node. js-függvénytár telepítése személyre szabáshoz
 
 Telepítse a (z) Node. js-hez készült személyre szabott ügyféloldali kódtárat a következő paranccsal:
 
@@ -78,9 +88,9 @@ A további NPM-csomagok telepítése ehhez a rövid útmutatóhoz:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-A Azure Portal személyre szabott erőforrásában módosítsa a **modell frissítési gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
+A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
 
 ![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 

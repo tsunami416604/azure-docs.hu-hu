@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018518"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345548"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -94,6 +94,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Privát hivatkozás](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
+  * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ Azure Machine Learning számítási kvóták legújabb értékei a [Azure Machin
 
 #### <a name="expressroute-limits"></a>ExpressRoute korlátok
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Virtuális WAN-korlátok
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway korlátok
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266001"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345233"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár személyre szabása
 
@@ -33,9 +33,17 @@ Ismerkedés a .NET-hez készült személyre szabott ügyféloldali kódtár hasz
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="using-this-quickstart"></a>A rövid útmutató használata
 
-### <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
+A rövid útmutató használatának számos lépése van:
+
+* A Azure Portal hozzon létre egy személyre szabott erőforrást
+* A Azure Portal a személyre szabott erőforráshoz a **Beállítások** lapon módosítsa a modell frissítési gyakoriságát
+* Egy Kódszerkesztő alkalmazásban hozzon létre egy kódot tartalmazó fájlt, és szerkessze a kódot.
+* A parancssorban vagy a terminálban telepítse az SDK-t a parancssorból.
+* A parancssorban vagy a terminálban futtassa a fájl kódját.
+
+## <a name="create-a-personalizer-azure-resource"></a>Személyre szabott Azure-erőforrás létrehozása
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
 
@@ -50,15 +58,15 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 
 A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
-### <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
-A Azure Portal személyre szabott erőforrásában módosítsa a **modell frissítési gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
+A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
 
 ![Modell frissítési gyakoriságának módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
 Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendelkezésre modell, mert nem áll rendelkezésre jutalom API-hívás a betanításhoz. A rangsorban megjelenő hívások az egyes elemek esetében azonos valószínűségeket adnak vissza. Az alkalmazásnak mindig a RewardActionId kimenetével kell rangsorolnia a tartalmat.
 
-### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
+## <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>Az SDK telepítése
+## <a name="install-the-sdk"></a>Az SDK telepítése
 
 Telepítse az alkalmazás könyvtárában a .NET személyre szabott ügyféloldali kódtárat a következő paranccsal:
 
