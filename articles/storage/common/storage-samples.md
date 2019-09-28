@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743888"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350880"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -40,13 +40,7 @@ A Python-minták megismeréséhez töltse le a [Python Storage ügyféloldali k�
 ## <a name="nodejs-samples"></a>Node.js-példák
 A Node. js-minták megismeréséhez töltse le a [Node. js Storage ügyféloldali függvénytárát](https://github.com/Azure/azure-storage-node).
 
-* [BLOB feltöltője](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [BLOB feltöltése és letöltése](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [Folytatási token](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [Újrapróbálkozási szabályzat](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Közös hozzáférési aláírás](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [Snapshot](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [Tábla lekérdezése](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [Azure Storage-minták JavaScript/Node. js használatával](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++minták
 A C++ minták feltárásához töltse le a [ C++ Storage ügyféloldali kódtárat](https://www.nuget.org/packages/wastorage/) a NuGet webhelyről.
@@ -71,4 +65,5 @@ A következő cikkek indexelik az egyes mintákat (blob, fájl, üzenetsor, táb
 
 * [.NET-keretrendszert használó Azure Storage-minták](storage-samples-dotnet.md)
 * [Javát használó Azure Storage-minták](storage-samples-java.md)
+* [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * [Azure Storage-minták a Python használatával](storage-samples-python.md)

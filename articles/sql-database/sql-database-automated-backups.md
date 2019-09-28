@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 08/22/2019
-ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/26/2019
+ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904324"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350943"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -46,10 +46,10 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 
 | | Az Azure Portal | Azure PowerShell |
 |---|---|---|
-| Biztonsági másolatok megőrzésének módosítása | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Felügyelt példány](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Biztonsági másolatok megőrzésének módosítása | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Felügyelt példány](sql-database-automated-backups.md#managed-instance-database) | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | A biztonsági másolatok hosszú távú megőrzésének módosítása | [Önálló adatbázis](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Felügyelt példány – N/A  | [önálló adatbázis](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Felügyelt példány – N/A  |
 | Adatbázis visszaállítása az adott időpontban | [Önálló adatbázis](sql-database-recovery-using-backups.md#point-in-time-restore) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Törölt adatbázis visszaállítása | [Önálló adatbázis](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Törölt adatbázis visszaállítása | [Önálló adatbázis](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Adatbázis visszaállítása az Azure Blob Storage | Önálló adatbázis – N/A <br/>Felügyelt példány – N/A  | Önálló adatbázis – N/A <br/>[Felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig tartanak a biztonsági másolatok
@@ -114,15 +114,19 @@ Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Por
 > [!NOTE]
 > Ezek az API-k csak a PITR megőrzési időtartamot érintik. Ha a LTR-t konfigurálta az adatbázishoz, az nem lesz hatással. A LTR megőrzési időtartam (ok) módosításával kapcsolatos további információkért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 
-### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>PITR biztonsági mentés megőrzési időszakának módosítása a Azure Portal használatával
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>PITR biztonsági mentés megőrzési időszakának módosítása Azure Portal használatával
 
 Ha módosítani szeretné a PITR biztonsági mentés megőrzési időszakát a Azure Portal használatával, Navigáljon arra a kiszolgáló-objektumra, amelynek megőrzési időszakát módosítani szeretné a portálon, majd válassza ki a megfelelő beállítást, amely alapján módosítani kívánja a kiszolgáló objektumát.
 
-#### <a name="change-pitr-for-a-sql-database-server"></a>SQL Database-kiszolgáló PITR módosítása
+#### <a name="single-azure-sql-database"></a>Egyetlen Azure SQL Database
+
+Az Azure SQL Database-adatbázisok PITR biztonsági mentésének megőrzése a kiszolgáló szintjén történik. A kiszolgáló szintjén végzett módosítás az adott kiszolgálón lévő adatbázisokra vonatkozik. Ha Azure SQL Database-kiszolgáló PITR szeretné módosítani Azure Portalról, lépjen a kiszolgáló áttekintés paneljére, kattintson a biztonsági másolatok kezelése elemre a navigációs menüben, majd kattintson a megőrzés konfigurálása a navigációs sávon lehetőségre.
 
 ![PITR Azure Portal módosítása](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="change-pitr-for-a-managed-instance"></a>Felügyelt példány PITR módosítása
+#### <a name="managed-instance-database"></a>Felügyelt példány adatbázisa
+
+SQL Database felügyelt példány PITR biztonsági másolatának megtartásának módosítása külön adatbázis szintjén történik. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázisból a Azure Portalból, lépjen az egyes adatbázis-áttekintés panelre, majd kattintson a biztonsági mentés megőrzésének konfigurálása elemre a navigációs sávon.
 
 ![PITR Azure Portal módosítása](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 

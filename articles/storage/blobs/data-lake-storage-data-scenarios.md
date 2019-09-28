@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143000"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350026"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -31,7 +31,7 @@ Először hozzon létre egy Storage-fiókot és egy tárolót. Ezután adjon hoz
 
 A Data Lake Storage Gen2 fiók olyan Storage-fiók, amely hierarchikus névtérrel rendelkezik. 
 
-A létrehozáshoz tekintse [meg a gyors útmutató: Hozzon létre egy Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)Storage-fiókot.
+A létrehozáshoz tekintse meg a következőt: [Quickstart: Hozzon létre egy Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)Storage-fiókot.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
@@ -77,7 +77,7 @@ Ez a táblázat bemutatja, hogyan biztosíthat hozzáférést az egyes Azure-szo
 
 Az adott fájlokhoz és mappákhoz való hozzáférés biztosításához tekintse meg ezeket a cikkeket.
 
-* [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](https://review.docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+* [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 * [Fájlok és könyvtárak hozzáférés-vezérlési listája](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
@@ -87,7 +87,7 @@ A biztonság egyéb szempontjainak beállításával kapcsolatos további tudniv
 
 Ez a szakasz kiemeli a különböző adatforrásokat, valamint azokat a különböző módokat, amelyekben az adott adatot betöltheti egy Data Lake Storage Gen2-fiókba.
 
-![Adatbevitel a Data Lake Storage Gen2ba](./media/data-lake-storage-data-scenarios/ingest-data.png "Adatbevitel a Data Lake Storage Gen2ba")
+Betöltheti az adatbevitelt ![Data Lake Storage Gen2]az adatbevitelt(./media/data-lake-storage-data-scenarios/ingest-data.png "a Data Lake Storage Gen2ba")
 
 ### <a name="ad-hoc-data"></a>Ad hoc adatszolgáltatások
 
@@ -163,23 +163,23 @@ Az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Az
 
 Ha az adatai elérhetők a Data Lake Storage Gen2ban, a támogatott big data alkalmazásokkal is futtathatja az elemzést. 
 
-![Data Lake Storage Gen2ban lévő adatelemzés](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2ban lévő adatelemzés")
+Az adatelemzés ![Data Lake Storage Gen2 a](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2ban tárolt adatelemzések") során
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével adatelemzési feladatokat futtathat az Data Lake Storage Gen2 tárolt adatokon.
 
 |Eszköz | Útmutatás |
 |---|--|
 |Azure HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Rövid útmutató: Azure Data Lake Storage Gen2i adatelemzés Azure Databricks használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: Adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Rövid útmutató: Azure Data Lake Storage Gen2 adatai elemzése a Azure Databricks @ no__t-0 használatával<br><br>[Oktatóanyag: Adatok kinyerése, átalakítása és betöltése a Azure Databricks @ no__t-0 használatával|
 
 ## <a name="visualize-the-data"></a>Az adatok vizualizációja
 
 A szolgáltatások együttes használatával a Data Lake Storage Gen2ban tárolt adatvizualizációk is létrehozhatók.
 
-![Az Data Lake Storage Gen2ban lévő adatmegjelenítés](./media/data-lake-storage-data-scenarios/visualize-data.png "Az Data Lake Storage Gen2ban lévő adatmegjelenítés")
+![Adatmegjelenítés Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage Gen2")
 
 * A Azure Data Factory használatával elindíthatja az [adatok áthelyezését Data Lake Storage Gen2ról Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md)
-* Ezt követően integrálhatja a [Power BIt Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) segítségével vizuálisan jelenítheti meg az adatmegjelenítést.
+* Ezt követően [integrálhatja a Power BIt Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) segítségével vizuálisan jelenítheti meg az adatmegjelenítést.
 
 ## <a name="download-the-data"></a>Az adatgyűjtés letöltése
 
@@ -189,7 +189,7 @@ Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letöl
 
 * Az alkalmazások prototípusának kiépítése során az IDE-környezetekben tárolt adatfeldolgozási folyamatokat a helyi számítógépre töltheti le.
 
-![Kimenő adatok Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Kimenő adatok Data Lake Storage Gen2")
+![Kimenő adatok Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "kimenő adatokból Data Lake Storage Gen2")
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel adatok tölthetők le a Data Lake Storage Gen2ról.
 

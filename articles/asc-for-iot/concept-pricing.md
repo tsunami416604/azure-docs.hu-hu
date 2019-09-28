@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933802"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348522"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
@@ -34,20 +34,17 @@ A IoT díjszabási modell Azure Security Center két részből áll, és akkor s
 
 - A IoT Edge-vagy Leaf-eszközökről származó biztonsági üzeneteken alapuló, üzenetekkel bővített biztonsági képességek díja.
 
-  >[!Note]
-  > A biztonsági üzenetekben a IoT Hub kvóta-felhasználás is felmerül.
 
 További információ: [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Kapcsolódó költségek
 
-A IoT Azure Security Center két típusú társított költséggel rendelkezik, amelyek nem részei a közvetlen díjszabásnak:
+A IoT Azure Security Center kapcsolódó költségek, amelyek nem részei a közvetlen díjszabásnak:
 
-- IoT Hub kvóta-felhasználás
 
 - Tárolási költségek Log Analytics
 
-A kapcsolódó költségeket a beállítások módosításával csökkentheti bizonyos szolgáltatások leválasztásával.
+Az egyes megoldási funkciók leválasztásával csökkentheti a kapcsolódó költségeket. A beállítások módosításával letilthatja a beállításokat.
 
 Beállítások módosítása:
 
@@ -61,8 +58,6 @@ Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és kö
 
 |     | Használat | Megjegyzés |
 | --- | --- | --- |
-| **IoT Hub kvóta-felhasználás** |  |
-| [Eszköz exportálási](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) feladata (Twin export) | Naponta egyszer | _Twin metadata-gyűjtemény_ letiltása |
 | **Log Analytics Storage** |  |
 | Eszközökre vonatkozó javaslatok és riasztások| A szolgáltatás által létrehozott biztonsági javaslatok és riasztások | Nem kötelező |
 | Nyers biztonsági adatértékek| A biztonsági ügynökök által gyűjtött IoT-eszközökből származó nyers biztonsági adatok | A _nyers eszközök biztonsági eseményeinek tárolása_ letiltva |

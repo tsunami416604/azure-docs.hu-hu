@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035709"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350631"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
-Az automatizált gépi tanulás, más néven autoML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML a [Microsoft kutatási részlegének](https://arxiv.org/abs/1705.05355)áttörésén alapul.
+Az automatizált gépi tanulás, más néven automatizált ML, az időigényes automatizálási folyamat, a gépi tanulási modellek fejlesztésének ismétlődő feladatai. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. Az automatikus ML a [Microsoft kutatási részlegének](https://arxiv.org/abs/1705.05355)áttörésén alapul.
 
 A hagyományos gépi tanulási modell fejlesztése erőforrás-igényes, és jelentős tartományi ismereteket és időt igényel, hogy több tucat modellt hozzon létre és hasonlítson össze. Alkalmazzon automatikus ML-t, ha azt szeretné, hogy a Azure Machine Learning egy modell betanítását és finomhangolását a megadott cél metrika használatával. A szolgáltatás ezután megismétli az ML-algoritmusokat a funkciók kiválasztásával párosítva, ahol minden egyes iteráció egy modellt hoz létre egy képzési pontszámmal. Minél magasabb a pontszám, annál jobb lesz a modellnek az adataihoz igazodni.
 
@@ -115,6 +115,36 @@ Az automatizált gépi tanulás támogatja az Ensemble-modelleket, amelyek alap�
 A rendezett Ensemble inicializálásával eldöntheti, hogy mely modelleket kívánja használni az Ensemble-ban, a [Caruana Ensemble kiválasztási algoritmusa](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) . Ez az algoritmus magas szinten inicializálja az összevonást akár 5 modellel a legjobb egyéni pontszámokkal, és ellenőrzi, hogy ezek a modellek a legjobb pontszámot követő 5%-os küszöbértéken belül vannak-e a gyenge kezdeti együttesek elkerüléséhez. Ezután minden egyes Ensemble-iterációhoz új modellt adnak hozzá a meglévő együtteshez, az eredményül kapott pontszámot pedig kiszámítjuk. Ha egy új modell javította a meglévő Ensemble-pontszámot, a rendszer frissíti az Ensemble-t, hogy tartalmazza az új modellt.
 
 Lásd: [útmutató](how-to-configure-auto-train.md#ensemble) az alapértelmezett Ensemble beállításainak módosításához az automatikus gépi tanulásban.
+
+## <a name="imbalance"></a>Kiegyensúlyozatlan adathalmazok
+
+A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában az adatokon alapuló, nem kiegyensúlyozott adatokra hivatkozik, és olyan adatokra utal, amelyek az egyes osztályokba tartozó megfigyelések aránytalan arányát tartalmazzák. Ez az egyensúlyhiány a modell pontosságának hamisan érzékelt pozitív hatását eredményezheti, mivel a bemeneti adatok az egyik osztályhoz képest elfogultak, ami azt eredményezi, hogy a betanított modell a torzítást utánozza. 
+
+A Machine learning-munkafolyamatok egyszerűsítésének céljaként az automatikus ML beépített képességekkel rendelkezik, amelyek segítenek a kiegyensúlyozatlan adatmennyiségek, például a 
+
+- Egy **súlyozási oszlop**: az automatikus ml a súlyozott oszlopot bemenetként támogatja, ami az adatokban lévő sorok súlyozását eredményezi, ami akár több vagy kevesebb "fontos" osztályt is tehet. Példa a [jegyzetfüzetre](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/sample-weight/auto-ml-sample-weight.ipynb) 
+
+- Az automatikus ML által használt algoritmusok megfelelően kezelhetik az akár 20:1-es egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály 20 alkalommal több sort tartalmaz az adatmennyiségnél, mint a legkisebb közös osztály.
+
+### <a name="identify-models-with-imbalanced-data"></a>A kiegyensúlyozatlan adattal rendelkező modellek azonosítása
+
+Mivel a besorolási algoritmusokat általában pontossággal értékelik ki, a modell pontossági pontszámának ellenőrzése jó módszer annak azonosítására, hogy az érintett adatok nem egyensúlyban vannak-e. Valóban nagy pontossággal vagy nagyon alacsony pontossággal rendelkezett bizonyos osztályok esetében?
+
+Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
+
+Diagram| Leírás
+---|---
+[Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
+[Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
+[ROC-görbék](how-to-understand-automated-ml.md#roc)| Kiértékeli a helyes feliratok arányát a hamis pozitív feliratok arányával.
+
+### <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatmennyiség kezelése 
+
+Az alábbi módszerek további lehetőségeket biztosítanak az automatikus ML-n kívüli, kiegyensúlyozatlan adatmennyiség kezelésére. 
+
+- Újramintavételezés még az osztályra is, akár a kisebb osztályok mintavételezésével vagy a nagyobb osztályok mintavételezésével. Ezek a módszerek szaktudást igényelnek a feldolgozáshoz és az elemzéshez.
+
+- Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez. 
 
 ## <a name="use-with-onnx-in-c-apps"></a>Használat a ONNX C# alkalmazásokban
 

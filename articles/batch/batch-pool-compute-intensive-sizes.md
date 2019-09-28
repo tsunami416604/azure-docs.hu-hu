@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094918"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350128"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
 
@@ -86,7 +86,7 @@ A Batch-készlet speciális virtuálisgép-méretének konfigurálásához több
 
     * [Ubuntu-kiszolgáló (GPU-val és RDMA-illesztőprogramokkal) Azure Batch Container poolokhoz](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Hozzon létre egy [Egyéni Windows vagy Linux rendszerű](batch-custom-images.md) virtuálisgép-rendszerképet, amelyen telepítette az illesztőprogramokat, a szoftvereket vagy a virtuális gép méretéhez szükséges egyéb beállításokat. 
+* Hozzon létre egy [Egyéni Windows vagy Linux rendszerű](batch-sig-images.md) virtuálisgép-rendszerképet, amelyen telepítette az illesztőprogramokat, a szoftvereket vagy a virtuális gép méretéhez szükséges egyéb beállításokat. 
 
 * Hozzon létre egy batch- [alkalmazáscsomag](batch-application-packages.md) egy tömörített illesztőprogramból vagy egy alkalmazás-telepítőből, és konfigurálja a Batch-t a csomag a készlet csomópontjaira történő telepítéséhez és az egyes csomópontok létrehozásakor történő telepítéséhez. Ha például az alkalmazáscsomag egy telepítő, hozzon létre egy [indítási tevékenység](batch-api-basics.md#start-task) parancssort az alkalmazás csendes telepítéséhez az összes készlet-csomóponton. Ha a munkaterhelés egy adott illesztőprogram-verziótól függ, érdemes lehet egy alkalmazáscsomag és egy készlet indítási feladatát használni.
 
@@ -123,9 +123,9 @@ Ha a CUDA-alkalmazásokat Linux NC-csomópontok készletén szeretné futtatni, 
 1. Az Ubuntu 16,04 LTS rendszert futtató Azure NC sorozatú virtuális gép üzembe helyezése. Hozza létre például a virtuális gépet az USA déli középső régiójában. 
 2. Adja hozzá az](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) NVIDIAGPU-illesztőprogramokbővítménytavirtuálisgéphezaAzurePortal,azAzure-előfizetéshezcsatlakozóügyfélszámítógép[vagy Azure Cloud Shell használatával. Azt is megteheti, hogy a virtuális géphez való kapcsolódáshoz és a [CUDA-illesztőprogramok manuális telepítéséhez](../virtual-machines/linux/n-series-driver-setup.md) kövesse a lépéseket.
-3. A Batch szolgáltatáshoz tartozó [Pillanatkép és egyéni linuxos virtuálisgép-rendszerkép](batch-custom-images.md) létrehozásához kövesse a lépéseket.
+3. A Batch szolgáltatáshoz tartozó megosztott képkatalógus [rendszerképének](batch-sig-images.md) létrehozásához kövesse az alábbi lépéseket.
 4. Hozzon létre egy batch-fiókot egy olyan régióban, amely támogatja az NC virtuális gépeket.
-5. A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet [az egyéni rendszerkép](batch-custom-images.md) és a kívánt számú csomópont és skála alapján. A következő táblázat a rendszerkép minta-készletének beállításait mutatja be:
+5. A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet [az egyéni rendszerkép](batch-sig-images.md) és a kívánt számú csomópont és skála alapján. A következő táblázat a rendszerkép minta-készletének beállításait mutatja be:
 
 | Beállítás | Value |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Ha Windows MPI-alkalmazásokat szeretne futtatni az Azure H16r virtuálisgép-cs
 ) parancs futtatásával egy olyan ügyfélszámítógépről, amely csatlakozik az Azure-előfizetéséhez, vagy használja a Azure Cloud shell. 
 1. Hozzon Távoli asztal kapcsolódni a virtuális géphez.
 1. Töltse le [](https://www.microsoft.com/download/details.aspx?id=57467) a Microsoft MPI legújabb verziójához készült telepítőcsomagot (MSMpiSetup. exe), és telepítse a Microsoft MPI-t.
-1. A Batch szolgáltatáshoz tartozó [Pillanatkép és egyéni Windowsos virtuálisgép-rendszerkép](batch-custom-images.md) létrehozásához kövesse a lépéseket.
-1. A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet [az egyéni rendszerkép](batch-custom-images.md) és a kívánt számú csomópont és skála alapján. A következő táblázat a rendszerkép minta-készletének beállításait mutatja be:
+1. A Batch szolgáltatáshoz tartozó megosztott képkatalógus [rendszerképének](batch-sig-images.md) létrehozásához kövesse az alábbi lépéseket.
+1. A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet [a megosztott rendszerkép](batch-sig-images.md) -katalógus és a kívánt számú csomópont és skála alapján. A következő táblázat a rendszerkép minta-készletének beállításait mutatja be:
 
 | Beállítás | Value |
 | ---- | ---- |

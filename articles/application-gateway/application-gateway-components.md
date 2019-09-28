@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597377"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348939"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
 
@@ -28,17 +28,17 @@ Az előtérbeli IP-cím az Application gatewayhöz tartozó IP-cím. Az Applicat
 
 Az Azure Application Gateway v2 SKU konfigurálható úgy, hogy mindkét statikus belső IP-címet és statikus nyilvános IP-címet, vagy csak a statikus nyilvános IP-címet támogassa. Nem konfigurálható úgy, hogy csak a statikus belső IP-címet támogassa.
 
-A v1 SKU beállítható úgy, hogy támogassa a statikus belső IP-címet és a dinamikus nyilvános IP-címet, csak a statikus belső IP-címet, vagy csak a dinamikus nyilvános IP-címet, vagy csak a dinamikus magánhálózati IP-címet vagy a dinamikus nyilvános IP-címet, valamint a dinamikus magánhálózati IP A Application Gateway dinamikus IP-címe nem változik egy futó átjárón. Csak az átjáró leállításakor vagy indításakor lehet megváltoztatni. Nem változtatja meg a rendszerhibákat, a frissítéseket, az Azure-gazdagépek frissítéseit stb. 
+A v1 SKU beállítható úgy, hogy támogassa a statikus vagy dinamikus belső IP-címet és a dinamikus nyilvános IP-címet. A Application Gateway dinamikus IP-címe nem változik egy futó átjárón. Csak az átjáró leállításakor vagy indításakor lehet megváltoztatni. Nem változtatja meg a rendszerhibákat, a frissítéseket, az Azure-gazdagépek frissítéseit stb. 
 
 Az Application gatewayhez társított DNS-név nem változik az átjáró életciklusa során. Ennek eredményeképpen CNAME aliast kell használnia, és az Application Gateway DNS-címeként kell mutatnia.
 
 ## <a name="listeners"></a>Figyelők
 
-A figyelő egy logikai entitás, amely ellenőrzi a bejövő kapcsolatok kéréseit. A figyelő fogad egy kérelmet, ha a kérelemhez társított protokoll, port, állomás és IP-cím megegyezik a figyelő konfigurációjával társított elemekkel.
+A figyelő egy logikai entitás, amely ellenőrzi a bejövő kapcsolatok kéréseit. A figyelő fogad egy kérelmet, ha a kérelemhez társított protokoll, port, állomásnév és IP-cím megegyezik a figyelő konfigurációjával társított elemekkel.
 
 Az Application Gateway használata előtt legalább egy figyelőt hozzá kell adnia. Az Application gatewayhez több figyelő is tartozhat, és ezekhez a protokollhoz is használható.
 
-Miután egy figyelő észleli az ügyfelektől érkező beérkező kéréseket, az Application Gateway ezeket a kéréseket a háttér-készlet tagjaihoz irányítja. Az Application Gateway a beérkező kérést fogadó figyelőhöz megadott útválasztási szabályokat használja.
+Miután egy figyelő észleli az ügyfelektől érkező beérkező kéréseket, az Application Gateway ezeket a kéréseket a szabályban konfigurált háttér-készlet tagjaira irányítja.
 
 A figyelők a következő portokat és protokollokat támogatják.
 
@@ -49,12 +49,13 @@ Egy port, ahol a figyelő figyeli az ügyfél kérelmét. Az 1 és 65502 közöt
 ### <a name="protocols"></a>Protokollok
 
 A Application Gateway négy protokollt támogat: HTTP, HTTPS, HTTP/2 és WebSocket:
+>[!NOTE]
+>A HTTP/2 protokoll támogatása csak az Application Gateway-figyelőkhöz csatlakozó ügyfelek számára érhető el. A háttér-kiszolgálói készletekkel folytatott kommunikáció mindig HTTP/1.1-en keresztül történik. Alapértelmezés szerint a HTTP/2 támogatás le van tiltva. Dönthet úgy is, hogy engedélyezi.
 
 - A figyelő konfigurációjában adjon meg a HTTP és a HTTPS protokoll közötti értéket.
-- A WebSockets [és a http/2 protokollok](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) támogatása natív módon történik, és a WebSocket- [támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
-- A HTTP/2 protokoll támogatása csak az Application Gateway-figyelőkhöz csatlakozó ügyfelek számára érhető el. A háttér-kiszolgálói készletekkel való kommunikáció HTTP/1.1-n keresztül történik. Alapértelmezés szerint a HTTP/2 támogatás le van tiltva. Dönthet úgy is, hogy engedélyezi.
+- A [WebSockets és a http/2 protokollok](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) támogatása natív módon történik, és a [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) alapértelmezés szerint engedélyezve van. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. Websocketek használata HTTP-és HTTPS-figyelővel.
 
-HTTPS-figyelő használata az SSL-lezáráshoz. Egy HTTPS-figyelő kiszervezi a titkosítást és a visszafejtést az Application Gateway felé, így a webkiszolgálók terhelése nem terheli a terhelést. Az alkalmazások Ezután szabadon az üzleti logikára koncentrálnak.
+HTTPS-figyelő használata az SSL-lezáráshoz. Egy HTTPS-figyelő kiszervezi a titkosítási és a visszafejtési munkát az Application Gateway felé, így a webkiszolgálók nem terhelik a terhelést.
 
 ### <a name="custom-error-pages"></a>Egyéni hibalapok
 
@@ -80,7 +81,7 @@ Application Gateway a figyelőket a megjelenő sorrendben dolgozza fel. Ha az al
 
 A kérelem-útválasztási szabály az Application Gateway egyik fő összetevője, mert meghatározza, hogyan irányíthatja át a forgalmat a figyelőn. A szabály köti a figyelőt, a háttér-kiszolgáló készletet és a háttérbeli HTTP-beállításokat.
 
-Amikor egy figyelő fogad egy kérelmet, a kérések útválasztási szabálya továbbítja a kérést a háttérnek, vagy máshová irányítja át. Ha a kérést továbbítják a háttérbe, a kérelem útválasztási szabálya határozza meg, hogy melyik háttér-kiszolgáló készletet szeretné továbbítani. Emellett a kérelem útválasztási szabálya azt is meghatározza, hogy a kérésben szereplő fejléceket át kell-e írni. Egy figyelő egyetlen szabályhoz is csatolható.
+Amikor egy figyelő fogad egy kérelmet, a kérések útválasztási szabálya továbbítja a kérést a háttérnek, vagy máshová irányítja át. Ha a kérést továbbítják a háttérbe, a kérelem útválasztási szabálya határozza meg, hogy melyik háttér-kiszolgáló készletet szeretné továbbítani. A kérelem útválasztási szabálya azt is meghatározza, hogy a kérésben szereplő fejléceket át kell-e írni. Egy figyelő egyetlen szabályhoz is csatolható.
 
 A kérések útválasztási szabályainak két típusa létezik:
 
@@ -125,7 +126,7 @@ Ez az összetevő a következőket is használja:
 A háttér-készlet átirányítja a kérést a háttér-kiszolgálókra. A háttér-készletek a következőket tartalmazhatják:
 
 - Hálózati adapterek (NIC-k)
-- Virtuálisgép-méretezési csoportok
+- virtuálisgép-méretezési csoportok
 - Nyilvános IP-címek
 - Belső IP-címek
 - TELJES TARTOMÁNYNÉV

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999444"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350642"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulás eredményeinek megismerése
 
@@ -30,7 +30,7 @@ További információk az alábbiakról:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Hozzon létre egy automatizált gépi tanulási kísérletet az SDK-val, a Azure Portal vagy a munkaterület kezdőlapján (előzetes verzió).
+* Hozzon létre egy kísérletet az automatizált gépi tanulás futtatásához, vagy az SDK-val a Azure Portal vagy a munkaterület kezdőlapján (előzetes verzió).
 
     * Az SDK használata [besorolási modell](how-to-auto-train-remote.md) vagy regressziós [modell](tutorial-auto-train-models.md) létrehozásához
     * A megfelelő adatfeltöltés használatával hozzon létre egy besorolási vagy regressziós modellt a [Azure Portal vagy a munkaterület kezdőlapján (előzetes verzió)](how-to-create-portal-experiments.md) .
@@ -106,7 +106,7 @@ Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mi
 
 1\. példa: Gyenge pontosságú besorolási modell ![gyenge pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-2\. példa: Nagy pontossággal (ideális) ![rendelkező besorolási modell nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+2\. példa Nagy pontossággal (ideális) ![rendelkező besorolási modell nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 
 ### <a name="precision-recall-chart"></a>Pontosság-visszahívási diagram
@@ -117,7 +117,7 @@ A pontosság jelöli, hogy arra, hogy az összes példány megfelelően címkéz
 
 1\. példa: Alacsony pontosságú és ![alacsony szintű visszahívásos besorolási modellt tartalmazó besorolási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-2\. példa: Besorolási modell ~ 100% pontossággal és ~ 100% visszahívás (ideális) ![a besorolási modell nagy pontossággal és visszahívás](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+2\. példa Besorolási modell ~ 100% pontossággal és ~ 100% visszahívás (ideális) @no__t 0A besorolási modell nagy pontossággal és visszahívás @ no__t-1
 
 ### <a name="roc"></a>ROC
 
@@ -125,7 +125,7 @@ Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott c
 
 1\. példa: Alacsony ![igaz címkéket és magas hamis címkéket tartalmazó besorolási modell alacsony igaz címkékkel és magas hamis címkékkel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-2\. példa: Egy magas igaz címkével és alacsony hamis ![címkékkel rendelkező besorolási modell magas igaz címkékkel és alacsony hamis címkékkel rendelkező besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+2\. példa Egy magas igaz címkével és alacsony hamis ![címkékkel rendelkező besorolási modell magas igaz címkékkel és alacsony hamis címkékkel rendelkező besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
 
 ### <a name="lift-curve"></a>Átemelés görbévé
 
@@ -135,7 +135,7 @@ Lift diagramok segítségével egy osztályozási modell teljesítményének ér
 
 1\. példa: A modell rosszabb, mint egy véletlenszerű kiválasztási ![modell, amely rosszabb, mint egy véletlenszerű kiválasztási modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
 
-2\. példa: A modell jobb, mint egy véletlenszerű kiválasztási ![modell, amely jobb teljesítményű besorolási modellt végez](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+2\. példa A modell jobb, mint egy véletlenszerű kiválasztási ![modell, amely jobb teljesítményű besorolási modellt végez](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 
 ### <a name="gains-curve"></a>Nyereség görbévé
 
@@ -145,7 +145,7 @@ A halmozott nyereség diagram segítségével válassza ki a besorolást megszak
 
 1\. példa: Egy besorolási modell minimális ![nyereséggel rendelkező besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-2\. példa: Besorolási modell ![jelentős nyereséggel rendelkező besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+2\. példa Besorolási modell ![jelentős nyereséggel rendelkező besorolási modellel](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 
 ### <a name="calibration-plot"></a>Hitelesítési diagram
 
@@ -155,7 +155,7 @@ Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szol
 
 1\. példa: Egy jól kalibrált modell ![ jobban kalibrált modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-2\. példa: Egy több mint ![magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
+2\. példa Egy több mint ![magabiztos modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ## <a name="regression"></a>Regressziós eredmények
 
@@ -192,7 +192,7 @@ Minden egyes futás után megjelenik egy előre jelzett és minden egyes regress
 
 1\. példa: Alacsony pontosságú regressziós modell előrejelzése ![egy regressziós modellt, amely alacsony pontossággal rendelkezik a jóslatokban](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-2\. példa: Egy regressziós modell, amely nagy pontossággal [ ![van ellátva az előrejelzések szerint a regressziós modellben nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+2\. példa Egy regressziós modell, amely nagy pontossággal [ ![van ellátva az előrejelzések szerint a regressziós modellben nagy pontossággal](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
@@ -202,7 +202,7 @@ A fennmaradó megfigyelt y – az előre jelzett y jelöli. A hibahatáron az al
 
 1\. példa: Egy regressziós modell, amely torzítást ![tartalmaz a hibákhoz tartozó SA regressziós modellben](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-2\. példa: Egy regressziós modell, amely még nagyobb mennyiségű hibát ![tartalmaz, egy regressziós modell a hibák még összetettebb eloszlásával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
+2\. példa Egy regressziós modell, amely még nagyobb mennyiségű hibát ![tartalmaz, egy regressziós modell a hibák még összetettebb eloszlásával](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 ## <a name="explain-model"></a>Modell-értelmező és-funkció fontossága
 

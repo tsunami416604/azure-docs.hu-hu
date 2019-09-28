@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086777"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350106"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -38,7 +38,8 @@ A **Cloud Services-konfiguráció** *kizárólag* windowsos számítási csomóp
 A **virtuálisgép-konfiguráció** Linux-és Windows-rendszerképeket is biztosít a számítási csomópontokhoz. Az elérhető számítási csomópontok méretei az Azure-beli [virtuális gépek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) és az Azure-ban (Windows) lévő [virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) szerint vannak felsorolva. Ha virtuális gépek konfigurációs csomópontjait tartalmazó készletet hoz létre, meg kell adnia a csomópontok méretét, a virtuális gép képhivatkozását és a csomópontokra telepítendő batch-csomóponti ügynök SKU-t.
 
 ### <a name="virtual-machine-image-reference"></a>Virtuális gép képének referenciája
-A Batch szolgáltatás [virtuálisgép-méretezési csoportokat](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ a számítási csomópontok biztosításához a virtuális gép konfigurációjában. Megadhat egy rendszerképet az [Azure piactéren][vm_marketplace], vagy megadhat egy előkészített egyéni rendszerképet. További információ az egyéni lemezképekről: [készlet létrehozása egyéni rendszerképpel](batch-custom-images.md).
+
+A Batch szolgáltatás [virtuálisgép-méretezési csoportokat](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ a számítási csomópontok biztosításához a virtuális gép konfigurációjában. Megadhat egy rendszerképet az [Azure piactéren][vm_marketplace], vagy megadhat egy előkészített egyéni rendszerképet. További információ az egyéni lemezképekről: [készlet létrehozása a megosztott rendszerkép](batch-sig-images.md)-katalógussal.
 
 A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adnia a virtuális gép rendszerképének tulajdonságait. A virtuálisgép-rendszerkép hivatkozásának létrehozásakor a következő tulajdonságokat kell megadnia:
 

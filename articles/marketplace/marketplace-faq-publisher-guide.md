@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace – gyakori kérdések
-description: Válaszok az Microsoft Azure Marketplace-szel kapcsolatos gyakori kérdésekre
+title: Microsoft kereskedelmi piactér – gyakori kérdések
+description: Válaszok az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori kérdésekre
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350382"
 ---
-# <a name="marketplace-faqs"></a>Marketplace – gyakori kérdések
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
-Válaszok a Microsoft Azure Marketplace kapcsolatos gyakori kérdésekre.
+Válaszok az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori kérdésekre.
 
 ## <a name="faq-for-customers"></a>GYIK ügyfelek számára
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Amit tudni kell az Azure Marketplace-ről
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Mit kell tudni az Azure Marketplace-ről és a Microsoft AppSource
 
 **Mi az Azure Marketplace?**
 
@@ -253,9 +253,26 @@ A meglévő előfizetéshez hozzáadott licencek az előfizetés hátralévő id
 
 A megszakított licencek a jelen GYIK-ban található visszatérítési szabályzat hatálya alá esnek.  Az összes megszakított licenc azonnal törlődik a fiókból, és többé nem lesz használható.
 
+**Támogatottak-e a felhasználáson alapuló ajánlatok?**
+
+Bármilyen, felhasználáson alapuló díj – akár óránkénti, akár egyéni mérőszámok – nem lehet visszatéríteni a lemondás útján. A felhasználás után a díjakat a Microsoft kereskedelmi platformja dolgozza fel, és a szolgáltatással kapcsolatos bármilyen minőségi kérdés a Microsoft rendszerein kívülre kerül a kiadó és az ügyfél között. Az átalánydíjas díjszabást és a mért számlázást támogató ajánlatok a standard visszatérítési szabályzatot követik a átalánydíjas díjakért.
+
+**Lehetséges a csomagok középtávú módosítása?**
+
+Nem, a havi és az éves közötti váltás nem lehetséges.
+
+**Vásárolhatnak egy ügyfelet két csomagból ugyanabból az ajánlatból?**
+
+Igen, lehetséges, hogy az ügyfél két, egyazon ajánlatból származó csomagját egyszerre használja.
+
+**A visszatérítési és tervezési szabályzatok eltérőek a kirakattól?**
+
+Nem, az üzleti házirendek konzisztensek az Azure piactéren és a Microsoft AppSourceon. Ha a felhőalapú megoldás egyik partnere eladja a programot, a partner más szabályzatot is kikényszerítheti az ügyfelek számára.
+
+
 ## <a name="faq-for-publishers"></a>A kiadókkal kapcsolatos gyakori kérdések
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Amit tudni kell az Azure Marketplace-ről
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Mit kell tudni az Azure Marketplace-ről és a Microsoft AppSource
 
 **Mi az Azure Marketplace?**
 

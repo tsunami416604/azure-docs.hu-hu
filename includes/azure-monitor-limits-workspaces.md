@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210237"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350858"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210237"
 | Kapacitású régiók | USA nyugati középső régiója | Ebben a régióban jelenleg nem hozhat létre új munkaterületet, mert az átmeneti kapacitási korláttal rendelkezik. Ez a korlát 2019 október végére tervezett. |
 | Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
 
-**Adatfeldolgozási sebesség**
+**Adatfeldolgozási kötetek aránya**
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **500 MB/perc/** munkaterületre van állítva. Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
+
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az Azure-erőforrásokból a [diagnosztikai beállítások](../articles/azure-monitor/platform/diagnostic-settings.md) használatával elküldett adatokra vonatkozó alapértelmezett adatfeldolgozási sebesség legfeljebb **6 GB/perc/** munkaterület. Ez egy hozzávetőleges érték, mivel a tényleges méret eltérő lehet az adattípusok között a napló hosszától és a tömörítési aránytól függően. Ez a korlát nem vonatkozik az ügynököktől vagy adatgyűjtő [API](../articles/azure-monitor/platform/data-collector-api.md)-ból továbbított adatokra.
+
+Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
  
 Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
 

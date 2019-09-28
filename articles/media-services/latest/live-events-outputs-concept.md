@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb158490bd8a8520e101dbe321b8594cad059f9
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309664"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350368"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -35,7 +35,7 @@ Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az �
 
 Az [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) a következő két típus egyike lehet: átmenő és élő kódolás. A típusok beállítása a [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
 
-* **LiveEventEncodingType. None** – a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményen. 
+* **LiveEventEncodingType. None** – a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyam további feldolgozás nélkül halad át az élő eseményen. 
 * **LiveEventEncodingType. Standard** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás streamet hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat fog kódolni.
 * **LiveEventEncodingType. Premium1080p** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét. 
 
@@ -66,7 +66,9 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 > [!NOTE]
 > Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg található a 720p-ban (ha a standard Live Encoder esetében egy beállításkészletet igényel) vagy 1080p (ha a Premium1080p Live Encoder számára előre beállított értéket kér), és legfeljebb 6 réteget.
 
-## <a name="live-event-creation-options"></a>Élő esemény-létrehozási beállítások
+## <a name="creating-live-events"></a>Élő események létrehozása 
+
+### <a name="options"></a>Beállítások
 
 Élő események létrehozásakor a következő beállításokat adhatja meg:
 
@@ -77,7 +79,14 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 * IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az élő esemény Videójának beolvasása. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címnek a következő formátumok egyikében kell lennie: IpV4-címek 4 számmal, CIDR címtartomány.
 
     Ha bizonyos IP-címeket szeretne engedélyezni a saját tűzfalakon, vagy szeretné korlátozni az élő eseményekre vonatkozó adatokat az Azure-beli IP-címekre, töltsön le egy JSON-fájlt az [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653)közül. A fájllal kapcsolatos részletekért kattintson az oldal **részletek** szakaszára.
-    
+        
+### <a name="naming-rules"></a>Elnevezési szabályok
+
+* Az élő esemény maximális neve 32 karakter.
+* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+Lásd még: a [folyamatos átviteli végpontok elnevezési konvenciói](streaming-endpoint-concept.md#naming-convention).
+
 ## <a name="live-event-ingest-urls"></a>Élő esemény betöltésének URL-címei
 
 Az élő esemény létrehozása után lekérheti a betöltési URL-címeket. Ezeket kell megadnia az élő helyszíni kódolónak. Az élő kódoló ezekre az URL-címekre küldi a bemeneti élő streamet. További információ: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). 

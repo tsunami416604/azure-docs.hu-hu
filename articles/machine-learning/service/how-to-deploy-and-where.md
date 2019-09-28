@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1349a81bc4f0f3eed4093bbe91abea68264b4021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162565"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350656"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 
@@ -467,7 +467,9 @@ def run(request):
 
 A következtetési konfiguráció azt ismerteti, hogyan konfigurálható a modell az előrejelzések készítéséhez. Ez a konfiguráció nem része a belépési parancsfájlnak. Ez a bejegyzési parancsfájlra hivatkozik, és a telepítéshez szükséges összes erőforrás megkeresésére szolgál. Ezt később, a modell telepítésekor használják.
 
-A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Az alábbi példa bemutatja egy környezet betöltését a munkaterületről, majd azt a következtetési konfigurációval használva:
+A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Környezet használatakor a modell fájljai és a megadott forrás könyvtára közvetlenül a futó tárolóra van csatlakoztatva – a rendszer nem másolja őket a tároló-lemezképbe vagy a tároló-beállításjegyzékbe.
+
+Az alábbi példa bemutatja egy környezet betöltését a munkaterületről, majd azt a következtetési konfigurációval használva:
 
 ```python
 from azureml.core import Environment
@@ -619,7 +621,7 @@ Ha engedélyezte a kulcs hitelesítését a szolgáltatáshoz, meg kell adnia eg
 Ha engedélyezte a jogkivonat-hitelesítést a szolgáltatáshoz, meg kell adnia egy Azure Machine Learning JWT tokent tulajdonosi jogkivonatként a kérelem fejlécében.
 
 > [!TIP]
-> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a [swagger_uri tulajdonságot](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) a központilag telepített webszolgáltatásból ( `service.swagger_uri`például) a helyi webszolgáltatás hencegő fájljához tartozó URI beszerzéséhez.
+> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja az [swagger_uri tulajdonságot](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) a központilag telepített webszolgáltatásból (például `service.swagger_uri`), hogy megkapja az URI-t a helyi webszolgáltatás hencegő fájljához.
 
 ### <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 

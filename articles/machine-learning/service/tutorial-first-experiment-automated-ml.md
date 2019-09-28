@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259314"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350500"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -50,7 +50,7 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 ## <a name="create-and-run-the-experiment"></a>A kísérlet létrehozása és futtatása
 
-A következő kísérlet beállítása és futtatása lépések a munkaterület kezdőlapján, egy összevont felület, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára.
+A következő kísérlet beállítása és futtatása lépések a munkaterület kezdőlapján, egy összevont felület, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára. Az Internet Explorer böngésző nem támogatja a munkaterület kezdőlapját.
 
 1. Jelentkezzen be a [munkaterület](https://ml.azure.com/workspaceportal/)kezdőlapján.
 
@@ -58,7 +58,7 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 
 1. Válassza az első **lépések**lehetőséget.
 
-1. A bal oldali panelen válassza az **automatikus ml** lehetőséget a **szerzői műveletek** szakaszban.
+1. A bal oldali panelen válassza az **automatikus ml** lehetőséget a **Szerző** szakaszban.
 
    Mivel ez az első automatizált ML-kísérlet, megjelenik a kezdeti lépések képernyő.
 
@@ -99,23 +99,21 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
        
     1. Győződjön meg arról, hogy a **beállítások és az előnézet** űrlap a következőképpen van feltöltve, majd válassza a **tovább**lehetőséget.
         
-        Mező|Az oktatóanyag értéke
-        ---|---
-        Fájlformátum| Elválasztott
-        Elválasztó karakter| Vessző
-        Encoding| UTF-8
-        Oszlopfejlécek| Minden fájl azonos fejléccel rendelkezik
-        Sorok kihagyása | Nincsenek
+        Mező|Leírás| Az oktatóanyag értéke
+        ---|---|---
+        Fájlformátum|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Elválasztott
+        Elválasztó karakter|Egy vagy több karakter a @ no__t-0 különálló, egyszerű szöveges vagy más adatfolyamok közötti határ megadásához. |Vessző
+        Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
+        Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájl azonos fejléccel rendelkezik
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
     
-    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Válassza a **kész**lehetőséget, hogy elvégezze a fájl feltöltését és a kísérlethez tartozó adatkészlet létrehozását.
-
         ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Előrejelzési feladatként válassza a **besorolás** lehetőséget.
 
 1. Válassza az **y** elemet a cél oszlopként, amit meg szeretne jósolni. Ebben az oszlopban látható, hogy az ügyfél előfizetett-e egy lejárati időszakra.
 
-1. Bontsa ki a **Speciális beállítások** elemet, és töltse fel a mezőket az alábbiak szerint.
+1. Bontsa ki a **Speciális beállítások** elemet, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
    >[!NOTE]
    > Ebben az oktatóanyagban nem fog mérőszám-pontszámot vagy maximális magot megadni iterációs küszöbértékként. És nem fogja letiltani az algoritmusok tesztelését.
@@ -138,10 +136,10 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 
 ##  <a name="explore-iteration-results"></a>Iteráció eredményeinek megismerése
 
-A kísérlet előrehaladása esetén a képernyő frissíti az **iterációs diagramot** és az **iterációs listát** a befejezésük során létrehozott különböző iterációkkal (modellekkel), és metrikai pontszám szerint rendeli azokat. Alapértelmezés szerint a kiválasztott **AUC_weighted** mérőszám alapján a legmagasabb pontszám a lista tetején található.
+A kísérlet előrehaladása esetén a képernyő frissíti az **iterációs diagramot** és az **iterációs listát** a befejezésük során létrehozott különböző iterációkkal (modellekkel). Alapértelmezés szerint az ismétléseket a mérőszámok pontszáma alapján rendezi a rendszer. Ebben az oktatóanyagban a legjobb modell, amely a kiválasztott **AUC_weighted** -metrika alapján szerzi be a legmagasabb értékeket a lista elejére.
 
 Amíg az összes kísérleti iteráció befejeződik, a teljesítmény részleteinek megismeréséhez válassza ki a befejezett iteráció **nevét** . 
-   
+
 A következő táblázat a diagramokat és a futtatási mérőszámokat mutatja be az egyes ismétlésekhez, például a pontosság-visszahívási görbe, a zavart mátrix, a súlyozott pontossági pontszámok stb. 
 
 ![Iteráció részleteinek futtatása](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlap
 + További információ az [előfeldolgozásról](how-to-create-portal-experiments.md#preprocess).
 + További információ az [adatprofilkészítésről](how-to-create-portal-experiments.md#profile).
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
++ A besorolási mérőszámokkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatikus gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 
 >[!NOTE]
 > Ez a bank marketing-adatkészlet elérhető a [Creative Commons (CCO: Nyilvános tartomány) licenc](https://creativecommons.org/publicdomain/zero/1.0/). Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>

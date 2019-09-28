@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390310"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351148"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 A Project Acoustics egy Wave akusztikus motor a 3D interaktív élményekhez. Olyan hullám-effektusokat modellez, mint például az elzáródás, az elzáródás, a portál és a visszaverődés hatása az összetett jeleneteknél anélkül, hogy manuális zónát kellene megjelölni vagy a CPU-igényes raytracing. Emellett magában foglalja a Game Engine és a audio middleware integrációját is. A Project Acoustics filozófiája hasonló a statikus világításhoz: a részletes fizikát offline állapotba helyezheti a fizikai alapkonfiguráció biztosításához, és egy egyszerű, kifejező tervezési vezérlőkkel rendelkező, a virtuális világ akusztikai céljaihoz alkalmazkodó, könnyű kialakítást biztosít.
@@ -31,7 +31,7 @@ A Project akusztika kulcsfontosságú újítása a valós hanghullám-alapú aku
 ![Animáció, amely egy jeleneten keresztüli hullámos propagálás vízszintes 2D szeletét ábrázolja](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Videós bemutató a GDC 2019 (~ 30 perc)
-Project Acoustics(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "– videó lejátszása kattintson ide") [ ![]
+[@no__t – 1Project akusztikai videó](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kattintson ide a videó lejátszásához")
 
 ## <a name="setup"></a>Beállítás
 A [Project akusztikai egység integrációja](unity-integration.md) a drag-and-drop, és tartalmaz egy Unity audio Engine beépülő modult. Fokozza az egység hangforrásának vezérlőit úgy, hogy egy Project C# akusztikai vezérlőt csatlakoztat egy adott hangobjektumhoz.
@@ -58,11 +58,10 @@ A Project akusztikai szerkesztő beépülő modulja a következő platformokon �
 ## <a name="download"></a>Letöltés
 * [Project akusztikai egység beépülő modul és minták](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Projekt-akusztikai Unreal & Wwise beépülő modulok és minták](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Xbox bináris fájlok és támogatás esetén vegye fel velünk a kapcsolatot az alábbi regisztrációs űrlapon keresztül
+  * Xbox bináris fájlok és egyéb támogatás esetén vegye fel velünk a kapcsolatot a [fórumon](https://github.com/microsoft/ProjectAcoustics/issues)keresztül.
 
 ## <a name="contact-us"></a>Kapcsolat
 * [A Project akusztikai vitafórum és a jelentések kiadása](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Regisztráció a projekt akusztikai frissítéseinek fogadására](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>További lépések
 * Próbálja ki a [projekt akusztikai útmutatóját az Unity](unity-quickstart.md) vagy az [Unreal](unreal-quickstart.md) számára

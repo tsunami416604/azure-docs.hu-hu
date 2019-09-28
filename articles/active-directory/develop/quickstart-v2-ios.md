@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309637"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345533"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -41,8 +41,8 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
-> * Express [1. lehetőség: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
-> * Kézi [2. lehetőség: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Express] @no__t – 1.0Option: Regisztráljon és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
+> * [Manuális] [Option 2: Alkalmazás-és kód-minta regisztrálása és manuális konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>1\. módszer: Regisztrálja és állítsa be automatikusan az alkalmazást, majd töltse le a mintakód
 > #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
@@ -94,11 +94,11 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
 > 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazásnak a portálon korábban a portálon való regisztrálása során mentett ügyfél-azonosítóval:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
 > 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a > Megnyitás**forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `Enter_the_bundle_Id_Here`a-t a portálon megadott csomag- ***azonosítóra*** .
+> 1. Csak iOS esetén a dict gyökérszintű csomópontja alatt cserélje le a `CFBundleURLSchemes` értéket a portálon megadott ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,11 +120,11 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
 > 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazás a portálon korábban a portálon való regisztrálása során mentett clientID:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
 > 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a > Megnyitás**forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `Enter_the_bundle_Id_Here`a-t a portálon használt csomag- ***azonosítóra*** .
+> 1. Csak iOS esetén a dict gyökérszintű csomópontja alatt cserélje le a `Enter_the_bundle_Id_Here` értéket a portálon használt ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

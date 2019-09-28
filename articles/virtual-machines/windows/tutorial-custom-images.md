@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24a382680860890e57c8d5a380b8a1bb097baaa1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101690"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350848"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása Azure PowerShell
 
@@ -53,11 +53,11 @@ Egy virtuális gép rendszerképének létrehozásához az általánosításáva
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
-A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. Ha további információra van szüksége a Sysprepről, tekintse meg [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. Ha további információra van szüksége a Sysprepről, tekintse meg [A Sysprep használata: Bevezetés @ no__t-0.
 
 
 1. Csatlakozzon a virtuális géphez.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep*értékre, majd `sysprep.exe`futtassa a parancsot.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep*értékre, majd futtassa a `sysprep.exe` parancsot.
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **Leállítási beállítások** területen válassza a **Leállítás** lehetőséget, és kattintson az **OK** gombra.
 5. A Sysprep a feladat befejezése után leállítja a virtuális gépet. **Ne indítsa újra a virtuális gépet**.
@@ -74,7 +74,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Állítsa be a virtuális gép `-Generalized` állapotát a [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. 
+Állítsa a virtuális gép állapotát `-Generalized` értékre a [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -132,6 +132,8 @@ New-AzVm `
     -PublicIpAddressName "myImagePIP" `
     -OpenPorts 3389
 ```
+
+Azt javasoljuk, hogy egyetlen rendszerképből korlátozza az egyidejű központi telepítések számát 20 virtuális gépre. Ha több mint 20 virtuális gép nagy léptékű, egyidejű üzembe helyezését tervezi ugyanazon egyéni rendszerképből, több rendszerkép-replikával rendelkező [megosztott képtárat](shared-image-galleries.md) kell használnia. 
 
 ## <a name="image-management"></a>Rendszerkép kezelése 
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259983"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350583"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 
@@ -328,7 +328,7 @@ Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha 
 
 Az automatikus ML használatával előállított modellek a következő lépéseket tartalmazzák:
 + Automatizált funkciók tervezése (ha az előfeldolgozás = true)
-+ Skálázás/normalizálás és algoritmus hypermeter-értékekkel
++ Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel
 
 Ezt az információt a fitted_model-kimenetről az automatikus ML-ből átláthatóvá tesszük.
 
@@ -410,7 +410,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
    |EngineeringFeatureCount|Az automatizált funkciók mérnöki átalakításán keresztül generált szolgáltatások száma.|
    |Átalakítások|A bemenő funkciókra alkalmazott átalakítások listája a mérnöki funkciók létrehozásához.|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Skálázás/normalizálás és algoritmus hypermeter-értékekkel:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel:
 
 Egy folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](concept-automated-ml.md#preprocess). Itt látható egy mintakimenet:
 

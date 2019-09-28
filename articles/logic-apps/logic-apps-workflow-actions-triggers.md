@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918962"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350674"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az aktiválási és a műveleti típusok referenciája a munkafolyamat-definíciós nyelvben Azure Logic Apps
 
@@ -156,8 +156,8 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
  
 | Elem | Type | Leírás |
 |---------|------|-------------|
-| fejlécek | JSON-objektum | A válaszból származó fejlécek |
-| törzs | JSON-objektum | A válasz törzse |
+| headers | JSON-objektum | A válaszból származó fejlécek |
+| törzse | JSON-objektum | A válasz törzse |
 | Állapotkód | Integer | A válaszban szereplő állapotkód |
 |||| 
 
@@ -329,8 +329,8 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 
 | Elem | Type | Leírás |
 |---------|------|-------------| 
-| fejlécek | JSON-objektum | A válaszból származó fejlécek | 
-| törzs | JSON-objektum | A válasz törzse | 
+| headers | JSON-objektum | A válaszból származó fejlécek | 
+| törzse | JSON-objektum | A válasz törzse | 
 | Állapotkód | Integer | A válaszban szereplő állapotkód | 
 |||| 
 
@@ -338,7 +338,7 @@ Ez az eseményindító ellenőrzi vagy lekérdezi a megadott végpontot a megado
 
 Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg kell felelnie egy adott trigger-mintának vagy szerződésnek, és ismernie kell a következő tulajdonságokat:  
   
-| Válasz | Kötelező | Leírás | 
+| Válasz | Szükséges | Leírás | 
 |----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. | 
 | Újrapróbálkozás a fejléc után | Nem | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot | 
@@ -424,8 +424,8 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 | Elem | Type | Leírás |
 |---------|------|-------------| 
-| fejlécek | JSON-objektum | A válaszból származó fejlécek | 
-| törzs | JSON-objektum | A válasz törzse | 
+| headers | JSON-objektum | A válaszból származó fejlécek | 
+| törzse | JSON-objektum | A válasz törzse | 
 | Állapotkód | Integer | A válaszban szereplő állapotkód | 
 |||| 
 
@@ -656,7 +656,7 @@ Ez az aktiválás azt adja meg, hogy egy bejövő kérelemnek a HTTP POST metód
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Kiváltó feltételek
+## <a name="trigger-conditions"></a>Aktiválási feltételek
 
 Bármely eseményindító esetében, és csak eseményindítók esetén olyan tömböt is megadhat, amely egy vagy több kifejezést tartalmaz olyan feltételekhez, amelyek meghatározzák, hogy a munkafolyamat fusson-e. Ha hozzá szeretné `conditions` adni a tulajdonságot egy triggerhez a munkafolyamatban, nyissa meg a logikai alkalmazást a Code View Editorban.
 
@@ -1538,7 +1538,7 @@ Ez a művelet JSON-objektumokból álló tömböt hoz létre egy másik tömb el
 |-------|------|-------------| 
 | <*tömb*> | Array | A forrás elemeket biztosító tömb vagy kifejezés. Győződjön meg arról, hogy idézőjelek közé kell foglalnia egy kifejezést. <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres tömböt hoz létre. | 
 | <*kulcs neve*> | String | Az eredményhez hozzárendelt < kifejezésből származó tulajdonság neve> <p>Ha új tulajdonságot szeretne hozzáadni a kimeneti tömb összes objektumához, adjon meg egy <*kulcsnév*> a tulajdonsághoz, valamint egy <*kifejezést*> a tulajdonság értékeként. <p>Ha el szeretne távolítani egy tulajdonságot a tömbben lévő összes objektumból, hagyja ki az adott tulajdonsághoz tartozó <*Key-name*>. | 
-| <*kifejezés*> | String | Az a kifejezés, amely átalakítja a forrás tömbben lévő elemeket, és hozzárendeli az eredményt <*Key-Name* értékhez> | 
+| <*kifejezés*> | Sztring | Az a kifejezés, amely átalakítja a forrás tömbben lévő elemeket, és hozzárendeli az eredményt <*Key-Name* értékhez> | 
 |||| 
 
 A **Select** művelet kimenetként létrehoz egy tömböt, ezért a kimenetet használni kívánó műveletnek el kell fogadnia egy tömböt, vagy konvertálnia kell a tömböt arra a típusra, amelyet a fogyasztó művelet elfogad. Ha például a kimeneti tömböt karakterlánccá szeretné alakítani, átadhatja ezt a tömböt az **összeállítás** műveletnek, majd hivatkozhat a kimenetre a más műveletekben szereplő **összeállítási** műveletből.
@@ -2402,12 +2402,38 @@ Megváltoztathatja az eseményindítók és műveletek alapértelmezett viselked
 
 ### <a name="change-trigger-concurrency"></a>Az trigger egyidejűségének módosítása
 
-Alapértelmezés szerint a Logic app-példányok egyszerre, párhuzamosan vagy párhuzamosan futnak az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Így minden eseményindító-példány az előző munkafolyamat-példány futása előtt következik be. Ez a korlát segíti a háttérrendszer által fogadott kérelmek számának szabályozását. 
+Alapértelmezés szerint a Logic app-példányok egy időben futnak (egyidejűleg vagy párhuzamosan) az [alapértelmezett korlátig](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Így minden eseményindító-példány az előző munkafolyamat-példány futása előtt következik be. Ez a korlát segíti a háttérrendszer által fogadott kérelmek számának szabályozását. 
 
-Az alapértelmezett korlát módosításához használhatja a Code View Editort vagy a Logic apps designert, mert a tervezőn keresztüli egyidejűségi beállítás módosításakor a rendszer hozzáadja `runtimeConfiguration.concurrency.runs` vagy frissíti a tulajdonságot az alapul szolgáló trigger definíciójában, és fordítva. Ez a tulajdonság határozza meg a párhuzamosan futtatható munkafolyamat-példányok maximális számát. 
+Az alapértelmezett korlát módosításához használhatja a Code View Editort vagy a Logic apps designert, mert a tervezőn keresztüli egyidejűségi beállítás módosításakor a rendszer hozzáadja `runtimeConfiguration.concurrency.runs` vagy frissíti a tulajdonságot az alapul szolgáló trigger definíciójában, és fordítva. Ez a tulajdonság határozza meg a párhuzamosan futtatható munkafolyamat-példányok maximális számát. Az alábbi szempontokat érdemes figyelembe venni a Egyidejűség vezérlőelem használatakor:
 
-> [!NOTE] 
-> Ha úgy állítja be a triggert, hogy a tervező vagy a Code View Editor használatával szekvenciálisan fusson, ne állítsa az `operationOptions` trigger `SingleInstance` tulajdonságát a kód nézet szerkesztőjére. Ellenkező esetben érvényesítési hiba jelenik meg. További információért lásd a [példányok egymás utáni](#sequential-trigger)elindítását ismertető témakört.
+* Míg a Egyidejűség engedélyezve van, egy hosszú ideig futó logikai alkalmazás-példány új logikai alkalmazás-példányokat eredményezhet a várakozási állapot megadásához. Ez az állapot megakadályozza, hogy Azure Logic Apps új példányokat hozzon létre, és akkor is megtörténjen, ha az egyidejű futtatások száma kevesebb, mint az egyidejű futtatások megadott maximális száma.
+
+  * Ha meg szeretné szakítani ezt az állapotot, szakítsa meg a *még mindig futó*legkorábbi példányokat.
+
+    1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+
+    1. A **futtatási előzmények** szakaszban válassza ki a legkorábbi példányt, amely még fut, például:
+
+       ![Legkorábbi futó példány kiválasztása](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Ha csak a még futó példányokat szeretné megtekinteni, nyissa meg a **minden** listát, és válassza a **Futtatás**lehetőséget.    
+
+    1. A **logikai alkalmazás futtatása**területen válassza a **Futtatás megszakítása**elemet.
+
+       ![Legkorábbi futó példány keresése](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Ha szeretné megkerülni ezt a lehetőséget, adjon meg egy időtúllépést minden olyan művelethez, amely megtarthatja ezeket a futtatásokat. Ha a Kódszerkesztőben dolgozik, tekintse meg az [aszinkron időtartam módosítása](#asynchronous-limits)című témakört. Ellenkező esetben, ha a tervezőt használja, kövesse az alábbi lépéseket:
+
+    1. A logikai alkalmazásban arra a műveletre, amelyhez időtúllépést kíván hozzáadni, a jobb felső sarokban kattintson a három pontra ( **...** ), majd válassza a **Beállítások**lehetőséget.
+
+       ![Művelet beállításainak megnyitása](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. Az **időkorlát**területen állítsa be az időtúllépés időtartamát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).
+
+       ![Időkorlát időtartamának megadása](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Ha szekvenciálisan szeretné futtatni a logikai alkalmazást, beállíthatja, hogy az trigger párhuzamossága `1`-ra, vagy a Code View Editor vagy a Designer használatával. Azonban az trigger `operationOptions` tulajdonsága nem állítható be `SingleInstance` értékre a kód nézet szerkesztőjében. Ellenkező esetben érvényesítési hiba jelenik meg. További információért lásd a [példányok egymás utáni](#sequential-trigger)elindítását ismertető témakört.
 
 #### <a name="edit-in-code-view"></a>Szerkesztés kód nézetben 
 
@@ -2664,7 +2690,7 @@ A következőkben állíthatja be a beállított hitelesítés típusát:
 
 Az Azure Active Directory használatával történő [egyszerű hitelesítéshez](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) az trigger vagy a művelet definíciója tartalmazhat `authentication` egy JSON-objektumot, amely a következő táblázatban megadott tulajdonságokkal rendelkezik. Ha futásidőben szeretné elérni a `@parameters('parameterName')` paramétereket, használhatja azt a kifejezést, amelyet a munkafolyamat-definíciós [nyelv](https://aka.ms/logicappsdocs)biztosít. 
 
-| Tulajdonság | Kötelező | Value | Leírás | 
+| Tulajdonság | Szükséges | Value | Leírás | 
 |----------|----------|-------|-------------| 
 | **type** | Igen | Alapvető | A használni kívánt hitelesítési típus, amely itt az "alapszintű" | 
 | **felhasználónév** | Igen | "@parameters(" userNameParam ")" | A cél szolgáltatási végponthoz való hozzáférés hitelesítéséhez használt Felhasználónév |
@@ -2698,7 +2724,7 @@ Ebben a példában a http-művelet definíciójában a `Basic` szakasz a `authen
 
 A [tanúsítványalapú hitelesítés](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) Azure Active Directory használatával az trigger vagy a művelet definíciója tartalmazhat egy `authentication` JSON-objektumot, amely a következő táblázatban megadott tulajdonságokkal rendelkezik. Ha futásidőben szeretné elérni a `@parameters('parameterName')` paramétereket, használhatja azt a kifejezést, amelyet a munkafolyamat-definíciós [nyelv](https://aka.ms/logicappsdocs)biztosít. A használható Ügyféltanúsítványok számának korlátozásai: [Azure Logic apps korlátozásai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md).
 
-| Tulajdonság | Kötelező | Value | Leírás |
+| Tulajdonság | Szükséges | Value | Leírás |
 |----------|----------|-------|-------------|
 | **type** | Igen | ClientCertificate | A SSL-(SSL-) Ügyféltanúsítványok esetében használandó hitelesítési típus. Míg az önaláírt tanúsítványok támogatottak, az önaláírt tanúsítványok nem támogatottak az SSL-hez. |
 | **pfx** | Igen | "@parameters(" pfxParam ") | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból |
@@ -2732,7 +2758,7 @@ Ebben a példában a http-művelet definíciójában a `ClientCertificate` szaka
 
 Az [Azure ad OAuth-hitelesítés](../active-directory/develop/authentication-scenarios.md)esetében az trigger vagy a művelet definíciója `authentication` tartalmazhat egy JSON-objektumot, amely az alábbi táblázatban megadott tulajdonságokkal rendelkezik. Ha futásidőben szeretné elérni a `@parameters('parameterName')` paramétereket, használhatja azt a kifejezést, amelyet a munkafolyamat-definíciós [nyelv](https://aka.ms/logicappsdocs)biztosít.
 
-| Tulajdonság | Kötelező | Value | Leírás |
+| Tulajdonság | Szükséges | Value | Leírás |
 |----------|----------|-------|-------------|
 | **type** | Igen | `ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus, amely az Azure AD-OAuth "ActiveDirectoryOAuth" |
 | **hitelesítésszolgáltató** | Nem | <*URL-cím-a-Authority-token-kiállító*> | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe |

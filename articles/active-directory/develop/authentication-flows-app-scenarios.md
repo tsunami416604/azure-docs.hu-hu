@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/25/2019
+ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb2e3e45da0a072eadb0eac9f8a0266f9e14cda2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5330111e5ae56471d26ebc39dca1a036246945e1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031967"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348579"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -98,13 +98,13 @@ Ha **egy** webalkalmazást szeretne védelemmel ellátni (a felhasználó bejele
 
 - Ha a Node. js-ben fejleszt fejlesztést, a Passport. js fájlt fogja használni.
 
-További információért olvassa el a következő webalkalmazást: [Sign-in Users](scenario-web-app-sign-user-overview.md).
+További információért olvassa el a következő [webalkalmazást: Sign-in Users](scenario-web-app-sign-user-overview.md).
 
 ### <a name="web-application-signing-in-a-user-and-calling-a-web-api-on-behalf-of-the-user"></a>Webalkalmazás-aláírás – felhasználó és webes API meghívása a felhasználó nevében
 
 ![Webalkalmazás-hívások webes API-k](media/scenarios/web-app.svg)
 
-A webalkalmazásból a **webes API** meghívásához a felhasználó nevében használja a MSAL `ConfidentialClientApplication`. Az engedélyezési kód folyamatát fogja használni, a beszerzett tokent a jogkivonat-gyorsítótárban tárolja. Ezt követően a vezérlő a gyorsítótárból csendesen szerzi be a jogkivonatokat, amikor szükséges. Ha szükséges, a MSAL frissíti a tokent.
+A webalkalmazásból a webes API a felhasználó nevében történő **meghívásához** használja a MSAL `ConfidentialClientApplication`. Az engedélyezési kód folyamatát fogja használni, a beszerzett tokent a jogkivonat-gyorsítótárban tárolja. Ezt követően a vezérlő a gyorsítótárból csendesen szerzi be a jogkivonatokat, amikor szükséges. Ha szükséges, a MSAL frissíti a tokent.
 
 További információért olvassa el a [Web App calls web API](scenario-web-app-call-api-overview.md)-k című témakört.
 
@@ -169,33 +169,97 @@ További információkért olvassa el a [webes API-kat meghívó Daemon-alkalmaz
 
 A jogkivonatok beszerzését érintő forgatókönyvek a [Microsoft Identity platform protokolljaiban](active-directory-v2-protocols.md) ismertetett részletek a OAuth 2,0 hitelesítési folyamatokra is leképezhetők.
 
-|Forgatókönyv | Részletes forgatókönyv – útmutató | OAuth 2,0 flow/támogatás | Célközönség |
-|--|--|--|--|
-| [![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | [Egyoldalas alkalmazás](scenario-spa-overview.md) | [Implicit](v2-oauth2-implicit-grant-flow.md) | Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C
-| [![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | [Felhasználókba bejelentkező webes alkalmazás](scenario-web-app-sign-user-overview.md) | [Engedélyezési kód](v2-oauth2-auth-code-flow.md) | Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C |
-| [![Webes API-kat meghívó webalkalmazás](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | [Webes API-kat meghívó webalkalmazás](scenario-web-app-call-api-overview.md) | [Engedélyezési kód](v2-oauth2-auth-code-flow.md) | Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C |
-| [![Webes API-kat meghívó asztali alkalmazás](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) | [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md)| Interaktív ([engedélyezési kód](v2-oauth2-auth-code-flow.md) PKCE-mel) | Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C |
-| | | Integrált Windows | Munkahelyi vagy iskolai fiókok |
-| | | [Erőforrás-tulajdonos jelszava](v2-oauth-ropc.md)  | Munkahelyi vagy iskolai fiókok, B2C |
-| ![Eszközkód folyamata](media/scenarios/device-code-flow-app.svg)| [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) | [Eszköz kódja](v2-oauth2-device-code.md)  | Munkahelyi vagy iskolai fiókok * |
-| [![Webes API-kat meghívó mobil alkalmazás](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | [Webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md) | Interaktív ([engedélyezési kód](v2-oauth2-auth-code-flow.md) PKCE-mel)  |   Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C
-| | | Erőforrás-tulajdonos jelszava  | Munkahelyi vagy iskolai fiókok, B2C |
-| [![Daemon-alkalmazás](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | [Daemon-alkalmazás](scenario-daemon-overview.md) | [Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md)  |   Az alkalmazás csak a HRE-szervezetekre vonatkozó engedélyeket (nincs felhasználó)
-| [![Webes API-kat meghívó webes API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | [Webes API-kat meghívó webes API](scenario-web-api-call-api-overview.md)| [A következő nevében](v2-oauth2-on-behalf-of-flow.md) | Munkahelyi vagy iskolai fiókok és személyes fiókok |
+<table>
+ <thead>
+  <tr><th>Forgatókönyv</th> <th>Részletes forgatókönyv – útmutató</th> <th>OAuth 2,0 flow/támogatás</th> <th>Célközönség</th></tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><a href="scenario-spa-overview.md"><img alt="Single Page App" src="media/scenarios/spa-app.svg"></a></td>
+   <td><a href="scenario-spa-overview.md">Egyoldalas alkalmazás</a></td>
+   <td><a href="v2-oauth2-implicit-grant-flow.md">Implicit</a></td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web App that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
+   <td><a href="scenario-web-app-sign-user-overview.md">Webes alkalmazás, amely bejelentkezik a felhasználók számára</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">Engedélyezési kód</a></td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web App that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md">Webes API-kat meghívó webalkalmazás</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">Engedélyezési kód</a></td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="4"><a href="scenario-desktop-overview.md">Webes API-kat hívó asztali alkalmazás</a></td>
+   <td>Interaktív (<a href="v2-oauth2-auth-code-flow.md">engedélyezési kód</a> PKCE-mel)</td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td>Integrált Windows-hitelesítés</td>
+   <td>Munkahelyi vagy iskolai fiókok</td>
+ </tr>
+
+  <tr>
+   <td><a href="v2-oauth-ropc.md">Erőforrás-tulajdonos jelszava</a></td>
+   <td>Munkahelyi vagy iskolai fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="v2-oauth2-device-code.md">Eszköz kódja</a></td>
+   <td>Munkahelyi vagy iskolai fiókok *</td>
+ </tr>
+
+ <tr>
+   <td rowspan="2"><a href="scenario-mobile-overview.md"><img alt="Mobile app that calls web APIs" src="media/scenarios/mobile-app.svg"></a></td>
+   <td rowspan="2"><a href="scenario-mobile-overview.md">Webes API-kat meghívó mobil alkalmazás</a></td>
+   <td>Interaktív (<a href="v2-oauth2-auth-code-flow.md">engedélyezési kód</a> PKCE-mel)</td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="v2-oauth-ropc.md">Erőforrás-tulajdonos jelszava</a></td>
+   <td>Munkahelyi vagy iskolai fiókok, B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls Web APIs" src="media/scenarios/daemon-app.svg"></a></td>
+   <td><a href=scenario-daemon-overview.md">Webes API-kat meghívó Daemon-alkalmazás</a></td>
+   <td><a href="v2-oauth2-client-creds-grant-flow.md">Ügyfél-hitelesítő adatok</a></td>
+   <td>Az alkalmazás csak a HRE-szervezetekre vonatkozó engedélyeket (nincs felhasználó)</td>
+ </tr>
+
+  <tr>
+   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href=scenario-web-api-call-api-overview.md">Webes API-kat meghívó webes API</a></td>
+   <td><a href="v2-oauth2-on-behalf-of-flow.md">A következő nevében</a></td>
+   <td>Munkahelyi vagy iskolai fiókok és személyes fiókok</td>
+ </tr>
+
+ </tbody>
+</table>
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>Forgatókönyvek és támogatott platformok és nyelvek
 
-Nem minden alkalmazás-típus érhető el minden platformon. Az alkalmazások létrehozásához különböző nyelveket is használhat. A Microsoft hitelesítési könyvtárai számos platformot támogatnak (JavaScript, .NET-keretrendszer, .net Core, Windows 10/UWP, Xamarin. iOS, Xamarin. Android, natív iOS, natív Android, Java, Python)
+Nem minden alkalmazás-típus érhető el minden platformon. Az alkalmazások létrehozásához különböző nyelveket is használhat. A Microsoft hitelesítési könyvtárai számos **platformot** támogatnak (JavaScript, .NET-keretrendszer, .net Core, Windows 10/UWP, Xamarin. iOS, Xamarin. Android, natív iOS, Mac os, natív Android, Java, Python). Az alábbi táblázatban a Windowson minden alkalommal, amikor a .NET Core-ot említi, a .NET-keretrendszer is lehetséges (kihagyva a táblázat zsúfoltságának elkerüléséhez)
 
 |Forgatókönyv  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
-| [Egyoldalas alkalmazás](scenario-spa-overview.md) <br/>[![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js
-| [Felhasználókba bejelentkező webes alkalmazás](scenario-web-app-sign-user-overview.md) <br/>[![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png)</br> ASP.NET ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core
-| [Webes API-kat meghívó webalkalmazás](scenario-web-app-call-api-overview.md) <br/> [![Webes API-kat meghívó webalkalmazás](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png) </br> ASP.NET + MSAL.NET </br> ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Lombik + MSAL Python
-| [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) <br/> A webes API![-k eszköz kódját [meghívó asztali alkalmazás ![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md)](media/scenarios/device-code-flow-app.svg) | ![MSAL.NET](media/sample-v2-code/logo_NET.png)  MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
-| [Webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md) <br/> [![Webes API-kat meghívó mobil alkalmazás](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS/Objective C vagy SWIFT](media/sample-v2-code/logo_iOS.png) MSAL. iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL. Android
-| [Daemon-alkalmazás](scenario-daemon-overview.md) <br/> [![Daemon-alkalmazás](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
-| [Webes API-kat meghívó webes API](scenario-web-api-call-api-overview.md) <br/> [![Webes API-kat meghívó webes API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
+| [Egyoldalas alkalmazás](scenario-spa-overview.md) <br/>[![Egyoldalas alkalmazás](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
+| [Felhasználókba bejelentkező webes alkalmazás](scenario-web-app-sign-user-overview.md) <br/>[![Webes alkalmazás, amely bejelentkezik a felhasználók számára](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET-mag | ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET-mag | ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET-mag
+| [Webes API-kat meghívó webalkalmazás](scenario-web-app-call-api-overview.md) <br/> <br/>[![Webes API-kat meghívó webalkalmazás](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Lombik + MSAL Python| ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Lombik + MSAL Python| ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Lombik + MSAL Python
+| [Webes API-kat hívó asztali alkalmazás](scenario-desktop-overview.md) <br/> <br/>A webes API![-k eszköz kódját [meghívó asztali alkalmazás ![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md)](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> MSAL. ObjC |
+| [Webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md) <br/> [![Webes API-kat meghívó mobil alkalmazás](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/Objective C vagy SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. ObjC | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Android
+| [Daemon-alkalmazás](scenario-daemon-overview.md) <br/> [![Daemon-alkalmazás](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
+| [Webes API-kat meghívó webes API](scenario-web-api-call-api-overview.md) <br/><br/> [![Webes API-kat meghívó webes API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET-mag](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
 Lásd még: [Microsoft által támogatott könyvtárak operációs rendszer/nyelv szerint](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)
 

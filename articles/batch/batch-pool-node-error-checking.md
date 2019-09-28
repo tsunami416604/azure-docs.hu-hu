@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012468"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350067"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -26,7 +26,7 @@ Ez a cikk a készletek és a készlet csomópontjain előforduló háttérben fu
 
 ### <a name="resize-timeout-or-failure"></a>Időtúllépés vagy hiba átméretezése
 
-Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát.  A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet.  Az átméretezési időtúllépést a [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) vagy [](https://docs.microsoft.com/rest/api/batchservice/pool/resize) az átméretezés API-ban adhatja meg. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időtúllépés időtartama alatt, a készlet stabil állapotba kerül, és a jelentések átméretezési hibákat jelez.
+Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát.  A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet.  Az átméretezési időtúllépést a [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) vagy az [átméretezés](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API-ban adhatja meg. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időtúllépés időtartama alatt, a készlet stabil állapotba kerül, és a jelentések átméretezési hibákat jelez.
 
 A legutóbbi értékelés [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) tulajdonsága felsorolja az észlelt hibákat.
 
@@ -42,7 +42,7 @@ Az átméretezési hibák gyakori okai a következők:
 - Nincs elegendő erőforrás, ha a [készlet virtuális hálózaton van](https://docs.microsoft.com/azure/batch/batch-virtual-network)
   - A Batch-fiókkal megegyező előfizetésben létrehozhat olyan erőforrásokat, mint a terheléselosztó, a nyilvános IP-címek és a hálózati biztonsági csoportok. Győződjön meg arról, hogy az előfizetési kvóták elégségesek ezekhez az erőforrásokhoz.
 - Egyéni virtuálisgép-rendszerképekkel rendelkező nagyméretű készletek
-  - Az egyéni virtuálisgép-rendszerképeket használó nagyméretű készletek hosszabb időt vehetnek igénybe az időtúllépések lefoglalása és átméretezése esetén.  Lásd: [Egyéni rendszerkép használata virtuális gépek készletének létrehozásához](https://docs.microsoft.com/azure/batch/batch-custom-images) a korlátozásokkal és a konfigurációval kapcsolatos javaslatokhoz.
+  - Az egyéni virtuálisgép-rendszerképeket használó nagyméretű készletek hosszabb időt vehetnek igénybe az időtúllépések lefoglalása és átméretezése esetén.  A korlátokkal és a konfigurációval kapcsolatos javaslatokért tekintse meg a [készlet létrehozása a megosztott rendszerkép](batch-sig-images.md) -katalógussal című témakört.
 
 ### <a name="automatic-scaling-failures"></a>Automatikus skálázási hibák
 
@@ -60,7 +60,7 @@ A [készlet átméretezése kész esemény](https://docs.microsoft.com/azure/bat
 
 Csomópontokat tartalmazó készlet törlésekor az első köteg törli a csomópontokat. Ezután maga törli a készlet objektumot. Néhány percet is igénybe vehet, amíg a készlet csomópontjai törölve lesznek.
 
-A Batch beállítja a [készlet állapotát](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) a törlési folyamat során. A hívó alkalmazás képes megállapítani, hogy a készlet törlése túl hosszú időt vesz igénybe az **állapot** és a **stateTransitionTime** tulajdonság használatával.
+A Batch beállítja a [készlet állapotát](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) **a törlési folyamat során.** A hívó alkalmazás képes megállapítani, hogy a készlet törlése túl hosszú időt vesz igénybe az **állapot** és a **stateTransitionTime** tulajdonság használatával.
 
 ## <a name="pool-compute-node-errors"></a>A készlet számítási csomópontjaival kapcsolatos hibák
 
@@ -84,7 +84,7 @@ Az indítási tevékenységeket újra kell adni, mivel lehetséges, hogy az ind�
 
 Egy készlethez egy vagy több alkalmazáscsomag is megadható. A Batch letölti a megadott csomagokat az egyes csomópontokra, és kibontja a fájlokat a csomópont elindítása után, de a feladatok ütemezése előtt. Gyakori, hogy az alkalmazás csomagjaival együtt a Start Task parancssort használják. Például a fájlok másik helyre való másolásához vagy a telepítő futtatásához.
 
-A csomópont [hibái](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság az alkalmazáscsomag letöltésére és eltávolítására vonatkozó hibát jelez; a csomópont állapota használhatatlanra vanállítva.
+A csomópont [hibái](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság az alkalmazáscsomag letöltésére és eltávolítására vonatkozó hibát jelez; a csomópont állapota **használhatatlanra**van állítva.
 
 ### <a name="container-download-failure"></a>Tároló letöltése sikertelen
 
@@ -96,7 +96,7 @@ Azure Batch lehet, hogy a [csomópont állapota](https://docs.microsoft.com/rest
 
 A csomópontok **használhatatlan** állapotban vannak, de a [hibák](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) hiánya azt jelenti, hogy a Batch nem tud kommunikálni a virtuális géppel. Ebben az esetben a Batch mindig megkísérli helyreállítani a virtuális gépet. A Batch nem kísérli meg automatikusan azon virtuális gépek helyreállítását, amelyek nem tudták telepíteni az alkalmazáscsomag vagy a tárolókat, még ha az állapotuk nem **használható**.
 
-Ha a Batch meghatározhatja az okot, a [](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) Node errors tulajdonság jelentést küld.
+Ha a Batch meghatározhatja az okot, a Node [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) tulajdonság jelentést küld.
 
 További példák a **használhatatlan** csomópontok okaira:
 

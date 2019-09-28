@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848902"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350347"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok 
 
@@ -31,11 +31,16 @@ Media Services fiók létrehozásakor a rendszer egy **alapértelmezett** folyam
 
 ## <a name="naming-convention"></a>Elnevezési konvenció
 
-Az alapértelmezett végpont esetében:`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+A streaming URL-cím állomásneve a következő: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, ahol `servicename` = a streaming végpont neve vagy az élő esemény neve. 
 
-További végpontok esetén:`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Az alapértelmezett folyamatos átviteli végpont használatakor a rendszer kihagyja `servicename` értéket, így az URL-cím: `{accountname}-{regionname}.streaming.azure.net`. 
 
-## <a name="types"></a>Típusú  
+### <a name="limitations"></a>Korlátozások
+
+* Az adatfolyam-végpont neve legfeljebb 24 karakterből állhat.
+* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+## <a name="types"></a>Típusok  
 
 Kétféle **streamvégponttípus** létezik: **Standard szintű** (előzetes verzió) és **prémium**. A típust az adatfolyam-végpont számára lefoglalt`scaleUnits`méretezési egységek () száma határozza meg. 
 
@@ -128,7 +133,7 @@ A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban egyidőben 50
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* A folyamatos átviteli `hostname` végpont és a folyamatos átviteli URL-cím ugyanaz marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
+* A streaming végpont @no__t – 0 és a folyamatos átviteli URL-cím változatlan marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
 * Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, létrehozhat egy másik, CDN-t nem támogató streaming-végpontot.
 
 ### <a name="detailed-explanation-of-how-caching-works"></a>A gyorsítótárazás működésének részletes ismertetése

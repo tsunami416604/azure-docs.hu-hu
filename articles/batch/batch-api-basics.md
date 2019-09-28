@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390478"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350180"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -36,7 +36,7 @@ Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, a
 
 Az alább olvasható elméleti szintű munkafolyamat gyakorlatilag a Batch szolgáltatást párhuzamos számítási feladatok feldolgozására használó összes alkalmazásra és szolgáltatásra érvényes:
 
-1. Töltse fel azokat az **adatfájlokat** , amelyeket fel szeretne dolgozni egy [Azure Storage][azure_storage] -fiókba. A Batch beépített támogatást biztosít az Azure Blob-tárhelyekhez, így a tevékenységek futtatásakor a rendszer le tudja tölteni a fájlokat a [számítási csomópontokra](#compute-node).
+1. Töltse fel azokat az adatfájlokat, amelyeket fel szeretne dolgozni egy [Azure Storage][azure_storage] -fiókba. A Batch beépített támogatást biztosít az Azure Blob-tárhelyekhez, így a tevékenységek futtatásakor a rendszer le tudja tölteni a fájlokat a [számítási csomópontokra](#compute-node).
 2. Töltse fel az **alkalmazásfájlokat**, amelyeket a tevékenységek futtatni fognak. Ezek lehetnek bináris fájlok vagy parancsfájlok, illetve ezek függőségei, futtatásukat a feladatokban lévő tevékenységek végzik. A tevékenységek képesek letölteni ezeket a fájlokat az Ön tárfiókjából, de az alkalmazások felügyeletére és üzembe helyezésére a Batch [alkalmazáscsomagok](#application-packages) funkcióját is használhatja.
 3. Hozza létre a számítási csomópontok [készletét](#pool). A készlet létrehozásakor meg kell adnia a készletbe tartozó számítási csomópontok számát, méretét, valamint a használt operációs rendszer típusát. Amikor a rendszer lefuttatja a feladatokat, végrehajtásuk céljából hozzájuk rendeli a készlet egyik csomópontját.
 4. Hozzon létre egy [feladatot](#job). A feladatok tevékenységek gyűjteményeit kezelik. Az egyes feladatokat konkrét készlethez kell rendelni; itt fognak lefutni a feladathoz tartozó tevékenységek.
@@ -149,9 +149,9 @@ Készletek létrehozásakor ki kell választania a megfelelő **nodeAgentSkuId**
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Egyéni rendszerképek virtuálisgép-készletekhez
 
-Egyéni rendszerkép használatához elő kell készítenie a rendszerképet annak normalizálásával. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Linux-rendszerképek előkészítéséről a [rendszerkép virtuális gépről vagy virtuális merevlemezről történő készítését](../virtual-machines/linux/capture-image.md) ismertető cikkben találhat. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Windows-rendszerképek előkészítéséről a [felügyelt rendszerkép egy Azure-beli általánosított virtuális gépről történő létrehozását](../virtual-machines/windows/capture-image-resource.md) ismertető cikkben találhat. 
+Ha szeretné megtudni, hogyan hozhat létre egyéni rendszerképekkel rendelkező készletet, tekintse meg [a közös rendszerkép-katalógus használata egyéni készlet létrehozásához](batch-sig-images.md)című témakört.
 
-A részletes követelményekkel és lépésekkel kapcsolatban lásd a [virtuálisgép-készletek egyéni rendszerkép használatával történő létrehozását](batch-custom-images.md) ismertető témakört.
+Azt is megteheti, hogy a virtuális gépek egyéni készletét [felügyelt rendszerkép](batch-custom-images.md) -erőforrás használatával hozza létre. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Linux-rendszerképek előkészítéséről a [rendszerkép virtuális gépről vagy virtuális merevlemezről történő készítését](../virtual-machines/linux/capture-image.md) ismertető cikkben találhat. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Windows-rendszerképek előkészítéséről a [felügyelt rendszerkép egy Azure-beli általánosított virtuális gépről történő létrehozását](../virtual-machines/windows/capture-image-resource.md) ismertető cikkben találhat.
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Tárolótámogatás a virtuálisgép-készletekben
 
@@ -349,7 +349,7 @@ A szolgáltatással kapcsolatos további részletekért tekintse meg [Azure batc
 
 ## <a name="environment-settings-for-tasks"></a>Környezeti beállítások tevékenységekhez
 
-A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás[által definiált][msdn_env_vars]környezeti változókat és a feladatokhoz definiálható egyéni környezeti változókat is. A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
+A Batch-szolgáltatás által végrehajtott minden egyes feladat hozzáférhet azokhoz a környezeti változókhoz, amelyeket a számítási csomópontokon beállít. Ez magában foglalja a Batch szolgáltatás által definiált környezeti[][msdn_env_vars]változókat és a feladatokhoz definiálható egyéni környezeti változókat is. A tevékenységek által végrehajtott alkalmazások és parancsfájlok a végrehajtás során szintén elérik ezeket a környezeti változókat.
 
 Az egyéni környezeti változókat a tevékenységek és a feladatok szintjén is megadhatja: ehhez töltse ki a kívánt elemek *környezeti beállítások* tulajdonságait. Tekintse meg például a [feladat hozzáadása egy feladathoz][rest_add_task] (batch REST API) vagy a [CloudTask. EnvironmentSettings][net_cloudtask_env] és a [CloudJob. CommonEnvironmentSettings][net_job_env] tulajdonságot a Batch .net-ben.
 
@@ -519,21 +519,21 @@ Ha korlátoznia kell vagy le kell tiltania a számítási csomópontok RDP- vagy
 
 Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalmazás vagy szolgáltatás megvizsgálhatja a meghiúsult tevékenységek metaadatait a rosszul működő csomópontok azonosítása érdekében. A készletek minden csomópontja egyedi azonosítót kap, és a tevékenységet futtató csomópont szerepel a tevékenység metaadataiban. Ha sikerült azonosítani a problematikus csomópontot, számos különböző műveletet elvégezhet vele:
 
-* **A csomópont újraindítása** ([Rest][rest_reboot] | [.net][net_reboot])
+* **Indítsa újra a csomópontot** ([Rest][rest_reboot] | [.net][net_reboot])
 
     A csomópont újraindítása néha segít a rejtett problémák, például az elakadt vagy összeomlott folyamatok megoldásában. Ha a készlet indítási tevékenységet használ, vagy a feladat feladat-előkészítési feladatot használ, azokat a rendszer a csomópont újraindításakor hajtja végre.
-* **A csomópont rendszerképének** alaphelyzetbe állítása ([Rest][rest_reimage] | [.net][net_reimage])
+* **A csomópont rendszerképének** alaphelyzetbe állítása ([Rest][rest_reimage]@no__t – 2[.net][net_reimage])
 
     Ez újratelepíti az operációs rendszert a csomóponton. A csomópontok újraindításához hasonlóan újrafuttatja az indítási tevékenységeket és a feladat-előkészítési tevékenységeket a csomópont rendszerképének alaphelyzetbe állítása után.
-* **A csomópont eltávolítása a készletből** ([Rest][rest_remove] | [.net][net_remove])
+* **Távolítsa el a csomópontot a készletből** ([Rest][rest_remove] | [.net][net_remove])
 
     Néha teljesen el kell távolítani a csomópontot a készletből.
 * **Feladatütemezés letiltása a csomóponton** ([Rest][rest_offline] | [.net][net_offline])
 
-    Ez tulajdonképpen offline állapotba helyezi a csomópontot, így ahhoz nem rendel további tevékenységeket, de engedélyezi, hogy a csomópont továbbra is fusson a készletben. Ez lehetővé teszi, hogy tovább vizsgálja a hibák okait a meghiúsult tevékenység adatainak elvesztése nélkül, és anélkül, hogy a csomópont további tevékenységhibákat okozna. Letilthatja például a tevékenységütemezést a csomóponton, majd [távolról bejelentkezhet](#connecting-to-compute-nodes) a csomópont eseménynaplóinak megvizsgálása vagy egyéb hibaelhárítás elvégzése érdekében. A vizsgálat befejezése után visszaállíthatja a csomópontot online állapotba, ha engedélyezi a Feladatütemezőt ([Rest][rest_online] | [.net][net_online]), vagy elvégezheti a korábban tárgyalt egyéb műveletek egyikét.
+    Ez tulajdonképpen offline állapotba helyezi a csomópontot, így ahhoz nem rendel további tevékenységeket, de engedélyezi, hogy a csomópont továbbra is fusson a készletben. Ez lehetővé teszi, hogy tovább vizsgálja a hibák okait a meghiúsult tevékenység adatainak elvesztése nélkül, és anélkül, hogy a csomópont további tevékenységhibákat okozna. Letilthatja például a tevékenységütemezést a csomóponton, majd [távolról bejelentkezhet](#connecting-to-compute-nodes) a csomópont eseménynaplóinak megvizsgálása vagy egyéb hibaelhárítás elvégzése érdekében. A vizsgálat befejezése után visszaállíthatja a csomópontot online állapotba a feladatütemezés engedélyezésével ([REST][rest_online] | [.net][net_online]), vagy elvégezheti a korábban tárgyalt egyéb műveletek egyikét.
 
 > [!IMPORTANT]
-> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letiltja a Feladatütemezőt egy csomóponton a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket annak megadásához **, hogy a futó feladatok** le legyenek-e **állítva** . ütemezés más csomópontokon, vagy a művelet végrehajtása előtt engedélyezze a futó feladatok befejezését (**TaskCompletion**).
+> A fejezetben leírt műveletekkel (újraindítás, rendszerkép alaphelyzetbe állítása, eltávolítás, tevékenységütemezés letiltása) meghatározhatja, hogy a rendszer hogyan kezelje a csomópontokon aktuálisan futó tevékenységeket a művelet elvégzésekor. Ha például letiltja a Feladatütemezőt egy csomóponton a Batch .NET ügyféloldali kódtár használatával, megadhat egy [DisableComputeNodeSchedulingOption][net_offline_option] enumerálási értéket annak megadásához, hogy a **futó feladatok** le legyenek-e **állítva** . ütemezés más csomópontokon, vagy a művelet végrehajtása előtt engedélyezze a futó feladatok befejezését (**TaskCompletion**).
 >
 >
 

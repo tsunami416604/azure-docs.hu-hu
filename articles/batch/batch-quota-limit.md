@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094699"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350091"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -52,7 +52,7 @@ A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőf
 | **A [csomópontok közötti kommunikációt engedélyező készlet](batch-mpi.md) számítási csomópontjai**  ||
 | Batch szolgáltatás-készlet kiosztási módja | 100 |
 | Batch-előfizetési készlet lefoglalási módja | 80 |
-| **Egyéni virtuálisgép- [lemezképpel létrehozott készlet](batch-custom-images.md) számítási csomópontjai** <sup>1</sup> ||
+| **[Felügyelt rendszerkép 1-es erőforrásával létrehozott készlet](batch-custom-images.md)számítási csomópontjai**<sup></sup> ||
 | Dedikált csomópontok | 2000 |
 | Alacsony prioritású csomópontok | 1000 |
 

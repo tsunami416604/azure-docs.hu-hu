@@ -11,14 +11,17 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002861"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350567"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
+
+>[!IMPORTANT]
+> Ez az SDK hamarosan kivonásra kerül, és a rendszer lecseréli a Application Insights-vel való egyszerűsített [adatfigyelésre](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights). 
 
 Ebből a cikkből megtudhatja, hogyan gyűjtheti be a bemeneti modell adatait az Azure Kubernetes-fürtbe (ak) az Azure Blob Storage-ba üzembe helyezett Azure Machine Learningból. 
 

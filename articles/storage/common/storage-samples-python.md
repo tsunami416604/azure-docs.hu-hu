@@ -7,23 +7,23 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70746040"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351163"
 ---
 # <a name="azure-storage-samples-using-python"></a>Azure Storage-minták a Python használatával
 
-A következő táblázat áttekintést nyújt a minták tárházáról, valamint az egyes mintákban szereplő forgatókönyvekről. A hivatkozásokra kattintva megtekintheti a megfelelő mintakód-kódot a GitHubon.
+A következő táblázatok áttekintést nyújtanak a minták tárházáról és az egyes mintákban szereplő forgatókönyvekről. A hivatkozásokra kattintva megtekintheti a megfelelő mintakód-kódot a GitHubon.
 
 ## <a name="blob-samples"></a>BLOB-minták
 
 | **Forgatókönyv** | **Mintakód** |
 |--------------|-----------------|
-| BLOB hozzáfűzése | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
-| BLOB letiltása | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
+| Blob hozzáfűzése | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| Blokkblob | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | Ügyféloldali titkosítás | [A Storage-fiók kulcsainak kezelése az Azure Key Value-ben Python használatával](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Blob másolása | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
 | Tároló létrehozása | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L91) |
@@ -34,7 +34,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
 | Oldalak tartományának beolvasása | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L151) |
 | Bérleti blob/tároló | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L377) |
 | BLOB/tároló listázása | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L103) |
-| Oldal Blobja | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L124) |
+| Lapblob | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L124) |
 | SAS | [Közös hozzáférésű aláírás a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L145) |
 | Szolgáltatás tulajdonságai | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Snapshot Blob | [Első lépések az Azure Blob Service-szel a Pythonban](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
@@ -99,4 +99,5 @@ További információ a mintákról más nyelveken:
 
 * .NET: [.NET-keretrendszert használó Azure Storage-minták](storage-samples-dotnet.md)
 * Java: [Javát használó Azure Storage-minták](storage-samples-java.md)
+* JavaScript/Node. js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

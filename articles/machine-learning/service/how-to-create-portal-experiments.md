@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034829"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350551"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatikus gépi tanulási kísérletek létrehozása, feltárása és üzembe helyezése Azure Machine Learning munkaterületének kezdőlapján (előzetes verzió)
 
@@ -32,12 +32,11 @@ ms.locfileid: "71034829"
 
 ## <a name="get-started"></a>Bevezetés
 
-
 1. Jelentkezzen be [a munkaterület](https://ml.azure.com/workspaceportal/)kezdőlapján. 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
-1. Navigáljon a bal oldali panelre. Az **authoring (szerzői műveletek** ) szakaszban válassza az **automatikus ml** lehetőséget.
+1. Navigáljon a bal oldali panelre. A **Szerző** szakaszban válassza az **automatikus ml** lehetőséget.
 
 [![Azure Portal navigációs ablaktábla](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ Ellenkező esetben az **automatikus gépi tanulási** irányítópultot láthatj
     ---|---
     A számítás neve| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
     Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
-    További beállítások| *Minimális csomópont*: Adja meg a számítási csomópontok minimális számát. A pénzmosás-számításhoz használt csomópontok minimális száma 0. Az adatprofilkészítés engedélyezéséhez legalább 1 csomópontnak kell lennie. <br> *Csomópont maximális*száma: Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
+    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
     
     Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása néhány percet is igénybe vehet.
 
@@ -83,7 +82,7 @@ Ellenkező esetben az **automatikus gépi tanulási** irányítópultot láthatj
 
         Mező| Leírás
         ----|----
-        Fájl formátuma| Meghatározza a fájlban tárolt adatelrendezést és-típust.
+        Fájlformátum| Meghatározza a fájlban tárolt adatelrendezést és-típust.
         Elválasztó karakter| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
         Encoding| Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).
@@ -109,7 +108,7 @@ Ellenkező esetben az **automatikus gépi tanulási** irányítópultot láthatj
     Speciális beállítások|Leírás
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
-    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok a teljes befejezés előtt véget ér. <br> *Tanítási feladatok időpontja (perc)* : Mennyi ideig kell futtatni a betanítási feladatot.  <br> *Ismétlések maximális száma*: A betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Metrika pontszámának küszöbértéke*:  Az összes folyamat minimális metrikájának pontszáma. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
+    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Tanítási feladatok időpontja (perc)* : Mennyi ideig kell futtatni a betanítási feladatot.  <br> *Ismétlések maximális száma*: A betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Metrika pontszámának küszöbértéke*:  Az összes folyamat minimális metrikájának pontszáma. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
     Előfeldolgozás| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az](#preprocess)előfeldolgozásról.
     Érvényesítés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
     Egyidejűség| Válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
@@ -134,7 +133,7 @@ Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások
 Max| Az oszlop maximális értéke. 
 Count| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
 Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
-Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
+Kvantilis| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
 középérték| Az oszlop számtani középértéke vagy átlaga.
 Standard szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
 Variancia| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 

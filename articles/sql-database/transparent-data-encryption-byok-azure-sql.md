@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596709"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348916"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulcsokkal a Azure Key Vaultban: Bring Your Own Key támogatás
 
@@ -60,7 +60,7 @@ Ha a TDE először a Key Vault TDE-védő használatára van konfigurálva, akko
 - Győződjön meg arról, Azure Key Vault és Azure SQL Database/felügyelt példány ugyanazon a bérlőn lesz.  A több-bérlős kulcstartó és a kiszolgáló közötti interakciók **nem támogatottak**.
 - Ha a bérlők áthelyezését tervezi, a TDE a AKV-be újra kell konfigurálni, további információ az [erőforrások áthelyezéséről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - A TDE a Azure Key Vault-nal való konfigurálásakor fontos figyelembe venni a Key vaultban elhelyezett terhelést az ismételt becsomagolási/kicsomagolási műveletekkel. Mivel például az SQL Database-kiszolgálóhoz társított összes adatbázis ugyanazt a TDE-védőt használja, az adott kiszolgáló feladatátvétele annyi kulcsfontosságú műveletet indít el a tárolón, mint a kiszolgáló adatbázisai. Tapasztalataink és dokumentált [Key Vault szolgáltatási korlátaink](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)alapján azt javasoljuk, hogy legalább 500 Standard/általános célú vagy 200 prémium/üzletileg kritikus adatbázist rendeljen egyetlen előfizetésben egyetlen Azure Key Vault, hogy konzisztensen magas szintű legyen rendelkezésre állás a TDE-védő a tárolóban való elérésekor.
-- Ajánlott Őrizze meg a TDE-védő másolatát a helyszínen.  Ehhez egy HSM-eszközre van szükség, amely helyileg hozza létre a TDE-védőt, valamint egy kulcsfontosságú, a TDE-védő helyi példányának tárolására szolgáló letéti rendszerét.  Megtudhatja [, hogyan vihet át egy kulcsot egy helyi HSM-ből a Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Ajánlott: Őrizze meg a TDE-védő másolatát a helyszínen.  Ehhez egy HSM-eszközre van szükség, amely helyileg hozza létre a TDE-védőt, valamint egy kulcsfontosságú, a TDE-védő helyi példányának tárolására szolgáló letéti rendszerét.  Megtudhatja [, hogyan vihet át egy kulcsot egy helyi HSM-ből a Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Irányelvek a Azure Key Vault konfigurálásához
@@ -149,7 +149,7 @@ A következő szakasz részletesebben ismerteti a beállítási és konfiguráci
 - Hozzon létre két Azure Key Vaultot két különböző régióban a [PowerShell használatával, hogy engedélyezze a "Soft-Delete" tulajdonságot](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) a kulcstartókban (ez a lehetőség nem érhető el az AKV-portálon, de az SQL-hez szükséges).
 - Mindkét Azure Key Vaultnak ugyanabban az Azure geo-ben elérhető két régióban kell lennie ahhoz, hogy a kulcsok biztonsági mentése és helyreállítása működjön.  Ha az SQL geo-DR követelményeinek kielégítéséhez két kulcstárolóra van szüksége a különböző térségek, kövesse a [BYOK folyamatot](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) , amely lehetővé teszi a kulcsok importálását a helyszíni HSM-ből.
 - Hozzon létre egy új kulcsot az első Key vaultban:  
-  - RSA/RSA-HSA 2048 kulcs
+  - RSA/RSA-HSM 2048 kulcs
   - Nincs lejárati dátum
   - A kulcs engedélyezve van, és engedéllyel rendelkezik a Get, a wrap Key és a dewrap Key művelet végrehajtásához
 - Az elsődleges kulcs biztonsági mentése és a kulcs visszaállítása a második kulcstartóra.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) és [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).

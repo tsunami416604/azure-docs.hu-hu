@@ -11,23 +11,23 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274806"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350722"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Nyilvános alapszintű Load Balancer naplók Azure Monitor
 
 >[!IMPORTANT] 
 >Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md) , amely a Azure monitor többdimenziós metrikák használatával teszi elérhetővé a telemetria.
 
-Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Balancerek felügyeletéhez és hibakereséséhez. Ezek a naplók a portálon keresztül érhetők el. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például az Excelben és a PowerBI is megtekinthető. Az alábbi listából további információkat talál a naplók különböző típusairól.
+Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Balancerek felügyeletéhez és hibakereséséhez. Ezek a naplók a portálon keresztül érhetők el. A naplók továbbíthatók egy Event hub-vagy Log Analytics-munkaterületre. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például Excelben és Power BI is megtekinthető.  Az alábbi listából további információkat talál a naplók különböző típusairól.
 
-* **Naplók:** Az Azure- [naplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén operatív naplók) használatával megtekintheti az Azure-előfizetése (i) ra küldött összes műveletet, valamint azok állapotát. A naplók alapértelmezés szerint engedélyezve vannak, és a Azure Portal is megtekinthetők.
+* **Tevékenységek naplói:** A [megtekintési tevékenység naplói segítségével figyelheti az erőforrásokon végrehajtott műveleteket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) , és megtekintheti az Azure-előfizetések és azok állapotát. A Tevékenységnaplók alapértelmezés szerint engedélyezve vannak, és a Azure Portal megtekinthetők.
 * **Riasztási eseménynaplók:** Ez a napló a terheléselosztó által kiváltott riasztások megtekintésére használható. A terheléselosztó állapotát öt percenként gyűjti a rendszer. Ez a napló csak akkor íródik, ha a terheléselosztó riasztási eseménye bekövetkezik.
 * **Állapot-mintavételi naplók:** Ezzel a naplóval megtekintheti az állapot-mintavétel által észlelt problémákat, például a háttérben található példányok számát, amelyek nem kapják meg a terheléselosztó kéréseit az állapot-mintavételi hibák miatt. Ez a napló akkor íródik le, amikor módosul az állapot-mintavételi állapot.
 
@@ -36,37 +36,64 @@ Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Ba
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
-A naplózás minden erőforrás-kezelő erőforrás esetében automatikusan engedélyezve van. A naplókon keresztül elérhető adatok gyűjtésének megkezdéséhez engedélyeznie kell az esemény-és állapot-mintavételi naplózást. A naplózás engedélyezéséhez kövesse az alábbi lépéseket.
+A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. Az esemény-és állapot-mintavételi naplózás engedélyezése a naplókon keresztül elérhető adatok gyűjtésének megkezdéséhez. A naplózás engedélyezéséhez kövesse az alábbi lépéseket.
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com). Ha még nem rendelkezik terheléselosztó, a folytatás előtt [hozzon létre egy Load balancert](load-balancer-get-started-internet-arm-ps.md) .
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem rendelkezik terheléselosztó, a folytatás előtt [hozzon létre egy Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
-1. A portálon kattintson a **Tallózás**gombra.
-2. Válassza a **terheléselosztó**lehetőséget.
+1. A portálon kattintson az **erőforráscsoportok**elemre.
+2. Válassza ki a **\<resource-Group-name >** , ahol a Load Balancer van.
+3. Válassza ki a Load balancert.
+4. Válassza a **figyelés**@no__t – 1**diagnosztikai beállítások**lehetőséget.
+5. A **diagnosztika beállításai** ablaktábla **diagnosztika beállításai**területén válassza a **+ diagnosztikai beállítás hozzáadása**elemet.
+6. A **diagnosztikai beállítások** létrehozása panelen adja meg a **MyLBDiagnostics** nevet a **név** mezőben.
+7. A **diagnosztikai beállításoknak**három lehetősége van.  A követelmények közül választhat egyet, kettőt vagy mindháromat, és konfigurálhatja a következőt:
+   * **Archiválás egy Storage-fiókba**
+   * **Stream az Event hub-ba**
+   * **Küldés Log Analytics**
 
-    ![portál – terheléselosztó](./media/load-balancer-monitor-log/load-balancer-browse.png)
+    ### <a name="archive-to-a-storage-account"></a>Archiválás tárfiókba
+    Ehhez a folyamathoz már létre kell hoznia egy Storage-fiókot.  A Storage-fiók létrehozásával kapcsolatban tekintse meg [a Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) című témakört.
 
-3. Válasszon ki egy meglévő terheléselosztó > > **az összes beállítást**.
-4. A Load Balancer neve alatt, a párbeszédpanel jobb oldalán görgessen a **figyelés**elemre, és kattintson a **diagnosztika**elemre.
+    1. Jelölje be az archiválás elem melletti jelölőnégyzetet a **Storage-fiókhoz**.
+    2. Válassza a **Konfigurálás** lehetőséget a **Storage-fiók kiválasztása** panel megnyitásához.
+    3. Válassza ki azt az **előfizetést** , amelyben a Storage-fiókot létrehozták a legördülő listából.
+    4. A legördülő listában válassza ki a Storage-fiók nevét a **Storage-fiók** területen. 
+    5. Kattintson az OK gombra.
 
-    ![portál – Load-Balancer – beállítások](./media/load-balancer-monitor-log/load-balancer-settings.png)
+    ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
+    Ehhez a folyamathoz már létrehozott Event hub szükséges.  Az Event hub létrehozásához tekintse meg a következőt: [Quickstart: Event hub létrehozása Azure Portal @ no__t-0 használatával
 
-5. A **diagnosztika** ablaktábla **állapot**területén válassza **a be**lehetőséget.
-6. Kattintson a **Storage-fiók**elemre.
-7. A **naplók**területen válasszon ki egy meglévő Storage-fiókot, vagy hozzon létre egy újat. A csúszka használatával meghatározhatja, hogy az események hány napja lesz tárolva az eseménynaplókban. 
-8. Kattintson a **Save** (Mentés) gombra.
+    1. Jelölje be a stream elem melletti jelölőnégyzetet az **Event hubhoz**
+    2. A **Konfigurálás** elemre kattintva nyissa meg az **Event hub kiválasztása** ablaktáblát.
+    3. Válassza ki azt az **előfizetést** , amelyben az Event hub létre lett hozva a legördülő listából.
+    4. **Válassza ki az Event hub-névteret** a legördülő listából.
+    5. **Válassza az Event hub-házirend neve elemet** a legördülő listából.
+    6. Kattintson az OK gombra.
 
-A diagnosztika a megadott Storage-fiókban Table Storage lesz mentve. Ha a rendszer nem menti a naplókat, az azért van, mert nem készülnek hozzá kapcsolódó naplók.
+    ### <a name="send-to-log-analytics"></a>Küldés a Log Analytics szolgáltatásba
+    Ehhez a folyamathoz már létre kell hoznia és konfigurálnia kell egy log Analytics-munkaterületet.  Log Analytics munkaterület létrehozásával kapcsolatban lásd: [log Analytics munkaterület létrehozása a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-![Portál – diagnosztikai naplók](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+    1. Jelölje be a **küldés log Analyticsra**jelölőnégyzetet.
+    2. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület a legördülő mezőben található.
+    3. Válassza ki a **log Analytics munkaterületet** a legördülő listából.
 
-> [!NOTE]
-> A naplókban nem szükséges külön Storage-fiók. Az esemény-és állapot-mintavételek naplózása szolgáltatás használati díjat számít fel.
 
-## <a name="audit-log"></a>Napló
+8. A **diagnosztika beállításai** ablaktábla **napló** szakasza alatt jelölje be a mindkettő melletti jelölőnégyzetet:
+   * **LoadBalancerAlertEvent**
+   * **LoadBalancerProbeHealthStatus**
 
-A rendszer alapértelmezés szerint a naplót hozza létre. A naplók 90 napig őrződnek meg az Azure Eseménynapló-tárolójában. A naplókról további információt az [események megtekintése és a naplók naplózása](../monitoring-and-diagnostics/insights-debugging-with-events.md) című cikkben talál.
+9.  A **diagnosztika beállításai** ablaktábla **metrika** szakasza alatt jelölje be a jelölőnégyzetet a következő mellett:
+   * **AllMetrics**
 
-## <a name="alert-event-log"></a>Riasztási Eseménynapló
+11. Győződjön meg arról, hogy minden helyes, és kattintson a **Mentés** gombra a **diagnosztikai beállítások** létrehozása ablaktábla tetején.
+
+## <a name="activity-log"></a>Tevékenységnapló
+
+A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A naplók 90 napig őrződnek meg az Azure Eseménynapló-tárolójában. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) című cikkben.
+
+## <a name="archive-to-storage-account-logs"></a>Archiválás a Storage-fiókok naplóiba
+
+### <a name="alert-event-log"></a>Riasztási Eseménynapló
 
 Ez a napló csak akkor jön létre, ha a terheléselosztó alapján engedélyezte. Az események JSON formátumban vannak naplózva, és a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. Az alábbi példa egy eseményt mutat be.
 
@@ -87,9 +114,9 @@ Ez a napló csak akkor jön létre, ha a terheléselosztó alapján engedélyezt
 }
 ```
 
-A JSON-kimenet megjeleníti a *EventName* tulajdonságot, amely leírja, hogy a terheléselosztó miért hozta létre a riasztást. Ebben az esetben a generált riasztást a forrás IP NAT-korlátok (SNAT) által okozott TCP-port kimerülése okozta.
+A JSON-kimenet a *EventName* tulajdonságot jeleníti meg, amely leírja, hogy a terheléselosztó miért hozta létre a riasztást. Ebben az esetben a generált riasztás a forrás IP NAT-korlátok (SNAT) által okozott TCP-portok kimerülése miatt lett létrehozva.
 
-## <a name="health-probe-log"></a>Állapot mintavételi naplója
+### <a name="health-probe-log"></a>Állapot mintavételi naplója
 
 Ez a napló csak akkor jön létre, ha a fentiekben részletezett módon engedélyezte a terheléselosztást. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. Létrejön egy "elemzések – naplók-loadbalancerprobehealthstatus" nevű tároló, amely a következő adatnaplókat rögzíti:
 
@@ -129,24 +156,25 @@ Ez a napló csak akkor jön létre, ha a fentiekben részletezett módon engedé
 
 A JSON-kimenet a tulajdonságok mezőben a mintavételi állapot állapotának alapvető információit jeleníti meg. A *dipDownCount* tulajdonság a háttérbeli példányok teljes számát jeleníti meg, amelyek a sikertelen mintavételi válaszok miatt nem kapják meg a hálózati forgalmat.
 
-## <a name="view-and-analyze-the-audit-log"></a>A napló megtekintése és elemzése
+### <a name="view-and-analyze-the-audit-log"></a>A napló megtekintése és elemzése
 
 A naplózási napló adatai a következő módszerek bármelyikével megtekinthetők és elemezhetők:
 
-* **Azure-eszközök:** Információk beolvasása a naplókból a Azure PowerShell, az Azure parancssori felület (CLI), az Azure REST API vagy az Azure betekintő portálon keresztül. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
-* **Power BI:** Ha még nem rendelkezik [Power bi](https://powerbi.microsoft.com/pricing) -fiókkal, kipróbálhatja ingyenesen. Az Azure-naplók a Power BIhez készült [tartalomkezelő csomag](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)használatával az adatokat előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
+* **Azure-eszközök:** Információk beolvasása a naplókból a Azure PowerShell, az Azure parancssori felület (CLI), az Azure REST API vagy a Azure Portal használatával. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
+* **Power BI:** Ha még nem rendelkezik [Power bi](https:// .microsoft.com/pricing) -fiókkal, ingyenes kipróbáláshoz is kipróbálhatja. Az Azure-naplók a Power BIhez készült [tartalomkezelő csomag](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)használatával az adatokat előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
 
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Az állapot-mintavétel és az Eseménynapló megtekintése és elemzése
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Az állapot-mintavétel és az Eseménynapló megtekintése és elemzése
 
-Csatlakoznia kell a Storage-fiókjához, és be kell olvasnia az esemény-és állapot-mintavételi naplók JSON-naplófájljait. A JSON-fájlok letöltése után konvertálhatja őket CSV-re, és megtekintheti őket az Excelben, a PowerBI vagy bármely más adatvizualizációs eszközön.
+Kapcsolódjon a Storage-fiókhoz, és kérje le az Event és Health mintavételi naplók JSON-naplófájljait. A JSON-fájlok letöltése után konvertálhatja őket CSV formátumba, és megtekintheti az Excelben, Power BI vagy bármely más adatvizualizációs eszközön.
 
 > [!TIP]
 > Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
 
-## <a name="additional-resources"></a>További források
+## <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
+Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a központi naplózási elemzéshez használható egy harmadik féltől származó SIEM-eszközben Azure Monitor integrációval. További információ: az [Azure monitoring-adatok továbbítása az Event hub-hoz](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
 
-* Az [Azure-naplók megjelenítését Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzésben teheti meg.
-* [Megtekintheti és elemezheti az Azure-naplókat Power bi és további](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzésekben.
+## <a name="send-to-log-analytics"></a>Küldés a Log Analytics szolgáltatásba
+Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhetnek diagnosztikai adatokat, ahol az összetett lekérdezéseket a hibaelhárítás és az elemzés érdekében az információk alapján lehet futtatni.  További információ: az [Azure-erőforrás-naplók gyűjtése log Analytics munkaterületen Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
 ## <a name="next-steps"></a>További lépések
 

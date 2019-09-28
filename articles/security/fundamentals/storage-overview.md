@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726547"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350300"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
 Ez a cikk áttekintést nyújt az Azure Storage szolgáltatással használható Azure-beli biztonsági funkciókról. Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás. Az Azure Storage átfogó biztonsági funkciókat kínál. A következőket teheti:
 
 * A Storage-fiókot szerepköralapú Access Control (RBAC) és Azure Active Directory használatával biztonságossá teheti.
-* Az alkalmazások és az Azure közötti adatátvitelt az ügyféloldali titkosítás, a HTTPS vagy az SMB 3,0 használatával biztosíthatja.
+* Az alkalmazás és az Azure közötti átvitel során ügyféloldali titkosítással, HTTPS vagy SMB 3.0 protokollal biztosíthat védelmet az adatok számára.
 * A Storage Service Encryption használatával automatikusan titkosíthatja az Azure Storage-ba való íráskor megjelenő adatkészleteket.
 * A virtuális gépek (VM-EK) által használt operációs rendszer és adatlemezek beállítása Azure Disk Encryption használatával.
 * A megosztott hozzáférési aláírások (SASs) használatával delegált hozzáférést biztosíthat az Azure Storage-beli adatobjektumokhoz.
@@ -37,7 +37,7 @@ Az Azure Storage biztonságával kapcsolatos részletesebb információkért tek
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A Storage-fiók a szerepköralapú Access Control segítségével biztonságossá tehető. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC](/azure/role-based-access-control/built-in-roles)-szerepköröket, például a Storage-fiók közreműködőjét.
+A Storage-fiók a szerepköralapú Access Control segítségével biztonságossá tehető. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC-szerepköröket](/azure/role-based-access-control/built-in-roles), például a Storage-fiók közreműködőjét.
 
 További információ:
 
@@ -59,13 +59,13 @@ További információ:
 Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelmét a hálózatokon keresztül továbbítja. Az Azure Storage használatával az alábbiakkal védheti meg az adatvédelmet:
 
 * [Átviteli szintű titkosítás](/azure/storage/common/storage-security-guide#encryption-in-transit), például https, amikor adatátvitelt végez az Azure Storage szolgáltatásba vagy onnan kívülre.
-* Az Azure-fájlmegosztás titkosítása [, például](/azure/storage/common/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)az SMB 3,0-titkosítás.
+* Az Azure-fájlmegosztás titkosítása, például az SMB [3,0-titkosítás](/azure/storage/common/storage-security-guide#using-encryption-during-transit-with-azure-file-shares).
 * [Ügyféloldali titkosítás](/azure/storage/common/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
 További információ az ügyféloldali titkosításról:
 
 * [Ügyféloldali titkosítás Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Cloud Security Controls sorozat: Adatátvitel közbeni titkosítás](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* @no__t – 0Cloud biztonsági vezérlők sorozata: Adatforgalom titkosítása @ no__t-0
 
 ## <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
@@ -82,13 +82,13 @@ További információ a Storage Service Encryptionról:
 
 ## <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-A virtuális gépek Azure Disk Encryption a szervezeti biztonsági és megfelelőségi követelmények megoldásában nyújt segítséget. Titkosítja a virtuálisgép-lemezeket (beleértve a rendszerindítási és adatlemezeket is) a Azure Key Vaultban [](https://azure.microsoft.com/services/key-vault/)felügyelt kulcsok és szabályzatok használatával.
+A virtuális gépek Azure Disk Encryption a szervezeti biztonsági és megfelelőségi követelmények megoldásában nyújt segítséget. Titkosítja a virtuálisgép-lemezeket (beleértve a rendszerindítási és adatlemezeket is) a [Azure Key Vaultban](https://azure.microsoft.com/services/key-vault/)felügyelt kulcsok és szabályzatok használatával.
 
 A virtuális gépek lemezes titkosítása Linux és Windows operációs rendszerek esetén működik. A Key Vault a lemezes titkosítási kulcsok védelméhez, kezeléséhez és naplózásához is segítséget nyújt. A virtuálisgép-lemezeken lévő összes információ az iparági szabványnak megfelelő titkosítási technológia használatával van titkosítva az Azure Storage-fiókokban. A Windows rendszerhez készült lemez-titkosítási megoldás a [Microsoft BitLocker meghajtótitkosításon](https://technet.microsoft.com/library/cc732774.aspx)alapul, és a Linux-megoldás a [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt)alapú.
 
 Tudnivalók a modellalapú alkalmazások létrehozásáról
 
-* [Azure Disk Encryption Windows és Linux rendszerű IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Azure Disk Encryption áttekintése](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>Tűzfalak és virtuális hálózatok
 
