@@ -4,17 +4,17 @@ description: Az Azure CLI és a PowerShell támogatja az Azure AD-beli hitelesí
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 32b3f113658a20790e0f149739a882004f12fe21
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640827"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671091"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure CLI-vagy PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 
@@ -82,7 +82,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha a Azure PowerShell használatával szeretne bejelentkezni, és az Azure Storage-ban az Azure Storage-ban további műveleteket hajt végre, hozzon létre egy tárolási környezetet a Storage `-UseConnectedAccount` -fiókra való hivatkozáshoz, és adja meg a paramétert.
+Ha a Azure PowerShell használatával szeretne bejelentkezni, és az Azure Storage-ban az Azure Storage-ban további műveleteket hajt végre az Azure AD hitelesítő adataival, hozzon létre egy tárolási környezetet a Storage-fiókra való hivatkozáshoz, és adja meg a @no__t-
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-fiókban Azure PowerShell az Azure AD-beli hitelesítő adataival. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34d1ba13689eb820db754c5c0d9573dcdc235205
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350826"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672951"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -102,7 +102,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Értékelje ki és tesztelje az Azure-beli virtuális gépek méretezését a tervezési fázisban kiválasztott virtuálisgép-típusok maximális tárolási sebessége és hálózati átviteli sebessége tekintetében. Itt megtalálja az itt található adatfájlokat:
            -  [A Windows rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
            -  [A Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Fontos, hogy figyelembe vegye a *gyorsítótár nélküli lemez maximális átviteli sebességét* a méretezéshez.
-   1. A tárterület.
+   2. A tárterület.
         - Legalább az [Azure standard SSD Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) -t használja az SAP-alkalmazási rétegeket képviselő virtuális gépekhez, valamint olyan adatbázis-kezelők üzembe helyezéséhez, amelyek nem érzékenyek a teljesítményre.
         - Általánosságban elmondható, hogy az [Azure standard HDD-lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)használatát nem javasoljuk.
         - Az [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) bármely olyan adatbázis-kezelő virtuális gép esetében használható, amely távoli teljesítményre érzékeny.
@@ -111,11 +111,12 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - A különböző adatbázis-kezelői típusok esetében olvassa el az [általános SAP-vel kapcsolatos adatbázis-kezelői dokumentációt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) , valamint az általános dokumentum az adatbázis-kezelői szolgáltatásra vonatkozó dokumentációját.
         - További információ a SAP HANAről: [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)-ban.
         - Az eszköz AZONOSÍTÓjának használatával soha ne csatlakoztassa az Azure-beli adatlemezeket egy Azure-beli linuxos virtuális géphez. Ehelyett használja az univerzálisan egyedi azonosítót (UUID). Ügyeljen arra, hogy az Azure-adatlemezek csatlakoztatásához grafikus eszközöket használjon, például:. Ellenőrizze az/etc/fstab bejegyzéseit, és győződjön meg róla, hogy az UUID a lemezek csatlakoztatására szolgál. További részleteket [ebben a cikkben](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)talál.
-   1. Hálózati.
+   3. Hálózati.
         - Tesztelje és értékelje ki a virtuális hálózati infrastruktúrát és az SAP-alkalmazások elosztását a különböző Azure-beli virtuális hálózatokon keresztül.
-        -  Értékelje ki a sugaras virtuális hálózati architektúra megközelítését, vagy az egyetlen Azure-beli virtuális hálózatban lévő szegmentálási megközelítést. A kiértékelés alapja a következőre: – az [Azure-beli virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)közötti adatcsere költségei. További információ a költségekről: [Virtual Network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/).
-                  – Az Azure-beli virtuális hálózatok közötti társítás gyors leválasztásának előnyei, valamint a hálózati biztonsági csoport módosítása a virtuális hálózaton belüli alhálózat elkülönítésére. Ez a kiértékelés olyan esetekben használható, amikor a virtuális hálózat alhálózatán üzemeltetett alkalmazások vagy virtuális gépek biztonsági kockázatot jelentenek.
-                  – A hálózati forgalom központi naplózása és naplózása a helyszíni, a külvilág és az Azure-ban létrehozott virtuális adatközpont között.
+        -  Értékelje ki a sugaras virtuális hálózati architektúra megközelítését, vagy az egyetlen Azure-beli virtuális hálózatban lévő szegmentálási megközelítést. Értékelés alapja:
+               1. Az [Azure-beli virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)közötti adatcsere költségei. További információ a költségekről: [Virtual Network díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/).
+               2. Az Azure-beli virtuális hálózatok közötti társítás gyors leválasztásának előnyei, valamint a hálózati biztonsági csoport módosítása a virtuális hálózaton belüli alhálózat elkülönítésére. Ez a kiértékelés olyan esetekben használható, amikor a virtuális hálózat alhálózatán üzemeltetett alkalmazások vagy virtuális gépek biztonsági kockázatot jelentenek.
+                3. A helyszíni, a külvilág és az Azure-ban létrehozott virtuális adatközpont közötti hálózati forgalom központi naplózása és naplózása.
         - Értékelje ki és tesztelje az adatelérési utat az SAP-alkalmazás réteg és az SAP adatbázis-kezelő réteg között.
             -  Az Azure-beli [hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) elhelyezése az SAP-alkalmazás és az SAP NetWeaver, Hybris vagy S/4HANA alapú SAP-rendszerek adatbázis-kezelői rétege közötti kommunikációs útvonalon nem támogatott.
             -  Az SAP-alkalmazás rétegének és az SAP adatbázis-kezelők különböző Azure-beli virtuális hálózatokban való elhelyezése nem támogatott.
@@ -129,13 +130,13 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Győződjön meg arról, hogy a ILB központi telepítései a közvetlen kiszolgáló visszaadását használják. Ez a beállítás csökkenti a késést, ha az Azure ILB az adatbázis-kezelő réteg magas rendelkezésre állású konfigurációi esetében használják.
         - Ha a Linux vendég operációs rendszerekkel együtt használja a Azure Load Balancert, ellenőrizze, hogy a **net. IPv4. TCP _timestamps** a Linux hálózati paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
         - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
-   1. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
+   4. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
         - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)
         - Ha nincs szüksége magas rendelkezésre állásra az SAP Central Services és az adatbázis-kezelő rendszer számára, akkor ezeket a virtuális gépeket az SAP-alkalmazás rétegével megegyező rendelkezésre állási csoportba helyezheti.
         - Ha a magas rendelkezésre állás érdekében a passzív replikáció révén védi az SAP központi szolgáltatásait és az adatbázis-kezelő réteget, helyezze el a két csomópontot az SAP Central Services számára egy különálló rendelkezésre állási csoportba, illetve egy másik rendelkezésre állási csoport két adatbázis-kezelő csomópontját.
         - Ha Azure Availability Zonesbe helyez üzembe, nem használhatja a rendelkezésre állási csoportokat. Azonban gondoskodnia kell arról, hogy az aktív és a passzív központi szolgáltatások csomópontjait két különböző Availability Zones telepítse. Használjon olyan Availability Zones, amely a legkisebb késéssel rendelkezik.
           Ne feledje, hogy az [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia, ha Windows vagy pacemaker feladatátvételi fürtöket kíván létrehozni az adatbázis-kezelő szolgáltatás és az SAP központi szolgáltatások rétegében Availability Zones között. A zónákhoz való központi telepítéshez nem használhatók [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) .
-   1. Időtúllépési beállítások.
+   5. Időtúllépési beállítások.
         - Ellenőrizze az SAP-példányok SAP NetWeaver fejlesztői nyomkövetését, és győződjön meg arról, hogy a sorba helyezni-kiszolgáló és az SAP-munkafolyamatok között nincsenek kapcsolódási megszakítások. A következő két beállításjegyzék-paraméter beállításával elkerülhető a kapcsolatok megszakítása:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. További információ: [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000. További információ: [KeepAliveInterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)).
@@ -152,8 +153,8 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    1. Azt méri, hogy mennyi ideig tart a feladatátvétel végrehajtása. Ha az idő túl hosszú, vegye figyelembe a következőket:
         - SUSE Linux esetén a feladatátvétel felgyorsításához használjon SBD-eszközöket az Azure kerítés ügynök helyett.
         - SAP HANA esetén, ha az Újratöltés túl sokáig tart, érdemes lehet több tárolási sávszélességet kiépíteni.
-   1. Tesztelje a biztonsági mentési/visszaállítási sorozatot és az időzítést, és végezze el a szükséges javítási műveleteket. Győződjön meg arról, hogy a biztonsági mentési idők elegendőek. A visszaállítási és az idő-visszaállítási tevékenységeket is tesztelni kell. Győződjön meg arról, hogy a visszaállítási időpontok a RTO SLA-n belül vannak, ahol a RTO adatbázis vagy virtuális gép visszaállítási folyamatán alapul.
-   1. Több régióra kiterjedő DR funkció és architektúra tesztelése.
+   3. Tesztelje a biztonsági mentési/visszaállítási sorozatot és az időzítést, és végezze el a szükséges javítási műveleteket. Győződjön meg arról, hogy a biztonsági mentési idők elegendőek. A visszaállítási és az idő-visszaállítási tevékenységeket is tesztelni kell. Győződjön meg arról, hogy a visszaállítási időpontok a RTO SLA-n belül vannak, ahol a RTO adatbázis vagy virtuális gép visszaállítási folyamatán alapul.
+   4. Több régióra kiterjedő DR funkció és architektúra tesztelése.
 1. Biztonsági ellenőrzések.
    1. Tesztelje az Azure szerepköralapú hozzáférés-vezérlési (RBAC-) architektúrájának érvényességét. A cél az, hogy elkülönítse és korlátozza a különböző csapatok hozzáférését és engedélyeit. Az SAP-csapat tagjai például telepíthetnek virtuális gépeket, és az Azure Storage-ból lemezeket rendelhetnek egy adott Azure virtuális hálózatban. Az SAP-alapú csapat azonban nem hozhat létre saját virtuális hálózatokat, és nem módosíthatja a meglévő virtuális hálózatok beállításait. A hálózati csapat tagjai nem telepíthetnek virtuális gépeket olyan virtuális hálózatokra, amelyekben az SAP-alkalmazás és az adatbázis-kezelő virtuális gépek futnak. A csapat tagjai nem változtathatják meg a virtuális gépek attribútumait, vagy akár virtuális gépeket vagy lemezeket is törölhetnek.  
    1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
@@ -161,9 +162,9 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    1.  Az operációsrendszer-lemezek [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) használata, ha lehetséges, az operációs rendszer által támogatott nézetből.
    1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás metódusok egyikével.
 1. Teljesítmény tesztelése. Az SAP-ben SAP-nyomkövetés és-mérések alapján végezze el az alábbi összehasonlításokat:
-   1. Ha szükséges, hasonlítsa össze az első 10 online jelentést a jelenlegi megvalósításával.
-   1. Ha alkalmazható, hasonlítsa össze az első 10 batch-feladatot a jelenlegi implementációval.
-   1. Összehasonlíthatja az adatátvitelt a felületeken keresztül az SAP-rendszeren. Olyan felületekre koncentrálhat, amelyekkel az átvitel mostantól különböző helyszíneken zajlik, például a helyszínről az Azure-ba.
+   - Ha szükséges, hasonlítsa össze az első 10 online jelentést a jelenlegi megvalósításával.
+   - Ha alkalmazható, hasonlítsa össze az első 10 batch-feladatot a jelenlegi implementációval.
+   - Összehasonlíthatja az adatátvitelt a felületeken keresztül az SAP-rendszeren. Olyan felületekre koncentrálhat, amelyekkel az átvitel mostantól különböző helyszíneken zajlik, például a helyszínről az Azure-ba.
 
 
 ## <a name="non-production-phase"></a>Nem éles fázis 

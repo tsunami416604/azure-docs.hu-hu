@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 9d89bc2318049f068b2bab8c0345605458678b41
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 463cd350eb3c878a7d080cdfa7c8e0fabffd1a93
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350695"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672669"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -264,21 +264,27 @@ Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatáso
 
 ## <a name="firewall-configuration-ip-addresses"></a>Tűzfal-konfiguráció: IP-címek
 
-Az ugyanabban a régióban található logikai alkalmazások ugyanazt az IP-címtartományt használják. Ha támogatni szeretné a logikai alkalmazások által a [http](../connectors/connectors-native-http.md), a [http + a hencegés](../connectors/connectors-native-http-swagger.md)és más HTTP-kérések által közvetlenül elvégezhető hívásokat, állítsa be a tűzfalakat a Logic apps által használt *összes* [bejövő](#inbound) *és* [kimenő](#outbound) IP-címmel. szolgáltatás azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve.
+A bejövő és kimenő hívások Azure Logic Apps által használt IP-címek attól a régiótól függenek, ahol a logikai alkalmazás létezik. Az ugyanabban a régióban *található logikai alkalmazások* ugyanazt az IP-címtartományt használják.
 
-A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve. Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+> [!NOTE]
+> Egyes Microsoft Flow hívások, például a **http** és a **http + OpenAPI** kérelmek, közvetlenül a Azure Logic apps szolgáltatáson keresztül érhetők el, és az itt felsorolt IP-címekről érkeznek. Az Microsoft Flow által használt IP-címekkel kapcsolatos további információkért lásd: [korlátok és konfiguráció a Microsoft Flowban](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
 
-Egyéni összekötők, [Azure Government](../azure-government/documentation-government-overview.md)és [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el.
+* Ha támogatni szeretné a logikai alkalmazások által a [http](../connectors/connectors-native-http.md), a [http + a hencegés](../connectors/connectors-native-http-swagger.md)és más HTTP-kérések által közvetlenül elvégezhető hívásokat, állítsa be a tűzfalat a Logic apps által használt *összes* [bejövő](#inbound) *és* [kimenő](#outbound) IP-címre. szolgáltatás azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve.
+
+* A [Microsoft által felügyelt összekötők](../connectors/apis-list.md) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve. 
+
+* Az integrációs szolgáltatási környezetben (ISE) futó Logic apps esetén győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+
+* A Logic apps nem tud közvetlenül hozzáférni olyan Azure Storage-fiókokhoz, amelyek [Tűzfalszabályok](https://docs.microsoft.com/azure/storage/common/storage-network-security) és ugyanabban a régióban vannak. A Logic apps azonban olyan Azure Storage-fiókokhoz is hozzáférhet, amelyek egy másik régióban találhatók, mert egy nyilvános IP-cím van használatban a régiók közötti kommunikációhoz. Vagy használhatja az alábbi lehetőségek egyikét is:
+
+  * Hozzon létre egy [integrációs szolgáltatási környezetet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy Azure-beli virtuális hálózat erőforrásaihoz tud csatlakozni.
+
+  * Ha már használja a API Management, ezt a szolgáltatást használhatja ehhez a forgatókönyvhöz. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
+
+* Egyéni összekötők, [Azure Government](../azure-government/documentation-government-overview.md)és [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)esetén a rögzített vagy fenntartott IP-címek nem érhetők el.
 
 > [!IMPORTANT]
->
-> Ha rendelkezik meglévő konfigurációkkal, a lehető leghamarabb frissítse őket a **2018. szeptember 1. előtt** , így azok beletartoznak és egyeznek a listában szereplő IP-címekkel azokon a régiókban, ahol a logikai alkalmazások léteznek.
-
-Logic Apps nem támogatja közvetlenül az Azure Storage-fiókokhoz való csatlakozást a tűzfalakon keresztül. A Storage-fiókok eléréséhez használja az alábbi lehetőségek egyikét:
-
-* Hozzon létre egy [integrációs szolgáltatási környezetet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy Azure-beli virtuális hálózat erőforrásaihoz tud csatlakozni.
-
-* Ha már használja a API Management, ezt a szolgáltatást használhatja ehhez a forgatókönyvhöz. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
+> Ha a tűzfal a 2018. szeptember 1. előtt beállított tűzfallal rendelkezik, akkor győződjön meg arról, hogy azok a régiók, amelyeken a logikai alkalmazások léteznek, egyeznek a listában szereplő aktuális IP-címekkel.
 
 <a name="inbound"></a>
 

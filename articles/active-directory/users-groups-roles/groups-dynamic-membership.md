@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909782"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673422"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabály törzsének teljes hossza nem haladhatja meg a 2048 karaktert.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>Tagsági szabály törzsének összeállítása
+## <a name="constructing-the-body-of-a-membership-rule"></a>Tagsági szabály törzsének összeállítása
 
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 

@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164327"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673320"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ha az Azure CLI-t szeretné használni az SAS Azure AD-beli hitelesítő adatokk
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal
 
-Jelentkezzen be az Azure CLI-be az Azure AD-beli hitelesítő adataival. További információ: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
+Jelentkezzen be az Azure CLI-be az Azure AD-beli hitelesítő adataival. További információkért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
 ## <a name="assign-permissions-with-rbac"></a>Engedélyek kiosztása a RBAC
 
@@ -38,7 +38,7 @@ Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, 
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy RBAC-szerepköröket rendeljen hozzá egy Azure AD-rendszerbiztonsági tag számára, előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
 
-A következő példa a **Storage blob** -adatközreműködői szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
+A következő példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
@@ -57,7 +57,7 @@ Amikor létrehoz egy felhasználói delegálási SAS-t az Azure CLI-vel, a rends
 
 Mivel a felhasználói delegálási kulcs érvényességi időtartama a kezdő dátumtól számított 7 nap, a kezdési időponttól számított 7 napon belül meg kell adnia a lejárati időt. Az SAS érvénytelen a felhasználói delegálási kulcs lejárata után, így a 7 napnál hosszabb lejárati idővel rendelkező SAS-t a rendszer továbbra is csak 7 napig érvényes.
 
-Felhasználói delegálási sas létrehozásakor a és `--auth-mode login` `--as-user parameters` a szükséges. Adja meg a `--auth-mode` paraméter *bejelentkezési adatait* , hogy az Azure Storage-ba irányuló kérések engedélyezve legyenek az Azure ad-beli hitelesítő adataival. Adja meg `--as-user` azt a paramétert, amely azt jelzi, hogy a visszaadott sas felhasználói delegálási sas-nek kell lennie.
+Felhasználói delegálási SAS létrehozásakor a `--auth-mode login` és a `--as-user parameters` szükséges. Adja meg a `--auth-mode` paraméterhez való *bejelentkezést* , hogy az Azure Storage-ba irányuló kérések engedélyezve legyenek az Azure ad-beli hitelesítő adataival. Adja meg a `--as-user` paramétert, amely jelzi, hogy a visszaadott SAS-nek felhasználói delegálási SAS-nek kell lennie.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Felhasználói delegálási SAS létrehozása tárolóhoz
 
@@ -89,7 +89,7 @@ Ha az Azure CLI-vel szeretne létrehozni egy felhasználói delegálási SAS-t e
 
 A felhasználók delegálására szolgáló SAS-re vonatkozó támogatott engedélyek a következők: Hozzáadás, létrehozás, törlés, olvasás és írás. Engedélyek adhatók meg egyszerre vagy kombinálva. További információ ezekről az engedélyekről: [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas).
 
-A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `--full-uri` paramétert adja meg, amely visszaadja a blob URI azonosítót a hozzáfűzött sas-jogkivonattal. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `--full-uri` paramétert adja meg, amely visszaadja a blob URI azonosítót a hozzáfűzött SAS-tokenhez. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
 az storage blob generate-sas \

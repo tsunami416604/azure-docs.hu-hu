@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067610"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672777"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre elkészített tartományi referenciák a LUIS-alkalmazáshoz
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
 
 [Egyéni tartományok](luis-how-to-start-new-app.md), ezzel szemben az elindításához nincs leképezések és a modellek. Egy egyéni modell bármilyen előre összeállított tartományban szándékok és entitások adhat hozzá.
 
-# <a name="supported-domains-across-cultures"></a>Támogatott tartományok kultúrák között
+## <a name="supported-domains-across-cultures"></a>Támogatott tartományok kultúrák között
 
 Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az angol nyelvű támogatás általában teljesebb, mint mások. 
 
@@ -47,7 +47,7 @@ Az előre elkészített tartományok **nem támogatottak** a ben:
 * hindi
 * Spanyol mexikói
 
-# <a name="description-for-luis-prebuilt-domains"></a>A LUIS előre összeépített tartományok leírása
+## <a name="description-for-luis-prebuilt-domains"></a>A LUIS előre összeépített tartományok leírása
 ## <a name="calendar"></a>**Naptár**
 A naptár a személyes találkozókról és a találkozókról szól, nem nyilvános eseményről (például a VB-ütemtervekről, a Seattle-i eseménynaptárról) vagy az általános naptárról (például a mai napig, hogy mi a kezdete, ha a Labor Day).
 ### <a name="intents"></a>**Leképezések**
@@ -76,7 +76,7 @@ ShowNext | Keresse meg a következő eseményt. <br> _**Figyelmeztetés**: Tová
  TimeRemaining | A következő esemény előtt keresse meg a hátralévő időt. | Megjeleníti, hogy mennyi idő van az értekezletek előtt. <br> A következő értekezlet megkezdése előtti időtartam megjelenítése.
  
 ### <a name="entities"></a>**Szervezetek**
-Entitás neve | Entitás típusa | Leírás | Példák | Tárolóhelyek
+Entitás neve | Entitás típusa | Leírás | Példák | Tárhelyek
 -------|-----------------------|-------------|---------|--------
 ContactName | personName | A partner vagy az értekezlet résztvevője neve. | Találkozzon a **Betsy**-vel. <br>  Ismerkedjen **meg a** következővel: július 3., 19:00. | Betsy <br> Aubrey <br> Amy 
 DestinationCalendar | egyszerű | A cél naptár neve. | ebédelés MOM kedd 12 **személyes** <br> Saját **Google** naptár használata alapértelmezett naptárként. <br> A jóga osztály frissítése a Mon Wed-ra 3 órakor a **személyes** naptár listázása. | Google <br> Személyes <br> vállalata számára <br> fő
@@ -147,7 +147,7 @@ TurnSpeakerOff | Kapcsolja ki a kihangosítás. | Ugrás a beszélő ki. <br>   
 TurnSpeakerOn | Kapcsolja be a kihangosítás. | Kihangosító mód. <br>   Kihangosító helyezze.
 
 ### <a name="entities"></a>**Szervezetek**
-Entitás neve | Entitás típusa | Leírás | Példák | Tárolóhelyek
+Entitás neve | Entitás típusa | Leírás | Példák | Tárhelyek
 ------|-------|----------|--------------|---------------
 Attachment | egyszerű | Az a melléklet, amelyet a felhasználó SMS-ben vagy e-mailben szeretne elküldeni. | **Fájl** küldése a OneNote-ből. <br> A kitakarítási **doc** küldése a Katie-nek. | file <br> doc
 AudioDeviceType | egyszerű | Az audioeszköz típusa (hangszóró, fejhallgató, mikrofon stb.). | Válasz a **kihangosító**használatával. <br> Tárcsázzon újra a **hangszórón**. | Speaker <br> kihangosító <br> Bluetooth
@@ -192,7 +192,7 @@ QueryLastText | Az utolsó e-mail lekérdezése. | Ki küldött e-mailt? <br> Ki
 
 
 ### <a name="entities"></a>**Szervezetek**
-Entitás neve | Entitás típusa | Leírás | Példák | Tárolóhelyek
+Entitás neve | Entitás típusa | Leírás | Példák | Tárhelyek
 ------|-------|----------|--------------|---------------
 Attachment | egyszerű | Az a melléklet, amelyet a felhasználó SMS-ben vagy e-mailben szeretne elküldeni. | **Fájl** küldése a OneNote-ből. <br> A kitakarítási **doc** küldése a Katie-nek. | file <br> doc
 ContactName | personName  | Egy ügyfél vagy üzenet címzettje neve. | Küldje el az e-mailt a **Stevens** -nek | Stevens
@@ -403,7 +403,7 @@ Cél neve | Leírás | Példák
 LUIS entitás | Entitás típusa | Leírás | Példák
 ------------|-------------|-------------|---------
 Location | Földrajz | Az időjárási kérések abszolút vagy implicit helye. | Palo Alto<br>Sanghaj<br>Seattle<br>Delvina<br>
-Date/Time   | datetime | Az időjárás lekérdezésének dátuma vagy időtartama. | November<br>óránként<br>reggel<br>Ezen a hétvégén<br>10 nap<br>
+Date/Time   | datetime | Az időjárás lekérdezésének dátuma vagy időtartama. | November<br>óránkénti<br>reggel<br>Ezen a hétvégén<br>10 nap<br>
 AdditionalWeatherCondition | list | Az időjárás további leírása, például a szél sebessége vagy iránya. | direction<br>Gyors<br>Sebességű
 Történelmi | egyszerű | A múltbeli időjárási feltételek Leírás szavai, beleértve az átlagot, az elmúlt időszakban megjelenő eseteket. | elmúlt<br>korábbi/korábbi előzmények<br>szezonális<br>legjobb idő<br>valaha rögzített
 PrecipitationUnit | dimenzió | A hó vagy az eső csapadéka. | 5 hüvelyk<br>6 cm

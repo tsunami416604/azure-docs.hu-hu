@@ -4,16 +4,16 @@ description: Megismerheti az Azure Storage-fiókok létrehozásának és haszná
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 49e15964ba370cc6dc18491507b906764f1f882c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640108"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671313"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure Storage-fiók áttekintése
 
@@ -32,7 +32,7 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 - Blobok (az összes típus: Letiltás, Hozzáfűzés, lap)
 - Fájlok
 - Lemezek
-- Várólisták
+- Üzenetsorok
 - Táblák
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Az általános célú v1-fiókok hozzáférést biztosítanak az összes Azure S
 - Blobok (az összes típus)
 - Fájlok
 - Lemezek
-- Várólisták
+- Üzenetsorok
 - Táblák
 
 Habár az általános célú v2-fiókok használata a legtöbb esetben ajánlott, az általános célú v1-fiókok a legmegfelelőbbek az alábbi forgatókönyvekhez:
@@ -97,7 +97,7 @@ Az Azure Storage különböző lehetőségeket biztosít a Blobok adatok haszná
 Az elérhető hozzáférési szintek a következők:
 
 * A **gyors** elérési szint, amely a Storage-fiók objektumainak gyakori elérésére van optimalizálva. A gyors elérésű rétegben az adatok elérése a leghatékonyabb, a tárolási költségek pedig magasabbak. Alapértelmezés szerint a rendszer új Storage-fiókokat hoz létre a gyors elérésű rétegben.
-* A lassú elérési szint, amely nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva legalább 30 napig. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
+* A **lassú** elérési szint, amely nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva legalább 30 napig. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
 * Az **archiválási** szint, amely csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak elviselni, és legalább 180 napig az archiválási szinten maradnak. Az archiválási szint a leghatékonyabb megoldás az adatok tárolására, de az adatokhoz való hozzáférés drágább, mint az adatok elérése a gyakori vagy a ritka elérésű szinteken.
 
 Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáférési szintek között. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
@@ -113,9 +113,9 @@ További információ a tárolási replikálásról: az [Azure Storage replikác
 
 ## <a name="encryption"></a>Encryption
 
-A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST](storage-service-encryption.md)-adatokhoz.
+A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán. A titkosítással kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](storage-service-encryption.md).
 
-## <a name="storage-account-endpoints"></a>Tárfiókvégpontok
+## <a name="storage-account-endpoints"></a>Tárfiók végpontjai
 
 A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fiók neve és az Azure Storage szolgáltatás végpontja a Storage-fiókhoz tartozó végpontokat képezi le.
 
@@ -131,7 +131,7 @@ Ha például az általános célú Storage-fiók neve *mystorageaccount*, akkor 
 
 A Storage-fiókban lévő objektumok elérésének URL-címe úgy jön létre, hogy hozzáfűzi az objektum helyét a Storage-fiókban a végponthoz. Például egy blobcím formátuma lehet a következő: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
-A Storage-fiók a Blobok egyéni tartományának használatára is konfigurálható. További információ: [Egyéni tartománynév beállítása az Azure Storage](../blobs/storage-custom-domain-name.md)-fiókhoz.  
+A Storage-fiók a Blobok egyéni tartományának használatára is konfigurálható. További információ: [Egyéni tartománynév beállítása az Azure Storage-fiókhoz](../blobs/storage-custom-domain-name.md).  
 
 ## <a name="control-access-to-account-data"></a>Fiókadatok hozzáférésének szabályozása
 
@@ -143,7 +143,7 @@ A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-f
 
 - **Azure Active Directory:** Használjon Azure Active Directory (Azure AD) hitelesítő adatokat egy felhasználó, csoport vagy más identitás hitelesítéséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez. Ha az identitás hitelesítése sikeres, az Azure AD visszaadja az Azure Blob Storage-ba vagy a várólista-tárolóba való kérelem engedélyezéséhez használandó tokent. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
 - **Megosztott kulcs engedélyezése:** Használja a Storage-fiók hozzáférési kulcsát olyan kapcsolati karakterlánc létrehozásához, amelyet az alkalmazás a futásidőben használ az Azure Storage eléréséhez. A kapcsolódási karakterláncban szereplő értékek az Azure Storage-nak átadott *engedélyezési* fejléc összeállítására szolgálnak. További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
-- **Közös hozzáférési aláírás:** Ha nem az Azure AD-hitelesítést használja, közös hozzáférésű aláírással delegálhatja a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírások olyan tokenek, amelyek az URL-címen az Azure Storage-ba irányuló kérések engedélyezéséhez szükséges összes információt beágyazzák. Megadhatja a tárolási erőforrást, a megadott engedélyeket, valamint azt az időközt, ameddig az engedélyek érvényesek a közös hozzáférési aláírás részeként. További információ: Shared [Access Signatures (SAS) használata](storage-sas-overview.md).
+- **Közös hozzáférési aláírás:** Ha nem az Azure AD-hitelesítést használja, közös hozzáférésű aláírással delegálhatja a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírások olyan tokenek, amelyek az URL-címen az Azure Storage-ba irányuló kérések engedélyezéséhez szükséges összes információt beágyazzák. Megadhatja a tárolási erőforrást, a megadott engedélyeket, valamint azt az időközt, ameddig az engedélyek érvényesek a közös hozzáférési aláírás részeként. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
 
 > [!NOTE]
 > Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. 

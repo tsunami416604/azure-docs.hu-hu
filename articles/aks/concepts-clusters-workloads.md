@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348969"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672815"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -76,39 +76,34 @@ Ha egy másik gazdagép operációs rendszert, tároló-futtatókörnyezetet vag
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
-A csomópont-erőforrásokat az AK használja, hogy a Node függvényt a fürt részeként végezze el. Ez létrehozhat egy discrepency a csomópont összes erőforrása és az AK-beli használat során kiosztható erőforrások között. Fontos megjegyezni, hogy a telepített hüvelyek kéréseinek és korlátainak beállításakor.
+A csomópont-erőforrásokat az AK használja, hogy a Node függvényt a fürt részeként végezze el. Ez létrehozhat egy discrepency a csomópont összes erőforrása és az AK-beli használat során kiosztható erőforrások között. Fontos megjegyezni, hogy a felhasználók által telepített hüvelyek kéréseinek és korlátainak beállításakor.
 
 Csomópont lefoglalható erőforrásainak kereséséhez futtassa a következőt:
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-A csomópontok teljesítményének és funkcióinak fenntartásához a következő számítási erőforrások vannak lefoglalva minden egyes csomóponton. Mivel a csomópontok nagyobb mértékben növekednek az erőforrásokban, az erőforrás-foglalás a felhasználó által üzembe helyezett hüvelyek nagyobb mennyiségű felügyeletének köszönhetően nő.
+A csomópontok teljesítményének és funkcióinak fenntartásához az erőforrásokat az egyes csomópontok az AK szerint vannak lefoglalva. Mivel a csomópontok nagyobb mértékben növekednek az erőforrásokban, az erőforrás-foglalás a felhasználó által üzembe helyezett hüvelyek nagyobb mennyiségű felügyeletének köszönhetően nő.
 
 >[!NOTE]
 > A bővítmények, például a OMS használata további csomópont-erőforrásokat fog használni.
 
-- **CPU** – a csomópont típusától függ
+- A **CPU** által lefoglalt CPU függ a csomópont típusától és a fürt konfigurációjától, ami további funkciók futtatása miatt kevésbé lefoglalható processzort eredményezhet
 
 | CPU-magok a gazdagépen | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet (millicores)|60|100|140|180|260|420|740|
+|Kube – fenntartott (millicores)|60|100|140|180|260|420|740|
 
-- **Memória** – a rendelkezésre álló memória 20%-a, legfeljebb 4 GIB Max
+- **Memória** – a memória lefoglalása progresszív arányt követ
+  - az első 4 GB memória 25%-a
+  - a következő 4 GB memória 20%-a (legfeljebb 8 GB)
+  - a következő 8 GB memória 10%-a (legfeljebb 16 GB)
+  - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
+  - a 128 GB-nál nagyobb memória 2%-a
 
 Ezek a foglalások azt jelentik, hogy az alkalmazásokhoz rendelkezésre álló CPU és memória mennyisége kevesebb, mint maga a csomópont. Ha a futtatott alkalmazások száma miatt van erőforrás-korlátozás, ezek a foglalások biztosítják, hogy a processzor és a memória továbbra is elérhető legyen az alapvető Kubernetes-összetevők számára. Az erőforrás-foglalások nem módosíthatók.
 
-Példa:
-
-- A **standard DS2 v2** csomópontjának mérete 2 vCPU és 7 GIB memóriát tartalmaz
-    - 20%-a 7 GiB memória = 1,4 GiB
-    - Összesen *(7-1,4) = 5,6 GIB* memória érhető el a csomóponthoz
-    
-- A **standard E4s v3** csomópontjának mérete 4 vCPU és 32 GIB memóriát tartalmaz
-    - 20% 32 GiB memória = 6,4 GiB, de az AK-ban csak legfeljebb 4 GiB-t foglal le
-    - A csomóponthoz összesen *(32-4) = 28 GIB* érhető el
-    
 A mögöttes csomópont operációs rendszerének bizonyos mennyiségű CPU-és memória-erőforrásra is szüksége van a saját alapvető funkcióinak elvégzéséhez.
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások az alapszintű Scheduler-funkciókhoz az AK-ban][operator-best-practices-scheduler].

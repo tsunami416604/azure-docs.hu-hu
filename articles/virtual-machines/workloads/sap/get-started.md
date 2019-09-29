@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc1c6e4bf2e67d8945cf754aa47461b4ce8364a9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 81deaaffa301c4453842875f9cfd6b63bb6bbfd7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066827"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672986"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,7 +120,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
-- 09/17/2019: A NetWeaver tervezési és telepítési útmutatójának módosítása az SAP virtuálisgép-bővítményével kapcsolatos feltételek egységesítéséhez
+- 09/28/2019: A [pacemaker beállítása a Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) a SBD tisztázására, mivel a kerítési mechanizmus nem támogatott a RHEL-fürtökön  
+- 09/17/2019: A NetWeaver tervezési és telepítési útmutatójának módosítása az SAP virtuálisgép-bővítményével kapcsolatos feltételek egységesítéséhez  
 - 08/22/2019: A [pacemaker beállítása a SUSE Linux Enterprise Server az Azure-ban beállításának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) változásai az egyéni szerepkör-létrehozás URL-címeinek frissítéséhez  
 - 08/16/2019: A [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) című részében szereplő változások emlékeztetik az ügyfeleket az egyéni szerepkör műveleteinek frissítésére, ha az Azure kerítési ügynök új verziójára frissítenek.  
 - 08/15/2019: [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai az ultra Disk (korábban Ultra SSD) általánosan elérhetővé tételének tükrözéséhez

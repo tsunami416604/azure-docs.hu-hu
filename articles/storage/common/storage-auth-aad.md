@@ -4,17 +4,17 @@ description: Az Azure-blobokhoz és-várólistákhoz való hozzáférés engedé
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2607e09e6b8428c2aacc8ee7c6be42f54284a1ce
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641090"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673155"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával
 
@@ -28,7 +28,7 @@ Az Azure AD-vel való engedélyezés az összes általános célú és blob Stor
 
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) megpróbál hozzáférni egy blob-vagy várólista-erőforráshoz, a kérést engedélyezni kell, kivéve, ha a névtelen hozzáféréshez elérhető blob. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer OAuth 2,0 tokent ad vissza. Ezt követően a tokent a rendszer a Queue szolgáltatás blobnak küldött kérelem részeként továbbítja, és a szolgáltatás azt használja, hogy engedélyezze a hozzáférést a megadott erőforráshoz.
 
-A hitelesítési lépés megköveteli, hogy egy alkalmazás OAuth 2,0 hozzáférési tokent igényeljen futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Functions alkalmazáson belül fut [](../../active-directory/managed-identities-azure-resources/overview.md) , akkor felügyelt identitást használhat a blobokhoz vagy várólistákhoz való hozzáféréshez. Ha meg szeretné tudni, hogyan engedélyezheti a felügyelt identitások által az Azure-Blobhoz vagy a Queue szolgáltatáshoz intézett kéréseket, tekintse meg az [Azure-erőforrások Azure Active Directory és felügyelt identitásokkal való hozzáférésének engedélyezése a blobokhoz és](storage-auth-aad-msi.md)a várólistákhoz
+A hitelesítési lépés megköveteli, hogy egy alkalmazás OAuth 2,0 hozzáférési tokent igényeljen futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Functions alkalmazáson belül fut, akkor [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) használhat a blobokhoz vagy várólistákhoz való hozzáféréshez. Ha meg szeretné tudni, hogyan engedélyezheti a felügyelt identitások által az Azure-Blobhoz vagy a Queue szolgáltatáshoz intézett kéréseket, tekintse meg az [Azure-erőforrások Azure Active Directory és felügyelt identitásokkal való hozzáférésének engedélyezése a blobokhoz és a várólistákhoz](storage-auth-aad-msi.md)
 
 Az engedélyezési lépés megköveteli, hogy egy vagy több RBAC-szerepkört hozzá lehessen rendelni a rendszerbiztonsági tag számára. Az Azure Storage olyan RBAC-szerepköröket biztosít, amelyek a blob-és üzenetsor-adatkezelési engedélyek közös készleteit ölelik fel. A rendszerbiztonsági tag számára hozzárendelt szerepkörök határozzák meg, hogy a résztvevő milyen engedélyeket fog tartalmazni. Ha többet szeretne megtudni az Azure Storage-hoz készült RBAC-szerepkörök hozzárendeléséről, tekintse meg a [hozzáférési jogosultságok kezelése a RBAC](storage-auth-aad-rbac.md)szolgáltatással című témakört.
 
@@ -38,7 +38,7 @@ Az Azure blobnak vagy Queue szolgáltatásnak kéréseket kérő natív alkalmaz
 
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a blob-és üzenetsor-adateléréshez használt engedélyek közös készleteit foglalják magukban. Egyéni szerepköröket is meghatározhat a blob-és üzenetsor-adataihoz való hozzáféréshez.
 
-Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt [identitás az Azure](../../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz.
+Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>A blobok és a várólisták beépített RBAC szerepkörei
 

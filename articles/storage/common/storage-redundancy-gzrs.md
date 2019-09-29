@@ -3,17 +3,17 @@ title: Nagyteljesítményű Azure Storage-alkalmazások kiépítése a Geo-Zone-
 description: A Geo-Zone-redundáns tárolás (GZRS) a helyi leállású zónák (ZRS-EK) magas rendelkezésre állását a földrajzilag redundáns tárolás (GRS) által biztosított védelmet nyújtja. A GZRS-fiókban lévő adatok az elsődleges régió Azure rendelkezésre állási zónái között replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300644"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673074"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -55,7 +55,7 @@ A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan repliká
 
 Ha engedélyezi az RA-GZRS-t a Storage-fiókjához, az adatok beolvashatók a másodlagos végpontból, valamint a Storage-fiók elsődleges végpontján. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például az blob Service `myaccount.blob.core.windows.net`elsődleges végpontja, akkor a másodlagos `myaccount-secondary.blob.core.windows.net`végpont. A Storage-fiókhoz tartozó hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
-Ha regionális kimaradás esetén szeretné kihasználni az RA-GZRS-t, előre meg kell terveznie az alkalmazást, hogy kezelni tudja ezt a forgatókönyvet. Az alkalmazásnak az elsődleges végpontra kell olvasnia és írnia, de a másodlagos végpont használatára kell váltania abban az esetben, ha az elsődleges régió elérhetetlenné válik. Az RA-GZRS használatával történő magas rendelkezésre állás kialakításával kapcsolatos útmutatásért lásd: magas rendelkezésre állású [Alkalmazások tervezése ra-GZRS vagy ra-GRS](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Ha regionális kimaradás esetén szeretné kihasználni az RA-GZRS-t, előre meg kell terveznie az alkalmazást, hogy kezelni tudja ezt a forgatókönyvet. Az alkalmazásnak az elsődleges végpontra kell olvasnia és írnia, de a másodlagos végpont használatára kell váltania abban az esetben, ha az elsődleges régió elérhetetlenné válik. Az RA-GZRS használatával történő magas rendelkezésre állás kialakításával kapcsolatos útmutatásért lásd: magas rendelkezésre állású [Alkalmazások tervezése ra-GZRS vagy ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Mivel a rendszer aszinkron módon replikálja az adatfájlokat a másodlagos régióba, a másodlagos régió gyakran az elsődleges régió mögött van. Annak megállapításához, hogy mely írási műveletek lettek replikálva a másodlagos régióba, az alkalmazás ellenőrizze a Storage-fiók utolsó szinkronizálásának idejét. Az elsődleges régióba az utolsó szinkronizálás időpontja előtt írt összes írási műveletet sikeresen replikálták a másodlagos régióba, ami azt jelenti, hogy elérhetők a másodlagos helyről való olvasáshoz. Az elsődleges régióba az utolsó szinkronizálás időpontja után írt írási műveletek nem replikálódtak a másodlagos régióra, ami azt jelenti, hogy nem lesznek elérhetők olvasási műveletekhez.
 
@@ -141,7 +141,7 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
     - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
     - **Kategória**: Válassza az **áttelepítés (ra-) GZRS egy régión belül**lehetőséget.
     - **Cím**: Írjon be egy leíró címet, például: **(ra-) GZRS fiók áttelepítése**.
-    - **Részletek**: Írja be a további részleteket a **részletek** mezőbe, például: "szeretnék áttérni a GZRS a (z) [LRS, GRS] \_ helyről a \_ régióban." vagy "szeretnék migrálni az ra-GZRS-re a \_ \_ (z) [LRS, ra-GRS] régióban."
+    - **Részletek**: Írjon be további részleteket a **részletek** box, például: "szeretnék áttérni a GZRS-re a (z) \_ @ no__t-3 régióban lévő [LRS, GRS] webhelyről." vagy "szeretnék áttérni az RA-GZRS-re a (z) [LRS, RA-GRS] webhelyről a \_ @ no__t-1 régióban."
 5. Kattintson a  **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Válassza a **Létrehozás**lehetőséget.

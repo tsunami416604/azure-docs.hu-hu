@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan hozhat létre közös hozzáférésű aláírá
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164267"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673337"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával
 
@@ -80,11 +80,11 @@ A PowerShell-lel való bejelentkezéssel kapcsolatos további információkért 
 
 ## <a name="assign-permissions-with-rbac"></a>Engedélyek kiosztása a RBAC
 
-Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, a PowerShellbe való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot*kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a RBAC engedélyek kiosztása a **RBAC** című szakaszt a [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas)című témakörben.
+Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, a PowerShellbe való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot*kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a RBAC **engedélyek kiosztása a RBAC** című szakaszt a [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas)című témakörben.
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy RBAC-szerepköröket rendeljen hozzá egy Azure AD-rendszerbiztonsági tag számára, előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
 
-A következő példa a **Storage blob** -adatközreműködői szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
+A következő példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
@@ -102,7 +102,7 @@ Ha Azure PowerShell használatával hoz létre felhasználói delegálási SAS-t
 
 Mivel a felhasználói delegálási kulcs érvényességi időtartama a kezdő dátumtól számított 7 nap, a kezdési időponttól számított 7 napon belül meg kell adnia a lejárati időt. Az SAS érvénytelen a felhasználói delegálási kulcs lejárata után, így a 7 napnál hosszabb lejárati idővel rendelkező SAS-t a rendszer továbbra is csak 7 napig érvényes.
 
-Ha Azure PowerShell használatával szeretne létrehozni egy felhasználói delegálási sas-t egy tárolóhoz vagy blobhoz, először hozzon létre egy új Azure `-UseConnectedAccount` Storage környezeti objektumot, és határozza meg a paramétert. A `-UseConnectedAccount` paraméter azt adja meg, hogy a parancs létrehozza a környezeti objektumot abban az Azure ad-fiókban, amellyel bejelentkezett.
+Ha Azure PowerShell használatával szeretne létrehozni egy felhasználói delegálási SAS-t egy tárolóhoz vagy blobhoz, először hozzon létre egy új Azure Storage környezeti objektumot, és határozza meg a `-UseConnectedAccount` paramétert. A `-UseConnectedAccount` paraméter azt adja meg, hogy a parancs létrehozza a környezeti objektumot abban az Azure AD-fiókban, amelybe bejelentkezett.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
@@ -134,7 +134,7 @@ A felhasználói delegálási SAS-jogkivonat a következőhöz hasonló lesz:
 
 Ha egy blobhoz felhasználói delegálási SAS-tokent szeretne visszaadni, hívja meg a [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) parancsot, amely a korábban létrehozott Azure Storage környezeti objektumba kerül.
 
-A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `-FullUri` paramétert adja meg, amely visszaadja a blob URI azonosítót a hozzáfűzött sas-jogkivonattal. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `-FullUri` paramétert adja meg, amely visszaadja a blob URI azonosítót a hozzáfűzött SAS-tokenhez. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

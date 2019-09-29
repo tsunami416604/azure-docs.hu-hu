@@ -1,54 +1,58 @@
 ---
-title: Tesztelje helyben a Visual Studio Code (előzetes verzió) használatával az Azure Stream Analytics-lekérdezések
-description: Ez a cikk ismerteti, hogyan tesztelhet helyileg az Azure Stream Analytics Tools for Visual Studio Code-ot.
+title: Azure Stream Analytics lekérdezések tesztelése helyileg a Visual Studio Code-ban (előzetes verzió)
+description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg tesztelni a Visual Studio Code-hoz készült Azure Stream Analytics eszközökkel.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f477a0f99c3eaa82568d8188bfaae03818fb72dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827950"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673024"
 ---
-# <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Stream Analytics-lekérdezések Visual Studio Code használatával helyben tesztelése
+# <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>A Visual Studio Code-ban helyileg tesztelheti Stream Analytics lekérdezéseket
 
-Az Azure Stream Analytics tools for Visual Studio Code használatával a Stream Analytics-feladatok helyileg mintaadatokkal tesztelheti.
+A Visual Studio Code-hoz készült Azure Stream Analytics Tools segítségével helyileg tesztelheti a Stream Analytics-feladatokat a mintaadatok használatával.
 
-Ezzel [rövid](quick-create-vs-code.md) megtudhatja, hogyan hozhat létre egy Stream Analytics-feladatot a Visual Studio Code használatával.
+Ebből a rövid útmutatóból megtudhatja [, hogyan](quick-create-vs-code.md) hozhat létre egy stream Analytics feladatot a Visual Studio Code használatával.
 
-## <a name="run-queries-locally"></a>Lekérdezések futtatása helyileg
+## <a name="prerequisites"></a>Előfeltételek
+* Telepítse a [.net Core SDK](https://dotnet.microsoft.com/download)-t.
+* Indítsa újra a Visual Studio Code-ot.
+ 
+## <a name="run-queries-locally"></a>Lekérdezések helyi futtatása
 
-Az Azure Stream Analytics-bővítmény a Visual Studio Code használatával a Stream Analytics-feladatok helyileg mintaadatokkal tesztelheti.
+A Visual Studio Code-hoz készült Azure Stream Analytics-bővítmény segítségével helyileg tesztelheti a Stream Analytics-feladatokat a mintaadatok használatával.
 
-1. A Stream Analytics-feladat létrehozása után **Ctrl + Shift + P** a parancskatalógus megnyitásához. Írja be, és válassza ki **ASA: Bemenet hozzáadása**.
+1. Miután létrehozta a Stream Analytics feladatot, a Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt. Ezután írja be és válassza a **ASA: Adja hozzá a bemenet @ no__t-0 értéket.
 
-    ![A Visual Studio code-ban ASA bemenet hozzáadása](./media/vscode-local-run/add-input.png)
+    ![ASA-bemenet hozzáadása a Visual Studio Code-ban](./media/vscode-local-run/add-input.png)
 
-2. Válassza ki **helyi bemeneti**.
+2. Válassza a **helyi bevitel**lehetőséget.
 
-    ![A Visual Studio code-ban ASA helyi bemenet hozzáadása](./media/vscode-local-run/add-local-input.png)
+    ![ASA helyi bemenet hozzáadása a Visual Studio Code-ban](./media/vscode-local-run/add-local-input.png)
 
-3. Válassza ki **+ új helyi bemenet**.
+3. Válassza az **+ új helyi bemenet**lehetőséget.
 
-    ![Adjon hozzá egy új ASA helyi adjon meg a Visual Studio code-ban](./media/vscode-local-run/add-new-local-input.png)
+    ![Új ASA helyi bevitel hozzáadása a Visual Studio Code-ban](./media/vscode-local-run/add-new-local-input.png)
 
-4. Adja meg a lekérdezésben használt ugyanazt a bemeneti alias.
+4. Adja meg a lekérdezésben használt beviteli aliast.
 
-    ![Adjon hozzá egy új ASA helyi bemeneti áljel](./media/vscode-local-run/new-local-input-alias.png)
+    ![Új ASA helyi bemeneti alias hozzáadása](./media/vscode-local-run/new-local-input-alias.png)
 
-5. Az a **LocalInput_DefaultLocalStream.json** adja meg a fájl elérési útja, ahol a helyi adatok fájl megtalálható-e.
+5. A **LocalInput_DefaultLocalStream. JSON** fájlban adja meg a fájl elérési útját, ahol a helyi adatfájl található.
 
-    ![Helyi fájl elérési útját adja meg a Visual studióban](./media/vscode-local-run/local-file-path.png)
+    ![Adja meg a helyi fájl elérési útját a Visual Studióban](./media/vscode-local-run/local-file-path.png)
 
-6. A Lekérdezésszerkesztő adja vissza, és válassza ki **helyileg történő futtatása**.
+6. Térjen vissza a lekérdezés-szerkesztőhöz, és válassza a **helyi Futtatás**lehetőséget.
 
-    ![Helyileg jelölje be a Futtatás a Lekérdezésszerkesztőben](./media/vscode-local-run/run-locally.png)
+    ![A lekérdezési szerkesztőben válassza a helyi Futtatás lehetőséget.](./media/vscode-local-run/run-locally.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Stream Analytics felhőalapú feladat létrehozása a Visual Studio Code (előzetes verzió)](quick-create-vs-code.md)
+* [Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)](quick-create-vs-code.md)
 
-* [Ismerkedés az Azure Stream Analytics-feladatok a Visual Studio Code-dal (előzetes verzió)](vscode-explore-jobs.md)
+* [Azure Stream Analytics feladatok megismerése a Visual Studio Code-ban (előzetes verzió)](vscode-explore-jobs.md)

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232593"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672658"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -27,6 +27,26 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="september-2019"></a>Szeptember 2019
+ 
+Több előrelépés is jelent meg az IBC 2019-ben:
+ 
+* Animált karakterek felismerése (nyilvános előzetes verzió)
+
+    Lehetővé teszi a csoportos hirdetések felismerési karaktereinek észlelését az animált tartalomban az egyéni jövőképtel való integráción keresztül. További információ: [animált karakterek észlelése](animated-characters-recognition.md).
+* Többnyelvű azonosítás (nyilvános előzetes verzió)
+
+    A hangsávokban több nyelven is felderítheti a szegmenseket, és a rajtuk alapuló többnyelvű átiratot hozhat létre. Kezdeti támogatás: Angol, spanyol, német és francia. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
+* Elnevezett entitások kinyerése személyekhez és helyekhez
+
+    Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.
+* Szerkesztési shot típusú besorolás
+
+    A felvételek címkézése olyan szerkesztési típusokkal, mint például a közelkép, közepes méretű felvétel, két lövés, beltéri, kültéri stb. További információ: [szerkesztési shot típusú észlelés](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* A fejlesztéssel foglalkozó témakör (2. szint)
+    
+    A "viszonyítási modell" példa mostantól támogatja az IPTC-rendszertan mélyebb részletességét. Olvassa el részletesen [Azure Media Services új AI-alapú innovációt](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
 ## <a name="august-2019"></a>Augusztus 2019
  

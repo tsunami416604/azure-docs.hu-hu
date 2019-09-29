@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900431"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671326"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)
 
@@ -42,13 +42,13 @@ Install-Package Azure.Identity -IncludePrerelease
 
 Ha az Azure AD-beli hitelesítő adatokkal szeretne hitelesítést végezni az Azure Identity ügyféloldali kódtár használatával, a kód helyétől függően adjon meg egy egyszerű szolgáltatásnevet vagy egy felügyelt identitást a rendszerbiztonsági tagként. Ha a kód fejlesztési környezetben fut, tesztelési célokra használjon egyszerű szolgáltatásnevet. Ha a kód az Azure-ban fut, használjon felügyelt identitást. Ez a cikk azt feltételezi, hogy a fejlesztési környezetből származó kódot futtat, és bemutatja, hogyan lehet egyszerű szolgáltatásnév használatával létrehozni a felhasználói delegálási SAS-t.
 
-Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. A szerepkörnek tartalmaznia kell a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure](../../role-based-access-control/built-in-roles.md)-erőforrásokhoz.
+Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. A szerepkörnek tartalmaznia kell a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
 
 Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az egyszerű szolgáltatásnév létrehozza a felhasználói delegálási kulcsot, amely a Storage-fiók szintjén végrehajtott művelet, így a szerepkör-hozzárendelés hatókörét a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell végrehajtani. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a [felhasználói delegálási sas (REST API) létrehozása](/rest/api/storageservices/create-user-delegation-sas)a RBAC a **RBAC** című szakaszát.
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
 
-Az alábbi példa az Azure CLI-t használja egy új egyszerű szolgáltatásnév létrehozásához, és hozzárendeli a **Storage blob** adatolvasói szerepkört a fiók hatóköréhez
+Az alábbi példa az Azure CLI-t használja egy új egyszerű szolgáltatásnév létrehozásához, és hozzárendeli a **Storage blob Adatolvasói** szerepkört a fiók hatóköréhez
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -87,7 +87,7 @@ Az Azure Identity ügyféloldali függvénytár három környezeti változóból
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-Adja hozzá a `using` következő irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak előzetes verziójának használatához.
+Adja hozzá a következő `using` direktívát a kódhoz, hogy az Azure Identity és az Azure Storage ügyféloldali kódtára előzetes verzióit használja.
 
 ```csharp
 using System;

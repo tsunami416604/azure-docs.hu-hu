@@ -7,16 +7,38 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918995"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673018"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
-Ez a cikk a Windows rendszerű virtuális asztali partnerek listáját sorolja fel betűrendben.
+Ez a cikk a Windows rendszerű virtuális asztalok partnereit sorolja fel.
+
+## <a name="citrix"></a>Citrix
+
+![Citrix-embléma](./media/partners/citrix.png)
+
+A Citrix egy olyan jóváhagyott szolgáltató, amely a vállalatok számára központosított hibrid felügyeletet biztosít a virtuális alkalmazások és asztali munkaterhelések számára az Azure-ban, a helyszíni üzembe helyezések mellett. A Citrix munkaterület a Virtual apps és a desktops szolgáltatás lehetővé teszi, hogy a felhasználók bármely eszközről hozzáférjenek az alkalmazásokhoz és az asztalokhoz, így a speciális Citrix HDX protokoll használatával a magas felbontású élmény bárhonnan elérhetővé válik.
+
+A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyvállalati eszközökkel a felhasználók sűrűségének és teljesítményének javítására, a számítási feladatok igény szerinti kiépítésére, valamint a képek és az alkalmazások kezelésének egyszerűsítésére. Optimalizálhatja a költségeket az intelligens méretezési eszközökkel, miközben hihetetlen végfelhasználói élményt nyújt, amelyet a rendszer a legnehezebben a különböző iparágakban lévő alkalmazásoknál tesztelt.
+
+- [Lépjen a partner webhelyére](https://more.citrix.com/wvd).
+
+
+## <a name="vmware"></a>VMware
+
+![VMware-embléma](./media/partners/vmware.png)
+
+A VMware Horizon Cloud on Microsoft Azure lehetővé teszi a szervezetek számára, hogy az egyszerű, intuitív horizontú felhő-ellenőrzési síkon összekapcsolják a saját Microsoft Azure a saját példányát, így biztonságos, átfogó, felhőben üzemeltetett megoldást biztosítanak a virtualizált eszközök megvalósításához Windows-alkalmazások és-asztalok. A Windows rendszerű virtuális asztali verzióban a VMware a Microsofttal együttműködve kiterjesztheti a Windows rendszerű virtuális asztal funkcióit az ügyfeleknek a Horizon Cloud on Microsoft Azure használatával.
+
+Jóváhagyott szolgáltatóként a VMware Horizon Cloud on Microsoft Azure ügyfelei a Windows rendszerű virtuális asztalok összes előnyét megkapják, mint például a Windows 10 Enterprise for multi-session, a Windows 7 és az ingyenes kibővített biztonsági frissítéseket legfeljebb három évig, és FSLogix a Horizon Cloud modern, nagyvállalati szintű funkciói, például a széleskörű végpontok támogatása mellett. globális, felhőre optimalizált közvetítés, rugalmas asztali beállítások és konfigurációk, felhasználói környezetek kezelése és hibrid környezetek támogatása. 
+
+- [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
@@ -26,8 +48,19 @@ A CloudJumper egy Windows rendszerű virtuális asztali értéknövelt szolgált
 
 A CloudJumper szoftvere, a Cloud Workspace Management Suite kiterjeszti a Windows virtuális asztal értékét azáltal, hogy leegyszerűsíti az üzembe helyezést és a folyamatos felügyeleti feladatokat az Azure-ban. Egyetlen ablaktáblából kiépítheti, kezelheti és optimalizálhatja a felhasználói munkaterületek infrastruktúráját. A CloudJumper egyszerű parancsfájl-indító motorja integrálható az IT-szolgáltatás-platformokkal a Windows rendszerű virtuális asztal üzembe helyezése során felmerülő feladatok automatizálásához. Emellett a CloudJumper API-k további bővíthetőséget és integrációt tesznek lehetővé más vállalati rendszerekkel, például a ServiceNow és a BMC-mel.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
-- [Lépjen a partner webhelyére.](https://cloudjumper.com/wvd/)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Lépjen a partner webhelyére](https://cloudjumper.com/wvd/).
+
+## <a name="controlup"></a>ControlUp
+
+![ControlUp embléma](./media/partners/controlup.png)
+
+A ControlUp egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely lehetővé teszi az informatikai csapatok számára, hogy a helyszíni, hibrid Felhőbeli és Felhőbeli infrastruktúrában lévő problémákat egyetlen konzolról valós időben felügyeljék, hárítsa el, elemezzék és közvetlenül szervizelni tudják. A ControlUp elemzési és felügyeleti platformja azt is lehetővé teszi, hogy proaktív módon automatizálja a javításokat egy gyorsan növekvő használati esethez.
+
+Windows rendszerű virtuális asztallal való használat esetén a ControlUp további képességeket biztosít a Windows rendszerű virtuális asztali környezetek és a végfelhasználói élmény optimalizálása érdekében. A ControlUp-konzolról a végfelhasználói környezet láthatóvá válik a teljesítménnyel kapcsolatos problémák hatékony figyelése és hibaelhárítása érdekében. Az intuitív irányítópultok bepillantást és elemzéseket biztosítanak a virtuális asztali környezetekhez, valamint a közösségi referenciaértékekkel gazdagított automatizált jelentéskészítési lehetőségeket. A ControlUp több adatforrást és típust is kezelhet, amelyek nagy teljesítményű adatkészletekben vannak rendszerezve a számítási, tárolási és a Windows rendszerű virtuális asztali infrastruktúrában összesítve, így egyetlen üvegtábla részletes láthatóságát is lehetővé teszi.
+
+- [Tekintse meg a JOIN megoldás rövid leírását](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Lépjen a partner webhelyére](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="lakeside-software"></a>Tóparti szoftverek
 
@@ -37,8 +70,8 @@ A tóparti szoftverek egy Windows rendszerű virtuális asztali értéknövelt s
 
 A Lakeside szoftver digitális felhasználói felületének figyelési megoldása, a SysTrack, a teljesítmény nyomon követésével és a Migrálás ideális számítási feladatainak azonosításával kiváló felhasználói élményt nyújthat. A SysTrack a Windows rendszerű virtuális asztalok értékét a jobb méretezési felmérések és a felhasználói környezetek folyamatos figyelése révén is kiterjesztheti.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
-- [Lépjen a partner webhelyére.](https://www.lakesidesoftware.com/assessments/wvd)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Lépjen a partner webhelyére](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
@@ -48,8 +81,8 @@ A Liquidware egy Windows rendszerű virtuális asztali értéknövelt szolgálta
 
 A Liquidware Essentials a felhasználói profilok hatékony betakarításával és a felhasználói környezetek Azure-ba való áttelepítésének egyszerűsítésével kiterjeszti a Windows virtuális asztal értékét. Emellett a Liquidware Essentials leegyszerűsíti a képkezelést a felhasználói profilok és a rétegbeli alkalmazások egységesítésével a konfigurálható Rights Management-beállítások alapján.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
-- [Lépjen a partner webhelyére.](https://www.liquidware.com/solutions/solutions-platform/microsoft)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Lépjen a partner webhelyére](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -59,8 +92,8 @@ A Nerdio egy Azure IT Automation platform, amely megkönnyíti a Windows rendsze
 
 A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megkönnyíti az Azure-erőforrások kiépítését és az üzembe helyezés egyszerűsítését. Az Azure-hoz készült Nerdio használatával a teljes körű Azure-környezetet, például a Windows virtuális asztalt is automatikusan üzembe helyezheti és kezelheti két órán belül.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [Lépjen a partner webhelyére.](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Lépjen a partner webhelyére](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -70,8 +103,8 @@ A ThinPrint egy Windows rendszerű virtuális asztali értéknövelt szolgáltat
 
 A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrához való kapcsolódás engedélyezésével kiterjeszti a Windowsos virtuális asztal értékét. a ezeep lehetővé teszi a felhasználók számára a nyomtatást a vállalaton belül, függetlenül attól, hogy hol vannak. A ezeep használatával a felhasználók áthidalják a Windows rendszerű virtuális asztal és a nyomtató hardvere közötti szakadékot.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Lépjen a partner webhelyére.](https://www.ezeep.com/wvd-printing)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Lépjen a partner webhelyére](https://www.ezeep.com/wvd-printing).
 
 ## <a name="workspot"></a>Workspot
 
@@ -81,10 +114,10 @@ A Workspot egy Windows rendszerű virtuális asztali értéknövelt szolgáltat�
 
 A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-infrastruktúra kiépítési folyamatának leegyszerűsítésével. A Workspot révén az erőforrások könnyen méretezhetők fel és le, hogy megfeleljenek a különböző felhasználók igényeinek és használati eseteinek. A Workspot a CAD-és mérnöki felhasználók számára szükséges nagy teljesítményű GPU-munkaállomások, valamint a Windows-alkalmazások és a Windows 10 rendszerű asztali gépek összes üzleti felhasználó számára történő üzembe helyezését is optimalizálhatja.
 
-- [Tekintse meg röviden a közös megoldást.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
-- [Lépjen a partner webhelyére.](https://www.workspot.com/wvd)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a Windows rendszerű virtuális asztali környezetről.](overview.md)
-- [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon.](tenant-setup-azure-active-directory.md)
+- [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
+- [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).

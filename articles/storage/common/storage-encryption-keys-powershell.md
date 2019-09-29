@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure Storage-titkosításh
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1b94f1686c2893c1c69bc846d3a0d29084975b7a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 982996bdbc5e618cf90aa4b028c0585a7898f465
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002176"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670962"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Storage-titkosításhoz a PowerShellből
 

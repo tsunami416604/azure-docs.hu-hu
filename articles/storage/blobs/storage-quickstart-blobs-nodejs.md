@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8fada27f82fea557d7d078f06b5c05e7d1db906d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861232"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671348"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Blobok feltöltése, letöltése és listázása a Node. js v2-hez készült ügyféloldali kódtár használatával
+# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Blobok feltöltése, letöltése és listázása a Node. js-hez készült ügyféloldali kódtár használatával
 
 Ebben a útmutatóban megtudhatja, hogyan használhatja a Node. js v2-hez készült ügyféloldali kódtárat Blobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban.
 

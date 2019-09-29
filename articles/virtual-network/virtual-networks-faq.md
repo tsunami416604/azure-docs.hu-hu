@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389711"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670751"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -66,7 +66,7 @@ Az [RFC 1918](https://tools.ietf.org/html/rfc1918)-ben definiált bármely IP-c�
 Igen. A nyilvános IP-címtartományok részletes ismertetését lásd: [virtuális hálózat létrehozása](manage-virtual-network.md#create-a-virtual-network). Nyilvános IP-címek nem érhetők el közvetlenül az internetről.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Korlátozva van az alhálózatok száma az VNet?
-Igen. További részletekért lásd az [Azure-korlátokat](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) . Az alhálózati címek nem lehetnek átfedésben egymással.
+Igen. További részletekért lásd az [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) -korlátokat. Az alhálózati címek nem lehetnek átfedésben egymással.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Vannak korlátozások az IP-címek ezen alhálózatokon belüli használatára?
 Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Ezek az x. x. x. 0-x. x. x. 3 és az alhálózat utolsó címe. az x. x. x. 1 – x. x. x. 3 Az Azure-szolgáltatások minden alhálózatán le van foglalva.   
@@ -200,9 +200,9 @@ Igen. A virtuálisgép-méretezési csoportnak egy VNet kell kapcsolódnia.
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Létezik-e olyan Azure-szolgáltatások teljes listája, amelyek segítségével erőforrásokat telepíthetek egy VNet?
 Igen, részletekért lásd: [Virtual Network Integration for Azure Services](virtual-network-for-azure-services.md).
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Mely Azure-beli VNet-erőforrásokra lehet korlátozni a hozzáférést?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Hogyan lehet korlátozni az Azure Pásti-erőforrásokhoz való hozzáférést egy VNet?
 
-Bizonyos Azure Pásti-szolgáltatásokon (például az Azure Storage-ban és a Azure SQL Database-on) keresztül üzembe helyezett erőforrások a virtuális hálózati szolgáltatás-végpontok használatával korlátozhatják a hálózati hozzáférést a VNet lévő erőforrásokhoz. Részletekért lásd: [Virtual Network szolgáltatás-végpontok áttekintése](virtual-network-service-endpoints-overview.md).
+Az Azure Pásti-szolgáltatásokkal (például az Azure Storage és a Azure SQL Database) keresztül üzembe helyezett erőforrások a virtuális hálózati szolgáltatás-végpontok vagy az Azure privát kapcsolatok használatával korlátozhatják a VNet hálózati hozzáférését. Részletekért lásd: [Virtual Network szolgáltatás-végpontok áttekintése](virtual-network-service-endpoints-overview.md), [Azure Private link – áttekintés](../private-link/private-link-overview.md)
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Áthelyezhetem a szolgáltatásaikat a virtuális hálózatok-be és ki?
 Nem. A szolgáltatások nem helyezhetők át a virtuális hálózatok és a szolgáltatásba. Ha egy erőforrást át szeretne helyezni egy másik VNet, törölnie kell, majd újra kell telepítenie az erőforrást.

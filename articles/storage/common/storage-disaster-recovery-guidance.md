@@ -4,17 +4,17 @@ description: Az Azure Storage támogatja a fiók feladatátvételét (előzetes 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376452"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671076"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
 
@@ -50,7 +50,7 @@ Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás 
 * [Rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency/)-hoz: Az Azure-beli, magasan elérhető alkalmazások tervezésével kapcsolatos főbb fogalmak áttekintése.
 * [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability): Ellenőrzőlista annak ellenőrzéséhez, hogy az alkalmazása megvalósítja-e a legjobb tervezési eljárásokat a magas rendelkezésre állás érdekében.
 * [Magasan elérhető alkalmazások tervezése ra-GRS használatával](storage-designing-ha-apps-with-ragrs.md): Tervezési útmutató alkalmazások létrehozásához az RA-GRS előnyeinek kihasználásához.
-* [Oktatóanyag: Hozzon létre egy magasan elérhető alkalmazást a](../blobs/storage-create-geo-redundant-storage.md)blob Storage szolgáltatással: Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan, magasan elérhető alkalmazást, amely automatikusan átvált a végpontok között a hibák és a helyreállítások között. 
+* [Oktatóanyag: Hozzon létre egy magasan elérhető alkalmazást a blob Storage @ no__t-0: Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan, magasan elérhető alkalmazást, amely automatikusan átvált a végpontok között a hibák és a helyreállítások között. 
 
 Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-beli adattárolási adatai magas rendelkezésre állásának fenntartásához:
 
@@ -143,7 +143,7 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
 
-#### <a name="azure-virtual-machines"></a>Azure virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure-beli virtuális gépek
 
 Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. 
 

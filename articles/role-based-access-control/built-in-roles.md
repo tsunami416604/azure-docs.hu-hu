@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c2066502a6a9d742c347e08d528a2490a390bb7e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71289607"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672644"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -186,8 +186,8 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Authorization/*/Delete | Szerepkörök, szabályzat-hozzárendelések, házirend-definíciók és szabályzat-készlet definícióinak törlése |
 > | Microsoft.Authorization/*/Write | Szerepkörök, szerepkör-hozzárendelések, szabályzat-hozzárendelések, házirend-definíciók és szabályzat-készlet definíciók létrehozása |
 > | Microsoft.Authorization/elevateAccess/Action | A hívó felhasználói hozzáférés rendszergazdai hozzáférésének engedélyezése a bérlői hatókörben |
-> | Microsoft. Blueprint/blueprintAssignments/Write | Tervrajzok létrehozása vagy frissítése |
-> | Microsoft. Blueprint/blueprintAssignments/delete | Tetszőleges tervelemek törlése |
+> | Microsoft. Blueprint/blueprintAssignments/Write | Tervrajz-hozzárendelések létrehozása vagy frissítése |
+> | Microsoft. Blueprint/blueprintAssignments/delete | Bármely tervrajz-hozzárendelés törlése |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |

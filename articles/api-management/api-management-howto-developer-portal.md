@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073519"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672789"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Az új fejlesztői portál elérése és testreszabása az Azure-ban API Management
 
@@ -39,8 +39,8 @@ Ez a cikk bemutatja, hogyan érheti el az új Azure API Management fejlesztői p
 
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
-- **Felügyelt verzió** – a portál szerkesztésével és testreszabásával, amely a API Management-példányba van beépítve, `<your-api-management-instance-name>.developer.azure-api.net`és az URL-címen keresztül érhető el.
-- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A részletekért és az utasításokért tekintse meg a GitHub-tárházat a [portál forráskódjának][1]használatával.
+- **Felügyelt verzió** – a portál szerkesztésével és testreszabásával, amely a API Management-példányba van építve, és az URL-címen keresztül érhető el `<your-api-management-instance-name>.developer.azure-api.net`.
+- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódjának][1]használatával.
 
 ## <a name="managed-access"></a>A portál felügyelt verziójának elérése
 
@@ -75,11 +75,11 @@ Igen, az új szolgáltatás általánosan elérhetővé válása után elavultt�
 
 Az általános elérhetőség célja, hogy egy forgatókönyv-alapú szolgáltatási paritást biztosítson a régi portálon. Addig is előfordulhat, hogy az előzetes verzió nem rendelkezik a kiválasztott funkciókkal.
 
-A kivételek a régi portálon *futó alkalmazások* és *problémák* , amelyek nem lesznek elérhetők az új portálon. Ha *problémákat* használ a régi portálon, és szükség van rájuk az újat, tegye fel a megjegyzést [egy dedikált GitHub](https://github.com/Azure/api-management-developer-portal/issues/122)-problémába.
+A kivételek a régi portálon *futó alkalmazások* és *problémák* , amelyek nem lesznek elérhetők az új portálon. Ha *problémákat* használ a régi portálon, és szükség van rájuk az újat, tegye fel a megjegyzést [egy dedikált GitHub-problémába](https://github.com/Azure/api-management-developer-portal/issues/122).
 
 ### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Hibákat és/vagy szolgáltatást szeretnék igényelni.
 
-Remek! [A GitHub-tárház problémái című szakaszában](https://github.com/Azure/api-management-developer-portal/issues)megadhatja a visszajelzéseket, elküldheti a szolgáltatásra vonatkozó kéréseket, illetve hibajelentéseket is küldhet. Itt is Köszönjük visszajelzését a `community` címkével megjelölt problémákkal kapcsolatban.
+Remek! [A GitHub-tárház problémái című szakaszában](https://github.com/Azure/api-management-developer-portal/issues)megadhatja a visszajelzéseket, elküldheti a szolgáltatásra vonatkozó kéréseket, illetve hibajelentéseket is küldhet. Itt is Köszönjük visszajelzését a `community` címkével jelölt problémákkal kapcsolatban.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Szeretném áthelyezni az új portál tartalmát a környezetek között. Hogyan tehetem ezt meg, és szükségem van a saját üzemeltetésű verzióra?
 
@@ -87,13 +87,21 @@ Ezt megteheti mind a portálon, mind a felügyelt, mind a saját üzemeltetésű
 
 Továbbra is dolgozunk ennek a folyamatnak a API Management DevOps Resource Kit-vel való összehangolásán.
 
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Hogyan kell konfigurálni az új portált, hogy működjön a VNET-ben API Management szolgáltatásban?
+
+Habár az új fejlesztői portál előzetes verzióban érhető el, engedélyeznie kell az Azure Storage-szolgáltatásokhoz való kapcsolódást az USA nyugati régiójában, hogy a felügyelt portál működjön a VNET API Management szolgáltatásában. További információkat a [Storage dokumentációjában talál](../storage/common/storage-network-security.md#available-virtual-network-regions).
+
+Az új portál általánosan elérhetővé válása után a fenti beállítás többé nem lesz szükséges.
+
+A portál saját üzemeltetésű verziója további kapcsolódási konfigurációt igényelhet a telepítéstől függően.
+
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Hogyan választhatok ki egy *elrendezést* új *lap*létrehozásakor?
 
-A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a *lap* URL-címéhez társítja. A (z ) URL-sablonnal `/wiki/*` ellátott elrendezés például `/wiki/` a következő szegmenst tartalmazó összes *oldalra* lesz `/wiki/getting-started`alkalmazva:, `/wiki/styles`, stb.
+A rendszer egy *elrendezést* alkalmaz egy lapra úgy, hogy az URL-sablonját a *lap* URL-címéhez társítja. A `/wiki/*` URL-sablonnal rendelkező *elrendezés* például a `/wiki/` szegmenst tartalmazó összes *oldalra* vonatkozik: `/wiki/getting-started`, `/wiki/styles` stb.
 
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>Miért nem működik az interaktív fejlesztői konzol?
 
-Valószínűleg a CORS kapcsolódik. Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) -szabályzatot az API (ok) ra. Megadhatja az összes paramétert manuálisan (például a forrást https://contoso.com) , vagy használhat helyettesítő karaktert `*` ).
+Valószínűleg a CORS kapcsolódik. Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. A CORS probléma megoldásához vegyen fel [egy CORS-szabályzatot](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) az API (ok) ra. Manuálisan is megadhatja az összes paramétert (például a forrást https://contoso.com) értékre, vagy helyettesítő karaktert `*` értéket használhat.
 
 ## <a name="next-steps"></a>További lépések
 

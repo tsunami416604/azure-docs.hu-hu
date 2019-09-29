@@ -1,7 +1,7 @@
 ---
-title: Kérelmekre vonatkozó korlátok – Translator Text API
+title: Kérelmek korlátai – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk felsorolja a Translator Text API kérelmekre vonatkozó korlátok. Díjait értéket, és a egy korlátja kérelmenként 5000 karakternél nem kérelem gyakorisága alapján. Karakter korlátozások, a F0 legfeljebb 2 millió karakter / óra alapú előfizetés.
+description: Ez a cikk a Translator Text API kérelmekre vonatkozó korlátozásait sorolja fel. A díjak a karakterek száma alapján merülnek fel, a kérelmek gyakorisága pedig a 5 000 karakteres korlátot kéri. A karakterkészletek az előfizetés-alapúak, a F0 pedig óránként 2 000 000 karakterre van korlátozva.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,61 +10,61 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226253"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671963"
 ---
-# <a name="request-limits-for-translator-text"></a>A Translator Text kérelmekre vonatkozó korlátok
+# <a name="request-limits-for-translator-text"></a>Kérelmekre vonatkozó korlátozások Translator Text
 
-Ez a cikk a Translator Text API a sávszélesség-szabályozási korlátait tartalmazza. Szolgáltatások közé tartoznak a fordítás, átbetűzésű, mondat hossza észlelési, nyelv észlelése és alternatív fordításokat.
+Ez a cikk a Translator Text API szabályozási korlátait tartalmazza. A szolgáltatások közé tartoznak a fordítás, az írás, a mondatok hosszának észlelése, a nyelvfelismerés és az alternatív fordítások.
 
-## <a name="character-and-array-limits-per-request"></a>Kérelem karakter és tömb vonatkozó korlátok
+## <a name="character-and-array-limits-per-request"></a>Karakter és tömb korlátja kérelmek szerint
 
-Minden egyes fordítás kérelme, mert legfeljebb 5000 karakter hosszúságú lehet. A kérések száma nem a karakter, díját. Azt javasoljuk, hogy rövidebb kérelmek küldésére.
+Minden fordítási kérelem 5 000 karakterre van korlátozva. A díjat nem a kérelmek száma alapján számítjuk fel. A rövidebb kérelmek küldését javasoljuk.
 
-Az alábbi táblázat listák tömb elem és karakter korlátok, a Translator Text API minden művelethez.
+A következő táblázat a Translator Text API egyes műveleteinek tömb elemeit és karakteres korlátait sorolja fel.
 
-| Művelet | Tömbelem maximális mérete |   Tömb elemek maximális számát |  Kérelem maximális mérete (karakter) |
+| Művelet | Tömb elemének maximális mérete |   Tömb elemeinek maximális száma |  Kérelmek maximális mérete (karakter) |
 |:----|:----|:----|:----|
 | Translate | 5,000 | 100   | 5,000 |
 | Transliterate | 5,000 | 10    | 5,000 |
 | Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 5,0000 |
+| BreakSentence | 10,000    | 100 | 50,000 |
 | Keresés a szótárban| 100 |  10  | 1,000 |
-| Szótár – példák | a szöveg és a fordítás (200 teljes) 100 100| 10|   2,000 |
+| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2,000 |
 
-## <a name="character-limits-per-hour"></a>Karakter korlátozások / óra
+## <a name="character-limits-per-hour"></a>Karakteres korlátok óránként
 
-A karakteres korlátot óránként a Translator Text előfizetési szint alapján történik. 
+A karakteres korlát/óra a Translator Text előfizetési szintjétől függ. 
 
-Az óránkénti kvóta egyenletesen fel kell használni az óra során. Például: 2 millió karakter / óra F0 réteg korlát, karaktert kell használni gyorsabban nagyjából 33,300 karakter / perc csúszóablakban (60 perc osztva 2 millió karakter).
+Az óránkénti kvótát egyenletesen kell használni az egész órában. Például a F0 küszöbértéke óránként 2 000 000 karakter, a karaktereket nem lehet kevesebb, mint durván 33 300 karakter/perc csúszó ablak (2 000 000 karakter, amely 60 perc).
 
-Ha Ön vagy előremutató ezeket a korlátokat, vagy túl nagy a kvóta egy részét, egy rövid idő alatt, valószínűleg kap kívüli kvóta választ. Nincs korlátozva van az egyidejű kérelmek.
+Ha eléri vagy meghaladja ezeket a korlátokat, vagy a kvóta egy részének rövid időn belül túl nagy részét küldi el, valószínű, hogy a kvóta kiválasztva lesz. Az egyidejű kérések esetében nincsenek korlátok.
 
-| Szint | Karakteres korlátot |
+| Szint | Karakteres korlát |
 |------|-----------------|
-| F0 | 2 millió karakter / óra |
-| S1 | 40 millió karakter / óra |
-| S2 SZINTŰ / C2 | 40 millió karakter / óra |
-| S3 / C3 | 120 millió karakter / óra |
-| S4 / C4 | óránként 200 millió karakter |
+| F0 | 2 000 000 karakter/óra |
+| S1 | 40 000 000 karakter/óra |
+| S2/C2 | 40 000 000 karakter/óra |
+| S3 / C3 | 120 000 000 karakter/óra |
+| S4 / C4 | 200 000 000 karakter/óra |
 
-Korlátozza a [több szolgáltatásos előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) ugyanazok, mint az S1 szintet.
+A [több szolgáltatásra vonatkozó előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) korlátai megegyeznek az S1 szinttel.
 
-Ezek a korlátok a Microsoft standard fordítói modelljeinek korlátozódnak. Egyéni a fordítót használó egyéni fordítási modellek korlátozva, 1,800 karakterek száma másodpercenként.
+Ezek a korlátok a Microsoft szabványos fordítási modelljeire korlátozódnak. Az egyéni fordítót használó egyéni fordítási modellek másodpercenként 1 800 karakterre vannak korlátozva.
 
 ## <a name="latency"></a>Késés
 
-A Translator Text API egy standard szintű modellek használata a 15 másodperces időtúllépési maximális késleltetés van. Egyéni modellek használatával fordítási rendelkezik 25 másodpercig maximális késését. Ez idő szerint fog kapott egy eredményt vagy időtúllépés választ. Általában válaszok visszatér 150 ezredmásodpercben 300 ezredmásodperc. Válaszidők a kérelmek és a nyelvi pár méretétől függően változik. Ha nem kapja meg a fordítást, vagy egy [hibaválaszt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) adott időtartamon belül kell ellenőrizze a hálózati kapcsolatot, és próbálkozzon újra.
+A Translator Text API a standard modell használatával 15 másodperces késéssel rendelkezik. Az egyéni modellek használatával végzett fordítás legfeljebb 25 másodperces késéssel rendelkezik. Ekkor egy eredmény vagy időtúllépési válasz érkezett. A válaszokat általában 150 ezredmásodperc és 300 ezredmásodperc között adja vissza a rendszer. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) az adott időkereten belül, ellenőrizze a hálózati kapcsolatokat, és próbálkozzon újra.
 
-## <a name="sentence-length-limits"></a>Mondat hosszának korlátozása
+## <a name="sentence-length-limits"></a>Mondat hosszának korlátai
 
-Használatakor a [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) függvény mondat hossza legfeljebb 275 karakter hosszúságú lehet. Ezen nyelvek kivételek vannak:
+A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) függvény használatakor a mondat hossza 275 karakterre van korlátozva. Ezekhez a nyelvekhez kivételek tartoznak:
 
-| Nyelv | Kód | Karakteres korlátot |
+| Nyelv | Kód | Karakteres korlát |
 |----------|------|-----------------|
 | kínai | zh | 132 |
 | német | de | 290 |
@@ -73,13 +73,13 @@ Használatakor a [BreakSentence](https://docs.microsoft.com/azure/cognitive-serv
 | portugál | pt | 290 |
 | spanyol | es | 280 |
 | olasz | it | 280 |
-| thai | TH | 258 |
+| thai | adik | 258 |
 
 > [!NOTE]
-> Ez a korlátozás nem vonatkozik a fordításokat.
+> Ez a korlát nem vonatkozik a fordításokra.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [a Translator Text API v3-leírás](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 Translator Text API – dokumentáció](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

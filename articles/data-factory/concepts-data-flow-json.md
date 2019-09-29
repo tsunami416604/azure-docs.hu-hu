@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210688"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673444"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Az adatfolyam JSON-kezelésének leképezése
 
@@ -22,11 +22,11 @@ ms.locfileid: "70210688"
 Egy összetett oszlop az adatfolyamathoz való hozzáadása egyszerűbb a származtatott oszlop kifejezés-szerkesztőjén keresztül. Új oszlop hozzáadását és a szerkesztő megnyitását követően két lehetőség közül választhat: írja be a JSON-struktúrát manuálisan, vagy használja a felhasználói felületet az aloszlopok interaktív hozzáadásához.
 
 #### <a name="interactive-ui-json-design"></a>Interaktív felhasználói felület JSON-kialakítása
-A kimeneti séma oldali ablaktáblán új aloszlopokat adhat hozzá a `+` következő menü használatával: ![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
+A kimeneti séma oldali ablaktáblán új aloszlopokat adhat hozzá a `+` menü használatával: ![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
 
 Ettől kezdve az új oszlopok és aloszlopok is hozzáadhatók ugyanúgy. Minden nem összetett mezőhöz egy kifejezés adható hozzá a jobb oldali kifejezés-szerkesztőben.
 
-![Összetett oszlop](media/data-flow/complexcolumn.png "Összetett oszlop")
+![Összetett oszlop](media/data-flow/complexcolumn.png "összetett oszlopa")
 
 #### <a name="manual-json-design"></a>Kézi JSON-kialakítás
 JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és adja meg a kifejezést a szerkesztőben. A kifejezés a következő általános formátumot követi:
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>Magasabb rendű függvények
+## <a name="higher-order-functions"></a>Magasabb rendű függvények
 ## <a name="filter"></a>filter
 Kiszűri a tömb azon elemeit, amelyek nem felelnek meg a megadott predikátumnak. A szűrő a predikátum függvény egy elemére mutató hivatkozást vár #itemként.
 

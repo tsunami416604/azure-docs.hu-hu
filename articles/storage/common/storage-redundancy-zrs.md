@@ -4,17 +4,17 @@ description: A Zone-redundáns tárolás (ZRS) egyszerű módszert kínál a mag
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036250"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673097"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -66,26 +66,26 @@ Az ZRS-re történő áttelepítéshez egy másik stratégia szükséges. A ZRS 
 
 Két elsődleges lehetőség van a ZRS való áttelepítésre: 
 
-- Az adatok manuális másolása vagy áthelyezése egy új ZRS-fiókból egy meglévő fiókból.
-- Élő áttelepítés kérése.
+- Az adatokat átmásolhatja vagy áthelyezheti manuálisan egy új ZRS-fiókba a meglévő fiókból.
+- Igényeljen élő migrálást.
 
 > [!IMPORTANT]
 > A prémium szintű fájlmegosztás jelenleg nem támogatja az élő áttelepítést. Az adatok manuális másolása és áthelyezése jelenleg nem támogatott.
 
-Ha az áttelepítést egy meghatározott dátummal kell végrehajtania, érdemes lehet manuális áttelepítést végeznie. A manuális áttelepítés nagyobb rugalmasságot biztosít, mint az élő áttelepítés. A manuális áttelepítéssel szabályozhatja az időzítést.
+Ha egy adott időpontig szükséges a migrálás, fontolja meg manuális migrálás végrehajtását. A manuális migrálás az élő migrálásnál nagyobb rugalmasságot biztosít. A manuális migrálás során Ön szabja meg az időzítést.
 
 Manuális áttelepítés végrehajtásához a következő lehetőségek közül választhat:
 - Olyan meglévő eszközöket használhat, mint például a AzCopy, az egyik Azure Storage ügyféloldali kódtára vagy a megbízható külső eszközök.
 - Ha már ismeri a Hadoop vagy a HDInsight, csatolja a forrás és a cél (ZRS) fiókot a fürthöz. Ezután integrálással az adatmásolási folyamatot egy olyan eszközzel, mint a DistCp.
 - Saját eszközkészletet hozhat létre az egyik Azure Storage ügyféloldali kódtár használatával.
 
-A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő áttelepítési lehetőséget is biztosít. Az élő áttelepítés egy helyben történő áttelepítés állásidő nélkül. 
+A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az alkalmazás magas rendelkezésre állást igényel, a Microsoft élő migrálási lehetőséget is biztosít. Az élő migrálás egy állásidő nélküli, helyszíni migrálás. 
 
-Az élő áttelepítés során használhatja a Storage-fiókot, miközben az adatokat a forrás-és a cél tárolási bélyegzők között telepíti át. Az áttelepítési folyamat során a szokásosnál azonos mértékű tartóssági és rendelkezésre állási SLA van.
+Az élő migrálás során használhatja a tárfiókját, miközben az adatok a forrásról a cél tárolási bélyegre való migrálása zajlik. A migrálási folyamat során a tartós állapot és a rendelkezésreállási SLA szintje a szokásossal megegyező.
 
 Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcsolatban:
 
-- Bár a Microsoft azonnal kezeli az élő migrálási kérelmet, a migrálás befejezésének időpontjára nem vállal garanciát. Ha szüksége van az adatok áttelepítésére egy adott dátum ZRS, akkor a Microsoft azt javasolja, hogy ehelyett manuális áttelepítést végezzen. Minél több adat található a fiókban, általában annál tovább tart az adatok migrálása. 
+- Bár a Microsoft azonnal kezeli az élő migrálási kérelmet, a migrálás befejezésének időpontjára nem vállal garanciát. Ha egy adott időpontig szükséges az adatok ZRS-re való migrálása, a Microsoft a manuális migrálás végrehajtását javasolja. Minél több adat található a fiókban, általában annál tovább tart az adatok migrálása. 
 - Az élő áttelepítés csak LRS vagy GRS replikálást használó Storage-fiókok esetén támogatott. Ha a fiókja RA-GRS-t használ, előbb módosítania kell a fiók replikálási típusát a LRS vagy a GRS értékre a továbblépés előtt. Ez a közbenső lépés eltávolítja az RA-GRS által az áttelepítés előtt megadott másodlagos írásvédett végpontot.
 - A fióknak adatait kell tartalmaznia.
 - Az adatátvitelt csak ugyanazon a régión belül végezheti el. Ha olyan ZRS-fiókba kívánja áttelepíteni az adatait, amely eltér a forrásoldali fióktól, akkor manuális áttelepítést kell végeznie.
@@ -103,7 +103,7 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
     - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
     - **Kategória**: Válassza **az áttelepítés a ZRS**lehetőséget.
     - **Cím**: Írjon be egy leíró címet, például: ZRS- **fiók áttelepítése**.
-    - **Részletek**: Írja be a további részleteket a **részletek** mezőbe, például a (z) [LRS, GRS] területről a \_ \_ ZRS-be kíván migrálni. 
+    - **Részletek**: Írja be a **részletek** mezőbe a további részleteket, például a következőt: szeretnék áttérni a ZRS a (z) [LRS, GRS] webhelyről a \_ @ no__t-2 régióban. 
 5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
@@ -114,11 +114,11 @@ A támogatási személy felveszi Önnel a kapcsolatot, és segítséget nyújt a
 
 **Tervezem az áttelepítés során felmerülő állásidőt?**
 
-Az áttelepítés nem okozta állásidőt. Az élő áttelepítés során továbbra is használhatja a Storage-fiókot, miközben az adatokat áttelepíti a forrás-és a cél tárolási bélyegzők között. Az áttelepítési folyamat során a szokásosnál azonos mértékű tartóssági és rendelkezésre állási SLA van.
+Az áttelepítés nem okozta állásidőt. Az élő áttelepítés során továbbra is használhatja a Storage-fiókot, miközben az adatokat áttelepíti a forrás-és a cél tárolási bélyegzők között. A migrálási folyamat során a tartós állapot és a rendelkezésreállási SLA szintje a szokásossal megegyező.
 
 **Az áttelepítéssel kapcsolatos adatvesztés történt?**
 
-Nincs adatvesztés társítva az áttelepítéshez. Az áttelepítési folyamat során a szokásosnál azonos mértékű tartóssági és rendelkezésre állási SLA van.
+Nincs adatvesztés társítva az áttelepítéshez. A migrálási folyamat során a tartós állapot és a rendelkezésreállási SLA szintje a szokásossal megegyező.
 
 **Az alkalmazás (ok) hoz szükséges frissítések az áttelepítés befejeződése után?**
 

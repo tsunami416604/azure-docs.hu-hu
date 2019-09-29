@@ -4,23 +4,23 @@ description: A Azure PowerShell használatával rendeljen hozzá hozzáférést 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f34e82a0011260ace4ffeed095903b033529a58d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 967e1754ec4be504669e176a5643186d08efb9d4
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515000"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673178"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz a RBAC a PowerShell használatával
 
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a tárolók és a várólisták eléréséhez használt engedélyek közös készleteit foglalják magukban. 
 
-Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy felügyelt [identitás az Azure](../../active-directory/managed-identities-azure-resources/overview.md)-erőforrásokhoz.
+Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
 Ez a cikk ismerteti, hogyan használhatók a Azure PowerShell a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ a Azure PowerShell használatáról: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
 
@@ -60,13 +60,13 @@ Ha RBAC szerepkört szeretne hozzárendelni egy rendszerbiztonsági tag számár
 
 ### <a name="container-scope"></a>Tároló hatóköre
 
-Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely a `--scope` paraméterhez tartozó tároló hatókörét tartalmazza. A tároló hatóköre a következő formában van:
+Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely tartalmazza a `--scope` paraméter tárolójának hatókörét. A tároló hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Az alábbi példa a **Storage blob** -adatközreműködői szerepkört rendeli hozzá egy felhasználóhoz, amely egy *minta-tároló*nevű tárolóra terjed ki. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
+Az alábbi példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, amely egy *minta-tároló*nevű tárolóra terjed ki. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -76,13 +76,13 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="queue-scope"></a>Várólista hatóköre
 
-Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adjon meg egy karakterláncot, amely a `--scope` paraméterhez tartozó várólista hatókörét tartalmazza. Az üzenetsor hatóköre a következő formában van:
+Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adjon meg egy karakterláncot, amely a `--scope` paraméter várólistájának hatókörét tartalmazza. Az üzenetsor hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Az alábbi példa a **Storage üzenetsor** -adatközreműködői szerepkört rendeli hozzá egy felhasználóhoz, hatókörét egy *minta-várólista*nevű várólistára. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
+Az alábbi példa a **Storage üzenetsor-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, hatókörét egy *minta-várólista*nevű várólistára. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -98,7 +98,7 @@ A Storage-fiókhoz tartozó szerepkör hozzárendeléséhez adja meg a Storage-f
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Az alábbi példa azt szemlélteti, hogyan lehet a Storage-adatolvasói szerepkört egy felhasználóra kiterjeszteni a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: 
+Az alábbi példa azt szemlélteti, hogyan lehet a Storage- **Adatolvasói** szerepkört egy felhasználóra kiterjeszteni a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -108,7 +108,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="resource-group-scope"></a>Erőforráscsoport hatóköre
 
-Az erőforráscsoport hatókörének hozzárendeléséhez adja meg az erőforráscsoport nevét vagy azonosítóját `--resource-group` a paraméterhez. Az alábbi példa a **Storage üzenetsor** -adatolvasói szerepkört rendeli hozzá egy felhasználóhoz az erőforráscsoport szintjén. Ügyeljen rá, hogy a minták értékeit és a helyőrző értékeket zárójelben adja meg a saját értékeivel: 
+Az erőforráscsoport hatókörének hozzárendeléséhez adja meg az erőforráscsoport nevét vagy AZONOSÍTÓját a `--resource-group` paraméterhez. Az alábbi példa a **Storage üzenetsor-Adatolvasói** szerepkört rendeli hozzá egy felhasználóhoz az erőforráscsoport szintjén. Ügyeljen rá, hogy a minták értékeit és a helyőrző értékeket zárójelben adja meg a saját értékeivel: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -118,13 +118,13 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="subscription-scope"></a>Előfizetés hatóköre
 
-Ahhoz, hogy az előfizetéshez hatókört rendeljen, adja meg az előfizetés `--scope` hatókörét a paraméterhez. Az előfizetés hatóköre a következő formában van:
+Ahhoz, hogy az előfizetéshez hatókört rendeljen, adja meg az előfizetés hatókörét a `--scope` paraméterhez. Az előfizetés hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Az alábbi példa bemutatja, hogyan rendelhető hozzá a **Storage blob** -adatolvasói szerepkör a felhasználóhoz a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: 
+Az alábbi példa bemutatja, hogyan rendelhető hozzá a **Storage blob-Adatolvasói** szerepkör a felhasználóhoz a Storage-fiók szintjén. Győződjön meg arról, hogy a minták értékeit a saját értékeire cseréli: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

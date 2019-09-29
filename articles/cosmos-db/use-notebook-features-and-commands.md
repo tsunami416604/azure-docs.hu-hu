@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310346"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672491"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Az új kód cellában szúrja be és futtassa a következő kódot, ``PackageToB
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Ez a csomag az Azure Cosmos-fiókban lévő bármelyik jegyzetfüzetből elérhető lesz. 
+Ez a csomag minden jegyzetfüzetből elérhető lesz az Azure Cosmos-fiók munkaterületen. 
+
+> [!TIP]
+> Ha a notebookjának egyéni csomagra van szüksége, javasoljuk, hogy adjon hozzá egy cellát a jegyzetfüzetben a csomag telepítéséhez, mivel a rendszer eltávolítja a csomagokat, ha [alaphelyzetbe állítja a munkaterületet](#reset-notebooks-workspace).  
 
 ## <a name="run-a-sql-query"></a>SQL-lekérdezés futtatása
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > A ``COSMOS_ENDPOINT`` és ``COSMOS_KEY`` a környezeti változók csak az SQL API-ra alkalmazhatók. Más API-k esetén keresse meg a végpontot és a kulcsot a Cosmos-fiókjának **kapcsolatok karakterláncok** vagy **kulcsok** paneljén.  
+
+## <a name="reset-notebooks-workspace"></a>Jegyzetfüzetek alaphelyzetbe állítása munkaterület
+Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeretné visszaállítani, válassza a parancssáv **munkaterület alaphelyzetbe** állítása lehetőséget. Ezzel eltávolítja az összes egyéni telepített csomagot, majd újraindítja a Jupyter-kiszolgálót. A jegyzetfüzeteket, a fájlokat és a Cosmos-erőforrásokat nem érinti a rendszer.  
+
+![Jegyzetfüzetek alaphelyzetbe állítása munkaterület](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>További lépések
 

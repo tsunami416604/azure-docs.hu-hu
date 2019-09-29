@@ -4,16 +4,16 @@ description: A Azure Active Directory használatával végezhet hitelesítést e
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5138fb6338f4ade322414619f8785d77550a91d1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986786"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673237"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory egy ügyfélalkalmazás használatával
 
@@ -76,7 +76,7 @@ Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az
 
 Miután regisztrálta az alkalmazást, és engedélyt kapott az Azure Blob Storage-ban vagy a várólista-tárolóban lévő adathozzáférésre, hozzáadhat programkódot az alkalmazáshoz egy rendszerbiztonsági tag hitelesítéséhez és egy OAuth 2,0 token beszerzéséhez. A jogkivonat hitelesítéséhez és beszerzéséhez használhatja a [Microsoft Identity platform hitelesítési kódtárainak](../../active-directory/develop/reference-v2-libraries.md) egyikét, vagy egy másik, az OpenID Connect 1,0-et támogató nyílt forráskódú könyvtárat. Az alkalmazás ezután a hozzáférési token használatával engedélyezheti a kérést az Azure Blob Storage-ban vagy a várólista-tárolóban.
 
-A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft Authentication Library (MSAL) a .net GitHub-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) adattárhoz című szakaszában találja. [](https://aka.ms/msal-net-scenarios)
+A jogkivonatok beszerzését támogató forgatókönyvek listáját a [Microsoft Authentication Library (MSAL) a .net GitHub-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) adattárhoz [című szakaszában találja](https://aka.ms/msal-net-scenarios) .
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>Az Azure AD-hitelesítés az ismert értékek
 

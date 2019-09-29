@@ -2,18 +2,18 @@
 title: Figyelés, mérőszámok és riasztások – az Azure ExpressRoute |} A Microsoft Docs
 description: Ez az oldal ismerteti az ExpressRoute monitorozása
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: dbe03ef29bd28d465fa671abc915d63d4b038cb2
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154764"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672041"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
@@ -72,9 +72,41 @@ Megtekintheti a közel valós idejű rendelkezésre állást az [ARP](https://do
 
 ![ARP rendelkezésre állása egyenrangúként](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
+## <a name="expressroute-direct-metrics"></a>Közvetlen ExpressRoute metrikák
+
+### <a name="admin-state---split-by-link"></a>Rendszergazdai állapot – felosztás hivatkozás alapján
+Megtekintheti a ExpressRoute Direct port pár hivatkozásának rendszergazdai állapotát.
+
+![er Direct rendszergazdai állapot](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+
+### <a name="bits-in-per-second---split-by-link"></a>Bitek másodpercenként – felosztás hivatkozás alapján
+A biteket másodpercenként megtekintheti a ExpressRoute Direct port pár hivatkozásán keresztül. 
+
+![közvetlen bitek másodpercenkénti száma](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+
+### <a name="bits-out-per-second---split-by-link"></a>Bitek másodpercenkénti felosztása hivatkozás alapján
+A másodpercenkénti biteket is megtekintheti a ExpressRoute Direct port pár hivatkozásán keresztül. 
+
+![er Direct bitek másodpercenként](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+
+### <a name="line-protocol---split-by-link"></a>Sor protokoll – felosztás hivatkozás alapján
+A ExpressRoute Direct port pár hivatkozásán keresztül megtekintheti a sor protokollját.
+
+![er Direct Line protokoll](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+
+### <a name="rx-light-level---split-by-link"></a>Rx fényszint-felosztás hivatkozás alapján
+Megtekintheti az RX-fény szintjét (a ExpressRoute közvetlen portot **fogadó**fény szintjét) az egyes portokhoz. Az egészséges Rx-fény szintje általában a-10 és 0 km közötti tartományba esik
+
+![er Direct line Rx fény szintje](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+
+### <a name="tx-light-level---split-by-link"></a>TX Light Level-felosztás hivatkozás alapján
+Megtekintheti a TX-fény szintjét (a ExpressRoute közvetlen port által **közvetített**fény szintjét) az egyes portokhoz. Az egészséges TX-fény szintje általában a-10 és 0 km közötti tartományba esik
+
+![er Direct line Rx fény szintje](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Az ExpressRoute-átjáró kapcsolatok bit/másodperc
 
-![Gateway-kapcsolatok](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
+![Gateway-kapcsolatok](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>Az ExpressRoute-átjáró kapcsolatok kapcsolatos riasztások
 
