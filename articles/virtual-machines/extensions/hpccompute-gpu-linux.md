@@ -39,8 +39,8 @@ Ez a bővítmény a következő operációsrendszer-disztribúciókat támogatja
 | Disztribúció | Version |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
-| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
@@ -76,7 +76,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | Karakterlánc |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
@@ -86,7 +86,7 @@ Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedé
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | false | true, false | boolean |
-| driverVersion | NV: RÁCS illesztőprogramjának verziója<br> NC/ND: A CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | Karakterlánc |
+| driverVersion | NV: RÁCS illesztőprogramjának verziója<br> NC/ND: A CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Telepítse a CUDA eszközkészletet. Csak az NC/ND sorozatú virtuális gépek esetében fontos. | true | true, false | boolean |
 
 
