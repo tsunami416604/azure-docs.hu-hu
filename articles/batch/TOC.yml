@@ -80,6 +80,8 @@
         - name: Számítási csomópontokhoz való hozzáférés konfigurálása
           href: pool-endpoint-configuration.md
         - name: Készlet létrehozása megosztott rendszerkép-katalógusból
+          href: batch-sig-images.md
+        - name: Készlet létrehozása felügyelt rendszerkép erőforrással
           href: batch-custom-images.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
           href: batch-virtual-network.md

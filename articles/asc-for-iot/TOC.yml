@@ -39,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Biztonsági javaslatok
       href: concept-recommendations.md
+    - name: Alapkonfiguráció
+      href: concept-baseline.md
     - name: Eseményösszesítés
       href: event-aggregation.md
     - name: Díjszabás és kapcsolódó költségek

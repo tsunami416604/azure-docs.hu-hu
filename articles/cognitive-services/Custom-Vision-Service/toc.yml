@@ -44,9 +44,9 @@
           href: go-tutorial-object-detection.md
 - name: Oktatóanyagok
   items:
-    - name: IoT Visual Alerts alkalmazás
+    - name: Vizuális állapotok jelentése IoT-eszközön
       href: iot-visual-alerts-tutorial.md
-    - name: Emblémafelismerő mobileszközökhöz
+    - name: Logók felismerése mobileszközön
       href: logo-detector-mobile.md
 - name: Útmutatók
   items:

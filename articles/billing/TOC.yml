@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Előfizetés kezelése
   items:
+    - name: Előfizetési állapotok
+      href: billing-azure-subscription-states.md
     - name: Előfizetés újraaktiválása
       href: billing-subscription-become-disable.md
     - name: Tulajdonjogok átadása

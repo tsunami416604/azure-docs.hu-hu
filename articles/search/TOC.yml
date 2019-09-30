@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Kapcsolódás Power BI-jal
               href: knowledge-store-connect-power-bi.md
+        - name: Bővítéssel kapcsolatos problémák elhárítása
+          href: cognitive-search-common-errors-warnings.md
     - name: Dokumentumok lekérdezése
       items:
         - name: Lekérdezéstípusok és összeállítás

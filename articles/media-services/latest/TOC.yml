@@ -128,8 +128,8 @@
           displayName: 'vanity, ingest'
         - name: Ajánlott élő kódolók
           href: recommended-on-premises-live-encoders.md
-        - name: Egy felhőalapú DVR használata
-          displayName: archive
+        - name: Időeltolás és élő adásból igény szerinti videó készítése
+          displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
         - name: Szolgáltatások összehasonlítása
           href: live-event-types-comparison.md

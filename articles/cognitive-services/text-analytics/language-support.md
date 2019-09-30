@@ -31,7 +31,7 @@ Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejez
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzés, Kulcsszókeresés és elnevezett entitások felismerése
 
-Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások felismeréséhez a támogatott nyelvek listája sokkal szelektívebb, mivel az elemzők finomítása a további nyelvek nyelvi szabályainak betartása érdekében történik. Az entitások teljes készletének [](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) támogatása jelenleg a következő nyelvekre korlátozódik: 
+Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások felismeréséhez a támogatott nyelvek listája sokkal szelektívebb, mivel az elemzők finomítása a további nyelvek nyelvi szabályainak betartása érdekében történik. Az [entitások](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) teljes készletének támogatása jelenleg a következő nyelvekre korlátozódik: 
 * Angol
 * Egyszerűsített kínai
 * francia
@@ -72,7 +72,7 @@ A nyelvi támogatást kezdetben előzetes verzióban, az általánosan elérhet�
 
 \*A nyelvi támogatás előzetes verzióban érhető el
 
-\*\*A [nevesített entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az entitások összekapcsolása egyaránt elérhető ehhez a nyelvhez. [](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)  
+\*\*A [nevesített entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és az [entitások összekapcsolása](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) egyaránt elérhető ehhez a nyelvhez.  
 
 \** * Elérhető [Hangulatelemzés v3 nyilvános előzetes](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) verzióban
 

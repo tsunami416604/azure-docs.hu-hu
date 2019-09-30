@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Az Azure Blockchain dokumentációja
+summary: Útmutató a blokkláncalkalmazások Azure Blockchain használatával való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez.
+brand: azure
+metadata:
+  title: Az Azure Blockchain dokumentációja
+  description: Útmutató a blokkláncalkalmazások Azure Blockchain használatával való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez.
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328624"
+productDirectory:
+  items:
+  - title: Azure Blockchain Service
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Mi az az Azure Blockchain Service?
+    - url: ./service/index.yml
+      text: Több megjelenítése >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Mi az Azure Blockchain Workbench?
+    - url: ./workbench/index.yml
+      text: Több megjelenítése >
+conceptualContent:
+  title: Bevezetés
+  items:
+  - title: Buildelés és fejlesztés privát konzorciumi blokklánchálózatokkal
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Azure Blockchain Service-blokklánctag üzembe helyezése
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: Intelligens szerződés megírása az oktatóanyag alapján
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: Tekintse meg, hogyan helyezheti üzembe és konfigurálhatja hálózatát
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: Tekintse meg, hogyan írhat és tesztelhet intelligens szerződéseket a VS Code használatával
+  - title: Blokkláncmegoldás prototípusának elkészítése
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Az Azure Blockchain Workbench üzembe helyezése
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: Blockchain Workbench-alkalmazások buildelése oktatóanyag alapján
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: Útmutató a megoldások Blockchain Workbenchcsel való integrációjához
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: Az első alkalmazás buildelése
+  - title: Buildelés a használati estnek megfelelő főkönyvvel
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: Többtagú konzorciumi Proof-of-authority Ethereum-hálózat üzembe helyezése az Azure-ban
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Hyperledger Fabric konzorciumi hálózat üzembe helyezése az Azure-ban
+additionalContent:
+  sections:
+  - title: Fejlesztési eszközök és minták
+    summary: Blokkláncalkalmazások fejlesztői eszközei és kódmintái.
+    items:
+    - title: Azure Blockchain Development Kit az Ethereumhoz
+      summary: Azure Blockchain Service-megoldás fejlesztése, üzembe helyezése és felügyelete.
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Ethereum Blockchain-összekötő
+      summary: Az Azure Logic Apps, a Microsoft Flow és a Microsoft PowerApps használata intelligens szerződési műveletek végrehajtásához, például a tranzakciók indításához, a szerződések állapotának olvasásához és a szerződésfrissítési folyamatok aktiváláshoz.
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: Kódminták
+      summary: GitHub-adattár kódmintákkal a munka megkezdéséhez.
+      url: https://github.com/Azure-Samples/blockchain

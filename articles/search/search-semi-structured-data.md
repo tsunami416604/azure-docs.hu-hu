@@ -18,7 +18,7 @@ ms.locfileid: "69647858"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-oktatóanyag: A részben strukturált adatfájlok (JSON-Blobok) indexelése és keresése Azure Search
 
-Azure Search a JSON-dokumentumokat és-tömböket indexelheti az Azure Blob [](search-indexer-overview.md) Storage-ban egy olyan indexelő használatával, amely tudja, hogyan lehet beolvasni a részben strukturált adatkészleteket. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Feldarabolja a strukturálatlan adatmennyiségek közötti különbséget, amelyeknek teljes mértékben indexelve kell lenniük, és az olyan, az adatmodellbe (például egy olyan kapcsolati adatbázis-sémához) tartozó, formálisan strukturált adat, amely egy mező alapján indexelhető.
+Azure Search a JSON-dokumentumokat és-tömböket indexelheti az Azure Blob  Storage-ban egy olyan [indexelő](search-indexer-overview.md) használatával, amely tudja, hogyan lehet beolvasni a részben strukturált adatkészleteket. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Feldarabolja a strukturálatlan adatmennyiségek közötti különbséget, amelyeknek teljes mértékben indexelve kell lenniük, és az olyan, az adatmodellbe (például egy olyan kapcsolati adatbázis-sémához) tartozó, formálisan strukturált adat, amely egy mező alapján indexelhető.
 
 Ebben az oktatóanyagban a következő feladatok elvégzéséhez használja a [Azure Search REST API-kat](https://docs.microsoft.com/rest/api/searchservice/) és egy Rest-ügyfelet:
 
