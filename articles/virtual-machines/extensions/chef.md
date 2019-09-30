@@ -70,8 +70,8 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | Karakterlánc |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | Karakterlánc |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Beállítások
