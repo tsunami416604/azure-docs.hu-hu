@@ -147,14 +147,14 @@ Használat `AADClientCertificate`:
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
 | (0.1 séma) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (0.1 séma) AADClientSecret | password | string |
-| (0.1 séma) AADClientCertificate | thumbprint | string |
+| (0,1 séma) AADClientSecret | password | string |
+| (0,1 séma) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótár |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| választható Passphrase | password | string | 
+| választható Jelszót | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Operációs rendszer, az összes | string |
 

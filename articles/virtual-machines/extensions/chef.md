@@ -79,14 +79,14 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | Karakterlánc | I |
-| settings/runlist | `recipe[mycookbook::default]` | Karakterlánc | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | I |
+| settings/runlist | `recipe[mycookbook::default]` | string | I |
 
 ### <a name="protected-settings"></a>Védett beállítások
 
 | Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | Karakterlánc | I |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | I |
 
 <!--
 ### Linux-specific settings

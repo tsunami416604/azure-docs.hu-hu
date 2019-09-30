@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/21/2018
+ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 98c183d65a18c186b515df8ec02ba26b8c2c4143
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258303"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679388"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
 Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
@@ -46,14 +46,14 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
     - Az automatikus méretezés segít minimális szinten tartani az alkalmazást futtató virtuálisgép-példányok számát alacsony igényszint esetén, és elfogadható teljesítményt biztosít az ügyfeleknek további VM-példányok hozzáadásával, amikor igénynövekedés tapasztalható. Ez a képesség segít a költségek csökkentésében, és hatékony módon, csakis szükség esetén hoz létre Azure-erőforrásokat.
 
 - **Működtetés nagy léptékben**
-    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha hoz létre, és a saját egyéni Virtuálisgép-rendszerképek feltöltése, a határértéke 600 Virtuálisgép-példányok.
-    - A termelési számítási feladatokhoz a legjobb teljesítmény érdekében használjon [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
+    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját virtuálisgép-rendszerképeit hozza létre és tölti fel, a korlát 600 virtuálisgép-példány.
+    - Az éles munkaterhelésekkel kapcsolatos legjobb teljesítmény érdekében használja az [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md)-t.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?
 A méretezési csoportokat virtuális gépek alkotják. A méretezési csoportok biztosítják az alkalmazások futtatásához és méretezéséhez szükséges felügyeleti és automatizálási rétegeket. Helyettük manuálisan is létrehozhat és felügyelhet önálló virtuális gépeket, illetve meglévő eszközök integrálásával is kialakíthat egy hasonló szintű automatizációt. A következő táblázat összefoglalja a méretezési csoportok előnyeit több virtuálisgép-példány manuális felügyeletével szemben.
 
-| Forgatókönyv                           | Virtuális gépek manuális csoportja                                                                    | Virtuálisgép-méretezési csoport |
+| Forgatókönyv                           | Virtuális gépek manuális csoportja                                                                    | Virtuális gép méretkészlete |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | További virtuálisgép-példányok hozzáadása        | A létrehozás, a konfigurálás és a megfelelőség biztosítása manuális folyamatokkal történik                             | Automatikus létrehozás központi konfigurációból |
 | Forgalom kiegyensúlyozása és elosztása | Manuálisan kell létrehozni és konfigurálni egy Azure-terheléselosztót vagy alkalmazásátjárót      | Automatikus létrehozás és integrálás egy Azure-terheléselosztóval vagy alkalmazásátjáróval |
@@ -62,6 +62,11 @@ A méretezési csoportokat virtuális gépek alkotják. A méretezési csoportok
 
 A méretezési csoportok nem járnak többletköltségekkel. Csak a mögöttes számítási erőforrások, például a virtuálisgép-példányok, a terheléselosztó vagy a felügyelt lemezes tárolók használatáért kell fizetni. A felügyeleti és automatizálási szolgáltatások, például az automatikus méretezés és a redundancia, nem járnak többletköltségekkel a virtuális gépek használatán túl.
 
+## <a name="how-to-monitor-your-scale-sets"></a>A méretezési csoportok figyelése
+
+Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overview.md), amely egy egyszerű előkészítési folyamattal rendelkezik, és automatizálja a méretezési csoportba tartozó virtuális gépekről származó fontos CPU-, memória-, lemez-és hálózati teljesítményszámlálók gyűjteményét. Emellett további figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állásának és teljesítményének a kiépítésében.
+
+Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 Első lépésként hozza létre első virtuálisgép-méretezési csoportját az Azure Portalon.
