@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032940"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676944"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -38,12 +38,19 @@ A rendelkezésre álló szolgáltatási szintek és azok jellemzői a [szolgált
 
 Hibák és ismert problémák esetén tekintse meg az [ismert problémákat](sql-database-managed-instance-transact-sql-information.md#Issues).
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Hol találhatók a legújabb funkciók és a szolgáltatások a nyilvános előzetes verzióban?
+
+Az új és az előzetes verziójú funkciókhoz lásd: [kibocsátási megjegyzések](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Mennyi idő szükséges a példány létrehozásához vagy frissítéséhez, vagy egy adatbázis visszaállításához?
+
+Az új felügyelt példány létrehozásához vagy a szolgáltatási szint (virtuális mag, tárterület) módosításához szükséges idő számos tényezőtől függ. Tekintse meg a [kezelési műveleteket](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>A felügyelt példányok neve megegyezik a helyszíni SQL Servervel?
 
 A felügyelt példánynak olyan névvel kell rendelkeznie, amely a *Database.Windows.net*-szel végződik. Ha egy másik DNS-zónát szeretne használni az alapértelmezett helyett, például a **mi – másik név**. contoso.com: 
 - Alias definiálása CliConfig használatával. Az eszköz csak a beállításjegyzék-beállítások burkolója, így a csoportházirend vagy a parancsfájl használatával is elvégezhető.
 - *CNAME* használata a *TrustServerCertificate = True* kapcsolóval.
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Hogyan helyezhetek át adatbázist a felügyelt példányról SQL Server vagy Azure SQL Databasere?
 
@@ -55,7 +62,7 @@ A `COPY_ONLY` felügyelt példányból származó natív biztonsági másolatok 
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Hogyan telepíthetem át a példány-adatbázist egyetlen Azure SQL Databasere?
 
-Az egyik lehetőség az, hogy [exportálja az adatbázist egy BACPAC](sql-database-export.md) , majd [importálja a BACPAC-fájlt]( sql-database-import.md). 
+Az egyik lehetőség az, hogy [exportálja az adatbázist egy BACPAC](sql-database-export.md) , majd [importálja a BACPAC-fájlt](sql-database-import.md). 
 
 Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb. A tranzakciós replikáció akkor használható, ha az adatbázis minden táblája rendelkezik elsődleges kulccsal.
 
@@ -125,7 +132,8 @@ A hálózati kockázatok enyhítése érdekében javasoljuk, hogy az ügyfelek b
 Felügyelt példányok esettanulmányai:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
 Ha jobban meg szeretné ismerni a Azure SQL Database felügyelt példány üzembe helyezéséhez kapcsolódó előnyöket, költségeket és kockázatokat, a Forrester tanulmánya is a következő: [A mi teljes gazdasági hatása](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 

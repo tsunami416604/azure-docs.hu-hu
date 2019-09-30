@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064475"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679307"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása Azure AD B2C
 
@@ -53,17 +53,13 @@ A következő folyamatok nem támogatottak:
 
 ## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
-1. A B2C beállítások területen válassza az **alkalmazások**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-2. Adja meg az alkalmazás nevét, például *ROPC_Auth_app*.
-3. Válassza a **nem** lehetőséget a **Web App/web API**elemnél, majd válassza az **Igen** lehetőséget a **natív ügyfél**esetében.
-4. Hagyja meg az összes többi értéket, és válassza a **Létrehozás**lehetőséget.
-5. Válassza ki az új alkalmazást, és jegyezze fel az alkalmazás AZONOSÍTÓját későbbi használatra.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a felhasználói folyamat hibakeresésére szolgáló választ. A következő táblázatban szereplő információk alapján állítson össze egy hívást a post kérelem törzse:
 - Cserélje le  *\<a yourtenant. onmicrosoft. com >* a B2C-bérlő nevére.
-- Cserélje le  *\<a B2C_1A_ROPC_Auth >* az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
+- Cserélje le a *\<B2C_1A_ROPC_Auth >* az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevére.
 - Cserélje le  *\<a bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* a regisztrációhoz tartozó alkalmazás-azonosítóra.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`

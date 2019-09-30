@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d72af0c2126ef74f95697755a7ead354214f695c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932559"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677724"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás kora előre összeépített entitása
 Az előre összeállított kora entitás age értékét egyaránt numerikusan és tekintetében nap, hét, hónap és év rögzíti. Az entitás már be van tanítva, mert nem kell kora, az alkalmazás leképezések tartalmazó példa beszédmódok hozzáadása. Kor entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
@@ -26,7 +26,7 @@ A kor kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Re
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>Előre összeállított kora entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
 
@@ -52,9 +52,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.age** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -79,7 +79,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -116,6 +116,10 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>További lépések
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 További információ a [pénznem](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), és [dimenzió](luis-reference-prebuilt-dimension.md) entitásokat. 

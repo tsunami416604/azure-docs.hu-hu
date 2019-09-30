@@ -7,18 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899666"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676601"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
-A Windows rendszerű virtuális asztali előnézet szolgáltatás felhasználói profil-megoldásként javasolja a FSLogix-profilok tárolóit. A FSLogix távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban barangoló profilokhoz készült. Egy teljes felhasználói profilt tárol egyetlen tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil.
-
-Ebben a cikkben a Azure Fileshoz használt FSLogix-profilok tárolóit ismertetjük. Az információ a Windows rendszerű virtuális asztal kontextusában jelent meg, amelyet [a 3/21](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/)-es verzióban jelentettek be.
+A Windows Virtual Desktop szolgáltatás felhasználói Profilos megoldásként ajánlja a FSLogix-profilok tárolóit. A FSLogix távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban barangoló profilokhoz készült. Egy teljes felhasználói profilt tárol egyetlen tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil. Ez a cikk azt ismerteti, hogyan használhatók a FSLogix-profilok tárolói a Windows rendszerű virtuális asztal Azure Files funkciójával.
 
 ## <a name="user-profiles"></a>Felhasználói profilok
 
@@ -55,7 +53,7 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 #### <a name="performance"></a>Teljesítmény
 
-A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD with S2D volt a megoldás, amelyet az RDS csapat ajánlott a Windows virtuális asztal számára a szolgáltatás előzetes verziójában.  
+A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.  
 
 #### <a name="cost"></a>Költség
 
@@ -67,7 +65,7 @@ A S2D-fürtök olyan operációs rendszert igényelnek, amely egy javított, fri
 
 ## <a name="fslogix-profile-containers"></a>FSLogix-profilok tárolói
 
-2018. november 19-én a Microsoft megszerezte a [FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). A FSLogix számos profillal kapcsolatos kihívást jelent. A kulcsok közül a következők:
+2018. november 19-én a [Microsoft megszerezte a FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). A FSLogix számos profillal kapcsolatos kihívást jelent. A kulcsok közül a következők:
 
 - **Teljesítmény:** A [FSLogix-profil tárolói](https://fslogix.com/products/profile-containers) nagy teljesítményű és olyan teljesítménnyel kapcsolatos problémák megoldására szolgálnak, amelyek történelmileg letiltották a gyorsítótáras Exchange üzemmódot.
 - **OneDrive** FSLogix-profilok nélkül a OneDrive for Business nem állandó RDSH-vagy VDI-környezetekben nem támogatott. [A OneDrive for Business és az FSLogix ajánlott eljárásai](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) ismertetik, hogyan hatnak egymásra. További információ: [a szinkronizálási ügyfél használata a virtuális asztalokon](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
@@ -81,7 +79,7 @@ A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a fel
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez
 
-A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést biztosít az ügyfelek által igénybe vett virtuális gépek méretének, típusának és számának. További információ: [Mi az a Windows rendszerű virtuális asztali előnézet?](overview.md).
+A Windows rendszerű virtuális asztali szolgáltatás teljes körű vezérlést biztosít az ügyfelek által igénybe vett virtuális gépek méretének, típusának és számának. További információ: [Mi a Windows Virtual Desktop?](overview.md).
 
 Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali környezet az ajánlott eljárásokat követi:
 

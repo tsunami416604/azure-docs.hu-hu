@@ -1,18 +1,18 @@
 ---
 title: Az Office telepítése fő VHD-lemezképre – Azure
-description: Az Office telepítése és testreszabása a Windows rendszerű virtuális asztali előnézeti fő rendszerképben az Azure-ban.
+description: Az Office telepítése és testreszabása egy Windows rendszerű virtuális asztali főrendszerképen az Azure-ban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816429"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679521"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
@@ -23,7 +23,7 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet (VM). H
 A cikk azt is feltételezi, hogy emelt szintű hozzáféréssel rendelkezik a virtuális gépen, függetlenül attól, hogy az Azure-ban vagy a Hyper-V kezelőjében van-e kiépítve. Ha nem, tekintse [meg az Azure-előfizetések és-felügyeleti csoportok kezelésének megemelt hozzáférési](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)jogosultságát.
 
 >[!NOTE]
->Ezek az utasítások a szervezet meglévő folyamataival használható, a Windows rendszerű virtuális asztali előzetes verzióra jellemző konfigurációra vonatkoznak.
+>Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Az Office telepítése megosztott számítógép-aktiválási módban
 
@@ -45,7 +45,7 @@ A példaként megadott konfigurációs XML-fájl a következő műveleteket vég
 - A megosztott számítógép aktiválásának engedélyezése.
 
 >[!NOTE]
->A Visio rajzsablon-keresési funkciója nem működik a Windows rendszerű virtuális asztalon az előzetes verzió konfigurálása során.
+>Előfordulhat, hogy a Visio rajzsablon-keresési funkciója nem a várt módon működik a Windows Virtual Desktopban.
 
 A minta konfigurációs XML-fájl nem fog megjelenni:
 
@@ -53,7 +53,7 @@ A minta konfigurációs XML-fájl nem fog megjelenni:
 - Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép-\\konfigurációs\\szabályzatok felügyeleti sablonok\\Microsoft Office 2016 (\\gép) licencelési beállításai** között található.
+>A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **Számítógép konfigurációja @ no__t-1Policies @ no__t-2Administrative templates @ no__t-3Microsoft Office 2016 (Machine) \\Licensing beállításokban található.**
 
 Az Office-telepítő eszköz tartalmazza a Setup. exe fájlt. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
 
@@ -130,11 +130,11 @@ A OneDrive telepítése általában felhasználónként történik. Ebben a kör
 
 A következőképpen telepítheti a OneDrive-t gépi módban:
 
-1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy\\az [\\UNC] (file://UNC) hely rendben van.
+1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy [\\ @ no__t-1unc] (file://unc) helye nem megfelelő.
 
-2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással:<https://aka.ms/OneDriveWVD-Installer>
+2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Ha az Office-t a OneDrive  **\<-mel telepítette, akkor a ExcludeApp ID\>= "OneDrive" vagy**a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
+3. Ha az Office-t a OneDrive-mel telepítette, **\<EXCLUDEAPP azonosító = "OneDrive"/\>** kihagyva, távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból a következő parancs futtatásával:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

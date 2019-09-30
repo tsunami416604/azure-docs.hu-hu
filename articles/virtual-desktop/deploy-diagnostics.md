@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233252"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676657"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -82,7 +82,7 @@ A PowerShell-parancsfájl futtatása:
     - A **ResourceGroupName**mezőben adja meg az erőforráscsoport nevét.
     - A **LogAnalyticsWorkspaceName**mezőben adjon meg egy egyedi nevet a log Analytics munkaterülethez.
     - A **hely**mezőben adja meg az Ön által használt Azure-régiót.
-    - Adja meg az **Azure-előfizetés azonosítóját**, amelyet a Azure Portal az előfizetések területen talál.
+    - Adja meg az **Azure-előfizetés azonosítóját**, amelyet a Azure Portal az **előfizetések**területen talál.
 
 4. Adja meg a delegált rendszergazdai hozzáféréssel rendelkező felhasználó hitelesítő adatait.
 5. Jelentkezzen be a Azure Portalba ugyanazzal a felhasználó hitelesítő adataival.
@@ -95,18 +95,18 @@ Ez a szakasz azokra a felhasználókra vonatkozik, akik az előző szakaszban Po
 
 Az ajánlott teljesítményszámlálók manuális konfigurálását a következőképpen végezheti el:
 
-1. Nyissa meg az Internet böngészőt, és [](https://portal.azure.com/) jelentkezzen be a Azure Portalba a rendszergazdai fiókjával.
-2. Ezután lépjen **log Analytics** munkaterületek elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
+1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
+2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 3. A **Beállítások** szakaszban válassza a **Speciális beállítások**lehetőséget.
-4. Ezt követően navigáljon az > adatwindows-**teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
+4. Ezt követően navigáljon az adat  > **Windows** -teljesítményszámlálók **elemre**, és adja hozzá a következő számlálókat:
 
-    -   LogicalDisk (\*)\|% szabad terület
-    -   LogicalDisk (C:)\\átlag Lemezvárólista hossza
-    -   Memória (\*)\\elérhető MB-ban
-    -   Processzor adatai (\*)\\processzoridő
-    -   Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetése
+    -   LogicalDisk (\*) \|% szabad terület
+    -   LogicalDisk (C:) \\Avg. Lemezvárólista hossza
+    -   Memória (\*) \\Available MB-ban
+    -   Processzor adatai (\*) @no__t – 1Processor idő
+    -   Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
 
-További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux](/azure/azure-monitor/platform/data-sources-performance-counters)-teljesítményű adatforrásaiban.
+További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](/azure/azure-monitor/platform/data-sources-performance-counters).
 
 >[!NOTE]
 >A konfigurált további számlálók nem jelennek meg a diagnosztikai eszközben. Ahhoz, hogy megjelenjen a diagnosztika eszközben, konfigurálnia kell az eszköz konfigurációs fájlját. A speciális felügyelettel kapcsolatos utasítások később a GitHubon lesznek elérhetők.
@@ -119,7 +119,7 @@ Mielőtt folytatná a diagnosztika eszköz telepítését, javasoljuk, hogy elle
 
 Győződjön meg arról, hogy az alkalmazás regisztrációja API-engedélyekkel rendelkezik:
 
-1. Nyisson meg egy böngészőt, és [](https://portal.azure.com/) kapcsolódjon a Azure Portalhoz a rendszergazdai fiókjával.
+1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Lépjen a **Alkalmazásregisztrációkra** , és keresse meg a Azure ad alkalmazás regisztrációját.
 
       ![Az API-engedélyek lap.](media/api-permissions-page.png)
@@ -129,16 +129,16 @@ Győződjön meg arról, hogy az alkalmazás regisztrációja API-engedélyekkel
 
 Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált Windows-teljesítményszámlálókat tartalmaz:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza a **log Analytics** munkaterületek lehetőséget a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
+1. A [Azure Portal](https://portal.azure.com/)válassza a **log Analytics munkaterületek** lehetőséget a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 2. A **Beállítások**területen válassza a **Speciális beállítások**lehetőséget.
-3. Ezután nyissa meg a > következőt: adatwindows-**teljesítményszámlálók**.
+3. Ezután lépjen az adat  >  Windows-**teljesítményszámlálók** **elemre**.
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
-   - LogicalDisk (\*)\|% szabad terület: A lemezen lévő teljes felhasználható terület szabad területének százalékos értékét jeleníti meg.
-   - LogicalDisk (C:)\\átlag Lemezvezérlő-várólista hossza: A C meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
-   - Memória (\*)\\rendelkezésre álló MB-ban: A rendszer számára rendelkezésre álló memória megabájtban.
-   - Processzor adatai (\*)\\processzoridő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
-   - Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetése
+   - LogicalDisk (\*) \|% szabad terület: A lemezen lévő teljes felhasználható terület szabad területének százalékos értékét jeleníti meg.
+   - LogicalDisk (C:) \\Avg. Lemezvezérlő-várólista hossza: A C meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
+   - Memória (\*) @no__t 1Available MB-ban: A rendszer számára rendelkezésre álló memória megabájtban.
+   - Processzor adatai (\*) @no__t – 1Processor idő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
+   - Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Kapcsolódás virtuális gépekhez a Log Analytics munkaterületen
 
@@ -181,7 +181,7 @@ Az átirányítási URI beállítása:
 
    ![Az átirányítási URI-lap](media/redirect-uri-page.png)
 
-8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban `contosoapp45`használt alkalmazás neve, akkor a társított <https://contosoapp45.azurewebsites.net>URL-cím:).
+8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45`, akkor a társított URL-cím <https://contosoapp45.azurewebsites.net>).
 9. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 10.   Válassza ki az **Elfogadás** lehetőséget.
 
@@ -189,8 +189,8 @@ Az átirányítási URI beállítása:
 
 Mielőtt a diagnosztikai eszközt elérhetővé tenné a felhasználók számára, győződjön meg arról, hogy a következő engedélyek vannak:
 
-- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
--  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: delegált [hozzáférés a Windows rendszerű virtuális asztal előzetes](delegated-access-virtual-desktop.md)verziójában.
+- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+-  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: [delegált hozzáférés a Windows rendszerű virtuális asztalon](delegated-access-virtual-desktop.md).
 
 A következő információkat is meg kell adnia a felhasználóknak:
 
@@ -226,25 +226,25 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows teljesítményszámláló küszöbértékei
 
-- LogicalDisk (\*)\|% szabad terület:
+- LogicalDisk (\*) \|% szabad terület:
 
     - A logikai lemez szabad területének teljes felhasználható területének százalékos arányát jeleníti meg.
     - Küszöb Kevesebb mint 20% van megjelölve sérültként.
 
-- LogicalDisk (C:)\\átlag Lemezvezérlő-várólista hossza:
+- LogicalDisk (C:) \\Avg. Lemezvezérlő-várólista hossza:
 
     - A tárolási rendszerfeltételeket jelöli.
     - Küszöb Az 5-nél nagyobb jelölés nem kifogástalan állapotú.
 
-- Memória (\*)\\rendelkezésre álló MB-ban:
+- Memória (\*) @no__t 1Available MB-ban:
 
     - A rendszer számára rendelkezésre álló memória.
     - Küszöb Kevesebb mint 500 megabájt van megjelölve sérültként.
 
-- Processzor adatai (\*)\\processzoridő:
+- Processzor adatai (\*) @no__t 1Processor idő:
 
     - Küszöb A 80%-nál nagyobb érték van megjelölve sérültként.
 
-- [Felhasználói bemeneti késleltetés/munkamenet (\*)\\maximális bemeneti késleltetés](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Felhasználói bemeneti késleltetés/munkamenet (\*) \\Max bemeneti késleltetése](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Küszöb Az 2000 MS-nál nagyobb érték nem megfelelőként van megjelölve.

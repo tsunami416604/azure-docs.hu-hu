@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 74df4f8e3161576280e1d71c4a9b2f50a169dbb4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350316"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687056"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Privát végpont létrehozása Azure Portal használatával
 
@@ -214,30 +214,31 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    ```
+3. Telepítse a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. In **Connect to server**, enter or select this information:
+4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Setting | Value |
+    | Beállítás | Value |
     | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
+    | Kiszolgálótípus| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
+    | Kiszolgálónév| *MyServer.database.Windows.net* kiválasztása |
+    | Felhasználónév | Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
+    |Windows 10 |Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
+    |Jelszó megjegyzése|Válassza az **Igen**lehetőséget.|
     |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+1. Válassza a **kapcsolat**lehetőséget.
+2. A bal oldali menüben lévő adatbázisok tallózása.
+3. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
+4. A távoli asztali kapcsolat bezárásával *myVm*. 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
+1. Adja meg a *myResourceGroup* In a **Keresés**@no__t – 3box a portál tetején, majd válassza a *myResourceGroup*@no__t – 5from a keresési eredményeket. 
+2. Válassza az **erőforráscsoport törlése**lehetőséget. 
+3. Írja be **a myResourceGroup nevet az erőforráscsoport neve** and válassza a **Törlés**lehetőséget.
 
-## Next steps
+## <a name="next-steps"></a>További lépések
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy SQL Database-kiszolgálón és egy privát végponton a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál az SQL Database-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
 

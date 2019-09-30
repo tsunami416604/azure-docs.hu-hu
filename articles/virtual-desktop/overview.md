@@ -1,22 +1,22 @@
 ---
-title: Mi a Windows rendszerű virtuális asztali előnézet?  – Azure
-description: A Windows rendszerű virtuális asztali előnézet áttekintése.
+title: Mit takar a Windows Virtual Desktop?  – Azure
+description: A Windows rendszerű virtuális asztal áttekintése.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338590"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676554"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows rendszerű virtuális asztali előnézet? 
+# <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
-A nyilvános előzetes verzióban elérhető Windows Virtual Desktop Preview egy asztali és app Virtualization szolgáltatás, amely a felhőben fut.
+A Windows virtuális asztal egy felhőben futó asztali és app Virtualization szolgáltatás.
 
 A következő műveleteket végezheti el a Windows rendszerű virtuális asztalok Azure-beli futtatásakor:
 
@@ -89,6 +89,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
 
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következő URL-címekhez kell rendelkezniük kimenő TCP 443-hozzáféréssel:
+
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
 * *.core.windows.net
@@ -99,7 +100,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >[!NOTE]
 >Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
 
-A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. A nyilvános előzetes verzióban az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ilyen virtuális gépekhez tartozó adat a Egyesült Államok (az USA 2. keleti régiójában) található. Ez adatátvitelt eredményezhet a Egyesült Államok a szolgáltatás nyilvános előzetes verzióban történő tesztelése során. Megkezdjük a felügyeleti megoldás és az adathonosítás felskálázását az összes Azure-régióban az általánosan elérhetővé.
+A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok (az USA 2. keleti régiójában) található. Ez adatátvitelt eredményezhet a Egyesült Államokba.
 
 Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálózat megfelel a következő követelményeknek:
 
@@ -119,11 +120,28 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 A Windows virtuális asztal a következő operációsrendszer-lemezképeket támogatja:
 
 * Windows 10 Enterprise multi-session
+* Windows 10 Enterprise
+* Windows 7 Enterprise
+* A Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható: 
+
+|Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|Windows rendszerű virtuális asztali ügynök frissítései|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|Automatikus|
+|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|Automatikus|
+|Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|Automatikus|
+|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|Automatikus|
+|Windows 7 Enterprise|Igen|Igen|Nem|Nem|Kézi|
+|A Windows Server 2019|Igen|Igen|Nem|Nem|Automatikus|
+|Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
+|Windows Server 2012 R2|Igen|Igen|Nem|Nem|Automatikus|
 
 ## <a name="next-steps"></a>További lépések
 
 Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Bérlő létrehozása a Windows rendszerű virtuális asztali verzióban – előzetes verzió](tenant-setup-azure-active-directory.md)
+> [Bérlő létrehozása a Windows Virtual Desktopon](tenant-setup-azure-active-directory.md)

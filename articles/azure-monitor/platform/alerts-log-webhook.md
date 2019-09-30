@@ -1,19 +1,19 @@
 ---
 title: A log-riasztások webhook-műveletei az Azure-riasztásokban
 description: Ez a cikk azt ismerteti, hogyan lehet napló-riasztási szabályt létrehozni a Log Analytics munkaterületen, vagy Application Insights, hogy a riasztás hogyan küldjön le adatokat HTTP-webhookként, valamint a különböző testreszabási lehetőségek részleteit.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226796"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677767"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
 Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
@@ -33,7 +33,7 @@ A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok sz�
 | **Egyéni JSON-adattartalom** |A webhooktal küldendő egyéni adattartalom, ha ezt a beállítást a riasztás létrehozásakor választja ki a rendszer. További információ: a [naplózási riasztások kezelése](alerts-log.md).|
 
 > [!NOTE]
-> A  log-riasztáshoz tartozó webhookhoz tartozó **Egyéni JSON** -adattartalom belefoglalása a webhookhoz lehetőség mellett megjelenik a minta webhook adattartalma a megadott testreszabáshoz. Nem tartalmaz tényleges adatokat, de a naplózási riasztásokhoz használt JSON-sémára jellemző. 
+> A log-riasztáshoz tartozó webhookhoz tartozó **Egyéni JSON** -adattartalom belefoglalása a webhookhoz lehetőség mellett megjelenik a minta webhook adattartalma a megadott testreszabáshoz. Nem tartalmaz tényleges adatokat, de a naplózási riasztásokhoz használt JSON-sémára jellemző. 
 
 A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
 

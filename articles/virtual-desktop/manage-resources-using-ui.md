@@ -1,25 +1,25 @@
 ---
 title: Felügyeleti eszköz üzembe helyezése – Azure
-description: Felhasználói felületi eszköz telepítése a Windows rendszerű virtuális asztali előnézet erőforrásainak kezeléséhez.
+description: Felhasználói felületi eszköz telepítése a Windows rendszerű virtuális asztali erőforrások kezeléséhez.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816506"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679487"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: Felügyeleti eszköz üzembe helyezése
 
-A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virtuális asztali előnézeti erőforrásainak kezeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz.
+A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virtuális asztali erőforrásainak kezeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz.
 
 >[!NOTE]
->Ezek az utasítások a szervezet meglévő folyamataival használható, a Windows rendszerű virtuális asztali előzetes verzióra jellemző konfigurációra vonatkoznak.
+>Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
@@ -31,7 +31,7 @@ Ez a felügyeleti eszköz egy minta. A Microsoft fontos biztonsági és minősé
 
 A Azure Resource Manager sablon telepítése előtt szüksége lesz egy Azure Active Directory felhasználóra a felügyeleti felhasználói felület telepítéséhez. A felhasználónak a következőket kell tennie:
 
-- Az Azure multi-Factor Authentication (MFA) használata le van tiltva
+- Az Azure Multi-Factor Authentication (MFA) le van tiltva
 - Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
 - Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. A következő lépésekkel ellenőrizheti, hogy a felhasználó rendelkezik-e a [szükséges engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
@@ -50,15 +50,15 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
         1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
         2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-        3. Közvetlenül a <https://portal.azure.com/> hashtag (#) után és azt megelőzően adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Közvetlenül a <https://portal.azure.com/> után és a hashtag (#) előtt adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
         5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 
 ### <a name="guidance-for-template-parameters"></a>Útmutató a sablon paramétereinek megadásához
 A következő módon adhatja meg az eszköz konfigurálásához szükséges paramétereket:
 
-- Ez a távoli asztali közvetítő URL-címe:\/https:/rdbroker.WVD.microsoft.com/
-- Ez az erőforrás URL-címe: https\/:/Mrs-prod.ame.GBL/Mrs-RDInfra-Prod
+- Ez a távoli asztali közvetítő URL-címe: https: \//rdbroker. WVD. microsoft. com/
+- Ez az erőforrás URL-címe: https: \//Mrs-prod. ame. GBL/Mrs-RDInfra-Prod
 - A HRE hitelesítő adataival tiltsa le az MFA-t az Azure-ba való bejelentkezéshez. Nézze [meg, mi szükséges a Azure Resource Manager sablon futtatásához](#what-you-need-to-run-the-azure-resource-manager-template).
 - Használjon egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directory a felügyeleti eszközhöz; például: Apr3UX.
 
@@ -70,7 +70,7 @@ A bejelentkezés és a felügyeleti eszköz használata előtt meg kell adnia a 
 
 ![Képernyőkép, amely a felhasználói felületi felügyeleti eszközhöz való hozzáféréskor megadott engedélyeket mutatja.](media/management-ui-delegated-permissions.png)
 
-Az eszközre való bejelentkezéshez használható felhasználó meghatározásához lépjen a [Azure Active Directory felhasználói beállítások lapra](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel, hogy a felhasználók milyen értékkel férhetnek hozzá a **vállalati adatokhoz**a nevükben.
+Az eszközre való bejelentkezéshez használható felhasználó meghatározásához lépjen a [Azure Active Directory felhasználói beállítások lapra](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel, hogy a felhasználók milyen értékkel férhetnek hozzá a **vállalati adatokhoz a nevükben**.
 
 ![Képernyőkép, amely azt mutatja, hogy a felhasználók megadhatnak-e jóváhagyást az alkalmazásoknak csak a felhasználó számára.](media/management-ui-user-consent-allowed.png)
 
@@ -80,7 +80,7 @@ Az eszközre való bejelentkezéshez használható felhasználó meghatározás�
 
 Ha eldöntötte, hogy melyik felhasználót fogja használni a beleegyezikés megadásához, kövesse az alábbi utasításokat az eszköz beleegyezikének biztosításához:
 
-1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például <https://rdmimgmtweb-210520190304.azurewebsites.net>:.
+1. Nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és keresse meg a hozzá társított URL-címet. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.
 3. Ha globális rendszergazdai jogosultsággal rendelkezik, most bejelölheti a **szervezet nevében**való engedélyezéshez szükséges jelölőnégyzetet. Az **elfogadás** lehetőséget választva adja meg a beleegyező értéket.
    
@@ -94,7 +94,7 @@ Miután beleegyezett a szervezetbe vagy egy adott felhasználóhoz, bármikor ho
 
 Az eszköz elindításához kövesse az alábbi utasításokat:
 
-1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például <https://rdmimgmtweb-210520190304.azurewebsites.net>:.
+1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
 

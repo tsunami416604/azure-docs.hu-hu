@@ -1,5 +1,5 @@
 ---
-title: MSAL-alkalmazások naplózása | Microsoft Identity platform
+title: Bejelentkezés a Microsoft Authentication Library (MSAL) alkalmazásba | Azure
 description: Tudnivalók a Microsoft Authentication Library-(MSAL-) alkalmazások naplózásáról.
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dad8a276cd40b1ff04bbced833b5d70cec4fc87
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268590"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678036"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -44,14 +44,14 @@ Alapértelmezés szerint a MSAL-naplózó nem gyűjt kényes személyes vagy sze
 ## <a name="logging-in-msalnet"></a>Naplózás a MSAL.NET
 
  > [!NOTE]
- > A MSAL.NET kapcsolatos további információkért tekintse meg a [MSAL.net wikit](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki). MSAL.NET-naplózási és egyéb példákat is találhat.
- 
+ > Tekintse meg a [MSAL.net wikit](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) a MSAL.net-naplózási és egyéb mintákhoz.
+
 A 3. x MSAL a naplózás az alkalmazáson belül, a `.WithLogging` Builder módosító használatával van beállítva. Ez a metódus nem kötelező paramétereket vesz igénybe:
 
-- A *szint* lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
-- A *PiiLoggingEnabled* lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
-- A *LogCallback* olyan delegált értékre van beállítva, amely a naplózást végzi. Ha a *PiiLoggingEnabled* értéke TRUE (igaz), ez a metódus kétszer kapja meg az üzeneteket: egyszer a *containsPii* paraméter értéke false (hamis), az üzenet pedig személyes adatként nem, a *containsPii* paraméter pedig a true értékkel egyenlő, a másik pedig a az üzenet tartalmazhat személyes adattartalmakat is. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
-- A *DefaultLoggingEnabled* lehetővé teszi a platform alapértelmezett naplózását. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
+- a `Level` lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
+- a `PiiLoggingEnabled` lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
+- a `LogCallback` egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha a `PiiLoggingEnabled` értéke igaz, a metódus kétszer fogja fogadni az üzeneteket: egyszer a `containsPii` paraméter értéke false, és az üzenet személyes adatként nem, a második pedig a `containsPii` paraméter értéke igaz, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- a `DefaultLoggingEnabled` lehetővé teszi a platform alapértelmezett naplózását. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
 
 ```csharp
 class Program
@@ -80,16 +80,54 @@ class Program
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>Naplózás a MSAL. js fájlban
+## <a name="logging-in-msal-for-android-using-java"></a>Bejelentkezés a MSAL for Android használatával Javával
 
- A naplózást a MSAL. js fájlban engedélyezheti, ha átadja egy naplózó objektumot egy `UserAgentApplication` példány létrehozásához a konfiguráció során. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
+Jelentkezzen be az alkalmazás létrehozásakor egy naplózási visszahívás létrehozásával. A visszahívás a következő paramétereket veszi figyelembe:
+
+- @no__t – 0 – a könyvtár által visszahívásra átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
+- a `logLevel` lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info` és `Verbose`.
+- a `message` a naplóbejegyzés tartalma.
+- `containsPII` megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha a `containsPII` értéke `true`, ez a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPII` paraméterrel, amely a `false` értékre van állítva, a személyes és a `message` beállítás pedig a személyes, és a `containsPii` paraméterrel `true` értékre van állítva, és az üzenet tartalmazhat személyes adattípust. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+
+```java
+private StringBuilder mLogs;
+
+mLogs = new StringBuilder();
+Logger.getInstance().setExternalLogger(new ILoggerCallback()
+{
+   @Override
+   public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII)
+   {
+      mLogs.append(message).append('\n');
+   }
+});
+```
+
+Alapértelmezés szerint a MSAL-naplózó nem rögzíti a személyes azonosításra alkalmas adatokat vagy a szervezeti azonosításra alkalmas adatokat.
+A személyes azonosításra alkalmas adatok vagy a szervezeti azonosításra alkalmas adatok naplózásának engedélyezése:
+
+```java
+Logger.getInstance().setEnablePII(true);
+```
+
+Személyes és szervezeti adataik naplózásának letiltása:
+
+```java
+Logger.getInstance().setEnablePII(false);
+```
+
+Alapértelmezés szerint a logcat naplózása le van tiltva. Engedélyezés: 
+```java
+Logger.getInstance().setEnableLogcatLog(true);
+```
+
+## <a name="logging-in-msaljs"></a>Naplózás a MSAL. js fájlban
+
+ Engedélyezze a naplózást a MSAL. js-ben egy `UserAgentApplication` példány létrehozásakor a konfiguráció során egy naplózó objektum átadásával. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
-
-- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők: Hiba, figyelmeztetés, információ, részletes. Az alapértelmezett érték az info.
-
-- `piiLoggingEnabled`(nem kötelező): lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog. Az alapértelmezett érték false (hamis).
-
+- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info` és `Verbose`. A mező alapértelmezett értéke: `Info`.
+- `piiLoggingEnabled` (nem kötelező): ha igaz értékre van állítva, a személyes és szervezeti adatnaplókat naplózza. Alapértelmezés szerint ez hamis, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog.
 - `correlationId`(nem kötelező): egyedi azonosító, amely a kérésnek a hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
 
 ```javascript
@@ -99,7 +137,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
+        clientId: “<Enter your client id>”,
     },
      system: {
              logger: new Msal.Logger(

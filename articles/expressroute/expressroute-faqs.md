@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 886dd9b0f3c72fc7649b1e2fc3927cfa87f65312
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316509"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686986"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -70,7 +70,7 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-Factor Authentication kiszolgáló (örökölt)
     * Traffic Manager
 
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
@@ -84,7 +84,7 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
   **A következő szolgáltatások nem támogatottak**:
     * Tartalomkézbesítési hálózat (CDN)
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-Factor Authentication kiszolgáló (örökölt)
     * Traffic Manager
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Támogatott-e a Dynamics 365 a ExpressRoute-on?

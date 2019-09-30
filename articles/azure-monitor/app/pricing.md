@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: dalek
-ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067015"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677819"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
@@ -30,7 +30,7 @@ Ha kérdése van a Application Insights díjszabásával kapcsolatban, tegye fel
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Az [Azure Application Insights][start] díjszabása a betöltött adatmennyiségen alapul. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához.
+Az [Azure Application Insights][start] díjszabása a betöltött adatmennyiségen és opcionálisan a hosszú adatmegőrzésen alapul. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához.
 
 ### <a name="data-volume-details"></a>Adatmennyiség adatai
 
@@ -47,7 +47,7 @@ A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.
 
 Egyetlen oldal *pingelési tesztei* esetében nincs külön díj. A ping tesztekből és a többlépéses tesztekből származó telemetria az alkalmazás más telemetria azonos módon kell fizetni.
 
-## <a name="review-usage-and-estimate-costs"></a>Használati és becsült költségek áttekintése
+## <a name="understand-your-usage-and-estimate-costs"></a>A használati és becsült költségek megismerése
 
 A Application Insights segítségével könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Első lépésként a Azure Portal Application Insights erőforráshoz lépjen a **használati és becsült költségek** lapra:
 
@@ -110,11 +110,17 @@ Az alábbi műveleteket végezheti el az adatmennyiség csökkentése érdekébe
 * Ossza szét a telemetria a különböző rendszerállapot-kulcsok között. 
 * Előre összevont mérőszámok. Ha a TrackMetric-hívásokat az alkalmazásban helyezi üzembe, csökkentheti a forgalmat a mérések egy kötegének átlagát és szórását is elfogadó túlterhelés használatával. Vagy használhatja az [Összesítés előtti csomagot](https://www.myget.org/gallery/applicationinsights-sdk-labs)is.
 
-## <a name="manage-the-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
+## <a name="manage-your-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
 
 A napi mennyiségi korlátot használhatja a gyűjtött adatok korlátozására. Ha azonban a korlát teljesül, az alkalmazásból a nap hátralevő részében elérkező összes telemetria elvesztése történik. *Nem tanácsos* az alkalmazásnak a napi korlátot megtalálnia. Az alkalmazás állapota és teljesítménye nem követhető nyomon, miután elérte a napi korlátot.
 
 A napi mennyiségi korlát használata helyett [mintavételezéssel](../../azure-monitor/app/sampling.md) hangolja be az adatmennyiséget a kívánt szintre. Ezt követően a napi korlátot csak akkor használja, ha az alkalmazás váratlanul megkezdi a sokkal nagyobb mennyiségű telemetria küldését.
+
+### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása
+
+Tekintse át Application Insights használati és becsült költségét, és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
+
+### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
 A napi korlát módosításához a Application Insights erőforrás **Konfigurálás** szakaszában a **használat és a becsült költségek** lapon válassza a **napi korlát**lehetőséget.
 
@@ -160,6 +166,10 @@ Az adatmegőrzés módosításához a Application Insights erőforrásból lépj
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-005.png)
 
 Ha a számlázás engedélyezve van a hosszabb adatmegőrzéshez, a 90 napnál hosszabb ideig tartanak, mint az Azure Log Analytics adatmegőrzési szolgáltatásért jelenleg számlázott adatok. További információt a [Azure monitor díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/monitor/)olvashat. A [javaslathoz való szavazással](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)naprakész maradhat a változó adatmegőrzési folyamaton. 
+
+## <a name="data-transfer-charges-using-application-insights"></a>Adatátviteli díjak az Application Insights használatával
+
+Az adatok Application Insights való küldése adatsávszélességi díjat eredményezhet. Az [Azure sávszélesség-díjszabási oldalán](https://azure.microsoft.com/pricing/details/bandwidth/)leírtak szerint a két régióban található Azure-szolgáltatások közötti adatforgalom a normál díjszabás szerint kifelé irányuló kimenő adatforgalom. A bejövő adatforgalom ingyenes. Ez a díj azonban nagyon kicsi (néhány%) a Application Insights naplózási adatfeldolgozás költségeihez képest. Ennek következtében a Log Analytics költségeinek szabályozása a betöltött adatmennyiségre összpontosíthat, és útmutatást nyújtunk ennek [megértéséhez.](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)   
 
 ## <a name="limits-summary"></a>Korlátok összegzése
 

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268365"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678017"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó mobil alkalmazás – kód konfigurálása
 
@@ -155,9 +155,13 @@ Az Android és az iOS rendszeren a brókerek a következőket teszik lehetővé:
 - Eszköz azonosítása. Lehetővé teszi az Azure AD-eszközökhöz kapcsolódó feltételes hozzáférési szabályzatok elérését az eszközön a munkahelyhez való csatlakozáskor létrehozott tanúsítvány elérésekor.
 - Alkalmazás-azonosító ellenőrzése. Amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címet, és ellenőrzi a közvetítőt.
 
-### <a name="enable-the-brokers-on-xamarin"></a>A közvetítők engedélyezése a Xamarin
+### <a name="enable-the-broker-on-xamarin"></a>A közvetítő engedélyezése a Xamarin
 
 Ezen funkciók egyikének engedélyezéséhez használja a `WithBroker()` paramétert a `PublicClientApplicationBuilder.CreateApplication` metódus meghívásakor. `.WithBroker()`Alapértelmezés szerint True (igaz) értékre van állítva. Kövesse az alábbi lépéseket a [Xamarin. iOS](#brokered-authentication-for-xamarinios)-hez.
+
+### <a name="enable-the-broker-for-msal-for-android"></a>Az Android rendszerhez készült MSAL-ügynök engedélyezése
+
+A bróker Androidon való engedélyezésével kapcsolatos információkért lásd: felügyelt [hitelesítés az Androidban](brokered-auth.md) . 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>Az iOS és a macOS rendszerhez készült MSAL-ügynök engedélyezése
 

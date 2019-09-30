@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás a Windows rendszerű virtuális asztali előnézethez Windows 10 vagy Windows 7 rendszerről – Azure
+title: Kapcsolódás Windowsos virtuális asztalhoz Windows 10 vagy Windows 7 rendszerről – Azure
 description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a Windows asztali ügyfélprogram használatával.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 49431f75fb801c683a167e1809724eeeef208561
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338449"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676743"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Kapcsolat a Windows asztali ügyféllel
+# <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
 > A következőkre érvényes: Windows 7 és Windows 10
 

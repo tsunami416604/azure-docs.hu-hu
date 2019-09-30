@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844570"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677935"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
 
@@ -31,7 +31,7 @@ A [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-develo
 
 Még nincs fejlesztői készlet? Próbálja ki a [fejlesztői készlet szimulátort](https://azure-samples.github.io/iot-devkit-web-simulator/) , vagy [vásároljon egy fejlesztői készlet](https://aka.ms/iot-devkit-purchase).
 
-A [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) -tárházban található összes fejlesztői készlet-oktatóanyag forráskódja megtalálható.
+A [Code Samples](https://docs.microsoft.com/samples/browse/?term=mxchip)katalógusból megtalálhatja az összes fejlesztői készlet-oktatóanyag forráskódját.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
@@ -355,7 +355,7 @@ A `GetStarted.ino` a fő Arduino-vázlatos fájl.
 
 Ha szeretné megtudni, hogyan küldik el az eszköz telemetria az Azure IoT hubba `utility.cpp` , nyissa meg a fájlt ugyanabban a mappában. Tekintse meg az [API-referenciát](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) , amelyből megtudhatja, hogyan használhatók érzékelők és perifériák a IoT fejlesztői készlet.
 
-A `DevKitMQTTClient` használt a **iothub_client** burkolója a [Microsoft Azure IoT SDK-k és a C-könyvtárak számára](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) az Azure IoT hub való interakcióhoz.
+Az `DevKitMQTTClient` a **iothub_client** egy burkolója, amely az [Microsoft Azure IoT SDK-k és a C könyvtárai számára](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) készült, hogy az Azure IoT hub használatával működjön együtt.
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 

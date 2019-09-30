@@ -9,24 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: ecdaec6dcade033bf99842dd384be095dd363a05
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0c16a60b0ddcde733cfbc7b9c90e07b697526015
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933406"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677389"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>A hőmérséklet előre elkészített entitása egy LUIS-alkalmazáshoz
 Hőmérséklet kibontja a hőmérséklet-típusok különböző. Az entitás már be van tanítva, mert nem kell az alkalmazás hőmérséklet tartalmazó példa beszédmódok hozzáadása. Hőmérséklet-entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-temperature"></a>Hőmérséklet-típusok
-A hőmérséklet a felismerők [– text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) adattárból kezelhető
+A hőmérséklet a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) adattárból kezelhető
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Előre összeállított hőmérséklet entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa bemutatja a feloldása a **builtin.temperature** entitás.
 
@@ -58,9 +58,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.temperature** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -85,7 +85,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -122,6 +122,10 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>További lépések
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 További információ a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [kora](luis-reference-prebuilt-age.md) entitásokat. 

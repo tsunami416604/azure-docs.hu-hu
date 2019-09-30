@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816379"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676448"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Oktatóanyag: Szolgáltatásriasztások beállítása
 
@@ -27,9 +27,9 @@ Ha többet szeretne megtudni a Azure Service Healthről, tekintse meg az [Azure 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Oktatóanyag: Bérlő létrehozása a Windows rendszerű virtuális asztali verzióban – előzetes verzió](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Oktatóanyag: Egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell-lel](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Oktatóanyag: Állomáslista létrehozása az Azure Marketplace-szel](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Oktatóanyag: Bérlő létrehozása a Windows rendszerű virtuális asztali @ no__t-0
+- [Oktatóanyag: Egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell @ no__t-0 használatával
+- [Oktatóanyag: Alkalmazáskészlet létrehozása az Azure Marketplace @ no__t-0
 
 ## <a name="create-service-alerts"></a>Szolgáltatás-riasztások létrehozása
 

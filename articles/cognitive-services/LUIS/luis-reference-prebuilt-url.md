@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: b05b4f8638eedc0830c887da59c0c22706a1c4ce
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 77e1c9e64081e20ef064fd8341c54c13940f0dd4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933384"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677298"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás URL-re épülő előkészített entitása
 Entitás URL-cím tartománynév vagy IP-címek URL-címek kibontása. Az entitás már be van tanítva, mert nem kell az alkalmazás URL-címeket tartalmazó példa beszédmódok hozzáadása. URL-cím entitás támogatott `en-us` culture csak. 
@@ -26,7 +26,7 @@ Az URL-cím a [felismerők – Text GitHub-](https://github.com/Microsoft/Recogn
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>Előre összeállított URL-cím entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa bemutatja a feloldása a **builtin.url** entitás.
 
@@ -54,9 +54,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.url** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -78,7 +78,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -112,6 +112,11 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+
+* * * 
+
 ## <a name="next-steps"></a>További lépések
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 További információ a [sorszámnál](luis-reference-prebuilt-ordinal.md), [szám](luis-reference-prebuilt-number.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063705"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678139"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -41,14 +41,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 ## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-5. Adja meg az alkalmazás nevét, például *ROPC_Auth_app*.
-6. Válassza a **nem** lehetőséget a **Web App/web API**elemnél, majd válassza az **Igen** lehetőséget a **natív ügyfél**esetében.
-7. Hagyja meg az összes többi értéket, és válassza a **Létrehozás**lehetőséget.
-8. Válassza ki az új alkalmazást, és jegyezze fel az alkalmazás AZONOSÍTÓját későbbi használatra.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>Erőforrás-tulajdonosi szabályzat létrehozása
 
@@ -272,13 +265,13 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 | username | `user-account` |
 | password | `password1` |
 | grant_type | password |
-| scope | OpenID `application-id` offline_access |
+| scope | OpenID @no__t – 0 offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
 - Cserélje `user-account` le a nevet a bérlő felhasználói fiókjának nevére.
 - Cserélje `password1` le a-t a felhasználói fiók jelszavára.
-- Cserélje `application-id` le a elemet a *ROPC_Auth_app* -regisztrációhoz tartozó alkalmazás-azonosítóra.
+- Cserélje le a `application-id` értéket a *ROPC_Auth_app* -regisztráció alkalmazás-azonosítójával.
 - A *Offline_access* nem kötelező, ha frissítési tokent szeretne kapni.
 
 A tényleges POST-kérelem a következő példához hasonlóan néz ki:
@@ -320,8 +313,8 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 | resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Cserélje `application-id` le a elemet a *ROPC_Auth_app* -regisztrációhoz tartozó alkalmazás-azonosítóra.
-- Cserélje `refresh-token` le az értékét az előző válaszban visszaküldött **refresh_token** .
+- Cserélje le a `application-id` értéket a *ROPC_Auth_app* -regisztráció alkalmazás-azonosítójával.
+- Cserélje le a `refresh-token` értéket az előző válaszban visszaküldött **refresh_token** .
 
 A sikeres válasz a következő példához hasonlít:
 

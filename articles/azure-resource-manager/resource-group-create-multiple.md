@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345423"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675089"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban
 
@@ -57,7 +57,7 @@ A darabszám korlátja azonos, ha erőforrással, változóval vagy tulajdonság
 
 ## <a name="resource-iteration"></a>Erőforrás-iteráció
 
-Ha az üzembe helyezés során el kell döntenie egy erőforrás egy vagy több példányának létrehozásához, adjon hozzá egy `copy` elemet az erőforrás típushoz. A másolás elemnél adja meg az ismétlések számát és a hurok nevét.
+Ha egy központi telepítésben egynél több példányt szeretne létrehozni egy adott erőforráshoz, adjon hozzá egy `copy` elemet az erőforrás típushoz. A másolás elemnél adja meg az ismétlések számát és a hurok nevét.
 
 A több alkalommal létrehozandó erőforrás a következő formátumot veszi figyelembe:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 357cc23c9dedb49dfd19dc897102762066ffd1b2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515168"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679347"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -49,11 +49,11 @@ Egy böngészőből lépjen az [Azure Portalra](https://aka.ms/azurevirtualwanpr
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="site"></a>2. Hely létrehozása
+## <a name="site"></a>2. Webhely létrehozása
 
 Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Jelenleg csak egyetlen privát címteret adhat meg a helyekhez.
 
-1. Kattintson a korábban létrehozott WAN-ra. A WAN lap **WAN-architektúra** területén kattintson a **VPN-helyek** elemre a VPN-helyek lap megnyitásához.
+1. Kattintson a korábban létrehozott WAN-ra. A WAN-lap **virtuális WAN-architektúra**területén kattintson a **VPN-helyek** elemre a VPN-helyek lap megnyitásához.
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
 3. A **Hely létrehozása** lapon töltse ki a következő mezőket:
 

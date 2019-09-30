@@ -1,22 +1,22 @@
 ---
-title: Windows rendszerű virtuális asztali előzetes verziójú egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell használatával – Azure
-description: Egyszerű szolgáltatások létrehozása és szerepkörök kiosztása a PowerShell használatával a Windows virtuális asztal előzetes verziójában.
+title: Windows rendszerű virtuális asztali szolgáltatásbeli rendszerbiztonsági tag és szerepkör-hozzárendelések létrehozása a PowerShell használatával – Azure
+description: Egyszerű szolgáltatások létrehozása és szerepkörök kiosztása a PowerShell használatával a Windows Virtual Desktopban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985008"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679621"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell-lel
 
-Az egyszerű szolgáltatások olyan identitások, amelyeket a Azure Active Directory létrehozhat a szerepkörök és engedélyek adott célra való hozzárendeléséhez. A Windows rendszerű virtuális asztali verzió előzetes verziójában létrehozhat egy egyszerű szolgáltatásnevet a következőhöz:
+Az egyszerű szolgáltatások olyan identitások, amelyeket a Azure Active Directory létrehozhat a szerepkörök és engedélyek adott célra való hozzárendeléséhez. A Windows virtuális asztal szolgáltatásban létrehozhat egy egyszerű szolgáltatásnevet a következőhöz:
 
 - Adott Windowsos virtuális asztali felügyeleti feladatok automatizálása.
 - Használjon hitelesítő adatokat az MFA-kötelező felhasználók helyett, amikor a Windows rendszerű virtuális asztali számítógépeken bármilyen Azure Resource Manager sablont futtat.

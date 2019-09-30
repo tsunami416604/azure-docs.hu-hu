@@ -1,22 +1,22 @@
 ---
-title: A Windows rendszerű virtuális asztali előzetes verzió diagnosztikai szolgáltatásával kapcsolatos problémák azonosítása – Azure
-description: Ismerteti a Windows rendszerű virtuális asztali előnézet diagnosztikai funkcióját és használatát.
+title: A Windows rendszerű virtuális asztali diagnosztika szolgáltatással kapcsolatos problémák azonosítása – Azure
+description: Ismerteti a Windows rendszerű virtuális asztali diagnosztika szolgáltatást és annak használatát.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163493"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676637"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>A diagnosztikai funkcióval kapcsolatos problémák azonosítása
 
-A Windows rendszerű virtuális asztali előzetes verziója egy diagnosztikai szolgáltatást kínál, amely lehetővé teszi a rendszergazda számára, hogy egyetlen felületen keresztül azonosítsa a problémákat. A Windows rendszerű virtuális asztali szerepkörök diagnosztikai tevékenységet naplóznak, amikor egy felhasználó kommunikál a rendszerrel. Minden napló olyan releváns információkat tartalmaz, mint például a tranzakcióban részt vevő Windows virtuális asztali szerepkörök, a hibaüzenetek, a bérlői adatok és a felhasználói adatok. A diagnosztikai tevékenységeket mind a végfelhasználói, mind a rendszergazdai műveletek hozzák létre, és három fő gyűjtőbe sorolhatók:
+A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. A Windows rendszerű virtuális asztali szerepkörök diagnosztikai tevékenységet naplóznak, amikor egy felhasználó kommunikál a rendszerrel. Minden napló olyan releváns információkat tartalmaz, mint például a tranzakcióban részt vevő Windows virtuális asztali szerepkörök, a hibaüzenetek, a bérlői adatok és a felhasználói adatok. A diagnosztikai tevékenységeket mind a végfelhasználói, mind a rendszergazdai műveletek hozzák létre, és három fő gyűjtőbe sorolhatók:
 
 * Hírcsatorna-előfizetési tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni a hírcsatornához Microsoft Távoli asztal alkalmazásokon keresztül.
 * Kapcsolódási tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni egy asztali vagy RemoteApp-hoz Microsoft Távoli asztal alkalmazáson keresztül.
@@ -136,7 +136,7 @@ A hibákra vonatkozó forgatókönyvek a szolgáltatás belső és külső Windo
 A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rendszergazdák futtathatnak.
 
 >[!NOTE]
->Ez az előzetes verzió nem tartalmazza a hibák teljes kategorizálását, és rendszeresen frissülni fog. Annak érdekében, hogy a legfrissebb információk legyenek naprakészek, ügyeljen rá, hogy havonta legalább egyszer térjen vissza a cikkre.
+>Ez a lista a leggyakoribb hibákat tartalmazza, és rendszeresen frissül. Annak érdekében, hogy a legfrissebb információk legyenek naprakészek, ügyeljen rá, hogy havonta legalább egyszer térjen vissza a cikkre.
 
 ### <a name="external-management-error-codes"></a>Külső felügyeleti hibakódok
 
@@ -176,6 +176,6 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 
 ## <a name="next-steps"></a>További lépések
 
-A Windows rendszerű virtuális asztali szerepkörökkel kapcsolatos további információkért lásd: a [Windows rendszerű virtuális asztali előnézet környezete](environment-setup.md).
+A Windows rendszerű virtuális asztali szerepkörökkel kapcsolatos további információkért lásd: [Windows rendszerű virtuális asztali környezet](environment-setup.md).
 
 A Windowsos virtuális asztalhoz elérhető PowerShell-parancsmagok listájának megtekintéséhez tekintse meg a [PowerShell](/powershell/windows-virtual-desktop/overview)-referenciát.

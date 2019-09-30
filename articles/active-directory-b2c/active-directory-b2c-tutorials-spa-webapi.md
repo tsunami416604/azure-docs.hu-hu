@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: f940893a5328db65549b40269578399655f8539e
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064693"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679274"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból Azure Active Directory B2C használatával
 
@@ -38,32 +38,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
 
-A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogadják és reagálni tudják a védett erőforrásokra vonatkozó kéréseket olyan ügyfélalkalmazások számára, amelyek hozzáférési jogkivonatot mutatnak be.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-1. Adja meg az alkalmazás nevét. Például: *webapi1*.
-1. A **Web App/web API** belefoglalása és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
-1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:5000`következőt:.
-1. Az **alkalmazás-azonosító URI**azonosítójának megadásához adjon meg egy API-végpontot a MEGJELENÍTett URI azonosítóhoz. Az oktatóanyaghoz írja be `api`a következőt:, hogy a teljes URI `https://contosotenant.onmicrosoft.com/api`hasonló legyen.
-1. Kattintson a **Create** (Létrehozás) gombra.
-1. Válassza ki a *webapi1* alkalmazást a Tulajdonságok lap megnyitásához.
-1. Jegyezze fel a Tulajdonságok lapon megjelenő **alkalmazás azonosítóját** . Ezt az azonosítót egy későbbi lépésben kell megadnia a webalkalmazás konfigurálásakor.
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>Hatókörök konfigurálása
 
 A hatókörök lehetővé teszik a védett erőforrásokhoz való hozzáférés szabályozását. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. Egyes felhasználók például rendelkezhetnek olvasási és írási hozzáféréssel is, míg más felhasználóknak csak olvasási engedélye lehet. Ebben az oktatóanyagban a webes API olvasási és írási engedélyeit is meghatározza.
 
-1. Válassza az **alkalmazások**lehetőséget, majd válassza a *webapi1* lehetőséget a Tulajdonságok lap megnyitásához, ha még nincs megnyitva.
-1. Válassza a **közzétett hatókörök**elemet.
-1. A **hatókör**, `Hello.Read`a és a **Leírás**mezőbe írja be `Read access to hello`a következőt:.
-1. A **hatókör**, `Hello.Write`a és a **Leírás**mezőbe írja be `Write access to hello`a következőt:.
-1. Kattintson a **Mentés** gombra.
-1. Az egyoldalas alkalmazás konfigurálásakor `Hello.Read` a hatókör **teljes értékét** jegyezze fel egy későbbi lépésben való használatra. A hatókör teljes értéke hasonló a `https://yourtenant.onmicrosoft.com/api/Hello.Read`következőhöz:.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-A közzétett hatókörök segítségével ügyfélalkalmazás-engedélyeket biztosíthat a webes API-nak.
+Az egyoldalas alkalmazás konfigurálásakor `demo.read` a hatókör **teljes értékét** jegyezze fel egy későbbi lépésben való használatra. A hatókör teljes értéke hasonló a `https://yourtenant.onmicrosoft.com/api/demo.read`következőhöz:.
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
@@ -75,7 +58,7 @@ Az előfeltételként szolgáló oktatóanyagban létrehozott egy *webapp1*nevű
 1. Válassza az **alkalmazások**, majd a *webapp1*lehetőséget.
 1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
-1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált **Hello. Read** és **Hello. Write** hatóköröket.
+1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
 1. Kattintson az **OK** gombra.
 
 Az egyoldalas webalkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik egyoldalas alkalmazást. Az egyoldalas alkalmazás engedélyezési engedélyt ad a Azure AD B2Ctól a védett webes API eléréséhez.
@@ -101,8 +84,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
       "ClientId": "<webapi-application-ID>",
       "Policy": "B2C_1_signupsignin1",
 
-      "ScopeRead": "Hello.Read",
-      "ScopeWrite": "Hello.Write"
+      "ScopeRead": "demo.read",
+      "ScopeWrite": "demo.write"
     },
     ```
 
@@ -154,7 +137,7 @@ Ebben a szakaszban egy egyoldalas alkalmazást frissít, hogy meghívja *a Azure
 A SPA beállításainak módosítása:
 
 1. Nyissa meg az *index. html* fájlt az előző oktatóanyagban letöltött vagy klónozott [Active Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] projektben.
-1. Konfigurálja a mintát a *Hello. Read* hatókörhöz tartozó URI-azonosítóval, amelyet korábban hozott létre, valamint a webes API URL-címét.
+1. Konfigurálja a mintát a bemutató URI azonosítójának használatával *. olvassa el* a korábban létrehozott hatókört, valamint a webes API URL-címét.
     1. A definícióban cserélje le az `b2cScopes` értéket a hatókör teljes URI-ja (a korábban rögzített **teljes hatókör értékre** ). `appConfig`
     1. Módosítsa az `webApi` értéket `applicationURL` az előző szakaszban megadott értékre.
 
@@ -163,7 +146,7 @@ A SPA beállításainak módosítása:
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
     var appConfig = {
-      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/Hello.Read"],
+      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
       webApi: "http://localhost:5000/"
     };
     ```

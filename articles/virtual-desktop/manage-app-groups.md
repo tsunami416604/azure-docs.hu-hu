@@ -1,22 +1,22 @@
 ---
-title: Alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali előzetes verzióhoz – Azure
-description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali előnézeti bérlőket a Azure Active Directoryban.
+title: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése – Azure
+description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali bérlőket a Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163251"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679455"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztal előzetes verziójához
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Oktatóanyag: Alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali gépeken
 
-Az új Windows virtuális asztali előzetes verziójú címkészlet számára létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes **Start** menüket.
+Az új Windows rendszerű virtuális asztali készlethez létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes **Start** menüket.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -50,7 +50,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. A következő parancsmag futtatásával telepítheti az alkalmazást a `AppAlias`alapján. `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
+4. A következő parancsmag futtatásával telepítse az alkalmazást `AppAlias` alapján. Ha a 3. lépésben a kimenetet futtatja, a @no__t 0 lesz látható.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

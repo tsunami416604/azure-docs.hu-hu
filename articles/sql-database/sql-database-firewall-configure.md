@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744978"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686473"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 
@@ -38,7 +38,7 @@ Az internetről és az Azure-ról érkező csatlakozási kísérletek a tűzfalo
 
 ### <a name="server-level-ip-firewall-rules"></a>Kiszolgálószintű IP-tűzfalszabályok
 
-  Ezek a szabályok lehetővé teszik, hogy az ügyfelek hozzáférhessenek a teljes Azure SQL Server-kiszolgálóhoz, vagyis az összes adatbázishoz, amely ugyanabban a SQL Database-kiszolgálón található. A szabályokat a *Master* adatbázisban tárolja a rendszer.
+  Ezek a szabályok lehetővé teszik, hogy az ügyfelek hozzáférhessenek a teljes Azure SQL Server-kiszolgálóhoz, vagyis az összes adatbázishoz, amely ugyanabban a SQL Database-kiszolgálón található. A szabályokat a *Master* adatbázisban tárolja a rendszer. Az Azure-SQL Serverhoz legfeljebb 128 kiszolgálói szintű IP-tűzfalszabály tartozhat.
   
   A kiszolgálói szintű IP-tűzfalszabályok a Azure Portal, a PowerShell vagy a Transact-SQL utasítások használatával konfigurálhatók.
   - A portál vagy a PowerShell használatához az előfizetés tulajdonosának vagy az előfizetés közreműködőinek kell lennie.

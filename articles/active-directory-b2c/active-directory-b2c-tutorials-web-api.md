@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 77cd720ffd2763b2ad3d73559a5363989f9e3e3a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103401"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679292"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
@@ -54,23 +54,17 @@ A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogad
 
 A hatókörök lehetővé teszik a védett erőforrásokhoz való hozzáférés szabályozását. A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ebben az oktatóanyagban hatókörök segítségével határozzuk meg az olvasási és írási engedélyeket a webes API számára.
 
-1. Válassza az **alkalmazások**, majd a *webapi1*lehetőséget.
-2. Válassza a **közzétett hatókörök**elemet.
-3. A **hatókör**, `Hello.Read`a és a Leírás mezőbe írja be `Read access to hello`a következőt:.
-4. A **hatókör**, `Hello.Write`a és a Leírás mezőbe írja be `Write access to hello`a következőt:.
-5. Kattintson a **Save** (Mentés) gombra.
-
-A közzétett hatókörök segítségével ügyfélalkalmazások számára engedélyezhető a webes API-hoz való hozzáférés.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
 Ha egy védett webes API-t szeretne meghívni egy alkalmazásból, meg kell adnia az alkalmazás engedélyeit az API-nak. Az előfeltételként szolgáló oktatóanyagban létrehozott egy webalkalmazást a *webapp1*nevű Azure ad B2Cban. Ezt az alkalmazást használhatja a webes API meghívásához.
 
 1. Válassza az **alkalmazások**, majd a *webapp1*lehetőséget.
-2. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-3. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
-4. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált **Hello. Read** és **Hello. Write** hatóköröket.
-5. Kattintson az **OK** gombra.
+1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
+1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
+1. Kattintson az **OK** gombra.
 
 Az alkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik az alkalmazást. Az alkalmazás a védett webes API-hoz való hozzáféréshez Azure AD B2C engedélyezési engedélyt kap.
 
@@ -99,8 +93,8 @@ A következő két projekt szerepel a minta megoldásban:
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
@@ -128,8 +122,8 @@ A következő két projekt szerepel a minta megoldásban:
 1. Konfigurálja a hatókörök beállítást a portálon létrehozott beállításoknak megfelelően.
 
     ```csharp
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ## <a name="run-the-sample"></a>Minta futtatása

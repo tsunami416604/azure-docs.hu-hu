@@ -4,14 +4,14 @@ description: Ismerteti Azure Resource Manager sablonok felépítését és tulaj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984096"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676881"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése
 
@@ -75,7 +75,7 @@ A paraméterek elérhető tulajdonságai a következők:
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
 | paraméter – név |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
-| type |Igen |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**és **Array**. |
+| type |Igen |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**és **Array**. Lásd [az adattípusokat](#data-types). |
 | defaultValue |Nem |A paraméter alapértelmezett értéke, ha a paraméterhez nincs megadva érték. |
 | allowedValues |Nem |A paraméter számára engedélyezett értékek tömbje, hogy meggyőződjön arról, hogy a megfelelő érték van megadva. |
 | minValue |Nem |Az int Type paraméterek minimális értéke, ez az érték tartalmazza a befogadó értéket. |
@@ -85,6 +85,18 @@ A paraméterek elérhető tulajdonságai a következők:
 | description |Nem |A felhasználók számára a portálon megjelenő paraméter leírása. További információ: [Megjegyzések a sablonokban](#comments). |
 
 Példák a paraméterek használatára: [Azure Resource Manager sablonokban található paraméterek](template-parameters.md).
+
+### <a name="data-types"></a>Adattípusok
+
+Az egész típusok a-2147483648 és a 2147483647 közötti tartományba terjedhetnek. Az erőforrástípusok azonban alacsonyabb korlátot is alkalmazhatnak az egész szám tulajdonságra vonatkozóan.
+
+Ha a sablonban logikai és egész értékeket ad meg, ne adja meg idézőjelek közé az értéket. Kezdő és záró karakterlánc-értékek dupla idézőjelekkel.
+
+Az objektumok bal oldali kapcsos zárójelmel kezdődnek, és egy jobb oldali kapcsos zárójelet mutatnak. A tömbök bal oldali szögletes zárójeltel kezdődnek, és jobb oldali szögletes zárójelet mutatnak.
+
+Az erőforrás-telepítés után a biztonságos karakterláncok és a biztonságos objektumok nem olvashatók be.
+
+Az adattípusok formázására szolgáló minták esetében lásd: [Paraméterek formátuma](resource-manager-parameter-files.md#parameter-type-formats).
 
 ## <a name="variables"></a>Változók
 
@@ -121,9 +133,9 @@ További információ a változó `copy` értékének a használatával történ
 
 Példák a változók használatára: [változók Azure Resource Manager sablonban](template-variables.md).
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkciók
 
-A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Általában bonyolult kifejezést kell megadnia, amelyet nem kíván megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által [](resource-group-template-functions.md) támogatott kifejezésekből és függvényekből hozza létre.
+A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Jellemzően olyan bonyolult kifejezéseket határozhat meg, amelyeket nem szeretne megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által [](resource-group-template-functions.md) támogatott kifejezésekből és függvényekből hozza létre.
 
 A felhasználói függvények meghatározásakor bizonyos korlátozások vonatkoznak:
 
@@ -239,7 +251,7 @@ Az erőforrásokat az alábbi struktúrával definiálhatja:
 | dependsOn |Nem |Az erőforrás üzembe helyezése előtt telepítendő erőforrások. A Resource Manager kiértékeli az erőforrások közötti függőségeket, és a megfelelő sorrendben telepíti őket. Ha az erőforrások nem függnek egymástól, párhuzamosan lesznek üzembe helyezve. Az érték lehet az erőforrásnevek vagy az erőforrás egyedi azonosítóinak vesszővel tagolt listája. Csak a sablonban üzembe helyezett erőforrások listázása. A sablonban nem definiált erőforrásoknak már léteznie kell. Kerülje a szükségtelen függőségek hozzáadását, és lassíthatja az üzembe helyezést, és körkörös függőségeket hozhat létre. A függőségek beállításával kapcsolatos útmutatásért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállítások. A tulajdonságok értékei megegyeznek a REST API művelet (PUT metódus) által a kérelem törzsében megadott értékekkel az erőforrás létrehozásához. Egy másolási tömböt is megadhat egy tulajdonság több példányának létrehozásához. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |
 | sku | Nem | Egyes erőforrások lehetővé teszik a telepítendő SKU-t meghatározó értékek használatát. Megadhatja például, hogy milyen típusú redundancia van egy Storage-fiókhoz. |
-| Típusú | Nem | Egyes erőforrások lehetővé teszik egy olyan érték használatát, amely meghatározza a telepített erőforrás típusát. Megadhatja például a létrehozandó Cosmos DB típusát. |
+| altípus | Nem | Egyes erőforrások lehetővé teszik egy olyan érték használatát, amely meghatározza a telepített erőforrás típusát. Megadhatja például a létrehozandó Cosmos DB típusát. |
 | csomag | Nem | Egyes erőforrások lehetővé teszik az olyan értékek használatát, amelyek meghatározzák az üzembe helyezési tervet. Megadhatja például a virtuális gép Marketplace-rendszerképét. | 
 | erőforrások |Nem |A definiált erőforrástól függő alárendelt erőforrások. Csak a szülő erőforrás sémája által engedélyezett erőforrástípusok megadása. A fölérendelt erőforrástól való függőség nincs befoglalva. Explicit módon meg kell határoznia ezt a függőséget. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
 

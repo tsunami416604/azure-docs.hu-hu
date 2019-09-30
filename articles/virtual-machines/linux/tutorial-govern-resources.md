@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-ms.date: 10/12/2018
+ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 7bd204789f99fa299300ff47003857e9ecc6085e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103604"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676499"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Oktatóanyag: Ismerje meg a linuxos virtuális gépek irányítását az Azure CLI-vel
 
@@ -26,7 +26,7 @@ ms.locfileid: "70103604"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="understand-scope"></a>A hatókör megismerése
 
@@ -56,7 +56,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 
 Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb egy azokat a felhasználókat tartalmazó Azure Active Directory-csoportot használni, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ehhez a cikkhez használhat egy meglévő csoportot a virtuális gép kezeléséhez, vagy a portálon [létrehozhat egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Egy új csoport létrehozása vagy egy meglévő csoport megkeresése után az [az role assignment create](/cli/azure/role/assignment) paranccsal rendelje hozzá az új Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.
+Egy új csoport létrehozása vagy egy meglévő csoport megkeresése után az [az role assignment create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paranccsal rendelje hozzá az új Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -64,13 +64,13 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ha olyan hibaüzenetet kap, amely  **\<> nem létezik a címtárban**, akkor az új csoport nem lett propagálva a Azure Active Directory során. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely **@no__t 1guid > nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](/cli/azure/policy/definition) parancsot:
+Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](https://docs.microsoft.com/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) parancsot:
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -82,7 +82,7 @@ Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet
 * Korlátozzák a virtuális gépek termékváltozatait.
 * Naplózzák a felügyelt lemezeket nem használó virtuális gépeket.
 
-A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. Az [az policy assignment create](/cli/azure/policy/assignment) paranccsal rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
+A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. Az [az policy assignment create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paranccsal rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -144,7 +144,7 @@ Az [Erőforrás-zárolások](../../azure-resource-manager/resource-group-lock-re
 
 A felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
-A virtuális gép és a hálózati biztonsági csoport zárolásához használja az [az lock create](/cli/azure/lock) parancsot:
+A virtuális gép és a hálózati biztonsági csoport zárolásához használja az [az lock create](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) parancsot:
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -176,7 +176,7 @@ A [címkézéssel](../../azure-resource-manager/resource-group-using-tags.md) lo
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Egy virtuális gép címkézéséhez használja az [az resource tag](/cli/azure/resource) parancsot. Az erőforrás meglévő címkéit nem őrzi meg a rendszer.
+Egy virtuális gép címkézéséhez használja az [az resource tag](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) parancsot. Az erőforrás meglévő címkéit nem őrzi meg a rendszer.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -187,7 +187,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja az [az resource list](/cli/azure/resource) parancsot:
+Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja az [az resource list](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) parancsot:
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -205,7 +205,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](/cli/azure/lock) parancsban:
+A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) parancsban:
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -219,7 +219,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Ha már nincs rá szükség, a [az group delete](/cli/azure/group) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
+Ha már nincs rá szükség, a [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -236,8 +236,8 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Kritikus erőforrások védelme zárolásokkal
 > * Erőforrások címkézése számlázáshoz és felügyelethez
 
-A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit egy virtuális gépen.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek figyelése](tutorial-monitoring.md)
+> [Virtuális gépek kezelése](tutorial-config-management.md)
 

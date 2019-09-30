@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933546"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677614"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Angol nyelven támogatott GeographyV2 entitás [kulturális környezet](luis-reference-prebuilt-entities.md).
@@ -35,7 +35,7 @@ A földrajzi helyeket altípus rendelkezik:
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
 
@@ -93,9 +93,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.geographyV2** entitás.
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -121,7 +121,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -191,6 +191,10 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>További lépések
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 További információ a [e-mail](luis-reference-prebuilt-email.md), [szám](luis-reference-prebuilt-number.md), és [sorszámnál](luis-reference-prebuilt-ordinal.md) entitások. 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816405"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676531"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
 
@@ -101,6 +101,6 @@ Ha az ügyfél erőforrásai a szűk keresztmetszetet okozzák, próbálkozzon a
 
 ## <a name="next-steps"></a>További lépések
 
-- A GPU-ra optimalizált Azure-beli virtuális gépek létrehozásával kapcsolatban lásd: [Graphics Processing Unit (GPU) gyorsulás konfigurálása a Windows rendszerű virtuális asztali](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)előnézeti környezethez.
+- A GPU-ra optimalizált Azure-beli virtuális gépek létrehozásával kapcsolatban lásd: [Graphics Processing Unit (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztali környezethez](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
 - A hibaelhárítási és eszkalációs sávok áttekintését lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali előnézet környezetét](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)ismertető témakört.
+- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows asztali környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)című témakört.

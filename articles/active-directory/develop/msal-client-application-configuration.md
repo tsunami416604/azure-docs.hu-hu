@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6cd90ef858fbcd2cfa418a2d7e58975cfa959705
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532916"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678103"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -36,6 +36,7 @@ A kódban egy új nyilvános vagy bizalmas ügyfélalkalmazás (vagy a MSAL. js-
 - [Naplózási beállítások](#logging), beleértve a naplózási szintet, a személyes adatvezérlést és az összetevő nevét a könyvtár használatával.
 
 ## <a name="authority"></a>szolgáltató
+
 A szolgáltató egy URL-cím, amely egy olyan könyvtárat jelez, amelyből a MSAL jogkivonatokat kérhet. Gyakori hatóságok:
 
 - https\://login.microsoftonline.com/\<bérlő\>/, ahol &lt;a&gt; bérlő a Azure Active Directory (Azure ad) bérlő vagy az ehhez az Azure ad-bérlőhöz társított tartomány bérlői azonosítója. Csak egy adott szervezet felhasználói számára való bejelentkezésre használatos.
@@ -61,6 +62,7 @@ A példány és a célközönség összefűzve és a szolgáltatói URL-címkén
 ![A szolgáltatói URL-cím kibontása](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>Felhőbeli példány
+
 A *példány* annak megadására szolgál, hogy az alkalmazás a felhasználókat az Azure nyilvános felhőből vagy az országos felhőkből írja-e be. A kódban az MSAL használatával beállíthatja az Azure Cloud-példányt enumerálással, vagy a `Instance` tag (ha ismeri) URL-címének átadásával a [nemzeti Felhőbeli példányra](authentication-national-cloud.md#azure-ad-authentication-endpoints) .
 
 A MSAL.net explicit kivételt ad, ha `Instance` mindkettő `AzureCloudInstance` és meg van adva.
@@ -74,6 +76,7 @@ A bejelentkezési célközönség az alkalmazás üzleti igényeitől függ:
 - Ha Ön ISV-t használ, előfordulhat, hogy a felhasználók munkahelyi és iskolai fiókjaikat bármilyen szervezetben vagy szervezeten (több-bérlős alkalmazásban) szeretné bejelentkezni. Előfordulhat azonban, hogy a felhasználók személyes Microsoft-fiókjaikat is be szeretnék jelentkezni.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>A célközönség beállítása a kódban/konfigurációban
+
 A kódban a MSAL használatával a célközönséget a következő értékek egyikével adhatja meg:
 - Az Azure AD-szolgáltató célközönségének enumerálása
 - A bérlő azonosítója, amely a következőket teheti:
@@ -89,6 +92,7 @@ Ha az Azure AD-szolgáltatót és a bérlői azonosítót is megadja, a MSAL ér
 Ha nem ad meg célközönséget, az alkalmazás célközönségként fogja megcélozni az Azure AD-t és a személyes Microsoft-fiókokat. (Ez azt eredményezi, hogy a `common` rendszer úgy viselkedik, mintha meg lettek adva.)
 
 ### <a name="effective-audience"></a>Hatékony célközönség
+
 Az alkalmazás tényleges célközönsége lesz a minimális (ha van egy metszéspontja) az alkalmazásban beállított célközönségnek és az alkalmazás regisztrációjában megadott célközönségnek. Valójában a Alkalmazásregisztrációki [](https://aka.ms/appregistrations) élmény lehetővé teszi az alkalmazás célközönségének (a támogatott fióktípus) megadását. További információ: gyors útmutató [: Alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md).
 
 Jelenleg csak a személyes Microsoft-fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazásba, így mindkét beállítást konfigurálhatja:
@@ -96,12 +100,15 @@ Jelenleg csak a személyes Microsoft-fiókkal rendelkező felhasználók jelentk
 - A kód/konfiguráció `AadAuthorityAudience.PersonalMicrosoftAccount` célközönségének beállítása a következőre: (vagy `TenantID` = "consumers").
 
 ## <a name="client-id"></a>Ügyfél-azonosító
+
 Az ügyfél-azonosító az alkalmazáshoz az Azure AD által az alkalmazás regisztrálásakor hozzárendelt egyedi alkalmazás-(ügyfél-) azonosító.
 
 ## <a name="redirect-uri"></a>Átirányítási URI
+
 Az átirányítási URI az az URI, amelyet az identitás-szolgáltató küld vissza a biztonsági jogkivonatoknak.
 
 ### <a name="redirect-uri-for-public-client-apps"></a>Nyilvános ügyfélalkalmazások átirányítási URI-ja
+
 Ha Ön a MSAL-t használó nyilvános ügyfélalkalmazás-fejlesztő:
 - Asztali vagy UWP alkalmazásokban `.WithDefaultRedirectUri()` szeretné használni (MSAL.net 4.1 +). Ezzel a módszerrel a nyilvános ügyfélalkalmazás átirányítási URI-tulajdonságát a nyilvános ügyfélalkalmazások alapértelmezett ajánlott átirányítási URI-ja alapján állítja be a rendszer. 
 
@@ -122,20 +129,24 @@ Felülbírálhatja az átirányítási URI-t a `RedirectUri` tulajdonság haszn�
 - `RedirectUriOnAndroid`= "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.microsoft.Identity.Client.Sample";
 - `RedirectUriOnIos`= $ "msauth. {Bundle. ID}://auth ";
 
-Részletekért tekintse [meg az Android és az iOS dokumentációját](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
+További iOS-részletekért lásd: [Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.net-ből a MSAL.net](msal-net-migration-ios-broker.md) és [az iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)-es bróker kihasználása.
+További Android-részletekért lásd: felügyelt [hitelesítés az Androidban](brokered-auth.md).
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>Átirányítási URI a bizalmas ügyfélalkalmazások számára
+
 A webalkalmazások esetében az átirányítási URI (vagy a válasz URI) az az URI, amelyet az Azure AD fog használni a jogkivonat visszaküldéséhez az alkalmazásnak. Ez az URI lehet a webalkalmazás/webes API URL-címe, ha a bizalmas alkalmazás ezek egyike. Az átirányítási URI-t regisztrálni kell az alkalmazás regisztrálásakor. Ez a regisztráció különösen fontos, ha olyan alkalmazást telepít, amelyet eredetileg helyileg tesztelt. Ezután hozzá kell adnia az üzembe helyezett alkalmazás válasz URL-címét az alkalmazás regisztrációs portálján.
 
 A Daemon-alkalmazások esetében nem kell megadnia az átirányítási URI-t.
 
-## <a name="client-secret"></a>Titkos ügyfélkód
+## <a name="client-secret"></a>Titkos ügyfélkulcs
+
 Ez a beállítás határozza meg a bizalmas ügyfélalkalmazás ügyfél-titkos kulcsát. Ezt a titkot (az alkalmazás jelszava) a regisztrációs portál vagy az Azure AD számára az alkalmazások regisztrálásakor a PowerShell AzureAD, a PowerShell AzureRM vagy az Azure CLI használatával biztosítjuk.
 
 ## <a name="logging"></a>Naplózás
+
 A további konfigurációs beállítások lehetővé teszik a naplózást és a hibaelhárítást. A használatáról a [naplózási](msal-logging.md) cikkben talál további információt.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg [, hogyan hozhatók létre ügyfélalkalmazások a MSAL.NET használatával](msal-net-initializing-client-applications.md).
 
+Ismerje meg [, hogyan hozhatók létre ügyfélalkalmazások a MSAL.NET használatával](msal-net-initializing-client-applications.md).
 Ismerje meg [, hogyan hozhatók létre ügyfélalkalmazások a MSAL. js használatával](msal-js-initializing-client-applications.md).

@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali előzetes verziójú gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez – Azure
+title: Windows rendszerű virtuális asztali címkészlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez – Azure
 description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c294bb41afae1257add0c96a9f77adad3f871849
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163594"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676675"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
 
-A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali előzetes verziójú bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
+A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
 
 Annak biztosítása érdekében, hogy az alkalmazások a legújabb frissítésekkel működjenek, az ellenőrzési gazdagép-készletnek a lehető leghasonlónak kell lennie az éles környezetben lévő gazdagépekhez. A felhasználóknak az üzemi gazdagép-készlethez hasonlóan gyakran kell csatlakozniuk az ellenőrzési gazdagéphez. Ha automatizált tesztelést végez a gazdagép-készleten, az automatikus tesztelést is tartalmaznia kell az ellenőrzési gazdagépen.
 
@@ -25,7 +25,7 @@ Az érvényesítési gazdagépen lévő hibák hibakereséséhez használhatja a
 >[!NOTE]
 > Javasoljuk, hogy az összes jövőbeli frissítés teszteléséhez hagyja meg az ellenőrző gazdagép készletét.
 
-Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+Mielőtt elkezdené, [töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ## <a name="create-your-host-pool"></a>A gazda készlet létrehozása
 
 A következő cikkek utasításait követve hozhat létre egy gazdagépet:
-- [Oktatóanyag: Állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
+- [Oktatóanyag: Alkalmazáskészlet létrehozása az Azure Marketplace @ no__t-0
 - [Gazdagép létrehozása Azure Resource Manager sablonnal](create-host-pools-arm-template.md)
 - [Gazdagép létrehozása a PowerShell-lel](create-host-pools-powershell.md)
 
@@ -71,7 +71,7 @@ A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
 
 ## <a name="update-schedule"></a>Frissítési ütemterv
 
-Az előzetes verzióban a szolgáltatás frissítései körülbelül havi ütemben történnek. Ha jelentős problémák merülnek fel, a kritikus frissítések gyakoribb ütemben lesznek elérhetők.
+A szolgáltatás frissítései havonta történnek. Jelentős problémák esetén a kritikus frissítések gyakoribb ütemben lesznek elérhetők.
 
 ## <a name="next-steps"></a>További lépések
 

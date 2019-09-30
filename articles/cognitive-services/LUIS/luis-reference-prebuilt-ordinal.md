@@ -9,24 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933467"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677548"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre elkészített entitás sorszáma
 Sorszámok az objektumon belüli egy numerikus ábrázolását: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell tartalmazó sorszámnál való az alkalmazás leképezések példa beszédmódok hozzáadása. Támogatott sorszámnál entitás [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-ordinal"></a>Sorszámát típusai
-A sorszám a felismerők [– text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) adattárból felügyelhető
+A sorszám a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) adattárból felügyelhető
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Előre összeállított sorszámnál entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa bemutatja a feloldása a **builtin.ordinal** entitás.
 
@@ -61,9 +61,9 @@ Az alábbi példa bemutatja a feloldása a **builtin.ordinal** entitás.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -88,7 +88,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -128,6 +128,10 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [](luis-reference-prebuilt-phonenumber.md)a telefonszámot és [](luis-reference-prebuilt-temperature.md) a hőmérsékleti entitásokat. 
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+
+Ismerje meg a [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), a [telefonszámot](luis-reference-prebuilt-phonenumber.md)és a [hőmérsékleti](luis-reference-prebuilt-temperature.md) entitásokat. 

@@ -1,18 +1,18 @@
 ---
 title: Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor
 description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azure Resource Manager sablon és a Azure PowerShell használatával.
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
-ms.openlocfilehash: a7f80698791831b3d4404ea0f687a75c660c2222
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.author: robb
+ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852748"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675257"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -69,14 +69,14 @@ Használja az alábbi eljárást.
 
      **Feltételek hozzáadása képernyő**
 
-     ![Feltételek hozzáadása](media/alerts-activity-log/add-criteria.png)
+     ![Feltétel hozzáadása](media/alerts-activity-log/add-criteria.png)
 
      - **Előzmények időpontja**: A kiválasztott művelethez elérhető események az elmúlt 6, 12 vagy 24 órában, vagy az elmúlt héten láthatók.
 
      - **Riasztási logika**:
 
        - **Esemény szintje**: Az esemény súlyossági szintje: _Részletes_, _tájékoztató_, _Figyelmeztetés_, _hiba_vagy _kritikus_.
-       - **Állapot**: Az esemény állapota: Elindítva, _sikertelen_, vagy _sikeres_.
+       - **Állapot**: Az esemény állapota:Elindítva, _sikertelen_, vagy _sikeres_.
        - **Esemény kezdeményezője**: Más néven a hívó. A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
 
        Ez a mintavételi gráf a riasztási logikát alkalmazza:

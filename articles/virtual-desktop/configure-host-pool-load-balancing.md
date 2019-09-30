@@ -1,5 +1,5 @@
 ---
-title: A Windows rendszerű virtuális asztal előzetes verziójának terheléselosztási módszerének konfigurálása – Azure
+title: A Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása – Azure
 description: A terheléselosztási módszer konfigurálása Windows rendszerű virtuális asztali környezetekhez.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163767"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676785"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>A Windows rendszerű virtuális asztal előzetes verziójának terheléselosztási módszerének konfigurálása
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
 
-A gazdagép terheléselosztási módszerének konfigurálása lehetővé teszi a Windows rendszerű virtuális asztali előnézet környezet beállítását, hogy jobban megfeleljen az igényeinek.
+A gazdagép terheléselosztási módszerének konfigurálása lehetővé teszi a Windows rendszerű virtuális asztali környezet beállítását, hogy jobban megfeleljen az igényeinek.
 
 >[!NOTE]
 > Ez nem vonatkozik egy állandó asztali gazdagépre, mert a felhasználók mindig rendelkeznek 1:1-hozzárendeléssel a gazdagépen belüli munkamenet-gazdagéphez.

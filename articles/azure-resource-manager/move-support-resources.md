@@ -4,14 +4,14 @@ description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthely
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/06/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801360"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687118"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -72,7 +72,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [microsoft.dns](#microsoftdns)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
@@ -389,7 +388,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | galériák/lemezképek/verziók | Nem | Nem |
 > | hostgroups | Nem | Nem |
 > | hostgroups/gazdagépek | Nem | Nem |
-> | rendszerképek | Igen | Igen |
+> | lemezképek | Igen | Igen |
 > | proximityplacementgroups | Nem | Nem |
 > | restorepointcollections | Nem | Nem |
 > | sharedvmimages | Nem | Nem |
@@ -462,7 +461,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | Hubs | Igen | Igen |
+> | központok | Igen | Igen |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -506,7 +505,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | csomagok | Nem | Nem |
-> | tervek | Nem | Nem |
+> | csomagok | Nem | Nem |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -542,7 +541,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | services | Nem | Nem |
+> | szolgáltatás | Nem | Nem |
 > | szolgáltatások/projektek | Nem | Nem |
 > | bővítőhely | Nem | Nem |
 
@@ -610,21 +609,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Labor/virtualmachines | Igen | Nem |
 > | menetrend | Igen | Igen |
 
-## <a name="microsoftdns"></a>Microsoft. DNS
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | dnszones | Nem | Nem |
-> | dnszones/a | Nem | Nem |
-> | dnszones/AAAA | Nem | Nem |
-> | dnszones/CNAME | Nem | Nem |
-> | dnszones/MX | Nem | Nem |
-> | dnszones/PTR | Nem | Nem |
-> | dnszones/SRV | Nem | Nem |
-> | dnszones/txt | Nem | Nem |
-> | trafficmanagerprofiles | Nem | Nem |
-
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -644,7 +628,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | services | Igen | Igen |
+> | szolgáltatás | Igen | Igen |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -694,7 +678,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | services | Igen | Igen |
+> | szolgáltatás | Igen | Igen |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
@@ -727,7 +711,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | activitylogalerts | Nem | Nem |
 > | alertrules | Igen | Igen |
 > | autoscalesettings | Igen | Igen |
-> | összetevők | Igen | Igen |
+> | Összetevők | Igen | Igen |
 > | guestdiagnosticsettings | Nem | Nem |
 > | metricalerts | Nem | Nem |
 > | notificationgroups | Nem | Nem |
@@ -1004,7 +988,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | irányítópultok | Igen | Igen |
+> | Irányítópultok | Igen | Igen |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
@@ -1346,6 +1330,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>További lépések
-Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](resource-group-move-resources.md).
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy](resource-group-move-resources.md)előfizetésbe.
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

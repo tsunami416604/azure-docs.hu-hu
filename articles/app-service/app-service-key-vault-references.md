@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390444"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686740"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault referenciák használata App Service és Azure Functionshoz (előzetes verzió)
 
@@ -36,7 +36,7 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
    > [!NOTE] 
    > Key Vault referenciák jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy `applicationId` a beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
+1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazás" vagy a `applicationId` beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
     > [!NOTE]
     > Key Vault hivatkozások nem képesek a Key vaultban tárolt titkos kódok feloldására [hálózati korlátozásokkal](../key-vault/key-vault-overview-vnet-service-endpoints.md).
@@ -48,7 +48,7 @@ A Key Vault hivatkozás az űrlapra `@Microsoft.KeyVault({referenceString})`muta
 > [!div class="mx-tdBreakAll"]
 > | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | SecretUri=_secretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
 
 > [!NOTE] 
@@ -197,7 +197,7 @@ Ha a szintaxis helyes, a hiba egyéb okait úgy tekintheti meg, ha ellenőrzi a 
 ### <a name="using-the-detector-for-app-service"></a>A App Service detektorának használata
 
 1. A portálon navigáljon az alkalmazáshoz.
-2. Válassza **a Prolems diagnosztizálása és megoldása**lehetőséget.
+2. Válassza **a diagnosztizálás és problémák megoldása**lehetőséget.
 3. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **webalkalmazás lehetőséget.**
 4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ**elemre.
 
@@ -206,6 +206,6 @@ Ha a szintaxis helyes, a hiba egyéb okait úgy tekintheti meg, ha ellenőrzi a 
 
 1. A portálon navigáljon az alkalmazáshoz.
 2. Navigáljon a **platform szolgáltatásaihoz.**
-3. Válassza **a Prolems diagnosztizálása és megoldása**lehetőséget.
+3. Válassza **a diagnosztizálás és problémák megoldása**lehetőséget.
 4. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **Function app Down vagy a jelentéskészítési hibák lehetőséget.**
 5. Kattintson **Key Vault alkalmazás-beállítások diagnosztika** elemre.

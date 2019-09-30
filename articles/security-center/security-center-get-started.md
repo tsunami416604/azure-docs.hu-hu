@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 138d3fd74b95fe8d51593fcbb2cedda017e35d80
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 689949b2b6fea1dcd06741fd3fc19c9371a96784
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202164"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676383"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors útmutató: Azure-előfizetés előkészítése a Security Center Standard csomagra
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
@@ -72,8 +72,8 @@ Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a M
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 
-1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
-2. Az előfizetést tartalmazó soron kattintson a **Beállítások szerkesztése>** elemre.
+1. A Security Center Főmenüben válassza a **díjszabás & beállítások**lehetőséget.
+2. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Be** értékre.
 4. Kattintson a **Mentés** gombra.
 ---
@@ -86,15 +86,15 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
-1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Azon a soron, amelyen az ingyenes állapotba visszaállítani kívánt előfizetés található, válassza ki a **Beállítások szerkesztése>** elemet.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
+2. Kattintson arra az előfizetésre, amelyet az ingyenes szintjére szeretne váltani.
 3. A **Tarifacsomag** pont alatt válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
 5. Kattintson a **Mentés** gombra.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
-1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki a **Beállítások szerkesztése>** elemet azon a soron, amelyen az az előfizetés található, amelyiknek le szeretné tiltani az automatikus telepítését.
+1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
+2. Tisztítsa meg az előfizetést, amelynél le szeretné tiltani az automatikus kiépítés szolgáltatást.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Ki** értékre.
 4. Kattintson a **Mentés** gombra.
 

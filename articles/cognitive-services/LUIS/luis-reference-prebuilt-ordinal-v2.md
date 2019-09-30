@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 48dcbd51190e747859f0172473c94b0caa296071
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933484"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677556"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>A 2. sorszámú, előre elkészített entitás a LUIS-alkalmazáshoz
-A sorszám v2 sorszáma [](luis-reference-prebuilt-ordinal.md) kibontja a sorszámot, `next`hogy `last`relatív hivatkozásokat (például,, és `previous`) adjon meg. Ezeket a rendszer nem a sorszámmal elkészített, előre összeépített entitás használatával bontja ki.
+A sorszám v2 sorszáma kibontja a [sorszámot](luis-reference-prebuilt-ordinal.md) , hogy olyan relatív hivatkozásokat adjon meg, mint például a `next`, a `last` és a `previous`. Ezeket a rendszer nem a sorszámmal elkészített, előre összeépített entitás használatával bontja ki.
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Az előre létrehozott sorszám v2 entitás feloldása
 
-### <a name="api-version-2x"></a>API 2. x verziója
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
 
@@ -55,9 +55,9 @@ Az alábbi példa a **beépített. ordinalV2** entitás feloldását mutatja be.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Előzetes verziójú API 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-A következő JSON `verbose` a paraméter `false`értéke:
+A következő JSON a `verbose` paramétert állítja be a `false` értékre:
 
 ```json
 {
@@ -82,7 +82,7 @@ A következő JSON `verbose` a paraméter `false`értéke:
 }
 ```
 
-A következő JSON `verbose` a paraméter `true`értéke:
+A következő JSON a `verbose` paramétert állítja be a `true` értékre:
 
 ```json
 {
@@ -122,6 +122,10 @@ A következő JSON `verbose` a paraméter `true`értéke:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>További lépések
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 A [százalék](luis-reference-prebuilt-percentage.md), a [telefonszám](luis-reference-prebuilt-phonenumber.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitások ismertetése. 

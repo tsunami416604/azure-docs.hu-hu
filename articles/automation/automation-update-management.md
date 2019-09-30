@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240287"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677867"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
 A Azure Automation Update Management megoldásával kezelheti az operációs rendszer frissítéseit az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban lévő Windows-és Linux-számítógépeken. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
-A virtuális gépeket közvetlenül a Azure Automation-fiókjából engedélyezheti Update Management. Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek Update Managementét az Automation-fiókjából, tekintse meg a [több virtuális gép frissítéseinek kezelése](manage-update-multi.md)című témakört. A virtuális gép Update Management is engedélyezheti a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépek esetén érhető el.
+A virtuális gépeket közvetlenül a Azure Automation-fiókjából engedélyezheti Update Management. Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek Update Managementét az Automation-fiókjából, tekintse meg a [több virtuális gép frissítéseinek kezelése](manage-update-multi.md)című témakört. A virtuális gép Update Management is engedélyezheti a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetén érhető el.
 
 > [!NOTE]
 > A Update Management megoldáshoz egy Log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](./how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
@@ -222,7 +222,7 @@ Ha olyan naplót szeretne futtatni, amely adatokat ad vissza a gépre, a frissí
 
 ## <a name="install-updates"></a>Frissítések telepítése
 
-A frissítések a munkaterületen található összes Linux-és Windows-számítógépen való értékelését követően a szükséges frissítéseket a *frissítés központi telepítésének*létrehozásával is telepítheti. A frissítés központi telepítésének létrehozásához írási hozzáféréssel kell rendelkeznie az Automation-fiókhoz, és írási hozzáférésre van szüksége az üzemelő példányra irányuló összes Azure-beli virtuális géphez. A frissítés központi telepítése egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja a központi telepítés dátumát és időpontját, valamint a központi telepítés hatókörében szerepeltetni kívánt számítógép vagy számítógép csoportját. További információ a számítógépcsoportokról: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md).
+A frissítések a munkaterületen található összes Linux-és Windows-számítógépen való értékelését követően a szükséges frissítéseket a *frissítés központi telepítésének*létrehozásával is telepítheti. A frissítés központi telepítésének létrehozásához írási hozzáféréssel kell rendelkeznie az Automation-fiókhoz, és írási hozzáférésre van szüksége az üzemelő példányhoz tartozó összes Azure-beli virtuális géphez. A frissítés központi telepítése egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja a központi telepítés dátumát és időpontját, valamint a központi telepítés hatókörében szerepeltetni kívánt számítógép vagy számítógép csoportját. További információ a számítógépcsoportokról: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md).
 
 Ha számítógép-csoportokat is tartalmaz a frissítés központi telepítéséhez, a csoporttagság csak egyszer lesz kiértékelve, az ütemezett létrehozás időpontjában. A csoport későbbi módosításai nem tükröződnek. A [dinamikus csoportok](#using-dynamic-groups)használatának megkezdéséhez ezeket a csoportokat a rendszer központi telepítési időpontban oldja meg, és az Azure-beli virtuális gépek lekérdezésével vagy nem Azure-beli virtuális gépek mentett keresésével határozza meg.
 

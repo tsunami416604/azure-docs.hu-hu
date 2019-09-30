@@ -1,22 +1,22 @@
 ---
 title: Fő VHD-rendszerkép előkészítése és testreszabása – Azure
-description: A Windows rendszerű virtuális asztali előnézet fő rendszerképének előkészítése, testreszabása és feltöltése az Azure-ba.
+description: Windows rendszerű virtuális asztali rendszerképek előkészítése, testreszabása és feltöltése az Azure-ba.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981076"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679543"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
-Ebből a cikkből megtudhatja, hogyan készítse elő a fő virtuális merevlemez (VHD) lemezképét az Azure-ba való feltöltéshez, beleértve a virtuális gépek (VM-EK) létrehozását és a szoftverek telepítését. Ezek az utasítások a szervezet meglévő folyamataival használható, a Windows rendszerű virtuális asztali előzetes verzióra jellemző konfigurációra vonatkoznak.
+Ebből a cikkből megtudhatja, hogyan készítse elő a fő virtuális merevlemez (VHD) lemezképét az Azure-ba való feltöltéshez, beleértve a virtuális gépek (VM-EK) létrehozását és a szoftverek telepítését. Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -64,7 +64,7 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 Ez a szakasz a FSLogix, a Windows Defender és más gyakori alkalmazások előkészítését és telepítését ismerteti. 
 
-Ha az Office 365 ProPlus és a OneDrive-et telepíti a virtuális gépre, tekintse meg az [Office telepítése fő VHD](install-office-on-wvd-master-image.md)-lemezképen című témakört. A cikk következő lépéseiben szereplő hivatkozásra kattintva térjen vissza ehhez a cikkhez, és fejezze be a fő VHD-folyamatot.
+Ha az Office 365 ProPlus és a OneDrive-et telepíti a virtuális gépre, tekintse meg az [Office telepítése fő VHD-lemezképen](install-office-on-wvd-master-image.md)című témakört. A cikk következő lépéseiben szereplő hivatkozásra kattintva térjen vissza ehhez a cikkhez, és fejezze be a fő VHD-folyamatot.
 
 Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, javasoljuk, hogy a szakasz utasításainak elvégzése után telepítse őket.
 
@@ -72,8 +72,8 @@ Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, java
 
 Az automatikus frissítések letiltása helyi Csoportházirend használatával:
 
-1. Nyissa meg **Helyicsoportházirend-szerkesztő\\\\felügyeleti sablonok\\Windows-összetevők Windows Update**.
-2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le**a Letiltva értékre.
+1. Nyissa meg **Helyicsoportházirend-szerkesztő @ no__t-1Administrative sablonok @ no__t-2Windows Components @ no__t-3Windows Update elemet**.
+2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
 
 A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
 
@@ -109,8 +109,8 @@ A távoli munkamenet-házirendek kikényszeríthető Csoportházirend szinten, m
 
 Távoli munkamenet-házirendek konfigurálása:
 
-1. Navigáljon **a felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-kiszolgáló** > **munkamenet**-időkorlátja.
-2. A jobb oldali panelen válassza az **aktív, de tétlen távoli asztali szolgáltatások munkamenetek házirend beállítása** időkorlátot.
+1. Navigáljon a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **munkameneti időkorlát**.
+2. A jobb oldali panelen válassza az **aktív, de tétlen távoli asztali szolgáltatások munkamenetek házirend beállítása időkorlátot** .
 3. A modális ablak megjelenése után módosítsa a házirend beállítást úgy, hogy az **ne** legyen **engedélyezve** a házirend aktiválásához.
 4. A házirend-beállítás alatti legördülő menüben állítsa be az időtartamot **3 órára**.
 
@@ -134,7 +134,7 @@ Időzónák átirányítása:
 1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
 2. Bontsa ki a tartományt és Csoportházirend objektumokat.
 3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők elemre**  > .  **Távoli asztali szolgáltatások** > távoli asztal a munkamenet **-gazdagép eszközét és erőforrás-** átirányítását. > 
+4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások**@no__ t-10**Távoli asztal munkamenet-gazdagép**2**eszköz és erőforrás-átirányítás**.
 5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
 
 Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
@@ -225,7 +225,7 @@ Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezk�
 Most, hogy már rendelkezik rendszerképtel, létrehozhat vagy frissíthet gazdagép-készleteket. A gazdagép-készletek létrehozásával és frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 - [Gazdagép létrehozása Azure Resource Manager sablonnal](create-host-pools-arm-template.md)
-- [Oktatóanyag: Állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
+- [Oktatóanyag: Alkalmazáskészlet létrehozása az Azure Marketplace @ no__t-0
 - [Gazdagép létrehozása a PowerShell-lel](create-host-pools-powershell.md)
 - [Profil tároló létrehozása a gazdagéphez fájlmegosztás használatával](create-host-pools-user-profile.md)
 - [A Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](configure-host-pool-load-balancing.md)

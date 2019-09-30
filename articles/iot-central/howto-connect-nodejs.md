@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ccded68cfaa00e6e13e2bb32e114b81108742829
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066442"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686673"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Általános ügyfélalkalmazás összekötése az Azure IoT Central-alkalmazással (node. js)
 
@@ -111,7 +111,7 @@ Adja hozzá a következő parancsot a **parancsok** lapon:
 
 | Megjelenítendő név    | Mező neve     | Alapértelmezett határidő-túllépés | Adattípus |
 | --------------- | -------------- | --------------- | --------- |
-| Visszaszámlálás       | visszaszámlálás      | 30              | number    |
+| Visszaszámlálás       | Visszaszámlálás      | 30              | number    |
 
 Adja hozzá a következő beviteli mezőt a visszaszámlálási parancshoz:
 
@@ -164,7 +164,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre olyan ügyfélalkalmazás
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
