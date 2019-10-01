@@ -87,7 +87,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     ![Csomag neve a GCM-ben](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Állítsa be a projekt cél Android-verzióját az **android 9,0 (Pie)** értékre a következő lépések végrehajtásával: 
     1. Kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok**lehetőséget. 
-    1. A fordításhoz az **Android-verzió használatával: (Cél-keretrendszer) mezőben válassza az **Android 9,0 (torta) lehetőséget.**** 
+    1. A fordításhoz az **Android-verzió használatával: (Cél-keretrendszer)** mezőben válassza az **Android 9,0 (torta)** lehetőséget. 
     1. Válassza az **Igen** lehetőséget az üzenetablakban a cél keretrendszer módosításának folytatásához.
 1. Adja hozzá a szükséges NuGet-csomagokat a projekthez a következő lépések végrehajtásával:
     1. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget.

@@ -261,7 +261,7 @@ A figyelési ügynök `.tsf` naplófájlokat és összetevőket gyűjt a fájlok
 A nevű `<relevantLogFile>.csv` új fájl ugyanabban az elérési úton jön létre, mint `.tsf` a megfelelő fájl.
 
 >[!NOTE]
-> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a kapcsolódó\*fájlokat (például PerformanceCountersTables_\*001\*. TSF, PerformanceCountersTables_\*002. TSF stb.).
+> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a kapcsolódó fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
 
 ### <a name="more-about-missing-trace-logs"></a>További információ a hiányzó nyomkövetési naplókról
 
