@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9015fa445c64bffa74509e84d90eb77508da6d9e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e0143a6075ef7b88cc0b365a544a5e69c92362ff
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076455"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710120"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Kerasz besorolási modell betanítása és regisztrálása Azure Machine Learning
 
@@ -80,6 +80,7 @@ Hozzon létre egy "kerasz-mnist" nevű kísérletet a munkaterületen.
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
+<a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Fájl adatkészletének létrehozása
 
 Egy `FileDataset` objektum egy vagy több fájlra hivatkozik a munkaterület adattárában vagy a nyilvános URL-címekben. A fájlok bármilyen formátumúak lehetnek, és a osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A `FileDataset`létrehozásával létrehoz egy hivatkozást az adatforrás helyére. Ha az adatkészletbe átalakításokat alkalmazott, azokat az adatkészletben is tárolja a rendszer. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek. További információért tekintse `Dataset` [meg a csomag útmutatóját](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) .

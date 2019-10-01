@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934184"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694924"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Geokerítésen beállítása Azure Maps használatával
 
@@ -148,10 +148,24 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
    }
    ```
 
-5. Kattintson a Küldés gombra, és tekintse át a válasz fejlécét. A Location (hely) fejléc tartalmazza azt az URI-t, amely a jövőbeli használatra való hozzáféréshez vagy azok letöltéséhez szükséges. Emellett egyedi `udId` is tartalmaz a feltöltött adattartalomhoz.
+5. Kattintson a Küldés gombra, és tekintse át a válasz fejlécét. Sikeres kérelem esetén a **hely** fejléce tartalmazza az állapot URI-ját a feltöltési kérelem aktuális állapotának vizsgálatához. Az állapot URI-ja a következő formátumú lesz. 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. Másolja az állapot-URI-t `subscription-key` , és fűzze hozzá a paramétert a Azure Maps fiókja előfizetési kulcsának értékéhez. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. A létrehozásához `udId` nyisson meg egy új fület a Poster alkalmazásban, majd válassza a http-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és tegyen egy Get-kérést az állapot URI-ja Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>Eseménykezelő beállítása

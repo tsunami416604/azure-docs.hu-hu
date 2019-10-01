@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624645"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703371"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: Információk letöltése 
 
@@ -61,6 +61,12 @@ ms.locfileid: "69624645"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * A .NET Standard 2,0 a támogatott cél keretrendszerek egyike, hogy a tömeges végrehajtó függvénytár működjön a .NET Core-alkalmazásokkal.
+
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* Rögzített magas CPU-felhasználás bizonyos helyzetekben.
+* A nyomkövetés mostantól a TraceSource-t használja. A felhasználók megadhatnak figyelőket a `BulkExecutorTrace` forráshoz.
+* Rögzített egy ritka forgatókönyv, amely zárolást okozhat a dokumentumok 2 MB-os méretének közelében történő küldésekor.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 

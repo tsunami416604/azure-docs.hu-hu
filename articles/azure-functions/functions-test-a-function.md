@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085124"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709340"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -28,7 +28,7 @@ A következő tartalmától azt, hogy több különböző nyelvet és a környez
 - [C#a Visual Studióban az xUnit](#c-in-visual-studio)
 - [A VS Code-Jest JavaScript](#javascript-in-vs-code)
 
-A minta tárház a githubon [](https://github.com/Azure-Samples/azure-functions-tests)érhető el.
+A minta tárház a [githubon](https://github.com/Azure-Samples/azure-functions-tests)érhető el.
 
 ## <a name="c-in-visual-studio"></a>C#a Visual Studióban
 Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásnak a Visual Studióban, és futtassa, és teszteli a [xUnit](https://xunit.github.io).
@@ -42,7 +42,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásna
 1. [Hozzon létre egy új Functions-alkalmazás](./functions-create-first-azure-function.md) , és nevezze el *funkciók*
 2. [Egy HTTP-függvény létrehozása sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
 3. [Időzítő függvény létrehozása sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
-4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a functions *. test*parancsot. 
+4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a *functions. test*parancsot. 
 5. A Nuget használata a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) tesztelési alkalmazásból származó hivatkozások hozzáadásához
 6. [Referencia a *funkciók* alkalmazás](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *Functions.Test* alkalmazást.
 
@@ -112,9 +112,9 @@ A `ListLogger` osztály által szerződésben vállalt módon valósítja meg az
 
 - **BeginScope**: Hatókörök: környezet hozzáadása a naplózáshoz. Ebben az esetben a teszt csak a `NullScope` osztály statikus példányára mutat, hogy lehetővé tegye a teszt működését.
 
-- **IsEnabled**: Alapértelmezett érték `false` van megadva.
+- **IsEnabled**: A `false` alapértelmezett értéke van megadva.
 
-- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül `Logs` kapott szöveget a gyűjteményhez.
+- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül kapott szöveget a `Logs` gyűjteményhez.
 
 A `Logs` gyűjteménye egy példányát `List<string>` és a konstruktorban inicializálva van.
 
@@ -197,7 +197,7 @@ A `TestFactory` osztálya határozza meg a következő tagok:
 
 - Adatértékek: Ez a tulajdonság a mintaadatok [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs-érték párral egy lekérdezési karakterláncot az átadott értékeket jelölik.
 
-- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, `Dictionary` és visszaadja `QueryCollection` a lekérdezési karakterlánc értékeit jelölő új létrehozási értéket.
+- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, és egy új `Dictionary` értéket ad vissza, amelyet a rendszer a lekérdezési karakterlánc értékeit jelölő `QueryCollection` létrehozásához használ.
 
 - **CreateHttpRequest**: Ez a metódus egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
 
@@ -246,11 +246,11 @@ namespace Functions.Tests
 ```
 Ez az osztály megvalósított tagjai:
 
-- **Http_trigger_should_return_known_string**: Ez a teszt egy http `name=Bill` -függvény lekérdezési karakterlánc-értékeit tartalmazó kérelmet hoz létre, és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
+- **Http_trigger_should_return_known_string**: Ez a teszt `name=Bill` lekérdezési karakterlánc-értékekkel rendelkező kérelmet hoz létre egy HTTP-függvényhez, és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
 
 - **Http_trigger_should_return_string_from_member_data**: Ez a teszt xUnit-attribútumokat használ a HTTP-függvényhez tartozó mintaadatok biztosításához.
 
-- **Timer_should_log_message**: Ez a teszt létrehoz egy példányt `ListLogger` , és átadja azt egy időzítő függvénynek. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
+- **Timer_should_log_message**: Ez a teszt `ListLogger` egy példányát hozza létre, és átadja egy időzítő függvénynek. Miután a függvény fut, majd a napló be van jelölve annak érdekében, hogy jelen a várt üzenet.
 
 Ha a tesztek során szeretné elérni az alkalmazás beállításait, használhatja a [System. environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
@@ -311,7 +311,7 @@ module.exports = {
 ```
 A modul végrehajtja a `IsPastDue` passzív tulajdonság értéke hamis időzítő példányként.
 
-Ezután használhatja a VS Code funkciók bővítmény [hozzon létre egy új JavaScript HTTP függvényt](https://code.visualstudio.com/tutorials/functions-extension/getting-started) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
+Ezután használhatja a VS Code funkciók bővítmény [hozzon létre egy új JavaScript HTTP függvényt](/azure/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');

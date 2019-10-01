@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105127"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695394"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management adataihoz való hozzáférés hozzárendelése
 
-Az Azure nagyvállalati szerződéssel rendelkező felhasználók számára a Azure Portal és a nagyvállalati (EA) portálon megadott engedélyek kombinációja határozza meg, hogy a felhasználó milyen szintű hozzáférést biztosít a Azure Cost Managementi adatmennyiséghez. A többi Azure-fiókkal rendelkező felhasználók számára a felhasználó hozzáférési szintje az, hogy Cost Management az adatmennyiséget. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
+Az Azure nagyvállalati szerződéssel rendelkező felhasználók számára a Azure Portal és a nagyvállalati (EA) portálon megadott engedélyek kombinációja határozza meg, hogy a felhasználó milyen szintű hozzáférést biztosít a Azure Cost Managementi adatmennyiséghez. A többi Azure-fiókkal rendelkező felhasználók számára az Azure szerepköralapú hozzáférés-vezérlés használatával egyszerűbben definiálható, hogy a felhasználó milyen szintű hozzáférést Cost Management az adathoz. Ez a cikk végigvezeti a Cost Management adataihoz való hozzáférés hozzárendelése. Az engedélyek kombinációját hozzá van rendelve, miután a felhasználói nézetek adatokat a Cost Management alapján a hatókör, hogy ők is hozzáférhetnek, és az Azure Portalon válassza a hatókörön.
 
 Adja meg az adatok összevonása, és a költségadatok való hozzáférésének a hatókör, amely a felhasználó kiválaszt Cost Management használja. Hatókörök használatakor a felhasználók ne válassza ki őket. Ehelyett, válassza ki a nagyobb hatókör, amely gyermek hatókörök visszaállítás akár, és ezután azok szűrő válassza ki, amit szeretnének megtekintéséhez. Adatok összevonása fontos tudni, mert vannak, akik nem rendelkezik hozzáféréssel, annak egy szülőhatóköréhez gyermek hatókörök összegző akár.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 97684a4668c1d495fa690674f7bd94e064737bd4
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 0707ed3dfee9af27b7cab66c7952d1e7c1d57cb8
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273949"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703196"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding fejlesztői erőforrásai
 
@@ -34,6 +34,8 @@ Az eszközön alapuló dokumentáció keresése:
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Szerzői és előrejelzési kérelmek Language Understanding
 
 A Language Understanding szolgáltatás elérhető egy Azure-erőforrásból, amelyet létre kell hoznia. Két erőforrás létezik: létrehozási és előrejelzési végponti erőforrások. Mindkét erőforrás lehetővé teszi a LUIS-erőforrások szabályozását. 
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 ### <a name="rest-apis"></a>REST API-k
 

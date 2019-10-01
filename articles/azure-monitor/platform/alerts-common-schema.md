@@ -1,80 +1,80 @@
 ---
-title: Az Azure monitor riasztások gyakori riasztási séma
-description: Miért érdemes használnia a és engedélyezését a gyakori riasztási séma ismertetése
+title: Az Azure monitor-riasztások általános riasztási sémája
+description: Az általános riasztási séma megismerése, miért érdemes használni, és hogyan kell engedélyezni
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91ec5aa42367f6caaa93aaf808fde504e92fbc04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594319"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702893"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
-Ez a cikk ismerteti, mi a gyakori riasztási séma van, és hogyan engedélyezheti használatának előnyeit.
+Ez a cikk ismerteti a gyakori riasztási sémát, a használatának előnyeit és annak engedélyezését.
 
-## <a name="what-is-the-common-alert-schema"></a>Mi az a közös riasztási séma?
+## <a name="what-is-the-common-alert-schema"></a>Mi a közös riasztási séma?
 
-A gyakori riasztási séma egységesíti a használati élményt, a riasztási értesítéseket az Azure-ban még ma. A három riasztási típusok az Azure-ban még ma (a mérőszám, a napló és a tevékenységnaplóhoz) volt korábban, a saját e-mail-sablonok, a webhook-sémákat, stb. A közös riasztási sémával rendelkező mostantól fogadni tudják a riasztási értesítések küldése a konzisztens sémák.
+A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. A Common Alert séma használatával mostantól konzisztens sémával fogadhat riasztási értesítéseket.
 
-Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasztás okának**, és ezek a példányok a közös séma a következő szakaszokban ismertetett:
-* **Essentials**: Egy **szabványos mezők**közös összes riasztás típusa, amelyek leírják **milyen erőforrás** a riasztás mellett további gyakori riasztási metaadatokat (például súlyosság vagy leírása) be van kapcsolva. 
-* **Riasztási környezet**: Egy készlet a mezők, amelyek leírják a **a riasztás okának**, mezőkkel, amelyek **a riasztási típus alapján**. Metrikariasztás például kellene mezőket is, például a metrika neve és a riasztási környezetben metrikaérték, mivel a tevékenységnapló-riasztás lenne a riasztást kiváltó eseménnyel kapcsolatos adatokat. 
+Minden riasztási példány leírja **az érintett erőforrást** , valamint **a riasztás okát**, és ezeket a példányokat az alábbi szakaszokban ismertetett általános séma ismerteti:
+* **Alapvető**erőforrások: Az összes riasztási típussal közös **szabványosított mezők**összessége, amelyek leírják, hogy a riasztás **milyen erőforrást** tartalmaz, valamint a további gyakori riasztási metaadatokat (például a súlyosságot vagy a leírást). 
+* **Riasztási környezet**: A riasztás **okát**leíró mezők halmaza, a **riasztás típusától**függően változó mezőkkel. Egy metrikai riasztás például olyan mezőkkel rendelkezhet, mint a metrika neve és a metrika értéke a riasztási környezetben, míg a tevékenység naplójának riasztása a riasztást kiváltó eseményről tartalmaz információt. 
 
-A tipikus integrációs forgatókönyvek, hogy ügyfelektől kapott járnak továbbítani tudja a riasztás az érintett csapat néhány pivot (például resource group), amely után a felelős csapat használatának megkezdése, alapján-példány. A közös riasztási sémával rendelkező, is rendelkezik szabványosított logikai útválasztási logikát a riasztástípusok között mezők alapvető, kihasználva a környezet mezőket a további vizsgálat érdekében az érintett csapatot, hagyja.
+Az ügyfeleinktől származó tipikus integrációs forgatókönyvek a riasztási példánynak az érintett csapathoz való továbbítását foglalják magukban egy adott pivot (például erőforráscsoport) alapján, amely után a felelős csapat elkezdi a munkát. Az általános riasztási sémával szabványosított útválasztási logikával rendelkezhet a riasztási típusok között, ha kihasználja az alapvető mezőket, így a környezeti mezőket az érintett csapatok továbbra is kivizsgálják.
 
-Ez azt jelenti, hogy is csatlakozhat kevesebb Integrációk, így a folyamat, kezelésével és karbantartásával őket egy _sokkal_ egyszerűbb feladat. Ezenkívül jövőbeli riasztási hasznos végrehajtott információbeolvasás (például testreszabási, diagnosztikai Adatbővítés, stb.) lesz csak jelent meg a közös sémában.
+Ez azt jelenti, hogy lehetséges, hogy kevesebb integrációval rendelkezik, így _sokkal_ egyszerűbb feladat lesz a kezelése és karbantartása. Emellett a riasztások jövőbeli bővítései (például a testreszabás, a diagnosztika és a titkosítás stb.) csak a közös sémában lesznek felkészítve.
 
-## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Milyen fejlesztések nem hozza a gyakori riasztási séma?
+## <a name="what-enhancements-does-the-common-alert-schema-bring"></a>Milyen fejlesztéseket végez a közös riasztási séma?
 
-A gyakori riasztási séma elsősorban eredményezi majd magát a riasztási értesítéseket. A fejlesztések, amely megjelenik az alábbiakban olvashatók:
+Az általános riasztási séma elsődlegesen a riasztási értesítésekben is megnyilvánulhat. A megjelenő fejlesztések az alábbi listában láthatók:
 
 | Action | Fejlesztések|
 |:---|:---|
-| SMS | Minden riasztástípus konzisztens SMS sablon. |
-| Email | Egy egységes és részletes e-mail-sablont, így könnyedén diagnosztizálhatja a problémákat, egyetlen pillantással. Beágyazott mély-hivatkozásokat a portál és az érintett erőforrás riasztási példányára győződjön meg arról, hogy Ön is gyorsan nyissa meg a javítási folyamatot. |
-| Webhook/Logic App/Azure Function/Automation Runbook | Egy egységes JSON struktúra minden riasztás esetében, amely lehetővé teszi, hogy könnyen hozhat létre integrációkat különböző riasztások különböző típusait. |
+| SMS | Konzisztens SMS-sablon az összes riasztási típushoz. |
+| Email | Konzisztens és részletes e-mail sablon, amely lehetővé teszi, hogy könnyedén diagnosztizálja a problémákat egy pillantással. Beágyazott mély – hivatkozások a riasztási példányra a Portálon és az érintett erőforráson gondoskodjon arról, hogy gyorsan beugorjon a Szervizelési folyamatba. |
+| Webhook/Logic App/Azure Function/Automation Runbook | Konzisztens JSON-struktúra az összes riasztási típushoz, amely lehetővé teszi, hogy könnyedén építsen be integrációkat a különböző riasztási típusok között. |
 
-Az új sémában azt is lehetővé teszi riasztási fogyasztás sokoldalúbb felhasználói élményben az Azure portal és az Azure mobile app a közeljövőben. 
+Az új séma többek között a Azure Portal és a Azure mobile app is lehetővé teszi, hogy az azonnali jövőben is gazdagabb legyen a riasztások felhasználásának élménye. 
 
-[További információk a Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok sémadefinícióinak.](https://aka.ms/commonAlertSchemaDefinitions)
-
-> [!NOTE]
-> A következő műveletek nem támogatják a gyakori riasztási séma: ITSM-összekötő.
-
-## <a name="how-do-i-enable-the-common-alert-schema"></a>Hogyan engedélyezhetem a gyakori riasztási séma?
-
-Részvétel a, illetve kikapcsolhatja az a közös riasztási sémájának Műveletcsoportok, mind a portálon keresztül, és a REST API-n keresztül. Váltson át az új sémában a váltógomb létezik műveleti szinten. Ha például hogy külön igénybe veszik a e-mail-művelet és a egy webhook művelettel.
+[További információ a webhookok/Logic Apps/Azure Functions/Automation Runbookok sémájának definícióit ismertető témakörben.](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> 1. A következő típusú riasztásokról alapértelmezés szerint a közös séma támogatja (nem választható a szükséges):
->     * Az intelligens észlelési riasztásokkal
-> 1. A következő típusú riasztásokról jelenleg nem támogatja a közös séma:
->     * Által generált riasztások [Azure Monitor-beli virtuális gépek](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
->     * Által generált riasztások [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
+> A következő műveletek nem támogatják az általános riasztási sémát: ITSM-csatoló.
 
-### <a name="through-the-azure-portal"></a>Az Azure Portalon keresztül
+## <a name="how-do-i-enable-the-common-alert-schema"></a>Hogyan engedélyezi a közös riasztási sémát?
 
-![Gyakori riasztási séma részt](media/alerts-common-schema/portal-opt-in.png)
+A közös riasztási sémát a Portálon és a REST APIon keresztül is engedélyezheti vagy letilthatja. Az új sémára való váltásra szolgáló váltás műveleti szinten van. Például külön kell bejelentkeznie az e-mail-műveletre és egy webhook-műveletre.
 
-1. Nyissa meg a műveletcsoport minden meglévő vagy új művelet. 
-1. Válassza az "Igen" az engedélyezése a gyakori riasztási séma, ahogy a váltógombot.
+> [!NOTE]
+> 1. A következő típusú riasztások alapértelmezés szerint támogatják a közös sémát (nem kötelező megadni):
+>     * Intelligens észlelési riasztások
+> 1. A következő típusú riasztások jelenleg nem támogatják a közös sémát:
+>     * [Azure monitor for VMS](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) által generált riasztások
+>     * [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) által generált riasztások
 
-### <a name="through-the-action-groups-rest-api"></a>A Műveletcsoportok REST API használatával
+### <a name="through-the-azure-portal"></a>A Azure Portal
 
-Is használhatja a [művelet csoportok API](https://docs.microsoft.com/rest/api/monitor/actiongroups) iratkozzanak fel a gyakori riasztási séma. Így amikor a [létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API-hívás, beállíthatja a jelzőt "useCommonAlertSchema" (engedélyezve), a "true" vagy "false" (a kikapcsolhatja az újat) a következő műveletek - e-mailt és webhookot/logikai alkalmazás vagy az Azure-függvény/automation-runbook számára.
+![Gyakori riasztási séma](media/alerts-common-schema/portal-opt-in.png)
 
-Ha például a következő kéréstörzsben végzett a [létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API-t fog tegye a következőket:
+1. Nyisson meg egy meglévő vagy egy új műveletet egy műveleti csoportban. 
+1. Válassza az Igen lehetőséget a váltáshoz, hogy a közös riasztási sémát az ábrán látható módon engedélyezze.
 
-* Az e-mail-művelet "John Doe e-mail" gyakori riasztási sémáját engedélyezése
-* Az e-mail-művelet "Email Szabó Judit" gyakori riasztási sémáját letiltása
-* A webhook művelettel "Minta webhook" gyakori riasztási sémáját engedélyezése
+### <a name="through-the-action-groups-rest-api"></a>A műveleti csoportok REST API
+
+A [műveleti csoportok API](https://docs.microsoft.com/rest/api/monitor/actiongroups) -val is használhatja a Common Alert sémát. A [create vagy a update](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API hívást követően a "useCommonAlertSchema" jelzőt beállíthatja a "true" értékre (a választáshoz) vagy "false" (letiltáshoz) a következő műveletek bármelyikéhez: e-mailek/webhook/Logic app/Azure Function/Automation runbook.
+
+Például a [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API a következő kérelem törzse lesz végrehajtva:
+
+* A "John Doe e-mail-címe" e-mail művelet általános riasztási sémájának engedélyezése
+* A "Jane Smith e-mail címe" e-mail művelet általános riasztási sémájának letiltása
+* Az általános riasztási séma engedélyezése a "minta webhook" webhook művelethez
 
 ```json
 {
@@ -124,8 +124,8 @@ Ha például a következő kéréstörzsben végzett a [létrehozása vagy friss
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyakori riasztási sémadefinícióinak Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Ismerje meg, hogyan hozhat létre egy logikai alkalmazást, amely minden riasztás kezelése közös riasztási sémát.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Gyakori riasztási séma-definíciók webhookok/Logic Apps/Azure Functions/Automation Runbookok.](https://aka.ms/commonAlertSchemaDefinitions)
+- [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 
 
 

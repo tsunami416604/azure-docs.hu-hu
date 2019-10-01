@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218281"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701892"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
@@ -43,16 +43,9 @@ Ha Azure AD B2C Bérlővel rendelkezik, regisztrálnia kell a felügyeleti alkal
 
 ### <a name="register-application-in-azure-active-directory"></a>Alkalmazás regisztrálása a Azure Active Directoryban
 
-Ha az Azure AD Graph APIt a B2C-Bérlővel szeretné használni, regisztrálnia kell egy alkalmazást a Azure Active Directory **Alkalmazásregisztrációk** munkafolyamattal.
+Ha az Azure AD Graph APIt a B2C-Bérlővel szeretné használni, regisztrálnia kell egy alkalmazást az Azure Active Directory alkalmazás regisztrációs munkafolyamata segítségével.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és váltson arra a könyvtárra, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure Active Directory** (*nem* Azure ad B2C) lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki **Azure Active Directory**.
-1. A bal oldali menü **kezelés** területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
-1. **Új alkalmazás regisztrációjának** kiválasztása
-1. Adja meg az alkalmazás nevét. Például: *felügyeleti alkalmazás*.
-1. Írjon be egy érvényes URL-címet a **bejelentkezési URL-cím**mezőbe. Például: *https://localhost* . A végpontnak nem kell elérhetőnek lennie, de érvényes URL-címnek kell lennie.
-1. Kattintson a **Létrehozás** gombra.
-1. Jegyezze fel a **regisztrált** alkalmazás – áttekintés oldalon megjelenő **Application ID** -t. Ezt az értéket egy későbbi lépésben kell használni a konfigurációhoz.
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="assign-api-access-permissions"></a>API-hozzáférési engedélyek kiosztása
 
@@ -83,7 +76,7 @@ Ha szeretné, hogy az alkalmazás törölje a felhasználókat vagy frissítse a
 1. A **kezelés**területen válassza a **szerepkörök és rendszergazdák**lehetőséget.
 1. Válassza ki a **felhasználói rendszergazda** szerepkört.
 1. Válassza a **hozzárendelés hozzáadása**elemet.
-1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például: *felügyeleti alkalmazás*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
+1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például *managementapp1*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
 1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
 
 A Azure AD B2C alkalmazás már rendelkezik a felhasználók törléséhez szükséges további engedélyekkel vagy a B2C-bérlő jelszavának frissítésével.

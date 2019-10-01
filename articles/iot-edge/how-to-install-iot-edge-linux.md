@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: ad5e78638f920401a83dd431c33a68b6d80144d7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988634"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695331"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>A Azure IoT Edge Runtime telepítése Debian-alapú Linux rendszereken
 
@@ -89,7 +89,7 @@ Telepítse a Moby parancssori felület (CLI). A parancssori felület az éles k�
    sudo apt-get install moby-cli
    ```
 
-Ha hiba lép fel a Moby Container Runtime telepítésekor, kövesse a jelen cikk későbbi részében ismertetett, a [Linux-kernel a Moby Compatibility szolgáltatással](#verify-your-linux-kernel-for-moby-compatibility)való ellenőrzésének lépéseit. 
+Ha hiba lép fel a Moby Container Runtime telepítésekor, kövesse a jelen cikk későbbi részében ismertetett, a [Linux-kernel a Moby Compatibility szolgáltatással való ellenőrzésének](#verify-your-linux-kernel-for-moby-compatibility)lépéseit. 
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon telepítése
 
@@ -165,7 +165,7 @@ A démon a konfigurációs fájlban a következő konfigurálható `/etc/iotedge
 
 Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközök kapcsolatok karakterlánc segítségével manuálisan. Másik lehetőségként használhatja a Device Provisioning Service-eszközök automatikus kiépítésére, amely akkor hasznos, ha sok eszköz kiépítéséhez van. Üzembe helyezési válaszaitól függően válassza ki a megfelelő telepítési parancsfájlt.
 
-### <a name="option-1-manual-provisioning"></a>1\. lehetőség: Manuális kiépítés
+### <a name="option-1-manual-provisioning"></a>1\. módszer: Manuális kiépítés
 
 A manuális üzembe helyezi az eszközt, meg kell adnia azt egy [eszköz kapcsolati karakterláncának](how-to-register-device-portal.md) , hogy egy új eszköz regisztrációja az IoT hub létrehozásához.
 
@@ -192,6 +192,7 @@ Keresse meg a fájl üzembe helyezési konfigurációit, és tegye meg a **manu�
    #     method: "tpm"
    #     registration_id: "{registration_id}"
 ```
+A vágólap tartalmának a nano `Shift+Right Click` fájlba való beillesztéséhez vagy a `Shift+Insert` gomb megnyomásához.
 
 Mentse és zárja be a fájlt.
 
@@ -230,6 +231,8 @@ Keresse meg a fájl kiépítési konfigurációit, és adja meg az igazolási me
        method: "tpm"
        registration_id: "{registration_id}"
    ```
+
+A vágólap tartalmának a nano `Shift+Right Click` fájlba való beillesztéséhez vagy a `Shift+Insert` gomb megnyomásához.
 
 Mentse és zárja be a fájlt.
 
@@ -275,7 +278,7 @@ Ha a hálózat, amely rendelkezik egy proxykiszolgáló, kövesse a [a proxykisz
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>A Linux-kernel ellenőrzése a Moby kompatibilitás érdekében
 
-Számos beágyazott eszköz gyártója olyan eszközöket biztosít, amelyek egyéni linuxos kerneleket tartalmaznak a tároló futásidejű kompatibilitásához szükséges szolgáltatások nélkül. Ha problémák merülnek fel a javasolt Moby Container Runtime telepítésekor, lehetséges, hogy a Linux-kernel konfigurációját a hivatalos [Moby GitHub](https://github.com/moby/moby)-tárházból származó [ellenőrzés-konfiguráció](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) parancsfájl használatával tudja elhárítani. Futtassa a következő parancsokat az eszközön a rendszermag konfigurációjának ellenõrzéséhez:
+Számos beágyazott eszköz gyártója olyan eszközöket biztosít, amelyek egyéni linuxos kerneleket tartalmaznak a tároló futásidejű kompatibilitásához szükséges szolgáltatások nélkül. Ha problémák merülnek fel a javasolt Moby Container Runtime telepítésekor, lehetséges, hogy a Linux-kernel konfigurációját a hivatalos [Moby GitHub-tárházból](https://github.com/moby/moby)származó [ellenőrzés-konfiguráció](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) parancsfájl használatával tudja elhárítani. Futtassa a következő parancsokat az eszközön a rendszermag konfigurációjának ellenõrzéséhez:
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh

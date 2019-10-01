@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 299799566f0d54cc3fa017b032e15b387fe8cdd5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467922"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709813"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli eseményvezérelt architektúrák Azure Cosmos DB és Azure Functions
 
@@ -37,7 +37,7 @@ Kiszolgáló nélküli eseményvezérelt folyamat megvalósításához a követk
 Az Azure-függvény létrehozása egy Azure Functions triggerrel Cosmos DB mostantól támogatott az összes Azure Functions IDE és CLI-integráción keresztül:
 
 * Visual Studio- [bővítmény](../azure-functions/functions-develop-vs.md) a Visual Studio-felhasználók számára.
-* [Visual Studio Core-bővítmény](https://code.visualstudio.com/tutorials/functions-extension/create-function) a Visual Studio Code-felhasználók számára.
+* [Visual Studio Core-bővítmény](/azure/javascript/tutorial-vscode-serverless-node-01) a Visual Studio Code-felhasználók számára.
 * És végül a [CLI-eszközök](../azure-functions/functions-run-local.md#create-func) alapszintű, többplatformos ide-alapú felhasználói élményhez.
 
 ## <a name="run-your-trigger-locally"></a>Trigger helyi futtatása

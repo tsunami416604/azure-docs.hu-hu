@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 162a020351efb27fe25b566918ddda555fac35eb
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d9a69ea993b86946a0999a38264a68e28dc62d50
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772620"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695459"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studio Code és a .NET Core használatával az Azure dev Spaces (Visual Studio Code) segítségével Kubernetes
 
@@ -24,6 +24,11 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 - A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
 - Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
+
+Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+- [A Java és a Visual Studio Code](quickstart-java.md)
+- [Node. js és Visual Studio Code](quickstart-nodejs.md)
+- [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,7 +114,7 @@ A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állí
 A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *.net Core launcht (AZDS)* . Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
-1. [A 22-es sor frissítése `Controllers/HomeController.cs` a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) :
+1. [A 22. sor frissítése `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) értékre:
     
     ```csharp
     ViewData["Message"] = "Your application description page in Azure.";
@@ -131,7 +136,7 @@ Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jele
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 22-es és az `Controllers/HomeController.cs` *F9 billentyű*megnyomásával helyezi el.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 22-es vonalra helyezi a `Controllers/HomeController.cs`, és az *F9 billentyűt*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
@@ -141,7 +146,7 @@ Amíg a szolgáltatás hibakeresési módban fut, frissítse a 22-es `Controller
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra a hibakeresést* , vagy a hibakeresés *eszköztáron*kattintson a *hibakeresés újraindítása* gombra.
+Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra* a hibakeresést, vagy a hibakeresés *eszköztáron*kattintson a hibakeresés újraindítása gombra.
 
 ![](media/common/debug-action-refresh.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558904"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709426"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
@@ -45,11 +45,11 @@ Az alábbi beállításokkal konfigurálhatja az adatgyűjtés vezérlését.
 |----|----------|------|------------|
 |`schema-version` |Karakterlánc (megkülönbözteti a kis-és nagybetűket) |v1 |Ez az ügynök által a ConfigMap elemzésekor használt séma verziója. A jelenleg támogatott séma verziója v1. Az érték módosítása nem támogatott, és a rendszer elutasítja a ConfigMap kiértékelése után.|
 |`config-version` |Sztring | | A támogatja a konfigurációs fájl verziószámának nyomon követését a verziókövetés rendszerében/adattárában. A megengedett karakterek maximális száma 10, az összes többi karakter pedig csonkolt. |
-|`[log_collection_settings.stdout] enabled =` |Logikai | igaz vagy hamis | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (`log_collection_settings.stdout.exclude_namespaces` az alábbi beállításnál), az stdout-naplók az összes tárolóból lesznek összegyűjtve a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
+|`[log_collection_settings.stdout] enabled =` |Logikai | true vagy false | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (`log_collection_settings.stdout.exclude_namespaces` az alábbi beállításnál), az stdout-naplók az összes tárolóból lesznek összegyűjtve a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
 |`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:.|
-|`[log_collection_settings.stderr] enabled =` |Boolean | igaz vagy hamis |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) számára, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
+|`[log_collection_settings.stderr] enabled =` |Logikai | true vagy false |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) számára, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:. |
-| `[log_collection_settings.env_var] enabled =` |Boolean | igaz vagy hamis | Ez a beállítás azt szabályozza, hogy engedélyezve van-e a környezeti változók gyűjteménye. Ha a értékre `false`van állítva, a rendszer nem gyűjt környezeti változókat a fürt összes hüvelyén vagy csomópontjain futó tárolóhoz. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `enabled = true`érték:. |
+| `[log_collection_settings.env_var] enabled =` |Logikai | true vagy false | Ez a beállítás azt szabályozza, hogy engedélyezve van-e a környezeti változók gyűjteménye. Ha a értékre `false`van állítva, a rendszer nem gyűjt környezeti változókat a fürt összes hüvelyén vagy csomópontjain futó tárolóhoz. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `enabled = true`érték:. |
 
 ### <a name="prometheus-scraping-settings"></a>A Prometheus-karcolás beállításai
 
@@ -65,7 +65,7 @@ A Prometheus-metrikák aktív kaparása a következő két szempont egyikével v
 | Végpont | Scope | Példa |
 |----------|-------|---------|
 | Pod-jegyzet | Fürtre kiterjedő | Széljegyzetek <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
-| Kubernetes-szolgáltatás | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| Kubernetes Service | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | URL/végpont | Csomópontok és/vagy fürtök széles skálája | `http://myurl:9101/metrics` |
 
 URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
@@ -75,9 +75,9 @@ URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
 | | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
 | | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`:.|
-| | `monitor_kubernetes_pods` | Boolean | igaz vagy hamis | Ha a a `true` fürtre kiterjedő beállításokban van beállítva, Azure monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön megkarcolja a következő Prometheus-megjegyzésekkel:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | igaz vagy hamis | Engedélyezi a hüvely leselejtezését. `monitor_kubernetes_pods`értékre kell állítani `true`. |
-| | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a `https`következőre:. | 
+| | `monitor_kubernetes_pods` | Logikai | true vagy false | Ha a a `true` fürtre kiterjedő beállításokban van beállítva, Azure monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön megkarcolja a következő Prometheus-megjegyzésekkel:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logikai | true vagy false | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` értéket `true` értékre kell beállítani. |
+| | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a következőre: `https`. | 
 | | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja `/metrics`nem, adja meg ezt a jegyzetet. |
 | | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a figyelni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
 | Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
@@ -163,7 +163,7 @@ Hibák miatt a omsagent nem elemezheti a fájlt, ezért az újraindítást és a
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
-Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, `kubectl apply -f <configmap_yaml_file.yaml`mint korábban.
+Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`.
 
 A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 
@@ -187,6 +187,22 @@ A kimenet az alábbihoz hasonlóan fog megjelenni a Megjegyzés sémája – ver
 ```
 
 ## <a name="review-prometheus-data-usage"></a>A Prometheus-adatok használatának áttekintése
+
+A Azure Monitor által megkapart Prometheus-metrikák megtekintéséhez a "Prometheus" kifejezést kell megadni névtérként. Íme egy példa egy lekérdezésre a Prometheus-metrikák megtekintéséhez a `default` kubernetes névtérből.
+
+```
+InsightsMetrics 
+| where Namespace contains "prometheus"
+| extend tags=parse_json(Tags)
+| where tostring(tags.namespace) == "default" 
+```
+
+A Prometheus-adatlekérdezéseket a név alapján is közvetlenül lehet lekérdezni.
+
+```
+InsightsMetrics 
+| where Name contains "some_prometheus_metric"
+```
 
 Ha meg szeretné állapítani, hogy az egyes mérőszámok mekkora mennyisége GB/nap, hogy magas legyen, a következő lekérdezés van megadva.
 

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1704b62cae6375d376fc43fb7a2940cd9c717072
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 748c51e74db20ac101dc2dff0d924567acded114
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382507"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703245"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Gyors útmutató: Előre elkészített Home Automation-alkalmazás használata
 
@@ -31,15 +31,15 @@ Ehhez a cikkhez egy ingyenes LUIS-fiókra van szüksége, amely a [https://www.l
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat. 
 
-2. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.
+1. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.
 
     [![Képernyőkép az alkalmazások listájának](media/luis-quickstart-new-app/app-list.png "Alkalmazáslista képernyőképe")](media/luis-quickstart-new-app/app-list.png)
 
-3. A párbeszédpanelen adja a „Home Automation” nevet az alkalmazásnak.
+1. A párbeszédpanelen adja a „Home Automation” nevet az alkalmazásnak.
 
     [![Képernyőkép, hozzon létre új alkalmazás felugró párbeszédpanel](media/luis-quickstart-new-app/create-new-app-dialog.png "létrehozása képernyőképe új alkalmazás felugró párbeszédpanel")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
-4. Válassza ki az alkalmazás kulturális környezetét. Ehhez az otthonautomatizálási alkalmazáshoz válassza a magyar nyelvet. Ezután válassza a **Done** (Kész) elemet. A LUIS létrehozza az otthonautomatizálási alkalmazást. 
+1. Válassza ki az alkalmazás kulturális környezetét. Ehhez az otthonautomatizálási alkalmazáshoz válassza a magyar nyelvet. Ezután válassza a **Done** (Kész) elemet. A LUIS létrehozza az otthonautomatizálási alkalmazást. 
 
     >[!NOTE]
     >A kulturális környezet az alkalmazás létrehozása után nem módosítható. 
@@ -58,7 +58,7 @@ A tartomány sikeres hozzáadása után az előre összeállított tartomány me
 
 A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) elemet a Home Automation-tartomány leképezéseinek megtekintéséhez. Minden szándék kimondottszöveg-mintákkal rendelkezik.
 
-![Képernyőkép a HomeAutomation-leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation-leképezések listájáról")]
+![Képernyőkép a HomeAutomation-leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "a HomeAutomation-leképezések listájáról")
 
 > [!NOTE]
 > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak. 
@@ -80,7 +80,7 @@ Turn off the lights
 
 Ellenőrizze, hogy a legmagasabb pontszámú leképezés megfelel-e az egyes kimondott tesztszövegek várt leképezésének.
 
-Ebben a példában helyesen `Turn off the lights` van azonosítva, mint a **HomeAutomation. kanyart**legfelső pontozási szándéka.
+Ebben a példában a `Turn off the lights` helyesen van azonosítva, mint a **HomeAutomation. kanyart**felső pontozási szándéka.
 
 [![Képernyőfelvétel: a teszt panel az utterance (kifejezés) kiemelésével](media/luis-quickstart-new-app/test.png "képernyőképe a teszt panel az utterance (kifejezés) kiemelésével")](media/luis-quickstart-new-app/test.png)
 
@@ -101,69 +101,27 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-1. Lépjen az URL-cím végéhez, és írja be a következőt: `turn off the living room light`, majd nyomja le az Enter billentyűt. A böngészőben megjelenik a HTTP-végpont JSON-válaszának **v2 API** -verziója.
+1. Lépjen az URL-cím végéhez, és írja be a következőt: `turn off the living room light`, majd nyomja le az Enter billentyűt. 
+
+    #### <a name="v2-prediction-endpointtabv2"></a>[V2 előrejelzési végpont](#tab/V2)
+
+    `https://<region>.api.cognitive.microsoft.com/luis/**v2.0**/apps/<appID>?subscription-key=<YOUR_KEY>&**q=<user-utterance-text>**`
+
+    A böngészőben megjelenik a HTTP-végpont JSON-válaszának **v2 API** -verziója.
 
     ```json
     {
-      "query": "turn off the living room light",
+      "query": "turn off the lights",
       "topScoringIntent": {
         "intent": "HomeAutomation.TurnOff",
-        "score": 0.9753089
+        "score": 0.995867
       },
-      "intents": [
-        {
-          "intent": "HomeAutomation.TurnOff",
-          "score": 0.9753089
-        },
-        {
-          "intent": "HomeAutomation.QueryState",
-          "score": 0.01027893
-        },
-        {
-          "intent": "HomeAutomation.TurnUp",
-          "score": 0.006881481
-        },
-        {
-          "intent": "HomeAutomation.SetDevice",
-          "score": 0.006786365
-        },
-        {
-          "intent": "HomeAutomation.TurnDown",
-          "score": 0.005145787
-        },
-        {
-          "intent": "HomeAutomation.TurnOn",
-          "score": 0.004114749
-        },
-        {
-          "intent": "None",
-          "score": 0.000598924
-        }
-      ],
       "entities": [
         {
-          "entity": "living room",
-          "type": "HomeAutomation.Location",
-          "startIndex": 13,
-          "endIndex": 23,
-          "score": 0.94558233
-        },
-        {
-          "entity": "living room light",
-          "type": "HomeAutomation.DeviceName",
-          "startIndex": 13,
-          "endIndex": 29,
-          "resolution": {
-            "values": [
-              "living room light"
-            ]
-          }
-        },
-        {
-          "entity": "light",
+          "entity": "lights",
           "type": "HomeAutomation.DeviceType",
-          "startIndex": 25,
-          "endIndex": 29,
+          "startIndex": 13,
+          "endIndex": 18,
           "resolution": {
             "values": [
               "light"
@@ -174,56 +132,38 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
     }
     ```
     
-## <a name="query-the-v3-api-prediction-endpoint"></a>A V3 API előrejelzési végpontjának lekérdezése
+    #### <a name="v3-prediction-endpointtabv3"></a>[V3 előrejelzési végpont](#tab/V3)
 
-[V3 API-lekérdezés](luis-migration-api-v3.md)esetén a böngészőben módosítsa a Get metódus HTTPS-kérelmét, és módosítsa az értékeket a saját értékeire. 
+    [V3 API-lekérdezés](luis-migration-api-v3.md)esetén a böngészőben módosítsa a Get metódus HTTPS-kérelmét, és módosítsa az értékeket a saját értékeire.     
 
-**V2 URL-cím Get metódussal**:
+    `https://<region>.api.cognitive.microsoft.com/luis/**v3.0-preview**/apps/<appID>/**slots**/**production**/**predict**?subscription-key=<YOUR_KEY>&**query=<user-utterance-text>**`
 
-https://\<régió >. API. kognitív. microsoft. com/Luis/**v 2.0**/apps/\<appID >? verbose = True & előfizetés-kulcs =\<YOUR_KEY > &**q =\<felhasználó – teljes szöveg >**
-
-**V3 URL-cím Get metódussal**:
-
-https://\<régió >. API. kognitív. microsoft. com/Luis/**v 3.0 – előzetes verzió**:\</apps/appID >/**bővítőhelyek**/**éles**/**előrejelzése**? verbose = True & előfizetés-kulcs =\<YOUR_KEY > &**lekérdezés =\<felhasználó – teljes szöveg >**
-
-A böngészőben megjelenik a HTTP-végpont JSON-válaszának **V3 API** -verziója.
-
-```json
-{
-    "query": "turn off the lights",
-    "prediction": {
-        "normalizedQuery": "turn off the lights",
-        "topIntent": "HomeAutomation.TurnOff",
-        "intents": {
-            "HomeAutomation.TurnOff": {
-                "score": 0.99649024
-            }
-        },
-        "entities": {
-            "HomeAutomation.DeviceType": [
-                [
-                    "light"
-                ]
-            ],
-            "$instance": {
+    ```json
+    {
+        "query": "turn off the lights",
+        "prediction": {
+            "normalizedQuery": "turn off the lights",
+            "topIntent": "HomeAutomation.TurnOff",
+            "intents": {
+                "HomeAutomation.TurnOff": {
+                    "score": 0.99649024
+                }
+            },
+            "entities": {
                 "HomeAutomation.DeviceType": [
-                    {
-                        "type": "HomeAutomation.DeviceType",
-                        "text": "lights",
-                        "startIndex": 13,
-                        "length": 6,
-                        "modelTypeId": 5,
-                        "modelType": "List Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+                    [
+                        "light"
+                    ]
                 ]
             }
         }
     }
-}
-```
+    ```
+
+
+    További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+    
+    * * * 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

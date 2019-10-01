@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146593"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695041"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -44,7 +44,7 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 |    |Bizonyos IP-címek átirányítása a (terheléselosztó, Geo Traffic Manager, Azure Express Route) használatával történik. 
 |    |Ha az Azure ExpressRoute-t használja, vannak olyan helyzetek, amikor a csomagokat el lehet dobni azokban az esetekben, amikor [aszimmetrikus útválasztás történik](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Időszakos tesztelési hiba a protokoll megsértése miatt
+## <a name="test-failure-with-a-protocol-violation-error"></a>Sikertelen tesztelés protokoll-megsértési hiba esetén
 
 |Tünet/hibaüzenet| Lehetséges okok| Lehetséges megoldások |
 |----|---------|-----|

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676881"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694977"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése
 
@@ -88,7 +88,7 @@ Példák a paraméterek használatára: [Azure Resource Manager sablonokban tal�
 
 ### <a name="data-types"></a>Adattípusok
 
-Az egész típusok a-2147483648 és a 2147483647 közötti tartományba terjedhetnek. Az erőforrástípusok azonban alacsonyabb korlátot is alkalmazhatnak az egész szám tulajdonságra vonatkozóan.
+A beágyazott paraméterekként átadott egész számok esetében az értékek tartományát az SDK vagy az üzembe helyezéshez használt parancssori eszköz korlátozza. Ha például a PowerShell használatával telepít egy sablont, az egész szám típusú érték-2147483648 és 2147483647 között lehet. Ha el szeretné kerülni ezt a korlátozást, adjon meg nagyméretű egész értékeket egy [paraméter fájljában](resource-manager-parameter-files.md). Az erőforrástípusok a saját korlátait alkalmazzák az egész tulajdonságok esetében.
 
 Ha a sablonban logikai és egész értékeket ad meg, ne adja meg idézőjelek közé az értéket. Kezdő és záró karakterlánc-értékek dupla idézőjelekkel.
 

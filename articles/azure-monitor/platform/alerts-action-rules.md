@@ -1,222 +1,222 @@
 ---
-title: Az Azure Monitor riasztások műveleti szabályokban
-description: Mik azok a műveleti szabályokban a Azure Monitor és hogyan konfigurálhatja és kezelheti őket ismertetése.
+title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: df069ee398ea2937f03765b10576061b5e541390
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 34997c130094b7e8b209b3ad3030038670d0a254
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656724"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702987"
 ---
-# <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
+# <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
-Műveleti szabályokban segítségével határozza meg, vagy mellőzhet műveletek (Azure-előfizetés, erőforráscsoport vagy célerőforrás) minden olyan Azure Resource Manager hatókörben. Ahhoz, amelyhez leszűkítése riasztási példányok adott részéhez tartozó súgó különböző szűrők rendelkeznek.
+A műveleti szabályok segítségével meghatározhatja vagy letilthatja a műveleteket bármely Azure Resource Manager hatókörön (Azure-előfizetés, erőforráscsoport vagy cél-erőforrás). Számos szűrővel rendelkeznek, amelyek segítségével leszűkítheti az eljárni kívánt riasztási példányok meghatározott részhalmazát.
 
-## <a name="why-and-when-should-you-use-action-rules"></a>Miért és mikor érdemes műveleti szabályokban használni?
+## <a name="why-and-when-should-you-use-action-rules"></a>Miért és mikor érdemes a műveleti szabályokat használni?
 
-### <a name="suppression-of-alerts"></a>A riasztások letiltása
+### <a name="suppression-of-alerts"></a>Riasztások letiltása
 
-Nincsenek számos olyan forgatókönyvekben, ahol azt javasoljuk, hogy az értesítéseket generáló értesítéseinek elrejtése. Ezen forgatókönyvek köre a tervezett karbantartási időszak közbeni elnyomáshoz tiltási munkaidőn kívüli időszakban. Ha például a felelős csapat **ContosoVM** szeretne tiltja le a riasztási értesítések a közelgő hétvégi, mert **ContosoVM** tervezett karbantartás alatt áll. 
+Számos esetben hasznos a riasztások által generált értesítések letiltása. Ezek a forgatókönyvek a tervezett karbantartási időszakokban a munkaidőn kívüli időpontokban való letiltásig terjedhetnek. A **ContosoVM** felelős csapat például a közelgő hétvégére vonatkozó riasztási értesítéseket szeretné letiltani, mivel a **ContosoVM** tervezett karbantartás alatt áll. 
 
-Bár a csapat letilthatja egyes riasztási szabályt, amely konfigurálva van **ContosoVM** manuálisan (és a karbantartás után újra engedélyezheti) már nem egy egyszerű folyamattal. Műveleti szabályokban segítségével meghatározhatja a nagy mennyiségű riasztás letiltása és rugalmasan állítsa be a tiltási lehetővé teszi. Az előző példában a csapata egy művelet szabály definiálhat a **ContosoVM** minden riasztási értesítés, amely elrejti a a hétvégi számára.
+Bár a csapat letilthatja az **ContosoVM** -on manuálisan konfigurált összes riasztási szabályt (és azt a karbantartás után is engedélyezheti), nem egyszerű folyamat. A műveleti szabályok segítenek a riasztások letiltásának megadásában a letiltási idő rugalmas konfigurálásával. Az előző példában a csapat meghatározhat egy műveleti szabályt a **ContosoVM** , amely letiltja a hétvégére vonatkozó összes riasztási értesítést.
 
 
-### <a name="actions-at-scale"></a>Műveletek ipari méretekben
+### <a name="actions-at-scale"></a>Léptékű műveletek
 
-Bár a riasztási szabályok segítségével meghatározhatja a a műveletcsoport, amely, amikor a riasztás akkor jön létre, a felhasználóknak gyakran kell egy közös műveletcsoportot hatókörébe tartozó műveletek között. Ha például az erőforráscsoport felelős csapat **ContosoRG** valószínűleg határozza meg a meghatározott összes riasztási szabályt ugyanabban műveletcsoportot **ContosoRG**. 
+Bár a riasztási szabályok segítenek meghatározni a riasztás előállításakor kiváltó műveleti csoportot, az ügyfeleknek gyakran közös műveleti csoportjuk van a műveleteik hatókörén belül. Például az erőforráscsoport **ContosoRG** felelős csapat valószínűleg ugyanazt a műveleti csoportot fogja meghatározni a **ContosoRG**-ben definiált összes riasztási szabályhoz. 
 
-Műveleti szabályokban segítenek a folyamat leegyszerűsítése érdekében. Nagy mennyiségű műveletek meghatározásával műveletcsoport minden riasztást, a hatókörbe tartozó is elindítható. Az előző példában a csapata egy művelet szabály definiálhat a **ContosoRG** , amelyek aktiválják az azonos műveletcsoportot belül létrehozott összes riasztás.
+A műveleti szabályok segítenek leegyszerűsíteni ezt a folyamatot. A skálázási műveletek megadásával a konfigurált hatókörön létrehozott összes riasztás esetében aktiválható egy műveleti csoport. Az előző példában a csapat egyetlen műveleti szabályt is meghatározhat a **ContosoRG** , amely ugyanazt a műveleti csoportot fogja kiváltani a benne létrehozott összes riasztáshoz.
 
 > [!NOTE]
-> Műveleti szabályokban jelenleg nem vonatkoznak az Azure Service Health-riasztások.
+> A műveleti szabályok jelenleg nem vonatkoznak Azure Service Health riasztásokra.
 
-## <a name="configuring-an-action-rule"></a>Egy művelet szabály konfigurálása
+## <a name="configuring-an-action-rule"></a>Műveleti szabály konfigurálása
 
-A funkció eléréséhez kiválasztásával **műveletek kezelése** származó a **riasztások** az Azure monitorban kezdőlapja. Ezután válassza ki **művelet szabályok (előzetes verzió)** . A szabályok kiválasztásával érheti **művelet szabályok (előzetes verzió)** az irányítópultról, riasztások kezdőlapjának alkotóelemeit.
+A szolgáltatáshoz a Azure Monitor **riasztások** kezdőlapján a **műveletek kezelése** lehetőségre kattintva férhet hozzá. Ezután válassza a **műveleti szabályok (előzetes verzió)** lehetőséget. A szabályokat a riasztások kezdőlapján a **műveleti szabályok (előzetes verzió)** lehetőség kiválasztásával érheti el.
 
-![Az Azure Monitor kezdőlapja a műveleti szabályokban](media/alerts-action-rules/action-rules-landing-page.png)
+![A Azure Monitor kezdőlapjának műveleti szabályai](media/alerts-action-rules/action-rules-landing-page.png)
 
-Válassza ki **+ új művelet szabály**. 
+Válassza az **+ új műveleti szabály**lehetőséget. 
 
-![A művelet új szabály hozzáadása](media/alerts-action-rules/action-rules-new-rule.png)
+![Új műveleti szabály hozzáadása](media/alerts-action-rules/action-rules-new-rule.png)
 
-Azt is megteheti létrehozhat egy művelet szabály riasztási szabály konfigurálásakor.
+Azt is megteheti, hogy a riasztási szabály konfigurálása közben létrehoz egy műveleti szabályt.
 
-![A művelet új szabály hozzáadása](media/alerts-action-rules/action-rules-alert-rule.png)
+![Új műveleti szabály hozzáadása](media/alerts-action-rules/action-rules-alert-rule.png)
 
-Meg kell jelennie a folyamat lap művelet szabályok létrehozásához. Az alábbi elemeket konfigurálja: 
+Ekkor megjelenik a folyamat lap a műveleti szabályok létrehozásához. Konfigurálja a következő elemeket: 
 
-![Új művelet szabály létrehozási folyamat](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
+![Új műveleti szabály létrehozási folyamata](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
 ### <a name="scope"></a>Scope
 
-Először válassza ki a hatókör (Azure-előfizetés, erőforráscsoport vagy célként megadott erőforrás). Akkor is is többszörös kijelölést egyetlen előfizetésben jön létre a hatókör kombinációját.
+Először válassza ki a hatókört (Azure-előfizetés, erőforráscsoport vagy cél-erőforrás). Több hatókört is kijelölhet egy adott előfizetésen belül.
 
-![A művelet szabály hatóköre](media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
+![Műveleti szabály hatóköre](media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
 
-### <a name="filter-criteria"></a>Szűrési feltétel
+### <a name="filter-criteria"></a>Szűrési feltételek
 
-Emellett megadhatja a szűrők szűkítéséhez őket egy adott részének a riasztások le. 
+Emellett a riasztások adott részhalmazára szűkítheti a szűrőket is. 
 
 A rendelkezésre álló szűrők a következők: 
 
-* **Súlyosság**: Lehetőség van egy vagy több riasztás súlyossági szint kiválasztása. **Súlyosság = Sev1** azt jelenti, hogy a művelet szabály alkalmazható az összes riasztás Sev1 beállítása.
-* **Szolgáltatás figyelése**: A származó figyelési szolgáltatás alapján történő szűrés. Ez a szűrő abban is többszörös kijelölést. Ha például **Monitor Service = "Application Insights"** azt jelenti, hogy a művelet a szabály az Application Insights-alapú értesítések esetén alkalmazható.
-* **Erőforrástípus**:  Egy adott erőforrástípusra alapján történő szűrés. Ez a szűrő abban is többszörös kijelölést. Ha például **erőforrástípus = "Virtual Machines"** azt jelenti, hogy a művelet a szabály minden virtuális gépekre alkalmazható.
-* **Riasztási szabály azonosítója**: Egy konkrét riasztási szabályok használatával a Resource Manager-Azonosítót a riasztási szabály szerinti szűréshez használandó beállítást.
-* **Az állapot figyelése**:  Szűrheti a riasztási példányok mindkettővel **Fired** vagy **Megoldva** , a figyelési feltétel.
-* **Leírás**: Reguláris kifejezés (reguláris kifejezés) egyezést, amely meghatározza a leírás, a riasztási szabály részeként megadott karakterlánc egyezést. Ha például **leírása tartalmazza a 'prod'** egyezni fog a hozzájuk tartozó leírások az összes olyan riasztásokat, amelyek tartalmazzák az "éles".
-* **Riasztás a környezetben (tartalom)** : Reguláris kifejezéssel egyező, amely meghatározza a riasztás környezete mezőket egy riasztás hasznos karakterlánc egyezést. Ha például **riasztási környezet (tartalom) tartalmazza a "Számítógép-01"** egyezést fog mutatni minden riasztás, amelynek is észleltünk adattartalmakat. tartalmazzák a "Számítógép-01."
+* **Súlyosság**: Egy vagy több riasztási tartomány kijelölésének lehetősége. **Súlyosság = a Sev1** azt jelenti, hogy a műveleti szabály a Sev1 értékre beállított összes riasztásra érvényes.
+* **Szolgáltatás figyelése**: Egy szűrő a kezdeményező figyelő szolgáltatás alapján. Ez a szűrő is többször is kiválasztható. A (z) **"Application Insights" figyelési szolgáltatás** például azt jelenti, hogy a műveleti szabály minden Application Insights-alapú riasztás esetében alkalmazható.
+* **Erőforrás típusa**:  Egy adott erőforrástípus alapján megadott szűrő. Ez a szűrő is többször is kiválasztható. A (z) **"Virtual Machines" erőforrástípus** például azt jelenti, hogy a műveleti szabály minden virtuális gép esetében alkalmazható.
+* **Riasztási szabály azonosítója**: A riasztási szabály Resource Manager-azonosítójával történő szűrésére szolgáló lehetőség a riasztási szabályokhoz.
+* **Figyelési feltétel**:  Olyan riasztási példányok szűrése , amelyekben a rendszer elindította vagy **feloldotta** a figyelő feltételét.
+* **Leírás**: Egy olyan regex (reguláris kifejezés) egyezés, amely a riasztási szabály részeként definiált karakterlánc-egyezést definiál a leíráshoz. Például a **Leírás tartalmazza** a "Prod" kifejezést, amely minden olyan riasztást tartalmaz, amely tartalmazza a "Prod" karakterláncot a leírásokban.
+* **Riasztási környezet (hasznos adat)** : Egy olyan regex-egyezés, amely meghatározza a riasztás hasznos adatainak a riasztás környezeti mezőivel egyező karakterláncot. Például a **riasztási környezet (hasznos adatok) a "Computer-01"** karakterláncot tartalmazza minden olyan riasztásnak, amelynek hasznos adatai tartalmazzák a "Computer-01" karakterláncot.
 
-Ezek a szűrők egymással összefüggésben érvényesek. Például, ha a beállított **erőforrás típusa a(z) = a virtuális gépek** és **súlyossági "= Sev0**, majd minden szűrés **Sev0** riasztásokat csak a virtuális gépeken. 
+Ezeket a szűrőket egy másikkal együtt alkalmazza a rendszer. Ha például a **"= Virtual Machines** és **Súlyosság" = Sev0**értéket állítja be, akkor az összes **Sev0** -riasztás csak a virtuális gépeken van szűrve. 
 
-![A művelet szabály szűrők](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
+![Műveleti szabály szűrői](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
-### <a name="suppression-or-action-group-configuration"></a>Tiltási vagy műveleti csoport konfigurálása
+### <a name="suppression-or-action-group-configuration"></a>Mellőzés vagy műveleti csoport konfigurációja
 
-Ezután konfigurálja a művelet a szabály riasztás letiltása vagy a művelet csoporttámogatás. Mindkettő nem választható. A konfiguráció az összes riasztás példányok, amelyek megfelelnek a korábban meghatározott hatókör és a szűrők funkcionál.
+Ezután konfigurálja a műveleti szabályt a riasztások letiltására vagy a műveleti csoport támogatására. Mindkettőt nem választhatja ki. A konfiguráció minden olyan riasztási példányon működik, amely megfelel a korábban definiált hatókörnek és szűrőknek.
 
-#### <a name="suppression"></a>Tiltási
+#### <a name="suppression"></a>Mellőzés
 
-Ha **tiltási**, műveleteket és értesítések a Mellőzés időtartamának beállítása. Válasszon egyet az alábbi lehetőségek közül:
-* **Múlva (mindig)** : Minden értesítés határozatlan időre letiltja.
-* **Ütemezett időpontban**: Értesítések elrejti egy korlátozott időtartamú belül.
-* **Az ismételt**: Elrejti az ismétlődő napi, heti vagy havi ütemezés szerint értesítések.
+Ha a **Mellőzés**lehetőséget választja, a műveletek és értesítések letiltásának időtartamát adja meg. Válasszon egyet az alábbi lehetőségek közül:
+* **Mostantól (mindig)** : Az összes értesítés határozatlan idejű letiltása.
+* **Ütemezett időpontban**: Letiltotta az értesítéseket a megkötött időtartamon belül.
+* **Ismétlődéssel**: Ismétlődő napi, heti vagy havi rendszerességgel letiltja az értesítéseket.
 
-![A művelet szabály letiltása](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
+![Műveleti szabály letiltása](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
 #### <a name="action-group"></a>Műveletcsoport
 
-Ha **műveletcsoport** a váltógomb vagy meglévő műveletcsoport hozzáadása vagy hozzon létre egy újat. 
+Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon hozzá egy meglévő műveleti csoportot, vagy hozzon létre újat. 
 
 > [!NOTE]
-> Csak egy műveletcsoport társíthatja egy művelet szabályt.
+> Egy műveleti szabállyal csak egy műveleti csoportot lehet hozzárendelni.
 
-![Hozzáadhat vagy létrehozhat új művelet szabály műveleti csoport kiválasztásával](media/alerts-action-rules/action-rules-new-rule-creation-flow-action-group.png)
+![Új műveleti szabály hozzáadása vagy létrehozása a műveleti csoport kiválasztásával](media/alerts-action-rules/action-rules-new-rule-creation-flow-action-group.png)
 
-### <a name="action-rule-details"></a>A művelet szabály részletei
+### <a name="action-rule-details"></a>Műveleti szabály részletei
 
-Legutóbbi a következő adatokat, a művelet szabály konfigurálása:
+Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
 * Name (Név)
-* Az erőforráscsoport, amelyben mentve
+* Az erőforráscsoport, amelyben mentve van
 * Leírás 
 
 ## <a name="example-scenarios"></a>Példaforgatókönyvek
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>forgatókönyv 1: A riasztások súlyosság alapján letiltása
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>forgatókönyv 1: Riasztások súlyosság alapján történő letiltása
 
-A Contoso biztosítani szeretné a az előfizetésen belüli összes virtuális gép összes Sev4 riasztásaihoz értesítéseinek elrejtése **ContosoSub** minden hétvégi.
+A contoso minden hétvégén szeretné letiltani az összes Sev4-riasztás értesítéseit az előfizetési **ContosoSub** lévő összes virtuális gépen.
 
-**Megoldás:** A művelet szabály létrehozása:
+**Megoldás:** Műveleti szabály létrehozása a alábbiakkal:
 * Hatókör = **ContosoSub**
 * Szűrők
     * Súlyosság = **Sev4**
-    * Erőforrástípus = **virtuális gépek**
-* Az ismétlődési beállítása heti, tiltási és **szombat** és **vasárnap** be van jelölve
+    * Erőforrás típusa = **Virtual Machines**
+* Törlés az ismétlődési beállítással hetente, a **szombat** és a **vasárnap** bejelölve
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>2\. forgatókönyv: A riasztás környezete (tartalom) alapuló riasztások letiltása
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>2\. forgatókönyv: Riasztási környezet (hasznos adat) alapján történő riasztások mellőzése
 
-A Contoso biztosítani szeretné az összes naplófájl az riasztások értesítéseinek elrejtése **számítógép-01** a **ContosoSub** határozatlan ideig, mert megy keresztül karbantartás.
+A contoso szeretné letiltani az értesítéseket minden, a **ContosoSub** -hez a **Computer-01** -hez létrehozott összes naplózási riasztáshoz, mert a karbantartási folyamatban van.
 
-**Megoldás:** A művelet szabály létrehozása:
+**Megoldás:** Műveleti szabály létrehozása a alábbiakkal:
 * Hatókör = **ContosoSub**
 * Szűrők
-    * Szolgáltatás figyelése = **Log Analytics**
-    * Riasztás a környezetben (tartalom) tartalmaz **számítógép-01**
-* Mellőzés beállítása **múlva (mindig)**
+    * Szolgáltatás figyelése = **log Analytics**
+    * A riasztási környezet (hasznos adat) tartalmazza a **számítógépet – 01**
+* Letiltási beállítás **mostantól (mindig)**
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3\. forgatókönyv: Műveletcsoport meg van határozva egy erőforráscsoportot
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3\. forgatókönyv: Erőforráscsoport által definiált műveleti csoport
 
-Contoso definiált [előfizetés szintjén metrikariasztás](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Csak akkor szeretne kimondottan az erőforráscsoport által előállított riasztásokat kiváltó műveletek meghatározása **ContosoRG**.
+A contoso [metrikus riasztást adott meg egy előfizetési szinten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). De meg szeretné határozni azokat a műveleteket, amelyek kifejezetten az erőforráscsoport **ContosoRG**létrehozott riasztásokhoz kapcsolódnak.
 
-**Megoldás:** A művelet szabály létrehozása:
+**Megoldás:** Műveleti szabály létrehozása a alábbiakkal:
 * Hatókör = **ContosoRG**
-* Nincs szűrő
-* Műveletcsoport beállítása **ContosoActionGroup**
+* Nincenek szűrők
+* **ContosoActionGroup** beállított műveleti csoport
 
 > [!NOTE]
-> *Műveletcsoportok meghatározott műveleti szabályokban és a riasztási szabályok egymástól függetlenül, nem deduplikált működnek.* A bemutatott forgatókönyvben korábbi, ha a műveletcsoport van definiálva a riasztási szabályt, a művelet a műveleti-szabályban megadott csoporttal együtt elindítja. 
+> *A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés.* Ha a fentebb ismertetett forgatókönyvben egy műveleti csoport van megadva a riasztási szabályhoz, a művelet a műveleti szabályban definiált műveleti csoporttal együtt aktiválódik. 
 
-## <a name="managing-your-action-rules"></a>A művelet szabályok kezelése
+## <a name="managing-your-action-rules"></a>A műveleti szabályok kezelése
 
-Megtekintheti és kezelheti a műveleti szabályokban a lista nézet:
+A következő lista nézetből megtekintheti és kezelheti a műveleti szabályokat:
 
-![Műveleti szabályokban listanézet](media/alerts-action-rules/action-rules-list-view.png)
+![Műveleti szabályok listája nézet](media/alerts-action-rules/action-rules-list-view.png)
 
-Itt engedélyezheti, tiltsa le, vagy műveleti szabályokban ipari méretekben törli a jelölőnégyzet bejelölésével mellettük. Amikor kiválaszt egy művelet szabályt, a konfigurációs lapon nyílik meg. Az oldal segítséget nyújt a műveletet határoz meg szabálydefiníciót, és engedélyezze vagy tiltsa le azt.
+Itt engedélyezheti, letilthatja vagy törölheti az egyes műveletek szabályait a mellette található jelölőnégyzet bejelölésével. A műveleti szabály kiválasztásakor megnyílik a konfigurációs lapja. Az oldalon a műveleti szabály definíciójának frissítése és engedélyezése vagy letiltása segít.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Naplóriasztások hoz létre a [eredmények száma](alerts-unified-log.md) beállítás az egész keresési eredmény (ami előfordulhat, hogy több számítógép között span) használatával hozzon létre riasztási egypéldányos. Ebben a forgatókönyvben, ha egy művelet szabályt használ a **riasztási környezet (tartalom)** szűrő működik a riasztási példányon mindaddig, amíg az egyezést. 2\. forgatókönyv esetében, a korábban leírt, ha a létrehozott riasztás a keresési eredmények tartalmazzák **számítógép-01** és **számítógép-02**, a teljes bejelentés le lesz tiltva. Nem kap értesítést generál **számítógép-02** egyáltalán.
+Az [eredmények száma](alerts-unified-log.md) lehetőséggel létrehozott riasztások a teljes keresési eredmény használatával hoznak létre egyetlen riasztási példányt (amely több számítógép között is terjedhet). Ebben a forgatókönyvben, ha egy műveleti szabály a **riasztási környezet (hasznos adattartalom)** szűrőt használja, akkor az a riasztási példányon működik, amíg van egyezés. A korábban ismertetett 2. forgatókönyvben, ha a generált naplózási riasztás keresési eredményei mind a **Computer-01** , mind a **Computer-02**karakterláncot tartalmazzák, a teljes értesítés le lesz tiltva. Nincs értesítés létrehozva a **Computer-02-** hez.
 
-![Műveleti szabályokban és a naplóriasztások (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![Műveleti szabályok és naplók riasztásai (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Naplóriasztások legjobb használata műveleti szabályokban, a riasztások létrehozása a [metrikamérési](alerts-unified-log.md) lehetőséget. Külön riasztás példányok alapján ezt a beállítást, a meghatározott csoport mező alapján jönnek létre. Ezt követően a 2. forgatókönyv esetében, különálló riasztás példány jön létre **számítógép-01** és **számítógép-02**. A művelet szabály miatt a forgatókönyv csak az értesítési ismertetett **számítógép-01** le lesz tiltva. Az értesítés a **számítógép-02** továbbra is a megszokott módon aktiválódik.
+Ha a riasztásokat a műveleti szabályokkal szeretné legjobban használni, hozzon létre naplózási riasztásokat a [metrika mértékének](alerts-unified-log.md) beállításával. Ezzel a beállítással külön riasztási példányok jönnek létre a definiált csoport mező alapján. Ezt követően a 2. forgatókönyvben különálló riasztási példányok jönnek létre a **Computer-01** és a **Computer-02**esetében. A forgatókönyvben ismertetett műveleti szabály miatt a rendszer csak a **számítógép-01** értesítését letiltja. A **számítógép-02-** es értesítés a szokásos módon folytatódik.
 
-![Műveleti szabályokban és a naplóriasztások (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
+![Műveleti szabályok és naplók riasztásai (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
 ## <a name="faq"></a>GYIK
 
-### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>Amíg műveleti szabály vagyok beállításához szeretnék kapni az egymást átfedő műveleti szabályokban, az összes lehetséges megtekintéséhez, hogy el a duplikált értesítések. Az ennek lehetséges?
+### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>A műveleti szabály konfigurálása közben szeretném megtekinteni az összes lehetséges átfedésben lévő művelet szabályát, így elkerülhetők az ismétlődő értesítések. Ez lehetséges?
 
-Miután egy műveletet a szabály konfigurálását a hatókör határozza meg, láthatja, amely átfedésben meg ugyanabban a hatókörben (ha vannak) művelet szabályok listáját. Ez átfedésben a következő lehetőségek egyike lehet:
+Miután meghatározta a hatókört a műveleti szabály konfigurálása során, megtekintheti az ugyanazon hatókörön (ha van) átfedésben lévő műveleti szabályok listáját. Az átfedés az alábbi lehetőségek egyike lehet:
 
-* Pontos egyezés: Például a művelet szabály most definiálja, és az átfedésben lévő művelet szabály van ugyanahhoz az előfizetéshez.
-* Részhalmaz: Például a művelet szabály, amely akkor van egy adott előfizetés, és az átfedésben lévő művelet szabály egy erőforráscsoportot az előfizetésen belül.
-* Bővített halmaz: Például a műveleti szabály most definiálja az erőforráscsoport, pedig az átfedésben lévő művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben.
-* Metszet: A művelet szabály most definiálja van például **VM1** és **VM2**, és az átfedésben lévő művelet szabály **VM2** és **vm3 virtuális gép**.
+* Pontos egyezés: Például a definiált műveleti szabály és az átfedésben lévő műveleti szabály ugyanahhoz az előfizetéshez tartoznak.
+* Részhalmaz: Például a definiált műveleti szabály egy előfizetésen belül van, és az átfedésben lévő műveleti szabály az előfizetésben található erőforráscsoporthoz van.
+* Bővített halmaz: Például a definiált műveleti szabály egy erőforráscsoport, és az átfedésben lévő műveleti szabály az erőforráscsoportot tartalmazó előfizetésen található.
+* Metszet: Például a definiált műveleti szabály a **VM1** és a **VM2**, és az átfedésben lévő műveleti szabály a **VM2** és a **VM3**.
 
-![Egymást átfedő műveleti szabályokban](media/alerts-action-rules/action-rules-overlapping.png)
+![Átfedésben lévő műveleti szabályok](media/alerts-action-rules/action-rules-overlapping.png)
 
-### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>Amíg a riasztási szabály vagyok beállításához az előfordulhat, hogy a riasztási szabály I vagyok meghatározása a járhat el lehet tudni, hogy van-e már műveleti szabályokban meghatározva, amely?
+### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>A riasztási szabályok konfigurálása során tudnia kell, hogy vannak-e már definiált műveleti szabályok, amelyek az általam definiált riasztási szabály esetében működhetnek?
 
-A riasztási szabály meghatározása a célként megadott erőforrás, után reagálhat rájuk ugyanabban a hatókörben (ha vannak) kiválasztásával művelet szabályok listája látható **nézet konfigurált műveleteket** alatt a **műveletek** szakaszban. Ez a lista a következő esetekben a hatókör alapján van feltöltve:
+Miután meghatározta a riasztási szabály céljának erőforrását, megtekintheti az ugyanazon hatókörön (ha van) lévő műveleti szabályok listáját, ha a **műveletek** szakaszban a **konfigurált műveletek megtekintése** lehetőségre kattint. A lista a hatókörre vonatkozó következő forgatókönyvek alapján töltődik fel:
 
-* Pontos egyezés: Például a riasztási szabályt, amely akkor és a művelet szabály van ugyanahhoz az előfizetéshez.
-* Részhalmaz: Például most definiálja a riasztási szabály egy adott előfizetés, pedig a művelet a szabály az erőforráscsoport az előfizetésben.
-* Bővített halmaz: Például most definiálja a riasztási szabályt az erőforráscsoport, pedig a művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben.
-* Metszet: Például a riasztási szabályt, amely akkor lesz a **VM1** és **VM2**, és a művelet szabály **VM2** és **VM3**.
+* Pontos egyezés: Például a definiált riasztási szabály és a műveleti szabály ugyanahhoz az előfizetéshez van kapcsolva.
+* Részhalmaz: Például a definiált riasztási szabály egy előfizetésen belül van, és a műveleti szabály az előfizetésben található erőforráscsoporthoz van.
+* Bővített halmaz: Például a definiált riasztási szabály egy erőforráscsoport, és a műveleti szabály az erőforráscsoportot tartalmazó előfizetésen található.
+* Metszet: Például a definiált riasztási szabály a **VM1** és a **VM2**, a műveleti szabály pedig a **VM2** és a **VM3**.
     
-![Egymást átfedő műveleti szabályokban](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
+![Átfedésben lévő műveleti szabályok](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
-### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Láthatja, hogy egy művelet a szabály le van tiltva a riasztások?
+### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Megtekinthetem a műveleti szabály által letiltott riasztásokat?
 
-Az a [riasztások listája az oldal](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances), kiválaszthatja, hogy egy további oszlopot nevű **tiltási állapotának**. Az értesítés egy riasztás példánya számára a rendszer mellőzte az, ha a lista jelenik meg ez az állapot.
+A [riasztások listája oldalon](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)kiválaszthatja az **elnyomási állapot**nevű további oszlopot is. Ha a riasztási példány értesítését a rendszer letiltotta, akkor az az állapot jelenik meg a listában.
 
-![Letiltott riasztás példányok](media/alerts-action-rules/action-rules-suppressed-alerts.png)
+![Letiltott riasztási példányok](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
-### <a name="if-theres-an-action-rule-with-an-action-group-and-another-with-suppression-active-on-the-same-scope-what-happens"></a>Ha a műveletcsoport műveleti szabály és a egy másik letiltás aktív az ugyanabban a hatókörben, mi történik?
+### <a name="if-theres-an-action-rule-with-an-action-group-and-another-with-suppression-active-on-the-same-scope-what-happens"></a>Ha van műveleti szabály egy műveleti csoporttal, és egy másik a letiltással aktív ugyanazon a hatókörön, mi történik?
 
-Mellőzés always élvez elsőbbséget a ugyanabban a hatókörben.
+A Mellőzés mindig elsőbbséget élvez ugyanazon a hatókörön.
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha két külön műveletet szabályokat a figyelt erőforrás van? Jelenik meg egy vagy két értesítések? Ha például **VM2** a következő esetben:
+### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha két külön műveleti szabályban megfigyelt erőforrással rendelkezem? Kapok egy vagy két értesítést? A **VM2** például a következő esetben:
 
       "action rule AR1 defined for VM1 and VM2 with action group AG1
       action rule AR2 defined for VM2 and VM3 with action group AG1"
 
-A VM1 és vm3 virtuális gép minden értesítés egyszer lenne műveletcsoport AG1 aktiválódik. A minden riasztás **VM2**, műveletcsoport AG1 akkor aktiválódik, kétszer, mert műveleti szabályokban nem deduplikálása műveleteket. 
+A VM1 és a VM3 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A **VM2**összes riasztása esetében a műveleti csoport AG1 kétszer aktiválódik, mert a műveleti szabályok nem ismétlik le a műveleteket. 
 
-### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha van két külön műveletet szabályokat a figyelt erőforrások és a egy meghívja a művelet során figyelmen kívül hagyás egy másik? Ha például **VM2** a következő esetben:
+### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha egy erőforrást két külön műveleti szabályban figyeltem meg, és egy másikat a művelet közben letiltanak? A **VM2** például a következő esetben:
 
       "action rule AR1 defined for VM1 and VM2 with action group AG1 
       action rule AR2 defined for VM2 and VM3 with suppression"
 
-Minden riasztás a VM1 egyszer lenne műveletcsoport AG1 aktiválódik. Műveletek és a VM2 és vm3 virtuális gép minden egyes riasztás értesítéseket a rendszer letiltja. 
+A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A VM2 és a VM3 összes riasztására vonatkozó műveleteket és értesítéseket a rendszer letiltja. 
 
-### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Mi történik, ha van egy másik Műveletcsoportok hívása ugyanarra az erőforrásra vonatkozó definiált műveletet szabály és a egy riasztási szabályt? Ha például **VM1** a következő esetben:
+### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Mi történik, ha a riasztási szabály és az ugyanahhoz az erőforráshoz definiált műveleti szabály különböző műveleti csoportokat hív meg? A **VM1** például a következő esetben:
 
       "alert rule rule1 on VM1 with action group AG2
       action rule AR1 defined for VM1 with action group AG1" 
  
-Minden riasztás a VM1 egyszer lenne műveletcsoport AG1 aktiválódik. Riasztási szabály "felhasználóval a rule1" akkor aktiválódik, amikor is kezdeményezi AG2 emellett. Műveletcsoportok meghatározott műveleti szabályokban és a riasztási szabályok egymástól függetlenül, nem deduplikált működnek. 
+A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. Ha a "rule1" riasztási szabályt aktiválták, akkor a AG2 is aktiválódik. A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a riasztások az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [További információ az Azure-beli riasztásokról](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)

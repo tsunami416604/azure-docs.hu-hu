@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés a tárolókkal, a szolgáltatásokkal és a Node. js-szel az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 69d92db790157d67ea33a52304f0982973d9012e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772625"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694775"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studio Code és a Node. js segítségével a Kubernetes az Azure dev Spaces használatával
 
@@ -24,6 +24,11 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 - A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
 - Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
+
+Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+- [A Java és a Visual Studio Code](quickstart-java.md)
+- [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
+- [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -130,7 +135,7 @@ Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jele
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 13. sorba helyezi, és az `server.js` *F9 billentyűt*.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 13. sorban `server.js` értékre helyezi, és az *F9 billentyűt*
 
 A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állítsa le a hibakeresést* .
 

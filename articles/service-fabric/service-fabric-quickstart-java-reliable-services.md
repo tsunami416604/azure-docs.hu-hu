@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ca6a1063f6ddd5c42d0d08f43b87a3387cc46a14
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 4ef0db5f72f5849942bb043261f1166cf7c046b1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859273"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703280"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató:  Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
 
@@ -28,7 +28,7 @@ Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első Java-alkalm
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
-![Képernyőkép az alkalmazásról](./media/service-fabric-quickstart-java/votingapp.png)
+![Azure Service Fabric szavazó minta](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
@@ -62,22 +62,22 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```
     A helyi fürt elindítása eltarthat egy ideig. A fürt üzembe állásának ellenőrzéséhez nyissa meg a Service Fabric Explorert a **http://localhost:19080** címen. Ha öt kifogástalan csomópontot lát, a fürt megfelelően üzemel.
 
-    ![A helyi fürt kifogástalan](./media/service-fabric-quickstart-java/localclusterup.png)
+    ![Az Azure Service Fabric Explorer kifogástalan állapotú csomópontokat jelenít meg](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. Nyissa meg az Eclipse környezetet.
 3. Válassza **a fájl** > **importálása** > Gradlemeglévő > Gradle-**projekt** lehetőséget, és kövesse a varázslót.
 4. Válassza a **címtár** lehetőséget, `Voting` majd válassza ki `service-fabric-java-quickstart` a könyvtárat a githubról klónozott mappából. Válassza a **Finish** (Befejezés) elemet.
 
-    ![Az Eclipse importálási párbeszédablaka](./media/service-fabric-quickstart-java/eclipseimport.png)
+    ![Gradle-projekt importálása az Eclipse-be](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. Ezzel létrehozta a `Voting` projektet az Eclipse-hez készült Package Explorerben.
 6. Kattintson a jobb gombbal a projektre, és válassza az **alkalmazás közzététele** a **Service Fabric** legördülő menüben. Válassza ki a **célprofilnak publishprofiles/local. JSON** fájlt célként megadott profilként, és válassza a **Közzététel**lehetőséget.
 
-    ![Publish (Közzététel) helyi párbeszédpanel](./media/service-fabric-quickstart-java/localjson.png)
+    ![Azure Service Fabric helyi JSON közzététele](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
 7. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást az alkalmazáshoz `http://localhost:8080`való hozzáféréssel.
 
-    ![Helyi alkalmazás kezelőfelülete](./media/service-fabric-quickstart-java/runninglocally.png)
+    ![Azure Service Fabric helyi gazdagép](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
 
 Most hozzáadhat szavazási lehetőségeket az alkalmazáshoz, és megkezdheti a szavazatok gyűjtését. Az alkalmazás különálló adatbázis nélkül futtatja és tárolja az összes adatot a Service Fabric-fürtben.
 
@@ -92,14 +92,14 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `https://localhost:19080`.
 2. Válassza a **háló:/szavazó/VotingWeb** csomópont melletti három pontot ( **..** .) a TreeView vezérlőben, és válassza a **szolgáltatás méretezése**lehetőséget.
 
-    ![A Service Fabric Explorer méretezési szolgáltatása](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
+    ![Szolgáltatás méretezése az Azure Service Fabricban](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     Most már méretezheti a webes előtér-szolgáltatás példányainak számát.
 
 3. Módosítsa a számot **2** értékre, és válassza a **szolgáltatás méretezése**lehetőséget.
 4. Válassza ki a **háló:/szavazás/VotingWeb** csomópontot a fanézetben, és bontsa ki a partíciós csomópontot (amelyet egy GUID képvisel).
 
-    ![A Service Fabric Explorer skálázási szolgáltatása kész](./media/service-fabric-quickstart-java/servicescaled.png)
+    ![Skálázható szolgáltatás az Azure-ban Service Fabric](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
 
     Ekkor láthatja, hogy a szolgáltatás két példányban jelenik meg, a fanézetben pedig megtekintheti, hogy a példányok melyik csomópontokon futnak.
 

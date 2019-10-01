@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Gépi tanulási folyamatok kötegelt pontozáshoz'
+title: 'Oktatóanyag: A Batch-pontozáshoz tartozó ML-folyamatok'
 titleSuffix: Azure Machine Learning
 description: Hozzon létre egy gépi tanulási folyamatot a Batch-pontozás futtatásához Azure Machine Learning képbesorolási modellben. A gépi tanulási folyamatok gyorsabbá, hordozhatósággal és újrafelhasználással optimalizálják a munkafolyamatot, így az infrastruktúra és az automatizálás helyett a szakértelemre koncentrálhat.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 978cfa7926e7a035494aae11351c15a45c0251e4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350433"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695615"
 ---
-# <a name="use-a-machine-learning-pipeline-for-batch-scoring"></a>Gépi tanulási folyamat használata kötegelt pontozáshoz
+# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Build & a Batch-pontozási Azure Machine Learning folyamatának használata
 
 Ebben az oktatóanyagban a Batch-pontozási feladatok futtatásához a Azure Machine Learning egy folyamatát használja. A példa a megcímkézetlen rendszerképek besorolására szolgáló, az előre betanított [kezdeti és a v3-](https://arxiv.org/abs/1512.00567) as típusú, a rendszerhez tartozó neurális hálózat Tensorflow modelljét használja. A folyamat létrehozása és közzététele után beállíthat egy REST-végpontot, amely segítségével bármely platformon bármely HTTP-könyvtárból aktiválhatja a folyamatot.
 
